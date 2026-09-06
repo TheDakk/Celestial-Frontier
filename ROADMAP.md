@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-05 local · B–D PILOT PRODUCTION CHECKPOINT
+## SESSION HANDOFF — 2026-09-05 local · B–D FIRST PILOT CHECKPOINT VERIFIED
 
 OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`, branch
 `openai/mac`, upstream `origin/openai/mac`. The existing real sync `bc211bef1f4def92a27933b7c79a090d8913fae4`
@@ -52,8 +52,15 @@ Survey → Earth landing → biosphere remains the journey owner. No gameplay is
   `3e319afc9e35991a99aebc9a6940662d8c6f01e41fbbda0b35d2db6ae61bf38f`.
   `audits/AAA_PILOT_BCD_BACKUP_20260905.md`/JSON own evidence; no private paths in public records.
   BatchA originals/backup remain immutable; OneDrive copied/unverified status unchanged.
-- Final candidate build and focused tests pass. Full source/check results and exact final pushed
-  head are recorded by the following verification checkpoint in `audits/AAA_PILOT_BCD_20260905.md`.
+- Exact clean source `ab91d59ad0ff6badefa19fdc134c3f395241da57` passes browser-free develop:
+ 308 files /3,224 passed /1 skip, root main.js absent. Root validate passes50 deterministic
+ probes and1,010 Earth renders; policy selftest81/81. Initial local red and bounded fixture/
+ producer-history correction are retained. Final pack15,607,722B; initial-JS gzip delta+6,905B.
+ The full record is `audits/AAA_PILOT_BCD_20260905.md`/JSON and inspected proof sheets beside it.
+ This is a first direction checkpoint, not closure of every B–D prerequisite. Human/device
+ approval, matched-current A/B, authored motion capture, anatomical animation and256MiB
+ aggregate retained-update enforcement remain open. The final response identifies the exact
+ pushed documentation successor; product/test inputs remain the verified source above.
   Only Compendium producer authority/live test pins were derived anew; measurement authority,
   numeric ceilings, artlock references and quarantined SceneMemory authorities are unchanged.
 
@@ -71,10 +78,11 @@ startup, but dialog-free/headless operation is not proven. No further audio rend
 
 ### Paired next steps
 
-- **Codex:** finish the exact-source browser-free develop check, source-bound local review and
-  normal branch checkpoint/push; then retain the pilot stop. Present honest gaps rather than
-  scale unfinished families. No hosted authority. A future technical follow-up must close the
- 256MiB retained-update admission gap before claiming release-ready offline storage.
+- **Codex:** first production checkpoint is verified and recorded for normal branch push.
+ Retain Phase0/1 and the integrated-pilot stop; do not scale unfinished families or claim full
+ pilot completion. Continue the listed Phase1 technical gaps under existing authority, using
+ Nick's direction feedback before a materially larger art rework. Close256MiB retained-update
+ admission before claiming release-ready offline storage. No hosted authority.
 - **Claude:** may independently review the pushed pilot source/proofs/rights when Nick requests;
   no sync, PR, label or hosted run is implied. Leave anthropic/mac c860f57 and173c806 alone.
 - **Nick:** review the local direction/listening package and decide whether to refine or retain

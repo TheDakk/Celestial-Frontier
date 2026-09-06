@@ -1,0 +1,750 @@
+{
+  "kind": "derived-pilot-family-proof-assembly",
+  "certification": false,
+  "python": "bundled-python-3.12",
+  "pillow": "12.3.0",
+  "pillowPath": "bundled-python/Pillow-12.3.0",
+  "sourceReportSha256": "d4f14a5bc24a19a16db91f9577a435cc137e5677b21a4b82cafd4167d647cc86",
+  "sourceCaptureManifestVerified": true,
+  "sourceFilesUnchanged": true,
+  "sourceFiles": [
+    {
+      "file": "blue-whale-132.png",
+      "bytes": 187852,
+      "sha256": "055f92365c5c19f567b11ecc7c515b0bf30989aee07ef1510cdcde2c5186267f",
+      "mtimeNs": 1788655786204200468
+    },
+    {
+      "file": "blue-whale-300.png",
+      "bytes": 276486,
+      "sha256": "3442ed6799d7ff69e2310e7458caa298dbfca356b69be1b26afdceb29217fe1a",
+      "mtimeNs": 1788655786380594988
+    },
+    {
+      "file": "blue-whale-440.png",
+      "bytes": 332840,
+      "sha256": "cc09b1012c723bf2fce0c2a7f7a21eb521b397477f770d51843a31bb38d1ecad",
+      "mtimeNs": 1788655786513466170
+    },
+    {
+      "file": "desktop-direction.png",
+      "bytes": 242709,
+      "sha256": "ead180224b333ae745d77df3f0e2f27cfc7891b1908e7887e3cda5fb06084d81",
+      "mtimeNs": 1788655783084172330
+    },
+    {
+      "file": "dragonfly-132.png",
+      "bytes": 189684,
+      "sha256": "6b7aae61474913602e6ae68fdcf211db4e87601694c4eba85a890ae7b94258ca",
+      "mtimeNs": 1788655785324015869
+    },
+    {
+      "file": "dragonfly-300.png",
+      "bytes": 279176,
+      "sha256": "d56f98b728a1d859249a7684b7f3158c6ad48092b00d894ca96aceb21655fde2",
+      "mtimeNs": 1788655785499109596
+    },
+    {
+      "file": "dragonfly-440.png",
+      "bytes": 337653,
+      "sha256": "b02f80a733b7b29ecc75dea4d15dc4fde5504ccf6c760b96010849fa32274875",
+      "mtimeNs": 1788655785626635481
+    },
+    {
+      "file": "eagle-hybrid-132.png",
+      "bytes": 215601,
+      "sha256": "dcd40bad6a9dd5c76657ab4cb7c604b340e751b8c20a3496e4c6c1b8b64d77c2",
+      "mtimeNs": 1788655784411620611
+    },
+    {
+      "file": "eagle-hybrid-300.png",
+      "bytes": 309858,
+      "sha256": "c96c039952a2d9d5be07b523ad704f6ab27fece63a988d5a898267309120f044",
+      "mtimeNs": 1788655784600372936
+    },
+    {
+      "file": "eagle-hybrid-440.png",
+      "bytes": 368556,
+      "sha256": "d2c99733485c4674fec83fbdca8d24d311102e940db9d1850f7f2508b089f7db",
+      "mtimeNs": 1788655784731512950
+    },
+    {
+      "file": "fungus-42-132.png",
+      "bytes": 195609,
+      "sha256": "7d0eb3075ff320dc39e73543656c9604bec4f4a1b965e3cf53cbfca02c946468",
+      "mtimeNs": 1788655786663498871
+    },
+    {
+      "file": "fungus-42-300.png",
+      "bytes": 290612,
+      "sha256": "b1f066678eec3d5a566f89d0d315a0996c885bf654b5cf97c13e5125a32e2267",
+      "mtimeNs": 1788655786839092224
+    },
+    {
+      "file": "fungus-42-440.png",
+      "bytes": 357096,
+      "sha256": "2713351088fcb7f2e8203df2caa79f32c3a1a51106c5f0a3ec3c76d1944abe1b",
+      "mtimeNs": 1788655786980290498
+    },
+    {
+      "file": "kangaroo-132.png",
+      "bytes": 191625,
+      "sha256": "4c01661d822941bd63bdf30b0c43804f68a140e1fa9a360d0bc280aaf221930e",
+      "mtimeNs": 1788655783890106850
+    },
+    {
+      "file": "kangaroo-300.png",
+      "bytes": 281794,
+      "sha256": "59bf32117a4d9a5dd01f4bc67c147111b21d6ec850ce5371910c2cf90d79b769",
+      "mtimeNs": 1788655784117490425
+    },
+    {
+      "file": "kangaroo-440.png",
+      "bytes": 337123,
+      "sha256": "400f703e316e3b588ff191e826516a24d3edb1b93df1627811367d94d1f8e1c5",
+      "mtimeNs": 1788655784258519615
+    },
+    {
+      "file": "mockups-390.png",
+      "bytes": 186588,
+      "sha256": "da9df486f65bda3c04623fb2003d33261964e4618763b19c88451db198b3663e",
+      "mtimeNs": 1788655787531919582
+    },
+    {
+      "file": "mockups-430.png",
+      "bytes": 194622,
+      "sha256": "610b1e788929159922887d947aaeca493ef217da6bfbd992d9dce7315151ffc3",
+      "mtimeNs": 1788655787689979291
+    },
+    {
+      "file": "mockups-820.png",
+      "bytes": 209410,
+      "sha256": "7ada987129556ba33bd8b02a33ce07e1adf736755a94c3b1d62eec2fe53c26bf",
+      "mtimeNs": 1788655787856789926
+    },
+    {
+      "file": "octopus-132.png",
+      "bytes": 192280,
+      "sha256": "969bce469bae3742dc82e4f26fe376d3e0cded38f8203dfaee1d1775fadf501e",
+      "mtimeNs": 1788655785770870467
+    },
+    {
+      "file": "octopus-300.png",
+      "bytes": 292586,
+      "sha256": "88c23c384fc53a1aa4998b9cf4f44f3fbaf70d129e9332fd114fa007ec14a450",
+      "mtimeNs": 1788655785928909426
+    },
+    {
+      "file": "octopus-440.png",
+      "bytes": 356056,
+      "sha256": "0fe9721459760b3fade1943f9207d6fe08e2a946174ab27679e393f1ccaf29f0",
+      "mtimeNs": 1788655786058043396
+    },
+    {
+      "file": "playable-approach-390.png",
+      "bytes": 115609,
+      "sha256": "9329f9205be3698e840f3f21e690a01323d1680940a2c00bbeb2a373ea9c43ac",
+      "mtimeNs": 1788655789188542420
+    },
+    {
+      "file": "playable-current-landed-390.png",
+      "bytes": 221837,
+      "sha256": "582828150ad43cf77cd6d9fc5d4f0a334119ee6367481a2baba251ec12ba34b9",
+      "mtimeNs": 1788655789608105615
+    },
+    {
+      "file": "playable-landed-390.png",
+      "bytes": 224230,
+      "sha256": "26c6f8467dabc00da93968ee133e77956e6b40b532ae3e5eff4c062544f5b587",
+      "mtimeNs": 1788655789423653211
+    },
+    {
+      "file": "playable-system-390.png",
+      "bytes": 119639,
+      "sha256": "024b5f8e5afa749a8407b5248d1471e5add8f605ca7f509b39354c8de43e7768",
+      "mtimeNs": 1788655788827104663
+    },
+    {
+      "file": "review-390.png",
+      "bytes": 122047,
+      "sha256": "fb88fc2d569ca1001cfe7a6630fdcfc60c2b48c33d06cc703de892d059b1df52",
+      "mtimeNs": 1788655787439619693
+    },
+    {
+      "file": "review-430.png",
+      "bytes": 125839,
+      "sha256": "9e2845b40e218cb5b696282bcafbf785825658c0ad8d14efcbd377cd59bd2cc3",
+      "mtimeNs": 1788655787590922937
+    },
+    {
+      "file": "review-820.png",
+      "bytes": 154451,
+      "sha256": "707bca8e788543e3399337d7e4c32b01e29306e673d7cba55d71fb1a1cd7a876",
+      "mtimeNs": 1788655787769181209
+    },
+    {
+      "file": "review.json",
+      "bytes": 87795,
+      "sha256": "d4f14a5bc24a19a16db91f9577a435cc137e5677b21a4b82cafd4167d647cc86",
+      "mtimeNs": 1788655789609224949
+    },
+    {
+      "file": "scout-comparison.png",
+      "bytes": 801606,
+      "sha256": "9a170644f0bd9c4e4c9f19180be32c8682e26b76205062decf3282bdc3049fda",
+      "mtimeNs": 1788655783304604439
+    },
+    {
+      "file": "serpentine-10-132.png",
+      "bytes": 192684,
+      "sha256": "77f89d68e2e68e68b5a413fbf5098093a634207090e3d0f521ebbcf35dbe492d",
+      "mtimeNs": 1788655784871266306
+    },
+    {
+      "file": "serpentine-10-300.png",
+      "bytes": 290955,
+      "sha256": "a9f9d8f35e4b8db6c8bccc20eb516058ebd72559ad75b6946e7723824385692c",
+      "mtimeNs": 1788655785044302989
+    },
+    {
+      "file": "serpentine-10-440.png",
+      "bytes": 353023,
+      "sha256": "e824643f5017871d3d96317bb4718ee0bc8d4e8dc82a7b5d0a7fd36c755a38ab",
+      "mtimeNs": 1788655785173648376
+    },
+    {
+      "file": "temperate-comparison.png",
+      "bytes": 293941,
+      "sha256": "a4ff389031f66f8e5ed113eb74d1d9ced7934501d5b6d19235c8277e5472d2f5",
+      "mtimeNs": 1788655783403077626
+    },
+    {
+      "file": "wolf-132.png",
+      "bytes": 191980,
+      "sha256": "666168c1cd618710e07067f2e2bb0c082b4ea0461545e180d135dfeeeaf504de",
+      "mtimeNs": 1788655783488066883
+    },
+    {
+      "file": "wolf-300.png",
+      "bytes": 281549,
+      "sha256": "a7d3b31918c42921f0d9178cfb9826d5166c04d6d99f50f3007bef0b640c2319",
+      "mtimeNs": 1788655783612810140
+    },
+    {
+      "file": "wolf-440.png",
+      "bytes": 337178,
+      "sha256": "1ad0015b1956c99d8c5f08f5ea78f5a1c97d76233081d45752ea35feae1af10d",
+      "mtimeNs": 1788655783745393197
+    }
+  ],
+  "coverage": [
+    {
+      "file": "wolf-440.png",
+      "size": 440,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        440,
+        440
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        440,
+        440
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "kangaroo-440.png",
+      "size": 440,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        440,
+        440
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        440,
+        440
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "eagle-hybrid-440.png",
+      "size": 440,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        440,
+        440
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        440,
+        440
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "serpentine-10-440.png",
+      "size": 440,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        440,
+        440
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        440,
+        440
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "dragonfly-440.png",
+      "size": 440,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        440,
+        440
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        440,
+        440
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "octopus-440.png",
+      "size": 440,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        440,
+        440
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        440,
+        440
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "blue-whale-440.png",
+      "size": 440,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        440,
+        440
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        440,
+        440
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "fungus-42-440.png",
+      "size": 440,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        440,
+        440
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        440,
+        440
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "wolf-300.png",
+      "size": 300,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        300,
+        300
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        300,
+        300
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "kangaroo-300.png",
+      "size": 300,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        300,
+        300
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        300,
+        300
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "eagle-hybrid-300.png",
+      "size": 300,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        300,
+        300
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        300,
+        300
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "serpentine-10-300.png",
+      "size": 300,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        300,
+        300
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        300,
+        300
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "dragonfly-300.png",
+      "size": 300,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        300,
+        300
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        300,
+        300
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "octopus-300.png",
+      "size": 300,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        300,
+        300
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        300,
+        300
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "blue-whale-300.png",
+      "size": 300,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        300,
+        300
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        300,
+        300
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "fungus-42-300.png",
+      "size": 300,
+      "naturalWidth": 440,
+      "staticCrop": [
+        28,
+        267,
+        300,
+        300
+      ],
+      "animatedCrop": [
+        500,
+        267,
+        300,
+        300
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "wolf-132.png",
+      "size": 132,
+      "naturalWidth": 132,
+      "staticCrop": [
+        28,
+        267,
+        132,
+        132
+      ],
+      "animatedCrop": [
+        444,
+        267,
+        132,
+        132
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "kangaroo-132.png",
+      "size": 132,
+      "naturalWidth": 132,
+      "staticCrop": [
+        28,
+        267,
+        132,
+        132
+      ],
+      "animatedCrop": [
+        444,
+        267,
+        132,
+        132
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "eagle-hybrid-132.png",
+      "size": 132,
+      "naturalWidth": 132,
+      "staticCrop": [
+        28,
+        267,
+        132,
+        132
+      ],
+      "animatedCrop": [
+        444,
+        267,
+        132,
+        132
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "serpentine-10-132.png",
+      "size": 132,
+      "naturalWidth": 132,
+      "staticCrop": [
+        28,
+        267,
+        132,
+        132
+      ],
+      "animatedCrop": [
+        444,
+        267,
+        132,
+        132
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "dragonfly-132.png",
+      "size": 132,
+      "naturalWidth": 132,
+      "staticCrop": [
+        28,
+        267,
+        132,
+        132
+      ],
+      "animatedCrop": [
+        444,
+        267,
+        132,
+        132
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "octopus-132.png",
+      "size": 132,
+      "naturalWidth": 132,
+      "staticCrop": [
+        28,
+        267,
+        132,
+        132
+      ],
+      "animatedCrop": [
+        444,
+        267,
+        132,
+        132
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "blue-whale-132.png",
+      "size": 132,
+      "naturalWidth": 132,
+      "staticCrop": [
+        28,
+        267,
+        132,
+        132
+      ],
+      "animatedCrop": [
+        444,
+        267,
+        132,
+        132
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "file": "fungus-42-132.png",
+      "size": 132,
+      "naturalWidth": 132,
+      "staticCrop": [
+        28,
+        267,
+        132,
+        132
+      ],
+      "animatedCrop": [
+        444,
+        267,
+        132,
+        132
+      ],
+      "capturedPortraitPixelsEqual": true,
+      "copiedPixelsUnscaled": true,
+      "anatomicalAnimation": "INCOMPLETE"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "families-440-comparison.png",
+      "width": 1968,
+      "height": 2520,
+      "bytes": 982066,
+      "sha256": "40f4fb477ce4d3d4aa655b49f6cf48795cd27f22396f692512f31db73e6982ec"
+    },
+    {
+      "file": "families-300-comparison.png",
+      "width": 1408,
+      "height": 1960,
+      "bytes": 543681,
+      "sha256": "c8af84a43f458bd9b1a9b3544b8777ebf1d16fa11baec14c86b21a65f32b8e43"
+    },
+    {
+      "file": "families-132-comparison.png",
+      "width": 736,
+      "height": 1288,
+      "bytes": 180565,
+      "sha256": "5bdc7ed306f97e77e696ab354940d2b99cbb9d0d664ae9240a91e3d56e1eae4d"
+    }
+  ],
+  "limits": [
+    "The 300 px display uses the existing 440 px portrait resource.",
+    "Still captures do not demonstrate anatomical animation; all eight families remain INCOMPLETE.",
+    "This is review of generated headless browser captures, not a physical device or human approval."
+  ]
+}

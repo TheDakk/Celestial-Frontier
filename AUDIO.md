@@ -40,7 +40,7 @@ for future authorized renders but does not establish a true headless or dialog-f
 No further REAPER render is needed for this checkpoint. No Phase 2/chrome migration, hosted
 attempt, PR, label, merge, purchase or release is authorized.
 
-**Current runtime reference — matches code as of 2026-09-04.** Finite typed creature, biosphere
+**Current runtime reference — matches code as of 2026-09-05 local.** Finite typed creature, biosphere
 and combat voices have a monotonic maximum lifetime as a fallback for a missing browser `onended`
 event. The original natural/manual/steal/mute/hide/dispose cleanup remains the owner; this does not
 change sound identity, envelopes, game clocks or rewards. Detailed current behavior is in §0.3;
