@@ -10,7 +10,7 @@ Current gameplay/pilot authority remains in ROADMAP.md. No Phase 2 implementatio
 | --- | --- | --- |
 | Blender | 5.2.1 | Scripted modeling, materials, lighting, background renders. Earlier create/save/reopen/render proof remains valid; not rerun in this setup batch. |
 | Inkscape | 1.4.4 (dcaf3e7) | Custom SVG icon/emblem artwork authored in code; CLI geometry and exports without the editor. New 132px PNG export verified in this batch. |
-| GSAP | 3.15.0 | Exact dependency of @cf/game, committed npm integrity. Headless import/paused interpolation verified; not yet imported into the game or emitted in its build. |
+| GSAP | 3.15.0 | Exact isolated dependency in tools/ui-motion, committed npm integrity. Headless import/paused interpolation verified; absent from the game dependency graph and runtime. |
 | PixiJS | 8.19.0 | Existing browser rendering runtime; native HTML/CSS/SVG continue to own readable, accessible controls. |
 | Surge XT | 1.3.4 | Synth/patch authoring. Installed surge-xt-cli is present; earlier help/version proof covers live MIDI/OSC/device options, not offline WAV export. |
 | REAPER | 7.79.0_06dd787u | Existing editable .rpp/Lua projects and proven Surge VST3 renders. Scriptable; macOS UI/device/evaluation dialogs can still appear. |
@@ -36,9 +36,12 @@ never desktop screenshots or the user's existing browser/profile. Keep editable 
 the private hashed/backed-up source location; commit only optimized game assets under the
 existing source policy. The smoke fixture is synthetic test data, not production artwork.
 
-## GSAP from the game workspace
+## GSAP in isolated authoring tools
 
-From `port/v2`, normal `npm ci` restores the exact pinned dependency. Future app code can use:
+Matches setup as of2026-09-06. `npm ci --prefix tools/ui-motion` restores the exact tool dependency.
+The earlier unused game-workspace declaration changed sealed Compendium measurement inputs;
+U1 restores the game manifests byte-for-byte and keeps GSAP installed separately. Activating it
+in runtime requires a future explicit dependency/authority decision. Tool scripts can use:
 
 ```ts
 import { gsap } from 'gsap';
@@ -50,7 +53,7 @@ Motion/effects preferences, avoid delaying controls, and tear down timelines wit
 surface. Native click/focus/scroll/Close owners remain authoritative. Do not claim that installing
 GSAP improves the present pilot; design implementation remains at the approval boundary.
 
-A simple terminal-only capability check from `port/v2` is:
+A simple terminal-only capability check from `tools/ui-motion` is:
 
 ```sh
 node --input-type=module <<'JS'

@@ -910,7 +910,7 @@ describe('sixth Slice red contract repairs', () => {
       glassSource.match(/inventory\?\.bulletCount===(\d+)/)?.[1],
     );
     expect(glassExpectedBulletCount).toBe(81);
-    expect(glassMissingBulletCount).toBe(78);
+    expect(glassMissingBulletCount).toBe(80);
     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
     expect(glassSource).toContain('81-outcome development inventory');
     expect(glassSource).not.toContain('55-outcome development inventory');
