@@ -303,3 +303,19 @@ pairs, with exact style restoration. Existing native contrast selftests add read
 backing and deliberate glyph/badge/direct-text failures. Compositing, thresholds, historical
 control IDs and input ownership are unchanged. Syntax/diff review passes; native execution
 remains pending on the signed successor.
+
+## Slice PASS; Inventory nameplate sampling stop —0b247a2
+
+Fresh static sequence and Glass selftest PASS; immutable Slice PASS, with original artifacts
+retained in `UI_U1_SLICE_0b247a2_20260906/`. Utility glyph/badge native controls and prior
+phone checks passed. The next contrast finding samples the transparent Inventory click
+wrapper instead of its painted `#playerchip` nameplate. The bounded correction extends the
+same mapping to that known wrapper, preserving the direct HUD nameplate identity when it is
+selected directly. No later phone/build/review stage followed red. Tool maintenance is now
+session-start only; the old chat automation remains deleted.
+
+Independent implementation and root diff review complete. Added native readable/red cases
+for wrapper/direct HUD identities, direct outer text and exact style restoration. Syntax and
+diff checks pass; native execution awaits the signed successor. Desktop rails use separate
+`::before` backings, outside this correction; retain that explicit limitation for U4 desktop
+contrast coverage. No product, threshold, pin or historical-ledger changes.

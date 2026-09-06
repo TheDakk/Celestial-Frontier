@@ -8590,10 +8590,16 @@ function installAuditHarness() {
       if (!evidence.focused) out.push(issue('FOCUS_NOT_OWNED', surface, sel, evidence, 'document.activeElement is target'));
       else if (!evidence.visible) out.push(issue('FOCUS_INVISIBLE', surface, sel, evidence, 'rendered focus indicator'));
     }
-    const contrastNodes = new Set();
+    const contrastNodes = new Set(), nameplateOwners = new Map();
     const directText = (el) => [...el.childNodes].filter(node => node.nodeType === Node.TEXT_NODE)
       .map(node => node.textContent || '').join('').replace(/\s+/g, ' ').trim();
     const addContrastSubject = (el) => {
+      if (el.matches('button#dockinventory')) {
+        const nameplate = el.querySelector(':scope > #playerchip');
+        if (nameplate && visible(nameplate)) { contrastNodes.add(nameplate); nameplateOwners.set(nameplate,el); }
+        if (directText(el)) contrastNodes.add(el);
+        return;
+      }
       if (!el.matches('button.dock-utility')) { contrastNodes.add(el); return; }
       // The native target is transparent; its glyph and badge have distinct painted backings.
       for (const leaf of el.querySelectorAll(':scope > .utility-face > .ico,:scope > [data-notification-count]'))
@@ -8611,10 +8617,12 @@ function installAuditHarness() {
     let contrastReports = 0;
     for (const el of contrastNodes) {
       if (contrastReports >= Number(opts.maxContrastReports || 4)) break;
-      const sample = el.matches('button.dock-utility') ? directText(el)
+      const sample = el.matches('button.dock-utility,button#dockinventory') ? directText(el)
         : (el.textContent || '').replace(/\s+/g, ' ').trim();
       if (!sample) continue;
       const utilityOwner = el.matches('.ico,[data-notification-count]') ? el.closest('button.dock-utility') : null;
+      // A direct HUD #playerchip selection keeps its historical subject identity.
+      const nameplateOwner = nameplateOwners.get(el) || null;
       const s = getComputedStyle(el), fg0 = parseColor(s.color);
       if (!fg0) continue;
       fg0[3] *= cumulativeOpacity(el);
@@ -8623,9 +8631,10 @@ function installAuditHarness() {
       const large = size >= 24 || (size >= 18.66 && weight >= 700), threshold = large ? 3 : 4.5;
       if (ratio + 0.01 < threshold) {
         contrastReports++;
-        out.push(issue('TEXT_CONTRAST_LOW', surface, selectorName(utilityOwner || el), {
+        out.push(issue('TEXT_CONTRAST_LOW', surface, selectorName(utilityOwner || nameplateOwner || el), {
           ratio: round(ratio), threshold, color: s.color, background: bg.map(round), sample: sample.slice(0, 80),
           ...(utilityOwner ? { sampleElement: selectorName(el), sampleKind: el.hasAttribute('data-notification-count') ? 'notification-count' : 'utility-glyph' } : {}),
+          ...(nameplateOwner ? { sampleElement: '#playerchip', sampleKind: 'inventory-nameplate' } : {}),
         }, 'WCAG contrast against bright artwork beneath glass'));
       }
     }
@@ -8819,6 +8828,43 @@ function installAuditHarness() {
     if (list.length !== 1 || list[0].element !== '#cf-control-utility-b' || list[0].actual.sample !== 'Direct')
       failures.push('utility direct outer text escaped its actual transparent backing: ' + JSON.stringify(list));
     directUtilityText.remove(); utilityClean(); utilityRoot.remove();
+    const inventoryWrapper = document.querySelector('button#dockinventory'),
+      inventoryNameplate = inventoryWrapper?.querySelector(':scope > #playerchip');
+    if (!inventoryWrapper || !inventoryNameplate || !visible(inventoryNameplate)) {
+      failures.push('native Inventory/nameplate contrast fixture is missing or hidden');
+    } else {
+      const inventoryStyles = [inventoryWrapper,inventoryNameplate].map(node => node.getAttribute('style')),
+        inventoryOptions = { surface: 'selftest-inventory-nameplate-contrast', root: '#topbar', textMin: 1,
+          interactiveRoots: [], contrastSelectors: ['#dockinventory'], maxContrastReports: 12 },
+        directNameplateOptions = { ...inventoryOptions, contrastSelectors: ['#playerchip'] },
+        directInventoryText = document.createTextNode('Direct Inventory');
+      const inventoryRows = options => audit(options).filter(row => row.code === 'TEXT_CONTRAST_LOW');
+      try {
+        inventoryWrapper.style.setProperty('background','none','important');
+        inventoryWrapper.style.setProperty('color','#fff','important');
+        inventoryNameplate.style.setProperty('background','rgb(14,22,40)','important');
+        inventoryNameplate.style.setProperty('color','#fff','important');
+        if (inventoryRows(inventoryOptions).length || inventoryRows(directNameplateOptions).length)
+          failures.push('readable native nameplate backing was rejected through its wrapper or direct HUD subject');
+        inventoryNameplate.style.setProperty('background','#fff','important');
+        const wrapperRows = inventoryRows(inventoryOptions), hudRows = inventoryRows(directNameplateOptions);
+        if (wrapperRows.length !== 1 || wrapperRows[0].element !== '#dockinventory'
+          || wrapperRows[0].actual.sampleElement !== '#playerchip' || wrapperRows[0].actual.sampleKind !== 'inventory-nameplate'
+          || hudRows.length !== 1 || hudRows[0].element !== '#playerchip' || hudRows[0].actual.sampleKind !== undefined)
+          failures.push('nameplate white-on-white mutation lost selected-wrapper versus direct-HUD identity: ' + JSON.stringify({wrapperRows,hudRows}));
+        inventoryNameplate.style.setProperty('background','rgb(14,22,40)','important');
+        inventoryWrapper.appendChild(directInventoryText);
+        const directRows = inventoryRows(inventoryOptions);
+        if (directRows.length !== 1 || directRows[0].element !== '#dockinventory'
+          || directRows[0].actual.sample !== 'Direct Inventory' || directRows[0].actual.sampleKind !== undefined)
+          failures.push('Inventory direct outer text escaped its transparent native backing: ' + JSON.stringify(directRows));
+      } finally {
+        directInventoryText.remove();
+        [inventoryWrapper,inventoryNameplate].forEach((node,index) => restoreUtilityStyle(node,inventoryStyles[index]));
+      }
+      if (inventoryRows(inventoryOptions).length || inventoryRows(directNameplateOptions).length)
+        failures.push('native Inventory/nameplate contrast failed to restore its readable baseline');
+    }
     const placeholderStyle = document.createElement('style');
     placeholderStyle.id = 'cf-control-placeholder-style';
     placeholderStyle.textContent = '#cf-control-placeholder::placeholder{color:#fff;opacity:1}';
