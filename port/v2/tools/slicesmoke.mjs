@@ -24518,10 +24518,12 @@ try {
       try{prime.style.setProperty('display','none','important');hidden=${geoCheck};restore();
         hiddenRestoration=inspectInlineStyleProperties(prime.style,prior);
         if(!hiddenRestoration.ok)throw new Error('hidden Prime carrier restoration failed');
-        const h=hp.getBoundingClientRect();
-        prime.style.setProperty('position','fixed','important');prime.style.setProperty('bottom','auto','important');
-        prime.style.setProperty('top',h.top+'px','important');prime.style.setProperty('left',h.left+'px','important');
-        prime.style.setProperty('transform','none','important');overlap=${geoCheck};}
+        // The translated dock is a containing block for fixed descendants.
+        // Move from the actual painted rectangle, so this control really
+        // recreates the reported HP collision in the new grid owner.
+        const h=hp.getBoundingClientRect(),p=prime.getBoundingClientRect();
+        prime.style.setProperty('transform','translate('+(h.left-p.left)+'px,'+(h.top-p.top)+'px)','important');
+        overlap=${geoCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
       const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,
         restored=styleRestored?${geoCheck}:['primechip owned style properties were not restored'];

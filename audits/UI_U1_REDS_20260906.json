@@ -68,6 +68,21 @@
       ],
       "logSha256": "5854c0931719d59f80a1a543a1f3869e442f2f663d626d6dbb28bcbabb740579",
       "remainingChecks": "phonecanaries andvisualreview notrunafterred"
+    },
+    {
+      "source": "b08f8ac72529190a4cb2b77c1afa2a443020e593",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3258passed/1skipped, Glassselftest PASS",
+      "failures": [
+        "PHONE PRIME TIER CONTROLS FAILED: intended HP-overlap mutation produced no overlap."
+      ],
+      "diagnosis": "The translated dock creates a containing block for fixed descendants. Viewport coordinates do not recreate the intended collision.",
+      "correction": "Translate Prime from its actual painted rectangle to the HP rectangle, preserving exact style restoration and the existing overlap assertion.",
+      "logSha256": "95d8f0f99bcdb769fed31d671ec7742235d542b496d77bf7909b74a62323656a",
+      "gzipFile": "UI_U1_SLICE_RED_b08f8ac_20260906.log.gz",
+      "gzipSha256": "56ccc95ffbecda657248b03687f1e6915509cbf1866d8835b93b89d0d0bc2ea0",
+      "remainingChecks": "phonecanaries andvisualreview notrunafterred"
     }
   ]
 }
