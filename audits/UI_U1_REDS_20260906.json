@@ -119,6 +119,22 @@
       "gzipFile": "UI_U1_SLICE_RED_ab9b807_20260906.log.gz",
       "gzipSha256": "969e111e703983cabdca61cd1281f7afc6a2d8db067c40c4dc4bdc26395e78fd",
       "remainingChecks": "Phone canaries and visual review not run after red."
+    },
+    {
+      "source": "2deec82580e9f812caf3a5984ff602706b464369",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3258passed/1skipped, Glass selftest PASS",
+      "failures": [
+        "harness: transient-read authoritative reload did not expose a ready slice within15000ms (stale document token)"
+      ],
+      "diagnosis": "The native retry used fixed (30,300), which overlaps the relocated Survey in retained same-source layout. Only app.canvas pointerdown triggers storage retry; the old instrument recorded no exact event target.",
+      "logSha256": "9a7b6f91e32658ab8dfbe30dac303506c17ae54fbc7b1220659236d63dffa45d",
+      "gzipFile": "UI_U1_SLICE_RED_2deec82_20260906.log.gz",
+      "gzipSha256": "09e7d2f2827bdc996a0d95124fd27dd46b8e1e74f8d5bacb7c41d21d715b410a",
+      "remainingChecks": "Phone canaries and visual review not run after red.",
+      "correction": "Select an observed unobstructed root-canvas point; dispatch native press/release; require a matching trusted pointerdown receipt across reload and clean its owned listener/session marker. Keep15s cap, new document token, zero pre-click writes and exact final revision/write assertions.",
+      "focusedVerification": "Existing sixth-red contract24testsPASS, including wrong-target, missing/untrusted/stale receipt and invalid coordinates."
     }
   ]
 }

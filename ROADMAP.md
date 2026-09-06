@@ -17,49 +17,74 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-06 local · U1 IMPLEMENTED / CHECKPOINT PENDING
+## SESSION HANDOFF — 2026-09-06 local · TOOLING READY / U1 CHECKPOINT PENDING
 
 OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`, branch
-`openai/mac`, upstream `origin/openai/mac`. This batch started clean at
-`ec5188f5059fb3ce7ae8b99af68c51709f2ee9b6`; fresh fetch passed and develop
-`c1791e210158de864fdd475323c3091d9ecbae58` is already an ancestor. No merge was needed.
-SSH origin remains `git@github.com:TheDakk/Celestial-Frontier.git`, authenticated TheDakk.
-The superseded handoff is archived verbatim.
+`openai/mac`, upstream `origin/openai/mac`. U1 began at ec5188f5059fb3ce7ae8b99af68c51709f2ee9b6.
+Develop c1791e210158de864fdd475323c3091d9ecbae58 is already an ancestor; no merge was needed.
+SSH origin is git@github.com:TheDakk/Celestial-Frontier.git; this batch's authenticated
+account/read/fetch preflight passed as TheDakk. No further hosted authority exists.
 
-Nick accepted the bounded U1–U4 program in `port/UI_PARITY_PROGRAM_U1_U4.md`; U1 alone is
-implemented for this checkpoint. It applies to the normal game, not the unapproved pilot.
-The shared token/CSS owners restore labelled5+4phone dock at64px centers, local Inter,
-measured shelf and desktop>=701rails plus bottom-right utilities. Nick confirmed that
-utility cluster and requested saved read/unread Notifications, a narrow existing-schema
-checkpoint amendment. Desktop44pxpitch is a disclosed proposed2px adjustment to avoid
-intersecting44px targets; his explicit numerical confirmation is still pending.
+Nick accepted `port/UI_PARITY_PROGRAM_U1_U4.md`. U1 implements the normal game's shared
+presentation tokens, local Inter, phone5+4dock at64px centers, relocated Inventory/scene
+controls, desktop/tablet rails and bottom-right Records/Notifications/Guide/Settings.
+Notifications preserve read/unread state through admitted existing save checkpoints;
+product-action notices remain privately buffered until settlement, protected/Training
+notices session-only. No save schema, action receipt, RNG or legacy import door changes.
+References: UI_PRESENTATION.md, SAVE_SYSTEM.md and celestial-frontier-codebase-reference.md.
 
-Notification history/reads use existing F4 admission, lease and save revision protections.
-Notices during product settlement remain privately buffered; ordinary checkpoint promotion
-cannot alter an in-flight product snapshot or activePersist barrier. Protected/Training
-notices remain session-only. `UI_PRESENTATION.md`, `SAVE_SYSTEM.md` and the codebase reference
-own current implementation. `audits/UI_U1_CHECKPOINT_20260906.md` owns exact-source results;
-verification is pending until its final evidence record. Bulletin81outcomes/pins agree.
+Exact source 2deec82580e9f812caf3a5984ff602706b464369 passed fresh typecheck, artunused,
+310 Vitest files /3,258 tests /1skip and Glass selftest with root main.js absent. Slice
+stopped at a transient-storage reload wait. The old fixed canvas click overlaps U1's
+relocated Survey button. The instrument now targets an observed canvas hit and retains a
+trusted click receipt; its focused contract24tests pass. Successor full checks are pending. Its15-second cap and product checks remain unchanged. Earlier
+Guide collision finding did not recur. No phone canaries or comparison capture ran after
+red. `audits/UI_U1_CHECKPOINT_20260906.md` and `UI_U1_REDS_20260906.json` retain all attempts.
 
-After committing, verify the required fresh-checkout sequence with root main.js absent:
-typecheck, artunused, full Vitest, Glass selftest, Slice develop, then small-phone and
-large-phone Glass. Stop after any red; fix on a new signed source. Capture the normal-game
-phone/desktop/tablet side-by-side grid. Compendium producer-only pins follow the final build;
-measurement, ruler, ceilings, SceneMemory and protected art remain unchanged.
+Geometry decisions remain human review:44px utility targets imply44px desktop utility
+pitch (+2 from legacy);44px rail targets plus the retained8px gap give52px rail pitch
+(+10 from legacy). Phone64px centers are unchanged. Inter and these desktop adjustments
+need Nick's review. Emoji remain pending U3; U2–U4 have not started. U2's pasted stack order
+conflicts with the earned Settings-above-Training-card law and must be resolved first.
+
+### Tooling and hardware
+
+ImageMagick7.1.2-31, FFmpeg/ffprobe9.0.1 and Python3.12.14 are installed and verified;
+GitHub CLI was updated to2.100.0. Node26.7.0 remains active;26.8.1 is deferred while managed
+Node jobs run. `UI_TOOLCHAIN.md` owns exact inventory, purposes and before-use checking.
+`tools/development-toolchain.mjs` verifies synthetic outcomes and versions; its7 tests
+and7 capability checks pass. Shared tool lock tests6PASS. Root validate passes50fingerprints,
+1,010renders and zero boot errors. An ImageMagick metric-parser red is preserved with its
+strict-parser/binary-pixel-fixture correction in the dated tooling evidence.
+
+The local daily09:00 America/New_York automation `maintain-game-development-tools` updates
+idle active authoring tools under the shared lock, verifies changes and refreshes records.
+It needs the Mac/app running; every batch also checks before use. It does not update game
+runtime/test dependencies, sealed inputs, or parked tools and grants no GitHub authority.
+A reusable personal `nick-game-toolchain` skill is installed for future Codex game tasks.
+
+Blender enumerates Apple M4 Pro (GPU -16cores) through Metal. Preserved pilot recipes used
+CPU/four render threads. Next artwork working copies should explicitly select Metal or,
+after device/driver qualification on Windows, OptiX for Nick's reported RTX4080. No GPU
+render/benchmark or Windows inspection was performed. No immutable source originals changed.
+REAPER has a nonempty license file; validity/recognition unverified and key contents unread.
+A fully GUI-free Surge patch/state render remains unproven; no Pedalboard/DawDreamer install.
+AssetPack/DevTools's earlier isolated setup is parked; no extension loaded or game integration.
 
 ### Paired next steps and approval stop
 
-- **Codex:** finish the exact-source U1 checkpoint and branch-only evidence publication, then
-  stop for Nick's direction beforeU2. Do not infer pilot approval or Phase2 authorization.
-- **Claude:** review the pushed U1 source/evidence if Nick requests it. Do not copy files or
-  integrate without separate authority; leave anthropic/mac c860f57 and unmerged173c806 alone.
-- **Nick:** judge the three U1 comparison sheets and direction beforeU2; confirm desktop
-  spacing in that review. No app switch is required until requesting Claude's review.
-  Icons remain emoji pendingU3study; Inter and geometry refinements remain review choices.
-  Artlock CI, ITP save protection and DECISIONS row19 wording remain open.
+- **Codex:** finish the bounded U1 instrument correction, sign the successor, then run its
+  fresh required static → Slice → two phone canary sequence, stopping on red. Capture and
+  inspect normal-game phone/desktop/tablet comparison sheets only after that succeeds.
+  Publish evidence by branch push only, then stop before U2 for Nick's visual review.
+- **Claude:** final U1 review is not ready yet. Unmerged OpenAI work is not on develop;
+  continue unrelated work without copying files. Leave anthropic/mac c860f57 and173c806 alone.
+- **Nick:** no GitHub action, PR or app switch is needed now. After the successful U1 sheets,
+  judge layout/Inter/desktop spacing and request Claude's review if desired. Inkscape's UI
+  art/icon study is U3, after the U1 stop and U2 panel/overlay work.
 
-U2's pasted Training/Settings stack order conflicts with the earned Settings-above-card law;
-resolve that before implementation. U2–U4 are unstarted; Phase4 parity is not yet closed.
-The integrated audiovisual pilot remains unapproved; galaxy and8body-plan families incomplete.
-BudgetUNFROZEN, repositoryPUBLIC per last verified state, private fallback3,000. Branch push
-only triggers no workflow. Zero hosted runs, labels, PRs, merges, releases, purchases or deploys.
+Integrated audiovisual pilot approval is still open; no Phase2, no release. Artlock CI lane,
+ITP save protection and DECISIONS row19 wording stay open. BudgetUNFROZEN, repositoryPUBLIC
+per last verified state, private fallback3,000; zero hosted attempts, labels, PRs, merges,
+releases, purchases or deploys. An openai/mac branch push triggers no workflow. Ambient
+untracked .DS_Store remains untouched and is not part of the change.

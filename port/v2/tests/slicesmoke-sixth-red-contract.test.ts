@@ -1501,6 +1501,19 @@ describe('sixth Slice red contract repairs', () => {
         'const existingRetryGreen = existingRetryOutcome(existingRetry);'],
       ['fresh retry positive decision',
         'const freshRetryGreen = freshRetryOutcome(freshRetry);'],
+      ['actual root canvas owner', 'const S=window.__CF_SLICE__,canvas=S?.app?.canvas,'],
+      ['hit-tested native canvas target', 'hit=document.elementFromPoint(x,y)'],
+      ['reject obscured canvas points', 'if(hit!==canvas)continue;'],
+      ['same-document canvas target', 'canvasPoint.documentToken !== retryBootToken'],
+      ['native measured press', "type: 'mousePressed', x: canvasPoint.x, y: canvasPoint.y"],
+      ['native measured release', "type: 'mouseReleased', x: canvasPoint.x, y: canvasPoint.y"],
+      ['trusted root canvas receipt', 'trusted:event.isTrusted,targetCanvas:event.target===canvas'],
+      ['one owned event listener', '{capture:true,once:true,signal:abort.signal}'],
+      ['receipt remains through authoritative reload', 'await waitForSlice(retrySession, \'transient-read authoritative reload\', { previousToken: retryBootToken });'],
+      ['exact receipt decision', 'if (!transientCanvasActivationPasses(canvasPoint, canvasPress))'],
+      ['owned receipt cleanup', 'const canvasCleanup = await evalRetry('],
+      ['cleanup failure stops successor', 'if (canvasFailure !== null || canvasCleanup !== true)'],
+      ['bounded failure diagnostics', 'point: canvasPoint, observed'],
       ['both retry branches wait for the final revision-two successor',
         'const expectedWrites = 2;'],
       ['existing retry exact two-write topology',
@@ -1531,8 +1544,34 @@ describe('sixth Slice red contract repairs', () => {
     expect(transient).not.toContain('transientRetryProbe(vrRaw)');
     expect(transient).not.toContain('transientPreClickOutcome(value.preClick, vrRaw)');
     expect(transient).not.toContain('seedRaw === undefined ? 2 : 1');
+    expect(transient).not.toContain('x: 30, y: 300');
     expect(transient).not.toContain("count: 1, me: 'Dakk'");
     expect(transient).not.toContain('value.authority?.ordinal === 0');
+  });
+
+  it('requires a measured root-canvas hit and the matching trusted pointerdown after transient recovery', () => {
+    const owner = section(sliceSource,
+      '  const transientCanvasActivationPasses = (point, receipt) =>',
+      '  const transientRetryProbe = async (seedRaw) => {');
+    const assess = Function(`${owner}; return transientCanvasActivationPasses;`)() as
+      (point: unknown, receipt: unknown) => boolean;
+    const point = { ok: true, documentToken: 'protected-first-document', canvasTag: 'CANVAS',
+      canvasConnected: true, canvasOwnsPoint: true, x: 640, y: 400, viewportWidth: 1280, viewportHeight: 800 };
+    const receipt = { schema: 'cf-v2-transient-canvas-press/v1', documentToken: point.documentToken,
+      type: 'pointerdown', trusted: true, targetCanvas: true, button: 0, pointerType: 'mouse', x: 640, y: 400 };
+    expect(assess(point, receipt)).toBe(true);
+    expect(assess({ ...point, canvasTag: 'BUTTON', canvasOwnsPoint: false }, receipt)).toBe(false);
+    expect(assess({ ...point, canvasConnected: false }, receipt)).toBe(false);
+    expect(assess({ ...point, x: -1 }, { ...receipt, x: -1 })).toBe(false);
+    expect(assess({ ...point, y: point.viewportHeight }, { ...receipt, y: point.viewportHeight })).toBe(false);
+    expect(assess(point, null)).toBe(false);
+    expect(assess(point, { ...receipt, targetCanvas: false })).toBe(false);
+    expect(assess(point, { ...receipt, trusted: false })).toBe(false);
+    expect(assess(point, { ...receipt, documentToken: 'a-different-document' })).toBe(false);
+    expect(assess(point, { ...receipt, type: 'click' })).toBe(false);
+    expect(assess(point, { ...receipt, button: 2 })).toBe(false);
+    expect(assess(point, { ...receipt, x: point.x + 1 })).toBe(false);
+    expect(assess(point, receipt)).toBe(true);
   });
 
   it('collects one exact convergence-release witness for both Arc 4 reload paths', () => {

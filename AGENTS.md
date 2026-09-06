@@ -31,6 +31,11 @@ for current system behavior. If the source and the reference disagree, the sourc
 update the reference. (`HANDOFF.md` and `celestial-frontier-feedback.md` are FROZEN v1.0
 artifacts kept for history — not current state; don't read them for live truth.)
 
+**Development tools:** before the first external authoring-tool use in a batch, read
+`UI_TOOLCHAIN.md` and run its freshness check. Follow its shared-lock and idle-process
+maintenance rules; tool updates must not change a render or certificate chain mid-run.
+Nick authorized automatic active-authoring-tool maintenance, not runtime/pin updates.
+
 ## Doc hygiene — "logs archive, references refresh" (standing principle)
 Two kinds of markdown, two disciplines. **Logs** are chronological/append-only (ROADMAP, any
 changelog or dev-history): keep the recent entries live, move aged ones VERBATIM to a sibling

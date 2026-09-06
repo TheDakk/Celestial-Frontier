@@ -1,0 +1,848 @@
+{
+  "schema": "cf-development-toolchain-setup/v1",
+  "date": "2026-09-06",
+  "recordedAt": "2026-09-06T05:48:49.590284+00:00",
+  "status": "SETUP_VERIFIED_WITH_DEFERRED_NODE_UPDATE",
+  "certification": false,
+  "scope": "Active macOS development-authoring tools. Synthetic capability checks do not certify game art/audio quality, pilot acceptance, GPU rendering, or a release.",
+  "ownership": {
+    "agent": "OpenAI/Codex",
+    "hostOS": "macOS",
+    "branch": "openai/mac",
+    "repository": "celestial-frontier-openai-mac"
+  },
+  "host": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "homebrew": {
+      "executable": "/opt/homebrew/bin/brew",
+      "prefix": "/opt/homebrew",
+      "version": "Homebrew 6.0.22"
+    }
+  },
+  "sourceFileHashesAtAudit": {
+    "tools/development-toolchain.mjs": "b0a34bbe6fee52eb514f78e42220d93b1287217299ff2e6edaaed33e16018352",
+    "tools/development-toolchain.test.mjs": "3f5cf9fc44b1b0c6619c714c31558f8bce1395908d4d9e5a83d05925b31e9fd0",
+    "tools/with-toolchain-lock.mjs": "f0a3ecd12e0f83b0f99482aa2c298cf84cd30b3b4290516c999a70ef5aed8f0a",
+    "tools/with-toolchain-lock.test.mjs": "de3b76f7e4cf79de89a40e85e9a206634c9b7090914efec9f2c03cbed89ac05f",
+    "tools/ui-motion/package.json": "792bbf689a0e03790bb752a4ce77cf369215d68ca89c5b02ee4adc6e5d44c77c",
+    "tools/ui-motion/package-lock.json": "185acea47540cd220fcd8ed92f5cfcdeab49a90e48159940cb7566a36e9c5e2a"
+  },
+  "rawEvidence": {
+    "archive": "DEVELOPMENT_TOOLCHAIN_SETUP_20260906.evidence.json.gz",
+    "bytes": 6172,
+    "sha256": "54b1d36bca137d925ac5c185bd93af3615e62fd520f38bb3320fe624879932c3",
+    "uncompressedSha256": "c9c7d6a8a166ea712eae795819be89f57d05dd25f6ce9eae1fb3130aa9d4483a",
+    "encoding": "gzip of JSON whose files values preserve each original UTF-8 document verbatim",
+    "files": [
+      {
+        "name": "cf-toolchain-verify-20260906.json",
+        "bytes": 9051,
+        "sha256": "a49292e6ffba019f6a7081471f800fc9abca1c8c1afcb2306f82d51021138a06"
+      },
+      {
+        "name": "cf-toolchain-verify-fixed-20260906.json",
+        "bytes": 9482,
+        "sha256": "2ac9b1b1d9936330432fa4ff6042c5b9e04a256d229b29c302084a2c3ab893e8"
+      },
+      {
+        "name": "cf-toolchain-check-20260906.json",
+        "bytes": 5771,
+        "sha256": "dbf006614558f2dd433ec669df216add6518b9486c33633a82813bb45755d7ef"
+      },
+      {
+        "name": "cf-toolchain-install-20260906.log",
+        "bytes": 9272,
+        "sha256": "bccd6f344af1a0e34c7e6c9d6c5f7856ca597460f75e7c868f23869be34f9302"
+      },
+      {
+        "name": "cf-gh-update-20260906.log",
+        "bytes": 652,
+        "sha256": "2733ca09c6bff872ed9e6af060b87ee95dbad3fe42787c29dd6cf03397c4a7c0"
+      },
+      {
+        "name": "cf-blender-gpu-inventory-20260906.log",
+        "bytes": 252,
+        "sha256": "a874c3a3ae49dd119c591ac36c438ce92ba01a9384171305518fb25ae3c3d561"
+      },
+      {
+        "name": "cf-update-gh.py",
+        "bytes": 547,
+        "sha256": "fe572f5e6855e5bf56db5b2342387a6d8568a84d62cf5067916c1894798dedfb"
+      }
+    ]
+  },
+  "installedInventory": [
+    {
+      "name": "imagemagick",
+      "kind": "formula",
+      "version": "7.1.2-31",
+      "installed": true,
+      "prefix": "/opt/homebrew/opt/imagemagick",
+      "realPath": "/opt/homebrew/Cellar/imagemagick/7.1.2-31"
+    },
+    {
+      "name": "ffmpeg",
+      "kind": "formula",
+      "version": "9.0.1_1",
+      "installed": true,
+      "prefix": "/opt/homebrew/opt/ffmpeg",
+      "realPath": "/opt/homebrew/Cellar/ffmpeg/9.0.1_1"
+    },
+    {
+      "name": "python@3.12",
+      "kind": "formula",
+      "version": "3.12.14",
+      "installed": true,
+      "prefix": "/opt/homebrew/opt/python@3.12",
+      "realPath": "/opt/homebrew/Cellar/python@3.12/3.12.14"
+    },
+    {
+      "name": "node",
+      "kind": "formula",
+      "version": "26.7.0",
+      "installed": true,
+      "prefix": "/opt/homebrew/opt/node",
+      "realPath": "/opt/homebrew/Cellar/node/26.7.0"
+    },
+    {
+      "name": "gh",
+      "kind": "formula",
+      "version": "2.100.0",
+      "installed": true,
+      "prefix": "/opt/homebrew/opt/gh",
+      "realPath": "/opt/homebrew/Cellar/gh/2.100.0"
+    },
+    {
+      "name": "blender",
+      "kind": "cask",
+      "version": "5.2.1",
+      "installed": true,
+      "bundlePath": "/Applications/Blender.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "name": "inkscape",
+      "kind": "cask",
+      "version": "1.4.4",
+      "installed": true,
+      "bundlePath": "/Applications/Inkscape.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "name": "reaper",
+      "kind": "cask",
+      "version": "7.79.0_06dd787u",
+      "installed": true,
+      "bundlePath": "/Applications/REAPER.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "name": "surge-xt",
+      "kind": "cask",
+      "version": "1.3.4",
+      "installed": true,
+      "bundlePath": "/Applications/Surge XT.app",
+      "verification": "bundle metadata only; not launched or license-validated"
+    },
+    {
+      "name": "gsap",
+      "kind": "npm",
+      "version": "3.15.0",
+      "installed": true,
+      "workspace": "tools/ui-motion",
+      "declaredVersion": "3.15.0"
+    }
+  ],
+  "installation": {
+    "command": {
+      "env": {
+        "HOMEBREW_NO_INSTALL_CLEANUP": "1",
+        "HOMEBREW_NO_ANALYTICS": "1"
+      },
+      "argv": [
+        "brew",
+        "install",
+        "imagemagick",
+        "ffmpeg",
+        "python@3.12"
+      ]
+    },
+    "requested": [
+      "imagemagick",
+      "ffmpeg",
+      "python@3.12"
+    ],
+    "result": "completed; later synthetic verification PASS",
+    "rawLog": "cf-toolchain-install-20260906.log",
+    "homebrewAutoUpdateRecorded": true,
+    "dependencyUpgrades": [
+      "ca-certificates@2026-08-13",
+      "openssl@3@3.6.4"
+    ],
+    "installedFootprints": [
+      {
+        "name": "libpng",
+        "version": "1.6.58",
+        "files": 28,
+        "homebrewReportedInstalledSize": "1.4MB"
+      },
+      {
+        "name": "freetype",
+        "version": "2.14.3",
+        "files": 68,
+        "homebrewReportedInstalledSize": "2.7MB"
+      },
+      {
+        "name": "jpeg-turbo",
+        "version": "3.2.0",
+        "files": 47,
+        "homebrewReportedInstalledSize": "4.1MB"
+      },
+      {
+        "name": "libvmaf",
+        "version": "3.2.0",
+        "files": 243,
+        "homebrewReportedInstalledSize": "8.2MB"
+      },
+      {
+        "name": "aom",
+        "version": "3.15.0",
+        "files": 30,
+        "homebrewReportedInstalledSize": "11.3MB"
+      },
+      {
+        "name": "libde265",
+        "version": "1.1.2",
+        "files": 18,
+        "homebrewReportedInstalledSize": "432.3KB"
+      },
+      {
+        "name": "giflib",
+        "version": "6.1.3",
+        "files": 19,
+        "homebrewReportedInstalledSize": "515.1KB"
+      },
+      {
+        "name": "webp",
+        "version": "1.6.0",
+        "files": 64,
+        "homebrewReportedInstalledSize": "2.5MB"
+      },
+      {
+        "name": "libtiff",
+        "version": "4.7.2",
+        "files": 493,
+        "homebrewReportedInstalledSize": "9.0MB"
+      },
+      {
+        "name": "x265",
+        "version": "4.3",
+        "files": 12,
+        "homebrewReportedInstalledSize": "17.3MB"
+      },
+      {
+        "name": "libheif",
+        "version": "1.23.3",
+        "files": 53,
+        "homebrewReportedInstalledSize": "8.7MB"
+      },
+      {
+        "name": "m4",
+        "version": "1.4.21",
+        "files": 14,
+        "homebrewReportedInstalledSize": "815.7KB"
+      },
+      {
+        "name": "libtool",
+        "version": "2.6.2",
+        "files": 78,
+        "homebrewReportedInstalledSize": "4.2MB"
+      },
+      {
+        "name": "little-cms2",
+        "version": "2.19.1",
+        "files": 23,
+        "homebrewReportedInstalledSize": "1.4MB"
+      },
+      {
+        "name": "imagemagick",
+        "version": "7.1.2-31",
+        "files": 679,
+        "homebrewReportedInstalledSize": "28.0MB"
+      },
+      {
+        "name": "dav1d",
+        "version": "1.5.4",
+        "files": 16,
+        "homebrewReportedInstalledSize": "959.6KB"
+      },
+      {
+        "name": "mpg123",
+        "version": "1.33.7",
+        "files": 34,
+        "homebrewReportedInstalledSize": "1.9MB"
+      },
+      {
+        "name": "lame",
+        "version": "4.0",
+        "files": 29,
+        "homebrewReportedInstalledSize": "1.9MB"
+      },
+      {
+        "name": "libvpx",
+        "version": "1.17.0",
+        "files": 22,
+        "homebrewReportedInstalledSize": "4.4MB"
+      },
+      {
+        "name": "ca-certificates",
+        "version": "2026-08-13",
+        "files": 5,
+        "homebrewReportedInstalledSize": "204.3KB"
+      },
+      {
+        "name": "opus",
+        "version": "1.6.1",
+        "files": 16,
+        "homebrewReportedInstalledSize": "1MB"
+      },
+      {
+        "name": "sdl3",
+        "version": "3.4.16",
+        "files": 103,
+        "homebrewReportedInstalledSize": "6.3MB"
+      },
+      {
+        "name": "sdl2-compat",
+        "version": "2.32.72",
+        "files": 117,
+        "homebrewReportedInstalledSize": "3.3MB"
+      },
+      {
+        "name": "svt-av1",
+        "version": "4.2.0",
+        "files": 23,
+        "homebrewReportedInstalledSize": "3.3MB"
+      },
+      {
+        "name": "x264",
+        "version": "r3222",
+        "files": 12,
+        "homebrewReportedInstalledSize": "4.4MB"
+      },
+      {
+        "name": "ffmpeg",
+        "version": "9.0.1_1",
+        "files": 290,
+        "homebrewReportedInstalledSize": "53.8MB"
+      },
+      {
+        "name": "mpdecimal",
+        "version": "4.0.1",
+        "files": 22,
+        "homebrewReportedInstalledSize": "627.9KB"
+      },
+      {
+        "name": "openssl@3",
+        "version": "3.6.4",
+        "files": 7639,
+        "homebrewReportedInstalledSize": "37.7MB"
+      },
+      {
+        "name": "python@3.12",
+        "version": "3.12.14",
+        "files": 3615,
+        "homebrewReportedInstalledSize": "68.4MB"
+      }
+    ],
+    "footprintMeaning": "Homebrew installation summaries, including dependencies; not exact byte totals or compressed download sizes."
+  },
+  "freshnessCheck": {
+    "command": [
+      "node",
+      "tools/development-toolchain.mjs",
+      "--check"
+    ],
+    "at": "2026-09-06T05:40:06.836Z",
+    "status": "PASS",
+    "available": [
+      {
+        "name": "imagemagick",
+        "kind": "formula",
+        "url": "https://formulae.brew.sh/api/formula/imagemagick.json",
+        "latest": "7.1.2-31",
+        "installationVersion": "7.1.2-31",
+        "license": "ImageMagick",
+        "state": "current",
+        "formulaRevision": 0
+      },
+      {
+        "name": "ffmpeg",
+        "kind": "formula",
+        "url": "https://formulae.brew.sh/api/formula/ffmpeg.json",
+        "latest": "9.0.1",
+        "installationVersion": "9.0.1_1",
+        "license": "GPL-3.0-or-later",
+        "state": "current",
+        "formulaRevision": 1
+      },
+      {
+        "name": "python@3.12",
+        "kind": "formula",
+        "url": "https://formulae.brew.sh/api/formula/python%403.12.json",
+        "latest": "3.12.14",
+        "installationVersion": "3.12.14",
+        "license": "Python-2.0",
+        "state": "current",
+        "formulaRevision": 0
+      },
+      {
+        "name": "node",
+        "kind": "formula",
+        "url": "https://formulae.brew.sh/api/formula/node.json",
+        "latest": "26.8.1",
+        "installationVersion": "26.8.1",
+        "license": "MIT",
+        "state": "update-available",
+        "formulaRevision": 0
+      },
+      {
+        "name": "gh",
+        "kind": "formula",
+        "url": "https://formulae.brew.sh/api/formula/gh.json",
+        "latest": "2.100.0",
+        "installationVersion": "2.100.0",
+        "license": "MIT",
+        "state": "update-available",
+        "formulaRevision": 0
+      },
+      {
+        "name": "blender",
+        "kind": "cask",
+        "url": "https://formulae.brew.sh/api/cask/blender.json",
+        "latest": "5.2.1",
+        "installationVersion": "5.2.1",
+        "license": null,
+        "state": "current",
+        "formulaRevision": null
+      },
+      {
+        "name": "inkscape",
+        "kind": "cask",
+        "url": "https://formulae.brew.sh/api/cask/inkscape.json",
+        "latest": "1.4.4",
+        "installationVersion": "1.4.4",
+        "license": null,
+        "state": "current",
+        "formulaRevision": null
+      },
+      {
+        "name": "reaper",
+        "kind": "cask",
+        "url": "https://formulae.brew.sh/api/cask/reaper.json",
+        "latest": "7.79",
+        "installationVersion": "7.79",
+        "license": null,
+        "state": "metadata-differs",
+        "formulaRevision": null
+      },
+      {
+        "name": "surge-xt",
+        "kind": "cask",
+        "url": "https://formulae.brew.sh/api/cask/surge-xt.json",
+        "latest": "1.3.4",
+        "installationVersion": "1.3.4",
+        "license": null,
+        "state": "current",
+        "formulaRevision": null
+      },
+      {
+        "name": "gsap",
+        "kind": "npm",
+        "url": "https://registry.npmjs.org/gsap/latest",
+        "latest": "3.15.0",
+        "installationVersion": "3.15.0",
+        "license": "Standard 'no charge' license: https://gsap.com/standard-license.",
+        "state": "current",
+        "formulaRevision": null
+      }
+    ],
+    "chronology": "This retained metadata check precedes the gh upgrade. The later verification inventory records gh 2.100.0."
+  },
+  "maintenanceChanges": {
+    "gh": {
+      "from": "2.97.0",
+      "to": "2.100.0",
+      "status": "updated and verified",
+      "wrapper": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "gh-maintenance",
+        "--",
+        "/usr/bin/python3",
+        "/private/tmp/cf-update-gh.py"
+      ],
+      "idleGuard": {
+        "argv": [
+          "ps",
+          "-axo",
+          "comm="
+        ],
+        "activeGhProcesses": 0
+      },
+      "env": {
+        "HOMEBREW_NO_INSTALL_CLEANUP": "1",
+        "HOMEBREW_NO_ANALYTICS": "1"
+      },
+      "commands": [
+        [
+          "/opt/homebrew/bin/brew",
+          "update"
+        ],
+        [
+          "/opt/homebrew/bin/brew",
+          "upgrade",
+          "gh"
+        ],
+        [
+          "/opt/homebrew/bin/gh",
+          "--version"
+        ]
+      ],
+      "rawLog": "cf-gh-update-20260906.log"
+    },
+    "node": {
+      "installed": "26.7.0",
+      "available": "26.8.1",
+      "status": "deferred",
+      "reason": "Six active managed Node processes were observed; no jobs killed or restarted to permit an upgrade. Reconsider between jobs while holding the shared lock.",
+      "evidenceOrigin": "parent agent process inventory report"
+    },
+    "reaper": {
+      "bundleVersion": "7.79.0_06dd787u",
+      "officialCaskVersion": "7.79",
+      "status": "metadata suffix difference; cask current per parent inventory",
+      "licenseValidity": "unverified",
+      "licenseContentsRead": false
+    }
+  },
+  "verificationHistory": [
+    {
+      "at": "2026-09-06T05:39:30.048Z",
+      "command": [
+        "node",
+        "tools/development-toolchain.mjs",
+        "--verify"
+      ],
+      "status": "FAIL",
+      "passedCapabilities": 6,
+      "failed": [
+        {
+          "name": "ImageMagick PNG compare",
+          "pass": false,
+          "error": "Error: PNG identity/change comparison failed: {\"format\":\"PNG\",\"width\":16,\"height\":16,\"sameStatus\":0,\"samePixels\":null,\"changedStatus\":1,\"changedPixels\":null}"
+        }
+      ],
+      "preservedRawEvidence": "cf-toolchain-verify-20260906.json",
+      "cause": "Number(stderr.trim()) did not parse ImageMagick absolute metric plus parenthesized normalized suffix; NaN serialized as null. Colored one-pixel AE also reported fractional channel distance.",
+      "diagnosticObserved": [
+        {
+          "fixture": "#123456 identity",
+          "exit": 0,
+          "stderr": "0 (0)"
+        },
+        {
+          "fixture": "one white pixel over #123456",
+          "exit": 1,
+          "stderr": "0.796078 (0.00310968)"
+        }
+      ],
+      "correction": "Strict anchored finite numeric parser with optional normalized suffix; reject junk/nonfinite/out-of-range values. Use black-to-white single-pixel fixture for an unambiguous absolute metric of one. Preserve identical=0 / changed=1 assertions."
+    },
+    {
+      "at": "2026-09-06T05:41:47.526Z",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "development-toolchain-verify-fixed",
+        "--",
+        "node",
+        "tools/development-toolchain.mjs",
+        "--verify"
+      ],
+      "stdout": "cf-toolchain-verify-fixed-20260906.json",
+      "status": "PASS",
+      "passedCapabilities": 7,
+      "totalCapabilities": 7,
+      "sharedLockReleased": true,
+      "syntheticScratchRemoved": true
+    }
+  ],
+  "capabilityEvidence": [
+    {
+      "name": "FFmpeg PCM16 / ffprobe / ebur128",
+      "pass": true,
+      "version": "ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
+      "pcm": {
+        "format": 1,
+        "channels": 1,
+        "sampleRate": 48000,
+        "bitsPerSample": 16,
+        "frames": 48000,
+        "durationSeconds": 1,
+        "peak": 0.124969482421875,
+        "rms": 0.08836834780356763,
+        "upwardCrossings": 999,
+        "sha256": "593d48a0b90e80af2443c3c7774148ce842e287c0a32b13976a53ce7a3a1b872"
+      },
+      "stream": {
+        "codec_name": "pcm_s16le",
+        "sample_rate": "48000",
+        "channels": 1,
+        "bits_per_sample": 16,
+        "duration_ts": 48000,
+        "duration": "1.000000"
+      },
+      "integratedLufs": -21.1,
+      "controls": {
+        "silentRejected": true,
+        "truncatedRejected": true
+      }
+    },
+    {
+      "name": "ImageMagick PNG compare",
+      "pass": true,
+      "version": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+      "format": "PNG",
+      "width": 16,
+      "height": 16,
+      "sameStatus": 0,
+      "samePixels": 0,
+      "changedStatus": 1,
+      "changedPixels": 1,
+      "sameMetric": {
+        "absolute": 0,
+        "normalized": 0
+      },
+      "changedMetric": {
+        "absolute": 1,
+        "normalized": 0.00390625
+      },
+      "originalSha256": "43573cc7060e0634c9fd15ff8f932b45b2c50f92429b99ac5ecc20d3d629ea3c",
+      "changedSha256": "85503693fee214abb7cc6c7a6abba45b038a84b01d7a5ec03005702611860d0d"
+    },
+    {
+      "name": "Python3.12 isolated venv / SSL / standard-library imports",
+      "pass": true,
+      "version": "3.12.14 (main, Aug 12 2026, 13:57:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+      "major": 3,
+      "minor": 12,
+      "isolatedVenv": true,
+      "ssl": "OpenSSL 3.6.4 25 Aug 2026",
+      "sqlite": "3.53.4",
+      "digest": "5deec989484019560832cf109c3c732230c6932f790e299e4bba4f29ea2e44c3",
+      "zlibRoundTrip": true
+    },
+    {
+      "pass": true,
+      "workspace": "tools/audio-render/.venv",
+      "selectedPython": {
+        "version": "3.12.14 (main, Aug 12 2026, 13:57:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+        "major": 3,
+        "minor": 12,
+        "architecture": "arm64",
+        "isolatedVenv": false,
+        "prefixRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12",
+        "basePrefixRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12",
+        "executableRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+        "baseExecutableRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+        "ssl": "OpenSSL 3.6.4 25 Aug 2026",
+        "sslModuleRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py",
+        "sslModuleSha256": "039a0e3f1782e14824b1624c7ffefc2de31714b4a9994424be45a4271966097c",
+        "sslExtensionRealPath": "/opt/homebrew/Cellar/python@3.12/3.12.14/Frameworks/Python.framework/Versions/3.12/lib/python3.12/lib-dynload/_ssl.cpython-312-darwin.so",
+        "sslExtensionSha256": "1bb51c5a0cf06f6c5df39c5a07e7885570ef39a07834442613bdc25ba150076d",
+        "sslContextReady": true,
+        "sqlite": "3.53.4",
+        "digest": "5deec989484019560832cf109c3c732230c6932f790e299e4bba4f29ea2e44c3",
+        "zlibRoundTrip": true
+      },
+      "existingVenv": {
+        "version": "3.12.14 (main, Aug 12 2026, 13:57:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+        "architecture": "arm64",
+        "isolatedVenv": true,
+        "sslContextReady": true,
+        "sqlite": "3.53.4",
+        "digest": "5deec989484019560832cf109c3c732230c6932f790e299e4bba4f29ea2e44c3",
+        "zlibRoundTrip": true
+      },
+      "existingPrefix": "tools/audio-render/.venv",
+      "matchingFields": {
+        "version": true,
+        "architecture": true,
+        "basePrefixRealPath": true,
+        "executableRealPath": true,
+        "baseExecutableRealPath": true,
+        "ssl": true,
+        "sslModuleRealPath": true,
+        "sslModuleSha256": true,
+        "sslExtensionRealPath": true,
+        "sslExtensionSha256": true
+      },
+      "thirdPartyPackagesInstalled": []
+    },
+    {
+      "name": "isolated GSAP paused interpolation",
+      "pass": true,
+      "version": "3.15.0",
+      "midpoint": 5,
+      "endpoint": 10,
+      "paused": true,
+      "workspace": "tools/ui-motion"
+    },
+    {
+      "name": "Node executable",
+      "pass": true,
+      "version": "v26.7.0",
+      "runner": "v26.7.0"
+    },
+    {
+      "name": "GitHub CLI executable",
+      "pass": true,
+      "version": "gh version 2.100.0 (2026-09-03)",
+      "verification": "local version only; no GitHub access"
+    }
+  ],
+  "focusedTests": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "tools/development-toolchain.test.mjs"
+      ],
+      "passed": 7,
+      "failed": 0,
+      "source": "observed terminal result after metric-parser correction",
+      "coverage": "Frozen allowlist; unsupported action rejection; versions; WAV truncation/format; audio silence/clipping/frequency/loudness; PNG identity/change; existing-venv drift; strict metric parsing."
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "tools/with-toolchain-lock.test.mjs"
+      ],
+      "passed": 6,
+      "failed": 0,
+      "source": "parent agent terminal result report"
+    }
+  ],
+  "gpuInventory": {
+    "command": [
+      "/Applications/Blender.app/Contents/MacOS/Blender",
+      "--background",
+      "--factory-startup",
+      "--python-expr",
+      "import bpy,json; p=bpy.context.preferences.addons[\"cycles\"].preferences; p.compute_device_type=\"METAL\"; p.refresh_devices(); print(\"CF_GPU_DEVICES=\"+json.dumps({\"blender\":bpy.app.version_string,\"backend\":\"METAL\",\"devices\":[{\"name\":d.name,\"type\":d.type} for d in p.devices]}))"
+    ],
+    "result": {
+      "blender": "5.2.1 LTS",
+      "backend": "METAL",
+      "devices": [
+        {
+          "name": "Apple M4 Pro",
+          "type": "CPU"
+        },
+        {
+          "name": "Apple M4 Pro (GPU - 16 cores)",
+          "type": "METAL"
+        }
+      ]
+    },
+    "buildLine": "Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)",
+    "rawLog": "cf-blender-gpu-inventory-20260906.log",
+    "guiOpened": false,
+    "renderPerformed": false,
+    "qualification": "Metal device enumeration only; no GPU performance or render-fidelity result. Prior source renders remain CPU/four-thread provenance. Windows RTX 4080 is user-reported and not inspected."
+  },
+  "automation": {
+    "id": "maintain-game-development-tools",
+    "kind": "heartbeat",
+    "target": "current Codex task",
+    "state": "created",
+    "schedule": {
+      "frequency": "daily",
+      "time": "09:00",
+      "timezone": "America/New_York"
+    },
+    "authority": "Nick authorized scoped automatic maintenance of active tools on 2026-09-06",
+    "source": "parent agent automation tool confirmation",
+    "scope": {
+      "homebrewFormulae": [
+        "imagemagick",
+        "ffmpeg",
+        "python@3.12",
+        "node",
+        "gh"
+      ],
+      "homebrewCasks": [
+        "blender",
+        "inkscape",
+        "reaper",
+        "surge-xt"
+      ],
+      "homebrewSelfUpdate": "brew update",
+      "isolatedNpm": [
+        "tools/ui-motion:gsap"
+      ]
+    },
+    "controls": [
+      "shared lock held for entire job/chain, including stage gaps",
+      "idle tool and app checks; never kill jobs or quit apps to update",
+      "no blanket upgrades, cleanup, force/reinstall or purchases",
+      "preserve tool identities throughout an asset/certificate chain",
+      "verify changed tools and active Python venvs before use",
+      "notify on update/failure/action needed; quiet when unchanged"
+    ]
+  },
+  "personalSkill": {
+    "path": "~/.codex/skills/nick-game-toolchain/SKILL.md",
+    "sha256": "a484f02e3825929fcbedc54e4fa5dab80d02e23d332f6c8c90568ca7c3d92483",
+    "state": "installed",
+    "frontmatter": "manually checked",
+    "officialValidator": {
+      "status": "blocked",
+      "reason": "PyYAML absent",
+      "dependencyInstalledToBypass": false
+    },
+    "source": "parent agent installation/validation report; digest reread for this audit"
+  },
+  "boundaries": {
+    "hostedAttempts": 0,
+    "purchases": 0,
+    "guiAutomation": false,
+    "personalDesktopOrBrowserInspected": false,
+    "licenseOrAccountEdits": false,
+    "audioHostExperiments": false,
+    "runtimeOrTestWorkspacePinsChangedByMaintenance": false,
+    "deferredWorkspace": "tools/pixi-tooling",
+    "newAudioHostsOrNativePackages": false,
+    "REAPERSurgeUnattendedStateRestore": "unresolved; metadata inventory does not close it",
+    "systemGitAndBrowsers": "vendor/OS maintenance and separately qualified provenance; not adopted/reinstalled through this toolchain",
+    "recordOnlyTask": "No verification rerun or toolchain-lock acquisition while preparing this audit; U1 chain owns the lock."
+  },
+  "rootValidation": {
+    "command": "node tools/validate.js",
+    "exitCode": 0,
+    "rootMainAbsent": true,
+    "bootErrors": 0,
+    "earthRenders": 1010,
+    "renderFailures": 0,
+    "deterministicProbes": 50,
+    "fingerprint": "MATCH v1.0 baseline",
+    "logSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+    "gzipFile": "audits/DEVELOPMENT_TOOLCHAIN_ROOT_VALIDATE_20260906.log.gz",
+    "gzipSha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736"
+  }
+}

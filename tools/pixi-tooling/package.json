@@ -1,0 +1,16 @@
+{
+  "name": "cf-pixi-authoring-tools",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Isolated Pixi asset preparation and inspection tools; not shipped to players.",
+  "scripts": {
+    "assetpack": "assetpack",
+    "pack": "node pack.mjs"
+  },
+  "dependencies": {
+    "@assetpack/core": "1.7.0",
+    "@pixi/devtools": "2.0.1",
+    "pixi.js": "8.19.0"
+  }
+}
