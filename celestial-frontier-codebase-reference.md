@@ -36,9 +36,12 @@ Bottom guidance is plain text. Caption/hint geometry, compact short-landscape ex
 safety deviations from production and the honest injected floating-trail negative control.
 Native panel/Training action/focus owners remain; passive layout wrappers pass canvas input.
 `notification-history.ts` retains explicit saved Mark read on the existing notification shape
-and UI checkpoint whitelist. The all-platform Survey/Charters correction awaits scoped
-cross-platform verification and visual approval; `audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns
-current results. The earlier six-board scoped PASS and instrument red remain predecessor evidence
+and UI checkpoint whitelist. The Survey/Charters correction passed scoped verification in six
+fresh phone/tablet/desktop contexts, including native pointer/Enter/Space opening and Close/Escape
+focus return. Visual approval remains OPEN. `audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns current
+results and the preserved first keyboard-instrument red; its successor changes only probe key
+dispatch, leaving product source unchanged. The earlier six-board scoped PASS and instrument red
+remain predecessor evidence
 in `audits/UI_U1_SURVEY_TOP_ROW_20260906.md`.
 Prior partial evidence stays in `audits/UI_U1_COMPACT_CONTROLS_20260906.md`. Both the unattributed
 navigation blocker and the normal-review portrait-restoration blocker remain OPEN; this correction

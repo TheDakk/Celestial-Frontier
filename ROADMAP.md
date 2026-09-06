@@ -17,97 +17,74 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-06 · U1 SURVEY / CHARTERS CORRECTION · VERIFICATION PENDING
+## SESSION HANDOFF — 2026-09-06 · U1 SURVEY REPLACES CHARTERS / SCOPED PASS
 
 OpenAI/Codex on macOS | openai/mac | /Users/nick/Projects/celestial-frontier-openai-mac |
-origin/openai/mac. Exact physical root/branch/upstream verified. Entry HEAD
-70b16eeba973f13040e47d50632fc6c1ba7d4a81 is eight local commits ahead of origin/openai/mac.
-Product is committed as 053ef439774520577071f0ca50887337dd938755; the first scoped browser
-attempt stopped after the 390px outcomes on keyboard instrument overflow. Probe-only correction awaits verification. Root main.js absent; ambient .DS_Store untouched. SSH origin
- git@github.com:TheDakk/Celestial-Frontier.git authenticated as TheDakk; read/fetch and develop
-c1791e2 ancestor receipts are reused in this uninterrupted session. No other worktree edited.
+origin/openai/mac. Physical root/branch/upstream verified. Entry70b16ee was8 commits ahead;
+product053ef439774520577071f0ca50887337dd938755 and probe-only successor
+cfba0ede81d5861df70628b462e125eeff4780b9 are signed locally. The final records successor carrying
+this handoff is11 commits ahead of origin/openai/mac. No push/hosted action. Root main.js absent;
+ambient .DS_Store untouched. SSH origin git@github.com:TheDakk/Celestial-Frontier.git authenticated
+as TheDakk; read/fetch and develop c1791e2 ancestor receipts reused in this uninterrupted session.
+No other worktree edited.
 
-### Current explicit correction
+### Completed current correction
 
-Nick replaces the Charters shortcut with Survey on every v2 layout. Phone upper five are
-Survey (🔭), Compendium, Prime, Shipyard and Atlas; the lower four are Records (Achievements),
-Notifications, Guide and Settings. Wide Survey replaces Charters above Compendium at upper-left;
-Charts remains below, with its existing Settings toggle on compact layouts. Duplicate dock/rail
-Charters shortcuts are removed. Objective becomes the sole named native Charters opener with a
-44px target, pointer/Enter/Space activation and the existing panel owner/focus return. It remains
-available while landed and falls back to Charters without an active objective. Objective progress,
-Charter gameplay and the Survey action are unchanged.
+Nick replaces Charters with Survey in every v2 layout. Phone top five: Survey🔭, Compendium,
+Prime, Shipyard, Atlas. Bottom four: Records/Achievements, Notifications, Guide, Settings. Wide
+Survey sits above Compendium in the former upper-left Charters position; Charts remains below
+and in Settings on compact screens. Both former Charters DOM buttons are removed. Objective is
+now the sole native Charters opener, retaining progress,44px floor, native keyboard activation,
+panel/Close/Escape/focus ownership, landed availability without overlays and a null-objective
+Charters fallback. Survey handler and Charter gameplay are unchanged. Compact dock320px cap,
+five responsive slots, centered44px lower targets/36px faces,92px default height and existing
+short-landscape Settings safe-column cap. Search, fitted wide pills, Health and wide Prime unchanged.
 
-Compact geometry is five plus four in ten half-columns: width capped at 320px and viewport minus
-safe sides minus 20px, pitch = width / 5 at most 64px, board width = pitch minus 4px with a 44px
-minimum. Lower targets/faces remain 44px/36px, centered; default dock height remains 92px.
-Panel-open short landscape keeps the existing half-column safe-width cap. The dock now contains
-the left rail, boxless in compact mode with Survey first and the duplicate rail Compendium hidden;
-the scene-actions group contains only Charts. Search, fitted wide pills, Health and wide Prime
-are unchanged. Five current references and the new program amendment describe this correction;
-all older amendments are preserved verbatim. U1 visual acceptance remains OPEN.
+Audit: audits/UI_U1_SURVEY_CHARTERS_20260906.md. Root validate/fingerprint and full typecheck PASS.
+Initial full Vitest RED:2 stale contract files/3 tests failed;309 files/3319 tests passed,1 skipped.
+Corrected2 files/48 tests PASS; raw status-owner protection retained with exact native registration
+exception and negative controls. Native trace2 PASS. Full red and corrected scoped logs retained
+in audits/UI_U1_SURVEY_CHARTERS_PREP_20260906/manifest.json; no full rerun PASS claimed.
+First053ef43 scoped run passed390px geometry/actions/6faults/largeText, then stopped on keyboard
+trace overflow with189 unexpected trusted Unidentified/Minus keydowns. Later sizes NOT RUN.
+Exact red/2PNGs/logs retained in audits/UI_U1_SURVEY_CHARTERS_053ef43_RED_20260906/manifest.json.
+Probe-only correction follows Slice's documented portable key parameters (no platform-specific
+nativeVirtualKeyCode) and verifies exactly six trusted key edges per context; positive and
+missing/extra/overflow/untrusted/retained-red controls PASS. Product/pins did not change.
 
-Audit: audits/UI_U1_SURVEY_CHARTERS_20260906.md. Root validate PASS (50-probe fingerprint), full
-typecheck PASS. Initial full Vitest RED: 2 files/3 tests failed; 309 files/3319 tests passed,
-1 skipped. The failures were stale guards for the old passive Objective/rail Charters. A bounded
-test-only correction keeps raw-status DOM protection, admits only Main's exact single Charters
-registration, and adds wrong-opener/extra-objective-writer negatives; Glass expects Survey and
-Objective. Both corrected files/48 tests PASS; native trace selftest 2 PASS. The full Vitest red
-is retained; no full rerun PASS is claimed. Product unchanged after the final pin. Browser probe
-first attempt and changed-helper status are recorded below. Prep evidence is retained in audits/UI_U1_SURVEY_CHARTERS_PREP_20260906/manifest.json
-(five compressed logs, two authority receipts). The manifest explicitly binds precommit working
-source to the commit carrying final product/guards; it retains the initial red and scoped correction.
-Planned bounded probe:
-audits/UI_U1_SURVEY_CHARTERS_PROBE_20260906.mjs, six fresh contexts at phone widths 390/320/430,
-667 landscape Settings-open, 834 tablet and 1440 desktop. Scope: native Objective pointer/Enter/
-Space, Close/Escape/focus return, Survey placement, geometry negative controls with exact
-restoration, larger text and PNGs. This does not retry the full normal review or its portrait
-restoration, and does not run Slice, phone Glass or the full chain. Stop after the first red;
-retain its source/evidence and do not advance or rerun unchanged source.
+Changed-source scoped PASS: cfba0ede81d5861df70628b462e125eeff4780b9, with product unchanged from
+053ef439774520577071f0ca50887337dd938755. Normal build PASS. Six fresh contexts (390×844,320×740,
+430×932,667×375 Settings,834×1112,1440×900) passed: 26 native pointer inputs (18 touch,8 mouse),
+18 keyboard presses with exact36 trusted key edges, real Charters content and Close/Escape/focus
+return,36 geometry/availability faults with exact cleanup,5 settled larger-text checks,13 PNGs,
+zero runtime errors and no trace overflow. Phone320, desktop1440, tablet834, landscape667 Settings
+and phone390 Charters PNGs were inspected. No further battery was run after this scoped acceptance.
+Evidence: audits/UI_U1_SURVEY_CHARTERS_cfba0ed_20260906/manifest.json
+SHA256 d5de9993d3903e3ac2696ab1cd5f6f8b9620bb038d9c1e934cf30f20b4ff30a0; all16 carriers and decompressed hashes verified.
+The first053ef43 red remains immutable. Human visual approval and both older blockers remain OPEN.
 
-Committed product source 053ef439774520577071f0ca50887337dd938755 passed the first 390×844
-geometry, real native touch/Enter/Space Charters, Close/Escape/focus, six geometry/availability
-faults and larger-text outcomes. The run then stopped INSTRUMENT RED: its keyboard trace hit
-200 entries, including 189 unexpected trusted Unidentified/Minus keydowns with timestamp zero
-starting after Escape. Later viewports were NOT RUN. Exact report, two PNGs and logs are retained
-in audits/UI_U1_SURVEY_CHARTERS_053ef43_RED_20260906/manifest.json. The 390 baseline PNG was inspected.
-The new probe copied Windows virtual-key numbers into platform-specific nativeVirtualKeyCode;
-port/v2/tools/slicesmoke.mjs already documents that mismatch and the possibility of endless
-synthetic repeating keys on macOS. A probe-only correction now follows Slice's portable key
-parameters and rejects anything other than the exact six trusted Enter/Escape/Space key edges.
-Positive plus missing/extra/overflow/untrusted/retained-red controls PASS in
-UI_U1_SURVEY_CHARTERS_KEY_CONTROLS_20260906.txt. Product/pins are unchanged. Changed instrument
-verification remains pending. This finding does not establish the cause of either older blocker;
-the old normal-review helper is unchanged and both blockers remain OPEN.
+Current producer7a67c0db4dc3ad4f3f3caf3a48ad15e61ad2e2d77facc3339975420900b77a51;
+measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 unchanged.
+Draft81 bullets, SHA bb995e649d578556b6e581af65e672e095337da808961accf59418c1acb944da.
+Fixed ruler,ceilings,history,versions,packages,workflows and protected art unchanged.
 
-Current producer 7a67c0db4dc3ad4f3f3caf3a48ad15e61ad2e2d77facc3339975420900b77a51;
-measurement 4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 is unchanged.
-Draft 81-bullet authority bb995e649d578556b6e581af65e672e095337da808961accf59418c1acb944da.
-Fixed rulers, ceilings, history, game/release version, packages, workflows and protected art retain
-their owners. No release, certification or visual-acceptance claim follows from this correction.
+### Preserve both blockers and paired next steps
 
-### Preserve both blockers
+08cd97d79b67cab4b8d19bfd493293e997dec528: Skip785ms → Escape Cosmos1313ms → unsolicited
+Cosmos/Milky Way3930ms before Notifications input. Unattributed/OPEN;95c9a1f nonrecurrence is
+not repair. c57aaaebc656f2e2d15705601fe1a2a73cf15f1f: Runtime.evaluate timeout after23 native
+phone inputs and landscape Settings Close while restoring390×844. Pending expression unknown;
+cleanup read Cosmos/closed panels/390×844, all4 debugger pauses resumed, no lasting hang established.
+Both exact audits/evidence remain immutable: audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md and
+audits/UI_U1_COMPACT_CONTROLS_20260906.md. The new key-helper finding does not establish either
+older cause; old normal-review helper unchanged. No wait/deadline increase/navigation guard/retry.
 
-08cd97d79b67cab4b8d19bfd493293e997dec528: Skip 785ms → Escape Cosmos 1313ms → unsolicited
-Cosmos/Milky Way 3930ms before Notifications input. Navigation cause remains unattributed/OPEN;
-95c9a1f nonrecurrence is not repair. c57aaaebc656f2e2d15705601fe1a2a73cf15f1f: Runtime.evaluate
-timeout after 23 native phone inputs and landscape Settings Close while restoring 390×844.
-Pending expression remains unknown; cleanup read Cosmos/closed panels/390×844 after all four
-debugger pauses resumed, so no lasting hang was established. Portrait-restoration blocker OPEN.
-Their immutable audits are UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md and
-UI_U1_COMPACT_CONTROLS_20260906.md under audits/. The six-board e94f7b3 scoped PASS and earlier
-cleanup red remain in audits/UI_U1_SURVEY_TOP_ROW_20260906.md as predecessor evidence only.
-No workaround wait, deadline increase, navigation guard or automatic retry.
-
-### Next and standing boundaries
-
-Codex: finish the current bounded checks, commit the settled source locally, run the scoped
-fresh-context probe only after its prerequisites pass, then retain terminal results/PNGs and
-refresh audit/reference/handoff source identities. Stop for Nick's visual review. No U2–U4,
-Phase2, integrated-pilot or broad navigation work. Claude: Nick need not open Claude now; preserve
-anthropic/mac and unmerged 173c806. These local changes are not on develop and are not available
-there; no copying, merge or duplicate battery. No PR/push/GitHub step now. Future integration is
-openai/mac → develop with separate exact hosted authority; develop/main/live are unchanged.
+Codex: requested correction and scoped evidence retention complete; stop for Nick's visual review.
+Separately bounded restoration-expression diagnosis remains the next technical work. Fresh resume:
+audits/UI_U1_SURVEY_CHARTERS_RESUME_20260906.md. Claude: Nick need not open Claude now; preserve
+anthropic/mac/unmerged173c806, no copying/merge or repeated battery. No PR or hosted step now;
+future openai/mac → develop integration requires separate exact hosted authority. No U2–U4,
+Phase2, full normal review, Slice/phoneGlass/full chain or integrated-pilot work. Develop/main/live unchanged.
 
 Audiovisual B–D candidates exist; preservation CLOSED, integrated pilot UNAPPROVED and eight
 anatomical animations INCOMPLETE with protected static fallbacks. Matched listening, physical

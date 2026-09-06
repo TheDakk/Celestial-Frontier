@@ -1,8 +1,8 @@
 # U1 Survey replaces Charters — 2026-09-06
 
-Status: PRODUCT COMMITTED at 053ef43; root validation/typecheck PASS, initial full Vitest RED
-with corrected affected guards PASS. First scoped browser attempt INSTRUMENT RED after passing
-390px outcomes; probe-only keyboard correction awaits changed-source verification. U1 visual approval
+Status: SCOPED CROSS-PLATFORM PASS on cfba0ed; product source053ef43. Root validation/typecheck
+PASS, initial full Vitest RED with corrected affected guards PASS. The first scoped instrument
+red is retained; the portable-key probe passed on changed committed source. U1 visual approval
 and both recorded blockers remain OPEN. No U2–U4, Phase2, hosted, integrated-pilot or broad navigation work.
 
 Nick explicitly replaces the Charters shortcut with Survey across every v2 layout. This
@@ -32,7 +32,7 @@ port/UI_PARITY_PROGRAM_U1_U4.md, port/V2_PROGRAM_ROADMAP.md and port/v2/README.m
 scope. The program preserves the complete previous amendment verbatim. ROADMAP.md owns the live
 handoff; the former Survey top-row terminal handoff is archived verbatim, newest-first.
 
-## Verification boundary and pending plan
+## Verification boundary and results
 
 Root validate PASS, including the 50-probe determinism fingerprint; full typecheck PASS. The
 initial full Vitest run was RED: two files/three tests failed, while 309 files/3,319 tests passed
@@ -51,7 +51,7 @@ source note identifies precommit working-source checks and binds the final produ
 to the commit carrying the manifest. Both the initial full Vitest red and the scoped two-file
 correction remain recorded. It is not a full rerun or certification claim.
 
-The first committed-source probe result and its corrected-helper boundary are recorded below.
+The initial instrument red and terminal changed-helper PASS are recorded below.
 The retained probe is
 UI_U1_SURVEY_CHARTERS_PROBE_20260906.mjs in this audit directory.
 It covers six separate fresh contexts: phone widths 390/320/430, 667 landscape with Settings open,
@@ -60,7 +60,7 @@ It exercises the native Objective using pointer, Enter and Space; panel Close/Es
 return; Survey/Charters placement and geometry; deliberate negative controls with exact cleanup;
 larger text; and retained screenshots. Its results are scoped evidence, not a full UI certificate.
 
-The probe runs only after required prerequisites pass on settled committed source. Stop at the
+The probe ran after required prerequisites passed on settled committed source. Stop at the
 first nonzero/red result and retain it without advancing or rerunning unchanged source. Full
 normal review, the known-timeout portrait-restoration path, Slice, phone Glass and the full chain
 are outside this bounded attempt. A scoped PASS cannot close the older navigation or instrument
@@ -78,15 +78,27 @@ synthetic repeating keys on macOS. A probe-only correction now follows Slice's p
 parameters and rejects anything other than the exact six trusted Enter/Escape/Space key edges.
 Positive plus missing/extra/overflow/untrusted/retained-red controls PASS in
 UI_U1_SURVEY_CHARTERS_KEY_CONTROLS_20260906.txt. Product/pins are unchanged. Changed instrument
-verification remains pending. This finding does not establish the cause of either older blocker;
+verification subsequently passed as recorded below. This finding does not establish the cause of either older blocker;
 the old normal-review helper is unchanged and both blockers remain OPEN.
+
+Changed-source scoped PASS: cfba0ede81d5861df70628b462e125eeff4780b9, with product unchanged from
+053ef439774520577071f0ca50887337dd938755. Normal build PASS. Six fresh contexts (390×844,320×740,
+430×932,667×375 Settings,834×1112,1440×900) passed: 26 native pointer inputs (18 touch,8 mouse),
+18 keyboard presses with exact36 trusted key edges, real Charters content and Close/Escape/focus
+return,36 geometry/availability faults with exact cleanup,5 settled larger-text checks,13 PNGs,
+zero runtime errors and no trace overflow. Phone320, desktop1440, tablet834, landscape667 Settings
+and phone390 Charters PNGs were inspected. No further battery was run after this scoped acceptance.
+Evidence: audits/UI_U1_SURVEY_CHARTERS_cfba0ed_20260906/manifest.json
+SHA256 d5de9993d3903e3ac2696ab1cd5f6f8b9620bb038d9c1e934cf30f20b4ff30a0; all16 carriers and decompressed hashes verified.
+The first053ef43 red remains immutable. Human visual approval and both older blockers remain OPEN.
 
 ## Source and authority
 
 OpenAI/Codex on macOS | openai/mac | /Users/nick/Projects/celestial-frontier-openai-mac |
 origin/openai/mac. Entry HEAD 70b16eeba973f13040e47d50632fc6c1ba7d4a81 is eight local commits ahead
-of origin/openai/mac. The correction is currently working-copy source; implementation and tested
-commit identities are pending. No push or GitHub write. Root main.js is absent, ambient .DS_Store
+of origin/openai/mac. Product is signed053ef439774520577071f0ca50887337dd938755; tested probe
+is signedcfba0ede81d5861df70628b462e125eeff4780b9. The records successor carrying final evidence
+is11 local commits ahead; no push or GitHub write. Root main.js is absent, ambient .DS_Store
 is untouched, and no other agent's worktree was edited. The same uninterrupted-session SSH
 receipt uses git@github.com:TheDakk/Celestial-Frontier.git authenticated as TheDakk with repository
 read/fetch passed and develop c1791e2 retained as an ancestor.
@@ -115,9 +127,10 @@ remain in UI_U1_SURVEY_TOP_ROW_20260906.md and do not verify the new five-board/
 
 ## Next and paired handoff
 
-Codex completes the pending bounded checks, commits the settled source locally, observes the
-scoped fresh-context probe once only after prerequisites pass, retains terminal evidence and
-updates this audit plus the live references/handoff. Then stop for Nick's visual review.
+Codex: the requested correction, scoped verification and evidence retention are complete; stop
+for Nick's visual review. Fresh resume: UI_U1_SURVEY_CHARTERS_RESUME_20260906.md. The separately
+bounded portrait-restoration expression diagnosis remains the next technical work; no automatic
+review retry or U2–U4 work.
 Claude: Nick need not open Claude now; preserve anthropic/mac and unmerged 173c806. These local
 changes have not reached develop; do not copy product files, merge them or duplicate the battery.
 GitHub step: none. PR details: not needed now. Future integration is openai/mac → develop with
