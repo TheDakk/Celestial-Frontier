@@ -319,3 +319,21 @@ for wrapper/direct HUD identities, direct outer text and exact style restoration
 diff checks pass; native execution awaits the signed successor. Desktop rails use separate
 `::before` backings, outside this correction; retain that explicit limitation for U4 desktop
 contrast coverage. No product, threshold, pin or historical-ledger changes.
+
+## Both phone canaries PASS; default-font visual review stop —db777b1
+
+Fresh311 files/3,300 tests/1 skipped, Glass selftest and Slice PASS. Small-phone
+20260906090250806-82514-679166b32a10 and large-phone
+20260906090307199-82638-97dc02107523 both PASS with zero findings/instrument failures.
+Normal build PASS. Immutable evidence and the first normal phone PNG are retained under
+`UI_U1_REVIEW_RED_db777b1_20260906/`. This is local targeted evidence, not full Glass certification.
+
+Normal visual review stops at dock93.6875px against92px default-text expectation. Native
+diagnosis finds Compendium needs54.338px inside54px available width: the final letter wraps.
+Phone-only zero horizontal padding gives56px available, one line and44px row/92px dock.
+Restoration reproduces the original red with exact styles; no font shrinking, target or pitch
+change. The diagnostic deliberately exits1 after its one case and is not a certificate.
+The review labels92px as default Inter content, not a sealed fixed v1 law; thresholds remain.
+Larger Settings text may still grow the auto row. Producer0df5435f66dbd057b15690404aeb38a4dcfb2d09c2bb344a53288acac237535e
+and all component pins move together; sealed measurement matches, ruler/ceilings remain unchanged.
+Fresh successor verification and final three-view comparison remain pending.

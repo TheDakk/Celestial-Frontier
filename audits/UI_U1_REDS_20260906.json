@@ -595,6 +595,76 @@
         }
       ],
       "remainingChecks": "large-phone/normal-build/review not run after red."
+    },
+    {
+      "source": "db777b106a84e3c05486c0bb56ea46f2fe6d0af4",
+      "kind": "local-normal-build-ui-review",
+      "precedingChecks": "Fresh typecheck/artunused/full Vitest/Glass selftest/Slice/both phone canaries and normal build PASS; no main.js",
+      "evidenceDirectory": "UI_U1_REVIEW_RED_db777b1_20260906",
+      "slice": {
+        "runId": "20260906085625526-82209-453fabe83ec1",
+        "durationMs": 383535
+      },
+      "glass": [
+        {
+          "run": {
+            "id": "20260906090250806-82514-679166b32a10",
+            "artifactPath": "apps/game/smoke/glassmatrix-20260906090250806-82514-679166b32a10.json",
+            "provenance": "The unique run artifact is authority; the fixed-name report is a mutable current pointer only."
+          },
+          "scope": "targeted-diagnostic",
+          "certifying": false,
+          "summary": {
+            "viewportCount": 1,
+            "findingCount": 0,
+            "instrumentFailureCount": 0,
+            "counts": {}
+          },
+          "durationMs": 14601,
+          "viewportTimings": [
+            {
+              "label": "small-phone",
+              "durationMs": 11366
+            }
+          ]
+        },
+        {
+          "run": {
+            "id": "20260906090307199-82638-97dc02107523",
+            "artifactPath": "apps/game/smoke/glassmatrix-20260906090307199-82638-97dc02107523.json",
+            "provenance": "The unique run artifact is authority; the fixed-name report is a mutable current pointer only."
+          },
+          "scope": "targeted-diagnostic",
+          "certifying": false,
+          "summary": {
+            "viewportCount": 1,
+            "findingCount": 0,
+            "instrumentFailureCount": 0,
+            "counts": {}
+          },
+          "durationMs": 14243,
+          "viewportTimings": [
+            {
+              "label": "large-phone",
+              "durationMs": 11176
+            }
+          ]
+        }
+      ],
+      "finding": {
+        "metric": "phone dock height (default text)",
+        "actual": 93.6875,
+        "expected": 92,
+        "delta": 1.6875
+      },
+      "cause": "Compendium natural Inter text width54.338px exceeds54px content box and wraps final m; the two-line label drives45.6875px row.",
+      "correction": "Phone-only padding-inline0 gives56px content without changing font,58px chip,64px pitch or44px target. Native before/after/exact restoration proves92px baseline and original93.6875px red. Review scope labels92px as default Inter content baseline, not a fixed v1 law; assertion and threshold unchanged.",
+      "diagnosis": {
+        "file": "UI_U1_DOCK_LABEL_DIAGNOSIS_20260906.json.gz",
+        "sha256": "72a58726e1d3af9d44fca81543b1254e26ca9aaeb6de8c3f724e6bc052ca751b",
+        "deliberateExitCode": 1
+      },
+      "remainingChecks": "Fresh signed successor sequence and three-view visual review pending."
     }
   ]
 }

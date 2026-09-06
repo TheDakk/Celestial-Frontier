@@ -1,0 +1,375 @@
+{
+  "schema": "cf-u1-final-evidence/v1",
+  "source": "db777b106a84e3c05486c0bb56ea46f2fe6d0af4",
+  "scope": "Static/Slice/two phone canaries PASS; normal review RED at default dock height; checkpoint incomplete; no U2 or integrated audiovisual approval.",
+  "results": {
+    "source": "db777b106a84e3c05486c0bb56ea46f2fe6d0af4",
+    "rootMainAbsent": true,
+    "checks": [
+      {
+        "name": "install",
+        "command": [
+          "npm",
+          "ci",
+          "--prefer-offline",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "startedAt": "2026-09-06T08:55:31.077934+00:00",
+        "endedAt": "2026-09-06T08:55:33.370112+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "startedAt": "2026-09-06T08:55:33.370691+00:00",
+        "endedAt": "2026-09-06T08:55:36.429512+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "artunused",
+        "command": [
+          "npm",
+          "run",
+          "artunused"
+        ],
+        "startedAt": "2026-09-06T08:55:36.430071+00:00",
+        "endedAt": "2026-09-06T08:55:37.718864+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "vitest",
+        "command": [
+          "npx",
+          "vitest",
+          "run"
+        ],
+        "startedAt": "2026-09-06T08:55:37.719255+00:00",
+        "endedAt": "2026-09-06T08:56:21.888322+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "glass-selftest",
+        "command": [
+          "node",
+          "tools/glassmatrix.mjs",
+          "--selftest"
+        ],
+        "startedAt": "2026-09-06T08:56:21.888933+00:00",
+        "endedAt": "2026-09-06T08:56:23.735106+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "slice",
+        "command": [
+          "node",
+          "tools/smokereport.mjs",
+          "--profile=develop"
+        ],
+        "startedAt": "2026-09-06T08:56:23.735560+00:00",
+        "endedAt": "2026-09-06T09:02:49.093897+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "small-phone",
+        "command": [
+          "node",
+          "tools/glassmatrix.mjs",
+          "--viewport=small-phone"
+        ],
+        "startedAt": "2026-09-06T09:02:49.094656+00:00",
+        "endedAt": "2026-09-06T09:03:05.424291+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "large-phone",
+        "command": [
+          "node",
+          "tools/glassmatrix.mjs",
+          "--viewport=large-phone"
+        ],
+        "startedAt": "2026-09-06T09:03:05.424872+00:00",
+        "endedAt": "2026-09-06T09:03:21.462663+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "normal-build",
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ],
+        "startedAt": "2026-09-06T09:03:21.463260+00:00",
+        "endedAt": "2026-09-06T09:03:23.586395+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "ui-review",
+        "command": [
+          "node",
+          "tools/ui-shell-review.mjs",
+          "/private/tmp/cf-u1-checkpoint-db777b1/port/v2/apps/game/dist",
+          "/private/tmp/cf-u1-checks-db777b1/review"
+        ],
+        "startedAt": "2026-09-06T09:03:23.586803+00:00",
+        "endedAt": "2026-09-06T09:03:27.541202+00:00",
+        "exitCode": 1
+      }
+    ]
+  },
+  "slice": {
+    "runId": "20260906085625526-82209-453fabe83ec1",
+    "durationMs": 383535
+  },
+  "glass": [
+    {
+      "run": {
+        "id": "20260906090250806-82514-679166b32a10",
+        "artifactPath": "apps/game/smoke/glassmatrix-20260906090250806-82514-679166b32a10.json",
+        "provenance": "The unique run artifact is authority; the fixed-name report is a mutable current pointer only."
+      },
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "durationMs": 14601,
+      "viewportTimings": [
+        {
+          "label": "small-phone",
+          "durationMs": 11366
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "20260906090307199-82638-97dc02107523",
+        "artifactPath": "apps/game/smoke/glassmatrix-20260906090307199-82638-97dc02107523.json",
+        "provenance": "The unique run artifact is authority; the fixed-name report is a mutable current pointer only."
+      },
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "durationMs": 14243,
+      "viewportTimings": [
+        {
+          "label": "large-phone",
+          "durationMs": 11176
+        }
+      ]
+    }
+  ],
+  "review": {
+    "status": "FAIL",
+    "imageCount": 1,
+    "rows": [
+      {
+        "name": "phone",
+        "pass": false
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "file": "install.log.gz",
+      "bytes": 178,
+      "sha256": "55d839bb353a982076ae477da0687bb5e410e0336640a4a8e1e8cfe33942ba3c",
+      "originalBytes": 332,
+      "originalSha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de"
+    },
+    {
+      "file": "typecheck.log.gz",
+      "bytes": 99,
+      "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
+      "originalBytes": 134,
+      "originalSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "file": "artunused.log.gz",
+      "bytes": 70,
+      "sha256": "876709bbe6c507f5d7e821ad1dfbda92aa8c5cced4bfc03ea9924afec72a21c2",
+      "originalBytes": 58,
+      "originalSha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "file": "vitest.log.gz",
+      "bytes": 2043,
+      "sha256": "0ee6a698f06856a1a78445993a27e6c5c3e80a6407b135ceac77121c605c96a2",
+      "originalBytes": 5555,
+      "originalSha256": "d1f4688f88452af6714a9f419a8403f7c5919c4ebf4b98a94ba2a8532a2c1ff8"
+    },
+    {
+      "file": "glass-selftest.log.gz",
+      "bytes": 557,
+      "sha256": "0934004f4289bdc8411b08aad1f719dd3c0dc680ec7b0bc815187393b563f0c0",
+      "originalBytes": 909,
+      "originalSha256": "c8f8ecabf4fa8c386cf0a6474708e6644549228bbf468849c97d5bfaca6ce067"
+    },
+    {
+      "file": "slice.log.gz",
+      "bytes": 1506,
+      "sha256": "acee9ad95850966c9e572cb1ff92cc802ee3767948529b11ce5e93703d3c5a53",
+      "originalBytes": 2508,
+      "originalSha256": "b7fadff706b78e63b0ed4406e72fa855109417347db5c59eb635b3d86932734a"
+    },
+    {
+      "file": "small-phone.log.gz",
+      "bytes": 3047,
+      "sha256": "b1e364bd9e544e3d4d49f9da215fc7aa01a0028b467830f7595d767d78b87d3f",
+      "originalBytes": 12495,
+      "originalSha256": "5dc63d03b255cea6eabc248afbdcab3bec1c059c405da243dbf4540ee2f40542"
+    },
+    {
+      "file": "large-phone.log.gz",
+      "bytes": 3056,
+      "sha256": "31a98c785420bc9757410c8f0a288681f84a1d69b520c64de3a5fed1f10af8e8",
+      "originalBytes": 12510,
+      "originalSha256": "178b6848fe1304c5c659b8a14d924818aa35b21adf6955e9ed7f2f2e45267a6c"
+    },
+    {
+      "file": "normal-build.log.gz",
+      "bytes": 1876,
+      "sha256": "beaf775f5274bd33b02aec4c11e64cd796c4a3a111170bb8c6a2a5f899bd5fdf",
+      "originalBytes": 5281,
+      "originalSha256": "1e8ea857f8cb6e9c6dc8a994a834bbf909e72995b8ed343015399ec4aeeebe7a"
+    },
+    {
+      "file": "ui-review.log.gz",
+      "bytes": 401,
+      "sha256": "3eaf64d5ba7ce0c61ae1c6478292d3e9d96301124bd04d37aacc818ffcb24aaf",
+      "originalBytes": 619,
+      "originalSha256": "8669d4a36f25cb215479ef7a74936971b1d0fe647633248bf412916cbcdc0a90"
+    },
+    {
+      "file": "results.json.gz",
+      "bytes": 625,
+      "sha256": "9e081915b4166b18a2e0e015ceaba14c748705d68f06b39688b4f32168759442",
+      "originalBytes": 2845,
+      "originalSha256": "2f4b08931c9cbaa1e687ef32116eed0872460e18c8ac82cefb28f65bde282a8a"
+    },
+    {
+      "file": "slice-smoke-20260906085625526-82209-453fabe83ec1.json.gz",
+      "bytes": 1966,
+      "sha256": "e6968f8d82074d9ce5e7a6e3c5b9db9b330a4e97a7d7cb60581bacc2646f56ae",
+      "originalBytes": 6126,
+      "originalSha256": "c57eb54cd16f93a61d263f4c7c0463e452361a4e71b4e17280e96c2a4aab6f2e"
+    },
+    {
+      "file": "slice-smoke-20260906085625526-82209-453fabe83ec1.log.gz",
+      "bytes": 3915,
+      "sha256": "9ff776d05a089524ca8d25ff69b0fb0a39dd8645af70de131a391bf67172e153",
+      "originalBytes": 8881,
+      "originalSha256": "4e7cdc0283158432b0012a32f4207a0a9c94488dd72118679e4b96cd65586363"
+    },
+    {
+      "file": "slice-20260906085625526-82209-453fabe83ec1-codex.png",
+      "bytes": 620437,
+      "sha256": "236d998d17aad742da5084b106d81d764f3a82e81759f20ef517a1942c615481",
+      "originalBytes": 620437,
+      "originalSha256": "236d998d17aad742da5084b106d81d764f3a82e81759f20ef517a1942c615481"
+    },
+    {
+      "file": "slice-20260906085625526-82209-453fabe83ec1-earth.png",
+      "bytes": 606629,
+      "sha256": "571e00c3438c85364a8ed716f5ca43f837d4c7a611401b42fb11e188318a1042",
+      "originalBytes": 606629,
+      "originalSha256": "571e00c3438c85364a8ed716f5ca43f837d4c7a611401b42fb11e188318a1042"
+    },
+    {
+      "file": "slice-20260906085625526-82209-453fabe83ec1-galaxy.png",
+      "bytes": 579180,
+      "sha256": "7ac20ef6e2dc9360022b64e81c2485153ba2d84f82fd44dc8addfe2b4109c7a7",
+      "originalBytes": 579180,
+      "originalSha256": "7ac20ef6e2dc9360022b64e81c2485153ba2d84f82fd44dc8addfe2b4109c7a7"
+    },
+    {
+      "file": "slice-20260906085625526-82209-453fabe83ec1-guide.png",
+      "bytes": 308775,
+      "sha256": "5365bba4521f06e095ba91e020ad6b7930a9d70fab959ca6f1d6f1023c6a291d",
+      "originalBytes": 308775,
+      "originalSha256": "5365bba4521f06e095ba91e020ad6b7930a9d70fab959ca6f1d6f1023c6a291d"
+    },
+    {
+      "file": "slice-20260906085625526-82209-453fabe83ec1-phone.png",
+      "bytes": 805496,
+      "sha256": "aebeabd97d1611cd50c4706ed15d76bf2b01c7b83c572544d71d227cade9027d",
+      "originalBytes": 805496,
+      "originalSha256": "aebeabd97d1611cd50c4706ed15d76bf2b01c7b83c572544d71d227cade9027d"
+    },
+    {
+      "file": "slice-20260906085625526-82209-453fabe83ec1-settings.png",
+      "bytes": 288572,
+      "sha256": "14371f10e8e4cd3abe8dc8ed19d23143b7a44309e4cc4c96d1394b827158135d",
+      "originalBytes": 288572,
+      "originalSha256": "14371f10e8e4cd3abe8dc8ed19d23143b7a44309e4cc4c96d1394b827158135d"
+    },
+    {
+      "file": "slice-20260906085625526-82209-453fabe83ec1-sol.png",
+      "bytes": 220865,
+      "sha256": "3a231a7e1d37e1400dc19ef0764370b0d244e6eac5ee11fdc593461297b641c9",
+      "originalBytes": 220865,
+      "originalSha256": "3a231a7e1d37e1400dc19ef0764370b0d244e6eac5ee11fdc593461297b641c9"
+    },
+    {
+      "file": "slice-20260906085625526-82209-453fabe83ec1-solmark.png",
+      "bytes": 380218,
+      "sha256": "5ce7f85c1bd3532c39f36a7e61c794d3cbd76b6ab1b39d6a2f5ece1dd10b4f7b",
+      "originalBytes": 380218,
+      "originalSha256": "5ce7f85c1bd3532c39f36a7e61c794d3cbd76b6ab1b39d6a2f5ece1dd10b4f7b"
+    },
+    {
+      "file": "slice-20260906085625526-82209-453fabe83ec1-training.png",
+      "bytes": 469024,
+      "sha256": "8782b017f0927979a53b5f11feeb55a87be9dbc8fa1ff476d072b9ae2d9e64fa",
+      "originalBytes": 469024,
+      "originalSha256": "8782b017f0927979a53b5f11feeb55a87be9dbc8fa1ff476d072b9ae2d9e64fa"
+    },
+    {
+      "file": "slice-20260906085625526-82209-453fabe83ec1-universe.png",
+      "bytes": 365125,
+      "sha256": "430ab12e728f164415ed456345105b97254f699cd3b6d96899cdf2ef13746f59",
+      "originalBytes": 365125,
+      "originalSha256": "430ab12e728f164415ed456345105b97254f699cd3b6d96899cdf2ef13746f59"
+    },
+    {
+      "file": "glassmatrix-20260906090250806-82514-679166b32a10.json.gz",
+      "bytes": 11788,
+      "sha256": "5491e6aa396c0bac4b39457bfc9c1cb01ddc835aa215535c4c51f1af8b895b56",
+      "originalBytes": 101351,
+      "originalSha256": "2fb831d9ac435e3ad5de1e915e86ef9d36d29e9cd415daa73ce9b4f2a105e662"
+    },
+    {
+      "file": "glassmatrix-20260906090307199-82638-97dc02107523.json.gz",
+      "bytes": 12562,
+      "sha256": "fbee286bef7ab0165fb5a59289a383058d7185a2d0c3dcd180cebe9741abbf5e",
+      "originalBytes": 105526,
+      "originalSha256": "d4ce386374d945a274de71099fbefa518a1c903e7be28ffae3b8d9cbb925157e"
+    },
+    {
+      "file": "review.json.gz",
+      "bytes": 6923,
+      "sha256": "fe9305840f6cc8edf76677abaced1b3157c1ef48f2a307f0befe4b366561114a",
+      "originalBytes": 30494,
+      "originalSha256": "11b830aed1998af004fce97642e33dcf75e083d9a52b53516c37440d91382545"
+    },
+    {
+      "file": "u1-main-phone.png",
+      "bytes": 170704,
+      "sha256": "49ecdb5bbc1ca19078a48e9dca960aea7b270b9fd6e93c1ae047e77216c73fdc",
+      "originalBytes": 170704,
+      "originalSha256": "49ecdb5bbc1ca19078a48e9dca960aea7b270b9fd6e93c1ae047e77216c73fdc"
+    }
+  ]
+}

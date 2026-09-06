@@ -21,6 +21,15 @@ their IDs and actions in a separate contextual rail. Selection adds gold without
 `--topbar-h` measures rendered content; `--row1-h` measures the Search bottom, at least40px.
 There is no sealed fixed shelf-height number: font and text-size choices may increase it.
 
+Phone boards use `padding-inline:0`, leaving 56px of label space inside the unchanged 58px
+face and borders. Default Inter's Compendium label measures 54.338px: it fits on one line
+without shrinking the font. The default dock is therefore 92px tall (44px board row + 4px gap
++ 44px utility row). This is the default Inter content baseline, not a fixed height for all
+Settings text preferences; the board row retains `minmax(44px,auto)` and grows for larger text.
+The native control restores the former 1px horizontal padding, reproduces the 54px content
+width, wrapped label and 93.6875px dock, then restores the exact styles. Chip widths, 64px
+pitch, vertical padding and text sizes are unchanged.
+
 Desktop/tablet begins at701px. Nick chose the FINAL LAYOUT bottom-right utility cluster;
 Prime remains centered above the scene and left/right boards use rails. Utilities use
 44px pitch (2px above the legacy diagram); rails preserve the earned8px empty root-owned gap

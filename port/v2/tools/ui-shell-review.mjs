@@ -109,7 +109,7 @@ function metricDeltas(state) {
     add('phone shelf height', r.topbar.height, 88, 'U1 default content height; v1 has no fixed shelf-height law');
     add('phone dock bottom', v.height - r.dock.bottom - safeBottom, 12);
     add('phone dock width', r.dock.width, 320);
-    add('phone dock height (default text)', r.dock.height, 92);
+    add('phone dock height (default text)', r.dock.height, 92, 'U1 default Inter content baseline; larger text may grow');
     add('phone hint bottom', v.height - r.hintpill.bottom - safeBottom, 124);
     add('phone caption bottom', v.height - r.ctxbar.bottom - safeBottom, 164);
     const boards = state.dock.slice(0, 5), utilities = state.dock.slice(5);
