@@ -304,6 +304,41 @@
       "gzipSha256": "b6bf82efae88b882450312973331b935e78c618c68d91ca96970aca9abec0a3c",
       "focusedVerification": "Share settlement contract31testsPASS",
       "remainingChecks": "Glass selftest and every browser stage not run after red."
+    },
+    {
+      "source": "b3aadd951a9992774e4b674eac918fedfca17765",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "fresh typecheck, artunused, full Vitest and Glass selftest PASS",
+      "runId": "20260906071618933-68483-43e248accf91",
+      "durationMs": 349407,
+      "failures": [
+        "U1 RAIL DUPLICATES CONTROL: showing one copy was not rejected or exact restoration failed: {\"id\":\"railinventory\",\"shown\":[{\"id\":\"railinventory\",\"exists\":true,\"parentId\":\"railrgt\",\"display\":\"flex\",\"rectCount\":1,\"width\":128.296875,\"height\":44,\"painted\":true},{\"id\":\"railrecords\",\"exists\":true,\"parentId\":\"railrgt\",\"display\":\"none\",\"rectCount\":0,\"width\":0,\"height\":0,\"painted\":false}],\"restored\":[{\"id\":\"railinventory\",\"exists\":true,\"parentId\":\"railrgt\",\"display\":\"none\",\"rectCount\":0,\"width\":0,\"height\":0,\"painted\":false},{\"id\":\"railrecords\",\"exists\":true,\"parentId\":\"railrgt\",\"display\":\"none\",\"rectCount\":0,\"width\":0,\"height\":0,\"painted\":false}],\"priorStyle\":{\"present\":false,\"value\":null},\"restoredStyle\":{\"present\":true,\"value\":\"\"},\"styleRestored\":false}"
+      ],
+      "diagnosis": "Only rail-duplicate exact attribute restoration is red. The new carriers prove absent style became present empty. Share passive checkpoint and subsequent wave-off checks passed. Synthetic Edge152 control reproduces remove-only and clear-CSSOM-then-remove behavior; set-empty-then-remove restores all three exact prior states.",
+      "correction": "Reset the style attribute to empty before removing it, then reinstate any original present value. Exact presence/value and painted show/reject/restore assertions remain.",
+      "carriers": [
+        {
+          "file": "UI_U1_SLICE_RED_b3aadd9_20260906.log.gz",
+          "sha256": "ad83b42170f3c0fe10f977ac708445bb27d90e69e092adf222d17d100ff2c869",
+          "uncompressedSha256": "f5ae17785b2f69ba5eb3604f6ab37fa48035868cb7a02c2e5c561295840dabf0"
+        },
+        {
+          "file": "UI_U1_SLICE_RED_b3aadd9_20260906.json.gz",
+          "sha256": "fabc8f0ae621ea0919ee8c82f368d11ecf6548964db9a01877471a3392731a8b",
+          "uncompressedSha256": "21797d5dfe728d2b754c87887b2a00231f5b1985b268babce6bc1046bba0a78d"
+        }
+      ],
+      "nativeControl": {
+        "file": "UI_U1_NATIVE_STYLE_DIAGNOSIS_20260906.json.gz",
+        "sha256": "29d6e12fb463f77819e19151f1c28a8e102336078a58b9329203386166b6db45",
+        "uncompressedSha256": "1c92397cc4d7a1591cbec7a0ef97d1ca03ca46decdff7e3d4ea6bcc48e2ba16c",
+        "cases": 9,
+        "correctedCasesPassed": 3,
+        "deliberateOldStrategyFailures": 2,
+        "focusedTestsPassed": 9
+      },
+      "remainingChecks": "Both phone canaries and normal visual review not run after red."
     }
   ]
 }

@@ -28566,7 +28566,7 @@ try {
       const element=document.getElementById(${JSON.stringify(id)}),
         priorStyle={present:element.hasAttribute('style'),value:element.getAttribute('style')};let shown;
       try{element.style.setProperty('display','flex','important');shown=${collisionRailCopiesExpression};}
-      finally{element.removeAttribute('style');if(priorStyle.present)element.setAttribute('style',priorStyle.value);}
+      finally{element.setAttribute('style','');element.removeAttribute('style');if(priorStyle.present)element.setAttribute('style',priorStyle.value);}
       const restored=${collisionRailCopiesExpression},
         restoredStyle={present:element.hasAttribute('style'),value:element.getAttribute('style')};
       return {id:${JSON.stringify(id)},shown,restored,priorStyle,restoredStyle,
