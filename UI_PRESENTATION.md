@@ -121,13 +121,25 @@ U2 sheet/stack work and U3 panel reskins/icon study remain pending. Resolve the 
 Training/Settings order against the earned Settings-above-Training law before implementing U2.
 No integrated-pilot approval or Phase2 work is implied.
 
-Before U2, the next bounded technical step is named-expression/settlement diagnosis of the
-retained phone portrait-restoration timeout. It includes the portable Escape-key helper correction
-already supported by the scoped keyboard proof and one phone-only normal-game diagnostic. Preserve
-the original native predecessors, the 15000ms transport deadline, font readiness → two animation
-frames and debugger auto-resume timing. Results are PENDING in
-`audits/UI_U1_UAT_RESTORATION_20260906.md`. Both older blockers remain OPEN; no U2–U4, Phase2,
-full chain or hosted authority follows from UAT acceptance.
+The phone-only restoration diagnostic PASS is bound to signed source
+`381ddf59858bd863640703e83d2d98beeedf59fa`; product `053ef439774520577071f0ca50887337dd938755`
+is unchanged. It preserved the original 23 native pointer actions and three trusted Escape
+presses/six key edges, the 15000ms transport deadline, font readiness → two animation frames
+and debugger auto-resume timing. All 30 default metrics passed and 33 injected geometry faults
+were rejected. The trace
+retains 286 named Runtime evaluations, 146 source-catalog entries and 33 frame boundaries.
+Restoration evaluation 283 (fonts plus two animation frames) settled in 29.28ms; evaluation 284
+(geometry) settled in 15.27ms. Ordered receipt 33 confirms the restored 390×844 state. Fifteen
+selftests and root validate passed; two PNGs were retained with zero runtime/evaluation errors
+or key overflow. Evidence: `audits/UI_U1_UAT_RESTORATION_20260906.md` and
+`audits/UI_U1_UAT_RESTORATION_381ddf5_20260906/manifest.json`.
+
+The current restoration path completed. Both older failures remain historical OPEN blockers:
+the old pending expression/cause remains unknown and nonrecurrence is not repair. U1 remains
+accepted for UAT without a device-UAT completion claim. This bounded diagnostic batch ends;
+next is remaining local U1 checkpoint validation before U2, without another restoration retry or
+presentation refinement. No full three-view normal review, Slice, Glass, full chain or hosted
+run was performed; U2–U4 and Phase2 remain unstarted.
 
 U1 diagnostic update (2026-09-06): the normal-review tool adds viewport/resize facts and
 session-owned, auto-resuming trail-writer stacks. That diagnostic changed no product layout.

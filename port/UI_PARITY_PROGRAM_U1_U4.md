@@ -10,13 +10,15 @@ Nick accepted the current U1 layout for UAT at product
 below. This accepts the layout for testing; it does not claim completed device UAT or close any
 technical gate. The integrated audiovisual pilot remains separately unapproved.
 
-Before U2, the next technical step is a bounded named-expression/settlement diagnosis of the
-retained phone portrait-restoration timeout, a portable Escape-key helper correction matching
-the prior scoped keyboard proof, and one phone-only normal-game diagnostic. Preserve original
-native predecessors, the 15000ms transport deadline, font readiness → two animation frames and
-debugger auto-resume timing. Current results are PENDING in
-`../audits/UI_U1_UAT_RESTORATION_20260906.md`. Both the unattributed navigation blocker and the
-portrait-restoration blocker remain OPEN. No U2–U4, Phase2, full-chain or hosted authority.
+The bounded phone-only restoration diagnostic passed at signed source
+`381ddf59858bd863640703e83d2d98beeedf59fa` with accepted product source unchanged. Original native
+predecessors, 15000ms transport, font readiness → two animation frames and debugger auto-resume
+timing remain intact. Named font/frame and geometry evaluations plus ordered receipt 33 establish
+current 390×844 restoration completion; `../audits/UI_U1_UAT_RESTORATION_20260906.md` owns evidence.
+Both older blockers remain historical OPEN because their old cause is unknown and nonrecurrence
+is not repair. This bounded batch ends. Next is remaining local U1 checkpoint validation before
+U2, without another restoration retry or implementation/refinement. No full three-view review,
+Slice, Glass, full-chain or hosted run; no U2–U4 or Phase2 work. No device-UAT completion is claimed.
 
 ### Previous Survey/Charters amendment (preserved verbatim)
 

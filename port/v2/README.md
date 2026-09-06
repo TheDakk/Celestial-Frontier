@@ -34,12 +34,15 @@ The accepted brief and amendments are in
 `../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved; no U2–U4, Phase2 or
 hosted action is authorized.
 
-The next technical step before U2 is a bounded named-expression/settlement diagnosis of the
-retained phone portrait-restoration timeout, the portable Escape helper correction matching prior
-scoped keyboard proof, and one phone-only normal-game diagnostic. Preserve original native
-predecessors, 15000ms transport, font readiness → two animation frames and debugger auto-resume
-timing. Results PENDING in `../../audits/UI_U1_UAT_RESTORATION_20260906.md`; both older blockers
-remain OPEN. This adds no U2–U4, Phase2, full-chain or hosted authority.
+The phone-only restoration diagnostic PASS at signed source
+`381ddf59858bd863640703e83d2d98beeedf59fa` leaves accepted product source unchanged. It preserves
+the original native predecessors, 15000ms transport, fonts → two animation frames and debugger
+auto-resume timing. Named evaluations 283/284 and ordered receipt 33 establish current 390×844
+restoration completion. `../../audits/UI_U1_UAT_RESTORATION_20260906.md` owns the result and two PNGs.
+Both old blockers remain historical OPEN: the old pending expression/cause is unknown and
+nonrecurrence is not repair. This bounded batch ends. Remaining local U1 checkpoint validation
+precedes U2; no further restoration retry or implementation/refinement, full three-view review,
+Slice, Glass, full-chain or hosted run. U1 stays accepted for UAT without completed device UAT.
 
 U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options before use).
 It owns an isolated headless browser and creates three golden comparison sheets plus numeric
@@ -53,7 +56,7 @@ Debugger stacks perturb timing and cannot close the retained navigation blocker 
 See `../../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md` for the retained navigation evidence
 and its limits. This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2;
 no CI/profile lane was changed. `ROADMAP.md` and
-`../../audits/UI_U1_UAT_RESTORATION_20260906.md` own the current pending diagnostic;
+`../../audits/UI_U1_UAT_RESTORATION_20260906.md` own the completed scoped phone diagnostic;
 `../../audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns accepted-layout source/results.
 `../../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` retains the prior six-board scoped evidence.
 `../../audits/UI_U1_COMPACT_CONTROLS_20260906.md` retains the prior portrait-restoration stop.

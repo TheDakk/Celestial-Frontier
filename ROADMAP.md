@@ -25,7 +25,7 @@ is11 commits ahead locally, no tracked edits before this batch; ambient .DS_Stor
 SSH origin git@github.com:TheDakk/Celestial-Frontier.git, account TheDakk, read/fetch passed in the
 same uninterrupted session; origin/develop c1791e2 remains an ancestor. No other worktree edited.
 
-### Acceptance and current bounded work
+### Acceptance and completed diagnostic
 
 Nick: “I will accept this for UAT. Let's begin the next steps”. U1 layout is accepted FOR UAT at
 product053ef439774520577071f0ca50887337dd938755 and records b08c952. Device UAT and technical gates
@@ -34,8 +34,8 @@ Charters opener, five phone scene buttons above four smaller utilities; wide Sur
 Compendium. Full current metrics and scoped six-view evidence remain in UI_PRESENTATION.md and
 audits/UI_U1_SURVEY_CHARTERS_20260906.md. No product change in the current diagnostic.
 
-Next technical gate: make the retained phone restoration timeout precisely observable, then run
-one phone-only normal-game diagnostic on new committed source. New ui-review-evaluation.mjs
+Completed technical step: the retained phone restoration boundary is now precisely observable,
+and one phone-only normal-game diagnostic passed on381ddf59858bd863640703e83d2d98beeedf59fa. New ui-review-evaluation.mjs
 records exact named expressions and durable ready/dispatch/answer/error phases, preserving the
 first failure through cleanup. Browser timestamps identify fonts-ready and both animation frames
 inside the original single promise. Distinct portrait metrics/font-frame/geometry labels and an
@@ -46,8 +46,16 @@ and original phone sequence remain unchanged. CLI --phone-restoration-only ends 
 restoration/trace; no comparison sheets, tablet/desktop, Slice/Glass or full chain.
 
 Preparation:15 final browser-free controls PASS (including missing-final-trace rejection after peer review); root validate/fingerprint PASS. Retained in
-audits/UI_U1_UAT_RESTORATION_PREP_20260906/manifest.json. Browser observation NOT RUN yet.
-Current audit: audits/UI_U1_UAT_RESTORATION_20260906.md. Signed candidate/result identities pending.
+audits/UI_U1_UAT_RESTORATION_PREP_20260906/manifest.json. Normal build and phone-only observation
+PASS:23 trusted pointer actions,3 Escape presses/6 edges,30 metrics/33 geometry controls,286 named
+evaluations and33 frame boundaries. Restoration evaluation283 answered in29.28ms, geometry284
+in15.27ms; invocation33 independently retains fonts-wait → fonts-ready → frame1 → frame2 →
+settled at390×844. No runtime/evaluation/debugger errors or overflow. Two PNGs retained; main phone
+inspected. Current audit: audits/UI_U1_UAT_RESTORATION_20260906.md. Evidence manifest
+audits/UI_U1_UAT_RESTORATION_381ddf5_20260906/manifest.json, SHA256
+6ff8252023944bd18476122bd5974fe126b72a123b20327c23d92874954dea14; six carriers/decompressed hashes and independent
+pointer/key/evaluation/frame replay verified. Tested source381ddf5 is not the records successor.
+The signed final records successor carrying this handoff is13 commits ahead locally; no push.
 No changes to app code, release81 bullets, producer7a67c0db4dc3ad4f3f3caf3a48ad15e61ad2e2d77facc3339975420900b77a51,
 measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12, numeric ceilings,
 versions, packages, workflow policy or protected art. Both older blockers remain OPEN.
@@ -59,11 +67,14 @@ Cosmos/Milky Way3930ms before Notifications. Unattributed/OPEN;95c9a1f nonrecurr
 c57aaaebc656f2e2d15705601fe1a2a73cf15f1f: Runtime.evaluate timeout after23 native phone inputs and
 landscape Settings Close while restoring390×844. Pending expression unknown. Last viewport facts
 were at page11714.7/11714.8ms, responsive cleanup at26755.5ms; all4 debugger pauses resumed and no
-lasting hang was established. New instrumentation cannot retroactively identify that expression.
+lasting hang was established. The current path passed, but new instrumentation cannot retroactively identify that old expression
+or close either old cause by nonrecurrence. Journal/phase/debugger observation perturbs timing.
 Immutable evidence: audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md and
 audits/UI_U1_COMPACT_CONTROLS_20260906.md. No delay, deadline increase, navigation guard or retry.
 
-Codex: finish this one diagnostic, retain exact result, then identify the next bounded correction.
+Codex: this bounded diagnostic is complete. Next is remaining local U1 checkpoint validation on
+clean committed source per README/program; do not repeat this isolated diagnostic. Fresh resume:
+audits/UI_U1_UAT_RESTORATION_RESUME_20260906.md. Full three-view review and Slice/Glass were not run.
 Claude: Nick need not open Claude now; preserve anthropic/mac and unmerged173c806; no copying,
 merge or duplicate battery. Future integration openai/mac → develop needs separate exact hosted
 authority. No U2–U4, Phase2, integrated-pilot or hosted work. U2's pasted stack order still needs

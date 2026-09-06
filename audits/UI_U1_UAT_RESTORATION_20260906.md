@@ -1,7 +1,7 @@
 # U1 UAT acceptance and phone-restoration diagnosis — 2026-09-06
 
-Status: U1 layout ACCEPTED FOR UAT by Nick; diagnostic implementation and browser-free controls
-complete, committed-source phone observation PENDING. This is not completed device UAT, a full
+Status: U1 layout ACCEPTED FOR UAT by Nick; diagnostic implementation, 15 final controls, root
+validation and one committed-source phone restoration observation PASS. This is not completed device UAT, a full
 U1 certificate or authorization for U2–U4, Phase2, the integrated pilot or hosted actions.
 
 Nick: “I will accept this for UAT. Let's begin the next steps”. The accepted product is
@@ -56,6 +56,40 @@ Evidence: UI_U1_UAT_RESTORATION_PREP_20260906/manifest.json. Full app tests are 
 this instrument-only batch; the accepted product's earlier scoped and static records remain bound
 to their original sources. No new release/producer/measurement pin is needed.
 
+## Terminal result — scoped phone restoration PASS
+
+Signed tested source: 381ddf59858bd863640703e83d2d98beeedf59fa. Product remains
+053ef439774520577071f0ca50887337dd938755; the instrument/acceptance commit changes no app, budget,
+workflow or protected asset. Normal build and the one phone-only run PASS, 2026-09-06
+19:15:19.255–19:15:28.251 UTC. No retry or downstream battery followed.
+
+The original phone predecessor completed: 23 trusted pointer actions, three trusted Escape
+presses/six edges, 30 default geometry metrics, 33 geometry controls, native panel/focus journeys,
+same-task Settings replay, larger text, 844×390 Settings and restoration to 390×844. Two PNGs
+were retained and the main phone image inspected. There were zero runtime/evaluation/debugger
+errors or trace overflows. All 286 evaluations answered; the catalog retains 146 exact sources.
+All 33 observed font/frame boundaries settled. The specifically named restoration is:
+
+- Evaluation283, phone.portrait-restore.fonts-two-frames: answered in29.28ms after dispatch.
+- Evaluation284, phone.portrait-restore.shell-geometry: answered in15.27ms after dispatch.
+- Browser invocation33: fonts-wait at7237.60ms, fonts-ready7239.20ms, frame1 at7240.10ms,
+  frame2/settled7250.10ms. Final viewport390×844; exact phase order independently accepted.
+
+Independent replay rechecked every pointer/key delivery, complete global keyboard sequence,
+evaluation status/source hashes, unique IDs, named restoration and frame sequence, and PNG hashes.
+Manifest: UI_U1_UAT_RESTORATION_381ddf5_20260906/manifest.json
+SHA256 6ff8252023944bd18476122bd5974fe126b72a123b20327c23d92874954dea14; all six carriers and decompressed hashes verified.
+The current restoration path is verified. The old timeout's pending expression and old navigation
+cause remain unknown/OPEN. Journal/phase/debugger instrumentation changes timing, so nonrecurrence
+is not a causal repair claim. U1 remains accepted for UAT; device UAT and full technical admission
+are separate and incomplete.
+
+Next bounded technical work is the remaining local U1 checkpoint validation on a clean committed
+source, per port/v2/README.md and the accepted program. This completed diagnostic is not repeated
+as another isolated loop. Full three-view normal review, Slice/Glass and hosted checks were not run
+here. U2's stack-order reconciliation and sheet implementation follow the technical U1 boundary.
+No U2–U4, Phase2, integrated pilot or hosted action started.
+
 ## Retained blockers and scope
 
 Navigation source08cd97d79b67cab4b8d19bfd493293e997dec528: native Skip785ms → Escape Cosmos1313ms →
@@ -72,8 +106,9 @@ Startup receipt2026-09-06T16:28:25.659Z reused; Node26.7.0 executable identity r
 previously deferred for active jobs. No other worktree. Budget UNFROZEN/PUBLIC per last check,
 private fallback3000, no exact hosted authority or hosted cost. No push, PR, labels, merge or deploy.
 
-Codex: complete this one diagnostic and retain its terminal evidence, then select the next bounded
-correction from the result. Claude: Nick need not open Claude now; preserve anthropic/mac and
+Codex: this bounded diagnostic and evidence retention are complete. Next is remaining local U1
+checkpoint validation; do not repeat the isolated restoration loop. Fresh resume instructions are
+in UI_U1_UAT_RESTORATION_RESUME_20260906.md. Claude: Nick need not open Claude now; preserve anthropic/mac and
 unmerged173c806, no product copying/merge/duplicate battery. Future integration is openai/mac →
 develop under separate exact hosted authority. U2 must still reconcile the pasted Training/Settings
 order with the earned stack law, after the technical U1 boundary is ready.

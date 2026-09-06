@@ -50,11 +50,15 @@ navigation blocker and the normal-review portrait-restoration blocker remain OPE
 did not run full normal review, Slice, phone Glass or the full chain. U2–U4 and Phase2 remain unstarted;
 integrated-pilot approval remains open.
 
-Before U2, a named-expression/settlement diagnosis and a portable Escape-key correction matching
-prior scoped keyboard proof precede one phone-only normal-game diagnostic. Original native predecessors, 15000ms transport,
-font readiness → two animation frames and debugger auto-resume timing remain intact. Results
-PENDING: `audits/UI_U1_UAT_RESTORATION_20260906.md`. Both retained blockers remain OPEN;
-no U2–U4, Phase2, full-chain or hosted authority is added.
+The phone-only restoration diagnostic passed at signed source
+`381ddf59858bd863640703e83d2d98beeedf59fa`, with product `053ef439…` unchanged. Named evaluation
+283 (fonts/two animation frames), evaluation 284 (geometry) and ordered receipt 33 prove current
+390×844 restoration completion. Original native predecessors, 15000ms transport and debugger
+auto-resume timing remain intact. `audits/UI_U1_UAT_RESTORATION_20260906.md` owns exact evidence.
+Both older blockers remain historical OPEN: their old cause is unknown and nonrecurrence is not
+repair. The bounded batch ends with U1 accepted for UAT, not completed device UAT. Remaining local
+U1 checkpoint validation precedes U2; no further restoration retry or implementation/refinement.
+No full three-view review, Slice, Glass, full-chain or hosted run; U2–U4 and Phase2 stay unstarted.
 
 U1 review instrumentation (2026-09-06) now records public viewport/resize facts and
 auto-resumed trail-writer stacks between intentional controls. It does not read camera/travel
