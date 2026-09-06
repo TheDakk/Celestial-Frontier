@@ -2,6 +2,15 @@
 
 Nick supplied this brief on 2026-09-05. The quoted program below is retained verbatim.
 
+### Authorized bounded rail correction — 2026-09-06
+
+Nick authorized completion of the remaining local U1 checks without another generic confirmation.
+The Slice correction covers full boundary ancestry/exact restoration and the four-copy hidden-rail
+oracle. Thirty focused tests passed; static validation, clean-candidate Slice and both phone canaries
+are pending. [The correction audit](../audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) owns current
+status. Product layout and earlier RED evidence are unchanged. Physical UAT and both older causes
+remain open; U2–U4, Phase2 and hosted work are unstarted. Prior amendments remain verbatim.
+
 ### Local U1 checkpoint — 2026-09-06, stopped at Slice
 
 Nick's “Proceed” selected the remaining local U1 checks. Source

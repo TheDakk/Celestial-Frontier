@@ -56,11 +56,14 @@ The phone-only restoration diagnostic passed at signed source
 390×844 restoration completion. Original native predecessors, 15000ms transport and debugger
 auto-resume timing remain intact. `audits/UI_U1_UAT_RESTORATION_20260906.md` owns exact evidence.
 Both older blockers remain historical OPEN: their old cause is unknown and nonrecurrence is not
-repair. Current checkpoint `ce8912864fabbe5624651e76c06b94f95b734f39` leaves product unchanged:
-static and normal three-view review passed; Slice stopped on the nested-boundary fault and right-rail
-hidden-copy inventory assumptions. Both phone canaries were not run. [The checkpoint audit](audits/UI_U1_LOCAL_CHECKPOINT_20260906.md)
-retains this noncertifying RED, its ambient-file source qualification and the next bounded instrument
-correction. Physical UAT stays open. No unchanged-source retry, U2–U4, Phase2 or hosted work followed.
+repair. Current changes are instrument-only: Slice records the complete boundary ancestry,
+isolates left-rail protection before native dismissal without either boundary, and restores exact
+attribute presence/bytes. `port/v2/tools/ui-rail-copy-check.mjs` owns the compact left dock/contents
+and four-copy right-rail oracle. [The correction audit](audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md)
+records 30 focused tests passed; static validation, clean-candidate Slice and both phone canaries
+remain pending. Product and historical ce89128 noncertifying RED are unchanged; preserve the
+original ambient file while preparing the clean test snapshot. Physical UAT remains open, and
+U2–U4, Phase2 and hosted work are unstarted.
 
 U1 review instrumentation (2026-09-06) now records public viewport/resize facts and
 auto-resumed trail-writer stacks between intentional controls. It does not read camera/travel

@@ -32,12 +32,12 @@ predecessors, 15000ms transport, fonts → two animation frames and debugger tim
 font/frame evaluation 283, geometry evaluation 284 and ordered receipt 33 establish current
 390×844 completion; `../audits/UI_U1_UAT_RESTORATION_20260906.md` owns evidence. Both older
 blockers stay historical OPEN: the old cause is unknown and nonrecurrence is not repair.
-Current checkpoint `ce8912864fabbe5624651e76c06b94f95b734f39` passed static validation and the
-normal three-view review, then stopped on two Slice instrument findings. Both phone canaries were
-not run. [The checkpoint audit](../audits/UI_U1_LOCAL_CHECKPOINT_20260906.md) owns the noncertifying
-RED and the next bounded correction: nested boundary ownership, the four right-rail hidden copies
-and a clean test snapshot. Accepted layout is unchanged; physical UAT remains open. No U2–U4,
-Phase2 or hosted work followed.
+The bounded Slice correction is implemented: complete boundary ancestry and exact restoration,
+plus `ui-rail-copy-check.mjs` for the four hidden right copies. [The correction audit](../audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md)
+records 30 focused tests passed; static validation, clean-candidate Slice and both phone canaries
+remain pending. Nick authorized finishing these U1 checks before U2. Accepted product and the
+historical ce89128 RED remain unchanged; physical UAT and both older causes stay open. U2–U4,
+Phase2 and hosted work are unstarted.
 Exact source and local evidence are recorded in the live ROADMAP handoff.
 The instrument-only navigation successor is scoped in
 `../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`; the retained navigation blocker stays OPEN.

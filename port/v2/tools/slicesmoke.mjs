@@ -20,6 +20,7 @@ import { fileURLToPath } from 'node:url';
 import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { readU1PhoneShell } from './ui-shell-review.mjs';
+import { assessCompactRailCopies } from './ui-rail-copy-check.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import { assertBuiltGameMode } from './build-mode.mjs';
 import {
@@ -6793,33 +6794,74 @@ try {
     }
     await closeDesktopPanel();
   }
-  const railBoundaryRemovalControl = async ({ railId, gapCheck, buttonId, panelId, label }) => {
-    if (!await openDesktopRailPanel(buttonId, panelId, `${label} CONTROL`)) return;
-    const prior = await evalIn(`document.getElementById(${JSON.stringify(railId)})?.getAttribute('data-panel-boundary')??null`);
-    let before = null, receipt = null;
-    try {
-      await evalIn(`document.getElementById(${JSON.stringify(railId)})?.removeAttribute('data-panel-boundary')`);
-      before = await evalIn(gapCheck);
+  const railBoundaryRemovalControl = async ({ railId, gapCheck, buttonId, panelId, label, ancestorIds = [] }) => {
+    const ids = [railId, ...ancestorIds];
+    const attributes = `(()=>{const ids=${JSON.stringify(ids)},rail=document.getElementById(ids[0]),chain=[];
+      for(let element=rail;element;element=element.parentElement)
+        if(element.hasAttribute('data-panel-boundary'))chain.push(element.id);
+      return {chain,rows:ids.map(id=>{const element=document.getElementById(id);return {id,exists:!!element,
+        present:element?.hasAttribute('data-panel-boundary')===true,value:element?.getAttribute('data-panel-boundary')??null};})};})()`;
+    const evidence = { railId, ancestorIds, panelId, prior: null, stages: [], restored: null };
+    let firstFailure = null, restorationFailure = null, mutationStarted = false;
+    const demand = (ok, reason) => { if (!ok) throw new Error(reason); };
+    const pressGap = async (name, expectedPanel, expectedChain) => {
+      const stage = { name, before: null, boundary: null, receipt: null, after: null };
+      evidence.stages.push(stage);
+      const before = stage.before = await evalIn(gapCheck);
+      stage.boundary = await evalIn(attributes);
+      demand(before?.geometry && before.panelOpen === panelId && before.cardOpen === false,
+        name + ': measured gap/panel predecessor missing');
+      demand(JSON.stringify(stage.boundary.chain) === JSON.stringify(expectedChain),
+        name + ': effective boundary chain mismatch');
+      const initialPoint = evidence.stages[0].before.point;
+      demand(Math.abs(initialPoint.x - before.point.x) <= .5 && Math.abs(initialPoint.y - before.point.y) <= .5,
+        name + ': measured gap moved');
       await armDesktopPointerReceipt();
       await clickDesktopPoint(before.point);
-      receipt = await takeDesktopPointerReceipt();
-    } finally {
-      await evalIn(`(()=>{ const rail=document.getElementById(${JSON.stringify(railId)}),prior=${JSON.stringify(prior)};
-        if(prior===null)rail?.removeAttribute('data-panel-boundary');else rail?.setAttribute('data-panel-boundary',prior);})()`);
+      const receipt = stage.receipt = await takeDesktopPointerReceipt();
+      stage.after = await evalIn('window.__CF_SLICE__.api.state().panelOpen');
+      demand(!(receipt?.targetId !== railId || receipt?.trusted !== true || receipt?.pointerType !== 'mouse')
+        && Math.abs(receipt.x - before.point.x) <= .5 && Math.abs(receipt.y - before.point.y) <= .5,
+      name + ': exact trusted gap delivery missing');
+      demand(stage.after === expectedPanel, name + ': panel dismissal/preservation outcome mismatch');
+    };
+    try {
+      demand(await openDesktopRailPanel(buttonId, panelId, label + ' CONTROL'), 'panel setup failed');
+      evidence.prior = await evalIn(attributes);
+      demand(evidence.prior.rows.every(row => row.exists && row.present && typeof row.value === 'string')
+        && JSON.stringify(evidence.prior.chain) === JSON.stringify(ids), 'boundary ownership setup mismatch');
+      mutationStarted = true;
+      await evalIn(`(()=>{for(const id of ${JSON.stringify(ancestorIds)})
+        document.getElementById(id)?.removeAttribute('data-panel-boundary');})()`);
+      await pressGap('rail-only-protection', panelId, [railId]);
+      await evalIn(`document.getElementById(${JSON.stringify(railId)})?.removeAttribute('data-panel-boundary')`);
+      await pressGap('unprotected-dismissal', null, []);
+    } catch (error) { firstFailure = String(error); }
+    finally {
+      if (mutationStarted) {
+        try {
+          await evalIn(`(()=>{for(const prior of ${JSON.stringify(evidence.prior.rows)}){
+            const element=document.getElementById(prior.id);if(!element)throw new Error('missing boundary restoration owner '+prior.id);
+            if(prior.present)element.setAttribute('data-panel-boundary',prior.value);
+            else element.removeAttribute('data-panel-boundary');}})()`);
+          evidence.restored = await evalIn(attributes);
+          demand(JSON.stringify(evidence.restored) === JSON.stringify(evidence.prior), 'exact boundary restoration failed');
+          if (await evalIn('window.__CF_SLICE__.api.state().panelOpen') !== panelId)
+            demand(await openDesktopRailPanel(buttonId, panelId, label + ' RESTORED'), 'restored panel setup failed');
+          await pressGap('restored-protection', panelId, ids);
+          await closeDesktopPanel();
+        } catch (error) { restorationFailure = String(error); }
+      }
     }
-    const after = await evalIn(`window.__CF_SLICE__.api.state().panelOpen`);
-    if (prior === null || !before?.geometry || before.boundary || before.panelOpen !== panelId
-      || receipt?.targetId !== railId || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after !== null) {
-      fails.push(`${label} CONTROL FAILED — removing only the rail boundary did not recreate dismissal: `
-        + JSON.stringify({ prior, before, receipt, after }));
-    }
-    if (after !== null) await closeDesktopPanel();
+    console.log(label + ' CONTROL RECEIPT: ' + JSON.stringify({ ...evidence, firstFailure, restorationFailure }));
+    if (firstFailure || restorationFailure) failSliceWithoutCascade(label + ' CONTROL FAILED — '
+      + JSON.stringify({ ...evidence, firstFailure, restorationFailure }));
   };
   await railBoundaryRemovalControl({
     railId: 'railrgt', gapCheck: rightGap, buttonId: 'railcodex', panelId: 'codex', label: 'RIGHT RAIL BOUNDARY',
   });
   await railBoundaryRemovalControl({
-    railId: 'raillft', gapCheck: leftGap, buttonId: 'dockrecords', panelId: 'rec', label: 'LEFT RAIL BOUNDARY',
+    railId: 'raillft', gapCheck: leftGap, buttonId: 'dockrecords', panelId: 'rec', label: 'LEFT RAIL BOUNDARY', ancestorIds: ['dock'],
   });
 
   /* Delegated document listeners are public event boundaries: a synthetic
@@ -28716,12 +28758,7 @@ try {
     (value) => typeof value === 'string' && value.startsWith('CF1-'),
   );
 
-  const collisionRailCopiesHidden = (rows) => Array.isArray(rows) && rows.length === 2
-    && rows.every((row, index) => row?.id === ['raillft', 'railrgt'][index]
-      && row.exists === true && (index === 0 ? row.parentId === 'dock' && row.display === 'contents'
-        && row.copyIds?.join(',') === 'railcodex' : row.parentTag === 'BODY' && row.display === 'none'
-        && row.copyIds?.join(',') === 'railatlas,railshipyard')
-      && row.copiesHidden === true && row.rectCount === 0 && row.width === 0 && row.height === 0 && row.painted === false);
+  const collisionRailCopiesHidden = (rows) => assessCompactRailCopies(rows).pass;
   const collisionRailCopiesExpression = `(()=>['raillft','railrgt'].map((id)=>{
     const element=document.getElementById(id),style=element?getComputedStyle(element):null,
       rect=element?.getBoundingClientRect(),copies=element?[...element.querySelectorAll('button')].filter(button=>button.id!=='docksurvey'):[];

@@ -1,5 +1,13 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A BOUNDARY FAULT MUST REMOVE EFFECTIVE ANCESTOR PROTECTION** (U1, 2026-09-06).
+> A rail nested inside a protected dock still retains dismissal protection after its own marker
+> is removed. Prove the rail's own protection with its ancestor marker removed, then remove both
+> and prove native dismissal at the same measured gap. Read the effective ancestor chain before
+> each press; restore exact attribute presence/bytes and re-prove protection. Preserve the first
+> failure through restoration and causal-stop on either failure. Hidden-copy inventories include
+> intentionally retained hidden controls; assert their actual identities and invisibility.
+
 > **NAME THE PENDING EXPRESSION BEFORE DISPATCH; CLEANUP DOES NOT REPLACE A FAILURE**
 > (U1, 2026-09-06). A Runtime.evaluate timeout names a protocol method, not the awaited
 > expression. Persist its invocation ID, exact expression/hash, debugger-ready and dispatch

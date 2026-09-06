@@ -17,84 +17,60 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-06 · U1 STATIC/THREE-VIEW PASS / SLICE INSTRUMENT RED
+## SESSION HANDOFF — 2026-09-06 · U1 RAIL INSTRUMENT CORRECTED / FINAL LOCAL CHECKS PENDING
 
 OpenAI/Codex on macOS | openai/mac | /Users/nick/Projects/celestial-frontier-openai-mac |
-origin/openai/mac. Exact physical root, branch and upstream verified. Tested source
-ce8912864fabbe5624651e76c06b94f95b734f39 was 13 commits ahead locally. The signed records successor
-carrying this handoff is 14 ahead; docs/evidence only, no push. Tracked tree was clean throughout
-validation; root main.js absent; ambient .DS_Store untouched. SSH origin
- git@github.com:TheDakk/Celestial-Frontier.git/account TheDakk/read+fetch PASS reused in this
-uninterrupted session; origin/develop c1791e2 remains an ancestor. No other worktree edited.
+origin/openai/mac. Entry f499fda35a94798fa791e21c6143406b4971d4ab was14 commits ahead locally.
+The signed correction carrying this handoff is15 ahead; no push. Physical root/branch/upstream
+verified; root main.js absent and ambient .DS_Store preserved. Same-session SSH
+ git@github.com:TheDakk/Celestial-Frontier.git/account TheDakk/read+fetchPASS and origin/develop
+c1791e2 ancestor receipts reused. No other agent worktree edited.
 
-### Acceptance and completed local checks
+Nick explicitly authorized finishing this bounded local U1 gate without further generic
+confirmation. U1 product053ef439774520577071f0ca50887337dd938755 remains accepted FOR UAT and
+unchanged. U2 is the next development phase after the gate; no U2–U4, Phase2 or hosted execution.
 
-Nick accepted the Survey/Charters layout FOR UAT, then said “Proceed” with the remaining U1 checks.
-Accepted product053ef439774520577071f0ca50887337dd938755 stays unchanged: Survey replaces both
-Charters shortcuts; Objective is the sole native Charters opener; five phone scene buttons above
-four smaller utilities; wide Survey above Compendium; fitted wide pills and upper-right Search.
-UI_PRESENTATION.md owns current geometry. Physical-device UAT and full technical admission remain open.
+Both ce89128 Slice findings are corrected in the instrument. The left gap control proves the
+rail alone protects with the dock marker removed, then proves dismissal without either marker,
+restores exact attributes and re-proves native protection. Each phase reads the effective chain,
+geometry, receipt and panel result; failures survive cleanup and causal-stop. The right rail
+control remains independent. ui-rail-copy-check.mjs requires all four intentionally hidden
+right controls plus exact compact owners/zero geometry; existing live reveal/restore faults stay.
+Focused20 boundary/wiring and10 atlas tests PASS; the atlas fixture-parser-only9/10RED is retained
+alongside its changed-parserPASS. Root validate/fingerprintPASS. Preparation evidence is in
+ audits/UI_U1_RAIL_CONTROL_PREP_20260906/manifest.json.
 
-One hermetic tracked-input develop profile PASS at ce89128: 311 test files, 3322 passed/1 skipped,
-all root/game/worker TypeScript programs and static art/route/spec gates. Glass selftest ran once
-inside its Vitest owner; no duplicate artunused/typecheck/selftest battery. Normal distributable
-build and full phone390×844/desktop1440×900/tablet834×1112 U1 review PASS, nine PNGs. Independent
-replay verified 761 evaluations/210 exact expressions, 75 frame receipts, 146 metrics, 131 geometry
-controls, 27 launcher round trips, 63 trusted MOUSE inputs and 3 Escape presses/6 keyboard edges.
-Do not call these touch receipts. Three main images inspected; zero reported runtime/debugger errors.
-Portrait receipt33 and named evaluations283/284 passed; old causes remain unknown.
+Next in this batch: clean committed local test artifact, one develop static profile, Slice develop
+with exact named verification, then small-phone/large-phone Edge collectors once in order. Do not
+repeat the ce89128 normal three-view review: app/review source is unchanged and that PASS remains
+source-bound. Do not retry any unchanged red source. Retain new failures before a bounded repair;
+no automatic expansion into unrelated work. Full Compendium/Glass/Recovery are outside this U1 gate.
 
-### Retained Slice stop and next bounded correction
+Use a local --no-local clone of the signed candidate solely as a retained test artifact. Keep
+editing/committing in this owned project. Install locked dependencies, require empty full Git
+status and absent main.js, and preserve the original .DS_Store. No source-classifier exception.
+Keep one toolchain lock through clone/static/browser stages and first-attempt macOS escalation.
+Edge phone reports self-verify locally; do not apply the Chrome-only hosted verifier to Edge.
+Current audit: audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md.
 
-Slice develop ran ONCE as local-u1-ce8912864fab-20260906-slice, 342352ms, exit1, two findings:
-1. Left-gap negative control removed raillft's boundary but its ancestor dock remained protected.
-   panels.ts uses closest('[data-panel-boundary]'), so the trusted gap press kept Records open.
-2. The right-rail hidden-copy oracle expected railatlas/railshipyard; actual hidden zero-sized
-   controls also include railinventory/railrecords. The left parent dock/display:contents is
-   already accepted; that was not the mismatch. No painted duplicate/product defect established.
+Historical ce8912864fabbe5624651e76c06b94f95b734f39 SliceRED remains noncertifying/dirty-diagnostic
+because ambient .DS_Store was included; tracked source and begin/end receipts were unchanged.
+Manifest audits/UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/manifest.json SHA256
+6d2645e2342cd32fc1f0a95234ee76ef53ad342d16035a3dba1702c85ed97e13 retains28carriers and19PNGs.
+Static311files/3322tests/1skip and normal3viewPASS remain that source's completed checks; neither
+phone canary ran there. Isolated381ddf5 restorationPASS stays separate and complete.
 
-Stop retained. No correction/retry, success named Slice verifier or phone canary followed.
-Compendium/full Glass were outside this specific local U1 checkpoint, not removed from integration.
-Slice correctly classified source dirty-diagnostic/certifying:false because full status includes
-ambient .DS_Store. Its exact begin/end hashes agree; tracked source was unchanged. The clean static
-export cannot relabel that separate receipt. No certification or physical UAT completion claimed.
+Both older causes remain unknown/OPEN:08cd97d native Skip→EscapeCosmos→unsolicitedMilkyWay and
+c57aaaeb phone portrait Runtime.evaluate timeout (old pending expression unknown; responsive
+cleanup/all4debugger pauses resumed). Current passes do not prove causal repair. Prior audits
+UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md/UI_U1_COMPACT_CONTROLS_20260906.md remain immutable.
+App/release81bullets/producer7a67c0db…/measurement4a93479b…/ceilings/packages/workflows/assets unchanged.
+Physical-device UAT stays open. U2 Training/Settings stacking must reconcile the earned
+Settings-above-Training law before implementation.
 
-Next: correct only those two Slice instrument assumptions on a new committed source. Prove the
-left rail's own protection with the ancestor boundary temporarily removed, then native dismissal
-without either boundary, restoring exact attributes and the protected gap. Preserve right-rail
-controls. Synchronize the four-copy right inventory while keeping zero-rect/hidden/owner and both
-live show-root faults. Use focused deliberate controls before one changed-source attempt. Prepare
-a fully clean owned test snapshot, preserving the original ambient file and strict source classifier.
-Do not retry ce89128 or repeat the complete normal review solely because Slice was red.
-
-Current audit: audits/UI_U1_LOCAL_CHECKPOINT_20260906.md. Fresh resume:
-audits/UI_U1_LOCAL_CHECKPOINT_RESUME_20260906.md. Manifest
- audits/UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/manifest.json SHA256
-6d2645e2342cd32fc1f0a95234ee76ef53ad342d16035a3dba1702c85ed97e13; all 28 carriers/decompressed hashes
-verified, including 9 normal-review and 10 Slice PNGs, exact red report/raw log and source receipt.
-Root records validation also PASS: zero boot/render errors and the unchanged50-probe fingerprint;
-its separate compressed log/hash is indexed in the current audit.
-Prior scoped restoration source381ddf59858bd863640703e83d2d98beeedf59fa stays separate and complete.
-Its audit/manifest and all accepted six-view/touch evidence remain intact. No app, release81 bullets,
-producer7a67c0db4dc3ad4f3f3caf3a48ad15e61ad2e2d77facc3339975420900b77a51,
-measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12, ceilings,
-versions, packages, workflow policy or protected assets changed.
-
-### Preserve older causes and other boundaries
-
-08cd97d79b67cab4b8d19bfd493293e997dec528: native Skip785ms → EscapeCosmos1313ms → unsolicited
-MilkyWay3930ms before Notifications. Cause remains unattributed/OPEN. c57aaaebc656f2e2d15705601fe1a2a73cf15f1f:
-Runtime.evaluate timeout after23 inputs/landscape Settings Close during390×844 restoration; old
-pending expression unknown. Cleanup responsive, all4 debugger pauses resumed; no lasting hang
-established. Current passes do not establish causal repair; instrumentation changes timing.
-Immutable older evidence: audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md and
- audits/UI_U1_COMPACT_CONTROLS_20260906.md. No added delay, deadline increase or navigation guard.
-
-Codex: next bounded Slice correction above. Claude: Nick need not open Claude now; preserve
-anthropic/mac/unmerged173c806; no copying, merge or duplicate battery. Future openai/mac → develop
-integration needs separate exact hosted authority. No PR is needed now. No U2–U4, Phase2,
-integrated-pilot or hosted work; develop/main/live unchanged. U2's pasted Training/Settings order
-still needs reconciliation with the Settings-above-Training law after the U1 technical boundary.
+Codex: finish the defined local gate. Claude: no need to open Claude now; preserve anthropic/mac
+and unmerged173c806, no copying/merge/duplicate battery. Future openai/mac→develop integration
+needs separate exact hosted authority. No PR now; develop/main/live unchanged.
 
 Audiovisual B–D candidates exist; preservation CLOSED, integrated pilot UNAPPROVED and eight
 anatomical animations INCOMPLETE with protected static fallbacks. Matched listening, physical

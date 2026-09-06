@@ -513,7 +513,9 @@ describe('Slice Arc 2 Inventory causal interaction chain', () => {
     expect(gapOwner).toContain("receipt?.targetId !== 'railrgt' || receipt?.trusted !== true");
     expect(gapOwner).toContain("receipt?.targetId !== railId || receipt?.trusted !== true");
     expect(gapOwner).toContain("?.removeAttribute('data-panel-boundary')");
-    expect(gapOwner).toContain("rail?.setAttribute('data-panel-boundary',prior)");
+    expect(gapOwner).toContain("element.setAttribute('data-panel-boundary',prior.value)");
+    expect(gapOwner).toContain("ancestorIds: ['dock']");
+    expect(gapOwner).toContain("pressGap('restored-protection', panelId, ids)");
     expect(gapOwner).toContain('await clickDesktopPoint(before.point)');
     expect(source).toContain("const rightGap = railGapProbe('railrgt', 'railatlas', 'railshipyard')");
     expect(source).toContain("const leftGap = railGapProbe('raillft', 'docksurvey', 'railcodex')");

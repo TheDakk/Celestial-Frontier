@@ -1,5 +1,14 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## Bounded U1 rail-instrument correction — 2026-09-06
+
+Nick authorized finishing the remaining U1 checks. Slice now tests complete boundary ancestry
+and exact restoration; `ui-rail-copy-check.mjs` retains all four hidden right copies. Thirty
+focused tests passed; static validation, clean-candidate Slice and both phone canaries are pending.
+[The correction audit](../../audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) owns this batch.
+Product and prior RED evidence remain unchanged; physical UAT and both older causes remain open.
+No U2–U4, Phase2 or hosted work. Previous ledger entries remain verbatim.
+
 ## Local U1 validation stopped at Slice — 2026-09-06
 
 On unchanged `ce8912864fabbe5624651e76c06b94f95b734f39`, the tracked-input develop profile and

@@ -1,0 +1,33 @@
+{
+  "schema": "cf-u1-rail-control-preparation/v1",
+  "files": [
+    {
+      "path": "cf-u1-rail-copy-focused-20260906.log.gz",
+      "bytes": 689,
+      "sha256": "6d33a95d2370d9f6f72d8701c23f0cfa337eadc4d5a18143963f023108edda43",
+      "payloadBytes": 1406,
+      "payloadSha256": "6dc2699ac6c11f60594630733f0a17365d2627c96dd19eed97a1a945c02403d2"
+    },
+    {
+      "path": "cf-u1-rail-copy-focused-parser-fix-20260906.log.gz",
+      "bytes": 194,
+      "sha256": "b4918f838468663de2c118253604bb26b258f2b6a69cb264f0b250e16b83aeab",
+      "payloadBytes": 243,
+      "payloadSha256": "06f9a8b1c2d1a68abc87e0b463a908f09ab6ced524e02bd9739512fed66f6d16"
+    },
+    {
+      "path": "cf-u1-rail-boundary-focused-20260906.log.gz",
+      "bytes": 193,
+      "sha256": "0e6bceec05b5ef5f8ce54caf059ac34b3ebe1b868d1b2213b17b2d848ea21094",
+      "payloadBytes": 237,
+      "payloadSha256": "1436e0354b6c8593f64315e1530113b4aa3c58275cb38288c9ad862a885e6dff"
+    },
+    {
+      "path": "cf-u1-rail-correction-root-validate-20260906.log.gz",
+      "bytes": 708,
+      "sha256": "e4e8b9c652f3488e877f4b2d8e230ead9cd547181fcb61655fa14c48d7fd6201",
+      "payloadBytes": 1093,
+      "payloadSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    }
+  ]
+}

@@ -40,14 +40,16 @@ the original native predecessors, 15000ms transport, fonts → two animation fra
 auto-resume timing. Named evaluations 283/284 and ordered receipt 33 establish current 390×844
 restoration completion. `../../audits/UI_U1_UAT_RESTORATION_20260906.md` owns the result and two PNGs.
 Both old blockers remain historical OPEN: the old pending expression/cause is unknown and
-nonrecurrence is not repair. Current checkpoint `ce8912864fabbe5624651e76c06b94f95b734f39`
-passed the hermetic develop profile (311 files, 3322 tests passed, 1 skipped) and normal three-view
-review (nine PNGs). Slice stopped with two instrument findings: an ancestor dock still protected
-the left-gap fault, and the right-rail hidden-copy inventory expected two controls instead of four.
-Both phone canaries were not run. [The checkpoint audit](../../audits/UI_U1_LOCAL_CHECKPOINT_20260906.md)
-owns evidence and the next bounded instrument correction. Slice correctly recorded dirty-diagnostic
-source due to the unchanged ambient .DS_Store; tracked source stayed clean. Physical UAT and both
-historical causes remain open. No unchanged-source retry, U2–U4, Phase2 or hosted work followed.
+nonrecurrence is not repair. The historical ce89128 checkpoint passed static/three-view review,
+then retained a noncertifying Slice RED; [its audit](../../audits/UI_U1_LOCAL_CHECKPOINT_20260906.md)
+preserves both findings and the ambient `.DS_Store` dirty-diagnostic qualification.
+The current instrument correction records full boundary ancestry, proves protected/unprotected
+native gap outcomes with exact restoration, and uses `ui-rail-copy-check.mjs` for the four hidden
+right copies. [The correction audit](../../audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) records
+30 focused tests passed (20 boundary/wiring, 10 Atlas); static validation, clean-candidate Slice and
+both phone canaries are pending. Nick authorized completing these remaining U1 checks. Preserve
+the original ambient file, product layout and old evidence. Physical UAT and both older unknown
+causes remain open; U2–U4, Phase2 and hosted work have not started.
 
 U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options before use).
 It owns an isolated headless browser and creates three golden comparison sheets plus numeric
