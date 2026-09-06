@@ -16,8 +16,8 @@ import { createReviewTrailDebugger } from './ui-review-trail-debugger.mjs';
  * independent oracle intentionally names the approved metrics, not product
  * token values. It is the adapted phone inventory outcome, not a U4 gate. */
 export function readU1PhoneShell(training = false) {
-  const errors = [], expected = ['dockcharters', 'dockcodex', 'primechip', 'dockshipyard', 'dockatlas',
-    'dockrecords', 'docknotifications', 'dockguide', 'docksets', 'docksurvey'];
+  const errors = [], expected = ['dockcharters', 'dockcodex', 'primechip', 'dockshipyard', 'dockatlas', 'docksurvey',
+    'dockrecords', 'docknotifications', 'dockguide', 'docksets'];
   const roots = ['dock', 'topbar', 'sceneactions'].map(id => document.getElementById(id)).filter(Boolean);
   const prior = roots.map(node => ({ node, pointer: node.style.getPropertyValue('pointer-events'),
     priority: node.style.getPropertyPriority('pointer-events'), inert: node.hasAttribute('inert') }));
@@ -36,6 +36,9 @@ export function readU1PhoneShell(training = false) {
   try {
     if (training) for (const { node } of prior) { node.style.setProperty('pointer-events', 'auto', 'important'); node.removeAttribute('inert'); }
     const dock = document.getElementById('dock'), rect = box(dock), display = dock ? getComputedStyle(dock).display : null;
+    const rootStyle=getComputedStyle(document.documentElement),safeLeft=parseFloat(rootStyle.getPropertyValue('--safe-left'))||0,
+      safeRight=parseFloat(rootStyle.getPropertyValue('--safe-right'))||0,landscapePanel=innerWidth<=900&&innerWidth>innerHeight&&document.body.classList.contains('panel-open'),
+      expectedWidth=Math.min(384,landscapePanel?(innerWidth-safeLeft-safeRight-36)/2:innerWidth-safeLeft-safeRight-20),pitch=expectedWidth/6;
     const buttons = dock ? [...dock.querySelectorAll(':scope > button, :scope > #sceneactions > button')].filter(button => box(button)?.visible) : [];
     const ids = buttons.map(button => button.id), centres = buttons.map(available), rows = [];
     if (JSON.stringify(ids) !== JSON.stringify(expected)) errors.push('dock button identity/order drifted: ' + JSON.stringify(ids));
@@ -43,8 +46,8 @@ export function readU1PhoneShell(training = false) {
       const r = box(button); let row = rows.find(candidate => Math.abs(candidate.top - r.top) < 2);
       if (!row) { row = { top: r.top, height: r.height, ids: [], centres: [] }; rows.push(row); }
       row.height = Math.max(row.height, r.height); row.ids.push(button.id); row.centres.push(r.cx);
-      const board = expected.indexOf(button.id) < 5 && expected.includes(button.id), width = board ? 60 : 44;
-      if (Math.abs(r.width - width) > 1 || r.height < 44 || (!board && Math.abs(r.height - 44) > 1))
+      const board = expected.indexOf(button.id) < 6 && expected.includes(button.id), width = board ? pitch-4 : 44;
+      if (Math.abs(r.width - width) > 1 || r.width < 44 || r.height < 44 || (!board && Math.abs(r.height - 44) > 1))
         errors.push(button.id + ' does not retain its ' + width + 'px width and 44px touch floor');
       if (!centres[index].hit) errors.push(button.id + ' is not hit-testable at its centre');
       if (!centres[index].named) errors.push(button.id + ' is unnamed');
@@ -61,11 +64,13 @@ export function readU1PhoneShell(training = false) {
       }
     }
     rows.sort((a, b) => a.top - b.top);
-    if (rows.length !== 2 || rows[0]?.ids.length !== 5 || rows[1]?.ids.length !== 5)
-      errors.push('dock is not two rows (5+5): ' + JSON.stringify(rows.map(row => row.ids.length)));
-    for (const row of rows) for (let i = 1; i < row.centres.length; i++)
-      if (Math.abs(row.centres[i] - row.centres[i - 1] - 64) > 1) errors.push('dock pitch is not 64px: ' + row.ids[i]);
-    if (display !== 'grid' || !rect || Math.abs(rect.width - 320) > 1) errors.push('phone dock is not a 320px grid');
+    if (rows.length !== 2 || rows[0]?.ids.length !== 6 || rows[1]?.ids.length !== 4)
+      errors.push('dock is not two rows (6+4): ' + JSON.stringify(rows.map(row => row.ids.length)));
+    for (const [index,row] of rows.entries()) {
+      if(JSON.stringify(row.ids)!==JSON.stringify(index===0?expected.slice(0,6):expected.slice(6)))errors.push('dock row membership drifted: '+JSON.stringify(row.ids));
+      for(let i=0;i<row.centres.length;i++)if(Math.abs(row.centres[i]-(rect.left+pitch*(i+(index===0?.5:1.5))))>1)errors.push('dock responsive slot drifted: '+row.ids[i]);
+    }
+    if (display !== 'grid' || !rect || Math.abs(rect.width - expectedWidth) > 1) errors.push('phone dock is not its safe-inset responsive grid');
     if (rows.length === 2 && (Math.abs(rows[1].top - rows[0].top - rows[0].height - 4) > 1
       || Math.abs(rect.height - rows[0].height - 48) > 1)) errors.push('phone dock row gap or measured height drifted');
     const inventoryNode = document.getElementById('dockinventory'), relocatedInventory = available(inventoryNode);
@@ -77,9 +82,10 @@ export function readU1PhoneShell(training = false) {
     if (group?.parentElement !== dock || getComputedStyle(group).display !== 'contents') errors.push('phone scene group is not owned by the dock');
     if (survey.parent !== 'sceneactions' || !survey.rect?.visible || !survey.hit || !survey.named
       || survey.rect.width < 44 || survey.rect.height < 44 || survey.rect.left < rect.left || survey.rect.right > rect.right
-      || survey.rect.top < rect.top || survey.rect.bottom > rect.bottom) errors.push('Survey is not a44px native lower-dock action');
+      || Math.abs(survey.rect.top-rect.top)>1 || Math.abs(survey.rect.width-(pitch-4))>1
+      || document.getElementById('docksurvey')?.querySelector('.utility-face')) errors.push('Survey is not a44px-floor native top-row scene action');
     if (charts.rect?.visible) errors.push('phone Charts shortcut must yield to its existing Settings control');
-    return { ok: errors.length === 0, errors, display, ids, expected, rows, rect, centres, relocatedInventory, sceneactions };
+    return { ok: errors.length === 0, errors, display, ids, expected, rows, rect, expectedWidth, pitch, centres, relocatedInventory, sceneactions };
   } finally {
     if (training) for (const { node, pointer, priority, inert } of prior) {
       if (pointer) node.style.setProperty('pointer-events', pointer, priority); else node.style.removeProperty('pointer-events');
@@ -165,15 +171,15 @@ function metricDeltas(state) {
     for (const id of ['raillft','railrgt']) add(id + ' hidden', r[id].visible ? 1 : 0, 0, 'compact phone layout', 0);
     add('phone scene group dock owner', state.sceneGroup.parentId === 'dock' && state.sceneGroup.display === 'contents' ? 1 : 0, 1, 'no separate upper scene stack', 0);
     add('phone Charts shortcut hidden', r.dockcharts.visible ? 1 : 0, 0, 'preference remains in Settings', 0);
-    add('phone Survey dock placement', r.docksurvey.visible && r.docksurvey.left >= r.dock.left && r.docksurvey.right <= r.dock.right && r.docksurvey.bottom <= r.dock.bottom && Math.abs(r.docksurvey.top-r.docksets.top)<=1 ? 1 : 0, 1, 'fifth lower-row native owner', 0);
+    add('phone Survey dock placement', r.docksurvey.visible && r.docksurvey.left >= r.dock.left && r.docksurvey.right <= r.dock.right && r.docksurvey.bottom <= r.dock.bottom && Math.abs(r.docksurvey.top-r.dock.top)<=1 ? 1 : 0, 1, 'sixth top-row native scene owner', 0);
     add('phone dock bottom', v.height - r.dock.bottom - safeBottom, 12);
-    add('phone dock width', r.dock.width, 320, 'grid envelope around production60px faces/64px centers');
+    add('phone dock width', r.dock.width, Math.min(384,v.width-safeLeft-safeRight-20), 'six responsive scene slots within safe side insets');
     add('phone dock height (default text)', r.dock.height, 92, '44px rows plus4px gap; count text may grow with preferences');
     add('phone hint bottom', v.height - r.hintpill.bottom - safeBottom, 124);
     add('phone caption bottom', v.height - r.ctxbar.bottom - safeBottom, Math.max(164,124+state.hintHeight+8));
     add('phone Search width', r.searchbox.width, Math.min(v.width * .37, v.width - safeLeft - safeRight - 30 - Math.min(176,Math.max(128,v.width*.36))));
-    for (const [group, buttons] of [['boards', state.dock.slice(0,5)],['utilities',state.dock.slice(5)]])
-      for (let i=1;i<buttons.length;i++) add(group + ' centre pitch ' + i, buttons[i].left+buttons[i].width/2-buttons[i-1].left-buttons[i-1].width/2,64);
+    for (const [group, buttons] of [['boards', state.dock.slice(0,6)],['utilities',state.dock.slice(6)]])
+      for (let i=1;i<buttons.length;i++) add(group + ' centre pitch ' + i, buttons[i].left+buttons[i].width/2-buttons[i-1].left-buttons[i-1].width/2,Math.min(384,v.width-safeLeft-safeRight-20)/6);
   } else {
     add('scene action left alignment', r.sceneactions.left - r.dockinventory.left, 0);
     add('Survey/Charts gap', r.dockcharts.top - r.docksurvey.bottom, 8);
@@ -245,7 +251,7 @@ function launcherOutcome(state) {
   const ids=state.openers.map(button=>button.id),errors=[];
   if(JSON.stringify(ids)!==JSON.stringify(expected))errors.push('visible native opener identity/order drifted: '+JSON.stringify(ids));
   for(const button of state.openers)if(!button.visible||!button.native||!button.named||!button.hit||button.width<44||button.height<44)errors.push(button.id+' is not a named native44px center-hit-testable opener');
-  const dockExpected=state.compact?[...expected,'docksurvey']:['dockrecords','docknotifications','dockguide','docksets'];
+  const dockExpected=state.compact?[...expected.slice(0,5),'docksurvey',...expected.slice(5)]:['dockrecords','docknotifications','dockguide','docksets'];
   if(JSON.stringify(state.dock.map(button=>button.id))!==JSON.stringify(dockExpected))errors.push('visible dock membership drifted');
   if(state.dockDisplay!==(state.compact?'grid':'flex'))errors.push('dock display does not match compact grid / wide utility flex layout');
   if(!state.compact&&(state.dockPointerEvents!=='auto'||!state.dockGap.owned))errors.push('wide utility dock loses native ownership of its internal gaps');
@@ -287,7 +293,7 @@ export function installNativeReviewTrace(viewport) {
   Object.defineProperty(window, '__cfU1ReviewNativeTrace', { value: trace, configurable: true });
   return snapshot();
 }
-function assessNativeReviewDelivery(proof) {
+export function assessNativeReviewDelivery(proof) {
   const expectedTypes = ['pointerdown', 'pointerup', 'click'], events = proof.events ?? [];
   const exactTypes = JSON.stringify(events.map(event => event.type)) === JSON.stringify(expectedTypes);
   const exactOwner = events.every(event => event.pressId === proof.id && event.selector === proof.selector
@@ -331,7 +337,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       'Golden raster differences reflect scene/save/browser/font differences as well as design; no pixel-equality verdict.',
       'New game uses native Skip then bounded Escape ascent to Cosmos, read from retained hidden canonical trail DOM. The trace records its visibility honestly; no visible breadcrumb or legacy import is claimed. Camera, progression and save differences remain in comparisons.',
       'Notification screenshots use only naturally available messages; this diagnostic does not certify cross-session persistence.',
-      'Phone uses production60px board faces/64px centers and an icon-only5+5 dock with Survey in the lower row and Charts available in Settings. Wide views use existing side rails, top-centerPrime and four bottom-right utilities with44px targets/8px gaps. Breakpoint701 and44px targets are explicit v2 amendments; production goldens remain human comparison data.',
+      'Phone has six scene buttons including Survey above four utility icons, with responsive widths up to60px/64px centers and Charts available in Settings. Wide views use existing side rails, top-centerPrime and four bottom-right utilities with44px targets/8px gaps. Breakpoint701 and44px targets are explicit v2 amendments; production goldens remain human comparison data.',
       'Three default-text screenshot views are supplemented by one numeric phone fs-xl probe and one844x390 Settings-open probe; these remain bounded diagnostics, not a U4 matrix.',
       'One same-task Settings/Motion Auto/Close replay temporarily widens the first writable review document to1440x900. Three per-button untrusted click receipts and the separate global trace are retained, followed by the existing font/two-frame boundary and original viewport restoration. No desktop persistence or extra trusted-native delivery is claimed.',
     ] };
@@ -592,8 +598,8 @@ export async function runUiShellReview(buildArgument, outputArgument) {
           ['phone hint bottom', '#hintpill', 'bottom', '1px'],
           ['phone caption bottom', '#ctxbar', 'bottom', '1px'],
           ['phone Search width', '#searchbox', 'width', '100px'],
-          ...state.dock.slice(1, 5).map((button, i) => ['boards centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
-          ...state.dock.slice(6).map((button, i) => ['utilities centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
+          ...state.dock.slice(1, 6).map((button, i) => ['boards centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
+          ...state.dock.slice(7).map((button, i) => ['utilities centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
         ] : [
           ['scene action left alignment', '#sceneactions', 'transform', 'translateX(10px)'],
           ['Survey/Charts gap', '#dockcharts', 'transform', 'translateY(10px)'],

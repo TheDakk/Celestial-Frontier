@@ -9,9 +9,15 @@ controls declare their native button type explicitly.
 
 `port/v2/apps/game/src/ui-presentation-tokens.ts` supplies Inter/spacing/type/color/layer
 variables; `ui-shell-style.ts` adapts verified production v1.8.9 placement to existing v2
-native controls. Phone icon-only 60px boards and 44px utility targets use 64px centers; Prime
-keeps N/9. Five board icons sit above Records/Notifications/Guide/Settings/Survey (🔭). Compact
-Charts is hidden and the existing Settings → Star charts toggle remains available. Phone Search
+native controls. Nick's explicit compact layout has six upper-row emoji board pills: Charters,
+Compendium, Prime (N/9), Shipyard, Atlas and Survey (🔭). Four lower utilities are Records
+(including Achievements), Notifications, Guide and Settings. Twelve half-columns span a dock
+capped at 384px and bounded by viewport width minus safe sides and 20px. Board pitch is dock
+width / 6 (at most 64px), board width is pitch minus 4px, and lower 44px targets/36px faces occupy
+the middle four column pairs. A panel-open short-landscape dock additionally fits the existing
+header safe column: `min(384px, (viewport width − safe left − safe right − 36px) / 2)`. Default
+dock height remains 92px; UI_PRESENTATION.md owns the supported-width geometry. Compact Charts is
+hidden and Settings → Star charts remains available. Phone Search
 aligns upper-right and retains the visible placeholder Search. Wide native left/right rails return,
 Prime is top-center and four utilities stay bottom-right; Survey/Charts remain below the left rail.
 Desktop/tablet name, Objective and text controls use bounded `width:max-content` to fit their labels.
@@ -26,12 +32,12 @@ Bottom guidance is plain text. Caption/hint geometry, compact short-landscape ex
 safety deviations from production and the honest injected floating-trail negative control.
 Native panel/Training action/focus owners remain; passive layout wrappers pass canvas input.
 `notification-history.ts` retains explicit saved Mark read on the existing notification shape
-and UI checkpoint whitelist. The compact-control correction passed static checks/build, but its
-normal review stopped INSTRUMENT RED during phone portrait restoration; visual approval is pending.
-Exact tested source, partial phone evidence and unrun stages are in
-`audits/UI_U1_COMPACT_CONTROLS_20260906.md`. Survey-only phone placement is Codex's stated default,
-not a new explicit approval for both shortcuts. The navigation blocker remains OPEN and unattributed.
-U2–U4 and Phase2 remain unstarted; integrated-pilot approval remains open.
+and UI checkpoint whitelist. The explicit Survey upper-row correction awaits scoped dock
+verification and visual approval; `audits/UI_U1_SURVEY_TOP_ROW_20260906.md` owns current results.
+Prior partial evidence stays in `audits/UI_U1_COMPACT_CONTROLS_20260906.md`. Both the unattributed
+navigation blocker and the normal-review portrait-restoration blocker remain OPEN; this correction
+does not rerun that full review or the full chain. U2–U4 and Phase2 remain unstarted;
+integrated-pilot approval remains open.
 
 U1 review instrumentation (2026-09-06) now records public viewport/resize facts and
 auto-resumed trail-writer stacks between intentional controls. It does not read camera/travel

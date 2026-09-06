@@ -2,7 +2,7 @@ import { UI_PRESENTATION_DESKTOP_MIN, UI_PRESENTATION_PHONE_MAX } from './ui-pre
 
 /** Production v1.8.9 placement adapted to v2's native owners. Nick's screenshot
  * amendments: right objective, icon-only phones, name-only Inventory, Health
- * caption, hidden trail and plain guidance. Phone Survey joins the lower dock;
+ * caption, hidden trail and plain guidance. Phone Survey joins the top dock row;
  * Search shares the upper-right edge. Wide text pills fit their labels. Touch floors remain 44px. */
 export const UI_SHELL_CSS = `
 #topbar{position:fixed;inset:0 0 auto;z-index:var(--cf-layer-shell);pointer-events:none;display:grid;grid-template-columns:var(--cf-hud-column) minmax(0,1fr);grid-template-rows:minmax(44px,auto) minmax(44px,auto);align-items:start;gap:8px 14px;padding:max(10px,var(--safe-top)) calc(var(--safe-right) + var(--cf-hud-inset)) 8px calc(var(--safe-left) + var(--cf-hud-inset));background:linear-gradient(180deg,rgba(4,4,12,.7),transparent);border:0;box-sizing:border-box}
@@ -61,7 +61,7 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   #hintpill{max-width:min(620px,calc(100vw - 480px))}
   #ctxbar{bottom:calc(var(--safe-bottom) + max(64px,18px + var(--hint-h) + 8px))}
 }
-/* Phone uses production's two rows and 64px rhythm. Short landscape keeps the
+/* Phone has six scene buttons and four utilities, up to a 64px rhythm. Short landscape keeps the
    existing compact safe-column behavior even when its width exceeds 700px. */
 @media(max-width:${UI_PRESENTATION_PHONE_MAX}px),(max-width:900px) and (orientation:landscape){
   :root{--cf-hud-inset:10px;--cf-hud-column:clamp(128px,36vw,176px)}
@@ -73,14 +73,13 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   #raillft,#railrgt{display:none}
   #sceneactions{display:contents}
   #sceneactions #dockcharts{display:none}
-  #sceneactions #docksurvey{display:flex;grid-column:9/11;grid-row:2;align-items:center;justify-content:center;gap:0;width:44px;max-width:none;height:44px;min-height:44px;padding:0;border:0;background:none}
-  #sceneactions #docksurvey .utility-face{display:flex}
+  #sceneactions #docksurvey{grid-column:11/13;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:var(--cf-touch-target);padding:6px 0 4px;border:1px solid #2a3c5e;background:rgba(10,13,26,.88);line-height:1}
   #sceneactions #docksurvey .lbl{display:none}
-  #dock{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 12px);display:grid;grid-template-columns:repeat(10,32px);grid-template-rows:minmax(44px,auto) 44px;column-gap:0;row-gap:4px;width:320px;max-width:none;justify-items:center;align-items:center}
-  #dock .dock-board{display:flex;grid-row:1;align-self:stretch;position:static;transform:none;max-width:none;width:60px;min-width:60px}
+  #dock{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 12px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:minmax(44px,auto) 44px;column-gap:0;row-gap:4px;width:min(384px,calc(100vw - var(--safe-left) - var(--safe-right) - 20px));max-width:none;justify-items:center;align-items:center}
+  #dock .dock-board,#sceneactions #docksurvey{display:flex;grid-row:1;align-self:stretch;position:static;transform:none;max-width:none;width:calc(100% - 4px);min-width:var(--cf-touch-target)}
   #dockcharters{grid-column:1/3}#dockcodex{grid-column:3/5}#primechip{grid-column:5/7}#dockshipyard{grid-column:7/9}#dockatlas{grid-column:9/11}
-  #dock .dock-utility{grid-row:2}#dockrecords{grid-column:1/3}#docknotifications{grid-column:3/5}#dockguide{grid-column:5/7}#docksets{grid-column:7/9}
-  #dock #primechip{position:static;inset:auto;transform:none;display:flex;flex-direction:column;gap:1px;width:60px;min-width:60px;max-width:none;padding:6px 0 4px}
+  #dock .dock-utility{grid-row:2}#dockrecords{grid-column:3/5}#docknotifications{grid-column:5/7}#dockguide{grid-column:7/9}#docksets{grid-column:9/11}
+  #dock #primechip{position:static;inset:auto;transform:none;display:flex;flex-direction:column;gap:1px;width:calc(100% - 4px);min-width:var(--cf-touch-target);max-width:none;padding:6px 0 4px}
   #dock .dock-board .lbl{display:none}
   #dock .prime-count{font-size:8px}
   #hintpill{bottom:calc(var(--safe-bottom) + 124px);max-width:min(620px,90vw)}
@@ -92,7 +91,7 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   body.panel-open #dockinventory{grid-column:1;grid-row:1}
   body.panel-open #searchbox{grid-column:1;grid-row:2;justify-self:stretch;width:100%;max-width:none}
   body.panel-open #hpbar{display:none}
-  body.panel-open #dock{left:auto;right:calc(var(--safe-right) + 12px);transform:none}
+  body.panel-open #dock{left:auto;right:calc(var(--safe-right) + 12px);transform:none;width:min(384px,calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2))}
 }
 @media(min-width:901px){
   #setpanel,#recpanel,#shipyardpanel,#inventorypanel,#combatpanel,#toast{right:calc(var(--safe-right) + 16px);bottom:calc(var(--safe-bottom) + var(--dock-h) + 24px)}

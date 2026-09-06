@@ -2,6 +2,39 @@
 
 Nick supplied this brief on 2026-09-05. The quoted program below is retained verbatim.
 
+### Latest phone-row correction — Nick, 2026-09-06
+
+Nick explicitly places Survey in the phone dock's upper row. That row now has six emoji board
+pills: Charters, Compendium, Prime (N/9), Shipyard, Atlas and Survey (🔭). The lower row contains
+only the four small utility controls: Records (including Achievements), Notifications, Guide
+and Settings. This supersedes Codex's prior optional Survey lower-row default. No new control,
+action or gameplay owner is added; Charts remains available through Settings on compact layouts.
+Phone Search stays upper-right with Search as its visible placeholder. Wide fitted text controls,
+wide Prime at top-center and Health geometry stay unchanged; compact Prime is third of six.
+
+Twelve half-columns span a responsive dock capped at 384px and bounded by viewport width minus
+both safe sides and 20px. Pitch is dock width / 6, capped at 64px; each upper board is pitch minus
+4px, keeping at least 44px within supported viewports (about 57.67px at 390px, 60px at 430px and
+46px at 320px, with no side safe area). The four lower 44px targets/36px faces occupy the middle
+four column pairs. Survey has the same plain emoji board pill as its upper-row peers; default
+dock height remains 92px. The existing nested `#sceneactions`/compact `display:contents` ownership remains.
+Only with a panel open in short landscape, the dock also fits the existing header safe-column
+width: `min(384px, (viewport width − safe left − safe right − 36px) / 2)`. This bounds the expanded
+dock beside Settings at 667×375; the shared dock oracle applies the same formula independently.
+
+Scoped dock verification and visual approval are pending. The bounded probe covers fresh documents
+at 320/390/430px portrait widths and 667×375 with Settings open, without portrait restoration.
+Current source/results belong to
+`../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` and ROADMAP. Both the unattributed navigation blocker
+and the portrait-restoration verification blocker remain OPEN. This bounded correction does not
+rerun the known-timeout full normal-review path or the full chain. No U2–U4, Phase2 or hosted action.
+
+### Superseded compact-control amendment (preserved verbatim)
+
+The complete amendment below retains its original wording and checkpoint status. Nick's explicit
+phone-row correction above owns current Survey placement and compact geometry; prior evidence
+remains bound to its original source. Historical headings and authority labels below are unchanged.
+
 ### Latest compact-control amendment — Nick, 2026-09-06
 
 Phone Search aligns in the upper-right corner with only **Search** as its visible placeholder.

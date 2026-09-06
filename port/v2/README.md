@@ -7,15 +7,22 @@ the production layout adapted to icon-only phone rows and wide side controls/top
 bottom-right utilities, right Objective under Search, and saved notification read state described in
 `../../UI_PRESENTATION.md`. Phone Search now aligns upper-right with the visible placeholder Search;
 wide name and text pills fit their labels with bounded `width:max-content`, preserving Health's
-meter geometry. The compact dock keeps five board icons and adds Survey (🔭) as its fifth lower-row
-utility at 64px pitch. Compact Charts is hidden; Settings → Star charts remains available. On wide
-screens Survey/Charts remain fitted text controls below the left rail. The nested `#sceneactions`
-uses compact `display:contents`, so its zero-size wrapper does not extend measured top chrome.
-No native action, gameplay or `main.ts` owner changes. Static checks/build passed; normal review
-stopped INSTRUMENT RED during phone portrait restoration. Only partial phone evidence was retained;
-tablet/desktop images, Slice and both phone Glass rows were NOT RUN. Visual approval is pending;
-the navigation blocker remains OPEN and unattributed. Survey-only compact placement is Codex's
-stated default after an optional preference question. The accepted brief and amendments are in
+meter geometry. Nick explicitly places Survey (🔭) sixth in the upper compact board row after
+Charters, Compendium, Prime, Shipyard and Atlas. Only Records (including Achievements),
+Notifications, Guide and Settings remain as small lower-row utilities. The dock uses twelve
+half-columns across at most 384px, bounded by viewport width minus safe sides and 20px. Each board
+uses one sixth of that width minus 4px; lower 44px targets/36px faces occupy the middle four pairs.
+In panel-open short landscape, dock width also fits the existing header safe-column width:
+`min(384px, (viewport width − safe left − safe right − 36px) / 2)`. Default height remains 92px.
+Compact Charts stays hidden with Settings → Star charts available;
+wide Survey/Charts remain fitted text controls below the left rail. The nested `#sceneactions`
+keeps compact `display:contents`, so its zero-size wrapper does not extend measured top chrome.
+No native action, gameplay or `main.ts` owner changes. This explicit upper-row choice supersedes
+the previous optional default. Scoped dock verification covers fresh documents at 320/390/430px
+portrait widths and 667×375 with Settings open; results and visual approval remain pending. Both the
+unattributed navigation blocker and the full normal-review portrait-restoration blocker stay OPEN;
+this correction does not rerun that known-timeout path, Slice, phone Glass or the full chain.
+The accepted brief and amendments are in
 `../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved; no U2–U4, Phase2 or
 hosted action is authorized.
 
@@ -31,7 +38,8 @@ Debugger stacks perturb timing and cannot close the retained navigation blocker 
 See `../../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md` for the retained navigation evidence
 and its limits. This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2;
 no CI/profile lane was changed. `ROADMAP.md` and
-`../../audits/UI_U1_COMPACT_CONTROLS_20260906.md` own current exact-source results;
+`../../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` own current exact-source results;
+`../../audits/UI_U1_COMPACT_CONTROLS_20260906.md` retains the prior portrait-restoration stop.
 `../../audits/UI_U1_PRODUCTION_LAYOUT_20260906.md`,
 `../../audits/UI_U1_LAUNCHER_REVISION_20260906.md` and
 `../../audits/UI_U1_CHECKPOINT_20260906.md` preserve the earlier U1 checkpoints.

@@ -161,12 +161,15 @@ describe('Arc 2 Inventory presentation', () => {
       .toEqual(['docksurvey', 'dockcharts']);
     const sceneActions = document.getElementById('sceneactions')!;
     expect(sceneActions.parentElement).toBe(document.getElementById('dock'));
-    expect(sceneActions.previousElementSibling?.id).toBe('docksets');
+    expect(sceneActions.previousElementSibling?.id).toBe('dockatlas');
+    expect(sceneActions.nextElementSibling?.id).toBe('dockrecords');
     expect(sceneActions.getAttribute('role')).toBe('group');
     expect(sceneActions.hasAttribute('data-panel-boundary')).toBe(true);
     const survey = document.getElementById('docksurvey')!;
-    expect(survey.classList.contains('dock-utility')).toBe(true);
-    expect(survey.querySelector('.utility-face > .ico')?.textContent).toBe('🔭');
+    expect(survey.classList.contains('dock-scene')).toBe(true);
+    expect(survey.classList.contains('dock-utility')).toBe(false);
+    expect(survey.querySelector('.utility-face')).toBeNull();
+    expect(survey.querySelector(':scope > .ico')?.textContent).toBe('🔭');
     expect(survey.querySelector('.lbl')?.textContent).toBe('Survey');
     expect(survey.getAttribute('aria-label')).toBe('survey card');
     expect(survey.getAttribute('aria-controls')).toBe('survey');

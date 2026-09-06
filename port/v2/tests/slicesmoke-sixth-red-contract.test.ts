@@ -384,7 +384,7 @@ describe('sixth Slice red contract repairs', () => {
     });
     const releaseRowsBefore = [...releaseDom.window.document.querySelectorAll('li')].map(row => row.textContent);
     for (const [current, stale] of [
-      ['Phones keep five icon-only boards above five compact utility icons', 'five labelled controls in one centered desktop deck'],
+      ['Phones keep six icon-only scene buttons above four compact utility icons', 'five labelled controls in one centered desktop deck'],
       ['Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge',
         'Desktop utilities stay in the old viewport corner'],
       ['Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill', 'Signature count is removed on phones'],
@@ -3446,13 +3446,13 @@ describe('sixth Slice red contract repairs', () => {
         <div id="hpbar">100/100</div><input id="searchbox"><span id="objchip">Objective</span>
         <div id="trail"><span class="seg cur">Cosmos</span></div></header>
       <div id="ctxbar">Context</div><div id="hintpill">Hint</div><nav id="dock"><button id="primechip" type="button">Prime</button>
-        <div id="sceneactions" role="group"><button id="docksurvey" class="dock-utility" type="button" aria-label="survey card">
-          <span class="utility-face" id="surveyface">🔭</span><span class="lbl" id="surveylabel">Survey</span></button>
+        <div id="sceneactions" role="group"><button id="docksurvey" class="dock-scene" type="button" aria-label="survey card">
+          <span class="ico" id="surveyicon">🔭</span><span class="lbl" id="surveylabel">Survey</span></button>
           <button id="dockcharts" type="button">Charts</button></div></nav>
       <nav id="raillft"></nav><nav id="railrgt"></nav>`, { runScripts: 'outside-only' });
     const win = dom.window as unknown as Window & typeof globalThis;
     const document = win.document;
-    Object.defineProperties(win, { innerWidth: { value: 390 }, innerHeight: { value: 844 } });
+    Object.defineProperties(win, { innerWidth: { value: 390, configurable: true }, innerHeight: { value: 844 } });
     type Box = { left: number; top: number; width: number; height: number };
     const boxes = new Map<string, Box>([
       ['topbar', { left: 0, top: 0, width: 390, height: 112 }],
@@ -3462,15 +3462,15 @@ describe('sixth Slice red contract repairs', () => {
       ['searchbox', { left: 235.7, top: 8, width: 144.3, height: 44 }],
       ['trail', { left: 0, top: 0, width: 0, height: 0 }],
       ['sceneactions', { left: 0, top: 0, width: 0, height: 0 }],
-      ['docksurvey', { left: 301, top: 788, width: 44, height: 44 }],
-      ['surveyface', { left: 305, top: 792, width: 36, height: 36 }],
+      ['docksurvey', { left: 320 + 1/3, top: 740, width: 57 + 2/3, height: 44 }],
+      ['surveyicon', { left: 342 + 1/6, top: 755, width: 14, height: 14 }],
       ['surveylabel', { left: 0, top: 0, width: 0, height: 0 }],
       ['dockcharts', { left: 0, top: 0, width: 0, height: 0 }],
       ['objchip', { left: 160.4, top: 60, width: 219.6, height: 44 }],
       ['ctxbar', { left: 100, top: 650, width: 190, height: 28 }],
       ['hintpill', { left: 130, top: 696, width: 130, height: 24 }],
-      ['dock', { left: 35, top: 740, width: 320, height: 92 }],
-      ['primechip', { left: 165, top: 740, width: 60, height: 44 }],
+      ['dock', { left: 10, top: 740, width: 370, height: 92 }],
+      ['primechip', { left: 135 + 1/3, top: 740, width: 57 + 2/3, height: 44 }],
     ]);
     for (const [id] of boxes) {
       const node = document.getElementById(id)!;
@@ -3490,7 +3490,29 @@ describe('sixth Slice red contract repairs', () => {
       return document.body;
     }) as typeof document.elementFromPoint;
     const run = (): string[] => win.eval(expression) as string[];
+    const setPhoneWidth = (width: number) => {
+      Object.defineProperty(win, 'innerWidth', { value: width, configurable: true });
+      const column = Math.max(128, Math.min(176, width * .36)), dockWidth = Math.min(384, width - 20),
+        pitch = dockWidth / 6, dockLeft = (width - dockWidth) / 2,
+        searchWidth = Math.min(width * .37, width - column - 30);
+      for (const id of ['playerchip', 'dockinventory', 'hpbar']) boxes.set(id, { ...boxes.get(id)!, width: column });
+      boxes.set('topbar', { ...boxes.get('topbar')!, width });
+      boxes.set('searchbox', { ...boxes.get('searchbox')!, left: width - 10 - searchWidth, width: searchWidth });
+      boxes.set('objchip', { ...boxes.get('objchip')!, left: column + 20, width: width - column - 30 });
+      boxes.set('dock', { ...boxes.get('dock')!, left: dockLeft, width: dockWidth });
+      boxes.set('primechip', { ...boxes.get('primechip')!, left: dockLeft + pitch * 2 + 2, width: pitch - 4 });
+      boxes.set('docksurvey', { ...boxes.get('docksurvey')!, left: dockLeft + pitch * 5 + 2, width: pitch - 4 });
+      boxes.set('surveyicon', { ...boxes.get('surveyicon')!, left: dockLeft + pitch * 5.5 - 7 });
+      for (const id of ['ctxbar', 'hintpill']) boxes.set(id, { ...boxes.get(id)!, left: (width - boxes.get(id)!.width) / 2 });
+    };
     try {
+      for (const [width, expectedEnvelope, expectedSceneWidth] of [[320, 300, 46], [390, 370, 57 + 2/3], [430, 384, 60]] as const) {
+        setPhoneWidth(width);
+        expect(run(), width + 'px responsive top-row Survey').toEqual([]);
+        expect(boxes.get('dock')!.width).toBe(expectedEnvelope);
+        expect(boxes.get('docksurvey')!.width).toBeCloseTo(expectedSceneWidth);
+      }
+      setPhoneWidth(390);
       expect(run()).toEqual([]);
       const mutations: ReadonlyArray<readonly [string, string, Partial<Box>, string]> = [
         ['objective outside viewport', 'objchip', { left: 410 }, 'objective chip'],
@@ -3499,10 +3521,13 @@ describe('sixth Slice red contract repairs', () => {
         ['HP overlaps nameplate', 'hpbar', { top: 40 }, 'HP bar'],
         ['header clips its current lower row', 'topbar', { height: 100 }, 'HP bar'],
         ['Survey outside the dock', 'docksurvey', { top: 120 }, 'phone Survey'],
-        ['Survey in the wrong lower-row slot', 'docksurvey', { left: 237 }, 'phone Survey'],
+        ['Survey in the former lower utility row', 'docksurvey', { top: 788, width: 44 }, 'phone Survey'],
+        ['Survey in the wrong top-row slot', 'docksurvey', { left: 258 + 2/3 }, 'phone Survey'],
+        ['Prime incorrectly centered between six scene buttons', 'primechip', { left: 166 + 1/6 }, 'Prime pill'],
+        ['dock retains the obsolete 320px envelope', 'dock', { left: 35, width: 320 }, 'compact dock'],
         ['Survey target below 44px height', 'docksurvey', { height: 43 }, 'phone Survey'],
         ['Survey target below 44px width', 'docksurvey', { width: 43 }, 'phone Survey'],
-        ['Survey emoji face enlarged beyond 36px', 'surveyface', { width: 44 }, 'phone Survey'],
+        ['Survey emoji detached from its scene target', 'surveyicon', { top: 788 }, 'phone Survey'],
         ['Search is undersized', 'searchbox', { height: 43 }, 'search is not'],
         ['Search drifts back toward center', 'searchbox', { left: 160.4 }, 'search is not'],
       ];
@@ -3517,6 +3542,11 @@ describe('sixth Slice red contract repairs', () => {
       const survey = document.getElementById('docksurvey')!, scene = document.getElementById('sceneactions')!,
         charts = document.getElementById('dockcharts')!, dock = document.getElementById('dock')!;
       const phoneSurveyFailed = () => run().some(finding => finding.startsWith('phone Survey'));
+      const icon = document.getElementById('surveyicon')!;
+      icon.classList.replace('ico', 'utility-face');
+      expect(phoneSurveyFailed(), 'Survey cannot retain a small utility face').toBe(true);
+      icon.classList.replace('utility-face', 'ico');
+      expect(run()).toEqual([]);
       survey.remove();
       expect(phoneSurveyFailed(), 'missing Survey cannot count as a boxless group PASS').toBe(true);
       scene.insertBefore(survey, charts);

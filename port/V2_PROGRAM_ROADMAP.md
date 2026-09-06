@@ -3,14 +3,18 @@
 ## UI parity program — U1 checkpoint, 2026-09-06
 
 U1 implements normal-game shared tokens, production-based phone/wide layout and Nick's saved
-notification history amendment. The latest bounded correction aligns phone Search upper-right,
-fits desktop/tablet name and text pills to their labels while preserving Health, and places Survey
-(🔭) as the fifth compact lower-row utility. Both phone rows retain 64px pitch; compact Charts is
-hidden with Settings → Star charts still available. Desktop Survey/Charts remain fitted left-stack
-controls. Static checks/build passed; normal review stopped INSTRUMENT RED during phone portrait
-restoration, leaving visual approval pending. See `../audits/UI_U1_COMPACT_CONTROLS_20260906.md`
-for the exact source, partial phone evidence and unrun stages. Survey-only placement is Codex's
-stated default after an optional choice, not a new explicit approval for both shortcuts.
+notification history amendment. Nick's explicit correction places Survey (🔭) sixth in the compact
+upper board row after Charters, Compendium, Prime, Shipyard and Atlas. The lower row contains only
+Records (including Achievements), Notifications, Guide and Settings. The dock is capped at 384px
+and fits the viewport's safe width minus 20px; six board positions use pitch = width / 6 (at most
+64px) and board width = pitch − 4px, with 44px lower targets/36px faces. A panel-open short-landscape
+dock also fits the existing header safe column, including 667×375 Settings; exact geometry lives in
+UI_PRESENTATION.md. Default height remains 92px. Compact Charts stays in Settings; upper-right Search,
+wide fitted pills, wide Prime and Health are unchanged.
+This explicit arrangement supersedes the prior optional lower-row default. Scoped dock verification
+and visual approval are pending; `../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` owns current evidence.
+The prior portrait-restoration instrument stop remains OPEN beside the unattributed navigation
+blocker; the full normal-review path and full chain are not rerun for this bounded correction.
 See `UI_PARITY_PROGRAM_U1_U4.md` for the accepted program, explicit geometry differences and review
 boundaries. U2 sheet/stack work, U3 per-panel work and U4 ten-viewport/28-screen gate remain unstarted. Phase4 presentation parity is not closed;
 normal-game U1 and integrated audiovisual-pilot approvals both remain with Nick. No Phase2.

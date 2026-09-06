@@ -13,14 +13,21 @@ The live site's two style blocks match the tracked HTML byte for byte; provenanc
 `audits/UI_U1_PRODUCTION_LAYOUT_20260906.md`. Nick's latest screenshot instructions supersede
 the earlier all-device bottom launcher and visible Current view experiments.
 
-Phone (<=700px) has five icon-only 60px board pills at 64px centers, then five 36px utility
-faces inside 44px targets at 64px centers. Prime retains its visible N/9 count and accessible
-name. Order is Charters, Compendium, Prime, Shipyard, Atlas; then Records, Notifications,
-Guide, Settings, Survey (🔭). Utilities are 12px above the safe bottom; boards start at 60px.
-The default dock is 92px high and may grow for text preferences. Labels remain accessible
-without visible phone captions. Production's 60px board width supersedes the brief's older
-58px metric. Both rows share the same five-column 64px rhythm. Compact Charts is hidden;
-the existing Settings → Star charts toggle remains available.
+Phone (<=700px) has six icon-only board pills in the upper dock row: Charters, Compendium,
+Prime, Shipyard, Atlas, Survey (🔭). Prime retains its visible N/9 count and accessible name
+in the third of six positions. The lower row contains only the four small utility controls:
+Records (including Achievements), Notifications, Guide and Settings. Nick explicitly placed
+Survey in the upper row, superseding the previous optional lower-row default.
+
+The compact dock uses twelve half-columns and a width capped at 384px, bounded by viewport
+width minus left/right safe areas and 20px. Each board spans two half-columns; pitch is dock
+width / 6 (at most 64px), and board width is pitch minus 4px, retaining a minimum 44px target
+within supported viewports. With no side safe area, board widths are about 57.67px at 390px,
+60px at 430px and 46px at 320px. Lower utilities occupy the middle four column pairs with
+44px targets and 36px faces. Survey uses the same plain emoji board pill as its upper-row peers.
+Utilities are 12px above the safe bottom; boards start at 60px. The default dock remains 92px
+high and may grow for text preferences. Labels remain accessible without visible phone captions.
+Compact Charts stays hidden; the existing Settings → Star charts toggle remains available.
 
 Tablet and desktop (>=701px) restore the actual native left Charters/Compendium and right
 Star Atlas/Shipyard controls. Prime Codex is centered at the top with its full label and N/9.
@@ -30,6 +37,9 @@ have 8px gaps (52px pitch) around 36px faces. These preserve earned touch/spacin
 instead of copying production's 42px anchors with overlapping 44px coarse-pointer targets.
 Controls cap their size while the scene benefits from additional screen space. The retained
 <=900px short-landscape exception uses compact phone navigation and existing panel-safe columns.
+With a panel open in that landscape layout, dock width is additionally capped to the existing
+header safe-column width: `min(384px, (viewport width − safe left − safe right − 36px) / 2)`.
+This keeps the expanded dock inside the right column, including the 667×375 Settings layout.
 
 Nameplate and Health share the upper-left column; only the explorer name is visible and it
 wraps without truncation. Rank color metadata and the Inventory action remain. Health keeps
@@ -51,7 +61,7 @@ There is no visible Cosmos/Current view label. Actual rail wrappers own their 8p
 so those gaps keep a panel open; empty sky still dismisses it. On desktop/tablet Survey/Charts
 retain their native owners below the left controls, with each text pill fitting its label.
 `#sceneactions` is nested inside the dock and becomes `display:contents` in compact navigation,
-placing the existing Survey opener in the fifth lower-row slot. Its zero-size wrapper box is
+placing the existing Survey opener in the sixth upper-row slot. Its zero-size wrapper box is
 ignored by AppChrome's existing top-chrome measurement; the 72px roster reading-band rule remains.
 Survey shows the retained/current surface card; Charts toggles orbit rings, the habitable zone
 and the belt caption. Their action/save owners are unchanged; no new action or gameplay is added.
@@ -71,18 +81,19 @@ capacity and 60-entry import allowance remain. Passive history never joins an in
 snapshot; no new timer, schema, import door or competing persistence writer is introduced.
 The bottom bell reads this history; its old duplicate shelf button is hidden.
 
-U1 remains a visual approval checkpoint. Signed source `c57aaaebc656f2e2d15705601fe1a2a73cf15f1f`
-passed fresh typecheck/artunused, Vitest (311 files; 3,320 passed, 1 skipped), Glass selftest and
-build. Normal review STOPPED / INSTRUMENT RED at a `Runtime.evaluate` timeout during phone portrait
-restoration after 23 trusted inputs. Default-phone 31 deltas/34 controls, larger text and
-844×390 Settings-open/collision/Close probes passed before the stop. Only two phone PNGs exist;
-tablet/desktop images, Slice and both phone Glass rows were NOT RUN. No runtime/debugger error or
-navigation recurrence was observed, but the prior navigation blocker remains OPEN and unattributed.
-Nick's visual approval is pending; exact results and evidence:
-`audits/UI_U1_COMPACT_CONTROLS_20260906.md` and `audits/UI_U1_COMPACT_CONTROLS_c57aaae_20260906/`.
-The Survey-only compact placement is Codex's stated default after an optional preference question,
-not a separate explicit approval to add Charts to the phone dock. Normal review pairs three v1
-goldens with v2 and exercises real visible native opener/Close/focus journeys. Numeric checks observe actual rails,
+U1 remains a visual approval checkpoint. Verification of Nick's explicit six-upper/four-lower
+correction is pending a scoped dock check at 320/390/430px portrait widths plus 667×375 with
+Settings open, each in a fresh document; `audits/UI_U1_SURVEY_TOP_ROW_20260906.md` and ROADMAP
+own its exact source and results. The dock oracle independently applies the panel-safe width formula.
+The earlier `c57aaaebc656f2e2d15705601fe1a2a73cf15f1f` static/build
+passes and partial phone evidence remain predecessor evidence in
+`audits/UI_U1_COMPACT_CONTROLS_20260906.md`. That normal review stopped INSTRUMENT RED at a
+`Runtime.evaluate` timeout during phone portrait restoration after 23 trusted inputs; its two
+phone PNGs do not verify this changed dock. Both the unattributed navigation blocker and the
+portrait-restoration verification blocker remain OPEN. This bounded correction does not rerun
+that full normal-review path, Slice, phone Glass or the full chain. Visual acceptance is pending.
+The normal-review tool pairs three v1 goldens with v2 and exercises real visible native
+opener/Close/focus journeys. Numeric checks observe actual rails,
 phone icon/count state, Search/Objective alignment, full name, meter contrast and plain hint.
 Slice/Glass preserve their ledgers and original pinch gestures. A normally hidden canonical
 trail is described honestly: the historical visible-trail collision/fallback controls explicitly
