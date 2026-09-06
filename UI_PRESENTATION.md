@@ -75,6 +75,11 @@ U2 sheet/stack work and U3 panel reskins/icon study remain pending. Resolve the 
 Training/Settings order against the earned Settings-above-Training law before implementing U2.
 No integrated-pilot approval or Phase2 work is implied.
 
+U1 diagnostic update (2026-09-06): the normal-review tool adds viewport/resize facts and
+session-owned, auto-resuming trail-writer stacks. No product layout changed. Debugger timing
+perturbation and absent settlement facts keep the prior navigation blocker open until attributed;
+see `audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`.
+
 ## Opt-in audiovisual presentation — 2026-09-05 local
 
 Matches code as of **2026-09-05 local**. The Phase 1 `?avpilot=1` candidate uses shared navy/glass

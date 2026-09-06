@@ -10,6 +10,7 @@ import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
+import { createReviewTrailDebugger } from './ui-review-trail-debugger.mjs';
 
 /** Serialized into the owned document by Slice, Glass and U1 review. This
  * independent oracle intentionally names the approved metrics, not product
@@ -242,10 +243,12 @@ function launcherOutcome(state) {
 }
 /** Passive review-owned observations of public DOM/input only. No product
  * evidence hook, navigation write, event cancellation or recovery action. */
-function installNativeReviewTrace(viewport) {
-  const snapshot = () => ({ at: performance.now(), trail: [...document.querySelectorAll('#trail .seg')].map(node => node.textContent),
+export function installNativeReviewTrace(viewport) {
+  const snapshot = () => ({ at: performance.now(), timeOrigin: performance.timeOrigin, trail: [...document.querySelectorAll('#trail .seg')].map(node => node.textContent),
     context: document.getElementById('ctxbar')?.textContent ?? null, focusedId: document.activeElement?.id ?? null,
     bodyClasses: document.body.className, viewport: { width: innerWidth, height: innerHeight },
+    visualViewport: window.visualViewport ? { width: visualViewport.width, height: visualViewport.height,
+      scale: visualViewport.scale, offsetLeft: visualViewport.offsetLeft, offsetTop: visualViewport.offsetTop } : null,
     trailVisible: (() => { const t=document.getElementById('trail'),r=t.getBoundingClientRect(),s=getComputedStyle(t);return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0; })() });
   const describe = node => node instanceof Element ? { tag: node.tagName, id: node.id || null,
     sel: node.getAttribute('data-sel'), close: node.getAttribute('data-pnx') } : { tag: node === document ? '#document' : '#window' };
@@ -258,13 +261,17 @@ function installNativeReviewTrace(viewport) {
       selector: requested?.selector ?? null, requestedControlInPath: !!requested && path.includes(requested.node),
       requestedControlConnected: requested?.node.isConnected ?? false, target: describe(event.target), path: path.map(describe) });
   }, { capture: true, passive: true });
+  const windowResize = () => append(trace.changes, { ...snapshot(), kind: 'window-resize', pressId: trace.active?.id ?? null });
+  const visualResize = () => append(trace.changes, { ...snapshot(), kind: 'visual-viewport-resize', pressId: trace.active?.id ?? null });
+  window.addEventListener('resize', windowResize, { passive: true });
+  window.visualViewport?.addEventListener('resize', visualResize, { passive: true });
   let priorTrail = JSON.stringify(snapshot().trail);
   const observer = new MutationObserver(() => {
     const next = snapshot(), serialized = JSON.stringify(next.trail);
-    if (serialized !== priorTrail) { append(trace.changes, { ...next, pressId: trace.active?.id ?? null }); priorTrail = serialized; }
+    if (serialized !== priorTrail) { append(trace.changes, { ...next, kind: 'trail-change', pressId: trace.active?.id ?? null }); priorTrail = serialized; }
   });
   observer.observe(document.getElementById('trail'), { childList: true, subtree: true, characterData: true });
-  trace.changes.push({ ...snapshot(), pressId: null, initial: true });
+  trace.changes.push({ ...snapshot(), kind: 'initial', pressId: null, initial: true });
   Object.defineProperty(window, '__cfU1ReviewNativeTrace', { value: trace, configurable: true });
   return snapshot();
 }
@@ -306,7 +313,8 @@ export async function runUiShellReview(buildArgument, outputArgument) {
   const cases = [['phone', 390, 844, true], ['desktop', 1440, 900, false], ['tablet', 834, 1112, true]];
   const report = { schema: 'cf-u1-shell-review/v1', certification: false, source, startedAt: new Date().toISOString(),
     build: { indexSha256: sha(Buffer.from(index)), serviceWorkerSha256: sha(workerBytes), assets },
-    status: 'RUNNING', rows: [], journeys: [], nativeInputs: [], nativeTraces: [], images: [], errors: [], limitations: [
+    status: 'RUNNING', rows: [], journeys: [], nativeInputs: [], nativeTraces: [], navigationDebug: {}, images: [], errors: [], limitations: [
+      'Auto-resuming DOM breakpoints capture trail writers between intentional controls. Debugger instrumentation perturbs scheduling; a nonrecurrence cannot close the retained navigation blocker. Same-text rebuild stacks are not navigation, and public DOM readiness does not prove travel settlement.',
       'U1 geometry diagnostic only, not U4, full Glass, real iPhone or HUMAN visual acceptance.',
       'Golden raster differences reflect scene/save/browser/font differences as well as design; no pixel-equality verdict.',
       'New game uses native Skip then bounded Escape ascent to Cosmos, read from retained hidden canonical trail DOM. The trace records its visibility honestly; no visible breadcrumb or legacy import is claimed. Camera, progression and save differences remain in comparisons.',
@@ -325,19 +333,20 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       fs.createReadStream(file).pipe(response);
     } catch { response.writeHead(404); response.end('Not found'); }
   });
-  let browser, collectNativeTrace;
+  let browser, collectNativeTrace, trailDebugger;
   const writeReport = () => fs.writeFileSync(path.join(output, 'review.json'), JSON.stringify(report, null, 2) + '\n');
   try {
     await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
     const origin = `http://127.0.0.1:${server.address().port}`;
     browser = await openChromiumCdp({ label: 'U1 isolated normal-game review', userDataPrefix: 'cf-u1-review',
-      onEvent: event => { if (event.method === 'Runtime.exceptionThrown') report.errors.push(event.params.exceptionDetails.exception?.description ?? event.params.exceptionDetails.text); } });
+      onEvent: event => { trailDebugger?.onEvent(event); if (event.method === 'Runtime.exceptionThrown') report.errors.push(event.params.exceptionDetails.exception?.description ?? event.params.exceptionDetails.text); } });
     report.browser = browser.browser;
     const { targetId } = await browser.send('Target.createTarget', { url: 'about:blank' });
     const { sessionId } = await browser.send('Target.attachToTarget', { targetId, flatten: true });
     const send = (method, params = {}) => browser.send(method, params, sessionId);
     await send('Runtime.enable'); await send('Page.enable');
-    const evaluate = async expression => { const answer = await send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true });
+    trailDebugger = createReviewTrailDebugger({ send, sessionId, evidence: report.navigationDebug, onRecord: writeReport });
+    const evaluate = async expression => { await trailDebugger.ready(); const answer = await send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true });
       assert(!answer.exceptionDetails, answer.exceptionDetails?.exception?.description ?? answer.exceptionDetails?.text); return answer.result.value; };
     const wait = condition => evaluate(`new Promise((resolve,reject)=>{const end=performance.now()+25000;const tick=()=>{if(${condition})resolve(true);else if(performance.now()>end)reject(new Error('U1 readiness deadline'));else setTimeout(tick,50)};tick()})`);
     const capture = async (file, clip) => { const { data } = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, ...(clip ? { clip } : {}) });
@@ -354,6 +363,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       }
     };
     const clickNative = async (selector, expectedTrail = ['Cosmos']) => {
+      const traceWasArmed = await trailDebugger.disarm();
       const proof = await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace,e=document.querySelector(${JSON.stringify(selector)});if(!t||!e)throw new Error('Native control/trace missing');
         const r=e.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2,h=document.elementFromPoint(x,y);
         if(e.tagName!=='BUTTON'||e.disabled||e.closest('[inert]')||r.width<=0||r.height<=0||!(h===e||e.contains(h)))throw new Error('Native control unavailable: '+${JSON.stringify(selector)});
@@ -373,6 +383,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       Object.assign(proof, observed); proof.delivery = assessNativeReviewDelivery(proof); writeReport();
       if (dispatchError) throw dispatchError;
       assert(proof.delivery.pass, selector + ' did not receive the exact trusted native pointer sequence: ' + JSON.stringify(proof));
+      if (traceWasArmed) await trailDebugger.arm(proof.viewport);
     };
     for (const [name, width, height, mobile] of cases) {
       await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile });
@@ -393,6 +404,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       }
       journey.after = currentScene; writeReport();
       assert.deepEqual(currentScene.trail, ['Cosmos'], name + ' native ascent did not reach Cosmos within six Escape presses');
+      await trailDebugger.arm(name);
       const state = await evaluate(`(${shellGeometry.toString()})()`), deltas = metricDeltas(state);
       const phone = width <= 700 ? await evaluate(`(${readU1PhoneShell.toString()})(false)`) : null;
       const candidate = await capture(`u1-main-${name}.png`);
@@ -487,6 +499,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
           await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
           await send('Emulation.setTouchEmulationEnabled', { enabled: false, maxTouchPoints: 5 }); await frames();
           probe.before = await evaluate(`(${shellGeometry.toString()})()`);
+          await trailDebugger.disarm();
           probe.immediate = await evaluate(`(()=>{const trace=window.__cfU1ReviewNativeTrace,start=trace.events.length,sequence=${JSON.stringify(probe.sequence)},receipts=[];
             for(const [index,selector] of sequence.entries()){
               const node=document.querySelector(selector);if(!(node instanceof HTMLButtonElement)||node.disabled)throw new Error('Programmatic Settings control missing: '+selector);
@@ -498,6 +511,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
             return{state:(${shellGeometry.toString()})(),receipts,globalEvents:trace.events.slice(start),
               closed:getComputedStyle(document.getElementById('setpanel')).display==='none',
               autoSelected:document.querySelector('#setpanel [data-motion="-1"]')?.getAttribute('aria-pressed')==='true'};})()`);
+          await trailDebugger.arm(name);
           probe.delivery = assessProgrammaticSettingsDelivery(probe.immediate.receipts);
           writeReport();
           assert(probe.immediate.closed && probe.immediate.autoSelected, 'same-task programmatic Settings sequence did not complete');
@@ -666,6 +680,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
           && topLeftOutcome(restored).pass && metricDeltas(restored).every(delta => delta.pass) && launcherOutcome(restored).pass;
         writeReport(); assert(narrow.restored, 'narrow Settings probe did not restore the original viewport and shell');
       }
+      await trailDebugger.disarm();
       await collectNativeTrace();
       // Use an isolated generated proof page for exact-sized originals, raster difference and contact sheet.
       const imageData = [golden, candidate].map(bytes => 'data:image/png;base64,' + bytes.toString('base64'));
@@ -684,12 +699,18 @@ export async function runUiShellReview(buildArgument, outputArgument) {
     assert.equal(report.errors.length, 0, report.errors.join('\n'));
     assert.equal(git(['rev-parse', 'HEAD']), source, 'source changed during review');
     assert.equal(git(['diff', '--name-only', 'HEAD']), '', 'source became dirty during review');
+    await trailDebugger.dispose();
     report.status = 'PASS';
   } catch (error) {
     report.status = 'FAIL'; report.failure = String(error);
+    try { await trailDebugger?.disarm(); } catch (debugError) { report.navigationDebugCleanupError = String(debugError); }
     try { await collectNativeTrace?.(); } catch (traceError) { report.nativeTraceCollectionError = String(traceError); }
     throw error;
-  } finally { await browser?.close(); if (server.listening) await new Promise(resolve => server.close(resolve)); report.endedAt = new Date().toISOString(); writeReport(); }
+  } finally {
+    try { await trailDebugger?.dispose(); } catch (debugError) {
+      report.status = 'FAIL'; report.navigationDebugCleanupError = String(debugError);
+    }
+    await browser?.close(); if (server.listening) await new Promise(resolve => server.close(resolve)); report.endedAt = new Date().toISOString(); writeReport(); }
   console.log(`U1 REVIEW PASS: ${report.rows.length} scoped viewports; ${report.images.length} PNGs; ${source}`);
   return report;
 }
