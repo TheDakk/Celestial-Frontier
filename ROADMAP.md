@@ -17,14 +17,16 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-06 · U1 NAVIGATION INSTRUMENT / REVIEW PENDING
+## SESSION HANDOFF — 2026-09-06 · U1 DIAGNOSTIC PASS / NAVIGATION BLOCKER OPEN
 
 OpenAI/Codex on macOS | openai/mac | /Users/nick/Projects/celestial-frontier-openai-mac |
 origin/openai/mac. Physical root/branch/upstream verified; SSH origin
  git@github.com:TheDakk/Celestial-Frontier.git authenticated as TheDakk; read/fetch passed.
 Initial HEAD0a6ee0fdb6656361106ab6540169225669c64e0e matched upstream; develop c1791e2 is
 an ancestor. Root main.js absent; ambient untracked .DS_Store untouched. No other worktree edited.
-This local instrument successor has no push/PR/hosted/release authority; develop/main/live unchanged.
+Signed/verified diagnostic source95c9a1fb8f9a07ae6021cf10b74cb09900f031e3; implementation
+predecessor3035c102c142adf82231cba141322e22b081fbbf. A records successor carries the terminal
+result and handoff; it is not the tested source. Local commits only, no push; develop/main/live unchanged.
 
 ### Exact saved blocker and current work
 
@@ -43,12 +45,20 @@ only: layout/visual viewport resize facts plus auto-resumed, exact-session #trai
 intentional inputs. No camera/nav/travel/save/layout code changed. Native predecessor assertions,
 readiness deadlines and63 trusted inputs remain. Retain the blocker even if the run does not recur.
 
-Current audit: audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md. Focused controls10/10 then revised
-actual native-input admission controls2/2 pass. The synthetic calibration's weak async assertion
-was tightened, exposed a fixture mistake, and was corrected to a timer-scheduled writer. All
-carriers retained; final4-control calibration PASS. One committed-source normal review is pending;
-stop after any red, no unchanged retry or automatic expansion into product guards. The new exact
-source/result will be recorded at completion. No Slice/Glass chain is claimed by this diagnosis.
+Current audit: audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md. Focused controls10/10, revised
+actual-input controls2/2, final named async calibration4/4 and root validation PASS. The weak
+calibration PASS, tightened fixture RED and corrected PASS are all retained.
+Fresh95c9a1f checkout: typecheck/artunused PASS, Vitest311 files/3319 passed/1 skipped,
+Glass selftest/build PASS. One normal review PASS at16:41:38–16:41:59 UTC: three viewports,
+63 trusted inputs, nine PNGs, zero runtime/debugger errors or overflow. Settings' three exact
+untrusted deliveries/final header geometry/restoration now passed this browser probe. Four stacks
+map to frame-coalesced resize → rerender → same-Cosmos trail redraw, not galaxy descent.
+No unsolicited transition recurred; its cause is still unproven. Stop after this bounded result.
+Slice/both phone Glass rows NOT RUN; no full U1, certification, device or visual-acceptance claim.
+Manifest audits/UI_U1_NAVIGATION_95c9a1f_20260906/manifest.json SHA256
+728f9779812dafa96918f0e3a957e89efd0f54286414e7186387fafcf328a28d; all23 carriers verified,
+including generated JS/maps and resolved stacks. Current nine PNGs supersede the older image set
+as current-source review material, without changing human approval.
 
 ### Product/program boundaries
 
@@ -74,13 +84,15 @@ Draft81 bullets/authority073e0c972fb6e544b30cd3cc1c8fb1daebcb9216788c763681f380c
 
 ### Paired next steps
 
-- Codex: commit the calibrated instrument, run one fresh normal-review diagnostic, retain exact
-  source/result/stacks and update this handoff. Do not repair navigation without attribution.
-- Claude: no need to open the app during this preparation. Once evidence is ready, review it
-  read-only from the owned anthropic checkout, preserving local/unmerged173c806. No merge/copy
-  or duplicate full battery. Its branch has not received this unintegrated work.
-- Nick: visual choices remain pending; no GitHub step or PR now. Future integration is a scoped
-  openai/mac → develop PR with exact hosted authorization; no main/release authority implied.
+- Codex: bounded instrument correction/result retention complete; stop. Resume only a separately
+  scoped reproduction or Nick's visual correction, using audits/UI_U1_NAVIGATION_RESUME_20260906.md.
+  No automatic retries, product guards or broader navigation exploration.
+- Claude: Nick need not open Claude now. A later read-only review may use this audit supplied by
+  Nick; these local commits are not pushed or merged. Preserve anthropic/mac and unmerged173c806;
+  do not copy product files, merge this work or duplicate the battery.
+- Nick: phone shelf/wide pill visual choices remain pending; no GitHub step or PR now. Future
+  integration requires a scoped openai/mac → develop PR and exact hosted authorization;
+  no main/release authority implied.
 
 Budget UNFROZEN; PUBLIC per last verification; private fallback3000. Zero hosted attempts,
 labels, PRs, merges, purchases, releases/deployments. No workflow/policy/package/measurement/

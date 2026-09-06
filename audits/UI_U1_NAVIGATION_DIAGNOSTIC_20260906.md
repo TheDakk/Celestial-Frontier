@@ -1,5 +1,57 @@
 # U1 navigation diagnostic — 2026-09-06
 
+## Terminal result — instrument verified; original navigation blocker OPEN
+
+Exact tested source `95c9a1fb8f9a07ae6021cf10b74cb09900f031e3`, signed and verified;
+implementation predecessor `3035c102c142adf82231cba141322e22b081fbbf` is also signed/verified.
+The records successor containing this result is not a newly tested source. Product source
+remains `7bff7967fef6b6d6f6b99480098a92c8501da994`; no product or layout repair was attempted.
+
+One fresh separate checkout, root main.js absent, under one uninterrupted toolchain lock:
+
+- Typecheck and artunused PASS.
+- Vitest: 311 files, 3,319 passed / 1 skipped.
+- Glass selftest and normal distributable build PASS.
+- Normal UI review PASS: phone390×844, desktop1440×900, tablet834×1112;
+  63 trusted input deliveries, nine PNGs, zero runtime/debugger errors or overflow.
+- The same-task Settings probe was reached and passed its three exact untrusted deliveries,
+  final header/rail measurements and original viewport/shell restoration. Larger-text and
+  short-landscape numeric probes passed within this normal review.
+- Slice and both phone Glass rows were NOT RUN in this instrument-only diagnosis. This is
+  not full U1 completion, certification, physical-device proof or Nick's visual acceptance.
+
+Normal review ran once,16:41:38.356–16:41:59.780 UTC. Cosmos remained canonical after ascent;
+the original spontaneous Milky Way transition did not recur. **Nonrecurrence is not a repair**:
+debugger instrumentation changes scheduling and the trace still lacks camera/travel-authority
+facts. No extra wait, forced state, product guard, unchanged product-review retry or broad loop.
+
+Four actual #trail pauses were captured and resumed during intentional phone-document viewport
+changes for the wide Settings/short-landscape probes. Retained source maps resolve every stack to
+rendererDensitySync's frame-coalesced resize path (`main.ts:17527`) → rerender (`main.ts:7018`)
+→ hudText's universe branch (`main.ts:5495`) → setTrail (`app-chrome.ts:271`). These are
+same-Cosmos redraws, not galaxy-descent stacks. The async ancestry maps to resize registration
+and frame-coalescer scheduling (`main.ts:17499/17537`, `frame-coalescer.ts:23/25`). Resolution used
+existing source-map-js1.2.1 with CDP zero-based line+1/column unchanged. Raw stack positions,
+resolved JSON and exact generated JS/map hashes are retained; no package was added.
+
+Manifest `UI_U1_NAVIGATION_95c9a1f_20260906/manifest.json`, SHA256
+`728f9779812dafa96918f0e3a957e89efd0f54286414e7186387fafcf328a28d`.
+All23 retained compressed/original carrier hashes verified. Current nine-image normal review
+is in that directory; unlike9c869c3, it is evidence from the current tested diagnostic source.
+It remains visual review material, not acceptance. Independent code review found no remaining
+substantive instrumentation issue after the two corrected test weaknesses below.
+
+The bounded correction is complete. Stop here: retain the instrument for a separately scoped
+future reproduction; do not automatically add product guards or replay the battery. Nick still
+owns phone shelf density/wide pill decisions; name-only remains the explicit approved amendment.
+Codex commits these records locally; no push. Claude does not need to open now; the unintegrated
+local commits are not available from origin/develop and must not be manually copied into its
+working tree. A later review can use the retained audit supplied by Nick. No GitHub step/PR now.
+Budget UNFROZEN, public per last verification, private fallback3,000; zero hosted attempts.
+Develop/main/live unchanged; U2–U4/Phase2 remain unstarted.
+
+## Preserved preparation snapshot (superseded by the terminal result above)
+
 Status: INSTRUMENT-ONLY SUCCESSOR PREPARED; NORMAL REVIEW PENDING.
 The product is unchanged from `7bff7967fef6b6d6f6b99480098a92c8501da994`.
 The prior tested source is `08cd97d79b67cab4b8d19bfd493293e997dec528`; saved records
