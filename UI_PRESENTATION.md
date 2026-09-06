@@ -84,10 +84,18 @@ capacity and 60-entry import allowance remain. Passive history never joins an in
 snapshot; no new timer, schema, import door or competing persistence writer is introduced.
 The bottom bell reads this history; its old duplicate shelf button is hidden.
 
-U1 remains a visual approval checkpoint. The all-platform Survey/Charters correction awaits
-scoped cross-platform verification and visual approval. `audits/UI_U1_SURVEY_CHARTERS_20260906.md`
-and ROADMAP own current source/results; the dock oracle independently applies the panel-safe
-width formula. The earlier six-board `e94f7b35211094e334abc983e716456749e2e3ae` scoped PASS and
+U1 remains a visual approval checkpoint. Signed source `cfba0ede81d5861df70628b462e125eeff4780b9`
+passed the scoped Survey/Charters probe in six fresh contexts: 390×844, 320×740, 430×932,
+667×375 with Settings open, 834×1112 and 1440×900. Objective opened the real Charters panel by
+touch, mouse, Enter and Space; Close/Escape returned focus correctly. All 36 negative controls
+and five larger-text checks passed. The run retained 26 trusted pointer inputs (18 touch,
+8 mouse), 18 logical keyboard presses (36 keydown/up events), 13 PNGs, zero runtime errors
+and no overflow. Product `053ef439774520577071f0ca50887337dd938755` is unchanged by the portable
+keyboard-dispatch correction in the probe. Its first scoped keyboard-instrument red is preserved.
+Current source/results belong to `audits/UI_U1_SURVEY_CHARTERS_20260906.md`, ROADMAP and
+`audits/UI_U1_SURVEY_CHARTERS_cfba0ed_20260906/manifest.json`. The dock oracle independently
+applies the panel-safe width formula. This scoped PASS does not supply human visual acceptance.
+The earlier six-board `e94f7b35211094e334abc983e716456749e2e3ae` scoped PASS and
 its preceding instrument red remain immutable predecessor evidence in
 `audits/UI_U1_SURVEY_TOP_ROW_20260906.md`; they do not verify this new five-board/action arrangement.
 The earlier `c57aaaebc656f2e2d15705601fe1a2a73cf15f1f` static/build

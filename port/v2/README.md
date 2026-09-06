@@ -20,8 +20,12 @@ to place Survey first and hide its duplicate rail Compendium. The scene-actions 
 Objective becomes the sole native Charters opener after duplicate dock/rail shortcuts are removed.
 It uses existing keyboard/panel/focus ownership, stays available while landed and shows Charters
 when no objective is active. Objective progress, Charter gameplay and the Survey handler are unchanged.
-Scoped cross-platform verification and visual approval are pending. The current audit owns this
-correction; the prior six-board PASS remains predecessor evidence. Both the unattributed navigation
+Scoped verification PASS in six fresh contexts: 390×844, 320×740, 430×932, 667×375 Settings-open,
+834×1112 and 1440×900. Native Objective touch/mouse/Enter/Space opening and Close/Escape focus
+return passed; human visual approval remains OPEN. The current audit owns the terminal result
+and preserved first keyboard-instrument red. Its successor changes only portable key dispatch
+in the probe; product source is unchanged. The prior six-board PASS remains predecessor evidence.
+Both the unattributed navigation
 and full normal-review portrait-restoration blockers stay OPEN; no full normal-review retry,
 Slice, phone Glass or full chain accompanies this bounded correction.
 The accepted brief and amendments are in

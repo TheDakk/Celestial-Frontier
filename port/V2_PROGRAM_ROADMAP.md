@@ -13,8 +13,11 @@ Ten half-columns fit a dock capped at 320px and safe viewport width minus 20px; 
 board width is pitch minus 4px with a 44px minimum, and centered lower targets/faces stay 44px/36px.
 The existing panel-open short-landscape half-column cap and 92px default height remain;
 UI_PRESENTATION.md owns geometry. Search, fitted wide pills, Health and compact Charts via Settings
-are unchanged. Scoped cross-platform verification and visual approval are pending;
-`../audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns current evidence. The previous six-board scoped
+are unchanged. Scoped verification passed in six fresh phone/tablet/desktop contexts, including
+native Objective opening, Close/Escape and focus return. Human visual approval remains OPEN;
+`../audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns current evidence and the preserved first
+keyboard-instrument red. The portable-key correction changes only the probe, with product unchanged.
+The previous six-board scoped
 PASS and instrument red remain in `../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` as predecessor evidence.
 The prior portrait-restoration instrument stop remains OPEN beside the unattributed navigation
 blocker; full normal review, Slice, phone Glass and the full chain were NOT RUN.

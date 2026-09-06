@@ -24,8 +24,11 @@ Panel-open short landscape retains the header safe-column cap:
 The left rail is now nested in the dock and boxless on compact layouts, placing Survey first
 while hiding the duplicate rail Compendium control. The scene-actions group contains only Charts.
 
-Scoped cross-platform verification and visual approval are pending. Current source/results belong
-to `../audits/UI_U1_SURVEY_CHARTERS_20260906.md` and ROADMAP. Both the unattributed navigation and
+Scoped verification PASS in six fresh phone/tablet/desktop contexts, including Objective's native
+touch/mouse/Enter/Space Charters opening and Close/Escape focus return. Human visual approval
+remains OPEN. Current source/results and the preserved first keyboard-instrument red belong to
+`../audits/UI_U1_SURVEY_CHARTERS_20260906.md` and ROADMAP. Product source is unchanged by the
+probe-only portable-key correction. Both the unattributed navigation and
 portrait-restoration blockers remain OPEN. No full normal-review retry, Slice/Glass/full-chain
 run, U2–U4, Phase2 or hosted action is authorized by this correction.
 
