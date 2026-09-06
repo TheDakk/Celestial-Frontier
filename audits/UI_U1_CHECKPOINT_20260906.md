@@ -189,3 +189,26 @@ for the same single Slice execution plus immutable report/terminal verification.
 callers now follow the visible controls; Atlas/Shipyard yield Survey when rails begin at701px.
 The hidden-opener focus control starts with visible Atlas and uses native input through
 Survey/Close, retaining its original outcome/control identities and historical ledgers.
+
+## Settled Share predecessor and exact-style restoration stop —62a601c
+
+Fresh static checks and Glass selftest PASS. Immutable Slice run
+`20260906065155741-65134-c940284a4ef9` stopped with three findings from two causes. The
+wave-off check preserved all13 other outcomes but rejected an added prior Share notification
+in its full unrelated-state comparison; the dependent second Land was not issued. The rail
+visibility mutant was shown/rejected and both controls restored hidden, but exact style
+attribute equality failed. Prior/current attribute bytes were not retained by that older
+control, so absence-versus-empty is a hypothesis rather than proven original evidence.
+Both original immutable report and raw log are retained as the dated62a601c gzip carriers.
+The bounded successor will settle and prove the existing receipt-free Share-notice checkpoint
+before the Land baseline, keeping the wave-off comparison intact, and restore/record exact
+attribute presence/value for the visibility control. No product or producer edits are planned.
+Phone canaries and normal visual review did not run after red.
+
+Successor preparation: typecheck/9focused style tests and17focused Arc0 tests PASS.
+The Share checkpoint proof derives the whole expected raw successor, including only the
+exact notice, receipt-free revision, codec timer normalization and monotone active play.
+Receipts, RNG, gameplay and prior history remain exact; the adjacent toast and queued
+ceremony must survive before Land is armed. Seven live cloned controls reject corrupt
+evidence. The original full wave-off evaluator is byte-identical (SHA in REDS JSON).
+Focused logs are retained; the next clean signed-source sequence remains pending.

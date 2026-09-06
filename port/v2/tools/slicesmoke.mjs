@@ -25664,8 +25664,139 @@ try {
             shareAuthority, shareCommitAssessment, adjacentShare }));
         return;
       }
-      beforeLand = adjacentShare.state;
-      preLandAuthority = shareAuthority;
+      /* Share's receipt precedes its clipboard toast. Prove one ordinary
+         checkpoint of that exact notice before Land inherits the source;
+         the wave-off verifier must keep comparing every other durable byte. */
+      const assessCharterShareNoticeCheckpoint = (evidence) => {
+        const checks = {};
+        const check = (name, value) => { checks[name] = value === true; };
+        const same = (left, right) => canonicalJson(left) === canonicalJson(right);
+        try {
+          const { beforeRaw: prior, afterRaw: next, beforeAuthority, afterAuthority,
+            beforeState, afterState, toast, committed } = evidence;
+          const history = prior.legacy.notifs, head = next.legacy.notifs?.[0];
+          const title = '⧉ Share code copied';
+          const message = 'Paste it into any explorer’s search bar to guide them here.';
+          const exactKeys = (value, keys) => value !== null && typeof value === 'object'
+            && !Array.isArray(value) && same(Object.keys(value).sort(), [...keys].sort());
+          const validHistory = (rows) => Array.isArray(rows) && rows.length <= 50
+            && rows.every((entry) => exactKeys(entry, ['id', 'tt', 'ms', 't', 'read'])
+              && Number.isInteger(entry.id) && entry.id >= -0x8000_0000 && entry.id <= 0x7FFF_FFFF
+              && typeof entry.tt === 'string' && entry.tt.length <= 200
+              && typeof entry.ms === 'string' && entry.ms.length <= 400
+              && Number.isSafeInteger(entry.t) && entry.t >= 0 && entry.t <= 4e12
+              && typeof entry.read === 'boolean');
+          const occupied = new Set(history.map((entry) => entry.id));
+          let id = ((history[0]?.id ?? 0) + 1) | 0;
+          while (occupied.has(id)) id = (id + 1) | 0;
+          const expectedHistory = [{ id, tt: title, ms: message, t: head?.t, read: false }, ...history].slice(0, 50);
+          check('exact painted Share notice', exactKeys(toast, ['title', 'message', 'visible', 'serial', 'observedAt'])
+            && toast.title === title && toast.message === message && toast.visible === true
+            && toast.serial === beforeState.toastSerial && Number.isSafeInteger(toast.observedAt)
+            && toast.observedAt >= prior.legacy.at && toast.observedAt <= 4e12);
+          check('exact unread notice and unchanged prior history', validHistory(history)
+            && validHistory(next.legacy.notifs) && same(history, prior.playerRow.data.notifs)
+            && same(next.legacy.notifs, expectedHistory) && same(next.playerRow.data.notifs, expectedHistory)
+            && head.t >= prior.legacy.at && head.t <= toast.observedAt);
+          const rawMatches = (raw, authority) => raw.revision === authority.raw.revision
+            && raw.revisionRaw === authority.raw.revisionRaw && raw.legacyRaw === authority.raw.legacyRaw
+            && same(raw.receiptKeys, authority.raw.receiptKeys) && same(raw.receiptRows, authority.raw.receiptRows)
+            && raw.authority.activePlayMs === authority.raw.activePlayMs
+            && same(raw.authority.sessionRng, { seed: authority.raw.seed,
+              ordinal: authority.raw.ordinal, draws: authority.raw.draws });
+          check('one admitted same-document receipt-free checkpoint', committed === true
+            && typeof beforeAuthority.token === 'string' && beforeAuthority.token.length > 0
+            && afterAuthority.token === beforeAuthority.token
+            && beforeState.persistence.documentToken === beforeAuthority.token
+            && afterState.persistence.documentToken === beforeAuthority.token
+            && rawMatches(prior, beforeAuthority) && rawMatches(next, afterAuthority)
+            && next.revision === prior.revision + 1
+            && next.revisionRaw === String(next.revision)
+            && same(prior.receiptKeys, next.receiptKeys) && same(prior.receiptRows, next.receiptRows)
+            && same(prior.receiptRawRows, next.receiptRawRows)
+            && same(prior.authority.sessionRng, next.authority.sessionRng)
+            && afterState.persistence.lastOutcome === `committed:${next.revision}`);
+          const at = next.legacy.at;
+          check('exact codec time and monotone active play', Number.isSafeInteger(prior.legacy.at)
+            && Number.isSafeInteger(at) && at >= prior.legacy.at && at >= toast.observedAt && at <= 4e12
+            && Number.isFinite(prior.authority.activePlayMs) && prior.authority.activePlayMs >= 0
+            && Number.isFinite(next.authority.activePlayMs)
+            && next.authority.activePlayMs >= prior.authority.activePlayMs);
+          const expected = structuredClone(prior);
+          expected.revision = next.revision; expected.revisionRaw = String(next.revision);
+          expected.legacy.at = at; expected.playerRow.data.at = at;
+          expected.legacy.notifs = structuredClone(expectedHistory);
+          expected.playerRow.data.notifs = structuredClone(expectedHistory);
+          const clamp = (stamp, windowMs) => Math.min(at, Math.max(Math.max(0, at - windowMs), stamp));
+          expected.legacy.conq = prior.legacy.conq.map(([key, row]) => [key, { ...row, t: clamp(row.t, 3_600_000) }]);
+          expected.playerRow.data.conq = structuredClone(expected.legacy.conq);
+          expected.legacy.minedw = prior.legacy.minedw.map(([key, stamp]) => [key, clamp(stamp, 18_000_000)]);
+          expected.inventoryRow.data.minedw = structuredClone(expected.legacy.minedw);
+          expected.authority.activePlayMs = next.authority.activePlayMs;
+          expected.authorityJson = JSON.stringify(expected.authority);
+          expected.playerRow.extensions['f4.authority'].json = expected.authorityJson;
+          expected.legacyRaw = JSON.stringify(expected.legacy);
+          expected.playerRaw = JSON.stringify(expected.playerRow);
+          expected.inventoryRaw = JSON.stringify(expected.inventoryRow);
+          check('exact full raw successor without product delta', same(next, expected));
+          const beforeCeremony = beforeState.progressionCeremony, afterCeremony = afterState.progressionCeremony;
+          check('adjacent Share toast and ceremony race preserved', same(beforeState.save, afterState.save)
+            && same([beforeState.mode, beforeState.navGalaxyKey, beforeState.navStarKey, beforeState.navWorldKey,
+              beforeState.epoch, beforeState.stage, beforeState.cardOpen, beforeState.cardTitle],
+            [afterState.mode, afterState.navGalaxyKey, afterState.navStarKey, afterState.navWorldKey,
+              afterState.epoch, afterState.stage, afterState.cardOpen, afterState.cardTitle])
+            && beforeState.toastText === title + message && afterState.toastText === beforeState.toastText
+            && afterState.toastSerial === beforeState.toastSerial
+            && beforeCeremony?.queueKeys?.[0] === 'achievement:share'
+            && same(afterCeremony?.queueKeys, beforeCeremony.queueKeys)
+            && afterCeremony?.deliveries === beforeCeremony.deliveries
+            && afterCeremony?.lastDeliveredKey === beforeCeremony.lastDeliveredKey
+            && afterCeremony?.timerPending === true);
+        } catch { check('well-formed exact Share checkpoint evidence', false); }
+        return { ok: Object.values(checks).every(Boolean), checks };
+      };
+      const shareNoticeToast = await waitNavPhValue(`${label} adjacent Share notice paint`, `(()=>{
+        const toast=document.getElementById('toast'),title=toast?.querySelector('[data-sel="toast-title"]'),
+          style=toast?getComputedStyle(toast):null,rect=toast?.getBoundingClientRect(),observed={
+          title:title?.textContent??null,message:toast?[...toast.childNodes]
+            .filter(node=>node.nodeType===Node.TEXT_NODE).map(node=>node.textContent??'').join(''):null,
+          visible:!!rect&&rect.width>0&&rect.height>0&&style?.display!=='none'
+            &&style?.visibility==='visible'&&Number(style?.opacity)===1,
+          serial:window.__CF_SLICE__.api.state().toastSerial,observedAt:Date.now()};
+        return observed.visible?observed:null;})()`, 1_500);
+      const shareNoticeBeforeRaw = await evalNavPh(ARC4_DURABLE_READ_EXPRESSION);
+      const shareNoticeCommitted = await evalNavPh(`window.__CF_SLICE__.api.__smokePersistNow()`);
+      const shareNoticeAuthority = await waitNavPhF4Writable(`${label} Share notice checkpoint`, {
+        expectedToken: charterDocumentToken,
+      });
+      const shareNoticeRaw = await evalNavPh(ARC4_DURABLE_READ_EXPRESSION);
+      const shareNoticeState = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+      const shareNoticeEvidence = { beforeRaw: shareNoticeBeforeRaw, afterRaw: shareNoticeRaw,
+        beforeAuthority: shareAuthority, afterAuthority: shareNoticeAuthority,
+        beforeState: adjacentShare.state, afterState: shareNoticeState,
+        toast: shareNoticeToast, committed: shareNoticeCommitted };
+      const shareNoticeAssessment = assessCharterShareNoticeCheckpoint(shareNoticeEvidence);
+      if (!shareNoticeAssessment.ok) {
+        failSliceWithoutCascade(`${label}: Share notice checkpoint was not an exact passive predecessor: `
+          + JSON.stringify({ assessment: shareNoticeAssessment, evidence: shareNoticeEvidence }));
+      }
+      const shareNoticeControls = [
+        ['missing notice', (control) => { control.afterRaw.legacy.notifs = structuredClone(control.beforeRaw.legacy.notifs); }],
+        ['changed prior read flag', (control) => { control.afterRaw.legacy.notifs[1].read = !control.beforeRaw.legacy.notifs[0].read; }],
+        ['wrong codec owner', (control) => { control.afterRaw.playerRow.data.notifs[0].tt = 'Wrong notice'; }],
+        ['unrelated gameplay change', (control) => { control.afterRaw.legacy.hp += 1; }],
+        ['new action receipt', (control) => { control.afterRaw.receiptRows.push({ ordinal: 999, kind: 'wrong' }); }],
+        ['ceremony already delivered', (control) => { control.afterState.progressionCeremony.deliveries += 1; }],
+        ['refused checkpoint', (control) => { control.committed = false; }],
+      ];
+      for (const [name, mutate] of shareNoticeControls) {
+        const control = structuredClone(shareNoticeEvidence); mutate(control);
+        if (assessCharterShareNoticeCheckpoint(control).ok) {
+          failSliceWithoutCascade(`${label}: Share notice checkpoint control ${name} stayed green`);
+        }
+      }
+      beforeLand = shareNoticeState;
+      preLandAuthority = shareNoticeAuthority;
     }
     const baseline = charterLandBaseline(beforeLand);
     const beforeLandRaw = await evalNavPh(ARC4_DURABLE_READ_EXPRESSION);
@@ -28432,11 +28563,14 @@ try {
   const collisionRailControls = [];
   for (const id of ['railinventory', 'railrecords']) {
     const control = await evalF4Control(collisionTarget.session, `(()=>{
-      const element=document.getElementById(${JSON.stringify(id)}),prior=element.getAttribute('style');let shown;
+      const element=document.getElementById(${JSON.stringify(id)}),
+        priorStyle={present:element.hasAttribute('style'),value:element.getAttribute('style')};let shown;
       try{element.style.setProperty('display','flex','important');shown=${collisionRailCopiesExpression};}
-      finally{if(prior===null)element.removeAttribute('style');else element.setAttribute('style',prior);}
-      return {id:${JSON.stringify(id)},shown,restored:${collisionRailCopiesExpression},
-        styleRestored:element.getAttribute('style')===prior};})()`);
+      finally{element.removeAttribute('style');if(priorStyle.present)element.setAttribute('style',priorStyle.value);}
+      const restored=${collisionRailCopiesExpression},
+        restoredStyle={present:element.hasAttribute('style'),value:element.getAttribute('style')};
+      return {id:${JSON.stringify(id)},shown,restored,priorStyle,restoredStyle,
+        styleRestored:restoredStyle.present===priorStyle.present&&restoredStyle.value===priorStyle.value};})()`);
     const shown = control.shown.find((row) => row.id === id);
     const other = control.shown.find((row) => row.id !== id);
     if (collisionRailCopiesHidden(control.shown) || shown?.painted !== true || shown.display !== 'flex'

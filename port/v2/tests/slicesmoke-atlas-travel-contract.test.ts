@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
 
 const sliceSource = readFileSync(
@@ -216,10 +217,54 @@ describe('Slice Atlas native Travel contract', () => {
     expect(control).toContain('if (!collisionRailCopiesHidden(collisionRailBaseline))');
     expect(control).toContain("for (const id of ['railinventory', 'railrecords'])");
     expect(control).toContain("element.style.setProperty('display','flex','important')");
-    expect(control).toContain("finally{if(prior===null)element.removeAttribute('style');else element.setAttribute('style',prior);}");
+    expect(control).toContain("finally{element.removeAttribute('style');if(priorStyle.present)element.setAttribute('style',priorStyle.value);}");
+    expect(control).toContain('styleRestored:restoredStyle.present===priorStyle.present&&restoredStyle.value===priorStyle.value');
     expect(control).toContain("shown?.painted !== true || shown.display !== 'flex'");
     expect(control).toContain('!collisionRailCopiesHidden(control.restored)');
     expect(control).toContain('JSON.stringify(control.restored) !== JSON.stringify(collisionRailBaseline)');
+  });
+
+  it('restores the complete absent, empty or nonempty rail style carrier after showing one copy', () => {
+    const require = createRequire(import.meta.url);
+    const { JSDOM } = require('jsdom') as {
+      JSDOM: new (html: string, options: Record<string, unknown>) => {
+        window: { document: Document; eval(source: string): unknown; close(): void };
+      };
+    };
+    const readOwner = section(sliceSource, '  const collisionRailCopiesExpression =',
+      '  /* Outcome-level collision proof.');
+    const read = Function(`${readOwner}; return collisionRailCopiesExpression;`)() as string;
+    const controlOwner = section(sliceSource,
+      '    const control = await evalF4Control(collisionTarget.session, `(()=>{',
+      '    const shown = control.shown.find');
+    for (const value of [null, '', 'color: red; --u1-probe: 7; ', 'display: none !important;']) {
+      const dom = new JSDOM('<style>#railrgt button{display:none}</style><nav id="railrgt"><button id="railinventory">Inventory</button><button id="railrecords">Records</button></nav>',
+        { runScripts: 'outside-only' });
+      const element = dom.window.document.getElementById('railinventory')!;
+      if (value !== null) element.setAttribute('style', value);
+      const prior = { present: value !== null, value };
+      // The browser control is synchronous inside Runtime.evaluate; replacing
+      // its await wrapper here lets this test exercise that exact DOM body.
+      const body = controlOwner.slice(controlOwner.indexOf('`') + 1, controlOwner.lastIndexOf('`'));
+      const expression = Function('id', 'collisionRailCopiesExpression', `return \`${body}\`;`)(
+        'railinventory', read) as string;
+      try {
+        const control = dom.window.eval(expression) as {
+          priorStyle: typeof prior; restoredStyle: typeof prior; styleRestored: boolean;
+          shown: Array<{ id: string; display: string }>; restored: Array<{ id: string; display: string }>;
+        };
+        expect(control.priorStyle).toEqual(prior);
+        expect(control.restoredStyle).toEqual(prior);
+        expect(control.styleRestored).toBe(true);
+        expect(element.hasAttribute('style')).toBe(prior.present);
+        expect(element.getAttribute('style')).toBe(value);
+        expect(control.shown.find((row) => row.id === 'railinventory')?.display).toBe('flex');
+        expect(control.shown.find((row) => row.id === 'railrecords')?.display).toBe('none');
+        expect(control.restored.every((row) => row.display === 'none')).toBe(true);
+        element.style.setProperty('display', 'flex', 'important');
+        expect(element.getAttribute('style')).not.toBe(value);
+      } finally { dom.window.close(); }
+    }
   });
 
   it('declares both native Atlas openers as non-submit buttons', () => {
