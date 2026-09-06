@@ -5964,43 +5964,47 @@ try {
       ||Math.abs(srch.r-expectedRight)>1||(compact?srch.w>W*.37+1:Math.abs(srch.w-236)>1)||searchHit!==searchNode)
       bad.push('search is not a reachable 44px control in its approved upper-right header column: '+JSON.stringify({srch,topbar,expectedRight,searchHit:searchHit?.id||null}));
     if(overlaps(pc,srch))bad.push('player chip overlaps the search bar');
-    const prime=document.getElementById('primechip'),expectedDockWidth=Math.min(384,W-safeLeft-safeRight-20),
-      dockPitch=expectedDockWidth/6,expectedPrimeX=compact?dock?.l+dockPitch*2.5:W/2;
+    const prime=document.getElementById('primechip'),expectedDockWidth=Math.min(320,W-safeLeft-safeRight-20),
+      dockPitch=expectedDockWidth/5,expectedPrimeX=W/2;
     if(!nativeAvailable('primechip',pr)||Math.abs(pr.cx-expectedPrimeX)>1||(!compact&&Math.abs(pr.t-pc.t)>1))
       bad.push('Prime pill is not a visible reachable native button at its approved scene position: '+JSON.stringify({pr,pc,compact,expectedPrimeX}));
     for(const [name,box] of [['playerchip',pc],['hpbar',hp],['searchbox',srch],['objective',obj]])
       if(overlaps(pr,box))bad.push('primechip overlaps '+name);
     const sceneNode=document.getElementById('sceneactions'),sceneOrder=sceneNode?[...sceneNode.children].map(el=>el.id):[],
-      dockNode=document.getElementById('dock'),surveyNode=document.getElementById('docksurvey'),chartsNode=document.getElementById('dockcharts'),
-      sceneOwned=!!sceneNode&&sceneNode.parentElement===dockNode
-        &&JSON.stringify(sceneOrder)===JSON.stringify(['docksurvey','dockcharts']);
+      dockNode=document.getElementById('dock'),leftNode=document.getElementById('raillft'),
+      leftOrder=leftNode?[...leftNode.children].map(el=>el.id):[],surveyNode=document.getElementById('docksurvey'),chartsNode=document.getElementById('dockcharts'),
+      sceneOwned=!!sceneNode&&sceneNode.parentElement===dockNode&&JSON.stringify(sceneOrder)===JSON.stringify(['dockcharts']),
+      leftOwned=!!leftNode&&leftNode.parentElement===dockNode&&JSON.stringify(leftOrder)===JSON.stringify(['docksurvey','railcodex']);
+    if(document.getElementById('dockcharters')||document.getElementById('railcharters'))bad.push('removed Charters shortcut remains in the DOM');
     if(compact){
       const icon=r(surveyNode?.querySelector(':scope > .ico')),label=r(surveyNode?.querySelector('.lbl')),
-        expectedSurveyX=dock?.l+dockPitch*5.5,expectedSurveyWidth=dockPitch-4;
-      if(!sceneOwned||getComputedStyle(sceneNode).display!=='contents'||scene?.vis
+        expectedSurveyX=dock?.l+dockPitch*.5,expectedSurveyWidth=dockPitch-4;
+      if(!leftOwned||getComputedStyle(leftNode).display!=='contents'||rail?.vis
+        ||getComputedStyle(document.getElementById('railcodex')).display!=='none'
+        ||!sceneOwned||getComputedStyle(sceneNode).display!=='contents'||scene?.vis
         ||!chartsNode||getComputedStyle(chartsNode).display!=='none'||charts?.vis
         ||!inside(dock,survey)||!nativeAvailable('docksurvey',survey)||Math.abs(survey.w-expectedSurveyWidth)>1
         ||Math.abs(survey.cx-expectedSurveyX)>1||Math.abs(survey.t-dock.t)>1||Math.abs(survey.h-(dock.h-48))>1
         ||!surveyNode.classList.contains('dock-scene')||surveyNode.querySelector('.utility-face')!==null
         ||!inside(survey,icon)||label?.vis)
-        bad.push('phone Survey is not the reachable sixth top-row scene button with Charts hidden: '
-          +JSON.stringify({scene,survey,charts,icon,label,dock,sceneOrder,sceneOwned,expectedSurveyX,expectedSurveyWidth}));
+        bad.push('phone Survey is not the reachable first top-row scene button with Charts hidden: '
+          +JSON.stringify({scene,survey,charts,icon,label,dock,sceneOrder,sceneOwned,leftOrder,leftOwned,expectedSurveyX,expectedSurveyWidth}));
     }else{
       const expectedSceneTop=rail?.b+8;
-      if(!sceneOwned||!fittedLeft(scene)||Math.abs(scene.t-expectedSceneTop)>1||!inside(scene,survey)||!inside(scene,charts)
-        ||!fittedLeft(survey)||!fittedLeft(charts)||Math.abs(survey.t-scene.t)>1||Math.abs(charts.t-survey.b-8)>1
-        ||!nativeAvailable('docksurvey',survey)||!nativeAvailable('dockcharts',charts))
-        bad.push('scene actions are not the aligned native 44px vertical stack below their measured top owner: '
-          +JSON.stringify({scene,survey,charts,topbar,rail,sceneOrder,sceneOwned,expectedSceneTop}));
+      if(!leftOwned||!sceneOwned||!fittedLeft(scene)||Math.abs(scene.t-expectedSceneTop)>1||!inside(scene,charts)
+        ||!fittedLeft(charts)||Math.abs(charts.t-scene.t)>1||!nativeAvailable('dockcharts',charts))
+        bad.push('scene actions are not the aligned native 44px Charts control below the measured Survey/Compendium owner: '
+          +JSON.stringify({scene,survey,charts,topbar,rail,sceneOrder,sceneOwned,leftOrder,leftOwned,expectedSceneTop}));
     }
     if(!inside(topbar,obj)||!inViewport(obj)||!srch||Math.abs(obj.t-srch.b-8)>1||Math.abs(obj.r-expectedRight)>1
       ||obj.w<44||(compact?Math.abs(obj.l-expectedLeft-expectedColumn-10)>1:obj.w>237)||overlaps(obj,srch)||overlaps(obj,hp)
-      ||document.getElementById('objchip')?.parentElement!==document.getElementById('topbar'))
+      ||document.getElementById('objchip')?.parentElement!==document.getElementById('topbar')||!nativeAvailable('objchip',obj)
+      ||document.getElementById('objchip')?.getAttribute('aria-controls')!=='chpanel')
       bad.push('objective chip is not contained in the right header column 8px below Search: '+JSON.stringify({obj,srch,topbar,hp,expectedRight}));
     if(!hint||Math.abs(hint.cx-W/2)>90||hint.b<H-160)bad.push('hint pill not bottom-center');
     if(ctx&&hint&&ctx.b>hint.t+6)bad.push('caption not ABOVE the hint pill');
     if(!compact){
-      for(const [owner,box,ids] of [['raillft',rail,['railcharters','railcodex']],['railrgt',rightRail,['railatlas','railshipyard']]]){
+      for(const [owner,box,ids] of [['raillft',rail,['docksurvey','railcodex']],['railrgt',rightRail,['railatlas','railshipyard']]]){
         const rows=ids.map(id=>({id,box:r(id)}));
         if(!box?.vis||Math.abs(box.t-topbar.b-8)>1||(owner==='raillft'?!fittedLeft(box):Math.abs(box.r-expectedRight)>1||box.w<44||box.w>236)
           ||rows.some((row,index)=>!inside(box,row.box)||!nativeAvailable(row.id,row.box)
@@ -6017,7 +6021,7 @@ try {
     }else{
       if(rail?.vis||rightRail?.vis)bad.push('wide rail remains visible beside the compact phone dock');
       if(!dock?.vis||Math.abs(dock.cx-W/2)>1||Math.abs(dock.w-expectedDockWidth)>1)
-        bad.push('compact dock does not retain its centered responsive six-column envelope: '+JSON.stringify({dock,expectedDockWidth}));
+        bad.push('compact dock does not retain its centered responsive five-column envelope: '+JSON.stringify({dock,expectedDockWidth}));
     }
     return bad; })()`;
   const desktopGeometryBoundary = await evalIn(renderedChromeBoundary);
@@ -6522,7 +6526,7 @@ try {
     await sleep(40);
   };
   const rightGap = railGapProbe('railrgt', 'railatlas', 'railshipyard');
-  const leftGap = railGapProbe('raillft', 'railcharters', 'railcodex');
+  const leftGap = railGapProbe('raillft', 'docksurvey', 'railcodex');
 
   /* ARC 3 ENGINEERING: exercise the real desktop launcher route before the
      generic gap probes. Browser pointer opens the registered panel, native
@@ -6896,7 +6900,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 81,
-    sha256: '44fb08ca154a61074d3b7c7269cb7ca8ccf365450b019a20b3e77569469a2e70',
+    sha256: 'bb995e649d578556b6e581af65e672e095337da808961accf59418c1acb944da',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -8256,7 +8260,7 @@ try {
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/FAMILIAR CONTROLS ON EVERY SCREEN/.test(text)
-        &&/Phones keep six icon-only scene buttons above four compact utility icons/.test(text)
+        &&/Phones keep five icon-only scene buttons above four compact utility icons/.test(text)
         &&/UTILITIES STAY TOGETHER/.test(text)
         &&/Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge/.test(text)
         &&/PRIME KEEPS YOUR PROGRESS/.test(text)
@@ -23699,7 +23703,7 @@ try {
      first-world bioscan, or successful-Breed writer. Reject only genuinely
      unavailable conquest and mature accepted/weekly directives; Engineering,
      Chapter-2 life-discovery, and Chapter-3 breeding copy are current truth. */
-  const chp = await evalIn(`(()=>{ document.getElementById('railcharters').click();
+  const chp = await evalIn(`(()=>{ document.getElementById('objchip').click();
     const chs=[...document.querySelectorAll('#chpanel [data-sel=charter-ch]')];
     const cur=chs.find(c=>c.dataset.chstate==='actionable'||c.dataset.chstate==='boundary'||c.dataset.chstate==='complete');
     const goals=document.querySelectorAll('#chpanel [data-sel=charter-goal]').length;
@@ -24805,22 +24809,28 @@ try {
     const d=px.pixels||px; let lit=0; for(let i=0;i<d.length;i+=4){ if(d[i]+d[i+1]+d[i+2]>60) lit++; } return lit; })()`);
   if (!(phPainted > 300)) fails.push('PHONE: stage nearly blank — ' + phPainted);
   /* Keep the original pinch path. U1 once moved the passive objective into
-     an auto-hit nav, so its first contact silently missed the canvas. Prove
-     both old contacts, their movement paths and the actual objective paint
-     now pass through; do not hide the regression by choosing different sky. */
+     an auto-hit nav, so its first contact silently missed the canvas. The
+     objective now owns a native Charters action: prove its hit target while
+     both old contacts, every movement point and blank header space expose
+     the canvas. The wrapper fault still has to intercept that blank space. */
   const phonePinchPlanExpression = `(()=>{const canvas=window.__CF_SLICE__?.app?.canvas,objective=document.getElementById('objchip'),
-    nav=document.getElementById('topbar'),c=canvas?.getBoundingClientRect(),o=objective?.getBoundingClientRect(),
+    nav=document.getElementById('topbar'),c=canvas?.getBoundingClientRect(),o=objective?.getBoundingClientRect(),n=nav?.getBoundingClientRect(),
     os=objective?getComputedStyle(objective):null,point=(x,y)=>{const hit=document.elementFromPoint(x,y);
-      return {x,y,tag:hit?.tagName||null,id:hit?.id||null,rootCanvas:hit===canvas,
+      return {x,y,tag:hit?.tagName||null,id:hit?.id||null,rootCanvas:hit===canvas,objectiveOwned:!!hit&&(hit===objective||objective.contains(hit)),
         owned:!!hit?.closest('[data-panel-boundary],.panel,#importsheet'),
         inside:!!c&&x>=Math.max(0,c.left)&&x<Math.min(innerWidth,c.right)&&y>=Math.max(0,c.top)&&y<Math.min(innerHeight,c.bottom)};},
     frames=Array.from({length:5},(_,step)=>[point(150-step*15,400),point(240+step*15,400)]),
     objectiveVisible=!!o&&os.display!=='none'&&os.visibility!=='hidden'&&o.width>0&&o.height>0,
     objectivePoint=objectiveVisible?point(o.left+o.width/2,o.top+o.height/2):null,
+    headerBlankPoint=n?.width>2&&n.height>2?point(n.left+1,n.top+n.height/2):null,
     exposed=(p)=>!!p&&p.inside&&p.rootCanvas&&!p.owned,
     firstStartInsideObjective=objectiveVisible&&150>=o.left&&150<o.right&&400>=o.top&&400<o.bottom;
     return {ok:canvas instanceof HTMLCanvasElement&&objective?.parentElement===nav&&objectiveVisible
-        &&exposed(objectivePoint)&&frames.every(frame=>frame.every(exposed)),frames,objectivePoint,firstStartInsideObjective,
+        &&objective instanceof HTMLButtonElement&&objective.type==='button'&&!objective.disabled
+        &&objective.getAttribute('aria-controls')==='chpanel'&&o.width>=44&&o.height>=44
+        &&!!(objective.getAttribute('aria-label')||objective.textContent||'').trim()
+        &&objectivePoint?.inside&&objectivePoint.objectiveOwned&&!objectivePoint.rootCanvas
+        &&exposed(headerBlankPoint)&&frames.every(frame=>frame.every(exposed)),frames,objectivePoint,headerBlankPoint,firstStartInsideObjective,
       objectiveRect:o?[o.left,o.top,o.right,o.bottom]:null,navPointerEvents:nav?getComputedStyle(nav).pointerEvents:null};})()`;
   const phonePinchPointerMatches = (receipts, plan) => plan?.ok === true && Array.isArray(receipts) && receipts.length === 2
     && new Set(receipts.map(row=>row?.pointerId)).size === 2
@@ -24828,7 +24838,7 @@ try {
       &&row?.trusted===true&&row?.pointerType==='touch'&&Number.isFinite(row?.x)&&Number.isFinite(row?.y))
     && plan.frames[0].every(point=>receipts.filter(row=>Math.abs(row.x-point.x)<=.75&&Math.abs(row.y-point.y)<=.75).length===1);
   const phonePinchPlan = await evalPh(phonePinchPlanExpression);
-  if (!phonePinchPlan.ok) failSliceWithoutCascade('PHONE PINCH INPUT: original contacts or the passive objective do not expose the root canvas: '+JSON.stringify(phonePinchPlan));
+  if (!phonePinchPlan.ok) failSliceWithoutCascade('PHONE PINCH INPUT: original contacts/header space do not expose canvas or the objective is not reachable: '+JSON.stringify(phonePinchPlan));
   const phonePinchControl = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
     const nav=document.getElementById('topbar'),prior=captureInlineStyleProperties(nav.style,['pointer-events']);let broken=null,error=null;
     try{nav.style.setProperty('pointer-events','auto','important');broken=${phonePinchPlanExpression};}
@@ -24836,11 +24846,11 @@ try {
     const restoration=inspectInlineStyleProperties(nav.style,prior),restored=${phonePinchPlanExpression};
     return {broken,error,restoration,restored};})()`);
   if (phonePinchControl.error !== null || phonePinchControl.broken?.ok !== false
-    || phonePinchControl.broken?.objectivePoint?.rootCanvas !== false
-    || phonePinchControl.broken?.objectivePoint?.id !== 'topbar'
+    || phonePinchControl.broken?.headerBlankPoint?.rootCanvas !== false
+    || phonePinchControl.broken?.headerBlankPoint?.id !== 'topbar'
     || (phonePinchPlan.firstStartInsideObjective && phonePinchControl.broken?.frames?.[0]?.[0]?.rootCanvas !== false)
     || !phonePinchControl.restoration?.ok || !phonePinchControl.restored?.ok) {
-    failSliceWithoutCascade('PHONE PINCH INPUT CONTROL FAILED — auto-hit objective header was not reproduced, rejected and restored: '+JSON.stringify(phonePinchControl));
+    failSliceWithoutCascade('PHONE PINCH INPUT CONTROL FAILED — auto-hit blank header was not reproduced, rejected and restored: '+JSON.stringify(phonePinchControl));
   }
   await evalPh(`(()=>{window.__cfPhonePinchAbort?.abort();const controller=new AbortController();window.__cfPhonePinchAbort=controller;
     window.__cfPhonePinchReceipts=[];document.addEventListener('pointerdown',event=>{const target=event.target instanceof Element?event.target:null;
@@ -24867,7 +24877,7 @@ try {
   const z1 = await evalPh(`window.__CF_SLICE__.camT.z`);
   console.log('PHONE PINCH INPUT: '+JSON.stringify({originalStart:phonePinchPlan.frames[0],objectivePoint:phonePinchPlan.objectivePoint,
     firstStartInsideObjective:phonePinchPlan.firstStartInsideObjective,objectiveRect:phonePinchPlan.objectiveRect,
-    autoHitControl:phonePinchControl.broken.objectivePoint,restoration:phonePinchControl.restoration,receipts:phonePinchReceipts,z0,z1}));
+    headerBlankPoint:phonePinchPlan.headerBlankPoint,autoHitControl:phonePinchControl.broken.headerBlankPoint,restoration:phonePinchControl.restoration,receipts:phonePinchReceipts,z0,z1}));
   if (!(z1 > z0 * 1.15)) fails.push('PHONE: pinch-out did not zoom (z ' + z0 + ' → ' + z1 + ')');
   const shotPh = await send('Page.captureScreenshot', { format: 'png' }, ph);
   fs.writeFileSync(screenshotPath('phone'), Buffer.from(shotPh.data, 'base64'));
@@ -25601,7 +25611,7 @@ try {
     return {ok:s.save.ascCh===1&&s.stage===0&&goals===0&&!/Land on 3 worlds beyond Sol/i.test(text)
       &&/development slice/i.test(text)&&/next Charter action is not available in this development slice/i.test(s.objective),
       ascCh:s.save.ascCh,stage:s.stage,goals,text,objective:s.objective};})()`;
-  const malformedProjection = await evalNavPh(`(()=>{ document.getElementById('dockcharters')?.click();return ${malformedProjectionCheck};})()`);
+  const malformedProjection = await evalNavPh(`(()=>{ document.getElementById('objchip')?.click();return ${malformedProjectionCheck};})()`);
   if (!malformedProjection.ok) {
     fails.push('MALFORMED CHAPTER REACH: ascCh without a saved drive exposed impossible Chapter-2 work: '
       + JSON.stringify(malformedProjection));
@@ -26403,12 +26413,12 @@ try {
   await waitPanelF4Writable('CHARTER PANEL REFRESH replacement F4 authority', {
     previousToken: panelImportToken,
   });
-  await waitPanelValue('CHARTER PANEL REFRESH system + rail restore', `(()=>{ const s=window.__CF_SLICE__.api.state(),
-    rail=document.getElementById('railcharters'),r=rail?.getBoundingClientRect(),
+  await waitPanelValue('CHARTER PANEL REFRESH system + objective restore', `(()=>{ const s=window.__CF_SLICE__.api.state(),
+    rail=document.getElementById('objchip'),r=rail?.getBoundingClientRect(),
     x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null;
     return innerWidth===1280&&innerHeight===800&&s.mode==='system'&&s.star===424242&&s.panelOpen===null&&rail&&r.width>0&&r.height>=44
       &&getComputedStyle(rail).display!=='none'&&(hit===rail||rail.contains(hit))?{x,y,state:s}:null;})()`);
-  const railAction = await evalPanel(`(()=>{ const rail=document.getElementById('railcharters'),r=rail.getBoundingClientRect();
+  const railAction = await evalPanel(`(()=>{ const rail=document.getElementById('objchip'),r=rail.getBoundingClientRect();
     return {x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`);
   await send('Input.dispatchMouseEvent', {
     type: 'mousePressed', x: railAction.x, y: railAction.y, button: 'left', clickCount: 1,
@@ -26416,7 +26426,7 @@ try {
   await send('Input.dispatchMouseEvent', {
     type: 'mouseReleased', x: railAction.x, y: railAction.y, button: 'left', clickCount: 1,
   }, panelSession);
-  await waitPanelValue('CHARTER PANEL REFRESH rail open', `window.__CF_SLICE__.api.state().panelOpen==='ch'`);
+  await waitPanelValue('CHARTER PANEL REFRESH objective open', `window.__CF_SLICE__.api.state().panelOpen==='ch'`);
   const panelDocumentToken = await sliceToken(panelSession);
   const panelSurveyBeforeAuthority = await waitPanelF4Writable(
     'CHARTER PANEL REFRESH Survey predecessor F4 authority',
@@ -28708,11 +28718,16 @@ try {
 
   const collisionRailCopiesHidden = (rows) => Array.isArray(rows) && rows.length === 2
     && rows.every((row, index) => row?.id === ['raillft', 'railrgt'][index]
-      && row.exists === true && row.parentTag === 'BODY' && row.display === 'none'
-      && row.rectCount === 0 && row.width === 0 && row.height === 0 && row.painted === false);
+      && row.exists === true && (index === 0 ? row.parentId === 'dock' && row.display === 'contents'
+        && row.copyIds?.join(',') === 'railcodex' : row.parentTag === 'BODY' && row.display === 'none'
+        && row.copyIds?.join(',') === 'railatlas,railshipyard')
+      && row.copiesHidden === true && row.rectCount === 0 && row.width === 0 && row.height === 0 && row.painted === false);
   const collisionRailCopiesExpression = `(()=>['raillft','railrgt'].map((id)=>{
     const element=document.getElementById(id),style=element?getComputedStyle(element):null,
-      rect=element?.getBoundingClientRect();return {id,exists:element instanceof HTMLElement,
+      rect=element?.getBoundingClientRect(),copies=element?[...element.querySelectorAll('button')].filter(button=>button.id!=='docksurvey'):[];
+      return {id,exists:element instanceof HTMLElement,parentId:element?.parentElement?.id??null,
+        copyIds:copies.map(button=>button.id),copiesHidden:copies.length>0&&copies.every(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();
+          return (s.display==='none'||style.display==='none')&&r.width===0&&r.height===0;}),
         parentTag:element?.parentElement?.tagName??null,display:style?.display??null,
         rectCount:element?.getClientRects().length??null,width:rect?.width??null,height:rect?.height??null,
         painted:!!element&&style.display!=='none'&&style.visibility!=='hidden'&&rect.width>0&&rect.height>0};}))()`;
@@ -28747,7 +28762,7 @@ try {
   const collisionSetup = collisionFixtureReady.state;
   const collisionRailBaseline = await evalF4Control(collisionTarget.session, collisionRailCopiesExpression);
   if (!collisionRailCopiesHidden(collisionRailBaseline)) {
-    failSliceWithoutCascade('U1 RAIL DUPLICATES: legacy rail roots remain painted beside the unified launcher: '
+    failSliceWithoutCascade('U1 RAIL DUPLICATES: desktop copies or boxed rail roots remain beside the compact launcher: '
       + JSON.stringify(collisionRailBaseline));
   }
   const collisionRailControls = [];

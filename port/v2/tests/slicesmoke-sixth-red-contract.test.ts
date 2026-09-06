@@ -384,7 +384,7 @@ describe('sixth Slice red contract repairs', () => {
     });
     const releaseRowsBefore = [...releaseDom.window.document.querySelectorAll('li')].map(row => row.textContent);
     for (const [current, stale] of [
-      ['Phones keep six icon-only scene buttons above four compact utility icons', 'five labelled controls in one centered desktop deck'],
+      ['Phones keep five icon-only scene buttons above four compact utility icons', 'five labelled controls in one centered desktop deck'],
       ['Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge',
         'Desktop utilities stay in the old viewport corner'],
       ['Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill', 'Signature count is removed on phones'],
@@ -3317,38 +3317,43 @@ describe('sixth Slice red contract repairs', () => {
     dom.window.close();
   });
 
-  it('requires canvas exposure at the unchanged pinch path and actual passive objective', () => {
+  it('requires unchanged canvas pinch paths and blank header exposure beside the native objective', () => {
     const start = '  const phonePinchPlanExpression = `';
     const expression = section(sliceSource, start, '`;\n  const phonePinchPointerMatches =').slice(start.length);
-    const dom = new JSDOM('<!doctype html><header id="topbar" style="pointer-events:none"><span id="objchip">Chapter 3 boundary objective</span></header><canvas id="root"></canvas><canvas id="foreign"></canvas><div id="cover"></div>', { runScripts: 'outside-only' });
+    const dom = new JSDOM('<!doctype html><header id="topbar" style="pointer-events:none"><button id="objchip" type="button" aria-controls="chpanel">Chapter 3 boundary objective</button></header><canvas id="root"></canvas><canvas id="foreign"></canvas><div id="cover"></div>', { runScripts: 'outside-only' });
     const win = dom.window as unknown as Window & typeof globalThis & { __CF_SLICE__: { app: { canvas: HTMLCanvasElement | null } } };
     const document = win.document, canvas = document.getElementById('root') as HTMLCanvasElement;
     const nav = document.getElementById('topbar')!, objective = document.getElementById('objchip')!;
     win.__CF_SLICE__ = { app: { canvas } };
     Object.defineProperties(win, { innerWidth: { value: 390 }, innerHeight: { value: 844 } });
     const rect = (left: number, top: number, right: number, bottom: number) => ({ left, top, right, bottom, width: right - left, height: bottom - top });
-    let objectiveRect = rect(10, 234, 166, 486);
+    let objectiveRect = rect(160, 60, 380, 104);
+    Object.defineProperty(nav, 'getBoundingClientRect', { value: () => rect(0, 0, 390, 112) });
     Object.defineProperty(canvas, 'getBoundingClientRect', { value: () => rect(0, 0, 390, 844) });
     Object.defineProperty(objective, 'getBoundingClientRect', { value: () => objectiveRect });
     let cover: { x: number; y: number; node: Element } | null = null;
     document.elementFromPoint = ((x: number, y: number) => {
       if (cover && x === cover.x && y === cover.y) return cover.node;
-      if (nav.style.pointerEvents === 'auto' && x >= 10 && x < 166 && y >= 130 && y < 486) return nav;
+      if (x >= objectiveRect.left && x < objectiveRect.right && y >= objectiveRect.top && y < objectiveRect.bottom) return objective;
+      if (nav.style.pointerEvents === 'auto' && x >= 0 && x < 390 && y >= 0 && y < 112) return nav;
       return canvas;
     }) as typeof document.elementFromPoint;
-    type Plan = { ok: boolean; firstStartInsideObjective: boolean; objectivePoint: { rootCanvas: boolean; id: string }; frames: Array<Array<{ x: number; y: number; rootCanvas: boolean }>> };
+    type Plan = { ok: boolean; firstStartInsideObjective: boolean; objectivePoint: { rootCanvas: boolean; id: string; objectiveOwned: boolean }; headerBlankPoint: { rootCanvas: boolean; id: string }; frames: Array<Array<{ x: number; y: number; rootCanvas: boolean }>> };
     const run = (): Plan => win.eval(expression) as Plan;
     try {
       const baseline = run();
       expect(baseline.ok).toBe(true);
-      expect(baseline.firstStartInsideObjective).toBe(true);
+      expect(baseline.firstStartInsideObjective).toBe(false);
+      expect(baseline.objectivePoint).toMatchObject({ id: 'objchip', rootCanvas: false, objectiveOwned: true });
+      expect(baseline.headerBlankPoint.rootCanvas).toBe(true);
       expect(baseline.frames[0]?.map(({ x, y }) => ({ x, y }))).toEqual([{ x: 150, y: 400 }, { x: 240, y: 400 }]);
       expect(baseline.frames[4]?.map(({ x, y }) => ({ x, y }))).toEqual([{ x: 90, y: 400 }, { x: 300, y: 400 }]);
       nav.style.pointerEvents = 'auto';
       const blocked = run();
       expect(blocked.ok).toBe(false);
-      expect(blocked.objectivePoint).toMatchObject({ id: 'topbar', rootCanvas: false });
-      expect(blocked.frames[0]?.[0]?.rootCanvas).toBe(false);
+      expect(blocked.headerBlankPoint).toMatchObject({ id: 'topbar', rootCanvas: false });
+      expect(blocked.objectivePoint.objectiveOwned).toBe(true);
+      expect(blocked.frames[0]?.[0]?.rootCanvas).toBe(true);
       nav.style.pointerEvents = 'none';
       expect(run().ok).toBe(true);
       for (const [x, node] of [[240, document.getElementById('cover')!], [90, document.getElementById('cover')!], [240, document.getElementById('foreign')!]] as const) {
@@ -3360,6 +3365,18 @@ describe('sixth Slice red contract repairs', () => {
       objectiveRect = rect(10, 900, 166, 1100);
       expect(run().ok).toBe(false);
       objectiveRect = rect(10, 234, 166, 486);
+      expect(run().firstStartInsideObjective).toBe(true);
+      expect(run().frames[0]?.[0]?.rootCanvas).toBe(false);
+      expect(run().ok).toBe(false);
+      objectiveRect = rect(160, 60, 380, 104);
+      expect(run().ok).toBe(true);
+      (objective as HTMLButtonElement).disabled = true;
+      expect(run().ok).toBe(false);
+      (objective as HTMLButtonElement).disabled = false;
+      expect(run().ok).toBe(true);
+      cover = { x: 270, y: 82, node: document.getElementById('cover')! };
+      expect(run().ok).toBe(false);
+      cover = null;
       expect(run().ok).toBe(true);
       win.__CF_SLICE__.app.canvas = null;
       expect(run().ok).toBe(false);
@@ -3386,7 +3403,7 @@ describe('sixth Slice red contract repairs', () => {
     const owner = section(sliceSource, '  /* Keep the original pinch path.', "  const shotPh = await send('Page.captureScreenshot'");
     proveEachMarkerRequired(owner, [
       ['old wrapper fault injection', "nav.style.setProperty('pointer-events','auto','important')"],
-      ['actual objective interception', "phonePinchControl.broken?.objectivePoint?.id !== 'topbar'"],
+      ['actual blank-header interception', "phonePinchControl.broken?.headerBlankPoint?.id !== 'topbar'"],
       ['same formerly blocked contact', 'phonePinchPlan.firstStartInsideObjective && phonePinchControl.broken?.frames?.[0]?.[0]?.rootCanvas !== false'],
       ['exact property restoration', 'finally{restoreInlineStyleProperties(nav.style,prior);}'],
       ['restored path recheck', '!phonePinchControl.restoration?.ok || !phonePinchControl.restored?.ok'],
@@ -3441,15 +3458,16 @@ describe('sixth Slice red contract repairs', () => {
     const start = '  const geoCheck = `';
     const expression = section(sliceSource, start, '`;\n  const desktopGeometryBoundary =').slice(start.length);
     const dom = new JSDOM(`<!doctype html><style>*{opacity:1;visibility:visible}
-      #raillft,#railrgt,#trail,#dockcharts,#docksurvey .lbl{display:none}#sceneactions{display:contents}</style>
+      #railcodex,#railrgt,#trail,#dockcharts,#docksurvey .lbl{display:none}#raillft,#sceneactions{display:contents}</style>
       <header id="topbar"><button id="dockinventory" type="button" aria-label="Inventory"><span id="playerchip">Explorer</span></button>
-        <div id="hpbar">100/100</div><input id="searchbox"><span id="objchip">Objective</span>
+        <div id="hpbar">100/100</div><input id="searchbox"><button id="objchip" type="button" aria-controls="chpanel">Objective</button>
         <div id="trail"><span class="seg cur">Cosmos</span></div></header>
-      <div id="ctxbar">Context</div><div id="hintpill">Hint</div><nav id="dock"><button id="primechip" type="button">Prime</button>
-        <div id="sceneactions" role="group"><button id="docksurvey" class="dock-scene" type="button" aria-label="survey card">
+      <div id="ctxbar">Context</div><div id="hintpill">Hint</div><nav id="dock">
+        <div id="raillft"><button id="docksurvey" class="dock-scene" type="button" aria-label="survey card">
           <span class="ico" id="surveyicon">🔭</span><span class="lbl" id="surveylabel">Survey</span></button>
-          <button id="dockcharts" type="button">Charts</button></div></nav>
-      <nav id="raillft"></nav><nav id="railrgt"></nav>`, { runScripts: 'outside-only' });
+          <button id="railcodex" type="button">Compendium</button></div><button id="primechip" type="button">Prime</button>
+        <div id="sceneactions" role="group"><button id="dockcharts" type="button">Charts</button></div></nav>
+      <nav id="railrgt"></nav>`, { runScripts: 'outside-only' });
     const win = dom.window as unknown as Window & typeof globalThis;
     const document = win.document;
     Object.defineProperties(win, { innerWidth: { value: 390, configurable: true }, innerHeight: { value: 844 } });
@@ -3462,15 +3480,17 @@ describe('sixth Slice red contract repairs', () => {
       ['searchbox', { left: 235.7, top: 8, width: 144.3, height: 44 }],
       ['trail', { left: 0, top: 0, width: 0, height: 0 }],
       ['sceneactions', { left: 0, top: 0, width: 0, height: 0 }],
-      ['docksurvey', { left: 320 + 1/3, top: 740, width: 57 + 2/3, height: 44 }],
-      ['surveyicon', { left: 342 + 1/6, top: 755, width: 14, height: 14 }],
+      ['raillft', { left: 0, top: 0, width: 0, height: 0 }],
+      ['railcodex', { left: 0, top: 0, width: 0, height: 0 }],
+      ['docksurvey', { left: 37, top: 740, width: 60, height: 44 }],
+      ['surveyicon', { left: 60, top: 755, width: 14, height: 14 }],
       ['surveylabel', { left: 0, top: 0, width: 0, height: 0 }],
       ['dockcharts', { left: 0, top: 0, width: 0, height: 0 }],
       ['objchip', { left: 160.4, top: 60, width: 219.6, height: 44 }],
       ['ctxbar', { left: 100, top: 650, width: 190, height: 28 }],
       ['hintpill', { left: 130, top: 696, width: 130, height: 24 }],
-      ['dock', { left: 10, top: 740, width: 370, height: 92 }],
-      ['primechip', { left: 135 + 1/3, top: 740, width: 57 + 2/3, height: 44 }],
+      ['dock', { left: 35, top: 740, width: 320, height: 92 }],
+      ['primechip', { left: 165, top: 740, width: 60, height: 44 }],
     ]);
     for (const [id] of boxes) {
       const node = document.getElementById(id)!;
@@ -3481,7 +3501,7 @@ describe('sixth Slice red contract repairs', () => {
     }
     let blockedHit: string | null = null;
     document.elementFromPoint = ((x: number, y: number) => {
-      for (const id of ['dockinventory', 'searchbox', 'docksurvey', 'dockcharts', 'primechip']) {
+      for (const id of ['dockinventory', 'searchbox', 'objchip', 'docksurvey', 'dockcharts', 'primechip']) {
         const b = boxes.get(id)!;
         if (x >= b.left && x <= b.left + b.width && y >= b.top && y <= b.top + b.height) {
           return id === blockedHit ? document.body : document.getElementById(id);
@@ -3492,8 +3512,8 @@ describe('sixth Slice red contract repairs', () => {
     const run = (): string[] => win.eval(expression) as string[];
     const setPhoneWidth = (width: number) => {
       Object.defineProperty(win, 'innerWidth', { value: width, configurable: true });
-      const column = Math.max(128, Math.min(176, width * .36)), dockWidth = Math.min(384, width - 20),
-        pitch = dockWidth / 6, dockLeft = (width - dockWidth) / 2,
+      const column = Math.max(128, Math.min(176, width * .36)), dockWidth = Math.min(320, width - 20),
+        pitch = dockWidth / 5, dockLeft = (width - dockWidth) / 2,
         searchWidth = Math.min(width * .37, width - column - 30);
       for (const id of ['playerchip', 'dockinventory', 'hpbar']) boxes.set(id, { ...boxes.get(id)!, width: column });
       boxes.set('topbar', { ...boxes.get('topbar')!, width });
@@ -3501,12 +3521,12 @@ describe('sixth Slice red contract repairs', () => {
       boxes.set('objchip', { ...boxes.get('objchip')!, left: column + 20, width: width - column - 30 });
       boxes.set('dock', { ...boxes.get('dock')!, left: dockLeft, width: dockWidth });
       boxes.set('primechip', { ...boxes.get('primechip')!, left: dockLeft + pitch * 2 + 2, width: pitch - 4 });
-      boxes.set('docksurvey', { ...boxes.get('docksurvey')!, left: dockLeft + pitch * 5 + 2, width: pitch - 4 });
-      boxes.set('surveyicon', { ...boxes.get('surveyicon')!, left: dockLeft + pitch * 5.5 - 7 });
+      boxes.set('docksurvey', { ...boxes.get('docksurvey')!, left: dockLeft + 2, width: pitch - 4 });
+      boxes.set('surveyicon', { ...boxes.get('surveyicon')!, left: dockLeft + pitch * .5 - 7 });
       for (const id of ['ctxbar', 'hintpill']) boxes.set(id, { ...boxes.get(id)!, left: (width - boxes.get(id)!.width) / 2 });
     };
     try {
-      for (const [width, expectedEnvelope, expectedSceneWidth] of [[320, 300, 46], [390, 370, 57 + 2/3], [430, 384, 60]] as const) {
+      for (const [width, expectedEnvelope, expectedSceneWidth] of [[320, 300, 56], [390, 320, 60], [430, 320, 60]] as const) {
         setPhoneWidth(width);
         expect(run(), width + 'px responsive top-row Survey').toEqual([]);
         expect(boxes.get('dock')!.width).toBe(expectedEnvelope);
@@ -3522,9 +3542,9 @@ describe('sixth Slice red contract repairs', () => {
         ['header clips its current lower row', 'topbar', { height: 100 }, 'HP bar'],
         ['Survey outside the dock', 'docksurvey', { top: 120 }, 'phone Survey'],
         ['Survey in the former lower utility row', 'docksurvey', { top: 788, width: 44 }, 'phone Survey'],
-        ['Survey in the wrong top-row slot', 'docksurvey', { left: 258 + 2/3 }, 'phone Survey'],
-        ['Prime incorrectly centered between six scene buttons', 'primechip', { left: 166 + 1/6 }, 'Prime pill'],
-        ['dock retains the obsolete 320px envelope', 'dock', { left: 35, width: 320 }, 'compact dock'],
+        ['Survey in the wrong top-row slot', 'docksurvey', { left: 293 }, 'phone Survey'],
+        ['Prime displaced toward the former six-column center', 'primechip', { left: 135 + 1/3 }, 'Prime pill'],
+        ['dock retains the obsolete 370px envelope', 'dock', { left: 10, width: 370 }, 'compact dock'],
         ['Survey target below 44px height', 'docksurvey', { height: 43 }, 'phone Survey'],
         ['Survey target below 44px width', 'docksurvey', { width: 43 }, 'phone Survey'],
         ['Survey emoji detached from its scene target', 'surveyicon', { top: 788 }, 'phone Survey'],
@@ -3540,8 +3560,21 @@ describe('sixth Slice red contract repairs', () => {
         expect(run(), `${name} restoration`).toEqual([]);
       }
       const survey = document.getElementById('docksurvey')!, scene = document.getElementById('sceneactions')!,
+        leftRail = document.getElementById('raillft')!, codex = document.getElementById('railcodex')!,
         charts = document.getElementById('dockcharts')!, dock = document.getElementById('dock')!;
       const phoneSurveyFailed = () => run().some(finding => finding.startsWith('phone Survey'));
+      const objective = document.getElementById('objchip') as HTMLButtonElement;
+      for (const defect of ['disabled', 'wrong panel', 'covered'] as const) {
+        if (defect === 'disabled') objective.disabled = true;
+        if (defect === 'wrong panel') objective.setAttribute('aria-controls', 'inventorypanel');
+        if (defect === 'covered') blockedHit = 'objchip';
+        expect(run().some(finding => finding.startsWith('objective chip')), defect).toBe(true);
+        objective.disabled = false; objective.setAttribute('aria-controls', 'chpanel'); blockedHit = null;
+        expect(run()).toEqual([]);
+      }
+      const obsolete = document.createElement('button'); obsolete.id = 'dockcharters'; dock.appendChild(obsolete);
+      expect(run().some(finding => finding.startsWith('removed Charters shortcut'))).toBe(true);
+      obsolete.remove(); expect(run()).toEqual([]);
       const icon = document.getElementById('surveyicon')!;
       icon.classList.replace('ico', 'utility-face');
       expect(phoneSurveyFailed(), 'Survey cannot retain a small utility face').toBe(true);
@@ -3549,7 +3582,7 @@ describe('sixth Slice red contract repairs', () => {
       expect(run()).toEqual([]);
       survey.remove();
       expect(phoneSurveyFailed(), 'missing Survey cannot count as a boxless group PASS').toBe(true);
-      scene.insertBefore(survey, charts);
+      leftRail.insertBefore(survey, codex);
       expect(run()).toEqual([]);
       survey.style.display = 'none';
       expect(phoneSurveyFailed(), 'hidden Survey is unavailable').toBe(true);
@@ -3559,8 +3592,12 @@ describe('sixth Slice red contract repairs', () => {
       expect(phoneSurveyFailed(), 'covered Survey is unavailable').toBe(true);
       blockedHit = null;
       expect(run()).toEqual([]);
-      document.body.appendChild(scene);
+      document.body.appendChild(leftRail);
       expect(phoneSurveyFailed(), 'viewport-aligned Survey without the dock owner is rejected').toBe(true);
+      dock.prepend(leftRail);
+      expect(run()).toEqual([]);
+      document.body.appendChild(scene);
+      expect(phoneSurveyFailed(), 'Charts group outside its dock owner is rejected').toBe(true);
       dock.appendChild(scene);
       expect(run()).toEqual([]);
       charts.style.display = 'flex';

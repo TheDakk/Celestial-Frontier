@@ -2,6 +2,38 @@
 
 Nick supplied this brief on 2026-09-05. The quoted program below is retained verbatim.
 
+### Latest all-platform Survey/Charters correction — Nick, 2026-09-06
+
+Nick replaces the Charters shortcut with Survey on every platform. Compact upper-row emoji
+boards are Survey (🔭), Compendium, Prime (N/9), Shipyard and Atlas; the four small lower
+utilities remain Records (including Achievements), Notifications, Guide and Settings. Wide
+Survey occupies Charters' former upper-left position above Compendium, with Charts below.
+Duplicate dock/rail Charters shortcuts are removed. Prime stays compact-center/wide-top-center;
+phone Search, fitted wide pills, Health and Settings → Star charts keep their existing behavior.
+
+Objective becomes a named native button and the sole Charters opener, using the existing panel
+owner for pointer/keyboard activation and focus return. It remains available while landed and
+shows Charters when no objective is active. Objective progress and Charter gameplay are unchanged;
+Survey keeps its existing handler. This explicitly supersedes the earlier six-board arrangement.
+
+The compact dock returns to ten half-columns and a 320px cap within viewport width minus safe
+sides and 20px. Pitch is dock width / 5 (at most 64px); board width is pitch minus 4px with a 44px
+minimum. Four lower 44px targets/36px faces are centered below. The default dock remains 92px high.
+Panel-open short landscape retains the header safe-column cap:
+`min(320px, (viewport width − safe left − safe right − 36px) / 2)`.
+The left rail is now nested in the dock and boxless on compact layouts, placing Survey first
+while hiding the duplicate rail Compendium control. The scene-actions group contains only Charts.
+
+Scoped cross-platform verification and visual approval are pending. Current source/results belong
+to `../audits/UI_U1_SURVEY_CHARTERS_20260906.md` and ROADMAP. Both the unattributed navigation and
+portrait-restoration blockers remain OPEN. No full normal-review retry, Slice/Glass/full-chain
+run, U2–U4, Phase2 or hosted action is authorized by this correction.
+
+### Superseded phone-row amendment (preserved verbatim)
+
+The entire prior amendment below retains its wording and checkpoint evidence. The latest
+all-platform correction above owns current control placement and Objective activation.
+
 ### Latest phone-row correction — Nick, 2026-09-06
 
 Nick explicitly places Survey in the phone dock's upper row. That row now has six emoji board

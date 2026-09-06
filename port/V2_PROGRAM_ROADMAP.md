@@ -3,18 +3,19 @@
 ## UI parity program — U1 checkpoint, 2026-09-06
 
 U1 implements normal-game shared tokens, production-based phone/wide layout and Nick's saved
-notification history amendment. Nick's explicit correction places Survey (🔭) sixth in the compact
-upper board row after Charters, Compendium, Prime, Shipyard and Atlas. The lower row contains only
-Records (including Achievements), Notifications, Guide and Settings. The dock is capped at 384px
-and fits the viewport's safe width minus 20px; six board positions use pitch = width / 6 (at most
-64px) and board width = pitch − 4px, with 44px lower targets/36px faces. A panel-open short-landscape
-dock also fits the existing header safe column, including 667×375 Settings; exact geometry lives in
-UI_PRESENTATION.md. Default height remains 92px. Compact Charts stays in Settings; upper-right Search,
-wide fitted pills, wide Prime and Health are unchanged.
-This explicit arrangement supersedes the prior optional lower-row default. Build and scoped dock
-verification passed across four fresh phone documents, including 667×375 Settings-open; visual
-approval remains pending. `../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` owns current evidence and
-retains the first-source instrument red.
+notification history amendment. Nick replaces Charters with Survey on all platforms: compact
+upper boards are Survey, Compendium, Prime, Shipyard and Atlas; lower utilities remain Records,
+Notifications, Guide and Settings. Wide Survey replaces Charters above Compendium at upper-left,
+with Charts below. Duplicate Charters shortcuts are removed; Objective becomes the sole native
+Charters opener with keyboard activation, existing panel/focus ownership, landed availability and
+a Charters fallback when no objective is active. Objective progress and Charter gameplay are unchanged.
+Ten half-columns fit a dock capped at 320px and safe viewport width minus 20px; pitch is width / 5,
+board width is pitch minus 4px with a 44px minimum, and centered lower targets/faces stay 44px/36px.
+The existing panel-open short-landscape half-column cap and 92px default height remain;
+UI_PRESENTATION.md owns geometry. Search, fitted wide pills, Health and compact Charts via Settings
+are unchanged. Scoped cross-platform verification and visual approval are pending;
+`../audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns current evidence. The previous six-board scoped
+PASS and instrument red remain in `../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` as predecessor evidence.
 The prior portrait-restoration instrument stop remains OPEN beside the unattributed navigation
 blocker; full normal review, Slice, phone Glass and the full chain were NOT RUN.
 See `UI_PARITY_PROGRAM_U1_U4.md` for the accepted program, explicit geometry differences and review

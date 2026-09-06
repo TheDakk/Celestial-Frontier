@@ -4223,7 +4223,7 @@ function fillCharters(): void {
   );
   restoreFocus();
 }
-registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
+registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('objchip')], onOpen: fillCharters });
 document.getElementById('chpanel')!.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
   const button = event.target.closest<HTMLButtonElement>('[data-starter-charter-accept]');

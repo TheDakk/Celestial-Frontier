@@ -186,11 +186,13 @@ describe('Slice Atlas native Travel contract', () => {
     expect(owner).not.toContain("'#railrecords,#dockrecords'");
   });
 
-  it('observes both hidden legacy rail roots and rejects either painted root before exact restoration', () => {
+  it('observes boxless Survey ownership and hidden desktop copies and rejects either painted rail root before exact restoration', () => {
     const assess = executableDeclaration<(rows: unknown) => boolean>(
       'collisionRailCopiesHidden', '  const collisionRailCopiesExpression =');
-    const baseline = ['raillft', 'railrgt'].map((id) => ({ id, exists: true,
-      parentTag: 'BODY', display: 'none', rectCount: 0, width: 0, height: 0, painted: false }));
+    const baseline = ['raillft', 'railrgt'].map((id, index) => ({ id, exists: true,
+      parentId: index === 0 ? 'dock' : '', parentTag: index === 0 ? 'NAV' : 'BODY',
+      display: index === 0 ? 'contents' : 'none', copyIds: index === 0 ? ['railcodex'] : ['railatlas', 'railshipyard'],
+      copiesHidden: true, rectCount: 0, width: 0, height: 0, painted: false }));
     expect(assess(baseline)).toBe(true);
     expect(assess([])).toBe(false);
     expect(assess(null)).toBe(false);
@@ -200,8 +202,8 @@ describe('Slice Atlas native Travel contract', () => {
       exposed[index] = { ...exposed[index]!, display: 'flex', rectCount: 1, width: 92, height: 44, painted: true };
       expect(assess(exposed)).toBe(false);
       expect(assess(baseline)).toBe(true);
-      for (const [key, value] of [['exists', false], ['parentTag', 'NAV'], ['width', 44],
-        ['rectCount', 1], ['painted', true]] as const) {
+      for (const [key, value] of [['exists', false], [index === 0 ? 'parentId' : 'parentTag', 'FOREIGN'], ['width', 44],
+        ['rectCount', 1], ['painted', true], ['copiesHidden', false], ['copyIds', ['docksurvey']]] as const) {
         const mutant = structuredClone(baseline);
         Object.assign(mutant[index]!, { [key]: value });
         expect(assess(mutant), `${index}/${key}`).toBe(false);
@@ -238,7 +240,7 @@ describe('Slice Atlas native Travel contract', () => {
       '    const control = await evalF4Control(collisionTarget.session, `(()=>{',
       '    const shown = control.shown.find');
     for (const value of [null, '', 'color: red; --u1-probe: 7; ', 'display: none !important;']) {
-      const dom = new JSDOM('<style>#raillft,#railrgt{display:none}</style><nav id="raillft"><button>Compendium</button></nav><nav id="railrgt"><button>Atlas</button></nav>',
+      const dom = new JSDOM('<style>#raillft{display:contents}#railrgt,#railcodex{display:none}</style><nav id="dock"><div id="raillft"><button id="docksurvey">Survey</button><button id="railcodex">Compendium</button></div></nav><nav id="railrgt"><button id="railatlas">Atlas</button><button id="railshipyard">Shipyard</button></nav>',
         { runScripts: 'outside-only' });
       const element = dom.window.document.getElementById('raillft')!;
       if (value !== null) element.setAttribute('style', value);
@@ -260,7 +262,8 @@ describe('Slice Atlas native Travel contract', () => {
         expect(element.getAttribute('style')).toBe(value);
         expect(control.shown.find((row) => row.id === 'raillft')?.display).toBe('flex');
         expect(control.shown.find((row) => row.id === 'railrgt')?.display).toBe('none');
-        expect(control.restored.every((row) => row.display === 'none')).toBe(true);
+        expect(control.restored.find((row) => row.id === 'raillft')?.display).toBe(value === 'display: none !important;' ? 'none' : 'contents');
+        expect(control.restored.find((row) => row.id === 'railrgt')?.display).toBe('none');
         element.style.setProperty('display', 'flex', 'important');
         expect(element.getAttribute('style')).not.toBe(value);
       } finally { dom.window.close(); }

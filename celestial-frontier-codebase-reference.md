@@ -9,33 +9,37 @@ controls declare their native button type explicitly.
 
 `port/v2/apps/game/src/ui-presentation-tokens.ts` supplies Inter/spacing/type/color/layer
 variables; `ui-shell-style.ts` adapts verified production v1.8.9 placement to existing v2
-native controls. Nick's explicit compact layout has six upper-row emoji board pills: Charters,
-Compendium, Prime (N/9), Shipyard, Atlas and Survey (🔭). Four lower utilities are Records
-(including Achievements), Notifications, Guide and Settings. Twelve half-columns span a dock
-capped at 384px and bounded by viewport width minus safe sides and 20px. Board pitch is dock
-width / 6 (at most 64px), board width is pitch minus 4px, and lower 44px targets/36px faces occupy
-the middle four column pairs. A panel-open short-landscape dock additionally fits the existing
-header safe column: `min(384px, (viewport width − safe left − safe right − 36px) / 2)`. Default
-dock height remains 92px; UI_PRESENTATION.md owns the supported-width geometry. Compact Charts is
-hidden and Settings → Star charts remains available. Phone Search
-aligns upper-right and retains the visible placeholder Search. Wide native left/right rails return,
-Prime is top-center and four utilities stay bottom-right; Survey/Charts remain below the left rail.
+native controls. Survey replaces the Charters shortcut on every platform. Compact upper-row
+emoji board pills are Survey (🔭), Compendium, Prime (N/9), Shipyard and Atlas. Four centered
+lower utilities are Records (including Achievements), Notifications, Guide and Settings.
+Ten half-columns span a dock capped at 320px and bounded by viewport width minus safe sides and
+20px. Board pitch is dock width / 5 (at most 64px), board width is pitch minus 4px with a 44px
+minimum, and lower targets/faces stay 44px/36px. A panel-open short-landscape dock additionally
+fits the existing header safe column: `min(320px, (viewport width − safe left − safe right − 36px) / 2)`.
+Default height remains 92px; UI_PRESENTATION.md owns geometry. Compact Charts is hidden and
+Settings → Star charts remains available. Phone Search stays upper-right with the Search
+placeholder. Wide Survey replaces Charters above Compendium at upper-left, with Charts below;
+Prime stays top-center, four utilities bottom-right and Atlas/Shipyard on the right rail.
 Desktop/tablet name, Objective and text controls use bounded `width:max-content` to fit their labels.
-The objective sits below Search at upper-right; name-only Inventory and Health stay upper-left.
-Health geometry, red heart, exact numeric ratio, meter accessibility and the wrapping name preserve
-native writers/actions. `#sceneactions` is nested in the dock and uses `display:contents` on compact
-layouts; AppChrome's existing nonzero-box filter excludes it from the top-chrome extent. The Survey
-and Charts handlers in `main.ts` are unchanged. The canonical trail is populated but hidden;
-there is no Current view label.
+Objective sits below Search at upper-right and is a named native button: the sole Charters
+opener through the existing panel/focus owner after duplicate dock/rail shortcuts are removed.
+Native keyboard activation and focus return apply; the button remains available while landed
+and falls back to Charters when no objective is active. Objective progress and Charter gameplay
+are unchanged. Name-only Inventory and Health stay upper-left; Health geometry, exact ratio,
+red heart and meter accessibility retain their owners. `#raillft` is nested in the dock and
+becomes boxless on compact layouts, exposing Survey in the first slot while hiding its rail
+Compendium duplicate. `#sceneactions` now contains only Charts. AppChrome ignores boxless wrappers
+in top-chrome measurement. Survey/Charts handlers are unchanged. The canonical trail remains
+populated but hidden; there is no Current view label.
 Bottom guidance is plain text. Caption/hint geometry, compact short-landscape exception and
 72px roster band retain live measurements. UI_PRESENTATION.md owns exact values, the accepted
 safety deviations from production and the honest injected floating-trail negative control.
 Native panel/Training action/focus owners remain; passive layout wrappers pass canvas input.
 `notification-history.ts` retains explicit saved Mark read on the existing notification shape
-and UI checkpoint whitelist. The explicit Survey upper-row correction passed build and scoped
-dock verification in four fresh phone documents, including 667×375 Settings-open; visual approval
-remains pending. `audits/UI_U1_SURVEY_TOP_ROW_20260906.md` owns current results and the retained
-first-source instrument red.
+and UI checkpoint whitelist. The all-platform Survey/Charters correction awaits scoped
+cross-platform verification and visual approval; `audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns
+current results. The earlier six-board scoped PASS and instrument red remain predecessor evidence
+in `audits/UI_U1_SURVEY_TOP_ROW_20260906.md`.
 Prior partial evidence stays in `audits/UI_U1_COMPACT_CONTROLS_20260906.md`. Both the unattributed
 navigation blocker and the normal-review portrait-restoration blocker remain OPEN; this correction
 did not run full normal review, Slice, phone Glass or the full chain. U2–U4 and Phase2 remain unstarted;

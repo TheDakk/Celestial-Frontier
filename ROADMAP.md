@@ -17,73 +17,91 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-06 · U1 SURVEY TOP ROW / SCOPED DOCK PASS
+## SESSION HANDOFF — 2026-09-06 · U1 SURVEY / CHARTERS CORRECTION · VERIFICATION PENDING
 
 OpenAI/Codex on macOS | openai/mac | /Users/nick/Projects/celestial-frontier-openai-mac |
-origin/openai/mac. Physical identity verified. Entry9e96f182689b504b937ae95a9640b695e9ab40d3,
-5 local commits ahead; no push or hosted action. Root main.js absent; ambient .DS_Store untouched.
-SSH origin git@github.com:TheDakk/Celestial-Frontier.git authenticated as TheDakk; read/fetch and
-develop c1791e2 ancestor receipt reused in this uninterrupted session. No other worktree edited.
+origin/openai/mac. Exact physical root/branch/upstream verified. Entry HEAD
+70b16eeba973f13040e47d50632fc6c1ba7d4a81 is eight local commits ahead of origin/openai/mac.
+The current correction is working-copy source; final implementation/tested commit and browser
+results are pending. Root main.js absent; ambient .DS_Store untouched. SSH origin
+ git@github.com:TheDakk/Celestial-Frontier.git authenticated as TheDakk; read/fetch and develop
+c1791e2 ancestor receipts are reused in this uninterrupted session. No other worktree edited.
 
-### Explicit current correction
+### Current explicit correction
 
-Nick wants Survey in the TOP row and only smaller Settings/Achievements/Help/etc. below.
-Top6: Charters, Compendium, Prime, Shipyard, Atlas, Survey🔭. Bottom4: Records, Notifications,
-Guide, Settings. This supersedes the optional lower-row Survey default. Native action unchanged;
-Survey uses a plain emoji scene pill. Dock width is capped at384px and viewport minus safe sides
-minus20px. Six equal slots use scene width slot-minus4px with44px minimum; bottom44px targets/
-36px faces occupy the middle4 slots. Default height92px. Panel-open short landscape shares the
-existing header safe-column cap;667×375 is included in the bounded review. Compact Prime is third
-of6, wide Prime remains centered. Search alignment, fitted desktop text, Health and Charts via
-Settings are unchanged. U1 visual approval OPEN; U2–U4/Phase2/integrated pilot remain stopped.
+Nick replaces the Charters shortcut with Survey on every v2 layout. Phone upper five are
+Survey (🔭), Compendium, Prime, Shipyard and Atlas; the lower four are Records (Achievements),
+Notifications, Guide and Settings. Wide Survey replaces Charters above Compendium at upper-left;
+Charts remains below, with its existing Settings toggle on compact layouts. Duplicate dock/rail
+Charters shortcuts are removed. Objective becomes the sole named native Charters opener with a
+44px target, pointer/Enter/Space activation and the existing panel owner/focus return. It remains
+available while landed and falls back to Charters without an active objective. Objective progress,
+Charter gameplay and the Survey action are unchanged.
 
-Current audit: audits/UI_U1_SURVEY_TOP_ROW_20260906.md and its retained scoped .mjs probe.
-First focused4 files/86 tests PASS. Root validate PASS. Final typecheck first stopped on the new
-fixture's inferred number-or-undefined tuple; explicit readonly tuple typing corrects it.
-Corrected typecheck,4 focused files/86 tests and2 native trace controls PASS. Signed810ab78
-scoped probe passed390px baseline and rejected Survey moving down; exact CSS attribute cleanup
-failed although restored geometry passed. First red/phonePNG retained, later sizes NOT RUN.
-Probe-only correction now uses established exact-style cleanup and records raw before/after;
-product source remains810ab78. New signed source e94f7b35211094e334abc983e716456749e2e3ae passed the scoped
-observation once; product source810ab78 unchanged. Four fresh contexts,20 live CSS faults/exact
-style restoration,3 larger-text/class-restoration checks,5 trusted inputs and4 PNGs PASS, with
-zero runtime errors/overflow.390/320/667 PNGs inspected. Prior810ab78 probe cleanup red retained.
-Manifest audits/UI_U1_SURVEY_TOP_ROW_e94f7b3_20260906/manifest.json
-SHA256 842a3aebbd1f9c53b6eadcef4246fac7a1f8189ed0d931e3dcff1987e44695e1;7 carriers verified.
-No full-review/portrait-restoration/Slice/phoneGlass replay or desktop verification. Scope is fresh isolated contexts at
-320/390/430 portrait plus667 landscape Settings: dock geometry,20 CSS negative controls/exact
-restoration, larger text and4 PNGs only. No full normal review, portrait-restoration retry, Slice
-or phone Glass. This layout observation cannot clear the older reds. Five current references
-and the amended program agree. Draft81-bullet authority
-44fb08ca154a61074d3b7c7269cb7ca8ccf365450b019a20b3e77569469a2e70.
-Producer35f8b4d4a386936ede775daba42f6986be1994d72ab5c2c68029a0fcefecba70; measurement
-4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12,
-fixed ruler, ceilings and history unchanged. No version/package/workflow/protected-art changes.
+Compact geometry is five plus four in ten half-columns: width capped at 320px and viewport minus
+safe sides minus 20px, pitch = width / 5 at most 64px, board width = pitch minus 4px with a 44px
+minimum. Lower targets/faces remain 44px/36px, centered; default dock height remains 92px.
+Panel-open short landscape keeps the existing half-column safe-width cap. The dock now contains
+the left rail, boxless in compact mode with Survey first and the duplicate rail Compendium hidden;
+the scene-actions group contains only Charts. Search, fitted wide pills, Health and wide Prime
+are unchanged. Five current references and the new program amendment describe this correction;
+all older amendments are preserved verbatim. U1 visual acceptance remains OPEN.
 
-### Preserve both blockers and next steps
+Audit: audits/UI_U1_SURVEY_CHARTERS_20260906.md. Root validate PASS (50-probe fingerprint), full
+typecheck PASS. Initial full Vitest RED: 2 files/3 tests failed; 309 files/3319 tests passed,
+1 skipped. The failures were stale guards for the old passive Objective/rail Charters. A bounded
+test-only correction keeps raw-status DOM protection, admits only Main's exact single Charters
+registration, and adds wrong-opener/extra-objective-writer negatives; Glass expects Survey and
+Objective. Both corrected files/48 tests PASS; native trace selftest 2 PASS. The full Vitest red
+is retained; no full rerun PASS is claimed. Product unchanged after the final pin. Browser probe
+NOT RUN. Prep evidence is retained in audits/UI_U1_SURVEY_CHARTERS_PREP_20260906/manifest.json
+(five compressed logs, two authority receipts). The manifest explicitly binds precommit working
+source to the commit carrying final product/guards; it retains the initial red and scoped correction.
+Planned bounded probe:
+audits/UI_U1_SURVEY_CHARTERS_PROBE_20260906.mjs, six fresh contexts at phone widths 390/320/430,
+667 landscape Settings-open, 834 tablet and 1440 desktop. Scope: native Objective pointer/Enter/
+Space, Close/Escape/focus return, Survey placement, geometry negative controls with exact
+restoration, larger text and PNGs. This does not retry the full normal review or its portrait
+restoration, and does not run Slice, phone Glass or the full chain. Stop after the first red;
+retain its source/evidence and do not advance or rerun unchanged source.
 
-08cd97d79b67cab4b8d19bfd493293e997dec528: Skip785ms → Escape Cosmos1313ms → unsolicited
-Cosmos/Milky Way3930ms before Notifications dispatch. Unattributed/OPEN.95c9a1f nonrecurrence is
-not repair. c57aaaebc656f2e2d15705601fe1a2a73cf15f1f: Runtime.evaluate timeout after23 native phone
-inputs and landscape Settings Close while restoring390×844; pending expression unknown. Cleanup
-read Cosmos/closed panels/390×844, all4 debugger pauses resumed, no lasting hang established.
-Both exact evidence sets/audits remain immutable. No workaround wait, deadline increase, navigation
-guard or automatic retry.
+Current producer 7a67c0db4dc3ad4f3f3caf3a48ad15e61ad2e2d77facc3339975420900b77a51;
+measurement 4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 is unchanged.
+Draft 81-bullet authority bb995e649d578556b6e581af65e672e095337da808961accf59418c1acb944da.
+Fixed rulers, ceilings, history, game/release version, packages, workflows and protected art retain
+their owners. No release, certification or visual-acceptance claim follows from this correction.
 
-Codex: requested correction and exact evidence retention complete; stop for visual review.
-Separately bounded restoration-expression diagnosis remains the next technical work. Fresh resume:
-audits/UI_U1_SURVEY_TOP_ROW_RESUME_20260906.md. Claude: Nick need not open Claude now; preserve anthropic/mac/unmerged173c806,
-no copy/merge or repeated battery. No PR/push/GitHub step now. Future openai/mac → develop
-integration requires separately scoped exact hosted authority.
+### Preserve both blockers
 
-Audiovisual B–D candidates exist; latest preservation CLOSED; integrated pilot UNAPPROVED;
-eight anatomical animations INCOMPLETE with static fallbacks. Matched listening, physical iPhone/
-Safari/PWA and256MiB retained-update enforcement remain OPEN;128MiB admission exists. Separate lane:
-audits/AAA_PILOT_REFINEMENT_20260905.md, AAA_GAP_AUDIT.md, AAA_COVERAGE_LEDGER.md,
-port/AAA_ASSET_POLICY.md. Do not restart BatchA. U2 stacking conflict, artlock CI lane, ITP protection
-and DECISIONS row19 wording remain open; no legacy import door or new backup claim.
-Budget UNFROZEN/PUBLIC per last verification/private fallback3000; zero hosted attempts, labels,
-PRs, merges, purchases, releases or deployments. Same-session startup receipt2026-09-06T16:28:25.659Z
-reused, Node26.8.1 busy deferral; other approved tools current. A fresh session needs a new runbook
-check. Terminal-only privacy, owned isolated headless browsers, shared toolchain lock and
-first-attempt macOS browser escalation remain.
+08cd97d79b67cab4b8d19bfd493293e997dec528: Skip 785ms → Escape Cosmos 1313ms → unsolicited
+Cosmos/Milky Way 3930ms before Notifications input. Navigation cause remains unattributed/OPEN;
+95c9a1f nonrecurrence is not repair. c57aaaebc656f2e2d15705601fe1a2a73cf15f1f: Runtime.evaluate
+timeout after 23 native phone inputs and landscape Settings Close while restoring 390×844.
+Pending expression remains unknown; cleanup read Cosmos/closed panels/390×844 after all four
+debugger pauses resumed, so no lasting hang was established. Portrait-restoration blocker OPEN.
+Their immutable audits are UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md and
+UI_U1_COMPACT_CONTROLS_20260906.md under audits/. The six-board e94f7b3 scoped PASS and earlier
+cleanup red remain in audits/UI_U1_SURVEY_TOP_ROW_20260906.md as predecessor evidence only.
+No workaround wait, deadline increase, navigation guard or automatic retry.
+
+### Next and standing boundaries
+
+Codex: finish the current bounded checks, commit the settled source locally, run the scoped
+fresh-context probe only after its prerequisites pass, then retain terminal results/PNGs and
+refresh audit/reference/handoff source identities. Stop for Nick's visual review. No U2–U4,
+Phase2, integrated-pilot or broad navigation work. Claude: Nick need not open Claude now; preserve
+anthropic/mac and unmerged 173c806. These local changes are not on develop and are not available
+there; no copying, merge or duplicate battery. No PR/push/GitHub step now. Future integration is
+openai/mac → develop with separate exact hosted authority; develop/main/live are unchanged.
+
+Audiovisual B–D candidates exist; preservation CLOSED, integrated pilot UNAPPROVED and eight
+anatomical animations INCOMPLETE with protected static fallbacks. Matched listening, physical
+iPhone/Safari/PWA and 256MiB retained-update enforcement remain OPEN; 128MiB admission exists.
+Separate lane: audits/AAA_PILOT_REFINEMENT_20260905.md, AAA_GAP_AUDIT.md, AAA_COVERAGE_LEDGER.md,
+port/AAA_ASSET_POLICY.md. Do not restart Batch A. U2 stacking conflict, artlock CI lane, ITP
+protection and DECISIONS row19 remain open; no legacy import door or new backup acceptance.
+Budget UNFROZEN/PUBLIC per last verification, private fallback 3000; no exact hosted authority,
+zero hosted attempts/writes, labels, PRs, merges, purchases, releases or deployments. Same-session
+startup receipt 2026-09-06T16:28:25.659Z reused; Node26.8.1 remains deferred while26.7.0 is busy;
+other approved tools current. A fresh session needs a new runbook check. Terminal-only privacy,
+owned isolated headless browsers, shared toolchain lock and first-attempt macOS escalation remain.

@@ -7,22 +7,23 @@ the production layout adapted to icon-only phone rows and wide side controls/top
 bottom-right utilities, right Objective under Search, and saved notification read state described in
 `../../UI_PRESENTATION.md`. Phone Search now aligns upper-right with the visible placeholder Search;
 wide name and text pills fit their labels with bounded `width:max-content`, preserving Health's
-meter geometry. Nick explicitly places Survey (🔭) sixth in the upper compact board row after
-Charters, Compendium, Prime, Shipyard and Atlas. Only Records (including Achievements),
-Notifications, Guide and Settings remain as small lower-row utilities. The dock uses twelve
-half-columns across at most 384px, bounded by viewport width minus safe sides and 20px. Each board
-uses one sixth of that width minus 4px; lower 44px targets/36px faces occupy the middle four pairs.
-In panel-open short landscape, dock width also fits the existing header safe-column width:
-`min(384px, (viewport width − safe left − safe right − 36px) / 2)`. Default height remains 92px.
-Compact Charts stays hidden with Settings → Star charts available;
-wide Survey/Charts remain fitted text controls below the left rail. The nested `#sceneactions`
-keeps compact `display:contents`, so its zero-size wrapper does not extend measured top chrome.
-No native action, gameplay or `main.ts` owner changes. This explicit upper-row choice supersedes
-the previous optional default. Build and scoped dock verification PASS in fresh 320/390/430px
-portrait documents and 667×375 with Settings open; visual approval remains pending. The current
-audit retains both this terminal result and the first-source instrument red. Both the unattributed
-navigation blocker and the full normal-review portrait-restoration blocker stay OPEN; full normal
-review, Slice, phone Glass and the full chain were NOT RUN.
+meter geometry. Nick replaces Charters with Survey on every platform. Compact upper boards are
+Survey (🔭), Compendium, Prime, Shipyard and Atlas; only Records (including Achievements),
+Notifications, Guide and Settings remain as small centered lower utilities. The dock uses ten
+half-columns across at most 320px, bounded by viewport width minus safe sides and 20px. Board
+width is one fifth of dock width minus 4px with a 44px minimum; lower targets/faces stay 44px/36px.
+Panel-open short landscape retains the header safe-column cap:
+`min(320px, (viewport width − safe left − safe right − 36px) / 2)`. Default height remains 92px.
+Wide Survey replaces Charters above Compendium at upper-left, with Charts below; compact Charts
+stays in Settings. The dock now contains the left rail, which becomes boxless on compact layouts
+to place Survey first and hide its duplicate rail Compendium. The scene-actions group holds only Charts.
+Objective becomes the sole native Charters opener after duplicate dock/rail shortcuts are removed.
+It uses existing keyboard/panel/focus ownership, stays available while landed and shows Charters
+when no objective is active. Objective progress, Charter gameplay and the Survey handler are unchanged.
+Scoped cross-platform verification and visual approval are pending. The current audit owns this
+correction; the prior six-board PASS remains predecessor evidence. Both the unattributed navigation
+and full normal-review portrait-restoration blockers stay OPEN; no full normal-review retry,
+Slice, phone Glass or full chain accompanies this bounded correction.
 The accepted brief and amendments are in
 `../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved; no U2–U4, Phase2 or
 hosted action is authorized.
@@ -39,7 +40,8 @@ Debugger stacks perturb timing and cannot close the retained navigation blocker 
 See `../../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md` for the retained navigation evidence
 and its limits. This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2;
 no CI/profile lane was changed. `ROADMAP.md` and
-`../../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` own current exact-source results;
+`../../audits/UI_U1_SURVEY_CHARTERS_20260906.md` own current exact-source results;
+`../../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` retains the prior six-board scoped evidence.
 `../../audits/UI_U1_COMPACT_CONTROLS_20260906.md` retains the prior portrait-restoration stop.
 `../../audits/UI_U1_PRODUCTION_LAYOUT_20260906.md`,
 `../../audits/UI_U1_LAUNCHER_REVISION_20260906.md` and

@@ -13,24 +13,24 @@ The live site's two style blocks match the tracked HTML byte for byte; provenanc
 `audits/UI_U1_PRODUCTION_LAYOUT_20260906.md`. Nick's latest screenshot instructions supersede
 the earlier all-device bottom launcher and visible Current view experiments.
 
-Phone (<=700px) has six icon-only board pills in the upper dock row: Charters, Compendium,
-Prime, Shipyard, Atlas, Survey (🔭). Prime retains its visible N/9 count and accessible name
-in the third of six positions. The lower row contains only the four small utility controls:
-Records (including Achievements), Notifications, Guide and Settings. Nick explicitly placed
-Survey in the upper row, superseding the previous optional lower-row default.
+Phone (<=700px) has five icon-only board pills in the upper dock row: Survey (🔭), Compendium,
+Prime, Shipyard and Atlas. Prime retains its visible N/9 count and accessible name in the center.
+The lower row contains only the four small utility controls: Records (including Achievements),
+Notifications, Guide and Settings. Nick explicitly replaces the Charters shortcut with Survey on
+all platforms. Duplicate dock/rail Charters shortcuts are removed; Objective now opens Charters.
 
-The compact dock uses twelve half-columns and a width capped at 384px, bounded by viewport
-width minus left/right safe areas and 20px. Each board spans two half-columns; pitch is dock
-width / 6 (at most 64px), and board width is pitch minus 4px, retaining a minimum 44px target
-within supported viewports. With no side safe area, board widths are about 57.67px at 390px,
-60px at 430px and 46px at 320px. Lower utilities occupy the middle four column pairs with
-44px targets and 36px faces. Survey uses the same plain emoji board pill as its upper-row peers.
-Utilities are 12px above the safe bottom; boards start at 60px. The default dock remains 92px
-high and may grow for text preferences. Labels remain accessible without visible phone captions.
-Compact Charts stays hidden; the existing Settings → Star charts toggle remains available.
+The compact dock uses ten half-columns and a width capped at 320px, bounded by viewport width
+minus left/right safe areas and 20px. Each board spans two half-columns; pitch is dock width / 5
+(at most 64px), and board width is pitch minus 4px with a 44px minimum. With no side safe area,
+board width is 60px at 390px/430px and 56px at 320px. Four lower 44px targets with 36px faces are
+centered beneath the upper row. Survey uses the same plain emoji board pill as its upper-row
+peers. Utilities are 12px above the safe bottom; boards start at 60px. The default dock remains
+92px high and may grow for text preferences. Labels remain accessible without visible phone
+captions. Compact Charts stays hidden; Settings → Star charts remains available.
 
-Tablet and desktop (>=701px) restore the actual native left Charters/Compendium and right
-Star Atlas/Shipyard controls. Prime Codex is centered at the top with its full label and N/9.
+Tablet and desktop (>=701px) have Survey above Compendium in the upper-left stack, replacing
+Charters in that position. Charts stays below that stack; the right Star Atlas/Shipyard controls
+remain. Prime Codex is centered at the top with its full label and N/9.
 Search is upper-right, followed by the Objective, then Atlas and Shipyard. The four utilities
 sit bottom-right, 16px from the safe right and 12px from the safe bottom. Their 44px targets
 have 8px gaps (52px pitch) around 36px faces. These preserve earned touch/spacing protections
@@ -38,8 +38,8 @@ instead of copying production's 42px anchors with overlapping 44px coarse-pointe
 Controls cap their size while the scene benefits from additional screen space. The retained
 <=900px short-landscape exception uses compact phone navigation and existing panel-safe columns.
 With a panel open in that landscape layout, dock width is additionally capped to the existing
-header safe-column width: `min(384px, (viewport width − safe left − safe right − 36px) / 2)`.
-This keeps the expanded dock inside the right column, including the 667×375 Settings layout.
+header safe-column width: `min(320px, (viewport width − safe left − safe right − 36px) / 2)`.
+This keeps the dock inside the right column, including the 667×375 Settings layout.
 
 Nameplate and Health share the upper-left column; only the explorer name is visible and it
 wraps without truncation. Rank color metadata and the Inventory action remain. Health keeps
@@ -54,18 +54,21 @@ colors retain their owners. Emoji remain the approved product icon system.
 The two-row header is measured by AppChrome, never assigned a fixed height. Name/Search are
 in the first row and Health/Objective in the second. On phones Search aligns to the upper-right
 (max 37vw) with the visible placeholder **Search**; Objective sits below it. Wide Search remains
-236px and Objective fits its text up to 236px. The header and passive Objective remain
-pointer-transparent; only native controls receive presses.
+236px and Objective fits its text up to 236px. The header remains pointer-transparent; native
+controls, including Objective, receive presses. Objective is now a named native button and the
+sole Charters opener, using the existing panel owner for pointer/keyboard activation and focus
+return. It remains available while landed and shows **Charters** when no objective is active.
+The existing objective text/progress calculation and Charter gameplay remain unchanged.
 The canonical #trail remains populated for diagnostics but is visually hidden, as in production.
 There is no visible Cosmos/Current view label. Actual rail wrappers own their 8px internal gaps,
-so those gaps keep a panel open; empty sky still dismisses it. On desktop/tablet Survey/Charts
-retain their native owners below the left controls, with each text pill fitting its label.
-`#sceneactions` is nested inside the dock and becomes `display:contents` in compact navigation,
-placing the existing Survey opener in the sixth upper-row slot. Its zero-size wrapper box is
-ignored by AppChrome's existing top-chrome measurement; the 72px roster reading-band rule remains.
-Survey shows the retained/current surface card; Charts toggles orbit rings, the habitable zone
-and the belt caption. Their action/save owners are unchanged; no new action or gameplay is added.
-Overlays yield Objective/right rail as before; panel/Training focus, Close and Escape owners remain authoritative.
+so those gaps keep a panel open; empty sky still dismisses it. The left rail `#raillft` is nested
+inside the dock and becomes `display:contents` in compact navigation: its existing Survey opener
+occupies the first upper-row slot and its duplicate Compendium rail control is hidden. Wide
+Survey/Compendium remain fitted text controls; `#sceneactions` contains only Charts below them.
+Boxless compact wrappers do not extend AppChrome's top-chrome measurement; the 72px roster
+reading-band rule remains. Survey shows the retained/current surface card; Charts toggles orbit
+rings, the habitable zone and the belt caption. Their action/save handlers are unchanged.
+Panel/Training focus, Close and Escape owners remain authoritative.
 
 Bottom guidance is plain text with no pill, border, padding or backdrop blur. Wide hint starts
 18px above safe bottom and context 64px; phone hint 124px and context 164px. Context rises when
@@ -81,14 +84,12 @@ capacity and 60-entry import allowance remain. Passive history never joins an in
 snapshot; no new timer, schema, import door or competing persistence writer is introduced.
 The bottom bell reads this history; its old duplicate shelf button is hidden.
 
-U1 remains a visual approval checkpoint. Signed source `e94f7b35211094e334abc983e716456749e2e3ae`
-passed build and the scoped dock probe in four fresh documents: 390×844, 320×740, 430×932 and
-667×375 with Settings open. All 20 CSS negative controls restored styles exactly, and three
-larger-text checks restored classes exactly. The run retained five trusted inputs, four PNGs and
-zero runtime errors. The `810ab78` product is unchanged by the probe-only cleanup successor;
-that first source's scoped instrument red remains in `audits/UI_U1_SURVEY_TOP_ROW_20260906.md`.
-That audit and ROADMAP own exact source/results. The dock oracle independently applies the
-panel-safe width formula. This is a scoped PASS; visual acceptance remains pending.
+U1 remains a visual approval checkpoint. The all-platform Survey/Charters correction awaits
+scoped cross-platform verification and visual approval. `audits/UI_U1_SURVEY_CHARTERS_20260906.md`
+and ROADMAP own current source/results; the dock oracle independently applies the panel-safe
+width formula. The earlier six-board `e94f7b35211094e334abc983e716456749e2e3ae` scoped PASS and
+its preceding instrument red remain immutable predecessor evidence in
+`audits/UI_U1_SURVEY_TOP_ROW_20260906.md`; they do not verify this new five-board/action arrangement.
 The earlier `c57aaaebc656f2e2d15705601fe1a2a73cf15f1f` static/build
 passes and partial phone evidence remain predecessor evidence in
 `audits/UI_U1_COMPACT_CONTROLS_20260906.md`. That normal review stopped INSTRUMENT RED at a

@@ -152,11 +152,15 @@ describe('Glass visible-to-hidden native panel opener proof', () => {
 
 describe('Glass responsive native control ownership', () => {
   const source = fs.readFileSync(new URL('../tools/glassmatrix.mjs', import.meta.url), 'utf8');
-  it('selects visible rails or compact dock while retaining planned historical compositions', () => {
+  it('selects visible rails or compact dock and closes Survey before using the sole objective Charters opener', () => {
     const ordinary = source.slice(source.indexOf('        const ordinaryPanels = ['),
       source.indexOf('          const cardBeforePanel ='));
     expect(ordinary).toContain('const opener = wideChrome && item.rail ? item.rail : item.dock;');
-    for(const id of ['codex','atlas','charters','shipyard'])expect(ordinary).toContain("rail: '#rail"+id+"'");
+    for(const id of ['codex','atlas','shipyard'])expect(ordinary).toContain("rail: '#rail"+id+"'");
+    expect(ordinary).toContain("{ id: 'ch', name: 'charters', dock: '#objchip', panel: '#chpanel'");
+    expect(ordinary).not.toContain("rail: '#railcharters'");
+    expect(ordinary).not.toContain("dock: '#dockcharters'");
+    expect(ordinary).toContain("const overSurvey = !(item.id === 'ch' ||");
     expect(ordinary).toContain('vp.width > 700 && !(vp.width <= 900 && vp.width > vp.height)');
     expect(ordinary).toContain("vp.width > 900 && (item.id === 'rec' || item.id === 'inventory')");
     expect(ordinary).toContain("vp.width > 700 && (item.id === 'atlas' || item.id === 'shipyard')");
@@ -165,11 +169,11 @@ describe('Glass responsive native control ownership', () => {
     expect(nonmodal).toContain("dockButton=document.getElementById('dockcodex')");
     expect(nonmodal).not.toContain("innerWidth>700?");
     expect(nonmodal).not.toContain("innerWidth>700\n");
-    expect(nonmodal).toContain("expectedIds=['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets']");
+    expect(nonmodal).toContain("expectedIds=['docksurvey','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets']");
     expect(nonmodal).toContain('hiddenShelfRejected');
     expect(nonmodal).toContain("shelfActions=['dockinventory']");
     expect(nonmodal).toContain("shelf.getAttribute('style')===shelfStyle");
-    expect(source).toContain("preferenceOutcome('#raillft','#railcharters','var(--ink)')");
+    expect(source).toContain("preferenceOutcome('#raillft','#docksurvey','var(--ink)')");
   });
 
   it('judges the transparent header by visibility and dimensions, with genuine hiding controls', () => {

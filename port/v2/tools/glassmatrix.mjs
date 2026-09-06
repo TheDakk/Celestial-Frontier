@@ -11303,8 +11303,8 @@ async function main() {
         addOutcome(vp.label, 'top-chrome-preferences', 'PREFERENCE_SURFACE_INERT', '#hintpill', chromePreference,
           'top chrome computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
         if (vp.width > 900) {
-          const railPreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#raillft','#railcharters','var(--ink)')`);
-          addOutcome(vp.label, 'rail-preferences', 'PREFERENCE_SURFACE_INERT', '#railcharters', railPreference,
+          const railPreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#raillft','#docksurvey','var(--ink)')`);
+          addOutcome(vp.label, 'rail-preferences', 'PREFERENCE_SURFACE_INERT', '#docksurvey', railPreference,
             'desktop native rail label computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
         }
 
@@ -11518,14 +11518,15 @@ async function main() {
           { id: 'atlas', name: 'atlas', dock: '#dockatlas', rail: '#railatlas', panel: '#atlaspanel', required: '[data-sel=atlas-entry]', min: 1, textMin: 25 },
           { id: 'shipyard', name: 'shipyard', dock: '#dockshipyard', rail: '#railshipyard', panel: '#shipyardpanel', required: '[data-cf-shipyard-preview="v1"]', min: 1, textMin: 80, shipyard: true },
           { id: 'inventory', name: 'inventory', dock: '#dockinventory', panel: '#inventorypanel', required: '[data-inventory-row="exact"]', min: 3, textMin: 120, inventory: true },
-          { id: 'ch', name: 'charters', dock: '#dockcharters', rail: '#railcharters', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
+          { id: 'ch', name: 'charters', dock: '#objchip', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
         ];
         for (const item of ordinaryPanels) {
           const wideChrome = vp.width > 700 && !(vp.width <= 900 && vp.width > vp.height);
           const opener = wideChrome && item.rail ? item.rail : item.dock;
-          /* Preserve the already-planned historical Survey compositions;
-             the right rail yields to Survey, while compact phone uses its dock. */
-          const overSurvey = !((vp.width > 900 && (item.id === 'rec' || item.id === 'inventory'))
+          /* Preserve the Survey compositions supported by the current native owners;
+             the objective and right rail yield to Survey. Close it before
+             opening Charters through its sole visible objective button. */
+          const overSurvey = !(item.id === 'ch' || (vp.width > 900 && (item.id === 'rec' || item.id === 'inventory'))
             || (vp.width > 700 && (item.id === 'atlas' || item.id === 'shipyard')));
           const cardBeforePanel = await evalIn('window.__CF_SLICE__.api.state().cardOpen');
           if (cardBeforePanel !== overSurvey) {
@@ -12086,7 +12087,7 @@ async function main() {
               const nonModalChrome = await evalIn(`(()=>{const search=document.getElementById('searchbox'),dock=document.getElementById('dock'),shelf=document.getElementById('topbar'),
                 shelfActions=['dockinventory'].map(id=>document.getElementById(id)),
                 dockButton=document.getElementById('dockcodex'),
-                buttons=dock?[...dock.querySelectorAll(':scope > button')].filter(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;}):[],panel=document.getElementById('codexpanel');
+                buttons=dock?[...dock.querySelectorAll(':scope > button, :scope > #raillft > button')].filter(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;}):[],panel=document.getElementById('codexpanel');
                 if(!(search instanceof HTMLInputElement)||!dock||!dockButton||!panel||!shelf||shelfActions.some(el=>!el))return {ok:false,why:'Search/dock/shelf/Compendium missing'};
                 const rendered=(el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return style.display!=='none'&&style.visibility==='visible'
                     &&style.pointerEvents!=='none'&&r.width>0&&r.height>0;},ownsCentre=(el)=>{const r=el.getBoundingClientRect(),hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
@@ -12119,7 +12120,7 @@ async function main() {
                     &&search.getAttribute('aria-label')?.trim().length>0&&exposed(search)&&search.tabIndex>=0&&!search.disabled&&!search.readOnly
                     &&dock.getAttribute('aria-label')?.trim().length>0&&dockFocused
                     &&JSON.stringify(dockHits.map(row=>row.id))===JSON.stringify(
-                      ['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'])
+                      ['docksurvey','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'])
                     &&dockHits.every(row=>row.hit&&row.named&&row.exposed&&row.tabIndex>=0&&!row.disabled)
                     &&filtered.panel.mode==='list'&&filtered.panel.filteredCount===1
                     &&cleared.panel.mode==='list'&&cleared.panel.filteredCount===${hostileCompendiumRows.length}
@@ -12146,8 +12147,8 @@ async function main() {
               add(vp.label, 'compendium-nonmodal-chrome', nonModalAuditRows);
               const dockContrastControl = await evalIn(`(()=>{const visible=node=>{const s=getComputedStyle(node),r=node.getBoundingClientRect();
                   return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;},
-                buttons=[...document.querySelectorAll('#dock > button')].filter(visible),
-                expectedIds=['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'];
+                buttons=[...document.querySelectorAll('#dock > button, #dock > #raillft > button')].filter(visible),
+                expectedIds=['docksurvey','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'];
                 if(JSON.stringify(buttons.map(button=>button.id))!==JSON.stringify(expectedIds)
                   ||buttons.some(button=>!(button instanceof HTMLButtonElement)))
                   return {ok:false,why:'exact visible U1 native dock membership missing',expectedIds,actual:buttons.map(button=>button.id)};
@@ -13205,15 +13206,13 @@ async function main() {
           const visibleBottom=(el)=>{const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0?r.bottom:0;},
             expectedTop=Math.max(...fixed.map(visibleBottom),fallback?0:visibleBottom(trail));
           return Math.abs(parseFloat(root.getPropertyValue('--ctx-h'))-ctx.offsetHeight)<0.6&&Math.abs(parseFloat(root.getPropertyValue('--dock-h'))-dock.offsetHeight)<0.6&&Math.abs(parseFloat(root.getPropertyValue('--surface-chrome-bottom'))-expectedTop)<0.6;})()`);
-        const mobileSurfaceYieldsObjective = vp.width <= 900;
+        const mobileSurfaceRetainsObjective = vp.width <= 900;
         const landscapeSurfaceYieldsTrail = vp.width <= 900 && vp.width > vp.height;
         const portraitSurface = vp.width <= 900 && vp.width <= vp.height;
         const chromeRestoreCheck = `(()=>{ const fallback=document.body.classList.contains('surface-trail-yield'),rows=['trail','objchip'].map(id=>{const el=document.getElementById(id);return {id,text:(el?.textContent||'').trim(),display:el?getComputedStyle(el).display:'missing'};});
-          return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?r.display==='none':${mobileSurfaceYieldsObjective ? "r.display==='none'" : "r.display!=='none'"})),rows,fallback};})()`;
+          return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?r.display==='none':r.display!=='none')),rows,fallback};})()`;
         const chromeRestoreBaseline = await evalIn(chromeRestoreCheck);
-        const chromeRestoreExpected = mobileSurfaceYieldsObjective
-          ? 'populated canonical trail remains visually hidden and the landed mobile objective yields to Planetside'
-          : 'populated canonical trail remains visually hidden while the desktop objective returns after the last card closes';
+        const chromeRestoreExpected = 'populated canonical trail remains visually hidden while the objective Charters control returns after the last card closes on every platform';
         addOutcome(vp.label, 'survey-chrome-restore', 'MOBILE_CHROME_NOT_RESTORED', '#trail,#objchip', chromeRestoreBaseline,
           chromeRestoreExpected);
         stopAfterRecordedProductOutcome(vp.label, 'survey-chrome-restore',
@@ -13245,12 +13244,14 @@ async function main() {
           if (landscapeControl.ok) recordInstrumentFailure(`${vp.label}: forced-visible surface trail injection stayed green (${JSON.stringify(landscapeControl)})`);
           recordControls('mobile-landscape-surface-chrome-yield');
         }
-        if (mobileSurfaceYieldsObjective && !objectiveYieldControlRun) {
+        if (mobileSurfaceRetainsObjective && !objectiveYieldControlRun) {
           objectiveYieldControlRun = true;
-          const objectiveControl = await evalIn(`(()=>{ const el=document.getElementById('objchip'),prior=el.getAttribute('style');
-            el.style.setProperty('display','block','important');const result=${chromeRestoreCheck};
-            if(prior===null)el.removeAttribute('style');else el.setAttribute('style',prior);return result;})()`);
-          if (objectiveControl.ok) recordInstrumentFailure(`${vp.label}: forced-visible landed objective injection stayed green (${JSON.stringify(objectiveControl)})`);
+          const objectiveControl = await evalIn(`(()=>{ const el=document.getElementById('objchip'),prior=el.getAttribute('style');let broken;
+            try{el.style.setProperty('display','none','important');broken=${chromeRestoreCheck};}
+            finally{el.setAttribute('style','');el.removeAttribute('style');if(prior!==null)el.setAttribute('style',prior);}
+            const restored=${chromeRestoreCheck},styleRestored=el.getAttribute('style')===prior;
+            return {ok:broken?.ok===false&&restored.ok&&styleRestored,broken,restored,styleRestored};})()`);
+          if (!objectiveControl.ok) recordInstrumentFailure(`${vp.label}: forced-hidden landed objective was not rejected and exactly restored (${JSON.stringify(objectiveControl)})`);
           recordControls('mobile-surface-objective-yield');
         }
         if (portraitSurface) {
@@ -14176,7 +14177,7 @@ async function main() {
             &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&scoutContract&&recordsContract&&audioContract&&mealContract&&breedContract&&renameContract&&lessonContract&&trainingContract&&artContract
             &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract&&publishingContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
-            &&/FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep six icon-only scene buttons above four compact utility icons/.test(text)
+            &&/FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep five icon-only scene buttons above four compact utility icons/.test(text)
             &&/ONE GLASS LANGUAGE: Rounded name, health, objective and navigation controls carry the production layout forward/.test(text)
             &&/UTILITIES STAY TOGETHER: Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge/.test(text)
             &&/PRIME KEEPS YOUR PROGRESS: Prime Codex retains its Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill/.test(text)

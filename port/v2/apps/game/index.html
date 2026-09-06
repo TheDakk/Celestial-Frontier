@@ -219,11 +219,10 @@
       body.surface-mode.surface-trail-yield #trail { display: none !important; }
     }
     @media (max-width: 900px) and (orientation: landscape) {
-      /* The short landscape safe rectangle cannot fit the populated world
-         strip plus separate trail/objective rows at 44px/A++. Planetside is
-         the actionable reading, so those secondary rows yield while landed
-         and return on ascent. */
-      body.surface-mode :is(#trail,#objchip) { display: none; }
+      /* The short landscape safe rectangle uses side-by-side surface cards.
+         The passive trail yields; the objective remains the Charters opener
+         whenever no overlay is open. */
+      body.surface-mode #trail { display: none; }
       body.surface-mode #survey,
       body.surface-mode #planetside {
         width: calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2) !important;
@@ -881,15 +880,11 @@
       placeholder="Search" aria-label="search or paste a code" title="Find species or paste a travel code" />
     <button id="shelfnotifications" data-panel-boundary class="dock-utility" type="button" aria-label="Notifications" aria-controls="notificationpanel" aria-expanded="false"><span class="utility-face"><span class="ico" aria-hidden="true">🔔</span></span></button>
     <div id="hpbar" class="glass" role="meter" aria-label="Explorer health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span class="hp-icon" aria-hidden="true">❤️</span><span class="hp-label" aria-hidden="true">Health</span><span class="track"><span class="fill" style="width:100%"></span><span class="txt"></span></span></div>
-    <span id="objchip" class="glass"></span>
+    <button id="objchip" class="glass" type="button" aria-controls="chpanel" aria-expanded="false"></button>
     <div id="trail" aria-hidden="true"></div>
   </header>
   <div id="ctxbar"></div>
   <div id="hintpill"></div>
-  <nav id="raillft" aria-label="rail" data-panel-boundary>
-    <button id="railcharters" type="button" aria-label="Charters">📜 Charters</button>
-    <button id="railcodex" type="button" aria-label="Compendium">📖 Compendium</button>
-  </nav>
   <nav id="railrgt" aria-label="right rail" data-panel-boundary>
     <button id="railatlas" type="button" aria-label="Star Atlas">🌍 Star Atlas</button>
     <button id="railshipyard" type="button" aria-label="Shipyard">🛠 Shipyard</button>
@@ -897,13 +892,15 @@
     <button id="railrecords" aria-label="Records">🏆 Records</button>
   </nav>
   <nav id="dock" aria-label="dock" data-panel-boundary>
-    <button id="dockcharters" class="dock-board" type="button" aria-label="Charters"><span class="ico" aria-hidden="true">📜</span><span class="lbl">Charters</span></button>
+    <div id="raillft" role="group" aria-label="left controls" data-panel-boundary>
+      <button id="docksurvey" class="dock-scene" type="button" aria-label="survey card" aria-controls="survey" aria-expanded="false"><span class="ico" aria-hidden="true">🔭</span><span class="lbl">Survey</span></button>
+      <button id="railcodex" type="button" aria-label="Compendium">📖 Compendium</button>
+    </div>
     <button id="dockcodex" class="dock-board" type="button" aria-label="Compendium"><span class="ico" aria-hidden="true">📖</span><span class="lbl">Compendium</span></button>
     <button id="primechip" class="glass pill dock-board" type="button" aria-label="Open Prime Codex"></button>
     <button id="dockshipyard" class="dock-board" type="button" aria-label="Shipyard"><span class="ico" aria-hidden="true">🛠</span><span class="lbl">Shipyard</span></button>
     <button id="dockatlas" type="button" class="dock-board" aria-label="Star Atlas"><span class="ico" aria-hidden="true">🌍</span><span class="lbl">Atlas</span></button>
     <div id="sceneactions" role="group" aria-label="Scene actions" data-panel-boundary>
-      <button id="docksurvey" class="dock-scene" type="button" aria-label="survey card" aria-controls="survey" aria-expanded="false"><span class="ico" aria-hidden="true">🔭</span><span class="lbl">Survey</span></button>
       <button id="dockcharts" type="button" aria-label="star charts" aria-pressed="false"><span class="ico" aria-hidden="true">📈</span><span class="lbl">Charts</span></button>
     </div>
     <button id="dockrecords" class="dock-utility" type="button" aria-label="Records"><span class="utility-face"><span class="ico" aria-hidden="true">🏆</span></span></button>

@@ -16,9 +16,9 @@ import { createReviewTrailDebugger } from './ui-review-trail-debugger.mjs';
  * independent oracle intentionally names the approved metrics, not product
  * token values. It is the adapted phone inventory outcome, not a U4 gate. */
 export function readU1PhoneShell(training = false) {
-  const errors = [], expected = ['dockcharters', 'dockcodex', 'primechip', 'dockshipyard', 'dockatlas', 'docksurvey',
+  const errors = [], expected = ['docksurvey', 'dockcodex', 'primechip', 'dockshipyard', 'dockatlas',
     'dockrecords', 'docknotifications', 'dockguide', 'docksets'];
-  const roots = ['dock', 'topbar', 'sceneactions'].map(id => document.getElementById(id)).filter(Boolean);
+  const roots = ['dock', 'topbar', 'sceneactions', 'raillft'].map(id => document.getElementById(id)).filter(Boolean);
   const prior = roots.map(node => ({ node, pointer: node.style.getPropertyValue('pointer-events'),
     priority: node.style.getPropertyPriority('pointer-events'), inert: node.hasAttribute('inert') }));
   const box = node => {
@@ -30,7 +30,7 @@ export function readU1PhoneShell(training = false) {
   };
   const available = node => {
     const r = box(node), hit = r?.visible ? document.elementFromPoint(r.cx, r.cy) : null;
-    return { id: node?.id ?? null, rect: r, named: !!(node?.getAttribute('aria-label') || node?.textContent || '').trim(),
+    return { id: node?.id ?? null, rect: r, native: node?.tagName==='BUTTON'&&!node.disabled&&!node.closest('[inert]'), named: !!(node?.getAttribute('aria-label') || node?.textContent || '').trim(),
       hit: !!hit && (hit === node || node.contains(hit)), parent: node?.parentElement?.id ?? null };
   };
   try {
@@ -38,19 +38,19 @@ export function readU1PhoneShell(training = false) {
     const dock = document.getElementById('dock'), rect = box(dock), display = dock ? getComputedStyle(dock).display : null;
     const rootStyle=getComputedStyle(document.documentElement),safeLeft=parseFloat(rootStyle.getPropertyValue('--safe-left'))||0,
       safeRight=parseFloat(rootStyle.getPropertyValue('--safe-right'))||0,landscapePanel=innerWidth<=900&&innerWidth>innerHeight&&document.body.classList.contains('panel-open'),
-      expectedWidth=Math.min(384,landscapePanel?(innerWidth-safeLeft-safeRight-36)/2:innerWidth-safeLeft-safeRight-20),pitch=expectedWidth/6;
-    const buttons = dock ? [...dock.querySelectorAll(':scope > button, :scope > #sceneactions > button')].filter(button => box(button)?.visible) : [];
+      expectedWidth=Math.min(320,landscapePanel?(innerWidth-safeLeft-safeRight-36)/2:innerWidth-safeLeft-safeRight-20),pitch=expectedWidth/5;
+    const buttons = dock ? [...dock.querySelectorAll(':scope > button, :scope > #raillft > button, :scope > #sceneactions > button')].filter(button => box(button)?.visible) : [];
     const ids = buttons.map(button => button.id), centres = buttons.map(available), rows = [];
     if (JSON.stringify(ids) !== JSON.stringify(expected)) errors.push('dock button identity/order drifted: ' + JSON.stringify(ids));
     for (const [index, button] of buttons.entries()) {
       const r = box(button); let row = rows.find(candidate => Math.abs(candidate.top - r.top) < 2);
       if (!row) { row = { top: r.top, height: r.height, ids: [], centres: [] }; rows.push(row); }
       row.height = Math.max(row.height, r.height); row.ids.push(button.id); row.centres.push(r.cx);
-      const board = expected.indexOf(button.id) < 6 && expected.includes(button.id), width = board ? pitch-4 : 44;
+      const board = expected.indexOf(button.id) < 5 && expected.includes(button.id), width = board ? pitch-4 : 44;
       if (Math.abs(r.width - width) > 1 || r.width < 44 || r.height < 44 || (!board && Math.abs(r.height - 44) > 1))
         errors.push(button.id + ' does not retain its ' + width + 'px width and 44px touch floor');
       if (!centres[index].hit) errors.push(button.id + ' is not hit-testable at its centre');
-      if (!centres[index].named) errors.push(button.id + ' is unnamed');
+      if (!centres[index].named || !centres[index].native) errors.push(button.id + ' is not a named native button');
       for (const label of button.querySelectorAll('.lbl')) if (box(label)?.visible)
         errors.push(button.id + ' retains a visible label in the icon-only phone dock');
       if (button.id === 'primechip') {
@@ -64,11 +64,11 @@ export function readU1PhoneShell(training = false) {
       }
     }
     rows.sort((a, b) => a.top - b.top);
-    if (rows.length !== 2 || rows[0]?.ids.length !== 6 || rows[1]?.ids.length !== 4)
-      errors.push('dock is not two rows (6+4): ' + JSON.stringify(rows.map(row => row.ids.length)));
+    if (rows.length !== 2 || rows[0]?.ids.length !== 5 || rows[1]?.ids.length !== 4)
+      errors.push('dock is not two rows (5+4): ' + JSON.stringify(rows.map(row => row.ids.length)));
     for (const [index,row] of rows.entries()) {
-      if(JSON.stringify(row.ids)!==JSON.stringify(index===0?expected.slice(0,6):expected.slice(6)))errors.push('dock row membership drifted: '+JSON.stringify(row.ids));
-      for(let i=0;i<row.centres.length;i++)if(Math.abs(row.centres[i]-(rect.left+pitch*(i+(index===0?.5:1.5))))>1)errors.push('dock responsive slot drifted: '+row.ids[i]);
+      if(JSON.stringify(row.ids)!==JSON.stringify(index===0?expected.slice(0,5):expected.slice(5)))errors.push('dock row membership drifted: '+JSON.stringify(row.ids));
+      for(let i=0;i<row.centres.length;i++)if(Math.abs(row.centres[i]-(rect.left+pitch*(i+(index === 0 ? .5 : 1))))>1)errors.push('dock responsive slot drifted: '+row.ids[i]);
     }
     if (display !== 'grid' || !rect || Math.abs(rect.width - expectedWidth) > 1) errors.push('phone dock is not its safe-inset responsive grid');
     if (rows.length === 2 && (Math.abs(rows[1].top - rows[0].top - rows[0].height - 4) > 1
@@ -78,14 +78,16 @@ export function readU1PhoneShell(training = false) {
       || !relocatedInventory.named || relocatedInventory.rect.width < 44 || relocatedInventory.rect.height < 44)
       errors.push('relocated Inventory is missing or not actionable in topbar');
     const sceneactions = ['docksurvey', 'dockcharts'].map(id => available(document.getElementById(id)));
-    const [survey, charts] = sceneactions, group = document.getElementById('sceneactions');
-    if (group?.parentElement !== dock || getComputedStyle(group).display !== 'contents') errors.push('phone scene group is not owned by the dock');
-    if (survey.parent !== 'sceneactions' || !survey.rect?.visible || !survey.hit || !survey.named
+    const [survey, charts] = sceneactions, group = document.getElementById('sceneactions'),left=document.getElementById('raillft');
+    if (group?.parentElement !== dock || getComputedStyle(group).display !== 'contents' || left?.parentElement!==dock || getComputedStyle(left).display!=='contents') errors.push('phone scene groups are not owned by the dock');
+    if (survey.parent !== 'raillft' || !survey.rect?.visible || !survey.hit || !survey.named
       || survey.rect.width < 44 || survey.rect.height < 44 || survey.rect.left < rect.left || survey.rect.right > rect.right
       || Math.abs(survey.rect.top-rect.top)>1 || Math.abs(survey.rect.width-(pitch-4))>1
       || document.getElementById('docksurvey')?.querySelector('.utility-face')) errors.push('Survey is not a44px-floor native top-row scene action');
     if (charts.rect?.visible) errors.push('phone Charts shortcut must yield to its existing Settings control');
-    return { ok: errors.length === 0, errors, display, ids, expected, rows, rect, expectedWidth, pitch, centres, relocatedInventory, sceneactions };
+    const charter=available(document.getElementById('objchip')),overlay=document.body.matches('.panel-open,.card-open');
+    if(document.querySelector('#dockcharters,#railcharters')||charter.parent!=='topbar'||!charter.named||(!overlay&&(!charter.native||!charter.hit||!charter.rect?.visible||charter.rect.width<44||charter.rect.height<44)))errors.push('objective is not the sole reachable44px Charters opener');
+    return { ok: errors.length === 0, errors, display, ids, expected, rows, rect, expectedWidth, pitch, centres, relocatedInventory, sceneactions, charter };
   } finally {
     if (training) for (const { node, pointer, priority, inert } of prior) {
       if (pointer) node.style.setProperty('pointer-events', pointer, priority); else node.style.removeProperty('pointer-events');
@@ -104,7 +106,7 @@ function shellGeometry() {
   const compact = innerWidth <= 700 || (innerWidth <= 900 && innerWidth > innerHeight);
   const ids = ['topbar', 'playerchip', 'hpbar', 'searchbox', 'dock', 'primechip', 'objchip', 'trail', 'ctxbar', 'hintpill',
     'sceneactions', 'dockinventory', 'shelfnotifications', 'raillft', 'railrgt', 'docksurvey', 'dockcharts', 'setpanel',
-    'railcharters', 'railcodex', 'railatlas', 'railshipyard', 'railinventory', 'railrecords', 'docksets', 'hpLabel', 'hpText', 'hpIcon', 'primeCount'];
+    'railcodex', 'railatlas', 'railshipyard', 'railinventory', 'railrecords', 'docksets', 'hpLabel', 'hpText', 'hpIcon', 'primeCount'];
   const styles = getComputedStyle(document.documentElement), trail = document.getElementById('trail'), player = document.getElementById('playerchip');
   const available = id => {
     const node = document.getElementById(id), rect = r(id), face = node?.querySelector('.utility-face'), f = face?.getBoundingClientRect();
@@ -114,10 +116,10 @@ function shellGeometry() {
       hit: !!hit && (hit === node || node.contains(hit)), face: f ? { width: f.width, height: f.height } : null,
       labelsVisible: [...(node?.querySelectorAll('.lbl') ?? [])].some(label => { const b = label.getBoundingClientRect(), s = getComputedStyle(label); return s.display !== 'none' && s.visibility !== 'hidden' && b.width > 0 && b.height > 0; }) };
   };
-  const logical = ['dockcharters', 'dockcodex', 'primechip', 'dockshipyard', 'dockatlas', 'dockrecords', 'docknotifications', 'dockguide', 'docksets'];
-  const railMap = { dockcharters: 'railcharters', dockcodex: 'railcodex', dockshipyard: 'railshipyard', dockatlas: 'railatlas' };
+  const logical = ['objchip', 'dockcodex', 'primechip', 'dockshipyard', 'dockatlas', 'dockrecords', 'docknotifications', 'dockguide', 'docksets'];
+  const railMap = { dockcodex: 'railcodex', dockshipyard: 'railshipyard', dockatlas: 'railatlas' };
   const openers = logical.map(id => ({ ...available(compact ? id : railMap[id] ?? id), logicalId: id }));
-  const dock = [...document.querySelectorAll(compact ? '#dock > button, #dock > #sceneactions > button' : '#dock > button')].map(node => available(node.id)).filter(button => button.visible && (compact || button.id !== 'primechip'));
+  const dock = [...document.querySelectorAll(compact ? '#dock > button, #dock > #raillft > button, #dock > #sceneactions > button' : '#dock > button')].map(node => available(node.id)).filter(button => button.visible && (compact || button.id !== 'primechip'));
   const first = dock[0], second = dock[1], gapPoint = first && second ? { x: (first.right + second.left) / 2, y: first.top + first.height / 2 } : null;
   const gapHit = gapPoint ? document.elementFromPoint(gapPoint.x, gapPoint.y) : null;
   const stack = r('sceneactions'), centralPoint = { x: innerWidth / 2, y: Math.min(innerHeight - 1, (compact ? r('topbar').bottom : stack.top) + 22) };
@@ -128,8 +130,9 @@ function shellGeometry() {
   return { viewport: { width: innerWidth, height: innerHeight }, compact, rects: Object.fromEntries(ids.map(id => [id, r(id)])),
     dockGap: { point: gapPoint, owned: gapHit === document.getElementById('dock'), hit: gapHit?.id || gapHit?.tagName || null },
     topLeftActions: (compact ? ['dockinventory', 'docksurvey'] : ['dockinventory', 'docksurvey', 'dockcharts']).map(available), openers, dock,
-    sceneGroup: { parentId: document.getElementById('sceneactions').parentElement?.id, display: getComputedStyle(document.getElementById('sceneactions')).display },
-    textPills: compact ? [] : ['playerchip','railcharters','railcodex','railatlas','railshipyard','docksurvey','dockcharts'].map(id => {
+    sceneGroup: { parentId: document.getElementById('sceneactions').parentElement?.id, display: getComputedStyle(document.getElementById('sceneactions')).display, leftParentId:document.getElementById('raillft').parentElement?.id, leftDisplay:getComputedStyle(document.getElementById('raillft')).display },
+    charter:available('objchip'),
+    textPills: compact ? [] : ['playerchip','railcodex','railatlas','railshipyard','docksurvey','dockcharts'].map(id => {
       const node=document.getElementById(id), range=document.createRange(), style=getComputedStyle(node);range.selectNodeContents(node);
       const content=range.getBoundingClientRect(), sides=['paddingLeft','paddingRight','borderLeftWidth','borderRightWidth'].map(key=>parseFloat(style[key])||0);
       return{id,width:node.getBoundingClientRect().width,contentWidth:content.width,expectedWidth:Math.max(44,content.width+sides.reduce((a,b)=>a+b,0))}; }),
@@ -169,27 +172,27 @@ function metricDeltas(state) {
   }
   if (compact) {
     for (const id of ['raillft','railrgt']) add(id + ' hidden', r[id].visible ? 1 : 0, 0, 'compact phone layout', 0);
-    add('phone scene group dock owner', state.sceneGroup.parentId === 'dock' && state.sceneGroup.display === 'contents' ? 1 : 0, 1, 'no separate upper scene stack', 0);
+    add('phone scene group dock owner', state.sceneGroup.parentId === 'dock' && state.sceneGroup.display === 'contents' && state.sceneGroup.leftParentId==='dock' && state.sceneGroup.leftDisplay==='contents' ? 1 : 0, 1, 'no separate upper scene stack', 0);
     add('phone Charts shortcut hidden', r.dockcharts.visible ? 1 : 0, 0, 'preference remains in Settings', 0);
-    add('phone Survey dock placement', r.docksurvey.visible && r.docksurvey.left >= r.dock.left && r.docksurvey.right <= r.dock.right && r.docksurvey.bottom <= r.dock.bottom && Math.abs(r.docksurvey.top-r.dock.top)<=1 ? 1 : 0, 1, 'sixth top-row native scene owner', 0);
+    add('phone Survey dock placement', r.docksurvey.visible && r.docksurvey.left >= r.dock.left && r.docksurvey.right <= r.dock.right && r.docksurvey.bottom <= r.dock.bottom && Math.abs(r.docksurvey.top-r.dock.top)<=1 ? 1 : 0, 1, 'first top-row native scene owner', 0);
     add('phone dock bottom', v.height - r.dock.bottom - safeBottom, 12);
-    add('phone dock width', r.dock.width, Math.min(384,v.width-safeLeft-safeRight-20), 'six responsive scene slots within safe side insets');
+    add('phone dock width', r.dock.width, Math.min(320,v.width-safeLeft-safeRight-20), 'five responsive scene slots within safe side insets');
     add('phone dock height (default text)', r.dock.height, 92, '44px rows plus4px gap; count text may grow with preferences');
     add('phone hint bottom', v.height - r.hintpill.bottom - safeBottom, 124);
     add('phone caption bottom', v.height - r.ctxbar.bottom - safeBottom, Math.max(164,124+state.hintHeight+8));
     add('phone Search width', r.searchbox.width, Math.min(v.width * .37, v.width - safeLeft - safeRight - 30 - Math.min(176,Math.max(128,v.width*.36))));
-    for (const [group, buttons] of [['boards', state.dock.slice(0,6)],['utilities',state.dock.slice(6)]])
-      for (let i=1;i<buttons.length;i++) add(group + ' centre pitch ' + i, buttons[i].left+buttons[i].width/2-buttons[i-1].left-buttons[i-1].width/2,Math.min(384,v.width-safeLeft-safeRight-20)/6);
+    for (const [group, buttons] of [['boards', state.dock.slice(0,5)],['utilities',state.dock.slice(5)]])
+      for (let i=1;i<buttons.length;i++) add(group + ' centre pitch ' + i, buttons[i].left+buttons[i].width/2-buttons[i-1].left-buttons[i-1].width/2,Math.min(320,v.width-safeLeft-safeRight-20)/5);
   } else {
     add('scene action left alignment', r.sceneactions.left - r.dockinventory.left, 0);
-    add('Survey/Charts gap', r.dockcharts.top - r.docksurvey.bottom, 8);
+    add('Survey/Compendium gap', r.railcodex.top - r.docksurvey.bottom, 8);
     for (const pill of state.textPills) add(pill.id + ' text-fit width', pill.width, pill.expectedWidth, 'visible label plus padding/border and44px minimum');
     for (const id of ['raillft','railrgt']) add(id + ' visible', r[id].visible ? 1 : 0, 1, 'production side-control arrangement', 0);
     add('left rail top gap', r.raillft.top-r.topbar.bottom,8);
     add('right rail top gap', r.railrgt.top-r.topbar.bottom,8);
     add('left rail inset',r.raillft.left-safeLeft,18);
     add('right rail inset',v.width-r.railrgt.right-safeRight,18);
-    add('Charters/Compendium gap',r.railcodex.top-r.railcharters.bottom,8,'44px native targets plus8px gap');
+    add('Survey left rail placement',r.docksurvey.top-r.raillft.top,0,'Survey replaces Charters');
     add('Atlas/Shipyard gap',r.railshipyard.top-r.railatlas.bottom,8,'44px native targets plus8px gap');
     add('left stack below rail gap',r.sceneactions.top-r.raillft.bottom,8);
     add('Prime top centre',r.primechip.left+r.primechip.width/2,v.width/2);
@@ -214,7 +217,7 @@ function topLeftOutcome(state, narrowPanel = false) {
   const r=state.rects,v=state.viewport,errors=[],viewport={left:0,top:0,right:v.width,bottom:v.height};
   const inside=(box,parent)=>box?.visible&&box.left>=parent.left-1&&box.top>=parent.top-1&&box.right<=parent.right+1&&box.bottom<=parent.bottom+1;
   if(!inside(r.topbar,viewport)||(!state.compact&&!inside(r.sceneactions,viewport)))errors.push('header or context actions leave the viewport');
-  if(state.compact&&(!inside(r.docksurvey,r.dock)||r.dockcharts.visible||state.sceneGroup.parentId!=='dock'||state.sceneGroup.display!=='contents'))errors.push('phone Survey/Charts ownership is incorrect');
+  if(state.compact&&(!inside(r.docksurvey,r.dock)||r.dockcharts.visible||state.sceneGroup.parentId!=='dock'||state.sceneGroup.display!=='contents'||state.sceneGroup.leftParentId!=='dock'||state.sceneGroup.leftDisplay!=='contents'))errors.push('phone Survey/Charts ownership is incorrect');
   if(Math.abs(state.topbarPublished-r.topbar.height)>1)errors.push('published header height does not match rendered content');
   for(const action of state.topLeftActions){
     if(!inside(action,viewport)||!action.native||!action.named||!action.hit||action.width<44||action.height<44)errors.push(action.id+' is not a bounded named native44px action');
@@ -230,6 +233,7 @@ function topLeftOutcome(state, narrowPanel = false) {
     if(r.hpbar.visible||r.objchip.visible)errors.push('status chrome did not yield to the narrow panel');
     if(r.searchbox.left<v.width/2||r.topbar.bottom>r.dock.top-8)errors.push('right-column controls collide with the launcher');
   }else{
+    if(!state.charter.native||!state.charter.named||!state.charter.hit||state.charter.width<44||state.charter.height<44)errors.push('objective is not a reachable native Charters opener');
     for(const id of ['hpbar','objchip'])if(!inside(r[id],r.topbar))errors.push(id+' is not contained in the header');
     if(r.objchip.overflowX||r.objchip.overflowY)errors.push('Objective clips its header lane');
     for(const id of ['hpLabel','hpText','hpIcon'])if(!inside(r[id],r.hpbar))errors.push(id+' clips its health gauge');
@@ -241,17 +245,17 @@ function topLeftOutcome(state, narrowPanel = false) {
   return{pass:errors.length===0,errors};
 }
 const LAUNCHER_PANELS = [
-  ['dockcharters', 'chpanel'], ['dockcodex', 'codexpanel'], ['primechip', 'primepanel'],
+  ['objchip', 'chpanel'], ['dockcodex', 'codexpanel'], ['primechip', 'primepanel'],
   ['dockshipyard', 'shipyardpanel'], ['dockatlas', 'atlaspanel'], ['dockrecords', 'recpanel'],
   ['docknotifications', 'notificationpanel'], ['dockguide', 'guidepanel'], ['docksets', 'setpanel'],
 ];
 function launcherOutcome(state) {
-  const expected=state.compact?['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets']:
-    ['railcharters','railcodex','primechip','railshipyard','railatlas','dockrecords','docknotifications','dockguide','docksets'];
+  const expected=state.compact?['objchip','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets']:
+    ['objchip','railcodex','primechip','railshipyard','railatlas','dockrecords','docknotifications','dockguide','docksets'];
   const ids=state.openers.map(button=>button.id),errors=[];
   if(JSON.stringify(ids)!==JSON.stringify(expected))errors.push('visible native opener identity/order drifted: '+JSON.stringify(ids));
   for(const button of state.openers)if(!button.visible||!button.native||!button.named||!button.hit||button.width<44||button.height<44)errors.push(button.id+' is not a named native44px center-hit-testable opener');
-  const dockExpected=state.compact?[...expected.slice(0,5),'docksurvey',...expected.slice(5)]:['dockrecords','docknotifications','dockguide','docksets'];
+  const dockExpected=state.compact?['docksurvey',...expected.slice(1)]:['dockrecords','docknotifications','dockguide','docksets'];
   if(JSON.stringify(state.dock.map(button=>button.id))!==JSON.stringify(dockExpected))errors.push('visible dock membership drifted');
   if(state.dockDisplay!==(state.compact?'grid':'flex'))errors.push('dock display does not match compact grid / wide utility flex layout');
   if(!state.compact&&(state.dockPointerEvents!=='auto'||!state.dockGap.owned))errors.push('wide utility dock loses native ownership of its internal gaps');
@@ -337,7 +341,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       'Golden raster differences reflect scene/save/browser/font differences as well as design; no pixel-equality verdict.',
       'New game uses native Skip then bounded Escape ascent to Cosmos, read from retained hidden canonical trail DOM. The trace records its visibility honestly; no visible breadcrumb or legacy import is claimed. Camera, progression and save differences remain in comparisons.',
       'Notification screenshots use only naturally available messages; this diagnostic does not certify cross-session persistence.',
-      'Phone has six scene buttons including Survey above four utility icons, with responsive widths up to60px/64px centers and Charts available in Settings. Wide views use existing side rails, top-centerPrime and four bottom-right utilities with44px targets/8px gaps. Breakpoint701 and44px targets are explicit v2 amendments; production goldens remain human comparison data.',
+      'Phone has five scene buttons, with Survey replacing Charters, above four utility icons; the objective opens Charters and Charts remains in Settings. Wide views use existing side rails, top-centerPrime and four bottom-right utilities with44px targets/8px gaps. Breakpoint701 and44px targets are explicit v2 amendments; production goldens remain human comparison data.',
       'Three default-text screenshot views are supplemented by one numeric phone fs-xl probe and one844x390 Settings-open probe; these remain bounded diagnostics, not a U4 matrix.',
       'One same-task Settings/Motion Auto/Close replay temporarily widens the first writable review document to1440x900. Three per-button untrusted click receipts and the separate global trace are retained, followed by the existing font/two-frame boundary and original viewport restoration. No desktop persistence or extra trusted-native delivery is claimed.',
     ] };
@@ -598,11 +602,11 @@ export async function runUiShellReview(buildArgument, outputArgument) {
           ['phone hint bottom', '#hintpill', 'bottom', '1px'],
           ['phone caption bottom', '#ctxbar', 'bottom', '1px'],
           ['phone Search width', '#searchbox', 'width', '100px'],
-          ...state.dock.slice(1, 6).map((button, i) => ['boards centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
-          ...state.dock.slice(7).map((button, i) => ['utilities centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
+          ...state.dock.slice(1, 5).map((button, i) => ['boards centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
+          ...state.dock.slice(6).map((button, i) => ['utilities centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
         ] : [
           ['scene action left alignment', '#sceneactions', 'transform', 'translateX(10px)'],
-          ['Survey/Charts gap', '#dockcharts', 'transform', 'translateY(10px)'],
+          ['Survey/Compendium gap', '#railcodex', 'transform', 'translateY(10px)'],
           ...state.textPills.map(pill => [pill.id + ' text-fit width', pill.id === 'playerchip' ? '#dockinventory' : '#' + pill.id, 'width', '236px']),
           ['raillft visible', '#raillft', 'display', 'none'],
           ['railrgt visible', '#railrgt', 'display', 'none'],
@@ -610,7 +614,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
           ['right rail top gap', '#railrgt', 'transform', 'translateY(10px)'],
           ['left rail inset', '#raillft', 'transform', 'translateX(10px)'],
           ['right rail inset', '#railrgt', 'transform', 'translateX(10px)'],
-          ['Charters/Compendium gap', '#railcodex', 'transform', 'translateY(10px)'],
+          ['Survey left rail placement', '#docksurvey', 'transform', 'translateY(10px)'],
           ['Atlas/Shipyard gap', '#railshipyard', 'transform', 'translateY(10px)'],
           ['left stack below rail gap', '#sceneactions', 'transform', 'translateY(10px)'],
           ['Prime top centre', '#primechip', 'transform', 'translateX(-40%)'],

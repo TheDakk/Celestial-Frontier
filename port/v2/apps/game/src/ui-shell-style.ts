@@ -2,7 +2,7 @@ import { UI_PRESENTATION_DESKTOP_MIN, UI_PRESENTATION_PHONE_MAX } from './ui-pre
 
 /** Production v1.8.9 placement adapted to v2's native owners. Nick's screenshot
  * amendments: right objective, icon-only phones, name-only Inventory, Health
- * caption, hidden trail and plain guidance. Phone Survey joins the top dock row;
+ * caption, hidden trail and plain guidance. Survey replaces Charters in each layout; the objective opens Charters;
  * Search shares the upper-right edge. Wide text pills fit their labels. Touch floors remain 44px. */
 export const UI_SHELL_CSS = `
 #topbar{position:fixed;inset:0 0 auto;z-index:var(--cf-layer-shell);pointer-events:none;display:grid;grid-template-columns:var(--cf-hud-column) minmax(0,1fr);grid-template-rows:minmax(44px,auto) minmax(44px,auto);align-items:start;gap:8px 14px;padding:max(10px,var(--safe-top)) calc(var(--safe-right) + var(--cf-hud-inset)) 8px calc(var(--safe-left) + var(--cf-hud-inset));background:linear-gradient(180deg,rgba(4,4,12,.7),transparent);border:0;box-sizing:border-box}
@@ -23,7 +23,7 @@ export const UI_SHELL_CSS = `
    visible Current view label, navigation control or reserved screen lane. */
 #trail{display:none;pointer-events:none}
 #trail .cur{color:#c8ebff;font-weight:600}#trail .sep{padding:0 4px}
-#objchip{grid-column:2;grid-row:2;justify-self:end;position:static;inset:auto;z-index:auto;display:block;margin:0;padding:8px 11px;font-size:10.5px;letter-spacing:.01em;line-height:1.45;color:#f0cf8a;width:max-content;max-width:min(236px,100%);box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;border:1px solid rgba(255,207,138,.48);border-radius:22px;background:rgba(10,16,30,.94);pointer-events:none}
+#objchip{grid-column:2;grid-row:2;justify-self:end;position:static;inset:auto;z-index:auto;display:block;margin:0;padding:8px 11px;font-size:10.5px;letter-spacing:.01em;line-height:1.45;color:#f0cf8a;width:max-content;max-width:min(236px,100%);box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;border:1px solid rgba(255,207,138,.48);border-radius:22px;background:rgba(10,16,30,.94);pointer-events:auto;min-width:44px;min-height:44px;font-family:var(--ui);font-weight:400;text-align:left;cursor:pointer;touch-action:manipulation}
 #objchip::before{content:'Objective';display:block;margin-bottom:2px;font-size:8px;line-height:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#d4be97}
 #objchip:empty{display:none}#objchip .prog{color:#7ec8f0;font-weight:600;white-space:nowrap}
 body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
@@ -52,6 +52,8 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
 #raillft{left:calc(var(--safe-left) + var(--cf-hud-inset))}#railrgt{right:calc(var(--safe-right) + var(--cf-hud-inset));max-width:236px;align-items:flex-end}
 :is(#raillft,#railrgt) button{box-sizing:border-box;min-width:44px;min-height:44px;padding:8px 13px;border:1px solid #2a3c5e;border-radius:999px;background:rgba(10,13,26,.88);color:var(--dim);font:11px/1.4 var(--ui);cursor:pointer;touch-action:manipulation}
 #raillft button{width:max-content;max-width:100%;text-align:left}#railrgt button{width:max-content;max-width:100%;text-align:right}
+#docksurvey{display:flex;align-items:center;justify-content:flex-start;gap:8px}
+#docksurvey>.ico{width:20px;flex:0 0 20px;text-align:center;font-size:14px}
 #railinventory,#railrecords{display:none}
 @media(min-width:${UI_PRESENTATION_DESKTOP_MIN}px){
   #dock{right:calc(var(--safe-right) + 16px);bottom:calc(var(--safe-bottom) + 12px);display:flex;gap:8px;align-items:center;width:max-content}
@@ -61,7 +63,7 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   #hintpill{max-width:min(620px,calc(100vw - 480px))}
   #ctxbar{bottom:calc(var(--safe-bottom) + max(64px,18px + var(--hint-h) + 8px))}
 }
-/* Phone has six scene buttons and four utilities, up to a 64px rhythm. Short landscape keeps the
+/* Phone has five scene buttons and four utilities, up to a 64px rhythm. Short landscape keeps the
    existing compact safe-column behavior even when its width exceeds 700px. */
 @media(max-width:${UI_PRESENTATION_PHONE_MAX}px),(max-width:900px) and (orientation:landscape){
   :root{--cf-hud-inset:10px;--cf-hud-column:clamp(128px,36vw,176px)}
@@ -70,15 +72,15 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   #playerchip{font-size:10px;padding:8px 9px}
   #searchbox{justify-self:end;width:100%;max-width:37vw;padding:5px 11px;font-size:16px}
   #objchip{width:100%;max-width:100%;justify-self:end}
-  #raillft,#railrgt{display:none}
-  #sceneactions{display:contents}
+  #railrgt,#railcodex{display:none}
+  #raillft,#sceneactions{display:contents}
   #sceneactions #dockcharts{display:none}
-  #sceneactions #docksurvey{grid-column:11/13;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:var(--cf-touch-target);padding:6px 0 4px;border:1px solid #2a3c5e;background:rgba(10,13,26,.88);line-height:1}
-  #sceneactions #docksurvey .lbl{display:none}
-  #dock{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 12px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:minmax(44px,auto) 44px;column-gap:0;row-gap:4px;width:min(384px,calc(100vw - var(--safe-left) - var(--safe-right) - 20px));max-width:none;justify-items:center;align-items:center}
-  #dock .dock-board,#sceneactions #docksurvey{display:flex;grid-row:1;align-self:stretch;position:static;transform:none;max-width:none;width:calc(100% - 4px);min-width:var(--cf-touch-target)}
-  #dockcharters{grid-column:1/3}#dockcodex{grid-column:3/5}#primechip{grid-column:5/7}#dockshipyard{grid-column:7/9}#dockatlas{grid-column:9/11}
-  #dock .dock-utility{grid-row:2}#dockrecords{grid-column:3/5}#docknotifications{grid-column:5/7}#dockguide{grid-column:7/9}#docksets{grid-column:9/11}
+  #raillft #docksurvey{grid-column:1/3;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:var(--cf-touch-target);padding:6px 0 4px;border:1px solid #2a3c5e;background:rgba(10,13,26,.88);line-height:1}
+  #raillft #docksurvey .lbl{display:none}
+  #dock{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 12px);display:grid;grid-template-columns:repeat(10,minmax(0,1fr));grid-template-rows:minmax(44px,auto) 44px;column-gap:0;row-gap:4px;width:min(320px,calc(100vw - var(--safe-left) - var(--safe-right) - 20px));max-width:none;justify-items:center;align-items:center}
+  #dock .dock-board,#raillft #docksurvey{display:flex;grid-row:1;align-self:stretch;position:static;transform:none;max-width:none;width:calc(100% - 4px);min-width:var(--cf-touch-target)}
+  #dockcodex{grid-column:3/5}#primechip{grid-column:5/7}#dockshipyard{grid-column:7/9}#dockatlas{grid-column:9/11}
+  #dock .dock-utility{grid-row:2}#dockrecords{grid-column:2/4}#docknotifications{grid-column:4/6}#dockguide{grid-column:6/8}#docksets{grid-column:8/10}
   #dock #primechip{position:static;inset:auto;transform:none;display:flex;flex-direction:column;gap:1px;width:calc(100% - 4px);min-width:var(--cf-touch-target);max-width:none;padding:6px 0 4px}
   #dock .dock-board .lbl{display:none}
   #dock .prime-count{font-size:8px}
@@ -91,15 +93,12 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   body.panel-open #dockinventory{grid-column:1;grid-row:1}
   body.panel-open #searchbox{grid-column:1;grid-row:2;justify-self:stretch;width:100%;max-width:none}
   body.panel-open #hpbar{display:none}
-  body.panel-open #dock{left:auto;right:calc(var(--safe-right) + 12px);transform:none;width:min(384px,calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2))}
+  body.panel-open #dock{left:auto;right:calc(var(--safe-right) + 12px);transform:none;width:min(320px,calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2))}
 }
 @media(min-width:901px){
   #setpanel,#recpanel,#shipyardpanel,#inventorypanel,#combatpanel,#toast{right:calc(var(--safe-right) + 16px);bottom:calc(var(--safe-bottom) + var(--dock-h) + 24px)}
 }
 @media(max-width:${UI_PRESENTATION_PHONE_MAX}px),(pointer:coarse){#searchbox,body.fs-lg #searchbox{font-size:16px!important}body.fs-xl #searchbox{font-size:17px!important}}
-@media(max-width:900px) and (orientation:portrait){
-  body.surface-mode #objchip{display:none}
-}
 body.fs-lg #sceneactions button{font-size:13px}body.fs-xl #sceneactions button{font-size:15px}
 body.fs-lg #hpbar>.hp-icon{font-size:20px!important}body.fs-xl #hpbar>.hp-icon{font-size:22px!important}
 body.fs-lg #objchip::before{font-size:10px}body.fs-xl #objchip::before{font-size:11px}
