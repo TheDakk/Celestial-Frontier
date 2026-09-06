@@ -20,6 +20,17 @@
       "laterStages": "Two phone Glass rows not run after Slice red",
       "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_8ecc5a0_20260906/manifest.json",
       "correction": "Await document.fonts.ready and two real animation frames before desktop/phone geometry samples; log actual/published header heights. No app sync or polling to green. Stale anchored controls still fail the same1px oracle. Align hidden Prime negative-control prefix to its existing current failure. Focused29PASS; initial stale source-extraction fixture endpoint red retained."
+    },
+    {
+      "source": "9c869c316d081d2ea352b81d6c6a6abca802fe3d",
+      "stage": "slice core-flow golden layout",
+      "runId": "20260906152547550-11463-bba745f6935b",
+      "priorStages": "Typecheck, artunused, 311 files / 3318 tests / 1 skipped, Glass selftest, normal build and review (9 images / 63 trusted native inputs) PASS",
+      "result": "RED repeated despite fonts loaded and two animation frames. Header 131.4375px, published height 114px; rails top 122px. Phone published 221px versus actual 220.78125px.",
+      "cause": "Timing-only diagnosis disproved. Same-task Settings open, Motion change and Close can publish the hidden-objective height, then restore the previously observed height without a net ResizeObserver change. Body-class MutationObserver updates surface clearance only. Independently, three restored wide rail buttons omit type=button and fail native-control availability.",
+      "correction": "Republish header height from the existing body-class observer before surface clearance; regression covers coalesced same-task class changes without ResizeObserver delivery. Declare type=button on the three restored visible controls. Preserve rendered-boundary receipts and the unchanged geometry/native-control oracle.",
+      "laterStages": "Two phone Glass rows not run after Slice RED; no unchanged-source retry.",
+      "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_9c869c3_20260906/manifest.json"
     }
   ]
 }

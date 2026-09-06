@@ -181,9 +181,13 @@ function wiringErrors(main: string, owner: string): string[] {
     'observeResize(context, syncContextH);',
     'observeResize(hint, syncHintH);',
     'for (const element of surfaceTopChrome) observeResize(element, syncSurfaceChromeBottom);',
-    'const bodyClassObserver = makeMutationObserver(syncSurfaceChromeBottom);',
     "attributeFilter: ['class'],",
   ]) if (!resizeLifecycle.includes(observation)) errors.push('observer-ownership');
+  const bodyClassPublication = section(resizeLifecycle, 'const bodyClassObserver = ', '\n  bodyClassObserver.observe(')
+    .replace(/^\s*\/\/[^\n]*\n/gm, '');
+  if (bodyClassPublication !== 'const bodyClassObserver = makeMutationObserver(() => {\n    syncTopbarH();\n    syncSurfaceChromeBottom();\n  });') {
+    errors.push('body-class-height-measurement');
+  }
   if (occurrences(resizeLifecycle, 'observeResize(') !== 5
     || occurrences(resizeLifecycle, 'makeMutationObserver(') !== 1) {
     errors.push('observer-cardinality');
@@ -340,6 +344,15 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
     );
     expect(wiringErrors(mainSource, duplicateSurfaceObserver)).toContain('observer-ownership');
     expect(wiringErrors(mainSource, duplicateSurfaceObserver)).toContain('observer-cardinality');
+
+    const bodyClassPublication = section(ownerSource, 'const bodyClassObserver = ', '\n  bodyClassObserver.observe(');
+    const staleHeaderMutation = replaceOnce(ownerSource, bodyClassPublication,
+      replaceOnce(bodyClassPublication, '    syncTopbarH();\n', ''));
+    expect(wiringErrors(mainSource, staleHeaderMutation)).toContain('body-class-height-measurement');
+    const reversedMutationOrder = replaceOnce(ownerSource, bodyClassPublication,
+      replaceOnce(bodyClassPublication, '    syncTopbarH();\n    syncSurfaceChromeBottom();',
+        '    syncSurfaceChromeBottom();\n    syncTopbarH();'));
+    expect(wiringErrors(mainSource, reversedMutationOrder)).toContain('body-class-height-measurement');
 
     const broadMutation = replaceOnce(
       ownerSource,

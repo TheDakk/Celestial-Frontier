@@ -1,5 +1,10 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+U1 layout correction (2026-09-06): the existing body-class observer republishes the final
+header height after a same-task Settings open/change/close transition, keeping the rails below
+Search/Objective even when ResizeObserver sees no net size change. Restored visible rail
+controls declare their native button type explicitly.
+
 ## Current v2 U1 shell overlay — matches code as of 2026-09-06
 
 `port/v2/apps/game/src/ui-presentation-tokens.ts` supplies Inter/spacing/type/color/layer

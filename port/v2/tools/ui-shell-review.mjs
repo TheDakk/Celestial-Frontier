@@ -304,6 +304,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       'Notification screenshots use only naturally available messages; this diagnostic does not certify cross-session persistence.',
       'Phone uses production60px board faces/64px centers and an icon-only5+4 dock. Wide views use existing side rails, top-centerPrime and four bottom-right utilities with44px targets/8px gaps. Breakpoint701 and44px targets are explicit v2 amendments; production goldens remain human comparison data.',
       'Three default-text screenshot views are supplemented by one numeric phone fs-xl probe and one844x390 Settings-open probe; these remain bounded diagnostics, not a U4 matrix.',
+      'One desktop same-task Settings/Motion Auto/Close replay uses three explicitly programmatic clicks, then the existing font/two-frame rendered boundary; it does not add trusted native input deliveries.',
     ] };
   const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
     '.webp': 'image/webp', '.wav': 'audio/wav', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png' };
@@ -462,6 +463,35 @@ export async function runUiShellReview(buildArgument, outputArgument) {
           && JSON.stringify(action.closed.scene.trail) === '["Cosmos"]' && action.closed.deltas.every(delta => delta.pass)
           && action.closed.launcher.pass && topLeftOutcome(closedState).pass && !closedState.horizontalOverflow && (!action.closed.phone || action.closed.phone.ok);
         writeReport(); assert(action.closePass, name + ' native launcher Close did not restore its exact opener and shell: ' + JSON.stringify(action));
+      }
+      // Slice's same-task Settings -> Motion Auto -> Close sequence can publish
+      // an intermediate hidden-Objective height. This is explicitly programmatic;
+      // the63 trusted native journeys above/below are counted separately.
+      if (name === 'desktop') {
+        const probe = { name: 'same-task programmatic Settings / Motion Auto / Close', inputMode: 'programmatic',
+          sequence: ['#docksets', '#setpanel [data-motion="-1"]', '#setpanel [data-pnx]'],
+          before: await evaluate(`(${shellGeometry.toString()})()`) };
+        row.programmaticSettingsChrome = probe; writeReport();
+        probe.immediate = await evaluate(`(()=>{const trace=window.__cfU1ReviewNativeTrace,start=trace.events.length,sequence=${JSON.stringify(probe.sequence)};
+          for(const selector of sequence){const node=document.querySelector(selector);if(!(node instanceof HTMLButtonElement)||node.disabled)throw new Error('Programmatic Settings control missing: '+selector);node.click();}
+          return{state:(${shellGeometry.toString()})(),events:trace.events.slice(start),
+            closed:getComputedStyle(document.getElementById('setpanel')).display==='none',
+            autoSelected:document.querySelector('#setpanel [data-motion="-1"]')?.getAttribute('aria-pressed')==='true'};})()`);
+        writeReport();
+        assert(probe.immediate.closed && probe.immediate.autoSelected, 'same-task programmatic Settings sequence did not complete');
+        assert(probe.immediate.events.length === 3 && probe.immediate.events.every(event => event.type === 'click' && event.trusted === false),
+          'Settings diagnostic must remain exactly three programmatic clicks, never claimed as trusted native delivery');
+        // Use the same font/two-render-frame boundary as the other review checks.
+        // Never call application sync or poll until the geometry happens to pass.
+        await frames();
+        probe.boundary = 'document.fonts.ready followed by two requestAnimationFrame callbacks';
+        probe.settled = await evaluate(`(${shellGeometry.toString()})()`);
+        probe.checks = metricDeltas(probe.settled).filter(delta => ['topbar published height', 'left rail top gap', 'right rail top gap'].includes(delta.name));
+        probe.scene = await scene();
+        probe.pass = probe.checks.length === 3 && probe.checks.every(delta => delta.pass);
+        writeReport();
+        assert.deepEqual(probe.scene.trail, ['Cosmos'], 'programmatic Settings sequence changed canonical scene');
+        assert(probe.pass, 'settled Settings chrome height/rail mismatch: ' + JSON.stringify(probe));
       }
       // Break a measured anchor in the live document, require red, restore and re-observe green.
       const control = await evaluate(`(()=>{const e=document.getElementById('objchip'),prior={present:e.hasAttribute('style'),value:e.getAttribute('style')};

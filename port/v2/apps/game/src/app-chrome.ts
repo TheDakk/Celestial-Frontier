@@ -284,7 +284,12 @@ export function createAppChromeController(
   observeResize(context, syncContextH);
   observeResize(hint, syncHintH);
   for (const element of surfaceTopChrome) observeResize(element, syncSurfaceChromeBottom);
-  const bodyClassObserver = makeMutationObserver(syncSurfaceChromeBottom);
+  const bodyClassObserver = makeMutationObserver(() => {
+    // A same-task panel open/close can publish an intermediate header height without
+    // a net ResizeObserver size change. Measure the final body-class state too.
+    syncTopbarH();
+    syncSurfaceChromeBottom();
+  });
   bodyClassObserver.observe(chromeDocument.body, {
     attributes: true,
     attributeFilter: ['class'],

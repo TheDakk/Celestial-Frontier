@@ -66,7 +66,7 @@ function rect(bottom: number, width = 100, height = 20): DOMRect {
   } as DOMRect;
 }
 
-function createHarness(includeSceneActions = false) {
+function createHarness(includeSceneActions = false, useNativeMutationObserver = false) {
   const dom = new JSDOM(chromeMarkup(), { url: 'https://example.test/' });
   openDoms.push(dom);
   const document = dom.window.document;
@@ -125,7 +125,7 @@ function createHarness(includeSceneActions = false) {
   const mutationObservers: Array<ObserverRecord<Node> & { options: MutationObserverInit[] }> = [];
   const createResizeObserver = (listener: () => void): AppChromeResizeObserver => {
     const record: ObserverRecord<Element> = {
-      listener,
+      listener: vi.fn(listener),
       observed: [],
       disconnect: vi.fn<() => void>(),
     };
@@ -135,6 +135,7 @@ function createHarness(includeSceneActions = false) {
       disconnect: () => { record.disconnect(); },
     };
   };
+  let nativeMutationDeliveries = 0;
   const createMutationObserver = (listener: () => void): AppChromeMutationObserver => {
     const record: ObserverRecord<Node> & { options: MutationObserverInit[] } = {
       listener,
@@ -143,12 +144,16 @@ function createHarness(includeSceneActions = false) {
       disconnect: vi.fn<() => void>(),
     };
     mutationObservers.push(record);
+    const native = useNativeMutationObserver
+      ? new dom.window.MutationObserver(() => { nativeMutationDeliveries += 1; listener(); })
+      : null;
     return {
       observe: (target, options) => {
         record.observed.push(target);
         record.options.push(options ?? {});
+        native?.observe(target, options);
       },
-      disconnect: () => { record.disconnect(); },
+      disconnect: () => { record.disconnect(); native?.disconnect(); },
     };
   };
   let resizeListener: (() => void) | null = null;
@@ -176,6 +181,7 @@ function createHarness(includeSceneActions = false) {
     styles,
     resizeObservers,
     mutationObservers,
+    nativeMutationDeliveries: () => nativeMutationDeliveries,
     addResizeListener,
     removeResizeListener,
     viewportResize,
@@ -470,6 +476,55 @@ describe('application chrome DOM owner', () => {
     expect(h.resizeObservers).toHaveLength(8);
     for (const item of h.resizeObservers) expect(item.disconnect).toHaveBeenCalledOnce();
     expect(h.mutationObservers[0]!.disconnect).toHaveBeenCalledOnce();
+  });
+
+  it('republishes a restored header after same-task panel changes even without a ResizeObserver delivery', async () => {
+    const h = createHarness(true, true);
+    const header = h.element('topbar');
+    // JSDOM does not lay out CSS. Model the two observed rendered heights
+    // from the real panel-open/closed states while using its actual native
+    // MutationObserver delivery and the production controller callbacks.
+    const height = () => h.document.body.classList.contains('panel-open') ? 114 : 132;
+    Object.defineProperty(header, 'offsetHeight', { configurable: true, get: height });
+    header.getBoundingClientRect = () => rect(height(), 390, height());
+    renderProgress(h.controller);
+    const published = () => h.document.documentElement.style.getPropertyValue('--topbar-h');
+    expect(published()).toBe('132px');
+    expect(h.nativeMutationDeliveries()).toBe(0);
+
+    // Settings open -> status/preference update -> Close is one JS task.
+    // The header ends at its prior size, so no ResizeObserver callback is
+    // delivered; a transient synchronous publication must still be repaired.
+    h.document.body.classList.add('panel-open');
+    renderProgress(h.controller);
+    expect(header.offsetHeight).toBe(114);
+    expect(published()).toBe('114px');
+    h.document.body.classList.remove('panel-open');
+    expect(header.offsetHeight).toBe(132);
+    expect(published()).toBe('114px');
+    expect(h.nativeMutationDeliveries()).toBe(0);
+    await Promise.resolve();
+    expect(h.nativeMutationDeliveries()).toBe(1);
+    expect(published()).toBe('132px');
+    expect(h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom')).toBe('132.00px');
+    for (const observer of h.resizeObservers) expect(observer.listener).not.toHaveBeenCalled();
+
+    // Disposal must cancel an already-queued body-class publication too.
+    h.document.body.classList.add('panel-open');
+    renderProgress(h.controller);
+    h.document.body.classList.remove('panel-open');
+    expect(published()).toBe('114px');
+    h.controller.dispose();
+    h.controller.dispose();
+    await Promise.resolve();
+    expect(h.nativeMutationDeliveries()).toBe(1);
+    expect(published()).toBe('114px');
+    expect(header.offsetHeight).toBe(132);
+    expect(h.mutationObservers[0]!.disconnect).toHaveBeenCalledOnce();
+    for (const observer of h.resizeObservers) {
+      expect(observer.listener).not.toHaveBeenCalled();
+      expect(observer.disconnect).toHaveBeenCalledOnce();
+    }
   });
 
   it('owns exact observer targets, resize ordering, and one idempotent teardown', () => {

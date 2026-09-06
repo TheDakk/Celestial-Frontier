@@ -1,5 +1,12 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **MEASURE THE FINAL STATE OF A COALESCED OVERLAY TRANSITION** (U1, 2026-09-06).
+> A same-task open → preference change → close can publish an intermediate header height,
+> then restore the last observed size without another ResizeObserver delivery. Waiting for
+> frames does not repair that stale measurement. The body-class owner must also republish
+> final header geometry. Reproduce the actual transition with no resize delivery, preserve
+> the failed rendered-boundary receipt, and prove observer disposal still stops callbacks.
+
 > **DISTINGUISH NATIVE HIDDEN CHROME FROM AN INJECTED VISIBLE FAULT** (U1, 2026-09-06).
 > Nick restored production's hidden breadcrumb. Preserve the canonical location text for
 > diagnostics, but never call its zero-sized native state a visible-trail PASS. Historical
