@@ -107,3 +107,11 @@ children, so viewport coordinates did not create the intended collision. The con
 translates from actual painted Prime/HP rectangles and retains the existing required overlap
 and exact-restoration assertions. No product change or producer movement in this correction.
 Red log is retained in `UI_U1_SLICE_RED_b08f8ac_20260906.log.gz`; later gates were not run.
+
+## Source-contract correction —b431837
+
+Fresh install/typecheck/artunused PASS. Vitest stopped on one stale source-marker test
+(309 files green; 3,257 passed / 1 failed / 1 skipped). The test still required the old
+fixed-position HP collision code after its measured-rectangle correction. Its three marker
+requirements now follow that correction and retain their remove-one negative controls. No
+product or authority changes. Glass selftest and all browser checks were not run after red.
