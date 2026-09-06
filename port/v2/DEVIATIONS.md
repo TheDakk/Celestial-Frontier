@@ -1,5 +1,17 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U2 short-landscape spacing correction — 2026-09-06
+
+Nick flagged the cramped Settings/Training screenshot. The common ID sheet rule overrode a
+later class-only landscape rule, reducing Settings to155px instead of its safe-height workspace.
+The landscape owner now carries ID specificity; its native diagnostic checks independent
+left/top/width/max-height measurements and injects/restores the retained bad anchor. Planetside
+reserves painted toast height only across intersecting horizontal columns. A separate failed
+fixture had mixed Surface biosphere with Sol captions; source-derived Surface copy/markup now
+replaces and exactly restores the native caption nodes. This is presentation evidence only.
+All failed reports remain immutable; no native verification or technical-gate closure claimed.
+
+
 ## U2–U4 authorized; U2 sheet/stack implementation — 2026-09-06
 
 Nick explicitly authorized proceeding through U2–U4, including Settings above Training.

@@ -7,6 +7,7 @@ export function createSheetLayoutController(document: Document = window.document
   const root = document.documentElement;
   const lower = ['hintpill', 'ctxbar', 'dock'].map(id => document.getElementById(id)!);
   const toast = document.getElementById('toast')!;
+  const planetside = document.getElementById('planetside');
   let disposed = false;
   let frame = 0;
   const set = (name: string, value: number): void => {
@@ -29,9 +30,16 @@ export function createSheetLayoutController(document: Document = window.document
     // Reserve the full painted toast until its fade finishes. The inline target
     // catches the first frame of entry; computed opacity catches exit frames.
     const toastVisible = toast.style.opacity === '1' || Number(view.getComputedStyle(toast).opacity) > 0;
-    const toastHeight = toastVisible ? visibleRect(toast)?.height ?? 0 : 0;
+    const toastRect = toastVisible ? visibleRect(toast) : null;
+    const toastHeight = toastRect?.height ?? 0;
     const floor = lowerTop - 8 - (toastHeight > 0 ? toastHeight + 8 : 0);
     set('--cf-sheet-floor', floor);
+    // Landscape Planetside can occupy the other column from a painted toast.
+    // Keep global reservation intact; this floor only exempts disjoint columns.
+    const sideRect = planetside ? visibleRect(planetside) : null;
+    const toastCrossesSide = sideRect !== null && toastRect !== null
+      && Math.min(sideRect.right, toastRect.right) > Math.max(sideRect.left, toastRect.left);
+    set('--cf-planetside-floor', lowerTop - 8 - (toastCrossesSide ? toastHeight + 8 : 0));
     set('--cf-sheet-bottom', height - floor);
     set('--cf-toast-height', toastHeight);
   };
@@ -40,6 +48,7 @@ export function createSheetLayoutController(document: Document = window.document
   };
   const resize = new view.ResizeObserver(schedule);
   for (const el of [...lower, toast, document.getElementById('topbar')!]) resize.observe(el);
+  if (planetside) resize.observe(planetside);
   const mutation = new view.MutationObserver(schedule);
   mutation.observe(document.body, { attributes: true, attributeFilter: ['class'] });
   mutation.observe(toast, { attributes: true, attributeFilter: ['style'], childList: true, subtree: true, characterData: true });

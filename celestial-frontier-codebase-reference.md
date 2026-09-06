@@ -44,8 +44,11 @@ safety deviations from production and the honest injected floating-trail negativ
 toast size/style and header/body changes, publishing the lower-lane, toast and sheet-floor CSS
 properties through its own coalesced measurement observer, installed by `main.ts`. The toast reserves its full height
 through its exit fade. `ui-sheet-style.ts` owns sheet bounds, sticky header/Close styling, stack
-layers and shared motion/control states; Planetside consumes the measured floor. The panel is
-still its scroll owner, and Compendium keeps its virtual scrollport.
+layers and shared motion/control states. Its ID-qualified short-landscape override preserves
+the full safe-height left workspace rather than losing to the common sheet selector. Planetside
+consumes a separate measured floor in landscape that reserves toast height only across an
+intersecting horizontal column; global/portrait reservation is unchanged. Its width is observed.
+The panel is still its scroll owner, and Compendium keeps its virtual scrollport.
 `panels.ts#seatPnx` tags the original direct h2/h3 `.sheet-header` and keeps a direct first
 `.sheet-close`; `fillPanel` retains that Close node and any Close-owned focus. Training admits
 `#docksets/#setpanel` except during completion, closes Settings through its native owner on

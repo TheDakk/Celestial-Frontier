@@ -3,7 +3,11 @@
 ## UI parity program — U1 shell / U2 sheet checkpoint, matches code as of 2026-09-06
 
 Nick explicitly authorized U2–U4. U2's measured lower-lane, shared sheet header/Close and
-Settings-above-Training implementation awaits native/checkpoint verification. Ordered U3
+Settings-above-Training implementation awaits native/checkpoint verification. Nick's cramped
+large-text landscape screenshot exposed an inert class-only sheet override; its successor uses
+ID-qualified anchors and measures Planetside toast reservation per intersecting column. The
+mixed-route fixture is corrected to source-owned Surface captions, with its old RED retained.
+Ordered U3
 panel checkpoints and U4 follow under the [accepted program](UI_PARITY_PROGRAM_U1_U4.md);
 emoji remain in product until Nick chooses otherwise after the icon study.
 

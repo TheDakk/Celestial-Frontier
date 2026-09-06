@@ -4,7 +4,11 @@
 
 Nick explicitly authorized U2–U4. U2's measured lower lane, shared sticky title/Close, internal
 panel scrolling and Training stack are implemented; native and checkpoint verification remain
-pending. U1's accepted layout and open technical gate are retained. Follow the
+pending. The short-landscape selector now matches its common ID owner so Settings can use the
+full safe-height column. Planetside reserves a toast only across its own column. The scoped
+fixture derives Surface hint/context markup from the actual source and restores native children;
+its old mixed Sol/Surface stress RED remains retained. U1's accepted layout and open technical
+gate are retained. Follow the
 [program authorization](../UI_PARITY_PROGRAM_U1_U4.md) and [live handoff](../../ROADMAP.md).
 
 The normal `/` game (without `avpilot`) uses the shared token/shell owners, local Inter,

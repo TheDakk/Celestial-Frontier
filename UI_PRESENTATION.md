@@ -84,8 +84,12 @@ against bright artwork. The outline adds no pill or box and changes no layout me
 U2's `sheet-layout.ts` measures the visible hint, context and dock rectangles plus the toast's
 painted height, retaining its reservation until the fade ends. `ui-sheet-style.ts` uses that
 lower lane to bound sheets with 8px gaps. Planetside uses the measured sheet floor; wide Settings
-centers vertically in its available right-side workspace. Short landscape keeps its existing
-safe-column composition. These layouts still require native verification.
+centers vertically in its available right-side workspace. Short-landscape sheet overrides carry
+the same ID specificity as their common owner: start safe-top+6, left safe-left+8, half safe
+width and maximum height viewport−safe-top−safe-bottom−30. The earlier class-only override
+was inert and squeezed large-text Settings to155px. Planetside keeps a separate landscape floor:
+a toast in the disjoint right column does not consume its left-column height. Global and
+portrait reservations, caption/hint lanes and44px floors stay intact. Native verification pending.
 
 The shared panel owner keeps the first direct native Close and existing first h2/h3 title as
 sticky siblings. Refills retain the same Close node and restore its focus only when it owned

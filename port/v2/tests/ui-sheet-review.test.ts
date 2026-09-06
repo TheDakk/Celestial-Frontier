@@ -6,6 +6,8 @@ import { describe, expect, it } from 'vitest';
 const require = createRequire(import.meta.url);
 const { JSDOM } = require('jsdom');
 const source = readFileSync(new URL('../tools/ui-sheet-review.mjs', import.meta.url), 'utf8');
+const fixtureMain = readFileSync(new URL('../apps/game/src/main.ts', import.meta.url), 'utf8');
+const fixtureChrome = readFileSync(new URL('../apps/game/src/app-chrome.ts', import.meta.url), 'utf8');
 const start = 'export function readSheetGeometry()', end = 'export async function runUiSheetReview(';
 expect(source.split(start)).toHaveLength(2); expect(source.split(end)).toHaveLength(2);
 const helpers = source.slice(source.indexOf(start), source.indexOf(end)).replace(/^export /gm, '');
@@ -23,7 +25,7 @@ function owners() {
   return runInNewContext(helpers + '\n({ assessSheetGeometry })');
 }
 function domOwners() {
-  const dom = new JSDOM('<!doctype html><body class="native"><div id="planetside"><button data-native>Preserved listener</button></div><div id="toast" style=""></div><aside id="setpanel" class="panel"><h3 class="sheet-header">Settings</h3></aside><div id="tutcard"></div></body>', { runScripts: 'outside-only' });
+  const dom = new JSDOM('<!doctype html><body class="native"><div id="planetside"><button data-native>Preserved listener</button></div><div id="toast" style=""></div><aside id="setpanel" class="panel"><h3 class="sheet-header">Settings</h3></aside><div id="tutcard"></div><div id="hintpill"><b>Prior hint</b></div><div id="ctxbar">Prior context</div></body>', { runScripts: 'outside-only' });
   dom.window.eval(helpers);
   for (const id of ['planetside', 'tutcard']) dom.window.document.getElementById(id).getBoundingClientRect = () => rect(12, 240, 296, 110);
   return dom;
@@ -54,7 +56,9 @@ describe('U2 diagnostic executes its retained source owners', () => {
     const dom = domOwners(), w = dom.window, body = w.document.body, child = w.document.querySelector('[data-native]');
     const prior = body.innerHTML; let calls = 0; child.addEventListener('click', () => calls++);
     body.replaceChildren = () => { throw new Error('must not reinsert the live game body'); };
-    expect(w.sheetFixture().scope).toContain('presentation-only');
+    expect(w.sheetFixture(false, w.surfaceFixtureCopy(fixtureMain, fixtureChrome)).scope).toContain('presentation-only');
+    expect(w.document.getElementById('hintpill').textContent).toBe('press Leave world, right-click, or Escape to lift off');
+    expect(w.document.getElementById('ctxbar').textContent).toBe('planetfall — the survey card carries the world’s roster');
     const receipts = w.sheetFixture(true);
     expect(receipts.every((r: any) => r.attributesExact && r.childrenExact)).toBe(true);
     expect(body.innerHTML).toBe(prior); expect(w.document.querySelector('[data-native]')).toBe(child);
@@ -122,6 +126,24 @@ describe('U2 diagnostic executes its retained source owners', () => {
     button.getBoundingClientRect = () => rect(220, 140, 43, 44);
     expect(w.readNativeTarget('[data-sel=tutskip]').issues).toContain('below-44px');
     dom.window.close();
+  });
+  it('rejects the retained landscape Settings anchor, then admits the full safe-height workspace', () => {
+    const { assessSheetGeometry } = owners(), state: any = baseline();
+    state.viewport = { width: 844, height: 390 }; state.safe = { top: 0, right: 44, bottom: 21, left: 44 };
+    state.roots.setpanel = rect(52, 102, 360, 155, { maxHeight: 155 });
+    state.header = rect(67, 117, 238, 44, { position: 'sticky' }); state.close = rect(357, 117, 44, 44, { position: 'sticky' });
+    expect(assessSheetGeometry(state, { panel: true }).errors).toContain('landscape-sheet-workspace');
+    state.roots.setpanel = rect(52, 6, 360, 339, { maxHeight: 339 });
+    expect(assessSheetGeometry(state, { panel: true }).errors).not.toContain('landscape-sheet-workspace');
+    state.roots.setpanel.left += 2;
+    expect(assessSheetGeometry(state, { panel: true }).errors).toContain('landscape-sheet-workspace');
+  });
+  it('fails closed if the source Surface copy owner is absent or duplicated', () => {
+    const dom = domOwners(), w = dom.window;
+    expect(() => w.surfaceFixtureCopy('', fixtureChrome)).toThrow('not unique');
+    expect(() => w.surfaceFixtureCopy(fixtureMain + fixtureMain, fixtureChrome)).toThrow('not unique');
+    expect(() => w.surfaceFixtureCopy(fixtureMain, '')).toThrow('formatting owner');
+    expect(() => w.sheetFixture()).toThrow('source-owned'); dom.window.close();
   });
   it('keeps the first fault failure when exact restoration also fails', async () => {
     const begin = '    const control = async (kind, options) => {', finish = '    for (const viewport of U2_VIEWPORTS)';

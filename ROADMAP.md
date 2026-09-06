@@ -31,23 +31,27 @@ started clean; ambient .DS_Store preserved; root main.js absent. Same-session SS
 startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 remains deferred for busy tools.
 Actions UNFROZEN/PUBLIC per last receipt, private fallback3000, zero exact hosted authority.
 
-Latest signed U2 check source7197d62fa227cd20640acb2866d89660d2996084 (23ahead) passed normal
-build and9scoped rows: all portrait phones/default+A++mono and default landscape, including real
-Charts toggles and lower-lane/fault/Close checks. Large-text landscape stopped before Skip:
-Training's card overflows (301px scrollHeight/219px clientHeight), but the driver never revealed
-Skip through that scroller. Exact target geometry was not retained by the original refusal.
-Immutable audits/UI_U2_LOCAL_CHECKPOINT_7197d62_20260906/manifest.json preserves28PNGs/allinputs.
-Remaining scoped rows, develop-static, phone canaries and Slice NOT RUN. The bounded successor
-uses measured native Training scrolling and detailed refused-target geometry;9/9 focused tests
-and rootvalidate PASS. Earlier e88ea7b static317files/3391tests/1skip PASS plus Charts-scroll RED,
-and2642ddc old source-spelling RED remain separately immutable. Fresh exact-source check pending:
-normal build/scoped review → complete develop-static → both phone canaries → Slice/named verify.
-Product producer c821b3cbc3dcac586e59fccdde02a3310d85bc2490c1e74e05f432761f93cc7c unchanged.
-Current audit audits/UI_U2_SHEETS_20260906.md owns preparation/attempt evidence. Inkscape is
-unavailable this session: both reports abort at macOS GUI registration, even --version; restricted
-launch is suspected, not proved by an outside-sandbox control. No relaunch. Browser SVG rendering
-works. Nick prefers colorful emoji; retain them in product, with one optional three-icon color
-study retained at audits/UI_U3_COLOR_ICON_STUDY_20260906. No icon rework loop is queued.
+Latest signed U2 check source ded28c1da0cfccf8610b21427eda94c9aad58617 (24ahead) passed normal
+build and9scoped rows; large-text landscape then passed native Skip/Charts and stopped on a13.5px
+Planetside/context overlap in a mixed Surface/Sol synthetic fixture. Static, canaries and Slice
+NOT RUN. Immutable audits/UI_U2_LOCAL_CHECKPOINT_ded28c1_20260906/manifest.json retains29PNGs.
+Nick flagged the cramped Settings/Training screenshot. Confirmed product cause: common ID
+selector defeated class-only landscape override, leaving155px instead of339px safe-height sheet.
+The bounded successor uses ID-qualified anchors, a horizontally measured Planetside/toast floor,
+and source-owned Surface caption fixtures. Independent workspace/fault controls18/18, v2 types,
+rootvalidate and producerbuild PASS; rendered normal/large-text review pending. Product producer
+627b067cc917dc3d553a36fd85ef5d39e2612e24cac0ae4e8386fee9e7fd9fc8; measurement/ceilings/draft81
+unchanged. Preserve all prior failed manifests (7197d62,e88ea7b,2642ddc) and earlier unknown causes.
+Fresh exact-source sequence: normalbuild/scoped20rows → developstatic → small/large phone →
+Slice/namedverify, first-nonzero stop. Current audit audits/UI_U2_SHEETS_20260906.md owns evidence.
+
+Inkscape unavailable this session: two reports abort at macOS GUI registration, even --version;
+restricted launch suspected, no outside-sandbox control. Do not relaunch. Browser SVG rendering
+works. Nick prefers colorful emoji; keep them in product, optional three-icon color study at
+ audits/UI_U3_COLOR_ICON_STUDY_20260906. No further icon rework loop queued. Temporary U3 Shipyard,
+Atlas, Compendium and U4/Shipyard-review preparations exist under /private/tmp and remain untested;
+do not apply a later panel before its preceding checkpoint. No user action or generic approval
+needed to finish U2–U4, but visual spacing must be checked before advancing.
 
 U2 is active: shared native sheet headers/Close and internal scrolling, measured lower lanes,
 Settings/Training stacking and motion/state tokens. First retained case is b457a7a small-phone:

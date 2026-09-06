@@ -1,3 +1,24 @@
+# U2 short-landscape spacing handoff superseded — 2026-09-06
+
+Latest signed U2 check source7197d62fa227cd20640acb2866d89660d2996084 (23ahead) passed normal
+build and9scoped rows: all portrait phones/default+A++mono and default landscape, including real
+Charts toggles and lower-lane/fault/Close checks. Large-text landscape stopped before Skip:
+Training's card overflows (301px scrollHeight/219px clientHeight), but the driver never revealed
+Skip through that scroller. Exact target geometry was not retained by the original refusal.
+Immutable audits/UI_U2_LOCAL_CHECKPOINT_7197d62_20260906/manifest.json preserves28PNGs/allinputs.
+Remaining scoped rows, develop-static, phone canaries and Slice NOT RUN. The bounded successor
+uses measured native Training scrolling and detailed refused-target geometry;9/9 focused tests
+and rootvalidate PASS. Earlier e88ea7b static317files/3391tests/1skip PASS plus Charts-scroll RED,
+and2642ddc old source-spelling RED remain separately immutable. Fresh exact-source check pending:
+normal build/scoped review → complete develop-static → both phone canaries → Slice/named verify.
+Product producer c821b3cbc3dcac586e59fccdde02a3310d85bc2490c1e74e05f432761f93cc7c unchanged.
+Current audit audits/UI_U2_SHEETS_20260906.md owns preparation/attempt evidence. Inkscape is
+unavailable this session: both reports abort at macOS GUI registration, even --version; restricted
+launch is suspected, not proved by an outside-sandbox control. No relaunch. Browser SVG rendering
+works. Nick prefers colorful emoji; retain them in product, with one optional three-icon color
+study retained at audits/UI_U3_COLOR_ICON_STUDY_20260906. No icon rework loop is queued.
+
+
 # U2 Training-scroll checkpoint handoff superseded — 2026-09-06
 
 Latest signed U2 check source e88ea7b1ce31dc3a4be583927183f70bc9c608a0 (22ahead) passed full
