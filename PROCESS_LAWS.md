@@ -1,5 +1,13 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **PASSIVE UI HISTORY MUST NOT JOIN AN IN-FLIGHT PRODUCT SNAPSHOT** (U1 review, 2026-09-06).
+> Bioscan and Scout compare their exact pre-await live source; a toast that appends notification
+> history during that await can invalidate a legitimate action. Keep pending notices in a
+> presentation buffer until product settlement. Promote them only through an admitted existing
+> checkpoint; do not introduce a notification debounce that can replace an action's activePersist
+> barrier. Mark read must own an idle writable save path and retain unread state on refusal.
+> A panel refill preserves its exact semantic focus without scrolling or stealing outside focus.
+
 > **A CLOUD-SYNC COPY IS A BACKUP ONLY AFTER FORCED READ-BACK** (Nick, 2026-09-05).
 > Upload/sync indicators and same-disk copies do not establish recoverability. Wait for every
 > selected backup item to report uploaded, evict only the uploaded destination copy, request

@@ -40,7 +40,7 @@ function chromeMarkup(): string {
     <div id="topbar">
       <div id="trail"></div>
       <div id="playerchip"></div>
-      <div id="primechip"></div>
+      <button id="primechip" type="button"></button>
       <div id="hpbar"><span class="fill"></span><span class="txt"></span></div>
       <div id="objchip"></div>
     </div>
@@ -202,7 +202,12 @@ describe('application chrome DOM owner', () => {
     );
     expect(h.document.querySelector<HTMLElement>('#hpbar .fill')!.style.width).toBe('75%');
     expect(h.document.querySelector('#hpbar .txt')!.textContent).toBe('75/100 HP');
-    expect(h.element('primechip').textContent).toBe('✦ Prime Codex 3 / 9');
+    expect(h.element('primechip').textContent).toBe('✦ Prime Codex 3/9');
+    expect(h.element('primechip').querySelector('.ico')?.getAttribute('aria-hidden')).toBe('true');
+    expect(h.element('primechip').querySelector('.lbl')?.textContent).toBe('Prime Codex');
+    expect(h.element('primechip').querySelector('.prime-count')?.textContent).toBe('3/9');
+    expect(h.element('primechip').getAttribute('aria-label')).toBe('Open Prime Codex, 3 of 9 signatures');
+    expect(h.controller.primeCodexOpener()).toBe(h.element('primechip'));
     expect(h.element('objchip').innerHTML).toBe(
       '⬆ Survey worlds · <span class="prog" data-sel="objprog">2 / 5</span>',
     );
@@ -211,6 +216,7 @@ describe('application chrome DOM owner', () => {
     expect(h.controller.rankCeremonyAnchor()).toBeNull();
     h.widths.set('playerchip', 100);
     expect(h.document.documentElement.style.getPropertyValue('--topbar-h')).toBe('52px');
+    expect(h.document.documentElement.style.getPropertyValue('--row1-h')).toBe('70px');
 
     h.heights.set('topbar', 68);
     h.controller.renderStatus({
@@ -311,6 +317,15 @@ describe('application chrome DOM owner', () => {
     expect(h.document.documentElement.style.getPropertyValue('--dock-h')).toBe('44px');
     expect(h.document.documentElement.style.getPropertyValue('--ctx-h')).toBe('31px');
     expect(h.document.documentElement.style.getPropertyValue('--hint-h')).toBe('27px');
+    expect(h.document.documentElement.style.getPropertyValue('--row1-h')).toBe('70px');
+    h.bottoms.set('searchbox', 31);
+    h.controller.syncTopbarH();
+    expect(h.document.documentElement.style.getPropertyValue('--row1-h')).toBe('40px');
+    h.bottoms.set('searchbox', 88);
+    h.controller.syncTopbarH();
+    expect(h.document.documentElement.style.getPropertyValue('--row1-h')).toBe('88px');
+    h.bottoms.set('searchbox', 70);
+    h.controller.syncTopbarH();
 
     h.bottoms.set('planetside', 300);
     h.controller.syncSurfaceChromeBottom();
@@ -395,7 +410,7 @@ describe('application chrome DOM owner', () => {
     h.viewportResize.mockImplementation(() => { order.push('viewport'); });
     h.resize();
     expect(order).toEqual([
-      '--topbar-h',
+      '--topbar-h', '--row1-h',
       '--dock-h', '--surface-chrome-bottom',
       '--ctx-h', '--surface-chrome-bottom',
       '--hint-h',

@@ -1,5 +1,46 @@
 # Celestial Frontier — UI / Presentation System
 
+## V2 presentation system — U1, matches code as of 2026-09-06
+
+The normal v2 game now owns presentation values in `ui-presentation-tokens.ts`, emitted once
+as CSS custom properties before `app-chrome.ts` measures the shell. `ui-shell-style.ts` owns
+shelf, board/utility dock, desktop rails and objective/trail/caption/hint placement. Inter is
+local OFL type; existing Settings font/text/tone preferences take precedence. Semantic
+rarity/resource/Atlas/protected colors retain their owners. Emoji remain the icon system.
+
+Phone (<=700px): five labelled 58px chips at 64px centers, then four 36px visual utility
+circles inside 44px targets at 64px centers. Board order is Charters, Compendium, Prime N/9,
+Shipyard, Atlas; utility order Records, Notifications, Guide, Settings. Bottom utilities sit
+12px above the safe area, board 60px above it; caption164px and hint124px preserve separate
+lanes. Inventory opens from the nameplate in the measured two-row shelf; Survey/Charts retain
+their IDs and actions in a separate contextual rail. Selection adds gold without growing a target.
+`--topbar-h` measures rendered content; `--row1-h` measures the Search bottom, at least40px.
+There is no sealed fixed shelf-height number: font and text-size choices may increase it.
+
+Desktop/tablet begins at701px. Nick chose the FINAL LAYOUT bottom-right utility cluster;
+Prime remains centered above the scene and left/right boards use rails. Utilities/rails use
+44px pitch to preserve non-overlapping44px targets (2px above the legacy diagram, explicitly
+listed for review). Duplicate hidden Inventory/Records rail IDs retain compatibility; their
+visible shelf/utility owners provide access. The breadcrumb trail is a compact v2 lane;
+v1's final source hides it, so it is not claimed to match a visible golden trail.
+
+Notifications shows saved history plus clearly labelled session-only notices while save
+writes are held. Opening the panel does not mark messages read; explicit Mark read persists
+through the existing checkpoint path, with pending/failed status and rollback on refusal.
+New history retains50 entries, matching existing export capacity; the importer still accepts60.
+Messages emitted while a product action settles wait in a private presentation buffer;
+only the next admitted existing checkpoint promotes them after settlement. Notices create no
+new save timer or competing write. Training/read-only notices remain session-only. Both bell badges
+read the same history. Panel manager and Training keep native focus/Close/Escape/inert owners.
+
+U1 is a scoped parity checkpoint, not completion of the sheet system or U4 layout gate.
+`ui-shell-review.mjs` captures normal-game comparison grids and measured deltas against
+v1's three main goldens. CSS geometry has a1px tolerance; raster differences remain human
+review, never portable PNG-hash equality. Existing Slice/Glass phone outcomes retain negative
+controls adapted to the approved layout. U2 sheet/stack work and U3 panel reskins are pending.
+The pasted U2 Training/Settings ordering must be reconciled with THE TRAINING STACK LAW first.
+The integrated audiovisual pilot remains unapproved; U1 does not authorize Phase2.
+
 ## Opt-in audiovisual presentation — 2026-09-05 local
 
 Matches code as of **2026-09-05 local**. The Phase 1 `?avpilot=1` candidate uses shared navy/glass

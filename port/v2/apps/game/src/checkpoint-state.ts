@@ -1,8 +1,9 @@
 /* Receipt-free checkpoint projection.
 
    A checkpoint starts from the last durable SaveState and may overlay only
-   route/profile/preferences/Guide/release fields. Product, progression,
-   ownership, economy, Atlas, and naming state always comes from the durable
+   route/profile/preferences/Guide/release fields plus bounded notification
+   history and its read flags. Product, progression, ownership, economy, Atlas,
+   and naming state always comes from the durable
    parent, so an unrelated receipt-free write cannot smuggle optimistic live
    state across the F4 lease/revision boundary. */
 import { checkedEcologyEpoch } from '@cf/domain-ecology';
@@ -117,6 +118,7 @@ export const CHECKPOINT_STATE_OVERLAY_FIELDS = Object.freeze([
   'glassTint',
   'motionMode',
   'cardExpand',
+  'notifications',
   'seenGuide',
   'rnSeen',
   'voiceOn',
@@ -143,6 +145,7 @@ export const CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS = Object.freeze([
   'glassTint',
   'motionMode',
   'cardExpand',
+  'notifications',
   'seenGuide',
   'rnSeen',
   'voiceOn',
@@ -325,11 +328,41 @@ function checkedSaveTopLevel(value: unknown): Readonly<Record<string, unknown>> 
   return Object.freeze(fields);
 }
 
+/** Refuse oversized/sparse or decorated arrays before detachment. Field values
+ * are never read here: the shared clone rejects accessors, cycles and custom
+ * prototypes before the bounded notification row validator examines them. */
+function boundedNotificationArray(value: unknown): boolean {
+  if (!Array.isArray(value)) return false;
+  const length = Object.getOwnPropertyDescriptor(value, 'length');
+  if (!length || !('value' in length) || !Number.isInteger(length.value)
+    || length.value < 0 || length.value > 60) return false;
+  const expected = new Set(['length', ...Array.from({ length: length.value as number }, (_, index) => String(index))]);
+  const keys = Reflect.ownKeys(value);
+  return keys.length === expected.size && keys.every((key) => typeof key === 'string' && expected.has(key));
+}
+
+function validNotificationHistory(value: unknown): boolean {
+  if (!Array.isArray(value) || value.length > 60) return false;
+  return value.every((entry: unknown) => {
+    if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return false;
+    const row = entry as Record<string, unknown>;
+    const keys = Object.keys(row).sort();
+    if (keys.join(',') !== 'id,ms,read,t,tt') return false;
+    return typeof row.id === 'number' && Number.isInteger(row.id)
+      && row.id >= -2_147_483_648 && row.id <= 2_147_483_647
+      && typeof row.tt === 'string' && row.tt.length <= 200
+      && typeof row.ms === 'string' && row.ms.length <= 400
+      && typeof row.t === 'number' && Number.isFinite(row.t) && row.t >= 0 && row.t <= 4e12
+      && typeof row.read === 'boolean';
+  });
+}
+
 function validLiveField(field: keyof SaveStateV2, value: unknown): boolean {
   if (STRING_LIVE_FIELDS.has(field)) return typeof value === 'string';
   if (BOOLEAN_LIVE_FIELDS.has(field)) return typeof value === 'boolean';
   if (NUMBER_LIVE_FIELDS.has(field)) return typeof value === 'number' && Number.isFinite(value);
   if (field === 'pinnedRecipe') return value === null || typeof value === 'string';
+  if (field === 'notifications') return validNotificationHistory(value);
   return false;
 }
 
@@ -379,15 +412,18 @@ export function projectCheckpointState(inputValue: CheckpointStateInput): Checkp
 
     for (const field of CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS) {
       const value = liveFields[field];
-      if (!validLiveField(field, value)) return refused(`live-field:${field}:invalid`);
-      /* All ordinary live fields are primitives. Clone anyway so this stays
-         correct if a later reviewed inventory adds bounded structured data. */
-      (state as unknown as Record<string, unknown>)[field] = clonePlainData(
-        value,
-        new Set<object>(),
-        { nodes: 0 },
-        0,
-      );
+      let detached: unknown;
+      try {
+        if (field === 'notifications' && !boundedNotificationArray(value)) {
+          return refused('live-field:notifications:invalid');
+        }
+        // Inspect only detached plain data; no live notification accessor runs.
+        detached = clonePlainData(value, new Set<object>(), { nodes: 0 }, 0);
+      } catch {
+        return refused(`live-field:${field}:invalid`);
+      }
+      if (!validLiveField(field, detached)) return refused(`live-field:${field}:invalid`);
+      (state as unknown as Record<string, unknown>)[field] = detached;
     }
     state.EPOCH_BASE = epoch;
     state.savedView = savedView;

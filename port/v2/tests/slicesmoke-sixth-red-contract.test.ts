@@ -103,7 +103,7 @@ function executableDeclaration<T>(name: string, nextDeclaration: string): T {
     'hasUnnegatedSentenceClaim',
     'V2_DRAFT_BULLET_COUNT',
     `return (${expression});`,
-  )(hasUnnegatedSentenceClaim, 79) as T;
+  )(hasUnnegatedSentenceClaim, 81) as T;
 }
 
 interface GuideSpec {
@@ -865,8 +865,8 @@ describe('sixth Slice red contract repairs', () => {
     expect(cf1).not.toContain("result.mode==='system'&&result.title==='Blue Earth'?result:null");
   });
 
-  it('keeps a fixed 79-row Guide oracle with five independent population controls', () => {
-    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 79;');
+  it('keeps a fixed 81-row Guide oracle with five independent population controls', () => {
+    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 81;');
     const owner = section(
       sliceSource,
       '  const releaseDraftCheck = `',
@@ -909,10 +909,10 @@ describe('sixth Slice red contract repairs', () => {
     const glassMissingBulletCount = Number(
       glassSource.match(/inventory\?\.bulletCount===(\d+)/)?.[1],
     );
-    expect(glassExpectedBulletCount).toBe(79);
+    expect(glassExpectedBulletCount).toBe(81);
     expect(glassMissingBulletCount).toBe(78);
     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
-    expect(glassSource).toContain('79-outcome development inventory');
+    expect(glassSource).toContain('81-outcome development inventory');
     expect(glassSource).not.toContain('55-outcome development inventory');
   });
 
@@ -3200,7 +3200,7 @@ describe('sixth Slice red contract repairs', () => {
   });
 
   it('seals the repaired phone, lazy publication, and Charter causal prefixes before browser spend', () => {
-    expect(indexSource).toContain(
+    expect(indexSource).not.toContain(
       'body:is(.card-open,.panel-open) #primechip { display: none; }',
     );
     const phonePrime = section(
@@ -3212,7 +3212,7 @@ describe('sixth Slice red contract repairs', () => {
       ['green Prime base', 'if (phGeo.length === 0) {'],
       ['Prime base causal stop', "failSliceWithoutCascade('PHONE GOLDEN LAYOUT drift:"],
       ['shared property carrier runtime', '${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}'],
-      ['four owned Prime properties', "captureInlineStyleProperties(prime.style,['display','top','left','transform'])"],
+      ['four owned Prime properties', "captureInlineStyleProperties(prime.style,['display','top','left','transform','position','bottom'])"],
       ['Prime property restore binding', 'const restore=()=>restoreInlineStyleProperties(prime.style,prior);'],
       ['hidden Prime control', "prime.style.setProperty('display','none','important')"],
       ['hidden Prime restoration proof', 'hiddenRestoration=inspectInlineStyleProperties(prime.style,prior)'],
@@ -3241,7 +3241,7 @@ describe('sixth Slice red contract repairs', () => {
       ['Prime overlay base causal stop', "failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD:"],
       ['visible Prime/panel collision control', "prime.style.setProperty('display','block','important')"],
       ['measured Prime/panel overlap', '!phonePrimeOverlayCtl.result?.overlap'],
-      ['Prime overlay property carrier', "captureInlineStyleProperties(prime.style,['display'])"],
+      ['Prime overlay property carrier', "captureInlineStyleProperties(prime.style,['display','position','left','top','bottom','transform','z-index'])"],
       ['Prime overlay restore binding', 'const restore=()=>restoreInlineStyleProperties(prime.style,prior);'],
       ['Prime overlay exact restoration', 'const restoration=inspectInlineStyleProperties(prime.style,prior)'],
       ['Prime overlay causal stop', "failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD CONTROL FAILED"],
@@ -3275,7 +3275,7 @@ describe('sixth Slice red contract repairs', () => {
       ['Survey property carrier runtime', '${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}'],
       ['visible Prime/Survey collision control', "prime.style.setProperty('display','block','important')"],
       ['measured Prime/Survey overlap', '!phoneSurveyPrimeOverlayCtl.result?.overlap'],
-      ['Survey Prime property carrier', "captureInlineStyleProperties(prime.style,['display'])"],
+      ['Survey Prime property carrier', "captureInlineStyleProperties(prime.style,['display','position','left','top','bottom','transform','z-index'])"],
       ['Survey Prime restore binding', 'const restore=()=>restoreInlineStyleProperties(prime.style,prior);'],
       ['Survey Prime final restoration', 'finally{restore();}'],
       ['Survey Prime exact restoration', 'const restoration=inspectInlineStyleProperties(prime.style,prior)'],

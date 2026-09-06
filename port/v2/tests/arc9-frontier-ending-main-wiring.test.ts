@@ -6,6 +6,8 @@ import { describe, expect, it } from 'vitest';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const mainSource = fs.readFileSync(path.join(here, '../apps/game/src/main.ts'), 'utf8');
 const indexSource = fs.readFileSync(path.join(here, '../apps/game/index.html'), 'utf8');
+const shellSource = fs.readFileSync(path.join(here, '../apps/game/src/ui-shell-style.ts'), 'utf8');
+const tokenSource = fs.readFileSync(path.join(here, '../apps/game/src/ui-presentation-tokens.ts'), 'utf8');
 const actionSource = fs.readFileSync(
   path.join(here, '../apps/game/src/arc9-frontier-ending-action.ts'),
   'utf8',
@@ -114,16 +116,19 @@ function frontierEndingMainErrors(source: string): string[] {
   return errors;
 }
 
-function primeMarkupErrors(source: string): string[] {
+function primeMarkupErrors(source: string, shell = shellSource, tokens = tokenSource): string[] {
   const errors: string[] = [];
-  if (!source.includes('<button id="primechip" class="glass pill" type="button"')) {
+  if (!source.includes('<button id="primechip" class="glass pill dock-board" type="button"')) {
     errors.push('Prime chip is not a native button');
   }
   if (!source.includes('<aside id="primepanel" class="glass panel" aria-label="Prime Codex"></aside>')) {
     errors.push('Prime panel region is missing');
   }
-  const primeRule = section(source, '#primechip {', '\n    #primechip.on');
-  if (!primeRule.includes('pointer-events: auto') || !primeRule.includes('min-height: 44px')) {
+  const buttonRule = section(shell, '#dock button{', '}');
+  const boardRule = section(shell, '#dock .dock-board{', '}');
+  if (!buttonRule.includes('pointer-events:auto')
+    || !boardRule.includes('min-height:var(--cf-touch-target)')
+    || !tokens.includes("'touch-target': '44px'")) {
     errors.push('Prime chip is not pointer-enabled with a touch-size floor');
   }
   if (!source.includes('#primepanel button.frontier-ending-choice')) {
@@ -168,8 +173,21 @@ describe('Arc 9 Prime Codex and Frontier ending Main wiring', () => {
     ))).toContain('read-only authority omits Frontier ending choices');
 
     expect(primeMarkupErrors(indexSource.replace(
-      '<button id="primechip" class="glass pill" type="button" aria-label="Open Prime Codex"></button>',
+      '<button id="primechip" class="glass pill dock-board" type="button" aria-label="Open Prime Codex"></button>',
       '<span id="primechip" class="glass pill"></span>',
     ))).toContain('Prime chip is not a native button');
+
+    const pointerMutant = replaceInSectionExact(shellSource, '#dock button{', '}',
+      'pointer-events:auto', 'pointer-events:none');
+    expect(primeMarkupErrors(indexSource, pointerMutant))
+      .toContain('Prime chip is not pointer-enabled with a touch-size floor');
+    const floorMutant = replaceInSectionExact(shellSource, '#dock .dock-board{', '}',
+      'min-height:var(--cf-touch-target)', 'min-height:0');
+    expect(primeMarkupErrors(indexSource, floorMutant))
+      .toContain('Prime chip is not pointer-enabled with a touch-size floor');
+    expect(primeMarkupErrors(indexSource, shellSource,
+      tokenSource.replace("'touch-target': '44px'", "'touch-target': '43px'")))
+      .toContain('Prime chip is not pointer-enabled with a touch-size floor');
+    expect(primeMarkupErrors(indexSource, shellSource, tokenSource)).toEqual([]);
   });
 });

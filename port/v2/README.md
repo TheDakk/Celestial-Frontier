@@ -1,5 +1,18 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+## U1 presentation checkpoint — 2026-09-06
+
+The normal `/` game (without `avpilot`) uses the shared token/shell owners, local Inter,
+labelled phone dock, desktop utility cluster and saved notification read state described in
+`../../UI_PRESENTATION.md`. The accepted brief and amendments are in
+`../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved.
+
+U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options before use).
+It owns an isolated headless browser and creates three golden comparison sheets plus numeric
+CSS geometry deltas. On macOS request approved out-of-sandbox execution before browser spawn.
+This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2; no CI/profile
+lane was changed. `ROADMAP.md` and `audits/UI_U1_CHECKPOINT_20260906.md` own exact-source results.
+
 ## UI tool setup — 2026-09-05 local
 
 `@cf/game` now pins GSAP 3.15.0 for future approved UI animation. It is installed but not imported

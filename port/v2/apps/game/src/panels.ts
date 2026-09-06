@@ -108,7 +108,7 @@ export function openPanel(id: string, opener?: HTMLElement | null): boolean {
   document.body.classList.add('panel-open');
   def.el.setAttribute('aria-hidden', 'false');
   for (const b of def.btns || []) {
-    b?.classList.add('on');
+    b?.classList.add('on', 'sel');
     b?.setAttribute('aria-expanded', 'true');
   }
   /* Panels are non-modal regions, but keyboard users still need a reliable
@@ -160,7 +160,7 @@ export function closePanels(except?: string): void {
     p.el.style.display = 'none';
     p.el.setAttribute('aria-hidden', 'true');
     for (const b of p.btns || []) {
-      b?.classList.remove('on');
+      b?.classList.remove('on', 'sel');
       b?.setAttribute('aria-expanded', 'false');
     }
     if (wasVisible) p.onClose?.();

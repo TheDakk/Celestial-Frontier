@@ -19,6 +19,7 @@ import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
+import { readU1PhoneShell } from './ui-shell-review.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import { assertBuiltGameMode } from './build-mode.mjs';
 import {
@@ -1199,7 +1200,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 79;
+const V2_DRAFT_BULLET_COUNT = 81;
 const GUIDE_RELEASE_TAIL_TEXT = '🌐 DEVELOPMENT PUBLISHING STAYS PARKED: The owner-authorized, labelled PR battery can build, browser-check, and archive an exact-commit v2.0 preview package with full Guide identity, origin refusal, and byte inventory; it does not publish. The separate branch-site workflow remains manually parked, and production remains the v1.8.9 main-branch site.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -5927,19 +5928,19 @@ try {
     if(!hp || !pc || hp.t < pc.b-4) bad.push('HP bar not under the player chip');
     if(!srch || !srch.vis || W-srch.r>40 || srch.t>60) bad.push('search bar not top-right');
     if(srch && pc && pc.r > srch.l+4) bad.push('player chip overlaps the search bar');
-    if(W>900 && (!pr || Math.abs(pr.cx-W/2)>70 || pr.t>60)) bad.push('Prime Codex pill not top-center');
-    if(W<=900){
+    if(W>700 && (!pr || Math.abs(pr.cx-W/2)>70 || pr.t>60)) bad.push('Prime Codex pill not top-center');
+    if(W<=700){
       const prime=document.getElementById('primechip'),hit=pr?document.elementFromPoint(pr.cx,pr.cy):null;
       if(!pr||!pr.vis||prime?.tagName!=='BUTTON'||prime?.type!=='button'||pr.h<44
         ||Math.abs(pr.cx-W/2)>60||!hit||!prime.contains(hit))
-        bad.push('Prime pill is not a visible reachable phone button in the centered second chrome tier: '+JSON.stringify({pr,hit:hit?.id||null}));
+        bad.push('Prime pill is not a visible reachable phone button in the centered first dock row: '+JSON.stringify({pr,hit:hit?.id||null}));
       for(const [name,box] of [['playerchip',pc],['hpbar',hp],['searchbox',srch],['trail',r('trail')]])
         if(overlaps(pr,box))bad.push('primechip overlaps '+name);
     }
     if(!obj || obj.l>40 || obj.t<H*0.18 || obj.t>H*0.42) bad.push('objective chip not left @~26vh: '+JSON.stringify(obj));
     if(!hint || Math.abs(hint.cx-W/2)>90 || hint.b<H-160) bad.push('hint pill not bottom-center');
     if(ctx && hint && ctx.b>hint.t+6) bad.push('caption not ABOVE the hint pill');
-    if(W>900){
+    if(W>700){
       if(!dock || dock.cx<W*0.6) bad.push('desktop cluster not bottom-RIGHT (ROADMAP #11 rail lesson)');
       if(!rail || !rail.vis) bad.push('left rail missing on desktop');
       if(dcx && dcx.vis) bad.push('dock codex should hide on desktop (rail owns it)');
@@ -6782,8 +6783,8 @@ try {
     sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
-    count: 79,
-    sha256: '351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042',
+    count: 81,
+    sha256: 'f35a3cca3eea2015025bf257c7832d706d1e2961fac9417a953d0932e0f5ca08',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -24404,13 +24405,14 @@ try {
   if (phGeo.length === 0) {
     const phonePrimeControls = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
       const prime=document.getElementById('primechip'),hp=document.getElementById('hpbar'),
-      prior=captureInlineStyleProperties(prime.style,['display','top','left','transform']);
+      prior=captureInlineStyleProperties(prime.style,['display','top','left','transform','position','bottom']);
       let hidden=null,hiddenRestoration=null,overlap=null,error=null;
       const restore=()=>restoreInlineStyleProperties(prime.style,prior);
       try{prime.style.setProperty('display','none','important');hidden=${geoCheck};restore();
         hiddenRestoration=inspectInlineStyleProperties(prime.style,prior);
         if(!hiddenRestoration.ok)throw new Error('hidden Prime carrier restoration failed');
         const h=hp.getBoundingClientRect();
+        prime.style.setProperty('position','fixed','important');prime.style.setProperty('bottom','auto','important');
         prime.style.setProperty('top',h.top+'px','important');prime.style.setProperty('left',h.left+'px','important');
         prime.style.setProperty('transform','none','important');overlap=${geoCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
@@ -24443,24 +24445,8 @@ try {
     for(const [a,b] of [['planetside','ctxbar'],['planetside','hintpill'],['planetside','dock'],['ctxbar','hintpill'],['ctxbar','dock'],['hintpill','dock']]) {
       if(overlaps(boxes[a],boxes[b])) bad.push(a+' overlaps '+b);
     }
-    const dock=document.getElementById('dock');
-    const buttons=[...dock.querySelectorAll('button')].filter((button)=>box(button.id));
-    const expectedButtonIds=['docksurvey','dockcodex','dockrecords','dockcharters','dockatlas',
-      'dockcharts','dockshipyard','dockinventory','docksets','dockguide'];
-    if(buttons.length!==10) bad.push('dock does not expose ten buttons: '+buttons.length);
-    if(JSON.stringify(buttons.map((button)=>button.id))!==JSON.stringify(expectedButtonIds))
-      bad.push('dock button identity/order drifted: '+JSON.stringify(buttons.map((button)=>button.id)));
-    const rows=[];
-    for(const button of buttons){ const b=button.getBoundingClientRect();
-      let row=rows.find((candidate)=>Math.abs(candidate.top-b.top)<2);
-      if(!row){ row={top:b.top,n:0}; rows.push(row); } row.n++;
-      if(Math.abs(b.width-44)>1||Math.abs(b.height-44)>1) bad.push(button.id+' is not a 44px target');
-      const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
-      if(!hit||!button.contains(hit)) bad.push(button.id+' is not hit-testable at its centre');
-    }
-    rows.sort((a,b)=>a.top-b.top);
-    if(rows.length!==2||rows[0]?.n!==5||rows[1]?.n!==5) bad.push('dock is not 5x2 (5+5): '+JSON.stringify(rows.map((row)=>row.n)));
-    if(boxes.dock&&(Math.abs(boxes.dock.w-260)>1||Math.abs(boxes.dock.h-98)>1)) bad.push('dock box is not 260x98: '+JSON.stringify([boxes.dock.w,boxes.dock.h]));
+    const shell=(${readU1PhoneShell.toString()})(false);
+    bad.push(...shell.errors);
     const published=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dock-h'));
     if(!boxes.dock||!Number.isFinite(published)||Math.abs(published-boxes.dock.h)>1) bad.push('--dock-h does not match the rendered dock: '+JSON.stringify([published,boxes.dock&&boxes.dock.h]));
     const ctxPublished=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ctx-h'));
@@ -24479,10 +24465,8 @@ try {
   const phDockInventoryCtl = await evalPh(`(()=>{const button=document.getElementById('dockinventory');
     if(!button)return ['dockinventory control target is missing'];const prior=button.style.display;
     button.style.display='none';const bad=${phoneChromeCheck};button.style.display=prior;return bad;})()`);
-  if (!phDockInventoryCtl.some((finding) => finding === 'dock does not expose ten buttons: 9')
-    || !phDockInventoryCtl.some((finding) => finding.startsWith('dock button identity/order drifted:'))
-    || !phDockInventoryCtl.includes('dock is not 5x2 (5+5): [5,4]')) {
-    fails.push('PHONE LOWER CHROME INVENTORY CONTROL FAILED — removed Inventory membership/grid stayed green: '
+  if (!phDockInventoryCtl.includes('relocated Inventory is missing or not actionable in topbar')) {
+    fails.push('PHONE LOWER CHROME INVENTORY CONTROL FAILED — removed relocated Inventory stayed green: '
       + JSON.stringify(phDockInventoryCtl));
   }
   /* The Settings save-import modal was removed (v2 starts fresh, 2026-09-05).
@@ -24504,8 +24488,10 @@ try {
     pcs=getComputedStyle(prime),gcs=getComputedStyle(panel),panelOpen=body.classList.contains(${JSON.stringify(openClass)}),
     panelVisible=gcs.display!=='none'&&gcs.visibility!=='hidden'&&g.width>0&&g.height>0,
     primeHidden=pcs.display==='none'&&p.width===0&&p.height===0,
+    hit=document.elementFromPoint(p.left+p.width/2,p.top+p.height/2),primeRetained=!primeHidden&&p.width>=44&&p.height>=44
+      &&prime.parentElement?.id==='dock'&&!!hit&&(hit===prime||prime.contains(hit)),
     overlap=p.width>0&&p.height>0&&panelVisible&&p.left<g.right-.5&&p.right>g.left+.5&&p.top<g.bottom-.5&&p.bottom>g.top+.5;
-    return {ok:panelOpen&&panelVisible&&primeHidden&&!overlap,panelOpen,panelVisible,primeHidden,overlap,
+    return {ok:panelOpen&&panelVisible&&primeRetained&&!overlap,panelOpen,panelVisible,primeHidden,primeRetained,overlap,
       prime:{display:pcs.display,left:p.left,top:p.top,right:p.right,bottom:p.bottom},
       panel:{display:gcs.display,left:g.left,top:g.top,right:g.right,bottom:g.bottom}};})()`;
   await evalPh(`(()=>{ document.getElementById('dockguide').click(); return true; })()`);
@@ -24517,13 +24503,17 @@ try {
   const phoneGuidePrimeOverlayCheck = phonePrimeOverlayCheck('guidepanel', 'panel-open');
   const phonePrimeOverlay = await evalPh(phoneGuidePrimeOverlayCheck);
   if (!phonePrimeOverlay.ok) {
-    failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD: open Guide did not hide Prime above its overlapping panel: '
+    failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD: open Guide did not preserve a separate reachable Prime dock target: '
       + JSON.stringify(phonePrimeOverlay));
   } else {
     const phonePrimeOverlayCtl = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
-      const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display']);
+      const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display','position','left','top','bottom','transform','z-index']);
       let result=null,error=null;const restore=()=>restoreInlineStyleProperties(prime.style,prior);
-      try{prime.style.setProperty('display','block','important');result=${phoneGuidePrimeOverlayCheck};}
+      try{const p=document.getElementById('guidepanel').getBoundingClientRect();
+        prime.style.setProperty('display','block','important');prime.style.setProperty('position','fixed','important');
+        prime.style.setProperty('left',p.left+8+'px','important');prime.style.setProperty('top',p.top+8+'px','important');
+        prime.style.setProperty('bottom','auto','important');prime.style.setProperty('transform','none','important');
+        prime.style.setProperty('z-index','9999','important');result=${phoneGuidePrimeOverlayCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
       const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,
         restored=styleRestored?${phoneGuidePrimeOverlayCheck}:{ok:false,why:'owned-style-properties-not-restored'};
@@ -24823,13 +24813,17 @@ try {
   const phoneSurveyPrimeOverlayCheck = phonePrimeOverlayCheck('survey', 'card-open');
   const phoneSurveyPrimeOverlay = await evalNavPh(phoneSurveyPrimeOverlayCheck);
   if (!phoneSurveyPrimeOverlay.ok) {
-    failSliceWithoutCascade('PHONE PRIME SURVEY YIELD: a real Earth Survey card did not hide Prime above its overlapping card: '
+    failSliceWithoutCascade('PHONE PRIME SURVEY YIELD: a real Earth Survey card did not preserve a separate reachable Prime dock target: '
       + JSON.stringify(phoneSurveyPrimeOverlay));
   } else {
     const phoneSurveyPrimeOverlayCtl = await evalNavPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
-      const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display']);
+      const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display','position','left','top','bottom','transform','z-index']);
       let result=null,error=null;const restore=()=>restoreInlineStyleProperties(prime.style,prior);
-      try{prime.style.setProperty('display','block','important');result=${phoneSurveyPrimeOverlayCheck};}
+      try{const p=document.getElementById('survey').getBoundingClientRect();
+        prime.style.setProperty('display','block','important');prime.style.setProperty('position','fixed','important');
+        prime.style.setProperty('left',p.left+8+'px','important');prime.style.setProperty('top',p.top+8+'px','important');
+        prime.style.setProperty('bottom','auto','important');prime.style.setProperty('transform','none','important');
+        prime.style.setProperty('z-index','9999','important');result=${phoneSurveyPrimeOverlayCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
       const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,
         restored=styleRestored?${phoneSurveyPrimeOverlayCheck}:{ok:false,why:'owned-style-properties-not-restored'};
@@ -26640,26 +26634,8 @@ try {
     if(!cb) bad.push('training card is not visible');
     if(!db) bad.push('training dock is not visible');
     if(cb&&db&&cb.l<db.r-1&&cb.r>db.l+1&&cb.t<db.b-1&&cb.b>db.t+1) bad.push('training card overlaps dock');
-    const priorDockPointer=dock&&dock.style.pointerEvents, priorDockInert=dock&&dock.hasAttribute('inert');
-    if(dock){dock.style.pointerEvents='auto';dock.removeAttribute('inert');}
-    const buttons=dock?[...dock.querySelectorAll('button')].filter((button)=>box(button)):[];
-    const expectedButtonIds=['docksurvey','dockcodex','dockrecords','dockcharters','dockatlas',
-      'dockcharts','dockshipyard','dockinventory','docksets','dockguide'];
-    if(buttons.length!==10) bad.push('training dock does not expose ten buttons: '+buttons.length);
-    if(JSON.stringify(buttons.map((button)=>button.id))!==JSON.stringify(expectedButtonIds))
-      bad.push('training dock button identity/order drifted: '+JSON.stringify(buttons.map((button)=>button.id)));
-    const rows=[];
-    for(const button of buttons){ const b=button.getBoundingClientRect();
-      let row=rows.find((candidate)=>Math.abs(candidate.top-b.top)<2);
-      if(!row){row={top:b.top,n:0};rows.push(row);}row.n++;
-      if(Math.abs(b.width-44)>1||Math.abs(b.height-44)>1) bad.push(button.id+' is not a 44px training target');
-      const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
-      if(!hit||!button.contains(hit)) bad.push(button.id+' is buried at its centre during training');
-    }
-    rows.sort((a,b)=>a.top-b.top);
-    if(rows.length!==2||rows[0]?.n!==5||rows[1]?.n!==5) bad.push('training dock is not 5x2 (5+5): '+JSON.stringify(rows.map(row=>row.n)));
-    if(db&&(Math.abs(db.w-260)>1||Math.abs(db.h-98)>1)) bad.push('training dock box is not 260x98: '+JSON.stringify([db.w,db.h]));
-    if(dock){dock.style.pointerEvents=priorDockPointer;if(priorDockInert)dock.setAttribute('inert','');}
+    const shell=(${readU1PhoneShell.toString()})(true);
+    bad.push(...shell.errors.map(finding=>'training '+finding));
     return bad; })()`;
   const phoneTraining = await evalTp(phoneTrainingCheck);
   if (phoneTraining.length) fails.push('PHONE TRAINING/DOCK drift: ' + phoneTraining.join(' · '));
@@ -26669,16 +26645,14 @@ try {
   const phoneTrainingCtl = await evalTp(`(()=>{ const card=document.getElementById('tutcard'), prev=card.style.bottom;
     card.style.bottom='12px'; const bad=${phoneTrainingCheck}; card.style.bottom=prev; return bad; })()`);
   if (!phoneTrainingCtl.includes('training card overlaps dock')
-    || !phoneTrainingCtl.some((finding) => finding.includes('is buried at its centre during training'))) {
+    || !phoneTrainingCtl.some((finding) => finding.includes('is not hit-testable at its centre'))) {
     fails.push('PHONE TRAINING/DOCK CONTROL FAILED — injected burial went unseen: ' + JSON.stringify(phoneTrainingCtl));
   }
   const phoneTrainingInventoryCtl = await evalTp(`(()=>{const button=document.getElementById('dockinventory');
     if(!button)return ['dockinventory control target is missing'];const prior=button.style.display;
     button.style.display='none';const bad=${phoneTrainingCheck};button.style.display=prior;return bad;})()`);
-  if (!phoneTrainingInventoryCtl.some((finding) => finding === 'training dock does not expose ten buttons: 9')
-    || !phoneTrainingInventoryCtl.some((finding) => finding.startsWith('training dock button identity/order drifted:'))
-    || !phoneTrainingInventoryCtl.includes('training dock is not 5x2 (5+5): [5,4]')) {
-    fails.push('PHONE TRAINING/DOCK INVENTORY CONTROL FAILED — removed Inventory membership/grid stayed green: '
+  if (!phoneTrainingInventoryCtl.includes('training relocated Inventory is missing or not actionable in topbar')) {
+    fails.push('PHONE TRAINING/DOCK INVENTORY CONTROL FAILED — removed relocated Inventory stayed green: '
       + JSON.stringify(phoneTrainingInventoryCtl));
   }
   /* Reuse this already-booted fresh-origin document only as the exact IDB

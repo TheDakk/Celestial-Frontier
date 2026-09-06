@@ -1,5 +1,16 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+## Current v2 U1 shell overlay — matches code as of 2026-09-06
+
+`port/v2/apps/game/src/ui-presentation-tokens.ts` emits shared Inter/spacing/type/color-role/
+layer variables; `ui-shell-style.ts` owns the normal-game shelf/dock/rail/lane geometry.
+Phone<=700 uses5 labelled boards +4 utilities at64px centers; desktop>=701 uses bottom-right
+utilities and rails. Inventory now opens through the nameplate. AppChrome still measures the
+shelf and projects Prime count; panel/Training owners retain focus and locked controls.
+`notification-history.ts` adds explicit saved Mark read using the existing notification shape
+and receipt-free UI checkpoint whitelist. See UI_PRESENTATION.md and SAVE_SYSTEM.md for bounds,
+read-only behavior and review deviations. U2–U4 and integrated-pilot approval remain open.
+
 ## Audiovisual pilot implementation — 2026-09-05 local
 
 Matches the scoped Phase 1 implementation as of **2026-09-05 local**. Nick authorized B–D

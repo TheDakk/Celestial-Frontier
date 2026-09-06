@@ -5,15 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Celestial Frontier v2.0 — Development</title>
   <style>
-    /* THE GLASS SYSTEM — POSITION PARITY WITH THE GOLDEN SCREENS
-       (port/baseline-v1.8.9/screens/ui-main-*.png): the top is FLOATING
-       PILLS on the canvas, not a solid bar — player chip top-left with the
-       HP bar under it, Prime Codex pill top-center, trail beneath it,
-       objective chip left at ~26vh, caption + hint stacked bottom-center.
-       ≤900px: the round-button DOCK bottom-center (the phone golden).
-       >900px: Compendium rides the LEFT RAIL and the round cluster sits
-       BOTTOM-RIGHT (the desktop golden; the dock lesson of ROADMAP #11 —
-       above 900px these are rail surfaces, not a dock). */
+    /* UI shell geometry and tokens have one generated TS owner:
+       ui-presentation-tokens.ts + ui-shell-style.ts. Existing panel,
+       Training and semantic-color owners below remain authoritative. */
     :root {
       --glass-a: 0.84; --topbar-h: 96px; --dock-h: 44px; --ctx-h: 32px; --hint-h: 24px;
       --surface-chrome-bottom: 128px;
@@ -22,7 +16,6 @@
       --safe-bottom: env(safe-area-inset-bottom, 0px);
       --safe-left: env(safe-area-inset-left, 0px);
       --ink: #e9edff; --dim: #b8c7df; --faint: #91a8ca; --emph: inherit;
-      --ui: ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
     }
     html, body { margin: 0; height: 100%; background: #05070d; overflow: hidden;
       font: 13px/1.5 var(--ui); color: var(--ink);
@@ -76,75 +69,6 @@
     *::-webkit-scrollbar { width: 6px; height: 6px; }
     *::-webkit-scrollbar-thumb { background: #2a3c5e; border-radius: 999px; }
     *::-webkit-scrollbar-track { background: transparent; }
-
-    /* ---- top-left: the explorer chip + the HP bar (golden position) ---- */
-    #topbar { position: fixed; top: 0; left: 0; z-index: 20; pointer-events: none;
-      padding: calc(var(--safe-top) + 10px) 0 0 calc(var(--safe-left) + 12px); background: none; border: 0; }
-    #playerchip { display: inline-block; padding: 6px 16px; font-size: 11.5px;
-      letter-spacing: 0.08em; text-transform: uppercase; color: #dbe7f8; font-weight: 600; }
-    #playerchip .dim { color: var(--dim); }
-    #playerchip .player-rank { color: inherit; }
-    #playerchip.rank-iridescent { color: #f4f7ff;
-      background: linear-gradient(110deg,rgba(70,194,178,.34),rgba(176,108,255,.34),rgba(255,217,106,.34)); }
-    #hpbar { display: flex; align-items: center; gap: 6px; margin-top: 8px;
-      padding: 3px 8px 3px 6px; width: max-content; }
-    #hpbar .track { display: block; width: 96px; height: 14px; border-radius: 999px;
-      background: #16202f; overflow: hidden; border: 1px solid #22304a; position: relative; }
-    #hpbar .fill { display: block; height: 100%; background: linear-gradient(180deg, #a9f0a0, #3fae52);
-      border-radius: 999px; }
-    #hpbar .txt { position: absolute; inset: 0; text-align: center; font-size: 9.5px;
-      font-weight: 700; color: #f4fff6; background: rgba(5, 12, 8, 0.78);
-      text-shadow: 0 1px 1px #000; line-height: 15px; }
-
-    /* ---- top-center: the Prime Codex pill + the trail beneath ---- */
-    #primechip { position: fixed; top: calc(var(--safe-top) + 12px);
-      left: 50%; transform: translateX(-50%); z-index: 20; pointer-events: auto;
-      min-height: 44px; box-sizing: border-box; padding: 5px 16px; cursor: pointer;
-      font: 600 12px var(--ui); color: #ffd9a0; border-color: #6e5a30;
-      appearance: none; -webkit-appearance: none; }
-    #primechip.on { color: #fff0c4; border-color: #caa24f;
-      background: linear-gradient(rgba(202,162,79,.14),rgba(202,162,79,.14)), rgba(10,16,30,var(--glass-a)); }
-    #trail { position: fixed; top: calc(var(--safe-top) + 50px);
-      left: 50%; transform: translateX(-50%); z-index: 19; pointer-events: none;
-      font-size: 10.5px; letter-spacing: 0.06em; color: var(--dim); white-space: nowrap;
-      max-width: 92vw; overflow: hidden; text-overflow: ellipsis;
-      background: rgba(10, 16, 30, 0.94); border: 1px solid rgba(64,84,119,0.9);
-      border-radius: 999px; padding: 2px 12px; }   /* framed, never naked text (bot #10) */
-    #trail .cur { color: #c8ebff; }
-    #trail .sep { color: var(--dim); padding: 0 5px; font-size: 9px; }
-
-    /* ---- top-right: the search bar (both goldens' slot) ---- */
-    #searchbox { position: fixed; top: calc(var(--safe-top) + 10px);
-      right: calc(var(--safe-right) + 12px); z-index: 21; width: min(300px, 40vw); box-sizing: border-box;
-      padding: 8px 16px; font: 12.5px system-ui, sans-serif; color: #cfe0f4;
-      min-height: 44px; }
-    #searchbox::placeholder, #guidesearch::placeholder { color: #b8c7df; opacity: 1; }
-
-    /* On phones Prime occupies its own second chrome tier so the ten-control
-       dock keeps the sealed five-by-two footprint and never grows a third row. */
-    @media (max-width: 900px) {
-      #primechip { top: calc(var(--topbar-h) + 8px); max-width: calc(100vw - var(--safe-left) - var(--safe-right) - 24px);
-        overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-      #trail { top: calc(var(--topbar-h) + 58px); }
-      #playerchip { box-sizing: border-box; max-width: calc(58vw - var(--safe-left) - var(--safe-right) - 32px);
-        overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; }
-      #searchbox { width: 42vw; }
-      body:is(.card-open,.panel-open) #primechip { display: none; }
-      /* On a landed phone the populated Planetside strip owns the limited
-         mid-screen reading band. The chapter objective returns on lift-off;
-         keeping both at A++ made the objective cover the living-world row. */
-      body.surface-mode #objchip { display: none; }
-    }
-    body:is(.card-open,.panel-open) :is(#trail,#objchip) { display: none; }
-    @media (max-width: 480px) {
-      #playerchip :is(.player-worlds,.player-rank) { display: none; }
-    }
-
-    /* ---- the objective chip: LEFT, ~26vh (both goldens) ---- */
-    #objchip { position: fixed; left: calc(var(--safe-left) + 12px); top: 26vh; z-index: 18;
-      padding: 6px 14px; font-size: 12px; color: #ffd9a0; max-width: min(340px, calc(100vw - var(--safe-left) - var(--safe-right) - 24px)); }
-    #objchip:empty { display: none; }
-    #objchip .prog { color: #7ec8f0; font-weight: 600; }
 
     /* ---- the survey card: a FLOATING rounded panel (the golden's language;
        the bot critique's #1-2: no edge-welding, nothing overlaps it) ---- */
@@ -329,31 +253,6 @@
     body.card-open #railrgt, body.card-open #ctxbar { display: none; }   /* the card owns its silhouette */
     body.training #ctxbar { display: none; }   /* captions yield to the lesson card */
 
-    /* ---- bottom-center: caption ABOVE the hint pill (golden order) ---- */
-    #ctxbar { position: fixed; left: 50%; transform: translateX(-50%);
-      bottom: calc(var(--safe-bottom) + var(--dock-h) + 50px + var(--hint-h));
-      max-width: min(560px, calc(100vw - var(--safe-left) - var(--safe-right) - 24px)); text-align: center; pointer-events: none; z-index: 12;
-      box-sizing: border-box; padding: 3px 10px; border-radius: 999px;
-      background: rgba(10,16,30,0.94); border: 1px solid rgba(64,84,119,0.9);
-      font-size: 12.5px; color: var(--dim); text-shadow: 0 1px 3px #000; }
-    #hintpill { position: fixed; left: 50%; transform: translateX(-50%);
-      bottom: calc(var(--safe-bottom) + var(--dock-h) + 44px); z-index: 12; pointer-events: none;
-      font-size: 11.5px; color: var(--faint); padding: 4px 14px; white-space: nowrap;
-      max-width: calc(100vw - var(--safe-left) - var(--safe-right) - 16px); box-sizing: border-box; overflow: hidden; text-overflow: ellipsis; }
-    #hintpill .kw { color: #7ec8f0; font-weight: 600; }   /* blue belongs to instruction (golden law) */
-
-    /* ---- the dock: ROUND icon buttons (phone golden), bottom-center ---- */
-    #dock { position: fixed; left: 50%; transform: translateX(-50%);
-      bottom: calc(var(--safe-bottom) + 12px); z-index: 20;
-      display: flex; gap: 10px; background: none; border: 0;
-      flex-wrap: wrap; justify-content: center; max-width: 330px; }
-    #dock button { width: 44px; height: 44px; border-radius: 50%;
-      border: 1px solid #2a3c5e; background: rgba(14, 22, 40, 0.88); color: var(--dim);
-      cursor: pointer; font: 0/0 system-ui, sans-serif; padding: 0; }   /* icons only (golden cluster) — labels live in aria */
-    /* The button's 1px border leaves a 42px client box. Matching that box
-       keeps the icon centred without creating a hidden 2px scroll overflow. */
-    #dock button .ico { display: block; font-size: 16px; line-height: 42px; }
-    #dock button.on { background: linear-gradient(rgba(202,162,79,0.14),rgba(202,162,79,0.14)), #0e1628; color: #ffe3a8; border-color: #caa24f; }
     #toast { position: fixed; right: calc(var(--safe-right) + 12px);
       bottom: calc(var(--safe-bottom) + var(--dock-h) + 24px);
       width: min(360px, calc(100vw - var(--safe-left) - var(--safe-right) - 24px));
@@ -361,36 +260,6 @@
       color: #cfe0f4; font: 13px/1.5 var(--ui); padding: 11px 14px;
       border-radius: 12px; box-shadow: 0 8px 26px rgba(0,0,0,.48);
       opacity: 0; transition: opacity .35s; pointer-events: none; }
-    @media (max-width: 900px) {
-      /* Ten controls have one explicit phone shape: five columns by two
-         rows. A shrink-to-fit flex dock produced three rows at 390px and
-         buried the contextual chrome despite every fixed offset looking
-         individually reasonable. */
-      #dock { display: grid; grid-template-columns: repeat(5, 44px);
-        grid-auto-rows: 44px; width: 260px; max-width: none; }
-    }
-
-    /* ---- >900px: the desktop golden — Compendium on the LEFT RAIL, the
-       round cluster BOTTOM-RIGHT (rails, not a dock; ROADMAP #11) ---- */
-    #raillft { position: fixed; left: calc(var(--safe-left) + 12px); top: calc(var(--safe-top) + 108px);
-      z-index: 20; display: none; flex-direction: column; gap: 8px; }
-    #raillft button { display: flex; align-items: center; gap: 8px; min-height: 44px;
-      padding: 6px 16px; border-radius: 999px; border: 1px solid #2a3c5e;
-      background: rgba(10, 16, 30, 0.94); color: var(--ink); cursor: pointer;
-      font: 12px var(--ui); }
-    #raillft button.on { background: linear-gradient(rgba(202,162,79,0.12),rgba(202,162,79,0.12)), #0a101e; color: #ffe3a8; border-color: #caa24f; }
-    #railrgt { position: fixed; right: calc(var(--safe-right) + 12px); top: calc(var(--safe-top) + 108px);
-      z-index: 20; display: none; flex-direction: column; gap: 8px; align-items: flex-end; }
-    #railrgt button { display: flex; align-items: center; gap: 8px; min-height: 44px;
-      padding: 6px 16px; border-radius: 999px; border: 1px solid #2a3c5e;
-      background: rgba(10, 16, 30, 0.94); color: var(--ink); cursor: pointer;
-      font: 12px var(--ui); }
-    #railrgt button.on { background: linear-gradient(rgba(202,162,79,0.12),rgba(202,162,79,0.12)), #0a101e; color: #ffe3a8; border-color: #caa24f; }
-    @media (min-width: 901px) {
-      #dock { left: auto; right: calc(var(--safe-right) + 14px); transform: none; }
-      #dock #dockcodex, #dock #dockrecords, #dock #dockatlas, #dock #dockcharters, #dock #dockshipyard, #dock #dockinventory { display: none; }   /* rails own them on desktop; Charts remains a dock control */
-      #raillft, #railrgt { display: flex; }
-    }
 
     /* ---- rail panels (the one-panel law lives in panels.ts) ---- */
     .panel { position: fixed; top: calc(var(--topbar-h) + 6px); left: calc(var(--safe-left) + 8px);
@@ -839,10 +708,13 @@
        and hit-testable in the right safe column. Only noninteractive status
        chrome yields while the left panel uses the full safe-height workspace. */
     @media (max-width: 900px) and (orientation: landscape) {
-      body.panel-open :is(#topbar,#ctxbar,#hintpill) {
+      body.panel-open :is(#hpbar,#ctxbar,#hintpill) {
         visibility: hidden;
         pointer-events: none;
       }
+      /* The U1 shelf owns interactive Inventory, Search and bell controls.
+         ui-shell-style.ts moves them into the right safe column instead of
+         hiding their header with the noninteractive HP/caption chrome. */
       body.panel-open .panel {
         top: calc(var(--safe-top) + 6px);
         max-height: calc(100dvh - var(--safe-top) - var(--safe-bottom) - 30px);
@@ -850,11 +722,6 @@
       }
       body.panel-open #codexpanel .compendium-scroll {
         height: min(560px, max(44px, calc(100dvh - var(--safe-top) - var(--safe-bottom) - 126px)));
-      }
-      body.panel-open #dock {
-        left: auto;
-        right: calc(var(--safe-right) + 12px);
-        transform: none;
       }
       body.panel-open #survey {
         top: calc(var(--safe-top) + 64px);
@@ -1009,38 +876,42 @@
 </head>
 <body>
   <header id="topbar" data-panel-boundary>
-    <span id="playerchip" class="glass pill"></span>
+    <button id="dockinventory" class="player-control" type="button" aria-label="Inventory" aria-controls="inventorypanel" aria-expanded="false"><span id="playerchip" class="glass pill"></span></button>
+    <input id="searchbox" class="glass pill" type="search" autocomplete="off" spellcheck="false"
+      placeholder="Search or paste code" aria-label="search or paste a code" />
+    <button id="shelfnotifications" class="dock-utility" type="button" aria-label="Notifications" aria-controls="notificationpanel" aria-expanded="false"><span class="utility-face"><span class="ico" aria-hidden="true">🔔</span></span></button>
     <div id="hpbar" class="glass pill"><span>❤</span><span class="track"><span class="fill" style="width:100%"></span><span class="txt"></span></span></div>
   </header>
-  <button id="primechip" class="glass pill" type="button" aria-label="Open Prime Codex"></button>
-  <input id="searchbox" class="glass pill" type="search" autocomplete="off" spellcheck="false"
-    placeholder="Search or paste code" aria-label="search or paste a code" />
   <div id="trail"></div>
   <span id="objchip" class="glass pill"></span>
   <div id="ctxbar"></div>
   <div id="hintpill" class="glass pill"></div>
   <nav id="raillft" aria-label="rail" data-panel-boundary>
-    <button id="railcharters" aria-label="Charters">📕 Charters</button>
-    <button id="railcodex" aria-label="Compendium">📘 Compendium</button>
+    <button id="railcharters" aria-label="Charters">📜 Charters</button>
+    <button id="railcodex" aria-label="Compendium">📖 Compendium</button>
   </nav>
   <nav id="railrgt" aria-label="right rail" data-panel-boundary>
-    <button id="railatlas" type="button" aria-label="Star Atlas">🌐 Star Atlas</button>
+    <button id="railatlas" type="button" aria-label="Star Atlas">🌍 Star Atlas</button>
     <button id="railshipyard" aria-label="Shipyard">🛠 Shipyard</button>
     <button id="railinventory" aria-label="Inventory" aria-controls="inventorypanel" aria-expanded="false">🎒 Inventory</button>
-    <button id="railrecords" aria-label="Records">📜 Records</button>
+    <button id="railrecords" aria-label="Records">🏆 Records</button>
   </nav>
   <nav id="dock" aria-label="dock" data-panel-boundary>
-    <button id="docksurvey" aria-label="survey card" aria-controls="survey" aria-expanded="false"><span class="ico">🔭</span>survey</button>
-    <button id="dockcodex" aria-label="Compendium"><span class="ico">📘</span>codex</button>
-    <button id="dockrecords" aria-label="Records"><span class="ico">📜</span>records</button>
-    <button id="dockcharters" aria-label="Charters"><span class="ico">📕</span>charters</button>
-    <button id="dockatlas" type="button" aria-label="Star Atlas"><span class="ico">🌐</span>atlas</button>
-    <button id="dockcharts" aria-label="star charts" aria-pressed="false"><span class="ico">📈</span>charts</button>
-    <button id="dockshipyard" aria-label="Shipyard"><span class="ico">🛠</span>shipyard</button>
-    <button id="dockinventory" aria-label="Inventory" aria-controls="inventorypanel" aria-expanded="false"><span class="ico">🎒</span>inventory</button>
-    <button id="docksets" aria-label="settings"><span class="ico">⚙</span>settings</button>
-    <button id="dockguide" aria-label="Guide"><span class="ico">?</span>guide</button>
+    <button id="dockcharters" class="dock-board" type="button" aria-label="Charters"><span class="ico" aria-hidden="true">📜</span><span class="lbl">Charters</span></button>
+    <button id="dockcodex" class="dock-board" type="button" aria-label="Compendium"><span class="ico" aria-hidden="true">📖</span><span class="lbl">Compendium</span></button>
+    <button id="primechip" class="glass pill dock-board" type="button" aria-label="Open Prime Codex"></button>
+    <button id="dockshipyard" class="dock-board" type="button" aria-label="Shipyard"><span class="ico" aria-hidden="true">🛠</span><span class="lbl">Shipyard</span></button>
+    <button id="dockatlas" class="dock-board" type="button" aria-label="Star Atlas"><span class="ico" aria-hidden="true">🌍</span><span class="lbl">Atlas</span></button>
+    <button id="dockrecords" class="dock-utility" type="button" aria-label="Records"><span class="utility-face"><span class="ico" aria-hidden="true">🏆</span></span></button>
+    <button id="docknotifications" class="dock-utility" type="button" aria-label="Notifications" aria-controls="notificationpanel" aria-expanded="false"><span class="utility-face"><span class="ico" aria-hidden="true">🔔</span></span></button>
+    <button id="dockguide" class="dock-utility" type="button" aria-label="Guide"><span class="utility-face"><span class="ico" aria-hidden="true">?</span></span></button>
+    <button id="docksets" class="dock-utility" type="button" aria-label="settings"><span class="utility-face"><span class="ico" aria-hidden="true">⚙</span></span></button>
   </nav>
+  <nav id="sceneactions" aria-label="Scene actions" data-panel-boundary>
+    <button id="docksurvey" type="button" aria-label="survey card" aria-controls="survey" aria-expanded="false"><span class="ico" aria-hidden="true">🔭</span><span>Survey</span></button>
+    <button id="dockcharts" type="button" aria-label="star charts" aria-pressed="false"><span class="ico" aria-hidden="true">📈</span><span>Charts</span></button>
+  </nav>
+  <aside id="notificationpanel" class="glass panel" aria-label="Notifications"></aside>
   <aside id="setpanel" class="glass panel" aria-label="Settings"></aside>
   <aside id="guidepanel" class="glass panel" aria-label="Guide"></aside>
   <aside id="codexpanel" class="glass panel" aria-label="Compendium"></aside>

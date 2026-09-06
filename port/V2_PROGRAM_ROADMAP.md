@@ -1,5 +1,14 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
+## UI parity program — U1 checkpoint, 2026-09-06
+
+U1 implements the normal-game shared tokens, shelf/dock/rail/lane layout and Nick's saved
+notification history amendment. See `UI_PARITY_PROGRAM_U1_U4.md` for the accepted program,
+explicit geometry differences and review boundaries. U2 sheet/stack work, U3 per-panel work
+and U4 ten-viewport/28-screen gate remain unstarted. Phase4 presentation parity is not closed;
+normal-game U1 and integrated audiovisual-pilot approvals both remain with Nick. No Phase2.
+Exact source and local evidence are recorded in the live ROADMAP handoff.
+
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core

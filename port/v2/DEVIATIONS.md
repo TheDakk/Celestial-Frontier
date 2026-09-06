@@ -1,5 +1,19 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U1 layout authority reconciliation — 2026-09-06
+
+Nick's explicit58px chips/36px faces/701px desktop breakpoint/visible labels take precedence
+over differing shipped golden details (60pxchips,44pxfaces,901pxbreakpoint,hidden phone labels).
+Touch targets remain44px. Nick selected bottom-right desktop utilities over the earlier
+bookends prose. Desktop44pxpitch is a proposed2px exception to the42px diagram to avoid
+intersecting targets; awaiting his visual judgment. The shelf has a measured, content-derived
+height, not an invented fixed v1 value. V2's compact trail remains visible where v1 hides it.
+
+Nick additionally authorized persistent notification history/readstate, narrowly extending the
+existing UI checkpoint overlay with bounded notifications. No schema or product receipt changes.
+U1 precedes Phase2 audiovisual chrome; it does not approve the pilot or close the U4 layout gate.
+See `../UI_PARITY_PROGRAM_U1_U4.md`; the pasted U2 stack-order conflict must be resolved beforeU2.
+
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core

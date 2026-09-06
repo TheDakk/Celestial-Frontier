@@ -1,5 +1,21 @@
 # Celestial Frontier — Save System
 
+## V2 notification history — matches code as of 2026-09-06
+
+Nick authorized saved read/unread notifications as a narrow U1 amendment. The existing
+`notifications` carrier (id/title/message/time/read; serialized `notifs`) is reused with no
+schema migration. New records retain50, matching the existing export cap; importing60 stays
+supported. `checkpoint-state.ts` admits only a detached, bounded exact notification shape in
+its ordinary UI overlay. Every gameplay/economy/ownership field still comes from the durable
+parent; admission, lease, revision, CAS, Training and replacement protections are unchanged.
+
+The bell leaves entries unread until explicit Mark read. A pending read uses the existing
+checkpoint owner and reverses that flag if the write refuses, retaining messages arriving
+during the attempt. Unavailable authority/Training notices are labelled session-only and
+never mutate protected history. A product-action notice waits in a private presentation buffer, then the next admitted
+checkpoint promotes it after settlement. Notifications create no independent save timer.
+Explicit Mark read additionally requires the existing save path to be idle before admission.
+
 ## Current v2 checkpoint admission
 
 Matches code as of **2026-09-04** (`port/v2/apps/game/src/main.ts`, `persistView`).

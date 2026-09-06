@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 
-import { importSaveV2, type ContentRegistry, type SaveStateV2 } from '@cf/persistence';
+import { exportSaveV2, importSaveV2, type ContentRegistry, type SaveStateV2 } from '@cf/persistence';
 import {
   CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS,
   CHECKPOINT_STATE_OVERLAY_FIELDS,
@@ -77,6 +77,7 @@ function liveValue(field: keyof SaveStateV2, value: unknown): unknown {
     case 'glassTint': return 0.61;
     case 'motionMode': return 1;
     case 'cardExpand': return 7;
+    case 'notifications': return [{ id: 9, tt: 'Live notice', ms: 'Current session', t: NOW, read: false }];
     case 'rnSeen': return 'live-rn';
     case 'tutDone': return !value;
     case 'tutSnapPending': return { view: { type: 'star', live: true } };
@@ -108,13 +109,13 @@ describe('receipt-free checkpoint state projector', () => {
       'EPOCH_BASE', 'savedView', 'explorerName', 'nameHue', 'pinnedRecipe', 'cargoTab',
       'fsMode', 'toneMode', 'fontMode', 'sndOn', 'fxOn', 'chartsOn', 'shakeOn',
       'salvageConfirm', 'notifOn', 'tipsOn', 'sfxVol', 'glassTint', 'motionMode',
-      'cardExpand', 'seenGuide', 'rnSeen', 'voiceOn', 'combatSfxOn',
+      'cardExpand', 'notifications', 'seenGuide', 'rnSeen', 'voiceOn', 'combatSfxOn',
     ]);
     expect(CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS).toEqual([
       'explorerName', 'nameHue', 'pinnedRecipe', 'cargoTab', 'fsMode', 'toneMode',
       'fontMode', 'sndOn', 'fxOn', 'chartsOn', 'shakeOn', 'salvageConfirm',
       'notifOn', 'tipsOn', 'sfxVol', 'glassTint', 'motionMode', 'cardExpand',
-      'seenGuide', 'rnSeen', 'voiceOn', 'combatSfxOn',
+      'notifications', 'seenGuide', 'rnSeen', 'voiceOn', 'combatSfxOn',
     ]);
     expect(CHECKPOINT_STATE_TRAINING_REPLACEMENT_FIELDS).toEqual([
       'tutDone', 'tutSnapPending',
@@ -155,6 +156,120 @@ describe('receipt-free checkpoint state projector', () => {
     expect(outcome.state.tutDone).toBe(true);
     expect(outcome.state.tutSnapPending).toEqual({ durable: true });
     expect(durable).toEqual(durableBefore);
+  });
+
+  it('carries read/unread notification history through the existing export/import boundary without live gameplay', () => {
+    const durable = baseState();
+    durable.essence = 37;
+    durable.hp = Math.max(1, durable.HP_MAX - 1);
+    durable.stats.essenceEarned = 19;
+    durable.notifications = [{ id: 1, tt: 'Earlier', ms: 'Already durable', t: NOW - 100, read: false }];
+    const live = structuredClone(durable);
+    live.essence = 999;
+    live.hp = 1;
+    live.stats.essenceEarned = 800;
+    live.notifications = Array.from({ length: 60 }, (_, index) => ({
+      id: 60 - index, tt: `Notice ${60 - index}`, ms: 'Saved notification',
+      t: NOW - index, read: index % 2 === 0,
+    }));
+    const first = projected(projectCheckpointState(input(durable, live)));
+    expect(first.state.notifications).toEqual(live.notifications);
+    expect(first.state.notifications).toHaveLength(60);
+    expect(first.state.essence).toBe(37);
+    expect(first.state.hp).toBe(durable.hp);
+    expect(first.state.stats.essenceEarned).toBe(19);
+    const bytes = exportSaveV2(first.state, NOW);
+    const restored = importSaveV2(bytes, REGISTRY, NOW);
+    if (!restored.ok) throw new Error(`notification restore refused: ${restored.reason}`);
+    // Export's established newest-50 limit is retained; import can carry 60.
+    expect(restored.state.notifications).toEqual(live.notifications.slice(0, 50));
+    expect(restored.state.essence).toBe(37);
+    expect(restored.state.hp).toBe(durable.hp);
+    expect(restored.state.stats.essenceEarned).toBe(19);
+    const next = structuredClone(restored.state);
+    next.notifications[1]!.read = true;
+    const second = projected(projectCheckpointState(input(restored.state, next)));
+    const reread = importSaveV2(exportSaveV2(second.state, NOW), REGISTRY, NOW);
+    if (!reread.ok) throw new Error(`notification read-state restore refused: ${reread.reason}`);
+    expect(reread.state.notifications).toEqual(next.notifications);
+    expect(reread.state.notifications[1]!.read).toBe(true);
+    expect(durable.notifications[0]!.read).toBe(false);
+    expect(restored.state.notifications[1]!.read).toBe(false);
+  });
+
+  it('detaches notification arrays and rows from both input owners in both directions', () => {
+    const durable = baseState();
+    durable.notifications = [{ id: 1, tt: 'Durable', ms: 'Retained parent', t: NOW - 1, read: false }];
+    const live = structuredClone(durable);
+    live.notifications.unshift({ id: 2, tt: 'Live', ms: 'Current session', t: NOW, read: false });
+    const outcome = projected(projectCheckpointState(input(durable, live)));
+    expect(outcome.state.notifications).not.toBe(live.notifications);
+    expect(outcome.state.notifications).not.toBe(durable.notifications);
+    expect(outcome.state.notifications[0]).not.toBe(live.notifications[0]);
+    expect(outcome.state.notifications[1]).not.toBe(durable.notifications[0]);
+    live.notifications[0]!.tt = 'Live changed later';
+    durable.notifications[0]!.ms = 'Durable changed later';
+    expect(outcome.state.notifications.map(({ tt, ms }) => ({ tt, ms }))).toEqual([
+      { tt: 'Live', ms: 'Current session' }, { tt: 'Durable', ms: 'Retained parent' },
+    ]);
+    outcome.state.notifications[0]!.read = true;
+    outcome.state.notifications[1]!.read = true;
+    outcome.state.notifications.pop();
+    expect(live.notifications).toHaveLength(2);
+    expect(live.notifications.every(({ read }) => read === false)).toBe(true);
+    expect(durable.notifications[0]!.read).toBe(false);
+  });
+
+  it('refuses malformed or non-plain notification rows without getters, partial state or unbounded arrays', () => {
+    const row = () => ({ id: 1, tt: 'Title', ms: 'Detail', t: NOW, read: false });
+    let getterCalls = 0;
+    const accessorRow = row();
+    Object.defineProperty(accessorRow, 'tt', { enumerable: true, get: () => { getterCalls++; return 'Unsafe'; } });
+    const accessorArray = [row()];
+    Object.defineProperty(accessorArray, '0', { enumerable: true, get: () => { getterCalls++; return row(); } });
+    const cyclicRow = { ...row(), self: null as unknown };
+    cyclicRow.self = cyclicRow;
+    const cyclicArray: unknown[] = [];
+    cyclicArray.push(cyclicArray);
+    const customRow = Object.assign(Object.create({ inherited: true }) as Record<string, unknown>, row());
+    const customArray = [row()];
+    Object.setPrototypeOf(customArray, Object.create(Array.prototype));
+    const decoratedArray = Object.assign([row()], { '999999999999': row() });
+    const hiddenRow = row();
+    Object.defineProperty(hiddenRow, 'read', { enumerable: false, value: false });
+    const malformed: ReadonlyArray<readonly [string, unknown]> = [
+      ['not an array', row()], ['61 rows', Array.from({ length: 61 }, row)],
+      ['sparse array', new Array(1)], ['decorated array', decoratedArray],
+      ['null row', [null]], ['extra row field', [{ ...row(), extra: true }]],
+      ['missing field', [{ id: 1, tt: 'Title', ms: 'Detail', t: NOW }]],
+      ['fractional id', [{ ...row(), id: 1.5 }]], ['id over signed32', [{ ...row(), id: 2_147_483_648 }]],
+      ['id under signed32', [{ ...row(), id: -2_147_483_649 }]],
+      ['long title', [{ ...row(), tt: 'x'.repeat(201) }]], ['long detail', [{ ...row(), ms: 'x'.repeat(401) }]],
+      ['non-string title', [{ ...row(), tt: 1 }]], ['non-string detail', [{ ...row(), ms: null }]],
+      ['negative timestamp', [{ ...row(), t: -1 }]], ['late timestamp', [{ ...row(), t: 4e12 + 1 }]],
+      ['NaN timestamp', [{ ...row(), t: Number.NaN }]], ['infinite timestamp', [{ ...row(), t: Number.POSITIVE_INFINITY }]],
+      ['non-boolean read', [{ ...row(), read: 1 }]], ['row accessor', [accessorRow]],
+      ['array accessor', accessorArray], ['cyclic row', [cyclicRow]], ['cyclic array', cyclicArray],
+      ['custom row prototype', [customRow]], ['custom array prototype', customArray], ['hidden field', [hiddenRow]],
+    ];
+    for (const [label, value] of malformed) {
+      const durable = baseState();
+      const live = baseState();
+      (live as unknown as Record<string, unknown>).notifications = value;
+      const before = structuredClone(durable);
+      expect(projectCheckpointState(input(durable, live)), label).toEqual({
+        kind: 'refused', detail: 'live-field:notifications:invalid',
+      });
+      expect(durable, label + ' durable unchanged').toEqual(before);
+      live.notifications = [row()];
+      expect(projected(projectCheckpointState(input(durable, live))).state.notifications, label + ' restored')
+        .toEqual([row()]);
+    }
+    expect(getterCalls).toBe(0);
+    const live = baseState();
+    live.notifications = [{ id: -2_147_483_648, tt: 'x'.repeat(200), ms: 'x'.repeat(400), t: 0, read: true },
+      { id: 2_147_483_647, tt: '', ms: '', t: 4e12, read: false }];
+    expect(projected(projectCheckpointState(input(baseState(), live))).state.notifications).toEqual(live.notifications);
   });
 
   it('adds only tutDone and tutSnapPending for an explicit Training replacement', () => {
