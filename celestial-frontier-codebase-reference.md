@@ -11,8 +11,11 @@ Phone<=700 uses5 labelled boards +4 utilities at64px centers. Phone board `paddi
 provides 56px of label space inside each 58px face: the measured 54.338px Inter Compendium
 label stays on one line. The default Inter dock height is 92px (44 + 4 + 44), a content
 baseline rather than a universal fixed height; larger Settings text retains automatic board
-row growth with the 44px floor. Font sizes and 64px pitch are unchanged. Desktop>=701 uses
-bottom-right utilities and rails. Inventory now opens through the nameplate. AppChrome still measures the
+row growth with the 44px floor. Phone font sizes and64px pitch are unchanged. Tablet/desktop keep the same bottom launcher
+with capped72/80px pitch,66/74px boards and48/56px targets; hidden compatibility rails retain
+wiring only. Narrow landscape<=900 uses the phone arrangement and the existing panel-safe
+right column. Caption/hint offsets follow measured launcher height. UI_PRESENTATION.md owns
+exact values and native-gap evidence. Inventory opens through the nameplate. AppChrome still measures the
 shelf and projects Prime count; panel/Training owners retain focus and locked controls.
 `notification-history.ts` adds explicit saved Mark read using the existing notification shape
 and receipt-free UI checkpoint whitelist. See UI_PRESENTATION.md and SAVE_SYSTEM.md for bounds,

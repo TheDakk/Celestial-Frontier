@@ -592,8 +592,9 @@ function recordRenderedGuideIngressResult({
 }
 
 /* A hidden-opener focus result is meaningful only after a trusted press on
-   a visible opener, baseline Close focus, and a real Survey transition that
-   hides that same rail. Hidden-from-start legacy copies cannot establish it. */
+   a visible opener and baseline Close focus. U1 keeps its launcher visible,
+   so the hidden-opener lifecycle now owns an explicit temporary display:none
+   injection after native Survey input, with exact style restoration. */
 function hiddenOpenerNativeInput(input, id, pointerType) {
   const rect = input?.target?.rect;
   return input?.ok === true && input.inputDispatched === true
@@ -605,16 +606,25 @@ function hiddenOpenerNativeInput(input, id, pointerType) {
     && input.receipt.pointerType === pointerType;
 }
 
-export function hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, hidden, pointerType } = {}) {
+export function hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, surveyBaseline, mutation, hidden, pointerType } = {}) {
+  const rendered = (row) => row?.openerId === 'dockatlas' && row.openerRendered === true
+    && row.openerDisplay !== 'none' && row.openerVisibility === 'visible' && row.dockRendered === true;
   const checks = {
-    nativeVisibleOpener: hiddenOpenerNativeInput(opening, 'railatlas', pointerType),
+    nativeVisibleOpener: hiddenOpenerNativeInput(opening, 'dockatlas', pointerType),
     baselinePanel: baseline?.panel === 'atlas' && baseline.cardOpen === false,
-    baselineVisibleRail: baseline?.railRendered === true && baseline.railDisplay !== 'none'
-      && baseline.railVisibility === 'visible' && baseline.railRootDisplay !== 'none',
+    baselineVisibleOpener: rendered(baseline),
     baselineCloseFocus: baseline?.closeFocused === true,
     nativeSurveyTransition: hiddenOpenerNativeInput(hiding, 'docksurvey', pointerType),
+    surveyPreservesVisibleOpener: rendered(surveyBaseline) && surveyBaseline.panel === 'atlas'
+      && surveyBaseline.cardOpen === true,
+    explicitOwnedMutation: mutation?.kind === 'owned-dock-opener-display-none'
+      && mutation.selector === '#dockatlas' && mutation.sameNode === true
+      && typeof mutation.prior?.present === 'boolean'
+      && (mutation.prior.present ? typeof mutation.prior.value === 'string' : mutation.prior.value === null)
+      && mutation.applied?.display === 'none' && mutation.applied?.priority === 'important',
     panelPreserved: hidden?.panel === 'atlas' && hidden.cardOpen === true,
-    openerBecameHidden: hidden?.railRendered === false && hidden.railRootDisplay === 'none',
+    openerBecameHidden: hidden?.openerId === 'dockatlas' && hidden.openerRendered === false
+      && hidden.openerDisplay === 'none' && hidden.dockRendered === true,
   };
   return { ok: Object.values(checks).every((value) => value === true), checks };
 }
@@ -624,12 +634,26 @@ export function hiddenPanelOpenerFocusOutcome({ setup, closing, fallback, pointe
     provenSetup: setup?.ok === true,
     nativeClose: hiddenOpenerNativeInput(closing, null, pointerType),
     panelClosed: fallback?.panel === null,
-    railHidden: fallback?.railRendered === false && fallback.railRootDisplay === 'none',
+    openerHidden: fallback?.openerId === 'dockatlas' && fallback.openerRendered === false
+      && fallback.openerDisplay === 'none' && fallback.dockRendered === true,
     visibleSurveyFocus: fallback?.surveyRendered === true && fallback.focus === 'docksurvey',
     surveyPreserved: fallback?.cardOpen === true,
   };
   return { ok: Object.values(checks).every((value) => value === true), checks,
-    railRendered: fallback?.railRendered, focus: fallback?.focus, cardOpen: fallback?.cardOpen };
+    openerRendered: fallback?.openerRendered, focus: fallback?.focus, cardOpen: fallback?.cardOpen };
+}
+
+export function hiddenPanelOpenerRestorationOutcome(prior, restored) {
+  const checks = {
+    exactStylePresenceAndBytes: typeof prior?.present === 'boolean'
+      && (prior.present ? typeof prior.value === 'string' : prior.value === null)
+      && restored?.present === prior.present && restored?.value === prior.value,
+    sameNativeOpener: restored?.sameNode === true && restored.openerId === 'dockatlas',
+    visibleNativeTarget: restored?.openerRendered === true && restored.openerVisibility === 'visible'
+      && restored.openerDisplay !== 'none' && restored.centreOwned === true,
+    focusPreserved: restored?.focusUnchanged === true,
+  };
+  return { ok: Object.values(checks).every((value) => value === true), checks };
 }
 
 export function stopAfterRecordedProductOutcome(viewport, surface, code, element, outcome, expected) {
@@ -8057,21 +8081,22 @@ function installAuditHarness() {
     const el = document.querySelector(selector), dock = document.querySelector(dockSelector);
     const a = el?.getBoundingClientRect(), d = dock?.getBoundingClientRect();
     const root = getComputedStyle(document.documentElement);
+    const safeLeft = parseFloat(root.getPropertyValue('--safe-left')) || 0;
     const safeRight = parseFloat(root.getPropertyValue('--safe-right')) || 0;
-    const safeBottom = parseFloat(root.getPropertyValue('--safe-bottom')) || 0;
-    const dockHeight = parseFloat(root.getPropertyValue('--dock-h')) || d?.height || 0;
     const rightGap = a ? innerWidth - a.right : null;
     const bottomGap = a ? innerHeight - a.bottom : null;
-    const expectedRight = safeRight + 12;
-    const expectedBottom = safeBottom + dockHeight + 24;
+    const expectedRight = d ? innerWidth - d.right : null;
+    const expectedBottom = d ? innerHeight - d.top + 12 : null;
+    const dockCentered = !!d && Math.abs((d.left + d.right) / 2 - (innerWidth + safeLeft - safeRight) / 2) <= 2;
     const dockClearance = a && d ? d.top - a.bottom : null;
     return {
-      ok: innerWidth > 900 && !!el && visible(el) && !!dock && visible(dock)
+      ok: innerWidth > 900 && !!el && visible(el) && !!dock && visible(dock) && dockCentered
         && rightGap !== null && Math.abs(rightGap - expectedRight) <= 2
         && bottomGap !== null && Math.abs(bottomGap - expectedBottom) <= 2
         && dockClearance !== null && dockClearance >= 8,
-      rightGap: rightGap === null ? null : round(rightGap), expectedRight: round(expectedRight),
-      bottomGap: bottomGap === null ? null : round(bottomGap), expectedBottom: round(expectedBottom),
+      rightGap: rightGap === null ? null : round(rightGap), expectedRight: expectedRight === null ? null : round(expectedRight),
+      bottomGap: bottomGap === null ? null : round(bottomGap), expectedBottom: expectedBottom === null ? null : round(expectedBottom),
+      dockCentered,
       dockClearance: dockClearance === null ? null : round(dockClearance),
       rect: a ? [round(a.left), round(a.top), round(a.right), round(a.bottom)] : null,
       dock: d ? [round(d.left), round(d.top), round(d.right), round(d.bottom)] : null,
@@ -10731,8 +10756,8 @@ async function main() {
         add(vp.label, 'hud', await audit({
           ...common, surface: 'hud', root: 'body', textMin: 20,
           required: [{ selector: '#dock', min: 1 }, { selector: '#searchbox', min: 1 }, { selector: '#hintpill', min: 1, textMin: 8 }],
-          interactiveRoots: ['#dock', '#raillft', '#railrgt', '#searchbox', '#topbar', '#sceneactions'],
-          contrastSelectors: ['#playerchip', '#hpbar', '#searchbox', '#trail', '#objchip', '#ctxbar', '#hintpill', '#raillft button', '#railrgt button'],
+          interactiveRoots: ['#dock', '#searchbox', '#topbar', '#sceneactions'],
+          contrastSelectors: ['#playerchip', '#hpbar', '#searchbox', '#trail', '#objchip', '#ctxbar', '#hintpill', '#dock button'],
           placeholderSelectors: ['#searchbox'], maxContrastReports: 24,
           focusSelectors: vp.label === 'primary-phone' || vp.label === 'desktop' ? ['#searchbox', '#dockguide', '#docksets'] : [],
           canvas: true, expectedDpr, maxBackingPixels,
@@ -10893,14 +10918,14 @@ async function main() {
         if (vp.width > 900) {
           addOutcome(vp.label, 'toast', 'DESKTOP_UTILITY_ANCHOR', '#toast',
             await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast')`),
-            'desktop notifications share the measured bottom-right utility edge above the dock');
+            'desktop toast aligns with the measured centered launcher\'s right edge, 12px above it');
           if (!toastAnchorControlRun) {
             toastAnchorControlRun = true;
             const leftToastControl = await evalIn(`(()=>{ const toast=document.getElementById('toast'),prior=toast.getAttribute('style'),
               before=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast');
               toast.style.setProperty('left','12px','important');toast.style.setProperty('right','auto','important');
               const mutated=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast');
-              if(prior===null)toast.removeAttribute('style');else toast.setAttribute('style',prior);
+              toast.setAttribute('style','');toast.removeAttribute('style');if(prior!==null)toast.setAttribute('style',prior);
               const restoredStyle=toast.getAttribute('style'),restored=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast');
               return {priorStyle:prior,before,mutated,restoredStyle,restored};})()`);
             const toastControlAssessment = toastAnchorControlOutcome(leftToastControl);
@@ -11224,9 +11249,9 @@ async function main() {
         addOutcome(vp.label, 'top-chrome-preferences', 'PREFERENCE_SURFACE_INERT', '#hintpill', chromePreference,
           'top chrome computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
         if (vp.width > 900) {
-          const railPreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#raillft','#railcharters','var(--ink)')`);
-          addOutcome(vp.label, 'rail-preferences', 'PREFERENCE_SURFACE_INERT', '#railcharters', railPreference,
-            'desktop rail label computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
+          const railPreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#dock','#dockcharters .lbl','var(--ink)')`);
+          addOutcome(vp.label, 'rail-preferences', 'PREFERENCE_SURFACE_INERT', '#dockcharters', railPreference,
+            'desktop launcher label computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
         }
 
         /* Arc 4 capture remains a pure presentation/geometry audit here.
@@ -11430,24 +11455,21 @@ async function main() {
           throw new Error(`Arc 4 dependent baseline red; Planetside/panel outcomes blocked (${JSON.stringify(arc4DependentBaseline)})`);
         }
 
-        /* Every ordinary panel is deliberately exercised with populated real
-           data. Left-rail desktop panels and all phone dock panels remain over
-           Survey; the desktop right rail is intentionally reached after the
-           card yields it. Both compositions prove geometry and focus. */
+        /* Every ordinary panel uses its visible launcher/shelf control with
+           populated real data. Retain the planned over/instead-of-Survey
+           compositions while U1 presents every launcher action at every width. */
         const ordinaryPanels = [
-          { id: 'codex', name: 'compendium', dock: '#dockcodex', rail: '#railcodex', panel: '#codexpanel', required: '[data-sel=codex-entry]', min: 1, textMin: 80 },
-          { id: 'rec', name: 'records', dock: '#dockrecords', rail: '#dockrecords', panel: '#recpanel', required: '#recpanel .row', min: 6, textMin: 80 },
-          { id: 'atlas', name: 'atlas', dock: '#dockatlas', rail: '#railatlas', panel: '#atlaspanel', required: '[data-sel=atlas-entry]', min: 1, textMin: 25 },
-          { id: 'shipyard', name: 'shipyard', dock: '#dockshipyard', rail: '#railshipyard', panel: '#shipyardpanel', required: '[data-cf-shipyard-preview="v1"]', min: 1, textMin: 80, shipyard: true },
-          { id: 'inventory', name: 'inventory', dock: '#dockinventory', rail: '#dockinventory', panel: '#inventorypanel', required: '[data-inventory-row="exact"]', min: 3, textMin: 120, inventory: true },
-          { id: 'ch', name: 'charters', dock: '#dockcharters', rail: '#railcharters', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
+          { id: 'codex', name: 'compendium', dock: '#dockcodex', panel: '#codexpanel', required: '[data-sel=codex-entry]', min: 1, textMin: 80 },
+          { id: 'rec', name: 'records', dock: '#dockrecords', panel: '#recpanel', required: '#recpanel .row', min: 6, textMin: 80 },
+          { id: 'atlas', name: 'atlas', dock: '#dockatlas', panel: '#atlaspanel', required: '[data-sel=atlas-entry]', min: 1, textMin: 25 },
+          { id: 'shipyard', name: 'shipyard', dock: '#dockshipyard', panel: '#shipyardpanel', required: '[data-cf-shipyard-preview="v1"]', min: 1, textMin: 80, shipyard: true },
+          { id: 'inventory', name: 'inventory', dock: '#dockinventory', panel: '#inventorypanel', required: '[data-inventory-row="exact"]', min: 3, textMin: 120, inventory: true },
+          { id: 'ch', name: 'charters', dock: '#dockcharters', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
         ];
         for (const item of ordinaryPanels) {
-          const opener = vp.width > 700 ? item.rail : item.dock;
-          /* U1 Records and Inventory use their visible utility/shelf controls
-             at every width; keep their existing planned Survey compositions.
-             Atlas/Shipyard yield Survey whenever the 701px rail is selected,
-             including tablet portrait and phone landscape. */
+          const opener = item.dock;
+          /* Preserve the already-planned historical Survey compositions;
+             the current launcher opener no longer depends on a visible rail. */
           const overSurvey = !((vp.width > 900 && (item.id === 'rec' || item.id === 'inventory'))
             || (vp.width > 700 && (item.id === 'atlas' || item.id === 'shipyard')));
           const cardBeforePanel = await evalIn('window.__CF_SLICE__.api.state().cardOpen');
@@ -11921,7 +11943,7 @@ async function main() {
             recordsAnchorObserved = true;
             addOutcome(vp.label, composition, 'DESKTOP_UTILITY_PANEL_ANCHOR', item.panel,
               await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome(${JSON.stringify(item.panel)})`),
-              'desktop Records shares the measured bottom-right utility edge above the dock');
+              'desktop Records aligns with the measured centered launcher\'s right edge, 12px above it');
           }
           const ordinaryPanelAuditOptions = {
             ...common, surface: composition, root: item.panel, textMin: item.textMin,
@@ -11978,21 +12000,21 @@ async function main() {
                   &&document.querySelector('#codexpanel [data-ci="0"]');})()`);
 
               const workspace = await evalIn(`(()=>{const panel=document.getElementById('codexpanel'),scroll=document.querySelector('[data-sel="codex-scroll"]'),
-                survey=document.getElementById('survey'),search=document.getElementById('searchbox'),dock=document.getElementById('dock'),
-                root=getComputedStyle(document.documentElement),yielded=['topbar','ctxbar','hintpill'].map(id=>{
-                  const el=document.getElementById(id),style=el?getComputedStyle(el):null;return {id,visibility:style?.visibility||'missing',pointerEvents:style?.pointerEvents||'missing'};});
-                if(!panel||!scroll||!survey||!search||!dock)return {ok:false,why:'missing panel/scroller/survey/Search/dock',yielded};
+                survey=document.getElementById('survey'),search=document.getElementById('searchbox'),dock=document.getElementById('dock'),shelf=document.getElementById('topbar'),
+                root=getComputedStyle(document.documentElement),yielded=['hpbar','ctxbar','hintpill'].map(id=>{
+                  const el=document.getElementById(id),style=el?getComputedStyle(el):null;return {id,display:style?.display||'missing',visibility:style?.visibility||'missing',pointerEvents:style?.pointerEvents||'missing'};});
+                if(!panel||!scroll||!survey||!search||!dock||!shelf)return {ok:false,why:'missing panel/scroller/survey/Search/dock/shelf',yielded};
                 const p=panel.getBoundingClientRect(),s=scroll.getBoundingClientRect(),v=survey.getBoundingClientRect(),
                   q=search.getBoundingClientRect(),d=dock.getBoundingClientRect(),intersects=(a,b)=>a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1,
                   safe={top:parseFloat(root.getPropertyValue('--safe-top'))||0,right:parseFloat(root.getPropertyValue('--safe-right'))||0,
                     bottom:parseFloat(root.getPropertyValue('--safe-bottom'))||0,left:parseFloat(root.getPropertyValue('--safe-left'))||0},
                   surveyStyle=getComputedStyle(survey),surveyVisible=surveyStyle.display!=='none'&&surveyStyle.visibility!=='hidden'&&v.width>0&&v.height>0,
-                  retained=[search,dock].map((el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return {id:el.id,display:style.display,
+                  retained=[shelf,search,dock].map((el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return {id:el.id,display:style.display,
                     visibility:style.visibility,pointerEvents:style.pointerEvents,rect:[r.left,r.top,r.right,r.bottom]};}),
                   overlaps={panelSurvey:intersects(p,v),panelSearch:intersects(p,q),panelDock:intersects(p,d),surveySearch:intersects(v,q),
                     surveyDock:intersects(v,d),searchDock:intersects(q,d)};
                 return {ok:document.body.classList.contains('panel-open')&&document.body.classList.contains('fs-xl')
-                    &&document.body.classList.contains('font-mono')&&yielded.every(row=>row.visibility==='hidden'&&row.pointerEvents==='none')
+                    &&document.body.classList.contains('font-mono')&&yielded.every(row=>row.id==='hpbar'?row.display==='none':row.visibility==='hidden'&&row.pointerEvents==='none')
                     &&retained.every(row=>row.display!=='none'&&row.visibility==='visible'&&row.pointerEvents!=='none')
                     &&p.left>=safe.left-1&&p.top>=safe.top-1&&p.right<=innerWidth-safe.right+1&&p.bottom<=innerHeight-safe.bottom+1
                     &&q.left>=safe.left-1&&q.top>=safe.top-1&&q.right<=innerWidth-safe.right+1&&q.bottom<=innerHeight-safe.bottom+1
@@ -12006,20 +12028,23 @@ async function main() {
               addOutcome(vp.label, 'compendium-short-landscape', 'COMPENDIUM_SHORT_LANDSCAPE_WORKSPACE', '#codexpanel', workspace,
                 'the A++ Compendium owns the safe-height left workspace while Search, dock, and Survey remain separate usable right-column surfaces');
 
-              const nonModalChrome = await evalIn(`(()=>{const search=document.getElementById('searchbox'),dock=document.getElementById('dock'),
-                dockButton=document.getElementById(innerWidth>700?'railcodex':'dockcodex'),
+              const nonModalChrome = await evalIn(`(()=>{const search=document.getElementById('searchbox'),dock=document.getElementById('dock'),shelf=document.getElementById('topbar'),
+                shelfActions=['dockinventory','shelfnotifications'].map(id=>document.getElementById(id)),
+                dockButton=document.getElementById('dockcodex'),
                 buttons=dock?[...dock.querySelectorAll(':scope > button')].filter(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;}):[],panel=document.getElementById('codexpanel');
-                if(!(search instanceof HTMLInputElement)||!dock||!dockButton||!panel)return {ok:false,why:'Search/dock/Compendium missing'};
+                if(!(search instanceof HTMLInputElement)||!dock||!dockButton||!panel||!shelf||shelfActions.some(el=>!el))return {ok:false,why:'Search/dock/shelf/Compendium missing'};
                 const rendered=(el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return style.display!=='none'&&style.visibility==='visible'
                     &&style.pointerEvents!=='none'&&r.width>0&&r.height>0;},ownsCentre=(el)=>{const r=el.getBoundingClientRect(),hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
                     return !!hit&&(hit===el||el.contains(hit));},named=(el)=>!!(el.getAttribute('aria-label')||el.textContent||'').trim(),
-                  exposed=(el)=>!el.inert&&!el.closest('[inert],[aria-hidden="true"]'),positiveVisibility=rendered(search)&&rendered(dock)&&exposed(search)&&exposed(dock),
-                  searchStyle=search.getAttribute('style'),dockStyle=dock.getAttribute('style'),dockAriaHidden=dock.getAttribute('aria-hidden');
-                let hiddenSearchRejected=false,blockedDockRejected=false,hiddenDockA11yRejected=false;
+                  exposed=(el)=>!el.inert&&!el.closest('[inert],[aria-hidden="true"]'),positiveVisibility=rendered(search)&&rendered(dock)&&rendered(shelf)&&exposed(search)&&exposed(dock)&&exposed(shelf),
+                  searchStyle=search.getAttribute('style'),dockStyle=dock.getAttribute('style'),shelfStyle=shelf.getAttribute('style'),dockAriaHidden=dock.getAttribute('aria-hidden');
+                let hiddenSearchRejected=false,hiddenShelfRejected=false,blockedDockRejected=false,hiddenDockA11yRejected=false;
+                try{shelf.style.setProperty('visibility','hidden','important');hiddenShelfRejected=!rendered(shelf);}
+                finally{shelf.setAttribute('style','');shelf.removeAttribute('style');if(shelfStyle!==null)shelf.setAttribute('style',shelfStyle);}
                 try{search.style.setProperty('visibility','hidden','important');hiddenSearchRejected=!rendered(search);}
-                finally{if(searchStyle===null)search.removeAttribute('style');else search.setAttribute('style',searchStyle);}
+                finally{search.setAttribute('style','');search.removeAttribute('style');if(searchStyle!==null)search.setAttribute('style',searchStyle);}
                 try{dock.style.setProperty('pointer-events','none','important');blockedDockRejected=!rendered(dock);}
-                finally{if(dockStyle===null)dock.removeAttribute('style');else dock.setAttribute('style',dockStyle);}
+                finally{dock.setAttribute('style','');dock.removeAttribute('style');if(dockStyle!==null)dock.setAttribute('style',dockStyle);}
                 try{dock.setAttribute('aria-hidden','true');hiddenDockA11yRejected=!exposed(dock);}
                 finally{if(dockAriaHidden===null)dock.removeAttribute('aria-hidden');else dock.setAttribute('aria-hidden',dockAriaHidden);}
                 const searchHit=ownsCentre(search),dockHits=buttons.map(button=>({id:button.id,hit:ownsCentre(button),named:named(button),
@@ -12032,21 +12057,23 @@ async function main() {
                 dockButton.focus({preventScroll:true});const dockFocused=document.activeElement===dockButton;dockButton.click();
                 const closed=window.__CF_SLICE__.api.state();dockButton.click();const reopened=window.__CF_SLICE__.api.state(),
                   close=panel.querySelector('[data-pnx]'),focusEntered=!!close&&document.activeElement===close;
-                return {ok:positiveVisibility&&hiddenSearchRejected&&blockedDockRejected&&hiddenDockA11yRejected&&searchHit&&searchFocused
+                return {ok:positiveVisibility&&hiddenSearchRejected&&hiddenShelfRejected&&blockedDockRejected&&hiddenDockA11yRejected&&searchHit&&searchFocused
+                    &&shelf.getAttribute('style')===shelfStyle&&search.getAttribute('style')===searchStyle&&dock.getAttribute('style')===dockStyle
+                    &&shelfActions.every(el=>{const r=el.getBoundingClientRect();return el instanceof HTMLButtonElement&&rendered(el)&&exposed(el)&&named(el)
+                      &&r.width>=44&&r.height>=44&&ownsCentre(el)&&el.tabIndex>=0&&!el.disabled;})
                     &&search.getAttribute('aria-label')?.trim().length>0&&exposed(search)&&search.tabIndex>=0&&!search.disabled&&!search.readOnly
                     &&dock.getAttribute('aria-label')?.trim().length>0&&dockFocused
-                    &&JSON.stringify(dockHits.map(row=>row.id))===JSON.stringify(innerWidth>700
-                      ?['primechip','dockrecords','docknotifications','dockguide','docksets']
-                      :['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'])
+                    &&JSON.stringify(dockHits.map(row=>row.id))===JSON.stringify(
+                      ['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'])
                     &&dockHits.every(row=>row.hit&&row.named&&row.exposed&&row.tabIndex>=0&&!row.disabled)
                     &&filtered.panel.mode==='list'&&filtered.panel.filteredCount===1
                     &&cleared.panel.mode==='list'&&cleared.panel.filteredCount===${hostileCompendiumRows.length}
                     &&closed.panelOpen===null&&reopened.panelOpen==='codex'&&focusEntered,
-                  positiveVisibility,hiddenSearchRejected,blockedDockRejected,hiddenDockA11yRejected,searchHit,searchFocused,searchName:search.getAttribute('aria-label'),
+                  positiveVisibility,hiddenSearchRejected,hiddenShelfRejected,blockedDockRejected,hiddenDockA11yRejected,searchHit,searchFocused,searchName:search.getAttribute('aria-label'),
                   dockName:dock.getAttribute('aria-label'),dockFocused,dockHits,filteredCount:filtered.panel.filteredCount,
                   clearedCount:cleared.panel.filteredCount,closedPanel:closed.panelOpen,reopenedPanel:reopened.panelOpen,focusEntered};})()`);
               addOutcome(vp.label, 'compendium-nonmodal-chrome', 'NONMODAL_CHROME_UNUSABLE', '#searchbox,#dock', nonModalChrome,
-                'non-modal Search and every dock action remain rendered, named, focusable, hit-testable, and usable while the Compendium is open');
+                'non-modal shelf Inventory/bell, Search and all nine launcher actions remain rendered, named, focusable, hit-testable, and usable while the Compendium is open');
               await waitFor('non-modal Compendium reopen', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();return d.panel.mode==='list'
                 &&d.panel.sourceCount===${hostileCompendiumRows.length}&&d.panel.filteredCount===${hostileCompendiumRows.length}
                 &&document.querySelector('#codexpanel [data-ci="0"]');})()`);
@@ -12065,8 +12092,7 @@ async function main() {
               const dockContrastControl = await evalIn(`(()=>{const visible=node=>{const s=getComputedStyle(node),r=node.getBoundingClientRect();
                   return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;},
                 buttons=[...document.querySelectorAll('#dock > button')].filter(visible),
-                expectedIds=innerWidth>700?['primechip','dockrecords','docknotifications','dockguide','docksets']
-                  :['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'];
+                expectedIds=['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'];
                 if(JSON.stringify(buttons.map(button=>button.id))!==JSON.stringify(expectedIds)
                   ||buttons.some(button=>!(button instanceof HTMLButtonElement)))
                   return {ok:false,why:'exact visible U1 native dock membership missing',expectedIds,actual:buttons.map(button=>button.id)};
@@ -13040,18 +13066,18 @@ async function main() {
         }
 
         if (vp.width > 900 && !hiddenOpenerControlRun) {
-          /* Atlas remains a visible right-rail opener in U1. Native Atlas ->
-             Survey -> Close proves the same hidden-opener focus lifecycle;
-             permanently hidden Inventory/Records copies cannot establish it. */
+          /* The uniform launcher stays available with Survey open. Preserve
+             the hidden-opener lifecycle using a declared, owned temporary
+             dockatlas hide after native Atlas/Survey input, never a hidden rail. */
           const pointerType = vp.mobile ? 'touch' : 'mouse';
-          const hiddenOpenerSnapshot = `(()=>{const rail=document.getElementById('railatlas'),
+          const hiddenOpenerSnapshot = `(()=>{const opener=document.getElementById('dockatlas'),dock=document.getElementById('dock'),
             survey=document.getElementById('docksurvey'),panel=document.getElementById('atlaspanel'),
             close=panel?.querySelector('[data-pnx="atlas"]'),s=window.__CF_SLICE__.api.state(),
-            railStyle=rail?getComputedStyle(rail):null,surveyStyle=survey?getComputedStyle(survey):null;
+            openerStyle=opener?getComputedStyle(opener):null,surveyStyle=survey?getComputedStyle(survey):null;
             return {panel:s.panelOpen,cardOpen:s.cardOpen,cardTitle:s.cardTitle,bodyClass:document.body.className,
-              railRendered:!!rail&&rail.getClientRects().length>0,railDisplay:railStyle?.display??null,
-              railVisibility:railStyle?.visibility??null,
-              railRootDisplay:getComputedStyle(document.getElementById('railrgt')).display,
+              openerId:opener?.id??null,openerRendered:!!opener&&opener.getClientRects().length>0,
+              openerDisplay:openerStyle?.display??null,openerVisibility:openerStyle?.visibility??null,
+              dockRendered:!!dock&&dock.getClientRects().length>0,
               closeFocused:!!close&&document.activeElement===close,
               surveyRendered:!!survey&&survey.getClientRects().length>0
                 &&surveyStyle?.display!=='none'&&surveyStyle?.visibility==='visible',
@@ -13061,36 +13087,58 @@ async function main() {
             if (!setupClose.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native Survey input (${JSON.stringify(setupClose)})`);
             await waitFor('hidden-opener setup survey closed', `!window.__CF_SLICE__.api.state().cardOpen`);
           }
-          const opening = await activateRealControl('#railatlas', 'hidden-opener visible Atlas opener');
+          const opening = await activateRealControl('#dockatlas', 'hidden-opener visible Atlas opener');
           if (!opening.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native visible Atlas input (${JSON.stringify(opening)})`);
           await waitFor('hidden-opener Atlas open', `window.__CF_SLICE__.api.state().panelOpen==='atlas'`);
           const baseline = await evalIn(hiddenOpenerSnapshot);
           const hiding = await activateRealControl('#docksurvey', 'hidden-opener Survey transition');
           if (!hiding.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native Survey transition (${JSON.stringify(hiding)})`);
           await waitFor('hidden-opener Survey reopened', `window.__CF_SLICE__.api.state().cardOpen`);
-          const hidden = await evalIn(hiddenOpenerSnapshot);
-          const setup = hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, hidden, pointerType });
-          if (!setup.ok) stopInstrumentControl(`${vp.label}: could not prove visible-to-hidden panel opener (${JSON.stringify({ setup, opening, baseline, hiding, hidden })})`);
-          const closing = await activateRealControl('#atlaspanel [data-pnx="atlas"]', 'hidden-opener Atlas Close');
-          if (!closing.ok) stopInstrumentControl(`${vp.label}: hidden-opener Close lacked native input (${JSON.stringify(closing)})`);
-          await waitFor('hidden-opener panel close', `window.__CF_SLICE__.api.state().panelOpen===null`);
-          const fallback = await evalIn(hiddenOpenerSnapshot);
-          const fallbackOutcome = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback, pointerType });
-          addOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST', '#docksurvey',
-            { ...fallbackOutcome, diagnostics: { setup, opening, baseline, hiding, hidden, closing, fallback } },
-            'closing a panel whose rail opener became hidden restores focus to the visible Survey control');
-          stopAfterRecordedProductOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST',
-            '#docksurvey', fallbackOutcome, 'hidden-opener Close restores visible Survey focus');
-          await evalIn(`document.querySelector('canvas')?.focus()`);
-          const wrongFocus = await evalIn(hiddenOpenerSnapshot);
-          const fallbackControl = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: wrongFocus, pointerType });
-          if (wrongFocus.focus === 'docksurvey' || fallbackControl.ok) {
-            stopInstrumentControl(`${vp.label}: wrong hidden-opener fallback focus was not rejected (${JSON.stringify({ wrongFocus, fallbackControl })})`);
+          const surveyBaseline = await evalIn(hiddenOpenerSnapshot);
+          const mutation = await evalIn(`(()=>{const opener=document.getElementById('dockatlas');
+            if(!opener||window.__cfGlassHiddenOpenerControl)throw new Error('hidden-opener mutation owner unavailable');
+            const prior={present:opener.hasAttribute('style'),value:opener.getAttribute('style')};
+            window.__cfGlassHiddenOpenerControl={opener,prior};
+            opener.style.setProperty('display','none','important');return {
+              kind:'owned-dock-opener-display-none',selector:'#dockatlas',sameNode:document.getElementById('dockatlas')===opener,prior,
+              applied:{display:opener.style.getPropertyValue('display'),priority:opener.style.getPropertyPriority('display')}};})()`);
+          try {
+            const hidden = await evalIn(hiddenOpenerSnapshot);
+            const setup = hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, surveyBaseline, mutation, hidden, pointerType });
+            if (!setup.ok) stopInstrumentControl(`${vp.label}: could not prove injected visible-to-hidden panel opener (${JSON.stringify({ setup, opening, baseline, hiding, surveyBaseline, mutation, hidden })})`);
+            const closing = await activateRealControl('#atlaspanel [data-pnx="atlas"]', 'hidden-opener Atlas Close');
+            if (!closing.ok) stopInstrumentControl(`${vp.label}: hidden-opener Close lacked native input (${JSON.stringify(closing)})`);
+            await waitFor('hidden-opener panel close', `window.__CF_SLICE__.api.state().panelOpen===null`);
+            const fallback = await evalIn(hiddenOpenerSnapshot);
+            const fallbackOutcome = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback, pointerType });
+            addOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST', '#docksurvey',
+              { ...fallbackOutcome, diagnostics: { setup, opening, baseline, hiding, surveyBaseline, mutation, hidden, closing, fallback } },
+              'closing Atlas with its native launcher opener temporarily hidden restores focus to the visible Survey control');
+            stopAfterRecordedProductOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST',
+              '#docksurvey', fallbackOutcome, 'injected hidden-opener Close restores visible Survey focus');
+            await evalIn(`document.querySelector('canvas')?.focus()`);
+            const wrongFocus = await evalIn(hiddenOpenerSnapshot);
+            const fallbackControl = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: wrongFocus, pointerType });
+            if (wrongFocus.focus === 'docksurvey' || fallbackControl.ok) {
+              stopInstrumentControl(`${vp.label}: wrong hidden-opener fallback focus was not rejected (${JSON.stringify({ wrongFocus, fallbackControl })})`);
+            }
+            await evalIn(`document.getElementById('docksurvey')?.focus()`);
+            const restored = await evalIn(hiddenOpenerSnapshot);
+            const restoredOutcome = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: restored, pointerType });
+            if (!restoredOutcome.ok) stopInstrumentControl(`${vp.label}: hidden-opener fallback restoration failed (${JSON.stringify({ restored, restoredOutcome })})`);
+          } finally {
+            const restored = await evalIn(`(()=>{const owned=window.__cfGlassHiddenOpenerControl;
+              if(!owned)return {sameNode:false};const opener=owned.opener,prior=owned.prior,focusBefore=document.activeElement;
+              opener.setAttribute('style','');opener.removeAttribute('style');
+              if(prior.present)opener.setAttribute('style',prior.value);
+              delete window.__cfGlassHiddenOpenerControl;
+              const r=opener.getBoundingClientRect(),hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
+              return {...${hiddenOpenerSnapshot},sameNode:document.getElementById('dockatlas')===opener,
+                present:opener.hasAttribute('style'),value:opener.getAttribute('style'),focusUnchanged:document.activeElement===focusBefore,
+                centreOwned:!!hit&&(hit===opener||opener.contains(hit))};})()`);
+            const restoration = hiddenPanelOpenerRestorationOutcome(mutation.prior, restored);
+            if (!restoration.ok) stopInstrumentControl(`${vp.label}: injected hidden-opener style/target restoration failed (${JSON.stringify({ mutation, restored, restoration })})`);
           }
-          await evalIn(`document.getElementById('docksurvey')?.focus()`);
-          const restored = await evalIn(hiddenOpenerSnapshot);
-          const restoredOutcome = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: restored, pointerType });
-          if (!restoredOutcome.ok) stopInstrumentControl(`${vp.label}: hidden-opener fallback restoration failed (${JSON.stringify({ restored, restoredOutcome })})`);
           hiddenOpenerControlRun = true;
           recordControls('hidden-panel-opener-focus-fallback');
         }
@@ -14651,13 +14699,13 @@ async function main() {
         if (vp.width > 900) {
           addOutcome(vp.label, 'settings', 'DESKTOP_UTILITY_PANEL_ANCHOR', '#setpanel',
             await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#setpanel')`),
-            'desktop Settings shares the measured bottom-right utility edge above the dock');
+            'desktop Settings aligns with the measured centered launcher\'s right edge, 12px above it');
           if (!settingsAnchorControlRun) {
             settingsAnchorControlRun = true;
             const leftSettingsControl = await evalIn(`(()=>{ const panel=document.getElementById('setpanel'),prior=panel.getAttribute('style');
               panel.style.setProperty('left','12px','important');panel.style.setProperty('right','auto','important');
               const result=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#setpanel');
-              if(prior===null)panel.removeAttribute('style');else panel.setAttribute('style',prior);return result;})()`);
+              panel.setAttribute('style','');panel.removeAttribute('style');if(prior!==null)panel.setAttribute('style',prior);return result;})()`);
             if (leftSettingsControl.ok || !Array.isArray(leftSettingsControl.rect)
               || Math.abs(leftSettingsControl.rect[0] - 12) > 2) {
               recordInstrumentFailure(`${vp.label}: injected left-anchored Settings did not turn the bottom-right anchor outcome red (${JSON.stringify(leftSettingsControl)})`);

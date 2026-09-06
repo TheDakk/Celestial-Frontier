@@ -1785,12 +1785,13 @@ const assessArc3SurveyClosedRailLifecycle = ({
     exactRoute: canonicalJson(arc3SurveyRouteProjection(beforeState))
       === canonicalJson(arc3SurveyRouteProjection(afterState)),
     durableReadOnly: readOnly.ok === true,
-    rightRailReady: surface?.rightRail?.id === 'railrgt'
-      && surface?.rightRail?.display === 'flex'
+    /* Historical rightRailReady names the current launcher readiness outcome. */
+    rightRailReady: surface?.rightRail?.id === 'dock'
+      && surface?.rightRail?.display === 'grid'
       && surface?.rightRail?.visibility !== 'hidden'
       && surface?.rightRail?.rectCount === 1
       && surface?.rightRail?.width >= 44 && surface?.rightRail?.height >= 44
-      && surface?.shipyard?.id === 'railshipyard'
+      && surface?.shipyard?.id === 'dockshipyard'
       && surface?.shipyard?.tag === 'BUTTON'
       && surface?.shipyard?.ariaControls === 'shipyardpanel'
       && surface?.shipyard?.ariaExpanded === 'false'
@@ -1798,7 +1799,8 @@ const assessArc3SurveyClosedRailLifecycle = ({
       && surface?.shipyard?.visibility !== 'hidden'
       && surface?.shipyard?.rectCount === 1
       && surface?.shipyard?.width >= 44 && surface?.shipyard?.height >= 44
-      && surface?.shipyard?.hit === 'railshipyard',
+      && surface?.shipyard?.buttonId === 'dockshipyard'
+      && surface?.shipyard?.buttonTag === 'BUTTON',
   });
   return { ok: Object.values(checks).every((value) => value === true), checks, readOnly };
 };
@@ -2390,7 +2392,7 @@ const assessAtlasPointerPress = (press, { atlasId } = {}) => {
   };
   return { ok: Object.values(checks).every((value) => value === true), checks };
 };
-const assessAtlasOpenerPress = (press, { ids = ['railatlas', 'dockatlas'] } = {}) => {
+const assessAtlasOpenerPress = (press, { ids = ['dockatlas'] } = {}) => {
   const checks = {
     target: press?.target?.settled === true && press.target.tag === 'BUTTON'
       && press.target.type === 'button' && ids.includes(press.target.id),
@@ -2444,12 +2446,14 @@ const assessArc2InventoryReload = ({ committed, reloaded, committedState, reload
       && row.pending === false && row.equipped === false)
     || surface.inventoryRows.some((row) => row.instanceId === removedInstanceId)
     || !assessInventoryPanelClose(surface?.inventoryClose).ok
-    || surface?.atlasPreClick?.ok !== true || surface?.atlasPreClick?.targetId !== 'railatlas'
+    || surface?.atlasPreClick?.ok !== true || surface?.atlasPreClick?.buttonId !== 'dockatlas'
+    || surface?.atlasPreClick?.buttonTag !== 'BUTTON'
     || !Number.isFinite(surface?.atlasPreClick?.x) || !Number.isFinite(surface?.atlasPreClick?.y)
     || surface?.panelOpen !== 'atlas' || surface?.inventoryHidden !== true
     || surface?.inventoryExpanded !== 'false'
     || !assessAtlasTravelTarget(surface?.atlasTarget, { atlasId: 'p133' }).ok
-    || surface?.atlasPointer?.targetId !== 'railatlas' || surface?.atlasPointer?.trusted !== true
+    || surface?.atlasPointer?.buttonId !== 'dockatlas' || surface?.atlasPointer?.buttonTag !== 'BUTTON'
+    || surface?.atlasPointer?.trusted !== true
     || surface?.atlasPointer?.pointerType !== 'mouse'
     || !Number.isFinite(surface?.atlasPointer?.x) || !Number.isFinite(surface?.atlasPointer?.y)
     || Math.abs(surface.atlasPointer.x - surface.atlasPreClick.x) > 0.75
@@ -3121,7 +3125,7 @@ const assessArc3PendingLifecycle = ({
     reasons.push('held rendered/durable no-optimism and native main single-flight');
   }
   const closedEng = closed?.diagnostics?.engineering;
-  if (closed?.panelOpen !== null || closed?.focusId !== 'railshipyard'
+  if (closed?.panelOpen !== null || closed?.focusId !== 'dockshipyard'
     || closed?.expanded !== 'false' || closed?.bodyChildren !== 0
     || closed?.diagnostics?.schema !== 'cf-v2-shipyard-diagnostics/v1'
     || closed?.diagnostics?.status !== 'closed' || closed?.diagnostics?.stateKey !== null
@@ -5924,7 +5928,7 @@ try {
         vis:b.width>0&&b.height>0&&cs.display!=='none'&&cs.visibility!=='hidden'&&Number(cs.opacity)>0 }; };
     const overlaps=(a,b)=>a&&b&&a.l<b.r-.5&&a.r>b.l+.5&&a.t<b.b-.5&&a.b>b.t+.5;
     const pc=r('playerchip'), hp=r('hpbar'), pr=r('primechip'), obj=r('objchip'),
-      hint=r('hintpill'), ctx=r('ctxbar'), dock=r('dock'), rail=r('raillft'), dcx=r('dockcodex'),
+      hint=r('hintpill'), ctx=r('ctxbar'), dock=r('dock'), rail=r('raillft'), rightRail=r('railrgt'),
       srch=r('searchbox'),bell=r('shelfnotifications');
     const bad=[];
     if(!pc || pc.l>80 || pc.t>60) bad.push('playerchip not top-left');
@@ -5939,7 +5943,6 @@ try {
       bad.push('search is not beside its reachable shelf bell at the approved 8px gap: '+JSON.stringify({srch,bell,
         expectedBellRight,bellHit:bellHit?.id||null,searchHit:searchHit?.id||null}));
     if(srch && pc && pc.r > srch.l+4) bad.push('player chip overlaps the search bar');
-    if(W>700 && (!pr || Math.abs(pr.cx-W/2)>70 || pr.t>60)) bad.push('Prime Codex pill not top-center');
     if(W<=700){
       const prime=document.getElementById('primechip'),hit=pr?document.elementFromPoint(pr.cx,pr.cy):null;
       if(!pr||!pr.vis||prime?.tagName!=='BUTTON'||prime?.type!=='button'||pr.h<44
@@ -5951,14 +5954,23 @@ try {
     if(!obj || obj.l>40 || obj.t<H*0.18 || obj.t>H*0.42) bad.push('objective chip not left @~26vh: '+JSON.stringify(obj));
     if(!hint || Math.abs(hint.cx-W/2)>90 || hint.b<H-160) bad.push('hint pill not bottom-center');
     if(ctx && hint && ctx.b>hint.t+6) bad.push('caption not ABOVE the hint pill');
-    if(W>700){
-      if(!dock || dock.cx<W*0.6) bad.push('desktop cluster not bottom-RIGHT (ROADMAP #11 rail lesson)');
-      if(!rail || !rail.vis) bad.push('left rail missing on desktop');
-      if(dcx && dcx.vis) bad.push('dock codex should hide on desktop (rail owns it)');
-    } else {
-      if(!dock || Math.abs(dock.cx-W/2)>60) bad.push('phone dock not bottom-center');
-      if(rail && rail.vis) bad.push('left rail should hide on phone');
-    }
+    if(rail?.vis||rightRail?.vis)bad.push('legacy rail root remains visible beside the unified launcher');
+    const compact=W<=700||(W<=900&&W>H);
+    if(!compact){
+      const ids=['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'],
+        pitch=W>=1100?80:72,expectedWidth=W>=1100?752:672,rows=ids.map(id=>({id,box:r(id)})),
+        actual=[...document.querySelectorAll('#dock > button')].filter(el=>r(el.id)?.vis).map(el=>el.id),
+        safeBottom=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--safe-bottom'))||0;
+      if(!dock||!dock.vis||Math.abs(dock.cx-W/2)>1||Math.abs(dock.w-expectedWidth)>1
+        ||Math.abs(H-dock.b-safeBottom-12)>1||JSON.stringify(actual)!==JSON.stringify(ids)
+        ||rows.some((row,index)=>!row.box?.vis||row.box.h<44||row.box.w<44
+          ||row.box.l<dock.l||row.box.r>dock.r||row.box.t<dock.t||row.box.b>dock.b
+          ||(index>0&&(Math.abs(row.box.cx-rows[index-1].box.cx-pitch)>1
+            ||Math.abs(row.box.cy-rows[0].box.cy)>1))
+          ||(()=>{const el=document.getElementById(row.id),hit=document.elementFromPoint(row.box.cx,row.box.cy);
+            return !hit||!(hit===el||el.contains(hit));})()))
+        bad.push('unified launcher does not retain nine reachable native controls at its centered scaled pitch: '+JSON.stringify({dock,rows,actual,pitch,expectedWidth}));
+    }else if(!dock||Math.abs(dock.cx-W/2)>60)bad.push('compact dock not bottom-center');
     return bad; })()`;
   const geo = await evalIn(geoCheck);
   if (geo.length) fails.push('GOLDEN LAYOUT drift: ' + geo.join(' · '));
@@ -6390,12 +6402,10 @@ try {
       + JSON.stringify(panelSwitchFocus));
   }
 
-  /* UI-P1: flex spacing belongs to its rail, not to the sky behind it. The
-     reported target is the exact 8px root-owned gap—not either registered
-     button—so only real-browser pointer input plus elementFromPoint can prove
-     this document-level pointerdown law. Declarative boundary inventory and
-     independent removal controls keep the old asymmetric #raillft exception
-     from surviving beside the new mechanism. */
+  /* UI-P1: launcher spacing belongs to the visible tray, not the sky behind
+     it. Historical LEFT/RIGHT RAIL GAP outcome labels now name two separate
+     measured 6px board gaps in #dock. Only trusted browser input on that exact
+     root, plus independent boundary-removal controls, proves dismissal law. */
   const panelBoundarySetup = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
     if(before.cardOpen)document.querySelector('#survey [data-survey-close]')?.click();
     if(S.api.state().panelOpen){const panel=[...document.querySelectorAll('.panel')]
@@ -6413,14 +6423,14 @@ try {
     rail=document.getElementById(${JSON.stringify(railId)}),upper=document.getElementById(${JSON.stringify(upperId)}),
     lower=document.getElementById(${JSON.stringify(lowerId)}),rr=rail?.getBoundingClientRect(),
     ur=upper?.getBoundingClientRect(),lr=lower?.getBoundingClientRect();
-    if(!rail||!upper||!lower||!rr||!ur||!lr)return {geometry:false,why:'missing rail fixture'};
-    const gap=lr.top-ur.bottom,point={x:(rr.left+rr.right)/2,y:(ur.bottom+lr.top)/2},hit=document.elementFromPoint(point.x,point.y),
-      state=S.api.state();
-    return {geometry:innerWidth===1280&&innerHeight===800&&getComputedStyle(rail).display==='flex'
-        &&rr.width>0&&rr.height>0&&Math.abs(gap-8)<=0.5&&point.x>rr.left&&point.x<rr.right
-        &&point.y>rr.top&&point.y<rr.bottom&&hit===rail,
-      gap,point,targetId:hit?.id||null,boundary:rail.hasAttribute('data-panel-boundary'),
-      panelOpen:state.panelOpen,cardOpen:state.cardOpen};})()`;
+    if(!rail||!upper||!lower||!rr||!ur||!lr)return {geometry:false,why:'missing launcher gap fixture'};
+    const gap=lr.left-ur.right,point={x:(ur.right+lr.left)/2,y:(ur.top+ur.bottom)/2},hit=document.elementFromPoint(point.x,point.y),
+      state=S.api.state(),style=getComputedStyle(rail);
+    return {geometry:innerWidth===1280&&innerHeight===800&&style.display==='grid'&&style.pointerEvents==='auto'
+        &&rail.id==='dock'&&rr.width>0&&rr.height>0&&Math.abs(gap-6)<=0.5&&Math.abs(ur.top-lr.top)<=0.5
+        &&point.x>rr.left&&point.x<rr.right&&point.y>rr.top&&point.y<rr.bottom&&hit===rail,
+      ownerId:rail.id,upperId:upper.id,lowerId:lower.id,gap,point,targetId:hit?.id||null,
+      boundary:rail.hasAttribute('data-panel-boundary'),panelOpen:state.panelOpen,cardOpen:state.cardOpen};})()`;
   const railButtonPoint = (id) => `(()=>{ const button=document.getElementById(${JSON.stringify(id)}),
     rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0,
     hit=rect?document.elementFromPoint(x,y):null;return {ok:!!button&&!!rect&&rect.width>0&&rect.height>=44
@@ -6443,16 +6453,16 @@ try {
       panel?.querySelector('[data-pnx]')?.click();return window.__CF_SLICE__.api.state().panelOpen;})()`);
     await sleep(40);
   };
-  const rightGap = railGapProbe('railrgt', 'railatlas', 'railshipyard');
-  const leftGap = railGapProbe('raillft', 'railcharters', 'railcodex');
+  const rightGap = railGapProbe('dock', 'dockshipyard', 'dockatlas');
+  const leftGap = railGapProbe('dock', 'dockcharters', 'dockcodex');
 
-  /* ARC 3 ENGINEERING: exercise the real desktop right-rail route before the
+  /* ARC 3 ENGINEERING: exercise the real desktop launcher route before the
      generic gap probes. Browser pointer opens the registered panel, native
      keyboard opens every disclosure, and the independent exact catalogue
      inventory—not the DOM's own count—judges the six research rows, five
      groups, 62 recipes and 70 authored actions. */
   const shipyardOpenCheck = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),ship=state?.shipVisual,
-    panel=document.getElementById('shipyardpanel'),opener=document.getElementById('railshipyard'),
+    panel=document.getElementById('shipyardpanel'),opener=document.getElementById('dockshipyard'),
     body=panel?.querySelector('[data-engineering-panel-body]'),close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),
     diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,
     previews=panel?[...panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')]:[],preview=previews[0]||null,
@@ -6524,11 +6534,12 @@ try {
       diag,diagKeys,expectedDiagKeys,engKeys,expectedEngKeys,panelRect:pr?[pr.left,pr.top,pr.right,pr.bottom]:null,
       bodyWidth:br?.width??null,bodyScrollWidth:body?.scrollWidth??null,closeRect:cr?[cr.left,cr.top,cr.right,cr.bottom]:null};})()`;
   await armDesktopPointerReceipt();
-  const shipyardOpened = await openDesktopRailPanel('railshipyard', 'shipyard', 'SHIPYARD');
+  const shipyardOpened = await openDesktopRailPanel('dockshipyard', 'shipyard', 'SHIPYARD');
   const shipyardOpenReceipt = await takeDesktopPointerReceipt();
-  if (!shipyardOpened || shipyardOpenReceipt?.targetId !== 'railshipyard'
+  if (!shipyardOpened || shipyardOpenReceipt?.buttonId !== 'dockshipyard'
+    || shipyardOpenReceipt?.buttonTag !== 'BUTTON' || shipyardOpenReceipt?.trusted !== true
     || shipyardOpenReceipt?.pointerType !== 'mouse') {
-    fails.push('SHIPYARD: visible right-rail opener did not receive real browser-mouse input: '
+    fails.push('SHIPYARD: visible launcher opener did not receive trusted browser-mouse input: '
       + JSON.stringify({ shipyardOpened, shipyardOpenReceipt }));
   }
   if (shipyardOpened) {
@@ -6597,7 +6608,7 @@ try {
       fails.push('ENGINEERING STATE CONTROL FAILED — state/research/recipe mismatch stayed green or failed to restore: '
         + JSON.stringify(parityShipyardCtl));
     }
-    const openerShipyardCtl = await evalIn(`(()=>{const opener=document.getElementById('railshipyard'),
+    const openerShipyardCtl = await evalIn(`(()=>{const opener=document.getElementById('dockshipyard'),
       priorStyle=opener?.getAttribute('style')??null,priorExpanded=opener?.getAttribute('aria-expanded')??null;
       opener?.style.setProperty('display','none','important');opener?.setAttribute('aria-expanded','false');
       const broken=${shipyardOpenCheck};if(priorStyle===null)opener?.removeAttribute('style');else opener?.setAttribute('style',priorStyle);
@@ -6608,7 +6619,7 @@ try {
         + JSON.stringify(openerShipyardCtl));
     }
     const geometryShipyardCtl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
-      close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),opener=document.getElementById('railshipyard'),
+      close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),opener=document.getElementById('dockshipyard'),
       summary=panel?.querySelector('details[data-engineering-section] > summary'),action=panel?.querySelector('button[data-engineering-action]'),
       priorStyle=close?.getAttribute('style')??null,priorSummary=summary?.getAttribute('style')??null,
       priorAction=action?.getAttribute('style')??null;close?.style.setProperty('min-width','0','important');
@@ -6637,7 +6648,7 @@ try {
     if (shipyardClosePoint.ok) await clickDesktopPoint(shipyardClosePoint);
     const shipyardCloseReceipt = await takeDesktopPointerReceipt();
     const shipyardClosedCheck = `(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
-      opener=document.getElementById('railshipyard'),diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,
+      opener=document.getElementById('dockshipyard'),diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,
       body=panel?.querySelector('[data-engineering-panel-body]'),style=panel?getComputedStyle(panel):null,
       previews=panel?.querySelectorAll('[data-cf-shipyard-preview="v1"]').length??-1,
       keys=diag?Object.keys(diag).sort():[],expected=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort();
@@ -6672,18 +6683,18 @@ try {
     }
   }
 
-  if (await openDesktopRailPanel('railcodex', 'codex', 'RIGHT RAIL GAP')) {
+  if (await openDesktopRailPanel('dockcodex', 'codex', 'RIGHT RAIL GAP')) {
     const before = await evalIn(rightGap);
     if (!before.geometry || before.cardOpen || before.panelOpen !== 'codex') {
-      fails.push('RIGHT RAIL GAP: reported 8px root-owned geometry was not established: ' + JSON.stringify(before));
+      fails.push('RIGHT RAIL GAP: current launcher right 6px root-owned geometry was not established: ' + JSON.stringify(before));
     } else {
       await armDesktopPointerReceipt();
       await clickDesktopPoint(before.point);
       const receipt = await takeDesktopPointerReceipt();
-      const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('railcodex'),
+      const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('dockcodex'),
         panel=document.getElementById('codexpanel');return {panelOpen:s.panelOpen,expanded:button?.getAttribute('aria-expanded'),
           hidden:panel?.getAttribute('aria-hidden')};})()`);
-      if (!before.boundary || receipt?.targetId !== 'railrgt' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'codex'
+      if (!before.boundary || receipt?.targetId !== 'dock' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'codex'
         || after.expanded !== 'true' || after.hidden !== 'false') {
         fails.push('RIGHT RAIL GAP: real root-gap pointer dismissed or desynchronized the active panel: '
           + JSON.stringify({ before, receipt, after }));
@@ -6694,7 +6705,7 @@ try {
   if (await openDesktopRailPanel('dockrecords', 'rec', 'LEFT RAIL GAP')) {
     const before = await evalIn(leftGap);
     if (!before.geometry || before.cardOpen || before.panelOpen !== 'rec') {
-      fails.push('LEFT RAIL GAP: symmetric 8px root-owned geometry was not established: ' + JSON.stringify(before));
+      fails.push('LEFT RAIL GAP: current launcher left 6px root-owned geometry was not established: ' + JSON.stringify(before));
     } else {
       await armDesktopPointerReceipt();
       await clickDesktopPoint(before.point);
@@ -6702,7 +6713,7 @@ try {
       const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('dockrecords'),
         panel=document.getElementById('recpanel');return {panelOpen:s.panelOpen,expanded:button?.getAttribute('aria-expanded'),
           hidden:panel?.getAttribute('aria-hidden')};})()`);
-      if (!before.boundary || receipt?.targetId !== 'raillft' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'rec'
+      if (!before.boundary || receipt?.targetId !== 'dock' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'rec'
         || after.expanded !== 'true' || after.hidden !== 'false') {
         fails.push('LEFT RAIL GAP: real root-gap pointer dismissed or desynchronized the active panel: '
           + JSON.stringify({ before, receipt, after }));
@@ -6733,10 +6744,10 @@ try {
     if (after !== null) await closeDesktopPanel();
   };
   await railBoundaryRemovalControl({
-    railId: 'railrgt', gapCheck: rightGap, buttonId: 'railcodex', panelId: 'codex', label: 'RIGHT RAIL BOUNDARY',
+    railId: 'dock', gapCheck: rightGap, buttonId: 'dockcodex', panelId: 'codex', label: 'RIGHT RAIL BOUNDARY',
   });
   await railBoundaryRemovalControl({
-    railId: 'raillft', gapCheck: leftGap, buttonId: 'dockrecords', panelId: 'rec', label: 'LEFT RAIL BOUNDARY',
+    railId: 'dock', gapCheck: leftGap, buttonId: 'dockrecords', panelId: 'rec', label: 'LEFT RAIL BOUNDARY',
   });
 
   /* Delegated document listeners are public event boundaries: a synthetic
@@ -6759,7 +6770,7 @@ try {
      repair. It is interactive glass, but it is not one of the declared panel
      boundaries: a broad `.glass` or top-chrome exemption would silently
      change focus/Escape behavior while fixing the rail. */
-  if (await openDesktopRailPanel('railcodex', 'codex', 'SEARCH OUTSIDE DISMISS')) {
+  if (await openDesktopRailPanel('dockcodex', 'codex', 'SEARCH OUTSIDE DISMISS')) {
     const searchPoint = await evalIn(`(()=>{ const input=document.getElementById('searchbox'),rect=input?.getBoundingClientRect(),
       x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0,hit=rect?document.elementFromPoint(x,y):null;
       return {ok:!!input&&!!rect&&rect.width>0&&rect.height>0&&hit===input&&input.closest('[data-panel-boundary]')===null,x,y};})()`);
@@ -10370,7 +10381,7 @@ try {
     fails.push('SAVED ROUTE AUTHORIZATION: persisted repair changed more than the view/normal export projection: '
       + JSON.stringify(outerAuthRepairedRaw));
   }
-  await evalIn(`document.getElementById('railatlas')?.click()`);
+  await evalIn(`document.getElementById('dockatlas')?.click()`);
   const outerAtlasSetup = {
     target: await evalIn(atlasTravelTargetExpression('outer-galaxy')),
     before: await evalIn(`window.__CF_SLICE__.api.state()`),
@@ -12181,9 +12192,9 @@ try {
           { alreadyReported: true });
       }
 
-      /* Inventory is intentionally a tall right-aligned panel. Once open it
-         overlaps the rail beneath it, so switching to Atlas must first use
-         the player's real 44px Close—not a synthetic panel-manager call. */
+      /* Preserve the planned real Inventory Close before the Atlas switch,
+         including exact focus restoration to the shelf opener. The following
+         Atlas press uses its actual launcher control. */
       const inventoryClosePoint = await evalIn(`(()=>{const button=document.querySelector('#inventorypanel > [data-pnx="inventory"]'),
         r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
         hit=r?document.elementFromPoint(x,y):null;return {ok:!!button&&!!r&&r.width>=44&&r.height>=44
@@ -12215,7 +12226,7 @@ try {
           { alreadyReported: true });
       }
 
-      const atlasPreClick = await evalIn(railButtonPoint('railatlas'));
+      const atlasPreClick = await evalIn(railButtonPoint('dockatlas'));
       await armDesktopPointerReceipt();
       if (atlasPreClick.ok) await clickDesktopPoint(atlasPreClick);
       const atlasOpened = atlasPreClick.ok
@@ -12223,9 +12234,9 @@ try {
           .catch(() => false)
         : false;
       if (!atlasPreClick.ok) {
-        fails.push(`ARC 2 INVENTORY ATLAS CONTINUITY: visible rail opener was not browser-mouse hittable: ${JSON.stringify(atlasPreClick)}`);
+        fails.push(`ARC 2 INVENTORY ATLAS CONTINUITY: visible launcher opener was not browser-mouse hittable: ${JSON.stringify(atlasPreClick)}`);
       } else if (!atlasOpened) {
-        fails.push('ARC 2 INVENTORY ATLAS CONTINUITY: browser-mouse rail opener did not open atlas');
+        fails.push('ARC 2 INVENTORY ATLAS CONTINUITY: browser-mouse launcher opener did not open atlas');
       }
       const atlasPointer = await takeDesktopPointerReceipt();
       if (!atlasPreClick.ok || !atlasOpened) {
@@ -12352,9 +12363,9 @@ try {
             surface.inventoryClose.settled.diagnostics.selectedInstanceId = inventoryPendingInstanceId;
           }),
           atlasPreClickOk: reloadSurfaceControl((surface) => { surface.atlasPreClick.ok = false; }),
-          atlasPreClickOwner: reloadSurfaceControl((surface) => { surface.atlasPreClick.targetId = 'inventorypanel'; }),
+          atlasPreClickOwner: reloadSurfaceControl((surface) => { surface.atlasPreClick.buttonId = 'inventorypanel'; }),
           atlasPreClickCoordinate: reloadSurfaceControl((surface) => { surface.atlasPreClick.x = null; }),
-          atlasPointerOwner: reloadSurfaceControl((surface) => { surface.atlasPointer.targetId = 'inventorypanel'; }),
+          atlasPointerOwner: reloadSurfaceControl((surface) => { surface.atlasPointer.buttonId = 'inventorypanel'; }),
           atlasPointerTrust: reloadSurfaceControl((surface) => { surface.atlasPointer.trusted = false; }),
           atlasPointerType: reloadSurfaceControl((surface) => { surface.atlasPointer.pointerType = 'touch'; }),
           atlasPointerCoordinate: reloadSurfaceControl((surface) => { surface.atlasPointer.x += 2; }),
@@ -12511,7 +12522,7 @@ try {
   };
   const openEngineeringPanel = async (label) => {
     await armDesktopPointerReceipt();
-    const opened = await openDesktopRailPanel('railshipyard', 'shipyard', label);
+    const opened = await openDesktopRailPanel('dockshipyard', 'shipyard', label);
     const pointer = await takeDesktopPointerReceipt();
     return { opened, pointer };
   };
@@ -12528,7 +12539,7 @@ try {
   };
   const arc3SurveyLifecycleSurface = async () => evalIn(`(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
     survey=document.getElementById('survey'),dock=document.getElementById('docksurvey'),
-    rail=document.getElementById('railrgt'),shipyard=document.getElementById('railshipyard'),
+    rail=document.getElementById('dock'),shipyard=document.getElementById('dockshipyard'),
     surveyStyle=survey?getComputedStyle(survey):null,railStyle=rail?getComputedStyle(rail):null,
     shipyardStyle=shipyard?getComputedStyle(shipyard):null,railRect=rail?.getBoundingClientRect(),
     shipyardRect=shipyard?.getBoundingClientRect(),x=shipyardRect?(shipyardRect.left+shipyardRect.right)/2:NaN,
@@ -12546,7 +12557,8 @@ try {
         ariaControls:shipyard?.getAttribute('aria-controls')??null,
         ariaExpanded:shipyard?.getAttribute('aria-expanded')??null,display:shipyardStyle?.display??null,
         visibility:shipyardStyle?.visibility??null,rectCount:shipyard?.getClientRects().length??-1,
-        width:shipyardRect?.width??0,height:shipyardRect?.height??0,hit:hit?.id??null,x,y}}})()`);
+        width:shipyardRect?.width??0,height:shipyardRect?.height??0,hit:hit?.id??null,
+        buttonId:hit?.closest('button')?.id??null,buttonTag:hit?.closest('button')?.tagName??null,x,y}}})()`);
   const pressArc3SurveyLifecyclePointer = async (kind) => {
     const selector = kind === 'close' ? '#survey [data-survey-close]' : '#docksurvey';
     const armed = await evalIn(`(()=>{window.__cfArc3SurveyLifecycleAbort?.abort();
@@ -12604,7 +12616,8 @@ try {
       plate:{enabled:!button('fabricate','plate')?.disabled,model:button('fabricate','plate')?.getAttribute('data-model-enabled')},
       focus:document.activeElement===close?'close':document.activeElement?.getAttribute?.('data-focus-key')||null,diag}})()`);
   const engineeringSurfacePasses = (opening, surface) => opening?.opened === true
-    && opening?.pointer?.targetId === 'railshipyard' && opening?.pointer?.trusted === true
+    && opening?.pointer?.buttonId === 'dockshipyard' && opening?.pointer?.buttonTag === 'BUTTON'
+    && opening?.pointer?.trusted === true
     && opening?.pointer?.pointerType === 'mouse' && surface?.panelOpen === 'shipyard'
     && canonicalJson(surface?.research) === canonicalJson(ENGINEERING_RESEARCH_IDS)
     && canonicalJson(surface?.groups) === canonicalJson(ENGINEERING_RECIPE_GROUPS)
@@ -12668,7 +12681,7 @@ try {
   const minePendingUi = await evalIn(READ_ARC3_ENGINEERING_UI_EXPRESSION);
   const pendingClose = await closeEngineeringPanel('Arc 3 held Mine');
   const mineClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
-    opener=document.getElementById('railshipyard'),diag=S.api.shipyardDiagnostics();return {panelOpen:S.api.state().panelOpen,
+    opener=document.getElementById('dockshipyard'),diag=S.api.shipyardDiagnostics();return {panelOpen:S.api.state().panelOpen,
       focusId:document.activeElement?.id||null,expanded:opener?.getAttribute('aria-expanded')||null,
       bodyChildren:panel?.querySelector('[data-engineering-panel-body]')?.childElementCount??-1,diagnostics:diag}})()`);
   const pendingReopen = await openEngineeringPanel('ARC 3 HELD MINE REOPEN');
@@ -13196,9 +13209,9 @@ try {
   }
 
   /* The retained read-only card owns the right-hand glass until its real
-     Close settles. Prove that exact release before asking the existing rail
-     mouse path to reach Engineering; a direct card-open -> rail order is not
-     a reachable player interaction and must never be treated as evidence. */
+     Close settles. Preserve the planned Close -> Engineering lifecycle through
+     the native launcher; historical Rail-named carriers now record #dock.
+     A hidden legacy rail is never accepted as an actionable opener. */
   const biomePreRailBeforeState = biomePreOpenStateAfter;
   const biomePreRailBeforeRaw = biomePreOpenRawAfter;
   const biomePreRailClose = await pressArc3SurveyLifecyclePointer('close');
@@ -14210,7 +14223,7 @@ try {
       isolatesNamedCheck(assessment, biomeReloadStorageCloseExpectedCheck[name])
     ));
   if (!biomeReloadStorageCloseAssessment.ok || !biomeReloadStorageCloseControlsIsolated) {
-    failSliceWithoutCascade('ARC 3 RELOADED SURVEY/STORAGE LIFECYCLE: real trusted 44px Close did not release exact body/ARIA/dock/right-rail chrome with read-only route and durable authority: '
+    failSliceWithoutCascade('ARC 3 RELOADED SURVEY/STORAGE LIFECYCLE: real trusted 44px Close did not release exact body/ARIA/launcher chrome with read-only route and durable authority: '
       + JSON.stringify({ biomeReloadStorageClose, biomeReloadStorageCloseAssessment,
         biomeReloadStorageCloseControls, biomeReloadStorageCloseControlsIsolated,
         biomeReloadStorageCloseSurface }));
@@ -18828,7 +18841,7 @@ try {
   ) => {
     const state = await driver.evaluate('window.__CF_SLICE__.api.state()');
     if (state.panelOpen !== 'codex') {
-      await arc5FeedClick('#railcodex', `${label} Compendium opener`, driver);
+      await arc5FeedClick('#dockcodex', `${label} Compendium opener`, driver);
     } else {
       const diagnostics = await driver.evaluate(
         'window.__CF_SLICE__.api.compendiumDiagnostics()',
@@ -22680,7 +22693,7 @@ try {
      non-null ordinal/key receipt. */
   const atlasBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
   const dtrainAtlasId = `w|${ARC3_OTHER_WORLD_CONTROL_ADDRESS.key}`;
-  await evalIn(`document.getElementById('railatlas')?.click()`);
+  await evalIn(`document.getElementById('dockatlas')?.click()`);
   const atlasSetup = await evalIn(atlasTravelTargetExpression(dtrainAtlasId, { focus: true }));
   const atlasSetupAssessment = assessAtlasTravelTarget(atlasSetup, {
     atlasId: dtrainAtlasId, focus: true,
@@ -23194,7 +23207,7 @@ try {
     fails.push('COMPENDIUM QUERY CLEAR CONTROL FAILED — injected retained filter stayed green: '
       + JSON.stringify(codexClearCtl));
   }
-  await evalIn(`(()=>{ document.querySelector('#codexpanel [data-pnx]')?.click(); const opener=document.getElementById('railcodex');
+  await evalIn(`(()=>{ document.querySelector('#codexpanel [data-pnx]')?.click(); const opener=document.getElementById('dockcodex');
     opener.focus(); opener.click(); return true; })()`);
   const codexFullCheck = `(()=>{ const rows=[...document.querySelectorAll('#codexpanel [data-ci]')],heading=document.querySelector('#codexpanel h3');
     const text=heading?.textContent||''; return {count:rows.length,queryAbsent:!/Toruneeus|[“”]/.test(text),heading:text}; })()`;
@@ -23354,7 +23367,7 @@ try {
      the canvas. The row is intentionally a non-interactive DIV; a focusable
      span substituted for its exact Travel button and a 20px Travel button are
      deliberate controls. */
-  await evalIn(`(()=>{const opener=document.getElementById('railatlas');opener?.focus();opener?.click();return true})()`);
+  await evalIn(`(()=>{const opener=document.getElementById('dockatlas');opener?.focus();opener?.click();return true})()`);
   const atlasRow = await evalIn(atlasTravelTargetExpression('p133', { focus: true }));
   const atlasRowAssessment = assessAtlasTravelTarget(atlasRow, { atlasId: 'p133', focus: true });
   if (!atlasRowAssessment.ok) {
@@ -23478,7 +23491,7 @@ try {
       alreadyReported: true,
     });
   }
-  await evalIn(`(()=>{const opener=document.getElementById('railatlas');opener?.focus();opener?.click();return true})()`);
+  await evalIn(`(()=>{const opener=document.getElementById('dockatlas');opener?.focus();opener?.click();return true})()`);
   const atlasEnterSetup = await evalIn(atlasTravelTargetExpression('p133', { focus: true }));
   const atlasEnterSetupAssessment = assessAtlasTravelTarget(atlasEnterSetup, {
     atlasId: 'p133', focus: true,
@@ -24094,7 +24107,7 @@ try {
     }
     throw new Error(`${label} did not reach its lazy-art outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
-  await evalLazy(`(()=>{ const opener=document.getElementById('railcodex'); opener.focus(); return true; })()`);
+  await evalLazy(`(()=>{ const opener=document.getElementById('dockcodex'); opener.focus(); return true; })()`);
   await dispatchKeyPress(lazy, 'Enter', 'Enter');
   const lazyBefore = await waitLazy('slow Compendium keyboard open', `(()=>{ const S=window.__CF_SLICE__,d=S.api.compendiumDiagnostics(),
     close=document.querySelector('#codexpanel [data-pnx]'),scroller=document.querySelector('#codexpanel [data-sel="codex-scroll"]'),
@@ -24221,7 +24234,7 @@ try {
     lazyForegroundOwner = attachment;
     return Object.freeze({ expected, observation: last });
   };
-  await evalLazyClosed(`(()=>{const opener=document.getElementById('railcodex');opener.focus();return true})()`);
+  await evalLazyClosed(`(()=>{const opener=document.getElementById('dockcodex');opener.focus();return true})()`);
   await dispatchKeyPress(lazyClosed, 'Enter', 'Enter');
   const lazyClosedBefore = await waitLazyClosed('slow Compendium closed-owner open', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics(),
     close=document.querySelector('#codexpanel [data-pnx]'),images=[...document.querySelectorAll('#codexpanel [data-ci] img')];
@@ -24262,7 +24275,7 @@ try {
   if (!slowRequestObserved || !lazyBefore.placeholders || !lazyBefore.focus || !lazyBefore.group
     || !lazyBefore.nativePositions || lazyBefore.closeLabel !== 'Close Compendium'
     || !lazyClosedBefore.focus || lazyClosedArmed.mode !== 'closed' || lazyClosedArmed.listImages !== 0
-    || lazyClosedArmed.focus !== 'railcodex'
+    || lazyClosedArmed.focus !== 'dockcodex'
     || lazyClosedArmed.closedCompletionCommits !== lazyClosedBefore.closedCompletionCommits
     || lazyClosedArmed.renderCommits !== lazyClosedBefore.renderCommits) {
     fails.push('COMPENDIUM LAZY PLACEHOLDER/CLOSED OWNER: held chunk did not establish both exact owner states: '
@@ -24330,7 +24343,7 @@ try {
     fails.push('COMPENDIUM LAZY IN-PLACE READY: placeholder publication replaced identity/focus or missed exact 132px commits: '
       + JSON.stringify({ before: lazyBefore, after: lazyAfter }));
   }
-  const lazyFocusCtl = await evalLazy(`(()=>{ const close=document.querySelector('#codexpanel [data-pnx]'),other=document.getElementById('railcodex');
+  const lazyFocusCtl = await evalLazy(`(()=>{ const close=document.querySelector('#codexpanel [data-pnx]'),other=document.getElementById('dockcodex');
     other.focus(); const failed=document.activeElement!==close; close?.focus(); return {failed,restored:document.activeElement===close}; })()`);
   if (!lazyFocusCtl.failed || !lazyFocusCtl.restored) {
     fails.push('COMPENDIUM LAZY FOCUS CONTROL FAILED — moving focus off the refilled close stayed green: '
@@ -24371,7 +24384,7 @@ try {
     &&d.panel.renderCommits===${lazyClosedBefore.renderCommits}
     &&d.surfaces.list.imageCount===0&&d.lazyArt.state==='ready'
     &&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0
-    &&document.activeElement?.id==='railcodex'`;
+    &&document.activeElement?.id==='dockcodex'`;
   const lazyClosedSettlementTimeoutMs = 30000;
   const lazyClosedSettlementDeadline = performance.now() + lazyClosedSettlementTimeoutMs;
   const lazyClosedSettlementExpression = `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics(),
@@ -26214,11 +26227,11 @@ try {
     previousToken: panelImportToken,
   });
   await waitPanelValue('CHARTER PANEL REFRESH system + rail restore', `(()=>{ const s=window.__CF_SLICE__.api.state(),
-    rail=document.getElementById('railcharters'),r=rail?.getBoundingClientRect(),
+    rail=document.getElementById('dockcharters'),r=rail?.getBoundingClientRect(),
     x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null;
     return innerWidth===1280&&innerHeight===800&&s.mode==='system'&&s.star===424242&&s.panelOpen===null&&rail&&r.width>0&&r.height>=44
       &&getComputedStyle(rail).display!=='none'&&(hit===rail||rail.contains(hit))?{x,y,state:s}:null;})()`);
-  const railAction = await evalPanel(`(()=>{ const rail=document.getElementById('railcharters'),r=rail.getBoundingClientRect();
+  const railAction = await evalPanel(`(()=>{ const rail=document.getElementById('dockcharters'),r=rail.getBoundingClientRect();
     return {x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`);
   await send('Input.dispatchMouseEvent', {
     type: 'mousePressed', x: railAction.x, y: railAction.y, button: 'left', clickCount: 1,
@@ -28490,7 +28503,7 @@ try {
     return { target, pointer };
   };
   const openF4WritableShipyard = async (session, label) => {
-    const opening = await nativeControlClick(session, '#railshipyard,#dockshipyard');
+    const opening = await nativeControlClick(session, '#dockshipyard');
     try {
       const surface = await waitControlValue(
         session, label, READ_F4_SHIPYARD_AUTHORITY_EXPRESSION, 8000,
@@ -28517,13 +28530,13 @@ try {
   );
 
   const collisionRailCopiesHidden = (rows) => Array.isArray(rows) && rows.length === 2
-    && rows.every((row, index) => row?.id === ['railinventory', 'railrecords'][index]
-      && row.exists === true && row.parentId === 'railrgt' && row.display === 'none'
+    && rows.every((row, index) => row?.id === ['raillft', 'railrgt'][index]
+      && row.exists === true && row.parentTag === 'BODY' && row.display === 'none'
       && row.rectCount === 0 && row.width === 0 && row.height === 0 && row.painted === false);
-  const collisionRailCopiesExpression = `(()=>['railinventory','railrecords'].map((id)=>{
+  const collisionRailCopiesExpression = `(()=>['raillft','railrgt'].map((id)=>{
     const element=document.getElementById(id),style=element?getComputedStyle(element):null,
-      rect=element?.getBoundingClientRect();return {id,exists:element instanceof HTMLButtonElement,
-        parentId:element?.parentElement?.id??null,display:style?.display??null,
+      rect=element?.getBoundingClientRect();return {id,exists:element instanceof HTMLElement,
+        parentTag:element?.parentElement?.tagName??null,display:style?.display??null,
         rectCount:element?.getClientRects().length??null,width:rect?.width??null,height:rect?.height??null,
         painted:!!element&&style.display!=='none'&&style.visibility!=='hidden'&&rect.width>0&&rect.height>0};}))()`;
 
@@ -28557,11 +28570,11 @@ try {
   const collisionSetup = collisionFixtureReady.state;
   const collisionRailBaseline = await evalF4Control(collisionTarget.session, collisionRailCopiesExpression);
   if (!collisionRailCopiesHidden(collisionRailBaseline)) {
-    failSliceWithoutCascade('U1 RAIL DUPLICATES: relocated Inventory/Records copies remain painted: '
+    failSliceWithoutCascade('U1 RAIL DUPLICATES: legacy rail roots remain painted beside the unified launcher: '
       + JSON.stringify(collisionRailBaseline));
   }
   const collisionRailControls = [];
-  for (const id of ['railinventory', 'railrecords']) {
+  for (const id of ['raillft', 'railrgt']) {
     const control = await evalF4Control(collisionTarget.session, `(()=>{
       const element=document.getElementById(${JSON.stringify(id)}),
         priorStyle={present:element.hasAttribute('style'),value:element.getAttribute('style')};let shown;
@@ -28577,7 +28590,7 @@ try {
       || JSON.stringify(other) !== JSON.stringify(collisionRailBaseline.find((row) => row.id !== id))
       || control.styleRestored !== true || !collisionRailCopiesHidden(control.restored)
       || JSON.stringify(control.restored) !== JSON.stringify(collisionRailBaseline)) {
-      failSliceWithoutCascade('U1 RAIL DUPLICATES CONTROL: showing one copy was not rejected or exact restoration failed: '
+      failSliceWithoutCascade('U1 RAIL DUPLICATES CONTROL: showing one whole legacy rail was not rejected or exact restoration failed: '
         + JSON.stringify(control));
     }
     collisionRailControls.push(control);
@@ -28782,7 +28795,7 @@ try {
   };
   await closeCollisionSurveyForAtlas('initial open');
   const collisionAtlasOpening = await nativeControlClick(
-    collisionTarget.session, '#railatlas,#dockatlas',
+    collisionTarget.session, '#dockatlas',
   );
   const collisionAtlasOpeningAssessment = assessAtlasOpenerPress(collisionAtlasOpening);
   if (!collisionAtlasOpeningAssessment.ok) {
@@ -28805,7 +28818,7 @@ try {
     const world = COLLISION_REACH_WORLDS[index];
     if (index > 0) {
       await closeCollisionSurveyForAtlas(`reopen ${index}`);
-      const reopen = await nativeControlClick(collisionTarget.session, '#railatlas,#dockatlas');
+      const reopen = await nativeControlClick(collisionTarget.session, '#dockatlas');
       const reopenAssessment = assessAtlasOpenerPress(reopen);
       if (!reopenAssessment.ok) {
         failSliceWithoutCascade(`WORLD IDENTITY COLLISION ATLAS REOPEN ${index}: exact native opener receipt was red before Travel: `
