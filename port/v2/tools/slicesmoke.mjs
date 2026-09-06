@@ -5922,6 +5922,15 @@ try {
   /* 1d. THE GOLDEN-LAYOUT GEOMETRY CONTRACT (ui-main-desktop.png positions;
      uilayout.js discipline: measure the REAL boxes, then prove the checker
      can catch a moved element before trusting its pass). */
+  /* Closing Settings restores the height-bearing Objective. Let the native
+     font/layout/ResizeObserver cycle finish before comparing published
+     anchors with actual rectangles; never call an application sync method
+     or poll the geometry oracle until it happens to pass. */
+  const renderedChromeBoundary = `(async()=>{if(document.fonts)await document.fonts.ready;let frames=0;
+    await new Promise(resolve=>requestAnimationFrame(()=>{frames+=1;requestAnimationFrame(()=>{frames+=1;resolve();});}));
+    const topbar=document.getElementById('topbar'),box=topbar?.getBoundingClientRect();
+    return {frames,fontStatus:document.fonts?.status||'unavailable',topbarHeight:box?.height??null,
+      publishedTopbarHeight:parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'))};})()`;
   const geoCheck = `(()=>{ const W=innerWidth, H=innerHeight,compact=W<=700||(W<=900&&W>H);
     const r=(id)=>{ const el=typeof id==='string'?document.getElementById(id):id; if(!el) return null;
       const b=el.getBoundingClientRect(),cs=getComputedStyle(el); return { l:b.left, t:b.top, r:b.right, b:b.bottom,
@@ -5993,6 +6002,8 @@ try {
       if(!dock||Math.abs(dock.cx-W/2)>1)bad.push('compact dock not bottom-center');
     }
     return bad; })()`;
+  const desktopGeometryBoundary = await evalIn(renderedChromeBoundary);
+  console.log('GOLDEN LAYOUT RENDERED BOUNDARY: '+JSON.stringify(desktopGeometryBoundary));
   const geo = await evalIn(geoCheck);
   if (geo.length) fails.push('GOLDEN LAYOUT drift: ' + geo.join(' · '));
   /* The objective now flows inside the right header column. Translate its actual
@@ -24608,6 +24619,8 @@ try {
   }
   /* the phone golden: the FULL geometry contract runs here too — the
      player-chip/search overlap hid in a phone-only branch the first time */
+  const phoneGeometryBoundary = await evalPh(renderedChromeBoundary);
+  console.log('PHONE GOLDEN LAYOUT RENDERED BOUNDARY: '+JSON.stringify(phoneGeometryBoundary));
   const phGeo = await evalPh(geoCheck);
   if (phGeo.length) {
     failSliceWithoutCascade('PHONE GOLDEN LAYOUT drift: ' + phGeo.join(' · '));
@@ -24633,7 +24646,7 @@ try {
       const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,
         restored=styleRestored?${geoCheck}:['primechip owned style properties were not restored'];
       return {hidden,hiddenRestoration,overlap,restored,styleRestored,restoration,error};})()`);
-    if (!phonePrimeControls.hidden?.some((finding) => finding.includes('visible reachable phone button'))
+    if (!phonePrimeControls.hidden?.some((finding) => finding.startsWith('Prime pill is not a visible reachable native button'))
       || !phonePrimeControls.overlap?.includes('primechip overlaps hpbar')
       || !phonePrimeControls.hiddenRestoration?.ok
       || !phonePrimeControls.styleRestored || phonePrimeControls.error !== null

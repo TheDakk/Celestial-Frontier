@@ -1,0 +1,333 @@
+{
+  "schema": "cf-u1-production-layout-checkpoint/v1",
+  "source": "8ecc5a0b07b5ed196a3ea5a37511d2255e68cbed",
+  "status": "STOPPED",
+  "scope": "Local U1 revision, no hosted/full Glass/real-device/human approval claim.",
+  "results": {
+    "source": "8ecc5a0b07b5ed196a3ea5a37511d2255e68cbed",
+    "rootMainAbsent": true,
+    "checks": [
+      {
+        "name": "install",
+        "command": [
+          "npm",
+          "ci",
+          "--prefer-offline",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "startedAt": "2026-09-06T15:13:18.725062+00:00",
+        "endedAt": "2026-09-06T15:13:20.819944+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "startedAt": "2026-09-06T15:13:20.820593+00:00",
+        "endedAt": "2026-09-06T15:13:24.104851+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "artunused",
+        "command": [
+          "npm",
+          "run",
+          "artunused"
+        ],
+        "startedAt": "2026-09-06T15:13:24.105385+00:00",
+        "endedAt": "2026-09-06T15:13:25.793321+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "vitest",
+        "command": [
+          "npx",
+          "vitest",
+          "run"
+        ],
+        "startedAt": "2026-09-06T15:13:25.793695+00:00",
+        "endedAt": "2026-09-06T15:14:11.131150+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "glass-selftest",
+        "command": [
+          "node",
+          "tools/glassmatrix.mjs",
+          "--selftest"
+        ],
+        "startedAt": "2026-09-06T15:14:11.131731+00:00",
+        "endedAt": "2026-09-06T15:14:13.067298+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "normal-build",
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ],
+        "startedAt": "2026-09-06T15:14:13.067692+00:00",
+        "endedAt": "2026-09-06T15:14:15.267746+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "ui-review",
+        "command": [
+          "node",
+          "tools/ui-shell-review.mjs",
+          "/private/tmp/cf-u1-checkpoint-8ecc5a0/port/v2/apps/game/dist",
+          "/private/tmp/cf-u1-checks-8ecc5a0/review"
+        ],
+        "startedAt": "2026-09-06T15:14:15.268359+00:00",
+        "endedAt": "2026-09-06T15:14:35.801304+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "slice",
+        "command": [
+          "node",
+          "tools/smokereport.mjs",
+          "--profile=develop"
+        ],
+        "startedAt": "2026-09-06T15:14:35.801884+00:00",
+        "endedAt": "2026-09-06T15:18:31.785314+00:00",
+        "exitCode": 1
+      }
+    ]
+  },
+  "slice": {
+    "runId": "20260906151437452-9603-cfc08d49b5bd",
+    "status": "fail",
+    "durationMs": 234308
+  },
+  "glass": [],
+  "review": {
+    "status": "PASS",
+    "rows": [
+      {
+        "name": "phone",
+        "pass": true
+      },
+      {
+        "name": "desktop",
+        "pass": true
+      },
+      {
+        "name": "tablet",
+        "pass": true
+      }
+    ],
+    "images": 9,
+    "failure": null
+  },
+  "files": [
+    {
+      "file": "install.log.gz",
+      "bytes": 178,
+      "sha256": "55d839bb353a982076ae477da0687bb5e410e0336640a4a8e1e8cfe33942ba3c",
+      "originalBytes": 332,
+      "originalSha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de"
+    },
+    {
+      "file": "typecheck.log.gz",
+      "bytes": 99,
+      "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
+      "originalBytes": 134,
+      "originalSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "file": "artunused.log.gz",
+      "bytes": 70,
+      "sha256": "876709bbe6c507f5d7e821ad1dfbda92aa8c5cced4bfc03ea9924afec72a21c2",
+      "originalBytes": 58,
+      "originalSha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "file": "vitest.log.gz",
+      "bytes": 2174,
+      "sha256": "0a58fe28d190f805ad1e241981d5d51487fb9990f76cb38f667f506715ff018c",
+      "originalBytes": 5815,
+      "originalSha256": "b25f8ce6226119bd46b107a19af72dd8226e214c4c4f83b031a2c122404dad25"
+    },
+    {
+      "file": "glass-selftest.log.gz",
+      "bytes": 557,
+      "sha256": "0934004f4289bdc8411b08aad1f719dd3c0dc680ec7b0bc815187393b563f0c0",
+      "originalBytes": 909,
+      "originalSha256": "c8f8ecabf4fa8c386cf0a6474708e6644549228bbf468849c97d5bfaca6ce067"
+    },
+    {
+      "file": "normal-build.log.gz",
+      "bytes": 1873,
+      "sha256": "3eb67881a21082141ee0c9eece901c79d5918f9fe3be8f4b5a4ffa3ac0a8e31e",
+      "originalBytes": 5281,
+      "originalSha256": "10d20638fe814793d5156ffb32bdbe6cb90992ca873fd756f48dd3a3bfbd7d88"
+    },
+    {
+      "file": "ui-review.log.gz",
+      "bytes": 103,
+      "sha256": "9fc1e26e21aeec94f257b7499ec92d7ea0a808183e0fede214119d1d99381d8b",
+      "originalBytes": 85,
+      "originalSha256": "8c29de57755837fb8121b2682cfa28268ed1206c22639bba97ae27e1e4dbefa0"
+    },
+    {
+      "file": "slice.log.gz",
+      "bytes": 506,
+      "sha256": "13a79b9c005851fc21f2f3317982e7b87ccc1d3047663320466cc114b44dd2ec",
+      "originalBytes": 1282,
+      "originalSha256": "56443e8fa257525fdfdc676d6f93c90d38be9d74db2383ec23b867eb7c03e9b9"
+    },
+    {
+      "file": "results.json.gz",
+      "bytes": 556,
+      "sha256": "723b1fa5571ca4ab23e72d40ac2f776cfa66fd8bcaad9ac890806c00d44a4200",
+      "originalBytes": 2285,
+      "originalSha256": "939db86843f07eb68f6d064f11ef0f71c35c73c09c2bbc4740fded4162484ba7"
+    },
+    {
+      "file": "review.json.gz",
+      "bytes": 139570,
+      "sha256": "a0bc9e0a0057b2793e9abb69e0a30f332debf24280eaf1879413fc41b26f164f",
+      "originalBytes": 7131823,
+      "originalSha256": "921a4cc61048e9c63096c7f510cee37e3d558828985f080d3d6decfdcc5eb790"
+    },
+    {
+      "file": "u1-main-desktop-comparison.png",
+      "bytes": 1161196,
+      "sha256": "d33e3eb03de6dc964af3b5696e9131e24f847ed6f0ceac21dc01d92f48b2e02a",
+      "originalBytes": 1161196,
+      "originalSha256": "d33e3eb03de6dc964af3b5696e9131e24f847ed6f0ceac21dc01d92f48b2e02a"
+    },
+    {
+      "file": "u1-main-desktop.png",
+      "bytes": 258573,
+      "sha256": "86f633bfbaa681337ee5bfd25f7c84f91c63d129a76d61e249a564c929353f73",
+      "originalBytes": 258573,
+      "originalSha256": "86f633bfbaa681337ee5bfd25f7c84f91c63d129a76d61e249a564c929353f73"
+    },
+    {
+      "file": "u1-main-phone-comparison.png",
+      "bytes": 598764,
+      "sha256": "52a8ab11aa48d9ece096adae5329a5781205f9e5d27810e2107c2c3a38324f7f",
+      "originalBytes": 598764,
+      "originalSha256": "52a8ab11aa48d9ece096adae5329a5781205f9e5d27810e2107c2c3a38324f7f"
+    },
+    {
+      "file": "u1-main-phone.png",
+      "bytes": 175596,
+      "sha256": "788b52553bb2fae95292306eecc4419a2f34187a1602ea2b46f27edc6894a8cd",
+      "originalBytes": 175596,
+      "originalSha256": "788b52553bb2fae95292306eecc4419a2f34187a1602ea2b46f27edc6894a8cd"
+    },
+    {
+      "file": "u1-main-tablet-comparison.png",
+      "bytes": 923392,
+      "sha256": "1408e1b33a41f3b47c3d210d2a2ceb0f94f7961afa321f23ea867051472fb55f",
+      "originalBytes": 923392,
+      "originalSha256": "1408e1b33a41f3b47c3d210d2a2ceb0f94f7961afa321f23ea867051472fb55f"
+    },
+    {
+      "file": "u1-main-tablet.png",
+      "bytes": 212491,
+      "sha256": "a7708724dbb2a2a0c7193a5eee78919d7be9be22254ec2bd6bd05551fdfd38ab",
+      "originalBytes": 212491,
+      "originalSha256": "a7708724dbb2a2a0c7193a5eee78919d7be9be22254ec2bd6bd05551fdfd38ab"
+    },
+    {
+      "file": "u1-notifications-desktop.png",
+      "bytes": 287849,
+      "sha256": "592de14a16b81b83cf713772689af636f9c78d9ddff64d03e464a1d87a02196b",
+      "originalBytes": 287849,
+      "originalSha256": "592de14a16b81b83cf713772689af636f9c78d9ddff64d03e464a1d87a02196b"
+    },
+    {
+      "file": "u1-notifications-phone.png",
+      "bytes": 180522,
+      "sha256": "f87a712c3829233f38ba6c83b92dea9775c69fe7fe7d84dd3e8aa5a275a9ce8f",
+      "originalBytes": 180522,
+      "originalSha256": "f87a712c3829233f38ba6c83b92dea9775c69fe7fe7d84dd3e8aa5a275a9ce8f"
+    },
+    {
+      "file": "u1-notifications-tablet.png",
+      "bytes": 232717,
+      "sha256": "b4cdc2bd761cd547a3fe1875728f0921b81e1c63ba4e6e27f4ff14eb430d2273",
+      "originalBytes": 232717,
+      "originalSha256": "b4cdc2bd761cd547a3fe1875728f0921b81e1c63ba4e6e27f4ff14eb430d2273"
+    },
+    {
+      "file": "slice-20260906151437452-9603-cfc08d49b5bd-codex.png",
+      "bytes": 619666,
+      "sha256": "3059c723ac76c08996ebb496ff7d8d2b7f355c25c97ed64966c3d89aed514be1",
+      "originalBytes": 619666,
+      "originalSha256": "3059c723ac76c08996ebb496ff7d8d2b7f355c25c97ed64966c3d89aed514be1"
+    },
+    {
+      "file": "slice-20260906151437452-9603-cfc08d49b5bd-earth.png",
+      "bytes": 590231,
+      "sha256": "3c394eaa793a9f352c7d44577d6cc9df28f62f88448e6e7578c763b0b704fda1",
+      "originalBytes": 590231,
+      "originalSha256": "3c394eaa793a9f352c7d44577d6cc9df28f62f88448e6e7578c763b0b704fda1"
+    },
+    {
+      "file": "slice-20260906151437452-9603-cfc08d49b5bd-galaxy.png",
+      "bytes": 575049,
+      "sha256": "ea7e101d97c1742fce3c487c6b06850121b43aea8cd16a000dc6f69f52136b08",
+      "originalBytes": 575049,
+      "originalSha256": "ea7e101d97c1742fce3c487c6b06850121b43aea8cd16a000dc6f69f52136b08"
+    },
+    {
+      "file": "slice-20260906151437452-9603-cfc08d49b5bd-guide.png",
+      "bytes": 307913,
+      "sha256": "ff62b65543508f42bc86a10fc827cc8d5779175d79ed260e76f02a43b46e7ffb",
+      "originalBytes": 307913,
+      "originalSha256": "ff62b65543508f42bc86a10fc827cc8d5779175d79ed260e76f02a43b46e7ffb"
+    },
+    {
+      "file": "slice-20260906151437452-9603-cfc08d49b5bd-settings.png",
+      "bytes": 287517,
+      "sha256": "4fb94ddf69c3dd4566e12121b999f4f0f7e12501a1d43e209b39070039b3c7c7",
+      "originalBytes": 287517,
+      "originalSha256": "4fb94ddf69c3dd4566e12121b999f4f0f7e12501a1d43e209b39070039b3c7c7"
+    },
+    {
+      "file": "slice-20260906151437452-9603-cfc08d49b5bd-sol.png",
+      "bytes": 222290,
+      "sha256": "95f30cc1306cce2a3f812b2400b240c6fd2d84f0c54bd385ed0daf2592e6a831",
+      "originalBytes": 222290,
+      "originalSha256": "95f30cc1306cce2a3f812b2400b240c6fd2d84f0c54bd385ed0daf2592e6a831"
+    },
+    {
+      "file": "slice-20260906151437452-9603-cfc08d49b5bd-solmark.png",
+      "bytes": 395951,
+      "sha256": "1fe72e40724e3d82457e456e3196afab80ef24a9d1068f8feb8ae38baed59d61",
+      "originalBytes": 395951,
+      "originalSha256": "1fe72e40724e3d82457e456e3196afab80ef24a9d1068f8feb8ae38baed59d61"
+    },
+    {
+      "file": "slice-20260906151437452-9603-cfc08d49b5bd-universe.png",
+      "bytes": 367915,
+      "sha256": "9ce232772d4eae9f2f0dd53f3b4f13a659df8772188f1bfa4bb8fe6bec014eae",
+      "originalBytes": 367915,
+      "originalSha256": "9ce232772d4eae9f2f0dd53f3b4f13a659df8772188f1bfa4bb8fe6bec014eae"
+    },
+    {
+      "file": "slice-smoke-20260906151437452-9603-cfc08d49b5bd.json.gz",
+      "bytes": 2528,
+      "sha256": "d2c6880e01d8fa527ddd505d8c02c2a5b0199d31d77528903b7be91bdfc6ebd0",
+      "originalBytes": 12341,
+      "originalSha256": "ed976aaa6b270a4dab386c2231117f7a4ab8919de0684cbb4fa0db2592b33b7a"
+    },
+    {
+      "file": "slice-smoke-20260906151437452-9603-cfc08d49b5bd.log.gz",
+      "bytes": 2770,
+      "sha256": "94f625fe6147f558199ba9c30ec2563ac21bc98a6d204e08025ca71c0db0a7bd",
+      "originalBytes": 8487,
+      "originalSha256": "19499ad1953b20c2f9237754c495ea5570edecdaf318eb07bf2dd6d91b9ae2df"
+    }
+  ]
+}

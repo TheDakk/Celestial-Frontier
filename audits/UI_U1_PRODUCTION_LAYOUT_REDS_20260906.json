@@ -9,6 +9,17 @@
       "correction": "Restore min-height:var(--cf-touch-target) in the board base rule. No metric or assertion change.",
       "laterStages": "Not run; stopped at first red",
       "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_852c496_20260906/manifest.json"
+    },
+    {
+      "source": "8ecc5a0b07b5ed196a3ea5a37511d2255e68cbed",
+      "stage": "slice core-flow golden layout",
+      "runId": "20260906151437452-9603-cfc08d49b5bd",
+      "priorStages": "Typecheck,artunused,311files/3317tests/1skip,Glass selftest,normalbuild,three-viewreview9images/63trustedinputs PASS",
+      "result": "Both native rails top122 while current header bottom131.4375; observed rail target44 and gap8 otherwise correct.",
+      "cause": "Initial geometry sample immediately follows native Settings close in same task; Objective returns to header before ResizeObserver updates published114px height. Normal review consumes render frames and passed. Bounded diagnosis/correction pending.",
+      "laterStages": "Two phone Glass rows not run after Slice red",
+      "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_8ecc5a0_20260906/manifest.json",
+      "correction": "Await document.fonts.ready and two real animation frames before desktop/phone geometry samples; log actual/published header heights. No app sync or polling to green. Stale anchored controls still fail the same1px oracle. Align hidden Prime negative-control prefix to its existing current failure. Focused29PASS; initial stale source-extraction fixture endpoint red retained."
     }
   ]
 }
