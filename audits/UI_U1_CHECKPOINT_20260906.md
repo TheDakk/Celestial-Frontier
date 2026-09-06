@@ -97,3 +97,13 @@ uses one label/count line to keep the default dock92px. The normal-game review n
 Cosmos through actual Escape presses and captures native Notifications open/Close/focus too.
 Latest producer `6b9f100f4502f6a371f1c670cf98dac686bc5d6b69ef0f273027ffbf26f6cbd1`; sealed Compendium measurement MATCH.
 All previous red evidence is retained. Successor verification has not yet run.
+
+## Instrument correction —b08f8ac
+
+Fresh static sequence:310files/3,258testsPASS/1skip, typecheck/artunused/GlassselftestPASS.
+Slice's earlier product/history checks passed. Its sole remaining finding was the Prime
+HP-collision negative control: a transformed dock becomes the containing block for fixed
+children, so viewport coordinates did not create the intended collision. The control now
+translates from actual painted Prime/HP rectangles and retains the existing required overlap
+and exact-restoration assertions. No product change or producer movement in this correction.
+Red log is retained in `UI_U1_SLICE_RED_b08f8ac_20260906.log.gz`; later gates were not run.
