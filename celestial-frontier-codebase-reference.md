@@ -26,10 +26,12 @@ Bottom guidance is plain text. Caption/hint geometry, compact short-landscape ex
 safety deviations from production and the honest injected floating-trail negative control.
 Native panel/Training action/focus owners remain; passive layout wrappers pass canvas input.
 `notification-history.ts` retains explicit saved Mark read on the existing notification shape
-and UI checkpoint whitelist. The compact-control correction awaits verification and visual review;
-Survey-only phone placement is Codex's stated default, not a new explicit approval for both shortcuts.
-The navigation blocker remains OPEN. U2–U4 and Phase2 remain unstarted; integrated-pilot approval
-remains open.
+and UI checkpoint whitelist. The compact-control correction passed static checks/build, but its
+normal review stopped INSTRUMENT RED during phone portrait restoration; visual approval is pending.
+Exact tested source, partial phone evidence and unrun stages are in
+`audits/UI_U1_COMPACT_CONTROLS_20260906.md`. Survey-only phone placement is Codex's stated default,
+not a new explicit approval for both shortcuts. The navigation blocker remains OPEN and unattributed.
+U2–U4 and Phase2 remain unstarted; integrated-pilot approval remains open.
 
 U1 review instrumentation (2026-09-06) now records public viewport/resize facts and
 auto-resumed trail-writer stacks between intentional controls. It does not read camera/travel
