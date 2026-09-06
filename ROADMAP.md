@@ -31,27 +31,40 @@ Nick authorized the production-review refinements and stressed tighter, uniform 
 meaningful color coding and accessible clickable windows. Current candidate: compact Inter
 study and native window styling; improved eligible Scout inside Shipyard; exact-request-bound
 rainy Earth landscape with current-art fallback; bounded pilot controls. Native action/focus/
-Close/scroll owners remain. The bottom dock keeps its existing structure. No Phase2 chrome work.
+Close/scroll owners remain. The bottom dock keeps its existing structure. No Phase 2 chrome work.
 
 `audits/AAA_PILOT_REFINEMENT_20260905.md` and companion JSON own source, hashes, results and
 limitations. Current references agree in ART_DIRECTION, UI_PRESENTATION, codebase-reference,
 FONT-LICENSES and port/v2/README. Source masters stay private, hashed and independently backed
 up only after a forced cloud evict/download read-back; earlier bundles stay immutable.
 
-FINAL_HANDOFF_RESULTS_PENDING
+Final verified source `1b208c7fe5b47aefee811ad84b486d5ef7fa106a`: exact tracked-input develop PASS: 308 files/3,239 tests/1 skipped;
+root main.js absent. Root validator50 deterministic probes/1,010 renders; policy81 controls PASS.
+The local test-fixture typing red and signed correction are retained in the REDS JSON. Later
+Atlas count/heading spacing corrections were verified on their changed signed sources.
+Full browser diagnostic:48 protected conditions,9 native panel paths,3 short-control layouts;
+final source also passes live Atlas spacing negative control, mono/max-contrast and Close/focus.
+No physical-phone or complete Glass certificate is implied. Final runtime pack17,004,117B/128 MiB.
+Source preservation CLOSED:102 iCloud files forced-evicted/downloaded and hash-verified; originals
+immutable. Current private backup destination mapping/receipts are durable; see backupJSON.
+
+Delivery: `http://127.0.0.1:4183/?avpilot=1` (playable) and
+`http://127.0.0.1:4183/audiovisual-pilot.html` (study). The serving build is this verified source;
+final documentation-only successors do not change its product bytes. Branch publication is
+recorded by the final documentation commit and remote branch head, avoiding a self-referentialSHA.
 
 Galaxy graphics remain unchanged in this audiovisual pass. All eight anatomical families remain
 INCOMPLETE at132/300/440; protected static portraits and their actual identity remain intact.
 Earth uses unchanged simplified native vista residents, not completed creature anatomy.
 Eight existing audio candidates are retained; no new REAPER/UI run. Human visual/listening,
-physical iPhone/Safari/PWA and256MiB retained-update enforcement remain open. The Scout has a
-disclosed0.238px base-bevel outline limit; the strict asset diagnostic is retained red. No claim
+physical iPhone/Safari/PWA and256 MiB retained-update enforcement remain open. The Scout has a
+disclosed0.238 px base-bevel outline limit; the strict asset diagnostic is retained red. No claim
 of visual approval follows from technical checks. See AAA_GAP_AUDIT/AAA_COVERAGE_LEDGER.
 
 ### Paired next steps
 
 - **Codex:** present this bounded pilot and stop for Nick's integrated direction review. No
-  Phase2 or galaxy/creature production expansion follows without that decision. Later review
+  Phase 2 or galaxy/creature production expansion follows without that decision. Later review
   integration is a separately authorized bounded openai/review-* branch to develop, never main.
 - **Claude:** if Nick requests, review the pushed exact source, diagnostic captures and open
   limits. No app switch, synchronization, PR/label/hosted attempt or merge is required now.

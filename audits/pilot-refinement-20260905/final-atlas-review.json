@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "certification": false,
+  "rows": [
+    {
+      "control": "heading and count separated",
+      "gap": 6
+    },
+    {
+      "control": "real filter label/count spacing and targets",
+      "client": 291,
+      "scroll": 291,
+      "filters": [
+        {
+          "label": "All 0, 0 places",
+          "gap": 6,
+          "height": 44
+        },
+        {
+          "label": "Favorites 0, 0 places",
+          "gap": 6,
+          "height": 44
+        },
+        {
+          "label": "Visited 0, 0 places",
+          "gap": 6,
+          "height": 44
+        },
+        {
+          "label": "Conquered 0, 0 places",
+          "gap": 6,
+          "height": 44
+        },
+        {
+          "label": "Life 0, 0 places",
+          "gap": 6,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "control": "live zero-gap negative control rejected then restored",
+      "pass": true
+    },
+    {
+      "control": "existing mono/max-contrast choices retained",
+      "font": "ui-monospace, \"SF Mono\", Menlo, Consolas, monospace",
+      "ink": "rgb(255, 255, 255)"
+    },
+    {
+      "control": "native Close and opener focus",
+      "width": 44,
+      "height": 44,
+      "owned": true
+    }
+  ],
+  "errors": [],
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/152.0.4191.62",
+    "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "jsVersion": "15.2.23.8"
+  },
+  "image": {
+    "path": "atlas-320-xl-final.png",
+    "bytes": 90403,
+    "sha256": "26f682edd52ffccf5b6aebe0c225f5cba2d6b264df4a170b64c3463fe400e337"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "cf-pilot-refinement-backup/v1",
+  "status": "VERIFIED",
+  "destinationKind": "iCloud Drive",
+  "selectedTopFolder": "Files/Celestial Frontier Backups",
+  "container": "cf-pilot-refinement-sources-20260905",
+  "preparation": {
+    "schema": "cf-pilot-refinement-backup-preparation/v1",
+    "prepared_utc": "2026-09-06T02:44:44.643266+00:00",
+    "logical_bundle_id": "cf-pilot-refinement-sources-20260905",
+    "source_original_files": 98,
+    "source_original_bytes": 15197421,
+    "durable_files": 100,
+    "durable_bytes": 15233875,
+    "archive": {
+      "path": "cf-pilot-refinement-sources-20260905.tar",
+      "bytes": 15319040,
+      "sha256": "62ebf683625f0b40ed5dcd0cf151855d76812b8589590ad003b5dcd87943e6c4",
+      "mtime_ns": 1788662684613718464
+    },
+    "archive_format": "Deterministic sorted ustar; regular files only; mode0644 uid/gid0 namesempty mtime0; no AppleDouble/PAX",
+    "checksum_file": {
+      "path": "SHA256SUMS",
+      "bytes": 13501,
+      "sha256": "1286a192b91b9391bcd606d69bb7d973d1fb6fe7b05718f773e63106fdad0006",
+      "mtime_ns": 1788662684632129851
+    },
+    "checksum_entries": 101,
+    "package_files": 102,
+    "package_bytes": 30566416,
+    "source_originals_unchanged": true
+  },
+  "verification": {
+    "started_utc": "2026-09-06T02:47:17.665385+00:00",
+    "verified_utc": "2026-09-06T02:47:18.330628+00:00",
+    "result": "PASS \u2014 forced iCloud eviction/download and checksum read-back",
+    "source_originals_verified": 98,
+    "durable_originals_verified": 98,
+    "restored_package_files_verified": 102,
+    "shasum_exit_code": 0,
+    "checksum_successes": 101,
+    "checksum_file_sha256": "1286a192b91b9391bcd606d69bb7d973d1fb6fe7b05718f773e63106fdad0006",
+    "archive_sha256": "62ebf683625f0b40ed5dcd0cf151855d76812b8589590ad003b5dcd87943e6c4",
+    "current_files": 102,
+    "allocated_files": 102,
+    "pre_hash_status_log": "icloud-pre-hash-20260906T024717662029Z.log",
+    "post_hash_status_log": "icloud-post-hash-20260906T024718315383Z.log",
+    "privacy": "No UI, screenshots, accessibility or OneDrive operation",
+    "logical_bundle_id": "cf-pilot-refinement-sources-20260905",
+    "negative_control": {
+      "method": "one-byte-truncated scratch-only restore note, same checksum verifier",
+      "exit_code": 1,
+      "failed_as_expected": true,
+      "source_and_cloud_untouched": true
+    }
+  },
+  "nativeStatus": "102 uploaded before eviction;102 dataless/zero-block after eviction;102 Current/materialized after download and hashes",
+  "oneDrive": "Previously unresponsive; not retried in this refinement",
+  "localDurableReceipts": {
+    "schema": "cf-refinement-receipt-preservation/v1",
+    "state": "COMPLETE_LOCAL_DURABLE_RECEIPTS",
+    "folder_relative_name": "pilot-refinement-backup-evidence-20260905",
+    "index_relative_name": "private-backup-receipt.json",
+    "index_bytes": 9491,
+    "index_sha256": "93fff1e74450e1406e3d79385e1bab0a42d404fdd527334990c9b8e2528db2a8",
+    "copied_evidence_files": 29,
+    "copied_evidence_bytes": 394515,
+    "extra_receipts_independent_backup": "not claimed",
+    "immutable_source_package_unchanged": true,
+    "cloud_operations": 0
+  },
+  "editableOriginalsUnchanged": true
+}
