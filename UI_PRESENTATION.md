@@ -1,5 +1,10 @@
 # Celestial Frontier — UI / Presentation System
 
+U1 layout correction (2026-09-06): the existing body-class observer republishes the final
+header height after a same-task Settings open/change/close transition, keeping the rails below
+Search/Objective even when ResizeObserver sees no net size change. Restored visible rail
+controls declare their native button type explicitly.
+
 ## V2 presentation system — U1, matches code as of 2026-09-06
 
 The normal v2 shell uses the actual production v1.8.9 CSS as its layout reference, adapted
