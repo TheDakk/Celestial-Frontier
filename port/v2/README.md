@@ -1,5 +1,12 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+## UI tool setup — 2026-09-05 local
+
+`@cf/game` now pins GSAP 3.15.0 for future approved UI animation. It is installed but not imported
+into the current pilot. Inkscape 1.4.4 is available on the Codex Mac through its CLI. Setup commands,
+headless limitations, verification, costs and browser/Steam direction live in [UI_TOOLCHAIN.md](../../UI_TOOLCHAIN.md).
+
+
 ## Opt-in audiovisual pilot — 2026-09-05 local
 
 Matches the scoped Phase 1 implementation as of **2026-09-05 local**. From `port/v2`:
