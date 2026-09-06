@@ -20,8 +20,8 @@ the archive verbatim and refresh this handoff in place.
 ## SESSION HANDOFF — 2026-09-06 · U1 FINAL GUIDANCE CONTRAST CHECK
 
 OpenAI/Codex on macOS | /Users/nick/Projects/celestial-frontier-openai-mac | openai/mac |
-origin/openai/mac. Entry signeda52879197e5d061671e5835e41a7afe4ba39b5d2 is17 commits ahead;
-the instrument correction carrying this handoff will be18 ahead. No push. Physical root/branch/upstream
+origin/openai/mac. Entry signedbb9ebe461a716de04806430693c9dba4694059ec is18 commits ahead;
+the Charts-route instrument correction carrying this handoff will be19 ahead. No push. Physical root/branch/upstream
 verified, root main.js absent, ambient .DS_Store preserved. Same-session SSH remote
  git@github.com:TheDakk/Celestial-Frontier.git/account TheDakk/read+fetchPASS and origin/develop
 c1791e2 ancestor receipts reused. No other agent worktree edited.
@@ -51,7 +51,14 @@ Successor corrects only that predicate/description and adds exact retained-recei
 outlined product/producer unchanged.
 Dock verdict preparation PASS6/6 plus rootTypeScript/validate/fingerprint; three logs retained
 in audits/UI_U1_DOCK_VERDICT_PREPARATION_20260906/manifest.json.
-Next: commit signed correction, then one clean local test artifact
+bb9ebe4 static PASS314files/3364tests/1skip; outline/dock controlsPASS. Small-phone stopped
+PRODUCT RED: SURFACE_NOT_VISIBLE #dockcharts, intentionallyhidden underacceptedU1. Large/Slice
+NOTRUN. Ninecarriers in audits/UI_U1_LOCAL_CHECKPOINT_bb9ebe4_20260906/manifest.json. Current
+instrument fix audits compact Settings→Starcharts in the existing Settingsphase and keeps
+visiblewideCharts; native activation,exactrestoration,44px/4.5 andcontrolledger unchanged.
+Charts preparation PASS12/12,rootTypeScript androotvalidate/fingerprint. Three logs retained in
+audits/UI_U1_CHARTS_ROUTE_PREPARATION_20260906/manifest.json.
+Next: commit, then one clean local test artifact
 with develop static → small-phone → large-phone → Slice develop/exact named verification on
 unchanged source. Phones are independent noncertifying diagnostics, no Slice predecessor;
 exercise the corrected phone first to avoid an unnecessary Slice run if it fails. This is not

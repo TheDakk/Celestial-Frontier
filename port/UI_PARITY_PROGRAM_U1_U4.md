@@ -8,7 +8,11 @@ The accepted layout remains fixed. Its plain guidance gains an opaque dark glyph
 a conservative stroke-aware contrast check; the threshold remains4.5. Sourcea528791 passed
 static3358/1skip and native outline controls, then stopped on a stale dock-fault wording check
 with zero product findings. The instrument-only successor uses responsive-slot errors and
-passes6/6 retained-receipt controls plus rootTypeScript/validate; local completion is pending. [The audit](../audits/UI_U1_HINT_CONTRAST_20260906.md) owns current
+passes6/6 retained-receipt controls plus rootTypeScript/validate. Its bb9ebe4 successor passed
+static3364/1skip and dock/outline controls, then found the intentionally hidden phone Charts
+shortcut. Existing on/off checks now target compact Settings→Star charts and retain the wide
+shortcut. Twelve source-executing route tests, root TypeScript and validate passed; fresh local
+browser completion is pending, with product unchanged. [The audit](../audits/UI_U1_HINT_CONTRAST_20260906.md) owns current
 status and the23-carrier prior checkpoint. U2 is the next development batch after these checks;
 physical UAT and the two historical unknown causes remain open. No U2–U4, Phase2 or hosted work.
 Earlier amendments below are retained verbatim.

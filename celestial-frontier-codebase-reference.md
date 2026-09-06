@@ -74,7 +74,11 @@ preserving the 4.5 threshold and effective-opacity checks. Preparation passed 25
 build and root validate. The first committed candidate a528791 passed static (313 files, 3358 passed, one skipped) and
 the native outline controls. Small-phone then stopped on a stale dock-fault description with zero
 product findings; large-phone and Slice did not run. The responsive-slot assertion is corrected
-without changing the product. Fresh committed completion remains pending. The development draft still has 81 bullets and mentions the outline. Current Compendium producer is
+without changing the product. Its successor bb9ebe4 passed static (314 files, 3364 passed, one
+skipped) and the dock/outline controls, then stopped because Charts is intentionally hidden on
+phones. The current instrument correction audits Settings → Star charts on compact layouts
+and retains the visible wide-screen Charts route. Twelve source-executing route tests, root
+TypeScript and validate passed. Fresh committed browser completion remains pending. The development draft still has 81 bullets and mentions the outline. Current Compendium producer is
 `6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`; measurement
 `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` is unchanged.
 U2 follows completion of these bounded checks as the next development batch. Physical UAT and

@@ -1,0 +1,37 @@
+{
+  "schema": "cf-u1-charts-route-preparation/v1",
+  "sourceParent": "bb9ebe461a716de04806430693c9dba4694059ec",
+  "results": {
+    "focusedTests": {
+      "passed": 12
+    },
+    "rootTypeScript": "pass",
+    "rootValidateFingerprint": "pass"
+  },
+  "carriers": [
+    {
+      "source": "/private/tmp/cf-u1-charts-route-focused-20260906.log",
+      "file": "cf-u1-charts-route-focused-20260906.log.gz",
+      "rawBytes": 241,
+      "rawSha256": "3f1386ade8778625def280c99250806d57ff55a1ce313dd463ec0f79844cac04",
+      "gzipBytes": 194,
+      "gzipSha256": "032d573081e04e7075ebab15c92a049ad92f6c19759f540c0809d11d36067054"
+    },
+    {
+      "source": "/private/tmp/cf-u1-charts-route-types-20260906.log",
+      "file": "cf-u1-charts-route-types-20260906.log.gz",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipBytes": 20,
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "/private/tmp/cf-u1-charts-route-root-validate-20260906.log",
+      "file": "cf-u1-charts-route-root-validate-20260906.log.gz",
+      "rawBytes": 1093,
+      "rawSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+      "gzipBytes": 708,
+      "gzipSha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736"
+    }
+  ]
+}
