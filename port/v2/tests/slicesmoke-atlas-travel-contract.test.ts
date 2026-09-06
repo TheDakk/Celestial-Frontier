@@ -217,7 +217,7 @@ describe('Slice Atlas native Travel contract', () => {
     expect(control).toContain('if (!collisionRailCopiesHidden(collisionRailBaseline))');
     expect(control).toContain("for (const id of ['railinventory', 'railrecords'])");
     expect(control).toContain("element.style.setProperty('display','flex','important')");
-    expect(control).toContain("finally{element.removeAttribute('style');if(priorStyle.present)element.setAttribute('style',priorStyle.value);}");
+    expect(control).toContain("finally{element.setAttribute('style','');element.removeAttribute('style');if(priorStyle.present)element.setAttribute('style',priorStyle.value);}");
     expect(control).toContain('styleRestored:restoredStyle.present===priorStyle.present&&restoredStyle.value===priorStyle.value');
     expect(control).toContain("shown?.painted !== true || shown.display !== 'flex'");
     expect(control).toContain('!collisionRailCopiesHidden(control.restored)');

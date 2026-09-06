@@ -220,3 +220,15 @@ was skipped. The six-site Share contract still ended its Charter source section 
 old pre-checkpoint baseline assignment. Its one endpoint now names `beforeLand = shareNoticeState`;
 all existing assertions remain. The focused Share file passes31tests. Original red output
 is retained; Glass selftest and browser stages did not run after red.
+
+## Native style-attribute diagnosis —b3aadd9
+
+Fresh static sequence and Glass selftest PASS. Slice had one finding: absent style became
+present-empty after temporary CSSOM editing/removal. Share checkpoint and wave-off checks
+passed. The native isolated blank-page diagnostic reproduced this on Edge152.0.4191.62:
+remove-only and clear-CSSOM-then-remove fail the absent case; set-empty-attribute then
+remove restores absent, present-empty and nonempty values exactly. That bounded correction
+is applied to the existing control with its9focused tests passing. Original immutable red
+log/report plus the9-case native probe/script/output are retained. No game/browser-profile
+or personal desktop access was part of the synthetic diagnostic. Phone canaries and review
+were not run after red; the corrected source requires its fresh sequence.

@@ -5,6 +5,10 @@
 > viewport offsets can miss the panel it claims to obstruct. Translate from measured live
 > rectangles, require the intended overlap, reject it, then restore exact styles and prove the
 > original native hit target again. A coordinate assignment alone is not the collision outcome.
+> Preserve style-attribute presence as well as bytes. U1 found native Edge CSSOM removal
+> returning an empty attribute where none existed, despite jsdom passing. Reproduce such
+> restoration in the actual browser, retain before/after carriers and the failing strategy;
+> do not treat absent and empty as equivalent to turn a control green.
 
 > **TOOL UPDATES MUST NOT SPLIT AN EVIDENCE CHAIN** (tool maintenance, 2026-09-06).
 > Hold the shared development-tool lock for the whole foreground render/check chain and for
