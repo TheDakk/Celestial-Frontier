@@ -1,5 +1,17 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **REPRODUCE THE PAINTED COLLISION, INCLUDING ITS CONTAINING BLOCK** (U1, 2026-09-06).
+> A transformed dock changes fixed-position child coordinates. A negative control that assigns
+> viewport offsets can miss the panel it claims to obstruct. Translate from measured live
+> rectangles, require the intended overlap, reject it, then restore exact styles and prove the
+> original native hit target again. A coordinate assignment alone is not the collision outcome.
+
+> **TOOL UPDATES MUST NOT SPLIT AN EVIDENCE CHAIN** (tool maintenance, 2026-09-06).
+> Hold the shared development-tool lock for the whole foreground render/check chain and for
+> maintenance. Also inspect active tools because older jobs may not use the lock. Version
+> metadata proves inventory only; exercise changed CLI capabilities before use. Preserve failed
+> checks, and parse actual metric formats strictly rather than treating a new suffix as zero.
+
 > **PASSIVE UI HISTORY MUST NOT JOIN AN IN-FLIGHT PRODUCT SNAPSHOT** (U1 review, 2026-09-06).
 > Bioscan and Scout compare their exact pre-await live source; a toast that appends notification
 > history during that await can invalidate a legitimate action. Keep pending notices in a

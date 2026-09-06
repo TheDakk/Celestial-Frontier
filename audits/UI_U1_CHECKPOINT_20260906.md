@@ -124,3 +124,15 @@ one Guide overlay mutation: fixed Prime coordinates again resolved inside the tr
 dock instead of the viewport. Guide and the equivalent Survey mutant now translate actual
 rectangles; their collision rejection, visible Prime and exact restoration remain required.
 No product or authority changes. Both phone canaries and visual review remain unrun.
+
+## Reload harness stop —2deec82
+
+Fresh static sequence:310 files/3,258 tests PASS/1 skip; typecheck, artunused and Glass
+selftest PASS. Slice stopped at the transient-read authoritative reload: its15-second
+wait retained a stale document token. Earlier Guide collision did not recur. Diagnosis
+identified a fixed (30,300) click over the relocated Survey button. Both retry branches now
+select a measured root-canvas hit and require a matching trusted pointerdown receipt across
+reload, with explicit cleanup. The15-second cap, loader/new-token and exact write/revision
+checks remain unchanged. Focused contract24testsPASS; successor full checks are pending.
+Both phone canaries and visual review were not run. The original red log
+is preserved as `UI_U1_SLICE_RED_2deec82_20260906.log.gz`.

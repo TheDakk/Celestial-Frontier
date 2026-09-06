@@ -26465,6 +26465,17 @@ try {
     && value?.persistence?.bootKind === 'transient-protected'
     && value?.persistence?.hold === 'transient-read'
     && value?.persistence?.runtime === null;
+  const transientCanvasActivationPasses = (point, receipt) => point?.ok === true
+    && typeof point.documentToken === 'string' && point.documentToken.length > 0
+    && point.canvasTag === 'CANVAS' && point.canvasConnected === true && point.canvasOwnsPoint === true
+    && Number.isFinite(point.x) && Number.isFinite(point.y)
+    && Number.isFinite(point.viewportWidth) && Number.isFinite(point.viewportHeight)
+    && point.x >= 0 && point.x < point.viewportWidth && point.y >= 0 && point.y < point.viewportHeight
+    && receipt?.schema === 'cf-v2-transient-canvas-press/v1'
+    && receipt.documentToken === point.documentToken
+    && receipt.type === 'pointerdown' && receipt.trusted === true && receipt.targetCanvas === true
+    && receipt.button === 0 && receipt.pointerType === 'mouse'
+    && receipt.x === point.x && receipt.y === point.y;
   const transientRetryProbe = async (seedRaw) => {
     const target = await send('Target.createTarget', { url: 'about:blank' });
     const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
@@ -26539,9 +26550,56 @@ try {
         + JSON.stringify(preClickResult.exceptionDetails || preClickResult.result.value));
     }
     const preClick = preClickResult.result.value;
-    await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
-    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
-    await waitForSlice(retrySession, 'transient-read authoritative reload', { previousToken: retryBootToken });
+    // A relocated chrome control may cover an old fixed coordinate. Select
+    // the actual root canvas hit and retain its trusted event across reload.
+    const transientPressKey = '__cf_transient_canvas_press';
+    const canvasPoint = await evalRetry(`(()=>{const S=window.__CF_SLICE__,canvas=S?.app?.canvas,
+      key=${JSON.stringify(transientPressKey)};sessionStorage.removeItem(key);
+      window.__cfTransientCanvasPressAbort?.abort();delete window.__cfTransientCanvasPressAbort;
+      if(!canvas?.isConnected||canvas.tagName!=='CANVAS')return {ok:false,why:'root canvas unavailable'};
+      const r=canvas.getBoundingClientRect(),left=Math.max(0,r.left),right=Math.min(innerWidth,r.right),
+        top=Math.max(0,r.top),bottom=Math.min(innerHeight,r.bottom),attempts=[];
+      if(!(right>left&&bottom>top))return {ok:false,why:'root canvas has no viewport area'};
+      for(const [fx,fy] of [[.5,.5],[.35,.5],[.65,.5],[.5,.65],[.5,.35]]){
+        const x=Math.floor(left+(right-left)*fx),y=Math.floor(top+(bottom-top)*fy),hit=document.elementFromPoint(x,y);
+        attempts.push({x,y,hit:hit?.id||hit?.tagName||null});if(hit!==canvas)continue;
+        const abort=new AbortController();window.__cfTransientCanvasPressAbort=abort;
+        canvas.addEventListener('pointerdown',(event)=>sessionStorage.setItem(key,JSON.stringify({
+          schema:'cf-v2-transient-canvas-press/v1',documentToken:S.documentToken,type:event.type,
+          trusted:event.isTrusted,targetCanvas:event.target===canvas,button:event.button,
+          pointerType:event.pointerType,x:event.clientX,y:event.clientY})),{capture:true,once:true,signal:abort.signal});
+        return {ok:true,documentToken:S.documentToken,canvasTag:canvas.tagName,canvasConnected:canvas.isConnected,
+          canvasOwnsPoint:true,x,y,viewportWidth:innerWidth,viewportHeight:innerHeight};}
+      return {ok:false,why:'root canvas has no unobstructed candidate',attempts};})()`);
+    let canvasPress = null, canvasFailure = null;
+    try {
+      if (canvasPoint?.ok !== true || canvasPoint.documentToken !== retryBootToken) {
+        throw new Error('transient-read retry has no exact current canvas target');
+      }
+      await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: canvasPoint.x, y: canvasPoint.y, button: 'left', clickCount: 1 }, retrySession);
+      await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: canvasPoint.x, y: canvasPoint.y, button: 'left', clickCount: 1 }, retrySession);
+      await waitForSlice(retrySession, 'transient-read authoritative reload', { previousToken: retryBootToken });
+      canvasPress = await evalRetry(`JSON.parse(sessionStorage.getItem(${JSON.stringify(transientPressKey)})||'null')`);
+      if (!transientCanvasActivationPasses(canvasPoint, canvasPress)) {
+        throw new Error('transient-read retry did not retain one exact trusted canvas press');
+      }
+    } catch (error) {
+      const observed = await evalRetry(`(()=>{const state=window.__CF_SLICE__?.api?.state?.();return {
+        receipt:JSON.parse(sessionStorage.getItem(${JSON.stringify(transientPressKey)})||'null'),
+        documentToken:window.__CF_SLICE__?.documentToken??null,panelOpen:state?.panelOpen??null,
+        hold:state?.persistence?.hold??null,bootKind:state?.persistence?.bootKind??null,
+        writes:Number(sessionStorage.getItem('__cf_transient_primary_writes')||'0')};})()`)
+        .catch((cause) => ({ unavailable: String(cause?.message || cause) }));
+      canvasFailure = { error: String(error?.message || error), point: canvasPoint, observed };
+    }
+    const canvasCleanup = await evalRetry(`(()=>{window.__cfTransientCanvasPressAbort?.abort();
+      delete window.__cfTransientCanvasPressAbort;sessionStorage.removeItem(${JSON.stringify(transientPressKey)});
+      return !('__cfTransientCanvasPressAbort' in window)&&sessionStorage.getItem(${JSON.stringify(transientPressKey)})===null;})()`)
+      .catch(() => false);
+    if (canvasFailure !== null || canvasCleanup !== true) {
+      await send('Target.closeTarget', { targetId: target.targetId });
+      throw new Error('transient-read canvas activation failed: ' + JSON.stringify({ canvasFailure, canvasCleanup }));
+    }
     /* Both exact branches settle at revision 2. A fresh expedition owns its
        two receipt-free bootstrap writes; the retained veteran source owns
        one receipt-free bootstrap followed by the required Arc 9 aggregate
@@ -26574,7 +26632,7 @@ try {
       returnByValue: true, awaitPromise: true }, retrySession);
     await send('Target.closeTarget', { targetId: target.targetId });
     if (result.exceptionDetails) throw new Error('transient retry probe threw: ' + JSON.stringify(result.exceptionDetails));
-    return { ...result.result.value, preClick };
+    return { ...result.result.value, preClick, canvasActivation: { point: canvasPoint, receipt: canvasPress, cleaned: canvasCleanup } };
   };
   const transientExistingV4Raw = (() => {
     const envelope = JSON.parse(vrRaw);
