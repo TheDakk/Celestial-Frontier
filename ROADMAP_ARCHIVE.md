@@ -1,3 +1,22 @@
+# U2 Training-scroll checkpoint handoff superseded — 2026-09-06
+
+Latest signed U2 check source e88ea7b1ce31dc3a4be583927183f70bc9c608a0 (22ahead) passed full
+develop static317files/3391tests/1skip and normal build. The scoped browser proved native Settings
+above Training, sticky Close, real scrolling and fault/restoration controls, then stopped because
+its fixed240px wheel oscillated past Charts. This is instrument RED; remaining rows, phone
+canaries and Slice NOT RUN. Immutable audits/UI_U2_LOCAL_CHECKPOINT_e88ea7b_20260906/manifest.json.
+The earlier2642ddc static source-spelling failure is separately retained. The bounded successor
+uses measured target/content displacement, with7/7 source-executing tests and root validate PASS.
+Fresh exact-source checkpoint pending: normal build/scoped diagnostic, complete develop-static
+owner, small-phone, large-phone, Slice and named verify; stop first nonzero. Product producer
+c821b3cbc3dcac586e59fccdde02a3310d85bc2490c1e74e05f432761f93cc7c remains unchanged.
+Current audit audits/UI_U2_SHEETS_20260906.md owns preparation/attempt evidence. Inkscape is
+unavailable this session: both reports abort at macOS GUI registration, even --version; restricted
+launch is suspected, not proved by an outside-sandbox control. No relaunch. Browser SVG rendering
+works. Nick prefers colorful emoji; retain them in product, with one optional three-icon color
+study retained at audits/UI_U3_COLOR_ICON_STUDY_20260906. No icon rework loop is queued.
+
+
 # U2 scroll-instrument checkpoint handoff superseded — 2026-09-06
 
 Latest U2 source2642ddc87e0ab68c2c765b9b0ed2db6fd90f4271 (21ahead) is committed locally.

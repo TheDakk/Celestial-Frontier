@@ -31,16 +31,18 @@ started clean; ambient .DS_Store preserved; root main.js absent. Same-session SS
 startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 remains deferred for busy tools.
 Actions UNFROZEN/PUBLIC per last receipt, private fallback3000, zero exact hosted authority.
 
-Latest signed U2 check source e88ea7b1ce31dc3a4be583927183f70bc9c608a0 (22ahead) passed full
-develop static317files/3391tests/1skip and normal build. The scoped browser proved native Settings
-above Training, sticky Close, real scrolling and fault/restoration controls, then stopped because
-its fixed240px wheel oscillated past Charts. This is instrument RED; remaining rows, phone
-canaries and Slice NOT RUN. Immutable audits/UI_U2_LOCAL_CHECKPOINT_e88ea7b_20260906/manifest.json.
-The earlier2642ddc static source-spelling failure is separately retained. The bounded successor
-uses measured target/content displacement, with7/7 source-executing tests and root validate PASS.
-Fresh exact-source checkpoint pending: normal build/scoped diagnostic, complete develop-static
-owner, small-phone, large-phone, Slice and named verify; stop first nonzero. Product producer
-c821b3cbc3dcac586e59fccdde02a3310d85bc2490c1e74e05f432761f93cc7c remains unchanged.
+Latest signed U2 check source7197d62fa227cd20640acb2866d89660d2996084 (23ahead) passed normal
+build and9scoped rows: all portrait phones/default+A++mono and default landscape, including real
+Charts toggles and lower-lane/fault/Close checks. Large-text landscape stopped before Skip:
+Training's card overflows (301px scrollHeight/219px clientHeight), but the driver never revealed
+Skip through that scroller. Exact target geometry was not retained by the original refusal.
+Immutable audits/UI_U2_LOCAL_CHECKPOINT_7197d62_20260906/manifest.json preserves28PNGs/allinputs.
+Remaining scoped rows, develop-static, phone canaries and Slice NOT RUN. The bounded successor
+uses measured native Training scrolling and detailed refused-target geometry;9/9 focused tests
+and rootvalidate PASS. Earlier e88ea7b static317files/3391tests/1skip PASS plus Charts-scroll RED,
+and2642ddc old source-spelling RED remain separately immutable. Fresh exact-source check pending:
+normal build/scoped review → complete develop-static → both phone canaries → Slice/named verify.
+Product producer c821b3cbc3dcac586e59fccdde02a3310d85bc2490c1e74e05f432761f93cc7c unchanged.
 Current audit audits/UI_U2_SHEETS_20260906.md owns preparation/attempt evidence. Inkscape is
 unavailable this session: both reports abort at macOS GUI registration, even --version; restricted
 launch is suspected, not proved by an outside-sandbox control. No relaunch. Browser SVG rendering

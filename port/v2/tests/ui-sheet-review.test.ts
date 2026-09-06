@@ -97,6 +97,32 @@ describe('U2 diagnostic executes its retained source owners', () => {
     expect(() => w.readSettingsReveal('#setcharts')).toThrow('cannot fit');
     dom.window.close();
   });
+  it('reveals Skip through the retained short-landscape Training scroll owner without a sheet header', () => {
+    const dom = domOwners(), w = dom.window, card = w.document.getElementById('tutcard');
+    const skip = w.document.createElement('button'); skip.dataset.sel = 'tutskip'; card.append(skip);
+    card.getBoundingClientRect = () => rect(202, 16, 440, 221);
+    let top = 260; skip.getBoundingClientRect = () => rect(240, top, 140, 44);
+    const hidden = w.readSettingsReveal('[data-sel=tutskip]', '#tutcard');
+    expect(hidden.owner).toBe('#tutcard'); expect(hidden.inside).toBe(false);
+    top -= hidden.delta; expect(w.readSettingsReveal('[data-sel=tutskip]', '#tutcard').inside).toBe(true);
+    expect(() => w.readSettingsReveal('[data-sel=tutskip]', '#setpanel')).toThrow('owned');
+    dom.window.close();
+  });
+  it('retains native refusal geometry and restores admission after the target is revealed', () => {
+    const dom = domOwners(), w = dom.window, card = w.document.getElementById('tutcard');
+    const button = w.document.createElement('button'); button.dataset.sel = 'tutskip'; card.append(button); card.style.overflowY = 'auto';
+    button.getBoundingClientRect = () => rect(220, 260, 140, 44);
+    w.document.elementFromPoint = () => card;
+    const hidden = w.readNativeTarget('[data-sel=tutskip]');
+    expect(hidden.available).toBe(false); expect(hidden.issues).toContain('center-not-hit');
+    expect(hidden.rect.top).toBe(260); expect(hidden.clips[0].owner.id).toBe('tutcard');
+    w.document.elementFromPoint = () => button; expect(w.readNativeTarget('[data-sel=tutskip]').available).toBe(true);
+    button.disabled = true; expect(w.readNativeTarget('[data-sel=tutskip]').issues).toContain('disabled-or-inert');
+    button.disabled = false; expect(w.readNativeTarget('[data-sel=tutskip]').available).toBe(true);
+    button.getBoundingClientRect = () => rect(220, 140, 43, 44);
+    expect(w.readNativeTarget('[data-sel=tutskip]').issues).toContain('below-44px');
+    dom.window.close();
+  });
   it('keeps the first fault failure when exact restoration also fails', async () => {
     const begin = '    const control = async (kind, options) => {', finish = '    for (const viewport of U2_VIEWPORTS)';
     expect(source.split(begin)).toHaveLength(2); expect(source.split(finish)).toHaveLength(2);
