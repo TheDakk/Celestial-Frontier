@@ -453,7 +453,7 @@ describe('Slice Arc 2 Inventory causal interaction chain', () => {
     const leftRail = make('raillft', 18, 130, 140, 96);
     const rightRail = make('railrgt', 1122, 130, 140, 96);
     const nodes = new Map([leftRail, rightRail,
-      make('railcharters', 18, 130, 100), make('railcodex', 18, 182, 140),
+      make('docksurvey', 18, 130, 100), make('railcodex', 18, 182, 140),
       make('railatlas', 1122, 130, 140), make('railshipyard', 1162, 182, 100)].map(node => [node.id, node]));
     let hit: unknown = leftRail;
     let pointerEvents = 'auto';
@@ -463,7 +463,7 @@ describe('Slice Arc 2 Inventory causal interaction chain', () => {
       { __CF_SLICE__: { api: { state: () => ({ panelOpen: 'codex', cardOpen: false }) } } }) as {
         geometry: boolean; ownerId: string; gap: number; overlapLeft: number; overlapRight: number;
         ownerEdge: string; targetId: string | null; point: { x: number; y: number } };
-    const pairs = [['raillft', 'railcharters', 'railcodex'], ['railrgt', 'railatlas', 'railshipyard']] as const;
+    const pairs = [['raillft', 'docksurvey', 'railcodex'], ['railrgt', 'railatlas', 'railshipyard']] as const;
     for (const [root, upper, lower] of pairs) {
       hit = nodes.get(root);
       const baseline = sample(root, upper, lower);
@@ -516,7 +516,7 @@ describe('Slice Arc 2 Inventory causal interaction chain', () => {
     expect(gapOwner).toContain("rail?.setAttribute('data-panel-boundary',prior)");
     expect(gapOwner).toContain('await clickDesktopPoint(before.point)');
     expect(source).toContain("const rightGap = railGapProbe('railrgt', 'railatlas', 'railshipyard')");
-    expect(source).toContain("const leftGap = railGapProbe('raillft', 'railcharters', 'railcodex')");
+    expect(source).toContain("const leftGap = railGapProbe('raillft', 'docksurvey', 'railcodex')");
     expect(source).toContain('Math.abs(gap-8)<=0.5');
     expect(source).toContain("style.pointerEvents==='auto'");
     expect(source).toContain("['raillft','railrgt'].includes(rail.id)");

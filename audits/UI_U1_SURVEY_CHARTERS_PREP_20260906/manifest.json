@@ -1,0 +1,59 @@
+{
+  "schema": "cf-u1-survey-charters-prep/v1",
+  "entrySource": "70b16eeba973f13040e47d50632fc6c1ba7d4a81",
+  "sourceNote": "Precommit working-source checks; final product and guards are included in the commit containing this manifest. Full Vitest first red retained; only two corrected test files rerun. No certification or hosted action.",
+  "results": {
+    "rootValidate": "PASS",
+    "typecheck": "PASS",
+    "vitestFull": "RED:2 files/3 failed;309 files/3319 passed;1 skipped",
+    "correctedGuards": "PASS:2 files/48 tests",
+    "nativeTrace": "PASS:2 tests"
+  },
+  "files": [
+    {
+      "path": "validate.log.gz",
+      "bytes": 708,
+      "sha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736",
+      "rawBytes": 1093,
+      "rawSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "typecheck.log.gz",
+      "bytes": 99,
+      "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
+      "rawBytes": 134,
+      "rawSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "vitest.log.gz",
+      "bytes": 3457,
+      "sha256": "efeb521e5184bcc754a2faa60bbe75ec153a2f7555b531fd5d4258dec3361dcd",
+      "rawBytes": 10391,
+      "rawSha256": "ccb236b4e2e9387854dc40db2209489bb740b6d31777b68d024c16230dcfc948"
+    },
+    {
+      "path": "guards.log.gz",
+      "bytes": 262,
+      "sha256": "ffb4fee9b6b25b169287c965012bb8ac62b8f20399b734fbf5445881736aeb53",
+      "rawBytes": 351,
+      "rawSha256": "051ff09c4ae879724b94390a0edc00416580632d65e71198bcdec2bdd6c1791c"
+    },
+    {
+      "path": "trace.log.gz",
+      "bytes": 227,
+      "sha256": "88bc14c8114b8acf4e4888548de7a87f600ed4499feb7da21768831e4a7404cf",
+      "rawBytes": 299,
+      "rawSha256": "cbfc048fce46cfd13f66d0f9632b90ef9598e5392daaf7bbb9db657bdac7c71f"
+    },
+    {
+      "path": "authorities-final.json",
+      "bytes": 3971,
+      "sha256": "8b13060cd5c0a1d25e0e579d6e0289dc8ed860445f5ba40e9f58bffb83dce770"
+    },
+    {
+      "path": "release-authority.json",
+      "bytes": 232,
+      "sha256": "767443a3a83e2716576a4e8f748c39d27f424aee231ef888e29e467c003957e1"
+    }
+  ]
+}

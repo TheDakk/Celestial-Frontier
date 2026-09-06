@@ -70,6 +70,11 @@ function wiringErrors(main: string, owner: string): string[] {
     errors.push('surface-thin-adapter');
   }
 
+  // Main owns action registration; AppChrome still exclusively renders status.
+  // Permit only the exact Charters registration, never a second raw DOM reader.
+  const charterRegistration = "registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('objchip')], onOpen: fillCharters });";
+  if (occurrences(main, charterRegistration) !== 1) errors.push('charters-action-registration');
+  const mainOutsideChartersRegistration = main.replace(charterRegistration, '');
   for (const selector of [
     "getElementById('trail')",
     "getElementById('playerchip')",
@@ -81,7 +86,7 @@ function wiringErrors(main: string, owner: string): string[] {
     "getElementById('hintpill')",
     "getElementById('topbar')",
     "getElementById('dock')",
-  ]) if (main.includes(selector)) errors.push('raw-main-dom');
+  ]) if (mainOutsideChartersRegistration.includes(selector)) errors.push('raw-main-dom');
   if (occurrences(main, 'appChrome.rankCeremonyAnchor();') !== 1
     || !owner.includes('readonly rankCeremonyAnchor: () => AppChromeAnchorPoint | null;')
     || !rankAnchor.includes('const rect = playerChip.getBoundingClientRect();')
@@ -242,6 +247,15 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
       "function updateChips(): void {\n  document.getElementById('playerchip')!.textContent = 'bypass';",
     );
     expect(wiringErrors(directDom, ownerSource)).toContain('raw-main-dom');
+    const directObjective = mainSource.replace(
+      'function updateChips(): void {',
+      "function updateChips(): void {\n  document.getElementById('objchip')!.textContent = 'bypass';",
+    );
+    expect(wiringErrors(directObjective, ownerSource)).toContain('raw-main-dom');
+    const wrongChartersOpener = replaceOnce(mainSource,
+      "btns: [document.getElementById('objchip')], onOpen: fillCharters",
+      "btns: [document.getElementById('docksurvey')], onOpen: fillCharters");
+    expect(wiringErrors(wrongChartersOpener, ownerSource)).toContain('charters-action-registration');
 
     const directRankAnchor = replaceOnce(
       mainSource,

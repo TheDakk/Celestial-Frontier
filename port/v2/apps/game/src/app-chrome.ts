@@ -252,7 +252,10 @@ export function createAppChromeController(
       ? `⬆ ${escapeHtml(view.objective.text)} · <span class="prog" data-sel="objprog">${view.objective.have} / ${view.objective.need}</span>`
       : view.objective?.kind === 'boundary'
         ? `⬆ ${escapeHtml(view.objective.name)} is recorded — the next Charter action is not available in this development slice`
-        : '';
+        : '📜 View Charters';
+    // The objective is the one Charters opener. Panel selection owns expanded
+    // state; status refreshes change only its content and accessible name.
+    objectiveChip.setAttribute('aria-label', `Charters — ${objectiveChip.textContent?.trim() || 'View expedition objectives'}`);
     syncTopbarH();
   };
 

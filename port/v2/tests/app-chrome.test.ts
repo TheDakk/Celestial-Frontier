@@ -42,7 +42,7 @@ function chromeMarkup(): string {
       <button id="dockinventory" type="button" aria-label="Inventory" aria-controls="inventorypanel" data-panel-boundary><span id="playerchip"></span></button>
       <button id="primechip" type="button"></button>
       <div id="hpbar"><span aria-hidden="true">❤</span><span class="hp-label">HEALTH</span><span class="track"><span class="fill"></span><span class="txt"></span></span></div>
-      <div id="objchip"></div>
+      <button id="objchip" type="button" aria-controls="chpanel" aria-expanded="false" data-panel-boundary></button>
     </div>
     <input id="searchbox">
     <div id="ctxbar"></div>
@@ -301,7 +301,8 @@ describe('application chrome DOM owner', () => {
     expect(health.getAttribute('aria-valuemax')).toBe('1');
     expect(health.getAttribute('aria-valuetext')).toBe('-5/0 HP');
     expect(h.document.querySelector('#hpbar .txt')!.textContent).toBe('-5/0');
-    expect(h.element('objchip').innerHTML).toBe('');
+    expect(h.element('objchip').innerHTML).toBe('📜 View Charters');
+    expect(h.element('objchip').getAttribute('aria-label')).toBe('Charters — 📜 View Charters');
 
     renderProgress(h.controller);
     expect(h.element('playerchip').textContent).toBe('Nova');
@@ -313,6 +314,38 @@ describe('application chrome DOM owner', () => {
     expect(inventory.getAttribute('aria-controls')).toBe('inventorypanel');
     expect(inventory.hasAttribute('data-panel-boundary')).toBe(true);
     expect(inventory.textContent).toBe('Nova');
+  });
+
+  it('keeps progress, boundary and fallback Charters content on one native opener without overwriting panel state', () => {
+    const h = createHarness(), objective = h.element('objchip');
+    expect(objective.tagName).toBe('BUTTON');
+    expect(objective.getAttribute('type')).toBe('button');
+    objective.setAttribute('aria-expanded', 'true');
+    objective.classList.add('on', 'sel');
+    const status = { explorerName: 'Nova', essence: 0, landedWorlds: 0, hp: 100, hpMax: 100, primeCount: 0 };
+    for (const [view, text] of [
+      [{ kind: 'progress' as const, text: '<b>Mine</b> & build', have: 2, need: 5 }, '⬆ <b>Mine</b> & build · 2 / 5'],
+      [{ kind: 'boundary' as const, name: '<b>First Light</b>' }, '⬆ <b>First Light</b> is recorded — the next Charter action is not available in this development slice'],
+      [null, '📜 View Charters'],
+    ] as const) {
+      h.controller.renderStatus({ ...status, objective: view });
+      expect(h.element('objchip')).toBe(objective);
+      expect(objective.textContent).toBe(text);
+      expect(objective.querySelector('b')).toBeNull();
+      expect(objective.getAttribute('aria-label')).toBe('Charters — ' + text);
+      expect(objective.getAttribute('aria-controls')).toBe('chpanel');
+      expect(objective.getAttribute('aria-expanded')).toBe('true');
+      expect(objective.classList.contains('sel') && objective.classList.contains('on')).toBe(true);
+      expect(objective.hasAttribute('data-panel-boundary')).toBe(true);
+    }
+    objective.setAttribute('aria-expanded', 'false');
+    objective.classList.remove('on', 'sel');
+    renderProgress(h.controller);
+    expect(objective.getAttribute('aria-expanded')).toBe('false');
+    expect(objective.classList.contains('sel') || objective.classList.contains('on')).toBe(false);
+    expect(objective.querySelector('[data-sel="objprog"]')?.textContent).toBe('2 / 5');
+    objective.focus();
+    expect(h.document.activeElement).toBe(objective);
   });
 
   it('owns escaped trails, trusted hint emphasis, deduplicated text, and live diagnostics', async () => {

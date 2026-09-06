@@ -147,18 +147,29 @@ afterEach(() => {
 });
 
 describe('Arc 2 Inventory presentation', () => {
-  it('keeps nine direct production dock controls, nested Survey/Charts, relocated Inventory, and one accessible dialog shell', () => {
+  it('keeps Survey in the first native scene slot, one objective Charters opener, relocated Inventory, and one accessible dialog shell', () => {
     const index = fs.readFileSync(path.join(here, '../apps/game/index.html'), 'utf8');
     const main = fs.readFileSync(path.join(here, '../apps/game/src/main.ts'), 'utf8');
     const parsed = new JSDOM(index);
     const document = parsed.window.document;
     expect([...document.querySelectorAll('#dock > button')].map(button => button.id)).toEqual([
-      'dockcharters', 'dockcodex', 'primechip', 'dockshipyard', 'dockatlas',
+      'dockcodex', 'primechip', 'dockshipyard', 'dockatlas',
       'dockrecords', 'docknotifications', 'dockguide', 'docksets',
     ]);
     expect(document.querySelector('#topbar #dockinventory')).not.toBeNull();
     expect([...document.querySelectorAll('#sceneactions > button')].map(button => button.id))
-      .toEqual(['docksurvey', 'dockcharts']);
+      .toEqual(['dockcharts']);
+    const leftRail = document.getElementById('raillft')!;
+    expect(leftRail.parentElement).toBe(document.getElementById('dock'));
+    expect([...leftRail.children].map(button => button.id)).toEqual(['docksurvey', 'railcodex']);
+    expect(leftRail.previousElementSibling).toBeNull();
+    expect(leftRail.nextElementSibling?.id).toBe('dockcodex');
+    expect(leftRail.hasAttribute('data-panel-boundary')).toBe(true);
+    expect(document.querySelector('#dockcharters,#railcharters')).toBeNull();
+    const objective = document.querySelector('#topbar #objchip')!;
+    expect(objective.tagName).toBe('BUTTON');
+    expect(objective.getAttribute('type')).toBe('button');
+    expect(objective.getAttribute('aria-controls')).toBe('chpanel');
     const sceneActions = document.getElementById('sceneactions')!;
     expect(sceneActions.parentElement).toBe(document.getElementById('dock'));
     expect(sceneActions.previousElementSibling?.id).toBe('dockatlas');
