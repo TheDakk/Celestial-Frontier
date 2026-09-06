@@ -104,6 +104,21 @@
       "correction": "Update the source-marker contract to require both actual painted rectangles and their relative translation; preserve mutation and restoration assertions.",
       "logSha256": "4ae50333a07cea6b609e16a3484ba626d533beaacfe738000a99ba561af14fff",
       "remainingChecks": "Glass selftest, Slice, phone canaries and visual review not run after red."
+    },
+    {
+      "source": "ab9b807171366aaf119425ecd829d98859abba7f",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3258passed/1skipped, Glassselftest PASS; root validate PASS",
+      "failures": [
+        "PHONE PRIME OVERLAY YIELD CONTROL FAILED: intended Guide overlap mutation placed Prime below the viewport."
+      ],
+      "diagnosis": "The transformed dock is the containing block for fixed Prime. The copied Guide/Survey mutations used viewport coordinates as containing-block offsets.",
+      "correction": "Both controls now translate actual painted Prime rectangles into actual panel rectangles; retain collision rejection and exact restoration.",
+      "logSha256": "c01079068f996b103311672d0295a1e63c3088a3b93ee615d7d8c2f47207a780",
+      "gzipFile": "UI_U1_SLICE_RED_ab9b807_20260906.log.gz",
+      "gzipSha256": "969e111e703983cabdca61cd1281f7afc6a2d8db067c40c4dc4bdc26395e78fd",
+      "remainingChecks": "Phone canaries and visual review not run after red."
     }
   ]
 }

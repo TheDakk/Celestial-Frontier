@@ -24618,10 +24618,9 @@ try {
     const phonePrimeOverlayCtl = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
       const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display','position','left','top','bottom','transform','z-index']);
       let result=null,error=null;const restore=()=>restoreInlineStyleProperties(prime.style,prior);
-      try{const p=document.getElementById('guidepanel').getBoundingClientRect();
-        prime.style.setProperty('display','block','important');prime.style.setProperty('position','fixed','important');
-        prime.style.setProperty('left',p.left+8+'px','important');prime.style.setProperty('top',p.top+8+'px','important');
-        prime.style.setProperty('bottom','auto','important');prime.style.setProperty('transform','none','important');
+      try{prime.style.setProperty('display','block','important');prime.style.setProperty('transform','none','important');
+        const p=document.getElementById('guidepanel').getBoundingClientRect(),q=prime.getBoundingClientRect();
+        prime.style.setProperty('transform','translate('+(p.left+8-q.left)+'px,'+(p.top+8-q.top)+'px)','important');
         prime.style.setProperty('z-index','9999','important');result=${phoneGuidePrimeOverlayCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
       const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,
@@ -24928,10 +24927,9 @@ try {
     const phoneSurveyPrimeOverlayCtl = await evalNavPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
       const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display','position','left','top','bottom','transform','z-index']);
       let result=null,error=null;const restore=()=>restoreInlineStyleProperties(prime.style,prior);
-      try{const p=document.getElementById('survey').getBoundingClientRect();
-        prime.style.setProperty('display','block','important');prime.style.setProperty('position','fixed','important');
-        prime.style.setProperty('left',p.left+8+'px','important');prime.style.setProperty('top',p.top+8+'px','important');
-        prime.style.setProperty('bottom','auto','important');prime.style.setProperty('transform','none','important');
+      try{prime.style.setProperty('display','block','important');prime.style.setProperty('transform','none','important');
+        const p=document.getElementById('survey').getBoundingClientRect(),q=prime.getBoundingClientRect();
+        prime.style.setProperty('transform','translate('+(p.left+8-q.left)+'px,'+(p.top+8-q.top)+'px)','important');
         prime.style.setProperty('z-index','9999','important');result=${phoneSurveyPrimeOverlayCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
       const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,

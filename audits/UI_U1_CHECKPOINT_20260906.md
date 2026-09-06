@@ -115,3 +115,12 @@ Fresh install/typecheck/artunused PASS. Vitest stopped on one stale source-marke
 fixed-position HP collision code after its measured-rectangle correction. Its three marker
 requirements now follow that correction and retain their remove-one negative controls. No
 product or authority changes. Glass selftest and all browser checks were not run after red.
+
+## Overlay instrument correction —ab9b807
+
+Fresh static sequence:310 files/3,258 tests PASS/1 skip, typecheck/artunused/Glass selftest
+PASS. Root validate also passes50 deterministic probes and1,010 renders. Slice stopped on
+one Guide overlay mutation: fixed Prime coordinates again resolved inside the translated
+dock instead of the viewport. Guide and the equivalent Survey mutant now translate actual
+rectangles; their collision rejection, visible Prime and exact restoration remain required.
+No product or authority changes. Both phone canaries and visual review remain unrun.
