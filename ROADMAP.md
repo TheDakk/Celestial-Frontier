@@ -31,6 +31,14 @@ started clean; ambient .DS_Store preserved; root main.js absent. Same-session SS
 startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 remains deferred for busy tools.
 Actions UNFROZEN/PUBLIC per last receipt, private fallback3000, zero exact hosted authority.
 
+Latest U2 source2642ddc87e0ab68c2c765b9b0ed2db6fd90f4271 (21ahead) is committed locally.
+Its first clean checkpoint stopped at one old source-spelling test:3390 tests passed/1failed/1skip;
+316filespassed/1failed. No browser stage ran. Immutable evidence:
+audits/UI_U2_LOCAL_CHECKPOINT_2642ddc_20260906/manifest.json. The bounded test correction executes
+the actual refill/Close owner and checks direct native children;5/5 including wrapping mutants
+pass, plus explicit v2rootTypeScript/rootvalidate. Fresh checkpoint pending on its records successor.
+Current audit audits/UI_U2_SHEETS_20260906.md owns all U2 preparation/attempt evidence.
+
 U2 is active: shared native sheet headers/Close and internal scrolling, measured lower lanes,
 Settings/Training stacking and motion/state tokens. First retained case is b457a7a small-phone:
 Planetside y210–390 and hint y367.5–444 on320×568@2,22.5px overlap. Static3376/1skip PASS;
