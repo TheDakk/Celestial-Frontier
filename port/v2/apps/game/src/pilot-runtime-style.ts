@@ -15,6 +15,7 @@ body[data-cf-pilot-look] :is(.panel,#survey,#inventorysheet) :is(button:not(.atl
 body[data-cf-pilot-look] :is(.inventory-panel-body,.inventory-detail,[data-star-atlas-body]){gap:8px}
 body[data-cf-pilot-look] #inventorypanel button.inventory-row{border-radius:6px;padding:8px 10px}
 body[data-cf-pilot-look] .inventory-badge{border-radius:4px}
+body[data-cf-pilot-look] #atlaspanel .atlas-filters>button{gap:6px}
 body[data-cf-pilot-look] #planetside button{min-height:44px;min-width:44px;padding:8px 12px;border:1px solid #61799d;border-radius:6px;color:var(--ink);background:#17263c;font:inherit;cursor:pointer}
 body[data-cf-pilot-look] :is(.panel,#survey,#planetside,#inventorysheet) :is(button,input,select,textarea,summary):focus-visible{outline:3px solid #6fd3ff;outline-offset:2px}
 [data-cf-audiovisual-pilot]{pointer-events:none}
