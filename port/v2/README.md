@@ -43,13 +43,25 @@ Both old blockers remain historical OPEN: the old pending expression/cause is un
 nonrecurrence is not repair. The historical ce89128 checkpoint passed static/three-view review,
 then retained a noncertifying Slice RED; [its audit](../../audits/UI_U1_LOCAL_CHECKPOINT_20260906.md)
 preserves both findings and the ambient `.DS_Store` dirty-diagnostic qualification.
-The current instrument correction records full boundary ancestry, proves protected/unprotected
-native gap outcomes with exact restoration, and uses `ui-rail-copy-check.mjs` for the four hidden
-right copies. [The correction audit](../../audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) records
-30 focused tests passed (20 boundary/wiring, 10 Atlas); static validation, clean-candidate Slice and
-both phone canaries are pending. Nick authorized completing these remaining U1 checks. Preserve
-the original ambient file, product layout and old evidence. Physical UAT and both older unknown
-causes remain open; U2–U4, Phase2 and hosted work have not started.
+The rail correction passed on clean signed source `1609cf3991e20da45d5e4628fd2163278ece5ec8`:
+isolated develop profile 312 files, 3333 passed/one skipped; Slice PASS in 370012ms with zero
+findings, ten PNGs and exact named verification. Both rail controls prove their own boundary,
+native dismissal without protection and exact restoration; the four hidden right copies retain
+their strict oracle. Small-phone Glass then stopped PRODUCT RED on one `#hintpill` contrast
+finding (1 below 4.5); large phone was NOT RUN. The [manifest](../../audits/UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json)
+retains all eight stage logs and exact carriers. The original ambient file remains untouched.
+The ce89128 normal three-view PASS describes prior geometry and does not test the newly outlined text.
+
+The [bounded hint correction](../../audits/UI_U1_HINT_CONTRAST_20260906.md) paints a 2px opaque
+black glyph stroke behind the fill, leaving at least 1px outside the glyph. It changes no pill,
+layout or geometry. Glass conservatively recognizes proven stroke while preserving its 4.5
+threshold and effective-opacity checks. Preparation passed 25 stroke tests, 72 release/budget/evidence tests, root TypeScript, evidence
+build and root validate. Fresh committed browser validation remains pending.
+The development draft still has 81 bullets and now mentions the outline. Current Compendium producer authority is
+`6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`; measurement authority
+`4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` is unchanged.
+U2 is the next development batch once these bounded checks finish. Physical UAT and both older
+unknown causes remain OPEN; U2–U4, Phase2 and hosted work have not started.
 
 U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options before use).
 It owns an isolated headless browser and creates three golden comparison sheets plus numeric

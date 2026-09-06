@@ -90,3 +90,12 @@ retried; its execution/source and all stage logs are preserved in
 UI_U1_RAIL_STATIC_7c20246_RED_20260906/manifest.json (SHA256 d3620f4fad21ec53589fee99f07e912c243382e6020f3aafc11d4a679bcc87e2).
 The declaration successor is16 local commits ahead before terminal evidence; no push. Continue
 one clean changed-source static/Slice/phone sequence under Nick's existing finish authorization.
+
+## Terminal rail validation follow-up — 2026-09-06
+
+Clean signed1609cf3991e20da45d5e4628fd2163278ece5ec8 passed develop static3333/1skip and Slice
+in370012ms with zero findings/tenPNGs; exact named verification passed. Both rail faults are
+covered by three native phases and exact restoration. Small-phone then reported one separate
+hint contrast RED; large-phone stopped before launch. Full23-carrier checkpoint is retained in
+UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json. UI_U1_HINT_CONTRAST_20260906.md owns the
+bounded outline correction. Prior red checkpoints above remain unchanged.

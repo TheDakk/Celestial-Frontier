@@ -32,12 +32,25 @@ predecessors, 15000ms transport, fonts → two animation frames and debugger tim
 font/frame evaluation 283, geometry evaluation 284 and ordered receipt 33 establish current
 390×844 completion; `../audits/UI_U1_UAT_RESTORATION_20260906.md` owns evidence. Both older
 blockers stay historical OPEN: the old cause is unknown and nonrecurrence is not repair.
-The bounded Slice correction is implemented: complete boundary ancestry and exact restoration,
-plus `ui-rail-copy-check.mjs` for the four hidden right copies. [The correction audit](../audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md)
-records 30 focused tests passed; static validation, clean-candidate Slice and both phone canaries
-remain pending. Nick authorized finishing these U1 checks before U2. Accepted product and the
-historical ce89128 RED remain unchanged; physical UAT and both older causes stay open. U2–U4,
-Phase2 and hosted work are unstarted.
+Clean signed source `1609cf3991e20da45d5e4628fd2163278ece5ec8` passed the isolated develop
+profile (312 files, 3333 passed/one skipped), then Slice in 370012ms with zero findings, ten PNGs
+and exact named verification. Rail-only protection, native unprotected dismissal and exact
+restoration passed; the strict four-copy right-rail oracle remains. Small-phone Glass then
+stopped PRODUCT RED on one `#hintpill` contrast finding (1 below 4.5); large phone was NOT RUN.
+The [retained manifest](../audits/UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json) preserves
+that stop and clean-source evidence. The ce89128 normal three-view PASS remains prior geometry
+evidence and does not verify the new outlined text.
+
+The next bounded [hint contrast correction](../audits/UI_U1_HINT_CONTRAST_20260906.md) adds a
+2px opaque black glyph stroke behind the fill, with at least 1px outside each glyph, changing no
+pill or layout geometry. Glass recognizes proven stroke while preserving its 4.5 threshold and
+effective-opacity checks. Preparation passed 25 stroke tests, 72 release/budget/evidence tests, root TypeScript, evidence
+build and root validate. Fresh committed browser validation remains pending. The development draft
+still has 81 bullets and mentions the outline. Compendium producer authority is now
+`6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`; measurement
+`4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` is unchanged.
+U2 is the next development batch after these bounded checks finish. Physical UAT and both older
+causes remain OPEN; U2–U4, Phase2 and hosted work have not started.
 Exact source and local evidence are recorded in the live ROADMAP handoff.
 The instrument-only navigation successor is scoped in
 `../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`; the retained navigation blocker stays OPEN.

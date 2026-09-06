@@ -1,5 +1,17 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U1 guidance contrast correction — 2026-09-06
+
+Clean1609cf3 passed develop static (312 files/3333 passed/1 skipped), Slice and exact named
+verification. Small-phone then retained one hint contrast RED; large-phone did not run.
+The accepted layout remains fixed. Its plain guidance gains an opaque dark glyph outline and
+a conservative stroke-aware contrast check; the threshold remains4.5. New committed local
+validation is pending. [The audit](../../audits/UI_U1_HINT_CONTRAST_20260906.md) owns current
+status and the23-carrier prior checkpoint. U2 is the next development batch after these checks;
+physical UAT and the two historical unknown causes remain open. No U2–U4, Phase2 or hosted work.
+Earlier ledger entries below are retained verbatim.
+
+
 ## Bounded U1 rail-instrument correction — 2026-09-06
 
 Nick authorized finishing the remaining U1 checks. Slice now tests complete boundary ancestry

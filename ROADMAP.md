@@ -17,76 +17,60 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-06 · U1 RAIL INSTRUMENT CORRECTED / FINAL LOCAL CHECKS PENDING
+## SESSION HANDOFF — 2026-09-06 · U1 FINAL GUIDANCE CONTRAST CHECK
 
-OpenAI/Codex on macOS | openai/mac | /Users/nick/Projects/celestial-frontier-openai-mac |
-origin/openai/mac. Entry f499fda35a94798fa791e21c6143406b4971d4ab was14 commits ahead locally.
-The signed correction carrying this handoff is15 ahead; no push. Physical root/branch/upstream
-verified; root main.js absent and ambient .DS_Store preserved. Same-session SSH
+OpenAI/Codex on macOS | /Users/nick/Projects/celestial-frontier-openai-mac | openai/mac |
+origin/openai/mac. Entry signed1609cf3991e20da45d5e4628fd2163278ece5ec8 is16 commits ahead;
+the correction carrying this handoff will be17 ahead. No push. Physical root/branch/upstream
+verified, root main.js absent, ambient .DS_Store preserved. Same-session SSH remote
  git@github.com:TheDakk/Celestial-Frontier.git/account TheDakk/read+fetchPASS and origin/develop
 c1791e2 ancestor receipts reused. No other agent worktree edited.
 
-Nick explicitly authorized finishing this bounded local U1 gate without further generic
-confirmation. U1 product053ef439774520577071f0ca50887337dd938755 remains accepted FOR UAT and
-unchanged. U2 is the next development phase after the gate; no U2–U4, Phase2 or hosted execution.
+Nick authorized finishing local U1 checks without repeated generic permission and asked to get
+to U2. U1 accepted geometry stays fixed. The final correction adds a thin dark letter outline
+to the plain bottom guidance for bright scenes and recognizes that proved stroke in Glass
+without accepting arbitrary shadows or weakening4.5:1. Native controls must reject broken
+outlines and preserve exact style/geometry restoration. Release81bullets updated in place;
+producer6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90, measurement
+4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12. No gameplay/save/art change.
 
-Both ce89128 Slice findings are corrected in the instrument. The left gap control proves the
-rail alone protects with the dock marker removed, then proves dismissal without either marker,
-restores exact attributes and re-proves native protection. Each phase reads the effective chain,
-geometry, receipt and panel result; failures survive cleanup and causal-stop. The right rail
-control remains independent. ui-rail-copy-check.mjs requires all four intentionally hidden
-right controls plus exact compact owners/zero geometry; existing live reveal/restore faults stay.
-Focused20 boundary/wiring and10 atlas tests PASS; the atlas fixture-parser-only9/10RED is retained
-alongside its changed-parserPASS. Root validate/fingerprintPASS. Preparation evidence is in
- audits/UI_U1_RAIL_CONTROL_PREP_20260906/manifest.json.
+Clean1609cf3 develop staticPASS312files/3333passed/1skip; SlicePASS370012ms/zero findings/tenPNGs;
+exact named verifierPASS. Both rail instrument corrections are proved. Small-phone then RED:
+one TEXT_CONTRAST_LOW for hintpill (modeled1 vs4.5), zero instrument failures; large NOT RUN.
+All23carriers retained in audits/UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json,
+SHA1ad81a5a4d7e94d362d095c6f73d7624aef309cf6a0fb248cc61a854d0a8265b. New audit:
+ audits/UI_U1_HINT_CONTRAST_20260906.md. Historical ce89128 RED and all earlier evidence remain.
 
-Clean source7c20246b2b0c238a7e1bf14d1c405ddb368bf75a passed312files/3333tests/1skip, then
-root TypeScript stopped at TS7016 for the new helper's missing declaration. No browser ran.
-The successor adds only ui-rail-copy-check.d.mts; focused root no-unused TypeScript and root
-validate PASS. Exact red logs are in audits/UI_U1_RAIL_STATIC_7c20246_RED_20260906/manifest.json.
-The source successor carrying this declaration is16 commits ahead locally, no push.
+Preparation PASS:25 stroke tests,72 release/budget/evidence tests,root TypeScript,evidencebuild
+and root validate/fingerprint. Six carriers: audits/UI_U1_HINT_PREPARATION_20260906/manifest.json.
+Next: commit signed correction, then one clean local test artifact
+with develop static → small-phone → large-phone → Slice develop/exact named verification on
+unchanged source. Phones are independent noncertifying diagnostics, no Slice predecessor;
+exercise the corrected phone first to avoid an unnecessary Slice run if it fails. This is not
+the full admission chain. Stop after the first RED/nonzero, no unchanged retry or wider U1 polish.
+The previous ce89128 normal three-viewPASS is prior geometry evidence, not outline verification.
+Retain terminal carriers, refresh all current docs, commit local records, and end the U1 batch.
+U2 is the next development batch; do not start U2–U4, Phase2 or hosted actions here.
 
-Next in this batch: a new clean committed local test artifact, one develop static profile, Slice develop
-with exact named verification, then small-phone/large-phone Edge collectors once in order. Do not
-repeat the ce89128 normal three-view review: app/review source is unchanged and that PASS remains
-source-bound. Do not retry any unchanged red source. Retain new failures before a bounded repair;
-no automatic expansion into unrelated work. Full Compendium/Glass/Recovery are outside this U1 gate.
+Keep exact clean-source classification: local --no-local clone of signed HEAD only as a test
+artifact, locked dependencies, empty full status, no main.js; edit/commit only in owned project.
+Hold shared toolchain lock through each whole build/check/browser job and request first-attempt
+macOS escalation for owned isolated Edge. Do not run Chrome-only targeted verifier on Edge.
+No new full Compendium/Glass/Recovery battery; historic certification cannot be rebound.
 
-Use a local --no-local clone of the signed candidate solely as a retained test artifact. Keep
-editing/committing in this owned project. Install locked dependencies, require empty full Git
-status and absent main.js, and preserve the original .DS_Store. No source-classifier exception.
-Keep one toolchain lock through clone/static/browser stages and first-attempt macOS escalation.
-Edge phone reports self-verify locally; do not apply the Chrome-only hosted verifier to Edge.
-Current audit: audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md.
+Both old causes remain unknown/OPEN:08cd97d Skip→EscapeCosmos→unsolicitedMilkyWay;
+c57aaaeb phoneportrait Runtime.evaluate timeout (oldexpression unknown; cleanupresponsive,
+all4debugger pauses resumed). Scoped381ddf5 restoration and ce89128 normalPASS are nonrecurrence,
+not causalrepair. Physical iPhone/Safari/PWA UAT remains open. U2 Training/Settings work must
+reconcile the earned Settings-above-Training law before implementation.
 
-Historical ce8912864fabbe5624651e76c06b94f95b734f39 SliceRED remains noncertifying/dirty-diagnostic
-because ambient .DS_Store was included; tracked source and begin/end receipts were unchanged.
-Manifest audits/UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/manifest.json SHA256
-6d2645e2342cd32fc1f0a95234ee76ef53ad342d16035a3dba1702c85ed97e13 retains28carriers and19PNGs.
-Static311files/3322tests/1skip and normal3viewPASS remain that source's completed checks; neither
-phone canary ran there. Isolated381ddf5 restorationPASS stays separate and complete.
-
-Both older causes remain unknown/OPEN:08cd97d native Skip→EscapeCosmos→unsolicitedMilkyWay and
-c57aaaeb phone portrait Runtime.evaluate timeout (old pending expression unknown; responsive
-cleanup/all4debugger pauses resumed). Current passes do not prove causal repair. Prior audits
-UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md/UI_U1_COMPACT_CONTROLS_20260906.md remain immutable.
-App/release81bullets/producer7a67c0db…/measurement4a93479b…/ceilings/packages/workflows/assets unchanged.
-Physical-device UAT stays open. U2 Training/Settings stacking must reconcile the earned
-Settings-above-Training law before implementation.
-
-Codex: finish the defined local gate. Claude: no need to open Claude now; preserve anthropic/mac
-and unmerged173c806, no copying/merge/duplicate battery. Future openai/mac→develop integration
-needs separate exact hosted authority. No PR now; develop/main/live unchanged.
-
-Audiovisual B–D candidates exist; preservation CLOSED, integrated pilot UNAPPROVED and eight
-anatomical animations INCOMPLETE with protected static fallbacks. Matched listening, physical
-iPhone/Safari/PWA and 256MiB retained-update enforcement remain OPEN; 128MiB admission exists.
-Separate lane: audits/AAA_PILOT_REFINEMENT_20260905.md, AAA_GAP_AUDIT.md, AAA_COVERAGE_LEDGER.md,
-port/AAA_ASSET_POLICY.md. Do not restart Batch A. Artlock CI lane, ITP protection and DECISIONS
-row19 remain open; no legacy import door or new backup acceptance.
-
-Budget UNFROZEN/PUBLIC per last verification, private fallback3000; zero exact hosted authority,
-attempts/writes, labels, PRs, merges, purchases, releases or deployments. Session-start receipt
-2026-09-06T16:28:25.659Z reused with Node26.7.0;26.8.1 deferred for busy tools. A fresh session
-needs the runbook check. Keep terminal-only privacy, shared toolchain locks over whole jobs and
-first-attempt macOS escalation for owned isolated headless browsers.
+Codex: finish the defined local gate and record U2next. Claude: no need to open now; preserve
+anthropic/mac and unmerged173c806, no copying/merge/duplicate battery. Future openai/mac→develop
+integration needs separate exact hostedauthority. NoPRnow; develop/main/live unchanged.
+AudiovisualB–D candidates exist; preservationCLOSED, integratedpilotUNAPPROVED; eight anatomical
+animationsINCOMPLETE with protectedstaticfallbacks. Matchedlistening/physicalUAT/256MiBretained
+update enforcementOPEN,128MiBadmissionexists. Separate AAA lane stays parked; do not restartBatchA.
+ArtlockCI/ITP/DECISIONSrow19 remainopen. No new backupacceptance or legacyimportdoor.
+BudgetUNFROZEN/PUBLIC perlastverification/privatefallback3000/zeroexacthostedauthority oractions.
+Sessionstartup2026-09-06T16:28:25.659Z/Node26.7.0 reused;26.8.1 deferred forbusytools. Freshsession
+needs runbookcheck. Terminal-only privacy, toolchainlocks and isolatedbrowser escalation remain.

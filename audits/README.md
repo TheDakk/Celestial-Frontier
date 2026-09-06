@@ -10,6 +10,16 @@ summary of it.
 
 ## Contents
 
+### U1 rail proof and final guidance contrast correction — 2026-09-06
+
+[Current audit](UI_U1_HINT_CONTRAST_20260906.md) retains clean1609cf3 static/Slice/named-verifier
+PASS, small-phone hint contrast RED and large-phone NOT RUN. Its [23-carrier manifest](UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json)
+includes ten PNGs and all eight stage logs. [Preparation](UI_U1_HINT_PREPARATION_20260906/manifest.json)
+retains the bounded glyph-outline correction's 25 stroke tests, 72 release/budget tests,
+TypeScript, build and root validate results. Fresh committed browser validation is pending.
+[Rail correction](UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) retains its prior controls and the
+[7c20246 static declaration RED](UI_U1_RAIL_STATIC_7c20246_RED_20260906/manifest.json).
+
 ### U1 local checkpoint stopped at Slice — 2026-09-06
 
 [Audit](UI_U1_LOCAL_CHECKPOINT_20260906.md) and [resume](UI_U1_LOCAL_CHECKPOINT_RESUME_20260906.md)

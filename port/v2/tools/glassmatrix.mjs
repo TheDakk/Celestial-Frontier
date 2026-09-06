@@ -22,6 +22,7 @@ import { execFileSync, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { readU1PhoneShell } from './ui-shell-review.mjs';
+import { assessGlyphStrokeContrast } from './glass-glyph-stroke-contrast.mjs';
 import { buildCompendiumFixture } from './compendiummem-fixture.mjs';
 import {
   GLASS_VETERAN_CAPTURE_ORACLE,
@@ -7795,7 +7796,7 @@ const MIME = Object.freeze({
   '.woff2': 'font/woff2',
 });
 
-function installAuditHarness() {
+function installAuditHarness(assessGlyphStrokeContrast) {
   const round = (n) => Number.isFinite(n) ? Math.round(n * 100) / 100 : n;
   const issue = (code, surface, element, actual, expected) => ({ code, surface, element, actual, expected });
   const visible = (el) => {
@@ -8673,14 +8674,20 @@ function installAuditHarness() {
       const nameplateOwner = nameplateOwners.get(el) || null;
       const s = getComputedStyle(el), fg0 = parseColor(s.color);
       if (!fg0) continue;
-      fg0[3] *= cumulativeOpacity(el);
-      const bg = glassBackground(el), fg = composite(fg0, bg), ratio = contrast(fg, bg);
+      const opacity = cumulativeOpacity(el), bg = glassBackground(el);
+      const fg = composite([...fg0.slice(0, 3), fg0[3] * opacity], bg), directRatio = contrast(fg, bg);
+      const glyphStroke = assessGlyphStrokeContrast({ foreground: fg0, background: bg, opacity,
+        strokeWidth: s.webkitTextStrokeWidth, strokeColor: parseColor(s.webkitTextStrokeColor), paintOrder: s.paintOrder });
+      const ratio = Math.max(directRatio, glyphStroke.eligible ? glyphStroke.ratio : 0);
       const size = parseFloat(s.fontSize) || 13, weight = parseInt(s.fontWeight, 10) || 400;
       const large = size >= 24 || (size >= 18.66 && weight >= 700), threshold = large ? 3 : 4.5;
       if (ratio + 0.01 < threshold) {
         contrastReports++;
         out.push(issue('TEXT_CONTRAST_LOW', surface, selectorName(utilityOwner || nameplateOwner || el), {
           ratio: round(ratio), threshold, color: s.color, background: bg.map(round), sample: sample.slice(0, 80),
+          ...(parseFloat(s.webkitTextStrokeWidth) > 0 ? { glyphStroke: { width: s.webkitTextStrokeWidth,
+            color: s.webkitTextStrokeColor, paintOrder: s.paintOrder, opacity, eligible: glyphStroke.eligible,
+            reason: glyphStroke.reason, ratio: glyphStroke.ratio === null ? null : round(glyphStroke.ratio) } } : {}),
           ...(utilityOwner ? { sampleElement: selectorName(el), sampleKind: el.hasAttribute('data-notification-count') ? 'notification-count' : 'utility-glyph' } : {}),
           ...(nameplateOwner ? { sampleElement: '#playerchip', sampleKind: 'inventory-nameplate' } : {}),
         }, 'WCAG contrast against bright artwork beneath glass'));
@@ -8834,6 +8841,64 @@ function installAuditHarness() {
     list = audit({ surface: 'selftest-nonglass', root: '#cf-control-nonglass', textMin: 4, interactiveRoots: [], contrastSelectors: ['#cf-control-nonglass-copy'] });
     expect('non-glass translucent-chain injection', list, 'TEXT_CONTRAST_LOW', '#cf-control-nonglass-copy');
     nonGlass.remove();
+    // Native computed CSS calibrates the narrow opaque-stroke allowance. Shadows
+    // alone cannot turn white text over the worst bright artwork green.
+    const strokeRoot = document.createElement('section');
+    strokeRoot.id = 'cf-control-stroke-root';
+    strokeRoot.style.cssText = 'position:fixed;left:8px;top:8px;width:240px;height:60px;background:none;z-index:1000';
+    strokeRoot.innerHTML = '<span id="cf-control-stroke-copy" style="color:#fff!important;font-size:13px;-webkit-text-stroke:2px #000;paint-order:stroke fill;text-shadow:0 1px 3px #000,0 0 8px #000">Opaque glyph halo control</span>';
+    document.body.appendChild(strokeRoot);
+    const strokeCopy = strokeRoot.querySelector('#cf-control-stroke-copy');
+    const strokeOptions = { surface: 'selftest-glyph-stroke', root: '#cf-control-stroke-root', textMin: 4,
+      required: [{ selector: '#cf-control-stroke-copy', min: 1, textMin: 4 }], interactiveRoots: [], contrastSelectors: ['#cf-control-stroke-copy'] };
+    const restoreStrokeStyle = (node, prior) => {
+      node.setAttribute('style', ''); node.removeAttribute('style');
+      if (prior !== null) node.setAttribute('style', prior);
+      if (node.getAttribute('style') !== prior) failures.push('glyph stroke exact style restoration failed for ' + selectorName(node));
+    };
+    const strokeClean = (label) => {
+      const style = getComputedStyle(strokeCopy), computed = { strokeWidth: style.webkitTextStrokeWidth,
+        strokeColor: parseColor(style.webkitTextStrokeColor), paintOrder: style.paintOrder };
+      const measured = assessGlyphStrokeContrast({ ...computed, foreground: parseColor(style.color),
+        background: glassBackground(strokeCopy), opacity: cumulativeOpacity(strokeCopy) });
+      if (!visible(strokeCopy) || !measured.eligible || measured.ratio < 4.5)
+        failures.push(label + ': native opaque stroke positive failed: ' + JSON.stringify({ computed, measured }));
+      reject(label, audit(strokeOptions), 'TEXT_CONTRAST_LOW', '#cf-control-stroke-copy');
+    };
+    try {
+      strokeClean('opaque glyph stroke positive');
+      for (const [label, node, property, value] of [
+        ['blurred shadows without stroke', strokeCopy, '-webkit-text-stroke-width', '0px'],
+        ['thin glyph stroke', strokeCopy, '-webkit-text-stroke-width', '1px'],
+        ['translucent glyph stroke', strokeCopy, '-webkit-text-stroke-color', 'rgba(0,0,0,.5)'],
+        ['light glyph stroke', strokeCopy, '-webkit-text-stroke-color', '#eee'],
+        ['fill-first glyph stroke', strokeCopy, 'paint-order', 'fill stroke'],
+        ['normal glyph paint order', strokeCopy, 'paint-order', 'normal'],
+        ['glyph element opacity', strokeCopy, 'opacity', '.15'],
+        ['glyph ancestor opacity', strokeRoot, 'opacity', '.15'],
+      ]) {
+        const prior = node.getAttribute('style');
+        try {
+          node.style.setProperty(property, value, 'important');
+          expect(label, audit(strokeOptions), 'TEXT_CONTRAST_LOW', '#cf-control-stroke-copy');
+        } finally { restoreStrokeStyle(node, prior); }
+        strokeClean(label + ' restoration');
+      }
+    } finally { strokeRoot.remove(); }
+    const hint = document.getElementById('hintpill');
+    if (!hint || !visible(hint)) failures.push('live hint glyph stroke control needs its visible HUD subject');
+    else {
+      const hintStyle = hint.getAttribute('style'), hintBox = box(hint);
+      const hintOptions = { surface: 'selftest-hint-glyph-stroke', root: '#hintpill', textMin: 8,
+        interactiveRoots: [], contrastSelectors: ['#hintpill'] };
+      reject('live hint glyph stroke positive', audit(hintOptions), 'TEXT_CONTRAST_LOW', '#hintpill');
+      try {
+        hint.style.setProperty('-webkit-text-stroke-width', '0px', 'important');
+        expect('live hint glyph stroke removal', audit(hintOptions), 'TEXT_CONTRAST_LOW', '#hintpill');
+      } finally { restoreStrokeStyle(hint, hintStyle); }
+      reject('live hint glyph stroke restoration', audit(hintOptions), 'TEXT_CONTRAST_LOW', '#hintpill');
+      if (JSON.stringify(box(hint)) !== JSON.stringify(hintBox)) failures.push('live hint glyph stroke restoration changed its layout geometry');
+    }
     const utilityRoot = document.createElement('section');
     utilityRoot.id = 'cf-control-utility-root';
     utilityRoot.style.cssText = 'position:fixed;left:8px;top:8px;width:240px;height:64px;background:#fff;z-index:1000';
@@ -9776,7 +9841,7 @@ async function main() {
           recordInstrumentFailure(`${vp.label}: slice did not become ready (${ready?.why || 'no diagnostic'})`);
           continue;
         }
-        await evalIn(`(${installAuditHarness.toString()})()`);
+        await evalIn(`(${installAuditHarness.toString()})(${assessGlyphStrokeContrast.toString()})`);
         const audit = (options) => evalIn(`window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(options)})`);
         const waitFor = async (label, expression, timeoutMs = 5000, accept = (value) => !!value) => {
           const until = Date.now() + timeoutMs;
@@ -10487,7 +10552,7 @@ async function main() {
             reloadCaptureArmed = false;
             requestUrls.clear();
           }
-          await evalIn(`(${installAuditHarness.toString()})()`);
+          await evalIn(`(${installAuditHarness.toString()})(${assessGlyphStrokeContrast.toString()})`);
           await waitFor('preference Training', `window.__CF_SLICE__.api.state().tutActive && window.__CF_SLICE__.api.state().codexCount>=3 && document.querySelector('[data-sel=tuttext]')?.textContent?.trim().length>60`);
           add(vp.label, 'training-preferences', await audit({
             ...common, surface: 'training-preferences', root: '#tutcard', textMin: 80,

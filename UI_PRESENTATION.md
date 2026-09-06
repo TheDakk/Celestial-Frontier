@@ -73,8 +73,10 @@ Panel/Training focus, Close and Escape owners remain authoritative.
 Bottom guidance is plain text with no pill, border, padding or backdrop blur. Wide hint starts
 18px above safe bottom and context 64px; phone hint 124px and context 164px. Context rises when
 needed to clear measured hint height by 8px. Context retains its independent translucent contrast
-backing with zero padding/border/radius; guidance uses readable color and text shadow. Wide
-bottom-anchored utility panels and notices align with the corner controls and clear their
+backing with zero padding/border/radius. Guidance now paints a 2px opaque black glyph stroke
+behind its fill (`paint-order:stroke fill`), leaving at least 1px outside each glyph for contrast
+against bright artwork. The outline adds no pill or box and changes no layout measurements.
+Wide bottom-anchored utility panels and notices align with the corner controls and clear their
 measured height. U2 owns later sheet interiors and stacking refinements.
 
 Notifications retains saved read/unread history and clearly labelled session-only notices
@@ -134,13 +136,23 @@ selftests and root validate passed; two PNGs were retained with zero runtime/eva
 or key overflow. Evidence: `audits/UI_U1_UAT_RESTORATION_20260906.md` and
 `audits/UI_U1_UAT_RESTORATION_381ddf5_20260906/manifest.json`.
 
-The accepted layout is unchanged. Slice's gap control now records the full boundary ancestry,
-proves rail-only protection before unowned native dismissal, and restores exact attributes and
-protected geometry. `ui-rail-copy-check.mjs` checks the boxless left owner and all four hidden
-right copies. [The correction audit](audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) owns current
-status: 30 focused tests passed; static validation, a clean Slice run and both phone canaries are
-pending. The historical ce89128 RED is unchanged. Physical UAT and both older unknown causes
-remain open; these authorized U1 checks precede U2. No U2–U4, Phase2 or hosted work has started.
+The rail correction passed on clean signed source `1609cf3991e20da45d5e4628fd2163278ece5ec8`:
+the isolated develop profile passed 312 test files, 3333 tests and one skip; Slice passed in
+370012ms with zero findings, ten PNGs and exact named verification. Both gap controls retained
+rail-only protection, unprotected native dismissal and exact restoration. The subsequent
+small-phone Glass diagnostic stopped PRODUCT RED on one `#hintpill` contrast finding (1 against
+4.5); large phone was NOT RUN. The [retained manifest](audits/UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json)
+keeps that stop, all eight execution logs and exact clean-source evidence. The earlier ce89128
+three-view normal review remains prior geometry evidence; it does not test the new outlined text.
+
+The bounded [hint contrast correction](audits/UI_U1_HINT_CONTRAST_20260906.md) adds the glyph
+outline described above. Glass recognizes only a proven opaque stroke painted behind the fill,
+while retaining its 4.5 threshold and effective-opacity checks. Preparation passed 25 stroke tests, 72 release/budget/evidence tests, root TypeScript, evidence
+build and root validate. Fresh committed browser validation remains pending. The development draft still has 81 bullets and now mentions the outline; Compendium producer authority
+is `6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`, with measurement authority
+`4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` unchanged.
+U2 is the next development batch after these bounded checks finish. Physical UAT and both older
+unknown causes remain OPEN; U2–U4, Phase2 and hosted work have not started.
 
 U1 diagnostic update (2026-09-06): the normal-review tool adds viewport/resize facts and
 session-owned, auto-resuming trail-writer stacks. That diagnostic changed no product layout.
