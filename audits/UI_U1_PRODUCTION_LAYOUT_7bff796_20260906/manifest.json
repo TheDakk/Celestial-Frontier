@@ -1,0 +1,209 @@
+{
+  "schema": "cf-u1-production-layout-checkpoint/v1",
+  "source": "7bff7967fef6b6d6f6b99480098a92c8501da994",
+  "status": "STOPPED",
+  "scope": "Local U1 revision, no hosted/full Glass/real-device/human approval claim.",
+  "results": {
+    "source": "7bff7967fef6b6d6f6b99480098a92c8501da994",
+    "rootMainAbsent": true,
+    "checks": [
+      {
+        "name": "install",
+        "command": [
+          "npm",
+          "ci",
+          "--prefer-offline",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "startedAt": "2026-09-06T15:43:46.060353+00:00",
+        "endedAt": "2026-09-06T15:43:48.077245+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "startedAt": "2026-09-06T15:43:48.077874+00:00",
+        "endedAt": "2026-09-06T15:43:51.079412+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "artunused",
+        "command": [
+          "npm",
+          "run",
+          "artunused"
+        ],
+        "startedAt": "2026-09-06T15:43:51.079954+00:00",
+        "endedAt": "2026-09-06T15:43:52.414317+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "vitest",
+        "command": [
+          "npx",
+          "vitest",
+          "run"
+        ],
+        "startedAt": "2026-09-06T15:43:52.414717+00:00",
+        "endedAt": "2026-09-06T15:44:37.254788+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "glass-selftest",
+        "command": [
+          "node",
+          "tools/glassmatrix.mjs",
+          "--selftest"
+        ],
+        "startedAt": "2026-09-06T15:44:37.255325+00:00",
+        "endedAt": "2026-09-06T15:44:39.571031+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "normal-build",
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ],
+        "startedAt": "2026-09-06T15:44:39.571414+00:00",
+        "endedAt": "2026-09-06T15:44:41.909023+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "ui-review",
+        "command": [
+          "node",
+          "tools/ui-shell-review.mjs",
+          "/private/tmp/cf-u1-checkpoint-7bff796/port/v2/apps/game/dist",
+          "/private/tmp/cf-u1-checks-7bff796/review"
+        ],
+        "startedAt": "2026-09-06T15:44:41.909400+00:00",
+        "endedAt": "2026-09-06T15:44:52.448091+00:00",
+        "exitCode": 1
+      }
+    ]
+  },
+  "slice": null,
+  "glass": [],
+  "review": {
+    "status": "FAIL",
+    "rows": [
+      {
+        "name": "phone",
+        "pass": true
+      },
+      {
+        "name": "desktop",
+        "pass": true
+      }
+    ],
+    "images": 5,
+    "failure": "AssertionError [ERR_ASSERTION]: Settings diagnostic must remain exactly three programmatic clicks, never claimed as trusted native delivery"
+  },
+  "files": [
+    {
+      "file": "install.log.gz",
+      "bytes": 178,
+      "sha256": "55d839bb353a982076ae477da0687bb5e410e0336640a4a8e1e8cfe33942ba3c",
+      "originalBytes": 332,
+      "originalSha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de"
+    },
+    {
+      "file": "typecheck.log.gz",
+      "bytes": 99,
+      "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
+      "originalBytes": 134,
+      "originalSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "file": "artunused.log.gz",
+      "bytes": 70,
+      "sha256": "876709bbe6c507f5d7e821ad1dfbda92aa8c5cced4bfc03ea9924afec72a21c2",
+      "originalBytes": 58,
+      "originalSha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "file": "vitest.log.gz",
+      "bytes": 2191,
+      "sha256": "82c6805f728a4a9b50c5e7f021fddf643628116782354772b5519e2975f67a87",
+      "originalBytes": 5853,
+      "originalSha256": "e72f4449e7fedcdf689b87795791f2c42732d987f9ba7fc99349fbb2e5d92eb4"
+    },
+    {
+      "file": "glass-selftest.log.gz",
+      "bytes": 557,
+      "sha256": "0934004f4289bdc8411b08aad1f719dd3c0dc680ec7b0bc815187393b563f0c0",
+      "originalBytes": 909,
+      "originalSha256": "c8f8ecabf4fa8c386cf0a6474708e6644549228bbf468849c97d5bfaca6ce067"
+    },
+    {
+      "file": "normal-build.log.gz",
+      "bytes": 1876,
+      "sha256": "d3ce05ee258a9bc45f9137340b60035b2955db76d8e00efc0dd8253b27e9f89a",
+      "originalBytes": 5281,
+      "originalSha256": "e01f5ad400e9d4e3957a3a967834ec363a47eaffac27fd3847b9cdeac611d6b1"
+    },
+    {
+      "file": "ui-review.log.gz",
+      "bytes": 366,
+      "sha256": "a6a7ceb15b7154f6895ef46728f07420840c43085f74457fc197e8f2119c06a2",
+      "originalBytes": 564,
+      "originalSha256": "fa32be87161d7c14bac9ac0ec48a73c1a7eabb1bc5d674f7c9d3bdc01387c82d"
+    },
+    {
+      "file": "results.json.gz",
+      "bytes": 509,
+      "sha256": "4026ee95f33e53d18e3960ce7b5502d358a6967ebe3040b04fd9fe2a293c0911",
+      "originalBytes": 2016,
+      "originalSha256": "cfb7f01aa870ea0e332f4f5b22b91e201b2a85eeb1aa81be42b5685649c5615a"
+    },
+    {
+      "file": "review.json.gz",
+      "bytes": 66932,
+      "sha256": "acd119f4e5d2c8015473aa6cba73a5157151ff0a0872da63476271e837077de7",
+      "originalBytes": 2764023,
+      "originalSha256": "6cacd5842b8df7ad83c9b94ea0aa2dd2f8e6357d510745246a6debe08dd0c428"
+    },
+    {
+      "file": "u1-main-desktop.png",
+      "bytes": 258520,
+      "sha256": "76e6dd60f14d0b582938b1301fb570f924ec41c6b75770cb303541bdc1bf81eb",
+      "originalBytes": 258520,
+      "originalSha256": "76e6dd60f14d0b582938b1301fb570f924ec41c6b75770cb303541bdc1bf81eb"
+    },
+    {
+      "file": "u1-main-phone-comparison.png",
+      "bytes": 595322,
+      "sha256": "7a8b0f05b227d08f19c6fde112bdcd1710bcaf4e646cb6f5585e16093d1e16bf",
+      "originalBytes": 595322,
+      "originalSha256": "7a8b0f05b227d08f19c6fde112bdcd1710bcaf4e646cb6f5585e16093d1e16bf"
+    },
+    {
+      "file": "u1-main-phone.png",
+      "bytes": 173415,
+      "sha256": "9873a04de5a19614a713097e33074e4d4b455dfb2bede311da8ff893e5672d0e",
+      "originalBytes": 173415,
+      "originalSha256": "9873a04de5a19614a713097e33074e4d4b455dfb2bede311da8ff893e5672d0e"
+    },
+    {
+      "file": "u1-notifications-desktop.png",
+      "bytes": 287870,
+      "sha256": "0e1e62088d19056a1fae3c386a92666a8402ff6699787bb5e628a2a06384ecf4",
+      "originalBytes": 287870,
+      "originalSha256": "0e1e62088d19056a1fae3c386a92666a8402ff6699787bb5e628a2a06384ecf4"
+    },
+    {
+      "file": "u1-notifications-phone.png",
+      "bytes": 180456,
+      "sha256": "d98b7756300a60b6d9430a062f7310152299ee24e756076a8757726cf4442f45",
+      "originalBytes": 180456,
+      "originalSha256": "d98b7756300a60b6d9430a062f7310152299ee24e756076a8757726cf4442f45"
+    }
+  ]
+}

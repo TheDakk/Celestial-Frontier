@@ -31,6 +31,16 @@
       "correction": "Republish header height from the existing body-class observer before surface clearance; regression covers coalesced same-task class changes without ResizeObserver delivery. Declare type=button on the three restored visible controls. Preserve rendered-boundary receipts and the unchanged geometry/native-control oracle.",
       "laterStages": "Two phone Glass rows not run after Slice RED; no unchanged-source retry.",
       "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_9c869c3_20260906/manifest.json"
+    },
+    {
+      "source": "7bff7967fef6b6d6f6b99480098a92c8501da994",
+      "stage": "normal ui-shell review, new programmatic Settings trace",
+      "priorStages": "Typecheck, artunused, 311 files / 3319 tests / 1 skipped, Glass selftest and normal build PASS",
+      "result": "RED: expected three programmatic click receipts, trace supplied only docksets and Close. Auto was already selected, so that value did not prove the Motion handler ran.",
+      "cause": "The reloaded desktop review document lacked mutation authority. The product read-only guard captures [data-motion] and calls stopImmediatePropagation, correctly blocking that Settings mutation and preventing the later recorder from seeing it. Initial filtered-recorder diagnosis was incorrect.",
+      "correction": "Run the exact sequence in the first writable review document at a temporary wide viewport, collect three per-control actual untrusted click receipts and retain the document trace separately, then restore original viewport/shell in finally. Never force save authority or bypass the read-only guard. Keep63 native count and geometry oracle; no product changes.",
+      "laterStages": "Slice and both phone Glass rows not run after the diagnostic RED; no unchanged-source retry.",
+      "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_7bff796_20260906/manifest.json"
     }
   ]
 }

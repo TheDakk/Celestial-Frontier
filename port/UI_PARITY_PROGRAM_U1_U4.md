@@ -21,6 +21,11 @@ This is bounded U1 under the existing visual approval stop. No U2–U4 or Phase2
 
 ### Superseded amendments below (preserved verbatim)
 
+The historical headings and text below are retained as written. Their former “current” and
+“still applicable” labels describe their earlier checkpoints; the latest screenshot amendment
+above supersedes their geometry. The saved-notification decision and unresolved U2 stacking
+conflict remain active.
+
 Latest amendment — Nick's top/left refinement, 2026-09-06: keep the approved bottom
 launcher, align the top and left controls, stack and space the left actions consistently,
 and improve the health gauge. Cosmos belongs at the top; no floating button belongs in the
