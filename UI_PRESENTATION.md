@@ -26,8 +26,8 @@ face and borders. Default Inter's Compendium label measures 54.338px: it fits on
 without shrinking the font. The default dock is therefore 92px tall (44px board row + 4px gap
 + 44px utility row). This is the default Inter content baseline, not a fixed height for all
 Settings text preferences; the board row retains `minmax(44px,auto)` and grows for larger text.
-The native control restores the former 1px horizontal padding, reproduces the 54px content
-width, wrapped label and 93.6875px dock, then restores the exact styles. Chip widths, 64px
+The bounded native diagnosis compares the original 1px horizontal padding with zero, then
+restores the original exact styles and reproduces the wrapped label and 93.6875px dock. Chip widths, 64px
 pitch, vertical padding and text sizes are unchanged.
 
 Desktop/tablet begins at701px. Nick chose the FINAL LAYOUT bottom-right utility cluster;

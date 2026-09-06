@@ -1,5 +1,34 @@
 # U1 presentation checkpoint — 2026-09-06
 
+## Final local checkpoint — cfd63ae
+
+Exact tested source `cfd63ae6a024d806c2df02fd65b64f066f973021` passed a fresh checkout with root main.js absent:
+311 Vitest files / 3,300 tests / 1 skipped, typecheck, artunused, Glass selftest,
+Slice `20260906091030879-84426-e7f8f021242a` (374208ms), and both phone canaries:
+20260906091646886-84800-e3a2e6e93436 (small-phone); 20260906091702950-84915-6ed69372fd67 (large-phone). Both report zero product findings and instrument failures.
+A fresh normal build then passed the three-view UI review (phone390x844,
+desktop1440x900, tablet834x1112), with9 PNGs and zero console errors.
+Immutable carriers, fresh-build log, review build hashes and screenshots are in `UI_U1_FINAL_cfd63ae_20260906/`.
+
+All nine review images were inspected; see `UI_U1_FINAL_cfd63ae_20260906/VISUAL_REVIEW.md` for
+remaining visual choices and observed text truncation. No visible U1 access blocker was found.
+
+These are local scoped phone diagnostics and U1 visual evidence, not a full Glass or
+Compendium certificate, hosted result, real-iPhone test or human visual approval.
+The comparison's raster difference is for human review: scene/save/font differences prevent
+interpreting all changed pixels as geometry defects. Review mutations verify changed property
+values/priorities and restored geometry; their label “exact style restored” does not claim
+full style-attribute presence/byte identity. The separate label diagnosis does verify exact
+attribute restoration. Desktop rail pseudo-element contrast backing remains a stated U4
+coverage limitation, outside the completed phone canaries.
+
+Current producer `0df5435f66dbd057b15690404aeb38a4dcfb2d09c2bb344a53288acac237535e` and all five component pins agree; measurement,
+ruler, ceilings, samples and paired baseline remain unchanged. All prior failures remain
+below and in UI_U1_REDS_20260906.json. Normal branch push only; no U2, Phase2, hosted attempt,
+PR, label, merge, purchase, release or deployment. Nick's U1 visual approval is the next stop.
+
+## Preserved preparation and progress records
+
 Status: IMPLEMENTED, exact-source verification pending. No U2 or Phase2 approval.
 
 Starting source ec5188f5059fb3ce7ae8b99af68c51709f2ee9b6, on openai/mac. Fresh fetch confirmed
