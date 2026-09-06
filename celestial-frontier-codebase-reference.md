@@ -31,8 +31,10 @@ becomes boxless on compact layouts, exposing Survey in the first slot while hidi
 Compendium duplicate. `#sceneactions` now contains only Charts. AppChrome ignores boxless wrappers
 in top-chrome measurement. Survey/Charts handlers are unchanged. The canonical trail remains
 populated but hidden; there is no Current view label.
-Bottom guidance is plain text. Caption/hint geometry, compact short-landscape exception and
-72px roster band retain live measurements. UI_PRESENTATION.md owns exact values, the accepted
+Bottom guidance remains plain text, now with a 2px opaque black glyph stroke painted behind
+the fill, providing at least 1px of exterior outline. It adds no pill or box. Caption/hint geometry,
+the compact short-landscape exception and 72px roster band retain live measurements.
+UI_PRESENTATION.md owns exact values, the accepted
 safety deviations from production and the honest injected floating-trail negative control.
 Native panel/Training action/focus owners remain; passive layout wrappers pass canvas input.
 `notification-history.ts` retains explicit saved Mark read on the existing notification shape
@@ -56,14 +58,24 @@ The phone-only restoration diagnostic passed at signed source
 390×844 restoration completion. Original native predecessors, 15000ms transport and debugger
 auto-resume timing remain intact. `audits/UI_U1_UAT_RESTORATION_20260906.md` owns exact evidence.
 Both older blockers remain historical OPEN: their old cause is unknown and nonrecurrence is not
-repair. Current changes are instrument-only: Slice records the complete boundary ancestry,
-isolates left-rail protection before native dismissal without either boundary, and restores exact
-attribute presence/bytes. `port/v2/tools/ui-rail-copy-check.mjs` owns the compact left dock/contents
-and four-copy right-rail oracle. [The correction audit](audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md)
-records 30 focused tests passed; static validation, clean-candidate Slice and both phone canaries
-remain pending. Product and historical ce89128 noncertifying RED are unchanged; preserve the
-original ambient file while preparing the clean test snapshot. Physical UAT remains open, and
-U2–U4, Phase2 and hosted work are unstarted.
+repair. The rail instrument correction passed on clean signed source
+`1609cf3991e20da45d5e4628fd2163278ece5ec8`: isolated develop profile 312 files/3333 passed/one skip,
+then Slice PASS in 370012ms with ten PNGs, zero findings and exact named verification. Complete
+boundary ancestry, rail-only protection, unprotected native dismissal and exact restoration are
+retained; `port/v2/tools/ui-rail-copy-check.mjs` checks the boxless left owner and four hidden right
+copies. Small-phone Glass then stopped PRODUCT RED on one `#hintpill` contrast finding (1 versus
+4.5); large phone was NOT RUN. The [manifest](audits/UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json)
+preserves clean-source provenance and the original ambient file's unchanged hash. The ce89128
+normal three-view PASS remains prior geometry evidence, not verification of the new text outline.
+
+The [bounded hint correction](audits/UI_U1_HINT_CONTRAST_20260906.md) adds the black glyph outline
+without changing pill or layout geometry. Glass admits only proven opaque stroke behind fill,
+preserving the 4.5 threshold and effective-opacity checks. Preparation passed 25 stroke tests, 72 release/budget/evidence tests, root TypeScript, evidence
+build and root validate. Fresh committed browser validation remains pending. The development draft still has 81 bullets and mentions the outline. Current Compendium producer is
+`6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`; measurement
+`4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` is unchanged.
+U2 follows completion of these bounded checks as the next development batch. Physical UAT and
+both historical causes remain OPEN; U2–U4, Phase2 and hosted work have not started.
 
 U1 review instrumentation (2026-09-06) now records public viewport/resize facts and
 auto-resumed trail-writer stacks between intentional controls. It does not read camera/travel

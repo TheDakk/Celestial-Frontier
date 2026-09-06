@@ -310,14 +310,14 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  '7a67c0db4dc3ad4f3f3caf3a48ad15e61ad2e2d77facc3339975420900b77a51';
+  '6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v2',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: 'f05093a244281a0f5063c60281a3007d2d52c3aaa6549d92af246b87d445b5ef',
+      sha256: '6a6d9e121d6b5f2d9342f23921d2bb5d98969ae233e48f95c52e67d9affce859',
     }),
     owner: Object.freeze({
       relativePath: 'assets/tame-greeting-audio-CXTlH-t_.js',
@@ -333,7 +333,7 @@ const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
     }),
     serviceWorker: Object.freeze({
       relativePath: 'service-worker.js',
-      sha256: '3753aed8caa99e84ec2c889354241d50609522d45d257f5607e5acbf8bea1b5b',
+      sha256: '00f517e56c197ded6313983b3a0703fb52b4fdb1e2ac0848c79ea1d9138a9ec9',
     }),
   }),
 });
