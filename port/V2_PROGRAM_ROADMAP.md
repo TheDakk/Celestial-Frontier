@@ -14,7 +14,9 @@ board width is pitch minus 4px with a 44px minimum, and centered lower targets/f
 The existing panel-open short-landscape half-column cap and 92px default height remain;
 UI_PRESENTATION.md owns geometry. Search, fitted wide pills, Health and compact Charts via Settings
 are unchanged. Scoped verification passed in six fresh phone/tablet/desktop contexts, including
-native Objective opening, Close/Escape and focus return. Human visual approval remains OPEN;
+native Objective opening, Close/Escape and focus return. Nick accepted the U1 layout for UAT on
+2026-09-06 at product `053ef439774520577071f0ca50887337dd938755`, recorded in
+`b08c9521c90f806e42496361127c542d206628f5`. Device UAT and technical gates are not closed;
 `../audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns current evidence and the preserved first
 keyboard-instrument red. The portable-key correction changes only the probe, with product unchanged.
 The previous six-board scoped
@@ -23,7 +25,13 @@ The prior portrait-restoration instrument stop remains OPEN beside the unattribu
 blocker; full normal review, Slice, phone Glass and the full chain were NOT RUN.
 See `UI_PARITY_PROGRAM_U1_U4.md` for the accepted program, explicit geometry differences and review
 boundaries. U2 sheet/stack work, U3 per-panel work and U4 ten-viewport/28-screen gate remain unstarted. Phase4 presentation parity is not closed;
-normal-game U1 and integrated audiovisual-pilot approvals both remain with Nick. No Phase2.
+the U1 layout is accepted for UAT, while integrated audiovisual-pilot approval remains OPEN.
+Before U2, diagnose the named expression and settlement of the retained phone restoration timeout,
+apply the portable Escape helper supported by prior scoped proof, and run one phone-only
+normal-game diagnostic with original native predecessors, 15000ms transport, font readiness →
+two animation frames and debugger auto-resume timing unchanged. Results PENDING:
+`../audits/UI_U1_UAT_RESTORATION_20260906.md`. Both older blockers remain OPEN; no Phase2,
+full-chain or hosted authority.
 Exact source and local evidence are recorded in the live ROADMAP handoff.
 The instrument-only navigation successor is scoped in
 `../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`; the retained navigation blocker stays OPEN.

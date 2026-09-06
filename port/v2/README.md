@@ -22,8 +22,10 @@ It uses existing keyboard/panel/focus ownership, stays available while landed an
 when no objective is active. Objective progress, Charter gameplay and the Survey handler are unchanged.
 Scoped verification PASS in six fresh contexts: 390×844, 320×740, 430×932, 667×375 Settings-open,
 834×1112 and 1440×900. Native Objective touch/mouse/Enter/Space opening and Close/Escape focus
-return passed; human visual approval remains OPEN. The current audit owns the terminal result
-and preserved first keyboard-instrument red. Its successor changes only portable key dispatch
+return passed. Nick accepted the U1 layout for UAT on 2026-09-06 at product
+`053ef439774520577071f0ca50887337dd938755` / records `b08c9521c90f806e42496361127c542d206628f5`.
+This does not claim completed device UAT or technical-gate closure. The layout audit owns the
+terminal result and preserved first keyboard-instrument red. Its successor changes only portable key dispatch
 in the probe; product source is unchanged. The prior six-board PASS remains predecessor evidence.
 Both the unattributed navigation
 and full normal-review portrait-restoration blockers stay OPEN; no full normal-review retry,
@@ -31,6 +33,13 @@ Slice, phone Glass or full chain accompanies this bounded correction.
 The accepted brief and amendments are in
 `../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved; no U2–U4, Phase2 or
 hosted action is authorized.
+
+The next technical step before U2 is a bounded named-expression/settlement diagnosis of the
+retained phone portrait-restoration timeout, the portable Escape helper correction matching prior
+scoped keyboard proof, and one phone-only normal-game diagnostic. Preserve original native
+predecessors, 15000ms transport, font readiness → two animation frames and debugger auto-resume
+timing. Results PENDING in `../../audits/UI_U1_UAT_RESTORATION_20260906.md`; both older blockers
+remain OPEN. This adds no U2–U4, Phase2, full-chain or hosted authority.
 
 U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options before use).
 It owns an isolated headless browser and creates three golden comparison sheets plus numeric
@@ -44,7 +53,8 @@ Debugger stacks perturb timing and cannot close the retained navigation blocker 
 See `../../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md` for the retained navigation evidence
 and its limits. This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2;
 no CI/profile lane was changed. `ROADMAP.md` and
-`../../audits/UI_U1_SURVEY_CHARTERS_20260906.md` own current exact-source results;
+`../../audits/UI_U1_UAT_RESTORATION_20260906.md` own the current pending diagnostic;
+`../../audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns accepted-layout source/results.
 `../../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` retains the prior six-board scoped evidence.
 `../../audits/UI_U1_COMPACT_CONTROLS_20260906.md` retains the prior portrait-restoration stop.
 `../../audits/UI_U1_PRODUCTION_LAYOUT_20260906.md`,

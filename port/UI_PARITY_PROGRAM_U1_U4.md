@@ -2,6 +2,28 @@
 
 Nick supplied this brief on 2026-09-05. The quoted program below is retained verbatim.
 
+### U1 layout accepted for UAT — Nick, 2026-09-06
+
+Nick accepted the current U1 layout for UAT at product
+`053ef439774520577071f0ca50887337dd938755`, recorded in
+`b08c9521c90f806e42496361127c542d206628f5`. The accepted layout is the Survey/Charters arrangement
+below. This accepts the layout for testing; it does not claim completed device UAT or close any
+technical gate. The integrated audiovisual pilot remains separately unapproved.
+
+Before U2, the next technical step is a bounded named-expression/settlement diagnosis of the
+retained phone portrait-restoration timeout, a portable Escape-key helper correction matching
+the prior scoped keyboard proof, and one phone-only normal-game diagnostic. Preserve original
+native predecessors, the 15000ms transport deadline, font readiness → two animation frames and
+debugger auto-resume timing. Current results are PENDING in
+`../audits/UI_U1_UAT_RESTORATION_20260906.md`. Both the unattributed navigation blocker and the
+portrait-restoration blocker remain OPEN. No U2–U4, Phase2, full-chain or hosted authority.
+
+### Previous Survey/Charters amendment (preserved verbatim)
+
+The full prior amendment below retains its source, result and approval wording from that
+checkpoint. Nick's acceptance for UAT above supersedes its pending human-layout-approval status;
+all earlier evidence and amendments remain unchanged.
+
 ### Latest all-platform Survey/Charters correction — Nick, 2026-09-06
 
 Nick replaces the Charters shortcut with Survey on every platform. Compact upper-row emoji

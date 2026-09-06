@@ -84,7 +84,10 @@ capacity and 60-entry import allowance remain. Passive history never joins an in
 snapshot; no new timer, schema, import door or competing persistence writer is introduced.
 The bottom bell reads this history; its old duplicate shelf button is hidden.
 
-U1 remains a visual approval checkpoint. Signed source `cfba0ede81d5861df70628b462e125eeff4780b9`
+Nick accepted the U1 layout **for UAT** on 2026-09-06 at product
+`053ef439774520577071f0ca50887337dd938755`, recorded in
+`b08c9521c90f806e42496361127c542d206628f5`. This is layout acceptance for testing, not completed
+device UAT or closure of technical gates. Signed source `cfba0ede81d5861df70628b462e125eeff4780b9`
 passed the scoped Survey/Charters probe in six fresh contexts: 390×844, 320×740, 430×932,
 667×375 with Settings open, 834×1112 and 1440×900. Objective opened the real Charters panel by
 touch, mouse, Enter and Space; Close/Escape returned focus correctly. All 36 negative controls
@@ -92,9 +95,10 @@ and five larger-text checks passed. The run retained 26 trusted pointer inputs (
 8 mouse), 18 logical keyboard presses (36 keydown/up events), 13 PNGs, zero runtime errors
 and no overflow. Product `053ef439774520577071f0ca50887337dd938755` is unchanged by the portable
 keyboard-dispatch correction in the probe. Its first scoped keyboard-instrument red is preserved.
-Current source/results belong to `audits/UI_U1_SURVEY_CHARTERS_20260906.md`, ROADMAP and
+Accepted-layout source/results belong to `audits/UI_U1_SURVEY_CHARTERS_20260906.md`, ROADMAP and
 `audits/UI_U1_SURVEY_CHARTERS_cfba0ed_20260906/manifest.json`. The dock oracle independently
-applies the panel-safe width formula. This scoped PASS does not supply human visual acceptance.
+applies the panel-safe width formula. The scoped PASS and Nick's later acceptance for UAT remain
+separate evidence; physical-device UAT is not claimed.
 The earlier six-board `e94f7b35211094e334abc983e716456749e2e3ae` scoped PASS and
 its preceding instrument red remain immutable predecessor evidence in
 `audits/UI_U1_SURVEY_TOP_ROW_20260906.md`; they do not verify this new five-board/action arrangement.
@@ -116,6 +120,14 @@ Phone larger-text and 844×390 Settings-open checks retain their actual viewport
 U2 sheet/stack work and U3 panel reskins/icon study remain pending. Resolve the pasted U2
 Training/Settings order against the earned Settings-above-Training law before implementing U2.
 No integrated-pilot approval or Phase2 work is implied.
+
+Before U2, the next bounded technical step is named-expression/settlement diagnosis of the
+retained phone portrait-restoration timeout. It includes the portable Escape-key helper correction
+already supported by the scoped keyboard proof and one phone-only normal-game diagnostic. Preserve
+the original native predecessors, the 15000ms transport deadline, font readiness → two animation
+frames and debugger auto-resume timing. Results are PENDING in
+`audits/UI_U1_UAT_RESTORATION_20260906.md`. Both older blockers remain OPEN; no U2–U4, Phase2,
+full chain or hosted authority follows from UAT acceptance.
 
 U1 diagnostic update (2026-09-06): the normal-review tool adds viewport/resize facts and
 session-owned, auto-resuming trail-writer stacks. That diagnostic changed no product layout.

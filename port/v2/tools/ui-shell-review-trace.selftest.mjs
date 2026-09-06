@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 import { readFileSync } from 'node:fs';
-import { installNativeReviewTrace } from './ui-shell-review.mjs';
+import { installNativeReviewTrace, assessNativeReviewKeyboardDelivery } from './ui-shell-review.mjs';
 
 test('resize facts remain distinct from a real canonical trail change', async () => {
   const dom = new JSDOM('<body><div id="trail" style="display:none"><span class="seg">Cosmos</span></div><div id="ctxbar"></div>', { runScripts: 'outside-only' });
@@ -64,4 +64,75 @@ test('shipped native input routine rejects wrong scope before dispatch and accep
     ['Input.dispatchMouseEvent', 'mousePressed'], ['Input.dispatchMouseEvent', 'mouseReleased'],
   ]);
   assert.equal(green.order.at(-1), 'arm');
+});
+
+
+test('native Escape delivery rejects repeated, unowned, missing and untrusted key edges', () => {
+  const good = { id: 7, overflow: false, events: ['keydown', 'keyup'].map(type => ({
+    type, key: 'Escape', code: 'Escape', keyId: 7, trusted: true, repeat: false,
+  })) };
+  assert(assessNativeReviewKeyboardDelivery(good).pass);
+  for (const fault of [
+    { ...good, events: good.events.slice(0, 1) },
+    { ...good, events: [...good.events, { ...good.events[0], key: 'Unidentified', code: 'Minus' }] },
+    { ...good, events: good.events.map(event => ({ ...event, keyId: null })) },
+    { ...good, events: good.events.map(event => ({ ...event, trusted: false })) },
+    { ...good, events: good.events.map(event => ({ ...event, repeat: true })) },
+    { ...good, overflow: true },
+  ]) assert(!assessNativeReviewKeyboardDelivery(fault).pass);
+  assert(assessNativeReviewKeyboardDelivery(good).pass);
+});
+
+test('shipped Escape helper uses portable renderer input and retains a rejected delivery', async () => {
+  const source = readFileSync(new URL('./ui-shell-review.mjs', import.meta.url), 'utf8');
+  const start = source.indexOf('const escapeNative = async') + 'const escapeNative = '.length;
+  const end = source.indexOf('    const clickNative = async', start);
+  assert(start > 0 && end > start);
+  const expression = source.slice(start, end).trim().replace(/;$/, '');
+  const createEscape = new Function('deps', `const {evaluate,report,writeReport,send,assert,assessNativeReviewKeyboardDelivery}=deps; return (${expression});`);
+  const fixture = extra => {
+    const report = { nativeKeys: [] }, sends = [], writes = [];
+    let reads = 0;
+    const escape = createEscape({ report, assert, assessNativeReviewKeyboardDelivery,
+      writeReport() { writes.push(structuredClone(report)); },
+      async evaluate() { return ++reads === 1 ? { id: 1, viewport: 'phone', eventStart: 0, before: { trail: ['Milky Way', 'Sun (Sol)'] } }
+        : { overflow: false, events: [
+          { type: 'keydown', key: 'Escape', code: 'Escape', keyId: 1, trusted: true, repeat: false },
+          { type: 'keyup', key: 'Escape', code: 'Escape', keyId: 1, trusted: true, repeat: false },
+          ...extra,
+        ] }; },
+      async send(method, params) { sends.push({ method, params }); },
+    });
+    return { escape, report, sends, writes };
+  };
+  const green = fixture([]); await green.escape();
+  assert.deepEqual(green.sends, ['keyDown', 'keyUp'].map(type => ({ method: 'Input.dispatchKeyEvent',
+    params: { type, key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 } })));
+  assert.equal(green.writes[0].nativeKeys[0].delivery, undefined, 'intent is durable before dispatch');
+  assert(green.report.nativeKeys[0].delivery.pass);
+  const red = fixture([{ type: 'keydown', key: 'Unidentified', code: 'Minus', keyId: null, trusted: true, repeat: true }]);
+  await assert.rejects(red.escape(), /exactly two trusted key edges/);
+  assert.equal(red.report.nativeKeys[0].delivery.pass, false);
+  assert.equal(red.writes.at(-1).nativeKeys[0].delivery.pass, false, 'rejected delivery survives in the report');
+});
+
+
+test('terminal collection rejects missing or malformed trace rather than accepting absent keyboard evidence', async () => {
+  const source = readFileSync(new URL('./ui-shell-review.mjs', import.meta.url), 'utf8');
+  const start = source.indexOf('collectNativeTrace = async') + 'collectNativeTrace = '.length;
+  const end = source.indexOf('    const escapeNative = async', start);
+  const expression = source.slice(start, end).trim().replace(/;$/, '');
+  const createCollect = new Function('deps', `const {evaluate,report,writeReport,assert}=deps; return (${expression});`);
+  const valid = { viewport: 'phone', events: [], keys: [], changes: [], overflow: false };
+  const fixture = trace => {
+    const report = { nativeTraces: [], nativeKeys: [] };
+    return { report, collect: createCollect({ report, assert, writeReport() {}, async evaluate() { return trace; } }) };
+  };
+  for (const value of [null, { ...valid, keys: null }, { ...valid, events: {} }, { ...valid, changes: undefined }])
+    await assert.rejects(fixture(value).collect(), /trace is missing or malformed/);
+  const extra = fixture({ ...valid, keys: [{ type: 'keydown', code: 'Minus', keyId: null }] });
+  await assert.rejects(extra.collect(), /unexpected key events/);
+  assert.equal(extra.report.nativeTraces[0].keyboardComplete, false);
+  const good = fixture(structuredClone(valid)); await good.collect();
+  assert(good.report.nativeTraces[0].keyboardComplete);
 });

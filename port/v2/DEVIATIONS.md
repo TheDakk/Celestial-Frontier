@@ -1,5 +1,21 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U1 accepted for UAT; verification diagnosis — 2026-09-06
+
+Nick accepted the Survey/Charters layout for UAT at product053ef439774520577071f0ca50887337dd938755,
+records b08c9521c90f806e42496361127c542d206628f5. This supersedes the review stop and older
+geometry wording below: Survey replaces Charters on all responsive layouts; the objective is
+its sole native opener. Five compact scene buttons sit above four smaller utilities, with a
+320px responsive cap and the existing short-landscape safe-column cap. Current detailed metrics
+remain in UI_PRESENTATION.md. Acceptance for UAT does not certify physical-device UAT or close
+the two retained technical blockers.
+
+The next bounded step instruments the existing phone restoration review: exact evaluation
+identity and font/two-frame phase receipts, with portable Escape inputs. Product, transport
+rulers and the original action sequence stay unchanged. One phone-only observation is pending;
+audits/UI_U1_UAT_RESTORATION_20260906.md owns its evidence. U2–U4, Phase2 and hosted actions have
+not started. The earlier production-layout amendment is retained below as historical context.
+
 ## U1 production-layout amendment — 2026-09-06
 
 Nick's latest screenshot instructions supersede the earlier unified wide launcher and visible

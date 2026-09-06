@@ -38,8 +38,10 @@ Native panel/Training action/focus owners remain; passive layout wrappers pass c
 `notification-history.ts` retains explicit saved Mark read on the existing notification shape
 and UI checkpoint whitelist. The Survey/Charters correction passed scoped verification in six
 fresh phone/tablet/desktop contexts, including native pointer/Enter/Space opening and Close/Escape
-focus return. Visual approval remains OPEN. `audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns current
-results and the preserved first keyboard-instrument red; its successor changes only probe key
+focus return. Nick accepted this U1 layout for UAT on 2026-09-06 at product
+`053ef439774520577071f0ca50887337dd938755` / records `b08c9521c90f806e42496361127c542d206628f5`.
+Device UAT and technical-gate closure are not claimed. `audits/UI_U1_SURVEY_CHARTERS_20260906.md`
+owns accepted-layout results and the preserved first keyboard-instrument red; its successor changes only probe key
 dispatch, leaving product source unchanged. The earlier six-board scoped PASS and instrument red
 remain predecessor evidence
 in `audits/UI_U1_SURVEY_TOP_ROW_20260906.md`.
@@ -47,6 +49,12 @@ Prior partial evidence stays in `audits/UI_U1_COMPACT_CONTROLS_20260906.md`. Bot
 navigation blocker and the normal-review portrait-restoration blocker remain OPEN; this correction
 did not run full normal review, Slice, phone Glass or the full chain. U2–U4 and Phase2 remain unstarted;
 integrated-pilot approval remains open.
+
+Before U2, a named-expression/settlement diagnosis and a portable Escape-key correction matching
+prior scoped keyboard proof precede one phone-only normal-game diagnostic. Original native predecessors, 15000ms transport,
+font readiness → two animation frames and debugger auto-resume timing remain intact. Results
+PENDING: `audits/UI_U1_UAT_RESTORATION_20260906.md`. Both retained blockers remain OPEN;
+no U2–U4, Phase2, full-chain or hosted authority is added.
 
 U1 review instrumentation (2026-09-06) now records public viewport/resize facts and
 auto-resumed trail-writer stacks between intentional controls. It does not read camera/travel
