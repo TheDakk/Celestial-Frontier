@@ -169,6 +169,29 @@
       "gzipFile": "UI_U1_TYPECHECK_RED_7778230_20260906.log.gz",
       "gzipSha256": "926ba7bc5f3690f7bf3ce31d0fee7a82b878d29ba724a8a26741c22a1b88e993",
       "remainingChecks": "artunused, Vitest, Glass selftest and all browser checks not run after red."
+    },
+    {
+      "source": "2c26ee7aaf4bf8e70afe18a356d518db7a494901",
+      "kind": "local-vitest-contract",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck/artunused PASS",
+      "testFiles": {
+        "failed": 1,
+        "passed": 309
+      },
+      "tests": {
+        "failed": 1,
+        "passed": 3260,
+        "skipped": 1
+      },
+      "failures": [
+        "Current producer pins were updated, but required successor narrative did not include its new SHA and component hashes."
+      ],
+      "correction": "Append the producer-only successor and all five component hashes to the existing narrative; preserve its entire old prefix, historical samples, measurement, ruler and ceilings.",
+      "logSha256": "60dfbebdf93e0b561ceec9fd4cf2d6629a8b2c70e57345c0978cc2823ceef139",
+      "gzipFile": "UI_U1_VITEST_RED_2c26ee7_20260906.log.gz",
+      "gzipSha256": "af8ca0dee5dd03a078d11e91fc624222228bbbdef578235789c274b093129cb5",
+      "remainingChecks": "Glass selftest and all browser checks not run after red."
     }
   ]
 }

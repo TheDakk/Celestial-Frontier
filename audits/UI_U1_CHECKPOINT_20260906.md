@@ -158,3 +158,11 @@ Fresh typecheck caught two unchecked indexed accesses in the new two-row visibil
 mutation fixture. The bounded fixture indexes now carry non-null assertions; no product,
 assertion, geometry or authority change. Later checks were not run after red. The original
 compiler output is retained in `UI_U1_TYPECHECK_RED_7778230_20260906.log.gz`.
+
+## Producer narrative correction —2c26ee7
+
+Typecheck/artunused PASS. Vitest stopped on the required current-producer narrative:
+309files/3,260tests passed,1test failed,1skipped. Current pins were correct but the narrative
+still ended at the earlier producer. The successor and all five component hashes are now
+appended, preserving every prior narrative byte and all samples, measurement, ruler and
+ceilings. This is a record correction; product bytes are unchanged. Later gates were not run.
