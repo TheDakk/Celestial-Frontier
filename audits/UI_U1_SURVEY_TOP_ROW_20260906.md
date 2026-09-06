@@ -59,3 +59,18 @@ The two older blockers remain a separately bounded next correction. Claude: Nick
 Claude now; preserve anthropic/mac/unmerged173c806 without copying/merging/duplicating checks.
 No PR, push or hosted action. Future integration openai/mac → develop needs separate exact hosted
 authority. Budget UNFROZEN/PUBLIC per last verification/private fallback3000, zero hosted authority.
+
+## First scoped source stopped; bounded cleanup correction
+
+Signed product source810ab78 passed390px baseline6+4 geometry and produced the retained phone
+PNG. The first grid-row negative control correctly detected moving Survey back to the lower row;
+its restored geometry passed, but exact style-attribute restoration was false. The scoped probe
+stopped immediately;320/430/667 were not run. Raw before/after attribute values were not included
+in that first report, so the precise mismatch is not independently diagnosable from the boolean.
+Evidence is retained in UI_U1_SURVEY_TOP_ROW_810ab78_RED_20260906.
+
+The probe now uses the already-established normal-review cleanup: set empty style, remove the
+attribute, then restore original presence/bytes. It also records both raw attribute states. This
+is an instrument-only correction; product, producer, rules and44px floor are unchanged. A new
+signed source gets one bounded four-context observation; no unchanged-source retry or full
+review/downstream gate. The two prior navigation/restoration blockers remain OPEN.
