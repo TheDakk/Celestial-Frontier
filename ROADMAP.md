@@ -31,13 +31,21 @@ started clean; ambient .DS_Store preserved; root main.js absent. Same-session SS
 startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 remains deferred for busy tools.
 Actions UNFROZEN/PUBLIC per last receipt, private fallback3000, zero exact hosted authority.
 
-Latest U2 source2642ddc87e0ab68c2c765b9b0ed2db6fd90f4271 (21ahead) is committed locally.
-Its first clean checkpoint stopped at one old source-spelling test:3390 tests passed/1failed/1skip;
-316filespassed/1failed. No browser stage ran. Immutable evidence:
-audits/UI_U2_LOCAL_CHECKPOINT_2642ddc_20260906/manifest.json. The bounded test correction executes
-the actual refill/Close owner and checks direct native children;5/5 including wrapping mutants
-pass, plus explicit v2rootTypeScript/rootvalidate. Fresh checkpoint pending on its records successor.
-Current audit audits/UI_U2_SHEETS_20260906.md owns all U2 preparation/attempt evidence.
+Latest signed U2 check source e88ea7b1ce31dc3a4be583927183f70bc9c608a0 (22ahead) passed full
+develop static317files/3391tests/1skip and normal build. The scoped browser proved native Settings
+above Training, sticky Close, real scrolling and fault/restoration controls, then stopped because
+its fixed240px wheel oscillated past Charts. This is instrument RED; remaining rows, phone
+canaries and Slice NOT RUN. Immutable audits/UI_U2_LOCAL_CHECKPOINT_e88ea7b_20260906/manifest.json.
+The earlier2642ddc static source-spelling failure is separately retained. The bounded successor
+uses measured target/content displacement, with7/7 source-executing tests and root validate PASS.
+Fresh exact-source checkpoint pending: normal build/scoped diagnostic, complete develop-static
+owner, small-phone, large-phone, Slice and named verify; stop first nonzero. Product producer
+c821b3cbc3dcac586e59fccdde02a3310d85bc2490c1e74e05f432761f93cc7c remains unchanged.
+Current audit audits/UI_U2_SHEETS_20260906.md owns preparation/attempt evidence. Inkscape is
+unavailable this session: both reports abort at macOS GUI registration, even --version; restricted
+launch is suspected, not proved by an outside-sandbox control. No relaunch. Browser SVG rendering
+works. Nick prefers colorful emoji; retain them in product, with one optional three-icon color
+study retained at audits/UI_U3_COLOR_ICON_STUDY_20260906. No icon rework loop is queued.
 
 U2 is active: shared native sheet headers/Close and internal scrolling, measured lower lanes,
 Settings/Training stacking and motion/state tokens. First retained case is b457a7a small-phone:

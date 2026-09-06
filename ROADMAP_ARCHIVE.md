@@ -1,3 +1,13 @@
+# U2 scroll-instrument checkpoint handoff superseded — 2026-09-06
+
+Latest U2 source2642ddc87e0ab68c2c765b9b0ed2db6fd90f4271 (21ahead) is committed locally.
+Its first clean checkpoint stopped at one old source-spelling test:3390 tests passed/1failed/1skip;
+316filespassed/1failed. No browser stage ran. Immutable evidence:
+audits/UI_U2_LOCAL_CHECKPOINT_2642ddc_20260906/manifest.json. The bounded test correction executes
+the actual refill/Close owner and checks direct native children;5/5 including wrapping mutants
+pass, plus explicit v2rootTypeScript/rootvalidate. Fresh checkpoint pending on its records successor.
+Current audit audits/UI_U2_SHEETS_20260906.md owns all U2 preparation/attempt evidence.
+
 ## ARCHIVED 2026-09-06 — U1 local validation stop before authorized rail-instrument correction
 
 ## SESSION HANDOFF — 2026-09-06 · U1 DESIGN ACCEPTED / GATE OPEN / U2 PROPOSED

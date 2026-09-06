@@ -69,6 +69,20 @@ export function assessSheetGeometry(state, { panel = false, training = false, fi
   return { pass: errors.length === 0, errors };
 }
 
+/** Reveal from measured content bounds. Fixed wheel steps can oscillate across a
+ * short scrollport without ever exposing a 44px control (retained e88ea7b). */
+export function readSettingsReveal(selector) {
+  const node = document.querySelector(selector), panel = document.getElementById('setpanel');
+  if (!node || !panel) throw new Error('missing Settings scroll target: ' + selector);
+  const target = node.getBoundingClientRect(), sheet = panel.getBoundingClientRect();
+  const header = panel.querySelector('.sheet-header')?.getBoundingClientRect();
+  const top = Math.max(sheet.top + 8, (header?.bottom ?? sheet.top) + 8), bottom = sheet.bottom - 8;
+  if (target.height > bottom - top) throw new Error('Settings target cannot fit below sticky header: ' + selector);
+  return { inside: target.top >= top && target.bottom <= bottom,
+    delta: (target.top + target.bottom - top - bottom) / 2,
+    target: { top: target.top, bottom: target.bottom, height: target.height }, content: { top, bottom } };
+}
+
 /** Fixtures populate existing nodes only; preserve child identity and all original attributes. */
 export function sheetFixture(restore = false) {
   const snapshot = node => ({ node, attributes: [...node.attributes].map(a => [a.name, a.value]), children: node === document.body ? null : [...node.childNodes] });
@@ -167,7 +181,9 @@ export async function runUiSheetReview(buildDir, outDir) {
     const wait = (condition, label) => evaluate(`new Promise((resolve,reject)=>{const end=performance.now()+10000;const poll=()=>{if(${condition})resolve(true);else if(performance.now()>end)reject(new Error('U2 readiness: '+${JSON.stringify(label)}));else setTimeout(poll,40)};poll()})`, label);
     const state = () => evaluate(`(${readSheetGeometry.toString()})()`, row.id + '.geometry');
     const check = async (label, options) => { const geometry = await state(), verdict = assessSheetGeometry(geometry, options);
-      row.checks.push({ label, geometry, verdict }); write(); assert(verdict.pass, label + ': ' + verdict.errors.join(', ')); return geometry; };
+      row.checks.push({ label, geometry, verdict }); write();
+      if (row.preference !== 'default') assert(row.preference.split(' ').every(name => geometry.bodyClass.split(' ').includes(name)), 'requested presentation variant lost its classes');
+      assert(verdict.pass, label + ': ' + verdict.errors.join(', ')); return geometry; };
     const capture = async label => { const file = row.id + '-' + label + '.png', { data } = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
       const bytes = Buffer.from(data, 'base64'); fs.writeFileSync(path.join(output, file), bytes, { flag: 'wx' }); report.images.push({ file, sha256: sha(bytes), bytes: bytes.length }); write(); };
     const wheel = async (selector, delta) => {
@@ -178,8 +194,9 @@ export async function runUiSheetReview(buildDir, outDir) {
       assert(after.events.length > 0 && after.events.every(e => e.trusted && e.owner === selector.slice(1)), 'native wheel owner'); return receipt;
     };
     const reveal = async selector => { for (let i = 0; i < 12; i++) {
-      const r = await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)}),r=e.getBoundingClientRect(),p=document.getElementById('setpanel').getBoundingClientRect();return{inside:r.top>=p.top+52&&r.bottom<=p.bottom-8,direction:r.top<p.top+52?-1:1}})()`, 'control.scroll-readiness');
-      if (r.inside) return; await wheel('#setpanel', 240 * r.direction);
+      const r = await evaluate(`(${readSettingsReveal.toString()})(${JSON.stringify(selector)})`, 'control.scroll-readiness');
+      (row.reveals ??= []).push({ selector, ...r }); write();
+      if (r.inside) return; await wheel('#setpanel', r.delta);
     } throw new Error('native scroll did not reveal ' + selector); };
     const click = async selector => {
       const proof = await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace,e=document.querySelector(${JSON.stringify(selector)});if(!e)throw new Error('missing native target');const r=e.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,h=document.elementFromPoint(x,y);if(e.tagName!=='BUTTON'||e.disabled||e.closest('[inert]')||r.width<44||r.height<44||!(h===e||e.contains(h)))throw new Error('unavailable native target '+${JSON.stringify(selector)});const id=++t.nextId;t.active={id,selector:${JSON.stringify(selector)},node:e};return{id,selector:${JSON.stringify(selector)},point:{x,y},start:t.events.length}})()`, 'native.prepare');
@@ -231,13 +248,16 @@ export async function runUiSheetReview(buildDir, outDir) {
       assert(before.roots.setpanel.scrollHeight <= before.roots.setpanel.clientHeight + 1 || movement.scroll > movement.before, 'scrollable Settings did not move');
       row.sticky = { before: before.header, after: scrolled.header }; await capture('settings-scrolled');
       await reveal('#setcharts'); const charts = await evaluate(`document.getElementById('setcharts').getAttribute('aria-pressed')`, 'charts.before'); row.charts = [];
-      for (let i = 0; i < 2; i++) { await click('#setcharts'); const actual = await evaluate(`({button:document.getElementById('setcharts').getAttribute('aria-pressed'),dock:document.getElementById('dockcharts').getAttribute('aria-pressed')})`, 'charts.after');
+      for (let i = 0; i < 2; i++) { await reveal('#setcharts'); await click('#setcharts');
+        await evaluate(`document.body.classList.add(...${JSON.stringify(preference.split(' ').filter(v => v !== 'default'))});true`, 'presentation.preference-after-Charts'); await frames('Charts.preference.frames');
+        const actual = await evaluate(`({button:document.getElementById('setcharts').getAttribute('aria-pressed'),dock:document.getElementById('dockcharts').getAttribute('aria-pressed')})`, 'charts.after');
         row.charts.push(actual); assert.equal(actual.button, i === 0 ? String(charts !== 'true') : charts); assert.equal(actual.dock, actual.button); }
       await click('#setpanel [data-pnx]'); assert.equal(await evaluate(`document.activeElement?.id`, 'Close.focus-return'), 'docksets');
       row.survey = await evaluate(`({available:!!document.querySelector('#survey .survey-head'),visible:getComputedStyle(document.getElementById('survey')).display!=='none'})`, 'Survey.native-availability');
       row.survey.scope = 'Native current-route card only; no fabricated Survey markup';
       if (row.survey.available && !row.survey.visible) await click('#docksurvey');
       row.survey.status = row.survey.available ? 'MEASURED' : 'NOT RUN: no current-route card';
+      await wait(`document.getElementById('toast').style.opacity!=='1'&&Number(getComputedStyle(document.getElementById('toast')).opacity)===0`, 'native-toast-finished-before-fixture');
       fixtureActive = true; row.fixture = await evaluate(`(${sheetFixture.toString()})()`, 'presentation.fixture'); await frames('fixture.frames');
       await check('populated lower lanes', { fixture: true }); await capture('lower-lanes'); await control('toast-over-biosphere', { fixture: true });
       row.fixtureRestoration = await evaluate(`(${sheetFixture.toString()})(true)`, 'presentation.fixture.restore'); fixtureActive = false;
