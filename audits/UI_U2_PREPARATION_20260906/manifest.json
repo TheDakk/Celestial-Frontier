@@ -80,6 +80,20 @@
       "rawSha256": "37367ccfd86f94807f23e5de37848726781beaa7a8b482871846754930d702db",
       "bytes": 826,
       "sha256": "99e44f4b63b920b20f59e9b184f65871467bd37806e82ccfbbd1bb6a37815566"
+    },
+    {
+      "file": "cf-u2-training-scroll-correction-20260906.log.gz",
+      "rawBytes": 1313,
+      "rawSha256": "8d8ed1dbe31b01c72e78f97c3ce32196db6efe12b6b39dc7ed8342828551b0a7",
+      "bytes": 637,
+      "sha256": "4b0fd1e998396aa8cc7c11f42df2fb9d0f5b5dd7cf0c6547e6517d136bc7f4ff"
+    },
+    {
+      "file": "cf-u2-training-scroll-corrected-fixture-20260906.log.gz",
+      "rawBytes": 1335,
+      "rawSha256": "cae1ad6d07a7e6a082b1ebfcf65c0ddfe6b38032315e1a4ddd4b60495f39fa1b",
+      "bytes": 827,
+      "sha256": "bf9dd79d917edc195026b2860e2b4669b9400b6e7ee181561e863b98cff5a007"
     }
   ]
 }

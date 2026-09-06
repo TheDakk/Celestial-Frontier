@@ -71,16 +71,36 @@ export function assessSheetGeometry(state, { panel = false, training = false, fi
 
 /** Reveal from measured content bounds. Fixed wheel steps can oscillate across a
  * short scrollport without ever exposing a 44px control (retained e88ea7b). */
-export function readSettingsReveal(selector) {
-  const node = document.querySelector(selector), panel = document.getElementById('setpanel');
-  if (!node || !panel) throw new Error('missing Settings scroll target: ' + selector);
+export function readSettingsReveal(selector, owner = '#setpanel') {
+  const node = document.querySelector(selector), panel = document.querySelector(owner);
+  if (!node || !panel || !panel.contains(node)) throw new Error('missing owned scroll target: ' + selector);
   const target = node.getBoundingClientRect(), sheet = panel.getBoundingClientRect();
   const header = panel.querySelector('.sheet-header')?.getBoundingClientRect();
   const top = Math.max(sheet.top + 8, (header?.bottom ?? sheet.top) + 8), bottom = sheet.bottom - 8;
-  if (target.height > bottom - top) throw new Error('Settings target cannot fit below sticky header: ' + selector);
-  return { inside: target.top >= top && target.bottom <= bottom,
+  if (target.height > bottom - top) throw new Error('scroll target cannot fit below sticky header: ' + selector);
+  return { owner, inside: target.top >= top && target.bottom <= bottom,
     delta: (target.top + target.bottom - top - bottom) / 2,
     target: { top: target.top, bottom: target.bottom, height: target.height }, content: { top, bottom } };
+}
+
+/** Preserve the reason a native target is refused, including its clip and hit owner. */
+export function readNativeTarget(selector) {
+  const node = document.querySelector(selector), issues = [];
+  const describe = e => e ? { tag: e.tagName, id: e.id, sel: e.getAttribute('data-sel') } : null;
+  if (!node) return { selector, available: false, issues: ['missing'], point: null };
+  const r = node.getBoundingClientRect(), point = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  const hit = document.elementFromPoint(point.x, point.y), clips = [];
+  for (let e = node.parentElement; e; e = e.parentElement) {
+    const s = getComputedStyle(e), b = e.getBoundingClientRect();
+    if (/(auto|scroll|hidden|clip)/.test(s.overflowY + s.overflowX)) clips.push({ owner: describe(e),
+      top: b.top, bottom: b.bottom, left: b.left, right: b.right, scrollTop: e.scrollTop });
+  }
+  if (node.tagName !== 'BUTTON') issues.push('not-button');
+  if (node.disabled || node.closest('[inert]')) issues.push('disabled-or-inert');
+  if (r.width < 44 || r.height < 44) issues.push('below-44px');
+  if (!(hit === node || node.contains(hit))) issues.push('center-not-hit');
+  return { selector, available: issues.length === 0, issues, point, rect: { top: r.top, bottom: r.bottom,
+    left: r.left, right: r.right, width: r.width, height: r.height }, hit: describe(hit), clips };
 }
 
 /** Fixtures populate existing nodes only; preserve child identity and all original attributes. */
@@ -193,13 +213,15 @@ export async function runUiSheetReview(buildDir, outDir) {
       const receipt = { row: row.id, selector, delta, ...p, ...after }; report.wheels.push(receipt); write();
       assert(after.events.length > 0 && after.events.every(e => e.trusted && e.owner === selector.slice(1)), 'native wheel owner'); return receipt;
     };
-    const reveal = async selector => { for (let i = 0; i < 12; i++) {
-      const r = await evaluate(`(${readSettingsReveal.toString()})(${JSON.stringify(selector)})`, 'control.scroll-readiness');
+    const reveal = async (selector, owner = '#setpanel') => { for (let i = 0; i < 12; i++) {
+      const r = await evaluate(`(${readSettingsReveal.toString()})(${JSON.stringify(selector)},${JSON.stringify(owner)})`, 'control.scroll-readiness');
       (row.reveals ??= []).push({ selector, ...r }); write();
-      if (r.inside) return; await wheel('#setpanel', r.delta);
+      if (r.inside) return; await wheel(owner, r.delta);
     } throw new Error('native scroll did not reveal ' + selector); };
     const click = async selector => {
-      const proof = await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace,e=document.querySelector(${JSON.stringify(selector)});if(!e)throw new Error('missing native target');const r=e.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,h=document.elementFromPoint(x,y);if(e.tagName!=='BUTTON'||e.disabled||e.closest('[inert]')||r.width<44||r.height<44||!(h===e||e.contains(h)))throw new Error('unavailable native target '+${JSON.stringify(selector)});const id=++t.nextId;t.active={id,selector:${JSON.stringify(selector)},node:e};return{id,selector:${JSON.stringify(selector)},point:{x,y},start:t.events.length}})()`, 'native.prepare');
+      const target = await evaluate(`(${readNativeTarget.toString()})(${JSON.stringify(selector)})`, 'native.target');
+      (row.nativeTargets ??= []).push(target); write(); assert(target.available, 'unavailable native target: ' + JSON.stringify(target));
+      const proof = await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace,e=document.querySelector(${JSON.stringify(selector)}),id=++t.nextId;t.active={id,selector:${JSON.stringify(selector)},node:e};return{id,selector:${JSON.stringify(selector)},point:${JSON.stringify(target.point)},start:t.events.length}})()`, 'native.prepare');
       proof.row = row.id; report.nativeInputs.push(proof); write();
       try { if (row.viewport.mobile) { await send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ ...proof.point, id: 1 }] }); await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); }
         else { await send('Input.dispatchMouseEvent', { type: 'mousePressed', ...proof.point, button: 'left', clickCount: 1 }); await send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...proof.point, button: 'left', clickCount: 1 }); }
@@ -237,10 +259,10 @@ export async function runUiSheetReview(buildDir, outDir) {
       await send('Emulation.setTouchEmulationEnabled', { enabled: viewport.mobile, maxTouchPoints: 5 }); await send('Page.navigate', { url: origin + '/' });
       await wait(`document.querySelector('canvas')&&document.querySelector('[data-sel=tutskip]')`, 'fresh-training-ready');
       await evaluate(`(${installNativeReviewTrace.toString()})(${JSON.stringify(row.id)})`, 'native.install');
-      await evaluate(`window.__cfU2Wheels=[];document.addEventListener('wheel',e=>window.__cfU2Wheels.push({trusted:e.isTrusted,owner:e.target.closest?.('#setpanel')?.id??null,delta:e.deltaY}),{capture:true,passive:true});document.body.classList.add(...${JSON.stringify(preference.split(' ').filter(v => v !== 'default'))});true`, 'presentation.preference');
+      await evaluate(`window.__cfU2Wheels=[];document.addEventListener('wheel',e=>window.__cfU2Wheels.push({trusted:e.isTrusted,owner:e.target.closest?.('#setpanel,#tutcard')?.id??null,delta:e.deltaY}),{capture:true,passive:true});document.body.classList.add(...${JSON.stringify(preference.split(' ').filter(v => v !== 'default'))});true`, 'presentation.preference');
       if (viewport.safe) await evaluate(`(()=>{for(const[k,v]of Object.entries(${JSON.stringify(viewport.safe)}))document.documentElement.style.setProperty('--safe-'+k,v+'px');return true})()`, 'presentation.safe-area');
       await frames('boot.frames'); await click('#docksets'); await check('Settings above Training', { panel: true, training: true }); await capture('training-settings'); await control('settings-below-training', { panel: true, training: true });
-      await click('#setpanel [data-pnx]'); await click('[data-sel=tutskip]'); await wait(`!document.body.classList.contains('training')&&!document.querySelector('[data-sel=tutskip]')`, 'skip-complete');
+      await click('#setpanel [data-pnx]'); await reveal('[data-sel=tutskip]', '#tutcard'); await click('[data-sel=tutskip]'); await wait(`!document.body.classList.contains('training')&&!document.querySelector('[data-sel=tutskip]')`, 'skip-complete');
       await evaluate(`document.body.classList.add(...${JSON.stringify(preference.split(' ').filter(v => v !== 'default'))});true`, 'presentation.preference-after-skip');
       await click('#docksets'); await check('Settings native open', { panel: true });
       await control('earlier-equal-specificity', { panel: true }); await control('header-not-sticky', { panel: true });
