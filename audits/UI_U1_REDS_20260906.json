@@ -83,6 +83,27 @@
       "gzipFile": "UI_U1_SLICE_RED_b08f8ac_20260906.log.gz",
       "gzipSha256": "56ccc95ffbecda657248b03687f1e6915509cbf1866d8835b93b89d0d0bc2ea0",
       "remainingChecks": "phonecanaries andvisualreview notrunafterred"
+    },
+    {
+      "source": "b4318371dd248b3ea57b3a7591da890103cd339b",
+      "kind": "local-vitest-contract",
+      "rootMainAbsent": true,
+      "precedingChecks": "install, typecheck, artunused PASS",
+      "testFiles": {
+        "failed": 1,
+        "passed": 309
+      },
+      "tests": {
+        "failed": 1,
+        "passed": 3257,
+        "skipped": 1
+      },
+      "failures": [
+        "slicesmoke-sixth-red-contract: three source markers still require fixed-position HP collision instead of the corrected measured translation."
+      ],
+      "correction": "Update the source-marker contract to require both actual painted rectangles and their relative translation; preserve mutation and restoration assertions.",
+      "logSha256": "4ae50333a07cea6b609e16a3484ba626d533beaacfe738000a99ba561af14fff",
+      "remainingChecks": "Glass selftest, Slice, phone canaries and visual review not run after red."
     }
   ]
 }
