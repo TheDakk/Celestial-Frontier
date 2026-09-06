@@ -325,6 +325,28 @@ describe('sixth Slice red contract repairs', () => {
       liveProgressionContract: true,
       liveProgressionContradiction: false,
     });
+    const releaseRowsBefore = [...releaseDom.window.document.querySelectorAll('li')].map(row => row.textContent);
+    for (const [current, stale] of [
+      ['centered bottom launcher across phone, tablet and desktop', 'desktop rails and a phone-only dock'],
+      ['Desktop notices and utility panels clear the measured bottom launcher and share its right edge',
+        'Desktop utilities stay in the old viewport corner'],
+      ['Signature count in the bottom launcher on every device', 'Signature count in a desktop top-center pill'],
+      ['Spacing inside the wide bottom launcher belongs to that command deck and leaves the active panel open',
+        'Spacing inside either desktop rail belongs to that command deck and leaves the active panel open'],
+    ] as const) {
+      const row = [...releaseDom.window.document.querySelectorAll('li')].find(item => item.textContent?.includes(current));
+      expect(row, current).toBeTruthy();
+      if (!row) throw new Error(`Missing current launcher release row: ${current}`);
+      const prior = row.textContent;
+      try {
+        row.textContent = prior!.replace(current, stale);
+        expect(releaseDom.window.eval(releaseCheck)).toMatchObject({ complete: false, populated: true,
+          canonical: true, bulletCount: 81, liveProgressionContract: true, liveProgressionContradiction: false });
+      } finally { row.textContent = prior; }
+      expect(releaseDom.window.eval(releaseCheck)).toMatchObject({ complete: true, populated: true,
+        canonical: true, bulletCount: 81, liveProgressionContract: true, liveProgressionContradiction: false });
+      expect([...releaseDom.window.document.querySelectorAll('li')].map(item => item.textContent)).toEqual(releaseRowsBefore);
+    }
     const currentGuideCopy = catalogue.flatMap((category) => category.topics).map((topic) => {
       const dom = new JSDOM(`<article>${topic.body}</article>`);
       const copy = dom.window.document.querySelector('article')?.textContent ?? '';

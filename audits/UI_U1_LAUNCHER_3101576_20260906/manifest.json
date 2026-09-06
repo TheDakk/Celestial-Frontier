@@ -1,0 +1,98 @@
+{
+  "schema": "cf-u1-uniform-launcher-checkpoint/v1",
+  "source": "3101576abe30304317e62edfe9247dea7882f5ae",
+  "status": "STOPPED",
+  "scope": "Local U1 revision, no hosted/full Glass/real-device/human approval claim.",
+  "results": {
+    "source": "3101576abe30304317e62edfe9247dea7882f5ae",
+    "rootMainAbsent": true,
+    "checks": [
+      {
+        "name": "install",
+        "command": [
+          "npm",
+          "ci",
+          "--prefer-offline",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "startedAt": "2026-09-06T09:47:19.388922+00:00",
+        "endedAt": "2026-09-06T09:47:21.805120+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "startedAt": "2026-09-06T09:47:21.806025+00:00",
+        "endedAt": "2026-09-06T09:47:24.805477+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "artunused",
+        "command": [
+          "npm",
+          "run",
+          "artunused"
+        ],
+        "startedAt": "2026-09-06T09:47:24.805935+00:00",
+        "endedAt": "2026-09-06T09:47:26.213304+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "vitest",
+        "command": [
+          "npx",
+          "vitest",
+          "run"
+        ],
+        "startedAt": "2026-09-06T09:47:26.213783+00:00",
+        "endedAt": "2026-09-06T09:48:09.650023+00:00",
+        "exitCode": 1
+      }
+    ]
+  },
+  "slice": null,
+  "glass": [],
+  "review": null,
+  "files": [
+    {
+      "file": "install.log.gz",
+      "bytes": 178,
+      "sha256": "55d839bb353a982076ae477da0687bb5e410e0336640a4a8e1e8cfe33942ba3c",
+      "originalBytes": 332,
+      "originalSha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de"
+    },
+    {
+      "file": "typecheck.log.gz",
+      "bytes": 99,
+      "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
+      "originalBytes": 134,
+      "originalSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "file": "artunused.log.gz",
+      "bytes": 70,
+      "sha256": "876709bbe6c507f5d7e821ad1dfbda92aa8c5cced4bfc03ea9924afec72a21c2",
+      "originalBytes": 58,
+      "originalSha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "file": "vitest.log.gz",
+      "bytes": 3405,
+      "sha256": "cc0431216745f27b49a375888ccfbfff006a7590522b6c9ed028298ca17f8add",
+      "originalBytes": 12462,
+      "originalSha256": "5320c8c61efd802e4f9ef79059deef1283fc0ae6aa3e95aa9a09a460a057fed9"
+    },
+    {
+      "file": "results.json.gz",
+      "bytes": 344,
+      "sha256": "52a09556475ca4722fd94aa3314f92ded65d386bda1602825fc9d5c7a54b771e",
+      "originalBytes": 1128,
+      "originalSha256": "c66ea3ad7e7078ff5af77ee66058eaad185bcde915452efa635a7bdbd829ed6c"
+    }
+  ]
+}

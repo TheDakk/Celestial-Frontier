@@ -60,6 +60,11 @@ Required new-source verification: fresh checkout/no main.js; typecheck/artunused
 Glass selftest; fresh normal build and three-view review; Slice develop then small/large phone
 canaries, each selected owner once, stopping on red. Normal visual diagnosis precedes the
 longer browser chain so geometry faults fail early; Slice-to-Glass source ordering remains.
+Initial exact source3101576 stopped at three Vitest release-copy checks;309files/3,308tests
+passed. The successor updates obsolete release wording and the source-derived81-bullet hash
+687ef4b59445d308b9e633876da3ed77456d9f903e2e4cf2d9a6e9538f13a60d. No product/producer/
+measurement changes. The red and focused Slice23/24 stop (before ordered-hash correction)
+are retained, alongside Glass8/8PASS. No browser stage ran on3101576.
 No previous source's PASS is claimed for this revision. Preceding exact cfd63ae checkpoint
 passed locally and lives in audits/UI_U1_FINAL_cfd63ae_20260906; current revision evidence
 lives in audits/UI_U1_LAUNCHER_REVISION_20260906.md and its forthcoming exact-source carriers.
