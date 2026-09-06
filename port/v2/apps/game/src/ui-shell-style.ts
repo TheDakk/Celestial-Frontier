@@ -54,7 +54,7 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   #searchbox{font-size:16px}
   #hpbar>.track{width:clamp(110px,33vw,188px)}
   #dock{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + var(--cf-phone-dock-bottom));display:grid;grid-template-columns:repeat(10,var(--cf-dock-half-pitch));grid-template-rows:minmax(44px,auto) 44px;column-gap:0;row-gap:var(--cf-dock-row-gap);width:320px;max-width:none;justify-items:center;align-items:center}
-  #dock .dock-board{grid-row:1;align-self:stretch;position:static;transform:none;max-width:none}
+  #dock .dock-board{grid-row:1;align-self:stretch;position:static;transform:none;max-width:none;padding-inline:0}
   #dockcharters{grid-column:1/3}#dockcodex{grid-column:3/5}#primechip{grid-column:5/7}#dockshipyard{grid-column:7/9}#dockatlas{grid-column:9/11}
   #dock .dock-utility{grid-row:2}#dockrecords{grid-column:2/4}#docknotifications{grid-column:4/6}#dockguide{grid-column:6/8}#docksets{grid-column:8/10}
   #dock #primechip{display:grid;grid-template-columns:auto auto;grid-template-rows:16px auto;align-content:center;justify-content:center;column-gap:2px;row-gap:1px}
