@@ -134,12 +134,13 @@ selftests and root validate passed; two PNGs were retained with zero runtime/eva
 or key overflow. Evidence: `audits/UI_U1_UAT_RESTORATION_20260906.md` and
 `audits/UI_U1_UAT_RESTORATION_381ddf5_20260906/manifest.json`.
 
-The current normal three-view review passed on `ce8912864fabbe5624651e76c06b94f95b734f39`.
-[The checkpoint audit](audits/UI_U1_LOCAL_CHECKPOINT_20260906.md) records static validation, 146
-metrics, 131 geometry controls, nine PNGs and the subsequent noncertifying Slice instrument RED.
-Both phone canaries were not run. Accepted layout is unchanged; physical UAT and both historical
-causes remain open. Next is the bounded Slice boundary/inventory correction on a clean test
-snapshot. U2–U4, Phase2 and hosted work remain unstarted.
+The accepted layout is unchanged. Slice's gap control now records the full boundary ancestry,
+proves rail-only protection before unowned native dismissal, and restores exact attributes and
+protected geometry. `ui-rail-copy-check.mjs` checks the boxless left owner and all four hidden
+right copies. [The correction audit](audits/UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) owns current
+status: 30 focused tests passed; static validation, a clean Slice run and both phone canaries are
+pending. The historical ce89128 RED is unchanged. Physical UAT and both older unknown causes
+remain open; these authorized U1 checks precede U2. No U2–U4, Phase2 or hosted work has started.
 
 U1 diagnostic update (2026-09-06): the normal-review tool adds viewport/resize facts and
 session-owned, auto-resuming trail-writer stacks. That diagnostic changed no product layout.

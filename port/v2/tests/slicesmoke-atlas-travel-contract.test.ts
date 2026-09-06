@@ -1,5 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
+import { gunzipSync } from 'node:zlib';
+import { assessCompactRailCopies } from '../tools/ui-rail-copy-check.mjs';
 import { describe, expect, it } from 'vitest';
 
 const sliceSource = readFileSync(
@@ -31,7 +33,7 @@ function executableDeclaration<T>(name: string, nextDeclaration: string): T {
   const prefix = `const ${name} = `;
   const owner = section(sliceSource, prefix, nextDeclaration);
   const expression = owner.slice(prefix.length).trim().replace(/;\s*$/u, '');
-  return Function(`return (${expression});`)() as T;
+  return Function('assessCompactRailCopies', `return (${expression});`)(assessCompactRailCopies) as T;
 }
 
 interface AtlasTravelObservation {
@@ -189,24 +191,54 @@ describe('Slice Atlas native Travel contract', () => {
   it('observes boxless Survey ownership and hidden desktop copies and rejects either painted rail root before exact restoration', () => {
     const assess = executableDeclaration<(rows: unknown) => boolean>(
       'collisionRailCopiesHidden', '  const collisionRailCopiesExpression =');
-    const baseline = ['raillft', 'railrgt'].map((id, index) => ({ id, exists: true,
-      parentId: index === 0 ? 'dock' : '', parentTag: index === 0 ? 'NAV' : 'BODY',
-      display: index === 0 ? 'contents' : 'none', copyIds: index === 0 ? ['railcodex'] : ['railatlas', 'railshipyard'],
-      copiesHidden: true, rectCount: 0, width: 0, height: 0, painted: false }));
+    const retained = JSON.parse(gunzipSync(readFileSync(new URL(
+      '../../../audits/UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/slice/slice-smoke-local-u1-ce8912864fab-20260906-slice.json.gz',
+      import.meta.url,
+    ))).toString('utf8')) as {
+      status: string; certifying: boolean; source: { commit: string; state: string };
+      findings: Array<{ scope: string; message: string }>;
+    };
+    const finding = retained.findings.find(row => row.scope === 'u1-rail-duplicates');
+    const prefix = 'U1 RAIL DUPLICATES: desktop copies or boxed rail roots remain beside the compact launcher: ';
+    expect(finding?.message.startsWith(prefix)).toBe(true);
+    const baseline = JSON.parse(finding!.message.slice(prefix.length)) as Array<{
+      id: string; exists: boolean; parentId: string; parentTag: string; display: string;
+      copyIds: string[]; copiesHidden: boolean; rectCount: number; width: number; height: number; painted: boolean;
+    }>;
+    expect(retained.source.commit).toBe('ce8912864fabbe5624651e76c06b94f95b734f39');
+    expect(retained.source.state).toBe('dirty-diagnostic');
+    expect(retained.status).toBe('fail'); expect(retained.certifying).toBe(false);
+    // Its observed geometry is the positive fixture; the whole historical
+    // report remains noncertifying RED and is never rewritten as a PASS.
+    expect(baseline[1]!.copyIds).toEqual(['railatlas', 'railshipyard', 'railinventory', 'railrecords']);
     expect(assess(baseline)).toBe(true);
-    expect(assess([])).toBe(false);
-    expect(assess(null)).toBe(false);
-    expect(assess([baseline[0], baseline[0]])).toBe(false);
+    expect(assessCompactRailCopies(baseline)).toEqual({ pass: true, reasons: [] });
+    for (const broken of [[], null, [baseline[0], baseline[0]], [...baseline].reverse(), [...baseline, baseline[1]], [null, baseline[1]]]) {
+      expect(assess(broken)).toBe(false);
+      expect(assessCompactRailCopies(broken).reasons.length).toBeGreaterThan(0);
+    }
+    for (const copyIds of [
+      ['railatlas', 'railshipyard'],
+      ['railshipyard', 'railatlas', 'railinventory', 'railrecords'],
+      ['railatlas', 'railshipyard', 'railinventory', 'railrecords', 'dockrecords'],
+    ]) {
+      const broken = structuredClone(baseline); broken[1]!.copyIds = copyIds;
+      expect(assess(broken)).toBe(false);
+      expect(assessCompactRailCopies(broken).reasons).toContainEqual(expect.stringContaining('railrgt: hidden-copy identity/order'));
+    }
     for (const index of [0, 1]) {
       const exposed = structuredClone(baseline);
       exposed[index] = { ...exposed[index]!, display: 'flex', rectCount: 1, width: 92, height: 44, painted: true };
       expect(assess(exposed)).toBe(false);
       expect(assess(baseline)).toBe(true);
       for (const [key, value] of [['exists', false], [index === 0 ? 'parentId' : 'parentTag', 'FOREIGN'], ['width', 44],
-        ['rectCount', 1], ['painted', true], ['copiesHidden', false], ['copyIds', ['docksurvey']]] as const) {
+        ['height', 44], ['display', 'flex'], ['rectCount', 1], ['painted', true], ['copiesHidden', false],
+        ['copyIds', ['docksurvey']]] as const) {
         const mutant = structuredClone(baseline);
         Object.assign(mutant[index]!, { [key]: value });
         expect(assess(mutant), `${index}/${key}`).toBe(false);
+        expect(assessCompactRailCopies(mutant).reasons).toContainEqual(expect.stringContaining(`${baseline[index]!.id}:`));
+        expect(assess(baseline), 'restored baseline stays accepted after each deliberate fault').toBe(true);
       }
     }
     const read = section(sliceSource, '  const collisionRailCopiesExpression =',
@@ -240,7 +272,7 @@ describe('Slice Atlas native Travel contract', () => {
       '    const control = await evalF4Control(collisionTarget.session, `(()=>{',
       '    const shown = control.shown.find');
     for (const value of [null, '', 'color: red; --u1-probe: 7; ', 'display: none !important;']) {
-      const dom = new JSDOM('<style>#raillft{display:contents}#railrgt,#railcodex{display:none}</style><nav id="dock"><div id="raillft"><button id="docksurvey">Survey</button><button id="railcodex">Compendium</button></div></nav><nav id="railrgt"><button id="railatlas">Atlas</button><button id="railshipyard">Shipyard</button></nav>',
+      const dom = new JSDOM('<style>#raillft{display:contents}#railrgt,#railcodex{display:none}</style><nav id="dock"><div id="raillft"><button id="docksurvey">Survey</button><button id="railcodex">Compendium</button></div></nav><nav id="railrgt"><button id="railatlas">Atlas</button><button id="railshipyard">Shipyard</button><button id="railinventory">Inventory</button><button id="railrecords">Records</button></nav>',
         { runScripts: 'outside-only' });
       const element = dom.window.document.getElementById('raillft')!;
       if (value !== null) element.setAttribute('style', value);
