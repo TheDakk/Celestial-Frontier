@@ -5,8 +5,10 @@
 Clean1609cf3 passed develop static (312 files/3333 passed/1 skipped), Slice and exact named
 verification. Small-phone then retained one hint contrast RED; large-phone did not run.
 The accepted layout remains fixed. Its plain guidance gains an opaque dark glyph outline and
-a conservative stroke-aware contrast check; the threshold remains4.5. New committed local
-validation is pending. [The audit](../../audits/UI_U1_HINT_CONTRAST_20260906.md) owns current
+a conservative stroke-aware contrast check; the threshold remains4.5. Sourcea528791 passed
+static3358/1skip and native outline controls, then stopped on a stale dock-fault wording check
+with zero product findings. The instrument-only successor uses responsive-slot errors and
+passes6/6 retained-receipt controls plus rootTypeScript/validate; local completion is pending. [The audit](../../audits/UI_U1_HINT_CONTRAST_20260906.md) owns current
 status and the23-carrier prior checkpoint. U2 is the next development batch after these checks;
 physical UAT and the two historical unknown causes remain open. No U2–U4, Phase2 or hosted work.
 Earlier ledger entries below are retained verbatim.

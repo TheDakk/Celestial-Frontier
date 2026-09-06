@@ -45,7 +45,10 @@ The next bounded [hint contrast correction](../audits/UI_U1_HINT_CONTRAST_202609
 2px opaque black glyph stroke behind the fill, with at least 1px outside each glyph, changing no
 pill or layout geometry. Glass recognizes proven stroke while preserving its 4.5 threshold and
 effective-opacity checks. Preparation passed 25 stroke tests, 72 release/budget/evidence tests, root TypeScript, evidence
-build and root validate. Fresh committed browser validation remains pending. The development draft
+build and root validate. The first committed candidate a528791 passed static (313 files, 3358 passed, one skipped) and
+the native outline controls. Small-phone then stopped on a stale dock-fault description with zero
+product findings; large-phone and Slice did not run. The responsive-slot assertion is corrected
+without changing the product. Fresh committed completion remains pending. The development draft
 still has 81 bullets and mentions the outline. Compendium producer authority is now
 `6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`; measurement
 `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` is unchanged.

@@ -10884,7 +10884,7 @@ async function main() {
         if (vp.width <= 700) {
           const phoneDockCheck = `(${readU1PhoneShell.toString()})(false)`;
           addOutcome(vp.label, 'phone-dock', 'PHONE_DOCK_INVENTORY', '#dock', await evalIn(phoneDockCheck),
-            'five labelled 58px board faces and four 44px utility targets retain 64px pitch; relocated Inventory and scene actions stay centre-owned');
+            'five labelled responsive board faces and four 44px utility targets retain their measured slots; relocated Inventory and scene actions stay centre-owned');
           if (!phoneDockControlRun) {
             phoneDockControlRun = true;
             const dockControl = await evalIn(`(()=>{const dock=document.getElementById('dock'),
@@ -10893,7 +10893,7 @@ async function main() {
               finally{dock.setAttribute('style','');dock.removeAttribute('style');if(priorStyle.present)dock.setAttribute('style',priorStyle.value);}
               const restored=${phoneDockCheck},restoredStyle={present:dock.hasAttribute('style'),value:dock.getAttribute('style')},
                 styleRestored=restoredStyle.present===priorStyle.present&&restoredStyle.value===priorStyle.value;
-              return {ok:broken.ok===false&&broken.errors.some(error=>error.startsWith('dock pitch is not 64px: '))
+              return {ok:broken.ok===false&&broken.errors.some(error=>error.startsWith('dock responsive slot drifted: '))
                 &&restored.ok&&styleRestored,broken,restored,priorStyle,restoredStyle,styleRestored};})()`);
             console.log(`GLASS PHONE DOCK COMPRESSED-TRACK CONTROL — ${vp.label}: ${JSON.stringify(dockControl)}`);
             if (!dockControl.ok) {

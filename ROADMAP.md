@@ -20,8 +20,8 @@ the archive verbatim and refresh this handoff in place.
 ## SESSION HANDOFF — 2026-09-06 · U1 FINAL GUIDANCE CONTRAST CHECK
 
 OpenAI/Codex on macOS | /Users/nick/Projects/celestial-frontier-openai-mac | openai/mac |
-origin/openai/mac. Entry signed1609cf3991e20da45d5e4628fd2163278ece5ec8 is16 commits ahead;
-the correction carrying this handoff will be17 ahead. No push. Physical root/branch/upstream
+origin/openai/mac. Entry signeda52879197e5d061671e5835e41a7afe4ba39b5d2 is17 commits ahead;
+the instrument correction carrying this handoff will be18 ahead. No push. Physical root/branch/upstream
 verified, root main.js absent, ambient .DS_Store preserved. Same-session SSH remote
  git@github.com:TheDakk/Celestial-Frontier.git/account TheDakk/read+fetchPASS and origin/develop
 c1791e2 ancestor receipts reused. No other agent worktree edited.
@@ -43,6 +43,14 @@ SHA1ad81a5a4d7e94d362d095c6f73d7624aef309cf6a0fb248cc61a854d0a8265b. New audit:
 
 Preparation PASS:25 stroke tests,72 release/budget/evidence tests,root TypeScript,evidencebuild
 and root validate/fingerprint. Six carriers: audits/UI_U1_HINT_PREPARATION_20260906/manifest.json.
+a528791 clean static PASS313files/3358tests/1skip. Native outline controls/HUD contrast PASS;
+small-phone stopped INSTRUMENT RED because compressed-track verdict expected retired64px
+error wording instead of responsive-slot drift. Broken geometry was detected and exactstyle
+restored;zero product findings. Large/Slice NOTRUN. Retained a528791 manifest owns the stop.
+Successor corrects only that predicate/description and adds exact retained-receipt replay;
+outlined product/producer unchanged.
+Dock verdict preparation PASS6/6 plus rootTypeScript/validate/fingerprint; three logs retained
+in audits/UI_U1_DOCK_VERDICT_PREPARATION_20260906/manifest.json.
 Next: commit signed correction, then one clean local test artifact
 with develop static → small-phone → large-phone → Slice develop/exact named verification on
 unchanged source. Phones are independent noncertifying diagnostics, no Slice predecessor;
