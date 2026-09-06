@@ -78,3 +78,15 @@ that gate, with Training/Settings stack-law reconciliation first. Claude: Nick n
 now; preserve anthropic/mac/unmerged173c806 without copying, merge or duplicate battery. Future
 openai/mac→develop integration needs separate exact hosted authority. No PR is needed now.
 Develop/main/live unchanged. No release or deployment.
+
+## Pre-browser TypeScript stop and declaration successor
+
+Clean signed7c20246b2b0c238a7e1bf14d1c405ddb368bf75a passed312 test files/3333 tests/1 skip,
+then stopped in the root TypeScript pass at TS7016: the new .mjs helper had no declaration.
+No Slice or phone browser stage ran. This is a test-helper integration error, not a product finding.
+The bounded successor adds only ui-rail-copy-check.d.mts with an unknown-input/boolean-and-reasons
+signature. Focused root no-unused TypeScript and root validation pass. The failed source is not
+retried; its execution/source and all stage logs are preserved in
+UI_U1_RAIL_STATIC_7c20246_RED_20260906/manifest.json (SHA256 d3620f4fad21ec53589fee99f07e912c243382e6020f3aafc11d4a679bcc87e2).
+The declaration successor is16 local commits ahead before terminal evidence; no push. Continue
+one clean changed-source static/Slice/phone sequence under Nick's existing finish authorization.

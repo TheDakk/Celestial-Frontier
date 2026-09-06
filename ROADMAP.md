@@ -40,7 +40,13 @@ Focused20 boundary/wiring and10 atlas tests PASS; the atlas fixture-parser-only9
 alongside its changed-parserPASS. Root validate/fingerprintPASS. Preparation evidence is in
  audits/UI_U1_RAIL_CONTROL_PREP_20260906/manifest.json.
 
-Next in this batch: clean committed local test artifact, one develop static profile, Slice develop
+Clean source7c20246b2b0c238a7e1bf14d1c405ddb368bf75a passed312files/3333tests/1skip, then
+root TypeScript stopped at TS7016 for the new helper's missing declaration. No browser ran.
+The successor adds only ui-rail-copy-check.d.mts; focused root no-unused TypeScript and root
+validate PASS. Exact red logs are in audits/UI_U1_RAIL_STATIC_7c20246_RED_20260906/manifest.json.
+The source successor carrying this declaration is16 commits ahead locally, no push.
+
+Next in this batch: a new clean committed local test artifact, one develop static profile, Slice develop
 with exact named verification, then small-phone/large-phone Edge collectors once in order. Do not
 repeat the ce89128 normal three-view review: app/review source is unchanged and that PASS remains
 source-bound. Do not retry any unchanged red source. Retain new failures before a bounded repair;
