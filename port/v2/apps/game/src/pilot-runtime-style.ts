@@ -10,7 +10,7 @@ body[data-cf-pilot-look] :is(.panel,#survey,.inventory-sheet-card){border-radius
 /* The native 58px gutter already reserves Close. Avoid charging the grid body
  * another 44px for its float while leaving that full-height gutter intact. */
 body[data-cf-pilot-look] .panel-close{margin-right:-44px;margin-left:0;transform:none}
-body[data-cf-pilot-look] :is(.panel,#survey,#inventorysheet) :is(h2,h3,h4){font-size:16px;font-weight:600;letter-spacing:0}
+body[data-cf-pilot-look] :is(.panel,#survey,#inventorysheet) :is(h2,h3,h4){font-size:16px;font-weight:600;letter-spacing:0;gap:6px}
 body[data-cf-pilot-look] :is(.panel,#survey,#inventorysheet) :is(button:not(.atlas-chart-point),input,select,textarea){border-radius:6px}
 body[data-cf-pilot-look] :is(.inventory-panel-body,.inventory-detail,[data-star-atlas-body]){gap:8px}
 body[data-cf-pilot-look] #inventorypanel button.inventory-row{border-radius:6px;padding:8px 10px}
