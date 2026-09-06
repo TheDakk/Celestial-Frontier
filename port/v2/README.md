@@ -11,7 +11,8 @@ U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options befo
 It owns an isolated headless browser and creates three golden comparison sheets plus numeric
 CSS geometry deltas. On macOS request approved out-of-sandbox execution before browser spawn.
 This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2; no CI/profile
-lane was changed. `ROADMAP.md` and `audits/UI_U1_CHECKPOINT_20260906.md` own exact-source results.
+lane was changed. `ROADMAP.md` and `../../audits/UI_U1_LAUNCHER_REVISION_20260906.md` own
+current exact-source results; `../../audits/UI_U1_CHECKPOINT_20260906.md` preserves the earlier U1 checkpoint.
 
 ## UI tool setup — 2026-09-05 local
 

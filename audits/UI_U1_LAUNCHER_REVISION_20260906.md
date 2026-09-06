@@ -72,3 +72,43 @@ Diagnostic guard preparation passed exact delivered-event baseline,10 rejected m
 restoration,32 generated expression shapes, module syntax and diffcheck. The phone geometry
 oracle is byte-unchanged. This result comes from agent terminal output chunk386896 (no raw
 log file was created); it is recorded as reported preparation, separate from exact-source runs.
+
+
+## Final exact-source local checkpoint — 88e9216
+
+Signed source `88e9216ec869280900ac55df69c54238c260ea83` was tested from a fresh separate checkout with no root
+main.js. Product bytes match 3101576; subsequent commits correct only instrument/test oracles
+and retain red evidence. No history rewrite or unchanged-source retry occurred.
+The 6a88f85 normal-review scene change remains unexplained. This candidate adds delivered
+event ownership and scene chronology; a PASS here does not retroactively explain that red
+or establish a product repair. Retain it as a review concern before U1 approval.
+
+- Typecheck and artunused PASS; Vitest 311 files / 3312 tests PASS / 1 skipped.
+- Glass selftest PASS; fresh normal build and three-view U1 review PASS.
+- Normal review: nine screenshots; all nine native launcher opener/Close/focus journeys pass.
+  All 61 native button presses delivered exact trusted pointerdown/up/click owners;
+  all three public-trail traces are retained without overflow.
+- Slice develop `20260906102037388-94777-7b436467e0c7` PASS, 371,828ms.
+- small-phone (targeted-diagnostic): `20260906102651049-95109-ccbffa7de984` PASS, 14,236ms, zero findings/instrument failures.
+- large-phone (targeted-diagnostic): `20260906102706994-95230-74564ef387e2` PASS, 13,979ms, zero findings/instrument failures.
+
+Each selected owner ran once on this exact source. The normal visual review ran before
+Slice; Slice then both phone canaries used the same unchanged source. No full Glass, new
+Compendium certificate, production/hosted chain or real-device/human acceptance is claimed.
+All nine normal screenshots were inspected. Phone remains the compact reference; tablet
+and desktop share its centered launcher with capped scale. No new clipping or access blocker
+was found. Existing tablet nameplate ellipsis still truncates trailing statistics.
+
+Evidence: `UI_U1_LAUNCHER_88e9216_20260906/manifest.json`, SHA-256
+`c0ab94c91404178698db56723eb84b6349ef7d02fb58b2077427943f1229e2c2`; all named reports, raw logs and images are hash-indexed there.
+Producer remains 8253df4e53f89585d76ec5352980d688d3f646d48c97170c235507e83bba5a2e;
+measurement remains 4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12.
+The ordered 81-bullet authority remains 687ef4b59445d308b9e633876da3ed77456d9f903e2e4cf2d9a6e9538f13a60d.
+No workflow, Actions policy, artlock reference, protected portrait, legacy source or package change
+in this revision. Current reference sections match the product.
+
+A signed records-only successor carries this report and images for the authorized normal
+openai/mac branch push; the tested source above is distinct from the final pushed record commit.
+U1 stops for Nick's visual review before U2. Future panel batches inherit the same uniform
+phone/tablet/desktop language and use space for content. U2–U4 and integrated AV approval
+remain open. No hosted attempt, label, PR, merge, release, deployment or purchase occurred.
