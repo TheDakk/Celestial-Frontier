@@ -3317,6 +3317,85 @@ describe('sixth Slice red contract repairs', () => {
     dom.window.close();
   });
 
+  it('rejects clipped and overlapping U1 top-stack rectangles without moving the launcher contract', () => {
+    const start = '  const geoCheck = `';
+    const expression = section(sliceSource, start, '`;\n  const geo =').slice(start.length);
+    const dom = new JSDOM(`<!doctype html><style>*{opacity:1;visibility:visible}#raillft,#railrgt{display:none}</style>
+      <header id="topbar"><button id="dockinventory" type="button" aria-label="Inventory"><span id="playerchip">Explorer</span></button>
+        <div id="hpbar">100/100 HP</div><input id="searchbox"><button id="shelfnotifications" type="button" aria-label="Notifications">Bell</button>
+        <div class="location-readout"><span class="location-label">Current view</span><div id="trail"><span class="seg cur">Cosmos</span></div></div></header>
+      <nav id="sceneactions"><button id="docksurvey" type="button">Survey</button><button id="dockcharts" type="button">Charts</button><span id="objchip">Objective</span></nav>
+      <div id="ctxbar">Context</div><div id="hintpill">Hint</div><nav id="dock"><button id="primechip" type="button">Prime</button></nav>
+      <nav id="raillft"></nav><nav id="railrgt"></nav>`, { runScripts: 'outside-only' });
+    const win = dom.window as unknown as Window & typeof globalThis;
+    const document = win.document;
+    Object.defineProperties(win, { innerWidth: { value: 390 }, innerHeight: { value: 844 } });
+    type Box = { left: number; top: number; width: number; height: number };
+    const boxes = new Map<string, Box>([
+      ['topbar', { left: 0, top: 0, width: 390, height: 112 }],
+      ['dockinventory', { left: 10, top: 8, width: 156, height: 44 }],
+      ['playerchip', { left: 10, top: 8, width: 156, height: 44 }],
+      ['hpbar', { left: 10, top: 60, width: 156, height: 44 }],
+      ['searchbox', { left: 174, top: 8, width: 154, height: 44 }],
+      ['shelfnotifications', { left: 336, top: 8, width: 44, height: 44 }],
+      ['location-readout', { left: 174, top: 60, width: 206, height: 44 }],
+      ['trail', { left: 184, top: 78, width: 186, height: 16 }],
+      ['sceneactions', { left: 10, top: 120, width: 156, height: 180 }],
+      ['docksurvey', { left: 10, top: 120, width: 156, height: 44 }],
+      ['dockcharts', { left: 10, top: 172, width: 156, height: 44 }],
+      ['objchip', { left: 10, top: 224, width: 156, height: 76 }],
+      ['ctxbar', { left: 100, top: 650, width: 190, height: 28 }],
+      ['hintpill', { left: 130, top: 696, width: 130, height: 24 }],
+      ['dock', { left: 35, top: 740, width: 320, height: 92 }],
+      ['primechip', { left: 166, top: 740, width: 58, height: 44 }],
+    ]);
+    for (const [id] of boxes) {
+      const node = id === 'location-readout' ? document.querySelector('.location-readout')! : document.getElementById(id)!;
+      Object.defineProperty(node, 'getBoundingClientRect', { value: () => {
+        const b = boxes.get(id)!;
+        return { ...b, x: b.left, y: b.top, right: b.left + b.width, bottom: b.top + b.height };
+      } });
+    }
+    document.elementFromPoint = ((x: number, y: number) => {
+      for (const id of ['dockinventory', 'searchbox', 'shelfnotifications', 'docksurvey', 'dockcharts', 'primechip']) {
+        const b = boxes.get(id)!;
+        if (x >= b.left && x <= b.left + b.width && y >= b.top && y <= b.top + b.height) return document.getElementById(id);
+      }
+      return document.body;
+    }) as typeof document.elementFromPoint;
+    const run = (): string[] => win.eval(expression) as string[];
+    try {
+      expect(run()).toEqual([]);
+      const mutations: ReadonlyArray<readonly [string, string, Partial<Box>, string]> = [
+        ['objective outside viewport', 'objchip', { left: 410 }, 'objective chip'],
+        ['objective overlaps Charts', 'objchip', { top: 172 }, 'objective chip'],
+        ['objective vertically clipped', 'objchip', { height: 700 }, 'objective chip'],
+        ['HP overlaps nameplate', 'hpbar', { top: 40 }, 'HP bar'],
+        ['scene stack detached from topbar', 'sceneactions', { top: 140 }, 'scene actions'],
+        ['Survey target below 44px', 'docksurvey', { height: 43 }, 'scene actions'],
+        ['trail outside header', 'trail', { top: 140 }, 'current view trail'],
+      ];
+      for (const [name, id, changes, prefix] of mutations) {
+        const prior = boxes.get(id)!;
+        try {
+          boxes.set(id, { ...prior, ...changes });
+          expect(run().some(finding => finding.startsWith(prefix)), name).toBe(true);
+        } finally { boxes.set(id, prior); }
+        expect(run(), `${name} restoration`).toEqual([]);
+      }
+      const geometryOwner = section(sliceSource, '  /* The objective now flows', '  /* The notification bell owns');
+      proveEachMarkerRequired(geometryOwner, [
+        ['real out-of-viewport and Charts mutations', "for(const name of ['outside viewport','overlaps Charts'])"],
+        ['actual objective and Charts rectangles', 'const a=o.getBoundingClientRect(),c=charts.getBoundingClientRect()'],
+        ['static-flow transform mutation', "o.style.setProperty('transform','translate('+dx+'px,'+dy+'px)','important')"],
+        ['observed geometry reproduction', 'ok:reproduced&&bad.some'],
+        ['exact style-presence restoration', "styleRestored=o.getAttribute('style')===prior"],
+        ['baseline returns green', '&&styleRestored&&restored.length===0'],
+        ['causal stop', "failSliceWithoutCascade('GEOMETRY CHECKER CONTROL FAILED"],
+      ]);
+    } finally { dom.window.close(); }
+  });
+
   it('seals the repaired phone, lazy publication, and Charter causal prefixes before browser spend', () => {
     expect(indexSource).not.toContain(
       'body:is(.card-open,.panel-open) #primechip { display: none; }',

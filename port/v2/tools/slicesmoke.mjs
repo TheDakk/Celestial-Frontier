@@ -5923,17 +5923,34 @@ try {
      uilayout.js discipline: measure the REAL boxes, then prove the checker
      can catch a moved element before trusting its pass). */
   const geoCheck = `(()=>{ const W=innerWidth, H=innerHeight;
-    const r=(id)=>{ const el=document.getElementById(id); if(!el) return null;
+    const r=(id)=>{ const el=typeof id==='string'?document.getElementById(id):id; if(!el) return null;
       const b=el.getBoundingClientRect(),cs=getComputedStyle(el); return { l:b.left, t:b.top, r:b.right, b:b.bottom,
         cx:(b.left+b.right)/2,cy:(b.top+b.bottom)/2,w:b.width,h:b.height,
         vis:b.width>0&&b.height>0&&cs.display!=='none'&&cs.visibility!=='hidden'&&Number(cs.opacity)>0 }; };
     const overlaps=(a,b)=>a&&b&&a.l<b.r-.5&&a.r>b.l+.5&&a.t<b.b-.5&&a.b>b.t+.5;
     const pc=r('playerchip'), hp=r('hpbar'), pr=r('primechip'), obj=r('objchip'),
       hint=r('hintpill'), ctx=r('ctxbar'), dock=r('dock'), rail=r('raillft'), rightRail=r('railrgt'),
-      srch=r('searchbox'),bell=r('shelfnotifications');
+      srch=r('searchbox'),bell=r('shelfnotifications'),topbar=r('topbar'),inventory=r('dockinventory'),
+      scene=r('sceneactions'),survey=r('docksurvey'),charts=r('dockcharts'),trail=r('trail');
+    const rootStyle=getComputedStyle(document.documentElement),safeLeft=parseFloat(rootStyle.getPropertyValue('--safe-left'))||0,
+      expectedLeft=safeLeft+(W<=700?10:18),expectedColumn=W<=700?Math.max(128,Math.min(176,W*.4)):Math.max(176,Math.min(240,W*.2)),
+      inside=(outer,inner)=>!!outer?.vis&&!!inner?.vis&&inner.l>=outer.l-1&&inner.r<=outer.r+1&&inner.t>=outer.t-1&&inner.b<=outer.b+1,
+      inViewport=(box)=>!!box?.vis&&box.l>=-1&&box.r<=W+1&&box.t>=-1&&box.b<=H+1,
+      aligned=(box)=>!!box?.vis&&Math.abs(box.l-expectedLeft)<=1&&Math.abs(box.w-expectedColumn)<=1,
+      nativeAvailable=(id,box)=>{const el=document.getElementById(id),hit=box?.vis?document.elementFromPoint(box.cx,box.cy):null;
+        return el instanceof HTMLButtonElement&&el.type==='button'&&!el.disabled&&!el.closest('[inert],[aria-hidden="true"]')
+          &&!!(el.getAttribute('aria-label')||el.textContent||'').trim()&&box.w>=44&&box.h>=44&&!!hit&&(hit===el||el.contains(hit));};
     const bad=[];
-    if(!pc || pc.l>80 || pc.t>60) bad.push('playerchip not top-left');
-    if(!hp || !pc || hp.t < pc.b-4) bad.push('HP bar not under the player chip');
+    if(!aligned(pc)||!inside(topbar,pc)||!inside(inventory,pc)||!nativeAvailable('dockinventory',inventory))
+      bad.push('playerchip not in its reachable aligned top-left Inventory owner: '+JSON.stringify({pc,inventory,topbar,expectedLeft,expectedColumn}));
+    if(!aligned(hp)||!inside(topbar,hp)||!pc||Math.abs(hp.t-pc.b-8)>1||hp.h<44)
+      bad.push('HP bar not aligned 8px under the player chip inside topbar: '+JSON.stringify({hp,pc,topbar}));
+    const trailNode=document.getElementById('trail'),location=trailNode?.closest('.location-readout'),locationBox=r(location),
+      locationLabel=location?.querySelector(':scope > .location-label');
+    if(!inside(topbar,locationBox)||!inside(locationBox,trail)||!hp||Math.abs(locationBox.cy-hp.cy)>1
+      ||locationLabel?.parentElement!==location||!locationLabel?.textContent.trim()||trailNode.contains(locationLabel)
+      ||!trailNode.querySelector('.seg.cur')||!inViewport(trail))
+      bad.push('current view trail is not contained beside Health with a separate label: '+JSON.stringify({trail,location:locationBox,hp}));
     const bellNode=document.getElementById('shelfnotifications'),searchNode=document.getElementById('searchbox'),
       safeRight=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--safe-right'))||0,
       expectedBellRight=safeRight+(W<=700?10:18),bellHit=bell?document.elementFromPoint(bell.cx,bell.cy):null,
@@ -5952,7 +5969,16 @@ try {
       for(const [name,box] of [['playerchip',pc],['hpbar',hp],['searchbox',srch],['trail',r('trail')]])
         if(overlaps(pr,box))bad.push('primechip overlaps '+name);
     }
-    if(!obj || obj.l>40 || obj.t<H*0.18 || obj.t>H*0.42) bad.push('objective chip not left @~26vh: '+JSON.stringify(obj));
+    const sceneNode=document.getElementById('sceneactions'),sceneOrder=sceneNode?[...sceneNode.children].map(el=>el.id):[];
+    if(!aligned(scene)||!topbar||Math.abs(scene.t-topbar.b-8)>1
+      ||!inside(scene,survey)||!inside(scene,charts)||!aligned(survey)||!aligned(charts)
+      ||Math.abs(survey.t-scene.t)>1||Math.abs(charts.t-survey.b-8)>1
+      ||!nativeAvailable('docksurvey',survey)||!nativeAvailable('dockcharts',charts)
+      ||JSON.stringify(sceneOrder)!==JSON.stringify(['docksurvey','dockcharts','objchip']))
+      bad.push('scene actions are not the aligned native 44px vertical stack below topbar: '+JSON.stringify({scene,survey,charts,topbar,sceneOrder}));
+    if(!aligned(obj)||!inside(scene,obj)||!inViewport(obj)||!charts||Math.abs(obj.t-charts.b-8)>1
+      ||overlaps(obj,charts)||overlaps(obj,survey)||document.getElementById('objchip')?.parentElement!==sceneNode)
+      bad.push('objective chip is not contained and aligned 8px below Charts: '+JSON.stringify({obj,charts,scene}));
     if(!hint || Math.abs(hint.cx-W/2)>90 || hint.b<H-160) bad.push('hint pill not bottom-center');
     if(ctx && hint && ctx.b>hint.t+6) bad.push('caption not ABOVE the hint pill');
     if(rail?.vis||rightRail?.vis)bad.push('legacy rail root remains visible beside the unified launcher');
@@ -5975,11 +6001,23 @@ try {
     return bad; })()`;
   const geo = await evalIn(geoCheck);
   if (geo.length) fails.push('GOLDEN LAYOUT drift: ' + geo.join(' · '));
-  /* the self-control: move the objective chip to the right, the checker
-     MUST see it (reproduce-the-reported-geometry law), then restore */
-  const geoCtl = await evalIn(`(()=>{ const o=document.getElementById('objchip'); o.style.left='900px';
-    const bad=${geoCheck}; o.style.left=''; return bad; })()`);
-  if (!geoCtl.some((b) => b.includes('objective chip'))) fails.push('GEOMETRY CHECKER CONTROL FAILED — a moved objective chip went unseen');
+  /* The objective now flows inside the scene column. Translate its actual
+     rectangle outside the viewport and onto Charts; a static-position left
+     declaration cannot recreate either defect. Restore the exact owned node. */
+  if (geo.length === 0) {
+    const geoCtl = await evalIn(`(()=>{const o=document.getElementById('objchip'),charts=document.getElementById('dockcharts'),
+      prior=o.getAttribute('style'),results=[];let error=null;
+      const restore=()=>{o.setAttribute('style','');o.removeAttribute('style');if(prior!==null)o.setAttribute('style',prior);};
+      try{for(const name of ['outside viewport','overlaps Charts']){const a=o.getBoundingClientRect(),c=charts.getBoundingClientRect(),
+        dx=name==='outside viewport'?innerWidth+20-a.left:c.left-a.left,dy=name==='outside viewport'?0:c.top-a.top;
+        o.style.setProperty('transform','translate('+dx+'px,'+dy+'px)','important');const bad=${geoCheck},moved=o.getBoundingClientRect(),
+          reproduced=name==='outside viewport'?moved.left>innerWidth:moved.left<c.right&&moved.right>c.left&&moved.top<c.bottom&&moved.bottom>c.top;
+        restore();const restored=${geoCheck},styleRestored=o.getAttribute('style')===prior;
+        results.push({name,reproduced,bad,restored,styleRestored,ok:reproduced&&bad.some(row=>row.startsWith('objective chip'))&&styleRestored&&restored.length===0});}}
+      catch(cause){error=String(cause?.message||cause);}finally{restore();}
+      return {ok:error===null&&results.length===2&&results.every(row=>row.ok),results,error};})()`);
+    if (!geoCtl.ok) failSliceWithoutCascade('GEOMETRY CHECKER CONTROL FAILED — objective displacement/overlap was not rejected and restored: '+JSON.stringify(geoCtl));
+  }
 
   /* The notification bell owns the shelf's right slot. Translate its live
      target, remove it, and reduce its touch floor independently; the same
@@ -6829,7 +6867,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 81,
-    sha256: '687ef4b59445d308b9e633876da3ed77456d9f903e2e4cf2d9a6e9538f13a60d',
+    sha256: 'f395fc3218fe2a5edbc2c6d52aadcbddde3c5da1e4d179854a97b601605b68ec',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];

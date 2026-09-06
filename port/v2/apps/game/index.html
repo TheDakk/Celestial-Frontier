@@ -878,12 +878,11 @@
   <header id="topbar">
     <button id="dockinventory" data-panel-boundary class="player-control" type="button" aria-label="Inventory" aria-controls="inventorypanel" aria-expanded="false"><span id="playerchip" class="glass pill"></span></button>
     <input id="searchbox" class="glass pill" type="search" autocomplete="off" spellcheck="false"
-      placeholder="Search or paste code" aria-label="search or paste a code" />
+      placeholder="Search" aria-label="search or paste a code" title="Find species or paste a travel code" />
     <button id="shelfnotifications" data-panel-boundary class="dock-utility" type="button" aria-label="Notifications" aria-controls="notificationpanel" aria-expanded="false"><span class="utility-face"><span class="ico" aria-hidden="true">🔔</span></span></button>
-    <div id="hpbar" class="glass pill"><span>❤</span><span class="track"><span class="fill" style="width:100%"></span><span class="txt"></span></span></div>
+    <div id="hpbar" class="glass" role="meter" aria-label="Explorer health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span class="hp-icon" aria-hidden="true">❤</span><span class="hp-label" aria-hidden="true">Health</span><span class="track"><span class="fill" style="width:100%"></span><span class="txt"></span></span></div>
+    <div class="location-readout" role="group" aria-label="Current view and location"><span class="location-label" aria-hidden="true">Current view</span><div id="trail"></div></div>
   </header>
-  <div id="trail"></div>
-  <span id="objchip" class="glass pill"></span>
   <div id="ctxbar"></div>
   <div id="hintpill" class="glass pill"></div>
   <nav id="raillft" aria-label="rail" data-panel-boundary>
@@ -910,6 +909,7 @@
   <nav id="sceneactions" aria-label="Scene actions" data-panel-boundary>
     <button id="docksurvey" type="button" aria-label="survey card" aria-controls="survey" aria-expanded="false"><span class="ico" aria-hidden="true">🔭</span><span>Survey</span></button>
     <button id="dockcharts" type="button" aria-label="star charts" aria-pressed="false"><span class="ico" aria-hidden="true">📈</span><span>Charts</span></button>
+    <span id="objchip" class="glass"></span>
   </nav>
   <aside id="notificationpanel" class="glass panel" aria-label="Notifications"></aside>
   <aside id="setpanel" class="glass panel" aria-label="Settings"></aside>

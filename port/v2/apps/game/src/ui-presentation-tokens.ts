@@ -22,7 +22,8 @@ export const UI_PRESENTATION_TOKENS = Object.freeze({
   'launcher-padding': '12px', 'launcher-label': '9.5px', 'launcher-count': '9px',
   'launcher-icon': '16px', 'launcher-icon-line': '18px',
   'phone-dock-bottom': '12px', 'phone-hint-bottom': '124px',
-  'phone-caption-bottom': '164px', 'objective-offset': '128px',
+  'phone-caption-bottom': '164px', 'hud-inset': '18px',
+  'hud-column': 'clamp(176px,20vw,240px)', 'hud-stack-gap': '8px',
   'duration-press': '150ms', 'duration-enter': '200ms', 'duration-exit': '150ms',
   'ease-standard': 'cubic-bezier(.2,.7,.2,1)',
 } as const);

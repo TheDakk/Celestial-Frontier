@@ -17,6 +17,14 @@ wiring only. Narrow landscape<=900 uses the phone arrangement and the existing p
 right column. Caption/hint offsets follow measured launcher height. UI_PRESENTATION.md owns
 exact values and native-gap evidence. Inventory opens through the nameplate. AppChrome still measures the
 shelf and projects Prime count; panel/Training owners retain focus and locked controls.
+The second U1 visual refinement places the noninteractive Current view/#trail inside the
+header opposite the framed health meter. Inventory/HP/Survey/Charts/Objective share one
+measured left column with8px gaps; larger screens keep capped controls and usable scene space.
+The existing status writer supplies meter accessibility values without changing health math.
+A landed portrait<=900 compacts the same context actions into a top row. AppChrome observes
+#sceneactions for roster clearance while retaining the72px band rule. The approved bottom
+launcher is unchanged. UI_PRESENTATION.md owns exact values and the labelled floating-trail
+fault fixture used by the existing fallback control.
 `notification-history.ts` adds explicit saved Mark read using the existing notification shape
 and receipt-free UI checkpoint whitelist. See UI_PRESENTATION.md and SAVE_SYSTEM.md for bounds,
 read-only behavior and review deviations. U2–U4 and integrated-pilot approval remain open.
