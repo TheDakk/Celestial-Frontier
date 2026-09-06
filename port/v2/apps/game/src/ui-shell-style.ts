@@ -22,7 +22,7 @@ export const UI_SHELL_CSS = `
 #objchip{position:fixed;left:calc(var(--safe-left) + 18px);top:calc(var(--topbar-h) + var(--cf-objective-offset));z-index:var(--cf-layer-objective);padding:6px 11px;font-size:10.5px;letter-spacing:.04em;line-height:1.35;color:#f0cf8a;max-width:min(62vw,340px);box-sizing:border-box;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-color:rgba(255,207,138,.35)}
 #objchip:empty{display:none}#objchip .prog{color:#7ec8f0;font-weight:600}
 body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
-#ctxbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 64px);max-width:min(620px,90vw);text-align:center;pointer-events:none;z-index:var(--cf-layer-caption);box-sizing:border-box;padding:0;border:0;background:none;border-radius:0;font-size:12.5px;line-height:1.5;color:var(--dim);text-shadow:0 1px 12px #000c}
+#ctxbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 64px);max-width:min(620px,90vw);text-align:center;pointer-events:none;z-index:var(--cf-layer-caption);box-sizing:border-box;padding:0;border:0;background:rgba(10,16,30,.94);border-radius:0;font-size:12.5px;line-height:1.5;color:var(--dim);text-shadow:0 1px 12px #000c}
 #hintpill{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 18px);z-index:var(--cf-layer-caption);pointer-events:none;font-size:11px;letter-spacing:.04em;color:var(--faint);padding:7px 16px;white-space:nowrap;max-width:94vw;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis}
 #hintpill .kw{color:#7ec8f0;font-weight:600}
 #dock{position:fixed;z-index:var(--cf-layer-shell);background:none;border:0;box-sizing:border-box;pointer-events:none}

@@ -371,6 +371,43 @@
         "sha256": "5b6608eecd8bb638fe28ed11340cfb744998736782f9962c19bc0e2a5fc6dfc4",
         "uncompressedSha256": "bb37434b5ae665c45ad4aa9700e9eaa13f0d71ab0671cc9dceff59c00e4a9fe8"
       }
+    },
+    {
+      "source": "6fb67a26cbab6a8621e9f86e6494a0552c912114",
+      "kind": "local-glass-small-phone",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, 311 Vitest files/3300 tests/1 skipped, Glass selftest and immutable Slice develop PASS",
+      "slice": {
+        "runId": "20260906074236094-71755-19b4f4c46ce2",
+        "durationMs": 375056,
+        "evidenceDirectory": "UI_U1_SLICE_6fb67a2_20260906"
+      },
+      "runId": "20260906074853253-72032-42a226ac671e",
+      "failures": [
+        "TEXT_CONTRAST_LOW small-phone/hud #ctxbar: white caption measured against white bright-art backing, ratio1 vs required4.5."
+      ],
+      "correction": "#ctxbar receives the existing rgba(10,16,30,.94) backdrop; zero padding/border/radius and lane geometry remain. Existing contrast evaluator and threshold unchanged.",
+      "carriers": [
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_6fb67a2_20260906.json.gz",
+          "sha256": "2504ae15837b1f1e6a93e3132e36e9c119f4dbcdf02e333bdfcbabc1f93c3aa9",
+          "uncompressedSha256": "3a4871e963e429a2ce8cd79bae0aecdd62c50236a8dd541b7338dc7c64dcdf03"
+        },
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_6fb67a2_20260906.log.gz",
+          "sha256": "9cee14efb2c4263b43b46f2ccac4a36da97a4434cdd410d4eac849b91ce2547a",
+          "uncompressedSha256": "bc596c6b6085030d30096d2721c4f5b12d07becda265f52fd90ac739151c1ebd"
+        }
+      ],
+      "remainingChecks": "large-phone, normal-build and visual review not run after red.",
+      "producerDerivation": {
+        "exitCode": 2,
+        "meaning": "Expected pre-pin producer movement and quarantined SceneMemory drift; Compendium measurement matches.",
+        "producerSha256": "f144d466e59f6ce336a5f4090be368cf776268b8917386ccd6a6d81c0d595436",
+        "record": "UI_U1_CAPTION_PRODUCER_20260906.json",
+        "log": "UI_U1_CAPTION_PRODUCER_20260906.log.gz",
+        "logSha256": "4c4cdf7687ec0a0678debd7ce1a1b524dd82dfcb22783cffdc7fc38e7aaca453"
+      }
     }
   ]
 }
