@@ -12,8 +12,11 @@ the two retained technical blockers.
 
 The next bounded step instruments the existing phone restoration review: exact evaluation
 identity and font/two-frame phase receipts, with portable Escape inputs. Product, transport
-rulers and the original action sequence stay unchanged. One phone-only observation is pending;
-audits/UI_U1_UAT_RESTORATION_20260906.md owns its evidence. U2–U4, Phase2 and hosted actions have
+rulers and the original action sequence stay unchanged. One phone-only observation passed on
+381ddf59858bd863640703e83d2d98beeedf59fa, retaining the original23 native actions and complete
+390×844 restoration phases. The older failure causes remain unknown. The next bounded work is
+remaining local U1 checkpoint validation; audits/UI_U1_UAT_RESTORATION_20260906.md owns current
+evidence. U2–U4, Phase2 and hosted actions have
 not started. The earlier production-layout amendment is retained below as historical context.
 
 ## U1 production-layout amendment — 2026-09-06

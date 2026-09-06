@@ -1,0 +1,17 @@
+{
+  "schema": "cf-u1-uat-restoration-independent-replay/v1",
+  "source": "381ddf59858bd863640703e83d2d98beeedf59fa",
+  "scope": "phone-restoration",
+  "status": "PASS",
+  "certification": false,
+  "nativePointers": 23,
+  "nativeEscapes": 3,
+  "evaluations": 286,
+  "expressions": 146,
+  "restorationIds": [
+    283,
+    284
+  ],
+  "restorationFrameId": 33,
+  "images": 2
+}

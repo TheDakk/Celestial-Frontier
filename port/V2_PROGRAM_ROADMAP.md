@@ -26,12 +26,15 @@ blocker; full normal review, Slice, phone Glass and the full chain were NOT RUN.
 See `UI_PARITY_PROGRAM_U1_U4.md` for the accepted program, explicit geometry differences and review
 boundaries. U2 sheet/stack work, U3 per-panel work and U4 ten-viewport/28-screen gate remain unstarted. Phase4 presentation parity is not closed;
 the U1 layout is accepted for UAT, while integrated audiovisual-pilot approval remains OPEN.
-Before U2, diagnose the named expression and settlement of the retained phone restoration timeout,
-apply the portable Escape helper supported by prior scoped proof, and run one phone-only
-normal-game diagnostic with original native predecessors, 15000ms transport, font readiness →
-two animation frames and debugger auto-resume timing unchanged. Results PENDING:
-`../audits/UI_U1_UAT_RESTORATION_20260906.md`. Both older blockers remain OPEN; no Phase2,
-full-chain or hosted authority.
+The phone-only restoration diagnostic passed at signed source
+`381ddf59858bd863640703e83d2d98beeedf59fa` with product unchanged, preserving original native
+predecessors, 15000ms transport, fonts → two animation frames and debugger timing. Named
+font/frame evaluation 283, geometry evaluation 284 and ordered receipt 33 establish current
+390×844 completion; `../audits/UI_U1_UAT_RESTORATION_20260906.md` owns evidence. Both older
+blockers stay historical OPEN: the old cause is unknown and nonrecurrence is not repair.
+The bounded batch ends; remaining local U1 checkpoint validation precedes U2, without further
+restoration retries or implementation/refinement. No full three-view review, Slice, Glass,
+full-chain or hosted run. UAT layout acceptance remains separate from completed device UAT.
 Exact source and local evidence are recorded in the live ROADMAP handoff.
 The instrument-only navigation successor is scoped in
 `../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`; the retained navigation blocker stays OPEN.
