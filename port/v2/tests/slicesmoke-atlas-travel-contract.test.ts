@@ -196,13 +196,13 @@ describe('Slice Atlas native Travel contract', () => {
     expect(assess([baseline[0], baseline[0]])).toBe(false);
     for (const index of [0, 1]) {
       const exposed = structuredClone(baseline);
-      exposed[index] = { ...exposed[index], display: 'flex', rectCount: 1, width: 92, height: 44, painted: true };
+      exposed[index] = { ...exposed[index]!, display: 'flex', rectCount: 1, width: 92, height: 44, painted: true };
       expect(assess(exposed)).toBe(false);
       expect(assess(baseline)).toBe(true);
       for (const [key, value] of [['exists', false], ['parentId', 'dock'], ['width', 44],
         ['rectCount', 1], ['painted', true]] as const) {
         const mutant = structuredClone(baseline);
-        Object.assign(mutant[index], { [key]: value });
+        Object.assign(mutant[index]!, { [key]: value });
         expect(assess(mutant), `${index}/${key}`).toBe(false);
       }
     }

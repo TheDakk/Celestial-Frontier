@@ -155,6 +155,20 @@
         "sha256": "8aa5ad771a71700ef417d81ba1460080bf5991e9c0165d73ff5dd7440a1385e2",
         "scope": "Same-source retained universe view proves painted duplicates; not the failed800x600 collision frame."
       }
+    },
+    {
+      "source": "7778230fe6a0f635b62b304407e7100d77ab7992",
+      "kind": "local-typecheck",
+      "rootMainAbsent": true,
+      "precedingChecks": "fresh npm ci PASS",
+      "failures": [
+        "Two possibly-undefined indexed accesses in new two-row mutation test fixture under noUncheckedIndexedAccess."
+      ],
+      "correction": "Non-null assertions for the known two-row fixture indexes only; all positive and mutant expectations unchanged.",
+      "logSha256": "fc9e50e868acdf27e05675bcd25acfd8a988be99f12ebdbf58d0bfb6e23703c7",
+      "gzipFile": "UI_U1_TYPECHECK_RED_7778230_20260906.log.gz",
+      "gzipSha256": "926ba7bc5f3690f7bf3ce31d0fee7a82b878d29ba724a8a26741c22a1b88e993",
+      "remainingChecks": "artunused, Vitest, Glass selftest and all browser checks not run after red."
     }
   ]
 }

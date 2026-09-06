@@ -151,3 +151,10 @@ pins are60562956b771f572e3481075e78fdf95c764589c05ec6b6146a8f8db273c517c; measur
 ruler, ceilings and historical samples are unchanged. Successor verification is pending;
 phone canaries and visual review were not run. Original red evidence is retained
 in `UI_U1_SLICE_RED_40aad54_20260906.log.gz`.
+
+## Test fixture type correction —7778230
+
+Fresh typecheck caught two unchecked indexed accesses in the new two-row visibility
+mutation fixture. The bounded fixture indexes now carry non-null assertions; no product,
+assertion, geometry or authority change. Later checks were not run after red. The original
+compiler output is retained in `UI_U1_TYPECHECK_RED_7778230_20260906.log.gz`.
