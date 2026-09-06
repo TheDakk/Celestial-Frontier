@@ -9,8 +9,9 @@ bookends prose. Desktop utilities use44pxpitch, a proposed2px exception to the42
 Rails require the earned8pxroot-owned clickable gap as well, so their target pitch is52px
 (10px above that diagram); awaiting his visual judgment. The shelf has a measured, content-derived
 height, not an invented fixed v1 value. V2's compact trail remains visible where v1 hides it.
-The caption has an independent dark translucent backing to meet bright-art contrast; its
-zero padding/border/radius and existing lane dimensions remain unchanged.
+The caption has an independent dark translucent backing to meet bright-art contrast and
+uses capped available width. Its zero padding/border/radius remain; the phone bottom offset
+keeps164px as a minimum and rises above the existing measured hint height by8px for larger text.
 
 Nick additionally authorized persistent notification history/readstate, narrowly extending the
 existing UI checkpoint overlay with bounded notifications. No schema or product receipt changes.

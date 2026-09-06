@@ -408,6 +408,65 @@
         "log": "UI_U1_CAPTION_PRODUCER_20260906.log.gz",
         "logSha256": "4c4cdf7687ec0a0678debd7ce1a1b524dd82dfcb22783cffdc7fc38e7aaca453"
       }
+    },
+    {
+      "source": "55aa04fe34b013a3cf7e47c75c822998fa0347cf",
+      "kind": "local-glass-small-phone",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck/artunused/full Vitest/Glass selftest and immutable Slice PASS",
+      "slice": {
+        "runId": "20260906075455519-73621-42ac2c1ecd66",
+        "durationMs": 374463,
+        "evidenceDirectory": "UI_U1_SLICE_55aa04f_20260906"
+      },
+      "runId": "20260906080111706-73865-07c4725c23be",
+      "failures": [
+        {
+          "viewport": "small-phone",
+          "surface": "hud",
+          "code": "SURFACE_OVERLAP",
+          "element": "#ctxbar \u00d7 #hintpill",
+          "actual": {
+            "a": {
+              "left": 80,
+              "top": 174.5,
+              "right": 240,
+              "bottom": 404,
+              "width": 160,
+              "height": 229.5
+            },
+            "b": {
+              "left": 9.6,
+              "top": 402.5,
+              "right": 310.4,
+              "bottom": 444,
+              "width": 300.8,
+              "height": 41.5
+            }
+          },
+          "expected": "non-overlapping rendered rectangles"
+        }
+      ],
+      "correction": "Caption uses available capped width and phone bottom is max(nominal164px, existing measured hint height + hint bottom +8px). Existing app-chrome ResizeObserver owns --hint-h; no extra observer or tool change. Larger font remains authoritative.",
+      "carriers": [
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_55aa04f_20260906.json.gz",
+          "sha256": "f5c0967987b54d8d5c071d3e8922716b68359412c2ebd4bc54b3ec3365598d8f",
+          "originalSha256": "828a8f591e154ab1406d1a96f21936f4f2efe8882c2fcbe44ef8fcc7fb684156"
+        },
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_55aa04f_20260906.log.gz",
+          "sha256": "1bcd0917a6e78065736f9b1bc662ce2c851bd0aee2432e149f097d22e3c0fea4",
+          "originalSha256": "c1667ccb009cbfdd98b0ed8db390ea27855dc2f9c63f644f9d763295416516a4"
+        }
+      ],
+      "remainingChecks": "large-phone/normal-build/review not run after red.",
+      "producerDerivation": {
+        "exitCode": 2,
+        "meaning": "Compendium measurement matches; expected pre-pin producer movement and quarantined SceneMemory drift",
+        "producerSha256": "ffb80c98195f8bb2e9bbeccdf6f52e5923843c2ed6f2a668634d6c35f5b26939",
+        "record": "UI_U1_CAPTION_LANE_PRODUCER_20260906.json"
+      }
     }
   ]
 }

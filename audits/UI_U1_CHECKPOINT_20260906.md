@@ -261,3 +261,17 @@ The existing Glass contrast check remains intact. Producer successor `f144d466e5
 and all component pins moved together; original narrative is retained with a complete appended
 record. Compendium measurement matches; exit2 reflects pre-pin producer movement and quarantined
 SceneMemory drift. No ruler/ceilings/history/certificate changes. Fresh successor gates follow.
+
+## Slice PASS; large-text caption lane stop —55aa04f
+
+Fresh static sequence and Glass selftest PASS. Immutable Slice `20260906075455519-73621-42ac2c1ecd66`
+PASS in374463ms; report/log/terminal verification/10screenshots retained in
+`UI_U1_SLICE_55aa04f_20260906/`. Caption contrast passed. Small-phone then found a1.5px
+caption/hint overlap under larger text (caption bottom404; hint top402.5). The correction
+uses the existing measured `--hint-h` plus8px clearance, keeping164px as a minimum, and gives
+long captions the existing90vw/620px available width instead of half-screen shrink-to-fit.
+No font shrinking or check weakening. Large-phone and review did not run after red.
+
+Producer successor `ffb80c98195f8bb2e9bbeccdf6f52e5923843c2ed6f2a668634d6c35f5b26939` and all component pins moved together.
+Compendium measurement matches; prior narrative is preserved and extended with every component.
+The independently reviewed formula has no measurement cycle; the hint observer already exists.
