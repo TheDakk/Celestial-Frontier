@@ -1,6 +1,6 @@
 # U1 Survey top row — 2026-09-06
 
-Status: IMPLEMENTED; scoped dock verification pending. Nick explicitly requested Survey on the
+Status: IMPLEMENTED / SCOPED DOCK PASS; visual approval remains open. Nick explicitly requested Survey on the
 upper row and only the smaller Settings/Achievements/Help/etc. icons on the bottom. This replaces
 Codex's earlier optional Survey-lower-row default; it does not expand U1 or authorize U2–U4,
 Phase2, hosted work, a broader instrument repair or full certification.
@@ -74,3 +74,25 @@ attribute, then restore original presence/bytes. It also records both raw attrib
 is an instrument-only correction; product, producer, rules and44px floor are unchanged. A new
 signed source gets one bounded four-context observation; no unchanged-source retry or full
 review/downstream gate. The two prior navigation/restoration blockers remain OPEN.
+
+## Terminal scoped result
+
+Signed tested source e94f7b35211094e334abc983e716456749e2e3ae; product source810ab78. The records
+successor is not the tested source. Normal distributable build and the four fresh-context dock
+observations PASS at18:10:37.130–18:10:42.677 UTC. Four default layouts,20 live CSS fault controls
+with exact style restoration,3 larger-text/class-restoration observations and5 trusted native
+deliveries passed. Zero runtime errors or trace overflow. Four PNGs retained;390/320/667 were
+visually inspected. The667px landscape dock begins at339.5px, within its right-hand safe column.
+
+Manifest: audits/UI_U1_SURVEY_TOP_ROW_e94f7b3_20260906/manifest.json
+SHA256 842a3aebbd1f9c53b6eadcef4246fac7a1f8189ed0d931e3dcff1987e44695e1.
+All7 carriers and decompressed/image hashes verified. The first810ab78 red remains separate;
+only the probe cleanup changed between sources. The normal whole-review timeout is not repaired,
+and this scoped pass says nothing about the unsolicited navigation initiator. Full normal review,
+Slice, both phone Glass rows and desktop visual verification were NOT RUN. No U2–U4/Phase2,
+physical-phone, certificate or human-acceptance claim. No hosted writes.
+
+Codex: this requested placement correction is complete; stop for Nick's visual feedback. The
+next technical correction remains a separately scoped identification of the prior restoration
+evaluation. Claude: no need to open it now; preserve its checkout/unmerged work. No PR or GitHub
+step now. Current resume is UI_U1_SURVEY_TOP_ROW_RESUME_20260906.md; ROADMAP owns live state.

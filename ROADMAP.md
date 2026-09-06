@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-06 · U1 SURVEY TOP ROW / SCOPED REVIEW PENDING
+## SESSION HANDOFF — 2026-09-06 · U1 SURVEY TOP ROW / SCOPED DOCK PASS
 
 OpenAI/Codex on macOS | openai/mac | /Users/nick/Projects/celestial-frontier-openai-mac |
 origin/openai/mac. Physical identity verified. Entry9e96f182689b504b937ae95a9640b695e9ab40d3,
@@ -44,7 +44,13 @@ Corrected typecheck,4 focused files/86 tests and2 native trace controls PASS. Si
 scoped probe passed390px baseline and rejected Survey moving down; exact CSS attribute cleanup
 failed although restored geometry passed. First red/phonePNG retained, later sizes NOT RUN.
 Probe-only correction now uses established exact-style cleanup and records raw before/after;
-product source remains810ab78. One new-source scoped observation pending, no unchanged retry. Scope is fresh isolated contexts at
+product source remains810ab78. New signed source e94f7b35211094e334abc983e716456749e2e3ae passed the scoped
+observation once; product source810ab78 unchanged. Four fresh contexts,20 live CSS faults/exact
+style restoration,3 larger-text/class-restoration checks,5 trusted inputs and4 PNGs PASS, with
+zero runtime errors/overflow.390/320/667 PNGs inspected. Prior810ab78 probe cleanup red retained.
+Manifest audits/UI_U1_SURVEY_TOP_ROW_e94f7b3_20260906/manifest.json
+SHA256 842a3aebbd1f9c53b6eadcef4246fac7a1f8189ed0d931e3dcff1987e44695e1;7 carriers verified.
+No full-review/portrait-restoration/Slice/phoneGlass replay or desktop verification. Scope is fresh isolated contexts at
 320/390/430 portrait plus667 landscape Settings: dock geometry,20 CSS negative controls/exact
 restoration, larger text and4 PNGs only. No full normal review, portrait-restoration retry, Slice
 or phone Glass. This layout observation cannot clear the older reds. Five current references
@@ -64,9 +70,9 @@ read Cosmos/closed panels/390×844, all4 debugger pauses resumed, no lasting han
 Both exact evidence sets/audits remain immutable. No workaround wait, deadline increase, navigation
 guard or automatic retry.
 
-Codex: commit this bounded correction, run scoped checks once, retain the exact result, then
-stop for visual review. Separately bounded restoration-expression diagnosis remains the next
-technical work. Claude: Nick need not open Claude now; preserve anthropic/mac/unmerged173c806,
+Codex: requested correction and exact evidence retention complete; stop for visual review.
+Separately bounded restoration-expression diagnosis remains the next technical work. Fresh resume:
+audits/UI_U1_SURVEY_TOP_ROW_RESUME_20260906.md. Claude: Nick need not open Claude now; preserve anthropic/mac/unmerged173c806,
 no copy/merge or repeated battery. No PR/push/GitHub step now. Future openai/mac → develop
 integration requires separately scoped exact hosted authority.
 

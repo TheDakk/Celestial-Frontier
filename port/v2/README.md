@@ -18,10 +18,11 @@ Compact Charts stays hidden with Settings → Star charts available;
 wide Survey/Charts remain fitted text controls below the left rail. The nested `#sceneactions`
 keeps compact `display:contents`, so its zero-size wrapper does not extend measured top chrome.
 No native action, gameplay or `main.ts` owner changes. This explicit upper-row choice supersedes
-the previous optional default. Scoped dock verification covers fresh documents at 320/390/430px
-portrait widths and 667×375 with Settings open; results and visual approval remain pending. Both the
-unattributed navigation blocker and the full normal-review portrait-restoration blocker stay OPEN;
-this correction does not rerun that known-timeout path, Slice, phone Glass or the full chain.
+the previous optional default. Build and scoped dock verification PASS in fresh 320/390/430px
+portrait documents and 667×375 with Settings open; visual approval remains pending. The current
+audit retains both this terminal result and the first-source instrument red. Both the unattributed
+navigation blocker and the full normal-review portrait-restoration blocker stay OPEN; full normal
+review, Slice, phone Glass and the full chain were NOT RUN.
 The accepted brief and amendments are in
 `../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved; no U2–U4, Phase2 or
 hosted action is authorized.

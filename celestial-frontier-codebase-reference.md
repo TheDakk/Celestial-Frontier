@@ -32,11 +32,13 @@ Bottom guidance is plain text. Caption/hint geometry, compact short-landscape ex
 safety deviations from production and the honest injected floating-trail negative control.
 Native panel/Training action/focus owners remain; passive layout wrappers pass canvas input.
 `notification-history.ts` retains explicit saved Mark read on the existing notification shape
-and UI checkpoint whitelist. The explicit Survey upper-row correction awaits scoped dock
-verification and visual approval; `audits/UI_U1_SURVEY_TOP_ROW_20260906.md` owns current results.
+and UI checkpoint whitelist. The explicit Survey upper-row correction passed build and scoped
+dock verification in four fresh phone documents, including 667×375 Settings-open; visual approval
+remains pending. `audits/UI_U1_SURVEY_TOP_ROW_20260906.md` owns current results and the retained
+first-source instrument red.
 Prior partial evidence stays in `audits/UI_U1_COMPACT_CONTROLS_20260906.md`. Both the unattributed
 navigation blocker and the normal-review portrait-restoration blocker remain OPEN; this correction
-does not rerun that full review or the full chain. U2–U4 and Phase2 remain unstarted;
+did not run full normal review, Slice, phone Glass or the full chain. U2–U4 and Phase2 remain unstarted;
 integrated-pilot approval remains open.
 
 U1 review instrumentation (2026-09-06) now records public viewport/resize facts and

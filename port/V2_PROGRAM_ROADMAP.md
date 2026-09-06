@@ -11,10 +11,12 @@ and fits the viewport's safe width minus 20px; six board positions use pitch = w
 dock also fits the existing header safe column, including 667×375 Settings; exact geometry lives in
 UI_PRESENTATION.md. Default height remains 92px. Compact Charts stays in Settings; upper-right Search,
 wide fitted pills, wide Prime and Health are unchanged.
-This explicit arrangement supersedes the prior optional lower-row default. Scoped dock verification
-and visual approval are pending; `../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` owns current evidence.
+This explicit arrangement supersedes the prior optional lower-row default. Build and scoped dock
+verification passed across four fresh phone documents, including 667×375 Settings-open; visual
+approval remains pending. `../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` owns current evidence and
+retains the first-source instrument red.
 The prior portrait-restoration instrument stop remains OPEN beside the unattributed navigation
-blocker; the full normal-review path and full chain are not rerun for this bounded correction.
+blocker; full normal review, Slice, phone Glass and the full chain were NOT RUN.
 See `UI_PARITY_PROGRAM_U1_U4.md` for the accepted program, explicit geometry differences and review
 boundaries. U2 sheet/stack work, U3 per-panel work and U4 ten-viewport/28-screen gate remain unstarted. Phase4 presentation parity is not closed;
 normal-game U1 and integrated audiovisual-pilot approvals both remain with Nick. No Phase2.

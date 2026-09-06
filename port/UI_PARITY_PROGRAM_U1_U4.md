@@ -22,12 +22,12 @@ Only with a panel open in short landscape, the dock also fits the existing heade
 width: `min(384px, (viewport width − safe left − safe right − 36px) / 2)`. This bounds the expanded
 dock beside Settings at 667×375; the shared dock oracle applies the same formula independently.
 
-Scoped dock verification and visual approval are pending. The bounded probe covers fresh documents
-at 320/390/430px portrait widths and 667×375 with Settings open, without portrait restoration.
-Current source/results belong to
+Build and scoped dock verification PASS in fresh 320/390/430px portrait documents and 667×375
+with Settings open, without portrait restoration. Visual approval remains pending. Exact
+source/results and the retained first-source instrument red belong to
 `../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` and ROADMAP. Both the unattributed navigation blocker
-and the portrait-restoration verification blocker remain OPEN. This bounded correction does not
-rerun the known-timeout full normal-review path or the full chain. No U2–U4, Phase2 or hosted action.
+and the portrait-restoration verification blocker remain OPEN. Full normal review, Slice, phone
+Glass and the full chain were NOT RUN. No U2–U4, Phase2 or hosted action.
 
 ### Superseded compact-control amendment (preserved verbatim)
 

@@ -81,17 +81,21 @@ capacity and 60-entry import allowance remain. Passive history never joins an in
 snapshot; no new timer, schema, import door or competing persistence writer is introduced.
 The bottom bell reads this history; its old duplicate shelf button is hidden.
 
-U1 remains a visual approval checkpoint. Verification of Nick's explicit six-upper/four-lower
-correction is pending a scoped dock check at 320/390/430px portrait widths plus 667×375 with
-Settings open, each in a fresh document; `audits/UI_U1_SURVEY_TOP_ROW_20260906.md` and ROADMAP
-own its exact source and results. The dock oracle independently applies the panel-safe width formula.
+U1 remains a visual approval checkpoint. Signed source `e94f7b35211094e334abc983e716456749e2e3ae`
+passed build and the scoped dock probe in four fresh documents: 390×844, 320×740, 430×932 and
+667×375 with Settings open. All 20 CSS negative controls restored styles exactly, and three
+larger-text checks restored classes exactly. The run retained five trusted inputs, four PNGs and
+zero runtime errors. The `810ab78` product is unchanged by the probe-only cleanup successor;
+that first source's scoped instrument red remains in `audits/UI_U1_SURVEY_TOP_ROW_20260906.md`.
+That audit and ROADMAP own exact source/results. The dock oracle independently applies the
+panel-safe width formula. This is a scoped PASS; visual acceptance remains pending.
 The earlier `c57aaaebc656f2e2d15705601fe1a2a73cf15f1f` static/build
 passes and partial phone evidence remain predecessor evidence in
 `audits/UI_U1_COMPACT_CONTROLS_20260906.md`. That normal review stopped INSTRUMENT RED at a
 `Runtime.evaluate` timeout during phone portrait restoration after 23 trusted inputs; its two
 phone PNGs do not verify this changed dock. Both the unattributed navigation blocker and the
-portrait-restoration verification blocker remain OPEN. This bounded correction does not rerun
-that full normal-review path, Slice, phone Glass or the full chain. Visual acceptance is pending.
+portrait-restoration verification blocker remain OPEN. Full normal review, Slice, phone Glass
+and the full chain were NOT RUN for this bounded correction.
 The normal-review tool pairs three v1 goldens with v2 and exercises real visible native
 opener/Close/focus journeys. Numeric checks observe actual rails,
 phone icon/count state, Search/Objective alignment, full name, meter contrast and plain hint.
