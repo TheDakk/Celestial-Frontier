@@ -3317,6 +3317,88 @@ describe('sixth Slice red contract repairs', () => {
     dom.window.close();
   });
 
+  it('requires canvas exposure at the unchanged pinch path and actual passive objective', () => {
+    const start = '  const phonePinchPlanExpression = `';
+    const expression = section(sliceSource, start, '`;\n  const phonePinchPointerMatches =').slice(start.length);
+    const dom = new JSDOM('<!doctype html><nav id="sceneactions" style="pointer-events:none"><span id="objchip">Chapter 3 boundary objective</span></nav><canvas id="root"></canvas><canvas id="foreign"></canvas><div id="cover"></div>', { runScripts: 'outside-only' });
+    const win = dom.window as unknown as Window & typeof globalThis & { __CF_SLICE__: { app: { canvas: HTMLCanvasElement | null } } };
+    const document = win.document, canvas = document.getElementById('root') as HTMLCanvasElement;
+    const nav = document.getElementById('sceneactions')!, objective = document.getElementById('objchip')!;
+    win.__CF_SLICE__ = { app: { canvas } };
+    Object.defineProperties(win, { innerWidth: { value: 390 }, innerHeight: { value: 844 } });
+    const rect = (left: number, top: number, right: number, bottom: number) => ({ left, top, right, bottom, width: right - left, height: bottom - top });
+    let objectiveRect = rect(10, 234, 166, 486);
+    Object.defineProperty(canvas, 'getBoundingClientRect', { value: () => rect(0, 0, 390, 844) });
+    Object.defineProperty(objective, 'getBoundingClientRect', { value: () => objectiveRect });
+    let cover: { x: number; y: number; node: Element } | null = null;
+    document.elementFromPoint = ((x: number, y: number) => {
+      if (cover && x === cover.x && y === cover.y) return cover.node;
+      if (nav.style.pointerEvents === 'auto' && x >= 10 && x < 166 && y >= 130 && y < 486) return nav;
+      return canvas;
+    }) as typeof document.elementFromPoint;
+    type Plan = { ok: boolean; firstStartInsideObjective: boolean; objectivePoint: { rootCanvas: boolean; id: string }; frames: Array<Array<{ x: number; y: number; rootCanvas: boolean }>> };
+    const run = (): Plan => win.eval(expression) as Plan;
+    try {
+      const baseline = run();
+      expect(baseline.ok).toBe(true);
+      expect(baseline.firstStartInsideObjective).toBe(true);
+      expect(baseline.frames[0]?.map(({ x, y }) => ({ x, y }))).toEqual([{ x: 150, y: 400 }, { x: 240, y: 400 }]);
+      expect(baseline.frames[4]?.map(({ x, y }) => ({ x, y }))).toEqual([{ x: 90, y: 400 }, { x: 300, y: 400 }]);
+      nav.style.pointerEvents = 'auto';
+      const blocked = run();
+      expect(blocked.ok).toBe(false);
+      expect(blocked.objectivePoint).toMatchObject({ id: 'sceneactions', rootCanvas: false });
+      expect(blocked.frames[0]?.[0]?.rootCanvas).toBe(false);
+      nav.style.pointerEvents = 'none';
+      expect(run().ok).toBe(true);
+      for (const [x, node] of [[240, document.getElementById('cover')!], [90, document.getElementById('cover')!], [240, document.getElementById('foreign')!]] as const) {
+        cover = { x, y: 400, node };
+        expect(run().ok, `blocked path at${x}/${node.id}`).toBe(false);
+        cover = null;
+        expect(run().ok).toBe(true);
+      }
+      objectiveRect = rect(10, 900, 166, 1100);
+      expect(run().ok).toBe(false);
+      objectiveRect = rect(10, 234, 166, 486);
+      expect(run().ok).toBe(true);
+      win.__CF_SLICE__.app.canvas = null;
+      expect(run().ok).toBe(false);
+      win.__CF_SLICE__.app.canvas = canvas;
+      expect(run().ok).toBe(true);
+    } finally { dom.window.close(); }
+  });
+
+  it('binds the unchanged pinch to two distinct trusted root-canvas touch deliveries', () => {
+    const start = '  const phonePinchPointerMatches = ';
+    const expression = section(sliceSource, start, ';\n  const phonePinchPlan =').slice(start.length);
+    const assess = new Function(`return (${expression});`)() as (receipts: unknown, plan: unknown) => boolean;
+    const plan = { ok: true, frames: [[{ x: 150, y: 400 }, { x: 240, y: 400 }]] };
+    const receipts = [10, 11].map((pointerId, index) => ({ pointerId, rootCanvas: true, tag: 'CANVAS', trusted: true,
+      pointerType: 'touch', x: index === 0 ? 150 : 240, y: 400 }));
+    expect(assess(receipts, plan)).toBe(true);
+    for (const changes of [{ rootCanvas: false }, { tag: 'NAV' }, { trusted: false }, { pointerType: 'mouse' }, { x: 152 }, { pointerId: 11 }]) {
+      expect(assess([{ ...receipts[0], ...changes }, receipts[1]], plan), JSON.stringify(changes)).toBe(false);
+    }
+    expect(assess([receipts[0]], plan)).toBe(false);
+    expect(assess([...receipts, receipts[0]], plan)).toBe(false);
+    expect(assess(receipts, { ...plan, ok: false })).toBe(false);
+    expect(assess(receipts, plan)).toBe(true);
+    const owner = section(sliceSource, '  /* Keep the original pinch path.', "  const shotPh = await send('Page.captureScreenshot'");
+    proveEachMarkerRequired(owner, [
+      ['old wrapper fault injection', "nav.style.setProperty('pointer-events','auto','important')"],
+      ['actual objective interception', "phonePinchControl.broken?.objectivePoint?.id !== 'sceneactions'"],
+      ['same formerly blocked contact', 'phonePinchPlan.firstStartInsideObjective && phonePinchControl.broken?.frames?.[0]?.[0]?.rootCanvas !== false'],
+      ['exact property restoration', 'finally{restoreInlineStyleProperties(nav.style,prior);}'],
+      ['restored path recheck', '!phonePinchControl.restoration?.ok || !phonePinchControl.restored?.ok'],
+      ['native two-finger start', "type: 'touchStart', touchPoints: [{ x: 150, y: 400, id: 1 }, { x: 240, y: 400, id: 2 }]"],
+      ['original four outward steps', 'for (let s = 1; s <= 4; s++)'],
+      ['original gesture distance', "touchPoints: [{ x: 150 - s * 15, y: 400, id: 1 }, { x: 240 + s * 15, y: 400, id: 2 }]"],
+      ['trusted delivery assessment', 'phonePinchPointerMatches(phonePinchReceipts, phonePinchControl.restored)'],
+      ['unchanged zoom outcome', "if (!(z1 > z0 * 1.15)) fails.push('PHONE: pinch-out did not zoom"],
+      ['listener cleanup', 'delete window.__cfPhonePinchAbort;delete window.__cfPhonePinchReceipts;'],
+    ]);
+  });
+
   it('rejects clipped and overlapping U1 top-stack rectangles without moving the launcher contract', () => {
     const start = '  const geoCheck = `';
     const expression = section(sliceSource, start, '`;\n  const geo =').slice(start.length);
