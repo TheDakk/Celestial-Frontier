@@ -1,0 +1,177 @@
+{
+  "schema": "cf-u1-production-layout-checkpoint/v1",
+  "source": "08cd97d79b67cab4b8d19bfd493293e997dec528",
+  "status": "STOPPED",
+  "scope": "Local U1 revision, no hosted/full Glass/real-device/human approval claim.",
+  "results": {
+    "source": "08cd97d79b67cab4b8d19bfd493293e997dec528",
+    "rootMainAbsent": true,
+    "checks": [
+      {
+        "name": "install",
+        "command": [
+          "npm",
+          "ci",
+          "--prefer-offline",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "startedAt": "2026-09-06T15:50:23.247992+00:00",
+        "endedAt": "2026-09-06T15:50:25.084720+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "startedAt": "2026-09-06T15:50:25.085590+00:00",
+        "endedAt": "2026-09-06T15:50:28.240180+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "artunused",
+        "command": [
+          "npm",
+          "run",
+          "artunused"
+        ],
+        "startedAt": "2026-09-06T15:50:28.241006+00:00",
+        "endedAt": "2026-09-06T15:50:29.750155+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "vitest",
+        "command": [
+          "npx",
+          "vitest",
+          "run"
+        ],
+        "startedAt": "2026-09-06T15:50:29.750550+00:00",
+        "endedAt": "2026-09-06T15:51:14.431091+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "glass-selftest",
+        "command": [
+          "node",
+          "tools/glassmatrix.mjs",
+          "--selftest"
+        ],
+        "startedAt": "2026-09-06T15:51:14.431657+00:00",
+        "endedAt": "2026-09-06T15:51:16.337976+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "normal-build",
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ],
+        "startedAt": "2026-09-06T15:51:16.338358+00:00",
+        "endedAt": "2026-09-06T15:51:18.446406+00:00",
+        "exitCode": 0
+      },
+      {
+        "name": "ui-review",
+        "command": [
+          "node",
+          "tools/ui-shell-review.mjs",
+          "/private/tmp/cf-u1-checkpoint-08cd97d/port/v2/apps/game/dist",
+          "/private/tmp/cf-u1-checks-08cd97d/review"
+        ],
+        "startedAt": "2026-09-06T15:51:18.446896+00:00",
+        "endedAt": "2026-09-06T15:51:24.455959+00:00",
+        "exitCode": 1
+      }
+    ]
+  },
+  "slice": null,
+  "glass": [],
+  "review": {
+    "status": "FAIL",
+    "rows": [
+      {
+        "name": "phone",
+        "pass": true
+      }
+    ],
+    "images": 1,
+    "failure": "AssertionError [ERR_ASSERTION]: #docknotifications native input predecessor changed scope\n+ actual - expected\n\n  [\n    'Cosmos',\n+   'Milky Way'\n  ]\n"
+  },
+  "files": [
+    {
+      "file": "install.log.gz",
+      "bytes": 178,
+      "sha256": "55d839bb353a982076ae477da0687bb5e410e0336640a4a8e1e8cfe33942ba3c",
+      "originalBytes": 332,
+      "originalSha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de"
+    },
+    {
+      "file": "typecheck.log.gz",
+      "bytes": 99,
+      "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
+      "originalBytes": 134,
+      "originalSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "file": "artunused.log.gz",
+      "bytes": 70,
+      "sha256": "876709bbe6c507f5d7e821ad1dfbda92aa8c5cced4bfc03ea9924afec72a21c2",
+      "originalBytes": 58,
+      "originalSha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "file": "vitest.log.gz",
+      "bytes": 2202,
+      "sha256": "0a22593d9f74f1f33d778938ec7fafd98b9488b4a57f681b575a6702c5db79b5",
+      "originalBytes": 5878,
+      "originalSha256": "cd4f4441b008a643dbb13ae6d4dfd220b590dc9f77c0a4e2976893359d6f8af2"
+    },
+    {
+      "file": "glass-selftest.log.gz",
+      "bytes": 557,
+      "sha256": "0934004f4289bdc8411b08aad1f719dd3c0dc680ec7b0bc815187393b563f0c0",
+      "originalBytes": 909,
+      "originalSha256": "c8f8ecabf4fa8c386cf0a6474708e6644549228bbf468849c97d5bfaca6ce067"
+    },
+    {
+      "file": "normal-build.log.gz",
+      "bytes": 1876,
+      "sha256": "232807036bf92e1095933b289d1a3ead75fb3c554b138efac7c8d83a5cb4077b",
+      "originalBytes": 5281,
+      "originalSha256": "5992f28050a6d43779e1bbc90dbcd09bd94682517d3aeb063ead0695dd19af64"
+    },
+    {
+      "file": "ui-review.log.gz",
+      "bytes": 407,
+      "sha256": "c7f7d85c3f690c916251aa3ee325ffdaff83bd59bddf835f8c896d37d39e3154",
+      "originalBytes": 728,
+      "originalSha256": "39fdb9806f7dca4c6487295f405caf4f7c81df2af48dff8c3097077790c62b2a"
+    },
+    {
+      "file": "results.json.gz",
+      "bytes": 509,
+      "sha256": "f6e13bcac42276c846e57ca2e53eaf47a944c55b0759f01686478fc9694ce866",
+      "originalBytes": 2016,
+      "originalSha256": "b850ecb4886bd84444b7fa538ff21db29e9b7f30ff8aef5e4a852c6eb400efcd"
+    },
+    {
+      "file": "review.json.gz",
+      "bytes": 9583,
+      "sha256": "fda0ccd3418ec191eb0fc1d4ed36bb66cd2415bd61e21bec661309608188a4f9",
+      "originalBytes": 66990,
+      "originalSha256": "50ccbc905c92dd90579a759dbd442de6e316ea90b5d3d09dda25909e9053df69"
+    },
+    {
+      "file": "u1-main-phone.png",
+      "bytes": 149604,
+      "sha256": "626139fd3f6ac5f2a30932d744bf708c43687c0959b11ea0266f9faf8551fcea",
+      "originalBytes": 149604,
+      "originalSha256": "626139fd3f6ac5f2a30932d744bf708c43687c0959b11ea0266f9faf8551fcea"
+    }
+  ]
+}

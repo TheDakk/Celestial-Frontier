@@ -41,6 +41,16 @@
       "correction": "Run the exact sequence in the first writable review document at a temporary wide viewport, collect three per-control actual untrusted click receipts and retain the document trace separately, then restore original viewport/shell in finally. Never force save authority or bypass the read-only guard. Keep63 native count and geometry oracle; no product changes.",
       "laterStages": "Slice and both phone Glass rows not run after the diagnostic RED; no unchanged-source retry.",
       "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_7bff796_20260906/manifest.json"
+    },
+    {
+      "source": "08cd97d79b67cab4b8d19bfd493293e997dec528",
+      "stage": "normal ui-shell review, phone before first Notifications input",
+      "priorStages": "Typecheck, artunused, 311 files / 3319 tests / 1 skipped, Glass selftest and normal build PASS",
+      "result": "RED: after Training Skip and native Escape ascent, Cosmos changed to Cosmos/Milky Way before the first Notifications press was dispatched. New Settings sequence was not reached.",
+      "cause": "Unresolved normal-navigation transition. It occurs before Notifications and after Training completion. Bounded source inspection found no support for a simple camera-easing or pending Training teardown explanation; the DOM trace lacks camera target and travel-authority/commit evidence needed to identify the initiating operation.",
+      "laterStages": "Slice and both phone Glass rows not run after review RED; no unchanged-source retry.",
+      "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_08cd97d_20260906/manifest.json",
+      "next": "Independent review and a separately bounded navigation diagnosis. Do not insert arbitrary waits, force app state, retry unchanged source, or weaken the scope assertion."
     }
   ]
 }
