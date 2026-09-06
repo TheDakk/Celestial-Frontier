@@ -12,12 +12,18 @@
 > Changing a grid's explicit track count can leave every rectangle unchanged when placed
 > children create implicit tracks. A spacing mutant must alter observed centres or dimensions;
 > a changed CSS declaration alone is not evidence of a broken layout.
+> A transparent native click target may surround a smaller painted icon face. Contrast samples
+> must follow the visible glyph, badge or direct text and their real ancestor backgrounds,
+> while findings and input checks retain the exact native button owner.
 
 > **TOOL UPDATES MUST NOT SPLIT AN EVIDENCE CHAIN** (tool maintenance, 2026-09-06).
 > Hold the shared development-tool lock for the whole foreground render/check chain and for
 > maintenance. Also inspect active tools because older jobs may not use the lock. Version
 > metadata proves inventory only; exercise changed CLI capabilities before use. Preserve failed
 > checks, and parse actual metric formats strictly rather than treating a new suffix as zero.
+> Maintenance runs in the first coding-session preflight, independently of a chat or timer.
+> Complete eligible updates and verification before starting the session's development jobs;
+> reuse its receipt during the session and record busy-tool deferrals without interrupting work.
 
 > **PASSIVE UI HISTORY MUST NOT JOIN AN IN-FLIGHT PRODUCT SNAPSHOT** (U1 review, 2026-09-06).
 > Bioscan and Scout compare their exact pre-await live source; a toast that appends notification

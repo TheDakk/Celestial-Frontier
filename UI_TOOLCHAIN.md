@@ -78,11 +78,16 @@ No Playwright/Puppeteer or new browser extension is needed for the current test 
 - **Lucide/Phosphor:** deferred U3 icon study; no replacement of current emoji without review.
 - No Steam package, Unity/Unreal port, paid plugin or hosted rendering service is installed.
 
-## Before-use check and automatic maintenance
+## Coding-session startup runbook and automatic maintenance
 
-Nick authorized maintenance on 2026-09-06. The local daily maintenance task and every agent's
-first tool use in a work batch follow this same procedure. This is macOS maintenance; it does
-not claim that another Windows computer has been inventoried or updated.
+Nick's revised instruction (2026-09-06): maintenance belongs at the start of a coding
+session, independently of any chat. The daily thread automation was deleted. Do not create
+a replacement timer or task. The agent performs this preflight when coding work begins in
+a newly opened/resumed development session, after repository identity/sync checks and before
+editing, building, rendering or certification. Merely opening an idle app does not execute
+this runbook. Status questions and continued messages in the same uninterrupted session do
+not trigger another update pass. A fresh session performs its own check, even on the same day.
+This inventory/runbook covers macOS; Windows requires its own verified inventory and commands.
 
 1. Use the shared lock for maintenance and for an entire asset job or certificate chain:
    `node tools/with-toolchain-lock.mjs --label NAME -- COMMAND ARGUMENTS...`.
@@ -90,10 +95,15 @@ not claim that another Windows computer has been inventoried or updated.
    or another agent has a render/build/certificate in progress. The lock complements process
    checks; older jobs that predate it may still be active. Exclude only the known maintenance
    wrapper itself from its busy-process check. Never kill jobs or close apps to update.
-2. At the start of each tool-using batch, run `node tools/development-toolchain.mjs --check`.
-   It reads installed identities and official stable metadata. Check failure means freshness
-   is unknown, not current. A metadata suffix difference must be resolved against `brew outdated`.
-   Cache a successful check only within the same batch/day; recheck local binary identity before use.
+2. At coding-session startup, run `node tools/development-toolchain.mjs --check` under that
+   lock. It reads installed identities and official stable metadata; it does not install
+   updates. The agent must perform step3 for eligible updates before starting development.
+   Check failure means freshness is unknown, not current. Resolve a metadata suffix difference
+   against `brew outdated`. Reuse the successful receipt only in this uninterrupted session;
+   recheck local executable identity before use. New sessions do not reuse a prior session's
+   freshness result. If an existing job/app prevents updating, record the tool/version and
+   deferral; do not interrupt it or schedule a chat wakeup. Preserve the verified current
+   version for ongoing work and reconsider eligibility at the next safe session startup.
 3. If updates are available and the tools are idle, the agent applies the scoped updates
    automatically under Nick's standing maintenance instruction. Run `brew update`, then
    `brew outdated --json=v2 --greedy` for only the applicable allowlist entries. Set
@@ -128,14 +138,17 @@ new paid entitlement stops for Nick; no purchases, license entry or account chan
 Other games use their own repository rules and locks; Celestial Frontier's release/hosted authority
 never transfers merely because they reuse this tool suite.
 
-The active local task is **Maintain game development tools**, daily at09:00 America/New_York
-(automation id `maintain-game-development-tools`). The reusable personal skill is
-`nick-game-toolchain`, installed under the local Codex skills directory. Its dated inventory
-is a starting point; before-use verification remains required.
+Startup completion records the check time, machine, tool identities, available updates,
+updates applied, capability results and explicit deferrals in the session handoff or dated
+audit. Report actual updates or problems briefly. Keep versions fixed for the ensuing render
+or certificate chain. An identity change during the session requires verification before that
+tool's next use; it does not authorize a mid-chain update.
 
-The scheduled task needs this Mac powered on and the desktop app running. Before-use checking
-covers missed schedules. Automatic maintenance reports successful updates, failures or required
-user action, and stays quiet when nothing changes. No hosted Actions run is part of maintenance.
+The former `maintain-game-development-tools` thread automation was deleted on2026-09-06 at
+Nick's request. No scheduled maintenance remains attached to this conversation. `AGENTS.md`
+and `PARALLEL_GIT_PROTOCOL.md` require the startup preflight; the reusable personal
+`nick-game-toolchain` skill carries it to future game sessions. Its dated inventory is a
+starting point, not a substitute for checking the machine. No hosted Actions run is involved.
 
 ## Terminal examples
 

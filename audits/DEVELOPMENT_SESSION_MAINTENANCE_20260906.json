@@ -1,0 +1,36 @@
+{
+  "schema": "cf-development-session-maintenance/v1",
+  "recordedAt": "2026-09-06T08:39:42.412557+00:00",
+  "decision": "Replace chat-based daily maintenance with the first coding-session preflight.",
+  "automation": {
+    "id": "maintain-game-development-tools",
+    "appDeleteStatus": "deleted",
+    "localScheduleAbsent": true,
+    "replacementScheduleCreated": false
+  },
+  "startup": {
+    "trigger": "Agent begins a new game coding session after identity/sync preflight, before code/build/render work.",
+    "idleAppLaunchHook": false,
+    "continuedMessages": "Reuse the uninterrupted session receipt; no every-message update loop.",
+    "check": "node tools/development-toolchain.mjs --check is read-only. Agent applies eligible named updates under existing authority, then verifies changed capabilities.",
+    "busy": "Defer without killing jobs, closing apps or scheduling a chat wakeup.",
+    "scope": "Approved active authoring tools only; runtime/test locks, sealed inputs and GitHub authority unchanged."
+  },
+  "verification": {
+    "independentDocumentationReview": "PASS; no concrete omissions",
+    "toolInstallationsOrUpdatesRunForThisChange": false,
+    "scriptsChanged": false,
+    "preparationNote": "An initial temporary documentation-editor script had a quoting syntax error before execution; corrected once, no partial file writes occurred."
+  },
+  "currentReferenceHashes": {
+    "AGENTS.md": "a5a529a67bf3b657010b8d827ab1cd67b23b243dc40e10d94f61d446c1790c6a",
+    "UI_TOOLCHAIN.md": "d9605f9bacd84663c3c0e73868334fad03157b77bbec489d9b806a8fed2c20b8",
+    "PARALLEL_GIT_PROTOCOL.md": "41e70976fb8e81005f8818518f48646617bcdd32409f910bb2c4444262500a6e",
+    "PROCESS_LAWS.md": "fab87f3425ea8f3a55952f72154af566e40689674dcfbad17f0178cab9eb7f46"
+  },
+  "personalSkill": {
+    "name": "nick-game-toolchain",
+    "sha256": "6abfd9414bfc92e55717b912d04ca760d5f774ffa3742afaef8c22a092112cc9"
+  },
+  "supersedes": "The scheduled-maintenance portion of DEVELOPMENT_TOOLCHAIN_SETUP_20260906.json; original setup evidence remains historical."
+}
