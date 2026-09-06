@@ -31,7 +31,7 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
 #hintpill .kw{color:#7ec8f0;font-weight:600}
 #dock{position:fixed;z-index:var(--cf-layer-shell);background:none;border:0;box-sizing:border-box;pointer-events:auto}
 #dock button{pointer-events:auto;box-sizing:border-box;cursor:pointer;font-family:var(--ui);appearance:none;-webkit-appearance:none;touch-action:manipulation}
-#dock .dock-board{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;width:var(--cf-dock-chip-width);min-width:var(--cf-dock-chip-width);min-height:44px;padding:6px 0 4px;border:1px solid #2a3c5e;border-radius:999px;background:rgba(10,13,26,.88);color:var(--dim);line-height:1}
+#dock .dock-board{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;width:var(--cf-dock-chip-width);min-width:var(--cf-dock-chip-width);min-height:var(--cf-touch-target);padding:6px 0 4px;border:1px solid #2a3c5e;border-radius:999px;background:rgba(10,13,26,.88);color:var(--dim);line-height:1}
 #dock .dock-board .ico{display:block;font-size:14px;line-height:16px}
 #dock .dock-board .lbl{font-size:11px;line-height:1.3;font-weight:500;white-space:normal}
 #dock .prime-count{display:block;font-size:8px;line-height:1.3;font-weight:700;font-variant-numeric:tabular-nums}
