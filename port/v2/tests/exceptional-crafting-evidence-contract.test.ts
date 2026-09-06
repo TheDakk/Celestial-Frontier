@@ -272,7 +272,7 @@ async function replayRenderedReleaseControls(source: string) {
       } finally { shipyard.innerHTML = original; }
     });
     const launcherClaims = [
-      'FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep five icon-only boards and four utility controls in compact bottom rows',
+      'FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep five icon-only boards above five compact utility icons',
       'ONE GLASS LANGUAGE: Rounded name, health, objective and navigation controls carry the production layout forward',
       'UTILITIES STAY TOGETHER: Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge',
       'PRIME KEEPS YOUR PROGRESS: Prime Codex retains its Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill',

@@ -14176,7 +14176,7 @@ async function main() {
             &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&scoutContract&&recordsContract&&audioContract&&mealContract&&breedContract&&renameContract&&lessonContract&&trainingContract&&artContract
             &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract&&publishingContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
-            &&/FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep five icon-only boards and four utility controls in compact bottom rows/.test(text)
+            &&/FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep five icon-only boards above five compact utility icons/.test(text)
             &&/ONE GLASS LANGUAGE: Rounded name, health, objective and navigation controls carry the production layout forward/.test(text)
             &&/UTILITIES STAY TOGETHER: Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge/.test(text)
             &&/PRIME KEEPS YOUR PROGRESS: Prime Codex retains its Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill/.test(text)

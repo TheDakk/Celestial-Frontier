@@ -13,13 +13,14 @@ The live site's two style blocks match the tracked HTML byte for byte; provenanc
 `audits/UI_U1_PRODUCTION_LAYOUT_20260906.md`. Nick's latest screenshot instructions supersede
 the earlier all-device bottom launcher and visible Current view experiments.
 
-Phone (<=700px) has five icon-only 60px board pills at 64px centers, then four 36px utility
+Phone (<=700px) has five icon-only 60px board pills at 64px centers, then five 36px utility
 faces inside 44px targets at 64px centers. Prime retains its visible N/9 count and accessible
 name. Order is Charters, Compendium, Prime, Shipyard, Atlas; then Records, Notifications,
-Guide, Settings. Utilities are 12px above the safe bottom; boards start at 60px. The default
-dock is 92px high and may grow for text preferences. Labels remain accessible without visible
-phone captions. Production's 60px board width supersedes the brief's older 58px metric.
-The old phone bell's inconsistent center is corrected to the same 64px rhythm.
+Guide, Settings, Survey (🔭). Utilities are 12px above the safe bottom; boards start at 60px.
+The default dock is 92px high and may grow for text preferences. Labels remain accessible
+without visible phone captions. Production's 60px board width supersedes the brief's older
+58px metric. Both rows share the same five-column 64px rhythm. Compact Charts is hidden;
+the existing Settings → Star charts toggle remains available.
 
 Tablet and desktop (>=701px) restore the actual native left Charters/Compendium and right
 Star Atlas/Shipyard controls. Prime Codex is centered at the top with its full label and N/9.
@@ -34,20 +35,27 @@ Nameplate and Health share the upper-left column; only the explorer name is visi
 wraps without truncation. Rank color metadata and the Inventory action remain. Health keeps
 its caption, a red heart, its exact numeric ratio without an HP suffix, accessible meter
 values and the unchanged fill calculation. Number contrast uses its independent dark backing.
-Rounded pills carry production's surface language. Inter remains local OFL type; Settings
-font, size and tone preferences take precedence. Rarity/resource/Atlas/protected colors retain
-their owners. Emoji remain the approved product icon system.
+Rounded pills carry production's surface language. On desktop/tablet, the name, Objective,
+left/right rail controls and Survey/Charts text pills fit their content with bounded
+`width:max-content`; Health retains its existing meter width and geometry. Inter remains local
+OFL type; Settings font, size and tone preferences take precedence. Rarity/resource/Atlas/protected
+colors retain their owners. Emoji remain the approved product icon system.
 
 The two-row header is measured by AppChrome, never assigned a fixed height. Name/Search are
-in the first row and Health/Objective in the second. On phones Search sits toward the center
-(max 37vw) and the objective occupies the upper-right; wide Search/Objective are 236px. The
-header and passive Objective remain pointer-transparent; only native controls receive presses.
+in the first row and Health/Objective in the second. On phones Search aligns to the upper-right
+(max 37vw) with the visible placeholder **Search**; Objective sits below it. Wide Search remains
+236px and Objective fits its text up to 236px. The header and passive Objective remain
+pointer-transparent; only native controls receive presses.
 The canonical #trail remains populated for diagnostics but is visually hidden, as in production.
 There is no visible Cosmos/Current view label. Actual rail wrappers own their 8px internal gaps,
-so those gaps keep a panel open; empty sky still dismisses it. Survey/Charts retain their native
-owners below the left controls and compact into one row on landed portraits. AppChrome observes
-that owner for the unchanged 72px roster reading-band rule. Overlays yield Objective/right rail
-as before; panel/Training focus, Close and Escape owners remain authoritative.
+so those gaps keep a panel open; empty sky still dismisses it. On desktop/tablet Survey/Charts
+retain their native owners below the left controls, with each text pill fitting its label.
+`#sceneactions` is nested inside the dock and becomes `display:contents` in compact navigation,
+placing the existing Survey opener in the fifth lower-row slot. Its zero-size wrapper box is
+ignored by AppChrome's existing top-chrome measurement; the 72px roster reading-band rule remains.
+Survey shows the retained/current surface card; Charts toggles orbit rings, the habitable zone
+and the belt caption. Their action/save owners are unchanged; no new action or gameplay is added.
+Overlays yield Objective/right rail as before; panel/Training focus, Close and Escape owners remain authoritative.
 
 Bottom guidance is plain text with no pill, border, padding or backdrop blur. Wide hint starts
 18px above safe bottom and context 64px; phone hint 124px and context 164px. Context rises when
@@ -63,7 +71,10 @@ capacity and 60-entry import allowance remain. Passive history never joins an in
 snapshot; no new timer, schema, import door or competing persistence writer is introduced.
 The bottom bell reads this history; its old duplicate shelf button is hidden.
 
-U1 remains a visual approval checkpoint. Normal review pairs three v1 goldens with v2 and
+U1 remains a visual approval checkpoint. This compact-control correction is implemented with
+verification and Nick's visual review pending; the navigation blocker remains OPEN. The Survey-only
+compact placement is Codex's stated default after an optional preference question, not a separate
+explicit approval to add Charts to the phone dock. Normal review pairs three v1 goldens with v2 and
 exercises real visible native opener/Close/focus journeys. Numeric checks observe actual rails,
 phone icon/count state, Search/Objective alignment, full name, meter contrast and plain hint.
 Slice/Glass preserve their ledgers and original pinch gestures. A normally hidden canonical
@@ -76,8 +87,8 @@ Training/Settings order against the earned Settings-above-Training law before im
 No integrated-pilot approval or Phase2 work is implied.
 
 U1 diagnostic update (2026-09-06): the normal-review tool adds viewport/resize facts and
-session-owned, auto-resuming trail-writer stacks. No product layout changed. Debugger timing
-perturbation and absent settlement facts keep the prior navigation blocker open until attributed;
+session-owned, auto-resuming trail-writer stacks. That diagnostic changed no product layout.
+Debugger timing perturbation and absent settlement facts keep the prior navigation blocker open until attributed;
 see `audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`.
 
 ## Opt-in audiovisual presentation — 2026-09-05 local

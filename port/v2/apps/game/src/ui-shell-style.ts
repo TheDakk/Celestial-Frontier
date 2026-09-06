@@ -2,11 +2,12 @@ import { UI_PRESENTATION_DESKTOP_MIN, UI_PRESENTATION_PHONE_MAX } from './ui-pre
 
 /** Production v1.8.9 placement adapted to v2's native owners. Nick's screenshot
  * amendments: right objective, icon-only phones, name-only Inventory, Health
- * caption, hidden trail and plain guidance. Touch floors remain 44px. */
+ * caption, hidden trail and plain guidance. Phone Survey joins the lower dock;
+ * Search shares the upper-right edge. Wide text pills fit their labels. Touch floors remain 44px. */
 export const UI_SHELL_CSS = `
 #topbar{position:fixed;inset:0 0 auto;z-index:var(--cf-layer-shell);pointer-events:none;display:grid;grid-template-columns:var(--cf-hud-column) minmax(0,1fr);grid-template-rows:minmax(44px,auto) minmax(44px,auto);align-items:start;gap:8px 14px;padding:max(10px,var(--safe-top)) calc(var(--safe-right) + var(--cf-hud-inset)) 8px calc(var(--safe-left) + var(--cf-hud-inset));background:linear-gradient(180deg,rgba(4,4,12,.7),transparent);border:0;box-sizing:border-box}
 #topbar>button,#searchbox{pointer-events:auto}
-#dockinventory{grid-column:1;grid-row:1;display:flex;align-items:stretch;min-height:44px;min-width:44px;width:100%;max-width:100%;padding:0;background:none;border:0;border-radius:999px;color:var(--ink);font:inherit;cursor:pointer}
+#dockinventory{grid-column:1;grid-row:1;display:flex;align-items:stretch;min-height:44px;min-width:44px;width:max-content;max-width:100%;padding:0;background:none;border:0;border-radius:999px;color:var(--ink);font:inherit;cursor:pointer}
 #playerchip{display:flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:0;min-height:44px;width:100%;padding:8px 11px;border-radius:999px;font-size:11px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:#dbe7f8;font-weight:600;white-space:normal;overflow-wrap:anywhere;background:linear-gradient(180deg,rgba(167,196,221,.26),rgba(96,127,165,.16)),rgba(10,16,30,.94);box-shadow:inset 0 1px 0 #edf5ff55,0 0 16px #a6c7e326}
 #playerchip.rank-iridescent{color:#f4f7ff;background:linear-gradient(110deg,rgba(70,194,178,.34),rgba(176,108,255,.34),rgba(255,217,106,.34))}
 #hpbar{grid-column:1;grid-row:2;display:grid;grid-template-columns:24px minmax(0,1fr);grid-template-rows:minmax(10px,auto) minmax(18px,auto);align-items:center;gap:2px 7px;margin:0;padding:5px 11px 5px 9px;width:100%;min-height:44px;max-width:100%;box-sizing:border-box;border:1px solid #405477;border-radius:999px;background:rgba(10,13,26,.94);box-shadow:inset 0 1px 0 #bfffe116,0 2px 8px #0003}
@@ -22,7 +23,7 @@ export const UI_SHELL_CSS = `
    visible Current view label, navigation control or reserved screen lane. */
 #trail{display:none;pointer-events:none}
 #trail .cur{color:#c8ebff;font-weight:600}#trail .sep{padding:0 4px}
-#objchip{grid-column:2;grid-row:2;justify-self:end;position:static;inset:auto;z-index:auto;display:block;margin:0;padding:8px 11px;font-size:10.5px;letter-spacing:.01em;line-height:1.45;color:#f0cf8a;width:236px;max-width:100%;box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;border:1px solid rgba(255,207,138,.48);border-radius:22px;background:rgba(10,16,30,.94);pointer-events:none}
+#objchip{grid-column:2;grid-row:2;justify-self:end;position:static;inset:auto;z-index:auto;display:block;margin:0;padding:8px 11px;font-size:10.5px;letter-spacing:.01em;line-height:1.45;color:#f0cf8a;width:max-content;max-width:min(236px,100%);box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;border:1px solid rgba(255,207,138,.48);border-radius:22px;background:rgba(10,16,30,.94);pointer-events:none}
 #objchip::before{content:'Objective';display:block;margin-bottom:2px;font-size:8px;line-height:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#d4be97}
 #objchip:empty{display:none}#objchip .prog{color:#7ec8f0;font-weight:600;white-space:nowrap}
 body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
@@ -42,14 +43,15 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
 .dock-utility .ico{display:block;font-size:14px;line-height:1}
 .dock-utility:is(.sel,.on) .utility-face{background:linear-gradient(135deg,rgba(255,217,106,.22),rgba(255,190,80,.12)),rgba(10,13,26,.88);border-color:rgba(255,217,106,.8);box-shadow:0 0 14px rgba(255,217,106,.25)}
 :is(#dock,#topbar,#sceneactions,#raillft,#railrgt) button:focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}
-#sceneactions{position:fixed;left:calc(var(--safe-left) + var(--cf-hud-inset));top:calc(var(--topbar-h) + 112px);z-index:var(--cf-layer-shell);pointer-events:none;display:flex;flex-direction:column;align-items:stretch;gap:8px;width:var(--cf-hud-column);max-width:calc(100vw - var(--safe-left) - var(--safe-right) - 2 * var(--cf-hud-inset))}
-#sceneactions button{pointer-events:auto;display:flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;min-height:44px;min-width:44px;box-sizing:border-box;padding:8px 13px;border:1px solid #344968;border-radius:999px;background:rgba(10,13,26,.94);color:var(--dim);font:11px var(--ui);text-align:left;cursor:pointer;touch-action:manipulation}
-#sceneactions button>.ico{width:20px;flex:0 0 20px;text-align:center;font-size:14px}
+#sceneactions{position:fixed;left:calc(var(--safe-left) + var(--cf-hud-inset));top:calc(var(--topbar-h) + 112px);z-index:var(--cf-layer-shell);pointer-events:none;display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:max-content;max-width:calc(100vw - var(--safe-left) - var(--safe-right) - 2 * var(--cf-hud-inset))}
+#sceneactions button{pointer-events:auto;display:flex;align-items:center;justify-content:flex-start;gap:8px;width:max-content;max-width:var(--cf-hud-column);min-height:44px;min-width:44px;box-sizing:border-box;padding:8px 13px;border:1px solid #344968;border-radius:999px;background:rgba(10,13,26,.94);color:var(--dim);font:11px var(--ui);text-align:left;cursor:pointer;touch-action:manipulation}
+#sceneactions button .ico{width:20px;flex:0 0 20px;text-align:center;font-size:14px}
+#sceneactions .utility-face{display:contents}
 #sceneactions button[aria-pressed="true"],#sceneactions button.on{border-color:var(--cf-color-accent-gold);color:#ffe3a8}
-#raillft,#railrgt{position:fixed;top:calc(var(--topbar-h) + 8px);z-index:var(--cf-layer-shell);display:flex;flex-direction:column;gap:8px;width:var(--cf-hud-column);pointer-events:auto}
-#raillft{left:calc(var(--safe-left) + var(--cf-hud-inset))}#railrgt{right:calc(var(--safe-right) + var(--cf-hud-inset));width:236px;align-items:flex-end}
+#raillft,#railrgt{position:fixed;top:calc(var(--topbar-h) + 8px);z-index:var(--cf-layer-shell);display:flex;flex-direction:column;gap:8px;width:max-content;max-width:var(--cf-hud-column);align-items:flex-start;pointer-events:auto}
+#raillft{left:calc(var(--safe-left) + var(--cf-hud-inset))}#railrgt{right:calc(var(--safe-right) + var(--cf-hud-inset));max-width:236px;align-items:flex-end}
 :is(#raillft,#railrgt) button{box-sizing:border-box;min-width:44px;min-height:44px;padding:8px 13px;border:1px solid #2a3c5e;border-radius:999px;background:rgba(10,13,26,.88);color:var(--dim);font:11px/1.4 var(--ui);cursor:pointer;touch-action:manipulation}
-#raillft button{width:100%;text-align:left}#railrgt button{width:100%;text-align:right}
+#raillft button{width:max-content;max-width:100%;text-align:left}#railrgt button{width:max-content;max-width:100%;text-align:right}
 #railinventory,#railrecords{display:none}
 @media(min-width:${UI_PRESENTATION_DESKTOP_MIN}px){
   #dock{right:calc(var(--safe-right) + 16px);bottom:calc(var(--safe-bottom) + 12px);display:flex;gap:8px;align-items:center;width:max-content}
@@ -64,15 +66,20 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
 @media(max-width:${UI_PRESENTATION_PHONE_MAX}px),(max-width:900px) and (orientation:landscape){
   :root{--cf-hud-inset:10px;--cf-hud-column:clamp(128px,36vw,176px)}
   #topbar{gap:8px 10px;padding-top:max(8px,var(--safe-top))}
+  #dockinventory{width:100%}
   #playerchip{font-size:10px;padding:8px 9px}
-  #searchbox{justify-self:start;width:100%;max-width:37vw;padding:5px 11px;font-size:16px}
-  #objchip{width:100%;justify-self:end}
+  #searchbox{justify-self:end;width:100%;max-width:37vw;padding:5px 11px;font-size:16px}
+  #objchip{width:100%;max-width:100%;justify-self:end}
   #raillft,#railrgt{display:none}
-  #sceneactions{top:calc(var(--topbar-h) + 8px)}
+  #sceneactions{display:contents}
+  #sceneactions #dockcharts{display:none}
+  #sceneactions #docksurvey{display:flex;grid-column:9/11;grid-row:2;align-items:center;justify-content:center;gap:0;width:44px;max-width:none;height:44px;min-height:44px;padding:0;border:0;background:none}
+  #sceneactions #docksurvey .utility-face{display:flex}
+  #sceneactions #docksurvey .lbl{display:none}
   #dock{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 12px);display:grid;grid-template-columns:repeat(10,32px);grid-template-rows:minmax(44px,auto) 44px;column-gap:0;row-gap:4px;width:320px;max-width:none;justify-items:center;align-items:center}
   #dock .dock-board{display:flex;grid-row:1;align-self:stretch;position:static;transform:none;max-width:none;width:60px;min-width:60px}
   #dockcharters{grid-column:1/3}#dockcodex{grid-column:3/5}#primechip{grid-column:5/7}#dockshipyard{grid-column:7/9}#dockatlas{grid-column:9/11}
-  #dock .dock-utility{grid-row:2}#dockrecords{grid-column:2/4}#docknotifications{grid-column:4/6}#dockguide{grid-column:6/8}#docksets{grid-column:8/10}
+  #dock .dock-utility{grid-row:2}#dockrecords{grid-column:1/3}#docknotifications{grid-column:3/5}#dockguide{grid-column:5/7}#docksets{grid-column:7/9}
   #dock #primechip{position:static;inset:auto;transform:none;display:flex;flex-direction:column;gap:1px;width:60px;min-width:60px;max-width:none;padding:6px 0 4px}
   #dock .dock-board .lbl{display:none}
   #dock .prime-count{font-size:8px}
@@ -86,16 +93,12 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   body.panel-open #searchbox{grid-column:1;grid-row:2;justify-self:stretch;width:100%;max-width:none}
   body.panel-open #hpbar{display:none}
   body.panel-open #dock{left:auto;right:calc(var(--safe-right) + 12px);transform:none}
-  body.panel-open #sceneactions{left:calc((100vw + var(--safe-left) - var(--safe-right) + 12px) / 2);right:calc(var(--safe-right) + 12px);top:calc(var(--safe-top) + var(--topbar-h) + 12px);width:auto;flex-direction:row;justify-content:center}
-  body.panel-open #sceneactions button{width:auto;flex:1;justify-content:center}
 }
 @media(min-width:901px){
   #setpanel,#recpanel,#shipyardpanel,#inventorypanel,#combatpanel,#toast{right:calc(var(--safe-right) + 16px);bottom:calc(var(--safe-bottom) + var(--dock-h) + 24px)}
 }
 @media(max-width:${UI_PRESENTATION_PHONE_MAX}px),(pointer:coarse){#searchbox,body.fs-lg #searchbox{font-size:16px!important}body.fs-xl #searchbox{font-size:17px!important}}
 @media(max-width:900px) and (orientation:portrait){
-  body.surface-mode #sceneactions{flex-direction:row;width:auto;right:calc(var(--safe-right) + var(--cf-hud-inset))}
-  body.surface-mode #sceneactions button{flex:1;width:auto;justify-content:center}
   body.surface-mode #objchip{display:none}
 }
 body.fs-lg #sceneactions button{font-size:13px}body.fs-xl #sceneactions button{font-size:15px}

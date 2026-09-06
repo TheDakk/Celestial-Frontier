@@ -2,6 +2,32 @@
 
 Nick supplied this brief on 2026-09-05. The quoted program below is retained verbatim.
 
+### Latest compact-control amendment — Nick, 2026-09-06
+
+Phone Search aligns in the upper-right corner with only **Search** as its visible placeholder.
+Desktop/tablet name and text pills fit their labels using bounded `width:max-content`; Health's
+existing meter geometry stays unchanged. Native Survey/Charts stay as text-sized left-stack
+controls on desktop/tablet.
+
+Nick asked what Survey and Charts do and proposed emoji-only bottom placement if needed. Survey
+opens the retained/current surface card; Charts toggles orbit rings, the habitable zone and belt
+caption, and remains available through Settings → Star charts. After asking an optional choice
+and waiting, Codex stated the Survey-only default: Survey (🔭) becomes the fifth lower-row utility
+on compact layouts, while the Charts shortcut is hidden there. The phone dock has five board
+icons plus five utility icons at the existing 64px pitch. This default is reviewable implementation,
+not an explicit new approval from Nick for either optional arrangement.
+
+`#sceneactions` now belongs inside the dock; compact `display:contents` lets Survey occupy its
+lower-row slot and leaves no wrapper box for top-chrome measurement. Existing native action,
+focus, save and gameplay owners remain unchanged. No `main.ts` gameplay change or new action.
+Verification and visual acceptance of this correction are pending; the navigation blocker stays
+OPEN. This remains bounded U1; no U2–U4, Phase2 or hosted action is authorized.
+
+### Superseded screenshot amendment (preserved verbatim)
+
+The following heading and amendment retain their original wording; the compact-control amendment
+above owns the current Search alignment, fitted text widths and compact Survey/Charts placement.
+
 ### Latest screenshot amendment — Nick, 2026-09-06
 
 Use actual production v1.8.9 layout code as the foundation. Phone boards have no visible
@@ -22,9 +48,9 @@ This is bounded U1 under the existing visual approval stop. No U2–U4 or Phase2
 ### Superseded amendments below (preserved verbatim)
 
 The historical headings and text below are retained as written. Their former “current” and
-“still applicable” labels describe their earlier checkpoints; the latest screenshot amendment
-above supersedes their geometry. The saved-notification decision and unresolved U2 stacking
-conflict remain active.
+“still applicable” labels describe their earlier checkpoints; the latest compact-control amendment
+above and its retained production-layout foundation supersede their geometry. The saved-notification
+decision and unresolved U2 stacking conflict remain active.
 
 Latest amendment — Nick's top/left refinement, 2026-09-06: keep the approved bottom
 launcher, align the top and left controls, stack and space the left actions consistently,

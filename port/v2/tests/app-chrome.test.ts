@@ -74,7 +74,7 @@ function createHarness(includeSceneActions = false, useNativeMutationObserver = 
     const sceneActions = document.createElement('nav');
     sceneActions.id = 'sceneactions';
     sceneActions.innerHTML = '<button id="docksurvey">Survey</button><button id="dockcharts">Charts</button>';
-    document.body.appendChild(sceneActions);
+    document.getElementById('dock')!.appendChild(sceneActions);
   }
   const bottoms = new Map<string, number>([
     ['topbar', 52],
@@ -423,6 +423,45 @@ describe('application chrome DOM owner', () => {
     h.widths.set('topbar', 0);
     h.controller.syncSurfaceChromeBottom();
     expect(h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom')).toBe('110.00px');
+  });
+
+  it('excludes the boxless phone scene group from top chrome while its Survey remains in the measured dock', () => {
+    const h = createHarness(true);
+    const scene = h.element('sceneactions'), dock = h.element('dock'), survey = h.element('docksurvey');
+    expect(scene.parentElement).toBe(dock);
+    h.document.body.classList.add('surface-mode');
+    h.styles.set('trail', { display: 'none', visibility: 'visible', opacity: '1' });
+    h.styles.set('sceneactions', { display: 'contents', visibility: 'visible', opacity: '1' });
+    let sceneRect = rect(0, 0, 0);
+    scene.getBoundingClientRect = () => sceneRect;
+    survey.getBoundingClientRect = () => rect(812, 44, 44);
+    h.heights.set('dock', 92);
+    const dockObserver = h.resizeObservers.find(record => record.observed.includes(dock));
+    if (!dockObserver) throw new Error('dock ResizeObserver missing');
+    const measure = () => {
+      dockObserver.listener();
+      return {
+        top: h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom'),
+        dockHeight: h.document.documentElement.style.getPropertyValue('--dock-h'),
+      };
+    };
+    expect(measure()).toEqual({ top: '80.00px', dockHeight: '92px' });
+    expect(dock.contains(survey)).toBe(true);
+    expect(survey.getBoundingClientRect()).toMatchObject({ bottom: 812, width: 44, height: 44 });
+    // A bottom-positioned visible group would incorrectly become top chrome.
+    // Reproduce that geometry and prove the published top edge changes.
+    sceneRect = rect(812, 44, 44);
+    h.styles.set('sceneactions', { display: 'flex', visibility: 'visible', opacity: '1' });
+    expect(measure()).toEqual({ top: '812.00px', dockHeight: '92px' });
+    sceneRect = rect(0, 0, 0);
+    h.styles.set('sceneactions', { display: 'contents', visibility: 'visible', opacity: '1' });
+    expect(measure()).toEqual({ top: '80.00px', dockHeight: '92px' });
+    // Dock growth still belongs to the lower owner and never raises top chrome.
+    h.heights.set('dock', 108);
+    expect(measure()).toEqual({ top: '80.00px', dockHeight: '108px' });
+    h.heights.set('dock', 92);
+    expect(measure()).toEqual({ top: '80.00px', dockHeight: '92px' });
+    h.controller.dispose();
   });
 
   it('measures the actual scene-action stack, preserves the 72px rule and disposes its observer', () => {

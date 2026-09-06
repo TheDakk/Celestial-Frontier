@@ -5,8 +5,17 @@
 The normal `/` game (without `avpilot`) uses the shared token/shell owners, local Inter,
 the production layout adapted to icon-only phone rows and wide side controls/top-center Prime/
 bottom-right utilities, right Objective under Search, and saved notification read state described in
-`../../UI_PRESENTATION.md`. The accepted brief and amendments are in
-`../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved.
+`../../UI_PRESENTATION.md`. Phone Search now aligns upper-right with the visible placeholder Search;
+wide name and text pills fit their labels with bounded `width:max-content`, preserving Health's
+meter geometry. The compact dock keeps five board icons and adds Survey (🔭) as its fifth lower-row
+utility at 64px pitch. Compact Charts is hidden; Settings → Star charts remains available. On wide
+screens Survey/Charts remain fitted text controls below the left rail. The nested `#sceneactions`
+uses compact `display:contents`, so its zero-size wrapper does not extend measured top chrome.
+No native action, gameplay or `main.ts` owner changes. This correction awaits verification and
+visual review; the navigation blocker remains OPEN. Survey-only compact placement is Codex's stated
+default after an optional preference question. The accepted brief and amendments are in
+`../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved; no U2–U4, Phase2 or
+hosted action is authorized.
 
 U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options before use).
 It owns an isolated headless browser and creates three golden comparison sheets plus numeric
