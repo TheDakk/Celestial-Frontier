@@ -71,6 +71,13 @@ Slice20260906095504288-90978-351c98d76e6f stopped at382,456ms because its old
 empty-sky coordinate900,300 now falls inside Settings; no phone canary ran. Red evidence
 is retained in UI_U1_LAUNCHER_294cc79_20260906. A bounded instrument successor follows,
 along with five late focused-tested Glass clause probes absent from294cc79. Product unchanged.
+Next source6a88f859fac6df638956411974b1a8098e8e5195 passed311files/3,312tests/1skip
+and Glass selftest, then normal review stopped: Notifications Close returned opener focus
+but changed trail Cosmos→Cosmos/Milky Way. Cause under investigation; no Slice/phone run.
+UI_U1_LAUNCHER_6a88f85_20260906 preserves the red. Product unchanged since3101576.
+The bounded normal-review successor adds delivered trusted event ownership and public-trail
+chronology. Existing assertions remain; focused baseline/10mutants/32expressions passed.
+No product cause or fix is established; retain this observation for review even if it passes.
 No previous source's PASS is claimed for this revision. Preceding exact cfd63ae checkpoint
 passed locally and lives in audits/UI_U1_FINAL_cfd63ae_20260906; current revision evidence
 lives in audits/UI_U1_LAUNCHER_REVISION_20260906.md and its forthcoming exact-source carriers.

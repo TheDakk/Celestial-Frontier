@@ -50,3 +50,25 @@ The instrument successor uses a measured exact root-canvas edge point, reused fo
 and unowned presses with trusted mouse/coordinate receipts, exact restoration, and unchanged
 scene/card/Settings outcomes. Preparation: typecheck PASS; two focused files/34tests PASS;
 module syntax and diffcheck PASS. No other control or product was changed.
+
+## Third exact-source stop —6a88f85
+
+Fresh source6a88f859fac6df638956411974b1a8098e8e5195 passed typecheck/artunused,
+311files/3,312tests/1skip, Glass selftest and normal build. The normal review reached Cosmos
+on phone through native Escape; geometry and Notifications bounds/Close checks passed,
+but after Close the trail was Cosmos/Milky Way. Focus returned to the shelf opener.
+The review correctly stopped on that changed scene; Slice and both phones did not run.
+Logs/report/two captures are preserved in UI_U1_LAUNCHER_6a88f85_20260906. Cause is under
+investigation; the previous PASS does not establish whether this is an instrument or product issue.
+
+Read-only product trace found no direct Close-to-navigation call or removed target; Close
+hides its existing panel and restores opener focus. Canvas handlers are canvas-scoped. The
+ticker can asynchronously publish a galaxy, but the red report does not prove that cause.
+A bounded review-tool successor records delivered trusted native event ownership and public
+trail chronology while keeping every Cosmos/geometry/focus assertion. It improves diagnosis;
+it is not a demonstrated product fix. This unexplained observation remains for review.
+
+Diagnostic guard preparation passed exact delivered-event baseline,10 rejected mutants and
+restoration,32 generated expression shapes, module syntax and diffcheck. The phone geometry
+oracle is byte-unchanged. This result comes from agent terminal output chunk386896 (no raw
+log file was created); it is recorded as reported preparation, separate from exact-source runs.
