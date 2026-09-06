@@ -1,7 +1,8 @@
 # U1 Survey replaces Charters — 2026-09-06
 
-Status: IMPLEMENTED IN WORKING COPY; root validation/typecheck PASS, initial full Vitest RED
-with corrected affected guards PASS. Committed-source browser probe NOT RUN. U1 visual approval
+Status: PRODUCT COMMITTED at 053ef43; root validation/typecheck PASS, initial full Vitest RED
+with corrected affected guards PASS. First scoped browser attempt INSTRUMENT RED after passing
+390px outcomes; probe-only keyboard correction awaits changed-source verification. U1 visual approval
 and both recorded blockers remain OPEN. No U2–U4, Phase2, hosted, integrated-pilot or broad navigation work.
 
 Nick explicitly replaces the Charters shortcut with Survey across every v2 layout. This
@@ -50,8 +51,8 @@ source note identifies precommit working-source checks and binds the final produ
 to the commit carrying the manifest. Both the initial full Vitest red and the scoped two-file
 correction remain recorded. It is not a full rerun or certification claim.
 
-Final source/tested commit, browser evidence directory/manifest and PNG identities remain pending.
-The committed-source browser probe has NOT RUN. The planned retained probe is
+The first committed-source probe result and its corrected-helper boundary are recorded below.
+The retained probe is
 UI_U1_SURVEY_CHARTERS_PROBE_20260906.mjs in this audit directory.
 It covers six separate fresh contexts: phone widths 390/320/430, 667 landscape with Settings open,
 834 tablet and 1440 desktop. The executable probe owns exact viewport heights and browser evidence.
@@ -64,6 +65,21 @@ first nonzero/red result and retain it without advancing or rerunning unchanged 
 normal review, the known-timeout portrait-restoration path, Slice, phone Glass and the full chain
 are outside this bounded attempt. A scoped PASS cannot close the older navigation or instrument
 blocker or supply human visual acceptance.
+
+Committed product source 053ef439774520577071f0ca50887337dd938755 passed the first 390×844
+geometry, real native touch/Enter/Space Charters, Close/Escape/focus, six geometry/availability
+faults and larger-text outcomes. The run then stopped INSTRUMENT RED: its keyboard trace hit
+200 entries, including 189 unexpected trusted Unidentified/Minus keydowns with timestamp zero
+starting after Escape. Later viewports were NOT RUN. Exact report, two PNGs and logs are retained
+in audits/UI_U1_SURVEY_CHARTERS_053ef43_RED_20260906/manifest.json. The 390 baseline PNG was inspected.
+The new probe copied Windows virtual-key numbers into platform-specific nativeVirtualKeyCode;
+port/v2/tools/slicesmoke.mjs already documents that mismatch and the possibility of endless
+synthetic repeating keys on macOS. A probe-only correction now follows Slice's portable key
+parameters and rejects anything other than the exact six trusted Enter/Escape/Space key edges.
+Positive plus missing/extra/overflow/untrusted/retained-red controls PASS in
+UI_U1_SURVEY_CHARTERS_KEY_CONTROLS_20260906.txt. Product/pins are unchanged. Changed instrument
+verification remains pending. This finding does not establish the cause of either older blocker;
+the old normal-review helper is unchanged and both blockers remain OPEN.
 
 ## Source and authority
 

@@ -22,8 +22,8 @@ the archive verbatim and refresh this handoff in place.
 OpenAI/Codex on macOS | openai/mac | /Users/nick/Projects/celestial-frontier-openai-mac |
 origin/openai/mac. Exact physical root/branch/upstream verified. Entry HEAD
 70b16eeba973f13040e47d50632fc6c1ba7d4a81 is eight local commits ahead of origin/openai/mac.
-The current correction is working-copy source; final implementation/tested commit and browser
-results are pending. Root main.js absent; ambient .DS_Store untouched. SSH origin
+Product is committed as 053ef439774520577071f0ca50887337dd938755; the first scoped browser
+attempt stopped after the 390px outcomes on keyboard instrument overflow. Probe-only correction awaits verification. Root main.js absent; ambient .DS_Store untouched. SSH origin
  git@github.com:TheDakk/Celestial-Frontier.git authenticated as TheDakk; read/fetch and develop
 c1791e2 ancestor receipts are reused in this uninterrupted session. No other worktree edited.
 
@@ -54,7 +54,7 @@ test-only correction keeps raw-status DOM protection, admits only Main's exact s
 registration, and adds wrong-opener/extra-objective-writer negatives; Glass expects Survey and
 Objective. Both corrected files/48 tests PASS; native trace selftest 2 PASS. The full Vitest red
 is retained; no full rerun PASS is claimed. Product unchanged after the final pin. Browser probe
-NOT RUN. Prep evidence is retained in audits/UI_U1_SURVEY_CHARTERS_PREP_20260906/manifest.json
+first attempt and changed-helper status are recorded below. Prep evidence is retained in audits/UI_U1_SURVEY_CHARTERS_PREP_20260906/manifest.json
 (five compressed logs, two authority receipts). The manifest explicitly binds precommit working
 source to the commit carrying final product/guards; it retains the initial red and scoped correction.
 Planned bounded probe:
@@ -64,6 +64,21 @@ Space, Close/Escape/focus return, Survey placement, geometry negative controls w
 restoration, larger text and PNGs. This does not retry the full normal review or its portrait
 restoration, and does not run Slice, phone Glass or the full chain. Stop after the first red;
 retain its source/evidence and do not advance or rerun unchanged source.
+
+Committed product source 053ef439774520577071f0ca50887337dd938755 passed the first 390×844
+geometry, real native touch/Enter/Space Charters, Close/Escape/focus, six geometry/availability
+faults and larger-text outcomes. The run then stopped INSTRUMENT RED: its keyboard trace hit
+200 entries, including 189 unexpected trusted Unidentified/Minus keydowns with timestamp zero
+starting after Escape. Later viewports were NOT RUN. Exact report, two PNGs and logs are retained
+in audits/UI_U1_SURVEY_CHARTERS_053ef43_RED_20260906/manifest.json. The 390 baseline PNG was inspected.
+The new probe copied Windows virtual-key numbers into platform-specific nativeVirtualKeyCode;
+port/v2/tools/slicesmoke.mjs already documents that mismatch and the possibility of endless
+synthetic repeating keys on macOS. A probe-only correction now follows Slice's portable key
+parameters and rejects anything other than the exact six trusted Enter/Escape/Space key edges.
+Positive plus missing/extra/overflow/untrusted/retained-red controls PASS in
+UI_U1_SURVEY_CHARTERS_KEY_CONTROLS_20260906.txt. Product/pins are unchanged. Changed instrument
+verification remains pending. This finding does not establish the cause of either older blocker;
+the old normal-review helper is unchanged and both blockers remain OPEN.
 
 Current producer 7a67c0db4dc3ad4f3f3caf3a48ad15e61ad2e2d77facc3339975420900b77a51;
 measurement 4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 is unchanged.
