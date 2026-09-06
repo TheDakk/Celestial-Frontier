@@ -40,7 +40,11 @@ Settings are unchanged. U1 visual approval OPEN; U2–U4/Phase2/integrated pilot
 Current audit: audits/UI_U1_SURVEY_TOP_ROW_20260906.md and its retained scoped .mjs probe.
 First focused4 files/86 tests PASS. Root validate PASS. Final typecheck first stopped on the new
 fixture's inferred number-or-undefined tuple; explicit readonly tuple typing corrects it.
-Corrected typecheck,4 focused files/86 tests and2 native trace controls PASS. Committed-source probe pending. Scope is fresh isolated contexts at
+Corrected typecheck,4 focused files/86 tests and2 native trace controls PASS. Signed810ab78
+scoped probe passed390px baseline and rejected Survey moving down; exact CSS attribute cleanup
+failed although restored geometry passed. First red/phonePNG retained, later sizes NOT RUN.
+Probe-only correction now uses established exact-style cleanup and records raw before/after;
+product source remains810ab78. One new-source scoped observation pending, no unchanged retry. Scope is fresh isolated contexts at
 320/390/430 portrait plus667 landscape Settings: dock geometry,20 CSS negative controls/exact
 restoration, larger text and4 PNGs only. No full normal review, portrait-restoration retry, Slice
 or phone Glass. This layout observation cannot clear the older reds. Five current references
