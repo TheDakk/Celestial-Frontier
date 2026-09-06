@@ -1,3 +1,20 @@
+# U2 rendered-spacing checkpoint handoff superseded — 2026-09-06
+
+Latest signed U2 check source ded28c1da0cfccf8610b21427eda94c9aad58617 (24ahead) passed normal
+build and9scoped rows; large-text landscape then passed native Skip/Charts and stopped on a13.5px
+Planetside/context overlap in a mixed Surface/Sol synthetic fixture. Static, canaries and Slice
+NOT RUN. Immutable audits/UI_U2_LOCAL_CHECKPOINT_ded28c1_20260906/manifest.json retains29PNGs.
+Nick flagged the cramped Settings/Training screenshot. Confirmed product cause: common ID
+selector defeated class-only landscape override, leaving155px instead of339px safe-height sheet.
+The bounded successor uses ID-qualified anchors, a horizontally measured Planetside/toast floor,
+and source-owned Surface caption fixtures. Independent workspace/fault controls18/18, v2 types,
+rootvalidate and producerbuild PASS; rendered normal/large-text review pending. Product producer
+627b067cc917dc3d553a36fd85ef5d39e2612e24cac0ae4e8386fee9e7fd9fc8; measurement/ceilings/draft81
+unchanged. Preserve all prior failed manifests (7197d62,e88ea7b,2642ddc) and earlier unknown causes.
+Fresh exact-source sequence: normalbuild/scoped20rows → developstatic → small/large phone →
+Slice/namedverify, first-nonzero stop. Current audit audits/UI_U2_SHEETS_20260906.md owns evidence.
+
+
 # U2 short-landscape spacing handoff superseded — 2026-09-06
 
 Latest signed U2 check source7197d62fa227cd20640acb2866d89660d2996084 (23ahead) passed normal

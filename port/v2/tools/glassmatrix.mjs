@@ -22,6 +22,7 @@ import { execFileSync, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { readU1PhoneShell } from './ui-shell-review.mjs';
+import { reviewFrameSettlement, readReviewFrameSettlements, assessReviewFrameSettlement } from './ui-review-evaluation.mjs';
 import { assessGlyphStrokeContrast } from './glass-glyph-stroke-contrast.mjs';
 import { buildCompendiumFixture } from './compendiummem-fixture.mjs';
 import {
@@ -79,6 +80,70 @@ import {
   projectArc4V4OwnedCounters,
   projectArc5OwnershipMigrationEvidence,
 } from './arc4-browser-contract.mjs';
+
+/** The same live Charter toast brackets one named layout settlement; a new or
+ * expired toast cannot explain the previously observed Survey geometry. */
+export async function surveyLiveToastSettlement(settleFrames, readFrames) {
+  const label = 'survey.Earth.live-toast.fonts-two-frames';
+  const snapshot = () => {
+    const rect = node => {
+      if (!node) return null;
+      const r = node.getBoundingClientRect(), style = getComputedStyle(node);
+      return { left: r.left, top: r.top, right: r.right, bottom: r.bottom, width: r.width, height: r.height,
+        display: style.display, visibility: style.visibility, opacity: Number(style.opacity),
+        maxHeight: style.maxHeight, minHeight: style.minHeight, paddingTop: style.paddingTop,
+        paddingBottom: style.paddingBottom, borderTopWidth: style.borderTopWidth, borderBottomWidth: style.borderBottomWidth };
+    };
+    const toast = document.getElementById('toast'), state = window.__CF_SLICE__.api.state();
+    const root = getComputedStyle(document.documentElement);
+    return { at: performance.now(), timeOrigin: performance.timeOrigin, viewport: { width: innerWidth, height: innerHeight },
+      sheetFloor: parseFloat(root.getPropertyValue('--cf-sheet-floor')), lowerTop: parseFloat(root.getPropertyValue('--cf-lower-top')),
+      toast: { serial: state.toastSerial, on: state.toastOn, text: toast?.textContent ?? '',
+        inlineOpacity: toast?.style.opacity ?? null, computedOpacity: toast ? Number(getComputedStyle(toast).opacity) : null },
+      route: { mode: state.mode, star: state.star, cardOpen: state.cardOpen },
+      geometry: Object.fromEntries(['toast', 'hintpill', 'ctxbar', 'survey'].map(id => [id, rect(document.getElementById(id))])
+        .concat([['header', rect(document.querySelector('#survey .survey-head'))], ['close', rect(document.querySelector('#survey [data-survey-close]'))]])) };
+  };
+  const before = snapshot(), priorFrameId = readFrames()?.invocations?.at(-1)?.id ?? 0;
+  await settleFrames(label);
+  const frames = readFrames(), after = snapshot();
+  // No intervening task can expire the toast before this canonical product measurement.
+  const closeOutcome = window.__CF_GLASS_AUDIT__.closeIntegrityOutcome('#survey','[data-survey-close]','[data-pnx]');
+  return { label, before, after, closeOutcome, expectedFrameId: priorFrameId + 1,
+    frame: frames?.invocations?.at(-1) ?? null, overflow: frames?.overflow ?? true };
+}
+export function assessSurveyLiveToastSettlement(receipt, viewport) {
+  const errors = [], before = receipt?.before, after = receipt?.after, frame = receipt?.frame;
+  const frameVerdict = assessReviewFrameSettlement(frame, viewport);
+  if (!frameVerdict.pass) errors.push(...frameVerdict.errors);
+  if (receipt?.label !== 'survey.Earth.live-toast.fonts-two-frames' || frame?.label !== receipt?.label
+    || frame?.id !== receipt?.expectedFrameId || receipt?.overflow !== false) errors.push('survey settlement identity');
+  const phases = frame?.phases ?? [];
+  if (!before || !after || !Number.isFinite(before.at) || !Number.isFinite(after.at)
+    || before.timeOrigin !== after.timeOrigin || phases[0]?.timeOrigin !== before.timeOrigin
+    || !(before.at <= phases[0]?.at && phases.at(-1)?.at <= after.at)) errors.push('survey settlement interval');
+  for (const snapshot of [before, after]) {
+    if (!snapshot || !Number.isFinite(snapshot.sheetFloor) || !Number.isFinite(snapshot.lowerTop)
+      || snapshot.viewport?.width !== viewport.width || snapshot.viewport?.height !== viewport.height
+      || snapshot.route?.mode !== 'system' || snapshot.route?.star !== 424242 || snapshot.route?.cardOpen !== true
+      || !['toast', 'hintpill', 'ctxbar', 'survey', 'header', 'close'].every(key => {
+        const rect = snapshot.geometry?.[key];
+        return rect && ['left', 'top', 'right', 'bottom', 'width', 'height'].every(name => Number.isFinite(rect[name]));
+      })) errors.push('survey settlement snapshot');
+    if (snapshot?.toast?.on !== true || snapshot.toast.inlineOpacity !== '1' || !(snapshot.toast.computedOpacity > 0)
+      || snapshot.geometry?.toast?.display === 'none' || snapshot.geometry?.toast?.visibility === 'hidden'
+      || !(snapshot.geometry?.toast?.width > 0 && snapshot.geometry?.toast?.height > 0)) errors.push('Charter toast not live');
+  }
+  if (typeof receipt?.closeOutcome?.ok !== 'boolean' || ![['root', 'survey'], ['close', 'close']].every(([key, id]) => {
+    const rect = after?.geometry?.[id], measured = receipt?.closeOutcome?.[key];
+    return Array.isArray(measured) && measured.length === 4 && ['left', 'top', 'right', 'bottom'].every((edge, index) =>
+      Number.isFinite(rect?.[edge]) && measured[index] === Math.round(rect[edge] * 100) / 100);
+  })) errors.push('survey settled Close outcome missing or incoherent');
+  if (!Number.isSafeInteger(before?.toast?.serial) || before.toast.serial <= 0
+    || before.toast.serial !== after?.toast?.serial || before.toast.text !== after?.toast?.text
+    || typeof before.toast.text !== 'string' || !before.toast.text.includes('Beyond Your Charter')) errors.push('Charter toast identity changed');
+  return { ok: errors.length === 0, errors };
+}
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.join(here, '..', 'apps', 'game');
@@ -11102,6 +11167,10 @@ async function main() {
            selects the deterministic Sol body; bind readiness to its real Land action
            and exact system rather than erasing or rejecting player naming. */
         await waitFor('Earth survey', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242&&s.cardOpen&&!!document.querySelector('#survey [data-act="landcta"]'); })()`);
+        const surveySettlement = await evalIn(`(${surveyLiveToastSettlement.toString()})(${reviewFrameSettlement.toString()},${readReviewFrameSettlements.toString()})`);
+        const surveySettlementVerdict = assessSurveyLiveToastSettlement(surveySettlement, vp);
+        console.log(`GLASS SURVEY LIVE-TOAST SETTLEMENT — ${vp.label}: ${JSON.stringify({ receipt: surveySettlement, verdict: surveySettlementVerdict })}`);
+        if (!surveySettlementVerdict.ok) recordInstrumentFailure(`${vp.label}: Survey settlement lost its live Charter toast or named frame receipt (${JSON.stringify(surveySettlementVerdict)})`);
         const chromeYieldCheck = `(()=>{ const ids=['trail','objchip'],rows=ids.map(id=>{const el=document.getElementById(id);
           return {id,text:(el?.textContent||'').trim(),display:el?getComputedStyle(el).display:'missing'};});
           return {ok:rows.every(r=>r.text.length>0&&r.display==='none'),rows}; })()`;
@@ -11118,7 +11187,7 @@ async function main() {
           await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome('#docksurvey','#survey',true)`),
           'aria-controls names the real survey and aria-expanded is true while it is open');
         addOutcome(vp.label, 'survey', 'SURVEY_CLOSE_INTEGRITY', '#survey [data-survey-close]',
-          await evalIn(`window.__CF_GLASS_AUDIT__.closeIntegrityOutcome('#survey','[data-survey-close]','[data-pnx]')`),
+          surveySettlement.closeOutcome,
           'the survey owns exactly one reachable top-right close and no generic panel close');
         const surveyDisclosure = await evalIn(`(()=>{ const S=window.__CF_SLICE__,card=document.getElementById('survey'),
           landed=S.api.state().save.landed.includes(133),rarity=[...card.querySelectorAll('[data-row="Rarity"]')],

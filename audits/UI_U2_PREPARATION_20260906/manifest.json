@@ -122,6 +122,27 @@
       "rawSha256": "382eb11029b43be7ffd8ffc1242b82c04f9965b6bde7fcc0e57d28fb69c6b79f",
       "bytes": 200,
       "sha256": "39d4165fb0c560184a980b75af021f68ec04f82ec8fe455d7994c67732b6cbe9"
+    },
+    {
+      "file": "cf-u2-594ece6-terminal-verification-20260906.json.gz",
+      "rawBytes": 90,
+      "rawSha256": "3e5565637b596fce05e3dab91a1d64a98fc8c38e1f99e5c24101285ba93a59fe",
+      "bytes": 100,
+      "sha256": "be56ba61f06521103c59f9515469eb22b59f14d4ae6cbf60b9fd24f8f3e33910"
+    },
+    {
+      "file": "cf-u2-survey-settlement-checks-20260906.log.gz",
+      "rawBytes": 1538,
+      "rawSha256": "2f3e9f2e9c0efb353f84d2468a9b150a4edee80121654cc0d5c27d1b02b1e69b",
+      "bytes": 917,
+      "sha256": "a7eeb1a31afe46118471997c6b13e0badffb488c7583955dc6377be0654ca676"
+    },
+    {
+      "file": "cf-u2-survey-atomic-close-checks-20260906.log.gz",
+      "rawBytes": 1538,
+      "rawSha256": "f05f73c013cd35664293322ee040796e37a549dd777dfbe2c72e930f26c83ba0",
+      "bytes": 918,
+      "sha256": "f0b420e49ca9f7055cadfcaf01d5ea670154742501fd2997381f51995601afc1"
     }
   ]
 }

@@ -31,19 +31,27 @@ started clean; ambient .DS_Store preserved; root main.js absent. Same-session SS
 startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 remains deferred for busy tools.
 Actions UNFROZEN/PUBLIC per last receipt, private fallback3000, zero exact hosted authority.
 
-Latest signed U2 check source ded28c1da0cfccf8610b21427eda94c9aad58617 (24ahead) passed normal
-build and9scoped rows; large-text landscape then passed native Skip/Charts and stopped on a13.5px
-Planetside/context overlap in a mixed Surface/Sol synthetic fixture. Static, canaries and Slice
-NOT RUN. Immutable audits/UI_U2_LOCAL_CHECKPOINT_ded28c1_20260906/manifest.json retains29PNGs.
-Nick flagged the cramped Settings/Training screenshot. Confirmed product cause: common ID
-selector defeated class-only landscape override, leaving155px instead of339px safe-height sheet.
-The bounded successor uses ID-qualified anchors, a horizontally measured Planetside/toast floor,
-and source-owned Surface caption fixtures. Independent workspace/fault controls18/18, v2 types,
-rootvalidate and producerbuild PASS; rendered normal/large-text review pending. Product producer
-627b067cc917dc3d553a36fd85ef5d39e2612e24cac0ae4e8386fee9e7fd9fc8; measurement/ceilings/draft81
-unchanged. Preserve all prior failed manifests (7197d62,e88ea7b,2642ddc) and earlier unknown causes.
-Fresh exact-source sequence: normalbuild/scoped20rows → developstatic → small/large phone →
-Slice/namedverify, first-nonzero stop. Current audit audits/UI_U2_SHEETS_20260906.md owns evidence.
+Latest signed U2 check source594ece6c79269ca36787fad2fa3f11608c9fef63 (25ahead) passed normal
+20-row review/60PNGs and develop static317files/3399tests/1skip. Root+peer inspected corrected
+normal/A++landscape Settings: full safe-height left sheet, aligned controls, clear Close. Nick's
+spacing observation led to the fixed ID-specificity conflict; this is not new human approval.
+Small-phone then retained one PRODUCT RED/zeroinstrument: Survey root[12,132,308,176] height44,
+Close[249,147,293,191] extends15px outside. Large-phone/Slice NOT RUN. Immutable
+ audits/UI_U2_LOCAL_CHECKPOINT_594ece6_20260906/manifest.json (71carriers) and named terminal/browser
+read verification preserve the RED. Before choosing another geometry fix, the bounded instrument
+successor adds a named font/two-frame settlement with before/after complete lane/Survey/header/
+Close measurements and the same live toast. No deadline or expiry wait, retry or guessedminheight.
+The diagnostic captures settled geometry and canonical Close outcome in one browser task, then
+uses that retained outcome so later toast expiry cannot change its verdict. Three focused source-
+executing tests/thirteen negative receipts, three
+TypeScript programs and root validate PASS. Commit this tool-only successor, then run the canonical
+sequence once; preserve the same live-toast geometry even if Close still fails.
+Product producer627b067cc917dc3d553a36fd85ef5d39e2612e24cac0ae4e8386fee9e7fd9fc8,
+measurement/ceilings/draft81unchanged. Tool-only nextsource reuses594ece6 visual evidence without
+claiming it is freshsource proof; canonicalsequence is developstatic → smallphone → largephone →
+Slice/namedverify, first-nonzero stop. All earlier manifests/unknowncauses remain immutable.
+Current audit audits/UI_U2_SHEETS_20260906.md owns evidence. No normal predecessor snapshot exists:
+the attemptedread was hash-refused afterstatic rebuilt dist in evidence mode; U3must rebuild one.
 
 Inkscape unavailable this session: two reports abort at macOS GUI registration, even --version;
 restricted launch suspected, no outside-sandbox control. Do not relaunch. Browser SVG rendering
