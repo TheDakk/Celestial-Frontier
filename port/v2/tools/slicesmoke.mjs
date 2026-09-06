@@ -5964,9 +5964,10 @@ try {
       ||Math.abs(srch.r-expectedRight)>1||(compact?srch.w>W*.37+1:Math.abs(srch.w-236)>1)||searchHit!==searchNode)
       bad.push('search is not a reachable 44px control in its approved upper-right header column: '+JSON.stringify({srch,topbar,expectedRight,searchHit:searchHit?.id||null}));
     if(overlaps(pc,srch))bad.push('player chip overlaps the search bar');
-    const prime=document.getElementById('primechip');
-    if(!nativeAvailable('primechip',pr)||Math.abs(pr.cx-W/2)>1||(!compact&&Math.abs(pr.t-pc.t)>1))
-      bad.push('Prime pill is not a visible reachable native button at the approved centered position: '+JSON.stringify({pr,pc,compact}));
+    const prime=document.getElementById('primechip'),expectedDockWidth=Math.min(384,W-safeLeft-safeRight-20),
+      dockPitch=expectedDockWidth/6,expectedPrimeX=compact?dock?.l+dockPitch*2.5:W/2;
+    if(!nativeAvailable('primechip',pr)||Math.abs(pr.cx-expectedPrimeX)>1||(!compact&&Math.abs(pr.t-pc.t)>1))
+      bad.push('Prime pill is not a visible reachable native button at its approved scene position: '+JSON.stringify({pr,pc,compact,expectedPrimeX}));
     for(const [name,box] of [['playerchip',pc],['hpbar',hp],['searchbox',srch],['objective',obj]])
       if(overlaps(pr,box))bad.push('primechip overlaps '+name);
     const sceneNode=document.getElementById('sceneactions'),sceneOrder=sceneNode?[...sceneNode.children].map(el=>el.id):[],
@@ -5974,15 +5975,16 @@ try {
       sceneOwned=!!sceneNode&&sceneNode.parentElement===dockNode
         &&JSON.stringify(sceneOrder)===JSON.stringify(['docksurvey','dockcharts']);
     if(compact){
-      const face=r(surveyNode?.querySelector('.utility-face')),label=r(surveyNode?.querySelector('.lbl')),
-        expectedSurveyX=dock?.l+288,expectedSurveyY=dock?.b-22;
+      const icon=r(surveyNode?.querySelector(':scope > .ico')),label=r(surveyNode?.querySelector('.lbl')),
+        expectedSurveyX=dock?.l+dockPitch*5.5,expectedSurveyWidth=dockPitch-4;
       if(!sceneOwned||getComputedStyle(sceneNode).display!=='contents'||scene?.vis
         ||!chartsNode||getComputedStyle(chartsNode).display!=='none'||charts?.vis
-        ||!inside(dock,survey)||!nativeAvailable('docksurvey',survey)||Math.abs(survey.w-44)>1||Math.abs(survey.h-44)>1
-        ||Math.abs(survey.cx-expectedSurveyX)>1||Math.abs(survey.cy-expectedSurveyY)>1
-        ||!inside(survey,face)||Math.abs(face.w-36)>1||Math.abs(face.h-36)>1||label?.vis)
-        bad.push('phone Survey is not the reachable 44px icon in its fifth dock slot with Charts hidden: '
-          +JSON.stringify({scene,survey,charts,face,label,dock,sceneOrder,sceneOwned,expectedSurveyX,expectedSurveyY}));
+        ||!inside(dock,survey)||!nativeAvailable('docksurvey',survey)||Math.abs(survey.w-expectedSurveyWidth)>1
+        ||Math.abs(survey.cx-expectedSurveyX)>1||Math.abs(survey.t-dock.t)>1||Math.abs(survey.h-(dock.h-48))>1
+        ||!surveyNode.classList.contains('dock-scene')||surveyNode.querySelector('.utility-face')!==null
+        ||!inside(survey,icon)||label?.vis)
+        bad.push('phone Survey is not the reachable sixth top-row scene button with Charts hidden: '
+          +JSON.stringify({scene,survey,charts,icon,label,dock,sceneOrder,sceneOwned,expectedSurveyX,expectedSurveyWidth}));
     }else{
       const expectedSceneTop=rail?.b+8;
       if(!sceneOwned||!fittedLeft(scene)||Math.abs(scene.t-expectedSceneTop)>1||!inside(scene,survey)||!inside(scene,charts)
@@ -6014,7 +6016,8 @@ try {
         bad.push('wide utility tray does not retain four reachable 44px controls at its right-bottom 52px pitch: '+JSON.stringify({dock,rows,actual}));
     }else{
       if(rail?.vis||rightRail?.vis)bad.push('wide rail remains visible beside the compact phone dock');
-      if(!dock||Math.abs(dock.cx-W/2)>1)bad.push('compact dock not bottom-center');
+      if(!dock?.vis||Math.abs(dock.cx-W/2)>1||Math.abs(dock.w-expectedDockWidth)>1)
+        bad.push('compact dock does not retain its centered responsive six-column envelope: '+JSON.stringify({dock,expectedDockWidth}));
     }
     return bad; })()`;
   const desktopGeometryBoundary = await evalIn(renderedChromeBoundary);
@@ -6893,7 +6896,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 81,
-    sha256: 'bcad7fd27792ef2160b8451cdb2d366a36c9184bcc579655af3cb41129edebd7',
+    sha256: '44fb08ca154a61074d3b7c7269cb7ca8ccf365450b019a20b3e77569469a2e70',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -8253,7 +8256,7 @@ try {
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/FAMILIAR CONTROLS ON EVERY SCREEN/.test(text)
-        &&/Phones keep five icon-only boards above five compact utility icons/.test(text)
+        &&/Phones keep six icon-only scene buttons above four compact utility icons/.test(text)
         &&/UTILITIES STAY TOGETHER/.test(text)
         &&/Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge/.test(text)
         &&/PRIME KEEPS YOUR PROGRESS/.test(text)
