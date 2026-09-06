@@ -52,6 +52,20 @@
       "rawSha256": "d532f2906f4231558426c7b3542ea6b2b93bd1dd06b0c9a22165e8da5c7344df",
       "bytes": 234,
       "sha256": "fd3977e82ea74af409142303d5a1b7e05c7cbc30a0300a0974229ff8780059a2"
+    },
+    {
+      "file": "cf-u2-close-contract-correction-20260906.log.gz",
+      "rawBytes": 5473,
+      "rawSha256": "49cb9cf293719e9edf8a716ec6b0f08fca3c6887753fb72254483459df32eaa4",
+      "bytes": 2008,
+      "sha256": "d7f2f4a3af8310ee3c6e2c2fd1e22ec936df0b11e825f4bc165066df022ba3a5"
+    },
+    {
+      "file": "cf-u2-close-contract-types-validate-20260906.log.gz",
+      "rawBytes": 1093,
+      "rawSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+      "bytes": 708,
+      "sha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736"
     }
   ]
 }
