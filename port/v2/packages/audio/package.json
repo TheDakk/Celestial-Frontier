@@ -1,5 +1,5 @@
 { "name": "@cf/audio", "private": true, "version": "0.0.0", "type": "module",
-  "description": "Shipped navigation/survey stings plus injected Arc 7 identity, taxonomy, event, mixer/lifecycle/lab, and empty-rights foundations. App migration, authored playback/content, and listening proof remain open.",
+  "description": "Synthesized stings and canonical creature voices with Arc 7 identity, taxonomy, mixer/lifecycle/lab owners; eight original opt-in pilot cues have authoritative rights and filesystem intake. Human listening and broader audio coverage remain open.",
   "exports": {
     ".": "./src/index.ts",
     "./internal/ecology": "./src/ecology.ts"

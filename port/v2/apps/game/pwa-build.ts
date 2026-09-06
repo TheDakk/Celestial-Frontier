@@ -46,6 +46,20 @@ export function sha256Hex(value: string | Uint8Array): string {
   return createHash('sha256').update(value).digest('hex');
 }
 
+/** Shipped installed-PWA pack admission only. This does not govern runtime
+ * retention, multiple installed builds, or Safari's storage eviction. */
+const SHIPPED_PACK_BYTE_LIMIT = 134_217_728;
+function assertShippedPackBytes(runtimeAssetBytes: readonly number[], serviceWorkerBytes: number): number {
+  if (!Array.isArray(runtimeAssetBytes)) throw new TypeError('Celestial Frontier PWA requires asset byte counts');
+  let total = 0;
+  for (const bytes of [...runtimeAssetBytes, serviceWorkerBytes]) {
+    if (!Number.isSafeInteger(bytes) || bytes < 0) throw new RangeError('Celestial Frontier PWA received an invalid byte count');
+    if (bytes > SHIPPED_PACK_BYTE_LIMIT - total) throw new RangeError('Celestial Frontier shipped PWA pack exceeds 128 MiB');
+    total += bytes;
+  }
+  return total;
+}
+
 function compareAssetPath(
   left: Readonly<Pick<PwaAssetDigestV1, 'path'>>,
   right: Readonly<Pick<PwaAssetDigestV1, 'path'>>,
@@ -537,13 +551,17 @@ export function celestialFrontierPwaPlugin(): Plugin {
            generateBundle. Hash the bytes that were actually written, then
            replace only the generated worker. This prevents a plausible
            pre-finalization digest from rejecting the real deployed bundle. */
-        const assets = runtimeFileNames.map((fileName) => Object.freeze({
-          path: assetPath(base, fileName),
-          sha256: sha256Hex(readFileSync(resolve(outDir, fileName))),
-        }));
+        const writtenAssetByteCounts: number[] = [];
+        const assets = runtimeFileNames.map((fileName) => {
+          const bytes = readFileSync(resolve(outDir, fileName));
+          writtenAssetByteCounts.push(bytes.byteLength);
+          return Object.freeze({ path: assetPath(base, fileName), sha256: sha256Hex(bytes) });
+        });
+        const finalWorkerSource = serviceWorkerSource(base, assets);
+        assertShippedPackBytes(writtenAssetByteCounts, textEncoder.encode(finalWorkerSource).byteLength);
         writeFileSync(
           resolve(outDir, CF_PWA_SERVICE_WORKER),
-          serviceWorkerSource(base, assets),
+          finalWorkerSource,
           'utf8',
         );
       },
@@ -552,6 +570,7 @@ export function celestialFrontierPwaPlugin(): Plugin {
 }
 
 export const __pwaBuildTestOnly = Object.freeze({
+  assertShippedPackBytes,
   assertSealedWorkerGraphs,
   assetPath,
   iconSvg,

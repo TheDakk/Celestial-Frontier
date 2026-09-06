@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [celestialFrontierPwaPlugin()],
   /* the workspace packages ship TypeScript source (exports -> ./src/index.ts);
      Vite transpiles them in-place — no per-package build step, same as vitest */
-  build: { target: 'es2022', sourcemap: true, rollupOptions: { input: { main: 'index.html', audit: 'audit.html', hybridMatrix: 'hybrid-matrix.html' } } },
+  build: { target: 'es2022', sourcemap: true, rollupOptions: { input: { main: 'index.html', audit: 'audit.html', hybridMatrix: 'hybrid-matrix.html', audiovisualPilot: 'audiovisual-pilot.html' } } },
   worker: { format: 'es' },
   /* content-registry.json lives in port/baseline-v1.8.9 (the fixture home,
      one truth) — outside this app root, so the DEV server needs the allow;

@@ -278,6 +278,25 @@ async function readClientPin(caches: MemoryCacheStorage, clientId: string): Prom
 }
 
 describe('Celestial Frontier exact-build PWA', () => {
+  it('admits the exact 128 MiB shipped boundary including the final UTF-8 service worker', () => {
+    const { assertShippedPackBytes } = __pwaBuildTestOnly;
+    const worker = __pwaBuildTestOnly.serviceWorkerSource('/', assetsFor({ '/index.html': 'index' }));
+    const workerBytes = new TextEncoder().encode(worker).byteLength;
+    const runtimeBytes = 134_217_728 - workerBytes;
+    expect(assertShippedPackBytes([runtimeBytes - 17, 17, 0], workerBytes)).toBe(134_217_728);
+    expect(assertShippedPackBytes([runtimeBytes - 1], workerBytes)).toBe(134_217_727);
+    expect(() => assertShippedPackBytes([runtimeBytes + 1], workerBytes)).toThrow(/exceeds 128 MiB/u);
+    expect(() => assertShippedPackBytes([runtimeBytes], workerBytes + 1)).toThrow(/exceeds 128 MiB/u);
+    expect(() => assertShippedPackBytes([runtimeBytes, 1], workerBytes)).toThrow(/exceeds 128 MiB/u);
+  });
+
+  it.each([-1, 0.5, NaN, Infinity, -Infinity, Number.MAX_SAFE_INTEGER + 1, '1', undefined, null])(
+    'refuses invalid runtime and service-worker byte counts: %j', (invalid) => {
+      const { assertShippedPackBytes } = __pwaBuildTestOnly;
+      expect(() => assertShippedPackBytes([invalid as number], 100)).toThrow(/invalid byte count/u);
+      expect(() => assertShippedPackBytes([100], invalid as number)).toThrow(/invalid byte count/u);
+    });
+
   it('seals both production Worker graphs and reserves ambiguous platform-loader names', () => {
     const falsePositiveControls = [
       'const cssHex = /^#[0-9a-f]{6}$/u;',

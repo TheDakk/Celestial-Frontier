@@ -7,10 +7,12 @@ import type {
   AudioNodeLike,
   AudioParamLike,
   AudioScheduledSourceLike,
+  AudioVoiceRequest,
   CombatCuePlanV1,
   CombatCueV1,
 } from '@cf/audio';
 import {
+  AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
   combatCuePlan,
   projectCombatCueParticipantsV1,
 } from '@cf/audio';
@@ -1383,5 +1385,203 @@ describe('Arc 8 committed conquest-combat playback on the shared audio owner', (
       activeCombatVoiceIds: [],
       runtime: { state: 'disposed', voices: { active: 0 } },
     });
+  });
+});
+
+
+describe('explicit decorative audiovisual pilot', () => {
+  function request(key = 'cf-pilot-music', patch: Partial<AudioVoiceRequest> = {}): AudioVoiceRequest {
+    const base: AudioVoiceRequest = {
+      key, category: 'music', priority: -100, cooldownGroup: key, cooldownMs: 0,
+      concurrencyGroup: key, maxConcurrent: 1, nodeCount: 1, maxDurationMs: 1_000,
+      mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1, meaning: Object.freeze({ kind: 'decorative' }),
+      create: (context, reservation) => {
+        const source = (context as FakeContext).createBufferSource();
+        return Object.freeze({ source, sources: [source], output: source, nodes: [source], reservation });
+      },
+    };
+    return Object.freeze({ ...base, ...patch });
+  }
+
+  it('shares one context, bounds four categories, and releases completed or cancelled voices', async () => {
+    const h = harness({ creatureVoicesOn: false });
+    await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+    h.owner.syncSettings();
+    expect(h.contexts).toHaveLength(0);
+    expect(h.owner.armNativePilotGesture()).toBe(true);
+    for (const category of ['music', 'ambience', 'ui', 'combat-gameplay'] as const) {
+      await expect(h.owner.playPilotVoice(request(`cf-pilot-${category}`, { category })))
+        .resolves.toMatchObject({ kind: 'started' });
+    }
+    expect(h.contexts).toHaveLength(1);
+    expect(h.owner.diagnostics()).toMatchObject({ armed: 0, claimedEvents: 0, lastEventKey: null,
+      counterpart: { status: 'none' }, runtime: { voices: { active: 4, started: 4 } } });
+    expect(h.contexts[0]!.bufferSources.every((source) => routesTo(source, h.contexts[0]!.destination))).toBe(true);
+    await expect(h.owner.playPilotVoice(request('cf-pilot-fifth'))).resolves.toEqual({ kind: 'silent', reason: 'pilot-voice-limit' });
+    h.contexts[0]!.bufferSources[0]!.onended!();
+    await expect(h.owner.playPilotVoice(request('cf-pilot-after-completion'))).resolves.toMatchObject({ kind: 'started' });
+    h.owner.cancelPilotPlayback();
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(0);
+    expect(h.pendingDeadlines()).toBe(0);
+    expect(h.contexts[0]!.bufferSources.every((source) => source.disconnects > 0)).toBe(true);
+    await h.owner.dispose();
+  });
+
+  it.each([
+    ['game key', { key: 'arc7:game-cue' }], ['game cooldown', { cooldownGroup: 'arc7:cooldown' }],
+    ['game concurrency', { concurrencyGroup: 'arc7:group' }], ['creature bus', { category: 'creature' }],
+    ['meaningful event', { meaning: { kind: 'meaningful', counterpart: counterpart('fake-reward') } }],
+    ['unbounded lifetime', { maxDurationMs: undefined }], ['nonfinite lifetime', { maxDurationMs: Infinity }],
+    ['fractional lifetime', { maxDurationMs: 1.5 }], ['zero lifetime', { maxDurationMs: 0 }],
+    ['overlong preview', { maxDurationMs: 120_001 }],
+  ] as const)('rejects %s before creating any voice', async (_label, patch) => {
+    const h = harness();
+    expect(h.owner.armNativePilotGesture()).toBe(true);
+    await expect(h.owner.playPilotVoice(request('cf-pilot-invalid', patch as Partial<AudioVoiceRequest>)))
+      .resolves.toEqual({ kind: 'silent', reason: 'pilot-request-invalid' });
+    expect(h.contexts[0]!.bufferSources).toHaveLength(0);
+    expect(h.owner.diagnostics().runtime.voices.started).toBe(0);
+    await expect(h.owner.playPilotVoice(request())).resolves.toMatchObject({ kind: 'started' });
+    await h.owner.dispose();
+  });
+
+  it.each([
+    ['Sound Off', { soundOn: false }], ['hidden policy', { visible: false }],
+    ['unanswerable policy', { answerable: false }], ['absent route', { routeKey: null }],
+  ] as const)('does not create a context under %s', async (_label, policy) => {
+    const h = harness(policy);
+    expect(h.owner.armNativePilotGesture()).toBe(false);
+    await expect(h.owner.playPilotVoice(request())).resolves.toMatchObject({ kind: 'silent' });
+    expect(h.contexts).toHaveLength(0);
+  });
+
+  it.each(['cancel', 'hide', 'answerability', 'mute', 'route', 'dispose', 'gameplay gesture'] as const)(
+    'cancels voices and authorization on %s without automatic replay', async (stop) => {
+      const h = harness(); h.owner.armNativePilotGesture();
+      await h.owner.playPilotVoice(request());
+      await h.owner.playPilotVoice(request('cf-pilot-ambience', { category: 'ambience' }));
+      if (stop === 'cancel') h.owner.cancelPilotPlayback();
+      if (stop === 'hide') { h.owner.setHidden(true); h.owner.setHidden(false); }
+      if (stop === 'answerability') { h.owner.setAnswerable(false); h.owner.setAnswerable(true); }
+      if (stop === 'mute') { h.policy.soundOn = false; h.owner.syncSettings(); h.policy.soundOn = true; h.owner.syncSettings(); }
+      if (stop === 'route') { h.owner.syncRoute('cf-pilot-other-route'); h.owner.syncRoute(h.worldKey); }
+      if (stop === 'dispose') await h.owner.dispose();
+      if (stop === 'gameplay gesture') h.owner.armNativeTameGesture();
+      expect(h.owner.diagnostics().runtime.voices).toMatchObject({ active: 0, started: 2 });
+      expect(h.contexts[0]!.bufferSources.every((source) => source.stops > 0 && source.disconnects > 0)).toBe(true);
+      expect(h.pendingDeadlines()).toBe(0);
+      await expect(h.owner.playPilotVoice(request('cf-pilot-no-replay'))).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+      await h.owner.dispose();
+    });
+
+  it('cancels on changed policy even without a separate synchronization call', async () => {
+    const h = harness(); h.owner.armNativePilotGesture();
+    await h.owner.playPilotVoice(request());
+    h.policy.routeKey = 'cf-pilot-another-route';
+    await expect(h.owner.playPilotVoice(request('cf-pilot-stale-route'))).resolves.toEqual({ kind: 'silent', reason: 'pilot-policy-changed' });
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(0);
+    h.policy.routeKey = h.worldKey;
+    await expect(h.owner.playPilotVoice(request())).resolves.toEqual({ kind: 'silent', reason: 'pilot-unarmed' });
+    await h.owner.dispose();
+  });
+
+  it('preserves the live durable Tame voice and receipt when only pilot playback is cancelled', async () => {
+    const h = harness(); h.owner.armNativeTameGesture();
+    const claim = h.owner.claimCommittedTameGreeting(h.outcome, h.state)!;
+    await h.owner.playClaimedTameGreeting(claim, counterpart(claim.eventKey));
+    const before = h.owner.diagnostics();
+    const scheduledStops = h.contexts[0]!.oscillators.map((source) => source.stops);
+    h.owner.armNativePilotGesture(); await h.owner.playPilotVoice(request());
+    expect(h.contexts).toHaveLength(1);
+    h.owner.cancelPilotPlayback(); const after = h.owner.diagnostics();
+    expect(Object.keys(after)).toEqual(Object.keys(before));
+    expect(after.activeVoiceId).toBe(before.activeVoiceId);
+    expect(after.claimedEvents).toBe(before.claimedEvents);
+    expect(after.counterpart).toEqual(before.counterpart);
+    expect(after.lastEventKey).toBe(before.lastEventKey);
+    expect(after.runtime.voices).toMatchObject({ active: 1, started: 2 });
+    expect(h.contexts[0]!.oscillators.map((source) => source.stops)).toEqual(scheduledStops);
+    await expect(h.owner.playClaimedTameGreeting(claim, counterpart(claim.eventKey)))
+      .resolves.toEqual({ kind: 'silent', reason: 'claim-invalid' });
+    await h.owner.dispose();
+  });
+
+  it('retains an exact committed combat session and its cue admission across pilot cancellation', async () => {
+    const combat = combatSessionFixture();
+    const h = harness({ routeKey: combat.routeKey });
+    h.owner.armNativeCombatGesture();
+    const claim = h.owner.claimCommittedCombatSession(combat.outcome, combat.cuePlan)!;
+    const first = combat.damageCues[0]!;
+    await expect(h.owner.playClaimedCombatCue(claim, first, combatCounterpart(first)))
+      .resolves.toMatchObject({ kind: 'started' });
+    const before = h.owner.diagnostics();
+    h.owner.armNativePilotGesture();
+    await h.owner.playPilotVoice(request());
+    h.owner.cancelPilotPlayback();
+    const after = h.owner.diagnostics();
+    expect(h.contexts).toHaveLength(1);
+    expect(after.activeCombatVoiceIds).toEqual(before.activeCombatVoiceIds);
+    expect(after.claimedEvents).toBe(before.claimedEvents);
+    expect(after.counterpart).toEqual(before.counterpart);
+    expect(after.runtime.voices.active).toBe(1);
+    const next = combat.damageCues[1]!;
+    h.advance(1_000);
+    await expect(h.owner.playClaimedCombatCue(claim, next, combatCounterpart(next)))
+      .resolves.toMatchObject({ kind: 'started' });
+    await expect(h.owner.playClaimedCombatCue(claim, first, combatCounterpart(first)))
+      .resolves.toMatchObject({ kind: 'silent' });
+    await h.owner.dispose();
+  });
+
+  it.each(['cancel', 'route', 'hide', 'mute', 'answerability', 'replacement', 'dispose'] as const)(
+    'rejects a late resume after %s', async (change) => {
+      let release!: () => void;
+      const resume = new Promise<void>((resolve) => { release = resolve; });
+      const context = new FakeContext(); context.state = 'suspended';
+      context.resume = async () => { await resume; context.state = 'running'; };
+      const policy: MutablePolicy = { soundOn: true, creatureVoicesOn: false, visible: true,
+        answerable: true, masterGain: 0.5, routeKey: 'cf-pilot-fixture-route' };
+      let creates = 0;
+      const owner = createTameGreetingAudioOwner({
+        createContext: () => { creates++; return context; }, readPolicy: () => policy,
+        nowMs: () => 100, scheduleVoiceDeadline: () => () => {}, verifyCounterpart: () => false,
+      });
+      expect(owner.armNativePilotGesture()).toBe(true);
+      const pending = owner.playPilotVoice(request());
+      if (change === 'cancel') owner.cancelPilotPlayback();
+      if (change === 'route') owner.syncRoute('cf-pilot-changed-route');
+      if (change === 'hide') owner.setHidden(true);
+      if (change === 'mute') { policy.soundOn = false; owner.syncSettings(); }
+      if (change === 'answerability') owner.setAnswerable(false);
+      if (change === 'replacement') expect(owner.armNativePilotGesture()).toBe(true);
+      const disposing = change === 'dispose' ? owner.dispose() : null;
+      release();
+      await expect(pending).resolves.toEqual({ kind: 'silent', reason: 'pilot-policy-changed' });
+      if (disposing) await disposing;
+      expect(context.bufferSources).toHaveLength(0);
+      expect(creates).toBe(1);
+      expect(owner.diagnostics().runtime.voices.started).toBe(0);
+      if (change === 'replacement') {
+        await expect(owner.playPilotVoice(request('cf-pilot-new-generation'))).resolves.toMatchObject({ kind: 'started' });
+      }
+      await owner.dispose();
+    });
+
+  it('snapshots request authority before resume and stops factory-time cancellation', async () => {
+    const h = harness(); h.owner.armNativePilotGesture();
+    const mutable = { ...request() };
+    const pending = h.owner.playPilotVoice(mutable);
+    mutable.key = 'game-event-after-await'; mutable.category = 'creature';
+    mutable.meaning = { kind: 'meaningful', counterpart: counterpart('fake-reward') };
+    await expect(pending).resolves.toMatchObject({ kind: 'started' });
+    expect(h.owner.diagnostics().runtime.creatureEmitters.active).toBe(0);
+    h.owner.cancelPilotPlayback(); h.owner.armNativePilotGesture();
+    const validFactory = request().create;
+    await expect(h.owner.playPilotVoice(request('cf-pilot-reentrant-close', {
+      create: (context, reservation) => { h.owner.cancelPilotPlayback(); return validFactory(context, reservation); },
+    }))).resolves.toEqual({ kind: 'silent', reason: 'pilot-policy-changed' });
+    expect(h.owner.diagnostics().runtime.voices.active).toBe(0);
+    expect(h.pendingDeadlines()).toBe(0);
+    await h.owner.dispose();
   });
 });

@@ -217,6 +217,7 @@ import type {
   GuideCategoryId, GuideCategoryView, GuideTopicId, GuideTopicView,
 } from './guide-content.js';
 import type { ReleaseNoteView, V2ShippedRelease } from './release-content.js';
+import type { AudiovisualPilot, PilotSceneSnapshot } from './audiovisual-pilot.js';
 import {
   V2_CURRENT_RELEASE_VERSION,
   V2_DEVELOPMENT_VERSION,
@@ -1496,7 +1497,10 @@ const showF4 = async (): Promise<void> => {
 addEventListener('pagehide', (event) => {
   travelPresentationOwner.cancel();
   tameGreetingAudioOwner?.setHidden(true);
-  if (!event.persisted) void tameGreetingAudioOwner?.dispose();
+  if (!event.persisted) {
+    audiovisualPilotClosed = true; audiovisualPilot?.dispose(); audiovisualPilot = null;
+    void tameGreetingAudioOwner?.dispose();
+  }
   stopF4Heartbeat();
   void checkpointAndHideF4();
   if (event.persisted) {
@@ -2042,7 +2046,27 @@ function abortRenderBeforeReceiptForSmoke(): boolean {
   smokeAbortNextRenderBeforeReceipt = false;
   return true;
 }
+let audiovisualPilot: AudiovisualPilot | null = null;
+let audiovisualPilotClosed = false;
+let audiovisualPilotBiomeKey: string | null = null;
+let audiovisualPilotVistaReady = false;
+function pilotSceneSnapshot(): PilotSceneSnapshot {
+  return { mode: nav.mode, routeKey: currentTameGreetingRouteKey(),
+    biomeKey: audiovisualPilotBiomeKey, vistaReady: audiovisualPilotVistaReady, ship: currentShipVisualState(),
+    motion: motionOK(), effects: save.fxOn };
+}
+function syncAudiovisualPilot(): void {
+  audiovisualPilot?.sync(pilotSceneSnapshot());
+}
+function startAudiovisualPilot(): void {
+  if (new URLSearchParams(location.search).get('avpilot') !== '1' || audiovisualPilotClosed) return;
+  void import('./audiovisual-pilot.js').then(({ mountAudiovisualPilot }) => {
+    if (audiovisualPilotClosed || !tameGreetingAudioOwner) return;
+    audiovisualPilot = mountAudiovisualPilot({ document, initial: pilotSceneSnapshot(), audio: tameGreetingAudioOwner });
+  }).catch(() => { /* Candidate media failure cannot block ordinary play. */ });
+}
 function recordRenderedScene(state: NavState): void {
+  audiovisualPilotBiomeKey = null; audiovisualPilotVistaReady = false;
   renderedSceneReceipt = Object.freeze({
     serial: renderedSceneReceipt.serial + 1,
     mode: state.mode,
@@ -2051,6 +2075,7 @@ function recordRenderedScene(state: NavState): void {
     starKey: state.mode === 'system' || state.mode === 'surface' ? getProvenStarKey(state.star) : null,
     worldKey: state.mode === 'surface' ? getProvenPlanetKey(state.planet) : null,
   });
+  syncAudiovisualPilot();
 }
 const cam = { x: 0, y: 0, z: 1 };
 const camT = { x: 0, y: 0, z: 1 };   /* eased target — the goTo feel */
@@ -5373,6 +5398,7 @@ function refreshEngineeringPanelState(): void {
 }
 
 function updateChips(): void {
+  syncAudiovisualPilot();
   const stage = ascStage();
   const objective = currentV2Objective(save.ascCh, save.ascProg, stage);
   const projection = projectV2Charter(save.ascCh, save.ascProg, stage);
@@ -5777,6 +5803,7 @@ function mountSurfaceVistaCanvas(canvas: HTMLCanvasElement): void {
   const worldIndex = app.stage.children.indexOf(world);
   app.stage.addChildAt(sprite, worldIndex < 0 ? app.stage.children.length : worldIndex);
   surfaceVistaSprite = sprite;
+  audiovisualPilotVistaReady = true; syncAudiovisualPilot();
 }
 
 function requestSurfaceVista(
@@ -5804,6 +5831,7 @@ function requestSurfaceVista(
     noteSurfaceVistaFault(error, 'biome vista request construction failed');
     return;
   }
+  audiovisualPilotBiomeKey = request.biomeKey;
   const cacheKey = `vista-v1|${request.environmentFingerprint}|${roster.fullRosterFingerprint}|${request.scene}|${request.biomeKey}`;
   const cachedOutcome = mountCachedBiomeVistaV1(surfaceVistaCacheOwner, cacheKey);
   if (cachedOutcome !== 'miss') {
@@ -17463,6 +17491,9 @@ async function loadSave(): Promise<void> {
     compendiumRenameController.dispose();
     compendiumScoutController.dispose();
     travelPresentationOwner.dispose();
+    audiovisualPilotClosed = true;
+    audiovisualPilot?.dispose();
+    audiovisualPilot = null;
     engineeringPanelReleased = true;
     engineeringPanelController.dispose();
     captureCardController.dispose();
@@ -18443,6 +18474,7 @@ async function loadSave(): Promise<void> {
            heavy painter Worker cannot start until complete app wiring, one
            animation frame, and this serviced task boundary. */
         speciesArtLoader.activate();
+        startAudiovisualPilot();
         try {
           const binding = __CF_EVIDENCE_BUILD__
             ? (window as unknown as Record<string, unknown>).__cfSliceReadyWitness : undefined;
