@@ -30,17 +30,29 @@ The bounded native diagnosis compares the original 1px horizontal padding with z
 restores the original exact styles and reproduces the wrapped label and 93.6875px dock. Chip widths, 64px
 pitch, vertical padding and text sizes are unchanged.
 
-Desktop/tablet begins at701px. Nick chose the FINAL LAYOUT bottom-right utility cluster;
-Prime remains centered above the scene and left/right boards use rails. Utilities use
-44px pitch (2px above the legacy diagram); rails preserve the earned8px empty root-owned gap
-plus44px targets, yielding52px pitch (10px above the old42px diagram). Both differences are
-listed for review; the real gap dismissal/retention controls remain unchanged. Duplicate hidden Inventory/Records rail IDs retain compatibility; their
-visible shelf/utility owners provide access. Their explicit rail-owner selectors outrank
-the shared button display rule. Slice observes both copies hidden, forces each visible and
-requires rejection, then restores the exact styles and hidden state. Records collision
-proofs retain the trusted native dock press rather than selecting an unintended rail copy.
-The breadcrumb trail is a compact v2 lane;
-v1's final source hides it, so it is not claimed to match a visible golden trail.
+All devices retain one navigation layout: the same five boards and four utilities in a
+centered bottom launcher. Nick's latest visual feedback supersedes the initial side rails
+and bottom-right utility-only arrangement. Tablet701–1099 uses72px pitch,66px boards,
+48px targets/40px utility faces and12px tray padding (672px wide,72px default height).
+Desktop>=1100 uses80px pitch,74px boards,56px targets/44px utility faces and16px padding
+(752px wide,88px default height). Sizes cap at that desktop scale; larger windows benefit
+from more scene/panel space. Fonts grow modestly to9.5/10.5px board labels, with existing
+larger-text choices still authoritative. Prime's icon/label/count remain inside the launcher.
+
+The visible wide tray owns its real inter-button gaps as a panel boundary. Hidden compatibility
+rail roots retain IDs/wiring but contribute no painted controls or tab stops. Native input
+proofs observe the actual closest button through icon/label children. The previous rail-gap
+control labels remain historical aliases for measured launcher-gap ownership, without
+inventing an offscreen rail as a positive control. Narrow landscape<=900 uses the phone's
+compact320px two-row geometry; open panels retain the existing right safe-column placement.
+
+Wider-screen hint bottom is max(96px, measured dock height+28px); caption bottom is
+max(136px, measured dock height+28px+measured hint height+8px). This preserves separate lanes
+when text grows. Existing bottom-anchored utility panels/toasts above900px align to the
+launcher's right edge and stay12px above it; panel interiors and Training stack are unchanged.
+The breadcrumb trail remains a compact v2 lane; v1's final source hides it, so it is not
+claimed as a visible golden match. The same visual-system requirement governs later panel
+work, which still waits at the U1 visual approval stop.
 
 Notifications shows saved history plus clearly labelled session-only notices while save
 writes are held. Opening the panel does not mark messages read; explicit Mark read persists

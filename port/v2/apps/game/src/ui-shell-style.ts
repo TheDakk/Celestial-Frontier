@@ -41,13 +41,9 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
 #sceneactions{position:fixed;left:calc(var(--safe-left) + 18px);top:calc(var(--topbar-h) + 172px);z-index:var(--cf-layer-shell);display:flex;gap:8px;max-width:calc(100vw - var(--safe-left) - var(--safe-right) - 36px)}
 #sceneactions button{display:flex;align-items:center;gap:6px;min-height:var(--cf-touch-target);min-width:var(--cf-touch-target);padding:6px 12px;border:1px solid #2a3c5e;border-radius:var(--cf-radius-pill);background:rgba(10,16,30,.94);color:var(--dim);font:11px var(--ui);cursor:pointer;touch-action:manipulation}
 #sceneactions button[aria-pressed="true"],#sceneactions button.on{border-color:var(--cf-color-accent-gold);color:#ffe3a8}
-/* The 32px rail face starts at shelf + 8px. Its 44px target extends 6px
-   above/below; 44px centers leave no overlapping interactive rectangles. */
-#raillft,#railrgt{position:fixed;top:calc(var(--topbar-h) + 2px);z-index:var(--cf-layer-shell);display:none;flex-direction:column;gap:8px}
-#raillft{left:calc(var(--safe-left) + 18px);align-items:flex-start}#railrgt{right:calc(var(--safe-right) + 18px);align-items:flex-end}
-#raillft button,#railrgt button{position:relative;display:flex;align-items:center;gap:8px;min-height:var(--cf-touch-target);padding:8px 13px;border:0;border-radius:var(--cf-radius-pill);background:none;color:var(--ink);cursor:pointer;font:11px var(--ui);isolation:isolate;box-sizing:border-box}
-#raillft button::before,#railrgt button::before{content:'';position:absolute;inset:6px 0;z-index:-1;border:1px solid #2a3c5e;border-radius:var(--cf-radius-pill);background:rgba(10,16,30,.94)}
-#raillft button:is(.on,.sel)::before,#railrgt button:is(.on,.sel)::before{background:linear-gradient(135deg,rgba(255,217,106,.22),rgba(255,190,80,.12)),rgba(10,16,30,.94);border-color:rgba(255,217,106,.8)}
+/* Compatibility rails keep their ids/wiring but no longer create a second
+   navigation system at larger breakpoints. The launcher is the visible owner. */
+#raillft,#railrgt{display:none}
 @media(max-width:${UI_PRESENTATION_PHONE_MAX}px){
   #topbar{grid-template-columns:minmax(0,1fr) minmax(56px,.85fr) 44px;padding-right:calc(var(--safe-right) + 10px);padding-left:calc(var(--safe-left) + 10px)}
   #playerchip{padding:4px 9px;font-size:10px;letter-spacing:.06em}
@@ -73,16 +69,23 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   #dockinventory{grid-column:1;max-width:min(28vw,340px)}
   #searchbox{grid-column:3;justify-self:end;width:min(300px,calc(33vw - 62px))}
   #shelfnotifications{grid-column:4}
-  #raillft,#railrgt{display:flex}
-  /* 36px utility faces keep the legacy 16px visible edge. The 44px hitboxes
-     use 44px centers, the disclosed 2px exception to the old 42px rhythm. */
-  #dock{left:auto;right:calc(var(--safe-right) + 12px);bottom:calc(var(--safe-bottom) + 12px);transform:none;display:flex;gap:0;width:176px;max-width:none}
-  #dock .dock-board{display:none}
-  #dock #primechip{display:flex;position:fixed;top:calc(var(--safe-top) + 10px);left:50%;transform:translateX(-50%);width:max-content;min-width:44px;max-width:30vw;min-height:44px;padding:5px 16px;flex-direction:row;gap:5px;font:600 11px var(--ui);color:#ffd9a0}
-  #dock #primechip .lbl,#dock #primechip .prime-count{font-size:11px;white-space:nowrap;line-height:1.2}
-  /* Compatibility ids retain their native wiring. The visible shelf Inventory
-     and utility Records owners replace these duplicates without extra tab stops. */
-  #railrgt #railinventory,#railrgt #railrecords{display:none}
+  #dock{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 12px);display:grid;grid-template-columns:repeat(9,var(--cf-launcher-pitch));grid-template-rows:minmax(var(--cf-launcher-target),auto);justify-items:center;align-items:center;gap:0;width:var(--cf-launcher-width);max-width:none;padding:var(--cf-launcher-padding);border:0;border-radius:20px;background:rgba(10,16,30,.78);box-shadow:0 10px 30px #0006,inset 0 0 0 1px rgba(126,160,210,.22);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);pointer-events:auto}
+  #dock .dock-board{display:flex;align-self:stretch;width:calc(var(--cf-launcher-pitch) - 6px);min-width:calc(var(--cf-launcher-pitch) - 6px);min-height:var(--cf-launcher-target);padding-inline:0}
+  #dock .dock-board .ico{font-size:var(--cf-launcher-icon);line-height:var(--cf-launcher-icon-line)}
+  #dock .dock-board .lbl{font-size:var(--cf-launcher-label)}
+  #dock .prime-count{font-size:var(--cf-launcher-count)}
+  #dock .dock-utility{width:var(--cf-launcher-target);height:var(--cf-launcher-target);min-width:var(--cf-launcher-target);min-height:var(--cf-launcher-target)}
+  #dock .utility-face{width:var(--cf-launcher-face);height:var(--cf-launcher-face)}
+  #dock .dock-utility .ico{font-size:var(--cf-launcher-icon)}
+  #dock #primechip{display:grid;position:static;transform:none;max-width:none;grid-template-columns:auto auto;grid-template-rows:var(--cf-launcher-icon-line) auto;align-content:center;justify-content:center;column-gap:2px;row-gap:1px}
+  #primechip>.ico{grid-column:1/-1;grid-row:1}#primechip>.lbl{grid-column:1;grid-row:2}#primechip>.prime-count{grid-column:2;grid-row:2}
+  #primechip .prime-full-label{display:none}
+  #hintpill{bottom:calc(var(--safe-bottom) + max(96px,var(--dock-h) + 28px))}
+  #ctxbar{bottom:calc(var(--safe-bottom) + max(136px,var(--dock-h) + 28px + var(--hint-h) + 8px))}
+  #sceneactions{top:calc(var(--topbar-h) + 40px)}
+  body.fs-lg #dock .dock-board .lbl{font-size:max(11px,var(--cf-launcher-label))!important}body.fs-xl #dock .dock-board .lbl{font-size:max(12.5px,var(--cf-launcher-label))!important}
+  body.fs-lg #dock .prime-count{font-size:10px!important}body.fs-xl #dock .prime-count{font-size:11px!important}
+
 }
 /* Native short-landscape panels keep the full-height left workspace. The
    interactive shelf and every board opener occupy the right safe column;
@@ -98,12 +101,23 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   body.panel-open #dock{left:auto;right:calc(var(--safe-right) + 12px);transform:none}
   body.panel-open #sceneactions{left:calc((100vw + var(--safe-left) - var(--safe-right) + 12px) / 2);right:calc(var(--safe-right) + 12px);top:calc(var(--safe-top) + var(--topbar-h) + 12px);justify-content:center}
 }
+/* Narrow landscape keeps the phone arrangement. When a panel opens, the
+   existing rule above places that compact launcher in its right safe column. */
 @media(min-width:${UI_PRESENTATION_DESKTOP_MIN}px) and (max-width:900px) and (orientation:landscape){
-  body.panel-open #raillft,body.panel-open #railrgt{top:calc(var(--safe-top) + var(--topbar-h) + 12px);width:calc((100vw - var(--safe-left) - var(--safe-right) - 60px) / 4);align-items:stretch}
-  body.panel-open #raillft{left:calc((100vw + var(--safe-left) - var(--safe-right) + 12px) / 2)}
-  body.panel-open #railrgt{right:calc(var(--safe-right) + 12px)}
-  body.panel-open #dock #primechip{top:calc(var(--safe-top) + var(--topbar-h) + 108px);left:auto;right:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 4 + var(--safe-right) + 12px);transform:translateX(50%);max-width:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2)}
-  body.panel-open #sceneactions{top:calc(var(--safe-top) + var(--topbar-h) + 160px)}
+  #dock{grid-template-columns:repeat(10,var(--cf-dock-half-pitch));grid-template-rows:minmax(44px,auto) 44px;row-gap:var(--cf-dock-row-gap);width:320px;padding:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;pointer-events:none}
+  #dock .dock-board{grid-row:1;width:58px;min-width:58px;min-height:44px}
+  #dockcharters{grid-column:1/3}#dockcodex{grid-column:3/5}#primechip{grid-column:5/7}#dockshipyard{grid-column:7/9}#dockatlas{grid-column:9/11}
+  #dock .dock-utility{grid-row:2;width:44px;height:44px;min-width:44px;min-height:44px}
+  #dockrecords{grid-column:2/4}#docknotifications{grid-column:4/6}#dockguide{grid-column:6/8}#docksets{grid-column:8/10}
+  #dock .utility-face{width:36px;height:36px}
+  #dock .dock-board .ico{font-size:14px;line-height:16px}#dock .dock-utility .ico{font-size:14px}
+  #dock .dock-board .lbl{font-size:8.5px}#dock .prime-count{font-size:8px}
+  #dock #primechip{grid-template-rows:16px auto}
+  body.fs-lg #dock .dock-board .lbl{font-size:10px!important}body.fs-xl #dock .dock-board .lbl{font-size:11.5px!important}
+  body.fs-lg #dock .prime-count{font-size:9px!important}body.fs-xl #dock .prime-count{font-size:10px!important}
+}
+@media(min-width:901px){
+  #setpanel,#recpanel,#shipyardpanel,#inventorypanel,#combatpanel,#toast{right:calc((100vw - var(--cf-launcher-width)) / 2);bottom:calc(var(--safe-bottom) + var(--dock-h) + 24px)}
 }
 @media(max-width:${UI_PRESENTATION_PHONE_MAX}px),(pointer:coarse){#searchbox,body.fs-lg #searchbox{font-size:16px!important}body.fs-xl #searchbox{font-size:17px!important}}
 @media(prefers-reduced-motion:reduce){#dock *,#topbar *,#sceneactions *{transition:none!important;animation:none!important}}

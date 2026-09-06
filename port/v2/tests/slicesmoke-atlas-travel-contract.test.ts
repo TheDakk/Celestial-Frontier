@@ -186,11 +186,11 @@ describe('Slice Atlas native Travel contract', () => {
     expect(owner).not.toContain("'#railrecords,#dockrecords'");
   });
 
-  it('observes hidden duplicate rail copies and rejects each painted copy before exact restoration', () => {
+  it('observes both hidden legacy rail roots and rejects either painted root before exact restoration', () => {
     const assess = executableDeclaration<(rows: unknown) => boolean>(
       'collisionRailCopiesHidden', '  const collisionRailCopiesExpression =');
-    const baseline = ['railinventory', 'railrecords'].map((id) => ({ id, exists: true,
-      parentId: 'railrgt', display: 'none', rectCount: 0, width: 0, height: 0, painted: false }));
+    const baseline = ['raillft', 'railrgt'].map((id) => ({ id, exists: true,
+      parentTag: 'BODY', display: 'none', rectCount: 0, width: 0, height: 0, painted: false }));
     expect(assess(baseline)).toBe(true);
     expect(assess([])).toBe(false);
     expect(assess(null)).toBe(false);
@@ -200,7 +200,7 @@ describe('Slice Atlas native Travel contract', () => {
       exposed[index] = { ...exposed[index]!, display: 'flex', rectCount: 1, width: 92, height: 44, painted: true };
       expect(assess(exposed)).toBe(false);
       expect(assess(baseline)).toBe(true);
-      for (const [key, value] of [['exists', false], ['parentId', 'dock'], ['width', 44],
+      for (const [key, value] of [['exists', false], ['parentTag', 'NAV'], ['width', 44],
         ['rectCount', 1], ['painted', true]] as const) {
         const mutant = structuredClone(baseline);
         Object.assign(mutant[index]!, { [key]: value });
@@ -215,7 +215,7 @@ describe('Slice Atlas native Travel contract', () => {
     const control = section(sliceSource, '  const collisionRailBaseline =',
       '  const collisionRecordsPresses = [];');
     expect(control).toContain('if (!collisionRailCopiesHidden(collisionRailBaseline))');
-    expect(control).toContain("for (const id of ['railinventory', 'railrecords'])");
+    expect(control).toContain("for (const id of ['raillft', 'railrgt'])");
     expect(control).toContain("element.style.setProperty('display','flex','important')");
     expect(control).toContain("finally{element.setAttribute('style','');element.removeAttribute('style');if(priorStyle.present)element.setAttribute('style',priorStyle.value);}");
     expect(control).toContain('styleRestored:restoredStyle.present===priorStyle.present&&restoredStyle.value===priorStyle.value');
@@ -224,7 +224,7 @@ describe('Slice Atlas native Travel contract', () => {
     expect(control).toContain('JSON.stringify(control.restored) !== JSON.stringify(collisionRailBaseline)');
   });
 
-  it('restores the complete absent, empty or nonempty rail style carrier after showing one copy', () => {
+  it('restores the complete absent, empty or nonempty rail-root style carrier after exposing it', () => {
     const require = createRequire(import.meta.url);
     const { JSDOM } = require('jsdom') as {
       JSDOM: new (html: string, options: Record<string, unknown>) => {
@@ -238,16 +238,16 @@ describe('Slice Atlas native Travel contract', () => {
       '    const control = await evalF4Control(collisionTarget.session, `(()=>{',
       '    const shown = control.shown.find');
     for (const value of [null, '', 'color: red; --u1-probe: 7; ', 'display: none !important;']) {
-      const dom = new JSDOM('<style>#railrgt button{display:none}</style><nav id="railrgt"><button id="railinventory">Inventory</button><button id="railrecords">Records</button></nav>',
+      const dom = new JSDOM('<style>#raillft,#railrgt{display:none}</style><nav id="raillft"><button>Compendium</button></nav><nav id="railrgt"><button>Atlas</button></nav>',
         { runScripts: 'outside-only' });
-      const element = dom.window.document.getElementById('railinventory')!;
+      const element = dom.window.document.getElementById('raillft')!;
       if (value !== null) element.setAttribute('style', value);
       const prior = { present: value !== null, value };
       // The browser control is synchronous inside Runtime.evaluate; replacing
       // its await wrapper here lets this test exercise that exact DOM body.
       const body = controlOwner.slice(controlOwner.indexOf('`') + 1, controlOwner.lastIndexOf('`'));
       const expression = Function('id', 'collisionRailCopiesExpression', `return \`${body}\`;`)(
-        'railinventory', read) as string;
+        'raillft', read) as string;
       try {
         const control = dom.window.eval(expression) as {
           priorStyle: typeof prior; restoredStyle: typeof prior; styleRestored: boolean;
@@ -258,8 +258,8 @@ describe('Slice Atlas native Travel contract', () => {
         expect(control.styleRestored).toBe(true);
         expect(element.hasAttribute('style')).toBe(prior.present);
         expect(element.getAttribute('style')).toBe(value);
-        expect(control.shown.find((row) => row.id === 'railinventory')?.display).toBe('flex');
-        expect(control.shown.find((row) => row.id === 'railrecords')?.display).toBe('none');
+        expect(control.shown.find((row) => row.id === 'raillft')?.display).toBe('flex');
+        expect(control.shown.find((row) => row.id === 'railrgt')?.display).toBe('none');
         expect(control.restored.every((row) => row.display === 'none')).toBe(true);
         element.style.setProperty('display', 'flex', 'important');
         expect(element.getAttribute('style')).not.toBe(value);
@@ -453,11 +453,11 @@ describe('Slice Atlas native Travel contract', () => {
     const openerPress = {
       target: {
         settled: true, x: 80, y: 240, width: 48, height: 48,
-        id: 'railatlas', tag: 'BUTTON', type: 'button',
+        id: 'dockatlas', tag: 'BUTTON', type: 'button',
         atlasTravelId: null, atlasRowId: null, hit: true,
       },
       pointer: {
-        trusted: true, pointerType: 'mouse', tag: 'BUTTON', id: 'railatlas',
+        trusted: true, pointerType: 'mouse', tag: 'BUTTON', id: 'dockatlas',
         atlasTravelId: null, atlasRowId: null, x: 80, y: 240,
       },
     };
@@ -504,7 +504,7 @@ describe('Slice Atlas native Travel contract', () => {
 
     const authorization = section(
       sliceSource,
-      "  await evalIn(`document.getElementById('railatlas')?.click()`);",
+      "  await evalIn(`document.getElementById('dockatlas')?.click()`);",
       '  if (outerAtlasAfter.panelOpen === \'atlas\') await closeDesktopPanel();',
     );
     expect(authorization).toContain("atlasTravelTargetExpression('outer-galaxy')");
@@ -518,7 +518,7 @@ describe('Slice Atlas native Travel contract', () => {
 
     const inventoryReload = section(
       sliceSource,
-      "      const atlasPreClick = await evalIn(railButtonPoint('railatlas'));",
+      "      const atlasPreClick = await evalIn(railButtonPoint('dockatlas'));",
       '  const inventorySuccessorBoundary = assessArc2InventorySuccessorBoundary({',
     );
     expect(inventoryReload).toContain("atlasTarget: await evalIn(atlasTravelTargetExpression('p133'))");
@@ -578,7 +578,7 @@ describe('Slice Atlas native Travel contract', () => {
     const spaceTakeAt = keyboard.indexOf('const atlasSpaceKeyReceipt = await takeDesktopAtlasKeyReceipt();');
     const spaceWaitAt = keyboard.indexOf("waitDesktopValue('Atlas Space travel'");
     const spaceOutcomeGuardAt = keyboard.indexOf('ATLAS SPACE TRAVEL: red exact key receipt/outcome stopped dependent Enter');
-    const enterReopenAt = keyboard.indexOf("const opener=document.getElementById('railatlas')", spaceOutcomeGuardAt);
+    const enterReopenAt = keyboard.indexOf("const opener=document.getElementById('dockatlas')", spaceOutcomeGuardAt);
     const enterSetupGuardAt = keyboard.indexOf('ATLAS ENTER SETUP: red restored Travel target stopped key dispatch');
     const enterArmAt = keyboard.indexOf('await armDesktopAtlasKeyReceipt();', spaceArmAt + 1);
     const enterDispatchAt = keyboard.indexOf("await keyIn('Enter', 'Enter');", enterArmAt);

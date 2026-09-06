@@ -1,5 +1,16 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U1 uniform launcher amendment — 2026-09-06
+
+Nick's visual review supersedes desktop/tablet side rails and the bottom-right-only utility
+cluster: all devices retain the phone's navigation layout and visual language. Controls stay
+compact; tablet/desktop use capped72/80px pitch with66/74px boards,48/56px targets and40/44px
+faces. Phone geometry is unchanged. The wide tray is centered, contains all nine controls,
+and owns its actual gaps. Larger windows get more usable scene/panel room. Narrow landscape
+keeps the compact two-row arrangement. Exact metrics and current native proofs live in
+UI_PRESENTATION.md and the U1 revision evidence. This is a user-directed supersession of the
+first-review numerical choices below, not a changed measurement ruler or U2/Phase2 approval.
+
 ## U1 layout authority reconciliation — 2026-09-06
 
 Nick's explicit58px chips/36px faces/701px desktop breakpoint/visible labels take precedence

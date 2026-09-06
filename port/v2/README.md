@@ -3,7 +3,7 @@
 ## U1 presentation checkpoint — 2026-09-06
 
 The normal `/` game (without `avpilot`) uses the shared token/shell owners, local Inter,
-labelled phone dock, desktop utility cluster and saved notification read state described in
+a uniform bottom launcher across phone/tablet/desktop and saved notification read state described in
 `../../UI_PRESENTATION.md`. The accepted brief and amendments are in
 `../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved.
 

@@ -1,6 +1,26 @@
 # UI parity and presentation program — accepted brief
 
 Nick supplied this brief on 2026-09-05. The quoted program below is retained verbatim.
+Current amendment — Nick's U1 visual review, 2026-09-06: the whole UI must remain uniform
+across devices. Desktop/tablet reflect the phone's layout and visual language, with compact,
+readable controls and useful screen space rather than wholesale magnification. Keep the same
+centered bottom launcher, control identities/order, type and color roles. This supersedes the
+prior desktop/tablet side rails and bottom-right-only utility cluster.
+
+U1 implements a capped single row on wider screens: tablet701–1099 uses72px pitch,
+66px boards,48px targets and40px utility faces; desktop>=1100 uses80px pitch,74px boards,
+56px targets and44px faces. Phone keeps its58/64/36/44 geometry and two rows. Narrow landscape
+<=900 retains that compact arrangement, moving into the existing right safe column when a
+panel opens. Prime stays in the launcher. Caption/hint lanes clear the measured launcher.
+Future U2/U3 panels follow the same component/type/spacing system; this amendment does not
+start those batches. U1 still stops for visual review. No workflow/policy/hosted authority.
+
+Saved notification history remains Nick's narrow existing-schema persistence amendment.
+No schema, product receipt, RNG or import-door change. U2's pasted stacking order conflicts
+with the earned Settings-above-Training-card law; resolve it before implementation.
+
+### Superseded first-review amendment (preserved)
+
 Current amendments (2026-09-06): desktop/tablet utilities use the FINAL LAYOUT bottom-right
 Records / Notifications / Guide / Settings cluster, confirmed by Nick. Nick also requested
 saved notification history with persistent read/unread state; this is a narrow exception to

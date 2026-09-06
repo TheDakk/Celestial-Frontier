@@ -84,20 +84,35 @@ function shellGeometry() {
     return { id, left: b.left, top: b.top, right: b.right, bottom: b.bottom, width: b.width, height: b.height,
       visible: s.display !== 'none' && s.visibility !== 'hidden' && b.width > 0 && b.height > 0 }; };
   const styles = getComputedStyle(document.documentElement), ids = ['topbar', 'playerchip', 'hpbar', 'searchbox',
-    'dock', 'primechip', 'objchip', 'trail', 'ctxbar', 'hintpill', 'sceneactions', 'dockinventory', 'shelfnotifications'];
+    'dock', 'primechip', 'objchip', 'trail', 'ctxbar', 'hintpill', 'sceneactions', 'dockinventory', 'shelfnotifications', 'raillft', 'railrgt'];
+  const dockNode = document.getElementById('dock'), first = r('dockcharters'), second = r('dockcodex');
+  const gapPoint = first?.visible && second?.visible ? { x: (first.right + second.left) / 2, y: first.top + first.height / 2 } : null;
+  const gapHit = gapPoint ? document.elementFromPoint(gapPoint.x, gapPoint.y) : null;
   return { viewport: { width: innerWidth, height: innerHeight }, rects: Object.fromEntries(ids.map(id => [id, r(id)])),
+    dockGap: { point: gapPoint, owned: gapHit === dockNode, hit: gapHit?.id || gapHit?.tagName || null },
     font: getComputedStyle(document.body).fontFamily, fontSize: getComputedStyle(document.body).fontSize,
     topbarPublished: parseFloat(styles.getPropertyValue('--topbar-h')), row1Published: parseFloat(styles.getPropertyValue('--row1-h')),
     safeBottom: parseFloat(styles.getPropertyValue('--safe-bottom')) || 0,
     safeRight: parseFloat(styles.getPropertyValue('--safe-right')) || 0,
-    dock: [...document.querySelectorAll(innerWidth <= 700 ? '#dock > button' : '#dock > .dock-utility')].map(node => r(node.id)).filter(row => row?.visible),
+    hintHeight: document.getElementById('hintpill')?.offsetHeight ?? 0,
+    dockDisplay: getComputedStyle(document.getElementById('dock')).display,
+    dockPointerEvents: getComputedStyle(document.getElementById('dock')).pointerEvents,
+    dock: [...document.querySelectorAll('#dock > button')].map(node => {
+      const rect = r(node.id), face = node.querySelector('.utility-face'), f = face?.getBoundingClientRect();
+      const hit = rect?.visible ? document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2) : null;
+      return { ...rect, named: !!(node.getAttribute('aria-label') || node.textContent || '').trim(),
+        native: node.tagName === 'BUTTON' && !node.disabled && !node.closest('[inert]'),
+        hit: !!hit && (hit === node || node.contains(hit)),
+        face: f ? { width: f.width, height: f.height } : null };
+    }).filter(row => row.visible),
     bodyClasses: document.body.className, horizontalOverflow: document.documentElement.scrollWidth > innerWidth };
 }
 function metricDeltas(state) {
   const { rects: r, viewport: v, safeBottom, safeRight } = state, phone = v.width <= 700, rows = [];
-  const add = (name, actual, expected, scope = 'v1 law') => rows.push({ name, actual, expected, delta: actual - expected,
-    pass: Number.isFinite(actual) && Math.abs(actual - expected) <= 1, scope });
+  const add = (name, actual, expected, scope = 'v1 law', tolerance = 1) => rows.push({ name, actual, expected, delta: actual - expected,
+    pass: Number.isFinite(actual) && Math.abs(actual - expected) <= tolerance, scope, tolerance });
   add('topbar published height', state.topbarPublished, r.topbar.height, 'measured sync');
+  for (const id of ['raillft', 'railrgt']) add(id + ' hidden', r[id]?.visible ? 1 : 0, 0, 'centered launcher has no visible side rails', 0);
   add('Search/bell gap', r.shelfnotifications.left - r.searchbox.right, 8);
   add('shelf bell right inset', v.width - r.shelfnotifications.right - safeRight, phone ? 10 : 18);
   add('Search/bell centre alignment', r.searchbox.top + r.searchbox.height / 2
@@ -117,13 +132,43 @@ function metricDeltas(state) {
       for (let i = 1; i < buttons.length; i++) add(group + ' centre pitch ' + i,
         buttons[i].left + buttons[i].width / 2 - buttons[i - 1].left - buttons[i - 1].width / 2, 64);
   } else {
-    add('Prime centre', r.primechip.left + r.primechip.width / 2, v.width / 2);
-    add('utility right inset', v.width - r.dock.right, 12);
-    for (let i = 1; i < state.dock.length; i++) add('desktop utility centre pitch ' + i,
-      state.dock[i].left + state.dock[i].width / 2 - state.dock[i - 1].left - state.dock[i - 1].width / 2,
-      44, '44px touch floor; intentional +2px vs legacy 42px');
+    const desktop = v.width >= 1100, pitch = desktop ? 80 : 72, target = desktop ? 56 : 48;
+    const boardWidth = desktop ? 74 : 66, face = desktop ? 44 : 40;
+    add('launcher tray gap owner', state.dockGap?.owned ? 1 : 0, 1, 'visible tray owns empty launcher gaps', 0);
+    add('launcher centre', r.dock.left + r.dock.width / 2, v.width / 2, 'centered launcher');
+    add('launcher bottom', v.height - r.dock.bottom - safeBottom, 12, 'centered launcher');
+    add('launcher width', r.dock.width, desktop ? 752 : 672, 'nine scaled tracks and symmetric padding');
+    add('launcher height (default text)', r.dock.height, desktop ? 88 : 72, 'default Inter content baseline; larger text may grow');
+    add('launcher hint bottom', v.height - r.hintpill.bottom - safeBottom, Math.max(96, r.dock.height + 28), 'measured launcher clearance');
+    add('launcher caption bottom', v.height - r.ctxbar.bottom - safeBottom,
+      Math.max(136, r.dock.height + 28 + state.hintHeight + 8), 'measured launcher and hint clearance');
+    for (const [index, button] of state.dock.entries()) {
+      add(button.id + ' launcher width', button.width, index < 5 ? boardWidth : target, 'scaled native launcher');
+      add(button.id + ' launcher height', button.height, target, 'default Inter target baseline; board text may grow');
+      add(button.id + ' launcher row centre', button.top + button.height / 2, r.dock.top + r.dock.height / 2, 'single centered row');
+      if (index >= 5) {
+        add(button.id + ' utility face width', button.face?.width, face, 'scaled painted face');
+        add(button.id + ' utility face height', button.face?.height, face, 'scaled painted face');
+      }
+      if (index > 0) add('launcher centre pitch ' + index,
+        button.left + button.width / 2 - state.dock[index - 1].left - state.dock[index - 1].width / 2, pitch, 'scaled launcher rhythm');
+    }
   }
   return rows;
+}
+const LAUNCHER_PANELS = [
+  ['dockcharters', 'chpanel'], ['dockcodex', 'codexpanel'], ['primechip', 'primepanel'],
+  ['dockshipyard', 'shipyardpanel'], ['dockatlas', 'atlaspanel'], ['dockrecords', 'recpanel'],
+  ['docknotifications', 'notificationpanel'], ['dockguide', 'guidepanel'], ['docksets', 'setpanel'],
+];
+function launcherOutcome(state) {
+  const expected = LAUNCHER_PANELS.map(([id]) => id), ids = state.dock.map(button => button.id), errors = [];
+  if (JSON.stringify(ids) !== JSON.stringify(expected)) errors.push('native launcher identity/order drifted: ' + JSON.stringify(ids));
+  for (const button of state.dock) if (!button.native || !button.named || !button.hit)
+    errors.push(button.id + ' is not a named, native, center-hit-testable opener');
+  if (state.dockDisplay !== 'grid') errors.push('launcher is not a grid');
+  if (state.viewport.width > 700 && (state.dockPointerEvents !== 'auto' || !state.dockGap?.owned)) errors.push('visible launcher tray does not own its measured empty gap');
+  return { pass: errors.length === 0, ids, expected, errors };
 }
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 export async function runUiShellReview(buildArgument, outputArgument) {
@@ -152,7 +197,8 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       'Golden raster differences reflect scene/save/browser/font differences as well as design; no pixel-equality verdict.',
       'New game uses native Skip then bounded Escape ascent to the visible Cosmos breadcrumb, not a legacy import; camera, progression and save differences remain visible in the comparison.',
       'Notification screenshots use only naturally available messages; this diagnostic does not certify cross-session persistence.',
-      'Desktop utility pitch is 44px for the retained touch floor, +2px against legacy 42px intention.',
+      'Tablet and desktop now use a centered nine-button launcher at 72px and 80px pitch respectively; golden rasters retain the earlier layout for human comparison.',
+      'The three default-text viewports do not certify the separate short-landscape panel-open placement or enlarged Settings text.',
     ] };
   const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
     '.webp': 'image/webp', '.wav': 'audio/wav', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png' };
@@ -216,10 +262,11 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       const candidate = await capture(`u1-main-${name}.png`);
       const goldenFile = `ui-main-${name}.png`, golden = fs.readFileSync(path.join(goldenRoot, goldenFile));
       assert.equal(sha(golden), goldenManifest.find(row => row.file === goldenFile)?.sha256, 'golden integrity');
-      const row = { name, scene: currentScene, state, deltas, phone, golden: { file: goldenFile, sha256: sha(golden) },
-        pass: deltas.every(delta => delta.pass) && !state.horizontalOverflow && (!phone || phone.ok), controls: [] };
+      const launcher = launcherOutcome(state);
+      const row = { name, scene: currentScene, state, deltas, phone, launcher, golden: { file: goldenFile, sha256: sha(golden) },
+        pass: deltas.every(delta => delta.pass) && launcher.pass && !state.horizontalOverflow && (!phone || phone.ok), controls: [] };
       report.rows.push(row); writeReport();
-      assert(row.pass, name + ' U1 geometry: ' + JSON.stringify({ deltas: deltas.filter(d => !d.pass), phone: phone?.errors }));
+      assert(row.pass, name + ' U1 geometry: ' + JSON.stringify({ deltas: deltas.filter(d => !d.pass), phone: phone?.errors, launcher: launcher.errors }));
       // Open and close the real shelf bell without seeding history or modifying panel styling.
       await clickNative('#shelfnotifications');
       await wait(`getComputedStyle(document.getElementById('notificationpanel')).display !== 'none'`);
@@ -255,16 +302,51 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       writeReport();
       assert.equal(notification.closed.focusedId, 'shelfnotifications', name + ' Notifications Close did not restore its exact native opener');
       assert.deepEqual(notification.closed.scene.trail, ['Cosmos']);
-      assert(notification.closed.deltas.every(delta => delta.pass) && !restoredState.horizontalOverflow
+      assert(notification.closed.deltas.every(delta => delta.pass) && launcherOutcome(restoredState).pass && !restoredState.horizontalOverflow
         && (!notification.closed.phone || notification.closed.phone.ok), name + ' main shell did not restore after Notifications Close');
+      // Every launcher owner must reach its own real panel and return focus to
+      // that same button. This is shell reachability, not a U2 panel redesign.
+      row.launcherJourneys = [];
+      for (const [openerId, panelId] of LAUNCHER_PANELS) {
+        const action = { openerId, panelId }; row.launcherJourneys.push(action); writeReport();
+        assert.equal(await evaluate(`document.getElementById(${JSON.stringify(openerId)})?.getAttribute('aria-controls')`),
+          panelId, name + ' launcher opener is wired to a different panel: ' + openerId);
+        await clickNative('#' + openerId);
+        await wait(`getComputedStyle(document.getElementById(${JSON.stringify(panelId)})).display !== 'none'`);
+        await frames();
+        action.opened = await evaluate(`(()=>{const opener=document.getElementById(${JSON.stringify(openerId)}),panel=document.getElementById(${JSON.stringify(panelId)}),close=panel.querySelector('[data-pnx]');
+          const r=panel.getBoundingClientRect(),c=close?.getBoundingClientRect(),h=c?document.elementFromPoint(c.left+c.width/2,c.top+c.height/2):null;
+          return{expanded:opener.getAttribute('aria-expanded'),panelHidden:panel.getAttribute('aria-hidden'),panelVisible:getComputedStyle(panel).visibility!=='hidden'&&r.width>0&&r.height>0,
+            closeNamed:!!(close?.getAttribute('aria-label')||close?.textContent||'').trim(),closeNative:close?.tagName==='BUTTON'&&!close.disabled&&!close.closest('[inert]'),
+            closeHit:!!h&&(h===close||close.contains(h)),closeWidth:c?.width??0,closeHeight:c?.height??0,focusedClose:document.activeElement===close};})()`);
+        const opened = action.opened;
+        action.openPass = opened.expanded === 'true' && opened.panelHidden === 'false' && opened.panelVisible
+          && opened.closeNamed && opened.closeNative && opened.closeHit && opened.closeWidth >= 44 && opened.closeHeight >= 44 && opened.focusedClose;
+        writeReport(); assert(action.openPass, name + ' native launcher open failed: ' + JSON.stringify(action));
+        await clickNative('#' + panelId + ' [data-pnx]');
+        await wait(`getComputedStyle(document.getElementById(${JSON.stringify(panelId)})).display === 'none'`);
+        await frames();
+        const closedState = await evaluate(`(${shellGeometry.toString()})()`);
+        action.closed = { focusedId: await evaluate('document.activeElement?.id'),
+          expanded: await evaluate(`document.getElementById(${JSON.stringify(openerId)}).getAttribute('aria-expanded')`),
+          scene: await scene(), deltas: metricDeltas(closedState), launcher: launcherOutcome(closedState),
+          phone: width <= 700 ? await evaluate(`(${readU1PhoneShell.toString()})(false)`) : null };
+        action.closePass = action.closed.focusedId === openerId && action.closed.expanded === 'false'
+          && JSON.stringify(action.closed.scene.trail) === '["Cosmos"]' && action.closed.deltas.every(delta => delta.pass)
+          && action.closed.launcher.pass && !closedState.horizontalOverflow && (!action.closed.phone || action.closed.phone.ok);
+        writeReport(); assert(action.closePass, name + ' native launcher Close did not restore its exact opener and shell: ' + JSON.stringify(action));
+      }
       // Break a measured anchor in the live document, require red, restore and re-observe green.
-      const control = await evaluate(`(()=>{const e=document.getElementById('objchip'),p=e.style.getPropertyValue('left'),priority=e.style.getPropertyPriority('left');
-        let broken;try{e.style.setProperty('left','118px','important');broken=(${shellGeometry.toString()})();}finally{if(p)e.style.setProperty('left',p,priority);else e.style.removeProperty('left');}
-        return{broken,restored:(${shellGeometry.toString()})()};})()`);
+      const control = await evaluate(`(()=>{const e=document.getElementById('objchip'),prior={present:e.hasAttribute('style'),value:e.getAttribute('style')};
+        let broken;try{e.style.setProperty('left','118px','important');broken=(${shellGeometry.toString()})();}
+        finally{e.setAttribute('style','');e.removeAttribute('style');if(prior.present)e.setAttribute('style',prior.value);}
+        return{broken,restored:(${shellGeometry.toString()})(),styleRestored:e.hasAttribute('style')===prior.present&&e.getAttribute('style')===prior.value};})()`);
       assert(metricDeltas(control.broken).some(d => d.name === 'objective left inset' && !d.pass));
-      assert(metricDeltas(control.restored).every(d => d.pass));
-      row.controls.push({ name: 'live objective displaced100px; exact style restored', brokenDeltas: metricDeltas(control.broken), restored: true });
+      assert(control.styleRestored && metricDeltas(control.restored).every(d => d.pass) && launcherOutcome(control.restored).pass);
+      row.controls.push({ name: 'live objective displaced100px; exact style restored', brokenDeltas: metricDeltas(control.broken), styleRestored: control.styleRestored, restored: true });
       const metricMutations = [
+        ['raillft hidden', '#raillft', 'display', 'flex'],
+        ['railrgt hidden', '#railrgt', 'display', 'flex'],
         ['topbar published height', ':root', '--topbar-h', '321px'],
         ['Search/bell gap', '#searchbox', 'transform', 'translateX(10px)'],
         ['shelf bell right inset', '#shelfnotifications', 'transform', 'translateX(10px)'],
@@ -281,22 +363,53 @@ export async function runUiShellReview(buildArgument, outputArgument) {
           ...state.dock.slice(1, 5).map((button, i) => ['boards centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
           ...state.dock.slice(6).map((button, i) => ['utilities centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
         ] : [
-          ['Prime centre', '#primechip', 'transform', 'translateX(20px)'],
-          ['utility right inset', '#dock', 'right', '112px'],
-          ...state.dock.slice(1).map((button, i) => ['desktop utility centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
+          ['launcher tray gap owner', '#dock', 'pointer-events', 'none'],
+          ['launcher centre', '#dock', 'transform', 'translateX(-40%)'],
+          ['launcher bottom', '#dock', 'bottom', '1px'],
+          ['launcher width', '#dock', 'width', '620px'],
+          ['launcher height (default text)', '#dock', 'height', '120px'],
+          ['launcher hint bottom', '#hintpill', 'bottom', '1px'],
+          ['launcher caption bottom', '#ctxbar', 'bottom', '1px'],
+          ['launcher centre pitch 1', '#dock', 'grid-template-columns', 'repeat(9,52px)'],
+          ...state.dock.slice(1).map((button, i) => ['launcher centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
+          ['dockcharters launcher width', '#dockcharters', 'width', '100px'],
+          ['dockcharters launcher height', '#dockcharters', 'height', '100px'],
+          ['dockcharters launcher row centre', '#dockcharters', 'transform', 'translateY(10px)'],
+          ['dockrecords launcher width', '#dockrecords', 'width', '100px'],
+          ['dockrecords launcher height', '#dockrecords', 'height', '100px'],
+          ['dockrecords utility face width', '#dockrecords .utility-face', 'width', '30px'],
+          ['dockrecords utility face height', '#dockrecords .utility-face', 'height', '30px'],
         ]),
       ];
       for (const [metric, selector, property, value] of metricMutations) {
         const proof = await evaluate(`(()=>{const node=document.querySelector(${JSON.stringify(selector)}),property=${JSON.stringify(property)},
-          prior=node.style.getPropertyValue(property),priority=node.style.getPropertyPriority(property);let broken;
+          prior={present:node.hasAttribute('style'),value:node.getAttribute('style')},propertyValue=node.style.getPropertyValue(property),priority=node.style.getPropertyPriority(property);let broken;
           try{node.style.setProperty(property,${JSON.stringify(value)},'important');broken=(${shellGeometry.toString()})();}
-          finally{if(prior)node.style.setProperty(property,prior,priority);else node.style.removeProperty(property);}
-          return{broken,restored:(${shellGeometry.toString()})(),propertyRestored:node.style.getPropertyValue(property)===prior&&node.style.getPropertyPriority(property)===priority};})()`);
+          finally{node.setAttribute('style','');node.removeAttribute('style');if(prior.present)node.setAttribute('style',prior.value);}
+          return{broken,restored:(${shellGeometry.toString()})(),styleRestored:node.hasAttribute('style')===prior.present&&node.getAttribute('style')===prior.value,
+            propertyRestored:node.style.getPropertyValue(property)===propertyValue&&node.style.getPropertyPriority(property)===priority};})()`);
         const brokenDelta = metricDeltas(proof.broken).find(delta => delta.name === metric), restoredDeltas = metricDeltas(proof.restored);
-        row.controls.push({ name: metric, selector, property, value, brokenDelta, propertyRestored: proof.propertyRestored,
-          restored: restoredDeltas.every(delta => delta.pass) });
-        assert(brokenDelta && !brokenDelta.pass && proof.propertyRestored && restoredDeltas.every(delta => delta.pass),
+        row.controls.push({ name: metric, selector, property, value, brokenDelta, broken: proof.broken, restoredObservation: proof.restored,
+          styleRestored: proof.styleRestored, propertyRestored: proof.propertyRestored,
+          restored: restoredDeltas.every(delta => delta.pass) && launcherOutcome(proof.restored).pass });
+        writeReport();
+        assert(brokenDelta && !brokenDelta.pass && proof.styleRestored && proof.propertyRestored && row.controls.at(-1).restored,
           name + ' geometry control failed: ' + JSON.stringify(row.controls.at(-1)));
+      }
+      for (const [controlName, selector, property, value] of [
+        ['missing native Prime opener', '#primechip', 'display', 'none'],
+        ['Settings opener cannot receive a native pointer', '#docksets', 'pointer-events', 'none'],
+      ]) {
+        const proof = await evaluate(`(()=>{const node=document.querySelector(${JSON.stringify(selector)}),prior={present:node.hasAttribute('style'),value:node.getAttribute('style')};let broken;
+          try{node.style.setProperty(${JSON.stringify(property)},${JSON.stringify(value)},'important');broken=(${shellGeometry.toString()})();}
+          finally{node.setAttribute('style','');node.removeAttribute('style');if(prior.present)node.setAttribute('style',prior.value);}
+          return{broken,restored:(${shellGeometry.toString()})(),styleRestored:node.hasAttribute('style')===prior.present&&node.getAttribute('style')===prior.value};})()`);
+        const broken = launcherOutcome(proof.broken), restored = launcherOutcome(proof.restored);
+        row.controls.push({ name: controlName, selector, property, value, broken, brokenObservation: proof.broken,
+          styleRestored: proof.styleRestored, restoredObservation: proof.restored, restored: restored.pass && metricDeltas(proof.restored).every(delta => delta.pass) });
+        writeReport();
+        assert(!broken.pass && proof.styleRestored && row.controls.at(-1).restored,
+          name + ' native launcher control failed: ' + JSON.stringify(row.controls.at(-1)));
       }
       // Use an isolated generated proof page for exact-sized originals, raster difference and contact sheet.
       const imageData = [golden, candidate].map(bytes => 'data:image/png;base64,' + bytes.toString('base64'));

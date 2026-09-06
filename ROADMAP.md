@@ -17,49 +17,52 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-06 local · U1 LOCAL CHECKS PASS / VISUAL APPROVAL STOP
+## SESSION HANDOFF — 2026-09-06 · U1 UNIFORM LAUNCHER REVISION / VERIFYING
 
-OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`,
-branch openai/mac, upstream origin/openai/mac. SSH origin is
-`git@github.com:TheDakk/Celestial-Frontier.git`; this batch's authentication/read/fetch
-preflight passed as TheDakk. Develop c1791e210158de864fdd475323c3091d9ecbae58 is already
-an ancestor. U1 began at ec5188f5059fb3ce7ae8b99af68c51709f2ee9b6. No other worktree was
-edited. Root main.js is absent. Ambient .DS_Store remains untracked and untouched.
-Signed successor history is preserved. The final evidence/docs commit follows the tested
-source below and is intended for normal openai/mac branch push; its actual push receipt is
-reported to Nick. Neither develop, main nor the live site is updated by this branch push.
+Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac,
+upstream origin/openai/mac. Last pushed source8d92f0765562e02b1b208845e2c2873a1da9a8f3;
+develop c1791e210158de864fdd475323c3091d9ecbae58 is already an ancestor. SSH origin remains
+git@github.com:TheDakk/Celestial-Frontier.git; authentication/read/fetch passed as TheDakk
+in this uninterrupted session. No fresh tool update pass is due. Only ambient .DS_Store
+is untracked; it and other worktrees remain untouched. Root main.js is absent.
 
-### U1 implementation and review evidence
+### U1 uniform launcher revision
 
-Normal-game U1 has shared presentation tokens/local Inter, five labelled phone boards plus
-four utilities at64px centres, Inventory in the nameplate, contextual Survey/Charts,
-desktop/tablet rails and bottom-right Records/Notifications/Guide/Settings. Existing font,
-text-size and tone preferences remain authoritative. Persistent read/unread notifications
-use existing admitted checkpoints; product-action notices stay buffered until settlement,
-and protected/Training notices remain session-only. No schema/RNG/product-receipt or legacy
-import-door changes. UI_PRESENTATION.md, SAVE_SYSTEM.md and the codebase reference agree.
+Nick reviewed the prior U1 phone/desktop/tablet sheets. Phone improved, but larger screens
+lost its layout. He directs one uniform UI across devices, retaining a bottom app-launcher
+feel with compact capped scaling and productive use of extra screen space. This supersedes
+the earlier side rails and bottom-right-only utilities, and continues U1 before its visual stop.
 
-Exact tested source `cfd63ae6a024d806c2df02fd65b64f066f973021`: typecheck/artunused PASS,311 Vitest files/
-3,300 tests PASS/1 skipped, Glass selftest PASS. Slice `20260906091030879-84426-e7f8f021242a` PASS
-(374208ms). Small/large phone canaries PASS with zero findings/instrument failures:
-20260906091646886-84800-e3a2e6e93436 (small-phone); 20260906091702950-84915-6ed69372fd67 (large-phone). Fresh normal build and three-view review PASS,9 images,
-zero console errors. Evidence: `audits/UI_U1_FINAL_cfd63ae_20260906/`; overall checkpoint and complete red
-history: `audits/UI_U1_CHECKPOINT_20260906.md` and `UI_U1_REDS_20260906.json`.
-This is local U1 evidence, not full Glass/Compendium certification or real-device approval.
-All nine normal-review images were inspected; VISUAL_REVIEW.md records visual choices,
-text truncation and the approved tablet layout difference. No visible U1 access blocker was found.
+The same nine native controls/order now occupy the bottom launcher. Phone58/64/36/44 layout
+is unchanged. Tablet701–1099 uses672px tray/72px pitch/66px boards/48px targets/40px faces;
+desktop>=1100 caps at752px tray/80px pitch/74px boards/56px targets/44px faces. Prime stays
+in the launcher; rails retain hidden compatibility IDs. Wide painted tray gaps own the
+panel boundary. Narrow landscape<=900 keeps the phone arrangement and open-panel right
+safe column. Caption/hint clear measured launcher height; existing wide utility-panel/toast
+anchors follow its edge. Notification history remains at the shelf bell across devices.
+No panel interiors, stack redesign, state/schema/RNG/receipts/import doors or art/audio changes.
 
-Compendium's default label now fits with zero phone horizontal padding: natural54.338px
-inside56px available;58px chip/64px pitch/font unchanged. The default Inter dock is92px;
-larger Settings text can grow its auto row. Caption backing passes bright-art contrast and
-clears the existing measured hint height by8px with164px minimum bottom offset. No new
-observer was added. Current Compendium producer `0df5435f66dbd057b15690404aeb38a4dcfb2d09c2bb344a53288acac237535e` and all component pins agree.
-Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12, ruler,
-ceilings, samples and paired baseline are unchanged. Bulletin remains81 outcomes.
-No workflow/Actions-policy/production-golden/artlock changes. Game manifests were restored
-to sealed values earlier; GSAP stays in isolated authoring tools. Desktop rail pseudo-element
-contrast sampling is an explicit future U4 coverage item, not covered by these phone canaries.
-The normal-review restore checks cover mutated properties and geometry, not full attribute bytes.
+Slice and Glass now observe actual dock owners and closest-button input through nested
+labels. Gap controls use real launcher gaps. Hidden-opener fallback explicitly injects a hide
+of the actual dockatlas after native Atlas/Survey input, preserving the historical test identity
+and making that setup honest. Whole hidden rail roots are challenged/restored. Historical
+ledgers, thresholds, measurement/ruler/ceilings, workflows, Actions policy and artlock stay intact.
+The normal review tests all nine native open/Close/focus journeys and scaled launcher geometry.
+
+Preparation passed typecheck,44 focused Slice tests,42 focused Glass tests, syntax/expression
+checks. Current producer8253df4e53f89585d76ec5352980d688d3f646d48c97170c235507e83bba5a2e
+and all components are pinned together; sealed measurement matches. A first preparatory
+printer preceded the final release-copy cleanup; its output is retained, not certification.
+Draft bulletin count remains81 with current launcher/Prime wording. Current refs and accepted
+amendment agree; prior review records remain historical.
+
+Required new-source verification: fresh checkout/no main.js; typecheck/artunused/full Vitest/
+Glass selftest; fresh normal build and three-view review; Slice develop then small/large phone
+canaries, each selected owner once, stopping on red. Normal visual diagnosis precedes the
+longer browser chain so geometry faults fail early; Slice-to-Glass source ordering remains.
+No previous source's PASS is claimed for this revision. Preceding exact cfd63ae checkpoint
+passed locally and lives in audits/UI_U1_FINAL_cfd63ae_20260906; current revision evidence
+lives in audits/UI_U1_LAUNCHER_REVISION_20260906.md and its forthcoming exact-source carriers.
 
 ### Tooling and session startup
 
@@ -87,23 +90,20 @@ benchmark or Windows inspection occurred. Immutable masters stay unchanged. A no
 license file exists (contents not read, recognition unverified); fully GUI-free Surge rendering
 remains unproven. Players install none of these authoring tools.
 
-### Paired next steps and approval stops
+### Paired next steps and approval boundary
 
-- **Codex/macOS:** publish final docs/evidence by the authorized normal openai/mac branch
-  push and report its exact SHA; then stop for Nick's U1 visual approval before U2.
-- **Claude:** review the published openai/mac U1 checkpoint and comparison sheets. These
-  changes are not in develop; continue unrelated work without manual file copying. After
-  eventual authorized integration, use a clean owned branch to fetch/merge origin/develop
-  under the protocol. Leave anthropic/mac c860f57 and173c806 untouched.
-- **Nick:** review phone/desktop/tablet comparison sheets before U2. Inter, desktop utility
-  pitch44px (+2 over legacy diagram), rail pitch52px (44target+8gap, +10) remain visual choices.
-  No GitHub action is needed; PR fields are not needed. Open Claude only when you want its
-  review, not to synchronize unmerged files. Emoji stay through U2; choose the U3 SVG study
-  before replacement.
+- Codex: finish exact-source local checks and inspect the new comparison sheets, record
+  failures before signed successors, then normal branch push and stop before U2 for visual review.
+- Claude: prior and new U1 work remain outside develop. Review the published openai/mac
+  checkpoint when ready; no manual copying or synchronization of unmerged work. Leave
+  anthropic/mac c860f57 and173c806 untouched. Fetch/merge develop only after integration,
+  on a clean owned branch under the parallel protocol.
+- Nick: no GitHub action or app switch needed now. Review the revised compact launcher
+  across devices before U2; open Claude when you want its review. PR fields are not needed.
 
-U2–U4 have not started. Resolve U2's pasted stacking order against the earned
-Settings-above-Training law before implementation. Integrated audiovisual pilot approval
-remains open; no Phase2/release/deployment. Artlock CI lane, ITP save protection and DECISIONS
-row19 wording remain open. Budget UNFROZEN, repository PUBLIC per last verified state,
-private fallback3,000; zero hosted attempts/labels/PRs/merges/releases/purchases authorized.
-The normal openai/mac branch push triggers no workflow.
+U2–U4 have not started. Same visual language governs those later panel batches; resolve the
+pasted stacking order against Settings-above-Training before U2. Integrated audiovisual pilot
+approval, artlock CI lane, ITP save protection and DECISIONS row19 remain open. No Phase2.
+Budget UNFROZEN; repository PUBLIC per last verification, private fallback3,000, zero hosted
+attempts/labels/PRs/merges/releases/purchases/deploys authorized. Normal openai/mac branch push
+is authorized and triggers nothing. Develop/main/live site remain unchanged.
