@@ -1,0 +1,175 @@
+{
+  "schema": "cf-u3-icon-study/v1",
+  "date": "2026-09-06",
+  "sourceCommit": "75d9894b43243614c4d9d0dff8820c5c45329cee",
+  "author": "OpenAI/Codex for Celestial Frontier",
+  "status": "REVIEW_ONLY_NOT_ADOPTED",
+  "license": "Original agent-authored SVG paths; no third-party icon artwork or embedded fonts. This study assigns no new repository-wide license. Unicode reference glyphs use host fonts; font software is not redistributed.",
+  "icons": [
+    {
+      "id": "survey",
+      "label": "Survey",
+      "currentSymbol": "🔭",
+      "purpose": "Reopen the selected object or landed world.",
+      "file": "survey.svg"
+    },
+    {
+      "id": "compendium",
+      "label": "Compendium",
+      "currentSymbol": "📖",
+      "purpose": "Browse the species catalogue.",
+      "file": "compendium.svg"
+    },
+    {
+      "id": "prime",
+      "label": "Prime",
+      "currentSymbol": "✦",
+      "purpose": "Track nine Prime signatures; keep the visible count.",
+      "file": "prime.svg"
+    },
+    {
+      "id": "shipyard",
+      "label": "Shipyard",
+      "currentSymbol": "🛠",
+      "purpose": "Build, equip and manage ships.",
+      "file": "shipyard.svg"
+    },
+    {
+      "id": "atlas",
+      "label": "Atlas",
+      "currentSymbol": "🌍",
+      "purpose": "Explore the star map.",
+      "file": "atlas.svg"
+    },
+    {
+      "id": "records",
+      "label": "Records",
+      "currentSymbol": "🏆",
+      "purpose": "Review records and achievements.",
+      "file": "records.svg"
+    },
+    {
+      "id": "notifications",
+      "label": "Notifications",
+      "currentSymbol": "🔔",
+      "purpose": "Read saved alerts and updates.",
+      "file": "notifications.svg"
+    },
+    {
+      "id": "guide",
+      "label": "Guide",
+      "currentSymbol": "?",
+      "purpose": "Open instructions and reference information.",
+      "file": "guide.svg"
+    },
+    {
+      "id": "settings",
+      "label": "Settings",
+      "currentSymbol": "⚙",
+      "purpose": "Adjust display, sound and preferences.",
+      "file": "settings.svg"
+    },
+    {
+      "id": "objective",
+      "label": "Objective / Charters",
+      "currentSymbol": "⬆ / 📜",
+      "purpose": "Open Charters; keep objective text and progress.",
+      "file": "objective.svg"
+    }
+  ],
+  "vectorSystem": {
+    "viewBox": "0 0 24 24",
+    "strokeWidth": 1.65,
+    "linecap": "round",
+    "linejoin": "round",
+    "defaultDisplayPx": 24,
+    "controlMinimumPx": 44
+  },
+  "authority": "port/UI_PARITY_PROGRAM_U1_U4.md: emoji retained in U1-U2; U3 comparison study precedes any switch",
+  "files": {
+    "README.md": {
+      "bytes": 2665,
+      "sha256": "667212718389fdf07edf30acf160ad65852954c0938a0837afb9d06c25b6f966"
+    },
+    "atlas.svg": {
+      "bytes": 354,
+      "sha256": "b6c03675b1bd9b794f1e903a56125afbb85dc21cfa0da1a4673150b502cb9c22"
+    },
+    "browser-export-rejection.json": {
+      "bytes": 1391,
+      "sha256": "760a59dce02e6d5ae90cb0611dacafc174e5da502b28f14a85f232b54b685fa6"
+    },
+    "compendium.svg": {
+      "bytes": 388,
+      "sha256": "db1b26d3ba7040b38ff3b8f0fdd05a296b9da6a90ed77b4f65128b5062513ab5"
+    },
+    "export-default-sandbox-stop.json": {
+      "bytes": 555,
+      "sha256": "e2c75a3544602bd0ff3de8bd03e37b9e890b04b7884cd9f4730bac1d636e05dc"
+    },
+    "export-first-attempt.py": {
+      "bytes": 1540,
+      "sha256": "0f6d1e50c3d866bfc2b145b71156c3dcbd23b92d7e2ced5a8f0300a05ca5b060"
+    },
+    "export-study.py": {
+      "bytes": 1611,
+      "sha256": "1869920675db6f713c055b281510a2c1458ad133100e591f15eaf9f5c09d049d"
+    },
+    "guide.svg": {
+      "bytes": 337,
+      "sha256": "83be91be91be3bf2be31a5f4d17dd7917ad4bdd6d5bf8719cf75783e8b39191a"
+    },
+    "index.html": {
+      "bytes": 17243,
+      "sha256": "3cfd060ca06e1fc51c47cb949aa3533dc1ded44cde361365a2f84639cea88ccf"
+    },
+    "make-study.py": {
+      "bytes": 12757,
+      "sha256": "9d8aa7aa785c715bfd73bb2d4212db8bb299c5b4d98cb147d4a64af156fa9c85"
+    },
+    "notifications.svg": {
+      "bytes": 360,
+      "sha256": "47e7c90e1a41b73037387cbc2bd9051c2ab8cc1afe470f913f20de9cd544393b"
+    },
+    "objective.svg": {
+      "bytes": 387,
+      "sha256": "edc708e016c72cfb358b4af9660a0240b9c058d70e2ba29079a3a582aa94acb1"
+    },
+    "prime.svg": {
+      "bytes": 396,
+      "sha256": "396500dd33ce8e45a6a6d177c6142a2e274f38c32a51a434497045e2c354963a"
+    },
+    "records.svg": {
+      "bytes": 359,
+      "sha256": "2b8e44ecec39a4d50d2d0457efff7f3a920ceba92ae7f86fb31dcdc9c8c2bd24"
+    },
+    "render-browser.mjs": {
+      "bytes": 4800,
+      "sha256": "69cc1f5f3d4f709234af50bcd4660ccfb00d175c9c6d8e3321e629aa9ed799e6"
+    },
+    "settings.svg": {
+      "bytes": 435,
+      "sha256": "7e0713f10fdc26fda25f708c531da9bdd5a66c2eb009fd66e37b8c2ea5fb78c5"
+    },
+    "shipyard.svg": {
+      "bytes": 335,
+      "sha256": "aa5328f79b186b648d32d6f2754988d388040abb2202d2f2ddca4acf3793068d"
+    },
+    "study.svg": {
+      "bytes": 18927,
+      "sha256": "2d262ad56ad6a65f5bb4fe065a34bbb4ed41ba032f169af63985011501163718"
+    },
+    "survey.svg": {
+      "bytes": 336,
+      "sha256": "8da22b8c60a340b5bb7499e19d59e4531f62c6480c74e14fbc9577b3701a475c"
+    }
+  },
+  "exportStatus": "BLOCKED_NO_PNG",
+  "visualVerification": "NOT_RUN",
+  "inkscapeSessionStatus": "UNUSABLE_STOP_ALL_ATTEMPTS",
+  "browserExport": "REJECTED_BEFORE_PROCESS_LAUNCH",
+  "textVerification": {
+    "svgDocumentsParsed": 11,
+    "externalRasterOrScriptElements": 0
+  }
+}

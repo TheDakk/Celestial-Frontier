@@ -53,6 +53,41 @@ afterEach(() => {
 });
 
 describe('shared panel selection presentation', () => {
+  it('styles the existing direct title without wrapping or replacing its children', async () => {
+    const panels = await import('../apps/game/src/panels.js');
+    const board = document.getElementById('firstpanel')!;
+    board.innerHTML = '<h3><button id="heading-back">‹ Compendium</button><span data-count>2</span></h3><h3>Details</h3><div class="compendium-scroll">Rows</div>';
+    const title = board.querySelector('h3')!, back = board.querySelector<HTMLButtonElement>('#heading-back')!;
+    const tapped = vi.fn(); back.addEventListener('click', tapped);
+    panels.registerPanel({ id: 'codex', el: board });
+    expect(board.querySelector(':scope > h3.sheet-header')).toBe(title);
+    expect(title.getAttribute('data-sheet-kind')).toBe('codex');
+    expect(board.querySelectorAll('.sheet-header')).toHaveLength(1);
+    expect(board.firstElementChild).toBe(board.querySelector(':scope > .sheet-close[data-pnx="codex"]'));
+    expect(board.querySelector(':scope > .compendium-scroll')).not.toBeNull();
+    expect(title.querySelector('[data-count]')?.textContent).toBe('2');
+    back.click(); expect(tapped).toHaveBeenCalledOnce();
+  });
+
+  it('retains the same direct Close through refills, removes duplicate Close controls, and preserves only Close-owned focus', async () => {
+    const panels = await import('../apps/game/src/panels.js');
+    const board = document.getElementById('firstpanel')!, opener = document.getElementById('first')!;
+    const onOpen = vi.fn(), onClose = vi.fn();
+    panels.registerPanel({ id: 'notifications', el: board, btns: [opener], onOpen, onClose });
+    opener.click();
+    const close = board.querySelector<HTMLButtonElement>('[data-pnx]')!;
+    const closeClick = vi.fn(); close.addEventListener('click', closeClick);
+    panels.fillPanel('notifications', '<h2>Notifications</h2><button data-pnx="duplicate">Duplicate</button><p>History</p>');
+    expect(board.firstElementChild).toBe(close); expect(document.activeElement).toBe(close);
+    expect(board.querySelectorAll('[data-pnx]')).toHaveLength(1);
+    expect(board.querySelector(':scope > h2.sheet-header')?.textContent).toBe('Notifications');
+    expect(onOpen).toHaveBeenCalledOnce(); expect(onClose).not.toHaveBeenCalled();
+    opener.focus(); panels.fillPanel('notifications', '<h2>Updated history</h2>');
+    expect(board.firstElementChild).toBe(close); expect(document.activeElement).toBe(opener);
+    close.click(); expect(closeClick).toHaveBeenCalledOnce(); expect(onClose).toHaveBeenCalledOnce();
+    expect(document.activeElement).toBe(opener);
+  });
+
   it('opens Charters from the actual main objective registration and restores that same native opener on Close', async () => {
     const panels = await import('../apps/game/src/panels.js');
     const objective = document.createElement('button');

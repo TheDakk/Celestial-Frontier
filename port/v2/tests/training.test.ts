@@ -10,6 +10,7 @@ import type {
 interface TestWindow extends Window {
   close: () => void;
   HTMLElement: typeof HTMLElement;
+  Element: typeof Element;
   MouseEvent: typeof MouseEvent;
   KeyboardEvent: typeof KeyboardEvent;
 }
@@ -20,7 +21,7 @@ const { JSDOM } = require('jsdom') as {
   JSDOM: new (html: string, options?: Record<string, unknown>) => TestDom;
 };
 const GLOBAL_KEYS = [
-  'window', 'document', 'HTMLElement', 'MouseEvent', 'getComputedStyle',
+  'window', 'document', 'HTMLElement', 'Element', 'MouseEvent', 'getComputedStyle',
 ] as const;
 const originalGlobals = new Map<string, PropertyDescriptor | undefined>();
 let dom: TestDom;
@@ -43,7 +44,7 @@ function installDom(): void {
       <button id="dockatlas">Atlas dock</button>
       <button id="dockshipyard">Shipyard dock</button>
       <button id="dockcodex">Compendium dock</button>
-      <button id="dockrecords">Records dock</button>
+      <button id="dockrecords">Records dock</button><button id="docksets">Settings</button>
     </div>
     <div id="raillft"><button id="railcodex">Compendium rail</button></div>
     <div id="railrgt">
@@ -52,7 +53,7 @@ function installDom(): void {
       <button id="railrecords">Records rail</button>
     </div>
     <div id="searchbox"><button>Search</button></div>
-    <div id="setpanel"><button>Settings</button></div>
+    <div id="setpanel" class="panel" aria-label="Settings" aria-hidden="true" style="display:none"><button>Settings</button></div>
     <div id="guidepanel"><button>Guide</button></div>
     <div id="codexpanel">
       <button data-pnx="codex">Close Compendium</button>
@@ -90,6 +91,8 @@ function installDom(): void {
   setGlobal('window', dom.window);
   setGlobal('document', dom.window.document);
   setGlobal('HTMLElement', dom.window.HTMLElement);
+  setGlobal('Element', dom.window.Element);
+  for (const panel of document.querySelectorAll('#atlaspanel,#shipyardpanel,#codexpanel,#recpanel')) panel.classList.add('panel');
   setGlobal('MouseEvent', dom.window.MouseEvent);
   setGlobal('getComputedStyle', dom.window.getComputedStyle.bind(dom.window));
   Object.defineProperty(dom.window.HTMLElement.prototype, 'getClientRects', {
@@ -414,6 +417,65 @@ describe('Field Training completion transaction UI', () => {
         .toBe(false);
       expect(curriculumCopyIsTruthful(steps), contradiction + ' restored').toBe(true);
     }
+  });
+
+  it('keeps explicitly opened Settings above the lesson focus scope and uses its real Close for Escape without ascent', async () => {
+    const panels = await import('../apps/game/src/panels.js');
+    const settings = document.getElementById('setpanel')!, opener = document.getElementById('docksets')!;
+    panels.registerPanel({ id: 'set', el: settings, btns: [opener],
+      onOpen: () => panels.fillPanel('set', '<h3>Settings</h3><button id="setting-pref">Preference</button>') });
+    const { training, closePanels } = await boot(async () => ({ kind: 'completed' }));
+    closePanels.mockImplementation(() => panels.closePanels());
+    expect(opener.closest('[inert]')).toBeNull(); expect(settings.closest('[inert]')).toBeNull();
+    expect(document.getElementById('dockrecords')?.closest('[inert]')).not.toBeNull();
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    opener.click(); // Open before the queued find-earth focus callback runs.
+    const close = settings.querySelector<HTMLButtonElement>(':scope > [data-pnx="set"]')!;
+    await turn(); expect(document.activeElement).toBe(close);
+    const preference = document.getElementById('setting-pref')!; preference.focus();
+    training.refreshTrainingScope(); await turn(); expect(document.activeElement).toBe(preference);
+    const ascent = vi.fn(); document.addEventListener('keydown', ascent);
+    preference.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+    expect(panels.openPanelId()).toBeNull(); expect(document.activeElement).toBe(opener);
+    expect(training.trainingStepId()).toBe('find-earth'); expect(ascent).not.toHaveBeenCalled();
+    opener.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+    await turn(); expect(document.activeElement).toBe(document.querySelector('canvas'));
+    expect(ascent).not.toHaveBeenCalled();
+    training.gameEvent('survey', { planetSeed: 133 });
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    training.gameEvent('atlas-add', { id: 'p133' }); training.gameEvent('atlas-open', { open: true });
+    opener.click(); // Land's deferred Atlas close must not close newly opened Settings.
+    await turn(); expect(panels.openPanelId()).toBe('set');
+    expect(document.activeElement).toBe(close); expect(closePanels).not.toHaveBeenCalled();
+  });
+
+  it('marks only current lesson surfaces for stacking and clears marks when Training ends', async () => {
+    const { training } = await boot(async () => ({ kind: 'completed' }));
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    training.gameEvent('survey', { planetSeed: 133 });
+    expect(document.querySelectorAll('.tutpri')).toHaveLength(1);
+    expect(document.getElementById('survey')!.classList.contains('tutpri')).toBe(true);
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    training.gameEvent('atlas-add', { id: 'p133' });
+    expect(document.querySelectorAll('.tutpri')).toHaveLength(1);
+    expect(document.getElementById('atlaspanel')!.classList.contains('tutpri')).toBe(true);
+    training.gameEvent('atlas-open', { open: true });
+    expect(document.querySelectorAll('.tutpri')).toHaveLength(1);
+    expect(document.getElementById('survey')!.classList.contains('tutpri')).toBe(true);
+    expect(document.getElementById('setpanel')!.classList.contains('tutpri')).toBe(false);
+    document.querySelector<HTMLButtonElement>('[data-sel="tutskip"]')!.click();
+    await turn(); expect(document.querySelectorAll('.tutpri')).toHaveLength(0);
+  });
+
+  it('keeps Settings locked while completion is pending and restores admission after refusal', async () => {
+    let settle!: (value: TrainingEndResult) => void;
+    const { training } = await boot(() => new Promise(resolve => { settle = resolve; }));
+    const opener = document.getElementById('docksets')!, settings = document.getElementById('setpanel')!;
+    document.querySelector<HTMLButtonElement>('[data-sel="tutskip"]')!.click();
+    expect(opener.closest('[inert]')).not.toBeNull(); expect(settings.closest('[inert]')).not.toBeNull();
+    settle({ kind: 'refused', reason: 'write-failed' }); await turn();
+    expect(training.trainingActive()).toBe(true);
+    expect(opener.closest('[inert]')).toBeNull(); expect(settings.closest('[inert]')).toBeNull();
   });
 
   it('keeps relocated shelf and scene controls locked through Training and restores their prior states', async () => {

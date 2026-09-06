@@ -42,23 +42,31 @@ export function registerPanel(def: PanelDef): void {
      the slice's panels refill through fillPanel, which re-seats) */
   seatPnx(def);
 }
-function seatPnx(def: PanelDef): void {
+function seatPnx(def: PanelDef, retained?: HTMLElement): void {
   const existing = [...def.el.querySelectorAll<HTMLElement>('[data-pnx]')];
-  for (const duplicate of existing.slice(1)) duplicate.remove();
-  if (existing[0]) return;
-  const x = document.createElement('button');
+  const x = retained || existing[0] || document.createElement('button');
+  for (const duplicate of existing) if (duplicate !== x) duplicate.remove();
   x.setAttribute('data-pnx', def.id);
   x.setAttribute('aria-label', 'Close ' + (def.el.getAttribute('aria-label') || def.id));
   x.textContent = '✕';
-  x.className = 'surface-close panel-close';
+  x.classList.add('surface-close', 'panel-close', 'sheet-close');
   def.el.prepend(x);
+  /* Keep both siblings direct: Close geometry and Compendium's virtual list
+     depend on that ownership. Style the existing title without copying it. */
+  const title = [...def.el.children].find((child) => child.matches('h2,h3'));
+  title?.classList.add('sheet-header');
+  title?.setAttribute('data-sheet-kind', def.id);
 }
 /** refill a panel's content WITHOUT losing the sticky ✕ */
 export function fillPanel(id: string, html: string): void {
   const def = PANELS.find((p) => p.id === id);
   if (!def) return;
+  const close = def.el.querySelector<HTMLElement>(':scope > [data-pnx]') || undefined;
+  const closeOwnedFocus = close !== undefined && document.activeElement === close;
+  close?.remove();
   def.el.innerHTML = html;
-  seatPnx(def);
+  seatPnx(def, close);
+  if (closeOwnedFocus) close?.focus({ preventScroll: true });
 }
 
 let _opener: HTMLElement | null = null;   /* FOCUS RESTORATION: closing returns focus to what opened */
