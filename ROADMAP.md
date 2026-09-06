@@ -65,6 +65,12 @@ passed. The successor updates obsolete release wording and the source-derived81-
 687ef4b59445d308b9e633876da3ed77456d9f903e2e4cf2d9a6e9538f13a60d. No product/producer/
 measurement changes. The red and focused Slice23/24 stop (before ordered-hash correction)
 are retained, alongside Glass8/8PASS. No browser stage ran on3101576.
+Successor294cc792dbc175c9463a4d1ff1fe761e73a4e9dc passed311files/3,311tests/1skip,
+Glass selftest and the three-row normal review with9images/all9native launcher journeys.
+Slice20260906095504288-90978-351c98d76e6f stopped at382,456ms because its old
+empty-sky coordinate900,300 now falls inside Settings; no phone canary ran. Red evidence
+is retained in UI_U1_LAUNCHER_294cc79_20260906. A bounded instrument successor follows,
+along with five late focused-tested Glass clause probes absent from294cc79. Product unchanged.
 No previous source's PASS is claimed for this revision. Preceding exact cfd63ae checkpoint
 passed locally and lives in audits/UI_U1_FINAL_cfd63ae_20260906; current revision evidence
 lives in audits/UI_U1_LAUNCHER_REVISION_20260906.md and its forthcoming exact-source carriers.

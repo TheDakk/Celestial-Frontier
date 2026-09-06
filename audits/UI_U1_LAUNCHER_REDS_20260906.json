@@ -26,6 +26,32 @@
         }
       ],
       "laterStages": "Not run after red."
+    },
+    {
+      "source": "294cc792dbc175c9463a4d1ff1fe761e73a4e9dc",
+      "stage": "slice",
+      "runId": "20260906095504288-90978-351c98d76e6f",
+      "evidenceDirectory": "UI_U1_LAUNCHER_294cc79_20260906",
+      "result": {
+        "status": "fail",
+        "control": "tap-empty-sky",
+        "durationMs": 382456,
+        "passedFiles": 311,
+        "passedTests": 3311,
+        "skippedTests": 1,
+        "normalReview": "PASS, three rows / nine images / all nine native launcher journeys"
+      },
+      "cause": "The empty-sky test retained the old fixed coordinate (900,300). With Settings anchored to the centered launcher, elementFromPoint returned a DIV inside UI instead of unowned canvas. The test correctly refused to click it.",
+      "correction": "The successor selects a measured edge point only when elementFromPoint equals the current root canvas and no UI boundary owns it, then reuses that exact point for the owned-canvas negative control and real dismissal. Both pointer receipts require trusted native mouse input, root-canvas identity and matching coordinates. Exact attribute restoration is rechecked before the final press. Scene/card/Settings outcomes stay intact; product unchanged.",
+      "laterStages": "Both phone Glass canaries were not run after the Slice red.",
+      "lateFixtureProvenance": "The five Glass release-clause removal/restoration probes in exceptional-crafting-evidence-contract.test.ts were authored and focused-tested8/8 but not included in294cc79. They will be included in the required successor; no294cc79 full-suite claim covers that late delta.",
+      "focusedResults": "Typecheck PASS; sixth-red plus shared-pointer Inventory2files/34tests PASS; module syntax/diffcheck PASS. Five late Glass probes previously focused8/8PASS.",
+      "preparationCarriers": [
+        {
+          "file": "UI_U1_LAUNCHER_PREP_cf-u1-empty-sky-root-canvas-prep.log.gz",
+          "sha256": "b8e022ca2daef5d4c094dc515d2f277e5b4a65ee1eb50998327da043fbbed4e8"
+        }
+      ]
     }
   ]
 }

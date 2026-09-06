@@ -123,6 +123,63 @@ function escapeHtml(value: string): string {
 }
 
 describe('sixth Slice red contract repairs', () => {
+  it('uses one measured unowned root-canvas point for owned and empty-sky native presses', () => {
+    const expression = executableDeclaration<string>('emptySkyPointExpression', '  const emptySkyPointerMatches =');
+    const matches = executableDeclaration<(receipt: unknown, point: unknown) => boolean>(
+      'emptySkyPointerMatches', '  const emptySky = await evalIn(emptySkyPointExpression);');
+    const dom = new JSDOM('<canvas id="root"></canvas><canvas id="other"></canvas><div id="settings"></div>',
+      { runScripts: 'outside-only' });
+    const { document } = dom.window;
+    const canvas = document.getElementById('root')!;
+    const other = document.getElementById('other')!;
+    const settings = document.getElementById('settings')!;
+    let target = 'root';
+    Object.defineProperty(dom.window, 'innerWidth', { value: 1280 });
+    Object.defineProperty(dom.window, 'innerHeight', { value: 800 });
+    Object.defineProperty(canvas, 'getBoundingClientRect', { value: () => ({
+      left: 0, right: 1280, top: 0, bottom: 800, width: 1280, height: 800 }) });
+    Object.defineProperty(document, 'elementFromPoint', { value: (x: number, y: number) =>
+      target === 'blocked' ? settings : target === 'other' ? other
+        : target === 'first-blocked' && x === 640 && y === 8 ? settings : canvas });
+    dom.window.__CF_SLICE__ = { app: { canvas }, api: { state: () => ({ panelOpen: 'set', cardOpen: false,
+      mode: 'system', gal: 999, star: 424242, planet: null, galX: 90, galY: -60, starX: 560, starY: 170 }) } };
+    const sample = () => dom.window.eval(expression) as { ok: boolean; x: number; y: number;
+      rootCanvas: boolean; prior: string | null; attempts: unknown[]; scene: string };
+    try {
+      const point = sample();
+      expect(point).toMatchObject({ ok: true, x: 640, y: 8, rootCanvas: true, prior: null });
+      target = 'first-blocked';
+      expect(sample()).toMatchObject({ ok: true, x: 8, y: 8, rootCanvas: true });
+      expect(sample().attempts).toHaveLength(2);
+      target = 'blocked'; expect(sample().ok).toBe(false);
+      target = 'other'; expect(sample().ok).toBe(false);
+      target = 'root'; canvas.setAttribute('data-panel-boundary', '');
+      expect(sample().ok).toBe(false);
+      canvas.removeAttribute('data-panel-boundary');
+      expect(sample()).toEqual(point);
+      const receipt = { tag: 'CANVAS', rootCanvas: true, trusted: true, pointerType: 'mouse', x: point.x, y: point.y };
+      expect(matches(receipt, point)).toBe(true);
+      for (const mutant of [null, { ...receipt, tag: 'DIV' }, { ...receipt, rootCanvas: false },
+        { ...receipt, trusted: false }, { ...receipt, pointerType: 'touch' },
+        { ...receipt, x: point.x + 2 }, { ...receipt, y: NaN }]) expect(matches(mutant, point)).toBe(false);
+      expect(matches(receipt, { ...point, ok: false })).toBe(false);
+      expect(matches(receipt, point)).toBe(true);
+      const owner = section(sliceSource, '  const emptySky = await evalIn(emptySkyPointExpression);',
+        '  const shot3 = await send');
+      expect(owner).not.toContain('900,300');
+      expect(owner.split('await clickDesktopPoint(emptySky)')).toHaveLength(3);
+      expect(owner).toContain('!emptySkyPointerMatches(shieldReceipt, emptySky)');
+      expect(owner).toContain('!emptySkyPointerMatches(receipt, emptySky)');
+      expect(owner).toContain('shielded.scene !== emptySky.scene');
+      expect(owner).toContain('tapClose.scene !== emptySky.scene');
+      expect(owner).toContain("tapClose.panelOpen !== null");
+      expect(owner).toContain("shielded.panelOpen !== 'set'");
+      expect(owner).toContain('if (!unownedAgain) failSliceWithoutCascade');
+      expect(owner).toContain('delete window.__cfPanelBoundaryCanvas;return restored');
+      expect(sliceSource).toContain('rootCanvas:target===window.__CF_SLICE__?.app?.canvas');
+    } finally { dom.window.close(); }
+  });
+
   it('binds Guide navigation to publication and the exact current 41-topic capability identity', () => {
     const owner = section(
       sliceSource,

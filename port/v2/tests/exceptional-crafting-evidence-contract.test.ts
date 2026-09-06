@@ -271,8 +271,23 @@ async function replayRenderedReleaseControls(source: string) {
         return { copy, result: dom.window.eval(expression) as ReleaseReplayAssessment };
       } finally { shipyard.innerHTML = original; }
     });
+    const launcherClaims = [
+      'ONE COMMAND DECK ON EVERY SCREEN: Five labelled boards and four utility controls share a centered bottom launcher across phone, tablet and desktop',
+      'ONE GLASS LANGUAGE: The v2 command deck unifies the top bar, objective, breadcrumbs, Survey, panels, contextual hints, bottom launcher on every device',
+      'UTILITIES FOLLOW THE LAUNCHER: Desktop notices and utility panels clear the measured bottom launcher and share its right edge',
+      'PRIME STAYS WITH YOUR BOARDS: Prime Codex keeps its icon, label and Signature count in the bottom launcher on every device',
+      'Spacing inside the wide bottom launcher belongs to that command deck and leaves the active panel open',
+    ].map((copy) => {
+      const item = [...panel.querySelectorAll('li')].find((row) => row.textContent?.includes(copy));
+      if (!item) throw new Error(`Release replay launcher clause missing: ${copy}`);
+      const prior = item.innerHTML;
+      try {
+        item.textContent = item.textContent!.replace(copy, 'Required launcher outcome removed');
+        return { copy, result: dom.window.eval(expression) as ReleaseReplayAssessment };
+      } finally { item.innerHTML = prior; }
+    });
     const final = dom.window.eval(expression) as ReleaseReplayAssessment;
-    return { result, after, reachClaims, final };
+    return { result, after, reachClaims, launcherClaims, final };
   } finally { dom.window.close(); }
 }
 
@@ -327,13 +342,17 @@ function exceptionalFixture(
 
 describe('Pureforged browser-evidence truth', () => {
   it('replays every current rendered release control and preserves the Research reach boundary', async () => {
-    const { result, after, reachClaims, final } = await replayRenderedReleaseControls(glassSource);
+    const { result, after, reachClaims, launcherClaims, final } = await replayRenderedReleaseControls(glassSource);
     expect(result.error).toBeNull();
     expect(result.baseline.ok).toBe(true);
     expect(result.ok).toBe(true);
     expect(result.restored).toBe(true);
     expect(after.ok).toBe(true);
     expect(final.ok).toBe(true);
+    expect(launcherClaims).toHaveLength(5);
+    for (const row of launcherClaims) {
+      expect(row.result, row.copy).toMatchObject({ ok: false, honest: true, overclaim: false, bulletCount: 81 });
+    }
     expect(result.truthfulFeatureClaims).toHaveLength(11);
     expect(result.truthfulFeatureClaims.every((row) => row.result.ok && row.result.honest
       && !row.result.overclaim)).toBe(true);

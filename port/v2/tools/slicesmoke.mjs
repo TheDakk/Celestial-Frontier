@@ -5416,6 +5416,7 @@ try {
       atlasTravel=target?.closest('[data-atlas-travel]'),atlasRow=atlasTravel?.closest('[data-aid]'),
       button=target?.closest('button');
       window.__cfPanelPointer={targetId:target?.id||null,tag:target?.tagName||null,
+        rootCanvas:target===window.__CF_SLICE__?.app?.canvas,
         buttonId:button?.id||null,buttonTag:button?.tagName||null,
         closeOwner:close?.closest('#inventorysheet')?.id==='inventorysheet'?'inventory-sheet':null,
         panelCloseOwner:panelClose?.getAttribute('data-pnx')||null,
@@ -9013,21 +9014,40 @@ try {
   await sleep(250);
   const shotSet = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(screenshotPath('settings'), Buffer.from(shotSet.data, 'base64'));
-  const emptySky = await evalIn(`(()=>{ const hit=document.elementFromPoint(900,300),state=window.__CF_SLICE__.api.state(),
-    scene=JSON.stringify({mode:state.mode,gal:state.gal,star:state.star,planet:state.planet,
-      galX:state.galX,galY:state.galY,starX:state.starX,starY:state.starY});
-    return {ok:hit instanceof HTMLCanvasElement&&!hit.closest('[data-panel-boundary],.panel,#importsheet'),
-      x:900,y:300,tag:hit?.tagName||null,id:hit?.id||null,panelOpen:state.panelOpen,cardOpen:state.cardOpen,
-      scene,prior:hit?.getAttribute?.('data-panel-boundary')??null};})()`);
+  const emptySkyPointExpression = `(()=>{const S=window.__CF_SLICE__,canvas=S?.app?.canvas,state=S?.api?.state?.(),
+    rect=canvas?.getBoundingClientRect(),scene=JSON.stringify({mode:state?.mode,gal:state?.gal,star:state?.star,planet:state?.planet,
+      galX:state?.galX,galY:state?.galY,starX:state?.starX,starY:state?.starY}),attempts=[];
+    if(!(canvas instanceof HTMLCanvasElement)||!rect||rect.width<=0||rect.height<=0)
+      return {ok:false,why:'current root canvas missing or empty',attempts};
+    const left=Math.max(0,rect.left),right=Math.min(innerWidth,rect.right),top=Math.max(0,rect.top),bottom=Math.min(innerHeight,rect.bottom),
+      width=right-left,height=bottom-top;
+    if(width<=16||height<=16)return {ok:false,why:'root canvas has no useful exposed viewport',attempts};
+    /* Prefer the sky edge, away from the centred system bodies. Each candidate
+       is measured and hit-tested; no historic rail/panel coordinate is trusted. */
+    const points=[{x:left+width/2,y:top+8},{x:left+8,y:top+8},{x:right-8,y:top+8},
+      {x:left+8,y:top+height/2},{x:right-8,y:top+height/2},{x:left+width/2,y:bottom-8}];
+    for(const point of points){const hit=document.elementFromPoint(point.x,point.y),
+      owned=!!hit?.closest('[data-panel-boundary],.panel,#importsheet');
+      attempts.push({...point,tag:hit?.tagName||null,id:hit?.id||null,rootCanvas:hit===canvas,owned});
+      if(hit===canvas&&!owned)return {ok:true,...point,tag:hit.tagName,id:hit.id||null,rootCanvas:true,
+        panelOpen:state.panelOpen,cardOpen:state.cardOpen,scene,prior:hit.getAttribute('data-panel-boundary'),attempts};}
+    return {ok:false,why:'root canvas has no unowned edge candidate',panelOpen:state.panelOpen,cardOpen:state.cardOpen,scene,attempts};})()`;
+  const emptySkyPointerMatches = (receipt, point) => point?.ok === true && receipt?.tag === 'CANVAS'
+    && receipt.rootCanvas === true && receipt.trusted === true && receipt.pointerType === 'mouse'
+    && Number.isFinite(receipt.x) && Number.isFinite(receipt.y) && Number.isFinite(point.x) && Number.isFinite(point.y)
+    && Math.abs(receipt.x-point.x)<=0.75 && Math.abs(receipt.y-point.y)<=0.75;
+  const emptySky = await evalIn(emptySkyPointExpression);
   if (!emptySky.ok || emptySky.panelOpen !== 'set' || emptySky.cardOpen) {
-    fails.push('TAP EMPTY SKY: fixed browser coordinate did not resolve to real unowned canvas with Settings open: '
+    fails.push('TAP EMPTY SKY: no measured unowned root-canvas point was available with Settings open: '
       + JSON.stringify(emptySky));
   } else {
     let shieldReceipt = null, canvasOwned = false, canvasRestore = null;
     try {
-      canvasOwned = await evalIn(`(()=>{ const hit=document.elementFromPoint(900,300);
-        if(!(hit instanceof HTMLCanvasElement))return false;window.__cfPanelBoundaryCanvas=hit;
+      canvasOwned = await evalIn(`(()=>{ const hit=document.elementFromPoint(${emptySky.x},${emptySky.y});
+        if(!(hit instanceof HTMLCanvasElement)||hit!==window.__CF_SLICE__?.app?.canvas
+          ||hit.closest('[data-panel-boundary],.panel,#importsheet'))return false;window.__cfPanelBoundaryCanvas=hit;
         hit.setAttribute('data-panel-boundary','');return true;})()`);
+      if (!canvasOwned) failSliceWithoutCascade('TAP EMPTY SKY: measured point lost its exact unowned root-canvas identity before the owned-control press');
       await armDesktopPointerReceipt();
       await clickDesktopPoint(emptySky);
       shieldReceipt = await takeDesktopPointerReceipt();
@@ -9041,19 +9061,23 @@ try {
     const shielded = await evalIn(`(()=>{ const state=window.__CF_SLICE__.api.state();return {panelOpen:state.panelOpen,
       cardOpen:state.cardOpen,scene:JSON.stringify({mode:state.mode,gal:state.gal,star:state.star,planet:state.planet,
         galX:state.galX,galY:state.galY,starX:state.starX,starY:state.starY})};})()`);
-    if (!canvasOwned || !canvasRestore || shieldReceipt?.tag !== 'CANVAS' || shieldReceipt?.pointerType !== 'mouse'
+    if (!canvasOwned || !canvasRestore || !emptySkyPointerMatches(shieldReceipt, emptySky)
       || shielded.panelOpen !== 'set' || shielded.cardOpen || shielded.scene !== emptySky.scene) {
       fails.push('TAP EMPTY SKY CONTROL FAILED — temporarily owned canvas still dismissed Settings: '
         + JSON.stringify({ emptySky, canvasOwned, canvasRestore, shieldReceipt, shielded }));
       if (shielded.panelOpen === null) await evalIn(`document.getElementById('docksets').click()`);
     }
+    const unownedAgain = await evalIn(`(()=>{const hit=document.elementFromPoint(${emptySky.x},${emptySky.y});
+      return hit===window.__CF_SLICE__?.app?.canvas&&hit instanceof HTMLCanvasElement
+        &&!hit.closest('[data-panel-boundary],.panel,#importsheet');})()`);
+    if (!unownedAgain) failSliceWithoutCascade('TAP EMPTY SKY: the same measured point no longer exposes the unowned root canvas after exact boundary restoration');
     await armDesktopPointerReceipt();
     await clickDesktopPoint(emptySky);
     const receipt = await takeDesktopPointerReceipt();
     const tapClose = await evalIn(`(()=>{ const state=window.__CF_SLICE__.api.state();return {panelOpen:state.panelOpen,
       cardOpen:state.cardOpen,scene:JSON.stringify({mode:state.mode,gal:state.gal,star:state.star,planet:state.planet,
         galX:state.galX,galY:state.galY,starX:state.starX,starY:state.starY})};})()`);
-    if (receipt?.tag !== 'CANVAS' || receipt?.pointerType !== 'mouse' || tapClose.panelOpen !== null
+    if (!emptySkyPointerMatches(receipt, emptySky) || tapClose.panelOpen !== null
       || tapClose.cardOpen || tapClose.scene !== emptySky.scene) {
       fails.push('tap-empty-to-close did not close the panel from a real canvas pointer: '
         + JSON.stringify({ emptySky, receipt, tapClose }));

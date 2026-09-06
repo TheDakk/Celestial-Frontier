@@ -30,3 +30,23 @@ independent ordered-copy hash and stopped on its old value. Root derived the new
 bullet hash687ef4b59445d308b9e633876da3ed77456d9f903e2e4cf2d9a6e9538f13a60d from source
 using built-in Node type stripping, and updated only that release authority. No measurement
 authority or product change follows from this correction. Fresh successor checks follow.
+
+## Second exact-source stop —294cc79
+
+Fresh root-main.js-free source294cc792dbc175c9463a4d1ff1fe761e73a4e9dc passed
+typecheck, artunused,311Vitest files/3,311tests/1skip, Glass selftest and fresh normal build.
+Normal UI review passed all three device rows, nine images and all nine native opener/Close
+journeys; all nine images were visually inspected. Existing tablet nameplate ellipsis remains.
+Slice20260906095504288-90978-351c98d76e6f stopped at382,456ms: the old empty-sky
+coordinate900,300 is now over Settings. It correctly failed before clicking a non-canvas DIV.
+Both phone canaries were skipped. Immutable logs/report/images are retained in
+UI_U1_LAUNCHER_294cc79_20260906. A bounded native-canvas test correction follows.
+
+The five Glass release-clause removal/restoration probes were a late agent-authored test delta,
+focused8/8PASS before294cc79 but not included in that commit. They join the required successor;
+294cc79 evidence does not claim to include them. Product/producer/measurement are unchanged.
+
+The instrument successor uses a measured exact root-canvas edge point, reused for owned
+and unowned presses with trusted mouse/coordinate receipts, exact restoration, and unchanged
+scene/card/Settings outcomes. Preparation: typecheck PASS; two focused files/34tests PASS;
+module syntax and diffcheck PASS. No other control or product was changed.
