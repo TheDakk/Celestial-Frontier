@@ -164,6 +164,14 @@ Before every new coding batch:
 6. Never use `git reset --hard`, `git clean -fd`, rebase, force-push, or any
    operation that discards work. If Git reports a conflict, stop and report
    it unless the user explicitly asks for conflict resolution.
+7. On the first coding batch of a new game-development session, complete
+   `UI_TOOLCHAIN.md`'s coding-session startup runbook before code/build/render work:
+   check official stable availability, apply eligible approved authoring-tool updates
+   under the shared lock while tools are idle, verify changed capabilities, and record
+   the result or explicit deferrals. Reuse that receipt within the uninterrupted session;
+   do not repeat updates on every message or attach them to a chat/timer. Each machine
+   needs its own verified inventory. Game/runtime/test locks, sealed inputs and GitHub
+   authority remain unchanged. This instruction does not interrupt existing jobs.
 
 ## Required preflight reminder to the user
 
