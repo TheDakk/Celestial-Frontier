@@ -134,12 +134,12 @@ selftests and root validate passed; two PNGs were retained with zero runtime/eva
 or key overflow. Evidence: `audits/UI_U1_UAT_RESTORATION_20260906.md` and
 `audits/UI_U1_UAT_RESTORATION_381ddf5_20260906/manifest.json`.
 
-The current restoration path completed. Both older failures remain historical OPEN blockers:
-the old pending expression/cause remains unknown and nonrecurrence is not repair. U1 remains
-accepted for UAT without a device-UAT completion claim. This bounded diagnostic batch ends;
-next is remaining local U1 checkpoint validation before U2, without another restoration retry or
-presentation refinement. No full three-view normal review, Slice, Glass, full chain or hosted
-run was performed; U2–U4 and Phase2 remain unstarted.
+The current normal three-view review passed on `ce8912864fabbe5624651e76c06b94f95b734f39`.
+[The checkpoint audit](audits/UI_U1_LOCAL_CHECKPOINT_20260906.md) records static validation, 146
+metrics, 131 geometry controls, nine PNGs and the subsequent noncertifying Slice instrument RED.
+Both phone canaries were not run. Accepted layout is unchanged; physical UAT and both historical
+causes remain open. Next is the bounded Slice boundary/inventory correction on a clean test
+snapshot. U2–U4, Phase2 and hosted work remain unstarted.
 
 U1 diagnostic update (2026-09-06): the normal-review tool adds viewport/resize facts and
 session-owned, auto-resuming trail-writer stacks. That diagnostic changed no product layout.

@@ -56,9 +56,11 @@ The phone-only restoration diagnostic passed at signed source
 390×844 restoration completion. Original native predecessors, 15000ms transport and debugger
 auto-resume timing remain intact. `audits/UI_U1_UAT_RESTORATION_20260906.md` owns exact evidence.
 Both older blockers remain historical OPEN: their old cause is unknown and nonrecurrence is not
-repair. The bounded batch ends with U1 accepted for UAT, not completed device UAT. Remaining local
-U1 checkpoint validation precedes U2; no further restoration retry or implementation/refinement.
-No full three-view review, Slice, Glass, full-chain or hosted run; U2–U4 and Phase2 stay unstarted.
+repair. Current checkpoint `ce8912864fabbe5624651e76c06b94f95b734f39` leaves product unchanged:
+static and normal three-view review passed; Slice stopped on the nested-boundary fault and right-rail
+hidden-copy inventory assumptions. Both phone canaries were not run. [The checkpoint audit](audits/UI_U1_LOCAL_CHECKPOINT_20260906.md)
+retains this noncertifying RED, its ambient-file source qualification and the next bounded instrument
+correction. Physical UAT stays open. No unchanged-source retry, U2–U4, Phase2 or hosted work followed.
 
 U1 review instrumentation (2026-09-06) now records public viewport/resize facts and
 auto-resumed trail-writer stacks between intentional controls. It does not read camera/travel

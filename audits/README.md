@@ -10,6 +10,14 @@ summary of it.
 
 ## Contents
 
+### U1 local checkpoint stopped at Slice — 2026-09-06
+
+[Audit](UI_U1_LOCAL_CHECKPOINT_20260906.md) and [resume](UI_U1_LOCAL_CHECKPOINT_RESUME_20260906.md)
+retain ce89128's clean static PASS, normal three-view PASS and noncertifying two-finding Slice RED.
+[Manifest](UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/manifest.json) preserves 28 carriers, including
+19 PNGs and full source/error receipts. Both phone canaries were not run; historical causes stay open.
+
+
 ### Overnight Batch 4 completion and review handoff — 2026-09-05
 
 [BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md](BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md)

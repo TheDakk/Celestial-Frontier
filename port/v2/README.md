@@ -40,9 +40,14 @@ the original native predecessors, 15000ms transport, fonts → two animation fra
 auto-resume timing. Named evaluations 283/284 and ordered receipt 33 establish current 390×844
 restoration completion. `../../audits/UI_U1_UAT_RESTORATION_20260906.md` owns the result and two PNGs.
 Both old blockers remain historical OPEN: the old pending expression/cause is unknown and
-nonrecurrence is not repair. This bounded batch ends. Remaining local U1 checkpoint validation
-precedes U2; no further restoration retry or implementation/refinement, full three-view review,
-Slice, Glass, full-chain or hosted run. U1 stays accepted for UAT without completed device UAT.
+nonrecurrence is not repair. Current checkpoint `ce8912864fabbe5624651e76c06b94f95b734f39`
+passed the hermetic develop profile (311 files, 3322 tests passed, 1 skipped) and normal three-view
+review (nine PNGs). Slice stopped with two instrument findings: an ancestor dock still protected
+the left-gap fault, and the right-rail hidden-copy inventory expected two controls instead of four.
+Both phone canaries were not run. [The checkpoint audit](../../audits/UI_U1_LOCAL_CHECKPOINT_20260906.md)
+owns evidence and the next bounded instrument correction. Slice correctly recorded dirty-diagnostic
+source due to the unchanged ambient .DS_Store; tracked source stayed clean. Physical UAT and both
+historical causes remain open. No unchanged-source retry, U2–U4, Phase2 or hosted work followed.
 
 U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options before use).
 It owns an isolated headless browser and creates three golden comparison sheets plus numeric
