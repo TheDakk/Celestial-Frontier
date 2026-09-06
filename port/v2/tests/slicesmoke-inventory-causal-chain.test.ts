@@ -444,7 +444,7 @@ describe('Slice Arc 2 Inventory causal interaction chain', () => {
     expect(assessInventoryPanelClose(fixture)).toEqual({ ok: true, reasons: [] });
   });
 
-  it('measures both real vertical rail gaps and rejects background hits, collapsed spacing and missing pointer ownership', () => {
+  it('measures each owned gap between unequal-width rail pills and rejects displaced edges, background hits and collapsed spacing', () => {
     const owner = exactSection(source, '  const railGapProbe =', '  const railButtonPoint =');
     const probe = Function(`${owner};return railGapProbe;`)() as (root: string, upper: string, lower: string) => string;
     const make = (id: string, left: number, top: number, width = 140, height = 44) => ({ id,
@@ -453,19 +453,25 @@ describe('Slice Arc 2 Inventory causal interaction chain', () => {
     const leftRail = make('raillft', 18, 130, 140, 96);
     const rightRail = make('railrgt', 1122, 130, 140, 96);
     const nodes = new Map([leftRail, rightRail,
-      make('railcharters', 18, 130), make('railcodex', 18, 182),
-      make('railatlas', 1122, 130), make('railshipyard', 1122, 182)].map(node => [node.id, node]));
+      make('railcharters', 18, 130, 100), make('railcodex', 18, 182, 140),
+      make('railatlas', 1122, 130, 140), make('railshipyard', 1162, 182, 100)].map(node => [node.id, node]));
     let hit: unknown = leftRail;
     let pointerEvents = 'auto';
     const document = { getElementById: (id: string) => nodes.get(id) ?? null, elementFromPoint: () => hit };
     const sample = (root: string, upper: string, lower: string) => Function('document', 'getComputedStyle', 'innerWidth', 'innerHeight', 'window',
       `return ${probe(root, upper, lower)};`)(document, () => ({ display: 'flex', pointerEvents }), 1280, 800,
       { __CF_SLICE__: { api: { state: () => ({ panelOpen: 'codex', cardOpen: false }) } } }) as {
-        geometry: boolean; ownerId: string; gap: number; targetId: string | null; point: { x: number; y: number } };
+        geometry: boolean; ownerId: string; gap: number; overlapLeft: number; overlapRight: number;
+        ownerEdge: string; targetId: string | null; point: { x: number; y: number } };
     const pairs = [['raillft', 'railcharters', 'railcodex'], ['railrgt', 'railatlas', 'railshipyard']] as const;
     for (const [root, upper, lower] of pairs) {
       hit = nodes.get(root);
-      expect(sample(root, upper, lower)).toMatchObject({ geometry: true, ownerId: root, gap: 8, targetId: root });
+      const baseline = sample(root, upper, lower);
+      expect(baseline).toMatchObject({ geometry: true, ownerId: root, gap: 8, targetId: root,
+        ownerEdge: root === 'raillft' ? 'left' : 'right' });
+      expect(baseline.overlapRight - baseline.overlapLeft).toBe(100);
+      expect(baseline.point.x).toBe((baseline.overlapLeft + baseline.overlapRight) / 2);
+      expect(nodes.get(upper)!.getBoundingClientRect().width).not.toBe(nodes.get(lower)!.getBoundingClientRect().width);
       hit = { id: 'game-canvas' };
       expect(sample(root, upper, lower).geometry).toBe(false);
       hit = nodes.get(root); pointerEvents = 'none';
@@ -473,12 +479,20 @@ describe('Slice Arc 2 Inventory causal interaction chain', () => {
       pointerEvents = 'auto';
       const original = nodes.get(lower)!;
       const rect = original.getBoundingClientRect();
-      for (const mutant of [make(lower, rect.left, rect.top - 8),
-        make(lower, rect.left + 8, rect.top), make(lower, rect.left, rect.top, rect.width, 43)]) {
+      for (const mutant of [make(lower, rect.left, rect.top - 8, rect.width),
+        make(lower, rect.left + 8, rect.top, rect.width), make(lower, rect.left, rect.top, rect.width, 43),
+        make(lower, rect.right + 20, rect.top, rect.width)]) {
         nodes.set(lower, mutant);
         expect(sample(root, upper, lower).geometry).toBe(false);
+        nodes.set(lower, original);
+        expect(sample(root, upper, lower).geometry).toBe(true);
       }
-      nodes.set(lower, original);
+      const originalOwner = nodes.get(root)!, ownerRect = originalOwner.getBoundingClientRect();
+      nodes.set(root, make(root, ownerRect.left + 4, ownerRect.top, ownerRect.width, ownerRect.height));
+      hit = nodes.get(root);
+      expect(sample(root, upper, lower).geometry).toBe(false);
+      nodes.set(root, originalOwner);
+      hit = originalOwner;
       expect(sample(root, upper, lower).geometry).toBe(true);
     }
     hit = leftRail;

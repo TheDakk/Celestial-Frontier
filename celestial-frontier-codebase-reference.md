@@ -9,17 +9,27 @@ controls declare their native button type explicitly.
 
 `port/v2/apps/game/src/ui-presentation-tokens.ts` supplies Inter/spacing/type/color/layer
 variables; `ui-shell-style.ts` adapts verified production v1.8.9 placement to existing v2
-native controls. Phone icon-only 60px boards and 44px utility targets use64px centers; Prime
-keeps N/9. Wide native left/right rails return, Prime is top-center and utilities bottom-right.
+native controls. Phone icon-only 60px boards and 44px utility targets use 64px centers; Prime
+keeps N/9. Five board icons sit above Records/Notifications/Guide/Settings/Survey (🔭). Compact
+Charts is hidden and the existing Settings → Star charts toggle remains available. Phone Search
+aligns upper-right and retains the visible placeholder Search. Wide native left/right rails return,
+Prime is top-center and four utilities stay bottom-right; Survey/Charts remain below the left rail.
+Desktop/tablet name, Objective and text controls use bounded `width:max-content` to fit their labels.
 The objective sits below Search at upper-right; name-only Inventory and Health stay upper-left.
-The red heart, exact numeric ratio, meter accessibility and wrapping name preserve native
-writers/actions. The canonical trail is populated but hidden; there is no Current view label.
+Health geometry, red heart, exact numeric ratio, meter accessibility and the wrapping name preserve
+native writers/actions. `#sceneactions` is nested in the dock and uses `display:contents` on compact
+layouts; AppChrome's existing nonzero-box filter excludes it from the top-chrome extent. The Survey
+and Charts handlers in `main.ts` are unchanged. The canonical trail is populated but hidden;
+there is no Current view label.
 Bottom guidance is plain text. Caption/hint geometry, compact short-landscape exception and
 72px roster band retain live measurements. UI_PRESENTATION.md owns exact values, the accepted
 safety deviations from production and the honest injected floating-trail negative control.
 Native panel/Training action/focus owners remain; passive layout wrappers pass canvas input.
 `notification-history.ts` retains explicit saved Mark read on the existing notification shape
-and UI checkpoint whitelist. U2–U4 and integrated-pilot approval remain open.
+and UI checkpoint whitelist. The compact-control correction awaits verification and visual review;
+Survey-only phone placement is Codex's stated default, not a new explicit approval for both shortcuts.
+The navigation blocker remains OPEN. U2–U4 and Phase2 remain unstarted; integrated-pilot approval
+remains open.
 
 U1 review instrumentation (2026-09-06) now records public viewport/resize facts and
 auto-resumed trail-writer stacks between intentional controls. It does not read camera/travel

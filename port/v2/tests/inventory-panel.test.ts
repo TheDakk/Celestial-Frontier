@@ -147,7 +147,7 @@ afterEach(() => {
 });
 
 describe('Arc 2 Inventory presentation', () => {
-  it('keeps nine exact production dock controls, relocated Inventory, and one accessible dialog shell', () => {
+  it('keeps nine direct production dock controls, nested Survey/Charts, relocated Inventory, and one accessible dialog shell', () => {
     const index = fs.readFileSync(path.join(here, '../apps/game/index.html'), 'utf8');
     const main = fs.readFileSync(path.join(here, '../apps/game/src/main.ts'), 'utf8');
     const parsed = new JSDOM(index);
@@ -159,6 +159,17 @@ describe('Arc 2 Inventory presentation', () => {
     expect(document.querySelector('#topbar #dockinventory')).not.toBeNull();
     expect([...document.querySelectorAll('#sceneactions > button')].map(button => button.id))
       .toEqual(['docksurvey', 'dockcharts']);
+    const sceneActions = document.getElementById('sceneactions')!;
+    expect(sceneActions.parentElement).toBe(document.getElementById('dock'));
+    expect(sceneActions.previousElementSibling?.id).toBe('docksets');
+    expect(sceneActions.getAttribute('role')).toBe('group');
+    expect(sceneActions.hasAttribute('data-panel-boundary')).toBe(true);
+    const survey = document.getElementById('docksurvey')!;
+    expect(survey.classList.contains('dock-utility')).toBe(true);
+    expect(survey.querySelector('.utility-face > .ico')?.textContent).toBe('🔭');
+    expect(survey.querySelector('.lbl')?.textContent).toBe('Survey');
+    expect(survey.getAttribute('aria-label')).toBe('survey card');
+    expect(survey.getAttribute('aria-controls')).toBe('survey');
     expect(document.querySelector('#dockinventory')).toMatchObject({
       id: 'dockinventory',
     });

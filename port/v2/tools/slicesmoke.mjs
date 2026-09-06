@@ -5946,11 +5946,12 @@ try {
       inside=(outer,inner)=>!!outer?.vis&&!!inner?.vis&&inner.l>=outer.l-1&&inner.r<=outer.r+1&&inner.t>=outer.t-1&&inner.b<=outer.b+1,
       inViewport=(box)=>!!box?.vis&&box.l>=-1&&box.r<=W+1&&box.t>=-1&&box.b<=H+1,
       aligned=(box)=>!!box?.vis&&Math.abs(box.l-expectedLeft)<=1&&Math.abs(box.w-expectedColumn)<=1,
+      fittedLeft=(box)=>!!box?.vis&&Math.abs(box.l-expectedLeft)<=1&&box.w>=44&&box.w<=expectedColumn+1,
       nativeAvailable=(id,box)=>{const el=document.getElementById(id),hit=box?.vis?document.elementFromPoint(box.cx,box.cy):null;
         return el instanceof HTMLButtonElement&&el.type==='button'&&!el.disabled&&!el.closest('[inert],[aria-hidden="true"]')
           &&!!(el.getAttribute('aria-label')||el.textContent||'').trim()&&box.w>=44&&box.h>=44&&!!hit&&(hit===el||el.contains(hit));};
     const bad=[];
-    if(!aligned(pc)||!inside(topbar,pc)||!inside(inventory,pc)||!nativeAvailable('dockinventory',inventory))
+    if(!(compact?aligned(pc):fittedLeft(pc))||!inside(topbar,pc)||!inside(inventory,pc)||!nativeAvailable('dockinventory',inventory))
       bad.push('playerchip not in its reachable aligned top-left Inventory owner: '+JSON.stringify({pc,inventory,topbar,expectedLeft,expectedColumn}));
     if(!aligned(hp)||!inside(topbar,hp)||!pc||Math.abs(hp.t-pc.b-8)>1||hp.h<44)
       bad.push('HP bar not aligned 8px under the player chip inside topbar: '+JSON.stringify({hp,pc,topbar}));
@@ -5958,11 +5959,10 @@ try {
       ||!trailNode.querySelector('.seg.cur')||!trailNode.textContent.trim()||document.querySelector('.location-readout,.location-label'))
       bad.push('canonical trail is not populated and visually absent from the header');
     const searchNode=document.getElementById('searchbox'),searchHit=srch?.vis?document.elementFromPoint(srch.cx,srch.cy):null,
-      expectedSearchLeft=expectedLeft+expectedColumn+10,expectedRight=W-safeRight-(compact?10:18);
+      expectedRight=W-safeRight-(compact?10:18);
     if(!inside(topbar,srch)||!inViewport(srch)||srch.h<44||srch.w<44||!pc||Math.abs(srch.t-pc.t)>1
-      ||(compact?Math.abs(srch.l-expectedSearchLeft)>1||srch.w>W*.37+1:Math.abs(srch.r-expectedRight)>1||Math.abs(srch.w-236)>1)
-      ||searchHit!==searchNode)
-      bad.push('search is not a reachable 44px control in its approved upper-right header column: '+JSON.stringify({srch,topbar,expectedSearchLeft,expectedRight,searchHit:searchHit?.id||null}));
+      ||Math.abs(srch.r-expectedRight)>1||(compact?srch.w>W*.37+1:Math.abs(srch.w-236)>1)||searchHit!==searchNode)
+      bad.push('search is not a reachable 44px control in its approved upper-right header column: '+JSON.stringify({srch,topbar,expectedRight,searchHit:searchHit?.id||null}));
     if(overlaps(pc,srch))bad.push('player chip overlaps the search bar');
     const prime=document.getElementById('primechip');
     if(!nativeAvailable('primechip',pr)||Math.abs(pr.cx-W/2)>1||(!compact&&Math.abs(pr.t-pc.t)>1))
@@ -5970,14 +5970,29 @@ try {
     for(const [name,box] of [['playerchip',pc],['hpbar',hp],['searchbox',srch],['objective',obj]])
       if(overlaps(pr,box))bad.push('primechip overlaps '+name);
     const sceneNode=document.getElementById('sceneactions'),sceneOrder=sceneNode?[...sceneNode.children].map(el=>el.id):[],
-      expectedSceneTop=compact?topbar?.b+8:rail?.b+8;
-    if(!aligned(scene)||Math.abs(scene.t-expectedSceneTop)>1||!inside(scene,survey)||!inside(scene,charts)||!aligned(survey)||!aligned(charts)
-      ||Math.abs(survey.t-scene.t)>1||Math.abs(charts.t-survey.b-8)>1
-      ||!nativeAvailable('docksurvey',survey)||!nativeAvailable('dockcharts',charts)
-      ||JSON.stringify(sceneOrder)!==JSON.stringify(['docksurvey','dockcharts']))
-      bad.push('scene actions are not the aligned native 44px vertical stack below their measured top owner: '+JSON.stringify({scene,survey,charts,topbar,rail,sceneOrder,expectedSceneTop}));
+      dockNode=document.getElementById('dock'),surveyNode=document.getElementById('docksurvey'),chartsNode=document.getElementById('dockcharts'),
+      sceneOwned=!!sceneNode&&sceneNode.parentElement===dockNode
+        &&JSON.stringify(sceneOrder)===JSON.stringify(['docksurvey','dockcharts']);
+    if(compact){
+      const face=r(surveyNode?.querySelector('.utility-face')),label=r(surveyNode?.querySelector('.lbl')),
+        expectedSurveyX=dock?.l+288,expectedSurveyY=dock?.b-22;
+      if(!sceneOwned||getComputedStyle(sceneNode).display!=='contents'||scene?.vis
+        ||!chartsNode||getComputedStyle(chartsNode).display!=='none'||charts?.vis
+        ||!inside(dock,survey)||!nativeAvailable('docksurvey',survey)||Math.abs(survey.w-44)>1||Math.abs(survey.h-44)>1
+        ||Math.abs(survey.cx-expectedSurveyX)>1||Math.abs(survey.cy-expectedSurveyY)>1
+        ||!inside(survey,face)||Math.abs(face.w-36)>1||Math.abs(face.h-36)>1||label?.vis)
+        bad.push('phone Survey is not the reachable 44px icon in its fifth dock slot with Charts hidden: '
+          +JSON.stringify({scene,survey,charts,face,label,dock,sceneOrder,sceneOwned,expectedSurveyX,expectedSurveyY}));
+    }else{
+      const expectedSceneTop=rail?.b+8;
+      if(!sceneOwned||!fittedLeft(scene)||Math.abs(scene.t-expectedSceneTop)>1||!inside(scene,survey)||!inside(scene,charts)
+        ||!fittedLeft(survey)||!fittedLeft(charts)||Math.abs(survey.t-scene.t)>1||Math.abs(charts.t-survey.b-8)>1
+        ||!nativeAvailable('docksurvey',survey)||!nativeAvailable('dockcharts',charts))
+        bad.push('scene actions are not the aligned native 44px vertical stack below their measured top owner: '
+          +JSON.stringify({scene,survey,charts,topbar,rail,sceneOrder,sceneOwned,expectedSceneTop}));
+    }
     if(!inside(topbar,obj)||!inViewport(obj)||!srch||Math.abs(obj.t-srch.b-8)>1||Math.abs(obj.r-expectedRight)>1
-      ||(compact?Math.abs(obj.l-srch.l)>1:Math.abs(obj.w-srch.w)>1)||overlaps(obj,srch)||overlaps(obj,hp)
+      ||obj.w<44||(compact?Math.abs(obj.l-expectedLeft-expectedColumn-10)>1:obj.w>237)||overlaps(obj,srch)||overlaps(obj,hp)
       ||document.getElementById('objchip')?.parentElement!==document.getElementById('topbar'))
       bad.push('objective chip is not contained in the right header column 8px below Search: '+JSON.stringify({obj,srch,topbar,hp,expectedRight}));
     if(!hint||Math.abs(hint.cx-W/2)>90||hint.b<H-160)bad.push('hint pill not bottom-center');
@@ -5985,9 +6000,9 @@ try {
     if(!compact){
       for(const [owner,box,ids] of [['raillft',rail,['railcharters','railcodex']],['railrgt',rightRail,['railatlas','railshipyard']]]){
         const rows=ids.map(id=>({id,box:r(id)}));
-        if(!box?.vis||Math.abs(box.t-topbar.b-8)>1||(owner==='raillft'?!aligned(box):Math.abs(box.r-expectedRight)>1||Math.abs(box.w-236)>1)
+        if(!box?.vis||Math.abs(box.t-topbar.b-8)>1||(owner==='raillft'?!fittedLeft(box):Math.abs(box.r-expectedRight)>1||box.w<44||box.w>236)
           ||rows.some((row,index)=>!inside(box,row.box)||!nativeAvailable(row.id,row.box)
-            ||Math.abs(row.box.l-box.l)>1||Math.abs(row.box.r-box.r)>1
+            ||Math.abs(owner==='raillft'?row.box.l-box.l:row.box.r-box.r)>1
             ||Math.abs(row.box.t-(index?rows[index-1].box.b+8:box.t))>1))
           bad.push('native rail lost its reachable 44px targets and real 8px gaps: '+JSON.stringify({owner,box,rows,topbar}));
       }
@@ -6468,14 +6483,18 @@ try {
     lower=document.getElementById(${JSON.stringify(lowerId)}),rr=rail?.getBoundingClientRect(),
     ur=upper?.getBoundingClientRect(),lr=lower?.getBoundingClientRect();
     if(!rail||!upper||!lower||!rr||!ur||!lr)return {geometry:false,why:'missing desktop rail gap fixture'};
-    const gap=lr.top-ur.bottom,point={x:(ur.left+ur.right)/2,y:(ur.bottom+lr.top)/2},hit=document.elementFromPoint(point.x,point.y),
-      state=S.api.state(),style=getComputedStyle(rail);
+    const gap=lr.top-ur.bottom,overlapLeft=Math.max(ur.left,lr.left),overlapRight=Math.min(ur.right,lr.right),
+      point={x:(overlapLeft+overlapRight)/2,y:(ur.bottom+lr.top)/2},hit=document.elementFromPoint(point.x,point.y),
+      ownerEdge=rail.id==='raillft'?'left':'right',state=S.api.state(),style=getComputedStyle(rail);
     return {geometry:innerWidth===1280&&innerHeight===800&&style.display==='flex'&&style.pointerEvents==='auto'
         &&['raillft','railrgt'].includes(rail.id)&&rr.width>=44&&rr.height>0
         &&ur.width>=44&&ur.height>=44&&lr.width>=44&&lr.height>=44
-        &&Math.abs(gap-8)<=0.5&&Math.abs(ur.left-lr.left)<=0.5&&Math.abs(ur.right-lr.right)<=0.5
-        &&point.x>rr.left&&point.x<rr.right&&point.y>rr.top&&point.y<rr.bottom&&hit===rail,
-      ownerId:rail.id,upperId:upper.id,lowerId:lower.id,gap,point,targetId:hit?.id||null,
+        &&Math.abs(gap-8)<=0.5&&overlapRight-overlapLeft>=44
+        &&Math.abs(ur[ownerEdge]-rr[ownerEdge])<=0.5&&Math.abs(lr[ownerEdge]-rr[ownerEdge])<=0.5
+        &&[ur,lr].every(box=>box.left>=rr.left-.5&&box.right<=rr.right+.5&&box.top>=rr.top-.5&&box.bottom<=rr.bottom+.5)
+        &&point.x>overlapLeft&&point.x<overlapRight&&point.x>rr.left&&point.x<rr.right
+        &&point.y>rr.top&&point.y<rr.bottom&&hit===rail,
+      ownerId:rail.id,upperId:upper.id,lowerId:lower.id,gap,overlapLeft,overlapRight,ownerEdge,point,targetId:hit?.id||null,
       boundary:rail.hasAttribute('data-panel-boundary'),panelOpen:state.panelOpen,cardOpen:state.cardOpen};})()`;
   const railButtonPoint = (id) => `(()=>{ const button=document.getElementById(${JSON.stringify(id)}),
     rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0,
@@ -6874,7 +6893,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 81,
-    sha256: '073e0c972fb6e544b30cd3cc1c8fb1daebcb9216788c763681f380c1723195cb',
+    sha256: 'bcad7fd27792ef2160b8451cdb2d366a36c9184bcc579655af3cb41129edebd7',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -8234,7 +8253,7 @@ try {
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/FAMILIAR CONTROLS ON EVERY SCREEN/.test(text)
-        &&/Phones keep five icon-only boards and four utility controls in compact bottom rows/.test(text)
+        &&/Phones keep five icon-only boards above five compact utility icons/.test(text)
         &&/UTILITIES STAY TOGETHER/.test(text)
         &&/Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge/.test(text)
         &&/PRIME KEEPS YOUR PROGRESS/.test(text)

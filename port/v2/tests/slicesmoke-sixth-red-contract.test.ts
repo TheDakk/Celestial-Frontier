@@ -384,7 +384,7 @@ describe('sixth Slice red contract repairs', () => {
     });
     const releaseRowsBefore = [...releaseDom.window.document.querySelectorAll('li')].map(row => row.textContent);
     for (const [current, stale] of [
-      ['Phones keep five icon-only boards and four utility controls in compact bottom rows', 'five labelled controls in one centered desktop deck'],
+      ['Phones keep five icon-only boards above five compact utility icons', 'five labelled controls in one centered desktop deck'],
       ['Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge',
         'Desktop utilities stay in the old viewport corner'],
       ['Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill', 'Signature count is removed on phones'],
@@ -3437,15 +3437,18 @@ describe('sixth Slice red contract repairs', () => {
     expect(expression).not.toMatch(/dispatchEvent|__CF_SLICE__|syncTopbar|setTimeout/);
   });
 
-  it('rejects clipped and overlapping U1 top-stack rectangles without moving the launcher contract', () => {
+  it('rejects clipped U1 header rectangles and missing, undersized or misplaced docked phone Survey outcomes', () => {
     const start = '  const geoCheck = `';
     const expression = section(sliceSource, start, '`;\n  const desktopGeometryBoundary =').slice(start.length);
-    const dom = new JSDOM(`<!doctype html><style>*{opacity:1;visibility:visible}#raillft,#railrgt,#trail{display:none}</style>
+    const dom = new JSDOM(`<!doctype html><style>*{opacity:1;visibility:visible}
+      #raillft,#railrgt,#trail,#dockcharts,#docksurvey .lbl{display:none}#sceneactions{display:contents}</style>
       <header id="topbar"><button id="dockinventory" type="button" aria-label="Inventory"><span id="playerchip">Explorer</span></button>
         <div id="hpbar">100/100</div><input id="searchbox"><span id="objchip">Objective</span>
         <div id="trail"><span class="seg cur">Cosmos</span></div></header>
-      <nav id="sceneactions"><button id="docksurvey" type="button">Survey</button><button id="dockcharts" type="button">Charts</button></nav>
-      <div id="ctxbar">Context</div><div id="hintpill">Hint</div><nav id="dock"><button id="primechip" type="button">Prime</button></nav>
+      <div id="ctxbar">Context</div><div id="hintpill">Hint</div><nav id="dock"><button id="primechip" type="button">Prime</button>
+        <div id="sceneactions" role="group"><button id="docksurvey" class="dock-utility" type="button" aria-label="survey card">
+          <span class="utility-face" id="surveyface">🔭</span><span class="lbl" id="surveylabel">Survey</span></button>
+          <button id="dockcharts" type="button">Charts</button></div></nav>
       <nav id="raillft"></nav><nav id="railrgt"></nav>`, { runScripts: 'outside-only' });
     const win = dom.window as unknown as Window & typeof globalThis;
     const document = win.document;
@@ -3456,11 +3459,13 @@ describe('sixth Slice red contract repairs', () => {
       ['dockinventory', { left: 10, top: 8, width: 140.4, height: 44 }],
       ['playerchip', { left: 10, top: 8, width: 140.4, height: 44 }],
       ['hpbar', { left: 10, top: 60, width: 140.4, height: 44 }],
-      ['searchbox', { left: 160.4, top: 8, width: 144.3, height: 44 }],
+      ['searchbox', { left: 235.7, top: 8, width: 144.3, height: 44 }],
       ['trail', { left: 0, top: 0, width: 0, height: 0 }],
-      ['sceneactions', { left: 10, top: 120, width: 140.4, height: 96 }],
-      ['docksurvey', { left: 10, top: 120, width: 140.4, height: 44 }],
-      ['dockcharts', { left: 10, top: 172, width: 140.4, height: 44 }],
+      ['sceneactions', { left: 0, top: 0, width: 0, height: 0 }],
+      ['docksurvey', { left: 301, top: 788, width: 44, height: 44 }],
+      ['surveyface', { left: 305, top: 792, width: 36, height: 36 }],
+      ['surveylabel', { left: 0, top: 0, width: 0, height: 0 }],
+      ['dockcharts', { left: 0, top: 0, width: 0, height: 0 }],
       ['objchip', { left: 160.4, top: 60, width: 219.6, height: 44 }],
       ['ctxbar', { left: 100, top: 650, width: 190, height: 28 }],
       ['hintpill', { left: 130, top: 696, width: 130, height: 24 }],
@@ -3474,10 +3479,13 @@ describe('sixth Slice red contract repairs', () => {
         return { ...b, x: b.left, y: b.top, right: b.left + b.width, bottom: b.top + b.height };
       } });
     }
+    let blockedHit: string | null = null;
     document.elementFromPoint = ((x: number, y: number) => {
       for (const id of ['dockinventory', 'searchbox', 'docksurvey', 'dockcharts', 'primechip']) {
         const b = boxes.get(id)!;
-        if (x >= b.left && x <= b.left + b.width && y >= b.top && y <= b.top + b.height) return document.getElementById(id);
+        if (x >= b.left && x <= b.left + b.width && y >= b.top && y <= b.top + b.height) {
+          return id === blockedHit ? document.body : document.getElementById(id);
+        }
       }
       return document.body;
     }) as typeof document.elementFromPoint;
@@ -3489,10 +3497,14 @@ describe('sixth Slice red contract repairs', () => {
         ['objective overlaps Search', 'objchip', { top: 8 }, 'objective chip'],
         ['objective vertically clipped', 'objchip', { height: 700 }, 'objective chip'],
         ['HP overlaps nameplate', 'hpbar', { top: 40 }, 'HP bar'],
-        ['scene stack detached from topbar', 'sceneactions', { top: 140 }, 'scene actions'],
-        ['stale published anchor after header growth', 'topbar', { height: 131.4375 }, 'scene actions'],
-        ['Survey target below 44px', 'docksurvey', { height: 43 }, 'scene actions'],
+        ['header clips its current lower row', 'topbar', { height: 100 }, 'HP bar'],
+        ['Survey outside the dock', 'docksurvey', { top: 120 }, 'phone Survey'],
+        ['Survey in the wrong lower-row slot', 'docksurvey', { left: 237 }, 'phone Survey'],
+        ['Survey target below 44px height', 'docksurvey', { height: 43 }, 'phone Survey'],
+        ['Survey target below 44px width', 'docksurvey', { width: 43 }, 'phone Survey'],
+        ['Survey emoji face enlarged beyond 36px', 'surveyface', { width: 44 }, 'phone Survey'],
         ['Search is undersized', 'searchbox', { height: 43 }, 'search is not'],
+        ['Search drifts back toward center', 'searchbox', { left: 160.4 }, 'search is not'],
       ];
       for (const [name, id, changes, prefix] of mutations) {
         const prior = boxes.get(id)!;
@@ -3502,6 +3514,29 @@ describe('sixth Slice red contract repairs', () => {
         } finally { boxes.set(id, prior); }
         expect(run(), `${name} restoration`).toEqual([]);
       }
+      const survey = document.getElementById('docksurvey')!, scene = document.getElementById('sceneactions')!,
+        charts = document.getElementById('dockcharts')!, dock = document.getElementById('dock')!;
+      const phoneSurveyFailed = () => run().some(finding => finding.startsWith('phone Survey'));
+      survey.remove();
+      expect(phoneSurveyFailed(), 'missing Survey cannot count as a boxless group PASS').toBe(true);
+      scene.insertBefore(survey, charts);
+      expect(run()).toEqual([]);
+      survey.style.display = 'none';
+      expect(phoneSurveyFailed(), 'hidden Survey is unavailable').toBe(true);
+      survey.style.removeProperty('display');
+      expect(run()).toEqual([]);
+      blockedHit = 'docksurvey';
+      expect(phoneSurveyFailed(), 'covered Survey is unavailable').toBe(true);
+      blockedHit = null;
+      expect(run()).toEqual([]);
+      document.body.appendChild(scene);
+      expect(phoneSurveyFailed(), 'viewport-aligned Survey without the dock owner is rejected').toBe(true);
+      dock.appendChild(scene);
+      expect(run()).toEqual([]);
+      charts.style.display = 'flex';
+      expect(phoneSurveyFailed(), 'phone Charts must be explicitly hidden').toBe(true);
+      charts.style.removeProperty('display');
+      expect(run()).toEqual([]);
       const trail=document.getElementById('trail')!;
       trail.style.display='flex';
       expect(run().some(finding=>finding.startsWith('canonical trail'))).toBe(true);
