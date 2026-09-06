@@ -20,8 +20,11 @@ not an explicit new approval from Nick for either optional arrangement.
 `#sceneactions` now belongs inside the dock; compact `display:contents` lets Survey occupy its
 lower-row slot and leaves no wrapper box for top-chrome measurement. Existing native action,
 focus, save and gameplay owners remain unchanged. No `main.ts` gameplay change or new action.
-Verification and visual acceptance of this correction are pending; the navigation blocker stays
-OPEN. This remains bounded U1; no U2–U4, Phase2 or hosted action is authorized.
+Static checks/build passed; normal review stopped INSTRUMENT RED during phone portrait restoration.
+Visual acceptance is pending and the navigation blocker stays OPEN and unattributed. The exact
+source, partial phone evidence and unrun stages are recorded in
+`../audits/UI_U1_COMPACT_CONTROLS_20260906.md`. This remains bounded U1; no U2–U4, Phase2 or hosted
+action is authorized.
 
 ### Superseded screenshot amendment (preserved verbatim)
 

@@ -71,11 +71,18 @@ capacity and 60-entry import allowance remain. Passive history never joins an in
 snapshot; no new timer, schema, import door or competing persistence writer is introduced.
 The bottom bell reads this history; its old duplicate shelf button is hidden.
 
-U1 remains a visual approval checkpoint. This compact-control correction is implemented with
-verification and Nick's visual review pending; the navigation blocker remains OPEN. The Survey-only
-compact placement is Codex's stated default after an optional preference question, not a separate
-explicit approval to add Charts to the phone dock. Normal review pairs three v1 goldens with v2 and
-exercises real visible native opener/Close/focus journeys. Numeric checks observe actual rails,
+U1 remains a visual approval checkpoint. Signed source `c57aaaebc656f2e2d15705601fe1a2a73cf15f1f`
+passed fresh typecheck/artunused, Vitest (311 files; 3,320 passed, 1 skipped), Glass selftest and
+build. Normal review STOPPED / INSTRUMENT RED at a `Runtime.evaluate` timeout during phone portrait
+restoration after 23 trusted inputs. Default-phone 31 deltas/34 controls, larger text and
+844×390 Settings-open/collision/Close probes passed before the stop. Only two phone PNGs exist;
+tablet/desktop images, Slice and both phone Glass rows were NOT RUN. No runtime/debugger error or
+navigation recurrence was observed, but the prior navigation blocker remains OPEN and unattributed.
+Nick's visual approval is pending; exact results and evidence:
+`audits/UI_U1_COMPACT_CONTROLS_20260906.md` and `audits/UI_U1_COMPACT_CONTROLS_c57aaae_20260906/`.
+The Survey-only compact placement is Codex's stated default after an optional preference question,
+not a separate explicit approval to add Charts to the phone dock. Normal review pairs three v1
+goldens with v2 and exercises real visible native opener/Close/focus journeys. Numeric checks observe actual rails,
 phone icon/count state, Search/Objective alignment, full name, meter contrast and plain hint.
 Slice/Glass preserve their ledgers and original pinch gestures. A normally hidden canonical
 trail is described honestly: the historical visible-trail collision/fallback controls explicitly

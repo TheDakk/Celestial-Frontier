@@ -1,0 +1,249 @@
+{
+  "schema": "cf-u1-compact-controls-evidence/v1",
+  "source": "c57aaaebc656f2e2d15705601fe1a2a73cf15f1f",
+  "certification": false,
+  "status": "INSTRUMENT RED \u2014 phone portrait restoration evaluation timed out",
+  "navigationBlocker": "OPEN \u2014 no recurrence or repair established",
+  "results": {
+    "source": "c57aaaebc656f2e2d15705601fe1a2a73cf15f1f",
+    "root": "/private/tmp/cf-u1-compact-c57aaae",
+    "output": "/private/tmp/cf-u1-compact-results-c57aaae",
+    "checks": [
+      {
+        "name": "clone",
+        "command": [
+          "git",
+          "clone",
+          "--shared",
+          "--no-checkout",
+          "/Users/nick/Projects/celestial-frontier-openai-mac",
+          "/private/tmp/cf-u1-compact-c57aaae"
+        ],
+        "startedAt": "2026-09-06T17:38:23.728469+00:00",
+        "exitCode": 0,
+        "endedAt": "2026-09-06T17:38:23.765596+00:00"
+      },
+      {
+        "name": "checkout",
+        "command": [
+          "git",
+          "checkout",
+          "--detach",
+          "c57aaaebc656f2e2d15705601fe1a2a73cf15f1f"
+        ],
+        "startedAt": "2026-09-06T17:38:23.765838+00:00",
+        "exitCode": 0,
+        "endedAt": "2026-09-06T17:38:25.287578+00:00"
+      },
+      {
+        "name": "install",
+        "command": [
+          "npm",
+          "ci",
+          "--prefer-offline",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "startedAt": "2026-09-06T17:38:25.287906+00:00",
+        "exitCode": 0,
+        "endedAt": "2026-09-06T17:38:26.678444+00:00"
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "startedAt": "2026-09-06T17:38:26.678909+00:00",
+        "exitCode": 0,
+        "endedAt": "2026-09-06T17:38:29.318116+00:00"
+      },
+      {
+        "name": "artunused",
+        "command": [
+          "npm",
+          "run",
+          "artunused"
+        ],
+        "startedAt": "2026-09-06T17:38:29.318533+00:00",
+        "exitCode": 0,
+        "endedAt": "2026-09-06T17:38:30.777384+00:00"
+      },
+      {
+        "name": "vitest",
+        "command": [
+          "npx",
+          "vitest",
+          "run"
+        ],
+        "startedAt": "2026-09-06T17:38:30.777755+00:00",
+        "exitCode": 0,
+        "endedAt": "2026-09-06T17:39:16.248129+00:00"
+      },
+      {
+        "name": "glass-selftest",
+        "command": [
+          "node",
+          "tools/glassmatrix.mjs",
+          "--selftest"
+        ],
+        "startedAt": "2026-09-06T17:39:16.248717+00:00",
+        "exitCode": 0,
+        "endedAt": "2026-09-06T17:39:18.062532+00:00"
+      },
+      {
+        "name": "normal-build",
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ],
+        "startedAt": "2026-09-06T17:39:18.062890+00:00",
+        "exitCode": 0,
+        "endedAt": "2026-09-06T17:39:19.845604+00:00"
+      },
+      {
+        "name": "ui-review",
+        "command": [
+          "node",
+          "tools/ui-shell-review.mjs",
+          "/private/tmp/cf-u1-compact-c57aaae/port/v2/apps/game/dist",
+          "/private/tmp/cf-u1-compact-results-c57aaae/review"
+        ],
+        "startedAt": "2026-09-06T17:39:19.845946+00:00",
+        "exitCode": 1,
+        "endedAt": "2026-09-06T17:39:48.582473+00:00"
+      }
+    ],
+    "status": "FAIL"
+  },
+  "files": [
+    {
+      "file": "artunused.log.gz",
+      "bytes": 70,
+      "sha256": "876709bbe6c507f5d7e821ad1dfbda92aa8c5cced4bfc03ea9924afec72a21c2",
+      "originalBytes": 58,
+      "originalSha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "file": "checkout.log.gz",
+      "bytes": 96,
+      "sha256": "7fe0accb05ca0a8452ce2f38a36b473cfa42114ce63330071e8aa889c5565163",
+      "originalBytes": 81,
+      "originalSha256": "5ef47b518e22a9cb9ad58dd17e69a1ff33263079f4c3477602142c7add7bda48"
+    },
+    {
+      "file": "clone.log.gz",
+      "bytes": 79,
+      "sha256": "5bedd138b75d9f0f96428003cac2ffb3c5093c96e90eb12ec92603066dac6bd9",
+      "originalBytes": 59,
+      "originalSha256": "7f4bae432d8dc78e95eeab163dbc6591b03f45b9cb950714ccbcd65ad382eb03"
+    },
+    {
+      "file": "glass-selftest.log.gz",
+      "bytes": 557,
+      "sha256": "0934004f4289bdc8411b08aad1f719dd3c0dc680ec7b0bc815187393b563f0c0",
+      "originalBytes": 909,
+      "originalSha256": "c8f8ecabf4fa8c386cf0a6474708e6644549228bbf468849c97d5bfaca6ce067"
+    },
+    {
+      "file": "install.log.gz",
+      "bytes": 178,
+      "sha256": "3efb8e6dda7f28ed370f173dda4d3aa600a7b31727e1635fcfbe21c1292f7bf5",
+      "originalBytes": 332,
+      "originalSha256": "eec981112503bc416ba691bb8d68705f1f2f163c9b18c74491df037984e54ac2"
+    },
+    {
+      "file": "normal-build.log.gz",
+      "bytes": 1874,
+      "sha256": "db54c8fab9cd71628ce3b43cdac457e72aa4bcd443d74a178598045364a70b16",
+      "originalBytes": 5281,
+      "originalSha256": "86682254bae2e8536e45f59778819d8b1582a5fc8fcf267989be4fa8a9f04104"
+    },
+    {
+      "file": "typecheck.log.gz",
+      "bytes": 99,
+      "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
+      "originalBytes": 134,
+      "originalSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "file": "ui-review.log.gz",
+      "bytes": 340,
+      "sha256": "8e798986bb6d90b53a72e05cca3109bb40e554027fc7591647c026899e0c49a3",
+      "originalBytes": 729,
+      "originalSha256": "329a751fa63e1ab481c14f625c76184a0e4fe920c0ce9ac3a7ef1a4da7f373ab"
+    },
+    {
+      "file": "vitest.log.gz",
+      "bytes": 2173,
+      "sha256": "a5991b43b5f3b628c4a094d660b309577ce0dd370e631d54c2ec9dcc690231f4",
+      "originalBytes": 5813,
+      "originalSha256": "7bd51ba8d32e3e52bc4a832c2d840b5967048f06eb587fcc5319f48bbb6d60da"
+    },
+    {
+      "file": "resolved-trail-stacks.json.gz",
+      "bytes": 939,
+      "sha256": "662cb1843f029eb86a6199106c7f3c999f43cc3a34e582a6d9c4a5194c6893b7",
+      "originalBytes": 11771,
+      "originalSha256": "cca93a6faa7600ec090eecd80ba1d4f4915fc64ba1e2d166b06d9738c0e402af"
+    },
+    {
+      "file": "results.json.gz",
+      "bytes": 648,
+      "sha256": "54981126b11e9a5e4aca72af2c3ece8da07a67dbf25dd1303e634780b0148125",
+      "originalBytes": 2799,
+      "originalSha256": "6c80793021cf7a201c435d18dadbb9da32f77355afaa044430556bc2decd5c0e"
+    },
+    {
+      "file": "review.json.gz",
+      "bytes": 68922,
+      "sha256": "ea811fb7286e8f8f31274765a6e3932cbcfc214ccf904c4a50cc36c7d189b536",
+      "originalBytes": 2706593,
+      "originalSha256": "a328ae80f90ed3efc8d222b93dc2e023c48213483325a4e667660d3bd97e05d5"
+    },
+    {
+      "file": "u1-main-phone.png",
+      "bytes": 169618,
+      "sha256": "5fbdb7f7387addac0272bb967fd8aeb15e792db0933fe3f285f13e1a647dc0ae",
+      "originalBytes": 169618,
+      "originalSha256": "5fbdb7f7387addac0272bb967fd8aeb15e792db0933fe3f285f13e1a647dc0ae"
+    },
+    {
+      "file": "u1-notifications-phone.png",
+      "bytes": 177533,
+      "sha256": "6355576fb9573463f6b24cea19e9ba82b0a3612eda6deaeb5e6db762586dede0",
+      "originalBytes": 177533,
+      "originalSha256": "6355576fb9573463f6b24cea19e9ba82b0a3612eda6deaeb5e6db762586dede0"
+    },
+    {
+      "file": "main-DmU81B0X.js.gz",
+      "bytes": 358387,
+      "sha256": "c27c8f3181a1bb5a28cb37023d981b8b79dba21359800ca8db51db852700ec2d",
+      "originalBytes": 1395242,
+      "originalSha256": "6c9aeae5d44ba53fc76e18686ce40d6ed755ff9cf204c3de00a70bfa3a7fed05"
+    },
+    {
+      "file": "main-DmU81B0X.js.map.gz",
+      "bytes": 1085871,
+      "sha256": "36511c384abe485d2fc7672466d60248b850fdea1ec92cf5e3e7c284f7c57377",
+      "originalBytes": 5128859,
+      "originalSha256": "ebc809241ea819851dd136acc6ccb66390a1fe5579e65f558763201d8b0b3394"
+    },
+    {
+      "file": "normal-build-index.html.gz",
+      "bytes": 15343,
+      "sha256": "e7d1a6a3394777c143197d940e857abb6417e2a56b3ce1b980a6064ac45e479f",
+      "originalBytes": 70174,
+      "originalSha256": "6fc0dc6c14bb7b03a576913e2b987a9d96db52485b5b11f6496ae42f77636ab0"
+    },
+    {
+      "file": "normal-build-service-worker.js.gz",
+      "bytes": 7353,
+      "sha256": "eea14e254f2391878dce9c731561799841c5008622c2be5b7d65dc40b139de07",
+      "originalBytes": 20584,
+      "originalSha256": "8dc168aec20d705d91ea945998ce29c376bcb5dde4746f81276dfdf79a8d6585"
+    }
+  ]
+}

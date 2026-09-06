@@ -1,6 +1,6 @@
 # U1 compact controls — 2026-09-06
 
-Status: IMPLEMENTED; committed-source browser verification pending. U1 visual approval and the
+Status: IMPLEMENTED / VERIFICATION STOPPED ON INSTRUMENT RED. U1 visual approval and the
 recorded navigation blocker remain OPEN. No U2–U4, Phase2, hosted or audiovisual-pilot work.
 
 Nick asked for upper-right phone Search with the plain Search prompt, desktop pills that fit
@@ -31,7 +31,7 @@ boot errors and50-probe baseline match. Bounded review caught/fixed Charts CSS s
 stale nine-button reviewer expectation and a boxless-group collision oracle before browser work.
 Producer derivation returned its expected exit2 on the unpinned changed build (twice: before and
 after the CSS specificity correction); these are authority measurements, not browser test passes.
-No unchanged-source browser retry. Full committed-source checks are pending.
+No unchanged-source browser retry. The terminal committed-source result follows below.
 
 Draft81 bullets now bind bcad7fd27792ef2160b8451cdb2d366a36c9184bcc579655af3cb41129edebd7.
 Compendium producer is680a4b7caf6eb7b451063d1f4160c2d61f0524dbc98b14b515c48002bd8dfabd;
@@ -52,9 +52,44 @@ because five processes use26.7.0. Root main.js absent; ambient .DS_Store untouch
 privacy; owned isolated headless browsers with the macOS escalation and shared toolchain lock.
 Budget UNFROZEN/PUBLIC per last verification/private fallback3000; zero hosted authority or writes.
 
-Next: commit locally, use a fresh checkout for typecheck/artunused/Vitest/Glass selftest/normal
-build/review, then Slice develop and the two phone Glass rows only while every predecessor passes.
-Stop at the first red and retain exact evidence; do not run unchanged-source retries. This is the
-existing bounded U1 checkpoint, not full certification. Nick need not open Claude now. Claude
-preserves anthropic/mac and unmerged173c806; no copy/merge/duplicate battery. No PR or push now;
-future openai/mac → develop integration needs its separate exact hosted authorization.
+## Terminal result and retained evidence
+
+Signed and signature-verified product/tested source c57aaaebc656f2e2d15705601fe1a2a73cf15f1f.
+The later records commit is not a tested product source. Fresh isolated checkout:
+
+- Typecheck/artunused PASS; Vitest311 files /3320 passed /1 skipped.
+- Glass instrument selftest and normal distributable build PASS.
+- Normal review INSTRUMENT RED,17:39:20.260–17:39:48.558 UTC. Runtime.evaluate timed out while
+  restoring390×844 after the844×390 Settings probe. No retry; all later stages stopped.
+- Phone default31 metrics,34 negative controls, nine panel journeys and23 trusted deliveries
+  passed. Same-task Settings/Motion/Close restoration, fs-xl and landscape Settings/collision
+  rejection/exact style restoration/Close passed. Whole phone restoration is incomplete.
+- Two current-source phone PNGs retained and the main phone image inspected. Tablet/desktop
+  geometry and images, three golden comparison sheets, Slice and both phone Glass rows NOT RUN.
+
+Settings Close restored focus to docksets and retained Cosmos. Window and visual-viewport events
+then recorded390×844; cleanup could still collect DOM data at that size with panels closed and
+Cosmos intact. The absent narrow.restored record places the timeout before final restoration
+assessment completed: either its font/two-frame boundary evaluation or following shellGeometry
+read. The existing report does not identify which expression timed out. No lasting browser hang,
+product cause or repaired behavior is established. Four debugger pauses were all resumed; mapped
+stacks again show frame-coalescer → renderer resize rerender → hudText universe → setTrail.
+No runtime/debugger errors or trace overflow were recorded. No navigation recurrence observed;
+the original08cd97d blocker stays OPEN and unattributed.
+
+Manifest: audits/UI_U1_COMPACT_CONTROLS_c57aaae_20260906/manifest.json
+SHA256 2fdd35a7609d65d98acdca61b341a5d63dbe395c505617704edc377c5437e964.
+All18 carriers, original decompressed hashes, PNG hashes and retained generated bundle hashes
+verified. Includes exact logs/report, trace, two phone PNGs, generated main JS/map, normal index/
+service-worker and source-map-resolved stacks. The fresh checkout remains clean. This is partial
+local browser evidence, not full U1, a certificate, physical-device evidence or visual acceptance.
+
+## Paired next steps
+
+Codex: stop at this retained failure; next bounded correction is to identify the exact restoration
+evaluation and its settlement evidence before proposing an instrument fix. Do not blindly retry,
+increase deadlines, insert a delay, alter navigation or run downstream gates. Resume via
+UI_U1_COMPACT_CONTROLS_RESUME_20260906.md. Nick can review the phone placement now; desktop fit
+is implemented but has no completed new visual review. Claude: Nick need not open Claude now;
+preserve anthropic/mac and unmerged173c806, with no product copying/merge/duplicate battery.
+No PR or push now; future openai/mac → develop integration needs separate exact hosted authority.

@@ -11,9 +11,11 @@ meter geometry. The compact dock keeps five board icons and adds Survey (🔭) a
 utility at 64px pitch. Compact Charts is hidden; Settings → Star charts remains available. On wide
 screens Survey/Charts remain fitted text controls below the left rail. The nested `#sceneactions`
 uses compact `display:contents`, so its zero-size wrapper does not extend measured top chrome.
-No native action, gameplay or `main.ts` owner changes. This correction awaits verification and
-visual review; the navigation blocker remains OPEN. Survey-only compact placement is Codex's stated
-default after an optional preference question. The accepted brief and amendments are in
+No native action, gameplay or `main.ts` owner changes. Static checks/build passed; normal review
+stopped INSTRUMENT RED during phone portrait restoration. Only partial phone evidence was retained;
+tablet/desktop images, Slice and both phone Glass rows were NOT RUN. Visual approval is pending;
+the navigation blocker remains OPEN and unattributed. Survey-only compact placement is Codex's
+stated default after an optional preference question. The accepted brief and amendments are in
 `../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved; no U2–U4, Phase2 or
 hosted action is authorized.
 
@@ -26,10 +28,12 @@ auto-resuming, session-owned trail breakpoint between intentional controls. The 
 calibration command is `node tools/ui-review-navigation-selftest.mjs NEW_REPORT_JSON`;
 focused controls use `node --test tools/ui-review-trail-debugger.selftest.mjs tools/ui-shell-review-trace.selftest.mjs`.
 Debugger stacks perturb timing and cannot close the retained navigation blocker on nonrecurrence.
-See `../../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md` for current evidence and limits.
-This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2; no CI/profile
-lane was changed. `ROADMAP.md` and `../../audits/UI_U1_PRODUCTION_LAYOUT_20260906.md` own current exact-source
-results; `../../audits/UI_U1_LAUNCHER_REVISION_20260906.md` and
+See `../../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md` for the retained navigation evidence
+and its limits. This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2;
+no CI/profile lane was changed. `ROADMAP.md` and
+`../../audits/UI_U1_COMPACT_CONTROLS_20260906.md` own current exact-source results;
+`../../audits/UI_U1_PRODUCTION_LAYOUT_20260906.md`,
+`../../audits/UI_U1_LAUNCHER_REVISION_20260906.md` and
 `../../audits/UI_U1_CHECKPOINT_20260906.md` preserve the earlier U1 checkpoints.
 
 ## UI tool setup — 2026-09-05 local

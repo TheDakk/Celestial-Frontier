@@ -7,8 +7,10 @@ notification history amendment. The latest bounded correction aligns phone Searc
 fits desktop/tablet name and text pills to their labels while preserving Health, and places Survey
 (🔭) as the fifth compact lower-row utility. Both phone rows retain 64px pitch; compact Charts is
 hidden with Settings → Star charts still available. Desktop Survey/Charts remain fitted left-stack
-controls. Verification and visual review of this correction are pending; Survey-only placement is
-Codex's stated default after an optional choice, not a new explicit approval for both shortcuts.
+controls. Static checks/build passed; normal review stopped INSTRUMENT RED during phone portrait
+restoration, leaving visual approval pending. See `../audits/UI_U1_COMPACT_CONTROLS_20260906.md`
+for the exact source, partial phone evidence and unrun stages. Survey-only placement is Codex's
+stated default after an optional choice, not a new explicit approval for both shortcuts.
 See `UI_PARITY_PROGRAM_U1_U4.md` for the accepted program, explicit geometry differences and review
 boundaries. U2 sheet/stack work, U3 per-panel work and U4 ten-viewport/28-screen gate remain unstarted. Phase4 presentation parity is not closed;
 normal-game U1 and integrated audiovisual-pilot approvals both remain with Nick. No Phase2.
