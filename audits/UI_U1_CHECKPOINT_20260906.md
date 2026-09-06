@@ -246,3 +246,18 @@ Original immutable red log/report are retained. Phone canaries and review did no
 Successor preparation closes Survey natively before both collision Atlas openings, records
 closed DOM/ARIA state and unchanged document plus14 route/selected-world/panel fields, and
 retains both Atlas/Travel receipt gates. Typecheck and10focused tests PASS; log retained.
+
+## Slice PASS; small-phone contrast stop —6fb67a2
+
+Fresh static sequence311files/3,300tests/1skip and Glass selftest PASS. Immutable Slice
+run `20260906074236094-71755-19b4f4c46ce2` PASS in375,056ms, including collision Survey closure.
+Its original named report, log, terminal verification and10screenshots are preserved under
+`UI_U1_SLICE_6fb67a2_20260906/`. Small-phone then stopped on one caption contrast finding:
+white `#ctxbar` text measured against bright-art white, ratio1 vs4.5. Original Glass report/log
+are retained. Larger phone and normal-build review did not run. Diagnosis is pending.
+
+Caption correction restores an independent rgba(10,16,30,.94) backing with geometry unchanged.
+The existing Glass contrast check remains intact. Producer successor `f144d466e59f6ce336a5f4090be368cf776268b8917386ccd6a6d81c0d595436`
+and all component pins moved together; original narrative is retained with a complete appended
+record. Compendium measurement matches; exit2 reflects pre-pin producer movement and quarantined
+SceneMemory drift. No ruler/ceilings/history/certificate changes. Fresh successor gates follow.

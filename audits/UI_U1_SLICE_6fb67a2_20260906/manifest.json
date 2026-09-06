@@ -1,0 +1,85 @@
+{
+  "source": "6fb67a26cbab6a8621e9f86e6494a0552c912114",
+  "result": "Slice develop PASS; small-phone subsequently RED; not a complete U1 checkpoint",
+  "runId": "20260906074236094-71755-19b4f4c46ce2",
+  "durationMs": 375056,
+  "artifacts": [
+    {
+      "file": "slice-smoke-20260906074236094-71755-19b4f4c46ce2.json.gz",
+      "bytes": 1958,
+      "sha256": "991e61eb5349eb60df88889a603b3305b1a110c0bfee617a910030e5c40eaff6",
+      "uncompressedSha256": "3aaa663cfe881f7bc3d244b379ce649038196933cc45cce66059c587d2660994"
+    },
+    {
+      "file": "slice-smoke-20260906074236094-71755-19b4f4c46ce2.log.gz",
+      "bytes": 3916,
+      "sha256": "1e6ecd13df10d8a8a0aa1487c964610105e008706a5893e7c3919178f3158a73",
+      "uncompressedSha256": "59afb4a6177b7229ae3d563bafb6fc1afa643a6632208d152f15c8b89bece7b3"
+    },
+    {
+      "file": "slice-20260906074236094-71755-19b4f4c46ce2-codex.png",
+      "bytes": 620172,
+      "sha256": "f4dec05f5172841dc7e46e9c1affda2413df4b7bfe0a4c71d65d0a99528253da",
+      "uncompressedSha256": "f4dec05f5172841dc7e46e9c1affda2413df4b7bfe0a4c71d65d0a99528253da"
+    },
+    {
+      "file": "slice-20260906074236094-71755-19b4f4c46ce2-earth.png",
+      "bytes": 606575,
+      "sha256": "bc36f472b608ae871fc12d180f8d670885bd372fea41c2ba7d9ae04201a5b124",
+      "uncompressedSha256": "bc36f472b608ae871fc12d180f8d670885bd372fea41c2ba7d9ae04201a5b124"
+    },
+    {
+      "file": "slice-20260906074236094-71755-19b4f4c46ce2-galaxy.png",
+      "bytes": 585609,
+      "sha256": "3ee24ef52f0d2f8809d6580f459d9ab021c459daf79f9d639f785c83c289777f",
+      "uncompressedSha256": "3ee24ef52f0d2f8809d6580f459d9ab021c459daf79f9d639f785c83c289777f"
+    },
+    {
+      "file": "slice-20260906074236094-71755-19b4f4c46ce2-guide.png",
+      "bytes": 308368,
+      "sha256": "96ce3909770c1e215f8d00057b134f2d749619ff32c13426d41a52b04cf14645",
+      "uncompressedSha256": "96ce3909770c1e215f8d00057b134f2d749619ff32c13426d41a52b04cf14645"
+    },
+    {
+      "file": "slice-20260906074236094-71755-19b4f4c46ce2-phone.png",
+      "bytes": 819230,
+      "sha256": "4f1525abfc33a52fac8452ece7739fa067e57fd94fbf3285c089c2e0f533167e",
+      "uncompressedSha256": "4f1525abfc33a52fac8452ece7739fa067e57fd94fbf3285c089c2e0f533167e"
+    },
+    {
+      "file": "slice-20260906074236094-71755-19b4f4c46ce2-settings.png",
+      "bytes": 287908,
+      "sha256": "7b1929e3159d2446be428d22596bfab9b7a24e41e751c55cfc69403e546378e6",
+      "uncompressedSha256": "7b1929e3159d2446be428d22596bfab9b7a24e41e751c55cfc69403e546378e6"
+    },
+    {
+      "file": "slice-20260906074236094-71755-19b4f4c46ce2-sol.png",
+      "bytes": 220020,
+      "sha256": "0ff8370c4406ccd973102364deec3f6ac3ca3b95256e9be56418c641e1db7ac4",
+      "uncompressedSha256": "0ff8370c4406ccd973102364deec3f6ac3ca3b95256e9be56418c641e1db7ac4"
+    },
+    {
+      "file": "slice-20260906074236094-71755-19b4f4c46ce2-solmark.png",
+      "bytes": 386047,
+      "sha256": "d0be85d9fb5129fcb06f946d4af3bb8599eb3bc3eb7868cbc7ee4c0c5b2ddb37",
+      "uncompressedSha256": "d0be85d9fb5129fcb06f946d4af3bb8599eb3bc3eb7868cbc7ee4c0c5b2ddb37"
+    },
+    {
+      "file": "slice-20260906074236094-71755-19b4f4c46ce2-training.png",
+      "bytes": 469024,
+      "sha256": "8782b017f0927979a53b5f11feeb55a87be9dbc8fa1ff476d072b9ae2d9e64fa",
+      "uncompressedSha256": "8782b017f0927979a53b5f11feeb55a87be9dbc8fa1ff476d072b9ae2d9e64fa"
+    },
+    {
+      "file": "slice-20260906074236094-71755-19b4f4c46ce2-universe.png",
+      "bytes": 365014,
+      "sha256": "76b25404dc3a941f84302bcd64de62324d4506c6429548a0658a3320ccbcb915",
+      "uncompressedSha256": "76b25404dc3a941f84302bcd64de62324d4506c6429548a0658a3320ccbcb915"
+    },
+    {
+      "file": "terminal-verification.log.gz",
+      "sha256": "53b9e273ad0901dc5c64a6640897ae58ccd192e2e9304661d0c031ab52252ecf",
+      "uncompressedSha256": "2bdfe87b3e7089fcca6df25b01e059ce5d102528b21ddb38323a7351327fd90e"
+    }
+  ]
+}

@@ -4,6 +4,8 @@
 
 `port/v2/apps/game/src/ui-presentation-tokens.ts` emits shared Inter/spacing/type/color-role/
 layer variables; `ui-shell-style.ts` owns the normal-game shelf/dock/rail/lane geometry.
+Caption text retains a dark translucent backing independent of the artwork, without changing
+its lane dimensions.
 Phone<=700 uses5 labelled boards +4 utilities at64px centers; desktop>=701 uses bottom-right
 utilities and rails. Inventory now opens through the nameplate. AppChrome still measures the
 shelf and projects Prime count; panel/Training owners retain focus and locked controls.

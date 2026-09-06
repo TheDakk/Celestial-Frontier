@@ -12,7 +12,8 @@ Phone (<=700px): five labelled 58px chips at 64px centers, then four 36px visual
 circles inside 44px targets at 64px centers. Board order is Charters, Compendium, Prime N/9,
 Shipyard, Atlas; utility order Records, Notifications, Guide, Settings. Bottom utilities sit
 12px above the safe area, board 60px above it; caption164px and hint124px preserve separate
-lanes. Inventory opens from the nameplate in the measured two-row shelf; Survey/Charts retain
+lanes. Caption text has an independent rgba(10,16,30,.94) backing for bright-art contrast,
+with zero padding/border/radius so its lane geometry stays unchanged. Inventory opens from the nameplate in the measured two-row shelf; Survey/Charts retain
 their IDs and actions in a separate contextual rail. Selection adds gold without growing a target.
 `--topbar-h` measures rendered content; `--row1-h` measures the Search bottom, at least40px.
 There is no sealed fixed shelf-height number: font and text-size choices may increase it.
