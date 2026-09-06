@@ -2838,11 +2838,61 @@ export function assessCompendiumFeedAudioAcknowledgement(observation) {
   return { ok: reasons.length === 0, reasons };
 }
 
+/* Feed's receipt precedes its presentation notice. The later ordinary lifecycle
+   checkpoint may append exactly that notice, never rewrite prior read state or
+   any other save field. Both persisted codec owners and the actually painted
+   toast are retained; timestamps are wall-clock Date.now/codec values. */
+function compendiumFeedNotificationCheckpointExact(observation) {
+  const before = observation?.before;
+  const after = observation?.after;
+  const reloaded = observation?.reloaded;
+  const toast = observation?.settled?.notificationToast;
+  const fixture = observation?.fixture;
+  const validHistory = (history) => Array.isArray(history) && history.length <= 50
+    && Object.keys(history).length === history.length
+    && history.every((entry) => exactKeys(entry, ['id', 'tt', 'ms', 't', 'read'])
+      && Number.isInteger(entry.id) && entry.id >= -0x8000_0000 && entry.id <= 0x7FFF_FFFF
+      && typeof entry.tt === 'string' && entry.tt.length <= 200
+      && typeof entry.ms === 'string' && entry.ms.length <= 400
+      && typeof entry.t === 'number' && Number.isFinite(entry.t)
+      && entry.t >= 0 && entry.t <= 4e12 && typeof entry.read === 'boolean');
+  const coherentHistory = (candidate) => exactKeys(candidate?.notificationHistory, ['legacy', 'player'])
+    && validHistory(candidate.notificationHistory.legacy)
+    && validHistory(candidate.notificationHistory.player)
+    && canonicalJson(candidate.notificationHistory.legacy)
+      === canonicalJson(candidate.notificationHistory.player);
+  if (![before, after, reloaded].every(coherentHistory)) return false;
+  const prior = before.notificationHistory.legacy;
+  const next = reloaded.notificationHistory.legacy;
+  const head = next[0];
+  const title = 'Meal complete.';
+  const message = `Meals ${fixture?.fedBefore} → ${fixture?.fedAfter}. Used 1 flora; ${
+    fixture?.foodQuantityAfter === 0 ? 'the exact lot is now empty.'
+      : `${fixture?.foodQuantityAfter} remain in that lot.`}`;
+  if (canonicalJson(after.notificationHistory.legacy) !== canonicalJson(prior)
+    || !head || head.tt !== title || head.ms !== message || head.read !== false
+    || !exactKeys(toast, ['title', 'message', 'visible', 'serial', 'observedAt'])
+    || toast.title !== title || toast.message !== message || toast.visible !== true
+    || toast.serial !== observation?.settled?.toastSerial
+    || !safeInt(toast.observedAt) || toast.observedAt > 4e12
+    || head.t < after.codecAt || head.t > toast.observedAt
+    || reloaded.globalRevision <= after.globalRevision
+    || !hexDigest(reloaded.unrelatedFingerprint)
+    || reloaded.unrelatedFingerprint === after.unrelatedFingerprint) return false;
+  const occupied = new Set(prior.map((entry) => entry.id));
+  let expectedId = ((prior[0]?.id ?? 0) + 1) | 0;
+  while (occupied.has(expectedId)) expectedId = (expectedId + 1) | 0;
+  return head.id === expectedId && canonicalJson(next) === canonicalJson([
+    { id: expectedId, tt: title, ms: message, t: head.t, read: false }, ...prior,
+  ].slice(0, 50));
+}
+
 /* The settled assessor consumes already-projected exact durable facts. This
    keeps browser orchestration separate from semantics while still requiring
    one global revision/receipt, one Arc 5 successor, exact fed/lot changes,
    untouched Arc 4 + F4 RNG + unrelated carriers, a visible committed result,
-   post-settlement audio, and the same bytes after full reload. */
+   post-settlement audio, and the same gameplay bytes after full reload plus
+   the separately exact post-Feed notification checkpoint. */
 export function assessCompendiumFeedCommittedOutcome(observation) {
   const fixture = observation?.fixture;
   if (!fixture || !nonEmptyString(fixture.creatureId)
@@ -3055,6 +3105,9 @@ export function assessCompendiumFeedCommittedOutcome(observation) {
     reasons.push('same-document Compendium refresh');
   }
   const reloaded = observation?.reloaded;
+  if (!compendiumFeedNotificationCheckpointExact(observation)) {
+    reasons.push('exact post-Feed notification checkpoint');
+  }
   const reloadLedgerExact = !immediateReceiptLedgerExact || (
     coherentReceiptLedger(reloaded)
     && canonicalJson(reloaded?.receiptKeys) === canonicalJson(after?.receiptKeys)
@@ -3071,7 +3124,10 @@ export function assessCompendiumFeedCommittedOutcome(observation) {
     && reloaded?.sessionDrawsFingerprint === after?.sessionDrawsFingerprint
     && reloaded?.foodInvariantFingerprint === after?.foodInvariantFingerprint
     && reloaded?.targetRemainderFingerprint === after?.targetRemainderFingerprint
-    && reloaded?.unrelatedFingerprint === after?.unrelatedFingerprint
+    && hexDigest(after?.unrelatedExceptNotificationsFingerprint)
+    && hexDigest(reloaded?.unrelatedExceptNotificationsFingerprint)
+    && reloaded.unrelatedExceptNotificationsFingerprint
+      === after.unrelatedExceptNotificationsFingerprint
     && safeInt(reloaded?.codecAt) && safeInt(reloaded?.segmentCodecAt)
     && reloaded.codecAt === reloaded.segmentCodecAt
     && reloaded.codecAt >= after?.codecAt

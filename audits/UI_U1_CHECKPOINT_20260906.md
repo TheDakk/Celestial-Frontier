@@ -65,3 +65,35 @@ Corrected producer derivation: `1afd4b75628db48685ca065b8cfbfa7a8ab342c602e1fe6d
 Compendium sealed measurement now MATCHES. Tool exit2 reflects producer movement before pin
 update and quarantined SceneMemory drift only. Producer pins/components moved together;
 measurement/ruler/ceilings remain byte-identical. Fresh successor verification follows.
+
+## Browser checkpoint —4e6047b
+
+Fresh checkout: typecheck/artunusedPASS;310Vitestfiles/3,255testsPASS/1skip; GlassselftestPASS.
+Slice developRED and the later canaries/review were not submitted. It found Search in a broad
+non-dismiss header, missing independent HP text backing, missing8pxroot-owned rail gaps,
+the old Search-at-right-edge oracle after adding a shelf bell, and Feed's reload fixed point.
+The product repairs restore Search dismissal, HP backing and real empty rail gaps without
+weakening their controls. Rails therefore use44pxtarget+8pxgap=52pxpitch, disclosed against
+old42pxdiagram; desktop utility pitch remains44. The Search geometry oracle now measures its
+relationship to the new bell. Feed notification comparison is investigated separately.
+
+Browser correction producer: `e9d4c92fe92101fb6d97b4107444a063bfbf4ca5bda27f21591571d3165406b5`.
+Compendium measurement MATCH; all component/producer pins move together. Tool exit2 before
+pin update includes producer movement and quarantined SceneMemory drift; neither measurement
+nor SceneMemory authority was edited. Fresh corrected verification remains pending.
+
+## Bounded browser corrections prepared
+
+The Feed carrier now records both codecs' notification vectors and the actual painted toast.
+Immediate/pending/stale-loser comparisons still require the full unchanged unrelated digest.
+Reload additionally proves exactly one new bounded unread meal notice, unchanged predecessors,
+codec parity, expected collision-free ID and bounded wall-clock timing, while every other
+unrelated field retains its own exact fingerprint. Missing/extra/forged/read/late/reordered
+notice and unrelated-state negative controls are retained; no product Feed outcome changes.
+
+Notifications retains the native58px Close gutter, joins the safe left panel workspace in
+short landscape, and stays above Survey using an explicit utility-panel token. Phone Prime
+uses one label/count line to keep the default dock92px. The normal-game review now reaches
+Cosmos through actual Escape presses and captures native Notifications open/Close/focus too.
+Latest producer `6b9f100f4502f6a371f1c670cf98dac686bc5d6b69ef0f273027ffbf26f6cbd1`; sealed Compendium measurement MATCH.
+All previous red evidence is retained. Successor verification has not yet run.
