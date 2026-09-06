@@ -1,0 +1,65 @@
+{
+  "schema": "cf-inkscape-launch-diagnosis/v1",
+  "scope": "Nick asked why Inkscape crashes; read only the two matching Inkscape crash reports, without relaunching or reading unrelated reports.",
+  "finding": "Both abort during HIServices _RegisterApplication / TransformProcessType invoked by GDK Quartz and gtk_init_check in InkscapeApplication constructor. No artwork loaded by the latest --version attempt.",
+  "inference": "Restricted macOS launch/GUI registration failure, consistent with other sandboxed app launch failures; no unsandboxed Inkscape control attempted.",
+  "action": "No more Inkscape launches this session. Future qualification must account for GUI initialization even for --version.",
+  "reports": [
+    {
+      "report": "inkscape-2026-09-06-181503.ips",
+      "rawSha256": "53eff18fd6c52ff0908a158417a1df0c99eea80bf7b95d82b92ddcd76f1d1e3d",
+      "process": "inkscape",
+      "captureTime": "2026-09-06 18:15:02.0883 -0400",
+      "signal": "SIGABRT",
+      "terminationCode": 6,
+      "faultSymbols": [
+        "__pthread_kill",
+        "pthread_kill",
+        "abort",
+        "___RegisterApplication_block_invoke",
+        "_dispatch_client_callout",
+        "_dispatch_once_callout",
+        "_RegisterApplication",
+        "TransformProcessType",
+        "gdk_quartz_display_class_intern_init",
+        "type_class_init_Wm",
+        "g_type_class_get",
+        "g_object_new",
+        "_gdk_quartz_display_open",
+        "gdk_display_manager_open_display",
+        "gtk_init_check",
+        "InkscapeApplication::InkscapeApplication()",
+        "main",
+        "start"
+      ]
+    },
+    {
+      "report": "inkscape-2026-09-06-011049.ips",
+      "rawSha256": "b1129e72973654cd8210595e868fae37ca55465de77f8cef018c6a3e6cfa66a5",
+      "process": "inkscape",
+      "captureTime": "2026-09-06 01:10:46.9710 -0400",
+      "signal": "SIGABRT",
+      "terminationCode": 6,
+      "faultSymbols": [
+        "__pthread_kill",
+        "pthread_kill",
+        "abort",
+        "___RegisterApplication_block_invoke",
+        "_dispatch_client_callout",
+        "_dispatch_once_callout",
+        "_RegisterApplication",
+        "TransformProcessType",
+        "gdk_quartz_display_class_intern_init",
+        "type_class_init_Wm",
+        "g_type_class_get",
+        "g_object_new",
+        "_gdk_quartz_display_open",
+        "gdk_display_manager_open_display",
+        "gtk_init_check",
+        "InkscapeApplication::InkscapeApplication()",
+        "main",
+        "start"
+      ]
+    }
+  ]
+}

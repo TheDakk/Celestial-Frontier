@@ -1,5 +1,14 @@
 # UI parity and presentation program — accepted brief
 
+### U2–U4 execution authorized — 2026-09-06
+
+Nick: “Please proceed with U2-U4.” U2’s proposed scope is approved, including the earned
+Settings-above-Training resolution. Continue locally through ordered U3 panel checkpoints and
+U4; the U1 technical gate stays honestly open until checks pass. Preserve all failed reports
+and both older unknown causes. Emoji remain in product until Nick chooses after the SVG study.
+No Phase2, integrated-pilot activation, hosted actions, PRs, merges or releases. This receipt
+supersedes earlier pending-scope/no-U2 statements; the entries below remain historical verbatim.
+
 ### U1 visual acceptance retained; proposed U2 boundary — 2026-09-06
 
 Clean b457a7a passed static315/3376/1skip, then small-phone retained a real22.5px

@@ -1,6 +1,11 @@
 # Proposed next checkpoint: U2 sheets and stacking
 
-**Status: proposed for Nick's approval; no U2 implementation has started.**
+**Approved 2026-09-06:** Nick explicitly said “Please proceed with U2-U4.”
+This approves the U2 scope below and additionally authorizes the original ordered U3/U4 program.
+The proposal text below is retained as the concrete scope receipt; its former no-U3/U4 boundary
+is superseded by that explicit instruction. U2 implementation is active; no PASS claimed.
+
+**Original proposal status: proposed for Nick's approval; no U2 implementation had started.**
 This proposal changes the original “Do not start U2–U4” boundary and carries an honestly open
 U1 phone gate into the next checkpoint. U1's accepted visual design is retained. It does not
 claim checkpoint PASS or waive any check required before integration.

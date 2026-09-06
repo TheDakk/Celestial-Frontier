@@ -1,6 +1,11 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## U1 presentation checkpoint — 2026-09-06
+## U1 shell / U2 sheet checkpoint — matches code as of 2026-09-06
+
+Nick explicitly authorized U2–U4. U2's measured lower lane, shared sticky title/Close, internal
+panel scrolling and Training stack are implemented; native and checkpoint verification remain
+pending. U1's accepted layout and open technical gate are retained. Follow the
+[program authorization](../UI_PARITY_PROGRAM_U1_U4.md) and [live handoff](../../ROADMAP.md).
 
 The normal `/` game (without `avpilot`) uses the shared token/shell owners, local Inter,
 the production layout adapted to icon-only phone rows and wide side controls/top-center Prime/
@@ -31,8 +36,8 @@ Both the unattributed navigation
 and full normal-review portrait-restoration blockers stay OPEN; no full normal-review retry,
 Slice, phone Glass or full chain accompanies this bounded correction.
 The accepted brief and amendments are in
-`../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved; no U2–U4, Phase2 or
-hosted action is authorized.
+`../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved; the U2–U4
+execution authorization does not authorize Phase2 or hosted actions.
 
 The phone-only restoration diagnostic PASS at signed source
 `381ddf59858bd863640703e83d2d98beeedf59fa` leaves accepted product source unchanged. It preserves
@@ -65,19 +70,20 @@ phones. The current instrument correction audits Settings → Star charts on com
 and retains the visible wide-screen Charts route. Twelve source-executing route tests, root
 TypeScript and validate passed.
 
-Latest local validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
+Retained U1 validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
 PASS (315 files, 3376 passed, one skipped). Small-phone stopped PRODUCT RED with a real 22.5px
 Planetside/hint overlap at 320×568, zero instrument failures. Its later native Charts Settings
 phase, large-phone and Slice were NOT RUN. [The final U1 audit](../../audits/UI_U1_HINT_CONTRAST_20260906.md)
 retains the nine-carrier checkpoint. U1 visual acceptance stands; the technical gate remains OPEN.
-Sheet/hint lane separation is explicitly U2 scope. [The proposed U2 checkpoint](../../audits/UI_U2_PROPOSED_SCOPE_20260906.md)
-asks Nick to carry this known blocker into U2 without calling U1 green. No U2 implementation or
-further U1 rework is underway; the original no-U2 boundary remains until that scope change is approved.
-The development draft still has 81 bullets and now mentions the outline. Current Compendium producer authority is
-`6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`; measurement authority
-`4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` is unchanged.
-U2 is the next development batch once these bounded checks finish. Physical UAT and both older
-unknown causes remain OPEN; U2–U4, Phase2 and hosted work have not started.
+U2 uses `sheet-layout.ts` and `ui-sheet-style.ts` to reserve visible lower chrome and fading
+toasts, bound sheets and style their existing direct title/Close. Refills keep the same Close
+node; Compendium retains its virtual scroll owner. Explicit Settings stays above Training,
+uses native Close for Escape, and is excluded during completion-pending. Current lesson marks
+and deferred-focus protection preserve the lesson sequence. Emoji remain unchanged.
+Next verification must exercise the real small-phone overlap and Charts Settings route before
+claiming closure, then complete the required checkpoint chain on its exact clean candidate.
+[ROADMAP](../../ROADMAP.md) owns that candidate and its release/producer authority. Physical
+UAT and both older unknown 08cd97d/c57aaaeb causes stay OPEN; no historical RED is relabelled.
 
 U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options before use).
 It owns an isolated headless browser and creates three golden comparison sheets plus numeric
@@ -89,7 +95,7 @@ calibration command is `node tools/ui-review-navigation-selftest.mjs NEW_REPORT_
 focused controls use `node --test tools/ui-review-trail-debugger.selftest.mjs tools/ui-shell-review-trace.selftest.mjs`.
 Debugger stacks perturb timing and cannot close the retained navigation blocker on nonrecurrence.
 See `../../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md` for the retained navigation evidence
-and its limits. This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2;
+and its limits. This diagnostic is not the authorized U4 layout gate or a hosted battery;
 no CI/profile lane was changed. `ROADMAP.md` and
 `../../audits/UI_U1_UAT_RESTORATION_20260906.md` own the completed scoped phone diagnostic;
 `../../audits/UI_U1_SURVEY_CHARTERS_20260906.md` owns accepted-layout source/results.

@@ -1,5 +1,8 @@
 # audits/ — external review bundles, preserved
 
+Current U2–U4 authority and U2 sheet preparation: [UI_U2_SHEETS_20260906.md](UI_U2_SHEETS_20260906.md).
+[U3 icon study](UI_U3_ICON_STUDY_20260906/README.md) is review-only; product icons await Nick’s choice.
+
 External review rounds arrive as uploaded zips. Those uploads and any working directory used to
 unpack them are **session-scoped** — they disappear when a session ends. The fix lists were being
 copied to the repo root piecemeal while the evidence, harness code and raw measurements were not,

@@ -5,7 +5,12 @@ header height after a same-task Settings open/change/close transition, keeping t
 Search/Objective even when ResizeObserver sees no net size change. Restored visible rail
 controls declare their native button type explicitly.
 
-## V2 presentation system — U1, matches code as of 2026-09-06
+## V2 presentation system — U1 shell and U2 sheets, matches code as of 2026-09-06
+
+Nick explicitly authorized U2–U4 on 2026-09-06. U2 is implemented and awaiting native and
+checkpoint verification; the U1 layout remains accepted for UAT with its technical gate open.
+The [program authorization](port/UI_PARITY_PROGRAM_U1_U4.md) resolves Settings above Training
+and permits the subsequent ordered U3/U4 checkpoints. Product icons remain emoji.
 
 The normal v2 shell uses the actual production v1.8.9 CSS as its layout reference, adapted
 through `ui-presentation-tokens.ts`, `ui-shell-style.ts` and the existing native controls.
@@ -76,8 +81,21 @@ needed to clear measured hint height by 8px. Context retains its independent tra
 backing with zero padding/border/radius. Guidance now paints a 2px opaque black glyph stroke
 behind its fill (`paint-order:stroke fill`), leaving at least 1px outside each glyph for contrast
 against bright artwork. The outline adds no pill or box and changes no layout measurements.
-Wide bottom-anchored utility panels and notices align with the corner controls and clear their
-measured height. U2 owns later sheet interiors and stacking refinements.
+U2's `sheet-layout.ts` measures the visible hint, context and dock rectangles plus the toast's
+painted height, retaining its reservation until the fade ends. `ui-sheet-style.ts` uses that
+lower lane to bound sheets with 8px gaps. Planetside uses the measured sheet floor; wide Settings
+centers vertically in its available right-side workspace. Short landscape keeps its existing
+safe-column composition. These layouts still require native verification.
+
+The shared panel owner keeps the first direct native Close and existing first h2/h3 title as
+sticky siblings. Refills retain the same Close node and restore its focus only when it owned
+focus; the panel remains the scroller and Compendium retains its separate virtual scrollport.
+One token/CSS owner places explicitly opened Settings above the current lesson surface and
+Training card. Training admits Settings and its opener except while completion is pending;
+Escape invokes Settings' real Close without ascent. Queued lesson focus and the deferred Atlas
+close yield to newly opened Settings. Only the current lesson's actual surfaces receive
+`.tutpri`, cleared on teardown. Lesson content, step advancement and persistence remain unchanged.
+The shared 150–200ms motion and control-state tokens respect reduced-motion preferences.
 
 Notifications retains saved read/unread history and clearly labelled session-only notices
 while save writes are held. Opening does not mark read; explicit Mark read uses the existing
@@ -119,9 +137,9 @@ trail is described honestly: the historical visible-trail collision/fallback con
 inject a visible floating fault, restore styles exactly and re-prove the hidden native baseline.
 No injected state is called native visible chrome; the roster still needs 72px and usable scroll.
 Phone larger-text and 844×390 Settings-open checks retain their actual viewport geometry.
-U2 sheet/stack work and U3 panel reskins/icon study remain pending. Resolve the pasted U2
-Training/Settings order against the earned Settings-above-Training law before implementing U2.
-No integrated-pilot approval or Phase2 work is implied.
+U2 sheet/stack implementation now follows the earned Settings-above-Training law. Its native
+verification and ordered U3 panel reskins/icon study and U4 gate remain ahead; no integrated-pilot
+approval, Phase2 or hosted work is implied.
 
 The phone-only restoration diagnostic PASS is bound to signed source
 `381ddf59858bd863640703e83d2d98beeedf59fa`; product `053ef439774520577071f0ca50887337dd938755`
@@ -157,18 +175,17 @@ phones. The current instrument correction audits Settings → Star charts on com
 and retains the visible wide-screen Charts route. Twelve source-executing route tests, root
 TypeScript and validate passed.
 
-Latest local validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
+Retained U1 validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
 PASS (315 files, 3376 passed, one skipped). Small-phone stopped PRODUCT RED with a real 22.5px
 Planetside/hint overlap at 320×568, zero instrument failures. Its later native Charts Settings
 phase, large-phone and Slice were NOT RUN. [The final U1 audit](audits/UI_U1_HINT_CONTRAST_20260906.md)
 retains the nine-carrier checkpoint. U1 visual acceptance stands; the technical gate remains OPEN.
-Sheet/hint lane separation is explicitly U2 scope. [The proposed U2 checkpoint](audits/UI_U2_PROPOSED_SCOPE_20260906.md)
-asks Nick to carry this known blocker into U2 without calling U1 green. No U2 implementation or
-further U1 rework is underway; the original no-U2 boundary remains until that scope change is approved. The development draft still has 81 bullets and now mentions the outline; Compendium producer authority
-is `6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`, with measurement authority
-`4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` unchanged.
-U2 is the next development batch after these bounded checks finish. Physical UAT and both older
-unknown causes remain OPEN; U2–U4, Phase2 and hosted work have not started.
+The known overlap is the first U2 failing case, not a retroactive U1 pass. U2's measured-lane,
+shared header/Close and Training-stack implementation now awaits native and checkpoint checks,
+including the previously unreached Charts Settings path. [ROADMAP](ROADMAP.md) owns the exact
+candidate, release/producer authority and verification outcome. Physical UAT and the older
+08cd97d navigation and c57aaaeb portrait-restoration causes remain unknown/OPEN. The U2–U4
+execution authorization adds no Phase2 or hosted authority.
 
 U1 diagnostic update (2026-09-06): the normal-review tool adds viewport/resize facts and
 session-owned, auto-resuming trail-writer stacks. That diagnostic changed no product layout.

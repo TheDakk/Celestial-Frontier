@@ -597,12 +597,14 @@ import {
 } from './f4-convergence-latch.js';
 import { UI_PRESENTATION_CSS } from './ui-presentation-tokens.js';
 import { UI_SHELL_CSS } from './ui-shell-style.js';
+import { UI_SHEET_CSS } from './ui-sheet-style.js';
+import { createSheetLayoutController } from './sheet-layout.js';
 import { createNotificationHistory, NOTIFICATION_HISTORY_CSS } from './notification-history.js';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
 const uiPresentationStyle = document.createElement('style');
 uiPresentationStyle.id = 'cf-ui-presentation';
-uiPresentationStyle.textContent = UI_PRESENTATION_CSS + UI_SHELL_CSS + NOTIFICATION_HISTORY_CSS;
+uiPresentationStyle.textContent = UI_PRESENTATION_CSS + UI_SHELL_CSS + NOTIFICATION_HISTORY_CSS + UI_SHEET_CSS;
 document.head.append(uiPresentationStyle);
 installBatchTextureArrayUidCompaction(BatchTextureArray);
 document.title = `Celestial Frontier v${V2_DEVELOPMENT_VERSION} — Development`;
@@ -8297,10 +8299,9 @@ card.addEventListener('click', async (e) => {
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
 sideEl.className = 'glass';
-sideEl.style.cssText = 'position:fixed;left:calc(var(--safe-left,0px) + 12px);bottom:calc(var(--safe-bottom,0px) + var(--dock-h) + var(--ctx-h) + 86px);' +
-  'max-width:min(560px,calc(100vw - var(--safe-left,0px) - var(--safe-right,0px) - 24px));box-sizing:border-box;display:none;z-index:21;border-radius:12px;padding:8px 10px;' +
-  'overflow-x:auto;white-space:nowrap;scrollbar-width:thin';
+sideEl.style.display = 'none';
 document.body.appendChild(sideEl);
+createSheetLayoutController();
 let planetsideGeneration = 0;
 let planetsideWorldKey: string | null = null;
 let planetsideAudioRoster: CanonicalWorldRoster | null = null;

@@ -1,6 +1,11 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-## UI parity program — U1 checkpoint, 2026-09-06
+## UI parity program — U1 shell / U2 sheet checkpoint, matches code as of 2026-09-06
+
+Nick explicitly authorized U2–U4. U2's measured lower-lane, shared sheet header/Close and
+Settings-above-Training implementation awaits native/checkpoint verification. Ordered U3
+panel checkpoints and U4 follow under the [accepted program](UI_PARITY_PROGRAM_U1_U4.md);
+emoji remain in product until Nick chooses otherwise after the icon study.
 
 U1 implements normal-game shared tokens, production-based phone/wide layout and Nick's saved
 notification history amendment. Nick replaces Charters with Survey on all platforms: compact
@@ -24,7 +29,8 @@ PASS and instrument red remain in `../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` a
 The prior portrait-restoration instrument stop remains OPEN beside the unattributed navigation
 blocker; at that earlier checkpoint, full normal review, Slice, phone Glass and the full chain were NOT RUN.
 See `UI_PARITY_PROGRAM_U1_U4.md` for the accepted program, explicit geometry differences and review
-boundaries. U2 sheet/stack work, U3 per-panel work and U4 ten-viewport/28-screen gate remain unstarted. Phase4 presentation parity is not closed;
+boundaries. U2 is implemented; U3 per-panel work and the U4 ten-viewport/28-screen gate remain
+subsequent authorized checkpoints. Phase4 presentation parity is not closed;
 the U1 layout is accepted for UAT, while integrated audiovisual-pilot approval remains OPEN.
 The phone-only restoration diagnostic passed at signed source
 `381ddf59858bd863640703e83d2d98beeedf59fa` with product unchanged, preserving original native
@@ -54,23 +60,20 @@ phones. The current instrument correction audits Settings → Star charts on com
 and retains the visible wide-screen Charts route. Twelve source-executing route tests, root
 TypeScript and validate passed.
 
-Latest local validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
+Retained U1 validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
 PASS (315 files, 3376 passed, one skipped). Small-phone stopped PRODUCT RED with a real 22.5px
 Planetside/hint overlap at 320×568, zero instrument failures. Its later native Charts Settings
 phase, large-phone and Slice were NOT RUN. [The final U1 audit](../audits/UI_U1_HINT_CONTRAST_20260906.md)
 retains the nine-carrier checkpoint. U1 visual acceptance stands; the technical gate remains OPEN.
-Sheet/hint lane separation is explicitly U2 scope. [The proposed U2 checkpoint](../audits/UI_U2_PROPOSED_SCOPE_20260906.md)
-asks Nick to carry this known blocker into U2 without calling U1 green. No U2 implementation or
-further U1 rework is underway; the original no-U2 boundary remains until that scope change is approved. The development draft
-still has 81 bullets and mentions the outline. Compendium producer authority is now
-`6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`; measurement
-`4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` is unchanged.
-U2 is the next development batch after these bounded checks finish. Physical UAT and both older
-causes remain OPEN; U2–U4, Phase2 and hosted work have not started.
-Exact source and local evidence are recorded in the live ROADMAP handoff.
-The instrument-only navigation successor is scoped in
-`../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`; the retained navigation blocker stays OPEN.
-No U2–U4, Phase2 or hosted action follows from this correction.
+The retained overlap is U2's first failing case. Its new measured lower lane reserves hint,
+context, dock and the painted toast; sheets consume that floor. Existing title/Close nodes
+stay direct and sticky, with the same Close retained through refill and the panel remaining
+the scroller. Settings is admitted during lessons, closes through its real owner on Escape,
+and yields only while completion is pending; current lesson marks govern the remaining stack.
+Native geometry, the previously unreached Charts Settings route and the checkpoint battery
+must pass before closure. Exact candidate/release/producer authority and results belong to
+[ROADMAP](../ROADMAP.md). Physical UAT and the unknown 08cd97d navigation/c57aaaeb restoration
+causes remain OPEN. No Phase2, integrated-pilot activation or hosted authority is implied.
 
 
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05

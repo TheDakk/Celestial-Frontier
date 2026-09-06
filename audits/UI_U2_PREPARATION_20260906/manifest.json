@@ -1,0 +1,57 @@
+{
+  "schema": "cf-u2-preparation-evidence/v1",
+  "sourceBase": "75d9894b43243614c4d9d0dff8820c5c45329cee",
+  "state": "working-tree-preparation",
+  "certification": false,
+  "files": [
+    {
+      "file": "cf-u2-sheet-training-focused-20260906.log.gz",
+      "rawBytes": 245,
+      "rawSha256": "8bb4f1ca4f647037324f6e37cade46298c998e189fe852c1a037d3be4b0a74e3",
+      "bytes": 197,
+      "sha256": "7a92f1bdf4fd4e95fa66b0ffb5afa3b9c6c5b20a4a9bd5fa28868b39507b3ae7"
+    },
+    {
+      "file": "cf-u2-sheet-training-settings-race-20260906.log.gz",
+      "rawBytes": 244,
+      "rawSha256": "66948219c75fe72c92d180616f1a59c1d6ea27f6e36eb29562b1d6b292583624",
+      "bytes": 197,
+      "sha256": "1f1ffcc0d3e68b9e33a2c6090a18da5bd2d80e92ef78b7bb4d26a07e1e4bbef8"
+    },
+    {
+      "file": "cf-u2-preparation-checks-20260906.log.gz",
+      "rawBytes": 1464,
+      "rawSha256": "6aa78a37cfaa4647d1830a264865670c58062d5b4c40e3fb66c58e015c97e7b4",
+      "bytes": 886,
+      "sha256": "3a6fa2c06ea331b0ef071d65e9168ae15847a4ddac3a4bcc350141b70ff4c4d0"
+    },
+    {
+      "file": "cf-u2-build-preparation-20260906.log.gz",
+      "rawBytes": 5295,
+      "rawSha256": "1b0b584bb0a209f02160e2998db39723da0b64565e17f484cc289269fc44e2fd",
+      "bytes": 1887,
+      "sha256": "078199660f976ac30031c6516b40eed995ec4145cdfb202336ba9c385088e951"
+    },
+    {
+      "file": "cf-u2-producer-20260906.json.gz",
+      "rawBytes": 1216,
+      "rawSha256": "bee722208edd63ebe5945cb12f4cfbbc22aca22250434475144effcfe9736490",
+      "bytes": 569,
+      "sha256": "3cfa4f7ce87f5b2781c63026613519a9057996cbe73098009977c04d4177dc11"
+    },
+    {
+      "file": "cf-u2-sheet-review-tests-20260906.log.gz",
+      "rawBytes": 1850,
+      "rawSha256": "1a2c7a69956b974cd0a572963df281f587ac300d6e553f351f0a1e6e1a06a5da",
+      "bytes": 512,
+      "sha256": "40f5291807fdd3d2590f54231d11e2cb68be526125327be367e01ed0f0aa653d"
+    },
+    {
+      "file": "cf-u2-sheet-review-tests-corrected-20260906.log.gz",
+      "rawBytes": 305,
+      "rawSha256": "d532f2906f4231558426c7b3542ea6b2b93bd1dd06b0c9a22165e8da5c7344df",
+      "bytes": 234,
+      "sha256": "fd3977e82ea74af409142303d5a1b7e05c7cbc30a0300a0974229ff8780059a2"
+    }
+  ]
+}

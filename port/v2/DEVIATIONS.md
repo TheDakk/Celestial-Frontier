@@ -1,5 +1,20 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U2–U4 authorized; U2 sheet/stack implementation — 2026-09-06
+
+Nick explicitly authorized proceeding through U2–U4, including Settings above Training.
+U2 now measures visible lower chrome and painted toast height to bound sheets, retains sticky
+direct title/Close siblings and the same Close node through refill, and keeps internal panel
+scrolling plus Compendium's virtual scroll owner. Settings remains reachable during lessons,
+uses its native Close on Escape and survives queued lesson focus/Atlas cleanup; completion
+still locks it. Current lesson targets alone receive stack marks. Emoji remain in product.
+
+Native and checkpoint verification are pending. The accepted U1 layout stays accepted for UAT;
+its technical gate remains OPEN. The b457a7a 22.5px Planetside/hint RED, all prior failed runs and
+the unknown 08cd97d/c57aaaeb causes remain unchanged. [Program authority](../UI_PARITY_PROGRAM_U1_U4.md)
+and [ROADMAP](../../ROADMAP.md) own the ordered next checkpoints; no Phase2 or hosted authority
+is added. Earlier ledger entries below remain verbatim.
+
 ## U1 visual acceptance retained; proposed U2 boundary — 2026-09-06
 
 Clean b457a7a passed static315/3376/1skip, then small-phone retained a real22.5px

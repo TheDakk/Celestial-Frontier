@@ -1,5 +1,21 @@
 # Celestial Frontier — development toolchain
 
+
+**U3 study tooling update — 2026-09-06:** Nick reported repeated Inkscape crashes. The
+study's default-sandbox `--version` launch failed before rendering; its helper did not retain
+the exact child exit value. No retry, escalation retry, app inspection or crash-report read
+was made. Inkscape is unavailable for the remainder of this session; the earlier 1.4.4 row
+is historical inventory, not current executable qualification. Review SVG/HTML is authored
+as text and rendered with the existing isolated browser. Failed launch evidence is retained
+in `audits/UI_U3_ICON_STUDY_20260906/`. U2–U4 does not depend on repairing Inkscape.
+Nick then asked why it crashes. Read-only inspection of the two matching Inkscape reports
+found the same SIGABRT at HIServices `_RegisterApplication` / `TransformProcessType`, called
+from GDK Quartz / `gtk_init_check` during `InkscapeApplication` construction. Even `--version`
+initializes this GUI path. This supports a restricted-launch registration failure; no outside-
+sandbox Inkscape control was attempted. Sanitized evidence/hashes are in the study's
+`inkscape-crash-diagnosis.json`. Never treat Inkscape's version query as browser-free/sandbox-
+safe; any future qualification must handle its GUI launch requirements on the first attempt.
+
 Verified on **2026-09-06**, macOS 26.6.2 / Apple Silicon. This is the maintained tool reference;
 versions are observations, never a permanent assumption. Nick authorized the three additions
 and automatic maintenance of active development tools. Players install none of these tools.

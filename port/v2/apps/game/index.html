@@ -195,25 +195,7 @@
        --planetside-top is measured from the real populated strip, so larger
        text and lazy portraits cannot silently place it behind the card. */
     @media (max-width: 900px) and (orientation: portrait) {
-      body.surface-mode #survey {
-        max-height: max(44px, calc(var(--planetside-top, 100dvh) - var(--topbar-h) - 14px));
-      }
-      /* A short portrait keeps the trail. Cap the populated strip to the live
-         band between the lowest VISIBLE top-chrome edge and the already-
-         measured lower chrome; only the strip scrolls when A++ cannot fit.
-         While Survey stays open after Land, its 44px minimum plus the
-         existing 8px stack gap also caps this bottom-anchored strip. The
-         shared bottom-anchor terms cancel, so unusual dock/context heights
-         cannot recreate the compact-phone overlap. */
-      body.surface-mode #planetside {
-        max-height: max(72px, min(
-          calc(100dvh - var(--safe-bottom) - var(--dock-h) - var(--ctx-h) - 92px - var(--surface-chrome-bottom)),
-          var(--planetside-card-max, 100dvh)));
-        overflow-y: auto !important;
-      }
-      body.surface-mode.card-open #planetside {
-        --planetside-card-max: calc(100dvh - var(--safe-bottom) - var(--dock-h) - var(--ctx-h) - var(--topbar-h) - 144px);
-      }
+      /* Sheet bounds live in ui-sheet-style.ts and use measured caption/hint lanes. */
       /* If a genuinely short portrait cannot retain a useful 72px roster
          viewport plus 6px clearance, the noninteractive trail yields. */
       body.surface-mode.surface-trail-yield #trail { display: none !important; }
@@ -227,12 +209,6 @@
       body.surface-mode #planetside {
         width: calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2) !important;
         max-width: calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2) !important;
-      }
-      body.surface-mode #planetside {
-        top: calc(var(--topbar-h) + 6px);
-        bottom: auto !important;
-        max-height: max(44px, calc(100dvh - var(--safe-bottom) - var(--dock-h) - var(--ctx-h) - 92px - var(--topbar-h)));
-        overflow-y: auto !important;
       }
     }
     /* During the final Field Training beat, the lesson is the only blocking

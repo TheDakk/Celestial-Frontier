@@ -5,7 +5,11 @@ header height after a same-task Settings open/change/close transition, keeping t
 Search/Objective even when ResizeObserver sees no net size change. Restored visible rail
 controls declare their native button type explicitly.
 
-## Current v2 U1 shell overlay — matches code as of 2026-09-06
+## Current v2 U1 shell and U2 sheets — matches code as of 2026-09-06
+
+Nick explicitly authorized U2–U4. U2 is implemented and awaits native/checkpoint verification;
+U1's accepted layout and open technical gate remain distinct. The current authority is the
+[UI program](port/UI_PARITY_PROGRAM_U1_U4.md); emoji remain the product icon system.
 
 `port/v2/apps/game/src/ui-presentation-tokens.ts` supplies Inter/spacing/type/color/layer
 variables; `ui-shell-style.ts` adapts verified production v1.8.9 placement to existing v2
@@ -36,7 +40,18 @@ the fill, providing at least 1px of exterior outline. It adds no pill or box. Ca
 the compact short-landscape exception and 72px roster band retain live measurements.
 UI_PRESENTATION.md owns exact values, the accepted
 safety deviations from production and the honest injected floating-trail negative control.
-Native panel/Training action/focus owners remain; passive layout wrappers pass canvas input.
+`sheet-layout.ts#createSheetLayoutController` observes visible hint/context/dock rectangles,
+toast size/style and header/body changes, publishing the lower-lane, toast and sheet-floor CSS
+properties through its own coalesced measurement observer, installed by `main.ts`. The toast reserves its full height
+through its exit fade. `ui-sheet-style.ts` owns sheet bounds, sticky header/Close styling, stack
+layers and shared motion/control states; Planetside consumes the measured floor. The panel is
+still its scroll owner, and Compendium keeps its virtual scrollport.
+`panels.ts#seatPnx` tags the original direct h2/h3 `.sheet-header` and keeps a direct first
+`.sheet-close`; `fillPanel` retains that Close node and any Close-owned focus. Training admits
+`#docksets/#setpanel` except during completion, closes Settings through its native owner on
+Escape, and prevents pending lesson callbacks from stealing its focus or closing it. Exact
+lesson targets own `.tutpri`; teardown removes marks. Steps/events and persistence are unchanged.
+Passive layout wrappers continue to pass canvas input.
 `notification-history.ts` retains explicit saved Mark read on the existing notification shape
 and UI checkpoint whitelist. The Survey/Charters correction passed scoped verification in six
 fresh phone/tablet/desktop contexts, including native pointer/Enter/Space opening and Close/Escape
@@ -49,8 +64,8 @@ remain predecessor evidence
 in `audits/UI_U1_SURVEY_TOP_ROW_20260906.md`.
 Prior partial evidence stays in `audits/UI_U1_COMPACT_CONTROLS_20260906.md`. Both the unattributed
 navigation blocker and the normal-review portrait-restoration blocker remain OPEN; this correction
-did not run full normal review, Slice, phone Glass or the full chain. U2–U4 and Phase2 remain unstarted;
-integrated-pilot approval remains open.
+did not run full normal review, Slice, phone Glass or the full chain at that checkpoint.
+U2–U4 are now authorized; integrated-pilot approval remains open and Phase2 remains unstarted.
 
 The phone-only restoration diagnostic passed at signed source
 `381ddf59858bd863640703e83d2d98beeedf59fa`, with product `053ef439…` unchanged. Named evaluation
@@ -80,18 +95,16 @@ phones. The current instrument correction audits Settings → Star charts on com
 and retains the visible wide-screen Charts route. Twelve source-executing route tests, root
 TypeScript and validate passed.
 
-Latest local validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
+Retained U1 validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
 PASS (315 files, 3376 passed, one skipped). Small-phone stopped PRODUCT RED with a real 22.5px
 Planetside/hint overlap at 320×568, zero instrument failures. Its later native Charts Settings
 phase, large-phone and Slice were NOT RUN. [The final U1 audit](audits/UI_U1_HINT_CONTRAST_20260906.md)
 retains the nine-carrier checkpoint. U1 visual acceptance stands; the technical gate remains OPEN.
-Sheet/hint lane separation is explicitly U2 scope. [The proposed U2 checkpoint](audits/UI_U2_PROPOSED_SCOPE_20260906.md)
-asks Nick to carry this known blocker into U2 without calling U1 green. No U2 implementation or
-further U1 rework is underway; the original no-U2 boundary remains until that scope change is approved. The development draft still has 81 bullets and mentions the outline. Current Compendium producer is
-`6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`; measurement
-`4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` is unchanged.
-U2 follows completion of these bounded checks as the next development batch. Physical UAT and
-both historical causes remain OPEN; U2–U4, Phase2 and hosted work have not started.
+U2 now implements the measured-lane/header/stack correction and awaits native and checkpoint
+verification, including the previously unreached Charts Settings route. The historical report
+is unchanged. [ROADMAP](ROADMAP.md) owns the current candidate, release/producer authority and
+outcomes. Physical UAT and both older 08cd97d/c57aaaeb causes remain unknown/OPEN. Subsequent
+U3/U4 checkpoints are authorized; Phase2 and hosted actions remain outside that authority.
 
 U1 review instrumentation (2026-09-06) now records public viewport/resize facts and
 auto-resumed trail-writer stacks between intentional controls. It does not read camera/travel
