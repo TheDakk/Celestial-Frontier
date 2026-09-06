@@ -56,7 +56,8 @@ Root validation PASS: zero boot errors,1010 Earth species rendered,50-probe fing
 Initial focused suite passed10/10. Independent review replaced a source-text-only predecessor
 check with execution of the actual extracted clickNative routine: wrong Cosmos/Milky Way scope
 rejects before any Input dispatch, while Cosmos delivers press/release and rearms; the revised
-2-test trace file passes. Mocked helper controls cover wrong-session events, immediate resume,
+2-test trace file passes. The Node selftests use explicit .selftest.mjs paths to keep their owner separate from default
+Vitest discovery; filenames were corrected before the fresh-source run. Mocked helper controls cover wrong-session events, immediate resume,
 pending boundaries, missing frames/nodes, cleanup failures and bounded overflow.
 
 Synthetic calibration uses only an isolated about:blank document. The first PASS proved raw

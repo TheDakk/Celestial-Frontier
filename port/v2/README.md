@@ -15,7 +15,7 @@ request approved out-of-sandbox execution before browser spawn.
 As of2026-09-06 its navigation trace includes layout/visual viewport resize facts and an
 auto-resuming, session-owned trail breakpoint between intentional controls. The isolated
 calibration command is `node tools/ui-review-navigation-selftest.mjs NEW_REPORT_JSON`;
-focused controls use `node --test tools/ui-review-trail-debugger.test.mjs tools/ui-shell-review-trace.test.mjs`.
+focused controls use `node --test tools/ui-review-trail-debugger.selftest.mjs tools/ui-shell-review-trace.selftest.mjs`.
 Debugger stacks perturb timing and cannot close the retained navigation blocker on nonrecurrence.
 See `../../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md` for current evidence and limits.
 This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2; no CI/profile
