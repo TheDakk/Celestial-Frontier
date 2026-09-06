@@ -172,6 +172,23 @@ describe('Glass responsive native control ownership', () => {
     expect(source).toContain("preferenceOutcome('#raillft','#railcharters','var(--ink)')");
   });
 
+  it('judges the transparent header by visibility and dimensions, with genuine hiding controls', () => {
+    const start=source.indexOf('shelfVisible=()=>');
+    const end=source.indexOf(',positiveVisibility=',start);
+    expect(start).toBeGreaterThan(0);expect(end).toBeGreaterThan(start);
+    const expression=source.slice(start+'shelfVisible='.length,end);
+    const style={display:'grid',visibility:'visible',pointerEvents:'none'};
+    const rect={width:404,height:94};
+    const shelf={getBoundingClientRect:()=>rect};
+    const assess=()=>Function('shelf','getComputedStyle','return ('+expression+')()')(shelf,()=>style);
+    expect(assess()).toBe(true);
+    for(const [owner,key,value] of [[style,'display','none'],[style,'visibility','hidden'],[rect,'width',0],[rect,'height',0]]){
+      const prior=owner[key];owner[key]=value;expect(assess()).toBe(false);owner[key]=prior;expect(assess()).toBe(true);
+    }
+    expect(source).toContain('hiddenShelfRejected=!shelfVisible()');
+    expect(source).toContain('rendered(search)&&rendered(dock)&&shelfVisible()');
+  });
+
   it('anchors above the measured right-bottom utility tray and rejects displaced or matching off-anchor trays', () => {
     const owner = source.slice(source.indexOf('  const rightBottomAnchorOutcome ='),
       source.indexOf('  const panelCloseOutcome ='));

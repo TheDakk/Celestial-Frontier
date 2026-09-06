@@ -12091,10 +12091,10 @@ async function main() {
                 const rendered=(el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return style.display!=='none'&&style.visibility==='visible'
                     &&style.pointerEvents!=='none'&&r.width>0&&r.height>0;},ownsCentre=(el)=>{const r=el.getBoundingClientRect(),hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
                     return !!hit&&(hit===el||el.contains(hit));},named=(el)=>!!(el.getAttribute('aria-label')||el.textContent||'').trim(),
-                  exposed=(el)=>!el.inert&&!el.closest('[inert],[aria-hidden="true"]'),positiveVisibility=rendered(search)&&rendered(dock)&&getComputedStyle(shelf).visibility==='visible'&&shelf.getBoundingClientRect().height>0&&exposed(search)&&exposed(dock)&&exposed(shelf),
+                  exposed=(el)=>!el.inert&&!el.closest('[inert],[aria-hidden="true"]'),shelfVisible=()=>{const s=getComputedStyle(shelf),r=shelf.getBoundingClientRect();return s.display!=='none'&&s.visibility==='visible'&&r.width>0&&r.height>0;},positiveVisibility=rendered(search)&&rendered(dock)&&shelfVisible()&&exposed(search)&&exposed(dock)&&exposed(shelf),
                   searchStyle=search.getAttribute('style'),dockStyle=dock.getAttribute('style'),shelfStyle=shelf.getAttribute('style'),dockAriaHidden=dock.getAttribute('aria-hidden');
                 let hiddenSearchRejected=false,hiddenShelfRejected=false,blockedDockRejected=false,hiddenDockA11yRejected=false;
-                try{shelf.style.setProperty('visibility','hidden','important');hiddenShelfRejected=!rendered(shelf);}
+                try{shelf.style.setProperty('visibility','hidden','important');hiddenShelfRejected=!shelfVisible();}
                 finally{shelf.setAttribute('style','');shelf.removeAttribute('style');if(shelfStyle!==null)shelf.setAttribute('style',shelfStyle);}
                 try{search.style.setProperty('visibility','hidden','important');hiddenSearchRejected=!rendered(search);}
                 finally{search.setAttribute('style','');search.removeAttribute('style');if(searchStyle!==null)search.setAttribute('style',searchStyle);}
