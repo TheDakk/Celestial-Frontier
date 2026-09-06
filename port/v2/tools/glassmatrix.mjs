@@ -14098,8 +14098,12 @@ async function main() {
             &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&scoutContract&&recordsContract&&audioContract&&mealContract&&breedContract&&renameContract&&lessonContract&&trainingContract&&artContract
             &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract&&publishingContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
+            &&/ONE COMMAND DECK ON EVERY SCREEN: Five labelled boards and four utility controls share a centered bottom launcher across phone, tablet and desktop/.test(text)
+            &&/ONE GLASS LANGUAGE: The v2 command deck unifies the top bar, objective, breadcrumbs, Survey, panels, contextual hints, bottom launcher on every device/.test(text)
+            &&/UTILITIES FOLLOW THE LAUNCHER: Desktop notices and utility panels clear the measured bottom launcher and share its right edge/.test(text)
+            &&/PRIME STAYS WITH YOUR BOARDS: Prime Codex keeps its icon, label and Signature count in the bottom launcher on every device/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
-            &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
+            &&/Spacing inside the wide bottom launcher belongs to that command deck and leaves the active panel open/.test(text)
             &&/a genuine empty-sky press still dismisses it/.test(text)
             &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
             &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)

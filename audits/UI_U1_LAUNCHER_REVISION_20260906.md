@@ -17,3 +17,16 @@ the real launcher opener, not a claim that Survey naturally hides the new launch
 must be retained before a signed successor; no unchanged-source retries or hosted attempts.
 
 Exact source, producer, local results and comparison images follow after verification.
+
+## Initial exact-source static stop —3101576
+
+Fresh root-main.js-free checkout: typecheck/artunused PASS; Vitest309 files/3,308tests PASS,
+2 files/3tests FAIL/1skipped. No browser or later stage ran. Original results/logs are retained
+in UI_U1_LAUNCHER_3101576_20260906; complete correction history in the companion REDS JSON.
+The release-copy completeness checks retained an obsolete rail phrase. Successor oracles
+use the actual launcher wording and preserve81entries, headings, gameplay/Research truth,
+and removal/stale-copy controls. Glass focused8/8PASS. Slice focused23/24PASS reached the
+independent ordered-copy hash and stopped on its old value. Root derived the new exact81
+bullet hash687ef4b59445d308b9e633876da3ed77456d9f903e2e4cf2d9a6e9538f13a60d from source
+using built-in Node type stripping, and updated only that release authority. No measurement
+authority or product change follows from this correction. Fresh successor checks follow.

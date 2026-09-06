@@ -1,0 +1,31 @@
+{
+  "schema": "cf-u1-uniform-launcher-reds/v1",
+  "runs": [
+    {
+      "source": "3101576abe30304317e62edfe9247dea7882f5ae",
+      "stage": "vitest",
+      "evidenceDirectory": "UI_U1_LAUNCHER_3101576_20260906",
+      "result": {
+        "failedFiles": 2,
+        "passedFiles": 309,
+        "failedTests": 3,
+        "passedTests": 3308,
+        "skippedTests": 1
+      },
+      "cause": "Rendered-release completeness oracles retained the obsolete desktop-rail gap phrase. Updated source copy describes the uniform bottom launcher.",
+      "correction": "Slice and Glass match current launcher, gap, utility-edge and Prime wording and challenge stale/removal copy while retaining81entries and gameplay truth. Focused Slice then exposed stale exact ordered-bullet hash; root independently derived current81 JSON hash687ef4b59445d308b9e633876da3ed77456d9f903e2e4cf2d9a6e9538f13a60d from tracked release source and updated only GUIDE_DRAFT_BULLET_AUTHORITY.",
+      "focusedResults": "Glass8/8PASS; Slice23/24PASS stopped at old ordered hash before root derivation. No unchanged-source retry.",
+      "preparationCarriers": [
+        {
+          "file": "UI_U1_LAUNCHER_PREP_cf-u1-launcher-release-oracle-prep.log.gz",
+          "sha256": "198a7516c5a9c9f450ba42d75582fddc0beb9711e840c798436d1a7d29f29f61"
+        },
+        {
+          "file": "UI_U1_LAUNCHER_PREP_cf-u1-glass-release-copy-focused-20260906.log.gz",
+          "sha256": "4d8f1461ad29ddf9c73965849178b1b133996afb7e79b2f7205cf9c99f38e3a4"
+        }
+      ],
+      "laterStages": "Not run after red."
+    }
+  ]
+}

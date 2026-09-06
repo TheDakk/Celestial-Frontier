@@ -6828,7 +6828,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 81,
-    sha256: 'f35a3cca3eea2015025bf257c7832d706d1e2961fac9417a953d0932e0f5ca08',
+    sha256: '687ef4b59445d308b9e633876da3ed77456d9f903e2e4cf2d9a6e9538f13a60d',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -8187,7 +8187,13 @@ try {
         &&shipyardContract&&captureContract&&liveProgressionContract&&audioContract&&mealContract&&breedContract&&renameContract&&hdSurfaceContract&&publishingContract
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
-        &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
+        &&/ONE COMMAND DECK ON EVERY SCREEN/.test(text)
+        &&/centered bottom launcher across phone, tablet and desktop/.test(text)
+        &&/UTILITIES FOLLOW THE LAUNCHER/.test(text)
+        &&/Desktop notices and utility panels clear the measured bottom launcher and share its right edge/.test(text)
+        &&/PRIME STAYS WITH YOUR BOARDS/.test(text)
+        &&/Signature count in the bottom launcher on every device/.test(text)
+        &&/Spacing inside the wide bottom launcher belongs to that command deck and leaves the active panel open/.test(text)
         &&/a genuine empty-sky press still dismisses it/.test(text)
         &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
