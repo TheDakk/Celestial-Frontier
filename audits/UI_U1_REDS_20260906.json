@@ -1,0 +1,54 @@
+{
+  "schema": "cf-u1-checkpoint-reds/v1",
+  "hostedAttempts": 0,
+  "runs": [
+    {
+      "source": "35ded10f3d052ab5603e781ee06d2a25448397f5",
+      "kind": "preparation-instrument",
+      "findings": [
+        "Sandbox npm ci DNS ENOTFOUND fetching locked GSAP.",
+        "Premature typecheck invoked before install completion; tsc unavailable; no product test ran."
+      ],
+      "correction": "Await successful dependency install before all dependent checks."
+    },
+    {
+      "source": "37d82ef50e1c4e1554a572473019c4451c690559",
+      "kind": "local-vitest",
+      "rootMainAbsent": true,
+      "typecheck": "PASS",
+      "artunused": "PASS",
+      "testFiles": {
+        "failed": 7,
+        "passed": 303
+      },
+      "tests": {
+        "failed": 12,
+        "passed": 3241,
+        "skipped": 1
+      },
+      "failures": [
+        "tests/compendium-budget.test.ts > Arc 1A Compendium budget authority > owns a strict v2 record and schema bound to the sealed 1,500-row input",
+        "tests/compendium-budget.test.ts > Arc 1A Compendium budget authority > fails the current producer closed without rebinding historical samples",
+        "tests/compendium-budget.test.ts > Arc 1A Compendium budget authority > binds active ruler authority while preserving calibration-required and drift controls",
+        "tests/current-producer-authorities.test.ts > current producer authorities > binds every live memory budget required by the active check profile",
+        "tests/exceptional-crafting-evidence-contract.test.ts > Pureforged browser-evidence truth > replays every current rendered release control and preserves the Research reach boundary",
+        "tests/guide-release.test.ts > legacy and v2 release channels > keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes",
+        "tests/runtime-hardening.test.ts > persistView execution-time admission > commits once, publishes after durability, and clears its own queue tail",
+        "tests/runtime-hardening.test.ts > persistView execution-time admission > drains an already-started write while refusing a queued writer when import claims ownership",
+        "tests/runtime-hardening.test.ts > persistView execution-time admission > retains exact replacement ownership and rejects a released or superseded claim",
+        "tests/runtime-hardening.test.ts > persistView execution-time admission > keeps the private heartbeat self-bypass and named-search lifecycle exemption",
+        "tests/slicesmoke-atlas-travel-contract.test.ts > Slice Atlas native Travel contract > declares both native Atlas openers as non-submit buttons",
+        "tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps a fixed 81-row Guide oracle with five independent population controls"
+      ],
+      "logSha256": "aeba4456bedf028125872219538723d6e1bfbc352c4ac0db0cb5b43a16eef390",
+      "corrections": [
+        "Move unused GSAP into isolated tools/ui-motion and restore sealed game package/lock bytes; measurement pins unchanged.",
+        "Complete producer successor record with all component hashes.",
+        "Update removed-one bulletin controls to80 from81, retaining assertions.",
+        "Supply new dependencies to extracted persistView harness and strengthen deferred-notification ordering controls.",
+        "Restore native dockatlas markup attribute ordering."
+      ],
+      "remainingChecks": "Glass selftest, Slice, phone canaries and visual review not run after red."
+    }
+  ]
+}

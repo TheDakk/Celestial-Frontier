@@ -49,3 +49,19 @@ Correction: dependency installation must report exit0 before launching any check
 access for the unchanged locked install was granted through sandbox escalation. This is a
 local setup/instrument failure, not a product or hosted result. It is retained before the
 successor verification source; no unchanged product-red test is retried.
+
+## First product checkpoint —37d82ef
+
+Fresh committed source `37d82ef50e1c4e1554a572473019c4451c690559`, root main.js absent: install,typecheck,artunused
+PASS. VitestRED:7failed/303passed files;12failed/3,241passed/1skipped tests. Stop honored;
+Glass selftest, Slice, canaries and visual review were not run. `UI_U1_REDS_20260906.json`
+retains exact failures and log hash. Corrections preserve every tested outcome: removed-one
+bullet count80from81, native Atlas opener anchor, extracted persistView harness dependencies,
+and complete producer component record. The prior unused GSAP runtime dependency is moved to
+isolated `tools/ui-motion` (same3.15.0 installation verified). Game package/lock restored
+byte-for-byte to their sealed values; no measurement/ruler/ceiling/test expectation weakened.
+
+Corrected producer derivation: `1afd4b75628db48685ca065b8cfbfa7a8ab342c602e1fe6d7f785777a662964c`.
+Compendium sealed measurement now MATCHES. Tool exit2 reflects producer movement before pin
+update and quarantined SceneMemory drift only. Producer pins/components moved together;
+measurement/ruler/ceilings remain byte-identical. Fresh successor verification follows.

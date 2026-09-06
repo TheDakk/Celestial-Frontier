@@ -37,6 +37,7 @@ function persistence() {
     F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER: Symbol('cycle'), F4_LIFECYCLE_CHECKPOINT_OWNER: Symbol('lifecycle'),
     persistHold: false, trainingCheckpointWriteHeld: false, importWriteInFlight: false,
     replacementReloadPending: false, replacementTransaction: null as object | null,
+    productActionInFlight: false, notificationHistory: { flushPending: vi.fn() },
     writable: true, f4RuntimeMayMutate: () => env.writable,
     settleF4Heartbeat: vi.fn(async () => {}),
     f4Runtime: { commit, checkpointParent: () => ({}), diagnostics: () => ({}) },
@@ -64,6 +65,7 @@ describe('persistView execution-time admission', () => {
     const { env, persist, stage, project, commit } = persistence();
     expect(await persist()).toBe(true);
     expect(stage).toHaveBeenCalledTimes(1);
+    expect(env.notificationHistory.flushPending).toHaveBeenCalledOnce();
     expect(project).toHaveBeenCalledTimes(1);
     expect(commit).toHaveBeenCalledTimes(1);
     expect(env.save).toEqual({ savedView: { id: 'next' }, EPOCH_BASE: 3 });
@@ -85,6 +87,7 @@ describe('persistView execution-time admission', () => {
       gate.resolve(true);
       expect(await run, blocker).toBe(false);
       expect(stage, blocker).not.toHaveBeenCalled();
+      expect(env.notificationHistory.flushPending, blocker).not.toHaveBeenCalled();
       expect(project, blocker).not.toHaveBeenCalled();
       expect(commit, blocker).not.toHaveBeenCalled();
       if (boundary === 'queue') expect(env.settleF4Heartbeat, blocker).not.toHaveBeenCalled();
@@ -92,6 +95,42 @@ describe('persistView execution-time admission', () => {
       expect(env.activePersist, blocker).toBeNull();
       expect(env.namedSearchPersistenceDeferred, blocker).toBe(blocker === 'namedSearchPersistenceHeld');
     }
+  });
+
+  it('promotes deferred notices only after admission and heartbeat settlement, before candidate projection', async () => {
+    const { env, persist, stage, project, commit } = persistence();
+    const gate = deferred<boolean>();
+    const order: string[] = [];
+    env.settleF4Heartbeat.mockImplementation(async () => { await gate.promise; order.push('heartbeat'); });
+    stage.mockImplementation(() => { order.push('stage'); return { kind: 'staged', stage: { epoch: 3 } }; });
+    env.notificationHistory.flushPending.mockImplementation(() => { order.push('notification-promotion'); });
+    project.mockImplementation(() => {
+      order.push('projection');
+      return { kind: 'projected', state: { savedView: { id: 'next' }, EPOCH_BASE: 3 } };
+    });
+    commit.mockImplementation(async (candidate: unknown) => {
+      order.push('commit');
+      return { kind: 'committed', revision: 9, saved: { canonicalState: candidate } };
+    });
+    const run = persist();
+    expect(order).toEqual([]);
+    expect(env.notificationHistory.flushPending).not.toHaveBeenCalled();
+    gate.resolve(true);
+    expect(await run).toBe(true);
+    expect(order).toEqual(['heartbeat', 'stage', 'notification-promotion', 'projection', 'commit']);
+    expect(env.notificationHistory.flushPending).toHaveBeenCalledOnce();
+  });
+
+  it('does not promote notices while the product snapshot is held and restores promotion after that hold ends', async () => {
+    const { env, persist, project } = persistence();
+    env.productActionInFlight = true;
+    expect(await persist()).toBe(true);
+    expect(project).toHaveBeenCalledOnce();
+    expect(env.notificationHistory.flushPending).not.toHaveBeenCalled();
+    env.productActionInFlight = false;
+    expect(await persist()).toBe(true);
+    expect(project).toHaveBeenCalledTimes(2);
+    expect(env.notificationHistory.flushPending).toHaveBeenCalledOnce();
   });
 
   it('drains an already-started write while refusing a queued writer when import claims ownership', async () => {
@@ -109,6 +148,7 @@ describe('persistView execution-time admission', () => {
       saved: { canonicalState: { savedView: { id: 'next' }, EPOCH_BASE: 3 } } });
     expect(await first).toBe(true);
     expect(await queued).toBe(false);
+    expect(env.notificationHistory.flushPending).toHaveBeenCalledOnce();
     expect(await drained).toBe(false);
     expect(commit).toHaveBeenCalledTimes(1);
     expect(env.activePersist).toBeNull();
@@ -153,6 +193,7 @@ describe('persistView execution-time admission', () => {
     expect(await persist(null, 'ordinary', null, env.F4_LIFECYCLE_CHECKPOINT_OWNER)).toBe(false);
     expect(env.activePersist).toBe(prior.promise);
     expect(commit).not.toHaveBeenCalled();
+    expect(env.notificationHistory.flushPending).not.toHaveBeenCalled();
     prior.resolve(false);
   });
 
