@@ -71,3 +71,23 @@ Whole-job shared locks and first-attempt isolated-browser escalation apply. Budg
 PUBLIC per last verification, private fallback3000; zero exact hosted authority or hosted actions.
 Codex owns local completion; Claude need not be opened, copied into or rerun now. No PR needed
 for this local batch. Future openai/mac → develop integration needs separate exact hosted authority.
+
+## First committed contrast result — a528791
+
+Signed a52879197e5d061671e5835e41a7afe4ba39b5d2 passed the clean develop profile: 313 files,
+3358 tests, one skip. Small-phone executed the new native outline positives, deliberate faults,
+live hint removal and exact restoration without error; its HUD contrast result was clean.
+It then stopped INSTRUMENT RED with zero product findings. The compressed-dock fault correctly
+returned broken.ok=false, nine responsive-slot errors, restored.ok=true and exact prior style
+presence/bytes, but its verdict still searched for the retired literal “dock pitch is not 64px”.
+The accepted 320px phone uses a 300px dock, 60px pitch and 56px board targets. Large-phone and
+Slice did not run on this source. Retention: UI_U1_LOCAL_CHECKPOINT_a528791_20260906/manifest.json.
+
+The bounded successor changes that predicate to the actual “dock responsive slot drifted”
+category and updates its outcome description. The existing broken/restored geometry and exact
+style requirements are retained. A portable replay of this immutable failed receipt must accept
+the correctly detected fault while rejecting a green mutation, unrelated finding, red restoration
+or changed styles. All six focused replay tests and root TypeScript/validate/fingerprint passed;
+the three logs are retained in UI_U1_DOCK_VERDICT_PREPARATION_20260906/manifest.json.
+This is an instrument-only successor: the outlined product and producer remain
+byte-identical to a528791. No layout refinement or unchanged-source retry.
