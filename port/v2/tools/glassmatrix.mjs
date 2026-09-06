@@ -10641,12 +10641,17 @@ async function main() {
             'five labelled 58px board faces and four 44px utility targets retain 64px pitch; relocated Inventory and scene actions stay centre-owned');
           if (!phoneDockControlRun) {
             phoneDockControlRun = true;
-            const dockControl = await evalIn(`(()=>{const dock=document.getElementById('dock'),prior=dock?.getAttribute('style')??null;
-              dock?.style.setProperty('grid-template-columns','repeat(8,32px)','important');const broken=${phoneDockCheck};
-              if(prior===null)dock?.removeAttribute('style');else dock?.setAttribute('style',prior);
-              return {ok:broken.ok===false&&broken.errors.length>0&&${phoneDockCheck}.ok,broken};})()`);
+            const dockControl = await evalIn(`(()=>{const dock=document.getElementById('dock'),
+              priorStyle={present:dock.hasAttribute('style'),value:dock.getAttribute('style')};let broken;
+              try{dock.style.setProperty('grid-template-columns','repeat(10,26px)','important');broken=${phoneDockCheck};}
+              finally{dock.setAttribute('style','');dock.removeAttribute('style');if(priorStyle.present)dock.setAttribute('style',priorStyle.value);}
+              const restored=${phoneDockCheck},restoredStyle={present:dock.hasAttribute('style'),value:dock.getAttribute('style')},
+                styleRestored=restoredStyle.present===priorStyle.present&&restoredStyle.value===priorStyle.value;
+              return {ok:broken.ok===false&&broken.errors.some(error=>error.startsWith('dock pitch is not 64px: '))
+                &&restored.ok&&styleRestored,broken,restored,priorStyle,restoredStyle,styleRestored};})()`);
+            console.log(`GLASS PHONE DOCK COMPRESSED-TRACK CONTROL — ${vp.label}: ${JSON.stringify(dockControl)}`);
             if (!dockControl.ok) {
-              recordInstrumentFailure(`${vp.label}: phone dock eight-track control stayed green or failed to restore (${JSON.stringify(dockControl)})`);
+              recordInstrumentFailure(`${vp.label}: phone dock compressed-track control stayed green or failed to restore (${JSON.stringify(dockControl)})`);
             }
             recordControls('phone-dock-inventory');
             const membershipControl = await evalIn(`(()=>{const button=document.getElementById('dockinventory'),prior=button?.id||null;

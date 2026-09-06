@@ -467,6 +467,37 @@
         "producerSha256": "ffb80c98195f8bb2e9bbeccdf6f52e5923843c2ed6f2a668634d6c35f5b26939",
         "record": "UI_U1_CAPTION_LANE_PRODUCER_20260906.json"
       }
+    },
+    {
+      "source": "7f5e63b451c33574d415c3ff21281531b29bc6d7",
+      "kind": "local-glass-small-phone",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck/artunused/full Vitest/Glass selftest and immutable Slice PASS",
+      "slice": {
+        "runId": "20260906080729860-75805-c343feb5e74c",
+        "durationMs": 374168,
+        "evidenceDirectory": "UI_U1_SLICE_7f5e63b_20260906"
+      },
+      "runId": "20260906081345769-76471-ba053513e720",
+      "findings": [],
+      "instrumentFailures": [
+        "small-phone: phone dock eight-track control stayed green or failed to restore ({\"ok\":false,\"broken\":{\"ok\":true,\"errors\":[],\"display\":\"grid\",\"ids\":[\"dockcharters\",\"dockcodex\",\"primechip\",\"dockshipyard\",\"dockatlas\",\"dockrecords\",\"docknotifications\",\"dockguide\",\"docksets\"],\"expected\":[\"dockcharters\",\"dockcodex\",\"primechip\",\"dockshipyard\",\"dockatlas\",\"dockrecords\",\"docknotifications\",\"dockguide\",\"docksets\"],\"rows\":[{\"top\":455.71875,\"height\":52.28125,\"ids\":[\"dockcharters\",\"dockcodex\",\"primechip\",\"dockshipyard\",\"dockatlas\"],\"centres\":[32,96,160,224,288]},{\"top\":512,\"height\":44,\"ids\":[\"dockrecords\",\"docknotifications\",\"dockguide\",\"docksets\"],\"centres\":[64,128,192,256]}],\"rect\":{\"id\":\"dock\",\"left\":0,\"top\":455.71875,\"right\":320,\"bottom\":556,\"width\":320,\"height\":100.28125,\"cx\":160,\"cy\":505.859375,\"visible\":true},\"centres\":[{\"id\":\"dockcharters\",\"rect\":{\"id\":\"dockcharters\",\"left\":3,\"top\":455.71875,\"right\":61,\"bottom\":508,\"width\":58,\"height\":52.28125,\"cx\":32,\"cy\":481.859375,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"dockcodex\",\"rect\":{\"id\":\"dockcodex\",\"left\":67,\"top\":455.71875,\"right\":125,\"bottom\":508,\"width\":58,\"height\":52.28125,\"cx\":96,\"cy\":481.859375,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"primechip\",\"rect\":{\"id\":\"primechip\",\"left\":131,\"top\":455.71875,\"right\":189,\"bottom\":508,\"width\":58,\"height\":52.28125,\"cx\":160,\"cy\":481.859375,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"dockshipyard\",\"rect\":{\"id\":\"dockshipyard\",\"left\":195,\"top\":455.71875,\"right\":253,\"bottom\":508,\"width\":58,\"height\":52.28125,\"cx\":224,\"cy\":481.859375,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"dockatlas\",\"rect\":{\"id\":\"dockatlas\",\"left\":259,\"top\":455.71875,\"right\":317,\"bottom\":508,\"width\":58,\"height\":52.28125,\"cx\":288,\"cy\":481.859375,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"dockrecords\",\"rect\":{\"id\":\"dockrecords\",\"left\":42,\"top\":512,\"right\":86,\"bottom\":556,\"width\":44,\"height\":44,\"cx\":64,\"cy\":534,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"docknotifications\",\"rect\":{\"id\":\"docknotifications\",\"left\":106,\"top\":512,\"right\":150,\"bottom\":556,\"width\":44,\"height\":44,\"cx\":128,\"cy\":534,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"dockguide\",\"rect\":{\"id\":\"dockguide\",\"left\":170,\"top\":512,\"right\":214,\"bottom\":556,\"width\":44,\"height\":44,\"cx\":192,\"cy\":534,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"docksets\",\"rect\":{\"id\":\"docksets\",\"left\":234,\"top\":512,\"right\":278,\"bottom\":556,\"width\":44,\"height\":44,\"cx\":256,\"cy\":534,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"}],\"relocatedInventory\":{\"id\":\"dockinventory\",\"rect\":{\"id\":\"dockinventory\",\"left\":10,\"top\":8,\"right\":139.71875,\"bottom\":52,\"width\":129.71875,\"height\":44,\"cx\":74.859375,\"cy\":30,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"topbar\"},\"sceneactions\":[{\"id\":\"docksurvey\",\"rect\":{\"id\":\"docksurvey\",\"left\":18,\"top\":138,\"right\":103.75,\"bottom\":182,\"width\":85.75,\"height\":44,\"cx\":60.875,\"cy\":160,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"sceneactions\"},{\"id\":\"dockcharts\",\"rect\":{\"id\":\"dockcharts\",\"left\":111.75,\"top\":138,\"right\":197.5,\"bottom\":182,\"width\":85.75,\"height\":44,\"cx\":154.625,\"cy\":160,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"sceneactions\"}]}})"
+      ],
+      "correction": "Ten explicit26px tracks must produce a measured64px-pitch rejection; broken/restored geometry and exact style presence/value are retained. Restoration uses the proven native set-empty-then-remove strategy. Historical control identity and all positive geometry checks unchanged; no product/pin edits.",
+      "carriers": [
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_7f5e63b_20260906.json.gz",
+          "sha256": "7f4d913b8bfd7dc105654f235e2cdd1fdbb02a516d2623887978c887ddf27e33",
+          "originalSha256": "139d31be6807b32171421bcb3f523b051dc0722c30cff388f0600e8f22e1fc44"
+        },
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_7f5e63b_20260906.log.gz",
+          "sha256": "074f6cd4280f9d89a4c3b04b5e5e9c32415b054078fe91f33e0a8e4f6180534f",
+          "originalSha256": "861a2229429f2298587e50b33cc86c2409b0570246f08f51276efb47c9fc72f8"
+        }
+      ],
+      "remainingChecks": "large-phone/normal-build/review not run after red.",
+      "preparation": "Independent bounded diff plus root review; node syntax and diff checks; no mirrored test added. The native corrected control will run in the fresh required sequence."
     }
   ]
 }

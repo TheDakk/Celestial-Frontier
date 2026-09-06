@@ -275,3 +275,14 @@ No font shrinking or check weakening. Large-phone and review did not run after r
 Producer successor `ffb80c98195f8bb2e9bbeccdf6f52e5923843c2ed6f2a668634d6c35f5b26939` and all component pins moved together.
 Compendium measurement matches; prior narrative is preserved and extended with every component.
 The independently reviewed formula has no measurement cycle; the hint observer already exists.
+
+## Slice PASS; inert grid mutation stop —7f5e63b
+
+Fresh static sequence and Glass selftest PASS. Slice `20260906080729860-75805-c343feb5e74c`
+PASS in374,168ms; original report/log/10screenshots retained under
+`UI_U1_SLICE_7f5e63b_20260906/`. Phone caption contrast and overlap checks passed with zero
+product findings. The phone spacing negative control was inert: eight explicit32px tracks
+still allowed placed children to create two implicit32px tracks, preserving every rectangle.
+The successor compresses the ten explicit widths to26px, keeps the64px positive oracle intact
+and retains both broken and restored geometry. No product/producer changes. Larger phone and
+normal visual review did not run after the instrument red.
