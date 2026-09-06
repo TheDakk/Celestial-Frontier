@@ -124,7 +124,7 @@ describe('explicit evidence-build runtime isolation', () => {
     expect(getter).toHaveBeenCalledTimes(1);
   });
 
-  it.each([false, true])('retains frame → task → answerability → art activation (evidence=%s)', (mode) => {
+  it.each([false, true])('retains frame → task → answerability → art → pilot activation (evidence=%s)', (mode) => {
     const trace: string[] = [];
     const frames: Array<() => void> = [];
     const tasks: Array<() => void> = [];
@@ -135,6 +135,7 @@ describe('explicit evidence-build runtime isolation', () => {
         setTimeout: (callback: () => void) => { tasks.push(callback); }, emitBootPhase: () => {},
         f4Runtime: { setAnswerable: () => { trace.push('answerable'); } }, f4RuntimeMayAnswer: () => true,
         speciesArtLoader: { activate: () => { trace.push('art'); } },
+        startAudiovisualPilot: () => { trace.push('pilot'); },
         window: Object.defineProperty({}, '__cfSliceReadyWitness', { get: getter }),
       });
     ready();
@@ -145,7 +146,7 @@ describe('explicit evidence-build runtime isolation', () => {
     expect(trace).toEqual([]);
     expect(tasks).toHaveLength(1);
     tasks.shift()!();
-    expect(trace).toEqual(['answerable', 'art']);
+    expect(trace).toEqual(['answerable', 'art', 'pilot']);
     expect(getter).toHaveBeenCalledTimes(mode ? 1 : 0);
   });
 });
