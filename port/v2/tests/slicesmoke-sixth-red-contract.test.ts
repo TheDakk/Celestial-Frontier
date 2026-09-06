@@ -3399,9 +3399,47 @@ describe('sixth Slice red contract repairs', () => {
     ]);
   });
 
+  it('consumes font readiness and two rendered frames before reading native chrome geometry', async () => {
+    const start='  const renderedChromeBoundary = `';
+    const expression=section(sliceSource,start,'`;\n  const geoCheck =').slice(start.length);
+    const observe=async (candidate: string) => {
+      let fontsReady!: () => void;
+      const ready=new Promise<void>(resolve=>{fontsReady=resolve;});
+      const frames: Array<() => void>=[];
+      let finished=false,observed: unknown=null,height=114;
+      const fonts={ready,status:'loading'};
+      const document={fonts,documentElement:{},getElementById:()=>({getBoundingClientRect:()=>({height})})};
+      const run=new Function('document','getComputedStyle','requestAnimationFrame','return '+candidate)(document,
+        ()=>({getPropertyValue:()=>String(height)}),(callback:()=>void)=>{frames.push(callback);}) as Promise<unknown>;
+      void run.then(value=>{finished=true;observed=value;});
+      await Promise.resolve();await Promise.resolve();
+      const beforeFonts={queued:frames.length,finished};
+      fonts.status='loaded';fontsReady();await Promise.resolve();await Promise.resolve();
+      const beforeFirst={queued:frames.length,finished};
+      frames.shift()?.();height=131.4375;await Promise.resolve();await Promise.resolve();
+      const afterFirst={queued:frames.length,finished};
+      frames.shift()?.();await Promise.resolve();await Promise.resolve();
+      return {beforeFonts,beforeFirst,afterFirst,finished,observed};
+    };
+    const baseline=await observe(expression);
+    expect(baseline).toEqual({beforeFonts:{queued:0,finished:false},beforeFirst:{queued:1,finished:false},
+      afterFirst:{queued:1,finished:false},finished:true,
+      observed:{frames:2,fontStatus:'loaded',topbarHeight:131.4375,publishedTopbarHeight:131.4375}});
+    const noFonts=await observe(expression.replace('if(document.fonts)await document.fonts.ready;',''));
+    expect(noFonts.beforeFonts).not.toEqual(baseline.beforeFonts);
+    const oneFrame=await observe(expression.replace('requestAnimationFrame(()=>{frames+=1;resolve();});','resolve();'));
+    expect(oneFrame.afterFirst).not.toEqual(baseline.afterFirst);
+    expect(oneFrame.observed).toMatchObject({frames:1,topbarHeight:131.4375});
+    expect(sliceSource).toContain('const desktopGeometryBoundary = await evalIn(renderedChromeBoundary);');
+    expect(sliceSource).toContain('const phoneGeometryBoundary = await evalPh(renderedChromeBoundary);');
+    expect(sliceSource.indexOf('await evalIn(renderedChromeBoundary)')).toBeLessThan(sliceSource.indexOf('const geo = await evalIn(geoCheck)'));
+    expect(sliceSource.indexOf('await evalPh(renderedChromeBoundary)')).toBeLessThan(sliceSource.indexOf('const phGeo = await evalPh(geoCheck)'));
+    expect(expression).not.toMatch(/dispatchEvent|__CF_SLICE__|syncTopbar|setTimeout/);
+  });
+
   it('rejects clipped and overlapping U1 top-stack rectangles without moving the launcher contract', () => {
     const start = '  const geoCheck = `';
-    const expression = section(sliceSource, start, '`;\n  const geo =').slice(start.length);
+    const expression = section(sliceSource, start, '`;\n  const desktopGeometryBoundary =').slice(start.length);
     const dom = new JSDOM(`<!doctype html><style>*{opacity:1;visibility:visible}#raillft,#railrgt,#trail{display:none}</style>
       <header id="topbar"><button id="dockinventory" type="button" aria-label="Inventory"><span id="playerchip">Explorer</span></button>
         <div id="hpbar">100/100</div><input id="searchbox"><span id="objchip">Objective</span>
@@ -3452,6 +3490,7 @@ describe('sixth Slice red contract repairs', () => {
         ['objective vertically clipped', 'objchip', { height: 700 }, 'objective chip'],
         ['HP overlaps nameplate', 'hpbar', { top: 40 }, 'HP bar'],
         ['scene stack detached from topbar', 'sceneactions', { top: 140 }, 'scene actions'],
+        ['stale published anchor after header growth', 'topbar', { height: 131.4375 }, 'scene actions'],
         ['Survey target below 44px', 'docksurvey', { height: 43 }, 'scene actions'],
         ['Search is undersized', 'searchbox', { height: 43 }, 'search is not'],
       ];
@@ -3497,6 +3536,7 @@ describe('sixth Slice red contract repairs', () => {
       ['four owned Prime properties', "captureInlineStyleProperties(prime.style,['display','top','left','transform','position','bottom'])"],
       ['Prime property restore binding', 'const restore=()=>restoreInlineStyleProperties(prime.style,prior);'],
       ['hidden Prime control', "prime.style.setProperty('display','none','important')"],
+      ['current native Prime failure', "finding.startsWith('Prime pill is not a visible reachable native button')"],
       ['hidden Prime restoration proof', 'hiddenRestoration=inspectInlineStyleProperties(prime.style,prior)'],
       ['hidden Prime restoration gate', 'if(!hiddenRestoration.ok)throw new Error'],
       ['hidden Prime outer gate', '|| !phonePrimeControls.hiddenRestoration?.ok'],
