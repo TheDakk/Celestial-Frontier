@@ -1,7 +1,7 @@
 # Audiovisual pilot — current coverage ledger
 
 Visual review update (2026-09-05 local): Nick finds production substantially stronger. The live
-comparison in `audits/AAA_PRODUCTION_PILOT_REVIEW_20260905.md` led to a bounded Phase1 refinement in `audits/AAA_PILOT_REFINEMENT_20260905.md`, 
+comparison in `audits/AAA_PRODUCTION_PILOT_REVIEW_20260905.md` led to a bounded Phase1 refinement in `audits/AAA_PILOT_REFINEMENT_20260905.md`,
 with the earned window/Close/focus/scroll protections retained. The historical temperate proof
 has empty panes; a fresh populated capture is in that review. Technical coverage below is not
 visual approval; no Phase2 acceptance is implied.
