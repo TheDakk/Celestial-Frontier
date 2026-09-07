@@ -1,5 +1,26 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U2 absent-style restoration instrument boundary — 2026-09-06
+
+Signed source `c84aecde00814460eec7027b067cd7f871b46441` passed complete develop static
+(321 files, 3453 tests, 1 skipped). Small-phone passed all three Capture outcomes, then stopped
+INSTRUMENT RED with zero product findings: an originally absent scroll-owner style attribute
+restored as empty despite two removals. The declaration/computed evidence matched; exact carrier
+identity did not. Large-phone and Slice were NOT RUN.
+
+Shared sheets retain measured header/inset clearance and 14px bottom scroll padding; Glass
+independently excludes painted headers and preserves tighter inner scrollports. The pending
+tool-only correction clears the live CSSOM before removing an originally absent style carrier,
+retains declaration/computed evidence and the second removal, and names the owner in restoration
+diagnostics. Originally present-empty styles remain present-empty. Product and release/producer
+pins are unchanged from c84aecd. Focused 42 checks, all three TypeScript programs and root
+validate PASS. The initial 40 PASS / 2 fixture failures are retained; only the test's prototype-chain
+lookup needed correction. Exact-source native verification remains pending. Prior failed reports
+and both older unknown causes remain OPEN; no U2/U3/U4, physical UAT, Phase2, pilot or hosted
+closure is claimed.
+[The U2 audit](../../audits/UI_U2_SHEETS_20260906.md) retains this failed result.
+Earlier amendments remain verbatim; accepted U1 choices and ordered U3/U4 scope are unchanged.
+
 ## U2 shared sheet scroll clearance — 2026-09-06
 
 Signed source `f61aeb39cf649eebbe2edb30fe4f7b22bd2fcd29` passed complete develop static

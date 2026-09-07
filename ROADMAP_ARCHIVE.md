@@ -1,3 +1,36 @@
+## Superseded U2 shared-scroll correction handoff — 2026-09-06
+
+Latest signed U2 source is f61aeb39cf649eebbe2edb30fe4f7b22bd2fcd29 (29 ahead,0 behind).
+Product is identical to781b79c. Full develop static PASS:320 files,3435 tests,1 skip. Small-phone
+now passes owned guidance preferences, native Close guidance return, and all three Capture
+outcomes (native return, truthful presentation, geometry/focus). It then stopped PRODUCT RED,
+zero instrument failures: Charters starter action at[138,185.56] hit H3.sheet-header. Large-phone
+and Slice NOT RUN. Retain the9-carrier audits/UI_U2_LOCAL_CHECKPOINT_f61aeb3_20260906/manifest.json;
+named terminal/browser read verifies the RED. Earlier failures remain immutable.
+
+The next shared U2 correction addresses native scroll clearance across all panels and the audit's
+scroll projection. Product currently gives that clearance only to Survey. The generic audit
+centres targets in the whole scrollport and can stop while a sticky title covers them; it does
+not try the actual body below the title. Current failure retained only point/hit, not complete
+header bounds, so do not invent those or call native reachability disproven. Publish measured
+per-panel header/inset scroll padding; independently exclude active shared sticky headers in
+control audit bounds, preserving header-owned/native Close controls, full44px targets, exact
+scroll restoration and unreachable-body RED. Add rectangle/ancestor/scroll diagnostics.
+Agents own controller/CSS/tests and tool/tests separately; root owns draft/pins/docs/build.
+Product evidence build, guarded draft/producer derivation and159 focused checks PASS. A test-only
+TS2345 first-split-entry typing issue was corrected with no runtime change; all three TypeScript
+programs and root validate then PASS. Native run pending. U3 remains unapplied.
+
+Current producer0adbee29aed0004c63d4acc0cebf84a53dabc0bca33f6000d52223fb932f8711; measurement/ceilings unchanged.
+Draft81 orderedSHAb791c37bcee759754e90e688d262ec4cb24a874df1d6e353da2b41a30bff857c.
+After final shared correction, update the existing draft bullet and both producer pins from one
+evidence build, run focused/typecheck/validate, commit, then full develop static → small-phone →
+large-phone → Slice/namedverify once on the new signed source. The original landed runner permits
+only sheet-layout.ts/ui-sheet-style.ts/release-content.ts product diffs from56648b2; tool/tests/docs
+are outside that product guard. Never reuse the f61aeb3 unchanged-product runner for product edits.
+Stop first red; no unchanged-source retry/threshold change. Exact U2 PASS unlocks the normal
+predecessor snapshot and ordered U3 runner. No further U1 layout rework, Inkscape or hosted actions.
+
 # U2 compact-notice checkpoint handoff superseded — 2026-09-06
 
 ## Superseded U2 guidance-contract handoff — 2026-09-06

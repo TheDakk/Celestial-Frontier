@@ -31,36 +31,28 @@ started clean; ambient .DS_Store preserved; root main.js absent. Same-session SS
 startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 remains deferred for busy tools.
 Actions UNFROZEN/PUBLIC per last receipt, private fallback3000, zero exact hosted authority.
 
-Latest signed U2 source is f61aeb39cf649eebbe2edb30fe4f7b22bd2fcd29 (29 ahead,0 behind).
-Product is identical to781b79c. Full develop static PASS:320 files,3435 tests,1 skip. Small-phone
-now passes owned guidance preferences, native Close guidance return, and all three Capture
-outcomes (native return, truthful presentation, geometry/focus). It then stopped PRODUCT RED,
-zero instrument failures: Charters starter action at[138,185.56] hit H3.sheet-header. Large-phone
-and Slice NOT RUN. Retain the9-carrier audits/UI_U2_LOCAL_CHECKPOINT_f61aeb3_20260906/manifest.json;
-named terminal/browser read verifies the RED. Earlier failures remain immutable.
+Latest signed U2 source is c84aecde00814460eec7027b067cd7f871b46441 (30 ahead,0 behind).
+Shared per-sheet measured scroll clearance and independent sticky-header control bounds are
+implemented. Full develop static PASS:321 files,3453 tests,1skip. Small-phone again passed all3
+Capture outcomes, then stopped INSTRUMENT RED/zero product findings: the scroll audit restored
+its declarations/computed styles but left style="" where the original attribute was absent.
+Large-phone and Slice NOT RUN. The nine-carrier checkpoint is
+ audits/UI_U2_LOCAL_CHECKPOINT_c84aecd_20260906/manifest.json; named terminal/browser read []/[]
+validates the RED metadata, not PASS. All earlier reports remain immutable.
 
-The next shared U2 correction addresses native scroll clearance across all panels and the audit's
-scroll projection. Product currently gives that clearance only to Survey. The generic audit
-centres targets in the whole scrollport and can stop while a sticky title covers them; it does
-not try the actual body below the title. Current failure retained only point/hit, not complete
-header bounds, so do not invent those or call native reachability disproven. Publish measured
-per-panel header/inset scroll padding; independently exclude active shared sticky headers in
-control audit bounds, preserving header-owned/native Close controls, full44px targets, exact
-scroll restoration and unreachable-body RED. Add rectangle/ancestor/scroll diagnostics.
-Agents own controller/CSS/tests and tool/tests separately; root owns draft/pins/docs/build.
-Product evidence build, guarded draft/producer derivation and159 focused checks PASS. A test-only
-TS2345 first-split-entry typing issue was corrected with no runtime change; all three TypeScript
-programs and root validate then PASS. Native run pending. U3 remains unapplied.
-
-Current producer0adbee29aed0004c63d4acc0cebf84a53dabc0bca33f6000d52223fb932f8711; measurement/ceilings unchanged.
-Draft81 orderedSHAb791c37bcee759754e90e688d262ec4cb24a874df1d6e353da2b41a30bff857c.
-After final shared correction, update the existing draft bullet and both producer pins from one
-evidence build, run focused/typecheck/validate, commit, then full develop static → small-phone →
-large-phone → Slice/namedverify once on the new signed source. The original landed runner permits
-only sheet-layout.ts/ui-sheet-style.ts/release-content.ts product diffs from56648b2; tool/tests/docs
-are outside that product guard. Never reuse the f61aeb3 unchanged-product runner for product edits.
-Stop first red; no unchanged-source retry/threshold change. Exact U2 PASS unlocks the normal
-predecessor snapshot and ordered U3 runner. No further U1 layout rework, Inkscape or hosted actions.
+The pending tool-only correction clears live CSSOM before removing an originally absent style
+carrier, retains declared/computed comparison and a second removal, and names the scroll owner.
+Present-empty attributes stay present-empty. First focused run40PASS/2fixtureFAIL is retained;
+the fixture now finds the native cssText descriptor through its prototype chain. Final42 focused
+checks, all3 TypeScript programs and root validate PASS. Product is unchanged fromc84aecd:
+producer0adbee29aed0004c63d4acc0cebf84a53dabc0bca33f6000d52223fb932f8711,
+measurement/ceilings unchanged; draft81 orderedSHAb791c37bcee759754e90e688d262ec4cb24a874df1d6e353da2b41a30bff857c.
+Commit the correction, then run /private/tmp/cf-u2-run-scroll-cssom-20260906.cjs FULL_NEW_SHA
+once under the whole-job toolchain lock and approved browser execution. It rejects product
+changes fromc84aecd and runs full develop static → small-phone → large-phone → Slice/namedverify.
+Stop first red; no unchanged-source retry or threshold change. Exact U2 PASS unlocks the guarded
+normal-predecessor snapshot then ordered U3 panel runner. U3 preparations remain unapplied.
+No further U1 layout rework, Inkscape, Phase2 or hosted actions.
 
 The normal20/60PNG reports at594ece6 and56648b2 preserve the corrected, readable Settings spacing
 Nick flagged. They do not claim new human approval or device UAT. Current audit is
