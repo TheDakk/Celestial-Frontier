@@ -444,6 +444,55 @@
       "rawSha256": "60457d7125e116b417e5ae3a41f4db76d244e44b4d5598a5c47e5a30bac3d661",
       "bytes": 962,
       "sha256": "ba2ed8439225f48c0b474077bc783aff13205823045c3e614f68230b22a456cb"
+    },
+    {
+      "file": "cf-u2-8015ee4-terminal-verification-20260906.json.gz",
+      "rawBytes": 206,
+      "rawSha256": "fcf0decfb4b3480d5619bc98284d53c1432ad1b9ea9d7a6bc69a0e2ce279fca5",
+      "bytes": 182,
+      "sha256": "ffb99e4c90b78c7f7cf4bed655a9d62db93d5fe4bf1c92e56f92031196b1dbc4"
+    },
+    {
+      "file": "cf-u2-run-generic-capacity-20260906.cjs.gz",
+      "rawBytes": 5073,
+      "rawSha256": "b00588b9305759a78eb90a5752cf421ed13b5b8ffab8da4d7d91a72ea2eecd27",
+      "bytes": 2106,
+      "sha256": "c8c8b7a92570a583f9a99bd5392ea32f517262ecf2e1528061a6af0e708e4aae"
+    },
+    {
+      "file": "cf-u2-generic-capacity-checks-20260906.cjs.gz",
+      "rawBytes": 1181,
+      "rawSha256": "6d600d79afe3a977d76e60206851d824da12df3f50fd4e6de3f63d10c495d833",
+      "bytes": 577,
+      "sha256": "e7c93be946e8d31d981f51696f66c91a923a3aa1a9b6b6b1380cbb29854afd49"
+    },
+    {
+      "file": "cf-u2-generic-capacity-checks-20260906.log.gz",
+      "rawBytes": 7677,
+      "rawSha256": "60dfc871fb5cdd444fe80ba5eadd47c9f26fc6a5f4fc8ec4b93465a67415439f",
+      "bytes": 3010,
+      "sha256": "e01d8ce7eeba2ebece254389d012bbf0357920effb5f33746d874f1a2d3217ae"
+    },
+    {
+      "file": "cf-u2-generic-capacity-producer-20260906.mjs.gz",
+      "rawBytes": 3073,
+      "rawSha256": "619f848b617f9ea502d3b04706bea8f4990f69e1776a8371037830bdadaa549d",
+      "bytes": 1464,
+      "sha256": "364e62ee2fb1975582c42bc549aff6ff6e0fabe4f5db870fcdc36e70439916e4"
+    },
+    {
+      "file": "cf-u2-generic-capacity-producer-20260906.json.gz",
+      "rawBytes": 1277,
+      "rawSha256": "ed32adcf783adaa275718bf30d996a83738bd77772014c89178959b072cac452",
+      "bytes": 592,
+      "sha256": "4e9566c2312428f70456d2fa47d52722585527ca140c13aa2fa7e6f7ff4da789"
+    },
+    {
+      "file": "cf-u2-generic-capacity-draft-20260906.json.gz",
+      "rawBytes": 180,
+      "rawSha256": "d4718ca0d463aa8dea36479234c6f67d87f72102fc3c7c9906b380348d6f6d68",
+      "bytes": 153,
+      "sha256": "411d4e3a09706e1c35cc2ae9f6f0a4a77a519d917f49ffff7d452f98c3b71299"
     }
   ]
 }

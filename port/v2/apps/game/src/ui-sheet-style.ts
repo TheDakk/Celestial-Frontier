@@ -2,7 +2,7 @@
  * panel scrolling and Compendium's virtual scrollport retain their owners. */
 const SHEETS = ":is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#primepanel,#shipyardpanel,#inventorypanel,#combatpanel,#setpanel,#guidepanel,#notificationpanel)";
 export const UI_SHEET_CSS = `
-:root{--cf-lower-top:calc(100dvh - var(--safe-bottom) - 164px);--cf-sheet-floor:calc(var(--cf-lower-top) - 8px);--cf-sheet-bottom:calc(100dvh - var(--cf-sheet-floor));--cf-toast-bottom:calc(100dvh - var(--cf-lower-top) + 8px);--cf-toast-height:0px;--cf-planetside-floor:var(--cf-sheet-floor);--cf-survey-start:calc(var(--topbar-h) + 8px);--cf-survey-min-height:139px;--cf-survey-scroll-top:80px;--cf-planetside-height:72px}
+:root{--cf-lower-top:calc(100dvh - var(--safe-bottom) - 164px);--cf-sheet-floor:calc(var(--cf-lower-top) - 8px);--cf-sheet-bottom:calc(100dvh - var(--cf-sheet-floor));--cf-toast-bottom:calc(100dvh - var(--cf-lower-top) + 8px);--cf-toast-height:0px;--cf-planetside-floor:var(--cf-sheet-floor);--cf-planetside-start:calc(var(--topbar-h) + 8px);--cf-survey-start:calc(var(--topbar-h) + 8px);--cf-survey-min-height:139px;--cf-survey-scroll-top:80px;--cf-planetside-height:72px}
 ${SHEETS},#survey{--cf-sheet-start:calc(var(--topbar-h) + 8px);top:var(--cf-sheet-start);bottom:auto;min-height:0;max-height:max(44px,calc(var(--cf-sheet-floor) - var(--cf-sheet-start)));overflow-y:auto;overscroll-behavior:contain;scrollbar-color:var(--cf-color-border) transparent;border-radius:var(--cf-radius-panel);border-color:var(--cf-color-border)}
 ${SHEETS}{scroll-padding-top:var(--cf-sheet-scroll-top,80px);scroll-padding-bottom:14px}
 .panel{z-index:var(--cf-layer-sheet)}
@@ -10,7 +10,7 @@ ${SHEETS}{scroll-padding-top:var(--cf-sheet-scroll-top,80px);scroll-padding-bott
 .panel[aria-hidden="false"],#survey[aria-hidden="false"]{animation:cf-sheet-enter var(--cf-duration-enter) var(--cf-ease-standard)}
 @keyframes cf-sheet-enter{from{box-shadow:0 4px 12px #0004}to{box-shadow:0 8px 28px #0008}}
 #survey{z-index:var(--cf-layer-survey);scroll-padding-top:var(--cf-survey-scroll-top);scroll-padding-bottom:14px}
-#hintpill.sheet-guidance-yield{width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+:is(#hintpill,#ctxbar).sheet-guidance-yield{width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 :is(#setpanel,#guidepanel,#notificationpanel){z-index:var(--cf-layer-utility-panel)}
 body:not(.training) :is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#primepanel,#shipyardpanel,#inventorypanel,#combatpanel){z-index:var(--cf-layer-utility-panel)}
 .panel .sheet-header{position:sticky;top:0;z-index:1;clear:none;display:flex;align-items:center;gap:8px;min-height:44px;box-sizing:border-box;margin:0 0 12px;padding:0 0 8px;background:var(--cf-color-surface);color:var(--cf-color-accent-gold);font-size:var(--cf-type-section);line-height:1.4;letter-spacing:.06em;border-bottom:1px solid var(--cf-color-border)}
@@ -26,6 +26,7 @@ body:not(.training) :is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#primepanel,#
 .survey-head{position:sticky;top:0;z-index:3;background:var(--cf-color-surface)}
 #survey > [data-sel="sub"]{color:var(--dim);margin:0 0 10px}
 #toast > span[data-sel="toast-message"]{font-size:inherit!important}
+#toast.toast-compact{padding:var(--cf-space-1) var(--cf-space-2)}
 #toast.toast-compact [data-sel="toast-message"]{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 #planetside{position:fixed;left:calc(var(--safe-left) + 12px);bottom:var(--cf-sheet-bottom);max-width:min(560px,calc(100vw - var(--safe-left) - var(--safe-right) - 24px));box-sizing:border-box;z-index:var(--cf-layer-sheet);border-radius:var(--cf-radius-panel);padding:8px 10px;overflow:auto;white-space:nowrap;scrollbar-width:thin}
 #toast{bottom:var(--cf-toast-bottom);z-index:var(--cf-layer-toast);transition:opacity var(--cf-duration-exit) var(--cf-ease-standard)}
@@ -39,7 +40,7 @@ body.training #setpanel{z-index:var(--cf-layer-training-settings)}
 :is(.panel,#survey) button:disabled{cursor:default;filter:saturate(.45)}
 :is(.panel,#survey) :is(button,input,select):focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}
 @media(max-width:900px) and (orientation:portrait){
- body.surface-mode #planetside{min-height:0;max-height:max(72px,min(calc(var(--cf-sheet-floor) - var(--surface-chrome-bottom) - 8px),var(--planetside-card-max,100dvh)));overflow-y:auto}
+ body.surface-mode #planetside{min-height:0;max-height:max(72px,min(calc(var(--cf-sheet-floor) - var(--cf-planetside-start)),var(--planetside-card-max,100dvh)));overflow-y:auto}
  body.surface-mode.card-open #planetside{--planetside-card-max:calc(var(--cf-sheet-floor) - var(--cf-survey-start) - var(--cf-survey-min-height) - 8px)}
  body.surface-mode #survey{max-height:max(44px,calc(var(--cf-sheet-floor) - var(--cf-planetside-height) - var(--cf-sheet-start) - 8px))}
 }

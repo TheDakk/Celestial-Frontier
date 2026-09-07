@@ -6,7 +6,7 @@ const { JSDOM } = createRequire(import.meta.url)('jsdom');
 const cleanups: Array<() => void> = [];
 afterEach(() => { for (const cleanup of cleanups.splice(0)) cleanup(); });
 function harness(includePlanetside = true, width = 1024, height = 568, compactToastHeight = 44) {
-  const dom = new JSDOM('<!doctype html><style>#hintpill.sheet-guidance-yield{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;pointer-events:none}</style><body><div id="topbar"></div><div id="hintpill"></div><div id="ctxbar"></div><div id="dock"></div>'
+  const dom = new JSDOM('<!doctype html><style>:is(#hintpill,#ctxbar).sheet-guidance-yield{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;pointer-events:none}</style><body><div id="topbar" style="pointer-events:none"><button id="objchip">Current objective</button></div><div id="hintpill"></div><div id="ctxbar"></div><div id="dock"></div>'
     + '<div id="toast" class="notice-kind" style="opacity:0" role="status" aria-live="polite"><b data-sel="toast-title">Beyond Your Charter</b><span data-sel="toast-message">Build the required drive.</span></div>'
     + '<div id="survey" style="display:none;padding:14px;border:1px solid"><div id="surveyheader" class="survey-head" style="margin:0 0 12px">Earth</div></div>'
     + '<div id="setpanel" class="panel" style="display:none;padding:14px;border:1px solid"><h3 id="panelheader" class="sheet-header" style="margin:0 0 12px">Settings</h3></div>'
@@ -14,10 +14,11 @@ function harness(includePlanetside = true, width = 1024, height = 568, compactTo
     + (includePlanetside ? '<div id="planetside"></div>' : ''), { pretendToBeVisual: true });
   const { document } = dom.window;
   document.documentElement.style.setProperty('--surface-chrome-bottom', '212px');
+  document.documentElement.style.setProperty('--hint-h', '77px');
   Object.defineProperty(dom.window, 'innerHeight', { value: height, configurable: true });
   Object.defineProperty(dom.window, 'innerWidth', { value: width, configurable: true });
   const rects = new Map<string, { top: number; height: number; left?: number; width?: number }>([
-    ['topbar', { top: 0, height: 104 }], ['hintpill', { top: 367.5, height: 76.5 }],
+    ['topbar', { top: 0, height: 104 }], ['objchip', { top: 168, height: 44 }], ['hintpill', { top: 367.5, height: 76.5 }],
     ['ctxbar', { top: 0, height: 0 }], ['dock', { top: 464, height: 92 }],
     ['toast', { top: 300, height: 64 }], ['planetside', { top: 220, height: 90 }],
     ['survey', { top: 132, height: 44 }], ['surveyheader', { top: 147, height: 44 }],
@@ -28,12 +29,13 @@ function harness(includePlanetside = true, width = 1024, height = 568, compactTo
     const node = document.getElementById(id);
     if (!node) continue;
     node.getBoundingClientRect = () => {
-      const yieldedHint = id === 'hintpill' && node.classList.contains('sheet-guidance-yield');
+      const yieldedHint = ['hintpill', 'ctxbar'].includes(id) && node.classList.contains('sheet-guidance-yield');
       const r = rects.get(id)!, left = r.left ?? 16, width = yieldedHint ? 1 : r.width ?? 288;
       const height = yieldedHint ? 1 : id === 'toast' && node.classList.contains('toast-compact') ? compactToastHeight : r.height;
       return { ...r, height, bottom: r.top + height, width, left, right: left + width };
     };
   }
+  Object.defineProperty(document.getElementById('hintpill'), 'offsetHeight', { get: () => document.getElementById('hintpill').style.display === 'none' ? 0 : Math.round(document.getElementById('hintpill').getBoundingClientRect().height) });
   const frames = new Map<number, FrameRequestCallback>(); let frameId = 0;
   dom.window.requestAnimationFrame = (callback: FrameRequestCallback) => { frames.set(++frameId, callback); return frameId; };
   dom.window.cancelAnimationFrame = (id: number) => frames.delete(id);
@@ -323,6 +325,121 @@ describe('measured U2 sheet lanes', () => {
     panel.style.paddingTop = '24px'; await Promise.resolve(); expect(h.frames.size).toBe(1);
     h.controller.dispose(); h.flushFrames(); await Promise.resolve(); expect(h.frames.size).toBe(0);
     expect(panel.style.getPropertyValue('--cf-sheet-scroll-top')).toBe('77.00px');
+  });
+
+  it('reclaims both passive lanes for the retained wrapped Charters header without altering native text or targets', () => {
+    const h = harness(false, 320, 568, 38.5), panel = h.document.getElementById('chpanel');
+    const hint = h.document.getElementById('hintpill'), caption = h.document.getElementById('ctxbar');
+    h.document.body.className = 'panel-open fs-xl font-mono'; panel.style.display = 'block'; panel.setAttribute('aria-hidden', 'false');
+    hint.textContent = 'Explore the current scene'; caption.textContent = 'Earth · Sol'; caption.setAttribute('aria-label', 'Scene caption');
+    h.rects.set('chpanel', { left: 8, width: 304, top: 132, height: 107.5 });
+    h.rects.set('charterheader', { left: 23, width: 182, top: 147, height: 84.56 });
+    h.rects.set('ctxbar', { top: 316, height: 48 }); h.document.getElementById('toast').style.opacity = '1';
+    h.controller.sync();
+    expect(239.5 - (147 + 84.56)).toBeCloseTo(7.94); // Retained native body deficit.
+    expect(h.value('--cf-sheet-floor')).toBe(409.5); expect(h.value('--cf-lower-top')).toBe(464);
+    expect(h.value('--cf-sheet-floor') - 132).toBeGreaterThanOrEqual(84.56 + 12 + 30 + 44);
+    for (const node of [hint, caption]) {
+      expect(node.classList.contains('sheet-guidance-yield')).toBe(true);
+      expect(node.getBoundingClientRect().height).toBe(1); expect(node.getAttribute('aria-hidden')).toBeNull();
+      expect(h.document.defaultView.getComputedStyle(node).display).not.toBe('none');
+    }
+    expect(hint.textContent).toBe('Explore the current scene'); expect(caption.textContent).toBe('Earth · Sol');
+    expect(caption.getAttribute('aria-label')).toBe('Scene caption');
+    expect(UI_SHEET_CSS).toContain(':is(#hintpill,#ctxbar).sheet-guidance-yield{');
+    expect(UI_SHEET_CSS).toContain('#toast.toast-compact{padding:var(--cf-space-1) var(--cf-space-2)}');
+    expect(UI_SHEET_CSS).toContain('calc(var(--cf-sheet-floor) - var(--cf-planetside-start))');
+  });
+  it('allocates a standalone 72px biosphere below the live Objective and releases on native Objective refill', async () => {
+    const h = harness(true, 320, 568, 38.5), side = h.document.getElementById('planetside');
+    const hint = h.document.getElementById('hintpill'), caption = h.document.getElementById('ctxbar'), objective = h.document.getElementById('objchip');
+    h.document.body.className = 'surface-mode'; h.rects.set('objchip', { top: 60, height: 262.88 });
+    h.rects.set('topbar', { top: 0, height: 330.88 }); h.rects.set('ctxbar', { top: 344, height: 48 });
+    h.document.documentElement.style.setProperty('--surface-chrome-bottom', '1px');
+    h.document.documentElement.style.setProperty('--planetside-top', '999px');
+    side.getBoundingClientRect = () => { const bottom = h.value('--cf-sheet-floor');
+      return { top: bottom - 72, bottom, height: 72, left: 16, right: 304, width: 288 }; };
+    h.document.getElementById('toast').style.opacity = '1'; h.controller.sync();
+    expect(h.value('--cf-planetside-start')).toBeCloseTo(330.88);
+    expect(h.value('--cf-sheet-floor')).toBe(409.5);
+    expect(h.value('--cf-sheet-floor') - h.value('--cf-planetside-start')).toBeCloseTo(78.62);
+    expect(hint.classList.contains('sheet-guidance-yield')).toBe(true);
+    h.controller.sync(); expect(h.value('--cf-planetside-start')).toBeCloseTo(330.88); // Previous moving top is not an input.
+    h.rects.set('objchip', { top: 160, height: 44 }); h.rects.set('ctxbar', { top: 0, height: 0 });
+    objective.textContent = 'Next charter'; await Promise.resolve(); expect(h.frames.size).toBe(1); h.flushFrames();
+    expect(h.value('--cf-planetside-start')).toBe(212); expect(h.value('--cf-sheet-floor')).toBe(287.5);
+    expect(h.document.getElementById('toast').classList.contains('toast-compact')).toBe(false);
+    expect(hint.classList.contains('sheet-guidance-yield')).toBe(false); expect(caption.classList.contains('sheet-guidance-yield')).toBe(false);
+    expect(h.value('--surface-chrome-bottom')).toBe(1); expect(h.value('--planetside-top')).toBe(999);
+    await Promise.resolve(); expect(h.frames.size).toBe(0);
+  });
+  it('reevaluates wrapped panel preferences, header refill, clipped caption refill and Close without an owned-class loop', async () => {
+    const h = harness(false, 320, 568, 38.5), panel = h.document.getElementById('chpanel');
+    const caption = h.document.getElementById('ctxbar'), hint = h.document.getElementById('hintpill'), toast = h.document.getElementById('toast');
+    h.document.body.className = 'panel-open'; panel.style.display = 'block'; h.rects.set('ctxbar', { top: 345, height: 48 });
+    toast.style.opacity = '1'; h.controller.sync(); expect(toast.classList.contains('toast-compact')).toBe(false);
+    h.rects.set('charterheader', { top: 147, height: 84.56 }); h.document.body.classList.add('fs-xl');
+    await Promise.resolve(); h.flushFrames(); expect(caption.classList.contains('sheet-guidance-yield')).toBe(true);
+    await Promise.resolve(); expect(h.frames.size).toBe(0);
+    // Native caption content can shrink while its yielded painted size remains 1px.
+    h.rects.set('ctxbar', { top: 365, height: 18 }); caption.textContent = 'Sol';
+    const oldHeader = h.document.getElementById('charterheader'), newHeader = oldHeader.cloneNode(true);
+    newHeader.getBoundingClientRect = () => ({ top: 147, bottom: 211, height: 64, left: 16, right: 304, width: 288 });
+    oldHeader.replaceWith(newHeader); await Promise.resolve(); expect(h.frames.size).toBe(1); h.flushFrames();
+    expect(caption.classList.contains('sheet-guidance-yield')).toBe(false); expect(hint.classList.contains('sheet-guidance-yield')).toBe(false);
+    expect(toast.classList.contains('toast-compact')).toBe(false); // Full floor293 now clears the 282px panel minimum.
+    expect(caption.textContent).toBe('Sol');
+    h.rects.set('ctxbar', { top: 300, height: 65 }); caption.textContent = 'Earth · a much longer native scene caption';
+    await Promise.resolve(); h.flushFrames(); expect(caption.classList.contains('sheet-guidance-yield')).toBe(true);
+    panel.style.display = 'none'; h.document.body.classList.remove('panel-open');
+    await Promise.resolve(); h.flushFrames(); expect(caption.classList.contains('sheet-guidance-yield')).toBe(false);
+    expect(toast.classList.contains('toast-compact')).toBe(false);
+    await Promise.resolve(); expect(h.frames.size).toBe(0);
+  });
+  it.each([{ stale: '1px', priority: '', header: 80, notice: '1', yielded: true },
+    { stale: '500px', priority: 'important', header: 44, notice: '0', yielded: false }])(
+    'uses natural caption placement with stale $stale hint height and restores its exact priority', async ({ stale, priority, header, notice, yielded }) => {
+      const h = harness(false, 320, 568, 38.5), root = h.document.documentElement, caption = h.document.getElementById('ctxbar');
+      h.document.body.className = 'panel-open'; h.document.getElementById('chpanel').style.display = 'block';
+      h.rects.set('charterheader', { top: 147, height: header }); h.document.getElementById('toast').style.opacity = notice;
+      root.style.setProperty('--hint-h', stale, priority);
+      caption.getBoundingClientRect = () => {
+        const top = 568 - Math.max(164, 124 + parseFloat(root.style.getPropertyValue('--hint-h')) + 8) - 48;
+        const height = caption.classList.contains('sheet-guidance-yield') ? 1 : 48;
+        return { top, bottom: top + height, height, left: 16, right: 304, width: 288 };
+      };
+      h.controller.sync();
+      expect(root.style.getPropertyValue('--hint-h')).toBe(stale); expect(root.style.getPropertyPriority('--hint-h')).toBe(priority);
+      expect(caption.classList.contains('sheet-guidance-yield')).toBe(yielded);
+      expect(h.value('--cf-lower-top')).toBe(yielded ? 464 : 311);
+      const naturalAvailable = 311 - 8 - (notice === '1' ? 38.5 + 8 : 0);
+      const staleTop = 568 - Math.max(164, 124 + parseFloat(stale) + 8) - 48;
+      expect(naturalAvailable < 132 + header + 12 + 30 + 44).toBe(yielded);
+      expect(staleTop - 8 - (notice === '1' ? 38.5 + 8 : 0) < 132 + header + 12 + 30 + 44).toBe(!yielded);
+      // AppChrome's later natural receipt must not change the decision.
+      root.style.setProperty('--hint-h', '77px'); h.observers[0]!.callback(); h.flushFrames();
+      expect(caption.classList.contains('sheet-guidance-yield')).toBe(yielded);
+      await Promise.resolve(); h.flushFrames(); await Promise.resolve(); expect(h.frames.size).toBe(0);
+    });
+  it('restores an originally absent hint property, excludes invisible upper chrome and includes a blocking wrapper', () => {
+    const h = harness(true, 320, 568, 38.5), root = h.document.documentElement, topbar = h.document.getElementById('topbar'), objective = h.document.getElementById('objchip');
+    root.style.removeProperty('--hint-h'); h.rects.set('topbar', { top: 0, height: 400 });
+    h.controller.sync(); expect(root.style.getPropertyValue('--hint-h')).toBe(''); expect(h.value('--cf-planetside-start')).toBe(220);
+    topbar.style.pointerEvents = 'auto'; h.controller.sync(); expect(h.value('--cf-planetside-start')).toBe(408);
+    topbar.style.pointerEvents = 'none'; objective.style.opacity = '0'; h.controller.sync(); expect(h.value('--cf-planetside-start')).toBe(8);
+    objective.style.opacity = '1'; objective.style.display = 'none'; h.controller.sync(); expect(h.value('--cf-planetside-start')).toBe(8);
+    objective.style.display = 'block'; h.controller.sync(); expect(h.value('--cf-planetside-start')).toBe(220);
+    expect(root.style.getPropertyValue('--hint-h')).toBe('');
+  });
+  it('keeps the global toast floor for disjoint portrait panels and does not clip guidance that cannot release room', () => {
+    const h = harness(false, 320, 568, 38.5), panel = h.document.getElementById('chpanel'), hint = h.document.getElementById('hintpill');
+    panel.style.display = 'block'; h.rects.set('charterheader', { top: 147, height: 84.56 });
+    h.rects.set('toast', { top: 300, height: 64, left: 304, width: 288 }); h.document.getElementById('toast').style.opacity = '1';
+    h.controller.sync(); expect(h.document.getElementById('toast').classList.contains('toast-compact')).toBe(false);
+    expect(hint.classList.contains('sheet-guidance-yield')).toBe(true); expect(h.value('--cf-sheet-floor')).toBe(384);
+    h.rects.set('dock', { top: 250, height: 92 }); h.controller.sync();
+    expect(hint.classList.contains('sheet-guidance-yield')).toBe(false); expect(h.value('--cf-sheet-floor')).toBe(170);
+    expect(h.value('--cf-sheet-floor') - 132).toBeLessThan(84.56 + 12 + 30 + 44); // Unreachable space stays deficient, not a manufactured pass.
   });
 
 });

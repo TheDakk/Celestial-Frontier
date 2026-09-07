@@ -1,5 +1,32 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U2 generic sheet and biosphere capacity — 2026-09-06
+
+Signed8015ee4ff257b9c12db4eec2ff37808ec38d06ad passed complete develop static (322files,
+3459tests,1skip). Small-phone stopped PRODUCT RED with zero instrument failures while Charters
+was open: panel height107.5px and heading height84.56px left only7.94px of audited body room for
+a44px Accept target. Native scroll reached741 and exact restoration passed. The new Charters
+Close settlement wrapper was not reached. Large-phone and Slice were NOT RUN. The nine-carrier
+8015ee4 checkpoint retains this result; the older437a3aa Objective/Planetside cause remains open.
+
+The current bounded correction measures every visible portrait sheet's header/insets plus44px
+body, the stacked Survey/biosphere allocation, and standalone Planetside72px below actual painted
+upper chrome. Compact notices use4px vertical and8px horizontal padding. When capacity remains
+tight, passive hint and context paint may yield while preserving their text. Every decision starts
+with natural guidance; the dependent caption is measured with a temporary native hint-height
+projection, restored exactly afterward. Glass independently measures both captions and available
+space, tests their actual text preferences, and requires exact restoration. After native Close,
+remaining clipping is valid only when independent geometry still proves pressure. Earlier generic
+preference and native target-size/clipping checks remain strict. Focused84 checks, all3 TypeScript
+programs, root validate, one evidence build and101 release/budget/evidence checks PASS. Producer
+is aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe; measurement/ceilings are unchanged.
+The existing81-bullet draft has orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
+Exact-source native verification is pending; these checks are not a fresh Compendium certificate.
+
+All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
+Phase2, pilot or hosted closure is claimed.
+Earlier entries remain verbatim. The accepted U1 shell, emoji, gameplay and hosted boundary are unchanged.
+
 ## U2 Objective/Planetside finding and timing evidence — 2026-09-06
 
 Signed source `437a3aa08f1e5cb3c1b0b134e02f8cbe92c56204` passed complete develop static

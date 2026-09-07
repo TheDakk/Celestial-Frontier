@@ -8141,63 +8141,104 @@ function installAuditHarness(assessGlyphStrokeContrast) {
     };
   };
   const guidancePreferenceOutcome = (afterClose = false) => {
-    const hint = document.getElementById('hintpill'), state = window.__CF_SLICE__?.api?.state?.();
-    const yielded = hint?.classList.contains('sheet-guidance-yield') === true;
-    const accessible = () => !!hint && (hint.textContent || '').trim().length > 0
-      && !hint.closest('[hidden],[inert],[aria-hidden="true"]') && !hint.querySelector('[hidden],[inert],[aria-hidden="true"]');
-    if (afterClose || !yielded) {
+    const root = document.documentElement, hint = document.getElementById('hintpill'), ctx = document.getElementById('ctxbar');
+    const nodes = [hint, ctx], state = window.__CF_SLICE__?.api?.state?.(), ownClass = 'sheet-guidance-yield';
+    const yielded = nodes.some(node => node?.classList.contains(ownClass));
+    const accessible = node => !!node && (node.textContent || '').trim().length > 0
+      && !node.closest('[hidden],[inert],[aria-hidden="true"]') && !node.querySelector('[hidden],[inert],[aria-hidden="true"]');
+    if (!yielded) {
       const preference = preferenceOutcome('body', '#hintpill', 'var(--ink)');
-      return { ...preference, ok: preference.ok && accessible() && (!afterClose || (!yielded && state?.cardOpen === false)),
-        guidanceRestored: afterClose ? !yielded && state?.cardOpen === false && visible(hint) : null };
+      const ctxStyle = ctx ? getComputedStyle(ctx) : null;
+      const contextClipped = ctxStyle && /inset\((?:50|100)%/.test(ctxStyle.clipPath || '');
+      const contextPreference = visible(ctx) ? preferenceOutcome('body', '#ctxbar', 'var(--ink)') : { ok: !contextClipped, notPainted: true };
+      return { ...preference, ok: preference.ok && accessible(hint) && contextPreference.ok && (!visible(ctx) || accessible(ctx))
+          && (!afterClose || state?.cardOpen === false), contextPreference,
+        guidanceRestored: afterClose ? state?.cardOpen === false && visible(hint) : null, guidanceRetainedForCapacity: false };
     }
-    const snapshot = () => {
-      const r = hint.getBoundingClientRect(), css = getComputedStyle(hint);
-      return { attributes: hint.getAttributeNames().sort().map(name => [name, hint.getAttribute(name)]), html: hint.innerHTML,
-        text: hint.textContent, bodyClass: document.body.getAttribute('class'),
-        rect: [r.left, r.top, r.right, r.bottom, r.width, r.height],
-        style: [css.display, css.visibility, css.opacity, css.clipPath, css.overflow, css.fontSize, css.fontFamily, css.color] };
-    };
-    const before = snapshot(), priorClass = hint.getAttribute('class'), survey = document.getElementById('survey'), side = document.getElementById('planetside');
-    const css = getComputedStyle(hint), a = survey?.getBoundingClientRect(), b = side?.getBoundingClientRect();
-    let ancestryVisible = true;
-    for (let n = hint; n; n = n.parentElement) { const c = getComputedStyle(n); if (c.display === 'none' || c.visibility === 'hidden' || Number(c.opacity) <= 0) ancestryVisible = false; }
-    const scoped = innerWidth <= 900 && innerHeight >= innerWidth && state?.mode === 'surface' && state?.cardOpen === true
-      && document.body.classList.contains('surface-mode') && document.body.classList.contains('card-open')
-      && visible(survey) && visible(side) && Math.min(a.right, b.right) > Math.max(a.left, b.left)
-      && accessible() && ancestryVisible && before.rect[4] === 1 && before.rect[5] === 1
-      && css.clipPath === 'inset(50%)' && css.overflow === 'hidden';
+    const attrs = node => node.getAttributeNames().sort().map(name => [name, node.getAttribute(name)]);
+    const rect = node => { const r = node.getBoundingClientRect(); return [r.left, r.top, r.right, r.bottom, r.width, r.height]; };
+    const layoutNodes = [...new Set([root, document.body, ...document.querySelectorAll('.panel,#survey,#planetside,#toast,#topbar,#searchbox,#objchip,#sceneactions,#trail,#dock'), ...nodes].filter(Boolean))];
+    const snapshot = () => ({
+      guidance: nodes.map(node => node ? { id: node.id, attributes: attrs(node), html: node.innerHTML, text: node.textContent, rect: rect(node),
+        style: ['display','visibility','opacity','clipPath','overflow','fontSize','fontFamily','color'].map(key => getComputedStyle(node)[key]) } : null),
+      bodyAttributes: attrs(document.body), rootAttributes: attrs(root),
+      layout: layoutNodes.map(node => ({ id: node.id || node.tagName, rect: rect(node), scroll: [node.scrollLeft, node.scrollTop] })),
+    });
+    const before = snapshot(), priorClasses = nodes.map(node => node?.getAttribute('class'));
+    const priorBodyClass = document.body.getAttribute('class'), priorRootStyle = root.getAttribute('style');
+    const survey = document.getElementById('survey'), side = document.getElementById('planetside');
+    const surveyOpen = state?.cardOpen === true && document.body.classList.contains('card-open') && visible(survey);
+    const nativeContextHidden = () => ctx && getComputedStyle(ctx).display === 'none' && surveyOpen;
+    const ancestryVisible = node => { for (let n = node; n; n = n.parentElement) {
+      const css = getComputedStyle(n); if (css.display === 'none' || css.visibility === 'hidden' || Number(css.opacity) <= 0) return false;
+    } return true; };
+    const scoped = innerWidth <= 900 && innerHeight >= innerWidth && !!state && (!afterClose || state.cardOpen === false)
+      && nodes.every(node => {
+        if (!node?.classList.contains(ownClass) || !accessible(node)) return false;
+        if (node === ctx && nativeContextHidden()) return true;
+        const css = getComputedStyle(node), r = node.getBoundingClientRect();
+        return ancestryVisible(node) && r.width === 1 && r.height === 1 && css.clipPath === 'inset(50%)' && css.overflow === 'hidden';
+      });
     if (!scoped) return { ok: false, why: 'unauthorized or inaccessible guidance clipping', before };
-    let preference = null, native = null, justified = false, error = null, cleanupError = null;
+    let preference = null, contextPreference = null, native = null, justified = false, error = null, cleanupError = null;
     try {
-      hint.classList.remove('sheet-guidance-yield');
+      nodes.forEach(node => node.classList.remove(ownClass));
+      // The caption's native bottom depends on the native hint height, not the
+      // possibly stale 1px --hint-h published while guidance was clipped.
+      root.style.setProperty('--hint-h', `${hint.offsetHeight}px`);
       native = snapshot();
       const pixels = value => parseFloat(value || '') || 0;
-      const safeBottom = pixels(getComputedStyle(document.documentElement).getPropertyValue('--safe-bottom'));
+      const safeBottom = pixels(getComputedStyle(root).getPropertyValue('--safe-bottom'));
       const lower = Math.min(innerHeight - safeBottom - 12, ...['hintpill','ctxbar','dock'].map(id => {
         const node = document.getElementById(id); return visible(node) ? node.getBoundingClientRect().top : innerHeight;
       }));
       const toast = document.getElementById('toast'), toastStyle = toast ? getComputedStyle(toast) : null, toastRect = toast?.getBoundingClientRect();
       const toastHeight = toast && toastStyle.display !== 'none' && toastStyle.visibility !== 'hidden'
         && toastRect.width > 0 && toastRect.height > 0 && (toast.style.opacity === '1' || Number(toastStyle.opacity) > 0) ? toastRect.height : 0;
-      const header = survey.querySelector('.survey-head'), headerStyle = header ? getComputedStyle(header) : null, sheetStyle = getComputedStyle(survey);
-      const headerHeight = header ? Math.max(44, header.getBoundingClientRect().height) + pixels(headerStyle.marginTop) + pixels(headerStyle.marginBottom) : NaN;
-      const edges = pixels(sheetStyle.paddingTop) + pixels(sheetStyle.paddingBottom) + pixels(sheetStyle.borderTopWidth) + pixels(sheetStyle.borderBottomWidth);
-      const minimum = headerHeight + edges + 44, start = survey.getBoundingClientRect().top;
-      const available = lower - 8 - (toastHeight > 0 ? toastHeight + 8 : 0) - start, required = minimum + 72 + 8;
-      native.capacity = { lower, toastHeight, headerHeight, edges, minimum, start, available, required };
-      justified = [lower, toastHeight, minimum, start].every(Number.isFinite) && available < required;
+      const floor = lower - 8 - (toastHeight > 0 ? toastHeight + 8 : 0), cases = [];
+      const overlaps = (a, b) => Math.min(a.right, b.right) > Math.max(a.left, b.left);
+      const landed = state.mode === 'surface' && document.body.classList.contains('surface-mode') && visible(side);
+      const panels = [...document.querySelectorAll('.panel')].filter(visible);
+      for (const sheet of [...(surveyOpen ? [survey] : []), ...panels]) {
+        const header = sheet.querySelector('.survey-head,.sheet-header'), h = header ? getComputedStyle(header) : null, css = getComputedStyle(sheet);
+        const headerHeight = header && visible(header) ? Math.max(44, header.getBoundingClientRect().height) + pixels(h.marginTop) + pixels(h.marginBottom) : NaN;
+        const edges = pixels(css.paddingTop) + pixels(css.paddingBottom) + pixels(css.borderTopWidth) + pixels(css.borderBottomWidth);
+        const minimum = headerHeight + edges + 44, start = sheet.getBoundingClientRect().top;
+        const required = minimum + (sheet === survey && landed && overlaps(sheet.getBoundingClientRect(), side.getBoundingClientRect()) ? 80 : 0);
+        cases.push({ id: sheet.id, headerHeight, edges, minimum, start, available: floor - start, required });
+      }
+      if (landed) {
+        const bar = document.getElementById('topbar');
+        const tops = [...(bar ? [...bar.children] : []), ...['searchbox','sceneactions','trail'].map(id => document.getElementById(id))].filter(visible);
+        if (visible(bar) && getComputedStyle(bar).pointerEvents !== 'none') tops.push(bar);
+        const start = Math.max(0, ...tops.map(node => node.getBoundingClientRect().bottom)) + 8;
+        cases.push({ id: 'planetside', start, available: floor - start, required: 72 });
+      }
+      const dock = document.getElementById('dock');
+      const releasedLower = Math.min(innerHeight - safeBottom - 12, visible(dock) ? dock.getBoundingClientRect().top : innerHeight);
+      native.capacity = { lower, releasedLower, toastHeight, floor, cases };
+      justified = releasedLower > lower && cases.length > 0 && cases.every(row => [row.start, row.available, row.required].every(Number.isFinite))
+        && cases.some(row => row.available < row.required);
       preference = preferenceOutcome('body', '#hintpill', 'var(--ink)');
+      contextPreference = nativeContextHidden() ? { ok: true, nativeHiddenBySurvey: true } : preferenceOutcome('body', '#ctxbar', 'var(--ink)');
     } catch (cause) { error = String(cause?.message || cause); }
     finally {
-      try { hint.setAttribute('class', priorClass);
-        if (document.body.getAttribute('class') !== before.bodyClass) {
-          if (before.bodyClass === null) document.body.removeAttribute('class'); else document.body.setAttribute('class', before.bodyClass);
-        }
-      } catch (cause) { cleanupError = String(cause?.message || cause); }
+      const restore = action => { try { action(); } catch (cause) { cleanupError = [cleanupError, String(cause?.message || cause)].filter(Boolean).join('; '); } };
+      nodes.forEach((node, i) => restore(() => node.setAttribute('class', priorClasses[i])));
+      restore(() => { if (priorBodyClass === null) document.body.removeAttribute('class'); else document.body.setAttribute('class', priorBodyClass); });
+      restore(() => { if (root.getAttribute('style') !== priorRootStyle) {
+        root.setAttribute('style', priorRootStyle ?? ''); if (priorRootStyle === null) root.removeAttribute('style');
+      } });
+      layoutNodes.forEach((node, i) => restore(() => {
+        const [left, top] = before.layout[i].scroll;
+        if (node.scrollLeft !== left) node.scrollLeft = left;
+        if (node.scrollTop !== top) node.scrollTop = top;
+      }));
     }
-    const after = snapshot(), restored = document.getElementById('hintpill') === hint && JSON.stringify(after) === JSON.stringify(before);
-    return { ok: justified && preference?.ok === true && restored && error === null && cleanupError === null,
-      scoped, justified, preference, before, native, after, restored, error, cleanupError };
+    const after = snapshot(), restored = nodes.every(node => document.getElementById(node.id) === node) && JSON.stringify(after) === JSON.stringify(before);
+    const ok = justified && preference?.ok === true && contextPreference?.ok === true && restored && error === null && cleanupError === null;
+    return { ok, scoped, justified, preference, contextPreference, before, native, after, restored, error, cleanupError,
+      guidanceRestored: afterClose ? false : null, guidanceRetainedForCapacity: afterClose && ok };
   };
   const choiceOutcome = (rootSelector, itemSelector, expectedSelector, requireFocus = true) => {
     const root = document.querySelector(rootSelector);
@@ -11756,9 +11797,12 @@ async function main() {
           `${vp.label} Arc 4 Survey Close return`);
         const returned = await waitFor('Arc 4 Survey Close return', captureDisclosureState, 5000,
           (value) => value?.cardOpen === false && value?.expanded === 'false' && value?.focusId === 'docksurvey');
-        addOutcome(vp.label, 'survey-close-guidance', 'PREFERENCE_SURFACE_INERT', '#hintpill',
-          await evalIn(`window.__CF_GLASS_AUDIT__.guidancePreferenceOutcome(true)`),
-          'native Survey Close restores visible scene guidance with its text preferences intact');
+        const closedGuidance = await evalIn(`window.__CF_GLASS_AUDIT__.guidancePreferenceOutcome(true)`);
+        if (closedGuidance?.scoped === true && (closedGuidance.error !== null || closedGuidance.cleanupError !== null || closedGuidance.restored !== true)) {
+          recordInstrumentFailure(`${vp.label}: after-Close guidance preference reveal or exact restoration failed (${JSON.stringify(closedGuidance)})`);
+        }
+        addOutcome(vp.label, 'survey-close-guidance', 'PREFERENCE_SURFACE_INERT', '#hintpill', closedGuidance,
+          'native Survey Close retains text preferences and restores guidance unless measured biosphere capacity still requires its space');
         const reopen = await activateRealKeyboardControl('#docksurvey', `${vp.label} Arc 4 Survey reopen`);
         const reopened = await waitFor('Arc 4 Survey native reopen', captureDisclosureState, 5000,
           (value) => value?.cardOpen === true && value?.expanded === 'true');

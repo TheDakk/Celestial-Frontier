@@ -10,6 +10,12 @@ export function createSheetLayoutController(document: Document = window.document
   const planetside = document.getElementById('planetside');
   const survey = document.getElementById('survey');
   const hint = document.getElementById('hintpill')!;
+  const guidance = [hint, document.getElementById('ctxbar')!];
+  const topbar = document.getElementById('topbar')!;
+  const upperChrome = [...new Set([topbar, ...topbar.children,
+    ...['searchbox', 'objchip', 'sceneactions', 'trail'].flatMap(id => {
+      const el = document.getElementById(id); return el ? [el] : [];
+    })])] as HTMLElement[];
   const sheets = [...document.querySelectorAll<HTMLElement>('#survey,.panel,#planetside')];
   const sharedSheets = sheets.filter(sheet => sheet !== survey && sheet.matches('.panel'));
   const scrollPaddingValues = new WeakMap<HTMLElement, string>();
@@ -39,13 +45,28 @@ export function createSheetLayoutController(document: Document = window.document
     if (disposed) return;
     const height = view.innerHeight;
     const safeBottom = parseFloat(view.getComputedStyle(root).getPropertyValue('--safe-bottom')) || 0;
-    // Start from the real native hint on every pass; our yielded geometry is
-    // never an input to the decision to keep it hidden.
-    if (hint.classList.contains('sheet-guidance-yield')) hint.classList.remove('sheet-guidance-yield');
-    const measureLowerTop = (): number => Math.min(height - safeBottom - 12,
-      ...lower.map(el => el === hint && hint.classList.contains('sheet-guidance-yield')
-        ? height : visibleRect(el)?.top ?? height));
-    let lowerTop = measureLowerTop();
+    // Restore both native lanes first. AppChrome may still hold a clipped 1px
+    // hint receipt, so project the natural offsetHeight only while measuring the
+    // caption, then restore that owner's exact property/value/priority.
+    for (const el of guidance) el.classList.remove('sheet-guidance-yield');
+    const hintValue = root.style.getPropertyValue('--hint-h');
+    const hintPriority = root.style.getPropertyPriority('--hint-h');
+    const hadHintValue = Array.from({ length: root.style.length }, (_, index) => root.style.item(index)).includes('--hint-h');
+    const naturalHintValue = `${hint.offsetHeight}px`;
+    const projectHint = hintValue !== naturalHintValue || hintPriority !== '';
+    let naturalLower: Array<DOMRect | null>;
+    try {
+      if (projectHint) root.style.setProperty('--hint-h', naturalHintValue);
+      naturalLower = lower.map(visibleRect);
+    } finally {
+      if (projectHint) {
+        if (hadHintValue) root.style.setProperty('--hint-h', hintValue, hintPriority);
+        else root.style.removeProperty('--hint-h');
+      }
+    }
+    const measureLowerTop = (yielded: boolean): number => Math.min(height - safeBottom - 12,
+      ...naturalLower.map((rect, index) => yielded && guidance.includes(lower[index]!) ? height : rect?.top ?? height));
+    let lowerTop = measureLowerTop(false);
     set('--cf-lower-top', lowerTop);
     set('--cf-toast-bottom', height - lowerTop + 8);
     const headers = sheets.flatMap(sheet => [...sheet.querySelectorAll<HTMLElement>('.survey-head,.sheet-header')]);
@@ -64,6 +85,15 @@ export function createSheetLayoutController(document: Document = window.document
     set('--cf-survey-min-height', surveyMetrics.minimum);
     set('--cf-survey-start', surveyStart);
     set('--cf-survey-scroll-top', surveyMetrics.scrollTop);
+    // The accepted topbar wrapper is pointer-transparent. Its empty bottom
+    // padding is not a control; measure its painted child surfaces instead.
+    // A wrapper that can itself intercept input still contributes its full box.
+    const sideStart = Math.max(0, ...upperChrome.map(el => {
+      const style = view.getComputedStyle(el);
+      if ((el === topbar && style.pointerEvents === 'none') || Number(style.opacity || '1') <= 0) return 0;
+      return visibleRect(el)?.bottom ?? 0;
+    })) + 8;
+    set('--cf-planetside-start', sideStart);
     const portrait = view.innerWidth <= 900 && height >= view.innerWidth;
     const stacked = portrait && document.body.classList.contains('surface-mode') && document.body.classList.contains('card-open')
       && surveyRect !== null && sideRect !== null
@@ -73,29 +103,29 @@ export function createSheetLayoutController(document: Document = window.document
     if (toast.classList.contains('toast-compact')) toast.classList.remove('toast-compact');
     const toastVisible = toast.style.opacity === '1' || Number(view.getComputedStyle(toast).opacity) > 0;
     const fullToast = toastVisible ? visibleRect(toast) : null;
-    const fullFloor = lowerTop - 8 - (fullToast ? fullToast.height + 8 : 0);
+    const needsRoom = (laneTop: number, notice: DOMRect | null, noticeOnly = false): boolean => sheets.some(sheet => {
+      const rect = visibleRect(sheet);
+      if (!rect || sheet.getAttribute('aria-hidden') === 'true') return false;
+      const crossed = notice !== null && Math.min(rect.right, notice.right) > Math.max(rect.left, notice.left);
+      if (noticeOnly && !crossed) return false;
+      // Portrait CSS reserves the global painted toast even across disjoint columns.
+      const availableFloor = laneTop - 8 - (notice ? notice.height + 8 : 0);
+      // A bottom-anchored strip must never use its previous floor-dependent top.
+      if (sheet === planetside) return availableFloor - sideStart < 72;
+      return availableFloor - rect.top < sheetMetrics(sheet).minimum + (stacked && sheet === survey ? 72 + 8 : 0);
+    });
     const compact = portrait && fullToast !== null
       && !!toast.querySelector('[data-sel="toast-title"]') && !!toast.querySelector('[data-sel="toast-message"]')
-      && sheets.some(sheet => {
-        const rect = visibleRect(sheet);
-        if (!rect || Math.min(rect.right, fullToast.right) <= Math.max(rect.left, fullToast.left)) return false;
-        if (sheet === planetside) {
-          // Its bottom-anchored top moves with the last floor; use the native
-          // portrait capacity start so that movement cannot sustain compaction.
-          const start = (parseFloat(view.getComputedStyle(root).getPropertyValue('--surface-chrome-bottom')) || 0) + 8;
-          return fullFloor - start < 72;
-        }
-        return fullFloor - rect.top < sheetMetrics(sheet).minimum + (stacked && sheet === survey ? 72 + 8 : 0);
-      });
+      && needsRoom(lowerTop, fullToast, true);
     if (compact) toast.classList.add('toast-compact');
     // Reserve the actual painted presentation through the fade. Inline target
     // catches the first entry frame; computed opacity catches exit frames.
     let toastRect = toastVisible ? visibleRect(toast) : null;
     let toastHeight = toastRect?.height ?? 0;
     let floor = lowerTop - 8 - (toastHeight > 0 ? toastHeight + 8 : 0);
-    if (stacked && floor - surveyStart < surveyMetrics.minimum + 72 + 8) {
-      hint.classList.add('sheet-guidance-yield');
-      lowerTop = measureLowerTop();
+    if (portrait && needsRoom(lowerTop, toastRect) && measureLowerTop(true) > lowerTop) {
+      for (const el of guidance) el.classList.add('sheet-guidance-yield');
+      lowerTop = measureLowerTop(true);
       set('--cf-lower-top', lowerTop);
       set('--cf-toast-bottom', height - lowerTop + 8);
       toastRect = toastVisible ? visibleRect(toast) : null;
@@ -118,7 +148,7 @@ export function createSheetLayoutController(document: Document = window.document
     if (!disposed && !frame) frame = view.requestAnimationFrame(() => { frame = 0; sync(); });
   };
   const resize = new view.ResizeObserver(schedule);
-  for (const el of [...lower, toast, document.getElementById('topbar')!]) resize.observe(el);
+  for (const el of new Set([...lower, toast, ...upperChrome])) resize.observe(el);
   for (const sheet of sheets) resize.observe(sheet);
   const comparisonStyle = document.createElement('div').style;
   const withoutOwnedScrollPadding = (value: string | null): string => {
@@ -138,6 +168,12 @@ export function createSheetLayoutController(document: Document = window.document
     })) schedule();
   });
   mutation.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  // A clipped lane can refill without resizing. Do not observe our own class;
+  // text/style changes and preference changes still restore natural measurement.
+  for (const el of guidance) mutation.observe(el, { attributes: true, attributeFilter: ['style'], childList: true, subtree: true, characterData: true });
+  for (const el of upperChrome.filter(el => el === topbar || !topbar.contains(el))) {
+    mutation.observe(el, { attributes: true, attributeFilter: ['style', 'class'], childList: true, subtree: true, characterData: true });
+  }
   mutation.observe(toast, { attributes: true, attributeFilter: ['style'], childList: true, subtree: true, characterData: true });
   for (const sheet of sheets) mutation.observe(sheet, { attributes: true, attributeOldValue: true, attributeFilter: ['class', 'style', 'hidden', 'aria-hidden'],
     childList: true, subtree: true, characterData: true });
