@@ -30,6 +30,14 @@
 > bold keywords in an unrelated hint creates a cross-surface false-red when independent font
 > scales converge. Keep the generic checker strict; scope the new caller to the caption and
 > prove both the unrelated-text control and real nested-caption shrink/flattening failures.
+> Test setup observes the current disclosure state before toggling. A preceding panel may
+> intentionally leave Survey closed; an unconditional “close” toggle reopens it. Preserve
+> strict boolean-state and trusted-input receipts, close only when open, and prove the requested
+> final state without retries. A already-satisfied setup is not evidence that an action ran.
+> Keep measurement owners distinct: AppChrome's full-wrapper receipt may include transparent
+> padding, while collision clearance measures actual painted controls. Frame-scheduled layout
+> needs a named native settlement after fixture mutation and cleanup before dependent reads;
+> synchronous resize dispatch alone is not a completed measurement.
 
 > **A BOUNDARY FAULT MUST REMOVE EFFECTIVE ANCESTOR PROTECTION** (U1, 2026-09-06).
 > A rail nested inside a protected dock still retains dismissal protection after its own marker

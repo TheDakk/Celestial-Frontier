@@ -1,0 +1,61 @@
+{
+  "schema": "cf-u2-paused-preparation/v1",
+  "baseSource": "3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d",
+  "status": "UNFINISHED_UNAPPLIED",
+  "testsCreated": false,
+  "checksRun": false,
+  "workingCodeRestoredToBase": true,
+  "sourceSnapshotSha256": "2710dfc3731c6c3fa60574dce708fbb530e3d236f70a7084f77709d72aad3b6c",
+  "baseFileSha256": "b20abb6383df2d0b4eb9b6a950a980060e80e8c28cf8ece567cb90ebeb9346fd",
+  "files": [
+    {
+      "file": "PAUSED.md.gz",
+      "rawBytes": 722,
+      "rawSha256": "961b89591bde3102f2c2d0d95f9809fff5de84a1c77968fb005b6ac62ed342c8",
+      "bytes": 443,
+      "sha256": "9e49f20a390b3d9d6d4d4feb6ae3e696cb7318b769d15aa27ec06309670634d9"
+    },
+    {
+      "file": "cf-u2-top-clearance-edit-20260906.py.gz",
+      "rawBytes": 12547,
+      "rawSha256": "dad483f9a191cb144e12c345763557d95744c499a9d49863c5267db6065dc126",
+      "bytes": 3108,
+      "sha256": "3cf8a97a71143f772c5df7aaf302706e2cb07ebf4b85ec25bc289f25819ce73e"
+    },
+    {
+      "file": "glassmatrix.mjs.gz",
+      "rawBytes": 1144956,
+      "rawSha256": "2710dfc3731c6c3fa60574dce708fbb530e3d236f70a7084f77709d72aad3b6c",
+      "bytes": 247449,
+      "sha256": "81d6ad9dedddb308a1e71623c9a0c772e00c5086314a0d792a090428d578db88"
+    },
+    {
+      "file": "glassmatrix.patch.gz",
+      "rawBytes": 21525,
+      "rawSha256": "be31f69020d084baca769ed71805dd71a17efd38b6abd6ed3206dd27ffc3b261",
+      "bytes": 5085,
+      "sha256": "e9b5b19eaab10b2ea6dbe7f0c1b7a4f3468905f4c71d2639a37f1defe9a37e4d"
+    },
+    {
+      "file": "cf-u2-3a61352-terminal-verification-20260906.json.gz",
+      "rawBytes": 1340,
+      "rawSha256": "b2345f92de12f99c6a9178fb024069809b1bc1e006c8cbd5f52383a88ac8be14",
+      "bytes": 686,
+      "sha256": "fc9aca22f2b96f00a263f33198a85600ea81135e8539e15f11c6b3264b4e7aaf"
+    },
+    {
+      "file": "cf-u2-3a61352-charters-receipt-20260906.json.gz",
+      "rawBytes": 26030,
+      "rawSha256": "784702de20d5605540610f73388afff96b99a35c54e9aef8ab1fab084a69ee4f",
+      "bytes": 2501,
+      "sha256": "7d6b132c5ed1b15972dfcb13db96b86bee65118bbc74c2dbfac04e795f30ecf4"
+    },
+    {
+      "file": "cf-u2-run-post-close-20260906.cjs.gz",
+      "rawBytes": 4885,
+      "rawSha256": "f06028817ee6e3d85c416cc320776ba22ba26692dcdb79603cc7c7b0f155dade",
+      "bytes": 2041,
+      "sha256": "97542f36d4ac109fbe9930ac90f16d5ce713bc6bc1fb114f092c89d2ed1257d8"
+    }
+  ]
+}

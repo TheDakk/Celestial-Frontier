@@ -1,0 +1,177 @@
+{
+  "schema": "cf-u2-claude-readonly-review/v1",
+  "source": "3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d",
+  "purpose": "Read-only bounded review; unfinished patch unapplied; no promotion authority",
+  "files": [
+    {
+      "file": "BASE_SOURCE/port/v2/apps/game/src/app-chrome.ts",
+      "bytes": 14075,
+      "sha256": "7eabf5ad3cd687ed0a12246c27a6a4509a0630e5b4381773c5bcff56e36f5005"
+    },
+    {
+      "file": "BASE_SOURCE/port/v2/apps/game/src/sheet-layout.ts",
+      "bytes": 12193,
+      "sha256": "9fb4df31c349a40cdd9b8f118e780902fec226ea6a8bfffd94b433c425f54531"
+    },
+    {
+      "file": "BASE_SOURCE/port/v2/apps/game/src/ui-sheet-style.ts",
+      "bytes": 7583,
+      "sha256": "ce9dce7074eee627740658f544f79f05a79d641f41b491729e9299910659dc36"
+    },
+    {
+      "file": "BASE_SOURCE/port/v2/tests/glass-charters-settlement.test.ts",
+      "bytes": 7781,
+      "sha256": "8d3109ab470f9cbe889b5a1d23f86c1f453c09a86b762b2d44a1d71ce7b341a5"
+    },
+    {
+      "file": "BASE_SOURCE/port/v2/tests/glass-guidance-preference.test.ts",
+      "bytes": 19019,
+      "sha256": "94b84736a1f46d85c3bee08cc4c096f8f50201c8e98612d556da32d2f8583ec6"
+    },
+    {
+      "file": "BASE_SOURCE/port/v2/tests/glass-sticky-header-scroll.test.ts",
+      "bytes": 13531,
+      "sha256": "074b3486a5a79f0b1ec79f16482bc8a00eed1ab864bf79af8f93ddbb0cb59775"
+    },
+    {
+      "file": "BASE_SOURCE/port/v2/tests/glass-survey-settlement.test.ts",
+      "bytes": 7804,
+      "sha256": "cfa13e5063873a09e90181723bd2f7faf107ef33dde99965ba83dda5b7b7786c"
+    },
+    {
+      "file": "BASE_SOURCE/port/v2/tests/sheet-layout.test.ts",
+      "bytes": 37839,
+      "sha256": "45075476e69aaaa78243e18f515fdf4001431d732e505385d4780ab398751a6b"
+    },
+    {
+      "file": "BASE_SOURCE/port/v2/tools/glassmatrix.mjs",
+      "bytes": 1140750,
+      "sha256": "b20abb6383df2d0b4eb9b6a950a980060e80e8c28cf8ece567cb90ebeb9346fd"
+    },
+    {
+      "file": "BASE_SOURCE/port/v2/tools/ui-review-evaluation.mjs",
+      "bytes": 6916,
+      "sha256": "d2fc925a4991e2762f1bbc91a7b95c3f7022fc40b502401db69c455d9419c628"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/clone.log.gz",
+      "bytes": 256,
+      "sha256": "2d9173f6bbf96ed1c6ff2532444070caae71296c367b742fad05d16da60ec016"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/controller.cjs.gz",
+      "bytes": 2040,
+      "sha256": "007e1b01529fcc5b1dfe9f84dbae8ec6b3339bccd057457487c261941adb6584"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/execution.json.gz",
+      "bytes": 1180,
+      "sha256": "54ed0ef6e8787e25541808f9b541cfbcf422fa18d84d7eab8bcadd7bbfa164c5"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/glassmatrix-local-u2-3a61352-20260906-small-phone.json.gz",
+      "bytes": 11843,
+      "sha256": "8a42b55999b0100967cf1b49bd94f263cedb9854785caa8c549fc61b1cf064ac"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/manifest.json",
+      "bytes": 3074,
+      "sha256": "f80a95e2ed8d6ba9d822d31a77349633a9c8a538ace9b05726db43d288f42e94"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/root-install.log.gz",
+      "bytes": 48,
+      "sha256": "30dd1117c10629544af4843c9e6b05f5e2c7319239992fde9a9fa3e71d8cd2d9"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/signature.log.gz",
+      "bytes": 152,
+      "sha256": "334f0dcc90089880e4acd4d3003ef1731ea177cffb7b7b3b4a73d6f6d8ffa57e"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/small-phone.log.gz",
+      "bytes": 5987,
+      "sha256": "dddb53d3d70ef529dc4aed3bec214f7cd507effb2d13810a5c24fb1fb6531918"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/static-develop.log.gz",
+      "bytes": 2708,
+      "sha256": "e955493a6c86f9f041d9875583ae8a59707b9496396d95f6c3a7b48bc16ed916"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/v2-install.log.gz",
+      "bytes": 178,
+      "sha256": "3efb8e6dda7f28ed370f173dda4d3aa600a7b31727e1635fcfbe21c1292f7bf5"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/PAUSED.md.gz",
+      "bytes": 443,
+      "sha256": "9e49f20a390b3d9d6d4d4feb6ae3e696cb7318b769d15aa27ec06309670634d9"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/cf-u2-3a61352-charters-receipt-20260906.json.gz",
+      "bytes": 2501,
+      "sha256": "7d6b132c5ed1b15972dfcb13db96b86bee65118bbc74c2dbfac04e795f30ecf4"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/cf-u2-3a61352-terminal-verification-20260906.json.gz",
+      "bytes": 686,
+      "sha256": "fc9aca22f2b96f00a263f33198a85600ea81135e8539e15f11c6b3264b4e7aaf"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/cf-u2-run-post-close-20260906.cjs.gz",
+      "bytes": 2041,
+      "sha256": "97542f36d4ac109fbe9930ac90f16d5ce713bc6bc1fb114f092c89d2ed1257d8"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/cf-u2-top-clearance-edit-20260906.py.gz",
+      "bytes": 3108,
+      "sha256": "3cf8a97a71143f772c5df7aaf302706e2cb07ebf4b85ec25bc289f25819ce73e"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/glassmatrix.mjs.gz",
+      "bytes": 247449,
+      "sha256": "81d6ad9dedddb308a1e71623c9a0c772e00c5086314a0d792a090428d578db88"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/glassmatrix.patch.gz",
+      "bytes": 5085,
+      "sha256": "e9b5b19eaab10b2ea6dbe7f0c1b7a4f3468905f4c71d2639a37f1defe9a37e4d"
+    },
+    {
+      "file": "EVIDENCE/audits/UI_U2_POST_CLOSE_PAUSED_20260906/manifest.json",
+      "bytes": 2376,
+      "sha256": "df74dddc988ab39bc526d022eb3d430dd0dcdccd6774b94c6250c5fdbe88eab5"
+    },
+    {
+      "file": "RECORDS/PROCESS_LAWS.md",
+      "bytes": 318785,
+      "sha256": "5383ab7ce6e0a46dd743e9ab7c168aa05607e1d94341417ca7a734e5144be7d7"
+    },
+    {
+      "file": "RECORDS/ROADMAP.md",
+      "bytes": 4984,
+      "sha256": "644bdddc616d5a66f60389013ac9fda6e38bc9eb79c5bc89ea9cf3bead9c0d21"
+    },
+    {
+      "file": "RECORDS/UI_PRESENTATION.md",
+      "bytes": 240744,
+      "sha256": "8e9ef58ef508822584c4846b52de1b70125b40fbd1888b3a29d682dd1fcbae58"
+    },
+    {
+      "file": "RECORDS/audits/UI_U2_NEXT_SESSION_20260906.md",
+      "bytes": 6845,
+      "sha256": "04731a2178531d3ed2947cc028420db2eef751317efe3aa1cf89756d3b8cf695"
+    },
+    {
+      "file": "RECORDS/audits/UI_U2_SHEETS_20260906.md",
+      "bytes": 36405,
+      "sha256": "52a292b145f2f427ee42761e519ffe389c446e7c33d6750c1bff1c78e8a7703d"
+    },
+    {
+      "file": "REVIEW.md",
+      "bytes": 2850,
+      "sha256": "7c4b96ca70f78ed4a6df7a9235c3a7cda289b6c031b726cc55b1d7eba3158e2a"
+    }
+  ]
+}
