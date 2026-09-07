@@ -1,5 +1,19 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U2 yielded-guidance preference contract — 2026-09-06
+
+Signed U2 source `781b79cf75538b711bb770a42c189c6dc70eeb16` passed complete develop static
+(319 files, 3415 tests, 1 skipped), then stopped at one small-phone `PREFERENCE_SURFACE_INERT`
+result: the scene hint's deliberately clipped 1px text failed the older visible-sample requirement.
+The early live-toast Close remained PASS. Native Capture completion, large-phone and Slice were
+NOT RUN; the unchanged product has not yet proved the landed-action correction. The bounded tool correction preserves generic visible preference checks and verifies accessible
+hint yield, actual revealed preferences, exact restoration and guidance after native Survey Close.
+Its capacity decision independently measures native chrome/header/toast geometry; stale product
+variables cannot authorize clipping. Focused23 tests, all three TypeScript programs and root
+validate PASS. Fresh exact-source native verification remains pending.
+Prior RED reports and both older unknown causes stay open; U2 completion remains pending.
+Earlier entries remain verbatim. No scope, gameplay, Phase2, pilot or hosted authority changes.
+
 ## U2 landed allocation and sticky-header clearance — 2026-09-06
 
 `56648b2` passed the 20-row normal review and static checks. Early live-toast Survey Close passed:
