@@ -8613,9 +8613,9 @@ function installAuditHarness(assessGlyphStrokeContrast) {
     finally {
       try {
         if (priorStyle === null) {
-          // Clear the live CSSOM state before removing its originally absent
-          // carrier; removal alone can retain an empty attribute in Chromium.
-          owner.style.cssText = '';
+          // Reset the attribute through the DOM before removal. Native Edge
+          // retains an empty carrier when only CSSStyleDeclaration is cleared.
+          owner.setAttribute('style', '');
           owner.removeAttribute('style');
         } else owner.setAttribute('style', priorStyle);
         // Retain declaration/computed evidence before Chromium's second removal;

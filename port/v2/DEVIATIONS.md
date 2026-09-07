@@ -1,5 +1,25 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U2 repeated absent-style failure and native diagnosis — 2026-09-06
+
+Signed source `2dba37946ef73d8d67e3aa9cdd8771ca5d541132` passed complete develop static
+(321 files, 3456 tests, 1 skipped). Small-phone stopped with zero product findings and one
+INSTRUMENT RED: the originally absent style on `#inventorysheet > section.inventory-sheet-card`
+restored as empty even after CSSOM clearing and two removals. Declarations and computed values
+matched; exact carrier identity failed. Large-phone and Slice were NOT RUN; nine evidence
+carriers retain the terminal result.
+
+Product sheet/header behavior and release/producer pins remain unchanged from c84aecd. A six-case
+isolated synthetic native diagnostic reproduced absent→empty RED with current CSSOM clearing.
+Explicit `setAttribute('style','')` before removal passed absent, present-empty and nonempty
+`smooth!important` cases, preserving raw scroll 77 and exact declarations/computed values/styles.
+The current strategy also passed both present-attribute cases. This establishes the bounded
+restoration strategy on synthetic native DOM; focused checks and a fresh canonical run remain
+pending. All earlier failures and both older unknown causes remain OPEN; U2–U4 completion,
+physical UAT, Phase2, pilot and hosted closure are not claimed.
+[The U2 audit](../../audits/UI_U2_SHEETS_20260906.md) owns the retained failure and diagnostic result.
+Earlier amendments remain verbatim; accepted U1 choices and ordered U3/U4 scope are unchanged.
+
 ## U2 absent-style restoration instrument boundary — 2026-09-06
 
 Signed source `c84aecde00814460eec7027b067cd7f871b46441` passed complete develop static

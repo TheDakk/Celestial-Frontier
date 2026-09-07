@@ -137,21 +137,18 @@ it('rejects computed restoration failure even when the second removal restores a
   expect(() => h.owners.setExactScrollPosition(h.panel, 3.25, 42.125)).toThrow('exact scroll style restoration failed');
   expect(removals).toBe(2); expect(h.panel.getAttribute('style')).toBeNull();
 });
-it.each([false, true])('requires live CSSOM clearing before repeated removal (blocked clear: %s)', blockClear => {
-  const h = fixture(), style = h.panel.style, remove = h.panel.removeAttribute.bind(h.panel);
-  let prototype = style, descriptor: PropertyDescriptor | undefined;
-  while (prototype && !descriptor) { descriptor = Object.getOwnPropertyDescriptor(prototype, 'cssText'); prototype = Object.getPrototypeOf(prototype); }
-  if (!descriptor?.get || !descriptor.set) throw Error('fixture requires the native CSSStyleDeclaration cssText owner');
-  let cleared = false, clearRequests = 0, removals = 0;
-  Object.defineProperty(style, 'cssText', { configurable: true,
-    get: () => descriptor.get!.call(style),
-    set: (value: string) => { if (value === '') { clearRequests++; if (blockClear) return; cleared = true; } descriptor.set!.call(style, value); },
-  });
+it.each([false, true])('requires a DOM attribute reset before repeated removal (blocked reset: %s)', blockReset => {
+  const h = fixture(), remove = h.panel.removeAttribute.bind(h.panel), set = h.panel.setAttribute.bind(h.panel);
+  let reset = false, resetRequests = 0, removals = 0;
+  h.panel.setAttribute = (name: string, value: string) => {
+    if (name === 'style' && value === '') { resetRequests++; if (blockReset) return; reset = true; }
+    set(name, value);
+  };
   h.panel.removeAttribute = (name: string) => {
     remove(name);
-    if (name === 'style') { removals++; if (!cleared) h.panel.setAttribute('style', ''); }
+    if (name === 'style') { removals++; if (!reset) set('style', ''); }
   };
-  if (blockClear) {
+  if (blockReset) {
     expect(() => h.owners.setExactScrollPosition(h.panel, 3.25, 42.125)).toThrow(/exact scroll style restoration failed:.*"owner":"#panel"/);
     expect(h.panel.getAttribute('style')).toBe('');
   } else {
@@ -161,9 +158,9 @@ it.each([false, true])('requires live CSSOM clearing before repeated removal (bl
       after: { scrollBehavior: '', computedScrollBehavior: 'auto', computedTransform: 'none' } });
     expect(h.panel.getAttribute('style')).toBeNull();
   }
-  expect(clearRequests).toBe(1); expect(removals).toBe(2);
+  expect(resetRequests).toBe(1); expect(removals).toBe(2);
 });
-it('does not hide a wrong restored declaration behind successful CSSOM carrier cleanup', () => {
+it('does not hide a wrong restored declaration behind successful DOM carrier cleanup', () => {
   const h = fixture(), remove = h.panel.removeAttribute.bind(h.panel), property = h.panel.style.getPropertyValue.bind(h.panel.style);
   let corrupt = false;
   h.panel.removeAttribute = (name: string) => { remove(name); if (name === 'style') corrupt = true; };

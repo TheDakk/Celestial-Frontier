@@ -31,27 +31,27 @@ started clean; ambient .DS_Store preserved; root main.js absent. Same-session SS
 startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 remains deferred for busy tools.
 Actions UNFROZEN/PUBLIC per last receipt, private fallback3000, zero exact hosted authority.
 
-Latest signed U2 source is c84aecde00814460eec7027b067cd7f871b46441 (30 ahead,0 behind).
-Shared per-sheet measured scroll clearance and independent sticky-header control bounds are
-implemented. Full develop static PASS:321 files,3453 tests,1skip. Small-phone again passed all3
-Capture outcomes, then stopped INSTRUMENT RED/zero product findings: the scroll audit restored
-its declarations/computed styles but left style="" where the original attribute was absent.
-Large-phone and Slice NOT RUN. The nine-carrier checkpoint is
- audits/UI_U2_LOCAL_CHECKPOINT_c84aecd_20260906/manifest.json; named terminal/browser read []/[]
-validates the RED metadata, not PASS. All earlier reports remain immutable.
+Latest signed U2 source is2dba37946ef73d8d67e3aa9cdd8771ca5d541132 (31ahead,0behind).
+Full develop static PASS:321files3456tests1skip. Small-phone stopped INSTRUMENT RED/zero
+product findings at #inventorysheet > section.inventory-sheet-card: original absent style still
+restored as empty after CSSOM clearing. Laterlarge-phone/Slice NOT RUN. Nine-carrier checkpoint
+ audits/UI_U2_LOCAL_CHECKPOINT_2dba379_20260906/manifest.json and named terminal/browser read []/[]
+retain the RED. Earlier c84 Capture3PASS and every failed report remain immutable.
 
-The pending tool-only correction clears live CSSOM before removing an originally absent style
-carrier, retains declared/computed comparison and a second removal, and names the scroll owner.
-Present-empty attributes stay present-empty. First focused run40PASS/2fixtureFAIL is retained;
-the fixture now finds the native cssText descriptor through its prototype chain. Final42 focused
-checks, all3 TypeScript programs and root validate PASS. Product is unchanged fromc84aecd:
-producer0adbee29aed0004c63d4acc0cebf84a53dabc0bca33f6000d52223fb932f8711,
+One isolated native synthetic six-case diagnostic reproduced the CSSOM-clear failure and proved
+explicit setAttribute('style','') before removal for absent, present-empty and nonempty smooth
+styles. Raw scroll and exact declaration/computed/attribute evidence matched in the corrected
+cases. The tool-only correction now uses that demonstrated strategy; no absent/empty equivalence,
+threshold or deadline relaxation. Source-executing42 focused checks, all3 TypeScript programs and
+root validate PASS. No product diff fromc84aecd: producer0adbee29aed0004c63d4acc0cebf84a53dabc0bca33f6000d52223fb932f8711;
 measurement/ceilings unchanged; draft81 orderedSHAb791c37bcee759754e90e688d262ec4cb24a874df1d6e353da2b41a30bff857c.
-Commit the correction, then run /private/tmp/cf-u2-run-scroll-cssom-20260906.cjs FULL_NEW_SHA
-once under the whole-job toolchain lock and approved browser execution. It rejects product
-changes fromc84aecd and runs full develop static → small-phone → large-phone → Slice/namedverify.
-Stop first red; no unchanged-source retry or threshold change. Exact U2 PASS unlocks the guarded
-normal-predecessor snapshot then ordered U3 panel runner. U3 preparations remain unapplied.
+Commit, then run /private/tmp/cf-u2-run-scroll-cssom-20260906.cjs FULL_NEW_SHA once under the
+whole-job lock and approved browser execution. It rejects product diffs fromc84 and runs full
+develop static → small-phone → large-phone → Slice/namedverify; first-red stop, no unchanged retry.
+Exact U2 PASS unlocks the guarded normal-predecessor snapshot then ordered U3 panel runner.
+U3 is unapplied; Shipyard prep review found its pseudo-element EXPAND label missed A++ scaling;
+a new guarded preparation corrects that in temporary files before application. U4 native collector
+is being prepared separately, with no actual gate/28-pair evidence or invented equivalent states.
 No further U1 layout rework, Inkscape, Phase2 or hosted actions.
 
 The normal20/60PNG reports at594ece6 and56648b2 preserve the corrected, readable Settings spacing
