@@ -8557,50 +8557,113 @@ function installAuditHarness(assessGlyphStrokeContrast) {
     bounds.height = round(Math.max(0, bounds.bottom - bounds.top));
     return { bounds, ancestors };
   };
+  const controlContentBounds = (el, root, viewport) => {
+    const clipped = clippedBounds(el, root, viewport), bounds = { ...clipped.bounds };
+    const position = getComputedStyle(el).position;
+    const scrollExemption = /^(fixed|sticky)$/.test(position) ? position
+      : el.closest('.sheet-header,.survey-head') ? 'header-owned'
+        : el.matches('.sheet-close,[data-pnx],[data-survey-close]') ? 'native-close' : null;
+    const occludingHeaders = [];
+    if (!scrollExemption) {
+      const target = el.getBoundingClientRect();
+      for (let n = el.parentElement; n; n = n.parentElement) {
+        for (const header of n.querySelectorAll('.sheet-header,.survey-head')) {
+          if (header.contains(el) || el.contains(header) || !visible(header)) continue;
+          // A title can live inside an overflow-visible content wrapper. Its
+          // nearest scroll owner, not its immediate parent, owns the occlusion.
+          let owner = header.parentElement;
+          while (owner && owner !== root) {
+            const ownerStyle = getComputedStyle(owner);
+            if (/(auto|scroll|hidden)/.test(ownerStyle.overflowY + ' ' + ownerStyle.overflowX)) break;
+            owner = owner.parentElement;
+          }
+          if ((owner || root) !== n) continue;
+          const style = getComputedStyle(header), rect = header.getBoundingClientRect();
+          if (!/^(sticky|fixed)$/.test(style.position)
+            || Math.min(rect.right, target.right) <= Math.max(rect.left, target.left)
+            || rect.bottom <= clipped.bounds.top || rect.top >= clipped.bounds.bottom) continue;
+          bounds.top = Math.max(bounds.top, rect.bottom);
+          occludingHeaders.push({ element: selectorName(header), owner: selectorName(n),
+            position: style.position, rect: box(header) });
+        }
+        if (n === root) break;
+      }
+    }
+    bounds.width = round(Math.max(0, bounds.right - bounds.left));
+    bounds.height = round(Math.max(0, bounds.bottom - bounds.top));
+    return { ...clipped, clippingBounds: clipped.bounds, bounds, occludingHeaders, scrollExemption };
+  };
   const setExactScrollPosition = (owner, left, top) => {
-    const style = owner.style;
-    const prior = {
-      value: style.getPropertyValue('scroll-behavior'),
-      priority: style.getPropertyPriority('scroll-behavior'),
+    const priorStyle = owner.getAttribute('style');
+    const readStyle = () => {
+      const computed = getComputedStyle(owner);
+      return { scrollBehavior: owner.style.getPropertyValue('scroll-behavior'),
+        scrollBehaviorPriority: owner.style.getPropertyPriority('scroll-behavior'),
+        transform: owner.style.getPropertyValue('transform'), transformPriority: owner.style.getPropertyPriority('transform'),
+        computedScrollBehavior: computed.scrollBehavior, computedTransform: computed.transform };
     };
+    const before = readStyle();
+    let error = null, cleanupError = null, restored = null;
     try {
-      style.setProperty('scroll-behavior', 'auto', 'important');
+      owner.style.setProperty('scroll-behavior', 'auto', 'important');
       owner.scrollLeft = left;
       owner.scrollTop = top;
       void owner.getBoundingClientRect();
-    } finally {
-      if (prior.value) style.setProperty('scroll-behavior', prior.value, prior.priority);
-      else style.removeProperty('scroll-behavior');
+    } catch (cause) { error = cause; }
+    finally {
+      try {
+        if (priorStyle === null) owner.removeAttribute('style');
+        else owner.setAttribute('style', priorStyle);
+        // Retain declaration/computed evidence before Chromium's second removal;
+        // normalizing the carrier must never conceal a failed style restoration.
+        const after = readStyle();
+        if (priorStyle === null) owner.removeAttribute('style');
+        const styleAttribute = owner.getAttribute('style');
+        restored = { before, after, styleAttribute, expectedStyleAttribute: priorStyle,
+          ok: styleAttribute === priorStyle && JSON.stringify(after) === JSON.stringify(before) };
+        if (!restored.ok) throw new Error('exact scroll style restoration failed: ' + JSON.stringify(restored));
+      } catch (cause) { cleanupError = cause; }
     }
-    return { left: owner.scrollLeft, top: owner.scrollTop };
+    if (error) {
+      if (cleanupError && error instanceof Error) error.cleanupError = String(cleanupError?.message || cleanupError);
+      throw error;
+    }
+    if (cleanupError) throw cleanupError;
+    return { left: owner.scrollLeft, top: owner.scrollTop, styleRestoration: restored };
   };
   const scrollControlIntoView = (el, root, viewport, rememberScroll = null) => {
-    let r = box(el), clipped = clippedBounds(el, root, viewport);
+    let r = box(el), clipped = controlContentBounds(el, root, viewport);
     const scrollAttempts = [];
-    if (inside(r, clipped.bounds)) return { rect: r, ...clipped, scrollAttempts };
+    // The one-pixel clipping tolerance cannot invent room for a complete action
+    // underneath a painted header. A too-short content lane remains a finding.
+    const fits = () => inside(r, clipped.bounds) && (!clipped.occludingHeaders.length
+      || r.height <= clipped.bounds.height + 0.01);
+    const result = () => ({ rect: r, ...clipped, fits: fits(), scrollAttempts });
+    if (fits() || clipped.scrollExemption) return result();
     for (let n = el.parentElement; n; n = n.parentElement) {
       const s = getComputedStyle(n);
       if ((n.scrollHeight > n.clientHeight + 1 && /(auto|scroll)/.test(s.overflowY))
         || (n.scrollWidth > n.clientWidth + 1 && /(auto|scroll)/.test(s.overflowX))) {
         rememberScroll?.(n);
         const before = { left: round(n.scrollLeft), top: round(n.scrollTop) };
-        const nr = n.getBoundingClientRect(), er = el.getBoundingClientRect();
+        const er = el.getBoundingClientRect(), content = clipped.bounds;
         const top = n.scrollHeight > n.clientHeight + 1
-          ? n.scrollTop + (er.top + er.bottom - nr.top - nr.bottom) / 2 : n.scrollTop;
+          ? n.scrollTop + (er.top + er.bottom - content.top - content.bottom) / 2 : n.scrollTop;
         const left = n.scrollWidth > n.clientWidth + 1
-          ? n.scrollLeft + (er.left + er.right - nr.left - nr.right) / 2 : n.scrollLeft;
+          ? n.scrollLeft + (er.left + er.right - content.left - content.right) / 2 : n.scrollLeft;
         const observed = setExactScrollPosition(n, left, top);
         r = box(el);
-        clipped = clippedBounds(el, root, viewport);
+        clipped = controlContentBounds(el, root, viewport);
         scrollAttempts.push({ owner: selectorName(n), before,
           requested: { left: round(left), top: round(top) },
-          observed: { left: round(observed.left), top: round(observed.top) },
-          rect: r, bounds: clipped.bounds });
-        if (inside(r, clipped.bounds)) return { rect: r, ...clipped, scrollAttempts };
+          observed: { left: round(observed.left), top: round(observed.top) }, styleRestoration: observed.styleRestoration,
+          rect: r, bounds: clipped.bounds, clippingBounds: clipped.clippingBounds,
+          occludingHeaders: clipped.occludingHeaders });
+        if (fits()) return result();
       }
       if (n === root) break;
     }
-    return { rect: r, ...clipped, scrollAttempts };
+    return result();
   };
   const focusEvidence = (el) => {
     try { el.blur(); } catch { /* non-focusable */ }
@@ -8735,11 +8798,14 @@ function installAuditHarness(assessGlyphStrokeContrast) {
       if (r.width + 0.5 < targetFloor || r.height + 0.5 < targetFloor) {
         controlIssue(issue('TARGET_TOO_SMALL', surface, name, { width: r.width, height: r.height }, 'both dimensions >= ' + targetFloor + 'px'));
       }
-      if (!inside(r, controlBounds)) controlIssue(issue('CONTROL_OUTSIDE_VIEWPORT', surface, name, {
-        rect: r, bounds: controlBounds, ...identity, clippingAncestors: scrolled.ancestors,
-        scrollAttempts: scrolled.scrollAttempts,
-      }, 'control scrolls fully inside every clipping ancestor, the visual viewport, and safe area'));
-      if (!h.ok) controlIssue(issue('CONTROL_NOT_HITTABLE', surface, name, h, 'control owns its centre point after scrolling into reach'));
+      const reachEvidence = { ...h, rect: r, bounds: controlBounds, ...identity,
+        clippingBounds: scrolled.clippingBounds, clippingAncestors: scrolled.ancestors,
+        occludingHeaders: scrolled.occludingHeaders, scrollExemption: scrolled.scrollExemption,
+        scrollAttempts: scrolled.scrollAttempts };
+      if (!scrolled.fits) controlIssue(issue('CONTROL_OUTSIDE_VIEWPORT', surface, name, reachEvidence,
+        'complete control fits below painted shared headers and inside every clipping ancestor, viewport, and safe area'));
+      if (!h.ok) controlIssue(issue('CONTROL_NOT_HITTABLE', surface, name, reachEvidence,
+        'control owns its centre point after scrolling below painted shared headers into reach'));
       const a11y = accessibleName(el);
       if (!a11y) controlIssue(issue('ACCESSIBLE_NAME_MISSING', surface, name, { tag: el.tagName.toLowerCase(), type: el.getAttribute('type') }, 'non-empty accessible name'));
       const nativeKeyboard = /^(BUTTON|INPUT|TEXTAREA|SELECT)$/.test(el.tagName) || (el.tagName === 'A' && el.hasAttribute('href'));

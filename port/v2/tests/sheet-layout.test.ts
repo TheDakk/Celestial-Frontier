@@ -1,6 +1,7 @@
 import { createRequire } from 'node:module';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { createSheetLayoutController } from '../apps/game/src/sheet-layout.js';
+import { UI_SHEET_CSS } from '../apps/game/src/ui-sheet-style.js';
 const { JSDOM } = createRequire(import.meta.url)('jsdom');
 const cleanups: Array<() => void> = [];
 afterEach(() => { for (const cleanup of cleanups.splice(0)) cleanup(); });
@@ -9,6 +10,7 @@ function harness(includePlanetside = true, width = 1024, height = 568, compactTo
     + '<div id="toast" class="notice-kind" style="opacity:0" role="status" aria-live="polite"><b data-sel="toast-title">Beyond Your Charter</b><span data-sel="toast-message">Build the required drive.</span></div>'
     + '<div id="survey" style="display:none;padding:14px;border:1px solid"><div id="surveyheader" class="survey-head" style="margin:0 0 12px">Earth</div></div>'
     + '<div id="setpanel" class="panel" style="display:none;padding:14px;border:1px solid"><h3 id="panelheader" class="sheet-header" style="margin:0 0 12px">Settings</h3></div>'
+    + '<div id="chpanel" class="panel" style="display:none;padding:14px;border:1px solid"><h3 id="charterheader" class="sheet-header" style="margin:0 0 12px">📜 Charters</h3></div>'
     + (includePlanetside ? '<div id="planetside"></div>' : ''), { pretendToBeVisual: true });
   const { document } = dom.window;
   document.documentElement.style.setProperty('--surface-chrome-bottom', '212px');
@@ -20,6 +22,7 @@ function harness(includePlanetside = true, width = 1024, height = 568, compactTo
     ['toast', { top: 300, height: 64 }], ['planetside', { top: 220, height: 90 }],
     ['survey', { top: 132, height: 44 }], ['surveyheader', { top: 147, height: 44 }],
     ['setpanel', { top: 132, height: 44 }], ['panelheader', { top: 147, height: 44 }],
+    ['chpanel', { top: 132, height: 44 }], ['charterheader', { top: 147, height: 44 }],
   ]);
   for (const id of rects.keys()) {
     const node = document.getElementById(id);
@@ -285,6 +288,41 @@ describe('measured U2 sheet lanes', () => {
     expect(hint.classList.contains('sheet-guidance-yield')).toBe(false);
     h.rects.set('planetside', { top: 204, height: 95 }); Object.defineProperty(h.document.defaultView, 'innerWidth', { value: 667, configurable: true }); h.controller.sync();
     expect(hint.classList.contains('sheet-guidance-yield')).toBe(false);
+  });
+
+  it('publishes each shared sheet header clearance across wrapping and refill while retaining Survey and exact text', async () => {
+    const h = harness(false, 320), panel = h.document.getElementById('setpanel'), charter = h.document.getElementById('chpanel');
+    const value = (node: any) => parseFloat(node.style.getPropertyValue('--cf-sheet-scroll-top'));
+    const text = charter.textContent; expect(value(panel)).toBe(71); expect(value(charter)).toBe(71);
+    expect(h.document.getElementById('survey').style.getPropertyValue('--cf-sheet-scroll-top')).toBe('');
+    expect(h.value('--cf-survey-scroll-top')).toBe(71);
+    charter.style.display = 'block'; h.rects.set('charterheader', { top: 147, height: 96 });
+    h.observers[0]!.callback(); h.flushFrames(); expect(value(charter)).toBe(123); expect(value(panel)).toBe(71);
+    expect(charter.textContent).toBe(text);
+    const previous = h.document.getElementById('charterheader'), replacement = previous.cloneNode(true);
+    replacement.getBoundingClientRect = () => ({ left: 16, top: 147, right: 304, bottom: 211, width: 288, height: 64 });
+    previous.replaceWith(replacement); await Promise.resolve(); h.flushFrames();
+    expect(value(charter)).toBe(91); expect(charter.textContent).toBe(text);
+    expect(h.observers[0]!.unobserve.mock.calls.some(([node]) => node === previous)).toBe(true);
+    expect(h.observers[0]!.observe.mock.calls.some(([node]) => node === replacement)).toBe(true);
+    replacement.getBoundingClientRect = () => ({ left: 0, top: 0, right: 0, bottom: 0, width: 0, height: 0 });
+    h.observers[0]!.callback(); h.flushFrames(); expect(value(charter)).toBe(71); // Hidden/unmeasured header retains the native 44px Close clearance.
+    expect(charter.textContent).toBe(text); expect(h.value('--cf-survey-scroll-top')).toBe(71);
+    expect(UI_SHEET_CSS).toContain('scroll-padding-top:var(--cf-sheet-scroll-top,80px);scroll-padding-bottom:14px');
+    expect(UI_SHEET_CSS).toContain('#survey{z-index:var(--cf-layer-survey);scroll-padding-top:var(--cf-survey-scroll-top);scroll-padding-bottom:14px}');
+  });
+  it('ignores only its own scroll-padding style publication and still observes external style changes without a feedback loop', async () => {
+    const h = harness(false, 320), panel = h.document.getElementById('setpanel'), text = panel.textContent;
+    await Promise.resolve(); expect(h.frames.size).toBe(0);
+    panel.style.paddingTop = '20px'; panel.style.setProperty('--cf-sheet-scroll-top', '1px', 'important');
+    await Promise.resolve(); expect(h.frames.size).toBe(1); h.flushFrames();
+    expect(panel.style.getPropertyValue('--cf-sheet-scroll-top')).toBe('77.00px');
+    expect(panel.style.getPropertyPriority('--cf-sheet-scroll-top')).toBe(''); expect(panel.style.paddingTop).toBe('20px');
+    await Promise.resolve(); expect(h.frames.size).toBe(0);
+    h.controller.sync(); await Promise.resolve(); expect(h.frames.size).toBe(0); expect(panel.textContent).toBe(text);
+    panel.style.paddingTop = '24px'; await Promise.resolve(); expect(h.frames.size).toBe(1);
+    h.controller.dispose(); h.flushFrames(); await Promise.resolve(); expect(h.frames.size).toBe(0);
+    expect(panel.style.getPropertyValue('--cf-sheet-scroll-top')).toBe('77.00px');
   });
 
 });

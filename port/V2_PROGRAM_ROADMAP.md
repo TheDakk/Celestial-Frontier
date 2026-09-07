@@ -4,16 +4,21 @@
 
 Nick authorized U2–U4 and compact notifications when space is tight. Measured landed allocation
 and clipped, accessibility-preserving hint yield retain the accepted U1 layout and emoji.
-Signed U2 source `781b79cf75538b711bb770a42c189c6dc70eeb16` passed complete develop static
-(319 files, 3415 tests, 1 skipped), then stopped at one small-phone `PREFERENCE_SURFACE_INERT`
-result: the scene hint's deliberately clipped 1px text failed the older visible-sample requirement.
-The early live-toast Close remained PASS. Native Capture completion, large-phone and Slice were
-NOT RUN; the unchanged product has not yet proved the landed-action correction. The bounded tool correction preserves generic visible preference checks and verifies accessible
-hint yield, actual revealed preferences, exact restoration and guidance after native Survey Close.
-Its capacity decision independently measures native chrome/header/toast geometry; stale product
-variables cannot authorize clipping. Focused23 tests, all three TypeScript programs and root
-validate PASS. Fresh exact-source native verification remains pending.
-Prior RED reports and both older unknown causes stay open; U2 completion remains pending.
+Signed source `f61aeb39cf649eebbe2edb30fe4f7b22bd2fcd29` passed complete develop static
+(320 files, 3435 tests, 1 skipped). Small-phone guidance preferences, post-Close restoration and
+all three Capture outcomes passed. Later Charters stopped PRODUCT RED/zero instrument when a
+starter action centre at[138,185.56] hit its sticky heading. Large-phone and Slice were NOT RUN.
+The generic audit had centred in the whole scrollport without accounting for sticky headings;
+the retained point/hit does not prove that native scrolling cannot reach the action.
+
+The bounded shared correction publishes each panel's measured `--cf-sheet-scroll-top` from its
+header/insets, with14px bottom scroll padding. Exact owned-style filtering avoids an observer
+loop while preserving reactions to external style changes and header refills; Survey keeps its
+existing owner. The audit independently measures header exclusions for body controls and retains
+full target bounds, scroll attempts and exact restoration. Product evidence build and159 focused checks PASS. A test-only TS2345 index typing error
+was corrected without changing runtime behavior; all three TypeScript programs and root validate
+then PASS. Fresh exact-source native verification remains pending. Prior reports and older unknown causes
+remain open; no U2/U3/U4, physical UAT, Phase2, pilot or hosted closure is claimed.
 The [U2 audit](../audits/UI_U2_SHEETS_20260906.md) owns retained evidence. Ordered U3 panel
 checkpoints and U4 follow under the [accepted program](UI_PARITY_PROGRAM_U1_U4.md).
 

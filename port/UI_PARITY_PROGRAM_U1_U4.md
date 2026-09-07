@@ -1,5 +1,24 @@
 # UI parity and presentation program — accepted brief
 
+### U2 shared sheet scroll clearance — 2026-09-06
+
+Signed source `f61aeb39cf649eebbe2edb30fe4f7b22bd2fcd29` passed complete develop static
+(320 files, 3435 tests, 1 skipped). Small-phone guidance preferences, post-Close restoration and
+all three Capture outcomes passed. Later Charters stopped PRODUCT RED/zero instrument when a
+starter action centre at[138,185.56] hit its sticky heading. Large-phone and Slice were NOT RUN.
+The generic audit had centred in the whole scrollport without accounting for sticky headings;
+the retained point/hit does not prove that native scrolling cannot reach the action.
+
+The bounded shared correction publishes each panel's measured `--cf-sheet-scroll-top` from its
+header/insets, with14px bottom scroll padding. Exact owned-style filtering avoids an observer
+loop while preserving reactions to external style changes and header refills; Survey keeps its
+existing owner. The audit independently measures header exclusions for body controls and retains
+full target bounds, scroll attempts and exact restoration. Product evidence build and159 focused checks PASS. A test-only TS2345 index typing error
+was corrected without changing runtime behavior; all three TypeScript programs and root validate
+then PASS. Fresh exact-source native verification remains pending. Prior reports and older unknown causes
+remain open; no U2/U3/U4, physical UAT, Phase2, pilot or hosted closure is claimed.
+Earlier amendments remain verbatim; ordered U3/U4 scope and accepted U1 choices are unchanged.
+
 ### U2 yielded-guidance preference contract — 2026-09-06
 
 Signed U2 source `781b79cf75538b711bb770a42c189c6dc70eeb16` passed complete develop static

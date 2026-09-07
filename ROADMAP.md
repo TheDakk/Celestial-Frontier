@@ -31,34 +31,36 @@ started clean; ambient .DS_Store preserved; root main.js absent. Same-session SS
 startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 remains deferred for busy tools.
 Actions UNFROZEN/PUBLIC per last receipt, private fallback3000, zero exact hosted authority.
 
-Latest signed U2 source is 781b79cf75538b711bb770a42c189c6dc70eeb16 (28 ahead,0 behind).
-Signed U2 source `781b79cf75538b711bb770a42c189c6dc70eeb16` passed complete develop static
-(319 files, 3415 tests, 1 skipped), then stopped at one small-phone `PREFERENCE_SURFACE_INERT`
-result: the scene hint's deliberately clipped 1px text failed the older visible-sample requirement.
-The early live-toast Close remained PASS. Native Capture completion, large-phone and Slice were
-NOT RUN; the unchanged product has not yet proved the landed-action correction. The bounded tool correction preserves generic visible preference checks and verifies accessible
-hint yield, actual revealed preferences, exact restoration and guidance after native Survey Close.
-Its capacity decision independently measures native chrome/header/toast geometry; stale product
-variables cannot authorize clipping. Focused23 tests, all three TypeScript programs and root
-validate PASS. Fresh exact-source native verification remains pending.
-Prior RED reports and both older unknown causes stay open; U2 completion remains pending.
-Retain audits/UI_U2_LOCAL_CHECKPOINT_781b79c_20260906/manifest.json (nine carriers) and the exact
-terminal/browser read receipt. Native Close167px/compact notice52.5px still passed; the new
-preference guard stopped before a fresh Capture result. Original56648b2 Capture/H2 RED remains.
+Latest signed U2 source is f61aeb39cf649eebbe2edb30fe4f7b22bd2fcd29 (29 ahead,0 behind).
+Product is identical to781b79c. Full develop static PASS:320 files,3435 tests,1 skip. Small-phone
+now passes owned guidance preferences, native Close guidance return, and all three Capture
+outcomes (native return, truthful presentation, geometry/focus). It then stopped PRODUCT RED,
+zero instrument failures: Charters starter action at[138,185.56] hit H3.sheet-header. Large-phone
+and Slice NOT RUN. Retain the9-carrier audits/UI_U2_LOCAL_CHECKPOINT_f61aeb3_20260906/manifest.json;
+named terminal/browser read verifies the RED. Earlier failures remain immutable.
 
-Current product reserves measured Survey header/insets plus44px body before72px biosphere,
-adds native scroll-padding, and measures final strip height. Cramped compact portrait Surface+
-Survey stacks clip hint paint while preserving accessibility text, with native measurement restored
-before each capacity decision. Nick was informed of that bounded layout choice; his explicit
-compact-notice preference, full message/AT/history/timer owners and accepted U1 controls remain.
-Draft81 orderedSHA8b9e5246cfd4c9b365cfc487a468777b6f6db7c5f90c6e5865ddba594920b475.
-Producer547ec4ba43dc58c0d03c873dab3a3e9937f5b0daacf23da95299f05bfd490581; measurement/ceilings unchanged.
+The next shared U2 correction addresses native scroll clearance across all panels and the audit's
+scroll projection. Product currently gives that clearance only to Survey. The generic audit
+centres targets in the whole scrollport and can stop while a sticky title covers them; it does
+not try the actual body below the title. Current failure retained only point/hit, not complete
+header bounds, so do not invent those or call native reachability disproven. Publish measured
+per-panel header/inset scroll padding; independently exclude active shared sticky headers in
+control audit bounds, preserving header-owned/native Close controls, full44px targets, exact
+scroll restoration and unreachable-body RED. Add rectangle/ancestor/scroll diagnostics.
+Agents own controller/CSS/tests and tool/tests separately; root owns draft/pins/docs/build.
+Product evidence build, guarded draft/producer derivation and159 focused checks PASS. A test-only
+TS2345 first-split-entry typing issue was corrected with no runtime change; all three TypeScript
+programs and root validate then PASS. Native run pending. U3 remains unapplied.
 
-Next: commit the completed guidance-preference correction and use
-/private/tmp/cf-u2-run-guidance-20260906.cjs once on new signed source: complete develop static → small-phone → large-phone →
-Slice/named verify. Product stays identical to781b79c. Reuse56648b2 normal20 Settings/standalone-lane
-cases as predecessor evidence only. Stop first red; no unchanged-source retry or threshold change.
-U3 remains unapplied. Exact U2 PASS unlocks the normal predecessor snapshot and ordered U3 runner.
+Current producer0adbee29aed0004c63d4acc0cebf84a53dabc0bca33f6000d52223fb932f8711; measurement/ceilings unchanged.
+Draft81 orderedSHAb791c37bcee759754e90e688d262ec4cb24a874df1d6e353da2b41a30bff857c.
+After final shared correction, update the existing draft bullet and both producer pins from one
+evidence build, run focused/typecheck/validate, commit, then full develop static → small-phone →
+large-phone → Slice/namedverify once on the new signed source. The original landed runner permits
+only sheet-layout.ts/ui-sheet-style.ts/release-content.ts product diffs from56648b2; tool/tests/docs
+are outside that product guard. Never reuse the f61aeb3 unchanged-product runner for product edits.
+Stop first red; no unchanged-source retry/threshold change. Exact U2 PASS unlocks the normal
+predecessor snapshot and ordered U3 runner. No further U1 layout rework, Inkscape or hosted actions.
 
 The normal20/60PNG reports at594ece6 and56648b2 preserve the corrected, readable Settings spacing
 Nick flagged. They do not claim new human approval or device UAT. Current audit is
