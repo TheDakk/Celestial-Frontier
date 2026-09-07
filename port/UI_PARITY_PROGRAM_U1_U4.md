@@ -1,5 +1,27 @@
 # UI parity and presentation program — accepted brief
 
+### U2 post-close clearance predecessor — 2026-09-06
+
+Signed3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d passed complete develop static (322files,
+3479tests,1skip). Small-phone passed all3 Capture outcomes, caption preferences/restoration and
+the exact Charters Close/frame receipt with an empty atomic Objective audit. It later stopped
+INSTRUMENT RED/zero product findings: the top-clearance setup toggled an already-closed Survey
+open and then waited5000ms for it to close. Large-phone and Slice were NOT RUN. The nine-carrier
+checkpoint and named terminal/browser read[]/[] retain this failure; no full U2 PASS is claimed.
+
+The bounded tool-only correction establishes the closed predecessor from observed state and
+uses a real native Close only when needed. Adjacent clearance checks must measure painted upper
+controls rather than pointer-transparent wrapper padding; the separate AppChrome variable still
+has its own complete-wrapper meaning. Existing floating-trail/fallback mutations and exact
+cleanup need named fonts/two-frame settlement before dependent geometry now that sheet layout
+is frame-scheduled. Native thresholds, negative controls, first-error retention and product bytes
+remain unchanged. Nick paused development with6% usage remaining. The unfinished patch is
+archived in audits/UI_U2_POST_CLOSE_PAUSED_20260906 and is UNAPPLIED; the working tool was
+restored exactly to signed3a61352. No patch tests, syntax check, native run or final review occurred.
+Read ROADMAP.md and audits/UI_U2_NEXT_SESSION_20260906.md before resuming.
+
+Prior entries/unknown causes remain. No U2 completion, Phase2 or hosted action.
+
 ### U2 context hierarchy scope — 2026-09-06
 
 Signed3f1578e2e416cf5e566e1f799c16ea0a081ae037 passed complete develop static (322files,

@@ -8,18 +8,23 @@ scroll clearance and uses final strip height instead of stale position. Standalo
 measures actual painted upper controls. Cramped portrait layouts clip passive hint/context paint
 while preserving accessibility text and restoring natural dependent measurements before every
 allocation. Paint returns with room, including after Close; full notice/history/timer owners remain.
-Signed3f1578e2e416cf5e566e1f799c16ea0a081ae037 passed complete develop static (322files,
-3475tests,1skip). Small-phone passed native Survey Close and the new allocation's exact guidance
-restoration. It then stopped PRODUCT RED/zero instrument failures at survey-close-guidance:
-context text was17px (baseline12.5px), with correct Mono/font/tone, but its new body-wide hierarchy
-sample compared unrelated hint keywords11px→17px and reported their lost1.5px difference.
-The retained report is unchanged. Large-phone, later Capture/Charters and Slice were NOT RUN.
+Signed3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d passed complete develop static (322files,
+3479tests,1skip). Small-phone passed all3 Capture outcomes, caption preferences/restoration and
+the exact Charters Close/frame receipt with an empty atomic Objective audit. It later stopped
+INSTRUMENT RED/zero product findings: the top-clearance setup toggled an already-closed Survey
+open and then waited5000ms for it to close. Large-phone and Slice were NOT RUN. The nine-carrier
+checkpoint and named terminal/browser read[]/[] retain this failure; no full U2 PASS is claimed.
 
-The bounded tool correction scopes the context hierarchy to its own #ctxbar subtree while
-retaining the same actual generic preference check, size/tone/font limits and nested hierarchy
-protection. The existing hint and other generic preference call sites stay unchanged. Product,
-release and producer bytes remain exactly3f1578e. All58 focused checks, all3 TypeScript programs
-and root validate PASS. Exact-source native verification of the tool-only correction is pending. No stale report or earlier finding is promoted to PASS.
+The bounded tool-only correction establishes the closed predecessor from observed state and
+uses a real native Close only when needed. Adjacent clearance checks must measure painted upper
+controls rather than pointer-transparent wrapper padding; the separate AppChrome variable still
+has its own complete-wrapper meaning. Existing floating-trail/fallback mutations and exact
+cleanup need named fonts/two-frame settlement before dependent geometry now that sheet layout
+is frame-scheduled. Native thresholds, negative controls, first-error retention and product bytes
+remain unchanged. Nick paused development with6% usage remaining. The unfinished patch is
+archived in audits/UI_U2_POST_CLOSE_PAUSED_20260906 and is UNAPPLIED; the working tool was
+restored exactly to signed3a61352. No patch tests, syntax check, native run or final review occurred.
+Read ROADMAP.md and audits/UI_U2_NEXT_SESSION_20260906.md before resuming.
 
 The current bounded correction measures every visible portrait sheet's header/insets plus44px
 body, the stacked Survey/biosphere allocation, and standalone Planetside72px below actual painted
@@ -33,7 +38,7 @@ preference and native target-size/clipping checks remain strict. Focused84 check
 programs, root validate, one evidence build and101 release/budget/evidence checks PASS. Producer
 is aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe; measurement/ceilings are unchanged.
 The existing81-bullet draft has orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
-The3f1578e native result above owns current status; these checks are not a fresh Compendium certificate.
+The3a61352 native result above owns current status; these checks are not a fresh Compendium certificate.
 
 All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
 Phase2, pilot or hosted closure is claimed.
