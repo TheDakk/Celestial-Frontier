@@ -8612,14 +8612,18 @@ function installAuditHarness(assessGlyphStrokeContrast) {
     } catch (cause) { error = cause; }
     finally {
       try {
-        if (priorStyle === null) owner.removeAttribute('style');
-        else owner.setAttribute('style', priorStyle);
+        if (priorStyle === null) {
+          // Clear the live CSSOM state before removing its originally absent
+          // carrier; removal alone can retain an empty attribute in Chromium.
+          owner.style.cssText = '';
+          owner.removeAttribute('style');
+        } else owner.setAttribute('style', priorStyle);
         // Retain declaration/computed evidence before Chromium's second removal;
         // normalizing the carrier must never conceal a failed style restoration.
         const after = readStyle();
         if (priorStyle === null) owner.removeAttribute('style');
         const styleAttribute = owner.getAttribute('style');
-        restored = { before, after, styleAttribute, expectedStyleAttribute: priorStyle,
+        restored = { owner: selectorName(owner), before, after, styleAttribute, expectedStyleAttribute: priorStyle,
           ok: styleAttribute === priorStyle && JSON.stringify(after) === JSON.stringify(before) };
         if (!restored.ok) throw new Error('exact scroll style restoration failed: ' + JSON.stringify(restored));
       } catch (cause) { cleanupError = cause; }

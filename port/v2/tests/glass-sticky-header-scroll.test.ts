@@ -137,3 +137,37 @@ it('rejects computed restoration failure even when the second removal restores a
   expect(() => h.owners.setExactScrollPosition(h.panel, 3.25, 42.125)).toThrow('exact scroll style restoration failed');
   expect(removals).toBe(2); expect(h.panel.getAttribute('style')).toBeNull();
 });
+it.each([false, true])('requires live CSSOM clearing before repeated removal (blocked clear: %s)', blockClear => {
+  const h = fixture(), style = h.panel.style, remove = h.panel.removeAttribute.bind(h.panel);
+  let prototype = style, descriptor: PropertyDescriptor | undefined;
+  while (prototype && !descriptor) { descriptor = Object.getOwnPropertyDescriptor(prototype, 'cssText'); prototype = Object.getPrototypeOf(prototype); }
+  if (!descriptor?.get || !descriptor.set) throw Error('fixture requires the native CSSStyleDeclaration cssText owner');
+  let cleared = false, clearRequests = 0, removals = 0;
+  Object.defineProperty(style, 'cssText', { configurable: true,
+    get: () => descriptor.get!.call(style),
+    set: (value: string) => { if (value === '') { clearRequests++; if (blockClear) return; cleared = true; } descriptor.set!.call(style, value); },
+  });
+  h.panel.removeAttribute = (name: string) => {
+    remove(name);
+    if (name === 'style') { removals++; if (!cleared) h.panel.setAttribute('style', ''); }
+  };
+  if (blockClear) {
+    expect(() => h.owners.setExactScrollPosition(h.panel, 3.25, 42.125)).toThrow(/exact scroll style restoration failed:.*"owner":"#panel"/);
+    expect(h.panel.getAttribute('style')).toBe('');
+  } else {
+    const result = h.owners.setExactScrollPosition(h.panel, 3.25, 42.125);
+    expect(result.styleRestoration).toMatchObject({ owner: '#panel', ok: true, styleAttribute: null, expectedStyleAttribute: null,
+      before: { scrollBehavior: '', computedScrollBehavior: 'auto', computedTransform: 'none' },
+      after: { scrollBehavior: '', computedScrollBehavior: 'auto', computedTransform: 'none' } });
+    expect(h.panel.getAttribute('style')).toBeNull();
+  }
+  expect(clearRequests).toBe(1); expect(removals).toBe(2);
+});
+it('does not hide a wrong restored declaration behind successful CSSOM carrier cleanup', () => {
+  const h = fixture(), remove = h.panel.removeAttribute.bind(h.panel), property = h.panel.style.getPropertyValue.bind(h.panel.style);
+  let corrupt = false;
+  h.panel.removeAttribute = (name: string) => { remove(name); if (name === 'style') corrupt = true; };
+  h.panel.style.getPropertyValue = (name: string) => corrupt && name === 'transform' ? 'translateX(9px)' : property(name);
+  expect(() => h.owners.setExactScrollPosition(h.panel, 3.25, 42.125)).toThrow(/exact scroll style restoration failed:.*"owner":"#panel"/);
+  expect(h.panel.getAttribute('style')).toBeNull();
+});

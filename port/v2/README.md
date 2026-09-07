@@ -7,21 +7,22 @@ reserves Survey header/insets plus44px body before the72px biosphere, applies na
 clearance and uses final strip height instead of stale position. Cramped landed portrait stacks
 clip scene-hint paint while preserving accessibility text, restoring native measurement before
 every allocation. Hint paint returns with room/Close; full notice/history/timer owners remain.
-Signed source `f61aeb39cf649eebbe2edb30fe4f7b22bd2fcd29` passed complete develop static
-(320 files, 3435 tests, 1 skipped). Small-phone guidance preferences, post-Close restoration and
-all three Capture outcomes passed. Later Charters stopped PRODUCT RED/zero instrument when a
-starter action centre at[138,185.56] hit its sticky heading. Large-phone and Slice were NOT RUN.
-The generic audit had centred in the whole scrollport without accounting for sticky headings;
-the retained point/hit does not prove that native scrolling cannot reach the action.
+Signed source `c84aecde00814460eec7027b067cd7f871b46441` passed complete develop static
+(321 files, 3453 tests, 1 skipped). Small-phone passed all three Capture outcomes, then stopped
+INSTRUMENT RED with zero product findings: an originally absent scroll-owner style attribute
+restored as empty despite two removals. The declaration/computed evidence matched; exact carrier
+identity did not. Large-phone and Slice were NOT RUN.
 
-The bounded shared correction publishes each panel's measured `--cf-sheet-scroll-top` from its
-header/insets, with14px bottom scroll padding. Exact owned-style filtering avoids an observer
-loop while preserving reactions to external style changes and header refills; Survey keeps its
-existing owner. The audit independently measures header exclusions for body controls and retains
-full target bounds, scroll attempts and exact restoration. Product evidence build and159 focused checks PASS. A test-only TS2345 index typing error
-was corrected without changing runtime behavior; all three TypeScript programs and root validate
-then PASS. Fresh exact-source native verification remains pending. Prior reports and older unknown causes
-remain open; no U2/U3/U4, physical UAT, Phase2, pilot or hosted closure is claimed.
+Shared sheets retain measured header/inset clearance and 14px bottom scroll padding; Glass
+independently excludes painted headers and preserves tighter inner scrollports. The pending
+tool-only correction clears the live CSSOM before removing an originally absent style carrier,
+retains declaration/computed evidence and the second removal, and names the owner in restoration
+diagnostics. Originally present-empty styles remain present-empty. Product and release/producer
+pins are unchanged from c84aecd. Focused 42 checks, all three TypeScript programs and root
+validate PASS. The initial 40 PASS / 2 fixture failures are retained; only the test's prototype-chain
+lookup needed correction. Exact-source native verification remains pending. Prior failed reports
+and both older unknown causes remain OPEN; no U2/U3/U4, physical UAT, Phase2, pilot or hosted
+closure is claimed.
 Follow the [U2 audit](../../audits/UI_U2_SHEETS_20260906.md),
 [program](../UI_PARITY_PROGRAM_U1_U4.md) and [live handoff](../../ROADMAP.md).
 
