@@ -11,6 +11,8 @@ export function createSheetLayoutController(document: Document = window.document
   const survey = document.getElementById('survey');
   const hint = document.getElementById('hintpill')!;
   const sheets = [...document.querySelectorAll<HTMLElement>('#survey,.panel,#planetside')];
+  const sharedSheets = sheets.filter(sheet => sheet !== survey && sheet.matches('.panel'));
+  const scrollPaddingValues = new WeakMap<HTMLElement, string>();
   const observedHeaders = new Set<HTMLElement>();
   let disposed = false;
   let frame = 0;
@@ -49,6 +51,13 @@ export function createSheetLayoutController(document: Document = window.document
     const headers = sheets.flatMap(sheet => [...sheet.querySelectorAll<HTMLElement>('.survey-head,.sheet-header')]);
     for (const header of observedHeaders) if (!headers.includes(header)) { resize.unobserve(header); observedHeaders.delete(header); }
     for (const header of headers) if (!observedHeaders.has(header)) { resize.observe(header); observedHeaders.add(header); }
+    for (const sheet of sharedSheets) {
+      const next = `${Math.max(0, sheetMetrics(sheet).scrollTop).toFixed(2)}px`;
+      scrollPaddingValues.set(sheet, next);
+      if (sheet.style.getPropertyValue('--cf-sheet-scroll-top') !== next || sheet.style.getPropertyPriority('--cf-sheet-scroll-top') !== '') {
+        sheet.style.setProperty('--cf-sheet-scroll-top', next);
+      }
+    }
     const surveyRect = survey ? visibleRect(survey) : null, sideRect = planetside ? visibleRect(planetside) : null;
     const surveyMetrics = survey ? sheetMetrics(survey) : { minimum: 88, scrollTop: 44 };
     const surveyStart = surveyRect?.top ?? ((visibleRect(document.getElementById('topbar')!)?.bottom ?? 0) + 8);
@@ -111,10 +120,26 @@ export function createSheetLayoutController(document: Document = window.document
   const resize = new view.ResizeObserver(schedule);
   for (const el of [...lower, toast, document.getElementById('topbar')!]) resize.observe(el);
   for (const sheet of sheets) resize.observe(sheet);
-  const mutation = new view.MutationObserver(schedule);
+  const comparisonStyle = document.createElement('div').style;
+  const withoutOwnedScrollPadding = (value: string | null): string => {
+    comparisonStyle.cssText = value ?? '';
+    comparisonStyle.removeProperty('--cf-sheet-scroll-top');
+    return comparisonStyle.cssText;
+  };
+  const mutation = new view.MutationObserver(records => {
+    if (records.some(record => {
+      const sheet = record.target as HTMLElement;
+      if (record.type !== 'attributes' || record.attributeName !== 'style' || !sharedSheets.includes(sheet)) return true;
+      // Ignore only our own unchanged-value publication. Real style changes
+      // (including a corrupted owned value) must still schedule measurement.
+      return sheet.style.getPropertyValue('--cf-sheet-scroll-top') !== scrollPaddingValues.get(sheet)
+        || sheet.style.getPropertyPriority('--cf-sheet-scroll-top') !== ''
+        || withoutOwnedScrollPadding(record.oldValue) !== withoutOwnedScrollPadding(sheet.getAttribute('style'));
+    })) schedule();
+  });
   mutation.observe(document.body, { attributes: true, attributeFilter: ['class'] });
   mutation.observe(toast, { attributes: true, attributeFilter: ['style'], childList: true, subtree: true, characterData: true });
-  for (const sheet of sheets) mutation.observe(sheet, { attributes: true, attributeFilter: ['class', 'style', 'hidden', 'aria-hidden'],
+  for (const sheet of sheets) mutation.observe(sheet, { attributes: true, attributeOldValue: true, attributeFilter: ['class', 'style', 'hidden', 'aria-hidden'],
     childList: true, subtree: true, characterData: true });
   toast.addEventListener('transitionend', schedule);
   view.addEventListener('resize', schedule, { passive: true });

@@ -325,6 +325,55 @@
       "rawSha256": "b3795d176a8c985d30b810212ab4c8cc71c3d5184041e3a96a48c1223132811a",
       "bytes": 939,
       "sha256": "b148368641450a9a8ad194f48adcc94cbff53e7904b3aaad91079d0a7f90ae3d"
+    },
+    {
+      "file": "cf-u2-f61aeb3-terminal-verification-20260906.json.gz",
+      "rawBytes": 90,
+      "rawSha256": "48ba216ec2597515e304f7a59a29540cc02bf9cb99149390c73a5557f5734009",
+      "bytes": 100,
+      "sha256": "42ee782b3befda41177b6d9c69d9b8583194c9b81b9144749a77b6b1feb17ad6"
+    },
+    {
+      "file": "cf-u2-shared-scroll-build-20260906.log.gz",
+      "rawBytes": 5295,
+      "rawSha256": "c81ff12b056bedfe76567a349d517c6b1fbe12c4c23dde57cf4d83c3c5d7cbef",
+      "bytes": 1890,
+      "sha256": "6ccb5142d10f79bbf4bb9c36a44fcc84b131669d56b261dc9dad1ae9ae958bd3"
+    },
+    {
+      "file": "cf-u2-shared-scroll-draft-20260906.json.gz",
+      "rawBytes": 180,
+      "rawSha256": "5548eee425b13553c6de952b5b11735bea17d6d65d1f6a553b2f472a03927c72",
+      "bytes": 153,
+      "sha256": "27a2666a915e1782f667ec203b8a89f54c899130c1db2df63a17901e0addab3d"
+    },
+    {
+      "file": "cf-u2-shared-scroll-producer-20260906.mjs.gz",
+      "rawBytes": 2920,
+      "rawSha256": "78d618423dbe467836f8549ffe6e6db9ea96d29809fdc6d3801b7259f2d29b20",
+      "bytes": 1381,
+      "sha256": "cff34c658ab6034bae5af895f3ea3ab614cb3e5391f114c65cc54a375b8e7bf3"
+    },
+    {
+      "file": "cf-u2-shared-scroll-producer-20260906.json.gz",
+      "rawBytes": 1277,
+      "rawSha256": "c9fac16697d5784d2192c11c8f178fbd9f44fe7c20b851dd6e8ce7e94df2a8c5",
+      "bytes": 597,
+      "sha256": "ceb118a3ef3c92508c00cffa66d6d8a073d06517c64dd62815deee6738d0f707"
+    },
+    {
+      "file": "cf-u2-shared-scroll-checks-20260906.log.gz",
+      "rawBytes": 907,
+      "rawSha256": "348393082b8a9859d1971aa3258b029e1df554945be1f5513e51f07e711edd09",
+      "bytes": 477,
+      "sha256": "45bb248b3ac73ee07016552dbab5d3bd54056c6b141cf483032440dfaa100aa9"
+    },
+    {
+      "file": "cf-u2-shared-scroll-type-validation-20260906.log.gz",
+      "rawBytes": 1227,
+      "rawSha256": "ad0ce0f57358745d52a1eec56e14f5b522ee22c8eeb9d6445d604794a38227a9",
+      "bytes": 771,
+      "sha256": "a2dc324bbd2e672b22cc7070fdf601b0917d4683ecd8334d6cf55c56380465c7"
     }
   ]
 }

@@ -12,6 +12,10 @@
 > Exercise the actual revealed preference owner synchronously and restore exact attributes,
 > geometry and text. Justify the exception with independently measured native capacity, never
 > the product variables under test; stale cramped and roomy variables need opposite controls.
+> Generic control audits must use the body below independently measured shared sticky headers,
+> including nested scroll owners, before declaring containment or choosing a scroll centre.
+> Header-owned/Close controls retain their own geometry; a full44px action cannot fit a43px lane.
+> Retain target/header/clipping rectangles and scroll attempts in an occlusion finding.
 
 > **A BOUNDARY FAULT MUST REMOVE EFFECTIVE ANCESTOR PROTECTION** (U1, 2026-09-06).
 > A rail nested inside a protected dock still retains dismissal protection after its own marker

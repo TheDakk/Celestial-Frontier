@@ -4,6 +4,7 @@ const SHEETS = ":is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#primepanel,#ship
 export const UI_SHEET_CSS = `
 :root{--cf-lower-top:calc(100dvh - var(--safe-bottom) - 164px);--cf-sheet-floor:calc(var(--cf-lower-top) - 8px);--cf-sheet-bottom:calc(100dvh - var(--cf-sheet-floor));--cf-toast-bottom:calc(100dvh - var(--cf-lower-top) + 8px);--cf-toast-height:0px;--cf-planetside-floor:var(--cf-sheet-floor);--cf-survey-start:calc(var(--topbar-h) + 8px);--cf-survey-min-height:139px;--cf-survey-scroll-top:80px;--cf-planetside-height:72px}
 ${SHEETS},#survey{--cf-sheet-start:calc(var(--topbar-h) + 8px);top:var(--cf-sheet-start);bottom:auto;min-height:0;max-height:max(44px,calc(var(--cf-sheet-floor) - var(--cf-sheet-start)));overflow-y:auto;overscroll-behavior:contain;scrollbar-color:var(--cf-color-border) transparent;border-radius:var(--cf-radius-panel);border-color:var(--cf-color-border)}
+${SHEETS}{scroll-padding-top:var(--cf-sheet-scroll-top,80px);scroll-padding-bottom:14px}
 .panel{z-index:var(--cf-layer-sheet)}
 #codexpanel .compendium-scroll{height:min(560px,max(44px,calc(var(--cf-sheet-floor) - var(--topbar-h) - 116px)))}
 .panel[aria-hidden="false"],#survey[aria-hidden="false"]{animation:cf-sheet-enter var(--cf-duration-enter) var(--cf-ease-standard)}
