@@ -1,0 +1,76 @@
+{
+  "schema": "cf-ui-prepared-unapplied/v1",
+  "observedSource": "437a3aa08f1e5cb3c1b0b134e02f8cbe92c56204",
+  "status": "prepared-unapplied",
+  "certification": false,
+  "archive": {
+    "file": "shipyard-ready.tar.gz",
+    "bytes": 62483,
+    "sha256": "156e979b385f4dfefa82bdc92ccabf0c4cff6f2d005aec8c31f09f681993602b",
+    "rawBytes": 286720,
+    "rawSha256": "71ec0e5871a74c591b5bce4da745bf99cf863c9d932f876fcccea4de31abf2aa"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3878,
+      "sha256": "b33d2cd5666c68277bfeee258e028ef88d744bc616e458e7a87e2fd61ae960e4"
+    },
+    {
+      "path": "apply.py",
+      "bytes": 3410,
+      "sha256": "227285bccaebe1aa37339aea3c3c24138f9348b880ddffd440c20cf1cdd94211"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 21392,
+      "sha256": "e11ab82d9d4cc20f4df38423653616f7f1694f1e9da99dcbaefd3456c13e6e4a"
+    },
+    {
+      "path": "port/v2/apps/game/index.html",
+      "bytes": 70245,
+      "sha256": "99ac44acd2133554b6007cbd3c41b32810b7e2c4020e70226a2a756a1350484e"
+    },
+    {
+      "path": "port/v2/apps/game/src/engineering-panel.ts",
+      "bytes": 57191,
+      "sha256": "66546eef5c6b34993616f2b8b1d0697e3abbdd81152bf3b72609550e7c40a507"
+    },
+    {
+      "path": "port/v2/tests/engineering-panel.test.ts",
+      "bytes": 77269,
+      "sha256": "b37426e290bdf7e9bd4475a47a1493abd434426d1e4aa35da1199ce8b36502a3"
+    },
+    {
+      "path": "review/APPLY_PROPOSAL.md",
+      "bytes": 2140,
+      "sha256": "7ca1b77f3a1c81da49e876bdbb25e2b017757257240e128f48974e0bc0d7e965"
+    },
+    {
+      "path": "review/PREPARATION.json",
+      "bytes": 1160,
+      "sha256": "408b3ed1ec72e01be99e794f4707c9acf21e2bb6f0b57c8cc3895d5f889291c6"
+    },
+    {
+      "path": "review/README.md",
+      "bytes": 3876,
+      "sha256": "5c1e2cae6123461f1d4e9be02949b7fbba658c64d9a4111608ee189396175e41"
+    },
+    {
+      "path": "review/config.example.json",
+      "bytes": 483,
+      "sha256": "fa7d40d55f8b0c6b6e8a1e87eb85a31c4bbb141d3bc6e477a5319c4541ef0486"
+    },
+    {
+      "path": "review/shipyard-review.mjs",
+      "bytes": 25012,
+      "sha256": "bbea616df0b7fec9b098406a3d42726ca1065b4e7f2ef7d02c2572709974f140"
+    },
+    {
+      "path": "shipyard.css",
+      "bytes": 3045,
+      "sha256": "7894c06e95e23db0c83d73c034499b14a4467c44258df5183a04f71141d851af"
+    }
+  ],
+  "notes": "No product application, tests, build or native checkpoint. Prior preparations remain immutable. Read archived README for scope, parser-only checks and gaps."
+}
