@@ -23,8 +23,13 @@ cleanup need named fonts/two-frame settlement before dependent geometry now that
 is frame-scheduled. Native thresholds, negative controls, first-error retention and product bytes
 remain unchanged. Nick paused development with6% usage remaining. The unfinished patch is
 archived in audits/UI_U2_POST_CLOSE_PAUSED_20260906 and is UNAPPLIED; the working tool was
-restored exactly to signed3a61352. No patch tests, syntax check, native run or final review occurred.
-Read ROADMAP.md and audits/UI_U2_NEXT_SESSION_20260906.md before resuming.
+restored exactly to signed3a61352. No patch tests, syntax check or native run occurred.
+Claude's subsequent read-only review confirmed the diagnosis but found the draft NOT ready:
+exclude the injected trail from band-fixture fixed rows, preserve the first fixture error before
+settlement-label validation, resolve activation ordering and add source-executing controls.
+The full response is retained at audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md; these findings
+remain unimplemented and unverified. Read ROADMAP.md and audits/UI_U2_NEXT_SESSION_20260906.md
+before resuming. Development remains paused.
 
 The current bounded correction measures every visible portrait sheet's header/insets plus44px
 body, the stacked Survey/biosphere allocation, and standalone Planetside72px below actual painted

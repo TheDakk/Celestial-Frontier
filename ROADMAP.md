@@ -24,9 +24,9 @@ session. Read audits/UI_U2_NEXT_SESSION_20260906.md for the self-contained conti
 failed evidence, unfinished patch, prepared U3/U4 work, tooling and paired Git instructions.
 
 Owned identity: OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac,
-openai/mac→origin/openai/mac. Starting signed3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d,
-35ahead0behind; origin/develop ancestor. This pause checkpoint changes documentation/evidence
-only; executable bytes remain exactly3a61352. Ambient .DS_Store preserved, root main.js absent.
+openai/mac→origin/openai/mac. Review-receipt base is signed68a0fbf23fb16c78b0cbd13728bf08964cdc808d,
+36 ahead / 0 behind at receipt start; origin/develop is an ancestor in local refs. This additive
+review checkpoint changes documentation/evidence only; executable bytes remain exactly3a61352. Ambient .DS_Store preserved, root main.js absent.
 SSH TheDakk auth/read/fetch PASS this session; exact SSH origin is
  git@github.com:TheDakk/Celestial-Frontier.git. Budget UNFROZEN/PUBLIC, private fallback3000,
 zero exact hosted authority/cost. No push, PR, merge, deploy, release or version change.
@@ -42,7 +42,8 @@ and Slice NOT RUN. Preserve audits/UI_U2_LOCAL_CHECKPOINT_3a61352_20260906/manif
 The next bounded work is the post-close clearance test owner. Its unfinished/unverified patch,
 source snapshot, editing script, pause note, named RED verification, Charters receipt and runner
 are archived in audits/UI_U2_POST_CLOSE_PAUSED_20260906/manifest.json. Root restored the working
-Glass file to signed3a61352; the patch is UNAPPLIED. No patch tests/syntax/native/final review ran.
+Glass file to signed3a61352; the patch is UNAPPLIED. No patch tests/syntax/native checks ran.
+Claude's later read-only review is retained below; it found the draft not ready.
 Finish/review state-aware native Close setup, painted-control clearance and named frame settlement
 for existing floating-trail/fallback mutation/restoration/cleanup. Preserve thresholds and first
 failure. The next-session audit contains exact commands and all U3/U4 preparation references.
@@ -60,9 +61,15 @@ No Inkscape this session: macOS registration aborts; source art intact, browser 
 No further icon loop; keep emoji. Next session follows the UI_TOOLCHAIN startup procedure.
 Current references and audits are synchronized; previous handoff archived verbatim.
 
-Read-only Claude review is prepared at audits/UI_U2_CLAUDE_REVIEW_20260906/REVIEW.md with
-claude-u2-review.zip. Nick may attach that bundle to Claude now; no code synchronization or
-application is requested. Review the unfinished post-close test correction only.
+Claude's returned review is now retained VERBATIM in
+[audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md](audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md),
+with RESPONSE_RECEIPT.json recording its hash and provenance. Read it before the next correction.
+Verdict: toggle diagnosis confirmed; draft NOT ready. Exclude the injected trail from the band
+fixture's fixed rows only; preserve the actual first fixture error before requiring settlement
+labels. Resolve the post-activation timing risk with an ordering proof or strict bounded wait.
+Extract a source-testable close/assessment owner and add the specified opposite controls.
+The next-session audit records the full bounded plan. These are unexecuted review findings;
+no tests, source changes or new native attempt occurred. The original bundle remains immutable.
 
 Codex paused locally. GitHub step none; PR not needed. Nick need not open Claude now; preserve
 anthropic/mac/unmerged173c806 and do not copy/pull these unmerged changes. Develop/main/live

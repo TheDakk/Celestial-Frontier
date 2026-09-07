@@ -3,7 +3,10 @@
 Nick requested a pause at6% remaining usage. No more development or native checks this session.
 Read ROADMAP.md first, then this file, PROCESS_LAWS.md, PARALLEL_GIT_PROTOCOL.md and the current
 UI references. Use the latest signed documentation checkpoint on openai/mac; it changes no
-executable code relative to3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d. Root is
+executable code relative to3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d. The original signed pause
+checkpoint is68a0fbf23fb16c78b0cbd13728bf08964cdc808d; the later documentation-only receipt adds
+Claude's complete response and the plan below. Read UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md.
+Root is
 /Users/nick/Projects/celestial-frontier-openai-mac. Do not switch branches or another agent's tree.
 
 ## Current authority and result
@@ -32,7 +35,9 @@ unknown; nonrecurrence does not close them. Physical iPhone/Safari/PWA UAT remai
 UI_U2_POST_CLOSE_PAUSED_20260906/manifest.json retains7 raw-hashed gzip carriers: unfinished
 Glass snapshot and patch, editing script, the agent's pause note, latest named RED verification,
 Charters receipt and candidate runner. No tests were created/run for that patch; no syntax check,
-browser/build or final peer review occurred. Root archived it and restored ONLY glassmatrix.mjs
+browser/build or final peer review occurred before the pause. Claude's subsequent read-only
+review found the draft NOT ready; it is retained below and does not validate the patch.
+Root archived it and restored ONLY glassmatrix.mjs
 to exact signed3a61352 bytes. The archived agent pause note predates that restoration; the manifest
 and current clean source are authoritative. Do not blindly apply the snapshot/editing script.
 
@@ -52,6 +57,66 @@ whole-job lock and approved macOS browser execution. Candidate runner:
 It requires product bytes identical to3f1578e and runs static→small-phone→large-phone→Slice/
 namedverify in a clean signed clone, main.js absent. Stop first nonzero/red/instrument; retain it;
 no unchanged retry, deadlines or threshold weakening. Runner is archived; inspect before reuse.
+
+## Claude review received — next-session requirements
+
+Nick supplied Claude's full response after the pause and requested preservation only.
+[RESPONSE.md](UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md) retains every supplied byte, including the
+reviewer's opening progress text; RESPONSE_RECEIPT.json records the SHA-256 and source attachment.
+The original ZIP, its manifest, RED evidence and unapplied draft are unchanged. Codex did not
+re-execute the review or implement its recommendations in this documentation batch.
+The preliminary missing-helper/ReferenceError speculation was not a final review finding;
+do not treat it as a confirmed third flaw or start an additional investigation from that note.
+
+Claude confirms the predecessor diagnosis: the last ordinary panel is Charters, its close receipt
+requires cardOpen===false, and only the width>900 hidden-opener branch reopens Survey. The following
+unconditional toggle therefore reopens it at phone widths. The retained verdict remains instrument
+RED with zero product findings; it is not a newly passed native result.
+
+Address these findings within the existing post-close test owner before a fresh run:
+
+1. **Band fixture flaw:** the draft's painted fixed-row reader includes direct header child #trail.
+   The portrait fixture deliberately floats that trail downward and already measures it separately
+   as t/gap. Exclude el.id==='trail' ONLY in portraitBandCheck's fixed rows so the fixed boundary
+   does not move with the fixture. Keep trail in the actual topChromeCheck matching sheet-layout.
+   Keep pointer-transparent wrappers excluded, visible children counted, blocking wrappers fully
+   counted and opacity-zero controls excluded. Preserve AppChrome's distinct full-wrapper variable,
+   the 72px band and 5.5px checks; the draft's stricter fixedClear requirement is acceptable to Claude.
+2. **First-failure flaw:** surface portraitControls.band.fixture.error (and corresponding fixture
+   errors) before the exact seven-label settlement check and band/fallback outcome assessment.
+   Require the exact sequence only when fixture error is null; a short settlement array after an
+   early fixture failure must not replace that first failure. Preserve cleanup errors and receipts.
+3. **Low timing risk:** an immediate read after activateRealControl assumes Survey close is
+   synchronous with the activation receipt. Prove that ordering with a source-executing case, or
+   use an existing bounded wait with a strict ===false acceptor. Already-closed means zero
+   activations; open means at most one native close. Malformed/refused/still-open outcomes fail
+   closed. No second toggle, deadline extension or unchanged-source retry. The existing
+   stopInstrumentControl pattern depends on stopAtFirstGlassInstrumentFailure throwing.
+4. **Testable owner:** Claude proposes extracting surveyPostCloseSettlement(readState, activate,
+   settleFrames, readFrames) plus pure assessSurveyPostClose(receipt, viewport), exported beside
+   chartersCloseSettlement, and invoking it from the failing region. These are proposed interfaces,
+   not existing implemented functions. Re-derive the correction from the patch after these fixes;
+   do not apply the archived snapshot or editing script blindly.
+
+Add source-executing tests/glass-survey-post-close.test.ts following the existing Charters test:
+already-closed/zero activation/one settlement; open/exactly one close; refused activation/no retry;
+malformed null/undefined/string 'false'; still-open/no second toggle; bad settlement label, id and
+overflow; painted child/transparent or blocking wrapper/opacity-zero/trail-exclusion cases; and
+an early fixture error surviving later cleanup-settlement failure. Cover the chosen activation
+ordering behavior. Claude found no remaining flaw in topChromeFrameValid's id/phase/viewport/
+overflow checks; preserve those fail-closed checks and exact cleanup.
+
+Then inspect the runner's hard-coded /private/tmp/cf-u2-checkpoint-<sha>-20260906 output path;
+run node --check port/v2/tools/glassmatrix.mjs, focused Vitest for the new test plus bundled
+Glass guidance-preference, Charters settlement, Survey settlement, sticky-header-scroll tests
+and sheet-layout, all three TypeScript programs, and root validate. Obtain one bounded review of
+the completed correction and commit it before ONE fresh canonical static→small-phone→large-phone
+→Slice/named-verification attempt. Stop at first nonzero/red/instrument and retain its evidence.
+The existing whole-job lock, macOS execution approval and product-byte guard remain mandatory.
+
+Claude ran no build, browser or tests. Large-phone/Slice remain NOT RUN, the older08cd97d Milky Way
+and c57aaaeb portrait-timeout causes stay unknown, physical UAT remains open, and no U2 PASS,
+Compendium certificate, U3/U4 advancement or hosted authority follows from this review.
 
 ## Prepared U3/U4 work after exact U2 PASS
 
@@ -77,13 +142,21 @@ measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12/ceil
 Draft81 orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
 Future product builds must update producer pins together; preserve all historical samples.
 
-## Optional Claude review while paused
+## Review handoff complete; development remains paused
 
-Nick asked for a review handoff. UI_U2_CLAUDE_REVIEW_20260906/REVIEW.md is the focused brief;
-claude-u2-review.zip contains35 hashed files, exact3a61352 executable source and retained evidence.
-Attach it to Claude for read-only review; do not apply/copy it into anthropic/mac or synchronize
-branches. The unfinished patch is separate from committed source. Keep returned findings for the
-next Codex session. Do not promote to develop: U2 is incomplete and no hosted attempt is authorized.
+UI_U2_CLAUDE_REVIEW_20260906/REVIEW.md and claude-u2-review.zip preserve the original request and
+35 hashed files. RESPONSE.md now preserves Claude's returned review in full; follow the section
+above on the next requested development session. Nick need not reopen Claude or synchronize
+anthropic/mac now. Do not promote to develop: U2 is incomplete and no hosted attempt is authorized.
+
+Copy-ready next-session request:
+
+> Resume Celestial Frontier at /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac.
+> Read ROADMAP.md, audits/UI_U2_NEXT_SESSION_20260906.md and the complete Claude review at
+> audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md, then follow the resume instructions. Preserve
+> every recorded verification blocker. Complete only the next bounded U2 post-close test correction
+> using Claude's findings; keep the archived draft unapplied until corrected and verified.
+> U3/U4 remain gated on exact U2 PASS. No Phase2 or hosted actions.
 
 ## Tools and paired handoff
 

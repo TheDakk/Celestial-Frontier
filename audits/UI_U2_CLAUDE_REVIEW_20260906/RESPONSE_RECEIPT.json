@@ -1,0 +1,23 @@
+{
+  "schema": "cf-external-review-receipt/v1",
+  "receivedDate": "2026-09-06",
+  "suppliedBy": "Nick, pasted Claude response attachment",
+  "sourceAttachment": "/Users/nick/.codex/attachments/3ea9d743-4197-4aae-af04-b9d27a2c56d7/pasted-text.txt",
+  "retainedResponse": "RESPONSE.md",
+  "bytes": 7652,
+  "sha256": "706b73453e807d28edc631290fdc678de9befaeabac9a640f95f4746232653ee",
+  "verbatim": true,
+  "documentationBaseCommit": "68a0fbf23fb16c78b0cbd13728bf08964cdc808d",
+  "reviewedExecutableCommit": "3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d",
+  "reviewedProductCommit": "3f1578e2e416cf5e566e1f799c16ea0a081ae037",
+  "scope": "External read-only review of retained source/evidence and unfinished UNAPPLIED draft",
+  "reviewerVerdict": "Instrument diagnosis confirmed; draft not ready: two flaws, one low timing risk, no tests",
+  "implementationStatus": "UNFINISHED_UNAPPLIED",
+  "checksRunForReviewOrReceipt": {
+    "build": false,
+    "browser": false,
+    "tests": false
+  },
+  "limitations": "Reviewer conclusions are preserved as supplied, not independently re-executed by Codex during this documentation-only receipt. No U2 PASS or hosted authority.",
+  "priorBundleAndEvidence": "Unmodified; this is an additive response receipt, not a replacement bundle manifest."
+}

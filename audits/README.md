@@ -13,6 +13,14 @@ summary of it.
 
 ## Contents
 
+### U2 pause checkpoint and returned Claude review — 2026-09-06
+
+[Next-session handoff](UI_U2_NEXT_SESSION_20260906.md) contains the complete bounded correction
+plan. [Claude's response](UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md) is retained verbatim with a
+[hash/provenance receipt](UI_U2_CLAUDE_REVIEW_20260906/RESPONSE_RECEIPT.json). The diagnosis is
+confirmed by read-only review; the unfinished patch is NOT ready and remains unapplied. No new
+verification or development ran, and all retained RED evidence/older unknown causes remain open.
+
 ### U1 rail proof and final guidance contrast correction — 2026-09-06
 
 [Current audit](UI_U1_HINT_CONTRAST_20260906.md) retains clean1609cf3 static/Slice/named-verifier
