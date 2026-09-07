@@ -8,21 +8,27 @@ controls declare their native button type explicitly.
 ## V2 presentation system — U1 shell and U2 sheets, matches code as of 2026-09-06
 
 Nick authorized U2–U4, Settings above Training, and compact notifications when space is tight.
-Product icons remain emoji; accepted U1 layout is unchanged. Signed source `437a3aa08f1e5cb3c1b0b134e02f8cbe92c56204` passed complete develop static
-(321 files, 3456 tests, 1 skipped). Small-phone stopped PRODUCT RED with zero instrument failures:
-`charters-opener-off` measured Objective bounds [148,60,310,322.88]; its centre [229,191.44] hit
-the Planetside heading. Large-phone and Slice were NOT RUN. The restoration strategy passed this
-real path, but the report omitted the actual Planetside/toast/lane geometry needed to attribute
-the new overlap.
+Product icons remain emoji; accepted U1 layout is unchanged. Signed8015ee4ff257b9c12db4eec2ff37808ec38d06ad passed complete develop static (322files,
+3459tests,1skip). Small-phone stopped PRODUCT RED with zero instrument failures while Charters
+was open: panel height107.5px and heading height84.56px left only7.94px of audited body room for
+a44px Accept target. Native scroll reached741 and exact restoration passed. The new Charters
+Close settlement wrapper was not reached. Large-phone and Slice were NOT RUN. The nine-carrier
+8015ee4 checkpoint retains this result; the older437a3aa Objective/Planetside cause remains open.
 
-The qualified 13-carrier [Objective diagnostic](audits/UI_U2_OBJECTIVE_DIAGNOSTIC_20260906/)
-shows a settled 22.5px overlap, not the original centre hit. Its omitted charset/static-emoji
-and click-timing differences prevent causal closure. The bounded tool-only work binds existing
-Charters Close and immediate geometry in one call, retains immediate/microtask/named font-ready
-plus two-frame receipts, and audits the settled geometry atomically. Focused45 checks (three
-new cases/27 corrupt-receipt controls plus42 existing), all3 TypeScript programs and root validate
-PASS. Exact-source native verification is pending; product and release/producer pins are unchanged. The U3 readiness, collector and
-retainer preparations are archived under `audits/UI_U3_U4_PREPARATION_20260906` and remain unapplied.
+The current bounded correction measures every visible portrait sheet's header/insets plus44px
+body, the stacked Survey/biosphere allocation, and standalone Planetside72px below actual painted
+upper chrome. Compact notices use4px vertical and8px horizontal padding. When capacity remains
+tight, passive hint and context paint may yield while preserving their text. Every decision starts
+with natural guidance; the dependent caption is measured with a temporary native hint-height
+projection, restored exactly afterward. Glass independently measures both captions and available
+space, tests their actual text preferences, and requires exact restoration. After native Close,
+remaining clipping is valid only when independent geometry still proves pressure. Earlier generic
+preference and native target-size/clipping checks remain strict. Focused84 checks, all3 TypeScript
+programs, root validate, one evidence build and101 release/budget/evidence checks PASS. Producer
+is aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe; measurement/ceilings are unchanged.
+The existing81-bullet draft has orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
+Exact-source native verification is pending; these checks are not a fresh Compendium certificate.
+
 All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
 Phase2, pilot or hosted closure is claimed.
 The [U2 audit](audits/UI_U2_SHEETS_20260906.md) retains the immutable result and prior normal
@@ -100,9 +106,8 @@ against bright artwork. The outline adds no pill or box and changes no layout me
 U2's `sheet-layout.ts` measures visible hint, context and dock rectangles plus the toast's
 painted height, retaining its reservation until the fade ends. In portrait layouts up to 900px,
 it compares the full toast against the active sheet's measured header, edges and 44px body room.
-Planetside instead preserves a 72px total reading band from `--surface-chrome-bottom + 8px`.
-When that room is exhausted, the toast keeps its full headline at the selected text size and
-reserves the actual compact height. Its message remains in a visually hidden span with the same
+Planetside instead preserves a72px total reading band below actual visible upper controls, published as `--cf-planetside-start`.
+When that room is exhausted, the toast keeps its full headline at the selected text size with4px vertical/8px horizontal padding and reserves its actual compact height. Its message remains in a visually hidden span with the same
 DOM text, existing assistive-technology announcement role, history and timer. Tame/Feed announcement
 ownership remains distinct. The full presentation returns when space permits. `ui-sheet-style.ts`
 uses the measured lower lane to bound sheets with 8px gaps. Survey keeps only its title and native
@@ -110,10 +115,11 @@ Close sticky; the unchanged subtitle and badge follow in the scrolling body. The
 landed allocation reserves Survey's measured header, edges and 44px body room before capping
 Planetside, and gives native scroll/focus targets padding below the sticky header.
 Survey capacity uses the final floor minus measured strip height, start and 8px gap, replacing
-Main's potentially stale `--planetside-top` position receipt. If compact
-portrait Surface + Survey + the 72px biosphere band still cannot fit, the scene hint temporarily
-uses clipped 1px styling so its original accessibility text remains available; native hint
-geometry is restored before every capacity decision, and full paint returns with room or Survey closure.
+Main's potentially stale `--planetside-top` position receipt. If a visible portrait sheet or
+standalone biosphere still lacks its measured minimum, hint and context temporarily use clipped
+1px styling while their accessibility text remains. Natural guidance is restored before every
+decision, including a temporary exact-restored native `--hint-h` projection for caption geometry.
+Full paint returns with room; Close alone does not imply room when the biosphere still needs space.
 This is a bounded U2 space-allocation correction; accepted U1 shell geometry stays intact.
 Planetside uses the measured sheet floor; wide Settings centers in its available right workspace.
 Short-landscape sheet overrides carry

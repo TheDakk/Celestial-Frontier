@@ -19,89 +19,81 @@ the archive verbatim and refresh this handoff in place.
 
 ## SESSION HANDOFF — 2026-09-06 · U2–U4 AUTHORIZED / U2 ACTIVE
 
-Nick explicitly said “Please proceed with U2-U4.” This supersedes the earlier no-U2 boundary
-and approves audits/UI_U2_PROPOSED_SCOPE_20260906.md, including Settings above Training when
-opened during a lesson. U2 sheets/lanes, U3 ordered panel reskins and the SVG-vs-emoji study,
-and U4 ten-viewport/28-screen local layout gate are authorized. Keep emoji until Nick chooses
-otherwise. No Phase2 audiovisual work, integrated-pilot activation or hosted actions.
+Nick explicitly said “Please proceed with U2-U4.” U2 sheets/lanes and Settings above Training,
+ordered U3 reskins and U4 local layout gate are authorized. “Use compact notifications when
+space is tight” is the selected behavior. Keep emoji and accepted U1 design. No Phase2,
+integrated pilot, hosted actions, PR/push/merge/deploy/release/version bump. No pending user decision.
 
-Owned root /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac tracking origin/openai/mac.
-Starting signed HEAD75d9894b43243614c4d9d0dff8820c5c45329cee,20 ahead,0 behind. Tracked tree
-started clean; ambient .DS_Store preserved; root main.js absent. Same-session SSH/read/fetch and
-startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 remains deferred for busy tools.
-Actions UNFROZEN/PUBLIC per last receipt, private fallback3000, zero exact hosted authority.
+OpenAI/Codex on macOS: physical root /Users/nick/Projects/celestial-frontier-openai-mac,
+openai/mac tracking origin/openai/mac. Starting signed8015ee4ff257b9c12db4eec2ff37808ec38d06ad,
+33ahead0behind, origin/develop ancestor. Same-session SSH accountTheDakk/auth/read/fetch PASS
+and exact SSH origin git@github.com:TheDakk/Celestial-Frontier.git reused. Ambient .DS_Store
+SHA95e30c9454a9707e734f6dfcde762897cab42d9b434ecce19851d0577182e7ac remains untouched;
+main.js absent. Startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 busy deferred.
+Budget UNFROZEN/PUBLIC, private fallback3000, zero exact hosted authority/cost.
 
-Latest signed U2 source437a3aa08f1e5cb3c1b0b134e02f8cbe92c56204 (32ahead,0behind).
-Complete develop static PASS321files3456tests1skip. The DOM-style reset now passes the actual
-Inventory path. Small-phone later stops PRODUCT RED/zero instrument: charters-opener-off
-Objective[148,60,310,322.88], centre[229,191.44], hits the Planetside heading. Large-phone/Slice
-NOT RUN. Preserve nine-carrier audits/UI_U2_LOCAL_CHECKPOINT_437a3aa_20260906/manifest.json;
-named terminal/browser read []/[] validates RED metadata. The report lacks actual side/toast/
-published-lane state; do not infer it from another fixture or claim timing as the cause.
+Latest native8015ee4: full develop static PASS322files3459tests1skip. Small-phone PRODUCT RED,
+zero instrument failures, at open Charters before the new Close settlement wrapper. Panel107.5px,
+heading84.56px left7.94px usable content for44px Accept. Native scroll741/restoration PASS.
+Large-phone/Slice NOT RUN. Preserve nine-carrier audits/UI_U2_LOCAL_CHECKPOINT_8015ee4_20260906,
+named terminal/browser read[]/[]. Earlier437a3aa Objective centre hit Planetside; its cause is
+still open and the qualified synthetic diagnostic cannot close it. No new Close receipt exists.
 
-One qualified actual-controller synthetic diagnostic shows22.5px settled overlap, but not the
-original centre collision. Its Objective height216.5 differs from262.88; omitted HTML charset
-corrupted static emoji and native-event timing differs from the Glass synchronous close.click.
-All13 carriers and limitations are retained in audits/UI_U2_OBJECTIVE_DIAGNOSTIC_20260906.
-No product correction is justified by that diagnostic alone. The next bounded tool-only change
-brackets the exact unchanged Charters Close owner with immediate/microtask/named fonts→two-rAF
-snapshots and one atomic settled opener audit. It retains full copy/classes/rectangles/scroll,
-lane variables and live-toast identity; notice expiry cannot turn the earlier collision green.
-Focused45 checks (three new cases/27 corrupt-receipt controls plus42 existing), all3 TypeScript
-programs and root validate PASS. Exact-source native verification is pending. Product remains identical toc84aecd:
-producer0adbee29aed0004c63d4acc0cebf84a53dabc0bca33f6000d52223fb932f8711;
-measurement/ceilings unchanged; draft81 orderedSHAb791c37bcee759754e90e688d262ec4cb24a874df1d6e353da2b41a30bff857c.
-After focused/type/root checks, commit and run /private/tmp/cf-u2-run-scroll-cssom-20260906.cjs
-FULL_NEW_SHA once under the whole-job lock with approved browser execution. It rejects product
-diffs fromc84 and runs full develop static → small-phone → large-phone → Slice/namedverify.
-First-red stop, no unchanged retry. Exact U2 PASS unlocks the guarded normal-predecessor snapshot
-then ordered U3 panel runner; no additional generic user approval is needed.
+This bounded correction generalizes native portrait capacity to all visible shared sheets
+(header/insets plus44px body), stacked Survey/72px biosphere/8px gap, and standalone72px
+Planetside below actual painted upper controls. It publishes --cf-planetside-start independent
+of stale AppChrome receipts. Both passive hint/context paint yield only when capacity is tight
+and doing so releases room. Each decision restores natural guidance and projects native hint
+height for caption measurement, then exactly restores the foreign property/value/priority.
+Native text/header/Objective refill observers avoid owned-class loops. Compact notices use4/8px
+padding. Copy, gameplay, save, AT/history/timer, preferences, U1 placement and44px floors remain.
+Glass independently measures both captions/capacity, executes actual preferences and exact
+restoration; after Close may remain yielded only with independent pressure proof. Cleanup faults
+are instrument-red on both paths. Generic preference and Charters settlement owners stay strict.
 
-Use corrected /private/tmp/cf-u3-shipyard-ready-20260906 (including review/shipyard-review.mjs),
-not the earlier preparation: EXPAND/COLLAPSE now has A+14/A++16 scaling. U3retainer is prepared at
-/private/tmp/cf-u3-retain-checkpoint-20260906.py (parser-only check, no retention execution yet).
-U4collector is prepared under/private/tmp/cf-u4-layout-ready-20260906/collector (syntax-only).
-Their12/2/6-file durable archives/manifests are in audits/UI_U3_U4_PREPARATION_20260906; all are
-unapplied and untested in product. No actual U4gate or28-pair comparison exists. Preserve missing
-state/equivalence cases; do not label them intended style differences without review.
-No further U1 layout rework, Inkscape, Phase2, pilot or hosted actions.
+Preparation PASS:84 focused checks, all3 TypeScript programs, root validate with50-probe
+fingerprint, one evidence build,101 release/budget/evidence checks. Producer
+ aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe;
+measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 and ceilings unchanged.
+Draft81 orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
+No fresh Compendium certificate. Required references/law/audit updated; preparation carriers retained.
 
-The normal20/60PNG reports at594ece6 and56648b2 preserve the corrected, readable Settings spacing
-Nick flagged. They do not claim new human approval or device UAT. Current audit is
- audits/UI_U2_SHEETS_20260906.md. All nine U3 panel preparations and the U4 contract proposal are
-under/private/tmp, untested and ordered. Their67-file durable draft archive is
- audits/UI_U3_U4_PREPARATION_20260906/manifest.json; three runner syntax checks and Shipyard
- three-file apply dry-run passed, with no runtime or browser execution. Inventory prep identifies a real missing v2 paperdoll
-owner and nested-title boundary; do not call its cap/parity complete from styling alone. A guarded
-normal-predecessor runner may build/snapshot only after exact U2 terminal PASS; none exists yet.
+NEXT: commit this reviewed correction locally, then run once under the whole-job lock with
+approved macOS browser execution:
+ node /private/tmp/cf-u2-run-generic-capacity-20260906.cjs FULL_NEW_SHA
+It requires exactly sheet-layout.ts/ui-sheet-style.ts/release-content.ts product diffs from8015,
+clean signed clone/main.js absent, offline installs, full develop static → small-phone →
+large-phone → Slice/namedverify. First-red stop; no unchanged retry or threshold changes.
+Retain/verify exact reports with the existing U2 retainer. No U2 PASS is claimed before completion.
 
-Inkscape unavailable this session: two reports abort at macOS GUI registration, even --version;
-restricted launch suspected, no outside-sandbox control. Do not relaunch. Browser SVG rendering
-works. Nick prefers colorful emoji; keep them in product, optional three-icon color study at
- audits/UI_U3_COLOR_ICON_STUDY_20260906. No further icon rework loop queued. Temporary U3 Shipyard,
-Atlas, Compendium and U4/Shipyard-review preparations exist under /private/tmp and remain untested;
-do not apply a later panel before its preceding checkpoint. No user action or generic approval
-needed to finish U2–U4, but visual spacing must be checked before advancing.
+Exact U2 PASS unlocks /private/tmp/cf-u3-normal-predecessor-20260906.mjs FULL_U2_SHA EXECUTION_JSON
+under the lock, before applying Shipyard. No predecessor currently exists. It does one normal
+build and hashes the full snapshot before evidence overwrites it. Then U3 per-panel order:
+Shipyard → Atlas → Compendium → Charters → Records/Chronicle → Guide → Settings → Survey/biosphere
+→ Inventory. Use /private/tmp/cf-u3-shipyard-ready-20260906 (not original proposal), its guarded
+apply and eight-row reviewer, then /private/tmp/cf-u3-run-panel-checkpoint-20260906.cjs.
+Later proposals, U3retainer and U4checker/collector remain prepared/unapplied; durable manifests
+under audits/UI_U3_U4_PREPARATION_20260906 retain all files. Inventory uses completion/ proposal.
+U4 still needs actual10-view contracts/28-pair report and adaptation to generalized hint/context
+proof; missing v1/v2 states remain explicit. No generic approval needed to continue authorized work.
 
-U2 is active: shared native sheet headers/Close and internal scrolling, measured lower lanes,
-Settings/Training stacking and motion/state tokens. First retained case is b457a7a small-phone:
-Planetside y210–390 and hint y367.5–444 on320×568@2,22.5px overlap. Static3376/1skip PASS;
-small-phone PRODUCT RED, native Charts Settings path/large-phone/Slice NOT RUN on that source.
-Keep audits/UI_U1_LOCAL_CHECKPOINT_b457a7a_20260906/manifest.json immutable. No checkpoint PASS
-is claimed yet. Follow program checkpoints; no unchanged-source retries or threshold weakening.
+The normal20-row/60-PNG594ece6 and56648b2 receipts preserve corrected Settings/Training spacing;
+they are not fresh generic-pressure evidence or human/device acceptance. U2 audit:
+ audits/UI_U2_SHEETS_20260906.md. Preserve every earlier failed checkpoint and b457a7a22.5px
+Planetside/hint RED. Both older causes remain OPEN/unknown:08cd97d unsolicited Milky Way after
+Skip→Escape Cosmos; c57aaaeb Runtime.evaluate portrait timeout. Nonrecurrence is not repair.
+Physical iPhone/Safari/PWA UAT remains OPEN; no full chain/Recovery selected.
 
-Nick's accepted U1 Survey/Objective/compact dock/search/fitted-pills design remains. Both older
-causes remain OPEN/unknown:08cd97d unsolicited Milky Way after Skip→Escape Cosmos; c57aaaeb
-Runtime.evaluate portrait-restoration timeout. Nonrecurrences do not repair either. Physical
-iPhone/Safari/PWA UAT remains OPEN. Prior checks/failed receipts are in
- audits/UI_U1_HINT_CONTRAST_20260906.md and ROADMAP_ARCHIVE.md.
+Do not relaunch Inkscape this session: two private reports abort at macOS GUI registration,
+even --version; sandbox cause inferred, no external control. Source art intact; isolated browser
+rendering works. Keep colorful emoji; optional3icon study delivered/unadopted, no further icon loop.
 
-Codex: finish U2 checkpoint, then U3 per-panel checkpoints in program order and U4. No new
-generic approval is needed. Claude: Nick need not open Claude; preserve anthropic/mac and
-unmerged173c806. No PR needed now. Future openai/mac→develop needs exact hosted authority;
-develop/main/live site remain unchanged. Terminal-only privacy, whole-job locks and first
-browser attempt escalation apply. Update current references and archive this handoff at each checkpoint.
+Codex: continue local U2–U4 checkpoints. Claude: Nick need not open Claude now; preserve
+anthropic/mac/unmerged173c806 and do not copy/pull these unmerged changes. GitHub step none,
+PR details not needed. Future openai/mac→develop requires exact hosted authority. Develop/main/live
+site unchanged. Terminal-only privacy, whole-job locks and first browser escalation continue.
+Update current references and archive this handoff verbatim at the next checkpoint.
 
-Audiovisual B–D preservation remains closed; integrated pilot unapproved; eight anatomical
-animations incomplete with static fallbacks. Matched listening, physical UAT,256MiB retained
-updates,artlock CI,ITP and DECISIONS19 remain open;128MiB admission exists. AAA lane stays parked.
+Audiovisual B–D preservation closed; integrated pilot unapproved; eight anatomical animations
+incomplete with static fallbacks. Matched listening, physicalUAT,256MiB retained updates,artlockCI,
+ITP and DECISIONS19 remain open;128MiB admission exists. AAA lane remains parked.

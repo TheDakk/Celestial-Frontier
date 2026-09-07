@@ -16,6 +16,16 @@
 > including nested scroll owners, before declaring containment or choosing a scroll centre.
 > Header-owned/Close controls retain their own geometry; a full44px action cannot fit a43px lane.
 > Retain target/header/clipping rectangles and scroll attempts in an occlusion finding.
+> A generic sheet needs the same capacity guarantee as a stacked Survey. Measure every visible
+> sheet's header/insets plus44px content; scrolling cannot repair a smaller content band.
+> If caption position depends on hint height, restoring only the hint class is insufficient:
+> temporarily project its actual native height while measuring the caption and restore the
+> other owner's exact property value/priority afterward. Observe child/text changes while
+> guidance is clipped because its1px box may not resize. Prove short-to-long and long-to-short
+> content, stale small/large height receipts, Close and refill without a self-sustaining loop.
+> Bare Planetside measures actual painted upper controls, not an older observer publication.
+> After Close, guidance returns when room exists; any remaining yield needs independent native
+> capacity evidence. Reveal or cleanup errors stay instrument failures on both open/closed paths.
 
 > **A BOUNDARY FAULT MUST REMOVE EFFECTIVE ANCESTOR PROTECTION** (U1, 2026-09-06).
 > A rail nested inside a protected dock still retains dismissal protection after its own marker
