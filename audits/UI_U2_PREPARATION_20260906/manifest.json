@@ -213,6 +213,83 @@
       "rawSha256": "d16dcaec45c4753785540c23d4387d5e0855ad9d6ad3eee06cd2866b6e73f138",
       "bytes": 100,
       "sha256": "ce0018031b44b8fcd27c289badc7db8196e2431159cf5f4f936611ad14758c2c"
+    },
+    {
+      "file": "cf-u2-56648b2-terminal-verification-20260906.json.gz",
+      "rawBytes": 90,
+      "rawSha256": "8d43e79130a52cb463c6313aa478a00f114d19c2bfc6f5f0732c373f80c7d8fa",
+      "bytes": 100,
+      "sha256": "bd4a0cdbd95cb76b3e24357c91c69bdd583b5a3f688b225c4aad93e4fac3a8f6"
+    },
+    {
+      "file": "cf-u2-landed-allocation-checks-20260906.log.gz",
+      "rawBytes": 6969,
+      "rawSha256": "128accc17679cbbf37585a6d36e0866a408dc9e800718e94760f12af66ea2648",
+      "bytes": 2786,
+      "sha256": "8511065d907fe69451fd80db0fc671f412b62f82bada17d69f967aa8c024f0ee"
+    },
+    {
+      "file": "cf-u2-landed-draft-20260906.json.gz",
+      "rawBytes": 180,
+      "rawSha256": "bf64878bb9e34cd6a05a7aac26942b8a5cad3e361d20fe19fc030b51e2c99f46",
+      "bytes": 153,
+      "sha256": "ffb1b88aee54dc5daa0f0730713164c625355d8db6743169210b8ba22c0218f4"
+    },
+    {
+      "file": "cf-u2-refresh-draft-pin-20260906.mjs.gz",
+      "rawBytes": 1873,
+      "rawSha256": "3d36fdb45e72488763fdc7a4f183865dd5ff651345e80e2674842f5c77d3e104",
+      "bytes": 955,
+      "sha256": "b721f835f1a179bbbca41229e0015cd55ea03df15fe9132f6420051b14532be2"
+    },
+    {
+      "file": "cf-u2-landed-producer-20260906.mjs.gz",
+      "rawBytes": 2890,
+      "rawSha256": "b4f1f854832f3cdc8f367691183494fee2ef52098cbd27fa5398d000c1a33296",
+      "bytes": 1358,
+      "sha256": "f3078b7c8d10d27acc976a332f250d798964a275c268083460099d0adefca330"
+    },
+    {
+      "file": "cf-u2-landed-producer-20260906.json.gz",
+      "rawBytes": 1277,
+      "rawSha256": "6788c2459348cdc78aed75287359556542151ce174dfad482220f27d1222df33",
+      "bytes": 598,
+      "sha256": "cf66c6084b1aa0c5c815a3975c7ea2e8fa73a3533f9d6b873f10600885375c2e"
+    },
+    {
+      "file": "cf-u2-landed-producer-pins-20260906.log.gz",
+      "rawBytes": 311,
+      "rawSha256": "5d1b9cdccb48809dedd681f260dd5cfa7632abc0c8463b7141db3011b15819dd",
+      "bytes": 239,
+      "sha256": "e8adb7ed894ec9108c639ccb96b1ca3e92555f34d3ab3f8e2ab0ee53c5b2aed0"
+    },
+    {
+      "file": "cf-u2-landed-accessibility-checks-20260906.log.gz",
+      "rawBytes": 6827,
+      "rawSha256": "f7a4f0b5b703eb1bab23dd7ad885f5b18b1f6952f55424fb2d61eb8daaa0a6bc",
+      "bytes": 2728,
+      "sha256": "014cdb417e4bd95cd9eea1c03ed54d30056d22c50a01945dd28aebefb80fd8e6"
+    },
+    {
+      "file": "cf-u2-landed-accessibility-producer-20260906.mjs.gz",
+      "rawBytes": 2817,
+      "rawSha256": "bf4dc649f2cb540147d5f5bc7fe278f26b8a3e8a2626c04424cf639a0d105fe2",
+      "bytes": 1316,
+      "sha256": "c940d17986ebaaa3b7c54f8c2325693dff64cf61c265c95281f1c541f11d8907"
+    },
+    {
+      "file": "cf-u2-landed-accessibility-producer-20260906.json.gz",
+      "rawBytes": 1277,
+      "rawSha256": "a5a0000e43a4a7eec5a47ede4f4a532866abad4fcde4759d216d9b1eca077821",
+      "bytes": 597,
+      "sha256": "f401256941dee7def46504c4a7829741a616d1084e7cbf070106e0cced4fe458"
+    },
+    {
+      "file": "cf-u2-landed-accessibility-producer-pins-20260906.log.gz",
+      "rawBytes": 311,
+      "rawSha256": "fd346435b33d9bde6e077602a24e758f4f4ff7d489d7220811b281aca3c12f8e",
+      "bytes": 239,
+      "sha256": "d4ccd4b0fdb7fbcfeeb774e891c8c54e93aecf06f26ec3b7e1036d76f8744633"
     }
   ]
 }

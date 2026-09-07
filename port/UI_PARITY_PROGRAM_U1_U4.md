@@ -1,5 +1,20 @@
 # UI parity and presentation program — accepted brief
 
+### U2 landed sheet allocation correction — 2026-09-06
+
+The bounded U2 correction reserves Survey's measured sticky header, edges and 44px body room
+before Planetside's cap. Scroll padding keeps native focus/scroll targets below that header.
+Only if compact portrait Surface + Survey + the 72px biosphere band still cannot fit does scene
+hint paint temporarily yield; the original text stays and returns with room or Survey closure.
+This preserves accepted U1 shell geometry and Nick's compact-notification choice, including full
+message/AT/history/timer ownership. Implementation and new checks/native verification are pending.
+
+`56648b2` passed normal 20-row review/static checks and early live-toast Survey Close (167px card,
+52.5px compact notice), then stopped RED at native Capture when contained 44px action centers hit
+the sticky title. Large-phone and Slice were NOT RUN. [The U2 audit](../audits/UI_U2_SHEETS_20260906.md)
+retains the exact result and all prior failures; both older unknown causes remain OPEN. This adds
+no Phase2, pilot, hosted or technical-gate closure. Earlier amendments remain verbatim.
+
 ### U2 compact notification choice — 2026-09-06
 
 Nick: “Use compact notifications when space is tight.” U2 portrait layouts compare full toast

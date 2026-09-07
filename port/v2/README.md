@@ -5,10 +5,14 @@
 Nick explicitly authorized U2–U4 and chose compact notifications when space is tight. U2 now
 uses the measured portrait budget to show a full-size headline when the full toast would crowd
 a sheet; its visually hidden message retains DOM/AT, history, timer and Tame/Feed ownership.
-Survey's unchanged subtitle/badge scroll below the sticky title and native Close. The compact
-correction's tests and native checkpoint are pending. `489d780` retained the same live-toast
-44px Survey/15px Close protrusion before and after settlement; large-phone and Slice did not run.
-The short-landscape Settings workspace and Planetside column rule remain. Follow the
+Survey's unchanged subtitle/badge scroll below the sticky title and native Close. `56648b2`
+passed the 20-row normal review/static checks and early live-toast Close, then stopped at native
+Capture: 44px action centers hit the sticky title despite contained rectangles. Large-phone and
+Slice did not run. The in-progress bounded allocation reserves Survey header/edges plus 44px
+body before Planetside's cap, pads native scroll targets below the sticky header, and lets scene
+hint paint temporarily yield only if compact portrait Surface/Survey/72px biosphere still cannot
+fit. Original hint text returns with room or Survey closure. New checks/native verification are
+pending; the short-landscape workspace, compact message ownership and U1 geometry remain. Follow the
 [U2 audit](../../audits/UI_U2_SHEETS_20260906.md),
 [program authorization](../UI_PARITY_PROGRAM_U1_U4.md) and [live handoff](../../ROADMAP.md).
 U1's accepted layout, open technical gate and earlier failed receipts remain distinct.

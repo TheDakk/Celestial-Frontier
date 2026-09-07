@@ -5,11 +5,15 @@
 Nick explicitly authorized U2–U4, then chose compact notifications when space is tight. The
 measured portrait budget now selects the full-size toast headline while preserving the full
 message in DOM/AT/history and existing timer/announcement owners. Survey's subtitle/badge scroll
-below its sticky title and native Close. Tests and native verification of this compact correction
-are pending. `489d780` confirmed identical settled geometry with the same 180px live toast and
-retained the 44px Survey/15px Close protrusion as product RED; large-phone and Slice did not run.
-[The U2 audit](../audits/UI_U2_SHEETS_20260906.md) preserves that result and the earlier landscape
-and fixture failures. Ordered U3 panel checkpoints and U4 follow under the
+below its sticky title and native Close. `56648b2` passed the normal 20-row review/static checks
+and early compact-toast Survey Close, then retained native Capture RED when contained action
+centers hit the sticky title; large-phone and Slice did not run. The bounded allocation correction
+reserves Survey header/edges plus 44px body before Planetside, pads scroll targets below its sticky
+header and, only when compact portrait Surface/Survey/72px biosphere still cannot fit, temporarily
+yields scene-hint paint while retaining/restoring its text. New checks/native verification are
+pending; accepted U1 geometry and compact message ownership remain. [The U2 audit](../audits/UI_U2_SHEETS_20260906.md)
+preserves this result, the earlier confirmed live-toast space shortage and all other failures.
+Ordered U3 panel checkpoints and U4 follow under the
 [accepted program](UI_PARITY_PROGRAM_U1_U4.md); emoji remain in product.
 
 U1 implements normal-game shared tokens, production-based phone/wide layout and Nick's saved

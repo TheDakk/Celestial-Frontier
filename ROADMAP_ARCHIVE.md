@@ -1,3 +1,35 @@
+# U2 compact-notice checkpoint handoff superseded — 2026-09-06
+
+Latest signed U2 check source489d780b630d09dff2dd38a0e5825e886f2ac373 (26ahead) passed complete
+static318files/3402tests/1skip, then small-phone retained the same PRODUCT RED/zero instrument:
+Survey[12,132,308,176],44px high; Close[249,147,293,191] protrudes15px. A named fonts/two-frame
+receipt measured identical before/after geometry with the same live180px Charter toast. The
+atomic retained Close outcome prevents later expiry from hiding RED. This confirms actual space
+pressure, not premature settlement. Large-phone/Slice NOT RUN. Immutable nine-carrier evidence:
+ audits/UI_U2_LOCAL_CHECKPOINT_489d780_20260906/manifest.json.
+
+Nick explicitly chose “Use compact notifications when space is tight.” The working correction
+measures full notice height versus native sheet header/edges plus44px usable body; compact portrait
+uses only the headline when needed, preserving full message in DOM/AT/history and its existing
+expiry. Planetside keeps72px total from native surface-chrome-bottom+8, avoiding moving-top feedback.
+Survey's unchanged subtitle/badge now scroll below the sticky title/Close. The private toast detail
+reader follows its new message span, preserving Tame/Feed counterpart and announcement ownership.
+Current message/header source-executing checks3PASS; existing wiring/review17PASS. The first fixture
+had a quoted-string parse error, then an unavailable TypeScript API; both are retained and the
+portable existing Rolldown owner passes. Combined capacity/release85checks, allthreeTypeScript
+programs, rootvalidate/evidencebuild and28producer controls PASS. Peerreview found noactionableconcern.
+Draft stays81, orderedSHAf84853aa36934c78f3bbf48574425420fb69ea5b2bd5d9a0f9605a04f4a64624;
+producer7e6733e00a06051525020e48ff7065f3fe26e74f545e632a6c99173b2e5e8635.
+Measurement/ceilings unchanged. Commit completed correction/docs/pins,
+and run normal20-row review → staticdevelop → smallphone → largephone → Slice/namedverify once,
+stopping first nonzero. Do not retry prior source. U2 is not complete and U3 is not applied.
+
+The earlier normal20-row/60PNG evidence at594ece6 passed with readable default/A++landscape Settings;
+Nick's observation exposed and led to fixing its ID-specificity conflict. This is not new human
+approval. Preserve audits/UI_U2_LOCAL_CHECKPOINT_594ece6_20260906 and every older report. Current audit:
+ audits/UI_U2_SHEETS_20260906.md. A guarded normal-predecessor runner is prepared under/private/tmp
+for after terminal U2PASS; no before snapshot exists yet. Prepared U3 files are untested proposals.
+
 # U2 live-toast diagnostic handoff superseded — 2026-09-06
 
 Latest signed U2 check source594ece6c79269ca36787fad2fa3f11608c9fef63 (25ahead) passed normal

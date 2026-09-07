@@ -11,10 +11,12 @@ Nick explicitly authorized U2–U4 on 2026-09-06. U2 is implemented and awaiting
 checkpoint verification; the U1 layout remains accepted for UAT with its technical gate open.
 The [program authorization](port/UI_PARITY_PROGRAM_U1_U4.md) resolves Settings above Training
 and permits the subsequent ordered U3/U4 checkpoints. Nick then chose “Use compact notifications
-when space is tight.” Product icons remain emoji. The unchanged before/after geometry at
-`489d780` confirms a real space shortage with the same live toast, not stale layout: Survey
-remained 44px high and Close protruded 15px. The compact correction's tests and native verification
-are pending; [the U2 audit](audits/UI_U2_SHEETS_20260906.md) retains that RED and earlier evidence.
+when space is tight.” Product icons remain emoji. At `56648b2`, the 20-row normal review and
+static checks passed; early live-toast Survey Close passed with a 167px card and 52.5px compact
+notice. Later native Capture stopped RED: the contained 44px action targets hit the sticky title.
+Large-phone and Slice did not run. The bounded landed-allocation correction is in progress, with
+new checks and native verification pending; [the U2 audit](audits/UI_U2_SHEETS_20260906.md)
+retains this result, `489d780`'s confirmed space shortage and earlier evidence.
 
 The normal v2 shell uses the actual production v1.8.9 CSS as its layout reference, adapted
 through `ui-presentation-tokens.ts`, `ui-shell-style.ts` and the existing native controls.
@@ -94,8 +96,15 @@ reserves the actual compact height. Its message remains in a visually hidden spa
 DOM text, existing assistive-technology announcement role, history and timer. Tame/Feed announcement
 ownership remains distinct. The full presentation returns when space permits. `ui-sheet-style.ts`
 uses the measured lower lane to bound sheets with 8px gaps. Survey keeps only its title and native
-Close sticky; the unchanged subtitle and badge follow in the scrolling body. Planetside uses the
-measured sheet floor; wide Settings centers vertically in its available right-side workspace.
+Close sticky; the unchanged subtitle and badge follow in the scrolling body. The in-progress
+landed allocation reserves Survey's measured header, edges and 44px body room before capping
+Planetside, and gives native scroll/focus targets padding below the sticky header.
+Survey capacity uses the final floor minus measured strip height, start and 8px gap, replacing
+Main's potentially stale `--planetside-top` position receipt. If compact
+portrait Surface + Survey + the 72px biosphere band still cannot fit, the scene hint temporarily
+yields from paint; its original text remains and returns when room permits or Survey closes.
+This is a bounded U2 space-allocation correction; accepted U1 shell geometry stays intact.
+Planetside uses the measured sheet floor; wide Settings centers in its available right workspace.
 Short-landscape sheet overrides carry
 the same ID specificity as their common owner: start safe-top+6, left safe-left+8, half safe
 width and maximum height viewport−safe-top−safe-bottom−30. The earlier class-only override

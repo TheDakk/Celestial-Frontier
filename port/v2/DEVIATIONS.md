@@ -1,5 +1,22 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U2 landed allocation and sticky-header clearance — 2026-09-06
+
+`56648b2` passed the 20-row normal review and static checks. Early live-toast Survey Close passed:
+the card was 167px high with a 52.5px compact notice. Later native Capture stopped RED with
+Planetside y204–299 (95px) and Survey y132–196 (64px): the settled, contained 44px Tame, Scavenge
+and Sample centers hit the sticky H2. Large-phone and Slice were NOT RUN. This is distinct from
+the corrected early Close case and the retained `489d780` live-toast space shortage.
+
+The bounded correction in progress reserves measured Survey header/edges plus 44px body room
+before Planetside's cap and pads native scroll/focus targets below the sticky header. If compact
+portrait Surface + Survey + the 72px biosphere band still cannot fit, scene-hint paint temporarily
+yields; original text is retained and returns with room or Survey closure. Accepted U1 geometry,
+compact-notification preference and full-message/AT/history/timer owners remain. New checks and
+native verification are pending. [The U2 audit](../../audits/UI_U2_SHEETS_20260906.md) owns evidence;
+earlier failed receipts and both older 08cd97d/c57aaaeb unknown causes remain OPEN. No gate or
+physical UAT closure is claimed. Earlier entries remain verbatim.
+
 ## U2 compact notifications by measured space — 2026-09-06
 
 Nick explicitly chose “Use compact notifications when space is tight.” Portrait layouts compare

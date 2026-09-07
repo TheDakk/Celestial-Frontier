@@ -7,11 +7,12 @@ controls declare their native button type explicitly.
 
 ## Current v2 U1 shell and U2 sheets — matches code as of 2026-09-06
 
-Nick explicitly authorized U2–U4 and chose compact notifications when space is tight. U2's
-compact correction awaits tests and native/checkpoint verification; U1's accepted layout and open
-technical gate remain distinct. The same live-toast geometry stayed unchanged through settlement
-at `489d780`, retaining the 44px Survey/15px Close protrusion as product RED. The
-[U2 audit](audits/UI_U2_SHEETS_20260906.md) owns evidence; the
+Nick explicitly authorized U2–U4 and chose compact notifications when space is tight. At
+`56648b2`, the normal 20-row review/static checks and early compact-toast Survey Close passed;
+later native Capture hit the sticky title despite contained action rectangles. Large-phone and
+Slice did not run. The bounded landed-allocation correction and its new checks/native verification
+are pending. U1's accepted layout and open technical gate remain distinct. The
+[U2 audit](audits/UI_U2_SHEETS_20260906.md) preserves this RED and earlier evidence; the
 [UI program](port/UI_PARITY_PROGRAM_U1_U4.md) owns scope. Emoji remain the product icon system.
 
 `port/v2/apps/game/src/ui-presentation-tokens.ts` supplies Inter/spacing/type/color/layer
@@ -53,7 +54,15 @@ The visually hidden `[data-sel="toast-message"]` span retains full message text,
 timer ownership; `toastDetailText()` reads that structure while Tame and Feed retain their distinct
 announcement roles. Full presentation returns when room permits. `ui-sheet-style.ts` owns sheet
 bounds, sticky header/Close styling, stack layers and shared motion/control states. Survey's
-unchanged subtitle/badge now follow its sticky title/Close in the scrolling body. The ID-qualified
+unchanged subtitle/badge now follow its sticky title/Close in the scrolling body. The in-progress
+landed correction reserves measured Survey header/edges plus 44px body before Planetside's cap;
+scroll padding keeps native focus/scroll targets below the sticky header.
+After publishing the final floor, the controller measures `--cf-planetside-height` so Survey
+capacity subtracts current strip height, start and 8px gap instead of stale `--planetside-top`.
+If compact portrait
+Surface + Survey + the 72px biosphere band still cannot fit, only scene-hint paint temporarily
+yields. The original text is retained and its paint returns with room or Survey closure. This
+bounded U2 allocation leaves accepted U1 shell geometry intact. The ID-qualified
 short-landscape sheet override preserves
 the full safe-height left workspace rather than losing to the common sheet selector. Planetside
 consumes a separate measured floor in landscape that reserves toast height only across an

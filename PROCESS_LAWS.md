@@ -1,5 +1,14 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **STICKY HEADERS REQUIRE CAPACITY AND SCROLL CLEARANCE** (U2,2026-09-06).
+> A44px action can be contained, settled and keyboard-focused while its centre hits a sticky
+> title. Reserve measured header/insets plus a usable action row before a secondary strip;
+> native scroll padding must clear the same header. Retain the occluded native target result.
+> Do not derive joint capacity from a strip's own floor-dependent top or assume translating
+> an unchanged-size strip triggers ResizeObserver. Read final floor/height and preserve a
+> stale-position negative control. Yielded guidance must be measured in its native state so
+> it returns with room, not keep itself hidden from its own zero-height measurement.
+
 > **A BOUNDARY FAULT MUST REMOVE EFFECTIVE ANCESTOR PROTECTION** (U1, 2026-09-06).
 > A rail nested inside a protected dock still retains dismissal protection after its own marker
 > is removed. Prove the rail's own protection with its ancestor marker removed, then remove both
