@@ -70,7 +70,10 @@
 > Preserve style-attribute presence as well as bytes. U1 found native Edge CSSOM removal
 > returning an empty attribute where none existed, despite jsdom passing. Reproduce such
 > restoration in the actual browser, retain before/after carriers and the failing strategy;
-> do not treat absent and empty as equivalent to turn a control green.
+> do not treat absent and empty as equivalent to turn a control green. U2's native six-case
+> diagnostic showed CSSOM clearing plus repeated removal still retains an empty carrier.
+> Explicitly set the DOM style attribute to empty before removing an originally absent carrier;
+> preserve declared/computed checks and present-empty identity. The failed strategy stays retained.
 > Changing a grid's explicit track count can leave every rectangle unchanged when placed
 > children create implicit tracks. A spacing mutant must alter observed centres or dimensions;
 > a changed CSS declaration alone is not evidence of a broken layout.

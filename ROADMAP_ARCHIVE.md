@@ -1,3 +1,28 @@
+## Superseded U2 CSSOM-cleanup handoff — 2026-09-06
+
+Latest signed U2 source is c84aecde00814460eec7027b067cd7f871b46441 (30 ahead,0 behind).
+Shared per-sheet measured scroll clearance and independent sticky-header control bounds are
+implemented. Full develop static PASS:321 files,3453 tests,1skip. Small-phone again passed all3
+Capture outcomes, then stopped INSTRUMENT RED/zero product findings: the scroll audit restored
+its declarations/computed styles but left style="" where the original attribute was absent.
+Large-phone and Slice NOT RUN. The nine-carrier checkpoint is
+ audits/UI_U2_LOCAL_CHECKPOINT_c84aecd_20260906/manifest.json; named terminal/browser read []/[]
+validates the RED metadata, not PASS. All earlier reports remain immutable.
+
+The pending tool-only correction clears live CSSOM before removing an originally absent style
+carrier, retains declared/computed comparison and a second removal, and names the scroll owner.
+Present-empty attributes stay present-empty. First focused run40PASS/2fixtureFAIL is retained;
+the fixture now finds the native cssText descriptor through its prototype chain. Final42 focused
+checks, all3 TypeScript programs and root validate PASS. Product is unchanged fromc84aecd:
+producer0adbee29aed0004c63d4acc0cebf84a53dabc0bca33f6000d52223fb932f8711,
+measurement/ceilings unchanged; draft81 orderedSHAb791c37bcee759754e90e688d262ec4cb24a874df1d6e353da2b41a30bff857c.
+Commit the correction, then run /private/tmp/cf-u2-run-scroll-cssom-20260906.cjs FULL_NEW_SHA
+once under the whole-job toolchain lock and approved browser execution. It rejects product
+changes fromc84aecd and runs full develop static → small-phone → large-phone → Slice/namedverify.
+Stop first red; no unchanged-source retry or threshold change. Exact U2 PASS unlocks the guarded
+normal-predecessor snapshot then ordered U3 panel runner. U3 preparations remain unapplied.
+No further U1 layout rework, Inkscape, Phase2 or hosted actions.
+
 ## Superseded U2 shared-scroll correction handoff — 2026-09-06
 
 Latest signed U2 source is f61aeb39cf649eebbe2edb30fe4f7b22bd2fcd29 (29 ahead,0 behind).

@@ -8,22 +8,21 @@ controls declare their native button type explicitly.
 ## Current v2 U1 shell and U2 sheets — matches code as of 2026-09-06
 
 Nick authorized U2–U4 and compact notifications when space is tight; emoji remain in product.
-Signed source `c84aecde00814460eec7027b067cd7f871b46441` passed complete develop static
-(321 files, 3453 tests, 1 skipped). Small-phone passed all three Capture outcomes, then stopped
-INSTRUMENT RED with zero product findings: an originally absent scroll-owner style attribute
-restored as empty despite two removals. The declaration/computed evidence matched; exact carrier
-identity did not. Large-phone and Slice were NOT RUN.
+Signed source `2dba37946ef73d8d67e3aa9cdd8771ca5d541132` passed complete develop static
+(321 files, 3456 tests, 1 skipped). Small-phone stopped with zero product findings and one
+INSTRUMENT RED: the originally absent style on `#inventorysheet > section.inventory-sheet-card`
+restored as empty even after CSSOM clearing and two removals. Declarations and computed values
+matched; exact carrier identity failed. Large-phone and Slice were NOT RUN; nine evidence
+carriers retain the terminal result.
 
-Shared sheets retain measured header/inset clearance and 14px bottom scroll padding; Glass
-independently excludes painted headers and preserves tighter inner scrollports. The pending
-tool-only correction clears the live CSSOM before removing an originally absent style carrier,
-retains declaration/computed evidence and the second removal, and names the owner in restoration
-diagnostics. Originally present-empty styles remain present-empty. Product and release/producer
-pins are unchanged from c84aecd. Focused 42 checks, all three TypeScript programs and root
-validate PASS. The initial 40 PASS / 2 fixture failures are retained; only the test's prototype-chain
-lookup needed correction. Exact-source native verification remains pending. Prior failed reports
-and both older unknown causes remain OPEN; no U2/U3/U4, physical UAT, Phase2, pilot or hosted
-closure is claimed.
+Product sheet/header behavior and release/producer pins remain unchanged from c84aecd. A six-case
+isolated synthetic native diagnostic reproduced absent→empty RED with current CSSOM clearing.
+Explicit `setAttribute('style','')` before removal passed absent, present-empty and nonempty
+`smooth!important` cases, preserving raw scroll 77 and exact declarations/computed values/styles.
+The current strategy also passed both present-attribute cases. This establishes the bounded
+restoration strategy on synthetic native DOM; focused checks and a fresh canonical run remain
+pending. All earlier failures and both older unknown causes remain OPEN; U2–U4 completion,
+physical UAT, Phase2, pilot and hosted closure are not claimed.
 The [U2 audit](audits/UI_U2_SHEETS_20260906.md) preserves all evidence and the
 [UI program](port/UI_PARITY_PROGRAM_U1_U4.md) owns scope.
 

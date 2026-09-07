@@ -4,21 +4,21 @@
 
 Nick authorized U2–U4 and compact notifications when space is tight. Measured landed allocation
 and clipped, accessibility-preserving hint yield retain the accepted U1 layout and emoji.
-Signed source `f61aeb39cf649eebbe2edb30fe4f7b22bd2fcd29` passed complete develop static
-(320 files, 3435 tests, 1 skipped). Small-phone guidance preferences, post-Close restoration and
-all three Capture outcomes passed. Later Charters stopped PRODUCT RED/zero instrument when a
-starter action centre at[138,185.56] hit its sticky heading. Large-phone and Slice were NOT RUN.
-The generic audit had centred in the whole scrollport without accounting for sticky headings;
-the retained point/hit does not prove that native scrolling cannot reach the action.
+Signed source `2dba37946ef73d8d67e3aa9cdd8771ca5d541132` passed complete develop static
+(321 files, 3456 tests, 1 skipped). Small-phone stopped with zero product findings and one
+INSTRUMENT RED: the originally absent style on `#inventorysheet > section.inventory-sheet-card`
+restored as empty even after CSSOM clearing and two removals. Declarations and computed values
+matched; exact carrier identity failed. Large-phone and Slice were NOT RUN; nine evidence
+carriers retain the terminal result.
 
-The bounded shared correction publishes each panel's measured `--cf-sheet-scroll-top` from its
-header/insets, with14px bottom scroll padding. Exact owned-style filtering avoids an observer
-loop while preserving reactions to external style changes and header refills; Survey keeps its
-existing owner. The audit independently measures header exclusions for body controls and retains
-full target bounds, scroll attempts and exact restoration. Product evidence build and159 focused checks PASS. A test-only TS2345 index typing error
-was corrected without changing runtime behavior; all three TypeScript programs and root validate
-then PASS. Fresh exact-source native verification remains pending. Prior reports and older unknown causes
-remain open; no U2/U3/U4, physical UAT, Phase2, pilot or hosted closure is claimed.
+Product sheet/header behavior and release/producer pins remain unchanged from c84aecd. A six-case
+isolated synthetic native diagnostic reproduced absent→empty RED with current CSSOM clearing.
+Explicit `setAttribute('style','')` before removal passed absent, present-empty and nonempty
+`smooth!important` cases, preserving raw scroll 77 and exact declarations/computed values/styles.
+The current strategy also passed both present-attribute cases. This establishes the bounded
+restoration strategy on synthetic native DOM; focused checks and a fresh canonical run remain
+pending. All earlier failures and both older unknown causes remain OPEN; U2–U4 completion,
+physical UAT, Phase2, pilot and hosted closure are not claimed.
 The [U2 audit](../audits/UI_U2_SHEETS_20260906.md) owns retained evidence. Ordered U3 panel
 checkpoints and U4 follow under the [accepted program](UI_PARITY_PROGRAM_U1_U4.md).
 

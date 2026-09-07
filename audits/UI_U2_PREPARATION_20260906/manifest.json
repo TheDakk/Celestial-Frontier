@@ -402,6 +402,34 @@
       "rawSha256": "e1cfd896aedf69014f67602b797e7756bd751956ebe394692d2419e783afac3a",
       "bytes": 2038,
       "sha256": "fe358d80290ad163a41eab2353e76d2ab050dfdff775703196cedc4ea1d19eb2"
+    },
+    {
+      "file": "cf-u2-2dba379-terminal-verification-20260906.json.gz",
+      "rawBytes": 222,
+      "rawSha256": "cd69937bbe44fa52af35d1688a5bf98347a6ae8165062c0da696bf4028b4e8e1",
+      "bytes": 192,
+      "sha256": "f2572411d8b9729be06f5d308242e5dc8c8d4ab4a56ebb85389e7e23bb585185"
+    },
+    {
+      "file": "cf-u2-scroll-native-diagnostic-20260906.mjs.gz",
+      "rawBytes": 3067,
+      "rawSha256": "f8909a7bd22e3a368dc1d25163540a07747a9e6a792289b78af1349fab2d9872",
+      "bytes": 1451,
+      "sha256": "009120c20b6def41ca52fb632832c2b0a4e88369fcb823ea2d2716adb80c5722"
+    },
+    {
+      "file": "cf-u2-scroll-native-diagnostic-20260906.json.gz",
+      "rawBytes": 30396,
+      "rawSha256": "40fed8ec7d07e2e00d37c4f4f254a2e6897b76536f93e064b5e4d686a413f28c",
+      "bytes": 2206,
+      "sha256": "673d8cc6da550dcdb2280dc9cc2236be15aba52f9024a6231732e5a1de9f7b7c"
+    },
+    {
+      "file": "cf-u2-scroll-dom-reset-checks-20260906.log.gz",
+      "rawBytes": 1624,
+      "rawSha256": "87d02219ae2bcc0dc13a25fd4eda32d81598cf8e72c55d5cb061a7599ce7f0a1",
+      "bytes": 957,
+      "sha256": "429cba6bd5d0219afb7751fd716af0c3c4546f4dc0f8d56e95f1ab927302386b"
     }
   ]
 }
