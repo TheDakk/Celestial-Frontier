@@ -31,35 +31,41 @@ started clean; ambient .DS_Store preserved; root main.js absent. Same-session SS
 startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 remains deferred for busy tools.
 Actions UNFROZEN/PUBLIC per last receipt, private fallback3000, zero exact hosted authority.
 
-Latest signed U2 source is 56648b27b9063132ef01c08ffa8a683d9f45dc25 (27 ahead). It passed the
-20-case normal review/60 PNGs and complete develop static (319 files, 3410 tests, 1 skipped).
-The original live-notice Close failure is corrected: notice height52.5, Survey132–299 (167px),
-header55, and atomic native Close PASS. Later landed Capture remained PRODUCT RED, zero instrument:
-Planetside204–299 (95px), Survey132–196 (64px); settled44px Tame/Scavenge/Sample centers hit the
-sticky H2. Large-phone/Slice NOT RUN. Keep the71-carrier immutable checkpoint at
- audits/UI_U2_LOCAL_CHECKPOINT_56648b2_20260906/manifest.json; exact terminal/browser reads verify RED.
+Latest signed U2 source is 781b79cf75538b711bb770a42c189c6dc70eeb16 (28 ahead,0 behind).
+Signed U2 source `781b79cf75538b711bb770a42c189c6dc70eeb16` passed complete develop static
+(319 files, 3415 tests, 1 skipped), then stopped at one small-phone `PREFERENCE_SURFACE_INERT`
+result: the scene hint's deliberately clipped 1px text failed the older visible-sample requirement.
+The early live-toast Close remained PASS. Native Capture completion, large-phone and Slice were
+NOT RUN; the unchanged product has not yet proved the landed-action correction. The bounded tool correction preserves generic visible preference checks and verifies accessible
+hint yield, actual revealed preferences, exact restoration and guidance after native Survey Close.
+Its capacity decision independently measures native chrome/header/toast geometry; stale product
+variables cannot authorize clipping. Focused23 tests, all three TypeScript programs and root
+validate PASS. Fresh exact-source native verification remains pending.
+Prior RED reports and both older unknown causes stay open; U2 completion remains pending.
+Retain audits/UI_U2_LOCAL_CHECKPOINT_781b79c_20260906/manifest.json (nine carriers) and the exact
+terminal/browser read receipt. Native Close167px/compact notice52.5px still passed; the new
+preference guard stopped before a fresh Capture result. Original56648b2 Capture/H2 RED remains.
 
-The working bounded allocation correction reserves measured Survey header/insets plus44px body
-before the72px biosphere strip, adds native scroll-padding clearance, and measures final strip
-height rather than relying on a stale translated top. Compact portrait Surface+Survey stacks
-briefly yield scene-hint paint only if they still cannot fit after compacting the notice; original
-text returns with room/Close. Nick was told this layout choice during work. His explicit compact-
-notice preference, full message/AT/history/timer owners and accepted U1 geometry remain.
-101 focused checks, all three TypeScript programs, root validate and evidence build PASS; producer
-budget controls28 PASS. Peer review prompted clipped hint paint with explicit lane exclusion, preserving accessibility text; the17 controller cases, typechecks, validate and build passed again after that bounded correction. Draft81 orderedSHA8b9e5246cfd4c9b365cfc487a468777b6f6db7c5f90c6e5865ddba594920b475.
+Current product reserves measured Survey header/insets plus44px body before72px biosphere,
+adds native scroll-padding, and measures final strip height. Cramped compact portrait Surface+
+Survey stacks clip hint paint while preserving accessibility text, with native measurement restored
+before each capacity decision. Nick was informed of that bounded layout choice; his explicit
+compact-notice preference, full message/AT/history/timer owners and accepted U1 controls remain.
+Draft81 orderedSHA8b9e5246cfd4c9b365cfc487a468777b6f6db7c5f90c6e5865ddba594920b475.
 Producer547ec4ba43dc58c0d03c873dab3a3e9937f5b0daacf23da95299f05bfd490581; measurement/ceilings unchanged.
 
-After completed docs/pins/source review, commit and run the bounded landed-state runner once:
-complete develop static → small-phone → large-phone → Slice/named verify. Its guard allows only
-sheet-layout.ts, ui-sheet-style.ts and release-content.ts product changes from56648b2. Reuse that
-source's20 normal Settings/standalone-lane cases without claiming fresh-source rendered proof;
-the changed joint Survey/biosphere state is exercised by the canonical native phone outcomes.
-Stop first nonzero; never retry prior source. U2 is not complete; U3 remains unapplied.
+Next: commit the completed guidance-preference correction and use
+/private/tmp/cf-u2-run-guidance-20260906.cjs once on new signed source: complete develop static → small-phone → large-phone →
+Slice/named verify. Product stays identical to781b79c. Reuse56648b2 normal20 Settings/standalone-lane
+cases as predecessor evidence only. Stop first red; no unchanged-source retry or threshold change.
+U3 remains unapplied. Exact U2 PASS unlocks the normal predecessor snapshot and ordered U3 runner.
 
 The normal20/60PNG reports at594ece6 and56648b2 preserve the corrected, readable Settings spacing
 Nick flagged. They do not claim new human approval or device UAT. Current audit is
  audits/UI_U2_SHEETS_20260906.md. All nine U3 panel preparations and the U4 contract proposal are
-under/private/tmp, untested and ordered. Inventory prep identifies a real missing v2 paperdoll
+under/private/tmp, untested and ordered. Their67-file durable draft archive is
+ audits/UI_U3_U4_PREPARATION_20260906/manifest.json; three runner syntax checks and Shipyard
+ three-file apply dry-run passed, with no runtime or browser execution. Inventory prep identifies a real missing v2 paperdoll
 owner and nested-title boundary; do not call its cap/parity complete from styling alone. A guarded
 normal-predecessor runner may build/snapshot only after exact U2 terminal PASS; none exists yet.
 

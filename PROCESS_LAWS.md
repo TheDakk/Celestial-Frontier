@@ -8,6 +8,10 @@
 > an unchanged-size strip triggers ResizeObserver. Read final floor/height and preserve a
 > stale-position negative control. Yielded guidance must be measured in its native state so
 > it returns with room, not keep itself hidden from its own zero-height measurement.
+> A preference check must distinguish owned clipped accessibility text from arbitrary hiding.
+> Exercise the actual revealed preference owner synchronously and restore exact attributes,
+> geometry and text. Justify the exception with independently measured native capacity, never
+> the product variables under test; stale cramped and roomy variables need opposite controls.
 
 > **A BOUNDARY FAULT MUST REMOVE EFFECTIVE ANCESTOR PROTECTION** (U1, 2026-09-06).
 > A rail nested inside a protected dock still retains dismissal protection after its own marker

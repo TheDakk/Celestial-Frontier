@@ -1,0 +1,63 @@
+{
+  "schema": "cf-ui-unapplied-preparation/v1",
+  "state": "PREPARED_NOT_APPLIED_NOT_TESTED",
+  "purpose": "Bounded nine-real-slot Inventory paperdoll presentation, shared direct heading, existing detail owner and min(62vw,240px) phone width. Old partial draft preserved; completion/apply.py is the new guarded application entry. No portrait read model or v1 tab/bag behavior invented.",
+  "sourceAtRetention": "781b79cf75538b711bb770a42c189c6dc70eeb16",
+  "archive": {
+    "file": "inventory-completion-unapplied.tar.gz",
+    "bytes": 24346,
+    "sha256": "62c5516ad68f0a2309846433f595ffb436c4c1588878c3b62a76ca014c02f772"
+  },
+  "files": [
+    {
+      "path": "cf-u3-inventory-prepared-20260906/README.md",
+      "bytes": 5118,
+      "sha256": "bb65cd8ac92be794249f036262f596ecdbf7c75286606a7fe28ad5cfcf2f3da6"
+    },
+    {
+      "path": "cf-u3-inventory-prepared-20260906/apply.py",
+      "bytes": 5567,
+      "sha256": "8c0a3e5f30a7af1937378f1d5cb3cf9f19b3384528898f86890b888ab9b653a9"
+    },
+    {
+      "path": "cf-u3-inventory-prepared-20260906/completion/README.md",
+      "bytes": 5069,
+      "sha256": "ad8d7ef95aa1835e744277da6e8a283f8b7e2225a313b8fd6baed582d9d3d1d3"
+    },
+    {
+      "path": "cf-u3-inventory-prepared-20260906/completion/apply.py",
+      "bytes": 5259,
+      "sha256": "fdd683b3c3ccf250b8cf233304ce19065554f7eafb82148290bb450662c55912"
+    },
+    {
+      "path": "cf-u3-inventory-prepared-20260906/completion/inventory-panel.ts",
+      "bytes": 51702,
+      "sha256": "9a1095861d9297166b49b0f6144142996d49864bed3b564d3605fb4c02f8de97"
+    },
+    {
+      "path": "cf-u3-inventory-prepared-20260906/completion/inventory.css",
+      "bytes": 5142,
+      "sha256": "b1d6eb7c21c6f2a9b32315d5257fb23d703db707a2c0abcd42cab3eddabc3d7e"
+    },
+    {
+      "path": "cf-u3-inventory-prepared-20260906/completion/manifest.json",
+      "bytes": 6383,
+      "sha256": "b3e0e9ae8ec46515885045a81ddbbe9b849976fd2fd32147f344c9cec0a42ccd"
+    },
+    {
+      "path": "cf-u3-inventory-prepared-20260906/completion/proposal.diff",
+      "bytes": 9754,
+      "sha256": "df64bf4a83c1209f4940f29bba3fd5ab2f4433494fc4000faebf9dda5c0b5319"
+    },
+    {
+      "path": "cf-u3-inventory-prepared-20260906/inventory.css",
+      "bytes": 2881,
+      "sha256": "f3eec96ac82d2a10d012e883d7bfd8c62acd0485ab0651a738af3afc41d6ee7f"
+    },
+    {
+      "path": "cf-u3-inventory-prepared-20260906/inventory.patch",
+      "bytes": 3268,
+      "sha256": "b27af413650767a7f0fb892d547d225dc6d175a8c84dbd15457262c8e9ddcf27"
+    }
+  ]
+}

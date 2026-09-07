@@ -1,5 +1,33 @@
 # U2 compact-notice checkpoint handoff superseded — 2026-09-06
 
+## Superseded U2 landed allocation handoff — 2026-09-06
+
+Latest signed U2 source is 56648b27b9063132ef01c08ffa8a683d9f45dc25 (27 ahead). It passed the
+20-case normal review/60 PNGs and complete develop static (319 files, 3410 tests, 1 skipped).
+The original live-notice Close failure is corrected: notice height52.5, Survey132–299 (167px),
+header55, and atomic native Close PASS. Later landed Capture remained PRODUCT RED, zero instrument:
+Planetside204–299 (95px), Survey132–196 (64px); settled44px Tame/Scavenge/Sample centers hit the
+sticky H2. Large-phone/Slice NOT RUN. Keep the71-carrier immutable checkpoint at
+ audits/UI_U2_LOCAL_CHECKPOINT_56648b2_20260906/manifest.json; exact terminal/browser reads verify RED.
+
+The working bounded allocation correction reserves measured Survey header/insets plus44px body
+before the72px biosphere strip, adds native scroll-padding clearance, and measures final strip
+height rather than relying on a stale translated top. Compact portrait Surface+Survey stacks
+briefly yield scene-hint paint only if they still cannot fit after compacting the notice; original
+text returns with room/Close. Nick was told this layout choice during work. His explicit compact-
+notice preference, full message/AT/history/timer owners and accepted U1 geometry remain.
+101 focused checks, all three TypeScript programs, root validate and evidence build PASS; producer
+budget controls28 PASS. Peer review prompted clipped hint paint with explicit lane exclusion, preserving accessibility text; the17 controller cases, typechecks, validate and build passed again after that bounded correction. Draft81 orderedSHA8b9e5246cfd4c9b365cfc487a468777b6f6db7c5f90c6e5865ddba594920b475.
+Producer547ec4ba43dc58c0d03c873dab3a3e9937f5b0daacf23da95299f05bfd490581; measurement/ceilings unchanged.
+
+After completed docs/pins/source review, commit and run the bounded landed-state runner once:
+complete develop static → small-phone → large-phone → Slice/named verify. Its guard allows only
+sheet-layout.ts, ui-sheet-style.ts and release-content.ts product changes from56648b2. Reuse that
+source's20 normal Settings/standalone-lane cases without claiming fresh-source rendered proof;
+the changed joint Survey/biosphere state is exercised by the canonical native phone outcomes.
+Stop first nonzero; never retry prior source. U2 is not complete; U3 remains unapplied.
+
+
 Latest signed U2 check source489d780b630d09dff2dd38a0e5825e886f2ac373 (26ahead) passed complete
 static318files/3402tests/1skip, then small-phone retained the same PRODUCT RED/zero instrument:
 Survey[12,132,308,176],44px high; Close[249,147,293,191] protrudes15px. A named fonts/two-frame

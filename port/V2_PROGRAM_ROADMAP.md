@@ -2,19 +2,20 @@
 
 ## UI parity program — U1 shell / U2 sheet checkpoint, matches code as of 2026-09-06
 
-Nick explicitly authorized U2–U4, then chose compact notifications when space is tight. The
-measured portrait budget now selects the full-size toast headline while preserving the full
-message in DOM/AT/history and existing timer/announcement owners. Survey's subtitle/badge scroll
-below its sticky title and native Close. `56648b2` passed the normal 20-row review/static checks
-and early compact-toast Survey Close, then retained native Capture RED when contained action
-centers hit the sticky title; large-phone and Slice did not run. The bounded allocation correction
-reserves Survey header/edges plus 44px body before Planetside, pads scroll targets below its sticky
-header and, only when compact portrait Surface/Survey/72px biosphere still cannot fit, temporarily
-yields scene-hint paint while retaining/restoring its text. New checks/native verification are
-pending; accepted U1 geometry and compact message ownership remain. [The U2 audit](../audits/UI_U2_SHEETS_20260906.md)
-preserves this result, the earlier confirmed live-toast space shortage and all other failures.
-Ordered U3 panel checkpoints and U4 follow under the
-[accepted program](UI_PARITY_PROGRAM_U1_U4.md); emoji remain in product.
+Nick authorized U2–U4 and compact notifications when space is tight. Measured landed allocation
+and clipped, accessibility-preserving hint yield retain the accepted U1 layout and emoji.
+Signed U2 source `781b79cf75538b711bb770a42c189c6dc70eeb16` passed complete develop static
+(319 files, 3415 tests, 1 skipped), then stopped at one small-phone `PREFERENCE_SURFACE_INERT`
+result: the scene hint's deliberately clipped 1px text failed the older visible-sample requirement.
+The early live-toast Close remained PASS. Native Capture completion, large-phone and Slice were
+NOT RUN; the unchanged product has not yet proved the landed-action correction. The bounded tool correction preserves generic visible preference checks and verifies accessible
+hint yield, actual revealed preferences, exact restoration and guidance after native Survey Close.
+Its capacity decision independently measures native chrome/header/toast geometry; stale product
+variables cannot authorize clipping. Focused23 tests, all three TypeScript programs and root
+validate PASS. Fresh exact-source native verification remains pending.
+Prior RED reports and both older unknown causes stay open; U2 completion remains pending.
+The [U2 audit](../audits/UI_U2_SHEETS_20260906.md) owns retained evidence. Ordered U3 panel
+checkpoints and U4 follow under the [accepted program](UI_PARITY_PROGRAM_U1_U4.md).
 
 U1 implements normal-game shared tokens, production-based phone/wide layout and Nick's saved
 notification history amendment. Nick replaces Charters with Survey on all platforms: compact

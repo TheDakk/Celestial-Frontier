@@ -2,20 +2,23 @@
 
 ## U1 shell / U2 sheet checkpoint — matches code as of 2026-09-06
 
-Nick explicitly authorized U2–U4 and chose compact notifications when space is tight. U2 now
-uses the measured portrait budget to show a full-size headline when the full toast would crowd
-a sheet; its visually hidden message retains DOM/AT, history, timer and Tame/Feed ownership.
-Survey's unchanged subtitle/badge scroll below the sticky title and native Close. `56648b2`
-passed the 20-row normal review/static checks and early live-toast Close, then stopped at native
-Capture: 44px action centers hit the sticky title despite contained rectangles. Large-phone and
-Slice did not run. The in-progress bounded allocation reserves Survey header/edges plus 44px
-body before Planetside's cap, pads native scroll targets below the sticky header, and lets scene
-hint paint temporarily yield only if compact portrait Surface/Survey/72px biosphere still cannot
-fit. Original hint text returns with room or Survey closure. New checks/native verification are
-pending; the short-landscape workspace, compact message ownership and U1 geometry remain. Follow the
-[U2 audit](../../audits/UI_U2_SHEETS_20260906.md),
-[program authorization](../UI_PARITY_PROGRAM_U1_U4.md) and [live handoff](../../ROADMAP.md).
-U1's accepted layout, open technical gate and earlier failed receipts remain distinct.
+Nick authorized U2–U4 and compact notifications when space is tight. The implemented allocation
+reserves Survey header/insets plus44px body before the72px biosphere, applies native scroll
+clearance and uses final strip height instead of stale position. Cramped landed portrait stacks
+clip scene-hint paint while preserving accessibility text, restoring native measurement before
+every allocation. Hint paint returns with room/Close; full notice/history/timer owners remain.
+Signed U2 source `781b79cf75538b711bb770a42c189c6dc70eeb16` passed complete develop static
+(319 files, 3415 tests, 1 skipped), then stopped at one small-phone `PREFERENCE_SURFACE_INERT`
+result: the scene hint's deliberately clipped 1px text failed the older visible-sample requirement.
+The early live-toast Close remained PASS. Native Capture completion, large-phone and Slice were
+NOT RUN; the unchanged product has not yet proved the landed-action correction. The bounded tool correction preserves generic visible preference checks and verifies accessible
+hint yield, actual revealed preferences, exact restoration and guidance after native Survey Close.
+Its capacity decision independently measures native chrome/header/toast geometry; stale product
+variables cannot authorize clipping. Focused23 tests, all three TypeScript programs and root
+validate PASS. Fresh exact-source native verification remains pending.
+Prior RED reports and both older unknown causes stay open; U2 completion remains pending.
+Follow the [U2 audit](../../audits/UI_U2_SHEETS_20260906.md),
+[program](../UI_PARITY_PROGRAM_U1_U4.md) and [live handoff](../../ROADMAP.md).
 
 The normal `/` game (without `avpilot`) uses the shared token/shell owners, local Inter,
 the production layout adapted to icon-only phone rows and wide side controls/top-center Prime/

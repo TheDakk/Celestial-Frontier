@@ -8050,6 +8050,65 @@ function installAuditHarness(assessGlyphStrokeContrast) {
       ...actual,
     };
   };
+  const guidancePreferenceOutcome = (afterClose = false) => {
+    const hint = document.getElementById('hintpill'), state = window.__CF_SLICE__?.api?.state?.();
+    const yielded = hint?.classList.contains('sheet-guidance-yield') === true;
+    const accessible = () => !!hint && (hint.textContent || '').trim().length > 0
+      && !hint.closest('[hidden],[inert],[aria-hidden="true"]') && !hint.querySelector('[hidden],[inert],[aria-hidden="true"]');
+    if (afterClose || !yielded) {
+      const preference = preferenceOutcome('body', '#hintpill', 'var(--ink)');
+      return { ...preference, ok: preference.ok && accessible() && (!afterClose || (!yielded && state?.cardOpen === false)),
+        guidanceRestored: afterClose ? !yielded && state?.cardOpen === false && visible(hint) : null };
+    }
+    const snapshot = () => {
+      const r = hint.getBoundingClientRect(), css = getComputedStyle(hint);
+      return { attributes: hint.getAttributeNames().sort().map(name => [name, hint.getAttribute(name)]), html: hint.innerHTML,
+        text: hint.textContent, bodyClass: document.body.getAttribute('class'),
+        rect: [r.left, r.top, r.right, r.bottom, r.width, r.height],
+        style: [css.display, css.visibility, css.opacity, css.clipPath, css.overflow, css.fontSize, css.fontFamily, css.color] };
+    };
+    const before = snapshot(), priorClass = hint.getAttribute('class'), survey = document.getElementById('survey'), side = document.getElementById('planetside');
+    const css = getComputedStyle(hint), a = survey?.getBoundingClientRect(), b = side?.getBoundingClientRect();
+    let ancestryVisible = true;
+    for (let n = hint; n; n = n.parentElement) { const c = getComputedStyle(n); if (c.display === 'none' || c.visibility === 'hidden' || Number(c.opacity) <= 0) ancestryVisible = false; }
+    const scoped = innerWidth <= 900 && innerHeight >= innerWidth && state?.mode === 'surface' && state?.cardOpen === true
+      && document.body.classList.contains('surface-mode') && document.body.classList.contains('card-open')
+      && visible(survey) && visible(side) && Math.min(a.right, b.right) > Math.max(a.left, b.left)
+      && accessible() && ancestryVisible && before.rect[4] === 1 && before.rect[5] === 1
+      && css.clipPath === 'inset(50%)' && css.overflow === 'hidden';
+    if (!scoped) return { ok: false, why: 'unauthorized or inaccessible guidance clipping', before };
+    let preference = null, native = null, justified = false, error = null, cleanupError = null;
+    try {
+      hint.classList.remove('sheet-guidance-yield');
+      native = snapshot();
+      const pixels = value => parseFloat(value || '') || 0;
+      const safeBottom = pixels(getComputedStyle(document.documentElement).getPropertyValue('--safe-bottom'));
+      const lower = Math.min(innerHeight - safeBottom - 12, ...['hintpill','ctxbar','dock'].map(id => {
+        const node = document.getElementById(id); return visible(node) ? node.getBoundingClientRect().top : innerHeight;
+      }));
+      const toast = document.getElementById('toast'), toastStyle = toast ? getComputedStyle(toast) : null, toastRect = toast?.getBoundingClientRect();
+      const toastHeight = toast && toastStyle.display !== 'none' && toastStyle.visibility !== 'hidden'
+        && toastRect.width > 0 && toastRect.height > 0 && (toast.style.opacity === '1' || Number(toastStyle.opacity) > 0) ? toastRect.height : 0;
+      const header = survey.querySelector('.survey-head'), headerStyle = header ? getComputedStyle(header) : null, sheetStyle = getComputedStyle(survey);
+      const headerHeight = header ? Math.max(44, header.getBoundingClientRect().height) + pixels(headerStyle.marginTop) + pixels(headerStyle.marginBottom) : NaN;
+      const edges = pixels(sheetStyle.paddingTop) + pixels(sheetStyle.paddingBottom) + pixels(sheetStyle.borderTopWidth) + pixels(sheetStyle.borderBottomWidth);
+      const minimum = headerHeight + edges + 44, start = survey.getBoundingClientRect().top;
+      const available = lower - 8 - (toastHeight > 0 ? toastHeight + 8 : 0) - start, required = minimum + 72 + 8;
+      native.capacity = { lower, toastHeight, headerHeight, edges, minimum, start, available, required };
+      justified = [lower, toastHeight, minimum, start].every(Number.isFinite) && available < required;
+      preference = preferenceOutcome('body', '#hintpill', 'var(--ink)');
+    } catch (cause) { error = String(cause?.message || cause); }
+    finally {
+      try { hint.setAttribute('class', priorClass);
+        if (document.body.getAttribute('class') !== before.bodyClass) {
+          if (before.bodyClass === null) document.body.removeAttribute('class'); else document.body.setAttribute('class', before.bodyClass);
+        }
+      } catch (cause) { cleanupError = String(cause?.message || cause); }
+    }
+    const after = snapshot(), restored = document.getElementById('hintpill') === hint && JSON.stringify(after) === JSON.stringify(before);
+    return { ok: justified && preference?.ok === true && restored && error === null && cleanupError === null,
+      scoped, justified, preference, before, native, after, restored, error, cleanupError };
+  };
   const choiceOutcome = (rootSelector, itemSelector, expectedSelector, requireFocus = true) => {
     const root = document.querySelector(rootSelector);
     const items = root ? [...root.querySelectorAll(itemSelector)] : [];
@@ -9231,7 +9290,7 @@ function installAuditHarness(assessGlyphStrokeContrast) {
     return failures;
   };
   window.__CF_GLASS_AUDIT__ = Object.freeze({
-    audit, canvasIssues, safeProbe, viewportIssues, preferenceOutcome, choiceOutcome,
+    audit, canvasIssues, safeProbe, viewportIssues, preferenceOutcome, guidancePreferenceOutcome, choiceOutcome,
     navigationOutcome, openFocusOutcome, forcedColorsOutcome, motionPolicyOutcome, closeIntegrityOutcome,
     rightBottomAnchorOutcome, panelCloseOutcome, openerOutcome, pressedOutcome,
     inventoryRowsOutcome, inventoryConditionOutcome, inventoryModalOutcome, inventoryFocusTrapOutcome,
@@ -11469,7 +11528,10 @@ async function main() {
         const planetsidePreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#planetside','#planetside > div:first-child','var(--dim)')`);
         addOutcome(vp.label, 'planetside-preferences', 'PREFERENCE_SURFACE_INERT', '#planetside > div:first-child', planetsidePreference,
           'populated Planetside computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
-        const chromePreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('body','#hintpill','var(--ink)')`);
+        const chromePreference = await evalIn(`window.__CF_GLASS_AUDIT__.guidancePreferenceOutcome()`);
+        if (chromePreference?.scoped === true && (chromePreference.error !== null || chromePreference.cleanupError !== null || chromePreference.restored !== true)) {
+          recordInstrumentFailure(`${vp.label}: guidance preference reveal or exact restoration failed (${JSON.stringify(chromePreference)})`);
+        }
         addOutcome(vp.label, 'top-chrome-preferences', 'PREFERENCE_SURFACE_INERT', '#hintpill', chromePreference,
           'top chrome computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
         if (vp.width > 900) {
@@ -11534,6 +11596,9 @@ async function main() {
           `${vp.label} Arc 4 Survey Close return`);
         const returned = await waitFor('Arc 4 Survey Close return', captureDisclosureState, 5000,
           (value) => value?.cardOpen === false && value?.expanded === 'false' && value?.focusId === 'docksurvey');
+        addOutcome(vp.label, 'survey-close-guidance', 'PREFERENCE_SURFACE_INERT', '#hintpill',
+          await evalIn(`window.__CF_GLASS_AUDIT__.guidancePreferenceOutcome(true)`),
+          'native Survey Close restores visible scene guidance with its text preferences intact');
         const reopen = await activateRealKeyboardControl('#docksurvey', `${vp.label} Arc 4 Survey reopen`);
         const reopened = await waitFor('Arc 4 Survey native reopen', captureDisclosureState, 5000,
           (value) => value?.cardOpen === true && value?.expanded === 'true');

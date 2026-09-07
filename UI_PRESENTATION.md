@@ -7,16 +7,19 @@ controls declare their native button type explicitly.
 
 ## V2 presentation system — U1 shell and U2 sheets, matches code as of 2026-09-06
 
-Nick explicitly authorized U2–U4 on 2026-09-06. U2 is implemented and awaiting native and
-checkpoint verification; the U1 layout remains accepted for UAT with its technical gate open.
-The [program authorization](port/UI_PARITY_PROGRAM_U1_U4.md) resolves Settings above Training
-and permits the subsequent ordered U3/U4 checkpoints. Nick then chose “Use compact notifications
-when space is tight.” Product icons remain emoji. At `56648b2`, the 20-row normal review and
-static checks passed; early live-toast Survey Close passed with a 167px card and 52.5px compact
-notice. Later native Capture stopped RED: the contained 44px action targets hit the sticky title.
-Large-phone and Slice did not run. The bounded landed-allocation correction is in progress, with
-new checks and native verification pending; [the U2 audit](audits/UI_U2_SHEETS_20260906.md)
-retains this result, `489d780`'s confirmed space shortage and earlier evidence.
+Nick authorized U2–U4, Settings above Training, and compact notifications when space is tight.
+Product icons remain emoji; accepted U1 layout is unchanged. Signed U2 source `781b79cf75538b711bb770a42c189c6dc70eeb16` passed complete develop static
+(319 files, 3415 tests, 1 skipped), then stopped at one small-phone `PREFERENCE_SURFACE_INERT`
+result: the scene hint's deliberately clipped 1px text failed the older visible-sample requirement.
+The early live-toast Close remained PASS. Native Capture completion, large-phone and Slice were
+NOT RUN; the unchanged product has not yet proved the landed-action correction. The bounded tool correction preserves generic visible preference checks and verifies accessible
+hint yield, actual revealed preferences, exact restoration and guidance after native Survey Close.
+Its capacity decision independently measures native chrome/header/toast geometry; stale product
+variables cannot authorize clipping. Focused23 tests, all three TypeScript programs and root
+validate PASS. Fresh exact-source native verification remains pending.
+Prior RED reports and both older unknown causes stay open; U2 completion remains pending.
+The [U2 audit](audits/UI_U2_SHEETS_20260906.md) retains the immutable result and prior normal
+20-row/60-PNG Settings review. [The program](port/UI_PARITY_PROGRAM_U1_U4.md) owns ordered U3/U4.
 
 The normal v2 shell uses the actual production v1.8.9 CSS as its layout reference, adapted
 through `ui-presentation-tokens.ts`, `ui-shell-style.ts` and the existing native controls.
@@ -102,7 +105,8 @@ Planetside, and gives native scroll/focus targets padding below the sticky heade
 Survey capacity uses the final floor minus measured strip height, start and 8px gap, replacing
 Main's potentially stale `--planetside-top` position receipt. If compact
 portrait Surface + Survey + the 72px biosphere band still cannot fit, the scene hint temporarily
-yields from paint; its original text remains and returns when room permits or Survey closes.
+uses clipped 1px styling so its original accessibility text remains available; native hint
+geometry is restored before every capacity decision, and full paint returns with room or Survey closure.
 This is a bounded U2 space-allocation correction; accepted U1 shell geometry stays intact.
 Planetside uses the measured sheet floor; wide Settings centers in its available right workspace.
 Short-landscape sheet overrides carry
