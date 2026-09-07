@@ -4,8 +4,8 @@ import { createSheetLayoutController } from '../apps/game/src/sheet-layout.js';
 const { JSDOM } = createRequire(import.meta.url)('jsdom');
 const cleanups: Array<() => void> = [];
 afterEach(() => { for (const cleanup of cleanups.splice(0)) cleanup(); });
-function harness(includePlanetside = true, width = 1024, height = 568) {
-  const dom = new JSDOM('<!doctype html><body><div id="topbar"></div><div id="hintpill"></div><div id="ctxbar"></div><div id="dock"></div>'
+function harness(includePlanetside = true, width = 1024, height = 568, compactToastHeight = 44) {
+  const dom = new JSDOM('<!doctype html><style>#hintpill.sheet-guidance-yield{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;pointer-events:none}</style><body><div id="topbar"></div><div id="hintpill"></div><div id="ctxbar"></div><div id="dock"></div>'
     + '<div id="toast" class="notice-kind" style="opacity:0" role="status" aria-live="polite"><b data-sel="toast-title">Beyond Your Charter</b><span data-sel="toast-message">Build the required drive.</span></div>'
     + '<div id="survey" style="display:none;padding:14px;border:1px solid"><div id="surveyheader" class="survey-head" style="margin:0 0 12px">Earth</div></div>'
     + '<div id="setpanel" class="panel" style="display:none;padding:14px;border:1px solid"><h3 id="panelheader" class="sheet-header" style="margin:0 0 12px">Settings</h3></div>'
@@ -25,8 +25,9 @@ function harness(includePlanetside = true, width = 1024, height = 568) {
     const node = document.getElementById(id);
     if (!node) continue;
     node.getBoundingClientRect = () => {
-      const r = rects.get(id)!, left = r.left ?? 16, width = r.width ?? 288;
-      const height = id === 'toast' && node.classList.contains('toast-compact') ? 44 : r.height;
+      const yieldedHint = id === 'hintpill' && node.classList.contains('sheet-guidance-yield');
+      const r = rects.get(id)!, left = r.left ?? 16, width = yieldedHint ? 1 : r.width ?? 288;
+      const height = yieldedHint ? 1 : id === 'toast' && node.classList.contains('toast-compact') ? compactToastHeight : r.height;
       return { ...r, height, bottom: r.top + height, width, left, right: left + width };
     };
   }
@@ -217,6 +218,73 @@ describe('measured U2 sheet lanes', () => {
     h.controller.dispose(); h.flushFrames(); expect(h.frames.size).toBe(0);
     h.document.body.classList.remove('fs-xl'); survey.style.display = 'none'; await Promise.resolve();
     expect(h.frames.size).toBe(0); expect(toast.classList.contains('toast-compact')).toBe(true);
+  });
+
+  it('allocates the retained landed stack to a measured header plus usable body before capping Planetside', async () => {
+    const h = harness(true, 320, 568, 52.5), survey = h.document.getElementById('survey'), hint = h.document.getElementById('hintpill');
+    h.document.body.className = 'surface-mode card-open'; survey.style.display = 'block';
+    h.document.getElementById('surveyheader').style.marginBottom = '10px';
+    h.rects.set('surveyheader', { top: 147, height: 55 }); h.rects.set('survey', { top: 132, height: 64 });
+    h.rects.set('planetside', { top: 204, height: 95 }); h.rects.set('toast', { top: 288, height: 64 });
+    h.document.documentElement.style.setProperty('--surface-chrome-bottom', '128px');
+    h.document.documentElement.style.setProperty('--planetside-top', '204px');
+    h.document.getElementById('toast').style.opacity = '1'; hint.className = 'scene-guidance'; hint.textContent = 'Leave world to lift off';
+    hint.setAttribute('aria-label', 'Scene instructions');
+    h.controller.sync();
+    expect(h.value('--cf-survey-start')).toBe(132); expect(h.value('--cf-survey-min-height')).toBe(139);
+    expect(h.value('--cf-survey-scroll-top')).toBe(80); expect(64 < h.value('--cf-survey-min-height')).toBe(true);
+    expect(287.5 - 132 >= 139 && 287.5 - 136 >= 72).toBe(true); // Each card alone fits; their stack must select compaction.
+    expect(h.document.getElementById('toast').classList.contains('toast-compact')).toBe(true);
+    expect(hint.className).toBe('scene-guidance sheet-guidance-yield'); expect(hint.textContent).toBe('Leave world to lift off');
+    expect(hint.getAttribute('aria-label')).toBe('Scene instructions'); expect(hint.getAttribute('aria-hidden')).toBeNull();
+    expect(h.document.defaultView.getComputedStyle(hint).display).not.toBe('none');
+    expect(hint.getBoundingClientRect().width).toBe(1); expect(hint.getBoundingClientRect().height).toBe(1);
+    expect(hint.getBoundingClientRect().top).toBe(367.5); // The clipped AT-visible rectangle must not own a lane.
+    expect(h.value('--cf-lower-top')).toBe(464); expect(h.value('--cf-sheet-floor')).toBe(395.5);
+    const cap = () => h.value('--cf-sheet-floor') - h.value('--cf-survey-start') - h.value('--cf-survey-min-height') - 8;
+    expect(cap()).toBe(116.5);
+    const side = h.document.getElementById('planetside');
+    side.getBoundingClientRect = () => { const bottom = h.value('--cf-sheet-floor'), height = Math.min(95, Math.max(72, cap()));
+      return { left: 16, right: 304, width: 288, top: bottom - height, bottom, height }; };
+    h.controller.sync(); expect(cap()).toBe(116.5);
+    expect(h.value('--cf-planetside-height')).toBe(95); expect(h.value('--planetside-top')).toBe(204);
+    expect(h.value('--planetside-top') - 8 - 132).toBe(64); // No resize receipt accompanies this translation.
+    expect(h.value('--cf-sheet-floor') - h.value('--cf-planetside-height') - 8 - 132).toBe(160.5);
+    expect(side.getBoundingClientRect().top - 8 - 132).toBeGreaterThanOrEqual(h.value('--cf-survey-min-height'));
+    await Promise.resolve(); h.flushFrames(); await Promise.resolve(); expect(h.frames.size).toBe(0);
+    expect(cap()).toBe(116.5); // The published cap is independent of the previously constrained roster height.
+  });
+  it.each(['expiry', 'resize', 'close'])('restores native scene guidance after %s makes the landed allocation unnecessary', async reason => {
+    const h = harness(true, 320, 568, 52.5), survey = h.document.getElementById('survey'), hint = h.document.getElementById('hintpill');
+    hint.textContent = 'Leave world to lift off'; h.document.body.className = 'surface-mode card-open'; survey.style.display = 'block';
+    h.document.getElementById('surveyheader').style.marginBottom = '10px'; h.rects.set('surveyheader', { top: 147, height: 55 });
+    h.rects.set('planetside', { top: 204, height: 95 }); h.rects.set('toast', { top: 144, height: 208 });
+    const toast = h.document.getElementById('toast'); toast.style.opacity = '1'; h.controller.sync();
+    expect(hint.classList.contains('sheet-guidance-yield')).toBe(true);
+    if (reason === 'expiry') toast.style.opacity = '0';
+    if (reason === 'close') { survey.style.display = 'none'; h.document.body.classList.remove('card-open'); }
+    if (reason === 'resize') {
+      Object.defineProperty(h.document.defaultView, 'innerHeight', { value: 844, configurable: true });
+      h.rects.set('hintpill', { top: 700, height: 60 }); h.rects.set('dock', { top: 760, height: 72 });
+      h.document.defaultView.dispatchEvent(new h.document.defaultView.Event('resize'));
+    }
+    await Promise.resolve(); h.flushFrames();
+    expect(hint.classList.contains('sheet-guidance-yield')).toBe(false); expect(hint.textContent).toBe('Leave world to lift off');
+    expect(h.value('--cf-lower-top')).toBe(reason === 'resize' ? 700 : 367.5);
+    h.controller.sync(); await Promise.resolve(); expect(h.frames.size).toBe(0);
+    expect(hint.classList.contains('sheet-guidance-yield')).toBe(false);
+  });
+  it('keeps native scene guidance when the cards are not a visible overlapping portrait Surface stack', () => {
+    const h = harness(true, 320, 568, 52.5), survey = h.document.getElementById('survey'), hint = h.document.getElementById('hintpill');
+    h.rects.set('toast', { top: 144, height: 208 }); h.document.getElementById('toast').style.opacity = '1';
+    h.document.body.className = 'surface-mode card-open'; survey.style.display = 'none'; h.controller.sync();
+    expect(hint.classList.contains('sheet-guidance-yield')).toBe(false);
+    survey.style.display = 'block'; h.document.body.className = 'card-open'; h.controller.sync();
+    expect(hint.classList.contains('sheet-guidance-yield')).toBe(false);
+    h.document.body.className = 'surface-mode card-open'; h.rects.set('planetside', { top: 204, height: 95, left: 304, width: 288 }); h.controller.sync();
+    expect(hint.classList.contains('sheet-guidance-yield')).toBe(false);
+    h.rects.set('planetside', { top: 204, height: 95 }); Object.defineProperty(h.document.defaultView, 'innerWidth', { value: 667, configurable: true }); h.controller.sync();
+    expect(hint.classList.contains('sheet-guidance-yield')).toBe(false);
   });
 
 });
