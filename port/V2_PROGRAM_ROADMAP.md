@@ -4,12 +4,18 @@
 
 Nick authorized U2–U4 and compact notifications when space is tight. Measured generic sheet and
 biosphere allocation and accessibility-preserving hint/context yield retain the accepted U1 layout and emoji.
-Signed8015ee4ff257b9c12db4eec2ff37808ec38d06ad passed complete develop static (322files,
-3459tests,1skip). Small-phone stopped PRODUCT RED with zero instrument failures while Charters
-was open: panel height107.5px and heading height84.56px left only7.94px of audited body room for
-a44px Accept target. Native scroll reached741 and exact restoration passed. The new Charters
-Close settlement wrapper was not reached. Large-phone and Slice were NOT RUN. The nine-carrier
-8015ee4 checkpoint retains this result; the older437a3aa Objective/Planetside cause remains open.
+Signed3f1578e2e416cf5e566e1f799c16ea0a081ae037 passed complete develop static (322files,
+3475tests,1skip). Small-phone passed native Survey Close and the new allocation's exact guidance
+restoration. It then stopped PRODUCT RED/zero instrument failures at survey-close-guidance:
+context text was17px (baseline12.5px), with correct Mono/font/tone, but its new body-wide hierarchy
+sample compared unrelated hint keywords11px→17px and reported their lost1.5px difference.
+The retained report is unchanged. Large-phone, later Capture/Charters and Slice were NOT RUN.
+
+The bounded tool correction scopes the context hierarchy to its own #ctxbar subtree while
+retaining the same actual generic preference check, size/tone/font limits and nested hierarchy
+protection. The existing hint and other generic preference call sites stay unchanged. Product,
+release and producer bytes remain exactly3f1578e. All58 focused checks, all3 TypeScript programs
+and root validate PASS. Exact-source native verification of the tool-only correction is pending. No stale report or earlier finding is promoted to PASS.
 
 The current bounded correction measures every visible portrait sheet's header/insets plus44px
 body, the stacked Survey/biosphere allocation, and standalone Planetside72px below actual painted
@@ -23,7 +29,7 @@ preference and native target-size/clipping checks remain strict. Focused84 check
 programs, root validate, one evidence build and101 release/budget/evidence checks PASS. Producer
 is aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe; measurement/ceilings are unchanged.
 The existing81-bullet draft has orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
-Exact-source native verification is pending; these checks are not a fresh Compendium certificate.
+The3f1578e native result above owns current status; these checks are not a fresh Compendium certificate.
 
 All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
 Phase2, pilot or hosted closure is claimed.

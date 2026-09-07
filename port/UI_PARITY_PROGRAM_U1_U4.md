@@ -1,5 +1,22 @@
 # UI parity and presentation program — accepted brief
 
+### U2 context hierarchy scope — 2026-09-06
+
+Signed3f1578e2e416cf5e566e1f799c16ea0a081ae037 passed complete develop static (322files,
+3475tests,1skip). Small-phone passed native Survey Close and the new allocation's exact guidance
+restoration. It then stopped PRODUCT RED/zero instrument failures at survey-close-guidance:
+context text was17px (baseline12.5px), with correct Mono/font/tone, but its new body-wide hierarchy
+sample compared unrelated hint keywords11px→17px and reported their lost1.5px difference.
+The retained report is unchanged. Large-phone, later Capture/Charters and Slice were NOT RUN.
+
+The bounded tool correction scopes the context hierarchy to its own #ctxbar subtree while
+retaining the same actual generic preference check, size/tone/font limits and nested hierarchy
+protection. The existing hint and other generic preference call sites stay unchanged. Product,
+release and producer bytes remain exactly3f1578e. All58 focused checks, all3 TypeScript programs
+and root validate PASS. Exact-source native verification of the tool-only correction is pending. No stale report or earlier finding is promoted to PASS.
+
+Earlier entries and both older unknown causes remain unchanged. No U2 completion, Phase2 or hosted action.
+
 ### U2 generic sheet and biosphere capacity — 2026-09-06
 
 Signed8015ee4ff257b9c12db4eec2ff37808ec38d06ad passed complete develop static (322files,

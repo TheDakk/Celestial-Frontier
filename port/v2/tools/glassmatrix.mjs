@@ -8150,7 +8150,7 @@ function installAuditHarness(assessGlyphStrokeContrast) {
       const preference = preferenceOutcome('body', '#hintpill', 'var(--ink)');
       const ctxStyle = ctx ? getComputedStyle(ctx) : null;
       const contextClipped = ctxStyle && /inset\((?:50|100)%/.test(ctxStyle.clipPath || '');
-      const contextPreference = visible(ctx) ? preferenceOutcome('body', '#ctxbar', 'var(--ink)') : { ok: !contextClipped, notPainted: true };
+      const contextPreference = visible(ctx) ? preferenceOutcome('#ctxbar', '#ctxbar', 'var(--ink)') : { ok: !contextClipped, notPainted: true };
       return { ...preference, ok: preference.ok && accessible(hint) && contextPreference.ok && (!visible(ctx) || accessible(ctx))
           && (!afterClose || state?.cardOpen === false), contextPreference,
         guidanceRestored: afterClose ? state?.cardOpen === false && visible(hint) : null, guidanceRetainedForCapacity: false };
@@ -8220,7 +8220,7 @@ function installAuditHarness(assessGlyphStrokeContrast) {
       justified = releasedLower > lower && cases.length > 0 && cases.every(row => [row.start, row.available, row.required].every(Number.isFinite))
         && cases.some(row => row.available < row.required);
       preference = preferenceOutcome('body', '#hintpill', 'var(--ink)');
-      contextPreference = nativeContextHidden() ? { ok: true, nativeHiddenBySurvey: true } : preferenceOutcome('body', '#ctxbar', 'var(--ink)');
+      contextPreference = nativeContextHidden() ? { ok: true, nativeHiddenBySurvey: true } : preferenceOutcome('#ctxbar', '#ctxbar', 'var(--ink)');
     } catch (cause) { error = String(cause?.message || cause); }
     finally {
       const restore = action => { try { action(); } catch (cause) { cleanupError = [cleanupError, String(cause?.message || cause)].filter(Boolean).join('; '); } };

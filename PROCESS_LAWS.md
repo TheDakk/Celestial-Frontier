@@ -26,6 +26,10 @@
 > Bare Planetside measures actual painted upper controls, not an older observer publication.
 > After Close, guidance returns when room exists; any remaining yield needs independent native
 > capacity evidence. Reveal or cleanup errors stay instrument failures on both open/closed paths.
+> A new preference sample uses its own semantic hierarchy root. Comparing a caption against
+> bold keywords in an unrelated hint creates a cross-surface false-red when independent font
+> scales converge. Keep the generic checker strict; scope the new caller to the caption and
+> prove both the unrelated-text control and real nested-caption shrink/flattening failures.
 
 > **A BOUNDARY FAULT MUST REMOVE EFFECTIVE ANCESTOR PROTECTION** (U1, 2026-09-06).
 > A rail nested inside a protected dock still retains dismissal protection after its own marker

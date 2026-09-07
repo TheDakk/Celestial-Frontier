@@ -11,7 +11,7 @@ const source = extract('  const visible = (el) => {', '  const box = (el) => {')
 const cleanups: Array<() => void> = [];
 afterEach(() => { for (const dispose of cleanups.splice(0)) dispose(); });
 function fixture() {
-  const dom = new JSDOM('<!doctype html><body class="surface-mode card-open fs-xl tone-max font-mono"><div id="survey"><div class="survey-head">Survey</div></div><div id="chpanel" class="panel" aria-hidden="true" style="display:none"><h3 class="sheet-header">Charters</h3></div><div id="planetside">Biosphere</div><div id="topbar"><div id="status">Status</div><div id="objchip">Objective</div></div><div id="toast" style="opacity:1">Notice</div><div id="ctxbar" class="scene-caption sheet-guidance-yield" aria-label="Scene context">Earth · Biosphere</div><div id="dock">Dock</div><div id="hintpill" class="scene-hint  sheet-guidance-yield" aria-label="Scene guidance">Leave <b>world</b> to lift off</div></body>');
+  const dom = new JSDOM('<!doctype html><body class="surface-mode card-open fs-xl tone-max font-mono"><div id="survey"><div class="survey-head">Survey</div></div><div id="chpanel" class="panel" aria-hidden="true" style="display:none"><h3 class="sheet-header">Charters</h3></div><div id="planetside">Biosphere</div><div id="topbar"><div id="status">Status</div><div id="objchip">Objective</div></div><div id="toast" style="opacity:1">Notice</div><div id="ctxbar" class="scene-caption sheet-guidance-yield" aria-label="Scene context">Earth · Biosphere</div><div id="dock">Dock</div><div id="hintpill" class="scene-hint  sheet-guidance-yield" aria-label="Scene guidance">Leave <b class="kw">world</b> to lift off</div></body>');
   cleanups.push(() => dom.window.close()); const { document } = dom.window, hint = document.getElementById('hintpill'), ctx = document.getElementById('ctxbar');
   const state = { mode: 'surface', cardOpen: true }, faults: Record<string, any> = {};
   const rootValues: Record<string, string> = { '--safe-bottom': '0px', '--cf-lower-top': '464px', '--cf-toast-height': '52.5px', '--cf-survey-min-height': '139px', '--cf-survey-start': '132px' };
@@ -40,11 +40,14 @@ function fixture() {
     if (faults.throwBaseline && node === hint && !large) throw Error('primary preference failure');
     if (faults.shiftScroll && node === hint && !large) document.getElementById('chpanel').scrollTop = 99;
     const faultSample = node === (faults.sample === 'ctx' ? ctx : hint), sheet = node.id === 'survey' || node.id === 'chpanel';
+    const retainedSize = !faults.retainedTypography ? null : node === ctx ? large ? '17px' : '12.5px'
+      : node === hint || (node.tagName === 'B' && hint.contains(node)) ? large ? '17px' : '11px'
+      : node.id === 'ctx-keyword' ? large ? faults.contextHierarchy === 'flatten' ? '17px' : faults.contextHierarchy === 'shrink' ? '14px' : '19px' : '15px' : null;
     return { display: node.style.display || (contextHidden(node) ? 'none' : 'block'), visibility: node.style.visibility || 'visible', opacity: node.style.opacity || '1',
       pointerEvents: node.style.pointerEvents || 'auto', clip: 'auto', clipPath: caption && (yielded || faults.forceClip) ? faults.clipPath ?? 'inset(50%)' : 'none',
       overflow: yielded ? 'hidden' : 'visible', marginTop: '0px', marginBottom: node.classList.contains('survey-head') ? '10px' : node.classList.contains('sheet-header') ? '12px' : '0px',
       paddingTop: sheet ? '14px' : '0px', paddingBottom: sheet ? '14px' : '0px', borderTopWidth: sheet ? '1px' : '0px', borderBottomWidth: sheet ? '1px' : '0px',
-      fontSize: faultSample && large && faults.fontSize ? faults.fontSize : node.tagName === 'B' || node.tagName === 'H3' ? large ? '18px' : '15px' : large ? '16px' : '13px',
+      fontSize: retainedSize ?? (faultSample && large && faults.fontSize ? faults.fontSize : node.tagName === 'B' || node.tagName === 'H3' ? large ? '18px' : '15px' : large ? '16px' : '13px'),
       fontFamily: faultSample && large && faults.fontFamily ? faults.fontFamily : large ? 'ui-monospace' : 'Inter',
       color: faultSample && faults.color ? faults.color : 'rgb(240, 244, 255)',
       getPropertyValue: (name: string) => document.documentElement.style.getPropertyValue(name) || rootValues[name] || '' };
@@ -151,6 +154,33 @@ it('rejects a changed caption attribute rather than accepting preference boolean
   const h = fixture(); h.openCharters(); const original = h.ctx.setAttribute.bind(h.ctx);
   h.ctx.setAttribute = (name: string, value: string) => { original(name, value); if (name === 'class') original('aria-label', 'corrupted context'); };
   expect(h.run()).toMatchObject({ ok: false, preference: { ok: true }, contextPreference: { ok: true }, restored: false });
+});
+
+it('keeps the retained 11px hint keyword outside the 12.5px context hierarchy when both become 17px', () => {
+  const h = fixture(); h.closeSurvey(); h.faults.retainedTypography = true;
+  h.hint.classList.remove('sheet-guidance-yield'); h.ctx.classList.remove('sheet-guidance-yield');
+  const prior = h.document.documentElement.outerHTML;
+  expect(h.owners.preferenceOutcome('body', '#ctxbar', 'var(--ink)')).toMatchObject({ ok: false, fontSize: 17, baselineFontSize: 12.5,
+    hierarchyViolations: [{ element: 'B', baselineSize: 11, currentSize: 17, baselineDelta: -1.5, currentDelta: 0 }] });
+  expect(h.owners.preferenceOutcome('#ctxbar', '#ctxbar', 'var(--ink)')).toMatchObject({ ok: true, hierarchyPreserved: true });
+  expect(h.run(true)).toMatchObject({ ok: true, guidanceRestored: true, contextPreference: { ok: true, fontSize: 17 } });
+  expect(h.document.documentElement.outerHTML).toBe(prior);
+  const clipped = fixture(); clipped.openCharters(); clipped.faults.retainedTypography = true;
+  const result = clipped.run(); expect(result).toMatchObject({ ok: true, restored: true, contextPreference: { ok: true, fontSize: 17 } });
+  expect(result.after).toEqual(result.before);
+});
+it.each(['preserved', 'flatten', 'shrink'])('still measures the context caption’s own nested hierarchy: %s', hierarchy => {
+  const h = fixture(); h.openCharters(); Object.assign(h.faults, { retainedTypography: true, contextHierarchy: hierarchy });
+  const keyword = h.document.createElement('b'); keyword.id = 'ctx-keyword'; keyword.textContent = 'Biosphere';
+  keyword.getBoundingClientRect = h.hint.querySelector('b').getBoundingClientRect; h.ctx.appendChild(keyword);
+  const prior = h.document.documentElement.outerHTML, result = h.run();
+  expect(result.contextPreference.ok).toBe(hierarchy === 'preserved');
+  expect(result.contextPreference.hierarchyPreserved).toBe(hierarchy === 'preserved');
+  if (hierarchy !== 'preserved') expect(result.contextPreference.hierarchyViolations).toEqual([
+    expect.objectContaining({ element: 'ctx-keyword', preserved: false, noShrink: hierarchy !== 'shrink' }),
+  ]);
+  expect(result.ok).toBe(hierarchy === 'preserved'); expect(result.restored).toBe(true);
+  expect(result.after).toEqual(result.before); expect(h.document.documentElement.outerHTML).toBe(prior);
 });
 
 it('classifies after-Close reveal/restoration faults as instrument failures before adding the product outcome', async () => {

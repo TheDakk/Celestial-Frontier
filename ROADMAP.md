@@ -25,31 +25,35 @@ space is tight” is the selected behavior. Keep emoji and accepted U1 design. N
 integrated pilot, hosted actions, PR/push/merge/deploy/release/version bump. No pending user decision.
 
 OpenAI/Codex on macOS: physical root /Users/nick/Projects/celestial-frontier-openai-mac,
-openai/mac tracking origin/openai/mac. Starting signed8015ee4ff257b9c12db4eec2ff37808ec38d06ad,
-33ahead0behind, origin/develop ancestor. Same-session SSH accountTheDakk/auth/read/fetch PASS
+openai/mac tracking origin/openai/mac. Starting signed3f1578e2e416cf5e566e1f799c16ea0a081ae037,
+34ahead0behind, origin/develop ancestor. Same-session SSH accountTheDakk/auth/read/fetch PASS
 and exact SSH origin git@github.com:TheDakk/Celestial-Frontier.git reused. Ambient .DS_Store
 SHA95e30c9454a9707e734f6dfcde762897cab42d9b434ecce19851d0577182e7ac remains untouched;
 main.js absent. Startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 busy deferred.
 Budget UNFROZEN/PUBLIC, private fallback3000, zero exact hosted authority/cost.
 
-Latest native8015ee4: full develop static PASS322files3459tests1skip. Small-phone PRODUCT RED,
-zero instrument failures, at open Charters before the new Close settlement wrapper. Panel107.5px,
-heading84.56px left7.94px usable content for44px Accept. Native scroll741/restoration PASS.
-Large-phone/Slice NOT RUN. Preserve nine-carrier audits/UI_U2_LOCAL_CHECKPOINT_8015ee4_20260906,
-named terminal/browser read[]/[]. Earlier437a3aa Objective centre hit Planetside; its cause is
-still open and the qualified synthetic diagnostic cannot close it. No new Close receipt exists.
+Latest native3f1578e: full develop static PASS322files3475tests1skip. Small-phone passed native
+Survey Close and exact guidance restoration, then stopped PRODUCT RED/zero instrument failures
+at survey-close-guidance. Context17px/baseline12.5px passed font/size/tone but the new body-wide
+hierarchy compared unrelated hint keywords11px→17px and reported their converged difference.
+Large-phone, later Capture/Charters and Slice NOT RUN. Preserve nine-carrier
+ audits/UI_U2_LOCAL_CHECKPOINT_3f1578e_20260906, named terminal/browser read[]/[]. Post-Close
+Planetside330.890625–409.5 cleared Objective bottom322.875; this is not the later Charters path.
 
-This bounded correction generalizes native portrait capacity to all visible shared sheets
-(header/insets plus44px body), stacked Survey/72px biosphere/8px gap, and standalone72px
-Planetside below actual painted upper controls. It publishes --cf-planetside-start independent
-of stale AppChrome receipts. Both passive hint/context paint yield only when capacity is tight
-and doing so releases room. Each decision restores natural guidance and projects native hint
-height for caption measurement, then exactly restores the foreign property/value/priority.
-Native text/header/Objective refill observers avoid owned-class loops. Compact notices use4/8px
-padding. Copy, gameplay, save, AT/history/timer, preferences, U1 placement and44px floors remain.
-Glass independently measures both captions/capacity, executes actual preferences and exact
-restoration; after Close may remain yielded only with independent pressure proof. Cleanup faults
-are instrument-red on both paths. Generic preference and Charters settlement owners stay strict.
+The bounded tool-only correction changes BOTH new context preference roots to #ctxbar, preserving
+the actual generic checker, existing hint/body call and all other preference owners.58 focused
+checks, all3 TypeScript programs and root validate PASS. Source-executing controls retain the
+11/12.5→17 unrelated-text false-red while rejecting true nested-caption flatten/shrink and
+requiring exact restoration. Product/release/producer bytes remain exactly3f1578e.
+
+Current product reserves measured generic sheet header/insets+44px, Survey+72px biosphere+8px,
+and standalone72px below actual painted upper controls (--cf-planetside-start). Both passive
+hint/context can yield after compact notices, preserve accessibility text, and restore natural
+measurement before every decision. Temporary natural --hint-h projection restores the foreign
+value/priority exactly. Content/resize observers cover clipped-caption and Objective refills
+without owned-class loops. Compact notices use4/8px padding; AT/history/timer/preferences and
+accepted U1 geometry remain. Independent proof still checks capacity and both caption preferences.
+After Close, continued yield requires actual remaining pressure; cleanup faults stay instrument-red.
 
 Preparation PASS:84 focused checks, all3 TypeScript programs, root validate with50-probe
 fingerprint, one evidence build,101 release/budget/evidence checks. Producer
@@ -58,11 +62,11 @@ measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 and 
 Draft81 orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
 No fresh Compendium certificate. Required references/law/audit updated; preparation carriers retained.
 
-NEXT: commit this reviewed correction locally, then run once under the whole-job lock with
-approved macOS browser execution:
- node /private/tmp/cf-u2-run-generic-capacity-20260906.cjs FULL_NEW_SHA
-It requires exactly sheet-layout.ts/ui-sheet-style.ts/release-content.ts product diffs from8015,
-clean signed clone/main.js absent, offline installs, full develop static → small-phone →
+NEXT: commit this reviewed tool-only correction locally, then run once under the whole-job lock
+with approved macOS browser execution:
+ node /private/tmp/cf-u2-run-caption-scope-20260906.cjs FULL_NEW_SHA
+It requires ZERO product diffs from3f1578e, clean signed clone/main.js absent, offline installs,
+full develop static → small-phone →
 large-phone → Slice/namedverify. First-red stop; no unchanged retry or threshold changes.
 Retain/verify exact reports with the existing U2 retainer. No U2 PASS is claimed before completion.
 
