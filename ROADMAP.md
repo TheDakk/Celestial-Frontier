@@ -31,28 +31,40 @@ started clean; ambient .DS_Store preserved; root main.js absent. Same-session SS
 startup2026-09-06T16:28:25.659Z reused, Node26.7.0;26.8.1 remains deferred for busy tools.
 Actions UNFROZEN/PUBLIC per last receipt, private fallback3000, zero exact hosted authority.
 
-Latest signed U2 source is2dba37946ef73d8d67e3aa9cdd8771ca5d541132 (31ahead,0behind).
-Full develop static PASS:321files3456tests1skip. Small-phone stopped INSTRUMENT RED/zero
-product findings at #inventorysheet > section.inventory-sheet-card: original absent style still
-restored as empty after CSSOM clearing. Laterlarge-phone/Slice NOT RUN. Nine-carrier checkpoint
- audits/UI_U2_LOCAL_CHECKPOINT_2dba379_20260906/manifest.json and named terminal/browser read []/[]
-retain the RED. Earlier c84 Capture3PASS and every failed report remain immutable.
+Latest signed U2 source437a3aa08f1e5cb3c1b0b134e02f8cbe92c56204 (32ahead,0behind).
+Complete develop static PASS321files3456tests1skip. The DOM-style reset now passes the actual
+Inventory path. Small-phone later stops PRODUCT RED/zero instrument: charters-opener-off
+Objective[148,60,310,322.88], centre[229,191.44], hits the Planetside heading. Large-phone/Slice
+NOT RUN. Preserve nine-carrier audits/UI_U2_LOCAL_CHECKPOINT_437a3aa_20260906/manifest.json;
+named terminal/browser read []/[] validates RED metadata. The report lacks actual side/toast/
+published-lane state; do not infer it from another fixture or claim timing as the cause.
 
-One isolated native synthetic six-case diagnostic reproduced the CSSOM-clear failure and proved
-explicit setAttribute('style','') before removal for absent, present-empty and nonempty smooth
-styles. Raw scroll and exact declaration/computed/attribute evidence matched in the corrected
-cases. The tool-only correction now uses that demonstrated strategy; no absent/empty equivalence,
-threshold or deadline relaxation. Source-executing42 focused checks, all3 TypeScript programs and
-root validate PASS. No product diff fromc84aecd: producer0adbee29aed0004c63d4acc0cebf84a53dabc0bca33f6000d52223fb932f8711;
+One qualified actual-controller synthetic diagnostic shows22.5px settled overlap, but not the
+original centre collision. Its Objective height216.5 differs from262.88; omitted HTML charset
+corrupted static emoji and native-event timing differs from the Glass synchronous close.click.
+All13 carriers and limitations are retained in audits/UI_U2_OBJECTIVE_DIAGNOSTIC_20260906.
+No product correction is justified by that diagnostic alone. The next bounded tool-only change
+brackets the exact unchanged Charters Close owner with immediate/microtask/named fonts→two-rAF
+snapshots and one atomic settled opener audit. It retains full copy/classes/rectangles/scroll,
+lane variables and live-toast identity; notice expiry cannot turn the earlier collision green.
+Focused45 checks (three new cases/27 corrupt-receipt controls plus42 existing), all3 TypeScript
+programs and root validate PASS. Exact-source native verification is pending. Product remains identical toc84aecd:
+producer0adbee29aed0004c63d4acc0cebf84a53dabc0bca33f6000d52223fb932f8711;
 measurement/ceilings unchanged; draft81 orderedSHAb791c37bcee759754e90e688d262ec4cb24a874df1d6e353da2b41a30bff857c.
-Commit, then run /private/tmp/cf-u2-run-scroll-cssom-20260906.cjs FULL_NEW_SHA once under the
-whole-job lock and approved browser execution. It rejects product diffs fromc84 and runs full
-develop static → small-phone → large-phone → Slice/namedverify; first-red stop, no unchanged retry.
-Exact U2 PASS unlocks the guarded normal-predecessor snapshot then ordered U3 panel runner.
-U3 is unapplied; Shipyard prep review found its pseudo-element EXPAND label missed A++ scaling;
-a new guarded preparation corrects that in temporary files before application. U4 native collector
-is being prepared separately, with no actual gate/28-pair evidence or invented equivalent states.
-No further U1 layout rework, Inkscape, Phase2 or hosted actions.
+After focused/type/root checks, commit and run /private/tmp/cf-u2-run-scroll-cssom-20260906.cjs
+FULL_NEW_SHA once under the whole-job lock with approved browser execution. It rejects product
+diffs fromc84 and runs full develop static → small-phone → large-phone → Slice/namedverify.
+First-red stop, no unchanged retry. Exact U2 PASS unlocks the guarded normal-predecessor snapshot
+then ordered U3 panel runner; no additional generic user approval is needed.
+
+Use corrected /private/tmp/cf-u3-shipyard-ready-20260906 (including review/shipyard-review.mjs),
+not the earlier preparation: EXPAND/COLLAPSE now has A+14/A++16 scaling. U3retainer is prepared at
+/private/tmp/cf-u3-retain-checkpoint-20260906.py (parser-only check, no retention execution yet).
+U4collector is prepared under/private/tmp/cf-u4-layout-ready-20260906/collector (syntax-only).
+Their12/2/6-file durable archives/manifests are in audits/UI_U3_U4_PREPARATION_20260906; all are
+unapplied and untested in product. No actual U4gate or28-pair comparison exists. Preserve missing
+state/equivalence cases; do not label them intended style differences without review.
+No further U1 layout rework, Inkscape, Phase2, pilot or hosted actions.
 
 The normal20/60PNG reports at594ece6 and56648b2 preserve the corrected, readable Settings spacing
 Nick flagged. They do not claim new human approval or device UAT. Current audit is

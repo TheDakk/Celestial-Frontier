@@ -430,6 +430,20 @@
       "rawSha256": "87d02219ae2bcc0dc13a25fd4eda32d81598cf8e72c55d5cb061a7599ce7f0a1",
       "bytes": 957,
       "sha256": "429cba6bd5d0219afb7751fd716af0c3c4546f4dc0f8d56e95f1ab927302386b"
+    },
+    {
+      "file": "cf-u2-437a3aa-terminal-verification-20260906.json.gz",
+      "rawBytes": 202,
+      "rawSha256": "343925c6a88195cf803e4d8b7dbf4320da23bf6dacab95a8afc5c4e98d52fa2c",
+      "bytes": 174,
+      "sha256": "5e488daebecbfd883ee7d3426c14d8cff4ac13ee22759831c2f5c426b888c758"
+    },
+    {
+      "file": "cf-u2-charters-settlement-checks-20260906.log.gz",
+      "rawBytes": 1664,
+      "rawSha256": "60457d7125e116b417e5ae3a41f4db76d244e44b4d5598a5c47e5a30bac3d661",
+      "bytes": 962,
+      "sha256": "ba2ed8439225f48c0b474077bc783aff13205823045c3e614f68230b22a456cb"
     }
   ]
 }

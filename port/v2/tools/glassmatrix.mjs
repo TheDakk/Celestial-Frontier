@@ -145,6 +145,96 @@ export function assessSurveyLiveToastSettlement(receipt, viewport) {
   return { ok: errors.length === 0, errors };
 }
 
+/** Keep the original synchronous Charters Close owner; only the diagnostic
+ * brackets its returned opener with one named layout settlement. */
+export async function chartersCloseSettlement(settleFrames, readFrames, auditOptions) {
+  const label = 'charters.close.opener.fonts-two-frames', keys = ['objchip','topbar','planetside','hintpill','ctxbar','dock','toast','chpanel'];
+  const snapshot = () => {
+    const geometry = node => {
+      if (!node) return null;
+      const r = node.getBoundingClientRect(), s = getComputedStyle(node);
+      return { left:r.left, top:r.top, right:r.right, bottom:r.bottom, width:r.width, height:r.height,
+        offsetHeight:node.offsetHeight, scrollTop:node.scrollTop, scrollLeft:node.scrollLeft, text:node.textContent,
+        display:s.display, visibility:s.visibility, opacity:Number(s.opacity), fontSize:s.fontSize, fontFamily:s.fontFamily,
+        minHeight:s.minHeight, maxHeight:s.maxHeight, zIndex:s.zIndex, overflowY:s.overflowY };
+    };
+    const state = window.__CF_SLICE__.api.state(), root = getComputedStyle(document.documentElement), toast = document.getElementById('toast');
+    const opener = document.getElementById('objchip'), r = opener.getBoundingClientRect(), point = [(r.left+r.right)/2,(r.top+r.bottom)/2];
+    const hit = document.elementFromPoint(...point), path = [];
+    for (let node=hit; node; node=node.parentElement) path.push({id:node.id,tag:node.tagName,classes:node.className});
+    return { at:performance.now(), timeOrigin:performance.timeOrigin, viewport:{width:innerWidth,height:innerHeight},
+      classes:document.body.getAttribute('class'), focus:document.activeElement?.id ?? null,
+      route:{mode:state.mode,star:state.star,planet:state.planet,panelOpen:state.panelOpen,cardOpen:state.cardOpen},
+      scroll:{body:[document.body.scrollLeft,document.body.scrollTop],html:[document.documentElement.scrollLeft,document.documentElement.scrollTop]},
+      vars:Object.fromEntries(['--topbar-h','--surface-chrome-bottom','--cf-lower-top','--cf-sheet-floor','--cf-sheet-bottom',
+        '--cf-toast-height','--cf-planetside-floor','--cf-planetside-height'].map(key=>[key,root.getPropertyValue(key)])),
+      toast:{serial:state.toastSerial,on:state.toastOn,text:toast?.textContent ?? '',inlineOpacity:toast?.style.opacity ?? null,
+        computedOpacity:toast ? Number(getComputedStyle(toast).opacity) : null},
+      hit:{point,owned:!!hit&&(hit===opener||opener.contains(hit)),path,geometry:geometry(hit)},
+      geometry:Object.fromEntries(keys.map(id=>[id,geometry(document.getElementById(id))])
+        .concat([['heading',geometry(document.querySelector('#planetside .planetside-heading'))]])) };
+  };
+  const receipt = {label,before:snapshot(),immediate:null,microtask:null,settled:null,closeOutcome:null,openerAudit:null,
+    expectedFrameId:(readFrames()?.invocations?.at(-1)?.id ?? 0)+1,frame:null,overflow:false,error:null};
+  receipt.closeOutcome = window.__CF_GLASS_AUDIT__.panelCloseOutcome('#chpanel','[data-pnx]','#objchip','#planetside');
+  receipt.immediate = snapshot();
+  await Promise.resolve(); receipt.microtask = snapshot();
+  try {
+    await settleFrames(label);
+    receipt.settled = snapshot();
+    // Same task: toast expiry cannot separate the geometry from the product audit.
+    receipt.openerAudit = window.__CF_GLASS_AUDIT__.audit(auditOptions);
+  } catch (error) { receipt.error = String(error?.stack || error); }
+  const frames = readFrames(); receipt.frame = frames?.invocations?.at(-1) ?? null; receipt.overflow = frames?.overflow ?? true;
+  return receipt;
+}
+export function assessChartersCloseSettlement(receipt, viewport) {
+  const errors = [], snapshots = ['before','immediate','microtask','settled'].map(key=>receipt?.[key]), frame = receipt?.frame;
+  const checked = assessReviewFrameSettlement(frame,viewport); if (!checked.pass) errors.push(...checked.errors);
+  const phases = Array.isArray(frame?.phases) ? frame.phases : [];
+  const stableClasses = s => typeof s?.classes==='string' ? s.classes.split(/\s+/).filter(c=>c&&c!=='panel-open'&&c!=='surface-trail-yield').sort().join(' ') : null;
+  if (receipt?.label !== 'charters.close.opener.fonts-two-frames' || frame?.label !== receipt?.label
+    || frame?.id !== receipt?.expectedFrameId || receipt?.overflow !== false || receipt?.error !== null) errors.push('Charters settlement identity/error');
+  const rectValid = r => r && ['left','top','right','bottom','width','height'].every(key=>Number.isFinite(r[key]))
+    && r.width>=0 && r.height>=0 && Math.abs(r.right-r.left-r.width)<0.01 && Math.abs(r.bottom-r.top-r.height)<0.01;
+  const baseline = snapshots[0], noticePainted = s => s?.toast?.computedOpacity>0 && s.geometry?.toast?.width>0
+    && s.geometry?.toast?.height>0 && s.geometry.toast.display!=='none' && s.geometry.toast.visibility!=='hidden';
+  for (const [index,s] of snapshots.entries()) {
+    if (!s || !Number.isFinite(s.at) || s.timeOrigin!==phases[0]?.timeOrigin || (index>0&&s.at<snapshots[index-1]?.at)
+      || s.viewport?.width!==viewport.width || s.viewport?.height!==viewport.height || typeof s.classes!=='string'
+      || !['objchip','topbar','planetside','heading','hintpill','ctxbar','dock','toast','chpanel'].every(key=>rectValid(s.geometry?.[key]))
+      || !['body','html'].every(key=>Array.isArray(s.scroll?.[key])&&s.scroll[key].length===2&&s.scroll[key].every(Number.isFinite))
+      || !['--topbar-h','--surface-chrome-bottom','--cf-lower-top','--cf-sheet-floor','--cf-sheet-bottom','--cf-toast-height',
+        '--cf-planetside-floor','--cf-planetside-height'].every(key=>typeof s.vars?.[key]==='string'&&Number.isFinite(parseFloat(s.vars[key]))))
+      errors.push('Charters settlement snapshot '+index);
+    if (s?.route?.mode!=='surface' || s.route.cardOpen!==false || s.route.panelOpen!==(index===0?'ch':null)
+      || s.route.star!==baseline?.route?.star || JSON.stringify(s.route.planet)!==JSON.stringify(baseline?.route?.planet)
+      || stableClasses(s)!==stableClasses(baseline) || s.geometry?.objchip?.text!==baseline?.geometry?.objchip?.text || !s.geometry?.objchip?.text?.trim()
+      || (index>0&&s.focus!=='objchip')) errors.push('Charters route/copy/focus changed '+index);
+    if (!Number.isSafeInteger(s?.toast?.serial) || s.toast.serial<0 || typeof s.toast.on!=='boolean'
+      || !Number.isFinite(s.toast.computedOpacity) || s.toast.computedOpacity<0 || s.toast.computedOpacity>1
+      || !['serial','on','text','inlineOpacity'].every(key=>s.toast[key]===baseline?.toast?.[key])
+      || (noticePainted(baseline)&&!noticePainted(s))
+      || (!noticePainted(baseline)&&baseline?.toast?.inlineOpacity!=='1'&&noticePainted(s))
+      || (index===3&&baseline?.toast?.inlineOpacity==='1'&&!noticePainted(s))) errors.push('Charters notice expired/replaced '+index);
+    const hit=s?.hit,r=s?.geometry?.objchip;
+    if (!hit || !Array.isArray(hit.path) || !hit.path.every(node=>node&&typeof node.id==='string'&&typeof node.tag==='string')
+      || typeof hit.owned!=='boolean' || hit.owned!==hit.path.some(node=>node.id==='objchip')
+      || !Array.isArray(hit.point) || hit.point.length!==2 || !hit.point.every(Number.isFinite) || !r
+      || Math.abs(hit.point[0]-(r.left+r.right)/2)>0.01 || Math.abs(hit.point[1]-(r.top+r.bottom)/2)>0.01
+      || (hit.path.length>0&&!rectValid(hit.geometry))) errors.push('Charters hit receipt incoherent '+index);
+  }
+  if (!(snapshots[2]?.at<=phases[0]?.at && phases.at(-1)?.at<=snapshots[3]?.at)) errors.push('Charters frame interval');
+  if (typeof receipt?.closeOutcome?.ok!=='boolean' || !Array.isArray(receipt?.openerAudit)
+    || !receipt.openerAudit.every(row=>row&&typeof row.code==='string')) errors.push('Charters product carriers missing');
+  const after=receipt?.settled, hitRows=receipt?.openerAudit?.filter?.(row=>row.code==='CONTROL_NOT_HITTABLE'&&row.element==='#objchip');
+  if (after && (!Array.isArray(hitRows) || hitRows.length!==(after.hit?.owned?0:1) || hitRows.some(row=>
+    JSON.stringify(row.actual?.at)!==JSON.stringify(after.hit.point.map(n=>Math.round(n*100)/100))
+    || !['left','top','right','bottom','width','height'].every(key=>row.actual?.rect?.[key]===Math.round(after.geometry.objchip[key]*100)/100))))
+    errors.push('Charters settled hit/audit disagreement');
+  return {ok:errors.length===0,errors};
+}
+
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.join(here, '..', 'apps', 'game');
 const dist = path.join(appDir, 'dist');
@@ -13359,6 +13449,7 @@ async function main() {
               expanded:opener?.getAttribute('aria-expanded')||null,
               focus:document.activeElement?.id||null,preservedDisplay:preservedStyle?.display||null};})()` : null;
           let realShipyardClose = null;
+          let chartersSettlement = null;
           let closed;
           if (item.shipyard) {
             realShipyardClose = await activateRealControl('#shipyardpanel [data-pnx="shipyard"]', `${vp.label} Shipyard Close`);
@@ -13383,11 +13474,22 @@ async function main() {
               recordControls('shipyard-close-release');
               shipyardControlRun = true;
             }
+          } else if (item.id === 'ch') {
+            const options = { surface:'charters-opener-off',root:opener,textMin:1,targetFloor,safe:vp.safe||{},
+              safeExpected:vp.safe||undefined,viewportExpected:{width:vp.width,height:vp.height,dpr:vp.dpr},
+              fitSelectors:[opener],interactiveRoots:[opener],contrastSelectors:[opener],overlapPairs:[] };
+            chartersSettlement = await evalIn(`(${chartersCloseSettlement.toString()})(${reviewFrameSettlement.toString()},${readReviewFrameSettlements.toString()},${JSON.stringify(options)})`);
+            console.log(`GLASS CHARTERS CLOSE SETTLEMENT — ${vp.label}: ${JSON.stringify(chartersSettlement)}`);
+            closed = chartersSettlement.closeOutcome;
           } else {
             closed = await evalIn(`window.__CF_GLASS_AUDIT__.panelCloseOutcome(${JSON.stringify(item.panel)},'[data-pnx]',${JSON.stringify(opener)},${JSON.stringify(preservedSurface)})`);
           }
           addOutcome(vp.label, composition, 'ORDINARY_PANEL_CLOSE_OUTCOME', `${item.panel} [data-pnx]`, closed,
             `close owns its centre, closes the panel, preserves ${overSurvey ? 'the survey' : 'Planetside'}, and restores logical opener focus`);
+          if (chartersSettlement) {
+            const verdict = assessChartersCloseSettlement(chartersSettlement,vp);
+            if (!verdict.ok) recordInstrumentFailure(`${vp.label}: Charters Close settlement evidence is invalid (${JSON.stringify(verdict)})`);
+          }
           if (item.inventory) {
             addOutcome(vp.label, composition, 'INVENTORY_PANEL_CLOSE_RELEASE', '#inventorysheet',
               await evalIn('window.__CF_GLASS_AUDIT__.inventoryClosedOutcome(null)'),
@@ -13418,7 +13520,7 @@ async function main() {
           addOutcome(vp.label, composition, 'PANEL_DISCLOSURE_STATE', opener,
             await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome(${JSON.stringify(opener)},${JSON.stringify(item.panel)},false)`),
             'visible opener exposes expanded=false after its panel closes');
-          add(vp.label, `${item.name}-opener-off`, await audit({
+          add(vp.label, `${item.name}-opener-off`, chartersSettlement?.openerAudit ?? await audit({
             surface: `${item.name}-opener-off`, root: opener, textMin: 1, targetFloor,
             safe: vp.safe || {}, safeExpected: vp.safe || undefined,
             viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr },

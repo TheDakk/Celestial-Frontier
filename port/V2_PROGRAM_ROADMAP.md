@@ -4,21 +4,23 @@
 
 Nick authorized U2–U4 and compact notifications when space is tight. Measured landed allocation
 and clipped, accessibility-preserving hint yield retain the accepted U1 layout and emoji.
-Signed source `2dba37946ef73d8d67e3aa9cdd8771ca5d541132` passed complete develop static
-(321 files, 3456 tests, 1 skipped). Small-phone stopped with zero product findings and one
-INSTRUMENT RED: the originally absent style on `#inventorysheet > section.inventory-sheet-card`
-restored as empty even after CSSOM clearing and two removals. Declarations and computed values
-matched; exact carrier identity failed. Large-phone and Slice were NOT RUN; nine evidence
-carriers retain the terminal result.
+Signed source `437a3aa08f1e5cb3c1b0b134e02f8cbe92c56204` passed complete develop static
+(321 files, 3456 tests, 1 skipped). Small-phone stopped PRODUCT RED with zero instrument failures:
+`charters-opener-off` measured Objective bounds [148,60,310,322.88]; its centre [229,191.44] hit
+the Planetside heading. Large-phone and Slice were NOT RUN. The restoration strategy passed this
+real path, but the report omitted the actual Planetside/toast/lane geometry needed to attribute
+the new overlap.
 
-Product sheet/header behavior and release/producer pins remain unchanged from c84aecd. A six-case
-isolated synthetic native diagnostic reproduced absent→empty RED with current CSSOM clearing.
-Explicit `setAttribute('style','')` before removal passed absent, present-empty and nonempty
-`smooth!important` cases, preserving raw scroll 77 and exact declarations/computed values/styles.
-The current strategy also passed both present-attribute cases. This establishes the bounded
-restoration strategy on synthetic native DOM; focused checks and a fresh canonical run remain
-pending. All earlier failures and both older unknown causes remain OPEN; U2–U4 completion,
-physical UAT, Phase2, pilot and hosted closure are not claimed.
+The qualified 13-carrier [Objective diagnostic](../audits/UI_U2_OBJECTIVE_DIAGNOSTIC_20260906/)
+shows a settled 22.5px overlap, not the original centre hit. Its omitted charset/static-emoji
+and click-timing differences prevent causal closure. The bounded tool-only work binds existing
+Charters Close and immediate geometry in one call, retains immediate/microtask/named font-ready
+plus two-frame receipts, and audits the settled geometry atomically. Focused45 checks (three
+new cases/27 corrupt-receipt controls plus42 existing), all3 TypeScript programs and root validate
+PASS. Exact-source native verification is pending; product and release/producer pins are unchanged. The U3 readiness, collector and
+retainer preparations are archived under `audits/UI_U3_U4_PREPARATION_20260906` and remain unapplied.
+All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
+Phase2, pilot or hosted closure is claimed.
 The [U2 audit](../audits/UI_U2_SHEETS_20260906.md) owns retained evidence. Ordered U3 panel
 checkpoints and U4 follow under the [accepted program](UI_PARITY_PROGRAM_U1_U4.md).
 

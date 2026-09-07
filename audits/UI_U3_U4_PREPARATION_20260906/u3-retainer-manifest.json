@@ -1,0 +1,26 @@
+{
+  "schema": "cf-ui-prepared-unapplied/v1",
+  "observedSource": "437a3aa08f1e5cb3c1b0b134e02f8cbe92c56204",
+  "status": "prepared-unapplied",
+  "certification": false,
+  "archive": {
+    "file": "u3-retainer.tar.gz",
+    "bytes": 7261,
+    "sha256": "96bbc8e890db4e9569f5274f6bea9d33759b512f063077458d70d51c21f325ca",
+    "rawBytes": 30720,
+    "rawSha256": "cb358ef91b0428f142a970425b2f261b36919ed211b61e6c51b5be8168c9640f"
+  },
+  "files": [
+    {
+      "path": "cf-u3-retain-checkpoint-20260906.README.md",
+      "bytes": 3965,
+      "sha256": "d8b2ebfb742250fa14ebf0ae8200f2cecd2fbd0ebc810935de92c96013228646"
+    },
+    {
+      "path": "cf-u3-retain-checkpoint-20260906.py",
+      "bytes": 17946,
+      "sha256": "1241ef1412b039501b0f94cba7cedda425ce581ff16ad7659921827068ebc487"
+    }
+  ],
+  "notes": "No product application, tests, build or native checkpoint. Prior preparations remain immutable. Read archived README for scope, parser-only checks and gaps."
+}
