@@ -493,6 +493,34 @@
       "rawSha256": "d4718ca0d463aa8dea36479234c6f67d87f72102fc3c7c9906b380348d6f6d68",
       "bytes": 153,
       "sha256": "411d4e3a09706e1c35cc2ae9f6f0a4a77a519d917f49ffff7d452f98c3b71299"
+    },
+    {
+      "file": "cf-u2-3f1578e-terminal-verification-20260906.json.gz",
+      "rawBytes": 3759,
+      "rawSha256": "7d8d74a4ffe97c275f6559629ad72af93d241575c27dc691b6fad35759b21c13",
+      "bytes": 896,
+      "sha256": "1118be3ecb0dce1b3e055136be7a1423e9338e68dcef5dbfe7aed42e0ac98215"
+    },
+    {
+      "file": "cf-u2-run-caption-scope-20260906.cjs.gz",
+      "rawBytes": 4884,
+      "rawSha256": "2e49e0ef52064f2ec41d48790059035ad03ea825fd4f9203e4c417e1e68fbed6",
+      "bytes": 2040,
+      "sha256": "007e1b01529fcc5b1dfe9f84dbae8ec6b3339bccd057457487c261941adb6584"
+    },
+    {
+      "file": "cf-u2-caption-scope-checks-20260906.cjs.gz",
+      "rawBytes": 590,
+      "rawSha256": "45c53957f9ffbec7b2fc2cb6f5be8e8b3b32ce12fe8f843a6282e841693d881b",
+      "bytes": 349,
+      "sha256": "c1d4a88d8231f8ba830a3eaa441547504da79156e5379aa91a6e302dd89ac53d"
+    },
+    {
+      "file": "cf-u2-caption-scope-checks-20260906.log.gz",
+      "rawBytes": 1730,
+      "rawSha256": "1dbd0be1809774fa8a8e851aebac424e094c165b02a9dbb23bfae13a6b185779",
+      "bytes": 992,
+      "sha256": "6e0ab7b7f096325e81d25192e36d0a15e1f3864d45782f4c3f995b3701659b36"
     }
   ]
 }
