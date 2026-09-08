@@ -4,8 +4,9 @@ Latest local graphics checkpoint, September8: [Earth layered riverbank](AV_EARTH
 records explicit biome-family checks, current named resident bodies, measured unobstructed placement,
 351 focused tests and four final native modes PASS, plus a verified local human preview. Every first
 red is preserved. Creature artwork remains flat/simple below the approved painted target; global
-D-9e generation filtering and articulated motion remain open. Signing remains blocked; no hosted
-publication. ROADMAP.md owns resumption and the local staged-recovery receipt.
+D-9e generation filtering and articulated motion remain open. No hosted
+publication. [1Password signing was subsequently restored](SIGNING_RESTORED_20260908/README.md),
+and the exact local checkpoint is now signed as5117b4fa. ROADMAP.md owns current resumption.
 
 Previous local graphics checkpoint, September 8: [painted Mars composition](AV_PAINTED_MARS_COMPOSITION_20260908/README.md)
 records the unobstructed full panorama, 216 focused tests and four passing native modes. Both
