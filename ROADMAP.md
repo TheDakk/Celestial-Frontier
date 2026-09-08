@@ -19,6 +19,13 @@ the archive verbatim and refresh this handoff in place.
 
 ## SESSION HANDOFF — 2026-09-08 · EARTH LAYERED SCENE
 
+**Signing restored:** Nick unlocked 1Password and authorized one retry. The accumulated 1,177-file
+checkpoint committed successfully as `5117b4fa18afeb4869ac459b6f95dfd6a586edc6`; its SSH signature verified
+against the existing configured public signing key. [Signing receipt](audits/SIGNING_RESTORED_20260908/README.md).
+The working HEAD may be this documentation-only descendant; resolve it with `git rev-parse HEAD`.
+No product source, tests, signing configuration or hosted state changed during the retry.
+
+
 Nick's latest question concerns the creature→biome mapping. **BIOME_ATLAS.md §1.1 is the
 biome→allowed fauna-family/flora-form table**, mirrored by the versioned biome-profile domain.
 The optional new Earth scene explicitly checks its six selected canonical residents against
@@ -119,14 +126,18 @@ runtime assets. Older preview packages are unchanged; do not assume their old po
 Current recovery target: `port/v2/apps/game/smoke/earth-layered-staged-20260908.json` and adjacent
 `.patch.gz`. **Verify that receipt before claiming the snapshot succeeded.** Retain all six older
 recoveries: 989-file Mars composition, 918 painted Mars, 822 material, 773 turn, 654 painted
-direction and 647 charm. Required 1Password signing remains blocked after `failed to fill whole
-buffer`; no restoration evidence, retry, unsigned fallback, new commit or push. The index plus
-verified binary patch is recovery, not a clean signed head. Ambient `.DS_Store` is preserved.
-Historical manifests keep their original checkpoint bytes.
+direction and 647 charm. The new recovery is verified: 1,177 staged files before commit, raw
+SHA `49be51f83ed93cd5a80bd59095c76ea80e69b20316ea865480470b62f2ffc5fc`, gzip SHA
+`634cc045bba55fc37cb8075a90c0bcd383804c34223f469e93f217f3f89bb4c1`. The recorded single EOF
+blank-line formatting warning remains; backup integrity passed with that warning preserved.
+That exact index is now the signed checkpoint above. No unsigned fallback or push occurred.
+Ambient `.DS_Store` is preserved. Historical manifests and earlier signing failures keep their
+original checkpoint bytes; the signing-restoration receipt supersedes their current-status claims.
 
 Verified Codex/macOS: `/Users/nick/Projects/celestial-frontier-openai-mac`; `openai/mac`; upstream
-`origin/openai/mac`; HEAD `837db4aaa0ef5d3d8bffc79c70f62dcc2503032d`; 38 ahead / 0 behind;
-`origin/develop` is an ancestor. SSH origin: `git@github.com:TheDakk/Celestial-Frontier.git`;
+`origin/openai/mac`; signed implementation checkpoint `5117b4fa18afeb4869ac459b6f95dfd6a586edc6`;
+39 ahead / 0 behind at that commit, plus this documentation follow-up; resolve current HEAD/counts
+with Git. `origin/develop` is an ancestor. SSH origin: `git@github.com:TheDakk/Celestial-Frontier.git`;
 uninterrupted TheDakk read/fetch proof is retained. Startup receipt
 `audits/TOOLCHAIN_STARTUP_20260907/manifest.json` is reused only within this session; a new session
 follows the `UI_TOOLCHAIN.md` runbook. No fresh tool/dependency update this batch. Terminal/files
@@ -169,8 +180,8 @@ Earth-specific anatomy/movement; do not treat the flat composition as approved f
 controls and all blockers. Stop at the authorized 24-hour deadline with a documented checkpoint;
 no extension.
 
-Current side: Codex/macOS/`openai/mac` owns the local staged candidate, 38 ahead / 0 behind; signing
-is pending. GitHub step: none. PR details: not needed. Future separately authorized integration is
+Current side: Codex/macOS/`openai/mac` owns the signed local checkpoint and documentation follow-up;
+commit signing is working again. GitHub step: none. PR details: not needed. Future separately authorized integration is
 `openai/mac`→`develop`, never directly `main`. Budget: UNFROZEN/PUBLIC; private fallback 3000;
 exact hosted authority required; attempts/cost 0.
 

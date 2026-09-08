@@ -394,3 +394,13 @@ Signatures remain blocked, with no retry or unsigned fallback. New staged binary
 preserves six older snapshots. Next is one complete canonical rich creature/motion treatment,
 not another layout polish loop. The original 24-hour deadline, `2026-09-09T03:11:15Z`, and Thursday
 Claude review reminder are unchanged. There is no new schedule.
+
+
+## 1Password signing restored — September 8
+
+Nick confirmed 1Password was unlocked and authorized a retry. The exact verified 1,177-file
+staged checkpoint committed as `5117b4fa18afeb4869ac459b6f95dfd6a586edc6`, and its SSH signature verified
+against the existing configured public signing key. No unsigned fallback or persistent signing
+configuration change occurred. Earlier failures and binary recoveries remain preserved. The
+signing receipt is in SIGNING_RESTORED_20260908; ROADMAP records the current signed checkpoint.
+No product/test change, full-battery rerun, hosted action or publication followed from signing.
