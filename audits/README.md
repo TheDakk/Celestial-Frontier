@@ -13,6 +13,20 @@ summary of it.
 
 ## Contents
 
+### Playable graphics/audio priority and Thursday review — 2026-09-07
+
+[Next playable slice and Claude review brief](AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md)
+record Nick's expanded direction. The [manifest](AV_PLAYABLE_PRIORITY_20260907/manifest.json)
+preserves the complete staged U2 checkpoint before this priority update. No audiovisual code,
+new native run, signed commit or deployment resulted from this planning/record batch.
+
+### U2 post-close correction resumed — 2026-09-07
+
+[Current audit](UI_U2_POST_CLOSE_CORRECTION_20260907.md) records the bounded Claude-review
+correction and [preparation evidence](UI_U2_POST_CLOSE_PREPARATION_20260907/manifest.json).
+[Startup](TOOLCHAIN_STARTUP_20260907/manifest.json) records the approved Node update and verification.
+Native U2 results remain pending; earlier RED evidence and the full returned review are immutable.
+
 ### U2 pause checkpoint and returned Claude review — 2026-09-06
 
 [Next-session handoff](UI_U2_NEXT_SESSION_20260906.md) contains the complete bounded correction

@@ -1,5 +1,8 @@
 # Celestial Frontier — paused development checkpoint, 2026-09-06
 
+**Resumed2026-09-07:** ROADMAP.md and [the current correction audit](UI_U2_POST_CLOSE_CORRECTION_20260907.md)
+own live status. The pause record and unapplied U3/U4 preparation below remain preserved.
+
 Nick requested a pause at6% remaining usage. No more development or native checks this session.
 Read ROADMAP.md first, then this file, PROCESS_LAWS.md, PARALLEL_GIT_PROTOCOL.md and the current
 UI references. Use the latest signed documentation checkpoint on openai/mac; it changes no

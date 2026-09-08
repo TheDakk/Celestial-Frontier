@@ -1,4 +1,19 @@
 # Celestial Frontier v2 — Complete Graphics, Audio & Polish Production Plan
+
+## Playable audiovisual priority — Nick, 2026-09-07
+
+Nick requested graphics/audio implementation beyond U2–U4, incremental fixes and a development
+playtest candidate, with documented review for Claude Thursday2026-09-10. Local work can proceed
+without waiting for that review. The existing campaign's graphics/audio-first sequence owns the
+priority; exhaustive UI polish is deferred while play-blocking defects remain actionable.
+The first proposed slice joins prepared Earth/Scout visuals and the authored landing cue to an
+actual successfully rendered native landing, with strict gesture/outcome/lifecycle ownership.
+It is not implemented yet. Follow ROADMAP.md and
+ audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md for scope and evidence.
+Human art/listening/device acceptance remains open; no unseen direction is declared accepted.
+No exact hosted/publication authority exists. Earlier dated scope stops below remain history and
+are superseded only for this newly requested local implementation, not verification claims.
+
 ## Audiovisual pilot implementation — 2026-09-05 local
 
 Nick authorized B–D production under the integrated-pilot approval stop. Develop `c1791e2`

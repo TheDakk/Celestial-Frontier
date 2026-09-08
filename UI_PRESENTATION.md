@@ -1,5 +1,9 @@
 # Celestial Frontier — UI / Presentation System
 
+Execution priority2026-09-07: Nick requested playable graphics/audio progress before exhaustive
+U3/U4 polish; see ROADMAP.md and audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md.
+The U2 preparation below remains verified/staged but unsigned; no native or audiovisual PASS is implied.
+
 U1 layout correction (2026-09-06): the existing body-class observer republishes the final
 header height after a same-task Settings open/change/close transition, keeping the rails below
 Search/Objective even when ResizeObserver sees no net size change. Restored visible rail
@@ -15,21 +19,17 @@ INSTRUMENT RED/zero product findings: the top-clearance setup toggled an already
 open and then waited5000ms for it to close. Large-phone and Slice were NOT RUN. The nine-carrier
 checkpoint and named terminal/browser read[]/[] retain this failure; no full U2 PASS is claimed.
 
-The bounded tool-only correction establishes the closed predecessor from observed state and
-uses a real native Close only when needed. Adjacent clearance checks must measure painted upper
-controls rather than pointer-transparent wrapper padding; the separate AppChrome variable still
-has its own complete-wrapper meaning. Existing floating-trail/fallback mutations and exact
-cleanup need named fonts/two-frame settlement before dependent geometry now that sheet layout
-is frame-scheduled. Native thresholds, negative controls, first-error retention and product bytes
-remain unchanged. Nick paused development with6% usage remaining. The unfinished patch is
-archived in audits/UI_U2_POST_CLOSE_PAUSED_20260906 and is UNAPPLIED; the working tool was
-restored exactly to signed3a61352. No patch tests, syntax check or native run occurred.
-Claude's subsequent read-only review confirmed the diagnosis but found the draft NOT ready:
-exclude the injected trail from band-fixture fixed rows, preserve the first fixture error before
-settlement-label validation, resolve activation ordering and add source-executing controls.
-The full response is retained at audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md; these findings
-remain unimplemented and unverified. Read ROADMAP.md and audits/UI_U2_NEXT_SESSION_20260906.md
-before resuming. Development remains paused.
+Nick resumed on2026-09-07. The re-derived tool correction observes strict Survey state, closes
+only when open with one trusted activation and the existing5000ms strict-false wait, then binds
+one named fonts/two-frame receipt. Painted controls define clearance while AppChrome retains its
+distinct full-wrapper measurement. Only band-fixture fixed rows omit the separately measured
+injected trail. Seven named fixture/restoration/cleanup boundaries preserve the first error;
+failed cleanup cannot authorize dependent geometry. Thresholds and product bytes are unchanged.
+Claude's full response and original unapplied draft remain immutable. Independent source review
+CLEAR;99 focused tests, all3 TypeScript programs and root validate/50 fingerprints PASS after two
+retained test-preparation corrections. Fresh canonical native attempt is pending on committed
+source. Read ROADMAP.md and audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md for current status;
+audits/UI_U2_NEXT_SESSION_20260906.md preserves the unapplied U3/U4 preparation map.
 
 The current bounded correction measures every visible portrait sheet's header/insets plus44px
 body, the stacked Survey/biosphere allocation, and standalone Planetside72px below actual painted

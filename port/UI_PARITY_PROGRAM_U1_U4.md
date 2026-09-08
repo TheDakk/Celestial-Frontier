@@ -1,5 +1,30 @@
 # UI parity and presentation program — accepted brief
 
+## Playable audiovisual priority — Nick, 2026-09-07
+
+Nick requested graphics/audio implementation beyond U2–U4, incremental fixes and a development
+playtest candidate, with documented review for Claude Thursday2026-09-10. Local work can proceed
+without waiting for that review. The existing campaign's graphics/audio-first sequence owns the
+priority; exhaustive UI polish is deferred while play-blocking defects remain actionable.
+The first proposed slice joins prepared Earth/Scout visuals and the authored landing cue to an
+actual successfully rendered native landing, with strict gesture/outcome/lifecycle ownership.
+It is not implemented yet. Follow ROADMAP.md and
+ audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md for scope and evidence.
+Human art/listening/device acceptance remains open; no unseen direction is declared accepted.
+No exact hosted/publication authority exists. Earlier dated scope stops below remain history and
+are superseded only for this newly requested local implementation, not verification claims.
+
+
+### U2 post-close correction resumed — 2026-09-07
+
+Nick resumed from the documented pause. The bounded tool correction implements Claude's findings:
+strict observed-state closure with at most one trusted activation/unchanged5000ms wait, painted
+upper controls with band-only trail exclusion, and named fixture/cleanup frames preserving the
+first failure. Independent review CLEAR;99 focused tests,3 TypeScript programs and root validate
+PASS. Two test-preparation failures and corrections are retained. Product/pins/thresholds unchanged.
+The new canonical native attempt is pending; U2 remains open and U3/U4 gated. See
+ audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md and ROADMAP.md. No Phase2 or hosted action.
+
 ### Claude review received while U2 remains paused — 2026-09-06
 
 Nick supplied the read-only response; audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md retains it

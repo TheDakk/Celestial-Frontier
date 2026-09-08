@@ -1,0 +1,24 @@
+==> Updating Homebrew...
+Updated 2 taps (homebrew/core and homebrew/cask).
+==> New Formulae
+pnpm@11: Fast, disk space efficient package manager
+rubocop: Ruby static code analyzer and formatter, based on the community Ruby style guide
+snx-rs: Open-source client for Check Point VPN tunnels
+trealla-prolog: Compact and efficient ISO Prolog interpreter written in plain old C
+==> New Casks
+gamemaker@beta: Complete development tool for making 2D games
+minmaxcal: Minimal menu bar calendar, maximal full-screen notifications
+omniwm: Tiling window manager
+open-science: AI research workbench with scientific agents and notebooks
+stockbit: Indonesian stock trading and analysis platform
+==> Outdated Formulae
+libffi
+libheif
+merve
+node
+simdjson
+simdutf
+
+You have 6 outdated formulae installed.
+You can upgrade them with brew upgrade
+or list them with brew outdated.

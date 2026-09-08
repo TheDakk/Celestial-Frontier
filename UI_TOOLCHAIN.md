@@ -16,10 +16,20 @@ sandbox Inkscape control was attempted. Sanitized evidence/hashes are in the stu
 `inkscape-crash-diagnosis.json`. Never treat Inkscape's version query as browser-free/sandbox-
 safe; any future qualification must handle its GUI launch requirements on the first attempt.
 
-Verified on **2026-09-06**, macOS 26.6.2 / Apple Silicon. This is the maintained tool reference;
+Verified on **2026-09-07**, macOS 26.6.2 / Apple Silicon. This is the maintained tool reference;
 versions are observations, never a permanent assumption. Nick authorized the three additions
 and automatic maintenance of active development tools. Players install none of these tools.
 The browser/PWA game remains the product; tooling readiness does not mean artistic acceptance.
+
+**Session startup — 2026-09-07:** [Receipt](audits/TOOLCHAIN_STARTUP_20260907/manifest.json)
+retains the official stable check, scoped Homebrew refresh/outdated result, relevant process
+inventory, dry-run dependency plan and completed upgrade/verification. Node26.7.0→26.8.1 with
+libffi3.8.0, simdutf9.1.1, merve1.2.2_2 and simdjson4.6.11; npm remains11.19.0 and Homebrew6.0.22.
+All seven CLI capability checks PASS, including the existing Python audio venv. No game/runtime
+lock or package changed. REAPER was active but current; no apps/jobs were stopped. Inkscape was
+read through metadata only and remains unqualified after the prior registration crashes.
+The Node update previously deferred on2026-09-06 is now complete; preserve this version through
+the resumed coding/check chain. Caffeinate -i was restarted at Nick's request (PID93550).
 
 ## Executive fit
 
@@ -64,7 +74,7 @@ GPU selection does not itself establish better artwork or a measured speedup.
 | REAPER | 7.79.0_06dd787u | Existing .rpp, embedded MIDI/plugin state and reference renders. Desktop process/dialogs remain possible; a license file exists, validity/recognition unverified. Never print/read its key for inventory. |
 | Python | Homebrew python@3.12 3.12.14 | Isolated scripting runtime at tools/audio-render/.venv; standard library only for now. Apple Python 3.9.6 remains separate. |
 | GSAP | 3.15.0 in tools/ui-motion | Isolated motion-authoring dependency; not imported by the game. Future integration respects reduced motion and native focus/click owners. |
-| Node / npm | 26.7.0 / 11.19.0 | Existing project/tool execution. Node 26.8.1 available, deferred because six managed Node processes were active during setup. |
+| Node / npm | 26.8.1 / 11.19.0 | Managed Node updated while idle at the 2026-09-07 startup; CLI capability verified. Bundled app Node processes remain separate. |
 | Homebrew | 6.0.22 | Official formula/cask installation and scoped stable updates. |
 | GitHub CLI | 2.100.0 (updated from 2.97.0) | Repository metadata and separately authorized GitHub operations; maintenance does not authorize hosted work. |
 | Apple Git | 2.50.1 | Signed source history and normal agent-branch workflow. Apple/Xcode owns its updates; do not replace it with another Git installation automatically. |

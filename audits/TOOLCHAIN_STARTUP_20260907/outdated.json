@@ -1,0 +1,14 @@
+{
+  "formulae": [
+    {
+      "name": "node",
+      "installed_versions": [
+        "26.7.0"
+      ],
+      "current_version": "26.8.1",
+      "pinned": false,
+      "pinned_version": null
+    }
+  ],
+  "casks": []
+}
