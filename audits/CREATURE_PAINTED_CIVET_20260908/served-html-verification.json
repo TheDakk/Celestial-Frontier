@@ -1,0 +1,9 @@
+{
+  "schema": "cf-civet-served-html-verification/v1",
+  "url": "http://127.0.0.1:58519/",
+  "status": 200,
+  "bytes": 3727,
+  "sha256": "48d4cd68d92330f546c968f676dc89f638b1b1209b2b3c05e6c1fc2dbdac3811",
+  "source": "study-native-final/report.json dist.inventory study.html",
+  "checkedAt": "2026-09-08T22:42:33.235Z"
+}

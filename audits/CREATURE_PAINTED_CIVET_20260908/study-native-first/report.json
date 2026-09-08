@@ -1,0 +1,482 @@
+{
+  "schema": "cf-painted-civet-study-native/v1",
+  "certification": false,
+  "status": "FAIL",
+  "startedAt": "2026-09-08T22:23:38.689Z",
+  "sourceCommit": "5e222931efd642c03ce55c5e67f7670a7aef890c",
+  "node": "v26.8.1",
+  "sources": {
+    "audits/CREATURE_PAINTED_CIVET_20260908/study.html": "aa5b56b182d8599785532302d88176d4c7f963e244ef0acdd28d365557f0b6f4",
+    "audits/CREATURE_PAINTED_CIVET_20260908/study-harness.ts": "22c64f1d908f623a57108166ce5e21d5f97311438e3aacaaad80cbdf72dd7c26",
+    "audits/CREATURE_PAINTED_CIVET_20260908/study-runner.mjs": "06b0ec480cfd37a7a4432109379003037b25ab60c7bdfe99e8e71c157cea4359",
+    "audits/CREATURE_PAINTED_CIVET_20260908/serve-study.mjs": "5853afc75d99bf4eef093c5287cf792c6c754c443f988a094f24f8c091547ef6",
+    "audits/CREATURE_PAINTED_CIVET_20260908/study.tsconfig.json": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4",
+    "audits/CREATURE_PAINTED_CIVET_20260908/asset.json": "9046bf17d8184125cf571932b1edf92a618db5e2c1b7e8917b90449b44450219",
+    "port/v2/tools/painted-creature/civet-rig.ts": "48aaf152fad5400aea706e957df6b7395a95c318f2f28c14b9336e31d7dfcae9",
+    "port/v2/packages/art/src/earth-resident-plan.ts": "72d27b39e9c15382638f4db09074198e0eb296a18affafc740bbdc89e7f311f6"
+  },
+  "modes": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1200,
+      "dpr": 1,
+      "mobile": false,
+      "events": [
+        {
+          "id": "breathe",
+          "hit": {
+            "x": 273.671875,
+            "y": 162.796875,
+            "width": 122.34375,
+            "height": 44,
+            "disabled": false,
+            "hit": true
+          }
+        },
+        {
+          "kind": "finite-native-clip",
+          "clip": "breathe",
+          "started": {
+            "decodedCreature": 1,
+            "creatureTextures": 1,
+            "creatureSources": 1,
+            "rafRequested": 4,
+            "frames": 3,
+            "started": 1,
+            "completed": 0,
+            "cancelled": 0,
+            "meshesDestroyed": 0,
+            "geometriesDestroyed": 0,
+            "texturesDestroyed": 0,
+            "sourcesDestroyed": 0,
+            "bitmapsClosed": 0,
+            "renders": 8
+          },
+          "settled": {
+            "decodedCreature": 1,
+            "creatureTextures": 1,
+            "creatureSources": 1,
+            "rafRequested": 254,
+            "frames": 254,
+            "started": 1,
+            "completed": 1,
+            "cancelled": 0,
+            "meshesDestroyed": 0,
+            "geometriesDestroyed": 0,
+            "texturesDestroyed": 0,
+            "sourcesDestroyed": 0,
+            "bitmapsClosed": 0,
+            "renders": 259
+          }
+        },
+        {
+          "id": "strike",
+          "hit": {
+            "x": 415.9921875,
+            "y": 162.796875,
+            "width": 146.296875,
+            "height": 44,
+            "disabled": false,
+            "hit": true
+          }
+        },
+        {
+          "kind": "finite-native-clip",
+          "clip": "strike",
+          "started": {
+            "decodedCreature": 1,
+            "creatureTextures": 1,
+            "creatureSources": 1,
+            "rafRequested": 257,
+            "frames": 256,
+            "started": 2,
+            "completed": 1,
+            "cancelled": 0,
+            "meshesDestroyed": 0,
+            "geometriesDestroyed": 0,
+            "texturesDestroyed": 0,
+            "sourcesDestroyed": 0,
+            "bitmapsClosed": 0,
+            "renders": 262
+          },
+          "settled": {
+            "decodedCreature": 1,
+            "creatureTextures": 1,
+            "creatureSources": 1,
+            "rafRequested": 315,
+            "frames": 315,
+            "started": 2,
+            "completed": 2,
+            "cancelled": 0,
+            "meshesDestroyed": 0,
+            "geometriesDestroyed": 0,
+            "texturesDestroyed": 0,
+            "sourcesDestroyed": 0,
+            "bitmapsClosed": 0,
+            "renders": 321
+          }
+        },
+        {
+          "id": "recoil",
+          "hit": {
+            "x": 532.0859375,
+            "y": 162.796875,
+            "width": 69.890625,
+            "height": 44,
+            "disabled": false,
+            "hit": true
+          }
+        },
+        {
+          "kind": "finite-native-clip",
+          "clip": "recoil",
+          "started": {
+            "decodedCreature": 1,
+            "creatureTextures": 1,
+            "creatureSources": 1,
+            "rafRequested": 318,
+            "frames": 317,
+            "started": 3,
+            "completed": 2,
+            "cancelled": 0,
+            "meshesDestroyed": 0,
+            "geometriesDestroyed": 0,
+            "texturesDestroyed": 0,
+            "sourcesDestroyed": 0,
+            "bitmapsClosed": 0,
+            "renders": 324
+          },
+          "settled": {
+            "decodedCreature": 1,
+            "creatureTextures": 1,
+            "creatureSources": 1,
+            "rafRequested": 359,
+            "frames": 359,
+            "started": 3,
+            "completed": 3,
+            "cancelled": 0,
+            "meshesDestroyed": 0,
+            "geometriesDestroyed": 0,
+            "texturesDestroyed": 0,
+            "sourcesDestroyed": 0,
+            "bitmapsClosed": 0,
+            "renders": 366
+          }
+        }
+      ],
+      "probes": [
+        {
+          "clip": "breathe",
+          "elapsed": 2100,
+          "mutation": null,
+          "sourceFixed": true,
+          "pose": {
+            "breath": 1,
+            "drive": 0,
+            "tail": 1.2246467991473532e-16
+          },
+          "outputs": [
+            {
+              "size": 440,
+              "width": 440,
+              "height": 440,
+              "delta": {
+                "all": 24265,
+                "head": 1319,
+                "body": 17355,
+                "contact": 44,
+                "headInk": 4358,
+                "bodyInk": 16689,
+                "contactInk": 4,
+                "maximumChannelDelta": 255
+              },
+              "image": {
+                "path": "desktop-breathe-440.png",
+                "bytes": 103509,
+                "sha256": "88584ea4f11ae3e81c102377b551791600e50b4cc869dfe9c653bcbfdb76d06c"
+              },
+              "baseline": {
+                "path": "desktop-breathe-440-rest.png",
+                "bytes": 103241,
+                "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+              }
+            },
+            {
+              "size": 300,
+              "width": 300,
+              "height": 300,
+              "delta": {
+                "all": 11291,
+                "head": 604,
+                "body": 8087,
+                "contact": 23,
+                "headInk": 2023,
+                "bodyInk": 7759,
+                "contactInk": 0,
+                "maximumChannelDelta": 255
+              },
+              "image": {
+                "path": "desktop-breathe-300.png",
+                "bytes": 51256,
+                "sha256": "7bc99a2eec5ca9b89285b9b13d1600084ab1205dd222199bece847693edbb758"
+              },
+              "baseline": {
+                "path": "desktop-breathe-300-rest.png",
+                "bytes": 51061,
+                "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+              }
+            },
+            {
+              "size": 132,
+              "width": 132,
+              "height": 132,
+              "delta": {
+                "all": 2191,
+                "head": 113,
+                "body": 1591,
+                "contact": 0,
+                "headInk": 382,
+                "bodyInk": 1534,
+                "contactInk": 0,
+                "maximumChannelDelta": 255
+              },
+              "image": {
+                "path": "desktop-breathe-132.png",
+                "bytes": 11426,
+                "sha256": "2dd229231331d640e485299361d8ea95579cd8f137a1a7e92441eb84ba36f633"
+              },
+              "baseline": {
+                "path": "desktop-breathe-132-rest.png",
+                "bytes": 11370,
+                "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+              }
+            }
+          ],
+          "scene": {
+            "path": "desktop-breathe-earth.png",
+            "bytes": 930685,
+            "sha256": "934d7bf44af2ca174febc7567fe23f86d6cdde7641d9349a1009b022e9a6dd64"
+          }
+        }
+      ],
+      "controls": [
+        {
+          "kind": "asset-admission",
+          "hashRejected": true,
+          "opaqueRejected": true,
+          "immutableGenome": true
+        }
+      ],
+      "screenshots": [],
+      "status": "RUNNING",
+      "initial": {
+        "ready": true,
+        "disposed": false,
+        "clip": "rest",
+        "elapsed": 0,
+        "pendingRaf": false,
+        "currentPose": {
+          "breath": 0,
+          "drive": 0,
+          "tail": 0
+        },
+        "sequence": 0,
+        "policy": {
+          "effectsOn": true,
+          "fullMotion": true,
+          "visible": true
+        },
+        "counters": {
+          "decodedCreature": 1,
+          "creatureTextures": 1,
+          "creatureSources": 1,
+          "rafRequested": 0,
+          "frames": 0,
+          "started": 0,
+          "completed": 0,
+          "cancelled": 0,
+          "meshesDestroyed": 0,
+          "geometriesDestroyed": 0,
+          "texturesDestroyed": 0,
+          "sourcesDestroyed": 0,
+          "bitmapsClosed": 0,
+          "renders": 2
+        },
+        "lastCancellation": "layout settled",
+        "failures": [],
+        "journal": [
+          {
+            "event": "rest",
+            "reason": "layout settled",
+            "sequence": 0
+          }
+        ],
+        "sourceIdentityUnchanged": true,
+        "allActorsShareOneCreatureTexture": true,
+        "actors": [
+          {
+            "size": 440,
+            "vertices": 3234,
+            "restExact": true,
+            "meshDestroyed": false,
+            "geometryDestroyed": false,
+            "position": {
+              "x": 14.528301886792462,
+              "y": 81.77358490566039
+            },
+            "scale": {
+              "x": 409.87601078167114,
+              "y": 273.2506738544474
+            }
+          },
+          {
+            "size": 300,
+            "vertices": 3234,
+            "restExact": true,
+            "meshDestroyed": false,
+            "geometryDestroyed": false,
+            "position": {
+              "x": 9.905660377358487,
+              "y": 55.75471698113208
+            },
+            "scale": {
+              "x": 279.46091644204853,
+              "y": 186.30727762803235
+            }
+          },
+          {
+            "size": 132,
+            "vertices": 3234,
+            "restExact": true,
+            "meshDestroyed": false,
+            "geometryDestroyed": false,
+            "position": {
+              "x": 4.358490566037737,
+              "y": 24.532075471698114
+            },
+            "scale": {
+              "x": 122.96280323450135,
+              "y": 81.97520215633423
+            }
+          },
+          {
+            "size": 960,
+            "vertices": 3234,
+            "restExact": true,
+            "meshDestroyed": false,
+            "geometryDestroyed": false,
+            "position": {
+              "x": 616.4830188679244,
+              "y": 250.75498652291108
+            },
+            "scale": {
+              "x": 149.04582210242586,
+              "y": 99.36388140161725
+            }
+          }
+        ],
+        "resources": [
+          {
+            "name": "creature",
+            "disposed": false,
+            "textureDestroyed": false,
+            "sourceDestroyed": false,
+            "bitmapWidth": 768,
+            "bitmapHeight": 512
+          },
+          {
+            "name": "background",
+            "disposed": false,
+            "textureDestroyed": false,
+            "sourceDestroyed": false,
+            "bitmapWidth": 960,
+            "bitmapHeight": 430
+          },
+          {
+            "name": "residents",
+            "disposed": false,
+            "textureDestroyed": false,
+            "sourceDestroyed": false,
+            "bitmapWidth": 960,
+            "bitmapHeight": 430
+          }
+        ],
+        "canvas": {
+          "width": 998,
+          "height": 950,
+          "css": {
+            "x": 213.5,
+            "y": 241.796875,
+            "width": 998,
+            "height": 950,
+            "top": 241.796875,
+            "right": 1211.5,
+            "bottom": 1191.796875,
+            "left": 213.5
+          }
+        }
+      }
+    }
+  ],
+  "runtimeErrors": [],
+  "cleanupErrors": [],
+  "pending": null,
+  "limitations": [
+    "Standalone local authoring bench. No native Compendium, battle, world navigation, protected save or product certificate claim.",
+    "One-view texture deformation supports finite breathing and neck brace/thrust/recoil, not jaw articulation, walking, a 3D rig or unseen anatomy.",
+    "Single shared decoded Civet texture within each document; measurements are resource-owner facts, not native driver heap, device heat or a total app memory cap.",
+    "Recovered matte retains attenuated whiskers and a small light fringe at magnification; production clean-edge and human art acceptance remain open.",
+    "DOM-hidden cancellation and synthetic document-hidden event coverage are distinct. Physical background-tab/PWA/Safari behavior remains unqualified."
+  ],
+  "asset": {
+    "schema": "cf-painted-civet-study-asset/v1",
+    "path": "civet-painted-v1.webp",
+    "sha256": "7df99d643544f47f0b9cfd22e97e3bcb8af5ccc184a51f29d2e6c42c603815ac",
+    "bytes": 179856,
+    "width": 768,
+    "height": 512,
+    "alphaBounds": {
+      "x0": 14,
+      "y0": 102,
+      "x1": 755,
+      "y1": 415
+    },
+    "contactY": 413,
+    "transparentPixels": 281825,
+    "opaquePixels": 105976,
+    "partialPixels": 5415,
+    "sourceMaster": "alpha-v3/civet-painted-v1.png",
+    "sourceMasterSha256": "55633a07d1d03ef55d9a3493bd5e03b871eb1ef0db57b2cb5b6d39ec48ff2508",
+    "rawRGBASourceBytes": 1572864,
+    "identity": "Exact original Civet Earth133 epoch0 genome; bound by civet-rig.ts full29-field serialization.",
+    "admission": "Local authoring study only; not imported by game.",
+    "alphaAuthority": "Nick explicitly requested ImageMagick alpha extraction.",
+    "edgeLimit": "Approximate recovered matte. Fine whiskers are attenuated; small bright fur fringe remains visible at magnification. Production clean-edge acceptance remains open."
+  },
+  "scene": {
+    "background": {
+      "path": "./study-assets/earth-background-original.webp",
+      "sha256": "2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8",
+      "width": 960,
+      "height": 430
+    },
+    "residents": {
+      "path": "./study-assets/earth-residents-without-civet.png",
+      "sha256": "64d24cdbc37a7212e0c7cc9c511d0f754d7c8e17c93f43abd3c4a2d991788ca9",
+      "width": 960,
+      "height": 430
+    }
+  },
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  },
+  "failure": "AssertionError [ERR_ASSERTION]: Actual planted ground-contact pixels moved at 440\n\n44 !== 0\n\n    at acceptProbe (file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_PAINTED_CIVET_20260908/study-runner.mjs:40:12)\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_PAINTED_CIVET_20260908/study-runner.mjs:115:151",
+  "browserClosed": true,
+  "finishedAt": "2026-09-08T22:23:46.594Z"
+}

@@ -1,0 +1,13 @@
+
+> cf-v2@0.0.0 test
+> vitest run tests/painted-civet-rig.test.ts
+
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  1 passed (1)
+      Tests  113 passed (113)
+   Start at  18:30:51
+   Duration  669ms (transform 25ms, setup 0ms, import 33ms, tests 563ms, environment 0ms)
+

@@ -7,6 +7,27 @@ world units; an explicit scale contract is needed before such a claim. See the
 [scene brief](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/ENGINE_AND_SCENE_BRIEF.md).
 
 
+## Earth and alien plant reference distinction — 2026-09-08
+
+The [new Earth flora/fauna and alien-flora sheets](audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/README.md)
+extend the existing painted direction. Named Earth plants retain real species growth habits,
+branching, leaves, flowers, fruits and canonical colors. Alien flora may use richer unusual
+whole growth structures and organic materials while retaining its seeded final form, color
+atlas and allowed biome-family mapping. Reference roots are anatomy cues; scene plants remain
+grounded and embedded appropriately. These sheets add no biome/species IDs or probabilities,
+change no canonical roster, and do not repair the global D-9e generation-filter gap. They are
+opaque authoring references; neither is a shipped flora asset pack. Matches code as of 2026-09-08.
+
+## Local scene-cohesion study — matches study code as of 2026-09-08
+
+The [bounded Civet/scene comparison](audits/CREATURE_SCENE_COHESION_20260908/README.md)
+uses the same canonical six residents and relative anchors. Diffuse resident-only color balance
+and actual support shadows improve contact without changing the landscape, source identities or
+allowed families. At Civet’s wet mud/pebble location no tall occluder is justified; no invented
+grass, rocks, reflection or submersion. Existing legacy painter shadows remain in their original
+layer. This is an authoring study, not native integration, metre-scale ecology or a D-9e fix.
+The five older flat residents and Civet alpha-edge qualification remain unfinished.
+
 ## Supplied painted-biome direction — 2026-09-08
 
 Nick approved the original space/creature references for visual direction and has now supplied

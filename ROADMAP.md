@@ -17,134 +17,173 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-08 · EARTH LAYERED SCENE
+## SESSION HANDOFF — 2026-09-08 · PAINTED CIVET STUDY + EARTH/ALIEN REFERENCES
 
-**Signing restored:** Nick unlocked 1Password and authorized one retry. The accumulated 1,177-file
-checkpoint committed successfully as `5117b4fa18afeb4869ac459b6f95dfd6a586edc6`; its SSH signature verified
-against the existing configured public signing key. [Signing receipt](audits/SIGNING_RESTORED_20260908/README.md).
-The working HEAD may be this documentation-only descendant; resolve it with `git rev-parse HEAD`.
-No product source, tests, signing configuration or hosted state changed during the retry.
+**Latest bounded result — environment cohesion:** Nick asked to ground flora/fauna and apply his
+post-generation Earth reference, then asked whether the direction fits. The new
+[scene-cohesion packet](audits/CREATURE_SCENE_COHESION_20260908/README.md) is complete as a local
+study. Its calmer original Civet has a repaired nose alpha, modest overcast scene light and
+measured contacts. A busier new generation and its damaged nose/tail matte were rejected and
+retained. The full scene is **not art-complete**: Civet fine fringe/whiskers and five older flat
+residents remain below the final bar. No native game integration or human acceptance is claimed.
+No tall occluder is justified at the wet mud/pebble contact; no invented grass/rocks/reflection.
+The first study’s 374-file staged recovery remains verified; its RECOVERY_POINTER.md is historical.
 
+Latest selected asset: 768×512, 179,816 bytes, SHA
+`186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365`; every original RGB byte retained.
+Study typecheck/syntax/root validation PASS. New final native Edge desktop/phone PASS: eight
+motion probes and eleven control groups each; exact four-paw census, 15 visible contacts,
+359,128 unchanged unowned background pixels, trusted grounding-toggle canvas change/restoration,
+all owned shadow/filter resources retired while borrowed layers/sibling remain live, then full
+base study disposal. Missing/shifted/absent shadows, excessive light and background grade reject.
+The first native FAIL (legacy ground ruler wrongly required zero alpha despite retained
+translucent painter shadows) remains intact; phone/new controls/disposal were not reached there.
+Final report SHA `2707b001df593cbc7d163d556457d95a54bf8d544de5e189b037da179941bbb7`.
 
-Nick's latest question concerns the creature→biome mapping. **BIOME_ATLAS.md §1.1 is the
-biome→allowed fauna-family/flora-form table**, mirrored by the versioned biome-profile domain.
-The optional new Earth scene explicitly checks its six selected canonical residents against
-that profile. This is not a universal named-species/geographic ecology database. The older global
-D-9e generation filter remains dead, unfixed and decision-gated; see WORLD_GENERATION.md and
-port/v2/DEVIATIONS.md. Do not claim it is globally enforced or alter generated rosters to hide it.
-[Exact mapping/source review](audits/AV_EARTH_LAYERED_SCENE_20260908/BIOME_MAPPING.md).
+[Latest local comparison](http://127.0.0.1:58521/) is served by PID 7541 / exec 84561 from the
+immutable 17-file / 1,837,000-byte native-ground-ruler/dist. Inventory SHA
+`a753263db4ecc4a081a486e9cde36544f3e34c1dc60a3ab9ca78cc854148df9f`. HTTP 200 exact HTML hash verified
+outside Seatbelt after a sandbox EPERM; app-open queued only. Earlier port 58519 stays separate.
 
-### Authority and binding art direction
+**Current bounded result:** one complete rich-painted canonical Civet and a finite connected-mesh
+motion study, plus Nick’s two new Earth flora/fauna and alien-flora reference sheets. Native game
+integration is unimplemented. The local game still uses its existing creature/plant painters,
+flattened Earth resident layer and whole-portrait battle motion. No Guide/Training/release-note,
+version, save, roster, RNG, lineage, biome or accepted UI placement changed in this batch.
 
-Nick authorized 24 hours of local graphics/audio/UI coding ending **2026-09-09T03:11:15Z**
-(Tuesday, September 8, 23:11:15 Eastern); Claude review is Thursday, September 10. No extension or
-broad UI rework loop. [Campaign](audits/AV_24H_CAMPAIGN_20260907.md). The interrupting automation
-`celestial-frontier-48-hour-coding` was **DELETED**, with stored removal verified; do not recreate it.
+[Review packet](audits/CREATURE_PAINTED_CIVET_20260908/README.md),
+[final results](audits/CREATURE_PAINTED_CIVET_20260908/final-results.json), and
+[visual review](audits/CREATURE_PAINTED_CIVET_20260908/VISUAL_REVIEW.md) are the entry points.
+Starting/current HEAD: `5e222931efd642c03ce55c5e67f7670a7aef890c`. **The first new signed commit
+failed with 1Password “failed to fill whole buffer” / exit 128.** Completed work remains staged;
+[original failure](audits/CREATURE_PAINTED_CIVET_20260908/SIGNING_FIRST_FAILURE.md) is retained.
+No unsigned fallback, signing configuration change or automatic retry. Nick was informed that
+the local signer needs attention; resolve HEAD and the commit receipt after a restored-state
+retry. Earlier SIGNING_RESTORED_20260908 is historical success for its own checkpoints. No hosted
+write is authorized. The previous Earth handoff is archived verbatim atop ROADMAP_ARCHIVE.md.
 
-Keep the approved rich painted universe/creature sheets preserved in
-PAINTED_SPACE_PIPELINE_20260908 and biome/UI references in PAINTED_SPACE_DIRECTION_ADDENDUM_20260908.
-UI is graphic/material inspiration only: retain CF's accepted controls, emoji, text and placement.
-Earth organisms retain named anatomy, proportions, markings, canonical colors and appropriate
-movement. Alien identities/lineage remain seeded. No project restart or replacement art style.
+### Authority, art direction and exact identity
 
-### Current bounded result and honest visual assessment
+Nick’s local campaign still ends **2026-09-09T03:11:15Z** (September 8, 23:11:15 Eastern).
+Claude review is Thursday, September 10. No extension or broad rework loop. The
+`celestial-frontier-48-hour-coding` automation was deleted; **do not recreate scheduled prompts**.
+[Campaign authority](audits/AV_24H_CAMPAIGN_20260907.md).
 
-`?livingvista=1` now mounts an optional exact Earth 133#2 rainy riverbank painting with a separate
-transparent resident layer. Exact world: `CF1|g:999@90,-60|s:424242@560,170|p:133#2`;
-environment: `cwe1:148:50c1b7d6`; profile: `temperate/bpd1-6fce883d4d70e3b6bde0fb184b416e8e`.
-The full request plus all 19 ordered original epoch 0 genomes bind admission. Selected residents:
-Civet/Platypus (mammal), Frog (amphibian), Persimmon (tree), Cranberry/Devil's Club (shrub).
-Their current named Compendium bodies/palettes are reused; raw randomized habitat/loco overlays
-do not define named Earth ecology. No roster, genome, encounter, RNG, save or share rewrite.
+Continue the approved painted universe/creature sheets in PAINTED_SPACE_PIPELINE_20260908 and
+biome/UI addendum in PAINTED_SPACE_DIRECTION_ADDENDUM_20260908. The new exact copies/hashes in
+[PAINTED_EARTH_AND_ALIEN_FLORA_20260908](audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/README.md)
+are now reflected in ART_DIRECTION, SPECIES_AND_GENOME, BIOME_ATLAS and the codebase reference:
 
-Both 960×430 layers publish atomically with request/epoch fences and bounded workers. The pair
-fits uncropped into the measured gap above Biosphere with 12 px clearance. Only its owned
-decorative globe/cloud deck is hidden; controls/world/camera remain. Final landing-camera impulse
-completion restores resting placement after canvas translation. Original opaque fallback serves
-default, failed and conflicting planetturn/avpilot options. Failed ownership cleanup retains
-unsafe references for retry and continues sibling cleanup; no pair cache. The asset is 130,306
-bytes, SHA `2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8`; retained RGBA
-is 3,302,400 bytes before scratch/decode/GPU. The optional named-art worker is 957,316 bytes, an
-unoptimized lazy cost.
+- Earth fauna retain named anatomy, proportions, markings, natural colors and movement. Earth
+  flora retain actual growth habit, branching/crown, leaves, flowers and fruit; a generic sheet
+  berry shrub must not replace Cranberry, Persimmon or Devil’s Club.
+- Alien flora may have rich fans, pods, fronds, branching clusters and porous tissues, with
+  coherent attached growth. Seeded forms/colors, lineage and biome profile remain authoritative.
+  Sheet accents and exposed roots are examples, not universal recolor/uprooting instructions.
+- Preserve CF controls, emoji, text and placement. UI references are material/graphic inspiration.
+  The animal study remains Civet; the Earth sheet confirms its treatment, without a style restart.
 
-Root inspected final phone/desktop captures: the full painted landscape and six residents are
-visible above UI, with substantial starfield margins. **Current creatures are flat/simple and
-remain well below the approved rich painted/charm target.** This static composition proves
-identity/layering, not finished creature art, metre-scale ecology, locomotion, image-to-rig
-conversion or articulated battle animation. End this bounded layer/placement batch; next improve
-one complete canonical resident toward the approved richness and supported idle/attack motion
-before expanding families.
+Civet seed 3212817920 is bound by the complete exact original 29-field Earth epoch 0 genome.
+`port/v2/tools/painted-creature/civet-rig.ts` admits only that identity. Its pointed muzzle, mask,
+rounded ears, four feet, spotted khaki/tan coat and ringed tail come from the current named painter.
+One 768×512 lossless WebP is 179,856 bytes, SHA
+`7df99d643544f47f0b9cfd22e97e3bcb8af5ccc184a51f29d2e6c42c603815ac`;
+its decoded RGBA base is 1,572,864 bytes before other ownership/upload overhead. The study has one
+shared texture across close views and Earth, a connected 49×33 grid/3,072 triangles, finite 4.2 s
+breathing, 1 s brace/neck thrust/recoil and 0.7 s reaction. Whole triangles above the visible paws
+stay fixed; each clip settles exactly. This is one painted projection, not a 3D/jaw/walking rig.
 
-### Verification and immutable failures
+Both generator outputs baked opaque checkerboards. Nick explicitly authorized ImageMagick alpha
+extraction; all three attempts and both originals remain. Fine whiskers are attenuated, with
+pale fringe/mouth fragments and a patchy nose edge on light backing. The warm coat and weak local
+contact shadow need further scene-light integration. Agent review sees much richer fur/volume and
+connected anatomy, but **production edge quality and human art acceptance remain open**. Other
+five native Earth residents are still flat and below the approved bar. No cloud backup retry.
 
-[Current review packet](audits/AV_EARTH_LAYERED_SCENE_20260908/README.md),
-[final results](audits/AV_EARTH_LAYERED_SCENE_20260908/final-results.json) and
-FINAL_SOURCE_REVIEW.md are the entry points. 351 focused tests in 23 files, all 3 TypeScript
-programs, art-unused/art-audit/override/spec and root validation PASS. Root validation recorded
-1,010 clean renders, 0 boot errors and 50 original fingerprints. Prior 134 guard controls PASS
-with exact adapter/snapshot AST boundaries; no global art-route restriction bypass. Source review
-found no new blocker. Frozen 96-file evidence:
-`port/v2/apps/game/smoke/earth-layered-settled-evidence-dist-20260908`.
+### Verification — bounded study only
 
-All four final native modes PASS on unchanged source/build: phone 390×844@2, desktop 1440×1000@1,
-exact missing image and option off. Evidence includes a single native Earth Land with zero draws
-and zero damage; independent DOM rectangles and 35 canvas hits; actual paint, hidden-layer,
-globe/cloud and old H/2 placement mutants; exact restoration; Survey reopen/Close and native exits.
-Actual pair Sprites/Textures/Sources retire and canvases shrink to 1×1; cloud container/children
-retire. Passive journals observe landing translation, then zero resting pair Y error before
-Survey Close. Zero Runtime exceptions or cleanup failures; all four browsers closed.
-Runner SHA: `76ca9686c913f52568b2fc3b7268085818806c6de8edcb7590abc091e5b770cf`.
+113 rig tests PASS, including full finite-clip sweeps and actual mutation controls. Study typecheck,
+all three V2 TypeScript programs and root validation PASS: 1,010 clean named renders, zero boot
+errors, 50 unchanged original determinism fingerprints. Source review corrected the NaN rest
+shortcut, destroyed-mesh observer and omitted Earth-container disposal before relevant runs.
 
-Preserve all new first reds: 285 PASS / 1 FAIL cache-publication control; 306 PASS / 2 FAIL test
-expectations (one art-test edit potentially overlapped a running read; no immutable input timing
-claim); 308 PASS then a new-adapter parser red; first guard controls 102 failed / 21 passed due to
-snapshot Object syntax; first native Earth landing policy-null mismatch; second native center-exit
-occlusion revealing DOM-covered scenery; desktop-visible Y red lacking compared geometry.
-Observer-only diagnostic PASS retained a small offset; source explains the canvas-shake translation,
-and the final completion refresh fixes it. The original desktop delta is unknown. Every red remains
-in the packet; later focused success is not full admission.
+Final native Edge 152.0.4191.66 / CDP 1.3 PASS: desktop 1440×1200@1 and emulated phone 390×844@2,
+eight probes/five control groups per mode on unchanged bound source/assets. Actual painted pixels
+at 440/300/132 keep all four paws nonempty and exactly fixed; body/head pixels move. Constant-rest,
+shifted-paw, opaque/hash and actual horizontal-overflow mutants fail; restoration passes. Trusted
+native buttons complete finite clips and cancel on Reduced/Effects Off/DOM Hide. All four meshes,
+geometries and actor roots, Earth container and three textures/sources/bitmaps retire; repeat
+cleanup is inert. Zero Runtime/cleanup errors; browser closed. Document-hidden is synthetic,
+phone inputs are CDP mouse events under emulation: no physical touch/background/Safari/PWA claim.
+Native report SHA: `cd84e42ea90c7f05a0754d4efa5595dea8e8fc20500bafd5ff4b1d87a9db97d9`.
 
-Current 83-row draft SHA: `218f02b5130fe78a6fcf76e898b6372b8761b4ef4bb4590137668920980f0793`;
-producer: `b62563276984183b933e372242e5cd68426727094f57407f9057f1ff4d8e3ba6`;
-measurement: `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` (unchanged).
-No ceiling/ruler/history rebaseline. No full Compendium/Slice/Glass/Recovery, physical iPhone/Safari/
-PWA, native-driver heap, Reduced/Effects Off reload, resize/re-entry or human art/listening acceptance.
-Hidden-ancestor visibility and position-only chrome changes remain outside fixed-view qualification.
+**All first failures remain:** two opaque image outputs, two matte visual failures, first native
+paw-pixel FAIL (analytic point lock missed an interpolating triangle; tiny ruler had no solid ink
+at 300/132), analysis FAIL comparing encoded-PNG/raw-GPU RGB counts, and second native scrollbar
+assertion FAIL after eight passing probes. The first two native stops did not reach in-page disposal
+or phone. The second retained only the failing width scalar, not original full geometry. Final
+source fixes and stronger nonempty four-paw/overflow controls have new immutable outputs; none of
+those aggregate failures is relabelled PASS. No unchanged red was automatically retried.
 
-### Local preview, recovery and session tools
+### Local review, startup and Git ownership
 
-[Local playtest](http://127.0.0.1:58517/?livingvista=1): Skip Training, select Earth in Sol, Land,
-close Survey. [Restart/other graphic options](port/playtests/20260908_EARTH_LAYERED_LOCAL_PREVIEW.md).
-Server PID 84380 / exec 99962 serves `smoke/dev-preview-earth-layered-local-20260908`. Package
-integrity and native boot/Skip/Guide PASS; no diagnostic API/corner badge. Parent `837db4a`,
-dirty-local-only, `publishable:false`.
-Content: `3fbcdcf310d03e6904c40b76e73c29a68381cb7b2908e44570743b576ac878ed`;
-manifest: `e3b12cd3c0264adc9b7727592b72c0b860bd1a710c39e0f87d0ce1d01bc8a5cb`.
-Prior star/audio/UI/Mars/Earth code is included; offline Wolf masters/reference sheets are not
-runtime assets. Older preview packages are unchanged; do not assume their old ports remain alive.
+[Local motion bench](http://127.0.0.1:58519/): Breathe once / Brace and thrust / Recoil / Rest,
+Reduced motion / Effects on / Hide study. Dispose retires the bench; reload for another review.
+Server PID 598 / exec 25947 serves only the final immutable 17-file/1,775,620-byte study inventory.
+[Exact receipt/restart](audits/CREATURE_PAINTED_CIVET_20260908/README.md); content inventory SHA
+`86c5e30524484e6a4156d71b6fd051fa589719d1486997f1a52619acff4aed2d`.
+This is not a game preview or certificate. Prior Earth game preview restart is in
+`port/playtests/20260908_EARTH_LAYERED_LOCAL_PREVIEW.md`; its earlier port/PID is not reverified.
 
-Current recovery target: `port/v2/apps/game/smoke/earth-layered-staged-20260908.json` and adjacent
-`.patch.gz`. **Verify that receipt before claiming the snapshot succeeded.** Retain all six older
-recoveries: 989-file Mars composition, 918 painted Mars, 822 material, 773 turn, 654 painted
-direction and 647 charm. The new recovery is verified: 1,177 staged files before commit, raw
-SHA `49be51f83ed93cd5a80bd59095c76ea80e69b20316ea865480470b62f2ffc5fc`, gzip SHA
-`634cc045bba55fc37cb8075a90c0bcd383804c34223f469e93f217f3f89bb4c1`. The recorded single EOF
-blank-line formatting warning remains; backup integrity passed with that warning preserved.
-That exact index is now the signed checkpoint above. No unsigned fallback or push occurred.
-Ambient `.DS_Store` is preserved. Historical manifests and earlier signing failures keep their
-original checkpoint bytes; the signing-restoration receipt supersedes their current-status claims.
+Verified ownership: **OpenAI/Codex · macOS ·
+`/Users/nick/Projects/celestial-frontier-openai-mac` · `openai/mac` · `origin/openai/mac`**.
+SSH origin is `git@github.com:TheDakk/Celestial-Frontier.git`; retained uninterrupted TheDakk
+SSH/read proof applies. This local-only batch did not need a fresh fetch. Start was 40 ahead/0
+behind cached upstream; cached `origin/develop` `c1791e210158de864fdd475323c3091d9ecbae58` is an
+ancestor. Resolve final HEAD/counts after commit. Ambient `.DS_Store` stays untouched/untracked.
 
-Verified Codex/macOS: `/Users/nick/Projects/celestial-frontier-openai-mac`; `openai/mac`; upstream
-`origin/openai/mac`; signed implementation checkpoint `5117b4fa18afeb4869ac459b6f95dfd6a586edc6`;
-39 ahead / 0 behind at that commit, plus this documentation follow-up; resolve current HEAD/counts
-with Git. `origin/develop` is an ancestor. SSH origin: `git@github.com:TheDakk/Celestial-Frontier.git`;
-uninterrupted TheDakk read/fetch proof is retained. Startup receipt
-`audits/TOOLCHAIN_STARTUP_20260907/manifest.json` is reused only within this session; a new session
-follows the `UI_TOOLCHAIN.md` runbook. No fresh tool/dependency update this batch. Terminal/files
-and isolated CDP only; shared foreground lock, browser commands outside the sandbox. Caffeinate
-93550 (`-i`) and new preview 84380 were verified after checks; no foreground build/browser/render
-remains. Inkscape CLI outside the sandbox passed previously; original crash cause is unproven.
-No scheduled prompt restart.
+New-session tool startup completed at 2026-09-08T21:51:58.792Z:
+[TOOLCHAIN_STARTUP_20260908_CIVET](audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json).
+Official stable check plus scoped outdated were current; no eligible update or changed executable.
+ImageMagick 7.1.2-31, FFmpeg 9.0.1_1, Blender 5.2.1, Inkscape 1.4.4, REAPER 7.79, Surge 1.3.4,
+Node 26.8.1 and GSAP 3.15.0 retained. REAPER’s active process was not interrupted. Use this receipt
+only for the uninterrupted session; fresh sessions follow UI_TOOLCHAIN.md and the shared lock.
+Terminal/files and isolated CDP only; browser commands ran outside Seatbelt, under the shared
+foreground lock and checkout build lease. No personal UI was inspected or jobs interrupted.
+
+### Prior Earth placement and blockers stay binding
+
+`?livingvista=1` remains the optional painted rainy Earth 133#2 riverbank with separate six-resident
+layer, admitted by the full request and all 19 ordered epoch 0 genomes. Exact world:
+`CF1|g:999@90,-60|s:424242@560,170|p:133#2`; environment `cwe1:148:50c1b7d6`;
+profile `temperate/bpd1-6fce883d4d70e3b6bde0fb184b416e8e`. Residents: Civet/Platypus/Frog,
+Persimmon/Cranberry/Devil’s Club. BIOME_ATLAS §1.1/profile allows their fauna families/flora forms;
+it is not a universal geographic species database. Global D-9e remains dead, unfixed and gated.
+
+The approved 960×430 pair publishes atomically, fits uncropped above Biosphere with 12 px clearance,
+hides only its owned globe/cloud deck, and refreshes after the final camera impulse. Existing
+fallback, workers, request/epoch fences and retryable cleanup remain. Native controls are unchanged.
+Original background SHA `2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8`,
+130,306 bytes; pair RGBA 3,302,400 bytes before scratch/decode/GPU; optional worker 957,316 bytes.
+[Earth review packet](audits/AV_EARTH_LAYERED_SCENE_20260908/README.md) retains 351 focused tests,
+three typechecks, art/override/spec/root checks and four final native modes PASS. Its frozen
+96-file `earth-layered-settled-evidence-dist-20260908` and 134 prior guard controls remain separate.
+
+Preserve Earth-layer first reds: 285 PASS/1 FAIL publication, 306 PASS/2 FAIL expectations with
+possible overlapping art-test edit, 308 PASS then adapter parser red, guard 102 FAIL/21 PASS,
+first native policy-null, second native DOM-covered center exit, desktop Y red with unknown
+original geometry, and observer offset/source camera-shake diagnosis. Final four settled modes
+PASS do not close full admission, physical devices, native heap, Reduced/Effects Off reload,
+resize/re-entry, hidden ancestors or position-only chrome changes outside fixed-view qualification.
+
+83-row draft SHA `218f02b5130fe78a6fcf76e898b6372b8761b4ef4bb4590137668920980f0793`;
+producer `b62563276984183b933e372242e5cd68426727094f57407f9057f1ff4d8e3ba6`;
+measurement `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` unchanged.
+No ceiling/ruler/history rebaseline or full Compendium/Slice/Glass/Recovery. Recovery receipts
+including the verified 1,177-file Earth staging snapshot and six predecessors remain in the
+archived handoff and `port/v2/apps/game/smoke/earth-layered-staged-20260908.json`. The accumulated
+Earth checkpoint is signed `5117b4fa18afeb4869ac459b6f95dfd6a586edc6`; the single original EOF
+format warning and historical signing failures remain, superseded only as current signing status.
 
 ### Earlier blockers retained
 
@@ -174,19 +213,28 @@ Dakk project is untouched; no copied third-party runtime assets.
 
 ### Next bounded work and paired handoff
 
-Next: one complete canonical rich-painted creature treatment with coherent whole-body form,
-matching light/scale and supported motion, using the mapping and current seeded identity. Keep
-Earth-specific anatomy/movement; do not treat the flat composition as approved final art. Preserve
-controls and all blockers. Stop at the authorized 24-hour deadline with a documented checkpoint;
-no extension.
+The two bounded studies are complete. The latest reference review accepts the calmer direction
+as a study, with production fine-alpha and human visual qualification still open. Next clean the
+remaining Civet fringe/whiskers before one exact-identity native art recipe across the existing
+Compendium/Chronicle/Planetside owners, with bounded ownership and real outcomes. The five older
+Earth residents require individual rich painted replacements under named botanical/anatomical
+rules; do not expand all families in one loop or call the scene finished after filtering. Alien
+plants preserve seeded architecture/palettes. Stop at the campaign deadline; no extension.
 
-Current side: Codex/macOS/`openai/mac` owns the signed local checkpoint and documentation follow-up;
-commit signing is working again. GitHub step: none. PR details: not needed. Future separately authorized integration is
-`openai/mac`→`develop`, never directly `main`. Budget: UNFROZEN/PUBLIC; private fallback 3000;
-exact hosted authority required; attempts/cost 0.
+Current side: Codex/macOS/`openai/mac` retains both completed studies staged pending signing
+recovery; HEAD is still `5e222931efd642c03ce55c5e67f7670a7aef890c`, cached upstream 40 ahead/0 behind.
+The combined local binary staging recovery is
+`port/v2/apps/game/smoke/earth-cohesion-staged-20260908.patch.gz` with its adjacent JSON receipt;
+see the scene packet’s RECOVERY_POINTER.md for readback/reverse-check results and exclusions.
+Full staged format check retains warnings in immutable compiled Pixi and raw logs; authored
+source check PASS. Scene packet format-review.json preserves exact output. No signing retry
+occurred after the original 1Password failure; no unsigned fallback or signing change.
+GitHub step: none. PR details: not needed. Future separately authorized path is
+`openai/mac` → `develop`, never directly `main`. Actions budget UNFROZEN/PUBLIC, private fallback
+3000, exact hosted authority none, attempts/cost 0; no workflow is triggered by this batch.
 
-Other side: Claude/macOS/`anthropic/mac` does not yet have these unmerged changes; no need to open
-or sync now. Review the durable packet Thursday; preserve `173c806`. After a future authorized
-exact `develop` merge, Claude may fetch/merge `origin/develop` into its own clean branch. No manual
-copies/message to Claude, develop/main promotion, hosted dev update, release, deployment or
-version bump occurred.
+Other side: Claude/macOS/`anthropic/mac` does not have these unmerged changes; **no need to open
+or sync Claude now**. Preserve `173c806` and review the durable packet Thursday. Only after a
+future authorized exact `develop` merge should Claude fetch/merge `origin/develop` into its own
+clean branch. No manual copies or messages to Claude, develop/main promotion, hosted dev update,
+release, deployment or version bump occurred. Existing automation stays deleted.

@@ -1,0 +1,68 @@
+{
+  "schema": "cf-civet-alpha-extraction/v1",
+  "authority": "Nick: Use ImageMagick for alpha extraction",
+  "at": "2026-09-08T22:09:32.758Z",
+  "source": {
+    "path": "civet-first-opaque.png",
+    "sha256": "86025b8d8c1e337e9795433f48251d6a91bd76fee69e8e13c564c7fedbb1377e"
+  },
+  "tool": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+  "files": {
+    "civet-painted-v1.png": {
+      "bytes": 2219705,
+      "sha256": "55633a07d1d03ef55d9a3493bd5e03b871eb1ef0db57b2cb5b6d39ec48ff2508",
+      "identity": "1536x1024 srgba 4.0 opaque=False"
+    },
+    "civet-painted-v1.webp": {
+      "bytes": 1506424,
+      "sha256": "a161790540788b9c5cc83d27dc3057623efc26b6c418e327d0238733719a6d3e",
+      "identity": "1536x1024 srgba 4.0 opaque=False"
+    },
+    "component-mask.png": {
+      "bytes": 6560,
+      "sha256": "e6e97316ce58dda521ee06327ab5264891f02539353bcebe17c84b714603d989",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    },
+    "edge-review-dark.png": {
+      "bytes": 942904,
+      "sha256": "32176991dea23ccd067aa3c6cae8bcc14df78c8cef4a097b173df3f8eca8d042",
+      "identity": "1536x1024 srgb  3.0 opaque=True"
+    },
+    "edge-review-light.png": {
+      "bytes": 936742,
+      "sha256": "20bcdd84da9bd9fe92cae1f86e85185fe412a04295531784971b306b884816df",
+      "identity": "1536x1024 srgb  3.0 opaque=True"
+    },
+    "interior-envelope.png": {
+      "bytes": 7274,
+      "sha256": "b29a5cc83bcf394a221ef296e91c80fb7409de85e2b752ab7c5a01d422ea684f",
+      "identity": "1536x1024 gray  1.0 opaque=True"
+    },
+    "matte.png": {
+      "bytes": 17349,
+      "sha256": "908e50fc8781b452de01d19ebfc309b49f2a301d7c77fc3a3c6f9fd7896d4518",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    },
+    "rough-matte.png": {
+      "bytes": 21067,
+      "sha256": "e8efff359d8b7acc4a61494a39c0d40933c3c8c8e49527634b85015c5c504f4b",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    },
+    "solid-interior.png": {
+      "bytes": 9740,
+      "sha256": "562c354594641b0468c237a18e1f93f633c32b70bafa5c0d45b568326d5a8c44",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    },
+    "warm-edge.png": {
+      "bytes": 32199,
+      "sha256": "ce4f578594a5166a6f33c0eb941d7666b369fa41f638ed0b6db3c259789a7a8b",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    },
+    "whisker-envelope.png": {
+      "bytes": 18306,
+      "sha256": "d550854feaa51ed8a929d79ed55cd2560d2d19d103ab52b16156c59705c1e217",
+      "identity": "1536x1024 graya 2.0 opaque=True"
+    }
+  },
+  "limits": "Heuristic matte extraction from opaque generated pixels; dark/light visual edge review required. No claim of original alpha recovery or identical antialias colors."
+}

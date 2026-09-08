@@ -1,0 +1,12 @@
+{
+  "schema": "cf-local-study-served-html/v1",
+  "url": "http://127.0.0.1:58521/",
+  "pid": 7541,
+  "status": 200,
+  "bytes": 3918,
+  "sha256": "23bf390738c7ea6e78b666346434cf6631b9a3fe086c42059a0789a285129d86",
+  "checkedAt": "2026-09-08T23:24:01.871Z",
+  "distInventoryFiles": 17,
+  "firstSandboxProbe": "Node fetch blocked EPERM 127.0.0.1:58521 under Seatbelt; no HTTP response. This fresh read ran outside Seatbelt.",
+  "appOpen": "queued only"
+}

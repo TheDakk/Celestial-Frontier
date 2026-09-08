@@ -1,5 +1,13 @@
 # Celestial Frontier — development toolchain
 
+The 2026-09-08 local scene-cohesion pass reuses the uninterrupted
+TOOLCHAIN_STARTUP_20260908_CIVET receipt (no further update/install). Its third built-in generator
+checkerboard failure and rejected matte are retained in CREATURE_SCENE_COHESION_20260908.
+Nick’s explicit ImageMagick alpha-extraction authorization covers the narrow selected-source
+nose repair; all RGB stays unchanged. The exact local Pixi scene/mesh bench uses isolated Edge
+outside Seatbelt and the shared foreground/checkout locks. This introduces no runtime art tool,
+engine or hosted action. See the packet README for evidence and remaining edge/acceptance limits.
+
 **Explicit user retest — 2026-09-08 07:38 UTC:** Another isolated outside-sandbox
 Inkscape 1.4.4 version/export chain passed. The inspected128×128PNG again matches the
 September7 bytes exactly; the CVDisplayLink warning remained nonfatal. No crash reproduced.
@@ -136,6 +144,15 @@ No Playwright/Puppeteer or new browser extension is needed for the current test 
   ImageMagick brings WebP support as a dependency; no separate WebP installation is needed.
 - **Lucide/Phosphor:** inactive; current emoji retained and no replacement-icon study underway.
 - No Steam package, Unity/Unreal port, paid plugin or hosted rendering service is installed.
+
+**Fresh Civet-study session — 2026-09-08:** all ten approved authoring-tool identities and
+Homebrew 6.0.22 remain current in the official metadata check. Scoped `brew outdated` returned
+empty formula/cask lists and resolved REAPER’s 7.79 build suffix. No update was eligible; no
+capability requalification was needed. REAPER remained open/current; no jobs were interrupted.
+[Startup receipt](audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json) applies only to this
+uninterrupted session. Nick explicitly authorized ImageMagick matte extraction after two built-in
+image-generation transparency failures; preserved matte/edge evidence belongs to the Civet packet.
+No scheduled prompt, dependency change or hosted action occurred.
 
 ## Coding-session startup runbook and automatic maintenance
 

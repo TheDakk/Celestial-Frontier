@@ -1,5 +1,68 @@
 # Celestial Frontier — Master Art Direction
 
+## Earth organisms and alien flora — direction updated 2026-09-08
+
+Nick’s [two additional reference sheets](audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/README.md)
+separate Earth flora/fauna from alien flora while continuing the approved painted style.
+Earth animals keep recognizable named anatomy, proportions, markings and natural colors;
+richness comes from coherent volume, directional fur/feathers/scales, expressive natural faces
+and material detail. Earth plants retain their actual whole growth habit, branching/crown,
+leaf shapes, flowers and fruit. A reference berry shrub is not a replacement for the named
+Cranberry, Persimmon or Devil’s Club. Examples do not add species or modify the Earth roster.
+
+Alien flora can express unusual complete architectures—fans, fronds, branching clusters,
+pods, fibrous bases and porous tissues—with coherent attached roots/stems/leaves, tactile
+surfaces and layered light. Existing seeded final forms, color atlas and biome profile remain
+authoritative. The sheet’s copper/blue accents are examples, not a universal recolor; exposed
+reference roots do not require uprooted plants in a landscape. Neither sheet rewrites genes,
+lineage, encounter selection, biome mapping or the documented global D-9e gap.
+
+The current painted animal study remains Civet. Its natural anatomy and calmer painted fur
+support the Earth sheet’s direction; face hierarchy, clean edges and scene contact determine
+final fit. Native Chronicle/Compendium/Planetside integration and human acceptance remain open.
+This updates authoring requirements; the sheets are opaque references, not runtime sprite packs.
+
+## Scene cohesion and reference fit — matches study code as of 2026-09-08
+
+The [new local scene study](audits/CREATURE_SCENE_COHESION_20260908/README.md) selects the
+calmer original Civet RGB after rejecting a busier reference-led regeneration and its failed
+matte. A narrow source-derived nose-alpha repair preserves every original RGB byte; the selected
+768×512 WebP is 179,816 bytes, SHA `186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365`.
+The face/mask lead and directional fur supports the readable whole animal. Fine edge fringe and
+whisker fragments on dark backing remain open; reference fit is not human production acceptance.
+
+A separate scene owner supplies modest resident-only overcast lighting and fifteen measured
+contacts plus one weak Civet body shadow at unchanged anchors. It preserves alpha/background,
+complete identities, existing borrowed textures and finite motion. Civet contact is wet mud/pebble
+beside shallow water: no invented grass/rock occluder, reflection or submerged anatomy. Earth flora
+retain real named botany; alien flora retain seeded architecture/palettes and biome mapping. The
+five old flat residents still require richer species-specific painting; stronger filters do not
+finish their materials. Native game integration is unimplemented. The earlier study below retains
+its original asset and failures; the new packet records exact final source/native evidence and
+its own first ruler failure. No save, roster, RNG, biome or UI change follows from this bench.
+
+## Painted Civet authoring study — matches study code as of 2026-09-08
+
+The local [Civet review packet](audits/CREATURE_PAINTED_CIVET_20260908/README.md) binds one
+rich painted rest asset to the exact original 29-field Earth 133 epoch 0 Civet genome. The current
+named painter supplied actual transparent ink and 132/300/440 baseline images. Its long pointed
+muzzle, mask, tan spotted coat, ringed tail, rounded ears, four planted feet and whole-body
+proportions are the authoring constraints; no genome or named/lineage route is rewritten.
+
+`port/v2/tools/painted-creature/civet-rig.ts` owns a finite, single-view connected mesh study:
+4.2 s breathing, 1 s brace/neck thrust/recoil and 0.7 s reaction, each returning exactly to rest.
+The study uses one 768×512 texture (179,856 compressed bytes; 1,572,864 RGBA bytes) across
+close views and the unchanged Earth relative anchor. This is texture deformation, not a
+3D skeleton, jaw opening, walking or actual Chronicle/Compendium/Planetside integration.
+The current game still uses its existing painters and whole-portrait battle motion.
+
+The image generator twice returned opaque checkerboards. Nick then explicitly authorized
+ImageMagick alpha extraction. Both generator failures and the first two matte edge failures
+remain intact. The study matte attenuates fine whiskers and retains a light fur fringe under
+magnification; production clean-edge and human art acceptance remain open. The painted source,
+matte recipes, derivative, exact identity, source bindings and all verification results are
+retained in the packet. No full admission, physical-device qualification or art-lock CI follows.
+
 ## Layered Earth riverbank — matches local code as of 2026-09-08
 
 `?livingvista=1` admits only the complete canonical Earth request, environment/profile and
@@ -57,8 +120,9 @@ authoring targets, not evidence that animal-specific locomotion is implemented. 
 biomes and creatures remain procedurally generated from their existing authoritative data.
 Named Earth identities and bred descendants keep their existing named/lineage routing wherever
 they appear; this distinction changes no biological generation, lineage or breeding rule.
-Current creature motion remains limited to the offline Wolf study and native whole-portrait translations;
-full species-appropriate walking, flight, swimming and articulated attacks remain unfinished.
+Current native creature motion remains whole-portrait translation. Authoring evidence includes
+the offline Wolf study and the finite, one-view painted Civet mesh study above; full species-
+appropriate walking, flight, swimming and native articulated attacks remain unfinished.
 
 The bounded Blender study now preserves the exact existing Wolf input, skin coordinates and
 proportions in two coat/face treatments and finite brace, neck/head strike and recoil. Ten

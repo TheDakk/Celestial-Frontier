@@ -1,0 +1,35 @@
+{
+  "schema": "cf-toolchain-startup-receipt/v1",
+  "checkAtUtc": "2026-09-08T21:51:58.792Z",
+  "owner": "OpenAI/Codex macOS /Users/nick/Projects/celestial-frontier-openai-mac openai/mac origin/openai/mac",
+  "baseSource": "5e222931efd642c03ce55c5e67f7670a7aef890c",
+  "status": "PASS",
+  "checkCommand": "node tools/with-toolchain-lock.mjs --label creature-startup-20260908 -- node tools/development-toolchain.mjs --check",
+  "inventory": {
+    "imagemagick": "7.1.2-31",
+    "ffmpeg": "9.0.1_1",
+    "python@3.12": "3.12.14",
+    "node": "26.8.1",
+    "gh": "2.100.0",
+    "blender": "5.2.1",
+    "inkscape": "1.4.4",
+    "reaper": "7.79.0_06dd787u",
+    "surge-xt": "1.3.4",
+    "gsap": "3.15.0",
+    "homebrew": "6.0.22"
+  },
+  "availability": "Official formulae.brew.sh formula/cask metadata and registry.npmjs.org/gsap/latest all current; REAPER latest 7.79 suffix resolved by scoped brew outdated. All lookups succeeded.",
+  "outdated": {
+    "formulae": [],
+    "casks": [],
+    "exitCode": 0
+  },
+  "updatesApplied": [],
+  "capabilityChecks": "Not repeated: no tool executable or version changed. Existing CLI qualifications remain applicable, not new renders.",
+  "busy": "REAPER PID45461 active and current; no authoring job interrupted. Caffeinate93550 remains. Process identities checked; no Blender/Inkscape/FFmpeg/ImageMagick job observed. Node processes present.",
+  "locks": "Metadata and scoped outdated commands each held shared toolchain lock; no development ran concurrently. No upgrade eligible.",
+  "hostedActions": 0,
+  "automationsCreated": 0,
+  "remote": "git@github.com:TheDakk/Celestial-Frontier.git",
+  "remoteProof": "Existing uninterrupted TheDakk SSH/read proof retained from ROADMAP; no new fetch required for explicitly local checkpoint batch. Cached origin/develop c1791e210158de864fdd475323c3091d9ecbae58 is ancestor; HEAD40 ahead/0 behind cached origin/openai/mac."
+}
