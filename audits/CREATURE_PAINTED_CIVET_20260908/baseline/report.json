@@ -1,0 +1,370 @@
+{
+  "schema": "cf-civet-baseline-native/v1",
+  "certification": false,
+  "status": "PASS",
+  "startedAt": "2026-09-08T21:59:24.769Z",
+  "sourceCommit": "5e222931efd642c03ce55c5e67f7670a7aef890c",
+  "node": "v26.8.1",
+  "sources": {
+    "audits/CREATURE_PAINTED_CIVET_20260908/baseline.html": "2512c7c376e5af1c1dad6643c34fb90518d242940f1be39d3ab7de33d0b11864",
+    "audits/CREATURE_PAINTED_CIVET_20260908/baseline-harness.ts": "fda9f577c9e396565b4860a551b0769b15687adf868814b4ded73e9360ed38ac",
+    "port/v2/packages/art/src/earth-resident-layer.ts": "f927da3f51128967b83d84f1ccb5c66e9b3ed7d4732f5a0764632af347c97355",
+    "port/v2/packages/art/src/speciescanvas.ts": "17594498f0d4ed8140a3708ef4b0150b0d08a538a0777ae5fee822782ae095d4",
+    "port/v2/packages/art/src/speciespainter.ts": "de8834067acd5c046069af10e9cf91b0a4a2e95d3f6370c0b65da089126c2e1f",
+    "port/v2/packages/art/src/speciesidentity.ts": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0",
+    "port/v2/packages/art/src/earth-resident-plan.ts": "72d27b39e9c15382638f4db09074198e0eb296a18affafc740bbdc89e7f311f6",
+    "port/v2/packages/art/src/speciesoverrides.ts": "9c212624234a64d78a75a362e48625bec16a36f4831fd29ba86f09f236f9441b",
+    "port/v2/packages/art/src/surface-polish.ts": "89737a5b88e1bae5223b81671fed429757f426d0e6f2adfe2784ff0f2b6383ac",
+    "port/v2/packages/art/src/hdportrait.worker.verbatim.js": "e219d4a0aa8c69fe540ebbe6ebc9beb13abc060ada2c5d3b6cf8c76aa1ad05d1",
+    "port/v2/packages/art/src/mammaloverrides.ts": "2ef6c2e8e592c14d3ce77d4f77b2637ffa0ae55b771375ec833e6a299db68702",
+    "port/v2/packages/art/src/florarost.ts": "e3b89406d88af811e5810a2b72508ff68a20280fe71bfb3d7f6f5c8a9e53c8b2",
+    "port/v2/packages/art/src/visual-treatment.ts": "040a9dd36253e6cf8e5653e3672874c39f2116f486cf59bb780e0646c3d57079",
+    "port/v2/packages/art/src/canvas-treatment.ts": "673bbe89aaa3f8d60e740e4e0297b6a744c04b70c88c9a0d21eb227e7119b092",
+    "port/v2/packages/art/src/floraoverrides.ts": "6323d1c46e998568bf57cbbfc9355557e22b9b70de227f68bfda932231b2ed6c",
+    "port/v2/packages/art/src/faunaoverrides5.ts": "2e71508a633e111c396378bee19164149e4b61653001c88476d0d95d9fe63382",
+    "port/v2/packages/art/src/faunaoverrides2.ts": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02",
+    "port/v2/packages/art/src/surface.ts": "a896ff25c61fdc11beb09a2015bd80dd4546b595d63aad927202de72d8217c3f",
+    "port/v2/packages/domain/rand/src/index.ts": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927",
+    "port/v2/packages/domain/speciestraits/src/index.ts": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f",
+    "port/v2/packages/art/src/birdoverrides.ts": "48ffa589f2273f0f29fd85df1f05fd070477ade70f1cdeb7698f5321e5702dc7",
+    "port/v2/packages/art/src/proceduraloverrides.ts": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be",
+    "port/v2/packages/art/src/fungioverrides2.ts": "59741da0b0b7d6659e6ca225b78caf9ff7a9cb918af372e17a1f357e66dd4463",
+    "port/v2/packages/art/src/proceduralfamilies.ts": "140bc992c7553ab7afbf4bf8bbe1afc038db972f26da0152324d5f4a468988f6",
+    "port/v2/packages/art/src/floraoverrides3.ts": "515a528673df782ea0143d9f7050e813706d085ff1e4c2a22cc99a69a522c45e",
+    "port/v2/packages/art/src/faunaoverrides4.ts": "b946a59a53fda4a8bf81a1fef9f49fbdd438dd993a7fbe27d03776dc27ddac17",
+    "port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749",
+    "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d",
+    "port/v2/packages/art/src/faunaoverrides3.ts": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec",
+    "port/v2/packages/art/src/floraoverrides2.ts": "42800cea6e658b6323a87d6a0c75683980afc10faf1ea188d1b6649b9750d73d",
+    "port/v2/packages/art/src/quadrupedoverrides.ts": "baa8df44c485c0febaf1c8d05579d846a4c3b2114454c7e42d1c4177a4703e55",
+    "port/v2/packages/art/src/torso.ts": "7270db2c642b9dde13ff9e4a31c79305ef8d45a011d190bd971a005232d70758",
+    "port/v2/packages/art/src/skin.ts": "d62f443ebf548fddece065d33f32d123a2a02200bc01dac26d17a9d3c66dc8aa",
+    "port/v2/packages/art/src/invertoverrides.ts": "c0a76508b48d6f97793f37d9962e6140242ef9229a168ef6f538508d4ecaf746",
+    "port/v2/packages/art/src/faunaoverrides.ts": "9e109fea1bda4d312eb733f8aa56aacba67ab0ceb79a6a8d9228bec6bc118694",
+    "port/v2/packages/domain/genome/src/index.ts": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72",
+    "port/v2/packages/domain/genome/src/genome.verbatim.js": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7",
+    "port/v2/packages/art/src/alientraits.ts": "9c54b1abb2e94854750d7c62c282dbccce4ae37cb21f6961e52edbdd114ca3f7"
+  },
+  "artifacts": {
+    "civet-ink-880.png": {
+      "bytes": 64832,
+      "sha256": "1cced614c90d3c9b75e6c9c1ef3b3d3e97de9957089bf8a94dbadb65c00fabdd",
+      "width": 880,
+      "height": 880
+    },
+    "civet-alpha-crop.png": {
+      "bytes": 42815,
+      "sha256": "9dc23b9a6532e2bcfafca8df174c27fcf1448a15a4d9177746693270010ca052",
+      "width": 410,
+      "height": 217
+    },
+    "civet-current-440.png": {
+      "bytes": 223317,
+      "sha256": "930ca5e4e074c2f29a5543f9de9bae8292a673c174cf28e6ac4180ac4f5ec02b",
+      "width": 440,
+      "height": 440
+    },
+    "civet-current-300.png": {
+      "bytes": 105250,
+      "sha256": "60ec0013ef439d8c7fff74b1fa9faee06db69f92ec05839cf911c1b9e52e5557",
+      "width": 300,
+      "height": 300
+    },
+    "civet-current-132.png": {
+      "bytes": 23640,
+      "sha256": "5279a3d0943bf0c90a5281709e97e8097a42fad5021e1b123e92f712dc95a583",
+      "width": 132,
+      "height": 132
+    },
+    "earth-residents-original.png": {
+      "bytes": 101870,
+      "sha256": "3b607744ca034460a71eb601f1dc717817de31207fa0402f2afb097127e5e588",
+      "width": 960,
+      "height": 430
+    },
+    "earth-residents-without-civet.png": {
+      "bytes": 92306,
+      "sha256": "64d24cdbc37a7212e0c7cc9c511d0f754d7c8e17c93f43abd3c4a2d991788ca9",
+      "width": 960,
+      "height": 430
+    }
+  },
+  "runtimeErrors": [],
+  "cleanupErrors": [],
+  "limitations": [
+    "Standalone audit harness, not native game navigation, motion qualification, human art acceptance or certification.",
+    "300px image is the current 440px polished source downsample; 132 uses the actual thumbnail owner.",
+    "Alpha crop preserves the actual source ink and shadow with 12px padding; no retouching or anatomy alteration."
+  ],
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  },
+  "pendingEvaluation": null,
+  "capture": {
+    "schema": "cf-civet-current-painter-baseline/v1",
+    "certification": false,
+    "genome": {
+      "seed": 3212817920,
+      "kingdom": "fauna",
+      "color": 14,
+      "form": 12,
+      "body": 13,
+      "loco": 6,
+      "trait": 14,
+      "size": 4,
+      "diet": 5,
+      "head": 5,
+      "limbs": 3,
+      "skin": 8,
+      "tail": 1,
+      "pattern": 0,
+      "eyes": 5,
+      "behavior": 9,
+      "habitat": 5,
+      "detail": 4,
+      "accent": 3,
+      "temper": 1,
+      "sense": 7,
+      "repro": 7,
+      "life": 5,
+      "metab": 4,
+      "lumin": true,
+      "gen": 0,
+      "heat": 1,
+      "_earthName": "Civet",
+      "_cradle": 1
+    },
+    "visualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
+    "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+    "placement": {
+      "name": "Civet",
+      "kingdom": "fauna",
+      "genome": {
+        "seed": 3212817920,
+        "kingdom": "fauna",
+        "color": 14,
+        "form": 12,
+        "body": 13,
+        "loco": 6,
+        "trait": 14,
+        "size": 4,
+        "diet": 5,
+        "head": 5,
+        "limbs": 3,
+        "skin": 8,
+        "tail": 1,
+        "pattern": 0,
+        "eyes": 5,
+        "behavior": 9,
+        "habitat": 5,
+        "detail": 4,
+        "accent": 3,
+        "temper": 1,
+        "sense": 7,
+        "repro": 7,
+        "life": 5,
+        "metab": 4,
+        "lumin": true,
+        "gen": 0,
+        "heat": 1,
+        "_earthName": "Civet",
+        "_cradle": 1
+      },
+      "x": 0.72,
+      "groundY": 0.77,
+      "width": 0.15,
+      "flip": false,
+      "family": "mammal"
+    },
+    "rawBounds": {
+      "x0": 243,
+      "y0": 399,
+      "x1": 628,
+      "y1": 591,
+      "width": 386,
+      "height": 193,
+      "contactY": 564,
+      "visible": 33476,
+      "solid": 26351
+    },
+    "cropPadding": 12,
+    "placements": [
+      {
+        "name": "Civet",
+        "bounds": {
+          "x0": 243,
+          "y0": 399,
+          "x1": 628,
+          "y1": 591,
+          "width": 386,
+          "height": 193,
+          "contactY": 564,
+          "visible": 33476,
+          "solid": 26351
+        },
+        "anchor": [
+          0.72,
+          0.77
+        ],
+        "relativeWidth": 0.15,
+        "scale": 0.37305699481865284,
+        "flip": false
+      },
+      {
+        "name": "Persimmon",
+        "bounds": {
+          "x0": 316,
+          "y0": 325,
+          "x1": 567,
+          "y1": 604,
+          "width": 252,
+          "height": 280,
+          "contactY": 591,
+          "visible": 22423,
+          "solid": 14208
+        },
+        "anchor": [
+          0.13,
+          0.78
+        ],
+        "relativeWidth": 0.21,
+        "scale": 0.7999999999999999,
+        "flip": false
+      },
+      {
+        "name": "Platypus",
+        "bounds": {
+          "x0": 316,
+          "y0": 467,
+          "x1": 549,
+          "y1": 552,
+          "width": 234,
+          "height": 86,
+          "contactY": 541,
+          "visible": 14218,
+          "solid": 11581
+        },
+        "anchor": [
+          0.43,
+          0.86
+        ],
+        "relativeWidth": 0.2,
+        "scale": 0.8205128205128205,
+        "flip": true
+      },
+      {
+        "name": "Frog",
+        "bounds": {
+          "x0": 313,
+          "y0": 417,
+          "x1": 566,
+          "y1": 548,
+          "width": 254,
+          "height": 132,
+          "contactY": 525,
+          "visible": 18967,
+          "solid": 13800
+        },
+        "anchor": [
+          0.25,
+          0.87
+        ],
+        "relativeWidth": 0.07,
+        "scale": 0.26456692913385826,
+        "flip": false
+      },
+      {
+        "name": "Devil's Club",
+        "bounds": {
+          "x0": 338,
+          "y0": 363,
+          "x1": 538,
+          "y1": 588,
+          "width": 201,
+          "height": 226,
+          "contactY": 575,
+          "visible": 15932,
+          "solid": 11457
+        },
+        "anchor": [
+          0.87,
+          0.88
+        ],
+        "relativeWidth": 0.16,
+        "scale": 0.764179104477612,
+        "flip": false
+      },
+      {
+        "name": "Cranberry",
+        "bounds": {
+          "x0": 315,
+          "y0": 494,
+          "x1": 564,
+          "y1": 604,
+          "width": 250,
+          "height": 111,
+          "contactY": 590,
+          "visible": 9897,
+          "solid": 4694
+        },
+        "anchor": [
+          0.34,
+          0.9
+        ],
+        "relativeWidth": 0.11,
+        "scale": 0.4224,
+        "flip": false
+      }
+    ],
+    "originalLayerPixelParity": true,
+    "omittedCivetChangesPixels": true,
+    "outputs": [
+      {
+        "name": "civet-ink-880.png",
+        "width": 880,
+        "height": 880
+      },
+      {
+        "name": "civet-alpha-crop.png",
+        "width": 410,
+        "height": 217
+      },
+      {
+        "name": "civet-current-440.png",
+        "width": 440,
+        "height": 440
+      },
+      {
+        "name": "civet-current-300.png",
+        "width": 300,
+        "height": 300
+      },
+      {
+        "name": "civet-current-132.png",
+        "width": 132,
+        "height": 132
+      },
+      {
+        "name": "earth-residents-original.png",
+        "width": 960,
+        "height": 430
+      },
+      {
+        "name": "earth-residents-without-civet.png",
+        "width": 960,
+        "height": 430
+      }
+    ]
+  },
+  "background": {
+    "source": "port/v2/apps/game/src/assets/painted/earth-riverbank-v1.webp",
+    "sha256": "2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8"
+  },
+  "browserClosed": true,
+  "finishedAt": "2026-09-08T21:59:27.440Z"
+}

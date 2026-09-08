@@ -1,0 +1,109 @@
+{
+  "schema": "cf-earth-cohesion-final-review/v1",
+  "status": "PASS",
+  "nativeReportSha256": "2707b001df593cbc7d163d556457d95a54bf8d544de5e189b037da179941bbb7",
+  "sourceChecks": [
+    "audits/CREATURE_SCENE_COHESION_20260908/study.html",
+    "audits/CREATURE_SCENE_COHESION_20260908/study-harness.ts",
+    "audits/CREATURE_SCENE_COHESION_20260908/study-runner.mjs",
+    "audits/CREATURE_SCENE_COHESION_20260908/serve-study.mjs",
+    "audits/CREATURE_SCENE_COHESION_20260908/study.tsconfig.json",
+    "audits/CREATURE_SCENE_COHESION_20260908/asset.json",
+    "audits/CREATURE_SCENE_COHESION_20260908/cohesion-owner.ts",
+    "port/v2/packages/art/src/earth-resident-plan.ts",
+    "port/v2/tools/painted-creature/civet-rig.ts"
+  ],
+  "distChecks": 17,
+  "encodedImageChecks": 178,
+  "controls": [
+    {
+      "mode": "desktop",
+      "kind": "missing-declared-paw",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    'Civet:paw:0',\n    'Civet:paw:1',\n    'Civet:paw:2',\n-   'Civet:paw:3'\n  ]\n"
+    },
+    {
+      "mode": "desktop",
+      "kind": "isolated-measured-overstrong-light",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: Scene light absent or overstrong for civet: 1.6562210084784663"
+    },
+    {
+      "mode": "desktop",
+      "kind": "empty-lighting-region",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: Empty opaque lighting region civet"
+    },
+    {
+      "mode": "desktop",
+      "kind": "changed-alpha-row",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    0,\n    0,\n    0,\n+   0.9,\n-   1,\n    0\n  ]\n"
+    },
+    {
+      "mode": "desktop",
+      "kind": "empty-background-ruler",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: Background ruler is empty"
+    },
+    {
+      "mode": "desktop",
+      "kind": "empty-contact-ruler",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: No observable ground in Civet:paw:0"
+    },
+    {
+      "mode": "desktop",
+      "kind": "borrowed-source-lost",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(value.owner.borrowedSourcesIntact)\n"
+    },
+    {
+      "mode": "phone",
+      "kind": "missing-declared-paw",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    'Civet:paw:0',\n    'Civet:paw:1',\n    'Civet:paw:2',\n-   'Civet:paw:3'\n  ]\n"
+    },
+    {
+      "mode": "phone",
+      "kind": "isolated-measured-overstrong-light",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: Scene light absent or overstrong for civet: 1.6562210084784663"
+    },
+    {
+      "mode": "phone",
+      "kind": "empty-lighting-region",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: Empty opaque lighting region civet"
+    },
+    {
+      "mode": "phone",
+      "kind": "changed-alpha-row",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    0,\n    0,\n    0,\n+   0.9,\n-   1,\n    0\n  ]\n"
+    },
+    {
+      "mode": "phone",
+      "kind": "empty-background-ruler",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: Background ruler is empty"
+    },
+    {
+      "mode": "phone",
+      "kind": "empty-contact-ruler",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: No observable ground in Civet:paw:0"
+    },
+    {
+      "mode": "phone",
+      "kind": "borrowed-source-lost",
+      "rejected": true,
+      "reason": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(value.owner.borrowedSourcesIntact)\n"
+    }
+  ],
+  "limitations": [
+    "Isolated local study only; native game integration and human art acceptance remain open.",
+    "Native strongLight mutant hit an earlier legacy-contact guard. Offline same-acceptor replay isolates its measured lighting ratios so the lighting ruler is separately negative-controlled."
+  ],
+  "checkedAt": "2026-09-08T23:27:31.957Z"
+}

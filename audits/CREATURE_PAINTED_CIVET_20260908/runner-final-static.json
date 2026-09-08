@@ -1,0 +1,36 @@
+{
+  "schema": "cf-civet-study-static/v1",
+  "status": "PASS",
+  "startedAt": "2026-09-08T22:34:00.431Z",
+  "sourceCommit": "5e222931efd642c03ce55c5e67f7670a7aef890c",
+  "sources": {
+    "study-harness.ts": "a7380d3ef18887cd7ea6addbf5ff87635c4a7480a7c394472d90fb5d4bf641b1",
+    "study.tsconfig.json": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4",
+    "study-runner.mjs": "8cf678dfcd000b68f3061d5e6da737b25bbadb23cfbeaee0d3258bb14fe88209",
+    "serve-study.mjs": "5853afc75d99bf4eef093c5287cf792c6c754c443f988a094f24f8c091547ef6",
+    "../../port/v2/tools/painted-creature/civet-rig.ts": "161a3ddd690b21c11575a539587a629910ac89b98ab849e846e1b15a0bffe0bc",
+    "../../port/v2/tests/painted-civet-rig.test.ts": "a013a5a5bffbb552487f05da96ae709c0e3ce47736f288c6ae51754ab994b72d"
+  },
+  "stages": [
+    {
+      "name": "runner-syntax",
+      "command": "node",
+      "args": [
+        "--check",
+        "audits/CREATURE_PAINTED_CIVET_20260908/study-runner.mjs"
+      ],
+      "exitCode": 0,
+      "log": "runner-syntax-runner-final.log"
+    },
+    {
+      "name": "root-validate",
+      "command": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "log": "root-validate-runner-final.log"
+    }
+  ],
+  "finishedAt": "2026-09-08T22:34:12.688Z"
+}

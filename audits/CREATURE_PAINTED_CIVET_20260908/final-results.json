@@ -1,0 +1,84 @@
+{
+  "schema": "cf-painted-civet-batch-result/v1",
+  "status": "BOUNDED_STUDY_PASS",
+  "publishable": false,
+  "certification": false,
+  "sourceParent": "5e222931efd642c03ce55c5e67f7670a7aef890c",
+  "branch": "openai/mac",
+  "nativeReport": "study-native-final/report.json",
+  "nativeReportSha256": "cd84e42ea90c7f05a0754d4efa5595dea8e8fc20500bafd5ff4b1d87a9db97d9",
+  "nativeSources": {
+    "audits/CREATURE_PAINTED_CIVET_20260908/study.html": "aa5b56b182d8599785532302d88176d4c7f963e244ef0acdd28d365557f0b6f4",
+    "audits/CREATURE_PAINTED_CIVET_20260908/study-harness.ts": "a7380d3ef18887cd7ea6addbf5ff87635c4a7480a7c394472d90fb5d4bf641b1",
+    "audits/CREATURE_PAINTED_CIVET_20260908/study-runner.mjs": "8cf678dfcd000b68f3061d5e6da737b25bbadb23cfbeaee0d3258bb14fe88209",
+    "audits/CREATURE_PAINTED_CIVET_20260908/serve-study.mjs": "5853afc75d99bf4eef093c5287cf792c6c754c443f988a094f24f8c091547ef6",
+    "audits/CREATURE_PAINTED_CIVET_20260908/study.tsconfig.json": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4",
+    "audits/CREATURE_PAINTED_CIVET_20260908/asset.json": "9046bf17d8184125cf571932b1edf92a618db5e2c1b7e8917b90449b44450219",
+    "port/v2/tools/painted-creature/civet-rig.ts": "161a3ddd690b21c11575a539587a629910ac89b98ab849e846e1b15a0bffe0bc",
+    "port/v2/packages/art/src/earth-resident-plan.ts": "72d27b39e9c15382638f4db09074198e0eb296a18affafc740bbdc89e7f311f6"
+  },
+  "staticReports": [
+    "static-first.json",
+    "static-final.json",
+    "runner-final-static.json"
+  ],
+  "focusedTests": 113,
+  "baselineSourceFiles": 38,
+  "nativeModes": [
+    {
+      "name": "desktop",
+      "viewport": [
+        1440,
+        1200,
+        1
+      ],
+      "status": "PASS",
+      "probes": 8,
+      "controls": 5,
+      "allPawsFixed": true
+    },
+    {
+      "name": "phone",
+      "viewport": [
+        390,
+        844,
+        2
+      ],
+      "status": "PASS",
+      "probes": 8,
+      "controls": 5,
+      "allPawsFixed": true
+    }
+  ],
+  "runtimeErrors": [],
+  "cleanupErrors": [],
+  "browserClosed": true,
+  "dist": {
+    "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist",
+    "files": 17,
+    "bytes": 1775620,
+    "inventorySha256": "86c5e30524484e6a4156d71b6fd051fa589719d1486997f1a52619acff4aed2d",
+    "hashMethod": "SHA256 UTF8 compact JSON of native report dist.inventory, original order"
+  },
+  "preservedFailures": [
+    "FIRST_ASSET_FAILURE.md",
+    "SECOND_ASSET_FAILURE.md",
+    "ALPHA_V1_VISUAL_FAILURE.md",
+    "ALPHA_V2_DETAIL_FAILURE.md",
+    "FIRST_NATIVE_FAILURE.md",
+    "SECOND_NATIVE_FAILURE.md",
+    "contact-analysis-first-failure.json",
+    "CONTACT_ANALYSIS_METHOD_CLARIFICATION.md"
+  ],
+  "limitations": [
+    "Standalone local authoring bench. No native Compendium, battle, world navigation, protected save or product certificate claim.",
+    "One-view texture deformation supports finite breathing and neck brace/thrust/recoil, not jaw articulation, walking, a 3D rig or unseen anatomy.",
+    "Single shared decoded Civet texture within each document; measurements are resource-owner facts, not native driver heap, device heat or a total app memory cap.",
+    "Recovered matte retains attenuated whiskers and a small light fringe at magnification; production clean-edge and human art acceptance remain open.",
+    "DOM-hidden cancellation and synthetic document-hidden event coverage are distinct. Physical background-tab/PWA/Safari behavior remains unqualified.",
+    "Warm bright coat and weak local contact shadow still need scene-light integration. Other five native Earth residents retain older flat art.",
+    "Earlier stopped aggregate profiles and certificate/instrument blockers remain in ROADMAP.md; these focused passes do not supersede them."
+  ],
+  "hostedActions": 0,
+  "automationsCreated": 0
+}
