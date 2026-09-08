@@ -235,6 +235,95 @@ export function assessChartersCloseSettlement(receipt, viewport) {
   return {ok:errors.length===0,errors};
 }
 
+/** Establish a closed Survey predecessor with at most one trusted activation.
+ * The bounded wait observes strict false; fonts/frames cannot replace that outcome. */
+export async function surveyPostCloseSettlement(readState, activate, waitClosed, settleFrames, readFrames) {
+  const receipt = {label:'post-close.top-chrome.fonts-two-frames',before:null,activation:null,waitOutcome:null,
+    afterClose:null,settled:null,expectedFrameId:null,frame:null,overflow:true,error:null};
+  const state = async () => {
+    const observed = await readState();
+    if (typeof observed?.cardOpen !== 'boolean') throw new Error('Survey post-close state is not a strict boolean');
+    return observed;
+  };
+  try {
+    receipt.before = await state();
+    if (receipt.before.cardOpen) {
+      receipt.activation = await activate();
+      if (receipt.activation?.ok !== true) throw new Error('Survey post-close native activation refused');
+      receipt.waitOutcome = await waitClosed();
+      if (receipt.waitOutcome !== false) throw new Error('Survey post-close wait did not observe strict false');
+    }
+    receipt.afterClose = await state();
+    if (receipt.afterClose.cardOpen !== false) throw new Error('Survey post-close card remained open');
+    const prior = await readFrames();
+    if (!Array.isArray(prior?.invocations) || prior.overflow !== false)
+      throw new Error('Survey post-close frame ledger missing or overflowed');
+    receipt.expectedFrameId = (prior.invocations.at(-1)?.id ?? 0) + 1;
+    await settleFrames(receipt.label);
+    receipt.settled = await state();
+    const frames = await readFrames();
+    receipt.frame = frames?.invocations?.at(-1) ?? null;
+    receipt.overflow = frames?.overflow ?? true;
+  } catch (error) { receipt.error = String(error?.stack || error); }
+  return receipt;
+}
+export function assessSurveyPostClose(receipt, viewport) {
+  const errors = [], frame = receipt?.frame, checked = assessReviewFrameSettlement(frame, viewport);
+  if (receipt?.error !== null) errors.push(receipt?.error ?? 'Survey post-close receipt missing');
+  if (!checked.pass) errors.push(...checked.errors);
+  if (receipt?.label !== 'post-close.top-chrome.fonts-two-frames' || frame?.label !== receipt?.label
+    || !Number.isSafeInteger(receipt?.expectedFrameId) || receipt.expectedFrameId <= 0
+    || frame?.id !== receipt?.expectedFrameId || receipt?.overflow !== false) errors.push('Survey post-close settlement identity');
+  const snapshots = [receipt?.before, receipt?.afterClose, receipt?.settled], phases = Array.isArray(frame?.phases) ? frame.phases : [];
+  for (const [index, snapshot] of snapshots.entries()) {
+    if (!snapshot || typeof snapshot.cardOpen !== 'boolean' || (index > 0 && snapshot.cardOpen !== false)
+      || !Number.isFinite(snapshot.at) || !Number.isFinite(snapshot.timeOrigin)
+      || snapshot.timeOrigin !== phases[0]?.timeOrigin || snapshot.viewport?.width !== viewport.width
+      || snapshot.viewport?.height !== viewport.height || (index > 0 && snapshot.at < snapshots[index - 1]?.at))
+      errors.push('Survey post-close snapshot ' + index);
+  }
+  if (!(receipt?.afterClose?.at <= phases[0]?.at && phases.at(-1)?.at <= receipt?.settled?.at))
+    errors.push('Survey post-close settlement interval');
+  if (receipt?.before?.cardOpen === true ? receipt?.activation?.ok !== true || receipt?.waitOutcome !== false
+    : receipt?.activation !== null || receipt?.waitOutcome !== null) errors.push('Survey post-close activation accounting');
+  return {ok:errors.length === 0,errors};
+}
+
+/** Clearance owns the painted children of a pointer-transparent topbar;
+ * a blocking wrapper still owns its entire rectangle. Only the floating-trail
+ * band fixture excludes its separately measured injected trail. */
+export function paintedPostCloseFixedRows(excludeTrail = false) {
+  const header = document.getElementById('topbar');
+  const nodes = [...new Set([header, ...(header?.children ?? []),
+    ...['searchbox', 'objchip', 'sceneactions'].map(id => document.getElementById(id))])]
+    .filter(el => el && (!excludeTrail || el.id !== 'trail'));
+  return nodes.map(el => {
+    const r = el.getBoundingClientRect(), s = getComputedStyle(el), excluded = el === header && s.pointerEvents === 'none';
+    const opacity = Number(s.opacity || '1');
+    return { id: el.id, visible: !excluded && s.display !== 'none' && s.visibility !== 'hidden'
+      && opacity > 0 && r.width > 0 && r.height > 0, excluded, opacity,
+      rect: [r.left, r.top, r.right, r.bottom], bottom: r.bottom };
+  });
+}
+
+/** Retain the attempted canonical boundary even if fonts or receipt cleanup fail. */
+export async function postCloseFrameSettlement(settleFrames, readFrames, label) {
+  const receipt = { label, expectedFrameId: (readFrames()?.invocations?.at(-1)?.id ?? 0) + 1,
+    frame: null, overflow: true, error: null };
+  try { await settleFrames(label); }
+  catch (cause) { receipt.error = String(cause?.message || cause); }
+  try {
+    const frames = readFrames(); receipt.frame = frames?.invocations?.at(-1) ?? null; receipt.overflow = frames?.overflow ?? true;
+  } catch (cause) { receipt.error ??= String(cause?.message || cause); }
+  return receipt;
+}
+export function assessPostCloseFrameSettlement(receipt, viewport) {
+  const checked = assessReviewFrameSettlement(receipt?.frame, viewport), errors = [...checked.errors];
+  if (receipt?.frame?.label !== receipt?.label || receipt?.frame?.id !== receipt?.expectedFrameId
+    || receipt?.overflow !== false || receipt?.error !== null) errors.push('post-close frame identity/error');
+  return { ok: errors.length === 0, errors };
+}
+
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.join(here, '..', 'apps', 'game');
 const dist = path.join(appDir, 'dist');
@@ -13651,10 +13740,22 @@ async function main() {
            visible top-chrome surface that just returned. This catches short
            landscape+A++ layouts where a bottom-anchored strip can rise over
            HP/search/trail/objective despite clearing the dock. */
-        await evalIn(`document.getElementById('docksurvey')?.click()`);
-        await waitFor('survey closed for top-chrome clearance', `!window.__CF_SLICE__.api.state().cardOpen`);
+        const topChromeState = `(()=>{const state=window.__CF_SLICE__.api.state();return {cardOpen:state.cardOpen,
+          at:performance.now(),timeOrigin:performance.timeOrigin,viewport:{width:innerWidth,height:innerHeight}};})()`;
+        const topChromeClose = await surveyPostCloseSettlement(
+          () => evalIn(topChromeState),
+          () => activateRealControl('#docksurvey','close Survey for top-chrome clearance',{maxScrolls:0,scrolling:false}),
+          () => waitFor('survey closed for top-chrome clearance', `window.__CF_SLICE__.api.state().cardOpen`,5000,value=>value===false),
+          label => evalIn(`(${reviewFrameSettlement.toString()})(${JSON.stringify(label)})`),
+          () => evalIn(`(${readReviewFrameSettlements.toString()})()`));
+        const topChromeCloseAssessment = assessSurveyPostClose(topChromeClose,vp);
+        if (!topChromeCloseAssessment.ok) stopInstrumentControl(`${vp.label}: Survey post-close predecessor failed (${JSON.stringify({topChromeClose,topChromeCloseAssessment})})`);
+        const topChromeFixedRows = `(${paintedPostCloseFixedRows.toString()})()`;
+        const topChromeFrameOwner = `(label => (${postCloseFrameSettlement.toString()})(${reviewFrameSettlement.toString()},${readReviewFrameSettlements.toString()},label))`;
+        const topChromeFrameValid = receipt => assessPostCloseFrameSettlement(receipt, vp);
+        // AppChrome's separate publication intentionally retains the full wrapper.
         await waitFor('deferred lower/top chrome measurement after survey close', `(()=>{ const root=getComputedStyle(document.documentElement),ctx=document.getElementById('ctxbar'),dock=document.getElementById('dock'),trail=document.getElementById('trail'),fixed=['topbar','searchbox','objchip','sceneactions'].map(id=>document.getElementById(id)),fallback=document.body.classList.contains('surface-trail-yield');
-          const visibleBottom=(el)=>{const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0?r.bottom:0;},
+          const visibleBottom=(el)=>{const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&Number(s.opacity||'1')>0&&r.width>0&&r.height>0?r.bottom:0;},
             expectedTop=Math.max(...fixed.map(visibleBottom),fallback?0:visibleBottom(trail));
           return Math.abs(parseFloat(root.getPropertyValue('--ctx-h'))-ctx.offsetHeight)<0.6&&Math.abs(parseFloat(root.getPropertyValue('--dock-h'))-dock.offsetHeight)<0.6&&Math.abs(parseFloat(root.getPropertyValue('--surface-chrome-bottom'))-expectedTop)<0.6;})()`);
         const mobileSurfaceRetainsObjective = vp.width <= 900;
@@ -13662,7 +13763,7 @@ async function main() {
         const portraitSurface = vp.width <= 900 && vp.width <= vp.height;
         const chromeRestoreCheck = `(()=>{ const fallback=document.body.classList.contains('surface-trail-yield'),rows=['trail','objchip'].map(id=>{const el=document.getElementById(id);return {id,text:(el?.textContent||'').trim(),display:el?getComputedStyle(el).display:'missing'};});
           return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?r.display==='none':r.display!=='none')),rows,fallback};})()`;
-        const chromeRestoreBaseline = await evalIn(chromeRestoreCheck);
+        const chromeRestoreBaseline = {...await evalIn(chromeRestoreCheck),precondition:topChromeClose};
         const chromeRestoreExpected = 'populated canonical trail remains visually hidden while the objective Charters control returns after the last card closes on every platform';
         addOutcome(vp.label, 'survey-chrome-restore', 'MOBILE_CHROME_NOT_RESTORED', '#trail,#objchip', chromeRestoreBaseline,
           chromeRestoreExpected);
@@ -13714,11 +13815,10 @@ async function main() {
             if(!side||!trail||!head||!specimen)return {ok:false,why:'missing populated band surface'};
             const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ts=getComputedStyle(trail),ss=getComputedStyle(side),prior=side.scrollTop,
               header=document.getElementById('topbar'),h=header?.getBoundingClientRect(),
-              fixedRows=['topbar','searchbox','objchip','sceneactions'].map(id=>{const el=document.getElementById(id),r=el?.getBoundingClientRect(),s=el?getComputedStyle(el):null;
-                return {id,visible:!!r&&s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0,bottom:r?.bottom??null};}),
+              fixedRows=(${paintedPostCloseFixedRows.toString()})(true),
               fixedChromeBottom=Math.max(0,...fixedRows.filter(row=>row.visible).map(row=>row.bottom)),
               headerContained=!!h&&header.contains(trail)&&t.left>=h.left-1&&t.right<=h.right+1&&t.top>=h.top-1&&t.bottom<=h.bottom+1;
-            const trailVisible=ts.display!=='none'&&ts.visibility!=='hidden'&&t.width>0&&t.height>0,
+            const trailVisible=ts.display!=='none'&&ts.visibility!=='hidden'&&Number(ts.opacity||'1')>0&&t.width>0&&t.height>0,
               gap=trailVisible?a.top-t.bottom:null,inside=(r)=>r.bottom>a.top+1&&r.top<a.bottom-1;
             const headAtRest=head.getBoundingClientRect(),specimenAtRest=specimen.getBoundingClientRect(),headVisible=inside(headAtRest),specimenVisible=inside(specimenAtRest);
             const clipped=side.scrollHeight>side.clientHeight+1,maxScroll=Math.max(0,side.scrollHeight-side.clientHeight);
@@ -13742,9 +13842,13 @@ async function main() {
             /* Explicitly inject the former floating-trail regression. Both
                controls share this labelled visible predecessor; no outcome
                claims that the normally hidden trail occupies a native lane. */
-            const portraitControls = await evalIn(`(()=>{const trail=document.getElementById('trail'),header=document.getElementById('topbar'),
+            const portraitControls = await evalIn(`(async()=>{const trail=document.getElementById('trail'),header=document.getElementById('topbar'),
+              settlements=[],cleanupErrors=[],message=cause=>String(cause?.message||cause),
+              settle=async label=>{const receipt=await ${topChromeFrameOwner}(label);settlements.push(receipt);
+                if(receipt.error!==null)throw new Error(receipt.error);return receipt;},
               nativeBaseline=${portraitNativeCheck},originalStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},
               originalRect=trail.getBoundingClientRect();let fixture=null,band=null,fallback=null,cleanup=null,error=null;
+              const cleanupFailed=cause=>{const failure=message(cause);cleanupErrors.push(failure);error??=failure;};
               try{
                 if(!nativeBaseline.ok||!nativeBaseline.canonicalHidden)throw new Error('native hidden-trail portrait predecessor is not green');
                 const rootStyle=getComputedStyle(document.documentElement),left=(parseFloat(rootStyle.getPropertyValue('--safe-left'))||0)+10,
@@ -13753,7 +13857,7 @@ async function main() {
                 trail.style.setProperty('left',left+'px','important');trail.style.setProperty('top',injectedTop+'px','important');
                 trail.style.setProperty('right','auto','important');trail.style.setProperty('bottom','auto','important');
                 trail.style.setProperty('width',(innerWidth-left-right)+'px','important');trail.style.setProperty('transform','none','important');
-                window.dispatchEvent(new Event('resize'));
+                window.dispatchEvent(new Event('resize'));await settle('portrait.fixture.injected.fonts-two-frames');
                 const injectedBaseline=${portraitBandCheck},injectedRect=trail.getBoundingClientRect();
                 fixture={kind:'injected-floating-trail-regression',nativeBaseline,originalStyle,
                   originalRect:[originalRect.left,originalRect.top,originalRect.right,originalRect.bottom],injectedTop,
@@ -13761,50 +13865,68 @@ async function main() {
                   injectedBaseline,observedOutsideHeader:!injectedBaseline.headerContained&&injectedRect.top>=nativeBaseline.fixedChromeBottom+7.5};
                 if(!fixture.observedOutsideHeader||!injectedBaseline.ok||!injectedBaseline.trailVisible||injectedBaseline.fallback)
                   throw new Error('labelled floating-trail fixture did not establish a usable visible predecessor');
-                band=(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
-                value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform'),computed:getComputedStyle(side).transform},
-                a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),dy=t.bottom-1-a.top,requested='translateY('+dy+'px)';let mutation;
-              try{side.style.setProperty('transform',requested,'important');mutation={requested,
-                property:{value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform')},
-                computed:getComputedStyle(side).transform,outcome:${portraitBandCheck}};}
-              finally{if(prior.value===''&&prior.priority==='')side.style.removeProperty('transform');else side.style.setProperty('transform',prior.value,prior.priority);}
-              const restored={property:{value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform')},
-                computed:getComputedStyle(side).transform,outcome:${portraitBandCheck}};
-              return {baseline,prior,mutation,restored};})();
-                fallback=(()=>{ const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
-                value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom'),computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim()},
-                beforeSide=side.getBoundingClientRect(),beforeTrail=trail.getBoundingClientRect(),baseSafe=parseFloat(prior.computed)||0,
-                forcedSafe=baseSafe+Math.max(8,beforeSide.bottom-beforeTrail.bottom-6-64),requested=forcedSafe+'px';let mutation;
-              try{root.style.setProperty('--safe-bottom',requested,'important');window.dispatchEvent(new Event('resize'));
-                const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ss=getComputedStyle(side),ts=getComputedStyle(trail),fallback=document.body.classList.contains('surface-trail-yield'),
-                  meaningful=a.height>=71&&side.clientHeight>=68,scrollOk=side.scrollHeight<=side.clientHeight+1||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&side.scrollHeight>side.clientHeight),
-                  fixedRows=['playerchip','hpbar','searchbox','objchip','sceneactions'].map(id=>{const el=document.getElementById(id),s=getComputedStyle(el),r=el.getBoundingClientRect(),visible=s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;return {id,visible,gap:a.top-r.bottom};}),
-                  fixedClear=fixedRows.every(row=>!row.visible||row.gap>=5.5),outcome={ok:fallback&&ts.display==='none'&&meaningful&&scrollOk&&fixedClear,fallback,trailDisplay:ts.display,meaningful,scrollOk,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,overflowY:ss.overflowY,fixedClear,fixedRows,baseSafe,forcedSafe};
-                mutation={requested,property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
-                  computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),baseSafe,forcedSafe,outcome};}
-              finally{if(prior.value===''&&prior.priority==='')root.style.removeProperty('--safe-bottom');else root.style.setProperty('--safe-bottom',prior.value,prior.priority);window.dispatchEvent(new Event('resize'));}
-              const restored={property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
-                computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),outcome:${portraitBandCheck}};
-              return {baseline,prior,mutation,restored};})();
-              }catch(cause){error=String(cause?.message||cause);}
+                band=await (async()=>{const side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
+                  value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform'),computed:getComputedStyle(side).transform},
+                  a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),dy=t.bottom-1-a.top,requested='translateY('+dy+'px)';let mutation,failure=null;
+                  try{side.style.setProperty('transform',requested,'important');await settle('portrait.band.mutated.fonts-two-frames');mutation={requested,
+                    property:{value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform')},
+                    computed:getComputedStyle(side).transform,outcome:${portraitBandCheck}};}
+                  catch(cause){failure=cause;error??=message(cause);}
+                  finally{try{if(prior.value===''&&prior.priority==='')side.style.removeProperty('transform');else side.style.setProperty('transform',prior.value,prior.priority);
+                    await settle('portrait.band.restored.fonts-two-frames');}catch(cause){cleanupFailed(cause);failure??=cause;}}
+                  if(failure)throw failure;
+                  const restored={property:{value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform')},
+                    computed:getComputedStyle(side).transform,outcome:${portraitBandCheck}};
+                  return {baseline,prior,mutation,restored};})();
+                fallback=await (async()=>{const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
+                  value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom'),computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim()},
+                  beforeSide=side.getBoundingClientRect(),beforeTrail=trail.getBoundingClientRect(),baseSafe=parseFloat(prior.computed)||0,
+                  forcedSafe=baseSafe+Math.max(8,beforeSide.bottom-beforeTrail.bottom-6-64),requested=forcedSafe+'px';let mutation,failure=null;
+                  try{root.style.setProperty('--safe-bottom',requested,'important');window.dispatchEvent(new Event('resize'));await settle('portrait.fallback.mutated.fonts-two-frames');
+                    const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ss=getComputedStyle(side),ts=getComputedStyle(trail),fallback=document.body.classList.contains('surface-trail-yield'),
+                      meaningful=a.height>=71&&side.clientHeight>=68,scrollOk=side.scrollHeight<=side.clientHeight+1||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&side.scrollHeight>side.clientHeight),
+                      fixedRows=['playerchip','hpbar','searchbox','objchip','sceneactions'].map(id=>{const el=document.getElementById(id),s=getComputedStyle(el),r=el.getBoundingClientRect(),visible=s.display!=='none'&&s.visibility!=='hidden'&&Number(s.opacity||'1')>0&&r.width>0&&r.height>0;return {id,visible,gap:a.top-r.bottom};}),
+                      actualFixedRows=${topChromeFixedRows},fixedClear=fixedRows.every(row=>!row.visible||row.gap>=5.5)&&actualFixedRows.every(row=>!row.visible||a.top-row.bottom>=5.5),
+                      outcome={ok:fallback&&ts.display==='none'&&meaningful&&scrollOk&&fixedClear,fallback,trailDisplay:ts.display,meaningful,scrollOk,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,overflowY:ss.overflowY,fixedClear,fixedRows,actualFixedRows,baseSafe,forcedSafe};
+                    mutation={requested,property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
+                      computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),baseSafe,forcedSafe,outcome};}
+                  catch(cause){failure=cause;error??=message(cause);}
+                  finally{try{if(prior.value===''&&prior.priority==='')root.style.removeProperty('--safe-bottom');else root.style.setProperty('--safe-bottom',prior.value,prior.priority);window.dispatchEvent(new Event('resize'));
+                    await settle('portrait.fallback.restored.fonts-two-frames');}catch(cause){cleanupFailed(cause);failure??=cause;}}
+                  if(failure)throw failure;
+                  const restored={property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
+                    computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),outcome:${portraitBandCheck}};
+                  return {baseline,prior,mutation,restored};})();
+              }catch(cause){error??=message(cause);}
               finally{
-                /* AppChrome deliberately remembers the last visible trail
-                   edge. Reset only the fixture's remembered edge through a
-                   measured temporary rect inside the existing header before
-                   restoring the hidden node's exact style presence/bytes. */
-                const h=header.getBoundingClientRect();trail.style.setProperty('display','flex');
-                trail.style.setProperty('top',h.top+'px','important');trail.style.setProperty('left',h.left+'px','important');
-                trail.style.setProperty('width',h.width+'px','important');trail.style.setProperty('height',Math.min(16,h.height)+'px','important');
-                window.dispatchEvent(new Event('resize'));const c=trail.getBoundingClientRect();
-                cleanup={kind:'temporary-header-contained-edge-reset',rect:[c.left,c.top,c.right,c.bottom],
-                  header:[h.left,h.top,h.right,h.bottom],headerContained:getComputedStyle(trail).display!=='none'&&c.width>0&&c.height>0
-                    &&c.left>=h.left-1&&c.right<=h.right+1&&c.top>=h.top-1&&c.bottom<=h.bottom+1};
-                trail.setAttribute('style','');trail.removeAttribute('style');if(originalStyle.present)trail.setAttribute('style',originalStyle.value);
-                window.dispatchEvent(new Event('resize'));
+                /* Reset only the fixture's remembered trail edge, then restore
+                   exact native style presence/bytes, settling each publication. */
+                try{const h=header.getBoundingClientRect();trail.style.setProperty('display','flex');
+                  trail.style.setProperty('top',h.top+'px','important');trail.style.setProperty('left',h.left+'px','important');
+                  trail.style.setProperty('width',h.width+'px','important');trail.style.setProperty('height',Math.min(16,h.height)+'px','important');
+                  window.dispatchEvent(new Event('resize'));await settle('portrait.fixture.cleanup-contained.fonts-two-frames');const c=trail.getBoundingClientRect();
+                  cleanup={kind:'temporary-header-contained-edge-reset',rect:[c.left,c.top,c.right,c.bottom],
+                    header:[h.left,h.top,h.right,h.bottom],headerContained:getComputedStyle(trail).display!=='none'&&c.width>0&&c.height>0
+                      &&c.left>=h.left-1&&c.right<=h.right+1&&c.top>=h.top-1&&c.bottom<=h.bottom+1};
+                }catch(cause){cleanupFailed(cause);}
+                finally{try{trail.setAttribute('style','');trail.removeAttribute('style');if(originalStyle.present)trail.setAttribute('style',originalStyle.value);
+                  window.dispatchEvent(new Event('resize'));await settle('portrait.fixture.native-restored.fonts-two-frames');
+                }catch(cause){cleanupFailed(cause);}}
               }
-              const restoredStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},nativeRestored=${portraitNativeCheck},
-                witness={...fixture,restoredStyle,nativeRestored,cleanup,error};
-              return {band:{...band,fixture:witness,error},fallback:{...fallback,fixture:witness,error}};})()`);
+              const restoredStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')};let nativeRestored=null;
+              // An unsuccessful cleanup boundary does not authorize a dependent geometry read.
+              if(cleanupErrors.length===0){try{nativeRestored=${portraitNativeCheck};}catch(cause){cleanupFailed(cause);}}
+              const witness={...fixture,restoredStyle,nativeRestored,cleanup,error,cleanupErrors};
+              return {band:{...band,fixture:witness,error},fallback:{...fallback,fixture:witness,error},settlements};})()`);
+            const fixtureError=portraitControls.band?.fixture?.error??portraitControls.fallback?.fixture?.error
+              ??portraitControls.band?.error??portraitControls.fallback?.error??null;
+            if(fixtureError!==null)
+              stopInstrumentControl(`${vp.label}: portrait fixture failed: ${fixtureError} (${JSON.stringify(portraitControls)})`);
+            const expectedSettlements=['portrait.fixture.injected','portrait.band.mutated','portrait.band.restored','portrait.fallback.mutated',
+              'portrait.fallback.restored','portrait.fixture.cleanup-contained','portrait.fixture.native-restored'].map(label=>label+'.fonts-two-frames');
+            const settlementChecks=portraitControls.settlements?.map(topChromeFrameValid)??[];
+            if(JSON.stringify(portraitControls.settlements?.map(row=>row.label))!==JSON.stringify(expectedSettlements)||settlementChecks.some(row=>!row.ok))
+              stopInstrumentControl(`${vp.label}: portrait fixture settlement evidence failed (${JSON.stringify({portraitControls,settlementChecks})})`);
             const bandControlAssessment=portraitBandControlOutcome(portraitControls.band),fallbackControlAssessment=portraitFallbackControlOutcome(portraitControls.fallback);
             if(!bandControlAssessment.ok||!fallbackControlAssessment.ok)
               stopInstrumentControl(`${vp.label}: labelled floating-trail collision/fallback did not turn red/yield and restore the hidden native baseline (${JSON.stringify({portraitControls,bandControlAssessment,fallbackControlAssessment})})`);
@@ -13827,10 +13949,9 @@ async function main() {
           }
         }
         const topChromeCheck = `(()=>{ const side=document.getElementById('planetside'),a=side?.getBoundingClientRect();if(!side||!a)return {ok:false,why:'missing'};
-          const rows=['playerchip','hpbar','searchbox','trail','objchip','sceneactions'].map(id=>{const el=document.getElementById(id),s=el?getComputedStyle(el):null,r=el?.getBoundingClientRect();
-            const visible=!!el&&s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;
-            const overlap=visible&&a.left<r.right-1&&a.right>r.left+1&&a.top<r.bottom-1&&a.bottom>r.top+1;
-            return {id,visible,overlap,rect:r?[r.left,r.top,r.right,r.bottom]:null};});return {ok:rows.every(r=>!r.overlap),side:[a.left,a.top,a.right,a.bottom],rows};})()`;
+          const rows=${topChromeFixedRows}.map(row=>{const r=row.rect;
+            return {...row,overlap:row.visible&&a.left<r[2]-1&&a.right>r[0]+1&&a.top<r[3]-1&&a.bottom>r[1]+1};});
+          return {ok:rows.every(r=>!r.overlap),side:[a.left,a.top,a.right,a.bottom],rows};})()`;
         addOutcome(vp.label, 'planetside-top-clearance', 'PLANETSIDE_TOP_CHROME_OVERLAP', '#planetside', await evalIn(topChromeCheck),
           'Planetside clears every visible player/HP/search/trail/objective/scene-action surface');
         if (!topChromeControlRun) {
