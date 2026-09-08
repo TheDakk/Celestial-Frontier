@@ -1,0 +1,334 @@
+{
+  "status": "PASS",
+  "createdAt": "2026-09-08T11:45:13.594565+00:00",
+  "destination": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908",
+  "originalMasterSha256": "a5e635a7587e1e8b8be7a3bd3636f56375ba84654989e696cf251b4a1c188e8a",
+  "independentBackup": false,
+  "packaging": "Exact phenotype copies restore existing relative //input/phenotype.json paths for each new master; masters unchanged.",
+  "files": [
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/natural/pose-001.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/natural/pose-001.png",
+      "bytes": 192822,
+      "sha256": "162e2b086c41504a7cc28587c2d4d0118fcccd002af78f9ecf8811693156bd75"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/natural/pose-013.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/natural/pose-013.png",
+      "bytes": 193514,
+      "sha256": "d2bcc320a1a4e43b6f3b8d6d4fce1b1b99b13623c01666ef3be7e78de4c75cb2"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/natural/pose-021.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/natural/pose-021.png",
+      "bytes": 192015,
+      "sha256": "139e19ab54e2102ef69835acc45f7579ccf8bac3cca9ae54d7dd600b392757fc"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/natural/pose-041.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/natural/pose-041.png",
+      "bytes": 193384,
+      "sha256": "6b73303e0ca3a290172da7357dc6d4a9b5cfc3120b28c56da2ba74b4c02053c3"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/natural/pose-053.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/natural/pose-053.png",
+      "bytes": 192432,
+      "sha256": "c5ecac2d790cbd12cf9b7e128b49399408c45cad56e352cd71e2c84679ee935c"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/natural/wolf-charm.blend",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/natural/wolf-charm.blend",
+      "bytes": 5473588,
+      "sha256": "3a2cb57231ef82d2c2928380e31abcaf6129136d7ec273087fe33b82d27c2a36"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/phenotype.json",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/phenotype.json",
+      "bytes": 6924,
+      "sha256": "757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-001.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/storybook/pose-001.png",
+      "bytes": 199452,
+      "sha256": "a8ed2ca2caec0b8f04b5532cc074ae0b0f606bc1bc274dd12322858cd8e02e39"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-013.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/storybook/pose-013.png",
+      "bytes": 199506,
+      "sha256": "ac8b256fa07445c46bdabb84f86f369577b250bb308ff8b775142bb2be0ad2d7"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-021.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/storybook/pose-021.png",
+      "bytes": 198383,
+      "sha256": "dc7d6148ff8c683e938fcf5104b811ce8706ee03df6ca19824234f6e16934889"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-041.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/storybook/pose-041.png",
+      "bytes": 199393,
+      "sha256": "7a8930a6477c9163329c57cc16299f33dacb242607c9d1a076142347743aeca5"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-053.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/storybook/pose-053.png",
+      "bytes": 199400,
+      "sha256": "e8a73f90ae69d5982e958739ee695ab234a139458102c7b401f3192a23ec7196"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/storybook/wolf-charm.blend",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/storybook/wolf-charm.blend",
+      "bytes": 4810647,
+      "sha256": "5e6ad74d6de549ace56b4c13766016c39253096c0b72f318f9d3507a3ee6eb39"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/study.json",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/study.json",
+      "bytes": 4651,
+      "sha256": "33aa97acc027126b9e151250ecafd0fac28b1df0fae67b3fdf879ab3f551ca02"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/000.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/000.png",
+      "bytes": 128920,
+      "sha256": "9f9961f1c953ee842a92f1252eb72bf93659545032025e4fe0e154a3fe4d50ea"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/001.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/001.png",
+      "bytes": 128865,
+      "sha256": "6bc8b68957f17f2144310d6041993a7b6436dad88c5454ae5211c0d1cf04a25c"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/002.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/002.png",
+      "bytes": 128885,
+      "sha256": "1905a3abf7f724f1795905b6a4e047f7f01ca1eb42d4f585a230246f57623d81"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/003.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/003.png",
+      "bytes": 128485,
+      "sha256": "421e847ef5438c21c0e47f0054ace5ae1e4ce41b7b4b76955e0d4dbabe653497"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/004.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/004.png",
+      "bytes": 128734,
+      "sha256": "bdaf2b1deaec7f3a64d88ed91164340343cb106f17a0d59ea3690e360ca0c08b"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/005.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/005.png",
+      "bytes": 129185,
+      "sha256": "d3c982d60958cf77ca507068bf8b04631f936f81b8d38cb1672e7600a79ba605"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/006.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/006.png",
+      "bytes": 129184,
+      "sha256": "8f7048f1a873c4babd11ea147d6ab65bf701656bf1f2becafffeedce3d6f237c"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/007.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/007.png",
+      "bytes": 128947,
+      "sha256": "e7d2976b01370615fd4a85bf395a9cf95ea2bf6336b4f757a21f86c221488544"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/008.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/008.png",
+      "bytes": 128758,
+      "sha256": "acdb1f02f7f5024504ca3c6ade8f9e2c3b1226071c16eb06a2e1b3be8713cc6c"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/009.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/009.png",
+      "bytes": 128149,
+      "sha256": "da34a4bc7e597eddb1393e9f283c48b50c49eef24344266f4510a6694177dfd6"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/010.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/010.png",
+      "bytes": 127922,
+      "sha256": "b976e8a1097675ece4b7e8dbe8e791d0d6a482a2855de61231bc0cdffec9ddf6"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/011.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/011.png",
+      "bytes": 127971,
+      "sha256": "c6e542ccc1c3c878550b500b93d10e397cdfd20ef0182c0ce95d7d6f06b1e8b6"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/012.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/012.png",
+      "bytes": 127826,
+      "sha256": "39881d5f2a64e4acef243d97e49c7c1a085edba4e187849e88b99715da939769"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/013.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/013.png",
+      "bytes": 128365,
+      "sha256": "ec2af9baeff770cd8bbd17bbce5534264e166ea731a818c4f932eaf849dad4a6"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/014.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/014.png",
+      "bytes": 128742,
+      "sha256": "bf100049c47620706c44f39f5ab0bbd0cf7838931917e733dd7e21ae31e7b1a4"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/015.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/015.png",
+      "bytes": 128551,
+      "sha256": "851329f050febd8df796e71e958a271c4709f57919e2b76593d1d4a0f7e54ba5"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/016.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/016.png",
+      "bytes": 128699,
+      "sha256": "bbd9a3c0f35997b55a7a5e455c47896ff5c9a3220b4de24e47b4553236eb59c3"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/017.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/017.png",
+      "bytes": 128985,
+      "sha256": "c282a2c375a65c845ee81362b02815b41a1539bc6ed19dcb98211dbb97ebd1a9"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/018.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/018.png",
+      "bytes": 128935,
+      "sha256": "cf2bb5e0b8569e78269524cf5b406057ea88153ebf5ee073799bed5c806e69a0"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/019.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/019.png",
+      "bytes": 128802,
+      "sha256": "f1e80290825ed5be8a2d1a12ee5e3fa7fde9369f086e01395d3797c34d05be0d"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/020.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/020.png",
+      "bytes": 129218,
+      "sha256": "c866caa950b26910bfa3baead7247c0c90ffdd2b918e2b79e803839d59679bcc"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/021.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/021.png",
+      "bytes": 128859,
+      "sha256": "939ff325855222f2e292d0e9e6822e78f6be0f189eddcce8b38d27f4d92a4250"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/022.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/022.png",
+      "bytes": 129290,
+      "sha256": "555ddd513cd242c37be1ae010087371fb2284bf0c0127bbc1143d4dd02e81e26"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/023.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/023.png",
+      "bytes": 128886,
+      "sha256": "2291c9de19d3e64a7588c5269d719cf0a33786806cbd76bff86ef6f26a64cd4c"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/024.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/024.png",
+      "bytes": 128593,
+      "sha256": "f2738ea1bf164788bf3032d7a5dd98f3e5db42ce84b28ac8ef4731f1dd8affb6"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/025.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/025.png",
+      "bytes": 128743,
+      "sha256": "9e24b11d4a7518a0c9475a1a1873a24ef5b16af933ba607a2512778a6f919e6c"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/026.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/026.png",
+      "bytes": 128530,
+      "sha256": "629c984656671c328c2612e1a2fc8c27440487e9e98ceb597144797fd6b80a09"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/027.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/027.png",
+      "bytes": 128610,
+      "sha256": "abe1862e949dab5064bce7b0ce78fe6231d9aa909d33344339237fc7cb12c0f2"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/028.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/028.png",
+      "bytes": 128791,
+      "sha256": "c92724f5bc187326ab0df17a6c20f956ef2a8cca01cad699d3f7400b40f3458e"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/029.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/029.png",
+      "bytes": 128738,
+      "sha256": "06589cc211994fb6243aeb831e0648d3df6cdffa9f693500f0f380be6b9e1428"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/030.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/030.png",
+      "bytes": 128730,
+      "sha256": "917bd9aad3d666eb76b7a942a3d1308f2c633b5e15543398090b4ac4d5f35784"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/031.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/031.png",
+      "bytes": 128692,
+      "sha256": "0450ab7d1c90ea12177b2ae64654d2719a5706597567c70f4a8436f8cf900966"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/frames/032.png",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/frames/032.png",
+      "bytes": 128898,
+      "sha256": "f5379d4a33d2eb02c4605f603da20468e40b630c66f39e52a7560ebd574c5a2f"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/motion-check/motion.json",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/motion-check/motion.json",
+      "bytes": 6590,
+      "sha256": "919ccd35653b1189df29cd5518f1f3acf89819b5a64e87dc24effc28db5687b0"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/phenotype.json",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/natural/input/phenotype.json",
+      "bytes": 6924,
+      "sha256": "757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476"
+    },
+    {
+      "source": "/private/tmp/cf-creature-charm-20260908/first/phenotype.json",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/first/storybook/input/phenotype.json",
+      "bytes": 6924,
+      "sha256": "757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/blender/creature_charm_study.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/sources/creature_charm_study.py",
+      "bytes": 14243,
+      "sha256": "12a69f4060ea45d4ba324ced52b0672a9f7345016152374eac98433c07aa6221"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/audit_motion.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/sources/audit_motion.py",
+      "bytes": 5019,
+      "sha256": "5f051e03a0cd4850b30364cc82c72f94e1cca58cc5bc2f35c34f1b80264e8ae6"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/package_samples.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/sources/package_samples.py",
+      "bytes": 2954,
+      "sha256": "8cb0c3f78f342f3269d54e899ab1b08d6b4041092de8ac40e9db2c8509465fb7"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/package_samples_font.py",
+      "path": "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-charm-20260908/sources/package_samples_font.py",
+      "bytes": 2995,
+      "sha256": "e7ed8e4f9735981be5fdc3497923cc64f7d900f8bda1f49b00dff271f2ceef5d"
+    }
+  ]
+}

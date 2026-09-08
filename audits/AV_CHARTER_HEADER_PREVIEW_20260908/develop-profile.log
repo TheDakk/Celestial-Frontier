@@ -1,0 +1,121 @@
+
+[check:develop] npm test
+
+> cf-v2@0.0.0 test
+> vitest run
+
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+> @cf/game@0.0.0 build
+> vite build --mode evidence
+
+vite v8.2.0 building client environment for evidence...
+[2Ktransforming...✓ 1012 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/audit.html                                          0.69 kB │ gzip:   0.39 kB
+dist/manifest.webmanifest                                0.72 kB
+dist/hybrid-matrix.html                                  0.78 kB │ gzip:   0.41 kB
+dist/audiovisual-pilot.html                              0.82 kB │ gzip:   0.40 kB
+dist/icons/celestial-frontier-maskable.svg               1.13 kB │ gzip:   0.53 kB
+dist/icons/celestial-frontier.svg                        1.13 kB │ gzip:   0.53 kB
+dist/assets/Inter-LICENSE-CkXC2-KD.txt                   4.38 kB │ gzip:   1.97 kB
+dist/assets/scout-chemical-132-Dt4gyYnA.webp            12.53 kB
+dist/service-worker.js                                  20.58 kB
+dist/assets/cf-pilot-ui-nav-bMnbTxA8.wav                26.92 kB
+dist/assets/cf-pilot-combat-contact-DHZD2lYd.wav        33.64 kB
+dist/assets/scout-chemical-300-CxcU_kic.webp            40.66 kB
+dist/assets/cf-pilot-ui-refusal-CMon7hko.wav            43.24 kB
+dist/assets/cf-pilot-ui-settlement-uF_X4Ois.wav         67.24 kB
+dist/index.html                                         68.58 kB │ gzip:  15.06 kB
+dist/assets/scout-chemical-512-DcNawgH5.webp            92.89 kB
+dist/assets/cf-pilot-scout-landing-D1k5tYuE.wav        134.44 kB
+dist/assets/biome-vista.worker-D3XRSJZJ.js             220.68 kB
+dist/assets/cf-pilot-scout-approach-Be38_iqZ.wav       230.44 kB
+dist/assets/earth-rainy-phone-DFt5murF.webp            343.07 kB
+dist/assets/InterVariable-DiVDrmQJ.woff2               352.24 kB
+dist/assets/earth-rainy-landscape-DPgApIAi.webp        765.31 kB
+dist/assets/species-art.worker-DnnSDKMy.js           1,312.28 kB
+dist/assets/cf-pilot-exploration-music-CMF8UCKw.wav  4,608.04 kB
+dist/assets/cf-pilot-temperate-bed-C_jKRyj6.wav      4,608.04 kB
+dist/assets/webworkerAll-Dl-gkjA6.js                     0.07 kB │ gzip:   0.08 kB
+dist/assets/release-identity-CIuedefi.js                 0.13 kB │ gzip:   0.13 kB │ map:     0.78 kB
+dist/assets/getTextureBatchBindGroup-DkbnCTGz.js         0.40 kB │ gzip:   0.31 kB │ map:     1.79 kB
+dist/assets/CanvasPool-BewL5izq.js                       0.80 kB │ gzip:   0.45 kB │ map:     3.52 kB
+dist/assets/speciesidentity-DkdaK0o4.js                  2.00 kB │ gzip:   0.86 kB │ map:     5.04 kB
+dist/assets/surface-polish-CBmmi-Kj.js                   4.73 kB │ gzip:   1.69 kB │ map:    18.75 kB
+dist/assets/canvasUtils-CWV5icuA.js                      6.07 kB │ gzip:   2.07 kB │ map:    21.93 kB
+dist/assets/BufferResource-e5xCyZ5_.js                  10.57 kB │ gzip:   2.81 kB │ map:    25.66 kB
+dist/assets/init-S6n54E3j.js                            15.30 kB │ gzip:   4.81 kB │ map:    53.39 kB
+dist/assets/pilot-sound-player-Dg8Fl5YX.js              16.19 kB │ gzip:   6.22 kB │ map:    40.33 kB
+dist/assets/audit-BESfJQH9.js                           16.57 kB │ gzip:   6.52 kB │ map:    68.44 kB
+dist/assets/audiovisualPilot-YSvrk05a.js                19.06 kB │ gzip:   7.28 kB │ map:    43.75 kB
+dist/assets/getPo2TextureFromSource-0axNaDip.js         25.10 kB │ gzip:   8.68 kB │ map:   107.50 kB
+dist/assets/audiovisual-pilot-xkKqITae.js               25.13 kB │ gzip:   6.54 kB │ map:    39.91 kB
+dist/assets/hybridMatrix-DiGQ5L5t.js                    33.85 kB │ gzip:  11.02 kB │ map:    97.55 kB
+dist/assets/WebGPURenderer-Btvgrbn5.js                  38.53 kB │ gzip:  10.79 kB │ map:   123.97 kB
+dist/assets/browserAll-CAHNI2rF.js                      42.64 kB │ gzip:  11.14 kB │ map:   156.69 kB
+dist/assets/WebGLRenderer-6mXMZ2W0.js                   68.03 kB │ gzip:  18.70 kB │ map:   215.94 kB
+dist/assets/RenderTargetSystem-DKTlyS8X.js              71.13 kB │ gzip:  20.24 kB │ map:   262.67 kB
+dist/assets/CanvasRenderer-DXKJLlc8.js                  87.43 kB │ gzip:  27.48 kB │ map:   463.49 kB
+dist/assets/Geometry-C5FtorEc.js                       101.66 kB │ gzip:  31.17 kB │ map:   500.48 kB
+dist/assets/visual-effect-policy-Bvngx8nL.js           124.26 kB │ gzip:  33.48 kB │ map:   468.26 kB
+dist/assets/guide-content-Cy7MxzST.js                  130.92 kB │ gzip:  44.31 kB │ map:   148.58 kB
+dist/assets/src-D1xb2OX1.js                            134.33 kB │ gzip:  53.14 kB │ map:   428.30 kB
+dist/assets/release-content-CoG3Qv15.js                149.72 kB │ gzip:  57.49 kB │ map:   170.52 kB
+dist/assets/tame-greeting-audio-Cu-PsMZu.js            261.17 kB │ gzip:  72.75 kB │ map:   963.71 kB
+dist/assets/speciesart-CGOfbRs-.js                   1,266.04 kB │ gzip: 354.95 kB │ map: 4,434.63 kB
+dist/assets/main-CAaS-U1C.js                         1,468.09 kB │ gzip: 384.04 kB │ map: 5,235.75 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[33m[PLUGIN_TIMINGS] [0mYour build spent significant time in plugins. Here is a breakdown:
+  - vite:worker (34%)
+  - vite:asset (33%)
+  - vite:build-import-analysis (8%)
+  - vite:worker-import-meta-url (7%)
+  - celestial-frontier-exact-pwa (7%)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+✓ built in 3.46s
+
+ Test Files  331 passed (331)
+      Tests  3727 passed | 1 skipped (3728)
+   Start at  05:42:23
+   Duration  43.84s (transform 34.93s, setup 0ms, import 206.95s, tests 215.25s, environment 284ms)
+
+
+[check:develop] npm exec -- tsc --noEmit --noUnusedLocals
+
+[check:develop] npm exec -- tsc --noEmit -p apps/game/tsconfig.json
+
+[check:develop] npm exec -- tsc --noEmit -p apps/game/tsconfig.worker.json
+
+[check:develop] npm run artaudit
+
+> cf-v2@0.0.0 artaudit
+> node tools/artaudit.mjs
+
+ART AUDIT: 34 art sources · 0 findings
+  clean: no dead painters · no discarded rngs · no unused name params ·
+         no degenerate salts · no size-only variation · no pattern-globbed
+         file discovery · no stale-bundle readers
+
+[check:develop] npm run overridecheck
+
+> cf-v2@0.0.0 overridecheck
+> node tools/overridecheck.mjs
+
+OVERRIDE CHECK: 1014 table keys · 1014 reach a real catalog species · 0 dead
+  coverage: fauna 631 · flora 334 · fungi 27 · microbe 22 = 1010/1010 Earth species (100.0%)  ·  1014 routes (the 4 cross-kingdom organisms own two each)
+
+[check:develop] node tools/speccheck.mjs
+speccheck --selftest: 5/5 controls
+SPEC CHECK: 454 declared fields · 0 never read · 0 inert
+
+CHECK PROFILE: PASS (develop)

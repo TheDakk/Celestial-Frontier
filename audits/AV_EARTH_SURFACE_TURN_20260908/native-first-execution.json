@@ -1,0 +1,17 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "earth-surface-turn-native",
+    "--",
+    "node",
+    "audits/AV_EARTH_SURFACE_TURN_20260908/native-runner.mjs",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/earth-turn-evidence-dist-20260908",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_TURN_20260908/native-first"
+  ],
+  "startedAt": "2026-09-08T12:34:27.728052+00:00",
+  "status": "FAIL",
+  "exitCode": 1,
+  "seconds": 18.34
+}

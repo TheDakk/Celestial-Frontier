@@ -1,0 +1,5 @@
+
+> cf-v2@0.0.0 overridecheck
+> node tools/overridecheck.mjs
+
+overridecheck: planet-surface-atlas.ts@0 bare import "@cf/domain-planetgen" is outside the exact audited dependency surface — the PARSER is broken

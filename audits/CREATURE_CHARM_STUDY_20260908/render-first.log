@@ -1,0 +1,20 @@
+00:00.638  blend            | Read blend: "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-canid-20260908/canid/wolf-canid-v2/wolf-canid.blend"
+/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/blender/creature_charm_study.py:33: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+00:05.159  render           | Saved: '/private/tmp/cf-creature-charm-20260908/first/natural/pose-001.png'
+00:07.443  render           | Saved: '/private/tmp/cf-creature-charm-20260908/first/natural/pose-013.png'
+00:10.097  render           | Saved: '/private/tmp/cf-creature-charm-20260908/first/natural/pose-021.png'
+00:11.846  render           | Saved: '/private/tmp/cf-creature-charm-20260908/first/natural/pose-041.png'
+00:13.493  render           | Saved: '/private/tmp/cf-creature-charm-20260908/first/natural/pose-053.png'
+00:13.502  blend            | Read blend: "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-canid-20260908/canid/wolf-canid-v2/wolf-canid.blend"
+00:15.766  render           | Saved: '/private/tmp/cf-creature-charm-20260908/first/storybook/pose-001.png'
+00:16.925  render           | Saved: '/private/tmp/cf-creature-charm-20260908/first/storybook/pose-013.png'
+00:18.321  render           | Saved: '/private/tmp/cf-creature-charm-20260908/first/storybook/pose-021.png'
+00:19.982  render           | Saved: '/private/tmp/cf-creature-charm-20260908/first/storybook/pose-041.png'
+00:21.444  render           | Saved: '/private/tmp/cf-creature-charm-20260908/first/storybook/pose-053.png'
+Info: Saved as "wolf-charm.blend"
+Info: Saved as "wolf-charm.blend"
+CF_CHARM_STUDY {"status": "PASS", "seconds": 20.856, "output": "/private/tmp/cf-creature-charm-20260908/first"}
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit

@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-09-08T09:51:32.108Z",
+  "pid": 30765,
+  "root": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-av-charter-sticky-local-20260908",
+  "url": "http://127.0.0.1:53304/?avpilot=1",
+  "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "sourceState": "dirty-local-only",
+  "publishable": false,
+  "contentSha256": "1aa9002a70dcb89500f3adc7a1872e90e41e854ac6ff3598a781ebd92cfff614",
+  "manifestSha256": "415dc35b4fa5d340e96b1f39ee7c0ca751c65c58cf8bfd5367b83df5078ef365"
+}

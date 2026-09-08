@@ -1,0 +1,44 @@
+{
+  "schema": "cf-charm-reference-research/v1",
+  "recordedAt": "2026-09-08T11:20:09.795806+00:00",
+  "tokens": {
+    "repository": "https://github.com/TheDakk/Dakks-Ultimate-Tokens",
+    "access": "Read-only gh api; public repository; web tool cache misses retained as access limitations",
+    "documents": [
+      "https://github.com/TheDakk/Dakks-Ultimate-Tokens/blob/main/README.md",
+      "https://github.com/TheDakk/Dakks-Ultimate-Tokens/blob/main/LICENSE.md"
+    ],
+    "observedFacts": [
+      "1408 published images",
+      "Frozen classic fantasy oil-painting style contract",
+      "Owners prompts and style reference used with AI image tools",
+      "Keyed, reviewed and curated by hand",
+      "Subject names and mechanical size/type/movement/attack fields",
+      "Transparent WebP footprint outputs 400/800/1200"
+    ],
+    "notVerified": [
+      "Private generation model/prompt code",
+      "Locked local generator path",
+      "Exact image-to-rig conversion capability"
+    ],
+    "privateGeneratorQuestionPending": true
+  },
+  "proceduralArtPrecedent": {
+    "source": "https://www.gdcvault.com/play/1021805/Art-Direction-Bootcamp-How-I",
+    "speaker": "Grant Duncan, Hello Games",
+    "event": "GDC 2015",
+    "observed": "The session abstract describes the team using procedural technology for No Man's Sky with artistic control; full video not watched."
+  },
+  "artPipelinePrecedent": {
+    "source": "https://www.gdcvault.com/play/1021935/Do-Artists-Dream-of-Electric",
+    "speaker": "Grant Duncan, Hello Games",
+    "event": "GDC 2015",
+    "observed": "Session abstract describes concept-to-final art pipeline; no detailed implementation inferred from abstract."
+  },
+  "blenderManual": {
+    "source": "https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/introduction.html",
+    "searchResult": "Geometry Nodes modifies object geometry through node-based operations.",
+    "openResult": "Web tool returned 402; no full manual claim."
+  },
+  "judgment": "Curated procedural families are feasible; consistent aesthetic quality and anatomy across variants require authored constraints and review. Current offline study is not proof of full-genome runtime generation."
+}

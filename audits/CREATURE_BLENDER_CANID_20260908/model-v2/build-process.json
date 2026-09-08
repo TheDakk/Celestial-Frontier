@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 2.757,
+  "deadlineSeconds": 180,
+  "command": [
+    "/Applications/Blender.app/Contents/MacOS/Blender",
+    "--background",
+    "--factory-startup",
+    "--python-exit-code",
+    "1",
+    "--python",
+    "SOURCE_ROOT/port/v2/tools/blender/creature_canid.py",
+    "--",
+    "--source-root",
+    "SOURCE_ROOT",
+    "--bundle-root",
+    "PRIVATE_CANID_BUNDLE",
+    "--phenotype",
+    "inputs/wolf.json",
+    "--output",
+    "wolf-canid-v2",
+    "--size",
+    "440"
+  ],
+  "reason": null
+}

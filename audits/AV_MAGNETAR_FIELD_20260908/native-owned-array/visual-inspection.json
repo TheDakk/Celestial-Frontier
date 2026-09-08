@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "inspectedAt": "2026-09-08T06:01:28.719127+00:00",
+  "screens": [
+    "mag-phone-390x844-dpr2.png",
+    "mag-phone-reduced-effects-off.png",
+    "mag-desktop-1440x1000-dpr1.png"
+  ],
+  "finding": "Both blue elliptical magnetic-field strokes visibly surround the core in unobscured central canvas. The actual phone and desktop frames retain existing chrome and the source-derived Starquake notice. Reduced/Effects Off remains static. This is technical visual inspection, not Nick art acceptance.",
+  "fixturePreferences": "Canonical veteran fixture carries its existing display preferences; screenshot typography does not introduce a new default theme."
+}

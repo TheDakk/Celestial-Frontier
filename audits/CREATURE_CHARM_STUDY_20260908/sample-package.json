@@ -1,0 +1,407 @@
+{
+  "schema": "cf-charm-sample-package/v1",
+  "status": "PASS",
+  "commands": [
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/natural/pose-001.png",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-001-640.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/natural/pose-013.png",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-013-640.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/natural/pose-021.png",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-021-640.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/natural/pose-041.png",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-041-640.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/natural/pose-053.png",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-053-640.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/natural/pose-001.png",
+      "-filter",
+      "Lanczos",
+      "-resize",
+      "132x132",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-001-132.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/natural/pose-001.png",
+      "-filter",
+      "Lanczos",
+      "-resize",
+      "300x300",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-001-300.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/natural/pose-001.png",
+      "-filter",
+      "Lanczos",
+      "-resize",
+      "440x440",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-001-440.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-001.png",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-001-640.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-013.png",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-013-640.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-021.png",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-021-640.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-041.png",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-041-640.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-053.png",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-053-640.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-001.png",
+      "-filter",
+      "Lanczos",
+      "-resize",
+      "132x132",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-001-132.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-001.png",
+      "-filter",
+      "Lanczos",
+      "-resize",
+      "300x300",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-001-300.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/private/tmp/cf-creature-charm-20260908/first/storybook/pose-001.png",
+      "-filter",
+      "Lanczos",
+      "-resize",
+      "440x440",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-001-440.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-001-440.png",
+      "-filter",
+      "Lanczos",
+      "-resize",
+      "132x132",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/previous-132.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-001-440.png",
+      "-filter",
+      "Lanczos",
+      "-resize",
+      "300x300",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/previous-300.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-001-440.png",
+      "-filter",
+      "Lanczos",
+      "-resize",
+      "440x440",
+      "-quality",
+      "94",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/previous-440.webp"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/previous-440.webp",
+      "-background",
+      "#142035",
+      "-alpha",
+      "remove",
+      "-alpha",
+      "off",
+      "-gravity",
+      "south",
+      "-splice",
+      "0x48",
+      "-font",
+      "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "-pointsize",
+      "19",
+      "-fill",
+      "#dfeafa",
+      "-annotate",
+      "+0+14",
+      "Previous construction study",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/previous-440-tile.png"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-001-440.webp",
+      "-background",
+      "#142035",
+      "-alpha",
+      "remove",
+      "-alpha",
+      "off",
+      "-gravity",
+      "south",
+      "-splice",
+      "0x48",
+      "-font",
+      "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "-pointsize",
+      "19",
+      "-fill",
+      "#dfeafa",
+      "-annotate",
+      "+0+14",
+      "Fine coat study",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-001-440-tile.png"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-001-440.webp",
+      "-background",
+      "#142035",
+      "-alpha",
+      "remove",
+      "-alpha",
+      "off",
+      "-gravity",
+      "south",
+      "-splice",
+      "0x48",
+      "-font",
+      "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "-pointsize",
+      "19",
+      "-fill",
+      "#dfeafa",
+      "-annotate",
+      "+0+14",
+      "Broad coat study",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-001-440-tile.png"
+    ],
+    [
+      "/opt/homebrew/bin/magick",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/previous-440-tile.png",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-001-440-tile.png",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-001-440-tile.png",
+      "+append",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/comparison.png"
+    ],
+    [
+      "/opt/homebrew/bin/ffmpeg",
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-f",
+      "lavfi",
+      "-i",
+      "color=c=0x142035:s=512x512:r=12:d=2.75",
+      "-framerate",
+      "12",
+      "-i",
+      "/private/tmp/cf-creature-charm-20260908/motion-check/frames/%03d.png",
+      "-filter_complex",
+      "[0:v][1:v]overlay=shortest=1:format=auto,format=yuv420p[v]",
+      "-map",
+      "[v]",
+      "-frames:v",
+      "33",
+      "-an",
+      "-c:v",
+      "libx264",
+      "-crf",
+      "18",
+      "-movflags",
+      "+faststart",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/samples-final/wolf-articulated-study.mp4"
+    ]
+  ],
+  "video": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 512,
+        "height": 512,
+        "r_frame_rate": "12/1",
+        "nb_frames": "33"
+      }
+    ],
+    "format": {
+      "duration": "2.750000"
+    }
+  },
+  "originalRenderStudySha256": "33aa97acc027126b9e151250ecafd0fac28b1df0fae67b3fdf879ab3f551ca02",
+  "files": [
+    {
+      "path": "samples-final/comparison.png",
+      "bytes": 129031,
+      "sha256": "f66d4a08ead5758017901d09f81e025d3febb7192d053d114621dfa33a8a1852"
+    },
+    {
+      "path": "samples-final/natural-001-132.webp",
+      "bytes": 3176,
+      "sha256": "40f4b370c3a51854d468969357c1c6287dd941c80ce0a6bb575f3ed2045ce305"
+    },
+    {
+      "path": "samples-final/natural-001-300.webp",
+      "bytes": 8568,
+      "sha256": "d58ef37240f5b85db3cc85d9add85c88e854ed4b6f43a45e2742fb042e94d1d7"
+    },
+    {
+      "path": "samples-final/natural-001-440.webp",
+      "bytes": 14418,
+      "sha256": "548975eba2f803f3ee9ca63b161e10fcc8a7ebc2683c482456bcd2f37744a4f4"
+    },
+    {
+      "path": "samples-final/natural-001-640.webp",
+      "bytes": 18812,
+      "sha256": "0022c0e9385f62044c517d17866d184dab590fa7dd6ce406088d3090ee4df090"
+    },
+    {
+      "path": "samples-final/natural-013-640.webp",
+      "bytes": 18816,
+      "sha256": "6249eb4ae88aad76f651e7d816af1cb2bf743955adcdb97aaf220ad3f104dab0"
+    },
+    {
+      "path": "samples-final/natural-021-640.webp",
+      "bytes": 18702,
+      "sha256": "19782574cc074eacc37faaa59dcebdc27eaf86544ec94e726e0523bc848c2c80"
+    },
+    {
+      "path": "samples-final/natural-041-640.webp",
+      "bytes": 18784,
+      "sha256": "e6320e9876450e314f55f4e6b7fe11464d46ce38aa2b155a57635ee9c99bb6a4"
+    },
+    {
+      "path": "samples-final/natural-053-640.webp",
+      "bytes": 18838,
+      "sha256": "700a9ee461b4e85a775277a550c5b4bc53c8b18d5f1b9b0d212e1a6dce02bcab"
+    },
+    {
+      "path": "samples-final/previous-132.webp",
+      "bytes": 2818,
+      "sha256": "ea9ee4377fee9ec88d4f1900eb21a0690b2242790aacc95b3d445dc9987937a7"
+    },
+    {
+      "path": "samples-final/previous-300.webp",
+      "bytes": 6670,
+      "sha256": "5ca81d7262ef352faae48b2ba574ecdde7aeb5268bbf22330a09581697e2e543"
+    },
+    {
+      "path": "samples-final/previous-440.webp",
+      "bytes": 6824,
+      "sha256": "06864c72d741b2e9e51f26b8a75c05e130fd2b7f2e341a89038e997adbd88a4c"
+    },
+    {
+      "path": "samples-final/storybook-001-132.webp",
+      "bytes": 3336,
+      "sha256": "96addb055e2104e3386c9e9c245dc0d50f6a35f0dc5b27b122b404acc119a3ad"
+    },
+    {
+      "path": "samples-final/storybook-001-300.webp",
+      "bytes": 9292,
+      "sha256": "f3229d7fbe9fef385093856afc181acda04f09d28ebb06002ac5e7de28359ea2"
+    },
+    {
+      "path": "samples-final/storybook-001-440.webp",
+      "bytes": 15658,
+      "sha256": "40f5c7654932999174919ba57f2de32304473fa8fbc5e4e664a0f07328d5831e"
+    },
+    {
+      "path": "samples-final/storybook-001-640.webp",
+      "bytes": 20584,
+      "sha256": "7826ea421cf73b5bca54155a444b6064a6c3186223f8a89a9189d81b0f6ef279"
+    },
+    {
+      "path": "samples-final/storybook-013-640.webp",
+      "bytes": 20722,
+      "sha256": "6cb90b60dbca80c41bd3d3bc80e7e61f20c4cce3c7cf8dfee76284d4e6e4a342"
+    },
+    {
+      "path": "samples-final/storybook-021-640.webp",
+      "bytes": 20572,
+      "sha256": "edbff85dba566cc7dc8f95dcafa16f551df911242c18ce4657f69be55460a15e"
+    },
+    {
+      "path": "samples-final/storybook-041-640.webp",
+      "bytes": 20512,
+      "sha256": "2a749506be08d35c79a2127d145e6fd5331387afbe587493f0eb9bb2353dce9d"
+    },
+    {
+      "path": "samples-final/storybook-053-640.webp",
+      "bytes": 20668,
+      "sha256": "65541fb3e31c83729d2b23de0278f627de9bfb5bcb5f6ffd95f6ea0e190e2936"
+    },
+    {
+      "path": "samples-final/wolf-articulated-study.mp4",
+      "bytes": 43605,
+      "sha256": "7b21349ad602b644cbe2aa725019c23fea3be0b17b5ca371fc94706fc3f43e5d"
+    }
+  ]
+}

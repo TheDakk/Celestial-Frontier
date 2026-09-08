@@ -1,0 +1,85 @@
+{
+  "schema": "cf-inkscape-export-recheck/v1",
+  "startedAt": "2026-09-08T03:32:31.868890+00:00",
+  "userRequestedRetest": true,
+  "execution": "outside Codex sandbox",
+  "steps": [
+    {
+      "name": "process-inventory",
+      "argv": [
+        "/usr/bin/pgrep",
+        "-fl",
+        "Inkscape|inkscape|caffeinate"
+      ],
+      "exitCode": 0,
+      "log": "process-inventory.log"
+    },
+    {
+      "name": "version",
+      "argv": [
+        "/opt/homebrew/bin/inkscape",
+        "--version"
+      ],
+      "exitCode": 0,
+      "log": "version.log"
+    },
+    {
+      "name": "export",
+      "argv": [
+        "/opt/homebrew/bin/inkscape",
+        "/private/tmp/cf-inkscape-recheck-20260907/probe.svg",
+        "--export-type=png",
+        "--export-width=128",
+        "--export-filename=/private/tmp/cf-inkscape-recheck-20260907/probe.png"
+      ],
+      "exitCode": 0,
+      "log": "export.log"
+    },
+    {
+      "name": "image-inspection",
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "/private/tmp/cf-inkscape-recheck-20260907/probe.png",
+        "-format",
+        "%w %h %[channels] %[pixel:p{0,0}] %[pixel:p{64,64}]",
+        "info:"
+      ],
+      "exitCode": 0,
+      "log": "image-inspection.log"
+    }
+  ],
+  "status": "PASS",
+  "endedAt": "2026-09-08T03:32:32.893969+00:00",
+  "files": [
+    {
+      "path": "version.log",
+      "bytes": 37,
+      "sha256": "759ebf36951f6c145eac8e68f68d2eab17d0d69e70eea285a5f2e57148252800"
+    },
+    {
+      "path": "process-inventory.log",
+      "bytes": 29,
+      "sha256": "f991f0de7de0d677127ede8662b4c334b0231615496875aa3ec8a3f74d59d5bf"
+    },
+    {
+      "path": "probe.png",
+      "bytes": 2904,
+      "sha256": "d92fb5e826d2faca239fe5dc946caa48de27a88adfd1a15b073c48f7ad81b3a3"
+    },
+    {
+      "path": "export.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "image-inspection.log",
+      "bytes": 56,
+      "sha256": "88fe75f776fc7c55fe4f99e7a4957d24210575339784bf2d38dfd1ff2cab0b7c"
+    },
+    {
+      "path": "probe.svg",
+      "bytes": 292,
+      "sha256": "5e294a5d9c9e9eef69c7b720a717aade290984e56ce1e283889d318a2942608f"
+    }
+  ]
+}

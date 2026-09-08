@@ -1,0 +1,18 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "earth-layered-default-settled",
+    "--",
+    "node",
+    "audits/AV_EARTH_LAYERED_SCENE_20260908/native-earth-layers-settled-runner.mjs",
+    "port/v2/apps/game/smoke/earth-layered-settled-evidence-dist-20260908",
+    "audits/AV_EARTH_LAYERED_SCENE_20260908/native-default-settled",
+    "default"
+  ],
+  "startedAt": "2026-09-08T17:20:01.560300+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 5.414
+}

@@ -1,0 +1,3089 @@
+{
+  "schema": "cf-native-magnetar-diagnostic/v1",
+  "status": "PASS",
+  "certification": false,
+  "startedAt": "2026-09-08T06:00:07.390Z",
+  "dist": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/dist",
+  "sources": {
+    "port/baseline-v1.8.9/save-fixtures.json": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+    "port/v2/tests/arc9-survey-action.test.ts": "7b8bd0141fbd9d352b600bcbbb34c9be8693608c10fa0c3ae8568a757669d937",
+    "port/v2/packages/scene/src/address.ts": "c9069b15992c4be5057dd4068c1e7c7a9dcf86768015d64e934ef14b142bd559",
+    "port/v2/packages/scene/src/charter.ts": "09913352608be0ac1238b98ef895377552ca94b23bffe8fa2aebf306de034f09",
+    "port/v2/apps/game/src/main.ts": "3dcc56ea81f1555052dfa4633b9f6d9aaf66fb0f0adaa999caa8af30b98b4e5e",
+    "port/v2/apps/game/src/system-star-field.ts": "d48b57b151048a7858d8ce1b22ed6d2c65c4b5f354c75ee58fb88982deb96829",
+    "audits/AV_MAGNETAR_FIELD_20260908/native-runner.mjs": "47a46400069d8ac6efa5e6bfa111aef8f4d486f915a91fb403582c9520cd56b5"
+  },
+  "served": {
+    "index.html": "61c39939cb861b565ea24226070ccb704bb338f931d0630433f7af87ccaee5f2",
+    "assets/main-B19WHEvl.js": "59f9a09f9681cc7ef310334f292dabbec55d63e3fb71bfab2d137c80c2711e6a",
+    "assets/Geometry-C5FtorEc.js": "9bbbacd5502e42fb7c51a5306bda3b59b718a2bacd20badde40fe7e8ab1afbb6",
+    "assets/getTextureBatchBindGroup-DkbnCTGz.js": "3ce2d33bde60e5f2cc123fab89998b4c1580eecab18b1294321b14d255b83be5",
+    "assets/speciesidentity-DkdaK0o4.js": "bbcbd03c4f82bb640db2cda363b4579b60631a4182d759861009771f4f39d772",
+    "assets/CanvasRenderer-DXKJLlc8.js": "1e4c6c1578a4d34a9274e2c4a68b4dc37c541e225d963bf661f682486d930051",
+    "assets/src-D1xb2OX1.js": "b65c8f4cc2ee2064ff67d0c795945d41119030489bf45185ba96a5e756fcedef",
+    "assets/CanvasPool-BewL5izq.js": "8b4af0914a4436094e428b6747bef851805c1c84f361ba8819c1fbdcab6b806a",
+    "assets/canvasUtils-CWV5icuA.js": "faaff76b40957b52f7817add636bb204e563dfab14ed3a0b6f563c96c259938b",
+    "assets/surface-polish-CBmmi-Kj.js": "9d74988f7575b155e811c18ff7bcc594d7158fbee211bfbacabdeafcfdfe0552",
+    "assets/visual-effect-policy-Bvngx8nL.js": "4c150d4f5af91b69dc3b7f069059a5e9bc6daec8fe31ba0eaab4bb4ac61fdef4",
+    "assets/tame-greeting-audio-y7sHFOul.js": "1dd2d2fcf64a4a5d6c338c6ca3f40f9c25339727ac9aca09baf2e71278c12c7b",
+    "assets/getPo2TextureFromSource-0axNaDip.js": "b30689d034d24afffd35fc3a31fbc217dd73090d008e0ec963372dfdc5fcae68",
+    "assets/release-identity-CIuedefi.js": "849faf8ee532d75c477524be0847f7db9f6ae443b86c328434bd8101a6c0a82d",
+    "assets/RenderTargetSystem-DKTlyS8X.js": "fa6f7819177a12bf7438d3f56905fed48dfc79e1d45c76df828e20ce7fccee22",
+    "manifest.webmanifest": "827ec2c2a4bb946c558321624cc241bcf71c0008aac15dbc2c852f76e2c06f40",
+    "assets/WebGLRenderer-6mXMZ2W0.js": "0564e0461c5adbde63f59574d08acae1c0fe047a3fc02946ad0436f2acf8381d",
+    "assets/BufferResource-e5xCyZ5_.js": "6ee514005f66ab3071ec8b93506a1cd968593d7ac051716399272ac7a384f4d4",
+    "assets/InterVariable-DiVDrmQJ.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+    "assets/browserAll-CAHNI2rF.js": "e4e09a2f845f764445a9672423c95a8f4142f3b314aee86ace1cc59e1cf68b03",
+    "assets/init-S6n54E3j.js": "d9d1196b839d592b9b80843129c776109e53dbb6b96b905b6405bb65f0c42cfb",
+    "icons/celestial-frontier.svg": "97b8d42d779cebcddca5980c60635a8c767c2b7ea43a23871ccd386a7d716c04",
+    "service-worker.js": "417139c52b422b06d2beb823dd0cdea365a6aca33e561f6bcd05e9f7625f0119",
+    "assets/Inter-LICENSE-CkXC2-KD.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "assets/WebGPURenderer-Btvgrbn5.js": "e638b9294f9884f469f9bb2b3bee08ac684a6fb1021511eb29cf68baa355aa5f",
+    "assets/audiovisual-pilot-Q9VAzwyz.js": "e211affeb0a081b92cd09cf78a23b880cc841f116eb537c4702e271a6879e9a8",
+    "assets/audiovisualPilot-D4JgP9pY.js": "aa6f4bce1f56a5e93decff37435488769c57263f1def188eaa186765e9ca1c12",
+    "assets/audit-BESfJQH9.js": "3e11872550aabc8e75fc69a64fbf6b819ba259ae7c8c3eb9c828aaadff861090",
+    "assets/biome-vista.worker-D3XRSJZJ.js": "f30f76537077952e792da01712b59650172dc2e7b78698040abc780843c6f7e2",
+    "assets/cf-pilot-combat-contact-DHZD2lYd.wav": "fc3bcb5da5ee2a81a45d32de933cea234eb42850b151ba46565d1ad300eb6a20",
+    "assets/cf-pilot-exploration-music-CMF8UCKw.wav": "fa144fe615faef75fc426f86a44f299dcf48a1637893ccef9cf95fa2ab40a111",
+    "assets/cf-pilot-scout-approach-Be38_iqZ.wav": "ad4020be2cda99df2ba91290965b1d125bf909c4b7279833da51b5b55ad5f373",
+    "assets/cf-pilot-scout-landing-D1k5tYuE.wav": "6e8e3edf1dca6f232ebb13233e6921a64c33bd33830a5c1358165a764779852a",
+    "assets/cf-pilot-temperate-bed-C_jKRyj6.wav": "36caaa89651e44e92f9faddc53d74104cb9e1f5e11eb5a5757efbbdb978be69c",
+    "assets/cf-pilot-ui-nav-bMnbTxA8.wav": "14cecfcf6525c0c3637455ae7c711972021814ae5b5caf711baf7c6bb796a4c8",
+    "assets/cf-pilot-ui-refusal-CMon7hko.wav": "3e4fcbd34d6b65583883e31347ef99c4dd538aa07a311fe7612083e3f37b9b20",
+    "assets/cf-pilot-ui-settlement-uF_X4Ois.wav": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3",
+    "assets/earth-rainy-landscape-DPgApIAi.webp": "478fd649a1aed198e64a9a053c464f9f98630943ac8e11bf1b184b253f47060b",
+    "assets/earth-rainy-phone-DFt5murF.webp": "3689d1273b7bc75806f87eea9718304109a06d31f98682c6161e05b1a06b83ef",
+    "assets/guide-content-Cy7MxzST.js": "5c16f71f1959f41eb1a5b9262873077f41de3df4551dbadc8d23d3f7a5a0b908",
+    "assets/hybridMatrix-DiGQ5L5t.js": "43f3c1833e62a26ecb5c72b33316aab6b79a8732f7e6020bec8e8a294856c5b1",
+    "assets/pilot-sound-player-Dg8Fl5YX.js": "bc9c81864c841e561046c5bcd0cd802b8b0d59a6ee52c9ff23f7d031697bb458",
+    "assets/release-content-CH1c9v9U.js": "2e01e75feed57a8691265273700e2dd48c47ebde9fb2ee1d01bf6f24e00284af",
+    "assets/scout-chemical-132-Dt4gyYnA.webp": "e961336688e8a0687eb6f09dd3f1a22306077694390002ffcda6763b7ba37fc4",
+    "assets/scout-chemical-300-CxcU_kic.webp": "ec2ac6134e4dfc3e74e932c8277e558cdac22f18274f4c806278adc19c510752",
+    "assets/scout-chemical-512-DcNawgH5.webp": "7d58149bed26e0e6aad629d8a7ff50911c9d8540e2cc8c1f8ad60f081299f343",
+    "assets/species-art.worker-DnnSDKMy.js": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172",
+    "assets/speciesart-CGOfbRs-.js": "6865ce59f9d21f2efdd9c9eb6ae64fcb1d2b377c1d63a790cd7c34c6c9130e51",
+    "assets/webworkerAll-Dl-gkjA6.js": "791e45d86752eb73039eb295ef453ce3e7b70d0a15fc8d297812370d688f7e30",
+    "audiovisual-pilot.html": "368f00b18411762408a43769c0a1a5570a42907c9cabff0e646064bf7c7527b6",
+    "audit.html": "603ee30fe1dbcd93615b93808faa7d8f195a7f34037b3440d6a7ffc7eb1bb41c",
+    "hybrid-matrix.html": "3c167ab230c9e1cc9d91a750b5f6789e483067b2daa589399c909ac291395336",
+    "icons/celestial-frontier-maskable.svg": "ff05489ed56a7193bbaf8fe5e3f6b43e8ba46667be2f8e1e9bdd7ff46da2488c"
+  },
+  "steps": [
+    {
+      "name": "first answerable document",
+      "condition": "window.__CF_SLICE__?.api&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "native input",
+      "button": "left",
+      "point": {
+        "x": 247.1328125,
+        "y": 666.859375
+      }
+    },
+    {
+      "name": "Training closed",
+      "condition": "!window.__CF_SLICE__.api.state().tutActive&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "writable before MAG",
+      "condition": "(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "source-derived isolated fixture",
+      "kind": "MAG",
+      "star": {
+        "seed": 2563295997,
+        "x": -718.0755883874372,
+        "y": -258.9377444498241
+      },
+      "canonicalStar": {
+        "seed": 2563295997,
+        "x": -718.08,
+        "y": -258.94
+      },
+      "ownedArray": 1,
+      "chapter": 2,
+      "fixtureSha256": "7065c3d09597af25102267697748fa5d9eb43af357a69837d953b9835e0fb15d",
+      "previous": "158152fb-86a8-4c1f-8a79-dd8d39b7c67c"
+    },
+    {
+      "name": "new writable MAG document",
+      "condition": "(()=>{if(window.__cfMagImportError)throw Error(window.__cfMagImportError);return window.__CF_SLICE__?.documentToken!==\"158152fb-86a8-4c1f-8a79-dd8d39b7c67c\"&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()&&window.__CF_SLICE__.api.state().mode==='system'&&window.__CF_SLICE__.api.state().star===2563295997})()",
+      "status": "PASS"
+    },
+    {
+      "name": "native input",
+      "button": "right",
+      "point": {
+        "x": 195,
+        "y": 422
+      }
+    },
+    {
+      "name": "native MAG exit to galaxy",
+      "condition": "window.__CF_SLICE__.api.state().mode==='galaxy'&&window.__CF_SLICE__.api.state().fine&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "native input",
+      "button": "left",
+      "point": {
+        "x": 195,
+        "y": 422
+      }
+    },
+    {
+      "name": "native MAG Survey offers Enter",
+      "condition": "document.querySelector('#survey [data-act=\"travel\"]')?.textContent.includes('Enter system')&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "native input",
+      "button": "left",
+      "point": {
+        "x": 120.578125,
+        "y": 274
+      }
+    },
+    {
+      "name": "native MAG rendered entry",
+      "condition": "window.__CF_SLICE__.api.state().mode==='system'&&window.__CF_SLICE__.api.state().star===2563295997&&window.__CF_SLICE__.api.state().renderedScene.starKey===window.__CF_SLICE__.api.state().navStarKey&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "camera settled",
+      "condition": "Math.abs(window.__CF_SLICE__.cam.z-window.__CF_SLICE__.camT.z)<.001",
+      "status": "PASS"
+    },
+    {
+      "name": "mag-phone-390x844-dpr2",
+      "state": {
+        "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+        "mode": "system",
+        "star": 2563295997,
+        "starX": -718.08,
+        "starY": -258.94,
+        "navStarKey": "CF1|g:999@90,-60|s:2563295997@-718.08,-258.94",
+        "renderedScene": {
+          "serial": 3,
+          "mode": "system",
+          "ecologyEpoch": 12,
+          "galaxyKey": "CF1|g:999@90,-60",
+          "starKey": "CF1|g:999@90,-60|s:2563295997@-718.08,-258.94",
+          "worldKey": null
+        },
+        "cardOpen": false,
+        "fxOn": true,
+        "motionMode": 0,
+        "persistence": {
+          "schema": "cf-v2-app-persistence/v1",
+          "ready": true,
+          "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+          "bootKind": "current-v5",
+          "hold": null,
+          "protectedDetail": null,
+          "authorityBootKind": "absent",
+          "seedBootstrapPending": false,
+          "bootRouteRepairPending": false,
+          "productBootstrapPending": false,
+          "engineeringBootstrapPending": false,
+          "ownershipBootstrapPending": false,
+          "ownershipV2BootstrapPending": false,
+          "visibilityOverrideHidden": false,
+          "lastOutcome": "committed:9",
+          "hideWitness": null,
+          "heartbeatStorageFault": null,
+          "revisionVerificationFault": null,
+          "heartbeatRunning": true,
+          "convergenceReloadScheduled": false,
+          "convergenceReloadHold": {
+            "schema": "cf-v2-product-action-hold-diagnostics/v1",
+            "phase": "idle",
+            "operation": null,
+            "sequence": 0
+          },
+          "leaseReadCount": 6,
+          "revisionReadCount": 1,
+          "mutationBlocked": false,
+          "mutationBlockCount": 0,
+          "mutationBlockWitness": null,
+          "importPhase": null,
+          "importRace": null,
+          "runtime": {
+            "schema": "cf-v2-f4-runtime/v1",
+            "revision": 9,
+            "visible": true,
+            "answerable": true,
+            "leaseOwned": true,
+            "staleBlocked": false,
+            "leaseHeartbeat": 2,
+            "activePlayMs": 2661,
+            "accruing": true,
+            "sessionSeed": 220775255,
+            "sessionOrdinal": 2,
+            "sessionDraws": {},
+            "commits": 5,
+            "staleWrites": 0,
+            "leaseLosses": 0
+          },
+          "ecology": {
+            "schema": "cf-v2-ecology-epoch-edge/v1",
+            "publishedEpoch": 12,
+            "candidateEpoch": 12,
+            "activePlayOriginMs": 0,
+            "observedActivePlayMs": 2661,
+            "edgeDue": false,
+            "autoCheckpointDue": false,
+            "inFlight": false,
+            "stagedIntent": null,
+            "stagedEpoch": null,
+            "retrySuppressedEpoch": null,
+            "lastCommittedRevision": 9,
+            "stages": 2,
+            "commits": 2,
+            "publications": 0,
+            "rejections": 0,
+            "invalidStageCompletions": 0,
+            "projection": {
+              "state": "current",
+              "publishedEpoch": 12,
+              "projectedEpoch": 12,
+              "refreshEpoch": null,
+              "refreshSerial": null
+            },
+            "projectionRefreshesStarted": 0,
+            "projectionRefreshesCompleted": 0,
+            "projectionRefreshesFailed": 0,
+            "projectionSuppressions": 0,
+            "invalidProjectionCompletions": 0,
+            "projectionDirty": false,
+            "projectionSuppressed": false,
+            "checkpointInFlight": false,
+            "lastOutcome": "steady:12:revision:9"
+          }
+        },
+        "resources": {
+          "schema": "cf-v2-scene-resources/v2",
+          "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+          "generation": 3,
+          "mode": "system",
+          "registry": {
+            "schema": "cf-v2-scene-textures/v2",
+            "observationWindow": 0,
+            "scopeCreations": 8,
+            "scopeDisposals": 7,
+            "activeScopeCount": 1,
+            "leaseAcquisitions": 128,
+            "leaseReleases": 119,
+            "activeLeaseCount": 9,
+            "textureCreations": 90,
+            "textureDisposals": 81,
+            "liveTextureCount": 9,
+            "liveCanvasPixels": 335488,
+            "liveCanvasBytes": 1341952,
+            "peakActiveLeaseCount": 71,
+            "peakLiveTextureCount": 71,
+            "peakLiveCanvasPixels": 7559888,
+            "peakLiveCanvasBytes": 30239552,
+            "lifetimePeakActiveLeaseCount": 71,
+            "lifetimePeakLiveTextureCount": 71,
+            "lifetimePeakLiveCanvasPixels": 7559888,
+            "externalDestroyFaults": 0,
+            "balanced": true,
+            "coherent": true,
+            "liveLeasesByKind": {
+              "scene-canvas": 8,
+              "galaxy-haze": 0,
+              "planet-texture": 1,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "liveTexturesByKind": {
+              "scene-canvas": 8,
+              "galaxy-haze": 0,
+              "planet-texture": 1,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "activeScopes": [
+              {
+                "label": "scene:3",
+                "leaseCount": 9,
+                "closed": false
+              }
+            ]
+          },
+          "managedResources": {
+            "schema": "cf-v2-pixi-managed-resources/v2",
+            "valid": true,
+            "hashCount": 6,
+            "hashes": [
+              {
+                "name": "canvasText",
+                "type": "renderable",
+                "liveEntryCount": 2,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphics",
+                "type": "renderable",
+                "liveEntryCount": 3,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glBuffer",
+                "type": "resource",
+                "liveEntryCount": 4,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glGeometry",
+                "type": "resource",
+                "liveEntryCount": 2,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glTexture",
+                "type": "resource",
+                "liveEntryCount": 15,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphicsContext",
+                "type": "resource",
+                "liveEntryCount": 3,
+                "clearedEntryCount": 0
+              }
+            ],
+            "liveEntryCount": 29,
+            "clearedEntryCount": 0,
+            "compactionCount": 3,
+            "compactedSlotCount": 91,
+            "faultCount": 0
+          },
+          "fineLayerActive": false,
+          "fineScopeActive": false,
+          "retiredFineOwnerCount": 0,
+          "surfaceTextureOwnerActive": false,
+          "surfaceCurrentTierPx": 0,
+          "surfaceCurrentBackingWidth": 0,
+          "surfaceCurrentBackingHeight": 0,
+          "surfaceRequestedTierPx": 0,
+          "surfaceRetiredLeaseCount": 0,
+          "pendingSurfaceRefreshes": 0,
+          "surfaceVistaGeneration": 3,
+          "surfaceVistaEnvironmentFingerprint": null,
+          "surfaceVistaWorkerActive": false,
+          "surfaceVistaMounted": false,
+          "surfaceVistaCacheEntries": 0,
+          "surfaceVistaCachePixels": 0,
+          "surfaceVistaWorkerStarts": 0,
+          "surfaceVistaResults": 0,
+          "surfaceVistaCacheHits": 0,
+          "surfaceVistaStaleDrops": 0,
+          "surfaceVistaFaults": 0,
+          "surfaceVistaLastBiome": null,
+          "surfaceVistaLastError": null,
+          "pendingSystemRefreshes": 0,
+          "pendingPersistenceWrites": 0,
+          "ringGeometryEntries": 0,
+          "peakRingGeometryEntries": 0,
+          "localCanvasCacheEntries": 1,
+          "peakLocalCanvasCacheEntries": 1,
+          "productRenderTargets": 0,
+          "managedTextureCount": 15,
+          "managedTextureClearedSlots": 0,
+          "managedTexturePixels": 1666466,
+          "sceneTextStyleUpdateListeners": 2,
+          "persistedPagehideCount": 0,
+          "persistedPageshowCount": 0
+        },
+        "viewport": [
+          390,
+          844,
+          2
+        ],
+        "inputs": [
+          {
+            "type": "contextmenu",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "act": "travel",
+            "x": 120,
+            "y": 274
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          }
+        ],
+        "fields": [
+          {
+            "visible": true,
+            "alpha": 1,
+            "destroyed": false,
+            "bounds": {
+              "x": 97.5747002766156,
+              "y": 344.9368655565075,
+              "width": 194.8505994467688,
+              "height": 154.12626888698503
+            },
+            "arcs": [
+              {
+                "rotation": 0.5,
+                "visible": true,
+                "eventMode": "none",
+                "destroyed": false,
+                "instructions": [
+                  {
+                    "action": "stroke",
+                    "width": 1.2,
+                    "color": 9881855,
+                    "alpha": 0.45
+                  }
+                ]
+              },
+              {
+                "rotation": -0.5,
+                "visible": true,
+                "eventMode": "none",
+                "destroyed": false,
+                "instructions": [
+                  {
+                    "action": "stroke",
+                    "width": 1.2,
+                    "color": 9881855,
+                    "alpha": 0.45
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "native input",
+      "button": "left",
+      "point": {
+        "x": 291,
+        "y": 810
+      }
+    },
+    {
+      "name": "native input",
+      "button": "left",
+      "point": {
+        "x": 262.65625,
+        "y": 378
+      }
+    },
+    {
+      "name": "Reduced setting committed",
+      "condition": "window.__CF_SLICE__.api.state().motionMode===1&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "reduced retains MAG",
+      "state": {
+        "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+        "mode": "system",
+        "star": 2563295997,
+        "starX": -718.08,
+        "starY": -258.94,
+        "navStarKey": "CF1|g:999@90,-60|s:2563295997@-718.08,-258.94",
+        "renderedScene": {
+          "serial": 4,
+          "mode": "system",
+          "ecologyEpoch": 12,
+          "galaxyKey": "CF1|g:999@90,-60",
+          "starKey": "CF1|g:999@90,-60|s:2563295997@-718.08,-258.94",
+          "worldKey": null
+        },
+        "cardOpen": false,
+        "fxOn": true,
+        "motionMode": 1,
+        "persistence": {
+          "schema": "cf-v2-app-persistence/v1",
+          "ready": true,
+          "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+          "bootKind": "current-v5",
+          "hold": null,
+          "protectedDetail": null,
+          "authorityBootKind": "absent",
+          "seedBootstrapPending": false,
+          "bootRouteRepairPending": false,
+          "productBootstrapPending": false,
+          "engineeringBootstrapPending": false,
+          "ownershipBootstrapPending": false,
+          "ownershipV2BootstrapPending": false,
+          "visibilityOverrideHidden": false,
+          "lastOutcome": "committed:10",
+          "hideWitness": null,
+          "heartbeatStorageFault": null,
+          "revisionVerificationFault": null,
+          "heartbeatRunning": true,
+          "convergenceReloadScheduled": false,
+          "convergenceReloadHold": {
+            "schema": "cf-v2-product-action-hold-diagnostics/v1",
+            "phase": "idle",
+            "operation": null,
+            "sequence": 0
+          },
+          "leaseReadCount": 7,
+          "revisionReadCount": 1,
+          "mutationBlocked": false,
+          "mutationBlockCount": 0,
+          "mutationBlockWitness": null,
+          "importPhase": null,
+          "importRace": null,
+          "runtime": {
+            "schema": "cf-v2-f4-runtime/v1",
+            "revision": 10,
+            "visible": true,
+            "answerable": true,
+            "leaseOwned": true,
+            "staleBlocked": false,
+            "leaseHeartbeat": 2,
+            "activePlayMs": 2962,
+            "accruing": true,
+            "sessionSeed": 220775255,
+            "sessionOrdinal": 2,
+            "sessionDraws": {},
+            "commits": 6,
+            "staleWrites": 0,
+            "leaseLosses": 0
+          },
+          "ecology": {
+            "schema": "cf-v2-ecology-epoch-edge/v1",
+            "publishedEpoch": 12,
+            "candidateEpoch": 12,
+            "activePlayOriginMs": 0,
+            "observedActivePlayMs": 2962,
+            "edgeDue": false,
+            "autoCheckpointDue": false,
+            "inFlight": false,
+            "stagedIntent": null,
+            "stagedEpoch": null,
+            "retrySuppressedEpoch": null,
+            "lastCommittedRevision": 10,
+            "stages": 3,
+            "commits": 3,
+            "publications": 0,
+            "rejections": 0,
+            "invalidStageCompletions": 0,
+            "projection": {
+              "state": "current",
+              "publishedEpoch": 12,
+              "projectedEpoch": 12,
+              "refreshEpoch": null,
+              "refreshSerial": null
+            },
+            "projectionRefreshesStarted": 0,
+            "projectionRefreshesCompleted": 0,
+            "projectionRefreshesFailed": 0,
+            "projectionSuppressions": 0,
+            "invalidProjectionCompletions": 0,
+            "projectionDirty": false,
+            "projectionSuppressed": false,
+            "checkpointInFlight": false,
+            "lastOutcome": "steady:12:revision:10"
+          }
+        },
+        "resources": {
+          "schema": "cf-v2-scene-resources/v2",
+          "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+          "generation": 4,
+          "mode": "system",
+          "registry": {
+            "schema": "cf-v2-scene-textures/v2",
+            "observationWindow": 0,
+            "scopeCreations": 9,
+            "scopeDisposals": 8,
+            "activeScopeCount": 1,
+            "leaseAcquisitions": 138,
+            "leaseReleases": 129,
+            "activeLeaseCount": 9,
+            "textureCreations": 99,
+            "textureDisposals": 90,
+            "liveTextureCount": 9,
+            "liveCanvasPixels": 335488,
+            "liveCanvasBytes": 1341952,
+            "peakActiveLeaseCount": 71,
+            "peakLiveTextureCount": 71,
+            "peakLiveCanvasPixels": 7559888,
+            "peakLiveCanvasBytes": 30239552,
+            "lifetimePeakActiveLeaseCount": 71,
+            "lifetimePeakLiveTextureCount": 71,
+            "lifetimePeakLiveCanvasPixels": 7559888,
+            "externalDestroyFaults": 0,
+            "balanced": true,
+            "coherent": true,
+            "liveLeasesByKind": {
+              "scene-canvas": 8,
+              "galaxy-haze": 0,
+              "planet-texture": 1,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "liveTexturesByKind": {
+              "scene-canvas": 8,
+              "galaxy-haze": 0,
+              "planet-texture": 1,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "activeScopes": [
+              {
+                "label": "scene:4",
+                "leaseCount": 9,
+                "closed": false
+              }
+            ]
+          },
+          "managedResources": {
+            "schema": "cf-v2-pixi-managed-resources/v2",
+            "valid": true,
+            "hashCount": 6,
+            "hashes": [
+              {
+                "name": "canvasText",
+                "type": "renderable",
+                "liveEntryCount": 2,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphics",
+                "type": "renderable",
+                "liveEntryCount": 3,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glBuffer",
+                "type": "resource",
+                "liveEntryCount": 4,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glGeometry",
+                "type": "resource",
+                "liveEntryCount": 2,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glTexture",
+                "type": "resource",
+                "liveEntryCount": 15,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphicsContext",
+                "type": "resource",
+                "liveEntryCount": 3,
+                "clearedEntryCount": 0
+              }
+            ],
+            "liveEntryCount": 29,
+            "clearedEntryCount": 0,
+            "compactionCount": 4,
+            "compactedSlotCount": 111,
+            "faultCount": 0
+          },
+          "fineLayerActive": false,
+          "fineScopeActive": false,
+          "retiredFineOwnerCount": 0,
+          "surfaceTextureOwnerActive": false,
+          "surfaceCurrentTierPx": 0,
+          "surfaceCurrentBackingWidth": 0,
+          "surfaceCurrentBackingHeight": 0,
+          "surfaceRequestedTierPx": 0,
+          "surfaceRetiredLeaseCount": 0,
+          "pendingSurfaceRefreshes": 0,
+          "surfaceVistaGeneration": 4,
+          "surfaceVistaEnvironmentFingerprint": null,
+          "surfaceVistaWorkerActive": false,
+          "surfaceVistaMounted": false,
+          "surfaceVistaCacheEntries": 0,
+          "surfaceVistaCachePixels": 0,
+          "surfaceVistaWorkerStarts": 0,
+          "surfaceVistaResults": 0,
+          "surfaceVistaCacheHits": 0,
+          "surfaceVistaStaleDrops": 0,
+          "surfaceVistaFaults": 0,
+          "surfaceVistaLastBiome": null,
+          "surfaceVistaLastError": null,
+          "pendingSystemRefreshes": 0,
+          "pendingPersistenceWrites": 0,
+          "ringGeometryEntries": 0,
+          "peakRingGeometryEntries": 0,
+          "localCanvasCacheEntries": 1,
+          "peakLocalCanvasCacheEntries": 1,
+          "productRenderTargets": 0,
+          "managedTextureCount": 15,
+          "managedTextureClearedSlots": 0,
+          "managedTexturePixels": 1666466,
+          "sceneTextStyleUpdateListeners": 2,
+          "persistedPagehideCount": 0,
+          "persistedPageshowCount": 0
+        },
+        "viewport": [
+          390,
+          844,
+          2
+        ],
+        "inputs": [
+          {
+            "type": "contextmenu",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "act": "travel",
+            "x": 120,
+            "y": 274
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 291,
+            "y": 810
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 262,
+            "y": 378
+          }
+        ],
+        "fields": [
+          {
+            "visible": true,
+            "alpha": 1,
+            "destroyed": false,
+            "bounds": {
+              "x": 97.55335351905151,
+              "y": 344.91998033210723,
+              "width": 194.893292961897,
+              "height": 154.16003933578554
+            },
+            "arcs": [
+              {
+                "rotation": 0.5,
+                "visible": true,
+                "eventMode": "none",
+                "destroyed": false,
+                "instructions": [
+                  {
+                    "action": "stroke",
+                    "width": 1.2,
+                    "color": 9881855,
+                    "alpha": 0.45
+                  }
+                ]
+              },
+              {
+                "rotation": -0.5,
+                "visible": true,
+                "eventMode": "none",
+                "destroyed": false,
+                "instructions": [
+                  {
+                    "action": "stroke",
+                    "width": 1.2,
+                    "color": 9881855,
+                    "alpha": 0.45
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "native input",
+      "button": "left",
+      "point": {
+        "x": 166,
+        "y": 378
+      }
+    },
+    {
+      "name": "Effects Off committed",
+      "condition": "window.__CF_SLICE__.api.state().fxOn===false&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "effects off retains MAG",
+      "state": {
+        "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+        "mode": "system",
+        "star": 2563295997,
+        "starX": -718.08,
+        "starY": -258.94,
+        "navStarKey": "CF1|g:999@90,-60|s:2563295997@-718.08,-258.94",
+        "renderedScene": {
+          "serial": 5,
+          "mode": "system",
+          "ecologyEpoch": 12,
+          "galaxyKey": "CF1|g:999@90,-60",
+          "starKey": "CF1|g:999@90,-60|s:2563295997@-718.08,-258.94",
+          "worldKey": null
+        },
+        "cardOpen": false,
+        "fxOn": false,
+        "motionMode": 1,
+        "persistence": {
+          "schema": "cf-v2-app-persistence/v1",
+          "ready": true,
+          "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+          "bootKind": "current-v5",
+          "hold": null,
+          "protectedDetail": null,
+          "authorityBootKind": "absent",
+          "seedBootstrapPending": false,
+          "bootRouteRepairPending": false,
+          "productBootstrapPending": false,
+          "engineeringBootstrapPending": false,
+          "ownershipBootstrapPending": false,
+          "ownershipV2BootstrapPending": false,
+          "visibilityOverrideHidden": false,
+          "lastOutcome": "committed:11",
+          "hideWitness": null,
+          "heartbeatStorageFault": null,
+          "revisionVerificationFault": null,
+          "heartbeatRunning": true,
+          "convergenceReloadScheduled": false,
+          "convergenceReloadHold": {
+            "schema": "cf-v2-product-action-hold-diagnostics/v1",
+            "phase": "idle",
+            "operation": null,
+            "sequence": 0
+          },
+          "leaseReadCount": 8,
+          "revisionReadCount": 1,
+          "mutationBlocked": false,
+          "mutationBlockCount": 0,
+          "mutationBlockWitness": null,
+          "importPhase": null,
+          "importRace": null,
+          "runtime": {
+            "schema": "cf-v2-f4-runtime/v1",
+            "revision": 11,
+            "visible": true,
+            "answerable": true,
+            "leaseOwned": true,
+            "staleBlocked": false,
+            "leaseHeartbeat": 2,
+            "activePlayMs": 3045,
+            "accruing": true,
+            "sessionSeed": 220775255,
+            "sessionOrdinal": 2,
+            "sessionDraws": {},
+            "commits": 7,
+            "staleWrites": 0,
+            "leaseLosses": 0
+          },
+          "ecology": {
+            "schema": "cf-v2-ecology-epoch-edge/v1",
+            "publishedEpoch": 12,
+            "candidateEpoch": 12,
+            "activePlayOriginMs": 0,
+            "observedActivePlayMs": 3045,
+            "edgeDue": false,
+            "autoCheckpointDue": false,
+            "inFlight": false,
+            "stagedIntent": null,
+            "stagedEpoch": null,
+            "retrySuppressedEpoch": null,
+            "lastCommittedRevision": 11,
+            "stages": 4,
+            "commits": 4,
+            "publications": 0,
+            "rejections": 0,
+            "invalidStageCompletions": 0,
+            "projection": {
+              "state": "current",
+              "publishedEpoch": 12,
+              "projectedEpoch": 12,
+              "refreshEpoch": null,
+              "refreshSerial": null
+            },
+            "projectionRefreshesStarted": 0,
+            "projectionRefreshesCompleted": 0,
+            "projectionRefreshesFailed": 0,
+            "projectionSuppressions": 0,
+            "invalidProjectionCompletions": 0,
+            "projectionDirty": false,
+            "projectionSuppressed": false,
+            "checkpointInFlight": false,
+            "lastOutcome": "steady:12:revision:11"
+          }
+        },
+        "resources": {
+          "schema": "cf-v2-scene-resources/v2",
+          "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+          "generation": 5,
+          "mode": "system",
+          "registry": {
+            "schema": "cf-v2-scene-textures/v2",
+            "observationWindow": 0,
+            "scopeCreations": 10,
+            "scopeDisposals": 9,
+            "activeScopeCount": 1,
+            "leaseAcquisitions": 148,
+            "leaseReleases": 139,
+            "activeLeaseCount": 9,
+            "textureCreations": 108,
+            "textureDisposals": 99,
+            "liveTextureCount": 9,
+            "liveCanvasPixels": 335488,
+            "liveCanvasBytes": 1341952,
+            "peakActiveLeaseCount": 71,
+            "peakLiveTextureCount": 71,
+            "peakLiveCanvasPixels": 7559888,
+            "peakLiveCanvasBytes": 30239552,
+            "lifetimePeakActiveLeaseCount": 71,
+            "lifetimePeakLiveTextureCount": 71,
+            "lifetimePeakLiveCanvasPixels": 7559888,
+            "externalDestroyFaults": 0,
+            "balanced": true,
+            "coherent": true,
+            "liveLeasesByKind": {
+              "scene-canvas": 8,
+              "galaxy-haze": 0,
+              "planet-texture": 1,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "liveTexturesByKind": {
+              "scene-canvas": 8,
+              "galaxy-haze": 0,
+              "planet-texture": 1,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "activeScopes": [
+              {
+                "label": "scene:5",
+                "leaseCount": 9,
+                "closed": false
+              }
+            ]
+          },
+          "managedResources": {
+            "schema": "cf-v2-pixi-managed-resources/v2",
+            "valid": true,
+            "hashCount": 6,
+            "hashes": [
+              {
+                "name": "canvasText",
+                "type": "renderable",
+                "liveEntryCount": 2,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphics",
+                "type": "renderable",
+                "liveEntryCount": 3,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glBuffer",
+                "type": "resource",
+                "liveEntryCount": 4,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glGeometry",
+                "type": "resource",
+                "liveEntryCount": 2,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glTexture",
+                "type": "resource",
+                "liveEntryCount": 15,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphicsContext",
+                "type": "resource",
+                "liveEntryCount": 3,
+                "clearedEntryCount": 0
+              }
+            ],
+            "liveEntryCount": 29,
+            "clearedEntryCount": 0,
+            "compactionCount": 5,
+            "compactedSlotCount": 128,
+            "faultCount": 0
+          },
+          "fineLayerActive": false,
+          "fineScopeActive": false,
+          "retiredFineOwnerCount": 0,
+          "surfaceTextureOwnerActive": false,
+          "surfaceCurrentTierPx": 0,
+          "surfaceCurrentBackingWidth": 0,
+          "surfaceCurrentBackingHeight": 0,
+          "surfaceRequestedTierPx": 0,
+          "surfaceRetiredLeaseCount": 0,
+          "pendingSurfaceRefreshes": 0,
+          "surfaceVistaGeneration": 5,
+          "surfaceVistaEnvironmentFingerprint": null,
+          "surfaceVistaWorkerActive": false,
+          "surfaceVistaMounted": false,
+          "surfaceVistaCacheEntries": 0,
+          "surfaceVistaCachePixels": 0,
+          "surfaceVistaWorkerStarts": 0,
+          "surfaceVistaResults": 0,
+          "surfaceVistaCacheHits": 0,
+          "surfaceVistaStaleDrops": 0,
+          "surfaceVistaFaults": 0,
+          "surfaceVistaLastBiome": null,
+          "surfaceVistaLastError": null,
+          "pendingSystemRefreshes": 0,
+          "pendingPersistenceWrites": 0,
+          "ringGeometryEntries": 0,
+          "peakRingGeometryEntries": 0,
+          "localCanvasCacheEntries": 1,
+          "peakLocalCanvasCacheEntries": 1,
+          "productRenderTargets": 0,
+          "managedTextureCount": 15,
+          "managedTextureClearedSlots": 0,
+          "managedTexturePixels": 1666466,
+          "sceneTextStyleUpdateListeners": 2,
+          "persistedPagehideCount": 0,
+          "persistedPageshowCount": 0
+        },
+        "viewport": [
+          390,
+          844,
+          2
+        ],
+        "inputs": [
+          {
+            "type": "contextmenu",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "act": "travel",
+            "x": 120,
+            "y": 274
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 291,
+            "y": 810
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 262,
+            "y": 378
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 166,
+            "y": 378
+          }
+        ],
+        "fields": [
+          {
+            "visible": true,
+            "alpha": 1,
+            "destroyed": false,
+            "bounds": {
+              "x": 97.55335351905151,
+              "y": 344.91998033210723,
+              "width": 194.893292961897,
+              "height": 154.16003933578554
+            },
+            "arcs": [
+              {
+                "rotation": 0.5,
+                "visible": true,
+                "eventMode": "none",
+                "destroyed": false,
+                "instructions": [
+                  {
+                    "action": "stroke",
+                    "width": 1.2,
+                    "color": 9881855,
+                    "alpha": 0.45
+                  }
+                ]
+              },
+              {
+                "rotation": -0.5,
+                "visible": true,
+                "eventMode": "none",
+                "destroyed": false,
+                "instructions": [
+                  {
+                    "action": "stroke",
+                    "width": 1.2,
+                    "color": 9881855,
+                    "alpha": 0.45
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "camera settled",
+      "condition": "Math.abs(window.__CF_SLICE__.cam.z-window.__CF_SLICE__.camT.z)<.001",
+      "status": "PASS"
+    },
+    {
+      "name": "mag-phone-reduced-effects-off",
+      "state": {
+        "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+        "mode": "system",
+        "star": 2563295997,
+        "starX": -718.08,
+        "starY": -258.94,
+        "navStarKey": "CF1|g:999@90,-60|s:2563295997@-718.08,-258.94",
+        "renderedScene": {
+          "serial": 5,
+          "mode": "system",
+          "ecologyEpoch": 12,
+          "galaxyKey": "CF1|g:999@90,-60",
+          "starKey": "CF1|g:999@90,-60|s:2563295997@-718.08,-258.94",
+          "worldKey": null
+        },
+        "cardOpen": false,
+        "fxOn": false,
+        "motionMode": 1,
+        "persistence": {
+          "schema": "cf-v2-app-persistence/v1",
+          "ready": true,
+          "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+          "bootKind": "current-v5",
+          "hold": null,
+          "protectedDetail": null,
+          "authorityBootKind": "absent",
+          "seedBootstrapPending": false,
+          "bootRouteRepairPending": false,
+          "productBootstrapPending": false,
+          "engineeringBootstrapPending": false,
+          "ownershipBootstrapPending": false,
+          "ownershipV2BootstrapPending": false,
+          "visibilityOverrideHidden": false,
+          "lastOutcome": "committed:11",
+          "hideWitness": null,
+          "heartbeatStorageFault": null,
+          "revisionVerificationFault": null,
+          "heartbeatRunning": true,
+          "convergenceReloadScheduled": false,
+          "convergenceReloadHold": {
+            "schema": "cf-v2-product-action-hold-diagnostics/v1",
+            "phase": "idle",
+            "operation": null,
+            "sequence": 0
+          },
+          "leaseReadCount": 8,
+          "revisionReadCount": 1,
+          "mutationBlocked": false,
+          "mutationBlockCount": 0,
+          "mutationBlockWitness": null,
+          "importPhase": null,
+          "importRace": null,
+          "runtime": {
+            "schema": "cf-v2-f4-runtime/v1",
+            "revision": 11,
+            "visible": true,
+            "answerable": true,
+            "leaseOwned": true,
+            "staleBlocked": false,
+            "leaseHeartbeat": 2,
+            "activePlayMs": 3077,
+            "accruing": true,
+            "sessionSeed": 220775255,
+            "sessionOrdinal": 2,
+            "sessionDraws": {},
+            "commits": 7,
+            "staleWrites": 0,
+            "leaseLosses": 0
+          },
+          "ecology": {
+            "schema": "cf-v2-ecology-epoch-edge/v1",
+            "publishedEpoch": 12,
+            "candidateEpoch": 12,
+            "activePlayOriginMs": 0,
+            "observedActivePlayMs": 3077,
+            "edgeDue": false,
+            "autoCheckpointDue": false,
+            "inFlight": false,
+            "stagedIntent": null,
+            "stagedEpoch": null,
+            "retrySuppressedEpoch": null,
+            "lastCommittedRevision": 11,
+            "stages": 4,
+            "commits": 4,
+            "publications": 0,
+            "rejections": 0,
+            "invalidStageCompletions": 0,
+            "projection": {
+              "state": "current",
+              "publishedEpoch": 12,
+              "projectedEpoch": 12,
+              "refreshEpoch": null,
+              "refreshSerial": null
+            },
+            "projectionRefreshesStarted": 0,
+            "projectionRefreshesCompleted": 0,
+            "projectionRefreshesFailed": 0,
+            "projectionSuppressions": 0,
+            "invalidProjectionCompletions": 0,
+            "projectionDirty": false,
+            "projectionSuppressed": false,
+            "checkpointInFlight": false,
+            "lastOutcome": "steady:12:revision:11"
+          }
+        },
+        "resources": {
+          "schema": "cf-v2-scene-resources/v2",
+          "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+          "generation": 5,
+          "mode": "system",
+          "registry": {
+            "schema": "cf-v2-scene-textures/v2",
+            "observationWindow": 0,
+            "scopeCreations": 10,
+            "scopeDisposals": 9,
+            "activeScopeCount": 1,
+            "leaseAcquisitions": 148,
+            "leaseReleases": 139,
+            "activeLeaseCount": 9,
+            "textureCreations": 108,
+            "textureDisposals": 99,
+            "liveTextureCount": 9,
+            "liveCanvasPixels": 335488,
+            "liveCanvasBytes": 1341952,
+            "peakActiveLeaseCount": 71,
+            "peakLiveTextureCount": 71,
+            "peakLiveCanvasPixels": 7559888,
+            "peakLiveCanvasBytes": 30239552,
+            "lifetimePeakActiveLeaseCount": 71,
+            "lifetimePeakLiveTextureCount": 71,
+            "lifetimePeakLiveCanvasPixels": 7559888,
+            "externalDestroyFaults": 0,
+            "balanced": true,
+            "coherent": true,
+            "liveLeasesByKind": {
+              "scene-canvas": 8,
+              "galaxy-haze": 0,
+              "planet-texture": 1,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "liveTexturesByKind": {
+              "scene-canvas": 8,
+              "galaxy-haze": 0,
+              "planet-texture": 1,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "activeScopes": [
+              {
+                "label": "scene:5",
+                "leaseCount": 9,
+                "closed": false
+              }
+            ]
+          },
+          "managedResources": {
+            "schema": "cf-v2-pixi-managed-resources/v2",
+            "valid": true,
+            "hashCount": 6,
+            "hashes": [
+              {
+                "name": "canvasText",
+                "type": "renderable",
+                "liveEntryCount": 2,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphics",
+                "type": "renderable",
+                "liveEntryCount": 3,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glBuffer",
+                "type": "resource",
+                "liveEntryCount": 4,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glGeometry",
+                "type": "resource",
+                "liveEntryCount": 2,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glTexture",
+                "type": "resource",
+                "liveEntryCount": 15,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphicsContext",
+                "type": "resource",
+                "liveEntryCount": 3,
+                "clearedEntryCount": 0
+              }
+            ],
+            "liveEntryCount": 29,
+            "clearedEntryCount": 0,
+            "compactionCount": 5,
+            "compactedSlotCount": 128,
+            "faultCount": 0
+          },
+          "fineLayerActive": false,
+          "fineScopeActive": false,
+          "retiredFineOwnerCount": 0,
+          "surfaceTextureOwnerActive": false,
+          "surfaceCurrentTierPx": 0,
+          "surfaceCurrentBackingWidth": 0,
+          "surfaceCurrentBackingHeight": 0,
+          "surfaceRequestedTierPx": 0,
+          "surfaceRetiredLeaseCount": 0,
+          "pendingSurfaceRefreshes": 0,
+          "surfaceVistaGeneration": 5,
+          "surfaceVistaEnvironmentFingerprint": null,
+          "surfaceVistaWorkerActive": false,
+          "surfaceVistaMounted": false,
+          "surfaceVistaCacheEntries": 0,
+          "surfaceVistaCachePixels": 0,
+          "surfaceVistaWorkerStarts": 0,
+          "surfaceVistaResults": 0,
+          "surfaceVistaCacheHits": 0,
+          "surfaceVistaStaleDrops": 0,
+          "surfaceVistaFaults": 0,
+          "surfaceVistaLastBiome": null,
+          "surfaceVistaLastError": null,
+          "pendingSystemRefreshes": 0,
+          "pendingPersistenceWrites": 0,
+          "ringGeometryEntries": 0,
+          "peakRingGeometryEntries": 0,
+          "localCanvasCacheEntries": 1,
+          "peakLocalCanvasCacheEntries": 1,
+          "productRenderTargets": 0,
+          "managedTextureCount": 15,
+          "managedTextureClearedSlots": 0,
+          "managedTexturePixels": 1666466,
+          "sceneTextStyleUpdateListeners": 2,
+          "persistedPagehideCount": 0,
+          "persistedPageshowCount": 0
+        },
+        "viewport": [
+          390,
+          844,
+          2
+        ],
+        "inputs": [
+          {
+            "type": "contextmenu",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "act": "travel",
+            "x": 120,
+            "y": 274
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 291,
+            "y": 810
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 262,
+            "y": 378
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 166,
+            "y": 378
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Escape"
+          }
+        ],
+        "fields": [
+          {
+            "visible": true,
+            "alpha": 1,
+            "destroyed": false,
+            "bounds": {
+              "x": 97.55335351905151,
+              "y": 344.91998033210723,
+              "width": 194.893292961897,
+              "height": 154.16003933578554
+            },
+            "arcs": [
+              {
+                "rotation": 0.5,
+                "visible": true,
+                "eventMode": "none",
+                "destroyed": false,
+                "instructions": [
+                  {
+                    "action": "stroke",
+                    "width": 1.2,
+                    "color": 9881855,
+                    "alpha": 0.45
+                  }
+                ]
+              },
+              {
+                "rotation": -0.5,
+                "visible": true,
+                "eventMode": "none",
+                "destroyed": false,
+                "instructions": [
+                  {
+                    "action": "stroke",
+                    "width": 1.2,
+                    "color": 9881855,
+                    "alpha": 0.45
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "camera settled",
+      "condition": "Math.abs(window.__CF_SLICE__.cam.z-window.__CF_SLICE__.camT.z)<.001",
+      "status": "PASS"
+    },
+    {
+      "name": "mag-desktop-1440x1000-dpr1",
+      "state": {
+        "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+        "mode": "system",
+        "star": 2563295997,
+        "starX": -718.08,
+        "starY": -258.94,
+        "navStarKey": "CF1|g:999@90,-60|s:2563295997@-718.08,-258.94",
+        "renderedScene": {
+          "serial": 6,
+          "mode": "system",
+          "ecologyEpoch": 12,
+          "galaxyKey": "CF1|g:999@90,-60",
+          "starKey": "CF1|g:999@90,-60|s:2563295997@-718.08,-258.94",
+          "worldKey": null
+        },
+        "cardOpen": false,
+        "fxOn": false,
+        "motionMode": 1,
+        "persistence": {
+          "schema": "cf-v2-app-persistence/v1",
+          "ready": true,
+          "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+          "bootKind": "current-v5",
+          "hold": null,
+          "protectedDetail": null,
+          "authorityBootKind": "absent",
+          "seedBootstrapPending": false,
+          "bootRouteRepairPending": false,
+          "productBootstrapPending": false,
+          "engineeringBootstrapPending": false,
+          "ownershipBootstrapPending": false,
+          "ownershipV2BootstrapPending": false,
+          "visibilityOverrideHidden": false,
+          "lastOutcome": "committed:11",
+          "hideWitness": null,
+          "heartbeatStorageFault": null,
+          "revisionVerificationFault": null,
+          "heartbeatRunning": true,
+          "convergenceReloadScheduled": false,
+          "convergenceReloadHold": {
+            "schema": "cf-v2-product-action-hold-diagnostics/v1",
+            "phase": "idle",
+            "operation": null,
+            "sequence": 0
+          },
+          "leaseReadCount": 8,
+          "revisionReadCount": 1,
+          "mutationBlocked": false,
+          "mutationBlockCount": 0,
+          "mutationBlockWitness": null,
+          "importPhase": null,
+          "importRace": null,
+          "runtime": {
+            "schema": "cf-v2-f4-runtime/v1",
+            "revision": 11,
+            "visible": true,
+            "answerable": true,
+            "leaseOwned": true,
+            "staleBlocked": false,
+            "leaseHeartbeat": 2,
+            "activePlayMs": 3229,
+            "accruing": true,
+            "sessionSeed": 220775255,
+            "sessionOrdinal": 2,
+            "sessionDraws": {},
+            "commits": 7,
+            "staleWrites": 0,
+            "leaseLosses": 0
+          },
+          "ecology": {
+            "schema": "cf-v2-ecology-epoch-edge/v1",
+            "publishedEpoch": 12,
+            "candidateEpoch": 12,
+            "activePlayOriginMs": 0,
+            "observedActivePlayMs": 3229,
+            "edgeDue": false,
+            "autoCheckpointDue": false,
+            "inFlight": false,
+            "stagedIntent": null,
+            "stagedEpoch": null,
+            "retrySuppressedEpoch": null,
+            "lastCommittedRevision": 11,
+            "stages": 4,
+            "commits": 4,
+            "publications": 0,
+            "rejections": 0,
+            "invalidStageCompletions": 0,
+            "projection": {
+              "state": "current",
+              "publishedEpoch": 12,
+              "projectedEpoch": 12,
+              "refreshEpoch": null,
+              "refreshSerial": null
+            },
+            "projectionRefreshesStarted": 0,
+            "projectionRefreshesCompleted": 0,
+            "projectionRefreshesFailed": 0,
+            "projectionSuppressions": 0,
+            "invalidProjectionCompletions": 0,
+            "projectionDirty": false,
+            "projectionSuppressed": false,
+            "checkpointInFlight": false,
+            "lastOutcome": "steady:12:revision:11"
+          }
+        },
+        "resources": {
+          "schema": "cf-v2-scene-resources/v2",
+          "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+          "generation": 6,
+          "mode": "system",
+          "registry": {
+            "schema": "cf-v2-scene-textures/v2",
+            "observationWindow": 0,
+            "scopeCreations": 11,
+            "scopeDisposals": 10,
+            "activeScopeCount": 1,
+            "leaseAcquisitions": 157,
+            "leaseReleases": 148,
+            "activeLeaseCount": 9,
+            "textureCreations": 117,
+            "textureDisposals": 108,
+            "liveTextureCount": 9,
+            "liveCanvasPixels": 335488,
+            "liveCanvasBytes": 1341952,
+            "peakActiveLeaseCount": 71,
+            "peakLiveTextureCount": 71,
+            "peakLiveCanvasPixels": 7559888,
+            "peakLiveCanvasBytes": 30239552,
+            "lifetimePeakActiveLeaseCount": 71,
+            "lifetimePeakLiveTextureCount": 71,
+            "lifetimePeakLiveCanvasPixels": 7559888,
+            "externalDestroyFaults": 0,
+            "balanced": true,
+            "coherent": true,
+            "liveLeasesByKind": {
+              "scene-canvas": 8,
+              "galaxy-haze": 0,
+              "planet-texture": 1,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "liveTexturesByKind": {
+              "scene-canvas": 8,
+              "galaxy-haze": 0,
+              "planet-texture": 1,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "activeScopes": [
+              {
+                "label": "scene:6",
+                "leaseCount": 9,
+                "closed": false
+              }
+            ]
+          },
+          "managedResources": {
+            "schema": "cf-v2-pixi-managed-resources/v2",
+            "valid": true,
+            "hashCount": 6,
+            "hashes": [
+              {
+                "name": "canvasText",
+                "type": "renderable",
+                "liveEntryCount": 2,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphics",
+                "type": "renderable",
+                "liveEntryCount": 3,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glBuffer",
+                "type": "resource",
+                "liveEntryCount": 4,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glGeometry",
+                "type": "resource",
+                "liveEntryCount": 2,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glTexture",
+                "type": "resource",
+                "liveEntryCount": 17,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphicsContext",
+                "type": "resource",
+                "liveEntryCount": 3,
+                "clearedEntryCount": 0
+              }
+            ],
+            "liveEntryCount": 31,
+            "clearedEntryCount": 0,
+            "compactionCount": 6,
+            "compactedSlotCount": 146,
+            "faultCount": 0
+          },
+          "fineLayerActive": false,
+          "fineScopeActive": false,
+          "retiredFineOwnerCount": 0,
+          "surfaceTextureOwnerActive": false,
+          "surfaceCurrentTierPx": 0,
+          "surfaceCurrentBackingWidth": 0,
+          "surfaceCurrentBackingHeight": 0,
+          "surfaceRequestedTierPx": 0,
+          "surfaceRetiredLeaseCount": 0,
+          "pendingSurfaceRefreshes": 0,
+          "surfaceVistaGeneration": 6,
+          "surfaceVistaEnvironmentFingerprint": null,
+          "surfaceVistaWorkerActive": false,
+          "surfaceVistaMounted": false,
+          "surfaceVistaCacheEntries": 0,
+          "surfaceVistaCachePixels": 0,
+          "surfaceVistaWorkerStarts": 0,
+          "surfaceVistaResults": 0,
+          "surfaceVistaCacheHits": 0,
+          "surfaceVistaStaleDrops": 0,
+          "surfaceVistaFaults": 0,
+          "surfaceVistaLastBiome": null,
+          "surfaceVistaLastError": null,
+          "pendingSystemRefreshes": 1,
+          "pendingPersistenceWrites": 0,
+          "ringGeometryEntries": 0,
+          "peakRingGeometryEntries": 0,
+          "localCanvasCacheEntries": 1,
+          "peakLocalCanvasCacheEntries": 1,
+          "productRenderTargets": 0,
+          "managedTextureCount": 17,
+          "managedTextureClearedSlots": 0,
+          "managedTexturePixels": 1791362,
+          "sceneTextStyleUpdateListeners": 2,
+          "persistedPagehideCount": 0,
+          "persistedPageshowCount": 0
+        },
+        "viewport": [
+          1440,
+          1000,
+          1
+        ],
+        "inputs": [
+          {
+            "type": "contextmenu",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "act": "travel",
+            "x": 120,
+            "y": 274
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "x": 195,
+            "y": 422
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 291,
+            "y": 810
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 262,
+            "y": 378
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "x": 166,
+            "y": 378
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Escape"
+          }
+        ],
+        "fields": [
+          {
+            "visible": true,
+            "alpha": 1,
+            "destroyed": false,
+            "bounds": {
+              "x": 622.5533535190515,
+              "y": 422.91998033210723,
+              "width": 194.89329296189703,
+              "height": 154.16003933578554
+            },
+            "arcs": [
+              {
+                "rotation": 0.5,
+                "visible": true,
+                "eventMode": "none",
+                "destroyed": false,
+                "instructions": [
+                  {
+                    "action": "stroke",
+                    "width": 1.2,
+                    "color": 9881855,
+                    "alpha": 0.45
+                  }
+                ]
+              },
+              {
+                "rotation": -0.5,
+                "visible": true,
+                "eventMode": "none",
+                "destroyed": false,
+                "instructions": [
+                  {
+                    "action": "stroke",
+                    "width": 1.2,
+                    "color": 9881855,
+                    "alpha": 0.45
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "native input",
+      "button": "right",
+      "point": {
+        "x": 720,
+        "y": 500
+      }
+    },
+    {
+      "name": "native exit destroys MAG owner",
+      "condition": "window.__CF_SLICE__.api.state().mode==='galaxy'&&window.__CF_SLICE__.world.children.filter(c=>c.label==='system-magnetar-field').length===0&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "writable before NS",
+      "condition": "(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "source-derived isolated fixture",
+      "kind": "NS",
+      "star": {
+        "seed": 729068929,
+        "x": -736.7237938377075,
+        "y": 61.177555879577994
+      },
+      "canonicalStar": {
+        "seed": 729068929,
+        "x": -736.72,
+        "y": 61.18
+      },
+      "ownedArray": 1,
+      "chapter": 2,
+      "fixtureSha256": "07324218301ca9203c4e4433ce8ab07834b75c73208d8bc63a185a6c5b35f355",
+      "previous": "245745df-027f-4cf1-b8c0-5baadb02f1ad"
+    },
+    {
+      "name": "new writable NS document",
+      "condition": "(()=>{if(window.__cfMagImportError)throw Error(window.__cfMagImportError);return window.__CF_SLICE__?.documentToken!==\"245745df-027f-4cf1-b8c0-5baadb02f1ad\"&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()&&window.__CF_SLICE__.api.state().mode==='system'&&window.__CF_SLICE__.api.state().star===729068929})()",
+      "status": "PASS"
+    },
+    {
+      "name": "NS absence control",
+      "state": {
+        "documentToken": "24fe81c8-17df-471a-8179-0c690889d1b0",
+        "mode": "system",
+        "star": 729068929,
+        "starX": -736.72,
+        "starY": 61.18,
+        "navStarKey": "CF1|g:999@90,-60|s:729068929@-736.72,61.18",
+        "renderedScene": {
+          "serial": 1,
+          "mode": "system",
+          "ecologyEpoch": 12,
+          "galaxyKey": "CF1|g:999@90,-60",
+          "starKey": "CF1|g:999@90,-60|s:729068929@-736.72,61.18",
+          "worldKey": null
+        },
+        "cardOpen": false,
+        "fxOn": true,
+        "motionMode": 0,
+        "persistence": {
+          "schema": "cf-v2-app-persistence/v1",
+          "ready": true,
+          "documentToken": "24fe81c8-17df-471a-8179-0c690889d1b0",
+          "bootKind": "current-v5",
+          "hold": null,
+          "protectedDetail": null,
+          "authorityBootKind": "absent",
+          "seedBootstrapPending": false,
+          "bootRouteRepairPending": false,
+          "productBootstrapPending": false,
+          "engineeringBootstrapPending": false,
+          "ownershipBootstrapPending": false,
+          "ownershipV2BootstrapPending": false,
+          "visibilityOverrideHidden": false,
+          "lastOutcome": "arc9-progression-committed:15",
+          "hideWitness": null,
+          "heartbeatStorageFault": null,
+          "revisionVerificationFault": null,
+          "heartbeatRunning": true,
+          "convergenceReloadScheduled": false,
+          "convergenceReloadHold": {
+            "schema": "cf-v2-product-action-hold-diagnostics/v1",
+            "phase": "idle",
+            "operation": null,
+            "sequence": 0
+          },
+          "leaseReadCount": 3,
+          "revisionReadCount": 1,
+          "mutationBlocked": false,
+          "mutationBlockCount": 0,
+          "mutationBlockWitness": null,
+          "importPhase": null,
+          "importRace": null,
+          "runtime": {
+            "schema": "cf-v2-f4-runtime/v1",
+            "revision": 15,
+            "visible": true,
+            "answerable": true,
+            "leaseOwned": true,
+            "staleBlocked": false,
+            "leaseHeartbeat": 4,
+            "activePlayMs": 38,
+            "accruing": true,
+            "sessionSeed": 2888322164,
+            "sessionOrdinal": 1,
+            "sessionDraws": {},
+            "commits": 2,
+            "staleWrites": 0,
+            "leaseLosses": 0
+          },
+          "ecology": {
+            "schema": "cf-v2-ecology-epoch-edge/v1",
+            "publishedEpoch": 12,
+            "candidateEpoch": 12,
+            "activePlayOriginMs": 0,
+            "observedActivePlayMs": 38,
+            "edgeDue": false,
+            "autoCheckpointDue": false,
+            "inFlight": false,
+            "stagedIntent": null,
+            "stagedEpoch": null,
+            "retrySuppressedEpoch": null,
+            "lastCommittedRevision": null,
+            "stages": 0,
+            "commits": 0,
+            "publications": 0,
+            "rejections": 0,
+            "invalidStageCompletions": 0,
+            "projection": {
+              "state": "current",
+              "publishedEpoch": 12,
+              "projectedEpoch": 12,
+              "refreshEpoch": null,
+              "refreshSerial": null
+            },
+            "projectionRefreshesStarted": 0,
+            "projectionRefreshesCompleted": 0,
+            "projectionRefreshesFailed": 0,
+            "projectionSuppressions": 0,
+            "invalidProjectionCompletions": 0,
+            "projectionDirty": false,
+            "projectionSuppressed": false,
+            "checkpointInFlight": false,
+            "lastOutcome": "boot:12"
+          }
+        },
+        "resources": {
+          "schema": "cf-v2-scene-resources/v2",
+          "documentToken": "24fe81c8-17df-471a-8179-0c690889d1b0",
+          "generation": 1,
+          "mode": "system",
+          "registry": {
+            "schema": "cf-v2-scene-textures/v2",
+            "observationWindow": 0,
+            "scopeCreations": 2,
+            "scopeDisposals": 1,
+            "activeScopeCount": 1,
+            "leaseAcquisitions": 2,
+            "leaseReleases": 0,
+            "activeLeaseCount": 2,
+            "textureCreations": 2,
+            "textureDisposals": 0,
+            "liveTextureCount": 2,
+            "liveCanvasPixels": 1056,
+            "liveCanvasBytes": 4224,
+            "peakActiveLeaseCount": 2,
+            "peakLiveTextureCount": 2,
+            "peakLiveCanvasPixels": 1056,
+            "peakLiveCanvasBytes": 4224,
+            "lifetimePeakActiveLeaseCount": 2,
+            "lifetimePeakLiveTextureCount": 2,
+            "lifetimePeakLiveCanvasPixels": 1056,
+            "externalDestroyFaults": 0,
+            "balanced": true,
+            "coherent": true,
+            "liveLeasesByKind": {
+              "scene-canvas": 2,
+              "galaxy-haze": 0,
+              "planet-texture": 0,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "liveTexturesByKind": {
+              "scene-canvas": 2,
+              "galaxy-haze": 0,
+              "planet-texture": 0,
+              "ring-texture": 0,
+              "surface-cloud": 0,
+              "star-surface": 0
+            },
+            "activeScopes": [
+              {
+                "label": "scene:1",
+                "leaseCount": 2,
+                "closed": false
+              }
+            ]
+          },
+          "managedResources": {
+            "schema": "cf-v2-pixi-managed-resources/v2",
+            "valid": true,
+            "hashCount": 6,
+            "hashes": [
+              {
+                "name": "canvasText",
+                "type": "renderable",
+                "liveEntryCount": 0,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphics",
+                "type": "renderable",
+                "liveEntryCount": 0,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glBuffer",
+                "type": "resource",
+                "liveEntryCount": 2,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glGeometry",
+                "type": "resource",
+                "liveEntryCount": 1,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glTexture",
+                "type": "resource",
+                "liveEntryCount": 4,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphicsContext",
+                "type": "resource",
+                "liveEntryCount": 0,
+                "clearedEntryCount": 0
+              }
+            ],
+            "liveEntryCount": 7,
+            "clearedEntryCount": 0,
+            "compactionCount": 0,
+            "compactedSlotCount": 0,
+            "faultCount": 0
+          },
+          "fineLayerActive": false,
+          "fineScopeActive": false,
+          "retiredFineOwnerCount": 0,
+          "surfaceTextureOwnerActive": false,
+          "surfaceCurrentTierPx": 0,
+          "surfaceCurrentBackingWidth": 0,
+          "surfaceCurrentBackingHeight": 0,
+          "surfaceRequestedTierPx": 0,
+          "surfaceRetiredLeaseCount": 0,
+          "pendingSurfaceRefreshes": 0,
+          "surfaceVistaGeneration": 1,
+          "surfaceVistaEnvironmentFingerprint": null,
+          "surfaceVistaWorkerActive": false,
+          "surfaceVistaMounted": false,
+          "surfaceVistaCacheEntries": 0,
+          "surfaceVistaCachePixels": 0,
+          "surfaceVistaWorkerStarts": 0,
+          "surfaceVistaResults": 0,
+          "surfaceVistaCacheHits": 0,
+          "surfaceVistaStaleDrops": 0,
+          "surfaceVistaFaults": 0,
+          "surfaceVistaLastBiome": null,
+          "surfaceVistaLastError": null,
+          "pendingSystemRefreshes": 0,
+          "pendingPersistenceWrites": 0,
+          "ringGeometryEntries": 0,
+          "peakRingGeometryEntries": 0,
+          "localCanvasCacheEntries": 0,
+          "peakLocalCanvasCacheEntries": 0,
+          "productRenderTargets": 0,
+          "managedTextureCount": 4,
+          "managedTextureClearedSlots": 0,
+          "managedTexturePixels": 1441057,
+          "sceneTextStyleUpdateListeners": 0,
+          "persistedPagehideCount": 0,
+          "persistedPageshowCount": 0
+        },
+        "viewport": [
+          1440,
+          1000,
+          1
+        ],
+        "inputs": [],
+        "fields": []
+      }
+    },
+    {
+      "name": "writable before sol",
+      "condition": "(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "source-derived isolated fixture",
+      "kind": "sol",
+      "star": {
+        "seed": 424242,
+        "x": 560,
+        "y": 170
+      },
+      "canonicalStar": {
+        "seed": 424242,
+        "x": 560,
+        "y": 170
+      },
+      "ownedArray": 1,
+      "chapter": 2,
+      "fixtureSha256": "f5ce244a01a159a7d23e76267167a9be5cac8ac59ea9e9395ceecf27f6305c23",
+      "previous": "24fe81c8-17df-471a-8179-0c690889d1b0"
+    },
+    {
+      "name": "new writable sol document",
+      "condition": "(()=>{if(window.__cfMagImportError)throw Error(window.__cfMagImportError);return window.__CF_SLICE__?.documentToken!==\"24fe81c8-17df-471a-8179-0c690889d1b0\"&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()&&window.__CF_SLICE__.api.state().mode==='system'&&window.__CF_SLICE__.api.state().star===424242})()",
+      "status": "PASS"
+    },
+    {
+      "name": "sol absence control",
+      "state": {
+        "documentToken": "c5b2e657-17a0-4ece-a9a6-54dbd804021a",
+        "mode": "system",
+        "star": 424242,
+        "starX": 560,
+        "starY": 170,
+        "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+        "renderedScene": {
+          "serial": 1,
+          "mode": "system",
+          "ecologyEpoch": 12,
+          "galaxyKey": "CF1|g:999@90,-60",
+          "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+          "worldKey": null
+        },
+        "cardOpen": false,
+        "fxOn": true,
+        "motionMode": 0,
+        "persistence": {
+          "schema": "cf-v2-app-persistence/v1",
+          "ready": true,
+          "documentToken": "c5b2e657-17a0-4ece-a9a6-54dbd804021a",
+          "bootKind": "current-v5",
+          "hold": null,
+          "protectedDetail": null,
+          "authorityBootKind": "absent",
+          "seedBootstrapPending": false,
+          "bootRouteRepairPending": false,
+          "productBootstrapPending": false,
+          "engineeringBootstrapPending": false,
+          "ownershipBootstrapPending": false,
+          "ownershipV2BootstrapPending": false,
+          "visibilityOverrideHidden": false,
+          "lastOutcome": "arc9-progression-committed:18",
+          "hideWitness": null,
+          "heartbeatStorageFault": null,
+          "revisionVerificationFault": null,
+          "heartbeatRunning": true,
+          "convergenceReloadScheduled": false,
+          "convergenceReloadHold": {
+            "schema": "cf-v2-product-action-hold-diagnostics/v1",
+            "phase": "idle",
+            "operation": null,
+            "sequence": 0
+          },
+          "leaseReadCount": 3,
+          "revisionReadCount": 1,
+          "mutationBlocked": false,
+          "mutationBlockCount": 0,
+          "mutationBlockWitness": null,
+          "importPhase": null,
+          "importRace": null,
+          "runtime": {
+            "schema": "cf-v2-f4-runtime/v1",
+            "revision": 18,
+            "visible": true,
+            "answerable": true,
+            "leaseOwned": true,
+            "staleBlocked": false,
+            "leaseHeartbeat": 6,
+            "activePlayMs": 4,
+            "accruing": true,
+            "sessionSeed": 4161889512,
+            "sessionOrdinal": 1,
+            "sessionDraws": {},
+            "commits": 2,
+            "staleWrites": 0,
+            "leaseLosses": 0
+          },
+          "ecology": {
+            "schema": "cf-v2-ecology-epoch-edge/v1",
+            "publishedEpoch": 12,
+            "candidateEpoch": 12,
+            "activePlayOriginMs": 0,
+            "observedActivePlayMs": 4,
+            "edgeDue": false,
+            "autoCheckpointDue": false,
+            "inFlight": false,
+            "stagedIntent": null,
+            "stagedEpoch": null,
+            "retrySuppressedEpoch": null,
+            "lastCommittedRevision": null,
+            "stages": 0,
+            "commits": 0,
+            "publications": 0,
+            "rejections": 0,
+            "invalidStageCompletions": 0,
+            "projection": {
+              "state": "current",
+              "publishedEpoch": 12,
+              "projectedEpoch": 12,
+              "refreshEpoch": null,
+              "refreshSerial": null
+            },
+            "projectionRefreshesStarted": 0,
+            "projectionRefreshesCompleted": 0,
+            "projectionRefreshesFailed": 0,
+            "projectionSuppressions": 0,
+            "invalidProjectionCompletions": 0,
+            "projectionDirty": false,
+            "projectionSuppressed": false,
+            "checkpointInFlight": false,
+            "lastOutcome": "boot:12"
+          }
+        },
+        "resources": {
+          "schema": "cf-v2-scene-resources/v2",
+          "documentToken": "c5b2e657-17a0-4ece-a9a6-54dbd804021a",
+          "generation": 1,
+          "mode": "system",
+          "registry": {
+            "schema": "cf-v2-scene-textures/v2",
+            "observationWindow": 0,
+            "scopeCreations": 2,
+            "scopeDisposals": 1,
+            "activeScopeCount": 1,
+            "leaseAcquisitions": 46,
+            "leaseReleases": 8,
+            "activeLeaseCount": 38,
+            "textureCreations": 46,
+            "textureDisposals": 8,
+            "liveTextureCount": 38,
+            "liveCanvasPixels": 2836736,
+            "liveCanvasBytes": 11346944,
+            "peakActiveLeaseCount": 39,
+            "peakLiveTextureCount": 39,
+            "peakLiveCanvasPixels": 2853120,
+            "peakLiveCanvasBytes": 11412480,
+            "lifetimePeakActiveLeaseCount": 39,
+            "lifetimePeakLiveTextureCount": 39,
+            "lifetimePeakLiveCanvasPixels": 2853120,
+            "externalDestroyFaults": 0,
+            "balanced": true,
+            "coherent": true,
+            "liveLeasesByKind": {
+              "scene-canvas": 27,
+              "galaxy-haze": 0,
+              "planet-texture": 8,
+              "ring-texture": 2,
+              "surface-cloud": 1,
+              "star-surface": 0
+            },
+            "liveTexturesByKind": {
+              "scene-canvas": 27,
+              "galaxy-haze": 0,
+              "planet-texture": 8,
+              "ring-texture": 2,
+              "surface-cloud": 1,
+              "star-surface": 0
+            },
+            "activeScopes": [
+              {
+                "label": "scene:1",
+                "leaseCount": 38,
+                "closed": false
+              }
+            ]
+          },
+          "managedResources": {
+            "schema": "cf-v2-pixi-managed-resources/v2",
+            "valid": true,
+            "hashCount": 6,
+            "hashes": [
+              {
+                "name": "canvasText",
+                "type": "renderable",
+                "liveEntryCount": 10,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphics",
+                "type": "renderable",
+                "liveEntryCount": 13,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glBuffer",
+                "type": "resource",
+                "liveEntryCount": 20,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glGeometry",
+                "type": "resource",
+                "liveEntryCount": 10,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "glTexture",
+                "type": "resource",
+                "liveEntryCount": 50,
+                "clearedEntryCount": 0
+              },
+              {
+                "name": "graphicsContext",
+                "type": "resource",
+                "liveEntryCount": 13,
+                "clearedEntryCount": 0
+              }
+            ],
+            "liveEntryCount": 116,
+            "clearedEntryCount": 0,
+            "compactionCount": 1,
+            "compactedSlotCount": 8,
+            "faultCount": 0
+          },
+          "fineLayerActive": false,
+          "fineScopeActive": false,
+          "retiredFineOwnerCount": 0,
+          "surfaceTextureOwnerActive": false,
+          "surfaceCurrentTierPx": 0,
+          "surfaceCurrentBackingWidth": 0,
+          "surfaceCurrentBackingHeight": 0,
+          "surfaceRequestedTierPx": 0,
+          "surfaceRetiredLeaseCount": 0,
+          "pendingSurfaceRefreshes": 0,
+          "surfaceVistaGeneration": 1,
+          "surfaceVistaEnvironmentFingerprint": null,
+          "surfaceVistaWorkerActive": false,
+          "surfaceVistaMounted": false,
+          "surfaceVistaCacheEntries": 0,
+          "surfaceVistaCachePixels": 0,
+          "surfaceVistaWorkerStarts": 0,
+          "surfaceVistaResults": 0,
+          "surfaceVistaCacheHits": 0,
+          "surfaceVistaStaleDrops": 0,
+          "surfaceVistaFaults": 0,
+          "surfaceVistaLastBiome": null,
+          "surfaceVistaLastError": null,
+          "pendingSystemRefreshes": 0,
+          "pendingPersistenceWrites": 0,
+          "ringGeometryEntries": 2,
+          "peakRingGeometryEntries": 2,
+          "localCanvasCacheEntries": 2,
+          "peakLocalCanvasCacheEntries": 2,
+          "productRenderTargets": 0,
+          "managedTextureCount": 50,
+          "managedTextureClearedSlots": 0,
+          "managedTexturePixels": 4220930,
+          "sceneTextStyleUpdateListeners": 11,
+          "persistedPagehideCount": 0,
+          "persistedPageshowCount": 0
+        },
+        "viewport": [
+          1440,
+          1000,
+          1
+        ],
+        "inputs": [],
+        "fields": []
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "mag-phone-390x844-dpr2.png",
+      "sha256": "e2830f05c45853598a3a02fc6c9e51114f1055d8d8fa55c26b2594f530f6b0ec"
+    },
+    {
+      "path": "mag-phone-reduced-effects-off.png",
+      "sha256": "28110471a51eb792608e5261a8395189d4ce9253be7ba1e41aff68682652ce94"
+    },
+    {
+      "path": "mag-desktop-1440x1000-dpr1.png",
+      "sha256": "90a2ea18e5a43b0059c689ca69f206a356aacb9b0955121b882ecafba66aa615"
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Diagnostic asc=2/tut=1 plus owned array=1 save replacement on a fresh isolated origin; chapter2 alone grants no stage. Not fresh-player progression proof.",
+    "Headless Chromium viewport emulation, not physical iPhone/Safari or human visual acceptance.",
+    "Static MAG field only; not Slice/Glass certification, broad scene memory qualification or audio verification."
+  ],
+  "origin": "http://127.0.0.1:51621",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  },
+  "pendingEvaluation": null,
+  "pixelControl": {
+    "method": "actual stage; explicit identical screen frame and renderer resolution; ticker stopped; field visibility only",
+    "width": 780,
+    "height": 1688,
+    "changedChannels": 44882,
+    "restoredDifferences": 0
+  },
+  "retired": {
+    "fieldDestroyed": true,
+    "parentNull": true,
+    "arcs": [
+      true,
+      true
+    ],
+    "contexts": [
+      {
+        "destroyed": true,
+        "instructionsNull": true
+      },
+      {
+        "destroyed": true,
+        "instructionsNull": true
+      }
+    ],
+    "resources": {
+      "schema": "cf-v2-scene-resources/v2",
+      "documentToken": "245745df-027f-4cf1-b8c0-5baadb02f1ad",
+      "generation": 7,
+      "mode": "galaxy",
+      "registry": {
+        "schema": "cf-v2-scene-textures/v2",
+        "observationWindow": 0,
+        "scopeCreations": 14,
+        "scopeDisposals": 12,
+        "activeScopeCount": 2,
+        "leaseAcquisitions": 229,
+        "leaseReleases": 158,
+        "activeLeaseCount": 71,
+        "textureCreations": 188,
+        "textureDisposals": 117,
+        "liveTextureCount": 71,
+        "liveCanvasPixels": 7559888,
+        "liveCanvasBytes": 30239552,
+        "peakActiveLeaseCount": 71,
+        "peakLiveTextureCount": 71,
+        "peakLiveCanvasPixels": 7559888,
+        "peakLiveCanvasBytes": 30239552,
+        "lifetimePeakActiveLeaseCount": 71,
+        "lifetimePeakLiveTextureCount": 71,
+        "lifetimePeakLiveCanvasPixels": 7559888,
+        "externalDestroyFaults": 0,
+        "balanced": true,
+        "coherent": true,
+        "liveLeasesByKind": {
+          "scene-canvas": 70,
+          "galaxy-haze": 1,
+          "planet-texture": 0,
+          "ring-texture": 0,
+          "surface-cloud": 0,
+          "star-surface": 0
+        },
+        "liveTexturesByKind": {
+          "scene-canvas": 70,
+          "galaxy-haze": 1,
+          "planet-texture": 0,
+          "ring-texture": 0,
+          "surface-cloud": 0,
+          "star-surface": 0
+        },
+        "activeScopes": [
+          {
+            "label": "scene:7",
+            "leaseCount": 71,
+            "closed": false
+          },
+          {
+            "label": "fine:7",
+            "leaseCount": 0,
+            "closed": false
+          }
+        ]
+      },
+      "managedResources": {
+        "schema": "cf-v2-pixi-managed-resources/v2",
+        "valid": true,
+        "hashCount": 6,
+        "hashes": [
+          {
+            "name": "canvasText",
+            "type": "renderable",
+            "liveEntryCount": 1,
+            "clearedEntryCount": 0
+          },
+          {
+            "name": "graphics",
+            "type": "renderable",
+            "liveEntryCount": 1,
+            "clearedEntryCount": 0
+          },
+          {
+            "name": "glBuffer",
+            "type": "resource",
+            "liveEntryCount": 4,
+            "clearedEntryCount": 0
+          },
+          {
+            "name": "glGeometry",
+            "type": "resource",
+            "liveEntryCount": 2,
+            "clearedEntryCount": 0
+          },
+          {
+            "name": "glTexture",
+            "type": "resource",
+            "liveEntryCount": 80,
+            "clearedEntryCount": 0
+          },
+          {
+            "name": "graphicsContext",
+            "type": "resource",
+            "liveEntryCount": 1,
+            "clearedEntryCount": 0
+          }
+        ],
+        "liveEntryCount": 89,
+        "clearedEntryCount": 0,
+        "compactionCount": 7,
+        "compactedSlotCount": 163,
+        "faultCount": 0
+      },
+      "fineLayerActive": true,
+      "fineScopeActive": true,
+      "retiredFineOwnerCount": 0,
+      "surfaceTextureOwnerActive": false,
+      "surfaceCurrentTierPx": 0,
+      "surfaceCurrentBackingWidth": 0,
+      "surfaceCurrentBackingHeight": 0,
+      "surfaceRequestedTierPx": 0,
+      "surfaceRetiredLeaseCount": 0,
+      "pendingSurfaceRefreshes": 0,
+      "surfaceVistaGeneration": 7,
+      "surfaceVistaEnvironmentFingerprint": null,
+      "surfaceVistaWorkerActive": false,
+      "surfaceVistaMounted": false,
+      "surfaceVistaCacheEntries": 0,
+      "surfaceVistaCachePixels": 0,
+      "surfaceVistaWorkerStarts": 0,
+      "surfaceVistaResults": 0,
+      "surfaceVistaCacheHits": 0,
+      "surfaceVistaStaleDrops": 0,
+      "surfaceVistaFaults": 0,
+      "surfaceVistaLastBiome": null,
+      "surfaceVistaLastError": null,
+      "pendingSystemRefreshes": 0,
+      "pendingPersistenceWrites": 0,
+      "ringGeometryEntries": 0,
+      "peakRingGeometryEntries": 0,
+      "localCanvasCacheEntries": 0,
+      "peakLocalCanvasCacheEntries": 1,
+      "productRenderTargets": 0,
+      "managedTextureCount": 80,
+      "managedTextureClearedSlots": 0,
+      "managedTexturePixels": 9017810,
+      "sceneTextStyleUpdateListeners": 1,
+      "persistedPagehideCount": 0,
+      "persistedPageshowCount": 0
+    }
+  },
+  "endedAt": "2026-09-08T06:00:13.755Z"
+}

@@ -103,7 +103,7 @@ function executableDeclaration<T>(name: string, nextDeclaration: string): T {
     'hasUnnegatedSentenceClaim',
     'V2_DRAFT_BULLET_COUNT',
     `return (${expression});`,
-  )(hasUnnegatedSentenceClaim, 81) as T;
+  )(hasUnnegatedSentenceClaim, 83) as T;
 }
 
 interface GuideSpec {
@@ -383,6 +383,61 @@ describe('sixth Slice red contract repairs', () => {
       liveProgressionContradiction: false,
     });
     const releaseRowsBefore = [...releaseDom.window.document.querySelectorAll('li')].map(row => row.textContent);
+    // Exercise both actual rendered-release oracles, keeping unrelated Guide copy intact.
+    const glassAudioOwner = section(glassSource, '        const developmentDetailCheck = `',
+      '        const developmentDetail = await evalIn(developmentDetailCheck);');
+    const glassAudioCheck = Function('hasUnnegatedSentenceClaim', 'guideReleaseBaseline',
+      `${glassAudioOwner}\nreturn developmentDetailCheck;`)(hasUnnegatedSentenceClaim,
+      { rnSeen: '0', releasePending: null }) as string;
+    const audioRow = [...releaseDom.window.document.querySelectorAll('li')]
+      .find(row => row.textContent?.includes('THE FRONTIER SPEAKS'));
+    expect(audioRow).toBeDefined();
+    if (!audioRow) throw new Error('Missing rendered pilot Charter audio release row');
+    const audioHtml = audioRow.innerHTML, audioText = audioRow.textContent!;
+    const audioOmissions = [
+      'In the optional audiovisual preview, ',
+      'after the acceptance succeeds',
+      ', including when existing progress completes it immediately',
+      'explicit pilot-sound choice',
+      'duplicate or failed acceptances stay quiet',
+      'Other sound mappings and creature actions remain future work',
+    ];
+    const audioOverclaims = [
+      'Starter Charter acceptance plays a confirmation before the acceptance succeeds.',
+      'Starter Charter acceptance plays a confirmation without your explicit pilot-sound choice.',
+      'Duplicate acceptances play a confirmation.',
+      'Failed acceptances play a confirmation.',
+      'Other sound mappings and creature actions are now available.',
+    ];
+    for (const [label, expression, verdict] of [
+      ['Slice', releaseCheck, 'complete'], ['Glass', glassAudioCheck, 'ok'],
+    ] as const) {
+      const sample = () => releaseDom.window.eval(expression) as Record<string, unknown>;
+      expect(sample(), `${label} audio baseline`).toMatchObject({
+        [verdict]: true, audioContract: true, audioContradiction: false, bulletCount: 83,
+      });
+      for (const omitted of audioOmissions) {
+        expect(audioText.split(omitted), `${label}: unique omission ${omitted}`).toHaveLength(2);
+        try {
+          audioRow.textContent = audioText.replace(omitted, 'required audio clause omitted');
+          expect(sample(), `${label}: missing ${omitted}`).toMatchObject({
+            [verdict]: false, audioContract: false, audioContradiction: false, bulletCount: 83,
+          });
+        } finally { audioRow.innerHTML = audioHtml; }
+        expect(sample(), `${label}: omission restored`).toMatchObject({ [verdict]: true, audioContract: true });
+      }
+      for (const claim of audioOverclaims) {
+        try {
+          audioRow.textContent = `${audioText} ${claim}`;
+          expect(sample(), `${label}: ${claim}`).toMatchObject({
+            [verdict]: false, audioContract: false, audioContradiction: true, bulletCount: 83,
+          });
+        } finally { audioRow.innerHTML = audioHtml; }
+        expect(sample(), `${label}: overclaim restored`).toMatchObject({ [verdict]: true, audioContract: true });
+      }
+      expect(audioRow.innerHTML).toBe(audioHtml);
+      expect([...releaseDom.window.document.querySelectorAll('li')].map(row => row.textContent)).toEqual(releaseRowsBefore);
+    }
     for (const [current, stale] of [
       ['Phones keep five icon-only scene buttons above four compact utility icons', 'five labelled controls in one centered desktop deck'],
       ['Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge',
@@ -398,10 +453,10 @@ describe('sixth Slice red contract repairs', () => {
       try {
         row.textContent = prior!.replace(current, stale);
         expect(releaseDom.window.eval(releaseCheck)).toMatchObject({ complete: false, populated: true,
-          canonical: true, bulletCount: 81, liveProgressionContract: true, liveProgressionContradiction: false });
+          canonical: true, bulletCount: 83, liveProgressionContract: true, liveProgressionContradiction: false });
       } finally { row.textContent = prior; }
       expect(releaseDom.window.eval(releaseCheck)).toMatchObject({ complete: true, populated: true,
-        canonical: true, bulletCount: 81, liveProgressionContract: true, liveProgressionContradiction: false });
+        canonical: true, bulletCount: 83, liveProgressionContract: true, liveProgressionContradiction: false });
       expect([...releaseDom.window.document.querySelectorAll('li')].map(item => item.textContent)).toEqual(releaseRowsBefore);
     }
     const currentGuideCopy = catalogue.flatMap((category) => category.topics).map((topic) => {
@@ -944,8 +999,8 @@ describe('sixth Slice red contract repairs', () => {
     expect(cf1).not.toContain("result.mode==='system'&&result.title==='Blue Earth'?result:null");
   });
 
-  it('keeps a fixed 81-row Guide oracle with five independent population controls', () => {
-    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 81;');
+  it('keeps a fixed 83-row Guide oracle with five independent population controls', () => {
+    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 83;');
     const owner = section(
       sliceSource,
       '  const releaseDraftCheck = `',
@@ -988,10 +1043,10 @@ describe('sixth Slice red contract repairs', () => {
     const glassMissingBulletCount = Number(
       glassSource.match(/inventory\?\.bulletCount===(\d+)/)?.[1],
     );
-    expect(glassExpectedBulletCount).toBe(81);
-    expect(glassMissingBulletCount).toBe(80);
+    expect(glassExpectedBulletCount).toBe(83);
+    expect(glassMissingBulletCount).toBe(82);
     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
-    expect(glassSource).toContain('81-outcome development inventory');
+    expect(glassSource).toContain('83-outcome development inventory');
     expect(glassSource).not.toContain('55-outcome development inventory');
   });
 

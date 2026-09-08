@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "magnetar-root-validation-20260908",
+    "--",
+    "node",
+    "tools/validate.js"
+  ],
+  "exitCode": 0,
+  "seconds": 12.214
+}

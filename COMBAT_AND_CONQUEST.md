@@ -1,5 +1,34 @@
 # Celestial Frontier — Combat & Conquest
 
+## Canonical Explorer Chronicle repair — 2026-09-08
+
+A native fresh-Earth challenge exposed a pre-existing presentation failure: its durable result
+was verified, but audio cue projection rejected Frontier Resolve's missing creature theme and
+closed the Chronicle before it could appear. The audio projection now recognizes only the exact
+canonical player ability and explorer palette, deriving presentation metadata from its existing
+id/name/color. Original combat fields remain unchanged; malformed creature metadata still fails.
+The regression uses the actual V2 player-stat projection through a registered duel and Chronicle,
+with19 malformed ability/role/palette controls. Full native failure and caught-exception evidence
+is retained in `audits/AV_PLAYABLE_IMPLEMENTATION_20260907/`; current verification is in its README.
+
+## Native battle presentation — matches code as of 2026-09-07
+
+After exact durable, non-converging combat publication, Main starts the optional
+`combat-battle-scene.ts` stage inside the existing Combat Chronicle. It uses the registered
+settlement, cue plan, current generation and exact visible counterpart; no second combat or
+replay clock is created. The champion's owned fauna genome and the encounter's actual defender
+battle genome feed at most two existing thumbnail leases. A player champion uses its nameplate.
+
+The Chronicle's real damage/dodge/stun cues drive finite 200ms whole-portrait lunge/reaction
+translations. Combined critical/ability facts do not restart the same event. Effects Off and
+reduced motion retain static outcome copy; its visual caption is AT-excluded and the existing
+log remains the announcement owner. The owned style inherits theme/text preferences. Close,
+hide, replacement and disposal cancel motion and release art; Skip keeps the exact static result
+and portraits until Close. HP, transcript, rewards, audio and deterministic settlement retain
+their existing owners. No anatomical animation or biome locomotion is implemented by this stage.
+Native battle/human acceptance and U2 remain pending; the signed `837db4a` U2 attempt stopped in
+static test-source checking after 3,494 passing tests, before any browser stage.
+
 > **2026-08-29 current local Prime/Titan and Frontier-ending closure:** the encounter owner uses
 > the exact nine-Signature registry—Earth/`stone`, Fire/`flame`, Air/`sky`, Stellar/`star`,
 > Water/`ocean`, Electric/`mind`, Poison/`life`, Void and Prism. An unclaimed Elemental Titan can

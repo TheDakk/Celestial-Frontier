@@ -1,8 +1,115 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+## Layered Earth riverbank — matches local code as of 2026-09-08
+
+`?livingvista=1` admits only the complete canonical Earth request, environment/profile and
+ordered 19-genome roster. It pairs a painted rainy riverbank with a separate transparent layer
+of six existing named residents: Civet, Platypus, Frog, Persimmon, Cranberry and Devil’s Club.
+An explicit temperate-profile check requires their fauna families and plant forms. Current
+named Earth art owners preserve anatomy and colors; original genomes and encounters do not change.
+The documented global D-9e generation-filter gap remains a separate unresolved issue.
+
+Both 960×430 layers publish together; pending, failed and option-off routes retain the original
+opaque vista. The pair fits uncropped between measured upper chrome and the Biosphere strip with12px
+clearance. Existing ResizeObserver boundaries republish both sprites together, and completion of
+the final landing camera impulse restores the resting layout after canvas translation. Only successful
+Earth painting hides its own decorative globe and cloud deck; native controls/camera retain ownership. This option defers to `planetturn=1` and
+`avpilot=1`. The background is hash/dimension checked; bounded workers, generation/epoch fences
+and retryable scene leases govern publication and cleanup. No layered CPU cache is added.
+Two full RGBA canvases use 3,302,400 bytes before temporary painter, decode and GPU allocations.
+This is static, relative scene placement, not articulated animation or a claim that the existing
+creature painters meet the approved rich-detail target. No runtime AI or player authoring installs.
+[Implementation, mapping and verification limits](../../audits/AV_EARTH_LAYERED_SCENE_20260908/README.md) own acceptance results.
+
+## Painted Mars composition — matches local code as of 2026-09-08
+
+After exact painted-Mars success or a cache hit, the native scene hides only its own decorative
+globe Sprite and centers the complete uncropped panorama. The world container, camera and native
+Survey/Leave controls retain ownership. Pending/default/failed-image paths keep the old globe;
+Earth's finite-turn fallback is untouched. The existing image and bounded resources are unchanged.
+
+216 focused tests, all3TS/art/static/root and fresh phone/desktop/default/blocked-image native
+checks passed. Actual forced-globe paint was rejected with exact restoration; control rectangles
+and hit results stayed unchanged. Survey/policy/cache/exit checks passed. Both native observer
+setup failures remain retained. The phone keeps a full-width band with large starfield gaps;
+no immersive/animated scene or physical-device/human acceptance is implied. The new local preview
+is http://127.0.0.1:56749/?paintedvista=1, dirty-local-only/publishable:false; package/boot/Guide PASS.
+[Composition audit](../../audits/AV_PAINTED_MARS_COMPOSITION_20260908/README.md) owns the exact evidence and prior failure limits. End this bounded
+Mars layout pass; next advance canonical creature/inhabited scene work within the painted direction.
+
+
+## Painted Mars vista — matches local code as of 2026-09-08
+
+`?paintedvista=1` selects one static painted panorama for the complete barren canonical Mars
+request (134#3 in Sol), with exact environment/profile/options and variant cache identity.
+The original dune artwork follows Nick's approved biome direction; 960×430 WebP, 127,088 bytes.
+Hash/dimension checks, stale-work cancellation, existing scene texture ownership and one-entry
+CPU canvas caching provide canonical-worker fallback on current failure. No Earth composite,
+generation, creature identity or control placement is changed. This is not animated scenery.
+
+Final97 focused tests, all3TS/art/static/root checks, fixed phone/desktop native paint/restoration
+and native exits passed. Blocking only the exact image request produced visible canonical fallback
+without a retry. Reduced/EffectsOff keep the static art. Full admission, physical-device and human
+art acceptance remain open; the older globe and panorama composition are visibly unfinished.
+[Current preview](http://127.0.0.1:56099/?paintedvista=1) is local-only/publishable:false, with package
+and native boot/Guide checks passed. [Evidence and limits](../../audits/AV_PAINTED_MARS_20260908/README.md).
+
+
 Execution priority2026-09-07: Nick requested playable graphics/audio progress before exhaustive
 U3/U4 polish; see ROADMAP.md and audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md.
-The U2 preparation below remains verified/staged but unsigned; no native or audiovisual PASS is implied.
+The U2 correction was signed as837db4a; its static run stopped on one unused test binding
+after3494 tests passed (1 skip), before any browser stage. That binding is corrected.
+The current audiovisual batch implements finite native Earth/Scout landing and audio, canonical
+Chronicle battle motion, and a repair for actual Explorer Frontier Resolve projection. Read
+`../../audits/AV_PLAYABLE_IMPLEMENTATION_20260907/README.md` for exact checks/captures/limitations.
+U2 admission, anatomical animation and human visual/listening/device acceptance remain open.
+
+## Canonical Earth turn/material study — matches local code as of 2026-09-08
+
+`?planetturn=1` admits the exact canonical Earth surface on WebGL: one unlit768×384 canonical
+atlas and a finite18-second/0.22-radian surface yaw under fixed lighting and separate clouds.
+Add `&planetmaterial=1` for bounded analytic grain/relief, ocean sheen and an inner atmosphere
+rim. One shared application program/group resets material per accepted view; per-scene owners
+retire at exit. Reduced Motion/Effects Off use the standard globe. Use either flag without
+`avpilot`, whose separate Earth comparison can hide the globe.
+
+123 focused tests, static/art/root checks and fresh fixed phone/desktop material/retirement
+diagnostics passed. This remains a subtle technical proof below the approved painted finish,
+not full rotation, physical-phone qualification or admission. Prior combined resize/navigation
+failure and full certificate blockers remain open. Exact results and next visual priority:
+[material audit](../../audits/AV_EARTH_SURFACE_MATERIAL_20260908/README.md).
+
+## Starter Charter audio — matches code as of 2026-09-08
+
+The optional audiovisual pilot maps its existing700ms confirmation to successful native Starter
+Charter acceptance, including immediate completion. It captures the shared-context activation
+before persistence and consumes it once after exact publication/barrier release on the same route.
+Pilot Play, Sound/Effects and lifecycle guards apply. Duplicate/refused/failed paths stay silent.
+Corrected develop331files/3727tests/1skip and scoped native audio checks PASS; original observer
+failures remain in `../../audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/README.md`.
+The separate 2026-09-08 sticky-title paint correction gives `.panel .sheet-header` an opaque
+`#0a101e` background and a `::after` underlay inset `-14px -58px 0 -14px`, with `z-index:-1`
+and `pointer-events:none`; forced colors uses `Canvas`. Existing title/Close siblings, geometry,
+scroll/padding, focus and Survey remain unchanged. Scoped native phone/desktop verification and title inspection PASS in the
+[Charters header/preview audit](../../audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md).
+No new media or hosted update.
+
+## Protostar birth disk — matches code as of 2026-09-08
+
+An explicit PROTO system branch now displays the original tilted dusty disk and warm core.
+`apps/game/src/system-protostar.ts` bakes one420×240 canvas, mounted at140×80 world units through
+existing sceneTexture ownership; no ordinary stellar close-up surface is added for protostars.
+Static identity remains under Reduced Motion/Effects Off. Current source/check evidence:
+`../../audits/AV_PROTOSTAR_DISK_20260908/`. Broader stellar art and human acceptance remain open.
+
+## Magnetar system fields — matches code as of 2026-09-08
+
+The live system renderer restores the canonical MAG-only pair of static blue magnetic-field
+ellipses between the existing beams and white-hot core. NS and other stars remain unchanged.
+`apps/game/src/system-star-field.ts` owns the geometry; normal scene teardown destroys both
+contexts. Reduced Motion and Effects Off retain this static stellar identity. No texture,
+seeded content, save or gameplay changes. Current verification and retained first failures:
+`../../audits/AV_MAGNETAR_FIELD_20260908/`.
 
 ## U1 shell / U2 sheet checkpoint — matches code as of 2026-09-06
 
@@ -27,8 +134,8 @@ injected trail. Seven named fixture/restoration/cleanup boundaries preserve the 
 failed cleanup cannot authorize dependent geometry. Thresholds and product bytes are unchanged.
 Claude's full response and original unapplied draft remain immutable. Independent source review
 CLEAR;99 focused tests, all3 TypeScript programs and root validate/50 fingerprints PASS after two
-retained test-preparation corrections. Fresh canonical native attempt is pending on committed
-source. Read ROADMAP.md and audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md for current status;
+retained test-preparation corrections. The signed837db4a attempt stopped in static verification on the test binding above; no native
+U2 stage ran. Read ROADMAP.md and audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md for current status;
 audits/UI_U2_NEXT_SESSION_20260906.md preserves the unapplied U3/U4 preparation map.
 
 The current bounded correction measures every visible portrait sheet's header/insets plus44px
@@ -41,12 +148,16 @@ space, tests their actual text preferences, and requires exact restoration. Afte
 remaining clipping is valid only when independent geometry still proves pressure. Earlier generic
 preference and native target-size/clipping checks remain strict. Focused84 checks, all3 TypeScript
 programs, root validate, one evidence build and101 release/budget/evidence checks PASS. Producer
-is aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe; measurement/ceilings are unchanged.
-The existing81-bullet draft has orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
-The3a61352 native result above owns current status; these checks are not a fresh Compendium certificate.
+for that sheet-only preparation was aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe.
+Current audiovisual producer identity is recorded in the implementation manifest; measurement
+4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 and ceilings are unchanged.
+The development draft has83 ordered bullets; the current digest is recorded in
+`../../audits/AV_PROTOSTAR_DISK_20260908/`. The previous landing/battle
+checkpoint retains its earlier354381f4 digest in its own immutable audit.
+These scoped results are not a fresh Compendium certificate.
 
-All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
-Phase2, pilot or hosted closure is claimed.
+All prior failures remain retained and both older unknown causes remain OPEN. No U2–U4
+completion, physical UAT, formal audiovisual acceptance or hosted closure is claimed.
 Follow the [U2 audit](../../audits/UI_U2_SHEETS_20260906.md),
 [program](../UI_PARITY_PROGRAM_U1_U4.md) and [live handoff](../../ROADMAP.md).
 
@@ -79,8 +190,8 @@ Both the unattributed navigation
 and full normal-review portrait-restoration blockers stay OPEN; no full normal-review retry,
 Slice, phone Glass or full chain accompanies this bounded correction.
 The accepted brief and amendments are in
-`../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved; the U2–U4
-execution authorization does not authorize Phase2 or hosted actions.
+`../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved. Nick subsequently authorized the24-hour local
+audiovisual implementation campaign above; this grants no hosted action or unseen-art acceptance.
 
 The phone-only restoration diagnostic PASS at signed source
 `381ddf59858bd863640703e83d2d98beeedf59fa` leaves accepted product source unchanged. It preserves

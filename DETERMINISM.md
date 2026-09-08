@@ -1,5 +1,22 @@
 # Celestial Frontier — Determinism Discipline
 
+## Exact Earth visual composition — matches local code as of 2026-09-08
+
+The optional layered riverbank binds the complete canonical request, world/profile digest,
+ecology epoch and all19 ordered original genomes. Six selected named residents are checked
+against the actual temperate fauna-family/flora-form lists. No world/encounter generation,
+SessionRNG, seed, genome, lineage, save or share code changes. D-9e's global dead biome filter
+remains decision-gated. Raw Earth habitat/loco genes do not establish named-species ecology.
+
+`overridecheck.mjs` retains canonical catalog/route/precedence accounting and admits only the
+new exact `paintNamedResident` body, seven direct import owners and four specific AST table
+reads. Its body seal is deliberately source-sensitive; broader reads remain forbidden.
+EL0–EL13 add accepted/restored and rejected body/import/extra-read controls without removing
+older controls. The separate exact snapshot-function seal admits only its four Object operations
+for prototype identity and detached output; EP0–EP10 reject altered admission/input mutation or
+escaping operations. All134 route controls passed on restored source; global permissions stay unchanged. Tests and native proof have distinct scopes; consult the
+[batch review](audits/AV_EARTH_LAYERED_SCENE_20260908/README.md) for actual execution status.
+
 > **2026-08-29 current local commit-clock correction (supersedes narrower same-date descriptions
 > below where they differ):** deterministic product derivation still receives no wall clock and
 > spends no additional gameplay RNG. The transaction owner now detaches the content registry once,

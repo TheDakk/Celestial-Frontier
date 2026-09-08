@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "source": "/Users/nick/.codex/generated_images/01a0778a-a9bf-7732-ac2b-a44cb106d4ad/exec-2922ec24-e7f5-48c3-8f41-7793c416e7b4.png",
+  "copy": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_20260908/mars-dunesea-source.png",
+  "sourceSha256": "79bcc721c4ce25d2503ec7dc146560dbc12a9a6a45cd76e57c9e4edb1d53df08",
+  "promptSha256": "f8d424152686415bc5b0e21758c0bd061a7a74dcb5d5f4b4e4b20e1619aebd22",
+  "reference": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/biome-reference.png",
+  "intent": "Original image generated from approved style reference, not an edit of its composition",
+  "observed": "Opaque wide dune panorama with two small moons, no visible residents/water/settlement; root inspected generated output",
+  "humanAssetAcceptance": false
+}

@@ -1,0 +1,18 @@
+{
+  "startedAt": "2026-09-08T11:18:56.810983+00:00",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "creature-charm-saved-motion",
+    "--",
+    "/Applications/Blender.app/Contents/MacOS/Blender",
+    "--background",
+    "--factory-startup",
+    "--python",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CREATURE_CHARM_STUDY_20260908/audit_motion.py"
+  ],
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 47.373
+}

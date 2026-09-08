@@ -1,21 +1,33 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
+## Canonical Explorer Chronicle repair — 2026-09-08
+
+A native fresh-Earth challenge exposed a pre-existing presentation failure: its durable result
+was verified, but audio cue projection rejected Frontier Resolve's missing creature theme and
+closed the Chronicle before it could appear. The audio projection now recognizes only the exact
+canonical player ability and explorer palette, deriving presentation metadata from its existing
+id/name/color. Original combat fields remain unchanged; malformed creature metadata still fails.
+The regression uses the actual V2 player-stat projection through a registered duel and Chronicle,
+with19 malformed ability/role/palette controls. Full native failure and caught-exception evidence
+is retained in `audits/AV_PLAYABLE_IMPLEMENTATION_20260907/`; current verification is in its README.
+
 ## Playable audiovisual priority — Nick, 2026-09-07
 
 Nick requested graphics/audio implementation beyond U2–U4, incremental fixes and a development
 playtest candidate, with documented review for Claude Thursday2026-09-10. Local work can proceed
 without waiting for that review. The existing campaign's graphics/audio-first sequence owns the
 priority; exhaustive UI polish is deferred while play-blocking defects remain actionable.
-The first proposed slice joins prepared Earth/Scout visuals and the authored landing cue to an
-actual successfully rendered native landing, with strict gesture/outcome/lifecycle ownership.
-It is not implemented yet. Follow ROADMAP.md and
+The local implementation now joins the prepared Earth/Scout visuals and landing cue to a verified
+native landing, and adds finite attack/reaction translations to the real Combat Chronicle.
+These are presentation changes over existing durable outcomes; anatomical animation is still
+incomplete. U2 and native audiovisual acceptance remain pending. Follow ROADMAP.md and
  audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md for scope and evidence.
 Human art/listening/device acceptance remains open; no unseen direction is declared accepted.
 No exact hosted/publication authority exists. Earlier dated scope stops below remain history and
 are superseded only for this newly requested local implementation, not verification claims.
 
 
-## Audiovisual pilot implementation — 2026-09-05 local
+## Audiovisual pilot implementation — matches code as of 2026-09-08 local
 
 Nick authorized B–D production under the integrated-pilot approval stop. Develop `c1791e2`
 (PR #41 included) is the merged foundation. `audiovisual-pilot.html` is the isolated direction,
@@ -39,8 +51,33 @@ existing mute/hide/route/teardown guards. The pilot's separate decoded-data cach
 cache figure. No second audio context is created inside the real game. Legacy sting compatibility
 ownership is unchanged. Music/bed return to silence after 24 seconds; no automatic resume loop.
 After explicit pilot activation, existing Shipyard/Inventory/Compendium navigation clicks may
-add a short UI cue. Ship/combat/settlement sounds are listening candidates; they are not yet
-mapped to durable game outcomes. Canonical creature synthesis stays unchanged.
+add a short UI cue. The existing 1.4-second Scout landing recording now follows one trusted Land
+activation only after exact durable publication and the matching Earth vista/image are ready.
+The opt-in visual arrival lasts 1.8 seconds and stays static under reduced motion; Effects Off,
+Training, wave-off/refusal, convergence, stale route/scene, hide and disposal suppress it.
+
+`armNativePilotLandingGesture` captures the existing shared-context activation before persistence,
+retires old scene voices without closing that context, and binds one origin/destination handoff.
+It also advances the existing gesture serial: an already-consumed ecology/expression claim
+that later resolves or rejects its activation cannot start a stale voice or mute the new context.
+Current-generation activation faults retain their existing silence/cleanup behavior.
+Only the observed destination can consume it; rejected or stale tickets stay silent, with no
+post-await reactivation. Pilot listening opt-in and Master Sound still govern playback.
+The existing `cf-pilot-ui-settlement` recording now maps to successful Starter Charter acceptance
+(2026-09-08), including immediate completion from qualifying existing progress. Main's
+`acceptStarterCharterWithPilot` captures `beginSettlement` during the original trusted Accept
+event, before awaiting persistence. The ticket retains the shared-context activation and exact
+current route; it consumes once only when `runStarterCharterAccept(): Promise<boolean>` returns
+true after publication, ceremonies, final Charters refresh and barrier release on the live revision.
+Duplicate/current acceptance, refusal, convergence and publication failure stay silent. Pilot
+listening opt-in, Master Sound, Effects, enhanced presentation and visibility/route/disposal remain required;
+there is no post-await activation, new media or reward change. One existing 700ms UI cue uses
+the current voice/cache owners. Corrected browser-free develop and scoped native checks PASS;
+retained observer failures and the original scrolled-header finding (corrected separately in `audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md`) are in the
+[Starter Charter audio audit](audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/README.md).
+Other unmapped authored recordings remain listening candidates. The battle stage uses the
+existing registered Chronicle audio cues and clock; it adds no sound or combat simulation.
+Canonical creature synthesis stays unchanged; human listening/device acceptance remains open.
 
 Eight rights rows, real file/header/hash checks and sanitized processing/rights evidence now
 replace the empty audio intake. Human matched-level A/B, anatomy/art direction, comfort and
@@ -55,7 +92,7 @@ for future authorized renders but does not establish a true headless or dialog-f
 No further REAPER render is needed for this checkpoint. No Phase 2/chrome migration, hosted
 attempt, PR, label, merge, purchase or release is authorized.
 
-**Current runtime reference — matches code as of 2026-09-05 local.** Finite typed creature, biosphere
+**Current runtime reference — matches code as of 2026-09-07 local.** Finite typed creature, biosphere
 and combat voices have a monotonic maximum lifetime as a fallback for a missing browser `onended`
 event. The original natural/manual/steal/mute/hide/dispose cleanup remains the owner; this does not
 change sound identity, envelopes, game clocks or rewards. Detailed current behavior is in §0.3;

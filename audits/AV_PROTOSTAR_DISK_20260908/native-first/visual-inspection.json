@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "inspectedAt": "2026-09-08T06:43:21.396925+00:00",
+  "screens": [
+    "proto-phone-overview.png",
+    "proto-phone-390x844-dpr2.png",
+    "proto-phone-reduced-effects-off.png",
+    "proto-desktop-1440x1000-dpr1.png"
+  ],
+  "finding": "Tilted brown dust disk and warm orange core visibly distinguish PROTO at overview and close zoom. Central scene stays clear of current phone/desktop controls; existing canonical comet remains visible. Deep desktop zoom remains the warm core/disk, with no ordinary stellar surface. Gradients are intentionally soft; no new material/detail or Nick artistic acceptance is claimed.",
+  "fixturePreferences": "Canonical veteran display preferences retained; this does not introduce new default typography."
+}

@@ -1201,7 +1201,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 81;
+const V2_DRAFT_BULLET_COUNT = 83;
 const GUIDE_RELEASE_TAIL_TEXT = '🌐 DEVELOPMENT PUBLISHING STAYS PARKED: The owner-authorized, labelled PR battery can build, browser-check, and archive an exact-commit v2.0 preview package with full Guide identity, origin refusal, and byte inventory; it does not publish. The separate branch-site workflow remains manually parked, and production remains the v1.8.9 main-branch site.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -6941,8 +6941,8 @@ try {
     sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
-    count: 81,
-    sha256: '3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2',
+    count: 83,
+    sha256: '218f02b5130fe78a6fcf76e898b6372b8761b4ef4bb4590137668920980f0793',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -8181,7 +8181,10 @@ try {
         ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:grants?|awards?)[^.!?]{0,48}(?:discovery|reward)/i)
         ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:writes?|changes?)[^.!?]{0,32}(?:the )?save/i)
         ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i)
-        ||unnegated(text,/\\bcombat sound remains (?:future work|unavailable)/i),
+        ||unnegated(text,/\\bcombat sound remains (?:future work|unavailable)/i)
+        ||unnegated(frontierAudioText,/(?:Starter Charter|Charter acceptance)[^.!?]{0,96}(?:plays?|sounds?)[^.!?]{0,96}(?:before (?:the )?acceptance succeeds|without (?:your )?(?:explicit )?pilot-sound choice)/i)
+        ||unnegated(frontierAudioText,/(?:duplicate|failed) acceptances[^.!?]{0,48}(?:play|sound|ring)/i)
+        ||unnegated(frontierAudioText,/Other sound mappings and creature actions[^.!?]{0,48}(?:are|remain) (?:now )?(?:available|live|complete)/i),
       audioContract=frontierAudioHeading==='New Features & Systems'
         &&creatureListenHeading==='Gameplay'&&biosphereListenHeading==='Gameplay'
         &&frontierAudioText.includes('one deterministic runtime across a verified durable wild-fauna Tame, one exact durable nonconverging Feed commit, and an explorer-requested call from one exact owned-fauna detail')
@@ -8194,7 +8197,9 @@ try {
         &&frontierAudioText.includes('Guardian or Titan entrance, phase, victory, and defeat motifs')
         &&frontierAudioText.includes('at most two combat voices overlap')
         &&frontierAudioText.includes('master Sound governs them, Creature voices does not')
-        &&frontierAudioText.includes('Authored ambience, music, recorded assets, and other creature actions remain future work')
+        &&frontierAudioText.includes('In the optional audiovisual preview, accepting a Starter Charter now plays a short confirmation after the acceptance succeeds, including when existing progress completes it immediately')
+        &&frontierAudioText.includes('It follows your explicit pilot-sound choice; duplicate or failed acceptances stay quiet')
+        &&frontierAudioText.includes('Other sound mappings and creature actions remain future work')
         &&creatureListenText.includes('Open a real owned-fauna Compendium detail and choose Listen on an exact companion to hear its stable deterministic call')
         &&creatureListenText.includes('Browsing, filtering, focusing, and returning through the Compendium never auto-play it')
         &&biosphereListenText.includes('pre-landing Survey card and landed Planetside both offer Listen to biosphere')

@@ -1,0 +1,281 @@
+{
+  "schema": "cf-magnetar-field-checkpoint/v1",
+  "createdAt": "2026-09-08T06:02:05.375964+00:00",
+  "parentCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "branch": "openai/mac",
+  "sourceState": "dirty-local-only",
+  "signedCommitPending": true,
+  "publishable": false,
+  "browserFreeDevelop": {
+    "status": "PASS",
+    "files": 329,
+    "testsPassed": 3646,
+    "testsSkipped": 1,
+    "typescriptPrograms": 3
+  },
+  "rootValidation": {
+    "status": "PASS",
+    "renderedSpecies": 1010,
+    "unchangedFingerprints": 50
+  },
+  "nativeDiagnostics": [
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/native-first/review.json",
+      "status": "FAIL"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/native-owned-array/review.json",
+      "status": "PASS"
+    }
+  ],
+  "certification": false,
+  "humanAcceptance": false,
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/system-star-field.ts",
+      "bytes": 743,
+      "sha256": "d48b57b151048a7858d8ce1b22ed6d2c65c4b5f354c75ee58fb88982deb96829"
+    },
+    {
+      "path": "port/v2/apps/game/src/system-star-field.test.ts",
+      "bytes": 4631,
+      "sha256": "c4d0a5ef480e1e8992242e6e98a99921c5a0990ab11e0b2e7d72c9cfe5da5bdc"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 832614,
+      "sha256": "3dcc56ea81f1555052dfa4633b9f6d9aaf66fb0f0adaa999caa8af30b98b4e5e"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 156822,
+      "sha256": "299f17ae77f8e22867bbce618b3760e462a8585eb9f1706a0cf31d78512753ee"
+    },
+    {
+      "path": "port/v2/budgets/compendium-memory-v1.json",
+      "bytes": 155320,
+      "sha256": "96549ae25a6b280fc8790667bd10bb031c0061ed3f8eea6642b71d9d726e916f"
+    },
+    {
+      "path": "port/v2/tests/compendium-budget.test.ts",
+      "bytes": 146461,
+      "sha256": "c7fd7f5012fa3073a0b7736d9bcb2185c39144923dc9b046acdb740c81011d5b"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "bytes": 1889328,
+      "sha256": "ea4404ddfcd212306933919128212331cd03947acb9406b3e25096f160f62420"
+    },
+    {
+      "path": "port/v2/tsconfig.json",
+      "bytes": 329,
+      "sha256": "d345415ed7ce8ee346b346161c75a2f34db48ccd604ddb77b9cc949f1e56d291"
+    },
+    {
+      "path": "port/v2/apps/game/tsconfig.json",
+      "bytes": 509,
+      "sha256": "f67ed5604d17ef604f4460c2195a88da847a50bc6020d53f5c70de4da0e6fc65"
+    },
+    {
+      "path": "port/v2/package.json",
+      "bytes": 3088,
+      "sha256": "cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7"
+    }
+  ],
+  "references": [
+    {
+      "path": "ART_DIRECTION.md",
+      "bytes": 122522,
+      "sha256": "9475b0a7a5c291ba6ad77126f66c2af473ac9bd7fbefed7e4a17a26902f56757"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 454801,
+      "sha256": "61379fd421a3662e7225fb406107429ad4c67c9431aabbd119a609ba6fa5dc77"
+    },
+    {
+      "path": "AAA_COVERAGE_LEDGER.md",
+      "bytes": 4991,
+      "sha256": "088b1f72e9730d1878325fd739ef3a54d015a8117e3e053da3fc5c4707a780f9"
+    },
+    {
+      "path": "AAA_GAP_AUDIT.md",
+      "bytes": 3894,
+      "sha256": "31a19f65165932ade8e48c9f53793384254fbab655c02e9e657a84d488ed5801"
+    },
+    {
+      "path": "port/AAA_AUDIOVISUAL_CAMPAIGN.md",
+      "bytes": 68227,
+      "sha256": "c42701244da611c74c7accdb58fe4bd5729fea1cbc03cd98c4ed71e9bc8317d1"
+    },
+    {
+      "path": "port/v2/README.md",
+      "bytes": 431427,
+      "sha256": "c92785e43e89c847e23795244dffbe31d0d7109126ebf2b8e14448bcb3163346"
+    },
+    {
+      "path": "audits/AV_24H_CAMPAIGN_20260907.md",
+      "bytes": 11958,
+      "sha256": "2cc5a5790c551a8558e88372220602b541ace2af6e70a518cc990a56a0710d0e"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/README.md",
+      "bytes": 5534,
+      "sha256": "4f96dd2671e2c7300fdc6106619fa10b482b63e75bb023d7ba77df9d901f9644"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/cf-mag-draft-authority-20260908.json",
+      "bytes": 180,
+      "sha256": "947f9f4ffb12d6cc09b2a5c4c31e62c80a70699cb053bd0ccfcc6b61963d8d63"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/cf-mag-draft-pin-20260908.mjs",
+      "bytes": 1873,
+      "sha256": "9289a11f36a7194c48d683c8e7e9a9ef04a6f49c4a374b14cb0558b9771bb88e"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/cf-mag-preparation-20260908.py",
+      "bytes": 1103,
+      "sha256": "35dc4c5075f1ab702babf147df61a20e7c10e781c377008b1009b561faffcd72"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/cf-mag-producer-20260908.json",
+      "bytes": 6055,
+      "sha256": "a59658bbf3f461284d4a2e505019967bc91596da006f7761828ab0cfad227470"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/cf-mag-producer-20260908.mjs",
+      "bytes": 636,
+      "sha256": "753c6f2d3dea81348481f3fa8661c513fa56c23b88320b26d61a9bacaa9a9506"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/cf-mag-refresh-producer-20260908.mjs",
+      "bytes": 2335,
+      "sha256": "67c127b7c90202ce4faa3485e558b2e472069280117506248c1e22c42ca086ac"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/cf-mag-refreshed-producer-20260908.json",
+      "bytes": 1230,
+      "sha256": "375814c1ff6baa1748af431833f9100b2d382e18c7831e298957d2e7f82e4caa"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/develop-profile-app-owner.json",
+      "bytes": 510,
+      "sha256": "9582441fde557f519796dc81f72fee05e51f685382d505ad09aaffe029364b23"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/develop-profile-app-owner.log",
+      "bytes": 6664,
+      "sha256": "e1f6186176dbbdffa59608f87f61eaa0c34dcd8b3a0e3fdd41c96cdd35efa8dc"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/develop-profile-corrected.json",
+      "bytes": 479,
+      "sha256": "e9dc82b3573e1c6f51241c2287a446d45eb1df429adfa24e01a030768b7e097a"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/develop-profile-corrected.log",
+      "bytes": 36809,
+      "sha256": "035c576857c5efdb11676fb1426445685383382b733e1aa8becd3077021b7b87"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/develop-profile.log",
+      "bytes": 788,
+      "sha256": "ade4c043d14521d26f2db1f298a6619da18847c6d510c02b9eb513a0609de0ee"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/draft-pin.log",
+      "bytes": 65,
+      "sha256": "72f1f473f4f52a7cdc89d6d2b807751d141ee0a5ad32988bdb4e51112e6a4da6"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/initial-root-owner/ownership-correction.json",
+      "bytes": 1898,
+      "sha256": "7f1d92020c990f649405d01c7d32e1ad9896e102f0e0de03cf062ef7fa2bf70c"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/initial-root-owner/system-star-field.test.ts.txt",
+      "bytes": 4646,
+      "sha256": "9771bf04c8b6c90519d26f8148c8fa9bdea4d7f98eb2a0c3c9a792ceebdbd6cd"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/native-first/failure.png",
+      "bytes": 375918,
+      "sha256": "ac973cb98c4eb719024fdea7856b70e2ea9c446544145a13731e60cacb3e8d3e"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/native-first/review.json",
+      "bytes": 18382,
+      "sha256": "622246fbfbbc3a0ed0f8b0254086a6976f7bba5f26e4abb8dcbe2347b963b074"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/native-first/runner.mjs",
+      "bytes": 18014,
+      "sha256": "3b8ca81393564f031d0dfc82655710a469417e7fde0a2ef31b908198db304695"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/native-owned-array/mag-desktop-1440x1000-dpr1.png",
+      "bytes": 305679,
+      "sha256": "90a2ea18e5a43b0059c689ca69f206a356aacb9b0955121b882ecafba66aa615"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/native-owned-array/mag-phone-390x844-dpr2.png",
+      "bytes": 326682,
+      "sha256": "e2830f05c45853598a3a02fc6c9e51114f1055d8d8fa55c26b2594f530f6b0ec"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/native-owned-array/mag-phone-reduced-effects-off.png",
+      "bytes": 305264,
+      "sha256": "28110471a51eb792608e5261a8395189d4ce9253be7ba1e41aff68682652ce94"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/native-owned-array/review.json",
+      "bytes": 103898,
+      "sha256": "4f49122b1a5e2033aaf5650c8b67857e5e4dfac6169a6c2b89d1b30a94299e10"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/native-owned-array/visual-inspection.json",
+      "bytes": 679,
+      "sha256": "ee8ab8fcc4da475f74cb0b800b5bef0e331bd3e5845410142749021766f0aac0"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/native-runner.mjs",
+      "bytes": 19261,
+      "sha256": "47a46400069d8ac6efa5e6bfa111aef8f4d486f915a91fb403582c9520cd56b5"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/preparation.json",
+      "bytes": 859,
+      "sha256": "333c903dce43fee26e09c17813e95557fe42ed6efd2afaf214e83f9591ca418d"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/producer-build.log",
+      "bytes": 5535,
+      "sha256": "a4405e214006d1ab45951ffdb8d648cdc64b6f063dac215b4e52f38ed23a872d"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/producer-refresh.log",
+      "bytes": 65,
+      "sha256": "dc748f1d27c0046688c5e2dacbebf176826cd24d346d4f6c751381dd9753110a"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/root-validation.json",
+      "bytes": 232,
+      "sha256": "e6e60b3b0b9779598a64de7755e6aedace2fc93cdcdd3dea6c9b50c81af4b51a"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/root-validation.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/AV_MAGNETAR_FIELD_20260908/seal-manifest.py",
+      "bytes": 2461,
+      "sha256": "eead71df763af72c59af46fa8d4a42072dff17197a1734193dfab83248a91382"
+    }
+  ],
+  "evidenceCount": 31,
+  "evidenceBytes": 1554827
+}

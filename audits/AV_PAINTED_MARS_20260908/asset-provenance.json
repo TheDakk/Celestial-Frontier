@@ -1,0 +1,24 @@
+{
+  "schema": "cf-painted-asset-provenance/v1",
+  "id": "painted-mars-dunesea-v1",
+  "asset": "port/v2/apps/game/src/assets/painted/mars-dunesea-v1.webp",
+  "bytes": 127088,
+  "sha256": "59b9b940c17c5995d71b4f7d756f4e051ed43393d77d0213f63df52a655882e2",
+  "dimensions": [
+    960,
+    430
+  ],
+  "channels": "opaque sRGB",
+  "source": "audits/AV_PAINTED_MARS_20260908/mars-dunesea-source.png",
+  "sourceBytes": 2565982,
+  "sourceSha256": "79bcc721c4ce25d2503ec7dc146560dbc12a9a6a45cd76e57c9e4edb1d53df08",
+  "createdWith": "built-in image_gen",
+  "prompt": "IMAGE_PROMPT.txt",
+  "reference": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/biome-reference.png",
+  "origin": "Original AI-generated environment created for this project from user-approved style direction; no third-party image copied into runtime",
+  "authorization": "Nick authorized local graphics implementation; no hosted or production distribution authority inferred",
+  "humanAssetAcceptance": false,
+  "processing": "Resize-to-cover then centered960x430 export using ImageMagick, WebPquality90, metadata stripped from runtime derivative; original source retained",
+  "staticOnly": true,
+  "deterministicSelection": "Exact full canonical request plus immutable asset ID/bytes; no per-player AI generation"
+}

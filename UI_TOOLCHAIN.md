@@ -1,20 +1,39 @@
 # Celestial Frontier — development toolchain
 
+**Explicit user retest — 2026-09-08 07:38 UTC:** Another isolated outside-sandbox
+Inkscape 1.4.4 version/export chain passed. The inspected128×128PNG again matches the
+September7 bytes exactly; the CVDisplayLink warning remained nonfatal. No crash reproduced.
+[Fresh commands and evidence](audits/INKSCAPE_USER_RETEST_20260908/README.md).
+Keep Inkscape for vector/export work; earlier crash causes and failures remain preserved.
 
-**U3 study tooling update — 2026-09-06:** Nick reported repeated Inkscape crashes. The
-study's default-sandbox `--version` launch failed before rendering; its helper did not retain
-the exact child exit value. No retry, escalation retry, app inspection or crash-report read
-was made. Inkscape is unavailable for the remainder of this session; the earlier 1.4.4 row
-is historical inventory, not current executable qualification. Review SVG/HTML is authored
-as text and rendered with the existing isolated browser. Failed launch evidence is retained
-in `audits/UI_U3_ICON_STUDY_20260906/`. U2–U4 does not depend on repairing Inkscape.
-Nick then asked why it crashes. Read-only inspection of the two matching Inkscape reports
-found the same SIGABRT at HIServices `_RegisterApplication` / `TransformProcessType`, called
-from GDK Quartz / `gtk_init_check` during `InkscapeApplication` construction. Even `--version`
-initializes this GUI path. This supports a restricted-launch registration failure; no outside-
-sandbox Inkscape control was attempted. Sanitized evidence/hashes are in the study's
-`inkscape-crash-diagnosis.json`. Never treat Inkscape's version query as browser-free/sandbox-
-safe; any future qualification must handle its GUI launch requirements on the first attempt.
+
+**Inkscape confirmed — 2026-09-08:** A fresh isolated outside-sandbox version query and
+128×128 SVG→PNG export both exited zero. The PNG is byte-for-byte identical to the September 7
+successful export; dimensions/colors and visual inspection PASS. Both commands emitted GDK's
+`Failed to initialize CVDisplayLink!` warning while completing normally; no crash was reproduced.
+The [confirmation](audits/INKSCAPE_CONFIRMATION_20260908/README.md) and
+[artifact verdict](audits/INKSCAPE_CONFIRMATION_20260908/artifact-verdict.json) retain the evidence.
+The original controller remains instrument-red because it expected ImageMagick AE text `0`
+instead of the returned `0 (0)`; direct byte equality established the artifact PASS without
+another export or retry. Preserve that original red. Inkscape remains qualified for isolated
+vector/export work outside the sandbox; this does not establish a universal crash root cause.
+
+**Prior requalification — 2026-09-07:** Nick authorized the new test after reporting that
+normal launch works. Under the shared job lock and approved execution outside the Codex sandbox,
+Inkscape **1.4.4** answered `--version` and exported the synthetic SVG to a **128×128 PNG**;
+dimension/channel/color checks and visual inspection PASS. Exact commands, logs and hashes are
+retained in [INKSCAPE_REQUALIFICATION_20260907](audits/INKSCAPE_REQUALIFICATION_20260907/manifest.json).
+No update, reinstall, private-document inspection or existing-window closure occurred. Inkscape
+is qualified for isolated vector/export work with out-of-sandbox execution on the first attempt.
+Keep Nick's colorful emoji; this qualification starts no new icon study.
+
+The prior sandboxed failures remain retained in `audits/UI_U3_ICON_STUDY_20260906/` and its
+`inkscape-crash-diagnosis.json`. Both reports show SIGABRT at HIServices `_RegisterApplication` /
+`TransformProcessType` through GDK Quartz / `gtk_init_check`, even for `--version`. A restricted
+registration failure remains an inference; the successful outside-sandbox control does not prove
+the exact cause of those crashes or make sandboxed Inkscape launches qualified. The September 7 sandboxed
+process inventory also failed because sysmond was unavailable; its scoped outside-sandbox
+replacement succeeded. Preserve both results. U2–U4 does not depend on another Inkscape repair.
 
 Verified on **2026-09-07**, macOS 26.6.2 / Apple Silicon. This is the maintained tool reference;
 versions are observations, never a permanent assumption. Nick authorized the three additions
@@ -27,7 +46,8 @@ inventory, dry-run dependency plan and completed upgrade/verification. Node26.7.
 libffi3.8.0, simdutf9.1.1, merve1.2.2_2 and simdjson4.6.11; npm remains11.19.0 and Homebrew6.0.22.
 All seven CLI capability checks PASS, including the existing Python audio venv. No game/runtime
 lock or package changed. REAPER was active but current; no apps/jobs were stopped. Inkscape was
-read through metadata only and remains unqualified after the prior registration crashes.
+read through metadata only at startup; the later explicit requalification above restores isolated
+outside-sandbox version/export capability without repeating maintenance.
 The Node update previously deferred on2026-09-06 is now complete; preserve this version through
 the resumed coding/check chain. Caffeinate -i was restarted at Nick's request (PID93550).
 
@@ -41,14 +61,19 @@ connect the command-line workflows. Verification tools check the actual game and
 No tool automatically supplies a professional art direction; coherence, readable layout,
 interaction, animation, mixing and mobile performance remain implementation work.
 
-Actual design-use status: Blender has produced pilot ship, creature and environment art;
-Surge and REAPER have produced pilot audio. Inkscape has passed CLI readiness but has not
-yet produced finished game UI artwork. Its first planned production use is the U3 SVG icon
-and emblem study, after U1 visual approval and U2 panel work. U1–U2 use HTML/CSS/TypeScript
-for layout, typography, spacing and interaction, with existing emoji retained. GSAP is staged
+Actual design-use status (2026-09-08): Blender has produced pilot ship/environment art and
+one private connected Wolf candidate with a saved armature, verified weights, 97-frame finite
+poses and five actual Metal renders. The game still uses protected canonical portraits; this
+clay-like authoring candidate has no runtime integration or human art acceptance. Its exact
+[review and preservation status](audits/CREATURE_BLENDER_CANID_20260908/README.md) remains separate
+from prior verified pilot backups. Surge and REAPER have produced pilot audio. Inkscape's isolated version/export requalification
+passes, but it has not produced accepted game UI artwork. Keep existing emoji and start no new
+replacement-icon study. U1–U2 use HTML/CSS/TypeScript for layout, typography, spacing and interaction.
+GSAP is staged
 and verified, but not integrated. ImageMagick is ready for asset preparation and comparison
-work; FFmpeg is verified for the next audio export and loudness checks. This sequence does not advance
-past either the U1 review stop or the integrated audiovisual pilot approval stop.
+work; FFmpeg is verified for the next audio export and loudness checks. Nick's September7 local
+playable campaign now includes audiovisual implementation beyond U2–U4; human appearance/listening
+acceptance remains open, and all eight anatomical animation families remain incomplete.
 
 GPU rendering (audit 2026-09-06): prior pilot B and refined ship/ecosystem recipes explicitly
 used Cycles CPU with four render threads. Future asset working copies should select **Metal
@@ -58,16 +83,24 @@ Enumerate and enable the actual GPU, set the scene to GPU Compute, and record th
 build, backend, device name, applicable driver and render result in the receipt before claiming
 GPU use. The Windows card model is Nick's report; its installation and driver have not been
 inspected here. Keep preserved source originals unchanged; apply device selection only to
-working copies. A factory-startup background query on this Mac enumerated
-`Apple M4 Pro (GPU - 16 cores)` as METAL (Blender 5.2.1 LTS); no render was run.
-GPU selection does not itself establish better artwork or a measured speedup.
+working copies. On 2026-09-08 a factory-startup **actual Metal render passed** in Blender
+5.2.1 LTS, build `9e2066aef7ef`, using only `Apple M4 Pro (GPU - 16 cores)` with CPU devices
+explicitly disabled. The synthetic 192×192 material/lighting scene rendered at 16 samples in
+151.113 seconds; a one-second process sample during the initial delay found Cycles Metal kernel
+compilation/XPC waits. The PNG passed dimensions/color inspection and visual review. Receipt:
+[audits/CREATURE_BLENDER_CANID_20260908/metal-qualification/metal-qualification.json](audits/CREATURE_BLENDER_CANID_20260908/metal-qualification/metal-qualification.json).
+This qualifies that bounded render/backend, not candidate anatomy, every shader or a measured
+speedup over CPU. The actual Wolf candidate subsequently rendered five440px/16-sample poses
+on that same GPU-only backend; final process6.468s, saved-model checks PASS. This is separate
+from the synthetic qualification and carries its own render receipt in the Wolf audit.
+Preserve the earlier enumeration-only and CPU-render provenance.
 
 ## Installed and active
 
 | Tool | Verified version / installation | Purpose and actual use |
 | --- | --- | --- |
 | Blender | 5.2.1 LTS, /Applications/Blender.app | Python-controlled modeling, materials, lighting, background renders; existing source/save/reopen/render evidence retained. |
-| Inkscape | 1.4.4, /Applications/Inkscape.app | Code-authored SVG icons/emblems and terminal PNG exports; U3 icon study precedes any emoji replacement. |
+| Inkscape | 1.4.4, /Applications/Inkscape.app; outside-sandbox confirmation 2026-09-08 artifact PASS | Isolated 128×128 SVG→PNG export matches September 7 bytes. GDK CVDisplayLink warning accompanied exit 0, not a crash; [artifact verdict](audits/INKSCAPE_CONFIRMATION_20260908/artifact-verdict.json) preserves the controller red. Keep emoji; no new icon study. |
 | ImageMagick | 7.1.2-31, Homebrew imagemagick | Contact sheets, dimensions, color/alpha inspection and pixel comparisons for U3/U4 and exported assets. |
 | FFmpeg / ffprobe | 9.0.1, Homebrew ffmpeg 9.0.1_1 | Audio/video conversion, file inspection, PCM export, loudness/true-peak measurement and later motion proof clips. It is not a synthesizer host. |
 | Surge XT | 1.3.4 app, VST3 and AU | Original synth patches; /Library/Audio/Plug-Ins/VST3/Surge XT.vst3 and matching AU exist. The installed Surge CLI is not proven as an offline WAV renderer. |
@@ -101,7 +134,7 @@ No Playwright/Puppeteer or new browser extension is needed for the current test 
   step is an explicitly approved bounded no-GUI Surge experiment, not general audio migration.
 - **SoX, separate AVIF encoder, Figma/Penpot, Rive and Krita:** no additions planned.
   ImageMagick brings WebP support as a dependency; no separate WebP installation is needed.
-- **Lucide/Phosphor:** deferred U3 icon study; no replacement of current emoji without review.
+- **Lucide/Phosphor:** inactive; current emoji retained and no replacement-icon study underway.
 - No Steam package, Unity/Unreal port, paid plugin or hosted rendering service is installed.
 
 ## Coding-session startup runbook and automatic maintenance
@@ -224,5 +257,6 @@ regardless of the eventual headless host choice.
 
 Current setup evidence: audits/DEVELOPMENT_TOOLCHAIN_SETUP_20260906.json (written after checks).
 Earlier tool setup is in audits/UI_TOOLCHAIN_SETUP_20260905.json; preserved Blender/REAPER/Surge
-readiness is in audits/AAA_BATCH_A_RECONCILIATION_20260904.md. ROADMAP.md owns current U1 work
-and the approval stop. This reference replaces the earlier inventory in place; audit history stays.
+readiness is in audits/AAA_BATCH_A_RECONCILIATION_20260904.md. The later Inkscape control is in
+audits/INKSCAPE_REQUALIFICATION_20260907/manifest.json. ROADMAP.md owns the current playable campaign
+and remaining acceptance gates. This reference replaces the earlier inventory in place; audit history stays.

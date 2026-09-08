@@ -1,0 +1,83 @@
+{
+  "schema": "cf-art-direction-addendum/v1",
+  "recordedAt": "2026-09-08T12:06:50.329481+00:00",
+  "status": "RECORDED_SOURCE_INSPECTION_AND_USER_DIRECTION",
+  "parentAuditManifestSha256": "ec114d299ec63ce3ef44ed75451d18557c7f7f74bc533cb79c5d43d9098013bc",
+  "prior647FileRecoverySha256": "205acf521cfb1b756c92332fa4206d43d15181876d9a82633fa8c7f6920014e0",
+  "evidence": [
+    {
+      "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/ENGINE_AND_SCENE_BRIEF.md",
+      "bytes": 7289,
+      "sha256": "151ec327ab8e76800508613eb6f278733459ebf73bfa4114fab720626099a938"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/README.md",
+      "bytes": 7657,
+      "sha256": "9ab98de3ddc46c402c64e5b2ff19619454ba247651cb2fc12648ebbbf56bdab1"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/biome-reference.png",
+      "bytes": 3484074,
+      "sha256": "86b6629d53a3fda1e07f725913b5c0b69a9918e91af3df222e44ee2dc6647248"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/intake.json",
+      "bytes": 1780,
+      "sha256": "b1d3e3dcaf5231e18da1b81d91d00bec97b6a2aa952013ce2612458f22e818be"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/ui-material-reference.png",
+      "bytes": 2236844,
+      "sha256": "fd23ef6877a01ba44a2c8b798ba8b3edd072a9bdeaee318e675022f692f4fcab"
+    }
+  ],
+  "references": [
+    {
+      "path": "ART_DIRECTION.md",
+      "sha256": "f33ed7c9e056fdc3e5cedae38b96eeadd7799a4e6e877167707985684b8ad6d3"
+    },
+    {
+      "path": "BIOME_ATLAS.md",
+      "sha256": "e83a60a043e155a51cd31ca736a9959a5676ea1cb74d0f345c6fa19a6a8d343e"
+    },
+    {
+      "path": "BREEDING_AND_SHARING.md",
+      "sha256": "3dde8c6337403e0c180007b31dabe2550983e8369c2b167c150c8a762b541775"
+    },
+    {
+      "path": "UI_PRESENTATION.md",
+      "sha256": "c623d0b674616869ed098906b390026e4332f7651649369a29c8d5989b18ce7c"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "sha256": "dce71246abf42376b4711ab47bc8bb5a808ae98b49cdfcaa4f1127837c0e9696"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "sha256": "3db22d23a68b698fd49932c9940fee71be865483c0c54eb5e75c2a6c32e066c5"
+    },
+    {
+      "path": "port/v2/apps/game/src/guide-content.ts",
+      "sha256": "f83fb17a0f80e098f9413419657661d67d42cb98e53b06a1860ac4f9abe88e95"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesidentity.ts",
+      "sha256": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0"
+    },
+    {
+      "path": "port/v2/packages/domain/acquisition/src/model.ts",
+      "sha256": "4eb5844e970f9b184e6c62b6892a2f135c58a1f14204f7b0660373982e049edc"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/lineage-codec.ts",
+      "sha256": "7c80826744c22230263e53facefb05d28c3968d3defabb070a6d9a6f19a9f8f4"
+    },
+    {
+      "path": "port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
+      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5"
+    }
+  ],
+  "testing": "Docs/reference-intake only; no new runtime change or repeat game battery. Root validation passed in preceding offline batch.",
+  "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "priorManifestReferenceScope": "Earlier manifests bind their own prior checkpoint/reference bytes retained in647-file recovery; current mutable references are bound by this addendum."
+}

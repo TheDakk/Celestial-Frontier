@@ -1,0 +1,9 @@
+{
+  "status": "FAIL",
+  "stage": "read-only observer calibration",
+  "nativeRan": false,
+  "productChanged": false,
+  "error": "AssertionError [ERR_ASSERTION]: No tracked voice may remain; actual [], expected [], operator deepStrictEqual",
+  "cause": "VM-extracted observer constructed expected [] in a different JavaScript realm than the retained JSON report. Node deepStrictEqual correctly rejected the prototypes. Native runner itself uses one realm.",
+  "correction": "Evaluate the same source-derived observer with a same-realm Function and injected assert."
+}

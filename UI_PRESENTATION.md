@@ -1,15 +1,116 @@
 # Celestial Frontier — UI / Presentation System
 
+## Layered Earth riverbank — matches local code as of 2026-09-08
+
+`?livingvista=1` admits only the complete canonical Earth request, environment/profile and
+ordered 19-genome roster. It pairs a painted rainy riverbank with a separate transparent layer
+of six existing named residents: Civet, Platypus, Frog, Persimmon, Cranberry and Devil’s Club.
+An explicit temperate-profile check requires their fauna families and plant forms. Current
+named Earth art owners preserve anatomy and colors; original genomes and encounters do not change.
+The documented global D-9e generation-filter gap remains a separate unresolved issue.
+
+Both 960×430 layers publish together; pending, failed and option-off routes retain the original
+opaque vista. The pair fits uncropped between measured upper chrome and the Biosphere strip with12px
+clearance. Existing ResizeObserver boundaries republish both sprites together, and completion of
+the final landing camera impulse restores the resting layout after canvas translation. Only successful
+Earth painting hides its own decorative globe and cloud deck; native controls/camera retain ownership. This option defers to `planetturn=1` and
+`avpilot=1`. The background is hash/dimension checked; bounded workers, generation/epoch fences
+and retryable scene leases govern publication and cleanup. No layered CPU cache is added.
+Two full RGBA canvases use 3,302,400 bytes before temporary painter, decode and GPU allocations.
+This is static, relative scene placement, not articulated animation or a claim that the existing
+creature painters meet the approved rich-detail target. No runtime AI or player authoring installs.
+[Implementation, mapping and verification limits](audits/AV_EARTH_LAYERED_SCENE_20260908/README.md) own acceptance results.
+
+## Painted Mars composition — matches local code as of 2026-09-08
+
+After exact painted-Mars success or a cache hit, the native scene hides only its own decorative
+globe Sprite and centers the complete uncropped panorama. The world container, camera and native
+Survey/Leave controls retain ownership. Pending/default/failed-image paths keep the old globe;
+Earth's finite-turn fallback is untouched. The existing image and bounded resources are unchanged.
+
+216 focused tests, all3TS/art/static/root and fresh phone/desktop/default/blocked-image native
+checks passed. Actual forced-globe paint was rejected with exact restoration; control rectangles
+and hit results stayed unchanged. Survey/policy/cache/exit checks passed. Both native observer
+setup failures remain retained. The phone keeps a full-width band with large starfield gaps;
+no immersive/animated scene or physical-device/human acceptance is implied. The new local preview
+is http://127.0.0.1:56749/?paintedvista=1, dirty-local-only/publishable:false; package/boot/Guide PASS.
+[Composition audit](audits/AV_PAINTED_MARS_COMPOSITION_20260908/README.md) owns the exact evidence and prior failure limits. End this bounded
+Mars layout pass; next advance canonical creature/inhabited scene work within the painted direction.
+
+
+## Painted Mars vista — matches local code as of 2026-09-08
+
+`?paintedvista=1` selects one static painted panorama for the complete barren canonical Mars
+request (134#3 in Sol), with exact environment/profile/options and variant cache identity.
+The original dune artwork follows Nick's approved biome direction; 960×430 WebP, 127,088 bytes.
+Hash/dimension checks, stale-work cancellation, existing scene texture ownership and one-entry
+CPU canvas caching provide canonical-worker fallback on current failure. No Earth composite,
+generation, creature identity or control placement is changed. This is not animated scenery.
+
+Final97 focused tests, all3TS/art/static/root checks, fixed phone/desktop native paint/restoration
+and native exits passed. Blocking only the exact image request produced visible canonical fallback
+without a retry. Reduced/EffectsOff keep the static art. Full admission, physical-device and human
+art acceptance remain open; the older globe and panorama composition are visibly unfinished.
+[Current preview](http://127.0.0.1:56099/?paintedvista=1) is local-only/publishable:false, with package
+and native boot/Guide checks passed. [Evidence and limits](audits/AV_PAINTED_MARS_20260908/README.md).
+
+
+## Supplied UI graphic/material reference — Nick, 2026-09-08
+
+Nick supplied a [UI example](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/ui-material-reference.png)
+for graphic/material inspiration only and explicitly said **do not copy its layout or controls**.
+Preserve CF's existing control placement, responsive layout, native actions, emoji, accessible
+browser text, 44px targets, focus behavior and text preferences. Its finish can inform coherent
+materials, lighting and palette hierarchy without moving, replacing or adding controls. The
+original space/creature references remain approved for visual direction; the newly supplied
+nine-panel biome sheet guides atmosphere, not new biome IDs or world facts.
+[Addendum and exact reference authority](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/intake.json).
+That reference-only addendum installed no artwork and granted no production-asset, runtime,
+animation or performance acceptance. Existing layout and verification boundaries remain in force.
+
+## Opt-in Earth surface turn — implemented locally, 2026-09-08
+
+`?planetturn=1` enables the WebGL surface study only on canonical Earth (galaxy 999, Sol 424242,
+planet 133). The existing globe's surface yaws for one finite 18-second interval, reaches
+0.22 radians and settles to zero; illumination remains fixed and clouds stay separate. One worker
+creates the 768×384 canonical unlit atlas. This changes no control placement, navigation or actions
+and installs none of the richer painted reference art. Use either turn option without `avpilot`:
+its separate Earth comparison can hide the globe. Players need only the browser, with no authoring installs.
+
+`?planetturn=1&planetmaterial=1` additionally enables a subtle material proof; the plain turn flag
+keeps it off. The existing shader receives `uMaterial`, reset on each accepted view. Three
+analytic noise octaves/12 hashes add bounded grain, fixed-light relief, ocean sheen and an inner
+atmospheric rim without extra texture fetches, mesh layers, dependencies or GL requirements.
+The canonical atlas, coasts, palette and 420px silhouette remain unchanged. Color masks are
+perceptual estimates, not terrain or biome facts. The 18-second/0.22-radian turn, policy fallback,
+hidden pause and exit ownership are unchanged. Fresh fixed phone/desktop native material comparisons passed
+with exact restoration; the subtle visible change does not establish the approved painted finish. Nick's exact space/creature
+and biome direction remains the target; the UI example informs materials only, preserving layout.
+[Material comparison and visual judgment](audits/AV_EARTH_SURFACE_MATERIAL_20260908/README.md).
+
+Hidden views pause; reduced motion or Effects Off shows the canonical fallback. One program and
+uniform group belong to the application, while per-view workers, texture leases and geometry
+buffers are released on exit/failure. This is not a full 360-degree rotation: source seam/backside
+mapping remains unresolved. Each raw atlas and GPU texture needs at least 1.125 MiB, before other
+allocations. Scoped phone and fresh-desktop native motion/retirement outcomes passed; physical
+phone qualification remains open. The combined run stopped after phone exit plus desktop resize
+unexpectedly returned to the galaxy. Same-document re-entry and full UI admission remain open.
+[Current Earth surface-turn scope](audits/AV_EARTH_SURFACE_TURN_20260908/README.md).
+
 Execution priority2026-09-07: Nick requested playable graphics/audio progress before exhaustive
 U3/U4 polish; see ROADMAP.md and audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md.
-The U2 preparation below remains verified/staged but unsigned; no native or audiovisual PASS is implied.
+The U2 tool correction was signed as `837db4aaa0ef5d3d8bffc79c70f62dcc2503032d`. Its canonical
+run passed 324 Vitest files (3,494 tests, 1 skipped), then stopped in static-develop on one
+unused test binding. No browser stage ran; U2 and audiovisual acceptance remain pending.
+The [retained checkpoint](audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json) preserves
+the first failure and the binding-only correction with fixture creation unchanged.
 
 U1 layout correction (2026-09-06): the existing body-class observer republishes the final
 header height after a same-task Settings open/change/close transition, keeping the rails below
 Search/Objective even when ResizeObserver sees no net size change. Restored visible rail
 controls declare their native button type explicitly.
 
-## V2 presentation system — U1 shell and U2 sheets, matches code as of 2026-09-06
+## V2 presentation system — U1 shell and U2 sheets, matches code as of 2026-09-08
 
 Nick authorized U2–U4, Settings above Training, and compact notifications when space is tight.
 Product icons remain emoji; accepted U1 layout is unchanged. Signed3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d passed complete develop static (322files,
@@ -24,11 +125,13 @@ only when open with one trusted activation and the existing5000ms strict-false w
 one named fonts/two-frame receipt. Painted controls define clearance while AppChrome retains its
 distinct full-wrapper measurement. Only band-fixture fixed rows omit the separately measured
 injected trail. Seven named fixture/restoration/cleanup boundaries preserve the first error;
-failed cleanup cannot authorize dependent geometry. Thresholds and product bytes are unchanged.
+failed cleanup cannot authorize dependent geometry. This instrument correction preserved
+thresholds and the pre-audiovisual product bytes.
 Claude's full response and original unapplied draft remain immutable. Independent source review
 CLEAR;99 focused tests, all3 TypeScript programs and root validate/50 fingerprints PASS after two
-retained test-preparation corrections. Fresh canonical native attempt is pending on committed
-source. Read ROADMAP.md and audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md for current status;
+retained test-preparation corrections. The later signed `837db4a` attempt stopped during static
+test-source checking as recorded above; small-phone, large-phone and Slice were NOT RUN.
+Read ROADMAP.md and audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md for current status;
 audits/UI_U2_NEXT_SESSION_20260906.md preserves the unapplied U3/U4 preparation map.
 
 The current bounded correction measures every visible portrait sheet's header/insets plus44px
@@ -41,9 +144,11 @@ space, tests their actual text preferences, and requires exact restoration. Afte
 remaining clipping is valid only when independent geometry still proves pressure. Earlier generic
 preference and native target-size/clipping checks remain strict. Focused84 checks, all3 TypeScript
 programs, root validate, one evidence build and101 release/budget/evidence checks PASS. Producer
-is aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe; measurement/ceilings are unchanged.
-The existing81-bullet draft has orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
-The3a61352 native result above owns current status; these checks are not a fresh Compendium certificate.
+for that sheet-only preparation was aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe;
+measurement/ceilings were unchanged. Its81-bullet draft had orderedSHA
+3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
+The3a61352 result remains the prior native evidence; `837db4a` added no browser result or
+fresh Compendium certificate. These pins describe that pre-audiovisual checkpoint.
 
 All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
 Phase2, pilot or hosted closure is claimed.
@@ -149,6 +254,12 @@ is pending.
 The shared panel owner keeps the first direct native Close and existing first h2/h3 title as
 sticky siblings. Refills retain the same Close node and restore its focus only when it owned
 focus; the panel remains the scroller and Compendium retains its separate virtual scrollport.
+The 2026-09-08 paint correction in `ui-sheet-style.ts` gives `.panel .sheet-header` an opaque
+`#0a101e` background and a `::after` underlay (`inset:-14px -58px 0 -14px`, `z-index:-1`,
+`pointer-events:none`); forced colors uses `Canvas`. Scrolling content no longer paints through
+the title or its reserved Close gutter. Title/Close siblings, geometry, scrolling/padding, focus
+and Survey are unchanged. Scoped native phone/desktop checks and inspected title captures PASS in the
+[Charters header audit](audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md).
 One token/CSS owner places explicitly opened Settings above the current lesson surface and
 Training card. Training admits Settings and its opener except while completion is pending;
 Escape invokes Settings' real Close without ascent. Queued lesson focus and the deferred Atlas
@@ -251,9 +362,9 @@ session-owned, auto-resuming trail-writer stacks. That diagnostic changed no pro
 Debugger timing perturbation and absent settlement facts keep the prior navigation blocker open until attributed;
 see `audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`.
 
-## Opt-in audiovisual presentation — 2026-09-05 local
+## Opt-in landing and native battle presentation — 2026-09-07 local
 
-Matches code as of **2026-09-05 local**. The Phase 1 `?avpilot=1` candidate uses shared navy/glass
+Matches code as of **2026-09-07 local**. The Phase 1 `?avpilot=1` candidate uses shared navy/glass
 and gold tokens with locally licensed Inter, compact spacing, 8px panels and 6px controls.
 Inventory, Shipyard and Atlas keep their purpose-specific layouts, native action/focus owners
 and 44px targets. Settings font, text-size and tone choices remain authoritative; canonical
@@ -267,9 +378,21 @@ layers do not intercept input, and bounded review controls yield to windows, Tra
 modals. The separate study leads with Earth and Scout, then full family/size and listening
 controls; source details and supporting mockups sit in accessible disclosures.
 
-All eight anatomical families remain incomplete and use protected static portraits. The eight
-audio cues and canonical creature synthesis are unchanged; human listening and visual direction
-acceptance remain pending while scene assets are authored. This is no Phase 2 chrome migration
+The native Land handler now arms one optional Scout arrival before persistence. It requires an
+exact committed revision, current runtime/world and fresh rendered scene, then the eligible
+Earth vista and image readiness. The 1.8-second arrival is pointer-transparent and static under
+reduced motion; on phones it uses the visible Survey header beside native Close. Its existing
+1.4-second cue consumes a pre-await shared-context handoff only at the accepted destination.
+Training, wave-off/refusal, convergence, stale/hidden/disposed owners never show success.
+
+The native Combat Chronicle independently adds up to two canonical portrait leases and finite
+200ms attack/reaction translations from its own registered cue clock. A player champion without
+a fauna genome uses an honest nameplate. Static outcome text survives Effects Off/reduced motion;
+the visual caption is AT-excluded because the existing Chronicle log owns announcements. Close,
+hide and replacement release motion/art; Skip retains the actual static result until Close.
+No HP/reward/action owner or anatomical rig is added. All eight anatomical families remain
+incomplete; native battle, human listening, visual direction and physical-device acceptance
+remain pending while scene assets are authored. This is no Phase 2 chrome migration
 or release. `ART_DIRECTION.md` owns the shared pilot implementation reference; `ROADMAP.md`
 and the named review audits own exact-source verification, backup and human review status.
 

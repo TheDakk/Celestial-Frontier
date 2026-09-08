@@ -1,5 +1,29 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## Native landing and battle presentation — 2026-09-08
+
+Nick's24-hour local graphics/audio campaign supersedes UI-first sequencing. Optional Earth/Scout
+landing now binds its finite arrival and existing1.4s cue to exact native durable/rendered success;
+phone placement uses the existing Survey header. Native Chronicle adds bounded canonical portrait
+attacks/reactions, with no new combat simulation, rewards, genome or save fields. A fresh Explorer
+challenge exposed a pre-existing Frontier Resolve metadata exception; its player-only projection
+repair now permits the actual Chronicle and preserves strict malformed-creature rejection.
+
+Scoped native phone/desktop landing and battle checks PASS, including loaded art, real movement,
+finite cleanup, correct battle result and the running landing PCM source. All prior failed tests,
+covered/overflowed ship frames, lost battle diagnostic, durable-but-hidden Chronicle, and caught
+exception are retained in `../../audits/AV_PLAYABLE_IMPLEMENTATION_20260907/`. Current release
+inventory is83 fixed ordered bullets (missing-one control82), SHA
+354381f4679bfed6a4d269a0971ba8c3a28f2a43b59d4503403fb11499961ec9. Live Compendium producer is
+3c8cda1771d6230fb86e773fc0cde86cb3c51686b6cc8fce3141b38a7516e28b; measurement/ruler/ceilings
+unchanged. Full static results belong to that manifest; no current browser admission certificate.
+
+Signed837db4a's U2 attempt stopped on an unused test binding after3494 tests passed/1skip; no
+native U2 stage ran. The binding is corrected; prior unknown causes and U2–U4/HUMAN acceptance
+remain open. Inkscape export is requalified outside the sandbox. All eight anatomical families
+remain incomplete; next work preserves complete genomes and final morphology into Blender.
+No hosted action, main/develop promotion, release or deployment occurred.
+
 ## U2 post-close clearance predecessor — 2026-09-06
 
 Signed3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d passed complete develop static (322files,

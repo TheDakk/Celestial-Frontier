@@ -1,0 +1,354 @@
+{
+  "schema": "cf-trinary-companion-checkpoint/v1",
+  "createdAt": "2026-09-08T10:56:44.227009+00:00",
+  "parentCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "branch": "openai/mac",
+  "sourceState": "dirty-local-only",
+  "signedCommitPending": true,
+  "publishable": false,
+  "browserFreeDevelop": {
+    "status": "PASS",
+    "files": 331,
+    "testsPassed": 3727,
+    "testsSkipped": 1,
+    "typescriptPrograms": 3
+  },
+  "rootValidation": {
+    "status": "PASS",
+    "renderedSpecies": 1010,
+    "unchangedFingerprints": 50
+  },
+  "nativeDiagnostic": {
+    "status": "PASS",
+    "path": "native-exact-address/review.json",
+    "entry": "native exact-address Search \u2192 Follow",
+    "priorFailures": [
+      "native-first/review.json"
+    ],
+    "viewportConditions": [
+      "390x844@2 normal and reduced/effects-off",
+      "1440x1000@1 reduced/effects-off"
+    ],
+    "openFinding": "Crowded-map pointer entry selected nearby star; retained separately from exact-address success"
+  },
+  "visualReview": {
+    "status": "PASS",
+    "captures": 3,
+    "humanAcceptance": false,
+    "remainingGraphicsGap": "Granulated close-up surfaces for binary and third companions"
+  },
+  "ordinaryPreviews": {
+    "changed": false,
+    "ports": [
+      53304,
+      50689
+    ],
+    "containsThisIncrement": false
+  },
+  "evidenceDist": "port/v2/apps/game/smoke/trinary-evidence-dist-20260908",
+  "certification": false,
+  "humanAcceptance": false,
+  "sources": [
+    {
+      "path": "port/baseline-v1.8.9/save-fixtures.json",
+      "bytes": 55398,
+      "sha256": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7"
+    },
+    {
+      "path": "port/v2/packages/scene/src/address.ts",
+      "bytes": 30341,
+      "sha256": "c9069b15992c4be5057dd4068c1e7c7a9dcf86768015d64e934ef14b142bd559"
+    },
+    {
+      "path": "port/v2/packages/scene/src/charter.ts",
+      "bytes": 23191,
+      "sha256": "09913352608be0ac1238b98ef895377552ca94b23bffe8fa2aebf306de034f09"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 835364,
+      "sha256": "3db22d23a68b698fd49932c9940fee71be865483c0c54eb5e75c2a6c32e066c5"
+    },
+    {
+      "path": "port/v2/apps/game/src/scene-texture-owner.ts",
+      "bytes": 12535,
+      "sha256": "db7af3f23c3b7d652df37cb54f1082eea177380aefd4f86bc16365a6adbed709"
+    },
+    {
+      "path": "port/v2/packages/art/src/canvas-treatment.ts",
+      "bytes": 6928,
+      "sha256": "673bbe89aaa3f8d60e740e4e0297b6a744c04b70c88c9a0d21eb227e7119b092"
+    },
+    {
+      "path": "port/v2/packages/art/src/surface-polish.ts",
+      "bytes": 2370,
+      "sha256": "89737a5b88e1bae5223b81671fed429757f426d0e6f2adfe2784ff0f2b6383ac"
+    },
+    {
+      "path": "port/v2/packages/domain/worldgen/src/worldgen.verbatim.js",
+      "bytes": 13969,
+      "sha256": "95f0acec80a37c67cc829dc0d71e6719768e5a975d030fe9b89457c23da00eff"
+    },
+    {
+      "path": "port/v2/packages/domain/starcatalog/src/index.ts",
+      "bytes": 3410,
+      "sha256": "da886e9f3a2be6ce7e609e031e3a0e4c325d272f8926803f2d0e33b2d7ed1b13"
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "bytes": 3639,
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 157380,
+      "sha256": "ddf47ede0cfb57bc36bc9c097e00a62dbc66fa033b61bf98ad6ccf0b9f927fcc"
+    },
+    {
+      "path": "port/v2/budgets/compendium-memory-v1.json",
+      "bytes": 159537,
+      "sha256": "45c57bb89be53d14fd179f84f3e4c846b13ea6e881a07f219095e8aa9209a893"
+    },
+    {
+      "path": "port/v2/tests/compendium-budget.test.ts",
+      "bytes": 146461,
+      "sha256": "f3ebd016eef05774f88dfc01ce3363e312c2423ef91ef2c42013e156da859057"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "bytes": 1890119,
+      "sha256": "ba8fcb22c6311bc19b505e8e73c2f2ad97075a1598925b54f5e0da5c7a5df367"
+    },
+    {
+      "path": "celestial-frontier.html",
+      "bytes": 1964530,
+      "sha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746"
+    },
+    {
+      "path": "port/v2/packages/domain/worldgen/src/index.ts",
+      "bytes": 775,
+      "sha256": "d81b384a57674c39146726f1b05acec3eddc86fe06da36d80b1bcd5f3c8d4673"
+    }
+  ],
+  "references": [
+    {
+      "path": "ART_DIRECTION.md",
+      "bytes": 125454,
+      "sha256": "86e53b6aa6e43ee6d215bdffaaf1f55e5f02d5fc1cf42c29d6054641a2fb665f"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 458071,
+      "sha256": "c4ed0f513cbdf2d7e1e5fb143d0a2357b1ffa8deec2facc458849f0d3f36e5ce"
+    },
+    {
+      "path": "AAA_COVERAGE_LEDGER.md",
+      "bytes": 5763,
+      "sha256": "939e3c28406fa22a327fa9a766a6669e73ad0e7bc20a66f96ff114f6d50abad3"
+    },
+    {
+      "path": "WORLD_GENERATION.md",
+      "bytes": 34127,
+      "sha256": "da5b83a5cfce2fb4b763b39643b8d4a7e32dae41658c112a52b33d9ebba5e7bb"
+    },
+    {
+      "path": "audits/AV_24H_CAMPAIGN_20260907.md",
+      "bytes": 15321,
+      "sha256": "7b20a7e63e2aabba7c3de9b3b25a9e567916b528838d6f97114da1dfe165ae15"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/BATCH_INTENT.md",
+      "bytes": 1660,
+      "sha256": "847a51caa4c7d0004e2b1c87ace8602551b437f85bfd7d67783b711ed81bd0bf"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/EXACT_ENTRY_CORRECTION.md",
+      "bytes": 1274,
+      "sha256": "62290df335faaee2782f4c1b4a0bade0fe0943aa099c270b7ab25ba5ec05dce9"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/README.md",
+      "bytes": 7421,
+      "sha256": "753a23fc27f62dc0ade86ab172bc5a886cb9da6fa2a74801ab9393ab6a53c56e"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/derive-fixtures.mjs",
+      "bytes": 1552,
+      "sha256": "dfeb060ef0ca0d9bde250c191cd5c1cedefbd7a15f97e5df190e18c14fa96453"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/develop-profile.log",
+      "bytes": 6664,
+      "sha256": "fdfcf0d31abe275f27a06738dba5cb1ad1e40333928fea4cda1009d9782f2f12"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/draft-authority.json",
+      "bytes": 180,
+      "sha256": "546a97cee835af635e8eaa6faabc3c5362c2c7e26827cfdb50d2015bd757cf5f"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/draft-pin.log",
+      "bytes": 65,
+      "sha256": "17a9d5cd08b6d253f27d3c93334ccb34604bbf66e30a0a136cf0dcf6e62e622d"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/draft-pin.mjs",
+      "bytes": 1873,
+      "sha256": "9289a11f36a7194c48d683c8e7e9a9ef04a6f49c4a374b14cb0558b9771bb88e"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/evidence-dist.json",
+      "bytes": 14296,
+      "sha256": "3a1c2fb6a5e6d1023a9d8af4517355a671b390306a9e691a8e33b12a92100209"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/fixture-derivation.json",
+      "bytes": 206,
+      "sha256": "33d7a8f31f416e8a452b5dca15d15e4e27573741792f97144d0fb94944943589"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/fixture-derivation.log",
+      "bytes": 1166,
+      "sha256": "a55da9f7729e3f53f10901fa24931a1ce67691495b8ed3c6d56b613d001723e1"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/fixtures.json",
+      "bytes": 1917,
+      "sha256": "e8fc3a9c1babf66c15f3174ed54a9ebdf97d36931c9fa2a7dbae0d3a647bc03d"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/increment.diff",
+      "bytes": 171979,
+      "sha256": "5aa58b75b81f972e1e35152040093b2ea84623968747cd10efb3cfcc8ecbf629"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-exact-address/review.json",
+      "bytes": 245926,
+      "sha256": "d2b981c1b8726dbd33e2436e13edbffd60db12bc20b1d6032dccbc79a97cc70a"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-exact-address/runner.mjs",
+      "bytes": 25431,
+      "sha256": "4e1068e68c76bab2a162d2ad1e48f3dca902883f89bbc97b90093e19448df849"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-exact-address/trinary-desktop-1440x1000-dpr1.png",
+      "bytes": 441409,
+      "sha256": "fa71c00dc79f230507765af49b928da829f6ec15ea8b06256189e6456d437dea"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-exact-address/trinary-phone-overview.png",
+      "bytes": 343648,
+      "sha256": "dd31d3f618e64e54e60bb66203c3583718f5120c2ebbf362e6fdc430565d889c"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-exact-address/trinary-phone-reduced-effects-off.png",
+      "bytes": 482415,
+      "sha256": "799d748cb7637d23f5a3b47a07816a6562ed2d0ea0efedcaede864e2e7b21771"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-exact-address-execution.json",
+      "bytes": 401,
+      "sha256": "e338a758276ae060d2a2bb84944a01de4576ea4d282296e0b612bb1ed626ab88"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-exact-address-execution.log",
+      "bytes": 138,
+      "sha256": "8c1f3f694b28141b7dde567872a1750f5b194734201485af6a572fd880c3f6f4"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-first/failure.png",
+      "bytes": 346833,
+      "sha256": "3cff2cc0ef628e805f9567f70c14917fc0c5b936cff2d0ee0995c17e86790497"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-first/review.json",
+      "bytes": 24470,
+      "sha256": "044b4a221fcdb4ae6a4e97b34bca2bdae962048a8db5688b998df1be197c9cb6"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-first/runner.mjs",
+      "bytes": 24723,
+      "sha256": "517172a05028f43916c918d61fe2be2ce1d04d933ef56923478150e4d2cab6d6"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-first-execution.json",
+      "bytes": 394,
+      "sha256": "5a5382740f970d344ca550f1cc0a65dc2483f30240f486480a5a2c14247ce898"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-first-execution.log",
+      "bytes": 482,
+      "sha256": "fb91e53f17ab7c47f151ffc8cc1d6002cea111e0d6ed2723784ff2b7fc3fd2f7"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/native-runner.mjs",
+      "bytes": 25431,
+      "sha256": "4e1068e68c76bab2a162d2ad1e48f3dca902883f89bbc97b90093e19448df849"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/preparation.json",
+      "bytes": 1266,
+      "sha256": "14d83fab8fca359b718f196bf6b9ffd123510287e62bd67ac59c5b96da7be827"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/prepare.py",
+      "bytes": 1208,
+      "sha256": "5e71de170e75516273b77d54d67743f30bc3693403639367e45b6d00597043b9"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/producer-build.log",
+      "bytes": 5535,
+      "sha256": "a995b80b6f861b5e46f5e9ad47a8da841a63ed86966388a353c709ae271607d5"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/producer-refresh.json",
+      "bytes": 1230,
+      "sha256": "251bf20f2ac4adc1b8b979b46facba1d52961159e2c43aed49bb34398df7c0a6"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/producer-refresh.log",
+      "bytes": 65,
+      "sha256": "f60ada9931231ee16d959040ae15e939341ffec7436ebdd0e76b9cc5090082a7"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/producer.json",
+      "bytes": 6055,
+      "sha256": "defc410966225e538e695a1504eeb8e0d86b5a558861cc7bd13e813edcbe71cd"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/producer.mjs",
+      "bytes": 599,
+      "sha256": "f351dffe0f5909f44bbb915ff27cdc9ae2e120a26ff684be5496927b461fc1e6"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/refresh-producer.mjs",
+      "bytes": 2350,
+      "sha256": "e7e0e8d0c640cf8964f8811eb6a411b460e4eefeb2871d45cc0bc70a65efc955"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/root-validation.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/run-step.py",
+      "bytes": 950,
+      "sha256": "ed44a7352e1cbfb5692f969fc5d399d1fd8849bcd9c030019511841bbfdbabc1"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/seal-manifest.py",
+      "bytes": 5506,
+      "sha256": "8afdbcf8d4dec971a1bade55b6b6d5b11c8829be1fdfc934a059dab62d5d5426"
+    },
+    {
+      "path": "audits/AV_TRINARY_COMPANION_20260908/visual-inspection.json",
+      "bytes": 1491,
+      "sha256": "fbcccdc99ae75e5d918cb5fb2353e854708f7b0291c819bcac096b3bacf540a2"
+    }
+  ],
+  "evidenceCount": 38,
+  "evidenceBytes": 2199302
+}

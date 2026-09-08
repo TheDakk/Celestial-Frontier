@@ -34,14 +34,18 @@ export function developmentPreviewReadiness(document, window) {
   // is not app readiness; the caller next exercises Guide's real outcome.
   const trail = document.getElementById('trail');
   const player = document.getElementById('playerchip');
-  const rendered = visible(trail) && !!trail.textContent.trim()
+  // U1 intentionally hides the canonical breadcrumb. Its connected text
+  // proves scene publication; only the player and canvas must be painted.
+  const trailText = trail?.textContent?.trim() ?? '';
+  const trailVisible = visible(trail);
+  const rendered = !!trail?.isConnected && trailText.length > 0
     && visible(player) && !!player.textContent.trim();
   return {
     ready: !!dev && distributable && harnessAbsent && !!canvas && rendered,
     dev, distributable, harnessAbsent,
-    canvasReady: !!canvas, renderedUi: rendered,
+    canvasReady: !!canvas, renderedUi: rendered, trailVisible,
     training: document.body.classList.contains('training'),
-    trail: trail?.textContent?.trim() ?? '',
+    trail: trailText,
     badge: !!document.getElementById('cf-dev-preview-banner'),
     legacyBadge: !!document.getElementById('cf-development-site-banner'),
     badgeStyle: !!document.querySelector('[data-cf-dev-banner-style]'),

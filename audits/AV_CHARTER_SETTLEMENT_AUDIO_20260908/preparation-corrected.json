@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "steps": [
+    {
+      "name": "develop-profile-corrected",
+      "command": [
+        "node",
+        "port/v2/tools/check-profile.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 0,
+      "seconds": 49.844
+    },
+    {
+      "name": "root-validation",
+      "command": [
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "seconds": 11.828
+    }
+  ]
+}

@@ -2,12 +2,74 @@
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
 ownership, four bounded companion writers, Guardian/Titan acquisition, rarity presentation and six
-explicit audio-surface overlays match the local `port/v2` candidate as of 2026-08-29. ⚠ v1.8.9: every reader of the
+explicit audio-surface overlays match the local `port/v2` candidate as of 2026-08-29. The offline
+Wolf export contract below matches code as of 2026-09-08. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
+
+## Layered Earth scene — matches local code as of 2026-09-08
+
+The exact `livingvista=1` riverbank uses six unchanged full Earth genomes and their current
+Compendium body owners on transparent ink: Civet, Platypus, Frog, Persimmon, Devil’s Club and
+Cranberry. It excludes portrait vignette/framing/polish and preserves named anatomy, markings
+and colors. The existing shared input palette receives an export alias; no palette algorithm
+changes. Alpha bounds and the lowest solid row provide static relative fit/contact, with
+empty/clipped bodies rejecting the complete layer. This is not locomotion or metre-scale ecology.
+
+The explicit mammal/amphibian/tree/shrub annotations are checked against the actual temperate
+profile. The global generated roster remains unchanged, including the documented D-9e gap.
+Older bare art and request-side phenotype helpers do not include every later named correction;
+the new scene deliberately reuses current named owners. [Mapping and source findings](audits/AV_EARTH_LAYERED_SCENE_20260908/BIOME_MAPPING.md)
+record the actual authority and test limitations for Claude.
+
+## Earth appearance and movement authority — Nick, 2026-09-08
+
+Earth creatures retain their existing explicit appearance instructions and recognizable
+Earth-like features. Richer materials, light, detail and expression must preserve their exact
+named catalogue identity, canonical colors and final morphology; the new visual direction does
+not authorize fantasy redesign of Earth species. `speciesoverrides.ts` and the existing named
+and lineage routes remain the presentation authority over generic raw trait interpretations.
+Species-appropriate movement is a binding authoring requirement, not an implemented locomotion
+claim. The offline Wolf study and native whole-portrait battle translations remain the current
+limited motion boundaries; complete animal-specific locomotion and articulated combat are open.
+
+Alien planets, biomes and creatures remain procedural under existing seeded owners. Earth-named
+organisms and their bred descendants retain the same identity/lineage rules wherever encountered;
+`_earthName`, `_earthBlend`, `_earthBlendKingdom`, `_anchorVal` and the complete immutable genome
+are not replaced by a style prompt or a world-location shortcut. This clarification changes no
+biological generation, trait inheritance, breeding, normalization, taxonomy or save behavior.
+See [current art direction](ART_DIRECTION.md) for the shared richness and movement target.
+
+## Offline complete-genome morphology export — 2026-09-08
+
+`port/v2/tools/creature-blender-export.mjs` is a read-only authoring bridge over fixed owned
+source declarations. It preserves every plain genome field in a detached snapshot and retains
+the exact `speciesVisualKey`; seed/name alone are insufficient. Lossy JSON values reject before
+export. Each record binds source byte hashes, the final painter owner, source-derived proportions
+and an explicit supported/static-fallback decision. Known specimen provenance is rederived and
+checked; unknown derivation claims are not accepted.
+
+The pure existing Wolf pilot uses its exact catalogue genome and named `QUAD_SPEC.Wolf` →
+`faunaResetCanidC` route, regardless of raw body/locomotion genes. Proportions use normalized
+pre-fit 440px painter coordinates. The Blender recipe adds authored depth and anatomy only after
+this boundary. Two actual ordered crosses retain their complete child genomes, qualified Wolf
+owner and anchor-derived ridge/coat paths; a mixed-kingdom child does not discard its inherited
+fauna owner. Named metadata that still activates lineage drift also requires fallback. An actual
+procedural audit specimen retains its final plan. The first recipe admits only pure named Wolf;
+reviewed descendants, procedural and unsupported owners keep their existing static presentation.
+No taxonomy, RNG, breeding, genome normalization, save or runtime painter changes are introduced.
+
+Nineteen focused exporter tests, three TypeScript programs and root validation passed. The
+second private Wolf model and five 440px Metal poses passed scoped connected-skin, weight,
+planted-paw, finite-motion and settlement checks, with four rejected negative controls. This
+is one unaccepted authoring candidate, not runtime rig integration or completion of any of the
+eight family-level animation goals. The
+[Wolf candidate audit](audits/CREATURE_BLENDER_CANID_20260908/README.md) records exact model/render
+results, retained failures and private backup status. Human art/device acceptance and full
+admission remain open.
 
 > **2026-08-29 current local species/companion boundary:** Arc 5 exposes four exact-instance writers
 > from verified real-fauna Compendium detail without changing the established creature structure.

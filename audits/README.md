@@ -1,5 +1,30 @@
 # audits/ — external review bundles, preserved
 
+Latest local graphics checkpoint, September8: [Earth layered riverbank](AV_EARTH_LAYERED_SCENE_20260908/README.md)
+records explicit biome-family checks, current named resident bodies, measured unobstructed placement,
+351 focused tests and four final native modes PASS, plus a verified local human preview. Every first
+red is preserved. Creature artwork remains flat/simple below the approved painted target; global
+D-9e generation filtering and articulated motion remain open. Signing remains blocked; no hosted
+publication. ROADMAP.md owns resumption and the local staged-recovery receipt.
+
+Previous local graphics checkpoint, September 8: [painted Mars composition](AV_PAINTED_MARS_COMPOSITION_20260908/README.md)
+records the unobstructed full panorama, 216 focused tests and four passing native modes. Both
+initial observer failures are retained. The approved painted direction, Earth species rules and
+UI placement remain binding. Current work is staged locally; required signing remains blocked,
+so it is not yet committed or published. ROADMAP.md owns the live handoff and next graphics work.
+
+Latest received biome/UI material references and deterministic creature-sharing requirements:
+[PAINTED_SPACE_DIRECTION_ADDENDUM_20260908](PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/README.md).
+UI layout copying is explicitly prohibited; current placement remains authoritative.
+
+September8 painted-space intake and proposed vista/biome/universe reference sheets:
+[PAINTED_SPACE_PIPELINE_20260908](PAINTED_SPACE_PIPELINE_20260908/README.md).
+Preceding offline Wolf coat/articulation study, technically checked and below art target:
+[CREATURE_CHARM_STUDY_20260908](CREATURE_CHARM_STUDY_20260908/README.md).
+Nick subsequently approved the supplied space/creature visual references and supplied the
+biome/UI material references indexed above. ROADMAP.md owns live resumption and preserved verification blockers.
+
+
 Current U2–U4 authority and U2 sheet preparation: [UI_U2_SHEETS_20260906.md](UI_U2_SHEETS_20260906.md).
 [U3 icon study](UI_U3_ICON_STUDY_20260906/README.md) is review-only; product icons await Nick’s choice.
 

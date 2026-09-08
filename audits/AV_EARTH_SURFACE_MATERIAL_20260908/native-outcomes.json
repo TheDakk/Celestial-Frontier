@@ -1,0 +1,207 @@
+{
+  "schema": "cf-earth-material-outcomes/v1",
+  "certification": false,
+  "humanArtAcceptance": false,
+  "results": {
+    "phone": {
+      "status": "PASS",
+      "viewport": [
+        390,
+        844,
+        2
+      ],
+      "angle": 0.15060434971360936,
+      "material": {
+        "mesh": {
+          "width": 420,
+          "height": 420,
+          "changedPixels": 64757,
+          "changedChannels": 125692,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 138520,
+          "baselineHash": "23eb3c4f",
+          "sampleHash": "a189fa97"
+        },
+        "stage": {
+          "width": 780,
+          "height": 1688,
+          "changedPixels": 134872,
+          "changedChannels": 261202,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 1316640,
+          "baselineHash": "fa6d0ebc",
+          "sampleHash": "aa6bbf4d"
+        }
+      },
+      "noOp": {
+        "mesh": {
+          "width": 420,
+          "height": 420,
+          "changedPixels": 0,
+          "changedChannels": 0,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 138520,
+          "baselineHash": "23eb3c4f",
+          "sampleHash": "23eb3c4f"
+        },
+        "stage": {
+          "width": 780,
+          "height": 1688,
+          "changedPixels": 0,
+          "changedChannels": 0,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 1316640,
+          "baselineHash": "fa6d0ebc",
+          "sampleHash": "fa6d0ebc"
+        }
+      },
+      "restore": {
+        "mesh": {
+          "width": 420,
+          "height": 420,
+          "changedPixels": 0,
+          "changedChannels": 0,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 138520,
+          "baselineHash": "23eb3c4f",
+          "sampleHash": "23eb3c4f"
+        },
+        "stage": {
+          "width": 780,
+          "height": 1688,
+          "changedPixels": 0,
+          "changedChannels": 0,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 1316640,
+          "baselineHash": "fa6d0ebc",
+          "sampleHash": "fa6d0ebc"
+        }
+      },
+      "identities": {
+        "texture": true,
+        "source": true,
+        "canvas": true,
+        "shader": true,
+        "program": true,
+        "group": true,
+        "parent": true,
+        "index": true,
+        "visible": true,
+        "transform": true,
+        "angle": true,
+        "extent": true,
+        "atlasBytes": true,
+        "atlasDimensions": true,
+        "sceneRegistry": true,
+        "programCount": true
+      },
+      "runtimeErrors": 0
+    },
+    "desktop": {
+      "status": "PASS",
+      "viewport": [
+        1440,
+        1000,
+        1
+      ],
+      "angle": 0.1511996049144835,
+      "material": {
+        "mesh": {
+          "width": 420,
+          "height": 420,
+          "changedPixels": 64792,
+          "changedChannels": 125609,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 138520,
+          "baselineHash": "3e69556b",
+          "sampleHash": "a380d891"
+        },
+        "stage": {
+          "width": 1440,
+          "height": 1000,
+          "changedPixels": 64477,
+          "changedChannels": 124436,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 1440000,
+          "baselineHash": "fd5512d9",
+          "sampleHash": "ebddd309"
+        }
+      },
+      "noOp": {
+        "mesh": {
+          "width": 420,
+          "height": 420,
+          "changedPixels": 0,
+          "changedChannels": 0,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 138520,
+          "baselineHash": "3e69556b",
+          "sampleHash": "3e69556b"
+        },
+        "stage": {
+          "width": 1440,
+          "height": 1000,
+          "changedPixels": 0,
+          "changedChannels": 0,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 1440000,
+          "baselineHash": "fd5512d9",
+          "sampleHash": "fd5512d9"
+        }
+      },
+      "restore": {
+        "mesh": {
+          "width": 420,
+          "height": 420,
+          "changedPixels": 0,
+          "changedChannels": 0,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 138520,
+          "baselineHash": "3e69556b",
+          "sampleHash": "3e69556b"
+        },
+        "stage": {
+          "width": 1440,
+          "height": 1000,
+          "changedPixels": 0,
+          "changedChannels": 0,
+          "alphaChanged": 0,
+          "outsidePixels": 0,
+          "nontransparent": 1440000,
+          "baselineHash": "fd5512d9",
+          "sampleHash": "fd5512d9"
+        }
+      },
+      "identities": {
+        "texture": true,
+        "source": true,
+        "canvas": true,
+        "shader": true,
+        "program": true,
+        "group": true,
+        "parent": true,
+        "index": true,
+        "visible": true,
+        "transform": true,
+        "angle": true,
+        "extent": true,
+        "atlasBytes": true,
+        "atlasDimensions": true,
+        "sceneRegistry": true,
+        "programCount": true
+      },
+      "runtimeErrors": 0
+    }
+  }
+}

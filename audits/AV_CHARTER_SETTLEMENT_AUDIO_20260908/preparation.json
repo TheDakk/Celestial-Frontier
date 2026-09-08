@@ -1,0 +1,43 @@
+{
+  "status": "FAIL",
+  "steps": [
+    {
+      "name": "draft-pin",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/draft-pin.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/draft-authority.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.32
+    },
+    {
+      "name": "producer-build",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/producer.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 2.65
+    },
+    {
+      "name": "producer-refresh",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/refresh-producer.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 0.048
+    },
+    {
+      "name": "develop-profile",
+      "command": [
+        "node",
+        "port/v2/tools/check-profile.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 1,
+      "seconds": 43.168
+    }
+  ]
+}

@@ -1,0 +1,548 @@
+{
+  "schema": "cf-native-trinary-diagnostic/v1",
+  "status": "FAIL",
+  "certification": false,
+  "startedAt": "2026-09-08T10:43:18.374Z",
+  "dist": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/dist",
+  "sources": {
+    "port/baseline-v1.8.9/save-fixtures.json": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+    "audits/AV_TRINARY_COMPANION_20260908/fixtures.json": "e8fc3a9c1babf66c15f3174ed54a9ebdf97d36931c9fa2a7dbae0d3a647bc03d",
+    "port/v2/packages/scene/src/address.ts": "c9069b15992c4be5057dd4068c1e7c7a9dcf86768015d64e934ef14b142bd559",
+    "port/v2/packages/scene/src/charter.ts": "09913352608be0ac1238b98ef895377552ca94b23bffe8fa2aebf306de034f09",
+    "port/v2/apps/game/src/main.ts": "3db22d23a68b698fd49932c9940fee71be865483c0c54eb5e75c2a6c32e066c5",
+    "port/v2/apps/game/src/scene-texture-owner.ts": "db7af3f23c3b7d652df37cb54f1082eea177380aefd4f86bc16365a6adbed709",
+    "port/v2/packages/art/src/canvas-treatment.ts": "673bbe89aaa3f8d60e740e4e0297b6a744c04b70c88c9a0d21eb227e7119b092",
+    "port/v2/packages/art/src/surface-polish.ts": "89737a5b88e1bae5223b81671fed429757f426d0e6f2adfe2784ff0f2b6383ac",
+    "port/v2/packages/domain/worldgen/src/worldgen.verbatim.js": "95f0acec80a37c67cc829dc0d71e6719768e5a975d030fe9b89457c23da00eff",
+    "port/v2/packages/domain/starcatalog/src/index.ts": "da886e9f3a2be6ce7e609e031e3a0e4c325d272f8926803f2d0e33b2d7ed1b13",
+    "port/v2/packages/domain/rand/src/index.ts": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927",
+    "audits/AV_TRINARY_COMPANION_20260908/native-runner.mjs": "517172a05028f43916c918d61fe2be2ce1d04d933ef56923478150e4d2cab6d6"
+  },
+  "served": {
+    "index.html": "feae3523d0ce7fc6c02d0e58b859cae79e3e4f19b21f37ed3179c61a3c3a5387",
+    "assets/main-kiIkFjLl.js": "53dd0cad65ce4037fef7d3269cb79c538438730316f2d17413fb64453ee08620",
+    "assets/Geometry-C5FtorEc.js": "9bbbacd5502e42fb7c51a5306bda3b59b718a2bacd20badde40fe7e8ab1afbb6",
+    "assets/getTextureBatchBindGroup-DkbnCTGz.js": "3ce2d33bde60e5f2cc123fab89998b4c1580eecab18b1294321b14d255b83be5",
+    "assets/CanvasRenderer-DXKJLlc8.js": "1e4c6c1578a4d34a9274e2c4a68b4dc37c541e225d963bf661f682486d930051",
+    "assets/CanvasPool-BewL5izq.js": "8b4af0914a4436094e428b6747bef851805c1c84f361ba8819c1fbdcab6b806a",
+    "assets/src-D1xb2OX1.js": "b65c8f4cc2ee2064ff67d0c795945d41119030489bf45185ba96a5e756fcedef",
+    "assets/speciesidentity-DkdaK0o4.js": "bbcbd03c4f82bb640db2cda363b4579b60631a4182d759861009771f4f39d772",
+    "assets/surface-polish-CBmmi-Kj.js": "9d74988f7575b155e811c18ff7bcc594d7158fbee211bfbacabdeafcfdfe0552",
+    "assets/visual-effect-policy-Bvngx8nL.js": "4c150d4f5af91b69dc3b7f069059a5e9bc6daec8fe31ba0eaab4bb4ac61fdef4",
+    "assets/tame-greeting-audio-Cu-PsMZu.js": "7b35cb3164e3a843532ff4744485a9f7ba7377aa73872cb740cf47ee8b6f5122",
+    "assets/canvasUtils-CWV5icuA.js": "faaff76b40957b52f7817add636bb204e563dfab14ed3a0b6f563c96c259938b",
+    "assets/release-identity-CIuedefi.js": "849faf8ee532d75c477524be0847f7db9f6ae443b86c328434bd8101a6c0a82d",
+    "assets/getPo2TextureFromSource-0axNaDip.js": "b30689d034d24afffd35fc3a31fbc217dd73090d008e0ec963372dfdc5fcae68",
+    "assets/RenderTargetSystem-DKTlyS8X.js": "fa6f7819177a12bf7438d3f56905fed48dfc79e1d45c76df828e20ce7fccee22",
+    "manifest.webmanifest": "827ec2c2a4bb946c558321624cc241bcf71c0008aac15dbc2c852f76e2c06f40",
+    "assets/WebGLRenderer-6mXMZ2W0.js": "0564e0461c5adbde63f59574d08acae1c0fe047a3fc02946ad0436f2acf8381d",
+    "assets/BufferResource-e5xCyZ5_.js": "6ee514005f66ab3071ec8b93506a1cd968593d7ac051716399272ac7a384f4d4",
+    "assets/InterVariable-DiVDrmQJ.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+    "assets/browserAll-CAHNI2rF.js": "e4e09a2f845f764445a9672423c95a8f4142f3b314aee86ace1cc59e1cf68b03",
+    "assets/init-S6n54E3j.js": "d9d1196b839d592b9b80843129c776109e53dbb6b96b905b6405bb65f0c42cfb",
+    "icons/celestial-frontier.svg": "97b8d42d779cebcddca5980c60635a8c767c2b7ea43a23871ccd386a7d716c04",
+    "service-worker.js": "25b7ac410846d9c2e061765314a9a57ee9ffeae85aa2bd48ace28699b276bdc0",
+    "assets/Inter-LICENSE-CkXC2-KD.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "assets/WebGPURenderer-Btvgrbn5.js": "e638b9294f9884f469f9bb2b3bee08ac684a6fb1021511eb29cf68baa355aa5f",
+    "assets/audiovisual-pilot-xkKqITae.js": "c3b06772475ab3edc63e467062b1f8627c55307978e8aa9daeacf9c8d6d4bd5a",
+    "assets/audiovisualPilot-YSvrk05a.js": "c3d756c388a8235fd50c726ad9f0ab48e842472e4793c34316538d6a843526f4",
+    "assets/audit-BESfJQH9.js": "3e11872550aabc8e75fc69a64fbf6b819ba259ae7c8c3eb9c828aaadff861090",
+    "assets/biome-vista.worker-D3XRSJZJ.js": "f30f76537077952e792da01712b59650172dc2e7b78698040abc780843c6f7e2",
+    "assets/cf-pilot-combat-contact-DHZD2lYd.wav": "fc3bcb5da5ee2a81a45d32de933cea234eb42850b151ba46565d1ad300eb6a20",
+    "assets/cf-pilot-exploration-music-CMF8UCKw.wav": "fa144fe615faef75fc426f86a44f299dcf48a1637893ccef9cf95fa2ab40a111",
+    "assets/cf-pilot-scout-approach-Be38_iqZ.wav": "ad4020be2cda99df2ba91290965b1d125bf909c4b7279833da51b5b55ad5f373",
+    "assets/cf-pilot-scout-landing-D1k5tYuE.wav": "6e8e3edf1dca6f232ebb13233e6921a64c33bd33830a5c1358165a764779852a",
+    "assets/cf-pilot-temperate-bed-C_jKRyj6.wav": "36caaa89651e44e92f9faddc53d74104cb9e1f5e11eb5a5757efbbdb978be69c",
+    "assets/cf-pilot-ui-nav-bMnbTxA8.wav": "14cecfcf6525c0c3637455ae7c711972021814ae5b5caf711baf7c6bb796a4c8",
+    "assets/cf-pilot-ui-refusal-CMon7hko.wav": "3e4fcbd34d6b65583883e31347ef99c4dd538aa07a311fe7612083e3f37b9b20",
+    "assets/cf-pilot-ui-settlement-uF_X4Ois.wav": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3",
+    "assets/earth-rainy-landscape-DPgApIAi.webp": "478fd649a1aed198e64a9a053c464f9f98630943ac8e11bf1b184b253f47060b",
+    "assets/earth-rainy-phone-DFt5murF.webp": "3689d1273b7bc75806f87eea9718304109a06d31f98682c6161e05b1a06b83ef",
+    "assets/guide-content-Cy7MxzST.js": "5c16f71f1959f41eb1a5b9262873077f41de3df4551dbadc8d23d3f7a5a0b908",
+    "assets/hybridMatrix-DiGQ5L5t.js": "43f3c1833e62a26ecb5c72b33316aab6b79a8732f7e6020bec8e8a294856c5b1",
+    "assets/pilot-sound-player-Dg8Fl5YX.js": "bc9c81864c841e561046c5bcd0cd802b8b0d59a6ee52c9ff23f7d031697bb458",
+    "assets/release-content-M6ij_Xx2.js": "1b128dc1d9ce89ca5cc7199cde5dbce5efd5786331066ef5b80358527f031966",
+    "assets/scout-chemical-132-Dt4gyYnA.webp": "e961336688e8a0687eb6f09dd3f1a22306077694390002ffcda6763b7ba37fc4",
+    "assets/scout-chemical-300-CxcU_kic.webp": "ec2ac6134e4dfc3e74e932c8277e558cdac22f18274f4c806278adc19c510752",
+    "assets/scout-chemical-512-DcNawgH5.webp": "7d58149bed26e0e6aad629d8a7ff50911c9d8540e2cc8c1f8ad60f081299f343",
+    "assets/species-art.worker-DnnSDKMy.js": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172",
+    "assets/speciesart-CGOfbRs-.js": "6865ce59f9d21f2efdd9c9eb6ae64fcb1d2b377c1d63a790cd7c34c6c9130e51",
+    "assets/webworkerAll-Dl-gkjA6.js": "791e45d86752eb73039eb295ef453ce3e7b70d0a15fc8d297812370d688f7e30",
+    "audiovisual-pilot.html": "2699e51c402154544224dbbf82d074dbb5cb1d93494dc1e0ae89ef0e72a9e6b1",
+    "audit.html": "603ee30fe1dbcd93615b93808faa7d8f195a7f34037b3440d6a7ffc7eb1bb41c",
+    "hybrid-matrix.html": "3c167ab230c9e1cc9d91a750b5f6789e483067b2daa589399c909ac291395336",
+    "icons/celestial-frontier-maskable.svg": "ff05489ed56a7193bbaf8fe5e3f6b43e8ba46667be2f8e1e9bdd7ff46da2488c"
+  },
+  "steps": [
+    {
+      "name": "first answerable document",
+      "condition": "window.__CF_SLICE__?.api&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "native input",
+      "button": "left",
+      "point": {
+        "x": 247.1328125,
+        "y": 666.859375
+      }
+    },
+    {
+      "name": "Training closed",
+      "condition": "!window.__CF_SLICE__.api.state().tutActive&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "writable before trinary",
+      "condition": "(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "source-derived isolated fixture",
+      "kind": "trinary",
+      "star": {
+        "seed": 2166531614,
+        "x": -145.99268755456433,
+        "y": 22.470132764428854
+      },
+      "canonicalStar": {
+        "seed": 2166531614,
+        "x": -145.99,
+        "y": 22.47
+      },
+      "ownedArray": 1,
+      "chapter": 2,
+      "fixtureSha256": "9c132f452c3d6bffcc57c8c741bb91e4d1e44e7340e8cf849828de54f9579c2a",
+      "previous": "0f2658fd-2243-4283-9988-33dd7ce81784"
+    },
+    {
+      "name": "new writable trinary document",
+      "condition": "(()=>{if(window.__cfTrinaryImportError)throw Error(window.__cfTrinaryImportError);return window.__CF_SLICE__?.documentToken!==\"0f2658fd-2243-4283-9988-33dd7ce81784\"&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()&&window.__CF_SLICE__.api.state().mode==='system'&&window.__CF_SLICE__.api.state().star===2166531614})()",
+      "status": "PASS"
+    },
+    {
+      "name": "native input",
+      "button": "right",
+      "point": {
+        "x": 195,
+        "y": 422
+      }
+    },
+    {
+      "name": "native trinary exit to galaxy",
+      "condition": "window.__CF_SLICE__.api.state().mode==='galaxy'&&window.__CF_SLICE__.api.state().fine&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "native input",
+      "button": "left",
+      "point": {
+        "x": 195,
+        "y": 422
+      }
+    },
+    {
+      "name": "native trinary Survey offers Enter",
+      "condition": "document.querySelector('#survey [data-act=\"travel\"]')?.textContent.includes('Enter system')&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "PASS"
+    },
+    {
+      "name": "native input",
+      "button": "left",
+      "point": {
+        "x": 120.578125,
+        "y": 274
+      }
+    },
+    {
+      "name": "native trinary rendered entry",
+      "condition": "window.__CF_SLICE__.api.state().mode==='system'&&window.__CF_SLICE__.api.state().star===2166531614&&window.__CF_SLICE__.api.state().renderedScene.starKey===window.__CF_SLICE__.api.state().navStarKey&&(()=>{const s=window.__CF_SLICE__?.api.state(),p=s?.persistence,r=p?.runtime;return p?.ready===true&&p.hold===null&&p.seedBootstrapPending===false&&p.bootRouteRepairPending===false&&p.mutationBlocked===false&&p.documentToken===window.__CF_SLICE__.documentToken&&r?.visible===true&&r.answerable===true&&r.leaseOwned===true&&r.accruing===true&&r.staleBlocked===false&&s.sceneResources.pendingPersistenceWrites===0})()",
+      "status": "WAITING"
+    }
+  ],
+  "screenshots": [],
+  "errors": [],
+  "limitations": [
+    "Diagnostic asc=2/tut=1 plus owned array=1 save replacement on a fresh isolated origin; chapter2 alone grants no stage. Not fresh-player progression proof.",
+    "Headless Chromium viewport emulation, not physical iPhone/Safari or human visual acceptance.",
+    "Generated third companion only; not Slice/Glass certification, broad scene memory qualification or audio verification.",
+    "Texture retirement checks the actual Sprite and old scene scope/lease balances; shared canvas resources need not be forcibly destroyed while another owner retains them."
+  ],
+  "fixtureEvidence": {
+    "schema": "cf-trinary-fixtures/v1",
+    "visited": 32,
+    "cellRange": [
+      -5,
+      5
+    ],
+    "sources": {
+      "port/v2/packages/domain/worldgen/src/worldgen.verbatim.js": "95f0acec80a37c67cc829dc0d71e6719768e5a975d030fe9b89457c23da00eff",
+      "port/v2/packages/domain/starcatalog/src/index.ts": "da886e9f3a2be6ce7e609e031e3a0e4c325d272f8926803f2d0e33b2d7ed1b13",
+      "port/v2/packages/domain/rand/src/index.ts": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    "fixtures": {
+      "binary": {
+        "galaxy": {
+          "seed": 999,
+          "x": 90,
+          "y": -60
+        },
+        "star": {
+          "seed": 875741432,
+          "x": -209.28883330570534,
+          "y": -130.69015520671383
+        },
+        "cell": {
+          "x": -5,
+          "y": -4
+        },
+        "system": {
+          "kind": "M",
+          "starR": 16,
+          "starCol": "#ff9a6a",
+          "binary": {
+            "sep": 52.63956475216895,
+            "col2": "#ffd9a0",
+            "r2": 8.8
+          },
+          "trinary": null,
+          "planets": 3
+        }
+      },
+      "trinary": {
+        "galaxy": {
+          "seed": 999,
+          "x": 90,
+          "y": -60
+        },
+        "star": {
+          "seed": 2166531614,
+          "x": -145.99268755456433,
+          "y": 22.470132764428854
+        },
+        "cell": {
+          "x": -4,
+          "y": 0
+        },
+        "system": {
+          "kind": "M",
+          "starR": 16,
+          "starCol": "#ff9a6a",
+          "binary": {
+            "sep": 38.8,
+            "col2": "#ffd9a0",
+            "r2": 8.8
+          },
+          "trinary": {
+            "sep": 60.8,
+            "col2": "#ff9a6a",
+            "r2": 6.4
+          },
+          "planets": 4
+        }
+      },
+      "sol": {
+        "galaxy": {
+          "seed": 999,
+          "x": 90,
+          "y": -60
+        },
+        "star": {
+          "seed": 424242,
+          "x": 560,
+          "y": 170
+        },
+        "system": {
+          "binary": null,
+          "trinary": null
+        }
+      }
+    }
+  },
+  "origin": "http://127.0.0.1:53665",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  },
+  "pendingEvaluation": null,
+  "failure": "AssertionError [ERR_ASSERTION]: Timed out: native trinary rendered entry\n    at wait (file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_TRINARY_COMPANION_20260908/native-runner.mjs:89:42)\n    at async file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_TRINARY_COMPANION_20260908/native-runner.mjs:146:3",
+  "failureState": {
+    "documentToken": "02494ed7-946f-465a-b57c-690e73e95c73",
+    "mode": "system",
+    "star": 2868415165,
+    "starX": -145.1,
+    "starY": 22.14,
+    "navStarKey": "CF1|g:999@90,-60|s:2868415165@-145.1,22.14",
+    "renderedScene": {
+      "serial": 3,
+      "mode": "system",
+      "ecologyEpoch": 12,
+      "galaxyKey": "CF1|g:999@90,-60",
+      "starKey": "CF1|g:999@90,-60|s:2868415165@-145.1,22.14",
+      "worldKey": null
+    },
+    "cardOpen": false,
+    "fxOn": true,
+    "motionMode": 0,
+    "persistence": {
+      "schema": "cf-v2-app-persistence/v1",
+      "ready": true,
+      "documentToken": "02494ed7-946f-465a-b57c-690e73e95c73",
+      "bootKind": "current-v5",
+      "hold": null,
+      "protectedDetail": null,
+      "authorityBootKind": "absent",
+      "seedBootstrapPending": false,
+      "bootRouteRepairPending": false,
+      "productBootstrapPending": false,
+      "engineeringBootstrapPending": false,
+      "ownershipBootstrapPending": false,
+      "ownershipV2BootstrapPending": false,
+      "visibilityOverrideHidden": false,
+      "lastOutcome": "committed:9",
+      "hideWitness": null,
+      "heartbeatStorageFault": null,
+      "revisionVerificationFault": null,
+      "heartbeatRunning": true,
+      "convergenceReloadScheduled": false,
+      "convergenceReloadHold": {
+        "schema": "cf-v2-product-action-hold-diagnostics/v1",
+        "phase": "idle",
+        "operation": null,
+        "sequence": 0
+      },
+      "leaseReadCount": 10,
+      "revisionReadCount": 5,
+      "mutationBlocked": false,
+      "mutationBlockCount": 0,
+      "mutationBlockWitness": null,
+      "importPhase": null,
+      "importRace": null,
+      "runtime": {
+        "schema": "cf-v2-f4-runtime/v1",
+        "revision": 9,
+        "visible": true,
+        "answerable": true,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "leaseHeartbeat": 6,
+        "activePlayMs": 20660,
+        "accruing": true,
+        "sessionSeed": 1873126309,
+        "sessionOrdinal": 2,
+        "sessionDraws": {},
+        "commits": 5,
+        "staleWrites": 0,
+        "leaseLosses": 0
+      },
+      "ecology": {
+        "schema": "cf-v2-ecology-epoch-edge/v1",
+        "publishedEpoch": 12,
+        "candidateEpoch": 12,
+        "activePlayOriginMs": 0,
+        "observedActivePlayMs": 20660,
+        "edgeDue": false,
+        "autoCheckpointDue": false,
+        "inFlight": false,
+        "stagedIntent": null,
+        "stagedEpoch": null,
+        "retrySuppressedEpoch": null,
+        "lastCommittedRevision": 9,
+        "stages": 2,
+        "commits": 2,
+        "publications": 0,
+        "rejections": 0,
+        "invalidStageCompletions": 0,
+        "projection": {
+          "state": "current",
+          "publishedEpoch": 12,
+          "projectedEpoch": 12,
+          "refreshEpoch": null,
+          "refreshSerial": null
+        },
+        "projectionRefreshesStarted": 0,
+        "projectionRefreshesCompleted": 0,
+        "projectionRefreshesFailed": 0,
+        "projectionSuppressions": 0,
+        "invalidProjectionCompletions": 0,
+        "projectionDirty": false,
+        "projectionSuppressed": false,
+        "checkpointInFlight": false,
+        "lastOutcome": "steady:12:revision:9"
+      }
+    },
+    "resources": {
+      "schema": "cf-v2-scene-resources/v2",
+      "documentToken": "02494ed7-946f-465a-b57c-690e73e95c73",
+      "generation": 3,
+      "mode": "system",
+      "registry": {
+        "schema": "cf-v2-scene-textures/v2",
+        "observationWindow": 0,
+        "scopeCreations": 7,
+        "scopeDisposals": 6,
+        "activeScopeCount": 1,
+        "leaseAcquisitions": 180,
+        "leaseReleases": 164,
+        "activeLeaseCount": 16,
+        "textureCreations": 121,
+        "textureDisposals": 105,
+        "liveTextureCount": 16,
+        "liveCanvasPixels": 1777792,
+        "liveCanvasBytes": 7111168,
+        "peakActiveLeaseCount": 83,
+        "peakLiveTextureCount": 72,
+        "peakLiveCanvasPixels": 7563984,
+        "peakLiveCanvasBytes": 30255936,
+        "lifetimePeakActiveLeaseCount": 83,
+        "lifetimePeakLiveTextureCount": 72,
+        "lifetimePeakLiveCanvasPixels": 7563984,
+        "externalDestroyFaults": 0,
+        "balanced": true,
+        "coherent": true,
+        "liveLeasesByKind": {
+          "scene-canvas": 9,
+          "galaxy-haze": 0,
+          "planet-texture": 6,
+          "ring-texture": 0,
+          "surface-cloud": 1,
+          "star-surface": 0
+        },
+        "liveTexturesByKind": {
+          "scene-canvas": 9,
+          "galaxy-haze": 0,
+          "planet-texture": 6,
+          "ring-texture": 0,
+          "surface-cloud": 1,
+          "star-surface": 0
+        },
+        "activeScopes": [
+          {
+            "label": "scene:3",
+            "leaseCount": 16,
+            "closed": false
+          }
+        ]
+      },
+      "managedResources": {
+        "schema": "cf-v2-pixi-managed-resources/v2",
+        "valid": true,
+        "hashCount": 6,
+        "hashes": [
+          {
+            "name": "canvasText",
+            "type": "renderable",
+            "liveEntryCount": 7,
+            "clearedEntryCount": 0
+          },
+          {
+            "name": "graphics",
+            "type": "renderable",
+            "liveEntryCount": 7,
+            "clearedEntryCount": 0
+          },
+          {
+            "name": "glBuffer",
+            "type": "resource",
+            "liveEntryCount": 16,
+            "clearedEntryCount": 0
+          },
+          {
+            "name": "glGeometry",
+            "type": "resource",
+            "liveEntryCount": 8,
+            "clearedEntryCount": 0
+          },
+          {
+            "name": "glTexture",
+            "type": "resource",
+            "liveEntryCount": 26,
+            "clearedEntryCount": 0
+          },
+          {
+            "name": "graphicsContext",
+            "type": "resource",
+            "liveEntryCount": 7,
+            "clearedEntryCount": 0
+          }
+        ],
+        "liveEntryCount": 71,
+        "clearedEntryCount": 0,
+        "compactionCount": 7,
+        "compactedSlotCount": 124,
+        "faultCount": 0
+      },
+      "fineLayerActive": false,
+      "fineScopeActive": false,
+      "retiredFineOwnerCount": 0,
+      "surfaceTextureOwnerActive": false,
+      "surfaceCurrentTierPx": 0,
+      "surfaceCurrentBackingWidth": 0,
+      "surfaceCurrentBackingHeight": 0,
+      "surfaceRequestedTierPx": 0,
+      "surfaceRetiredLeaseCount": 0,
+      "pendingSurfaceRefreshes": 0,
+      "surfaceVistaGeneration": 3,
+      "surfaceVistaEnvironmentFingerprint": null,
+      "surfaceVistaWorkerActive": false,
+      "surfaceVistaMounted": false,
+      "surfaceVistaCacheEntries": 0,
+      "surfaceVistaCachePixels": 0,
+      "surfaceVistaWorkerStarts": 0,
+      "surfaceVistaResults": 0,
+      "surfaceVistaCacheHits": 0,
+      "surfaceVistaStaleDrops": 0,
+      "surfaceVistaFaults": 0,
+      "surfaceVistaLastBiome": null,
+      "surfaceVistaLastError": null,
+      "pendingSystemRefreshes": 0,
+      "pendingPersistenceWrites": 0,
+      "ringGeometryEntries": 0,
+      "peakRingGeometryEntries": 0,
+      "localCanvasCacheEntries": 2,
+      "peakLocalCanvasCacheEntries": 4,
+      "productRenderTargets": 0,
+      "managedTextureCount": 26,
+      "managedTextureClearedSlots": 0,
+      "managedTexturePixels": 3053474,
+      "sceneTextStyleUpdateListeners": 8,
+      "persistedPagehideCount": 0,
+      "persistedPageshowCount": 0
+    },
+    "at": 20877.5,
+    "caption": "6 worlds orbit this star",
+    "viewport": [
+      390,
+      844,
+      2
+    ],
+    "inputs": [
+      {
+        "type": "contextmenu",
+        "trusted": true,
+        "x": 195,
+        "y": 422
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "x": 195,
+        "y": 422
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "act": "travel",
+        "x": 120,
+        "y": 274
+      }
+    ],
+    "fields": []
+  },
+  "failedEvaluation": null,
+  "endedAt": "2026-09-08T10:43:41.504Z"
+}

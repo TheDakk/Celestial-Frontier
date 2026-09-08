@@ -1,23 +1,208 @@
 # Celestial Frontier — Master Art Direction
 
+## Layered Earth riverbank — matches local code as of 2026-09-08
+
+`?livingvista=1` admits only the complete canonical Earth request, environment/profile and
+ordered 19-genome roster. It pairs a painted rainy riverbank with a separate transparent layer
+of six existing named residents: Civet, Platypus, Frog, Persimmon, Cranberry and Devil’s Club.
+An explicit temperate-profile check requires their fauna families and plant forms. Current
+named Earth art owners preserve anatomy and colors; original genomes and encounters do not change.
+The documented global D-9e generation-filter gap remains a separate unresolved issue.
+
+Both 960×430 layers publish together; pending, failed and option-off routes retain the original
+opaque vista. The pair fits uncropped between measured upper chrome and the Biosphere strip with12px
+clearance. Existing ResizeObserver boundaries republish both sprites together, and completion of
+the final landing camera impulse restores the resting layout after canvas translation. Only successful
+Earth painting hides its own decorative globe and cloud deck; native controls/camera retain ownership. This option defers to `planetturn=1` and
+`avpilot=1`. The background is hash/dimension checked; bounded workers, generation/epoch fences
+and retryable scene leases govern publication and cleanup. No layered CPU cache is added.
+Two full RGBA canvases use 3,302,400 bytes before temporary painter, decode and GPU allocations.
+This is static, relative scene placement, not articulated animation or a claim that the existing
+creature painters meet the approved rich-detail target. No runtime AI or player authoring installs.
+[Implementation, mapping and verification limits](audits/AV_EARTH_LAYERED_SCENE_20260908/README.md) own acceptance results.
+
+## Universe-wide richness and collectible character — Nick, 2026-09-08
+
+**Confirmed scene target and proceed authority:** stage each canonical creature at appropriate
+biome-relative scale with grounded contact, coherent light and depth; show the same richly
+detailed identity in Compendium and articulate compatible attack movements in battle. Nick
+authorized beginning this art direction. Preserve authored3D masters/rigs/textures/clips and
+versioned data for a possible future Unity/Unreal port. Current Pixi2D/2.5D presentation and
+known kinematic universe rules remain the implementation boundary. The
+[scene/engine brief](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/ENGINE_AND_SCENE_BRIEF.md)
+records tooling capability, scale, gravity and globe-projection findings; none implies completed
+all-family animation, new physics, new engine installation or accepted production assets.
+
+Nick's direction combines Dakk's fantasy richness with original, recognizable creature
+personality and the appeal of discovering and collecting particular companions. This applies
+across creatures, planets, stars, galaxies, biomes, ships, effects and the UI. The interface
+belongs to the same visual world: coherent materials, light direction and palette hierarchy,
+clear grouping and readable phone controls. Preserve accepted control placement, colorful emoji,
+44px targets, text preferences, contrast and semantic meaning while improving their finish.
+
+Creature charm can read as curious, gentle, proud, formidable or strange. Clear silhouettes,
+faces, gaze, ears, posture and cohesive coats/materials should communicate character at
+132/300/440. Existing genomes, traits, final named/lineage proportions, rooted anatomy and
+canonical colors remain the authority; fantasy richness introduces no rerolls or silent anatomy
+substitution. Planetary and stellar identities, biome composition and ship capabilities retain
+their established owners. One material/light/palette hierarchy supports the whole universe
+without flattening species, resources or status meanings into one treatment.
+
+**Earth identity and movement clarification — Nick, 2026-09-08.** Earth creatures already have
+explicit appearance instructions. Preserve their recognizable Earth-like anatomy, proportions,
+features and canonical colors through the exact named catalogue/final morphology owner; apply
+the approved richness through materials, lighting, detail and expression, without fantasy
+redesign. Their movement must suit the actual species and connected anatomy. These are binding
+authoring targets, not evidence that animal-specific locomotion is implemented. Alien planets,
+biomes and creatures remain procedurally generated from their existing authoritative data.
+Named Earth identities and bred descendants keep their existing named/lineage routing wherever
+they appear; this distinction changes no biological generation, lineage or breeding rule.
+Current creature motion remains limited to the offline Wolf study and native whole-portrait translations;
+full species-appropriate walking, flight, swimming and articulated attacks remain unfinished.
+
+The bounded Blender study now preserves the exact existing Wolf input, skin coordinates and
+proportions in two coat/face treatments and finite brace, neck/head strike and recoil. Ten
+640px stills and a33-frame motion sample rendered on Metal; saved-model identity, all65 frames,
+planted paws and exact settlement pass. Both treatments remain below the requested visual bar:
+noisy coat detail, limited face character and abrupt limb joins need concept/anatomy work.
+Nick has since approved the attached space and creature references as the exact visual direction.
+These earlier Wolf render treatments remain unaccepted individual candidates,
+with no runtime installation or all-family completion claim. Eventual
+battle animation must articulate the organism from existing settled cues and retain a finished
+static counterpart. The current native Chronicle's portrait translations remain a separate
+implemented boundary. [Artflow and public-reference limits](audits/CREATURE_CHARM_STUDY_20260908/ARTFLOW.md)
+distinguish today's deterministic pipeline from the proposed reviewed concept/Blender workflow.
+Individual production-asset appearance, collectibility and device acceptance remain open.
+
+**Approved space/creature visual direction — Nick, 2026-09-08.** Nick explicitly identified two
+attached images as the exact art direction to bring into the game: the 16-space-object sheet
+and the 12-original-creature sheet. These two references are **APPROVED for visual direction**;
+the audit owns retention of their exact PNG bytes and approval hashes as
+`approved-space-reference.png` and `approved-creature-reference.png`. Nick has now also supplied
+a nine-panel biome reference and a UI example as graphic/material inspiration, retained in the
+[new direction addendum](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/intake.json).
+The biome studies depict canyon, volcanic terrain, dunes, ice, tidal flat, cave, fungal forms,
+crystals and alien pods; these subjects add no canonical biome IDs or generated-world facts.
+Nick expressly limits the UI example to graphic/material treatment: **do not copy its layout or
+controls**. Preserve CF's existing UI placement, behavior, emoji, readable text and target sizes.
+The supplied images supersede the pending-reference question; they do not approve individual
+production assets, replacement canonical anatomy, runtime installation, completed animation or
+device performance.
+
+The exact supplied ZIP provides the previously unavailable source snapshot; the original Dakk
+worktree remains untouched. The earlier Wolf/explorer/ship vista, four-biome comparison
+(jungle, cryogeyser, coral coast, volcanic) and eight-object comparison (terran, ringed gas, ice,
+lava, star, protostar, black hole, galaxy) remain historical provisional concepts, not the two
+newly approved references. Preserve their artifact facts and approval distinction.
+
+**Opt-in canonical Earth surface turn — implemented locally, 2026-09-08.** With `?planetturn=1`
+and WebGL, the canonical Earth route (galaxy 999, Sol 424242, planet 133) can show one finite
+18-second surface yaw, reaching 0.22 radians and settling back to zero. A worker creates one
+768×384 unlit atlas from the supplied canonical Earth parameters and existing seeded surface
+colors. Sphere projection keeps illumination fixed while the surface moves; existing clouds
+remain a separate layer. This installs no richer painted reference art.
+
+The separate `?planetturn=1&planetmaterial=1` option now adds a subtle material proof through
+`planet-surface-material.ts` and the existing view's `uMaterial` uniform. Three analytic
+value-noise octaves use 12 scalar hashes for bounded proportional grain, modest fixed-light
+relief, ocean sheen and an inner atmospheric rim. There are no extra texture fetches, mesh
+layers, dependencies or GL capability requirements. Canonical atlas bytes, coasts, palette,
+domain data and the 420px silhouette remain unchanged. The color masks are perceptual estimates,
+not elevation or biome classifications. Material defaults off with the plain turn flag, and
+`uMaterial` resets for every accepted view within the same application-owned program/group.
+Fresh fixed phone/desktop material comparisons passed with exact atlas/owner/pixel restoration;
+visual inspection found only a subtle change, well below the approved painted finish. Keep the result
+aligned with Nick's exact space/creature and biome direction, using the UI reference for
+materials only. [Material proof audit](audits/AV_EARTH_SURFACE_MATERIAL_20260908/README.md).
+
+One application-owned program and uniform group are shared; per-view worker, texture lease and
+geometry buffers are released on exit/failure. Hidden views pause elapsed motion; reduced motion
+or Effects Off restores the canonical globe fallback. Review either turn option without `avpilot`
+because its separate Earth comparison can hide the globe. Browser players need no authoring-tool
+installation. Each raw RGBA atlas and GPU texture requires at least 1.125 MiB before other resources;
+physical-phone performance and memory qualification remain pending. Atlas/motion/lifetime tests,
+static/art checks and scoped native phone/fresh-desktop motion and retirement checks passed.
+The combined native run remains red after a post-exit resize unexpectedly returned to the galaxy;
+same-document re-entry was not reached. [Earth surface-turn audit](audits/AV_EARTH_SURFACE_TURN_20260908/README.md).
+
+This is finite-turn coverage, not a full 360-degree map: the canonical source is nonperiodic, and
+seam/backside mapping still needs an explicit versioned solution. Slow galaxy rotation and
+creature articulation remain separate requirements. Creature actions need coherent rigs or
+compatible layers driven by real outcomes; translating an entire painting does not complete them.
+
+**Opt-in painted Mars panorama — local implementation and scoped native PASS, 2026-09-08.**
+`?paintedvista=1` can load one static optimized landscape for the exact canonical Mars request,
+`CF1|g:999@90,-60|s:424242@560,170|p:134#3`. It follows the approved biome reference's top-right
+dune treatment while retaining the actual `dunesea`/sand palette, no weather, two moons, no ring,
+no water and no flora/fauna. Root inspected the generated candidate for two small moons and no
+inhabitants; the exact prompt and untouched generation are retained. The opaque 960×430 WebP
+is 127,088 bytes. It is one authored asset, not online generation for arbitrary worlds.
+
+The complete request and a distinct variant cache key bind the painting to this scene. After
+successful exact-Mars mounting, including cache hits, the landed presentation now hides only its
+own decorative Mars globe and centers the complete uncropped panorama. It keeps the globe texture
+available for fallback; this claims no GPU-memory saving. Default, pending and failed-load views,
+world visibility, camera state and native DOM controls remain unchanged. The visibility owner
+restores only the globe it hid, preserving Earth's separate finite-turn fallback. The panorama
+is static; existing pan/zoom inputs and limits do not create navigable ground tiles.
+
+Current load failure falls back to the native vista worker; stale/exit loads abort and decoded
+bitmaps close. Existing one-entry CPU canvas/scene-texture ownership and the inherited Worker
+availability guard remain. Earth is not given a background swap: its opaque vista contains
+inhabitants and needs a separate layer solution. Earth species constraints remain unchanged.
+The composition successor passed 216 tests in 13 files, all three TypeScript programs,
+art-unused/art-audit/override/spec checks and root validation, with no source-check failure in
+this batch; bounded source review found no blocker. Fresh native phone, desktop, blocked-asset
+and default runs passed: full uncropped centering and painted-only globe hiding, unchanged native
+controls, Survey reopen/Close, phone Reduced Motion/Effects Off with cache hits, and native exits
+with resource cleanup. Blocked/default routes retain the visible globe and canonical vista.
+Forced globe visibility was rejected and actual paint/restoration checks passed. Two earlier
+runner failures remain retained: a legitimate landing wave-off and a receipt-ordinal assumption;
+only the observer changed, with domain/raw receipts authorizing the learned 100% Land path.
+
+Agent visual review now sees a clear desktop landscape and an unobscured full phone band, but
+large vertical starfield gaps keep the phone from feeling like an immersive complete scene.
+This bounded batch ends without another Mars layout loop. Fixed Chromium evidence does not
+qualify resize, physical devices, PWA or full certification; the new preview remains separate.
+[Current composition audit](audits/AV_PAINTED_MARS_COMPOSITION_20260908/README.md).
+
+The prior native phone/desktop/blocked-asset and preview PASS results remain bound to the earlier
+composition in the immutable [painted Mars audit](audits/AV_PAINTED_MARS_20260908/README.md), including
+its corrected checks and original failures. Its richer dunes, desktop globe overlap, phone sky
+occlusion and coarse globe/polar bands are historical observations, not native results for this
+successor. Static art adds no animation/morphing; finished landscape/AAA quality, physical-phone
+qualification and human asset acceptance remain open. No hosted admission is implied.
+
+The supplied prompt/hash, capture/revision and premultiplied-alpha processing patterns are useful
+examples, but the snapshot lacks its original sibling suite inputs and complete operational
+setup. Its broad alpha gate admits RGB banners before unguarded alpha access, and its keyer can
+alter intentional purple/pink paint beyond the edge; backgrounds and emissive effects need
+separate profiles. Exact prompt hashes do not make generated pixels deterministic. Preserve
+CF's seeded identity, Pixi/browser UI and current static fallback; a keyed painting supplies no
+rig, articulated motion or runtime lifetime owner. The metadata demo validates metadata only;
+the Wolf rig study and native whole-portrait battle motion retain their separate limits.
+[Provided pipeline and approved space/creature references](audits/PAINTED_SPACE_PIPELINE_20260908/README.md);
+[new biome/UI inspiration](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/intake.json).
+
 ## Playable audiovisual priority — Nick, 2026-09-07
 
 Nick requested graphics/audio implementation beyond U2–U4, incremental fixes and a development
 playtest candidate, with documented review for Claude Thursday2026-09-10. Local work can proceed
 without waiting for that review. The existing campaign's graphics/audio-first sequence owns the
 priority; exhaustive UI polish is deferred while play-blocking defects remain actionable.
-The first proposed slice joins prepared Earth/Scout visuals and the authored landing cue to an
-actual successfully rendered native landing, with strict gesture/outcome/lifecycle ownership.
-It is not implemented yet. Follow ROADMAP.md and
+The local implementation now joins the prepared Earth/Scout visuals and landing cue to a verified
+native landing, and adds finite attack/reaction translations to the real Combat Chronicle.
+These are presentation changes over existing durable outcomes; anatomical animation is still
+incomplete. U2 and native audiovisual acceptance remain pending. Follow ROADMAP.md and
  audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md for scope and evidence.
 Human art/listening/device acceptance remains open; no unseen direction is declared accepted.
 No exact hosted/publication authority exists. Earlier dated scope stops below remain history and
 are superseded only for this newly requested local implementation, not verification claims.
 
 
-## Audiovisual pilot implementation — 2026-09-05 local
+## Audiovisual pilot implementation — matches code as of 2026-09-08 local
 
-Matches the scoped Phase 1 implementation as of **2026-09-05 local**. Nick authorized B–D
+Matches the scoped implementation as of **2026-09-08 local**. Nick authorized B–D
 production under the integrated-pilot approval stop; develop `c1791e2` (including PR #41) is
 its merged foundation. `audiovisual-pilot.html` is the compact Earth/Scout direction study,
 48-condition portrait comparison and eight-cue listening set. It links separately to the
@@ -42,10 +227,47 @@ and weather. It becomes visible only when the canonical vista is ready and every
 image has loaded successfully. Until then, or for another world/request, the native globe/vista
 remains the fallback. Galaxy art and canonical flora/fauna generation are unchanged.
 
-All eight body plans retain protected static portraits at 132/300/440; 300 displays the existing
-440 source. Anatomical animation remains INCOMPLETE for every family. The optional accent
-outside the frame demonstrates motion policy only. Existing painter/artlock inputs remain.
-Supporting component mockups and review provenance are secondary accessible disclosures.
+The opt-in native Land action now arms one finite Scout arrival before persistence and reveals
+it only after Main proves the exact committed revision, current runtime/world and fresh rendered
+scene, then the matching Earth vista and ship image are ready. It lasts 1.8 seconds; phones use
+the visible Survey header beside its existing Close, while other layouts use the scene layer.
+Reduced motion keeps a static arrival; Effects Off, refused/wave-off, Training, convergence,
+wrong/stale scene, hidden or disposed owners cancel it without changing gameplay or input.
+
+All eight body plans retain protected runtime static portraits at 132/300/440; 300 displays the
+existing 440 source. The optional accent outside the frame demonstrates motion policy only.
+Existing painter/artlock inputs remain. Supporting component mockups and review provenance are
+secondary accessible disclosures.
+
+**Offline Wolf authoring boundary — matches code as of 2026-09-08.**
+`port/v2/tools/creature-blender-export.mjs` exports the complete detached genome, exact
+`speciesVisualKey`, source hashes and final named painter proportions. The existing pure Wolf
+routes through `faunaResetCanidC`; normalized coordinates describe the pre-fit 440px painter,
+not a traced raster. `port/v2/tools/blender/creature_canid.py` adds authored lateral depth,
+connected tissue, joints, weights and finite idle/interaction poses only for that pure named
+candidate. Real ordered Wolf descendants retain their source-derived drift and static fallback;
+procedural and other unsupported owners cannot substitute this rig. Generation and runtime
+painters are unchanged, and the model is not installed in the game.
+
+The second candidate passed saved-model checks: one connected skin, 68,890 vertices/68,888
+polygons, zero nonmanifold edges and normalized weights. Across 97 evaluated frames, 1,364
+planted paw vertices drifted at most 6.033e-8 scene units; skin motion reached 0.073987 and the
+final settled delta was zero. Four negative controls rejected; inspection left the master
+unchanged. Five 440px poses (1/25/49/81/97) rendered on M4 Pro Metal. One bounded sampling
+correction smoothed the first candidate without changing source proportions or bones. The
+surface is smoother but still clay-like, with abrupt limb junctions and limited fur/material
+detail. This is unaccepted art. All eight family-level anatomical animation goals, runtime
+integration and human acceptance remain open. The
+[Wolf candidate audit](audits/CREATURE_BLENDER_CANID_20260908/README.md) owns exact inputs,
+retained failures, renders and private backup status; no backup completion is asserted here.
+
+Separately, the native Combat Chronicle now uses `combat-battle-scene.ts` and its owned style
+for two canonical portrait slots, with at most two existing thumbnail leases. Its registered
+cue clock drives finite 200ms lunge, recoil, dodge and stun translations of whole portraits;
+player champions without a fauna genome use their actual nameplate. Static outcome text remains
+with reduced motion or Effects Off, and the existing Chronicle owns accessible narration.
+This adds no anatomical rig, limb motion or biome locomotion. Native battle review and human
+art/listening acceptance remain open; existing painter/artlock inputs remain unchanged.
 
 The same eight original PCM16/48 kHz audio cues remain listening candidates; masters, MIDI,
 Surge patches and REAPER projects stay private. The shared Tame/creature audio owner admits at
@@ -54,8 +276,20 @@ mute/hide/route/teardown guards. The separate decoded-data cache remains bounded
 bytes; native playing AudioBuffers are additional allocations. The real game creates no second
 audio context. Music/bed return to silence after 24 seconds without an automatic resume loop.
 After explicit pilot activation, existing Shipyard/Inventory/Compendium navigation clicks may
-add a short UI cue. Ship/combat/settlement recordings still have no durable outcome mapping.
-Canonical creature synthesis and legacy sting compatibility ownership remain unchanged.
+add a short UI cue. The existing 1.4-second Scout landing recording now follows the verified
+arrival through one pre-await native activation and exact destination handoff in the shared
+Tame/creature context. Rejected/stale handoffs stay silent; no second context or post-await
+reactivation is created. The existing 700ms `cf-pilot-ui-settlement` cue now follows successful
+Starter Charter acceptance, including immediate completion, through the original trusted Accept
+event's captured shared-context activation on the same current route. Main consumes it once only
+after durable publication, ceremonies, final Charters refresh and barrier release; duplicate,
+refused, converging or failed results remain silent. Pilot listening opt-in and existing sound,
+visibility and lifetime guards remain required. No assets, reward rules or audio context are added.
+Corrected browser-free develop and scoped native checks PASS; retained observer failures and
+the original scrolled-header finding (corrected separately in `audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md`) are in the
+[Starter Charter audio audit](audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/README.md).
+Other unmapped authored recordings remain listening candidates. Canonical creature synthesis and
+legacy sting compatibility ownership remain unchanged; human listening/device acceptance is open.
 
 Eight authoritative rights rows, file/header/hash checks and sanitized processing evidence
 remain the audio intake. Matched-level human listening, anatomy/art direction, comfort and
@@ -70,7 +304,42 @@ Those diagnostics do not establish human visual/listening acceptance or a new ce
 No further audio render, Phase 2/chrome migration, hosted attempt, purchase or release is part
 of this refinement.
 
-**Current implementation reference — matches code as of 2026-09-05 local.** Static creature/genome,
+**System magnetar identity — matches code as of 2026-09-08 local.**
+`port/v2/apps/game/src/system-star-field.ts` restores the canonical static field only for `MAG`:
+two blue (`#96c8ff`) ellipses with radii 24×10, rotations ±0.5 radians, stroke width 1.2 and
+alpha 0.45. Main places them after the beams and before the white-hot core. They retain this
+static identity under Reduced Motion and Effects Off. The scene owns their disposal; no RNG,
+save, texture or animation behavior changes. The current browser-free develop profile passes;
+scoped native phone/desktop entry, pixel visibility/restoration and context cleanup pass in
+`audits/AV_MAGNETAR_FIELD_20260908/`. This does not assert human visual acceptance.
+
+**System protostar disk — matches code as of 2026-09-08 local.**
+Main now gives `PROTO` an explicit branch through
+`port/v2/apps/game/src/system-protostar.ts`, replacing its ordinary star-surface fallback.
+Each request creates a fresh 420×240 canvas (100,800 pixels / 403,200 RGBA bytes) displayed at
+140×80 world units. The original dust disk rotates 0.4 radians, compresses its vertical axis
+to 0.34 and uses radial limits 14→70, with a warm radius-30 core. This static identity remains
+under Reduced Motion and Effects Off. One existing `sceneTexture` lease owns the surface;
+there is no new cache, ticker, RNG or save behavior. Full browser-free and scoped native
+phone/desktop original-pixel, zoom-policy and cleanup checks pass in the
+[protostar disk audit](audits/AV_PROTOSTAR_DISK_20260908/).
+
+**Third system star — matches code as of 2026-09-08 local.**
+Main now mounts the passive `system-trinary-companion` when the generated binary also has
+`raw.trinary`. Its diameter is `4.8 * r2`, separation is the final generated `sep`, and its
+existing rock-orbit phase is `t * 0.16 + 2.1`, held at `t = 0` under reduced motion.
+`coronaSpr(col, true)` adds one cached 256×256 companion canvas with three radial stops:
+white at 0, its generated color at 0.25 and transparent at 1, omitting the primary's 0.6 stop.
+Shared v2 polish and existing `sceneTexture` ownership/teardown remain; binary painting is
+unchanged. The world-count caption distinguishes three suns from a binary pair's two.
+No RNG, save, route or gameplay changes are introduced. Granulated companion close-up
+surfaces remain unimplemented. Browser-free develop and scoped native exact-address entry,
+phone/desktop paint controls, motion, actual gradient and cleanup checks PASS in the
+[trinary companion audit](audits/AV_TRINARY_COMPANION_20260908/README.md). The first crowded-map
+pointer entry selected a nearby star; that retained finding is separate from the successful
+Search → Follow proof. Human/device acceptance and full certification remain open.
+
+**Current implementation reference — matches code as of 2026-09-07 local.** Static creature/genome,
 hybrid and biome painters are preserved. The art workspace explicitly declares its existing
 Genome and PlanetGen imports; this is dependency metadata, not a painter or visual change.
 Evidence-build separation leaves the species worker/painter byte-identical at its batch-2
@@ -1012,11 +1281,14 @@ Current vistas read as beautiful-but-sparse backdrops. Fix = **ecological occupa
   wrong wrap was removed from `tools/sheets/floravista.js`, whose forced-cactus audit had been
   masking its own test. RULE: `hdGenesFor` output feeds `hdBeastBare` ONLY; flora painters take
   the raw genome.
-- **THE LANDING ROLL (vista side)** — the touch-down REGION is rolled per landing and the
-  vista's fauna are picked to MATCH it: species whose rig family belongs in the rolled biome
-  (BIOME_SETS fauna list), seeded-shuffled per landing so repeat descents meet different
-  locals. A terran world whose roll came up a SEA region shows the shore/sea scene. (Generation
-  side of the roll: WORLD_GENERATION.md `biomeForLanding`.)
+- **THE LANDING ROLL (vista side)** — the touch-down REGION is rolled per landing. Intended
+  fauna compatibility is defined by `BIOME_PROFILES[biomeKey].fauna`, not `BIOME_SETS.fauna`.
+  The earlier claim here that the global filter enforced that list was incorrect: D-9e reads
+  the wrong table and can fall back to an unfiltered pool. See BIOME_ATLAS.md and
+  port/v2/DEVIATIONS.md. The new exact-Earth layered scene checks its six residents against the
+  actual profile; it does not repair or reroll legacy/global generation. A terran world whose
+  roll came up a SEA region shows the shore/sea scene. (Generation side: WORLD_GENERATION.md
+  `biomeForLanding`.)
 - **RIVERS ON SETTLED WORLDS** — on iron/town worlds (the only ones with roads) the seeded
   river now keeps to its OWN bank the whole way down (spring pulled to the mouth side,
   meanders damped, bowing outward only) so it never crosses the road or the field quads; wild

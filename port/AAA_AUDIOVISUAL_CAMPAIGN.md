@@ -2,17 +2,132 @@
 
 ## Playable audiovisual priority — Nick, 2026-09-07
 
-Nick requested graphics/audio implementation beyond U2–U4, incremental fixes and a development
-playtest candidate, with documented review for Claude Thursday2026-09-10. Local work can proceed
-without waiting for that review. The existing campaign's graphics/audio-first sequence owns the
-priority; exhaustive UI polish is deferred while play-blocking defects remain actionable.
-The first proposed slice joins prepared Earth/Scout visuals and the authored landing cue to an
-actual successfully rendered native landing, with strict gesture/outcome/lifecycle ownership.
-It is not implemented yet. Follow ROADMAP.md and
- audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md for scope and evidence.
-Human art/listening/device acceptance remains open; no unseen direction is declared accepted.
+Nick's active local campaign runs for24 hours, ending **2026-09-09T03:11:15Z**
+(September8 at23:11:15 America/New_York), with documented review for Claude Thursday2026-09-10.
+Graphics/audio implementation now leads beyond U2–U4; local work proceeds without waiting for
+that review. Exhaustive UI polish is deferred while play-blocking defects remain actionable.
+
+The finite Earth/Scout arrival and authored landing sound are implemented in the working candidate,
+with focused preparation checks. They join the native gesture to exact durable landing/publication,
+then wait for the current Earth vista/media under bounded ownership. The two-portrait Combat
+Chronicle staging is also implemented: existing settled cues drive attack/dodge/recoil translations
+with static reduced-motion feedback. Neither feature changes gameplay outcomes or proves anatomical
+animation; all eight anatomical families remain INCOMPLETE. Native phone inspection first found
+the scene-centred ship covered by Survey, then a header arrival protruding2.13px. The corrected
+finite motion stays in the existing header slot; native movement, containment, cleanup and the
+1.4s audio-source check PASS. All preceding failures remain retained in
+`audits/AV_PLAYABLE_IMPLEMENTATION_20260907/`. This scoped diagnostic is not full admission or
+human visual/listening/device acceptance.
+
+U2 remains open. Signed **837db4aaa0ef5d3d8bffc79c70f62dcc2503032d** passed324 Vitest files /
+3494 tests with1 skip, then its static stage stopped at **TS6133** for the unused test-only
+`objective` binding. The binding is removed in current code while preserving fixture creation.
+No small-phone, large-phone or Slice stage ran in that U2 attempt; retain
+`audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json` and every prior RED.
+
+Follow ROADMAP.md and `audits/AV_24H_CAMPAIGN_20260907.md` for the current batch and review trail;
+`audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md` retains the initial bounded plan.
+Keep accepted U1 controls, colorful emoji, seeded species/biome identities and protected portraits.
 No exact hosted/publication authority exists. Earlier dated scope stops below remain history and
-are superseded only for this newly requested local implementation, not verification claims.
+are superseded only for Nick's authorized local implementation, never for evidence or acceptance.
+
+## Current unobstructed Mars preview — September8, 2026
+
+The next bounded composition correction hides only the exact painted Mars globe after successful
+image publication and centers the complete landscape. Default/failed loading and Earth remain
+unchanged.216tests/static and four native modes passed; both landing-observer failures are retained.
+Phone is still a contained panorama band, not finished immersive staging. Further Mars layout
+polish stops here; next work should advance one complete canonical creature or inhabited scene.
+
+[Current local preview](http://127.0.0.1:56749/?paintedvista=1), PID63914/exec26352, passed package
+and boot/Guide checks. ContentSHA a740b005c7c054b22e5d3ab30ead610cbdb39e9f6336443ec3f771d7fa1024c7,
+dirty-local-only/publishable:false. [Review packet](../audits/AV_PAINTED_MARS_COMPOSITION_20260908/README.md).
+No new image, creature animation or audio in this batch; earlier implementations remain included.
+
+## Previous painted Mars playable preview — September8, 2026
+
+The approved painted direction now has one exact canonical Mars panorama mounted in the native
+game through `?paintedvista=1`. Rich dunes and layered rocky horizons are a clear visible advance;
+old globe/landscape composition remains unfinished. The asset is static and barren, matching the
+actual request. Earth identities and existing UI placement remain binding. This is one reusable
+verified loading/ownership path plus one artwork candidate, not completed procedural art coverage.
+
+[Local preview](http://127.0.0.1:56099/?paintedvista=1), PID58886 / exec66980, passed package and
+native boot/Guide checks. Content SHA8721f86dce95a43e7c773f96d3b82b9a59150bedcf70053a224b3f0a79423651;
+dirty-local-only/publishable:false. Final97tests6files, static/art/root and scoped phone/desktop/
+blocked-asset native results passed. [Review packet](../audits/AV_PAINTED_MARS_20260908/README.md)
+retains source corrections, screenshots and limits. No new audio or creature animation in this
+batch; earlier implementations remain included. Older previews below describe their own packages.
+
+## Refreshed playable preview — September8, 2026
+
+The shared sticky title now uses opaque paint over its existing padding. Scoped native checks
+pass six phone/desktop conditions, including large/max text and forced colors; original scrollbar
+and desktop-fixture observer failures remain retained. The new ordinary local preview contains
+landing/battle presentation, MAG/PROTO graphics and Charter audio. Its loopback URL is
+http://127.0.0.1:53304/?avpilot=1, content 1aa9002a70dcb89500f3adc7a1872e90e41e854ac6ff3598a781ebd92cfff614; dirty-local-only/publishable:false.
+[Header/preview review record](../audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md) owns exact evidence.
+Existing forced-colors bottom guidance is visually too heavy; record as a separate bounded
+follow-up, without resuming broad UI polish. Wider playable scene/audio work remains next.
+No hosted publication, signing retry or runtime Wolf integration occurred.
+
+## Starter Charter settlement cue increment — September8, 2026
+
+The existing 700ms `cf-pilot-ui-settlement` recording now follows successful native Starter
+Charter acceptance, including immediate completion, with explicit pilot listening opt-in.
+The original trusted Accept event captures one same-route activation in the shared context.
+Main consumes it only after exact live-revision publication, ceremonies, final Charters refresh
+and barrier release. Duplicate/refused/converging/failed results remain silent; there is no
+post-await activation, new asset or reward change. Existing voice/cache and hide/mute/route/
+disposal owners remain. This supersedes the earlier settlement-audition-only description for
+this one mapping. Corrected browser-free develop331files/3727tests/1skip and scoped native
+checks PASS, with retained observer failures and a scrolled-header visual follow-up in the
+[Starter Charter audio audit](../audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/README.md);
+human matched listening/device acceptance and broader cue coverage remain open.
+
+## Protostar disk increment — September8, 2026
+
+The current PROTO branch replaces an ordinary corona fallback with its canonical tilted
+dust disk/warm core, using a single bounded canvas and existing scene-texture cleanup.
+No procedural identity or game behavior changes. Verification, original-recipe controls
+and captures belong to `../audits/AV_PROTOSTAR_DISK_20260908/`. Human art/device acceptance
+and broader stellar production remain open.
+
+## Magnetar system-field increment — September8, 2026
+
+V2 now restores the original game's two static magnetic-field arcs for MAG systems, where
+the live renderer previously shared NS beams/core without the distinguishing field. The
+small Pixi geometry owner uses normal scene cleanup and adds no textures or animation.
+Current checks, retained failures and source-bound captures are in
+`../audits/AV_MAGNETAR_FIELD_20260908/`; human art acceptance and broader sky work remain open.
+
+## Offline Wolf candidate checkpoint — September8, 2026
+
+The complete-genome export bridge and one connected pure named Wolf candidate are implemented
+and verified locally. Exact source identity, named final proportions and real lineage/procedural
+fallbacks are preserved; no game generator, protected painter or save changed. The second
+candidate has one continuous skin, an actual armature and finite grounded motion. Five Metal
+poses and an actual-size132/300/440 comparison are retained. One bounded surface-sampling
+correction improved the first faceted result; clay-like material and abrupt limb junctions
+remain unfinished. This is offline authoring, not runtime skeletal battle/biome locomotion.
+
+[Current Wolf audit](../audits/CREATURE_BLENDER_CANID_20260908/README.md) records19 focused tests,3 TypeScript
+programs, root validation, saved-model/all97-frame checks and4 rejected negative controls.
+The review document's first phone observer accepted innerWidth466 at requested390; its raw
+PASS is retained as insufficient. The corrected scroll container and exact-width observation
+pass390, with no browser exception. Native references retain the first300px observer red.
+Inkscape retest again exports successfully outside the sandbox; the CVDisplayLink warning did
+not crash it, and exact PNG bytes match the prior success. Its strict text-parser red remains.
+
+Both candidate versions/inputs/recipes/receipts are preserved in existing private local storage.
+The prepared24MB iCloud copy was rejected by automatic approval review; explicit payload/destination
+approval is pending, so independent backup is not complete. Required SSH signing remains blocked
+by the prior1Password error. No unsigned fallback, push or hosted publication occurred.
+Continue the authorized local campaign from the preserved checkpoint without rerunning unchanged
+checks; finish signing/cloud preservation when their external conditions are restored. Next
+bounded product work should connect existing audio/visual assets to real outcomes or extend the
+universe scene coverage ledger. Keep this unaccepted Wolf out of runtime while its anatomy/material
+and hybrid review remain open; do not expand it to every family on the strength of structural tests.
 
 ## Audiovisual pilot implementation — 2026-09-05 local
 

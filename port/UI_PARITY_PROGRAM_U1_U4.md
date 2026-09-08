@@ -2,17 +2,34 @@
 
 ## Playable audiovisual priority — Nick, 2026-09-07
 
-Nick requested graphics/audio implementation beyond U2–U4, incremental fixes and a development
-playtest candidate, with documented review for Claude Thursday2026-09-10. Local work can proceed
-without waiting for that review. The existing campaign's graphics/audio-first sequence owns the
-priority; exhaustive UI polish is deferred while play-blocking defects remain actionable.
-The first proposed slice joins prepared Earth/Scout visuals and the authored landing cue to an
-actual successfully rendered native landing, with strict gesture/outcome/lifecycle ownership.
-It is not implemented yet. Follow ROADMAP.md and
- audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md for scope and evidence.
-Human art/listening/device acceptance remains open; no unseen direction is declared accepted.
+Nick's active local campaign runs for24 hours, ending **2026-09-09T03:11:15Z**
+(September8 at23:11:15 America/New_York), with documented review for Claude Thursday2026-09-10.
+Graphics/audio implementation now leads beyond U2–U4; local work proceeds without waiting for
+that review. Exhaustive UI polish is deferred while play-blocking defects remain actionable.
+
+The finite Earth/Scout arrival and authored landing sound are implemented in the working candidate,
+with focused preparation checks. They join the native gesture to exact durable landing/publication,
+then wait for the current Earth vista/media under bounded ownership. The two-portrait Combat
+Chronicle staging is also implemented: existing settled cues drive attack/dodge/recoil translations
+with static reduced-motion feedback. Neither feature changes gameplay outcomes or proves anatomical
+animation; all eight anatomical families remain INCOMPLETE. Native phone inspection first found
+the scene-centred ship covered by Survey, then a header arrival protruding2.13px. The corrected
+finite motion stays in the existing header slot; native movement, containment, cleanup and the
+1.4s audio-source check PASS. All preceding failures remain retained in
+`audits/AV_PLAYABLE_IMPLEMENTATION_20260907/`. This scoped diagnostic is not full admission or
+human visual/listening/device acceptance.
+
+U2 remains open. Signed **837db4aaa0ef5d3d8bffc79c70f62dcc2503032d** passed324 Vitest files /
+3494 tests with1 skip, then its static stage stopped at **TS6133** for the unused test-only
+`objective` binding. The binding is removed in current code while preserving fixture creation.
+No small-phone, large-phone or Slice stage ran in that U2 attempt; retain
+`audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json` and every prior RED.
+
+Follow ROADMAP.md and `audits/AV_24H_CAMPAIGN_20260907.md` for the current batch and review trail;
+`audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md` retains the initial bounded plan.
+Keep accepted U1 controls, colorful emoji, seeded species/biome identities and protected portraits.
 No exact hosted/publication authority exists. Earlier dated scope stops below remain history and
-are superseded only for this newly requested local implementation, not verification claims.
+are superseded only for Nick's authorized local implementation, never for evidence or acceptance.
 
 
 ### U2 post-close correction resumed — 2026-09-07
@@ -20,10 +37,16 @@ are superseded only for this newly requested local implementation, not verificat
 Nick resumed from the documented pause. The bounded tool correction implements Claude's findings:
 strict observed-state closure with at most one trusted activation/unchanged5000ms wait, painted
 upper controls with band-only trail exclusion, and named fixture/cleanup frames preserving the
-first failure. Independent review CLEAR;99 focused tests,3 TypeScript programs and root validate
-PASS. Two test-preparation failures and corrections are retained. Product/pins/thresholds unchanged.
-The new canonical native attempt is pending; U2 remains open and U3/U4 gated. See
- audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md and ROADMAP.md. No Phase2 or hosted action.
+first failure. Its initial preparation passed independent review,99 focused tests,3 TypeScript
+programs and root validate; the two earlier preparation failures remain retained.
+
+The subsequent signed837db4a canonical attempt passed324 Vitest files /3494 tests /1 skip, then
+stopped static-red on TS6133 for the test-only `objective` binding. Current code removes that unused
+binding while retaining its `objchip` fixture creation. **No native U2 stage ran.** Full carriers are
+in `audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json`; no unchanged-source retry or
+complete U2 admission is claimed. U2 remains open; U3/U4 completion is still unproved while Nick's
+separately authorized playable audiovisual work proceeds. See
+ audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md and ROADMAP.md. No hosted action or release.
 
 ### Claude review received while U2 remains paused — 2026-09-06
 

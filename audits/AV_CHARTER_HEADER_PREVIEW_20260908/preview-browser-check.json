@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "port/v2/tools/devpreviewcheck.mjs",
+    "--root=/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-av-charter-sticky-local-20260908"
+  ],
+  "startedAt": "2026-09-08T09:50:59.497659+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 2.263
+}

@@ -1,0 +1,336 @@
+{
+  "schema": "cf-canid-review-derivatives/v1",
+  "status": "PASS",
+  "commands": [
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v1/renders/wolf-frame-001.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "132x132",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v1-001-132.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v2/renders/wolf-frame-001.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "132x132",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-001-132.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v2/renders/wolf-frame-025.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "132x132",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-025-132.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v2/renders/wolf-frame-049.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "132x132",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-049-132.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v2/renders/wolf-frame-081.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "132x132",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-081-132.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v2/renders/wolf-frame-097.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "132x132",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-097-132.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v1/renders/wolf-frame-001.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "300x300",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v1-001-300.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v2/renders/wolf-frame-001.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "300x300",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-001-300.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v2/renders/wolf-frame-025.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "300x300",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-025-300.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v2/renders/wolf-frame-049.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "300x300",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-049-300.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v2/renders/wolf-frame-081.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "300x300",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-081-300.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "PRIVATE_CANID_BUNDLE/wolf-canid-v2/renders/wolf-frame-097.png",
+        "-filter",
+        "Lanczos",
+        "-resize",
+        "300x300",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-097-300.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/canonical-132.png",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v1-001-132.png",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-001-132.png",
+        "-background",
+        "#142137",
+        "-alpha",
+        "remove",
+        "+append",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/comparison-132.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/canonical-300.png",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v1-001-300.png",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-001-300.png",
+        "-background",
+        "#142137",
+        "-alpha",
+        "remove",
+        "+append",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/comparison-300.png"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/bin/magick",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/canonical-440.png",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v1-001-440.png",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/v2-001-440.png",
+        "-background",
+        "#142137",
+        "-alpha",
+        "remove",
+        "+append",
+        "SOURCE_ROOT/audits/CREATURE_BLENDER_CANID_20260908/comparison/comparison-440.png"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "renderedFrames": [
+    1,
+    25,
+    49,
+    81,
+    97
+  ],
+  "actualDisplaySizes": [
+    132,
+    300,
+    440
+  ],
+  "runtimeIntegrated": false,
+  "humanAccepted": false,
+  "files": [
+    {
+      "path": "canonical-132.png",
+      "bytes": 22940,
+      "sha256": "7c2bfea17625beb4d9d8a6dec700e5b7f262520e17eae2b622640c4ce876c120"
+    },
+    {
+      "path": "canonical-300.png",
+      "bytes": 102839,
+      "sha256": "64a75decda74174df212159a4b3a94ed2cfd9776ab554959c620e3d3267cd005"
+    },
+    {
+      "path": "canonical-440.png",
+      "bytes": 222295,
+      "sha256": "15937895d396db4e4d9de437cb2ea678350719ba1311460de031db0e309058b1"
+    },
+    {
+      "path": "comparison-132.png",
+      "bytes": 24657,
+      "sha256": "b19ecb66e40466e53f1cdfb153b64bd4455c46f459e9bae6f86d315f9dd6141d"
+    },
+    {
+      "path": "comparison-300.png",
+      "bytes": 96231,
+      "sha256": "e81fec5a2f6ecf6d9f6d595eb45426f35908670579cbdcffa91baf3bfae70d33"
+    },
+    {
+      "path": "comparison-440.png",
+      "bytes": 176985,
+      "sha256": "d601499964b01820b0e34858839607fb71c8e4e54460d742b8a254153302ec77"
+    },
+    {
+      "path": "review.html",
+      "bytes": 1504145,
+      "sha256": "2b050482ad5745250648575817581d57a9e75282ff31aa2b6507e9be68c26456"
+    },
+    {
+      "path": "v1-001-132.png",
+      "bytes": 9610,
+      "sha256": "52cf277965c45595088cdbcbfbea003ed52b9f1db323796aed2972aaf2117dc2"
+    },
+    {
+      "path": "v1-001-300.png",
+      "bytes": 28453,
+      "sha256": "489f039886d5932de03a84678b8565d24301fce8acffbc50d7f24e0de84b7c27"
+    },
+    {
+      "path": "v1-001-440.png",
+      "bytes": 87606,
+      "sha256": "b3c79edb834b59835f5d1b4ae2c1e2579320e0630a0a9b6e2ec6d901fa5f41ad"
+    },
+    {
+      "path": "v2-001-132.png",
+      "bytes": 9606,
+      "sha256": "d78573f9666b7ce33dfd0ab4a801ee8a58a2ff9779c8f4af2437853107a3f9bf"
+    },
+    {
+      "path": "v2-001-300.png",
+      "bytes": 28339,
+      "sha256": "782016f39722f29ac16be86ee53a14c7c94d422477a48ab7b44c9f11f130cceb"
+    },
+    {
+      "path": "v2-001-440.png",
+      "bytes": 87728,
+      "sha256": "888f80006da354b5dde932d1a3c7c438546786d67537fb51c50d4b0b7ec3bf5c"
+    },
+    {
+      "path": "v2-025-132.png",
+      "bytes": 9599,
+      "sha256": "26593aeae8a868fd1327d8d4c1dd7725dbfb1daf7f43ab93bece15038f985c6e"
+    },
+    {
+      "path": "v2-025-300.png",
+      "bytes": 28341,
+      "sha256": "f39f5c2817585f5c263546acbbec25e2e539fa6cefd0084e932c08e99d753fdd"
+    },
+    {
+      "path": "v2-025-440.png",
+      "bytes": 87550,
+      "sha256": "eefeaed739dd0431761b644cd3d35b0b3f21fbc70b438cdef14235d6ed95e502"
+    },
+    {
+      "path": "v2-049-132.png",
+      "bytes": 9606,
+      "sha256": "818e28c981b26cf8e5382132982884826466842a12e4eb5c21cd02dfc24e6245"
+    },
+    {
+      "path": "v2-049-300.png",
+      "bytes": 28338,
+      "sha256": "4f45df3c9ea1fec551df1f63b25cd8e5ebac9a48db3c5190043bfec0e3630d2a"
+    },
+    {
+      "path": "v2-049-440.png",
+      "bytes": 87737,
+      "sha256": "b9ee56fb4c6832741f8d0c001539b8a7c820913531b6e7fff30ddbc497f94f19"
+    },
+    {
+      "path": "v2-081-132.png",
+      "bytes": 9554,
+      "sha256": "fe59452b9d6076115f2283a664fbd94fecf08ab3888b9647581c48e2c86d7b8c"
+    },
+    {
+      "path": "v2-081-300.png",
+      "bytes": 28398,
+      "sha256": "c33ea677ee0156edb89a0426d4b938f0879971b026c6662b9eccb082c526b143"
+    },
+    {
+      "path": "v2-081-440.png",
+      "bytes": 87197,
+      "sha256": "045c2dc5d2a406df0687aee6d275ec7a2d269b8c8e54c40bddaed9ef637a885f"
+    },
+    {
+      "path": "v2-097-132.png",
+      "bytes": 9606,
+      "sha256": "fa429c8abf5eef278768de87af2ed58134a6abb8ab7ff8b47090dacd0985044b"
+    },
+    {
+      "path": "v2-097-300.png",
+      "bytes": 28339,
+      "sha256": "d2447f13882a954d8fac3b7d4c3f9611637bc13a298d976eb95fd184e4ca1bae"
+    },
+    {
+      "path": "v2-097-440.png",
+      "bytes": 87724,
+      "sha256": "6d5366782762db902d59e9241fa50f7605d8016cc3fa42ee8ffa78ab824e031e"
+    }
+  ]
+}

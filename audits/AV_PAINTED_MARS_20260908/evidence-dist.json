@@ -1,0 +1,379 @@
+{
+  "createdAt": "2026-09-08T14:37:26.558692+00:00",
+  "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/painted-mars-evidence-dist-20260908",
+  "certification": false,
+  "files": {
+    "assets/BufferResource-CBxAIQXt.js": {
+      "bytes": 10576,
+      "sha256": "511fa992b543f4ef0f3d44e6d5e9c16f992adee419911d8ada3f9a940f7e3ce7"
+    },
+    "assets/BufferResource-CBxAIQXt.js.map": {
+      "bytes": 25660,
+      "sha256": "1173414ff96ed68cb0f0f7e57d1de3ad00c96cd71953f6b7ccbd12b4ea03d600"
+    },
+    "assets/CanvasPool-BewL5izq.js": {
+      "bytes": 804,
+      "sha256": "8b4af0914a4436094e428b6747bef851805c1c84f361ba8819c1fbdcab6b806a"
+    },
+    "assets/CanvasPool-BewL5izq.js.map": {
+      "bytes": 3523,
+      "sha256": "57581cd7284c42642a3ec919c62e0f84b78b409a12b493e582c56955a9961862"
+    },
+    "assets/CanvasRenderer-D2F2hEh-.js": {
+      "bytes": 87438,
+      "sha256": "c3b0b9cf7705c56ff67e0e846dbb781460f5fe8f59fd05e977ac5fb1e2a5474b"
+    },
+    "assets/CanvasRenderer-D2F2hEh-.js.map": {
+      "bytes": 463490,
+      "sha256": "ea9149d387b812b7ff8ac6c0290ccd30059327bfc0105881a7e15cbd336d7b41"
+    },
+    "assets/Geometry-C5FtorEc.js": {
+      "bytes": 101664,
+      "sha256": "9bbbacd5502e42fb7c51a5306bda3b59b718a2bacd20badde40fe7e8ab1afbb6"
+    },
+    "assets/Geometry-C5FtorEc.js.map": {
+      "bytes": 500481,
+      "sha256": "76407449f34f7de1ef389d0b525d57341144bea8643cad26c75d8e8ec1caf3f2"
+    },
+    "assets/Inter-LICENSE-CkXC2-KD.txt": {
+      "bytes": 4380,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+    },
+    "assets/InterVariable-DiVDrmQJ.woff2": {
+      "bytes": 352240,
+      "sha256": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3"
+    },
+    "assets/RenderTargetSystem-Cjin1jYB.js": {
+      "bytes": 71143,
+      "sha256": "5832d0f046778db195e6331b4e9a5d0699954b88ddd91793844c29fcdd4909d2"
+    },
+    "assets/RenderTargetSystem-Cjin1jYB.js.map": {
+      "bytes": 262677,
+      "sha256": "2189a59d9ec82feb01e4d63e5e7f7fad86ec0bd639247dd7615f64d3331e55d0"
+    },
+    "assets/WebGLRenderer-DYlUTdA1.js": {
+      "bytes": 68035,
+      "sha256": "84f3f111b4a704f5d038e3a040c1b0eb755828e45c5f8fd1ef4388b50affd939"
+    },
+    "assets/WebGLRenderer-DYlUTdA1.js.map": {
+      "bytes": 215949,
+      "sha256": "27882878869e2dab31cb0c50e326375aa0ffeab637e2c817147d647c8e2b6f18"
+    },
+    "assets/WebGPURenderer-9hw_QH6b.js": {
+      "bytes": 38536,
+      "sha256": "bcee3a278da9b5772aea90cd5b3dd8448e98e3f030707ad1bfe6966b4d63fc4d"
+    },
+    "assets/WebGPURenderer-9hw_QH6b.js.map": {
+      "bytes": 123975,
+      "sha256": "5b2db9499db75d5c076e8dd71dbce7830cc7f18a2b8429e5acc417588b3a7a67"
+    },
+    "assets/audiovisual-pilot-D3NkLgJq.js": {
+      "bytes": 25131,
+      "sha256": "0397810a585bf02914be7ec76c38a4a8c4132555bd338329a97e654304c9551d"
+    },
+    "assets/audiovisual-pilot-D3NkLgJq.js.map": {
+      "bytes": 39916,
+      "sha256": "7e12459cdf32ecd67c5e2ed05f950eb1fd9e0821cf40e6406fa12ddf47bff1ee"
+    },
+    "assets/audiovisualPilot-DikkbSui.js": {
+      "bytes": 19090,
+      "sha256": "1de0f5a8cc9b426d4f049c356681aa185979e497b53bcd9c9d4266763d244250"
+    },
+    "assets/audiovisualPilot-DikkbSui.js.map": {
+      "bytes": 43752,
+      "sha256": "d0ba9b760c813a584869e2a4d660592c2ed7c43b9cd3960491f98b2588b23c02"
+    },
+    "assets/audit-BSVJFDuL.js": {
+      "bytes": 16603,
+      "sha256": "142830b053f98c857b35df43b9be30bfcec8b14817434e7dbfbb823e42608165"
+    },
+    "assets/audit-BSVJFDuL.js.map": {
+      "bytes": 68444,
+      "sha256": "13cfe8724f8afd5b5ae5e94b030a0b258c35693f7b427b4f3d60ae77a2403f4b"
+    },
+    "assets/biome-vista.worker-D3XRSJZJ.js": {
+      "bytes": 220682,
+      "sha256": "f30f76537077952e792da01712b59650172dc2e7b78698040abc780843c6f7e2"
+    },
+    "assets/biome-vista.worker-D3XRSJZJ.js.map": {
+      "bytes": 791693,
+      "sha256": "89141ee9d71cdc9db8b899121470cea6c37d8d0a9e36bc6e99656748ac48cd80"
+    },
+    "assets/browserAll-CZbsrlbl.js": {
+      "bytes": 42630,
+      "sha256": "9e03803e128992479623d2948a8dee748f9682a67f3d6c1b26fcef619b5d8a11"
+    },
+    "assets/browserAll-CZbsrlbl.js.map": {
+      "bytes": 156698,
+      "sha256": "7d0fe799ea75a66eb33e92103554d6c72d18c6a64487838674087d5d5800c4a0"
+    },
+    "assets/canvasUtils-CWV5icuA.js": {
+      "bytes": 6070,
+      "sha256": "faaff76b40957b52f7817add636bb204e563dfab14ed3a0b6f563c96c259938b"
+    },
+    "assets/canvasUtils-CWV5icuA.js.map": {
+      "bytes": 21937,
+      "sha256": "af59a33c70c63db9c6183c832766cdf62b1ecab6bed1813684486612dec54542"
+    },
+    "assets/cf-pilot-combat-contact-DHZD2lYd.wav": {
+      "bytes": 33644,
+      "sha256": "fc3bcb5da5ee2a81a45d32de933cea234eb42850b151ba46565d1ad300eb6a20"
+    },
+    "assets/cf-pilot-exploration-music-CMF8UCKw.wav": {
+      "bytes": 4608044,
+      "sha256": "fa144fe615faef75fc426f86a44f299dcf48a1637893ccef9cf95fa2ab40a111"
+    },
+    "assets/cf-pilot-scout-approach-Be38_iqZ.wav": {
+      "bytes": 230444,
+      "sha256": "ad4020be2cda99df2ba91290965b1d125bf909c4b7279833da51b5b55ad5f373"
+    },
+    "assets/cf-pilot-scout-landing-D1k5tYuE.wav": {
+      "bytes": 134444,
+      "sha256": "6e8e3edf1dca6f232ebb13233e6921a64c33bd33830a5c1358165a764779852a"
+    },
+    "assets/cf-pilot-temperate-bed-C_jKRyj6.wav": {
+      "bytes": 4608044,
+      "sha256": "36caaa89651e44e92f9faddc53d74104cb9e1f5e11eb5a5757efbbdb978be69c"
+    },
+    "assets/cf-pilot-ui-nav-bMnbTxA8.wav": {
+      "bytes": 26924,
+      "sha256": "14cecfcf6525c0c3637455ae7c711972021814ae5b5caf711baf7c6bb796a4c8"
+    },
+    "assets/cf-pilot-ui-refusal-CMon7hko.wav": {
+      "bytes": 43244,
+      "sha256": "3e4fcbd34d6b65583883e31347ef99c4dd538aa07a311fe7612083e3f37b9b20"
+    },
+    "assets/cf-pilot-ui-settlement-uF_X4Ois.wav": {
+      "bytes": 67244,
+      "sha256": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3"
+    },
+    "assets/earth-rainy-landscape-DPgApIAi.webp": {
+      "bytes": 765318,
+      "sha256": "478fd649a1aed198e64a9a053c464f9f98630943ac8e11bf1b184b253f47060b"
+    },
+    "assets/earth-rainy-phone-DFt5murF.webp": {
+      "bytes": 343072,
+      "sha256": "3689d1273b7bc75806f87eea9718304109a06d31f98682c6161e05b1a06b83ef"
+    },
+    "assets/getPo2TextureFromSource-BTcd7Ah1.js": {
+      "bytes": 473,
+      "sha256": "e596e4a171a535685cc9ee3edfa1e540e9d4b363537ac6afb5f97602e0fca318"
+    },
+    "assets/getPo2TextureFromSource-BTcd7Ah1.js.map": {
+      "bytes": 1695,
+      "sha256": "585e6c28d2041a14688fa03334849ad1d3733afe062800f14169b9ce40ddc38f"
+    },
+    "assets/getTextureBatchBindGroup-DkbnCTGz.js": {
+      "bytes": 404,
+      "sha256": "3ce2d33bde60e5f2cc123fab89998b4c1580eecab18b1294321b14d255b83be5"
+    },
+    "assets/getTextureBatchBindGroup-DkbnCTGz.js.map": {
+      "bytes": 1792,
+      "sha256": "3c9e66772a5cd5b23d8b5237ce575f83964741ce65c013c895e473b73e85a55f"
+    },
+    "assets/guide-content-Cy7MxzST.js": {
+      "bytes": 130928,
+      "sha256": "5c16f71f1959f41eb1a5b9262873077f41de3df4551dbadc8d23d3f7a5a0b908"
+    },
+    "assets/guide-content-Cy7MxzST.js.map": {
+      "bytes": 148588,
+      "sha256": "89ebd1f2b0821cac288b03642e732c10e816d4a57d63e69e12579c395afab2bc"
+    },
+    "assets/hybridMatrix-B_EogGC7.js": {
+      "bytes": 33881,
+      "sha256": "558adb44a8152e2f1da134fe153f2c2c23645ba5baf020edb4b59cd00b06cff0"
+    },
+    "assets/hybridMatrix-B_EogGC7.js.map": {
+      "bytes": 97558,
+      "sha256": "f3f49c3fd569444473338b138a238c916461b565c1ba1bbd30d9701b0857e3d1"
+    },
+    "assets/init-Cw2CTxAB.js": {
+      "bytes": 15305,
+      "sha256": "aba622a7aa1d186fb6ac8396a2c9ce14c280751fb53999d315705d9de6583cb1"
+    },
+    "assets/init-Cw2CTxAB.js.map": {
+      "bytes": 53390,
+      "sha256": "bddece09c939d2bceabae0961055b95e4051e8f9161de5a29f00bf61d2d9ee4d"
+    },
+    "assets/init-DzCRp0mF.js": {
+      "bytes": 24717,
+      "sha256": "8b6c991889ac7fd3dfcbdead54a20ddd6441084fc7c6ca5054dd4ffca67b368a"
+    },
+    "assets/init-DzCRp0mF.js.map": {
+      "bytes": 105916,
+      "sha256": "01c892421105c76ce2ca2c6d3d5bae4343bcc4aad89ee382bd78aa95b23fccd5"
+    },
+    "assets/lib-BHX2vzcH.js": {
+      "bytes": 5802,
+      "sha256": "e8027614a9ea63ac773d4a7daa665fcc556299b326e1ac02978d4601254ba697"
+    },
+    "assets/lib-BHX2vzcH.js.map": {
+      "bytes": 66481,
+      "sha256": "4ce0f01f81f88c586d9869072a459266c3526173ccde1936e5ddd86788e375b0"
+    },
+    "assets/main-DZgoYngW.js": {
+      "bytes": 1474709,
+      "sha256": "6a427ecd1d4b744e04cc4df46647529de1ae3bc385f5d3f17d0e1c0c10852dd5"
+    },
+    "assets/main-DZgoYngW.js.map": {
+      "bytes": 5205413,
+      "sha256": "b0ab76eaf3f38d14dcd7dd44d17e6b528791d06285a2307b503c023b9f239609"
+    },
+    "assets/mars-dunesea-v1-cFwkRNdy.webp": {
+      "bytes": 127088,
+      "sha256": "59b9b940c17c5995d71b4f7d756f4e051ed43393d77d0213f63df52a655882e2"
+    },
+    "assets/pilot-sound-player-CReDHkCf.js": {
+      "bytes": 16198,
+      "sha256": "190571169ffee129fa869033bbc8dd50682ecd5f3ca8c8794b827deb3bceef00"
+    },
+    "assets/pilot-sound-player-CReDHkCf.js.map": {
+      "bytes": 40338,
+      "sha256": "2f6eb5fbfc7a6ba3a9808cd588e370345bc65736014973c5c4d9f280418e8b01"
+    },
+    "assets/planet-surface-turn-view-DxZP3AEj.js": {
+      "bytes": 13847,
+      "sha256": "128e93ff7273e1281f7069beb18306dfc4abc108af4c1e4fdb57aa7687142f72"
+    },
+    "assets/planet-surface-turn-view-DxZP3AEj.js.map": {
+      "bytes": 41990,
+      "sha256": "e94a0ce09ef711f111cd2b8fd922440d3fb74d1540eb0d6ba7f21827462caa76"
+    },
+    "assets/planet-surface-turn.worker-jKUKmrS4.js": {
+      "bytes": 6451,
+      "sha256": "f6b8ce850ccd2001664681f8a4276f810dcafbfb2009a0d1c653a7c09eda70f7"
+    },
+    "assets/planet-surface-turn.worker-jKUKmrS4.js.map": {
+      "bytes": 28780,
+      "sha256": "4d03f1d0d502adfd0dc9400cb00293b3e58cdb18c458898bb92928b6a379ca86"
+    },
+    "assets/release-content-BBcm6otF.js": {
+      "bytes": 150240,
+      "sha256": "b1343d0d24f67eb08909066b49e9e8fe69659bd19d5cc32ee969b767b953b304"
+    },
+    "assets/release-content-BBcm6otF.js.map": {
+      "bytes": 171047,
+      "sha256": "4fe2dbb464de19cbcdb794629b1c3d4a6518c7003f0946040f430a93cd47c829"
+    },
+    "assets/release-identity-CIuedefi.js": {
+      "bytes": 134,
+      "sha256": "849faf8ee532d75c477524be0847f7db9f6ae443b86c328434bd8101a6c0a82d"
+    },
+    "assets/release-identity-CIuedefi.js.map": {
+      "bytes": 782,
+      "sha256": "51cd9431c34eaeceb905093c8320d7940d3a64aa0df69da1f835888cfbf8f5be"
+    },
+    "assets/scout-chemical-132-Dt4gyYnA.webp": {
+      "bytes": 12532,
+      "sha256": "e961336688e8a0687eb6f09dd3f1a22306077694390002ffcda6763b7ba37fc4"
+    },
+    "assets/scout-chemical-300-CxcU_kic.webp": {
+      "bytes": 40660,
+      "sha256": "ec2ac6134e4dfc3e74e932c8277e558cdac22f18274f4c806278adc19c510752"
+    },
+    "assets/scout-chemical-512-DcNawgH5.webp": {
+      "bytes": 92896,
+      "sha256": "7d58149bed26e0e6aad629d8a7ff50911c9d8540e2cc8c1f8ad60f081299f343"
+    },
+    "assets/species-art.worker-DnnSDKMy.js": {
+      "bytes": 1312281,
+      "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+    },
+    "assets/species-art.worker-DnnSDKMy.js.map": {
+      "bytes": 4387367,
+      "sha256": "583ac710a2e4940c19c6e40aea24075b18628be5e25c225bb40915746d7e3a33"
+    },
+    "assets/speciesart-DXnLiDqS.js": {
+      "bytes": 1266066,
+      "sha256": "4d4657bba50170c69814a08ad7333c528a4435f94a3e79bd27ba1c77c94853b2"
+    },
+    "assets/speciesart-DXnLiDqS.js.map": {
+      "bytes": 4434633,
+      "sha256": "f349a0c98e246048a235a8ffbe4767c3170cd754194a329838b05d48d2135c97"
+    },
+    "assets/speciesidentity-DkdaK0o4.js": {
+      "bytes": 2006,
+      "sha256": "bbcbd03c4f82bb640db2cda363b4579b60631a4182d759861009771f4f39d772"
+    },
+    "assets/speciesidentity-DkdaK0o4.js.map": {
+      "bytes": 5042,
+      "sha256": "8c538c0c2940cc805c0d6bed9ecca0c5b4a1a6fb49b32b5eff3b28055c4ed073"
+    },
+    "assets/src-PpYgFp_O.js": {
+      "bytes": 5142,
+      "sha256": "6ff60a798349a87d1331cfdb1693af788acc7134efb6c36c9bb5fc8356eee663"
+    },
+    "assets/src-PpYgFp_O.js.map": {
+      "bytes": 22651,
+      "sha256": "9dbd337ddff1bf245866d32793fd08ec11eb00e954c0762dfdec520a00120318"
+    },
+    "assets/src-dauYwI8V.js": {
+      "bytes": 129321,
+      "sha256": "2f7e38cd0f1fa5bf6c62ef88a3797b08efe31a81e97c377730a1fd0c9e92ebe5"
+    },
+    "assets/src-dauYwI8V.js.map": {
+      "bytes": 405746,
+      "sha256": "3cafafa7de8dd2fff91367bac030b54bfa9b8d5ab78917ad73d686d16213301a"
+    },
+    "assets/surface-polish-CBmmi-Kj.js": {
+      "bytes": 4731,
+      "sha256": "9d74988f7575b155e811c18ff7bcc594d7158fbee211bfbacabdeafcfdfe0552"
+    },
+    "assets/surface-polish-CBmmi-Kj.js.map": {
+      "bytes": 18756,
+      "sha256": "0d75a4a615b57c94eb1a9d841cf9f2f34387abf54305e5b9af19008e20688fdd"
+    },
+    "assets/tame-greeting-audio-ge6_npOg.js": {
+      "bytes": 261207,
+      "sha256": "b7ea401cfbc3b49363d52515e7e7e59dfcbb63973741d82044c7ad0f20b58ed7"
+    },
+    "assets/tame-greeting-audio-ge6_npOg.js.map": {
+      "bytes": 963715,
+      "sha256": "cf3ad46c389de72a9a724c251d27c107d2a195352d9fae8d548f0e699eb20b20"
+    },
+    "assets/visual-effect-policy-BzsgF7gl.js": {
+      "bytes": 124264,
+      "sha256": "2488937a4034a22c26e5915bda220a165d11f86b9d59fc13774be45ee5fae8c2"
+    },
+    "assets/visual-effect-policy-BzsgF7gl.js.map": {
+      "bytes": 468266,
+      "sha256": "84e8d3ad4626fbf45c6a11df925e4f44114e1b1229f3f8b0f32aa1a57e34ee7a"
+    },
+    "assets/webworkerAll-Bz2JnXQB.js": {
+      "bytes": 54,
+      "sha256": "ce579726aff8fb1773c19006202a875866c43316db5771d60567d2c8efa5af1c"
+    },
+    "audiovisual-pilot.html": {
+      "bytes": 894,
+      "sha256": "5ffcc7fcb257f132380172b6d368c221bdf071c4ec7d3aba25427022152893e6"
+    },
+    "audit.html": {
+      "bytes": 771,
+      "sha256": "bbe87ff629bb7fc17d301bf9a7bf45174349b7ce0b3397490828d9178762cbe7"
+    },
+    "hybrid-matrix.html": {
+      "bytes": 860,
+      "sha256": "8f9cb9d5e3e6f7f86c66326144c1273beb0fe8db70136e60fd9f2ee3a4645d25"
+    },
+    "icons/celestial-frontier-maskable.svg": {
+      "bytes": 1130,
+      "sha256": "ff05489ed56a7193bbaf8fe5e3f6b43e8ba46667be2f8e1e9bdd7ff46da2488c"
+    },
+    "icons/celestial-frontier.svg": {
+      "bytes": 1132,
+      "sha256": "97b8d42d779cebcddca5980c60635a8c767c2b7ea43a23871ccd386a7d716c04"
+    },
+    "index.html": {
+      "bytes": 68805,
+      "sha256": "2a7086ce673bfa31afa28d8abde49be8300e3f89e9b7b44bb18e0a2832c8997c"
+    },
+    "manifest.webmanifest": {
+      "bytes": 726,
+      "sha256": "827ec2c2a4bb946c558321624cc241bcf71c0008aac15dbc2c852f76e2c06f40"
+    },
+    "service-worker.js": {
+      "bytes": 21309,
+      "sha256": "d8e36173035c7bd36b215e21c8a05129803b607195dc7516091a69e456839e99"
+    }
+  }
+}

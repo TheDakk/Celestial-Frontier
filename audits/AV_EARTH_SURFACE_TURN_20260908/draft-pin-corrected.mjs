@@ -1,0 +1,14 @@
+import fs from 'node:fs';import crypto from 'node:crypto';import {createRequire} from 'node:module';import vm from 'node:vm';
+const require=createRequire(process.cwd()+'/port/v2/package.json'),{transformSync}=require('rolldown/utils'),{JSDOM}=require('jsdom');
+const source=fs.readFileSync('port/v2/apps/game/src/release-content.ts','utf8'),start='export const V2_DRAFT_RELEASE =',end='export const V2_SHIPPED_RELEASES =';
+if(source.split(start).length!==2||source.split(end).length!==2)throw Error('draft owner not unique');
+const transformed=transformSync('release-draft.ts',source.slice(source.indexOf(start),source.indexOf(end)).replace('export const','const'));if(transformed.errors.length)throw Error(JSON.stringify(transformed.errors));
+const release=vm.runInNewContext(transformed.code+';V2_DRAFT_RELEASE',{V2_DEVELOPMENT_VERSION:'v2.0'});
+const dom=new JSDOM('<ul>'+release.sections.flatMap(s=>s.bullets).map(b=>'<li>'+b+'</li>').join('')+'</ul>'),bullets=[...dom.window.document.querySelectorAll('li')].map(li=>li.textContent??'');dom.window.close();
+if(bullets.length!==83)throw Error('draft count changed');
+const hash=crypto.createHash('sha256').update(JSON.stringify(bullets)).digest('hex'),p='port/v2/tools/slicesmoke.mjs',old=fs.readFileSync(p,'utf8');
+const pin=old.match(/const GUIDE_DRAFT_BULLET_AUTHORITY = Object\.freeze\(\{\s*count: 84,\s*sha256: '([a-f0-9]{64})'/g);
+if(pin?.length!==1)throw Error('draft pin owner');const prev=pin[0].match(/[a-f0-9]{64}/)[0];if(old.split(prev).length!==2||hash===prev)throw Error('old digest not unique or unchanged');
+if(fs.existsSync(process.argv[2]))throw Error('receipt already exists');
+fs.writeFileSync(p+'.avtmp',old.replace(prev,hash).replace('count: 84,', 'count: 83,'),{flag:'wx'});fs.renameSync(p+'.avtmp',p);
+fs.writeFileSync(process.argv[2],JSON.stringify({previous:prev,count:83,sha256:hash},null,2)+'\n',{flag:'wx'});console.log(hash);

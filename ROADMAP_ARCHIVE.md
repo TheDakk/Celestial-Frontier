@@ -1,4 +1,1433 @@
+## Archived painted-Mars handoff and in-progress Earth successor — 2026-09-08
+
+## ACTIVE SUCCESSOR — Earth layered scene, 2026-09-08
+
+Nick requested direct graphics resumption after disabling the heartbeat. Read
+`audits/AV_EARTH_LAYERED_SCENE_20260908/BATCH_INTENT.md` for the current bounded scope.
+Previous 989-file staged composition recovery remains immutable. Current successor work is
+not yet qualified or staged. Exact Earth recipe now checks the documented temperate biome mapping
+and reuses current named Compendium bodies.308 focused tests/all3TS/art-unused/art-audit passed;
+new adapter/snapshot syntax reached two unsupported art-sentinel boundaries, retained as stopped
+instrument failures. An exact scoped guard correction is in progress before nominal/spec/root
+and native verification. Read the new audit README and BIOME_MAPPING.md; preserve all first
+failures and the test-source overlap caveat. Runtime source/build is frozen while guard-only
+work proceeds. No timer restart or hosted action.
+
+## SESSION HANDOFF — 2026-09-08 · PAINTED MARS COMPOSITION
+
+Nick authorized **24 hours of local graphics/audio/UI coding**, ending **2026-09-09T03:11:15Z**
+(Tuesday September 8, 23:11:15 Eastern). Claude review is Thursday September 10. Continue bounded
+playable graphics work beyond U2–U4 within that window. Do not create another automation or extend
+the deadline. [Campaign](audits/AV_24H_CAMPAIGN_20260907.md). No broad UI rework loop.
+
+### Binding art direction and visible result
+
+Nick again reaffirmed: **keep the approved rich painted graphics direction** for the whole
+universe, biomes, creatures and UI. Exact approved space/creature sheets are preserved in
+`audits/PAINTED_SPACE_PIPELINE_20260908`; biome/UI references and scene requirements are in
+`audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908`. UI is material inspiration only: retain CF's
+accepted controls, emoji, text, layout and placement. Earth organisms retain named-species anatomy,
+proportions, markings, canonical colors and species-appropriate movement. Alien generation and
+lineage stay seeded. Improve the existing game toward these references; no replacement art style.
+
+The optional `?paintedvista=1` Mars study now shows the **full painting without the decorative globe
+obscuring it**. The phone panorama is centered below the upper controls and uses the existing
+contain scale. Source owns only the exact successfully painted Mars globe's visibility, restores
+that owned sprite on release, and synchronizes publication/cache hits. Pending, failed and default
+paths retain their original globe. Earth fallback, world visibility, camera and controls are
+unchanged. The retained globe texture still serves fallback; no GPU-memory reduction is claimed.
+
+The original asset/request remains unchanged: Mars `CF1|g:999@90,-60|s:424242@560,170|p:134#3`,
+environment `cwe1:145:0d97c0f8`, profile `bpd1-6fce883d4d70e3b6bde0fb184b416e8e`, dunesea/sand,
+no weather/water/life, two moons. WebP 960×430, 127,088 bytes, SHA256
+`59b9b940c17c5995d71b4f7d756f4e051ed43393d77d0213f63df52a655882e2`. Full-request binding,
+SHA/dimensions, 512 KiB/8-second loader bounds, cancellation and canonical fallback remain.
+One retained RGBA canvas is 1,651,200 bytes, excluding decode/GPU/browser overhead. No runtime AI.
+[Original provenance](audits/AV_PAINTED_MARS_20260908/README.md) stays immutable.
+
+[Current review packet](audits/AV_PAINTED_MARS_COMPOSITION_20260908/README.md) records actual code,
+captures, tests, failure corrections and limitations. Root inspected phone/desktop captures:
+rich dunes and both moons are unobstructed, but phone still shows a contained band with substantial
+starfield above/below. This is a static panorama, fixed during camera pan/zoom, not an immersive
+inhabited biome, navigable ground, completed animation or human art acceptance. End this Mars
+layout batch here. Earth's opaque vista includes residents; a background swap would erase them.
+
+### Completed verification and preserved failures
+
+**216 focused tests in 13 files**, all three TypeScript programs, art-unused/art-audit/override/spec,
+and root validation PASS (1,010 clean renders, zero boot errors, 50 original fingerprints).
+Source review is clear. Frozen 93-file evidence build:
+`port/v2/apps/game/smoke/painted-mars-composition-evidence-dist-20260908`.
+
+All four final isolated native modes PASS on the same frozen source/build: phone 390×844@2,
+desktop 1440×1000@1, exact blocked-image fallback, option-off canonical fallback. Actual globe
+visibility faults are rejected by the same composition check (253,643 phone / 119,191 desktop
+changed pixels), with exact restoration and unchanged control rectangles/hits. Full-stage vista
+paint controls pass. Survey reopen/Close, phone Reduced/EffectsOff and native scene exits pass.
+Exits retire actual vista Sprite/Texture/Source/scene scope, clear painted ownership and keep the
+bounded CPU cache. Zero Runtime exceptions/cleanup failures; all four browsers closed.
+
+Two earlier native runs remain FAIL, with no later stage run after red. First observer wrongly
+expected immediate arrival after a real Mars descent wave-off; its missing durable witness is a
+recorded limitation. The next observer captured the witness but expected two action ordinals for
+two random draws. Domain SessionRNG increments one action ordinal; named draw counters advance
+separately. The corrected read-only observer changes only that expectation. The blocked-image
+run then exercised the exact wave-off and guaranteed learned landing successfully. No product
+change, fixture write or previous-result overwrite. This does not explain older navigation reds.
+
+Final runner SHA256 `050370b927fc3955a543bc3da857a37015d4e749e0051329bdd73f249ddd56a1`.
+Current 83-row draft SHA256 `94daf3141746299380f03c1e7426a8c8148bace8328502ef9e5346187bb8cc5d`;
+producer `705a12f14157c7501ccf420ad446aeccf881a5f22929c6e7c145e2926e83d9cf`;
+measurement `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` unchanged.
+No ruler/ceiling/history rebaseline. These are scoped checks, not a new full admission certificate,
+physical iPhone/Safari/PWA, native-driver heap, resize/re-entry or human art/listening acceptance.
+
+### Local preview, recovery and session tools
+
+[Current local preview](http://127.0.0.1:56749/?paintedvista=1), PID 63914 / exec 26352, serves
+`port/v2/apps/game/smoke/dev-preview-painted-mars-composition-local-20260908`. Skip Training,
+select Mars in Sol, Land and close Survey. If descent waves off, use its guaranteed learned
+approach. [Playtest/restart instructions](port/playtests/20260908_PAINTED_MARS_COMPOSITION_LOCAL_PREVIEW.md).
+Package integrity and native boot/Skip/Guide identity PASS, with no diagnostic API/corner badge.
+Source parent 837db4a, **dirty-local-only / publishable:false**, content SHA256
+`a740b005c7c054b22e5d3ab30ead610cbdb39e9f6336443ec3f771d7fa1024c7` and manifest SHA256
+`8b3c459bcab86afd9d4a352abd70898bdbeb2c81b7d93b9f420b89d6e9e15a40`.
+Prior star/audio/UI/Earth code is included; offline Wolf rigs/reference sheets are not runtime.
+Older preview ports 56099/55500/55005/53304/50689 retain separate unchanged packages.
+
+Current recovery target: `port/v2/apps/game/smoke/painted-mars-composition-staged-20260908.json`
+and adjacent `.patch.gz`. Verify its receipt before claiming a successful snapshot. Preserve
+previous 918-file painted-Mars, 822-file material, 773-file turn, 654-file painted-direction and
+647-file charm recoveries. Required 1Password signing has no restoration evidence after
+`failed to fill whole buffer`; no retry, unsigned fallback, new commit or push. The local index
+is the checkpoint, not a clean signed head. Ambient `.DS_Store` is preserved.
+
+Verified Codex/macOS: `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`, upstream
+`origin/openai/mac`, HEAD `837db4aaa0ef5d3d8bffc79c70f62dcc2503032d`, **38 ahead / 0 behind**;
+origin/develop ancestor. SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`; prior
+uninterrupted TheDakk read/fetch proof retained. Shared startup receipt
+`audits/TOOLCHAIN_STARTUP_20260907/manifest.json` is reusable only in this uninterrupted session.
+No fresh authoring-tool/dependency update in this batch. Inkscape outside-sandbox CLI export
+passed previously; original crash cause unproven. Terminal/file and isolated-browser workflows
+only; foreground jobs use the shared lock, browsers need approved outside-sandbox execution.
+Caffeinate 93550 and preview PIDs 7566/30765/50733/53959/58886 were verified at batch start; the new
+63914 server runs intentionally. No foreground build/browser/render remains. A new session must
+run its own startup runbook. Nick disabled the interrupting coding heartbeat on September 8;
+`celestial-frontier-48-hour-coding` was DELETED and its stored schedule removal verified.
+Do not recreate scheduled prompts.
+
+### Earlier evidence and limits remain open
+
+Earlier Earth material proof123tests/static/nativephone&desktopPASS is visibly subtle and below
+the approved finish. Finite Earth turn covers exact133#2onlyWebGL,18seconds/max0.22radianyaw;
+its nonperiodic atlas is not a seamless full revolution. One application shader/group remains
+shared. Reduced/EffectsOff use canonical fallback; clouds/light/cleanup are preserved. Rawatlas
+1.125MiB plus other copies. No full revolution, image-to-rig conversion or physical-device claim.
+
+Earthturn firstfullprofile330files/3742testsPASS,1skip,5failures4files remains a stopped aggregate;
+focused104/52/32PASS and static/root success do not replace it with a new full green certificate.
+Native owner-aware aggregate remains FAIL after successful phone exit plus desktop resize
+unexpectedly reached galaxy; cause unknown, same-document re-entry not reached. Fresh independent
+desktop passed. Missing MeshPipe/product error, renderer-extract observer side effect and every
+first failure/correction remain in AV_EARTH_SURFACE_TURN_20260908, with unchanged capture bytes.
+
+Signed837db4a U2attempt324files/3494tests/1skip thenTS6133staticred had **no browser stage**;
+bindinglaterfixed. Retain3a61352smallphone instrument-red after3Captureoutcomes/Chartersclose;
+largephone/Slicenotrun. 08cd97dMilkyWay/c57aaaebportraittimeout causes unknown. Claude's review
+remains audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md. U2–U4fulladmission/Compendium/Slice/Glass,
+physicaliPhone/Safari/PWA, humanart/listening,256MiBupdate-retention,artlockCI,ITP,DECISIONS19
+remain open.128MiBadmissionexists. SceneMemoryproduction-only/quarantined, noactivation.
+
+CF1worldsharing is native; CFB/CFB2domaincodecs are not native creature share/import. Preserve
+complete immutable genome/orderedlineage and versioned recipes/assets for reproducible identities.
+Universe orbits are kinematic, not established N-body; creature scaling is relative composition,
+not universal metres. Unity/Unreal remains future portability, no migration/restart/newengine.
+Offline canonical Wolf masters have limited groundedposes/neckstrike; no jaw/walking/allfamilies,
+and remain below approved charm/paintedbar. Private sources under Celestial-Frontier-asset-sources
+are hash-preserved; independent94file/24MBiCloudbackup waits after2automaticreviewrejections.
+No cloud retry, original Dakk edit or copied third-party runtime assets.
+
+### Next bounded graphics work and paired handoff
+
+Proceed toward **one complete canonical creature treatment or an inhabited scene with separate
+background and resident layers**, consistent light, grounded scale and supported motion. Carry
+forward the exact-request asset pipeline; do not multiply scenery catalogues before this works.
+Keep Earth appearance/movement, procedural/share identity and accepted UI placement. All-family
+articulated battle attacks remain unfinished. Stop at the 24-hour deadline with a safe documented
+checkpoint; do not extend it or begin a larger exploratory loop without scope agreement.
+
+Current side: Codex/macOS/openai/mac owns local staged work, 38 ahead / 0 behind; signing pending.
+GitHub step: none. PR details: not needed. Future reviewed integration is openai/mac → develop,
+never directly main. Actions budget: UNFROZEN/PUBLIC, private fallback 3,000; exact hosted
+authority/attempts/cost zero. Claude/macOS/anthropic/mac does not yet have these unmerged changes
+and need not open or sync now; preserve 173c806. After a future separately authorized exact
+openai/mac → develop merge, Claude may fetch/merge origin/develop into its own clean branch.
+No manual copies, message to Claude, develop/main promotion, hosted dev update, release or deploy.
+
+
+## Archived painted-Mars handoff and in-progress composition — 2026-09-08
+
+## ACTIVE SUCCESSOR — painted Mars composition, 2026-09-08
+
+Current local edits in AV_PAINTED_MARS_COMPOSITION_20260908 hide only the exact successful
+painted-Mars globe Sprite and center its entire panorama. World/controls/Earth fallback are
+unchanged. Source review clear;216tests13files/all3TS/art/static/root PASS. Source frozen for
+native verification;93file immutable build at smoke/painted-mars-composition-evidence-dist-20260908.
+First phone native run is FAIL before artwork: first Mars descent waved off (HP98, learned next
+approach100%, committed landing state, no image request/exception). See FIRST_NATIVE_FAILURE.md.
+Desktop/blocked/default have not run. A new outcome-aware native runner is being prepared; it
+must prove exact durable wave-off before at most one guaranteed second native Land. No product
+retry, fixture write or old-result overwrite. No foreground root job remains; geometry subagent
+owns only that new runner. Continue corrected native checks, then preview/docs/staged recovery.
+Last complete918file recovery and older handoff below remain authoritative for their own bytes;
+these composition edits are not yet staged/preview-qualified. Signing/hosted constraints unchanged.
+
+## SESSION HANDOFF — 2026-09-08 · PAINTED MARS NATIVE SCENE
+
+Nick authorized **24 hours of local graphics/audio/UI coding**, ending **2026-09-09T03:11:15Z**
+(Tuesday September8,23:11:15 Eastern). Claude review is Thursday September10. Continue bounded
+playable graphics/audio work beyond U2–U4 within that window. No new automation/deadline extension.
+[Campaign](audits/AV_24H_CAMPAIGN_20260907.md). Do not return to a broad UI rework loop.
+
+### Binding art direction and latest visible progress
+
+Nick again explicitly reaffirmed **stay with the approved painted graphics direction**. The exact
+space/creature sheets remain approved for direction in audits/PAINTED_SPACE_PIPELINE_20260908;
+the nine-biome/UI addendum remains audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908. UI is material
+inspiration only: retain CF's accepted controls, emoji, text, layout and placement. Do not copy
+the supplied UI. Earth organisms retain explicit named-species anatomy, proportions, markings,
+canonical colors and species-appropriate movement. Richness permits no fantasy Earth redesign.
+Alien life and biomes retain seeded authority and existing lineage rules. No new art direction.
+
+`?paintedvista=1` now mounts an original richly painted dune/rock panorama in the native exact
+Mars scene: `CF1|g:999@90,-60|s:424242@560,170|p:134#3`, environment `cwe1:145:0d97c0f8`, profile
+`bpd1-6fce883d4d70e3b6bde0fb184b416e8e`, biome dunesea/sand, no weather/life/water, two moons.
+The full request binds the candidate; a generic desert/seed-only match cannot substitute it.
+Raw source/prompt/reference/provenance are retained. Runtime WebP960×430,127,088bytes,
+SHA59b9b940c17c5995d71b4f7d756f4e051ed43393d77d0213f63df52a655882e2.
+This is static artwork, with no AI service invoked during gameplay or per-player regeneration.
+
+Loader verifies SHA/dimensions with a512KiB transfer ceiling/8sdeadline, cancels stale work,
+closes decoded bitmaps and transfers one canvas to the existing vista cache/scene texture owner.
+Current failure falls back once to the canonical worker. Exact variant/environment/full-roster
+cache identity prevents substitution; world/environment publication now precedes cache hits.
+Inherited Worker-availability guard remains. No engine/dependency/domain/save/control change.
+One retained960×430RGBAcanvas is1,651,200bytes; decode/GPU/browser costs are additional.
+
+[Painted Mars audit](audits/AV_PAINTED_MARS_20260908/README.md) and
+[visual judgment](audits/AV_PAINTED_MARS_20260908/visual-inspection.md) own the finished local batch.
+Root sees clear reference-led richness in dunes/rocks, but the old globe and overall composition
+are unfinished: globe overlays panorama on desktop; phone controls cover some sky, with globe
+below. The old coarse globe/polar bands remain. Do not call this finished AAA artwork or human
+acceptance. Mars is actually barren. Earth's existing vista contains residents; replacing that
+opaque bitmap with a background would erase them, so it was not changed.
+
+### Current verification and preserved corrections
+
+Final97tests6files, all3TypeScript programs, art-unused/art-audit/override/spec and root validation
+PASS (1010clean renders,0booterrors,50fingerprints). First focusedrun209pass/1fail remains red:
+duplicated environment publication defeated a remove-first source mutation. One common owner
+restored the control; corrected210tests12files/staticPASS is retained at that earlier state.
+Subsequent source review found cache-hit publication occurred too late; moving it before lookup
+and adding its negative control produced the final97-test run. Initial read-only fact extraction
+also failed bare imports/default websocket; corrected explicit facade paths/wsdisabled captured
+facts. Every first failure remains in VERIFICATION_CORRECTIONS.md, not overwritten as green.
+
+Fresh fixed native Chromium phone390×844@2 and desktop1440×1000@1 both PASS via actual Training
+Skip→exact Mars Survey→Land→close. Visible/hidden/restored full-stage controls observe actual
+paint (phone241486/desktop760991changedpixels) with exact0no-op/restoration and unchanged owners.
+Phone actual Reduced/EffectsOff retain this static art without another request. Native exits
+retire sprite/Texture/Source/scene scope; one boundedCPUcanvas remains cached. Each successful
+run fetched the exact image once, no canonical worker. Exact blocked-image request control PASS:
+one failed request, one canonical worker, visible fallback and native exit, no painted retry.
+No Runtimeexceptions/cleanupfailures. All3isolated browsers closed. This is scoped native evidence,
+not full admission, physical iPhone/Safari/PWA, total GPU memory, human art or all-family animation.
+
+Current83row draftSHA747f7614c3a65eb899dfefdedfd393692a1bee3ad51f07e126fcea1822441dc4;
+producer2e09e1e13f38cd540dd81bcbfab60b0fdee1e033ef479368f263b2401a84066f;
+measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 unchanged.
+No numeric ruler/ceiling/history rebaseline. New93file ignored painted-Mars evidence build and
+previous92file material/turn builds remain immutable; none becomes an admission certificate.
+
+### Local preview, recovery and tools
+
+[Latest local preview](http://127.0.0.1:56099/?paintedvista=1), PID58886/exec66980, serves
+`port/v2/apps/game/smoke/dev-preview-painted-mars-local-20260908`. Skip Training, select Mars in
+Sol, Land, close Survey. Package includes prior star/audio/UI/Earth code, not offline Wolf rigs
+or concept sheets. `?planetturn=1&planetmaterial=1` selects the older Earth proof;
+`?avpilot=1` selects the prior audiovisual comparison, which can hide the native globe.
+Source parent837db4a, **dirty-local-only/publishable:false**, contentSHA
+8721f86dce95a43e7c773f96d3b82b9a59150bedcf70053a224b3f0a79423651. Package integrity and native
+boot/Skip/Guide identity smoke passed, with no diagnostic API or corner badge. Usage/restart:
+port/playtests/20260908_PAINTED_MARS_LOCAL_PREVIEW.md. Older55500/55005/53304/50689 packages stay
+separate and unchanged. No hosted dev update occurred.
+
+Latest local staged recovery is `port/v2/apps/game/smoke/painted-mars-staged-20260908.json` plus
+its adjacent `.patch.gz`; check the receipt before claiming a successful snapshot. Preserve prior
+822filematerial/773fileturn/654filepainted/647filecharm recovery snapshots. Required1Password
+signing still lacks restoration evidence (`failed to fill whole buffer`), so no retry, unsigned
+fallback, new commit or push. Source/audits are staged locally; ambient .DS_Store is preserved.
+
+Verified Codex/macOS /Users/nick/Projects/celestial-frontier-openai-mac / openai/mac, upstream
+origin/openai/mac, HEAD837db4aaa0ef5d3d8bffc79c70f62dcc2503032d,38ahead/0behind; origin/develop
+ancestor. SSH origin git@github.com:TheDakk/Celestial-Frontier.git; prior uninterrupted TheDakk
+read/fetch proof retained. Reuse audits/TOOLCHAIN_STARTUP_20260907/manifest.json only within this
+uninterrupted session. Inkscape outside-sandbox CLI export passed; prior crash cause unproven.
+Terminal/file and isolated browser workflows only; shared lock for foreground jobs, approved
+outside-sandbox browser/Inkscape execution. Caffeinate-i93550 and prior previews7566/30765/50733/
+53959 were verified at this batch's start; new58886 runs intentionally. No foreground build/browser
+or render remains. A fresh session must run its own startup runbook.
+
+### Earlier evidence and limits remain open
+
+Earlier Earth material proof123tests/static/nativephone&desktopPASS is visibly subtle and below
+the approved finish. Finite Earth turn covers exact133#2onlyWebGL,18seconds/max0.22radianyaw;
+its nonperiodic atlas is not a seamless full revolution. One application shader/group remains
+shared. Reduced/EffectsOff use canonical fallback; clouds/light/cleanup are preserved. Rawatlas
+1.125MiB plus other copies. No full revolution, image-to-rig conversion or physical-device claim.
+
+Earthturn firstfullprofile330files/3742testsPASS,1skip,5failures4files remains a stopped aggregate;
+focused104/52/32PASS and static/root success do not replace it with a new full green certificate.
+Native owner-aware aggregate remains FAIL after successful phone exit plus desktop resize
+unexpectedly reached galaxy; cause unknown, same-document re-entry not reached. Fresh independent
+desktop passed. Missing MeshPipe/product error, renderer-extract observer side effect and every
+first failure/correction remain in AV_EARTH_SURFACE_TURN_20260908, with unchanged capture bytes.
+
+Signed837db4a U2attempt324files/3494tests/1skip thenTS6133staticred had **no browser stage**;
+bindinglaterfixed. Retain3a61352smallphone instrument-red after3Captureoutcomes/Chartersclose;
+largephone/Slicenotrun. 08cd97dMilkyWay/c57aaaebportraittimeout causes unknown. Claude's review
+remains audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md. U2–U4fulladmission/Compendium/Slice/Glass,
+physicaliPhone/Safari/PWA, humanart/listening,256MiBupdate-retention,artlockCI,ITP,DECISIONS19
+remain open.128MiBadmissionexists. SceneMemoryproduction-only/quarantined, noactivation.
+
+CF1worldsharing is native; CFB/CFB2domaincodecs are not native creature share/import. Preserve
+complete immutable genome/orderedlineage and versioned recipes/assets for reproducible identities.
+Universe orbits are kinematic, not established N-body; creature scaling is relative composition,
+not universal metres. Unity/Unreal remains future portability, no migration/restart/newengine.
+Offline canonical Wolf masters have limited groundedposes/neckstrike; no jaw/walking/allfamilies,
+and remain below approved charm/paintedbar. Private sources under Celestial-Frontier-asset-sources
+are hash-preserved; independent94file/24MBiCloudbackup waits after2automaticreviewrejections.
+No cloud retry, original Dakk edit or copied third-party runtime assets.
+
+### Next bounded work and paired handoff
+
+Continue the approved richness with one complete canonical creature treatment or an inhabited
+scene whose background and canonical residents have separate scale/light/grounding ownership.
+Carry this exact-request asset pipeline forward; do not multiply scenery catalogues before the
+inhabited scene works. Keep Earth appearance/movement, existing UI placement and procedural/share
+identity. The older native globe/landscape composition needs a deliberate bounded follow-up,
+not another broad UI polish loop. All-family articulated attacks remain unfinished. Stop at the
+24hourdeadline with a documented safe checkpoint; no larger exploration without scope agreement.
+
+Current side: Codex/macOS/openai/mac owns staged local work,38ahead/0behind, signing pending.
+GitHub step:none. PR details:not needed. BudgetUNFROZEN/PUBLIC,privatefallback3000; exact hosted
+authority/attempts/cost0. Claude/macOS/anthropic/mac need not open or sync now and does not have
+the unmerged changes; preserve173c806. Only after future exact-authorized openai/mac→developmerge
+may Claude fetch/merge origin/develop into its own clean branch. No manualcopies, develop/main
+promotion, hosteddevpublication, release or deployment. No message was sent to Claude.
+
+## Archived Earth-material handoff — 2026-09-08
+
+## SESSION HANDOFF — 2026-09-08 · EARTH MATERIAL PROOF
+
+Nick authorized **24 hours of local graphics/audio/UI coding**, ending **2026-09-09T03:11:15Z**
+(Tuesday September 8, 23:11:15 Eastern). Claude review is Thursday September 10. Continue bounded
+playable graphics/audio batches beyond U2–U4; do not restart a broad UI rework loop or wait for
+Claude. [Campaign](audits/AV_24H_CAMPAIGN_20260907.md). No deadline extension or new automation.
+
+### Latest direction and implementation
+
+Nick explicitly reaffirmed: **stay with the approved graphics direction**. No new direction was
+chosen. The current optional material pass is technically working but visibly subtle and well
+below the rich painted references. Keep that assessment; the next visual batch needs a plainly
+visible reference-led surface/material asset or complete canonical creature treatment, not another
+small noise-tuning loop. [Visual judgment](audits/AV_EARTH_SURFACE_MATERIAL_20260908/visual-inspection.md).
+
+`?planetturn=1&planetmaterial=1` adds bounded analytic grain/relief, ocean sheen and an inner
+atmosphere rim over the exact unchanged canonical atlas. Three octaves/12 hashes, no additional
+texture fetches, image assets, mesh layers, dependencies or GL extension/version requirement.
+Perceptual color masks are not authoritative terrain/elevation/biome data. One application-owned
+program/group remains shared; every accepted view resets material, with plain `?planetturn=1`
+defaulting off. Existing finite turn, lighting, clouds, silhouette, policy and cleanup remain.
+
+[Material audit](audits/AV_EARTH_SURFACE_MATERIAL_20260908/README.md):123 focused tests in8files,
+all3TS/art-unused/art-audit/override/spec and root validation PASS (1010 clean renders/50fingerprints).
+Fresh fixed phone390×844@2 and desktop1440×1000@1 native comparisons PASS: actual material0→1→0
+at one frozen natural angle, visible pixel delta, no alpha/outside-globe changes, exact no-op and
+restored pixels, unchanged atlas/owners/transform/visibility, forced-off positive control rejected.
+Phone native Reduced/Effects Off fallback and both native exits/retirement passed. Both stopped
+browsers closed cleanly. This is scoped Chromium evidence, not physical-device/art/full admission.
+
+
+Nick approved the exact painted space/creature references in
+[audits/PAINTED_SPACE_PIPELINE_20260908/approval.json](audits/PAINTED_SPACE_PIPELINE_20260908/approval.json).
+The nine-biome/UI addendum is in audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908. UI is material
+inspiration only: retain CF's existing layout, controls, text, emoji and placement. Do not copy
+the supplied UI. Browser players need no Blender/audio-authoring tools or game installation.
+
+**Latest explicit Earth-creature instruction:** existing named-species appearance requirements
+remain authoritative. Preserve recognizable Earth anatomy, proportions, markings and appropriate
+movement; richness does not permit fantasy redesigns. Alien life/biomes retain procedural rules,
+with existing lineage constraints. ART_DIRECTION.md and SPECIES_AND_GENOME.md record this.
+Animal-specific locomotion and articulated attack coverage remain unfinished, not inferred from
+the existing portrait translations or offline Wolf poses.
+
+The new optional `?planetturn=1` view admits exactly
+`CF1|g:999@90,-60|s:424242@560,170|p:133#2` on WebGL. A one-shot worker builds an unlit768×384
+canonical Earth atlas, and a spherical shader turns the surface through a smooth18-second,
+maximum0.22-radian yaw and settles. Lighting stays fixed, existing clouds stay separate.
+Reduced Motion/Effects Off use the standard globe; hidden scenes pause; exit retires all scene
+resources. A shared application-owned shader program/uniform group avoids per-entry leakage.
+Register MeshPipe before app.init, while keeping the view lazy and preserving missing-pipe fallback.
+
+[Earth turn audit and correction history](audits/AV_EARTH_SURFACE_TURN_20260908/README.md) owns exact
+source, tests, native captures, known failures and review questions. This is a renderer proof over
+the older canonical surface, **not the rich painted replacement or a seamless full revolution**.
+The source is nonperiodic; seam/backside mapping needs an explicit versioned visual recipe.
+Per-atlas raw storage is1.125MiB; canvas/GPU/transfer/fallback/driver allocations are additional.
+Physical-phone performance/memory, human art and all-family animation remain unqualified.
+
+### Preserved prior finite-turn verification and open finding
+
+First full test run:330files/3742tests passed,1skip,5failures in4 existing inventory/producer tests;
+all20 new atlas/projection/lifetime tests passed. Focused correction runs passed104,52 and32 tests
+at their recorded states. All3 TypeScript programs, art-unused, art-audit, override/spec and root
+validation passed. Root preserved1010 clean species renders, zero boot errors and50 fingerprints.
+The stopped aggregate is not relabelled as a new full green develop-admission certificate.
+
+Native phone390×844@2 successfully traversed Training Skip→exact Earth Survey→Land, finite visible
+motion/settlement, real Reduced/Effects controls and full mesh/shader/3buffers/texture/source/canvas
+retirement. The aggregate `native-owner-aware` report remains **FAIL** after phone exit followed by
+desktop resize unexpectedly reached the galaxy instead of retaining Sol. Its cause is unresolved;
+it does not explain the older unsolicited-navigation failures. Same-document re-entry was not reached.
+Fresh desktop1440×1000@1 passed the same native entry/motion/paint/retirement scope independently.
+One GL program intentionally remains app-owned. No full native heap/certificate/physical-device claim.
+
+Retain all earlier reds in the audit: stale release count/producer, Mesh generic/root Pixi type
+collision, exact art-package dependency refusal, unpositioned initial planet click, actual missing
+mesh-pipe exception, and extraction's render-group/global-uniform side effect. Corrected extraction
+restores group topology, classifies every cached UID by live owner and rejects an orphan control.
+Both92-file ignored evidence builds are immutable. No foreground build/browser/render remains.
+
+### Local preview and source recovery
+
+[Earth material preview](http://127.0.0.1:55500/?planetturn=1&planetmaterial=1), PID53959 / exec75189,
+serves `port/v2/apps/game/smoke/dev-preview-earth-material-local-20260908`. Skip Training, select
+Earth in Sol, press Land and close Survey. Omit `planetmaterial` for the plain turn; `?avpilot=1`
+on the same origin opens the wider existing audiovisual comparison and can hide the globe.
+The package includes the prior third-star, sound and UI corrections, not the offline Wolf masters
+or generated concept sheets. Source parent837db4a, **dirty-local-only / publishable:false**;
+contentSHA `88ecc9a8282cf12e3bd7deaea7ed663e8f262b882b154027f513287122dc0658`.
+Package integrity and isolated native boot/Skip/Guide identity smoke passed with no diagnosticAPI
+or corner badge. `port/playtests/20260908_EARTH_MATERIAL_LOCAL_PREVIEW.md` owns usage/restart details.
+Prior55005/53304/50689 packages remain separate and unchanged. No remote dev update occurred.
+
+Current83-row draftSHA `abf2b50d760d7f84b6a9df2694e14a0f58568c0f81ff45d2ed45c928b93bbdba`;
+producer `cf8ad1a39c98d1464b34b6ccd69b92bbeb2ea2bf87b43a9be443428ab9a3fd9c`;
+measurement `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` unchanged.
+Measurement/ruler/ceilings/historical evidence remain unchanged; SceneMemory stays quarantined.
+The new92-file ignored material evidence build is immutable, as are both prior turn builds.
+Latest staged recovery: `port/v2/apps/game/smoke/earth-material-staged-20260908.json` and adjacent
+`.patch.gz`. Preserve the prior773-file Earthturn,654-file painted and647-file charm snapshots.
+Required1Password signing still awaits restoration evidence (`failed to fill whole buffer`);
+no retry, unsigned fallback, new commit, push or hosted action occurred.
+
+### Preserved prior verification and art boundaries
+
+Signed837db4aaa0ef5d3d8bffc79c70f62dcc2503032d's U2 canonical run passed324files/3494tests/1skip,
+then TS6133 static-red; that binding was later fixed, but **no browser stage ran in that attempt**.
+Its exact9-carrier record remains audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json.
+Do not reuse its old product-pinned runner against the new audiovisual source. Retain3a61352's
+small-phone instrument-red after3 Capture outcomes and Charters closure; large-phone/Slice not run.
+08cd97d Milky Way/c57aaaeb portrait timeout causes remain unknown. Claude's retained review is
+in audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md; U2–U4 and full Compendium/Slice/Glass remain open.
+Physical iPhone/Safari/PWA, human art/listening,256MiB update retention,artlockCI,ITP,DECISIONS19
+remain open;128MiB admission exists. SceneMemory stays production-only/quarantined, not activated.
+
+Approved visual references do not replace canonical data. Current V2 has CF1 world sharing;
+CFB/CFB2 codecs exist but native creature share/import is not wired. Preserve complete immutable
+genome/ordered lineage plus versioned visual recipes/catalogue assets for reproducible discovery.
+The universe has kinematic orbits, not an established N-body solver. Biome scaling is bounded
+relative composition, not universal metres. Future Unity/Unreal is a portability goal, not an engine
+migration. Keep authored3D/rig/texture/clip masters and reusable gameplay data; do not restart V2.
+
+Offline Wolf/charm recipes preserve exact canonical Wolf identity but remain below the approved
+painted/charm bar, with limited grounded poses/neck strike and no opening jaw or walking rig.
+Private raw sources remain hash-preserved under /Users/nick/Projects/Celestial-Frontier-asset-sources:
+creature-canid-20260908,creature-charm-20260908,painted-space-pipeline-20260908. The independent
+94-file/24MB iCloud backup remains approval-pending after2 automatic-review rejections; no cloud
+operation or retry. The original Dakk project is untouched. Supplied pipeline alpha/keyer defects
+and exact approved reference hashes remain in the immutable painted-pipeline/addendum audits.
+
+### Workspace, tools and next bounded batch
+
+Verified Codex/macOS /Users/nick/Projects/celestial-frontier-openai-mac / openai/mac, tracking
+origin/openai/mac, HEAD837db4a,38ahead/0behind; origin/develop ancestor. SSH origin is
+`git@github.com:TheDakk/Celestial-Frontier.git`, prior uninterrupted TheDakk read/fetch proof retained.
+Reuse audits/TOOLCHAIN_STARTUP_20260907/manifest.json within this uninterrupted session. No game
+dependencies changed. Inkscape1.4.4 passed outside-sandbox CLI export again at07:38UTC; earlier
+crash cause remains unproven. Use isolated terminal/file workflows, a shared lock for foreground
+jobs and approved outside-sandbox execution for browser/Inkscape. Caffeinate-i PID93550 and prior
+preview PIDs7566/30765/50733 were reverified by scoped outside-sandbox ps at this batch's start.
+No foreground build/browser/render remains; the new local preview PID53959 runs intentionally.
+Ambient .DS_Store is preserved. A fresh session performs its own startup runbook.
+
+Next: produce a reference-led surface/material asset or one complete canonical creature treatment
+with an unmistakable visible improvement, honoring Earth's named-species instructions. This subtle
+material proof is below the approved finish; do not repeat small noise tuning. Preserve the
+finite-turn seam/backside limitation, unresolved native resize/navigation failure and all older
+verification blockers. Do not multiply catalogues or claim automatic image-to-rig animation.
+No larger exploratory loop without Nick's scope agreement. Continue one bounded local batch per
+heartbeat before the24-hour deadline; at deadline leave a safe documented checkpoint.
+
+Current side: Codex/macOS/openai/mac owns staged local work,38ahead/0behind, signing pending.
+GitHub step: none. PR details: not needed. Budget UNFROZEN/PUBLIC, private fallback3,000,
+exact hosted authority/attempts/cost0. Claude/macOS/anthropic/mac need not open/sync now and does
+not have the unmerged work; preserve its173c806. After a separately authorized openai/mac→develop
+merge, Claude fetches/merges origin/develop into its own clean branch. No manual copies, develop/main
+promotion, hosted dev publication, release or deployment. No message was sent to Claude.
+
+## Archived finite-Earth-turn handoff — 2026-09-08
+
+## SESSION HANDOFF — 2026-09-08 · FINITE EARTH SURFACE TURN
+
+Nick authorized **24 hours of local graphics/audio/UI coding**, ending **2026-09-09T03:11:15Z**
+(Tuesday September 8, 23:11:15 Eastern). Claude review is Thursday September 10. Continue bounded
+playable graphics/audio batches beyond U2–U4; do not restart a broad UI rework loop or wait for
+Claude. [Campaign](audits/AV_24H_CAMPAIGN_20260907.md). No deadline extension or new automation.
+
+### Latest direction and implementation
+
+Nick approved the exact painted space/creature references in
+[audits/PAINTED_SPACE_PIPELINE_20260908/approval.json](audits/PAINTED_SPACE_PIPELINE_20260908/approval.json).
+The nine-biome/UI addendum is in audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908. UI is material
+inspiration only: retain CF's existing layout, controls, text, emoji and placement. Do not copy
+the supplied UI. Browser players need no Blender/audio-authoring tools or game installation.
+
+**Latest explicit Earth-creature instruction:** existing named-species appearance requirements
+remain authoritative. Preserve recognizable Earth anatomy, proportions, markings and appropriate
+movement; richness does not permit fantasy redesigns. Alien life/biomes retain procedural rules,
+with existing lineage constraints. ART_DIRECTION.md and SPECIES_AND_GENOME.md record this.
+Animal-specific locomotion and articulated attack coverage remain unfinished, not inferred from
+the existing portrait translations or offline Wolf poses.
+
+The new optional `?planetturn=1` view admits exactly
+`CF1|g:999@90,-60|s:424242@560,170|p:133#2` on WebGL. A one-shot worker builds an unlit768×384
+canonical Earth atlas, and a spherical shader turns the surface through a smooth18-second,
+maximum0.22-radian yaw and settles. Lighting stays fixed, existing clouds stay separate.
+Reduced Motion/Effects Off use the standard globe; hidden scenes pause; exit retires all scene
+resources. A shared application-owned shader program/uniform group avoids per-entry leakage.
+Register MeshPipe before app.init, while keeping the view lazy and preserving missing-pipe fallback.
+
+[Earth turn audit and correction history](audits/AV_EARTH_SURFACE_TURN_20260908/README.md) owns exact
+source, tests, native captures, known failures and review questions. This is a renderer proof over
+the older canonical surface, **not the rich painted replacement or a seamless full revolution**.
+The source is nonperiodic; seam/backside mapping needs an explicit versioned visual recipe.
+Per-atlas raw storage is1.125MiB; canvas/GPU/transfer/fallback/driver allocations are additional.
+Physical-phone performance/memory, human art and all-family animation remain unqualified.
+
+### Actual verification and current open finding
+
+First full test run:330files/3742tests passed,1skip,5failures in4 existing inventory/producer tests;
+all20 new atlas/projection/lifetime tests passed. Focused correction runs passed104,52 and32 tests
+at their recorded states. All3 TypeScript programs, art-unused, art-audit, override/spec and root
+validation passed. Root preserved1010 clean species renders, zero boot errors and50 fingerprints.
+The stopped aggregate is not relabelled as a new full green develop-admission certificate.
+
+Native phone390×844@2 successfully traversed Training Skip→exact Earth Survey→Land, finite visible
+motion/settlement, real Reduced/Effects controls and full mesh/shader/3buffers/texture/source/canvas
+retirement. The aggregate `native-owner-aware` report remains **FAIL** after phone exit followed by
+desktop resize unexpectedly reached the galaxy instead of retaining Sol. Its cause is unresolved;
+it does not explain the older unsolicited-navigation failures. Same-document re-entry was not reached.
+Fresh desktop1440×1000@1 passed the same native entry/motion/paint/retirement scope independently.
+One GL program intentionally remains app-owned. No full native heap/certificate/physical-device claim.
+
+Retain all earlier reds in the audit: stale release count/producer, Mesh generic/root Pixi type
+collision, exact art-package dependency refusal, unpositioned initial planet click, actual missing
+mesh-pipe exception, and extraction's render-group/global-uniform side effect. Corrected extraction
+restores group topology, classifies every cached UID by live owner and rejects an orphan control.
+Both92-file ignored evidence builds are immutable. No foreground build/browser/render remains.
+
+### Local preview and source recovery
+
+[Earth motion preview](http://127.0.0.1:55005/?planetturn=1), PID50733 / exec17796, serves
+`port/v2/apps/game/smoke/dev-preview-earth-turn-local-20260908`. Skip Training, select Earth in Sol,
+press Land and close Survey to see the globe. Use `?avpilot=1` on the same origin for the wider
+existing audiovisual comparison; that comparison can hide Earth's globe. The new package also
+includes the previously verified third-star correction. Offline Wolf/painted concept sheets remain
+outside runtime. Source parent837db4a, **dirty-local-only / publishable:false**, contentSHA
+`fb9eb501d1eb96d4a83b84387086a4465f731c39a426375ebf86d5fbbd5882db`.
+Package integrity and isolated native boot/Skip/Guide identity smoke passed; no diagnostic API or
+corner badge. Metadata/service restart command is in the Earth audit and playtest record.
+The prior53304 and50689 packages/servers remain separate and unchanged.
+
+Current83-row draftSHA `83c07bed235bf897725871eeef32e921a4ca36de73bd9741a2e55a88642126ed`;
+producer `f5e16260e729a79e5dc865704525dd6f501b59a800d8b525171d19556d92ac1f`;
+measurement `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` unchanged.
+No ruler, memory ceiling or historical report was changed to hide a failure. Current system
+references agree with this local scope; the previous full reference handoff is archived verbatim.
+Latest staged recovery: `port/v2/apps/game/smoke/earth-turn-staged-20260908.json` and adjacent
+`.patch.gz`. Keep the prior654-file painted-direction and647-file charm snapshots immutable.
+Required1Password signing still awaits restoration evidence (`failed to fill whole buffer`);
+no retry, unsigned fallback, new commit, push or hosted action occurred.
+
+### Preserved prior verification and art boundaries
+
+Signed837db4aaa0ef5d3d8bffc79c70f62dcc2503032d's U2 canonical run passed324files/3494tests/1skip,
+then TS6133 static-red; that binding was later fixed, but **no browser stage ran in that attempt**.
+Its exact9-carrier record remains audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json.
+Do not reuse its old product-pinned runner against the new audiovisual source. Retain3a61352's
+small-phone instrument-red after3 Capture outcomes and Charters closure; large-phone/Slice not run.
+08cd97d Milky Way/c57aaaeb portrait timeout causes remain unknown. Claude's retained review is
+in audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md; U2–U4 and full Compendium/Slice/Glass remain open.
+Physical iPhone/Safari/PWA, human art/listening,256MiB update retention,artlockCI,ITP,DECISIONS19
+remain open;128MiB admission exists. SceneMemory stays production-only/quarantined, not activated.
+
+Approved visual references do not replace canonical data. Current V2 has CF1 world sharing;
+CFB/CFB2 codecs exist but native creature share/import is not wired. Preserve complete immutable
+genome/ordered lineage plus versioned visual recipes/catalogue assets for reproducible discovery.
+The universe has kinematic orbits, not an established N-body solver. Biome scaling is bounded
+relative composition, not universal metres. Future Unity/Unreal is a portability goal, not an engine
+migration. Keep authored3D/rig/texture/clip masters and reusable gameplay data; do not restart V2.
+
+Offline Wolf/charm recipes preserve exact canonical Wolf identity but remain below the approved
+painted/charm bar, with limited grounded poses/neck strike and no opening jaw or walking rig.
+Private raw sources remain hash-preserved under /Users/nick/Projects/Celestial-Frontier-asset-sources:
+creature-canid-20260908,creature-charm-20260908,painted-space-pipeline-20260908. The independent
+94-file/24MB iCloud backup remains approval-pending after2 automatic-review rejections; no cloud
+operation or retry. The original Dakk project is untouched. Supplied pipeline alpha/keyer defects
+and exact approved reference hashes remain in the immutable painted-pipeline/addendum audits.
+
+### Workspace, tools and next bounded batch
+
+Verified Codex/macOS /Users/nick/Projects/celestial-frontier-openai-mac / openai/mac, tracking
+origin/openai/mac, HEAD837db4a,38ahead/0behind; origin/develop ancestor. SSH origin is
+`git@github.com:TheDakk/Celestial-Frontier.git`, prior uninterrupted TheDakk read/fetch proof retained.
+Reuse audits/TOOLCHAIN_STARTUP_20260907/manifest.json within this uninterrupted session. No game
+dependencies changed. Inkscape1.4.4 passed outside-sandbox CLI export again at07:38UTC; earlier
+crash cause remains unproven. Use isolated terminal/file workflows, a shared lock for foreground
+jobs and approved outside-sandbox execution for browser/Inkscape. Caffeinate-i PID93550 was last
+verified earlier and remains requested; this batch's sandbox ps was denied and did not reverify it.
+Ambient .DS_Store is preserved. A fresh session performs its own startup runbook.
+
+Next: use the approved references for a bounded richer painted material/map proof or one complete
+canonical creature encounter while honoring Earth's named-species instructions. Preserve the
+finite-turn seam/backside limitation, current native resize/navigation failure and all older
+verification blockers. Do not multiply catalogues or claim automatic image-to-rig animation.
+No larger exploratory loop without Nick's scope agreement. Continue one bounded local batch per
+heartbeat before the24-hour deadline; at deadline leave a safe documented checkpoint.
+
+Current side: Codex/macOS/openai/mac owns staged local work,38ahead/0behind, signing pending.
+GitHub step: none. PR details: not needed. Budget UNFROZEN/PUBLIC, private fallback3,000,
+exact hosted authority/attempts/cost0. Claude/macOS/anthropic/mac need not open/sync now and does
+not have the unmerged work; preserve its173c806. After a separately authorized openai/mac→develop
+merge, Claude fetches/merges origin/develop into its own clean branch. No manual copies, develop/main
+promotion, hosted dev publication, release or deployment. No message was sent to Claude.
+
+
+## Archived painted-reference handoff — 2026-09-08
+
+## SESSION HANDOFF — 2026-09-08 · PAINTED SPACE REFERENCES
+
+Nick authorized **24 hours of local graphics/audio/UI coding**, ending **2026-09-09T03:11:15Z**
+(Tuesday September 8, 23:11:15 Eastern). Claude review remains Thursday September 10. Continue
+playable graphics/audio beyond U2–U4 without waiting for that review. Human acceptance and exact
+hosted authority remain separate. [Campaign and review plan](audits/AV_24H_CAMPAIGN_20260907.md).
+One bounded batch per heartbeat; stop at acceptance and preserve earlier results.
+
+### Current completed batch
+
+**Confirmed scene/engine target:** Nick authorized beginning the approved art direction with
+biome-relative creature scale/grounding, detailed Compendium views and attack-specific articulated
+battles. Future Unity/Unreal portability is requested; preserve3D masters and versioned data.
+Current tools/Pixi support the staged2D/2.5D target; all-family animation and phone budgets are
+not yet proven. Existing universe motion is kinematic, not N-body gravity. Source inspection
+found current globe textures bake light/clouds and lack a periodic360 map: begin with a separate
+canonical finite-turn projector proof, then explicitly solve/version full-rotation seam/backside
+mapping. See addendum ENGINE_AND_SCENE_BRIEF.md. No new runtime renderer was built in this batch.
+
+**Latest reference addendum:** Nick's nine-biome sheet and UI-material example are now received
+and preserved in audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908. UI is graphic inspiration
+only: do not copy its layout, control positions, navigation, text or icon system. Creature codes
+and reproducible exploration remain core requirements. Live V2 currently has CF1 world sharing;
+CFB/CFB2 domain codecs exist but native creature share/import is not connected. Preserve complete
+immutable genome/lineage and plan versioned visual recipes; a seed or AI prompt alone is
+insufficient. The older pending-biome/UI statements below are checkpoint history.
+
+**Latest decision: Nick explicitly approved the two supplied space-object/creature sheets.**
+Exact captures/hashes: audits/PAINTED_SPACE_PIPELINE_20260908/approval.json. The earlier generic
+style question below is superseded for those two scopes; do not ask again. Nick is generating
+biome/UI references separately. He wants slow galaxy/Earth spin and articulated creature fights.
+Individual production assets and runtime/device acceptance remain separate. See the packet's
+PERFORMANCE_AND_ANIMATION.md: wrapping globe textures and separate light/clouds, bounded active
+scene residency, compatible creature rigs/layers. No runtime change in this reference batch.
+The following generation/comparison history records its earlier provisional state.
+
+Nick supplied the painted-space pipeline ZIP and adopted its prompt, then requested additional
+biomes and a planet/universe sheet **before confirming**. Three original built-in image-tool
+concepts are preserved: Wolf/explorer/ship vista, four-biome comparison, eight-object space sheet.
+All are opaque1536×1024, one attempt each, exact sent prompts/reference/capture hashes retained.
+**PROPOSED, human approval pending; no bulk catalogue or runtime installation.** The supplied
+prompt explicitly requires reference approval before bulk generation. Review the concrete sheets
+with Nick; do not interpret elapsed time or the earlier approval question as assent.
+[Current packet and visual findings](audits/PAINTED_SPACE_PIPELINE_20260908/README.md).
+
+The four biomes are jungle, cryogeyser ice, coral coastline and volcanic basalt. The eight objects
+are terran/ringed-gas/ice/lava worlds, star, protostar, black hole and galaxy. The ocean treatment
+drifted toward sunset; some ring/disk/outer shapes are cropped; planetary lights and terrain/life
+details must obey actual world data before runtime use. These are concepts, not exact seeded
+worlds, usable cutout atlases or proof of procedural animation. No correction retry was launched.
+
+Supplied ZIP SHA61ad0c820e248e141776b60e7dc8976ef0b45bd5ea73ab6004c752813c609b14;
+30 safe files,29 manifest entries verified. Source review identifies reusable offline queue,
+prompt/hash, capture, ledger and export mechanisms; missing original dependencies, provider and
+animation remain explicit. Fix profile handling before adapting its opaque-RGB alpha assumption
+and destructive pink/purple key suppression. Isolated metadata demo PASS:3 identical runs,
+720 catalogue permutations,4 duplicate controls,20 seeds/8 combinations. No game integration.
+This source supersedes the earlier missing-generator-path question; Dakk's original is untouched.
+
+The preceding offline charm recipe adds two procedural coats and a finite brace/neck-head
+strike/recoil to the same Wolf. Ten640px stills plus33 video frames are preserved. Saved-model
+all65-frame/identity/weight/paw/settlement checks PASS, but art remains **below the requested bar**.
+No opening jaw, walking, browser rig or complete anatomy/attack coverage. First ImageMagick font
+failure and the corrected fresh-output packaging are retained; no Blender rerender for that fix.
+[Study, animation and limitations](audits/CREATURE_CHARM_STUDY_20260908/README.md).
+
+Private raw masters/renders/phenotype/recipes and supplied pipeline/captures are hash-verified in
+new creature-charm-20260908 and painted-space-pipeline-20260908 directories under
+/Users/nick/Projects/Celestial-Frontier-asset-sources. Original inputs remain unchanged. This is
+local preservation, not an independent/cloud backup. Root validation PASS:1,010 rendered species,
+zero boot errors,50 unchanged fingerprints. No unchanged full product battery rerun for concepts.
+
+Retain V2's generation/combat/persistence; use concrete designs and compatible procedural anatomy
+with reviewed paint and motion resources. Qualify one complete native encounter before choosing
+frame/deformation delivery or expanding the catalogue. Existing cameras and outcome ownership
+remain; any durable asset-ID change needs a save migration. Production cleanup belongs on the
+exact develop candidate before separately authorized main promotion. No restart was performed.
+
+Completed third-star code/evidence remains in
+[AV_TRINARY_COMPANION_20260908](audits/AV_TRINARY_COMPANION_20260908/README.md): browser-free
+331files/3,727tests/1skip and scoped phone/desktop Search→Follow/glow/motion/teardown PASS.
+Current producer16c4a7b9f07089dae7e8dc9aae1b6b6fb5378891e54a2ba29aadf15ea4746f60;
+draft83 digest8379d041dda1466c843b242e0ab29cf6b38e28f56035df5801d428579bd99ebd.
+First crowded-map click selected a neighboring seed and remains red; no Survey-entry claim.
+Its manifest0a3534b6c70f84c93878ce366b955a4432409714d0cf886ff824298b459fc687 and
+82-file ignored trinary-evidence-dist-20260908 remain unchanged. Full former handoff is archived.
+
+Initial647-file recovery remains port/v2/apps/game/smoke/charm-study-staged-20260908.json.
+Latest including biome/UI/sharing addendum: port/v2/apps/game/smoke/painted-direction-staged-20260908.json
+and adjacent gzip binary patch. Earlier snapshots and their exact hashes remain immutable.
+Preserve every earlier snapshot. Required1Password signing awaits restoration evidence; no retry,
+unsigned fallback, new commit, hosted action or preview rebuild. No foreground authoring job remains.
+
+### Available local previews and prior audiovisual work
+
+[Open the current Mac preview](http://127.0.0.1:53304/?avpilot=1), read-only server PID 30765,
+exec 60130, serves `port/v2/apps/game/smoke/dev-preview-av-charter-sticky-local-20260908`.
+Parent 837db4a, **dirty-local-only / publishable:false**, content SHA
+`1aa9002a70dcb89500f3adc7a1872e90e41e854ac6ff3598a781ebd92cfff614`.
+Guide displays the full parent; actual modified bytes are bound by its package manifest. The
+queued Codex panel request does not prove Nick opened it. [Preview journey and stop/restart](audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md).
+
+It includes finite Earth/Scout landing and 1.4s cue, canonical Chronicle battle portrait movement,
+Explorer Frontier Resolve metadata repair, MAG field arcs, PROTO disk/warm core, Starter Charter
+700ms success cue and shared opaque sticky-title paint. Sound requires explicit pilot Play and
+existing Sound settings. Header's six native cases and package Skip/Guide check passed; earlier
+scrollbar/no-overflow observer reds remain. Forced-colors bottom-guidance stroke remains a
+separate open visual finding. **This package does not include the new third-star increment.**
+The older 50689/PID 7566, exec 17770 landing/battle preview remains unchanged too. Neither server
+holds the foreground toolchain lock; no hosted dev change was made.
+
+The [offline Wolf checkpoint](audits/CREATURE_BLENDER_CANID_20260908/README.md) preserves the
+complete-genome → final-morphology bridge, exact named Wolf seed 792844710, connected skin,
+armature and finite grounded motion. Five Metal poses/all 97 frames and four negative controls
+passed; clay-like material and abrupt limb joins remain unfinished. This unaccepted candidate
+is outside runtime. Anatomical family completion, hybrid rendering and biome walking remain open.
+Private originals are in `/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-canid-20260908`.
+The 94-file/24MB independent iCloud backup is approval-pending after two automatic-review
+rejections; the concrete question is still pending, and no cloud operation started. Keep local
+originals and all prior source/index recovery receipts unchanged; do not blindly retry.
+
+Nick's requested [Inkscape retest](audits/INKSCAPE_USER_RETEST_20260908/README.md) passed outside
+the sandbox at 07:38 UTC: Inkscape 1.4.4 exported an inspected 128×128 PNG exactly matching the
+prior successful bytes. The CVDisplayLink warning was nonfatal; earlier crash cause remains
+unproven. Inkscape stays qualified for vector/export work; no further diagnosis is needed now.
+
+### Preserved verification boundary
+
+Signed **837db4aaa0ef5d3d8bffc79c70f62dcc2503032d** closed the U2 tool correction after signing
+recovered. Its canonical run passed324 files/3494 tests/1skip then stopped static-red at TS6133
+for one unused test binding. The binding is removed with fixture creation retained and now passes
+static checks. **No browser stage ran in that U2 attempt.** Full9-carrier checkpoint:
+[audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json](audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json).
+ManifestSHA8a5b5f64afb656630194bc781a82a37536d54f86b3c8d4c421213ab5560b06e3.
+Do not run its old product3f1578e-pinned runner against this audiovisual source. Future admission
+must be deliberately scoped to the then-current unchanged committed source and stop first red.
+
+Retain3a61352's earlier small-phone instrument RED after3 Capture outcomes and Charters closure;
+large-phone/Slice were not run. The08cd97d unsolicited Milky Way and c57aaaeb portrait timeout
+causes remain unknown. U2–U4, physical iPhone/Safari/PWA, human art and matched-level listening,
+256MiB update retention, artlockCI, ITP and DECISIONS19 remain open.128MiB admission exists.
+Claude's full review: audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md. Older U3/U4 preparation:
+audits/UI_U2_NEXT_SESSION_20260906.md. Never relabel historical failures as passing.
+
+### Workspace, tooling and handoff
+
+Verified OpenAI/Codex × macOS × /Users/nick/Projects/celestial-frontier-openai-mac × openai/mac
+tracking origin/openai/mac. Starting source837db4a was38 ahead/0behind; origin/develop is an
+ancestor. Signing remains blocked; the local-only package and exact follow-up receipt are above.
+SSH origin git@github.com:TheDakk/Celestial-Frontier.git, TheDakk account/read/fetch proof retained
+from this uninterrupted session. Ambient .DS_Store preserved; root main.js absent. No foreign
+agent worktree edited. Budget UNFROZEN/PUBLIC, private fallback3000, exact hosted authority0/cost0.
+No push/PR/merge/deploy/release/version bump; develop/main/live are unchanged.
+
+Startup receipt audits/TOOLCHAIN_STARTUP_20260907/manifest.json is reusable for this uninterrupted
+session: Node26.8.1/npm11.19.0 and7 CLI capability checks PASS. No game dependency changes.
+Inkscape1.4.4 now passes outside-sandbox version/export/pixel/visual checks:
+[audits/INKSCAPE_REQUALIFICATION_20260907](audits/INKSCAPE_REQUALIFICATION_20260907/README.md).
+Earlier GDK/GTK crashes remain; exact cause unproved. Use approved out-of-sandbox execution on the
+first Inkscape or browser-owning command. Hold the shared toolchain lock for whole foreground jobs.
+Caffeinate-i PID93550 was verified running during checkpoint preparation and remains requested for coding.
+
+The hourly heartbeat retains historical ID `celestial-frontier-48-hour-coding`, display name
+**Celestial Frontier24-hour coding**, ending at the deadline above. Do not duplicate, extend or
+start a second copy of running commands. A fresh coding session performs its own startup runbook;
+continued turns reuse the current receipt. At deadline finish a safe documented checkpoint.
+
+Codex owns local implementation; the bounded Blender bridge/candidate is verified offline. GitHub step none; PR not needed now.
+Claude need not open/sync now and does not have this unmerged work; preserve anthropic/mac's
+unmerged173c806 and do not copy files manually. After a later authorized openai/mac→develop merge,
+Claude can fetch/merge origin/develop into its own clean branch at its next batch. No main promotion.
+The documented dev target is https://dev-celestialfrontier.github.io/; prepare the concrete local
+package before any exact publication request. No dev-site change or review message is implied.
+
+### Fresh-session next action
+
+Use Nick's now-approved space and creature references and exact approval.json hashes. Next
+bounded coding candidate: one opt-in finite Earth surface turn using a canonical unlit atlas
+and Pixi spherical projection with separate fixed light/clouds. Actual surfaceColor is not
+longitude-periodic; continuous full rotations need an explicit backside/seam mapping contract.
+Reuse scene/resource ownership and measure phone loading/cleanup. Do not spin the baked sprite
+or paint over generated identity. Exact source anchors and acceptance are in ENGINE_AND_SCENE_BRIEF.md.
+Use the now-received biome/UI addendum; UI styling must preserve current placement. Follow with
+one complete native creature encounter and a versioned reproducible visual-identity contract. Do not multiply assets, import the Dakk source wholesale or claim automatic paintings
+to rigs. Continue authorized independent local work only within the24-hour deadline; do not rerun
+old failed runners or full unchanged checks. Current53304/50689 previews do not include third-star,
+Wolf or painted-reference work. A later local preview refresh can include verified runtime changes.
+Signing and old private-cloud backup remain pending their external conditions. All historical
+verification blockers above remain open; no current full-chain certificate or human acceptance.
+
+Codex/macOS/openai/mac owns the staged local work,38ahead/0behind; GitHub step none,PR not needed.
+Budget UNFROZEN/PUBLIC, private fallback3,000, exact hosted authority0/attempts0/cost0.
+Claude/macOS/anthropic/mac need not open or sync now and does not have these unmerged changes.
+After a later authorized openai/mac→develop merge, Claude fetches/merges origin/develop into its
+own clean branch, preserving unmerged173c806. No manual copies, hosted attempt, develop/main
+promotion, dev publication or production release. Claude's Thursday review uses the retained
+pipeline, anatomy and actual evidence packets; no message was sent to Claude.
+
+
+## Archived third-star handoff — 2026-09-08
+
+## SESSION HANDOFF — 2026-09-08 · GENERATED THIRD STAR
+
+Nick authorized **24 hours of local graphics/audio/UI coding**, ending **2026-09-09T03:11:15Z**
+(Tuesday September 8, 23:11:15 Eastern). Claude review remains Thursday September 10. Continue
+playable graphics/audio beyond U2–U4 without waiting for that review. Human acceptance and exact
+hosted authority remain separate. [Campaign and review plan](audits/AV_24H_CAMPAIGN_20260907.md).
+One bounded batch per heartbeat; stop at acceptance and preserve earlier results.
+
+### Current completed batch
+
+Trinary systems now draw all three generated stars, correcting a V2 scene omission while
+preserving the existing generator and Survey data. The third passive Sprite uses final generated
+radius/color/separation, diameter `4.8*r2` and canonical orbit phase `t*.16+2.1`. Reduced Motion
+holds `t=0`; Effects Off retains the star. One separately keyed 256×256 companion glow has the
+original three radial stops plus existing V2 polish. Existing scene-texture leases/teardown own
+it; primary/binary paint is unchanged. The caption now names three suns. No RNG, save, route,
+reward or creature-art change. [Implementation and review packet](audits/AV_TRINARY_COMPANION_20260908/README.md).
+
+Browser-free **develop 331 files / 3,727 tests / 1 skip PASS**, all three TypeScript programs,
+art/override/spec checks and root validation PASS: 1,010 rendered species, zero boot errors,
+50 unchanged fingerprints. Scoped native Edge 152.0.4191.66 / CDP 1.3 PASS at 390×844@2 and
+1440×1000@1: exact native CF1 Search → Follow, matching route/persistence authority, actual glow
+trace and canonical motion, reduced/off retention, hide/remove controls with exact restored
+frame bytes, and native-exit Sprite/Texture/Source/scope cleanup. Binary and Sol absence controls
+pass; runtime/cleanup errors empty. Three screenshots inspected. The first crowded-map click
+selected nearby seed 2868415165 rather than the intended triple 2166531614; its stopped exact-seed
+wait, runner and capture are retained. Successful evidence proves Search → Follow, not that
+crowded-pointer Survey path. Keep the target ambiguity for Claude; no broad UI rework this batch.
+
+Current producer `16c4a7b9f07089dae7e8dc9aae1b6b6fb5378891e54a2ba29aadf15ea4746f60`;
+83-bullet draft digest `8379d041dda1466c843b242e0ab29cf6b38e28f56035df5801d428579bd99ebd`.
+Measurement `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler and ceilings
+unchanged. Audit manifest SHA256
+`0a3534b6c70f84c93878ce366b955a4432409714d0cf886ff824298b459fc687` binds 16 sources, 5 references
+and 38 evidence files. All 82 inspected build files are preserved unchanged at ignored
+`port/v2/apps/game/smoke/trinary-evidence-dist-20260908`; do not overwrite or rebind old evidence.
+No current Compendium/Slice/Glass certificate, physical-device/human acceptance or SceneMemory
+activation. Granulated binary/third-companion close-up surfaces remain unfinished.
+
+Completed work is staged over the preceding 516-file campaign checkpoint. Exact new index
+recovery: `port/v2/apps/game/smoke/trinary-staged-20260908.json` and adjacent gzip binary patch.
+Preserve every older snapshot. Required 1Password signing still awaits restoration evidence;
+no retry or unsigned fallback. No new commit, hosted action or preview rebuild in this batch.
+Native check/browser/server completed; no foreground batch job remains.
+
+### Available local previews and prior audiovisual work
+
+[Open the current Mac preview](http://127.0.0.1:53304/?avpilot=1), read-only server PID 30765,
+exec 60130, serves `port/v2/apps/game/smoke/dev-preview-av-charter-sticky-local-20260908`.
+Parent 837db4a, **dirty-local-only / publishable:false**, content SHA
+`1aa9002a70dcb89500f3adc7a1872e90e41e854ac6ff3598a781ebd92cfff614`.
+Guide displays the full parent; actual modified bytes are bound by its package manifest. The
+queued Codex panel request does not prove Nick opened it. [Preview journey and stop/restart](audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md).
+
+It includes finite Earth/Scout landing and 1.4s cue, canonical Chronicle battle portrait movement,
+Explorer Frontier Resolve metadata repair, MAG field arcs, PROTO disk/warm core, Starter Charter
+700ms success cue and shared opaque sticky-title paint. Sound requires explicit pilot Play and
+existing Sound settings. Header's six native cases and package Skip/Guide check passed; earlier
+scrollbar/no-overflow observer reds remain. Forced-colors bottom-guidance stroke remains a
+separate open visual finding. **This package does not include the new third-star increment.**
+The older 50689/PID 7566, exec 17770 landing/battle preview remains unchanged too. Neither server
+holds the foreground toolchain lock; no hosted dev change was made.
+
+The [offline Wolf checkpoint](audits/CREATURE_BLENDER_CANID_20260908/README.md) preserves the
+complete-genome → final-morphology bridge, exact named Wolf seed 792844710, connected skin,
+armature and finite grounded motion. Five Metal poses/all 97 frames and four negative controls
+passed; clay-like material and abrupt limb joins remain unfinished. This unaccepted candidate
+is outside runtime. Anatomical family completion, hybrid rendering and biome walking remain open.
+Private originals are in `/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-canid-20260908`.
+The 94-file/24MB independent iCloud backup is approval-pending after two automatic-review
+rejections; the concrete question is still pending, and no cloud operation started. Keep local
+originals and all prior source/index recovery receipts unchanged; do not blindly retry.
+
+Nick's requested [Inkscape retest](audits/INKSCAPE_USER_RETEST_20260908/README.md) passed outside
+the sandbox at 07:38 UTC: Inkscape 1.4.4 exported an inspected 128×128 PNG exactly matching the
+prior successful bytes. The CVDisplayLink warning was nonfatal; earlier crash cause remains
+unproven. Inkscape stays qualified for vector/export work; no further diagnosis is needed now.
+
+### Preserved verification boundary
+
+Signed **837db4aaa0ef5d3d8bffc79c70f62dcc2503032d** closed the U2 tool correction after signing
+recovered. Its canonical run passed324 files/3494 tests/1skip then stopped static-red at TS6133
+for one unused test binding. The binding is removed with fixture creation retained and now passes
+static checks. **No browser stage ran in that U2 attempt.** Full9-carrier checkpoint:
+[audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json](audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json).
+ManifestSHA8a5b5f64afb656630194bc781a82a37536d54f86b3c8d4c421213ab5560b06e3.
+Do not run its old product3f1578e-pinned runner against this audiovisual source. Future admission
+must be deliberately scoped to the then-current unchanged committed source and stop first red.
+
+Retain3a61352's earlier small-phone instrument RED after3 Capture outcomes and Charters closure;
+large-phone/Slice were not run. The08cd97d unsolicited Milky Way and c57aaaeb portrait timeout
+causes remain unknown. U2–U4, physical iPhone/Safari/PWA, human art and matched-level listening,
+256MiB update retention, artlockCI, ITP and DECISIONS19 remain open.128MiB admission exists.
+Claude's full review: audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md. Older U3/U4 preparation:
+audits/UI_U2_NEXT_SESSION_20260906.md. Never relabel historical failures as passing.
+
+### Workspace, tooling and handoff
+
+Verified OpenAI/Codex × macOS × /Users/nick/Projects/celestial-frontier-openai-mac × openai/mac
+tracking origin/openai/mac. Starting source837db4a was38 ahead/0behind; origin/develop is an
+ancestor. Signing remains blocked; the local-only package and exact follow-up receipt are above.
+SSH origin git@github.com:TheDakk/Celestial-Frontier.git, TheDakk account/read/fetch proof retained
+from this uninterrupted session. Ambient .DS_Store preserved; root main.js absent. No foreign
+agent worktree edited. Budget UNFROZEN/PUBLIC, private fallback3000, exact hosted authority0/cost0.
+No push/PR/merge/deploy/release/version bump; develop/main/live are unchanged.
+
+Startup receipt audits/TOOLCHAIN_STARTUP_20260907/manifest.json is reusable for this uninterrupted
+session: Node26.8.1/npm11.19.0 and7 CLI capability checks PASS. No game dependency changes.
+Inkscape1.4.4 now passes outside-sandbox version/export/pixel/visual checks:
+[audits/INKSCAPE_REQUALIFICATION_20260907](audits/INKSCAPE_REQUALIFICATION_20260907/README.md).
+Earlier GDK/GTK crashes remain; exact cause unproved. Use approved out-of-sandbox execution on the
+first Inkscape or browser-owning command. Hold the shared toolchain lock for whole foreground jobs.
+Caffeinate-i PID93550 was verified running during checkpoint preparation and remains requested for coding.
+
+The hourly heartbeat retains historical ID `celestial-frontier-48-hour-coding`, display name
+**Celestial Frontier24-hour coding**, ending at the deadline above. Do not duplicate, extend or
+start a second copy of running commands. A fresh coding session performs its own startup runbook;
+continued turns reuse the current receipt. At deadline finish a safe documented checkpoint.
+
+Codex owns local implementation; the bounded Blender bridge/candidate is verified offline. GitHub step none; PR not needed now.
+Claude need not open/sync now and does not have this unmerged work; preserve anthropic/mac's
+unmerged173c806 and do not copy files manually. After a later authorized openai/mac→develop merge,
+Claude can fetch/merge origin/develop into its own clean branch at its next batch. No main promotion.
+The documented dev target is https://dev-celestialfrontier.github.io/; prepare the concrete local
+package before any exact publication request. No dev-site change or review message is implied.
+
+### Fresh-session next action
+
+Resume this completed third-star checkpoint without rerunning unchanged passing checks or old
+failed runners. The next bounded graphics candidate is the original seeded close-up surface for
+binary/third companions (legacy XOR 0xB1/0xC2 and zoom gate), after reading its actual owner and
+recording intent. Include accumulated verified code in the next local preview refresh. Current
+53304/50689 packages do not contain this increment. Continue core graphics/audio; no broad
+UI/art loop or automatic full battery. Finish signing/private backup only once their pending
+external conditions are resolved. Keep the 24-hour deadline and all verification blockers.
+
+Codex/macOS/openai/mac owns the staged local work, 38 ahead / 0 behind; GitHub step none,
+PR details not needed now. Claude/macOS/anthropic/mac need not open or sync now and does not
+have these unmerged changes. After a later authorized openai/mac → develop merge, Claude
+fetches/merges origin/develop into its own clean branch, preserving its unmerged 173c806.
+No manual copies, hosted attempt, develop/main promotion, dev publication or production release.
+
+## Archived refreshed-preview handoff — 2026-09-08
+
+## SESSION HANDOFF — 2026-09-08 · REFRESHED PLAYABLE PREVIEW
+
+Nick authorized24 hours of local graphics/audio/UI coding, ending **2026-09-09T03:11:15Z**
+(Tuesday September8,23:11:15 Eastern). Claude review remains ThursdaySeptember10. Continue
+playable graphics/audio beyond U2–U4 without waiting for that review. Human acceptance and
+exact hosted authority remain separate. Full direction:[24-hour campaign](audits/AV_24H_CAMPAIGN_20260907.md).
+
+### Current completed batch
+
+[Open the refreshed Mac preview](http://127.0.0.1:53304/?avpilot=1), read-only server PID30765,
+exec60130. The queued Codex panel request does not prove human opening. Package:
+`port/v2/apps/game/smoke/dev-preview-av-charter-sticky-local-20260908`; parent837db4a,
+**dirty-local-only/publishable:false**, contentSHA
+1aa9002a70dcb89500f3adc7a1872e90e41e854ac6ff3598a781ebd92cfff614.
+Guide displays the full parent; manifest hashes bind modified bytes. Hosted dev is unchanged.
+The older50689/PID7566 package/server remains untouched; both servers and caffeinate93550
+were confirmed running. Neither long-lived server holds the foreground toolchain lock.
+
+This package includes finite Earth/Scout landing and1.4s cue, canonical battle Chronicle motion
+and Explorer Frontier Resolve repair, MAG field arcs, PROTO disk/warm core, Starter Charter700ms
+success cue, and the latest shared sticky-title paint correction. Pilot sound requires explicit
+Play and existing Sound settings. Wider universe art, anatomical rigs and biome walking remain
+incomplete; the unaccepted offline Wolf remains outside runtime. Quick journey and stop/restart
+instructions:[review/preview audit](audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md).
+
+The title correction makes existing shared header paint opaque and covers the14px top inset,
+without changing title/Close nodes, geometry, scrolling, focus, emoji or Survey. Browser-free
+**develop331files/3727tests/1skip PASS**, all3 TypeScript programs and art/override/spec; root
+validation PASS1010species/50 unchanged fingerprints. Scoped native Edge152.0.4191.66/CDP1.3
+passes six390×844@2/1440×768@1 current/pilot/large-max/forced-color cases, actual wheel scrolling,
+header pixel/transparent-backing controls, native Close, exact restoration and cleanup. Six
+restored title captures inspected. Separate follow-up: forced-colors bottom-guidance glyph
+stroke appears too heavy; record it for a small future correction, not a broad UI polish loop.
+
+Retain native-first's60-pixel scrollbar fade observer red and the next desktop1440×1000
+fixture's no-overflow red. Corrected observer excludes only the measured scrollbar lane while
+proving Close/objective ink remain inside the crop; actual desktop overflow now comes from a
+real1440×768 viewport. Product/build bytes stayed unchanged through those observer corrections.
+Fresh ordinary package build/verify and320×568@2 Edge Skip/Guide check PASS with diagnostic API
+absent. Served index/manifest hashes match. The82-file evidence build is retained separately in
+ignored `port/v2/apps/game/smoke/charter-header-evidence-dist-20260908`; packaging did not erase it.
+
+Current producer66663069bae984202dfd0726e21103e1d8b9412516494e216ac4dbb56771768b;
+draft83digest45e1ef079ef78b0b7cad62a2e4a80df16f2aa95911a2eef7681b78956f58c129.
+Measurement/ruler/ceilings unchanged. No current native Compendium/Slice/Glass certificate or
+SceneMemory activation. Earlier U2/other observer failures remain preserved below and in audits.
+Audit manifestSHA0aee810fc80bcf5b038cb9940f369c5978eace31bffcac339816d6190167a0b6.
+
+Completed files are staged with the preceding campaign. Exact index recovery:
+`port/v2/apps/game/smoke/charter-header-staged-20260908.json` plus adjacent compressed binary patch.
+Preserve every older snapshot. The1Password signing failure awaits restoration evidence; no
+retry or unsigned fallback. Private Wolf independent backup remains approval-pending; no cloud
+operation started. No batch build/check/browser job remains running; shared toolchain lock free.
+
+Next bounded batch: select one remaining playable universe-scene or existing-audio mapping gap
+from `AAA_COVERAGE_LEDGER.md`, the24-hour plan and its actual owner; record the exact intended
+increment before editing. Continue core graphics/audio work, not another broad UI/art review.
+Finish signing/private backup only after their pending external conditions are resolved.
+Codex stays local on openai/mac,38ahead/0behind; GitHub step none, PR not needed now. Claude need
+not open/sync now and does not have these unmerged changes; after a later authorized develop
+merge it fetches/merges origin/develop into its own clean anthropic/mac. No manual copies,
+hosted attempt, dev-site update, main promotion or production release.
+
+### Previous playable batch
+
+[Implementation, checks and source/evidence manifest](audits/AV_PLAYABLE_IMPLEMENTATION_20260907/README.md)
+records finite native Earth/eligible-Scout landing, existing1.4s landing cue, canonical Chronicle
+battle attacks/reactions, and consumed old audio activation protection. Phone arrival stays in
+Survey's existing72×44px header slot; reduced motion is static. Exact runtime/revision/rendered
+route and original trusted gesture are required; gameplay/save/genome/asset masters are unchanged.
+
+Native fresh Explorer combat exposed a pre-existing Frontier Resolve audio-metadata exception:
+the loss was durable but the Chronicle could not open. Exact player-only metadata projection
+repairs that path; canonical ability fields and strict creature validation are unchanged.
+Real native Land→Challenge now passes with loaded art, movement, correct final result and no
+remaining animation. Phone/desktop captures were inspected. These are whole-portrait translations,
+not completed anatomical rigs. All first failures and caught-exception receipts remain retained.
+
+Final browser-free **develop PASS:327 test files,3610 tests,1 skip**, all3 TypeScript programs,
+art/override/spec checks. Root validate/1010 rendered species/50 deterministic fingerprints PASS.
+Focused audio and Explorer/Chronicle preparation and scoped native presentation diagnostics PASS.
+The first complete profile's6 stale release-count/callback assertions remain retained; fixed
+release inventory is83, missing-one82, orderedSHA
+354381f4679bfed6a4d269a0971ba8c3a28f2a43b59d4503403fb11499961ec9.
+Current Compendium producer3c8cda1771d6230fb86e773fc0cde86cb3c51686b6cc8fce3141b38a7516e28b;
+measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12/ruler/ceilings unchanged.
+No current Compendium/Slice/Glass certificate. SceneMemory remains production-quarantined.
+
+### Local preview and signing checkpoint
+
+[Open the Mac preview](http://127.0.0.1:50689/?avpilot=1). Read-only loopback server PID 7566,
+exec session 17770, serves the verified `dev-preview-av-playable-local-20260908` package.
+The Codex panel request is queued. Guide identity is parent 837db4a; actual modified package
+state is **dirty-local-only / publishable:false**, content SHA
+5d1da7777da722ccb04b4dfc7b258c1b85f98fb1c3e0ae47fa5286217ac292d2.
+The dev website is unchanged. [Full follow-up receipt](audits/AV_PLAYABLE_HANDOFF_20260908/README.md)
+and [automated preview record](port/playtests/20260908_AV_LOCAL_PREVIEW.md) include startup,
+stop/restart details, checks, retained failures and the exact source/package limitations.
+
+The package browser observer needed one bounded correction because U1 intentionally hides the
+canonical breadcrumb. Connected populated breadcrumb state remains required; player/canvas must
+be painted, with `trailVisible` reported separately. The original red is retained. After the
+full 3610-test profile above, **21/21 focused tests, all three TypeScript programs and the real
+320×568@2 Edge package check PASS** on the corrected observer and unchanged package. This is not
+new full admission or human UAT. Both preview selftests passed once; the first wrong output
+basename guard and the sandboxed curl transport failure are also retained.
+
+The required signed commit failed once: **1Password: failed to fill whole buffer**, exit 128.
+No new commit exists; the finished batch is staged. An unlock/connection-restoration question
+is pending. Do not silently bypass signing or repeatedly retry unchanged. Once restored, sign
+and verify the NEW commit, then build its clean exact-commit review package. Old HEAD's valid
+signature does not cover this batch. Keep this staged checkpoint before extending local work.
+
+### Previous protostar graphics increment
+
+V2 now restores the original tilted dusty birth disk and warm core for PROTO, replacing its
+ordinary-corona fallback. `system-protostar.ts` bakes one420×240 transparent canvas at140×80
+world units (100800 pixels /403200 RGBA bytes), owned by the existing sceneTexture lease.
+PROTO has no ordinary stellar close-up surface; no new cache/ticker, RNG, saves or gameplay.
+Static class identity remains under Reduced Motion/Effects Off. [Review and controls](audits/AV_PROTOSTAR_DISK_20260908/README.md).
+
+Preparation passed on its first complete chain:83-bullet draft refresh, evidence build/producer
+metadata, browser-free **develop329 files/3646 tests/1skip**, all3 TypeScript programs,
+art/override/spec checks and root validation/1010species/50 unchanged fingerprints.
+First native diagnostic PASS: four phone390×844@2 /desktop1440×1000@1 captures inspected;
+actual420×240RGBA matches the independent original recipe exactly; omitted-disk and stage
+hide/restore controls pass. Deep zoom exceeds the old ordinary-surface threshold with zero
+star-surface leases. Native exit destroys the Sprite/Texture/Source and releases all3 scene
+leases with exact registry balance. Reduced/Effects Off, NS/Sol absence and runtime/cleanup
+checks pass; browser and temporary server are closed.
+Current producerff1d6051b34b2f2b7027b7f99e45a9d5ee692f5b0568f7133b7321d7a01c3b62;
+draftSHA0115e324858dc0b88acc25d6eaffba532fb06d13bd638e776d2280a636c9b618.
+Measurement/ruler/ceilings/history are unchanged; this is not current Compendium/Slice/Glass
+certification, human art acceptance or a hosted/dev-site update. SceneMemory stays quarantined.
+
+The preceding299-file MAG staged patch preserves its original source/reference hashes; keep
+that manifest and all older snapshots unchanged. The ordinary loopback preview above remains
+the older landing/battle package. Signing still awaits1Password restoration; no blind retry.
+After this checkpoint, the small authored Starter Charter settlement-cue candidate is recorded
+in `audits/AV_PROTOSTAR_DISK_20260908/NEXT_AUDIO.md` for a future bounded batch; it is not implemented.
+No broad creature-art expansion or new audio production is implied.
+
+Nick subsequently requested one more Inkscape test after confirming that its GUI launches.
+The07:38UTC isolated outside-sandbox export passed with inspected128×128PNG bytes identical
+to the prior successful output; CVDisplayLink warning was nonfatal.
+[New retest record](audits/INKSCAPE_USER_RETEST_20260908/README.md). Inkscape remains available
+for vector/export work. No product code changed; the audio candidate above remains next.
+
+PROTO audit manifest SHA256
+`9048c747374e591f0d880101b254a0b8687c3325d096f3ef7c9b6cfcdd4bdeea`.
+The finished increment is staged with the preceding work, with exact index recovery in
+`port/v2/apps/game/smoke/protostar-staged-20260908.json` and its adjacent compressed binary
+patch. Preserve every prior snapshot; no commit-signing retry occurred. No command or native
+browser remains running from this batch; the shared toolchain lock is free. Caffeinate93550
+and ordinary preview7566 were confirmed alive at this heartbeat. No need to repeat these
+unchanged passing checks; the next bounded candidate is the audio mapping described above.
+
+### Previous magnetar graphics increment
+
+V2 now restores the two canonical static blue magnetic-field ellipses for MAG systems,
+a recorded omission from the original system renderer. The small scene-owned Pixi helper
+mounts after beams/before core and retains static class identity under Reduced Motion/Effects
+Off. NS and other stellar classes, generated content, textures, saves and gameplay are unchanged.
+[Exact implementation and review record](audits/AV_MAGNETAR_FIELD_20260908/README.md).
+
+Current browser-free **develop PASS:329 files,3646 tests,1 skip**, all3 TypeScript programs,
+art/override/spec checks. Root validate again passes1010 rendered species and50 unchanged
+fingerprints. Preserve the first controller MODULE_NOT_FOUND (tests never started) and the
+successor's root-TypeScript declaration collision after3646 tests passed. The real-Pixi test
+now lives beside existing app Pixi tests, preserving all assertions and strict root settings.
+Scoped native390×844@2 /1440×1000@1 PASS: trusted Survey→Enter, actual painted arcs,
+Reduced/Effects Off retention, exact pixel restoration, native-exit context destruction and
+NS/Sol absence. Three captures inspected; zero runtime/cleanup faults. Preserve the first
+fixture red: chapter2 without an owned Array correctly fell back to universe. The corrected
+fixture owns Array and uses source-normalized coordinates; product travel rules are unchanged.
+No certificate or human acceptance is implied.
+
+Current producer391472b65dd3063edc71f23111a1b1eb2aea6e0947aa2900fbdff2dcd8436ce5;
+83-bullet draft SHA694c39470f8083f803d9c249c333559979ac10e71f239e6bf2af0a1ed65348ac.
+Measurement/ruler/ceilings and all earlier failure/certificate carriers are unchanged. The
+older playable package above remains immutable and does not contain this MAG increment.
+The previous Wolf source/reference manifest describes its original265-file checkpoint;
+its staged recovery patch preserves those bytes after current source/reference updates.
+
+The current MAG manifest SHA256 is
+`e45d8eaea5e0bbb3c3820f8f6e55c2a6263359c50b19ec11e09e7d5f72a1359a`.
+Finished work is staged locally; `port/v2/apps/game/smoke/magnetar-staged-20260908.json`
+and its adjacent compressed binary patch preserve the exact new index. Keep both earlier
+snapshots unchanged. Signing remains blocked; no retry without restored-agent evidence.
+The native diagnostic browser and temporary server closed cleanly. Next heartbeat may continue
+one bounded playable graphics/audio increment; do not rerun these unchanged accepted checks.
+The current ordinary preview is unchanged, so package the accumulated code at the next playable
+handoff instead of describing this evidence build as a dev-site publication.
+
+### Previous offline creature checkpoint and next work
+
+The complete-genome→final-morphology bridge and one private pure-Wolf Blender candidate now
+pass their scoped checks. [Wolf audit and comparison](audits/CREATURE_BLENDER_CANID_20260908/README.md)
+records19 focused exporter tests,3 TypeScript programs, root validation, five GPU-only Metal
+renders, actual132/300/440 comparisons and independent saved-model checks across all97 frames.
+Manifest SHA25688fa556a1e85cef1131a0551f53b5277ebd5f6c6c199d26313aaa5a5424d9912.
+Final root validation again passed1010 rendered species and50 unchanged fingerprints.
+One connected skin/normalized weights/four planted paws/finite settlement pass; four scratch
+negative controls reject. V1 is retained; one bounded V2 sampling correction smooths the facets.
+Clay-like material, abrupt limb joins, broader anatomical families, hybrid rendering, walking
+and runtime integration remain open. No generation, protected portrait, gameplay or save changed.
+
+The final standalone comparison passes exact390px phone width,1440px desktop and image/pose
+checks. Preserve its first insufficient PASS (innerWidth466 for requested390), the300px native
+reference observer red, initial exporter empty-module-marker red and Metal cold-compile delay.
+Inkscape again exported successfully outside the sandbox; the PNG matches prior bytes exactly.
+Its CVDisplayLink warning was nonfatal; preserve the first AE text-parser red and actual-artifact
+verdict in [Inkscape confirmation](audits/INKSCAPE_CONFIRMATION_20260908/README.md).
+
+Both private model versions and inputs are copied into existing durable local asset storage;
+94-file/24MB independent iCloud backup is **approval-pending**, not verified. Automatic approval
+review rejected the upload twice and would not accept recorded repository backup authority;
+a concrete user question is pending. No cloud copy started. The completed changes are staged with the prior playable batch;
+`port/v2/apps/game/smoke/canid-staged-20260908.json` and its adjacent compressed binary patch
+preserve the exact local index. The prior146-file playable snapshot remains retained separately.
+Signed commit remains blocked by
+1Password; do not retry without restoration evidence or use an unsigned fallback.
+
+Next finish those external checkpoint steps when answered, then continue one bounded playable
+scene/audio coverage increment from the24-hour campaign. Keep the unaccepted Wolf authoring
+candidate out of the game; no broad family/art rework is implied. Scout/Earth/gameplay preview
+above is unchanged and remains available. All eight anatomical-family completion goals remain
+open. No need to restart Inkscape diagnosis, emoji study or unchanged completed checks.
+
+### Preserved verification boundary
+
+Signed **837db4aaa0ef5d3d8bffc79c70f62dcc2503032d** closed the U2 tool correction after signing
+recovered. Its canonical run passed324 files/3494 tests/1skip then stopped static-red at TS6133
+for one unused test binding. The binding is removed with fixture creation retained and now passes
+static checks. **No browser stage ran in that U2 attempt.** Full9-carrier checkpoint:
+[audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json](audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json).
+ManifestSHA8a5b5f64afb656630194bc781a82a37536d54f86b3c8d4c421213ab5560b06e3.
+Do not run its old product3f1578e-pinned runner against this audiovisual source. Future admission
+must be deliberately scoped to the then-current unchanged committed source and stop first red.
+
+Retain3a61352's earlier small-phone instrument RED after3 Capture outcomes and Charters closure;
+large-phone/Slice were not run. The08cd97d unsolicited Milky Way and c57aaaeb portrait timeout
+causes remain unknown. U2–U4, physical iPhone/Safari/PWA, human art and matched-level listening,
+256MiB update retention, artlockCI, ITP and DECISIONS19 remain open.128MiB admission exists.
+Claude's full review: audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md. Older U3/U4 preparation:
+audits/UI_U2_NEXT_SESSION_20260906.md. Never relabel historical failures as passing.
+
+### Workspace, tooling and handoff
+
+Verified OpenAI/Codex × macOS × /Users/nick/Projects/celestial-frontier-openai-mac × openai/mac
+tracking origin/openai/mac. Starting source837db4a was38 ahead/0behind; origin/develop is an
+ancestor. Signing remains blocked; the local-only package and exact follow-up receipt are above.
+SSH origin git@github.com:TheDakk/Celestial-Frontier.git, TheDakk account/read/fetch proof retained
+from this uninterrupted session. Ambient .DS_Store preserved; root main.js absent. No foreign
+agent worktree edited. Budget UNFROZEN/PUBLIC, private fallback3000, exact hosted authority0/cost0.
+No push/PR/merge/deploy/release/version bump; develop/main/live are unchanged.
+
+Startup receipt audits/TOOLCHAIN_STARTUP_20260907/manifest.json is reusable for this uninterrupted
+session: Node26.8.1/npm11.19.0 and7 CLI capability checks PASS. No game dependency changes.
+Inkscape1.4.4 now passes outside-sandbox version/export/pixel/visual checks:
+[audits/INKSCAPE_REQUALIFICATION_20260907](audits/INKSCAPE_REQUALIFICATION_20260907/README.md).
+Earlier GDK/GTK crashes remain; exact cause unproved. Use approved out-of-sandbox execution on the
+first Inkscape or browser-owning command. Hold the shared toolchain lock for whole foreground jobs.
+Caffeinate-i PID93550 was verified running during checkpoint preparation and remains requested for coding.
+
+The hourly heartbeat retains historical ID `celestial-frontier-48-hour-coding`, display name
+**Celestial Frontier24-hour coding**, ending at the deadline above. Do not duplicate, extend or
+start a second copy of running commands. A fresh coding session performs its own startup runbook;
+continued turns reuse the current receipt. At deadline finish a safe documented checkpoint.
+
+Codex owns local implementation; the bounded Blender bridge/candidate is verified offline. GitHub step none; PR not needed now.
+Claude need not open/sync now and does not have this unmerged work; preserve anthropic/mac's
+unmerged173c806 and do not copy files manually. After a later authorized openai/mac→develop merge,
+Claude can fetch/merge origin/develop into its own clean branch at its next batch. No main promotion.
+The documented dev target is https://dev-celestialfrontier.github.io/; prepare the concrete local
+package before any exact publication request. No dev-site change or review message is implied.
+
+### Fresh-session next action
+
+Resume the completed header/preview checkpoint above; do not rerun its unchanged passing checks
+or old failed runners. Read the current campaign/coverage owner and choose one bounded playable
+universe-scene/audio increment. Keep the24-hour deadline, signing/cloud pending questions and
+all preserved verification blockers intact. Current preview53304 contains the new stellar/audio
+work; historical50689 does not. No hosted/PR action is needed. Claude/macOS/anthropic/mac need
+not open or sync until a later authorized openai/mac→develop merge; then use its own clean branch.
+
+## Archived Starter Charter audio handoff — 2026-09-08
+
+## SESSION HANDOFF — 2026-09-08 · STARTER CHARTER AUDIO
+
+Nick authorized24 hours of local graphics/audio/UI coding, ending **2026-09-09T03:11:15Z**
+(Tuesday September8,23:11:15 Eastern). Claude review remains Thursday September10. Continue
+actual playable graphics/audio, fixing play-blocking UI as found; do not make U2–U4 completion
+or Claude review a prerequisite for local work. Human acceptance and hosted authority are separate.
+Full direction: [24-hour campaign](audits/AV_24H_CAMPAIGN_20260907.md).
+
+### Current Starter Charter audio checkpoint
+
+The existing700ms settlement cue now follows successful native Starter Charter acceptance,
+including immediate completion, only after exact durable publication/final refresh/barrier release.
+One original trusted gesture captures shared-context activation; pilot Play opt-in, Sound/Effects,
+route, visibility, answerability and finite ownership remain required. Duplicate/refused/stale/
+converging/failed actions stay silent. No new media, reward/save/generation changes.
+[Implementation, checks and retained failures](audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/README.md).
+
+Corrected browser-free develop PASS:331files/3727tests/1skip, all3TypeScript programs and
+art/override/spec checks. Root validation PASS1010species/50 unchanged fingerprints. Scoped native
+Edge152.0.4191.66/CDP1.3 on390×844@2 verifies a silent refusal and held pending action, exact saved
+receipt/player/mirror publication, one700ms shared-context source and complete finite retirement.
+Browser/server closed with no runtime/cleanup faults. Phone captures inspected; scrolled objective
+text shows behind the sticky Charters title. This is a recorded visual follow-up, not a full
+layout/human acceptance claim.
+
+Preserve the first full profile's4 stale release-oracle failures, native consumed-vs-next ordinal
+failure, native natural-vs-guarded retirement failure and read-only calibration's cross-realm
+array error. Both corrected real release oracles retain22 negative samples; the retirement
+observer accepts both actual endings and rejects12 live-resource/fault mutations. Earlier U2
+failures/certificates are unchanged. Current producer2152279dbe394a2f6ed0cfe15157b75dd907ee80dc810f5a72ee6662fe75bace;
+draft83digestbba52ad07bd3a2d228a4fc27ab81e386db20414071ca57ea047e9581a1b1a40e.
+Measurement/ruler/ceilings stay unchanged; no current Compendium/Slice/Glass certificate or
+SceneMemory activation is claimed.
+
+Next bounded batch: inspect/correct that one sticky-title paint issue, then prepare a NEW ordinary
+local preview of accumulated MAG/PROTO/Charter changes. Preserve the existing50689 package and
+server; that older package still has only the earlier landing/battle work. Keep the unaccepted
+Wolf authoring candidate out of the runtime. Signing awaits restored1Password evidence; no retry
+or unsigned fallback. No hosted action/Claude message occurred, and Claude need not open now.
+Audit manifest SHA2568dab3dd0a37cba54d13c895b9129e4f1fb11c74057e6a5a95583dbd0e5b125bb.
+Finished work is staged with the earlier batches. Exact index recovery:
+`port/v2/apps/game/smoke/charter-audio-staged-20260908.json` and adjacent compressed binary patch.
+Preserve all prior snapshots; no signing retry occurred. No batch command/browser remains running;
+shared toolchain lock is free. Codex stays local on openai/mac; no PR/hosted step is needed now.
+Claude/anthropic/mac does not have these unmerged changes and should sync only after a later
+explicitly authorized develop merge, using its own clean branch. No manual copies or main release.
+
 ## Superseded U2-first handoff — audiovisual priority resumed2026-09-07
+
+## Superseded Wolf-start handoff — archived 2026-09-08
+
+### Next bounded implementation
+
+Finish signing when the connection is restored; the same Codex checkout may continue the
+24-hour local campaign from the preserved staged checkpoint. Next implement the
+**complete-genome→final-morphology→Blender export bridge and one coherent Wolf-family candidate**.
+Read [creature/anatomy map](audits/AV_PLAYABLE_IMPLEMENTATION_20260907/CREATURE_BLENDER_FINDINGS.md)
+and current ART_DIRECTION/SPECIES_AND_GENOME before authoring. The16 body genes, compatible
+morphology families and8 pilot review buckets are different authorities. Preserve named whole-form
+Wolf and actual bred lineage; never reroll or hand-edit genome traits to fit a generic rig.
+
+Use a connected skeleton/tissue form, then bounded idle/interaction comparison at132/300/440 with
+protected static fallback. No creature Blender armature was found in the inspected B masters.
+First qualify a bounded actual M4 Pro Metal render on a fresh working copy; enumeration alone is
+not render proof. Keep editable masters private with relative dependencies and verified backup.
+Continue wider stars/planets/accessories/biomes/UI/audio via the existing campaign and coverage
+ledger. All eight anatomical families remain incomplete. Do not restart an emoji replacement study.
+Native battle follow-ups include Explorer transcript grammar and the early settled-result toast;
+these are recorded polish items, not reasons to repeat the current completed checks.
+
+
+## SESSION HANDOFF — 2026-09-07 · PLAYABLE GRAPHICS/AUDIO PRIORITY
+
+Nick wants this session to move beyond U2–U4 into graphics and audio, with incremental fixes,
+real development-copy playtests and a documented review trail for Claude on Thursday2026-09-10.
+[Direction, concrete next slice and review plan](audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md)
+preserve the exact request and complete staged U2 patch. This supersedes the earlier sequencing
+that made UI completion a prerequisite for all further local audiovisual implementation.
+Use the existing AAA_AUDIOVISUAL_CAMPAIGN plan: graphics/audio first, exhaustive UI polish later.
+No external Claude review is required to begin the authorized local slice; fix play-blocking UI
+as found. U2–U4 and human acceptance remain honestly pending, not waived or called complete.
+
+Next audiovisual slice: one real Earth/eligible-Scout approach→landing→inspection experience,
+starting with a finite Scout arrival/settle presentation plus the existing1.4s landing cue, bound
+to native gesture and exact successfully rendered durable landing. doLand()===true alone is
+insufficient because Training and publication/reload-failure paths also return true. Wrong-world,
+refused/wave-off, stale/replaced, hidden/disposed and ineligible paths must not report success.
+Existing assets/rights are ready; no new audio render or Inkscape launch is needed. This planned
+slice is NOT implemented yet. Then prove representative anatomical animation and expand biome/
+audio outcome coverage per the existing ledger; all eight animation families are still incomplete.
+Target a visible representative playable slice, not a guaranteed complete campaign within24hours.
+
+The documented dev target is https://dev-celestialfrontier.github.io/; its live contents were not
+verified this turn. Prepare the exact-source distributable candidate and review evidence before
+any exact publication authorization. No hosted attempt, push, deploy or production action is
+implied. Keep source/asset/check/capture/listening/limitation records for Claude; no message sent.
+
+
+Nick resumed coding and requested caffeinate; caffeinate -i PID93550 is running. OpenAI/Codex,
+macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac→origin/openai/mac are verified.
+Starting signed ea74425c1c3737d8081d7c4de8e454912812ffd7,37 ahead/0 behind after fresh SSH fetch;
+origin/develop is an ancestor. SSH origin git@github.com:TheDakk/Celestial-Frontier.git, TheDakk
+account proof retained, current repository read PASS. Ambient .DS_Store preserved; root main.js absent.
+Budget UNFROZEN/PUBLIC, private fallback3000, zero exact hosted authority/cost. No push/PR/merge,
+deploy/release/version change; develop/main/live remain unchanged.
+
+Read [audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md](audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md)
+for the current batch and [Claude's full review](audits/UI_U2_CLAUDE_REVIEW_20260906/RESPONSE.md).
+The new attachment exactly matches the retained response. The prior full preparation/resume map,
+including all unapplied U3/U4 archives, remains in audits/UI_U2_NEXT_SESSION_20260906.md; this
+handoff supersedes its pause status. Nick authorized U2–U4, compact notices when space is tight,
+Settings above Training and the accepted U1 shell/emoji. Local audiovisual implementation is now
+prioritized under the direction above; unseen art/human acceptance and hosted authority remain open.
+
+The bounded instrument correction is implemented. Survey setup observes strict boolean state:
+already closed→zero activations; open→one trusted native activation and the existing5000ms
+strict-false wait. An independently assessed receipt binds state and a named fonts/two-frame
+boundary. Painted topbar children define collision clearance when the wrapper is transparent;
+AppChrome's full-wrapper variable remains distinct. The deliberately floated trail is excluded
+ONLY from band-fixture fixed rows. Seven named fixture/cleanup boundaries preserve first errors
+before settlement coverage checks; failed cleanup cannot authorize dependent native geometry.
+The72px band,5.5px clearance, controls, product source and all pins/ceilings remain unchanged.
+The original unfinished patch remains immutable/unapplied; current source was re-derived.
+
+Independent bounded review CLEAR. Final preparation PASS:99 tests across7 files, all3 TypeScript
+programs and root validate/50 legacy fingerprints; both tool/runner syntax checks PASS.
+The first run's missing helper in a new test VM (98/99) and subsequent test-only strict-index
+TypeScript errors are retained alongside their corrections in
+ audits/UI_U2_POST_CLOSE_PREPARATION_20260907/manifest.json. No product failure or native attempt
+was generated by those preparation failures.
+
+Local signing is blocked: op-ssh-sign returned `1Password: failed to fill whole buffer`;
+the diagnostic SSH probe then reported agent communication failure / permission denied.
+No commit was created; HEAD remains ea74425c with the completed work staged. Nick has been
+asked to restore/unlock the 1Password connection. No unsigned workaround or native run.
+After the connection is restored: commit this completed correction locally, then run ONE fresh canonical attempt on that
+full signed SHA under the whole-job lock and approved out-of-sandbox macOS browser execution:
+ node tools/with-toolchain-lock.mjs --label cf-u2-post-close-native-20260907 -- node /private/tmp/cf-u2-run-post-close-20260907.cjs FULL_NEW_SHA
+The runner is retained in the preparation manifest. It requires exact product3f1578e bytes,
+clean cloned source/main.js absent and offline installs, then static→small-phone→large-phone→
+Slice/named verification. Stop first nonzero/red/instrument; retain it; no unchanged retry.
+U2 is still pending until the native results exist. U3/U4 are unapplied; audiovisual work now has
+priority over exhaustive panel polish. Preserve the U2 snapshot before any product changes and
+never run its product-pinned runner against a later audiovisual candidate without deliberate re-scoping.
+
+Preserve signed3a61352's static322files3479tests1skip PASS, all3 Capture outcomes, caption
+preferences/restoration and exact Charters Close/frames/empty Objective audit PASS, followed by
+small-phone INSTRUMENT RED/zero product findings from reopening an already-closed Survey.
+Large-phone/Slice were NOT RUN. Preserve its nine-carrier manifest and every earlier RED.
+The08cd97d unsolicited Milky Way and c57aaaeb portrait-timeout causes remain unknown; physical
+ iPhone/Safari/PWA UAT remains open. No new Compendium certificate or full-chain PASS.
+Product3f1578e remains unchanged. Producer aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe;
+measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12/ceilings unchanged.
+Draft81 orderedSHA3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
+
+Startup receipt audits/TOOLCHAIN_STARTUP_20260907/manifest.json PASS: Node26.8.1/npm11.19.0,
+four inspected dependencies updated, seven CLI capabilities verified including existing Python
+venv; no game dependency updates. Use this receipt throughout this uninterrupted session and
+hold the shared lock through the evidence chain. Inkscape was not launched; its registration
+crash qualification remains unresolved. Keep emoji; no icon loop.
+
+Codex owns the U2 correction; GitHub step none, PR not needed now. Claude need not open or sync;
+preserve anthropic/mac/unmerged173c806, no copy/pull of unmerged code. Future openai/mac→develop
+requires reviewed admission and separately authorized exact hosted attempt; no main promotion.
+Audiovisual B–D preservation closed; local playable integration is authorized, artistic acceptance open; eight anatomical animations
+incomplete with static fallbacks. Matched listening, physicalUAT,256MiB retained updates,artlockCI,
+ITP and DECISIONS19 remain open;128MiB admission exists. AAA lane remains parked.
+
 
 ## SESSION HANDOFF — 2026-09-07 · U2 CORRECTION VERIFIED / LOCAL SIGNING BLOCKED
 

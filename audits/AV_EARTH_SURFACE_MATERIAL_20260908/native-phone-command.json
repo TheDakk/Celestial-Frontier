@@ -1,0 +1,18 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "earth-material-native-phone",
+    "--",
+    "node",
+    "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-material-runner.mjs",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/earth-material-evidence-dist-20260908",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone",
+    "phone"
+  ],
+  "startedAt": "2026-09-08T13:28:56.514803+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 10.27
+}
