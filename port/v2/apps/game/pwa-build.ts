@@ -22,6 +22,7 @@ const textDecoder = new TextDecoder();
 const SEALED_WORKER_ENTRY_PREFIXES = Object.freeze([
   'assets/species-art.worker-',
   'assets/biome-vista.worker-',
+  'assets/earth-resident.worker-',
 ]);
 
 function normalizeBase(base: string): string {

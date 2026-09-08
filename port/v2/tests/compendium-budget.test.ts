@@ -310,18 +310,18 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  'aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe';
+  'b62563276984183b933e372242e5cd68426727094f57407f9057f1ff4d8e3ba6';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v2',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: '02b71587604aefe419b65d9c6d5d590e1a722124eea7c328a1366fb35b3be376',
+      sha256: '67ed14bee9a4ce99bb2abbd831c6d46ce5c0741aa3b82d56675dac909d8e197d',
     }),
     owner: Object.freeze({
-      relativePath: 'assets/tame-greeting-audio-CXTlH-t_.js',
-      sha256: 'd9344cdb8bf52a904f4bbd6461771e22116a8c2d6ae06b88395b6825aff60fdd',
+      relativePath: 'assets/tame-greeting-audio-ge6_npOg.js',
+      sha256: 'b7ea401cfbc3b49363d52515e7e7e59dfcbb63973741d82044c7ad0f20b58ed7',
     }),
     worker: Object.freeze({
       relativePath: 'assets/species-art.worker-DnnSDKMy.js',
@@ -333,7 +333,7 @@ const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
     }),
     serviceWorker: Object.freeze({
       relativePath: 'service-worker.js',
-      sha256: 'a3271a99e9a009f91daa2846788dbd8f4d999b1d1605958dffd7ce8f48cc38e8',
+      sha256: 'd917260625a9b86c3c92439e70d5efd1d3976cefc85aaee87a016480b4b67a3e',
     }),
   }),
 });

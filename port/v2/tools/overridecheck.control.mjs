@@ -91,6 +91,8 @@ const VERBATIM = path.join(SRC, 'hdart.verbatim.js');
 const WORKER_VERBATIM = path.join(SRC, 'hdportrait.worker.verbatim.js');
 const BIOME_PROFILE_COMPAT = path.join(SRC, 'biome-visual-profile.ts');
 const CATALOG_WRAPPER = path.join(root, 'packages/domain/descriptors/src/apphooks.ts');
+const EARTH_RESIDENT = path.join(SRC, 'earth-resident-layer.ts');
+const EARTH_PLAN = path.join(SRC, 'earth-resident-plan.ts');
 const orig = fs.readFileSync(VICTIM, 'utf8');
 const routerOrig = fs.readFileSync(ROUTER, 'utf8');
 const compatOrig = fs.readFileSync(COMPAT, 'utf8');
@@ -101,6 +103,8 @@ const verbatimOrig = fs.readFileSync(VERBATIM, 'utf8');
 const workerVerbatimOrig = fs.readFileSync(WORKER_VERBATIM, 'utf8');
 const biomeProfileCompatOrig = fs.readFileSync(BIOME_PROFILE_COMPAT, 'utf8');
 const catalogWrapperOrig = fs.readFileSync(CATALOG_WRAPPER, 'utf8');
+const earthResidentOrig = fs.readFileSync(EARTH_RESIDENT, 'utf8');
+const earthPlanOrig = fs.readFileSync(EARTH_PLAN, 'utf8');
 let victimExpected = orig;
 let routerExpected = routerOrig;
 let compatExpected = compatOrig;
@@ -112,6 +116,8 @@ let verbatimExpected = verbatimOrig;
 let workerVerbatimExpected = workerVerbatimOrig;
 let biomeProfileCompatExpected = biomeProfileCompatOrig;
 let catalogWrapperExpected = catalogWrapperOrig;
+let earthResidentExpected = earthResidentOrig;
+let earthPlanExpected = earthPlanOrig;
 let tmpExpected = null;
 let nestedExpected = null;
 let mtsExpected = null;
@@ -146,6 +152,25 @@ const writeVictim = (next) => {
   assertCurrent(VICTIM, victimExpected, 'faunaoverrides2.ts');
   fs.writeFileSync(VICTIM, next);
   victimExpected = next;
+};
+const replaceEarthControlSource = (file, expected, next, label) => {
+  assertCurrent(file, expected, label);
+  const temporary = `${file}.earth-control-${process.pid}.tmp`;
+  fs.writeFileSync(temporary, next, { encoding: 'utf8', flag: 'wx' });
+  try {
+    assertCurrent(file, expected, label);
+    fs.renameSync(temporary, file);
+  } finally {
+    if (fs.existsSync(temporary)) fs.unlinkSync(temporary);
+  }
+};
+const writeEarthPlan = (next) => {
+  replaceEarthControlSource(EARTH_PLAN, earthPlanExpected, next, 'earth-resident-plan.ts');
+  earthPlanExpected = next;
+};
+const writeEarthResident = (next) => {
+  replaceEarthControlSource(EARTH_RESIDENT, earthResidentExpected, next, 'earth-resident-layer.ts');
+  earthResidentExpected = next;
 };
 const writeRouter = (next) => {
   assertCurrent(ROUTER, routerExpected, 'speciesoverrides.ts');
@@ -259,6 +284,8 @@ const restore = () => {
   try { writeWorkerVerbatim(workerVerbatimOrig); } catch (error) { errors.push(error); }
   try { writeBiomeProfileCompat(biomeProfileCompatOrig); } catch (error) { errors.push(error); }
   try { writeCatalogWrapper(catalogWrapperOrig); } catch (error) { errors.push(error); }
+  try { writeEarthResident(earthResidentOrig); } catch (error) { errors.push(error); }
+  try { writeEarthPlan(earthPlanOrig); } catch (error) { errors.push(error); }
   if (errors.length) throw new AggregateError(errors, 'override controls could not safely restore owned files');
 };
 const replaceOnce = (source, anchor, replacement, label) => {
@@ -1066,6 +1093,77 @@ try {
   check('AA: a fake local table cannot impersonate the imported owner', run(), 'parser-fail',
     /FAUNA2_NAME route table has multiple declaration owners:[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
+
+  // The exact Earth auxiliary consumer admits four table reads for six
+  // unchanged names. None of the existing global/source mutants is removed.
+  check('EL0: unchanged six-name Earth dispatcher is accepted', run(), 'pass');
+  const earthBodyFailure = /Earth resident dispatcher changed from its exact six-name body contract[\s\S]*PARSER is broken/;
+  const earthBodyMutants = [
+    ['EL1: exact Civet table/species cannot change', 'QUAD2_SPEC.Civet!', 'QUAD2_SPEC.Mongoose!'],
+    ['EL2: Platypus painter cannot change', "case 'Platypus': faunaMonotreme(context, genome, palette, 'Platypus'); return;", "case 'Platypus': faunaQuadruped(context, genome, palette, QUAD2_SPEC.Civet!, 'Platypus'); return;"],
+    ['EL3: Frog painter cannot receive another species name', "FAUNA2_NAME.Frog!(context, genome, palette, 'Frog')", "FAUNA2_NAME.Frog!(context, genome, palette, 'Toad')"],
+    ["EL4: Devil's Club owner cannot fall back to another table", "FLORA_ICONIC[\"Devil's Club\"]!", "FLORA2_SPEC[\"Devil's Club\"]!"],
+    ['EL5: a required Persimmon case cannot disappear', "case 'Persimmon': case 'Cranberry':", "case 'Cranberry':"],
+    ['EL6: source genome arguments cannot be replaced', 'const genome = { ...resident.genome };', 'const genome = {};'],
+    ['EL7: extra reads inside the dispatcher are not admitted', 'const palette = speciesGenomePalette(genome);', 'const palette = speciesGenomePalette(genome); void QUAD2_SPEC.Mongoose;'],
+  ];
+  for (const [label, anchor, replacement] of earthBodyMutants) {
+    writeEarthResident(replaceOnce(earthResidentOrig, anchor, replacement, label));
+    check(label, run(), 'parser-fail', earthBodyFailure);
+    writeEarthResident(earthResidentOrig);
+  }
+  writeEarthResident(replaceOnce(earthResidentOrig,
+    "import { QUAD2_SPEC } from './mammaloverrides.js';",
+    "import { QUAD2_SPEC } from './quadrupedoverrides.js';", 'EL8 import owner'));
+  check('EL8: direct table import provenance is exact', run(), 'parser-fail',
+    /Earth resident dispatcher import QUAD2_SPEC changed from its exact owner[\s\S]*PARSER is broken/);
+  writeEarthResident(earthResidentOrig);
+  writeEarthResident(replaceOnce(earthResidentOrig,
+    "import { FAUNA2_NAME } from './faunaoverrides2.js';",
+    "import { FAUNA2_NAME as otherName } from './faunaoverrides2.js';", 'EL9 import alias'));
+  check('EL9: the auxiliary dispatcher cannot acquire an aliased route table', run(), 'parser-fail',
+    /Earth resident dispatcher import FAUNA2_NAME changed from its exact owner[\s\S]*PARSER is broken/);
+  writeEarthResident(earthResidentOrig);
+  writeEarthResident(earthResidentOrig + '\nvoid QUAD2_SPEC.Civet;\n');
+  check('EL10: extra table reads outside the sealed function remain forbidden', run(), 'parser-fail',
+    /QUAD2_SPEC route table uses unsupported member Civet[\s\S]*PARSER is broken/);
+  writeEarthResident(earthResidentOrig);
+  writeEarthResident(replaceOnce(earthResidentOrig,
+    'function paintNamedResident(', 'function renamedResident(', 'EL12 missing helper'));
+  check('EL12: the exact dispatcher cannot disappear under a helper rename', run(), 'parser-fail', earthBodyFailure);
+  writeEarthResident(earthResidentOrig);
+  writeEarthResident(earthResidentOrig + '\nfunction extraScope() { function paintNamedResident() {} }\n');
+  check('EL13: a nested same-name dispatcher cannot share the exception', run(), 'parser-fail', earthBodyFailure);
+  writeEarthResident(earthResidentOrig);
+  check('EL11: restored six-name Earth dispatcher is accepted', run(), 'pass');
+
+  check('EP0: unchanged detached snapshot contract is accepted', run(), 'pass');
+  const earthSnapshotFailure = /Earth resident snapshot changed from its exact detached descriptor contract[\s\S]*PARSER is broken/;
+  const earthSnapshotMutants = [
+    ["EP1: prototype admission cannot invert", "prototype !== Object.prototype", "prototype === Object.prototype"],
+    ["EP2: setPrototypeOf cannot mutate original input", "Object.setPrototypeOf([], null)", "Object.setPrototypeOf(value, null)"],
+    ["EP3: detached records cannot inherit Object hooks", "Object.create(null)", "Object.create(Object.prototype)"],
+    ["EP4: defineProperty cannot mutate original input", "Object.defineProperty(snapshot, key, {", "Object.defineProperty(value, key, {"],
+    ["EP5: getters cannot replace descriptor reads", "const descriptor = Object.getOwnPropertyDescriptor(value, key);", "const descriptor = { value: value[key], enumerable: true };"],
+    ["EP6: export cannot disappear under a helper rename", "export function snapshotEarthLayerDataV1(", "export function renamedSnapshot("],
+  ];
+  for (const [label, anchor, replacement] of earthSnapshotMutants) {
+    writeEarthPlan(replaceOnce(earthPlanOrig, anchor, replacement, label));
+    check(label, run(), 'parser-fail', earthSnapshotFailure);
+    writeEarthPlan(earthPlanOrig);
+  }
+  writeEarthPlan(earthPlanOrig + '\nvoid Object.setPrototypeOf({}, null);\n');
+  check('EP7: fresh-output capability does not permit an outside mutation call', run(), 'parser-fail',
+    /trusted built-in Object member escapes its approved direct-call context[\s\S]*PARSER is broken/);
+  writeEarthPlan(earthPlanOrig);
+  writeEarthPlan(earthPlanOrig + '\nconst prototypeAlias = Object.prototype;\n');
+  check('EP8: prototype identity permission does not allow an escaping outside alias', run(), 'parser-fail',
+    /trusted built-in Object member escapes its approved direct-call context[\s\S]*PARSER is broken/);
+  writeEarthPlan(earthPlanOrig);
+  writeEarthPlan(earthPlanOrig + '\nfunction extraScope() { function snapshotEarthLayerDataV1() {} }\n');
+  check('EP9: nested same-name snapshot cannot share the exception', run(), 'parser-fail', earthSnapshotFailure);
+  writeEarthPlan(earthPlanOrig);
+  check('EP10: restored detached snapshot contract is accepted', run(), 'pass');
 
   check('restored: clean tables again', run(), 'pass');
 } finally { restore(); }

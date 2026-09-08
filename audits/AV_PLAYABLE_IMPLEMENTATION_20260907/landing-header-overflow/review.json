@@ -1,0 +1,2463 @@
+{
+  "schema": "cf-local-av-landing-diagnostic/v1",
+  "certification": false,
+  "status": "FAIL",
+  "startedAt": "2026-09-08T03:39:43.823Z",
+  "source": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "workingPatchSha256": "00c21111e495ce36d12860814e01fd0f0c135e5bde69d24ba6eba118f55aa644",
+  "serviceWorkerSha256": "50da898693129e885ab16879a0d8f918e1cee6fd09955be0ed2d9b56fca23681",
+  "origin": "http://127.0.0.1:50116",
+  "steps": [
+    {
+      "name": "answerable Training and pilot",
+      "status": "pass",
+      "at": "2026-09-08T03:39:44.644Z"
+    },
+    {
+      "name": "native click",
+      "selector": "[data-sel=tutskip]",
+      "point": {
+        "x": 247.1328125,
+        "y": 666.859375
+      }
+    },
+    {
+      "name": "Training closed",
+      "status": "pass",
+      "at": "2026-09-08T03:39:45.460Z"
+    },
+    {
+      "name": "native click",
+      "selector": "[data-cf-pilot-controls] summary",
+      "point": {
+        "x": 313.9921875,
+        "y": 717
+      }
+    },
+    {
+      "name": "native click",
+      "selector": "[data-cf-pilot-controls] button:nth-of-type(2)",
+      "point": {
+        "x": 228,
+        "y": 531.609375
+      }
+    },
+    {
+      "name": "native pilot sound opt-in",
+      "status": "pass",
+      "at": "2026-09-08T03:39:45.822Z"
+    },
+    {
+      "name": "native click",
+      "selector": "[data-cf-pilot-controls] summary",
+      "point": {
+        "x": 228,
+        "y": 346.046875
+      }
+    },
+    {
+      "name": "exact Earth approach",
+      "status": "pass",
+      "at": "2026-09-08T03:39:45.960Z"
+    },
+    {
+      "name": "native click",
+      "selector": "[data-act=landcta]",
+      "point": {
+        "x": 111.4765625,
+        "y": 253
+      }
+    },
+    {
+      "name": "Scout arrival visible",
+      "status": "pass",
+      "at": "2026-09-08T03:39:46.126Z"
+    },
+    {
+      "name": "finite Scout removed",
+      "status": "pass",
+      "at": "2026-09-08T03:39:46.483Z"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "earth-approach-phone.png",
+      "sha256": "565d8a7d7f27610533b73bf5cfa980aa4bd003eefb16d3776c82d1b5f95813ce",
+      "bytes": 160646
+    },
+    {
+      "path": "scout-arrival-phone.png",
+      "sha256": "62dbbcd902dcce24ade7bb9fc3132ef1e38260cc0b297410fbdb92a914eed220",
+      "bytes": 170217
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Scope: one native Earth landing and shared Shipyard presentation. Not Slice/Glass certification.",
+    "Headless Chromium is not physical iPhone/Safari/PWA UAT.",
+    "Audio graph start observation is not human listening or speaker-output verification.",
+    "Scout motion is decorative arrival, not completed anatomical animation."
+  ],
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  },
+  "landing": {
+    "trace": {
+      "sources": [
+        {
+          "duration": 24,
+          "channels": 2,
+          "at": 1202.9000000953674,
+          "state": "running",
+          "stopRequested": 1481.8000000715256,
+          "ended": 1496
+        },
+        {
+          "duration": 0.5500208333333333,
+          "channels": 1,
+          "at": 1499.6000000238419,
+          "state": "running",
+          "stopRequested": 1499.6000000238419,
+          "ended": 2061
+        },
+        {
+          "duration": 1.4,
+          "channels": 1,
+          "at": 1606.2000000476837,
+          "state": "running",
+          "ended": 3005,
+          "stopRequested": 3005.2000000476837
+        }
+      ],
+      "inputs": [
+        {
+          "trusted": true,
+          "tag": "BUTTON",
+          "at": 815.5
+        },
+        {
+          "trusted": true,
+          "tag": "SUMMARY",
+          "at": 914.3000000715256
+        },
+        {
+          "trusted": true,
+          "tag": "BUTTON",
+          "at": 949
+        },
+        {
+          "trusted": true,
+          "tag": "SUMMARY",
+          "at": 1251.7000000476837
+        },
+        {
+          "trusted": true,
+          "tag": "BUTTON",
+          "act": "landcta",
+          "at": 1481.3000000715256
+        }
+      ],
+      "frames": [
+        {
+          "at": 1604.3000000715256,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.75, 0, 0, 0.75, 0, -8)",
+          "opacity": 0,
+          "width": 54,
+          "height": 33,
+          "top": 132.5,
+          "left": 235,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1611.6000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.75, 0, 0, 0.75, 0, -8)",
+          "opacity": 0,
+          "width": 54,
+          "height": 33,
+          "top": 132.5,
+          "left": 235,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1628.6000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.755604, 0, 0, 0.755604, 0, -7.82069)",
+          "opacity": 0.0849811,
+          "width": 54.4034423828125,
+          "height": 33.24656677246094,
+          "top": 132.5560302734375,
+          "left": 234.79827880859375,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1645.1000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.761041, 0, 0, 0.761041, 0, -7.64668)",
+          "opacity": 0.165092,
+          "width": 54.794952392578125,
+          "height": 33.485809326171875,
+          "top": 132.61041259765625,
+          "left": 234.60250854492188,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1661.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.766399, 0, 0, 0.766399, 0, -7.47524)",
+          "opacity": 0.242039,
+          "width": 55.18072509765625,
+          "height": 33.7215576171875,
+          "top": 132.6639862060547,
+          "left": 234.40963745117188,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1678.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.771719, 0, 0, 0.771719, 0, -7.30498)",
+          "opacity": 0.316493,
+          "width": 55.56379699707031,
+          "height": 33.955657958984375,
+          "top": 132.71719360351562,
+          "left": 234.2180938720703,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1695.6000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.776946, 0, 0, 0.776946, 0, -7.13773)",
+          "opacity": 0.387635,
+          "width": 55.94010925292969,
+          "height": 34.18562316894531,
+          "top": 132.7694549560547,
+          "left": 234.0299530029297,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1711.6000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.782145, 0, 0, 0.782145, 0, -6.97136)",
+          "opacity": 0.456314,
+          "width": 56.314453125,
+          "height": 34.41438293457031,
+          "top": 132.8214569091797,
+          "left": 233.8427734375,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1728.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.787288, 0, 0, 0.787288, 0, -6.80677)",
+          "opacity": 0.522035,
+          "width": 56.684783935546875,
+          "height": 34.64070129394531,
+          "top": 132.8728790283203,
+          "left": 233.65762329101562,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1745.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.792378, 0, 0, 0.792378, 0, -6.6439)",
+          "opacity": 0.584697,
+          "width": 57.051239013671875,
+          "height": 34.86463928222656,
+          "top": 132.9237823486328,
+          "left": 233.47439575195312,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1761.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.797386, 0, 0, 0.797386, 0, -6.48366)",
+          "opacity": 0.643817,
+          "width": 57.41175842285156,
+          "height": 35.0849609375,
+          "top": 132.97386169433594,
+          "left": 233.2941131591797,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1778.8000000715256,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.802373, 0, 0, 0.802373, 0, -6.32408)",
+          "opacity": 0.699936,
+          "width": 57.770843505859375,
+          "height": 35.30439758300781,
+          "top": 133.0237274169922,
+          "left": 233.11459350585938,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1795.1000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.80731, 0, 0, 0.80731, 0, -6.16609)",
+          "opacity": 0.752477,
+          "width": 58.126312255859375,
+          "height": 35.521636962890625,
+          "top": 133.07308959960938,
+          "left": 232.93685913085938,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1811.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.812168, 0, 0, 0.812168, 0, -6.01061)",
+          "opacity": 0.800906,
+          "width": 58.476104736328125,
+          "height": 35.73539733886719,
+          "top": 133.12168884277344,
+          "left": 232.76193237304688,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1828.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.817008, 0, 0, 0.817008, 0, -5.85575)",
+          "opacity": 0.845503,
+          "width": 58.82456970214844,
+          "height": 35.94834899902344,
+          "top": 133.17007446289062,
+          "left": 232.5877227783203,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1846.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.821799, 0, 0, 0.821799, 0, -5.70243)",
+          "opacity": 0.885598,
+          "width": 59.16954040527344,
+          "height": 36.159149169921875,
+          "top": 133.21798706054688,
+          "left": 232.4152374267578,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1861.6000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.826542, 0, 0, 0.826542, 0, -5.55065)",
+          "opacity": 0.920751,
+          "width": 59.51104736328125,
+          "height": 36.36784362792969,
+          "top": 133.2654266357422,
+          "left": 232.24447631835938,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1878.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.83121, 0, 0, 0.83121, 0, -5.40129)",
+          "opacity": 0.950265,
+          "width": 59.847076416015625,
+          "height": 36.573211669921875,
+          "top": 133.31210327148438,
+          "left": 232.07644653320312,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1895.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.83583, 0, 0, 0.83583, 0, -5.25344)",
+          "opacity": 0.973718,
+          "width": 60.17974853515625,
+          "height": 36.776519775390625,
+          "top": 133.35830688476562,
+          "left": 231.91012573242188,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1911.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.840458, 0, 0, 0.840458, 0, -5.10534)",
+          "opacity": 0.99046,
+          "width": 60.51298522949219,
+          "height": 36.98014831542969,
+          "top": 133.4045867919922,
+          "left": 231.74351501464844,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1928.6000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.844984, 0, 0, 0.844984, 0, -4.96052)",
+          "opacity": 0.999053,
+          "width": 60.838836669921875,
+          "height": 37.179290771484375,
+          "top": 133.4498291015625,
+          "left": 231.58059692382812,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1945,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.849489, 0, 0, 0.849489, 0, -4.81636)",
+          "opacity": 1,
+          "width": 61.16319274902344,
+          "height": 37.37750244140625,
+          "top": 133.49488830566406,
+          "left": 231.4184112548828,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1961.6000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.853946, 0, 0, 0.853946, 0, -4.67373)",
+          "opacity": 1,
+          "width": 61.48411560058594,
+          "height": 37.57362365722656,
+          "top": 133.53945922851562,
+          "left": 231.25794982910156,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1978.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.858329, 0, 0, 0.858329, 0, -4.53348)",
+          "opacity": 1,
+          "width": 61.7996826171875,
+          "height": 37.76646423339844,
+          "top": 133.58328247070312,
+          "left": 231.10015869140625,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 1995.6000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.86269, 0, 0, 0.86269, 0, -4.39393)",
+          "opacity": 1,
+          "width": 62.1136474609375,
+          "height": 37.958343505859375,
+          "top": 133.62689208984375,
+          "left": 230.94317626953125,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2011.4000000953674,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.867002, 0, 0, 0.867002, 0, -4.25595)",
+          "opacity": 1,
+          "width": 62.424102783203125,
+          "height": 38.1480712890625,
+          "top": 133.67001342773438,
+          "left": 230.78793334960938,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2028.1000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.871239, 0, 0, 0.871239, 0, -4.12034)",
+          "opacity": 1,
+          "width": 62.72923278808594,
+          "height": 38.33453369140625,
+          "top": 133.71238708496094,
+          "left": 230.63539123535156,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2045.6000000238419,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.875453, 0, 0, 0.875453, 0, -3.9855)",
+          "opacity": 1,
+          "width": 63.03260803222656,
+          "height": 38.51994323730469,
+          "top": 133.75453186035156,
+          "left": 230.4836883544922,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2061.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.879617, 0, 0, 0.879617, 0, -3.85226)",
+          "opacity": 1,
+          "width": 63.33241271972656,
+          "height": 38.70314025878906,
+          "top": 133.79617309570312,
+          "left": 230.3337860107422,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2078.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.883706, 0, 0, 0.883706, 0, -3.72141)",
+          "opacity": 1,
+          "width": 63.6268310546875,
+          "height": 38.883056640625,
+          "top": 133.83706665039062,
+          "left": 230.18658447265625,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2095.100000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.887745, 0, 0, 0.887745, 0, -3.59218)",
+          "opacity": 1,
+          "width": 63.9176025390625,
+          "height": 39.060760498046875,
+          "top": 133.87744140625,
+          "left": 230.04119873046875,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2111.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.891756, 0, 0, 0.891756, 0, -3.4638)",
+          "opacity": 1,
+          "width": 64.20643615722656,
+          "height": 39.237274169921875,
+          "top": 133.9175567626953,
+          "left": 229.8967742919922,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2128.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.895716, 0, 0, 0.895716, 0, -3.3371)",
+          "opacity": 1,
+          "width": 64.49153137207031,
+          "height": 39.4114990234375,
+          "top": 133.9571533203125,
+          "left": 229.7542266845703,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2145.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.899623, 0, 0, 0.899623, 0, -3.21207)",
+          "opacity": 1,
+          "width": 64.7728271484375,
+          "height": 39.58338928222656,
+          "top": 133.99623107910156,
+          "left": 229.61358642578125,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2161.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.903453, 0, 0, 0.903453, 0, -3.08949)",
+          "opacity": 1,
+          "width": 65.04864501953125,
+          "height": 39.75193786621094,
+          "top": 134.03453063964844,
+          "left": 229.47567749023438,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2178.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.907253, 0, 0, 0.907253, 0, -2.9679)",
+          "opacity": 1,
+          "width": 65.32223510742188,
+          "height": 39.91914367675781,
+          "top": 134.07252502441406,
+          "left": 229.33889770507812,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2195.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.910976, 0, 0, 0.910976, 0, -2.84878)",
+          "opacity": 1,
+          "width": 65.59024047851562,
+          "height": 40.08293151855469,
+          "top": 134.10975646972656,
+          "left": 229.20486450195312,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2211.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.914665, 0, 0, 0.914665, 0, -2.73071)",
+          "opacity": 1,
+          "width": 65.85592651367188,
+          "height": 40.24528503417969,
+          "top": 134.1466522216797,
+          "left": 229.07205200195312,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2228.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.918277, 0, 0, 0.918277, 0, -2.61513)",
+          "opacity": 1,
+          "width": 66.115966796875,
+          "height": 40.40419006347656,
+          "top": 134.18276977539062,
+          "left": 228.9420166015625,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2245,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.921875, 0, 0, 0.921875, 0, -2.50001)",
+          "opacity": 1,
+          "width": 66.37498474121094,
+          "height": 40.562469482421875,
+          "top": 134.21875,
+          "left": 228.81251525878906,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2261.8000000715256,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.925371, 0, 0, 0.925371, 0, -2.38812)",
+          "opacity": 1,
+          "width": 66.62672424316406,
+          "height": 40.71635437011719,
+          "top": 134.2537078857422,
+          "left": 228.68663024902344,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2279,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.92883, 0, 0, 0.92883, 0, -2.27744)",
+          "opacity": 1,
+          "width": 66.87577819824219,
+          "height": 40.8685302734375,
+          "top": 134.28829956054688,
+          "left": 228.56211853027344,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2294.9000000953674,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.932209, 0, 0, 0.932209, 0, -2.16933)",
+          "opacity": 1,
+          "width": 67.1190185546875,
+          "height": 41.017181396484375,
+          "top": 134.32208251953125,
+          "left": 228.44049072265625,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2311.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.935546, 0, 0, 0.935546, 0, -2.06252)",
+          "opacity": 1,
+          "width": 67.35934448242188,
+          "height": 41.164031982421875,
+          "top": 134.35546875,
+          "left": 228.32034301757812,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2328.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.938822, 0, 0, 0.938822, 0, -1.95771)",
+          "opacity": 1,
+          "width": 67.59515380859375,
+          "height": 41.30815124511719,
+          "top": 134.38821411132812,
+          "left": 228.20242309570312,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2344.9000000953674,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.942014, 0, 0, 0.942014, 0, -1.85554)",
+          "opacity": 1,
+          "width": 67.82504272460938,
+          "height": 41.448638916015625,
+          "top": 134.42013549804688,
+          "left": 228.08749389648438,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2361.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.94518, 0, 0, 0.94518, 0, -1.75423)",
+          "opacity": 1,
+          "width": 68.052978515625,
+          "height": 41.58793640136719,
+          "top": 134.45179748535156,
+          "left": 227.9735107421875,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2378.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.948243, 0, 0, 0.948243, 0, -1.65622)",
+          "opacity": 1,
+          "width": 68.27349853515625,
+          "height": 41.72270202636719,
+          "top": 134.482421875,
+          "left": 227.86325073242188,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2394.8000000715256,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.951257, 0, 0, 0.951257, 0, -1.55977)",
+          "opacity": 1,
+          "width": 68.49049377441406,
+          "height": 41.855316162109375,
+          "top": 134.5125732421875,
+          "left": 227.75474548339844,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2411.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.954185, 0, 0, 0.954185, 0, -1.46609)",
+          "opacity": 1,
+          "width": 68.7012939453125,
+          "height": 41.98411560058594,
+          "top": 134.54185485839844,
+          "left": 227.64935302734375,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2428.8000000715256,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.95706, 0, 0, 0.95706, 0, -1.37407)",
+          "opacity": 1,
+          "width": 68.9083251953125,
+          "height": 42.11064147949219,
+          "top": 134.5706024169922,
+          "left": 227.54583740234375,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2444.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.959864, 0, 0, 0.959864, 0, -1.28436)",
+          "opacity": 1,
+          "width": 69.11018371582031,
+          "height": 42.2340087890625,
+          "top": 134.5986328125,
+          "left": 227.4449005126953,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2461.8000000715256,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.962578, 0, 0, 0.962578, 0, -1.19751)",
+          "opacity": 1,
+          "width": 69.30560302734375,
+          "height": 42.353424072265625,
+          "top": 134.6257781982422,
+          "left": 227.34719848632812,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2478.9000000953674,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.965233, 0, 0, 0.965233, 0, -1.11253)",
+          "opacity": 1,
+          "width": 69.496826171875,
+          "height": 42.47027587890625,
+          "top": 134.65232849121094,
+          "left": 227.2515869140625,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2494.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.967797, 0, 0, 0.967797, 0, -1.0305)",
+          "opacity": 1,
+          "width": 69.681396484375,
+          "height": 42.58306884765625,
+          "top": 134.67796325683594,
+          "left": 227.1593017578125,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2511.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.970297, 0, 0, 0.970297, 0, -0.950483)",
+          "opacity": 1,
+          "width": 69.86140441894531,
+          "height": 42.693084716796875,
+          "top": 134.70297241210938,
+          "left": 227.0692901611328,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2528.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.972717, 0, 0, 0.972717, 0, -0.87305)",
+          "opacity": 1,
+          "width": 70.03564453125,
+          "height": 42.799560546875,
+          "top": 134.7271728515625,
+          "left": 226.982177734375,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2544.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.975041, 0, 0, 0.975041, 0, -0.798703)",
+          "opacity": 1,
+          "width": 70.20292663574219,
+          "height": 42.90177917480469,
+          "top": 134.7504119873047,
+          "left": 226.89854431152344,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2561.9000000953674,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.977306, 0, 0, 0.977306, 0, -0.726193)",
+          "opacity": 1,
+          "width": 70.36607360839844,
+          "height": 43.00148010253906,
+          "top": 134.7730712890625,
+          "left": 226.8169708251953,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2579.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.979459, 0, 0, 0.979459, 0, -0.657318)",
+          "opacity": 1,
+          "width": 70.52104187011719,
+          "height": 43.09619140625,
+          "top": 134.79458618164062,
+          "left": 226.73948669433594,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2594.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.981523, 0, 0, 0.981523, 0, -0.591275)",
+          "opacity": 1,
+          "width": 70.66964721679688,
+          "height": 43.18699645996094,
+          "top": 134.8152313232422,
+          "left": 226.66519165039062,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2611.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.983507, 0, 0, 0.983507, 0, -0.527772)",
+          "opacity": 1,
+          "width": 70.8125,
+          "height": 43.274322509765625,
+          "top": 134.83506774902344,
+          "left": 226.59375,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2628.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.985397, 0, 0, 0.985397, 0, -0.467299)",
+          "opacity": 1,
+          "width": 70.94859313964844,
+          "height": 43.357452392578125,
+          "top": 134.85397338867188,
+          "left": 226.5257110595703,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2644.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.987189, 0, 0, 0.987189, 0, -0.409948)",
+          "opacity": 1,
+          "width": 71.07762145996094,
+          "height": 43.43632507324219,
+          "top": 134.87188720703125,
+          "left": 226.46119689941406,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2661.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.988871, 0, 0, 0.988871, 0, -0.356128)",
+          "opacity": 1,
+          "width": 71.19873046875,
+          "height": 43.51033020019531,
+          "top": 134.88870239257812,
+          "left": 226.400634765625,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2678.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.990451, 0, 0, 0.990451, 0, -0.305584)",
+          "opacity": 1,
+          "width": 71.31243896484375,
+          "height": 43.57981872558594,
+          "top": 134.90451049804688,
+          "left": 226.34378051757812,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2694.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.991933, 0, 0, 0.991933, 0, -0.258149)",
+          "opacity": 1,
+          "width": 71.41917419433594,
+          "height": 43.645050048828125,
+          "top": 134.91932678222656,
+          "left": 226.29042053222656,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2711.9000000953674,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.993305, 0, 0, 0.993305, 0, -0.214249)",
+          "opacity": 1,
+          "width": 71.5179443359375,
+          "height": 43.705413818359375,
+          "top": 134.93304443359375,
+          "left": 226.24102783203125,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2728.8000000715256,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.994555, 0, 0, 0.994555, 0, -0.174235)",
+          "opacity": 1,
+          "width": 71.60797119140625,
+          "height": 43.76042175292969,
+          "top": 134.945556640625,
+          "left": 226.19601440429688,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2744.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.995702, 0, 0, 0.995702, 0, -0.137544)",
+          "opacity": 1,
+          "width": 71.69053649902344,
+          "height": 43.810882568359375,
+          "top": 134.95701599121094,
+          "left": 226.1547393798828,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2761.8000000715256,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.996713, 0, 0, 0.996713, 0, -0.105184)",
+          "opacity": 1,
+          "width": 71.76332092285156,
+          "height": 43.855377197265625,
+          "top": 134.96713256835938,
+          "left": 226.1183319091797,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2778.8000000715256,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.997604, 0, 0, 0.997604, 0, -0.0766806)",
+          "opacity": 1,
+          "width": 71.82748413085938,
+          "height": 43.894561767578125,
+          "top": 134.97604370117188,
+          "left": 226.08627319335938,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2795.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.998363, 0, 0, 0.998363, 0, -0.0523946)",
+          "opacity": 1,
+          "width": 71.88209533691406,
+          "height": 43.92796325683594,
+          "top": 134.98362731933594,
+          "left": 226.05894470214844,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2811.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.998981, 0, 0, 0.998981, 0, -0.0325971)",
+          "opacity": 1,
+          "width": 71.92665100097656,
+          "height": 43.95518493652344,
+          "top": 134.98980712890625,
+          "left": 226.0366668701172,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2828.4000000953674,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.999459, 0, 0, 0.999459, 0, -0.0173038)",
+          "opacity": 1,
+          "width": 71.9610595703125,
+          "height": 43.9761962890625,
+          "top": 134.99459838867188,
+          "left": 226.01947021484375,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2844.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.999792, 0, 0, 0.999792, 0, -0.00665216)",
+          "opacity": 1,
+          "width": 71.98501586914062,
+          "height": 43.9908447265625,
+          "top": 134.9979248046875,
+          "left": 226.00747680664062,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2861.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(0.99997, 0, 0, 0.99997, 0, -0.000952211)",
+          "opacity": 1,
+          "width": 71.99786376953125,
+          "height": 43.99870300292969,
+          "top": 134.99969482421875,
+          "left": 226.00106811523438,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2878.9000000953674,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.979517,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2894.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.928891,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2911.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.879769,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2928.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.831895,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2944.9000000953674,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.785161,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2961.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.739781,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2978.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.695181,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 2994.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.651621,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3011.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.609352,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3028.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.567869,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3044.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.527441,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3061.8000000715256,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.488317,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3078.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.450047,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3094.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.413118,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3111.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.377114,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3128.7000000476837,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.342298,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3144.9000000953674,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.308907,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3161.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.276775,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3178.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.24559,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3194.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.216149,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3211.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.187973,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3228.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.161314,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3244.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.136397,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3261.600000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.11301,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3278.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.0914064,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3295.100000023842,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.0718107,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3311.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.0542116,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3328.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.0385767,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3344.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.0254395,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3361.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.0147277,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3378.4000000953674,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.00678196,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        },
+        {
+          "at": 3394.5,
+          "motion": "animated",
+          "animation": "cf-pilot-header-landfall",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "opacity": 0.00175594,
+          "width": 72,
+          "height": 44,
+          "top": 135,
+          "left": 226,
+          "naturalWidth": 512,
+          "placement": "survey-header",
+          "headerRect": {
+            "left": 53,
+            "right": 352,
+            "top": 135,
+            "bottom": 190
+          },
+          "centerOwner": "survey-head",
+          "vistaVisible": true
+        }
+      ]
+    },
+    "landed": true,
+    "vista": true,
+    "leave": true
+  },
+  "failure": "AssertionError [ERR_ASSERTION]: phone ship must paint in the reachable header, not behind the card",
+  "endedAt": "2026-09-08T03:39:48.610Z"
+}

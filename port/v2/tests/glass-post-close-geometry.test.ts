@@ -60,7 +60,7 @@ function fixture(options: { badInjected?: boolean; failedLabels?: string[]; manu
   const header = node('topbar', () => box(0, 0, 320, headerHeight)); header.pointerEvents = 'none';
   const player = node('playerchip', () => box(10, 10, 100, 44));
   const hp = node('hpbar', () => box(120, 10, 90, 44));
-  const objective = node('objchip', () => box(220, 10, 90, 44));
+  node('objchip', () => box(220, 10, 90, 44));
   const search = node('searchbox', () => box(0, 0, 0, 0)); search.display = 'none';
   const actions = node('sceneactions', () => box(0, 0, 0, 0)); actions.display = 'none';
   const trail = node('trail', () => {

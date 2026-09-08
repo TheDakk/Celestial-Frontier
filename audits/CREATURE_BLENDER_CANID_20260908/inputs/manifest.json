@@ -1,0 +1,30 @@
+{
+  "schema": "cf.creature-blender-export/v1",
+  "visualAcceptance": "UNREVIEWED",
+  "files": [
+    {
+      "name": "wolf.json",
+      "bytes": 6924,
+      "sha256": "757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476",
+      "admission": "supported"
+    },
+    {
+      "name": "wolf-lineage-ab.json",
+      "bytes": 13674,
+      "sha256": "0b121ebb814c19757e2599dc5778b54010acf4ed83d26c3e4832326c1406c4bc",
+      "admission": "static-fallback"
+    },
+    {
+      "name": "wolf-lineage-ba.json",
+      "bytes": 13676,
+      "sha256": "2b15778887a2dfc36ed616d3d43be87b8f320eabaaac06ec4dd7cd9c40bd688b",
+      "admission": "static-fallback"
+    },
+    {
+      "name": "procedural-quad-control.json",
+      "bytes": 6599,
+      "sha256": "727cdfe9f02ccfb60df807a145c837bf795d94059733afd767dcc402777e67cc",
+      "admission": "static-fallback"
+    }
+  ]
+}

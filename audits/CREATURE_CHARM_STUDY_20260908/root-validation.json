@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "startedAt": "2026-09-08T11:45:58.157913+00:00",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "creature-charm-offline-validate",
+    "--",
+    "node",
+    "tools/validate.js"
+  ],
+  "exitCode": 0,
+  "seconds": 12.16,
+  "logSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+}

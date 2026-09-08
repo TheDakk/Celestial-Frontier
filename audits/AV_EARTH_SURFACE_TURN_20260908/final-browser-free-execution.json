@@ -1,0 +1,15 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "earth-surface-turn-final-browser-free",
+    "--",
+    "node",
+    "audits/AV_EARTH_SURFACE_TURN_20260908/final-checks.mjs"
+  ],
+  "startedAt": "2026-09-08T12:33:27.571794+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 25.28
+}

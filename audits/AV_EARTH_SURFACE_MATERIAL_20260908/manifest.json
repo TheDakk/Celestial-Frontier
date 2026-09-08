@@ -1,0 +1,360 @@
+{
+  "schema": "cf-earth-material-audit/v1",
+  "createdAt": "2026-09-08T13:35:57.572239+00:00",
+  "parentCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "branch": "openai/mac",
+  "state": "local-staged-candidate-signing-pending",
+  "scope": "Subtle opt-in Earth material proof; focused and native phone/desktop controls pass; approved painted finish remains unmet",
+  "files": [
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/BATCH_INTENT.md",
+      "bytes": 1407,
+      "sha256": "734e9edf1715a30f76121814db574e1a958f0b1ed226c51a02c858a08866a308"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/README.md",
+      "bytes": 7371,
+      "sha256": "cd21246d34d8cde89a02a41f5d1517c6f4c58a1b2ba6edc3ab70400056e2dd26"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/art-audit-final.log",
+      "bytes": 294,
+      "sha256": "7c7b0105720634f77f0fd6d7d255e09443afdae9f15903b8f3584ef1d8d2e0cb"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/art-unused-final.log",
+      "bytes": 58,
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/checks.mjs",
+      "bytes": 1989,
+      "sha256": "44b3a14322bdb632b067e8f47c9ce2517c93fab44a97e0982807bde2a9bb03a4"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/draft-pin.json",
+      "bytes": 180,
+      "sha256": "1fd2ba5164363d14984d0f2f111297740caa33569402206f3e5793e2c8cfe6f7"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/draft-pin.log",
+      "bytes": 65,
+      "sha256": "51c2fbb095530be174ff7555ec484746ef782f38bb27718111fb4ec01232ac6b"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/draft-pin.mjs",
+      "bytes": 1873,
+      "sha256": "9289a11f36a7194c48d683c8e7e9a9ef04a6f49c4a374b14cb0558b9771bb88e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/evidence-build.json",
+      "bytes": 15800,
+      "sha256": "4920a8bf622a3b8a02048013651fc9097e9cad3004f81a62d98b04de9ad791b0"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/final-browser-free.json",
+      "bytes": 2823,
+      "sha256": "e319045e8eeb478d14b26eeee8499158e59e5c9b83151018e69e9613b16f2cca"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/final-focused.log",
+      "bytes": 6396,
+      "sha256": "2878ac39c9df21d60d1d0e6f3c7af48bafb2d0199c6f25fe344706f9111556c7"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-desktop/earth-desktop-material.png",
+      "bytes": 799654,
+      "sha256": "67a75143cc9e18cb8a539f014a623ce88595f8e9d547b8091c7631c006c28aa1"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-desktop/earth-desktop-plain.png",
+      "bytes": 798718,
+      "sha256": "2369a1ca924cc905d2bb1611f9a3c29dc4c1a646367c006fcc4f896acd582a08"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-desktop/review.json",
+      "bytes": 49510,
+      "sha256": "0e04bf6c813a320398e65d6732471889de3c17cb40471ac0b532cf78dd943928"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-desktop/runner.mjs",
+      "bytes": 29888,
+      "sha256": "2f242ac3ac52f1507089e7386f4a24c00a1e1b341ed8a37613128bf1cf6ce79f"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-desktop-command.json",
+      "bytes": 579,
+      "sha256": "efa46fd3baa157656bf656837d1e79b45effd81a879e9a99374a153107f0fa10"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-desktop-command.log",
+      "bytes": 137,
+      "sha256": "474b614d8ee1e80422e320395caf838c146157dcae5587620be3c9d0291f3123"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-material-runner.mjs",
+      "bytes": 29888,
+      "sha256": "2f242ac3ac52f1507089e7386f4a24c00a1e1b341ed8a37613128bf1cf6ce79f"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-outcomes.json",
+      "bytes": 5269,
+      "sha256": "18f39422df37004402a252f6f0abf8ef45ddbaf31422b8cae97d9fdd9ad176a9"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone/earth-phone-effects-off.png",
+      "bytes": 619893,
+      "sha256": "8dee3b99de89d2d2b008d63506fc1b0947212bb655a28c076f9687f0b6684bc2"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone/earth-phone-material.png",
+      "bytes": 665413,
+      "sha256": "dec245299e885ad7e8a80b1d7d7e61be70eedc287cc8a6f5f5d6ee700f5349df"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone/earth-phone-plain.png",
+      "bytes": 663453,
+      "sha256": "9de66d82a36297a2191241fab37966f6eec20b46cb591ca37719812f3d86cbc7"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone/earth-phone-reduced.png",
+      "bytes": 678408,
+      "sha256": "eee44b1559dbc0fd55904b04c57537df356e595b40486cb76d4aae38d22dbe2e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone/review.json",
+      "bytes": 53602,
+      "sha256": "1af04cedd860736114b8958d4d00983951f89ed238de4e9d15e9aa517ae52c1e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone/runner.mjs",
+      "bytes": 29888,
+      "sha256": "2f242ac3ac52f1507089e7386f4a24c00a1e1b341ed8a37613128bf1cf6ce79f"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone-command.json",
+      "bytes": 573,
+      "sha256": "b869cb92151e0ea239b23034715b9d4ee5dd2500674f299827f03c17db64f824"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/native-phone-command.log",
+      "bytes": 135,
+      "sha256": "02857342c967c0ed466f70a01ee07c0a2dc59380ea286af036cdbf0fef711b8a"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/override-check-final.log",
+      "bytes": 298,
+      "sha256": "f227c76391a84357327a57ffb800820edfe7062e3ed9a4ccfa7f39be267b8db3"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/preview-browser-check.json",
+      "bytes": 424,
+      "sha256": "f0d2047c1142ad2bf69e9022fcd3931b94956c20867efea63acb8fe2951d90a7"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/preview-browser-check.log",
+      "bytes": 465,
+      "sha256": "9382bb2512a251d350a8d804aea93fdc5cf476786466338ef70f93af5fd05f90"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/preview-package.json",
+      "bytes": 498,
+      "sha256": "40ab353ca01f7ee446e15ea44514faed92dd8df618ee4b226afb099185a8012e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/preview-package.log",
+      "bytes": 6072,
+      "sha256": "a1d441c0538573ca5def7c4947a1ff8224e9b024d689352105369e59663b0fce"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/preview-server.json",
+      "bytes": 556,
+      "sha256": "2f465013648eac773408d5f38e8c3631f0ef202b3a1dfe273f267ee1f5f99f85"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/producer-final.log",
+      "bytes": 6024,
+      "sha256": "d2f9d4069b13e00b9d640307132560dfe7df67693434d2c42d997a6ae3d45d49"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/producer-refresh-final.log",
+      "bytes": 65,
+      "sha256": "29a78cb2bb7c9d3c4a9f81a75082876118f6291d85a00121edb4747efd6267b3"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/producer-refresh.json",
+      "bytes": 1230,
+      "sha256": "b6efb639e43945c48307cd8477b88c21558911276187beb6e8aa64edc42a24b8"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/producer.json",
+      "bytes": 6055,
+      "sha256": "bee66e93f3bb29f19cebbc9050c6d97320fd39052adf33cee1fd18deeb799bb2"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/producer.mjs",
+      "bytes": 604,
+      "sha256": "d951d4924b22e14fc562599ede3216821483955858dff4d9e47037715760086a"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/refresh-producer.mjs",
+      "bytes": 2398,
+      "sha256": "e8202a4b617f08f2cf314de9d800a9f70deb071f78943476f5dc93fd268bb123"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/root-validation.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/run-step.py",
+      "bytes": 950,
+      "sha256": "ed44a7352e1cbfb5692f969fc5d399d1fd8849bcd9c030019511841bbfdbabc1"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/serve-preview.mjs",
+      "bytes": 3006,
+      "sha256": "6d0d4464ae04854c7722c8883fb0b51929b764f9aa759aa6a6cfec054d210d22"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/source-review.md",
+      "bytes": 1688,
+      "sha256": "bc78e8129840e296ea838676627e8caf810c4bc2d74f592d82206fc7c30321af"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/spec-check.log",
+      "bytes": 94,
+      "sha256": "b990b069a1d3ed60a587623f110cf6ad1ee1f3b6fffc919befb4f5bbcad01310"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/typescript-final.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_MATERIAL_20260908/visual-inspection.md",
+      "bytes": 1760,
+      "sha256": "9e38780715ab5a65f7015d3df8191840c702e54217a992c228f8769d978ff21c"
+    }
+  ],
+  "currentReferences": [
+    {
+      "path": "ART_DIRECTION.md",
+      "bytes": 135348,
+      "sha256": "d345afb9cbd199d36a2d2a2feff71c08c3b6c377c1372319998b21d98e662f72"
+    },
+    {
+      "path": "UI_PRESENTATION.md",
+      "bytes": 246748,
+      "sha256": "8980faae3c9b4ca2dc5824c76b61362377ddc6493a0abdf8f3e4f17652babdec"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 465441,
+      "sha256": "95afe758cfdbb24de58494aa2b6dc35801fcf798dbbaa81fc3888bcc295dc3ea"
+    },
+    {
+      "path": "SPECIES_AND_GENOME.md",
+      "bytes": 34102,
+      "sha256": "b0193601216548371d319fb756ca8404389c28d799190855f21829c5b0a27c05"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 13612,
+      "sha256": "5bb9221993071fb0d1f8ec9520a62e06645b01f86f0db75a0dba0151c051cf39"
+    },
+    {
+      "path": "ROADMAP_ARCHIVE.md",
+      "bytes": 2604583,
+      "sha256": "0de58d4e7d3918dc9af639be0ace67263a3bee48921c76d3e850025e26ba5a74"
+    },
+    {
+      "path": "audits/AV_24H_CAMPAIGN_20260907.md",
+      "bytes": 23931,
+      "sha256": "5fb09c548644645f3313f538fffadb46a5f27b9e2a5fecd1a54a740bc5928d2d"
+    },
+    {
+      "path": "port/v2/README.md",
+      "bytes": 434180,
+      "sha256": "f0b1ab959805a83662952c6330aecad10daaedf0d961aa8a5f91ba0002cd15c4"
+    },
+    {
+      "path": "port/playtests/20260908_EARTH_MATERIAL_LOCAL_PREVIEW.md",
+      "bytes": 1948,
+      "sha256": "c16344888bb856c3a6cca714f26007329fff7ff1b88df60d2e803c74191e307c"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 838553,
+      "sha256": "bfd894bae4f1a86faaf67f6d95016c224600d10fd969ab34f68de211b0848bf8"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-turn-view.ts",
+      "bytes": 10405,
+      "sha256": "4ea966a5d1d100702069c74d12566abadf6d44fd3803ada84486d15203ffea75"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-material.ts",
+      "bytes": 5506,
+      "sha256": "33e2d8dc8f95281cdb1ce6b4de3b75fd25e17c4e51538f8d56531b1279d6c529"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-turn-view.test.ts",
+      "bytes": 15855,
+      "sha256": "269ab5e44814ab929603ac17f17513c9bc9a8c89fac10d87187f4f3d886b4b9c"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-atlas.ts",
+      "bytes": 4082,
+      "sha256": "abe2f39f611cf9f77a5b99134e4e89c3b1f3e66d9590d45cc12d5b8d16341765"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-turn-math.ts",
+      "bytes": 1370,
+      "sha256": "72bcf0ca658ad37b7b34de1bd42d496a11750ec1e56847cec39badafa59adeec"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-turn.worker.ts",
+      "bytes": 838,
+      "sha256": "5079e4c64334210e96419814279227ab48d156d9c5681c7f45552ca349998233"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 157661,
+      "sha256": "bed28dd713dd4ae6e2c135e6f51569ba1466f66929bbb80c53ea49ef8d702cc5"
+    },
+    {
+      "path": "port/v2/budgets/compendium-memory-v1.json",
+      "bytes": 163683,
+      "sha256": "b3c28ed81659839315678c5c58907e3f8889d605ed6c552b89af950d12706fbe"
+    },
+    {
+      "path": "port/v2/tests/compendium-budget.test.ts",
+      "bytes": 146461,
+      "sha256": "854f5f8f6b08f583a0cc5cbceb35d120d1aa9a647afa37417c0d5f7452236f94"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "bytes": 1890119,
+      "sha256": "1f7526d63c55cf04deeeb2d8f52d3e8e0760cfed46ca45ed9ec9ce98fbf61524"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_PIPELINE_20260908/approval.json",
+      "bytes": 1616,
+      "sha256": "672db33517b2ab6872068f2c4d88133f47008f0c6b3360d81da92d3e95d63246"
+    },
+    {
+      "path": "audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/intake.json",
+      "bytes": 1780,
+      "sha256": "b1d3e3dcaf5231e18da1b81d91d00bec97b6a2aa952013ce2612458f22e818be"
+    },
+    {
+      "path": "audits/TOOLCHAIN_STARTUP_20260907/manifest.json",
+      "bytes": 2573,
+      "sha256": "902e191ef3d3b69131ba34d164325074835b56becf1c49950b9d835b69b628db"
+    }
+  ],
+  "verification": "123 focused tests, three TypeScript programs, art/spec/root and two native material/retirement diagnostics PASS; not full certificate",
+  "humanArtAcceptance": false,
+  "hostedAttempts": 0
+}

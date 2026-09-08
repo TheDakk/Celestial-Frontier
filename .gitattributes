@@ -36,3 +36,6 @@
 *.mp3   binary
 *.wav   binary
 *.ogg   binary
+
+# Preserve the adopted external prompt byte-for-byte, including its original CRLF.
+audits/PAINTED_SPACE_PIPELINE_20260908/USER_PROMPT.md binary

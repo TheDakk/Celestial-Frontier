@@ -14359,7 +14359,7 @@ async function main() {
           headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
           bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
-          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=81;
+          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=83;
           const unnegated=${hasUnnegatedSentenceClaim};
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
@@ -14525,7 +14525,10 @@ async function main() {
               ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:grants?|awards?)[^.!?]{0,48}(?:discovery|reward)/i)
               ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:writes?|changes?)[^.!?]{0,32}(?:the )?save/i)
               ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i)
-              ||unnegated(text,/\\bcombat sound remains (?:future work|unavailable)/i),
+              ||unnegated(text,/\\bcombat sound remains (?:future work|unavailable)/i)
+              ||unnegated(frontierAudioText,/(?:Starter Charter|Charter acceptance)[^.!?]{0,96}(?:plays?|sounds?)[^.!?]{0,96}(?:before (?:the )?acceptance succeeds|without (?:your )?(?:explicit )?pilot-sound choice)/i)
+              ||unnegated(frontierAudioText,/(?:duplicate|failed) acceptances[^.!?]{0,48}(?:play|sound|ring)/i)
+              ||unnegated(frontierAudioText,/Other sound mappings and creature actions[^.!?]{0,48}(?:are|remain) (?:now )?(?:available|live|complete)/i),
             audioContract=frontierAudioHeading==='New Features & Systems'
               &&creatureListenHeading==='Gameplay'&&biosphereListenHeading==='Gameplay'
               &&frontierAudioText.includes('one deterministic runtime across a verified durable wild-fauna Tame, one exact durable nonconverging Feed commit, and an explorer-requested call from one exact owned-fauna detail')
@@ -14538,7 +14541,9 @@ async function main() {
               &&frontierAudioText.includes('Guardian or Titan entrance, phase, victory, and defeat motifs')
               &&frontierAudioText.includes('at most two combat voices overlap')
               &&frontierAudioText.includes('master Sound governs them, Creature voices does not')
-              &&frontierAudioText.includes('Authored ambience, music, recorded assets, and other creature actions remain future work')
+              &&frontierAudioText.includes('In the optional audiovisual preview, accepting a Starter Charter now plays a short confirmation after the acceptance succeeds, including when existing progress completes it immediately')
+              &&frontierAudioText.includes('It follows your explicit pilot-sound choice; duplicate or failed acceptances stay quiet')
+              &&frontierAudioText.includes('Other sound mappings and creature actions remain future work')
               &&creatureListenText.includes('Open a real owned-fauna Compendium detail and choose Listen on an exact companion to hear its stable deterministic call')
               &&creatureListenText.includes('Browsing, filtering, focusing, and returning through the Compendium never auto-play it')
               &&biosphereListenText.includes('pre-landing Survey card and landed Planetside both offer Listen to biosphere')
@@ -14768,7 +14773,7 @@ async function main() {
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 81-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 83-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -15109,7 +15114,7 @@ async function main() {
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&publishing?.textContent===publishingText&&S.api.state===priorState;
-            return {ok:!error&&baseline?.ok===true&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===80
+            return {ok:!error&&baseline?.ok===true&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===82
               &&identity?.ok===false&&identity?.identity===false
               &&truthfulFeatureClaims.length===11
               &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)

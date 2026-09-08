@@ -125,6 +125,10 @@ function palette(g: G): { base: string; cr: number; cg: number; cb: number; lit:
   const dark = `rgb(${cr * 0.42 | 0},${cg * 0.42 | 0},${cb * 0.42 | 0})`;
   return { base: `rgb(${cr | 0},${cg | 0},${cb | 0})`, cr, cg, cb, lit, dark };
 }
+// Shared input palette for bounded transparent named-body compositions. The
+// canonical species owners below retain their own hue/marking decisions.
+export { palette as speciesGenomePalette };
+
 function vignette(c: Ctx, warm = false): void {
   const bg = c.createRadialGradient(S * 0.5, S * 0.44, 20, S * 0.5, S * 0.5, S * 0.62);
   bg.addColorStop(0, warm ? '#151109' : '#0a1016'); bg.addColorStop(1, '#05060c');

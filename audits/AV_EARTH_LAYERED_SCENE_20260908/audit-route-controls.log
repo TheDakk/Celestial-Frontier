@@ -1,0 +1,325 @@
+
+> cf-v2@0.0.0 overridecontrol
+> node tools/overridecheck.control.mjs
+
+  ★ FAIL  baseline: clean tables (exit 2, wanted pass)
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  A: a key naming no catalog species (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DEAD OVERRIDE ROUTES — painter written, species does not exist:\n    Zzz Nonexistent Beast  \(fauna\)/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  B: a duplicate key (the later entry silently wins) (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DUPLICATE TABLE KEYS — the later entry silently wins:\n    Cobra  \[faunaoverrides2\.ts:FAUNA2_NAME\]$/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  G: an inline plan literal matching a real route is not a table key (exit 2, wanted pass)
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  H: a ternary value before a colon is not an object property (exit 2, wanted pass)
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  I: a duplicate after a template-literal brace remains visible (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DUPLICATE TABLE KEYS — the later entry silently wins:\n    Cobra  \[faunaoverrides2\.ts:FAUNA2_NAME\]$/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  J: a duplicate after a regex delimiter remains visible (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DUPLICATE TABLE KEYS — the later entry silently wins:\n    Cobra  \[faunaoverrides2\.ts:FAUNA2_NAME\]$/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  L: a duplicate after a control-head regex remains visible (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DUPLICATE TABLE KEYS — the later entry silently wins:\n    Cobra  \[faunaoverrides2\.ts:FAUNA2_NAME\]$/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  M: a member named catch is not a control head (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DUPLICATE TABLE KEYS — the later entry silently wins:\n    Cobra  \[faunaoverrides2\.ts:FAUNA2_NAME\]$/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  N: Unicode identifier grammar cannot hide a later duplicate (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DUPLICATE TABLE KEYS — the later entry silently wins:\n    Cobra  \[faunaoverrides2\.ts:FAUNA2_NAME\]$/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  O: restricted-production ASI cannot hide a later duplicate (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DUPLICATE TABLE KEYS — the later entry silently wins:\n    Cobra  \[faunaoverrides2\.ts:FAUNA2_NAME\]$/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  K: malformed delimiters fail as parser damage (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /Parse failed with 1 error:[\s\S]*Expected[\s\S]*found `\]`[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  C: a NEW override file with a dead key is not invisible (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DEAD OVERRIDE ROUTES — painter written, species does not exist:\n    Zzz Phantom Species  \(fauna\)/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  T: a one-character literal key is still validated (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DEAD OVERRIDE ROUTES — painter written, species does not exist:\n    X  \(fauna\)/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  U: a non-ASCII literal key is still validated (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DEAD OVERRIDE ROUTES — painter written, species does not exist:\n    🐉  \(fauna\)/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  D: a species shadowed by another table of the same kingdom (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /Cobra \(fauna\)  \[faunaoverrides2\.ts:FAUNA2_NAME SHADOWS zztmpoverrides-control-70234\.ts:FAUNA4_NAME\]/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  E: a table this tool cannot classify is reported, not skipped silently (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /UNCLASSIFIED TABLE[\s\S]*ZZUNKNOWN_NAME/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  P: a parenthesized route table cannot escape discovery (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DEAD OVERRIDE ROUTES — painter written, species does not exist:\n    Zzz Parenthesized Species  \(fauna\)/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  Q: a structural annotation cannot escape discovery (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DEAD OVERRIDE ROUTES — painter written, species does not exist:\n    Zzz Structural Annotation Species  \(fauna\)/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  R: a comment between const and table cannot escape discovery (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DEAD OVERRIDE ROUTES — painter written, species does not exist:\n    Zzz Comment Gap Species  \(fauna\)/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  S: a later const declarator cannot escape discovery (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /^  ★ DEAD OVERRIDE ROUTES — painter written, species does not exist:\n    Zzz Later Declarator Species  \(fauna\)/m
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  V: a CANON key without a kingdom separator cannot disappear (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /CANON key "Tardigrade" has no kingdom separator[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AB: removing one cross-kingdom route fails complete coverage (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /INCOMPLETE ROUTE COVERAGE — 1 kingdom-qualified catalog routes have no live override:[\s\S]*Green Algae  \(microbe\)/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  F: a table imported but never consulted by the router (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /UNWIRED TABLES[\s\S]*FLORA2_SPEC/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  W: a later summary mention cannot disguise an unwired table (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /UNWIRED TABLES[\s\S]*FAUNA2_NAME/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  X: post-declaration route mutation is parser damage (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route table appears in an assignment target after its literal declaration[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  Y: alias escape cannot hide later route mutation (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FAUNA4_NAME route table escapes its supported literal\/read contexts[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  Z: namespace alias cannot hide later route mutation (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /namespace imports are unsupported in route-table sources[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AC: for-of cannot write a post-declaration route (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route table appears in a for-of assignment target[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AD: a TypeScript assertion cannot hide a table alias (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FAUNA4_NAME route table escapes its supported literal\/read contexts[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AE: a callback cannot expose a route table under an untracked alias (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FLORA3_DUPES route table is called outside exact FLORA_DUPES\.includes\(name\)[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AF: an imported route table must have a scanned declaration owner (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FAUNA5_NAME is imported\/read by resolveOverrideCanvas but has no declaration owner[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AG: default-module aliases are forbidden in scanned art sources (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /default imports are unsupported in route-table sources[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AH: object destructuring cannot hide a route-table alias (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FAUNA4_NAME route table may not be acquired through object destructuring[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AI: unsupported member syntax is parser damage, not wiring (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FAUNA4_NAME route table uses unsupported member constructor[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AJ: an intact selector disconnected from dispatch fails closed (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AK: an unreachable duplicate selector predicate fails closed (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: dupe must be gated by !iconic[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AL: an unreachable quadruped selector predicate fails closed (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: quad must be the !fp-gated quadruped fallback[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AM: a computed method cannot expose a route table callback alias (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FLORA3_DUPES route table is called outside exact FLORA_DUPES\.includes\(name\)[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AN: a computed prototype read cannot escape under an alias (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FAUNA4_NAME route table uses unsupported computed member[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AO: inert in-body mentions cannot disguise a disconnected table (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: resolveOverrideCanvas contains a route-table member outside the audited selector initializers[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AP: painter output must be fitted into the returned canvas (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AQ: a name-indirected prototype read cannot escape under an alias (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FAUNA4_NAME route table uses unsupported computed member[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AR: same-basename nested imports cannot impersonate the declaration owner (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FAUNA2_NAME is read by resolveOverrideCanvas from zztmpoverrides-control-\d+\/faunaoverrides2\.ts, but its only declaration owner is faunaoverrides2\.ts[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AS: an inherited computed method cannot return a route-table alias (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FAUNA4_NAME route table is called outside exact FLORA_DUPES\.includes\(name\)[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AT: a shadowed Object.keys cannot return a route-table alias (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /shadowing the built-in Object binding is unsupported in route-table sources[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AU: shadow direction follows resolver priority, not file traversal (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /Cobra \(fauna\)  \[speciesoverrides\.ts:CANON SHADOWS faunaoverrides2\.ts:FAUNA2_NAME\]/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AV: a resolver parameter cannot shadow the canvas compositor (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: resolveOverrideCanvas must have only its audited g parameter[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AW: a statically falsy table value is not a live route (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route "Python" does not satisfy its statically live value contract[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AX: the returned canvas must originate from newCanvas (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AY: the detached painter surface must originate from newInk (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  AZ: the selected painter must draw into ink.c (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BA: a mutable painter binding is not statically live (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route "Python" does not satisfy its statically live value contract[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BB: a factory parameter cannot masquerade as a callable return (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route "Python" does not satisfy its statically live value contract[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BC: a class cannot shadow the built-in Object.keys binding (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /shadowing the built-in Object binding is unsupported in route-table sources[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BD: a truthy object is not a callable painter route (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route "Python" does not satisfy its statically live value contract[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BE: a namespace cannot shadow the built-in Object.keys binding (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /shadowing the built-in Object binding is unsupported in route-table sources[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BF: a reassigned function binding is not statically live (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route "Python" does not satisfy its statically live value contract[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BG: a reassigned canvas helper fails the binding contract (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: route helper fitInk is not its stable exact function binding[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BH: a local binding cannot shadow the built-in String resolver input (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /shadowing the built-in String binding is unsupported in route-table sources[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BI: a local binding cannot shadow the built-in Boolean route probe (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /shadowing the built-in Boolean binding is unsupported in route-table sources[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BJ: a reassigned lineage route helper fails the binding contract (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: route helper lineageRenderKingdom is not its stable exact function binding[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BK: a reassigned flora route consumer fails the binding contract (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: route helper floraLadder is not its stable exact function binding[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BL: a reassigned quadruped route consumer fails the binding contract (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: route helper faunaQuadruped is not its stable exact function binding[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BM: a reassigned canvas allocator fails the binding contract (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: route helper newCanvas is not its stable exact function binding[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BN: a reassigned ink allocator fails the binding contract (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: route helper newInk is not its stable exact function binding[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BO: an imported route helper cannot change owner or exported name (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolver selector\/consumer contract changed: route helper floraLadder is not its stable exact function binding[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BP: a double-quoted catalog species cannot disappear from coverage (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /INCOMPLETE ROUTE COVERAGE — 1 kingdom-qualified catalog routes have no live override:[\s\S]*Zzz Double-Quoted Species  \(fauna\)/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  PASS  BQ: post-initializer catalog mutation is parser damage (exit 2, wanted parser-fail + diagnostic)
+  PASS  BR: Object.keys cannot be monkeypatched around the route audit (exit 2, wanted parser-fail + diagnostic)
+  ★ FAIL  BS: a global-object write cannot poison the String route input (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /globalThis global-object access is outside its exact audited context[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BT: dynamic imports cannot acquire a route table outside static provenance (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /dynamic imports are unsupported in route-table sources[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BU: generic furniture syntax cannot poison the returned canvas (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BV: newCanvas implementation drift fails the canvas contract (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route helper newCanvas implementation changed from its audited canvas contract[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BW: newInk implementation drift fails the canvas contract (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route helper newInk implementation changed from its audited canvas contract[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BX: fitInk implementation drift fails the compositor contract (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route helper fitInk implementation changed from its audited canvas contract[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BY: a route import must resolve to the exact exported table declaration (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /faunaoverrides2\.ts does not export FAUNA2_NAME from its exact stable table declaration[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  BZ: an imported helper must resolve to its exact exported function declaration (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route helper floraLadder is not its stable exact function binding[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CA: resolver precedence must match the audited shadow order (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /fp route lookup order changed[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CB: a live .mts route mutation cannot escape recursive discovery (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route table appears in an assignment target after its literal declaration[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CC: a route re-export cannot escape the recursively scanned owner graph (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /re-export "\.\.\/routeescape-control-[0-9]+\.js" is outside recursive art-source discovery[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CD: a route table cannot be laundered through a non-route export name (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route-table export FAUNA2_NAME may not be aliased as routes[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  PASS  CE: an allowlisted executable JS input is byte-pinned (exit 2, wanted parser-fail + diagnostic)
+  PASS  CE2: the worker-only generated portrait input is byte-pinned (exit 2, wanted parser-fail + diagnostic)
+  PASS  CF: the live catalog wrapper is byte-pinned (exit 2, wanted parser-fail + diagnostic)
+  ★ FAIL  CG: an unscanned bare side-effect package cannot enter the art graph (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /bare import "@cf\/routepoison" is outside the exact audited dependency surface[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CH: a route module cannot be laundered through a namespace re-export (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /namespace\/export-all re-exports are unsupported in route-table sources[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CI: the returned-canvas size dependency is pinned (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /canvas dependency S changed from its audited initializer[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CJ: a zero fit margin cannot erase all routed ink (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /canvas dependency FIT_MARGIN changed from its audited initializer[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CK: the detached ink-surface size dependency is pinned (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /canvas dependency INK changed from its audited initializer[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CL: the detached ink-origin dependency is pinned (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /canvas dependency INK_OFF changed from its audited initializer[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CM: a bare re-export cannot load an unscanned side-effect package (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /bare re-export "@cf\/routepoison" is outside the exact audited dependency surface[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CN: adjacent fauna shadow direction follows selector order (exit 2, wanted fail + diagnostic)
+    missing expected diagnostic: /Blue Whale \(fauna\)  \[faunaoverrides\.ts:FAUNA_NAME SHADOWS faunaoverrides2\.ts:FAUNA2_NAME\]/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CO: a routed Canvas body cannot serialize its return value (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /canon lookup is not the guarded painter that feeds the returned canvas[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CP: a noncanonical apostrophe cannot masquerade as a reachable route key (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /key "Lion’s Mane" is not runtime-canonical; use "Lion\'s Mane"[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CQ: the reviewed fauna route is an exact closed allowlist (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /reviewed fauna lineage allowlist changed[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CR: the reviewed fauna qualifier cannot widen or invert (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route helper isReviewedFaunaLineage implementation changed from its audited canvas contract[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CS: the drift helper cannot bypass the exact lineage gate (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /route helper applyReviewedFaunaLineageDrift implementation changed from its audited canvas contract[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CT: canonical fauna must apply reviewed drift before fitInk (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /canon lookup is not the guarded painter that feeds the returned canvas[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CU: fauna-table painters must apply reviewed drift before fitInk (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CV: the reviewed-lineage Set constructor cannot be shadowed (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /trusted built-in Set is shadowed or reassigned[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CW: the TypeScript compatibility seam must serialize the Canvas exactly once (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /resolveOverride must remain the exact Window-only URL wrapper around resolveOverrideCanvas[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  CW2: the Window compatibility encoder cannot omit toDataURL (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /encodePortableCanvas must remain the exact Window-only zero-argument toDataURL boundary[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  PASS  CX: a generated Canvas painter cannot move serialization into its body (exit 2, wanted parser-fail + diagnostic)
+  PASS  CY: a generated compatibility wrapper cannot omit Canvas serialization (exit 2, wanted parser-fail + diagnostic)
+  PASS  CZ: the approved domain-profile re-export cannot change an alias (exit 2, wanted parser-fail + diagnostic)
+  PASS  DA: the approved domain-profile re-export cannot be duplicated (exit 2, wanted parser-fail + diagnostic)
+  ★ FAIL  AA: a fake local table cannot impersonate the imported owner (exit 2, wanted parser-fail + diagnostic)
+    missing expected diagnostic: /FAUNA2_NAME route table has multiple declaration owners:[\s\S]*PARSER is broken/
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  EL0: unchanged six-name Earth dispatcher is accepted (exit 2, wanted pass)
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  PASS  EL1: exact Civet table/species cannot change (exit 2, wanted parser-fail + diagnostic)
+  PASS  EL2: Platypus painter cannot change (exit 2, wanted parser-fail + diagnostic)
+  PASS  EL3: Frog painter cannot receive another species name (exit 2, wanted parser-fail + diagnostic)
+  PASS  EL4: Devil's Club owner cannot fall back to another table (exit 2, wanted parser-fail + diagnostic)
+  PASS  EL5: a required Persimmon case cannot disappear (exit 2, wanted parser-fail + diagnostic)
+  PASS  EL6: source genome arguments cannot be replaced (exit 2, wanted parser-fail + diagnostic)
+  PASS  EL7: extra reads inside the dispatcher are not admitted (exit 2, wanted parser-fail + diagnostic)
+  PASS  EL8: direct table import provenance is exact (exit 2, wanted parser-fail + diagnostic)
+  PASS  EL9: the auxiliary dispatcher cannot acquire an aliased route table (exit 2, wanted parser-fail + diagnostic)
+  PASS  EL10: extra table reads outside the sealed function remain forbidden (exit 2, wanted parser-fail + diagnostic)
+  PASS  EL12: the exact dispatcher cannot disappear under a helper rename (exit 2, wanted parser-fail + diagnostic)
+  PASS  EL13: a nested same-name dispatcher cannot share the exception (exit 2, wanted parser-fail + diagnostic)
+  ★ FAIL  EL11: restored six-name Earth dispatcher is accepted (exit 2, wanted pass)
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken
+  ★ FAIL  restored: clean tables again (exit 2, wanted pass)
+overridecheck: earth-resident-plan.ts@6247 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken

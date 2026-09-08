@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "checks": "PNG dimensions and exact sent-prompt bytes/hashes; not semantic art approval",
+  "rows": [
+    {
+      "row": "space",
+      "capture": "space-reference-candidate.png",
+      "bytes": 3219190,
+      "sha256": "7bd83d0b8d3fe9a2072b24f1d3017bc5a3da38db04fd0cee4938f2385712550d",
+      "width": 1536,
+      "height": 1024,
+      "prompt": "space-reference-candidate-prompt.txt",
+      "promptSha256": "646e1d39b37580a7fab182db55d7cf0f2c25fad1cdac8458f5c489ccd663d0fa",
+      "referenceSha256": "2b0c44d077d651709fcacc8845c25417815d2df882af4aeeb2fda092cf3554b9",
+      "attempts": 1,
+      "model": "unreported",
+      "status": "GENERATED_AWAITING_HUMAN_REVIEW",
+      "opaqueProfile": true,
+      "runtimeInstalled": false
+    },
+    {
+      "row": "biomes",
+      "capture": "biome-comparison.png",
+      "bytes": 3534214,
+      "sha256": "582d5d7e286e203c7ed1ce14483a50923bd4192c2f201bea2035c310649a6c1b",
+      "width": 1536,
+      "height": 1024,
+      "prompt": "biome-comparison-prompt.txt",
+      "promptSha256": "2c324173c6a980b5216977d62eb8e39796d8d7d041139f8bab3862bfdb75f745",
+      "referenceSha256": "7bd83d0b8d3fe9a2072b24f1d3017bc5a3da38db04fd0cee4938f2385712550d",
+      "attempts": 1,
+      "model": "unreported",
+      "status": "GENERATED_AWAITING_HUMAN_REVIEW",
+      "opaqueProfile": true,
+      "runtimeInstalled": false
+    },
+    {
+      "row": "universe",
+      "capture": "universe-reference.png",
+      "bytes": 2608066,
+      "sha256": "f3e0cc02e0b1afa3ac20e12635049298c02f42943662318f4d1551807646e98f",
+      "width": 1536,
+      "height": 1024,
+      "prompt": "universe-reference-prompt.txt",
+      "promptSha256": "894cbeb9659ff2b262a0bb58f66deeb2544a4330d32ddb155f70c1e8bb14f589",
+      "referenceSha256": "7bd83d0b8d3fe9a2072b24f1d3017bc5a3da38db04fd0cee4938f2385712550d",
+      "attempts": 1,
+      "model": "unreported",
+      "status": "GENERATED_AWAITING_HUMAN_REVIEW",
+      "opaqueProfile": true,
+      "runtimeInstalled": false
+    }
+  ]
+}

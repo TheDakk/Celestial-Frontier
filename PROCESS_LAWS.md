@@ -1,5 +1,13 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **CANVAS PIXELS DO NOT PROVE VISIBILITY THROUGH DOM OVERLAYS** (Earth layers, 2026-09-08).
+> Full-stage Pixi extraction can prove resident paint while the native Biosphere strip hides it
+> from the player. Preserve that failed browser image. Measure the actual DOM boundaries and
+> native hit samples across the artwork, reject a real overlapping placement with the same
+> acceptor, restore exact transforms/pixels/controls, and inspect the final browser screenshot.
+> Do not clear or move UI merely to make an art probe green. A world-center coordinate also
+> does not imply an exposed canvas exit target; use an observed native control or hit receipt.
+
 > **STICKY HEADERS REQUIRE CAPACITY AND SCROLL CLEARANCE** (U2,2026-09-06).
 > A44px action can be contained, settled and keyboard-focused while its centre hits a sticky
 > title. Reserve measured header/insets plus a usable action row before a secondary strip;

@@ -1,0 +1,669 @@
+{
+  "schema": "cf-earth-surface-turn-audit/v1",
+  "createdAt": "2026-09-08T12:55:14.248288+00:00",
+  "parentCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "branch": "openai/mac",
+  "state": "local-staged-candidate-signing-pending",
+  "scope": "finite canonical Earth turn with qualified phone outcomes and separate fresh desktop PASS; combined native resize chain remains FAIL",
+  "files": [
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/BATCH_INTENT.md",
+      "bytes": 2252,
+      "sha256": "7c02c8727d1b7a77e9ff6b1fe962f93cc38927556df5bcb5e04b163390d28ca0"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/README.md",
+      "bytes": 7087,
+      "sha256": "88da085e562e3e4ec7065aebd5ac88d54f0e8e547be06063dde6c5e2a8904641"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/VERIFICATION_CORRECTIONS.md",
+      "bytes": 3761,
+      "sha256": "00d410e556327b7603df9fc70837b781b0077d3faae7a7abd760e1a867527c73"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/art-audit-final.log",
+      "bytes": 294,
+      "sha256": "7c7b0105720634f77f0fd6d7d255e09443afdae9f15903b8f3584ef1d8d2e0cb"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/art-audit.log",
+      "bytes": 294,
+      "sha256": "6f1a198f7a04b83cf2469548234b9153a8c03c7aa612418a7ffaa347869000d8"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/art-unused-final.log",
+      "bytes": 58,
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/art-unused.log",
+      "bytes": 58,
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/continue-checks.mjs",
+      "bytes": 1618,
+      "sha256": "bf8a53bc23d20db98cef3e72d8a5f8a8e43472d8356be600ffe6aa7a204fc424"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/continue-types.mjs",
+      "bytes": 1400,
+      "sha256": "986b9c58823b2464c7f21edeb3ba23ca32bd840bf2ab8044077e2e1e5ef8a8bc"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/continued-execution.json",
+      "bytes": 330,
+      "sha256": "7cb9fcde15653ab9fc0798c1e83fb2bc4f18dd3f362c490513c74306403459d9"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/continued-execution.log",
+      "bytes": 57,
+      "sha256": "42336491fd634eebb8c79685b533ab56aad16816b3a137546eea13f1d1a4800b"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/continued-verification.json",
+      "bytes": 995,
+      "sha256": "a0ec3f9ac59f3a63737965e5e3ba1d82569c0b26356735b86f24617e2917a38b"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/develop-profile.json",
+      "bytes": 320,
+      "sha256": "a279dd4f86205bb57fed086ebf5a0bd722a58f820fcf2fe00966da63873465c2"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/develop-profile.log",
+      "bytes": 16249,
+      "sha256": "5fcbeb1b80d80911690f168ec6327a2edab266af9a754f921c3c881638d6c4d8"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/draft-authority-corrected.json",
+      "bytes": 180,
+      "sha256": "9c0d6d0c8dbf2ac170b97a54bb807c1bbe45a0eb9a1e5e787e9a2106051da8b5"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/draft-authority.json",
+      "bytes": 180,
+      "sha256": "697b1e2aefaec7db86b465d592b7854a63fb40a1723ae77f2a81d560ff59e24e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/draft-pin-corrected.mjs",
+      "bytes": 1909,
+      "sha256": "954ad448e82ff72e22306e497aaedeb53a492eeb4440e589a2d52da79a764d67"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/draft-pin.mjs",
+      "bytes": 1909,
+      "sha256": "fa4beb2796c592b62dec983cc10da4e0d0c7318e837cc8694b0fb521ef7bda49"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/evidence-dist-mesh-pipe.json",
+      "bytes": 15871,
+      "sha256": "a5437fe3a861a981890147013892a19cf0e668a9410ab938c92893027dee146d"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/evidence-dist.json",
+      "bytes": 15871,
+      "sha256": "3f1d6506b4a3eb2d6e0486503fec07f806a73f7f0ebac383d2197d1072bd8782"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/final-browser-free-execution.json",
+      "bytes": 323,
+      "sha256": "b71db5b4dc24203451b2864f4ca9cbde8388b5a9e22a2f1e446a998449945fbf"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/final-browser-free-execution.log",
+      "bytes": 168,
+      "sha256": "6a18dc15a63167c8d0182544d8fd2866986e46aae430eb51cc314c8bf9126c9e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/final-browser-free.json",
+      "bytes": 2235,
+      "sha256": "89d4f43870066a3f7cde36493b833dcf1a8ba06b612bff8665d769a37a9c4813"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/final-checks.mjs",
+      "bytes": 1722,
+      "sha256": "41fc96d40d43a76af0e9975a7978bde2b3f2fc93859e0ac24dd399cc841a7618"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/final-focused.log",
+      "bytes": 6259,
+      "sha256": "84f4347872de4998212900ed963be29f8cf62e9c1e15c116a583e170107722ea"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/focused-binding-repair.log",
+      "bytes": 6265,
+      "sha256": "6bebbf8d7de58ad08a491d7e3a6c92d9c5c4eeef1f6c4c1cbd273b86d3b9a5c4"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-checks.mjs",
+      "bytes": 1400,
+      "sha256": "8571e38c67854a759140bf6a9919831b7dcee673b20d47d2fefddaacea75b977"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-execution.json",
+      "bytes": 319,
+      "sha256": "26172831f21b56ed0a5e3328ec8def26ad2a3d82111c186993867d1bc8870031"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-execution.log",
+      "bytes": 105,
+      "sha256": "6745f92fc22bb67e73881816c74b36ce0cde6bef092ed31ccb43941d4a58c49a"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-focused.log",
+      "bytes": 6138,
+      "sha256": "abad8a690d26a2124627f456ecb4bb14c66a498a0865eb361353f7595da72673"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-root.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-types.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-verification.json",
+      "bytes": 1331,
+      "sha256": "a93fc32ab9f68ff10f4579c0bedd32dec4f8f5e27a3575233f6dcc3516de2b03"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-corrected/failure.png",
+      "bytes": 229254,
+      "sha256": "ab7e081c513557b14ae45b4c140588745692fa2f2a7ee7bc58e076d75c2832bd"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-corrected/review.json",
+      "bytes": 28769,
+      "sha256": "185f07b7f7492aaf72c422327948ff6900caa52e6947e15b8206e397b7bff97b"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-corrected/runner.mjs",
+      "bytes": 22753,
+      "sha256": "189dc1f287cef9583580120535a7ffa2cd06402d3cb4c3dfd3d2a38092855290"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-corrected-execution.json",
+      "bytes": 550,
+      "sha256": "9167f321f9a0ef3c7aac07866be041c5522b3e97eef8176170565b50a0d8a73e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-corrected-execution.log",
+      "bytes": 771,
+      "sha256": "698ad7ee96fe5d4c43f2c256b382d8a5c375aef455b507253f97006330593124"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop/earth-desktop-initial.png",
+      "bytes": 779514,
+      "sha256": "a1288e2f022d2a5dceafad44fbeb18bf649415ae1788298756cebe9990d83c88"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop/earth-desktop-midpoint.png",
+      "bytes": 799141,
+      "sha256": "081dcefdc2266b7006c3c57074e56850f476468d340f27c7184888f7c5ad2f18"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop/earth-desktop-settled.png",
+      "bytes": 799330,
+      "sha256": "6f0ecb4a8b29a812aa4d0ea6771b55d1c8b62cc57ef2a8f55b762d74ea964d7c"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop/review.json",
+      "bytes": 64147,
+      "sha256": "0352889d2b301b6b8927ae4294b8b5c41300bf162969a0b8f278709b8d735c76"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop/runner.mjs",
+      "bytes": 21917,
+      "sha256": "586006318a477c4d02cddc74071a5824fce9a00beeeff14ef36bb96965c52332"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop-execution.json",
+      "bytes": 556,
+      "sha256": "ab81bd8d6fdf228130422fa4c1eca4a70b58c80cb579611334748e24be1a94a6"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop-execution.log",
+      "bytes": 133,
+      "sha256": "b4f164cb6fe58e55d608d053ad873b31568ccbc8b94a3c5ac846c31421fdec40"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop-runner.mjs",
+      "bytes": 21917,
+      "sha256": "586006318a477c4d02cddc74071a5824fce9a00beeeff14ef36bb96965c52332"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-first/failure.png",
+      "bytes": 288529,
+      "sha256": "98b1844442fe02283622b146b5b43a3d73d60273997f50f15573726ea849b065"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-first/review.json",
+      "bytes": 20959,
+      "sha256": "fa1204d919f7552457e1ef958f260d5a9a8bea84ffd166f5fc28b6d555279c9a"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-first/runner.mjs",
+      "bytes": 22493,
+      "sha256": "d983375ca4fc720b92a90d1a203f64f2d04aa05ff62626e41ffb76b45f2240e8"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-first-execution.json",
+      "bytes": 537,
+      "sha256": "7e540543cb18af90d508f5b90f6f92901bff606a11017dffe05e02074b6437d0"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-first-execution.log",
+      "bytes": 627,
+      "sha256": "07c554bfeb7d2f285bfd9f404870ac0066d3a63816d32a7374280530235b7df6"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe/earth-phone-initial.png",
+      "bytes": 601474,
+      "sha256": "5e483a7f7c4705a1f19687d3a04523e0714113455190477195873c26dbf882c0"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe/earth-phone-midpoint.png",
+      "bytes": 664201,
+      "sha256": "809e350e5195a19481ce93f7750360bdd2c3c26b4145c07f2de3796b47394dc1"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe/earth-phone-settled.png",
+      "bytes": 665469,
+      "sha256": "5a23ebe45d2b64eddf364a18fdacfe5024d86c191a48d0cf38aa64c8c5abec57"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe/failure.png",
+      "bytes": 665468,
+      "sha256": "10c2bc0fe4452de3524132f848a9d2fa33b13a794deb58f51b3339a66a20c6f1"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe/review.json",
+      "bytes": 64840,
+      "sha256": "5e69d9556282e95f5f4006ad3e528322de3348b49238631fdb5b42254ec2697a"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe/runner.mjs",
+      "bytes": 22753,
+      "sha256": "189dc1f287cef9583580120535a7ffa2cd06402d3cb4c3dfd3d2a38092855290"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe-execution.json",
+      "bytes": 552,
+      "sha256": "754a097509a3faebbe59e848533eb2b15cf46719467052acc85a0a6b3798cb49"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-mesh-pipe-execution.log",
+      "bytes": 509,
+      "sha256": "33601381bc6cb98d38d41581dd0322e642b50b427aa2d6f0bc80bc8cde0dc3e7"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware/earth-phone-effects-off.png",
+      "bytes": 619801,
+      "sha256": "e15381a552a88415a5a6cf6e329442ef19168866c324c535119cf01286325ce8"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware/earth-phone-initial.png",
+      "bytes": 601473,
+      "sha256": "57a8c2bbd549501049a42634b9043b18c4b22d337b021ce0578d86555ff2547b"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware/earth-phone-midpoint.png",
+      "bytes": 663350,
+      "sha256": "2ac8d55a33266c02e546b67711e757fceb72cc13dc4b06235b44ce73282e982c"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware/earth-phone-reduced.png",
+      "bytes": 678408,
+      "sha256": "eee44b1559dbc0fd55904b04c57537df356e595b40486cb76d4aae38d22dbe2e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware/earth-phone-settled.png",
+      "bytes": 664400,
+      "sha256": "047b4f9b92884c1480ce15a1378ce76f8889259dbfb519e9629569f42bc45b36"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware/failure.png",
+      "bytes": 351606,
+      "sha256": "e9fd1ab90771dde829676e827849a750869ad5b2381e166be2e71bbb169506c6"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware/review.json",
+      "bytes": 80181,
+      "sha256": "aa42cd2e726c2eeeb913138ff406f73922ea1b43cb56a977b9c6af8a47747092"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware/runner.mjs",
+      "bytes": 23628,
+      "sha256": "35fdb008275c4f3f0dc92d2801b118a3729b23798e7f2cbdcb1d1847db59d7de"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware-execution.json",
+      "bytes": 550,
+      "sha256": "5c2a5624078baa2674b456b5404a1127f3fae744e18269ae0597c709a65dac24"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-owner-aware-execution.log",
+      "bytes": 637,
+      "sha256": "b4108ddeec94072088f8b67aea5ddebd2e11d90b730cb522456fd21984dcde52"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/native-runner.mjs",
+      "bytes": 23628,
+      "sha256": "35fdb008275c4f3f0dc92d2801b118a3729b23798e7f2cbdcb1d1847db59d7de"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/override-check-final.log",
+      "bytes": 298,
+      "sha256": "f227c76391a84357327a57ffb800820edfe7062e3ed9a4ccfa7f39be267b8db3"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/override-check.log",
+      "bytes": 210,
+      "sha256": "03368b29757f7bb9bf91cf0151f5382111eab8bb07cd3b6fe56f310b49ed3e77"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/preview-browser-check.json",
+      "bytes": 424,
+      "sha256": "583a83410b1f16b091c2ee9c0846d44764bcac1f0fc3c7e5ec2d7993e34d4c7a"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/preview-browser-check.log",
+      "bytes": 465,
+      "sha256": "9382bb2512a251d350a8d804aea93fdc5cf476786466338ef70f93af5fd05f90"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/preview-package.json",
+      "bytes": 498,
+      "sha256": "bdf88e91b115143e7c896c2f57e9eeb28d41dff46d7dca41ecec8de7bc02c92d"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/preview-package.log",
+      "bytes": 6068,
+      "sha256": "85b3c83845f08fcc6a545c923269b8f4f2d187c4433c4874e123d217ac291284"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/preview-server.json",
+      "bytes": 535,
+      "sha256": "1a0b408bf6c4930f4b3d8ad4e2b8dd91b48e763d362da599d1bd1b35b351587e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-build.json",
+      "bytes": 309,
+      "sha256": "3ec41e7c648a4ac75898edf59d121e68571452f51a54cfe697d54dfc4590ddde"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-build.log",
+      "bytes": 6024,
+      "sha256": "8a8b9320e82dc3ff4956164b5ab25cef100052d8371ef86e755818ce268ac143"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-final.json",
+      "bytes": 5968,
+      "sha256": "181f8f7881c1fe942121c2ef98a50eca70af24a3257c1e9daf44df063f7023a1"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-final.log",
+      "bytes": 6023,
+      "sha256": "64eb00cf11d0c848e9db9de3123fa8f93b6757a4690793b4dab6cf8b1e649860"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-final.mjs",
+      "bytes": 606,
+      "sha256": "9955a92bbb418ee3bf63b3d09fed2d3cd9464b9d0e5486e087f387fedd5448a8"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-mesh-pipe.json",
+      "bytes": 6055,
+      "sha256": "8ba4cb9ca0df0bd84db1f60cd5ba6c78236500367c11d9826938043a69f02a79"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-mesh-pipe.log",
+      "bytes": 6024,
+      "sha256": "13436892e46e382a5373e03879625e130fcafecf61a3925c4be595c693bc91ee"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-mesh-pipe.mjs",
+      "bytes": 610,
+      "sha256": "35f183b4b6ca4cdcd2d18cc1431bfa1b134c774aa1a7f01972312509c37d14a1"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-refresh-final.json",
+      "bytes": 1230,
+      "sha256": "6705e659a24a9541224d15e56a5665aa5929f721814fc90663fbe0a7806180e3"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-refresh-final.log",
+      "bytes": 65,
+      "sha256": "2673963a9ce3110b5fb454aea8973b6a376278b906d85a8227d004ea6b73cd50"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-refresh-mesh-pipe.json",
+      "bytes": 1230,
+      "sha256": "9f10ba4d1bd3ea8aadc6b74629d4bb0e239ae49d8e75d45d2344ffa9aa4d4df0"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-refresh-mesh-pipe.log",
+      "bytes": 65,
+      "sha256": "c982fa9129d68dad001b2fa16865ef8604f6dd20f410a1ce3ca25f252aabaa15"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer-refresh.json",
+      "bytes": 1230,
+      "sha256": "b4e0bdb0cc379b28383906bffa1517a5859de4ac87416f4676772acf189f422d"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer.json",
+      "bytes": 6119,
+      "sha256": "bdc98e2d2df25258ee65672d8b0ccffba96cd7ed95da77bc2e3812ef7c1ae3f0"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/producer.mjs",
+      "bytes": 600,
+      "sha256": "4a7c9af08df8f95658e50c8c08906824adfc81642005f7ba586a3378151d5941"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/qualified-outcomes.json",
+      "bytes": 3011,
+      "sha256": "1104d224d1738c4a75494d6abed3231f6945ef8291cfc35e52bdc529762c67f4"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/refresh-producer-final.mjs",
+      "bytes": 2374,
+      "sha256": "924f69db9600a16304730beeecb44fc719126348ac7cf9da0803de655d8222b9"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/refresh-producer-mesh-pipe.mjs",
+      "bytes": 2356,
+      "sha256": "02cea0731f97500bdbb5671e4f100fe9e14de174f19b3548a07877ce859fa3cb"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/refresh-producer.log",
+      "bytes": 65,
+      "sha256": "2673963a9ce3110b5fb454aea8973b6a376278b906d85a8227d004ea6b73cd50"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/refresh-producer.mjs",
+      "bytes": 2362,
+      "sha256": "f2a8366b3d14b4346c7de76963c0093269eeed0b2308c0149c921348f7f80cbb"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/root-validation.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/run-step.py",
+      "bytes": 950,
+      "sha256": "ed44a7352e1cbfb5692f969fc5d399d1fd8849bcd9c030019511841bbfdbabc1"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/serve-preview.mjs",
+      "bytes": 2989,
+      "sha256": "bf9e3921d7f1975eb738e8a881f105cc34a0043243e7db8c49a26d4fbfa3cd75"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/spec-check.log",
+      "bytes": 94,
+      "sha256": "b990b069a1d3ed60a587623f110cf6ad1ee1f3b6fffc919befb4f5bbcad01310"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/type-corrected-execution.json",
+      "bytes": 322,
+      "sha256": "0ba6c04baa1ad1f8c2fa2cfea05181adb359357e9b307ff165d3629aa536b859"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/type-corrected-execution.log",
+      "bytes": 88,
+      "sha256": "ce6cde56492a750bc12b04945fd28dfe454c199055047ee58ace37f7be880944"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/type-corrected-verification.json",
+      "bytes": 1099,
+      "sha256": "1bbcbccbc1f45b630162efdc62646d5d050d57f9790b24879a555050e567d3a7"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/typescript-corrected.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/typescript-final.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/typescript.log",
+      "bytes": 30887,
+      "sha256": "bc0402c14613df16aebf85161783356120e8e91fa49ce79083924e2238afd539"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/view-type-correction.log",
+      "bytes": 321,
+      "sha256": "34f401a6db31454f3d72d89ac2a58b3b8a1e6b73c782abc24a3ed72a1da713f0"
+    },
+    {
+      "path": "audits/AV_EARTH_SURFACE_TURN_20260908/visual-inspection.json",
+      "bytes": 1339,
+      "sha256": "4620292fb7b91c0684a9dafc117bd212e7ce1b5fcef57b8157180da1203279f6"
+    }
+  ],
+  "references": [
+    {
+      "path": "ROADMAP.md",
+      "bytes": 11588,
+      "sha256": "dc001848400cc60cb18f86eed0740be1250de2902172bbdcfa87ee19117ef6a5"
+    },
+    {
+      "path": "ROADMAP_ARCHIVE.md",
+      "bytes": 2594123,
+      "sha256": "c1903731299f0158836a00dd68d38d1014a53ee562a07b60fac23ef499f34ea8"
+    },
+    {
+      "path": "ART_DIRECTION.md",
+      "bytes": 134231,
+      "sha256": "e677d0eccb4acdec3d7891ce33e0826465c5adcde6ffa87b4e9daf6cf36b8645"
+    },
+    {
+      "path": "SPECIES_AND_GENOME.md",
+      "bytes": 34102,
+      "sha256": "b0193601216548371d319fb756ca8404389c28d799190855f21829c5b0a27c05"
+    },
+    {
+      "path": "UI_PRESENTATION.md",
+      "bytes": 245736,
+      "sha256": "788e1fb1f6f605aff9098179795e38d7892a3a085c0844a66c4fac69a96a8cc6"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 464296,
+      "sha256": "fb61e8a15bdec6d88bd4652ff1603e6488e3ee328c845d2f356f9911c59d98d8"
+    },
+    {
+      "path": "audits/AV_24H_CAMPAIGN_20260907.md",
+      "bytes": 22822,
+      "sha256": "4883657b763db1ca605550d8468193e2661ac3d1a534e7e9cfc9ce6337d53155"
+    },
+    {
+      "path": "port/playtests/20260908_EARTH_TURN_LOCAL_PREVIEW.md",
+      "bytes": 2655,
+      "sha256": "4e33c5fa3d005c8eeb66e58923b747756518169048763f2824df68b962f140b3"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 838469,
+      "sha256": "c2c3f7ea930633355b9fa277738b33ce0b004ba7326c5707c8195e4d98632285"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 157560,
+      "sha256": "93aaeedd27c3fd9b270e1d3162125648148ae360bc6e5118ea614ee3bd76bc04"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-atlas.ts",
+      "bytes": 4082,
+      "sha256": "abe2f39f611cf9f77a5b99134e4e89c3b1f3e66d9590d45cc12d5b8d16341765"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-turn-view.ts",
+      "bytes": 9842,
+      "sha256": "a3b3a420af7d2fa8dcae2b1155b6df5f771875cb69db8cec609df231dbe2b881"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-turn-math.ts",
+      "bytes": 1370,
+      "sha256": "72bcf0ca658ad37b7b34de1bd42d496a11750ec1e56847cec39badafa59adeec"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-turn.worker.ts",
+      "bytes": 838,
+      "sha256": "5079e4c64334210e96419814279227ab48d156d9c5681c7f45552ca349998233"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-turn-view.test.ts",
+      "bytes": 13239,
+      "sha256": "e61f1387f18bf289e39b3f27add4608d0bf747d46f9dd8398ea90bbb7bd8b8dd"
+    },
+    {
+      "path": "port/v2/apps/game/tsconfig.worker.json",
+      "bytes": 353,
+      "sha256": "a1aa7f588cb8df74d808ddfd3d832dfb2581502ac0c617267018d7006b1e2b0e"
+    },
+    {
+      "path": "port/v2/tests/planet-surface-atlas.test.ts",
+      "bytes": 6372,
+      "sha256": "91fc5206c241479d7573baa03484d764a86fa163bc2834ca8c28f48d664b1986"
+    },
+    {
+      "path": "port/v2/tests/planet-surface-turn-math.test.ts",
+      "bytes": 6701,
+      "sha256": "3911df0b5ba17872e34772d1967fd19780625ca829d48e0cb1c79dd178449f35"
+    },
+    {
+      "path": "port/v2/tests/compendium-budget.test.ts",
+      "bytes": 146461,
+      "sha256": "bec5940184db249ee0c003378e02b8670932319627cd23174da7cd4bc0140c8d"
+    },
+    {
+      "path": "port/v2/budgets/compendium-memory-v1.json",
+      "bytes": 162619,
+      "sha256": "4e8a017552596ff739669afab7861c08ae78fc30c901f235fda66759f90d8d01"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "bytes": 1890119,
+      "sha256": "c51f49c23bc52c11819e2c8a17678afd9faef5b45d36f01673939a1b8c0f61e6"
+    }
+  ],
+  "authority": {
+    "hostedAttempts": 0,
+    "productionRelease": false,
+    "fullAdmission": false,
+    "physicalPhone": false,
+    "artAcceptance": false
+  }
+}

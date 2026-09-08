@@ -297,7 +297,7 @@ describe('Celestial Frontier exact-build PWA', () => {
       expect(() => assertShippedPackBytes([100], invalid as number)).toThrow(/invalid byte count/u);
     });
 
-  it('seals both production Worker graphs and reserves ambiguous platform-loader names', () => {
+  it('seals all three scene painter Worker graphs and reserves ambiguous platform-loader names', () => {
     const falsePositiveControls = [
       'const cssHex = /^#[0-9a-f]{6}$/u;',
       'const workerWords = /new\\s+Worker\\s*\\(/u;',
@@ -317,6 +317,7 @@ describe('Celestial Frontier exact-build PWA', () => {
         fileName: 'assets/biome-vista.worker-biome.js',
         source: `${falsePositiveControls}\nconst biomeVista = true;`,
       },
+      { fileName: 'assets/earth-resident.worker-earth.js', source: `${falsePositiveControls}\nconst earthResidents = true;` },
       { fileName: 'assets/main-owner.js', source: 'import("./ordinary-window-chunk.js");' },
     ] as const;
     expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs(sealed)).not.toThrow();
@@ -335,7 +336,7 @@ describe('Celestial Frontier exact-build PWA', () => {
       'class Worker {} new Worker();',
       'function importScripts() {} importScripts();',
     ] as const;
-    for (const workerName of ['species-art.worker-species.js', 'biome-vista.worker-biome.js']) {
+    for (const workerName of ['species-art.worker-species.js', 'biome-vista.worker-biome.js', 'earth-resident.worker-earth.js']) {
       for (const edgeMutant of edgeMutants) {
         const mutant = sealed.map((record) => record.fileName.endsWith(workerName)
           ? { ...record, source: `${record.source}\n${edgeMutant}` }
@@ -347,6 +348,8 @@ describe('Celestial Frontier exact-build PWA', () => {
 
     expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs(sealed.slice(0, 1)))
       .toThrow(/exactly one sealed assets\/biome-vista\.worker-/u);
+    expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs(sealed.filter(row => !row.fileName.includes('earth-resident.worker-'))))
+      .toThrow(/exactly one sealed assets\/earth-resident\.worker-/u);
     expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs([...sealed, sealed[0]]))
       .toThrow(/exactly one sealed assets\/species-art\.worker-/u);
   });

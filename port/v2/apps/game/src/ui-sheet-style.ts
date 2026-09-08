@@ -13,7 +13,9 @@ ${SHEETS}{scroll-padding-top:var(--cf-sheet-scroll-top,80px);scroll-padding-bott
 :is(#hintpill,#ctxbar).sheet-guidance-yield{width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 :is(#setpanel,#guidepanel,#notificationpanel){z-index:var(--cf-layer-utility-panel)}
 body:not(.training) :is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#primepanel,#shipyardpanel,#inventorypanel,#combatpanel){z-index:var(--cf-layer-utility-panel)}
-.panel .sheet-header{position:sticky;top:0;z-index:1;clear:none;display:flex;align-items:center;gap:8px;min-height:44px;box-sizing:border-box;margin:0 0 12px;padding:0 0 8px;background:var(--cf-color-surface);color:var(--cf-color-accent-gold);font-size:var(--cf-type-section);line-height:1.4;letter-spacing:.06em;border-bottom:1px solid var(--cf-color-border)}
+.panel .sheet-header{position:sticky;top:0;z-index:1;clear:none;display:flex;align-items:center;gap:8px;min-height:44px;box-sizing:border-box;margin:0 0 12px;padding:0 0 8px;background:#0a101e;color:var(--cf-color-accent-gold);font-size:var(--cf-type-section);line-height:1.4;letter-spacing:.06em;border-bottom:1px solid var(--cf-color-border)}
+/* Paint through the existing panel padding without changing scroll or Close geometry. */
+.panel .sheet-header::after{content:'';position:absolute;inset:-14px -58px 0 -14px;z-index:-1;pointer-events:none;background:#0a101e}
 .panel .sheet-header::before{font-size:18px;letter-spacing:0}
 .panel [data-sheet-kind="set"]::before{content:'⚙'}
 .panel [data-sheet-kind="guide"]::before{content:'?'}
@@ -54,6 +56,7 @@ body.training #setpanel{z-index:var(--cf-layer-training-settings)}
  body.surface-mode #planetside{top:calc(var(--topbar-h) + 6px);bottom:auto;min-height:0;max-height:max(44px,calc(var(--cf-planetside-floor) - var(--topbar-h) - 6px))}
  body.panel-open #toast{width:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);right:calc(var(--safe-right) + 12px)}
 }
+@media(forced-colors:active){.panel .sheet-header,.panel .sheet-header::after{background:Canvas}}
 @media(prefers-reduced-motion:reduce){:is(.panel,#survey,#toast,#tutspot,#dock,#topbar,#sceneactions,#raillft,#railrgt),:is(.panel,#survey,#dock,#topbar,#sceneactions,#raillft,#railrgt) *{transition:none!important;animation:none!important}}
 body.motion-reduced :is(.panel,#survey,#toast,#tutspot,#dock,#topbar,#sceneactions,#raillft,#railrgt),body.motion-reduced :is(.panel,#survey,#dock,#topbar,#sceneactions,#raillft,#railrgt) *{transition:none!important;animation:none!important}
 `;
