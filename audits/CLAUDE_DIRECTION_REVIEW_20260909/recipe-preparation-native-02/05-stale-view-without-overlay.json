@@ -1,0 +1,1230 @@
+{
+  "id": "05-stale-view-without-overlay",
+  "variant": "omit-preparation-overlay",
+  "kind": "retry",
+  "negative": true,
+  "status": "EXPECTED_REJECTION",
+  "mode": "failure",
+  "workerRequests": 3,
+  "closing": true,
+  "recipeRequests": [
+    {
+      "caseId": "05-stale-view-without-overlay",
+      "index": 1,
+      "mode": "success",
+      "status": 200,
+      "finished": true,
+      "clientClosedBeforeCleanup": false,
+      "cleanupStarted": true
+    },
+    {
+      "caseId": "05-stale-view-without-overlay",
+      "index": 2,
+      "mode": "failure",
+      "status": 503,
+      "finished": true,
+      "clientClosedBeforeCleanup": false,
+      "cleanupStarted": true
+    }
+  ],
+  "cleanupRequests": [],
+  "unexpectedRequests": [],
+  "observations": [
+    {
+      "label": "initial",
+      "atMs": 3660.083334,
+      "state": "ready",
+      "landing": null,
+      "error": null,
+      "hasPng": false,
+      "pngPrefix": false,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": null,
+      "events": [],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 73.828125,
+            "height": 46
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 183.828125,
+            "y": 283.40625,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · ETA estimating…",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · ETA estimating…",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLand\nCancel landing\n\nReady",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 158.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Land on Earth to prepare the preview roster.The full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": null
+    },
+    {
+      "label": "seed-success",
+      "atMs": 3663.3595,
+      "state": "running",
+      "landing": {
+        "state": "idle",
+        "key": null,
+        "stageLabel": "Ready",
+        "etaLabel": "",
+        "progress": 0
+      },
+      "error": null,
+      "hasPng": false,
+      "pngPrefix": false,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": null,
+      "events": [],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": true,
+          "text": "Land",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 73.828125,
+            "height": 46
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 183.828125,
+            "y": 283.40625,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · Ready · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Ready · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLand\nCancel landing\n\nReady",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 158.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Land on Earth to prepare the preview roster.The full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": {
+        "caseId": "05-stale-view-without-overlay",
+        "index": 1,
+        "mode": "success",
+        "status": 200,
+        "finished": true,
+        "clientClosedBeforeCleanup": false,
+        "cleanupStarted": false
+      }
+    },
+    {
+      "label": "seed-success",
+      "atMs": 3717.977,
+      "state": "complete",
+      "landing": {
+        "state": "complete",
+        "key": "{\"config\":{\"schema\":\"cf.synthetic-preparation-only/v1\",\"width\":2,\"height\":1,\"steps\":2,\"seed\":133,\"modelRevision\":\"SYNTHETIC-NO-MODEL\",\"chatPrompt\":\"Synthetic controller preparation audit only\",\"references\":[],\"appearanceSnapshot\":{\"displayPlan\":{\"residents\":[{\"name\":\"Civet\"},{\"name\":\"Persimmon\"},{\"name\":\"Platypus\"},{\"name\":\"Frog\"},{\"name\":\"Devil's Club\"},{\"name\":\"Cranberry\"}]}}},\"referenceEnabled\":false,\"profile\":false}",
+        "stageLabel": "Landing complete",
+        "etaLabel": "Ready to view",
+        "progress": 1
+      },
+      "error": null,
+      "hasPng": true,
+      "pngPrefix": true,
+      "workerConstructed": 3,
+      "completedWorkers": 3,
+      "terminatedWorkers": 3,
+      "completeCount": 1,
+      "lastFailure": null,
+      "events": [
+        {
+          "phase": "start",
+          "seed": 133,
+          "modelRevision": "SYNTHETIC-NO-MODEL",
+          "referenceEnabled": false,
+          "profile": false,
+          "q8Block32": false,
+          "atMs": 114.46499991416931
+        },
+        {
+          "stage": "text",
+          "type": "progress",
+          "phase": "loading",
+          "synthetic": true,
+          "atMs": 117.91499996185303
+        },
+        {
+          "stage": "text",
+          "type": "progress",
+          "phase": "loaded",
+          "synthetic": true,
+          "atMs": 117.99000000953674
+        },
+        {
+          "stage": "text",
+          "type": "complete",
+          "synthetic": true,
+          "atMs": 118.01500010490417
+        },
+        {
+          "stage": "text",
+          "phase": "worker-terminated",
+          "atMs": 118.06500005722046
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "loading",
+          "synthetic": true,
+          "atMs": 120.37999987602234
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "loaded",
+          "synthetic": true,
+          "atMs": 120.43499994277954
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "step",
+          "step": 1,
+          "steps": 2,
+          "synthetic": true,
+          "atMs": 120.45499992370605
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "step",
+          "step": 2,
+          "steps": 2,
+          "synthetic": true,
+          "atMs": 120.49000000953674
+        },
+        {
+          "stage": "denoise",
+          "type": "complete",
+          "synthetic": true,
+          "atMs": 120.50999999046326
+        },
+        {
+          "stage": "denoise",
+          "phase": "worker-terminated",
+          "atMs": 120.52999997138977
+        },
+        {
+          "stage": "decode",
+          "type": "progress",
+          "phase": "loading",
+          "synthetic": true,
+          "atMs": 122.70499992370605
+        },
+        {
+          "stage": "decode",
+          "type": "progress",
+          "phase": "loaded",
+          "synthetic": true,
+          "atMs": 122.75
+        },
+        {
+          "stage": "decode",
+          "type": "complete",
+          "synthetic": true,
+          "atMs": 122.76999998092651
+        },
+        {
+          "stage": "decode",
+          "phase": "worker-terminated",
+          "atMs": 122.78500008583069
+        },
+        {
+          "phase": "complete",
+          "elapsedMs": 35.21500015258789,
+          "clipped": 0,
+          "min": -0.800000011920929,
+          "max": 0.800000011920929,
+          "qualityAccepted": false,
+          "atMs": 123.85500001907349
+        }
+      ],
+      "painting": {
+        "width": 2,
+        "height": 1
+      },
+      "meter": {
+        "value": 1,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 90,
+            "y": 431.3125,
+            "width": 73.828125,
+            "height": 46
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 183.828125,
+            "y": 431.3125,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 90,
+            "y": 559.3125,
+            "width": 2,
+            "height": 1
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth landing ready. The painting is available for review.\n\nView landfall",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 128
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 107,
+            "y": 289.5,
+            "width": 129.21875,
+            "height": 46
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · Landing complete · Ready to view",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Landing complete · Ready to view",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLand\nCancel landing\n\nLanding complete · visual review pending",
+          "rect": {
+            "x": 90,
+            "y": 384.40625,
+            "width": 1100,
+            "height": 175.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Civet\nPersimmon\nPlatypus\nFrog\nDevil's Club\nCranberryThe full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 3,
+      "recipeRequest": {
+        "caseId": "05-stale-view-without-overlay",
+        "index": 1,
+        "mode": "success",
+        "status": 200,
+        "finished": true,
+        "clientClosedBeforeCleanup": false,
+        "cleanupStarted": false
+      }
+    },
+    {
+      "label": "after-503",
+      "atMs": 3720.892417,
+      "state": "running",
+      "landing": {
+        "state": "complete",
+        "key": "{\"config\":{\"schema\":\"cf.synthetic-preparation-only/v1\",\"width\":2,\"height\":1,\"steps\":2,\"seed\":133,\"modelRevision\":\"SYNTHETIC-NO-MODEL\",\"chatPrompt\":\"Synthetic controller preparation audit only\",\"references\":[],\"appearanceSnapshot\":{\"displayPlan\":{\"residents\":[{\"name\":\"Civet\"},{\"name\":\"Persimmon\"},{\"name\":\"Platypus\"},{\"name\":\"Frog\"},{\"name\":\"Devil's Club\"},{\"name\":\"Cranberry\"}]}}},\"referenceEnabled\":false,\"profile\":false}",
+        "stageLabel": "Landing complete",
+        "etaLabel": "Ready to view",
+        "progress": 1
+      },
+      "error": null,
+      "hasPng": false,
+      "pngPrefix": false,
+      "workerConstructed": 3,
+      "completedWorkers": 3,
+      "terminatedWorkers": 3,
+      "completeCount": 1,
+      "lastFailure": null,
+      "events": [
+        {
+          "phase": "start",
+          "seed": 133,
+          "modelRevision": "SYNTHETIC-NO-MODEL",
+          "referenceEnabled": false,
+          "profile": false,
+          "q8Block32": false,
+          "atMs": 114.46499991416931
+        },
+        {
+          "stage": "text",
+          "type": "progress",
+          "phase": "loading",
+          "synthetic": true,
+          "atMs": 117.91499996185303
+        },
+        {
+          "stage": "text",
+          "type": "progress",
+          "phase": "loaded",
+          "synthetic": true,
+          "atMs": 117.99000000953674
+        },
+        {
+          "stage": "text",
+          "type": "complete",
+          "synthetic": true,
+          "atMs": 118.01500010490417
+        },
+        {
+          "stage": "text",
+          "phase": "worker-terminated",
+          "atMs": 118.06500005722046
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "loading",
+          "synthetic": true,
+          "atMs": 120.37999987602234
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "loaded",
+          "synthetic": true,
+          "atMs": 120.43499994277954
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "step",
+          "step": 1,
+          "steps": 2,
+          "synthetic": true,
+          "atMs": 120.45499992370605
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "step",
+          "step": 2,
+          "steps": 2,
+          "synthetic": true,
+          "atMs": 120.49000000953674
+        },
+        {
+          "stage": "denoise",
+          "type": "complete",
+          "synthetic": true,
+          "atMs": 120.50999999046326
+        },
+        {
+          "stage": "denoise",
+          "phase": "worker-terminated",
+          "atMs": 120.52999997138977
+        },
+        {
+          "stage": "decode",
+          "type": "progress",
+          "phase": "loading",
+          "synthetic": true,
+          "atMs": 122.70499992370605
+        },
+        {
+          "stage": "decode",
+          "type": "progress",
+          "phase": "loaded",
+          "synthetic": true,
+          "atMs": 122.75
+        },
+        {
+          "stage": "decode",
+          "type": "complete",
+          "synthetic": true,
+          "atMs": 122.76999998092651
+        },
+        {
+          "stage": "decode",
+          "phase": "worker-terminated",
+          "atMs": 122.78500008583069
+        },
+        {
+          "phase": "complete",
+          "elapsedMs": 35.21500015258789,
+          "clipped": 0,
+          "min": -0.800000011920929,
+          "max": 0.800000011920929,
+          "qualityAccepted": false,
+          "atMs": 123.85500001907349
+        }
+      ],
+      "painting": {
+        "width": 2,
+        "height": 1
+      },
+      "meter": {
+        "value": 1,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": true,
+          "text": "Land",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 73.828125,
+            "height": 46
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 183.828125,
+            "y": 283.40625,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Earth landing ready. The painting is available for review.View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · Landing complete · Ready to view",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Landing complete · Ready to view",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLand\nCancel landing\n\nLanding complete · visual review pending",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 158.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Civet\nPersimmon\nPlatypus\nFrog\nDevil's Club\nCranberryThe full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 3,
+      "recipeRequest": {
+        "caseId": "05-stale-view-without-overlay",
+        "index": 2,
+        "mode": "failure",
+        "status": 503,
+        "finished": true,
+        "clientClosedBeforeCleanup": false,
+        "cleanupStarted": false
+      }
+    },
+    {
+      "label": "after-503",
+      "atMs": 3774.8425,
+      "state": "failed",
+      "landing": {
+        "state": "complete",
+        "key": "{\"config\":{\"schema\":\"cf.synthetic-preparation-only/v1\",\"width\":2,\"height\":1,\"steps\":2,\"seed\":133,\"modelRevision\":\"SYNTHETIC-NO-MODEL\",\"chatPrompt\":\"Synthetic controller preparation audit only\",\"references\":[],\"appearanceSnapshot\":{\"displayPlan\":{\"residents\":[{\"name\":\"Civet\"},{\"name\":\"Persimmon\"},{\"name\":\"Platypus\"},{\"name\":\"Frog\"},{\"name\":\"Devil's Club\"},{\"name\":\"Cranberry\"}]}}},\"referenceEnabled\":false,\"profile\":false}",
+        "stageLabel": "Landing complete",
+        "etaLabel": "Ready to view",
+        "progress": 1
+      },
+      "error": "Error: HTTP503: /recipe.json\n    at checkedJson (http://127.0.0.1:56883/browser-proof.mjs:19:89)\n    at async generate (http://127.0.0.1:56883/browser-proof.mjs:107:18)",
+      "hasPng": false,
+      "pngPrefix": false,
+      "workerConstructed": 3,
+      "completedWorkers": 3,
+      "terminatedWorkers": 3,
+      "completeCount": 1,
+      "lastFailure": {
+        "phase": "failed",
+        "canceled": false,
+        "message": "Error: HTTP503: /recipe.json\n    at checkedJson (http://127.0.0.1:56883/browser-proof.mjs:19:89)\n    at async generate (http://127.0.0.1:56883/browser-proof.mjs:107:18)",
+        "atMs": 159.02999997138977
+      },
+      "events": [
+        {
+          "phase": "start",
+          "seed": 133,
+          "modelRevision": "SYNTHETIC-NO-MODEL",
+          "referenceEnabled": false,
+          "profile": false,
+          "q8Block32": false,
+          "atMs": 114.46499991416931
+        },
+        {
+          "stage": "text",
+          "type": "progress",
+          "phase": "loading",
+          "synthetic": true,
+          "atMs": 117.91499996185303
+        },
+        {
+          "stage": "text",
+          "type": "progress",
+          "phase": "loaded",
+          "synthetic": true,
+          "atMs": 117.99000000953674
+        },
+        {
+          "stage": "text",
+          "type": "complete",
+          "synthetic": true,
+          "atMs": 118.01500010490417
+        },
+        {
+          "stage": "text",
+          "phase": "worker-terminated",
+          "atMs": 118.06500005722046
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "loading",
+          "synthetic": true,
+          "atMs": 120.37999987602234
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "loaded",
+          "synthetic": true,
+          "atMs": 120.43499994277954
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "step",
+          "step": 1,
+          "steps": 2,
+          "synthetic": true,
+          "atMs": 120.45499992370605
+        },
+        {
+          "stage": "denoise",
+          "type": "progress",
+          "phase": "step",
+          "step": 2,
+          "steps": 2,
+          "synthetic": true,
+          "atMs": 120.49000000953674
+        },
+        {
+          "stage": "denoise",
+          "type": "complete",
+          "synthetic": true,
+          "atMs": 120.50999999046326
+        },
+        {
+          "stage": "denoise",
+          "phase": "worker-terminated",
+          "atMs": 120.52999997138977
+        },
+        {
+          "stage": "decode",
+          "type": "progress",
+          "phase": "loading",
+          "synthetic": true,
+          "atMs": 122.70499992370605
+        },
+        {
+          "stage": "decode",
+          "type": "progress",
+          "phase": "loaded",
+          "synthetic": true,
+          "atMs": 122.75
+        },
+        {
+          "stage": "decode",
+          "type": "complete",
+          "synthetic": true,
+          "atMs": 122.76999998092651
+        },
+        {
+          "stage": "decode",
+          "phase": "worker-terminated",
+          "atMs": 122.78500008583069
+        },
+        {
+          "phase": "complete",
+          "elapsedMs": 35.21500015258789,
+          "clipped": 0,
+          "min": -0.800000011920929,
+          "max": 0.800000011920929,
+          "qualityAccepted": false,
+          "atMs": 123.85500001907349
+        },
+        {
+          "phase": "failed",
+          "canceled": false,
+          "message": "Error: HTTP503: /recipe.json\n    at checkedJson (http://127.0.0.1:56883/browser-proof.mjs:19:89)\n    at async generate (http://127.0.0.1:56883/browser-proof.mjs:107:18)",
+          "atMs": 159.02999997138977
+        }
+      ],
+      "painting": {
+        "width": 2,
+        "height": 1
+      },
+      "meter": {
+        "value": 1,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 73.828125,
+            "height": 46
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 183.828125,
+            "y": 283.40625,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Earth landing ready. The painting is available for review.View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · Landing complete · Ready to view",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Landing complete · Ready to view",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLand\nCancel landing\n\nHTTP503: /recipe.json",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 158.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Civet\nPersimmon\nPlatypus\nFrog\nDevil's Club\nCranberryThe full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 3,
+      "recipeRequest": {
+        "caseId": "05-stale-view-without-overlay",
+        "index": 2,
+        "mode": "failure",
+        "status": 503,
+        "finished": true,
+        "clientClosedBeforeCleanup": false,
+        "cleanupStarted": false
+      }
+    }
+  ],
+  "clicks": [
+    {
+      "id": "generate",
+      "geometry": {
+        "visible": true,
+        "disabled": false,
+        "x": 126.9140625,
+        "y": 306.40625,
+        "width": 1280,
+        "height": 1000,
+        "hit": "generate",
+        "count": 0
+      },
+      "delivered": [
+        {
+          "id": "generate",
+          "isTrusted": true
+        }
+      ]
+    },
+    {
+      "id": "generate",
+      "geometry": {
+        "visible": true,
+        "disabled": false,
+        "x": 126.9140625,
+        "y": 454.3125,
+        "width": 1280,
+        "height": 1000,
+        "hit": "generate",
+        "count": 1
+      },
+      "delivered": [
+        {
+          "id": "generate",
+          "isTrusted": true
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "05-stale-view-without-overlay-failure-outcome.png",
+      "bytes": 44432,
+      "sha256": "77ae8b0b178926b7ed8d1bdf0287e8a85e5202e06adb3fdce20a2df58940993b"
+    }
+  ],
+  "cleanup": {
+    "targetClosed": true,
+    "heldResponsesRetired": true
+  },
+  "judgments": [
+    {
+      "outcome": "success",
+      "expected": {
+        "workers": 3,
+        "completions": 1
+      },
+      "expectReject": false,
+      "accepted": true,
+      "error": null
+    },
+    {
+      "outcome": "failed",
+      "expected": {
+        "workers": 3,
+        "completions": 1
+      },
+      "expectReject": true,
+      "accepted": false,
+      "error": "failed: visible landing state is stale or pending"
+    }
+  ]
+}

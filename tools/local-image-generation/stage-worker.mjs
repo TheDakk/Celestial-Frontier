@@ -5,6 +5,7 @@ import {
   packedLatentsToTokens, tokensToPackedLatents, createImageIds, eulerOutputStep,
 } from './pipeline-math.mjs';
 import {createNativeProfileCapture} from './gpu-profile.mjs';
+import {denoiserShapeSessionOptions} from './denoiser-shapes.mjs';
 
 // One graph per worker. The owner terminates this worker before the next stage.
 const progress = (phase, details={}) => postMessage({type:'progress',phase,...details});
@@ -19,6 +20,7 @@ onmessage=async ({data:job}) => {
     if(job.profile!==undefined&&typeof job.profile!=='boolean')throw Error('Profile option must be boolean');
     if(job.q8Block32!==undefined&&typeof job.q8Block32!=='boolean')throw Error('Derivative choice must be boolean');
     if(job.q8Block32&&job.stage!=='denoise')throw Error('Derivative belongs only to denoise');
+    const fixedShapeOptions=denoiserShapeSessionOptions(job);
     if(job.profile){
       profileCapture=createNativeProfileCapture({ortVersion:ort.env.versions.web});
       // Emscripten binds console.log when its WASM module initializes, so wrap
@@ -56,9 +58,11 @@ onmessage=async ({data:job}) => {
     session=await ort.InferenceSession.create('/model/'+graph,{
       executionProviders:['webgpu'],graphOptimizationLevel:'all',
       ...(job.profile?{enableProfiling:true}:{}),
+      ...fixedShapeOptions,
       externalData:shards.map(path=>({path,data:'/model/'+path})),
     });
-    progress('loaded',{graph,inputNames:session.inputNames,outputNames:session.outputNames,elapsedMs:performance.now()-started});
+    progress('loaded',{graph,inputNames:session.inputNames,outputNames:session.outputNames,...fixedShapeOptions,
+      ...(job.fixedDenoiserShapes?{inputMetadata:session.inputMetadata}:{}),elapsedMs:performance.now()-started});
     let result;
     if(job.stage==='text') {
       const tokenizer=new Tokenizer(await json('/model/tokenizer/tokenizer.json'),await json('/model/tokenizer/tokenizer_config.json'));

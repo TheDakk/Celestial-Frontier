@@ -4,7 +4,7 @@ const landing=createLandingProgress();
 let preparationView=null;
 const showPanel=panel=>{byId('planet-panel').hidden=panel!=='planet';byId('journal-panel').hidden=panel!=='journal';};
 function renderLanding(){
-  const view=preparationView??landing.snapshot(),pending=['queued','running'].includes(view.state);
+  const view=landing.snapshot(),pending=['queued','running'].includes(view.state);
   window.cfImageProof.landing=view;
   byId('generate').hidden=pending;byId('landing-progress').hidden=!pending;
   byId('landing-meter').value=view.progress;

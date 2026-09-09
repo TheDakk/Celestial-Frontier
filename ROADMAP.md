@@ -311,3 +311,61 @@ into develop, it safely fetches/merges origin/develop into its own clean anthrop
 No release/deployment/version bump; budgetUNFROZEN/PUBLIC with private fallback3000 and zero
 new authorized runs. No schedule or unattended follow-up created. Current artwork remains
 below acceptance; all remaining graphics/audio/device/storage/animation blockers above persist.
+
+
+### Active handoff — queued landfall interaction and full Claude review · September9
+
+Nick now explicitly requests Land → queued generation, an in-place “Landing” progress/ETA,
+completion notification and explicit return while other play remains available. He also requests
+Claude review **all changes since its last review and the materially new game direction**.
+[Standalone direction/change inventory](audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md)
+distinguishes the narrow September6 U2 response (3a61352 executable/3f1578e product) from the
+last broader September4 review (develop7bf3e847). A new Claude response is not yet received.
+
+Current ownership remains OpenAI/Codex · macOS ·
+`/Users/nick/Projects/celestial-frontier-openai-mac` · `openai/mac` · `origin/openai/mac`.
+The original fetch failed with SSH agent communication error and is retained. After Nick reported
+1Password unlocked, a distinct recovery at12:11UTC passed as TheDakk, repository read/fetch and
+PR42 metadata. Fresh develop remainsc1791e210158de864fdd475323c3091d9ecbae58; PR42 remains Draft,
+unlabeled at9bfec7dc4a06d97dfd29f8f5424553336776c9fb. Six earlier signed local checkpoints end at
+ff1669a2b7906a362f985cd810c6592834857caa, with this bounded successor being finalized.
+No push/Ready/label/hosted run/merge/release/version/deployment. BudgetUNFROZEN/PUBLIC,
+private fallback3000; no exact new hosted-attempt authority. No scheduled work is created.
+
+The isolated browser proof now runs the real worker pipeline behind Land/progress/ETA and a
+read-only canonical Field journal. The same page-owned job survives panel navigation; completion
+does not auto-return. Ordered actual stage/step evidence drives progress; step4/4 still needs
+decode and PNG publication. First-run ETA estimates remaining denoising plus explicit final
+processing; only an exact repeated page-local recipe can reuse a prior successful total.
+Normal-game Land, saves/Training/risk/reward/notification ledger/UI placement remain unchanged.
+Persistent multiworld jobs, model delivery, retained originals and normal-game integration remain
+pending. The future hook must settle durable landing first and respect buffered notifications.
+
+Fixed denoiser shapes remain an opt-in experiment:69,034.55ms versus69,948.09ms at1024×576,
+with a byte-identicalPNG and real resolved batch/image/text input metadata. The1.31% single-run
+difference is too small to claim a reliable new speedup. Prior Q8 improvement remains239s→69s.
+All named-species/botany/individual-quality failures remain; no generated image is promoted.
+The actual inference/native five-click interaction passed with two real hidden-DOM refusal/
+restoration controls,88 unchanged source rows, browser/server cleanup and retained screenshots.
+Completed320×568 reflow is not phone inference, physical-device or gameplay-FPS qualification.
+
+Final source review then caught a pre-recipe cancellation/stale-Ready defect. The request now
+carries AbortSignal and a separate preparation/failure presentation; current complete+PNG is
+required for View landfall.35 actual-controller tests PASS; distinct focused checks now97.
+The prior97 count includes the initial87 aggregate's3 sandbox localhost EPERM failures and the
+four affected server controls' separate outside-Seatbelt pass, plus8observer cases and2new
+controller cases. Preserve the original red rather than calling its aggregate green.
+Root validation passes, legacyHTML unchanged/1010renders/0booterrors/50fingerprints. No new
+V2 runtime changes or broader unchanged full-profile rerun; old4,121tests do not certify this head.
+The separate real-HTTP/synthetic-worker native correction audit02 passes all six current,
+negative and restored scenarios, with five unchanged sources and owned cleanup. Its first run
+passed cancellation and rejected omitted-signal behavior, then stopped on circularSocket JSON
+in observer cleanup; original source/receipt are immutable. Audit02 removes live responses from
+receipts and proves its serializer rejects that circular mutant and accepts restoration.
+
+[Batch evidence and limits](audits/CLAUDE_DIRECTION_REVIEW_20260909/BATCH_RESULT.md) retain every
+result. All older roadmap quality/admission/physical-device/D-9e/SceneMemory/storage/season/
+sharing/animation blockers remain. Next steps: sign this completed checkpoint and deliver a
+read-only review request to Claude, using immutable local Git objects from its own correctly
+owned workspace without importing refs, copying files or merging source into that workspace. PR42 stays parked; its title/body require an accumulated-head refresh before
+future Ready/owner-label authority. A new review must not be presented as already completed.
