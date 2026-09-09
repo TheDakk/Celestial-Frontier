@@ -18,15 +18,18 @@ grounded and embedded appropriately. These sheets add no biome/species IDs or pr
 change no canonical roster, and do not repair the global D-9e generation-filter gap. They are
 opaque authoring references; neither is a shipped flora asset pack. Matches code as of 2026-09-08.
 
-## Local scene-cohesion study — matches study code as of 2026-09-08
+## Local shallow-water study — matches study code as of 2026-09-08
 
-The [bounded Civet/scene comparison](audits/CREATURE_SCENE_COHESION_20260908/README.md)
-uses the same canonical six residents and relative anchors. Diffuse resident-only color balance
-and actual support shadows improve contact without changing the landscape, source identities or
-allowed families. At Civet’s wet mud/pebble location no tall occluder is justified; no invented
-grass, rocks, reflection or submersion. Existing legacy painter shadows remain in their original
-layer. This is an authoring study, not native integration, metre-scale ecology or a D-9e fix.
-The five older flat residents and Civet alpha-edge qualification remain unfinished.
+The [current Civet comparison](audits/CIVET_WATER_AND_MOTION_20260908/README.md) follows Nick’s
+shallow-water interpretation of the unchanged Earth anchor. Four narrow borrowed-background
+waterlines, broken ripples and submerged contacts integrate the paws; modest creature-only
+scene light leaves all unowned background pixels exact. This supersedes the prior mud/pebble
+reading. No reflection, invented grass/rocks, geography or biome admission change follows.
+The five unfinished residents are hidden only in this review. The native six-resident plan,
+full nineteen-genome binding, identities, botanical growth forms and accepted anchors remain.
+Earth fauna/flora use named natural anatomy and botany; alien flora keep seeded growth/palettes.
+Final desktop/phone water and motion outcomes PASS; finer edges/material blending and human
+acceptance remain open. The older scene packet remains immutable comparison evidence.
 
 ## Supplied painted-biome direction — 2026-09-08
 

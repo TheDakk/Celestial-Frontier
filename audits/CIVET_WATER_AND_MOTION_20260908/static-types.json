@@ -1,0 +1,64 @@
+{
+  "schema": "cf-civet-water-motion-static/v1",
+  "status": "PASS",
+  "startedAt": "2026-09-09T00:01:38.022Z",
+  "sources": {
+    "study-harness.ts": "0d830296879ef3c690113061d4a657afd1e242cf655e225a1286f732440a4f5f",
+    "study-runner.mjs": "de29e649d684a096b4c338525c06265a05a943bac2d14b1e384aff0a000cdf85",
+    "water-owner.ts": "68848cedb4aa9dcc5b0d9e7e0452f292d222e010173a808df68b811f1a8b3c8b",
+    "study.html": "33e4a16af57109d0ee6269fe8fe5c90f1409bd240a0458a827bf48e4f335d317",
+    "study.tsconfig.json": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4",
+    "serve-study.mjs": "15e74dcccd47e74380cd9722b7458413ac9fb0957524ba16fb651e41d0872e08",
+    "../../port/v2/tools/painted-creature/civet-articulated-rig.ts": "800b93d4144d2f651792e30a7a6f9b2d8acfc0a769d2ce3835ed51a4f5da2978",
+    "../../port/v2/tests/painted-civet-articulated-rig.test.ts": "6899b8895766357fe6e5af90a781d01de30339ad19bc3de749fc3d9ea2a0f337"
+  },
+  "stages": [
+    {
+      "name": "study-typecheck",
+      "cmd": "port/v2/node_modules/.bin/tsc",
+      "args": [
+        "--noEmit",
+        "-p",
+        "audits/CIVET_WATER_AND_MOTION_20260908/study.tsconfig.json"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "log": "study-typecheck-types.log"
+    },
+    {
+      "name": "runner-syntax",
+      "cmd": "node",
+      "args": [
+        "--check",
+        "audits/CIVET_WATER_AND_MOTION_20260908/study-runner.mjs"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "log": "runner-syntax-types.log"
+    },
+    {
+      "name": "v2-three-typechecks",
+      "cmd": "npm",
+      "args": [
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "log": "v2-three-typechecks-types.log"
+    },
+    {
+      "name": "root-validate",
+      "cmd": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "log": "root-validate-types.log"
+    }
+  ],
+  "finishedAt": "2026-09-09T00:01:52.289Z"
+}

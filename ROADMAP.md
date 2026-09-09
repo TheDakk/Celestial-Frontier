@@ -17,50 +17,100 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-08 · PAINTED CIVET STUDY + EARTH/ALIEN REFERENCES
+## SESSION HANDOFF — 2026-09-08 · CIVET SHALLOW WATER AND ARTICULATED MOTION
 
-**Latest bounded result — environment cohesion:** Nick asked to ground flora/fauna and apply his
-post-generation Earth reference, then asked whether the direction fits. The new
-[scene-cohesion packet](audits/CREATURE_SCENE_COHESION_20260908/README.md) is complete as a local
-study. Its calmer original Civet has a repaired nose alpha, modest overcast scene light and
-measured contacts. A busier new generation and its damaged nose/tail matte were rejected and
-retained. The full scene is **not art-complete**: Civet fine fringe/whiskers and five older flat
-residents remain below the final bar. No native game integration or human acceptance is claimed.
-No tall occluder is justified at the wet mud/pebble contact; no invented grass/rocks/reflection.
-The first study’s 374-file staged recovery remains verified; its RECOVERY_POINTER.md is historical.
+**Latest bounded result:** Nick identified the paws as standing in shallow water, asked to remove
+unfinished residents from review, and reported invisible breathing/reset and rigid recoil. The
+[current study](audits/CIVET_WATER_AND_MOTION_20260908/README.md) now shows only the painted Civet,
+with four narrow borrowed-background waterlines, submerged contact shadows and faint broken
+ripples. This supersedes the earlier mud/pebble interpretation. The accepted Civet anchor and native
+game roster remain unchanged. Two stronger breath cycles last 6 s, brace/thrust 1.6 s and reaction
+1.1 s. Twelve local neck/leg/tail transforms preserve four whole planted paw regions while freeing
+the lower-left tail. Stop/reset pose is disabled at rest; Creature/Environment tabs keep the subject
+beside controls. Width changes preserve the active clip; there is no idle loop.
 
-Latest selected asset: 768×512, 179,816 bytes, SHA
-`186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365`; every original RGB byte retained.
-Study typecheck/syntax/root validation PASS. New final native Edge desktop/phone PASS: eight
-motion probes and eleven control groups each; exact four-paw census, 15 visible contacts,
-359,128 unchanged unowned background pixels, trusted grounding-toggle canvas change/restoration,
-all owned shadow/filter resources retired while borrowed layers/sibling remain live, then full
-base study disposal. Missing/shifted/absent shadows, excessive light and background grade reject.
-The first native FAIL (legacy ground ruler wrongly required zero alpha despite retained
-translucent painter shadows) remains intact; phone/new controls/disposal were not reached there.
-Final report SHA `2707b001df593cbc7d163d556457d95a54bf8d544de5e189b037da179941bbb7`.
+This improves the one-view study, but **does not finish fluid locomotion or production blending**.
+Legs remain planted and somewhat image-deformed; the creature is still warmer/sharper than the
+rainy landscape, and fine fringe/whiskers need attention. Separately painted overlapping parts or
+a proper 3D rig are needed for hidden limb surfaces, stepping and turning. Human art acceptance,
+native integration and the five unfinished residents’ rich painted replacements remain open.
+No native Guide/Training/release-note, version, save, roster, RNG, lineage, biome or accepted UI
+placement changed. The current game retains its existing painters and whole-portrait battle motion.
 
-[Latest local comparison](http://127.0.0.1:58521/) is served by PID 7541 / exec 84561 from the
-immutable 17-file / 1,837,000-byte native-ground-ruler/dist. Inventory SHA
-`a753263db4ecc4a081a486e9cde36544f3e34c1dc60a3ab9ca78cc854148df9f`. HTTP 200 exact HTML hash verified
-outside Seatbelt after a sandbox EPERM; app-open queued only. Earlier port 58519 stays separate.
+**Signing restored:** after Nick confirmed 1Password open, the prior studies committed with a
+valid SSH signature as `86ea06b79e11382b62173fbb2ccfc8c90fb37baa` (735 files). The earlier failed
+signer remains in its original packet. `SIGNING_RESTORED.json` records both the new success and
+default verification’s missing allowed-signers configuration; command-scoped verification using
+the existing public signing key passed, with no persistent config change or unsigned fallback.
+The new water/motion signed commit subsequently failed with the same “failed to fill whole
+buffer” / exit 128 after waiting for signing. HEAD remains that commit, cached upstream 41 ahead/0
+behind; the new completed work is staged. `SIGNING_NEW_BATCH_FAILURE.md` preserves this separate
+failure. Nick was asked to unlock/approve Git signing and confirm changed readiness for one retry.
+No unsigned fallback, persistent configuration change or automatic retry. Resolve HEAD and any
+later restored-state receipt; all tested source hashes remain in the packet.
+The previous full handoff is archived verbatim at the top of ROADMAP_ARCHIVE.md.
 
-**Current bounded result:** one complete rich-painted canonical Civet and a finite connected-mesh
-motion study, plus Nick’s two new Earth flora/fauna and alien-flora reference sheets. Native game
-integration is unimplemented. The local game still uses its existing creature/plant painters,
-flattened Earth resident layer and whole-portrait battle motion. No Guide/Training/release-note,
-version, save, roster, RNG, lineage, biome or accepted UI placement changed in this batch.
+### Current source, art and native evidence
 
-[Review packet](audits/CREATURE_PAINTED_CIVET_20260908/README.md),
-[final results](audits/CREATURE_PAINTED_CIVET_20260908/final-results.json), and
-[visual review](audits/CREATURE_PAINTED_CIVET_20260908/VISUAL_REVIEW.md) are the entry points.
-Starting/current HEAD: `5e222931efd642c03ce55c5e67f7670a7aef890c`. **The first new signed commit
-failed with 1Password “failed to fill whole buffer” / exit 128.** Completed work remains staged;
-[original failure](audits/CREATURE_PAINTED_CIVET_20260908/SIGNING_FIRST_FAILURE.md) is retained.
-No unsigned fallback, signing configuration change or automatic retry. Nick was informed that
-the local signer needs attention; resolve HEAD and the commit receipt after a restored-state
-retry. Earlier SIGNING_RESTORED_20260908 is historical success for its own checkpoints. No hosted
-write is authorized. The previous Earth handoff is archived verbatim atop ROADMAP_ARCHIVE.md.
+`port/v2/tools/painted-creature/civet-articulated-rig.ts` and its focused test are separate from
+the earlier rig. Exact original 29-field Earth epoch 0 Civet genome/seed 3212817920 remains the
+admission. The selected calmer 768×512 WebP is unchanged: 179,816 bytes, SHA
+`186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365`. All original RGB is retained;
+alpha repair and rejected busier generation remain in the preceding scene-cohesion packet.
+Current two meshes share one creature texture, with a 49×33 connected grid / 3,072 triangles and
+76,248 owned typed-array bytes per mesh. No painted limb separation or hidden anatomy was invented.
+
+[Final results](audits/CIVET_WATER_AND_MOTION_20260908/final-results.json),
+[source/still review](audits/CIVET_WATER_AND_MOTION_20260908/SOURCE_REVIEW.md), and
+[visual limits](audits/CIVET_WATER_AND_MOTION_20260908/VISUAL_REVIEW.md) are the current entry points.
+44 focused rig tests PASS, including complete finite-clip sweeps and mutation controls. Final
+study typecheck, runner syntax, three V2 TypeScript programs and root validation PASS: 1,010 clean
+named renders, zero boot errors, 50 unchanged original fingerprints. No unchanged rig rerun.
+
+Final native Edge 152.0.4191.66 / CDP 1.3 PASS: desktop 1440×1000@1 and emulated phone 390×844@2,
+34 frame observations / 18 control groups / three actual-canvas WebM captures per mode. Real native
+buttons complete two breath crests with intervening descent, brace retreat then thrust and tail
+travel on the same sequence without cancellation, returning to exact rest pixels. Actual leg ink
+moves and all four nonempty paw regions stay bit-exact. Constant-rest, subpixel, rigid-block,
+frozen-tail and held-breath controls reject. Real width changes continue motion; Stop resets.
+Water toggle changes/restores pixels; eight water faults reject and restoration passes.
+All four immersion/ripple/shadow contributions are nonempty. 407,189 unowned background pixels
+remain exact; five old residents are absent. Creature luma ratio .905494, alpha preserved.
+Water retirement restores pixels, then the live hero sibling is actually rendered. Both mesh
+geometries, six buffers, two textures/sources/bitmaps and all owned roots retire; repeat is inert.
+Runtime/cleanup errors 0; browser closed. Report SHA
+`1d230a9cbded6b5ae256c1dff14672f23869e35af8ccc7331924363efc0cc917` binds ten source inputs.
+
+**First failures retained:** `static-first.json` passed 44 rig tests, then stopped at study
+TypeScript MIME/readonly-filter errors. `native-first/report.json` passed desktop motion, then
+Water off→on threw because Pixi normalized empty undefined filters to null; phone/water probes/
+disposal were not reached. Corrected empty-chain semantics retain strict nonempty foreign-filter
+rejection. Final source has new immutable outputs; neither first aggregate is relabelled green.
+Source review also corrected exact-paw thresholds, two-cycle proof, completion versus cancellation,
+actual resize coverage and explicit geometry buffer destruction before relevant final runs.
+
+This authoring bench alone uses preserveDrawingBuffer/MediaRecorder for actual-canvas evidence;
+its framebuffer/recording overhead is not production performance evidence. Isolated desktop/CDP
+phone emulation is not physical touch, Safari/PWA or real background qualification. No full
+admission, Compendium/Slice/Glass/Recovery, native-heap or human art certification follows.
+
+### Prior study evidence remains binding
+
+The [original Civet packet](audits/CREATURE_PAINTED_CIVET_20260908/README.md) retains 113 rig tests,
+final native desktop/phone PASS (eight probes/five control groups each), exact original asset,
+two opaque checkerboard generator failures and three alpha-extraction attempts. Native paw-pixel
+FAIL, encoded-PNG/raw-RGB analysis FAIL and scrollbar FAIL remain; the first stops did not reach
+phone/disposal, and original scrollbar geometry was not fully retained. The original 4.2 s breath,
+1 s strike/.7 s recoil rig remains immutable comparison evidence, superseded only in this study.
+
+The [cohesion packet](audits/CREATURE_SCENE_COHESION_20260908/README.md) retains its rejected busy
+fur generation, damaged nose/tail matte, selected calmer original-RGB/nose-alpha repair, eight
+motion probes/eleven controls per final mode and first zero-alpha legacy-ground-ruler failure.
+Its final report SHA is `2707b001df593cbc7d163d556457d95a54bf8d544de5e189b037da179941bbb7`.
+Both packets and all original first failures remain untouched by this batch; no automatic red
+retry, cloud backup retry or retroactive PASS. Fine alpha and human acceptance remain open.
+Earlier 374-file and combined 734-file staging recoveries/readback/reverse-check receipts remain
+historical in their packets/smoke paths; signed 86ea06b now contains those completed studies.
 
 ### Authority, art direction and exact identity
 
@@ -83,64 +133,24 @@ are now reflected in ART_DIRECTION, SPECIES_AND_GENOME, BIOME_ATLAS and the code
 - Preserve CF controls, emoji, text and placement. UI references are material/graphic inspiration.
   The animal study remains Civet; the Earth sheet confirms its treatment, without a style restart.
 
-Civet seed 3212817920 is bound by the complete exact original 29-field Earth epoch 0 genome.
-`port/v2/tools/painted-creature/civet-rig.ts` admits only that identity. Its pointed muzzle, mask,
-rounded ears, four feet, spotted khaki/tan coat and ringed tail come from the current named painter.
-One 768×512 lossless WebP is 179,856 bytes, SHA
-`7df99d643544f47f0b9cfd22e97e3bcb8af5ccc184a51f29d2e6c42c603815ac`;
-its decoded RGBA base is 1,572,864 bytes before other ownership/upload overhead. The study has one
-shared texture across close views and Earth, a connected 49×33 grid/3,072 triangles, finite 4.2 s
-breathing, 1 s brace/neck thrust/recoil and 0.7 s reaction. Whole triangles above the visible paws
-stay fixed; each clip settles exactly. This is one painted projection, not a 3D/jaw/walking rig.
-
-Both generator outputs baked opaque checkerboards. Nick explicitly authorized ImageMagick alpha
-extraction; all three attempts and both originals remain. Fine whiskers are attenuated, with
-pale fringe/mouth fragments and a patchy nose edge on light backing. The warm coat and weak local
-contact shadow need further scene-light integration. Agent review sees much richer fur/volume and
-connected anatomy, but **production edge quality and human art acceptance remain open**. Other
-five native Earth residents are still flat and below the approved bar. No cloud backup retry.
-
-### Verification — bounded study only
-
-113 rig tests PASS, including full finite-clip sweeps and actual mutation controls. Study typecheck,
-all three V2 TypeScript programs and root validation PASS: 1,010 clean named renders, zero boot
-errors, 50 unchanged original determinism fingerprints. Source review corrected the NaN rest
-shortcut, destroyed-mesh observer and omitted Earth-container disposal before relevant runs.
-
-Final native Edge 152.0.4191.66 / CDP 1.3 PASS: desktop 1440×1200@1 and emulated phone 390×844@2,
-eight probes/five control groups per mode on unchanged bound source/assets. Actual painted pixels
-at 440/300/132 keep all four paws nonempty and exactly fixed; body/head pixels move. Constant-rest,
-shifted-paw, opaque/hash and actual horizontal-overflow mutants fail; restoration passes. Trusted
-native buttons complete finite clips and cancel on Reduced/Effects Off/DOM Hide. All four meshes,
-geometries and actor roots, Earth container and three textures/sources/bitmaps retire; repeat
-cleanup is inert. Zero Runtime/cleanup errors; browser closed. Document-hidden is synthetic,
-phone inputs are CDP mouse events under emulation: no physical touch/background/Safari/PWA claim.
-Native report SHA: `cd84e42ea90c7f05a0754d4efa5595dea8e8fc20500bafd5ff4b1d87a9db97d9`.
-
-**All first failures remain:** two opaque image outputs, two matte visual failures, first native
-paw-pixel FAIL (analytic point lock missed an interpolating triangle; tiny ruler had no solid ink
-at 300/132), analysis FAIL comparing encoded-PNG/raw-GPU RGB counts, and second native scrollbar
-assertion FAIL after eight passing probes. The first two native stops did not reach in-page disposal
-or phone. The second retained only the failing width scalar, not original full geometry. Final
-source fixes and stronger nonempty four-paw/overflow controls have new immutable outputs; none of
-those aggregate failures is relabelled PASS. No unchanged red was automatically retried.
-
 ### Local review, startup and Git ownership
 
-[Local motion bench](http://127.0.0.1:58519/): Breathe once / Brace and thrust / Recoil / Rest,
-Reduced motion / Effects on / Hide study. Dispose retires the bench; reload for another review.
-Server PID 598 / exec 25947 serves only the final immutable 17-file/1,775,620-byte study inventory.
-[Exact receipt/restart](audits/CREATURE_PAINTED_CIVET_20260908/README.md); content inventory SHA
-`86c5e30524484e6a4156d71b6fd051fa589719d1486997f1a52619acff4aed2d`.
-This is not a game preview or certificate. Prior Earth game preview restart is in
-`port/playtests/20260908_EARTH_LAYERED_LOCAL_PREVIEW.md`; its earlier port/PID is not reverified.
+[Current water/motion review](http://127.0.0.1:58523/) is served by PID 13898 / exec 88960 from
+`audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist`, fifteen files / 1,724,943 bytes.
+Inventory SHA `a485c8f4fe04876205d229db6d02e41ccf0bd24706418d43dc5a92be22e02e50`.
+HTTP 200 exact HTML hash verified outside Seatbelt; app-open queued only. README gives the exact
+restart command. Dispose is under Details and requires reload. This is a local authoring review,
+not a game preview/certificate. Earlier 58519 (PID 598 / exec 25947) and 58521 (PID 7541 / exec84561)
+remain separate unchanged comparisons; their immutable inventories are in their packet READMEs.
+Prior Earth game preview restart remains `port/playtests/20260908_EARTH_LAYERED_LOCAL_PREVIEW.md`;
+its old port/PID is not reverified by this study.
 
 Verified ownership: **OpenAI/Codex · macOS ·
 `/Users/nick/Projects/celestial-frontier-openai-mac` · `openai/mac` · `origin/openai/mac`**.
-SSH origin is `git@github.com:TheDakk/Celestial-Frontier.git`; retained uninterrupted TheDakk
-SSH/read proof applies. This local-only batch did not need a fresh fetch. Start was 40 ahead/0
-behind cached upstream; cached `origin/develop` `c1791e210158de864fdd475323c3091d9ecbae58` is an
-ancestor. Resolve final HEAD/counts after commit. Ambient `.DS_Store` stays untouched/untracked.
+SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`; retained uninterrupted TheDakk
+SSH/authenticated repository-read proof applies. No fresh fetch needed for explicit local work.
+Cached `origin/develop` `c1791e210158de864fdd475323c3091d9ecbae58` remains an ancestor.
+Ambient `.DS_Store` is untouched/untracked. No other worktree or personal UI inspected.
 
 New-session tool startup completed at 2026-09-08T21:51:58.792Z:
 [TOOLCHAIN_STARTUP_20260908_CIVET](audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json).
@@ -213,22 +223,23 @@ Dakk project is untouched; no copied third-party runtime assets.
 
 ### Next bounded work and paired handoff
 
-The two bounded studies are complete. The latest reference review accepts the calmer direction
-as a study, with production fine-alpha and human visual qualification still open. Next clean the
-remaining Civet fringe/whiskers before one exact-identity native art recipe across the existing
-Compendium/Chronicle/Planetside owners, with bounded ownership and real outcomes. The five older
-Earth residents require individual rich painted replacements under named botanical/anatomical
-rules; do not expand all families in one loop or call the scene finished after filtering. Alien
-plants preserve seeded architecture/palettes. Stop at the campaign deadline; no extension.
+The water/motion study is complete for review; do not repeat unchanged checks or start a broad
+animation/family loop. The next bounded art decision is a separately painted overlapping-part
+pilot for this same Civet if fluid stepping is pursued; first settle the visible style/edge and
+scene softness requirements. That work is not implemented by this mesh study. Native integration
+must eventually use one exact-identity recipe across existing Compendium/Chronicle/Planetside
+owners, with bounded ownership and actual outcomes. The five old Earth residents still require
+individual rich painted replacements with named botany/anatomy. Alien plants retain seeded
+architecture/palettes and biome mapping. Campaign deadline remains binding; no extension.
 
-Current side: Codex/macOS/`openai/mac` retains both completed studies staged pending signing
-recovery; HEAD is still `5e222931efd642c03ce55c5e67f7670a7aef890c`, cached upstream 40 ahead/0 behind.
-The combined local binary staging recovery is
-`port/v2/apps/game/smoke/earth-cohesion-staged-20260908.patch.gz` with its adjacent JSON receipt;
-see the scene packet’s RECOVERY_POINTER.md for readback/reverse-check results and exclusions.
-Full staged format check retains warnings in immutable compiled Pixi and raw logs; authored
-source check PASS. Scene packet format-review.json preserves exact output. No signing retry
-occurred after the original 1Password failure; no unsigned fallback or signing change.
+Current side: Codex/macOS/`openai/mac` retains this completed study and durable evidence staged
+pending the new signer failure. The previous two studies are signed at current HEAD
+`86ea06b79e11382b62173fbb2ccfc8c90fb37baa`, cached upstream 41 ahead/0 behind. The original and
+new signing failures remain separate; only a confirmed changed signer state permits one retry.
+Full diff format output includes immutable compiled Pixi/raw log warnings; authored source PASS
+is recorded separately. No unsigned fallback or persistent signing configuration change.
+[Staged recovery pointer](audits/CIVET_WATER_AND_MOTION_20260908/RECOVERY_POINTER.md) identifies
+the ignored binary snapshot and exact readback/reverse-check receipt; no patch was applied.
 GitHub step: none. PR details: not needed. Future separately authorized path is
 `openai/mac` → `develop`, never directly `main`. Actions budget UNFROZEN/PUBLIC, private fallback
 3000, exact hosted authority none, attempts/cost 0; no workflow is triggered by this batch.

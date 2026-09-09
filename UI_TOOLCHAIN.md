@@ -1,12 +1,19 @@
 # Celestial Frontier — development toolchain
 
-The 2026-09-08 local scene-cohesion pass reuses the uninterrupted
-TOOLCHAIN_STARTUP_20260908_CIVET receipt (no further update/install). Its third built-in generator
-checkerboard failure and rejected matte are retained in CREATURE_SCENE_COHESION_20260908.
-Nick’s explicit ImageMagick alpha-extraction authorization covers the narrow selected-source
-nose repair; all RGB stays unchanged. The exact local Pixi scene/mesh bench uses isolated Edge
-outside Seatbelt and the shared foreground/checkout locks. This introduces no runtime art tool,
-engine or hosted action. See the packet README for evidence and remaining edge/acceptance limits.
+The 2026-09-08 local water/motion study reuses the uninterrupted
+[TOOLCHAIN_STARTUP_20260908_CIVET](audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json) receipt;
+no further update/install or generator call. The existing painted RGB/alpha asset remains exact.
+The authoring-only Pixi mesh uses local joint transforms and borrowed-background waterlines.
+Isolated Edge runs outside Seatbelt under the shared foreground lock and checkout build lease.
+Actual-canvas native recordings/readback use preserveDrawingBuffer in this bench only: its extra
+framebuffer/recording overhead is not production performance evidence. ImageMagick only decodes
+RGBA for independent read-only pixel checks this batch. All owned buffers/textures/bitmaps and
+water resources retire; the borrowed sibling is actually rendered after water retirement.
+[Water/motion review packet](audits/CIVET_WATER_AND_MOTION_20260908/README.md) retains the first
+TypeScript and native filter-toggle failures, final PASS and exact restart command. 1Password
+successfully signed the preceding studies as `86ea06b79e11382b62173fbb2ccfc8c90fb37baa`; verification
+uses a command-scoped temporary allowed-signers file with the configured public key, without
+persistent signing changes. The original signer failure remains preserved. No hosted action.
 
 **Explicit user retest — 2026-09-08 07:38 UTC:** Another isolated outside-sandbox
 Inkscape 1.4.4 version/export chain passed. The inspected128×128PNG again matches the

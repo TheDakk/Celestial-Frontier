@@ -1,0 +1,42 @@
+{
+  "schema": "cf-civet-water-motion-static/v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-09T00:00:59.170Z",
+  "sources": {
+    "study-harness.ts": "1bea344ee5c678c6e0152011b1a9e12b7fa2bd2d93169bcd245d03dd226a70b9",
+    "study-runner.mjs": "de29e649d684a096b4c338525c06265a05a943bac2d14b1e384aff0a000cdf85",
+    "water-owner.ts": "dddd82292d92ea1bb4554e0680edecc0e233fd89da37ef2eb1773ff56fc78b32",
+    "study.html": "33e4a16af57109d0ee6269fe8fe5c90f1409bd240a0458a827bf48e4f335d317",
+    "study.tsconfig.json": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4",
+    "serve-study.mjs": "15e74dcccd47e74380cd9722b7458413ac9fb0957524ba16fb651e41d0872e08",
+    "../../port/v2/tools/painted-creature/civet-articulated-rig.ts": "800b93d4144d2f651792e30a7a6f9b2d8acfc0a769d2ce3835ed51a4f5da2978",
+    "../../port/v2/tests/painted-civet-articulated-rig.test.ts": "6899b8895766357fe6e5af90a781d01de30339ad19bc3de749fc3d9ea2a0f337"
+  },
+  "stages": [
+    {
+      "name": "articulated-rig",
+      "cmd": "npm",
+      "args": [
+        "test",
+        "--",
+        "tests/painted-civet-articulated-rig.test.ts"
+      ],
+      "cwd": "port/v2",
+      "exit": 0,
+      "log": "articulated-rig-first.log"
+    },
+    {
+      "name": "study-typecheck",
+      "cmd": "port/v2/node_modules/.bin/tsc",
+      "args": [
+        "--noEmit",
+        "-p",
+        "audits/CIVET_WATER_AND_MOTION_20260908/study.tsconfig.json"
+      ],
+      "cwd": ".",
+      "exit": 1,
+      "log": "study-typecheck-first.log"
+    }
+  ],
+  "finishedAt": "2026-09-09T00:01:00.047Z"
+}

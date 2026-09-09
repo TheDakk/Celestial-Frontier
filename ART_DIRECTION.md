@@ -22,24 +22,42 @@ support the Earth sheet’s direction; face hierarchy, clean edges and scene con
 final fit. Native Chronicle/Compendium/Planetside integration and human acceptance remain open.
 This updates authoring requirements; the sheets are opaque references, not runtime sprite packs.
 
-## Scene cohesion and reference fit — matches study code as of 2026-09-08
+## Painted Civet water and articulated motion — matches study code as of 2026-09-08
 
-The [new local scene study](audits/CREATURE_SCENE_COHESION_20260908/README.md) selects the
-calmer original Civet RGB after rejecting a busier reference-led regeneration and its failed
-matte. A narrow source-derived nose-alpha repair preserves every original RGB byte; the selected
-768×512 WebP is 179,816 bytes, SHA `186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365`.
-The face/mask lead and directional fur supports the readable whole animal. Fine edge fringe and
-whisker fragments on dark backing remain open; reference fit is not human production acceptance.
+The [current local study](audits/CIVET_WATER_AND_MOTION_20260908/README.md) follows Nick’s
+shallow-water reading of the accepted Earth anchor, superseding the earlier mud/pebble
+interpretation. Four measured paw contacts receive a narrow foreground waterline sampled from
+the existing background, faint broken ripples and submerged contact shadows. Modest resident-only
+overcast light preserves the painted source and all unowned background pixels. No reflection or
+new scenery was invented. The five unfinished residents are absent from this review; the game’s
+six-resident roster, exact genomes, biome mapping and accepted anchors remain unchanged.
 
-A separate scene owner supplies modest resident-only overcast lighting and fifteen measured
-contacts plus one weak Civet body shadow at unchanged anchors. It preserves alpha/background,
-complete identities, existing borrowed textures and finite motion. Civet contact is wet mud/pebble
-beside shallow water: no invented grass/rock occluder, reflection or submerged anatomy. Earth flora
-retain real named botany; alien flora retain seeded architecture/palettes and biome mapping. The
-five old flat residents still require richer species-specific painting; stronger filters do not
-finish their materials. Native game integration is unimplemented. The earlier study below retains
-its original asset and failures; the new packet records exact final source/native evidence and
-its own first ruler failure. No save, roster, RNG, biome or UI change follows from this bench.
+The calmer original Civet still supplies all RGB; its repaired-alpha 768×512 WebP is 179,816 bytes,
+SHA `186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365`. Earth reference anatomy,
+natural colors and botanical growth forms remain binding, as do seeded alien forms/palettes.
+The painted direction fits the supplied references, but the creature remains warmer/sharper than
+the rainy landscape; fine fur/whisker edges, fluid legs and human art acceptance remain open.
+
+`port/v2/tools/painted-creature/civet-articulated-rig.ts` adds twelve local aspect-correct bone
+transforms to the connected 49×33 mesh: neck, four upper/knee chains and three tail segments.
+Breathe now shows two chest cycles over 6 s; brace/thrust lasts 1.6 s and reaction 1.1 s.
+Four whole paw regions stay fixed while the lower-left tail is free. Stop/reset pose is disabled
+at rest. Creature/Environment tabs keep the subject near controls; width changes preserve the
+active clip. Every clip settles exactly with no idle animation loop. This remains one painted
+projection with planted legs; fluid stepping/turning needs separately painted overlapping parts
+or a proper 3D rig. It is not yet native game integration or a finished animation set.
+
+44 focused rig tests, the study and all three V2 typechecks, and root validation PASS. Final native
+Edge desktop/phone PASS has 34 frame observations, 18 control groups and three actual-canvas WebM
+recordings per mode. Positive controls use real native clicks; frozen/subpixel/rigid/dead-tail/
+held-breath and eight water faults reject. Four paw contacts, unchanged unowned background,
+finite completion/cancellation, width-resize continuity and resource retirement have outcome
+proof. The first TypeScript red and first native off→on filter-state failure remain immutable;
+empty undefined/null filter chains are now treated equivalently without accepting foreign filters.
+These scoped results do not close full admission, physical-device, native-heap or human review.
+No native Guide/Training/release-note, version, save, roster, RNG or UI placement changed.
+The earlier [cohesion study](audits/CREATURE_SCENE_COHESION_20260908/README.md) and original
+[Civet study](audits/CREATURE_PAINTED_CIVET_20260908/README.md) retain their failures and evidence.
 
 ## Painted Civet authoring study — matches study code as of 2026-09-08
 
