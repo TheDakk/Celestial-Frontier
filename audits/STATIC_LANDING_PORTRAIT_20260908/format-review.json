@@ -1,0 +1,11 @@
+{
+  "allStaged": {
+    "exitCode": 2,
+    "output": "audits/CIVET_PAINTED_PARTS_20260908/static-corrected-typecheck.log:4: new blank line at EOF.\naudits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.patch:54: trailing whitespace.\n+ \naudits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.patch:182: trailing whitespace.\n+ \naudits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.patch:197: trailing whitespace.\n+ \naudits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.patch:256: trailing whitespace.\n+ \naudits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.patch:269: trailing whitespace.\n+ \naudits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.patch:321: trailing whitespace.\n+ \n"
+  },
+  "authoredReferencesAndLiveCore": {
+    "exitCode": 0,
+    "output": ""
+  },
+  "policy": "Keep immutable raw logs and preserved patch bytes unchanged; all warnings listed, never recast full check as PASS."
+}

@@ -1,11 +1,31 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
+**Latest scope:** Nick confirms the full landfall painting direction “100%”, requests the
+same finish for universal objects and asks for day/night, seasonal/orbital conditions and
+shareable discoveries. [Current source and proposed appearance recipe](audits/MIDGAME_ART_DIRECTION_20260908/TIME_AND_SHARING.md)
+keep those future conditions separate from full organism identity, biome authority and protected
+gameplay time. Current painted examples are authored review images; universal procedural quality,
+dynamic daylight/seasons and exact-view sharing are not implemented by these images.
+
+
 Current scene target (Nick, September8): creatures belong inside their biome with canonical
 relative size, ground contact, occlusion and matching light/atmosphere. Compendium may reframe
 the same identity for detail. Existing vista size/perspective clamps are not metre-accurate
 world units; an explicit scale contract is needed before such a claim. See the
 [scene brief](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/ENGINE_AND_SCENE_BRIEF.md).
 
+
+## Static landing direction and real mapping limits — 2026-09-08
+
+Nick selected one cohesive still landfall painting with canonical inhabitants, followed by the
+same identities in Compendium and future articulated 2D battles. Live landing animation is not a
+current requirement. See [the decision](audits/STATIC_LANDING_PORTRAIT_20260908/DIRECTION_DECISION.md).
+Multiple organisms remain bound to actual roster/biome authority; a painting never adds encounters,
+healing effects or category rules. The new fungal landfall is an allowed-family concept, not a
+verified seed. One read-only derivation of a known foreign system retained three real worlds with
+habitat/painter/profile conflicts in [alien-source](audits/MIDGAME_ART_DIRECTION_20260908/alien-source/README.md).
+No seed sweep, gene reroll, filter rewrite or D-9e repair occurred. Earth uses the existing named
+roster; reference fauna/flora are not substituted for its canonical named organisms.
 
 ## Earth and alien plant reference distinction — 2026-09-08
 
@@ -17,6 +37,16 @@ atlas and allowed biome-family mapping. Reference roots are anatomy cues; scene 
 grounded and embedded appropriately. These sheets add no biome/species IDs or probabilities,
 change no canonical roster, and do not repair the global D-9e generation-filter gap. They are
 opaque authoring references; neither is a shipped flora asset pack. Matches code as of 2026-09-08.
+
+## Movement context versus body plan — 2026-09-08
+
+[CREATURE_ANIMATION.md](CREATURE_ANIMATION.md) defines the shared land/air/water architecture.
+Biome profiles choose scene/ecology context; their fourteen coarse fauna families are not joint
+or skeleton definitions. A scene selects only movement capabilities supported by the organism’s
+resolved named/lineage/procedural anatomy. Water contact must not convert a land animal to fish,
+a glider must not acquire powered flight, and an amphibious creature keeps one identity through
+its supported transitions. Current extremophile/raw-locomotion and plan-preservation conflicts
+are inventoried, not fixed here. Preserve all existing biome mapping, anchors and D-9e blockers.
 
 ## Local shallow-water study — matches study code as of 2026-09-08
 

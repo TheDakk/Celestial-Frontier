@@ -1,5 +1,37 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+## Selected landing presentation — Nick, 2026-09-08
+
+Nick explicitly selected the [Living Worlds painting](audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png)
+for the landing-screen direction: one large cohesive **static** environment painting, with multiple
+canonical flora/fauna where the composition supports them. Live resident motion on landing is no
+longer required now. This supersedes that earlier presentation priority while preserving its studies.
+[Exact decision and supplied image](audits/STATIC_LANDING_PORTRAIT_20260908/DIRECTION_DECISION.md).
+
+Landing art, Compendium portraits and later articulated 2D battle sprites must share the same full
+organism identity, anatomy, markings and versioned art recipe. Author/retain complete organisms and
+background separately, with matched scene lighting and contact, then flatten the landing view if
+appropriate. A crop of a flattened or occluded animal does not supply hidden anatomy or a rig.
+Battle depth may use posing, overlap, scale and authored perspective; no copied Pokémon assets or
+3D simulation is implied. Existing flora effects/healing, classifications, discovery/capture rules,
+complete genomes/lineage, biome mapping and saves stay owned by current gameplay data.
+
+The new [four-image direction packet](audits/MIDGAME_ART_DIRECTION_20260908/README.md) includes the
+atlas, selected triptych, full six-organism Earth landfall and fungal-family concept. The last two
+are review compositions, not yet accepted runtime assets or exact geometric/genome parity proof.
+The alien image uses documented fungal families; one retained real-system derivation exposes
+existing habitat/painter conflicts in all three worlds. It is explicitly not an exact encounter,
+and does not close D-9e. The multi-organism Earth's Civet has face/coat drift from the selected
+canonical master; preserve this visual limit rather than silently replacing that identity.
+
+One separate optional `paintedlanding=1` Earth Civet still pilot is prepared, not installed, in
+[STATIC_LANDING_PORTRAIT_20260908](audits/STATIC_LANDING_PORTRAIT_20260908/README.md), using the same
+full-request/all19-genome admission and accepted UI band as the earlier Earth study. It uses one
+real painting, with no overlaid unfinished resident sprites. Native roster rows remain intact.
+The exact six-file candidate is retained as a checked, unapplied patch while resize/encode
+permission is pending; live runtime source was restored to its prior bytes. No new scene is
+installed. This is not all-world art coverage, Compendium replacement, or completed battle animation.
+
 Current audiovisual source map — 2026-09-08: `main.ts` owns exact durable landing admission;
 `audiovisual-pilot.ts` and `pilot-runtime-style.ts` own the finite vista/header presentation;
 `tame-greeting-audio.ts` owns the pre-await route ticket and stale consumed-claim serial guard;
@@ -304,6 +336,30 @@ Current liveCF1 and unexposed normalizedCFB/CFB2 codec boundaries remain explici
 reference. That scene-brief batch changed no codec, renderer or ownership. A separate versioned
 production art recipe remains planned; the isolated Civet study below adds its own bounded
 versioned texture/mesh recipe without changing native routes.
+
+## Shared animation requirement — current architecture, 2026-09-08
+
+Nick requires one programmatic anatomy/motion system covering procedural land, flying and aquatic
+creatures and their variations, with arms, legs, heads, torsos, wings, fins, tails and flexible
+appendages. [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md) owns the shared contract and coverage
+sequence. Reusable joint/chain mathematics is the first isolated tooling foundation; the game’s
+painters do not yet emit common rig geometry or a universal animation-ready skin.
+
+The actual winning named/lineage/procedural painter must emit the same resolved anatomy used for
+both rich painting and motion. Raw descriptor genes alone are insufficient: modern procedural
+leg counts derive from body/locomotion; swimmers and special named owners can override body plans.
+Use variable semantic appendage arrays and family-appropriate land/air/water capabilities. Do not
+impose a quadruped skeleton on wings, fish, jelly or plants, or use a new generated image per seed.
+Preserve full genome/lineage identity, named Earth anatomy/colors, alien palettes and biome mapping.
+The [source inventory](audits/CIVET_PAINTED_PARTS_20260908/SOURCE_TAXONOMY.md) records existing
+mismatches, including raw-limb/eye omissions, extremophile locomotion semantics and four-wing
+routing; these are documented conflicts, not silently corrected by animation work.
+
+The latest Civet atlas is unaccepted authoring evidence after a first checkerboard/parts failure
+and one magenta-matte correction. Five alpha-extracted components remain unqualified as an assembled
+skin; no new painted asset or motion was wired into the native game or earlier preview. Nick’s
+universal-system clarification redirected the next step to the shared foundation. Fine-art blending,
+all-family locomotion, physical/human review and prior admission/ownership blockers remain open.
 
 ## Earth organisms and alien flora — direction updated 2026-09-08
 

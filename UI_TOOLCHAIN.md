@@ -1,5 +1,30 @@
 # Celestial Frontier — development toolchain
 
+**Latest authoring direction, September 8:** Nick selected the generated Living Worlds reference
+for cohesive static landings, with shared-identity Compendium art and future articulated 2D battles.
+Built-in imagegen produced the two reference boards and two full landfall review compositions in
+[MIDGAME_ART_DIRECTION_20260908](audits/MIDGAME_ART_DIRECTION_20260908/README.md), plus one separately
+bound canonical Civet still candidate in [STATIC_LANDING_PORTRAIT_20260908](audits/STATIC_LANDING_PORTRAIT_20260908/README.md).
+All originals/prompts and exact workspace readbacks are retained; no generated painting by itself
+proves rig/identity/native coverage. Runtime export remains subject to the recorded export status.
+No tool/package update, hosted action or recreated automation. Same uninterrupted startup receipt.
+
+**September 8 signing/sleep diagnostic:** Nick confirmed 1Password unlocked. Existing
+`caffeinate` PID93550 runs `-i`, preventing idle system sleep but not display sleep. A separate
+bounded `-d` assertion (PID16793 / exec16947) was verified and expires no later than
+2026-09-09T03:11:15Z. Existing AC/battery display idle settings (10/5 minutes), screen-lock and
+security preferences were not changed. Filtered recent power events did not establish a sleep or
+screen-lock cause. One PTY signed-commit retry succeeded as
+`afee1924aac880bed4360deae2a26d081ca18d45`, with command-scoped public-key verification PASS.
+This does not isolate the cause of the earlier buffer failures. Exact receipt:
+[audits/CIVET_PAINTED_PARTS_20260908/SIGNING_AND_SLEEP.json](audits/CIVET_PAINTED_PARTS_20260908/SIGNING_AND_SLEEP.json).
+
+The uninterrupted startup receipt still applies. Two built-in image-generation calls produced one
+rejected checkerboard atlas and a corrected magenta atlas; ImageMagick alpha extraction produced
+five unaccepted components. User steering redirected work to universal anatomy/motion foundations;
+no atlas was installed into the game. Common solver tooling and its limits are described in
+[CREATURE_ANIMATION.md](CREATURE_ANIMATION.md). No engine/package update or scheduled prompt.
+
 The 2026-09-08 local water/motion study reuses the uninterrupted
 [TOOLCHAIN_STARTUP_20260908_CIVET](audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json) receipt;
 no further update/install or generator call. The existing painted RGB/alpha asset remains exact.
