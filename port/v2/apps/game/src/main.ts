@@ -200,6 +200,7 @@ import {
 import { PAINTED_MARS_VISTA_ID, isPaintedMarsVistaV1 } from './painted-mars-binding.js';
 import { PaintedVistaLoadV1 } from './painted-vista-load.js';
 import { EARTH_LAYERED_SCENE_ID, buildEarthLayeredRecipeV1 } from './earth-layered-recipe.js';
+import { PAINTED_EARTH_LANDING_ID, buildPaintedEarthLandingRecipeV1 } from './painted-earth-landing-recipe.js';
 import { EarthLayeredLoadV1 } from './earth-layered-load.js';
 import { retireEarthLayerResourcesV1 } from './earth-layered-resources.js';
 import { earthLayeredMountLayoutV1 } from './earth-layered-layout.js';
@@ -2733,8 +2734,9 @@ function triggerCameraShake(): void {
   const release = (): void => {
     activeCameraShakes.delete(animation);
     // Landing translates the canvas without resizing it. Re-measure the Earth
-    // pair once the last impulse ends so a transient offset cannot become rest.
-    if (activeCameraShakes.size === 0 && surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID) {
+    // composition once the last impulse ends so a transient offset cannot become rest.
+    if (activeCameraShakes.size === 0 && (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
+      || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID)) {
       syncSurfaceVistaPresentation();
     }
   };
@@ -5832,7 +5834,8 @@ let surfaceVistaStaleDrops = 0;
 let surfaceVistaFaults = 0;
 let surfaceVistaLastBiome: string | null = null;
 let surfaceVistaLastError: string | null = null;
-let surfaceVistaArtVariant: 'canonical-v1' | typeof PAINTED_MARS_VISTA_ID | typeof EARTH_LAYERED_SCENE_ID | null = null;
+let surfaceVistaArtVariant: 'canonical-v1' | typeof PAINTED_MARS_VISTA_ID
+  | typeof EARTH_LAYERED_SCENE_ID | typeof PAINTED_EARTH_LANDING_ID | null = null;
 let surfaceEarthLayeredLoad: EarthLayeredLoadV1 | null = null;
 let surfaceEarthLayeredLast: ReturnType<EarthLayeredLoadV1['snapshot']> | null = null;
 let surfaceEarthResidentSprite: Sprite | null = null;
@@ -6015,11 +6018,12 @@ function currentEarthLayeredLayout(): ReturnType<typeof earthLayeredMountLayoutV
 /** Each optional painting owns only its exact scene decorations. Earth fits
  * between real DOM chrome and its Biosphere strip; native controls do not move. */
 function syncSurfaceVistaPresentation(): void {
-  const earth = surfaceVistaSprite !== null && surfaceEarthResidentSprite !== null
-    && surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID;
+  const earth = surfaceVistaSprite !== null && (surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+    || (surfaceEarthResidentSprite !== null && surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID));
   const earthLayout = earth ? currentEarthLayeredLayout() : null;
   if (earth) {
-    for (const sprite of [surfaceVistaSprite!, surfaceEarthResidentSprite!]) {
+    for (const sprite of [surfaceVistaSprite, surfaceEarthResidentSprite]) {
+      if (!sprite) continue;
       sprite.visible = earthLayout !== null;
       if (earthLayout) {
         sprite.scale.set(earthLayout.scale);
@@ -6075,38 +6079,43 @@ function mountSurfaceVistaCanvas(canvas: HTMLCanvasElement): void {
   audiovisualPilotVistaReady = true; syncAudiovisualPilot();
 }
 
-/** Build both display objects before publishing either. Their two explicit leases
- * retire on scene exit; these canvases never enter the one-entry opaque-vista cache. */
-function mountEarthLayeredCanvases(background: HTMLCanvasElement, residents: HTMLCanvasElement): boolean | 'retained-failure' {
-  if (nav.mode !== 'surface' || !surfacePlanetSprite) return false;
+/** Publish the complete one- or two-layer Earth composition together. Its explicit
+ * leases retire on scene exit; canvases never enter the opaque-vista cache. */
+function mountEarthLayeredCanvases(
+  background: HTMLCanvasElement, residents: HTMLCanvasElement | null,
+  variant: typeof EARTH_LAYERED_SCENE_ID | typeof PAINTED_EARTH_LANDING_ID = EARTH_LAYERED_SCENE_ID,
+): boolean | 'retained-failure' {
+  if (nav.mode !== 'surface' || !surfacePlanetSprite
+    || (variant === PAINTED_EARTH_LANDING_ID) !== (residents === null)) return false;
   const layout = currentEarthLayeredLayout();
   if (!layout) return false;
   const owned: SurfaceEarthLayerResource[] = [
     { canvas: background, lease: null, sprite: null },
-    { canvas: residents, lease: null, sprite: null },
   ];
+  if (residents) owned.push({ canvas: residents, lease: null, sprite: null });
   const sprites: Sprite[] = [];
   try {
     for (const [index, entry] of owned.entries()) {
       const lease = sceneTextureLease(entry.canvas);
       entry.lease = lease;
       const sprite = new Sprite(lease.texture); entry.sprite = sprite; sprites.push(sprite);
-      sprite.label = index === 0 ? 'earth-painted-background' : 'earth-canonical-residents';
+      sprite.label = variant === PAINTED_EARTH_LANDING_ID ? 'earth-painted-landing-still'
+        : index === 0 ? 'earth-painted-background' : 'earth-canonical-residents';
       sprite.eventMode = 'none'; sprite.anchor.set(0.5); sprite.scale.set(layout.scale);
       sprite.position.set(layout.centerX, layout.centerY);
     }
     const index = app.stage.children.indexOf(world);
     app.stage.addChildAt(sprites[0]!, index < 0 ? app.stage.children.length : index);
-    app.stage.addChildAt(sprites[1]!, app.stage.children.indexOf(sprites[0]!) + 1);
-    // The old scene remains intact until both successors have mounted.
+    if (sprites[1]) app.stage.addChildAt(sprites[1], app.stage.children.indexOf(sprites[0]!) + 1);
+    // The old scene remains intact until every successor has mounted.
     if (surfaceVistaSprite) {
       surfaceVistaSprite.texture = Texture.EMPTY; surfaceVistaSprite.removeFromParent();
       surfaceVistaSprite.destroy({ children: true });
     }
     surfaceVistaSprite = sprites[0]!;
-    surfaceEarthResidentSprite = sprites[1]!;
+    surfaceEarthResidentSprite = sprites[1] ?? null;
     surfaceEarthLayeredResources.push(...owned);
-    surfaceVistaArtVariant = EARTH_LAYERED_SCENE_ID;
+    surfaceVistaArtVariant = variant;
     syncSurfaceVistaPresentation();
     // This option excludes avpilot; publish data without another view callback
     // inside the atomic layer transaction.
@@ -6134,7 +6143,7 @@ function requestSurfaceVista(
   roster: CanonicalWorldRoster | null,
   paintedFallback = false,
 ): void {
-  if (!roster || typeof Worker !== 'function') return;
+  if (!roster) return;
   const provenWorldKey = getProvenPlanetKey(state.planet);
   if (provenWorldKey === null || roster.worldKey !== provenWorldKey
     || roster.starSeed !== state.star.seed) {
@@ -6159,6 +6168,40 @@ function requestSurfaceVista(
   surfaceVistaWorldKey = request.worldKey;
   surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;
   const query = new URLSearchParams(location.search);
+  const landingRecipe = !paintedFallback && query.get('paintedlanding') === '1'
+    && query.get('planetturn') !== '1' && query.get('avpilot') !== '1'
+    ? buildPaintedEarthLandingRecipeV1(request, roster) : null;
+  if (landingRecipe) {
+    const generation = surfaceVistaGeneration;
+    const isCurrent = (): boolean => surfaceVistaGeneration === generation
+      && roster.ecologyEpoch === currentEcologyEpoch()
+      && surfaceVistaWorldKey === request.worldKey
+      && nav.mode === 'surface' && nav.star.seed === roster.starSeed
+      && getProvenPlanetKey(nav.planet) === request.worldKey
+      && surfaceVistaEnvironmentFingerprint === request.environmentFingerprint;
+    surfacePaintedVistaLoad?.dispose();
+    surfacePaintedVistaLoad = new PaintedVistaLoadV1({
+      url: new URL('./assets/painted/earth-civet-landing-v1.webp', import.meta.url).href,
+      sha256: landingRecipe.sha256, expectedBytes: landingRecipe.expectedBytes,
+      width: landingRecipe.width, height: landingRecipe.height, isCurrent,
+      commit: canvas => {
+        if (!isCurrent()) return false;
+        const mounted = mountEarthLayeredCanvases(canvas, null, PAINTED_EARTH_LANDING_ID);
+        if (mounted !== true) return mounted;
+        surfaceVistaResults++; surfaceVistaLastBiome = request.biomeKey;
+        return true;
+      },
+      fallback: error => {
+        if (!isCurrent()) return;
+        noteSurfaceVistaFault(error, 'Earth painted landing unavailable');
+        requestSurfaceVista(planet, state, roster, true);
+      },
+    });
+    return;
+  }
+  // The static landing has no worker dependency. Existing enhancement paths
+  // keep their original worker-support boundary and canonical fallback.
+  if (typeof Worker !== 'function') return;
   const earthRecipe = !paintedFallback && query.get('livingvista') === '1'
     && query.get('planetturn') !== '1' && query.get('avpilot') !== '1'
     ? buildEarthLayeredRecipeV1(request, roster) : null;
@@ -8808,13 +8851,15 @@ function syncPlanetsideLayout(): void {
   if (getComputedStyle(sideEl).display === 'none' || nav.mode !== 'surface') {
     document.documentElement.style.removeProperty('--planetside-top');
     syncSurfaceChromeBottom();
-    if (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID) syncSurfaceVistaPresentation();
+    if (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
+      || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID) syncSurfaceVistaPresentation();
     return;
   }
   const r = sideEl.getBoundingClientRect();
   if (r.width > 0 && r.height > 0) document.documentElement.style.setProperty('--planetside-top', r.top.toFixed(2) + 'px');
   syncSurfaceChromeBottom();
-  if (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID) syncSurfaceVistaPresentation();
+  if (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
+    || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID) syncSurfaceVistaPresentation();
 }
 const surfaceSceneLayoutObserver = new ResizeObserver(syncPlanetsideLayout);
 for (const element of [sideEl, ...['topbar', 'searchbox', 'objchip', 'sceneactions']

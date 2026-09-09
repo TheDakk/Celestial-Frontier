@@ -1,0 +1,44 @@
+# Static Earth landing integration source review
+
+Read-only review by OpenAI/Codex on macOS in `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, 2026-09-09 UTC. ROADMAP, PROCESS_LAWS and PARALLEL_GIT_PROTOCOL were consulted; the uninterrupted startup receipt is reused. Parent owns asset export, applying the candidate, final digest, checks and Git. This review applies to the six preserved source files and patch; it did not apply or modify runtime source, run tests, build, render or launch a browser.
+
+Prepared patch SHA-256: `2469e2e49a2b4bc6b766c2fbbc9318a616a7d88cd3cc1434e15bfccf6f6318b7`.
+
+## Findings and boundaries
+
+1. **No new identity or gameplay change found.** `buildPaintedEarthLandingRecipeV1` delegates admission to unchanged `buildEarthLayeredRecipeV1`: the complete canonical request and ordered all-19 roster, address, epoch and profile must match. Cosmetic preview size is excluded only as previously approved. The still replaces presentation, not the roster. Its new focused test changes each of the 19 genomes with the original fingerprint retained. The native observer can prove live world/profile and DOM roster count/fingerprint; it does not independently inspect all live genomes. Full-genome equality is a focused source-admission claim, not a pixel or browser-private-state claim.
+
+2. **Single/two-layer ownership is coherent by inspection, with one coverage gap.** `mountEarthLayeredCanvases` accepts exactly a still with no resident canvas or the earlier pair with a resident canvas. It acquires one explicit lease per actual canvas, sets noninteractive sprites, mounts the complete composition before publication, and keeps the older pair labels. All Earth-only layout/shake readers now recognize the new ID. Both paths share the unchanged DOM-band fit, cloud visibility restoration and globe ownership. A failed publication retires every acquired entry and retains real unreleased display/lease references for later cleanup. The new loader's explicit `retained-failure` prevents premature 1×1 shrinking. No transparent placeholder or optional resident worker exists in the still success path.
+
+   **Recommended narrow addition before acceptance:** execute the actual extracted main mount/retirement/release owners in a focused test. Prove one-layer and two-layer success counts; injected `addChildAt` failure; a failing lease release retains the same 960×430 canvas and reachable entry; a later release retry retires the lease and shrinks to 1×1; no live sprite or published resident reference survives. Use the same backing-store/ownership outcome assertions against a locally mutated early-shrink or omitted-retirement case. Existing loader/resource tests exercise these contracts separately, not this complete main transaction. The prepared native observer exercises normal exit, not the failure-plus-retry branch. This is a coverage gap, not an observed runtime failure.
+
+3. **Stale-request authority is preserved.** The new callback checks generation, current canonical world, current epoch, star and environment before either commit or fallback. Route rebuild calls `clearWorld`, which invalidates/disposes the loader before retiring scene textures. Existing loader tests cover late fetch/decode success or rejection after route loss, and disposal during ownership transfer. The new failure result transfers cleanup authority without claiming readiness. A throwing commit must retain no live lease; main's ordinary mount rollback catches the failures and returns the explicit retained result.
+
+4. **Fallback is finite; hidden-tab suspension is not provided.** Failed still loading calls `requestSurfaceVista(..., true)`, which bypasses both painted Earth options and enters the existing canonical cache/worker path. The successful still does not require `Worker`. If workers are unavailable, failed still loading leaves the existing usable globe instead of throwing. `isCurrent` does not check document visibility and pagehide/visibility handlers do not retire this image owner: a single decode/copy/mount can complete while hidden, and a failed asset can start one canonical worker while hidden. This matches the older optional vista boundary; it is not zero-work-while-hidden coverage. No animation/RAF/repeated painter loop was added. Adding a visibility check alone would abandon the load without a resume request, so no isolated visibility edit is recommended in this bounded static pilot.
+
+5. **The artifact binding must be completed before running.** The preserved recipe intentionally contains a non-SHA pending value, rejected before fetch. Replace it only with the final reviewed 960×430 WebP SHA, preserve the ≤512KiB encoded bound, and retain original/decoded display-size visual comparison. A typecheck cannot detect an unbound asset. The wrong-asset native control deliberately serves a different valid same-dimension WebP at HTTP 200; it must fail SHA admission and reach canonical fallback.
+
+## Focused check set
+
+Run once, under the parent's shared locks after source/asset freeze, from `port/v2`:
+
+- `tests/painted-earth-landing-binding.test.ts` — new all-19 still admission and hostile descriptors.
+- `apps/game/src/painted-vista-load.test.ts` — real digest, byte/dimension/deadline bounds, stale responses, accepted/retained transfer and recovered cleanup.
+- `apps/game/src/earth-layered-load.test.ts` — unchanged two-layer publication, failure/stale cleanup and retained-failure compatibility.
+- `apps/game/src/earth-layered-resources.test.ts` — actual released-flag requirement, failed lease/canvas setters and retry without duplicate release.
+- `tests/earth-layered-recipe.test.ts` — original full identity, species/biome mapping, anchors, request/order/descriptor negative controls.
+- `apps/game/src/earth-layered-layout.test.ts` — unchanged phone/desktop band, impossible and fractional geometry.
+- `tests/earth-layered-shake-settlement.test.ts` — both Earth variants settle on final completion/cancellation, with removed-sync control.
+- `tests/biome-vista-surface.test.ts` — existing actual roster wiring, environment binding, canonical projection and fail-soft worker boundaries.
+- `tests/biome-vista-cache.test.ts` — canonical/Mars fallback cache publication after successful mount only.
+- `tests/scene-texture-owner.test.ts` — actual lease refcounts, retryable disposal and texture ownership policy.
+
+Include the narrow main transaction test above if authored. No kinematics rerun, full profile or unrelated browser battery is needed for this change. Then the parent coordinates the three V2 TypeScript programs, required root validation, the frozen evidence build and four prepared native modes (desktop, phone, wrong asset, default), stopping at the first failure. The native still must have one real visible noninteractive sprite, exact DOM-band containment/hit samples, hidden globe/cloud, no resident layer/worker, exact restoration after controls, and real texture/canvas retirement after native exit. Preserve any failed output. Existing physical iPhone/Safari, human art approval, broader procedural painted-family and Compendium/battle parity limits remain open.
+
+## Authorized lossless-export addendum (before execution)
+
+After this review, Nick explicitly approved ImageMagick resize/encode. Root exported 960×430 lossless WebP at 600,756 bytes, SHA-256 `cd2c616abb35610f6ec63382f6476436f27a8c1a2c698757c8a66d34a5b2e0ec`, and reports decoded RGB equals the resized reference exactly. Parent applied the preserved patch and owns the final asset/recipe/main binding. The earlier pending-digest and ≤512KiB-new-asset statements above describe the reviewed prepared candidate, not the final binding.
+
+The loader now accepts an optional positive safe-integer `expectedBytes`, bounded by a new 640KiB hard ceiling. An explicit size becomes that load's header/stream cap and must equal the final body length before hashing/decoding. Unspecified loads retain the unchanged 512KiB limit. Targeted tests admit 600,756 and the explicit maximum with real hashes, reject old-default overflow, declared/stream overflow and a short body's otherwise-correct hash, and reject invalid bounds before fetching. Existing retained-failure and previous loader checks remain.
+
+`tests/painted-earth-mount-ownership.test.ts` now implements the recommended extracted-owner checks, including actual one/two publication and complete retirement, invalid one/two cardinality, insertion failure with blocked lease and recovered retry, and same-ruler early-shrink/omitted-retirement mutations. Display and lease failures are controlled test doubles; this does not replace the planned real Pixi/native verification. This authoring addendum records prepared tests only; no test/build/native execution occurred in this subtask. The relevant focused set therefore adds this new file to the ten listed above. No memory-ledger or older asset-ceiling changes were made.

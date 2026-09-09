@@ -1,18 +1,24 @@
 export const PAINTED_VISTA_MAX_BYTES = 512 * 1024;
+/** Explicit exact-size lossless exports only; existing loads retain 512 KiB. */
+export const PAINTED_VISTA_EXACT_MAX_BYTES = 640 * 1024;
 export const PAINTED_VISTA_DEADLINE_MS = 8_000;
+
+export type PaintedVistaCommitV1 = boolean | 'retained-failure';
 
 export interface PaintedVistaLoadOptionsV1 {
   readonly url: string;
   readonly sha256: string;
   readonly width: 960;
   readonly height: 430;
+  readonly expectedBytes?: number;
   readonly isCurrent: () => boolean;
-  readonly commit: (canvas: HTMLCanvasElement) => boolean;
+  readonly commit: (canvas: HTMLCanvasElement) => PaintedVistaCommitV1;
   readonly fallback: (error: unknown) => void;
 }
 
 /** One optional, verified local image load. The caller owns eligibility and any
- * successfully committed canvas; this owner never starts a painter or retries. */
+ * successfully committed or explicitly retained-failure canvas; this owner
+ * never starts a painter or retries. A throwing commit must leave no live lease. */
 export class PaintedVistaLoadV1 {
   private status: 'pending' | 'ready' | 'failed' | 'disposed' = 'pending';
   private error: string | null = null;
@@ -57,9 +63,12 @@ export class PaintedVistaLoadV1 {
   private async load(): Promise<void> {
     const o = this.options;
     if (typeof o.url !== 'string' || !o.url || o.url.length > 4096
-      || !/^[0-9a-f]{64}$/.test(o.sha256) || o.width !== 960 || o.height !== 430) {
+      || !/^[0-9a-f]{64}$/.test(o.sha256) || o.width !== 960 || o.height !== 430
+      || (o.expectedBytes !== undefined && (!Number.isSafeInteger(o.expectedBytes)
+        || o.expectedBytes < 1 || o.expectedBytes > PAINTED_VISTA_EXACT_MAX_BYTES))) {
       throw new Error('invalid painted vista asset contract');
     }
+    const byteLimit = o.expectedBytes ?? PAINTED_VISTA_MAX_BYTES;
     this.fetchStarts++;
     const response = await fetch(o.url, { signal: this.abort.signal, credentials: 'omit', redirect: 'error' });
     if (!this.current()) {
@@ -68,7 +77,7 @@ export class PaintedVistaLoadV1 {
     }
     if (!response.ok) throw new Error(`painted vista HTTP ${response.status}`);
     const length = response.headers.get('content-length');
-    if (length !== null && Number(length) > PAINTED_VISTA_MAX_BYTES) {
+    if (length !== null && Number(length) > byteLimit) {
       throw new Error('painted vista exceeds byte limit');
     }
     if (!response.body) throw new Error('painted vista response has no body');
@@ -79,11 +88,14 @@ export class PaintedVistaLoadV1 {
       if (!this.current()) return;
       if (chunk.done) break;
       size += chunk.value.byteLength;
-      if (size > PAINTED_VISTA_MAX_BYTES) throw new Error('painted vista exceeds byte limit');
+      if (size > byteLimit) throw new Error('painted vista exceeds byte limit');
       chunks.push(chunk.value);
     }
     reader.releaseLock(); this.reader = null;
     if (!size) throw new Error('painted vista response is empty');
+    if (o.expectedBytes !== undefined && size !== o.expectedBytes) {
+      throw new Error('painted vista byte length mismatch');
+    }
     const buffer = new ArrayBuffer(size), bytes = new Uint8Array(buffer); let offset = 0;
     for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
     const digest = await crypto.subtle.digest('SHA-256', buffer);
@@ -107,10 +119,16 @@ export class PaintedVistaLoadV1 {
       // commit is synchronous. Avoid shrinking a canvas accepted by a caller
       // that retires this loader during the ownership transfer itself.
       this.canvas = null;
-      let committed = false;
-      try { committed = o.commit(canvas) === true; }
-      finally { if (!committed) { canvas.width = 1; canvas.height = 1; } }
-      if (!committed) throw new Error('painted vista commit refused');
+      let disposition: PaintedVistaCommitV1 = false;
+      try { disposition = o.commit(canvas); }
+      finally {
+        // A failed display owner can still hold a retryable GPU lease. That
+        // explicit outcome transfers cleanup authority, without publishing art.
+        if (disposition !== true && disposition !== 'retained-failure') {
+          canvas.width = 1; canvas.height = 1;
+        }
+      }
+      if (disposition !== true) throw new Error('painted vista commit refused');
       if (this.status === 'pending') this.status = 'ready';
       this.stop();
     } finally {

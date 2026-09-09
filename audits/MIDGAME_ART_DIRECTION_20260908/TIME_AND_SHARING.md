@@ -6,6 +6,22 @@ day, rotation, unusual orbits/seasons and shareable discoveries considered. This
 records dependencies and a proposed visual contract; it implements no planetary
 physics, clock, sharing format, save change or runtime artwork replacement.
 
+## On-demand clarification
+
+Nick clarified that the finished landfall painting should be generated when a
+world is visited during play. Millions of possible scenes do not mean millions
+of images installed ahead of time. The current single prepared Earth painting
+is a quality/display prototype, not that production generator. The implementation
+route remains unresolved; neither a local compositor/model nor a remote image
+service has been selected or authorized as the final architecture.
+
+A service option would require explicit latency, cost, storage, shared-image
+retention and full-identity rules; a seed alone is not a promise of exact pixels.
+No paid cloud service, model, price or hosted call is approved. The next bounded
+scope is one on-demand scene proof against an existing canonical world/roster
+and the approved quality target, before growing a prepainted planet catalogue.
+The identity/clock/snapshot boundaries below still apply whichever route is chosen.
+
 ## Current implementation
 
 | Concern | Source evidence | Current behavior and limit |
@@ -76,10 +92,12 @@ advance breeding recovery or mutate species/ecology.
 
 For a fixed recipe and clock coordinate, conditions should reproduce the same
 supported scene decisions. Reduced Motion should freeze or simplify visual
-transitions while leaving those underlying decisions unchanged. Cache reusable
-art/materials and bounded lighting variants; do not request an image-generation
-job for every seed or every clock tick. A still landing can choose its conditions
-once at arrival; gradual changes can be a later scoped presentation feature.
+transitions while leaving those underlying decisions unchanged. The chosen
+on-demand pipeline will need bounded retention and measured generation/render
+cost; reusable materials or lighting variants are possible approaches, not a
+selected implementation. A still landing can choose its conditions once at
+arrival; gradual changes can be a later scoped presentation feature. Generating
+a new image on every render tick is not required by the on-arrival request.
 
 ## Seasons and unusual systems need an explicit approximation
 

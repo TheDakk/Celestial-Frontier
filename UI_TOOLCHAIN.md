@@ -6,8 +6,16 @@ Built-in imagegen produced the two reference boards and two full landfall review
 [MIDGAME_ART_DIRECTION_20260908](audits/MIDGAME_ART_DIRECTION_20260908/README.md), plus one separately
 bound canonical Civet still candidate in [STATIC_LANDING_PORTRAIT_20260908](audits/STATIC_LANDING_PORTRAIT_20260908/README.md).
 All originals/prompts and exact workspace readbacks are retained; no generated painting by itself
-proves rig/identity/native coverage. Runtime export remains subject to the recorded export status.
-No tool/package update, hosted action or recreated automation. Same uninterrupted startup receipt.
+proves rig/identity/native coverage. Nick explicitly authorized ImageMagick resize/encoding while
+preserving quality. ImageMagick 7.1.2-31 exported a 960×430 lossless WebP of 600,756 bytes; its decoded
+RGB exactly equals the resized display reference, while the unchanged 1875×839 master retains the
+additional spatial detail. The first export receipt honestly records exceeding the old 512 KiB
+runtime limit. The applied optional pilot now declares that exact size under a 640 KiB hard ceiling;
+existing undeclared loads keep 512 KiB. Scoped focused/static/native integration checks passed
+with the first TypeScript fixture and native observer failures retained. Pixel equality alone
+does not prove runtime behavior. [Storage and quality](audits/STATIC_LANDING_PORTRAIT_20260908/STORAGE_AND_QUALITY.md)
+separates disk bytes, decoded buffers and unknown runtime copies. No tool/package update, hosted
+action or recreated automation. Same uninterrupted startup receipt.
 
 **September 8 signing/sleep diagnostic:** Nick confirmed 1Password unlocked. Existing
 `caffeinate` PID93550 runs `-i`, preventing idle system sleep but not display sleep. A separate

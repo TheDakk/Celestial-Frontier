@@ -10,6 +10,26 @@ in §2.4.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
 
+## On-demand landfall requirement — clarified 2026-09-08
+
+Nick's vision is to produce the finished, cohesive landfall painting **when a world is visited
+as play proceeds**. Millions of possible worlds do not mean millions of images prepared and
+installed in advance. A static landing presentation describes the displayed scene; it does not
+require a prepainted planet catalogue. The current one-world still demonstrates quality and
+placement, not the production generation mechanism.
+
+Nick asks to investigate generation locally as part of the game and requires no separate AI
+software installation for players. Local generation could manage model files within the game;
+an online image API could also provide a seamless player flow without a model download. These
+are different runtime choices. No model, browser/native integration or paid service is selected.
+The built-in Codex tool created the current artwork during authoring; it is not an embedded game
+generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
+qualification. A seed alone is not an exact-pixel contract. No hosted action or model installation
+is authorized. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+The next bounded art-generation scope is **one on-demand scene proof**, using an existing canonical
+world/roster and the approved quality target, before expanding a prepainted planet catalogue.
+Preserve full genomes, named Earth anatomy, biome authority, current clocks, saves and share codes.
+
 ## Selected landing presentation — Nick, 2026-09-08
 
 Nick explicitly selected the [Living Worlds painting](audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png)
@@ -34,13 +54,28 @@ existing habitat/painter conflicts in all three worlds. It is explicitly not an 
 and does not close D-9e. The multi-organism Earth's Civet has face/coat drift from the selected
 canonical master; preserve this visual limit rather than silently replacing that identity.
 
-One separate optional `paintedlanding=1` Earth Civet still pilot is prepared, not installed, in
-[STATIC_LANDING_PORTRAIT_20260908](audits/STATIC_LANDING_PORTRAIT_20260908/README.md), using the same
-full-request/all19-genome admission and accepted UI band as the earlier Earth study. It uses one
-real painting, with no overlaid unfinished resident sprites. Native roster rows remain intact.
-The exact six-file candidate is retained as a checked, unapplied patch while resize/encode
-permission is pending; live runtime source was restored to its prior bytes. No new scene is
-installed. This is not all-world art coverage, Compendium replacement, or completed battle animation.
+The optional `paintedlanding=1` Earth Civet still pilot is now applied and bound to its real asset;
+bounded integration verification passed. [STATIC_LANDING_PORTRAIT_20260908](audits/STATIC_LANDING_PORTRAIT_20260908/README.md)
+owns the source, export, exact results and retained first failures. The same full-request/all19-genome admission
+and accepted UI band select one leased opaque still, with no overlaid unfinished resident sprites.
+Native roster rows remain intact. Nick explicitly authorized ImageMagick resize/encoding while
+preserving quality. The unchanged 1875×839 original remains retained; the 960×430 lossless WebP
+is 600,756 bytes, SHA `cd2c616abb35610f6ec63382f6476436f27a8c1a2c698757c8a66d34a5b2e0ec`.
+Its decoded RGB exactly matches the resized reference; resampling still reduces detail at zoom.
+The loader checks that exact declared byte count under a 640 KiB hard ceiling; existing loads
+without a declared size retain their 512 KiB limit. The original preparation failure and unapplied
+patch receipts remain historical evidence, not current installation state. This is not all-world
+art coverage, Compendium replacement, completed battle animation or full admission.
+
+Matches code as of September 8: 146 focused tests passed; the new deep-clone fixture then
+failed TypeScript TS2352. Its explicit mutable-clone cast was corrected, its five tests rerun,
+and all three V2 TypeScript programs plus root validation passed. The unchanged evidence build
+passed native desktop and phone review. A wrong-asset observer inventory error stopped its first
+chain; a separately recorded correction passed only the remaining wrong-SHA/default modes,
+with ten negative controls. Prior passes and the first failure were retained, with no rebuild.
+[Visual review](audits/STATIC_LANDING_PORTRAIT_20260908/VISUAL_REVIEW.md) and
+[verification](audits/STATIC_LANDING_PORTRAIT_20260908/integration-native-corrected-results.json)
+remain scoped; physical devices, native heap and all-world procedural quality stay unqualified.
 
 ## Shared animation requirement — current architecture, 2026-09-08
 
@@ -54,7 +89,7 @@ The actual winning named/lineage/procedural painter must emit the same resolved 
 both rich painting and motion. Raw descriptor genes alone are insufficient: modern procedural
 leg counts derive from body/locomotion; swimmers and special named owners can override body plans.
 Use variable semantic appendage arrays and family-appropriate land/air/water capabilities. Do not
-impose a quadruped skeleton on wings, fish, jelly or plants, or use a new generated image per seed.
+impose a quadruped skeleton on wings, fish, jelly or plants, or infer anatomy from an image alone.
 Preserve full genome/lineage identity, named Earth anatomy/colors, alien palettes and biome mapping.
 The [source inventory](audits/CIVET_PAINTED_PARTS_20260908/SOURCE_TAXONOMY.md) records existing
 mismatches, including raw-limb/eye omissions, extremophile locomotion semantics and four-wing

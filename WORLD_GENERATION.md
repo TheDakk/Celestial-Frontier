@@ -1,5 +1,23 @@
 # Celestial Frontier — World & Universe Generation
 
+## On-demand landfall requirement — clarified 2026-09-08
+
+Nick requires the final cohesive landfall image to be produced on demand as a player visits
+worlds. The possible space may contain millions of worlds; it does not imply installing a
+separate prepainted image for each. Existing seeded world/roster generation and the one prepared
+Earth still do not yet implement that approved-quality scene generator.
+
+Nick asks to investigate generation locally as part of the game and requires no separate AI
+software installation for players. Local generation could manage model files within the game;
+an online image API could also provide a seamless player flow without a model download. These
+are different runtime choices. No model, browser/native integration or paid service is selected.
+The built-in Codex tool created the current artwork during authoring; it is not an embedded game
+generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
+qualification. A seed alone is not an exact-pixel contract. No hosted action or model installation
+is authorized. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md). The next bounded proof should create one scene on demand from an existing canonical
+world and full roster before adding a larger prepainted catalogue. Preserve generation draw order,
+biome mapping, complete organism identities, saves, clocks and current CF1/CFB formats.
+
 ## Requested time-aware art and sharing — source reviewed 2026-09-08
 
 Nick approves the full landfall painting direction and requests procedural coverage, planetary

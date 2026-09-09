@@ -37,9 +37,9 @@ is not exact identity parity. Fungal fauna are insect/gastropod/amphibian with m
 is an allowed-family concept, **not an exact generated encounter**. One bounded read-only known
 foreign-system derivation retained all three worlds’ habitat/painter/profile conflicts in
 [alien-source](audits/MIDGAME_ART_DIRECTION_20260908/alien-source/README.md). D-9e remains open.
-No seed sweep, reroll or newly installed image per seed. The generator does not yet produce the
-shown quality procedurally across all worlds. Broader implementation requires a proved shared
-painted compositor, not an assumed runtime image-generation service.
+No seed sweep or reroll was performed in this authoring batch. The generator does not yet produce the
+shown quality on demand across all worlds. Broader implementation requires a proved generation
+architecture; neither a local model/compositor nor an online service is embedded by these images.
 
 Nick additionally requests daylight/night, planetary rotation/orbit and seasonal conditions in
 landfall images, plus shareable discoveries. [TIME_AND_SHARING](audits/MIDGAME_ART_DIRECTION_20260908/TIME_AND_SHARING.md)
@@ -50,7 +50,7 @@ active-play economy and all current clock laws. Do not claim seasonal simulation
 share/import already implemented. Exact recorded appearance needs a separately versioned snapshot
 recipe, while revisiting a location may show its current conditions.
 
-### Completed shared foundation and prepared landing candidate
+### Completed shared foundation and static landing prototype
 
 [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md) is the current anatomy/motion reference. The document
 Nick recalled is [PROCEDURAL_CHARACTERISTICS.md](PROCEDURAL_CHARACTERISTICS.md), together with
@@ -73,25 +73,44 @@ is byte-identical. [Corrected result](audits/CIVET_PAINTED_PARTS_20260908/static
 The first new static instrument ENOENT for absent optional root main.js remains intact with zero
 steps reached; the corrected runner is separate and treats that file as optional like validate.js.
 
-The original single-Civet scene candidate and six-file runtime implementation are retained in
-[STATIC_LANDING_PORTRAIT_20260908](audits/STATIC_LANDING_PORTRAIT_20260908/README.md).
-The new unedited PNG is 1875×839; the runtime target remains verified 960×430 WebP within 512KiB.
-**Required export choice remains pending:** Nick’s prior explicit ImageMagick approval covered
-alpha extraction. A new resize/encode permission question is pending because the image tool requires
-explicit permission for another editor. No resize/encode was performed or inferred from elapsed time.
+The optional `?paintedlanding=1` single-Civet Earth display prototype is implemented and has
+scoped focused/static/native verification. [Packet](audits/STATIC_LANDING_PORTRAIT_20260908/README.md).
+Nick authorized ImageMagick resize/encode. The untouched 1875×839 original remains; its 960×430
+lossless WebP is600,756 bytes, SHA `cd2c616abb35610f6ec63382f6476436f27a8c1a2c698757c8a66d34a5b2e0ec`.
+Decoded RGB exactly matches the resized reference. Downsampling still reduces master detail;
+desktop1440×1000@1 and phone390×844@2 were inspected, not every enlarged/high-DPR display.
+The original export-over512KiB receipt remains. This new asset declares exact600756 under a
+640KiB explicit-size cap; all older undeclared loads retain512KiB. Decode dimensions stay960×430.
 
-To keep an unbound asset out of the game, the six-file candidate is preserved as exact source copies
-and `prepared-runtime.patch`; its original authored live-file changes were restored exactly to the
-starting HEAD. The patch is NOT applied. [Corrected readback/apply-check](audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime-check.json)
-PASS verifies all candidate/base hashes and `git apply --check`; the first wrong-path ENOENT remains
-in `prepared-runtime.json` (its `patch` field names the wrong path; use the corrected receipt).
-No candidate runtime tests/typechecks/build/native checks have run. Both native observer and its
-four-mode fail-stop chain are prepared only. After export authority: inspect/encode the candidate,
-apply the reviewed patch, replace its pending SHA, then execute focused/static/build/native checks
-on frozen source. Do not ship the placeholder digest or silently claim the authoring image is installed.
-The intended new optional `paintedlanding=1` uses full Earth request/all19-genome admission and one
-real leased still, preserving the accepted DOM band/globe/cloud ownership and retryable retirement.
-Earlier `livingvista=1` stays distinct. Compendium replacement and battle integration remain open.
+The new still uses the unchanged full Earth request/all19-genome admission, one actual leased
+opaque canvas and accepted DOM band. Its exact scene ID is `painted-earth-civet-landing-v1`.
+No empty resident layer, worker dependency on the still path or new gameplay data. Existing
+`livingvista=1`, fallback, biome authority, UI placement and all19 roster rows remain. Static-load
+callbacks retain the older visibility limit: they can settle while hidden; no animation loop.
+Default makes no painted page-loader request, but offline service-worker precaching can still
+fetch the optional asset. No zero-network/zero-storage default claim or heap saving is made.
+
+Verification: first11 focused files/146 tests PASS, then TS2352 in the mutable deep-clone test.
+The explicit unknown bridge fixed only that fixture; its5 tests and all3 V2 TypeScript programs
+plus root validation then PASS. Legacy HTML byte-identical;1010 named renders/0 boot errors/50
+original fingerprints. Both first and corrected receipts are retained. One immutable97-file
+Vite evidence build produced native desktop/phone PASS, then the blocked observer wrongly treated
+server-wide served-file inventory as page traffic. V3 corrected only the request-owner ruler;
+wrong-SHA and default modes PASS with10 negative controls on the same build, without rerunning
+passed modes. V2's red stays red. Real leases/textures/sprites retire and canvas shrinks1×1;
+full-genome proof is focused admission, not native pixel inspection. No full battery admission.
+Independent read-only review matched all50 static/37 v2/43 v3 source hashes and both97-file builds.
+
+An ordinary local-only human preview and its isolated browser check PASS:
+[Open static Earth prototype](http://127.0.0.1:64179/?paintedlanding=1), PID24408 / exec76755.
+It is a frozen dirty-local-only package with parent `acca36b469da2024a7112c3cdd426f351f6bd2f5`,
+publishable:false; that parent does not certify changed bytes. Content SHA
+`473671306f100ece340e6e78ba2c7d2d9a5902103035c3ba2274e655dd41c0d5`.
+The app-panel request was queued. [Server/package receipts](audits/STATIC_LANDING_PORTRAIT_20260908/README.md)
+include native review images, exact source/build links and fresh-origin instructions. Earlier
+servers stay untouched. No new Compendium art, flora effects, battle rig or multi-world generator.
+The original six-file prepared patch and its wrong-path/corrected apply-check receipts remain
+historical; do not apply them over this asset-bound implementation.
 
 Two earlier painted-part atlas calls are unaccepted authoring evidence: first opaque checkerboard/
 incomplete parts failure, corrected magenta atlas and first ImageMagick alpha extraction. Five
@@ -245,24 +264,48 @@ Dakk project is untouched; no copied third-party runtime assets.
 
 ### Next bounded work and paired handoff
 
-Do not start another art-generation or family-animation loop after the requested reference renders.
-Record Nick’s full-scene approval and current time/season/share request in affected references.
-Resolve the pending export choice before image editing with another editor; retain the prepared
-single-Earth patch and verification plan until then. If authorized, qualify that one actual landing
-before expanding coverage. Rich multi-organism Earth assets need consistent canonical faces/coats
-and botanical review; alien runtime composition needs the recorded mapping conflicts addressed by
-an explicitly scoped deterministic presentation correction. Landing art stays static for now.
+Nick requires the finished cohesive landfall scene generated **on demand during play**, not a
+catalogue of prepainted planets. He asks whether the generator can run locally and requires no
+separate AI software installation for players. The current images came from Codex's built-in
+image tool, then were saved in the repo; the game does not contain that generator. A local model
+could be packaged/downloaded by the game; an online API can also give players a seamless flow
+without model installation. Local-first feasibility was researched from Apple/browser primary
+sources; OpenAI's official API workflow was also checked. Neither exact model nor browser/native
+integration, paid service, download or hosted action is approved. [Feasibility and actual workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
 
-Current side: Codex/macOS/`openai/mac` owns this work in
-`/Users/nick/Projects/celestial-frontier-openai-mac`. Starting signed HEAD is afee1924 above; resolve
-current HEAD and status for the completed foundation/art-direction checkpoint. New final signature
-and ahead state are reported at completion; no unsigned fallback or persistent signer config change.
-Future integration path is `openai/mac` → `develop`, never directly `main`. GitHub step: none;
-PR details: not needed. Actions budget UNFROZEN/PUBLIC, private fallback3000, exact hosted authority
-none, attempts/cost0, no workflow triggered. No hosted dev update, release, deployment or version bump.
+The next bounded scope is one canonical **on-demand** scene proof after resolving the practical
+runtime route, against the approved quality bar and exact complete roster. Do not expand a
+pre-rendered planet catalogue or start another family-animation loop. Preserve named Earth
+anatomy/botany, canonical identity, biome mapping, accepted UI, saves and clocks. Multi-organism
+Earth still has Civet identity drift; alien source conflicts/D-9e remain. Day/night/season time
+and exact-view sharing are still proposed, not implemented by art generation. AI pixels cannot
+be assumed reproducible from a seed alone; image/recipe retention needs explicit ownership.
 
-Other side: Claude/macOS/`anthropic/mac` does not yet have these unmerged changes; **no need to open
-or sync Claude now**. Preserve `173c806` and review these durable packets Thursday, September10.
-Only after a future separately authorized exact develop merge should Claude fetch/merge
-origin/develop into its clean branch. No manual copies or messages to Claude. The campaign still
-ends September8 23:11:15Eastern; no extension and no recreated scheduled prompts.
+Player storage: current evidence pack is18,987,535 bytes (18.108MiB); two equal versions total
+36.216MiB before metadata/saves/temporary updates. Existing shipped-pack limit128MiB is per build,
+not a total browser-space guarantee; retained-update256MiB qualification stays open. A local AI
+model adds its own potentially much larger download. No millions-image archive is required.
+Mac disk check had211GiB free; checkout6.2GiB includes4.8GiB smoke/review builds and630MiB audits.
+[Exact build measurement and limitations](audits/STATIC_LANDING_PORTRAIT_20260908/STORAGE_AND_QUALITY.md).
+
+Current side: OpenAI/Codex · macOS · `/Users/nick/Projects/celestial-frontier-openai-mac` ·
+`openai/mac` · upstream `origin/openai/mac`. Starting signed HEAD was
+`acca36b469da2024a7112c3cdd426f351f6bd2f5`,43 ahead/0 behind cached upstream. The completed
+bounded prototype/doc batch is the signed local commit containing this handoff; its full HEAD and
+verified ahead state are reported at completion. Resolve current Git metadata when resuming.
+[Final scoped evidence](audits/STATIC_LANDING_PORTRAIT_20260908/integration-final-results.json).
+`.DS_Store` remains ambient/untracked. No unsigned fallback/config change.
+SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`; retained TheDakk auth/read proof applies.
+
+GitHub step:none; PR details:not needed. Future path `openai/mac` → `develop`, never directly main.
+Actions budget UNFROZEN/PUBLIC, private fallback3000, exact hosted authority:none, attempts/cost0;
+no workflow, release, deployment or version bump. The source remains local until a separately
+authorized integration. Required full admission and all documented earlier reds remain open.
+
+Other side: Anthropic/Claude Code · macOS · `anthropic/mac` does not yet have these unmerged
+changes. **No need to open or sync Claude now.** Preserve173c806; review the durable packets on
+Thursday,September10. Only after a future separately authorized exact develop merge should
+Claude fetch/merge origin/develop into its clean owned branch. No manual copies/messages to Claude.
+Campaign deadline remains September8 23:11:15Eastern /2026-09-09T03:11:15Z. No extension and no
+recreated scheduled prompts. Reuse startup receipt only within this uninterrupted session;
+a fresh session reads ROADMAP, PROCESS_LAWS, protocol and UI_TOOLCHAIN startup first.

@@ -1,3 +1,52 @@
+## 2026-09-08 — Superseded export-permission and prepared-candidate handoff
+
+The following live handoff sections preceded the authorized lossless export and static landing
+integration. Preserved verbatim; the current ROADMAP owns current status.
+
+The original single-Civet scene candidate and six-file runtime implementation are retained in
+[STATIC_LANDING_PORTRAIT_20260908](audits/STATIC_LANDING_PORTRAIT_20260908/README.md).
+The new unedited PNG is 1875×839; the runtime target remains verified 960×430 WebP within 512KiB.
+**Required export choice remains pending:** Nick’s prior explicit ImageMagick approval covered
+alpha extraction. A new resize/encode permission question is pending because the image tool requires
+explicit permission for another editor. No resize/encode was performed or inferred from elapsed time.
+
+To keep an unbound asset out of the game, the six-file candidate is preserved as exact source copies
+and `prepared-runtime.patch`; its original authored live-file changes were restored exactly to the
+starting HEAD. The patch is NOT applied. [Corrected readback/apply-check](audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime-check.json)
+PASS verifies all candidate/base hashes and `git apply --check`; the first wrong-path ENOENT remains
+in `prepared-runtime.json` (its `patch` field names the wrong path; use the corrected receipt).
+No candidate runtime tests/typechecks/build/native checks have run. Both native observer and its
+four-mode fail-stop chain are prepared only. After export authority: inspect/encode the candidate,
+apply the reviewed patch, replace its pending SHA, then execute focused/static/build/native checks
+on frozen source. Do not ship the placeholder digest or silently claim the authoring image is installed.
+The intended new optional `paintedlanding=1` uses full Earth request/all19-genome admission and one
+real leased still, preserving the accepted DOM band/globe/cloud ownership and retryable retirement.
+Earlier `livingvista=1` stays distinct. Compendium replacement and battle integration remain open.
+
+### Next bounded work and paired handoff
+
+Do not start another art-generation or family-animation loop after the requested reference renders.
+Record Nick’s full-scene approval and current time/season/share request in affected references.
+Resolve the pending export choice before image editing with another editor; retain the prepared
+single-Earth patch and verification plan until then. If authorized, qualify that one actual landing
+before expanding coverage. Rich multi-organism Earth assets need consistent canonical faces/coats
+and botanical review; alien runtime composition needs the recorded mapping conflicts addressed by
+an explicitly scoped deterministic presentation correction. Landing art stays static for now.
+
+Current side: Codex/macOS/`openai/mac` owns this work in
+`/Users/nick/Projects/celestial-frontier-openai-mac`. Starting signed HEAD is afee1924 above; resolve
+current HEAD and status for the completed foundation/art-direction checkpoint. New final signature
+and ahead state are reported at completion; no unsigned fallback or persistent signer config change.
+Future integration path is `openai/mac` → `develop`, never directly `main`. GitHub step: none;
+PR details: not needed. Actions budget UNFROZEN/PUBLIC, private fallback3000, exact hosted authority
+none, attempts/cost0, no workflow triggered. No hosted dev update, release, deployment or version bump.
+
+Other side: Claude/macOS/`anthropic/mac` does not yet have these unmerged changes; **no need to open
+or sync Claude now**. Preserve `173c806` and review these durable packets Thursday, September10.
+Only after a future separately authorized exact develop merge should Claude fetch/merge
+origin/develop into its clean branch. No manual copies or messages to Claude. The campaign still
+ends September8 23:11:15Eastern; no extension and no recreated scheduled prompts.
+
 ## SESSION HANDOFF — 2026-09-08 · CIVET SHALLOW WATER AND ARTICULATED MOTION
 
 **Latest bounded result:** Nick identified the paws as standing in shallow water, asked to remove

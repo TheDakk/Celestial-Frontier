@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-09-09T02:39:10.302Z",
+  "pid": 24408,
+  "root": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-static-earth-local-20260908",
+  "url": "http://127.0.0.1:64179/?paintedlanding=1",
+  "sourceCommit": "acca36b469da2024a7112c3cdd426f351f6bd2f5",
+  "sourceState": "dirty-local-only",
+  "publishable": false,
+  "contentSha256": "473671306f100ece340e6e78ba2c7d2d9a5902103035c3ba2274e655dd41c0d5",
+  "manifestSha256": "ec101f05e7b8a351086db25bd3635712547aeb46925fdda7998c4638c1b43419"
+}
