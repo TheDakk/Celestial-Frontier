@@ -264,14 +264,20 @@ Dakk project is untouched; no copied third-party runtime assets.
 
 ### Next bounded work and paired handoff
 
-**Latest conditional direction:** Nick agrees with local on-demand generation only if it is
-feasible, uses modest storage and needs no separate AI software installation for players.
-No qualifying local model has been demonstrated or selected, and no model download is authorized.
-Nick asked for a recommendation: Codex proposes under100MB initial download and500MB app-managed
-steady-state storage, with no mandatory multi-GB model. That is not an accepted numerical budget,
-proven model size or changed128MiB shipped-pack gate. Safari WebGPU/storage policy was checked;
-real phone quality, timing, memory/heat and installed storage are still unqualified.
-[Requirements and primary sources](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
+**Latest conditional direction:** Nick agrees with local on-demand generation only if feasible,
+with manageable storage and no separate player AI installation. He now requests **adaptive**
+cache limits: lower on limited devices, several GB on capable Mac/Windows machines. Codex's
+provisional scene-cache ceilings are500MB conservative/1GB capable phone/2GB desktop/up to5GB
+player-selected, constrained by actual origin headroom. These decimal limits cover disposable
+encoded scenes, not total installation or RAM/GPU; model/build/save/protected originals/update
+staging still count toward total storage. Exact tiers and local-model feasibility remain unproved.
+At a cap, evict only eligible disposable copies; preserve active leases, pins, sole exact originals,
+full discoveries and progress. Pause new optional art if nothing eligible can make room. A seed
+alone does not guarantee exact AI pixels. Browser-origin eviction is a separate qualification.
+No adaptive cache, local model, download, benchmark or changed128MiB gate in this docs-only batch.
+[Requirements, source boundaries and cap policy](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
+The preceding requirements checkpoint is signed `e3974af8f79a607c1a057177567e6866b7a2b621`,
+45 ahead/0 behind cached upstream. Resolve the following documentation commit through Git.
 The signed display implementation is `3ee104f86c08973243cc8c8a21c1f9ebba41ae76`, signature verified,
 44 ahead/0 behind cached upstream. Its91-file batch is complete; do not repeat its passing tests.
 

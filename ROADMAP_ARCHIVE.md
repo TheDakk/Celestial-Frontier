@@ -1,3 +1,17 @@
+## 2026-09-08 — Superseded single storage-budget recommendation
+
+The following handoff paragraph is preserved verbatim. Nick subsequently requested adaptive
+cache allowances; ROADMAP and the current local-generation requirements own the new direction.
+
+**Latest conditional direction:** Nick agrees with local on-demand generation only if it is
+feasible, uses modest storage and needs no separate AI software installation for players.
+No qualifying local model has been demonstrated or selected, and no model download is authorized.
+Nick asked for a recommendation: Codex proposes under100MB initial download and500MB app-managed
+steady-state storage, with no mandatory multi-GB model. That is not an accepted numerical budget,
+proven model size or changed128MiB shipped-pack gate. Safari WebGPU/storage policy was checked;
+real phone quality, timing, memory/heat and installed storage are still unqualified.
+[Requirements and primary sources](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
+
 ## 2026-09-08 — Superseded export-permission and prepared-candidate handoff
 
 The following live handoff sections preceded the authorized lossless export and static landing

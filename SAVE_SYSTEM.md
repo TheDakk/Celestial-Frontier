@@ -1,5 +1,17 @@
 # Celestial Frontier — Save System
 
+## Adaptive art storage proposal — 2026-09-08, not implemented
+
+Nick prefers smaller scene caches on limited devices and several GB on capable desktops.
+Disk cache and live RAM/GPU limits are separate; exact numerical tiers remain provisional.
+[Current accounting and retention proposal](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md)
+requires protected discovery/genome/progress data and kept/shared exact originals outside art
+cache eviction, atomic pins/leases/reservations, total build/model/save/update accounting and
+refusal of new optional art when no eligible bytes remain. A seed alone cannot recover exact AI
+pixels. Existing save admission, transactions, recovery, disposable assetcache semantics and
+complete PWA build retention are unchanged. No adaptive cache or protected-image carrier exists
+from this documentation batch; browser persistence/eviction still needs separate qualification.
+
 ## V2 notification history — matches code as of 2026-09-06
 
 Nick authorized saved read/unread notifications as a narrow U1 amendment. The existing
