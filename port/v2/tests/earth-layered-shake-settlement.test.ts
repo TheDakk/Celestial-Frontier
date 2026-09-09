@@ -13,6 +13,7 @@ const begin = main.indexOf(START), end = main.indexOf(END);
 if (end <= begin) throw new Error('Camera-shake source boundaries are reversed');
 const owner = main.slice(begin, end);
 const EARTH = 'painted-earth-riverbank-v1';
+const STILL = 'painted-earth-civet-landing-v1';
 const REST_Y = 475.75;
 const TRANSIENT_TOP = 0.01222168374807;
 type Outcome = 'completed' | 'rejected';
@@ -38,6 +39,7 @@ function fixture(source = owner) {
   const state = {
     activeCameraShakes, app: { canvas }, currentCameraShakePolicy: () => policy,
     surfaceVistaArtVariant: EARTH as string | null, EARTH_LAYERED_SCENE_ID: EARTH,
+    PAINTED_EARTH_LANDING_ID: STILL,
     syncSurfaceVistaPresentation: vi.fn((): void => {
       syncStates.push({ active: activeCameraShakes.size, canvasTop: geometry.canvasTop,
         variant: state.surfaceVistaArtVariant });
@@ -73,6 +75,15 @@ describe('Earth layer settlement in the native camera-shake owner', () => {
     await f.settle(0, outcome);
     expect(f.state.syncSurfaceVistaPresentation).toHaveBeenCalledOnce();
     expect(f.syncStates).toEqual([{ active: 0, canvasTop: 0, variant: EARTH }]);
+    expect(() => assertRestingPair(f)).not.toThrow();
+  });
+
+  it.each(['completed', 'rejected'] as const)('re-measures the static Earth painting after the last impulse is %s', async outcome => {
+    const f = fixture(); f.state.surfaceVistaArtVariant = STILL; f.trigger();
+    expect(f.geometry.pairY).not.toBe(REST_Y);
+    await f.settle(0, outcome);
+    expect(f.state.syncSurfaceVistaPresentation).toHaveBeenCalledOnce();
+    expect(f.syncStates).toEqual([{ active: 0, canvasTop: 0, variant: STILL }]);
     expect(() => assertRestingPair(f)).not.toThrow();
   });
 
