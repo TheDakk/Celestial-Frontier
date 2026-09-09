@@ -292,8 +292,10 @@ parking-body edit remains unperformed. iCloud backup blockers above also remain 
 
 Signed/verified local checkpoints after9bf are `ceb107fdcf6f33f8d60cfd071fbea907a4bb68df`
 (audio/loader/browser proof) and `5dcd6e64801cf44c0c55da47c41fbcc9d8408e99` (Q8 optimization).
-This canonical-input batch follows them. Signing uses existing1Password IdentityAgent plus a
-command-scoped `/usr/bin/ssh-keygen`, no private-key export or persistent config. Q8 signing
+Canonical-input checkpoint `c430380fcec424b2d03c71afd9e12858086f77e0` is also signed/verified;
+branch3ahead/0behind origin/openai/mac after73files. Its first signing/verification both pass;
+exact receipt is preserved in the successor cache-planning batch. Signing uses existing1Password
+IdentityAgent plus command-scoped `/usr/bin/ssh-keygen`, no private-key export or persistent config. Q8 signing
 succeeded first try; its wrapper then incorrectly treated an inline public key as a.pub path.
 Corrected read-only signature verification passes; no commit retry/vault failure. See retained
 `q8-checkpoint-signing.json`. Ambient.DS_Store remains untouched; model bytes are Git-ignored.
@@ -346,3 +348,13 @@ genomes/lineage/biome authority and accepted UI placement. Do not infer these fr
 Full changed-head admission, SceneMemory quarantine, physical devices/HUMAN art/audio and all
 older verification blockers stay open. Finish each bounded batch with local signed work and
 current docs; fresh sessions read ROADMAP, PROCESS_LAWS, protocol and UI_TOOLCHAIN first.
+
+The next bounded storage work is a pure advisory scene-cache planner. It uses explicit provisional
+profiles and origin quota/usage/reservations, never RAM/device-name inference. Only verified exact
+surviving copies may be proposed for LRU eviction; sole originals, saves, recipes, models/builds,
+pins/leases/inflight entries stay protected. No deletion, migration, settings/UI or executor is
+part of this batch. Missing capacity/recovery evidence pauses optional admission. Implementation
+now passes24focused cases, all3V2 TS and rootvalidate on unchanged7-file inputs. Conflicting
+claims for one surviving copy are rejected; a sole candidate original needs separate protected
+retention. Device qualification and atomic cross-tab execution remain separate. No player-facing
+Guide/Training/release/version changes. [Contract and controls](audits/LOCAL_AV_AI_CONTINUATION_20260909/SCENE_CACHE_PLAN.md).

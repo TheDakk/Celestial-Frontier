@@ -135,3 +135,17 @@ product scope remains unresolved. The next implementation
 should prove one canonical scene against the quality/storage/resource constraints
 before widening art coverage; preserve exact worlds, full genomes/lineage, named
 Earth anatomy/botany, biome mapping, accepted UI, saves and gameplay clocks.
+
+
+## September9 implementation update — advisory only
+
+The preceding September8 proposal and its original document-only scope remain
+historical. A pure `planSceneImageCacheV1` owner now calculates admission for an
+already identified encoded variant using the provisional profiles and explicit
+origin accounting.24 focused controls, all3 V2 TypeScript programs and root
+validation pass. It proposes no removal when admission pauses, protects originals
+and all non-scene data, and requires a verified surviving exact copy. No automatic
+device classification, actual storage mutation or pre-generation admission exists.
+The local development model/cache and GPU measurements are separately recorded;
+these do not qualify phone delivery or change the128MiB game-pack limit.
+[Current planner contract and exact evidence](LOCAL_AV_AI_CONTINUATION_20260909/SCENE_CACHE_PLAN.md).

@@ -357,3 +357,19 @@ The snapshot checkpoint staged-whitespace check returns2 for blank final lines i
 two original raw logs (focused/typecheck); exact hashes and findings are retained
 in `snapshot-checkpoint-whitespace.json`. Those logs are not trimmed or relabeled
 PASS. The separately scoped non-audit/source whitespace check returns0.
+
+
+## Advisory scene cache planning
+
+The next local batch adds an unmounted pure planner for known encoded scene
+variants. It supports explicit provisional500MB/1GB/2GB profiles and desktop
+selection up to5GB, accounts for origin bytes once plus future margins/staging,
+and proposes deterministic LRU removals only with verified surviving exact copies.
+Sole originals, all non-scene data, pins, leases and in-flight entries are protected.
+Unknown estimates or insufficient eligible space pause admission without partial
+removal proposals. No storage I/O, UI setting, device detector or executor exists.
+[Contract and first verification](SCENE_CACHE_PLAN.md):24focused tests, all3V2 TS
+programs and rootvalidate PASS;7input hashes unchanged. Independent review's copy
+identity consistency finding was corrected before execution. No new failed run or
+retry. This does not close protected binary retention, cross-tab execution, device
+qualification, art acceptance or full changed-head admission.
