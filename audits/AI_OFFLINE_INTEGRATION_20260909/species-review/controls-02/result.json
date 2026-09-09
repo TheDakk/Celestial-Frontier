@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "label": "fidelity",
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/landfall-fidelity.test.ts"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "label": "typescript-root",
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "label": "typescript-game",
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "label": "typescript-worker",
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.worker.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "label": "root-validation",
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "args": [
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    }
+  ],
+  "sourcesUnchanged": true,
+  "changed": [],
+  "sourceCount": 906,
+  "browser": false,
+  "modelRun": false,
+  "unchangedRetry": false
+}

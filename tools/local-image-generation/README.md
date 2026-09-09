@@ -27,6 +27,12 @@ storage results do not qualify physical-phone installation or inference. See [th
 the [current species/mobile packet](../../audits/AI_SPECIES_MOBILE_20260909/README.md) and the
 [preserved initial integration packet](../../audits/AI_GAME_INTEGRATION_20260909/README.md).
 
+The detached fidelity owner now preserves V1 and adds a separately branded V2 contract for
+six ordered references and full resident identities, exact PNG/recipe bindings and explicit
+flora count. It records the retained V2 painting as species-rejected; it performs no pixel
+recognition, observer authentication or full-quality approval. The earlier run happened while
+the API was V1-only, and its original evidence remains unchanged. [Formal V2 review and controls](../../audits/AI_OFFLINE_INTEGRATION_20260909/species-review/README.md).
+
 ```sh
 node tools/with-toolchain-lock.mjs --label individual-species-native -- node tools/local-image-generation/run-game-integration.mjs --output=audits/NEW_SPECIES_ATTEMPT --species-references
 ```
@@ -119,6 +125,8 @@ static origin, exact MIME and COOP/COEP/CORP/nosniff headers, an HTTP outcome le
 It permits initial`/?localai=1`; unknown assets return404 with no HTML fallback. The optional native
 `run-mobile-model-delivery.mjs --pack=PATH --sha256=EXTERNAL_MOBILE_SHA --output=NEW_AUDIT_DIRECTORY`
 uses normal controls and an independently hashed loopback mirror of already present model bytes.
+Default mode performs delivery/readback and the module-only pre-GPU guard without inference;
+the separate explicit `--landfall` option described below also runs the local model offline.
 It does not ship a mirror or redirect player requests in the product. Root coordinates its
 one-attempt browser run after source freeze. Both full-model native01/02 receipts remain FAIL.
 Attempt01 installed all20 files but stopped before offline work after its hard reload bypassed
@@ -140,6 +148,41 @@ GPU/model work or inference occurred;12 measured sources stayed unchanged, zero 
 events/loading failures were recorded and cleanup completed. [Runner and failure history](../../audits/AI_SPECIES_MOBILE_20260909/MOBILE_NATIVE_RUNNER.md)
 keeps this bounded module result separate from native01/02 aggregate FAIL. The6.23GiB OPFS copy
 was not repeated solely for the module correction.
+
+The optional `--landfall` proof installs into a fresh diagnostic profile using native Install,
+Pause, normal reload and Resume. After closing both servers, it verifies all OPFS model bytes,
+checks native Blob readback and the actual worker-module reply, then drives ordinary canonical
+Earth Land. The helper requires the portable model (`q8Block32:false`), six references, real
+progress/ETA and responsive Notifications, followed by retained Ready, native Inspect/View and
+the same original ID/PNG digest after a normal offline reload and Survey inspection. It reads
+the already displayed Blob; no original is injected into storage. Model files can still require
+large ORT allocations. The 600-second stage timeout and 15-minute observation bound are not
+speed promises. Default mode remains free of inference.
+
+```sh
+node tools/with-toolchain-lock.mjs --label offline-landfall -- node tools/local-image-generation/run-mobile-model-delivery.mjs --pack=/private/tmp/cf-mobile-pack-20260909-species-03 --sha256=5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c --output=audits/NEW_OFFLINE_INTEGRATION --landfall
+```
+
+This command requires the same source freeze, shared locks and outside-Seatbelt native execution
+as other browser-owning commands. Preserve any failure before a changed attempt. Dedicated worker
+targets receive no debugger attachment; absent positive startup evidence during known inference
+sets `workerStartupEvidenceAvailable:false` and `noReloadInference:null`. Repeated same-original,
+same-route and zero-job observations support only `noReloadJobObserved`, while any observed new
+startup after reload fails. [Current native outcome and first-failure diagnosis](../../LOCAL_AI_GENERATION.md)
+keep this new offline-inference attempt separate from prior delivery-only runs and the
+[independent runner review](../../audits/AI_OFFLINE_INTEGRATION_20260909/runner-review.md).
+
+Actual offline-integration native02 is **aggregate FAIL**. The 20-file installation used real
+Pause/reload/Range Resume; the measured Resume-to-ready interval from the local mirror was
+103.635 seconds. True offline normal-game rehash took 79.326 seconds.
+Native Blob readback, module guard, durable Land and early Notifications responsiveness passed.
+All six reference encodings completed, and Drawing appeared at 31.706 seconds after Land. The
+unchanged 600-second stage limit then expired before a completed denoise step, ETA or PNG; Ready,
+Inspect/View and post-generation reload were not reached. `modelExecutionAttempted:true` with
+`modelExecuted:false` records that missing completed-denoise observation, not no model work.
+The failure screenshot also timed out. All 31 measured sources and final package verification
+remained unchanged, and owned resources closed. Native01's live-inventory failure is preserved;
+no unchanged retry, new model, package or timeout adjustment followed this native02 failure.
 Physical iPhone/Safari/PWA/CDN delivery, thermals and inference latency remain separate gates.
 Existing model/source/phone and species-quality blockers persist. Native runtime source-version correspondence is corroborated
 by embedded commit and matching notices; selected-component SBOM/reproduced-build and complete

@@ -4,7 +4,7 @@ import test from 'node:test';
 import {compileNativeDeliveryDiagnostic} from './compile-delivery-diagnostic.mjs';
 import {createHash} from 'node:crypto';
 import {PINNED_LOCAL_MODEL_MANIFEST_V1 as model} from '../../port/v2/apps/game/src/local-model-manifest.ts';
-import {assessNativeController,assessNativeReadback} from './run-mobile-model-delivery.mjs';
+import {assessNativeController,assessNativeReadback,readNativeCommittedPrefix} from './run-mobile-model-delivery.mjs';
 const expected=model.files.map((file,index)=>({...file,headSha256:createHash('sha256').update('synthetic-head-'+index).digest('hex'),tailSha256:createHash('sha256').update('synthetic-tail-'+index).digest('hex')}));
 const fixture=()=>({status:{ready:true,phase:'ready',error:null,totalBytes:model.totalBytes,verifiedBytes:model.totalBytes,verifiedFiles:model.files.length,totalFiles:model.files.length,manifestSha256:createHash('sha256').update(JSON.stringify(model)).digest('hex')},files:structuredClone(expected)});
 test('admits complete ordered synthetic counterpart only; no native inference claim',()=>{assert.doesNotThrow(()=>assessNativeReadback(fixture(),expected));});
@@ -33,4 +33,26 @@ test('rejects uncontrolled, stale-document, substituted-script and wrong-origin 
   for(const mutant of [null,{controlled:false},{controllerState:'activating'},{controllerScriptURL:origin+'/other-worker.js'},
     {controllerScriptURL:origin+'/service-worker.js?stale=1'},{origin:'http://127.0.0.1:54322'},{documentToken:''},{documentToken:'previous-document'}])
     assert.throws(()=>assessNativeController(mutant===null?null:{...controllerFixture(),...mutant},origin,'previous-document'));
+});
+
+const markerSha='a'.repeat(64);
+function prefixRoot({size=1048576,marker={schema:'cf.local-model-attempt.v1',manifestSha256:markerSha,attemptId:'native-attempt'},error=null}={}){
+  const attempt={async getFileHandle(name){assert.equal(name,'f0-c3');if(error)throw error;return {async getFile(){return {size};}};}};
+  const directory={async getFileHandle(name){assert.equal(name,'active-'+markerSha+'.json');return {async getFile(){return new Blob([JSON.stringify(marker)]);}};},
+    async getDirectoryHandle(name){assert.equal(name,'native-attempt');return attempt;}};
+  return {async getDirectoryHandle(name){assert.equal(name,'cf-local-model-delivery-v1');return directory;}};
+}
+test('live prefix waits for only the exact committed chunk, without directory enumeration',async()=>{
+  assert.deepEqual(await readNativeCommittedPrefix(prefixRoot(),markerSha),{attemptId:'native-attempt',chunk:'f0-c3',bytes:1048576});
+  assert.equal(await readNativeCommittedPrefix(prefixRoot({size:0}),markerSha),null);
+  assert.equal(await readNativeCommittedPrefix(prefixRoot({error:new DOMException('not yet committed','NotFoundError')}),markerSha),null);
+  assert.deepEqual(await readNativeCommittedPrefix(prefixRoot(),markerSha),{attemptId:'native-attempt',chunk:'f0-c3',bytes:1048576});
+});
+test('live prefix refuses corrupt marker/chunk and propagates unrelated storage errors',async()=>{
+  for(const marker of [{schema:'wrong',manifestSha256:markerSha,attemptId:'native-attempt'},
+    {schema:'cf.local-model-attempt.v1',manifestSha256:'b'.repeat(64),attemptId:'native-attempt'},
+    {schema:'cf.local-model-attempt.v1',manifestSha256:markerSha,attemptId:'../foreign'}])
+    await assert.rejects(readNativeCommittedPrefix(prefixRoot({marker}),markerSha));
+  await assert.rejects(readNativeCommittedPrefix(prefixRoot({size:5}),markerSha));
+  await assert.rejects(readNativeCommittedPrefix(prefixRoot({error:new DOMException('refused','NotAllowedError')}),markerSha),{name:'NotAllowedError'});
 });

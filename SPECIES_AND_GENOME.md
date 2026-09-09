@@ -18,10 +18,26 @@ records visible diagnostic features and occlusions; the image assignment does no
 genomic traits are visible. Whole-image references are soft guidance, not hard species/count or
 spatial constraints. The first actual V2 output has a [manual review bound to the exact PNG and
 six full identities](audits/AI_SPECIES_MOBILE_20260909/native-generation-01/INDEPENDENT_VISUAL_REVIEW.md);
-`landfall-fidelity.ts` remains V1-only. Three distinct animal bodies are visible, but the Platypus
-body plan, Devil's Club cane spines, Persimmon calyx detail, Cranberry runner habit and several
-placements remain unaccepted. The source genomes/anchors are preserved; image conditioning did
-not enforce them. No phone, universal species or whole-scene art acceptance follows.
+the detached fidelity API admitted V1 only when that historical run occurred. Its additive V2
+contract now binds the exact PNG, canonical recipe, all nineteen genomes, six full identities
+and ordered reference hashes/geometry, including reference identity on each reported resident.
+V1 and V2 contracts remain distinct. An explicit flora-count outcome prevents unresolved
+interwoven motifs from silently becoming three confirmed plant individuals. Actual bytes and
+visual observations still require an external reviewer; the code recognizes no pixels and
+authenticates no observer. All assessments leave semantic verification and full quality false.
+
+The retained painting is now [formally species-rejected](audits/AI_OFFLINE_INTEGRATION_20260909/species-review/README.md).
+Three distinct animal bodies are visible, but the Platypus body plan, Devil's Club cane spines,
+Persimmon calyx detail, Cranberry runner habit, flora count and several placements remain
+unaccepted. The source genomes/anchors are preserved; image conditioning did not enforce them.
+The original native aggregate FAIL is unchanged. No phone, universal species or whole-scene
+art acceptance follows. The new optional offline Land proof also uses only canonical epoch-0
+Earth; it does not widen this taxonomy boundary or change flora effects or Compendium ownership.
+Its actual native02 run completed installed-model/offline checks and all six reference encodings,
+then reached Drawing at 31.706 seconds and timed out under the unchanged 600-second stage limit
+before any completed denoise step or new PNG. It remains aggregate FAIL and adds no species-quality
+approval. The successful storage/module/Land scopes are separate from unfinished image production
+and retained-original/reload verification.
 [Current AI ownership and quality boundary](LOCAL_AI_GENERATION.md).
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
