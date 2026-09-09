@@ -1,0 +1,27 @@
+{
+  "startedAt": "2026-09-09T14:05:15.981283+00:00",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "local-model-delivery-controls-corrected",
+    "--",
+    "node",
+    "port/v2/node_modules/vitest/vitest.mjs",
+    "run",
+    "--root",
+    "port/v2",
+    "tests/local-model-delivery.test.ts",
+    "tests/local-model-sha256.test.ts"
+  ],
+  "sources": {
+    "port/v2/apps/game/src/local-model-delivery.ts": "1754f0f127cdf550ffc5956e5daac4cc3c4bde829175b3e73ca04abbb7d16ea8",
+    "port/v2/apps/game/src/local-model-sha256.ts": "783905b7f23d1d6355d61e196eb2ebc332e7cebfe37236aa271cfed1318db677",
+    "port/v2/apps/game/src/local-model-manifest.ts": "398dd13f6dc6a764a9903782a1000305ee99a1a9dc3d1ad57292a2c27dfee0c6",
+    "port/v2/tests/local-model-delivery.test.ts": "82945c783ddcc1a0a2fec64278b60d4b95dc1ac4e91987e3f9d66ebc92836fa4",
+    "port/v2/tests/local-model-sha256.test.ts": "e3e923786a322b9126e4bcbc713e959854586b64757ccd49b56e02a29af2afff"
+  },
+  "exitCode": 0,
+  "finishedAt": "2026-09-09T14:05:18.963166+00:00",
+  "sourcesUnchanged": true
+}

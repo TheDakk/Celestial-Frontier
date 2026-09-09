@@ -1,0 +1,33 @@
+{
+  "schema": "cf.ai-game-native-comparison.v1",
+  "first": {
+    "status": "FAIL",
+    "resultSha256": "06cc18575b56f17a346a1f984d5f6a20aeefbf60fc5c57bbd944188bbefb1439",
+    "durationMs": 74046.801917,
+    "pngSha256": "84157cb2afca7ca869b90b4d3dd0bf1a82499c515756f8bab14e38b05f09230d",
+    "promptTokens": 376,
+    "qualityAccepted": false,
+    "observerFailure": "Resize sampled viewport before async same-original remount; finalLocalAi.mounted was true"
+  },
+  "second": {
+    "status": "PASS",
+    "resultSha256": "635a01b56535c686e4a54f9bcac11b9beae8cc413aa03593e2b90e18b9a1fcda",
+    "durationMs": 74307.057167,
+    "pngSha256": "aebec1c3b9cf9bb3761ff0178d77b7d525aa7683d5ee5f448408a5f0949fd7e5",
+    "promptTokens": 472,
+    "qualityAccepted": false,
+    "changes": [
+      "Explicit three-body/reference-exclusivity prose",
+      "Existing game palette on preview buttons/progress",
+      "Resize observer waits for same original, quiescent work and stable frames"
+    ]
+  },
+  "notClaimed": [
+    "reliable speedup",
+    "accepted species or botanical fidelity",
+    "physical mobile inference or full model installation",
+    "small-screen art legibility",
+    "shipped runtime/model distribution",
+    "full profile or certificate admission"
+  ]
+}

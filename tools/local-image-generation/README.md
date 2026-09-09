@@ -10,6 +10,15 @@ Each stage owns a fresh worker, and the parent terminates it before proceeding. 
 timeouts, model/data corruption, nonfinite tensors and GPU errors stop the run. There is no remote
 inference API, login, fallback generation or player setup flow in this proof.
 
+## Normal-game preview
+
+`game-preview-server.mjs` now serves the ordinary game with `?localai=1`, an exact verified
+local model cache and the same browser inference worker. `run-game-integration.mjs` exercises
+trusted Land → progress while playing → durable original → Notifications/View → reload. The
+server performs no inference or downloads. This is development tooling; runtime distribution,
+full mobile installation and output quality remain unqualified. See [the current owner reference](../../LOCAL_AI_GENERATION.md)
+and the [integration packet](../../audits/AI_GAME_INTEGRATION_20260909/README.md).
+
 ## Pinned inputs
 
 - `model-manifest.json`: exact20 runtime model files6,691,020,416 bytes plus7,792-byte model README.

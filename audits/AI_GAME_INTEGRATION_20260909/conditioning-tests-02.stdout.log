@@ -1,0 +1,25 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > compiles all six exact residents from the actual game authority and retained full19 source 10ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > uses full species identity rather than seed/name or a reduced anatomy record 4ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > preserves accepted placements and left-facing Platypus without deriving size from random Earth genes 2ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > emits defining Earth anatomy/botany and explicit substitution exclusions 2ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > does not turn raw Earth limb/eye/color genes into the named body plan 2ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > requires a reviewed exact Platypus image in slot1 without declaring references or art accepted 2ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > preserves deterministic canonical recipe bytes across normal/null-prototype transport 4ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > deep-freezes detached output while preserving source data untouched 4ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > refuses schema or recipe versions it does not own 3ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > rejects all changed resident genomes, even with preserved seed/name/fingerprints 5ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > rejects nondisplayed full-roster changes, order changes, hidden omissions and lineage additions 6ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > refuses unknown names or taxonomy rather than substituting generic species 4ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > refuses changed placement/weather/environment and unsupported envelope data 8ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > never upgrades transported data to live game authority or widens world/epoch support 2ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > does not invoke hostile input getters/serialization hooks and refuses bounded-data violations 6ms
+ ✓ tests/landfall-conditioning.test.ts > source-driven Earth landfall conditioning; no model or image acceptance > compilation consults no ambient random or wall clock 3ms
+
+ Test Files  1 passed (1)
+      Tests  16 passed (16)
+   Start at  10:08:04
+   Duration  353ms (transform 166ms, setup 0ms, import 209ms, tests 70ms, environment 0ms)
+

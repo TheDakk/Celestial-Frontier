@@ -18,6 +18,8 @@ const owners = [
   section('function releaseSurfaceVistaOwner(', '\nfunction releaseSurfaceVistaCache('),
   section('function syncSurfaceVistaPresentation(', '\nfunction mountSurfaceVistaCanvas('),
   section('function mountEarthLayeredCanvases(', '\nfunction requestSurfaceVista('),
+  section('function stopPendingAiVistaWork(', '\nasync function mountLocalAiOriginal('),
+  section('async function mountLocalAiOriginal(', '\nfunction restoreCurrentAiLandfall('),
 ].join('\n');
 const PAIR = 'painted-earth-riverbank-v1', STILL = 'painted-earth-civet-landing-v1';
 type Canvas = { width: number; height: number };
@@ -57,6 +59,7 @@ function fixture(source = owners) {
     Sprite: Display, Texture: { EMPTY }, nav: { mode: 'surface' },
     app: { stage, screen: { height: 844 } }, world,
     EARTH_LAYERED_SCENE_ID: PAIR, PAINTED_EARTH_LANDING_ID: STILL,
+    LOCAL_AI_LANDFALL_ID: 'cf-local-ai-landfall-v1',
     PAINTED_MARS_VISTA_ID: 'painted-mars-dunesea-v1',
     currentEarthLayeredLayout: () => ({ scale: .4, centerX: 195, centerY: 280 }),
     surfClouds: { a: { parent: cloud } },
@@ -72,6 +75,9 @@ function fixture(source = owners) {
     surfaceVistaDeadline: null, surfaceVistaWorker: null,
     audiovisualPilotVistaReady: false,
     clearTimeout: vi.fn(), retireEarthLayerResourcesV1,
+    currentAiLandfallInput: () => ({ worldKey: 'canonical', environmentId: 'canonical', ecologyEpoch: 0, snapshotDigest: 'snapshot' }),
+    createImageBitmap: vi.fn(async () => ({ width: 1024, height: 576, close: vi.fn() })),
+    document: { createElement: vi.fn(() => ({ width: 1, height: 1, getContext: () => ({ drawImage: vi.fn() }) })) },
     noteSurfaceVistaFault: (error: unknown) => faults.push(error),
     sceneTextureLease: (backing: Canvas): Lease => {
       const id = leases.length;
@@ -84,9 +90,10 @@ function fixture(source = owners) {
   };
   const compiled = transformSync('main-earth-owners.ts', source);
   if (compiled.errors.length) throw new Error(JSON.stringify(compiled.errors));
-  const api = runInNewContext(compiled.code + '\n({mount:mountEarthLayeredCanvases,release:releaseSurfaceVistaOwner});', state) as {
+  const api = runInNewContext(compiled.code + '\n({mount:mountEarthLayeredCanvases,release:releaseSurfaceVistaOwner,mountAi:mountLocalAiOriginal});', state) as {
     mount(background: Canvas, residents: Canvas | null, variant: string): boolean | 'retained-failure';
     release(): void;
+    mountAi(original: { blob: unknown; width: number; height: number; input: Record<string, unknown> }): Promise<boolean>;
   };
   return { state, stage, world, globe, cloud, leases, blocked, faults, api };
 }
@@ -106,7 +113,7 @@ function assertRetained(f: ReturnType<typeof fixture>, backing: Canvas): void {
 }
 
 describe('actual main Earth mount and retirement transactions', () => {
-  it.each([STILL, PAIR])('publishes and fully retires %s with the actual one/two canvas count', variant => {
+  it.each([STILL, PAIR, 'cf-local-ai-landfall-v1'])('publishes and fully retires %s with the actual one/two canvas count', variant => {
     const f = fixture(), background = canvas(), resident = variant === PAIR ? canvas() : null;
     const canvases = resident ? [background, resident] : [background];
     expect(f.api.mount(background, resident, variant)).toBe(true);
@@ -114,7 +121,7 @@ describe('actual main Earth mount and retirement transactions', () => {
     expect(f.state.surfaceEarthLayeredResources.map(entry => entry.canvas)).toEqual(canvases);
     const displays = f.state.surfaceEarthLayeredResources.map(entry => entry.sprite!);
     expect(displays.map(value => value.label)).toEqual(resident
-      ? ['earth-painted-background', 'earth-canonical-residents'] : ['earth-painted-landing-still']);
+      ? ['earth-painted-background', 'earth-canonical-residents'] : [variant === 'cf-local-ai-landfall-v1' ? 'local-ai-landfall-still' : 'earth-painted-landing-still']);
     expect(displays.every(value => value.parent === f.stage && value.eventMode === 'none')).toBe(true);
     expect(f.state.surfaceEarthResidentSprite).toBe(resident ? displays[1] : null);
     expect(f.globe.visible).toBe(false); expect(f.cloud.visible).toBe(false);
@@ -150,6 +157,94 @@ describe('actual main Earth mount and retirement transactions', () => {
     expect(() => assertRetired(f, resident ? [background, resident] : [background], [retiredDisplay])).not.toThrow();
     expect(f.leases[0]!.release).toHaveBeenCalledTimes(2);
     expect(f.stage.children).toEqual([f.world]);
+  });
+
+  it('mounts an AI replacement before retiring the previous painting and stops pending publishers', async () => {
+    const f = fixture(), previous = canvas(); expect(f.api.mount(previous, null, STILL)).toBe(true);
+    const oldDisplay = f.state.surfaceVistaSprite!;
+    const worker = { terminate: vi.fn() }, load = { dispose: vi.fn(), snapshot: vi.fn(() => ({ status: 'disposed' })) };
+    Object.assign(f.state, { surfaceVistaWorker: worker, surfaceVistaDeadline: 42, surfacePaintedVistaLoad: load });
+    const original = { blob: {}, width: 1024, height: 576,
+      input: { worldKey: 'canonical', environmentId: 'canonical', ecologyEpoch: 0, snapshotDigest: 'snapshot', recipeKey: 'old-model-mode' } };
+    expect(await f.api.mountAi(original)).toBe(true);
+    expect(worker.terminate).toHaveBeenCalledOnce(); expect(load.dispose).toHaveBeenCalledOnce();
+    expect(f.state.clearTimeout).toHaveBeenCalledWith(42); expect(f.state.surfaceVistaGeneration).toBe(3);
+    expect(oldDisplay.destroyed).toBe(true); expect(f.leases[0]!.released).toBe(true);
+    expect(previous).toEqual({ width: 1, height: 1 });
+    expect(f.state.surfaceEarthLayeredResources).toHaveLength(1);
+    expect(f.state.surfaceVistaSprite!.label).toBe('local-ai-landfall-still');
+    expect(f.state.surfaceVistaArtVariant).toBe('cf-local-ai-landfall-v1');
+    expect(f.globe.visible).toBe(false); expect(f.cloud.visible).toBe(false);
+  });
+
+  it.each(['insert', 'layout', 'late-sync'])('preserves the old painted display when AI %s publication fails', async failure => {
+    const f = fixture(), previous = canvas(); expect(f.api.mount(previous, null, STILL)).toBe(true);
+    const oldDisplay = f.state.surfaceVistaSprite!, oldEntry = f.state.surfaceEarthLayeredResources[0]!;
+    if (failure === 'insert') f.stage.failAt = f.stage.adds + 1;
+    else {
+      const layout = f.state.currentEarthLayeredLayout; let reads = 0;
+      f.state.currentEarthLayeredLayout = () => {
+        if (++reads === (failure === 'layout' ? 1 : 2)) throw Error('injected AI layout failure');
+        return layout();
+      };
+    }
+    const original = { blob: {}, width: 1024, height: 576,
+      input: { worldKey: 'canonical', environmentId: 'canonical', ecologyEpoch: 0, snapshotDigest: 'snapshot' } };
+    expect(await f.api.mountAi(original)).toBe(false);
+    expect(f.state.surfaceVistaSprite).toBe(oldDisplay); expect(f.state.surfaceVistaArtVariant).toBe(STILL);
+    expect(oldDisplay.parent).toBe(f.stage); expect(oldDisplay.destroyed).toBe(false); expect(oldDisplay.visible).toBe(true);
+    expect(f.leases[0]!.released).toBe(false); expect(previous).toEqual({ width: 960, height: 430 });
+    expect(f.state.surfaceEarthLayeredResources).toContain(oldEntry);
+    expect(f.globe.visible).toBe(false); expect(f.cloud.visible).toBe(false);
+    expect(f.faults.length).toBeGreaterThan(0);
+  });
+
+  it('rejects premature old-art retirement with the same retained-display outcome', async () => {
+    const seam = '    stopPendingAiVistaWork();'; expect(owners.split(seam)).toHaveLength(2);
+    const original = { blob: {}, width: 1024, height: 576,
+      input: { worldKey: 'canonical', environmentId: 'canonical', ecologyEpoch: 0, snapshotDigest: 'snapshot' } };
+    const retained = (f: ReturnType<typeof fixture>, old: Display, backing: Canvas): void => {
+      if (f.state.surfaceVistaSprite !== old || old.parent !== f.stage || old.destroyed
+        || f.state.surfaceVistaArtVariant !== STILL || f.leases[0]!.released
+        || backing.width !== 960 || backing.height !== 430) throw Error('Previous painting was retired before replacement');
+    };
+    for (const broken of [false, true, false]) {
+      const f = fixture(broken ? owners.replace(seam, '    releaseSurfaceVistaOwner();') : owners);
+      const backing = canvas(); expect(f.api.mount(backing, null, STILL)).toBe(true);
+      const old = f.state.surfaceVistaSprite!; f.stage.failAt = f.stage.adds + 1;
+      expect(await f.api.mountAi(original)).toBe(false);
+      if (broken) expect(() => retained(f, old, backing)).toThrow('Previous painting was retired');
+      else expect(() => retained(f, old, backing)).not.toThrow();
+    }
+  });
+
+  it('keeps a failed successor lease while restoring the old painting and later retires both', async () => {
+    const f = fixture(), previous = canvas(); expect(f.api.mount(previous, null, STILL)).toBe(true);
+    const oldDisplay = f.state.surfaceVistaSprite!; f.stage.failAt = f.stage.adds + 1; f.blocked.add(1);
+    expect(await f.api.mountAi({ blob: {}, width: 1024, height: 576,
+      input: { worldKey: 'canonical', environmentId: 'canonical', ecologyEpoch: 0, snapshotDigest: 'snapshot' } })).toBe(false);
+    expect(f.state.surfaceVistaSprite).toBe(oldDisplay); expect(oldDisplay.parent).toBe(f.stage);
+    expect(f.state.surfaceEarthLayeredResources).toHaveLength(2);
+    expect(f.state.surfaceEarthLayeredResources[1]!.canvas.width).toBe(1024);
+    expect(f.leases[1]!.released).toBe(false);
+    f.blocked.clear(); f.api.release();
+    expect(f.state.surfaceEarthLayeredResources).toHaveLength(0);
+    expect(f.leases.every(lease => lease.released)).toBe(true);
+  });
+
+  it('refuses a stale decoded bitmap without replacing or retiring existing art', async () => {
+    const f = fixture(), previous = canvas(); expect(f.api.mount(previous, null, STILL)).toBe(true);
+    const oldDisplay = f.state.surfaceVistaSprite!;
+    type Bitmap = Awaited<ReturnType<typeof f.state.createImageBitmap>>;
+    let resolve!: (bitmap: Bitmap) => void;
+    const pending = new Promise<Bitmap>(yes => { resolve = yes; });
+    f.state.createImageBitmap.mockReturnValueOnce(pending);
+    const mounting = f.api.mountAi({ blob: {}, width: 1024, height: 576,
+      input: { worldKey: 'canonical', environmentId: 'canonical', ecologyEpoch: 0, snapshotDigest: 'snapshot' } });
+    f.state.surfaceVistaGeneration++; const bitmap = { width: 1024, height: 576, close: vi.fn() }; resolve(bitmap);
+    expect(await mounting).toBe(false); expect(bitmap.close).toHaveBeenCalledOnce();
+    expect(f.state.surfaceVistaSprite).toBe(oldDisplay); expect(f.leases[0]!.released).toBe(false);
+    expect(previous.width).toBe(960); expect(oldDisplay.parent).toBe(f.stage);
   });
 
   it('rejects early canvas shrinking and omitted retirement with the same ownership outcome rulers', () => {

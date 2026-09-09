@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/local-model-delivery.test.ts (14 tests | 1 failed) 2390ms
+     × refuses excess bytes and an ignored resumed Range with no partial ready publication 33ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/local-model-delivery.test.ts > explicit browser model delivery: synthetic OPFS-shaped controls, no weights downloaded > refuses excess bytes and an ignored resumed Range with no partial ready publication
+AssertionError: expected null to be 'invalid-range-response' // Object.is equality
+
+- Expected:
+"invalid-range-response"
+
++ Received:
+null
+
+ ❯ tests/local-model-delivery.test.ts:141:70
+    139|     const f = fixture([bytes(C + 17)]); f.mode('excess');
+    140|     expect((await f.make().install()).error).toBe('excess-file-bytes')…
+    141|     f.mode('ignore-range'); expect((await f.make().install()).error).t…
+       |                                                                      ^
+    142|     expect(readyMarkers(f.disk)).toEqual([]);
+    143|     f.mode('good'); expect((await f.make().install()).ready).toBe(true…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 31 passed (32)
+   Start at  10:04:10
+   Duration  2.53s (transform 62ms, setup 0ms, import 86ms, tests 2.58s, environment 0ms)
+

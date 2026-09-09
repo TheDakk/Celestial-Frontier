@@ -40,6 +40,7 @@ function setup() {
     getProvenStarKey: (value: string) => value,
     getProvenPlanetKey: (value: string) => value,
     tameGreetingAudioOwner: { syncRoute: vi.fn() },
+    queueCurrentAiLandfall: vi.fn(),
   };
   const run = runInNewContext(`${executable}\nlandWithPilotPresentation;`, state) as (trusted: boolean) => Promise<boolean>;
   const publish = (): void => {
@@ -55,6 +56,29 @@ describe('native Landing audiovisual publication', () => {
   it('uses the native event through the actual card handler and keeps the keyboard outcome', () => {
     expect(source).toContain("} else if (a === 'landcta') {\n    const landed = await landWithPilotPresentation(e.isTrusted);");
     expect(source).toContain("if (landed && keyboard) card.querySelector<HTMLElement>('[data-act=\"leaveworld\"]')?.focus();");
+  });
+  it('queues local AI after the ordinary durable landing even without an audio pilot', async () => {
+    const s = setup(); s.state.audiovisualPilot = null;
+    const result = s.run(true); expect(s.state.queueCurrentAiLandfall).not.toHaveBeenCalled();
+    s.publish(); s.resolve(true); expect(await result).toBe(true);
+    expect(s.state.queueCurrentAiLandfall).toHaveBeenCalledOnce();
+    expect(s.finish).not.toHaveBeenCalled();
+  });
+  it.each(['untrusted', 'refused', 'unpublished', 'wrong-world', 'replaced-runtime', 'training', 'held-route'])('does not queue AI for %s landings', async reason => {
+    const s = setup(); s.state.audiovisualPilot = null;
+    const result = s.run(reason !== 'untrusted'); s.publish();
+    if (reason === 'unpublished') s.state.lastArc0LandingOutcome = 'committed-publication-reload';
+    if (reason === 'wrong-world') s.state.renderedSceneReceipt.worldKey = 'elsewhere';
+    if (reason === 'replaced-runtime') s.state.f4Runtime = { revision: 11 };
+    if (reason === 'training') s.state.trainingActive.mockReturnValue(true);
+    if (reason === 'held-route') s.state.savedRouteWriteHeld = true;
+    s.resolve(reason !== 'refused'); await result;
+    expect(s.state.queueCurrentAiLandfall).not.toHaveBeenCalled();
+  });
+  it('does not let an optional AI enqueue failure undo a durable landing', async () => {
+    const s = setup(); s.state.queueCurrentAiLandfall.mockImplementation(() => { throw Error('full'); });
+    const result = s.run(true); s.publish(); s.resolve(true);
+    expect(await result).toBe(true); expect(s.finish).toHaveBeenCalledWith(s.snapshot);
   });
   it('captures before persistence, then finishes exactly once only after durable scene publication', async () => {
     const s = setup(); const result = s.run(true);

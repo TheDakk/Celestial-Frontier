@@ -1,0 +1,206 @@
+[
+  {
+    "path": "port/v2/apps/game/src/main.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/main.ts",
+    "bytes": 865676,
+    "sha256": "8c3267940296d8c78e43d7cf548ebc5f0369d6a1e2c8b08158221b328e135d0a"
+  },
+  {
+    "path": "port/v2/apps/game/index.html",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/index.html",
+    "bytes": 67200,
+    "sha256": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f"
+  },
+  {
+    "path": "port/v2/apps/game/vite.config.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/vite.config.ts",
+    "bytes": 1043,
+    "sha256": "417c3878a7256ffea85d4321e459f944fcdfdc979f724f063df6b0e52d0efda0"
+  },
+  {
+    "path": "port/v2/apps/game/src/local-ai-game.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-ai-game.ts",
+    "bytes": 10945,
+    "sha256": "155c483a9c30e07a872a7c703d5fad006c570952b936e74f1d719a4351f6927b"
+  },
+  {
+    "path": "port/v2/apps/game/src/local-ai-runtime.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-ai-runtime.ts",
+    "bytes": 10009,
+    "sha256": "827cb9fa48d0e1a4e7367c484a7ef9cbe9f62f4b1585dd4c0df528c003dcbdef"
+  },
+  {
+    "path": "port/v2/apps/game/src/ai-landfall-jobs.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/ai-landfall-jobs.ts",
+    "bytes": 8016,
+    "sha256": "2de3efd298b331ece5b0ec7c8c1095745f65c20899e95c260027587e37a4b5d7"
+  },
+  {
+    "path": "port/v2/apps/game/src/ai-landfall-originals.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/ai-landfall-originals.ts",
+    "bytes": 10148,
+    "sha256": "3e5b972b023c895c5f9c5ce44ce727b0150d5fb5fcaa37fb05729ed010061011"
+  },
+  {
+    "path": "port/v2/apps/game/src/local-model-delivery.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-model-delivery.ts",
+    "bytes": 23791,
+    "sha256": "1754f0f127cdf550ffc5956e5daac4cc3c4bde829175b3e73ca04abbb7d16ea8"
+  },
+  {
+    "path": "port/v2/apps/game/src/local-model-sha256.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-model-sha256.ts",
+    "bytes": 5162,
+    "sha256": "783905b7f23d1d6355d61e196eb2ebc332e7cebfe37236aa271cfed1318db677"
+  },
+  {
+    "path": "port/v2/apps/game/src/local-model-manifest.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-model-manifest.ts",
+    "bytes": 3866,
+    "sha256": "398dd13f6dc6a764a9903782a1000305ee99a1a9dc3d1ad57292a2c27dfee0c6"
+  },
+  {
+    "path": "port/v2/apps/game/src/landfall-conditioning.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/landfall-conditioning.ts",
+    "bytes": 13817,
+    "sha256": "0c6e58b4515b0350481533bcff33809297f3d8865f71512ced052f2ba0707486"
+  },
+  {
+    "path": "port/v2/apps/game/src/world-roster.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/world-roster.ts",
+    "bytes": 24167,
+    "sha256": "0e071ec4c355cb354db6031eb94c98bfaa008c4f9ef2485670b41d376fa4830f"
+  },
+  {
+    "path": "port/v2/apps/game/src/product-action-coordinator.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/product-action-coordinator.ts",
+    "bytes": 4953,
+    "sha256": "127473d368065aaba8d69ba5e75bd25a30e3b50661426ec43f68a26943257a36"
+  },
+  {
+    "path": "port/v2/apps/game/src/training.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/training.ts",
+    "bytes": 35347,
+    "sha256": "8e524f48487a205219d119eae2fc51355b99e6b01d73f0639fb43fddc1b7fa84"
+  },
+  {
+    "path": "port/v2/apps/game/pwa-build.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/pwa-build.ts",
+    "bytes": 29323,
+    "sha256": "60c470218a76c6d694348b4bc4090e65795fb7408c0296a381086f4130d097fc"
+  },
+  {
+    "path": "port/v2/apps/game/src/landfall-appearance-snapshot.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/landfall-appearance-snapshot.ts",
+    "bytes": 4931,
+    "sha256": "94d97e8716cfb28d6108583a781116122c1693859c6ac0b32ce5148571d68a69"
+  },
+  {
+    "path": "port/v2/apps/game/src/earth-layered-recipe.ts",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/earth-layered-recipe.ts",
+    "bytes": 15885,
+    "sha256": "ab1fd02bd9a125a07f4a2abc671658cae3d94b5368bf3c226f5b1fc46e1fb824"
+  },
+  {
+    "path": "tools/local-image-generation/run-game-integration.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/run-game-integration.mjs",
+    "bytes": 26468,
+    "sha256": "766af11ffa817934a758b507b82d7fb56da9dfae8c4188184906a6acf2d49e22"
+  },
+  {
+    "path": "tools/local-image-generation/game-preview-server.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/game-preview-server.mjs",
+    "bytes": 15334,
+    "sha256": "7cb8ce9b5511eca92fa5fbeeeeaabdcc6bbde883cb74f6769200b61ac5fdd031"
+  },
+  {
+    "path": "tools/local-image-generation/stage-worker.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/stage-worker.mjs",
+    "bytes": 11212,
+    "sha256": "337aaea3f7f9804a4409887367b922ed68e02a8ee3dc7f0c859c913dfa52d8ac"
+  },
+  {
+    "path": "tools/local-image-generation/pipeline-math.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/pipeline-math.mjs",
+    "bytes": 10225,
+    "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+  },
+  {
+    "path": "tools/local-image-generation/denoiser-shapes.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/denoiser-shapes.mjs",
+    "bytes": 2370,
+    "sha256": "c66850a4d3564e6336a2d5891152c2120d2847dcef87782d5197aae102e8f6d6"
+  },
+  {
+    "path": "tools/local-image-generation/gpu-profile.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/gpu-profile.mjs",
+    "bytes": 9725,
+    "sha256": "4a02596d6a885a88b894c4a285bd93be07437e856107c34489231c7191d2dbf1"
+  },
+  {
+    "path": "tools/local-image-generation/q8-block32.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/q8-block32.mjs",
+    "bytes": 3034,
+    "sha256": "ca9817919519c86b39e4323b13288df73405feb9c7c0d7dcf7bd7113afb53402"
+  },
+  {
+    "path": "tools/local-image-generation/fetch-model.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/fetch-model.mjs",
+    "bytes": 15326,
+    "sha256": "79ee68e8bcfc37d7dc406df008765e123ac030f7195232f19fac6488a64dac9c"
+  },
+  {
+    "path": "tools/local-image-generation/source-integrity.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/source-integrity.mjs",
+    "bytes": 713,
+    "sha256": "5d6e389fc7dac0bd1ae7dc388ce0380ba4b6ebb0e8c934af8e841b5eea36bae9"
+  },
+  {
+    "path": "tools/local-image-generation/model-manifest.json",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/model-manifest.json",
+    "bytes": 7268,
+    "sha256": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef"
+  },
+  {
+    "path": "tools/local-image-generation/package-lock.json",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/package-lock.json",
+    "bytes": 7034,
+    "sha256": "a248f29f9522b42eadf191b1f5351f4df76c50e93c310959c0c817f2c68b2792"
+  },
+  {
+    "path": "port/v2/package-lock.json",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/package-lock.json",
+    "bytes": 90228,
+    "sha256": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d"
+  },
+  {
+    "path": "port/v2/tools/browsercdp.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs",
+    "bytes": 159934,
+    "sha256": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca"
+  },
+  {
+    "path": "port/v2/tools/browserpath.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/browserpath.mjs",
+    "bytes": 7617,
+    "sha256": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0"
+  },
+  {
+    "path": "port/v2/tools/workspacelock.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs",
+    "bytes": 6863,
+    "sha256": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606"
+  },
+  {
+    "path": "audits/AI_GAME_INTEGRATION_20260909/platypus-reference-binding.json",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AI_GAME_INTEGRATION_20260909/platypus-reference-binding.json",
+    "bytes": 2987,
+    "sha256": "adeccf420d3c62694367403da019102dddd748a655a6f66b8d7014c985ddd308"
+  },
+  {
+    "path": "audits/AI_GAME_INTEGRATION_20260909/platypus-reference.png",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AI_GAME_INTEGRATION_20260909/platypus-reference.png",
+    "bytes": 1969238,
+    "sha256": "0b4584f76ce18f42e38e0c28e9a42758280d0c0de390d45371422a7e4c91fe57"
+  }
+]

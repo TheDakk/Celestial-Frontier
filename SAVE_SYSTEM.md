@@ -9,8 +9,11 @@ requires protected discovery/genome/progress data and kept/shared exact original
 cache eviction, atomic pins/leases/reservations, total build/model/save/update accounting and
 refusal of new optional art when no eligible bytes remain. A seed alone cannot recover exact AI
 pixels. Existing save admission, transactions, recovery, disposable assetcache semantics and
-complete PWA build retention are unchanged. No adaptive cache or protected-image carrier exists
-from this documentation batch; browser persistence/eviction still needs separate qualification.
+complete PWA build retention are unchanged. Adaptive variant eviction remains advisory. The
+September9 [local AI implementation](LOCAL_AI_GENERATION.md) now retains immutable exact originals
+in a separate IndexedDB art database with atomic index/original commits and verified rereads;
+no game-save fields or migration are added. Model bytes use separate resumable OPFS storage.
+Neither store is an outside-origin backup; full model/device qualification remains open.
 
 ## V2 notification history — matches code as of 2026-09-06
 

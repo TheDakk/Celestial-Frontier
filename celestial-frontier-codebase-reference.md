@@ -63,43 +63,23 @@ Preserve full genomes, named Earth anatomy, biome authority, current clocks, sav
 
 
 
-### Queued landfall prototype — matches code September9,2026
+## Local AI in the game — matches code September9,2026
 
-Nick's desired actual-play flow is Land → queued generation with “Landing” progress/ETA in the
-same control position → completion notification → explicit return to that world. Other play
-must remain available. `tools/local-image-generation/` now prototypes that interaction with the
-real worker pipeline and a read-only canonical Field journal. Navigation does not cancel the
-page-owned job or auto-return on completion. This is not mounted into the normal game's Land
-button; no product save, landing risk/reward, Training, notification ledger or roster changes.
+The optional `?localai=1` preview now connects the ordinary durable Land action to a separate
+page-owned local generation queue. Its progress and explicit View/cancel controls live in Survey
+and Notifications. Completion requires an immutable original committed and reread from a separate
+IndexedDB art store; no auto-navigation, gameplay reward or save-schema change. The full native
+1024×576 image fits the existing measured scene band without moving controls. Model installation
+is explicit, chunked, resumable and hash-verified through OPFS. This remains an Earth-only
+experimental preview served by local development tooling; it is not a shipped mobile model pack.
 
-`landing-progress.mjs` advances only through actual ordered model-stage/step completions.
-The work fraction is not a time percentage, and denoise step4/4 is not completion: decoding and
-PNG publication must succeed. A first run says ETA estimating until measured denoising intervals
-allow an approximate remainder **plus final processing**. Only the exact same configuration's
-successful previous page-local run can supply a total-duration estimate. No universal70-second
-promise, artificial delay, wall-clock gameplay change or persistent job/cache is introduced.
-Cancellation/failure clears pending presentation without a ready notice. A friendly retry/cancel
-message remains visible outside both panels; raw failure details stay in generation evidence.
-The decode await checks already-requested cancellation before synchronous PNG publication.
-Completed art binds its full recipe/job, PNG, world, environment, ecology epoch and snapshot hash;
-publication and explicit return recheck the existing Earth panel destination and refuse stale data.
-This is display binding, not normal-game navigation authority or universal canonical admission.
-Closing the page loses the job/result; durable multiworld queues, background-tab scheduling and
-protected retention are still pending. The normal-game integration must settle durable landing
-first, then use a separate world-key producer and the existing notification buffer outside active
-persistence transactions. The [actual Claude review and disposition](audits/CLAUDE_DIRECTION_REVIEW_20260909/REVIEW_DISPOSITION.md)
-retain its scope, verified corrections, disputed observations and all outstanding gates.
-
-The explicit `--fixed-denoiser-shapes` experiment specializes ORT's denoiser session to the exact
-batch1, image-token and text512 dimensions after checking all typed tensor lengths. It leaves
-weights, four steps, noise seed, output resolution and Euler/half arithmetic unchanged. Defaults
-are unchanged. Real runtime overrides and raw output comparisons, not option declarations, own
-performance evidence. The fixed-shape native1024×576 comparison took69,034.55ms versus69,948.09ms, with a
-byte-identicalPNG. One0.914-second/1.31% difference is not a reliable new speedup; the option
-stays experimental. The five-click desktop interaction and completed small-viewport layout
-passed; those do not qualify phone inference or gameplay FPS. All prior art rejection persists.
-
-[Batch result and Claude's requested broad handoff](audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md).
+Canonical conditioning preserves all19 genomes and six named species with source-backed anatomy,
+botany and composition anchors. Its exact Platypus reference improves the conditioning input;
+actual output quality remains unaccepted. The pinned model is6.69GB, and browser capability checks
+are not device qualification. The [current implementation and limits](LOCAL_AI_GENERATION.md)
+own the game/delivery boundary. The earlier isolated progress/ETA/fixed-shape proof and all failed
+candidates remain immutable evidence in [the preceding review packet](audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md).
+Nick's intended Claude-app review remains pending; a saved CLI response is not that review.
 
 ### Browser reference ownership — matches code September9,2026
 

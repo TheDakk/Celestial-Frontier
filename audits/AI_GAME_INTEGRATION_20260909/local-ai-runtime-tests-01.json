@@ -1,0 +1,30 @@
+{
+  "status": "FAIL",
+  "node": "v26.8.1",
+  "command": "/opt/homebrew/bin/node node_modules/vitest/vitest.mjs run tests/local-ai-runtime.test.ts --reporter=verbose",
+  "cwd": "port/v2",
+  "startedAt": "2026-09-09T14:16:47.403Z",
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/local-ai-runtime.ts",
+      "bytes": 10009,
+      "sha256": "827cb9fa48d0e1a4e7367c484a7ef9cbe9f62f4b1585dd4c0df528c003dcbdef"
+    },
+    {
+      "path": "port/v2/tests/local-ai-runtime.test.ts",
+      "bytes": 21660,
+      "sha256": "957b02f85e0fc12e8f86926c2d249b48066f375ea40ff61efac553de6645dff1"
+    }
+  ],
+  "scope": "Synthetic-worker orchestration only; no browser/model/GPU/visual acceptance.",
+  "durationMs": 509.345625,
+  "exitCode": 1,
+  "signal": null,
+  "spawnError": null,
+  "stdoutSha256": "195e1f128792dfeef5c1484c221adc43c0e221a4b344497a16b0ef6fe0e1ec0b",
+  "stderrSha256": "aed2414deb781168609f18baa57443c7ccec917ff288e107ae465b2fba5c5ea9",
+  "summary": "Test Files  1 failed (1)\n      Tests  1 failed | 19 passed (20)",
+  "error": "Error: First focused runtime test process failed\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/[eval1]:22:59",
+  "workspaceReleased": true,
+  "finishedAt": "2026-09-09T14:16:47.916Z"
+}

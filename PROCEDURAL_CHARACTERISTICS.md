@@ -1,5 +1,11 @@
 # Procedural (Non-Earth) Characteristics — Catalog & Pass Map
 
+**Local landfall conditioning — matches code September9,2026:** the new bounded compiler
+preserves the complete canonical Earth roster and six full individual identities while deriving
+named anatomy/botany from existing painter owners. Unknown worlds/families remain unsupported;
+raw procedural limbs/colors never override named Earth rules. This does not add procedural
+coverage or change genomes. [Current AI ownership and quality boundary](LOCAL_AI_GENERATION.md).
+
 _Legacy v1 catalogue plus current V2 routing/rig guidance, refreshed against source on
 2026-09-08. The reset audit records retain their own August dates; dated B15 sections remain
 legacy `main.js` snapshots unless explicitly labelled current. Companion to ART_DIRECTION.md,

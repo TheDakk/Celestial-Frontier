@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "node": "v26.8.1",
+  "command": {
+    "executable": "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+    "args": [
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "tests/local-ai-runtime.test.ts",
+      "--reporter=verbose",
+      "-t",
+      "reports only actual monotonic stage/step work"
+    ],
+    "cwd": "port/v2"
+  },
+  "startedAt": "2026-09-09T14:18:05.706Z",
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/local-ai-runtime.ts",
+      "bytes": 10009,
+      "sha256": "827cb9fa48d0e1a4e7367c484a7ef9cbe9f62f4b1585dd4c0df528c003dcbdef"
+    },
+    {
+      "path": "port/v2/tests/local-ai-runtime.test.ts",
+      "bytes": 21767,
+      "sha256": "46a1b9c5b7a033511f4ef8251e53e580d73f7f18facb503216caad9ec2bae81b"
+    }
+  ],
+  "scope": "Changed progress expectation only; other nineteen cases are retained PASS from first run. No inference claim.",
+  "durationMs": 307.00158400000004,
+  "exitCode": 0,
+  "signal": null,
+  "spawnError": null,
+  "stdoutSha256": "d9565a24bd524644add7f678edb35ae7c62428dcc0e2387f61b5d7b7e20304a6",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "summary": "Test Files  1 passed (1)\n      Tests  1 passed | 19 skipped (20)",
+  "workspaceReleased": true,
+  "finishedAt": "2026-09-09T14:18:06.017Z"
+}

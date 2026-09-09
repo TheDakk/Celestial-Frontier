@@ -1,0 +1,35 @@
+{
+  "good": {
+    "schema": "cf.local-model-delivery-manifest.v1",
+    "modelId": "synthetic/good",
+    "revision": "1111111111111111111111111111111111111111",
+    "sourceManifestSha256": "f368ec8a9c3035b3de216f57e75c74734c126bb0da4b8e9c6e0b48781176b5a6",
+    "totalBytes": 2097336,
+    "files": [
+      {
+        "path": "weights.bin",
+        "bytes": 2097223,
+        "sha256": "4f3606187e8cf4ddd1af757b1c6e37d3fb285f51b4cdeef367bebec430e8b074"
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 113,
+        "sha256": "0b6334219cda4c5a503020824f34fdd8084bfd92def47025420d682634c02c49"
+      }
+    ]
+  },
+  "corrupt": {
+    "schema": "cf.local-model-delivery-manifest.v1",
+    "modelId": "synthetic/corrupt",
+    "revision": "1111111111111111111111111111111111111111",
+    "sourceManifestSha256": "df4dbd06a70697138d31c5059fa6f27189af8176a4838ba6803e2aeb13e8847c",
+    "totalBytes": 4099,
+    "files": [
+      {
+        "path": "broken.bin",
+        "bytes": 4099,
+        "sha256": "7a69b0d4dbd27bc47891e193d96bfd133e21386022045e1297ba16424db39258"
+      }
+    ]
+  }
+}

@@ -6,7 +6,7 @@ The per-system docs at repo root (WORLD_GENERATION · ART_DIRECTION · BIOME_ATL
 SPECIES_AND_GENOME · PROCEDURAL_CHARACTERISTICS · CREATURE_ANIMATION · RARITY_AND_GRADES · RARITY_UNIVERSAL · CAPTURE_AND_BIOSPHERE ·
 COMBAT_AND_CONQUEST · PROGRESSION · ECONOMY_LOOT_CRAFTING · QUESTS_AND_CHAPTERS ·
 BREEDING_AND_SHARING · DETERMINISM · SAVE_SYSTEM · UI_PRESENTATION · AUDIO · AUDIO_LICENSES ·
-EXPLORATION_SHIPS_LOOT_AND_COMPANIONS) are current system references. Update the affected reference
+EXPLORATION_SHIPS_LOOT_AND_COMPANIONS · LOCAL_AI_GENERATION) are current system references. Update the affected reference
 and `celestial-frontier-codebase-reference.md` in the same batch as its code; source wins when they
 disagree. `PROCESS_LAWS.md` is the standing reference for earned implementation/testing laws.
 
@@ -17,120 +17,120 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-09 · ACTUAL CLAUDE REVIEW AND CONTROLLER CORRECTIONS
+## SESSION HANDOFF — 2026-09-09 · SPECIES / DELIVERY / NORMAL-GAME AI
 
-**Current objective:** resume after Nick's accidental stop, collect the actual Claude response,
-verify its findings, complete bounded corrections, preserve evidence and sign locally. This
-review/correction batch is complete at signed `af4002783860422b6ffb5ca6b3a47b03099c8514`.
-Its documentation-only successor records this exact signature and refreshed handoff; checked
-implementation bytes are unchanged. Neither checkpoint has been pushed or merged.
-Next substantive work is reliable canonical species/individual conditioning and reference quality,
-not another unchanged progress/cache/kernel loop. No new generation or six-run step sweep occurred.
+**Current objective:** Nick explicitly asks to finish species fidelity, mobile model delivery and
+normal in-game AI integration. Continue the browser proof of concept for the future engine game.
+No engine pivot, scheduled prompt, hosted generation service, GitHub write or release is requested.
+The bounded coding/verification batch is complete; product acceptance is not. Source/evidence
+are committed together in the checkpoint containing this handoff (resolve its full identifier
+with `git log -1 --format='%H %s'`). Parent is signed `98cb65c8c79d8e70bd6c6becb7d64b8a81b552a8`.
+No local painting is accepted, full mobile model delivery is not qualified, and shipping runtime
+packaging is unfinished. Do not describe the three requested priorities as fully completed.
 
-### Direction and implementation boundary
+**Review clarification:** Nick says Claude has not reviewed the work yet. His intended review
+in the Claude app remains **pending**. The saved CLI response at 12:49 UTC on 8bdbea9a retains its
+actual limited inspected scope in `audits/CLAUDE_DIRECTION_REVIEW_20260909/`; it is not Nick's
+intended app review, nor acceptance of this new batch. Do not dispatch another review instead
+of doing the requested work. Prior response/request/receipts/disposition stay immutable.
 
-Nick approved the Living Worlds triptych and full landfalls “100%”: large cohesive **static**
-paintings with multiple canonical flora/fauna, common light, materials, atmosphere, grounded anatomy
-and vegetation overlap. The same complete individual identities belong in Compendium; future
-articulated 2D family rigs must cover land, flying and aquatic creatures. Whole-portrait recoil is
-staging polish, not a rig. Moving residents inside the landing painting is unnecessary now.
-Universal objects should share the same identifiable painted direction. The approved finish is a
-hard quality gate; a successful or fast model run cannot qualify artwork.
+### Approved direction and identity boundary
 
-The browser remains a local on-demand AI proof of concept for a later engine game. No engine
-pivot, hosted generation service, player installer or pre-generated million-image library has been
-selected. Reference sheets inspire art; they never replace named Earth anatomy/botany, full seeded
-genomes, ordered lineage, biome mapping, discovery/capture rules, flora healing/effects, saves or
-accepted UI placement. [Complete new direction and changes since Claude's prior reviews](audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md).
+Nick approved the Living Worlds triptych/full landfalls 100%: large cohesive static paintings
+with multiple canonical flora/fauna, shared light/materials/atmosphere, grounded anatomy and
+vegetation overlap. Compendium preserves complete individual identities and flora effects;
+future articulated 2D family rigs cover land, flying and aquatic fauna. Whole-portrait recoil
+is not a rig. Universal objects should carry the same identifiable painted finish. Local model
+quality must match those references; successful inference or capability checks cannot accept art.
 
-Current optional `?paintedlanding=1` is one all-19-genome-admitted Earth/Civet study in the accepted
-DOM band. `?livingvista=1` is the separate six-resident layered study; `?paintedvista=1` is canonical
-barren Mars. They are default-off developer studies, not universal AI in the game. Their draft
-release bullet says “optional”; clarify developer-query access before a future Ready candidate.
-The accepted Earth world is `CF1|g:999@90,-60|s:424242@560,170|p:133#2`, environment
-`cwe1:148:50c1b7d6`, with Civet/Platypus/Frog and Persimmon/Cranberry/Devil's Club in its display plan.
-The snapshot retains all19 canonical genomes. It is not a geographic species database. D-9e stays open.
+All named Earth rules, full seeded genomes/ordered lineage, biome mapping, saves, current clocks
+and accepted control placement remain authoritative. The first adapter admits only canonical
+Earth `CF1|g:999@90,-60|s:424242@560,170|p:133#2`, environment `cwe1:148:50c1b7d6`, epoch 0 / all 19 genomes.
+Its six depicted residents are Civet/Platypus/Frog and Persimmon/Cranberry/Devil's Club. It does not
+claim a geographic species database, universal coverage, seasonal physics or exact image sharing.
+D-9e remains gated. Current day/dusk/night is seed-fixed, not a new real-time orbital season model.
 
-### Actual Claude review, not an inferred approval
+### Current batch implementation — current reference owns details
 
-The installed Claude CLI completed a fresh read-only review at12:49:06UTC of signed
-`8bdbea9a65b1f64c09906fd99589d75e5d8bc50a`. Its own Anthropic/macOS root, `anthropic/mac` branch
-and SSH origin were verified. It read immutable local Git objects without importing refs/copying
-source or changing its workspace; no tests/build/browser/fetch/hosted action or existing-session
-reuse. [Original response](audits/CLAUDE_DIRECTION_REVIEW_20260909/CLAUDE_RESPONSE.md),
-[receipt](audits/CLAUDE_DIRECTION_REVIEW_20260909/CLAUDE_RECEIPT.json), original CLI JSON/request/
-wrapper and exact artifact hashes are committed in that packet. Claude explicitly lists inspected
-and uninspected scope; it did not review every accumulated file. Its verdict is **no merge yet**.
+[LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) describes the source boundary; references
+ART_DIRECTION, UI_PRESENTATION, SAVE_SYSTEM and codebase-reference refresh in the same batch.
 
-The packet distinguishes the prior narrow September6 U2 executable3a61352/product3f1578e response
-from the broader September4 develop7bf3e847 review and inventories both intervening changes.
-The actual review does not certify the correction successor. [Disposition of all15findings](audits/CLAUDE_DIRECTION_REVIEW_20260909/REVIEW_DISPOSITION.md)
-records confirmed bugs, latent risks, unsupported claims and next work rather than applying every
-suggestion blindly. Immediate category-zero audio silence is intentional; installed origin-model
-bytes are already accounted for; four steps follow the model card, not a proved scheduler defect.
-Phone impossibility and identity preservation “by construction” are not established by this proof.
+- `landfall-conditioning.ts`: source-backed named anatomy/botany and exact anchors; all19 genomes
+  retained. Six records, strict unsupported refusals, no generic Earth limb/color substitution.
+  Exact current model/chat token count 472/512 (initially 376), no truncation. Anatomy reference copied unchanged from the authoring
+  generator: 1536×1024 Platypus PNG SHA`0b4584f76ce18f42e38e0c28e9a42758280d0c0de390d45371422a7e4c91fe57`.
+  Diagnostic reference usable with documented hump/tail/bill/finish/orientation limits; it is
+  not accepted whole-scene art. No local candidate quality acceptance.
+- `local-model-delivery.ts`: explicit OPFS installation,1MiB immutable chunks, Web Locks, HTTP
+  Range resume, incrementalSHA256/readback and atomic manifest-bound readiness. No auto-fetch
+  until explicit install. All origin usage/headroom counted; actual quota errors refuse ready.
+  No whole-shard JS buffer in delivery. Corrupt attempts and exact originals never auto-delete.
+- `ai-landfall-originals.ts`/`ai-landfall-jobs.ts`: separate native IndexedDB immutable originals,
+  atomic original/latest commit followed by verified reread, max16MiB image; no game-save fields.
+  One active/three waiting/twelve terminalmetadata jobs, full recipe identity. Explicit cancel,
+  no cancel on navigation, no Ready before retention. Jobs themselves are not reload-durable.
+- `local-ai-runtime.ts` uses pinned real ORT graph workers; ordered actual stage/step progress,
+  bounded reference stream/SHA/full binding, exact shapes, cancel/deadline/cleanup. PNG stays
+  native1024×576. The normal Land action queues only after independently durable scene publication.
+  Survey/Notifications own progress, ETA, cancel and explicit View. The game remains usable.
+  `?localai=1` is default-off experimental access; local preview server supplies verified cached
+  model/runtime files. No production PWA runtime pack or mobile model shipping selection yet.
 
-Native-resolution independent rechecks see one Civet head/eye pair/two ears/one tail, with ambiguous
-body/leg attachment. The old “coherent Civet” phrase was too strong; Claude's second-head claim is
-unsubstantiated. Platypus and named botany still fail. Original reviews and PNG remain unchanged;
-[clarification](audits/CLAUDE_DIRECTION_REVIEW_20260909/NATIVE_VISUAL_RECHECK.md) owns current interpretation.
-All generated candidates remain **qualityAccepted:false**; none is retouched or promoted.
+### Verification during this batch
 
-### Completed bounded correction and exact evidence
+[AI integration packet](audits/AI_GAME_INTEGRATION_20260909/README.md) and
+[native delivery packet](audits/LOCAL_MODEL_DELIVERY_20260909/README.md) retain first results.
+Compiler16PASS/tokenizer376PASS. Delivery/hash32PASS after one retained fixture1FAIL; actual native
+small-file OPFS auditPASS on its first execution (8observations/5trustedclicks): cancel/HTTPabort,
+reload/exactRange resume, SHAready/reload/no-download, Blob URL equality, corrupt refusal and
+preserved attempts. This is2MiB synthetic data on desktop Edge, not the6.23GiB model/phone proof.
+Original/job15focusedPASS (initial11PASS/2instrumentFAIL retained, then13 and15 on changed tests).
+Runtime19PASS/1progress-instrumentFAIL, corrected sole casePASS; no inference claim from doubles.
+Main wiring/layout/retirement66PASS after retained first56PASS/3FAIL/1importFAIL/3unhandled fixture
+errors. Added globals/signature and native1024×576 containment checks corrected the instruments;
+no weakening of original ownership/negative controls. Preview server8HTTPfixturePASS.
+Controller/expanded actual-main ownership23PASS. Final all3TypeScript/rootvalidatePASS after a
+retained test-only mock-type error;1010renders/0booterrors/50originalfingerprints. The changed
+472-token prompt subsequently passed16compilerchecks/all3TS/rootvalidate again. No stale4121
+full-profile result is being applied to this source.
 
-The isolated `tools/local-image-generation/` proof now has Land → ordered progress/ETA → ready
-notice → explicit View landfall, plus a read-only canonical Field journal. The same page-owned job
-survives panel navigation; completion never auto-returns. Work fraction is not elapsed-time percent;
-denoise4/4 still requires decode and PNG publication. First-run ETA estimates remaining denoising
-plus final processing; only an exact repeated successful page-local recipe calibrates total ETA.
-This is not mounted on the normal-game Land button, its notification ledger or save transaction.
+Actual normal-game native01 produced and retained a1024×576PNG in74.047s, passed real Land/
+Notifications/View/reload observations, then remained aggregateFAIL on a premature resize sample.
+Its same-world final observation was mounted again; result and exact failed runner stay intact.
+Native02 changed the count/reference-exclusivity prose, restored game-palette preview buttons and
+waited for settled same-original resize. It passes: four trusted clicks, twenty observations, four actual workers,
+74.307s to verified Ready, Notifications usable during inference, no auto-navigation, exactPNG
+retained across reload with zero reinference and settled320×568 containment.34source hashes
+unchanged; browser/server/target/checkout lock closed. [Native review](audits/AI_GAME_INTEGRATION_20260909/NATIVE_REVIEW.md).
+ORT CPU-placement messages/favicon404s remain logged; no uncaught game exception/crash observed.
+This is not phone qualification, gameplayFPS or a fullcertificate. The small-screen painting is
+only roughly 76×43 in the accepted band: contained but insufficiently legible, an open UI quality issue.
 
-The review correction adds a panel-independent friendly failure/canceled message, retaining raw
-errors in evidence. It checks already-requested cancellation at the decode await; native input
-cannot preempt the synchronous conversion/publication span. Publication/return bind exact full
-recipe/job, PNG, world/environment/epoch/snapshot identity to the existing Earth panel. Changed
-identity, notice, panel or image refuses return and leaves the journal/notice intact. This is
-research display binding, not a live route-authority or multiworld scheduler.
+Both outputs are visually rejected. First fuses Civet/Platypus traits and omits separateCivet;
+second makes four mammals, omitsFrog and still has wrongbotany/scale/anchors. The clearer prompt
+changes the failure, not acceptance. Current raw PNG: 1,520,711 B SHA
+`aebec1c3b9cf9bb3761ff0178d77b7d525aa7683d5ee5f448408a5f0949fd7e5` is retained unchanged, not promoted.
 
-- Controller42/42PASS,35existing+7new, including same-turn cancellation, removed-guard rejection,
-  post-publication cancel remaining inert, pre-publication destination change, eight stale bindings,
-  exact restoration, friendly failures and retry. [Source-bound receipt](audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-01.json).
-- One real-browser [review-controller audit](audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/result.json)
-  passes three fresh-page flows with16trusted clicks, two hidden-ancestor negative/restored controls,
-  six identity-mutation refusals and restored return. Real held HTTP, explicitly synthetic2×1RGB
-  workers; no ONNX/inference/art acceptance. Six source rows unchanged; targets/browser/server closed.
-  Root inspected friendly failure in journal and cancel on Earth screenshots. No phone qualification.
-- RootvalidationPASS after correction:1010namedrenders/0booterrors/50originalfingerprints; legacy
-  HTML SHA5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746 unchanged.
-  No normal-game/V2runtime source changed; no broader unchanged profile repetition.
-- Earlier real1024×576 fixed-shape run remains69,034.55ms versus69,948.09ms, samePNG SHA
-  2b0fea42177e2eeaf94e3c71480d6f0502177c3d1a7f9879c5149ef58ef370b7. Real resolved dimensions
-  prove the override took effect. One0.914s/1.31% difference is not a reliable new speedup; opt-in only.
-  Prior same768 Q8 gain239s→69s stands. Initial download/hash verification are outside those times.
-  The eight ORT CPU-placement messages are retained, not claimed zero browser-log errors.
-- Preserve earlier87-test aggregate84PASS/3localhostEPERM, separate4serverPASS, later35controller+
-  8observer controls and native preparation01 circular-Socket instrumentFAIL. Separate corrected
-  preparation02 six scenariosPASS remains scoped predecessor evidence, not a current-source rerun.
-  [Batch result](audits/CLAUDE_DIRECTION_REVIEW_20260909/BATCH_RESULT.md) owns all receipts and limits.
+### Remaining product acceptance
 
-### What remains unimplemented or unqualified
+The pinned 20 runtime model files are 6,691,020,416 B / ~6.23 GiB plus runtime, saves, image originals and
+liveGPU/RAM. Optional Q8block32 adds352,323,881B. Nothing is selected for shipping and Nick's
+modest player-storage requirement is not raised by a dev download. ActualM4Pro24GiB inference
+is established on earlier recipes; physical phone/Safari/PWA full install, buffers/thermals,
+uniqueRAM/VRAM and foreground gameplayFPS remain unqualified. Nick was asked which phone to
+qualify; no answer yet. A capability probe never substitutes for actual phone evidence.
 
-The model runtime inventory is6,691,020,416bytes/~6.23GiB, developer-only/ignored. Optional Q8block32
-adds352,323,881 graph/data bytes while preserving represented weights and original shards. No model
-is embedded or selected for shipping. Actual M4Pro24GiB inference is proved; uniqueRAM/VRAM,
-phone/Safari/PWA features/buffers/thermals, cold download, foreground gameFPS and delivery are not.
-Four-step schedule/mathematical inputs stay pinned. Prose prompts are handwritten for one Earth
-scene; canonical genome→anatomy/conditioning compilation and accepted individual fidelity are missing.
+Earlier69,034.55ms fixed-shape vs69,948.09ms gave identicalPNG, not a reliable speedup; the prior
+same768 Q8gain239s→69s remains scoped evidence. All local candidate art is qualityAccepted:false.
+Latest predecessor raw1024×576 had ambiguous Civet legs/body, rodent Platypus and inaccuratebotany.
+Two actual conditioning comparisons still reject species/botany quality. Do not perform another
+unchanged prose-only sweep or infer that a compiler guarantees generated identity.
 
-The24-test cache planner is advisory: decimal500MB/1GB/2GB, explicit desktop≤5GB, origin-installed/
-unknown bytes counted once. Only variants with verified protected exact copies are disposable.
-New sole originals pause admission until separate protected retention exists. No storage executor,
-atomic cross-tab reservation/eviction, durable multiworld job, model installer or device selector.
-A seed is not exact-pixel recovery. CF1 shares location; exact-image/time-specific discovery sharing
-needs retained pixels plus versioned appearance provenance. Native creature share/import, physical
-seasons/daylight/orbital clock and universal skins/rigs remain future work. Current day/dusk/night is
-seed-fixed; orbits are kinematic, not N-body/season simulation. No active-play clock law changes.
-Audio25/90ms smoothing has268focusedchecks/six native DSP renders, but human listening remains open.
+Adaptive disposable-image cache planning remains advisory (500MB/1GB/2GB, explicitdesktop≤5GB),
+while the new sole-original store does not evict. Origin deletion can still remove art; it is
+not a backup. Background/reload job scheduling, cross-owner storage reservations, exact-image
+sharing/export, all-family rigs/universalobjects and real seasons remain future work.
+Audio smoothing has268focusedchecks/six DSP renders, but HUMAN listening remains open.
 
 ### Older verification blockers — retain, do not silently retry or relabel
 
@@ -148,42 +148,41 @@ unfixed/gated. Civet fine alpha and all-family motion remain unqualified. The94-
 backup remains blocked after two automatic-review rejections; no retry/cloud write. Private masters,
 original Dakk project and personal UI remain untouched. No third-party runtime assets copied.
 
-### Fresh-session startup, next action and paired Git handoff
+### Fresh-session startup and next concrete step
 
-Verified ownership: **OpenAI/Codex · macOS · `/Users/nick/Projects/celestial-frontier-openai-mac` ·
+Verified ownership **OpenAI/Codex · macOS · `/Users/nick/Projects/celestial-frontier-openai-mac` ·
 `openai/mac` · upstream `origin/openai/mac`**, SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`.
-Original agent-communication fetch failure is preserved. After Nick reported1Password unlocked,
-the distinct12:11UTC recovery authenticated TheDakk and passed repository read/fetch and PR42 read.
-This does not infer the vault was previously locked. Both8bdbea9a and correction source
-`af4002783860422b6ffb5ca6b3a47b03099c8514` are signed and independently verified. The
-[correction signature receipt](audits/CLAUDE_DIRECTION_REVIEW_20260909/CORRECTION_SIGNATURE.json)
-is retained by the following documentation-only checkpoint. That source is8ahead/0behind
-origin/openai/mac and119ahead/0behind origin/develop; its doc successor adds one local commit.
-Ambient.DS_Store is untouched; no scoped working changes remain after final documentation signing.
-Last verified origin/openai/mac is9bfec7dc4a06d97dfd29f8f5424553336776c9fb; origin/develop is
-c1791e210158de864fdd475323c3091d9ecbae58. Current source contains those ancestors; no GitHub write.
+Starting 98cb is nine ahead / zero behind remote openai/mac at 9bfec7dc and 120 ahead / zero behind develop at c1791e21 at last
+verified fetch 12:11 UTC. No GitHub writes this batch. Ambient .DS_Store stays untouched.
 
-Read ROADMAP first, PROCESS_LAWS before UI/tests and PARALLEL_GIT_PROTOCOL before each batch/
-handoff; consult affected current refs. Startup receipt `audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json`
-was reused within this resumed uninterrupted session. A truly fresh session follows UI_TOOLCHAIN's
-update/idle/lock runbook. Terminal/files and isolated CDP only; native browsers outside Seatbelt under
-shared foreground lock. Existing caffeinate assertions were retained; no screen-lock settings changed.
+Read ROADMAP first, PROCESS_LAWS before UI/tests and PARALLEL_GIT_PROTOCOL before batches/handoff.
+Reuse uninterrupted `audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json`; a truly fresh session
+uses UI_TOOLCHAIN update/idle/lock startup. Terminal/files/isolated CDP only; native browser first
+attempt outside Seatbelt/shared foreground lock. Caffeinate PID 33372 `-di` and 93550 `-i` verified
+running this batch; no lock-screen/security setting changes. 1Password signing uses command-scoped
+SSH_AUTH_SOCK and `/usr/bin/ssh-keygen`, then independent temporary allowed-signers verification.
 
-Next bounded coding work: source-driven conditioning compilation for supported canonical species,
-then one fixed-seed/reference-controlled anatomy comparison (e.g. Platypus). Reconcile pinned
-scheduler sources before changing steps. Keep accepted paintings and all generated failures intact;
-do not widen universal-object/species volume or run a materially larger exploratory sweep first.
-Before gameplay integration implement durable-original retention and world-owned jobs outside the
-landing save transaction, then qualify devices and required exact-head admission.
+Next bounded work: establish a spatial/per-subject conditioning contract and an executable
+count/identity/placement acceptance rubric before another fidelity comparison; prose-only global
+conditioning has twice failed. Audit a distributable local browser runtime pack separately from
+model bytes, then qualify full installation/inference on Nick's actual target phone once identified.
+Add an accessible full-painting inspection treatment for short screens without silently relocating
+accepted controls. Keep original retention/recovery and all prior reds. Do not widen into an
+unchanged prompt sweep or fullcertificate chain. [Paired review handoff](audits/AI_GAME_INTEGRATION_20260909/HANDOFF.md).
+Native02 measures its recorded source hashes. A subsequent controller Retry guard refuses
+failed/canceled recipes when model selection changes, preserving the old recipe and directing
+the player to land again before any work starts. Its first eleven-case focused run and later
+all-three-TypeScript/root validation pass separately; see retry-guard-01 and
+validation-retry-guard.json in the AI packet. No later native or full admission is claimed.
+Current source is frozen after that guard; only documentation and local signing follow.
+No hosted attempt without exact current authority.
 
-**Codex:** completed corrections/review evidence stay signed locally; no push. **GitHub step now:
-none.** Existing [PR42](https://github.com/TheDakk/Celestial-Frontier/pull/42), base `develop`, source
-`openai/mac`, stays Draft/unlabeled at9bf; its existing title “Refine responsive UI and add bounded
-audiovisual and painted-world prototypes” and body need accumulated-head refresh before future
-Ready/owner-label. No new PR needed. **Claude:** the requested local read-only review is complete;
-Nick need not open its app now. Its workspace does not have these source changes. Only after a
-future verified develop merge may clean `anthropic/mac` fetch/merge origin/develop; dirty work
-must be finished/committed first. No manual source copying. Develop/main/live site unchanged.
-BudgetUNFROZEN/PUBLIC, private fallback3000, zero new exact owner-label attempts; no Ready, label,
-workflow dispatch/rerun, merge, release/deploy/version bump, automation or scheduled prompt.
-The old4121tests/1skip at9bf do not certify this later head; obey the protocol's selected lane.
+**Codex:** completed bounded source/evidence stays locally committed; verify its SSH signature. **GitHub step now: none.** Existing PR42 remains Draft/unlabeled,
+base `develop`, source `openai/mac`, remote head 9bfec7dc. No new PR required. Existing title “Refine
+responsive UI and add bounded audiovisual and painted-world prototypes” and body need accumulated
+exact-head refresh before a future Ready/owner-label; not during this parked state.
+**Claude:** intended app review pending; Nick need not open Claude while Codex completes this batch.
+Use the committed handoff for later review. Claude's workspace is not synchronized; only after a
+verified develop merge may clean `anthropic/mac` fetch/merge origin/develop, finishing dirty work
+first. No manual copying. Develop/main/live site unchanged. Budget UNFROZEN/PUBLIC, private fallback
+3,000, zero new exact owner-label runs; no Ready/labels/Actions/merge/release/deploy/schedule.
