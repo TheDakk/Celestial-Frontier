@@ -1,0 +1,15 @@
+# Native small-file OPFS review
+
+**PASS**, September 9, 2026, `2026-09-09T14:12:55.126Z`–`14:12:56.997Z`. This ran the actual delivery and SHA sources in a dedicated, real Edge browser using native OPFS, Web Locks and loopback HTTP. There were no ONNX imports, actual model routes or inference. The observed desktop viewport was 1280×1000; it is not a phone certificate.
+
+The good synthetic manifest contains two files totaling **2,097,336 bytes**. After one 1,048,576-byte chunk was committed, a trusted Cancel closed the held HTTP response before completion. The ready marker was absent. Reload opened the same attempt as partial without fetching model bytes. A trusted Install sent exactly `Range: bytes=1048576-`; the server returned 206 and the exact Content-Range. The original attempt became ready only after both files passed their pinned SHA-256 hashes. Another reload reverified the ready installation with zero new model requests. `openFile` returned Blobs whose direct and Blob URL sizes/hashes matched both manifest files.
+
+A separate 4,099-byte response then changed exactly one byte. The same real delivery owner reported `invalid/hash-mismatch`, retained a failed-attempt marker, published no ready marker, and refused `openFile`. Restoring the source and pressing Install produced a new verified attempt, retained the failed one, and preserved the earlier good installation. Eight observations, five trusted clicks, five model HTTP requests, exact inventories, status histories, hashes and cleanup are in [result.json](result.json). Screenshots retain [canceled](01-canceled.png), [reloaded ready](02-reloaded-ready.png) and [corrupt refusal](03-corrupt-refusal.png) states; the ready screenshot was also visually inspected.
+
+The native capability probe reported OPFS/Web Locks, a non-fallback WebGPU adapter, shader-f16 and 4,294,967,292-byte max buffer/storage binding limits. The fresh ephemeral origin estimated 10,737,418,240 bytes quota and `persisted:false`. These observations are specific to this isolated desktop profile and are not a promise of available capacity or successful model inference on another device. No GPU compute or full-size model allocation was attempted. Cancellation during actual device suspension, browser eviction, cross-owner storage pressure and real phone/PWA behavior remain unqualified; quota/error controls here are focused synthetic tests, not physical quota exhaustion.
+
+The shared foreground lock covered the run; the browser's owned target/profile and the loopback server were closed by the existing launcher/adapter. Source hashes were unchanged across execution. No result indicates painting or device acceptance: both flags remain false.
+
+Exact receipt SHA-256: `6e369da344792782ee4596cb00b8a4774db8d72d8b71ac0fc8bb208d486cc3ee`.
+Adapter SHA-256: `5c577260d62c2ce0acb5c304bec6b054192e6ab0fa28243d4f5481ccff47445f`.
+The runnable exact command was `node tools/with-toolchain-lock.mjs --label local-model-delivery-native-01 -- node audits/LOCAL_MODEL_DELIVERY_20260909/native-01/run.mjs`, first attempted outside macOS Seatbelt. The runner refuses to overwrite its first receipt.

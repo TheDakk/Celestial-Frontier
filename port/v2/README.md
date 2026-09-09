@@ -1,5 +1,14 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+## Local AI game preview — September9,2026
+
+The default-off `?localai=1` preview connects ordinary Land, Survey and Notifications to local
+browser inference and durable exact originals. Explicit model delivery supports OPFS resume/hash
+verification. Local development tooling supplies the isolated runtime; no model/runtime shipping
+selection or physical phone qualification is implied. See [LOCAL_AI_GENERATION.md](../../LOCAL_AI_GENERATION.md)
+for the current source boundary,6.69GB model accounting, quality gate and exact evidence.
+The proof uses its bounded runner, not a second certification battery.
+
 ## Earth layout geometry ownership — matches code as of 2026-09-09
 
 AppChrome's `surfaceLayoutRects()` supplies frozen detached visible rectangles for its existing

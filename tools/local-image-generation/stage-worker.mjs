@@ -20,6 +20,15 @@ onmessage=async ({data:job}) => {
     if(job.profile!==undefined&&typeof job.profile!=='boolean')throw Error('Profile option must be boolean');
     if(job.q8Block32!==undefined&&typeof job.q8Block32!=='boolean')throw Error('Derivative choice must be boolean');
     if(job.q8Block32&&job.stage!=='denoise')throw Error('Derivative belongs only to denoise');
+    const modelUrl=path=>{
+      if(job.modelFiles===undefined)return '/model/'+path;
+      if(!job.modelFiles||typeof job.modelFiles!=='object'||Array.isArray(job.modelFiles)
+        ||!Object.hasOwn(job.modelFiles,path)||typeof job.modelFiles[path]!=='string')throw Error('Missing installed model file: '+path);
+      const url=new URL(job.modelFiles[path],self.location.href);
+      if(!['http:','https:','blob:'].includes(url.protocol)||url.origin!==self.location.origin
+        ||url.username||url.password)throw Error('Installed model source must belong to this origin');
+      return url.href;
+    };
     const fixedShapeOptions=denoiserShapeSessionOptions(job);
     if(job.profile){
       profileCapture=createNativeProfileCapture({ortVersion:ort.env.versions.web});
@@ -55,17 +64,17 @@ onmessage=async ({data:job}) => {
     if(!specs[job.stage]) throw Error('Unknown stage');
     const [graph,shards]=specs[job.stage];
     progress('loading',{graph});
-    session=await ort.InferenceSession.create('/model/'+graph,{
+    session=await ort.InferenceSession.create(modelUrl(graph),{
       executionProviders:['webgpu'],graphOptimizationLevel:'all',
       ...(job.profile?{enableProfiling:true}:{}),
       ...fixedShapeOptions,
-      externalData:shards.map(path=>({path,data:'/model/'+path})),
+      externalData:shards.map(path=>({path,data:modelUrl(path)})),
     });
     progress('loaded',{graph,inputNames:session.inputNames,outputNames:session.outputNames,...fixedShapeOptions,
       ...(job.fixedDenoiserShapes?{inputMetadata:session.inputMetadata}:{}),elapsedMs:performance.now()-started});
     let result;
     if(job.stage==='text') {
-      const tokenizer=new Tokenizer(await json('/model/tokenizer/tokenizer.json'),await json('/model/tokenizer/tokenizer_config.json'));
+      const tokenizer=new Tokenizer(await json(modelUrl('tokenizer/tokenizer.json')),await json(modelUrl('tokenizer/tokenizer_config.json')));
       const tokens=tokenizer.encode(job.chatPrompt,{add_special_tokens:false}).ids;
       if(tokens.length>512) throw Error(`Prompt has ${tokens.length} tokens; refusing silent truncation beyond512`);
       const ids=new BigInt64Array(512),mask=new BigInt64Array(512);

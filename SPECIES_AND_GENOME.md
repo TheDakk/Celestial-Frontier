@@ -1,5 +1,11 @@
 # Celestial Frontier — Species & Genome System
 
+**Local landfall conditioning — matches code September9,2026:** the new bounded compiler
+preserves the complete canonical Earth roster and six full individual identities while deriving
+named anatomy/botany from existing painter owners. Unknown worlds/families remain unsupported;
+raw procedural limbs/colors never override named Earth rules. This does not add procedural
+coverage or change genomes. [Current AI ownership and quality boundary](LOCAL_AI_GENERATION.md).
+
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
 ownership, four bounded companion writers, Guardian/Titan acquisition, rarity presentation and six
 explicit audio-surface overlays match the local `port/v2` candidate as of 2026-08-29. The offline

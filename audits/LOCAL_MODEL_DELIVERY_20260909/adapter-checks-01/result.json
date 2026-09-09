@@ -1,0 +1,30 @@
+[
+  {
+    "command": [
+      "node",
+      "--check",
+      "audits/LOCAL_MODEL_DELIVERY_20260909/native-01/run.mjs"
+    ],
+    "exit": 0,
+    "at": "2026-09-09T14:12:35.786986+00:00"
+  },
+  {
+    "command": [
+      "node",
+      "--check",
+      "audits/LOCAL_MODEL_DELIVERY_20260909/native-01/browser-entry.mjs"
+    ],
+    "exit": 0,
+    "at": "2026-09-09T14:12:35.822533+00:00"
+  },
+  {
+    "command": [
+      "port/v2/node_modules/.bin/tsc",
+      "--noEmit",
+      "-p",
+      "audits/LOCAL_MODEL_DELIVERY_20260909/delivery-tsconfig.json"
+    ],
+    "exit": 0,
+    "at": "2026-09-09T14:12:35.927048+00:00"
+  }
+]

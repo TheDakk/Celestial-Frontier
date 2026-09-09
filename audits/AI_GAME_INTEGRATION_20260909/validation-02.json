@@ -1,0 +1,35 @@
+{
+  "startedAt": "2026-09-09T14:24:44.857124+00:00",
+  "checks": [
+    {
+      "label": "typescript-final-02",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-final-typecheck-02",
+        "--",
+        "npm",
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "root-validation-01",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-final-root-validate",
+        "--",
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "finishedAt": "2026-09-09T14:24:59.939015+00:00"
+}

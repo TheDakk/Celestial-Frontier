@@ -4,6 +4,8 @@ export interface EarthLayeredLayoutInputV1 {
   /** All boundaries use the canvas's local CSS coordinate space. */
   readonly topChromeBottom: number;
   readonly rosterTop: number;
+  readonly imageWidth?: number;
+  readonly imageHeight?: number;
 }
 
 export interface EarthLayeredMountBoxV1 {
@@ -21,8 +23,9 @@ export interface EarthLayeredMountBoxV1 {
 export function earthLayeredMountLayoutV1(
   input: EarthLayeredLayoutInputV1,
 ): EarthLayeredMountBoxV1 | null {
-  const { viewportWidth, viewportHeight, topChromeBottom, rosterTop } = input;
-  if (![viewportWidth, viewportHeight, topChromeBottom, rosterTop].every(Number.isFinite)
+  const { viewportWidth, viewportHeight, topChromeBottom, rosterTop, imageWidth = 960, imageHeight = 430 } = input;
+  if (![viewportWidth, viewportHeight, topChromeBottom, rosterTop, imageWidth, imageHeight].every(Number.isFinite)
+    || imageWidth <= 0 || imageHeight <= 0 || imageWidth > 8192 || imageHeight > 8192
     || viewportWidth <= 0 || viewportHeight <= 0
     || topChromeBottom < 0 || topChromeBottom > viewportHeight
     || rosterTop < 0 || rosterTop > viewportHeight) return null;
@@ -30,9 +33,9 @@ export function earthLayeredMountLayoutV1(
   const bandTop = topChromeBottom + 12, bandBottom = rosterTop - 12;
   const availableHeight = bandBottom - bandTop;
   if (availableWidth <= 0 || availableHeight <= 0) return null;
-  const scale = Math.min(availableWidth / 960, availableHeight / 430);
+  const scale = Math.min(availableWidth / imageWidth, availableHeight / imageHeight);
   if (!Number.isFinite(scale) || scale <= 0) return null;
-  const width = 960 * scale, height = 430 * scale;
+  const width = imageWidth * scale, height = imageHeight * scale;
   const centerX = viewportWidth / 2, centerY = bandTop + availableHeight / 2;
   return Object.freeze({
     left: centerX - width / 2, top: centerY - height / 2,

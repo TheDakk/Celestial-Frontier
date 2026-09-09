@@ -1,5 +1,13 @@
 # audits/ — external review bundles, preserved
 
+September 9 local AI continuation: [normal-game integration and species evidence](AI_GAME_INTEGRATION_20260909/README.md)
+and [resumable browser model delivery](LOCAL_MODEL_DELIVERY_20260909/README.md) retain the actual
+Land/progress/View/original-reload run and native small-file OPFS checks. Both generated paintings
+fail species/botany quality; physical phone/full-model delivery, shipping runtime packaging and
+small-screen art legibility remain open. [Paired handoff](AI_GAME_INTEGRATION_20260909/HANDOFF.md)
+records the accumulated direction and intended Claude-app review, still pending. PR #42 remains
+parked; no GitHub write or hosted action occurred. ROADMAP.md owns current resumption.
+
 Latest local graphics checkpoint, September8: [Earth layered riverbank](AV_EARTH_LAYERED_SCENE_20260908/README.md)
 records explicit biome-family checks, current named resident bodies, measured unobstructed placement,
 351 focused tests and four final native modes PASS, plus a verified local human preview. Every first

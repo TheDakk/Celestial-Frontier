@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { earthLayeredMountLayoutV1 } from '../apps/game/src/earth-layered-layout.js';
 
 const main = readFileSync(new URL('../apps/game/src/main.ts', import.meta.url), 'utf8');
-const start = 'function currentEarthLayeredLayout():';
+const start = 'function currentEarthLayeredLayout(imageWidth = 960, imageHeight = 430):';
 const end = '\n/** Each optional painting';
 if (main.split(start).length !== 2 || main.split(end).length !== 2) throw new Error('Earth layout owner boundaries changed');
 const owner = main.slice(main.indexOf(start), main.indexOf(end, main.indexOf(start)));
@@ -30,7 +30,7 @@ function fixture(options: { side?: 'visible' | 'hidden' | 'absent'; dock?: boole
   };
   const compiled = transformSync('actual-earth-chrome-layout.ts', source);
   if (compiled.errors.length) throw new Error(JSON.stringify(compiled.errors));
-  const measure = runInNewContext(compiled.code + '\ncurrentEarthLayeredLayout;', context) as () => ReturnType<typeof earthLayeredMountLayoutV1>;
+  const measure = runInNewContext(compiled.code + '\ncurrentEarthLayeredLayout;', context) as (imageWidth?: number, imageHeight?: number) => ReturnType<typeof earthLayeredMountLayoutV1>;
   return { measure, context, canvasRect };
 }
 function acceptLayout(actual: ReturnType<typeof earthLayeredMountLayoutV1>, centerY: number): void {
@@ -48,6 +48,14 @@ describe('Main Earth composition uses detached chrome geometry', () => {
   it.each(['hidden', 'absent'] as const)('uses dock then canvas fallback when Planetside is %s', side => {
     acceptLayout(fixture({ side }).measure(), 490);
     acceptLayout(fixture({ side, dock: false }).measure(), 532);
+  });
+  it('contains the complete native AI original inside the same chrome boundaries', () => {
+    const f = fixture(), original = f.measure(1024, 576)!;
+    expect(original.width / original.height).toBeCloseTo(1024 / 576, 12);
+    expect(original.centerY).toBe(420); expect(original.left).toBe(12);
+    expect(original.width).toBe(366); expect(original.height).toBe(205.875);
+    expect(f.measure(0, 576)).toBeNull(); expect(f.measure(1024, Infinity)).toBeNull();
+    expect(f.measure(8193, 576)).toBeNull();
   });
   it('keeps invalid canvas and retired chrome geometry unavailable', () => {
     const invalid = fixture({ canvasWidth: 0 }); expect(invalid.measure()).toBeNull();

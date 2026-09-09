@@ -40,6 +40,7 @@ function fixture(source = owner) {
     activeCameraShakes, app: { canvas }, currentCameraShakePolicy: () => policy,
     surfaceVistaArtVariant: EARTH as string | null, EARTH_LAYERED_SCENE_ID: EARTH,
     PAINTED_EARTH_LANDING_ID: STILL,
+    LOCAL_AI_LANDFALL_ID: 'cf-local-ai-landfall-v1',
     syncSurfaceVistaPresentation: vi.fn((): void => {
       syncStates.push({ active: activeCameraShakes.size, canvasTop: geometry.canvasTop,
         variant: state.surfaceVistaArtVariant });

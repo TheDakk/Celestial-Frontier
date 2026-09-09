@@ -201,6 +201,9 @@ import { PAINTED_MARS_VISTA_ID, isPaintedMarsVistaV1 } from './painted-mars-bind
 import { PaintedVistaLoadV1 } from './painted-vista-load.js';
 import { EARTH_LAYERED_SCENE_ID, buildEarthLayeredRecipeV1 } from './earth-layered-recipe.js';
 import { PAINTED_EARTH_LANDING_ID, buildPaintedEarthLandingRecipeV1 } from './painted-earth-landing-recipe.js';
+import type { LocalAiGameV1 } from './local-ai-game.js';
+import type { AiLandfallInputV1, AiLandfallOriginalV1 } from './ai-landfall-originals.js';
+const LOCAL_AI_LANDFALL_ID = 'cf-local-ai-landfall-v1' as const;
 import { EarthLayeredLoadV1 } from './earth-layered-load.js';
 import { retireEarthLayerResourcesV1 } from './earth-layered-resources.js';
 import { earthLayeredMountLayoutV1 } from './earth-layered-layout.js';
@@ -2736,7 +2739,8 @@ function triggerCameraShake(): void {
     // Landing translates the canvas without resizing it. Re-measure the Earth
     // composition once the last impulse ends so a transient offset cannot become rest.
     if (activeCameraShakes.size === 0 && (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
-      || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID)) {
+      || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+      || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID)) {
       syncSurfaceVistaPresentation();
     }
   };
@@ -4309,6 +4313,9 @@ registerPanel({
 registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [document.getElementById('dockatlas'), document.getElementById('railatlas')], onOpen: () => { fillAtlas(); gameEvent('atlas-open', { open: true }); } });
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
 registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
+let localAiGame: LocalAiGameV1 | null = null;
+let localAiStatus = '';
+const localAiRoutes = new Map<string, Extract<NavState, { mode: 'surface' }>>();
 const notificationPanel = document.getElementById('notificationpanel')!;
 const notificationButtons = ['shelfnotifications', 'docknotifications']
   .map((id) => document.getElementById(id)!);
@@ -4328,7 +4335,7 @@ const notificationHistory = createNotificationHistory({
     && !trainingActive() && !trainingCheckpointWriteHeld && !replacementTransaction
     && !replacementReloadPending && !importWriteInFlight && !persistHold,
   persist: () => persistView(),
-  fill: (html) => fillPanel('notifications', html),
+  fill: (html) => fillPanel('notifications', html + (localAiGame?.html() ?? '')),
 });
 registerPanel({ id: 'notifications', el: notificationPanel,
   btns: notificationButtons, onOpen: () => notificationHistory.render() });
@@ -5835,7 +5842,7 @@ let surfaceVistaFaults = 0;
 let surfaceVistaLastBiome: string | null = null;
 let surfaceVistaLastError: string | null = null;
 let surfaceVistaArtVariant: 'canonical-v1' | typeof PAINTED_MARS_VISTA_ID
-  | typeof EARTH_LAYERED_SCENE_ID | typeof PAINTED_EARTH_LANDING_ID | null = null;
+  | typeof EARTH_LAYERED_SCENE_ID | typeof PAINTED_EARTH_LANDING_ID | typeof LOCAL_AI_LANDFALL_ID | null = null;
 let surfaceEarthLayeredLoad: EarthLayeredLoadV1 | null = null;
 let surfaceEarthLayeredLast: ReturnType<EarthLayeredLoadV1['snapshot']> | null = null;
 let surfaceEarthResidentSprite: Sprite | null = null;
@@ -5992,7 +5999,7 @@ function releaseSurfaceVistaCache(): void {
   surfaceVistaCanvasCache.clear();
 }
 
-function currentEarthLayeredLayout(): ReturnType<typeof earthLayeredMountLayoutV1> {
+function currentEarthLayeredLayout(imageWidth = 960, imageHeight = 430): ReturnType<typeof earthLayeredMountLayoutV1> {
   const canvas = app.canvas.getBoundingClientRect();
   if (canvas.width <= 0 || canvas.height <= 0) return null;
   const visibleRect = (element: HTMLElement | null): DOMRect | null => {
@@ -6007,7 +6014,7 @@ function currentEarthLayeredLayout(): ReturnType<typeof earthLayeredMountLayoutV
   const lower = visibleRect(document.getElementById('planetside')) ?? chrome.dock;
   const scaleY = app.screen.height / canvas.height;
   return earthLayeredMountLayoutV1({
-    viewportWidth: app.screen.width, viewportHeight: app.screen.height,
+    viewportWidth: app.screen.width, viewportHeight: app.screen.height, imageWidth, imageHeight,
     topChromeBottom: Math.min(app.screen.height, Math.max(0,
       Math.max(canvas.top, ...upper.map(rect => rect.bottom)) - canvas.top) * scaleY),
     rosterTop: Math.min(app.screen.height, Math.max(0,
@@ -6019,8 +6026,9 @@ function currentEarthLayeredLayout(): ReturnType<typeof earthLayeredMountLayoutV
  * between real DOM chrome and its Biosphere strip; native controls do not move. */
 function syncSurfaceVistaPresentation(): void {
   const earth = surfaceVistaSprite !== null && (surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+    || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID
     || (surfaceEarthResidentSprite !== null && surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID));
-  const earthLayout = earth ? currentEarthLayeredLayout() : null;
+  const earthLayout = earth ? currentEarthLayeredLayout(surfaceVistaSprite!.texture.width, surfaceVistaSprite!.texture.height) : null;
   if (earth) {
     for (const sprite of [surfaceVistaSprite, surfaceEarthResidentSprite]) {
       if (!sprite) continue;
@@ -6083,11 +6091,11 @@ function mountSurfaceVistaCanvas(canvas: HTMLCanvasElement): void {
  * leases retire on scene exit; canvases never enter the opaque-vista cache. */
 function mountEarthLayeredCanvases(
   background: HTMLCanvasElement, residents: HTMLCanvasElement | null,
-  variant: typeof EARTH_LAYERED_SCENE_ID | typeof PAINTED_EARTH_LANDING_ID = EARTH_LAYERED_SCENE_ID,
+  variant: typeof EARTH_LAYERED_SCENE_ID | typeof PAINTED_EARTH_LANDING_ID | typeof LOCAL_AI_LANDFALL_ID = EARTH_LAYERED_SCENE_ID,
 ): boolean | 'retained-failure' {
   if (nav.mode !== 'surface' || !surfacePlanetSprite
-    || (variant === PAINTED_EARTH_LANDING_ID) !== (residents === null)) return false;
-  const layout = currentEarthLayeredLayout();
+    || (variant !== EARTH_LAYERED_SCENE_ID) !== (residents === null)) return false;
+  const layout = currentEarthLayeredLayout(background.width, background.height);
   if (!layout) return false;
   const owned: SurfaceEarthLayerResource[] = [
     { canvas: background, lease: null, sprite: null },
@@ -6099,7 +6107,8 @@ function mountEarthLayeredCanvases(
       const lease = sceneTextureLease(entry.canvas);
       entry.lease = lease;
       const sprite = new Sprite(lease.texture); entry.sprite = sprite; sprites.push(sprite);
-      sprite.label = variant === PAINTED_EARTH_LANDING_ID ? 'earth-painted-landing-still'
+      sprite.label = variant === LOCAL_AI_LANDFALL_ID ? 'local-ai-landfall-still'
+        : variant === PAINTED_EARTH_LANDING_ID ? 'earth-painted-landing-still'
         : index === 0 ? 'earth-painted-background' : 'earth-canonical-residents';
       sprite.eventMode = 'none'; sprite.anchor.set(0.5); sprite.scale.set(layout.scale);
       sprite.position.set(layout.centerX, layout.centerY);
@@ -6167,6 +6176,7 @@ function requestSurfaceVista(
   audiovisualPilotVistaBinding = JSON.stringify(request);
   surfaceVistaWorldKey = request.worldKey;
   surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;
+  restoreCurrentAiLandfall();
   const query = new URLSearchParams(location.search);
   const landingRecipe = !paintedFallback && query.get('paintedlanding') === '1'
     && query.get('planetturn') !== '1' && query.get('avpilot') !== '1'
@@ -7786,6 +7796,7 @@ function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): stri
         (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
     bioscanCardActionHtml(bioscanState) +
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
+    (localAiGame?.html(address?.key) ?? (localAiStatus ? '<p style="flex-basis:100%">' + esc(localAiStatus) + '</p>' : '')) +
     '</div>';
 }
 function refreshPlanetSurveyCard(): boolean {
@@ -8636,6 +8647,143 @@ async function addToAtlas(): Promise<boolean> {
     if (activePersist === actionBarrier) activePersist = null;
   }
 }
+/** AI input is projected only from the current proven route and canonical roster. */
+function currentAiLandfallInput(): AiLandfallInputV1 | null {
+  if (!localAiGame || nav.mode !== 'surface' || worldIdentityProtection !== null
+    || replacementTransaction || replacementReloadPending || importWriteInFlight
+    || savedRouteWriteHeld || trainingActive() || trainingCheckpointWriteHeld) return null;
+  const roster = canonicalCurrentSurfaceRoster();
+  const planet = planetNodeForProof(nav.star, nav.planet);
+  if (!roster || !planet) return null;
+  const request = buildBiomeVistaRenderRequestV1(planet, nav.star.seed, roster.worldKey,
+    systemFor(nav.star.seed) as Record<string, unknown>, roster);
+  return localAiGame.prepare(request, roster);
+}
+function queueCurrentAiLandfall(): void {
+  const input = currentAiLandfallInput();
+  if (!localAiGame || !input || nav.mode !== 'surface') return;
+  localAiRoutes.set(input.recipeKey, nav);
+  while (localAiRoutes.size > 16) localAiRoutes.delete(localAiRoutes.keys().next().value!);
+  try { localAiGame.enqueue(input); }
+  catch (error) { noteSurfaceVistaFault(error, 'AI queue unavailable'); toast('Painting paused', 'Finish model storage or an earlier painting, then land again. Your expedition is safe.'); }
+}
+function refreshLocalAiPresentation(): void {
+  refreshPlanetSurveyCard();
+  if (notificationPanel.style.display !== 'none') notificationHistory.render();
+}
+/** Stop competing asynchronous vista publications without retiring visible art. */
+function stopPendingAiVistaWork(): void {
+  surfaceVistaGeneration++;
+  if (surfaceEarthLayeredLoad) {
+    surfaceEarthLayeredLoad.dispose();
+    surfaceEarthLayeredLast = surfaceEarthLayeredLoad.snapshot();
+    surfaceEarthLayeredLoad = null;
+  }
+  if (surfacePaintedVistaLoad) {
+    surfacePaintedVistaLoad.dispose();
+    surfacePaintedVistaLast = surfacePaintedVistaLoad.snapshot();
+    surfacePaintedVistaLoad = null;
+  }
+  if (surfaceVistaDeadline !== null) {
+    clearTimeout(surfaceVistaDeadline);
+    surfaceVistaDeadline = null;
+  }
+  if (surfaceVistaWorker) {
+    surfaceVistaWorker.terminate();
+    surfaceVistaWorker = null;
+  }
+}
+async function mountLocalAiOriginal(original: AiLandfallOriginalV1): Promise<boolean> {
+  const matches = (): boolean => {
+    const current = currentAiLandfallInput();
+    return current !== null && current.worldKey === original.input.worldKey
+      && current.environmentId === original.input.environmentId && current.ecologyEpoch === original.input.ecologyEpoch
+      && current.snapshotDigest === original.input.snapshotDigest;
+  };
+  if (!matches()) return false;
+  const generation = surfaceVistaGeneration;
+  let bitmap: ImageBitmap | null = null;
+  let canvas: HTMLCanvasElement | null = null;
+  try {
+    bitmap = await createImageBitmap(original.blob);
+    if (!matches() || surfaceVistaGeneration !== generation
+      || bitmap.width !== original.width || bitmap.height !== original.height) return false;
+    canvas = document.createElement('canvas'); canvas.width = bitmap.width; canvas.height = bitmap.height;
+    const context = canvas.getContext('2d'); if (!context) return false;
+    context.drawImage(bitmap, 0, 0);
+    stopPendingAiVistaWork();
+    const previous = { sprite: surfaceVistaSprite, resident: surfaceEarthResidentSprite,
+      resources: [...surfaceEarthLayeredResources], variant: surfaceVistaArtVariant,
+      worldKey: surfaceVistaWorldKey, environment: surfaceVistaEnvironmentFingerprint,
+      ready: audiovisualPilotVistaReady };
+    // Keep the old display attached while the existing helper mounts/validates
+    // its successor. Clearing these pointers prevents that helper retiring it.
+    surfaceVistaSprite = null;
+    surfaceEarthResidentSprite = null;
+    surfaceVistaWorldKey = original.input.worldKey;
+    surfaceVistaEnvironmentFingerprint = original.input.environmentId;
+    let mounted: boolean | 'retained-failure' = false;
+    try { mounted = mountEarthLayeredCanvases(canvas, null, LOCAL_AI_LANDFALL_ID); }
+    catch (error) { noteSurfaceVistaFault(error, 'AI landfall mount preparation failed'); }
+    if (mounted === true || mounted === 'retained-failure') canvas = null;
+    if (mounted !== true) {
+      surfaceVistaSprite = previous.sprite && !previous.sprite.destroyed && previous.sprite.parent !== null ? previous.sprite : null;
+      surfaceEarthResidentSprite = previous.resident && !previous.resident.destroyed && previous.resident.parent !== null ? previous.resident : null;
+      surfaceVistaArtVariant = surfaceVistaSprite ? previous.variant : null;
+      surfaceVistaWorldKey = previous.worldKey;
+      surfaceVistaEnvironmentFingerprint = previous.environment;
+      audiovisualPilotVistaReady = previous.ready;
+      try { syncSurfaceVistaPresentation(); }
+      catch (error) { noteSurfaceVistaFault(error, 'Prior landfall presentation restore failed'); }
+      return false;
+    }
+    const retired = retireSurfaceEarthLayers(previous.resources);
+    surfaceEarthLayeredResources = surfaceEarthLayeredResources.filter(entry => !previous.resources.includes(entry));
+    surfaceEarthLayeredResources.push(...retired.retained);
+    for (const error of retired.errors) noteSurfaceVistaFault(error, 'Prior landfall resource retirement failed');
+    // Canonical cached vistas are owned by their cache, not the layered lease list.
+    if (previous.sprite && !previous.resources.some(entry => entry.sprite === previous.sprite)) {
+      try {
+        previous.sprite.texture = Texture.EMPTY;
+        previous.sprite.removeFromParent();
+        previous.sprite.destroy({ children: true });
+      } catch (error) { noteSurfaceVistaFault(error, 'Prior cached vista retirement failed'); }
+    }
+    return true;
+  } finally {
+    try { bitmap?.close(); } finally { if (canvas) { canvas.width = 1; canvas.height = 1; } }
+  }
+}
+function restoreCurrentAiLandfall(): void {
+  const input = currentAiLandfallInput(), owner = localAiGame, generation = surfaceVistaGeneration;
+  if (!input || !owner) return;
+  void owner.find(input).then(original => {
+    if (original && localAiGame === owner && generation === surfaceVistaGeneration) return mountLocalAiOriginal(original);
+    return false;
+  }).catch(error => noteSurfaceVistaFault(error, 'Retained AI painting unavailable'));
+}
+async function viewLocalAiOriginal(original: AiLandfallOriginalV1): Promise<boolean> {
+  if (blockRouteChangeWhileProductAction()) return false;
+  if (currentAiLandfallInput()?.snapshotDigest !== original.input.snapshotDigest) {
+    const destination = localAiRoutes.get(original.input.recipeKey);
+    if (!destination || !searchTravel.jumpToProvenNav(destination)) return false;
+    closePanels();
+    if (!await landWithPilotPresentation(true)) return false;
+  }
+  closePanels();
+  return mountLocalAiOriginal(original);
+}
+async function handleLocalAiAction(event: MouseEvent): Promise<boolean> {
+  const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-ai-act]') : null;
+  if (!target) return false;
+  if (event.isTrusted && localAiGame) {
+    try { await localAiGame.action(target.dataset.aiAct ?? '', target.dataset.aiJob ?? ''); }
+    catch (error) { noteSurfaceVistaFault(error, 'Local AI action failed'); toast('Painting unavailable', 'Your expedition and retained originals are safe.'); }
+  }
+  return true;
+}
+notificationPanel.addEventListener('click', event => { void handleLocalAiAction(event); });
+
 /* Capture native activation before persistence. A truthy doLand result can also
    mean Training or committed-but-unpublished recovery, so presentation requires
    the independently published durable route and a fresh exact scene receipt. */
@@ -8655,6 +8803,19 @@ async function landWithPilotPresentation(trusted: boolean): Promise<boolean> {
   } catch { /* Optional media cannot prevent the ordinary Landing action. */ }
   try {
     const landed = await doLand();
+    try {
+      if (landed && trusted && surface && destination && runtime !== null && runtime === f4Runtime
+        && runtime.revision > beforeRevision && lastArc0LandingOutcome === `committed:${runtime.revision}`
+        && f4RuntimeMayMutate(runtime) && !wasTraining && !trainingActive() && !trainingCheckpointWriteHeld
+        && !replacementTransaction && !replacementReloadPending && !importWriteInFlight
+        && worldIdentityProtection === null && !savedRouteWriteHeld
+        && nav.mode === 'surface' && canonicalWorldAddressForNav(nav)?.key === destination.key
+        && renderedSceneReceipt.serial > beforeScene && renderedSceneReceipt.mode === 'surface'
+        && renderedSceneReceipt.ecologyEpoch === currentEcologyEpoch()
+        && renderedSceneReceipt.galaxyKey === getProvenGalaxyKey(surface.gal)
+        && renderedSceneReceipt.starKey === getProvenStarKey(surface.star)
+        && renderedSceneReceipt.worldKey === getProvenPlanetKey(surface.planet)) queueCurrentAiLandfall();
+    } catch { /* Painting cannot undo or hold the independently durable landing. */ }
     if (!presentation || !pilot || !surface || !destination) return landed;
     try {
       const snapshot = pilotSceneSnapshot();
@@ -8685,6 +8846,7 @@ async function landWithPilotPresentation(trusted: boolean): Promise<boolean> {
   }
 }
 card.addEventListener('click', async (e) => {
+  if (await handleLocalAiAction(e)) return;
   if ((e.target as HTMLElement).closest('[data-survey-close]')) {
     hideSurvey(true);
     return;
@@ -8852,14 +9014,16 @@ function syncPlanetsideLayout(): void {
     document.documentElement.style.removeProperty('--planetside-top');
     syncSurfaceChromeBottom();
     if (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
-      || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID) syncSurfaceVistaPresentation();
+      || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+      || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID) syncSurfaceVistaPresentation();
     return;
   }
   const r = sideEl.getBoundingClientRect();
   if (r.width > 0 && r.height > 0) document.documentElement.style.setProperty('--planetside-top', r.top.toFixed(2) + 'px');
   syncSurfaceChromeBottom();
   if (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
-    || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID) syncSurfaceVistaPresentation();
+    || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+      || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID) syncSurfaceVistaPresentation();
 }
 const surfaceSceneLayoutObserver = new ResizeObserver(syncPlanetsideLayout);
 for (const element of [sideEl, ...['topbar', 'searchbox', 'objchip', 'sceneactions']
@@ -18187,6 +18351,8 @@ async function loadSave(): Promise<void> {
             lastOutcome: lastEcologyEdgeOutcome,
           }),
         },
+        localAi: { available: localAiGame !== null, status: localAiStatus,
+          jobs: localAiGame?.snapshot() ?? [], mounted: surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID },
         landing: {
           schema: 'cf-v2-arc0-landing-app-state/v1',
           lastOutcome: lastArc0LandingOutcome,
@@ -19052,6 +19218,7 @@ async function loadSave(): Promise<void> {
            animation frame, and this serviced task boundary. */
         speciesArtLoader.activate();
         startAudiovisualPilot();
+        startLocalAiPreview();
         try {
           const binding = __CF_EVIDENCE_BUILD__
             ? (window as unknown as Record<string, unknown>).__cfSliceReadyWitness : undefined;
@@ -19082,3 +19249,20 @@ async function loadSave(): Promise<void> {
   if (document.readyState === 'complete') emitBootReady();
   else addEventListener('load', emitBootReady, { once: true });
 })();
+
+// This optional preview uses the ordinary Land/Survey/Notifications path. The
+// approved-quality default remains untouched until device and fidelity gates pass.
+function startLocalAiPreview(): void {
+  if (new URLSearchParams(location.search).get('localai') !== '1' || localAiStatus || localAiGame) return;
+  localAiStatus = 'Preparing local AI preview…';
+  void import('./local-ai-game.js').then(module => module.createLocalAiGameV1({
+    refresh: refreshLocalAiPresentation, notice: (title, message) => toast(title, message),
+    view: viewLocalAiOriginal,
+    captureView: () => {
+      const serial = renderedSceneReceipt.serial, runtime = f4Runtime;
+      return () => renderedSceneReceipt.serial === serial && f4Runtime === runtime
+        && !replacementTransaction && !replacementReloadPending && !importWriteInFlight;
+    },
+  })).then(owner => { localAiGame = owner; localAiStatus = ''; refreshLocalAiPresentation(); restoreCurrentAiLandfall(); })
+    .catch(error => { localAiStatus = 'Local AI preview runtime unavailable. Ordinary landing remains available.'; noteSurfaceVistaFault(error, 'Local AI setup unavailable'); refreshLocalAiPresentation(); });
+}
