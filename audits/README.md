@@ -1,5 +1,14 @@
 # audits/ — external review bundles, preserved
 
+September 9 full-painting continuation: [viewer/runtime/fidelity evidence](AI_LANDFALL_CONTINUATION_20260909/README.md)
+and [paired handoff](AI_LANDFALL_CONTINUATION_20260909/HANDOFF.md). Full-resolution inspection,
+actual-size panning and Survey reload access passed the native desktop/small-viewport check on
+unchanged retained image bytes; first observer/focus failures remain intact. The static runtime
+pack builds/verifies at27.08MiB without weights. A detached full-identity review contract retains
+both actual negative species outputs. Favorable finish feedback is recorded; species fidelity,
+physical phone/full6.23GiB model and combined shipping/PWA/distribution gates stay open. No hosted
+actions or new generation; Claude-app review pending. This is the current continuation below.
+
 September 9 local AI continuation: [normal-game integration and species evidence](AI_GAME_INTEGRATION_20260909/README.md)
 and [resumable browser model delivery](LOCAL_MODEL_DELIVERY_20260909/README.md) retain the actual
 Land/progress/View/original-reload run and native small-file OPFS checks. Both generated paintings

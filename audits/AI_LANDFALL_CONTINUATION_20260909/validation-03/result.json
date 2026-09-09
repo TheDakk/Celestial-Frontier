@@ -1,0 +1,75 @@
+{
+  "startedAt": "2026-09-09T15:58:14.754835+00:00",
+  "checks": [
+    {
+      "label": "semantic-focus",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-continuation-semantic-focus",
+        "--",
+        "port/v2/node_modules/.bin/vitest",
+        "run",
+        "--root",
+        "port/v2",
+        "tests/landfall-viewer.test.ts",
+        "tests/local-ai-game.test.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "typescript",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-continuation-typescript",
+        "--",
+        "npm",
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "root-validate",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "ai-continuation-root-validate",
+        "--",
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "sha256": "fbd9bd7816c8adb944510f9388805480e45188cd686440253e7d98ee97377393"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-game.ts",
+      "sha256": "5c7c59d0b1931d2c9a5e70821a5a3b7d607532ce3052beb1b0cb2746e76f5145"
+    },
+    {
+      "path": "port/v2/apps/game/src/landfall-viewer.ts",
+      "sha256": "1ccd6e3a334addad39f25b87e5727f596f9a4b69659d38b56fe9a896143b88af"
+    },
+    {
+      "path": "port/v2/apps/game/src/landfall-fidelity.ts",
+      "sha256": "067f552dce335f9e305ab1aa5f622be15a23ef032e3d56893dbe44c0195c63f3"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "sha256": "eb079f791924f9dc4e23938107929a361c48b67973ec2cf2b0745e98b8abb839"
+    }
+  ],
+  "status": "PASS",
+  "finishedAt": "2026-09-09T15:58:30.589191+00:00"
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "cf.landfall-fidelity-source-review.v1",
+  "scope": "Read-only pinned graph/runtime source review; no weights download or generation",
+  "baseCommit": "309809f4df12c711d75822eff1e21bc9ad8a1463",
+  "model": {
+    "id": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "graph": "transformer_q8.onnx",
+    "graphSha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102"
+  },
+  "sources": {
+    "tools/local-image-generation/stage-worker.mjs": {
+      "bytes": 11212,
+      "sha256": "337aaea3f7f9804a4409887367b922ed68e02a8ee3dc7f0c859c913dfa52d8ac"
+    },
+    "tools/local-image-generation/pipeline-math.mjs": {
+      "bytes": 10225,
+      "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+    },
+    "tools/local-image-generation/source-contract.md": {
+      "bytes": 18988,
+      "sha256": "d0da10bfacd809fc09191b495224a20de29f8d3a5efecb2f502b7ebf4ca540cf"
+    },
+    "port/v2/apps/game/src/local-ai-runtime.ts": {
+      "bytes": 10009,
+      "sha256": "827cb9fa48d0e1a4e7367c484a7ef9cbe9f62f4b1585dd4c0df528c003dcbdef"
+    },
+    "port/v2/apps/game/src/local-model-manifest.ts": {
+      "bytes": 3866,
+      "sha256": "398dd13f6dc6a764a9903782a1000305ee99a1a9dc3d1ad57292a2c27dfee0c6"
+    },
+    "port/v2/apps/game/src/landfall-conditioning.ts": {
+      "bytes": 14207,
+      "sha256": "6cce11db47d7d096fc21c61a733f990f6a66eb51fdcd3b1540a73ccd4aa43402"
+    },
+    "port/v2/apps/game/src/landfall-fidelity.ts": {
+      "bytes": 15781,
+      "sha256": "549c06851aeeba42c595a9e7b91b61a3320e4cc6a6cdc110c928ad5aaf7cc9d4"
+    },
+    "port/v2/tests/landfall-fidelity.test.ts": {
+      "bytes": 18024,
+      "sha256": "464199d05b830a5e192a8cf7bbd18dbaf698f09e002346de846258730919e2d5"
+    },
+    "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/raw-model-signatures.json": {
+      "bytes": 1124,
+      "sha256": "afa146cea7ce57688fe2bc2bdfbedf3be2a89a8547e0800c69058c564a1fb4fa"
+    },
+    "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/known-negative-observations.json": {
+      "bytes": 13304,
+      "sha256": "d4b251ebcc277a1139b1fe04bb05978b1f329698b86e7448ffbad50454d318e6"
+    }
+  },
+  "primarySources": [
+    {
+      "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+      "status": "official model card browsed; supports image editing and multiple references, does not promise prompt adherence"
+    },
+    {
+      "url": "https://huggingface.co/cgb/flux2-klein-4b-onnx-webgpu/tree/3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+      "status": "Exact pinned graph read locally; no new weights download"
+    },
+    {
+      "url": "https://github.com/huggingface/diffusers/blob/040c7cde626504d14caf63b13b8b25b6a9f62120/src/diffusers/pipelines/flux2/pipeline_flux2_klein.py",
+      "status": "Earlier source inspection retained in current source-contract.md; fresh raw read unavailable and separately recorded",
+      "priorSourceSha256": "8a57a8a7f1c22fc0c5bc5d3fd1bd9bc76c17c1f4d6644cc73370651dd955358e"
+    }
+  ],
+  "conclusion": {
+    "currentConditioning": "global text plus whole reference-token groups",
+    "currentGameReferenceCount": 1,
+    "lowLevelWorkerMultipleReferences": true,
+    "regionalMaskInput": false,
+    "perInstanceSpatialControl": false,
+    "enforcedObjectCount": false,
+    "fullQualityAccepted": false
+  }
+}

@@ -6,6 +6,7 @@ import { createAiLandfallOriginalStoreV1, type AiLandfallInputV1, type AiLandfal
 import { createLocalModelDeliveryV1, probeLocalModelCapabilitiesV1 } from './local-model-delivery.js';
 import { PINNED_LOCAL_MODEL_MANIFEST_V1 } from './local-model-manifest.js';
 import { LocalModelSha256V1 } from './local-model-sha256.js';
+import { createLandfallViewerV1, captureLandfallFocusReturnV1, type LandfallViewerV1 } from './landfall-viewer.js';
 import { generateLocalLandfallV1, type LocalAiRuntimeConfigV1 } from './local-ai-runtime.js';
 import type { BiomeVistaRenderRequestV1 } from './biome-vista-protocol.js';
 import type { CanonicalWorldRoster } from './world-roster.js';
@@ -18,8 +19,18 @@ export interface LocalAiGameV1 {
   enqueue(input: AiLandfallInputV1): string;
   find(input: AiLandfallInputV1): Promise<AiLandfallOriginalV1 | null>;
   html(worldKey?: string): string;
+  inspect(input: AiLandfallInputV1, originalId: string): Promise<void>;
+  closeInspector(): void;
   action(action: string, jobId: string): Promise<void>;
   snapshot(): readonly AiLandfallJobV1[];
+}
+export interface LocalAiGameRuntimeManifestV1 extends LocalAiRuntimeConfigV1 {
+  readonly schema: 'cf.local-ai-game-preview.v1' | 'cf.local-ai-runtime-pack.v1';
+  readonly modelSource: 'verified-installed-developer-cache' | 'synthetic-fixture' | 'verified-opfs-only';
+  readonly modelId: string;
+  readonly fixture?: boolean;
+  readonly sourceManifestSha256?: string;
+  readonly autoDownload?: boolean;
 }
 export interface LocalAiGameOptionsV1 {
   readonly refresh: () => void;
@@ -35,7 +46,16 @@ export async function createLocalAiGameV1(options: LocalAiGameOptionsV1): Promis
   if (!response.ok) throw new Error('Local AI preview runtime is unavailable');
   const raw = await response.text();
   if (raw.length > 131072) throw new Error('Local AI runtime manifest is oversized');
-  const config = JSON.parse(raw) as LocalAiRuntimeConfigV1;
+  const config = JSON.parse(raw) as LocalAiGameRuntimeManifestV1;
+  const installedOnly = config.schema === 'cf.local-ai-runtime-pack.v1';
+  if (config.modelId !== PINNED_LOCAL_MODEL_MANIFEST_V1.modelId
+    || (installedOnly ? config.modelSource !== 'verified-opfs-only' || config.q8Block32 !== false
+      || config.autoDownload !== false || config.sourceManifestSha256 !== PINNED_LOCAL_MODEL_MANIFEST_V1.sourceManifestSha256
+      || !config.modelFiles || Object.keys(config.modelFiles).length !== 0
+      : config.schema !== 'cf.local-ai-game-preview.v1'
+        || !['verified-installed-developer-cache', 'synthetic-fixture'].includes(config.modelSource)
+        || (config.modelSource === 'synthetic-fixture' && config.fixture !== true)))
+    throw new Error('Unpinned model delivery source');
   const ownUrl = (value: unknown): string => {
     if (typeof value !== 'string') throw new Error('Invalid local runtime URL');
     const url = new URL(value, location.href);
@@ -49,13 +69,14 @@ export async function createLocalAiGameV1(options: LocalAiGameOptionsV1): Promis
     || typeof config.reference.speciesVisualKey !== 'string' || config.reference.speciesVisualKey.length > 16384)
     throw new Error('Unpinned local runtime');
   const modelFiles: Record<string, string> = {};
-  for (const file of PINNED_LOCAL_MODEL_MANIFEST_V1.files) modelFiles[file.path] = ownUrl(config.modelFiles?.[file.path]);
+  if (!installedOnly) for (const file of PINNED_LOCAL_MODEL_MANIFEST_V1.files) modelFiles[file.path] = ownUrl(config.modelFiles?.[file.path]);
   if (config.q8Block32) for (const path of ['transformer-q8-block32.onnx', 'repacked-scale-zero.data']) modelFiles[path] = ownUrl(config.modelFiles?.[path]);
   const runtime: LocalAiRuntimeConfigV1 = Object.freeze({ ...config, workerUrl: ownUrl(config.workerUrl),
     modelFiles: Object.freeze(modelFiles), reference: Object.freeze({ ...config.reference, url: ownUrl(config.reference.url) }) });
   const capability = await probeLocalModelCapabilitiesV1();
   const store = createAiLandfallOriginalStoreV1();
-  let deliveryBusy: AbortController | null = null, useInstalled = false, status = '';
+  let deliveryBusy: AbortController | null = null, useInstalled = installedOnly, status = '';
+  let viewer: LandfallViewerV1 | null = null, inspectionSequence = 0;
   const delivery = createLocalModelDeliveryV1({ manifest: PINNED_LOCAL_MODEL_MANIFEST_V1,
     onStatus: value => { status = `Model ${value.phase} · ${(value.verifiedBytes / 1e9).toFixed(2)} / 6.69 GB verified`; options.refresh(); } });
   const jobs = new AiLandfallJobsV1({ store,
@@ -85,7 +106,7 @@ export async function createLocalAiGameV1(options: LocalAiGameOptionsV1): Promis
     const eta = job.progress.etaMs === null ? 'ETA estimating' : `About ${Math.max(1, Math.ceil(job.progress.etaMs / 1000))}s drawing + final processing`;
     return `<div data-ai-landfall-job="${job.jobId}" style="flex-basis:100%;min-width:0;padding:8px 0"><strong>${active ? 'Landing' : job.status === 'ready' ? 'Landfall ready' : 'Landfall ' + esc(job.status)}</strong>`
       + (active ? `<div>${esc(job.progress.phase)} · ${eta}</div><progress aria-label="Landing work completed" max="100" value="${job.progress.completed}" style="width:100%;accent-color:#dfbc74"></progress>${job.status !== 'canceling' ? button('cancel', 'Cancel painting', job.jobId) : ''}`
-        : job.status === 'ready' ? button('view', 'View landfall', job.jobId)
+        : job.status === 'ready' ? button('view', 'View landfall', job.jobId) + button('inspect', 'Inspect painting', job.jobId)
           : `<p>The painting ${job.status === 'canceled' ? 'was canceled' : 'could not finish'}. Your expedition is safe.</p>${button('retry', 'Retry painting', job.jobId)}`) + '</div>';
   };
   const api: LocalAiGameV1 = {
@@ -104,20 +125,33 @@ export async function createLocalAiGameV1(options: LocalAiGameOptionsV1): Promis
     },
     enqueue: input => {
       if (deliveryBusy) throw new Error('Finish model storage before queuing a painting');
+      if (installedOnly && !delivery.status().ready) throw new Error('Install or verify the browser model before queuing a painting');
       return jobs.enqueue(input);
     }, find: input => store.find(input), snapshot: () => jobs.snapshot(),
+    closeInspector: () => { inspectionSequence++; viewer?.close(); },
+    async inspect(input, originalId) {
+      const sequence = ++inspectionSequence, stillCurrent = options.captureView();
+      const returnFocus = captureLandfallFocusReturnV1();
+      const original = await store.read(input, originalId);
+      if (sequence !== inspectionSequence || !stillCurrent()) return;
+      if (!original) { options.notice('Painting unavailable', 'The retained original could not be verified.'); return; }
+      viewer ??= createLandfallViewerV1();
+      await viewer.open(original, returnFocus);
+    },
     html(worldKey) {
       const rows = jobs.snapshot().filter(row => worldKey === undefined || row.input.worldKey === worldKey);
       return `<div data-local-ai style="flex-basis:100%;min-width:0"><p style="font-size:12px">Local AI preview · Earth anatomy study · art and phone quality under review.</p>${rows.map(rowHtml).join('')}`
         + (worldKey !== undefined && rows.length === 0 ? '<p style="font-size:12px">Supported Earth landings queue a painting while you keep exploring.</p>' : '')
-        + `<details><summary style="min-height:44px;cursor:pointer">Local model storage</summary><p>6.69 GB model, separate from your artwork cache. ${capability.supported ? 'Required browser features detected; device performance is unqualified.' : 'This browser lacks required local model features.'}</p><p>${esc(status || 'Using this preview’s verified local developer cache.')}</p>`
+        + `<details><summary style="min-height:44px;cursor:pointer">Local model storage</summary><p>6.69 GB model, separate from your artwork cache. ${capability.supported ? 'Required browser features detected; device performance is unqualified.' : 'This browser lacks required local model features.'}</p><p>${esc(status || (installedOnly ? 'Install or verify your browser copy before drawing. No model is downloaded automatically.' : 'Using this preview’s verified local developer cache.'))}</p>`
         + (deliveryBusy ? button('stop-download', 'Pause download') : button('install', 'Download / resume 6.69 GB') + button('verify', 'Use verified browser copy'))
         + '<p>Downloads start only when selected. Pausing retains verified chunks. Originals are retained separately; no automatic original deletion.</p></details></div>';
     },
     async action(action, jobId) {
       if (action === 'cancel') { jobs.cancel(jobId); return; }
       const job = jobs.snapshot().find(row => row.jobId === jobId);
-      if (action === 'view' && job?.status === 'ready' && job.originalId) {
+      if (action === 'inspect' && job?.status === 'ready' && job.originalId) {
+        await api.inspect(job.input, job.originalId);
+      } else if (action === 'view' && job?.status === 'ready' && job.originalId) {
         const stillCurrent = options.captureView();
         const original = await store.read(job.input, job.originalId);
         if (!stillCurrent()) return;
@@ -136,11 +170,12 @@ export async function createLocalAiGameV1(options: LocalAiGameOptionsV1): Promis
         deliveryBusy = new AbortController(); options.refresh();
         try {
           const result = action === 'install' ? await delivery.install({ signal: deliveryBusy.signal }) : await delivery.verify({ signal: deliveryBusy.signal });
-          useInstalled = result.ready;
+          useInstalled = installedOnly || result.ready;
           if (!result.ready) status += ' · ' + (result.error ?? 'Not ready');
         } finally { deliveryBusy = null; options.refresh(); }
       }
     },
   };
+  globalThis.addEventListener?.('pagehide', () => api.closeInspector());
   return Object.freeze(api);
 }

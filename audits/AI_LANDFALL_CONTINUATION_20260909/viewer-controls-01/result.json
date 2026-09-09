@@ -1,0 +1,47 @@
+{
+  "startedAt": "2026-09-09T15:33:55.634006+00:00",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "ai-viewer-controls",
+    "--",
+    "port/v2/node_modules/.bin/vitest",
+    "run",
+    "--root",
+    "port/v2",
+    "tests/landfall-viewer.test.ts",
+    "tests/local-ai-game.test.ts",
+    "tests/painted-earth-mount-ownership.test.ts"
+  ],
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/landfall-viewer.ts",
+      "sha256": "0e50be0d1c0a7c70e5db39b1e636cf1744bac58ddfd22cb40fdb0d3a9eafea68"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-game.ts",
+      "sha256": "fa89dc36e2b5636536ef7ba7797c77d2b84234fdd3bbae3d670dd95fddc3622d"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "sha256": "6de7440f4c0b01d5decd2e6ee0ba9ce0d63f78ea5bcaf91e4e430f913894fda5"
+    },
+    {
+      "path": "port/v2/tests/landfall-viewer.test.ts",
+      "sha256": "bf453f85bee79652405a7db4763c6b1be438b82bbeb2114461231bd6d131eadd"
+    },
+    {
+      "path": "port/v2/tests/local-ai-game.test.ts",
+      "sha256": "7eaf6f3dac8b59c84d9392d92376d3bbb96ac5f327b081a53d08162bd062997d"
+    },
+    {
+      "path": "port/v2/tests/painted-earth-mount-ownership.test.ts",
+      "sha256": "f38e8fc4d1409dc61b37798efc9dee80d09937d2141db7c0260f90beb703c8cb"
+    }
+  ],
+  "scope": "Unit owner outcomes with explicit DOM/image/GPU/storage doubles; no native or model qualification",
+  "exitCode": 1,
+  "finishedAt": "2026-09-09T15:33:56.573146+00:00",
+  "status": "FAIL"
+}

@@ -1,0 +1,54 @@
+{
+  "startedAt": "2026-09-09T15:39:04.059632+00:00",
+  "source": [
+    {
+      "path": "tools/local-image-generation/runtime-pack.mjs",
+      "bytes": 20325,
+      "sha256": "fb849696bcce77f19b5d0f6e2f4c31fe70355c471197908689e3b811579c27d3"
+    },
+    {
+      "path": "tools/local-image-generation/runtime-pack.test.mjs",
+      "bytes": 10996,
+      "sha256": "da5fcf15ae3254909e7d2f4bfb161085d6036bf0e7f8d04bb6b78281217fbb79"
+    },
+    {
+      "path": "tools/local-image-generation/runtime-pack-source-pins.json",
+      "bytes": 8251,
+      "sha256": "e8e46745d13041b01b80fbffc8e16d489f9a0962914957b0783b35a559a90514"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "--check",
+        "tools/local-image-generation/runtime-pack.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "01.stdout.txt",
+      "stderr": "01.stderr.txt"
+    },
+    {
+      "argv": [
+        "node",
+        "--check",
+        "tools/local-image-generation/runtime-pack.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "02.stdout.txt",
+      "stderr": "02.stderr.txt"
+    },
+    {
+      "argv": [
+        "node",
+        "--test",
+        "tools/local-image-generation/runtime-pack.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "03.stdout.txt",
+      "stderr": "03.stderr.txt"
+    }
+  ],
+  "status": "PASS",
+  "finishedAt": "2026-09-09T15:39:04.786154+00:00"
+}

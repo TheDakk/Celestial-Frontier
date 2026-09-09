@@ -1,5 +1,22 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+## Local AI inspection and delivery — matches code as of 2026-09-09
+
+`landfall-viewer.ts` owns a read-only native dialog for exact retained paintings, fit/native-size
+panning, lifetime background isolation, keyboard/focus handling and transient URL cleanup.
+`local-ai-game.ts` rereads/rehashes before inspection, fences competing/stale reads and requires
+explicit OPFS readiness for static installed-only runtime manifests. Main stores only its currently
+mounted original reference, restores an Inspect entry after reload, and preserves the normal
+scene/navigation/transaction owners. The base scene band and existing controls stay fixed.
+
+`tools/local-image-generation/runtime-pack.mjs` builds/verifies the exact 27.08 MiB static runtime
+closure with pinned notices/reference, no weights. The normal controller admits this optional
+pack, but combined app/PWA delivery, physical phone and distribution qualification remain open.
+`landfall-fidelity.ts` is a detached artifact-bound visual-review consistency contract, not an
+image classifier or live authority. All six identities/anchors and the full nineteen-genome
+snapshot remain canonical. See [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) and the
+[continuation packet](audits/AI_LANDFALL_CONTINUATION_20260909/README.md) for exact limits/evidence.
+
 ## Earth layout geometry ownership — matches code as of 2026-09-09
 
 `painted-vista-load.ts` now checks the existing8-second monotonic expiry after awaited stages
@@ -30,8 +47,8 @@ should need no separate AI installer. The isolated authoring proof in `tools/loc
 pins FLUX.2 Klein4B ONNX export3bffc0ef, ORT Web1.29.0 and Tokenizers0.2.0. This is a research
 candidate, not a selected shipping model. The20 runtime model files total6,691,020,416 bytes
 (6.23GiB), separate from runtime packages, model staging, saves, scene cache and live GPU/RAM.
-The built-in Codex tool created the current artwork during authoring; it is not an embedded game
-generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
+The built-in Codex tool created direction/reference artwork during authoring; it is not an embedded
+game generator. Later retained native candidates are actual local browser model outputs. Hardware, download size, quality, latency, costs and exact shared-image retention need
 qualification. A seed alone is not an exact-pixel contract. September9's continued local coding direction now covers the isolated local browser proof and
 its pinned development model cache. It does not accept mandatory player storage or raise shipping
 budgets. No generation service is called; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
