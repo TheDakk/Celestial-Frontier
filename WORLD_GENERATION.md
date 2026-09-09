@@ -14,7 +14,10 @@ are different runtime choices. No model, browser/native integration or paid serv
 The built-in Codex tool created the current artwork during authoring; it is not an embedded game
 generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
 qualification. A seed alone is not an exact-pixel contract. No hosted action or model installation
-is authorized. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md). The next bounded proof should create one scene on demand from an existing canonical
+is authorized. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+Local direction is conditional on feasibility, modest storage and no separate player AI setup.
+Codex's proposed under100MB initial download/500MB app-managed storage target is not a proven
+model budget or a changed runtime gate. [Latest constraints and recommendation](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md). The next bounded proof should create one scene on demand from an existing canonical
 world and full roster before adding a larger prepainted catalogue. Preserve generation draw order,
 biome mapping, complete organism identities, saves, clocks and current CF1/CFB formats.
 
