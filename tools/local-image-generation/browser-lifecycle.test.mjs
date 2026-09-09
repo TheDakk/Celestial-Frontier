@@ -19,17 +19,22 @@ function deferred() {
 }
 
 function harness({ holdRecipe = false, holdReference = false, ignoreReferenceAbort = false, matte = undefined, modelDerivative = undefined,
-  holdBitmap = false, holdPreparation = null, referenceFailure = null, bitmapCloseFailure = false } = {}) {
+  holdBitmap = false, holdPreparation = null, referenceFailure = null, bitmapCloseFailure = false, omitPostDecodeCancellation = false } = {}) {
   const bytes = new Uint8Array([10, 20, 30, 40]);
   const reference = { url: '/reference.png', width: 2, height: 1, matte,
     sha256: createHash('sha256').update(bytes).digest('hex') };
+  const worldKey='CF1|g:999@90,-60|s:424242@560,170|p:133#2',environmentFingerprint='fixture-environment';
   const config = { width: 2, height: 1, seed: 133, steps: 2, modelDerivative,
+    request:{worldKey,environmentFingerprint},roster:{worldKey,environmentFingerprint,ecologyEpoch:0},
+    appearanceSnapshot:{sha256:'a'.repeat(64),displayPlan:{worldKey,environmentFingerprint,residents:[]}},
     modelRevision: 'fixture-model-revision', chatPrompt: 'fixture prompt', references: [reference] };
   const workers = [], live = new Set(), timers = new Map(), fetches = [], bitmaps = [], canvases = [], trace = [];
   const pendingReference = deferred(), pendingBitmap = deferred(), pendingPreparation = deferred();
   let digestCalls = 0,recipeFailure=false;
-  const elements = Object.fromEntries(['events', 'status', 'generate', 'cancel', 'painting', 'landing-progress','landing-meter','landing-label','notice','notice-text','notice-open','planet','explore','planet-panel','journal-panel','roster']
-    .map(id => [id, { textContent: '', disabled: false, hidden:false,setAttribute(name,value){this[name]=value;} }]));
+  const elements = Object.fromEntries(['events', 'status', 'generate', 'cancel', 'painting', 'landing-progress','landing-meter','landing-label','notice','notice-text','notice-open','planet','explore','planet-panel','journal-panel','roster','landing-error']
+    .map(id => [id, { textContent: '', disabled: false, hidden:false,
+      setAttribute(name,value){this[name]=value;},getAttribute(name){return this[name]??null;} }]));
+  elements.planet.setAttribute('data-world-key',worldKey);
   const frames = [];
   const painting = elements.painting;
   painting.getContext = kind => {
@@ -130,7 +135,12 @@ function harness({ holdRecipe = false, holdReference = false, ignoreReferenceAbo
     setTimeout: (callback, delay) => { const handle = {}; timers.set(handle, { callback, delay }); return handle; },
     clearTimeout: handle => timers.delete(handle),
   };
-  runInNewContext(source, sandbox, { filename: 'actual-browser-proof.mjs' });
+  let controllerSource=source;
+  if(omitPostDecodeCancellation){
+    const guard="    if(generationController.signal.aborted)throw Error('Canceled before publication');\n";
+    assert.equal(controllerSource.split(guard).length,2);controllerSource=controllerSource.replace(guard,'');
+  }
+  runInNewContext(controllerSource, sandbox, { filename: 'actual-browser-proof.mjs' });
   return { proof: window.cfImageProof, elements, workers, live, timers, fetches, frames, bitmaps, canvases, trace,
     setRecipeFailure:value=>{recipeFailure=value;},
     resolveReference: () => pendingReference.resolve(response()),
@@ -167,6 +177,16 @@ function assertFailed(h, message) {
   assert.equal(h.elements.generate.disabled, false);
   assert.equal(h.elements.cancel.disabled, true);
   assertReferenceResourcesRetired(h);
+}
+
+function assertVisibleFailure(h,canceled=false){
+  assert.equal(h.elements['landing-error'].hidden,false);
+  assert.equal(h.elements['landing-error'].textContent,canceled
+    ?'Landing canceled. Select Earth to start again.':'Landing unavailable. Select Earth to try again.');
+  assert.equal(h.elements.status.textContent,canceled?'Landing canceled':'Landing unavailable');
+  assert.equal(h.elements.notice.hidden,true);assert.equal(h.elements.painting.hidden,true);
+  assert.equal(h.elements['landing-progress'].hidden,true);
+  assert.equal(h.proof.png,undefined);assert.equal(h.proof.completionDestination,undefined);
 }
 
 test('actual four-stage flow publishes exact decoded pixels only after every worker retires', async () => {
@@ -446,4 +466,83 @@ test('a completed landing followed by recipe failure cannot republish its prior 
   assert.equal(h.elements.notice.hidden,true);assert.equal(h.elements.painting.hidden,true);assert.equal(h.proof.png,undefined);
   h.elements.explore.onclick();h.elements['notice-open'].onclick();assert.equal(h.elements['planet-panel'].hidden,true);
   assert.equal(h.workers.length,4);assert.equal(h.elements.generate.disabled,false);
+});
+
+
+test('already requested cancellation at the awaited decode boundary blocks publication',async()=>{
+  const h=harness();const {run,worker}=await reachStage(h,3);
+  worker.complete(rgb());
+  // Same JavaScript turn, before the resolved await continuation. This models
+  // the exposed cancel API, not an input click interrupting synchronous paint.
+  h.proof.cancel();assert.equal(await run,'failed');
+  assertFailed(h,/Canceled before publication/);assertVisibleFailure(h,true);
+  assert.ok(!h.trace.includes('paint'));assert.ok(!h.trace.includes('publish'));
+});
+
+test('the cancellation outcome ruler rejects a controller with its post-decode guard removed',async()=>{
+  const h=harness({omitPostDecodeCancellation:true});const {run,worker}=await reachStage(h,3);
+  worker.complete(rgb());h.proof.cancel();assert.equal(await run,'complete');
+  assert.equal(h.frames.length,1);assert.ok(h.proof.png);assert.equal(h.elements.notice.hidden,false);
+  assert.throws(()=>assertFailed(h,/Canceled before publication/));
+});
+
+test('a cancel requested after synchronous publication does not retract a completed painting',async()=>{
+  const h=harness();const {run,worker}=await reachStage(h,3);worker.complete(rgb());assert.equal(await run,'complete');
+  const png=h.proof.png,destination=h.proof.completionDestination;
+  h.proof.cancel();await flush();
+  assert.equal(h.proof.state,'complete');assert.equal(h.proof.png,png);
+  assert.equal(h.proof.completionDestination,destination);assert.equal(h.elements.notice.hidden,false);
+});
+
+test('destination changes before the decode continuation cannot publish into the Earth panel',async()=>{
+  const h=harness();const {run,worker}=await reachStage(h,3);
+  h.proof.recipe.roster.ecologyEpoch=1;worker.complete(rgb());assert.equal(await run,'failed');
+  assertFailed(h,/Landing destination changed before publication/);assertVisibleFailure(h);
+});
+
+test('the completion action rejects wrong or stale identity and destination before an exact restored return',async()=>{
+  const h=harness();const {run,worker}=await reachStage(h,3);worker.complete(rgb());assert.equal(await run,'complete');
+  h.elements.explore.onclick();
+  assert.ok(Object.isFrozen(h.proof.completionDestination));
+  assert.equal(h.proof.completionDestination.worldKey,h.proof.recipe.request.worldKey);
+  const recipe=h.proof.recipe;
+  const changes=[
+    [recipe.request,'worldKey','CF1|wrong-world'],[recipe.request,'environmentFingerprint','wrong-environment'],
+    [recipe.roster,'ecologyEpoch',1],[recipe.appearanceSnapshot,'sha256','b'.repeat(64)],
+    [h.elements['notice-open'],'data-world-key','CF1|wrong-notice'],[h.elements.planet,'data-world-key','CF1|wrong-panel'],
+    [h.proof,'landing',{...h.proof.landing,key:'wrong-job'}],[h.proof,'png','data:image/png;base64,OTHER'],
+  ];
+  for(const [target,key,value] of changes){
+    const original=target[key];target[key]=value;
+    h.elements['notice-open'].onclick();
+    assert.equal(h.elements['journal-panel'].hidden,false,`wrong ${key} navigated`);
+    assert.equal(h.elements['planet-panel'].hidden,true,`wrong ${key} exposed Earth`);
+    assert.equal(h.elements.notice.hidden,false,`wrong ${key} consumed the notice`);
+    target[key]=original;
+  }
+  h.elements['notice-open'].onclick();
+  assert.equal(h.elements['journal-panel'].hidden,true);assert.equal(h.elements['planet-panel'].hidden,false);
+  assert.equal(h.elements.notice.hidden,true);
+});
+
+test('failed preparation is friendly and visible from the journal while raw details remain in evidence',async()=>{
+  const h=harness();h.elements.explore.onclick();h.setRecipeFailure(true);
+  assert.equal(await h.elements.generate.onclick(),'failed');assertVisibleFailure(h);
+  assert.equal(h.elements['journal-panel'].hidden,false);assert.equal(h.elements['planet-panel'].hidden,true);
+  assert.match(h.proof.error,/HTTP503: \/recipe.json/);
+  assert.ok(h.proof.records.some(row=>row.phase==='failed'&&row.message.includes('HTTP503')));
+  assert.doesNotMatch(h.elements['landing-error'].textContent,/HTTP503|recipe.json/);
+  assert.equal(h.workers.length,0);
+  h.elements['landing-error'].hidden=true;assert.throws(()=>assertVisibleFailure(h));
+  h.elements['landing-error'].hidden=false;assertVisibleFailure(h);
+  h.setRecipeFailure(false);const next=h.elements.generate.onclick();await flush();
+  assert.equal(h.elements['landing-error'].hidden,true);assert.equal(h.elements['landing-error'].textContent,'');
+  h.proof.cancel();assert.equal(await next,'failed');assertVisibleFailure(h,true);
+});
+
+test('a failed inference stays visibly explained when the user remains in the journal',async()=>{
+  const h=harness();const {run,worker}=await reachStage(h,2);h.elements.explore.onclick();
+  worker.progress('gpu-error','device lost fixture');assert.equal(await run,'failed');
+  assertFailed(h,/WebGPU error: device lost fixture/);assertVisibleFailure(h);
+  assert.equal(h.elements['journal-panel'].hidden,false);assert.equal(h.elements['planet-panel'].hidden,true);
 });

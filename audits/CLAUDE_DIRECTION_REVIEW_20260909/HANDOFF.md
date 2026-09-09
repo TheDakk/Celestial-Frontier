@@ -1,19 +1,22 @@
 # Claude review — new game direction and accumulated implementation
 
 Prepared September 9, 2026 for Nick's explicit request that Claude review **all changes since its
-last review**, including the new game direction. This is a review request, not a returned Claude
-verdict. Follow ROADMAP.md and PARALLEL_GIT_PROTOCOL.md from Claude's own correct workspace.
-Do not infer approval from Codex's independent subagent reviews.
+last review**, including the new game direction. Actual Claude completed its read-only review of
+signed `8bdbea9a65b1f64c09906fd99589d75e5d8bc50a` at12:49UTC: **no merge yet**, with explicitly
+limited inspected scope. [Original response](CLAUDE_RESPONSE.md), [receipt](CLAUDE_RECEIPT.json),
+[all finding dispositions](REVIEW_DISPOSITION.md) and [native visual clarification](NATIVE_VISUAL_RECHECK.md)
+are retained. The correction successor is not automatically covered by that source review.
+Follow ROADMAP.md and PARALLEL_GIT_PROTOCOL.md from each agent's own correct workspace.
 
-## Review baselines — distinguish the narrow and broad reviews
+## Prior review baselines — scope before this requested review
 
-- Latest completed Claude response found: September 6 U2 review of executable
+- Latest completed Claude response before this request: September 6 U2 review of executable
   `3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d`, product
   `3f1578e2e416cf5e566e1f799c16ea0a081ae037`. The retained
   [response receipt](../UI_U2_CLAUDE_REVIEW_20260906/RESPONSE_RECEIPT.json) records the exact supplied
   response hash. Claude confirmed the instrument diagnosis, found no product defect in that
   narrow review and judged the unfinished draft **not ready**. It ran no tests/browser.
-- Latest broader review found: September 4 `develop`
+- Latest broader review before this request: September 4 `develop`
   `7bf3e84761da2d1abe21dc6fe751b4bad2308f3b`, in
   [the full-project review](../CELESTIAL_FRONTIER_FULL_REVIEW_20260904.md).
   The September 10 review mentioned in older notes was planned, not completed.
@@ -123,9 +126,11 @@ reference preparation/encode1.12s, denoise51.83s, final decode4.31s. Those timin
 stage loads but exclude initial download and the runner's prior hash verification. They are not
 an all-device ETA or a guarantee about foreground gaming performance.
 
-**Every generated candidate is still rejected for production.** Latest identity-only output has
-one coherent Civet/one tail and improved dry-bank grounding, but its proportions/face drift,
-Platypus reads as a rodent and named botany is wrong. Earlier candidates duplicate/fuse Civets
+**Every generated candidate is still rejected for production.** Native-resolution recheck of the
+latest identity-only output finds one visible head/tail and improved dry-bank grounding, but
+ambiguous body/leg attachment and proportions/face drift. “One coherent Civet” was too strong;
+Claude's proposed second head is also unsubstantiated. Platypus and named botany remain wrong.
+Earlier candidates duplicate/fuse Civets
 or place feet in water. Quality remains `false`; there was no seed sweep, retouch, or promotion.
 See [all raw runs, original failures and visual reviews](../LOCAL_AV_AI_CONTINUATION_20260909/README.md).
 The fixed-shape experiment must retain the same weights, references, dimensions, four steps,
@@ -180,12 +185,17 @@ audiovisual and painted-world prototypes”. Its title/body need an accumulated-
 before any Ready/owner-label step. Budget mode is UNFROZEN/PUBLIC, private fallback3000;
 there are zero new exact hosted-run authorizations. No release/deployment/version bump.
 
-Claude must review from its own correctly owned workspace. The planned local read-only
-invocation reads the signed source's immutable Git objects directly, without importing refs,
-copying source files or merging anything into the Claude worktree. It performs no fetch, hosted
-action, test/build or source write, and does not repurpose an existing Claude session. The
-complete signed target and invocation receipt are recorded separately after checkpointing.
-After a future verified develop merge, Claude may fetch/merge origin/develop into its clean
-anthropic/mac branch; a dirty worktree must first finish or commit its own work. Read-only
-review does not install these changes in that workspace. The old narrow review is not the
-requested new verdict; only an actual returned Claude response can satisfy that review.
+Claude completed the fresh local read-only invocation from its verified Anthropic/macOS
+workspace, reading this signed source's immutable Git objects without importing refs, copying
+source or merging into its worktree. No fetch, hosted action, test/build, source write or existing
+session reuse occurred. The exact request, original CLI response and invocation/signature receipts
+are retained in this packet. Nick does not need to open Claude now to obtain this completed review.
+
+Codex keeps the correction and review record signed locally on openai/mac. GitHub step now: none;
+PR42 remains parked at its older remote head. Its accumulated title/body must be refreshed before
+any future Ready/owner-label step, explicitly distinguishing playable changes from quarantined
+qualityAccepted:false AI/storage research and listing exact-head completed/pending admission.
+No new PR is needed. After a future verified develop merge, Claude may fetch/merge origin/develop
+into its clean anthropic/mac branch; a dirty worktree must first finish or commit its own work.
+The read-only review did not install these local changes in Claude's workspace. Develop/main/live
+site remain unchanged. Budget UNFROZEN/PUBLIC, private fallback3000, zero new hosted attempts.

@@ -1,0 +1,38 @@
+{
+  "schema": "cf.review-controller-focused.v1",
+  "startedAt": "2026-09-09T13:00:23.645622+00:00",
+  "command": [
+    "/opt/homebrew/bin/node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "Claude review controller 01",
+    "--",
+    "/opt/homebrew/bin/node",
+    "--input-type=module",
+    "-e",
+    "import {spawnSync} from 'node:child_process'; import {acquireWorkspaceLock} from './port/v2/tools/workspacelock.mjs'; const release=acquireWorkspaceLock('Claude review controller focused tests'); try { const result=spawnSync(process.execPath,['--test','tools/local-image-generation/browser-lifecycle.test.mjs'],{stdio:'inherit'}); if(result.error)throw result.error; process.exitCode=result.status??1; } finally { release(); }"
+  ],
+  "nodeVersion": "v26.8.1",
+  "sourceBefore": {
+    "tools/local-image-generation/browser-proof.mjs": "65e854e77eb153cd823f5e77e267c6ee499d87e1a1a48b0edbdf23d217a80e85",
+    "tools/local-image-generation/browser-proof.html": "4057c75fc9ac85d39ab00499fae6132ea8e331fd8d9aff12dfd05086d8958f73",
+    "tools/local-image-generation/browser-lifecycle.test.mjs": "74e2997320913315cca9b08c059df9333461af323047f5f2c0045465c354c51c",
+    "tools/local-image-generation/landing-progress.mjs": "5ae9240a74fc7c15719b50a03e89a5891e97a97162be931505b639957f27b461"
+  },
+  "exitCode": 0,
+  "durationSeconds": 0.226904208,
+  "sourceAfter": {
+    "tools/local-image-generation/browser-proof.mjs": "65e854e77eb153cd823f5e77e267c6ee499d87e1a1a48b0edbdf23d217a80e85",
+    "tools/local-image-generation/browser-proof.html": "4057c75fc9ac85d39ab00499fae6132ea8e331fd8d9aff12dfd05086d8958f73",
+    "tools/local-image-generation/browser-lifecycle.test.mjs": "74e2997320913315cca9b08c059df9333461af323047f5f2c0045465c354c51c",
+    "tools/local-image-generation/landing-progress.mjs": "5ae9240a74fc7c15719b50a03e89a5891e97a97162be931505b639957f27b461"
+  },
+  "endedAt": "2026-09-09T13:00:23.891346+00:00",
+  "sourcesUnchanged": true,
+  "status": "PASS",
+  "rawLog": {
+    "path": "audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-01.log",
+    "bytes": 4315,
+    "sha256": "ac608c9fb43572eed2a6b5000589b74577e0bd2fba14441f92519adf4cb454ff"
+  }
+}

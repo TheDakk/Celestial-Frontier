@@ -1,0 +1,46 @@
+{
+  "schema": "cf.synthetic-review-controller-only/v1",
+  "width": 2,
+  "height": 1,
+  "steps": 2,
+  "seed": 133,
+  "modelRevision": "SYNTHETIC-NO-MODEL",
+  "chatPrompt": "Synthetic controller review audit only",
+  "references": [],
+  "request": {
+    "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+    "environmentFingerprint": "synthetic-review-environment"
+  },
+  "roster": {
+    "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+    "environmentFingerprint": "synthetic-review-environment",
+    "ecologyEpoch": 0
+  },
+  "appearanceSnapshot": {
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "displayPlan": {
+      "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+      "environmentFingerprint": "synthetic-review-environment",
+      "residents": [
+        {
+          "name": "Civet"
+        },
+        {
+          "name": "Persimmon"
+        },
+        {
+          "name": "Platypus"
+        },
+        {
+          "name": "Frog"
+        },
+        {
+          "name": "Devil's Club"
+        },
+        {
+          "name": "Cranberry"
+        }
+      ]
+    }
+  }
+}

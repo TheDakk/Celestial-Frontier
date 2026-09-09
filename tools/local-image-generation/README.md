@@ -152,6 +152,15 @@ and announces completion without switching panels. View landfall returns explici
 journal names come from the canonical snapshot, not image interpretation. This is a single
 page-owned job; no normal-game Land hook, save mutation, reward or durable/background queue.
 Closing this development page discards its job/result. Exact original retention is separate work.
+Friendly failure/cancellation remains visible from either panel, with raw errors in the evidence.
+Already-requested cancellation is checked after the decode await, before synchronous publication.
+The completed image and explicit return bind the full job/recipe, PNG, world key, environment,
+ecology epoch and snapshot hash to this existing Earth panel. A changed binding refuses the
+publication/return; this does not implement multiworld routing or grant canonical game authority.
+The 42-case controller suite includes same-turn cancellation and removed-guard controls, changed
+identity/PNG/notice/panel rejection, exact restoration, and visible failure/retry outcomes.
+The actual Claude response, clarified visual record and remaining quality/delivery gaps are in
+[the review disposition](../../audits/CLAUDE_DIRECTION_REVIEW_20260909/REVIEW_DISPOSITION.md).
 
 Progress counts completed stages/steps, not elapsed-time percentage. The first run estimates
 remaining denoising only after two measured steps and labels final processing separately. The
