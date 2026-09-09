@@ -1,0 +1,26 @@
+{
+  "schema": "cf-integration-signing-success/v1",
+  "head": "e4e8c331e77a53c3b71476d918811e1af7c458ee",
+  "parent": "a84f4ea959ae51c6423ed6c88e5274bfa88d8786",
+  "commitTimestamp": "2026-09-09T00:09:18-04:00",
+  "command": [
+    "git",
+    "commit",
+    "-S",
+    "-m",
+    "Repair accumulated develop admission and preserve integration evidence"
+  ],
+  "exitCode": 0,
+  "evidenceSource": "Transcribed from successful PTY terminal output and subsequent command-scoped signature verification; not an independently captured raw signing log.",
+  "authorization": "Nick explicitly said 1Password was unlocked and requested a fresh retry.",
+  "signatureVerified": true,
+  "verification": "Temporary command-scoped allowedSigners using the existing public key; temporary file removed.",
+  "signingConfigurationChanged": false,
+  "privateKeyAccessed": false,
+  "unsignedFallback": false,
+  "causeOfEarlierHelperError": "Unresolved. Successful retry does not identify its cause or establish that the vault was locked.",
+  "priorFailure": "../signing-first-failure.json",
+  "hostedActions": 0,
+  "pushes": 0,
+  "pullRequestsCreated": 0
+}

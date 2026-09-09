@@ -1,5 +1,16 @@
 # GitHub Actions Budget Protocol
 
+**Current directed integration — 2026-09-09 (Codex):** Nick requests the accumulated openai/mac
+work integrated into develop. Signed repair e4e8c331e77a53c3b71476d918811e1af7c458ee passed its
+clean local develop profile (349 files,4,121 tests/1 skip, all3 TypeScript/art/override/spec).
+The following documentation/evidence checkpoint needs its own exact-head rehearsal before the
+normal branch push and unlabeled draft PR. Those unchanged workflow triggers start no Actions.
+Fresh visibility is PUBLIC; mode UNFROZEN/private fallback3,000 stays unchanged. This integration
+request grants no exact owner-label attempt: Nick alone applies actions-budget-approved for the
+reviewed exact PR/head/base, maximum122 runner-minutes (2+120), one attempt/no retry. No hosted run,
+Ready transition, merge, release or deployment has occurred. ROADMAP and the integration packet's
+STATUS.md own the current source/handoff; older dated states below retain their original scope.
+
 **Latest synchronization record — 2026-09-05 (Codex):** Nick reports PR #40 merged as
 `9ea01041dcdc711190bbf909ea8bb743cd993734` after PRs #36/#38/#39. He explicitly authorizes a real
 merge of that develop into clean `openai/mac`, the browser-free develop profile, the existing

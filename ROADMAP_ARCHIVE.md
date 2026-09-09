@@ -1,3 +1,90 @@
+## 2026-09-09 — Historical math-only status clarified in the live handoff
+
+The following earlier status is preserved verbatim; the later signed static implementation supersedes it.
+
+No native Guide/Training/release-note text or version changed: this completed batch adds authoring
+evidence, current references and isolated mathematical tooling; the landing runtime candidate is unapplied.
+
+## 2026-09-09 — Superseded integration handoff before successful signing retry
+
+The following block is preserved verbatim. E4 signing and full local admission subsequently passed.
+
+### Current directed batch — develop integration, 2026-09-09 UTC
+
+Nick explicitly requests integrating the accumulated commits into develop, then continuing the
+on-demand landfall work. This is a new user-directed batch after the unattended campaign ended;
+no automation, unattended deadline extension, model installation or generation service is implied.
+[Durable integration packet](audits/DEVELOP_INTEGRATION_20260909/README.md) and
+[PR description](audits/DEVELOP_INTEGRATION_20260909/PR_DESCRIPTION.md).
+
+Verified row: OpenAI/Codex · macOS · `/Users/nick/Projects/celestial-frontier-openai-mac` ·
+`openai/mac` · upstream `origin/openai/mac`. Starting signed head
+`a84f4ea959ae51c6423ed6c88e5274bfa88d8786`; fresh fetched develop
+`c1791e210158de864fdd475323c3091d9ecbae58` is an ancestor.109 ancestry commits beyond develop,
+46 beyond the agent upstream before this repair commit. No incoming merge/conflict. SSH origin
+`git@github.com:TheDakk/Celestial-Frontier.git`; retained TheDakk auth and fresh fetch passed.
+Tracked source was clean; ambient `.DS_Store` is untouched. Reused uninterrupted startup receipt;
+Node26.8.1 rechecked. Old root Vite PID30716 (elapsed9 days) was not interrupted; admission and
+producer observation built isolated snapshots with their own dependency installs and locks.
+
+Cumulative starting diff:3,695 files,+1,138,294/−1,286 text lines.96.39% of added text is audits;
+runtime/build source54 files,+5,150/−342; verification/authoring111 files,+17,884/−626.
+The packet includes exact categories. No workflow or legacy main.js/HTML change against develop.
+
+One clean tracked-only develop rehearsal on a84f4ea9 stopped at344 files/4,104 tests PASS,
+4 files/5 tests FAIL,1 skip. TypeScript/art/override/spec/browser stages were not reached. The
+first raw14,150-byte log stays SHAe052d24200bc36c60e24f7bdd2bb567e16c2daab80b9cb62a95f4ace4f022db8.
+Repairs: AppChrome now owns detached upper/dock geometry; Main preserves accepted Earth placement,
+visible Planetside precedence and scaling. The build-mode fixture includes its sealed Earth worker.
+The83-bullet authority now binds actual current text SHA
+`073174fbd708495367c01a51b488ddb78cb8730de078e0e30d3b720eab8d1158`.
+
+139 focused tests/all3 TypeScript programs/root validation PASS (1010 named renders,0 boot errors,
+50 original fingerprints; legacy HTML byte-identical). One isolated97-file evidence build observed
+producer `2083bac2808da830f9d8b5c67386c9e1c6816ba4ee56317e121169817fc9f9cb`; measurement remains
+`4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`. Only current producer/pins and
+an append-only selectionRule transition change. The first budget27PASS/1FAIL for missing narrative
+is retained; corrected28PASS. Fixed ruler, ceilings, samples and SceneMemory quarantine unchanged.
+Independent review matched current source/report/pins, seven focused source hashes/five log hashes
+and the original first-red log. No new native presentation or full certificate claimed.
+
+The first PTY signed-commit attempt exited128: `1Password: failed to fill whole buffer`.
+HEAD remains a84f4ea9; all reviewed repairs/evidence stay staged. No unsigned fallback, key/config
+change, push or PR. [Exact transcribed signer result](audits/DEVELOP_INTEGRATION_20260909/signing-first-failure.json).
+Nick reports 1Password is unlocked and explicitly requested one fresh signing attempt.
+Use the existing configured signer without changing keys/security settings; commit the staged repair/evidence,
+then run the mandatory tracked-only develop profile **once on that final clean candidate** before publishing. Do not rerun the older failed
+head. Its exact final admission result must be placed in the PR description with head/base and
+local raw-log location. Do not mistake the scoped results above for that pending full admission.
+All older blockers in the preceding sections remain binding; prior signed static landing
+`3ee104f86c08973243cc8c8a21c1f9ebba41ae76` and immutable97-file/native packets remain unchanged.
+
+Integration path: normal push `openai/mac` and an unlabeled draft PR, base `develop`, source
+`openai/mac`; title “Refine responsive UI and add bounded audiovisual and painted-world prototypes”.
+No open PR existed at the fresh read. Develop requires a PR and exact green `battery`; no direct
+commit or bypass. Workflow bytes are unchanged: branch push/unlabeled draft creation trigger no
+Actions. Actions UNFROZEN/PUBLIC, private fallback3000; no exact owner-label attempt authorized.
+After reviewed local admission, Nick applies `actions-budget-approved` for that exact PR/head/base,
+one agent-lane test-battery attempt, maximum122 runner-minutes (2+120), no retry. A full chain
+requires a separate request. No main merge, release, deploy or version bump.
+
+Other side: Anthropic/Claude Code · macOS · `anthropic/mac` does not yet contain these changes.
+**No need to open or sync Claude now.** Preserve173c806 and Thursday September10 review evidence.
+After an authorized exact green develop merge, Claude fetches/merges origin/develop into its
+clean owned branch at the next batch; no manual copies/messages. Never treat a local commit or
+push as integration. Read actual PR/Git metadata to resume; preserve any concurrent user work.
+
+After integration, resume one canonical **on-demand** scene proof after qualifying its runtime
+route. Nick's local preference remains conditional on quality, reasonable storage and no separate
+player AI setup. Adaptive disposable scene-cache tiers500MB/1GB/2GB/up to5GB are provisional and
+separate from RAM/GPU and total model/build/save/update storage. Protect exact originals and
+complete discoveries; a seed alone is not an exact-image recovery guarantee. No generator,
+adaptive cache, local model, download, physical seasonal clock or exact shared-view storage is
+implemented. [Current requirements](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
+Preserve approved art, named Earth anatomy/botany, complete genomes/lineage, biome mapping, UI,
+saves and clocks. Do not expand a prepainted catalogue or restart the bespoke animation loop.
+Fresh sessions read ROADMAP, PROCESS_LAWS, protocol and UI_TOOLCHAIN startup; do not recreate timers.
+
 ## 2026-09-09 — Superseded local-only handoff before directed develop integration
 
 The following handoff and campaign-authority paragraph are preserved verbatim. Nick then
