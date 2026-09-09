@@ -38,23 +38,44 @@ function stage(job,transfers=[]) {
   });
 }
 async function referencePixels(reference) {
-  const response=await fetch(reference.url,{signal:generationController.signal});if(!response.ok)throw Error('Reference fetch failed');
-  const bytes=await response.arrayBuffer();
-  const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),x=>x.toString(16).padStart(2,'0')).join('');
+  const signal=generationController?.signal;
+  const checkCurrent=()=>{if(!signal||signal.aborted)throw Error('Canceled');};
+  checkCurrent();
+  const {width,height,matte}=reference;
+  if(matte!==undefined&&matte!==null&&(typeof matte!=='string'||!/^#[0-9a-f]{6}$/i.test(matte)))throw Error('Invalid explicit reference matte');
+  const response=await fetch(reference.url,{signal});checkCurrent();if(!response.ok)throw Error('Reference fetch failed');
+  const bytes=await response.arrayBuffer();checkCurrent();
+  const digest=await crypto.subtle.digest('SHA-256',bytes);checkCurrent();
+  const hash=Array.from(new Uint8Array(digest),x=>x.toString(16).padStart(2,'0')).join('');
   if(hash!==reference.sha256)throw Error('Reference hash mismatch');
-  const bitmap=await createImageBitmap(new Blob([bytes]));
-  const canvas=new OffscreenCanvas(reference.width,reference.height);
-  const context=canvas.getContext('2d',{willReadFrequently:true});
-  if(reference.matte){
-    if(!/^#[0-9a-f]{6}$/i.test(reference.matte))throw Error('Invalid explicit reference matte');
-    context.fillStyle=reference.matte;context.fillRect(0,0,canvas.width,canvas.height);
+  let bitmap=null,canvas=null,pixels,preparationFailure=null;
+  try {
+    bitmap=await createImageBitmap(new Blob([bytes]));checkCurrent();
+    canvas=new OffscreenCanvas(width,height);
+    const context=canvas.getContext('2d',{willReadFrequently:true});
+    if(!context)throw Error('Reference 2D context unavailable');
+    if(matte){context.fillStyle=matte;context.fillRect(0,0,width,height);}
+    context.drawImage(bitmap,0,0,width,height);
+    const rgba=context.getImageData(0,0,width,height).data;
+    const count=width*height;pixels=new Float32Array(count*3);
+    for(let i=0;i<count;i++){if(rgba[i*4+3]!==255)throw Error('Reference must be opaque');for(let c=0;c<3;c++)pixels[c*count+i]=rgba[i*4+c]/127.5-1;}
+  }catch(error){preparationFailure=error;throw error;}
+  finally {
+    const failures=[];
+    if(bitmap)try{bitmap.close();}catch(error){failures.push(error);}
+    // The tensor owns its copied values before either scratch dimension is
+    // retired. Attempt both dimensions even if another cleanup step fails.
+    if(canvas)for(const key of ['width','height'])try{canvas[key]=1;}catch(error){failures.push(error);}
+    if(failures.length){
+      const detail=failures.map(error=>String(error?.message??error)).join('; ');
+      throw new AggregateError(preparationFailure?[preparationFailure,...failures]:failures,
+        preparationFailure?`Reference preparation failed: ${preparationFailure.message}; cleanup failed: ${detail}`:`Reference cleanup failed: ${detail}`);
+    }
   }
-  context.drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
-  const rgba=context.getImageData(0,0,canvas.width,canvas.height).data;
-  const count=canvas.width*canvas.height,pixels=new Float32Array(count*3);
-  for(let i=0;i<count;i++){if(rgba[i*4+3]!==255)throw Error('Reference must be opaque');for(let c=0;c<3;c++)pixels[c*count+i]=rgba[i*4+c]/127.5-1;}
-  const pixelSha256=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',pixels.buffer)),x=>x.toString(16).padStart(2,'0')).join('');
-  record({phase:'reference-prepared',url:reference.url,width:canvas.width,height:canvas.height,matte:reference.matte??null,pixelSha256});
+  checkCurrent();
+  const pixelDigest=await crypto.subtle.digest('SHA-256',pixels.buffer);checkCurrent();
+  const pixelSha256=Array.from(new Uint8Array(pixelDigest),x=>x.toString(16).padStart(2,'0')).join('');
+  record({phase:'reference-prepared',url:reference.url,width,height,matte:matte??null,pixelSha256});
   return pixels;
 }
 async function generate({referenceEnabled=true,profile=false}={}) {

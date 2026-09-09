@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "startedAt": "2026-09-09T07:44:19.268169+00:00",
+  "sources": {
+    "tools/local-image-generation/gpu-profile.mjs": "0fe668ef64a383977e6a51856f517ddd541da4d0eda366e396f6e03693ecb7a9",
+    "tools/local-image-generation/gpu-profile.test.mjs": "5fdf203781d9e82e838e9e317385d4870259bd7c4bc265859078acf7e93ceb8d",
+    "tools/local-image-generation/proof-server.mjs": "ba00ea177640881f7d09a6659182f792f7de6f89c70ddc7e79c15f592dcdd946",
+    "tools/local-image-generation/run-browser-proof.mjs": "ee9aa736d4dd22ed07fa72d66e538e236b9b7e2c020d56c0cbbccbaf762c7307",
+    "tools/local-image-generation/identity-conditioning.test.mjs": "2dddffd989f84ce9c9baece8a85014ae26b9e41dfebe9b6b5fccc8fbd0dad1b9",
+    "tools/local-image-generation/browser-proof.mjs": "77cd2ec4bcd948fe6b96c2e39d7fe89457f34e0b7b081b10ee9fa136bf99d702",
+    "tools/local-image-generation/browser-lifecycle.test.mjs": "eb48e403dea21d0e1e533fe3fdd40d09531bec6bca41707298da97fd0cb6e2d3",
+    "audits/LOCAL_AV_AI_CONTINUATION_20260909/reference-cleanup-native-01/run.mjs": "16506e468c2360279406af75ef0f0951de79b6412568aa58abbeb47f166e4e51",
+    "audits/LOCAL_AV_AI_CONTINUATION_20260909/identity-only-controls-01/token-check.mjs": "c0db37cd12f8fcc9012d695a1e8bd1dee008a4c9a021e7dc1faf450979a62f4d"
+  },
+  "steps": [
+    {
+      "name": "conditioning",
+      "command": [
+        "node",
+        "--test",
+        "tools/local-image-generation/gpu-profile.test.mjs",
+        "tools/local-image-generation/identity-conditioning.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "048e9d11dfc1ce00d3aa3416323721a1e1d499856242a6c68e589a5330a93fc6"
+    },
+    {
+      "name": "token-check",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/LOCAL_AV_AI_CONTINUATION_20260909/identity-only-controls-01/token-check.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "682bc37f050d7b93fa97e84932982f3fa66cb056591f7e5f739b5c329a448242"
+    },
+    {
+      "name": "native-runner-syntax",
+      "command": [
+        "node",
+        "--check",
+        "audits/LOCAL_AV_AI_CONTINUATION_20260909/reference-cleanup-native-01/run.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "root-validate",
+      "command": [
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "logSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    }
+  ],
+  "sourceRecheck": {
+    "tools/local-image-generation/gpu-profile.mjs": {
+      "sha256": "0fe668ef64a383977e6a51856f517ddd541da4d0eda366e396f6e03693ecb7a9",
+      "unchanged": true
+    },
+    "tools/local-image-generation/gpu-profile.test.mjs": {
+      "sha256": "5fdf203781d9e82e838e9e317385d4870259bd7c4bc265859078acf7e93ceb8d",
+      "unchanged": true
+    },
+    "tools/local-image-generation/proof-server.mjs": {
+      "sha256": "ba00ea177640881f7d09a6659182f792f7de6f89c70ddc7e79c15f592dcdd946",
+      "unchanged": true
+    },
+    "tools/local-image-generation/run-browser-proof.mjs": {
+      "sha256": "ee9aa736d4dd22ed07fa72d66e538e236b9b7e2c020d56c0cbbccbaf762c7307",
+      "unchanged": true
+    },
+    "tools/local-image-generation/identity-conditioning.test.mjs": {
+      "sha256": "2dddffd989f84ce9c9baece8a85014ae26b9e41dfebe9b6b5fccc8fbd0dad1b9",
+      "unchanged": true
+    },
+    "tools/local-image-generation/browser-proof.mjs": {
+      "sha256": "77cd2ec4bcd948fe6b96c2e39d7fe89457f34e0b7b081b10ee9fa136bf99d702",
+      "unchanged": true
+    },
+    "tools/local-image-generation/browser-lifecycle.test.mjs": {
+      "sha256": "eb48e403dea21d0e1e533fe3fdd40d09531bec6bca41707298da97fd0cb6e2d3",
+      "unchanged": true
+    },
+    "audits/LOCAL_AV_AI_CONTINUATION_20260909/reference-cleanup-native-01/run.mjs": {
+      "sha256": "16506e468c2360279406af75ef0f0951de79b6412568aa58abbeb47f166e4e51",
+      "unchanged": true
+    },
+    "audits/LOCAL_AV_AI_CONTINUATION_20260909/identity-only-controls-01/token-check.mjs": {
+      "sha256": "c0db37cd12f8fcc9012d695a1e8bd1dee008a4c9a021e7dc1faf450979a62f4d",
+      "unchanged": true
+    }
+  },
+  "finishedAt": "2026-09-09T07:44:31.804021+00:00"
+}

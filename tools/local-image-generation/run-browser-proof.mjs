@@ -21,7 +21,7 @@ const cacheDir=path.join(DEFAULT_CACHE_ROOT,manifest.modelId.replace('/','--'),m
 await assertIgnoredCache(cacheDir);
 const receipt={schema:'cf.browser-image-proof-run/v1',startedAt:new Date().toISOString(),status:'FAIL',
   referenceEnabled:options.referenceEnabled,preflight:options.preflight,
-  identityReference:options.identityReference,profile:options.profile,q8Block32:options.q8Block32,width:options.width,height:options.height,profiles:[],
+  identityReference:options.identityReference,identityOnly:options.identityOnly,profile:options.profile,q8Block32:options.q8Block32,width:options.width,height:options.height,profiles:[],
   modelRevision:manifest.revision,sourceSha256:{},events:[],memory:[],browserEvents:[],qualityAccepted:false};
 for(const name of await fs.readdir(directory))if(/\.(mjs|json|html)$/.test(name))receipt.sourceSha256[name]=createHash('sha256').update(await fs.readFile(path.join(directory,name))).digest('hex');
 await fs.writeFile(path.join(destination,'start.json'),JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});
@@ -33,7 +33,7 @@ try{
     const verified=await fetchModel({manifest,cacheDir,verifyOnly:true});
     receipt.modelVerification=verified.receipt;
   }
-  server=await createProofServer({cacheDir,canonical,identityReference:receipt.identityReference,width:receipt.width,height:receipt.height,q8Block32:receipt.q8Block32});
+  server=await createProofServer({cacheDir,canonical,identityReference:receipt.identityReference,identityOnly:receipt.identityOnly,width:receipt.width,height:receipt.height,q8Block32:receipt.q8Block32});
   receipt.runtimeFiles=server.runtimeFiles;
   await fs.writeFile(path.join(destination,'recipe.json'),JSON.stringify(server.recipe,null,2)+'\n',{flag:'wx'});
   cdp=await openChromiumCdp({label:'CF browser image inference',userDataPrefix:'cf-browser-image-',commandTimeoutMs:45000,onEvent:event=>{

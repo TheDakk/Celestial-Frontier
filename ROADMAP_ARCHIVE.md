@@ -1,3 +1,122 @@
+## 2026-09-09 — Static landing, Civet studies and predecessor signing history
+
+Moved verbatim from ROADMAP during the completed local-reference ownership batch. Current local AI, cache and Git state remain in ROADMAP.
+
+### Completed shared foundation and static landing prototype
+
+[CREATURE_ANIMATION.md](CREATURE_ANIMATION.md) is the current anatomy/motion reference. The document
+Nick recalled is [PROCEDURAL_CHARACTERISTICS.md](PROCEDURAL_CHARACTERISTICS.md), together with
+SPECIES_AND_GENOME and named Earth bibles. Its legacy B15 analysis now has a current V2 overlay.
+The [source taxonomy](audits/CIVET_PAINTED_PARTS_20260908/SOURCE_TAXONOMY.md) records actual named,
+lineage, modern and HD owner precedence, source hashes and conflicts. Modern quadruped counts come
+from body/locomotion; raw FA_LIMBS are total limb counts and not guaranteed rendered anatomy.
+Raw eye/trait/limb omissions, extremophile locomotion disagreement and four-wing routing remain
+recorded conflicts. Never create a second loose skeleton classifier or silently change identities.
+
+`port/v2/tools/creature-animation/kinematics.ts` implements pure immutable transforms, length-aware
+two-bone chains and finite smooth chain waves. It accepts geometry, not genomes/names/RNG/clocks.
+15 focused mathematical tests PASS; the receipt is explicitly transcribed from the original tool
+output, not a raw log. No unchanged rerun. This is not family rig/skin/gait/native animation coverage.
+All land/air/water/flexible/radial/flora adapters and a shared resolved anatomy/skin owner remain
+future work; static landings reduce immediate motion scope, not procedural identity requirements.
+Static verification: all three V2 TypeScript programs and root validation PASS on unchanged
+source; 1,010 named renders, zero boot errors and 50 original fingerprints retained. Legacy HTML
+is byte-identical. [Corrected result](audits/CIVET_PAINTED_PARTS_20260908/static-corrected-results.json).
+The first new static instrument ENOENT for absent optional root main.js remains intact with zero
+steps reached; the corrected runner is separate and treats that file as optional like validate.js.
+
+The optional `?paintedlanding=1` single-Civet Earth display prototype is implemented and has
+scoped focused/static/native verification. [Packet](audits/STATIC_LANDING_PORTRAIT_20260908/README.md).
+Nick authorized ImageMagick resize/encode. The untouched 1875×839 original remains; its 960×430
+lossless WebP is600,756 bytes, SHA `cd2c616abb35610f6ec63382f6476436f27a8c1a2c698757c8a66d34a5b2e0ec`.
+Decoded RGB exactly matches the resized reference. Downsampling still reduces master detail;
+desktop1440×1000@1 and phone390×844@2 were inspected, not every enlarged/high-DPR display.
+The original export-over512KiB receipt remains. This new asset declares exact600756 under a
+640KiB explicit-size cap; all older undeclared loads retain512KiB. Decode dimensions stay960×430.
+
+The new still uses the unchanged full Earth request/all19-genome admission, one actual leased
+opaque canvas and accepted DOM band. Its exact scene ID is `painted-earth-civet-landing-v1`.
+No empty resident layer, worker dependency on the still path or new gameplay data. Existing
+`livingvista=1`, fallback, biome authority, UI placement and all19 roster rows remain. Static-load
+callbacks retain the older visibility limit: they can settle while hidden; no animation loop.
+Default makes no painted page-loader request, but offline service-worker precaching can still
+fetch the optional asset. No zero-network/zero-storage default claim or heap saving is made.
+
+Verification: first11 focused files/146 tests PASS, then TS2352 in the mutable deep-clone test.
+The explicit unknown bridge fixed only that fixture; its5 tests and all3 V2 TypeScript programs
+plus root validation then PASS. Legacy HTML byte-identical;1010 named renders/0 boot errors/50
+original fingerprints. Both first and corrected receipts are retained. One immutable97-file
+Vite evidence build produced native desktop/phone PASS, then the blocked observer wrongly treated
+server-wide served-file inventory as page traffic. V3 corrected only the request-owner ruler;
+wrong-SHA and default modes PASS with10 negative controls on the same build, without rerunning
+passed modes. V2's red stays red. Real leases/textures/sprites retire and canvas shrinks1×1;
+full-genome proof is focused admission, not native pixel inspection. No full battery admission.
+Independent read-only review matched all50 static/37 v2/43 v3 source hashes and both97-file builds.
+
+An ordinary local-only human preview and its isolated browser check PASS:
+[Open static Earth prototype](http://127.0.0.1:64179/?paintedlanding=1), PID24408 / exec76755.
+It is a frozen dirty-local-only package with parent `acca36b469da2024a7112c3cdd426f351f6bd2f5`,
+publishable:false; that parent does not certify changed bytes. Content SHA
+`473671306f100ece340e6e78ba2c7d2d9a5902103035c3ba2274e655dd41c0d5`.
+The app-panel request was queued. [Server/package receipts](audits/STATIC_LANDING_PORTRAIT_20260908/README.md)
+include native review images, exact source/build links and fresh-origin instructions. Earlier
+servers stay untouched. No new Compendium art, flora effects, battle rig or multi-world generator.
+The original six-file prepared patch and its wrong-path/corrected apply-check receipts remain
+historical; do not apply them over this asset-bound implementation.
+
+Two earlier painted-part atlas calls are unaccepted authoring evidence: first opaque checkerboard/
+incomplete parts failure, corrected magenta atlas and first ImageMagick alpha extraction. Five
+components have not passed assembled-skin/opaque-composite/native review. They are not game assets.
+[Packet](audits/CIVET_PAINTED_PARTS_20260908/README.md). User steering ended the bespoke atlas loop.
+
+### Signing, sleep and current prior study
+
+The previously staged 185-file water/motion batch is now SSH-signed as
+`afee1924aac880bed4360deae2a26d081ca18d45`, starting this batch 42 ahead/0 behind cached upstream.
+One PTY signing retry after Nick confirmed readiness succeeded; command-scoped verification against
+the existing public key PASS. No persistent Git configuration, private-key access or unsigned fallback.
+Earlier failed-buffer signing receipts remain preserved, including the prior 86ea06b success.
+[Exact signing/sleep receipt](audits/CIVET_PAINTED_PARTS_20260908/SIGNING_AND_SLEEP.json).
+
+Existing caffeinate PID93550 runs `-i`, preventing idle system sleep but not display sleep. A separate
+`-d -t 7346` assertion PID16793 / exec16947 was verified and expires no later than the existing
+campaign deadline 2026-09-09T03:11:15Z. No lock/security/energy settings changed. Recent filtered power
+logs did not establish sleep as the cause of signing failures. The successful retry does not isolate
+whether PTY, display state or user authorization readiness mattered. Leave the original -i job alone.
+
+The previous [water/motion study](audits/CIVET_WATER_AND_MOTION_20260908/README.md) remains the live
+local authoring review at http://127.0.0.1:58523/ (PID13898 / exec88960; verify before claiming live).
+It shows one painted Civet with narrow water contact, 12 local transforms and finite controls.
+44 rig tests, study/three V2 typechecks/root validation and final desktop/phone native PASS remain
+bound to that study. 34 frame observations/18 controls/3 WebM per mode, original first TypeScript and
+native filter-toggle FAIL retained. It is planted image deformation, not finished fluid locomotion.
+Its report SHA is `1d230a9cbded6b5ae256c1dff14672f23869e35af8ccc7331924363efc0cc917`, fifteen-file
+review inventory SHA `a485c8f4fe04876205d229db6d02e41ccf0bd24706418d43dc5a92be22e02e50`.
+The 185-file gzip recovery/readback/reverse-check pointer is historical; afee1924 contains the work.
+Earlier 58519/58521 reviews are unchanged comparisons. No new native game preview was launched here.
+At the earlier mathematical-foundation checkpoint, no native Guide/Training/release-note text or
+version changed and the landing candidate was unapplied. The signed static implementation and its
+current evidence above supersede that earlier runtime status.
+
+### Prior study evidence remains binding
+
+The [original Civet packet](audits/CREATURE_PAINTED_CIVET_20260908/README.md) retains 113 rig tests,
+final native desktop/phone PASS (eight probes/five control groups each), exact original asset,
+two opaque checkerboard generator failures and three alpha-extraction attempts. Native paw-pixel
+FAIL, encoded-PNG/raw-RGB analysis FAIL and scrollbar FAIL remain; the first stops did not reach
+phone/disposal, and original scrollbar geometry was not fully retained. The original 4.2 s breath,
+1 s strike/.7 s recoil rig remains immutable comparison evidence, superseded only in this study.
+
+The [cohesion packet](audits/CREATURE_SCENE_COHESION_20260908/README.md) retains its rejected busy
+fur generation, damaged nose/tail matte, selected calmer original-RGB/nose-alpha repair, eight
+motion probes/eleven controls per final mode and first zero-alpha legacy-ground-ruler failure.
+Its final report SHA is `2707b001df593cbc7d163d556457d95a54bf8d544de5e189b037da179941bbb7`.
+Both packets and all original first failures remain untouched by this batch; no automatic red
+retry, cloud backup retry or retroactive PASS. Fine alpha and human acceptance remain open.
+Earlier 374-file and combined 734-file staging recoveries/readback/reverse-check receipts remain
+historical in their packets/smoke paths; signed 86ea06b now contains those completed studies.
+
+
 ## 2026-09-09 — Browser AI proof, Q8 performance and early snapshot handoff
 
 The preceding local-development handoff is preserved verbatim; current outcomes follow in ROADMAP.

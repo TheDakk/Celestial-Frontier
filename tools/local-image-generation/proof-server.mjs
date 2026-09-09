@@ -10,15 +10,20 @@ const root=path.resolve(directory,'../..');
 const sha=data=>createHash('sha256').update(data).digest('hex');
 const prompt=`Create a cohesive natural-history landscape painting matching image 1's painted detail, atmosphere and shared lighting. A rainy Earth riverbank, mossy rocks, reflective river, deep misty forest and distant mountains. Six identifiable inhabitants belong naturally to the ground, never arranged as cutouts. Middle-right: one Civet with four short legs, a long low torso, pointed pale muzzle, small rounded ears, dark face mask, tawny spotted coat and a long ringed tail; not a fox or raccoon. Left water edge: one smaller brown furry Platypus, broad leathery duck bill, webbed feet and horizontal paddle tail. Foreground damp stone: one much smaller olive-brown Frog with folded hind legs. Left: a branching Persimmon tree, broad oval leaves, orange fruits with four-lobed calyx. Foreground: low creeping Cranberry runners with tiny oval leaves and red berries, never a tall shrub. Right: Devil's Club with very large palmate leaves, spiny canes and terminal red berry clusters. Calm broad composition; Civet about one third frame height. All six subjects in frame. Diffuse overcast light, cool sky fill, ground bounce, soft contact shadows, vegetation overlapping feet, softer contrast with distance. Real Earth anatomy and botany. No extra animals, alien plants, crystals, text, borders, interface, halos or shiny CGI.`;
 
-export async function createProofServer({cacheDir,canonical,identityReference=false,width=768,height=432,q8Block32=false}) {
+// Explicit identity-only experiment; the existing scene/dual prompts stay unchanged.
+const identityOnlyPrompt=`Create a cohesive natural-history landscape painting with shared environmental lighting. Image 1 is the authoritative identity of the single Civet: preserve its long narrow pale muzzle, amber eye, low deep torso, short sturdy legs, soft golden tawny fur, scattered dark spots and ringed tail. Integrate that individual into the riverbank; do not reproduce its portrait background, matte or edge artifacts. Keep the whole tail comfortably inside the frame. A rainy Earth riverbank, mossy rocks, reflective river, deep misty forest and distant mountains. Six identifiable inhabitants belong naturally to the ground, never arranged as cutouts. Middle-right: one Civet with four short legs, a long low torso, pointed pale muzzle, small rounded ears, dark face mask, tawny spotted coat and a long ringed tail; not a fox or raccoon. Left water edge: one smaller brown furry Platypus, broad leathery duck bill, webbed feet and horizontal paddle tail. Foreground damp stone: one much smaller olive-brown Frog with folded hind legs. Left: a branching Persimmon tree, broad oval leaves, orange fruits with four-lobed calyx. Foreground: low creeping Cranberry runners with tiny oval leaves and red berries, never a tall shrub. Right: Devil's Club with very large palmate leaves, spiny canes and terminal red berry clusters. Calm broad composition; Civet about one third frame height. All six subjects in frame. Diffuse overcast light, cool sky fill, ground bounce, soft contact shadows, vegetation overlapping feet, softer contrast with distance. Real Earth anatomy and botany. No extra animals, alien plants, crystals, text, borders, interface, halos or shiny CGI.`;
+
+export async function createProofServer({cacheDir,canonical,identityReference=false,identityOnly=false,width=768,height=432,q8Block32=false}) {
+  if(typeof identityReference!=='boolean'||typeof identityOnly!=='boolean'||(identityReference&&identityOnly))
+    throw Error('Invalid or conflicting identity conditioning choice');
   if(!((width===768&&height===432)||(width===1024&&height===576)))throw Error('Unqualified proof resolution');
   const manifest=JSON.parse(await fs.readFile(path.join(directory,'model-manifest.json'),'utf8'));
   if(typeof q8Block32!=='boolean')throw Error('Invalid derivative choice');
   const derivative=q8Block32?await openBlock32Derivative(manifest):null;
   const referencePath=path.join(root,'audits/MIDGAME_ART_DIRECTION_20260908/03-earth-full-landfall.png');
-  const reference=await fs.readFile(referencePath);
+  const reference=identityOnly?null:await fs.readFile(referencePath);
   const identityPath=path.join(root,'audits/CREATURE_SCENE_COHESION_20260908/civet-selected-v1.webp');
-  const identityPrompt=identityReference
+  const identityPrompt=identityOnly?identityOnlyPrompt:identityReference
     ? prompt+' Image 2 is the authoritative Civet identity: match its long narrow pale pointed muzzle, warm amber eye, low deep torso, short sturdy legs, soft golden tawny fur and scattered dark spots. Preserve that individual, not the gray short-faced animal in image 1. Blend it naturally into the painted bank; do not copy image 2 background or edge artifacts. Keep the whole tail comfortably inside the frame.'
     : prompt;
   // The runner builds this from real domain owners in an isolated Node bundle.
@@ -39,22 +44,23 @@ export async function createProofServer({cacheDir,canonical,identityReference=fa
     sourceAuthoritySha256:authority.sha256,request,roster,
     appearanceSnapshot:{schema:canonical.snapshot.schema,recipeId:canonical.snapshot.recipeId,
       sha256:canonical.receipt.snapshotSha256,displayPlan},
-    references:[{url:'/reference.png',sha256:sha(reference),originalPath:path.relative(root,referencePath),width:512,height:288,
+    references:identityOnly?[]:[{url:'/reference.png',sha256:sha(reference),originalPath:path.relative(root,referencePath),width:512,height:288,
       transform:'Browser Canvas2D scale1672x941 to512x288, RGB[-1,1]; no crop or manual retouch'}],
     qualityAccepted:false,scope:'Authoring proof; model output does not alter authoritative game data'};
   if(derivative)recipe.modelDerivative=derivative.pin;
-  if(identityReference){
+  if(identityReference||identityOnly){
     const identity=await fs.readFile(identityPath);
     if(sha(identity)!=='186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365')throw Error('Selected identity changed');
     recipe.references.push({url:'/identity.webp',sha256:sha(identity),originalPath:path.relative(root,identityPath),width:480,height:320,
       matte:'#72786e',transform:'Browser Canvas2D scale768x512 to480x320 over explicit opaque #72786e matte, RGB[-1,1]; original unchanged'});
   }
   const routes=new Map([
-    ['/',path.join(directory,'browser-proof.html')],['/reference.png',referencePath],
+    ['/',path.join(directory,'browser-proof.html')],
+    ...(identityOnly?[]:[['/reference.png',referencePath]]),
     ...['browser-proof.mjs','stage-worker.mjs','pipeline-math.mjs','gpu-profile.mjs'].map(x=>['/'+x,path.join(directory,x)]),
     ...manifest.files.map(file=>['/model/'+file.path,path.join(cacheDir,file.path)]),
   ]);
-  if(identityReference)routes.set('/identity.webp',identityPath);
+  if(identityReference||identityOnly)routes.set('/identity.webp',identityPath);
   if(derivative)for(const row of derivative.files)routes.set('/model/'+row.path,row.file);
   const dist=path.join(directory,'node_modules/onnxruntime-web/dist');
   for(const name of await fs.readdir(dist))if(/\.(mjs|wasm)$/.test(name))routes.set('/node_modules/onnxruntime-web/dist/'+name,path.join(dist,name));

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+  "promptSha256": "c2f2512fd647e258d14cdb2952069f37cff82b6c1237917d0d64cc56d8039467",
+  "chatPromptSha256": "71471795d32d84b70cddea83832971250e458ddeaadcfd9e276c50aab7a3d9ec",
+  "tokenCount": 367,
+  "maximumTokens": 512,
+  "truncated": false,
+  "referenceCount": 1,
+  "reference": {
+    "url": "/identity.webp",
+    "sha256": "186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365",
+    "originalPath": "audits/CREATURE_SCENE_COHESION_20260908/civet-selected-v1.webp",
+    "width": 480,
+    "height": 320,
+    "matte": "#72786e",
+    "transform": "Browser Canvas2D scale768x512 to480x320 over explicit opaque #72786e matte, RGB[-1,1]; original unchanged"
+  }
+}
