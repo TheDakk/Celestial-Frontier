@@ -8,6 +8,8 @@ import {openChromiumCdp} from '../../port/v2/tools/browsercdp.mjs';
 import {createProofServer} from './proof-server.mjs';
 import {fetchModel,assertIgnoredCache,DEFAULT_CACHE_ROOT} from './fetch-model.mjs';
 import {parseProofOptions} from './gpu-profile.mjs';
+import {recheckSourceFiles} from './source-integrity.mjs';
+import {exportCanonicalEarthSnapshot} from '../../port/v2/tools/landfall-snapshot/export.mjs';
 const directory=path.dirname(fileURLToPath(import.meta.url));
 const runCommand=promisify(execFile);
 const options=parseProofOptions(process.argv.slice(2)),{output}=options;
@@ -25,11 +27,13 @@ for(const name of await fs.readdir(directory))if(/\.(mjs|json|html)$/.test(name)
 await fs.writeFile(path.join(destination,'start.json'),JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});
 let server,cdp;
 try{
+  const canonical=await exportCanonicalEarthSnapshot(path.join(destination,'canonical-input'));
+  receipt.canonicalExport=canonical.receipt;
   if(!receipt.preflight){
     const verified=await fetchModel({manifest,cacheDir,verifyOnly:true});
     receipt.modelVerification=verified.receipt;
   }
-  server=await createProofServer({cacheDir,identityReference:receipt.identityReference,width:receipt.width,height:receipt.height,q8Block32:receipt.q8Block32});
+  server=await createProofServer({cacheDir,canonical,identityReference:receipt.identityReference,width:receipt.width,height:receipt.height,q8Block32:receipt.q8Block32});
   receipt.runtimeFiles=server.runtimeFiles;
   await fs.writeFile(path.join(destination,'recipe.json'),JSON.stringify(server.recipe,null,2)+'\n',{flag:'wx'});
   cdp=await openChromiumCdp({label:'CF browser image inference',userDataPrefix:'cf-browser-image-',commandTimeoutMs:45000,onEvent:event=>{
@@ -49,6 +53,10 @@ try{
   if(receipt.preflight){
     receipt.page=await evaluate(`({state:window.cfImageProof.state,crossOriginIsolated,webgpu:!!navigator.gpu})`);
     if(!receipt.page.crossOriginIsolated||!receipt.page.webgpu)throw Error('Page capability boundary failed');
+    const served=await evaluate(`fetch('/recipe.json').then(response=>{if(!response.ok)throw Error('Recipe HTTP failed');return response.json();})`);
+    if(JSON.stringify(served)!==JSON.stringify(server.recipe))throw Error('Served canonical recipe mismatch');
+    receipt.page.servedRecipeSha256=createHash('sha256').update(JSON.stringify(served)).digest('hex');
+    receipt.page.canonicalRecipeMatched=true;
     receipt.status='PREFLIGHT_PASS';
   }else{
     await evaluate(`void window.cfImageProof.generate({referenceEnabled:${receipt.referenceEnabled},profile:${receipt.profile}})`);
@@ -104,8 +112,11 @@ finally{
   if(server){receipt.requests=server.requests;try{await server.close();}catch(error){receipt.serverCleanupError=String(error);receipt.status='FAIL';process.exitCode=1;}}
   receipt.finishedAt=new Date().toISOString();
   receipt.memoryMeaning='Sum of owned browser process RSS; shared mappings may count multiple times. Not unique RAM, VRAM or a device qualification.';
-  receipt.sourceUnchanged=true;
-  for(const [name,hash]of Object.entries(receipt.sourceSha256))if(createHash('sha256').update(await fs.readFile(path.join(directory,name))).digest('hex')!==hash)receipt.sourceUnchanged=false;
+  receipt.sourceIntegrity=await recheckSourceFiles([
+    ...Object.entries(receipt.sourceSha256).map(([name,hash])=>({path:'tools/local-image-generation/'+name,file:path.join(directory,name),sha256:hash})),
+    ...(receipt.canonicalExport?.sources??[]).map(row=>({...row,file:path.resolve(directory,'../..',row.path)})),
+  ]);
+  receipt.sourceUnchanged=receipt.sourceIntegrity.unchanged;
   if(!receipt.sourceUnchanged){receipt.status='FAIL';process.exitCode=1;}
   await fs.writeFile(resultPath,JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});
   console.log(JSON.stringify({status:receipt.status,error:receipt.error,output:receipt.output,resultPath}));

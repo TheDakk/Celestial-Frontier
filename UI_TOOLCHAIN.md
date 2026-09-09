@@ -336,3 +336,14 @@ Earlier tool setup is in audits/UI_TOOLCHAIN_SETUP_20260905.json; preserved Blen
 readiness is in audits/AAA_BATCH_A_RECONCILIATION_20260904.md. The later Inkscape control is in
 audits/INKSCAPE_REQUALIFICATION_20260907/manifest.json. ROADMAP.md owns the current playable campaign
 and remaining acceptance gates. This reference replaces the earlier inventory in place; audit history stays.
+
+
+## Canonical snapshot authoring entry — September9,2026
+
+`port/v2/tools/landfall-snapshot/` uses the existing locked Rolldown and V2 build
+lease to produce a source-bound Earth snapshot in a fresh isolated directory.
+No dependencies installed or root Vite/game builds touched. The59-source export
+records the compiler's known virtual runtime helper by byte count/hash; the first
+blanket-rejection failure remains retained. All3V2 TS/entryTS and33 focused tests
+pass; corrected export/native preflight/7refusal controls pass. It provides real
+canonical appearance inputs to the proof, no image or player-model qualification.

@@ -253,3 +253,35 @@ identical images or accepted art. The first native comparison owns those separat
 observations. The changed bridge's38 focused checks passed, including original
 model preservation, unknown-variant rejection and real corrupt/truncated/symlink
 file refusals. These checks do not establish GPU speed or final quality.
+
+
+### Canonical producer replaces source-literal extraction
+
+The runner now calls `exportCanonicalEarthSnapshot` under the isolated V2 lease.
+The application owner requires a real canonical roster before exact Earth-epoch0
+admission. The transport snapshot schema is `cf.art.landfall-snapshot.v1`, recipe
+`canonical-earth-epoch0-six-residents-v1`; full19roster/request data and six display
+identities remain separate from model/reference/prompt settings. Stable snapshot
+SHA256 `a23ef143d97bb7e72c8b5cc72b858266246fd72682dd29de00e0e3fc69848b3f` binds current output.
+No parser creates live roster authority. Proof-server checks supported metadata,
+serialization/hash consistency and completed internal producer cleanup; it is not
+an external authentication boundary. The runner checks59source files again after
+native use. The compiler runtime helper is explicitly recorded separately.
+
+Native preflight verifies actual served JSON against the server recipe, and the
+retained parity result matches all prior generation fields except appearance
+metadata. Seven rejection controls include a changed final hidden genome with
+copied fingerprints and unknown schema/recipe. All original model/reference
+inputs and the earlier identity wording are preserved, so a new GPU run is not
+required to establish transport parity. Actual-play mounting/model delivery and
+universal world adapters remain future work. See the new snapshot tool README.
+
+
+Final review found that a disappeared captured source could throw from the runner's
+`finally` block before its receipt was saved. `source-integrity.mjs` now checks all
+local-tool and canonical source rows, records read failures/changes, and lets the
+runner publish a red result. The real-file deletion/corruption control proves both
+faults are retained and the original files pass after restoration. Final root
+validation passes with unchanged legacyHTML. The changed finalizer's separate
+`browser-canonical-snapshot-preflight-02` passes the native served-recipe check,
+all81source rows unchanged and owned browser closure. No GPU inference was repeated.

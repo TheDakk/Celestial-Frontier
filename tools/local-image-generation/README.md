@@ -106,3 +106,22 @@ actual resource behavior, unsupported devices and human review all precede a shi
 Current attempts and all original failures belong to
 `audits/LOCAL_AV_AI_CONTINUATION_20260909/README.md`. No model or source change updates the parked
 draft PR automatically, and no build/test result authorizes a release or deployment.
+
+
+## Canonical appearance input
+
+The runner now prepares `canonical-input/` through the actual game CF1/roster/vista
+builders and the pure `landfall-appearance-snapshot.ts` owner. It retains full19
+Earth genomes plus six display identities under a separate versioned snapshot,
+not regex-extracted TypeScript literals. The snapshot and all59source hashes are
+retained; source stability is checked again at run end. The isolated build owns
+and releases its V2 lease. Existing prompt/model/reference settings stay separate.
+
+`--preflight` now also reads the actual served recipe and verifies its exact JSON.
+The first native snapshot preflight matches the prior generation data except new
+appearance metadata. Unknown versions or inconsistent internal export carriers
+refuse. Parsed snapshots grant no live roster, route, save or ownership authority.
+Other worlds/epochs remain unsupported by this first adapter. Quality is still open:
+the stronger1024 one-Civet prompt failed and is preserved; the earlier identity
+wording is restored. See the retained single-reference control for its separate
+facial-identity/grounding failure. Neither image was installed in the game.

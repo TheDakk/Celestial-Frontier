@@ -1,0 +1,291 @@
+{
+  "events": [
+    {
+      "phase": "start",
+      "seed": 133,
+      "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+      "referenceEnabled": true,
+      "profile": false,
+      "q8Block32": true,
+      "atMs": 83.26500010490417
+    },
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "text_encoder_q4.onnx",
+      "atMs": 110.46500015258789
+    },
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "text_encoder_q4.onnx",
+      "inputNames": [
+        "input_ids",
+        "attention_mask"
+      ],
+      "outputNames": [
+        "prompt_embeds"
+      ],
+      "elapsedMs": 4004.039999961853,
+      "atMs": 4108.799999952316
+    },
+    {
+      "stage": "text",
+      "type": "complete",
+      "dims": [
+        1,
+        512,
+        7680
+      ],
+      "tokenCount": 299,
+      "elapsedMs": 11370.16000008583,
+      "atMs": 11473.005000114441
+    },
+    {
+      "stage": "text",
+      "phase": "worker-terminated",
+      "atMs": 11473.18499994278
+    },
+    {
+      "phase": "reference-prepared",
+      "url": "/reference.png",
+      "width": 512,
+      "height": 288,
+      "matte": null,
+      "pixelSha256": "bed3684dde2c27b8b62ebd2d7ae115a90892ea086d43de2a8bd795697091f8b0",
+      "atMs": 11517.18499994278
+    },
+    {
+      "stage": "encode",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "vae_encoder.onnx",
+      "atMs": 11539.945000171661
+    },
+    {
+      "stage": "encode",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "vae_encoder.onnx",
+      "inputNames": [
+        "sample"
+      ],
+      "outputNames": [
+        "packed_latent"
+      ],
+      "elapsedMs": 444.05000019073486,
+      "atMs": 11974.144999980927
+    },
+    {
+      "stage": "encode",
+      "type": "complete",
+      "elapsedMs": 886.7350001335144,
+      "atMs": 12416.75
+    },
+    {
+      "stage": "encode",
+      "phase": "worker-terminated",
+      "atMs": 12416.81500005722
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "transformer-q8-block32.onnx",
+      "atMs": 12428.170000076294
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "transformer-q8-block32.onnx",
+      "inputNames": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "timestep",
+        "img_ids",
+        "txt_ids"
+      ],
+      "outputNames": [
+        "noise_pred"
+      ],
+      "elapsedMs": 8173.455000162125,
+      "atMs": 20602.890000104904
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 4,
+      "elapsedMs": 19578.330000162125,
+      "atMs": 32004.450000047684
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 2,
+      "steps": 4,
+      "elapsedMs": 29634.675000190735,
+      "atMs": 42060.64499998093
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 3,
+      "steps": 4,
+      "elapsedMs": 40348.575000047684,
+      "atMs": 52774.10000014305
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 4,
+      "steps": 4,
+      "elapsedMs": 50488.82000017166,
+      "atMs": 62914.41000008583
+    },
+    {
+      "stage": "denoise",
+      "type": "complete",
+      "sigmas": [
+        1,
+        0.9622336779129861,
+        0.89465780804073,
+        0.7389686527095128,
+        0
+      ],
+      "elapsedMs": 50564.87000012398,
+      "atMs": 62990.52999997139
+    },
+    {
+      "stage": "denoise",
+      "phase": "worker-terminated",
+      "atMs": 62990.61500000954
+    },
+    {
+      "stage": "decode",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "vae_decoder.onnx",
+      "atMs": 63267.66000008583
+    },
+    {
+      "stage": "decode",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "vae_decoder.onnx",
+      "inputNames": [
+        "packed_latent"
+      ],
+      "outputNames": [
+        "sample"
+      ],
+      "elapsedMs": 870.1599998474121,
+      "atMs": 63904.40499997139
+    },
+    {
+      "stage": "decode",
+      "type": "complete",
+      "dims": [
+        1,
+        3,
+        576,
+        1024
+      ],
+      "elapsedMs": 4462.204999923706,
+      "atMs": 67498.40000009537
+    },
+    {
+      "stage": "decode",
+      "phase": "worker-terminated",
+      "atMs": 67499.34000015259
+    },
+    {
+      "phase": "complete",
+      "elapsedMs": 67515.2950000763,
+      "clipped": 67,
+      "min": -1.1721693277359009,
+      "max": 0.9792146682739258,
+      "qualityAccepted": false,
+      "atMs": 67595.47500014305
+    }
+  ],
+  "memory": [
+    {
+      "atMs": 5492.116042,
+      "processCount": 7,
+      "summedProcessRssKiB": 930592
+    },
+    {
+      "atMs": 10512.068875,
+      "processCount": 9,
+      "summedProcessRssKiB": 3438672
+    },
+    {
+      "atMs": 15532.7005,
+      "processCount": 8,
+      "summedProcessRssKiB": 3154480
+    },
+    {
+      "atMs": 20599.084958,
+      "processCount": 8,
+      "summedProcessRssKiB": 1749424
+    },
+    {
+      "atMs": 25695.411708,
+      "processCount": 10,
+      "summedProcessRssKiB": 2310496
+    },
+    {
+      "atMs": 30766.954833,
+      "processCount": 10,
+      "summedProcessRssKiB": 701536
+    },
+    {
+      "atMs": 35873.371208,
+      "processCount": 9,
+      "summedProcessRssKiB": 709456
+    },
+    {
+      "atMs": 40975.50725,
+      "processCount": 8,
+      "summedProcessRssKiB": 571232
+    },
+    {
+      "atMs": 46003.720292,
+      "processCount": 8,
+      "summedProcessRssKiB": 567920
+    },
+    {
+      "atMs": 51042.709625,
+      "processCount": 8,
+      "summedProcessRssKiB": 563232
+    },
+    {
+      "atMs": 56071.800833,
+      "processCount": 8,
+      "summedProcessRssKiB": 569568
+    },
+    {
+      "atMs": 61214.873583,
+      "processCount": 8,
+      "summedProcessRssKiB": 563792
+    },
+    {
+      "atMs": 66347.600958,
+      "processCount": 8,
+      "summedProcessRssKiB": 583680
+    },
+    {
+      "atMs": 71428.435375,
+      "processCount": 8,
+      "summedProcessRssKiB": 334992
+    }
+  ]
+}
