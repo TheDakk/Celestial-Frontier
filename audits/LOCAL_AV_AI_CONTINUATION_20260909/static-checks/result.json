@@ -1,0 +1,16 @@
+{
+  "steps": [
+    {
+      "name": "release-contract",
+      "exitCode": 0,
+      "logSha256": "5a834fb6929fd7986f092475f2e90c9b64c501de087bacfe66eca415839e2d4c"
+    },
+    {
+      "name": "typecheck",
+      "exitCode": 1,
+      "logSha256": "8a3e366d92c4a997cbf52dc6a96db4de067b13a8c683cffd57977b14777f6c17"
+    }
+  ],
+  "legacyHtmlUnchanged": true,
+  "finishedAt": "2026-09-09T05:27:12.170013+00:00"
+}

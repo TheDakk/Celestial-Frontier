@@ -1,0 +1,323 @@
+{
+  "events": [
+    {
+      "phase": "start",
+      "seed": 133,
+      "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+      "referenceEnabled": false,
+      "atMs": 82.18499994277954
+    },
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "text_encoder_q4.onnx",
+      "atMs": 104.14499998092651
+    },
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "text_encoder_q4.onnx",
+      "inputNames": [
+        "input_ids",
+        "attention_mask"
+      ],
+      "outputNames": [
+        "prompt_embeds"
+      ],
+      "elapsedMs": 4053.920000076294,
+      "atMs": 4152.02999997139
+    },
+    {
+      "stage": "text",
+      "type": "complete",
+      "dims": [
+        1,
+        512,
+        7680
+      ],
+      "tokenCount": 299,
+      "elapsedMs": 11420.484999895096,
+      "atMs": 11517.110000133514
+    },
+    {
+      "stage": "text",
+      "phase": "worker-terminated",
+      "atMs": 11517.255000114441
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "transformer_q8.onnx",
+      "atMs": 11591.56500005722
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "transformer_q8.onnx",
+      "inputNames": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "timestep",
+        "img_ids",
+        "txt_ids"
+      ],
+      "outputNames": [
+        "noise_pred"
+      ],
+      "elapsedMs": 6792.060000181198,
+      "atMs": 18330.860000133514
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 4,
+      "elapsedMs": 37158.860000133514,
+      "atMs": 48691.10500001907
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 2,
+      "steps": 4,
+      "elapsedMs": 67103.65499997139,
+      "atMs": 78635.8900001049
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 3,
+      "steps": 4,
+      "elapsedMs": 97369.84500002861,
+      "atMs": 108902.11000013351
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 4,
+      "steps": 4,
+      "elapsedMs": 128164.53500008583,
+      "atMs": 139696.76999998093
+    },
+    {
+      "stage": "denoise",
+      "type": "complete",
+      "sigmas": [
+        1,
+        0.9590018567473261,
+        0.8863263845800512,
+        0.7221480297580668,
+        0
+      ],
+      "elapsedMs": 128179.95000004768,
+      "atMs": 139712.25
+    },
+    {
+      "stage": "denoise",
+      "phase": "worker-terminated",
+      "atMs": 139712.9049999714
+    },
+    {
+      "stage": "decode",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "vae_decoder.onnx",
+      "atMs": 139800.29999995232
+    },
+    {
+      "stage": "decode",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "vae_decoder.onnx",
+      "inputNames": [
+        "packed_latent"
+      ],
+      "outputNames": [
+        "sample"
+      ],
+      "elapsedMs": 633.0750000476837,
+      "atMs": 140374.625
+    },
+    {
+      "stage": "decode",
+      "type": "complete",
+      "dims": [
+        1,
+        3,
+        432,
+        768
+      ],
+      "elapsedMs": 2653.079999923706,
+      "atMs": 142394.60000014305
+    },
+    {
+      "stage": "decode",
+      "phase": "worker-terminated",
+      "atMs": 142394.7049999237
+    },
+    {
+      "phase": "complete",
+      "elapsedMs": 142346.75,
+      "clipped": 417,
+      "min": -1.2047994136810303,
+      "max": 1.048270344734192,
+      "qualityAccepted": false,
+      "atMs": 142427.2350001335
+    }
+  ],
+  "memory": [
+    {
+      "atMs": 4847.8235,
+      "processCount": 7,
+      "summedProcessRssKiB": 936624
+    },
+    {
+      "atMs": 9866.474875,
+      "processCount": 9,
+      "summedProcessRssKiB": 3363792
+    },
+    {
+      "atMs": 14882.69,
+      "processCount": 8,
+      "summedProcessRssKiB": 2878688
+    },
+    {
+      "atMs": 19931.376167,
+      "processCount": 8,
+      "summedProcessRssKiB": 1972960
+    },
+    {
+      "atMs": 24954.49575,
+      "processCount": 10,
+      "summedProcessRssKiB": 1857280
+    },
+    {
+      "atMs": 29970.372375,
+      "processCount": 9,
+      "summedProcessRssKiB": 1829584
+    },
+    {
+      "atMs": 34989.985667,
+      "processCount": 9,
+      "summedProcessRssKiB": 1844624
+    },
+    {
+      "atMs": 40005.378125,
+      "processCount": 8,
+      "summedProcessRssKiB": 1795920
+    },
+    {
+      "atMs": 45024.230334,
+      "processCount": 8,
+      "summedProcessRssKiB": 1797344
+    },
+    {
+      "atMs": 50039.348084,
+      "processCount": 8,
+      "summedProcessRssKiB": 1793616
+    },
+    {
+      "atMs": 55058.615084,
+      "processCount": 8,
+      "summedProcessRssKiB": 1822832
+    },
+    {
+      "atMs": 60075.29875,
+      "processCount": 8,
+      "summedProcessRssKiB": 1818704
+    },
+    {
+      "atMs": 65090.634917,
+      "processCount": 8,
+      "summedProcessRssKiB": 1823824
+    },
+    {
+      "atMs": 70105.786,
+      "processCount": 8,
+      "summedProcessRssKiB": 1829808
+    },
+    {
+      "atMs": 75124.175125,
+      "processCount": 8,
+      "summedProcessRssKiB": 1830224
+    },
+    {
+      "atMs": 80138.909459,
+      "processCount": 8,
+      "summedProcessRssKiB": 1830240
+    },
+    {
+      "atMs": 85165.114042,
+      "processCount": 7,
+      "summedProcessRssKiB": 1842656
+    },
+    {
+      "atMs": 90180.742125,
+      "processCount": 7,
+      "summedProcessRssKiB": 1838624
+    },
+    {
+      "atMs": 95196.11275,
+      "processCount": 7,
+      "summedProcessRssKiB": 1838848
+    },
+    {
+      "atMs": 100213.7985,
+      "processCount": 7,
+      "summedProcessRssKiB": 1838912
+    },
+    {
+      "atMs": 105230.972542,
+      "processCount": 7,
+      "summedProcessRssKiB": 1838928
+    },
+    {
+      "atMs": 110247.163042,
+      "processCount": 7,
+      "summedProcessRssKiB": 1838912
+    },
+    {
+      "atMs": 115268.516917,
+      "processCount": 7,
+      "summedProcessRssKiB": 1844032
+    },
+    {
+      "atMs": 120288.80775,
+      "processCount": 7,
+      "summedProcessRssKiB": 1850896
+    },
+    {
+      "atMs": 125308.778542,
+      "processCount": 7,
+      "summedProcessRssKiB": 1852272
+    },
+    {
+      "atMs": 130322.544792,
+      "processCount": 7,
+      "summedProcessRssKiB": 1852704
+    },
+    {
+      "atMs": 135339.261459,
+      "processCount": 7,
+      "summedProcessRssKiB": 1852720
+    },
+    {
+      "atMs": 140358.911334,
+      "processCount": 7,
+      "summedProcessRssKiB": 1852704
+    },
+    {
+      "atMs": 145443.980875,
+      "processCount": 7,
+      "summedProcessRssKiB": 1327968
+    }
+  ]
+}

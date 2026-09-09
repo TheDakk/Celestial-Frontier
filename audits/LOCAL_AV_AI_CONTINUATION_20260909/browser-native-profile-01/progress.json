@@ -1,0 +1,61 @@
+{
+  "events": [
+    {
+      "phase": "start",
+      "seed": 133,
+      "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+      "referenceEnabled": true,
+      "profile": true,
+      "atMs": 79.69000005722046
+    },
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "text_encoder_q4.onnx",
+      "atMs": 104.10999989509583
+    },
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "text_encoder_q4.onnx",
+      "inputNames": [
+        "input_ids",
+        "attention_mask"
+      ],
+      "outputNames": [
+        "prompt_embeds"
+      ],
+      "elapsedMs": 4068.204999923706,
+      "atMs": 4164.585000038147
+    },
+    {
+      "stage": "text",
+      "phase": "worker-terminated",
+      "atMs": 11782.384999990463
+    },
+    {
+      "phase": "failed",
+      "message": "Error: Error: Native profile group limit\n    at console.log (http://127.0.0.1:50952/stage-worker.mjs:31:65)\n    at Pc (http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs:88:232)\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[12140]:0x11e268a\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[2299]:0x31df2b\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[984]:0x101368\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[11990]:0x11d30f8\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[871]:0xdf6d1\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[11589]:0x11915f3\n    at b (http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs:44:53)\n    at ad (http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs:106:137)\n    at worker.onmessage (http://127.0.0.1:50952/browser-proof.mjs:33:42)",
+      "atMs": 11782.605000019073
+    }
+  ],
+  "memory": [
+    {
+      "atMs": 4860.951334,
+      "processCount": 7,
+      "summedProcessRssKiB": 935600
+    },
+    {
+      "atMs": 9891.726834,
+      "processCount": 9,
+      "summedProcessRssKiB": 3198128
+    },
+    {
+      "atMs": 14914.310417,
+      "processCount": 8,
+      "summedProcessRssKiB": 1044864
+    }
+  ]
+}
