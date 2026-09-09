@@ -38,8 +38,8 @@ budgets. No generation service is called; separate Git integration authority is 
 Local direction is conditional on feasibility, modest storage and no separate player AI setup.
 Nick now prefers adaptive scene-cache allowances: smaller on limited devices and several GB on
 capable desktops. Proposed tiers remain provisional; disk storage and RAM/GPU budgets are separate.
-All build/model/save/update bytes still count toward the total footprint. No cache manager, model
-budget or runtime gate changed. [Current adaptive limits and retention proposal](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
+All build/model/save/update bytes still count toward the total footprint. A pure advisory cache
+planner is implemented below; no live cache manager, model budget or runtime gate changed. [Current adaptive limits and retention proposal](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
 Actual browser inference now produces raw768×432 paintings on the M4 Pro24GiB Mac using the
 native ORT WebGPU provider. Three retained runs cover scene reference (196s), no-reference
 ablation (142s), and scene plus exact Civet reference (227s). The extra identity reference improves
@@ -62,6 +62,29 @@ adds352,323,881 graph/data bytes (about336MiB), separate from any player deliver
 Preserve full genomes, named Earth anatomy, biome authority, current clocks, saves and share codes.
 
 
+
+### Advisory scene cache planning — matches code September9,2026
+
+`scene-image-cache-plan.ts` adds a pure calculation for an already identified encoded
+scene variant. The explicit provisional profiles are decimal500MB/1GB/2GB, with a
+selected desktop ceiling up to5GB. This is not automatic device qualification or an
+enabled cache manager. Origin usage includes installed and unknown bytes once;
+disjoint future reserves and additional candidate staging reduce available headroom.
+Missing/invalid estimates, unsafe arithmetic or insufficient disposable space pause
+admission, with no partial eviction proposal.
+
+Only unlocked scene variants with a matching verified surviving exact copy can enter
+the deterministic LRU proposal. Originals, saves, recipes, models, builds, pins, read
+leases and in-flight entries stay protected. One copy ID cannot claim conflicting
+bytes. A seed does not establish recoverability; a new sole original requires separate
+protected retention before this disposable-variant planner can admit it. Outputs bind
+inventory/reservation revisions but grant no reservation, deletion or game authority.
+
+All24 focused outcome controls, all3 V2 TypeScript programs and root validation pass
+on unchanged source. Negative/restored controls cover budget pressure and protected
+entries. This introduces no storage I/O, migration, settings, live quota measurement,
+service-worker change or player-visible release note. Atomic execution, durable binary
+originals and device qualification remain open. [Contract and evidence](audits/LOCAL_AV_AI_CONTINUATION_20260909/SCENE_CACHE_PLAN.md).
 
 ### Canonical appearance input bridge — matches code September9,2026
 
