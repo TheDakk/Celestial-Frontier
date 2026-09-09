@@ -28,9 +28,11 @@ and live RAM/GPU. Physical-phone and distribution qualification remain open.
 The installed-only manifest requires explicit successful OPFS verification before generation;
 there is no automatic model download or developer-cache fallback. The full model remains **6.23 GiB**.
 Local model storage retains its native disclosure state through progress updates, keeping Pause
-reachable; a deliberate user collapse is respected. The detached V1 fidelity contract still
-records artifact/identity-bound observations, not pixel recognition or V2 quality acceptance.
-See the [species and delivery evidence](audits/AI_SPECIES_MOBILE_20260909/README.md).
+reachable; a deliberate user collapse is respected. Detached V1 and additive V2 fidelity
+contracts record artifact/identity-bound observations. They perform no pixel recognition,
+authenticate no reviewer and grant no full-quality acceptance. The retained V2 painting now has
+a formal species-rejected review. See the [species review](audits/AI_OFFLINE_INTEGRATION_20260909/species-review/README.md)
+and the [species and delivery evidence](audits/AI_SPECIES_MOBILE_20260909/README.md).
 
 ## Implemented boundary
 
@@ -84,8 +86,25 @@ tokens including the 1024×576 output, versus 2,904 in the prior one-reference p
 conditioning work, not a latency optimization. Images are whole-image guidance: the actual graph
 has no mask/box input and does not guarantee per-species count, position or anatomy. Negative
 prompt text remains metadata; Klein does not consume a separate negative prompt. The older
-376/472-token V1 attempts and both failed output reviews remain immutable. V2 output requires its
-own exact-PNG manual review; the existing detached fidelity contract admits V1 only.
+376/472-token V1 attempts and both failed output reviews remain immutable.
+
+`landfall-fidelity.ts` now adds `buildLandfallFidelityV2` / `assessLandfallFidelityV2` without
+changing the V1 builder or crossing their separately branded contracts. V2 binds the exact
+encoded PNG, canonical ordered prompt, all nineteen genomes, six resident identities/anchors,
+and six ordered reference digests, source geometry and 480×320 preparation. Each reported
+resident outcome also binds its reference index and digest. Mixed, missing, duplicated, stale
+or cross-version carriers refuse. The caller still has to verify actual encoded source bytes;
+this API neither recognizes pixels nor authenticates the observer. V2 requires an explicit
+flora-count outcome: uncertain or interwoven motifs do not establish three separate plants.
+
+The earlier native V2 run occurred while the detached API admitted V1 only; that historical
+boundary and its aggregate FAIL remain intact. The new [formal V2 review](audits/AI_OFFLINE_INTEGRATION_20260909/species-review/formal-v2-review.json)
+records the exact retained painting as **species-rejected**, with unresolved anatomy, botany,
+placement and flora count. All assessments keep `semanticsVerifiedByCode`,
+`reviewerAuthenticated` and `fullQualityAccepted` false, including synthetic favorable reports.
+Twenty-eight focused controls, all three TypeScript programs and root validation passed on
+906 unchanged measured sources/fixtures. The first 27-pass/one-fixture-failure result is retained;
+the fixture correction distinguishes an absent JSON field from invalid `undefined` data.
 
 ## Model delivery
 
@@ -147,7 +166,8 @@ exceptions, two captured served-client bodies and20 unchanged measured sources. 
 remain. Worker target IDs were not enumerated by the generation runner. No physical-phone or
 universal latency claim follows. Full original inspection avoids the small scene-band detail limit.
 
-The full-model delivery diagnostic is separate from inference: actual game controls install into
+The default full-model delivery diagnostic and the historical attempts below perform no inference:
+actual game controls install into
 native OPFS while exact pinned HTTPS requests are redirected to a disclosed, freshly hashed local
 byte mirror. It measures neither internet/CDN transfer nor phone performance. Both complete
 aggregate receipts remain **FAIL**. [Attempt01](audits/AI_SPECIES_MOBILE_20260909/native-mobile-delivery-01/result.json)
@@ -178,6 +198,58 @@ zero browser error events/loading failures were recorded, and cleanup completed.
 bounded desktop module-delivery defect without recopying6.23GiB or relabeling prior aggregates.
 [Runner history](audits/AI_SPECIES_MOBILE_20260909/MOBILE_NATIVE_RUNNER.md) retains every compiler,
 controller and module failure and the exact package03 identity. No full admission battery was repeated.
+
+The delivery runner now has an explicit `--landfall` mode, implemented by
+`offline-landfall-proof.mjs`. After real Install/Pause/reload/Resume, offline full verification
+and all twenty native Blob readbacks, it selects canonical Earth only as setup and drives the
+ordinary Land control. It requires the portable model (`q8Block32:false`), six V2 references,
+actual drawing progress/ETA, responsive Notifications, verified retained Ready, native Inspect/
+View, and the same original ID/PNG digest after normal offline reload and Survey inspection.
+The static origin and byte mirror are physically closed before inference. There is no storage
+injection or unavailable source-module import. The product keeps its 600-second per-stage
+limit; the helper has a single 15-minute observation bound. These are limits, not latency claims.
+
+Dedicated workers receive no debugger attachment. Observed startup lists are retained, but a
+missing positive startup observation during known inference means
+`workerStartupEvidenceAvailable:false` and `noReloadInference:null`. Repeated same-original,
+same-route and zero-job observations support only `noReloadJobObserved`; any observed new
+startup after reload still fails. This does not establish complete native worker enumeration.
+
+**Offline integration native02 — aggregate FAIL:** [native01](audits/AI_OFFLINE_INTEGRATION_20260909/native-01/result.json)
+remains the earlier live-inventory `NotFoundError`, before Pause or Land/model execution.
+Its failing entry was not captured, so no data-loss or product-storage cause is asserted.
+All 31 measured sources stayed unchanged and cleanup completed; the exact failed observer
+is retained. The changed early observer waits only for the active marker and named committed
+chunk. Complete inventories remain strict after Pause and tied to the same attempt; fifteen
+runner controls passed before the changed native02 attempt.
+
+[Native02](audits/AI_OFFLINE_INTEGRATION_20260909/native-02/result.json) installed all twenty model
+files, 6,691,020,416 bytes in 6,392 chunks, through real Pause/reload/Range Resume. Its measured
+Resume-to-ready time was 103.635 seconds from the disclosed local byte mirror, not the internet.
+All 21 model interceptions belonged to the service worker. After both servers physically closed,
+normal offline reload retained exact activated control and the in-game full rehash took 79.326
+seconds. The independent read-only owner reverified/read all twenty native Blobs, matching exact
+sizes and head/tail digests; the shifted-slice control refused. App/runtime caches excluded model
+files, and the actual module worker returned its pre-GPU guard reply. These storage and module
+outcomes passed before the separate inference failure.
+
+Trusted native Land committed canonical Earth, started the portable V2 job and left Notifications
+responsive at the early preparation check. All six reference encodings completed; the observed
+phase reached “Drawing the landfall” at 31.706 seconds after Land. The job then failed with
+`Local AI stage timed out` under the unchanged 600-second stage limit. No completed denoise step
+or measured ETA appeared; no PNG, Ready, Inspect/View or post-generation reload proof was reached.
+`modelExecutionAttempted:true` and `modelExecuted:false` mean inference was attempted but the
+helper's completed-denoise threshold was never observed. They do not mean the earlier model
+stages did no work. A failure screenshot also timed out; its diagnostic and browser logs remain
+in the receipt. All 31 source hashes and final package verification stayed unchanged, and owned
+browser/profile, servers and locks closed. Source, package, model and timeouts were unchanged;
+no unchanged attempt was repeated. This closes no art, end-to-end offline generation, phone,
+latency or resource gate.
+
+The next bounded implementation is an [exact-shape first-step diagnostic](audits/AI_OFFLINE_INTEGRATION_20260909/native-02/diagnosis.md)
+that separates denoiser execution, output readback and device loss without repeating full install
+or increasing the product deadline. Larger attention work/allocation is a hypothesis, not measured
+OOM. This diagnostic has not yet been implemented or run.
 
 Remaining product work: accepted whole-scene species/botany fidelity; broader canonical adapters;
 mobile model size/memory/latency qualification; distributable runtime/model packaging and PWA

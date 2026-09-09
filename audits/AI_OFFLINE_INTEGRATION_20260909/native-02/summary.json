@@ -1,0 +1,66 @@
+{
+  "schema": "cf.offline-landfall-result-summary.v1",
+  "sourceResultSha256": "690edcd99b5ea7af1d03e9604f2219734ddff6f6cf9cda75b4d19d5ca9594d39",
+  "status": "FAIL",
+  "startedAt": "2026-09-09T19:34:02.094Z",
+  "finishedAt": "2026-09-09T19:49:54.618Z",
+  "afterExplicitResumeToReadyMs": 103635.007084,
+  "offlineNativeFullVerifyMs": 79326.30362499999,
+  "modelBytes": 6691020416,
+  "modelFiles": 20,
+  "chunks": 6392,
+  "cacheEntries": 99,
+  "cachePayloadBytes": 56490756,
+  "readbackFiles": 20,
+  "shiftedBlobSliceRejected": true,
+  "actualRemoteDownload": false,
+  "modelExecutionAttempted": true,
+  "completedDenoisingStepObserved": false,
+  "resultModelExecutedMeaning": "Diagnostic sets modelExecuted only after a completed denoising-step progress message; text and six reference encodings did run.",
+  "portableQ8Block32": false,
+  "recipeKey": "43d256089080d69bdea6bcf882dd080f95af43d8a6084f60c12204cb7523a06d",
+  "drawingPhaseObservedAtMs": 31706.207791999972,
+  "lastProgress": {
+    "phase": "Drawing the landfall",
+    "completed": 57.75000000000001,
+    "total": 100,
+    "etaMs": null
+  },
+  "terminalJob": {
+    "jobId": "landfall-job-1",
+    "status": "failed",
+    "error": "Local AI stage timed out",
+    "originalId": null
+  },
+  "productStageTimeoutMs": 600000,
+  "observerBoundMs": 900000,
+  "failureScreenshotError": "Error: CF optional model delivery: timed out waiting for Page.captureScreenshot",
+  "sourceIntegrity": {
+    "unchanged": true,
+    "checked": 31,
+    "failures": []
+  },
+  "cleanup": {
+    "staticServerClosedBeforeOffline": true,
+    "mirrorClosedBeforeOffline": true,
+    "targetClosed": true,
+    "browserAndOwnedProfileRemoved": true,
+    "workspaceReleased": true
+  },
+  "unreached": [
+    "Completed denoising step",
+    "Visible numeric drawing ETA",
+    "Ready original",
+    "Inspect/View",
+    "Offline original restoration after reload",
+    "No reload inference verification"
+  ],
+  "qualityAccepted": false,
+  "physicalPhoneQualified": false,
+  "notes": [
+    "Aggregate FAIL is retained; storage and UI subresults do not promote it.",
+    "No unchanged retry or timeout increase.",
+    "Failed screenshot capture does not prove a cause of the model timeout.",
+    "Install bytes were served from a local exact-byte mirror, not downloaded from a CDN."
+  ]
+}

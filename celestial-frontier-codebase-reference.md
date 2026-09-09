@@ -32,8 +32,34 @@ module observer failed; these are storage/delivery subresults, not runtime or ph
 `compile-delivery-diagnostic.mjs` uses the pinned TS7 CLI for exactly the two delivery/SHA sources;
 `native-model-mirror.mjs` reads/hash-verifies existing local bytes and is never shipped as fallback.
 Phone/CDN/resource/performance and distribution qualification remain open.
-`landfall-fidelity.ts` remains a detached V1 artifact-bound observation contract, not an image
-classifier or V2 acceptance authority. All nineteen genomes and accepted anchors remain canonical.
+`landfall-fidelity.ts` preserves its detached V1 builder and adds separately branded V2
+artifact-bound observations. V2 requires the canonical prompt, all nineteen genomes and six
+resident identities/anchors, six ordered reference digests/geometry, matching reference identity
+on each report row, and an explicit flora-count outcome. Cross-version or mixed carriers refuse.
+It recognizes no pixels, authenticates no reviewer and always leaves semantic/full-quality
+acceptance false. The exact retained V2 output is now formally species-rejected; its earlier
+V1-only API boundary and native aggregate FAIL remain historical evidence. All nineteen genomes
+and accepted anchors remain canonical.
+
+`run-mobile-model-delivery.mjs --landfall` delegates to `offline-landfall-proof.mjs` after real
+OPFS installation, offline native verification/Blob readback and the existing pre-GPU module
+reply. The default runner performs no inference. The explicit mode drives native Earth Land,
+portable V2 inference, progress/ETA, retained Ready, Inspect/View and unchanged original reuse
+through normal offline reload. It reads the visible original Blob without injecting storage.
+Dedicated worker targets are observed without debugger attachment; absent positive startup
+evidence during known inference yields `workerStartupEvidenceAvailable:false` and
+`noReloadInference:null`. Repeated exact-original/route/zero-job observations establish only
+`noReloadJobObserved`. Neither post-generation result was reached in actual native02: its full
+20-file install with Range resume (103.635 seconds from Resume to ready), true offline in-game
+rehash (79.326 seconds), native Blob readback, module guard, durable Land and early responsive
+Notifications passed.
+After all six reference encodings it reached Drawing at 31.706 seconds, then failed the unchanged
+600-second stage timeout without a completed denoise step, PNG, Ready, Inspect/View or reload
+proof. `modelExecutionAttempted:true` with `modelExecuted:false` records the missing completed-
+denoise observation, not absence of earlier model work. The aggregate FAIL, first inventory-
+observer failure, screenshot timeout and all logs remain retained. All 31 measured sources and
+final package verification stayed unchanged; owned resources closed. Exact results are in
+LOCAL_AI_GENERATION; no phone, latency, resource or quality approval is implied.
 See [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) and the
 [species/delivery packet](audits/AI_SPECIES_MOBILE_20260909/README.md) for exact outcomes and limits.
 

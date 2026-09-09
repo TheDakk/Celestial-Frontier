@@ -43,24 +43,6 @@ const inventoryExpression=`(async()=>{const root=await navigator.storage.getDire
    if(entry.kind==='file'){const f=await entry.getFile();if(f.size>65536)throw Error('Oversized delivery marker');markers.push({name,bytes:f.size,value:JSON.parse(await f.text())});}
    else{let bytes=0,chunks=0;const files=[];for await(const [part,handle] of entry.entries()){if(handle.kind!=='file')throw Error('Unexpected nested model directory');const f=await handle.getFile();bytes+=f.size;chunks++;if(chunks>10000)throw Error('Too many model chunks');files.push({name:part,bytes:f.size});}attempts.push({name,bytes,chunks,files});totalBytes+=bytes;}
  }return {markers,attempts,totalBytes,estimate:await navigator.storage.estimate()};})()`;
-/** Live-install observation only. A named not-yet-committed chunk may be absent;
- * all complete inventories are measured strictly after the native Pause settles. */
-export async function readNativeCommittedPrefix(rootDirectory,manifestSha256){
-  try{
-    const directory=await rootDirectory.getDirectoryHandle('cf-local-model-delivery-v1');
-    const markerFile=await (await directory.getFileHandle('active-'+manifestSha256+'.json')).getFile();
-    if(markerFile.size===0)return null;
-    if(markerFile.size>65536)throw Error('Oversized live attempt marker');
-    const marker=JSON.parse(await markerFile.text());
-    if(marker?.schema!=='cf.local-model-attempt.v1'||marker.manifestSha256!==manifestSha256
-      ||typeof marker.attemptId!=='string'||!/^[A-Za-z0-9_-]{1,80}$/.test(marker.attemptId))throw Error('Invalid live attempt marker');
-    const attempt=await directory.getDirectoryHandle(marker.attemptId);
-    const chunk=await (await attempt.getFileHandle('f0-c3')).getFile();
-    if(chunk.size===0)return null;
-    if(chunk.size!==1048576)throw Error('Invalid committed prefix chunk');
-    return {attemptId:marker.attemptId,chunk:'f0-c3',bytes:chunk.size};
-  }catch(error){if(error?.name==='NotFoundError')return null;throw error;}
-}
 export function assessNativeController(result,origin,previousDocument=null){
   need(result?.controlled===true&&result.controllerState==='activated'
     &&result.controllerScriptURL===new URL('/service-worker.js',origin).href&&result.origin===origin
@@ -210,12 +192,11 @@ export async function runMobileModelDelivery({pack,sha256,output,landfall=false}
     const empty=await evaluate(inventoryExpression);receipt.emptyModelStore=empty;need(empty.totalBytes===0&&empty.markers.length===0&&receipt.interceptions.length===0,'Game auto-downloaded or preseeded model bytes');
     await openStorage();await screenshot('01-before-explicit-install.png');
     await click('#notificationpanel [data-ai-act="install"]','Explicitly install pinned browser model');
-    receipt.committedPrefix=await until('named fourth committed model chunk',`navigator.storage.getDirectory().then(root=>(${readNativeCommittedPrefix.toString()})(root,${JSON.stringify(hash(JSON.stringify(model)))}))`,60000);
+    await until('persisted model prefix',`(${inventoryExpression}).then(s=>s.totalBytes>=4*1048576?s:null)`,60000);
     await click('#notificationpanel [data-ai-act="stop-download"]','Pause model after persisted chunks');
     await until('native canceled status',`/Model canceled/.test(document.querySelector('#notificationpanel [data-local-ai]')?.textContent??'')`,30000);
     const partial=await evaluate(inventoryExpression);receipt.partial=partial;await write('partial-opfs.json',partial);
     need(partial.totalBytes>=1048576&&partial.totalBytes<model.totalBytes&&partial.attempts.length===1
-      &&partial.attempts[0].name===receipt.committedPrefix.attemptId
       &&partial.markers.some(row=>row.name.startsWith('active-'))&&!partial.markers.some(row=>row.name.startsWith('ready-')),'Pause did not retain one unready partial attempt');
     await screenshot('02-paused-resumable-model.png');
     const pauseRequests=receipt.interceptions.length,oldDocument=(await observe('paused')).documentToken;

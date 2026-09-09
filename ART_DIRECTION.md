@@ -22,11 +22,20 @@ dynamic daylight/seasons and exact-view sharing are not implemented by these ima
 
 ## Local fidelity and inspection — matches code as of 2026-09-09
 
-`landfall-fidelity.ts` retains its V1 complete six-resident observation contract against exact
-encoded PNG, recipe, reference and full-genome bindings. Incomplete, duplicate, mixed or stale
-V1 reviews refuse. It performs no pixel recognition and does not assess the new V2 reference
-recipe; a V2 output needs a separate manual review bound to its exact encoded PNG and inputs.
-Favorable finish feedback cannot stand in for missing species/count/anatomy findings.
+`landfall-fidelity.ts` preserves its V1 six-resident observation contract and adds a separately
+branded V2 contract for the exact encoded PNG, canonical recipe, all nineteen genomes, six
+resident identities/anchors and six ordered reference hashes and geometry. Each resident report
+binds its own reference index/digest; incomplete, duplicate, mixed, stale and cross-version
+reviews refuse. V2 also requires an explicit flora-count outcome; uncertain interwoven motifs
+do not establish three separate plants. The caller must verify actual source/image bytes.
+The API performs no pixel recognition, authenticates no reviewer and always leaves full-quality
+acceptance false. Favorable finish feedback cannot stand in for species/count/anatomy findings.
+
+The earlier V2 native painting was reviewed while the detached API still admitted V1 only.
+Its original manual review and aggregate FAIL remain unchanged. The additive contract now
+records that same PNG as [formally species-rejected](audits/AI_OFFLINE_INTEGRATION_20260909/species-review/README.md).
+A synthetic all-reported-outcomes pass exercises the contract; it is not semantic, human or
+whole-scene quality approval.
 
 `buildLandfallConditioningV2` and its live-roster wrapper now create six ordered, individually
 bound whole-image guides: Civet, Persimmon, Platypus, Frog, Devil's Club and Cranberry. Four new
@@ -55,6 +64,13 @@ and favorable finish cannot stand in for canonical anatomy, complete plant count
 The read-only full-painting viewer displays the unchanged retained Blob, with fit and actual-size
 panning. It preserves the accepted scene band and base controls. No image regeneration or quality
 reduction is involved. [Current evidence](audits/AI_LANDFALL_CONTINUATION_20260909/README.md).
+The optional offline `--landfall` diagnostic targets the normal Land-to-retained-original path
+with the portable local model. Its actual native02 run passed installed-model/offline module
+checks and committed Land, then completed all six reference encodings and reached Drawing at
+31.706 seconds. The unchanged 600-second stage limit expired before a completed denoise step
+or PNG. Its aggregate remains FAIL; it supplies no new painting for review and no Ready/View/
+post-generation reload proof. [Exact results and observer limits](LOCAL_AI_GENERATION.md) remain
+separate from the required visual acceptance of the earlier retained painting.
 
 ## On-demand landfall requirement — clarified 2026-09-08
 

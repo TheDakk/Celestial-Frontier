@@ -1,0 +1,306 @@
+{
+  "schema": "cf.retained-landfall-review-record.v2",
+  "recipeInputPath": "audits/AI_SPECIES_MOBILE_20260909/native-generation-01/actual-landfall-input.json",
+  "original": {
+    "path": "audits/AI_SPECIES_MOBILE_20260909/native-generation-01/raw-original.png",
+    "bytes": 1536737,
+    "sha256": "44f03a6c6c2e47c38d93106ce4ba08a3dcd7bac17320fd582aa57b8b6aa4c400",
+    "width": 1024,
+    "height": 576
+  },
+  "sourceManualReview": {
+    "path": "audits/AI_SPECIES_MOBILE_20260909/native-generation-01/INDEPENDENT_VISUAL_REVIEW.json",
+    "sha256": "a9c9602e1c4d00161e08a5a3afc116f4adea42a813831f976d30514b5ca9ca93"
+  },
+  "transcribedOutcomesSha256": "c69f73c238d6f02970cb2f28068c357794aca47b4b34b3809d340124ff8a7439",
+  "contractSha256": "a9c7b6ff14d4cfe09104f6b142cecafd2171db1c54889a449973db9b0419392c",
+  "review": {
+    "schema": "cf.landfall-visual-observation.v2",
+    "contractSha256": "a9c7b6ff14d4cfe09104f6b142cecafd2171db1c54889a449973db9b0419392c",
+    "imageSha256": "44f03a6c6c2e47c38d93106ce4ba08a3dcd7bac17320fd582aa57b8b6aa4c400",
+    "recipeSha256": "8d2cfa30634560b41a5523d70869151ef3f3d37341346d1d8be97fbd4a8d82a3",
+    "referenceSetSha256": "b019c4af54147100a04afba9a8bb71d9398fa7229a7fb932578214009c7bf0af",
+    "basis": "direct-image-observation",
+    "observer": {
+      "kind": "agent-visual",
+      "id": "retained-six-reference-observation-transcription",
+      "evidenceSha256": "a9c9602e1c4d00161e08a5a3afc116f4adea42a813831f976d30514b5ca9ca93"
+    },
+    "scene": {
+      "faunaBodies": 3,
+      "unmatchedFaunaBodies": 0,
+      "distinctBodies": "pass",
+      "noCrossSpeciesFeatures": "fail",
+      "evidence": "Three distinct animal bodies; the intended Platypus retains rounded external ears and upright mammalian proportions.",
+      "floraCount": {
+        "result": "fail",
+        "evidence": "All three intended plant motifs can be located, but cropped/interwoven plants do not establish exactly three complete individual plants."
+      }
+    },
+    "residents": [
+      {
+        "contractSha256": "a9c7b6ff14d4cfe09104f6b142cecafd2171db1c54889a449973db9b0419392c",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
+        "expectedPlacement": {
+          "x": 0.72,
+          "groundY": 0.77,
+          "width": 0.15,
+          "flip": false
+        },
+        "referenceImageIndex": 1,
+        "referenceSha256": "186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365",
+        "instances": [
+          "observed-civet-motif"
+        ],
+        "identity": {
+          "result": "pass",
+          "evidence": "One separate spotted, low quadruped has a pointed masked face, small rounded ears, four visible paw contacts and one continuous ringed tail. The hindquarter is fairly bulky; no duplicated head/body or clearly extra limb is visible. Left foreground instead of the required right anchor; approximately twice the requested complete-subject width."
+        },
+        "placement": {
+          "result": "fail",
+          "evidence": "Left foreground instead of the required right anchor; approximately twice the requested complete-subject width."
+        },
+        "diagnostics": [
+          {
+            "role": "body",
+            "result": "pass",
+            "evidence": "One low spotted body."
+          },
+          {
+            "role": "head",
+            "result": "pass",
+            "evidence": "Pointed masked face and small rounded ears."
+          },
+          {
+            "role": "limbs",
+            "result": "pass",
+            "evidence": "Four visible short paw contacts in the retained review."
+          },
+          {
+            "role": "tail",
+            "result": "pass",
+            "evidence": "One continuous ringed tail."
+          }
+        ]
+      },
+      {
+        "contractSha256": "a9c7b6ff14d4cfe09104f6b142cecafd2171db1c54889a449973db9b0419392c",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Persimmon\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2058951517\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+        "expectedPlacement": {
+          "x": 0.13,
+          "groundY": 0.78,
+          "width": 0.21,
+          "flip": false
+        },
+        "referenceImageIndex": 2,
+        "referenceSha256": "36aec0bc09432255b4351b22a2b99bde55f85a0f7eab309bb62dab46b88164d9",
+        "instances": [
+          "observed-persimmon-motif"
+        ],
+        "identity": {
+          "result": "fail",
+          "evidence": "One central branching woody tree bears simple oval-to-pointed leaves and separate orange fruits. Several fruit tops have dark green caps, but the four-lobed calyx is not reliably resolved at the original 1024x576 pixels. Centered tree instead of the left anchor, wider and rooted much higher in the image. Broadleaf fruit-tree recognition is insufficient to pass the specific calyx requirement."
+        },
+        "placement": {
+          "result": "fail",
+          "evidence": "Centered tree instead of the left anchor, wider and rooted much higher in the image."
+        },
+        "diagnostics": [
+          {
+            "role": "stem",
+            "result": "pass",
+            "evidence": "A branching woody tree is visible."
+          },
+          {
+            "role": "leaves",
+            "result": "pass",
+            "evidence": "Simple oval-to-pointed green leaves are visible."
+          },
+          {
+            "role": "fruit",
+            "result": "fail",
+            "evidence": "Orange fruits are visible, but four-lobed calyces are not reliably resolved."
+          }
+        ]
+      },
+      {
+        "contractSha256": "a9c7b6ff14d4cfe09104f6b142cecafd2171db1c54889a449973db9b0419392c",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4049771185\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "expectedPlacement": {
+          "x": 0.43,
+          "groundY": 0.86,
+          "width": 0.2,
+          "flip": true
+        },
+        "referenceImageIndex": 3,
+        "referenceSha256": "0b4584f76ce18f42e38e0c28e9a42758280d0c0de390d45371422a7e4c91fe57",
+        "instances": [
+          "observed-platypus-motif"
+        ],
+        "identity": {
+          "result": "fail",
+          "evidence": "One separate dark furry body has a broad rubbery bill and a flat-looking tail tip. Visible rounded external ears, raised head/chest, high belly and long upright mammalian legs contradict the low monotreme body plan. Foot digits are visible but broad webbing is not clearly resolved. The tail narrows into a long stalk before the paddle-like tip. Round rodent-like ears are an explicit forbidden substitution. A bill and paddle tip do not establish a correct Platypus. Faces right although the recipe requests left; substantially wider than the requested 20 percent."
+        },
+        "placement": {
+          "result": "fail",
+          "evidence": "Faces right although the recipe requests left; substantially wider than the requested 20 percent."
+        },
+        "diagnostics": [
+          {
+            "role": "body",
+            "result": "fail",
+            "evidence": "Raised chest/belly and upright posture contradict the low sleek monotreme body plan."
+          },
+          {
+            "role": "head",
+            "result": "fail",
+            "evidence": "A broad bill is visible, but rounded external ears contradict the named rule."
+          },
+          {
+            "role": "limbs",
+            "result": "fail",
+            "evidence": "Long upright legs; broad webbing is unresolved."
+          },
+          {
+            "role": "tail",
+            "result": "fail",
+            "evidence": "The paddle-like tip narrows into a long stalk rather than the required broad blunt tail."
+          }
+        ]
+      },
+      {
+        "contractSha256": "a9c7b6ff14d4cfe09104f6b142cecafd2171db1c54889a449973db9b0419392c",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Frog\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1193089256\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"19\"]]]]",
+        "expectedPlacement": {
+          "x": 0.25,
+          "groundY": 0.87,
+          "width": 0.07,
+          "flip": false
+        },
+        "referenceImageIndex": 4,
+        "referenceSha256": "53d4edb530e4691dffb6000b58be6ed2076302a544deec04217d64a03ef08b17",
+        "instances": [
+          "observed-frog-motif"
+        ],
+        "identity": {
+          "result": "pass",
+          "evidence": "One green mottled crouched anuran has a wide mouth, a domed near eye and a partly visible far eye, two forefeet, a strongly folded near hind limb and a partly occluded far hind limb. No fur, adult tail or upright mammalian posture is visible; hidden limb endpoints and toe counts cannot be fully assessed. Right foreground instead of the left-quarter anchor; approximately 18 percent wide rather than 7 percent. Its scale relative to the mammals is too prominent for the prescribed placement."
+        },
+        "placement": {
+          "result": "fail",
+          "evidence": "Right foreground instead of the left-quarter anchor; approximately 18 percent wide rather than 7 percent. Its scale relative to the mammals is too prominent for the prescribed placement."
+        },
+        "diagnostics": [
+          {
+            "role": "body",
+            "result": "pass",
+            "evidence": "A green crouched anuran is visible."
+          },
+          {
+            "role": "head",
+            "result": "pass",
+            "evidence": "Wide mouth, domed near eye and partly visible far eye."
+          },
+          {
+            "role": "limbs",
+            "result": "fail",
+            "evidence": "Folded hind limbs are visible, but hidden limb endpoints prevent a complete four-limb assessment."
+          }
+        ]
+      },
+      {
+        "contractSha256": "a9c7b6ff14d4cfe09104f6b142cecafd2171db1c54889a449973db9b0419392c",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Devil's Club\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1714376717\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"11\"]]]]",
+        "expectedPlacement": {
+          "x": 0.87,
+          "groundY": 0.88,
+          "width": 0.16,
+          "flip": false
+        },
+        "referenceImageIndex": 5,
+        "referenceSha256": "c2474e48a1a38fb2419fe01008a3906d5727b7e520f8867f954b6d8ed7ac94fc",
+        "instances": [
+          "observed-devil-s-club-motif"
+        ],
+        "identity": {
+          "result": "fail",
+          "evidence": "Large palmate lobed leaves and an upright red terminal berry mass distinguish this from the small-leaved red berries below. The berry mass has several adjoining upward lobes rather than clearly separate slender cones. Visible principal canes/petioles appear smooth; the required projecting prickles are not legible. Thick spiny canes are not established. Right placement broadly agrees, but the plant is enlarged and cropped by right/bottom edges; complete base/width are not the prescribed anchor."
+        },
+        "placement": {
+          "result": "fail",
+          "evidence": "Right placement broadly agrees, but the plant is enlarged and cropped by right/bottom edges; complete base/width are not the prescribed anchor."
+        },
+        "diagnostics": [
+          {
+            "role": "stem",
+            "result": "fail",
+            "evidence": "Principal canes appear smooth; thick projecting prickles are not established."
+          },
+          {
+            "role": "leaves",
+            "result": "pass",
+            "evidence": "Large palmate lobed leaves are visible."
+          },
+          {
+            "role": "fruit",
+            "result": "fail",
+            "evidence": "An upright red mass has adjoining lobes; the required distinct terminal cone shape is not established."
+          }
+        ]
+      },
+      {
+        "contractSha256": "a9c7b6ff14d4cfe09104f6b142cecafd2171db1c54889a449973db9b0419392c",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Cranberry\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1741924755\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"9\"]]]]",
+        "expectedPlacement": {
+          "x": 0.34,
+          "groundY": 0.9,
+          "width": 0.11,
+          "flip": false
+        },
+        "referenceImageIndex": 6,
+        "referenceSha256": "31be9a75a0bdea51580435c6bf1f4a03b44d3f7fd6e80aa6537893f92a8f6b93",
+        "instances": [
+          "observed-cranberry-motif"
+        ],
+        "identity": {
+          "result": "fail",
+          "evidence": "Small oval leaves and distinct red berries sit on thin arching low shoots along the lower right bank. Some shoots spread laterally, but the connected ground-hugging runner habit is occluded/cropped and cannot be confidently established. Lower right instead of the prescribed left-of-center anchor; complete growth form extends outside the frame. Low red-berry foliage alone is insufficient to pass the creeping-runner requirement."
+        },
+        "placement": {
+          "result": "fail",
+          "evidence": "Lower right instead of the prescribed left-of-center anchor; complete growth form extends outside the frame."
+        },
+        "diagnostics": [
+          {
+            "role": "stem",
+            "result": "fail",
+            "evidence": "Ground-hugging connected runners are occluded/cropped and cannot be established."
+          },
+          {
+            "role": "leaves",
+            "result": "pass",
+            "evidence": "Small simple oval leaves are visible."
+          },
+          {
+            "role": "fruit",
+            "result": "pass",
+            "evidence": "Separate red berries lie close to the lower bank."
+          }
+        ]
+      }
+    ]
+  },
+  "expectedAssessment": {
+    "ok": true,
+    "disposition": "species-rejected",
+    "contractSha256": "a9c7b6ff14d4cfe09104f6b142cecafd2171db1c54889a449973db9b0419392c",
+    "reviewSha256": "9fabf412801384857b2745bc1a1f37ad8b8d929eccb09afe5d7ba7ade5fdd74c",
+    "observationKind": "agent-visual",
+    "finishFeedback": null,
+    "allRequiredOutcomesReportedPass": false,
+    "semanticsVerifiedByCode": false,
+    "reviewerAuthenticated": false,
+    "fullQualityAccepted": false
+  },
+  "qualification": "Expected report outcome is checked against the actual product builder and assessor in landfall-fidelity.test.ts; no code recognition or approval, original aggregate native run remains FAIL."
+}
