@@ -3,8 +3,12 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { runInNewContext } from 'node:vm';
+import {createLandingProgress} from './landing-progress.mjs';
 
-const source = readFileSync(new URL('./browser-proof.mjs', import.meta.url), 'utf8');
+const moduleSource = readFileSync(new URL('./browser-proof.mjs', import.meta.url), 'utf8');
+const importLine="import {createLandingProgress} from './landing-progress.mjs';\n";
+assert.equal(moduleSource.split(importLine).length,2);
+const source=moduleSource.replace(importLine,'');
 const flush = () => new Promise(resolve => setImmediate(resolve));
 const rgb = () => new Float32Array([-1, 1, -0.5, 0.5, 0, 0.25]);
 
@@ -14,7 +18,7 @@ function deferred() {
   return { promise, resolve, reject };
 }
 
-function harness({ holdReference = false, ignoreReferenceAbort = false, matte = undefined, modelDerivative = undefined,
+function harness({ holdRecipe = false, holdReference = false, ignoreReferenceAbort = false, matte = undefined, modelDerivative = undefined,
   holdBitmap = false, holdPreparation = null, referenceFailure = null, bitmapCloseFailure = false } = {}) {
   const bytes = new Uint8Array([10, 20, 30, 40]);
   const reference = { url: '/reference.png', width: 2, height: 1, matte,
@@ -23,9 +27,9 @@ function harness({ holdReference = false, ignoreReferenceAbort = false, matte = 
     modelRevision: 'fixture-model-revision', chatPrompt: 'fixture prompt', references: [reference] };
   const workers = [], live = new Set(), timers = new Map(), fetches = [], bitmaps = [], canvases = [], trace = [];
   const pendingReference = deferred(), pendingBitmap = deferred(), pendingPreparation = deferred();
-  let digestCalls = 0;
-  const elements = Object.fromEntries(['events', 'status', 'generate', 'cancel', 'painting']
-    .map(id => [id, { textContent: '', disabled: false }]));
+  let digestCalls = 0,recipeFailure=false;
+  const elements = Object.fromEntries(['events', 'status', 'generate', 'cancel', 'painting', 'landing-progress','landing-meter','landing-label','notice','notice-text','notice-open','planet','explore','planet-panel','journal-panel','roster']
+    .map(id => [id, { textContent: '', disabled: false, hidden:false,setAttribute(name,value){this[name]=value;} }]));
   const frames = [];
   const painting = elements.painting;
   painting.getContext = kind => {
@@ -50,9 +54,12 @@ function harness({ holdReference = false, ignoreReferenceAbort = false, matte = 
       workers.push(this); live.add(this);
       trace.push(`worker:${workers.length}`);
     }
-    postMessage(job, transfers) { this.job = job; this.transfers = transfers; }
+    postMessage(job, transfers) { this.job = job; this.transfers = transfers; this.progress('loading');this.progress('loaded'); }
     terminate() { this.terminateCalls++; live.delete(this); trace.push(`terminate:${this.job.stage}`); }
-    complete(data = new Float32Array([0.1, 0.2])) { this.onmessage?.({ data: { type: 'complete', data } }); }
+    complete(data = new Float32Array([0.1, 0.2])) {
+      if(this.job.stage==='denoise')for(let step=1;step<=this.job.steps;step++)this.onmessage?.({data:{type:'progress',phase:'step',step,steps:this.job.steps}});
+      this.onmessage?.({ data: { type: 'complete', data } });
+    }
     progress(phase, message = '') { this.onmessage?.({ data: { type: 'progress', phase, message } }); }
   }
   const response = () => ({ ok: true, arrayBuffer: async () => {
@@ -62,7 +69,7 @@ function harness({ holdReference = false, ignoreReferenceAbort = false, matte = 
   } });
   const window = {};
   const sandbox = {
-    window, document: { getElementById: id => elements[id] }, Worker: FakeWorker,
+    window, createLandingProgress, document: { getElementById: id => elements[id] }, Worker: FakeWorker,
     AbortController, Blob, performance: { now: () => 100 },
     crypto: { subtle: { digest: async (algorithm, input) => {
       assert.equal(algorithm, 'SHA-256');
@@ -73,7 +80,13 @@ function harness({ holdReference = false, ignoreReferenceAbort = false, matte = 
     } } },
     fetch: async (url, options = {}) => {
       fetches.push({ url, signal: options.signal });
-      if (url === '/recipe.json') return { ok: true, json: async () => config };
+      if (url === '/recipe.json') {
+        assert.ok(options.signal instanceof AbortSignal);
+        if(holdRecipe)return new Promise((resolve,reject)=>{
+          options.signal.addEventListener('abort',()=>reject(new Error('Recipe request aborted')),{once:true});
+        });
+        return {ok:!recipeFailure,status:recipeFailure?503:200,json:async()=>config};
+      }
       assert.equal(url, reference.url);
       assert.ok(options.signal instanceof AbortSignal);
       if (!holdReference) return response();
@@ -119,6 +132,7 @@ function harness({ holdReference = false, ignoreReferenceAbort = false, matte = 
   };
   runInNewContext(source, sandbox, { filename: 'actual-browser-proof.mjs' });
   return { proof: window.cfImageProof, elements, workers, live, timers, fetches, frames, bitmaps, canvases, trace,
+    setRecipeFailure:value=>{recipeFailure=value;},
     resolveReference: () => pendingReference.resolve(response()),
     resolveBitmap: () => pendingBitmap.resolve(), resolvePreparation: () => pendingPreparation.resolve() };
 }
@@ -338,6 +352,7 @@ test('profiled flow retains one raw trace per retired stage outside the progress
   const h=harness();const run=h.proof.generate({referenceEnabled:false,profile:true});await flush();
   for(let i=0;i<3;i++){
     const worker=h.workers[i];assert.equal(worker.job.profile,true);
+    if(worker.job.stage==='denoise')for(let step=1;step<=worker.job.steps;step++)worker.onmessage({data:{type:'progress',phase:'step',step,steps:worker.job.steps}});
     worker.onmessage({data:{type:'complete',data:i===2?rgb():new Float32Array([0.1,0.2]),
       nativeProfile:{state:'complete',endedBeforeRelease:true,sessionReleased:true,rawJson:'["fixture-trace-'+i+'"]'}}});
     await flush();
@@ -376,4 +391,59 @@ test('Only the explicitly identified derivative reaches the denoiser; other grap
 test('Unknown model derivative refuses before launching any inference worker',async()=>{
  const h=harness({modelDerivative:{variant:'unreviewed'}});await h.proof.generate();
  assertFailed(h,/Unknown model derivative/);assert.equal(h.workers.length,0);
+});
+
+
+test('actual Land control keeps journal navigation available and completion requires an explicit return',async()=>{
+  const h=harness();const run=h.elements.generate.onclick();await flush();
+  assert.equal(h.proof.state,'running');assert.equal(h.elements.generate.hidden,true);
+  assert.equal(h.elements['landing-progress'].hidden,false);
+  assert.match(h.elements['landing-label'].textContent,/Landing.*ETA estimating/);
+  h.elements.explore.onclick();
+  assert.equal(h.elements['journal-panel'].hidden,false);assert.equal(h.elements['planet-panel'].hidden,true);
+  for(let i=0;i<3;i++){h.workers[i].complete();await flush();}
+  assert.equal(h.proof.landing.state,'running');assert.ok(h.elements['landing-meter'].value<1);
+  assert.equal(h.elements.notice.hidden,true);assert.equal(h.proof.png,undefined);
+  h.workers[3].complete(rgb());assert.equal(await run,'complete');
+  assert.equal(h.elements['journal-panel'].hidden,false);assert.equal(h.elements['planet-panel'].hidden,true);
+  assert.equal(h.elements.notice.hidden,false);assert.equal(h.elements.painting.hidden,false);
+  assert.match(h.elements['notice-text'].textContent,/Earth landing ready/);
+  h.elements['notice-open'].onclick();
+  assert.equal(h.elements['journal-panel'].hidden,true);assert.equal(h.elements['planet-panel'].hidden,false);
+  assert.equal(h.elements.notice.hidden,true);
+});
+
+test('returning to cancel never shows a completed landing notice or a working return action',async()=>{
+  const h=harness();const run=h.elements.generate.onclick();await flush();h.elements.explore.onclick();
+  h.elements.planet.onclick();h.elements.cancel.onclick();assert.equal(await run,'failed');
+  assert.equal(h.proof.landing.state,'canceled');assert.equal(h.elements.notice.hidden,true);
+  assert.equal(h.elements['landing-progress'].hidden,true);
+  h.elements.explore.onclick();h.elements['notice-open'].onclick();assert.equal(h.elements['planet-panel'].hidden,true);
+});
+
+test('actual Land control preserves selected reference and profiling options',async()=>{
+  const h=harness();h.proof.buttonOptions={referenceEnabled:false,profile:true};
+  const run=h.elements.generate.onclick();await flush();assert.equal(h.workers[0].job.profile,true);
+  assert.equal(h.proof.records.find(row=>row.phase==='start').referenceEnabled,false);
+  h.elements.cancel.onclick();assert.equal(await run,'failed');
+});
+
+
+test('cancel during a stalled recipe request settles without starting a worker or retaining ready state',async()=>{
+  const h=harness({holdRecipe:true});const run=h.elements.generate.onclick();await flush();
+  assert.equal(h.proof.landing.state,'queued');assert.equal(h.elements['landing-progress'].hidden,false);
+  assert.equal(h.workers.length,0);h.elements.cancel.onclick();assert.equal(await run,'failed');
+  assert.equal(h.proof.landing.state,'canceled');assert.equal(h.proof.landing.etaLabel,'');
+  assert.equal(h.elements['landing-progress'].hidden,true);assert.equal(h.elements.notice.hidden,true);
+  assert.equal(h.elements.generate.disabled,false);assert.equal(h.proof.png,undefined);
+});
+
+test('a completed landing followed by recipe failure cannot republish its prior complete state',async()=>{
+  const h=harness();const {run,worker}=await reachStage(h,3);worker.complete(rgb());assert.equal(await run,'complete');
+  assert.equal(h.proof.landing.state,'complete');assert.equal(h.elements.notice.hidden,false);
+  h.setRecipeFailure(true);assert.equal(await h.elements.generate.onclick(),'failed');
+  assert.equal(h.proof.landing.state,'failed');assert.equal(h.proof.landing.etaLabel,'');
+  assert.equal(h.elements.notice.hidden,true);assert.equal(h.elements.painting.hidden,true);assert.equal(h.proof.png,undefined);
+  h.elements.explore.onclick();h.elements['notice-open'].onclick();assert.equal(h.elements['planet-panel'].hidden,true);
+  assert.equal(h.workers.length,4);assert.equal(h.elements.generate.disabled,false);
 });

@@ -1,0 +1,16 @@
+✔ All named UI phases admit complete observations with the same job identity (1.268833ms)
+✔ Text and numeric progress hidden by an ancestor cannot pass the actual progress acceptor (0.216792ms)
+✔ Pending meter/ETA/stage and notice mutations fail instead of accepting a static label (0.276208ms)
+✔ Journal outcomes require all visible canonical names and the same continuing job (0.295416ms)
+✔ False completion, premature navigation and a missing notification remain failures (0.549917ms)
+✔ A delivered but inert View landfall action fails the final visible outcome (0.10825ms)
+✔ Completed phone diagnostic rejects horizontal overflow without claiming phone inference (0.086708ms)
+✔ The same native click acceptors reject covered, disabled, outside and untrusted observations (0.141708ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 47.233584

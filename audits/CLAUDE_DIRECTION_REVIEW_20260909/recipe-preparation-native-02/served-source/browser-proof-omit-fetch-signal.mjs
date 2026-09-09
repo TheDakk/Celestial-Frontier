@@ -16,7 +16,7 @@ const records=[];
 let running=false,activeWorker=null,abortStage=null,generationController=null;
 const record=entry=>{const event={...entry,atMs:performance.now()};records.push(event);landing.observe(event);renderLanding();byId('events').textContent=records.map(x=>JSON.stringify(x)).join('\n');};
 window.cfImageProof={state:'ready',records,profiles:[]};
-const checkedJson=async (url,signal)=>{const r=await fetch(url,{signal});if(!r.ok)throw Error(`HTTP${r.status}: ${url}`);return r.json();};
+const checkedJson=async (url,signal)=>{const r=await fetch(url);if(!r.ok)throw Error(`HTTP${r.status}: ${url}`);return r.json();};
 function stage(job,transfers=[]) {
   return new Promise((resolve,reject)=>{
     if(generationController?.signal.aborted){reject(Error('Canceled'));return;}

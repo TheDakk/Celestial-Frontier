@@ -89,7 +89,7 @@ test('Interleaved, malformed, trailing or interrupted stdout stays a retained fa
  assert.throws(()=>partial.finish(),/Deadline/);assert.equal(partial.snapshot().rawJson,'[\n');
 });
 test('CLI profile is explicit; accepted reference variants retain their own meaning',()=>{
- assert.deepEqual(parseProofOptions(['out']),{output:'out',referenceEnabled:true,identityReference:false,identityOnly:false,preflight:false,profile:false,q8Block32:false,width:768,height:432});
+ assert.deepEqual(parseProofOptions(['out']),{output:'out',referenceEnabled:true,identityReference:false,identityOnly:false,preflight:false,profile:false,q8Block32:false,fixedDenoiserShapes:false,width:768,height:432});
  for(const extra of [[],['--identity-reference'],['--identity-only'],['--without-reference']])assert.equal(parseProofOptions(['out','--profile',...extra]).profile,true);
  assert.equal(parseProofOptions(['out','--preflight']).profile,false);
 });
@@ -116,7 +116,7 @@ test('Q8 derivative is explicit, can be profiled, and cannot bypass model verifi
 test('Identity-only conditioning is explicit, exclusive, and preserves qualified dimensions',()=>{
  const normal=parseProofOptions(['out','--identity-only']);
  assert.deepEqual(normal,{output:'out',referenceEnabled:true,identityReference:false,identityOnly:true,
-   preflight:false,profile:false,q8Block32:false,width:768,height:432});
+   preflight:false,profile:false,q8Block32:false,fixedDenoiserShapes:false,width:768,height:432});
  assert.deepEqual(parseProofOptions(['out','--identity-only','--resolution=1024x576']),{...normal,width:1024,height:576});
  assert.equal(parseProofOptions(['out','--identity-only','--preflight']).identityOnly,true);
  assert.equal(parseProofOptions(['out','--identity-only','--q8-block32','--profile']).identityOnly,true);
@@ -126,4 +126,19 @@ test('Identity-only conditioning is explicit, exclusive, and preserves qualified
  }
  assert.throws(()=>parseProofOptions(['out','--identity-only','--identity-only']),/Usage/);
  assert.throws(()=>parseProofOptions(['out','--identity-only','--resolution=1024x577']),/Usage/);
+});
+
+
+test('Fixed denoiser shapes are explicit, orthogonal to references, and require inference',()=>{
+ const baseline=parseProofOptions(['out']);
+ assert.equal(baseline.fixedDenoiserShapes,false);
+ assert.deepEqual(parseProofOptions(['out','--fixed-denoiser-shapes']),{...baseline,fixedDenoiserShapes:true});
+ for(const reference of ['--identity-only','--identity-reference','--without-reference']){
+  const normal=parseProofOptions(['out',reference,'--q8-block32','--profile','--resolution=1024x576']);
+  assert.deepEqual(parseProofOptions(['out',reference,'--q8-block32','--profile','--resolution=1024x576','--fixed-denoiser-shapes']),
+    {...normal,fixedDenoiserShapes:true});
+ }
+ assert.throws(()=>parseProofOptions(['out','--fixed-denoiser-shapes','--preflight']),/requires inference/);
+ assert.throws(()=>parseProofOptions(['out','--fixed-denoiser-shapes','--fixed-denoiser-shapes']),/Usage/);
+ assert.throws(()=>parseProofOptions(['out','--fixed-denoiser-shapes=true']),/Usage/);
 });

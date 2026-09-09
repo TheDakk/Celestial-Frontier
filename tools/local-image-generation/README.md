@@ -143,3 +143,40 @@ Default/dual recipe bytes remain exact.20 parser/server controls pass; the actua
 pinned tokenizer counts367/512. This is an explicit quality experiment, not a default
 change or approved art. It changes reference choice and wording together. No generated
 output modifies canonical gameplay data or bypasses the quality requirement.
+
+
+## Queued landing interaction and fixed-shape experiment
+
+The proof's Land button now exposes real ordered progress/ETA, allows Field journal navigation,
+and announces completion without switching panels. View landfall returns explicitly. The six
+journal names come from the canonical snapshot, not image interpretation. This is a single
+page-owned job; no normal-game Land hook, save mutation, reward or durable/background queue.
+Closing this development page discards its job/result. Exact original retention is separate work.
+
+Progress counts completed stages/steps, not elapsed-time percentage. The first run estimates
+remaining denoising only after two measured steps and labels final processing separately. The
+same exact configuration can use one previous successful page-local total duration. Failures,
+cancellations, different configurations and step4/4 never imply a completed painting.
+
+`--fixed-denoiser-shapes` is an explicit inference-only experiment. It checks typed input lengths
+and supported dimensions, then sets ORT `freeDimensionOverrides` only for denoise. The runner
+requires the actual loaded event to match its independent expected dimensions. No weights,
+references, four-step arithmetic, noise seed or output resolution are changed by the option.
+
+```sh
+node tools/with-toolchain-lock.mjs --label local-ai-fixed-shapes -- node tools/local-image-generation/run-browser-proof.mjs /private/tmp/cf-ai-fixed-new --identity-only --q8-block32 --resolution=1024x576 --fixed-denoiser-shapes
+```
+
+On macOS this browser-owning command must run outside Seatbelt on its first attempt. It verifies
+already cached bytes; it never downloads missing model files. The native runner clicks the real
+controls, verifies navigation/progress/completion, and retains screenshots and source hashes.
+Small viewport reflow of a finished image is not phone inference or physical-device proof.
+Results and the accumulated review direction are in
+[the Claude packet](../../audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md). Artwork acceptance
+remains false unless a separate visual review explicitly qualifies it.
+
+The measured fixed-shape1024 result is69,034.55ms versus69,948.09ms; rawPNG bytes match.
+The1.31% single-run difference is inconclusive, so the option remains experimental. Actual
+worker input metadata resolves the requested dimensions. See COMPARISON.json in the packet.
+Pre-recipe loading now carries an AbortSignal and a separate pending/failed presentation so
+an earlier completed run cannot leave “Ready” visible after a failed retry.
