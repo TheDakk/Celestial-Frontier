@@ -1,0 +1,24 @@
+{
+  "schema": "cf-integration-producer-observation/v1",
+  "sourceParent": "a84f4ea959ae51c6423ed6c88e5274bfa88d8786",
+  "indexTree": "72fb605003d8761c85662e319ac427ec48ca7e8c",
+  "snapshot": "/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-integration-producer-_a9nb38w",
+  "startedAt": "2026-09-09T03:54:25.615928+00:00",
+  "steps": [
+    {
+      "label": "install",
+      "exitCode": 0,
+      "log": "producer-install.log",
+      "logSha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de"
+    },
+    {
+      "label": "observe",
+      "exitCode": 0,
+      "log": "producer-observe.log",
+      "logSha256": "529503827fa8122b5a56d6feae688d1b107df9a46a067995ef7234605ed26b86"
+    }
+  ],
+  "endedAt": "2026-09-09T03:54:35.267907+00:00",
+  "indexTreeAfter": "72fb605003d8761c85662e319ac427ec48ca7e8c",
+  "snapshotRemoved": true
+}

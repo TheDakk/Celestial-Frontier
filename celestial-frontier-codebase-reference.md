@@ -1,5 +1,16 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+## Earth layout geometry ownership — matches code as of 2026-09-09
+
+AppChrome's `surfaceLayoutRects()` supplies frozen detached visible rectangles for its existing
+ordered topbar/search/objective/scene-actions elements and dock. Main owns the canvas and
+Planetside rectangle, retaining visible Planetside → dock → canvas fallback, scale conversion,
+clamping and the same12px scene clearance. Disposed chrome returns null. The direct element
+visibility predicate is unchanged; this does not newly qualify hidden ancestors or native devices.
+Literal and dynamic chrome lookups in the Earth adapter are rejected by the wiring guard.
+139 focused tests, all3 TypeScript programs and root validation passed; no layout redesign or
+new native run. [Integration repairs and retained failures](audits/DEVELOP_INTEGRATION_20260909/README.md).
+
 ## On-demand landfall requirement — clarified 2026-09-08
 
 Nick's vision is to produce the finished, cohesive landfall painting **when a world is visited
@@ -14,8 +25,8 @@ an online image API could also provide a seamless player flow without a model do
 are different runtime choices. No model, browser/native integration or paid service is selected.
 The built-in Codex tool created the current artwork during authoring; it is not an embedded game
 generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
-qualification. A seed alone is not an exact-pixel contract. No hosted action or model installation
-is authorized. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+qualification. A seed alone is not an exact-pixel contract. This art requirement authorizes no
+generation service or model installation; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
 Local direction is conditional on feasibility, modest storage and no separate player AI setup.
 Nick now prefers adaptive scene-cache allowances: smaller on limited devices and several GB on
 capable desktops. Proposed tiers remain provisional; disk storage and RAM/GPU budgets are separate.

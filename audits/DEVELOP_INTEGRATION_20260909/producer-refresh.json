@@ -1,0 +1,63 @@
+{
+  "schema": "cf-producer-only-refresh/v1",
+  "oldProducer": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "b62563276984183b933e372242e5cd68426727094f57407f9057f1ff4d8e3ba6",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "67ed14bee9a4ce99bb2abbd831c6d46ce5c0741aa3b82d56675dac909d8e197d"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-ge6_npOg.js",
+        "sha256": "b7ea401cfbc3b49363d52515e7e7e59dfcbb63973741d82044c7ad0f20b58ed7"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "d917260625a9b86c3c92439e70d5efd1d3976cefc85aaee87a016480b4b67a3e"
+      }
+    }
+  },
+  "newProducer": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "2083bac2808da830f9d8b5c67386c9e1c6816ba4ee56317e121169817fc9f9cb",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "e9175902cbb316b600ffd566c17af7bf9763e66a518492a3759afe8133271b6d"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-ge6_npOg.js",
+        "sha256": "b7ea401cfbc3b49363d52515e7e7e59dfcbb63973741d82044c7ad0f20b58ed7"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "e1aeca0a865d08174ec76799f9e54c7c751d9182e09d1b44d0f5bc961e6553e8"
+      }
+    }
+  },
+  "measurementAuthorityUnchanged": true,
+  "allOtherBudgetFieldsUnchanged": true,
+  "budgetBeforeSha256": "dbe0e4c3a3af2b7148b0edeb956ee8ecdffb0ac5c6a5494f7d33704928792798",
+  "budgetAfterSha256": "df4f6f0794268a3ee251d63781e67e2b96ecb013ae24d6aee059a69770755399",
+  "quarantinedSceneMemoryUnchanged": true,
+  "observedReportSha256": "df8c79fe5b3f1f90af630da56f11a428bd12181b37fe566f2028ef3ec9730c39",
+  "draftCount": 83,
+  "draftBulletSha256": "073174fbd708495367c01a51b488ddb78cb8730de078e0e30d3b720eab8d1158"
+}

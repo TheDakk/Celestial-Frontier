@@ -6001,10 +6001,10 @@ function currentEarthLayeredLayout(): ReturnType<typeof earthLayeredMountLayoutV
     return style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity) > 0
       && rect.width > 0 && rect.height > 0 ? rect : null;
   };
-  const upper = ['topbar', 'searchbox', 'objchip', 'sceneactions']
-    .map(id => visibleRect(document.getElementById(id))).filter(rect => rect !== null);
-  const lower = visibleRect(document.getElementById('planetside'))
-    ?? visibleRect(document.getElementById('dock'));
+  const chrome = appChrome.surfaceLayoutRects();
+  if (chrome === null) return null;
+  const upper = chrome.upper;
+  const lower = visibleRect(document.getElementById('planetside')) ?? chrome.dock;
   const scaleY = app.screen.height / canvas.height;
   return earthLayeredMountLayoutV1({
     viewportWidth: app.screen.width, viewportHeight: app.screen.height,

@@ -1,0 +1,22 @@
+{
+  "schema": "cf-local-integration-rehearsal/v1",
+  "head": "a84f4ea959ae51c6423ed6c88e5274bfa88d8786",
+  "base": "c1791e210158de864fdd475323c3091d9ecbae58",
+  "command": [
+    "node",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/tools/with-toolchain-lock.mjs",
+    "--label",
+    "develop-integration-a84f4ea9-20260909",
+    "--",
+    "node",
+    "tools/tracked-input-preflight.mjs",
+    "--profile=develop"
+  ],
+  "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+  "startedAt": "2026-09-09T03:41:06.784653+00:00",
+  "attempt": 1,
+  "automaticRetry": false,
+  "hostedActions": 0,
+  "startupReceipt": "audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json",
+  "preExistingBuild": "PID30716, elapsed9days; untouched; rehearsal builds only in isolated tracked snapshot"
+}

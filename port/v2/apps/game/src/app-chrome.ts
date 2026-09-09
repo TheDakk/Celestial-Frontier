@@ -41,6 +41,21 @@ export interface AppChromeAnchorPoint {
   readonly y: number;
 }
 
+/** Detached CSS-pixel geometry; no DOM element or live DOMRect escapes. */
+export interface AppChromeLayoutRect {
+  readonly left: number;
+  readonly top: number;
+  readonly right: number;
+  readonly bottom: number;
+  readonly width: number;
+  readonly height: number;
+}
+
+export interface AppChromeSurfaceLayoutRects {
+  readonly upper: readonly AppChromeLayoutRect[];
+  readonly dock: AppChromeLayoutRect | null;
+}
+
 export interface AppChromeResizeObserver {
   observe(target: Element): void;
   disconnect(): void;
@@ -67,6 +82,8 @@ export interface AppChromeController {
   /** Geometry-only port for rank ceremony presentation. The chrome owner
    * retains the player-chip element; callers never receive or query its DOM. */
   readonly rankCeremonyAnchor: () => AppChromeAnchorPoint | null;
+  /** Visible upper chrome and dock rectangles for a caller-owned scene layout. */
+  readonly surfaceLayoutRects: () => AppChromeSurfaceLayoutRects | null;
   /** Static Prime status control resolved by the chrome DOM owner. Main may
    * register it with the one-panel/action layer without duplicating lookup. */
   readonly primeCodexOpener: () => HTMLElement;
@@ -156,6 +173,22 @@ export function createAppChromeController(
     const rect = element.getBoundingClientRect();
     return style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity) > 0
       && rect.width > 0 && rect.height > 0 ? rect.bottom : null;
+  };
+
+  const surfaceLayoutRects = (): AppChromeSurfaceLayoutRects | null => {
+    if (disposed) return null;
+    const visibleRect = (element: HTMLElement): AppChromeLayoutRect | null => {
+      const style = computedStyle(element), rect = element.getBoundingClientRect();
+      if (style.display === 'none' || style.visibility === 'hidden' || !(Number(style.opacity) > 0)
+        || !(rect.width > 0 && rect.height > 0)) return null;
+      return Object.freeze({ left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom,
+        width: rect.width, height: rect.height });
+    };
+    return Object.freeze({
+      upper: Object.freeze(surfaceTopChrome.map(visibleRect)
+        .filter((rect): rect is AppChromeLayoutRect => rect !== null)),
+      dock: visibleRect(dock),
+    });
   };
 
   const syncSurfaceChromeBottom = (): void => {
@@ -326,6 +359,7 @@ export function createAppChromeController(
   return Object.freeze({
     renderStatus,
     rankCeremonyAnchor,
+    surfaceLayoutRects,
     primeCodexOpener: () => primeChip,
     setTrail,
     setContext,

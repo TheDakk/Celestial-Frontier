@@ -316,6 +316,52 @@ describe('application chrome DOM owner', () => {
     expect(inventory.textContent).toBe('Nova');
   });
 
+  it('returns ordered frozen scene rectangles detached from its DOM without changing lifecycle or chrome', () => {
+    const h = createHarness(true);
+    const liveTopbar = rect(62, 300, 22);
+    h.element('topbar').getBoundingClientRect = () => liveTopbar;
+    h.element('dock').getBoundingClientRect = () => rect(820, 390, 44);
+    const before = { css: h.document.documentElement.style.cssText,
+      observers: h.resizeObservers.length, mutations: h.mutationObservers.length };
+    const view = h.controller.surfaceLayoutRects();
+    expect(view).not.toBeNull();
+    expect(view!.upper.map(box => box.bottom)).toEqual([62, 70, 80, 80]);
+    expect(view!.dock).toEqual({ left: 0, top: 776, right: 390, bottom: 820, width: 390, height: 44 });
+    expect(Object.isFrozen(view)).toBe(true);
+    expect(Object.isFrozen(view!.upper)).toBe(true);
+    for (const box of [...view!.upper, view!.dock!]) {
+      expect(Object.getPrototypeOf(box)).toBe(Object.prototype);
+      expect(Object.keys(box)).toEqual(['left', 'top', 'right', 'bottom', 'width', 'height']);
+      expect(Object.isFrozen(box)).toBe(true);
+    }
+    Object.assign(liveTopbar, { bottom: 92 });
+    expect(view!.upper[0]!.bottom).toBe(62);
+    expect(h.controller.surfaceLayoutRects()!.upper[0]!.bottom).toBe(92);
+    expect({ css: h.document.documentElement.style.cssText,
+      observers: h.resizeObservers.length, mutations: h.mutationObservers.length }).toEqual(before);
+    h.controller.dispose();
+    expect(h.controller.surfaceLayoutRects()).toBeNull();
+  });
+
+  it.each(['display', 'visibility', 'opacity', 'width', 'height'] as const)(
+    'excludes invisible %s rectangles, preserves null dock, and remeasures restored geometry', reason => {
+      const h = createHarness(true);
+      const ids = ['topbar', 'searchbox', 'objchip', 'sceneactions', 'dock'];
+      for (const id of ids) {
+        h.element(id).getBoundingClientRect = () => rect(820, reason === 'width' ? 0 : 390,
+          reason === 'height' ? 0 : 44);
+        h.styles.set(id, { display: reason === 'display' ? 'none' : 'block',
+          visibility: reason === 'visibility' ? 'hidden' : 'visible', opacity: reason === 'opacity' ? '0' : '1' });
+      }
+      expect(h.controller.surfaceLayoutRects()).toEqual({ upper: [], dock: null });
+      for (const id of ids) {
+        h.element(id).getBoundingClientRect = () => rect(820, 390, 44);
+        h.styles.set(id, { display: 'block', visibility: 'visible', opacity: '0.25' });
+      }
+      expect(h.controller.surfaceLayoutRects()!.upper).toHaveLength(4);
+      expect(h.controller.surfaceLayoutRects()!.dock?.height).toBe(44);
+    });
+
   it('keeps progress, boundary and fallback Charters content on one native opener without overwriting panel state', () => {
     const h = createHarness(), objective = h.element('objchip');
     expect(objective.tagName).toBe('BUTTON');

@@ -13,8 +13,8 @@ an online image API could also provide a seamless player flow without a model do
 are different runtime choices. No model, browser/native integration or paid service is selected.
 The built-in Codex tool created the current artwork during authoring; it is not an embedded game
 generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
-qualification. A seed alone is not an exact-pixel contract. No hosted action or model installation
-is authorized. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+qualification. A seed alone is not an exact-pixel contract. This art requirement authorizes no
+generation service or model installation; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
 Local direction is conditional on feasibility, modest storage and no separate player AI setup.
 Nick now prefers adaptive scene-cache allowances: smaller on limited devices and several GB on
 capable desktops. Proposed tiers remain provisional; disk storage and RAM/GPU budgets are separate.

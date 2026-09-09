@@ -1,3 +1,78 @@
+## 2026-09-09 — Superseded local-only handoff before directed develop integration
+
+The following handoff and campaign-authority paragraph are preserved verbatim. Nick then
+requested integration into develop; the current ROADMAP owns that directed batch.
+
+### Next bounded work and paired handoff
+
+**Latest conditional direction:** Nick agrees with local on-demand generation only if feasible,
+with manageable storage and no separate player AI installation. He now requests **adaptive**
+cache limits: lower on limited devices, several GB on capable Mac/Windows machines. Codex's
+provisional scene-cache ceilings are500MB conservative/1GB capable phone/2GB desktop/up to5GB
+player-selected, constrained by actual origin headroom. These decimal limits cover disposable
+encoded scenes, not total installation or RAM/GPU; model/build/save/protected originals/update
+staging still count toward total storage. Exact tiers and local-model feasibility remain unproved.
+At a cap, evict only eligible disposable copies; preserve active leases, pins, sole exact originals,
+full discoveries and progress. Pause new optional art if nothing eligible can make room. A seed
+alone does not guarantee exact AI pixels. Browser-origin eviction is a separate qualification.
+No adaptive cache, local model, download, benchmark or changed128MiB gate in this docs-only batch.
+[Requirements, source boundaries and cap policy](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
+The preceding requirements checkpoint is signed `e3974af8f79a607c1a057177567e6866b7a2b621`,
+45 ahead/0 behind cached upstream. Resolve the following documentation commit through Git.
+The signed display implementation is `3ee104f86c08973243cc8c8a21c1f9ebba41ae76`, signature verified,
+44 ahead/0 behind cached upstream. Its91-file batch is complete; do not repeat its passing tests.
+
+Nick requires the finished cohesive landfall scene generated **on demand during play**, not a
+catalogue of prepainted planets. He asks whether the generator can run locally and requires no
+separate AI software installation for players. The current images came from Codex's built-in
+image tool, then were saved in the repo; the game does not contain that generator. A local model
+could be packaged/downloaded by the game; an online API can also give players a seamless flow
+without model installation. Local-first feasibility was researched from Apple/browser primary
+sources; OpenAI's official API workflow was also checked. Neither exact model nor browser/native
+integration, paid service, download or hosted action is approved. [Feasibility and actual workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+
+The next bounded scope is one canonical **on-demand** scene proof after resolving the practical
+runtime route, against the approved quality bar and exact complete roster. Do not expand a
+pre-rendered planet catalogue or start another family-animation loop. Preserve named Earth
+anatomy/botany, canonical identity, biome mapping, accepted UI, saves and clocks. Multi-organism
+Earth still has Civet identity drift; alien source conflicts/D-9e remain. Day/night/season time
+and exact-view sharing are still proposed, not implemented by art generation. AI pixels cannot
+be assumed reproducible from a seed alone; image/recipe retention needs explicit ownership.
+
+Player storage: current evidence pack is18,987,535 bytes (18.108MiB); two equal versions total
+36.216MiB before metadata/saves/temporary updates. Existing shipped-pack limit128MiB is per build,
+not a total browser-space guarantee; retained-update256MiB qualification stays open. A local AI
+model adds its own potentially much larger download. No millions-image archive is required.
+Mac disk check had211GiB free; checkout6.2GiB includes4.8GiB smoke/review builds and630MiB audits.
+[Exact build measurement and limitations](audits/STATIC_LANDING_PORTRAIT_20260908/STORAGE_AND_QUALITY.md).
+
+Current side: OpenAI/Codex · macOS · `/Users/nick/Projects/celestial-frontier-openai-mac` ·
+`openai/mac` · upstream `origin/openai/mac`. Starting signed HEAD was
+`acca36b469da2024a7112c3cdd426f351f6bd2f5`,43 ahead/0 behind cached upstream. The completed
+bounded prototype/doc batch is the signed local commit containing this handoff; its full HEAD and
+verified ahead state are reported at completion. Resolve current Git metadata when resuming.
+[Final scoped evidence](audits/STATIC_LANDING_PORTRAIT_20260908/integration-final-results.json).
+`.DS_Store` remains ambient/untracked. No unsigned fallback/config change.
+SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`; retained TheDakk auth/read proof applies.
+
+GitHub step:none; PR details:not needed. Future path `openai/mac` → `develop`, never directly main.
+Actions budget UNFROZEN/PUBLIC, private fallback3000, exact hosted authority:none, attempts/cost0;
+no workflow, release, deployment or version bump. The source remains local until a separately
+authorized integration. Required full admission and all documented earlier reds remain open.
+
+Other side: Anthropic/Claude Code · macOS · `anthropic/mac` does not yet have these unmerged
+changes. **No need to open or sync Claude now.** Preserve173c806; review the durable packets on
+Thursday,September10. Only after a future separately authorized exact develop merge should
+Claude fetch/merge origin/develop into its clean owned branch. No manual copies/messages to Claude.
+Campaign deadline remains September8 23:11:15Eastern /2026-09-09T03:11:15Z. No extension and no
+recreated scheduled prompts. Reuse startup receipt only within this uninterrupted session;
+a fresh session reads ROADMAP, PROCESS_LAWS, protocol and UI_TOOLCHAIN startup first.
+
+Nick’s local campaign still ends **2026-09-09T03:11:15Z** (September 8, 23:11:15 Eastern).
+Claude review is Thursday, September 10. No extension or broad rework loop. The
+`celestial-frontier-48-hour-coding` automation was deleted; **do not recreate scheduled prompts**.
+[Campaign authority](audits/AV_24H_CAMPAIGN_20260907.md).
+
 ## 2026-09-08 — Superseded single storage-budget recommendation
 
 The following handoff paragraph is preserved verbatim. Nick subsequently requested adaptive

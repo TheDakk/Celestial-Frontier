@@ -1,5 +1,16 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+## Earth layout geometry ownership — matches code as of 2026-09-09
+
+AppChrome's `surfaceLayoutRects()` supplies frozen detached visible rectangles for its existing
+ordered topbar/search/objective/scene-actions elements and dock. Main owns the canvas and
+Planetside rectangle, retaining visible Planetside → dock → canvas fallback, scale conversion,
+clamping and the same12px scene clearance. Disposed chrome returns null. The direct element
+visibility predicate is unchanged; this does not newly qualify hidden ancestors or native devices.
+Literal and dynamic chrome lookups in the Earth adapter are rejected by the wiring guard.
+139 focused tests, all3 TypeScript programs and root validation passed; no layout redesign or
+new native run. [Integration repairs and retained failures](../../audits/DEVELOP_INTEGRATION_20260909/README.md).
+
 ## Layered Earth riverbank — matches local code as of 2026-09-08
 
 `?livingvista=1` admits only the complete canonical Earth request, environment/profile and
