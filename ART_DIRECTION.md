@@ -81,10 +81,17 @@ PNG publication must succeed. A first run says ETA estimating until measured den
 allow an approximate remainder **plus final processing**. Only the exact same configuration's
 successful previous page-local run can supply a total-duration estimate. No universal70-second
 promise, artificial delay, wall-clock gameplay change or persistent job/cache is introduced.
-Cancellation/failure clears pending presentation without a ready notice. Closing the page loses
-the job/result; durable multiworld queues, background-tab scheduling and protected retention are
-still pending. The normal-game integration must settle durable landing first, then use a separate
-world-key producer and the existing notification buffer outside active persistence transactions.
+Cancellation/failure clears pending presentation without a ready notice. A friendly retry/cancel
+message remains visible outside both panels; raw failure details stay in generation evidence.
+The decode await checks already-requested cancellation before synchronous PNG publication.
+Completed art binds its full recipe/job, PNG, world, environment, ecology epoch and snapshot hash;
+publication and explicit return recheck the existing Earth panel destination and refuse stale data.
+This is display binding, not normal-game navigation authority or universal canonical admission.
+Closing the page loses the job/result; durable multiworld queues, background-tab scheduling and
+protected retention are still pending. The normal-game integration must settle durable landing
+first, then use a separate world-key producer and the existing notification buffer outside active
+persistence transactions. The [actual Claude review and disposition](audits/CLAUDE_DIRECTION_REVIEW_20260909/REVIEW_DISPOSITION.md)
+retain its scope, verified corrections, disputed observations and all outstanding gates.
 
 The explicit `--fixed-denoiser-shapes` experiment specializes ORT's denoiser session to the exact
 batch1, image-token and text512 dimensions after checking all typed tensor lengths. It leaves
@@ -109,9 +116,12 @@ The native audit uses explicit substitute inference workers, not a model/GPU run
 The optional `--identity-only` proof mode conditions on just the selected Civet
 portrait; the conflicting full-scene reference is omitted. Existing default/dual
 recipes remain byte-identical.20 recipe/parser checks and a367/512-token check pass.
-The native1024 comparison completes in69,948ms with one Civet and dry-bank contact,
-but the Platypus reads as a rodent and exact Civet/botanical detail still fails.
-Raw output and independent review are retained; qualityAccepted remains false.
+The native1024 comparison completes in69,948ms. A native-resolution recheck identifies
+one head and one tail, but the Civet body/leg attachment is ambiguous; dry-bank contact
+alone does not establish anatomical coherence. Platypus and named botany still fail.
+[Review clarification](audits/CLAUDE_DIRECTION_REVIEW_20260909/NATIVE_VISUAL_RECHECK.md)
+retains both the original review and Claude's unconfirmed duplicate-head observation.
+Raw pixels are unchanged; qualityAccepted remains false.
 No gameplay, UI placement, clock, save, model download or device budget changes.
 
 ### Advisory scene cache planning — matches code September9,2026

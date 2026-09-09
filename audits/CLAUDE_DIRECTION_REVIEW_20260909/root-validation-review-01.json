@@ -1,0 +1,18 @@
+{
+  "schema": "cf.review-root-validation/v1",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "claude-review-root-validation",
+    "--",
+    "node",
+    "tools/validate.js"
+  ],
+  "exitCode": 0,
+  "durationMs": 12870.014,
+  "legacyHtmlBefore": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746",
+  "legacyHtmlAfter": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746",
+  "logSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+  "finishedAt": "2026-09-09T13:02:04.588059+00:00"
+}

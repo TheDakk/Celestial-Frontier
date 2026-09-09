@@ -90,3 +90,52 @@ serialization control plus restored positive. All five observed source files sta
 owned targets, browser and server close. Audit01 remains FAIL with its original source/receipt.
 No ONNX inference was repeated to verify this correction. Root validation passes again after
 the controller fix; no other production source, quality verdict or former blocker changed.
+
+
+## Actual Claude response and bounded follow-up — completed September9
+
+The requested installed-CLI Claude review returned successfully at12:49:06UTC for
+signed8bdbea9a65b1f64c09906fd99589d75e5d8bc50a. It ran read-only from its verified
+Anthropic/macOS workspace, with no tests/build/browser/source sync/hosted action.
+[Original response](CLAUDE_RESPONSE.md), raw CLI JSON/request/receipt and artifact
+hashes remain verbatim. Claude says no merge yet and explicitly limits inspected
+scope. [All15finding dispositions](REVIEW_DISPOSITION.md) record confirmed issues,
+qualified claims and next work. [Native visual recheck](NATIVE_VISUAL_RECHECK.md)
+clarifies one visible head/tail but ambiguous body/legs; quality remains false.
+
+The isolated controller now exposes friendly panel-independent failure/cancellation,
+checks already-requested cancellation after awaited decode, and binds publication/
+explicit return to the complete job, PNG and Earth world/environment/epoch/snapshot.
+This introduces no normal-game hook, source-genome change, new model run or art acceptance.
+Native input cannot interrupt the synchronous conversion/PNG span; the added guard
+covers the exposed API's real resolved-decode/before-continuation ordering.
+
+First focused run [42controller tests PASS](review-controller-01.json),35existing+
+7new, including removed-guard rejection and restored positive behavior. This is104
+distinct focused behavior cases across the packet when combined with the retained
+other owners; do not add reruns as new cases. The42run records exact four source
+hashes before/after and released foreground/workspace locks.
+
+One [native follow-up](review-controller-native-01/result.json) passes three fresh
+pages: actual HTTP503, actual held-request Cancel, and synthetic2×1RGB completion.
+Sixteen trusted clicks cover both panels and explicit return. Two actual hidden-
+ancestor mutations are rejected by the same friendly-outcome observer and restored;
+six changed destination/identity bindings refuse return, retain the journal/notice/
+PNG, and restored identity returns through a trusted click. The data-only serializer
+again rejects a circular-response mutant and accepts restoration. Six observed
+sources stay unchanged; owned targets, browser and HTTPserver close. Workers are
+explicitly synthetic: no ONNX/GPU inference or model/image-quality claim.
+Root inspected friendly failure in journal and cancellation on Earth screenshots;
+messages are visible/readable with controls retained. No phone/touch qualification.
+
+[Root validation after correction](root-validation-review-01.json) PASS:1010named
+renders/0booterrors/50baseline fingerprints, legacyHTML unchanged. No normal-game
+V2runtime edits or repeated broader profile. All previous reds/unknowns and current-
+head admission remain open; the old4121tests do not certify this correction.
+ROADMAP is refreshed with a self-contained handoff; aged live blocks were moved
+verbatim to ROADMAP_ARCHIVE. All affected current art/UI/tool references agree.
+
+GitHub step remains none: PR42parked Draft/unlabeled, no push/Ready/owner-label/run/
+merge/release/deploy/version/automation. Claude's review did not install these local
+source changes into its worktree. Final local signatures and exact implementation
+checkpoint are recorded separately; successful signing is not integration.
