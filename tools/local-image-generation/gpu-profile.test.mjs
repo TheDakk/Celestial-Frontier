@@ -89,8 +89,8 @@ test('Interleaved, malformed, trailing or interrupted stdout stays a retained fa
  assert.throws(()=>partial.finish(),/Deadline/);assert.equal(partial.snapshot().rawJson,'[\n');
 });
 test('CLI profile is explicit; accepted reference variants retain their own meaning',()=>{
- assert.deepEqual(parseProofOptions(['out']),{output:'out',referenceEnabled:true,identityReference:false,preflight:false,profile:false,q8Block32:false,width:768,height:432});
- for(const extra of [[],['--identity-reference'],['--without-reference']])assert.equal(parseProofOptions(['out','--profile',...extra]).profile,true);
+ assert.deepEqual(parseProofOptions(['out']),{output:'out',referenceEnabled:true,identityReference:false,identityOnly:false,preflight:false,profile:false,q8Block32:false,width:768,height:432});
+ for(const extra of [[],['--identity-reference'],['--identity-only'],['--without-reference']])assert.equal(parseProofOptions(['out','--profile',...extra]).profile,true);
  assert.equal(parseProofOptions(['out','--preflight']).profile,false);
 });
 test('CLI rejects profile-only preflight, contradictory conditioning, duplicates and unknown flags',()=>{
@@ -110,4 +110,20 @@ test('Q8 derivative is explicit, can be profiled, and cannot bypass model verifi
  assert.equal(parseProofOptions(['out']).q8Block32,false);
  assert.equal(parseProofOptions(['out','--q8-block32','--profile']).q8Block32,true);
  assert.throws(()=>parseProofOptions(['out','--q8-block32','--preflight']),/verified inference/);
+});
+
+
+test('Identity-only conditioning is explicit, exclusive, and preserves qualified dimensions',()=>{
+ const normal=parseProofOptions(['out','--identity-only']);
+ assert.deepEqual(normal,{output:'out',referenceEnabled:true,identityReference:false,identityOnly:true,
+   preflight:false,profile:false,q8Block32:false,width:768,height:432});
+ assert.deepEqual(parseProofOptions(['out','--identity-only','--resolution=1024x576']),{...normal,width:1024,height:576});
+ assert.equal(parseProofOptions(['out','--identity-only','--preflight']).identityOnly,true);
+ assert.equal(parseProofOptions(['out','--identity-only','--q8-block32','--profile']).identityOnly,true);
+ for(const other of ['--identity-reference','--without-reference']){
+  assert.throws(()=>parseProofOptions(['out','--identity-only',other]),/mutually exclusive/);
+  assert.throws(()=>parseProofOptions(['out',other,'--identity-only']),/mutually exclusive/);
+ }
+ assert.throws(()=>parseProofOptions(['out','--identity-only','--identity-only']),/Usage/);
+ assert.throws(()=>parseProofOptions(['out','--identity-only','--resolution=1024x577']),/Usage/);
 });

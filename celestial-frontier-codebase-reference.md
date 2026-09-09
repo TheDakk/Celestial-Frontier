@@ -63,6 +63,23 @@ Preserve full genomes, named Earth anatomy, biome authority, current clocks, sav
 
 
 
+### Browser reference ownership — matches code September9,2026
+
+Reference-image preparation now closes created bitmaps exactly once and retires
+scratch canvases on success, failure and late cancellation. Matte is validated
+before allocation; cancellation checks follow every awaited preparation boundary.
+30 controller tests and six native ImageBitmap/Canvas2D scenarios pass, with both
+prepared-reference hashes unchanged and no visible painting on controlled refusal.
+The native audit uses explicit substitute inference workers, not a model/GPU run.
+
+The optional `--identity-only` proof mode conditions on just the selected Civet
+portrait; the conflicting full-scene reference is omitted. Existing default/dual
+recipes remain byte-identical.20 recipe/parser checks and a367/512-token check pass.
+The native1024 comparison completes in69,948ms with one Civet and dry-bank contact,
+but the Platypus reads as a rodent and exact Civet/botanical detail still fails.
+Raw output and independent review are retained; qualityAccepted remains false.
+No gameplay, UI placement, clock, save, model download or device budget changes.
+
 ### Advisory scene cache planning — matches code September9,2026
 
 `scene-image-cache-plan.ts` adds a pure calculation for an already identified encoded

@@ -373,3 +373,53 @@ programs and rootvalidate PASS;7input hashes unchanged. Independent review's cop
 identity consistency finding was corrected before execution. No new failed run or
 retry. This does not close protected binary retention, cross-tab execution, device
 qualification, art acceptance or full changed-head admission.
+
+
+## Reference preparation ownership and identity-only experiment — September9
+
+`browser-proof.mjs` captures the active generation signal and checks it after
+fetch/body/hash/bitmap/tensor-hash awaits. Invalid matte is rejected before image
+allocation. A finally owner closes each created bitmap once and retires both
+scratch-canvas dimensions after copying the tensor, on success and failure.
+Cleanup faults retain the preparation error and still attempt remaining retirement.
+A late result from noncancelable bitmap decoding is closed before any canvas or
+encoder can start. Successful tensor bytes and original dimensions stay unchanged.
+
+[Focused controls](reference-cleanup-controls-01/RESULT.json):30 actual-controller
+VM cases PASS, ten new. [Native reference audit](reference-cleanup-native-01/RESULT.json)
+PASS: six scenarios, both original prepared-pixel hashes identical, exactly retired
+native bitmaps/canvases, no visible painting or PNG after controlled refusal. Ten
+mutated-observation controls fail and the original positive is restored. The native
+audit explicitly substitutes inference workers; it proves native image preparation,
+not model/GPU execution, heap admission or physical devices.64 source hashes remain
+unchanged and its owned browser/server close. Review narrowed error matching and
+added actual visible-canvas evidence before the first native run; no original red
+was overwritten. Existing failures from other batches remain retained.
+
+`--identity-only` is an explicit separate experiment using only the pinned selected
+Civet WebP480x320 over the same opaque matte. The scene reference contains a known
+wrong identity and is neither read nor served in this mode. The new prompt preserves
+the six-resident/world description but identifies image1 as the Civet source. Existing
+default/dual-reference recipes compare exactly to retained carriers; conflicting
+reference flags refuse. Full canonical19-genome snapshot, seed, model and scheduler
+remain unchanged. [20 conditioning controls and token admission](identity-only-controls-01/RESULT.json)
+PASS; actual pinned tokenizer counts367/512 with no truncation; rootvalidate PASS.
+This changes both reference selection and conditioning wording, not an isolated
+image-count experiment. No art acceptance or player installation follows from it.
+
+`browser-identity-only-1024-01` is the separate source-bound one-run native generation
+comparison using the existing Q8 derivative. Its result is pending at this entry.
+The driver retains raw pixels/source/recipe/timing and stops on first failure.
+
+
+The identity-only1024 native run completed in69,948.085ms: rawPNG1,510,810bytes,
+SHA256`2b0fea42177e2eeaf94e3c71480d6f0502177c3d1a7f9879c5149ef58ef370b7`.
+Its82 source rows are unchanged and owned browser closes. Actual served recipe
+matches the token-admitted recipe except explicit Q8 derivative. Only the selected
+Civet reference is requested. Full canonical snapshot SHA remainsa23ef143d97bb7e7….
+One body/one tail and solid-bank paw contact improve, but the Platypus reads as a
+rodent; selected Civet proportions and named botany still fail. Root and independent
+[visual review](browser-identity-only-1024-01/VISUAL_REVIEW.md) agree:qualityAccepted:false,
+no game-asset promotion. Reference and wording changed together; one result does not
+qualify universal anatomy, performance or device support. The existing model/storage
+and broader art/battle/universal-object/season/sharing blockers remain open.

@@ -125,3 +125,21 @@ Other worlds/epochs remain unsupported by this first adapter. Quality is still o
 the stronger1024 one-Civet prompt failed and is preserved; the earlier identity
 wording is restored. See the retained single-reference control for its separate
 facial-identity/grounding failure. Neither image was installed in the game.
+
+
+## Owned reference preparation and identity-only comparison
+
+Reference decoding now checks cancellation after each awaited preparation boundary,
+closes every created ImageBitmap in finally and retires its scratch canvas before
+returning copied tensor values. Matte is validated before allocation.30 controller
+cases and six native ImageBitmap/Canvas2D scenarios pass; native prepared pixel
+hashes match both earlier references exactly. The native audit substitutes model
+workers explicitly, so it is not another inference or native heap certificate.
+
+`--identity-only` uses only the selected Civet WebP with its unchanged480x320 matte
+preparation and a new image1 identity prompt. It cannot accompany `--identity-reference`
+or `--without-reference`. The full-scene file is not read or served in this mode.
+Default/dual recipe bytes remain exact.20 parser/server controls pass; the actual
+pinned tokenizer counts367/512. This is an explicit quality experiment, not a default
+change or approved art. It changes reference choice and wording together. No generated
+output modifies canonical gameplay data or bypasses the quality requirement.

@@ -14,14 +14,16 @@ function deferred() {
   return { promise, resolve, reject };
 }
 
-function harness({ holdReference = false, ignoreReferenceAbort = false, matte = undefined, modelDerivative = undefined } = {}) {
+function harness({ holdReference = false, ignoreReferenceAbort = false, matte = undefined, modelDerivative = undefined,
+  holdBitmap = false, holdPreparation = null, referenceFailure = null, bitmapCloseFailure = false } = {}) {
   const bytes = new Uint8Array([10, 20, 30, 40]);
   const reference = { url: '/reference.png', width: 2, height: 1, matte,
     sha256: createHash('sha256').update(bytes).digest('hex') };
   const config = { width: 2, height: 1, seed: 133, steps: 2, modelDerivative,
     modelRevision: 'fixture-model-revision', chatPrompt: 'fixture prompt', references: [reference] };
-  const workers = [], live = new Set(), timers = new Map(), fetches = [], bitmaps = [], trace = [];
-  const pendingReference = deferred();
+  const workers = [], live = new Set(), timers = new Map(), fetches = [], bitmaps = [], canvases = [], trace = [];
+  const pendingReference = deferred(), pendingBitmap = deferred(), pendingPreparation = deferred();
+  let digestCalls = 0;
   const elements = Object.fromEntries(['events', 'status', 'generate', 'cancel', 'painting']
     .map(id => [id, { textContent: '', disabled: false }]));
   const frames = [];
@@ -53,13 +55,19 @@ function harness({ holdReference = false, ignoreReferenceAbort = false, matte = 
     complete(data = new Float32Array([0.1, 0.2])) { this.onmessage?.({ data: { type: 'complete', data } }); }
     progress(phase, message = '') { this.onmessage?.({ data: { type: 'progress', phase, message } }); }
   }
-  const response = () => ({ ok: true, arrayBuffer: async () => bytes.slice().buffer });
+  const response = () => ({ ok: true, arrayBuffer: async () => {
+    trace.push('reference-body');
+    if(holdPreparation==='body')await pendingPreparation.promise;
+    return bytes.slice().buffer;
+  } });
   const window = {};
   const sandbox = {
     window, document: { getElementById: id => elements[id] }, Worker: FakeWorker,
     AbortController, Blob, performance: { now: () => 100 },
     crypto: { subtle: { digest: async (algorithm, input) => {
       assert.equal(algorithm, 'SHA-256');
+      digestCalls++;const point=digestCalls===1?'source-hash':'pixel-hash';trace.push(point);
+      if(holdPreparation===point)await pendingPreparation.promise;
       const digest = createHash('sha256').update(new Uint8Array(input)).digest();
       return digest.buffer.slice(digest.byteOffset, digest.byteOffset + digest.byteLength);
     } } },
@@ -75,23 +83,44 @@ function harness({ holdReference = false, ignoreReferenceAbort = false, matte = 
       return pendingReference.promise;
     },
     createImageBitmap: async () => {
-      const bitmap = { closed: false, close() { this.closed = true; } };
-      bitmaps.push(bitmap); return bitmap;
+      const bitmap = { closed: false, closeCalls: 0, close() {
+        this.closeCalls++;this.closed = true;trace.push('bitmap-close');
+        if(bitmapCloseFailure)throw Error('Bitmap close fixture failed');
+      } };
+      bitmaps.push(bitmap);
+      if(holdBitmap)await pendingBitmap.promise;
+      return bitmap;
     },
     OffscreenCanvas: class {
-      constructor(width, height) { this.width = width; this.height = height; }
+      constructor(width, height) {
+        this._width=width;this._height=height;this.allocatedWidth=width;this.allocatedHeight=height;
+        this.dimensionWrites=[];canvases.push(this);
+      }
+      get width(){return this._width;}
+      get height(){return this._height;}
+      set width(value){this.dimensionWrites.push(['width',value]);this._width=value;}
+      set height(value){this.dimensionWrites.push(['height',value]);this._height=value;}
       getContext(kind) {
         assert.equal(kind, '2d');
+        if(referenceFailure==='context-null')return null;
+        if(referenceFailure==='context-throw')throw Error('Reference context fixture failed');
         return { fillStyle:'',fillRect(){trace.push('reference-fill:'+this.fillStyle);},
-          drawImage() {trace.push('reference-draw');}, getImageData: () => ({ data: new Uint8ClampedArray([0, 64, 128, 255, 255, 191, 159, 255]) }) };
+          drawImage() {
+            if(referenceFailure==='draw')throw Error('Reference draw fixture failed');
+            trace.push('reference-draw');
+          }, getImageData: () => {
+            if(referenceFailure==='getImageData')throw Error('Reference getImageData fixture failed');
+            return { data: new Uint8ClampedArray([0, 64, 128, 255, 255, 191, 159, 255]) };
+          } };
       }
     },
     setTimeout: (callback, delay) => { const handle = {}; timers.set(handle, { callback, delay }); return handle; },
     clearTimeout: handle => timers.delete(handle),
   };
   runInNewContext(source, sandbox, { filename: 'actual-browser-proof.mjs' });
-  return { proof: window.cfImageProof, elements, workers, live, timers, fetches, frames, bitmaps, trace,
-    resolveReference: () => pendingReference.resolve(response()) };
+  return { proof: window.cfImageProof, elements, workers, live, timers, fetches, frames, bitmaps, canvases, trace,
+    resolveReference: () => pendingReference.resolve(response()),
+    resolveBitmap: () => pendingBitmap.resolve(), resolvePreparation: () => pendingPreparation.resolve() };
 }
 
 async function reachStage(h, index, { referenceEnabled = true } = {}) {
@@ -105,6 +134,14 @@ async function reachStage(h, index, { referenceEnabled = true } = {}) {
   return { run, worker: h.workers[index] };
 }
 
+function assertReferenceResourcesRetired(h) {
+  for(const bitmap of h.bitmaps){assert.equal(bitmap.closed,true);assert.equal(bitmap.closeCalls,1);}
+  for(const canvas of h.canvases){
+    assert.equal(canvas.width,1);assert.equal(canvas.height,1);
+    assert.deepEqual(canvas.dimensionWrites,[['width',1],['height',1]]);
+  }
+}
+
 function assertFailed(h, message) {
   assert.equal(h.proof.state, 'failed');
   assert.match(h.proof.error, message);
@@ -115,6 +152,7 @@ function assertFailed(h, message) {
   assert.ok(h.workers.every(worker => worker.terminateCalls === 1));
   assert.equal(h.elements.generate.disabled, false);
   assert.equal(h.elements.cancel.disabled, true);
+  assertReferenceResourcesRetired(h);
 }
 
 test('actual four-stage flow publishes exact decoded pixels only after every worker retires', async () => {
@@ -123,7 +161,15 @@ test('actual four-stage flow publishes exact decoded pixels only after every wor
   assert.deepEqual(h.workers.map(row => row.job.stage), ['text', 'encode', 'denoise', 'decode']);
   assert.deepEqual(h.fetches.map(row => row.url), ['/recipe.json', '/reference.png']);
   assert.equal(h.bitmaps.length, 1);
-  assert.equal(h.bitmaps[0].closed, true);
+  assertReferenceResourcesRetired(h);
+  assert.equal(h.canvases.length,1);
+  assert.equal(h.canvases[0].allocatedWidth,2);assert.equal(h.canvases[0].allocatedHeight,1);
+  // Independent NCHW expected values, copied before scratch retirement.
+  const expectedTensor=new Float32Array([-1,1,64/127.5-1,191/127.5-1,128/127.5-1,159/127.5-1]);
+  assert.deepEqual([...h.workers[1].job.pixels],[...expectedTensor]);
+  const prepared=h.proof.records.find(row=>row.phase==='reference-prepared');
+  assert.equal(prepared.width,2);assert.equal(prepared.height,1);
+  assert.equal(prepared.pixelSha256,createHash('sha256').update(new Uint8Array(expectedTensor.buffer)).digest('hex'));
   assert.equal(h.workers[2].job.references.length, 1);
   assert.equal(h.workers[2].job.references[0].width, 2);
   assert.equal(h.workers[2].job.references[0].height, 1);
@@ -228,15 +274,63 @@ test('nonfinite decoder pixels fail before canvas publication despite successful
 
 test('an explicit reference matte precedes drawing and its prepared tensor is separately hashed',async()=>{
   const h=harness({matte:'#72786e'});const {run}=await reachStage(h,1);
-  assert.deepEqual(h.trace.filter(x=>x.startsWith('reference-')),['reference-fill:#72786e','reference-draw']);
+  assert.deepEqual(h.trace.filter(x=>x.startsWith('reference-fill:')||x==='reference-draw'),['reference-fill:#72786e','reference-draw']);
   const prepared=h.proof.records.find(x=>x.phase==='reference-prepared');
   assert.equal(prepared.matte,'#72786e');assert.match(prepared.pixelSha256,/^[a-f0-9]{64}$/);
   h.proof.cancel();assert.equal(await run,'failed');assertFailed(h,/Canceled/);
 });
-test('invalid reference matte fails before starting the encoder',async()=>{
+test('invalid reference matte refuses before any reference fetch, bitmap or scratch allocation',async()=>{
   const h=harness({matte:'transparent'});const {run,worker}=await reachStage(h,0);
   worker.complete();assert.equal(await run,'failed');assertFailed(h,/Invalid explicit reference matte/);
-  assert.equal(h.workers.length,1);
+  assert.equal(h.workers.length,1);assert.equal(h.bitmaps.length,0);assert.equal(h.canvases.length,0);
+  assert.deepEqual(h.fetches.map(row=>row.url),['/recipe.json']);
+});
+
+for(const [referenceFailure,message] of [
+  ['context-null',/Reference 2D context unavailable/],['context-throw',/Reference context fixture failed/],
+  ['draw',/Reference draw fixture failed/],['getImageData',/Reference getImageData fixture failed/],
+])test(`reference ${referenceFailure} failure closes bitmap once and retires scratch without an encoder`,async()=>{
+  const h=harness({referenceFailure});const {run,worker}=await reachStage(h,0);
+  worker.complete();assert.equal(await run,'failed');assertFailed(h,message);
+  assert.equal(h.bitmaps.length,1);assert.equal(h.canvases.length,1);assert.equal(h.workers.length,1);
+  assert.ok(!h.proof.records.some(row=>row.phase==='reference-prepared'));
+});
+
+test('a cleanup error preserves the original preparation fault and still attempts scratch retirement',async()=>{
+  const h=harness({referenceFailure:'draw',bitmapCloseFailure:true});const {run,worker}=await reachStage(h,0);
+  worker.complete();assert.equal(await run,'failed');assertFailed(h,/Reference draw fixture failed/);
+  assert.match(h.proof.error,/Bitmap close fixture failed/);
+  assert.equal(h.workers.length,1);assert.equal(h.bitmaps[0].closeCalls,1);assert.equal(h.canvases.length,1);
+});
+
+test('cancellation during bitmap decoding closes its late result without allocating scratch or starting an encoder',async()=>{
+  const h=harness({holdBitmap:true});const {run,worker}=await reachStage(h,0);
+  worker.complete();await flush();assert.equal(h.bitmaps.length,1);assert.equal(h.bitmaps[0].closeCalls,0);
+  h.proof.cancel();assert.equal(h.canvases.length,0);h.resolveBitmap();
+  assert.equal(await run,'failed');assertFailed(h,/Canceled/);
+  assert.equal(h.bitmaps[0].closeCalls,1);assert.equal(h.canvases.length,0);assert.equal(h.workers.length,1);
+});
+
+for(const holdPreparation of ['body','source-hash','pixel-hash'])test(`cancellation after awaited ${holdPreparation} blocks later preparation and publication`,async()=>{
+  const h=harness({holdPreparation});const {run,worker}=await reachStage(h,0);
+  worker.complete();await flush();
+  assert.ok(h.trace.includes(holdPreparation==='body'?'reference-body':holdPreparation));
+  if(holdPreparation==='pixel-hash'){
+    assert.equal(h.bitmaps.length,1);assert.equal(h.canvases.length,1);assertReferenceResourcesRetired(h);
+  }else {assert.equal(h.bitmaps.length,0);assert.equal(h.canvases.length,0);}
+  h.proof.cancel();h.resolvePreparation();assert.equal(await run,'failed');assertFailed(h,/Canceled/);
+  assert.equal(h.workers.length,1);assert.ok(!h.proof.records.some(row=>row.phase==='reference-prepared'));
+});
+
+test('the same resource outcome ruler rejects a missed close, double close and unretired canvas',async()=>{
+  const h=harness();const {run}=await reachStage(h,1);h.proof.cancel();assert.equal(await run,'failed');
+  assertFailed(h,/Canceled/);
+  for(const closeCalls of [0,2]){
+    h.bitmaps[0].closeCalls=closeCalls;assert.throws(()=>assertReferenceResourcesRetired(h));
+    h.bitmaps[0].closeCalls=1;assertReferenceResourcesRetired(h);
+  }
+  h.canvases[0]._width=2;assert.throws(()=>assertReferenceResourcesRetired(h));
+  h.canvases[0]._width=1;assertReferenceResourcesRetired(h);
 });
 
 
