@@ -1,0 +1,2167 @@
+{
+  "schema": "cf-civet-water-motion-evidence-verification/v1",
+  "status": "PASS",
+  "startedAt": "2026-09-09T00:25:25.458Z",
+  "report": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/report.json",
+  "verificationScript": "audits/CIVET_WATER_AND_MOTION_20260908/verify-evidence.mjs",
+  "verificationScriptSha256": "1a83d12c954186240f180a8080eeb527573c4cab4b4fdc41fe9cf19905aebebc",
+  "sourceHashField": "sources",
+  "sources": [
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/study.html",
+      "bytes": 3105,
+      "sha256": "33e4a16af57109d0ee6269fe8fe5c90f1409bd240a0458a827bf48e4f335d317"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/study-harness.ts",
+      "bytes": 23178,
+      "sha256": "7ebf49d7f7d293dfb79673e8d938dfa751ec1d1daf6ee4279bdb60da0aa7c425"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/study-runner.mjs",
+      "bytes": 25023,
+      "sha256": "ded82eab92c571363f57a81651c790df6bb600fd849229e78d067db5b3c61b82"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/serve-study.mjs",
+      "bytes": 2661,
+      "sha256": "15e74dcccd47e74380cd9722b7458413ac9fb0957524ba16fb651e41d0872e08"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/study.tsconfig.json",
+      "bytes": 229,
+      "sha256": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/asset.json",
+      "bytes": 1470,
+      "sha256": "e23adaa7c810436878dce1530824a8e658c806766c379794d70094f5f6ba6870"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/water-owner.ts",
+      "bytes": 23742,
+      "sha256": "cecb8c8a4b5b786350d90c9282a7b120446b81e5dc92e139a638ade00159af9f"
+    },
+    {
+      "path": "port/v2/packages/art/src/earth-resident-plan.ts",
+      "bytes": 7654,
+      "sha256": "72d27b39e9c15382638f4db09074198e0eb296a18affafc740bbdc89e7f311f6"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/civet-articulated-rig.ts",
+      "bytes": 10269,
+      "sha256": "800b93d4144d2f651792e30a7a6f9b2d8acfc0a769d2ce3835ed51a4f5da2978"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/civet-rig.ts",
+      "bytes": 6142,
+      "sha256": "161a3ddd690b21c11575a539587a629910ac89b98ab849e846e1b15a0bffe0bc"
+    }
+  ],
+  "retainedSourceCopies": [
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/study.html",
+      "bytes": 3105,
+      "sha256": "33e4a16af57109d0ee6269fe8fe5c90f1409bd240a0458a827bf48e4f335d317"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/study-harness.ts",
+      "bytes": 23178,
+      "sha256": "7ebf49d7f7d293dfb79673e8d938dfa751ec1d1daf6ee4279bdb60da0aa7c425"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/study-runner.mjs",
+      "bytes": 25023,
+      "sha256": "ded82eab92c571363f57a81651c790df6bb600fd849229e78d067db5b3c61b82"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/serve-study.mjs",
+      "bytes": 2661,
+      "sha256": "15e74dcccd47e74380cd9722b7458413ac9fb0957524ba16fb651e41d0872e08"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/study.tsconfig.json",
+      "bytes": 229,
+      "sha256": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/asset.json",
+      "bytes": 1470,
+      "sha256": "e23adaa7c810436878dce1530824a8e658c806766c379794d70094f5f6ba6870"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/water-owner.ts",
+      "bytes": 23742,
+      "sha256": "cecb8c8a4b5b786350d90c9282a7b120446b81e5dc92e139a638ade00159af9f"
+    }
+  ],
+  "dist": [
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/BufferResource-B2JaIKPf.js",
+      "bytes": 18784,
+      "sha256": "80df9993a779cbc928290ad7d05cf8e58af865551942629dfd383d2d2449c517"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/CanvasPool-D0IGP4PS.js",
+      "bytes": 2477,
+      "sha256": "6345931d1402a27cfe0f1e5eca849774a6f18a3f5e4e60d9331e85afed9dfa07"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/CanvasRenderer-BnZAmjuc.js",
+      "bytes": 281516,
+      "sha256": "fc2494f61e40a794adbc09ceb2e2afb74e3b0ff34937bb33d01b7862789f7bbe"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/Geometry-CgCjw-Bj.js",
+      "bytes": 354431,
+      "sha256": "760db2ef9640c546ad97e4934f04f168687c7eefa0098569af55b7c4b314e1b0"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/RenderTargetSystem-C8zObf9q.js",
+      "bytes": 175871,
+      "sha256": "515370eff8879080fed99e19a956deb1d8d26cfe9123f826df164bf6be6362b8"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/browserAll-Bb-JdeeW.js",
+      "bytes": 107441,
+      "sha256": "e57f7903557b2a343cf189e6ed1131e250cf21eba4d58aa36be83087a1ab131c"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/canvasUtils-D4O_SOPi.js",
+      "bytes": 13460,
+      "sha256": "71614c39fc5273dd4b9e248835c2d367ee08b3506baf85e65e17cbc994d3c5c4"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/defaultFilter.vert-D5W_H1zX.js",
+      "bytes": 69624,
+      "sha256": "d67b10bf4ea8705116d5e4bfe0f0ef239cd532e24b0169d633fd661d4590b715"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/getTextureBatchBindGroup-BqyP7eOb.js",
+      "bytes": 1188,
+      "sha256": "08c2f010f1fa2fbb0233a183d9602a7e9ddf11793975f1efeae530f197341754"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/init-CiSqEodx.js",
+      "bytes": 35910,
+      "sha256": "1b93475bbf2cf52369a61e2618861bd4fb825b06c2b34a9d6b8d1d400c0d5c1a"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/study-DJ-P_ISN.js",
+      "bytes": 350042,
+      "sha256": "e6fba13f90727abad3b59c758d214f215b566c841ae2c6a9bee4c737a0c2b5f6"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/assets/webworkerAll-QeelJbSZ.js",
+      "bytes": 281,
+      "sha256": "121038b71f2519f931f1981d750c6c9e1679e8da08fca3e0b9340590e31035c8"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/study-assets/civet-selected-v1.webp",
+      "bytes": 179816,
+      "sha256": "186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/study-assets/earth-background-original.webp",
+      "bytes": 130306,
+      "sha256": "2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/dist/study.html",
+      "bytes": 3796,
+      "sha256": "12633e15ccb159fc2a4baeda9f820169082a1b4c4c8694259645b5fdfaf91365"
+    }
+  ],
+  "mediaCarriers": [
+    {
+      "location": "$.modes.0.frames.0.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.1.image",
+      "path": "desktop-breathe-1500.png",
+      "bytes": 166833,
+      "sha256": "6223b0fd3234b9dc7decdac454fb93bfd8bae7f409fd08ffd3dedd1e35f32c48"
+    },
+    {
+      "location": "$.modes.0.frames.2.image",
+      "path": "desktop-breathe-3000.png",
+      "bytes": 163276,
+      "sha256": "31d672a89a7772a0e8989cb73f086437c928dca19ec6872c44706fa156ff2236"
+    },
+    {
+      "location": "$.modes.0.frames.3.image",
+      "path": "desktop-breathe-4500.png",
+      "bytes": 166670,
+      "sha256": "82a7a5cec8d6aae3a310824ac821fb3ad4b9e8096cc0a74340481c094df5ff38"
+    },
+    {
+      "location": "$.modes.0.frames.4.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.5.image",
+      "path": "desktop-strike-448.png",
+      "bytes": 158827,
+      "sha256": "7b48349259d89ffb75ec9e13362e0b7474fba14899e00fe16531cd6f8b13d9ba"
+    },
+    {
+      "location": "$.modes.0.frames.6.image",
+      "path": "desktop-strike-864.png",
+      "bytes": 168517,
+      "sha256": "05b5dd5716337828759b1849913198524f6c4cdc7ee017cf68da896b55c1f5ad"
+    },
+    {
+      "location": "$.modes.0.frames.7.image",
+      "path": "desktop-strike-1248.png",
+      "bytes": 162479,
+      "sha256": "1b21bd6f2dbb91972f78956f6c6a3fe9e4f2d731609e48af0c68543d0aca37a8"
+    },
+    {
+      "location": "$.modes.0.frames.8.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.9.image",
+      "path": "desktop-recoil-308.png",
+      "bytes": 158774,
+      "sha256": "c319f597d86925f83a7890b3c4993c10f41dfaa0adab38164f53fc1d3d06d1bc"
+    },
+    {
+      "location": "$.modes.0.frames.10.image",
+      "path": "desktop-recoil-715.png",
+      "bytes": 164474,
+      "sha256": "bc9f2900fe95c2eb9000c3ef6508c5937cb490d47016836d0fbb7140efe47f8a"
+    },
+    {
+      "location": "$.modes.0.frames.11.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.12.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.13.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.14.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.15.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.16.image",
+      "path": "desktop-subpixel-1500.png",
+      "bytes": 163505,
+      "sha256": "5ce61748a1424ea0dca3f60685098191a5e24b7e5cfa307590511899b1279382"
+    },
+    {
+      "location": "$.modes.0.frames.17.image",
+      "path": "desktop-subpixel-3000.png",
+      "bytes": 163370,
+      "sha256": "ef2e8b7fb9ef76477128c7ddcb6e80459a84528d00524d1cdd7f7a6d36318d4d"
+    },
+    {
+      "location": "$.modes.0.frames.18.image",
+      "path": "desktop-subpixel-4500.png",
+      "bytes": 163500,
+      "sha256": "098456113ca21444d59ffca3ed2801366c8c15e7d316b292017f44633e34cb5a"
+    },
+    {
+      "location": "$.modes.0.frames.19.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.20.image",
+      "path": "desktop-rigid-block-1500.png",
+      "bytes": 163948,
+      "sha256": "1c782775ba5759a93e09b84dc74b2ab10e9772cda96c06f1bcd2bf06710c7f00"
+    },
+    {
+      "location": "$.modes.0.frames.21.image",
+      "path": "desktop-rigid-block-3000.png",
+      "bytes": 163359,
+      "sha256": "a4c34550d62e93e35fbaf6c31ecb0c21d6cb1f19cca4bc0d5ec6c1c545c78901"
+    },
+    {
+      "location": "$.modes.0.frames.22.image",
+      "path": "desktop-rigid-block-4500.png",
+      "bytes": 164021,
+      "sha256": "f51da0fd09a54262ee203d88dab79588f8ea070d290d482327834dbb3b5a722a"
+    },
+    {
+      "location": "$.modes.0.frames.23.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.24.image",
+      "path": "desktop-frozen-tail-448.png",
+      "bytes": 157764,
+      "sha256": "69c1ebe1e904510ae09b0c7656953170ae3058c320a3f2bfd94fa8bdcae67a97"
+    },
+    {
+      "location": "$.modes.0.frames.25.image",
+      "path": "desktop-frozen-tail-864.png",
+      "bytes": 169724,
+      "sha256": "4deb0a08a603b8b38edd552603ffff6197adb34d9273d936d2e310a124751bdf"
+    },
+    {
+      "location": "$.modes.0.frames.26.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.27.image",
+      "path": "desktop-held-breath-1500.png",
+      "bytes": 166694,
+      "sha256": "cce890751c18440af7afd7e38d7385a595f6a601e05b709d9780bcccab021e15"
+    },
+    {
+      "location": "$.modes.0.frames.28.image",
+      "path": "desktop-held-breath-3000.png",
+      "bytes": 166657,
+      "sha256": "e5a72b882c688150c76ded00859df37b26e1e2047c4b8da860774271b742418a"
+    },
+    {
+      "location": "$.modes.0.frames.29.image",
+      "path": "desktop-held-breath-4500.png",
+      "bytes": 166592,
+      "sha256": "8257334c89b28c31dfd92fcc1b4c75013abc283bdfd0fbe0e9b68a7e9be3810b"
+    },
+    {
+      "location": "$.modes.0.frames.30.image",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.0.frames.31.image",
+      "path": "desktop-environment-water.png",
+      "bytes": 1004032,
+      "sha256": "d885312ddb03d7e8a3f4e9c790817fad330cb9e43e5900ca26862299153ad7fd"
+    },
+    {
+      "location": "$.modes.0.frames.32.image",
+      "path": "desktop-environment-off.png",
+      "bytes": 1004614,
+      "sha256": "f4518906183f6e5b40a2b7425b5fff89db0c7589355822c496ad4d2188aad408"
+    },
+    {
+      "location": "$.modes.0.frames.33.image",
+      "path": "desktop-environment-water.png",
+      "bytes": 1004032,
+      "sha256": "d885312ddb03d7e8a3f4e9c790817fad330cb9e43e5900ca26862299153ad7fd"
+    },
+    {
+      "location": "$.modes.0.controls.9.on",
+      "path": "desktop-environment-water.png",
+      "bytes": 1004032,
+      "sha256": "d885312ddb03d7e8a3f4e9c790817fad330cb9e43e5900ca26862299153ad7fd"
+    },
+    {
+      "location": "$.modes.0.controls.9.off",
+      "path": "desktop-environment-off.png",
+      "bytes": 1004614,
+      "sha256": "f4518906183f6e5b40a2b7425b5fff89db0c7589355822c496ad4d2188aad408"
+    },
+    {
+      "location": "$.modes.0.controls.9.restored",
+      "path": "desktop-environment-water.png",
+      "bytes": 1004032,
+      "sha256": "d885312ddb03d7e8a3f4e9c790817fad330cb9e43e5900ca26862299153ad7fd"
+    },
+    {
+      "location": "$.modes.0.scenes.0.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.0.scenes.0.after",
+      "path": "desktop-water-after.png",
+      "bytes": 950387,
+      "sha256": "dafc4e34db80238787c4b6f90dc4e1d0b4b5cadc3780e7e85465e6c314f06c10"
+    },
+    {
+      "location": "$.modes.0.scenes.0.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.0.scenes.0.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.0.scenes.0.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.0.scenes.0.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.0.scenes.0.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.0.scenes.1.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.0.scenes.1.after",
+      "path": "desktop-noWater-after.png",
+      "bytes": 950419,
+      "sha256": "d37449c43729d8a6868e9ea44d8e23c2157063d6edde3098f892efa7b3342bdb"
+    },
+    {
+      "location": "$.modes.0.scenes.1.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.0.scenes.1.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.0.scenes.1.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.0.scenes.1.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.0.scenes.1.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.0.scenes.2.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.0.scenes.2.after",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.0.scenes.2.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.0.scenes.2.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.0.scenes.2.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.0.scenes.2.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.0.scenes.2.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.0.scenes.3.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.0.scenes.3.after",
+      "path": "desktop-shiftWater-after.png",
+      "bytes": 950451,
+      "sha256": "905d7f4ec008612f4e3efc3f0cdd260324173a017d30dd665fdb115635cc96a8"
+    },
+    {
+      "location": "$.modes.0.scenes.3.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.0.scenes.3.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.0.scenes.3.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.0.scenes.3.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.0.scenes.3.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.0.scenes.4.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.0.scenes.4.after",
+      "path": "desktop-noLight-after.png",
+      "bytes": 950823,
+      "sha256": "f803910bfb5ab99f6e66be9fba52b392f42b7fde6fdb02bfc9f38ffc42d64bf8"
+    },
+    {
+      "location": "$.modes.0.scenes.4.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.0.scenes.4.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.0.scenes.4.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.0.scenes.4.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.0.scenes.4.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.0.scenes.5.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.0.scenes.5.after",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.0.scenes.5.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.0.scenes.5.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.0.scenes.5.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.0.scenes.5.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.0.scenes.5.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.0.scenes.6.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.0.scenes.6.after",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.0.scenes.6.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.0.scenes.6.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.0.scenes.6.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.0.scenes.6.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.0.scenes.6.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.0.scenes.7.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.0.scenes.7.after",
+      "path": "desktop-missingPaw-after.png",
+      "bytes": 950410,
+      "sha256": "e3fa54853376b8bdf24bf49e6a10fd3272bb4654cc7e624faaa57d0b8a9af0ab"
+    },
+    {
+      "location": "$.modes.0.scenes.7.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.0.scenes.7.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.0.scenes.7.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.0.scenes.7.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.0.scenes.7.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.0.scenes.8.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.0.scenes.8.after",
+      "path": "desktop-strongLight-after.png",
+      "bytes": 950729,
+      "sha256": "aac55cd38d732b32bcc6c820c3c80713e9f9bd097ac36bcb1fa3bfbcd8f4fc1d"
+    },
+    {
+      "location": "$.modes.0.scenes.8.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.0.scenes.8.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.0.scenes.8.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.0.scenes.8.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.0.scenes.8.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.0.scenes.9.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.0.scenes.9.after",
+      "path": "desktop-water-after.png",
+      "bytes": 950387,
+      "sha256": "dafc4e34db80238787c4b6f90dc4e1d0b4b5cadc3780e7e85465e6c314f06c10"
+    },
+    {
+      "location": "$.modes.0.scenes.9.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.0.scenes.9.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.0.scenes.9.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.0.scenes.9.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.0.scenes.9.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.0.videos.0",
+      "path": "desktop-breathe-native.webm",
+      "bytes": 1198215,
+      "sha256": "8cc5d1b9cfc4e1059cdf1b80db5d603dd400ac2592330c7dd3ff9737eb6f7588"
+    },
+    {
+      "location": "$.modes.0.videos.1",
+      "path": "desktop-strike-native.webm",
+      "bytes": 277191,
+      "sha256": "7cba5db26b0ac91d0dc8bcbf19b053c4587fdabac3c8a7002459fa2eb7766c5d"
+    },
+    {
+      "location": "$.modes.0.videos.2",
+      "path": "desktop-recoil-native.webm",
+      "bytes": 192118,
+      "sha256": "ee31d331e04c496843882ef8b02df341ba77edfede1142f31ead08137a01ac11"
+    },
+    {
+      "location": "$.modes.0.retiredWater.scene",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.0.retiredWater.sibling",
+      "path": "desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb"
+    },
+    {
+      "location": "$.modes.1.frames.0.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.1.image",
+      "path": "phone-breathe-1500.png",
+      "bytes": 243478,
+      "sha256": "094e655048b584514d549f32b8beb551f286054f7987df2caac0a02acfb5dbfe"
+    },
+    {
+      "location": "$.modes.1.frames.2.image",
+      "path": "phone-breathe-3000.png",
+      "bytes": 239183,
+      "sha256": "dde1539cfb9bcc60e72d5b18ffedbd6250982f1e84622dedd0f74da5cef4a727"
+    },
+    {
+      "location": "$.modes.1.frames.3.image",
+      "path": "phone-breathe-4500.png",
+      "bytes": 243456,
+      "sha256": "98b2a4f438fb248af742b834dfdd6d8baa071744678bd5bdbd0d0a214e27c6e3"
+    },
+    {
+      "location": "$.modes.1.frames.4.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.5.image",
+      "path": "phone-strike-448.png",
+      "bytes": 231911,
+      "sha256": "e18bbcf45a8298e24ae9ad4108e500aa62bc6a7772e961ebd47e91ee6e90542d"
+    },
+    {
+      "location": "$.modes.1.frames.6.image",
+      "path": "phone-strike-864.png",
+      "bytes": 246601,
+      "sha256": "5bf58cdeb404d93a102dcee51a451bcddfa8d8c7b63dddeffdd16e4e8746c182"
+    },
+    {
+      "location": "$.modes.1.frames.7.image",
+      "path": "phone-strike-1248.png",
+      "bytes": 237276,
+      "sha256": "b8d426f158514258354ab1ce591c4a39d4e2ddb456f2a0dbcac78925d266cd16"
+    },
+    {
+      "location": "$.modes.1.frames.8.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.9.image",
+      "path": "phone-recoil-308.png",
+      "bytes": 231664,
+      "sha256": "aeb030c4e590f660c2bd8996608fa5673402135d313d4851b4eac64d8598c495"
+    },
+    {
+      "location": "$.modes.1.frames.10.image",
+      "path": "phone-recoil-715.png",
+      "bytes": 240343,
+      "sha256": "8e899926a8ed1c2eace773cc6e87dd61d16783cb23c310aa3698dca988dd0ff5"
+    },
+    {
+      "location": "$.modes.1.frames.11.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.12.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.13.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.14.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.15.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.16.image",
+      "path": "phone-subpixel-1500.png",
+      "bytes": 239129,
+      "sha256": "0b20d9d19cf80a0ecdcb11ec8a5437424473ccffb7507429917740930d592398"
+    },
+    {
+      "location": "$.modes.1.frames.17.image",
+      "path": "phone-subpixel-3000.png",
+      "bytes": 239002,
+      "sha256": "c9b37983cbcf8450978134868373a72be10c2e6e14beba38bdeca9f211055c2f"
+    },
+    {
+      "location": "$.modes.1.frames.18.image",
+      "path": "phone-subpixel-4500.png",
+      "bytes": 239067,
+      "sha256": "a5de189acb5e559d830244ea2e867134068e0b3ab1b1d2d5cc7fcd04bb4d0a31"
+    },
+    {
+      "location": "$.modes.1.frames.19.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.20.image",
+      "path": "phone-rigid-block-1500.png",
+      "bytes": 239230,
+      "sha256": "e5ead48e561fba2ceed5853a386c64c7147c82ab7ecd9e658ea00930616c3da9"
+    },
+    {
+      "location": "$.modes.1.frames.21.image",
+      "path": "phone-rigid-block-3000.png",
+      "bytes": 239046,
+      "sha256": "57d97d59b45588d8a1dfc69a8bdf96155b0d5c6a5cd661f981fdcf11575cfd6d"
+    },
+    {
+      "location": "$.modes.1.frames.22.image",
+      "path": "phone-rigid-block-4500.png",
+      "bytes": 239464,
+      "sha256": "b1db884574003f94079fa24cd23321723ab5d9b69cdd6934a46823d11b107975"
+    },
+    {
+      "location": "$.modes.1.frames.23.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.24.image",
+      "path": "phone-frozen-tail-448.png",
+      "bytes": 230045,
+      "sha256": "18c0c99fee2acfe71dea4158c0fd6715ff6c657727665b8a094d272c37a90fe9"
+    },
+    {
+      "location": "$.modes.1.frames.25.image",
+      "path": "phone-frozen-tail-864.png",
+      "bytes": 248332,
+      "sha256": "a92bac1855ba55031b798ed1d4513eee6801a8aa6b51832c4084bc2c2f34b7b7"
+    },
+    {
+      "location": "$.modes.1.frames.26.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.27.image",
+      "path": "phone-held-breath-1500.png",
+      "bytes": 243461,
+      "sha256": "4a803098874f66d36dbdea6c8067ed0413ca2a5e567d389257fe4594a17feee0"
+    },
+    {
+      "location": "$.modes.1.frames.28.image",
+      "path": "phone-held-breath-3000.png",
+      "bytes": 243595,
+      "sha256": "006739e7db969e60310c31e53f64c996a53d5bebf53c9b2e8843692b55ce79cb"
+    },
+    {
+      "location": "$.modes.1.frames.29.image",
+      "path": "phone-held-breath-4500.png",
+      "bytes": 243513,
+      "sha256": "76271d8868cc531b53954a8879f1a8eadcbb7aa5e95fdbfe10b43c69c47ea4df"
+    },
+    {
+      "location": "$.modes.1.frames.30.image",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    },
+    {
+      "location": "$.modes.1.frames.31.image",
+      "path": "phone-environment-water.png",
+      "bytes": 583995,
+      "sha256": "8ae56cfb0b0795af0970c90b24c507032b09f8a0fa8ce84f832b29669020f924"
+    },
+    {
+      "location": "$.modes.1.frames.32.image",
+      "path": "phone-environment-off.png",
+      "bytes": 585216,
+      "sha256": "730d90081e8f167f6da5b22247801c1b34cd5a32f4791d0f815bdbf28470d7bc"
+    },
+    {
+      "location": "$.modes.1.frames.33.image",
+      "path": "phone-environment-water.png",
+      "bytes": 583995,
+      "sha256": "8ae56cfb0b0795af0970c90b24c507032b09f8a0fa8ce84f832b29669020f924"
+    },
+    {
+      "location": "$.modes.1.controls.9.on",
+      "path": "phone-environment-water.png",
+      "bytes": 583995,
+      "sha256": "8ae56cfb0b0795af0970c90b24c507032b09f8a0fa8ce84f832b29669020f924"
+    },
+    {
+      "location": "$.modes.1.controls.9.off",
+      "path": "phone-environment-off.png",
+      "bytes": 585216,
+      "sha256": "730d90081e8f167f6da5b22247801c1b34cd5a32f4791d0f815bdbf28470d7bc"
+    },
+    {
+      "location": "$.modes.1.controls.9.restored",
+      "path": "phone-environment-water.png",
+      "bytes": 583995,
+      "sha256": "8ae56cfb0b0795af0970c90b24c507032b09f8a0fa8ce84f832b29669020f924"
+    },
+    {
+      "location": "$.modes.1.scenes.0.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.1.scenes.0.after",
+      "path": "desktop-water-after.png",
+      "bytes": 950387,
+      "sha256": "dafc4e34db80238787c4b6f90dc4e1d0b4b5cadc3780e7e85465e6c314f06c10"
+    },
+    {
+      "location": "$.modes.1.scenes.0.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.1.scenes.0.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.1.scenes.0.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.1.scenes.0.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.1.scenes.0.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.1.scenes.1.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.1.scenes.1.after",
+      "path": "desktop-noWater-after.png",
+      "bytes": 950419,
+      "sha256": "d37449c43729d8a6868e9ea44d8e23c2157063d6edde3098f892efa7b3342bdb"
+    },
+    {
+      "location": "$.modes.1.scenes.1.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.1.scenes.1.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.1.scenes.1.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.1.scenes.1.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.1.scenes.1.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.1.scenes.2.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.1.scenes.2.after",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.1.scenes.2.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.1.scenes.2.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.1.scenes.2.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.1.scenes.2.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.1.scenes.2.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.1.scenes.3.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.1.scenes.3.after",
+      "path": "desktop-shiftWater-after.png",
+      "bytes": 950451,
+      "sha256": "905d7f4ec008612f4e3efc3f0cdd260324173a017d30dd665fdb115635cc96a8"
+    },
+    {
+      "location": "$.modes.1.scenes.3.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.1.scenes.3.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.1.scenes.3.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.1.scenes.3.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.1.scenes.3.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.1.scenes.4.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.1.scenes.4.after",
+      "path": "desktop-noLight-after.png",
+      "bytes": 950823,
+      "sha256": "f803910bfb5ab99f6e66be9fba52b392f42b7fde6fdb02bfc9f38ffc42d64bf8"
+    },
+    {
+      "location": "$.modes.1.scenes.4.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.1.scenes.4.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.1.scenes.4.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.1.scenes.4.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.1.scenes.4.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.1.scenes.5.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.1.scenes.5.after",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.1.scenes.5.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.1.scenes.5.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.1.scenes.5.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.1.scenes.5.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.1.scenes.5.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.1.scenes.6.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.1.scenes.6.after",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.1.scenes.6.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.1.scenes.6.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.1.scenes.6.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.1.scenes.6.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.1.scenes.6.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.1.scenes.7.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.1.scenes.7.after",
+      "path": "desktop-missingPaw-after.png",
+      "bytes": 950410,
+      "sha256": "e3fa54853376b8bdf24bf49e6a10fd3272bb4654cc7e624faaa57d0b8a9af0ab"
+    },
+    {
+      "location": "$.modes.1.scenes.7.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.1.scenes.7.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.1.scenes.7.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.1.scenes.7.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.1.scenes.7.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.1.scenes.8.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.1.scenes.8.after",
+      "path": "desktop-strongLight-after.png",
+      "bytes": 950729,
+      "sha256": "aac55cd38d732b32bcc6c820c3c80713e9f9bd097ac36bcb1fa3bfbcd8f4fc1d"
+    },
+    {
+      "location": "$.modes.1.scenes.8.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.1.scenes.8.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.1.scenes.8.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.1.scenes.8.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.1.scenes.8.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.1.scenes.9.before",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.1.scenes.9.after",
+      "path": "desktop-water-after.png",
+      "bytes": 950387,
+      "sha256": "dafc4e34db80238787c4b6f90dc4e1d0b4b5cadc3780e7e85465e6c314f06c10"
+    },
+    {
+      "location": "$.modes.1.scenes.9.background",
+      "path": "desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f"
+    },
+    {
+      "location": "$.modes.1.scenes.9.ink",
+      "path": "desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404"
+    },
+    {
+      "location": "$.modes.1.scenes.9.noOcclusion",
+      "path": "desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065"
+    },
+    {
+      "location": "$.modes.1.scenes.9.noRipples",
+      "path": "desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5"
+    },
+    {
+      "location": "$.modes.1.scenes.9.noShadows",
+      "path": "desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426"
+    },
+    {
+      "location": "$.modes.1.videos.0",
+      "path": "phone-breathe-native.webm",
+      "bytes": 1185153,
+      "sha256": "7b9836a6a16a405faec65e105fef4457374e69c1d63aeb3bbad27502bab4c385"
+    },
+    {
+      "location": "$.modes.1.videos.1",
+      "path": "phone-strike-native.webm",
+      "bytes": 301481,
+      "sha256": "71c417d5341b07dbce3d147f20de9cde41834a35b796c60d0b993a6c5a57b374"
+    },
+    {
+      "location": "$.modes.1.videos.2",
+      "path": "phone-recoil-native.webm",
+      "bytes": 196895,
+      "sha256": "0bb4d2c7028081b57a4d16f5cd8ecd01e995288108415626a26dd531d88317a1"
+    },
+    {
+      "location": "$.modes.1.retiredWater.scene",
+      "path": "desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610"
+    },
+    {
+      "location": "$.modes.1.retiredWater.sibling",
+      "path": "phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988"
+    }
+  ],
+  "media": [
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-breathe-1500.png",
+      "bytes": 166833,
+      "sha256": "6223b0fd3234b9dc7decdac454fb93bfd8bae7f409fd08ffd3dedd1e35f32c48",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-breathe-3000.png",
+      "bytes": 163276,
+      "sha256": "31d672a89a7772a0e8989cb73f086437c928dca19ec6872c44706fa156ff2236",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-breathe-4500.png",
+      "bytes": 166670,
+      "sha256": "82a7a5cec8d6aae3a310824ac821fb3ad4b9e8096cc0a74340481c094df5ff38",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-breathe-native.webm",
+      "bytes": 1198215,
+      "sha256": "8cc5d1b9cfc4e1059cdf1b80db5d603dd400ac2592330c7dd3ff9737eb6f7588"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-environment-off.png",
+      "bytes": 1004614,
+      "sha256": "f4518906183f6e5b40a2b7425b5fff89db0c7589355822c496ad4d2188aad408",
+      "width": 1000,
+      "height": 450
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-environment-water.png",
+      "bytes": 1004032,
+      "sha256": "d885312ddb03d7e8a3f4e9c790817fad330cb9e43e5900ca26862299153ad7fd",
+      "width": 1000,
+      "height": 450
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-frozen-tail-448.png",
+      "bytes": 157764,
+      "sha256": "69c1ebe1e904510ae09b0c7656953170ae3058c320a3f2bfd94fa8bdcae67a97",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-frozen-tail-864.png",
+      "bytes": 169724,
+      "sha256": "4deb0a08a603b8b38edd552603ffff6197adb34d9273d936d2e310a124751bdf",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-held-breath-1500.png",
+      "bytes": 166694,
+      "sha256": "cce890751c18440af7afd7e38d7385a595f6a601e05b709d9780bcccab021e15",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-held-breath-3000.png",
+      "bytes": 166657,
+      "sha256": "e5a72b882c688150c76ded00859df37b26e1e2047c4b8da860774271b742418a",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-held-breath-4500.png",
+      "bytes": 166592,
+      "sha256": "8257334c89b28c31dfd92fcc1b4c75013abc283bdfd0fbe0e9b68a7e9be3810b",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-initial-creature.png",
+      "bytes": 163345,
+      "sha256": "a8c2715af0e93469f8bac66a281f287b0f894561643e44eea147da9e92705ddb",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-missingPaw-after.png",
+      "bytes": 950410,
+      "sha256": "e3fa54853376b8bdf24bf49e6a10fd3272bb4654cc7e624faaa57d0b8a9af0ab",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-noLight-after.png",
+      "bytes": 950823,
+      "sha256": "f803910bfb5ab99f6e66be9fba52b392f42b7fde6fdb02bfc9f38ffc42d64bf8",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-noWater-after.png",
+      "bytes": 950419,
+      "sha256": "d37449c43729d8a6868e9ea44d8e23c2157063d6edde3098f892efa7b3342bdb",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-recoil-308.png",
+      "bytes": 158774,
+      "sha256": "c319f597d86925f83a7890b3c4993c10f41dfaa0adab38164f53fc1d3d06d1bc",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-recoil-715.png",
+      "bytes": 164474,
+      "sha256": "bc9f2900fe95c2eb9000c3ef6508c5937cb490d47016836d0fbb7140efe47f8a",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-recoil-native.webm",
+      "bytes": 192118,
+      "sha256": "ee31d331e04c496843882ef8b02df341ba77edfede1142f31ead08137a01ac11"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-rigid-block-1500.png",
+      "bytes": 163948,
+      "sha256": "1c782775ba5759a93e09b84dc74b2ab10e9772cda96c06f1bcd2bf06710c7f00",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-rigid-block-3000.png",
+      "bytes": 163359,
+      "sha256": "a4c34550d62e93e35fbaf6c31ecb0c21d6cb1f19cca4bc0d5ec6c1c545c78901",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-rigid-block-4500.png",
+      "bytes": 164021,
+      "sha256": "f51da0fd09a54262ee203d88dab79588f8ea070d290d482327834dbb3b5a722a",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-shiftWater-after.png",
+      "bytes": 950451,
+      "sha256": "905d7f4ec008612f4e3efc3f0cdd260324173a017d30dd665fdb115635cc96a8",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-strike-1248.png",
+      "bytes": 162479,
+      "sha256": "1b21bd6f2dbb91972f78956f6c6a3fe9e4f2d731609e48af0c68543d0aca37a8",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-strike-448.png",
+      "bytes": 158827,
+      "sha256": "7b48349259d89ffb75ec9e13362e0b7474fba14899e00fe16531cd6f8b13d9ba",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-strike-864.png",
+      "bytes": 168517,
+      "sha256": "05b5dd5716337828759b1849913198524f6c4cdc7ee017cf68da896b55c1f5ad",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-strike-native.webm",
+      "bytes": 277191,
+      "sha256": "7cba5db26b0ac91d0dc8bcbf19b053c4587fdabac3c8a7002459fa2eb7766c5d"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-strongLight-after.png",
+      "bytes": 950729,
+      "sha256": "aac55cd38d732b32bcc6c820c3c80713e9f9bd097ac36bcb1fa3bfbcd8f4fc1d",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-subpixel-1500.png",
+      "bytes": 163505,
+      "sha256": "5ce61748a1424ea0dca3f60685098191a5e24b7e5cfa307590511899b1279382",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-subpixel-3000.png",
+      "bytes": 163370,
+      "sha256": "ef2e8b7fb9ef76477128c7ddcb6e80459a84528d00524d1cdd7f7a6d36318d4d",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-subpixel-4500.png",
+      "bytes": 163500,
+      "sha256": "098456113ca21444d59ffca3ed2801366c8c15e7d316b292017f44633e34cb5a",
+      "width": 1000,
+      "height": 566
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-water-after.png",
+      "bytes": 950387,
+      "sha256": "dafc4e34db80238787c4b6f90dc4e1d0b4b5cadc3780e7e85465e6c314f06c10",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-water-background.png",
+      "bytes": 948906,
+      "sha256": "e0eb84cb16c719be3b57920db15ddb1178d9611dfcef4f3d70fbeb2f2a276c7f",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-water-before.png",
+      "bytes": 950820,
+      "sha256": "70e2ab8b17f4b65d04a97087305f6efc2aa53e4ea52191136736e366be0f3610",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-water-ink.png",
+      "bytes": 26737,
+      "sha256": "872ce22bfc47332471d1d0a3b3f11a3aeec02eedbeba93927e857e9fbb464404",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-water-noOcclusion.png",
+      "bytes": 950416,
+      "sha256": "5b7a7a6f2d62bdffefdd54649cb86dc3b7ed0715334f2a0be4a98465669e4065",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-water-noRipples.png",
+      "bytes": 950386,
+      "sha256": "f52a88c58eac51856fbc54f1293adbf0724c17b3bf28f2da6203d844db3af5b5",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-water-noShadows.png",
+      "bytes": 950404,
+      "sha256": "4ab5f13cef4344d4f2836ef4cf623fe79de4610a5b15e9cd2a00fa952fcbf426",
+      "width": 960,
+      "height": 430
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-breathe-1500.png",
+      "bytes": 243478,
+      "sha256": "094e655048b584514d549f32b8beb551f286054f7987df2caac0a02acfb5dbfe",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-breathe-3000.png",
+      "bytes": 239183,
+      "sha256": "dde1539cfb9bcc60e72d5b18ffedbd6250982f1e84622dedd0f74da5cef4a727",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-breathe-4500.png",
+      "bytes": 243456,
+      "sha256": "98b2a4f438fb248af742b834dfdd6d8baa071744678bd5bdbd0d0a214e27c6e3",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-breathe-native.webm",
+      "bytes": 1185153,
+      "sha256": "7b9836a6a16a405faec65e105fef4457374e69c1d63aeb3bbad27502bab4c385"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-environment-off.png",
+      "bytes": 585216,
+      "sha256": "730d90081e8f167f6da5b22247801c1b34cd5a32f4791d0f815bdbf28470d7bc",
+      "width": 736,
+      "height": 332
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-environment-water.png",
+      "bytes": 583995,
+      "sha256": "8ae56cfb0b0795af0970c90b24c507032b09f8a0fa8ce84f832b29669020f924",
+      "width": 736,
+      "height": 332
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-frozen-tail-448.png",
+      "bytes": 230045,
+      "sha256": "18c0c99fee2acfe71dea4158c0fd6715ff6c657727665b8a094d272c37a90fe9",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-frozen-tail-864.png",
+      "bytes": 248332,
+      "sha256": "a92bac1855ba55031b798ed1d4513eee6801a8aa6b51832c4084bc2c2f34b7b7",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-held-breath-1500.png",
+      "bytes": 243461,
+      "sha256": "4a803098874f66d36dbdea6c8067ed0413ca2a5e567d389257fe4594a17feee0",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-held-breath-3000.png",
+      "bytes": 243595,
+      "sha256": "006739e7db969e60310c31e53f64c996a53d5bebf53c9b2e8843692b55ce79cb",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-held-breath-4500.png",
+      "bytes": 243513,
+      "sha256": "76271d8868cc531b53954a8879f1a8eadcbb7aa5e95fdbfe10b43c69c47ea4df",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-initial-creature.png",
+      "bytes": 239052,
+      "sha256": "2d4dae7f52a5791b30b55cf6daaf23d82eae9e5ad4cca44b230f537a5b996988",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-recoil-308.png",
+      "bytes": 231664,
+      "sha256": "aeb030c4e590f660c2bd8996608fa5673402135d313d4851b4eac64d8598c495",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-recoil-715.png",
+      "bytes": 240343,
+      "sha256": "8e899926a8ed1c2eace773cc6e87dd61d16783cb23c310aa3698dca988dd0ff5",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-recoil-native.webm",
+      "bytes": 196895,
+      "sha256": "0bb4d2c7028081b57a4d16f5cd8ecd01e995288108415626a26dd531d88317a1"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-rigid-block-1500.png",
+      "bytes": 239230,
+      "sha256": "e5ead48e561fba2ceed5853a386c64c7147c82ab7ecd9e658ea00930616c3da9",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-rigid-block-3000.png",
+      "bytes": 239046,
+      "sha256": "57d97d59b45588d8a1dfc69a8bdf96155b0d5c6a5cd661f981fdcf11575cfd6d",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-rigid-block-4500.png",
+      "bytes": 239464,
+      "sha256": "b1db884574003f94079fa24cd23321723ab5d9b69cdd6934a46823d11b107975",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-strike-1248.png",
+      "bytes": 237276,
+      "sha256": "b8d426f158514258354ab1ce591c4a39d4e2ddb456f2a0dbcac78925d266cd16",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-strike-448.png",
+      "bytes": 231911,
+      "sha256": "e18bbcf45a8298e24ae9ad4108e500aa62bc6a7772e961ebd47e91ee6e90542d",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-strike-864.png",
+      "bytes": 246601,
+      "sha256": "5bf58cdeb404d93a102dcee51a451bcddfa8d8c7b63dddeffdd16e4e8746c182",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-strike-native.webm",
+      "bytes": 301481,
+      "sha256": "71c417d5341b07dbce3d147f20de9cde41834a35b796c60d0b993a6c5a57b374"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-subpixel-1500.png",
+      "bytes": 239129,
+      "sha256": "0b20d9d19cf80a0ecdcb11ec8a5437424473ccffb7507429917740930d592398",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-subpixel-3000.png",
+      "bytes": 239002,
+      "sha256": "c9b37983cbcf8450978134868373a72be10c2e6e14beba38bdeca9f211055c2f",
+      "width": 736,
+      "height": 728
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-subpixel-4500.png",
+      "bytes": 239067,
+      "sha256": "a5de189acb5e559d830244ea2e867134068e0b3ab1b1d2d5cc7fcd04bb4d0a31",
+      "width": 736,
+      "height": 728
+    }
+  ],
+  "supplementaryObservedMedia": [
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-native-environment.png",
+      "bytes": 765080,
+      "sha256": "917dac43f3fcfee4fdea5554ac60cbfb10ebc4124dcb3da4cf3e004755c7bd09",
+      "width": 1440,
+      "height": 1000,
+      "previouslyHashBound": false
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-native-environment.png",
+      "bytes": 523900,
+      "sha256": "7153135d635bf3eb81dae8f5f82e330a6a5fe6bb52d148e237a9843fe91a3685",
+      "width": 780,
+      "height": 1688,
+      "previouslyHashBound": false
+    }
+  ],
+  "videos": [
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-breathe-native.webm",
+      "sha256": "8cc5d1b9cfc4e1059cdf1b80db5d603dd400ac2592330c7dd3ff9737eb6f7588",
+      "bytes": 1198215,
+      "codec": "vp9",
+      "width": 1000,
+      "height": 566,
+      "durationSeconds": 6.009695,
+      "durationAuthority": "ffprobe format duration",
+      "formatDurationSeconds": 6.009695,
+      "firstPacketSeconds": 0,
+      "lastPacketEndSeconds": 6.025,
+      "encodedPacketCount": 362,
+      "nativeFrameRequests": 362,
+      "nominalClipMs": 6000,
+      "ffprobeStream": {
+        "index": 0,
+        "codec_name": "vp9",
+        "codec_type": "video",
+        "width": 1000,
+        "height": 566
+      },
+      "ffprobeFormat": {
+        "format_name": "matroska,webm",
+        "duration": "6.009695",
+        "size": "1198215"
+      }
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-strike-native.webm",
+      "sha256": "7cba5db26b0ac91d0dc8bcbf19b053c4587fdabac3c8a7002459fa2eb7766c5d",
+      "bytes": 277191,
+      "codec": "vp9",
+      "width": 1000,
+      "height": 566,
+      "durationSeconds": 1.594822,
+      "durationAuthority": "ffprobe format duration",
+      "formatDurationSeconds": 1.594822,
+      "firstPacketSeconds": 0,
+      "lastPacketEndSeconds": 1.61,
+      "encodedPacketCount": 97,
+      "nativeFrameRequests": 97,
+      "nominalClipMs": 1600,
+      "ffprobeStream": {
+        "index": 0,
+        "codec_name": "vp9",
+        "codec_type": "video",
+        "width": 1000,
+        "height": 566
+      },
+      "ffprobeFormat": {
+        "format_name": "matroska,webm",
+        "duration": "1.594822",
+        "size": "277191"
+      }
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-recoil-native.webm",
+      "sha256": "ee31d331e04c496843882ef8b02df341ba77edfede1142f31ead08137a01ac11",
+      "bytes": 192118,
+      "codec": "vp9",
+      "width": 1000,
+      "height": 566,
+      "durationSeconds": 1.1118,
+      "durationAuthority": "ffprobe format duration",
+      "formatDurationSeconds": 1.1118,
+      "firstPacketSeconds": 0,
+      "lastPacketEndSeconds": 1.127,
+      "encodedPacketCount": 68,
+      "nativeFrameRequests": 68,
+      "nominalClipMs": 1100,
+      "ffprobeStream": {
+        "index": 0,
+        "codec_name": "vp9",
+        "codec_type": "video",
+        "width": 1000,
+        "height": 566
+      },
+      "ffprobeFormat": {
+        "format_name": "matroska,webm",
+        "duration": "1.111800",
+        "size": "192118"
+      }
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-breathe-native.webm",
+      "sha256": "7b9836a6a16a405faec65e105fef4457374e69c1d63aeb3bbad27502bab4c385",
+      "bytes": 1185153,
+      "codec": "vp9",
+      "width": 736,
+      "height": 728,
+      "durationSeconds": 6.009338,
+      "durationAuthority": "ffprobe format duration",
+      "formatDurationSeconds": 6.009338,
+      "firstPacketSeconds": 0,
+      "lastPacketEndSeconds": 6.017,
+      "encodedPacketCount": 362,
+      "nativeFrameRequests": 362,
+      "nominalClipMs": 6000,
+      "ffprobeStream": {
+        "index": 0,
+        "codec_name": "vp9",
+        "codec_type": "video",
+        "width": 736,
+        "height": 728
+      },
+      "ffprobeFormat": {
+        "format_name": "matroska,webm",
+        "duration": "6.009338",
+        "size": "1185153"
+      }
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-strike-native.webm",
+      "sha256": "71c417d5341b07dbce3d147f20de9cde41834a35b796c60d0b993a6c5a57b374",
+      "bytes": 301481,
+      "codec": "vp9",
+      "width": 736,
+      "height": 728,
+      "durationSeconds": 1.611651,
+      "durationAuthority": "ffprobe format duration",
+      "formatDurationSeconds": 1.611651,
+      "firstPacketSeconds": 0,
+      "lastPacketEndSeconds": 1.627,
+      "encodedPacketCount": 98,
+      "nativeFrameRequests": 98,
+      "nominalClipMs": 1600,
+      "ffprobeStream": {
+        "index": 0,
+        "codec_name": "vp9",
+        "codec_type": "video",
+        "width": 736,
+        "height": 728
+      },
+      "ffprobeFormat": {
+        "format_name": "matroska,webm",
+        "duration": "1.611651",
+        "size": "301481"
+      }
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/phone-recoil-native.webm",
+      "sha256": "0bb4d2c7028081b57a4d16f5cd8ecd01e995288108415626a26dd531d88317a1",
+      "bytes": 196895,
+      "codec": "vp9",
+      "width": 736,
+      "height": 728,
+      "durationSeconds": 1.095671,
+      "durationAuthority": "ffprobe format duration",
+      "formatDurationSeconds": 1.095671,
+      "firstPacketSeconds": 0,
+      "lastPacketEndSeconds": 1.111,
+      "encodedPacketCount": 67,
+      "nativeFrameRequests": 67,
+      "nominalClipMs": 1100,
+      "ffprobeStream": {
+        "index": 0,
+        "codec_name": "vp9",
+        "codec_type": "video",
+        "width": 736,
+        "height": 728
+      },
+      "ffprobeFormat": {
+        "format_name": "matroska,webm",
+        "duration": "1.095671",
+        "size": "196895"
+      }
+    }
+  ],
+  "limitations": [
+    "Checks retained bytes and video metadata only; does not rerun native outcomes or render media.",
+    "Repeated report references are checked independently against the same retained file.",
+    "Supplementary files without earlier report hash carriers are observed here, not retrospectively bound to the native report.",
+    "Packet counts are encoded packet observations, not proof that every requested native recording frame was encoded.",
+    "No product admission, physical-device qualification or human art/motion acceptance follows."
+  ],
+  "lock": {
+    "directory": "/private/tmp/celestial-frontier-toolchain-501.lock",
+    "pid": 15251,
+    "label": "Civet retained evidence hashes and ffprobe",
+    "acquiredAt": "2026-09-09T00:25:25.489Z",
+    "released": true
+  },
+  "reportSha256": "1d230a9cbded6b5ae256c1dff14672f23869e35af8ccc7331924363efc0cc917",
+  "reportBytes": 3934088,
+  "nativeSourceCommit": "86ea06b79e11382b62173fbb2ccfc8c90fb37baa",
+  "ffprobe": {
+    "executable": "/opt/homebrew/Cellar/ffmpeg/9.0.1_1/bin/ffprobe",
+    "version": "ffprobe version 9.0.1 Copyright (c) 2007-2026 the FFmpeg developers",
+    "method": "One metadata/packet demux per WebM; no decoding, rendering, transcoding or output media"
+  },
+  "summary": {
+    "sourceFiles": 10,
+    "retainedSourceCopies": 7,
+    "distFiles": 15,
+    "distBytes": 1724943,
+    "mediaCarriers": 224,
+    "uniqueRecordedMedia": 62,
+    "supplementaryObservedMedia": 2,
+    "probedVideos": 6,
+    "immutableReadbackFiles": 96
+  },
+  "finishedAt": "2026-09-09T00:25:25.845Z"
+}

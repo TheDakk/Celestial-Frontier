@@ -1,0 +1,64 @@
+{
+  "schema": "cf-civet-water-motion-static/v1",
+  "status": "PASS",
+  "startedAt": "2026-09-09T00:09:41.586Z",
+  "sources": {
+    "study-harness.ts": "7ebf49d7f7d293dfb79673e8d938dfa751ec1d1daf6ee4279bdb60da0aa7c425",
+    "study-runner.mjs": "ded82eab92c571363f57a81651c790df6bb600fd849229e78d067db5b3c61b82",
+    "water-owner.ts": "cecb8c8a4b5b786350d90c9282a7b120446b81e5dc92e139a638ade00159af9f",
+    "study.html": "33e4a16af57109d0ee6269fe8fe5c90f1409bd240a0458a827bf48e4f335d317",
+    "study.tsconfig.json": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4",
+    "serve-study.mjs": "15e74dcccd47e74380cd9722b7458413ac9fb0957524ba16fb651e41d0872e08",
+    "../../port/v2/tools/painted-creature/civet-articulated-rig.ts": "800b93d4144d2f651792e30a7a6f9b2d8acfc0a769d2ce3835ed51a4f5da2978",
+    "../../port/v2/tests/painted-civet-articulated-rig.test.ts": "6899b8895766357fe6e5af90a781d01de30339ad19bc3de749fc3d9ea2a0f337"
+  },
+  "stages": [
+    {
+      "name": "study-typecheck",
+      "cmd": "port/v2/node_modules/.bin/tsc",
+      "args": [
+        "--noEmit",
+        "-p",
+        "audits/CIVET_WATER_AND_MOTION_20260908/study.tsconfig.json"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "log": "study-typecheck-filter-state.log"
+    },
+    {
+      "name": "runner-syntax",
+      "cmd": "node",
+      "args": [
+        "--check",
+        "audits/CIVET_WATER_AND_MOTION_20260908/study-runner.mjs"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "log": "runner-syntax-filter-state.log"
+    },
+    {
+      "name": "v2-three-typechecks",
+      "cmd": "npm",
+      "args": [
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "log": "v2-three-typechecks-filter-state.log"
+    },
+    {
+      "name": "root-validate",
+      "cmd": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "log": "root-validate-filter-state.log"
+    }
+  ],
+  "finishedAt": "2026-09-09T00:09:56.013Z"
+}
