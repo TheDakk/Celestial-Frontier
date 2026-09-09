@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "steps": [
+    {
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "snapshot-export-corrected",
+        "--",
+        "node",
+        "--check",
+        "port/v2/tools/landfall-snapshot/export.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "snapshot-export-corrected",
+        "--",
+        "node",
+        "port/v2/tools/landfall-snapshot/export.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/LOCAL_AV_AI_CONTINUATION_20260909/snapshot-export-corrected-01/export"
+      ],
+      "exitCode": 0,
+      "logSha256": "b215fdc6d0ce84e8de84ddffe550b1338e8a13771a1f9f6cc8d0e5948070b6d3"
+    }
+  ],
+  "finishedAt": "2026-09-09T07:07:14.448297+00:00"
+}

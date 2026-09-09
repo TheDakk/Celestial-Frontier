@@ -264,115 +264,85 @@ remain below the art bar. Private asset masters' hashes are preserved; an indepe
 24 MB iCloud backup waits after 2 automatic review rejections; no retry/cloud write. The original
 Dakk project is untouched; no copied third-party runtime assets.
 
-### Current local development — graphics, audio and on-demand AI, 2026-09-09 UTC
+### Current local development — browser AI, audio and canonical snapshots · September9 UTC
 
-Nick parked [PR42](https://github.com/TheDakk/Celestial-Frontier/pull/42), then explicitly directed
-continued local graphics/audio/AI work without waiting for generic authorizations. This is active
-user-directed development, not a recreated automation or extension of the expired campaign.
-The approved painting quality/art direction is now an explicit **hard acceptance requirement for
-the embedded image model**. Fit, speed or successful inference alone cannot qualify a model.
-Nick then explicitly clarified that **the browser game remains the local-AI proof of concept for
-a later full-engine game** and directed full local coding progress. No engine/native delivery pivot.
-[Current batch and quality contract](audits/LOCAL_AV_AI_CONTINUATION_20260909/README.md).
+Nick explicitly authorizes continued local work tonight on graphics/audio/local AI, **no scheduled
+task**. The browser remains the proof of concept for a later engine game; no native-engine pivot.
+The embedded model must meet the approved cohesive painting quality. Speed or successful model
+execution cannot qualify the art. [Current evidence packet](audits/LOCAL_AV_AI_CONTINUATION_20260909/README.md).
+All superseded batch/handoff detail is archived verbatim; all earlier blockers above remain.
 
-Verified row: OpenAI/Codex · macOS · `/Users/nick/Projects/celestial-frontier-openai-mac` ·
-`openai/mac` · upstream `origin/openai/mac`; batch starts at signed/pushed
-`9bfec7dc4a06d97dfd29f8f5424553336776c9fb`, clean tracked source/ambient `.DS_Store` untouched.
-SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`; retained TheDakk proof, successful
-push and fresh develop read apply. Develop `c1791e210158de864fdd475323c3091d9ecbae58` remains an
-ancestor. Reuse uninterrupted startup receipt TOOLCHAIN_STARTUP_20260908_CIVET. No root build or
-old Vite job is touched; build/test/authoring jobs retain shared locking and snapshot isolation.
+Verified ownership: OpenAI/Codex · macOS · `/Users/nick/Projects/celestial-frontier-openai-mac` ·
+`openai/mac` · upstream `origin/openai/mac`. Exact SSH origin
+`git@github.com:TheDakk/Celestial-Frontier.git`; retained TheDakk SSH/read/push proof. Fresh-read
+develop `c1791e210158de864fdd475323c3091d9ecbae58` remains an ancestor. Reuse uninterrupted startup
+receipt `TOOLCHAIN_STARTUP_20260908_CIVET`; no new tool/model download or dependency update.
+Owned `caffeinate -di` PID33372 and pre-existing `-i` PID93550 were verified running again near
+07:15UTC. No security/lock setting changed; earlier failures do not prove a locked vault.
 
-Exact9bfec7dc local develop admission passed349 files/4,121 tests/1 skip, all3 TypeScript programs,
-art/override/spec. Raw8,320-byte SHA
-`b87df39637a9151e1d35daac13f696b1db41278c902883bdf5aaa3f0e004d3ff`; raw log and signing receipts
-are retained byte-preservingly in PR42's verified body and local smoke receipts. Earlier E4 PASS,
-starting a84f4ea9 aggregate FAIL and budget narrative FAIL remain in the committed integration
-packet. New edits are not certified by that prior head. Preserve all older blockers above.
+**Git boundary:** PR42 is parked Draft/unlabeled at signed9bfec7dc, base develop/source openai/mac.
+Its unchanged public title is “Refine responsive UI and add bounded audiovisual and painted-world
+prototypes”; title/body need a future authorized accumulated-head refresh before Ready/label.
+No GitHub step now. Mode UNFROZEN/PUBLIC, private fallback3000; zero exact new hosted attempts.
+No push, Ready, label, hosted test, merge, release, version bump or deployment. Claude need not
+open/sync now and does not have these local changes; after a future verified develop merge it
+fetches/merges origin/develop into clean anthropic/mac. Never copy files between worktrees.
+The earlier push rejection was resolved by exact9bf authorization; the rejected optional public
+parking-body edit remains unperformed. iCloud backup blockers above also remain untouched.
 
-PR42 base develop/source openai/mac remains Draft/unlabeled, no hosted run or merge. Nick's
-explicit authorization covered the exact9bf push and draft creation only. Automatic review
-first rejected the push until that exact authorization; a later optional parking-description
-edit was rejected as an unnecessary additional public write and was not retried. The draft was
-left unchanged; local parked/rejection receipts are in smoke. Mode UNFROZEN/PUBLIC, private
-fallback3,000; zero new owner-label attempts. No push, label, Ready, hosted run, merge, release or
-deploy is part of this local batch. Claude need not open/sync now; after a future verified develop
-merge, it safely fetches/merges into clean anthropic/mac, preserving September10 review evidence.
+Signed/verified local checkpoints after9bf are `ceb107fdcf6f33f8d60cfd071fbea907a4bb68df`
+(audio/loader/browser proof) and `5dcd6e64801cf44c0c55da47c41fbcc9d8408e99` (Q8 optimization).
+This canonical-input batch follows them. Signing uses existing1Password IdentityAgent plus a
+command-scoped `/usr/bin/ssh-keygen`, no private-key export or persistent config. Q8 signing
+succeeded first try; its wrapper then incorrectly treated an inline public key as a.pub path.
+Corrected read-only signature verification passes; no commit retry/vault failure. See retained
+`q8-checkpoint-signing.json`. Ambient.DS_Store remains untouched; model bytes are Git-ignored.
 
-Signing: E4 succeeded through the configured op-ssh-sign helper; the documentation successor's
-helper attempt returned the same buffer error. A command-scoped `/usr/bin/ssh-keygen` override
-with the existing effective 1Password IdentityAgent signed9bfec7dc immediately, and verification
-passed. The private key stayed in1Password; no persistent Git/security configuration changed.
-Do not infer a locked vault or a proven sleep cause. Nick then explicitly authorized caffeinate
-while coding: new PID33372/exec39642 runs `-di`; both idle system/display assertions were verified.
-Original -i PID93550 is untouched. Verify owned jobs before acting; no lock/security settings edit.
+**Audio/loader:** 25ms duck/90ms recovery preserves canonical combat/music/ambience ownership;
+268focused audio tests and six native DSP renders/18PCMplanes pass. Offline-audio adapter limits,
+first TS/builder failures and physical listening remain explicit. Painted loading enforces the
+existing8-second monotonic boundary;27focused tests pass. All3V2 TS/rootvalidate passed, first
+fixture errors retained. LegacyHTML unchanged;1010namedrenders/0booterrors/50fingerprints.
+No broad changed-head admission is implied by these scoped checks or prior9bf4121tests/1skip.
 
-Current implementation: combat mixes music/ambience to0.75 with25ms duck/90ms recovery; all
-existing overlap/user-zero/mute/cleanup ownership remains. Five focused audio files268tests PASS.
-Native `native-audio-03` passes six finite actual-DSP renders and18PCM planes, including three
-rejected faulty controls/restored positive;65-source build and browser/server cleanup retained.
-The first harness TS2322 and builder-syntax failures remain separate and unchanged. The painted
-loader enforces its existing8-second monotonic deadline at awaited/transfer boundaries;27focused
-tests PASS. Guide/release64PASS; first TS2416 fixture red retained, corrected all3V2 TypeScript
-and rootvalidate PASS (1010named renders/0boot errors/50fingerprints; legacyHTML byte-identical).
+**Local model:** actual sequential browser WebGPU inference works on M4 Pro24GiB/Edge152, with
+some CPU-assigned operators. Original pinned20files6,691,020,416bytes plus7792-byte README remain
+in ignored developer cache. No model is selected, embedded, shipped or phone-qualified. Block32
+repack preserves represented Q8 weights, checks all347,332,608new parameter bytes and leaves
+original shards unchanged. Graph/data add352,323,881bytes (~336MiB) to this developer cache.
+17converter +38bridge checks pass. Same768 dual-reference native comparison:239s→69s; all412
+Q8 operations use the wide kernel and samplerGPU206.66s→33.33s. One Mac/recipe only, not unique
+RAM/VRAM, cold-cache or cross-device speed. Raw pixels differ but look nearly identical.
 
-Actual browser AI works on the M4 Pro24GiB Mac: text→reference encode→four denoise steps→decode
-in sequential workers. Three raw768×432 outputs retain exact Earth request/all19genomes/model/
-runtime/source: scene reference196s, ablation142s, scene+exact Civet reference227s. Each owned
-browser closed; no image was retouched or accepted as final art. Identity guidance improves muzzle/
-coat, but framing, anatomy/botany and full-screen detail remain open. ORT native asyncify WebGPU
-reports some CPU nodes; this is not all-GPU inference or unique RAM/VRAM qualification. Runtime
-controls27PASS and changed identity-input13PASS supplement original math/download28PASS.
-Pinned20-file model6,691,020,416bytes plus7792-byte README downloaded/verified once into ignored
-local developer cache. No weights or game-lock changes enter Git. Isolated ORT Web1.29.0 and
-Tokenizers0.2.0 use scripts-disabled install and retained licenses. This proof is not embedded
-in gameplay or delivered to phones. Current bounded follow-up profiles actual native CPU/GPU
-assignments before optimization. Corrected native profiling now completes five stages: GPU Q8
-matrix operations consume95.5% of sampler GPU time; the original node-grouping failure remains.
-Its raw output matches the unprofiled same-Mac dual-reference PNG byte-for-byte, not cross-device
-parity. Native1024×576 completed in300s but duplicated/fused the Civet and lost grounded bank
-placement; explicitly rejected with raw pixels/independent review retained. Read-only all103-node
-metadata and768 sampled represented weights support a block128→32Q8 repack (explicit scales
-and zero points both repeat4×). It could enable the native wide kernel without requantization;
-the separate converter now passes17controls and verifies every347,332,608 new parameter byte.
-Exact derived graph4,991,273bytes + data347,332,608bytes add about336MiB to the developer cache;
-original shards remain unchanged. Bridge38checks PASS. First native block32 comparison uses
-all412 wide Q8 kernels and takes69,029ms versus238,809ms original, with near-identical-looking
-raw composition and different PNG hash. Sampler GPU time206.66s→33.33s; one Mac/recipe only.
-No final art, phone, unique-memory or shipping-budget acceptance. All prior rejected images,
-first instrument failures and original model/proofs remain. Next quality work should target the
-known duplicated Civet/framing/anatomy failures with one explicit changed recipe, not a seed sweep.
-Do not infer Q8 incompatibility from old JSEP source. Nick
-explicitly authorized continuing these priorities tonight in this session, no scheduled task.
+**Quality remains open:** original768 scene/identity studies retain facial/detail/grounding limits.
+Original1024 duplicates/fuses Civets (300s). Revised480-token one-Civet wording still duplicates
+bodies (77s), explicitly rejected. One scene reference/base299-token wording gives one Civet
+(68s) but gray/short-face identity drift and feet in water persist. Removing image2 and its text
+together is not an isolated image-only ablation. All raw outputs/reviews/exact failed prompt source
+remain; original identity wording restored. No seed sweep, retouch or unaccepted asset promotion.
 
-AI acceptance: compare actual output against the approved full landfalls for coherent composition,
-shared lighting/materials, rich painted detail, grounded flora/fauna and canonical anatomy/botany.
-Retain complete genomes/lineage/biome authority; avoid baked UI, invented gameplay data and manual
-postprocessing used to conceal raw-model limitations. A stronger native development proof does
-not establish browser/iPhone delivery. Track every component's bytes/license and actual RAM/GPU,
-latency and heat; adaptive scene cache remains separate from installed model/build/save bytes.
-No model is selected/embedded or qualified yet. Keep prototype status explicit until the quality
-and delivery gates pass; no low-quality substitution or silent storage/128MiB-gate increase.
+**Current canonical input implementation:** `landfall-appearance-snapshot.ts` requires an actual
+branded live roster, reuses exact Earth admission, and exports frozen detached versioned data:
+full19genomes/world/ecology/profile/conditions plus6display identities/families/anchors. Preview
+limits and runtime/type provenance are omitted; JSON cannot grant live authority. Only canonical
+Earth epoch0 is supported. The isolated Node exporter invokes real CF1/roster/vista builders,
+records59sources plus the known compiler helper, and the browser proof consumes the snapshot
+instead of regex-parsing TS literals. All previous generation inputs match except new metadata.
+Snapshot SHA256 `a23ef143d97bb7e72c8b5cc72b858266246fd72682dd29de00e0e3fc69848b3f`.
 
-Completed local proof/audio/loader checkpoint is SSH-signed and verified as
-`ceb107fdcf6f33f8d60cfd071fbea907a4bb68df`:214files, no model weights/node_modules. The branch
-is1ahead/0behind origin/openai/mac9bfec7dc; no push. Current tracked source was clean immediately
-after commit, with ambient.DS_Store and new `tools/local-image-repack/` work excluded. Signing
-succeeded on the first existing-agent ssh-keygen attempt. The current local derivative batch
-must keep this original model/proof intact and retain first controls/results separately.
-PR42's public title/body still describe9bf and must be refreshed only in a future separately
-authorized publication. Base develop/source openai/mac; no GitHub step now and no Claude app
-switch needed. Claude safely fetches/merges a future verified develop into clean anthropic/mac;
-it does not have this local checkpoint yet. UNFROZEN/PUBLIC/private fallback3000, zero exact
-new hosted attempts; no release/deploy. Full admission and all earlier blockers remain open.
+Nine new + existing Earth/roster tests total33PASS; all3V2 TS/entryTS PASS. First exporter wrongly
+rejected Rolldown's virtual helper; failed source/receipt remain. Corrected export/native preflight
+and7actual refusal controls pass. Final review caught source-read errors escaping final evidence
+publication; the shared recheck now records missing/changed paths, continues and saves FAIL.
+Real-file deletion/corruption/restoration control and rootvalidate pass. Source hashes, raw results,
+original reds and native cleanup receipts live in the current packet. No generated-art mounting,
+model download or gameplay/identity/clock/cache change is part of the snapshot implementation.
 
-Current references retain the conditional local/no-extra-player-installer direction, exact-image
-retention needs, existing save/share/clock laws and provisional500MB/1GB/2GB/up-to5GB scene caches.
-Do not prepaint millions of worlds or restart the bespoke landing animation loop. Record results,
-first failures and remaining limits as each bounded batch finishes, then sign local completed work.
-Fresh sessions read ROADMAP, PROCESS_LAWS, protocol and UI_TOOLCHAIN; do not recreate timers.
-
-The derivative batch's final root validation PASS preserves1,010 named renders, zero boot
-errors and50 original fingerprints. Legacy HTML SHA256 remains
-`5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746`.
-This scoped validation does not replace full changed-head V2 admission or prior native blockers.
+Next work: use the source-produced snapshot as the supported appearance boundary; the future
+actual-play hook is `requestSurfaceVista`. General-world adapters, reliable exact-identity art,
+model/browser/phone delivery, adaptive scene cache, seasons/rotation, exact-image sharing,
+universal-object upgrades and shared family battle skins remain unqualified. Keep complete
+genomes/lineage/biome authority and accepted UI placement. Do not infer these from a good picture.
+Full changed-head admission, SceneMemory quarantine, physical devices/HUMAN art/audio and all
+older verification blockers stay open. Finish each bounded batch with local signed work and
+current docs; fresh sessions read ROADMAP, PROCESS_LAWS, protocol and UI_TOOLCHAIN first.

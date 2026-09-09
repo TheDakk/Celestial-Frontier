@@ -132,3 +132,19 @@ runtime, save, codec, clock, seed or RNG. The prior source-world contradictions,
 art/identity limits and all verification blockers in the packet and ROADMAP remain
 binding. The current batch should record this architecture without expanding into
 all-world climate, all-family art or an engine replacement.
+
+
+## Implemented bounded input foundation — September9,2026
+
+The wider proposal above remains unimplemented. A first pure
+`cf.art.landfall-snapshot.v1` adapter now captures exact canonical Earth epoch0:
+full world/ecology/environment/profile bindings, all19 ordered genomes, current
+static weather/day flags and six source-owned display identities/anchors. It
+requires the actual branded live roster, strips provenance and preview metadata
+from its detached output, and refuses other worlds/epochs. Parsing that output
+cannot grant authority. The browser authoring proof consumes an isolated59-source
+export; it does not yet capture player landings, add physical rotation/seasons,
+choose a global clock or extend CF1/creature sharing. No model-generated pixels
+supply gameplay properties. Exact snapshot/source/input-parity evidence is in the
+September9 local continuation packet. This partial implementation does not close
+the proposed time, cross-device image retention or sharing architecture.

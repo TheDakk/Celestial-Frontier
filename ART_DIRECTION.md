@@ -64,6 +64,44 @@ adds352,323,881 graph/data bytes (about336MiB), separate from any player deliver
 [Exact conversion, native comparison and review](audits/LOCAL_AV_AI_CONTINUATION_20260909/README.md).
 Preserve full genomes, named Earth anatomy, biome authority, current clocks, saves and share codes.
 
+
+
+### Canonical appearance input bridge — matches code September9,2026
+
+`landfall-appearance-snapshot.ts` now builds `cf.art.landfall-snapshot.v1` from an
+actual branded canonical roster and matching biome request. The first supported
+recipe is exact Earth epoch0: all19 complete ordered genomes/environment/profile
+bindings, explicit static presentation inputs and the existing six display identities
+with full genomes/families/anchors. Preview limits are omitted. Returned graphs are
+detached/deeply frozen and cannot become live roster authority by JSON parsing.
+Unsupported worlds/epochs return unsupported, with no replacement or reroll.
+
+The isolated `port/v2/tools/landfall-snapshot/` Node producer calls the actual CF1,
+roster and vista builders; the browser proof consumes that versioned output instead
+of extracting TypeScript JSON literals. It records59transformed/input source files
+plus the compiler's known virtual runtime helper, verifies stability and releases
+its build lease. Model/reference/prompt/scheduler settings stay separate. Native
+preflight proves the served recipe matches the prior request/full roster/prompt and
+all generation inputs except the new appearance metadata. No repeated GPU run was
+needed for unchanged generation data. Seven source-export refusal controls pass;
+this is internal artifact integrity, not external authentication or a sharing codec.
+
+Nine new snapshot tests plus existing roster/Earth tests total33PASS; all3V2 TS
+programs and the isolated entry TS pass. The first exporter incorrectly rejected
+Rolldown's virtual runtime helper; its failed source/receipt remain. The corrected
+export and native preflight pass. `requestSurfaceVista` is the eventual actual-play
+capture boundary; this batch mounts no generated art and adds no model download.
+Full changed-head admission, arbitrary worlds, seasons, exact-image sharing,
+physical devices and image quality remain open.
+
+Two subsequent1024 art studies retain separate limits: stronger replacement wording
+still produces overlapping Civet bodies (77s, rejected); one scene reference plus
+its base wording produces one Civet (68s), but loses the selected facial identity
+and keeps feet in shallow water. Removing the reference and its wording together
+is not an isolated image-count experiment. Neither output is accepted. Exact failed
+prompt source is retained, and the prior identity prompt is restored. No seed sweep,
+image retouch or low-quality image promotion occurred.
+
 ## Selected landing presentation — Nick, 2026-09-08
 
 Nick explicitly selected the [Living Worlds painting](audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png)

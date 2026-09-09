@@ -1,0 +1,41 @@
+{
+  "scope": "Actual proof-server pre-listen refusal controls; native positive is retained separately. Internal source-owned export integrity, not cryptographic authentication or a live roster parser.",
+  "status": "PASS",
+  "results": [
+    {
+      "name": "unknown schema",
+      "status": "PASS",
+      "error": "Unsupported canonical appearance export"
+    },
+    {
+      "name": "unknown recipe",
+      "status": "PASS",
+      "error": "Unsupported canonical appearance export"
+    },
+    {
+      "name": "last hidden full genome changed with copied fingerprints",
+      "status": "PASS",
+      "error": "Unsupported canonical appearance export"
+    },
+    {
+      "name": "claimed art accepted",
+      "status": "PASS",
+      "error": "Unsupported canonical appearance export"
+    },
+    {
+      "name": "source export failed",
+      "status": "PASS",
+      "error": "Unsupported canonical appearance export"
+    },
+    {
+      "name": "workspace release unproved",
+      "status": "PASS",
+      "error": "Unsupported canonical appearance export"
+    },
+    {
+      "name": "wrong snapshot digest",
+      "status": "PASS",
+      "error": "Unsupported canonical appearance export"
+    }
+  ]
+}

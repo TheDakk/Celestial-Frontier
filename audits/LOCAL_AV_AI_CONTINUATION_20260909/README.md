@@ -303,3 +303,57 @@ The derivative batch's final root validation PASS preserves1,010 named renders, 
 errors and50 original fingerprints. Legacy HTML SHA256 remains
 `5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746`.
 This scoped validation does not replace full changed-head V2 admission or prior native blockers.
+
+
+## Larger composition studies and canonical snapshot implementation
+
+`browser-grounded-1024-01` runs one revised480-token replacement instruction using
+the verified derivative. Technical generation completes76,800ms, but root rejects
+the overlapping two-Civet anatomy and water contact. `browser-single-reference-1024-01`
+uses the original299-token base instruction and one scene reference:67,515ms, one
+Civet, but wrong gray/short facial identity and water placement remain. Both retain
+rawPNG/fullrecipes/source/cleanup and explicit visual rejection/limits. This removes
+an image and its related wording together, not an isolated image-count ablation.
+The failed prompt source is preserved byte-for-byte and the prior wording restored.
+The independent768 derivative visual review and corrected read-only5dcd6e64 signature
+receipt are retained in this successor batch; the signing wrapper's original public-
+key-format assertion followed a successful commit and was not a1Password failure.
+
+`landfall-appearance-snapshot.ts` adds a pure source-produced appearance boundary:
+actual branded roster admission, existing exact Earth gate, detached deeply frozen
+full19roster plus six complete display identities/anchors, versioned schema/recipe,
+no preview metadata or live authority in exported JSON. Nine new tests plus current
+Earth/roster controls give33PASS; all3V2 TS and isolated entryTS PASS. The snapshot
+requires no wall clock, gameplay RNG, save changes or image acceptance.
+
+`snapshot-controls-01` then stops at first exporter failure: its new source observer
+incorrectly rejected legitimate virtual compiler runtime `\0rolldown/runtime.js`.
+The earlier passed steps, failed manifest and exact failed exporter source remain.
+`snapshot-export-corrected-01` explicitly records only that known helper's source
+hash, retains strict unknown/external refusals and removes the deprecated bundler
+option. It exports59sources and releases the isolated build lease. Current canonical
+JSON SHA256 `a23ef143d97bb7e72c8b5cc72b858266246fd72682dd29de00e0e3fc69848b3f`.
+
+`browser-canonical-snapshot-preflight-01` proves actual served recipe equality,
+source stability and owned browser cleanup. `PARITY.json` compares with the prior
+identity recipe: request, all19roster, prompt, references and generation settings
+match exactly; only appearance metadata is added. `REFUSAL_CONTROLS.json` records
+seven actual pre-listen rejections. This is internal source-owned export integrity,
+not an external authenticated importer or gameplay-authority reconstruction.
+No new GPU inference, arbitrary world adapter or generated-art mount follows from
+these input checks; all model-quality/device/full-admission blockers remain open.
+
+
+Final review found that a disappeared captured source could throw from the runner's
+`finally` block before its receipt was saved. `source-integrity.mjs` now checks all
+local-tool and canonical source rows, records read failures/changes, and lets the
+runner publish a red result. The real-file deletion/corruption control proves both
+faults are retained and the original files pass after restoration. Final root
+validation passes with unchanged legacyHTML. The changed finalizer's separate
+`browser-canonical-snapshot-preflight-02` passes the native served-recipe check,
+all81source rows unchanged and owned browser closure. No GPU inference was repeated.
+
+The snapshot checkpoint staged-whitespace check returns2 for blank final lines in
+two original raw logs (focused/typecheck); exact hashes and findings are retained
+in `snapshot-checkpoint-whitespace.json`. Those logs are not trimmed or relabeled
+PASS. The separately scoped non-audit/source whitespace check returns0.

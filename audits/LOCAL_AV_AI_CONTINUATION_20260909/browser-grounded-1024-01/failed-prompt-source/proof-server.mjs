@@ -10,7 +10,7 @@ const root=path.resolve(directory,'../..');
 const sha=data=>createHash('sha256').update(data).digest('hex');
 const prompt=`Create a cohesive natural-history landscape painting matching image 1's painted detail, atmosphere and shared lighting. A rainy Earth riverbank, mossy rocks, reflective river, deep misty forest and distant mountains. Six identifiable inhabitants belong naturally to the ground, never arranged as cutouts. Middle-right: one Civet with four short legs, a long low torso, pointed pale muzzle, small rounded ears, dark face mask, tawny spotted coat and a long ringed tail; not a fox or raccoon. Left water edge: one smaller brown furry Platypus, broad leathery duck bill, webbed feet and horizontal paddle tail. Foreground damp stone: one much smaller olive-brown Frog with folded hind legs. Left: a branching Persimmon tree, broad oval leaves, orange fruits with four-lobed calyx. Foreground: low creeping Cranberry runners with tiny oval leaves and red berries, never a tall shrub. Right: Devil's Club with very large palmate leaves, spiny canes and terminal red berry clusters. Calm broad composition; Civet about one third frame height. All six subjects in frame. Diffuse overcast light, cool sky fill, ground bounce, soft contact shadows, vegetation overlapping feet, softer contrast with distance. Real Earth anatomy and botany. No extra animals, alien plants, crystals, text, borders, interface, halos or shiny CGI.`;
 
-export async function createProofServer({cacheDir,canonical,identityReference=false,width=768,height=432,q8Block32=false}) {
+export async function createProofServer({cacheDir,identityReference=false,width=768,height=432,q8Block32=false}) {
   if(!((width===768&&height===432)||(width===1024&&height===576)))throw Error('Unqualified proof resolution');
   const manifest=JSON.parse(await fs.readFile(path.join(directory,'model-manifest.json'),'utf8'));
   if(typeof q8Block32!=='boolean')throw Error('Invalid derivative choice');
@@ -19,26 +19,20 @@ export async function createProofServer({cacheDir,canonical,identityReference=fa
   const reference=await fs.readFile(referencePath);
   const identityPath=path.join(root,'audits/CREATURE_SCENE_COHESION_20260908/civet-selected-v1.webp');
   const identityPrompt=identityReference
-    ? prompt+' Image 2 is the authoritative Civet identity: match its long narrow pale pointed muzzle, warm amber eye, low deep torso, short sturdy legs, soft golden tawny fur and scattered dark spots. Preserve that individual, not the gray short-faced animal in image 1. Blend it naturally into the painted bank; do not copy image 2 background or edge artifacts. Keep the whole tail comfortably inside the frame.'
+    ? prompt+' Use image 1 as the single scene. Replace its existing Civet with the individual in image 2. Show exactly one Civet: one head, one continuous torso, four connected legs and one ringed tail. Match image 2\'s narrow pale muzzle, amber eye, low body, short sturdy legs, golden tawny fur and dark spots. All four paws stand on a broad mossy bank above the waterline with soft contact shadows. Curve its single tail beside its body, wholly inside the frame with open ground beyond its tip. Preserve the other two animals and three plant species. The Platypus has a low elongated body, broad webbed forefeet and a flat paddle tail at the water edge. Do not retain another Civet from image 1 or copy image 2\'s background. Keep painted light and texture continuous across plants, animals, rocks and water.'
     : prompt;
-  // The runner builds this from real domain owners in an isolated Node bundle.
-  // This detached display snapshot is never installed as live roster authority.
-  if(canonical?.receipt?.status!=='PASS'||canonical.receipt.workspaceReleased!==true
-    ||canonical.snapshot?.schema!=='cf.art.landfall-snapshot.v1'
-    ||canonical.snapshot.recipeId!=='canonical-earth-epoch0-six-residents-v1'
-    ||canonical.snapshot.qualityAccepted!==false
-    ||JSON.stringify(canonical.snapshot)!==canonical.canonicalJson
-    ||sha(canonical.canonicalJson)!==canonical.receipt.snapshotSha256)throw Error('Unsupported canonical appearance export');
-  const {request,roster,displayPlan}=canonical.snapshot;
-  const authority=canonical.receipt.sources.find(row=>row.path==='port/v2/apps/game/src/earth-layered-recipe.ts');
-  if(!authority)throw Error('Missing canonical Earth admission source');
+  const authority=await fs.readFile(path.join(root,'port/v2/apps/game/src/earth-layered-recipe.ts'),'utf8');
+  const extract=name=>{
+    const matches=[...authority.matchAll(new RegExp('^export const '+name+' = ("(?:[^"\\\\]|\\\\.)*");','gm'))];
+    if(matches.length!==1)throw Error('Canonical source match not unique: '+name);
+    return JSON.parse(JSON.parse(matches[0][1]));
+  };
+  const request=extract('EARTH_LAYERED_REQUEST_JSON_V1'),roster=extract('EARTH_LAYERED_ROSTER_JSON_V1');
   const recipe={schema:'cf.local-image-browser-proof/v1',modelId:manifest.modelId,modelRevision:manifest.revision,
     runtime:{onnxruntimeWeb:'1.29.0',tokenizers:'0.2.0'},width,height,steps:4,seed:133,
     prompt:identityPrompt,chatPrompt:'<|im_start|>user\n'+identityPrompt+'<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n',
     schedulerSource:'diffusers/040c7cde626504d14caf63b13b8b25b6a9f62120:compute_empirical_mu',
-    sourceAuthoritySha256:authority.sha256,request,roster,
-    appearanceSnapshot:{schema:canonical.snapshot.schema,recipeId:canonical.snapshot.recipeId,
-      sha256:canonical.receipt.snapshotSha256,displayPlan},
+    sourceAuthoritySha256:sha(authority),request,roster,
     references:[{url:'/reference.png',sha256:sha(reference),originalPath:path.relative(root,referencePath),width:512,height:288,
       transform:'Browser Canvas2D scale1672x941 to512x288, RGB[-1,1]; no crop or manual retouch'}],
     qualityAccepted:false,scope:'Authoring proof; model output does not alter authoritative game data'};

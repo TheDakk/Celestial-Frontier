@@ -1,0 +1,130 @@
+{
+  "status": "FAIL",
+  "startedAt": "2026-09-09T07:05:02.669937+00:00",
+  "sources": {
+    "port/v2/apps/game/src/landfall-appearance-snapshot.ts": "94d97e8716cfb28d6108583a781116122c1693859c6ac0b32ce5148571d68a69",
+    "port/v2/tests/landfall-appearance-snapshot.test.ts": "dfe502350684ce6d6dc6d97a320d571dca92e107807455b95eda3b677c12ed7f",
+    "port/v2/tools/landfall-snapshot/entry.ts": "250ef6c17208c55b8fff53a0929179679bdec6a2f2f846ffc9d06161c1540ec1",
+    "port/v2/tools/landfall-snapshot/export.mjs": "ab50cb41e5992eda3ee9e4f885e9b142e378c68dd7441785d8bddb50952c6795",
+    "tools/local-image-generation/proof-server.mjs": "077755740f43eba9e39491e2b8d2850206f267926074b56fb8b7b67d41c03097",
+    "tools/local-image-generation/run-browser-proof.mjs": "9b28dad60fdb2be857e48f1e24e336039899ea2862cb0770921b2ec474d84e52"
+  },
+  "steps": [
+    {
+      "name": "syntax-export",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/tools/with-toolchain-lock.mjs",
+        "--label",
+        "canonical-snapshot-check",
+        "--",
+        "node",
+        "--check",
+        "port/v2/tools/landfall-snapshot/export.mjs"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-server",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/tools/with-toolchain-lock.mjs",
+        "--label",
+        "canonical-snapshot-check",
+        "--",
+        "node",
+        "--check",
+        "tools/local-image-generation/proof-server.mjs"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-runner",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/tools/with-toolchain-lock.mjs",
+        "--label",
+        "canonical-snapshot-check",
+        "--",
+        "node",
+        "--check",
+        "tools/local-image-generation/run-browser-proof.mjs"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "focused",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/tools/with-toolchain-lock.mjs",
+        "--label",
+        "canonical-snapshot-check",
+        "--",
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/landfall-appearance-snapshot.test.ts",
+        "tests/earth-layered-recipe.test.ts",
+        "tests/world-roster.test.ts"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "exitCode": 0,
+      "logSha256": "758d056d825bfb703dd15746a45eb82660dbe267f8f9b7fc7d8efd4a8fc68fa9"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/tools/with-toolchain-lock.mjs",
+        "--label",
+        "canonical-snapshot-check",
+        "--",
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "exitCode": 0,
+      "logSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "name": "entry-typecheck",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/tools/with-toolchain-lock.mjs",
+        "--label",
+        "canonical-snapshot-check",
+        "--",
+        "node",
+        "port/v2/node_modules/typescript/bin/tsc",
+        "-p",
+        "port/v2/tools/landfall-snapshot/tsconfig.json"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "export",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/tools/with-toolchain-lock.mjs",
+        "--label",
+        "canonical-snapshot-check",
+        "--",
+        "node",
+        "port/v2/tools/landfall-snapshot/export.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/LOCAL_AV_AI_CONTINUATION_20260909/snapshot-controls-01/export"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "exitCode": 1,
+      "logSha256": "e368343e51841834f5065a5d779c148bfff0a299772e6ad2afd7f4278ee1144b"
+    }
+  ]
+}
