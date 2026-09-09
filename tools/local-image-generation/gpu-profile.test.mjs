@@ -89,7 +89,7 @@ test('Interleaved, malformed, trailing or interrupted stdout stays a retained fa
  assert.throws(()=>partial.finish(),/Deadline/);assert.equal(partial.snapshot().rawJson,'[\n');
 });
 test('CLI profile is explicit; accepted reference variants retain their own meaning',()=>{
- assert.deepEqual(parseProofOptions(['out']),{output:'out',referenceEnabled:true,identityReference:false,preflight:false,profile:false,width:768,height:432});
+ assert.deepEqual(parseProofOptions(['out']),{output:'out',referenceEnabled:true,identityReference:false,preflight:false,profile:false,q8Block32:false,width:768,height:432});
  for(const extra of [[],['--identity-reference'],['--without-reference']])assert.equal(parseProofOptions(['out','--profile',...extra]).profile,true);
  assert.equal(parseProofOptions(['out','--preflight']).profile,false);
 });
@@ -103,4 +103,11 @@ test('Explicit larger output changes only the bounded dimensions; arbitrary size
  const larger=parseProofOptions(['out','--identity-reference','--resolution=1024x576']);
  assert.deepEqual(larger,{...normal,width:1024,height:576});
  for(const flag of ['--resolution=0x0','--resolution=16384x16384','--resolution=1024x577'])assert.throws(()=>parseProofOptions(['out',flag]));
+});
+
+
+test('Q8 derivative is explicit, can be profiled, and cannot bypass model verification via preflight',()=>{
+ assert.equal(parseProofOptions(['out']).q8Block32,false);
+ assert.equal(parseProofOptions(['out','--q8-block32','--profile']).q8Block32,true);
+ assert.throws(()=>parseProofOptions(['out','--q8-block32','--preflight']),/verified inference/);
 });

@@ -65,7 +65,9 @@ async function generate({referenceEnabled=true,profile=false}={}) {
   const started=performance.now();window.cfImageProof.state='running';
   try {
     const config=await checkedJson('/recipe.json');window.cfImageProof.recipe=config;
-    record({phase:'start',seed:config.seed,modelRevision:config.modelRevision,referenceEnabled,profile});
+    const q8Block32=config.modelDerivative?.variant==='q8-block32-repacked-v1';
+    if(config.modelDerivative&&!q8Block32)throw Error('Unknown model derivative');
+    record({phase:'start',seed:config.seed,modelRevision:config.modelRevision,referenceEnabled,profile,q8Block32});
     const embedding=await stage({stage:'text',profile,chatPrompt:config.chatPrompt});
     const references=[];
     if(referenceEnabled)for(const ref of config.references){
@@ -73,7 +75,7 @@ async function generate({referenceEnabled=true,profile=false}={}) {
       const encoded=await stage({stage:'encode',profile,pixels,width:ref.width,height:ref.height},[pixels.buffer]);
       references.push({data:encoded.data,width:ref.width,height:ref.height});
     }
-    const denoised=await stage({stage:'denoise',profile,width:config.width,height:config.height,seed:config.seed,steps:config.steps,embedding:embedding.data,references},[embedding.data.buffer,...references.map(r=>r.data.buffer)]);
+    const denoised=await stage({stage:'denoise',profile,q8Block32,width:config.width,height:config.height,seed:config.seed,steps:config.steps,embedding:embedding.data,references},[embedding.data.buffer,...references.map(r=>r.data.buffer)]);
     const decoded=await stage({stage:'decode',profile,latents:denoised.data,width:config.width,height:config.height},[denoised.data.buffer]);
     const canvas=byId('painting');canvas.width=config.width;canvas.height=config.height;
     const context=canvas.getContext('2d');const image=context.createImageData(canvas.width,canvas.height);

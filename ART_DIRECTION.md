@@ -52,9 +52,16 @@ unique-RAM/VRAM claim. These are isolated authoring results, not embedded gamepl
 Corrected native profiling attributes95.5% of sampler GPU time to quantized matrix operations;
 the same-Mac profiled768×432 output matches the prior unprofiled output exactly. A native1024×576
 comparison takes300s and produces duplicated/fused Civet bodies and ambiguous water contact.
-That candidate is explicitly rejected; added resolution did not meet the quality bar. The next
-bounded scope is a separately hashed, representation-preserving Q8 block repack experiment,
-whose arithmetic-order/image equivalence and actual speed remain unproved until tested.
+That candidate is explicitly rejected; added resolution did not meet the quality bar. The separate
+Q8 block32 derivative now completes the same768×432 dual-reference recipe in69,029ms versus
+238,809ms in the original profiled run (3.46× wall-time improvement on this Mac). All412 Q8
+operations use the native wide kernel; measured sampler GPU time drops206.66s→33.33s. The raw
+paintings look nearly identical but their pixel hashes differ; remaining anatomy/botany/framing
+limits persist and art acceptance remains false. No general speed, phone or unique-memory claim.
+Conversion preserves all represented quantized weights and independently verifies347,332,608
+new parameter bytes. The original shards remain unchanged; this optional developer derivative
+adds352,323,881 graph/data bytes (about336MiB), separate from any player delivery budget.
+[Exact conversion, native comparison and review](audits/LOCAL_AV_AI_CONTINUATION_20260909/README.md).
 Preserve full genomes, named Earth anatomy, biome authority, current clocks, saves and share codes.
 
 ## Selected landing presentation — Nick, 2026-09-08

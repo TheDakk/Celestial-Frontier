@@ -1,0 +1,45 @@
+{
+  "schema": "cf.q8-block32-native-comparison/v1",
+  "scope": "One same-Mac768x432 dual-reference profiled pair; no phone, cold-cache, unique-memory, general speed or accepted-art claim. Raw GPU and Node time are separate overlapping domains.",
+  "recipeEqualExceptDerivative": true,
+  "runs": [
+    {
+      "run": "browser-native-profile-02",
+      "resultSha256": "7ccdb5944874f4bdff6630288629333e3ecf60fc8e84f7eeb7a71360db4824f3",
+      "elapsedMs": 238809.0649998188,
+      "samplerGpuDurationUs": 206655649,
+      "q8DispatchCount": 412,
+      "q8DurationUs": 197359252,
+      "q8Programs": [
+        "MatMulNBits"
+      ],
+      "output": {
+        "file": "raw-output.png",
+        "bytes": 887249,
+        "sha256": "84c2aa9fd18841d6b3fdfe0a412a260136cbcc1738824a648d77347f92103d68"
+      },
+      "maxSummedBrowserRssKiB": 3860080
+    },
+    {
+      "run": "browser-block32-profile-01",
+      "resultSha256": "ef8d0fa5b59ba30abd1ebdb395fadab7b1fe03665d1a4aefc116aed8104e86ab",
+      "elapsedMs": 69029.30999994278,
+      "samplerGpuDurationUs": 33325520,
+      "q8DispatchCount": 412,
+      "q8DurationUs": 24261563,
+      "q8Programs": [
+        "MatMulNBitsWideTile"
+      ],
+      "output": {
+        "file": "raw-output.png",
+        "bytes": 886736,
+        "sha256": "446d0a21aadf253df781c4d3a21a14a5800abaf598cbf7052f2677dc460d633a"
+      },
+      "maxSummedBrowserRssKiB": 3687136
+    }
+  ],
+  "wallSpeedRatio": 3.459531393259135,
+  "samplerGpuSpeedRatio": 6.2011230132343025,
+  "q8GpuSpeedRatio": 8.13464705468481,
+  "qualityAccepted": false
+}

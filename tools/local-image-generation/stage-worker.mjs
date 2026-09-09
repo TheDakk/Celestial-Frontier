@@ -17,6 +17,8 @@ onmessage=async ({data:job}) => {
   const started=performance.now();
   try {
     if(job.profile!==undefined&&typeof job.profile!=='boolean')throw Error('Profile option must be boolean');
+    if(job.q8Block32!==undefined&&typeof job.q8Block32!=='boolean')throw Error('Derivative choice must be boolean');
+    if(job.q8Block32&&job.stage!=='denoise')throw Error('Derivative belongs only to denoise');
     if(job.profile){
       profileCapture=createNativeProfileCapture({ortVersion:ort.env.versions.web});
       // Emscripten binds console.log when its WASM module initializes, so wrap
@@ -46,7 +48,7 @@ onmessage=async ({data:job}) => {
     ort.env.wasm.wasmPaths=new URL('./node_modules/onnxruntime-web/dist/',import.meta.url).href;
     const specs={text:['text_encoder_q4.onnx',['text_encoder_q4-00000.data','text_encoder_q4-00001.data']],
       encode:['vae_encoder.onnx',['vae_encoder.onnx.data']],
-      denoise:['transformer_q8.onnx',['transformer_q8-00000.data','transformer_q8-00001.data','transformer_q8-00002.data']],
+      denoise:job.q8Block32?['transformer-q8-block32.onnx',['transformer_q8-00000.data','transformer_q8-00001.data','transformer_q8-00002.data','repacked-scale-zero.data']]:['transformer_q8.onnx',['transformer_q8-00000.data','transformer_q8-00001.data','transformer_q8-00002.data']],
       decode:['vae_decoder.onnx',['vae_decoder.onnx.data']]};
     if(!specs[job.stage]) throw Error('Unknown stage');
     const [graph,shards]=specs[job.stage];

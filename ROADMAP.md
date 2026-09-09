@@ -334,7 +334,14 @@ parity. Native1024×576 completed in300s but duplicated/fused the Civet and lost
 placement; explicitly rejected with raw pixels/independent review retained. Read-only all103-node
 metadata and768 sampled represented weights support a block128→32Q8 repack (explicit scales
 and zero points both repeat4×). It could enable the native wide kernel without requantization;
-new converter work is separate/pending, original cache untouched, no speed/quality acceptance.
+the separate converter now passes17controls and verifies every347,332,608 new parameter byte.
+Exact derived graph4,991,273bytes + data347,332,608bytes add about336MiB to the developer cache;
+original shards remain unchanged. Bridge38checks PASS. First native block32 comparison uses
+all412 wide Q8 kernels and takes69,029ms versus238,809ms original, with near-identical-looking
+raw composition and different PNG hash. Sampler GPU time206.66s→33.33s; one Mac/recipe only.
+No final art, phone, unique-memory or shipping-budget acceptance. All prior rejected images,
+first instrument failures and original model/proofs remain. Next quality work should target the
+known duplicated Civet/framing/anatomy failures with one explicit changed recipe, not a seed sweep.
 Do not infer Q8 incompatibility from old JSEP source. Nick
 explicitly authorized continuing these priorities tonight in this session, no scheduled task.
 
@@ -347,8 +354,25 @@ latency and heat; adaptive scene cache remains separate from installed model/bui
 No model is selected/embedded or qualified yet. Keep prototype status explicit until the quality
 and delivery gates pass; no low-quality substitution or silent storage/128MiB-gate increase.
 
+Completed local proof/audio/loader checkpoint is SSH-signed and verified as
+`ceb107fdcf6f33f8d60cfd071fbea907a4bb68df`:214files, no model weights/node_modules. The branch
+is1ahead/0behind origin/openai/mac9bfec7dc; no push. Current tracked source was clean immediately
+after commit, with ambient.DS_Store and new `tools/local-image-repack/` work excluded. Signing
+succeeded on the first existing-agent ssh-keygen attempt. The current local derivative batch
+must keep this original model/proof intact and retain first controls/results separately.
+PR42's public title/body still describe9bf and must be refreshed only in a future separately
+authorized publication. Base develop/source openai/mac; no GitHub step now and no Claude app
+switch needed. Claude safely fetches/merges a future verified develop into clean anthropic/mac;
+it does not have this local checkpoint yet. UNFROZEN/PUBLIC/private fallback3000, zero exact
+new hosted attempts; no release/deploy. Full admission and all earlier blockers remain open.
+
 Current references retain the conditional local/no-extra-player-installer direction, exact-image
 retention needs, existing save/share/clock laws and provisional500MB/1GB/2GB/up-to5GB scene caches.
 Do not prepaint millions of worlds or restart the bespoke landing animation loop. Record results,
 first failures and remaining limits as each bounded batch finishes, then sign local completed work.
 Fresh sessions read ROADMAP, PROCESS_LAWS, protocol and UI_TOOLCHAIN; do not recreate timers.
+
+The derivative batch's final root validation PASS preserves1,010 named renders, zero boot
+errors and50 original fingerprints. Legacy HTML SHA256 remains
+`5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746`.
+This scoped validation does not replace full changed-head V2 admission or prior native blockers.

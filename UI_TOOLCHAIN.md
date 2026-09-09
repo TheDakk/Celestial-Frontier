@@ -12,6 +12,12 @@ reports some CPU-assigned nodes. Art acceptance, peak unique memory, full-screen
 phone support remain open. Root coordinates immutable receipts in
 [LOCAL_AV_AI_CONTINUATION_20260909](audits/LOCAL_AV_AI_CONTINUATION_20260909/README.md).
 The uninterrupted September8 startup receipt remains applicable; no global tool upgrade.
+The optional `--q8-block32` derivative uses the unchanged parent shards plus352,323,881 new
+local graph/data bytes. All103 nodes retain represented weights, with every347,332,608 parameter
+byte independently re-read. Seventeen converter controls and38 bridge controls PASS. Actual
+native execution uses412 wide Q8 kernels and completes the same768×432 scene in69s versus239s
+profiled original. Both raw images remain unaccepted; no phone/device or shipping-size claim.
+The first rejected larger render and all native profiling failures remain retained.
 
 **Latest authoring direction, September 8:** Nick selected the generated Living Worlds reference
 for cohesive static landings, with shared-identity Compendium art and future articulated 2D battles.

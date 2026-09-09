@@ -251,3 +251,55 @@ The converter is separate upcoming work, not a modified/qualified model. Extra s
 would be347,332,608bytes plus graph/metadata while reusing original shards. Floating accumulation
 order and final image equivalence still require an actual derivative run. No feature-only speed
 experiment or unsafe IsNaN rewrite was performed.
+
+
+## Local checkpoint and next derivative batch
+
+Signed verified`ceb107fdcf6f33f8d60cfd071fbea907a4bb68df` commits214completed proof/audio/loader
+and evidence files. `checkpoint-signing.json` is the untouched next-batch copy of the actual
+command-scoped existing-1Password-agent receipt; no private key or settings changed. The branch
+is one ahead of parked origin9bf; no push, hosted run or release. The enormous majority of new
+text is exact JSON evidence, not game code. `checkpoint-whitespace.json` preserves four original
+raw-log EOF warnings and one frozen harness README trailing space; that check remains nonzero,
+not relabeled PASS. Runtime/code whitespace is clean; no policy was weakened.
+
+New `tools/local-image-repack/` work is outside that completed checkpoint. It must prove strict
+parent identity, safe new ignored output, exact Q8 represented weights, immutable original
+shards, new derivative identity/hash and separate measured GPU/quality outcomes. The existing
+model and all accepted/unaccepted artwork stay intact. No inference speedup has been established.
+
+
+## Verified block32 derivative and native comparison
+
+`repack-controls-01` passes17 focused protobuf/representation/integrity/ownership controls and
+all five converter syntax checks. `repack-conversion-01` completes first attempt in3.75s, verifies
+all three original shard hashes, preserves unchanged B ranges and protobuf fields, and independently
+re-reads every347,332,608 new scale/zero byte. Source and all handle cleanup checks pass. Exact
+conversion status remains `DERIVATIVE_VERIFIED_RUNTIME_PENDING`; subsequent inference does not
+rewrite the earlier receipt. The derived graph/data add352,323,881 bytes (about336MiB) to the
+ignored developer cache, no additional model download or original-shard copy.
+
+`derivative-bridge-controls` passes38 focused checks before native execution. The repository pin
+binds actual derived graph/data hashes; `--q8-block32` selects only the denoiser and fails closed
+on unknown variants or corrupt/truncated/symlink assets. Original model remains the default.
+`repack-conversion-01/REVIEW.md` independently checks pin/receipt consistency and bridge routing.
+
+`browser-block32-profile-01` completes all five native stages with source unchanged and owned
+browser/server closed. Same seed, prompt, resolution, reference inputs and schedule as original
+`browser-native-profile-02`; `COMPARISON.json` checks recipe equality except the derivative field.
+All412 Q8 dispatches now select `MatMulNBitsWideTile`. Measured sampler GPU time206,655,649µs→
+33,325,520µs (6.20×); Q8 GPU197,359,252µs→24,261,563µs (8.13×). Total observed generation
+238,809ms→69,029ms (3.46×). These are one same-Mac profiled pair, not cold-cache, phone or
+cross-device results. Summed process RSS remains an imprecise shared-mapping measure.
+
+Raw768×432 PNG886,736bytes SHA256
+`446d0a21aadf253df781c4d3a21a14a5800abaf598cbf7052f2677dc460d633a` looks near-identical to the
+original but differs in bytes. Root's visual inspection retains crowded tail, uncertain Platypus
+anatomy and diagnostic botany/detail limits. Speed does not qualify the painting; qualityAccepted
+remains false. The prior1024 fused/duplicated Civet rejection stays intact. No model/game install,
+cache-policy change, gameplay identity change, hosted action or release follows this experiment.
+
+The derivative batch's final root validation PASS preserves1,010 named renders, zero boot
+errors and50 original fingerprints. Legacy HTML SHA256 remains
+`5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746`.
+This scoped validation does not replace full changed-head V2 admission or prior native blockers.

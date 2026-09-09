@@ -63,3 +63,16 @@ A converter must reject conflicting shape annotations, duplicate protobuf fields
 unsupported types and existing output directories. Actual model import, GPU kernel selection,
 latency and raw output comparison remain required; a mathematical packing proof alone is not
 inference or quality acceptance. New `tools/local-image-repack/` work is pending separately.
+
+
+## Actual block32 result
+
+The separate converter and native comparison now complete; original graph/shards are unchanged.
+See `repack-conversion-01` for full represented-weight proof and
+`browser-block32-profile-01/COMPARISON.json` for exact observed totals. All412 Q8 operations use
+`MatMulNBitsWideTile`, reducing measured Q8 GPU time197.36s→24.26s and total sampler GPU206.66s→
+33.33s. Whole generation238.81s→69.03s. Both profiles use the identical768×432 dual-reference
+recipe except the derivative field. This establishes this optimization on one Apple M4 Pro;
+it does not establish universal speed or final art. The raw output looks near-identical with a
+new pixel hash, preserving the known quality limits. New graph/data add352,323,881 bytes in the
+ignored cache; the broader model download, GPU/RAM and phone-delivery questions remain open.

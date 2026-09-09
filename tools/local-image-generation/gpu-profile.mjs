@@ -113,13 +113,14 @@ export function createNativeProfileCapture(options={}) {
 // Shared by the CLI and focused tests; importing this module never starts a run.
 export function parseProofOptions(args){
   if(!Array.isArray(args)||!args.every(x=>typeof x==='string'))throw Error('Invalid proof arguments');
-  const supported=new Set(['--without-reference','--identity-reference','--preflight','--profile','--resolution=1024x576']);
+  const supported=new Set(['--without-reference','--identity-reference','--preflight','--profile','--resolution=1024x576','--q8-block32']);
   const flags=args.filter(x=>x.startsWith('--')),outputs=args.filter(x=>!x.startsWith('--'));
   if(outputs.length!==1||!outputs[0]||flags.some(x=>!supported.has(x))||new Set(flags).size!==flags.length)
-    throw Error('Usage: run-browser-proof.mjs EVIDENCE_DIRECTORY [--without-reference | --identity-reference] [--preflight | --profile] [--resolution=1024x576]');
+    throw Error('Usage: run-browser-proof.mjs EVIDENCE_DIRECTORY [--without-reference | --identity-reference] [--preflight | --profile] [--resolution=1024x576] [--q8-block32]');
   const has=x=>flags.includes(x);
   if(has('--without-reference')&&has('--identity-reference'))throw Error('Identity reference requires reference conditioning');
   if(has('--profile')&&has('--preflight'))throw Error('--profile requires inference; incompatible with --preflight');
+  if(has('--q8-block32')&&has('--preflight'))throw Error('--q8-block32 requires verified inference; incompatible with --preflight');
   return {output:outputs[0],referenceEnabled:!has('--without-reference'),identityReference:has('--identity-reference'),
-    preflight:has('--preflight'),profile:has('--profile'),width:has('--resolution=1024x576')?1024:768,height:has('--resolution=1024x576')?576:432};
+    preflight:has('--preflight'),profile:has('--profile'),q8Block32:has('--q8-block32'),width:has('--resolution=1024x576')?1024:768,height:has('--resolution=1024x576')?576:432};
 }
