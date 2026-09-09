@@ -139,3 +139,11 @@ GitHub step remains none: PR42parked Draft/unlabeled, no push/Ready/owner-label/
 merge/release/deploy/version/automation. Claude's review did not install these local
 source changes into its worktree. Final local signatures and exact implementation
 checkpoint are recorded separately; successful signing is not integration.
+
+
+Signed correction/source checkpoint: `af4002783860422b6ffb5ca6b3a47b03099c8514`; signature independently
+verified through the restored1Password SSH agent, first attempt passed.
+[Exact receipt](CORRECTION_SIGNATURE.json). It is8ahead/0behind origin/openai/mac and
+119ahead/0behind origin/develop. The following documentation-only checkpoint retains
+the receipt and exact source handoff; implementation/test/native-source bytes remain
+unchanged. No GitHub write, full admission or broader Claude re-review is implied.
