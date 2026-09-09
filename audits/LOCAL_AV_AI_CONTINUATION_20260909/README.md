@@ -423,3 +423,22 @@ rodent; selected Civet proportions and named botany still fail. Root and indepen
 no game-asset promotion. Reference and wording changed together; one result does not
 qualify universal anatomy, performance or device support. The existing model/storage
 and broader art/battle/universal-object/season/sharing blockers remain open.
+
+
+## Local signed handoff
+
+Cache planner `e7157ec204f7f2bec5934fd4b80344a9e0d9e298` (15files) and reference
+ownership/identity conditioning `acfbce776ff10dda0a6d476bbb795b878803bfcc` (46files)
+are locally SSH-signed and verified on their first attempts. The latter is the
+exact latest implementation head, five commits ahead of origin/openai/mac; this
+documentation-only successor retains its signature receipt and current handoff.
+74 focused checks across the two bounded batches pass (24cache,30lifecycle,
+20conditioning), plus six native reference scenarios/10observer controls and
+scoped static validation. This is not a full changed-head admission result.
+
+No unaccepted image enters gameplay. Exact art quality,6.23GiB candidate-model
+player delivery/phone feasibility, durable originals/atomic cache execution,
+shared family skins, universe-wide fidelity, physical seasons and exact-image
+sharing are still open. All earlier HUMAN audio/native device and gate blockers
+remain. Source and evidence are local only; PR42 stays parked, no hosted attempt
+or scheduled task exists, and Claude syncs only after a future develop merge.
