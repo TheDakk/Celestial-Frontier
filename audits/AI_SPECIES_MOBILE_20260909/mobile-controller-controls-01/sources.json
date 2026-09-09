@@ -1,0 +1,14 @@
+[
+  {
+    "path": "tools/local-image-generation/run-mobile-model-delivery.mjs",
+    "sha256": "c4fd9a625cd770a741f0decf69cc440a36ee0e129e09218398e57bd2d33e9eea"
+  },
+  {
+    "path": "tools/local-image-generation/run-mobile-model-delivery.test.mjs",
+    "sha256": "d01fdcb93a604d28bed25e539611d950516361c7edad018c4397a35c9d2419cd"
+  },
+  {
+    "path": "tools/local-image-generation/compile-delivery-diagnostic.mjs",
+    "sha256": "0deddbff3266d0897880ae24cb34c533378e4849ecbe1f21159cc5364cb6bb7f"
+  }
+]

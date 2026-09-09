@@ -8,24 +8,61 @@ The browser executes Qwen text encoding, reference VAE encoding, FLUX.2 Klein de
 decoding on WebGPU. A loopback HTTP server serves exact files only. It performs no inference.
 Each stage owns a fresh worker, and the parent terminates it before proceeding. Cancellation,
 timeouts, model/data corruption, nonfinite tensors and GPU errors stop the run. There is no remote
-inference API, login, fallback generation or player setup flow in this proof.
+inference API, login or fallback generation. The optional normal-game preview separately exposes
+explicit browser model installation; authoring tools are not installed on the player's device.
 
 ## Normal-game preview
 
 `game-preview-server.mjs` now serves the ordinary game with `?localai=1`, an exact verified
 local model cache and the same browser inference worker. `run-game-integration.mjs` exercises
 trusted Land → progress while playing → durable original → Notifications/View → reload. The
-server performs no inference or downloads. This is development tooling; runtime distribution,
-full mobile installation and output quality remain unqualified. See [the current owner reference](../../LOCAL_AI_GENERATION.md)
-and the [integration packet](../../audits/AI_GAME_INTEGRATION_20260909/README.md).
+server performs no inference or downloads. `--species-references` on the integration runner selects
+six individually hashed canonical Earth references through `species-references.mjs` and its
+[full-genome source manifest](../../audits/AI_SPECIES_MOBILE_20260909/references/reference-set-v1.json).
+Order is Civet, Persimmon, Platypus, Frog, Devil's Club and Cranberry. Each verified original is
+prepared at480×320, encoded separately and assigned its own image-token group; soft conditioning
+does not guarantee anatomy, count or position. The actual six-reference painting remains
+unaccepted for Platypus anatomy, diagnostic botany and canonical placement. Desktop full-model
+storage results do not qualify physical-phone installation or inference. See [the current owner reference](../../LOCAL_AI_GENERATION.md),
+the [current species/mobile packet](../../audits/AI_SPECIES_MOBILE_20260909/README.md) and the
+[preserved initial integration packet](../../audits/AI_GAME_INTEGRATION_20260909/README.md).
+
+```sh
+node tools/with-toolchain-lock.mjs --label individual-species-native -- node tools/local-image-generation/run-game-integration.mjs --output=audits/NEW_SPECIES_ATTEMPT --species-references
+```
+
+This command performs actual local inference and needs the ordinary startup, source freeze,
+shared locks and approved first-attempt native browser execution outside macOS Seatbelt. It is
+not a setup or packaging command; retain a failed attempt and diagnose before a changed attempt.
+
+The local preview now uses `frozen-preview-client.mjs`: a hash-pinned served copy disables the
+locked Vite client's unused eager HMR connection while preserving its exports, CSS/query helpers
+and real error reporting. Installed dependencies are unchanged; unexpected Vite bytes refuse.
+This fixes the WebSocket exception retained in native-generation01 without relabeling that failed
+aggregate or repeating inference. Thirteen focused controls and one separate no-inference native
+boot/reload passed: actual client bodies captured twice, trusted Skip/durable Sol/continuing
+renderer, zero sockets/model requests/runtime exceptions,20 source hashes unchanged and complete
+cleanup. Two favicon404 logs remain. [Transport packet](../../audits/AI_SPECIES_MOBILE_20260909/preview-transport/README.md)
+contains the first failure, exact source/client evidence and narrow screenshot review.
+
+```sh
+node tools/with-toolchain-lock.mjs --label frozen-preview-boot -- node tools/local-image-generation/run-frozen-preview-boot.mjs --output=audits/NEW_PREVIEW_BOOT_ATTEMPT
+```
+
+The latter runner starts only the real game via the shared frozen server factory, with no model
+cache scan or inference. It is a scoped desktop diagnostic, not the full mobile/PWA qualification.
 
 ## Static runtime and retained-painting inspection
 
-The new `runtime-pack.mjs` builds a deterministic, hash-inventoried `/__local_ai/` runtime closure
-from the exact existing locked dependencies, helpers, reference and notices. It includes the
-actual ORT Asyncify lazy JS/WASM files. No weights are copied. The standalone result is 27.08 MiB;
-combined app/PWA/update, phone and distribution qualification remain separate. The controller
-admits its installed-only manifest and refuses generation before explicit OPFS verification.
+`runtime-pack.mjs` builds a deterministic, hash-inventoried `/__local_ai/` runtime closure from the
+existing locked dependencies, helpers, six reference assets and notices. It includes the actual
+ORT Asyncify lazy JS/WASM files. No weights are copied. Current six-reference output is
+37,451,014bytes (35.72MiB); its external inventory SHA is
+`ddc09e2128a6fbfea11b3c6b0596359eb97fd7f18198fed38c74b3736502476b`.
+The earlier27.08MiB single-reference result remains historical evidence in the continuation packet.
+The controller admits the installed-only manifest and refuses generation before explicit OPFS
+verification. The source-owned verifier can validate this complete runtime subset inside the
+separately inventoried application; unrelated app paths never become trusted runtime files.
 
 After the normal startup and shared locks, use a **new** ignored output directory:
 
@@ -37,6 +74,76 @@ node tools/with-toolchain-lock.mjs --label ai-runtime-verify -- node tools/local
 Use the exact externally retained manifest SHA printed by that build. Existing output refuses;
 source/payload/manifest substitutions, unsafe paths, missing closure and added weights refuse.
 No command publishes the pack or starts model downloads.
+
+## Combined optional PWA delivery
+
+`mobile-pack.mjs` reuses the ordinary Vite configuration and sealed PWA inventory, then adds the
+externally verified runtime as exact cached assets. It requires a new output and explicit
+`--local-diagnostic`; package metadata is working-tree/evidence/nonpublishable. These isolated
+assembly tools require native TypeScript stripping and are tested here with installed Node26.8.1.
+No extra authoring tool or Node installation is part of the browser player's flow.
+
+```sh
+node tools/with-toolchain-lock.mjs --label mobile-ai-build -- node tools/local-image-generation/mobile-pack.mjs build --output=/private/tmp/cf-mobile-pack-NEW --runtime=/private/tmp/cf-runtime-pack-NEW --runtime-sha256=EXTERNAL_RUNTIME_SHA --local-diagnostic
+node tools/with-toolchain-lock.mjs --label mobile-ai-verify -- node tools/local-image-generation/mobile-pack.mjs verify --output=/private/tmp/cf-mobile-pack-NEW --sha256=EXTERNAL_MOBILE_SHA
+```
+
+Current package03 is `/private/tmp/cf-mobile-pack-20260909-species-03`,97files totaling
+56,529,354bytes (53.91MiB), with external manifest SHA
+`5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c` and PWA build ID
+`42d79c05f4b5269766d35e82c03f7b828f70062dc2bdca54ee98ca5f643465b4`.
+Build03 and independent verification passed with426 measured source hashes unchanged. This rebuild
+contains the optional worker-import ownership correction and its required development release text.
+The unchanged six-reference runtime has the external SHA above. Package02's release-text-only
+rebuild, package01 and its first test-hook failure remain intact. Corrected package-copy controls
+passed8/8 actual package/HTTP cases and8/8 pure cases on package01. The worker-import correction
+separately passed12 targeted package/reply controls,34 existing PWA cases, all3 TypeScript programs
+and root validation. The [delivery packet](../../audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/README.md)
+retains exact commands, inventories, refusal controls, all versions and first failure diagnosis.
+
+Admission remains128MiB including final package metadata. The same-size successor envelope is
+113,058,708bytes (107.82MiB). Since active + prior + an installing candidate can occupy three caches,
+the optional worker also counts retained build response payloads and refuses before a candidate
+write crosses256MiB, deleting only its failed candidate. Browser metadata, OPFS model files,
+retained art and live GPU/RAM are distinct budgets. This is not physical-device disk accounting.
+
+The optional worker forwards only the20 exact pinned Hugging Face model GETs from a retained
+current/prior document, with CORS, omitted credentials and bounded open-ended Range. These requests
+happen only after explicit Install/Resume and never enter CacheStorage. Complete streamed file
+hashes remain the OPFS owner's admission rule. No model data is packaged or automatically fetched;
+the original20-file model is still6.23GiB. Default PWA worker bytes and its external refusal remain
+unchanged. Local model storage preserves its open disclosure during progress so Pause stays usable.
+
+`createMobilePackServer({directory, expectedManifestSha256})` supplies a verified isolated loopback
+static origin, exact MIME and COOP/COEP/CORP/nosniff headers, an HTTP outcome ledger and owned close.
+It permits initial`/?localai=1`; unknown assets return404 with no HTML fallback. The optional native
+`run-mobile-model-delivery.mjs --pack=PATH --sha256=EXTERNAL_MOBILE_SHA --output=NEW_AUDIT_DIRECTORY`
+uses normal controls and an independently hashed loopback mirror of already present model bytes.
+It does not ship a mirror or redirect player requests in the product. Root coordinates its
+one-attempt browser run after source freeze. Both full-model native01/02 receipts remain FAIL.
+Attempt01 installed all20 files but stopped before offline work after its hard reload bypassed
+service-worker control. Corrected02 proved activated control across all3 documents,21 service-worker
+model interceptions, real Range resume,6,392 native chunks /6,691,020,416bytes and108.690seconds for
+local-mirror install. It then physically closed both servers, completed normal offline reload and
+in-game full verification in79.775seconds, and read all20 native Blobs through the compiled production
+owner with exact sizes/head/tail digests plus a rejected shifted-slice mutant. The final module
+observer failed. No internet download, model inference or phone qualification occurred.
+
+Three subsequent small module attempts remain red. The source correction now admits a module
+request with explicit empty `resultingClientId` only from a persisted `worker:true` pin bound to the
+retained active/prior build and exact asset table. Window-only, missing or stale owners still
+refuse; default worker bytes are unchanged. **Separate native04 PASS on verified package03**:
+unmodified stage-worker imports returned the existing pre-GPU invalid-profile response both online
+and after origin closure/CDP offline/new-document normal reload. All95 cache asset digests and the
+25,749,873-byte lazy Asyncify WASM SHA matched. No WASM instantiation, model OPFS namespace,
+GPU/model work or inference occurred;12 measured sources stayed unchanged, zero browser error
+events/loading failures were recorded and cleanup completed. [Runner and failure history](../../audits/AI_SPECIES_MOBILE_20260909/MOBILE_NATIVE_RUNNER.md)
+keeps this bounded module result separate from native01/02 aggregate FAIL. The6.23GiB OPFS copy
+was not repeated solely for the module correction.
+Physical iPhone/Safari/PWA/CDN delivery, thermals and inference latency remain separate gates.
+Existing model/source/phone and species-quality blockers persist. Native runtime source-version correspondence is corroborated
+by embedded commit and matching notices; selected-component SBOM/reproduced-build and complete
+distribution acceptance remain unqualified.
 
 `run-landfall-viewer.mjs --output=NEW_AUDIT_DIRECTORY` checks the ordinary game’s full-painting
 viewer with the prior native original committed through the real original-store owner. It drives

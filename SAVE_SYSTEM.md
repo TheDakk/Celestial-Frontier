@@ -15,9 +15,33 @@ in a separate IndexedDB art database with atomic index/original commits and veri
 no game-save fields or migration are added. Model bytes use separate resumable OPFS storage.
 Neither store is an outside-origin backup; full model/device qualification remains open. The
 full-painting viewer rereads a verified original and changes only ephemeral DOM/Blob URLs, with
-no new game-save fields or original writes. Original lookup still includes the complete model
-recipe: a different recipe after reload does not automatically discover older retained pixels.
-Cross-recipe discovery remains open; no deletion or regeneration fallback is added.
+no new game-save fields or original writes. V2 reference selection can reconstruct the original
+V1 recipe only for the same canonical snapshot and same model/derivative, making that retained
+painting discoverable after reload without inference. Broader cross-model/recipe discovery still
+needs a full-identity index. No deletion or regeneration fallback is added. Optional mobile/PWA
+installation counts actual retained static build response payloads before crossing 256 MiB;
+model chunks and original paintings stay outside that disposable app cache. Physical-device
+storage and delivery qualification remain separate from these deterministic contracts.
+
+The September9 desktop full-model attempt02 used actual Install/Pause/normal-reload/Resume controls
+and retained all20 files as6,392 OPFS chunks /6,691,020,416bytes in the same attempt. With both servers
+closed, normal offline Verify rehashed every file; the compiled production read-only owner then
+reverified/opened all20 native Blobs and checked sizes plus independent head/tail digests. A shifted
+JSON Blob slice was rejected. Model bytes never entered the app/runtime CacheStorage inventory.
+Both full-model aggregate receipts remain FAIL:01 lost control after the diagnostic's hard reload;
+02 stopped at its final worker-module observer. Their positive storage observations remain scoped
+evidence, not device qualification. Owned diagnostic profiles and model copies were removed during
+cleanup; developer model sources and player data were untouched.
+
+The optional PWA persists `worker:true` on worker creation and now distinguishes explicit empty-ID
+module imports from new workers, requiring an exact retained worker owner and inventoried asset.
+Missing/window/stale ownership still refuses. This uses the disposable PWA control cache and adds
+no gameplay-save fields or schema migration. Default service-worker output is unchanged. Package03
+build/verification and the separate native04 module-delivery check passed: the exact worker graph
+responded online and after true offline reload, with95 cache asset hashes and the lazy WASM bytes
+verified. The model OPFS namespace was absent in that small run; no second model copy or inference
+was needed. This does not qualify physical-device retention or change either full-model aggregate.
+[Exact results and limits](LOCAL_AI_GENERATION.md).
 
 ## V2 notification history — matches code as of 2026-09-06
 

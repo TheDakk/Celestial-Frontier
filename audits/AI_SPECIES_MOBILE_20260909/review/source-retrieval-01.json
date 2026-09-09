@@ -1,0 +1,32 @@
+{
+  "schema": "cf.source-correspondence-retrieval.v1",
+  "observedAt": "2026-09-09T16:19:46.433180+00:00",
+  "ownership": {
+    "app": "OpenAI/Codex",
+    "os": "macOS",
+    "physicalRoot": "/Users/nick/Projects/celestial-frontier-openai-mac",
+    "branch": "openai/mac",
+    "upstream": "origin/openai/mac"
+  },
+  "requests": [
+    {
+      "url": "https://registry.npmjs.org/onnxruntime-web/1.29.0",
+      "name": "npm-onnxruntime-web-1.29.0.json",
+      "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "retained": false
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/2e2543fbe9fae542f921d47a72d21d5a4ef0b710/js/web/script/prepack.ts",
+      "name": "source-prepack.ts",
+      "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "retained": false
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/2e2543fbe9fae542f921d47a72d21d5a4ef0b710/js/web/script/pull-prebuilt-wasm-artifacts.ts",
+      "name": "source-pull-prebuilt.ts",
+      "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "retained": false
+    }
+  ],
+  "scope": "small official package/source text only; no software/model download, execution or publishing"
+}

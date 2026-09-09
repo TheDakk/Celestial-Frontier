@@ -1,0 +1,57 @@
+{
+  "status": "FAIL",
+  "scope": "Pure synthetic assessor and exact production owner transform/import plus mirror Range/origin controls; no browser, listener or model scan. Prior two 7/8 transformation failures retained.",
+  "sources": [
+    {
+      "path": "tools/local-image-generation/run-mobile-model-delivery.mjs",
+      "sha256": "919cb8f8665e057811c884c8f8a0eadc53cc462d605e307425243c3e93cbbb6e"
+    },
+    {
+      "path": "tools/local-image-generation/run-mobile-model-delivery.test.mjs",
+      "sha256": "2ff7263bc698bef423d2d7703727f0a507825d50252aec7235272098de7104c0"
+    },
+    {
+      "path": "tools/local-image-generation/native-model-mirror.mjs",
+      "sha256": "3e34cf10f726c97852f2b08c3d594ba95bdda95f3c9eda40ea12cfadbd56874e"
+    },
+    {
+      "path": "tools/local-image-generation/native-model-mirror.test.mjs",
+      "sha256": "693e63398e92381f0df6ac901ca853c27522042f97813cb79b47983ad3023dac"
+    }
+  ],
+  "checks": [
+    {
+      "label": "syntax-runner",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/run-mobile-model-delivery.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "syntax-mirror",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/native-model-mirror.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "controls",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "native-tool-controls-03",
+        "--",
+        "node",
+        "--test",
+        "tools/local-image-generation/run-mobile-model-delivery.test.mjs",
+        "tools/local-image-generation/native-model-mirror.test.mjs"
+      ],
+      "exitCode": 1
+    }
+  ]
+}

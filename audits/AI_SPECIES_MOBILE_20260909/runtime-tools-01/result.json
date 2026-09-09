@@ -1,0 +1,55 @@
+{
+  "startedAt": "2026-09-09T16:35:58.375918+00:00",
+  "status": "FAIL",
+  "sources": [
+    {
+      "path": "tools/local-image-generation/runtime-pack.mjs",
+      "sha256": "a25e2b6f894a3c4c111949fa0a2c7dcfede13c25fb47082c13d423709425ad08"
+    },
+    {
+      "path": "tools/local-image-generation/runtime-pack.test.mjs",
+      "sha256": "aad9b660f6d020838d54e68e6f5cc6558a4f48b6ce91eaea255a7f7c282d7e8e"
+    },
+    {
+      "path": "tools/local-image-generation/game-preview-server.mjs",
+      "sha256": "73589ca7e7bcd912488578660b490677b8fd72ef396a44cbd7e84f087c2c4a86"
+    },
+    {
+      "path": "tools/local-image-generation/run-game-integration.mjs",
+      "sha256": "2f4a901629ee181611e2fc60dc415e1c606ebd379977c65994515d0e2573eb79"
+    },
+    {
+      "path": "tools/local-image-generation/species-references.mjs",
+      "sha256": "f2c60e00e28f63d69675693a7bfb4a8969781e26aebbea00e3629a7143f9a667"
+    },
+    {
+      "path": "tools/local-image-generation/runtime-pack-source-pins.json",
+      "sha256": "a79470dff5557d85734b73c1035309cd6f9f52f8b18adbb2e201b896630f7e70"
+    }
+  ],
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/run-game-integration.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "species-runtime-controls",
+        "--",
+        "node",
+        "--test",
+        "tools/local-image-generation/runtime-pack.test.mjs",
+        "tools/local-image-generation/game-preview-server.test.mjs"
+      ],
+      "exitCode": 1
+    }
+  ],
+  "finishedAt": "2026-09-09T16:35:59.318961+00:00"
+}

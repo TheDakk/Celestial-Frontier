@@ -9,13 +9,33 @@ explicit OPFS readiness for static installed-only runtime manifests. Main stores
 mounted original reference, restores an Inspect entry after reload, and preserves the normal
 scene/navigation/transaction owners. The base scene band and existing controls stay fixed.
 
-`tools/local-image-generation/runtime-pack.mjs` builds/verifies the exact 27.08 MiB static runtime
-closure with pinned notices/reference, no weights. The normal controller admits this optional
-pack, but combined app/PWA delivery, physical phone and distribution qualification remain open.
-`landfall-fidelity.ts` is a detached artifact-bound visual-review consistency contract, not an
-image classifier or live authority. All six identities/anchors and the full nineteen-genome
-snapshot remain canonical. See [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) and the
-[continuation packet](audits/AI_LANDFALL_CONTINUATION_20260909/README.md) for exact limits/evidence.
+`landfall-conditioning.ts` adds a V2 compiler with six ordered complete species identities while
+preserving V1 bytes. `local-ai-runtime.ts` verifies those bindings, source digests and geometry,
+then sequentially encodes the six references. `local-ai-game.ts` supports exact same-snapshot/
+same-model V1 original lookup and preserves native model-storage disclosure state during progress.
+No hard spatial/count constraint or broad cross-model original index is implemented.
+
+`tools/local-image-generation/species-references.mjs` admits the exact reference-set manifest;
+`runtime-pack.mjs` builds/verifies its 35.72 MiB runtime closure. `mobile-pack.mjs` combines this
+with the normal app/PWA into 53.91 MiB, without weights. Optional `pwa-build.ts` policy permits
+explicit exact model GET/Range outside CacheStorage and bounds all retained build payloads during
+install. It now treats an explicit empty resulting client ID as an import only for a persisted
+`worker:true` owner bound to a retained build; window-only, unowned and stale requests still refuse.
+Normal PWA output is unchanged. Package03 built and independently verified at56,529,354bytes /97
+files; its exact external SHA is recorded in the delivery packet. Separate small native04 passed
+online/offline worker-module execution through the existing pre-GPU rejection and exact lazy WASM
+hash delivery, without WASM instantiation, model storage, GPU/model work or inference.
+Full-model native01/02 both retain aggregate FAIL. Attempt02 positively proved controlled
+Install/Pause/normal-reload/Resume of all20 files /6.23GiB, true offline normal-game rehash after
+both servers closed, and all20 native Blob reads through the compiled production owner. Its final
+module observer failed; these are storage/delivery subresults, not runtime or phone acceptance.
+`compile-delivery-diagnostic.mjs` uses the pinned TS7 CLI for exactly the two delivery/SHA sources;
+`native-model-mirror.mjs` reads/hash-verifies existing local bytes and is never shipped as fallback.
+Phone/CDN/resource/performance and distribution qualification remain open.
+`landfall-fidelity.ts` remains a detached V1 artifact-bound observation contract, not an image
+classifier or V2 acceptance authority. All nineteen genomes and accepted anchors remain canonical.
+See [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) and the
+[species/delivery packet](audits/AI_SPECIES_MOBILE_20260909/README.md) for exact outcomes and limits.
 
 ## Earth layout geometry ownership — matches code as of 2026-09-09
 
@@ -91,8 +111,9 @@ is explicit, chunked, resumable and hash-verified through OPFS. This remains an 
 experimental preview served by local development tooling; it is not a shipped mobile model pack.
 
 Canonical conditioning preserves all19 genomes and six named species with source-backed anatomy,
-botany and composition anchors. Its exact Platypus reference improves the conditioning input;
-actual output quality remains unaccepted. The pinned model is6.69GB, and browser capability checks
+botany and composition anchors. Six ordered identity-bound references supply independent VAE token
+groups; the135.671-second actual painting remains unaccepted for Platypus anatomy, diagnostic
+botany and canonical placement. Whole-image guidance is not a hard count or spatial constraint. The pinned model is6.69GB, and browser capability checks
 are not device qualification. The [current implementation and limits](LOCAL_AI_GENERATION.md)
 own the game/delivery boundary. The earlier isolated progress/ETA/fixed-shape proof and all failed
 candidates remain immutable evidence in [the preceding review packet](audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md).

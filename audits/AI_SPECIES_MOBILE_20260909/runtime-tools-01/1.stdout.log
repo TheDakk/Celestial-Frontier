@@ -1,0 +1,109 @@
+✔ single byte ranges cover bounded/open/suffix forms and reject malformed or impossible ranges (0.80025ms)
+✖ serves exact config, locked relative worker imports, range bytes, HEAD and same-origin Vite (15.506917ms)
+✖ rejects raw/encoded traversal, external origins, unknown AI files and write methods (8.363375ms)
+✖ hash/size corruption blocks readiness before Vite or HTTP start and exact restoration passes (6.827042ms)
+✔ refuses locked runtime version changes before opening the game (4.787208ms)
+✖ refuses a verified file replaced after startup instead of serving stale declared hashes (5.558958ms)
+✖ startup failure closes Vite and preserves a cleanup failure beside the bind error (4.890084ms)
+✖ close is idempotent and closes both the HTTP owner and Vite (3.978917ms)
+Runtime pack control artifacts: /private/tmp/cf-runtime-pack-controls-FwWT3r
+✔ builds the exact installed Asyncify closure, verifies all bytes, and repeats deterministically (333.460958ms)
+✔ missing installed lazy WASM refuses output before publication (18.834834ms)
+✔ same-length modified installed tokenizer refuses pinned hash and restored source builds (136.778083ms)
+✔ changed installed package version or lock integrity refuses without creating output (32.057459ms)
+✔ missing required license source refuses readiness (1.891917ms)
+✔ source symlinks and output symlink ancestors are refused (17.317417ms)
+✔ existing output is unchanged instead of being overwritten (0.718584ms)
+✔ unsafe paths, model targets, duplicate targets and cap inflation are rejected in source pins (0.5215ms)
+✔ new static import is refused even if an explicit fixture pin is updated to its changed bytes (32.0085ms)
+✔ verifier rejects changed payload and restored payload passes against the same external manifest (26.322542ms)
+✔ verifier rejects substituted manifest, unsafe manifest paths and unmanifested files (60.29325ms)
+✔ runtime subset scope admits app files only outside its strict runtime tree (98.461334ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 14
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 845.314292
+
+✖ failing tests:
+
+test at tools/local-image-generation/game-preview-server.test.mjs:70:1
+✖ serves exact config, locked relative worker imports, range bytes, HEAD and same-origin Vite (15.506917ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tools/local-image-generation/game-preview-server.test.mjs:99:1
+✖ rejects raw/encoded traversal, external origins, unknown AI files and write methods (8.363375ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tools/local-image-generation/game-preview-server.test.mjs:111:1
+✖ hash/size corruption blocks readiness before Vite or HTTP start and exact restoration passes (6.827042ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tools/local-image-generation/game-preview-server.test.mjs:130:1
+✖ refuses a verified file replaced after startup instead of serving stale declared hashes (5.558958ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tools/local-image-generation/game-preview-server.test.mjs:138:1
+✖ startup failure closes Vite and preserves a cleanup failure beside the bind error (4.890084ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tools/local-image-generation/game-preview-server.test.mjs:152:1
+✖ close is idempotent and closes both the HTTP owner and Vite (3.978917ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }

@@ -1,0 +1,130 @@
+✖ complete app plus six-reference runtime passes exact manifest, PWA table and both static payload limits (82.4055ms)
+✖ same-length runtime change fails, restoring exact bytes passes (0.340667ms)
+✖ runtime/file omission and symlink substitution fail without treating unrelated application files as trusted runtime (0.059792ms)
+✖ unlisted app files, model weights and source maps refuse readiness (0.018459ms)
+✖ unlisted empty directories are rejected and removal restores the same verified package (0.027917ms)
+✖ substituted manifest or promoted physical-device/distribution flags refuse even with fixture digest updated (0.016ms)
+✖ local static server has exact headers, MIME, initial query route and genuine missing-asset refusal (0.0135ms)
+✖ static server refuses modified bytes after startup and succeeds only after exact restoration (0.016292ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 0
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 174.735709
+
+✖ failing tests:
+
+test at tools/local-image-generation/mobile-pack-package.test.mjs:27:1
+✖ complete app plus six-reference runtime passes exact manifest, PWA table and both static payload limits (82.4055ms)
+  SystemError [ERR_FS_CP_EEXIST]: Target already exists: cp returned EEXIST (/private/tmp/cf-mobile-package-controls-iCuDlH already exists) /private/tmp/cf-mobile-package-controls-iCuDlH
+      at onDir (node:internal/fs/cp/cp:306:11)
+      at getStatsForCopy (node:internal/fs/cp/cp:199:12)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/mobile-pack-package.test.mjs:17:74)
+      at async TestHook.run (node:internal/test_runner/test:1409:7) {
+    code: 'ERR_FS_CP_EEXIST',
+    info: { message: '/private/tmp/cf-mobile-package-controls-iCuDlH already exists', path: '/private/tmp/cf-mobile-package-controls-iCuDlH', syscall: 'cp', errno: 17, code: 'EEXIST' },
+    errno: 17,
+    syscall: 'cp',
+    path: '/private/tmp/cf-mobile-package-controls-iCuDlH'
+  }
+
+test at tools/local-image-generation/mobile-pack-package.test.mjs:35:1
+✖ same-length runtime change fails, restoring exact bytes passes (0.340667ms)
+  SystemError [ERR_FS_CP_EEXIST]: Target already exists: cp returned EEXIST (/private/tmp/cf-mobile-package-controls-iCuDlH already exists) /private/tmp/cf-mobile-package-controls-iCuDlH
+      at onDir (node:internal/fs/cp/cp:306:11)
+      at getStatsForCopy (node:internal/fs/cp/cp:199:12)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/mobile-pack-package.test.mjs:17:74)
+      at async TestHook.run (node:internal/test_runner/test:1409:7) {
+    code: 'ERR_FS_CP_EEXIST',
+    info: { message: '/private/tmp/cf-mobile-package-controls-iCuDlH already exists', path: '/private/tmp/cf-mobile-package-controls-iCuDlH', syscall: 'cp', errno: 17, code: 'EEXIST' },
+    errno: 17,
+    syscall: 'cp',
+    path: '/private/tmp/cf-mobile-package-controls-iCuDlH'
+  }
+
+test at tools/local-image-generation/mobile-pack-package.test.mjs:42:1
+✖ runtime/file omission and symlink substitution fail without treating unrelated application files as trusted runtime (0.059792ms)
+  SystemError [ERR_FS_CP_EEXIST]: Target already exists: cp returned EEXIST (/private/tmp/cf-mobile-package-controls-iCuDlH already exists) /private/tmp/cf-mobile-package-controls-iCuDlH
+      at onDir (node:internal/fs/cp/cp:306:11)
+      at getStatsForCopy (node:internal/fs/cp/cp:199:12)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/mobile-pack-package.test.mjs:17:74)
+      at async TestHook.run (node:internal/test_runner/test:1409:7) {
+    code: 'ERR_FS_CP_EEXIST',
+    info: { message: '/private/tmp/cf-mobile-package-controls-iCuDlH already exists', path: '/private/tmp/cf-mobile-package-controls-iCuDlH', syscall: 'cp', errno: 17, code: 'EEXIST' },
+    errno: 17,
+    syscall: 'cp',
+    path: '/private/tmp/cf-mobile-package-controls-iCuDlH'
+  }
+
+test at tools/local-image-generation/mobile-pack-package.test.mjs:49:1
+✖ unlisted app files, model weights and source maps refuse readiness (0.018459ms)
+  SystemError [ERR_FS_CP_EEXIST]: Target already exists: cp returned EEXIST (/private/tmp/cf-mobile-package-controls-iCuDlH already exists) /private/tmp/cf-mobile-package-controls-iCuDlH
+      at onDir (node:internal/fs/cp/cp:306:11)
+      at getStatsForCopy (node:internal/fs/cp/cp:199:12)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/mobile-pack-package.test.mjs:17:74)
+      at async TestHook.run (node:internal/test_runner/test:1409:7) {
+    code: 'ERR_FS_CP_EEXIST',
+    info: { message: '/private/tmp/cf-mobile-package-controls-iCuDlH already exists', path: '/private/tmp/cf-mobile-package-controls-iCuDlH', syscall: 'cp', errno: 17, code: 'EEXIST' },
+    errno: 17,
+    syscall: 'cp',
+    path: '/private/tmp/cf-mobile-package-controls-iCuDlH'
+  }
+
+test at tools/local-image-generation/mobile-pack-package.test.mjs:56:1
+✖ unlisted empty directories are rejected and removal restores the same verified package (0.027917ms)
+  SystemError [ERR_FS_CP_EEXIST]: Target already exists: cp returned EEXIST (/private/tmp/cf-mobile-package-controls-iCuDlH already exists) /private/tmp/cf-mobile-package-controls-iCuDlH
+      at onDir (node:internal/fs/cp/cp:306:11)
+      at getStatsForCopy (node:internal/fs/cp/cp:199:12)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/mobile-pack-package.test.mjs:17:74)
+      at async TestHook.run (node:internal/test_runner/test:1409:7) {
+    code: 'ERR_FS_CP_EEXIST',
+    info: { message: '/private/tmp/cf-mobile-package-controls-iCuDlH already exists', path: '/private/tmp/cf-mobile-package-controls-iCuDlH', syscall: 'cp', errno: 17, code: 'EEXIST' },
+    errno: 17,
+    syscall: 'cp',
+    path: '/private/tmp/cf-mobile-package-controls-iCuDlH'
+  }
+
+test at tools/local-image-generation/mobile-pack-package.test.mjs:62:1
+✖ substituted manifest or promoted physical-device/distribution flags refuse even with fixture digest updated (0.016ms)
+  SystemError [ERR_FS_CP_EEXIST]: Target already exists: cp returned EEXIST (/private/tmp/cf-mobile-package-controls-iCuDlH already exists) /private/tmp/cf-mobile-package-controls-iCuDlH
+      at onDir (node:internal/fs/cp/cp:306:11)
+      at getStatsForCopy (node:internal/fs/cp/cp:199:12)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/mobile-pack-package.test.mjs:17:74)
+      at async TestHook.run (node:internal/test_runner/test:1409:7) {
+    code: 'ERR_FS_CP_EEXIST',
+    info: { message: '/private/tmp/cf-mobile-package-controls-iCuDlH already exists', path: '/private/tmp/cf-mobile-package-controls-iCuDlH', syscall: 'cp', errno: 17, code: 'EEXIST' },
+    errno: 17,
+    syscall: 'cp',
+    path: '/private/tmp/cf-mobile-package-controls-iCuDlH'
+  }
+
+test at tools/local-image-generation/mobile-pack-package.test.mjs:72:1
+✖ local static server has exact headers, MIME, initial query route and genuine missing-asset refusal (0.0135ms)
+  SystemError [ERR_FS_CP_EEXIST]: Target already exists: cp returned EEXIST (/private/tmp/cf-mobile-package-controls-iCuDlH already exists) /private/tmp/cf-mobile-package-controls-iCuDlH
+      at onDir (node:internal/fs/cp/cp:306:11)
+      at getStatsForCopy (node:internal/fs/cp/cp:199:12)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/mobile-pack-package.test.mjs:17:74)
+      at async TestHook.run (node:internal/test_runner/test:1409:7) {
+    code: 'ERR_FS_CP_EEXIST',
+    info: { message: '/private/tmp/cf-mobile-package-controls-iCuDlH already exists', path: '/private/tmp/cf-mobile-package-controls-iCuDlH', syscall: 'cp', errno: 17, code: 'EEXIST' },
+    errno: 17,
+    syscall: 'cp',
+    path: '/private/tmp/cf-mobile-package-controls-iCuDlH'
+  }
+
+test at tools/local-image-generation/mobile-pack-package.test.mjs:85:1
+✖ static server refuses modified bytes after startup and succeeds only after exact restoration (0.016292ms)
+  SystemError [ERR_FS_CP_EEXIST]: Target already exists: cp returned EEXIST (/private/tmp/cf-mobile-package-controls-iCuDlH already exists) /private/tmp/cf-mobile-package-controls-iCuDlH
+      at onDir (node:internal/fs/cp/cp:306:11)
+      at getStatsForCopy (node:internal/fs/cp/cp:199:12)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/mobile-pack-package.test.mjs:17:74)
+      at async TestHook.run (node:internal/test_runner/test:1409:7) {
+    code: 'ERR_FS_CP_EEXIST',
+    info: { message: '/private/tmp/cf-mobile-package-controls-iCuDlH already exists', path: '/private/tmp/cf-mobile-package-controls-iCuDlH', syscall: 'cp', errno: 17, code: 'EEXIST' },
+    errno: 17,
+    syscall: 'cp',
+    path: '/private/tmp/cf-mobile-package-controls-iCuDlH'
+  }

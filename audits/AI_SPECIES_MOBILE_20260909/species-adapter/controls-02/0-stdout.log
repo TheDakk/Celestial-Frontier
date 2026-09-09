@@ -1,0 +1,13 @@
+
+> cf-v2@0.0.0 test
+> vitest run tests/landfall-conditioning.test.ts tests/local-ai-runtime.test.ts tests/local-ai-game.test.ts tests/pwa-offline.test.ts
+
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  4 passed (4)
+      Tests  98 passed (98)
+   Start at  12:26:00
+   Duration  724ms (transform 591ms, setup 0ms, import 1.21s, tests 827ms, environment 0ms)
+

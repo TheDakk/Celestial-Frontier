@@ -47,6 +47,10 @@ test('builds the exact installed Asyncify closure, verifies all bytes, and repea
   assert.deepEqual(config.modelFiles,{});assert.equal(config.q8Block32,false);assert.equal(config.autoDownload,false);
   assert.equal(config.workerUrl,'/__local_ai/stage-worker.mjs');assert.equal(config.reference.url,'/__local_ai/reference.png');
   assert.equal(config.reference.width,480);assert.equal(config.reference.height,320);assert.equal(config.qualityAccepted,false);
+  assert.equal(config.references.length,6);assert.deepEqual(config.references.map(row=>row.imageIndex),[1,2,3,4,5,6]);
+  assert.equal(new Set(config.references.map(row=>row.sha256)).size,6);
+  assert.equal(config.references[2].url,config.reference.url);
+  assert.ok(config.references.every(row=>row.sourceWidth*2===row.sourceHeight*3&&row.width===480&&row.height===320));
   assert.equal(config.sourceManifestSha256,hash(await fs.readFile(path.join(ROOT,pins.modelManifest))));
   const second=await buildRuntimePack(options(next()));assert.equal(second.manifestSha256,installed.manifestSha256);
   assert.equal(second.totalBytes,installed.totalBytes);
@@ -135,4 +139,19 @@ test('verifier rejects substituted manifest, unsafe manifest paths and unmanifes
   const extra=path.join(output,'unexpected.bin');await fs.writeFile(extra,'not inventoried');
   try{await assert.rejects(verifyRuntimePack({directory:output,expectedManifestSha256:installed.manifestSha256}),/Uninventoried/);}finally{await fs.unlink(extra);}
   assert.equal((await verifyRuntimePack({directory:output,expectedManifestSha256:installed.manifestSha256})).status,'PASS');
+});
+
+
+test('runtime subset scope admits app files only outside its strict runtime tree',async()=>{
+  const app=path.join(output,'index.html'),extra=path.join(output,'__local_ai/uninventoried.js');
+  await fs.writeFile(app,'<title>Explicit application fixture</title>');
+  try{
+    await assert.rejects(verifyRuntimePack({directory:output,expectedManifestSha256:installed.manifestSha256}),/Uninventoried/);
+    const scoped=await verifyRuntimePack({directory:output,expectedManifestSha256:installed.manifestSha256,allowApplicationFiles:true});
+    assert.equal(scoped.scope,'runtime-subset-of-application');assert.equal(scoped.combinedAppAdmissionQualified,false);
+    await fs.writeFile(extra,'unreviewed-runtime');
+    try{await assert.rejects(verifyRuntimePack({directory:output,expectedManifestSha256:installed.manifestSha256,allowApplicationFiles:true}),/Uninventoried/);}
+    finally{await fs.unlink(extra);}
+    assert.equal((await verifyRuntimePack({directory:output,expectedManifestSha256:installed.manifestSha256,allowApplicationFiles:true})).status,'PASS');
+  }finally{await fs.unlink(app);}
 });

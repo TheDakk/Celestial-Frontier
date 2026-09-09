@@ -1,10 +1,28 @@
 # Celestial Frontier — Species & Genome System
 
-**Local landfall conditioning — matches code September9,2026:** the new bounded compiler
-preserves the complete canonical Earth roster and six full individual identities while deriving
-named anatomy/botany from existing painter owners. Unknown worlds/families remain unsupported;
-raw procedural limbs/colors never override named Earth rules. This does not add procedural
-coverage or change genomes. [Current AI ownership and quality boundary](LOCAL_AI_GENERATION.md).
+**Local landfall conditioning — matches code as of 2026-09-09:**
+`buildLandfallConditioningV2` / `buildCanonicalLandfallConditioningV2` preserve the existing
+canonical Earth epoch-0 snapshot, all 19 roster genomes and six complete displayed individuals.
+Their ordered reference requirements are Civet, Persimmon, Platypus, Frog, Devil's Club and
+Cranberry. Each carries the full `speciesVisualKey`, full genome and source-backed named anatomy;
+name/seed aliases or changed genome fields cannot substitute for that identity. Unknown
+worlds/families remain unsupported. Raw procedural limb, color or body loci never override
+named Earth rules. This changes model conditioning only, not genomes, lineage, gameplay counts,
+biome mapping, Compendium categories or flora effects.
+
+The [exact reference set](audits/AI_SPECIES_MOBILE_20260909/references/reference-set-v1.json)
+assigns four new authoring images for Frog/Persimmon/Devil's Club/Cranberry and preserves the
+selected Civet and diagnostic Platypus. Encoded image hashes, source dimensions, preparation
+geometry and canonical order are verified before use. The [visual review](audits/AI_SPECIES_MOBILE_20260909/references/VISUAL_REVIEW.md)
+records visible diagnostic features and occlusions; the image assignment does not prove hidden
+genomic traits are visible. Whole-image references are soft guidance, not hard species/count or
+spatial constraints. The first actual V2 output has a [manual review bound to the exact PNG and
+six full identities](audits/AI_SPECIES_MOBILE_20260909/native-generation-01/INDEPENDENT_VISUAL_REVIEW.md);
+`landfall-fidelity.ts` remains V1-only. Three distinct animal bodies are visible, but the Platypus
+body plan, Devil's Club cane spines, Persimmon calyx detail, Cranberry runner habit and several
+placements remain unaccepted. The source genomes/anchors are preserved; image conditioning did
+not enforce them. No phone, universal species or whole-scene art acceptance follows.
+[Current AI ownership and quality boundary](LOCAL_AI_GENERATION.md).
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
 ownership, four bounded companion writers, Guardian/Titan acquisition, rarity presentation and six
@@ -24,14 +42,15 @@ installed in advance. A static landing presentation describes the displayed scen
 require a prepainted planet catalogue. The current one-world still demonstrates quality and
 placement, not the production generation mechanism.
 
-Nick asks to investigate generation locally as part of the game and requires no separate AI
-software installation for players. Local generation could manage model files within the game;
-an online image API could also provide a seamless player flow without a model download. These
-are different runtime choices. No model, browser/native integration or paid service is selected.
-The built-in Codex tool created the current artwork during authoring; it is not an embedded game
-generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
-qualification. A seed alone is not an exact-pixel contract. This art requirement authorizes no
-generation service or model installation; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+Nick's current direction is the browser game as a local-AI proof of concept for a later engine
+game, with no separate AI software installation for players. The optional in-game preview now
+uses the pinned local browser model and explicit resumable OPFS delivery; no mandatory shipping
+model or hosted generation service is selected. The built-in Codex tool creates direction and
+individual-reference assets during authoring. Actual browser-model landfall outputs are separate
+evidence. Hardware, download size, quality, latency and exact shared-image retention still need
+qualification. A seed alone is not an exact-pixel contract; reference assets do not prove the
+embedded model matches the approved quality. Git integration authority stays in ROADMAP.
+[Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
 Local direction is conditional on feasibility, modest storage and no separate player AI setup.
 Nick now prefers adaptive scene-cache allowances: smaller on limited devices and several GB on
 capable desktops. Proposed tiers remain provisional; disk storage and RAM/GPU budgets are separate.

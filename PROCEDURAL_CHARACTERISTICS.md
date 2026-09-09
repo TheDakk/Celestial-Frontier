@@ -1,10 +1,28 @@
 # Procedural (Non-Earth) Characteristics — Catalog & Pass Map
 
-**Local landfall conditioning — matches code September9,2026:** the new bounded compiler
-preserves the complete canonical Earth roster and six full individual identities while deriving
-named anatomy/botany from existing painter owners. Unknown worlds/families remain unsupported;
-raw procedural limbs/colors never override named Earth rules. This does not add procedural
-coverage or change genomes. [Current AI ownership and quality boundary](LOCAL_AI_GENERATION.md).
+**Local landfall conditioning — matches code as of 2026-09-09:** the bounded V2 compiler
+preserves the complete 19-genome canonical Earth epoch-0 roster and six full displayed identities.
+`buildLandfallConditioningV2` and its live-roster wrapper create ordered anatomy-reference
+requirements for Civet, Persimmon, Platypus, Frog, Devil's Club and Cranberry. Full genomes and
+`speciesVisualKey` bindings remain intact; source-backed named Earth rules determine visible
+anatomy/botany. This adapter adds no unnamed procedural family coverage, genome mutations,
+lineage rules, biome mapping or animation geometry. Unknown worlds/families remain unsupported;
+raw procedural limbs, colors and body loci do not override named Earth anatomy.
+
+The [reference set](audits/AI_SPECIES_MOBILE_20260909/references/reference-set-v1.json) combines
+four new authoring images for Frog and the three plants with the retained Civet/Platypus images.
+The [direct visual review](audits/AI_SPECIES_MOBILE_20260909/references/VISUAL_REVIEW.md) identifies
+visible body/leaf/fruit architecture and occlusions. Their studio backgrounds and exposed roots
+are reference presentation, not compulsory habitat geometry. The runtime verifies encoded
+hashes, full identities, order and geometry, preparing one reference at a time. Whole-image
+conditioning cannot enforce boxes, masks, creature counts or correct generated anatomy. It does
+not supply articulated limb rigs for land, air or water families. The first actual V2 output now
+has an [exact-artifact manual review](audits/AI_SPECIES_MOBILE_20260909/native-generation-01/INDEPENDENT_VISUAL_REVIEW.md);
+`landfall-fidelity.ts` remains a V1-only contract. It renders three separate animal bodies in a
+cohesive rainy habitat, but preserves neither several requested anchors nor all named anatomy:
+Platypus still has an upright mammalian body and external ears, and named plant diagnostics remain
+missing or unresolved. These observed limits do not authorize new procedural families or replace
+Earth anatomy with raw genes. [Current AI ownership and quality boundary](LOCAL_AI_GENERATION.md).
 
 _Legacy v1 catalogue plus current V2 routing/rig guidance, refreshed against source on
 2026-09-08. The reset audit records retain their own August dates; dated B15 sections remain

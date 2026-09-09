@@ -22,12 +22,35 @@ dynamic daylight/seasons and exact-view sharing are not implemented by these ima
 
 ## Local fidelity and inspection — matches code as of 2026-09-09
 
-`landfall-fidelity.ts` records complete six-resident visual observations against exact encoded
-PNG, recipe, reference and full-genome bindings. Incomplete, duplicate, mixed or stale reviews
-refuse. Favorable finish feedback cannot stand in for missing species/count/anatomy findings.
-This contract performs no pixel recognition and is not a production art-admission gate. Current
-Klein inputs provide global text and whole-reference token groups; they do not enforce per-instance
-boxes or counts. An ordered array of individually bound references is the next bounded input path.
+`landfall-fidelity.ts` retains its V1 complete six-resident observation contract against exact
+encoded PNG, recipe, reference and full-genome bindings. Incomplete, duplicate, mixed or stale
+V1 reviews refuse. It performs no pixel recognition and does not assess the new V2 reference
+recipe; a V2 output needs a separate manual review bound to its exact encoded PNG and inputs.
+Favorable finish feedback cannot stand in for missing species/count/anatomy findings.
+
+`buildLandfallConditioningV2` and its live-roster wrapper now create six ordered, individually
+bound whole-image guides: Civet, Persimmon, Platypus, Frog, Devil's Club and Cranberry. Four new
+built-in image-generator authoring assets supply Frog and the three named plants; the selected
+Civet and diagnostic Platypus are retained unchanged. The [reference set](audits/AI_SPECIES_MOBILE_20260909/references/reference-set-v1.json)
+binds complete genomes, canonical identity keys, source SHA/geometry and order. The
+[independent visual review](audits/AI_SPECIES_MOBILE_20260909/references/VISUAL_REVIEW.md) records
+Frog limb occlusion, perspective-limited calyx counts, spiny canes/palmate leaves/terminal cones,
+creeping runners and the retained Civet/Platypus limits. These are conditioning assets, not
+local-model quality evidence, transparent scene sprites or accepted Compendium portraits.
+
+The runtime verifies each source hash and dimensions, prepares it at 480×320 with a common
+opaque matte and explicit high-quality browser resampling, then encodes references sequentially.
+The encoded source files remain unchanged. V2 preserves all 19 canonical genomes, the six named
+Earth anatomy/botany rules and accepted placement anchors. Klein still receives global text and
+whole-image token groups; there is no hard per-instance box, mask or count control. The first
+actual 1024×576 V2 output now has an [exact-artifact independent review](audits/AI_SPECIES_MOBILE_20260909/native-generation-01/INDEPENDENT_VISUAL_REVIEW.md).
+Its three animal bodies and six intended motifs share convincing rain, light and wet-ground
+contact. Species/placement acceptance remains false: Platypus has external round ears and an
+upright mammalian body plan, Devil's Club lacks legible cane prickles, Persimmon calyces and
+Cranberry runners remain unresolved, and several residents move/enlarge beyond their anchors.
+The smooth illustrative finish also does not establish parity with the accepted Living Worlds
+reference. The native run's aggregate FAIL is retained separately; successful image production
+and favorable finish cannot stand in for canonical anatomy, complete plant count or placement.
 
 The read-only full-painting viewer displays the unchanged retained Blob, with fit and actual-size
 panning. It preserves the accepted scene band and base controls. No image regeneration or quality
@@ -91,8 +114,9 @@ is explicit, chunked, resumable and hash-verified through OPFS. This remains an 
 experimental preview served by local development tooling; it is not a shipped mobile model pack.
 
 Canonical conditioning preserves all19 genomes and six named species with source-backed anatomy,
-botany and composition anchors. Its exact Platypus reference improves the conditioning input;
-actual output quality remains unaccepted. The pinned model is6.69GB, and browser capability checks
+botany and composition anchors. V2 now binds six individual references, while the earlier single
+Platypus V1 recipe and its negative output reviews remain immutable. Actual output quality remains
+unaccepted. The pinned model is6.69GB, and browser capability checks
 are not device qualification. The [current implementation and limits](LOCAL_AI_GENERATION.md)
 own the game/delivery boundary. The earlier isolated progress/ETA/fixed-shape proof and all failed
 candidates remain immutable evidence in [the preceding review packet](audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md).

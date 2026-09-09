@@ -1,0 +1,24 @@
+{
+  "firstNativeResult": "../native-generation-01/result.json",
+  "files": [
+    {
+      "source": "tools/local-image-generation/game-preview-server.mjs",
+      "retained": "failed-game-preview-server.mjs",
+      "bytes": 16062,
+      "sha256": "976a915df7af4b3193e8615a683f99aa27655700915aa285dbd8026a64c9012c"
+    },
+    {
+      "source": "port/v2/node_modules/vite/dist/client/client.mjs",
+      "retained": "installed-vite-client.mjs",
+      "bytes": 38514,
+      "sha256": "81046c87b1a73014203be2d7f643ee786b8264384952648ebf2ae418008be5d4"
+    },
+    {
+      "source": "port/v2/node_modules/vite/package.json",
+      "retained": "installed-vite-package.json",
+      "bytes": 5081,
+      "sha256": "cc205a705dc4cb59ffeb0a16509437b05b31498773a1244747ce786c91f47e8b"
+    }
+  ],
+  "scope": "The unchanged installed client source has one unconditional transport.connect(createHMRHandler(handleMessage)) despite server ws:false/hmr:false. Preserve first failed native result; no inference rerun."
+}

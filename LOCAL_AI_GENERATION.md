@@ -17,13 +17,20 @@ Existing base scene/UI placement is unchanged. Native desktop checks prove1024×
 fit in a320×568 viewport, native-size panning and Survey inspection after reload with unchanged
 PNG bytes and no inference. These are layout checks, not physical-phone qualification.
 
-The static runtime builder produces a locally verified **27.08 MiB** optional pack without weights.
-Its installed-only manifest is admitted by the normal AI controller; explicit OPFS verification
-is mandatory before generation, with no automatic download or developer-cache fallback. This is
-packaging infrastructure, not a shipped/phone-qualified PWA. The full model is still **6.23 GiB**.
-The optional fidelity review contract records exact artifact/identity-bound visual observations;
-it does not implement a pixel classifier or per-instance model conditioning. See the
-[continuation evidence](audits/AI_LANDFALL_CONTINUATION_20260909/README.md).
+The six-reference static runtime is **35.72 MiB** without weights. Current combined app/PWA
+package03 is **53.91 MiB** (56,529,354bytes /97files), with a **107.82 MiB** same-size retained update
+envelope (113,058,708bytes). The builder verifies
+both complete inventories; the optional service worker counts all retained build response payloads
+before installing another candidate under the existing 256 MiB limit. Ordinary service-worker
+output remains unchanged. These measurements exclude browser metadata, model OPFS, original art
+and live RAM/GPU. Physical-phone and distribution qualification remain open.
+
+The installed-only manifest requires explicit successful OPFS verification before generation;
+there is no automatic model download or developer-cache fallback. The full model remains **6.23 GiB**.
+Local model storage retains its native disclosure state through progress updates, keeping Pause
+reachable; a deliberate user collapse is respected. The detached V1 fidelity contract still
+records artifact/identity-bound observations, not pixel recognition or V2 quality acceptance.
+See the [species and delivery evidence](audits/AI_SPECIES_MOBILE_20260909/README.md).
 
 ## Implemented boundary
 
@@ -44,9 +51,11 @@ recipe, world, environment, ecology epoch, source snapshot digest and image SHA2
 latest index commit atomically; a fresh read and rehash must pass before Ready/notification.
 Quota, abort or verification failure cannot report Ready. No original deletion/eviction API exists.
 This is not an outside-origin backup: browser site-data deletion can remove these pixels.
-Lookup currently includes the full model recipe. A changed recipe after reload does not
-automatically discover an older original, though the bytes remain retained. A separate full-identity
-index is needed for cross-recipe discovery; this batch adds no deletion or save-schema change.
+Lookup includes the full model recipe. When V2 references are active, the controller can also
+rebuild the byte-identical V1 recipe for the same canonical snapshot and same model/derivative,
+restoring an older original without regeneration. It cannot discover originals from arbitrary
+changed model recipes after reload. That broader case still needs a full-identity index; no
+original deletion or save-schema change is added.
 
 Progress comes from actual ordered text/reference/denoise/decode stages. The job reserves its
 last percent for durable original retention. ETA estimates remaining drawing only after two
@@ -62,13 +71,21 @@ Devil’s Club anatomy/botany plus their exact identities and composition anchor
 color/limb genes never replace named Earth anatomy. Unknown worlds/species/epochs fail closed;
 D-9e biome/painter/profile reconciliation is still open. This compiler is not universal coverage.
 
-The current model prompt is 472 of 512 tokens including the pinned chat wrapper (initially 376);
-no truncation. The single clarification requires three distinct fauna and prevents cross-species
-reference features in its instructions, but both actual model outputs still fail. Image 1
-is the exact SHA-bound Platypus anatomy reference in the audit packet. It is a reviewed diagnostic
-candidate with visible limitations, not approved whole-scene art or proof of individual pixels.
-Negative-prompt text remains metadata: this Klein pipeline does not consume a separate negative
-prompt. Successful prose compilation/reference admission does not guarantee output fidelity.
+The V2 compiler binds six ordered references: Civet, Persimmon, Platypus, Frog, Devil’s Club and
+Cranberry. Each includes its full genome-derived visual identity, image digest, index and source
+geometry. Four newly authored PNGs supplement the retained Civet/Platypus references; independent
+review records their diagnostic features and visible limitations. They are authored conditioning
+inputs, not local-model output evidence. V1 compiler and render bytes remain intact.
+
+The exact pinned tokenizer measures the V2 prompt at **452 of 512 tokens**, without truncation.
+Each verified reference is fitted to 480×320 with explicit high-quality interpolation and encoded
+sequentially. Six 307,200-byte latent arrays total 1,843,200 bytes; the denoiser handles 5,904 image
+tokens including the 1024×576 output, versus 2,904 in the prior one-reference path. This is more
+conditioning work, not a latency optimization. Images are whole-image guidance: the actual graph
+has no mask/box input and does not guarantee per-species count, position or anatomy. Negative
+prompt text remains metadata; Klein does not consume a separate negative prompt. The older
+376/472-token V1 attempts and both failed output reviews remain immutable. V2 output requires its
+own exact-PNG manual review; the existing detached fidelity contract admits V1 only.
 
 ## Model delivery
 
@@ -92,6 +109,18 @@ The normal preview checks actual secure-context, WebGPU/f16, OPFS, Web Locks and
 These capabilities do not establish phone performance, buffer fit, thermal behavior or storage
 durability. No UA-derived device tiers or physical-mobile success are claimed. Browser delivery
 uses the original pinned model; the optional 336 MiB desktop Q8 derivative stays separate.
+The optional PWA admits only the twenty exact pinned model URLs as explicit credential-free GET/
+Range network requests, never as CacheStorage entries. Its app/runtime cache and model OPFS have
+separate ownership. The optional worker now distinguishes a module import with explicit empty
+`resultingClientId` from a new worker. Only a persisted `worker:true` client pin for the retained
+active/prior build may import exact inventoried modules; document-only, missing and stale owners
+still refuse. The ordinary worker bytes remain unchanged. Package03 independently builds/verifies;
+the separate actual native module check passes online and after true offline reload. This verifies
+module loading and exact lazy WASM delivery, not WASM instantiation, graph creation or inference.
+Safari support and quota documentation establish APIs, not successful model allocation or acceptable
+device thermals. The embedded Asyncify WASM build string corroborates
+its source commit and pinned npm integrity; a reproduced build, selected-component SBOM and
+complete distribution review remain unfinished.
 
 ## Running and verification
 
@@ -101,17 +130,54 @@ runtime pack. `run-game-integration.mjs` owns the bounded real-game browser expe
 must be run outside macOS Seatbelt with the shared foreground lock. Neither script downloads
 weights or performs hosted actions. Existing authoring proof commands remain separate.
 
-Current evidence lives in [AI game integration](audits/AI_GAME_INTEGRATION_20260909/README.md)
-and [native model delivery](audits/LOCAL_MODEL_DELIVERY_20260909/README.md). The latest retained native
-normal-game run passes at 74.307 seconds with actual inference, durable original, explicit View,
-reload reuse and settled 320×568 restoration; it is not a general latency/phone claim. Both generated
-candidates fail species/botany acceptance. The small-screen image is contained but too small for
-comfortable inspection. The first premature resize-observer FAIL stays preserved. A later model-selection Retry guard has
-its own eleven-case focused and TypeScript/root-validation receipt; native02 is not certification
-of that later source or a full admission run. Native delivery
-currently proves tiny synthetic files on desktop, including cancel/reload/resume, hash refusal
-and Blob access; it does not prove a full 6.23 GiB install or a phone. The normal-game inference,
-foreground responsiveness and visual outcomes must be read from their exact run receipt.
+Current evidence is indexed in [species/mobile delivery](audits/AI_SPECIES_MOBILE_20260909/README.md),
+with the prior [game integration](audits/AI_GAME_INTEGRATION_20260909/README.md) and
+[small native delivery](audits/LOCAL_MODEL_DELIVERY_20260909/README.md) packets retained.
+The actual six-reference run took **135.671 seconds** to verified Ready. Its exact PNG SHA is
+`44f03a6c6c2e47c38d93106ce4ba08a3dcd7bac17320fd582aa57b8b6aa4c400`.
+Distinct fauna and plant motifs improve over the prior 74.307-second single-reference painting,
+but Platypus body plan, plant diagnostics and canonical placements still fail manual acceptance.
+The nine worker-entry requests, durable original, explicit View, responsive Notifications, reload
+reuse and small viewport checks completed on44 unchanged source hashes. The aggregate run remains
+**FAIL** because the injected Vite dev client raised WebSocket errors. Its model output and raw
+failure are retained; a transport correction does not relabel that run or justify repeating the
+same inference. The corrected frozen-preview transport passed a separate actual browser boot,
+trusted Skip, durable Sol reload and advancing renderer with zero WebSockets/model requests/runtime
+exceptions, two captured served-client bodies and20 unchanged measured sources. Two favicon404s
+remain. Worker target IDs were not enumerated by the generation runner. No physical-phone or
+universal latency claim follows. Full original inspection avoids the small scene-band detail limit.
+
+The full-model delivery diagnostic is separate from inference: actual game controls install into
+native OPFS while exact pinned HTTPS requests are redirected to a disclosed, freshly hashed local
+byte mirror. It measures neither internet/CDN transfer nor phone performance. Both complete
+aggregate receipts remain **FAIL**. [Attempt01](audits/AI_SPECIES_MOBILE_20260909/native-mobile-delivery-01/result.json)
+installed all20 files in108.716seconds but its hard reload bypassed service-worker control, so
+it stopped before offline work. [Attempt02](audits/AI_SPECIES_MOBILE_20260909/native-mobile-delivery-02/result.json)
+used normal reload and proved exact activated control across Install, Resume and offline Verify.
+Its108.690-second install retained6,691,020,416bytes in6,392 chunks; a real nonzero Range resumed the
+same attempt. All21 model interceptions belonged to the service worker, with no automatic download.
+
+Attempt02 then physically closed both servers, reloaded offline, and completed normal in-game
+full-file verification in79.775seconds. A separately compiled production read-only owner reverified
+and opened all20 actual native Blobs with exact sizes and independently matching first/last512-byte
+hashes; a shifted JSON Blob slice was rejected. Exact app/runtime cache responses contained no model
+files. The final worker-import observer timed out, so this positive storage/offline evidence does
+not establish runtime-module readiness or turn that aggregate green. All27 measured sources were
+unchanged; owned browser/profile, its diagnostic model copy, servers and locks closed.
+
+Subsequent small module attempts01–03 also remain FAIL. They isolated imports reported as
+`destination=worker` with an empty resulting client ID, which package02 mistook for worker creation.
+The optional owner fix passed12 targeted package/reply controls,34 existing PWA controls, all3
+TypeScript programs and root validation. Package03 built and independently verified with426
+unchanged source hashes. [Small native04](audits/AI_SPECIES_MOBILE_20260909/offline-runtime-native-04/result.json)
+then passed: the unmodified worker's module graph returned its existing pre-GPU profile rejection
+both online-controlled and after origin closure/CDP offline/new-document normal reload. All95
+cached asset hashes and the25,749,873-byte lazy Asyncify WASM hash matched. No model OPFS namespace,
+model download, WASM instantiation, GPU/model work or inference occurred;12 sources were unchanged,
+zero browser error events/loading failures were recorded, and cleanup completed. This closes the
+bounded desktop module-delivery defect without recopying6.23GiB or relabeling prior aggregates.
+[Runner history](audits/AI_SPECIES_MOBILE_20260909/MOBILE_NATIVE_RUNNER.md) retains every compiler,
+controller and module failure and the exact package03 identity. No full admission battery was repeated.
 
 Remaining product work: accepted whole-scene species/botany fidelity; broader canonical adapters;
 mobile model size/memory/latency qualification; distributable runtime/model packaging and PWA

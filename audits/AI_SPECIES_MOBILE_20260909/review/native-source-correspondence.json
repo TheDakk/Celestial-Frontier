@@ -1,0 +1,42 @@
+{
+  "schema": "cf.runtime-native-source-correspondence.v1",
+  "observedAt": "2026-09-09T16:22:10.263900+00:00",
+  "binary": {
+    "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+    "bytes": 25749873,
+    "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549",
+    "embeddedBuildInfo": {
+      "byteOffset": 24757131,
+      "byteLength": 93,
+      "nulTerminated": true,
+      "occurrences": 1,
+      "text": "ORT Build Info: git-branch=HEAD, git-commit-id=2e2543fbe9, fp8-kv-cache=1, build type=Release"
+    },
+    "versionStringNulDelimited": true
+  },
+  "correspondence": {
+    "sourceCommit": "2e2543fbe9fae542f921d47a72d21d5a4ef0b710",
+    "embeddedCommitPrefix": "2e2543fbe9",
+    "matchesPinnedSource": true,
+    "evidence": "Installed binary embeds the source commit prefix; independent official registry package integrity equals locked integrity. This is version/source correspondence, not a reconstructed build or selected-component inventory."
+  },
+  "notice": {
+    "path": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/onnxruntime-2e2543f-ThirdPartyNotices.txt",
+    "bytes": 336906,
+    "sha256": "53d3fa5821ac016ac24dd35775c996efec86e2ae0841e9a3a5e146c0ae916845",
+    "sourceUrl": "https://raw.githubusercontent.com/microsoft/onnxruntime/2e2543fbe9fae542f921d47a72d21d5a4ef0b710/ThirdPartyNotices.txt"
+  },
+  "registry": {
+    "version": "1.29.0",
+    "integrity": "sha512-LuQlpX6MFLJZu756erwUeb1mNfoJGbs1kzDwJGNlf5RvfYMdqhcY3vNpDPK40CUV2HoWTkIj+uS0o36GFHjeYw==",
+    "matchesLock": true,
+    "gitHeadPresent": false,
+    "attestationsPresent": false,
+    "registrySignatureVerifiedHere": false,
+    "tarballDownloadedHere": false
+  },
+  "status": "source-version-correspondence-corroborated",
+  "selectedNativeComponentsEnumerated": false,
+  "reproducibleBuild": false,
+  "fullDistributionQualified": false
+}

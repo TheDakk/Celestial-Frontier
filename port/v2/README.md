@@ -1,17 +1,54 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Local AI game preview — September9,2026
+## Local AI species references and optional offline package — matches code as of 2026-09-09
 
 The default-off `?localai=1` preview connects ordinary Land, Survey and Notifications to local
-browser inference and durable exact originals. Explicit model delivery supports OPFS resume/hash
-verification. Local development tooling supplies the isolated runtime; no model/runtime shipping
-selection or physical phone qualification is implied. See [LOCAL_AI_GENERATION.md](../../LOCAL_AI_GENERATION.md)
-for the current source boundary,6.69GB model accounting, quality gate and exact evidence.
-The proof uses its bounded runner, not a second certification battery. Full-painting inspection
-now supports Fit painting/native-pixel panning and normal Survey access after reload. The optional
-static runtime builder produces a verified 27.08 MiB pack without weights; its installed-only
-manifest requires explicit verified browser model storage. It is not a shipped or phone-qualified
-PWA. [Current evidence and commands](../../audits/AI_LANDFALL_CONTINUATION_20260909/README.md).
+browser inference and durable exact originals. Full-painting inspection supports Fit painting,
+native-pixel panning and Survey access after reload. Existing gameplay, full species identities,
+Earth anatomy, biome mapping and accepted base controls remain authoritative.
+
+The canonical Earth request now binds six separately hashed anatomical references, in exact
+resident order: Civet, Persimmon, Platypus, Frog, Devil’s Club and Cranberry. Original image dimensions
+and full genome identities are verified before bounded 480×320 preparation; each reference has its
+own VAE encoding and distinct token group. The text recipe labels each slot. These are soft model
+inputs, not a box/mask/count constraint or proof that the output contains the correct species.
+The prior failed species reviews remain intact; native comparison and quality acceptance are
+separate evidence. [Current source and gates](../../LOCAL_AI_GENERATION.md) and the
+[species/mobile packet](../../audits/AI_SPECIES_MOBILE_20260909/README.md) own that boundary.
+
+The static runtime now includes the six reference assets and exact locked ORT Asyncify/Tokenizers
+closure:37,451,014bytes (35.72MiB), excluding model weights. `mobile-pack.mjs` assembles it through
+the established Vite configuration and exact PWA inventory. Current package03 builds and
+independently verifies at56,529,354bytes (53.91MiB),97files; its same-size successor envelope is
+113,058,708bytes (107.82MiB). Its external manifest SHA is
+`5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c`. The normal generated worker remains byte-identical to the prior signed
+checkpoint. Only this optional lane forwards explicit pinned model GET/Range requests, uncached,
+and refuses any candidate CacheStorage write that would take retained build response payloads
+above256MiB. Ordinary128MiB pack admission and client-build ownership remain unchanged.
+
+OPFS model installation/resume remains explicit, separate from the pack, and requires exact
+complete-file verification before inference. Local model storage stays open during progress so
+Pause remains reachable. The full model still totals6,691,020,416bytes (6.23GiB); browser metadata,
+retained paintings and live GPU/RAM are separate. Full-model native01/02 both remain aggregate FAIL.
+Attempt02 nevertheless proved all20 files /6,392 chunks, real Range resume with exact activated
+service-worker control, true offline normal reload after both servers closed, full native rehash
+and all20 Blob reads with independent head/tail digests. Its final module observer failed. The
+optional worker now admits an explicit empty-ID import only from a persisted `worker:true` owner
+of a retained build, still enforcing exact inventory and rejecting missing/window/stale owners.
+Package03 and separate native04 passed: the exact worker module graph reached its pre-GPU guard
+online and after true offline reload, and95 cached assets plus exact lazy WASM bytes verified.
+No model storage/copy, WASM instantiation, GPU/model work or inference occurred in that small proof;
+existing normal worker bytes remain unchanged. Physical-phone/CDN/thermals and generated species
+acceptance remain open. This is a
+working-tree, nonpublishable diagnostic package, not release or phone qualification. [Exact builds, preserved first failure and controls](../../audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/README.md)
+record all three package versions. The current worker-import fix and required release text passed
+12 targeted package/reply controls,34 existing PWA controls, all3 TypeScript programs and root
+validation before build03, with426 build source hashes unchanged. Earlier8 package/HTTP and8 pure
+controls remain bound to package01; [native results](../../audits/AI_SPECIES_MOBILE_20260909/MOBILE_NATIVE_RUNNER.md)
+keep both full-model FAIL aggregates and the separate native04 PASS distinct.
+See [tool commands](../../tools/local-image-generation/README.md) to rebuild from source with a new
+output and external manifest SHA. No hosted actions or additional player software installation
+are part of this assembly tooling.
 
 ## Earth layout geometry ownership — matches code as of 2026-09-09
 

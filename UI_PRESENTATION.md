@@ -17,14 +17,24 @@ release transient URLs/DOM. Final native checks cover desktop/small fit, actual-
 keyboard/focus and normal Survey inspection after reload on unchanged original bytes. This remains an Earth-only
 experimental preview served by local development tooling; it is not a shipped mobile model pack.
 
-Canonical conditioning preserves all19 genomes and six named species with source-backed anatomy,
-botany and composition anchors. Its exact Platypus reference improves the conditioning input;
-actual output quality remains unaccepted. The pinned model is6.69GB, and browser capability checks
-are not device qualification. A locally built 27.08 MiB static runtime pack excludes all weights;
-its installed-only manifest refuses generation until explicit successful browser verification,
-with no automatic download or developer fallback. Combined PWA and physical-phone qualification
-remain open. The [current implementation and limits](LOCAL_AI_GENERATION.md)
-own the game/delivery boundary. The earlier isolated progress/ETA/fixed-shape proof and all failed
+Canonical V2 conditioning preserves all19 genomes and binds six individually reviewed species
+references to their complete identities, anatomy, botany and existing composition anchors.
+Whole-image references do not enforce output counts or spatial fidelity. The model remains
+6.23 GiB; capability checks are not device qualification. The six-reference runtime is35.72 MiB,
+and the optional combined app/PWA is53.91 MiB without weights. Its installed-only manifest refuses
+generation until explicit successful browser verification, with no automatic download or developer
+fallback. Local model storage stays open during progress so Pause remains reachable; explicit
+user collapse is retained. V2 can inspect an exact same-snapshot/same-model V1 original after
+reload. Actual desktop controls now exercised Install → Pause → normal reload → Resume on the
+full20-file model, then offline Use verified browser copy after both servers closed. Attempt02
+retained exact service-worker control, finished full offline hashing and read all20 native Blobs;
+its final worker-module observer still failed, so both full-model aggregates remain FAIL.
+The optional worker now permits an exact cached module import with an explicit empty resulting
+client ID only for a persisted worker owner of a retained build. Independently verified package03
+passed the separate native04 module check online and after true offline reload, including exact
+lazy WASM bytes; no WASM instantiation, GPU/model work or inference was performed. No control
+placement, model auto-download, game-save or quality acceptance change follows. Physical-phone and distribution qualification remain open.
+The [current implementation and limits](LOCAL_AI_GENERATION.md) own the game/delivery boundary. The earlier isolated progress/ETA/fixed-shape proof and all failed
 candidates remain immutable evidence in [the preceding review packet](audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md).
 Nick's intended Claude-app review remains pending; a saved CLI response is not that review.
 

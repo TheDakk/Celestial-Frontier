@@ -1,0 +1,13 @@
+
+> cf-v2@0.0.0 test
+> vitest run tests/local-ai-runtime.test.ts
+
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  1 passed (1)
+      Tests  25 passed (25)
+   Start at  12:29:12
+   Duration  575ms (transform 187ms, setup 0ms, import 235ms, tests 271ms, environment 0ms)
+

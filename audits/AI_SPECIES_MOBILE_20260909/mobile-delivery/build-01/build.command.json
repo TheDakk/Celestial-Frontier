@@ -1,0 +1,18 @@
+{
+  "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "combined-mobile-ai-build-01",
+    "--",
+    "node",
+    "tools/local-image-generation/mobile-pack.mjs",
+    "build",
+    "--output=/private/tmp/cf-mobile-pack-20260909-species-01",
+    "--runtime=/private/tmp/cf-runtime-pack-20260909-species-01",
+    "--runtime-sha256=ddc09e2128a6fbfea11b3c6b0596359eb97fd7f18198fed38c74b3736502476b",
+    "--local-diagnostic"
+  ],
+  "extraEnvironment": {}
+}

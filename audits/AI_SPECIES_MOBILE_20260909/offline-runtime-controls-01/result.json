@@ -1,0 +1,39 @@
+{
+  "scope": "Synthetic validation-message assessor only, no native model/worker execution",
+  "sources": [
+    {
+      "path": "tools/local-image-generation/run-offline-runtime.mjs",
+      "sha256": "5c507fee7c89fcf53990f34c62c7fcd17b65774fa83cfb13c7979bf26fcd9cc8"
+    },
+    {
+      "path": "tools/local-image-generation/run-offline-runtime.test.mjs",
+      "sha256": "57685c18148609883c222ff1fe5714d8c01ba309d1b2d73cbe092ed955972e44"
+    }
+  ],
+  "status": "PASS",
+  "checks": [
+    {
+      "label": "syntax",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/run-offline-runtime.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "controls",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "offline-runtime-controls-01",
+        "--",
+        "node",
+        "--test",
+        "tools/local-image-generation/run-offline-runtime.test.mjs"
+      ],
+      "exitCode": 0
+    }
+  ]
+}

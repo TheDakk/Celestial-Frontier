@@ -1,0 +1,22 @@
+{
+  "startedFrom": "83ee60f3db1db3f78596afe7519584ef2d1f14fb",
+  "owner": "OpenAI/Codex \u00b7 macOS \u00b7 /Users/nick/Projects/celestial-frontier-openai-mac \u00b7 openai/mac \u00b7 origin/openai/mac",
+  "origin": "git@github.com:TheDakk/Celestial-Frontier.git",
+  "sshRead": "Previously verified TheDakk; no remote comparison required for local continuation",
+  "aheadAtStart": {
+    "origin/openai/mac": 11,
+    "origin/develop": 122
+  },
+  "ambientExcluded": [
+    ".DS_Store"
+  ],
+  "startupReceipt": "audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json",
+  "startupReuse": "Uninterrupted same coding session; no maintenance/software install repeated",
+  "skills": [
+    "nick-game-toolchain",
+    "imagegen"
+  ],
+  "budget": "UNFROZEN/PUBLIC; private fallback3000; zero new exact hosted authority",
+  "hostedActions": false,
+  "phoneQualification": "pending target hardware and physical run"
+}
