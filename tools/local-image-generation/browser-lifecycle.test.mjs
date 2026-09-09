@@ -14,11 +14,11 @@ function deferred() {
   return { promise, resolve, reject };
 }
 
-function harness({ holdReference = false, ignoreReferenceAbort = false, matte = undefined } = {}) {
+function harness({ holdReference = false, ignoreReferenceAbort = false, matte = undefined, modelDerivative = undefined } = {}) {
   const bytes = new Uint8Array([10, 20, 30, 40]);
   const reference = { url: '/reference.png', width: 2, height: 1, matte,
     sha256: createHash('sha256').update(bytes).digest('hex') };
-  const config = { width: 2, height: 1, seed: 133, steps: 2,
+  const config = { width: 2, height: 1, seed: 133, steps: 2, modelDerivative,
     modelRevision: 'fixture-model-revision', chatPrompt: 'fixture prompt', references: [reference] };
   const workers = [], live = new Set(), timers = new Map(), fetches = [], bitmaps = [], trace = [];
   const pendingReference = deferred();
@@ -270,4 +270,16 @@ test('a failed native profile preserves raw evidence before stopping its generat
   h.workers[0].onmessage({data:{type:'error',message:'profile timed out',nativeProfile:{state:'failed',rawJson:'['}}});
   assert.equal(await run,'failed');assertFailed(h,/profile timed out/);
   assert.equal(h.proof.profiles[0].rawJson,'[');assert.equal(h.workers.length,1);
+});
+
+
+test('Only the explicitly identified derivative reaches the denoiser; other graphs remain canonical',async()=>{
+ const h=harness({modelDerivative:{variant:'q8-block32-repacked-v1'}});const {run,worker}=await reachStage(h,3);
+ assert.equal(h.workers[2].job.q8Block32,true);
+ assert.ok([h.workers[0],h.workers[1],h.workers[3]].every(w=>w.job.q8Block32===undefined));
+ worker.complete(rgb());assert.equal(await run,'complete');assert.equal(h.proof.records[0].q8Block32,true);
+});
+test('Unknown model derivative refuses before launching any inference worker',async()=>{
+ const h=harness({modelDerivative:{variant:'unreviewed'}});await h.proof.generate();
+ assertFailed(h,/Unknown model derivative/);assert.equal(h.workers.length,0);
 });

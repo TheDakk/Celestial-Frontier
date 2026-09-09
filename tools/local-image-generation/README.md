@@ -70,6 +70,25 @@ native chain passes all five stages. Raw output matches the unprofiled dual-refe
 painting byte for byte on this specific Mac/model/recipe. This is not cross-device determinism.
 The sampler's quantized matrix kernels consumed95.5% of observed GPU time in that profile.
 
+`--q8-block32` selects the separate verified derivative created by
+`tools/local-image-repack/`, never changes the default/original model, and refuses preflight.
+The repository `q8-block32-manifest.json` pins actual graph4,991,273bytes and data347,332,608bytes.
+Both are freshly hashed before serving; parent shards stay at their verified canonical location.
+Only the denoiser changes. The original quantized values, scale and zero operands are preserved;
+GPU accumulation order can differ. This remains an unqualified development option.
+
+The first same-recipe768×432 native comparison completes in69,029ms versus238,809ms original.
+All412 Q8 dispatches use `MatMulNBitsWideTile`; sampler GPU duration drops206.66s→33.33s.
+Raw output SHA256 `446d0a21aadf253df781c4d3a21a14a5800abaf598cbf7052f2677dc460d633a` differs
+from the original despite visually near-identical composition. Art/anatomy/botany shortcomings
+persist. This is one Mac/recipe/profiled pair, not general speed, exact pixels or phone support.
+The derivative adds about336MiB to the existing developer cache; no player budget is raised.
+The conversion17checks, bridge38checks and native source/cleanup evidence remain separate.
+
+```sh
+node tools/with-toolchain-lock.mjs --label local-ai-block32 -- node tools/local-image-generation/run-browser-proof.mjs /private/tmp/cf-ai-block32-new --identity-reference --q8-block32 --profile
+```
+
 The768×432 initial output/reference512×288 are bounded research sizes, not a promise of the final
 full-screen quality. Seeds repeat the JS noise recipe, not exact pixels across GPUs or model
 versions. Browser-process RSS samples can double-count shared mappings and do not equal peak

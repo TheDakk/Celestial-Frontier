@@ -225,3 +225,31 @@ native names and keep different ops/programs apart. Thirteen focused cases are
 now prepared; the author did not run them or rerun inference. The independent
 numeric reading of the original text trace is diagnostic only and cannot relabel
 the original failed run or establish transformer-stage performance.
+
+
+### Explicit block32 derivative — September9 continuation
+
+The default transformer remains the pinned original Q8/block128 graph. The
+`--q8-block32` proof option accepts only the repository-owned
+`q8-block32-manifest.json` variant `q8-block32-repacked-v1` and exact graph/data
+hashes. It cannot accompany preflight. The loopback server verifies original
+model files first, then both derivative files from one fixed ignored directory.
+It serves exactly those two files alongside the original three read-only shards;
+generated manifest paths or success flags never choose runtime locations.
+Only the denoiser receives the variant. Text/encoder/decoder inputs stay unchanged.
+
+The converter's separate17-test/real-byte evidence is in `repack-controls-01`
+and `repack-conversion-01` under the September9 continuation packet. All103
+MatMulNBits nodes now declare block32; contiguous uint8 B bytes/ranges stay
+unchanged. Exact original float16 scale and uint8 zero bytes repeat four times.
+Every347,332,608 derived parameter byte was independently re-read and compared;
+non-target protobuf fields/order remain byte-preserved. New graph4,991,273 bytes,
+SHA256 `cda0a0e0d2778f83236557bcde8d474fed89a2fcbc817ea04f4758d2a064aed8`;
+new data SHA256 `5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82`.
+
+Represented weights match, but GPU accumulation order may change. Neither the
+pin nor the conversion receipt claims runtime qualification, identical activations,
+identical images or accepted art. The first native comparison owns those separate
+observations. The changed bridge's38 focused checks passed, including original
+model preservation, unknown-variant rejection and real corrupt/truncated/symlink
+file refusals. These checks do not establish GPU speed or final quality.
