@@ -186,7 +186,8 @@ Verified ownership: OpenAI/Codex · macOS · `/Users/nick/Projects/celestial-fro
 develop `c1791e210158de864fdd475323c3091d9ecbae58` remains an ancestor. Reuse uninterrupted startup
 receipt `TOOLCHAIN_STARTUP_20260908_CIVET`; no new tool/model download or dependency update.
 Owned `caffeinate -di` PID33372 and pre-existing `-i` PID93550 were verified running again near
-07:15UTC. No security/lock setting changed; earlier failures do not prove a locked vault.
+07:52UTC, using an outside-Seatbelt process read after the sandbox refused ps. Both remain
+running; no security/lock setting changed. Earlier failures do not prove a locked vault.
 
 **Git boundary:** PR42 is parked Draft/unlabeled at signed9bfec7dc, base develop/source openai/mac.
 Its unchanged public title is “Refine responsive UI and add bounded audiovisual and painted-world
@@ -203,8 +204,11 @@ Signed/verified local checkpoints after9bf are `ceb107fdcf6f33f8d60cfd071fbea907
 Canonical-input checkpoint `c430380fcec424b2d03c71afd9e12858086f77e0` is also signed/verified;
 its first signing/verification both pass after73files. Exact receipt is preserved in the
 successor cache-planning batch. Advisory cache checkpoint `e7157ec204f7f2bec5934fd4b80344a9e0d9e298`
-is signed/verified after15files; branch4ahead/0behind origin/openai/mac. Its receipt is retained
-in the next reference-preparation cleanup batch. Signing uses existing1Password
+is signed/verified after15files. Reference cleanup/identity experiment checkpoint
+`acfbce776ff10dda0a6d476bbb795b878803bfcc` is signed/verified after46files; it is5ahead/0behind
+origin/openai/mac. This documentation-only successor records that exact implementation head
+and its signing receipt; fresh-start Git inspection owns the latest documentation HEAD.
+Both checkpoints signed/verified first try; no outstanding scoped code edits. Signing uses existing1Password
 IdentityAgent plus command-scoped `/usr/bin/ssh-keygen`, no private-key export or persistent config. Q8 signing
 succeeded first try; its wrapper then incorrectly treated an inline public key as a.pub path.
 Corrected read-only signature verification passes; no commit retry/vault failure. See retained
@@ -293,3 +297,17 @@ painting quality and delivery remain separate blockers. Adaptive-cache execution
 original retention, shared family skins, seasons and exact-image sharing remain pending.
 Continue only local authorized work; PR42 stays parked and no schedule is created.
 Record and sign completed batches, retaining every earlier red and scoped evidence packet.
+
+
+Completed local handoff: OpenAI/Codex on macOS remains in the exact owned path/branch above.
+The latest implementation checkpoint isacfbce776ff10dda0a6d476bbb795b878803bfcc; its successor
+contains only this handoff, packet conclusion and the exact signature receipt. Relevant tests
+and native source hashes remain unchanged; no further unchanged test/quality rerun. Original
+raw results remain immutable, including all first red/instrument and art rejections.
+PR42 base develop/source openai/mac remains parked; its accumulated title/body need refreshing
+only under future exact publication authority. GitHub step now:none; no hosted attempts used.
+Claude does not have these local commits and need not open now. After a future verified merge
+into develop, it safely fetches/merges origin/develop into its own clean anthropic/mac.
+No release/deployment/version bump; budgetUNFROZEN/PUBLIC with private fallback3000 and zero
+new authorized runs. No schedule or unattended follow-up created. Current artwork remains
+below acceptance; all remaining graphics/audio/device/storage/animation blockers above persist.
