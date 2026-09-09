@@ -70,6 +70,24 @@ function wiringErrors(main: string, owner: string): string[] {
     errors.push('surface-thin-adapter');
   }
 
+  const earthLayout = section(main, 'function currentEarthLayeredLayout():', '\n/** Each optional painting');
+  const planetsideLookup = "document.getElementById('planetside')";
+  // Planetside remains Main-owned. Every other lookup in this adapter would
+  // bypass the chrome geometry port, including an ID supplied through a variable.
+  const earthWithoutPlanetside = earthLayout.replace(planetsideLookup, '');
+  if (/\b(?:getElementById|querySelector(?:All)?)\s*\(/u.test(earthWithoutPlanetside)
+    || /\[\s*['"](?:getElementById|querySelector(?:All)?)['"]\s*\]/u.test(earthWithoutPlanetside)) {
+    errors.push('raw-main-dom');
+  }
+  if (earthLayout.length === 0 || occurrences(earthLayout, planetsideLookup) !== 1
+    || occurrences(earthLayout, 'appChrome.surfaceLayoutRects()') !== 1
+    || !earthLayout.includes('const upper = chrome.upper;')
+    || !earthLayout.includes("const lower = visibleRect(document.getElementById('planetside')) ?? chrome.dock;")
+    || !owner.includes('readonly surfaceLayoutRects: () => AppChromeSurfaceLayoutRects | null;')
+    || !owner.includes('    surfaceLayoutRects,\n')) {
+    errors.push('surface-layout-geometry-port');
+  }
+
   // Main owns action registration; AppChrome still exclusively renders status.
   // Permit only the exact Charters registration, never a second raw DOM reader.
   const charterRegistration = "registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('objchip')], onOpen: fillCharters });";
@@ -286,6 +304,24 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
     );
     expect(wiringErrors(missingReplacementTeardown, ownerSource))
       .toContain('replacement-teardown');
+  });
+
+  it('rejects literal and dynamic chrome lookups in the Earth scene geometry adapter', () => {
+    const layout = section(mainSource, 'function currentEarthLayeredLayout():', '\n/** Each optional painting');
+    const seam = '  const chrome = appChrome.surfaceLayoutRects();';
+    for (const lookup of [
+      "  void document.getElementById('dock');\n",
+      "  const ownerId = 'topbar'; void document.getElementById(ownerId);\n",
+      "  const ownerId = 'objchip'; void document['getElementById'](ownerId);\n",
+    ]) {
+      const changed = replaceOnce(layout, seam, lookup + seam);
+      const mutant = replaceOnce(mainSource, layout, changed);
+      expect(wiringErrors(mutant, ownerSource), lookup).toContain('raw-main-dom');
+    }
+    const withoutPort = replaceOnce(mainSource, layout,
+      replaceOnce(layout, 'appChrome.surfaceLayoutRects()', 'null'));
+    expect(wiringErrors(withoutPort, ownerSource)).toContain('surface-layout-geometry-port');
+    expect(wiringErrors(mainSource, ownerSource)).toEqual([]);
   });
 
   it('negative-controls every status projection and the owner render contract', () => {

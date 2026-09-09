@@ -1,0 +1,14 @@
+{
+  "schema": "cf-producer-refresh-narrative-correction/v1",
+  "firstFocusedBudgetResult": "repaired-budget-result.json",
+  "firstResult": "27 PASS / 1 FAIL: required current-producer narrative missing",
+  "onlyChangesFromStartingBudget": [
+    "producerAuthority",
+    "calibration.selectionRule append-only"
+  ],
+  "oldSelectionRulePrefixPreserved": true,
+  "appendedText": " Develop integration repair (2026-09-09): current producer b62563276984183b933e372242e5cd68426727094f57407f9057f1ff4d8e3ba6 becomes 2083bac2808da830f9d8b5c67386c9e1c6816ba4ee56317e121169817fc9f9cb after the optional static Earth landing and AppChrome-owned detached geometry port. index index.html e9175902cbb316b600ffd566c17af7bf9763e66a518492a3759afe8133271b6d; owner assets/tame-greeting-audio-ge6_npOg.js b7ea401cfbc3b49363d52515e7e7e59dfcbb63973741d82044c7ad0f20b58ed7; worker assets/species-art.worker-DnnSDKMy.js 25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172; painter assets/species-art.worker-DnnSDKMy.js 25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172; serviceWorker service-worker.js e1aeca0a865d08174ec76799f9e54c7c751d9182e09d1b44d0f5bc961e6553e8. Measurement authority, fixed ruler, numeric ceilings and all historical samples remain unchanged. This source-binding refresh is not a native Compendium certificate; SceneMemory remains production-quarantined.",
+  "measurementRulerCeilingsAndHistoricalSamplesUnchanged": true,
+  "noAdditionalBuild": true,
+  "budgetSha256": "5e6aefb8e6ab0fd183117ff145e21a6cb0ba94ae9b1181105611a880045ab449"
+}
