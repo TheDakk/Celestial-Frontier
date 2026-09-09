@@ -9,6 +9,7 @@ import {fileURLToPath,pathToFileURL} from 'node:url';
 import {javascriptModuleImports} from '../../port/v2/tools/sealed-worker-graph.mjs';
 import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
 import {assertIgnoredCache} from './fetch-model.mjs';
+import {loadSpeciesReferenceSet} from './species-references.mjs';
 const HERE=path.dirname(fileURLToPath(import.meta.url)),ROOT=path.resolve(HERE,'../..');
 export const RUNTIME_SOURCE_PINS=path.join(HERE,'runtime-pack-source-pins.json');
 export const SHIPPED_PACK_LIMIT=128*1024*1024;
@@ -53,7 +54,8 @@ export function validateRuntimeSourcePins(value){
     &&typeof row.integrity==='string'&&row.integrity.startsWith('sha512-')
     &&sources.has(row.packageJson),'Changed runtime dependency pin');
   for(const name of ['packageLock','modelManifest','referenceBinding'])need(safePath(value[name])&&sources.has(value[name]),'Missing runtime metadata source');
-  const metadata=new Set([value.packageLock,value.modelManifest,value.referenceBinding,
+  if(value.speciesReferences!==undefined)need(safePath(value.speciesReferences)&&sources.has(value.speciesReferences),'Missing species-reference metadata source');
+  const metadata=new Set([value.packageLock,value.modelManifest,value.referenceBinding,value.speciesReferences,
     ...value.dependencies.map(row=>row.packageJson),'tools/local-image-generation/node_modules/@huggingface/tokenizers/LICENSE']);
   need(value.files.filter(row=>row.target===null).every(row=>metadata.has(row.source)),'Unreviewed metadata/model source');
   return value;
@@ -155,13 +157,16 @@ export async function buildRuntimePack({output,sourceRoot=ROOT,pinsPath=RUNTIME_
   const reference=pins.files.find(row=>row.target===PREFIX+'reference.png');
   need(binding.image?.path===reference.source&&binding.image.sha256===reference.sha256&&binding.image.bytes===reference.bytes
     &&binding.binding?.name==='Platypus'&&typeof binding.binding.subjectIdentityKey==='string','Reference identity/image binding changed');
+  const species=pins.speciesReferences===undefined?null:await loadSpeciesReferenceSet({sourceRoot:root,manifestPath:pins.speciesReferences});
+  if(species)for(const asset of species.files)need(pins.files.some(row=>row.source===asset.source&&row.target===asset.target
+    &&row.bytes===asset.bytes&&row.sha256===asset.sha256),'Species asset is absent from pinned runtime payload');
   const modelPin=pins.files.find(row=>row.source===pins.modelManifest);
   const closure=await inspectClosure(root,pins);
   const config={schema:'cf.local-ai-runtime-pack.v1',workerUrl:'/'+closureNames.worker,
     modelRevision:model.revision,modelId:model.modelId,sourceManifestSha256:modelPin.sha256,
     modelSource:'verified-opfs-only',modelFiles:{},q8Block32:false,autoDownload:false,qualityAccepted:false,
     reference:{url:'/'+PREFIX+'reference.png',sha256:reference.sha256,width:480,height:320,
-      speciesVisualKey:binding.binding.subjectIdentityKey}};
+      speciesVisualKey:binding.binding.subjectIdentityKey},...(species?{references:species.references}:{} )};
   const generated=new Map([[PREFIX+'runtime.json',json(config)],[PREFIX+'deployment.json',json(deployment())],[PREFIX+'RUNTIME_NOTICES.md',noticeText()]]);
   await fs.mkdir(path.dirname(destination),{recursive:true});await fs.mkdir(destination);
   const rows=[];
@@ -192,7 +197,8 @@ export async function buildRuntimePack({output,sourceRoot=ROOT,pinsPath=RUNTIME_
     throw error;
   }
 }
-export async function verifyRuntimePack({directory,expectedManifestSha256}={}){
+export async function verifyRuntimePack({directory,expectedManifestSha256,allowApplicationFiles=false}={}){
+  need(typeof allowApplicationFiles==='boolean','Invalid application verification scope');
   need(typeof directory==='string'&&/^[a-f0-9]{64}$/.test(expectedManifestSha256),'Expected external manifest SHA is required');
   const root=path.resolve(directory);need(await fs.realpath(root)===root,'Pack root symlink refused');
   const file=path.join(root,MANIFEST),stat=await regular(file);need(stat.size<=256*1024,'Oversized runtime pack manifest');
@@ -219,8 +225,8 @@ export async function verifyRuntimePack({directory,expectedManifestSha256}={}){
       if(entry.isDirectory()){need([...names].some(name=>name.startsWith(relative+'/')),'Uninventoried runtime directory');await walk(path.join(folder,entry.name),relative+'/',depth+1);}
       else need(entry.isFile()&&names.has(relative),'Uninventoried runtime file: '+relative);
     }}
-  await walk(root);
-  return {status:'PASS',fileCount:manifest.files.length,totalBytes:payload+bytes.length,manifestBytes:bytes.length,
+  if(allowApplicationFiles)await walk(path.join(root,'__local_ai'),'__local_ai/');else await walk(root);
+  return {status:'PASS',scope:allowApplicationFiles?'runtime-subset-of-application':'standalone-runtime',fileCount:manifest.files.length,totalBytes:payload+bytes.length,manifestBytes:bytes.length,
     remaining128MiBBytes:SHIPPED_PACK_LIMIT-payload-bytes.length,distributionQualified:false,
     combinedAppAdmissionQualified:false,retainedUpdateQualified:false,deviceQualified:false};
 }

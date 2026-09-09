@@ -12,6 +12,31 @@ export const CF_PWA_MANIFEST = 'manifest.webmanifest' as const;
 export const CF_PWA_ICON = 'icons/celestial-frontier.svg' as const;
 export const CF_PWA_MASKABLE_ICON = 'icons/celestial-frontier-maskable.svg' as const;
 
+export interface PwaOptionalModelDeliveryV1 {
+  readonly sourceManifestSha256: string;
+  readonly files: readonly Readonly<{ url: string; bytes: number; sha256: string }>[];
+}
+
+/** Optional AI builds only. This is an exact GET transport allowlist; OPFS
+ * delivery still owns each complete-file digest and readiness publication. */
+function modelDeliveryPolicy(value?: PwaOptionalModelDeliveryV1): PwaOptionalModelDeliveryV1 | undefined {
+  if (value === undefined) return undefined;
+  if (!/^[a-f0-9]{64}$/u.test(value.sourceManifestSha256) || !Array.isArray(value.files)
+    || value.files.length === 0 || value.files.length > 64) throw new Error('Invalid optional model delivery policy');
+  const seen = new Set<string>();
+  for (const file of value.files) {
+    const url = new URL(file.url);
+    if (url.origin !== 'https://huggingface.co' || url.search || url.hash || url.username || url.password
+      || !/^\/cgb\/flux2-klein-4b-onnx-webgpu\/resolve\/3bffc0efef1d9f84727036cdbc44df3b6ab51131\/[A-Za-z0-9_./-]+$/u.test(url.pathname)
+      || url.pathname.split('/').includes('..') || seen.has(file.url)
+      || !Number.isSafeInteger(file.bytes) || file.bytes <= 0 || file.bytes > 2_147_483_648
+      || !/^[a-f0-9]{64}$/u.test(file.sha256)) throw new Error('Unsafe optional model delivery file');
+    seen.add(file.url);
+  }
+  return Object.freeze({ sourceManifestSha256: value.sourceManifestSha256,
+    files: Object.freeze([...value.files].sort((a, b) => a.url < b.url ? -1 : a.url > b.url ? 1 : 0)) });
+}
+
 export interface PwaAssetDigestV1 {
   readonly path: string;
   readonly sha256: string;
@@ -108,17 +133,18 @@ const WORKER_TEMPLATE_ASSETS = Object.freeze([Object.freeze({
 /** Hashes the generated worker program with every build-specific field fixed
  * to a stable sentinel. A worker-logic-only edit therefore receives a new
  * cache/build identity without creating a self-referential digest. */
-function workerTemplateSource(): string {
+function workerTemplateSource(modelDelivery?: PwaOptionalModelDeliveryV1): string {
   return serviceWorkerProgram(
     WORKER_TEMPLATE_BASE,
     WORKER_TEMPLATE_ASSETS,
     WORKER_TEMPLATE_SENTINEL,
     WORKER_TEMPLATE_SENTINEL,
+    modelDelivery,
   );
 }
 
-export function pwaWorkerRevisionV1(): string {
-  return sha256Hex(workerTemplateSource());
+export function pwaWorkerRevisionV1(modelDelivery?: PwaOptionalModelDeliveryV1): string {
+  return sha256Hex(workerTemplateSource(modelDelivery));
 }
 
 export function pwaBuildIdV1(
@@ -172,7 +198,9 @@ function serviceWorkerProgram(
   canonicalAssets: readonly PwaAssetDigestV1[],
   buildId: string,
   workerRevision: string,
+  modelDelivery?: PwaOptionalModelDeliveryV1,
 ): string {
+  const delivery = modelDeliveryPolicy(modelDelivery);
   const indexPath = assetPath(base, 'index.html');
   if (!canonicalAssets.some((asset) => asset.path === indexPath)) {
     throw new Error(`Celestial Frontier PWA build is missing ${indexPath}`);
@@ -260,12 +288,20 @@ async function readClientPin(clientId){
     return value&&value.schema===SCHEMA&&value.clientId===clientId&&typeof value.buildId==='string'&&HEX64.test(value.buildId)?value.buildId:null;
   }catch{return null;}
 }
-async function writeClientPin(clientId,buildId){
+async function writeClientPin(clientId,buildId${delivery ? ',worker=false' : ''}){
   if(!validClientId(clientId)||!HEX64.test(buildId))throw new Error('Refusing invalid PWA client pin');
   const cache=await caches.open(CONTROL_CACHE);
-  await cache.put(clientPinUrl(clientId),new Response(JSON.stringify({schema:SCHEMA,clientId,buildId}),{headers:{'content-type':'application/json'}}));
+  await cache.put(clientPinUrl(clientId),new Response(JSON.stringify({schema:SCHEMA,clientId,buildId${delivery ? ',...(worker?{worker:true}:{})' : ''}}),{headers:{'content-type':'application/json'}}));
 }
-async function preserveLiveClientBuilds(state,requireActiveOnly){
+${delivery ? `// Module imports retain destination=worker but create no client. Only an
+// explicitly pinned worker can use that path; a document pin is insufficient.
+async function isPinnedWorkerClient(clientId){
+  if(!validClientId(clientId))return false;
+  const cache=await caches.open(CONTROL_CACHE),response=await cache.match(clientPinUrl(clientId));
+  if(!response)return false;
+  try{const pin=await response.json();return pin?.schema===SCHEMA&&pin.clientId===clientId&&pin.worker===true&&typeof pin.buildId==='string'&&HEX64.test(pin.buildId);}catch{return false;}
+}
+` : ''}async function preserveLiveClientBuilds(state,requireActiveOnly){
   const clients=await self.clients.matchAll({type:'all',includeUncontrolled:true});
   const cache=await caches.open(CONTROL_CACHE);
   const liveIds=new Set();
@@ -300,7 +336,24 @@ async function reply(source,message){if(source&&typeof source.postMessage==='fun
 async function broadcast(message){const clients=await self.clients.matchAll({type:'window',includeUncontrolled:true});for(const client of clients)client.postMessage(message);}
 function statusMessage(state,phase){return {type:'CF_PWA_STATUS',schema:SCHEMA,workerBuildId:BUILD_ID,activeBuildId:state?.activeBuildId??null,priorBuildId:state?.priorBuildId??null,phase};}
 
-self.addEventListener('install',(event)=>{
+${delivery ? `// Optional AI installation includes active, prior and any candidate caches.
+// Count exact cached response payloads; never evict a live prior to make room.
+async function retainedUpdatePayloadBytes(){
+  let bytes=0;
+  for(const name of await caches.keys()){
+    if(!name.startsWith(CACHE_PREFIX))continue;
+    const cache=await caches.open(name);
+    for(const request of await cache.keys()){
+      const response=await cache.match(request);
+      if(!response)throw new Error('Retained update response disappeared');
+      const count=(await response.arrayBuffer()).byteLength;
+      if(!Number.isSafeInteger(count)||count<0||count>268435456-bytes)throw new Error('Optional AI update payload exceeds 256 MiB');
+      bytes+=count;
+    }
+  }
+  return bytes;
+}
+` : ''}self.addEventListener('install',(event)=>{
   event.waitUntil((async()=>{
     const cacheName=buildCacheName(BUILD_ID);
     /* An identical worker may be re-observed by browser recovery machinery.
@@ -310,11 +363,16 @@ self.addEventListener('install',(event)=>{
     await caches.delete(cacheName);
     const cache=await caches.open(cacheName);
     try{
-      for(const asset of ASSETS){
+${delivery ? `      let admittedBytes=await retainedUpdatePayloadBytes()+new TextEncoder().encode(markerBody()).byteLength;
+      if(admittedBytes>268435456)throw new Error('Optional AI update payload exceeds 256 MiB');
+` : ''}      for(const asset of ASSETS){
         const request=new Request(absolute(asset.path),{cache:'reload',credentials:'same-origin',redirect:'error'});
         const response=await fetch(request);
         if(!response.ok||response.redirected||new URL(response.url).href!==request.url)throw new Error('PWA asset fetch failed: '+asset.path);
-        if(await sha256(await response.clone().arrayBuffer())!==asset.sha256)throw new Error('PWA asset digest mismatch: '+asset.path);
+${delivery ? `        const checkedBytes=await response.clone().arrayBuffer();
+        if(await sha256(checkedBytes)!==asset.sha256)throw new Error('PWA asset digest mismatch: '+asset.path);
+        if(checkedBytes.byteLength>268435456-admittedBytes)throw new Error('Optional AI update payload exceeds 256 MiB');
+        admittedBytes+=checkedBytes.byteLength;` : "        if(await sha256(await response.clone().arrayBuffer())!==asset.sha256)throw new Error('PWA asset digest mismatch: '+asset.path);"}
         await cache.put(request,response);
       }
       /* Written last: its presence means every exact response above was fetched and verified. */
@@ -384,11 +442,25 @@ self.addEventListener('fetch',(event)=>{
   event.respondWith((async()=>{
     const url=new URL(request.url);
     if(request.method!=='GET')return new Response('Celestial Frontier is local-first; this build has no network write route.',{status:405});
-    if(url.origin!==self.location.origin)return new Response('External resources are not part of this Celestial Frontier build.',{status:403});
+${delivery ? `    if(url.origin!==self.location.origin){
+      const allowed=${JSON.stringify(delivery.files)}.find((file)=>file.url===url.href);
+      if(!allowed||request.mode!=='cors'||request.credentials!=='omit')return new Response('External resource is not an explicit pinned model GET.',{status:403});
+      const state=await readState();
+      const pin=validClientId(event.clientId)?await readClientPin(event.clientId):null;
+      if(!state||!pin||(pin!==state.activeBuildId&&pin!==state.priorBuildId))return new Response('Model delivery has no retained document owner.',{status:503});
+      const range=request.headers.get('range');
+      if(range!==null&&(!/^bytes=(0|[1-9][0-9]*)-$/.test(range)||Number(range.slice(6,-1))>=allowed.bytes))return new Response('Model range exceeds the pinned file.',{status:416});
+      // Fetch is initiated only by the existing explicit installation owner.
+      // CORS and its streaming complete-file digest remain mandatory. Redirects
+      // may resolve signed Hugging Face storage URLs; no response enters CacheStorage.
+      return fetch(new Request(request,{credentials:'omit',cache:'no-store',referrerPolicy:'no-referrer'}));
+    }` : "    if(url.origin!==self.location.origin)return new Response('External resources are not part of this Celestial Frontier build.',{status:403});"}
     const state=await readState();
     if(!state)return new Response('No complete Celestial Frontier build is active.',{status:503});
     const navigation=request.mode==='navigate'||request.destination==='document';
-    const workerCreation=request.destination==='worker'||request.destination==='sharedworker';
+${delivery ? `    const workerDestination=request.destination==='worker'||request.destination==='sharedworker';
+    const workerCreation=workerDestination&&event.resultingClientId!=='';
+    if(workerDestination&&!workerCreation&&!await isPinnedWorkerClient(event.clientId))return new Response('Worker module has no explicit retained worker owner.',{status:503});` : "    const workerCreation=request.destination==='worker'||request.destination==='sharedworker';"}
     if(!navigation&&!validClientId(event.clientId))return new Response('This resource request has no Celestial Frontier document owner.',{status:503});
     let pinned=navigation?null:await readClientPin(event.clientId);
     if(!navigation&&pinned===null)return new Response('This document has no retained Celestial Frontier build.',{status:503});
@@ -408,7 +480,7 @@ self.addEventListener('fetch',(event)=>{
       if(validClientId(nextClientId))await writeClientPin(nextClientId,selectedBuildId);
     }else if(workerCreation){
       if(!validClientId(event.resultingClientId))return new Response('The worker has no retained Celestial Frontier build identity.',{status:503});
-      await writeClientPin(event.resultingClientId,selectedBuildId);
+      await writeClientPin(event.resultingClientId,selectedBuildId${delivery ? ',true' : ''});
     }
     return response;
   })());
@@ -420,10 +492,11 @@ function serviceWorkerSource(
   base: string,
   assets: readonly PwaAssetDigestV1[],
   workerRevision = pwaWorkerRevisionV1(),
+  modelDelivery?: PwaOptionalModelDeliveryV1,
 ): string {
   const canonicalAssets = Object.freeze([...assets].sort(compareAssetPath));
   const buildId = pwaBuildIdV1(canonicalAssets, workerRevision);
-  return serviceWorkerProgram(base, canonicalAssets, buildId, workerRevision);
+  return serviceWorkerProgram(base, canonicalAssets, buildId, workerRevision, modelDelivery);
 }
 
 function outputBytes(output: { readonly type: string; readonly code?: string; readonly source?: string | Uint8Array }): Uint8Array {
@@ -475,7 +548,9 @@ export function gameBuildMode(mode: string): 'evidence' | 'distributable' {
   return mode === 'evidence' ? 'evidence' : 'distributable';
 }
 
-export function celestialFrontierPwaPlugin(): Plugin {
+export function celestialFrontierPwaPlugin(options: Readonly<{ modelDelivery?: PwaOptionalModelDeliveryV1 }> = {}): Plugin {
+  const delivery = modelDeliveryPolicy(options.modelDelivery);
+  const workerRevision = pwaWorkerRevisionV1(delivery);
   let resolved: ResolvedConfig | null = null;
   let base = '/';
   let runtimeFileNames: readonly string[] = Object.freeze([]);
@@ -532,7 +607,7 @@ export function celestialFrontierPwaPlugin(): Plugin {
       this.emitFile({
         type: 'asset',
         fileName: CF_PWA_SERVICE_WORKER,
-        source: serviceWorkerSource(base, assets),
+        source: serviceWorkerSource(base, assets, workerRevision, delivery),
       });
     },
     writeBundle: {
@@ -558,7 +633,7 @@ export function celestialFrontierPwaPlugin(): Plugin {
           writtenAssetByteCounts.push(bytes.byteLength);
           return Object.freeze({ path: assetPath(base, fileName), sha256: sha256Hex(bytes) });
         });
-        const finalWorkerSource = serviceWorkerSource(base, assets);
+        const finalWorkerSource = serviceWorkerSource(base, assets, workerRevision, delivery);
         assertShippedPackBytes(writtenAssetByteCounts, textEncoder.encode(finalWorkerSource).byteLength);
         writeFileSync(
           resolve(outDir, CF_PWA_SERVICE_WORKER),
@@ -572,6 +647,7 @@ export function celestialFrontierPwaPlugin(): Plugin {
 
 export const __pwaBuildTestOnly = Object.freeze({
   assertShippedPackBytes,
+  modelDeliveryPolicy,
   assertSealedWorkerGraphs,
   assetPath,
   iconSvg,

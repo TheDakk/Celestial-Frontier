@@ -1,0 +1,16 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/local-ai-runtime.test.ts > six canonical reference orchestration with synthetic image and worker fixtures > refuses missing/excess/reordered/duplicate references, unbound geometry, identities and digests before allocation
+TypeError: Cannot assign to read only property 'sha256' of object '#<Object>'
+ ❯ f.recipe.references.<computed>.sourceHeight tests/local-ai-runtime.test.ts:363:104
+    361|       (f: ReturnType<typeof fixture>) => { Object.assign(f.config.refe…
+    362|       (f: ReturnType<typeof fixture>) => { Object.assign(f.config.refe…
+    363|       (f: ReturnType<typeof fixture>) => { (f.recipe.references as Arr…
+       |                                                                                                        ^
+    364|       (f: ReturnType<typeof fixture>) => { (f.recipe.references as Arr…
+    365|       (f: ReturnType<typeof fixture>) => { const value = JSON.parse(JS…
+ ❯ tests/local-ai-runtime.test.ts:369:43
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

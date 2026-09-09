@@ -1,0 +1,22 @@
+✔ served copy disables eager transport while preserving exports, CSS/query helpers and error paths (0.4265ms)
+✔ actual upstream eager-start span constructs transport once; corrected span never starts it (0.474375ms)
+✔ dependency byte changes, duplicate or missing eager starts refuse instead of suppressing unknown code (0.304625ms)
+✔ plugin only transforms the exact installed client and requires a genuinely disabled server (0.313625ms)
+1:03:50 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+✔ real frozen Vite middleware serves its transformed client and normal game index without a socket listener (476.916ms)
+✔ single byte ranges cover bounded/open/suffix forms and reject malformed or impossible ranges (0.997ms)
+✔ serves exact config, locked relative worker imports, range bytes, HEAD and same-origin Vite (48.380208ms)
+✔ rejects raw/encoded traversal, external origins, unknown AI files and write methods (18.51225ms)
+✔ hash/size corruption blocks readiness before Vite or HTTP start and exact restoration passes (15.677875ms)
+✔ refuses locked runtime version changes before opening the game (11.614833ms)
+✔ refuses a verified file replaced after startup instead of serving stale declared hashes (15.04375ms)
+✔ startup failure closes Vite and preserves a cleanup failure beside the bind error (28.391208ms)
+✔ close is idempotent and closes both the HTTP owner and Vite (11.558625ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 844.914083

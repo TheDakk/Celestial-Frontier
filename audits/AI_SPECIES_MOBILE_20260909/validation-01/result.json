@@ -1,0 +1,76 @@
+{
+  "startedAt": "2026-09-09T16:45:24.258467+00:00",
+  "status": "PASS",
+  "checks": [
+    {
+      "label": "owners",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "species-mobile-current-owners",
+        "--",
+        "port/v2/node_modules/.bin/vitest",
+        "run",
+        "--root",
+        "port/v2",
+        "tests/pwa-offline.test.ts",
+        "tests/landfall-fidelity.test.ts",
+        "tests/painted-earth-mount-ownership.test.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "typescript",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "species-mobile-types",
+        "--",
+        "npm",
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "root-validate",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "species-mobile-root",
+        "--",
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "sha256": "fbd9bd7816c8adb944510f9388805480e45188cd686440253e7d98ee97377393"
+    },
+    {
+      "path": "port/v2/apps/game/src/landfall-conditioning.ts",
+      "sha256": "76a6a5fa20fded3ad687c22c9f219beda5349d1bc0d2727af4e50c67987eda54"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-game.ts",
+      "sha256": "40ec5629a2dce7a358a36a09279488f2562c2665eee919807d049d3788025e4b"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-runtime.ts",
+      "sha256": "cd91455a260e80b0475559cf85e02db0d068d9e75f7365d1ca13fa7946cbc410"
+    },
+    {
+      "path": "port/v2/apps/game/pwa-build.ts",
+      "sha256": "e4af98745e374d0e684eedfb66442502bbef42cef0fc08720da27b7dcff3a41c"
+    }
+  ],
+  "finishedAt": "2026-09-09T16:45:39.951710+00:00"
+}

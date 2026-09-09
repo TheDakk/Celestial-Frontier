@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "species-adapter-controls-02",
+        "--",
+        "npm",
+        "--prefix",
+        "port/v2",
+        "test",
+        "--",
+        "tests/landfall-conditioning.test.ts",
+        "tests/local-ai-runtime.test.ts",
+        "tests/local-ai-game.test.ts",
+        "tests/pwa-offline.test.ts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "species-adapter-types-01",
+        "--",
+        "npm",
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "endedAt": "2026-09-09T16:26:04.465876+00:00",
+  "sourcesUnchanged": true
+}

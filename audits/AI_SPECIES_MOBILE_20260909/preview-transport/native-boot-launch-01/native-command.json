@@ -1,0 +1,14 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "frozen-preview-native-boot-01",
+    "--",
+    "node",
+    "tools/local-image-generation/run-frozen-preview-boot.mjs",
+    "--output=audits/AI_SPECIES_MOBILE_20260909/preview-transport/native-boot-01"
+  ],
+  "startedAt": "2026-09-09T17:12:04.448946+00:00",
+  "scope": "One desktop native normal-game boot/reload without model scans, inference or downloads"
+}

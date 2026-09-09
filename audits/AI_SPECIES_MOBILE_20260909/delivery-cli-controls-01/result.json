@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "delivery-cli-controls-01",
+        "--",
+        "node",
+        "--test",
+        "tools/local-image-generation/run-mobile-model-delivery.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/run-mobile-model-delivery.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/compile-delivery-diagnostic.mjs"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "sourcesUnchanged": true,
+  "endedAt": "2026-09-09T17:02:01.819288+00:00"
+}

@@ -162,6 +162,42 @@
       "target": "__local_ai/stage-worker.mjs",
       "bytes": 11212,
       "sha256": "337aaea3f7f9804a4409887367b922ed68e02a8ee3dc7f0c859c913dfa52d8ac"
+    },
+    {
+      "source": "audits/AI_SPECIES_MOBILE_20260909/references/reference-set-v1.json",
+      "target": null,
+      "bytes": 42212,
+      "sha256": "4558707f3a21e6990fc2e7e6c40836c9d638cefe97a674ca3ca9356f1ed0e1a1"
+    },
+    {
+      "source": "audits/CREATURE_SCENE_COHESION_20260908/civet-selected-v1.webp",
+      "target": "__local_ai/references/1-civet.webp",
+      "bytes": 179816,
+      "sha256": "186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365"
+    },
+    {
+      "source": "audits/AI_SPECIES_MOBILE_20260909/references/persimmon-v1.png",
+      "target": "__local_ai/references/2-persimmon.png",
+      "bytes": 2326605,
+      "sha256": "36aec0bc09432255b4351b22a2b99bde55f85a0f7eab309bb62dab46b88164d9"
+    },
+    {
+      "source": "audits/AI_SPECIES_MOBILE_20260909/references/frog-v1.png",
+      "target": "__local_ai/references/4-frog.png",
+      "bytes": 1955527,
+      "sha256": "53d4edb530e4691dffb6000b58be6ed2076302a544deec04217d64a03ef08b17"
+    },
+    {
+      "source": "audits/AI_SPECIES_MOBILE_20260909/references/devils-club-v1.png",
+      "target": "__local_ai/references/5-devils-club.png",
+      "bytes": 2581318,
+      "sha256": "c2474e48a1a38fb2419fe01008a3906d5727b7e520f8867f954b6d8ed7ac94fc"
+    },
+    {
+      "source": "audits/AI_SPECIES_MOBILE_20260909/references/cranberry-v1.png",
+      "target": "__local_ai/references/6-cranberry.png",
+      "bytes": 2005710,
+      "sha256": "31be9a75a0bdea51580435c6bf1f4a03b44d3f7fd6e80aa6537893f92a8f6b93"
     }
   ],
   "dependencies": [
@@ -186,5 +222,6 @@
   ],
   "packageLock": "tools/local-image-generation/package-lock.json",
   "modelManifest": "tools/local-image-generation/model-manifest.json",
-  "referenceBinding": "audits/AI_GAME_INTEGRATION_20260909/platypus-reference-binding.json"
+  "referenceBinding": "audits/AI_GAME_INTEGRATION_20260909/platypus-reference-binding.json",
+  "speciesReferences": "audits/AI_SPECIES_MOBILE_20260909/references/reference-set-v1.json"
 }

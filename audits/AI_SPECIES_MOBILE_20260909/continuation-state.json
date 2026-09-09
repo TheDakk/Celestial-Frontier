@@ -1,0 +1,11 @@
+{
+  "scope": "Continuation status check only; not a new startup or process mutation",
+  "verifiedCaffeinatePids": [
+    33372,
+    93550
+  ],
+  "check": "pgrep -x caffeinate outside Seatbelt",
+  "uninterruptedStartupReceipt": "audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json",
+  "targetPhoneAnswer": "pending",
+  "githubWrites": false
+}
