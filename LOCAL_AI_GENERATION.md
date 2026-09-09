@@ -4,6 +4,27 @@ Matches code as of **2026-09-09**. Browser proof of concept for the future engin
 The approved Living Worlds paintings set the required finish. No generated local candidate
 has passed that quality gate, and no phone has been qualified.
 
+## September 9 continuation
+
+Nick described the latest image as fantastic. Preserve its painted finish as the working visual
+direction; named species/count/botany and physical-device acceptance remain separate.
+The full-painting viewer now offers Fit painting and native-pixel panning from a verified retained
+original, including a Survey entry after reload. It neither re-encodes the image nor navigates the
+world. Close/pagehide release transient display resources; focus and background isolation belong
+to its entire open lifetime. Inspection intent is captured before storage reads; Close resolves
+the same live action/job or the visible panel opener if responsive layout closed its panel.
+Existing base scene/UI placement is unchanged. Native desktop checks prove1024×576 fit,278×156.375
+fit in a320×568 viewport, native-size panning and Survey inspection after reload with unchanged
+PNG bytes and no inference. These are layout checks, not physical-phone qualification.
+
+The static runtime builder produces a locally verified **27.08 MiB** optional pack without weights.
+Its installed-only manifest is admitted by the normal AI controller; explicit OPFS verification
+is mandatory before generation, with no automatic download or developer-cache fallback. This is
+packaging infrastructure, not a shipped/phone-qualified PWA. The full model is still **6.23 GiB**.
+The optional fidelity review contract records exact artifact/identity-bound visual observations;
+it does not implement a pixel classifier or per-instance model conditioning. See the
+[continuation evidence](audits/AI_LANDFALL_CONTINUATION_20260909/README.md).
+
 ## Implemented boundary
 
 The optional `?localai=1` development preview now uses the ordinary game Land action, Survey
@@ -23,6 +44,9 @@ recipe, world, environment, ecology epoch, source snapshot digest and image SHA2
 latest index commit atomically; a fresh read and rehash must pass before Ready/notification.
 Quota, abort or verification failure cannot report Ready. No original deletion/eviction API exists.
 This is not an outside-origin backup: browser site-data deletion can remove these pixels.
+Lookup currently includes the full model recipe. A changed recipe after reload does not
+automatically discover an older original, though the bytes remain retained. A separate full-identity
+index is needed for cross-recipe discovery; this batch adds no deletion or save-schema change.
 
 Progress comes from actual ordered text/reference/denoise/decode stages. The job reserves its
 last percent for durable original retention. ETA estimates remaining drawing only after two

@@ -19,6 +19,31 @@ server performs no inference or downloads. This is development tooling; runtime 
 full mobile installation and output quality remain unqualified. See [the current owner reference](../../LOCAL_AI_GENERATION.md)
 and the [integration packet](../../audits/AI_GAME_INTEGRATION_20260909/README.md).
 
+## Static runtime and retained-painting inspection
+
+The new `runtime-pack.mjs` builds a deterministic, hash-inventoried `/__local_ai/` runtime closure
+from the exact existing locked dependencies, helpers, reference and notices. It includes the
+actual ORT Asyncify lazy JS/WASM files. No weights are copied. The standalone result is 27.08 MiB;
+combined app/PWA/update, phone and distribution qualification remain separate. The controller
+admits its installed-only manifest and refuses generation before explicit OPFS verification.
+
+After the normal startup and shared locks, use a **new** ignored output directory:
+
+```sh
+node tools/with-toolchain-lock.mjs --label ai-runtime-pack -- node tools/local-image-generation/runtime-pack.mjs build --output=/private/tmp/cf-runtime-pack-NEW
+node tools/with-toolchain-lock.mjs --label ai-runtime-verify -- node tools/local-image-generation/runtime-pack.mjs verify --output=/private/tmp/cf-runtime-pack-NEW --sha256=EXTERNAL_MANIFEST_SHA
+```
+
+Use the exact externally retained manifest SHA printed by that build. Existing output refuses;
+source/payload/manifest substitutions, unsafe paths, missing closure and added weights refuse.
+No command publishes the pack or starts model downloads.
+
+`run-landfall-viewer.mjs --output=NEW_AUDIT_DIRECTORY` checks the ordinary game’s full-painting
+viewer with the prior native original committed through the real original-store owner. It drives
+trusted controls, resize, native-pixel pan, Close/keyboard and reload; it performs no new inference.
+Run through the shared wrapper outside macOS Seatbelt. Keep the original native-generation proof
+and this explicitly retained-image UI audit distinct. See the [continuation packet](../../audits/AI_LANDFALL_CONTINUATION_20260909/README.md).
+
 ## Pinned inputs
 
 - `model-manifest.json`: exact20 runtime model files6,691,020,416 bytes plus7,792-byte model README.

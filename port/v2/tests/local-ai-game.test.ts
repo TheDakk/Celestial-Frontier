@@ -11,9 +11,10 @@ import { aiLandfallInputKeyV1, type AiLandfallGeneratedV1, type AiLandfallInputV
 import type { LocalModelDeliveryStatusV1, LocalModelDeliveryV1 } from '../apps/game/src/local-model-delivery.js';
 import { PINNED_LOCAL_MODEL_MANIFEST_V1 } from '../apps/game/src/local-model-manifest.js';
 import type { LocalAiRuntimeConfigV1 } from '../apps/game/src/local-ai-runtime.js';
-import { createLocalAiGameV1, type LocalAiGameV1 } from '../apps/game/src/local-ai-game.js';
+import { createLocalAiGameV1, type LocalAiGameV1, type LocalAiGameRuntimeManifestV1 } from '../apps/game/src/local-ai-game.js';
 
-const mocks = vi.hoisted(() => ({ createStore: vi.fn(), createDelivery: vi.fn(), probe: vi.fn(), generate: vi.fn() }));
+const mocks = vi.hoisted(() => ({ createStore: vi.fn(), createDelivery: vi.fn(), probe: vi.fn(), generate: vi.fn(), viewerOpen: vi.fn(), viewerClose: vi.fn() }));
+vi.mock('../apps/game/src/landfall-viewer.js', () => ({ createLandfallViewerV1: () => ({ open: mocks.viewerOpen, close: mocks.viewerClose }), captureLandfallFocusReturnV1: () => () => {} }));
 vi.mock('../apps/game/src/ai-landfall-originals.js', async importOriginal => ({
   ...await importOriginal<typeof import('../apps/game/src/ai-landfall-originals.js')>(),
   createAiLandfallOriginalStoreV1: mocks.createStore,
@@ -53,14 +54,15 @@ function deliveryStatus(ready: boolean, error: string | null = null): LocalModel
 
 /** Actual controller, compiler and queue; explicit unit fakes own inference,
  * transaction settlement and model delivery. This is not native storage/GPU proof. */
-async function harness(configPatch: Partial<LocalAiRuntimeConfigV1> = {}) {
+async function harness(configPatch: Partial<LocalAiGameRuntimeManifestV1> = {}) {
   const source = canonical();
   const compiled = buildCanonicalLandfallConditioningV1(source.request, source.roster);
   if (!compiled.ok) throw Error('Controller fixture did not compile');
   const files = Object.fromEntries(PINNED_LOCAL_MODEL_MANIFEST_V1.files.map(file => [file.path, '/__local_ai/model/' + file.path]));
   files['transformer-q8-block32.onnx'] = '/__local_ai/model/transformer-q8-block32.onnx';
   files['repacked-scale-zero.data'] = '/__local_ai/model/repacked-scale-zero.data';
-  const config: LocalAiRuntimeConfigV1 = { workerUrl: '/__local_ai/stage-worker.mjs',
+  const config: LocalAiGameRuntimeManifestV1 = { schema: 'cf.local-ai-game-preview.v1',
+    modelSource: 'verified-installed-developer-cache', modelId: PINNED_LOCAL_MODEL_MANIFEST_V1.modelId, workerUrl: '/__local_ai/stage-worker.mjs',
     modelRevision: PINNED_LOCAL_MODEL_MANIFEST_V1.revision, modelFiles: files, q8Block32: true,
     reference: { url: '/__local_ai/reference.png', sha256: 'b'.repeat(64), width: 480, height: 320,
       speciesVisualKey: compiled.recipe.referenceRequirements[0]!.subjectIdentityKey }, ...configPatch };
@@ -250,4 +252,74 @@ describe('optional real-game local AI controller with explicit unit inference/st
       expect(mocks.generate).not.toHaveBeenCalled(); expect(h.api.snapshot()).toHaveLength(0);
     } finally { held.resolve(deliveryStatus(false)); await verifying; }
   });
+  it('requires explicit browser verification for the static installed-only pack, with no developer fallback', async () => {
+    const h = await harness({ schema: 'cf.local-ai-runtime-pack.v1', modelSource: 'verified-opfs-only',
+      q8Block32: false, modelFiles: {}, autoDownload: false,
+      sourceManifestSha256: PINNED_LOCAL_MODEL_MANIFEST_V1.sourceManifestSha256 });
+    expect(h.api.html()).toContain('No model is downloaded automatically');
+    expect(h.api.html()).not.toContain('Using this preview');
+    expect(() => h.api.enqueue(h.input!)).toThrow(/Install or verify/);
+    expect(h.fetch).toHaveBeenCalledTimes(1); expect(h.install).not.toHaveBeenCalled();
+    expect(mocks.generate).not.toHaveBeenCalled(); expect(h.openFile).not.toHaveBeenCalled();
+    await h.api.action('verify', '');
+    h.api.enqueue(h.input!); await h.waitFor(() => h.api.snapshot()[0]?.status === 'ready');
+    const runtime = mocks.generate.mock.calls[0]![3] as LocalAiRuntimeConfigV1;
+    expect(runtime.q8Block32).toBe(false);
+    expect(Object.values(runtime.modelFiles)).toHaveLength(PINNED_LOCAL_MODEL_MANIFEST_V1.files.length);
+    expect(Object.values(runtime.modelFiles).every(url => url.startsWith('blob:'))).toBe(true);
+  });
+
+  it('keeps installed-only admission closed after unsuccessful verification', async () => {
+    const h = await harness({ schema: 'cf.local-ai-runtime-pack.v1', modelSource: 'verified-opfs-only',
+      q8Block32: false, modelFiles: {}, autoDownload: false,
+      sourceManifestSha256: PINNED_LOCAL_MODEL_MANIFEST_V1.sourceManifestSha256 });
+    h.verify.mockResolvedValueOnce(deliveryStatus(false, 'Missing model chunks'));
+    await h.api.action('verify', '');
+    expect(() => h.api.enqueue(h.input!)).toThrow(/Install or verify/);
+    expect(h.api.snapshot()).toHaveLength(0); expect(h.openFile).not.toHaveBeenCalled();
+    expect(mocks.generate).not.toHaveBeenCalled(); expect(h.retain).not.toHaveBeenCalled();
+  });
+
+  it('refuses static-pack source, derivative and manifest substitution before probing delivery', async () => {
+    const pack: Partial<LocalAiGameRuntimeManifestV1> = { schema: 'cf.local-ai-runtime-pack.v1', modelSource: 'verified-opfs-only',
+      q8Block32: false, modelFiles: {}, autoDownload: false, sourceManifestSha256: PINNED_LOCAL_MODEL_MANIFEST_V1.sourceManifestSha256 };
+    for (const patch of [{ autoDownload: true }, { q8Block32: true }, { sourceManifestSha256: 'bad' },
+      { modelFiles: { 'text_encoder_q4.onnx': '/developer.onnx' } }, { modelSource: 'verified-installed-developer-cache' as const }]) {
+      await expect(harness({ ...pack, ...patch })).rejects.toThrow(/Unpinned model delivery source/);
+    }
+    expect(mocks.createDelivery).not.toHaveBeenCalled(); expect(mocks.generate).not.toHaveBeenCalled();
+  });
+
+  it('inspects a freshly verified original without navigation or another render and cancels stale inspection intents', async () => {
+    const h = await harness(); const id = h.api.enqueue(h.input!);
+    await h.waitFor(() => h.api.snapshot()[0]?.status === 'ready');
+    const original = [...h.originals.values()][0]!;
+    await h.api.action('inspect', id);
+    expect(mocks.viewerOpen).toHaveBeenCalledExactlyOnceWith(original, expect.any(Function));
+    expect(h.view).not.toHaveBeenCalled(); expect(mocks.generate).toHaveBeenCalledTimes(1);
+    h.api.closeInspector(); expect(mocks.viewerClose).toHaveBeenCalledTimes(1);
+    const held = deferred<AiLandfallOriginalV1>(); h.read.mockImplementationOnce(() => held.promise);
+    const viewing = h.api.inspect(original.input, original.originalId); h.changeViewGeneration(); held.resolve(original);
+    await viewing; expect(mocks.viewerOpen).toHaveBeenCalledTimes(1);
+    h.read.mockResolvedValueOnce(null); await h.api.inspect(original.input, original.originalId);
+    expect(h.notice).toHaveBeenLastCalledWith('Painting unavailable', expect.any(String));
+    expect(mocks.viewerOpen).toHaveBeenCalledTimes(1);
+  });
+
+  it('prevents an older inspection read replacing its successor and invalidates close-before-read', async () => {
+    const h = await harness(); h.api.enqueue(h.input!);
+    await h.waitFor(() => h.api.snapshot()[0]?.status === 'ready');
+    const original = [...h.originals.values()][0]!;
+    const older = deferred<AiLandfallOriginalV1>(); h.read.mockImplementationOnce(() => older.promise);
+    const openingOlder = h.api.inspect(original.input, original.originalId);
+    await h.api.inspect(original.input, original.originalId);
+    expect(mocks.viewerOpen).toHaveBeenCalledTimes(1);
+    older.resolve(original); await openingOlder;
+    expect(mocks.viewerOpen).toHaveBeenCalledTimes(1);
+    const pending = deferred<AiLandfallOriginalV1>(); h.read.mockImplementationOnce(() => pending.promise);
+    const opening = h.api.inspect(original.input, original.originalId); h.api.closeInspector(); pending.resolve(original);
+    await opening; expect(mocks.viewerOpen).toHaveBeenCalledTimes(1);
+    expect(mocks.viewerClose).toHaveBeenCalledTimes(1);
+  });
+
 });

@@ -1,0 +1,27 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > binds retained 01 PNG/recipe/review bytes and rejects its actual observed species failures 14ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > binds retained 02 PNG/recipe/review bytes and rejects its actual observed species failures 7ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > preserves all19 full identities and six exact anchors without promoting transported data to live roster trust 6ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > allows only a synthetic complete positive and still grants no quality or authenticated pixel conclusion 3ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > refuses stale contractSha256 using the same outcome assessor 3ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > refuses stale imageSha256 using the same outcome assessor 3ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > refuses stale recipeSha256 using the same outcome assessor 3ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > refuses stale referenceSetSha256 using the same outcome assessor 3ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > refuses incomplete, duplicate and unknown diagnostic roles or absent evidence 5ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > refuses repeated residents, mixed image rows and one observed body assigned to two identities 7ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > refuses modified target anchors and seed-only identities 3ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > cannot pass a missing Frog or additional body just because the expected metadata still lists three fauna 4ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > requires all six species outcomes including botany even when counts and animal identities pass 4ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > refuses finish feedback bound to another painting or expanded into species approval 3ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > refuses metadata-only semantics and forged or transported contracts; explicit rebuilding remains available 6ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > binds historical prompt bytes without allowing a different identity, roster, anatomy rule or world 10ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > refuses incompatible model/runtime/reference and image declarations before producing a contract 15ms
+ ✓ tests/landfall-fidelity.test.ts > canonical landfall reported fidelity outcomes; no image recognition or art approval > rejects hostile accessors and malformed records without executing coercion hooks or using a clock/RNG 10ms
+
+ Test Files  1 passed (1)
+      Tests  18 passed (18)
+   Start at  11:40:59
+   Duration  451ms (transform 212ms, setup 0ms, import 265ms, tests 114ms, environment 0ms)
+

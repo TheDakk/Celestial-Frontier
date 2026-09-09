@@ -1,0 +1,19 @@
+{
+  "startedAt": "2026-09-09T15:34:38.811111+00:00",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "ai-viewer-controls-corrected",
+    "--",
+    "port/v2/node_modules/.bin/vitest",
+    "run",
+    "--root",
+    "port/v2",
+    "tests/landfall-viewer.test.ts"
+  ],
+  "testSha256": "e4122dcd8833eecc35ea12e24ba6244561e7d0df0bca56b115fb303facb86927",
+  "diagnosis": "First fixture compared outerHTML attribute insertion order after explicit removal/restoration. Corrected ruler compares every attribute name/presence/value exactly, independently of serialization order. Product source unchanged. First 35 PASS/1 FAIL retained.",
+  "exitCode": 0,
+  "status": "PASS"
+}

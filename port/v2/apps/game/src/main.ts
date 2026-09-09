@@ -4314,6 +4314,7 @@ registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
 registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
 let localAiGame: LocalAiGameV1 | null = null;
+let mountedLocalAiOriginal: AiLandfallOriginalV1 | null = null;
 let localAiStatus = '';
 const localAiRoutes = new Map<string, Extract<NavState, { mode: 'surface' }>>();
 const notificationPanel = document.getElementById('notificationpanel')!;
@@ -5952,6 +5953,7 @@ function retireSurfaceEarthLayers(entries: readonly SurfaceEarthLayerResource[])
 }
 
 function releaseSurfaceVistaOwner(): void {
+  mountedLocalAiOriginal = null;
   surfaceVistaGeneration++;
   if (surfaceEarthLayeredLoad) {
     surfaceEarthLayeredLoad.dispose();
@@ -7796,6 +7798,9 @@ function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): stri
         (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
     bioscanCardActionHtml(bioscanState) +
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
+    (onThisSurface && mountedLocalAiOriginal && surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID
+      && !localAiGame?.snapshot().some(job => job.status === 'ready' && job.originalId === mountedLocalAiOriginal?.originalId)
+      ? '<button data-ai-act="inspect-current" style="min-height:44px;padding:8px 12px;background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;font:12px system-ui;cursor:pointer">Inspect painting</button>' : '') +
     (localAiGame?.html(address?.key) ?? (localAiStatus ? '<p style="flex-basis:100%">' + esc(localAiStatus) + '</p>' : '')) +
     '</div>';
 }
@@ -8749,6 +8754,8 @@ async function mountLocalAiOriginal(original: AiLandfallOriginalV1): Promise<boo
         previous.sprite.destroy({ children: true });
       } catch (error) { noteSurfaceVistaFault(error, 'Prior cached vista retirement failed'); }
     }
+    mountedLocalAiOriginal = original;
+    refreshLocalAiPresentation();
     return true;
   } finally {
     try { bitmap?.close(); } finally { if (canvas) { canvas.width = 1; canvas.height = 1; } }
@@ -8777,7 +8784,13 @@ async function handleLocalAiAction(event: MouseEvent): Promise<boolean> {
   const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-ai-act]') : null;
   if (!target) return false;
   if (event.isTrusted && localAiGame) {
-    try { await localAiGame.action(target.dataset.aiAct ?? '', target.dataset.aiJob ?? ''); }
+    try {
+      if (target.dataset.aiAct === 'inspect-current') {
+        const original = mountedLocalAiOriginal, input = currentAiLandfallInput();
+        if (original && input?.snapshotDigest === original.input.snapshotDigest
+          && surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID) await localAiGame.inspect(original.input, original.originalId);
+      } else await localAiGame.action(target.dataset.aiAct ?? '', target.dataset.aiJob ?? '');
+    }
     catch (error) { noteSurfaceVistaFault(error, 'Local AI action failed'); toast('Painting unavailable', 'Your expedition and retained originals are safe.'); }
   }
   return true;

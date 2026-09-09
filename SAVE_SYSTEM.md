@@ -13,7 +13,11 @@ complete PWA build retention are unchanged. Adaptive variant eviction remains ad
 September9 [local AI implementation](LOCAL_AI_GENERATION.md) now retains immutable exact originals
 in a separate IndexedDB art database with atomic index/original commits and verified rereads;
 no game-save fields or migration are added. Model bytes use separate resumable OPFS storage.
-Neither store is an outside-origin backup; full model/device qualification remains open.
+Neither store is an outside-origin backup; full model/device qualification remains open. The
+full-painting viewer rereads a verified original and changes only ephemeral DOM/Blob URLs, with
+no new game-save fields or original writes. Original lookup still includes the complete model
+recipe: a different recipe after reload does not automatically discover older retained pixels.
+Cross-recipe discovery remains open; no deletion or regeneration fallback is added.
 
 ## V2 notification history — matches code as of 2026-09-06
 

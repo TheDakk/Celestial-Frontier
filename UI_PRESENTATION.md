@@ -7,13 +7,23 @@ page-owned local generation queue. Its progress and explicit View/cancel control
 and Notifications. Completion requires an immutable original committed and reread from a separate
 IndexedDB art store; no auto-navigation, gameplay reward or save-schema change. The full native
 1024×576 image fits the existing measured scene band without moving controls. Model installation
-is explicit, chunked, resumable and hash-verified through OPFS. This remains an Earth-only
+is explicit, chunked, resumable and hash-verified through OPFS. A separate full-painting inspection
+dialog provides Fit painting and actual-size panning from the exact retained original, without
+moving the base controls. Ready rows offer Inspect; after reload the normal Survey exposes the
+restored original. Modal background isolation covers late roots and attribute changes, and Close
+restores the same live job action or visible panel opener after a responsive panel closure,
+without world navigation. Sequence/decode guards reject stale inspections; Close and pagehide
+release transient URLs/DOM. Final native checks cover desktop/small fit, actual-size panning,
+keyboard/focus and normal Survey inspection after reload on unchanged original bytes. This remains an Earth-only
 experimental preview served by local development tooling; it is not a shipped mobile model pack.
 
 Canonical conditioning preserves all19 genomes and six named species with source-backed anatomy,
 botany and composition anchors. Its exact Platypus reference improves the conditioning input;
 actual output quality remains unaccepted. The pinned model is6.69GB, and browser capability checks
-are not device qualification. The [current implementation and limits](LOCAL_AI_GENERATION.md)
+are not device qualification. A locally built 27.08 MiB static runtime pack excludes all weights;
+its installed-only manifest refuses generation until explicit successful browser verification,
+with no automatic download or developer fallback. Combined PWA and physical-phone qualification
+remain open. The [current implementation and limits](LOCAL_AI_GENERATION.md)
 own the game/delivery boundary. The earlier isolated progress/ETA/fixed-shape proof and all failed
 candidates remain immutable evidence in [the preceding review packet](audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md).
 Nick's intended Claude-app review remains pending; a saved CLI response is not that review.

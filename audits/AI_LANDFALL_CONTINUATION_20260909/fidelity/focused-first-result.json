@@ -1,0 +1,40 @@
+{
+  "schema": "cf.focused-owner-receipt.v1",
+  "status": "PASS",
+  "command": [
+    "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "tests/landfall-fidelity.test.ts",
+    "--reporter=verbose"
+  ],
+  "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+  "node": "v26.8.1",
+  "vitest": "4.1.10",
+  "startedAt": "2026-09-09T15:40:59.272Z",
+  "finishedAt": "2026-09-09T15:40:59.930Z",
+  "durationMs": 657.3880829999999,
+  "exitCode": 0,
+  "error": null,
+  "signal": null,
+  "sourcesBefore": {
+    "port/v2/apps/game/src/landfall-fidelity.ts": "549c06851aeeba42c595a9e7b91b61a3320e4cc6a6cdc110c928ad5aaf7cc9d4",
+    "port/v2/tests/landfall-fidelity.test.ts": "464199d05b830a5e192a8cf7bbd18dbaf698f09e002346de846258730919e2d5",
+    "port/v2/apps/game/src/landfall-conditioning.ts": "6cce11db47d7d096fc21c61a733f990f6a66eb51fdcd3b1540a73ccd4aa43402",
+    "port/v2/apps/game/src/landfall-appearance-snapshot.ts": "94d97e8716cfb28d6108583a781116122c1693859c6ac0b32ce5148571d68a69",
+    "port/v2/apps/game/src/earth-layered-recipe.ts": "ab1fd02bd9a125a07f4a2abc671658cae3d94b5368bf3c226f5b1fc46e1fb824",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/known-negative-observations.json": "d4b251ebcc277a1139b1fe04bb05978b1f329698b86e7448ffbad50454d318e6"
+  },
+  "sourcesAfter": {
+    "port/v2/apps/game/src/landfall-fidelity.ts": "549c06851aeeba42c595a9e7b91b61a3320e4cc6a6cdc110c928ad5aaf7cc9d4",
+    "port/v2/tests/landfall-fidelity.test.ts": "464199d05b830a5e192a8cf7bbd18dbaf698f09e002346de846258730919e2d5",
+    "port/v2/apps/game/src/landfall-conditioning.ts": "6cce11db47d7d096fc21c61a733f990f6a66eb51fdcd3b1540a73ccd4aa43402",
+    "port/v2/apps/game/src/landfall-appearance-snapshot.ts": "94d97e8716cfb28d6108583a781116122c1693859c6ac0b32ce5148571d68a69",
+    "port/v2/apps/game/src/earth-layered-recipe.ts": "ab1fd02bd9a125a07f4a2abc671658cae3d94b5368bf3c226f5b1fc46e1fb824",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/known-negative-observations.json": "d4b251ebcc277a1139b1fe04bb05978b1f329698b86e7448ffbad50454d318e6"
+  },
+  "sourceUnchanged": true,
+  "logKind": "raw stdout plus stderr",
+  "logSha256": "1b25a23b588d39e1dc30a01ce7483b7dfd8a93fb23900628cc919ab4ed305cf8",
+  "scope": "Focused pure fidelity owner only; no browser, model generation, pixel classifier or full admission."
+}

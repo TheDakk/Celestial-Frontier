@@ -7,7 +7,11 @@ browser inference and durable exact originals. Explicit model delivery supports 
 verification. Local development tooling supplies the isolated runtime; no model/runtime shipping
 selection or physical phone qualification is implied. See [LOCAL_AI_GENERATION.md](../../LOCAL_AI_GENERATION.md)
 for the current source boundary,6.69GB model accounting, quality gate and exact evidence.
-The proof uses its bounded runner, not a second certification battery.
+The proof uses its bounded runner, not a second certification battery. Full-painting inspection
+now supports Fit painting/native-pixel panning and normal Survey access after reload. The optional
+static runtime builder produces a verified 27.08 MiB pack without weights; its installed-only
+manifest requires explicit verified browser model storage. It is not a shipped or phone-qualified
+PWA. [Current evidence and commands](../../audits/AI_LANDFALL_CONTINUATION_20260909/README.md).
 
 ## Earth layout geometry ownership — matches code as of 2026-09-09
 

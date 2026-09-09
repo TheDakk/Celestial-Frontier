@@ -8,7 +8,8 @@ A small/fast model or successful local inference alone does not satisfy this req
 The painted-image loader also enforces its existing8-second deadline through monotonic checks
 after fetch, body reads, digest, decode and final ownership transfer; delayed timer callbacks
 cannot admit late images. This reliability change preserves size, identity and layout rules.
-No candidate has passed yet. The active local proof and retained failures are tracked in
+Nick said the latest image looks fantastic on September 9; retain that favorable finish feedback.
+No local candidate has yet passed full canonical species/botany acceptance. The active local proof and retained failures are tracked in
 [LOCAL_AV_AI_CONTINUATION_20260909](audits/LOCAL_AV_AI_CONTINUATION_20260909/README.md).
 
 **Latest scope:** Nick confirms the full landfall painting direction “100%”, requests the
@@ -18,6 +19,19 @@ keep those future conditions separate from full organism identity, biome authori
 gameplay time. Current painted examples are authored review images; universal procedural quality,
 dynamic daylight/seasons and exact-view sharing are not implemented by these images.
 
+
+## Local fidelity and inspection — matches code as of 2026-09-09
+
+`landfall-fidelity.ts` records complete six-resident visual observations against exact encoded
+PNG, recipe, reference and full-genome bindings. Incomplete, duplicate, mixed or stale reviews
+refuse. Favorable finish feedback cannot stand in for missing species/count/anatomy findings.
+This contract performs no pixel recognition and is not a production art-admission gate. Current
+Klein inputs provide global text and whole-reference token groups; they do not enforce per-instance
+boxes or counts. An ordered array of individually bound references is the next bounded input path.
+
+The read-only full-painting viewer displays the unchanged retained Blob, with fit and actual-size
+panning. It preserves the accepted scene band and base controls. No image regeneration or quality
+reduction is involved. [Current evidence](audits/AI_LANDFALL_CONTINUATION_20260909/README.md).
 
 ## On-demand landfall requirement — clarified 2026-09-08
 
@@ -33,8 +47,8 @@ should need no separate AI installer. The isolated authoring proof in `tools/loc
 pins FLUX.2 Klein4B ONNX export3bffc0ef, ORT Web1.29.0 and Tokenizers0.2.0. This is a research
 candidate, not a selected shipping model. The20 runtime model files total6,691,020,416 bytes
 (6.23GiB), separate from runtime packages, model staging, saves, scene cache and live GPU/RAM.
-The built-in Codex tool created the current artwork during authoring; it is not an embedded game
-generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
+The built-in Codex tool created direction/reference artwork during authoring; it is not an embedded
+game generator. The later native landfall candidates are actual local browser model outputs. Hardware, download size, quality, latency, costs and exact shared-image retention need
 qualification. A seed alone is not an exact-pixel contract. September9's continued local coding direction now covers the isolated local browser proof and
 its pinned development model cache. It does not accept mandatory player storage or raise shipping
 budgets. No generation service is called; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).

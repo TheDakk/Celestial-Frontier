@@ -1,0 +1,11 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/landfall-viewer.test.ts (7 tests | 1 failed) 148ms
+     × owns late/mutated background roots for the entire lifetime and restores exact prior attributes 14ms
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 35 passed (36)
+   Start at  11:33:55
+   Duration  638ms (transform 286ms, setup 0ms, import 716ms, tests 288ms, environment 0ms)
+

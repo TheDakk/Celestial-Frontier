@@ -1,0 +1,379 @@
+{
+  "schema": "cf.landfall-known-negative-observations.v1",
+  "basis": "Agent visual observations transcribed from previously completed full-resolution direct inspections. Not pixel classification, new rendering or automated species recognition.",
+  "finishFeedback": "Nick praised the latest (02) finish as fantastic in this batch; canonical species/count/placement requirements remain unchanged.",
+  "records": [
+    {
+      "run": "01",
+      "originalPath": "audits/AI_GAME_INTEGRATION_20260909/native-game-01/raw-original.png",
+      "originalSha256": "84157cb2afca7ca869b90b4d3dd0bf1a82499c515756f8bab14e38b05f09230d",
+      "originalBytes": 1535228,
+      "recipeSha256": "6670edbb729e6405ba4ba13b5cdafdac2cd9eebf7434cabcd3f5b9b05e06b360",
+      "reviewPath": "audits/AI_GAME_INTEGRATION_20260909/native-game-01/VISUAL_REVIEW.md",
+      "reviewSha256": "f5011fcff4e22c259856658ab7edf5ce8d397e4bae49cb108f6a054092815631",
+      "scene": {
+        "faunaBodies": 2,
+        "unmatchedFaunaBodies": 0,
+        "distinctBodies": "pass",
+        "noCrossSpeciesFeatures": "fail",
+        "evidence": "Transcribed from the retained direct visual review: bill-bearing spotted hybrid plus Frog; separate Civet absent."
+      },
+      "observations": {
+        "Persimmon": {
+          "instances": [
+            "orange-fruited-tree"
+          ],
+          "identity": {
+            "result": "fail",
+            "evidence": "Named leaves and fruit calyx are not established."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "Tree anchor and visible form are not accepted."
+          },
+          "diagnostics": {
+            "stem": {
+              "result": "pass",
+              "evidence": "A woody branching tree is visible."
+            },
+            "leaves": {
+              "result": "fail",
+              "evidence": "Narrow radiating or compound-looking groups replace broad simple oval leaves."
+            },
+            "fruit": {
+              "result": "fail",
+              "evidence": "Orange fruits lack clear four-lobed calyces."
+            }
+          }
+        },
+        "Devil's Club": {
+          "instances": [
+            "lobed-berry-plant"
+          ],
+          "identity": {
+            "result": "fail",
+            "evidence": "Partial lobed-leaf and berry cues do not establish the full named plant."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "Exact placement and scale are not established."
+          },
+          "diagnostics": {
+            "stem": {
+              "result": "fail",
+              "evidence": "Thick spiny canes are not clearly resolved."
+            },
+            "leaves": {
+              "result": "pass",
+              "evidence": "Large palmate lobed leaves are visible."
+            },
+            "fruit": {
+              "result": "pass",
+              "evidence": "Upright red berry clusters are visible."
+            }
+          }
+        },
+        "Cranberry": {
+          "instances": [
+            "low-red-berry-growth"
+          ],
+          "identity": {
+            "result": "fail",
+            "evidence": "Small-leaved creeping cranberry identity is not established."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "Growth is at lower right instead of the accepted left/center foreground anchor."
+          },
+          "diagnostics": {
+            "stem": {
+              "result": "fail",
+              "evidence": "Low creeping runners are not established."
+            },
+            "leaves": {
+              "result": "fail",
+              "evidence": "Relatively large clustered or compound-looking foliage."
+            },
+            "fruit": {
+              "result": "pass",
+              "evidence": "Red berries are visible near the ground."
+            }
+          }
+        },
+        "Civet": {
+          "instances": [],
+          "identity": {
+            "result": "fail",
+            "evidence": "No separate Civet body can be identified."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "No Civet at its accepted anchor."
+          },
+          "diagnostics": {
+            "body": {
+              "result": "fail",
+              "evidence": "Civet is absent; this diagnostic is not established."
+            },
+            "head": {
+              "result": "fail",
+              "evidence": "Civet is absent; this diagnostic is not established."
+            },
+            "limbs": {
+              "result": "fail",
+              "evidence": "Civet is absent; this diagnostic is not established."
+            },
+            "tail": {
+              "result": "fail",
+              "evidence": "Civet is absent; this diagnostic is not established."
+            }
+          }
+        },
+        "Platypus": {
+          "instances": [
+            "bill-bearing-hybrid"
+          ],
+          "identity": {
+            "result": "fail",
+            "evidence": "Spots, external ear and furred tail mix Civet and Platypus features."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "The hybrid is oversized in the left foreground."
+          },
+          "diagnostics": {
+            "body": {
+              "result": "fail",
+              "evidence": "Spotted rounded body contradicts plain dark-brown monotreme fur."
+            },
+            "head": {
+              "result": "pass",
+              "evidence": "Broad duck bill cue is visible; this does not approve the whole head."
+            },
+            "limbs": {
+              "result": "fail",
+              "evidence": "Webbed clawed feet are not clearly readable."
+            },
+            "tail": {
+              "result": "fail",
+              "evidence": "Small furred tail contradicts a broad flat paddle."
+            }
+          }
+        },
+        "Frog": {
+          "instances": [
+            "green-frog"
+          ],
+          "identity": {
+            "result": "fail",
+            "evidence": "Recognizable frog does not establish exact individual identity."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "Frog is large and center-right rather than x0.25 width0.07."
+          },
+          "diagnostics": {
+            "body": {
+              "result": "pass",
+              "evidence": "Green crouched frog body is visible."
+            },
+            "head": {
+              "result": "pass",
+              "evidence": "Large eyes and wide frog mouth are visible."
+            },
+            "limbs": {
+              "result": "pass",
+              "evidence": "Folded hind legs and frog limb cues are visible."
+            }
+          }
+        }
+      }
+    },
+    {
+      "run": "02",
+      "originalPath": "audits/AI_GAME_INTEGRATION_20260909/native-game-02/raw-original.png",
+      "originalSha256": "aebec1c3b9cf9bb3761ff0178d77b7d525aa7683d5ee5f448408a5f0949fd7e5",
+      "originalBytes": 1520711,
+      "recipeSha256": "03c367952ca6d40f3392c0b066d63810f97bd5b60cf18ac50f52ec81cf885619",
+      "reviewPath": "audits/AI_GAME_INTEGRATION_20260909/native-game-02/VISUAL_REVIEW.md",
+      "reviewSha256": "bf84f17f33cefe0b94271eb7e08fec9a6142007f2bef04fe0f544e71c093e670",
+      "scene": {
+        "faunaBodies": 4,
+        "unmatchedFaunaBodies": 2,
+        "distinctBodies": "pass",
+        "noCrossSpeciesFeatures": "fail",
+        "evidence": "Transcribed from the retained direct visual review: four mammal bodies; two extras and no Frog."
+      },
+      "observations": {
+        "Persimmon": {
+          "instances": [
+            "orange-fruited-tree"
+          ],
+          "identity": {
+            "result": "fail",
+            "evidence": "Named leaves and fruit calyx are not established."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "Tree anchor and visible form are not accepted."
+          },
+          "diagnostics": {
+            "stem": {
+              "result": "pass",
+              "evidence": "A woody branching tree is visible."
+            },
+            "leaves": {
+              "result": "fail",
+              "evidence": "Narrow radiating or compound-looking groups replace broad simple oval leaves."
+            },
+            "fruit": {
+              "result": "fail",
+              "evidence": "Orange fruits lack clear four-lobed calyces."
+            }
+          }
+        },
+        "Devil's Club": {
+          "instances": [
+            "lobed-berry-plant"
+          ],
+          "identity": {
+            "result": "fail",
+            "evidence": "Partial lobed-leaf and berry cues do not establish the full named plant."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "Exact placement and scale are not established."
+          },
+          "diagnostics": {
+            "stem": {
+              "result": "fail",
+              "evidence": "Thick spiny canes are not clearly resolved."
+            },
+            "leaves": {
+              "result": "pass",
+              "evidence": "Large palmate lobed leaves are visible."
+            },
+            "fruit": {
+              "result": "pass",
+              "evidence": "Upright red berry clusters are visible."
+            }
+          }
+        },
+        "Cranberry": {
+          "instances": [
+            "low-red-berry-growth"
+          ],
+          "identity": {
+            "result": "fail",
+            "evidence": "Small-leaved creeping cranberry identity is not established."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "Growth is at lower right instead of the accepted left/center foreground anchor."
+          },
+          "diagnostics": {
+            "stem": {
+              "result": "fail",
+              "evidence": "Low creeping runners are not established."
+            },
+            "leaves": {
+              "result": "fail",
+              "evidence": "Relatively large clustered or compound-looking foliage."
+            },
+            "fruit": {
+              "result": "pass",
+              "evidence": "Red berries are visible near the ground."
+            }
+          }
+        },
+        "Civet": {
+          "instances": [
+            "upper-left-spotted-mammal"
+          ],
+          "identity": {
+            "result": "fail",
+            "evidence": "Short arched cat-like body does not preserve the selected long low Civet."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "The separate spotted animal is upper-left instead of x0.72."
+          },
+          "diagnostics": {
+            "body": {
+              "result": "fail",
+              "evidence": "Short arched body differs from the selected low long Civet."
+            },
+            "head": {
+              "result": "fail",
+              "evidence": "Small cat-like head does not preserve selected identity."
+            },
+            "limbs": {
+              "result": "fail",
+              "evidence": "Full intended four-paw anatomy is not established by the retained review."
+            },
+            "tail": {
+              "result": "fail",
+              "evidence": "Ringed cue is present but its passage beside an extra animal makes assignment unclear."
+            }
+          }
+        },
+        "Platypus": {
+          "instances": [
+            "front-bill-bearing-mammal"
+          ],
+          "identity": {
+            "result": "fail",
+            "evidence": "External ear, paws and thin tail violate monotreme diagnostics."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "Front animal does not establish exact anchor and scale."
+          },
+          "diagnostics": {
+            "body": {
+              "result": "pass",
+              "evidence": "Plainer brown coat improves separation from Civet spots."
+            },
+            "head": {
+              "result": "fail",
+              "evidence": "Broad bill is visible but a prominent round external ear remains."
+            },
+            "limbs": {
+              "result": "fail",
+              "evidence": "Rodent-like paws replace clear webbed clawed feet."
+            },
+            "tail": {
+              "result": "fail",
+              "evidence": "Long thin tail replaces the broad flat paddle."
+            }
+          }
+        },
+        "Frog": {
+          "instances": [],
+          "identity": {
+            "result": "fail",
+            "evidence": "No separate Frog body can be identified."
+          },
+          "placement": {
+            "result": "fail",
+            "evidence": "No Frog at its accepted anchor."
+          },
+          "diagnostics": {
+            "body": {
+              "result": "fail",
+              "evidence": "Frog is absent; this diagnostic is not established."
+            },
+            "head": {
+              "result": "fail",
+              "evidence": "Frog is absent; this diagnostic is not established."
+            },
+            "limbs": {
+              "result": "fail",
+              "evidence": "Frog is absent; this diagnostic is not established."
+            }
+          }
+        }
+      }
+    }
+  ]
+}
