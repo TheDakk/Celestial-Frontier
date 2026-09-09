@@ -21,7 +21,9 @@ the archive verbatim and refresh this handoff in place.
 
 **Current objective:** resume after Nick's accidental stop, collect the actual Claude response,
 verify its findings, complete bounded corrections, preserve evidence and sign locally. This
-review/correction batch is complete on its scoped checks; finalize its signed checkpoint below.
+review/correction batch is complete at signed `af4002783860422b6ffb5ca6b3a47b03099c8514`.
+Its documentation-only successor records this exact signature and refreshed handoff; checked
+implementation bytes are unchanged. Neither checkpoint has been pushed or merged.
 Next substantive work is reliable canonical species/individual conditioning and reference quality,
 not another unchanged progress/cache/kernel loop. No new generation or six-run step sweep occurred.
 
@@ -152,8 +154,12 @@ Verified ownership: **OpenAI/Codex · macOS · `/Users/nick/Projects/celestial-f
 `openai/mac` · upstream `origin/openai/mac`**, SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`.
 Original agent-communication fetch failure is preserved. After Nick reported1Password unlocked,
 the distinct12:11UTC recovery authenticated TheDakk and passed repository read/fetch and PR42 read.
-This does not infer the vault was previously locked. 8bdbea9a was signed and independently verified;
-this correction/review successor is being finalized locally. Ambient.DS_Store is untouched.
+This does not infer the vault was previously locked. Both8bdbea9a and correction source
+`af4002783860422b6ffb5ca6b3a47b03099c8514` are signed and independently verified. The
+[correction signature receipt](audits/CLAUDE_DIRECTION_REVIEW_20260909/CORRECTION_SIGNATURE.json)
+is retained by the following documentation-only checkpoint. That source is8ahead/0behind
+origin/openai/mac and119ahead/0behind origin/develop; its doc successor adds one local commit.
+Ambient.DS_Store is untouched; no scoped working changes remain after final documentation signing.
 Last verified origin/openai/mac is9bfec7dc4a06d97dfd29f8f5424553336776c9fb; origin/develop is
 c1791e210158de864fdd475323c3091d9ecbae58. Current source contains those ancestors; no GitHub write.
 

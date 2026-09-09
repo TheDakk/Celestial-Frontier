@@ -191,7 +191,10 @@ source or merging into its worktree. No fetch, hosted action, test/build, source
 session reuse occurred. The exact request, original CLI response and invocation/signature receipts
 are retained in this packet. Nick does not need to open Claude now to obtain this completed review.
 
-Codex keeps the correction and review record signed locally on openai/mac. GitHub step now: none;
+Codex committed and independently signature-verified the correction/review source as
+`af4002783860422b6ffb5ca6b3a47b03099c8514`,8ahead/0behind origin/openai/mac and119ahead/0behind
+origin/develop. Its documentation-only successor retains [CORRECTION_SIGNATURE.json](CORRECTION_SIGNATURE.json)
+and this exact source handoff; checked implementation bytes are unchanged. GitHub step now: none;
 PR42 remains parked at its older remote head. Its accumulated title/body must be refreshed before
 any future Ready/owner-label step, explicitly distinguishing playable changes from quarantined
 qualityAccepted:false AI/storage research and listing exact-head completed/pending admission.
