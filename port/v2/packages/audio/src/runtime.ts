@@ -27,6 +27,9 @@ export interface AudioVoiceMixIntentV1 {
 export interface AudioParamLike {
   value: number;
   setValueAtTime(value: number, time: number): unknown;
+  /** Native Web Audio capabilities; minimal injected adapters may omit both. */
+  cancelScheduledValues?(time: number): unknown;
+  linearRampToValueAtTime?(value: number, time: number): unknown;
 }
 
 export interface AudioNodeLike {
@@ -185,7 +188,7 @@ export interface AudioRuntimeDiagnostics {
     }>[];
     /** Deterministic minimum across active owners; one when none are active. */
     readonly factors: Readonly<Record<AudioCategory, number>>;
-    /** Saved category gain multiplied by the aggregate owner factor. */
+    /** Target gain: saved category gain times owner factor; native buses approach it smoothly. */
     readonly effectiveCategoryGains: Readonly<Record<AudioCategory, number>>;
   }>;
   readonly nodes: Readonly<{ active: number; peak: number; budget: number }>;
@@ -254,6 +257,15 @@ export interface AudioRuntime {
 const GRAPH_NODES = 13;
 const MAX_VOICE_GRAPH_NODES = 32;
 const MAX_CATEGORY_MIX_PASSES = 12;
+const CATEGORY_DUCK_SECONDS = 0.025;
+const CATEGORY_RELEASE_SECONDS = 0.09;
+interface CategoryGainTransition {
+  readonly param: AudioParamLike;
+  readonly from: number;
+  readonly target: number;
+  readonly start: number;
+  readonly end: number;
+}
 const METERS = Object.freeze(['master', ...AUDIO_CATEGORIES] as const);
 const DEFAULT_BUDGETS: AudioRuntimeBudgets = Object.freeze({
   maxVoices: 24,
@@ -585,6 +597,8 @@ class InjectedAudioRuntime implements AudioRuntime {
   private readonly budgets: AudioRuntimeBudgets;
   private readonly gains: Record<AudioCategory, number>;
   private readonly active = new Map<string, ActiveVoice>();
+  /** At most five current-graph transitions; no callback, node or context owner. */
+  private readonly categoryTransitions = new Map<AudioCategory, CategoryGainTransition>();
   private readonly cache = new Map<string, CacheEntry>();
   private readonly cooldowns = new Map<string, CooldownEntry>();
   private readonly peakLevels: Record<AudioMeter, number>;
@@ -1779,6 +1793,52 @@ class InjectedAudioRuntime implements AudioRuntime {
     ]))) as Readonly<Record<AudioCategory, number>>;
   }
 
+  private writeCategoryGain(
+    name: AudioCategory,
+    param: AudioParamLike,
+    target: number,
+    factor: number,
+    previousFactor: number | undefined,
+    time: number,
+    stillCurrent: () => boolean,
+  ): boolean {
+    const prior = this.categoryTransitions.get(name);
+    const current = prior?.param === param ? prior : undefined;
+    const progress = current ? Math.max(0, Math.min(1, (time - current.start) / Math.max(0.000001, current.end - current.start))) : 1;
+    const held = current ? current.from + (current.target - current.from) * progress : param.value;
+    const nativeAutomation = typeof param.cancelScheduledValues === 'function'
+      && typeof param.linearRampToValueAtTime === 'function';
+    const transitioning = current !== undefined && time < current.end;
+    const smooth = nativeAutomation && target > 0
+      && (factor < 1 || (previousFactor !== undefined && previousFactor !== factor) || transitioning);
+    if (!nativeAutomation) {
+      if (current) throw new TypeError('category gain automation capabilities changed');
+      setParam(param, target, time);
+      return stillCurrent();
+    }
+    if (!smooth && current === undefined) {
+      setParam(param, target, time);
+      return stillCurrent();
+    }
+    /* Hold our exact interpolated value before replacing future automation.
+       This uses standard cancel/set/linear APIs, not a timer or
+       cancelAndHoldAtTime. Publish the held state before injected callbacks. */
+    const from = smooth ? held : target;
+    this.categoryTransitions.set(name, { param, from, target: from, start: time, end: time });
+    param.cancelScheduledValues!(time);
+    if (!stillCurrent()) return false;
+    setParam(param, from, time);
+    if (!stillCurrent()) return false;
+    if (!smooth || from === target) {
+      this.categoryTransitions.delete(name);
+      return true;
+    }
+    const end = time + (target < from ? CATEGORY_DUCK_SECONDS : CATEGORY_RELEASE_SECONDS);
+    this.categoryTransitions.set(name, { param, from, target, start: time, end });
+    param.linearRampToValueAtTime!(target, end);
+    return stillCurrent();
+  }
+
   private writeCategoryMixTarget(
     factors: Readonly<Record<AudioCategory, number>>,
     previousFactors: Readonly<Record<AudioCategory, number>> | null,
@@ -1802,11 +1862,13 @@ class InjectedAudioRuntime implements AudioRuntime {
           || this.context !== context || this.graph !== graph) {
           return Object.freeze({ kind: 'reentrant' });
         }
-        setParam(
-          graph.categories[name].gain,
-          targetGains[name],
+        const current = this.writeCategoryGain(
+          name, graph.categories[name].gain, targetGains[name], factors[name], previousFactors?.[name],
           context.currentTime,
+          () => !this.categoryMixDirty && this.categoryPolicyGeneration === expectedGeneration
+            && this.context === context && this.graph === graph,
         );
+        if (!current) return Object.freeze({ kind: 'reentrant' });
         if (this.categoryMixDirty || this.categoryPolicyGeneration !== expectedGeneration
           || this.context !== context || this.graph !== graph) {
           return Object.freeze({ kind: 'reentrant' });
@@ -2095,6 +2157,7 @@ class InjectedAudioRuntime implements AudioRuntime {
     if (context) this.detachStateListener(context);
     this.context = null;
     this.graph = null;
+    this.categoryTransitions.clear();
     this.resumeBlocked = false;
     const activations = context ? this.cancelActivationsForContext(context) : [];
     /* Detach both context and graph before any injected release/stop callback.

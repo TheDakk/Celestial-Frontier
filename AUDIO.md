@@ -92,11 +92,21 @@ for future authorized renders but does not establish a true headless or dialog-f
 No further REAPER render is needed for this checkpoint. No Phase 2/chrome migration, hosted
 attempt, PR, label, merge, purchase or release is authorized.
 
-**Current runtime reference — matches code as of 2026-09-07 local.** Finite typed creature, biosphere
-and combat voices have a monotonic maximum lifetime as a fallback for a missing browser `onended`
-event. The original natural/manual/steal/mute/hide/dispose cleanup remains the owner; this does not
+**Current runtime reference — matches code as of 2026-09-09 local.** Registered combat cues now
+soften music and ambience in the shared mixer with short native gain transitions (§0.3). Finite
+typed creature, biosphere and combat voices retain their monotonic maximum lifetime as a fallback
+for a missing browser `onended` event. The original natural/manual/steal/mute/hide/dispose cleanup remains the owner; this does not
 change sound identity, envelopes, game clocks or rewards. Detailed current behavior is in §0.3;
 dated signed evidence below is historical, not a certificate for this successor.
+
+The isolated native mixer proof `audits/LOCAL_AV_AI_CONTINUATION_20260909/native-audio-03/`
+passes six400ms48kHz renders: two positive scenarios, three deliberately broken controls and a
+restored positive. Eighteen exact PCM planes prove smooth duck/recovery, interrupted recovery,
+overlap, latest saved volume, immediate category-zero silence and cleanup. Actual production
+runtime and canonical combat requests run through a disclosed OfflineAudioContext scheduling
+adapter. This does not qualify native game gestures, natural-ended/watchdog timing, speakers or
+human listening. Both first harness failures remain; see the packet's chain and raw reports.
+
 
 ## Approved audiovisual authoring exception — 2026-09-04
 
@@ -242,10 +252,10 @@ is stolen; partial write failure rolls back to the current owners, and an irreco
 reentrant adapter is quarantined with bounded cleanup instead of leaving diagnostics and bus values
 in disagreement. Generation/dirty fencing forces a fresh all-bus pass after a reentrant base-gain or
 owner mutation. Diagnostics and the lab validate the exact active owners, aggregate factors and
-effective category gains. The current Tame, Feed, Compendium-audition and generic ecology renderers explicitly request the frozen neutral
-intent, so this substrate changes no audible mix, adds no setting or save field and performs no extra
-category-bus write for those current voices. Non-neutral product ducking and HUMAN mix
-judgment remain later Arc 7/8 work.
+target category gains. Tame, Feed, Compendium-audition and generic ecology retain neutral intent.
+Registered combat cues now request music and ambience factors of 0.75; creature, combat/gameplay
+and UI stay at 1. This adds no setting or save field. Native duck/recovery behavior is specified in
+§0.3; human listening and device acceptance remain open.
 
 The first app adapter now projects one exact live current Arc 5 individual into that pure identity
 pipeline without writing a save, consuming gameplay RNG or admitting a tombstone/species alias.
@@ -314,8 +324,9 @@ presentation-random noise with cue-keyed local noise, and adds only that blow's 
 ability-proc layers. Separate deterministic short contours render initiative, dodge, stun-skipped,
 burn, regeneration, defeat and resolution plus Guardian/Titan entrance, phase, victory and defeat.
 A composite event uses its first stable caption family and one voice rather than double-playing each
-family. The combat/gameplay bus uses neutral mix intent, priority arbitration and a maximum of two
-concurrent combat voices. Master Sound governs this path; Creature voices does not. Skip stops active
+family. Each combat/gameplay voice requests a 0.75 music/ambience factor, with priority arbitration
+and a maximum of two concurrent combat voices. The reduction remains until the last owning cue
+ends; overlapping cues neither multiply that factor nor restart an unchanged transition. Master Sound governs this path; Creature voices does not. Skip stops active
 voices and renders the remaining transcript silently. Close, replace, hidden/unanswerable state,
 route or counterpart loss, Sound Off, context loss and disposal also stop the session. No authored
 or recorded combat asset, ambience or music follows from this bounded path.
@@ -360,9 +371,9 @@ caption; composite cue families remain one bounded voice instead of double-playi
 Broad/continuous ambience, music, recorded assets and asset loading remain absent. The one generic
 distant-biosphere pulse is not an authored ambience system. Battle sound (`cbx`) is still preserved
 by persistence rather than offered as a live v2 control; master Sound governs the combat path. The
-package owns safe per-voice category-
-mix intent and restoration, but current live callers are neutral; no audible priority ducking claim
-is made. Captions beyond the exact Tame toast, Feed status, Compendium audition status, generic
+package owns per-voice category-mix intent and restoration. Combat now requests a restrained
+music/ambience reduction with native gain transitions; the current implementation is not a human
+listening or physical-device acceptance result. Captions beyond the exact Tame toast, Feed status, Compendium audition status, generic
 biosphere status and Combat Chronicle counterparts, mono, dynamic range,
 reduced intensity, real-browser/physical-device audio-graph/heat/battery evidence and all HUMAN
 listening/appeal/comfort judgments remain open. Arc 7/8 and Gate G are therefore **partial**, not
@@ -407,6 +418,31 @@ acknowledgement and explicit owned-fauna Compendium audition are the only curren
 render those creature call plans.
 
 ### 0.3 Typed runtime, buses and lifecycle
+
+**Combat foreground mix (2026-09-09):** `combat-gameplay-voice.ts` requests an immutable 0.75
+factor for music and ambience (about −2.5 dB), leaving creature, combat/gameplay and UI neutral.
+`runtime.ts` combines overlapping owners by their minimum factor, never by multiplying their
+reductions. On native parameters, falling category targets ramp over 25ms and rising targets over
+90ms. A changed target cancels future automation, explicitly holds the interpolated current gain
+and starts the new linear ramp there. Another equal-factor cue does not restart a ramp; recovery
+begins only after the last reducing owner ends. User category gains remain the authoritative bases,
+including changes made during a cue. A saved category gain of zero cancels its ramp immediately.
+Master Sound Off, hide, context loss and disposal keep their immediate source/node cleanup.
+
+The owner uses `cancelScheduledValues`, `setValueAtTime` and `linearRampToValueAtTime`, with at
+most five current-graph transition records and no additional context, node, timer, media or cache.
+Context detachment clears those records. Minimal injected adapters lacking cancel/linear capability
+retain the immediate setter path; they do not prove smooth native playback. Existing generation,
+rollback and bounded quarantine rules also guard interrupted or reentrant automation writes.
+`voiceMix.effectiveCategoryGains` reports the **target** (saved gain × current minimum factor),
+not the instantaneous gain partway through a ramp; meters remain separate observations.
+
+Focused checks cover registered combat with a real generic-ecology graph, simultaneous destination
+paths, overlap/restoration, saved gains, lifecycle release and neutral/early-restoration controls.
+An independent piecewise-linear observer checks ramp samples, reversal, interrupted recovery,
+immediate zero, write failures and reentrancy. Current run results belong to the batch receipt;
+these tests and source changes alone do not establish native sound quality, freedom from pumping,
+matched-level listening, long-session comfort or physical iPhone/Safari/PWA acceptance.
 
 **Finite lifetime fallback (2026-09-04):** `AudioVoiceRequest.maxDurationMs` is optional for
 compatibility. A bounded request requires the injected `scheduleVoiceDeadline` owner and uses

@@ -1,5 +1,13 @@
 # On-demand local generation — conditional direction
 
+**Hard quality requirement — Nick, September 9, 2026:** the embedded image model must produce
+the same cohesive painted quality and approved art direction as the accepted full landfalls.
+Actual output must pass reference comparison for composition, light, materials, anatomy/botany
+and environmental cohesion, alongside separate storage/latency/memory/device qualification.
+A small/fast model or successful local inference alone does not satisfy this requirement.
+No candidate has passed yet. The active local proof and retained failures are tracked in
+[LOCAL_AV_AI_CONTINUATION_20260909](LOCAL_AV_AI_CONTINUATION_20260909/README.md).
+
 September8,2026; clarified after signed display-prototype checkpoint
 `3ee104f86c08973243cc8c8a21c1f9ebba41ae76` (91 files; signature verified;44 ahead/0
 behind cached origin/openai/mac). All runtime and review evidence remain unchanged.
@@ -16,7 +24,11 @@ The current evidence game pack is18.108MiB. No locally distributable generator
 has yet demonstrated the approved painting quality inside an accepted storage,
 latency, memory or battery budget. Local model weights may materially exceed the
 existing128MiB shipped-pack limit. Do not silently raise that limit or rewrite
-PWA cache/retained-build rules. A model download is not authorized.
+PWA cache/retained-build rules. The September8 discussion did not authorize a model download.
+September9 explicitly continues local browser-AI implementation as the proof of concept for a
+later engine game. That newer direction covers one isolated, hash-pinned development cache;
+it does not accept a mandatory player model download or revise the shipped-pack ceiling.
+See the current LOCAL_AV_AI_CONTINUATION_20260909 packet for actual attempts and storage.
 
 Codex made the reference images using its built-in generation tool and saved
 the returned files in the repo. The current project does not contain that model.

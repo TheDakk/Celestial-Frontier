@@ -1,0 +1,27 @@
+{
+  "schema": "cf.browser-image-proof-run/v1",
+  "startedAt": "2026-09-09T05:08:44.277Z",
+  "status": "FAIL",
+  "referenceEnabled": true,
+  "preflight": true,
+  "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+  "sourceSha256": {
+    "browser-proof.html": "d8adb00dfbc1b0ad17ef767730341e82b38a27ca05161caa7e622a943e0a800d",
+    "browser-proof.mjs": "a65007a3d2bee47724bb6cfec715f39c0632aaf7bbc2a1cc3cb84b279d01b88e",
+    "download-controls.test.mjs": "82aca72a1f41972e017556329ef317bb94a2482de5881986c86a5ec1d1d3c989",
+    "fetch-model.mjs": "79ee68e8bcfc37d7dc406df008765e123ac030f7195232f19fac6488a64dac9c",
+    "model-manifest.json": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef",
+    "package-lock.json": "a248f29f9522b42eadf191b1f5351f4df76c50e93c310959c0c817f2c68b2792",
+    "package.json": "df188d8b290f2ef7d2ebf5b8beba4fc57702a212cf6f9aa10fb44ac3c837f2e7",
+    "pipeline-math.mjs": "b45751bbdf205e7d375ef3df6345d984dcb52ce6792c8935db0a0f7a87a31f3d",
+    "pipeline-math.test.mjs": "f4b610e76479a52d25a55e3ec620c0d1865a23bdfe9b0060a7aed22fe659f7b0",
+    "probe-webgpu.mjs": "d6212b638a2d8ebcb39553ec1d83e48eeae10e1f2d293813b813e74964be5068",
+    "proof-server.mjs": "214b73013dc49fd59538ef5e186c963a2b91dafc325e353cc1d2d7e82474efb0",
+    "run-browser-proof.mjs": "9f843361fb96f6b6d30fc29478cd0b463a743009419aeeb211147109e94e642b",
+    "stage-worker.mjs": "26b2b181db532e7a5b6870c71da1d0a6473004750e67b2dec69b8ba814015109"
+  },
+  "events": [],
+  "memory": [],
+  "browserEvents": [],
+  "qualityAccepted": false
+}

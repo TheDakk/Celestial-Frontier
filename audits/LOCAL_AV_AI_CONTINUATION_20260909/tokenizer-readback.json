@@ -1,0 +1,6 @@
+{
+  "scope": "Read-only exact pinned tokenizer/prompt encoding; no model inference.",
+  "tokens": 299,
+  "pad": 151643,
+  "within512": true
+}

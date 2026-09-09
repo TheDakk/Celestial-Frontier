@@ -1,0 +1,6 @@
+port/v2/tools/audio-native-mix/entry.ts(123,9): error TS2322: Type '(_context: AudioContextLike, reservation: AudioVoiceReservation) => { source: ConstantSourceNode; sources: ConstantSourceNode[]; output: ConstantSourceNode; nodes: ConstantSourceNode[]; reservation: AudioVoiceReservation; }' is not assignable to type '(context: AudioContextLike, reservation: AudioVoiceReservation) => AudioVoiceGraph'.
+  Type '{ source: ConstantSourceNode; sources: ConstantSourceNode[]; output: ConstantSourceNode; nodes: ConstantSourceNode[]; reservation: AudioVoiceReservation; }' is not assignable to type 'AudioVoiceGraph'.
+    The types of 'source.onended' are incompatible between these types.
+      Type '((this: AudioScheduledSourceNode, ev: Event) => any) | null' is not assignable to type '(() => void) | null'.
+        Type '(this: AudioScheduledSourceNode, ev: Event) => any' is not assignable to type '() => void'.
+          Target signature provides too few arguments. Expected 1 or more, but got 0.

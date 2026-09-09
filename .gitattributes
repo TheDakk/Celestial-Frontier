@@ -39,3 +39,6 @@
 
 # Preserve the adopted external prompt byte-for-byte, including its original CRLF.
 audits/PAINTED_SPACE_PIPELINE_20260908/USER_PROMPT.md binary
+
+# Retain the model publisher's original CRLF as exact source evidence.
+audits/LOCAL_AV_AI_CONTINUATION_20260909/model-source/browser-quant-readme.md binary

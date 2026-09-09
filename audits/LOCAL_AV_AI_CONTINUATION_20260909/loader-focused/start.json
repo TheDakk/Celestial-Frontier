@@ -1,0 +1,23 @@
+{
+  "command": [
+    "node",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/tools/with-toolchain-lock.mjs",
+    "--label",
+    "local-av-loader-focused-20260909",
+    "--",
+    "npm",
+    "exec",
+    "--",
+    "vitest",
+    "run",
+    "apps/game/src/painted-vista-load.test.ts"
+  ],
+  "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+  "startedAt": "2026-09-09T04:47:13.086567+00:00",
+  "parentHead": "9bfec7dc4a06d97dfd29f8f5424553336776c9fb",
+  "sourceSha256": {
+    "port/v2/apps/game/src/painted-vista-load.ts": "30daaab2e512236f72e7fd979f9a418a3fc76bd6457881a8d8748b1dcd92922d",
+    "port/v2/apps/game/src/painted-vista-load.test.ts": "357420fe5ab8e9f1338b2a430271b0424d30a97afd928a3ff00f1860ccde73d5"
+  },
+  "scope": "Focused loader source only; other disjoint local audio edits may be in progress."
+}

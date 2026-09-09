@@ -1,0 +1,11 @@
+{
+  "stage": "text",
+  "state": "failed",
+  "error": "Native profile group limit",
+  "rawBytes": 2088745,
+  "dropped": 0,
+  "invalid": 1,
+  "summary": null,
+  "rawFile": "native-profile-1-text.json",
+  "rawSha256": "47c52a0f0baea4310a1e0e61e140e1475fdf9dc9213750341c56c86f1c6f0c81"
+}

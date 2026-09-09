@@ -1,0 +1,536 @@
+{
+  "schema": "cf.browser-image-proof-run/v1",
+  "startedAt": "2026-09-09T06:02:08.719Z",
+  "status": "FAIL",
+  "referenceEnabled": true,
+  "preflight": false,
+  "identityReference": true,
+  "profile": true,
+  "profiles": [
+    {
+      "stage": "text",
+      "state": "failed",
+      "error": "Native profile group limit",
+      "rawBytes": 2088745,
+      "dropped": 0,
+      "invalid": 1,
+      "summary": null,
+      "rawFile": "native-profile-1-text.json",
+      "rawSha256": "47c52a0f0baea4310a1e0e61e140e1475fdf9dc9213750341c56c86f1c6f0c81"
+    }
+  ],
+  "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+  "sourceSha256": {
+    "browser-lifecycle.test.mjs": "41f26f8a735b43aa1827276e53a4361993994c436f7363c22e31600bfd912c06",
+    "browser-proof.html": "8a60f7a4bf237cbe27be8e3d358a506b4eb3966c70def8bac00ea41fa4a57c1e",
+    "browser-proof.mjs": "83d61632e2520bf4a79e21e941449865ddab24b1cbe25d84207262b8ab035d1a",
+    "download-controls.test.mjs": "82aca72a1f41972e017556329ef317bb94a2482de5881986c86a5ec1d1d3c989",
+    "fetch-model.mjs": "79ee68e8bcfc37d7dc406df008765e123ac030f7195232f19fac6488a64dac9c",
+    "gpu-profile.mjs": "b1eb17c3b591c2d8d395de8b86486b8c94e26dc77ab22915b64b124a56468a63",
+    "gpu-profile.test.mjs": "933b813d4a0d82614ca73d17fc64aacd685ccefcc34eb08c38ee29d79cfdd2d0",
+    "half-storage.test.mjs": "6cb71881255185f68dbb2e0189d5a69481560c0a30b2494503db51db11b41fd2",
+    "model-manifest.json": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef",
+    "package-lock.json": "a248f29f9522b42eadf191b1f5351f4df76c50e93c310959c0c817f2c68b2792",
+    "package.json": "df188d8b290f2ef7d2ebf5b8beba4fc57702a212cf6f9aa10fb44ac3c837f2e7",
+    "pipeline-math.mjs": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5",
+    "pipeline-math.test.mjs": "f4b610e76479a52d25a55e3ec620c0d1865a23bdfe9b0060a7aed22fe659f7b0",
+    "probe-webgpu.mjs": "d6212b638a2d8ebcb39553ec1d83e48eeae10e1f2d293813b813e74964be5068",
+    "proof-server.mjs": "c88a1108723f9691503be0eeb0fab759d2a02975bffa86192de1d7f1ec1c34c2",
+    "run-browser-proof.mjs": "63e81688ce84ee670ba347fd8dea772642ad1a9582894bed86036095bb449235",
+    "stage-worker.mjs": "fc1ba964af4b7f882427e71086c7543f01c3f90e3a1c72bfb9b17bec151bc103"
+  },
+  "events": [
+    {
+      "phase": "start",
+      "seed": 133,
+      "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+      "referenceEnabled": true,
+      "profile": true,
+      "atMs": 79.69000005722046
+    },
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "text_encoder_q4.onnx",
+      "atMs": 104.10999989509583
+    },
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "text_encoder_q4.onnx",
+      "inputNames": [
+        "input_ids",
+        "attention_mask"
+      ],
+      "outputNames": [
+        "prompt_embeds"
+      ],
+      "elapsedMs": 4068.204999923706,
+      "atMs": 4164.585000038147
+    },
+    {
+      "stage": "text",
+      "phase": "worker-terminated",
+      "atMs": 11782.384999990463
+    },
+    {
+      "phase": "failed",
+      "message": "Error: Error: Native profile group limit\n    at console.log (http://127.0.0.1:50952/stage-worker.mjs:31:65)\n    at Pc (http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs:88:232)\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[12140]:0x11e268a\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[2299]:0x31df2b\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[984]:0x101368\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[11990]:0x11d30f8\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[871]:0xdf6d1\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[11589]:0x11915f3\n    at b (http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs:44:53)\n    at ad (http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs:106:137)\n    at worker.onmessage (http://127.0.0.1:50952/browser-proof.mjs:33:42)",
+      "atMs": 11782.605000019073
+    }
+  ],
+  "memory": [
+    {
+      "atMs": 4860.951334,
+      "processCount": 7,
+      "summedProcessRssKiB": 935600
+    },
+    {
+      "atMs": 9891.726834,
+      "processCount": 9,
+      "summedProcessRssKiB": 3198128
+    },
+    {
+      "atMs": 14914.310417,
+      "processCount": 8,
+      "summedProcessRssKiB": 1044864
+    },
+    {
+      "atMs": 19969.299125,
+      "processCount": 8,
+      "summedProcessRssKiB": 984640
+    }
+  ],
+  "browserEvents": [
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "worker",
+          "level": "error",
+          "text": "\u001b[0;93m2026-09-09 02:02:15.817578 [W:onnxruntime:, session_state.cc:1398 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.\u001b[m",
+          "timestamp": 1788933735819.264,
+          "url": "http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+          "lineNumber": 87,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "Pc",
+                "scriptId": "8",
+                "url": "http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+                "lineNumber": 87,
+                "columnNumber": 231
+              }
+            ]
+          },
+          "workerId": "D2BA9BCF4FE0F0AC97280558CA99253E"
+        }
+      },
+      "sessionId": "B94E5B72D365F9C4009B72230BFEDACB"
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "worker",
+          "level": "error",
+          "text": "\u001b[0;93m2026-09-09 02:02:15.818843 [W:onnxruntime:, session_state.cc:1400 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.\u001b[m",
+          "timestamp": 1788933735819.413,
+          "url": "http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+          "lineNumber": 87,
+          "stackTrace": {
+            "callFrames": [
+              {
+                "functionName": "Pc",
+                "scriptId": "8",
+                "url": "http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+                "lineNumber": 87,
+                "columnNumber": 231
+              }
+            ]
+          },
+          "workerId": "D2BA9BCF4FE0F0AC97280558CA99253E"
+        }
+      },
+      "sessionId": "B94E5B72D365F9C4009B72230BFEDACB"
+    }
+  ],
+  "qualityAccepted": false,
+  "modelVerification": {
+    "schema": "cf.local-image-download-receipt.v1",
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "8b79b92782d198497cd02149eda5df17f278a34d60795084755b8d66bd8dd74e",
+    "startedAt": "2026-09-09T06:02:08.722Z",
+    "finishedAt": "2026-09-09T06:02:12.712Z",
+    "status": "complete",
+    "fileCount": 21,
+    "totalBytes": 6691028208,
+    "timeoutMs": 600000,
+    "verifyOnly": true,
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 7792,
+        "sha256": "4cfe7c534c2f259155b0ec282168bdffeb11241899fa48b4d22f7bda1483f26f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00000.data",
+        "bytes": 1599733760,
+        "sha256": "ed37b81331f4eda3bc150448f2d360b4e42951c57dcb9874ec8d0c7c78fa6f6d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00001.data",
+        "bytes": 594170880,
+        "sha256": "89040c34be052e09698afad17bfea3e1158306369612ae347655dfbd4cfa0f3f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.manifest.json",
+        "bytes": 285,
+        "sha256": "fd22d7819467151ead49d2f25b0d576bcb65134111e5219c264cc605cb62e5b7",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.onnx",
+        "bytes": 5341471,
+        "sha256": "e1670f1d203cf2e5cadecce4b2c13d436eefa228a66b7bc6bc629074e9dc0a1b",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/added_tokens.json",
+        "bytes": 707,
+        "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/chat_template.jinja",
+        "bytes": 4168,
+        "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/merges.txt",
+        "bytes": 1671853,
+        "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/special_tokens_map.json",
+        "bytes": 613,
+        "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer.json",
+        "bytes": 11422654,
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer_config.json",
+        "bytes": 5404,
+        "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/vocab.json",
+        "bytes": 2776833,
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00000.data",
+        "bytes": 1585446912,
+        "sha256": "80aa4b75cdab0395f4374c51eecb59e005a6f81b3e573dddd9826a865bcd11be",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00001.data",
+        "bytes": 1566572544,
+        "sha256": "32576185e1f0ab3937141b0c57acad1f37f298c5e7951b3367096c129e5eca28",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00002.data",
+        "bytes": 981258240,
+        "sha256": "5062b615c62206a2dad22ce01fec6f674b0421336179cadec93fec77d1b2b455",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.manifest.json",
+        "bytes": 368,
+        "sha256": "9cf98a614ffe690a297a286b11642b0611f67f64e80edaaf592645f32e727f29",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.onnx",
+        "bytes": 4991601,
+        "sha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx",
+        "bytes": 760826,
+        "sha256": "05f3f6de75b760d5f3b6cbd6efa40ddc8bb7bc4dad58c1dabc85e96383871a7d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx.data",
+        "bytes": 198508544,
+        "sha256": "357f7da253bfb9e3d5762a4f64fd126eae53b8b79466b7da2da2784d5fce89ae",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx",
+        "bytes": 596081,
+        "sha256": "f7cc93e70cc3a9555cb7bf1b02d2eaab83d706cf0a4ddf6da86dffb56daf05f9",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx.data",
+        "bytes": 137756672,
+        "sha256": "9ac7e0847f5b1a6a077ad38688042a53bc004e986d15dc8c0e37a962aad68671",
+        "disposition": "verified-reused"
+      }
+    ],
+    "failure": null
+  },
+  "runtimeFiles": [
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "bytes": 51407,
+      "sha256": "5d25483158d53d8f34d0e9c06a654d56c8dca4ebdf370ea0982ef11315a00e0e"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "bytes": 25749873,
+      "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.mjs",
+      "bytes": 46676,
+      "sha256": "3d68fa7af88c48894d4b0c8629de12018ab73b77519bc0b05dc8d908ad82749f"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.wasm",
+      "bytes": 27797172,
+      "sha256": "db816fadbab47a755170c08f933961e231412ac17f5981f9a62e519708a44dea"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.mjs",
+      "bytes": 49268,
+      "sha256": "f4a22e988ac3c2345e58c823a9254ac15f39271f86241bb2bbda0bc7e6b4dde6"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.wasm",
+      "bytes": 16025636,
+      "sha256": "8ef22fea2fec3d90dc2858e0392382cf6800b0855acfd6722ca1390e2fe15c56"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.mjs",
+      "bytes": 24218,
+      "sha256": "5a15f1fd086b3f6c2baf1f35105b8f502653b567e165cef80028870b39748747"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm",
+      "bytes": 13961845,
+      "sha256": "ec8580a9d7b9476ceee52e10a7f94124e4dc71a019d666ed6d4726697c109a4d"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs",
+      "bytes": 865147,
+      "sha256": "c600de656f52722365438926fbce6e926cd8594b1b4cd2f5cd4499c42f110c58"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.min.mjs",
+      "bytes": 819520,
+      "sha256": "e7a1ea699f25bdeeb3d9b9ff7ea26edb660fd15cab380e2fe479809d422f5e8b"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.mjs",
+      "bytes": 5929648,
+      "sha256": "93c437880b40d8ffe65c971cff28fa554e10b490f30f45382e2ebd78c457cb7b"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.bundle.min.mjs",
+      "bytes": 413328,
+      "sha256": "a32b8c695bfc78c1e6e5b72746364c1a7733b7b17c5759e3cffd8bc8e8158a91"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.bundle.min.mjs",
+      "bytes": 114239,
+      "sha256": "9afb4911acc005f370e838cf5cfce493728b2634c41afb15a0c716a8053dedee"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.min.mjs",
+      "bytes": 66510,
+      "sha256": "8d930290d7150c5d1bbd88d4e2988bddaf7e19b916c3b0e0e5e581e090b470f4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.mjs",
+      "bytes": 676607,
+      "sha256": "4df3efe5189e41e2eea36f16815bce1ff11979cd8ab5e3e27dfb731f95f9c135"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.min.mjs",
+      "bytes": 367933,
+      "sha256": "d0f6cf735704c25e713101804e24532be1ee754292fe05fa7dda708a3be1e6b4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.mjs",
+      "bytes": 2639881,
+      "sha256": "a4d8dde2bc3638eecf29d772ae48035c534d2160bfedf313f0365cb54e701f1f"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.node.min.mjs",
+      "bytes": 27061,
+      "sha256": "d03374770621e06e4750482236ec6dbd6299d0205b9de44b9eebe52a0721ef71"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.bundle.min.mjs",
+      "bytes": 72894,
+      "sha256": "7a3913dc5c7a9c3ad1144f5fbfecd402bc5013bcc886bc67664b18d8a15ab298"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.min.mjs",
+      "bytes": 50126,
+      "sha256": "14a0a63ad1a0fe8127722929fd16fb26c2e5352ea221bc9034d12daf314d0b92"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.mjs",
+      "bytes": 577671,
+      "sha256": "956c4b3b8d7dd15229c98bcc58869773e1d582737aec04b2e5c634bd932085a4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgl.min.mjs",
+      "bytes": 472167,
+      "sha256": "ce98866698d20fa9521a5d27520a3273a6860b85ff32a5c9f3fc22ee10b9786a"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgl.mjs",
+      "bytes": 3534309,
+      "sha256": "415c7a241d1c1c22a47cee581d76dd2aeb63ed90521cf562adf06ca2a5461c23"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.bundle.min.mjs",
+      "bytes": 116102,
+      "sha256": "2b943893e8b444fd3983c205f3574cddd70b1f8a6170c114b03cc3d6060c4cbb"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "bytes": 66348,
+      "sha256": "08272eb8dadd249a0eaa53e19f4e5b5d01bc8a121240719db29093cfb776bc27"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.mjs",
+      "bytes": 676586,
+      "sha256": "1aaf3cde11544e48f111a0911c4d08c6f1401043ec3822601d51dad39353bb9a"
+    },
+    {
+      "url": "/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "bytes": 98937,
+      "sha256": "1c4a848f86156201c033d6cd08c4cf81ae1088552acec3367f31ef086edf5af0"
+    }
+  ],
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  },
+  "browserPid": 42943,
+  "pageHeap": {
+    "used": 2816230,
+    "total": 3691558,
+    "limit": 4395630592
+  },
+  "error": "Error: Error: Error: Native profile group limit\n    at console.log (http://127.0.0.1:50952/stage-worker.mjs:31:65)\n    at Pc (http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs:88:232)\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[12140]:0x11e268a\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[2299]:0x31df2b\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[984]:0x101368\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[11990]:0x11d30f8\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[871]:0xdf6d1\n    at http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm:wasm-function[11589]:0x11915f3\n    at b (http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs:44:53)\n    at ad (http://127.0.0.1:50952/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs:106:137)\n    at worker.onmessage (http://127.0.0.1:50952/browser-proof.mjs:33:42)\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/run-browser-proof.mjs:83:39",
+  "browserClosed": true,
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/",
+      "at": "2026-09-09T06:02:13.437Z"
+    },
+    {
+      "method": "GET",
+      "path": "/browser-proof.mjs",
+      "at": "2026-09-09T06:02:13.487Z"
+    },
+    {
+      "method": "GET",
+      "path": "/recipe.json",
+      "at": "2026-09-09T06:02:13.509Z"
+    },
+    {
+      "method": "GET",
+      "path": "/stage-worker.mjs",
+      "at": "2026-09-09T06:02:13.516Z"
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "at": "2026-09-09T06:02:13.521Z"
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "at": "2026-09-09T06:02:13.521Z"
+    },
+    {
+      "method": "GET",
+      "path": "/pipeline-math.mjs",
+      "at": "2026-09-09T06:02:13.521Z"
+    },
+    {
+      "method": "GET",
+      "path": "/gpu-profile.mjs",
+      "at": "2026-09-09T06:02:13.521Z"
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "at": "2026-09-09T06:02:13.537Z"
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "at": "2026-09-09T06:02:13.540Z"
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4.onnx",
+      "at": "2026-09-09T06:02:13.694Z"
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4-00000.data",
+      "at": "2026-09-09T06:02:13.710Z"
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4-00001.data",
+      "at": "2026-09-09T06:02:13.710Z"
+    },
+    {
+      "method": "GET",
+      "path": "/model/tokenizer/tokenizer.json",
+      "at": "2026-09-09T06:02:17.601Z"
+    },
+    {
+      "method": "GET",
+      "path": "/model/tokenizer/tokenizer_config.json",
+      "at": "2026-09-09T06:02:17.720Z"
+    }
+  ],
+  "finishedAt": "2026-09-09T06:02:29.185Z",
+  "memoryMeaning": "Sum of owned browser process RSS; shared mappings may count multiple times. Not unique RAM, VRAM or a device qualification.",
+  "sourceUnchanged": true
+}

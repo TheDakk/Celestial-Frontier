@@ -17,10 +17,14 @@ function fixture(options: {
   sha256?: string; expectedBytes?: number; response?: Response | Promise<Response>;
   decoded?: ReturnType<typeof bitmap> | Promise<ReturnType<typeof bitmap>>;
   commit?: (canvas: HTMLCanvasElement) => PaintedVistaCommitV1; copyThrows?: boolean;
+  digest?: Promise<ArrayBuffer>; copyAt?: number;
 } = {}) {
-  const state = { current: true }, image = bitmap();
+  const state = { current: true, now: 0 }, image = bitmap();
   const canvases: Array<{ width: number; height: number; getContext: ReturnType<typeof vi.fn> }> = [];
-  const drawImage = vi.fn(() => { if (options.copyThrows) throw new Error('copy failed'); });
+  const drawImage = vi.fn(() => {
+    if (options.copyAt !== undefined) state.now = options.copyAt;
+    if (options.copyThrows) throw new Error('copy failed');
+  });
   const fetch = vi.fn((_url: string, _options: RequestInit) => Promise.resolve(options.response ?? new Response(ABC)));
   const decode = vi.fn((_blob: Blob) => Promise.resolve(options.decoded ?? image));
   const commit = vi.fn(options.commit ?? (() => true));
@@ -29,6 +33,9 @@ function fixture(options: {
     fallbackStops.push({ aborted: fetch.mock.calls[0]?.[1].signal?.aborted ?? null, timers: vi.getTimerCount() });
   });
   vi.stubGlobal('fetch', fetch); vi.stubGlobal('createImageBitmap', decode);
+  vi.stubGlobal('performance', { now: () => state.now });
+  const digest = options.digest ? vi.fn(() => options.digest!) : null;
+  if (digest) vi.stubGlobal('crypto', { subtle: { digest } });
   vi.stubGlobal('document', { createElement: vi.fn((tag: string) => {
     expect(tag).toBe('canvas');
     const canvas = { width: 0, height: 0, getContext: vi.fn(() => ({ drawImage })) };
@@ -38,7 +45,7 @@ function fixture(options: {
     width: 960, height: 430, isCurrent: () => state.current, commit, fallback,
     ...(options.expectedBytes === undefined ? {} : { expectedBytes: options.expectedBytes }) });
   owners.push(loader);
-  return { loader, state, image, canvases, drawImage, fetch, decode, commit, fallback, fallbackStops };
+  return { loader, state, image, canvases, drawImage, fetch, decode, digest, commit, fallback, fallbackStops };
 }
 const waitStatus = async (f: ReturnType<typeof fixture>, status: string): Promise<void> => {
   await vi.waitFor(() => expect(f.loader.snapshot().status).toBe(status), { timeout: 2000, interval: 5 });
@@ -229,6 +236,61 @@ describe('PaintedVistaLoadV1', () => {
       expect(f.loader.snapshot().status).toBe('failed'); expect(f.fallback).toHaveBeenCalledOnce();
       expect(f.commit).not.toHaveBeenCalled(); expect(f.canvases).toHaveLength(0);
     }
+  });
+
+  it.each(['fetch', 'digest', 'decode'] as const)(
+    'refuses %s completion at the monotonic deadline before its timer fires', async phase => {
+      const response = deferred<Response>(), digest = deferred<ArrayBuffer>();
+      const decoded = deferred<ReturnType<typeof bitmap>>(), late = bitmap();
+      const f = fixture({
+        ...(phase === 'fetch' ? { response: response.promise } : {}),
+        ...(phase === 'digest' ? { digest: digest.promise } : {}),
+        ...(phase === 'decode' ? { decoded: decoded.promise } : {}),
+      });
+      if (phase === 'digest') await vi.waitFor(() => expect(f.digest).toHaveBeenCalledOnce());
+      if (phase === 'decode') await vi.waitFor(() => expect(f.decode).toHaveBeenCalledOnce());
+      // Advancing this independent monotonic clock does not deliver setTimeout.
+      f.state.now = 8000;
+      expect(f.loader.snapshot().status).toBe('pending'); expect(vi.getTimerCount()).toBe(1);
+      const cancelled = vi.fn();
+      if (phase === 'fetch') response.resolve(new Response(new ReadableStream({ cancel: cancelled })));
+      if (phase === 'digest') digest.resolve(Uint8Array.from(Buffer.from(ABC_SHA256, 'hex')).buffer);
+      if (phase === 'decode') decoded.resolve(late);
+      await waitStatus(f, 'failed');
+      expect(f.loader.snapshot()).toMatchObject({ error: 'painted vista load timed out', canvasPixels: 0 });
+      expect(f.commit).not.toHaveBeenCalled(); expect(f.canvases).toHaveLength(0);
+      expect(f.fallback).toHaveBeenCalledOnce();
+      if (phase === 'fetch') expect(cancelled).toHaveBeenCalledOnce();
+      if (phase === 'decode') expect(late.close).toHaveBeenCalledOnce();
+      else expect(f.decode).not.toHaveBeenCalled();
+      vi.advanceTimersByTime(8000);
+      expect(f.fallback).toHaveBeenCalledOnce(); expect(f.commit).not.toHaveBeenCalled();
+    },
+  );
+
+  it.each([7999, 8000, 8001])('checks the final canvas transfer at monotonic time %s', async copyAt => {
+    const f = fixture({ copyAt });
+    await waitStatus(f, copyAt < 8000 ? 'ready' : 'failed');
+    expect(f.image.close).toHaveBeenCalledOnce(); expect(f.canvases).toHaveLength(1);
+    if (copyAt < 8000) {
+      expect(f.commit).toHaveBeenCalledOnce(); expect(f.fallback).not.toHaveBeenCalled();
+      expect([f.canvases[0]!.width, f.canvases[0]!.height]).toEqual([960, 430]);
+    } else {
+      expect(f.commit).not.toHaveBeenCalled(); expect(f.fallback).toHaveBeenCalledOnce();
+      expect(f.loader.snapshot().error).toBe('painted vista load timed out');
+      expect([f.canvases[0]!.width, f.canvases[0]!.height]).toEqual([1, 1]);
+    }
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it('keeps deadline-expired completions silent after current-world authority is lost', async () => {
+    const pending = deferred<ReturnType<typeof bitmap>>(), late = bitmap();
+    const f = fixture({ decoded: pending.promise });
+    await vi.waitFor(() => expect(f.decode).toHaveBeenCalledOnce());
+    f.state.current = false; f.state.now = 8001; pending.resolve(late);
+    await waitStatus(f, 'disposed');
+    expect(f.commit).not.toHaveBeenCalled(); expect(f.fallback).not.toHaveBeenCalled();
+    expect(late.close).toHaveBeenCalledOnce(); expect(vi.getTimerCount()).toBe(0);
   });
 
   it('keeps late fetch success and rejection silent after route loss', async () => {

@@ -1,5 +1,18 @@
 # Celestial Frontier — development toolchain
 
+**September9 browser-AI proof:** Nick explicitly continues the browser game as the local-generation
+proof of concept for a later engine game. `tools/local-image-generation/` is an isolated authoring
+package pinned to ONNX Runtime Web1.29.0 (MIT) and Hugging Face Tokenizers0.2.0 (Apache-2.0);
+installed with scripts disabled and its own lock, leaving game/runtime/test locks unchanged.
+Exact FLUX.2 Klein4B conversion revision3bffc0ef has20 runtime files/6,691,020,416 bytes plus
+7,792-byte README provenance, stored only in the ignored development model cache. Actual Edge
+WebGPU shader-f16 compute and three actual four-stage model runs passed on the Apple Metal
+adapter, producing raw768×432 paintings in142–227seconds. ORT's native asyncify WebGPU provider
+reports some CPU-assigned nodes. Art acceptance, peak unique memory, full-screen quality and
+phone support remain open. Root coordinates immutable receipts in
+[LOCAL_AV_AI_CONTINUATION_20260909](audits/LOCAL_AV_AI_CONTINUATION_20260909/README.md).
+The uninterrupted September8 startup receipt remains applicable; no global tool upgrade.
+
 **Latest authoring direction, September 8:** Nick selected the generated Living Worlds reference
 for cohesive static landings, with shared-identity Compendium art and future articulated 2D battles.
 Built-in imagegen produced the two reference boards and two full landfall review compositions in

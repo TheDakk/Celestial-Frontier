@@ -1,5 +1,16 @@
 # Celestial Frontier — Master Art Direction
 
+**Hard quality requirement — Nick, September 9, 2026:** the embedded image model must produce
+the same cohesive painted quality and approved art direction as the accepted full landfalls.
+Actual output must pass reference comparison for composition, light, materials, anatomy/botany
+and environmental cohesion, alongside separate storage/latency/memory/device qualification.
+A small/fast model or successful local inference alone does not satisfy this requirement.
+The painted-image loader also enforces its existing8-second deadline through monotonic checks
+after fetch, body reads, digest, decode and final ownership transfer; delayed timer callbacks
+cannot admit late images. This reliability change preserves size, identity and layout rules.
+No candidate has passed yet. The active local proof and retained failures are tracked in
+[LOCAL_AV_AI_CONTINUATION_20260909](audits/LOCAL_AV_AI_CONTINUATION_20260909/README.md).
+
 **Latest scope:** Nick confirms the full landfall painting direction “100%”, requests the
 same finish for universal objects and asks for day/night, seasonal/orbital conditions and
 shareable discoveries. [Current source and proposed appearance recipe](audits/MIDGAME_ART_DIRECTION_20260908/TIME_AND_SHARING.md)
@@ -16,21 +27,34 @@ installed in advance. A static landing presentation describes the displayed scen
 require a prepainted planet catalogue. The current one-world still demonstrates quality and
 placement, not the production generation mechanism.
 
-Nick asks to investigate generation locally as part of the game and requires no separate AI
-software installation for players. Local generation could manage model files within the game;
-an online image API could also provide a seamless player flow without a model download. These
-are different runtime choices. No model, browser/native integration or paid service is selected.
+Nick explicitly confirms on September9 that the **browser game is the local-AI proof of concept
+for a later full-engine game**. Continue actual browser inference; no native delivery pivot. Players
+should need no separate AI installer. The isolated authoring proof in `tools/local-image-generation/`
+pins FLUX.2 Klein4B ONNX export3bffc0ef, ORT Web1.29.0 and Tokenizers0.2.0. This is a research
+candidate, not a selected shipping model. The20 runtime model files total6,691,020,416 bytes
+(6.23GiB), separate from runtime packages, model staging, saves, scene cache and live GPU/RAM.
 The built-in Codex tool created the current artwork during authoring; it is not an embedded game
 generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
-qualification. A seed alone is not an exact-pixel contract. This art requirement authorizes no
-generation service or model installation; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+qualification. A seed alone is not an exact-pixel contract. September9's continued local coding direction now covers the isolated local browser proof and
+its pinned development model cache. It does not accept mandatory player storage or raise shipping
+budgets. No generation service is called; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
 Local direction is conditional on feasibility, modest storage and no separate player AI setup.
 Nick now prefers adaptive scene-cache allowances: smaller on limited devices and several GB on
 capable desktops. Proposed tiers remain provisional; disk storage and RAM/GPU budgets are separate.
 All build/model/save/update bytes still count toward the total footprint. No cache manager, model
 budget or runtime gate changed. [Current adaptive limits and retention proposal](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
-The next bounded art-generation scope is **one on-demand scene proof**, using an existing canonical
-world/roster and the approved quality target, before expanding a prepainted planet catalogue.
+Actual browser inference now produces raw768×432 paintings on the M4 Pro24GiB Mac using the
+native ORT WebGPU provider. Three retained runs cover scene reference (196s), no-reference
+ablation (142s), and scene plus exact Civet reference (227s). The extra identity reference improves
+the long pale muzzle and golden coat, but whole-tail framing, diagnostic botany/anatomy and
+full-screen detail remain below acceptance. Some operators run on CPU; no all-GPU or qualified
+unique-RAM/VRAM claim. These are isolated authoring results, not embedded gameplay or phone proof.
+Corrected native profiling attributes95.5% of sampler GPU time to quantized matrix operations;
+the same-Mac profiled768×432 output matches the prior unprofiled output exactly. A native1024×576
+comparison takes300s and produces duplicated/fused Civet bodies and ambiguous water contact.
+That candidate is explicitly rejected; added resolution did not meet the quality bar. The next
+bounded scope is a separately hashed, representation-preserving Q8 block repack experiment,
+whose arithmetic-order/image equivalence and actual speed remain unproved until tested.
 Preserve full genomes, named Earth anatomy, biome authority, current clocks, saves and share codes.
 
 ## Selected landing presentation — Nick, 2026-09-08

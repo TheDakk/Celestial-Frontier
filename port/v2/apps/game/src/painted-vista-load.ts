@@ -24,6 +24,7 @@ export class PaintedVistaLoadV1 {
   private error: string | null = null;
   private readonly abort = new AbortController();
   private deadline: ReturnType<typeof setTimeout> | null = null;
+  private expiresAt: number | null = null;
   private reader: ReadableStreamDefaultReader<Uint8Array> | null = null;
   private canvas: HTMLCanvasElement | null = null;
   private fetchStarts = 0;
@@ -31,12 +32,24 @@ export class PaintedVistaLoadV1 {
 
   constructor(private readonly options: PaintedVistaLoadOptionsV1) {
     if (!this.current()) return;
+    this.expiresAt = performance.now() + PAINTED_VISTA_DEADLINE_MS;
     this.deadline = setTimeout(() => this.fail(new Error('painted vista load timed out')),
       PAINTED_VISTA_DEADLINE_MS);
     void this.load().catch(error => this.fail(error));
   }
 
   private current(): boolean {
+    if (!this.authorized()) return false;
+    // Timers can arrive late after throttling or a busy task. The monotonic
+    // boundary also governs every settled phase and the final canvas transfer.
+    if (this.expiresAt !== null && performance.now() >= this.expiresAt) {
+      this.fail(new Error('painted vista load timed out'));
+      return false;
+    }
+    return true;
+  }
+
+  private authorized(): boolean {
     if (this.status !== 'pending') return false;
     try { if (this.options.isCurrent()) return true; }
     catch (error) { this.error = String(error).slice(0, 512); }
@@ -140,7 +153,8 @@ export class PaintedVistaLoadV1 {
   }
 
   private fail(error: unknown): void {
-    if (!this.current()) return;
+    // Check ownership without re-entering the deadline transition.
+    if (!this.authorized()) return;
     this.status = 'failed';
     this.error = (error instanceof Error ? error.message : String(error)).slice(0, 512);
     this.stop(); this.discardCanvas();

@@ -2,6 +2,11 @@
 
 ## Earth layout geometry ownership — matches code as of 2026-09-09
 
+`painted-vista-load.ts` now checks the existing8-second monotonic expiry after awaited stages
+and before final canvas ownership transfer. Expired work closes decoded images and retains the
+existing failure/disposal rules even when a browser timer is throttled; no identity/layout change.
+
+
 AppChrome's `surfaceLayoutRects()` supplies frozen detached visible rectangles for its existing
 ordered topbar/search/objective/scene-actions elements and dock. Main owns the canvas and
 Planetside rectangle, retaining visible Planetside → dock → canvas fallback, scale conversion,
@@ -19,21 +24,34 @@ installed in advance. A static landing presentation describes the displayed scen
 require a prepainted planet catalogue. The current one-world still demonstrates quality and
 placement, not the production generation mechanism.
 
-Nick asks to investigate generation locally as part of the game and requires no separate AI
-software installation for players. Local generation could manage model files within the game;
-an online image API could also provide a seamless player flow without a model download. These
-are different runtime choices. No model, browser/native integration or paid service is selected.
+Nick explicitly confirms on September9 that the **browser game is the local-AI proof of concept
+for a later full-engine game**. Continue actual browser inference; no native delivery pivot. Players
+should need no separate AI installer. The isolated authoring proof in `tools/local-image-generation/`
+pins FLUX.2 Klein4B ONNX export3bffc0ef, ORT Web1.29.0 and Tokenizers0.2.0. This is a research
+candidate, not a selected shipping model. The20 runtime model files total6,691,020,416 bytes
+(6.23GiB), separate from runtime packages, model staging, saves, scene cache and live GPU/RAM.
 The built-in Codex tool created the current artwork during authoring; it is not an embedded game
 generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
-qualification. A seed alone is not an exact-pixel contract. This art requirement authorizes no
-generation service or model installation; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+qualification. A seed alone is not an exact-pixel contract. September9's continued local coding direction now covers the isolated local browser proof and
+its pinned development model cache. It does not accept mandatory player storage or raise shipping
+budgets. No generation service is called; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
 Local direction is conditional on feasibility, modest storage and no separate player AI setup.
 Nick now prefers adaptive scene-cache allowances: smaller on limited devices and several GB on
 capable desktops. Proposed tiers remain provisional; disk storage and RAM/GPU budgets are separate.
 All build/model/save/update bytes still count toward the total footprint. No cache manager, model
 budget or runtime gate changed. [Current adaptive limits and retention proposal](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
-The next bounded art-generation scope is **one on-demand scene proof**, using an existing canonical
-world/roster and the approved quality target, before expanding a prepainted planet catalogue.
+Actual browser inference now produces raw768×432 paintings on the M4 Pro24GiB Mac using the
+native ORT WebGPU provider. Three retained runs cover scene reference (196s), no-reference
+ablation (142s), and scene plus exact Civet reference (227s). The extra identity reference improves
+the long pale muzzle and golden coat, but whole-tail framing, diagnostic botany/anatomy and
+full-screen detail remain below acceptance. Some operators run on CPU; no all-GPU or qualified
+unique-RAM/VRAM claim. These are isolated authoring results, not embedded gameplay or phone proof.
+Corrected native profiling attributes95.5% of sampler GPU time to quantized matrix operations;
+the same-Mac profiled768×432 output matches the prior unprofiled output exactly. A native1024×576
+comparison takes300s and produces duplicated/fused Civet bodies and ambiguous water contact.
+That candidate is explicitly rejected; added resolution did not meet the quality bar. The next
+bounded scope is a separately hashed, representation-preserving Q8 block repack experiment,
+whose arithmetic-order/image equivalence and actual speed remain unproved until tested.
 Preserve full genomes, named Earth anatomy, biome authority, current clocks, saves and share codes.
 
 ## Selected landing presentation — Nick, 2026-09-08
@@ -5414,6 +5432,8 @@ Compendium / Star Atlas / Cosmic Events / Settings.
 
 ## 9. Audio
 
+**V2 audio map matches code as of 2026-09-09.**
+
 > **See `AUDIO.md` for the full system** (creature voices, combat, ambience, the
 > feedback grammar, the toggles, and the traps). This section is the code map only.
 
@@ -5429,8 +5449,25 @@ writes roll back, reentrant generations force an all-bus recompute, and non-sett
 quarantine within a 12-pass bound. Mute and stop are synchronous, unmute does not allocate,
 failed or closing contexts stay fail-closed, and hostile close/re-entry cannot resurrect an old
 owner. Every voice lifecycle releases its mix owner; diagnostics/lab validation bind owners,
-factors and effective gains. Current creature-expression requests are neutral, so no audible mix or
-saved policy changes. The absolute eight-creature-emitter/120-node policy remains intact.
+factors and target gains. Creature-expression and generic-ecology requests remain neutral.
+Registered combat cues reduce music/ambience targets to 0.75 times the saved gains, leaving the
+other three buses unchanged. Native category transitions take 25ms downward and 90ms upward;
+interruption cancels future automation and holds the current interpolated gain before retargeting.
+Equal overlap does not restart or compound the reduction. The latest saved gains own recovery;
+category zero and master mute/hide/disposal remain immediate. At most five per-graph transition
+records use cancel/set/linear AudioParam APIs, clear at context detach and add no nodes or timers.
+Minimal injected adapters without these capabilities retain immediate setters. Diagnostics report
+the target, not a sample partway through a native ramp. The eight-creature-emitter/120-node cap,
+identity, source envelopes and saved policy remain intact. HUMAN/device listening is still open.
+
+The isolated native mixer proof `audits/LOCAL_AV_AI_CONTINUATION_20260909/native-audio-03/`
+passes six400ms48kHz renders: two positive scenarios, three deliberately broken controls and a
+restored positive. Eighteen exact PCM planes prove smooth duck/recovery, interrupted recovery,
+overlap, latest saved volume, immediate category-zero silence and cleanup. Actual production
+runtime and canonical combat requests run through a disclosed OfflineAudioContext scheduling
+adapter. This does not qualify native game gestures, natural-ended/watchdog timing, speakers or
+human listening. Both first harness failures remain; see the packet's chain and raw reports.
+
 
 `creature-expression-voice.ts` supplies a deterministic asset-free fauna graph bounded to one
 oscillator and one gain node in a single expression concurrency group. `tame-greeting-audio.ts`
@@ -5502,14 +5539,15 @@ only an exact cue object from that plan. Damage retains deterministic legacy-sha
 its proved critical/ability-proc layers; authored synthesized contours cover initiative, dodge,
 stun-skipped, burn, regeneration, defeat, resolution and Guardian/Titan entrance, phase, victory and
 defeat. Composite families remain one voice; priority arbitration keeps at most two concurrent combat
-voices. The combat/gameplay bus and master Sound govern it; Creature Voices does not. Skip,
+voices. Each owns the restrained music/ambience reduction described above; the final owner releases
+it through the existing lifecycle. The combat/gameplay bus and master Sound govern it; Creature Voices does not. Skip,
 Close, replacement, hidden/unanswerable state, route/counterpart loss, Sound Off, context loss and
 dispose synchronously cancel the session, while Skip renders the remainder silently.
 
-Compatibility survey/navigation stings remain separate. No other creature expression, authored or
-continuous ambience, music or recorded combat asset is player-live. Catalogue-only
-audition policy, more-specific ecology content, UI/combat ducking, decoded-byte/media
-plateau, full captions/mono/dynamic-range/reduced-intensity behavior, device
+Compatibility survey/navigation stings remain separate. Outside the explicitly opted-in audiovisual
+pilot, no other creature expression, authored continuous ambience, music or recorded combat asset
+is player-live. Catalogue-only audition policy, more-specific ecology content, UI-owned ducking,
+decoded-byte/media plateau, full captions/mono/dynamic-range/reduced-intensity behavior, device
 heat and HUMAN listening/quality acceptance remain open. This narrow implementation does not close
 Arc 7, Arc 8 or Gate G and grants no release/version authority.
 

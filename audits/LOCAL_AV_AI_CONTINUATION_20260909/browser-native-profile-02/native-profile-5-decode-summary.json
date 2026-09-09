@@ -1,0 +1,1521 @@
+{
+  "stage": "decode",
+  "state": "complete",
+  "error": null,
+  "rawBytes": 333455,
+  "dropped": 0,
+  "invalid": 0,
+  "summary": {
+    "schema": "cf.ort-native-profile/v1",
+    "status": "COMPLETE",
+    "ortVersion": "1.29.0",
+    "unit": "microseconds",
+    "rawBytes": 333455,
+    "eventCount": 715,
+    "dropped": 0,
+    "invalid": 0,
+    "categories": {
+      "Session": 4,
+      "Node": 417,
+      "Kernel": 0,
+      "Api": 294
+    },
+    "nodeSpans": {
+      "count": 417,
+      "durationUs": 64967,
+      "groups": [
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Conv",
+          "count": 36,
+          "durationUs": 18513,
+          "maxDurationUs": 3664
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "InstanceNormalization",
+          "count": 30,
+          "durationUs": 9983,
+          "maxDurationUs": 4094
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Mul",
+          "count": 33,
+          "durationUs": 8435,
+          "maxDurationUs": 3754
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Transpose",
+          "count": 76,
+          "durationUs": 7824,
+          "maxDurationUs": 1795
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Add",
+          "count": 50,
+          "durationUs": 5340,
+          "maxDurationUs": 1169
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "QuickGelu",
+          "count": 29,
+          "durationUs": 5175,
+          "maxDurationUs": 3970
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Resize",
+          "count": 3,
+          "durationUs": 2028,
+          "maxDurationUs": 1959
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "MatMul",
+          "count": 6,
+          "durationUs": 1590,
+          "maxDurationUs": 1239
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Shape",
+          "count": 34,
+          "durationUs": 1382,
+          "maxDurationUs": 930
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Slice",
+          "count": 3,
+          "durationUs": 1057,
+          "maxDurationUs": 1039
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Reshape",
+          "count": 70,
+          "durationUs": 921,
+          "maxDurationUs": 94
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Gather",
+          "count": 30,
+          "durationUs": 795,
+          "maxDurationUs": 290
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Concat",
+          "count": 8,
+          "durationUs": 580,
+          "maxDurationUs": 484
+        },
+        {
+          "provider": "WebGpuExecutionProvider",
+          "opName": "Softmax",
+          "count": 1,
+          "durationUs": 410,
+          "maxDurationUs": 410
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Mul",
+          "count": 3,
+          "durationUs": 388,
+          "maxDurationUs": 365
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Squeeze",
+          "count": 2,
+          "durationUs": 353,
+          "maxDurationUs": 344
+        },
+        {
+          "provider": "CPUExecutionProvider",
+          "opName": "Reshape",
+          "count": 3,
+          "durationUs": 193,
+          "maxDurationUs": 169
+        }
+      ],
+      "meaning": "Host-side Node intervals, separated by execution provider; not pure CPU compute or GPU hardware time."
+    },
+    "gpuDispatches": {
+      "count": 294,
+      "durationUs": 1959015,
+      "groups": [
+        {
+          "opType": "Conv",
+          "programName": "Conv2dMM",
+          "shapes": "inputs[0] = {1,108,192,128} inputs[1] = {3,3,512,128} inputs[2] = {128} outputs[0] = {1,108,192,128} ",
+          "examples": [
+            {
+              "name": "node_conv2d_12_token_48&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            },
+            {
+              "name": "node_conv2d_13_token_52&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 4.2039e-45;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            },
+            {
+              "name": "node_conv2d_14_token_56&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            }
+          ],
+          "count": 7,
+          "durationUs": 332071,
+          "maxDurationUs": 48955
+        },
+        {
+          "opType": "Conv",
+          "programName": "Conv2dMM",
+          "shapes": "inputs[0] = {1,432,768,32} inputs[1] = {3,3,128,32} inputs[2] = {32} outputs[0] = {1,432,768,32} ",
+          "examples": [
+            {
+              "name": "node_conv2d_29_token_118&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 1.61966e-38;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            },
+            {
+              "name": "node_conv2d_31_token_122&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 1.61976e-38;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            },
+            {
+              "name": "node_conv2d_32_token_126&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 6.44597e-44;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            }
+          ],
+          "count": 5,
+          "durationUs": 258343,
+          "maxDurationUs": 52691
+        },
+        {
+          "opType": "Conv",
+          "programName": "Conv2dMM",
+          "shapes": "inputs[0] = {1,216,384,64} inputs[1] = {3,3,256,64} inputs[2] = {64} outputs[0] = {1,216,384,64} ",
+          "examples": [
+            {
+              "name": "node_conv2d_21_token_87&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 6.76827e-43;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            },
+            {
+              "name": "node_conv2d_23_token_91&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 1.35926e-43;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            },
+            {
+              "name": "node_conv2d_24_token_95&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 7.14662e-43;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            }
+          ],
+          "count": 5,
+          "durationUs": 255984,
+          "maxDurationUs": 51708
+        },
+        {
+          "opType": "Conv",
+          "programName": "Conv2dMM",
+          "shapes": "inputs[0] = {1,432,768,64} inputs[1] = {3,3,256,64} inputs[2] = {64} outputs[0] = {1,432,768,64} ",
+          "examples": [
+            {
+              "name": "node_conv2d_27_token_107&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 205849,
+          "maxDurationUs": 205849
+        },
+        {
+          "opType": "Conv",
+          "programName": "Conv2dMM",
+          "shapes": "inputs[0] = {1,216,384,128} inputs[1] = {3,3,512,128} inputs[2] = {128} outputs[0] = {1,216,384,128} ",
+          "examples": [
+            {
+              "name": "node_conv2d_19_token_76&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 187892,
+          "maxDurationUs": 187892
+        },
+        {
+          "opType": "Conv",
+          "programName": "Conv2dMM",
+          "shapes": "inputs[0] = {1,54,96,128} inputs[1] = {3,3,512,128} inputs[2] = {128} outputs[0] = {1,54,96,128} ",
+          "examples": [
+            {
+              "name": "node_conv2d_2_token_8&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 4.17587e-41;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            },
+            {
+              "name": "node_conv2d_3_token_12&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 4.76441e-44;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            },
+            {
+              "name": "node_conv2d_4_token_16&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 4.2039e-45;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            }
+          ],
+          "count": 10,
+          "durationUs": 120848,
+          "maxDurationUs": 13828
+        },
+        {
+          "opType": "Conv",
+          "programName": "Conv2dMM",
+          "shapes": "inputs[0] = {1,432,768,64} inputs[1] = {3,3,256,32} inputs[2] = {32} outputs[0] = {1,432,768,32} ",
+          "examples": [
+            {
+              "name": "node_conv2d_28_token_114&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 2.94273e-44;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 100925,
+          "maxDurationUs": 100925
+        },
+        {
+          "opType": "Conv",
+          "programName": "Conv2dMM",
+          "shapes": "inputs[0] = {1,216,384,128} inputs[1] = {3,3,512,64} inputs[2] = {64} outputs[0] = {1,216,384,64} ",
+          "examples": [
+            {
+              "name": "node_conv2d_20_token_83&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 6.53005e-43;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 95879,
+          "maxDurationUs": 95879
+        },
+        {
+          "opType": "InstanceNormalization",
+          "programName": "InstanceNorm",
+          "shapes": "inputs[0] = {1,32,331776} inputs[1] = {1,32,1} outputs[0] = {1,32,331776} ",
+          "examples": [
+            {
+              "name": "node_InstanceNormalization_514&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:3:1:2;3|1;3:2;3"
+            },
+            {
+              "name": "node_InstanceNormalization_676&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:3:1:2;3|1;3:2;3"
+            },
+            {
+              "name": "node_InstanceNormalization_699&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:3:1:2;3|1;3:2;3"
+            }
+          ],
+          "count": 7,
+          "durationUs": 25821,
+          "maxDurationUs": 6160
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {331776,128} outputs[0] = {128,331776} ",
+          "examples": [
+            {
+              "name": "Transpose_token_113&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_201&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_121&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 6,
+          "durationUs": 22806,
+          "maxDurationUs": 6095
+        },
+        {
+          "opType": "Conv",
+          "programName": "Conv2dMM",
+          "shapes": "inputs[0] = {1,432,768,128} inputs[1] = {3,3,128,3} inputs[2] = {3} outputs[0] = {1,432,768,3} ",
+          "examples": [
+            {
+              "name": "node_conv2d_35_token_138&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|1|1,0,1,0,1,32,32,8,1,]:8,8,1:3:1|1|1|4|2|2|1|1|1:0;4|0;4|0;1:0;4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 21430,
+          "maxDurationUs": 21430
+        },
+        {
+          "opType": "Resize",
+          "programName": "ResizeNearest2D",
+          "shapes": "inputs[0] = {1,256,216,384} outputs[0] = {1,256,432,768} ",
+          "examples": [
+            {
+              "name": "node_upsample_nearest2d_2&Resize&ResizeNearest2D",
+              "cacheKey": "ResizeNearest2D[0|1|3]:3:8|4|1|1:0;4:4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 20054,
+          "maxDurationUs": 20054
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {128,331776} outputs[0] = {331776,128} ",
+          "examples": [
+            {
+              "name": "Transpose_token_116&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_120&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_124&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 6,
+          "durationUs": 19465,
+          "maxDurationUs": 4522
+        },
+        {
+          "opType": "QuickGelu",
+          "programName": "QuickGelu",
+          "shapes": "inputs[0] = {10616832} outputs[0] = {10616832} ",
+          "examples": [
+            {
+              "name": "node_silu_16/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:2;:"
+            },
+            {
+              "name": "node_silu_23/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:2;:"
+            },
+            {
+              "name": "node_silu_24/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:2;:"
+            }
+          ],
+          "count": 7,
+          "durationUs": 15990,
+          "maxDurationUs": 3998
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {256,331776} outputs[0] = {331776,256} ",
+          "examples": [
+            {
+              "name": "Transpose_token_105&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_112&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 2,
+          "durationUs": 15008,
+          "maxDurationUs": 8585
+        },
+        {
+          "opType": "MatMul",
+          "programName": "MatMul",
+          "shapes": "inputs[0] = {1,1,5184,1296} inputs[1] = {1,1,5184,128} outputs[0] = {1,5184,128} ",
+          "examples": [
+            {
+              "name": "node_scaled_dot_product_attention&MatMul&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:2;4|2;4:3:2"
+            }
+          ],
+          "count": 1,
+          "durationUs": 13435,
+          "maxDurationUs": 13435
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {10616832} inputs[1] = {128,1,1} outputs[0] = {10616832} ",
+          "examples": [
+            {
+              "name": "node_Mul_685&Mul&Mul",
+              "cacheKey": "Mul[V]:3:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_Mul_708&Mul&Mul",
+              "cacheKey": "Mul[V]:3:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_Mul_731&Mul&Mul",
+              "cacheKey": "Mul[V]:3:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 6,
+          "durationUs": 13368,
+          "maxDurationUs": 3867
+        },
+        {
+          "opType": "MatMul",
+          "programName": "MatMul",
+          "shapes": "inputs[0] = {1,1,5184,128} inputs[1] = {1,1,512,1296} outputs[0] = {1,5184,1296} ",
+          "examples": [
+            {
+              "name": "node_MatMul_163&MatMul&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:2;4|2;4:3:2"
+            }
+          ],
+          "count": 1,
+          "durationUs": 13042,
+          "maxDurationUs": 13042
+        },
+        {
+          "opType": "Conv",
+          "programName": "MatMul",
+          "shapes": "inputs[0] = {1,331776,64} inputs[1] = {1,256,32} inputs[2] = {32} outputs[0] = {1,331776,32} ",
+          "examples": [
+            {
+              "name": "node_conv2d_30_token_110&Conv&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:2;3|2;3|1:3:1"
+            }
+          ],
+          "count": 1,
+          "durationUs": 12321,
+          "maxDurationUs": 12321
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {82944,256} outputs[0] = {256,82944} ",
+          "examples": [
+            {
+              "name": "Transpose_token_82&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_186&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_90&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 6,
+          "durationUs": 12191,
+          "maxDurationUs": 3342
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {10616832} inputs[1] = {128,1,1} outputs[0] = {10616832} ",
+          "examples": [
+            {
+              "name": "node_group_norm_24&Add&Add",
+              "cacheKey": "Add[V]:3:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_group_norm_25&Add&Add",
+              "cacheKey": "Add[V]:3:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_group_norm_26&Add&Add",
+              "cacheKey": "Add[V]:3:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 6,
+          "durationUs": 11927,
+          "maxDurationUs": 3801
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {5184,512} outputs[0] = {512,5184} ",
+          "examples": [
+            {
+              "name": "Transpose_token_3&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_7&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_144&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 14,
+          "durationUs": 11206,
+          "maxDurationUs": 2032
+        },
+        {
+          "opType": "Conv",
+          "programName": "MatMul",
+          "shapes": "inputs[0] = {1,82944,128} inputs[1] = {1,512,64} inputs[2] = {64} outputs[0] = {1,82944,64} ",
+          "examples": [
+            {
+              "name": "node_conv2d_22_token_79&Conv&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 2.52234e-44;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:2;3|2;3|1:3:1"
+            }
+          ],
+          "count": 1,
+          "durationUs": 10355,
+          "maxDurationUs": 10355
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {20736,512} outputs[0] = {512,20736} ",
+          "examples": [
+            {
+              "name": "Transpose_token_47&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_51&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_171&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 7,
+          "durationUs": 9896,
+          "maxDurationUs": 2818
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {10616832} inputs[1] = {10616832} outputs[0] = {10616832} ",
+          "examples": [
+            {
+              "name": "node_add_737&Add&Add",
+              "cacheKey": "Add[E00]:3:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_783&Add&Add",
+              "cacheKey": "Add[E00]:3:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_829&Add&Add",
+              "cacheKey": "Add[E00]:3:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 3,
+          "durationUs": 9174,
+          "maxDurationUs": 4325
+        },
+        {
+          "opType": "InstanceNormalization",
+          "programName": "ComputeChannelScaleShift",
+          "shapes": "inputs[0] = {1,32,331776} inputs[1] = {32} inputs[2] = {32} outputs[0] = {1,32,1} ",
+          "examples": [
+            {
+              "name": "node_InstanceNormalization_514&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            },
+            {
+              "name": "node_InstanceNormalization_676&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            },
+            {
+              "name": "node_InstanceNormalization_699&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            }
+          ],
+          "count": 7,
+          "durationUs": 9110,
+          "maxDurationUs": 4260
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {5308416} inputs[1] = {5308416} outputs[0] = {5308416} ",
+          "examples": [
+            {
+              "name": "node_add_584&Add&Add",
+              "cacheKey": "Add[E00]:3:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_630&Add&Add",
+              "cacheKey": "Add[E00]:3:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_676&Add&Add",
+              "cacheKey": "Add[E00]:3:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 3,
+          "durationUs": 8127,
+          "maxDurationUs": 3277
+        },
+        {
+          "opType": "Resize",
+          "programName": "ResizeNearest2D",
+          "shapes": "inputs[0] = {1,512,108,192} outputs[0] = {1,512,216,384} ",
+          "examples": [
+            {
+              "name": "node_upsample_nearest2d_1&Resize&ResizeNearest2D",
+              "cacheKey": "ResizeNearest2D[0|1|3]:3:8|4|1|1:0;4:4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 7471,
+          "maxDurationUs": 7471
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {331776,256} outputs[0] = {256,331776} ",
+          "examples": [
+            {
+              "name": "Transpose_token_106&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 1,
+          "durationUs": 6488,
+          "maxDurationUs": 6488
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {512,82944} outputs[0] = {82944,512} ",
+          "examples": [
+            {
+              "name": "Transpose_token_74&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_81&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 2,
+          "durationUs": 6291,
+          "maxDurationUs": 4194
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {2654208} inputs[1] = {2654208} outputs[0] = {2654208} ",
+          "examples": [
+            {
+              "name": "node_add_431&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_477&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_523&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 3,
+          "durationUs": 6226,
+          "maxDurationUs": 2294
+        },
+        {
+          "opType": "InstanceNormalization",
+          "programName": "InstanceNorm",
+          "shapes": "inputs[0] = {1,32,165888} inputs[1] = {1,32,1} outputs[0] = {1,32,165888} ",
+          "examples": [
+            {
+              "name": "node_InstanceNormalization_537&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:3:1:2;3|1;3:2;3"
+            },
+            {
+              "name": "node_InstanceNormalization_560&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:3:1:2;3|1;3:2;3"
+            },
+            {
+              "name": "node_InstanceNormalization_583&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:3:1:2;3|1;3:2;3"
+            }
+          ],
+          "count": 5,
+          "durationUs": 5898,
+          "maxDurationUs": 2818
+        },
+        {
+          "opType": "MatMul",
+          "programName": "MatMul",
+          "shapes": "inputs[0] = {1,5184,128} inputs[1] = {512,128} outputs[0] = {1,5184,128} ",
+          "examples": [
+            {
+              "name": "node_MatMul_114&MatMul&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:2;3|2;2:3:1"
+            },
+            {
+              "name": "node_MatMul_112&MatMul&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:2;3|2;2:3:1"
+            },
+            {
+              "name": "node_MatMul_116&MatMul&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 0;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:2;3|2;2:3:1"
+            }
+          ],
+          "count": 4,
+          "durationUs": 5505,
+          "maxDurationUs": 2097
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {256,82944} outputs[0] = {82944,256} ",
+          "examples": [
+            {
+              "name": "Transpose_token_85&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_89&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_93&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 5,
+          "durationUs": 5440,
+          "maxDurationUs": 1114
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {21233664} inputs[1] = {256,1,1} outputs[0] = {21233664} ",
+          "examples": [
+            {
+              "name": "node_group_norm_23&Add&Add",
+              "cacheKey": "Add[V]:3:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 1,
+          "durationUs": 5439,
+          "maxDurationUs": 5439
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {82944,512} outputs[0] = {512,82944} ",
+          "examples": [
+            {
+              "name": "Transpose_token_75&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 1,
+          "durationUs": 5439,
+          "maxDurationUs": 5439
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {21233664} inputs[1] = {256,1,1} outputs[0] = {21233664} ",
+          "examples": [
+            {
+              "name": "node_Mul_662&Mul&Mul",
+              "cacheKey": "Mul[V]:3:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 1,
+          "durationUs": 5374,
+          "maxDurationUs": 5374
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {2654208} inputs[1] = {512,1,1} outputs[0] = {2654208} ",
+          "examples": [
+            {
+              "name": "node_group_norm_11&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_group_norm_12&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_group_norm_13&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 6,
+          "durationUs": 4587,
+          "maxDurationUs": 2490
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {2654208} inputs[1] = {512,1,1} outputs[0] = {2654208} ",
+          "examples": [
+            {
+              "name": "node_Mul_384&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_Mul_407&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_Mul_430&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 6,
+          "durationUs": 4455,
+          "maxDurationUs": 2490
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {663552} inputs[1] = {663552} outputs[0] = {663552} ",
+          "examples": [
+            {
+              "name": "node_add_83&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_191&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_add_237&Add&Add",
+              "cacheKey": "Add[E00]:1:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 6,
+          "durationUs": 4325,
+          "maxDurationUs": 1638
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {5308416} inputs[1] = {256,1,1} outputs[0] = {5308416} ",
+          "examples": [
+            {
+              "name": "node_group_norm_18&Add&Add",
+              "cacheKey": "Add[V]:3:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_group_norm_19&Add&Add",
+              "cacheKey": "Add[V]:3:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_group_norm_20&Add&Add",
+              "cacheKey": "Add[V]:3:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 5,
+          "durationUs": 4260,
+          "maxDurationUs": 918
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {5308416} inputs[1] = {256,1,1} outputs[0] = {5308416} ",
+          "examples": [
+            {
+              "name": "node_Mul_546&Mul&Mul",
+              "cacheKey": "Mul[V]:3:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_Mul_569&Mul&Mul",
+              "cacheKey": "Mul[V]:3:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_Mul_592&Mul&Mul",
+              "cacheKey": "Mul[V]:3:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 5,
+          "durationUs": 4128,
+          "maxDurationUs": 918
+        },
+        {
+          "opType": "QuickGelu",
+          "programName": "QuickGelu",
+          "shapes": "inputs[0] = {5308416} outputs[0] = {5308416} ",
+          "examples": [
+            {
+              "name": "node_silu_17/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:2;:"
+            },
+            {
+              "name": "node_silu_18/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:2;:"
+            },
+            {
+              "name": "node_silu_19/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:2;:"
+            }
+          ],
+          "count": 5,
+          "durationUs": 4127,
+          "maxDurationUs": 983
+        },
+        {
+          "opType": "Softmax",
+          "programName": "Softmax",
+          "shapes": "inputs[0] = {1,1,5184,1296} outputs[0] = {1,1,5184,1296} ",
+          "examples": [
+            {
+              "name": "node_Softmax_164&Softmax&Softmax",
+              "cacheKey": "Softmax[4|64]:64,1,1:1:1:2;4:2;4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 3867,
+          "maxDurationUs": 3867
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {512,20736} outputs[0] = {20736,512} ",
+          "examples": [
+            {
+              "name": "Transpose_token_46&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_50&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_54&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 7,
+          "durationUs": 3668,
+          "maxDurationUs": 524
+        },
+        {
+          "opType": "Resize",
+          "programName": "ResizeNearest2D",
+          "shapes": "inputs[0] = {1,512,54,96} outputs[0] = {1,512,108,192} ",
+          "examples": [
+            {
+              "name": "node_upsample_nearest2d&Resize&ResizeNearest2D",
+              "cacheKey": "ResizeNearest2D[0|1|3]:3:8|4|1|1:0;4:4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 3473,
+          "maxDurationUs": 3473
+        },
+        {
+          "opType": "QuickGelu",
+          "programName": "QuickGelu",
+          "shapes": "inputs[0] = {21233664} outputs[0] = {21233664} ",
+          "examples": [
+            {
+              "name": "node_silu_22/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:3:1|1:2;:"
+            }
+          ],
+          "count": 1,
+          "durationUs": 3277,
+          "maxDurationUs": 3277
+        },
+        {
+          "opType": "InstanceNormalization",
+          "programName": "InstanceNorm",
+          "shapes": "inputs[0] = {1,32,663552} inputs[1] = {1,32,1} outputs[0] = {1,32,663552} ",
+          "examples": [
+            {
+              "name": "node_InstanceNormalization_653&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:3:1:2;3|1;3:2;3"
+            }
+          ],
+          "count": 1,
+          "durationUs": 3211,
+          "maxDurationUs": 3211
+        },
+        {
+          "opType": "QuickGelu",
+          "programName": "QuickGelu",
+          "shapes": "inputs[0] = {2654208} outputs[0] = {2654208} ",
+          "examples": [
+            {
+              "name": "node_silu_10/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:2;:"
+            },
+            {
+              "name": "node_silu_11/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:2;:"
+            },
+            {
+              "name": "node_silu_12/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:2;:"
+            }
+          ],
+          "count": 6,
+          "durationUs": 2359,
+          "maxDurationUs": 459
+        },
+        {
+          "opType": "InstanceNormalization",
+          "programName": "InstanceNorm",
+          "shapes": "inputs[0] = {1,32,82944} inputs[1] = {1,32,1} outputs[0] = {1,32,82944} ",
+          "examples": [
+            {
+              "name": "node_InstanceNormalization_375&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:1:1:2;3|1;3:2;3"
+            },
+            {
+              "name": "node_InstanceNormalization_398&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:1:1:2;3|1;3:2;3"
+            },
+            {
+              "name": "node_InstanceNormalization_421&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:1:1:2;3|1;3:2;3"
+            }
+          ],
+          "count": 6,
+          "durationUs": 1968,
+          "maxDurationUs": 328
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {1,1,5184,512} outputs[0] = {1,5184,1,512} ",
+          "examples": [
+            {
+              "name": "node_transpose_6&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1-3]:64,1,1:1:1:0;4:"
+            }
+          ],
+          "count": 1,
+          "durationUs": 1901,
+          "maxDurationUs": 1901
+        },
+        {
+          "opType": "InstanceNormalization",
+          "programName": "ComputeChannelScaleShift",
+          "shapes": "inputs[0] = {1,32,165888} inputs[1] = {32} inputs[2] = {32} outputs[0] = {1,32,1} ",
+          "examples": [
+            {
+              "name": "node_InstanceNormalization_537&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            },
+            {
+              "name": "node_InstanceNormalization_560&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            },
+            {
+              "name": "node_InstanceNormalization_583&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            }
+          ],
+          "count": 5,
+          "durationUs": 1900,
+          "maxDurationUs": 393
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {512,5184} outputs[0] = {5184,512} ",
+          "examples": [
+            {
+              "name": "Transpose_token_6&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "Transpose_token_10&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            },
+            {
+              "name": "node_transpose_2&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 12,
+          "durationUs": 1704,
+          "maxDurationUs": 197
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {10616832} inputs[1] = {512,1,1} outputs[0] = {10616832} ",
+          "examples": [
+            {
+              "name": "node_group_norm_17&Add&Add",
+              "cacheKey": "Add[V]:3:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 1,
+          "durationUs": 1573,
+          "maxDurationUs": 1573
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {10616832} inputs[1] = {512,1,1} outputs[0] = {10616832} ",
+          "examples": [
+            {
+              "name": "node_Mul_523&Mul&Mul",
+              "cacheKey": "Mul[V]:3:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 1,
+          "durationUs": 1573,
+          "maxDurationUs": 1573
+        },
+        {
+          "opType": "InstanceNormalization",
+          "programName": "ComputeChannelScaleShift",
+          "shapes": "inputs[0] = {1,32,663552} inputs[1] = {32} inputs[2] = {32} outputs[0] = {1,32,1} ",
+          "examples": [
+            {
+              "name": "node_InstanceNormalization_653&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            }
+          ],
+          "count": 1,
+          "durationUs": 1442,
+          "maxDurationUs": 1442
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {663552} inputs[1] = {512,1,1} outputs[0] = {663552} ",
+          "examples": [
+            {
+              "name": "node_group_norm&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_group_norm_1&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_group_norm_3&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 10,
+          "durationUs": 1310,
+          "maxDurationUs": 131
+        },
+        {
+          "opType": "InstanceNormalization",
+          "programName": "ComputeChannelScaleShift",
+          "shapes": "inputs[0] = {1,32,82944} inputs[1] = {32} inputs[2] = {32} outputs[0] = {1,32,1} ",
+          "examples": [
+            {
+              "name": "node_InstanceNormalization_375&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            },
+            {
+              "name": "node_InstanceNormalization_398&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            },
+            {
+              "name": "node_InstanceNormalization_421&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            }
+          ],
+          "count": 6,
+          "durationUs": 1182,
+          "maxDurationUs": 197
+        },
+        {
+          "opType": "InstanceNormalization",
+          "programName": "InstanceNorm",
+          "shapes": "inputs[0] = {1,32,20736} inputs[1] = {1,32,1} outputs[0] = {1,32,20736} ",
+          "examples": [
+            {
+              "name": "node_InstanceNormalization_47&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:1:1:2;3|1;3:2;3"
+            },
+            {
+              "name": "node_InstanceNormalization_71&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:1:1:2;3|1;3:2;3"
+            },
+            {
+              "name": "node_InstanceNormalization_99&InstanceNormalization&InstanceNorm",
+              "cacheKey": "InstanceNorm:1:1:2;3|1;3:2;3"
+            }
+          ],
+          "count": 11,
+          "durationUs": 856,
+          "maxDurationUs": 131
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {663552} inputs[1] = {512,1,1} outputs[0] = {663552} ",
+          "examples": [
+            {
+              "name": "node_Mul_57&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_Mul_80&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|3"
+            },
+            {
+              "name": "node_Mul_198&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|3"
+            }
+          ],
+          "count": 10,
+          "durationUs": 855,
+          "maxDurationUs": 131
+        },
+        {
+          "opType": "Conv",
+          "programName": "Conv2dMM",
+          "shapes": "inputs[0] = {1,54,96,8} inputs[1] = {3,3,32,128} inputs[2] = {128} outputs[0] = {1,54,96,128} ",
+          "examples": [
+            {
+              "name": "node_conv2d_1_token_4&Conv&Conv2dMM",
+              "cacheKey": "Conv2dMM[ActivationKind: 0;ActivationParams: 0;ActivationParams: 1.71783e+19;|1|4,1,1,1,1,32,32,32,4,]:8,8,1:3:1|1|1|4|2|2|1|1|1:2;4|2;4|2;1:2;4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 852,
+          "maxDurationUs": 852
+        },
+        {
+          "opType": "QuickGelu",
+          "programName": "QuickGelu",
+          "shapes": "inputs[0] = {663552} outputs[0] = {663552} ",
+          "examples": [
+            {
+              "name": "node_silu/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:2;:"
+            },
+            {
+              "name": "node_silu_1/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:2;:"
+            },
+            {
+              "name": "node_silu_2/QuickGeluFusion/&QuickGelu&QuickGelu",
+              "cacheKey": "QuickGelu:1:1|1:2;:"
+            }
+          ],
+          "count": 10,
+          "durationUs": 725,
+          "maxDurationUs": 131
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {1,5184,1,512} outputs[0] = {1,1,5184,512} ",
+          "examples": [
+            {
+              "name": "node_transpose_4&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1-3]:64,1,1:1:1:0;4:"
+            },
+            {
+              "name": "node_transpose_3&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1-3]:64,1,1:1:1:0;4:"
+            },
+            {
+              "name": "node_transpose_5&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-1-3]:64,1,1:1:1:0;4:"
+            }
+          ],
+          "count": 3,
+          "durationUs": 721,
+          "maxDurationUs": 262
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {663552} inputs[1] = {128} outputs[0] = {663552} ",
+          "examples": [
+            {
+              "name": "node_linear_1&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:2;|2;:2;:3|3|1"
+            },
+            {
+              "name": "node_linear&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:2;|2;:2;:3|3|1"
+            },
+            {
+              "name": "node_linear_2&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:2;|2;:2;:3|3|1"
+            }
+          ],
+          "count": 4,
+          "durationUs": 591,
+          "maxDurationUs": 328
+        },
+        {
+          "opType": "InstanceNormalization",
+          "programName": "ComputeChannelScaleShift",
+          "shapes": "inputs[0] = {1,32,20736} inputs[1] = {32} inputs[2] = {32} outputs[0] = {1,32,1} ",
+          "examples": [
+            {
+              "name": "node_InstanceNormalization_47&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            },
+            {
+              "name": "node_InstanceNormalization_71&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            },
+            {
+              "name": "node_InstanceNormalization_99&InstanceNormalization&ComputeChannelScaleShift",
+              "cacheKey": "ComputeChannelScaleShift[4|32]:256,1,1:1::2;3|0;1|0;1:1;3"
+            }
+          ],
+          "count": 11,
+          "durationUs": 528,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {331776,3} outputs[0] = {3,331776} ",
+          "examples": [
+            {
+              "name": "Transpose_token_137&Transpose&Transpose",
+              "cacheKey": "Transpose[0-3-1-2]:16,16,1:1:1:0;2:"
+            }
+          ],
+          "count": 1,
+          "durationUs": 459,
+          "maxDurationUs": 459
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {41472} inputs[1] = {1,128,1,1} outputs[0] = {41472} ",
+          "examples": [
+            {
+              "name": "node_mul_3&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:4|4|4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 262,
+          "maxDurationUs": 262
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {1,32,2,2,27,48} outputs[0] = {1,32,27,2,48,2} ",
+          "examples": [
+            {
+              "name": "node_permute&Transpose&Transpose",
+              "cacheKey": "Transpose[0-1-4-2-5-3]:64,1,1:1:1:0;6:"
+            }
+          ],
+          "count": 1,
+          "durationUs": 262,
+          "maxDurationUs": 262
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {663552} inputs[1] = {1} outputs[0] = {663552} ",
+          "examples": [
+            {
+              "name": "node_Mul_162&Mul&Mul",
+              "cacheKey": "Mul[E01]:1:1|1:2;|2;:2;"
+            },
+            {
+              "name": "node_Mul_159&Mul&Mul",
+              "cacheKey": "Mul[E01]:1:1|1:2;|2;:2;"
+            }
+          ],
+          "count": 2,
+          "durationUs": 197,
+          "maxDurationUs": 131
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {663552} inputs[1] = {512,1} outputs[0] = {663552} ",
+          "examples": [
+            {
+              "name": "node_group_norm_2&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:2;|0;:2;:3|3|2"
+            }
+          ],
+          "count": 1,
+          "durationUs": 131,
+          "maxDurationUs": 131
+        },
+        {
+          "opType": "Add",
+          "programName": "Add",
+          "shapes": "inputs[0] = {41472} inputs[1] = {1,128,1,1} outputs[0] = {41472} ",
+          "examples": [
+            {
+              "name": "node_add_6&Add&Add",
+              "cacheKey": "Add[V]:1:1|1:2;|0;:2;:4|4|4"
+            }
+          ],
+          "count": 1,
+          "durationUs": 66,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Mul",
+          "programName": "Mul",
+          "shapes": "inputs[0] = {663552} inputs[1] = {512,1} outputs[0] = {663552} ",
+          "examples": [
+            {
+              "name": "node_Mul_109&Mul&Mul",
+              "cacheKey": "Mul[V]:1:1|1:2;|0;:2;:3|3|2"
+            }
+          ],
+          "count": 1,
+          "durationUs": 66,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Transpose",
+          "programName": "Transpose",
+          "shapes": "inputs[0] = {32,5184} outputs[0] = {5184,32} ",
+          "examples": [
+            {
+              "name": "Transpose&Transpose&Transpose",
+              "cacheKey": "Transpose[0-2-3-1]:16,16,1:3:1:0;2:"
+            }
+          ],
+          "count": 1,
+          "durationUs": 66,
+          "maxDurationUs": 66
+        },
+        {
+          "opType": "Conv",
+          "programName": "MatMul",
+          "shapes": "inputs[0] = {1,5184,8} inputs[1] = {1,32,8} inputs[2] = {8} outputs[0] = {1,5184,8} ",
+          "examples": [
+            {
+              "name": "node_conv2d_token_1&Conv&MatMul",
+              "cacheKey": "MatMul[ActivationKind: 0;ActivationParams: 0;ActivationParams: 1.70897e+25;|4-4-1|1|4|1|1]:8,8,1:3:1|1|1|1|1|1|1:2;3|2;3|1:3:1"
+            }
+          ],
+          "count": 1,
+          "durationUs": 0,
+          "maxDurationUs": 0
+        }
+      ],
+      "meaning": "Observed timestamp-query GPU intervals; do not add to Node spans or equate sum with wall-clock latency."
+    }
+  },
+  "endedBeforeRelease": true,
+  "sessionReleased": true,
+  "rawFile": "native-profile-5-decode.json",
+  "rawSha256": "95c5fdf24ccb944bcd479102b9f0bd30f3271e0f3019de5dae94057cd7991e08"
+}
