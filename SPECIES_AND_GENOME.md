@@ -26,6 +26,9 @@ The built-in Codex tool created the current artwork during authoring; it is not 
 generator. Hardware, download size, quality, latency, costs and exact shared-image retention need
 qualification. A seed alone is not an exact-pixel contract. No hosted action or model installation
 is authorized. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+Local direction is conditional on feasibility, modest storage and no separate player AI setup.
+Codex's proposed under100MB initial download/500MB app-managed storage target is not a proven
+model budget or a changed runtime gate. [Latest constraints and recommendation](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
 The next bounded art-generation scope is **one on-demand scene proof**, using an existing canonical
 world/roster and the approved quality target, before expanding a prepainted planet catalogue.
 Preserve full genomes, named Earth anatomy, biome authority, current clocks, saves and share codes.
