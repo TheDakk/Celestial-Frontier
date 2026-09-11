@@ -269,6 +269,18 @@ Tier 2 requires the adapter to accept buffers at least as large as the transform
 - Text embeddings for both tiers are precomputed offline from the finite prompt catalogue and shipped as data, so no text encoder runs on any device.
 - Originals are pixels; sharing a discovery transports pixels plus provenance. Recipes reproduce the composition on any device (tier 0 is deterministic) but not the finished pixels.
 
+### I5a. Artwork durability (added 2026-09-11 at Nick's request: a priority, not a footnote)
+
+Today finished paintings live only in the origin's IndexedDB. The game never deletes them, but the browser can: Safari evicts a plain tab's script-writable storage after seven days without a visit, "clear website data" removes it, and storage pressure can evict it silently. Nothing requests persistent storage and there is no export. The discovery itself is never lost (seeds and the save reproduce the composition exactly); the exact finished pixels are what can be lost, because GPU output is not bit-identical across devices.
+
+Required, in order:
+
+1. Request `navigator.storage.persist()` on first landing; surface its status; on iOS prompt add-to-home-screen, which is exempt from the seven-day eviction.
+2. Export: save or share any painting as PNG through the native share sheet (Photos on iPhone). Pixels outside the origin cannot be evicted.
+3. Protected originals: when scene-cache eviction is built, originals are never candidates; only disposable finish variants are. The advisory planner's protected-copy rule becomes the law.
+4. Regenerate on loss, labelled as a re-creation, never presented as the original.
+5. Account-backed copy: the only true guarantee is a copy outside the device; a product decision requiring a service, on the roadmap.
+
 ### I6. What carries to the engine
 
 Painter, identity binding, recipe and originals semantics, fidelity contract, tier policy, retention rules. Only the inference host changes: native inference with memory-mapped weights and Metal/CoreML/NNAPI can run a Klein-class finisher on phones that the browser cannot, so the phone tier rises without touching the game.
@@ -355,10 +367,11 @@ AAA in a browser is not polygon count; it is the absence of rough edges. The thi
 2. **References and finisher on desktop.** Repaint the six references in situ in that style; style-anchor scene reference; unfreeze steps and seed; one sweep; then the painter-to-finisher pass. Two to four days. This sets the quality bar and proves the architecture.
 3. **iPhone probe.** Half a day. Decides tier sizing.
 4. **Fix the shipped-defect class now.** The eight integration defects, the inert CSS block, the pending-notice drain, the Charters opener, the checkpoint refusal, the four unit tests holding the lock, the untracked plan files. One to two days, all small.
-5. **Prune and split.** Study assets and WAVs out of the pack; dead modules deleted; query-lane sentences out of release notes; bulky evidence out of git history; PR42 split into production UI, gated AI, research tools. Admit the production tier on its exact head.
-6. **Tier 1 finisher on the real phone.** Two to three days. Then the tier policy, quality setting, crossfade, precomputed embeddings, warm sessions, start-on-orbit.
-7. **Compendium through the finisher; battle staging; living-painting layer effects; one listening session.** These are the pillars becoming visible.
-8. **View-envelope sharing.** After originals retention is stable.
+5. **Artwork durability.** Persistent-storage request and status, add-to-home-screen prompt on iOS, PNG export via the share sheet, protected originals in any eviction, labelled regeneration on loss (Part I5a). One to two days.
+6. **Prune and split.** Study assets and WAVs out of the pack; dead modules deleted; query-lane sentences out of release notes; bulky evidence out of git history; PR42 split into production UI, gated AI, research tools. Admit the production tier on its exact head.
+7. **Tier 1 finisher on the real phone.** Two to three days. Then the tier policy, quality setting, crossfade, precomputed embeddings, warm sessions, start-on-orbit.
+8. **Compendium through the finisher; battle staging; living-painting layer effects; one listening session.** These are the pillars becoming visible.
+9. **View-envelope sharing.** After originals retention is stable.
 
 Everything in this program transfers to the engine: the style canon, the recipes, the tier policy, the painted assets, the identity contracts and the fixtures that prove parity.
 
