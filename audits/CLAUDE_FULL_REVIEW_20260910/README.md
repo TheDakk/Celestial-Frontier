@@ -48,9 +48,10 @@ Highest impact: View from Notifications can perform a landing and start a new GP
 2. Repaint references in situ, style anchor, unfreeze steps and seed, one sweep, then the painter-to-finisher pass on desktop (two to four days). Sets the reachable bar and proves the architecture.
 3. iPhone probe (half a day).
 4. Fix the defect register's shipped-defect class: the ten integration items, the CSS block, the notice drain, the Charters opener, the checkpoint refusal, the four lock-taking tests, the untracked files (one to two days, all small).
-5. Prune and split: study assets and WAVs out of the pack, dead modules deleted, query-lane sentences out of release notes, bulky evidence out of history, PR42 split; admit the production tier on its exact head.
-6. Tier 1 finisher on the real phone; tier policy, quality setting, crossfade, precomputed embeddings, warm sessions, start-on-orbit.
-7. Compendium through the finisher; battle staging; living-painting layer effects; the listening session.
-8. View-envelope sharing.
+5. Artwork durability: persistent-storage request and status, add-to-home-screen prompt on iOS, PNG export via the share sheet, protected originals in any eviction, labelled regeneration on loss (FULL_REVIEW Part I5a). Today originals live only in origin IndexedDB and the browser can evict them; the discovery is never lost, the exact pixels can be.
+6. Prune and split: study assets and WAVs out of the pack, dead modules deleted, query-lane sentences out of release notes, bulky evidence out of history, PR42 split; admit the production tier on its exact head.
+7. Tier 1 finisher on the real phone; tier policy, quality setting, crossfade, precomputed embeddings, warm sessions, start-on-orbit.
+8. Compendium through the finisher; battle staging; living-painting layer effects; the listening session.
+9. View-envelope sharing.
 
 Everything in this program transfers to the engine: the style canon, recipes, tier policy, painted assets, identity contracts and the fixtures that prove parity.
