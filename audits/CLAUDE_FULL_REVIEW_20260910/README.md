@@ -2,11 +2,11 @@
 
 Reviewer: Claude (Anthropic) from `anthropic/mac`. Reviewed target: Codex worktree `openai/mac`, signed HEAD f6eed9b4 (124 commits ahead of `develop` c1791e21) plus its uncommitted working copy. Read-only: no source in either worktree was changed, no tests, builds, browsers, model runs, fetches or GitHub writes. This packet is the only write, on `anthropic/mac`, committed locally and not pushed.
 
-Documents: [FULL_REVIEW.md](FULL_REVIEW.md) (Parts A to K, including the consolidated defect and optimization registers in Part K) and [FIRST_PASS.md](FIRST_PASS.md) (the morning pass, superseded where the two differ).
+Documents: [ART_KIT_INTEGRATION.md](ART_KIT_INTEGRATION.md) (Nick's Art Kit v3, stored verbatim at the repository root as `ART_KIT.md`, mapped onto the codebase with ten reconciliations and program version 3), [CODEX_HANDOFF.md](CODEX_HANDOFF.md) (copy-ready resume instructions), [FULL_REVIEW.md](FULL_REVIEW.md) (Parts A to K, including the consolidated defect and optimization registers in Part K) and [FIRST_PASS.md](FIRST_PASS.md) (the morning pass, superseded where the two differ).
 
 ## Direction lock
 
-Nick's art direction is unchanged by this review. The approved Living Worlds triptych and Earth full landfall set the finish; the descriptive style text in `ART_DIRECTION.md` is canonical and deliberately does not name its inspiration; landfalls are large cohesive still paintings of multiple canonical organisms sharing light, atmosphere, contact and overlap; Earth species keep named anatomy; universal objects share the finish; battles move to articulated 2D rigs later. Every recommendation is a means to reach that target in a browser and to remove defects and waste.
+Nick's art direction is unchanged by this review. As of 2026-09-11 its canonical statement is `ART_KIT.md` (version 3), stored verbatim; the earlier recommendation to write a style paragraph is satisfied by the kit's section 2. The approved Living Worlds triptych and Earth full landfall set the finish; the descriptive style text in `ART_DIRECTION.md` is canonical and deliberately does not name its inspiration; landfalls are large cohesive still paintings of multiple canonical organisms sharing light, atmosphere, contact and overlap; Earth species keep named anatomy; universal objects share the finish; battles move to articulated 2D rigs later. Every recommendation is a means to reach that target in a browser and to remove defects and waste.
 
 ## What was reviewed
 
@@ -43,6 +43,8 @@ The runtime is solid: 25 ms/90 ms duck contract verified by an independent obser
 Highest impact: View from Notifications can perform a landing and start a new GPU job; Stop model preparation reports an error; the originals store poisons itself after one failed open; about 6,700 panel rebuilds per install; an inert desktop panel-anchor CSS block of the kind that cost two releases; notices that sit "Awaiting checkpoint" with no Mark read after a product action; the Charters opener hidden whenever a surface is open; a corrupt model install that the UI cannot recover; four unit tests taking the exclusive checkout lock (the real cause of the "duplicate checkout lock" aggregate failure); ten load-bearing files untracked so a clean checkout cannot start any preview runner; tracked evidence grown from 79 MB to 766 MB with full-history CI clones; about ten stale documentation claims; and a new standing authorization in `AGENTS.md` for automatic tool installs, which is Nick's decision.
 
 ## Ordered program
+
+Superseded by program version 3 in [ART_KIT_INTEGRATION.md](ART_KIT_INTEGRATION.md); kept here for the record.
 
 1. Canon the style paragraph (half a day).
 2. Repaint references in situ, style anchor, unfreeze steps and seed, one sweep, then the painter-to-finisher pass on desktop (two to four days). Sets the reachable bar and proves the architecture.

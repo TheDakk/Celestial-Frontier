@@ -463,3 +463,9 @@ Every item was read in source by at least one pass; items marked P were reasoned
 | 15 | Quality experiment | model | Q4 transformer; never below four steps |
 | 16 | CI minutes and clone time | repo | Bulky evidence out of history; shallow checkout |
 | 17 | About 600 lines | `tools/local-image-generation/run-*.mjs` | Shared runner kit |
+
+---
+
+## Part L. Art Kit version 3
+
+On 2026-09-11 Nick supplied the Art Kit (version 3), the explicit form of the direction the review had been reading from the approved paintings. It is stored verbatim at `ART_KIT.md`. Its section 2 is the canonical style paragraph this review recommended in Parts A and J; the recommendation is satisfied. The mapping onto the codebase, ten reconciliations for Nick's decision, and program version 3 are in `ART_KIT_INTEGRATION.md` in this packet; the copy-ready Codex instructions are in `CODEX_HANDOFF.md`.
