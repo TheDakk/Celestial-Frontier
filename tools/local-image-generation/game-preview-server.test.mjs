@@ -80,6 +80,12 @@ test('serves exact config, locked relative worker imports, range bytes, HEAD and
   assert.equal(config.reference.sha256, sha(f.png)); assert.equal(config.reference.speciesVisualKey, 'platypus-exact-identity');
   assert.deepEqual([config.reference.width, config.reference.height], [480, 320]);
   assert.equal(config.q8Block32, false); assert.equal(config.modelRevision, 'a'.repeat(40));
+  assert.deepEqual(config.variantPlan, { url: '/__local_ai/browser-variant-plan.json', bytes: 142918,
+    sha256: '26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81', payloadBytes: 352323881 });
+  const plan = await rawRequest(server.url, config.variantPlan.url);
+  assert.equal(plan.status, 200); assert.equal(plan.body.length, 142918);
+  assert.equal(sha(plan.body), config.variantPlan.sha256);
+  assert.equal(JSON.parse(plan.body).qualityAccepted, false);
   const modelUrl = config.modelFiles['graph.onnx'];
   assert.deepEqual((await rawRequest(server.url, modelUrl)).body, f.graph);
   const range = await rawRequest(server.url, modelUrl, { Range: 'bytes=3-8' });

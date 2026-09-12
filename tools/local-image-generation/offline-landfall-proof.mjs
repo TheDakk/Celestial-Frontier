@@ -18,8 +18,9 @@ export function assessOfflineOriginal(value,input){
   need(value.originalId===sha(JSON.stringify(input))+':'+value.sha256,'Native original lost its full input identity');
   return bytes;
 }
-export async function runOfflineLandfallProof({evaluate,until,click,screenshot,cdp,sessionId,receipt,output,modelRequests,workerEvidence}){
-  const proof={scope:'One actual portable-model offline Land, progress, retained original, View and reload. Desktop native browser only.',
+export async function runOfflineLandfallProof({evaluate,until,click,screenshot,cdp,sessionId,receipt,output,modelRequests,workerEvidence,q8Block32=false}){
+  need(typeof q8Block32==='boolean'&&(!q8Block32||receipt.variant?.status==='VERIFIED_NATIVE_VARIANT'),'Derived Land requires the completed native variant proof');
+  const proof={scope:'One actual '+(q8Block32?'browser-derived block32':'portable')+' offline Land, progress, retained original, View and reload. Desktop native browser only.',
     status:'FAIL',modelExecuted:false,qualityAccepted:false,physicalPhoneQualified:false,observations:[],progress:[]};
   receipt.landfall=proof;
   const write=(name,value)=>fs.writeFile(path.join(output,name),JSON.stringify(value,null,2)+'\n',{flag:'wx'});
@@ -56,10 +57,10 @@ export async function runOfflineLandfallProof({evaluate,until,click,screenshot,c
   need(initialJob.status==='generating'&&!first.localAi.mounted&&/^committed:\d+$/.test(first.landing.lastOutcome)
     &&first.renderedScene.worldKey===first.navWorldKey,'Land was not independently committed before painting');
   const recipe=JSON.parse(initialJob.input.recipeJson);
-  need(recipe.schema==='cf.ai-landfall-render.v2'&&recipe.qualityAccepted===false&&recipe.q8Block32===false
+  need(recipe.schema==='cf.ai-landfall-render.v2'&&recipe.qualityAccepted===false&&recipe.q8Block32===q8Block32
     &&recipe.references?.length===6&&recipe.conditioning?.residents?.length===6
     &&JSON.stringify(recipe.conditioning.residents.map(r=>r.name))===JSON.stringify(['Civet','Persimmon','Platypus','Frog',"Devil's Club",'Cranberry'])
-    &&sha(initialJob.input.recipeJson)===initialJob.input.recipeKey,'Actual job is not the full-identity portable V2 recipe');
+    &&sha(initialJob.input.recipeJson)===initialJob.input.recipeKey,'Actual job is not the full-identity selected V2 recipe');
   proof.modelExecutionAttempted=true;receipt.modelExecutionAttempted=true;
   proof.jobId=initialJob.jobId;proof.input=initialJob.input;proof.recipeKey=initialJob.input.recipeKey;
   await write('actual-landfall-input.json',initialJob.input);await write('actual-landfall-recipe.json',recipe);

@@ -16,6 +16,7 @@ import {createNativeModelMirror} from './native-model-mirror.mjs';
 import {recheckSourceFiles} from './source-integrity.mjs';
 import {assessOfflineWorkerReply} from './run-offline-runtime.mjs';
 import {runOfflineLandfallProof} from './offline-landfall-proof.mjs';
+import {runOfflineVariantProof} from './offline-variant-proof.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const need=(value,message)=>{if(!value)throw Error(message);};
@@ -25,6 +26,9 @@ const sourceNames=[
   'port/v2/apps/game/pwa-build.ts','port/v2/apps/game/src/pwa-update.ts','port/v2/apps/game/src/local-ai-game.ts',
   'port/v2/apps/game/src/local-ai-runtime.ts','port/v2/apps/game/src/local-model-delivery.ts',
   'port/v2/apps/game/src/local-model-manifest.ts','port/v2/apps/game/src/local-model-sha256.ts',
+  'port/v2/apps/game/src/local-model-variant.ts','port/v2/apps/game/src/local-model-variant-storage.ts',
+  'tools/local-image-generation/browser-variant-plan.json','tools/local-image-generation/browser-variant-source.mjs',
+  'tools/local-image-generation/runtime-pack-source-pins.json','tools/local-image-generation/offline-variant-proof.mjs',
   'port/v2/apps/game/src/landfall-conditioning.ts','port/v2/apps/game/src/ai-landfall-originals.ts',
   'tools/local-image-generation/run-mobile-model-delivery.mjs','tools/local-image-generation/native-model-mirror.mjs',
   'tools/local-image-generation/compile-delivery-diagnostic.mjs',
@@ -79,8 +83,14 @@ export function assessNativeReadback(result,expected){
       &&actual.tailSha256===pin.tailSha256,'Native model Blob identity/size/head/tail mismatch: '+pin.path);
   }
 }
-export async function runMobileModelDelivery({pack,sha256,output,landfall=false}){
-  need(typeof landfall==='boolean','Landfall option must be boolean');
+export function assessUnchangedParentInventory(before,after){
+  const normalize=value=>({totalBytes:value.totalBytes,
+    markers:value.markers.map(row=>({...row})).sort((a,b)=>a.name.localeCompare(b.name)),
+    attempts:value.attempts.map(row=>({...row,files:[...row.files].sort((a,b)=>a.name.localeCompare(b.name))})).sort((a,b)=>a.name.localeCompare(b.name))});
+  need(JSON.stringify(normalize(before))===JSON.stringify(normalize(after)),'Offline access changed parent marker/chunk inventory');
+}
+export async function runMobileModelDelivery({pack,sha256,output,landfall=false,variant=false}){
+  need(typeof landfall==='boolean'&&typeof variant==='boolean'&&(!variant||landfall),'Variant requires explicit landfall option');
   need(typeof sha256==='string'&&/^[a-f0-9]{64}$/.test(sha256),'External exact mobile-pack manifest SHA required');
   output=path.resolve(output);pack=path.resolve(pack);
   need(output.startsWith(path.join(root,'audits')+path.sep),'New repository audit directory required');
@@ -89,7 +99,7 @@ export async function runMobileModelDelivery({pack,sha256,output,landfall=false}
   const receipt={schema:'cf.native-optional-mobile-model-delivery.v1',status:'FAIL',startedAt:new Date().toISOString(),
     sourcePack:{directory:pack,manifestSha256:sha256},sources:[],observations:[],controllers:[],clicks:[],screenshots:[],browserEvents:[],network:[],workerTargetEvents:[],interceptions:[],cleanup:{},
     actualRemoteDownload:false,modelExecuted:false,physicalPhoneQualified:false,qualityAccepted:false,
-    scope:'Desktop native browser: actual optional static package, explicit native install/pause/resume/verify; exact pinned model bytes from disclosed loopback transport; full OPFS verification and offline app/runtime.',normalOfflineLandfallRequested:landfall};
+    scope:'Desktop native browser: actual optional static package, explicit native install/pause/resume/verify; exact pinned model bytes from disclosed loopback transport; full OPFS verification and offline app/runtime.',normalOfflineLandfallRequested:landfall,browserDerivedVariantRequested:variant};
   await write('start.json',receipt);
   let release,server,mirror,cdp,targetId,sessionId,evaluate,offline=false,fatal=null;
   const workers=new Map(),pending=new Set(),allSessions=new Set();
@@ -309,13 +319,16 @@ export async function runMobileModelDelivery({pack,sha256,output,landfall=false}
     assessOfflineWorkerReply(receipt.moduleOnlyWorker.messages);
     await evaluate('window.__cfOfflineModuleWorker.terminate();delete window.__cfOfflineModuleWorker;true');
     need(receipt.interceptions.length===beforeOfflineRequests,'Module-only offline load requested model bytes');
-    if(landfall)await runOfflineLandfallProof({evaluate,until,click,screenshot,cdp,sessionId,receipt,output,
+    if(variant)await runOfflineVariantProof({evaluate,until,click,screenshot,cdp,sessionId,receipt,output,
+      shaModule,modelRequests:()=>receipt.interceptions.length,openStorage,requireController});
+    if(landfall)await runOfflineLandfallProof({evaluate,until,click,screenshot,cdp,sessionId,receipt,output,q8Block32:variant,
       modelRequests:()=>receipt.interceptions.length,
       workerEvidence:()=>({requests:receipt.network.filter(row=>new URL(row.url).pathname==='/__local_ai/stage-worker.mjs'),
         targets:receipt.workerTargetEvents.filter(event=>event.params?.targetInfo?.type==='worker'&&event.params.targetInfo.url.includes('/__local_ai/stage-worker.mjs'))})});
     need(receipt.browserEvents.every(event=>event.method!=='Runtime.exceptionThrown'&&event.method!=='Inspector.targetCrashed'),'Native browser exception or crash');
     receipt.finalOpfs=await evaluate(inventoryExpression);
     need(receipt.finalOpfs.totalBytes===model.totalBytes&&receipt.finalOpfs.attempts[0].name===partial.attempts[0].name,'Offline access changed retained model storage');
+    assessUnchangedParentInventory(installed,receipt.finalOpfs);receipt.parentInventoryUnchanged=true;
     receipt.status='PASS';
   }catch(error){receipt.error=String(error.stack??error);process.exitCode=1;}
   finally{
@@ -342,5 +355,5 @@ export async function runMobileModelDelivery({pack,sha256,output,landfall=false}
   }
   return receipt;
 }
-async function main(){const options={};for(const argument of process.argv.slice(2)){if(argument==='--landfall'&&!options.landfall){options.landfall=true;continue;}const match=/^--(pack|sha256|output)=(.+)$/.exec(argument);need(match&&!Object.hasOwn(options,match[1]),'Usage: run-mobile-model-delivery.mjs --pack=EXACT_STATIC_PACK --sha256=EXTERNAL_MANIFEST_SHA --output=NEW_AUDIT_DIRECTORY [--landfall]');options[match[1]]=match[2];}need(options.pack&&options.sha256&&options.output,'All three arguments required');await runMobileModelDelivery(options);}
+async function main(){const options={};for(const argument of process.argv.slice(2)){if(argument==='--landfall'&&!options.landfall){options.landfall=true;continue;}if(argument==='--variant'&&!options.variant){options.variant=true;continue;}const match=/^--(pack|sha256|output)=(.+)$/.exec(argument);need(match&&!Object.hasOwn(options,match[1]),'Usage: run-mobile-model-delivery.mjs --pack=EXACT_STATIC_PACK --sha256=EXTERNAL_MANIFEST_SHA --output=NEW_AUDIT_DIRECTORY [--landfall [--variant]]');options[match[1]]=match[2];}need(options.pack&&options.sha256&&options.output,'All three arguments required');await runMobileModelDelivery(options);}
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href)await main();

@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 const { JSDOM } = createRequire(import.meta.url)('jsdom');
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -12,10 +13,12 @@ import { aiLandfallInputKeyV1, type AiLandfallGeneratedV1, type AiLandfallInputV
   type AiLandfallOriginalStoreV1, type AiLandfallOriginalV1 } from '../apps/game/src/ai-landfall-originals.js';
 import type { LocalModelDeliveryStatusV1, LocalModelDeliveryV1 } from '../apps/game/src/local-model-delivery.js';
 import { PINNED_LOCAL_MODEL_MANIFEST_V1 } from '../apps/game/src/local-model-manifest.js';
+import { LOCAL_MODEL_VARIANT_PLAN_SHA256_V1, LOCAL_MODEL_VARIANT_FILES_V1, type LocalModelVariantReadyV1 } from '../apps/game/src/local-model-variant.js';
+import type { LocalModelVariantStorageOwnerV1 } from '../apps/game/src/local-model-variant-storage.js';
 import type { LocalAiRuntimeConfigV1 } from '../apps/game/src/local-ai-runtime.js';
 import { createLocalAiGameV1, type LocalAiGameV1, type LocalAiGameRuntimeManifestV1 } from '../apps/game/src/local-ai-game.js';
 
-const mocks = vi.hoisted(() => ({ createStore: vi.fn(), createDelivery: vi.fn(), probe: vi.fn(), generate: vi.fn(), viewerOpen: vi.fn(), viewerClose: vi.fn() }));
+const mocks = vi.hoisted(() => ({ createStore: vi.fn(), createDelivery: vi.fn(), createVariant: vi.fn(), deriveVariant: vi.fn(), probe: vi.fn(), generate: vi.fn(), viewerOpen: vi.fn(), viewerClose: vi.fn() }));
 vi.mock('../apps/game/src/landfall-viewer.js', () => ({ createLandfallViewerV1: () => ({ open: mocks.viewerOpen, close: mocks.viewerClose }), captureLandfallFocusReturnV1: () => () => {} }));
 vi.mock('../apps/game/src/ai-landfall-originals.js', async importOriginal => ({
   ...await importOriginal<typeof import('../apps/game/src/ai-landfall-originals.js')>(),
@@ -25,8 +28,16 @@ vi.mock('../apps/game/src/local-model-delivery.js', async importOriginal => ({
   ...await importOriginal<typeof import('../apps/game/src/local-model-delivery.js')>(),
   createLocalModelDeliveryV1: mocks.createDelivery, probeLocalModelCapabilitiesV1: mocks.probe,
 }));
+vi.mock('../apps/game/src/local-model-variant-storage.js', () => ({ createLocalModelVariantStorageV1: mocks.createVariant }));
+vi.mock('../apps/game/src/local-model-variant.js', async importOriginal => ({
+  ...await importOriginal<typeof import('../apps/game/src/local-model-variant.js')>(), deriveLocalModelVariantV1: mocks.deriveVariant,
+}));
 vi.mock('../apps/game/src/local-ai-runtime.js', async importOriginal => ({ ...await importOriginal<typeof import('../apps/game/src/local-ai-runtime.js')>(), generateLocalLandfallV1: mocks.generate }));
 
+const parentManifestSha256 = createHash('sha256').update(JSON.stringify(PINNED_LOCAL_MODEL_MANIFEST_V1)).digest('hex');
+const variantPlanJson = await readFile(new URL('../../../tools/local-image-generation/browser-variant-plan.json', import.meta.url), 'utf8');
+const variantDescriptor = Object.freeze({ url: '/__local_ai/browser-variant-plan.json', sha256: LOCAL_MODEL_VARIANT_PLAN_SHA256_V1,
+  bytes: 142918, payloadBytes: 352323881 });
 beforeAll(() => installCaptureHooks());
 beforeEach(() => { vi.clearAllMocks(); vi.stubGlobal('location', new URL('http://127.0.0.1:7777/')); });
 afterEach(() => { vi.unstubAllGlobals(); vi.restoreAllMocks(); });
@@ -47,10 +58,11 @@ function canonical(seed = 133) {
 }
 const pixels = (): AiLandfallGeneratedV1 => ({ blob: new Blob(['synthetic unit pixels'], { type: 'image/png' }), width: 1024, height: 576 });
 function deliveryStatus(ready: boolean, error: string | null = null): LocalModelDeliveryStatusV1 {
-  return { phase: ready ? 'ready' : 'missing', ready, manifestSha256: 'a'.repeat(64),
-    totalBytes: PINNED_LOCAL_MODEL_MANIFEST_V1.totalBytes, storedBytes: ready ? 1 : 0, verifiedBytes: ready ? 1 : 0,
+  return { phase: ready ? 'ready' : 'missing', ready, manifestSha256: parentManifestSha256,
+    totalBytes: PINNED_LOCAL_MODEL_MANIFEST_V1.totalBytes, storedBytes: ready ? PINNED_LOCAL_MODEL_MANIFEST_V1.totalBytes : 0,
+    verifiedBytes: ready ? PINNED_LOCAL_MODEL_MANIFEST_V1.totalBytes : 0,
     downloadedBytes: 0, verifiedFiles: ready ? PINNED_LOCAL_MODEL_MANIFEST_V1.files.length : 0,
-    totalFiles: PINNED_LOCAL_MODEL_MANIFEST_V1.files.length, file: null, error, attemptId: null,
+    totalFiles: PINNED_LOCAL_MODEL_MANIFEST_V1.files.length, file: null, error, attemptId: ready ? 'unit-parent-attempt' : null,
     qualityAccepted: false, deviceQualified: false };
 }
 
@@ -68,7 +80,7 @@ async function harness(configPatch: Partial<LocalAiGameRuntimeManifestV1> = {}) 
     modelRevision: PINNED_LOCAL_MODEL_MANIFEST_V1.revision, modelFiles: files, q8Block32: true,
     reference: { url: '/__local_ai/reference.png', sha256: 'b'.repeat(64), width: 480, height: 320,
       speciesVisualKey: compiled.recipe.referenceRequirements[0]!.subjectIdentityKey }, ...configPatch };
-  const fetch = vi.fn(async () => new Response(JSON.stringify(config), { status: 200 })); vi.stubGlobal('fetch', fetch);
+  const fetch = vi.fn(async (url: string, _options?: RequestInit) => new Response(url === '/__local_ai/runtime.json' ? JSON.stringify(config) : variantPlanJson, { status: 200 })); vi.stubGlobal('fetch', fetch);
   mocks.probe.mockResolvedValue({ supported: true });
   const originals = new Map<string, AiLandfallOriginalV1>();
   const originalFor = (input: AiLandfallInputV1, generated: AiLandfallGeneratedV1): AiLandfallOriginalV1 => Object.freeze({
@@ -89,8 +101,31 @@ async function harness(configPatch: Partial<LocalAiGameRuntimeManifestV1> = {}) 
   const verify = vi.fn(async () => { modelStatus = deliveryStatus(true); return modelStatus; });
   const openFile = vi.fn(async () => new Blob(['unit model file']));
   const delivery: LocalModelDeliveryV1 = { manifest: PINNED_LOCAL_MODEL_MANIFEST_V1,
-    manifestSha256: 'd'.repeat(64), baseUrl: 'https://huggingface.co/pinned/', status: () => modelStatus, install, verify, openFile };
+    manifestSha256: parentManifestSha256, baseUrl: 'https://huggingface.co/pinned/', status: () => modelStatus, install, verify, openFile };
   mocks.createDelivery.mockReturnValue(delivery);
+  const variantMarker = (attempt = 'unit-parent-attempt'): LocalModelVariantReadyV1 => ({
+    schema: 'cf.local-model-variant-ready.v1', variant: 'q8-block32-repacked-v1', planSha256: LOCAL_MODEL_VARIANT_PLAN_SHA256_V1,
+    parentManifestSha256, parentAttemptId: attempt, sourceManifestSha256: PINNED_LOCAL_MODEL_MANIFEST_V1.sourceManifestSha256,
+    files: LOCAL_MODEL_VARIANT_FILES_V1, payloadBytes: 352323881, qualityAccepted: false, deviceQualified: false });
+  let variantStatus: ReturnType<LocalModelVariantStorageOwnerV1['status']> = { phase: 'unknown', ready: false, marker: null, error: null, verifiedBytes: 0 };
+  const setVariantReady = (attempt = 'unit-parent-attempt') => { variantStatus = { phase: 'ready', ready: true,
+    marker: variantMarker(attempt), error: null, verifiedBytes: 352323881 }; };
+  const verifyVariant = vi.fn(async (_manifest: string, attempt: string, signal?: AbortSignal) => {
+    if (signal?.aborted) throw new DOMException('Canceled', 'AbortError'); setVariantReady(attempt); return variantStatus;
+  });
+  const variantOpenFile = vi.fn(async (path: string) => {
+    const file = LOCAL_MODEL_VARIANT_FILES_V1.find(file => file.path === path)!;
+    // Unit storage fake reports pinned size without allocating347MiB. No native/readback claim.
+    return Object.defineProperty(new Blob(['unit variant bytes']), 'size', { value: file.bytes });
+  });
+  const variantOwner: LocalModelVariantStorageOwnerV1 = { begin: vi.fn(), status: () => variantStatus,
+    verify: verifyVariant, openFile: variantOpenFile };
+  mocks.createVariant.mockReturnValue(variantOwner);
+  mocks.deriveVariant.mockImplementation(async ({ signal, onProgress }: { signal: AbortSignal; onProgress?: (value: { writtenPayloadBytes: number; verifiedPayloadBytes: number }) => void }) => {
+    if (signal.aborted) throw new DOMException('Canceled', 'AbortError');
+    onProgress?.({ writtenPayloadBytes: 352323881, verifiedPayloadBytes: 352323881 }); setVariantReady();
+    return { status: 'ready', marker: variantStatus.marker, writtenPayloadBytes: 352323881, verifiedPayloadBytes: 352323881 };
+  });
   mocks.generate.mockResolvedValue(pixels());
   const notice = vi.fn(), view = vi.fn(async (_original: AiLandfallOriginalV1) => true);
   let api: LocalAiGameV1 | null = null;
@@ -107,7 +142,8 @@ async function harness(configPatch: Partial<LocalAiGameRuntimeManifestV1> = {}) 
     : new Promise(resolve => waiters.push({ predicate, resolve }));
   const input = api.prepare(source.request, source.roster);
   return { api, input, source, config, fetch, notice, view, refresh, store, retain, read, originals,
-    originalFor, install, verify, openFile, waitFor,
+    originalFor, install, verify, openFile, waitFor, verifyVariant, variantOpenFile, variantMarker, setVariantReady,
+    setVariantStatus(value: ReturnType<LocalModelVariantStorageOwnerV1['status']>) { variantStatus = value; },
     setModelStatus(value: LocalModelDeliveryStatusV1) { modelStatus = value; },
     changeViewGeneration() { viewGeneration++; } };
 }
@@ -385,6 +421,162 @@ describe('V2 individual reference admission and exact V1 original compatibility'
   });
 });
 
+
+const installedVariantConfig = (): Partial<LocalAiGameRuntimeManifestV1> => ({ schema: 'cf.local-ai-runtime-pack.v1',
+  modelSource: 'verified-opfs-only', q8Block32: false, modelFiles: {}, autoDownload: false,
+  sourceManifestSha256: PINNED_LOCAL_MODEL_MANIFEST_V1.sourceManifestSha256, variantPlan: variantDescriptor, references: sixReferences() });
+
+describe('explicit verified browser variant selection in the actual controller', () => {
+  it('admits the small pinned plan descriptor without fetching it or deriving during startup/base verification', async () => {
+    const h = await harness(installedVariantConfig());
+    expect(h.fetch).toHaveBeenCalledExactlyOnceWith('/__local_ai/runtime.json', { cache: 'no-store' });
+    expect(h.api.html()).toContain('Prepare faster drawing (+336 MiB)'); expect(h.api.html()).toContain('Verify faster drawing');
+    expect(h.api.html()).toContain('data-ai-model-selection="browser-portable"');
+    await h.api.action('verify', ''); expect(mocks.deriveVariant).not.toHaveBeenCalled(); expect(h.verifyVariant).not.toHaveBeenCalled();
+    expect(h.fetch).toHaveBeenCalledTimes(1); expect(JSON.parse(h.api.prepare(h.source.request, h.source.roster)!.recipeJson).q8Block32).toBe(false);
+  });
+
+  it('refuses wrong, extra, null or foreign-origin plan descriptors before allocating model owners', async () => {
+    for (const variantPlan of [{ ...variantDescriptor, sha256: '0'.repeat(64) }, { ...variantDescriptor, bytes: 142919 },
+      { ...variantDescriptor, payloadBytes: 352323880 }, { ...variantDescriptor, extra: true },
+      { ...variantDescriptor, url: 'https://foreign.example/plan.json' }, null]) {
+      mocks.createDelivery.mockClear(); mocks.createVariant.mockClear();
+      await expect(harness({ ...installedVariantConfig(), variantPlan: variantPlan as never })).rejects.toThrow(/plan|origin/);
+      expect(mocks.createDelivery).not.toHaveBeenCalled(); expect(mocks.createVariant).not.toHaveBeenCalled();
+    }
+  });
+
+  it('requires the explicit parent verification before either variant action and never downloads on their behalf', async () => {
+    const h = await harness(installedVariantConfig());
+    await h.api.action('prepare-variant', ''); await h.api.action('verify-variant', '');
+    expect(h.fetch).toHaveBeenCalledTimes(1); expect(h.install).not.toHaveBeenCalled(); expect(h.verify).not.toHaveBeenCalled();
+    expect(mocks.deriveVariant).not.toHaveBeenCalled(); expect(h.verifyVariant).not.toHaveBeenCalled();
+    expect(h.notice).toHaveBeenCalledWith('Browser model required', expect.any(String));
+  });
+
+  it('prepares only on explicit action and passes the complete exact plan to derivation before selecting its matching ready result', async () => {
+    const h = await harness(installedVariantConfig()); await h.api.action('verify', '');
+    const portable = h.api.prepare(h.source.request, h.source.roster)!;
+    await h.api.action('prepare-variant', '');
+    expect(h.fetch).toHaveBeenNthCalledWith(2, 'http://127.0.0.1:7777/__local_ai/browser-variant-plan.json',
+      { signal: expect.any(AbortSignal), cache: 'no-store' });
+    expect(mocks.deriveVariant).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ planJson: variantPlanJson,
+      parent: mocks.createDelivery.mock.results[0]!.value, storage: mocks.createVariant.mock.results[0]!.value, signal: expect.any(AbortSignal) }));
+    const selected = h.api.prepare(h.source.request, h.source.roster)!;
+    expect(JSON.parse(selected.recipeJson).q8Block32).toBe(true); expect(selected.recipeKey).not.toBe(portable.recipeKey);
+    expect(h.api.html()).toContain('data-ai-model-selection="browser-block32"'); expect(h.api.html()).toContain('data-ai-variant-ready="true"');
+    expect(h.api.html()).toContain('Faster drawing ready'); expect(h.install).not.toHaveBeenCalled(); expect(mocks.generate).not.toHaveBeenCalled();
+    await h.api.action('verify', ''); expect(h.api.html()).toContain('data-ai-model-selection="browser-portable"');
+    expect(mocks.deriveVariant).toHaveBeenCalledTimes(1);
+  });
+
+  it('rejects truncated, oversized, wrong-SHA and declared-size plan bodies without deriving or changing selection', async () => {
+    for (const response of [new Response(variantPlanJson.slice(1)), new Response(variantPlanJson + ' '),
+      new Response('x' + variantPlanJson.slice(1)), new Response(variantPlanJson, { headers: { 'content-length': '999999' } })]) {
+      const h = await harness(installedVariantConfig()); await h.api.action('verify', '');
+      h.fetch.mockResolvedValueOnce(response);
+      await expect(h.api.action('prepare-variant', '')).rejects.toThrow(/plan/);
+      expect(mocks.deriveVariant).not.toHaveBeenCalled(); expect(h.api.html()).toContain('data-ai-model-selection="browser-portable"');
+      expect(h.api.html()).not.toContain('data-ai-variant-ready="true"');
+    }
+  });
+
+  it('cancels the returned plan body if parent readiness changes while fetch was pending', async () => {
+    const h = await harness(installedVariantConfig()); await h.api.action('verify', '');
+    const canceled = vi.fn();
+    h.fetch.mockImplementationOnce(async () => {
+      h.setModelStatus({ ...deliveryStatus(true), attemptId: 'replaced-while-fetching' });
+      return new Response(new ReadableStream<Uint8Array>({ cancel: canceled }));
+    });
+    await expect(h.api.action('prepare-variant', '')).rejects.toThrow('verified');
+    expect(canceled).toHaveBeenCalledTimes(1); expect(mocks.deriveVariant).not.toHaveBeenCalled();
+    expect(h.api.html()).toContain('data-ai-model-selection="browser-portable"');
+    expect(h.api.html()).not.toContain('data-ai-variant-ready="true"');
+  });
+
+  it('exposes escaped terminal storage errors and clears them only when another explicit storage action starts', async () => {
+    const h = await harness(installedVariantConfig()); await h.api.action('verify', '');
+    mocks.deriveVariant.mockRejectedValueOnce(new Error('<invalid "variant">'));
+    await expect(h.api.action('prepare-variant', '')).rejects.toThrow('invalid');
+    expect(h.api.html()).toContain('data-ai-storage-error="&lt;invalid &quot;variant&quot;&gt;"');
+    expect(h.api.html()).toContain('data-ai-model-selection="browser-portable"');
+    expect(h.api.html()).not.toContain('data-ai-variant-ready="true"');
+    await h.api.action('verify-variant', '');
+    expect(h.api.html()).toContain('data-ai-storage-error=""'); expect(h.api.html()).toContain('data-ai-model-selection="browser-block32"');
+  });
+
+  it('holds storage exclusion during derivation and cancellation never selects a partial variant', async () => {
+    const h = await harness(installedVariantConfig()); await h.api.action('verify', '');
+    const started = deferred<void>();
+    mocks.deriveVariant.mockImplementationOnce(({ signal }: { signal: AbortSignal }) => new Promise((_resolve, reject) => {
+      started.resolve(); signal.addEventListener('abort', () => reject(new DOMException('Canceled', 'AbortError')), { once: true });
+    }));
+    const preparation = h.api.action('prepare-variant', ''); await started.promise;
+    expect(() => h.api.enqueue(h.input!)).toThrow(/storage/); expect(h.api.html()).toContain('Stop model preparation');
+    await h.api.action('verify', ''); expect(h.verify).toHaveBeenCalledTimes(1);
+    await h.api.action('stop-download', ''); await expect(preparation).rejects.toMatchObject({ name: 'AbortError' });
+    expect(h.api.html()).toContain('data-ai-model-selection="browser-portable"'); expect(h.api.html()).not.toContain('Stop model preparation');
+    expect(mocks.generate).not.toHaveBeenCalled();
+  });
+
+  it('explicit verification selects existing exact files without fetching a plan and all22 Blob URLs are revoked after GPU failure', async () => {
+    const h = await harness(installedVariantConfig()); await h.api.action('verify', ''); await h.api.action('verify-variant', '');
+    expect(h.verifyVariant).toHaveBeenCalledExactlyOnceWith(parentManifestSha256, 'unit-parent-attempt', expect.any(AbortSignal));
+    expect(h.fetch).toHaveBeenCalledTimes(1); expect(mocks.deriveVariant).not.toHaveBeenCalled();
+    let count = 0; const create = vi.spyOn(URL, 'createObjectURL').mockImplementation(() => `blob:http://127.0.0.1:7777/variant-${++count}`);
+    const revoke = vi.spyOn(URL, 'revokeObjectURL').mockImplementation(() => {});
+    mocks.generate.mockRejectedValueOnce(new Error('unit GPU refusal'));
+    const input = h.api.prepare(h.source.request, h.source.roster)!; h.api.enqueue(input);
+    await h.waitFor(() => h.api.snapshot()[0]?.status === 'failed');
+    const runtime = mocks.generate.mock.calls[0]![3] as LocalAiRuntimeConfigV1;
+    expect(runtime.q8Block32).toBe(true); expect(Object.keys(runtime.modelFiles)).toHaveLength(22);
+    expect(Object.values(runtime.modelFiles).every(url => url.startsWith('blob:'))).toBe(true);
+    expect(h.variantOpenFile.mock.calls.map(([path]) => path)).toEqual(LOCAL_MODEL_VARIANT_FILES_V1.map(file => file.path));
+    expect(create).toHaveBeenCalledTimes(22); expect(revoke).toHaveBeenCalledTimes(22); expect(h.retain).not.toHaveBeenCalled();
+  });
+
+  it('rejects stale variant/parent readiness and wrong-size derived Blobs without developer fallback or another recipe', async () => {
+    for (const failure of ['marker', 'parent', 'blob'] as const) {
+      const h = await harness(installedVariantConfig()); await h.api.action('verify', ''); await h.api.action('verify-variant', '');
+      const input = h.api.prepare(h.source.request, h.source.roster)!;
+      if (failure === 'marker') {
+        h.setVariantReady('other-attempt'); expect(() => h.api.enqueue(input)).toThrow(/verified/);
+        expect(h.api.html()).toContain('data-ai-variant-ready="false"');
+      } else {
+        if (failure === 'parent') h.openFile.mockImplementationOnce(async () => { h.setModelStatus({ ...deliveryStatus(true), attemptId: 'replaced' }); return new Blob(['old']); });
+        else h.variantOpenFile.mockResolvedValueOnce(new Blob(['wrong']));
+        h.api.enqueue(input); await h.waitFor(() => h.api.snapshot()[0]?.status === 'failed');
+      }
+      expect(mocks.generate).not.toHaveBeenCalled(); expect(h.retain).not.toHaveBeenCalled();
+      expect(JSON.parse(input.recipeJson).q8Block32).toBe(true);
+    }
+  });
+
+  it('refuses both variant actions during an active painting and refuses a portable retry after selecting the variant', async () => {
+    const h = await harness(installedVariantConfig()); await h.api.action('verify', '');
+    const pending = deferred<AiLandfallGeneratedV1>(), started = deferred<void>();
+    mocks.generate.mockImplementationOnce(() => { started.resolve(); return pending.promise; });
+    const job = h.api.enqueue(h.input!); await started.promise;
+    await h.api.action('prepare-variant', ''); await h.api.action('verify-variant', '');
+    expect(mocks.deriveVariant).not.toHaveBeenCalled(); expect(h.verifyVariant).not.toHaveBeenCalled();
+    await h.api.action('cancel', job); pending.resolve(pixels()); await h.waitFor(() => h.api.snapshot()[0]?.status === 'canceled');
+    await h.api.action('verify-variant', ''); const before = h.api.snapshot(); const calls = mocks.generate.mock.calls.length;
+    await h.api.action('retry', job); expect(h.api.snapshot()).toEqual(before); expect(mocks.generate).toHaveBeenCalledTimes(calls);
+    expect(h.notice).toHaveBeenLastCalledWith('Model selection changed', expect.any(String));
+  });
+
+  it('finds and inspects exact portable and V1 originals after representation change and after a fresh controller', async () => {
+    const prior = await harness({ q8Block32: false }); const v1Portable = prior.input!;
+    for (const previous of [v1Portable, (await harness(installedVariantConfig())).input!]) {
+      const h = await harness(installedVariantConfig()); await h.api.action('verify', ''); await h.api.action('verify-variant', '');
+      const selected = h.api.prepare(h.source.request, h.source.roster)!;
+      const original = h.originalFor(previous, pixels()); h.originals.set(aiLandfallInputKeyV1(previous), original);
+      expect(await h.api.find(selected)).toBe(original); await h.api.inspect(selected, original.originalId);
+      expect(h.read).toHaveBeenLastCalledWith(previous, original.originalId); expect(mocks.viewerOpen).toHaveBeenLastCalledWith(original, expect.any(Function));
+      expect(original.input).toEqual(previous); expect(h.retain).not.toHaveBeenCalled(); expect(mocks.generate).not.toHaveBeenCalled();
+    }
+  });
+});
 
 describe('native model-storage disclosure ownership across panel refills (jsdom controls)', () => {
   it('retains open/closed choices across install progress, pause, verify and independent surfaces; removes its observer on pagehide', async () => {

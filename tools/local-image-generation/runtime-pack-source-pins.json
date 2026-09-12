@@ -160,8 +160,8 @@
     {
       "source": "tools/local-image-generation/stage-worker.mjs",
       "target": "__local_ai/stage-worker.mjs",
-      "bytes": 11212,
-      "sha256": "337aaea3f7f9804a4409887367b922ed68e02a8ee3dc7f0c859c913dfa52d8ac"
+      "bytes": 15755,
+      "sha256": "21901fad78ef6ed2473a85f0538426f946e625859fe1d7976dec838122cf02b5"
     },
     {
       "source": "audits/AI_SPECIES_MOBILE_20260909/references/reference-set-v1.json",
@@ -198,6 +198,12 @@
       "target": "__local_ai/references/6-cranberry.png",
       "bytes": 2005710,
       "sha256": "31be9a75a0bdea51580435c6bf1f4a03b44d3f7fd6e80aa6537893f92a8f6b93"
+    },
+    {
+      "source": "tools/local-image-generation/browser-variant-plan.json",
+      "target": "__local_ai/browser-variant-plan.json",
+      "bytes": 142918,
+      "sha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81"
     }
   ],
   "dependencies": [

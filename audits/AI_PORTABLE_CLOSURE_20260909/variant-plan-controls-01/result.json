@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "startedAt": "2026-09-09T20:20:14.402Z",
+  "sources": [
+    {
+      "path": "tools/local-image-generation/browser-variant-plan.mjs",
+      "bytes": 5141,
+      "sha256": "3c4ef9539935c21524e399d60c4d1ebe38d0da9f145a1ab80a49182c777128bc"
+    },
+    {
+      "path": "tools/local-image-generation/browser-variant-plan.test.mjs",
+      "bytes": 1754,
+      "sha256": "e1352b30a7b0b0c246bdcff23750a661c0ba4a86c659428428fc21528f123538"
+    },
+    {
+      "path": "tools/local-image-repack/model.mjs",
+      "bytes": 13309,
+      "sha256": "16d84698940e374306105c9494726b151d2210fd7f68cc6c4f96b72bb625e415"
+    },
+    {
+      "path": "tools/local-image-repack/protobuf.mjs",
+      "bytes": 5399,
+      "sha256": "098fbe1d2634525798f409296b38e40f8c927a121dda1c1067b55b14eb6f3d9d"
+    },
+    {
+      "path": "tools/local-image-repack/parent-contract.json",
+      "bytes": 1501,
+      "sha256": "8dfaeb15eed707fb71672075da8be8f95e9e17f7a9786a25f88e860313f74ffe"
+    },
+    {
+      "path": "tools/local-image-generation/q8-block32-manifest.json",
+      "bytes": 726,
+      "sha256": "d04d80a9c0c73e7ee73ef6a725b4f8e1b9c914d64c5c7b53e1b824c0197b0fe5"
+    },
+    {
+      "path": "tools/local-image-generation/model-manifest.json",
+      "bytes": 7268,
+      "sha256": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef"
+    }
+  ],
+  "steps": [
+    {
+      "name": "pure-controls",
+      "exitCode": 0
+    }
+  ],
+  "scope": "Metadata graph plan and pure controls only; no model/shard scan, browser or inference.",
+  "plan": {
+    "path": "/private/tmp/cf-browser-variant-plan-20260909-01.json",
+    "planSha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81",
+    "planBytes": 142918,
+    "literalBytes": 51301,
+    "patchCount": 413,
+    "rangeCount": 206,
+    "parentGraphSha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102",
+    "derivedGraphSha256": "cda0a0e0d2778f83236557bcde8d474fed89a2fcbc817ea04f4758d2a064aed8",
+    "sourceManifestSha256": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef"
+  },
+  "sourcesUnchanged": true,
+  "workspaceReleased": true,
+  "finishedAt": "2026-09-09T20:20:14.583Z"
+}
