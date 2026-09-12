@@ -22,3 +22,19 @@ requests and zero inference observed. Corrected classifier treats initial state 
 pending (bounded10seconds), then requires working/ready; after working it still rejects
 a return to idle without readiness. Both early-failure and never-fail mutants are
 rejected by the same oracle. Source correction precedes native-02; no parameter change.
+
+## native-02 installed path outcome
+
+Actual pinned-Hugging-Face download/install completed204.265s; ordinary Land composite
+199.50ms; one installed-Blob finisher, retained original and settled crossfade ready
+31333.176ms after Land. Accepted recipe parameters unchanged. Retained output SHA
+52b58c47caa2b7db86636187343669ca475faf62b78ffcd0e9f50e82b76cc2ff is byte-identical to the
+accepted baseline. Native ready screenshot and original PNG retained. Core requested
+installed download-to-finisher path succeeded, with exactly one inference.
+
+The raw run is FAIL because an additional reload check briefly accepted the old
+page's originalId immediately after Page.reload, then queried an undefined API while
+the new document was loading. The fix requires changed performance.timeOrigin and a
+settled matching original in that new document. Negative controls reject departing
+page, absent API and wrong original. No second install/inference run. Run the existing
+no-inference ordinary-Land/retention/Inspect proof with this correction to reload-01.

@@ -13,8 +13,10 @@ experiments. cd6b609f remains the accepted painting/tier-2 baseline. Nick accept
 as diffed and wiring0d825fe5/0e37e6c6 as the production path; nothing was deployed.
 Physical iPhone17Pro/iOS26.6.2 probe reports1GiB maxBufferSize, f16 and41.23GB quota;
 no exposed memory API. Safari session lost during text-encoder load, before transformer
-or finisher; cause unconfirmed, no phone tier qualified. Phone report precedes the next
-Mac installed-model test. Latest direction: audits/KIT_WEATHER_DECISIONS_20260912/DECISIONS.md.
+or finisher; cause unconfirmed, no phone tier qualified. The subsequent Mac ordinary
+download/install-to-finisher run produced the accepted PNG byte-for-byte in31.33s
+from Land. Its additional reload instrument required a new-document timing correction;
+no second inference authorized. Evidence: audits/MAC_INSTALLED_KIT_20260912. Latest direction: audits/KIT_WEATHER_DECISIONS_20260912/DECISIONS.md.
 
 **September 12 acceptance update:** Nick accepts cd6b609f / 0eed6a21 as the first engine
 painting and tier-2 baseline. The retained PNG is unchanged; its qualityAccepted is true.

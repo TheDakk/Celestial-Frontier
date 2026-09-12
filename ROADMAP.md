@@ -56,9 +56,14 @@ Safari invalidated the session during text-encoder loading. Transformer and fini
 not reached/observed; cause unconfirmed, phone tier UNQUALIFIED. No phone retry.
 Temporary server/owned driver closed. Actual evidence: IPHONE_KIT_PROBE_20260912/native-01.
 Next Mac installed-model run is prepared: tools/local-image-generation/run-kit-installed-land.mjs,
-one clean signed ordinary game Download/resume -> Land -> finisher -> reload/Inspect run
-using pinned Hugging Face download and OPFS parent model. Output MAC_INSTALLED_KIT_20260912/native-01.
-No new parameters, kit edits or delivery architecture. Then weather/mat, then Civet.
+Mac native-01 ended before inference on an early install-UI assertion (fixed with negative
+controls). native-02 on72fdbc89 completed real pinned download/install204.265s and one
+ordinary Land finisher31.333s; retained PNG byte-identical to accepted baseline, parameters
+unchanged. Additional reload check failed by observing departing document; raw FAIL retained.
+Corrected check requires a new timeOrigin, matching retained original and settled crossfade.
+Next ONLY no-inference run-kit-normal-land.mjs to MAC_INSTALLED_KIT_20260912/reload-01;
+no second download/model run. Then authorized weather/mat painting, then Civet.
+No new parameters, kit edits or delivery architecture.
 
 OpenAI/Codex on macOS: /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
 tracking origin/openai/mac. Current signed4715e0f2:33 ahead/0 behind upstream,
