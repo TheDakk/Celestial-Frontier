@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {erodeAlpha,keyAndDespill,pinkExcess,compositeLayer,latentInteriorMask,protectLatents} from './kit-contact-math.mjs';
+import {erodeAlpha,keyAndDespill,pinkExcess,compositeLayer,compositeOrganism,latentInteriorMask,protectLatents} from './kit-contact-math.mjs';
 import {placementBox,admitKitEngineJob} from './kit-engine-math.mjs';
 import fs from 'node:fs';
 
@@ -34,4 +34,24 @@ test('prepared profile meets scale relationships and refuses the former unmasked
   assert.ok(box('Civet').height/576>=.28);assert.equal(box('Platypus').height/box('Civet').height,.6);assert.equal(box('Frog').width/1024,.12);assert.ok(box('Persimmon').height>box('Civet').height);
   assert.throws(()=>admitKitEngineJob({...job,finisherStrength:.08}));assert.throws(()=>admitKitEngineJob({...job,skipOrganismPasses:false}));
   const old=JSON.parse(fs.readFileSync(new URL('../../audits/ART_KIT_ENGINE_PROOF_20260912/recipe.json',import.meta.url)));assert.throws(()=>admitKitEngineJob(old),/Contact experiment/);
+});
+
+test('8px erosion opens additional boundary area; unchanged 4px control fails the wider-edge criterion',()=>{
+  const w=128,h=128,alpha=new Uint8Array(w*h);for(let y=16;y<112;y++)for(let x=16;x<112;x++)alpha[y*w+x]=255;
+  const old=latentInteriorMask([alpha],w,h,4),next=latentInteriorMask([alpha],w,h,8);
+  const oracle=m=>{assert.equal(m.inner[64*w+21],0);assert.equal(m.inner[64*w+64],255);assert.ok(m.protectedTokens<old.protectedTokens);};
+  oracle(next);assert.throws(()=>oracle(old));
+  assert.throws(()=>latentInteriorMask([alpha],w,h,33),/erosion/);
+});
+test('two low runner instances share one organism mask; single-instance control fails',()=>{
+  const keyed={rgba:new Uint8ClampedArray(32*32*4).fill(255),bounds:{x:0,y:0,width:32,height:32}};
+  const placement={x:.34,groundY:.9,width:.11,flip:false,runners:[{x:.32,groundY:.91,width:.09,heightScale:.5,flip:false},{x:.43,groundY:.93,width:.08,heightScale:.5,flip:true}]};
+  const run=p=>compositeOrganism(new Uint8ClampedArray(1024*576*4),1024,576,keyed,32,32,p,placementBox);
+  const oracle=r=>{assert.equal(r.instances.length,2);for(const b of r.instances){assert.ok(b.height<50);assert.ok(r.alpha[Math.floor(b.y+b.height/2)*1024+Math.floor(b.x+b.width/2)]>0);}assert.ok(r.box.width>150);};
+  oracle(run(placement));assert.throws(()=>oracle(run({...placement,runners:undefined})));
+  const baseline=JSON.parse(fs.readFileSync(new URL('../../audits/ART_KIT_CONTACT_REVISION_20260912/prepared/recipe.json',import.meta.url)));
+  const edge={...baseline,experiment:'cf.kit-edge-runners.v1',interiorErosionPixels:8,passes:baseline.passes.map(p=>p.name==='Cranberry'?{...p,placement}:p)};
+  admitKitEngineJob(edge);assert.throws(()=>admitKitEngineJob({...edge,interiorErosionPixels:4}));
+  assert.throws(()=>admitKitEngineJob({...edge,passes:baseline.passes}));
+  assert.throws(()=>admitKitEngineJob({...baseline,passes:edge.passes}));
 });

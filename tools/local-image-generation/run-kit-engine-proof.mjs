@@ -27,7 +27,7 @@ try{
   receipt.recipeSha256=manifest.recipeSha256;
   const routes=new Map([['/recipe.json',path.join(prepared,'recipe.json')],['/kit-client.mjs',path.join(prepared,'kit-client.mjs')]]);
   for(const name of ['kit-proof-client.mjs','stage-worker.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','pipeline-math.mjs','gpu-profile.mjs','denoiser-shapes.mjs','browser-variant-plan.json'])routes.set('/'+name,path.join(dir,name));
-  if(landingCount===2)routes.set('/stage-worker.mjs',path.join(dir,'kit-stage-worker.mjs'));
+  routes.set('/stage-worker.mjs',path.join(dir,'kit-stage-worker.mjs')); // Same shipped kit worker for both proof modes.
   for(const row of manifest.files){const file=path.join(prepared,'inputs',path.basename(row.url));if(sha(await fs.readFile(file))!==row.sha256)throw Error('Prepared RGBA changed');routes.set(row.url,file);}
   for(const row of pin.files)routes.set('/model/'+row.path,path.join(cacheDir,row.path));
   const dist=path.join(dir,'node_modules/onnxruntime-web/dist');for(const name of await fs.readdir(dist))if(/\.(mjs|wasm)$/.test(name))routes.set('/node_modules/onnxruntime-web/dist/'+name,path.join(dist,name));
