@@ -40,3 +40,11 @@ pending. Bootstrap server shell session76799 stays running for these steps. Keys
 in /private/tmp/cf-iphone-trusted-tls-20260912; future run-iphone-kit-probe uses server-key.pem
 and server.pem from there, not the rejected self-signed leaf directory. Native probe remains
 same accepted embedding/recipe/three sessions. No model run during setup. No kit/GitHub edits.
+
+Update: after Nick initially saw connection-not-private, the setup server received a second
+profile download (first was Mac verification), then an iPhone Safari report with
+secureContext true, crossOriginIsolated true, WebGPU API available. Trust setup now works;
+no model was run on the check page. Certificate bootstrap/check server closed and final
+setup-server-status.json retained. Proceed to the physical three-session probe with the
+new trusted server certificate and unchanged accepted embedding/recipe. Removal remains
+required after probe completion.

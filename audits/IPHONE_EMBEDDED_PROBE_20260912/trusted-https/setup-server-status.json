@@ -1,0 +1,37 @@
+{
+  "schema": "cf.probe-trust-bootstrap.v1",
+  "status": "CLOSED",
+  "httpOrigin": "http://192.168.1.62:49764",
+  "httpsOrigin": "https://192.168.1.62:49765",
+  "profileDownloads": 2,
+  "securePageRequests": 3,
+  "browserReports": [
+    {
+      "url": "https://192.168.1.62:49765/",
+      "secureContext": true,
+      "crossOriginIsolated": true,
+      "webgpu": true,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1"
+    },
+    {
+      "url": "https://192.168.1.62:49765/",
+      "secureContext": true,
+      "crossOriginIsolated": true,
+      "webgpu": true,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1"
+    }
+  ],
+  "tlsErrors": [
+    {
+      "code": "ERR_SSL_SSL/TLS_ALERT_CERTIFICATE_UNKNOWN"
+    },
+    {
+      "code": "ERR_SSL_SSL/TLS_ALERT_CERTIFICATE_UNKNOWN"
+    },
+    {
+      "code": "ERR_SSL_SSL/TLS_ALERT_CERTIFICATE_UNKNOWN"
+    }
+  ],
+  "modelRequests": 0,
+  "inferenceRuns": 0
+}
