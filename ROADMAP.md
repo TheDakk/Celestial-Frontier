@@ -40,9 +40,10 @@ Evidence/acceptance: audits/ART_KIT_CONTACT_REVISION_20260912/ACCEPTANCE.md. Bas
 Normal-game code is prepared;59 adapter/storage/compiler/delivery tests,4 presentation,
 21 parallel frozen-preview/species tests,5 final integration controls plus worker controls
 and TypeScript/root validation pass. Native browser proof is next; no inference has run.
-Source signing failed with1Password agent error; Nick has been asked to unlock again.
-All current work is staged. Do not rerun completed preparation or tests on signer resume.
-Sign the source, then run-kit-normal-land.mjs to browser-01 (no inference, accepted PNG),
+Implementation signed and verified as0d825fe5. Browser-01 mounted the composite in183ms
+and restored the accepted PNG after reload, with no runtime exceptions. Its harness then
+incorrectly called the system-only surveyOn helper from surface mode. The corrected
+harness clicks the actual Survey dock button; browser-02 is next (no inference),
 then run-kit-engine-proof.mjs with warm-prepared, warm-native-01 and --landings=2.
 Exact commands, receipts and limitations: audits/KIT_NORMAL_LAND_20260912/README.md.
 The actual iPhone/iOS/connection question is pending. No new creative experiment before
@@ -51,7 +52,7 @@ native run, integrated chain or pack build. Phone probe still gates new storage/
 engineering; explicit retained-original integration and corrupt-install repair are in scope.
 
 OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac
-tracking origin/openai/mac. Last signed dbeb2448 is27 ahead/0 behind upstream,138 ahead/0 behind
+tracking origin/openai/mac. Last signed0d825fe5 is28 ahead/0 behind upstream,139 ahead/0 behind
 cached origin/develop. No fetch, .DS_Store untouched, existing uninterrupted startup receipt.
 GitHub step NONE. PR42 parked until split; no push/label/dispatch/merge/release/deploy.
 Claude Code need not open/sync now. After eventual authorized develop integration only,
