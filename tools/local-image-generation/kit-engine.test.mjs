@@ -3,15 +3,14 @@ import {test} from 'node:test';
 import {prepareKitTextTokens,MAX_KIT_TEXT_TOKENS,imageToImageStart,planarToRgba,placementBox,admitKitEngineJob} from './kit-engine-math.mjs';
 import {expandOperandRange,patchGraph,expandPinnedTransformer} from './kit-worker-expansion.mjs';
 
-test('tenfold ceiling retains every token and allocates only the actual rounded sequence',()=>{
+test('restored ceiling rejects overflow without truncation and allocates actual projected length',()=>{
   const tokenizer=n=>({encode:()=>({ids:Array.from({length:n},(_,i)=>i+1)}),token_to_id:()=>77});
-  assert.equal(MAX_KIT_TEXT_TOKENS,5120);
-  const actual=prepareKitTextTokens(tokenizer(1812),'source kit');assert.equal(actual.sequence,1824);assert.equal(actual.ids[1811],1812n);assert.equal(actual.mask[1811],1n);assert.equal(actual.mask[1812],0n);
-  assert.equal(prepareKitTextTokens(tokenizer(5120),'source kit').ids[5119],5120n);
-  assert.throws(()=>prepareKitTextTokens(tokenizer(5121),'source kit'),/no truncation/);
-  assert.throws(()=>prepareKitTextTokens(tokenizer(0),'source kit'),/no truncation/);
-  // A silently truncated prompt is not equivalent to an admitted full prompt.
-  assert.notEqual(prepareKitTextTokens(tokenizer(512),'source kit').tokenCount,actual.tokenCount);
+  assert.equal(MAX_KIT_TEXT_TOKENS,512);
+  const actual=prepareKitTextTokens(tokenizer(402),'projected runtime');assert.equal(actual.sequence,416);assert.equal(actual.ids[401],402n);assert.equal(actual.mask[401],1n);assert.equal(actual.mask[402],0n);
+  assert.equal(prepareKitTextTokens(tokenizer(512),'projected runtime').ids[511],512n);
+  assert.throws(()=>prepareKitTextTokens(tokenizer(513),'projected runtime'),/no truncation/);
+  assert.throws(()=>prepareKitTextTokens(tokenizer(1824),'unprojected prior prompt'),/no truncation/);
+  assert.throws(()=>prepareKitTextTokens(tokenizer(0),'projected runtime'),/no truncation/);
 });
 test('low-strength pass preserves source contribution and seed owns only the noise',()=>{
   const initial=Float32Array.from({length:128},(_,i)=>i/128),before=initial.slice();

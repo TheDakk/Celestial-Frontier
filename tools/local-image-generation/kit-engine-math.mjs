@@ -2,18 +2,19 @@ import {seededGaussianNoise,createSigmaSchedule} from './pipeline-math.mjs';
 export const KIT_ENGINE_SCHEMA='cf.kit-engine.v4';
 export function admitKitEngineJob(job){
   if(job?.schema!==KIT_ENGINE_SCHEMA)throw Error('Kit engine schema refused');
+  if(job.experiment!=='cf.kit-contact.v1'||job.skipOrganismPasses!==true||job.textTokenCeiling!==512||job.finisherStrength!==.35||job.finisherSteps!==1)throw Error('Contact experiment refused');
   const integer=(n,a,b)=>Number.isSafeInteger(n)&&n>=a&&n<=b;
   if(!integer(job.width,128,2048)||!integer(job.height,128,2048)||job.width%16||job.height%16
     ||!integer(job.seed,0,0xffffffff)||!integer(job.steps,1,32)||!integer(job.passSize,128,1024)||job.passSize%16
-    ||!(job.strength>0&&job.strength<=1)||!(job.finisherStrength>0&&job.finisherStrength<=0.25))throw Error('Kit engine dimensions/settings refused');
+    ||!(job.strength>0&&job.strength<=1)||!(job.finisherStrength>0&&job.finisherStrength<=0.35))throw Error('Kit engine dimensions/settings refused');
   const names=['Civet','Persimmon','Platypus','Frog',"Devil's Club",'Cranberry'];
   if(!Array.isArray(job.passes)||job.passes.length!==6||job.passes.some((p,i)=>p.name!==names[i]
-    ||typeof p.identityKey!=='string'||p.identityKey.length<1||typeof p.prompt!=='string'||p.prompt.length<100
+    ||typeof p.identityKey!=='string'||p.identityKey.length<1
     ||!p.placement||!['x','groundY','width'].every(k=>Number.isFinite(p.placement[k])&&p.placement[k]>0&&p.placement[k]<1)
-    ||typeof p.placement.flip!=='boolean'))throw Error('Kit engine residents refused');
+    ||(p.placement.height!==undefined&&!(p.placement.height>0&&p.placement.height<.8))||typeof p.placement.flip!=='boolean'))throw Error('Kit engine residents refused');
   if(typeof job.finisherPrompt!=='string'||job.finisherPrompt.length<100)throw Error('Kit finisher prompt missing');
-  for(const ref of [job.plate,job.atlas,job.triptych,...job.passes.map(p=>p.reference)]){
-    if(!ref||!integer(ref.width,128,2560)||!integer(ref.height,128,2560)||ref.width%16||ref.height%16
+  for(const ref of [job.plate,job.atlas,job.triptych,job.foreground,...job.passes.map(p=>p.reference)]){
+    if(!ref||!integer(ref.width,16,2560)||!integer(ref.height,16,2560)||ref.width%16||ref.height%16
       ||typeof ref.url!=='string'||!ref.url.startsWith('/inputs/')||!/^[a-f0-9]{64}$/.test(ref.sha256))throw Error('Kit fitted reference refused');
   }
   if(job.plate.width!==job.width||job.plate.height!==job.height||job.passes.some(p=>p.reference.width!==job.passSize||p.reference.height!==job.passSize))throw Error('Kit reference pre-fit mismatch');
@@ -48,18 +49,19 @@ export function rgbaToPlanar(rgba,width,height){
   return data;
 }
 export function placementBox(placement,bounds,width,height){
-  const w=width*placement.width,h=w*bounds.height/bounds.width;
+  const h=placement.height===undefined?width*placement.width*bounds.height/bounds.width:height*placement.height;
+  const w=placement.height===undefined?width*placement.width:h*bounds.width/bounds.height;
   const box={x:width*placement.x-w/2,y:height*placement.groundY-h,width:w,height:h};
   if(!Object.values(box).every(Number.isFinite)||box.x<0||box.y<0||box.x+w>width||box.y+h>height)throw Error('Organism placement outside plate');
   return box;
 }
 
-export const MAX_KIT_TEXT_TOKENS=5120;
+export const MAX_KIT_TEXT_TOKENS=512;
 export function prepareKitTextTokens(tokenizer,prompt){
   if(typeof prompt!=='string'||!prompt.length||prompt.length>65536)throw Error('Kit prompt text refused');
   const wrapped='<|im_start|>user\n'+prompt+'<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n';
   const tokens=tokenizer.encode(wrapped,{add_special_tokens:false}).ids;
-  if(tokens.length<1||tokens.length>MAX_KIT_TEXT_TOKENS)throw Error('Full kit prompt exceeds 5120-token ceiling; no truncation');
+  if(tokens.length<1||tokens.length>MAX_KIT_TEXT_TOKENS)throw Error('Projected runtime prompt exceeds 512-token ceiling; no truncation');
   const sequence=Math.ceil(tokens.length/16)*16,pad=tokenizer.token_to_id('<|endoftext|>');
   if(!Number.isInteger(pad)||tokens.some(t=>!Number.isSafeInteger(t)||t<0))throw Error('Invalid tokenizer IDs');
   const ids=new BigInt64Array(sequence),mask=new BigInt64Array(sequence);ids.fill(BigInt(pad));tokens.forEach((v,i)=>{ids[i]=BigInt(v);mask[i]=1n;});

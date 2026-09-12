@@ -25,7 +25,7 @@ try{
   const recipeBytes=await fs.readFile(path.join(prepared,'recipe.json'));if(sha(recipeBytes)!==manifest.recipeSha256)throw Error('Prepared recipe SHA mismatch');
   receipt.recipeSha256=manifest.recipeSha256;
   const routes=new Map([['/recipe.json',path.join(prepared,'recipe.json')],['/kit-client.mjs',path.join(prepared,'kit-client.mjs')]]);
-  for(const name of ['kit-proof-client.mjs','stage-worker.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','pipeline-math.mjs','gpu-profile.mjs','denoiser-shapes.mjs','browser-variant-plan.json'])routes.set('/'+name,path.join(dir,name));
+  for(const name of ['kit-proof-client.mjs','stage-worker.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','pipeline-math.mjs','gpu-profile.mjs','denoiser-shapes.mjs','browser-variant-plan.json'])routes.set('/'+name,path.join(dir,name));
   for(const row of manifest.files){const file=path.join(prepared,'inputs',path.basename(row.url));if(sha(await fs.readFile(file))!==row.sha256)throw Error('Prepared RGBA changed');routes.set(row.url,file);}
   for(const row of pin.files)routes.set('/model/'+row.path,path.join(cacheDir,row.path));
   const dist=path.join(dir,'node_modules/onnxruntime-web/dist');for(const name of await fs.readdir(dist))if(/\.(mjs|wasm)$/.test(name))routes.set('/node_modules/onnxruntime-web/dist/'+name,path.join(dist,name));
@@ -63,8 +63,8 @@ try{
   }
   const report=await evaluate('window.kitProof.report()');Object.assign(receipt,report);receipt.status=state.status==='complete'?'PASS':'FAIL';
   const capture=async(kind,file,index=0)=>{const encoded=await evaluate(`window.kitProof.artifact(${JSON.stringify(kind)},${index})`);const bytes=Buffer.from(encoded,'base64');await fs.writeFile(path.join(output,file),bytes,{flag:'wx'});return {file,bytes:bytes.length,sha256:sha(bytes)};};
-  receipt.artifacts=[];for(let i=0;i<state.partialCount;i++)receipt.artifacts.push(await capture('partial',`organism-${String(i+1).padStart(2,'0')}-raw.png`,i));
-  if(receipt.status==='PASS'){receipt.artifacts.push(await capture('painting','painting.png'));receipt.artifacts.push(await capture('composite','composite-before-finisher.png'));for(let i=0;i<6;i++)receipt.artifacts.push(await capture('cutout',`organism-${String(i+1).padStart(2,'0')}.png`,i));}
+  receipt.artifacts=[];for(let i=0;i<state.partialCount;i++)receipt.artifacts.push(await capture('partial',`partial-${String(i+1).padStart(2,'0')}-${report.partial[i].toLowerCase().replace(/[^a-z0-9]+/g,'-')}.png`,i));
+  if(receipt.status==='PASS'){receipt.artifacts.push(await capture('painting','painting.png'));receipt.artifacts.push(await capture('composite','composite-before-finisher.png'));for(let i=0;i<6;i++){receipt.artifacts.push(await capture('cutout',`organism-${String(i+1).padStart(2,'0')}.png`,i));receipt.artifacts.push(await capture('mask',`organism-${String(i+1).padStart(2,'0')}-mask.png`,i));}receipt.artifacts.push(await capture('protection','protected-interiors.png'));}
   for(const row of receipt.sources)if(sha(await fs.readFile(path.join(root,row.file)))!==row.sha256)throw Error('Runtime source changed: '+row.file);
 }catch(error){receipt.status='FAIL';receipt.error=String(error.stack??error);console.error(receipt.error);}
 finally{

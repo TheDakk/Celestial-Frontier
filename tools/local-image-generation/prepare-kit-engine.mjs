@@ -3,43 +3,66 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {pathToFileURL,fileURLToPath} from 'node:url';
+import {Tokenizer} from '@huggingface/tokenizers';
 import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
-import {admitKitEngineJob} from './kit-engine-math.mjs';
+import {admitKitEngineJob,prepareKitTextTokens,placementBox} from './kit-engine-math.mjs';
+import {keyAndDespill,compositeLayer,subtractOcclusion,alphaBounds} from './kit-contact-math.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
-const args=Object.fromEntries(process.argv.slice(2).map(a=>{const m=/^--([a-z-]+)=(.+)$/.exec(a);if(!m)throw Error('Expected named argument');return [m[1],m[2]];}));
-for(const k of Object.keys(args))if(!['output','width','height','pass-size','steps','seed','strength','finisher-strength'].includes(k))throw Error('Unknown option '+k);
-if(!args.output)throw Error('--output=NEW_DIRECTORY required');
-const output=path.resolve(args.output);await fs.mkdir(output);await fs.mkdir(path.join(output,'inputs'));
+if(process.argv.length!==3||!process.argv[2].startsWith('--output='))throw Error('--output=NEW_DIRECTORY required');
+const output=path.resolve(process.argv[2].slice(9));await fs.mkdir(output);await fs.mkdir(path.join(output,'inputs'));
 const sha=b=>createHash('sha256').update(b).digest('hex');
-const settings={width:Number(args.width??1024),height:Number(args.height??576),passSize:Number(args['pass-size']??384),steps:Number(args.steps??4),seed:Number(args.seed??133),strength:Number(args.strength??.20),finisherStrength:Number(args['finisher-strength']??.08)};
-for(const k of ['width','height','passSize'])if(!Number.isSafeInteger(settings[k])||settings[k]<128||settings[k]>2048||settings[k]%16)throw Error('Invalid preparation geometry');
-// Canonical authoring build owns its own short checkout lease; no game/pack build.
+const baseline=path.join(root,'audits/ART_KIT_ENGINE_PROOF_20260912'),first=path.join(root,'audits/ART_KIT_ENGINE_FIRST_20260912');
+const prior=JSON.parse(await fs.readFile(path.join(baseline,'prepared-manifest.json'),'utf8'));
+const previousRecipe=JSON.parse(await fs.readFile(path.join(baseline,'recipe.json'),'utf8'));
+const settings={...prior.settings,finisherStrength:.35};
+if(settings.seed!==133||settings.width!==1024||settings.height!==576||settings.passSize!==384)throw Error('Exact prior experiment geometry required');
 const compilerDir=path.join(output,'compiler');
 execFileSync(process.execPath,[path.join(root,'port/v2/tools/landfall-snapshot/kit-export.mjs'),compilerDir],{cwd:root,stdio:'pipe'});
-const release=acquireWorkspaceLock('offline pre-fit of approved-v4 engine inputs');
-const files=[];
+const release=acquireWorkspaceLock('prepare one contact revision with unchanged accepted inputs');
 try{
-  const old=path.join(root,'audits/ART_KIT_ENGINE_FIRST_20260912');
-  const intake=JSON.parse(await fs.readFile(path.join(old,'capture-intake.json'),'utf8'));
-  async function fit(key,source,width,height,cutout,expected){
-    const original=await fs.readFile(source);if(sha(original)!==expected)throw Error('Source image changed: '+key);
-    const png=path.join(output,'inputs',key+'.png'),raw=path.join(output,'inputs',key+'.rgba');
-    const opts=cutout?['-fuzz','7%','-transparent','#ff00ff','-trim','+repage','-resize',`${Math.floor(width*.80)}x${Math.floor(height*.80)}`,'-background','#ff00ff','-gravity','center','-extent',`${width}x${height}`,'-alpha','remove','-alpha','off']:['-resize',`${width}x${height}!`];
-    execFileSync('magick',[source,...opts,'-colorspace','sRGB','-depth','8',png]);
-    execFileSync('magick',[png,'-depth','8','rgba:'+raw]);
-    const bytes=await fs.readFile(raw),pngBytes=await fs.readFile(png);if(bytes.length!==width*height*4)throw Error('Raw fitted byte size');
-    const row={url:'/inputs/'+key+'.rgba',sha256:sha(bytes),width,height};
-    files.push({key,...row,bytes:bytes.length,png:path.relative(output,png),pngSha256:sha(pngBytes),source:path.relative(root,source),sourceSha256:sha(original),operation:cutout?'7% magenta key; trim; fit into 80% envelope; flat magenta pad; RGBA8':'offline resample to fixed encoder geometry; RGBA8'});return row;
+  const intake=JSON.parse(await fs.readFile(path.join(first,'capture-intake.json'),'utf8'));
+  for(const row of intake.images){const b=await fs.readFile(path.join(first,'masters',row.key+'.png'));if(sha(b)!==row.masterSha256)throw Error('Accepted master changed: '+row.key);}
+  const files=[];for(const row of prior.files){
+    for(const [file,hash]of [[path.basename(row.url),row.sha256],[row.key+'.png',row.pngSha256]]){
+      const bytes=await fs.readFile(path.join(baseline,'inputs',file));if(sha(bytes)!==hash)throw Error('Prior input changed');await fs.writeFile(path.join(output,'inputs',file),bytes,{flag:'wx'});
+    }
+    files.push({...row,operation:'byte-identical copy of first experiment fitted input'});
   }
-  const residents={};for(const key of ['civet','persimmon','platypus','frog','devils-club','cranberry']){
-    const source=path.join(old,'masters',key+'.png');residents[key]=await fit(key,source,settings.passSize,settings.passSize,true,intake.images.find(r=>r.key===key).masterSha256);
+  const compiler=await import(pathToFileURL(path.join(compilerDir,'kit-compiler.mjs')).href);
+  const kit=await fs.readFile(path.join(root,'ART_KIT.md'),'utf8');
+  const plateRow=files.find(r=>r.key==='earth-temperate'),plate=new Uint8ClampedArray(await fs.readFile(path.join(output,'inputs','earth-temperate.rgba')));
+  const crop={x:435,y:400,width:64,height:64},foreground=new Uint8ClampedArray(64*64*4);let retained=0;
+  for(let y=0;y<64;y++)for(let x=0;x<64;x++){
+    const p=(y*64+x)*4,q=((crop.y+y)*1024+crop.x+x)*4;foreground.set(plate.subarray(q,q+4),p);
+    const [r,g,b]=foreground.subarray(p,p+3);const grass=g>=r*.82&&g>b*1.22&&g>32;
+    foreground[p+3]=grass?255:0;retained+=grass;
   }
-  const plate=await fit('earth-temperate',path.join(old,'masters/earth-temperate.png'),settings.width,settings.height,false,intake.images.find(r=>r.key==='earth-temperate').masterSha256);
-  const atlas=await fit('atlas',path.join(root,'audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png'),512,336,false,'c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62');
-  const triptych=await fit('triptych',path.join(root,'audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png'),512,224,false,'68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38');
-  const {compileCanonicalEarthKitEngine}=await import(pathToFileURL(path.join(compilerDir,'kit-compiler.mjs')).href);
-  const recipe=compileCanonicalEarthKitEngine(await fs.readFile(path.join(root,'ART_KIT.md'),'utf8'),{plate,atlas,triptych,residents},settings);admitKitEngineJob(recipe);
+  if(retained<100||retained>3500)throw Error('Grass extraction empty or full');
+  const fgRow={key:'foreground-grass',url:'/inputs/foreground-grass.rgba',sha256:sha(foreground),width:64,height:64,bytes:foreground.length,source:plateRow.source,sourceSha256:plateRow.sourceSha256,crop,plateRgbaSha256:plateRow.sha256,retainedPixels:retained,operation:'crop accepted plate lower band; keep olive/green blade pixels; source RGB unchanged',png:'inputs/foreground-grass.png'};
+  await fs.writeFile(path.join(output,'inputs','foreground-grass.rgba'),foreground,{flag:'wx'});
+  execFileSync('magick',['-size','64x64','-depth','8','rgba:'+path.join(output,'inputs','foreground-grass.rgba'),path.join(output,fgRow.png)]);
+  fgRow.pngSha256=sha(await fs.readFile(path.join(output,fgRow.png)));files.push(fgRow);
+  const ref=key=>{const {url,sha256,width,height}=files.find(r=>r.key===key);return {url,sha256,width,height};};
+  const recipe=compiler.compileCanonicalEarthKitEngine(kit,{plate:ref('earth-temperate'),atlas:ref('atlas'),triptych:ref('triptych'),foreground:ref('foreground-grass'),residents:Object.fromEntries(['civet','persimmon','platypus','frog','devils-club','cranberry'].map(k=>[k,ref(k)]))},settings);
+  admitKitEngineJob(recipe);
+  // Exact same semantic source and same prepared resident/plate/ref bytes.
+  if(JSON.stringify(recipe.sourceSnapshot)!==JSON.stringify(previousRecipe.sourceSnapshot))throw Error('Canonical game source changed');
+  const pin=JSON.parse(await fs.readFile(path.join(root,'tools/local-image-generation/model-manifest.json'),'utf8'));
+  const cache=path.join(root,'port/v2/apps/game/smoke/local-image-generation',pin.modelId.replace('/','--'),pin.revision,'tokenizer');
+  const tokenizer=new Tokenizer(JSON.parse(await fs.readFile(path.join(cache,'tokenizer.json'),'utf8')),JSON.parse(await fs.readFile(path.join(cache,'tokenizer_config.json'),'utf8')));
+  const tokens=prepareKitTextTokens(tokenizer,recipe.finisherPrompt);
+  const tokenReceipt={ceiling:512,tokens:tokens.tokenCount,positions:tokens.sequence,promptSha256:sha(recipe.finisherPrompt),chatPromptSha256:sha(tokens.wrapped)};
+  await fs.writeFile(path.join(output,'runtime-prompt.txt'),recipe.finisherPrompt,{flag:'wx'});
+  await fs.writeFile(path.join(output,'runtime-prompt-chat-wrapped.txt'),tokens.wrapped,{flag:'wx'});
   const bytes=JSON.stringify(recipe,null,2)+'\n';await fs.writeFile(path.join(output,'recipe.json'),bytes,{flag:'wx'});
-  await fs.writeFile(path.join(output,'prepared-manifest.json'),JSON.stringify({schema:'cf.kit-engine-prepared.v4',recipeSha256:sha(bytes),settings,files,magickVersion:execFileSync('magick',['-version'],{encoding:'utf8'}).split('\n')[0],qualityAccepted:false},null,2)+'\n',{flag:'wx'});
-  console.log(JSON.stringify({status:'PASS',output,files:files.length,recipeSha256:sha(bytes),settings}));
+  await fs.writeFile(path.join(output,'prepared-manifest.json'),JSON.stringify({schema:'cf.kit-engine-prepared.v4',experiment:recipe.experiment,recipeSha256:sha(bytes),settings,files,tokenReceipt,acceptedMastersVerified:intake.images.length,sameSourceSnapshot:true,qualityAccepted:false},null,2)+'\n',{flag:'wx'});
+  // Static compositor inspection before the single native inference run.
+  const preview=plate.slice(),masks=[],boxes=[];
+  for(const p of recipe.passes){const raw=new Uint8ClampedArray(await fs.readFile(path.join(output,'inputs',path.basename(p.reference.url))));const keyed=keyAndDespill(raw,p.reference.width,p.reference.height),box=placementBox(p.placement,keyed.bounds,1024,576);const alpha=compositeLayer(preview,1024,576,keyed.rgba,p.reference.width,p.reference.height,keyed.bounds,box,p.placement.flip);subtractOcclusion(masks,alpha);masks.push(alpha);boxes.push({name:p.name,...box,keying:keyed.receipt});}
+  const fb=alphaBounds(Uint8Array.from({length:4096},(_,i)=>foreground[i*4+3]),64,64);
+  for(const target of recipe.composition.foreground.placements){const b=boxes.find(b=>b.name===target.name),fg=recipe.composition.foreground,w=fg.width*1024,h=fg.height*576;compositeLayer(preview,1024,576,foreground,64,64,fb,{x:b.x+b.width*target.centreAcrossBody-w/2,y:b.y+b.height+fg.groundOffset-h,width:w,height:h});}
+  await fs.writeFile(path.join(output,'compositor-preview.rgba'),preview,{flag:'wx'});
+  execFileSync('magick',['-size','1024x576','-depth','8','rgba:'+path.join(output,'compositor-preview.rgba'),path.join(output,'compositor-preview.png')]);
+  await fs.writeFile(path.join(output,'compositor-preview.json'),JSON.stringify({boxes,pixelSha256:sha(preview),note:'Static compositor only; no inference. Native composite must match pixels.'},null,2)+'\n',{flag:'wx'});
+  console.log(JSON.stringify({status:'PASS',output,tokenReceipt,acceptedMasters:intake.images.length,foregroundPixels:retained,boxes},null,2));
 }finally{release();}

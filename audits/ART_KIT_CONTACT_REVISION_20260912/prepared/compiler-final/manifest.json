@@ -1,0 +1,432 @@
+{
+  "schema": "cf.art.kit-export.v4",
+  "sources": [
+    {
+      "path": "ART_KIT.md",
+      "sha256": "8939ae9b8cb8c09868f2c3b712923745532c47235125dce091bfc43595ddd5a7",
+      "bytes": 40898
+    },
+    {
+      "path": "port/v2/apps/game/src/biome-vista-surface.ts",
+      "sha256": "4d0c72d2b305a6e23fda93bcb22b0ff0c5945f3fc5f3b10f681d9dc7e0be0f79",
+      "bytes": 10777
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-recipe.ts",
+      "sha256": "ab1fd02bd9a125a07f4a2abc671658cae3d94b5368bf3c226f5b1fc46e1fb824",
+      "bytes": 15885
+    },
+    {
+      "path": "port/v2/apps/game/src/landfall-appearance-snapshot.ts",
+      "sha256": "94d97e8716cfb28d6108583a781116122c1693859c6ac0b32ce5148571d68a69",
+      "bytes": 4931
+    },
+    {
+      "path": "port/v2/apps/game/src/landfall-conditioning.ts",
+      "sha256": "eda6f67fa489c3dcb69cc4504e576a9029ec3d0130fa9c7101d72d930d3ef3a5",
+      "bytes": 33704
+    },
+    {
+      "path": "port/v2/apps/game/src/world-roster.ts",
+      "sha256": "0e071ec4c355cb354db6031eb94c98bfaa008c4f9ef2485670b41d376fa4830f",
+      "bytes": 24167
+    },
+    {
+      "path": "port/v2/package-lock.json",
+      "sha256": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d",
+      "bytes": 90228
+    },
+    {
+      "path": "port/v2/packages/art/src/earth-resident-plan.ts",
+      "sha256": "a55b9b08fd93d97642dbec0793ac4afc3204c224fe152dc8a331af8fa4a48cef",
+      "bytes": 8447
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides.ts",
+      "sha256": "9e109fea1bda4d312eb733f8aa56aacba67ab0ceb79a6a8d9228bec6bc118694",
+      "bytes": 253580
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides2.ts",
+      "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02",
+      "bytes": 235945
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides3.ts",
+      "sha256": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec",
+      "bytes": 153673
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides5.ts",
+      "sha256": "2e71508a633e111c396378bee19164149e4b61653001c88476d0d95d9fe63382",
+      "bytes": 116158
+    },
+    {
+      "path": "port/v2/packages/art/src/floraoverrides.ts",
+      "sha256": "6323d1c46e998568bf57cbbfc9355557e22b9b70de227f68bfda932231b2ed6c",
+      "bytes": 25880
+    },
+    {
+      "path": "port/v2/packages/art/src/floraoverrides2.ts",
+      "sha256": "42800cea6e658b6323a87d6a0c75683980afc10faf1ea188d1b6649b9750d73d",
+      "bytes": 408410
+    },
+    {
+      "path": "port/v2/packages/art/src/florarost.ts",
+      "sha256": "e3b89406d88af811e5810a2b72508ff68a20280fe71bfb3d7f6f5c8a9e53c8b2",
+      "bytes": 44113
+    },
+    {
+      "path": "port/v2/packages/art/src/mammaloverrides.ts",
+      "sha256": "2ef6c2e8e592c14d3ce77d4f77b2637ffa0ae55b771375ec833e6a299db68702",
+      "bytes": 29311
+    },
+    {
+      "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
+      "sha256": "baa8df44c485c0febaf1c8d05579d846a4c3b2114454c7e42d1c4177a4703e55",
+      "bytes": 358210
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesidentity.ts",
+      "sha256": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0",
+      "bytes": 3190
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesoverrides.ts",
+      "sha256": "9c212624234a64d78a75a362e48625bec16a36f4831fd29ba86f09f236f9441b",
+      "bytes": 126067
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874",
+      "bytes": 14498
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/combat-settlement.ts",
+      "sha256": "0add16e8b7c45789665542ef1ed0a420bfcfc8438421a0d456fffda8d852be13",
+      "bytes": 28625
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
+      "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1",
+      "bytes": 54698
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
+      "sha256": "e41c72f116358fa46d04d79b399e179bab201094383a8ddd9ace87e2c79a2ed6",
+      "bytes": 4537
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/guardian-prime.ts",
+      "sha256": "fcbb7ea8bea461e2fab76aedd66cb98d56794b11768acce343f9eee4723ccf70",
+      "bytes": 24350
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/index.ts",
+      "sha256": "fbe4bcc52197b984e57b8d48ae7a3e9110cf9b6e1cfd259f584eb2f5012761e0",
+      "bytes": 631
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/lineage-codec.ts",
+      "sha256": "7c80826744c22230263e53facefb05d28c3968d3defabb070a6d9a6f19a9f8f4",
+      "bytes": 4041
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
+      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a",
+      "bytes": 6433
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
+      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff",
+      "bytes": 13811
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/describe-pick.ts",
+      "sha256": "2e689f6c986c5a0c5d1ad877caf6e48c814fadd47550aa6555612282ed6895d1",
+      "bytes": 6919
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
+      "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432",
+      "bytes": 31511
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/index.ts",
+      "sha256": "70a8fc4bd7c188b3e26e699e2644f8a57587cb14b6a0bf2a927f48dd4d18b96a",
+      "bytes": 1080
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/civilization.ts",
+      "sha256": "faed945d2a4ff864fded1d8b0d80fd4cc4f2bb4a5ec4f11a38b045d92593553d",
+      "bytes": 1313
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/ecology.verbatim.js",
+      "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c",
+      "bytes": 11513
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/explicit-epoch.ts",
+      "sha256": "d0c2daee6e4d9a668eb98b677bf668f77587d83574173bdf234e4dde531cec5f",
+      "bytes": 4988
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/index.ts",
+      "sha256": "9ae354c71f86794966f928a8e3c27c3d34a05b23093f3bfdf5c77909979acc3b",
+      "bytes": 311
+    },
+    {
+      "path": "port/v2/packages/domain/encutil/src/index.ts",
+      "sha256": "ef7ca91752c270c5452c6cc6595574f9bf6b754b950494b21302768e2d5de94e",
+      "bytes": 2086
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
+      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12",
+      "bytes": 4570
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/index.ts",
+      "sha256": "eee2058546ab009b6b33376bad1005d6a597bd2b336506851d9be562d8cbef61",
+      "bytes": 3281
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7",
+      "bytes": 13307
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/index.ts",
+      "sha256": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72",
+      "bytes": 116
+    },
+    {
+      "path": "port/v2/packages/domain/naming/src/cleanname.verbatim.js",
+      "sha256": "9d5f6685bdd96563bf48dc293b4f8b5fd9dacbd7ec2afd40b0a7174b2eada30a",
+      "bytes": 362
+    },
+    {
+      "path": "port/v2/packages/domain/naming/src/index.ts",
+      "sha256": "f485458ba79dfa6bbe96838eb831506dc7d01bc80f27b2a2d8c8f4edc039c11e",
+      "bytes": 1116
+    },
+    {
+      "path": "port/v2/packages/domain/planetgen/src/index.ts",
+      "sha256": "92c0b25b750c9457a7365e482d9423400a54150019997a5d1c96c1ea96e203e0",
+      "bytes": 212
+    },
+    {
+      "path": "port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
+      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5",
+      "bytes": 9441
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927",
+      "bytes": 3639
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f",
+      "bytes": 170
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d",
+      "bytes": 20728
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749",
+      "bytes": 271
+    },
+    {
+      "path": "port/v2/packages/domain/starcatalog/src/index.ts",
+      "sha256": "da886e9f3a2be6ce7e609e031e3a0e4c325d272f8926803f2d0e33b2d7ed1b13",
+      "bytes": 3410
+    },
+    {
+      "path": "port/v2/packages/domain/strays/src/index.ts",
+      "sha256": "fa905124c4d182f361b868cf0319fdb9279bd8d13cfb1f85c991d00f83d225ec",
+      "bytes": 285
+    },
+    {
+      "path": "port/v2/packages/domain/strays/src/strays.verbatim.js",
+      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03",
+      "bytes": 22644
+    },
+    {
+      "path": "port/v2/packages/domain/surveyphrases/src/index.ts",
+      "sha256": "8c8ec0c8f6b2d76b326daf994f2f4042f0c09e78f1772046f0df1ebc1168989c",
+      "bytes": 130
+    },
+    {
+      "path": "port/v2/packages/domain/surveyphrases/src/surveyphrases.verbatim.js",
+      "sha256": "8915e785a7e5c67f7bcec720ada0f24466082e9ce0c6a9329d18affc251cfd58",
+      "bytes": 4078
+    },
+    {
+      "path": "port/v2/packages/domain/worldconfig/src/index.ts",
+      "sha256": "4ce4e39da1afe2f97baaa2105c2aa209e4d65d10443dfc81a960deeb8ccf0079",
+      "bytes": 599
+    },
+    {
+      "path": "port/v2/packages/domain/worldgen/src/index.ts",
+      "sha256": "d81b384a57674c39146726f1b05acec3eddc86fe06da36d80b1bcd5f3c8d4673",
+      "bytes": 775
+    },
+    {
+      "path": "port/v2/packages/domain/worldgen/src/worldgen.verbatim.js",
+      "sha256": "95f0acec80a37c67cc829dc0d71e6719768e5a975d030fe9b89457c23da00eff",
+      "bytes": 13969
+    },
+    {
+      "path": "port/v2/packages/domain/worldidentity/src/authority.ts",
+      "sha256": "8bfff96bbcb569c32e3d3b0a4a7f0c6c9eec0b06940d72e3041477a785d75875",
+      "bytes": 2732
+    },
+    {
+      "path": "port/v2/packages/domain/worldidentity/src/index.ts",
+      "sha256": "90d44680a1da815afcf04bfed995dd46cb8522b2ba19bd856040da42b6d71141",
+      "bytes": 99
+    },
+    {
+      "path": "port/v2/packages/domain/worldidentity/src/mint-internal.ts",
+      "sha256": "7754080eb6029f798497782b927f6c640193bcd49bc520a5069712060098b37b",
+      "bytes": 143
+    },
+    {
+      "path": "port/v2/packages/scene/src/address.ts",
+      "sha256": "c9069b15992c4be5057dd4068c1e7c7a9dcf86768015d64e934ef14b142bd559",
+      "bytes": 30341
+    },
+    {
+      "path": "port/v2/packages/scene/src/cf1-code.ts",
+      "sha256": "10a5d815c790065c683c60eb2aa6c3ebcdd8d59588db93a5b481db9879431a7d",
+      "bytes": 5281
+    },
+    {
+      "path": "port/v2/packages/scene/src/charter.ts",
+      "sha256": "09913352608be0ac1238b98ef895377552ca94b23bffe8fa2aebf306de034f09",
+      "bytes": 23191
+    },
+    {
+      "path": "port/v2/packages/scene/src/galaxy.ts",
+      "sha256": "c13ca0043be6b96446666292420e58d2e37de9a515ab73cc0889dfa80936aa07",
+      "bytes": 3866
+    },
+    {
+      "path": "port/v2/packages/scene/src/index.ts",
+      "sha256": "79449931ced5086f84ac97605fb231cb026eac245f02992787337414e68e63db",
+      "bytes": 673
+    },
+    {
+      "path": "port/v2/packages/scene/src/ship-visual-state.ts",
+      "sha256": "9bfd27d3d6a75779d3372dfb6386e8e98ef22d92a33b0346819225024c70d762",
+      "bytes": 3040
+    },
+    {
+      "path": "port/v2/packages/scene/src/system.ts",
+      "sha256": "f19495aed7d44f9fb364be0ca7bf7daf47d18461406a02510f1a04fcf2b772ca",
+      "bytes": 2240
+    },
+    {
+      "path": "port/v2/packages/scene/src/universe.ts",
+      "sha256": "6357c94726ca86f87e4a4765e51d995d234856d2e12ec9e4289ac76f26122b2d",
+      "bytes": 2494
+    },
+    {
+      "path": "port/v2/packages/scene/src/zoommode.ts",
+      "sha256": "2d731962b1f07aab7dd5174ed69bcfdf7d88b82cd65dd4cc113ba3ccf45e96b3",
+      "bytes": 12554
+    },
+    {
+      "path": "port/v2/tools/landfall-snapshot/entry.ts",
+      "sha256": "250ef6c17208c55b8fff53a0929179679bdec6a2f2f846ffc9d06161c1540ec1",
+      "bytes": 1500
+    },
+    {
+      "path": "port/v2/tools/landfall-snapshot/kit-entry.ts",
+      "sha256": "9b709de00460c423bc8e65b8da4e023e0f7173a07f2ef564c62e48e1aa22867c",
+      "bytes": 578
+    },
+    {
+      "path": "port/v2/tools/landfall-snapshot/kit-export.mjs",
+      "sha256": "6bdbdd61eb033ffe5a4f2c9a443e13031e248a74c5a815fd7e5f487aa2cdc533",
+      "bytes": 3132
+    }
+  ],
+  "files": [
+    {
+      "path": "civet-prompt.txt",
+      "sha256": "725a3f23e3aa5fe2cd962cafc4adb9b51c4de8131e0977ae127dec246991d2de",
+      "bytes": 7020
+    },
+    {
+      "path": "persimmon-prompt.txt",
+      "sha256": "d1ae45545bc089770789841e60da1fd2869b2df774bc9e2d5a1ea67675ab304f",
+      "bytes": 6662
+    },
+    {
+      "path": "platypus-prompt.txt",
+      "sha256": "6fd4bd2a3052c5be17fa519ef8a127d4704f10cc5f50ca16d00e5c51b884b7a1",
+      "bytes": 6991
+    },
+    {
+      "path": "frog-prompt.txt",
+      "sha256": "7afd9cf0ef8bc27003204436162623e061936f6b9a466db0736961fed023a27f",
+      "bytes": 6910
+    },
+    {
+      "path": "devils-club-prompt.txt",
+      "sha256": "ee68e694cd061c652af912289bd5c8fc0747f32ea8d36999eadf442ff429836b",
+      "bytes": 6670
+    },
+    {
+      "path": "cranberry-prompt.txt",
+      "sha256": "d3c9fdc6a515dbc1d4881c86ab9572944ba2c2a292450444b077760ddc8062cc",
+      "bytes": 6652
+    },
+    {
+      "path": "earth-temperate-prompt.txt",
+      "sha256": "330d2b8dd758982dec9f39f99e2fe4e99f3be74adf2e45e309c03d757c1b46a4",
+      "bytes": 6217
+    },
+    {
+      "path": "family-mammal-quadruped-prompt.txt",
+      "sha256": "aef988bc6d2c8ed5ffaa4b1025d0f173fba52afadf65a2d9b118f16101216b21",
+      "bytes": 7286
+    },
+    {
+      "path": "family-bird-prompt.txt",
+      "sha256": "2b2fa3e930dcf326f9cfb44e4afa8ea088d24f7e7ea5c18c4dc61ecf83763712",
+      "bytes": 7413
+    },
+    {
+      "path": "family-fish-prompt.txt",
+      "sha256": "6f12fb2b10496d180022e0d26d3460598e11df74f7414d117ef719c6c30c99c8",
+      "bytes": 7525
+    },
+    {
+      "path": "family-insect-prompt.txt",
+      "sha256": "db8a12dcdb7aa848a5b46f90d99394f2448cc31c74c8964ef2c9475bb7e7850d",
+      "bytes": 7396
+    },
+    {
+      "path": "family-reptile-prompt.txt",
+      "sha256": "bf9efa25639763d4e80d3bb59d7fa1ccdc1c2fdf7d93b8702df579eac9776d82",
+      "bytes": 7290
+    },
+    {
+      "path": "canonical-snapshot.json",
+      "sha256": "a23ef143d97bb7e72c8b5cc72b858266246fd72682dd29de00e0e3fc69848b3f",
+      "bytes": 12860
+    },
+    {
+      "path": "compiled-inputs.json",
+      "sha256": "c9bc706fd78229ddbae5d9f12812efcd69735df0b141d2a4e50d183564d924ec",
+      "bytes": 147052
+    }
+  ]
+}

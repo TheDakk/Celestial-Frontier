@@ -40,6 +40,23 @@ function deepFreeze<T>(value: T): T {
 export const EARTH_RESIDENT_LAYER_PLAN_V1: EarthResidentLayerPlanV1 =
   deepFreeze(JSON.parse(EARTH_RESIDENT_LAYER_PLAN_JSON_V1) as EarthResidentLayerPlanV1);
 
+/** Nick's one painted-composition experiment, 2026-09-12. Relative height is
+ * a composition choice, never a mutation of canonical genomes or vector layout. */
+export const EARTH_PAINTED_COMPOSITION_V1 = deepFreeze({
+  id: 'cf.art.earth-painted-contact.v1',
+  residents: [
+    { name: 'Civet', height: 0.30 },
+    { name: 'Persimmon', height: 0.42 },
+    { name: 'Platypus', height: 0.30 * 0.60 },
+    { name: 'Frog', width: 0.12, x: 0.23 },
+    { name: "Devil's Club", width: 0.16 },
+    { name: 'Cranberry', width: 0.11 },
+  ],
+  foreground: { source: 'same-plate-lower-band', crop: { x: 435, y: 400, width: 64, height: 64 },
+    placements: [{ name: 'Civet', centreAcrossBody: 0.74 }, { name: 'Platypus', centreAcrossBody: 0.40 }],
+    width: 0.09, height: 0.045, groundOffset: 3 },
+});
+
 interface SnapshotBudget { remaining: number; }
 /** Snapshot descriptors before accessing values, then serialize only detached
  * null-prototype objects/arrays. Getters, toJSON hooks, sparse arrays, cycles,

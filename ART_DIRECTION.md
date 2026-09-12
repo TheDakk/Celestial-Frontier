@@ -21,6 +21,14 @@ The existing triptych is the scene lock and atlas the cut-out lock, with verifie
 in v4. The descriptive direction below remains; earlier local paintings and favorable
 finish comments are diagnostic history, not substitute reference locks.
 
+**September 12 review decision:** Nick accepts all twelve first v4 authoring inputs,
+including the Earth plate; species identity and the frozen hand are accepted for this
+batch. The first native painting needs a targeted composition/contact revision.
+[Claude's verbatim review](audits/CLAUDE_FULL_REVIEW_20260910/ART_REVIEW_RESPONSE_20260912.md)
+and the [one authorized experiment](audits/ART_KIT_CONTACT_REVISION_20260912/README.md)
+supersede earlier Codex doubts about the accepted masters. Kit v4 and4E are unchanged;
+the two v4.1 wording proposals require separate approval.
+
 **Hard quality requirement — Nick, September 9, 2026:** the embedded image model must produce
 the same cohesive painted quality and approved art direction as the accepted full landfalls.
 Actual output must pass reference comparison for composition, light, materials, anatomy/botany
@@ -30,7 +38,7 @@ The painted-image loader also enforces its existing8-second deadline through mon
 after fetch, body reads, digest, decode and final ownership transfer; delayed timer callbacks
 cannot admit late images. This reliability change preserves size, identity and layout rules.
 Nick said the latest image looks fantastic on September 9; retain that favorable finish feedback.
-No local candidate has yet passed full canonical species/botany acceptance. The active local proof and retained failures are tracked in
+The first v4 painting now has an accepted six-species review; full scene integration remains unaccepted. The active local proof and retained failures are tracked in
 [LOCAL_AV_AI_CONTINUATION_20260909](audits/LOCAL_AV_AI_CONTINUATION_20260909/README.md).
 
 **Latest scope:** Nick confirms the full landfall painting direction “100%”, requests the

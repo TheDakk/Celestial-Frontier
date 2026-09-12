@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {describe,expect,it} from 'vitest';
 import {produceCanonicalEarthSnapshot} from '../tools/landfall-snapshot/entry.js';
-import {compileEarthArtKitV4} from '../apps/game/src/landfall-conditioning.js';
+import {compileEarthArtKitV4,compileEarthKitEngineV4} from '../apps/game/src/landfall-conditioning.js';
 
 const kit=readFileSync(new URL('../../../ART_KIT.md',import.meta.url),'utf8');
 describe('approved v4 prompt compilation, without a checkout lock or inference',()=>{
@@ -44,5 +44,28 @@ describe('approved v4 prompt compilation, without a checkout lock or inference',
     expect(()=>compileEarthArtKitV4(mutant,kit)).toThrow('source refused');
     const renamed=JSON.parse(JSON.stringify(source));renamed.displayPlan.residents[0].name='Invented beast';
     expect(()=>compileEarthArtKitV4(renamed,kit)).toThrow('source refused');
+  });
+});
+
+
+describe('authorized contact experiment runtime projection',()=>{
+  it('keeps the frozen paragraph, visual card, subject and layout; excludes authoring metadata',()=>{
+    const source=produceCanonicalEarthSnapshot().snapshot;
+    const job=JSON.parse(readFileSync(new URL('../../../audits/ART_KIT_CONTACT_REVISION_20260912/prepared/recipe.json',import.meta.url),'utf8'));
+    const names=['civet','persimmon','platypus','frog','devils-club','cranberry'];
+    const assets={plate:job.plate,atlas:job.atlas,triptych:job.triptych,foreground:job.foreground,
+      residents:Object.fromEntries(names.map((n,i)=>[n,job.passes[i].reference]))};
+    const result=compileEarthKitEngineV4(source,kit,assets,job);
+    expect(result.finisherPrompt).toBe(job.finisherPrompt);
+    expect(result.finisherPrompt).toContain(compileEarthArtKitV4(source,kit).frozenParagraph);
+    expect(result.finisherPrompt).toMatch(/Light:.*\nMineral palette:.*\nAtmosphere:.*\nPigments:/);
+    expect(result.finisherPrompt).not.toMatch(/SHA|[a-f0-9]{64}|Approved by Nick|Paste|TECHNICAL|NEGATIVE|\d+ percent|\d+%|2560|1440|REFERENCE LOCK/);
+    expect(result.textTokenCeiling).toBe(512);expect(result.skipOrganismPasses).toBe(true);
+    expect(result.passes.every(p=>!('prompt' in p))).toBe(true);
+    expect(result.sourceSnapshot).toEqual(source);
+    const withNewNegative=kit.replace('No lens flare','No synthetic forbidden diagnostic object, no lens flare');
+    expect(compileEarthKitEngineV4(source,withNewNegative,assets,job).finisherPrompt).toBe(result.finisherPrompt);
+    const {foreground,...withoutForeground}=assets;
+    expect(()=>compileEarthKitEngineV4(source,kit,withoutForeground,job)).toThrow('foreground unavailable');
   });
 });

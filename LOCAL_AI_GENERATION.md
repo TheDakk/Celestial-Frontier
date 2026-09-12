@@ -19,83 +19,57 @@ biome integration, physical phones or final art. Desert finish remains too styli
 Those experiments changed no game source or model bytes. Their pause is historical; the September 12 program below now owns the next work.
 
 
-## Program version 4 — matches code September 12, 2026; first native painting shown
+## Program version 4 — matches code September 12, 2026; contact revision prepared
 
-Nick's four approved images in [MIDGAME_ART_DIRECTION](audits/MIDGAME_ART_DIRECTION_20260908/README.md)
-define the required finish. [ART_KIT.md](ART_KIT.md), version 4, is the approved canonical
-style statement (Nick, `6f5c396e`), with the engine-first §9 amendment. The existing
-Living Worlds triptych is the scene lock and Discovery Atlas the cut-out lock; exact
-SHA-256 values are in kit §1. V3 is retired unchanged; the v3 sheet and plate are rejected
-and must never condition a new image. Current local-model riverbank output is the gap,
-not a reference. Earlier dated favorable comments do not supersede this direction lock.
+Nick's four approved MIDGAME images and [ART_KIT.md](ART_KIT.md) v4 remain canonical.
+V3 and its two generated images stay retired/rejected. Nick accepts all twelve first
+v4 authoring inputs, including the plate, and authorizes one composition/contact
+revision of the first engine painting. [Review](audits/CLAUDE_FULL_REVIEW_20260910/ART_REVIEW_RESPONSE_20260912.md)
+is verbatim in signed4a00a72b. Earlier Codex identity/style doubts are superseded.
+Kit v4 and4E remain unchanged; both v4.1 wording proposals await separate approval.
 
-The pure `compileEarthArtKitV4` in `landfall-conditioning.ts` compiles the bounded twelve
-authoring inputs. It preserves canonical Earth admission and emits prompts
-in this exact order: **reference lock → frozen style → system card → subject → accuracy
-(cut-outs only) → layout → technical output → negative**, including class additions.
-The new runtime pipeline completed its first native proof. The card is filled from
-star, planet, vista and biome data, never typed by hand. Thirteen exact `starClass.kind`
-keys and their hex colours replace invented stellar labels; binary/trinary are light
-modifiers. Genomes/descriptors and family/realm routing supply subjects and counts;
-named Earth anatomy keeps fur, feather and botany. Reserved key hues map only in compiled
-painted pigment words; no seed or identity changes. Actual consumed local text is hashed;
-the model's absent negative input must not be presented as an enforced constraint.
+`compileEarthArtKitV4` still emits library prompts in exact kit order: reference lock,
+frozen style, system card, subject, accuracy when applicable, layout, technical output,
+negative. Cards derive from canonical star/planet/vista/biome and named species data,
+never a hand-typed card. Accepted inputs and their exact prompts remain in
+ART_KIT_ENGINE_FIRST_20260912; all12 master hashes are checked before the new proof.
 
-First inputs only: Earth temperate biome plate, six Earth cut-outs and five named family
-exemplars. All twelve untouched captures, exact prompts, source receipts, pixel intake
-and both review sheets are in [ART_KIT_ENGINE_FIRST_20260912](audits/ART_KIT_ENGINE_FIRST_20260912/README.md).
-None inherited an Atlas frame or dark plate; no background v4.1 amendment was triggered.
-The generator missed all requested native sizes; margin and identity findings remain
-explicitly unaccepted. No source image was cropped, repainted or silently called compliant.
-The exporter is `port/v2/tools/landfall-snapshot/kit-export.mjs`, a pure Node authoring
-build, with no inference or game build. Family exemplars are not new landing residents.
+`compileEarthKitEngineV4` now emits the separately authorized model-facing projection:
+unchanged frozen paragraph; visual Light, Mineral palette, Atmosphere/pigment lines;
+subject; layout sentence. Reference text, hashes, technical/negative blocks and percentage
+anchors are excluded. It restores the512-token ceiling without truncation. The new
+exact chat prompt is402 tokens, tensor length416; the historical5120-token proof is
+retained under its original source and receipts, not replayed with current semantics.
 
-Only after the first engine painting is accepted and the Animation and battle track is
-proved, roll out remaining families, forms and biomes twelve at a time, showing every
-sheet. Use exact source keys from GAME_VOCABULARY_COVERAGE, not approximate row counts.
+Painted composition data lives in earth-resident-plan, separate from the vector plan:
+Civet30% of frame height, Platypus18%, Frog12% of width, Persimmon42% of height. Other
+placements retain earlier anchors except Frog x0.23 to avoid the foreground berry clump.
+A64-square grass sample from the plate's lower band is reused over both animals' feet.
+Nine prior fitted inputs and the canonical snapshot are identical to the first proof.
+One-pixel alpha erosion and inward sampled-neighbour despill precede premultiplied
+compositing; no organism inference passes run. One finisher at strength0.35 protects
+organism-interior latent cells, leaving boundaries and ground editable.
 
-The main deliverable now has an app-owned warm client, `local-ai-kit-runtime.ts`, and a
-`kit-v4` route in `stage-worker.mjs`. `compileEarthKitEngineV4` emits six canonical
-organism passes and a scene finisher from the same kit interpreter. The proof prepares
-and hashes nine RGBA inputs offline: six cut-outs, plate, Atlas and triptych. It uses
-1024×576 output, 384×384 organism passes, seed 133, four steps at strength 0.2, and one
-finisher at 0.08; size, steps and seed are configurable. Originals remain untouched.
-The worker caches four sessions and encoded references across successful landings;
-the VAE encoder is created once. Cancellation/fault disposes the warm worker. Pinned
-transformer graph/operand expansion occurs in worker memory, with no OPFS writes.
+The app-owned warm client and stage-worker kit route retain four sessions and build
+one VAE encoder. Pinned transformer expansion remains in worker memory with0 storage
+writes. Session loading precedes the warm engine timer, with no extra warm-up painting.
+Normal-game V1/V2 action wiring and old OPFS removal remain pending. No phone/storage
+qualification or full Part K closure is implied.
 
-Nick requested a tenfold text ceiling: **5120 tokens**, with no truncation and tensor
-length rounded up from actual tokens to the next multiple of 16. A maximum-size float16
-embedding is 75 MiB versus 7.5 MiB at 512; longer attention sequences also increase time
-and intermediate memory. The dynamic ONNX inputs admit these shapes structurally;
-the actual1730–1860-token prompts completed natively, but5120 itself is unmeasured. Legacy exact-shape
-512-token diagnostics retain their historical contracts.
+[Contact experiment evidence and acceptance](audits/ART_KIT_CONTACT_REVISION_20260912/README.md):
+21 worker/math/lifecycle/legacy tests,24 compiler/runtime tests and the box-registration
+negative-control test pass. TypeScript and root validation receipts accompany the code.
+The one native run is pending. Its criteria are all six identifiable at100%, correct
+species, contact shadows under Civet/Platypus, no pink fringe at200%, registered and
+visually reviewed boxes with IoU≥0.90, Civet height≥28%, and warm engine time<240s.
+Registration estimates placement from pixels and is not semantic segmentation.
 
-Evidence and copy-ready commands: [first engine proof](audits/ART_KIT_ENGINE_PROOF_20260912/README.md).
-17 worker/math/legacy-diagnostic tests and 23 compiler/runtime tests pass, including
-session-cache bypass, token overflow, key/background, expansion and cancellation
-negative controls; tsc and root validate pass. These are not native performance tests.
-The normal-game V1/V2 action is not yet rewired to this client, and the old OPFS layer
-has not been removed. Do not claim the Part K integration register closed. Never resume
-the pause checkpoint's integrated-chain/new-pack/`--landfall --variant` sequence.
-The single native run on signed30ef7d15 completed in425.707s, producing1024×576 with
-six organism passes and one finisher; all four sessions were created once, including
-the encoder. Text inference took26.14–28.86s per prompt. The painting, native-pixel
-Living Worlds comparison, placement boxes and visual findings are retained in the
-proof audit. Civet identity, plant habit/readability and the cold crowded scene remain
-unaccepted. Worker/native/GPU memory was not available; renderer heap is not a substitute.
-Do not repeat native inference or expand the library before Nick's painting feedback.
-No six-reference prompt sweeps. Blocking Part K 1–11, 17, 33–35 get negative controls.
-The ten tool files are already tracked; K35's missing-file boot control remains pending.
-Unit tests must not take the checkout lock.
-
-One actual target-iPhone probe reports maxBufferSize, shader-f16, storage quota and memory
-at transformer load before storage/delivery engineering. Artwork durability follows:
-storage.persist/status, iOS home-screen guidance, PNG share-sheet export, protected
-originals and labelled regeneration on loss. Then pruning/split, phone finisher/tier
-policy, remaining library rollout and view-envelope sharing, per program v4. PR42 stays
-parked; no hosted write is authorized. The first engine painting now awaits feedback;
-the old --landfall --variant run remains forbidden.
+The first proof on30ef7d15 remains425.707s with six organism passes and one0.08 finisher.
+It is a targeted revision, not a changed or erased failure. One current run only; no
+sweep or automatic retry. Never resume --landfall --variant, integrated chain or pack
+restart. GitHub step none, PR42 parked. Actual target-iPhone limits/quota/load-memory
+probe still gates storage/delivery work. Animation/Civet proof follows painting acceptance,
+then remaining library twelve at a time. Effects need their own v4.1 approval.
 
 The original dirty engine work is signed in `77aaeec5`; the superseded v3 adoption work
 is checkpointed in `efa77c8d`, and the revised packet is verbatim in `7191dbc2`. The six

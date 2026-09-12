@@ -2,7 +2,7 @@
  * Named Earth diagnostics come from the actual painter owners cited below;
  * raw procedural limb/color/body genes are NOT named Earth anatomy. This first
  * adapter retains the exact snapshot's Earth scope and D-9e refusal boundary. */
-import { snapshotEarthLayerDataV1 } from '@cf/art/earth-resident-plan';
+import { snapshotEarthLayerDataV1, EARTH_PAINTED_COMPOSITION_V1 } from '@cf/art/earth-resident-plan';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import { starClass, KIND_DESC, SOL_PLANETS } from '@cf/domain-starcatalog';
 import { systemFor } from '@cf/domain-worldgen';
@@ -377,33 +377,44 @@ export function compileEarthArtKitV4(input: unknown, kit: string) {
         'ACCURACY\n' + accuracy, 'LAYOUT\n' + familyLayout, 'TECHNICAL OUTPUT\n' + cutoutTechnical,
         'NEGATIVE\n' + sharedNegative + '\n' + cutoutNegative + '\n' + between(familyClass, 'NEGATIVE ADDITIONS:\n', '\n\nOUTPUT:')].join('\n\n') };
   });
-  return freeze({ schema: 'cf.art.kit-earth-inputs.v4', sourceSnapshot: source, systemCard: card, prompts, plate, familyReferences,
+  const frozenParagraph = '  Rich natural-history fantasy painting,' + between(style,
+    '  Rich natural-history fantasy painting,', '\n\nThe scene-contact');
+  // Model-facing natural language, compiled from the same source fields/pigments.
+  // Authoring prompts/cards above remain byte-identical to the accepted inputs.
+  const runtimeCard = [
+    `Light: ${scene.timeOfDay}; ${scene.weather}; diffuse cloud-filtered light, soft neutral contact shadows.`,
+    `Mineral palette: ${planet.P.type}; blue water, green land, pale ice.`,
+    `Atmosphere: ${scene.weather}; rain softens distant blue-grey layers.`,
+    `Pigments: ${residents.map(row => `${row.name}: ${pigments[row.name]!.replace(/ \(#[a-f0-9]+\)/g, '')}`).join('; ')}.`,
+  ].join('\n');
+  return freeze({ schema: 'cf.art.kit-earth-inputs.v4', sourceSnapshot: source, systemCard: card, runtimeCard, frozenParagraph, prompts, plate, familyReferences,
     qualityAccepted: false, scope: 'six-earth-cutouts-temperate-plate-five-named-family-exemplars' });
 }
 
 export interface KitPreparedImageV4 { readonly url: string; readonly sha256: string; readonly width: number; readonly height: number }
-export interface KitEngineAssetsV4 { readonly plate: KitPreparedImageV4; readonly atlas: KitPreparedImageV4; readonly triptych: KitPreparedImageV4; readonly residents: Readonly<Record<string, KitPreparedImageV4>> }
+export interface KitEngineAssetsV4 { readonly plate: KitPreparedImageV4; readonly atlas: KitPreparedImageV4; readonly triptych: KitPreparedImageV4; readonly residents: Readonly<Record<string, KitPreparedImageV4>>; readonly foreground?: KitPreparedImageV4 }
 export interface KitEngineSettingsV4 { readonly width: number; readonly height: number; readonly passSize: number; readonly seed: number; readonly steps: number; readonly strength: number; readonly finisherStrength: number }
-/** Same interpreter, scene composition phase: only the subject slot changes;
- * complete kit reference/style/layout/technical/negative blocks are retained. */
+/** Nick's authorized runtime projection. Kit text and authoring prompts are unchanged.
+ * Geometry comes from the art data owner; only model-relevant language reaches text. */
 export function compileEarthKitEngineV4(input: unknown, kit: string, assets: KitEngineAssetsV4, settings: KitEngineSettingsV4) {
   const compiled = compileEarthArtKitV4(input, kit);
   const model = buildLandfallConditioningV1(compiled.sourceSnapshot);
-  if (!model.ok) throw Error('Canonical kit scene unavailable');
+  if (!model.ok || !assets.foreground) throw Error('Canonical contact scene/foreground unavailable');
   const passes = compiled.prompts.map(row => {
     const resident = model.recipe.residents.find(r => r.identityKey === row.identityKey)!;
     const reference = assets.residents[row.key];
+    const composition = EARTH_PAINTED_COMPOSITION_V1.residents.find(r => r.name === row.name)!;
     if (!reference) throw Error('Missing fitted reference for ' + row.name);
-    return { name: row.name, identityKey: row.identityKey, prompt: row.prompt, placement: resident.placement, reference };
+    return { name: row.name, identityKey: row.identityKey, reference,
+      placement: { ...resident.placement, ...composition } };
   });
-  const subject = [
-    'Finish the existing Earth temperate landfall composition in the frozen painted hand. Preserve all six placed organisms, their exact anatomy, counts, silhouettes, materials, locations and relative sizes; unify shared light, contact and atmosphere without adding or moving organisms.',
-    ...model.recipe.residents.map(row => `One ${row.name}, exactly one ${row.name}, at ${Math.round(row.placement.x * 100)} percent across and grounded at ${Math.round(row.placement.groundY * 100)} percent down: ${row.namedRule.diagnostics.map(d => d.required).join('; ')}.`),
-  ].join('\n');
-  const start = compiled.plate.prompt.indexOf('\n\nSUBJECT\n'), end = compiled.plate.prompt.indexOf('\n\nLAYOUT\n');
-  if (start < 0 || end <= start) throw Error('Kit scene block boundaries changed');
-  const finisherPrompt = compiled.plate.prompt.slice(0, start) + '\n\nSUBJECT\n' + subject + compiled.plate.prompt.slice(end);
-  return freeze({ schema: 'cf.kit-engine.v4', ...settings, plate: assets.plate, atlas: assets.atlas,
-    triptych: assets.triptych, passes, finisherPrompt, sourceSnapshot: compiled.sourceSnapshot,
-    qualityAccepted: false, textTokenCeiling: 5120, finisherSteps: 1 });
+  const subject = model.recipe.residents.map(row =>
+    `One ${row.name}: ${row.namedRule.diagnostics[0]!.required}.`).join(' ') +
+    ' Integrate feet and stems into wet ground with visible contact shadows under Civet and Platypus, shared light and natural ground reflections.';
+  const layout = 'A coherent riverbank scene with distinct readable subjects, the Civet as hero, a smaller Platypus, a clearly visible Frog, a taller Persimmon, and foreground grass overlapping the lowest animal feet.';
+  const finisherPrompt = [compiled.frozenParagraph, compiled.runtimeCard, subject, layout].join('\n\n');
+  return freeze({ schema: 'cf.kit-engine.v4', experiment: 'cf.kit-contact.v1', ...settings,
+    plate: assets.plate, atlas: assets.atlas, triptych: assets.triptych, foreground: assets.foreground,
+    composition: EARTH_PAINTED_COMPOSITION_V1, passes, finisherPrompt, sourceSnapshot: compiled.sourceSnapshot,
+    qualityAccepted: false, mastersAccepted: true, textTokenCeiling: 512, finisherSteps: 1, skipOrganismPasses: true });
 }

@@ -2,7 +2,13 @@
 
 ## Paused local continuation — matches working copy September 9, 2026
 
-The September 12 approved Art Kit v4 engine-first program in [CODEX_HANDOFF](../../audits/CLAUDE_FULL_REVIEW_20260910/CODEX_HANDOFF.md) and [ROADMAP](../../ROADMAP.md) supersedes PAUSED_CHECKPOINT's restart. The original dirty work and ten tools are signed in `77aaeec5`; it is no longer an untracked working copy. Do not resume --landfall --variant, integrated-chain or pack restart. Twelve v4 input captures are retained for review. The new per-organism/warm-session engine is implemented for its [first native proof](../../audits/ART_KIT_ENGINE_PROOF_20260912/README.md), using offline fitted references, in-worker expansion and a 5120-token ceiling sized to actual prompts. One native run completed on30ef7d15 in425.707s at1024×576; actual1730–1860-token prompts succeeded, while5120 maximum performance is unmeasured. Painting feedback and normal-game integration remain pending; the old OPFS layer has not been extended. Existing first-step evidence is historical and does not establish a completed painting or phone qualification.
+Nick's September12 review accepts the twelve first v4 inputs and authorizes one
+[contact revision](../../audits/ART_KIT_CONTACT_REVISION_20260912/README.md): same masters,
+seed and plate; painted composition, one-pixel erosion/despill, masked0.35 finisher,
+402-token runtime projection under512, and no organism inference passes. ART_KIT/4E
+are unchanged; wording proposals await approval. The older six-pass425.707s proof and
+5120 ceiling remain historical evidence. No --landfall --variant, pack, integrated chain,
+OPFS extension or GitHub action. The actual target-iPhone probe still gates delivery work.
 
 
 Matches implementation as of September9,2026. An isolated authoring experiment for Celestial
