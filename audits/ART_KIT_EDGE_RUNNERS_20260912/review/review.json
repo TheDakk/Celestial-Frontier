@@ -191,5 +191,12 @@
     "contactShadows": "Subtle dark contacts remain under Civet and Platypus; no claim of a decisive improvement.",
     "decision": "Do not replace accepted baseline. One experiment complete; no retry.",
     "phoneTier": "unqualified"
+  },
+  "userDecision": {
+    "status": "rejected",
+    "date": "2026-09-12",
+    "experimentHead": "246cc619",
+    "acceptedBaseline": "cd6b609f",
+    "furtherFinisherErosionExperiments": false
   }
 }
