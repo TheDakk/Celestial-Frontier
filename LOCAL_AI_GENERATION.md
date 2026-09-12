@@ -5,13 +5,45 @@ and [alien desert text-only](audits/LOCAL_AI_DESERT_TEST_20260909/README.md) nat
 experiments now have retained1024x576 outputs (71.126s/58.751s respectively). Different inputs,
 not a controlled speed comparison. Neither binds canonical encounters or qualifies normal-game
 biome integration, physical phones or final art. Desert finish remains too stylized/smooth.
-Broader implementation stays paused; no game source or model bytes changed for these experiments.
+Those experiments changed no game source or model bytes. Their pause is historical; the September 12 program below now owns the next work.
 
 
-## Paused local continuation — matches working copy September 9, 2026
+## Program version 3 — direction updated September 12, 2026; engine rebuild pending
 
-Nick paused development. The [complete checkpoint](audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md) owns the current implementation and exact evidence boundary. The portable six-reference first-step diagnostic completed (85.013s execution,0.275ms readback); this is not a full image or a repair of the older normal-game600s failure. New browser block32 derivation, transactional OPFS storage, explicit Prepare/Verify controls, bounded original lookup and pinned-plan runtime/mobile integration exist in the **uncommitted working copy and are not yet integration-tested**. Parent model6.23GiB plus optional336MiB derived storage remain separate from painting cache/GPU RAM. Final integrated checks, new package/native run, exact art review and physical-phone qualification are pending. The V2 draft release note records the optional action; no production version or accepted base control placement changed. Earlier verified-scope descriptions below must not be read as verification of this later integration.
+[ART_KIT.md](ART_KIT.md) is canonical. The compiled prompt is to be rebuilt in
+`landfall-conditioning.ts` as the one game-data interpreter, in this exact order:
+**reference lock → frozen style → system card → subject → accuracy (cut-outs only)
+→ layout → technical output → negative**. Source assembly is not implemented by this
+document update. The two bootstrap reference prompts retain the kit's style/output/shared
+negative wording and use its section 9 sheet/three-panel exceptions; their exact text is
+retained in [the adoption audit](audits/ART_KIT_ADOPTION_20260912/).
 
+The compiler derives the card from the unchanged star/planet data, the subject from
+genomes/descriptors, counts from body plans, and layout from class. Named Earth species
+retain named anatomy under the proposed Earth-card line, pending Nick's decision.
+The local model has no negative input: local adaptation must express constraints positively,
+record the actual consumed text, and never claim an unused negative controlled inference.
+Reserved key colours affect only painted pigment vocabulary, never seeded genome data.
+
+The unverified September 9 working copy is preserved in signed checkpoint `77aaeec5`;
+all ten previously untracked tool files are included. The pause checkpoint is historical.
+Do not execute its integrated-chain/new-pack/`--landfall --variant` restart sequence.
+Replace OPFS variant storage with in-worker expansion; do not extend that storage layer.
+
+Stop after showing `frontier-sheet-01.png` and `frontier-plate-01.png`, before further
+calibration. Then complete kit adoption and the engine: repaint six Earth cut-outs on
+magenta and an Earth biome anchor, pre-fit references offline and hash fitted bytes,
+unfreeze steps/seed/size, compose per-organism passes on the plate and apply one
+low-strength finisher. Keep sessions warm across landings and build the VAE encoder once.
+Run one measured native painting and judge it at native size against plate-01, recording
+per-organism boxes. No six-reference prompt sweep. Fix only Part K 1–11, 17, 33–35
+that block this path, each with a negative control; checkpointing alone does not close K35.
+
+One target-iPhone probe must report maxBufferSize, shader-f16, storage quota and memory
+at transformer load before storage/delivery engineering. Then artwork durability:
+persist request/status, iOS home-screen guidance, PNG share-sheet export, protected
+originals, and labelled regeneration after loss. Remaining defects, pruning, stale-claim
+cleanup and PR42 splitting wait for painting acceptance. No hosted write is authorized.
 
 Matches code as of **2026-09-09**. Browser proof of concept for the future engine game.
 The approved Living Worlds paintings set the required finish. No generated local candidate

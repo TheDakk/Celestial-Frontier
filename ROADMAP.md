@@ -17,59 +17,70 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-09 · USER-REQUESTED PAUSE
+## SESSION HANDOFF — 2026-09-12 · ART KIT V3, FIRST TWO PAINTINGS
 
-**Newest scoped request:** [12-second desert living-painting preview](audits/LOCAL_AI_DESERT_MOTION_20260909/README.md)
-rendered as1024x576/24fpsMP4 plusGIF: gentle camera, dust and approximate distant heat haze.
-Loop/control/source/cleanup checks passed. This is ambience over the unchanged PNG; creatures
-remain fixed poses and no universal rig or game integration was added. Broader work stays paused.
+Nick resumed from Claude's **completed review**, not the pause checkpoint. Canonical art
+statement: [ART_KIT.md](ART_KIT.md), version 3, 35,728 bytes, SHA-256
+`2266febc5937b447572358cee6bde66b4a710a87cff1a841e2aabe0c989204a3`.
+Never reword its fenced sections. Painted graphics and the local AI engine come first.
+Read [CODEX_HANDOFF](audits/CLAUDE_FULL_REVIEW_20260910/CODEX_HANDOFF.md) and
+[ART_KIT_INTEGRATION](audits/CLAUDE_FULL_REVIEW_20260910/ART_KIT_INTEGRATION.md).
+Nick's September 12 order below overrides older review recommendations.
 
-**Latest scoped request:** one text-only alien desert local generation completed in58.751s at
-1024x576, without any reference image. [Exact output/recipe/review](audits/LOCAL_AI_DESERT_TEST_20260909/README.md).
-Source/runtime integrity, collected browser-event check, three refusal controls and cleanup passed.
-It demonstrates a different conceptual biome; finish is smoother/more stylized than target and
-art/anatomy remain unaccepted. Broader development stays paused; no downloads/hosted actions.
+Verified ownership: OpenAI/Codex, macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`,
+`openai/mac`, upstream `origin/openai/mac`. Dirty continuation preserved as signed
+checkpoint `77aaeec5bd7c15f5c5b9da772f95ee01c02e055a` (all ten untracked tool files included);
+six ZIP files committed verbatim as `bcdf351af9cef3431d916f2c207c0be3949c6ba0`.
+Both signatures verified locally. The final adoption batch (two PNGs, exact prompts, decisions and refreshed docs) is STAGED BUT UNCOMMITTED: the configured 1Password signer refused both the initial attempt and one bounded retry with `agent returned an error`. No signer override. Nick must unlock/allow signing, then commit this staged batch before resuming calibration. At import: 15 ahead/0 behind cached origin/openai/mac,
+126 ahead/0 behind cached origin/develop. No fetch; .DS_Store left untouched.
 
-**Later scoped request:** Nick authorized one standalone local fungal-biome visual generation.
-[Experiment and exact outcome](audits/LOCAL_AI_FUNGAL_TEST_20260909/README.md). This uses the
-existing developer model/derivative; broader development and the pending integration stay paused.
-The one render completed in71.126s at1024x576; raw PNG and supplemental runtime/browser/source
-checks are retained. It is reference-guided concept output, with art/anatomy review still open.
-No new download, hosted action or schedule.
+**Current stop:** prepare [three decisions](audits/ART_KIT_ADOPTION_20260912/DECISIONS.md)
+and show the first `frontier-sheet-01.png` and `frontier-plate-01.png` before any further
+calibration. Initial reference prompts use one existing AMBER card and unchanged kit
+style. Both images now exist as untouched candidates. Neither is accepted or frozen: the sheet returned 1254×1254 with transparency instead of magenta; the plate returned 1672×941 instead of 2560×1440 and looks too photographic/glowy. Review and exact prompts/hashes are retained in the adoption audit. Root validate passed; engine code is unchanged. Exact prompts and evidence live in
+[audits/ART_KIT_ADOPTION_20260912](audits/ART_KIT_ADOPTION_20260912/).
 
-Nick paused development because account usage is nearly exhausted. **Do not code, build or run
-models until he resumes.** The complete self-contained restart record is
-[audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md](audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md).
-The [Claude handoff](audits/AI_PORTABLE_CLOSURE_20260909/HANDOFF.md) points to this current record.
-The previous live handoff is preserved VERBATIM at the top of ROADMAP_ARCHIVE.md, including every
-older verification blocker. No evidence or failure has been deleted or relabeled.
+**Program version 3, remaining work in Nick's order:**
 
-Signed HEAD f6eed9b4c65a1aafc0ddd19f0be73851b3c87d13 contains the prior84-file batch. Current
-continuation is UNCOMMITTED, final integrated code UNVERIFIED. openai/mac, recorded13ahead/0behind
-origin/openai/mac9bf;124ahead/0behind origin/developc179. No fresh fetch/push. .DS_Store untouched.
-Signing restored with configured1Password op-ssh-sign; do not override signer with ssh-keygen.
+1. Obtain feedback on the first two paintings and the Earth line, full star mapping/rows,
+   companion clause. Then calibrate the kit's eleven images, accept/freeze/hash.
+2. Main deliverable: rebuild `landfall-conditioning.ts` as one interpreter in kit order
+   from unchanged game data; repaint six Earth magenta cut-outs and the Earth biome anchor;
+   pre-fit offline and hash fitted bytes. Unfreeze steps/seed/size. Per-organism passes,
+   plate composite, one low-strength finisher in `stage-worker.mjs`; sessions stay warm
+   across landings, VAE encoder built once. Replace OPFS variant storage with in-worker
+   expansion. One measured native run, native-size comparison to plate-01 and boxes per
+   organism; show Nick the painting.
+3. In the engine batch fix only blocking Part K 1–10, 11, 17, 33–35, every fix with a
+   negative control. K35's files are tracked, but its missing-file boot control is pending.
+   Unit tests must never acquire the checkout lock. Do not resume the checkpoint's
+   integrated chain/new pack/`--landfall --variant` attempt or run six-reference sweeps.
+4. One probe on Nick's actual target iPhone: maxBufferSize, shader-f16, storage quota,
+   memory at transformer load. Device/iOS and connection not yet established. No storage
+   or delivery engineering before this result; do not substitute desktop/mobile emulation.
+5. Artwork durability: storage.persist/status, iOS add-to-home-screen guidance, PNG export
+   via share sheet, protected originals, labelled regeneration after loss.
+6. Only after painting acceptance: remaining defects, pack study-assets/WAV pruning,
+   stale doc claims and split PR42. Later phone finisher/tier policy, library rollout,
+   battle staging, living plates, human audio and view-envelope sharing remain later work.
 
-Completed: exact-six-reference portable first-step native diagnostic succeeded; execution85.013s,
-readback0.275ms, explicit partial terminal/no PNG,28sourcehashesunchanged and cleanup passed.
-Earlier offline normal-game600s aggregate FAIL remains unchanged. Earlier focused45/runtime12/
-threeTS/rootvalidate passed before the later integration. Current implementation adds bounded
-browser-derived336MiB block32 outputs, transactional OPFS adapter and explicit Prepare/Verify
-controls, bounded original lookup, pinned plan packaging and offline native proof. Latest storage/
-controller/pack/observer changes have NOT been tested; no new pack or integrated native run exists.
+Engine code and prior failures are unchanged at this first-reference stop. The earlier
+600s native aggregate FAIL and species rejection remain evidence. Runtime/test pins and
+production v1.8.9 / v2.0 development identity are unchanged. No user-visible release note
+is added for unaccepted authoring references.
 
-On resume: follow fresh startup/protocol, inspect dirty inventory, add missing parent-inventory
-assessor controls/review, run saved integrated chain outside Seatbelt, then only after PASS build
-new pinned optional pack and run one changed --landfall --variant offline native attempt. Inspect
-exact PNG/species fidelity afterward. All copy-ready commands, pins, evidence and limits are in
-the checkpoint. Do not reuse package03 for changed-source evidence or repeat an unchanged failure.
+Startup: official metadata checked September 12; idle Node updated 26.8.1 → 26.8.2 under
+shared maintenance lock, no dependency upgrades. Seven capability checks passed; receipt
+in adoption audit. Reuse only within this uninterrupted session.
 
-Art/reference fidelity, real iPhone delivery/performance, HUMAN audio and historical UI/admission
-blockers remain open. Target iPhone/iOS unknown.6.23GiB optional model/336MiB derivative are separate
-from500MiB–1GiB painting cache and GPU RAM. No invented phone/art acceptance, hosted action or schedule.
+GitHub step **none**. PR42 remains parked, base develop/source openai/mac; no title/body
+mutation now (refresh only when split is ready). No push, label, dispatch, merge, release,
+deploy, pack build or hosted Actions authorized. Budget doc records UNFROZEN/PUBLIC,
+private fallback 3,000; current exact authorized hosted attempts zero. Remote SSH origin
+unchanged; no fresh remote authentication/read was needed for these local commits.
 
-Codex next step: remain paused; retain this working copy. GitHub step NONE: PR42 parked Draft/
-unlabeled at9bf, base develop/source openai/mac; no Ready/label/Actions/merge/deploy/push authority.
-Claude next step: no need to open now; its checkout lacks these local changes. Accumulated review
-packet and future PR title/body are recorded. Only after verified develop integration may clean
-anthropic/mac fetch/merge origin/develop. Develop/main/live unchanged. Budget recorded UNFROZEN/
-PUBLIC, private fallback3000, zero new exact hosted attempt authorized.
+Codex: stop with both paintings and local commits/ahead counts for Nick's review; resume
+from this program, not PAUSED_CHECKPOINT. Claude Code: no need to open now; these local
+commits are not in its checkout. After eventual authorized develop integration, Claude
+can fetch/merge origin/develop into its own clean anthropic/mac at its next batch; do not
+copy between worktrees. Develop/main/live site unchanged.

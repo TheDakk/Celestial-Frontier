@@ -1,6 +1,10 @@
 # Celestial Frontier — development toolchain
 
-## Paused local continuation — matches working copy September 9, 2026
+## September 12 startup — current session
+
+Official stable metadata check passed at 2026-09-12T14:20:30Z. Managed Node was idle; Homebrew metadata refreshed and Node alone upgraded 26.8.1 → 26.8.2 under the shared maintenance lock, with cleanup/analytics disabled. No dependency upgrades. REAPER build suffix resolved as current by brew outdated. All seven synthetic capability checks passed; [receipt](audits/ART_KIT_ADOPTION_20260912/toolchain-verify.json). Runtime/test locks unchanged.
+
+## Paused local continuation — historical September 9, 2026
 
 Nick paused development. The [complete checkpoint](audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md) owns the current implementation and exact evidence boundary. The portable six-reference first-step diagnostic completed (85.013s execution,0.275ms readback); this is not a full image or a repair of the older normal-game600s failure. New browser block32 derivation, transactional OPFS storage, explicit Prepare/Verify controls, bounded original lookup and pinned-plan runtime/mobile integration exist in the **uncommitted working copy and are not yet integration-tested**. Parent model6.23GiB plus optional336MiB derived storage remain separate from painting cache/GPU RAM. Final integrated checks, new package/native run, exact art review and physical-phone qualification are pending. The V2 draft release note records the optional action; no production version or accepted base control placement changed. Earlier verified-scope descriptions below must not be read as verification of this later integration.
 

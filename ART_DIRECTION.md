@@ -1,5 +1,7 @@
 # Celestial Frontier — Master Art Direction
 
+**Canonical direction — September 12, 2026:** [ART_KIT.md](ART_KIT.md), version 3, is Nick’s canonical style statement. Its supplied bytes and fenced sections remain unchanged. The descriptive direction below remains in place; it does not supersede the kit. Adopt via [program version 3](audits/CLAUDE_FULL_REVIEW_20260910/ART_KIT_INTEGRATION.md), with Nick’s September 12 priority: painted graphics and the local AI engine first. The first two reference paintings are pending human review, not accepted locks.
+
 **Hard quality requirement — Nick, September 9, 2026:** the embedded image model must produce
 the same cohesive painted quality and approved art direction as the accepted full landfalls.
 Actual output must pass reference comparison for composition, light, materials, anatomy/botany
