@@ -1,0 +1,308 @@
+{
+  "status": "REVIEW_REQUIRED",
+  "interpretation": "Pixel bounds exclude near-magenta; not an anatomy or style classifier. All originals retained unchanged; all requested sizes missed. Visual review found no Atlas frames/dark plates in any cutout.",
+  "images": [
+    {
+      "key": "civet",
+      "label": "Civet",
+      "actualSize": [
+        1254,
+        1254
+      ],
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "masterSha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+      "promptSha256": "725a3f23e3aa5fe2cd962cafc4adb9b51c4de8131e0977ae127dec246991d2de",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false,
+      "exactKeyPixels": 12,
+      "nonOpaquePixels": 0,
+      "nonKeyBorder8px": 0,
+      "foregroundBoundsApprox": [
+        19,
+        193,
+        1237,
+        1056
+      ],
+      "minMarginFraction": 0.013556618819776715
+    },
+    {
+      "key": "platypus",
+      "label": "Platypus",
+      "actualSize": [
+        1254,
+        1254
+      ],
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "masterSha256": "55ed1d0549f4b74d0300e1c3428ca36e07a576b4e39a9c1f357e0da188bd39f9",
+      "promptSha256": "6fd4bd2a3052c5be17fa519ef8a127d4704f10cc5f50ca16d00e5c51b884b7a1",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false,
+      "exactKeyPixels": 7,
+      "nonOpaquePixels": 0,
+      "nonKeyBorder8px": 0,
+      "foregroundBoundsApprox": [
+        31,
+        274,
+        1222,
+        1000
+      ],
+      "minMarginFraction": 0.024720893141945772
+    },
+    {
+      "key": "frog",
+      "label": "Frog",
+      "actualSize": [
+        1254,
+        1254
+      ],
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "masterSha256": "fb229a4a7bd86507af68da9561a5e31282d594da27901d7f30ddc11cd3c84779",
+      "promptSha256": "7afd9cf0ef8bc27003204436162623e061936f6b9a466db0736961fed023a27f",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false,
+      "exactKeyPixels": 31,
+      "nonOpaquePixels": 0,
+      "nonKeyBorder8px": 0,
+      "foregroundBoundsApprox": [
+        114,
+        221,
+        1160,
+        1031
+      ],
+      "minMarginFraction": 0.07496012759170653
+    },
+    {
+      "key": "persimmon",
+      "label": "Persimmon",
+      "actualSize": [
+        1254,
+        1254
+      ],
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "masterSha256": "bccad6827ad3a84974e958c2833c5fc8b9116802a7e4af4eac3fa73eb2f502d3",
+      "promptSha256": "d1ae45545bc089770789841e60da1fd2869b2df774bc9e2d5a1ea67675ab304f",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false,
+      "exactKeyPixels": 46,
+      "nonOpaquePixels": 0,
+      "nonKeyBorder8px": 0,
+      "foregroundBoundsApprox": [
+        44,
+        10,
+        1210,
+        1228
+      ],
+      "minMarginFraction": 0.007974481658692184
+    },
+    {
+      "key": "cranberry",
+      "label": "Cranberry",
+      "actualSize": [
+        1254,
+        1254
+      ],
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "masterSha256": "88f6f2a92524207a494e21564e54fa3916e15ca3aa1ff7885327a008bbf34732",
+      "promptSha256": "d3c9fdc6a515dbc1d4881c86ab9572944ba2c2a292450444b077760ddc8062cc",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false,
+      "exactKeyPixels": 18,
+      "nonOpaquePixels": 0,
+      "nonKeyBorder8px": 0,
+      "foregroundBoundsApprox": [
+        36,
+        152,
+        1224,
+        1098
+      ],
+      "minMarginFraction": 0.023923444976076555
+    },
+    {
+      "key": "devils-club",
+      "label": "Devil's Club",
+      "actualSize": [
+        1254,
+        1254
+      ],
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "masterSha256": "bfcb0b735475403d4c49bcdcc7893d0f3c98a704f5f9e5394df70cdee99b37db",
+      "promptSha256": "ee68e694cd061c652af912289bd5c8fc0747f32ea8d36999eadf442ff429836b",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false,
+      "exactKeyPixels": 15,
+      "nonOpaquePixels": 0,
+      "nonKeyBorder8px": 0,
+      "foregroundBoundsApprox": [
+        29,
+        11,
+        1206,
+        1232
+      ],
+      "minMarginFraction": 0.008771929824561403
+    },
+    {
+      "key": "family-mammal-quadruped",
+      "label": "Mammal quadruped - Fox",
+      "actualSize": [
+        1254,
+        1254
+      ],
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "masterSha256": "15a3c9d7ee511360ed846a3fe1406c4fde124d99191c7f098538937ff164fdf3",
+      "promptSha256": "aef988bc6d2c8ed5ffaa4b1025d0f173fba52afadf65a2d9b118f16101216b21",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false,
+      "exactKeyPixels": 24,
+      "nonOpaquePixels": 0,
+      "nonKeyBorder8px": 0,
+      "foregroundBoundsApprox": [
+        51,
+        96,
+        1165,
+        1157
+      ],
+      "minMarginFraction": 0.04066985645933014
+    },
+    {
+      "key": "family-bird",
+      "label": "Bird - Pheasant",
+      "actualSize": [
+        1254,
+        1254
+      ],
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "masterSha256": "1e538078a1d64ee605122a8bb0c1fe7f0e26bfac9a34508d85ab4daf1112aef6",
+      "promptSha256": "2b2fa3e930dcf326f9cfb44e4afa8ea088d24f7e7ea5c18c4dc61ecf83763712",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false,
+      "exactKeyPixels": 28,
+      "nonOpaquePixels": 0,
+      "nonKeyBorder8px": 0,
+      "foregroundBoundsApprox": [
+        34,
+        97,
+        1154,
+        1170
+      ],
+      "minMarginFraction": 0.02711323763955343
+    },
+    {
+      "key": "family-fish",
+      "label": "Fish - Trout",
+      "actualSize": [
+        1254,
+        1254
+      ],
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "masterSha256": "1997f036417384af559f5127b9eb98d4871a9cae5cec57cffa645b857a3adc22",
+      "promptSha256": "6f12fb2b10496d180022e0d26d3460598e11df74f7414d117ef719c6c30c99c8",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false,
+      "exactKeyPixels": 0,
+      "nonOpaquePixels": 0,
+      "nonKeyBorder8px": 0,
+      "foregroundBoundsApprox": [
+        38,
+        256,
+        1220,
+        940
+      ],
+      "minMarginFraction": 0.02711323763955343
+    },
+    {
+      "key": "family-insect",
+      "label": "Insect - Beetle",
+      "actualSize": [
+        1254,
+        1254
+      ],
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "masterSha256": "5cf63ca2f7465212bc1f770babe650bd390986c7dc16a841179c326a31a74168",
+      "promptSha256": "db8a12dcdb7aa848a5b46f90d99394f2448cc31c74c8964ef2c9475bb7e7850d",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false,
+      "exactKeyPixels": 20,
+      "nonOpaquePixels": 0,
+      "nonKeyBorder8px": 0,
+      "foregroundBoundsApprox": [
+        29,
+        234,
+        1238,
+        1025
+      ],
+      "minMarginFraction": 0.012759170653907496
+    },
+    {
+      "key": "family-reptile",
+      "label": "Reptile - Skink",
+      "actualSize": [
+        1254,
+        1254
+      ],
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "masterSha256": "897a091b1eb8c5f74cb6f312a38e77de58a769bec876d62df4520c93f56ac7f6",
+      "promptSha256": "bf9efa25639763d4e80d3bb59d7fa1ccdc1c2fdf7d93b8702df579eac9776d82",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false,
+      "exactKeyPixels": 11,
+      "nonOpaquePixels": 0,
+      "nonKeyBorder8px": 0,
+      "foregroundBoundsApprox": [
+        46,
+        369,
+        1208,
+        912
+      ],
+      "minMarginFraction": 0.03668261562998405
+    },
+    {
+      "key": "earth-temperate",
+      "label": "Earth temperate biome plate",
+      "actualSize": [
+        1672,
+        941
+      ],
+      "requestedSize": [
+        2560,
+        1440
+      ],
+      "masterSha256": "98bf240c48dd32e8696760ae2eb398946698f6404e6fffc34cb3745b362bd103",
+      "promptSha256": "330d2b8dd758982dec9f39f99e2fe4e99f3be74adf2e45e309c03d757c1b46a4",
+      "frameOrDarkPlateObserved": false,
+      "accepted": false
+    }
+  ]
+}
