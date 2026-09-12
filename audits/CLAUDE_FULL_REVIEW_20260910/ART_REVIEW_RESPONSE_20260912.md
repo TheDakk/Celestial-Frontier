@@ -77,3 +77,27 @@ Remaining distance to the triptych, both small and neither blocking:
 2. Cranberry composes as a trailing sprig on a rock rather than a low mat. Compose it wider and lower as two runners, or accept as is for Earth epoch 0.
 
 Size proposal clarification (Codex's point is correct): section 5 sizes are authoring targets, not admission floors. Proposed replacement wording for v4.1: "Section 5 sizes are authoring targets. A master is accepted at any size at or above the runtime input size for its class (currently 384 square for cut-outs and 1024×576 for plates); the intake check records the delivered size." That admits the accepted 1672×941 plate and the 1254-square cut-outs without changing the targets.
+
+---
+
+## Addendum: edge-and-runners experiment (Codex source 246cc619, evidence 403ad461) and kit v4.1
+
+**Kit v4.1 diff:** exactly the two approved edits (RUNTIME PROJECTION in section 0; authoring-target sentence in section 5). Frozen paragraph and 4E untouched. Approved.
+
+**Experiment verdict: REJECT relative to the accepted baseline; keep the 4-pixel baseline as the accepted painting.** Reasons, at native size and in the six 200% crops:
+
+- Rain integration did not improve. The civet, platypus and frog crops are visually indistinguishable from the baseline's: fur and skin edges are still dry and crisp against a wet plate. Widening the erosion from 4 to 8 pixels changed 51 protected latent cells, which is too small a band to make surfaces take weather while identity is protected. This is a structural limit of the masked finisher, not a parameter to keep sweeping.
+- The two low Cranberry runners are botanically more correct than the sprig but are nearly invisible at 1024×576: they read as red flecks in moss. Legibility lost, registration failed; the box criterion fails honestly.
+- No pink fringe anywhere; five species unchanged; contact shadows unchanged; 18.3 s warm.
+
+**Measured versus judged:** measured: warm time, session counts, five boxes at 100%, Cranberry unregistrable. Judged: no rain-integration gain, Cranberry legibility loss, species preserved. Unresolved: whether the compositor or the finisher owns weather on organisms.
+
+**Proposals for Nick's direction (not instructions):**
+
+1. Weather belongs upstream of the finisher. Two options, either of which keeps identity protection intact: (a) the kit's system-card Light line carries weather, and cut-outs are authored under it, so the library holds a rain-wet Civet for rainy plates; (b) the compositor applies a whole-frame weather layer after the finisher (rain streaks, droplet specular, slight desaturation on organism surfaces), which is deterministic and cheap. Option (b) is a day of work and applies to every biome; option (a) multiplies library rows by weather states.
+2. Cranberry: compose the mat larger, about 16% of frame width, with more berries, rather than smaller; or accept the baseline sprig for Earth epoch 0. Compiler data either way.
+3. No further finisher-erosion experiments.
+
+**Normal-game wiring (0d825fe5, 0e37e6c6): accepted as the production path.** Ordinary Land mounts the composite in about 146 ms, the accepted original survives reload, Inspect opens it, the second landing on the same warm worker takes 21.6 s with all four sessions created once, the OPFS variant layer and the six-reference scene generator are removed, and Part K items 1 to 11, 17 and 33 to 35 carry negative controls. The remaining unproven step is a full download-to-finisher run on an installed model in the ordinary game, which is the same run the iPhone probe needs.
+
+**Blocking question for Nick:** the target iPhone model, iOS version and how it connects for the probe. Codex has asked twice; nothing on the phone tier can move until it is answered.
