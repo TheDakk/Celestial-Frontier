@@ -1,0 +1,43 @@
+{
+  "retiredV3Sha256": "2266febc5937b447572358cee6bde66b4a710a87cff1a841e2aabe0c989204a3",
+  "sixPacketDocumentsVerbatim": true,
+  "starRows": {
+    "BD": "#c98a6a",
+    "M": "#ff9a6a",
+    "K": "#ffd9a0",
+    "G": "#fff4d8",
+    "A": "#e8efff",
+    "B": "#9ab8ff",
+    "PROTO": "#ff9a5a",
+    "RG": "#ff8a4a",
+    "SG": "#ff7a50",
+    "WD": "#eef4ff",
+    "NS": "#dceaff",
+    "MAG": "#cfe0ff",
+    "BH": "#9a86c8"
+  },
+  "rarityDisplayNames": [
+    "Common",
+    "Uncommon",
+    "Notable",
+    "Rare",
+    "Exotic",
+    "Legendary",
+    "Mythic",
+    "Celestial",
+    "Primordial",
+    "Transcendent"
+  ],
+  "referenceHashes": {
+    "01-discovery-atlas.png": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+    "02-inhabited-worlds.png": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+    "03-earth-full-landfall.png": "93c1b9cd6a57dc087cd4896ce05cb6025fbe5877dcba3a52f7b0ab6268289eec",
+    "04-alien-full-landfall.png": "c808c6fe442d5827c4c0f56649115de60266f3863b057d2e65c3231c32b6e116"
+  },
+  "sections5Through8Verbatim": true,
+  "preservedLayoutBlocks": 12,
+  "noRetiredLocksNamedArtistsOrSpeciesBans": true,
+  "priorHandoffArchivedVerbatim": true,
+  "noDuplicatePacketMarkdown": true,
+  "v4Sha256": "4185fcae0a37df4611f773a83b3eb1ba2a3fe1ed8028245b2633e5306d83189d"
+}
