@@ -107,3 +107,9 @@ ordinary page UA + user confirmation identifies target, not WebDriver-attested i
 this run. No transport authentication beyond task-local same-origin TLS; no deployment.
 Capture decoded final PNG and raw finisher. Record capability/result before any delivery tier.
 Then remove the profile; no kit changes. Model execution has not occurred in this batch yet.
+
+## First ordinary-Safari model attempt
+
+See [manual-01/README.md](manual-01/README.md): transformer expansion completed but session
+load did not finish before heartbeat loss. Stopped without retry; no finisher timing.
+Phone remains unqualified. Nick leaves the temporary trust profile installed for now.

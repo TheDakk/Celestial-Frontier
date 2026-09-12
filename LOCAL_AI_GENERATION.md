@@ -13,8 +13,14 @@ explicit retry native-02 identified Safari/server TLS certificate rejection; zer
 loads, no timing/memory. Result reported; trusted local HTTPS needed before another phone
 attempt. Nick authorized a short-lived trusted certificate/profile; normal Safari secure check now
 passes and Nick confirms full trust ON. Automation still rejects it (native-03, no model
-load). Ordinary-Safari one-start recorder prepared for the same probe. Civet proof follows. Earlier
-paragraphs below record the superseded baseline decisions. No kit edit or GitHub step.
+load). Ordinary Safari manual-01 on c77e5217 reached transformer loading after VAE encoder
+loaded in 2.625s and expansion completed, then lost its heartbeat for60s. No retry; no finisher
+or decoder reached, zero text requests and no exposed memory. Secure/isolation/f16 true;
+maxBufferSize and storage binding1GiB, origin quota1,048,576,000bytes. Largest initializer108MiB
+passes the1GiB bound but phone remains unqualified; loss cause unconfirmed. Server closed.
+Nick keeps the temporary profile installed for possible future testing; no new attempt
+is authorized. Civet proof follows; rain choice pending. Earlier paragraphs below record
+superseded baseline decisions. No kit edit or GitHub step.
 
 
 **Normal Land implementation, September12:** the ordinary boot adapter now selects the
