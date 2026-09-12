@@ -64,3 +64,20 @@ Nick's art direction is unchanged and is defined by four images in `audits/MIDGA
 - **Claude (`anthropic/mac`):** docs-only commits ahead of origin containing these files; not pushed; Codex's copies on `openai/mac` are the working copies. No push is needed; identical files merge cleanly later.
 - **Codex (`openai/mac`):** overwrite, checkpoint, retire v3, write v4, update the three references, then program step 1. GitHub step now: none. PR42 stays parked.
 - **Nick:** open the Codex app to hand over the zip and the prompt. Claude does not need to be opened until the v4 diff or the first painting is ready for review.
+
+## 2026-09-12 addendum: Art Kit v4 draft review and the animation and battle track
+
+**Verdict on Codex's v4 draft (openai/mac 6f5c396e): approve, with three watch items.** Reference lock hashes match the MIDGAME packet; the star table carries the thirteen source kinds with source hexes; binary and trinary are Light modifiers; the magenta rule is compile-time only; the system card is a compiler schema; people are inactive; rarity maps ten tiers onto five treatments; the fur and Earth bans are gone; section 9 stops for Nick before painting. Watch items:
+
+1. The Discovery Atlas is the cut-out reference but shows framed plates with backgrounds. The text says the frame and background are not the output layout; check the first cut-out batch for inherited frames or dark plate backgrounds, and if they appear, add the sentence "the reference's frame and backdrop are not part of the subject" to the cut-out block in a v4.1.
+2. Reorder section 9 c to g so the engine comes before the full library: paint only what the first painting needs (the Earth temperate biome plate, the six Earth cut-outs, and the five most common family references: mammal quadruped, bird, fish, insect, reptile), then build and show the engine painting, then roll out the remaining families, forms and plates twelve at a time.
+3. The turnaround layout (4E) becomes the input to the animation track below; keep it.
+
+**Animation and battle track (Nick, 2026-09-12: creatures inside the biome, Final Fantasy-style turn battles with attacks).** Runs after the first engine painting is accepted and before the full library rollout.
+
+- Chain per creature: genome → family rig (one Blender master per painter family, the existing canid master first; proportions driven by genes within per-family bounds) → kit 4E turnaround as the reference → the finisher paints the creature's texture atlas ONCE in the frozen style → Blender renders the token pose and the clip set with that texture → exported to Pixi as skeleton plus texture (or sprite sheets where cheaper). The AI touches the texture once and never a frame, so animation is deterministic and flicker-free, and the same asset serves landfall composition, Compendium plate and battle.
+- Clip set per family: idle, melee attack, ranged or cast, hit, faint, victory, with land, flying and aquatic variants where the painter routing demands them. Stage families in this order: mammal quadruped, bird, fish, insect, reptile, then the rest.
+- Battle staging in the browser: the landfall plate is the backdrop, depth by scale and overlap, turn choreography of camera push-in, ability banner, strike, hit flash, short shake, damage number, recoil and return; existing audio cues and combat math drive it.
+- Ability effects: the 11 themes (Fire, Frost, Storm, Tide, Stone, Venom, Void, Sand, Chem, Psionic, Wild) as painted effect sheets, crisp-edged shapes on the key, in the frozen style. This needs a kit revision (v4.1) adding an Effects cut-out class; Nick approves the row before any effect is painted.
+- Guards: per-family gene bounds with a review sheet at the extremes of each family; separate hover and waterline rules for flying and aquatic battles.
+- Proof before scale: one creature end to end, the Civet, from Blender master to finished texture to idle, attack and hit clips to one staged turn in the browser, shown beside its own landfall painting. Only after that holds does family-by-family repetition begin.
