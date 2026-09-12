@@ -63,3 +63,17 @@ Acceptance check: every organism identifiable at 100% without searching; visible
 ## What is now settled
 
 The frozen style works: the plate and all twelve masters are in one hand and species-correct, which was the goal of the last four days. The remaining distance to the triptych is integration and composition, which are compositor and finisher parameters, not art direction and not the model.
+
+---
+
+## Addendum: contact revision (Codex source cd6b609f, evidence 0eed6a21)
+
+Reviewed at native size with the six 200% crops, beside the first painting and beside the triptych. Verdict: **ACCEPT as the first accepted engine painting and the tier-2 baseline**, with two non-blocking follow-ups. Nick retains acceptance authority.
+
+What changed and held: hero Civet at 30% of frame height on the right, Platypus now smaller, Frog readable at 100% without searching, Persimmon taller than the Civet, foreground grass over the nearest feet, subtle dark contact under Civet paws and Platypus underside, no pink fringe in any crop, all six species preserved, count exact. Warm engine 24.2 s, total 32.1 s, prompt 402 tokens under the 512 ceiling, zero organism passes. That is a 13× reduction from the first painting with better integration, and it confirms the runtime projection and the masked finisher as the production shape.
+
+Remaining distance to the triptych, both small and neither blocking:
+1. Weather harmonization: the plate carries rain and mist, the organisms stay dry and slightly crisper than their surroundings. A follow-up may widen the editable boundary band (erode masks by 6 to 8 pixels instead of 4) or run a second masked pass at 0.2 so fur and leaf edges take the rain.
+2. Cranberry composes as a trailing sprig on a rock rather than a low mat. Compose it wider and lower as two runners, or accept as is for Earth epoch 0.
+
+Size proposal clarification (Codex's point is correct): section 5 sizes are authoring targets, not admission floors. Proposed replacement wording for v4.1: "Section 5 sizes are authoring targets. A master is accepted at any size at or above the runtime input size for its class (currently 384 square for cut-outs and 1024×576 for plates); the intake check records the delivered size." That admits the accepted 1672×941 plate and the 1254-square cut-outs without changing the targets.
