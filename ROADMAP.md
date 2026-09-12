@@ -35,9 +35,12 @@ report first result before proceeding. User reconnect/unlock confirmation pendin
 Mac text-only preparation onf725f633 PASS, one text inference and zero painting/image stages.
 Embedding6,389,760bytes SHA46f0533d51e3c436b6d6cf6bcfa3e8af0c5d402b51e6d4570e13dda0724a20c7
 is shipped as earth-rain-v1.f16/json; phone-only worker forbids text loads/fallback/repeat.
-Focused controls, seven game tests, typecheck/root validate PASS. Safari session preflight
-finds devices but cannot use them; no phone model attempt occurred. Waiting reconnect/
-unlock confirmation before the one authorized probe. Raw session-preflight.json retained.
+Focused controls, seven game tests, typecheck/root validate PASS. After signing8a739f73,
+ordinary-game-02 PASS:165.23ms composite, retained accepted weather PNG restored on reload
+and opened in Inspect; zero model requests/inference. Screenshot visually inspected.
+Safari session-preflight-02 still finds devices but cannot create a usable session; no
+specific cause supplied and no phone model attempt occurred. Waiting reconnect/unlock
+confirmation before the one authorized probe. Both raw preflight results retained.
 
 Previous phone probe lost Safari session during text-encoder load, no confirmed cause;
 physical12GB is user-reported and single-buffer1GiB is not total memory. Mac installed
@@ -47,12 +50,12 @@ own accepted landfall; then family/library rollout only after proof acceptance. 
 class needs separate approval. No new painting parameters or broad exploratory sweep.
 
 OpenAI/Codex macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac,
-upstream origin/openai/mac. Last signedf725f633 (39 ahead upstream,150 ahead cached develop);
-next local signed preparation commit was refused by1Password. Embedding/probe changes
-are staged; no unsigned commit. ordinary-game-01 refused before browser startup because
-source remains uncommitted. After Nick unlocks1Password: sign, run ordinary-game-02
-(no inference) once, then physical phone session/probe after reconnect/unlock. The single
-phone model attempt has NOT been consumed. No retries after actual session loss. Unrelated .DS_Store untouched. Same Sept12
+upstream origin/openai/mac. Nick unlocked1Password; signed8a739f73 (40 ahead upstream,
+151 ahead cached develop) contains embedding/phone preparation. Evidence commit follows.
+Earlier ordinary-game-01 refused uncommitted source before browser startup; signed-source
+ordinary-game-02 now PASS. NEXT physical phone session/probe after reconnect/unlock. The
+single phone model attempt has NOT been consumed. No retries after actual session loss.
+Temporary Safari driver closed while waiting. Unrelated .DS_Store untouched. Same Sept12
 startup receipt. GitHub step NONE; PR42 parked, no push/label/dispatch/merge/release/deploy.
 Budget UNFROZEN/public/private fallback3000, zero exact hosted authority. Unit tests hold
 no checkout lease. Claude need not open/sync; no PR now. Report signedIDs/ahead at stops.

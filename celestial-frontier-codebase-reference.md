@@ -6,7 +6,9 @@ The normal compiler now selects weather-mat-v1 with its matching immediate compo
 Six no-inference intensity variants are shown in audits/ART_KIT_WEATHER_LADDER_20260912;
 Nick's rain-default selection is pending, so accepted1x stays active. A newly authorized
 phone probe verifies initializer bounds and bypasses text encoder with pinned precomputed
-accepted-recipe embedding. Probe result pending; then Civet animation proof. Earlier
+accepted-recipe embedding. Embedding/probe signed8a739f73; no-inference ordinary Land,
+retained weather PNG reload and Inspect PASS. Phone session remains unavailable, zero
+phone model attempts; waiting reconnect/unlock, then first result and Civet animation proof. Earlier
 paragraphs below record the superseded baseline decisions. No kit edit or GitHub step.
 
 

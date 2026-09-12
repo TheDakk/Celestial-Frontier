@@ -34,3 +34,11 @@ staged; no unsigned fallback. The ordinary-game-01 check refused uncommitted sou
 before opening a browser. Preserve that result; after signing, use ordinary-game-02 once
 for the no-inference normal Land/reload/Inspect check. This did not consume a phone model
 attempt. Nick has been asked to unlock1Password and reconnect/unlock the phone.
+
+Signing resumed after Nick unlocked1Password:8a739f73 verified signed. On that source,
+ordinary-game-02 PASS (audits/ART_KIT_WEATHER_LADDER_20260912):165.23ms composite, retained
+accepted weather PNG restored after reload and opened in Inspect, zero inference/model
+requests. Screenshot inspected. No repeat of installed-model or finisher experiments.
+Safari session-preflight-02 still could not create a usable physical-phone session and
+supplied no specific cause. No phone model attempt consumed. Temporary driver closed;
+waiting for Nick's reconnect/unlock confirmation. Rain variant selection also pending.
