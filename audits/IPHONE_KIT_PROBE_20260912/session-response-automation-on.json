@@ -1,0 +1,31 @@
+{
+  "httpStatus": 200,
+  "response": {
+    "value": {
+      "sessionId": "C3339206-01A1-4D0D-9619-7A9630049447",
+      "capabilities": {
+        "safari:deviceName": "Nick\u2019s iPhone Pro",
+        "safari:platformVersion": "26.6.2",
+        "safari:automaticInspection": false,
+        "webkit:WebRTC": {
+          "DisableICECandidateFiltering": false,
+          "DisableInsecureMediaCapture": false
+        },
+        "webkit:alwaysAllowAutoplay": false,
+        "browserVersion": "26.6.1",
+        "safari:deviceType": "iPhone",
+        "strictFileInteractability": false,
+        "browserName": "Safari",
+        "safari:useSimulator": false,
+        "safari:platformBuildVersion": "23G90",
+        "setWindowRect": false,
+        "acceptInsecureCerts": true,
+        "safari:deviceUDID": "[device identifier redacted; physical device retained in private session file]",
+        "safari:automaticProfiling": false,
+        "safari:experimentalWebSocketUrl": false,
+        "platformName": "iOS",
+        "safari:diagnose": false
+      }
+    }
+  }
+}

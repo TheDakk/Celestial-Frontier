@@ -46,17 +46,17 @@ NEW ORDER (supersedes all older restart sequences):
 4. Civet animation end-to-end proof; existing CODEX_HANDOFF animation/battle track.
 
 Latest decision receipt: audits/KIT_WEATHER_DECISIONS_20260912/DECISIONS.md. Weather/mat
-are authorized but not implemented. Target line supplied only placeholders [model],
-[version], [USB / same Wi-Fi]; actual target details and remote inspection requested.
-Do not infer a target or substitute Mac/simulator. Installed safaridriver documents
-paired physical-iPhone selection; reachability/permissions unverified. Existing Mac
-probe is not a phone test. Need target answer before device-dependent work; do not skip
-forward to Mac run, weather painting or Civet. No new dependency installation required
-by the read-only probe inventory. This decision batch changes docs/status only.
+are authorized but not implemented. Nick supplied iPhone17Pro, iOS26.6.2 over USB-C.
+After Nick unlocked and enabled Remote Automation, Safari session creation succeeded:
+physical iPhone, simulator=false, iOS26.6.2 build23G90, Safari26.6.1. Session/TLS connection
+files are private /private/tmp data; source/audit: audits/IPHONE_KIT_PROBE_20260912.
+One source-bound HTTPS phone probe is prepared, no model run yet. Physical admission
+negative controls and root validation pass. Sign then run to native-01; report before
+Mac installed-model run. No new tool installation, delivery engineering or kit edit.
 
 OpenAI/Codex on macOS: /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracking origin/openai/mac. Current signed403ad461:31 ahead/0 behind upstream,
-142 ahead/0 behind cached origin/develop; decision commit follows. Startup receipt reused
+tracking origin/openai/mac. Current signedb76916e7:32 ahead/0 behind upstream,
+143 ahead/0 behind cached origin/develop; phone probe preparation commit follows. Startup receipt reused
 within uninterrupted session. Unrelated .DS_Store untouched. No fetch, pack, integrated
 chain, unit-test checkout lock or pre-probe storage/delivery work.
 GitHub step NONE; PR42 parked. Budget file UNFROZEN/public, private fallback3000; zero
