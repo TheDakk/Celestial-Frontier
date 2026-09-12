@@ -19,8 +19,15 @@ V3 and both generated v3 reference candidates are rejected/retired. The pure
 `compileEarthArtKitV4` in `landfall-conditioning.ts` now compiles the bounded twelve
 authoring inputs from canonical Earth data and source-owned named family exemplars.
 The audit `ART_KIT_ENGINE_FIRST_20260912` retains all captures, prompts and review sheets.
-The measured runtime pipeline remains pending; none of these captures is quality-accepted.
-OPFS variant storage is to be replaced by in-worker expansion, not extended.
+`compileEarthKitEngineV4` now emits six organism passes and one scene finisher;
+`local-ai-kit-runtime.ts` owns a warm worker, and stage-worker's kit route owns cached
+text/VAE-encoder/transformer/VAE-decoder sessions. Inputs are pre-fitted offline and
+hashed. In-worker pinned expansion performs no OPFS writes. The text ceiling is 5120,
+using actual token lengths rounded to 16 without truncation. The first native proof
+is pending at 1024×576 with 384-square passes, four steps and one 0.08 finisher.
+[Evidence](audits/ART_KIT_ENGINE_PROOF_20260912/README.md): 17 worker and 23 compiler/runtime
+tests, tsc and root validate pass. Normal-game V1/V2 wiring and old OPFS removal remain
+pending. No input capture, native performance result or painting is quality-accepted.
 
 Standalone animation preview, September9: [desert living-painting study](audits/LOCAL_AI_DESERT_MOTION_20260909/README.md)
 is an audit-only HTML/WebGL ambient renderer plus12sMP4/GIF. It preserves the source PNG and uses

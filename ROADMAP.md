@@ -17,44 +17,44 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · APPROVED V4, ENGINE FIRST
+## SESSION HANDOFF — 2026-09-12 · FIRST V4 ENGINE PROOF PREPARED
 
-Nick approved ART_KIT v4 at signed `6f5c396e92e82f64daa1a087c24d0d564c7e69aa`,
-with the reordered §9 now in [ART_KIT.md](ART_KIT.md). The four approved MIDGAME
-images remain direction; triptych/atlas remain the hashed scene/cut-out locks.
-V3 and both v3 candidates are rejected. Keep 4E turnaround byte-identical to 6f5c396e.
+Nick approved v4 at `6f5c396e`, with engine-first §9. Four MIDGAME images remain
+direction, hashed Atlas/triptych the class locks. V3 and both v3 candidates stay
+rejected. 4E turnaround remains byte-identical to the approved draft.
 
-First input batch is captured and shown in two review sheets; none of the twelve
-masters is quality-accepted. No cut-out inherited a frame/dark plate. All requested
-native sizes failed (cut-outs 1254 square; plate 1672×941), with margin, Civet identity
-and plate-composition findings retained in the audit. The pure compiler reproduces all
-twelve exact prompts from canonical Earth data and named painter-family diagnostics.
-21 focused tests, tsc and root validate pass. The next engine gap is prompt capacity:
-Civet is 1812 tokens before chat wrapping versus the old worker's 512 limit.
+Signed `1e60f29fa51898b0615d54c44f8c758f1e8cba7d` retains the twelve input masters,
+exact compiler prompts and two shown sheets. No Atlas frames/dark plates appeared;
+the conditional v4.1 background amendment was not triggered. None is quality-accepted:
+requested native sizes were missed, margins are inadequate, Civet identity and plate
+composition need review. Preserve originals; no further library painting now.
 
-The bounded input scope is Earth temperate biome plate, six Earth cut-outs (Civet,
-Platypus, Frog, Persimmon, Cranberry, Devil's Club), and five family references
-(mammal quadruped, bird, fish, insect, reptile). Show the twelve-input sheets.
-The one conditioning owner must compile system cards from canonical game data;
-no manually typed card. First cut-out batch: inspect every capture for Atlas frames
-or dark plate backgrounds. If found, propose one v4.1 cut-out-block sentence and
-stop for Nick's approval before applying it or repainting.
+The first engine proof is prepared in `audits/ART_KIT_ENGINE_PROOF_20260912`.
+`compileEarthKitEngineV4` compiles six organism prompts/placements and one finisher
+from canonical Earth data and the kit. App-owned warm client + stage-worker kit route
+retain four sessions and one VAE encoder; pinned expansion occurs in worker memory.
+Nine fitted RGBA inputs are hashed offline. Nick's tenfold text ceiling is 5120 tokens,
+actual lengths rounded to 16, no truncation. Native larger-sequence behavior is unmeasured.
+Settings: 1024×576, 384-square passes, seed133, four steps at0.2, one finisher at0.08.
+17 worker/math/legacy-diagnostic and23 compiler/runtime tests, tsc and root validate PASS;
+cache-bypass/overflow/background/expansion/cancellation negative controls are retained.
 
-Then main deliverable: rebuild landfall-conditioning.ts as one kit interpreter;
-offline pre-fit/hash refs; unfreeze steps/seed/size; per-organism passes composed
-on the plate plus one low-strength stage-worker.mjs finisher; warm sessions across
-landings; VAE encoder once; in-worker expansion replaces OPFS variant storage.
-One measured native painting beside Living Worlds at native size with organism boxes.
-Fix blocking Part K 1–11, 17, 33–35 with negative controls. Ten tools already tracked;
-K35 boot control pending. No unit-test checkout lock, old --landfall --variant run,
-old integrated-chain/pack restart or six-reference prompt sweep.
+Next: signed clean source, then ONE `run-kit-engine-proof.mjs` native run using the
+prepared directory and a new result directory, with approved native browser execution.
+No automatic retry after red. Show untouched painting beside Living Worlds at native
+size and with organism placement boxes; inspect post-finisher identity separately.
+Normal-game V1/V2 action has not yet been rewired, old OPFS layer is not yet removed,
+and Part K1–11,17,33–35 is not closed. New kit reference fitting covers K17's path;
+ten original tool files are tracked, but K35 boot control remains pending.
+No unit-test checkout lock, old --landfall --variant run, integrated chain, pack build
+or six-reference prompt sweep. Current receipt is not painting acceptance.
 
-After the first painting is accepted, do the Animation and battle track below,
-then remaining family/form/biome library twelve at a time, showing every sheet.
-Effects class is a separate v4.1 proposal: no effect painting before approval.
-Actual iPhone maxBufferSize/shader-f16/quota/transformer-load memory probe still gates
-storage/delivery engineering; artwork durability, pruning/split, later phone tier
-and remaining rollout follow the revised program. No prior failure is relabelled.
+After the first engine painting is accepted, do the Animation and battle track below,
+then remaining families/forms/biomes twelve at a time. The inactive Effects proposal
+is retained in ART_KIT_ENGINE_FIRST_20260912; no effects before v4.1 row approval.
+Actual target-iPhone maxBufferSize/shader-f16/quota/transformer-load-memory probe still
+gates storage/delivery engineering. Artwork durability and later register/pruning/split
+work remain scheduled under program v4. No prior failure is relabelled.
 
 ## Animation and battle track
 
@@ -75,15 +75,14 @@ bird, fish, insect, reptile, then the rest.
 ## Git and session boundary
 
 OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,
-openai/mac tracking origin/openai/mac. Approved entry commit 6f5c396e is 18 ahead/0
-behind cached upstream, 129 ahead/0 behind cached origin/develop. No fetch. .DS_Store
-untouched. Same uninterrupted September 12 Node26.8.2 startup receipt applies.
-[Current evidence](audits/ART_KIT_ENGINE_FIRST_20260912/README.md) owns exact work/results.
+openai/mac tracking origin/openai/mac. Entry1e60f29f is19 ahead/0 behind cached upstream,
+130 ahead/0 behind cached origin/develop. No fetch. New signed commit IDs/counts are
+reported at each stop; use git log for the final head. .DS_Store remains untouched.
+Same uninterrupted September12 Node26.8.2 startup receipt applies.
 
 GitHub step none; PR42 parked, base develop/source openai/mac, title/body unchanged.
-Budget recorded UNFROZEN/PUBLIC, private fallback3000; exact authorized hosted attempts
-zero. No push, label, dispatch, merge, release or deploy. Develop/main/live unchanged.
-Claude Code need not open now; these are Codex-local changes. Only after eventual
-authorized develop integration may clean anthropic/mac fetch/merge origin/develop
-at its next batch. Do not manually copy worktrees. Resume from this handoff and
-CODEX_HANDOFF's appended engine-first order, never PAUSED_CHECKPOINT's restart.
+Budget UNFROZEN/PUBLIC, private fallback3000, exact hosted attempts authorized zero.
+No push, label, dispatch, merge, release or deploy. Develop/main/live unchanged.
+Claude Code need not open now. Only after eventual authorized develop integration
+may clean anthropic/mac fetch/merge origin/develop at its next batch. Do not copy
+worktrees. Resume here and CODEX_HANDOFF's engine-first amendment, never PAUSED_CHECKPOINT.

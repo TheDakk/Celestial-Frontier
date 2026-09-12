@@ -380,3 +380,30 @@ export function compileEarthArtKitV4(input: unknown, kit: string) {
   return freeze({ schema: 'cf.art.kit-earth-inputs.v4', sourceSnapshot: source, systemCard: card, prompts, plate, familyReferences,
     qualityAccepted: false, scope: 'six-earth-cutouts-temperate-plate-five-named-family-exemplars' });
 }
+
+export interface KitPreparedImageV4 { readonly url: string; readonly sha256: string; readonly width: number; readonly height: number }
+export interface KitEngineAssetsV4 { readonly plate: KitPreparedImageV4; readonly atlas: KitPreparedImageV4; readonly triptych: KitPreparedImageV4; readonly residents: Readonly<Record<string, KitPreparedImageV4>> }
+export interface KitEngineSettingsV4 { readonly width: number; readonly height: number; readonly passSize: number; readonly seed: number; readonly steps: number; readonly strength: number; readonly finisherStrength: number }
+/** Same interpreter, scene composition phase: only the subject slot changes;
+ * complete kit reference/style/layout/technical/negative blocks are retained. */
+export function compileEarthKitEngineV4(input: unknown, kit: string, assets: KitEngineAssetsV4, settings: KitEngineSettingsV4) {
+  const compiled = compileEarthArtKitV4(input, kit);
+  const model = buildLandfallConditioningV1(compiled.sourceSnapshot);
+  if (!model.ok) throw Error('Canonical kit scene unavailable');
+  const passes = compiled.prompts.map(row => {
+    const resident = model.recipe.residents.find(r => r.identityKey === row.identityKey)!;
+    const reference = assets.residents[row.key];
+    if (!reference) throw Error('Missing fitted reference for ' + row.name);
+    return { name: row.name, identityKey: row.identityKey, prompt: row.prompt, placement: resident.placement, reference };
+  });
+  const subject = [
+    'Finish the existing Earth temperate landfall composition in the frozen painted hand. Preserve all six placed organisms, their exact anatomy, counts, silhouettes, materials, locations and relative sizes; unify shared light, contact and atmosphere without adding or moving organisms.',
+    ...model.recipe.residents.map(row => `One ${row.name}, exactly one ${row.name}, at ${Math.round(row.placement.x * 100)} percent across and grounded at ${Math.round(row.placement.groundY * 100)} percent down: ${row.namedRule.diagnostics.map(d => d.required).join('; ')}.`),
+  ].join('\n');
+  const start = compiled.plate.prompt.indexOf('\n\nSUBJECT\n'), end = compiled.plate.prompt.indexOf('\n\nLAYOUT\n');
+  if (start < 0 || end <= start) throw Error('Kit scene block boundaries changed');
+  const finisherPrompt = compiled.plate.prompt.slice(0, start) + '\n\nSUBJECT\n' + subject + compiled.plate.prompt.slice(end);
+  return freeze({ schema: 'cf.kit-engine.v4', ...settings, plate: assets.plate, atlas: assets.atlas,
+    triptych: assets.triptych, passes, finisherPrompt, sourceSnapshot: compiled.sourceSnapshot,
+    qualityAccepted: false, textTokenCeiling: 5120, finisherSteps: 1 });
+}
