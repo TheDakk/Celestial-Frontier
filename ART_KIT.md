@@ -44,6 +44,8 @@ NEGATIVE ADDITIONS. Section 5 supplies the technical block for that class's
 kind (cut-out or scene). Only the SUBJECT line and the system card change per
 image.
 
+RUNTIME PROJECTION: a local model without a negative input receives only the frozen style, the system card's Light, Mineral palette, Atmosphere and pigment lines, the subject, and the layout sentence. Reference-lock text, hashes, technical output and negatives are library-generator instructions and are never sent to such a model.
+
 ACCURACY is used by the cut-out classes only (planets-orbital, flora, fauna,
 ships, landmarks, items, emblems). Scene classes omit it. People are inactive
 until the game has people, as section 4F states.
@@ -641,6 +643,8 @@ keep that file as the master, ship it as WebP.
   fauna turnaround (animators only) ......... 2048 x 1024
   universe, stars, biome plates, parallax
      layers ................................. 2560 x 1440
+
+Section 5 sizes are authoring targets. A master is accepted at any size at or above the runtime input size for its class (currently 384 square for cut-outs and 1024x576 for plates); the intake check records the delivered size.
 
   A transparent creature WebP lands near 150 KB and a biome plate near 600 KB.
 

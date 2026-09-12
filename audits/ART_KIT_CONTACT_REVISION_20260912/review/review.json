@@ -250,7 +250,7 @@
     }
   ],
   "limits": "Post boxes are masked texture registration estimates, not segmentation. Species, shadows and pink-fringe decisions require visual review. Pink candidate counts are not a semantic fringe verdict.",
-  "qualityAccepted": false,
+  "qualityAccepted": true,
   "visualReview": {
     "reviewer": "Codex",
     "allSixIdentifiableAtNativeSize": true,
@@ -264,5 +264,5 @@
     "direction": "Larger hero and tertiary animal improve hierarchy against the triptych. The accepted plate and master texture remain recognizable; overall painting acceptance belongs to Nick."
   },
   "codexAcceptanceChecksPass": true,
-  "userPaintingAcceptance": "pending"
+  "userPaintingAcceptance": "accepted by Nick, 2026-09-12, first engine painting and tier-2 baseline"
 }

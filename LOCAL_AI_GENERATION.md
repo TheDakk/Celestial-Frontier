@@ -1,5 +1,12 @@
 # Local AI landfalls
 
+**September 12 acceptance update:** Nick accepts cd6b609f / 0eed6a21 as the first engine
+painting and tier-2 baseline. The retained PNG is unchanged; its qualityAccepted is true.
+Art Kit v4.1 applies the two approved section0/5 insertions; frozen style and4E unchanged.
+Normal Land integration and blocking Part K fixes come first, then warm second landing,
+one edge/runners experiment, actual iPhone probe, Civet proof. This supersedes the earlier
+pending-painting/kit-approval status below; ROADMAP owns the current sequence.
+
 **Nick's September 12 approved order:** v4 at `6f5c396e` is approved. ART_KIT §9
 now limits first authoring to the Earth temperate plate, six Earth cut-outs and five
 family references, then the measured engine painting. Inspect first cut-outs for

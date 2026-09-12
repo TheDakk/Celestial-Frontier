@@ -4336,7 +4336,7 @@
       "operandsSha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82",
       "storageWrites": 0
     },
-    "qualityAccepted": false,
+    "qualityAccepted": true,
     "capabilities": {
       "maxBufferSize": 4294967292,
       "shaderF16": true,
@@ -4428,5 +4428,13 @@
       "sha256": "50f6e9a1fba44bffc7cbe3b064092de45cae1e168925071a3ae8541ee416bab6"
     }
   ],
-  "finishedAt": "2026-09-12T19:26:03.491Z"
+  "finishedAt": "2026-09-12T19:26:03.491Z",
+  "qualityAcceptance": {
+    "by": "Nick",
+    "date": "2026-09-12",
+    "scope": "First engine painting and tier-2 baseline",
+    "sourceCommit": "cd6b609f",
+    "evidenceCommit": "0eed6a21",
+    "paintingSha256": "52b58c47caa2b7db86636187343669ca475faf62b78ffcd0e9f50e82b76cc2ff"
+  }
 }
