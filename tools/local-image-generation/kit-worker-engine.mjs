@@ -1,5 +1,6 @@
 import {admitKitEngineJob,imageToImageStart,planarToRgba,rgbaToPlanar,placementBox,prepareKitTextTokens,MAX_KIT_TEXT_TOKENS} from './kit-engine-math.mjs';
 import {expandPinnedTransformer,sha256} from './kit-worker-expansion.mjs';
+import {applyKitWeather} from './kit-weather-math.mjs';
 import {keyAndDespill,compositeLayer,compositeOrganism,subtractOcclusion,latentInteriorMask,protectLatents,alphaToRgba,alphaBounds} from './kit-contact-math.mjs';
 import {encodeFloat16,decodeFloat16,packedLatentsToTokens,tokensToPackedLatents,createImageIds,eulerOutputStep,seededGaussianNoise} from './pipeline-math.mjs';
 const parse=async path=>{const r=await fetch(path);if(!r.ok)throw Error('Missing '+path);return r.json();};
@@ -137,9 +138,11 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
       const initial=await encode(composed,job.width,job.height),triptych=await reference(job.triptych);
       progress({phase:'finisher-start',protectedTokens:mask.protectedTokens});const finishStart=performance.now();
       const finished=await paintPass({prompt:job.finisherPrompt,width:job.width,height:job.height,seed:job.seed,steps:1,strength:job.finisherStrength,initial,references:[triptych],protection:mask.latent});
-      const {rgba}=planarToRgba(finished.decoded,job.width,job.height),painting=await png(rgba,job.width,job.height);
+      const {rgba}=planarToRgba(finished.decoded,job.width,job.height),finisherOriginal=await png(rgba,job.width,job.height);
+      const weather=job.compositorSystemCard?applyKitWeather(rgba,job.width,job.height,masks.map((alpha,i)=>({name:boxes[i].name,alpha})),job.seed,job.compositorSystemCard):null;
+      const painting=weather?await png(weather.rgba,job.width,job.height):finisherOriginal;
       measurements.push({name:'finisher',elapsedMs:performance.now()-finishStart,...finished.text,sigmas:finished.sigmas});
-      return {schema:'cf.kit-engine-result.v4',painting,composite,captures,maskCaptures,protectionMask,boxes,measurements,keying,
+      return {schema:'cf.kit-engine-result.v4',painting,finisherOriginal,weather:weather?.receipt??null,composite,captures,maskCaptures,protectionMask,boxes,measurements,keying,
         occlusion,masking:{protectedTokens:mask.protectedTokens,totalTokens:mask.latent.length,erosionPixels:job.interiorErosionPixels??4,threshold:.55},
         organismPasses:0,elapsedMs:performance.now()-started,coldPreparationMs,totalMs:performance.now()-coldStarted,warmSessionStart:true,
         width:job.width,height:job.height,sessionCreates:{...creates},expansion:expanded?.receipt,qualityAccepted:false,

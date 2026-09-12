@@ -34,7 +34,7 @@ try{
  report.modelVerification=(await fetchModel({manifest:pin,cacheDir,verifyOnly:true})).receipt;
  const recipe=await fs.readFile(path.join(prepared,'recipe.json'));if(sha(recipe)!==manifest.recipeSha256)throw Error('Accepted recipe changed');report.recipeSha256=sha(recipe);
  const routes=new Map([['/recipe.json',path.join(prepared,'recipe.json')],['/kit-client.mjs',path.join(prepared,'kit-client.mjs')]]);
- for(const name of ['kit-proof-client.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','pipeline-math.mjs','browser-variant-plan.json'])routes.set('/'+name,path.join(dir,name));
+ for(const name of ['kit-proof-client.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','kit-weather-math.mjs','pipeline-math.mjs','browser-variant-plan.json'])routes.set('/'+name,path.join(dir,name));
  routes.set('/stage-worker.mjs',path.join(dir,'kit-stage-worker.mjs'));
  for(const row of manifest.files){const file=path.join(prepared,'inputs',path.basename(row.url));if(sha(await fs.readFile(file))!==row.sha256)throw Error('Fitted input changed');routes.set(row.url,file);}
  for(const row of pin.files)routes.set('/model/'+row.path,path.join(cacheDir,row.path));

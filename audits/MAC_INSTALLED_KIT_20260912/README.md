@@ -38,3 +38,7 @@ the new document was loading. The fix requires changed performance.timeOrigin an
 settled matching original in that new document. Negative controls reject departing
 page, absent API and wrong original. No second install/inference run. Run the existing
 no-inference ordinary-Land/retention/Inspect proof with this correction to reload-01.
+
+reload-01 PASS on6ed3958d: new-document original restore, settled crossfade, Inspect
+and exact accepted SHA, zero model/inference requests. No repeat of the installed-model
+inference. Raw native-02 FAIL remains as the honest instrument record.

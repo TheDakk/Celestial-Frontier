@@ -4,8 +4,8 @@ import {fileURLToPath} from 'node:url';import {execFileSync} from 'node:child_pr
 import {createHash} from 'node:crypto';
 import {registerOrganism,admitsBoxOverlap} from './kit-contact-review.mjs';
 import {erodeAlpha,pinkExcess} from './kit-contact-math.mjs';
-if(![4,5].includes(process.argv.length)||(process.argv.length===5&&process.argv[4]!=='--accepted-baseline'))throw Error('Usage: review-kit-contact.mjs NATIVE_RESULT NEW_REVIEW_DIRECTORY [--accepted-baseline]');
-const edge=process.argv[4]==='--accepted-baseline';
+if(![4,5].includes(process.argv.length)||(process.argv.length===5&&!['--accepted-baseline','--weather-mat'].includes(process.argv[4])))throw Error('Usage: review-kit-contact.mjs NATIVE_RESULT NEW_REVIEW_DIRECTORY [--accepted-baseline]');
+const weather=process.argv[4]==='--weather-mat',edge=weather||process.argv[4]==='--accepted-baseline';
 const run=path.resolve(process.argv[2]),out=path.resolve(process.argv[3]),root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 await fs.mkdir(out);
 const r=JSON.parse(await fs.readFile(path.join(run,'result.json'),'utf8'));
@@ -36,7 +36,7 @@ for(const [i,box]of r.details.boxes.entries()){
 annotations.push(path.join(out,'registered-boxes.png'));execFileSync('magick',annotations);
 function column(file,label,width,output){execFileSync('magick',['-size',`${width}x40`,'xc:#111916','-font',font,'-fill','#eef1ec','-pointsize','18','-gravity','West','-annotate','+12+0',label,file,'-append',output]);}
 const before=path.join(root,edge?'audits/ART_KIT_CONTACT_REVISION_20260912/native-01/painting.png':'audits/ART_KIT_ENGINE_PROOF_20260912/native-01/painting.png'),triptych=path.join(root,'audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png');
-column(path.join(run,'painting.png'),`${edge?'8px edges + two runners':'Contact revision'} — native ${W}x${H}, ${(r.details.elapsedMs/1000).toFixed(2)}s warm`,W,path.join(out,'contact-column.png'));
+column(path.join(run,'painting.png'),`${weather?'Post-finisher weather + Cranberry mat':edge?'8px edges + two runners':'Contact revision'} — native ${W}x${H}, ${(r.details.elapsedMs/1000).toFixed(2)}s warm`,W,path.join(out,'contact-column.png'));
 column(before,edge?'Accepted baseline — native 1024x576, 24.17s':'First painting — native 1024x576, 425.71s',1024,path.join(out,'first-column.png'));
 column(triptych,'Approved Living Worlds — native 1881x836',1881,path.join(out,'triptych-column.png'));
 execFileSync('magick',[path.join(out,'first-column.png'),path.join(out,'contact-column.png'),'-background','#111916','-gravity','North','+append',path.join(out,edge?'beside-accepted-painting.png':'beside-first-painting.png')]);
