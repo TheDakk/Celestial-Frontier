@@ -8,8 +8,10 @@ Nick's rain-default selection is pending, so accepted1x stays active. A newly au
 phone probe verifies initializer bounds and bypasses text encoder with pinned precomputed
 accepted-recipe embedding. Embedding/probe signed8a739f73; no-inference ordinary Land,
 retained weather PNG reload and Inspect PASS. After unlock, physical phone session succeeded;
-first embedded probe stopped at insecure-page navigation before any model request. No new
-memory/timing, cause unresolved; no retry. Result reported, Civet animation proof next. Earlier
+first embedded probe stopped at insecure-page navigation before any model request. Nick's
+explicit retry native-02 identified Safari/server TLS certificate rejection; zero model
+loads, no timing/memory. Result reported; trusted local HTTPS needed before another phone
+attempt. No trust setting changed. Civet animation proof remains next. Earlier
 paragraphs below record the superseded baseline decisions. No kit edit or GitHub step.
 
 

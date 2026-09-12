@@ -63,3 +63,19 @@ First result reported to Nick. Evidence native-01/result.json and session-prefli
 Next phone attempt needs a separately authorized correction of the navigation/secure-origin
 boundary. No new model/device/delivery tier qualification. Civet animation proof remains
 next development work; rain variant A–F selection pending, accepted1x remains active.
+
+## Explicitly authorized retry — certificate rejection identified
+
+Nick said "try again". Instrument correction372a1fc0 waits for exact URL, secure context,
+isolation and client readiness; negative controls reject blank/wrong/insecure/unfinished
+pages. The single native-02 attempt on that signed source connected to the physical phone,
+then stopped before any model request. Navigation records Safari's data:text/html error
+page: "The certificate for this server is invalid." Server received two connections,
+both TLS certificate-unknown alerts, zero HTTP requests. navigation-failure.png confirms
+that page. This establishes a TLS trust blocker for native-02, not a model or RAM result.
+
+No VAE/text/transformer/decoder load, inference or finisher timing. No further retry;
+session/server/driver closed. Certificate SAN matches192.168.1.62; validitySep12–13UTC;
+private key remains private. No trust settings, insecure-certificate capability, kit,
+model or painting parameters changed. Establish a trusted local HTTPS connection before
+any newly authorized phone attempt. Rain selection pending; Civet proof remains next.

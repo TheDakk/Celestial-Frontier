@@ -65,9 +65,12 @@ Budget UNFROZEN/public/private fallback3000, zero exact hosted authority. Unit t
 no checkout lease. Claude need not open/sync; no PR now. Report signedIDs/ahead at stops.
 
 
-Nick subsequently explicitly authorized one retry ("try again"). Before it, the probe
-now waits up to20s for the exact secure/isolated/client-ready document after WebDriver
-navigation, records URL/title/state, and captures a failure screenshot plus transport/TLS
-errors. Negative controls reject blank/wrong/insecure/unfinished documents. No TLS bypass,
-model or kit parameter changes. Sign this instrument change, then one native-02 attempt;
-report first result without further retries. Earlier native-01 remains preserved.
+Nick explicitly authorized one retry ("try again"). Signed372a1fc0 adds exact secure-page
+readiness and failure screenshot/URL/TLS diagnostics; negative controls PASS. native-02
+now identifies the blocker: Safari error page says server certificate invalid, and two
+TLS connections produced certificate-unknown alerts; zero HTTP/model requests. No model
+loaded and no timing/memory measured. Screenshot inspected. Result reported, no further
+retry; all owned sessions/server/driver closed. Trust settings unchanged. A trusted local
+HTTPS connection is required before another authorized phone attempt. Earlier failed
+attempts retained. Latest source372a1fc0 (43 ahead upstream,154 ahead cached develop),
+result commit follows. Rain A–F choice pending; accepted1x stays active.
