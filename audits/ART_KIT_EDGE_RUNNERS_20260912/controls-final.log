@@ -1,0 +1,16 @@
+✔ one-pixel erosion and sampled inward despill remove injected pink edge without recolouring the interior (1.665334ms)
+✔ premultiplied sampling cannot carry invisible magenta into a scaled edge (0.191791ms)
+✔ latent interiors stay anchored while boundary and ground remain editable; no-mask control fails (2.812833ms)
+✔ prepared profile meets scale relationships and refuses the former unmasked recipe (0.740667ms)
+✔ 8px erosion opens additional boundary area; unchanged 4px control fails the wider-edge criterion (1.876ms)
+✔ two low runner instances share one organism mask; single-instance control fails (8.370583ms)
+✔ actual engine skips organism inference and runs one protected finisher; all four sessions stay warm (356.87875ms)
+✔ same reuse oracle rejects actual engine with its session cache bypassed (332.148875ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 731.455709

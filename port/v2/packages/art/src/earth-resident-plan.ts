@@ -57,6 +57,17 @@ export const EARTH_PAINTED_COMPOSITION_V1 = deepFreeze({
     width: 0.09, height: 0.045, groundOffset: 3 },
 });
 
+/** One authorized edge/runners experiment; the accepted game baseline stays V1. */
+export const EARTH_PAINTED_EDGE_RUNNERS_V1 = deepFreeze({
+  ...EARTH_PAINTED_COMPOSITION_V1, id: 'cf.art.earth-painted-edge-runners.v1',
+  interiorErosionPixels: 8,
+  residents: EARTH_PAINTED_COMPOSITION_V1.residents.map(row => row.name === 'Cranberry'
+    ? { ...row, runners: [
+      { x: 0.32, groundY: 0.91, width: 0.09, heightScale: 0.50, flip: false },
+      { x: 0.43, groundY: 0.93, width: 0.08, heightScale: 0.50, flip: true },
+    ] } : row),
+});
+
 interface SnapshotBudget { remaining: number; }
 /** Snapshot descriptors before accessing values, then serialize only detached
  * null-prototype objects/arrays. Getters, toJSON hooks, sparse arrays, cycles,

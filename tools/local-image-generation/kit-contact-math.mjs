@@ -54,16 +54,29 @@ export function compositeLayer(base,W,H,source,sw,sh,bounds,box,flip=false){
   return alpha;
 }
 export function subtractOcclusion(masks,alpha){for(const mask of masks)for(let i=0;i<mask.length;i++)mask[i]=Math.round(mask[i]*(1-alpha[i]/255));}
-export function latentInteriorMask(masks,w,h){
+export function latentInteriorMask(masks,w,h,erosionPixels=4){
   if(w%16||h%16||!masks.length||masks.some(m=>m.length!==w*h))throw Error('Interior mask shape');
   const union=new Uint8Array(w*h);for(const mask of masks)for(let i=0;i<union.length;i++)union[i]=Math.max(union[i],mask[i]);
-  const inner=erodeAlpha(union,w,h,4),latent=new Float32Array(w*h/256);
+  const inner=erodeAlpha(union,w,h,erosionPixels),latent=new Float32Array(w*h/256);
   for(let y=0;y<h/16;y++)for(let x=0;x<w/16;x++){
     let sum=0;for(let dy=0;dy<16;dy++)for(let dx=0;dx<16;dx++)sum+=inner[(y*16+dy)*w+x*16+dx];
     latent[y*(w/16)+x]=sum/(256*255)>=.55?1:0;
   }
   if(!latent.some(v=>v===1)||latent.every(v=>v===1))throw Error('Empty or full protected latent mask');
   return {latent,inner,protectedTokens:latent.reduce((a,b)=>a+b,0)};
+}
+/** Compose one organism, optionally as two low runner instances of the same master. */
+export function compositeOrganism(base,W,H,keyed,sw,sh,placement,boxFor){
+  const placements=placement.runners??[placement],alpha=new Uint8Array(W*H),instances=[];
+  for(const p of placements){
+    const box=boxFor(p,keyed.bounds,W,H);
+    if(p.heightScale!==undefined){const oldHeight=box.height;box.height*=p.heightScale;box.y+=oldHeight-box.height;}
+    const layer=compositeLayer(base,W,H,keyed.rgba,sw,sh,keyed.bounds,box,p.flip);
+    for(let i=0;i<alpha.length;i++)alpha[i]=Math.round(255-(255-alpha[i])*(1-layer[i]/255));
+    instances.push(box);
+  }
+  const x=Math.min(...instances.map(b=>b.x)),y=Math.min(...instances.map(b=>b.y));
+  return {alpha,box:{x,y,width:Math.max(...instances.map(b=>b.x+b.width))-x,height:Math.max(...instances.map(b=>b.y+b.height))-y},instances};
 }
 /** Next-sigma original latent follows the same sampled-noise trajectory. */
 export function protectLatents(predicted,original,noise,mask,nextSigma){

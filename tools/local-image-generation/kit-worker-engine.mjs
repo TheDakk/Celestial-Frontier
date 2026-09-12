@@ -1,6 +1,6 @@
 import {admitKitEngineJob,imageToImageStart,planarToRgba,rgbaToPlanar,placementBox,prepareKitTextTokens,MAX_KIT_TEXT_TOKENS} from './kit-engine-math.mjs';
 import {expandPinnedTransformer,sha256} from './kit-worker-expansion.mjs';
-import {keyAndDespill,compositeLayer,subtractOcclusion,latentInteriorMask,protectLatents,alphaToRgba,alphaBounds} from './kit-contact-math.mjs';
+import {keyAndDespill,compositeLayer,compositeOrganism,subtractOcclusion,latentInteriorMask,protectLatents,alphaToRgba,alphaBounds} from './kit-contact-math.mjs';
 import {encodeFloat16,decodeFloat16,packedLatentsToTokens,tokensToPackedLatents,createImageIds,eulerOutputStep,seededGaussianNoise} from './pipeline-math.mjs';
 const parse=async path=>{const r=await fetch(path);if(!r.ok)throw Error('Missing '+path);return r.json();};
 export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expandPinnedTransformer,modelFiles={}}){
@@ -112,11 +112,10 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
       for(const p of job.passes){
         const start=performance.now(),raw=await pixels(p.reference);
         const keyed=keyAndDespill(raw,p.reference.width,p.reference.height);
-        const box=placementBox(p.placement,keyed.bounds,job.width,job.height);
-        const alpha=compositeLayer(composed,job.width,job.height,keyed.rgba,p.reference.width,p.reference.height,keyed.bounds,box,p.placement.flip);
+        const {box,alpha,instances}=compositeOrganism(composed,job.width,job.height,keyed,p.reference.width,p.reference.height,p.placement,placementBox);
         subtractOcclusion(masks,alpha);masks.push(alpha);
         captures.push({name:p.name,blob:await png(keyed.rgba,p.reference.width,p.reference.height)});
-        boxes.push({name:p.name,identityKey:p.identityKey,...box,preFinisherBounds:true,postFinisherIdentityAccepted:false});
+        boxes.push({name:p.name,identityKey:p.identityKey,...box,instances,preFinisherBounds:true,postFinisherIdentityAccepted:false});
         keying.push({name:p.name,...keyed.receipt});
         progress({phase:'organism-composited',name:p.name,inferencePasses:0,elapsedMs:performance.now()-start});
       }
@@ -131,7 +130,7 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
         if(!covered)throw Error('Foreground did not overlap target feet');subtractOcclusion(masks,alpha);
         occlusion.push({name:target.name,coveredPixels:covered,box});
       }
-      const mask=latentInteriorMask(masks,job.width,job.height);
+      const mask=latentInteriorMask(masks,job.width,job.height,job.interiorErosionPixels??4);
       for(let i=0;i<masks.length;i++)maskCaptures.push({name:boxes[i].name,blob:await png(alphaToRgba(masks[i]),job.width,job.height)});
       const composite=await png(composed,job.width,job.height),protectionMask=await png(alphaToRgba(mask.inner),job.width,job.height);
       progress({phase:'composite-capture',name:'composite-before-finisher',blob:composite});
@@ -141,7 +140,7 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
       const {rgba}=planarToRgba(finished.decoded,job.width,job.height),painting=await png(rgba,job.width,job.height);
       measurements.push({name:'finisher',elapsedMs:performance.now()-finishStart,...finished.text,sigmas:finished.sigmas});
       return {schema:'cf.kit-engine-result.v4',painting,composite,captures,maskCaptures,protectionMask,boxes,measurements,keying,
-        occlusion,masking:{protectedTokens:mask.protectedTokens,totalTokens:mask.latent.length,erosionPixels:4,threshold:.55},
+        occlusion,masking:{protectedTokens:mask.protectedTokens,totalTokens:mask.latent.length,erosionPixels:job.interiorErosionPixels??4,threshold:.55},
         organismPasses:0,elapsedMs:performance.now()-started,coldPreparationMs,totalMs:performance.now()-coldStarted,warmSessionStart:true,
         width:job.width,height:job.height,sessionCreates:{...creates},expansion:expanded?.receipt,qualityAccepted:false,
         capabilities:{maxBufferSize:adapter.limits.maxBufferSize,shaderF16:adapter.features.has('shader-f16'),adapterInfo:{...adapter.info}}};

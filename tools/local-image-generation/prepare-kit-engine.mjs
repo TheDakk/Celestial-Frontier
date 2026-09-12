@@ -6,15 +6,15 @@ import {pathToFileURL,fileURLToPath} from 'node:url';
 import {Tokenizer} from '@huggingface/tokenizers';
 import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
 import {admitKitEngineJob,prepareKitTextTokens,placementBox} from './kit-engine-math.mjs';
-import {keyAndDespill,compositeLayer,subtractOcclusion,alphaBounds} from './kit-contact-math.mjs';
+import {keyAndDespill,compositeLayer,compositeOrganism,subtractOcclusion,alphaBounds} from './kit-contact-math.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
-if(process.argv.length!==3||!process.argv[2].startsWith('--output='))throw Error('--output=NEW_DIRECTORY required');
+if(![3,4].includes(process.argv.length)||!process.argv[2].startsWith('--output=')||(process.argv.length===4&&process.argv[3]!=='--edge-runners'))throw Error('--output=NEW_DIRECTORY [--edge-runners] required');
 const output=path.resolve(process.argv[2].slice(9));await fs.mkdir(output);await fs.mkdir(path.join(output,'inputs'));
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const baseline=path.join(root,'audits/ART_KIT_ENGINE_PROOF_20260912'),first=path.join(root,'audits/ART_KIT_ENGINE_FIRST_20260912');
 const prior=JSON.parse(await fs.readFile(path.join(baseline,'prepared-manifest.json'),'utf8'));
 const previousRecipe=JSON.parse(await fs.readFile(path.join(baseline,'recipe.json'),'utf8'));
-const settings={...prior.settings,finisherStrength:.35};
+const settings={...prior.settings,finisherStrength:.35,...(process.argv[3]==='--edge-runners'?{compositionProfile:'edge-runners-v1'}:{})};
 if(settings.seed!==133||settings.width!==1024||settings.height!==576||settings.passSize!==384)throw Error('Exact prior experiment geometry required');
 const compilerDir=path.join(output,'compiler');
 execFileSync(process.execPath,[path.join(root,'port/v2/tools/landfall-snapshot/kit-export.mjs'),compilerDir],{cwd:root,stdio:'pipe'});
@@ -58,7 +58,7 @@ try{
   await fs.writeFile(path.join(output,'prepared-manifest.json'),JSON.stringify({schema:'cf.kit-engine-prepared.v4',experiment:recipe.experiment,recipeSha256:sha(bytes),settings,files,tokenReceipt,acceptedMastersVerified:intake.images.length,sameSourceSnapshot:true,qualityAccepted:false},null,2)+'\n',{flag:'wx'});
   // Static compositor inspection before the single native inference run.
   const preview=plate.slice(),masks=[],boxes=[];
-  for(const p of recipe.passes){const raw=new Uint8ClampedArray(await fs.readFile(path.join(output,'inputs',path.basename(p.reference.url))));const keyed=keyAndDespill(raw,p.reference.width,p.reference.height),box=placementBox(p.placement,keyed.bounds,1024,576);const alpha=compositeLayer(preview,1024,576,keyed.rgba,p.reference.width,p.reference.height,keyed.bounds,box,p.placement.flip);subtractOcclusion(masks,alpha);masks.push(alpha);boxes.push({name:p.name,...box,keying:keyed.receipt});}
+  for(const p of recipe.passes){const raw=new Uint8ClampedArray(await fs.readFile(path.join(output,'inputs',path.basename(p.reference.url))));const keyed=keyAndDespill(raw,p.reference.width,p.reference.height);const {box,alpha,instances}=compositeOrganism(preview,1024,576,keyed,p.reference.width,p.reference.height,p.placement,placementBox);subtractOcclusion(masks,alpha);masks.push(alpha);boxes.push({name:p.name,...box,instances,keying:keyed.receipt});}
   const fb=alphaBounds(Uint8Array.from({length:4096},(_,i)=>foreground[i*4+3]),64,64);
   for(const target of recipe.composition.foreground.placements){const b=boxes.find(b=>b.name===target.name),fg=recipe.composition.foreground,w=fg.width*1024,h=fg.height*576;compositeLayer(preview,1024,576,foreground,64,64,fb,{x:b.x+b.width*target.centreAcrossBody-w/2,y:b.y+b.height+fg.groundOffset-h,width:w,height:h});}
   await fs.writeFile(path.join(output,'compositor-preview.rgba'),preview,{flag:'wx'});

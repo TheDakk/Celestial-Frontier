@@ -94,3 +94,22 @@ reload restored the exact accepted original; no runtime exceptions. The proof th
 called surveyOn from surface mode, but that evidence helper explicitly accepts only
 system mode. The correction clicks the actual #docksurvey control. Preserve browser-01
 as failed harness evidence; corrected browser-02 precedes the warm native run.
+
+## Native outcomes on 0e37e6c6
+
+browser-02 PASS: ordinary Land composite145.95ms; original SHA verified after reload;
+Inspect opened that same original; zero runtime exceptions, zero model/inference requests.
+Three native screenshots retained. The first proof's system-only helper mistake is
+preserved in browser-01; the correction uses the real Survey dock button.
+
+warm-native-01 PASS: one browser run, two unchanged accepted recipes on the shipped kit
+worker and app warm client. Second landing21617.645ms warm. All four session creation
+counts remain1, transformer expanded once. Both paintings SHA
+52b58c47caa2b7db86636187343669ca475faf62b78ffcd0e9f50e82b76cc2ff.
+These timing repetitions do not replace the accepted original or request new acceptance.
+
+The requested Part K repairs have their listed negative controls. Native UI proof uses
+an existing accepted PNG; native GPU proof separately exercises the actual app warm
+client/worker. A full installed-model ordinary-game download-to-finisher run was not
+performed; no pack, delivery tier, iPhone or broad certification is claimed.
+Next is exactly one8px-edge/two-runner experiment, then target iPhone, then Civet.
