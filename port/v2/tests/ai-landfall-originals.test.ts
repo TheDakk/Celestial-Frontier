@@ -14,13 +14,13 @@ function idbFixture() {
   const stores = new Map<string, Map<string, unknown>>();
   let initialized = false;
   const writes: { complete(): void; abort(): void; staged: Map<string, Map<string, unknown>> }[] = [];
-  const control = { holdWrites: false, abortWrites: false, closed: 0 };
+  const control = { holdWrites: false, abortWrites: false, closed: 0, failOpen: false, opens: 0 };
   let markWriteStaged!: () => void;
   const writeStaged = new Promise<void>(resolve => { markWriteStaged = resolve; });
   const db = {
     createObjectStore(name: string) { stores.set(name, new Map()); },
     close() { control.closed++; },
-    onversionchange: null,
+    onversionchange: null as null | (() => void),
     transaction(_names: string[], mode: string) {
       const staged = new Map([...stores].map(([key, rows]) => [key, new Map(rows)]));
       let pending = 0, finished = false;
@@ -72,16 +72,18 @@ function idbFixture() {
   };
   const factory = {
     open() {
+      control.opens++;
       const request = { result: db, onupgradeneeded: null as null | (() => void),
-        onsuccess: null as null | (() => void), onerror: null, onblocked: null };
+        onsuccess: null as null | (() => void), onerror: null as null | (() => void), onblocked: null };
       queueMicrotask(() => {
+        if (control.failOpen) { request.onerror?.(); return; }
         if (!initialized) { initialized = true; request.onupgradeneeded?.(); }
         request.onsuccess?.();
       });
       return request;
     },
   } as unknown as IDBFactory;
-  return { factory, stores, writes, control, writeStaged };
+  return { factory, stores, writes, control, writeStaged, db };
 }
 
 describe('separate exact landfall originals', () => {
@@ -186,4 +188,12 @@ describe('separate exact landfall originals', () => {
     store.close();
     await expect(store.find(input)).rejects.toThrow(/closed/);
   });
+});
+
+it('failed opening retries and versionchange reopens, while explicit close stays closed', async () => {
+  const f = idbFixture(), store = createAiLandfallOriginalStoreV1({ indexedDB: f.factory });
+  f.control.failOpen = true; await expect(store.find(input)).rejects.toThrow('open failed');
+  f.control.failOpen = false; expect(await store.find(input)).toBeNull(); expect(f.control.opens).toBe(2);
+  f.db.onversionchange?.(); expect(await store.find(input)).toBeNull(); expect(f.control.opens).toBe(3);
+  store.close(); await expect(store.find(input)).rejects.toThrow('closed'); expect(f.control.opens).toBe(3);
 });

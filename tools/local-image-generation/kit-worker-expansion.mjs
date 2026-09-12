@@ -21,8 +21,8 @@ export function patchGraph(source,patches,bytes){
   for(const p of patches){result.set(source.subarray(from,p.offset),to);to+=p.offset-from;for(let i=0;i<p.hex.length;i+=2)result[to++]=parseInt(p.hex.slice(i,i+2),16);from=p.offset+p.remove;}
   result.set(source.subarray(from),to);return result;
 }
-export async function expandPinnedTransformer(fetcher=fetch,onProgress=()=>{}){
-  const response=await fetcher('/browser-variant-plan.json');if(!response.ok)throw Error('Expansion plan unavailable');
+export async function expandPinnedTransformer(fetcher=fetch,onProgress=()=>{},planUrl='/browser-variant-plan.json'){
+  const response=await fetcher(planUrl);if(!response.ok)throw Error('Expansion plan unavailable');
   const planBytes=await response.arrayBuffer();if(planBytes.byteLength!==142918||await sha256(planBytes)!==PLAN_SHA)throw Error('Expansion plan SHA mismatch');
   const plan=JSON.parse(new TextDecoder().decode(planBytes));
   const originalResponse=await fetcher('/model/'+plan.parent.graph.path);if(!originalResponse.ok)throw Error('Parent graph unavailable');

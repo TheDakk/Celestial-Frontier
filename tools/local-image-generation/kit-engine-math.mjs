@@ -15,7 +15,7 @@ export function admitKitEngineJob(job){
   if(typeof job.finisherPrompt!=='string'||job.finisherPrompt.length<100)throw Error('Kit finisher prompt missing');
   for(const ref of [job.plate,job.atlas,job.triptych,job.foreground,...job.passes.map(p=>p.reference)]){
     if(!ref||!integer(ref.width,16,2560)||!integer(ref.height,16,2560)||ref.width%16||ref.height%16
-      ||typeof ref.url!=='string'||!ref.url.startsWith('/inputs/')||!/^[a-f0-9]{64}$/.test(ref.sha256))throw Error('Kit fitted reference refused');
+      ||typeof ref.url!=='string'||!/^\/(?:__local_ai\/)?inputs\/[a-z0-9-]+\.rgba$/.test(ref.url)||!/^[a-f0-9]{64}$/.test(ref.sha256))throw Error('Kit fitted reference refused');
   }
   if(job.plate.width!==job.width||job.plate.height!==job.height||job.passes.some(p=>p.reference.width!==job.passSize||p.reference.height!==job.passSize))throw Error('Kit reference pre-fit mismatch');
   return job;

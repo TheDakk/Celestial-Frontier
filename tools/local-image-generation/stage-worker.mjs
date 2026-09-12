@@ -41,7 +41,7 @@ onmessage=async ({data:job}) => {
     try{
       if(used)throw Error('Cannot mix a legacy diagnostic and kit engine in one worker');
       const {admitKitEngineJob}=await import('./kit-engine-math.mjs');admitKitEngineJob(job.recipe);
-      kitEnginePromise??=import('./kit-worker-engine.mjs').then(({createKitWorkerEngine})=>createKitWorkerEngine({ort,Tokenizer,progress:details=>postMessage({type:'progress',...details})}));
+      kitEnginePromise??=import('./kit-worker-engine.mjs').then(({createKitWorkerEngine})=>createKitWorkerEngine({ort,Tokenizer,modelFiles:job.modelFiles,progress:details=>postMessage({type:'progress',...details})}));
       const engine=await kitEnginePromise;
       const result=await engine.paint(job.recipe);
       postMessage({type:'complete',requestId:job.requestId,...result});

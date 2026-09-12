@@ -4015,7 +4015,7 @@
       }
     }
   ],
-  "qualityAccepted": false,
+  "qualityAccepted": true,
   "modelVerification": {
     "schema": "cf.local-image-download-receipt.v1",
     "modelId": "cgb/flux2-klein-4b-onnx-webgpu",

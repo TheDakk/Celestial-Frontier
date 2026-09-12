@@ -5,14 +5,12 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {buildRuntimePack,verifyRuntimePack,validateRuntimeSourcePins,RUNTIME_SOURCE_PINS,SHIPPED_PACK_LIMIT,RETAINED_UPDATE_LIMIT} from './runtime-pack.mjs';
-import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 const pins=JSON.parse(await fs.readFile(RUNTIME_SOURCE_PINS,'utf8'));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 let temporary,sourceRoot,installed,output,releaseWorkspace,sequence=0;
 const next=()=>path.join(temporary,'output-'+(++sequence));
 before(async()=>{
-  releaseWorkspace=acquireWorkspaceLock('static runtime pack controls');
   temporary=await fs.mkdtemp('/private/tmp/cf-runtime-pack-controls-');sourceRoot=path.join(temporary,'source');
   for(const row of pins.files){const target=path.join(sourceRoot,row.source);await fs.mkdir(path.dirname(target),{recursive:true});await fs.copyFile(path.join(ROOT,row.source),target);}
   console.log('Runtime pack control artifacts: '+temporary);

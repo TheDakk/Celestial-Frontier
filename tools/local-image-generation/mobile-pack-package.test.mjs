@@ -6,12 +6,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {verifyMobilePack,createMobilePackServer} from './mobile-pack.mjs';
-import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
 const source=process.env.CF_MOBILE_PACKAGE_DIR,expectedManifestSha256=process.env.CF_MOBILE_PACKAGE_SHA;
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 let directory,release,manifest,server;
 before(async()=>{
-  release=acquireWorkspaceLock('combined static AI package controls');
   assert.equal(typeof source,'string');assert.match(expectedManifestSha256??'',/^[a-f0-9]{64}$/);
   await verifyMobilePack({directory:source,expectedManifestSha256});
   directory=path.join(await fs.mkdtemp('/private/tmp/cf-mobile-package-controls-'),'package');await fs.cp(source,directory,{recursive:true,errorOnExist:true,force:false});

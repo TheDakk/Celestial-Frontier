@@ -5,7 +5,6 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { loadSpeciesReferenceSet, referenceImageDimensions, SPECIES_REFERENCE_SET } from './species-references.mjs';
-import { acquireWorkspaceLock } from '../../port/v2/tools/workspacelock.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const ORDER = ['Civet', 'Persimmon', 'Platypus', 'Frog', "Devil's Club", 'Cranberry'];
@@ -21,7 +20,6 @@ const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 let temporary, sourceRoot, originalManifest, manifestBytes, releaseWorkspace;
 const load = () => loadSpeciesReferenceSet({ sourceRoot });
 before(async () => {
-  releaseWorkspace = acquireWorkspaceLock('six species reference controls');
   temporary = await fs.mkdtemp('/private/tmp/cf-species-reference-controls-');
   sourceRoot = path.join(temporary, 'source');
   manifestBytes = await fs.readFile(path.join(ROOT, SPECIES_REFERENCE_SET));

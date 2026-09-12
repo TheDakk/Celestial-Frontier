@@ -63,6 +63,10 @@ export class AiLandfallJobsV1 {
       jobId: `landfall-job-${++this.sequence}`, input: identity, status: 'queued',
       progress: progress('Queued'), originalId: null, error: null,
     }) };
+    for (let i = this.rows.length - 1; i >= 0; i--) {
+      const prior = this.rows[i]!;
+      if (prior.key === key && ['failed', 'canceled'].includes(prior.row.status)) this.rows.splice(i, 1);
+    }
     this.rows.push(job);
     this.waiting.push(job);
     this.pump();
@@ -148,7 +152,7 @@ export class AiLandfallJobsV1 {
         if (signal.aborted) throw new Error('Landfall generation canceled');
         original = await this.options.store.retain(job.row.input, generated);
       }
-      if (signal.aborted) throw new Error('Landfall generation canceled');
+      // Retention is the commit point: cancellation after it cannot undo a ready original.
       // Store is the only byte-verification owner; keep exact input checks at publication too.
       if (JSON.stringify(original.input) !== JSON.stringify(job.row.input)) throw new Error('Retained landfall identity changed');
       this.update(job, { status: 'ready', progress: progress('Ready', 100, 100), originalId: original.originalId });

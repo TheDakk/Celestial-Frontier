@@ -101,7 +101,7 @@ describe('page-owned landfall jobs', () => {
     expect(jobs.snapshot().every(row => row.status === 'canceled')).toBe(true);
   });
 
-  it('retains an original committed during cancellation but emits no ready notice', async () => {
+  it('publishes ready when retention commits before cancellation; early cancellation remains canceled', async () => {
     const fixture = storeFixture(); const hold = deferred<void>();
     const retain = fixture.store.retain; let committed = false;
     fixture.store.retain = async (...args) => {
@@ -111,7 +111,7 @@ describe('page-owned landfall jobs', () => {
     const jobs = new AiLandfallJobsV1({ store: fixture.store, generate: async () => image(), onReady: job => notices.push(job.jobId) });
     const id = jobs.enqueue(input()); await tick(); expect(committed).toBe(true);
     expect(jobs.cancel(id)).toBe(true); hold.resolve(); await jobs.settled();
-    expect(jobs.snapshot()[0]!.status).toBe('canceled'); expect(notices).toEqual([]);
+    expect(jobs.snapshot()[0]!.status).toBe('ready'); expect(notices).toEqual([id]);
     expect(await fixture.store.find(input())).not.toBeNull();
     const restored = new AiLandfallJobsV1({ store: fixture.store, generate: async () => { throw new Error('must reuse'); } });
     restored.enqueue(input()); await restored.settled();
@@ -142,4 +142,12 @@ describe('page-owned landfall jobs', () => {
     expect(Object.isFrozen(jobs.snapshot())).toBe(true);
     expect(Object.isFrozen(jobs.snapshot()[0]!.progress)).toBe(true);
   });
+});
+
+it('retry replaces the failed row instead of leaving two Retry controls', async () => {
+  const fixture = storeFixture(); let fail = true;
+  const jobs = new AiLandfallJobsV1({ store: fixture.store, generate: async () => { if (fail) throw Error('control'); return image(); } });
+  const first = jobs.enqueue(input()); await jobs.settled(); expect(jobs.snapshot()[0]!.status).toBe('failed');
+  fail = false; const second = jobs.enqueue(input()); await jobs.settled();
+  expect(second).not.toBe(first); expect(jobs.snapshot()).toHaveLength(1); expect(jobs.snapshot()[0]!.status).toBe('ready');
 });
