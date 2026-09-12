@@ -1,5 +1,8 @@
 # One edge/runners experiment — September 12, 2026
 
+**Nick REJECTED experiment246cc619. No further finisher-erosion experiments.**
+Keep cd6b609f as the accepted painting/tier-2 baseline. Evidence below is historical.
+
 Authorized after ordinary Land proof and two-landing warm measurement passed.
 native-01 completed once on246cc619. Technical inference PASS; quality acceptance FAILS
 the complete box criterion because Cranberry registration is unresolved. No retry.

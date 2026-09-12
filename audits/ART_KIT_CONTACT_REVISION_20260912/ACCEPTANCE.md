@@ -13,3 +13,7 @@ retained original/View/Inspect; remove the OPFS variant and six-reference paths;
 close Part K 1–11,17,33–35 with negative controls; retain four sessions and measure
 a second landing in one native run; one edge-mask/Cranberry-runner experiment;
 actual target-iPhone probe; Civet animation proof. No GitHub step; PR42 parked.
+
+September12 reaffirmation: Nick rejects edge/runners246cc619; cd6b609f remains the
+accepted painting/tier-2 baseline. v4.1 approved as diffed; normal-game wiring accepted.
+Latest ordered authority is audits/KIT_WEATHER_DECISIONS_20260912/DECISIONS.md.

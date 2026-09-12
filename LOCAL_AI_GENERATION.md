@@ -8,15 +8,21 @@ painter until supported kit assets exist. Ordinary Land/retention/Inspect browse
 passes; one native worker run produced two byte-identical landings, the second in21.62s
 with all four session creation counts1. Evidence: audits/KIT_NORMAL_LAND_20260912. The
 authorized8px-mask/two-Cranberry-runner experiment ran once in18.25s; five boxes pass but
-Cranberry registration is unresolved. It remains unaccepted; normal game keeps the
-accepted4px baseline. Review: audits/ART_KIT_EDGE_RUNNERS_20260912. No phone tier is qualified.
+Cranberry registration is unresolved. Nick REJECTED it; no further finisher-erosion
+experiments. cd6b609f remains the accepted painting/tier-2 baseline. Nick accepts v4.1
+as diffed and wiring0d825fe5/0e37e6c6 as the production path; nothing was deployed.
+No phone tier is qualified. Latest direction: audits/KIT_WEATHER_DECISIONS_20260912/DECISIONS.md.
 
 **September 12 acceptance update:** Nick accepts cd6b609f / 0eed6a21 as the first engine
 painting and tier-2 baseline. The retained PNG is unchanged; its qualityAccepted is true.
 Art Kit v4.1 applies the two approved section0/5 insertions; frozen style and4E unchanged.
-Normal Land integration and blocking Part K fixes come first, then warm second landing,
-one edge/runners experiment, actual iPhone probe, Civet proof. This supersedes the earlier
-pending-painting/kit-approval status below; ROADMAP owns the current sequence.
+Next: physical iPhone probe/report, one Mac ordinary-game installed-model run with
+unchanged painting parameters, then one deterministic post-finisher weather/Cranberry
+mat painting, then Civet proof. Weather reads the compiled system card and recipe seed,
+never the clock; wet fur/leaves, light-facing droplets and uniform whole-frame precipitation
+leave anatomy/count/placement intact. Cranberry becomes a larger low mat about16% wide
+with more berries, in compiler data. These changes are authorized, not yet implemented.
+Kit-authored weather variants deferred. ROADMAP owns the current sequence.
 
 **Nick's September 12 approved order:** v4 at `6f5c396e` is approved. ART_KIT §9
 now limits first authoring to the Earth temperate plate, six Earth cut-outs and five

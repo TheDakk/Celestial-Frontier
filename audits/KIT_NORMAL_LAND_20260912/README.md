@@ -1,6 +1,8 @@
 # Ordinary Land on the accepted kit — September 12, 2026
 
-Status: implementation and browser-free controls pass; native UI proof is next.
+Status: Nick accepts wiring0d825fe5/0e37e6c6 as the production path. Native UI proof
+and separate warm-worker proof pass. Full ordinary-game installed-model run remains
+pending, after the target-iPhone probe/report. No deployment authorized.
 The accepted painting remains cd6b609f / 0eed6a21, 24.173s warm, tier-2 baseline.
 Kit v4.1 and acceptance are signed in dbeb2448; frozen style/4E and original PNG unchanged.
 

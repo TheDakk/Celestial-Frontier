@@ -17,47 +17,50 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · NORMAL LAND AND WARM PROOF PASS; ONE EDGE EXPERIMENT COMPLETE; TARGET IPHONE NEXT
+## SESSION HANDOFF — 2026-09-12 · ACCEPTED PRODUCTION PATH; TARGET IPHONE FIRST
 
-Nick accepted cd6b609f / 0eed6a21 as first engine painting/tier-2 baseline. PNG retained
-unchanged and qualityAccepted true. Signeddbeb2448 applies precisely two v4.1 section0/5
-additions; frozen paragraph and4E unchanged. No further kit edits or v3 painting.
+Nick approves Kit v4.1 as diffed (dbeb2448); frozen paragraph/4E unchanged, no further
+kit edits. cd6b609f /0eed6a21 stays the accepted painting/tier-2 baseline, unchanged PNG
+and qualityAccepted true. Nick REJECTS edge/runners246cc619. No further finisher-erosion
+experiments. Preserve evidence; the normal game still uses the accepted4px baseline.
+Wiring0d825fe5/0e37e6c6 accepted as the production path, not a release or deployment.
 
-Signed0d825fe5 wires ordinary Earth Land to immediate kit composite, one async masked
-finisher/crossfade, retained original, View and Inspect, removes the game six-reference
-and OPFS-variant owners, repairs requested Part K1–11,17,33–35 with negative controls.
-Signed0e37e6c6 corrects a proof harness's system-only Survey call. browser-02 PASS:
-composite145.95ms, retained PNG reload and Inspect verified, zero inference/JS exceptions.
-Native GPU proof is separate from the ordinary-game UI proof; no full installed-model
-ordinary-game download-to-finisher or pack/delivery qualification is claimed.
+Completed evidence: ordinary Earth Land composite145.95ms, retained-original reload and
+Inspect; separate native worker proof ran two unchanged recipes, second21.617645s,
+all four sessions created once, both output PNGs byte-identical to the accepted original.
+Part K repairs/negative controls: audits/KIT_NORMAL_LAND_20260912/README.md. No full
+ordinary-game installed-model download-to-finisher run or phone qualification yet.
 
-warm-native-01 PASS on0e37e6c6: two unchanged accepted recipes in one native browser run;
-second21.617645s warm, all four session creation counts1, one transformer expansion.
-Both output PNGs identical. Original acceptance remains with cd6b609f /0eed6a21.
-Evidence, Part K controls and exact limitations: audits/KIT_NORMAL_LAND_20260912/README.md.
+NEW ORDER (supersedes all older restart sequences):
+1. Physical target-iPhone probe: maxBufferSize, shader-f16, storage quota, memory at
+   transformer load, and one warm finisher timing if model loads. Report before delivery.
+2. One Mac ordinary-game download-to-finisher run on an installed model; unchanged
+   accepted painting parameters.
+3. Deterministic compositor weather AFTER finisher, recipe-seeded never clock-seeded;
+   read weather, water state, time of day/light from system card. Wet fur/leaves darken
+   and desaturate; light-facing droplet specular; uniform-density whole-frame rain/snow/
+   dust shared by plate/organisms. Anatomy/count/placement intact. Kit weather variants
+   deferred. Cranberry compiler data: larger low mat about16% frame width, more berries.
+   One painting on accepted inputs, beside baseline. Visual acceptance: wet Civet and
+   Platypus consistent with rainy plate, Cranberry legible100%, species/placement intact.
+4. Civet animation end-to-end proof; existing CODEX_HANDOFF animation/battle track.
 
-Step3 executed ONCE on signed246cc619: audits/ART_KIT_EDGE_RUNNERS_20260912/native-01.
-Same402token prompt, seed133, plate/inputs, one0.35finisher/no organism passes;8px interior
-erosion and two low Cranberry runners.18.253s warm,23.734s total. Five registered boxes
-have effectively100% overlap; Civet30%. Cranberry registration unresolved: full box
-criterion does not pass. qualityAccepted false, accepted baseline remains active.
-Codex inspected native painting and all six200% crops: five organisms readable, no obvious
-pink fringe, subtle contact shadows; Cranberry is small/less legible. No acceptance claim.
-Review comparisons, metrics, exact prompt and REVIEW_PROMPT.md in that audit. No rerun.
-8 experiment controls plus registration controls, TypeScript and root validation pass.
+Latest decision receipt: audits/KIT_WEATHER_DECISIONS_20260912/DECISIONS.md. Weather/mat
+are authorized but not implemented. Target line supplied only placeholders [model],
+[version], [USB / same Wi-Fi]; actual target details and remote inspection requested.
+Do not infer a target or substitute Mac/simulator. Installed safaridriver documents
+paired physical-iPhone selection; reachability/permissions unverified. Existing Mac
+probe is not a phone test. Need target answer before device-dependent work; do not skip
+forward to Mac run, weather painting or Civet. No new dependency installation required
+by the read-only probe inventory. This decision batch changes docs/status only.
 
-Next step4 is actual target-iPhone probe: maxBufferSize,shader-f16,storage quota,memory
-at transformer load. iPhone/iOS/connection question is pending. Local xcrun devicectl is
-unavailable; do not install a new toolchain or substitute Mac/simulator results. Need
-Nick's target and accessible Safari Web Inspector before device-dependent work. Then
-step5 Civet animation proof, per existing CODEX_HANDOFF track. No Effects without the
-separate class approval and no full library rollout. No broader creative rework authorized.
-
-This is the uninterrupted startup session (existing toolchain receipt). No integrated
-chain, pack, old --landfall --variant, unit checkout lock or new pre-probe storage work.
-OpenAI/Codex owns openai/mac here. Last signed246cc619 is30 ahead/0 behind upstream,
-141 ahead/0 behind cached origin/develop; final review/evidence commit follows. No fetch; unrelated .DS_Store untouched.
-GitHub step NONE; PR42 parked until split. No push/label/dispatch/merge/release/deploy.
-Claude Code need not open/sync now. After eventual authorized develop integration only,
-clean anthropic/mac may fetch/merge origin/develop. Report local IDs/ahead at every stop.
-Resume this handoff, never PAUSED_CHECKPOINT.
+OpenAI/Codex on macOS: /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
+tracking origin/openai/mac. Current signed403ad461:31 ahead/0 behind upstream,
+142 ahead/0 behind cached origin/develop; decision commit follows. Startup receipt reused
+within uninterrupted session. Unrelated .DS_Store untouched. No fetch, pack, integrated
+chain, unit-test checkout lock or pre-probe storage/delivery work.
+GitHub step NONE; PR42 parked. Budget file UNFROZEN/public, private fallback3000; zero
+exact hosted authorization, no push/label/dispatch/merge/release/deploy. Claude need not
+open/sync. After eventual authorized develop integration only, clean anthropic/mac may
+fetch/merge origin/develop. Codex's next step is actual target probe. Report IDs/ahead at
+stops. Resume this handoff, never PAUSED_CHECKPOINT.
