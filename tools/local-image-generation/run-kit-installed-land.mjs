@@ -8,7 +8,7 @@ import {execFileSync} from 'node:child_process';
 import {createFrozenGameViteServer} from './frozen-preview-client.mjs';
 import {openChromiumCdp} from '../../port/v2/tools/browsercdp.mjs';
 import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
-import {installedProofState} from './installed-proof-state.mjs';
+import {installedProofState,retainedReloadReady} from './installed-proof-state.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'),out=path.resolve(process.argv[2]??'');
 if(process.argv.length!==3||!out.startsWith(root+'/audits/'))throw Error('Usage: run-kit-installed-land.mjs NEW_AUDIT_DIRECTORY');
 await fs.mkdir(out);const result={schema:'cf.kit-installed-land.v1',status:'FAIL',head:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),events:[],requests:[],states:[],screenshots:[],inferenceRuns:0};
@@ -77,9 +77,9 @@ try{
  const prior=JSON.parse(await fs.readFile(path.join(root,'audits/ART_KIT_CONTACT_REVISION_20260912/prepared/recipe.json'),'utf8'));
  for(const key of ['finisherPrompt','seed','width','height','passSize','steps','strength','finisherStrength','composition'])need(canonical(result.retained.recipe[key])===canonical(prior[key]),'Accepted parameter changed: '+key);
  await state('installed-finisher-ready');await screenshot('02-installed-finisher-ready.png');
+ const priorTimeOrigin=await evaluate('performance.timeOrigin');
  await cdp.send('Page.reload',{ignoreCache:true},sid);
- await until('retained original on ordinary reload',`(()=>{const s=window.__CF_SLICE__?.api?.state();return s?.localAi.originalId===${JSON.stringify(result.retained.originalId)};})()`,60000);
- await until('crossfade settled',`!window.__CF_SLICE__.api.state().localAi.crossfading`);
+ await until('retained original settled in the new document',`(${retainedReloadReady.toString()})(window.__CF_SLICE__?.api?.state?.(),${JSON.stringify(result.retained.originalId)},${priorTimeOrigin},performance.timeOrigin)`,60000);
  const restored=await state('retained-original-restored');need(restored.localAi.alpha===1&&restored.localAi.jobs.length===0,'Restore lost original or started an inference');
  await screenshot('03-retained-original.png');
  await click('#docksurvey'); // surveyOn is system-only; exercise the real surface control.
