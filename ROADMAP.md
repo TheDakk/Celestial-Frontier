@@ -17,57 +17,46 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · ONE CONTACT REVISION PREPARED
+## SESSION HANDOFF — 2026-09-12 · CONTACT REVISION AWAITS PAINTING ACCEPTANCE
 
-Nick accepts the twelve v4 first authoring inputs including the Earth plate. The first
-native painting is a targeted revision; earlier Codex species/style doubts are superseded.
-Claude's review is verbatim in audits/CLAUDE_FULL_REVIEW_20260910/ART_REVIEW_RESPONSE_20260912.md,
-signed4a00a72b, SHA c0615602bbfd49e0f1df3afee476ff752f8ed59cd0b4d456784798db6617a1fd.
-Four MIDGAME direction images remain canonical. V3 and its images stay rejected.
-ART_KIT v4 and4E remain unchanged. Two v4.1 proposals require Nick's separate approval;
-size proposal conflicts with the accepted plate being below the current scene table.
-See audits/ART_KIT_CONTACT_REVISION_20260912/KIT_V4_1_PROPOSALS.md.
+Nick accepts all twelve first v4 authoring inputs including the Earth plate. The four
+MIDGAME images remain direction; v4 is canonical and4E unchanged. V3 and its images
+remain rejected. Claude's review is verbatim in signed4a00a72b. ART_KIT.md has no changes.
+The two v4.1 wording proposals remain unapproved in
+`audits/ART_KIT_CONTACT_REVISION_20260912/KIT_V4_1_PROPOSALS.md`; the size proposal still
+conflicts with the accepted1672×941 plate being below the2560×1440 scene table.
 
-Nick authorizes exactly ONE next experiment on the same12 masters, same seed133, same
-plate and first proof's nine fitted inputs. Code is prepared; native run not yet started.
-Compiler data in earth-resident-plan sets Civet height30%, Platypus18%, Frog width12%
-and x0.23, Persimmon height42%. Other anchors remain. One grass cut-out from the plate's
-own lower band overlays both animals' feet. Keyer erodes alpha one pixel and despills
-from clean inward neighbours; premultiplied scaling avoids hidden key-colour bleed.
-Zero organism inference passes. Exactly one finisher at0.35 with visible-interior latent
-masks. Runtime projection: frozen style; visual Light/Mineral/Atmosphere/pigments from
-game data; subject; layout. No reference metadata/hashes/technical/negative blocks or
-percentage anchors. Restored512 ceiling; actual402 chat tokens padded416 positions.
+Nick unlocked1Password signing. Source cd6b609f56ea992e14a196637a611446315e41b2 is signed
+and verified. Exactly ONE authorized native contact revision ran on that unchanged
+committed source. The run is consumed: do not retry, sweep or start another painting.
+Same12 masters, seed133, plate, canonical snapshot and nine fitted inputs. Compiler
+composition: Civet height30%, Platypus18%, Frog width12% (x0.23), Persimmon height42%;
+one plate-derived grass cut-out overlays both animals' lowest feet. One-pixel alpha
+erosion/neighbour despill, zero organism passes, one0.35 finisher with interior latent
+protection. Runtime projection402 tokens, padded416, ceiling512; no kit edit.
 
-Prepared input folder: audits/ART_KIT_CONTACT_REVISION_20260912/prepared. All12 accepted
-master hashes, first nine fitted inputs and canonical snapshot are unchanged. A final
-compiler receipt exactly reproduces recipe.json; initial receipts/logs remain historical.
-Static compositor preview is retained; it is NOT a native painting.21 worker/math/
-lifecycle/legacy tests,24 compiler/runtime tests, box-registration control pass. Initial
-bad fixture aspect and TypeScript annotation errors are preserved separately.
+Result: native execution PASS. Warm engine24.173s, session preparation7.890s, total32.063s.
+Four sessions loaded once before warm timing; no extra warm-up inference.109/2304
+latent tokens protected. Native composite pixels match the prepared static preview.
+All six registered box IoUs round to100%, Civet height30%. Registration is not semantic
+segmentation; Cranberry is least certain (correlation0.573). Codex inspected native
+painting, both reference comparisons, boxes and six200% crops: six species preserved,
+subtle dark contact/foreground overlap at both animals' feet, no visible pink fringe.
+These are Codex findings; Nick's painting acceptance and overall direction verdict
+remain pending. `qualityAccepted` remains false. No broader completion is claimed.
 
-SIGNING BLOCKER: the prepared source commit failed twice with
-`1Password: agent returned an error`. Native inference has NOT started; the authorized
-run remains unused. Nick has been asked to unlock/allow Git signing in1Password.
-All work is staged, including the native comparison/registration review tool. Do not
-bypass signing or rerun preparation/tests merely because signing resumes. The runner
-requires a clean committed source; resume with the signed commit, then the one run.
+Evidence: audits/ART_KIT_CONTACT_REVISION_20260912/README.md; native-01/painting.png;
+review/beside-first-painting.png, beside-triptych.png, registered-boxes.png; six200% crops
+and review.json. Exact runtime prompt is prepared/runtime-prompt.txt. Existing checks:
+21 worker/math/lifecycle/legacy,24 compiler/runtime, box-registration negative controls,
+TypeScript and root validation pass. Tests run no browser/inference/checkout lock.
 
-Next: sign clean prepared source, then one run with run-kit-engine-proof.mjs using the
-prepared folder and a new native-01 result directory. Warm all four sessions by loading
-only (no extra painting/inference), then time the actual engine; report prep and total too.
-Show native result beside triptych and first painting, with200% crops and per-organism
-boxes. Acceptance: identifiable at100%, all six species pass, contact shadows under
-Civet/Platypus, no pink fringe at200%, box IoU≥0.90, Civet height≥28%, warm engine<240s.
-Post boxes come from image registration plus visual review, not copied placement data;
-registration is not segmentation. No native retry or prompt sweep after this one run.
-
-Normal-game V1/V2 wiring, old OPFS removal and remaining Part K work are pending.
-No unit-test checkout lock, old --landfall --variant, integrated chain or pack build.
-Actual target-iPhone maxBufferSize/shader-f16/quota/load-memory probe still gates
-storage/delivery work. Animation/Civet proof follows painting acceptance, then remaining
-library12 at a time. Effects need separate v4.1 approval. The review export remains in
-three <30MB zips; paths/hashes in ART_KIT_REVIEW_EXPORT_20260912/split-archive-receipt.json.
+NEXT: show result and stop for Nick's painting verdict. Separately obtain wording
+approval before any kit edit; do not silently resolve the size-table inconsistency.
+After painting acceptance, animation/Civet proof below precedes library rollout.
+Normal-game V1/V2 wiring, old OPFS removal and remaining Part K work remain pending.
+Actual target-iPhone maxBufferSize/shader-f16/quota/transformer-load-memory probe gates
+storage/delivery work. No old --landfall --variant, integrated chain or pack restart.
 
 ## Animation and battle track
 
@@ -87,13 +76,13 @@ bird, fish, insect, reptile, then the rest.
 
 ## Git and session boundary
 
-OpenAI/Codex macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracking origin/openai/mac. Entry4a00a72b is24 ahead/0 behind upstream,135 ahead/0 behind
-cached origin/develop. Prepared code commit follows; final IDs/counts reported at stop.
-No fetch. .DS_Store untouched. Same uninterrupted September12 Node26.8.2 receipt applies.
-GitHub step none; PR42 parked (develop <- openai/mac), title/body unchanged. Budget
-UNFROZEN/PUBLIC, private fallback3000; exact hosted authority zero. No push, label,
-dispatch, merge, release or deploy; develop/main/live unchanged. Claude Code need not
-open now. Only after an eventual authorized develop integration may clean anthropic/mac
-fetch/merge origin/develop at its next batch. No worktree copies. Resume here, never
-PAUSED_CHECKPOINT's restart.
+OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
+tracking origin/openai/mac. Signed source cd6b609f is25 ahead/0 behind upstream and136
+ahead/0 behind cached origin/develop; the evidence commit follows it (26/137 ahead).
+Final evidence ID/counts are reported at stop. No fetch; .DS_Store untouched. Same
+uninterrupted September12 Node26.8.2 startup receipt applies.
+GitHub step none; PR42 parked (develop <- openai/mac), existing title/body unchanged.
+No push, label, dispatch, merge, release or deploy. Codex stops here for painting and
+kit-wording decisions. Claude Code need not open or sync now; only after an eventual
+exactly authorized develop integration may clean anthropic/mac fetch/merge origin/develop
+at its next batch. No cross-worktree copies. Resume here, never PAUSED_CHECKPOINT.

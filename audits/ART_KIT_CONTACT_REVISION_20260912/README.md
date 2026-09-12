@@ -1,14 +1,15 @@
 # One contact/composition revision — September 12, 2026
 
-Status: code and static inputs prepared; the one authorized native run has not started.
-The signed source commit is blocked: 1Password returned an agent error on two attempts.
-Nick has been asked to unlock/allow Git signing. No unsigned fallback or native run occurred.
+Status: the one authorized native revision completed on signed source cd6b609f.
+Nick unlocked signing; the prepared source was signed and verified before inference.
+Native execution and Codex acceptance checks pass; Nick's painting acceptance is pending.
+No retry, second painting, kit edit or hosted action occurred.
 Nick accepts the twelve first authoring inputs (including the plate). The first native
 painting is a targeted revision. This supersedes earlier Codex identity/style doubts.
 
 Claude's review is verbatim at
 [ART_REVIEW_RESPONSE_20260912.md](../CLAUDE_FULL_REVIEW_20260910/ART_REVIEW_RESPONSE_20260912.md),
-signed in4a00a72b, SHA-256 c0615602bbfd49e0f1df3afee476ff752f8ed59cd0b4d456784798db6617a1fd.
+signed in 4a00a72b, SHA-256 c0615602bbfd49e0f1df3afee476ff752f8ed59cd0b4d456784798db6617a1fd.
 Nick's message authorizes this experiment; the review's v4.1 wording remains proposals.
 [Kit proposals and size inconsistency](KIT_V4_1_PROPOSALS.md). No kit or4E change.
 
@@ -74,3 +75,43 @@ and two TypeScript annotation errors; corrected results are recorded separately.
 Normal-game V1/V2 action wiring and old OPFS removal remain pending. No iPhone tier,
 storage/delivery or broader Part K closure is claimed. Kit edits, animation and library
 rollout remain gated by Nick's approvals.
+
+## Measured result — source cd6b609f
+
+[Painting](native-01/painting.png) · [beside the first painting](review/beside-first-painting.png) ·
+[beside Living Worlds](review/beside-triptych.png) · [organism boxes](review/registered-boxes.png) ·
+[measurements and visual findings](review/review.json) · [exact runtime prompt](prepared/runtime-prompt.txt).
+
+The authorized run is consumed. Warm engine: **24.173 s**, session preparation: **7.890 s**,
+total engine: **32.063 s**. The timer includes first inference on loaded sessions; there
+was no extra warm-up inference. First painting was 425.707 s with loads inside its timer:
+these are changed recipes, not an isolated performance benchmark. One text encoding,
+one 0.35 finisher, zero organism passes; one instance of each of four sessions. There are
+109 protected latent tokens of 2304. Foreground grass covers 394 Civet and 615 Platypus
+pixels. Native composite pixels exactly match the retained static preview.
+
+| Organism | Registered box IoU | Texture correlation | Codex species preservation |
+| --- | ---: | ---: | --- |
+| Civet | 100% | 0.961 | Pass |
+| Persimmon | 100% | 0.834 | Pass |
+| Platypus | 100% | 0.882 | Pass |
+| Frog | 100% | 0.826 | Pass |
+| Devil's Club | 100% | 0.774 | Pass |
+| Cranberry | 100% | 0.573 | Pass; remains a small trailing sprig |
+
+All six are identifiable at native 1024×576. Civet height remains 30% of frame. Boxes
+are masked texture registration estimates; protected interiors make unchanged placement
+expected. Cranberry has the weakest correlation, just above the 0.55 reliability floor.
+Visual inspection finds no displaced silhouette; this is not independent segmentation.
+
+Codex inspected all six 200% nearest-neighbour crops: no visible pink key outline. The
+edge statistic still flags 1/2/1/1/25/11 candidates respectively; coloured plant pixels
+are not automatically a keying defect. Small dark contact/occlusion patches are visible
+under Civet paws and Platypus feet/underside, with foreground overlap. These are subtle
+contact shadows, not broad cast shadows. The enlarged Civet/Frog and smaller Platypus
+improve the hierarchy against the triptych while retaining the accepted master anatomy.
+These are Codex's review findings, not Nick's final acceptance.
+
+Native PASS means successful execution. `qualityAccepted` remains false until Nick
+accepts this painting. Normal-game wiring, full Part K closure and actual iPhone
+qualification are still pending. Do not infer a phone result from this Mac's WebGPU limits.

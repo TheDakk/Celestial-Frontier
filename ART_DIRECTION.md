@@ -28,6 +28,10 @@ batch. The first native painting needs a targeted composition/contact revision.
 and the [one authorized experiment](audits/ART_KIT_CONTACT_REVISION_20260912/README.md)
 supersede earlier Codex doubts about the accepted masters. Kit v4 and4E are unchanged;
 the two v4.1 wording proposals require separate approval.
+The one revision on signed cd6b609f finished in24.173s warm/32.063s total. Codex finds
+all six species preserved, Civet height30%, subtle contact shadows and no visible pink
+fringe at200%. Registered boxes overlap100% (estimates, not segmentation). Comparisons
+and crops are in the experiment audit. Nick's painting acceptance is still pending.
 
 **Hard quality requirement — Nick, September 9, 2026:** the embedded image model must produce
 the same cohesive painted quality and approved art direction as the accepted full landfalls.

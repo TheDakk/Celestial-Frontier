@@ -27,7 +27,11 @@ Civet height0.30, Platypus0.18, Frog width0.12, Persimmon height0.42. Same accep
 seed133 and plate; one lower-band grass cut-out overlays both animals' lowest feet.
 One-pixel erosion/despill and premultiplied composition precede exactly one0.35 finisher;
 visible organism-interior latents anchor anatomy. All six organism passes are skipped.
-Four warm sessions and in-worker expansion remain; one native revision is pending.
+Four warm sessions and in-worker expansion remain. The one authorized revision on
+signed cd6b609f completed in24.173s warm/32.063s total with0 organism passes. All six
+registered box IoUs round to100%; Civet height30%. Codex finds preserved species,
+subtle contact shadows and no visible pink fringe at200%. Nick's acceptance is pending.
+The authorized run is consumed; no retry.
 [Evidence/acceptance](audits/ART_KIT_CONTACT_REVISION_20260912/README.md) separates pixel
 registration from segmentation and human species/shadow/fringe acceptance. Normal-game
 V1/V2 wiring, old OPFS removal, iPhone probe and remaining Part K work are pending.

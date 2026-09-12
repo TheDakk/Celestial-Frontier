@@ -19,7 +19,7 @@ biome integration, physical phones or final art. Desert finish remains too styli
 Those experiments changed no game source or model bytes. Their pause is historical; the September 12 program below now owns the next work.
 
 
-## Program version 4 — matches code September 12, 2026; contact revision prepared
+## Program version 4 — matches code September 12, 2026; contact revision measured; painting approval pending
 
 Nick's four approved MIDGAME images and [ART_KIT.md](ART_KIT.md) v4 remain canonical.
 V3 and its two generated images stay retired/rejected. Nick accepts all twelve first
@@ -59,10 +59,14 @@ qualification or full Part K closure is implied.
 [Contact experiment evidence and acceptance](audits/ART_KIT_CONTACT_REVISION_20260912/README.md):
 21 worker/math/lifecycle/legacy tests,24 compiler/runtime tests and the box-registration
 negative-control test pass. TypeScript and root validation receipts accompany the code.
-The one native run is pending. Its criteria are all six identifiable at100%, correct
-species, contact shadows under Civet/Platypus, no pink fringe at200%, registered and
-visually reviewed boxes with IoU≥0.90, Civet height≥28%, and warm engine time<240s.
-Registration estimates placement from pixels and is not semantic segmentation.
+The one authorized native revision completed on signed cd6b609f:24.173s warm engine,
+7.890s session preparation,32.063s total; zero organism passes, one0.35 finisher. Native
+composite pixels match the static preview. All six registered box IoUs round to100%;
+Civet height30%. Codex visual review finds all six species identifiable, subtle contact
+shadows/foreground overlap under both animals, and no visible pink fringe at200%.
+Registration estimates placement from pixels and is not semantic segmentation;
+Cranberry correlation0.573 is the weakest. Nick's painting acceptance remains pending.
+The authorized run is consumed; no retry. Full evidence and comparisons are linked above.
 
 The first proof on30ef7d15 remains425.707s with six organism passes and one0.08 finisher.
 It is a targeted revision, not a changed or erased failure. One current run only; no
