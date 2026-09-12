@@ -43,6 +43,9 @@ test('builds the exact installed Asyncify closure, verifies all bytes, and repea
   assert.ok(manifest.files.some(row=>row.path.endsWith('ThirdPartyNotices.txt')));
   assert.ok(manifest.files.some(row=>row.path.endsWith('diffusers-040c7cd-LICENSE')));
   const config=JSON.parse(await fs.readFile(path.join(output,'__local_ai/runtime.json'),'utf8'));
+  assert.deepEqual(config.variantPlan,{url:'/__local_ai/browser-variant-plan.json',bytes:142918,
+    sha256:'26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81',payloadBytes:352323881});
+  assert.equal(hash(await fs.readFile(path.join(output,config.variantPlan.url.slice(1)))),config.variantPlan.sha256);
   assert.equal(config.schema,'cf.local-ai-runtime-pack.v1');assert.equal(config.modelSource,'verified-opfs-only');
   assert.deepEqual(config.modelFiles,{});assert.equal(config.q8Block32,false);assert.equal(config.autoDownload,false);
   assert.equal(config.workerUrl,'/__local_ai/stage-worker.mjs');assert.equal(config.reference.url,'/__local_ai/reference.png');
@@ -55,6 +58,15 @@ test('builds the exact installed Asyncify closure, verifies all bytes, and repea
   const second=await buildRuntimePack(options(next()));assert.equal(second.manifestSha256,installed.manifestSha256);
   assert.equal(second.totalBytes,installed.totalBytes);
   await assert.rejects(verifyRuntimePack({directory:output}),/external manifest SHA/);
+});
+
+test('changed or missing variant plan refuses output and restoration retains the same runtime identity',async()=>{
+  const source='tools/local-image-generation/browser-variant-plan.json',destination=next();
+  await changedSource(source,async(file,bytes)=>{const changed=Buffer.from(bytes);changed[200]^=1;await fs.writeFile(file,changed);},
+    async()=>{await assert.rejects(buildRuntimePack(options(destination)),/Pinned source SHA mismatch/);await absent(destination);});
+  assert.equal((await buildRuntimePack(options(destination))).manifestSha256,installed.manifestSha256);
+  const absentPin=structuredClone(pins);absentPin.files=absentPin.files.filter(row=>row.source!==source);
+  assert.throws(()=>validateRuntimeSourcePins(absentPin),/variant plan pin/);
 });
 
 test('missing installed lazy WASM refuses output before publication',async()=>{

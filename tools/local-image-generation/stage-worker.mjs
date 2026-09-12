@@ -10,13 +10,57 @@ import {denoiserShapeSessionOptions} from './denoiser-shapes.mjs';
 // One graph per worker. The owner terminates this worker before the next stage.
 const progress = (phase, details={}) => postMessage({type:'progress',phase,...details});
 const json = async path => { const r=await fetch(path); if(!r.ok) throw Error(`HTTP ${r.status}: ${path}`); return r.json(); };
+const FIRST_STEP_DIAGNOSTIC='cf.denoise-first-step.v1';
+// Opt-in proof only. Ordinary callers never receive partial output as complete.
+function admitsFirstStepDiagnostic(job){
+  if(job.diagnostic===undefined)return false;
+  const option=job.diagnostic;
+  if(option===null||typeof option!=='object'||Array.isArray(option)
+    ||Object.keys(option).length!==1||option.schema!==FIRST_STEP_DIAGNOSTIC
+    ||job.stage!=='denoise'||job.q8Block32!==false||job.profile!==false
+    ||(job.fixedDenoiserShapes!==undefined&&job.fixedDenoiserShapes!==false)
+    ||job.width!==1024||job.height!==576||job.seed!==133||job.steps!==4
+    ||!(job.embedding instanceof Uint16Array)||job.embedding.length!==512*7680
+    ||!Array.isArray(job.references)||job.references.length!==6)
+    throw Error('Invalid exact-shape first-step diagnostic');
+  for(const value of job.embedding)if((value&0x7c00)===0x7c00)throw Error('Nonfinite diagnostic embedding');
+  for(const reference of job.references){
+    if(!reference||reference.width!==480||reference.height!==320
+      ||!(reference.data instanceof Float32Array)||reference.data.length!==30*20*128)
+      throw Error('Invalid diagnostic reference tensor');
+    for(const value of reference.data)if(!Number.isFinite(value))throw Error('Nonfinite diagnostic reference');
+  }
+  return true;
+}
 let used=false;
 onmessage=async ({data:job}) => {
   if(used) return; used=true;
   let session,device,profileCapture,nativeProfile,restoreStdout;
   let capturingProfile=false,profileResolve,profileReject,profileTimer;
   const started=performance.now();
+  let diagnostic=false,diagnosticSequence=0,diagnosticBoundary='admission',diagnosticFault=null;
+  let rejectDiagnosticFault,intentionalDeviceDestroy=false,diagnosticErrorReported=false,diagnosticReleaseStarted=false;
+  const diagnosticFaultPromise=new Promise((_,reject)=>{rejectDiagnosticFault=reject;});
+  // A device can fail between awaited boundaries; keep its rejection observed.
+  diagnosticFaultPromise.catch(()=>{});
+  const diagnosticEvent=(phase,details={})=>{
+    if(!diagnostic)return;
+    if(diagnosticSequence>=24)return;
+    postMessage({type:'diagnostic',schema:FIRST_STEP_DIAGNOSTIC,sequence:++diagnosticSequence,
+      phase,elapsedMs:performance.now()-started,...details});
+  };
+  const boundary=(phase,details={})=>{if(diagnostic){diagnosticBoundary=phase;diagnosticEvent(phase,details);}};
+  const deviceFault=(phase,message)=>{
+    if(!diagnostic||intentionalDeviceDestroy||diagnosticFault)return;
+    diagnosticFault=new Error(String(message).slice(0,1024));
+    diagnosticEvent(phase,{atPhase:diagnosticBoundary,message:diagnosticFault.message});
+    rejectDiagnosticFault(diagnosticFault);
+  };
+  const waitForDevice=promise=>diagnostic?Promise.race([promise,diagnosticFaultPromise]):promise;
   try {
+    diagnostic=admitsFirstStepDiagnostic(job);
+    boundary('admitted',{width:job.width,height:job.height,referenceCount:job.references?.length,
+      imageTokens:5904,textTokens:512,seed:job.seed,plannedSteps:job.steps});
     if(job.profile!==undefined&&typeof job.profile!=='boolean')throw Error('Profile option must be boolean');
     if(job.q8Block32!==undefined&&typeof job.q8Block32!=='boolean')throw Error('Derivative choice must be boolean');
     if(job.q8Block32&&job.stage!=='denoise')throw Error('Derivative belongs only to denoise');
@@ -53,7 +97,13 @@ onmessage=async ({data:job}) => {
       maxStorageBufferBindingSize:adapter.limits.maxStorageBufferBindingSize,
       maxStorageBuffersPerShaderStage:adapter.limits.maxStorageBuffersPerShaderStage,
     }});
-    device.addEventListener('uncapturederror', e => progress('gpu-error',{message:e.error.message}));
+    device.addEventListener('uncapturederror', e => {
+      if(diagnostic)deviceFault('gpu-error',e.error.message);
+      else progress('gpu-error',{message:e.error.message});
+    });
+    if(diagnostic)device.lost.then(info=>deviceFault('device-lost',String(info.reason)+': '+String(info.message)),
+      error=>deviceFault('device-lost',String(error)));
+    boundary('device-ready');
     ort.env.webgpu.device=device;
     ort.env.wasm.numThreads=1;
     ort.env.wasm.wasmPaths=new URL('./node_modules/onnxruntime-web/dist/',import.meta.url).href;
@@ -64,12 +114,14 @@ onmessage=async ({data:job}) => {
     if(!specs[job.stage]) throw Error('Unknown stage');
     const [graph,shards]=specs[job.stage];
     progress('loading',{graph});
-    session=await ort.InferenceSession.create(modelUrl(graph),{
+    boundary('session-create-start',{graph});
+    session=await waitForDevice(ort.InferenceSession.create(modelUrl(graph),{
       executionProviders:['webgpu'],graphOptimizationLevel:'all',
       ...(job.profile?{enableProfiling:true}:{}),
       ...fixedShapeOptions,
       externalData:shards.map(path=>({path,data:modelUrl(path)})),
-    });
+    }));
+    boundary('session-create-complete',{graph});
     progress('loaded',{graph,inputNames:session.inputNames,outputNames:session.outputNames,...fixedShapeOptions,
       ...(job.fixedDenoiserShapes?{inputMetadata:session.inputMetadata}:{}),elapsedMs:performance.now()-started});
     let result;
@@ -112,12 +164,18 @@ onmessage=async ({data:job}) => {
         for(const r of references){combined.set(r.data,at);at+=r.data.length;}
         const hidden=new ort.Tensor('float16',encodeFloat16(combined),[1,total,128]);
         const time=new ort.Tensor('float16',encodeFloat16(new Float32Array([sigmas[step]])),[1]);
-        const outputs=await session.run({...stable,hidden_states:hidden,timestep:time});
+        boundary('run-start',{step:step+1});
+        const outputs=await waitForDevice(session.run({...stable,hidden_states:hidden,timestep:time}));
+        boundary('run-complete',{step:step+1});
         const out=outputs.noise_pred;
         if(!out || out.type!=='float16' || out.dims.join(',')!==`1,${total},128`)throw Error('Transformer graph contract mismatch');
-        latents=eulerOutputStep(latents,decodeFloat16(copyFloat16Bits(await out.getData())),sigmas[step],sigmas[step+1]);
+        boundary('readback-start',{step:step+1});
+        const outputData=await waitForDevice(out.getData());
+        boundary('readback-complete',{step:step+1});
+        latents=eulerOutputStep(latents,decodeFloat16(copyFloat16Bits(outputData)),sigmas[step],sigmas[step+1]);
         for(const t of Object.values(outputs))t.dispose();hidden.dispose();time.dispose();
         progress('step',{step:step+1,steps:job.steps,elapsedMs:performance.now()-started});
+        if(diagnostic){boundary('first-step-complete',{step:step+1,plannedSteps:job.steps});break;}
       }
       for(const t of Object.values(stable))t.dispose();
       result={data:tokensToPackedLatents(latents,h,w),sigmas:Array.from(sigmas)};
@@ -145,13 +203,30 @@ onmessage=async ({data:job}) => {
       progress('profile-complete',{eventCount:nativeProfile.summary.eventCount,unit:nativeProfile.summary.unit,
         gpuDurationUs:nativeProfile.summary.gpuDispatches.durationUs,nodeDurationUs:nativeProfile.summary.nodeSpans.durationUs});
     }
-    await session.release();session=null;device.destroy();device=null;
-    postMessage({type:'complete',...result,...(job.profile?{nativeProfile:{...nativeProfile,sessionReleased:true}}:{}),elapsedMs:performance.now()-started},[result.data.buffer]);
+    boundary('session-release-start');
+    if(diagnostic)diagnosticReleaseStarted=true;
+    await waitForDevice(session.release());session=null;
+    boundary('session-release-complete');
+    if(diagnosticFault)throw diagnosticFault;
+    intentionalDeviceDestroy=true;device.destroy();device=null;
+    boundary('device-destroyed');
+    if(diagnostic)postMessage({type:'diagnostic-complete',schema:FIRST_STEP_DIAGNOSTIC,
+      completedSteps:1,plannedSteps:4,sigmas:result.sigmas,data:result.data,dims:[1,128,36,64],
+      elapsedMs:performance.now()-started},[result.data.buffer]);
+    else postMessage({type:'complete',...result,...(job.profile?{nativeProfile:{...nativeProfile,sessionReleased:true}}:{}),elapsedMs:performance.now()-started},[result.data.buffer]);
   } catch(error) {
     clearTimeout(profileTimer);capturingProfile=false;restoreStdout?.();
     if(profileCapture&&profileCapture.state!=='complete')profileCapture.fail(error.message);
-    try{await session?.release();}catch{}device?.destroy();
-    postMessage({type:'error',message:String(error.stack??error),
+    if(diagnostic){
+      const message=String(error.stack??error).slice(0,2048);
+      diagnosticEvent('error',{atPhase:diagnosticBoundary,message:message.slice(0,1024)});
+      postMessage({type:'error',schema:FIRST_STEP_DIAGNOSTIC,message,elapsedMs:performance.now()-started});
+      diagnosticErrorReported=true;
+    }
+    // The diagnostic must not start a second release after a failed/pending one.
+    try{if(!diagnostic||!diagnosticReleaseStarted)await session?.release();}catch{}
+    intentionalDeviceDestroy=true;device?.destroy();
+    if(!diagnosticErrorReported)postMessage({type:'error',message:String(error.stack??error),
       ...(job.profile?{nativeProfile:nativeProfile??profileCapture?.snapshot()??{state:'failed',error:String(error)}}:{}),elapsedMs:performance.now()-started});
   }
 };

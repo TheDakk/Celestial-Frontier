@@ -1,0 +1,28 @@
+{
+  "schema": "cf.first-step-controls.v1",
+  "checks": [
+    {
+      "label": "node-check",
+      "command": [
+        "node",
+        "--check",
+        "tools/local-image-generation/stage-worker.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "node-test",
+      "command": [
+        "node",
+        "--test",
+        "tools/local-image-generation/stage-worker-first-step.test.mjs",
+        "tools/local-image-generation/first-step-harness.test.mjs"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "sourceCount": 8,
+  "sourcesUnchanged": true,
+  "changed": [],
+  "status": "PASS"
+}

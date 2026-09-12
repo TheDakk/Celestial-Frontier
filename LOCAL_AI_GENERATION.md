@@ -1,5 +1,18 @@
 # Local AI landfalls
 
+Standalone visual scope, September9: user-requested [fungal reference-guided](audits/LOCAL_AI_FUNGAL_TEST_20260909/README.md)
+and [alien desert text-only](audits/LOCAL_AI_DESERT_TEST_20260909/README.md) native local-model
+experiments now have retained1024x576 outputs (71.126s/58.751s respectively). Different inputs,
+not a controlled speed comparison. Neither binds canonical encounters or qualifies normal-game
+biome integration, physical phones or final art. Desert finish remains too stylized/smooth.
+Broader implementation stays paused; no game source or model bytes changed for these experiments.
+
+
+## Paused local continuation — matches working copy September 9, 2026
+
+Nick paused development. The [complete checkpoint](audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md) owns the current implementation and exact evidence boundary. The portable six-reference first-step diagnostic completed (85.013s execution,0.275ms readback); this is not a full image or a repair of the older normal-game600s failure. New browser block32 derivation, transactional OPFS storage, explicit Prepare/Verify controls, bounded original lookup and pinned-plan runtime/mobile integration exist in the **uncommitted working copy and are not yet integration-tested**. Parent model6.23GiB plus optional336MiB derived storage remain separate from painting cache/GPU RAM. Final integrated checks, new package/native run, exact art review and physical-phone qualification are pending. The V2 draft release note records the optional action; no production version or accepted base control placement changed. Earlier verified-scope descriptions below must not be read as verification of this later integration.
+
+
 Matches code as of **2026-09-09**. Browser proof of concept for the future engine game.
 The approved Living Worlds paintings set the required finish. No generated local candidate
 has passed that quality gate, and no phone has been qualified.

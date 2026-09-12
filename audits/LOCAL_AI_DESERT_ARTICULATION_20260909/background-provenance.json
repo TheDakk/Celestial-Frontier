@@ -1,0 +1,12 @@
+{
+  "mode": "built-in image_gen edit",
+  "prompt": "Use case: precise-object-edit. Edit this exact image into a clean background plate for 2D animation. Remove ALL THREE animals completely (large armored creature at left, small red lizard at right, flying bat in sky), and remove ALL plants throughout the scene (silver rosettes, dry grass clumps, tall pod-bearing stalks), their contact shadows and the creature footprints. Reconstruct the hidden sand, rocks and sky seamlessly. Keep the exact original framing, 16:9 aspect ratio, camera perspective, sandstone arches, dunes, rock placements, distant salt basin, crescent planet, lavender sky, lighting, colors and original painted style. This must look like the very same landscape with the animals and plants absent, not a redesigned environment. No new objects, no text, no border. Preserve high detail. Background only, fully opaque.",
+  "source": "audits/LOCAL_AI_DESERT_TEST_20260909/raw-output.png",
+  "sourceSha256": "4a2acc4a36809347e1948a46d5d839cfc60989b9245c682e102da7c0b0a52a65",
+  "savedOriginal": "/Users/nick/.codex/generated_images/01a08300-a4ef-7a60-a9df-aabf7a21aaab/exec-2cfe7e51-784a-4aeb-b83a-6c924a05687c.png",
+  "workspaceCopy": "background-clean.png",
+  "bytes": 1618160,
+  "sha256": "cd5736fe03697cc7a40c9800fdd204950bad2c13c9a7aa93e164dc5d6e145855",
+  "localModelProducedBackgroundRepair": false,
+  "qualityAccepted": false
+}

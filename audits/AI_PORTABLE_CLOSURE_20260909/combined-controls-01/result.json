@@ -1,0 +1,31 @@
+{
+  "schema": "cf.portable-combined-controls.v1",
+  "status": "FAIL",
+  "checks": [
+    {
+      "label": "focused",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/local-model-variant.test.ts",
+        "tests/local-ai-runtime.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "label": "worker-pack-lifecycle",
+      "command": [
+        "node",
+        "--test",
+        "tools/local-image-generation/browser-lifecycle.test.mjs",
+        "tools/local-image-generation/runtime-pack.test.mjs"
+      ],
+      "exitCode": 1,
+      "error": null
+    }
+  ],
+  "error": "Error: worker-pack-lifecycle failed\n    at file:///private/tmp/cf-portable-checks-20260909.mjs:20:350",
+  "sourcesUnchanged": true
+}

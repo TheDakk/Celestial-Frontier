@@ -1,5 +1,12 @@
 # Celestial Frontier — development toolchain
 
+## Paused local continuation — matches working copy September 9, 2026
+
+Nick paused development. The [complete checkpoint](audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md) owns the current implementation and exact evidence boundary. The portable six-reference first-step diagnostic completed (85.013s execution,0.275ms readback); this is not a full image or a repair of the older normal-game600s failure. New browser block32 derivation, transactional OPFS storage, explicit Prepare/Verify controls, bounded original lookup and pinned-plan runtime/mobile integration exist in the **uncommitted working copy and are not yet integration-tested**. Parent model6.23GiB plus optional336MiB derived storage remain separate from painting cache/GPU RAM. Final integrated checks, new package/native run, exact art review and physical-phone qualification are pending. The V2 draft release note records the optional action; no production version or accepted base control placement changed. Earlier verified-scope descriptions below must not be read as verification of this later integration.
+
+Signing succeeded using configured1Password `op-ssh-sign`; do not replace the signing helper with `ssh-keygen`. Independent verification still uses `ssh-keygen`. No persistent security setting changed. Startup receipt reuse applies only within the uninterrupted session; fresh sessions follow the runbook.
+
+
 **September9 browser-AI proof:** Nick explicitly continues the browser game as the local-generation
 proof of concept for a later engine game. `tools/local-image-generation/` is an isolated authoring
 package pinned to ONNX Runtime Web1.29.0 (MIT) and Hugging Face Tokenizers0.2.0 (Apache-2.0);

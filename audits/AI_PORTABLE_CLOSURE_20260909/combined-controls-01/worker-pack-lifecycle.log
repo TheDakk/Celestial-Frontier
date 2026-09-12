@@ -1,0 +1,220 @@
+✔ actual four-stage flow publishes exact decoded pixels only after every worker retires (11.825792ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: false) (2.260709ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: true) (0.999208ms)
+✔ gpu-error progress is terminal; a late completion cannot produce another stage or painting (2.25975ms)
+✔ text timeout terminates the exact worker and blocks publication (0.8275ms)
+✔ encode timeout terminates the exact worker and blocks publication (2.676166ms)
+✔ denoise timeout terminates the exact worker and blocks publication (1.836625ms)
+✔ decode timeout terminates the exact worker and blocks publication (1.938625ms)
+✔ a repeated generation rejects while the first owns its worker and controls (1.836625ms)
+✔ reference-disabled generation never fetches or decodes reference data (1.669792ms)
+✔ nonfinite decoder pixels fail before canvas publication despite successful worker completion (1.891417ms)
+✔ an explicit reference matte precedes drawing and its prepared tensor is separately hashed (1.169958ms)
+✔ invalid reference matte refuses before any reference fetch, bitmap or scratch allocation (1.137167ms)
+✔ reference context-null failure closes bitmap once and retires scratch without an encoder (1.497208ms)
+✔ reference context-throw failure closes bitmap once and retires scratch without an encoder (1.279209ms)
+✔ reference draw failure closes bitmap once and retires scratch without an encoder (1.358917ms)
+✔ reference getImageData failure closes bitmap once and retires scratch without an encoder (0.606834ms)
+✔ a cleanup error preserves the original preparation fault and still attempts scratch retirement (1.137334ms)
+✔ cancellation during bitmap decoding closes its late result without allocating scratch or starting an encoder (2.254375ms)
+✔ cancellation after awaited body blocks later preparation and publication (0.937375ms)
+✔ cancellation after awaited source-hash blocks later preparation and publication (0.699916ms)
+✔ cancellation after awaited pixel-hash blocks later preparation and publication (1.451041ms)
+✔ the same resource outcome ruler rejects a missed close, double close and unretired canvas (1.709917ms)
+✔ profiled flow retains one raw trace per retired stage outside the progress log (1.249292ms)
+✔ profile publication refuses an incomplete state boundary (0.863958ms)
+✔ profile publication refuses an incomplete endedBeforeRelease boundary (0.5065ms)
+✔ profile publication refuses an incomplete sessionReleased boundary (1.038125ms)
+✔ a failed native profile preserves raw evidence before stopping its generation (0.562166ms)
+✔ Only the explicitly identified derivative reaches the denoiser; other graphs remain canonical (1.935625ms)
+✔ Unknown model derivative refuses before launching any inference worker (0.964958ms)
+✔ actual Land control keeps journal navigation available and completion requires an explicit return (3.755916ms)
+✔ returning to cancel never shows a completed landing notice or a working return action (0.619209ms)
+✔ actual Land control preserves selected reference and profiling options (0.512125ms)
+✔ cancel during a stalled recipe request settles without starting a worker or retaining ready state (0.529042ms)
+✔ a completed landing followed by recipe failure cannot republish its prior complete state (0.908209ms)
+✔ already requested cancellation at the awaited decode boundary blocks publication (0.866667ms)
+✔ the cancellation outcome ruler rejects a controller with its post-decode guard removed (2.007125ms)
+✔ a cancel requested after synchronous publication does not retract a completed painting (1.53525ms)
+✔ destination changes before the decode continuation cannot publish into the Earth panel (0.735834ms)
+✔ the completion action rejects wrong or stale identity and destination before an exact restored return (0.694833ms)
+✔ failed preparation is friendly and visible from the journal while raw details remain in evidence (0.559417ms)
+✔ a failed inference stays visibly explained when the user remains in the journal (0.591042ms)
+✖ builds the exact installed Asyncify closure, verifies all bytes, and repeats deterministically (0.292458ms)
+✖ missing installed lazy WASM refuses output before publication (0.028833ms)
+✖ same-length modified installed tokenizer refuses pinned hash and restored source builds (0.020375ms)
+✖ changed installed package version or lock integrity refuses without creating output (0.021458ms)
+✖ missing required license source refuses readiness (0.143125ms)
+✖ source symlinks and output symlink ancestors are refused (0.0495ms)
+✖ existing output is unchanged instead of being overwritten (0.048791ms)
+✖ unsafe paths, model targets, duplicate targets and cap inflation are rejected in source pins (0.046709ms)
+✖ new static import is refused even if an explicit fixture pin is updated to its changed bytes (0.074125ms)
+✖ verifier rejects changed payload and restored payload passes against the same external manifest (0.074791ms)
+✖ verifier rejects substituted manifest, unsafe manifest paths and unmanifested files (0.041125ms)
+✖ runtime subset scope admits app files only outside its strict runtime tree (0.037208ms)
+ℹ tests 54
+ℹ suites 0
+ℹ pass 42
+ℹ fail 12
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 123.775666
+
+✖ failing tests:
+
+test at tools/local-image-generation/runtime-pack.test.mjs:32:1
+✖ builds the exact installed Asyncify closure, verifies all bytes, and repeats deterministically (0.292458ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1
+
+test at tools/local-image-generation/runtime-pack.test.mjs:60:1
+✖ missing installed lazy WASM refuses output before publication (0.028833ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1
+
+test at tools/local-image-generation/runtime-pack.test.mjs:65:1
+✖ same-length modified installed tokenizer refuses pinned hash and restored source builds (0.020375ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1
+
+test at tools/local-image-generation/runtime-pack.test.mjs:74:1
+✖ changed installed package version or lock integrity refuses without creating output (0.021458ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1
+
+test at tools/local-image-generation/runtime-pack.test.mjs:82:1
+✖ missing required license source refuses readiness (0.143125ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1
+
+test at tools/local-image-generation/runtime-pack.test.mjs:87:1
+✖ source symlinks and output symlink ancestors are refused (0.0495ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1
+
+test at tools/local-image-generation/runtime-pack.test.mjs:95:1
+✖ existing output is unchanged instead of being overwritten (0.048791ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1
+
+test at tools/local-image-generation/runtime-pack.test.mjs:101:1
+✖ unsafe paths, model targets, duplicate targets and cap inflation are rejected in source pins (0.046709ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1
+
+test at tools/local-image-generation/runtime-pack.test.mjs:113:1
+✖ new static import is refused even if an explicit fixture pin is updated to its changed bytes (0.074125ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1
+
+test at tools/local-image-generation/runtime-pack.test.mjs:124:1
+✖ verifier rejects changed payload and restored payload passes against the same external manifest (0.074791ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1
+
+test at tools/local-image-generation/runtime-pack.test.mjs:132:1
+✖ verifier rejects substituted manifest, unsafe manifest paths and unmanifested files (0.041125ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1
+
+test at tools/local-image-generation/runtime-pack.test.mjs:145:1
+✖ runtime subset scope admits app files only outside its strict runtime tree (0.037208ms)
+  Error: workspace gate "static runtime pack controls" cannot overlap "portable combined focused checks" (pid 5710)
+      at acquireWorkspaceLock (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs:74:15)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:15:20)
+      at TestHook.runInAsyncScope (node:async_hooks:226:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/runtime-pack.test.mjs:14:1

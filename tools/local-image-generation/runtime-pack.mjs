@@ -10,6 +10,7 @@ import {javascriptModuleImports} from '../../port/v2/tools/sealed-worker-graph.m
 import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
 import {assertIgnoredCache} from './fetch-model.mjs';
 import {loadSpeciesReferenceSet} from './species-references.mjs';
+import {BROWSER_VARIANT_SOURCE,assertBrowserVariantPlan} from './browser-variant-source.mjs';
 const HERE=path.dirname(fileURLToPath(import.meta.url)),ROOT=path.resolve(HERE,'../..');
 export const RUNTIME_SOURCE_PINS=path.join(HERE,'runtime-pack-source-pins.json');
 export const SHIPPED_PACK_LIMIT=128*1024*1024;
@@ -46,6 +47,8 @@ export function validateRuntimeSourcePins(value){
     if(row.target!==null){targets.add(row.target);payload+=row.bytes;}
   }
   need(payload<SHIPPED_PACK_LIMIT,'Runtime payload exceeds unchanged 128 MiB admission limit');
+  need(value.files.some(row=>row.source===BROWSER_VARIANT_SOURCE.source&&row.target===BROWSER_VARIANT_SOURCE.target
+    &&row.bytes===BROWSER_VARIANT_SOURCE.bytes&&row.sha256===BROWSER_VARIANT_SOURCE.sha256),'Missing or changed browser variant plan pin');
   for(const name of Object.values(closureNames))need(targets.has(name),'Required runtime closure is missing: '+name);
   for(const name of [PREFIX+'pipeline-math.mjs',PREFIX+'gpu-profile.mjs',PREFIX+'denoiser-shapes.mjs',PREFIX+'reference.png'])
     need(targets.has(name),'Required project runtime source is missing');
@@ -160,11 +163,12 @@ export async function buildRuntimePack({output,sourceRoot=ROOT,pinsPath=RUNTIME_
   const species=pins.speciesReferences===undefined?null:await loadSpeciesReferenceSet({sourceRoot:root,manifestPath:pins.speciesReferences});
   if(species)for(const asset of species.files)need(pins.files.some(row=>row.source===asset.source&&row.target===asset.target
     &&row.bytes===asset.bytes&&row.sha256===asset.sha256),'Species asset is absent from pinned runtime payload');
+  const variantPlan=assertBrowserVariantPlan(await fs.readFile(path.join(root,BROWSER_VARIANT_SOURCE.source)));
   const modelPin=pins.files.find(row=>row.source===pins.modelManifest);
   const closure=await inspectClosure(root,pins);
   const config={schema:'cf.local-ai-runtime-pack.v1',workerUrl:'/'+closureNames.worker,
     modelRevision:model.revision,modelId:model.modelId,sourceManifestSha256:modelPin.sha256,
-    modelSource:'verified-opfs-only',modelFiles:{},q8Block32:false,autoDownload:false,qualityAccepted:false,
+    modelSource:'verified-opfs-only',modelFiles:{},q8Block32:false,autoDownload:false,qualityAccepted:false,variantPlan,
     reference:{url:'/'+PREFIX+'reference.png',sha256:reference.sha256,width:480,height:320,
       speciesVisualKey:binding.binding.subjectIdentityKey},...(species?{references:species.references}:{} )};
   const generated=new Map([[PREFIX+'runtime.json',json(config)],[PREFIX+'deployment.json',json(deployment())],[PREFIX+'RUNTIME_NOTICES.md',noticeText()]]);

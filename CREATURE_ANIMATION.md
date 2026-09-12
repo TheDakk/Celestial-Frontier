@@ -5,6 +5,14 @@ animation system for land, flying and aquatic life, including generated variatio
 This reference describes the required architecture and the explicitly limited implementation below.
 It is not a claim that every family is rigged or that the current game has articulated locomotion.
 
+## Standalone desert ambience study — September 9
+
+Nick requested a preview animating one local AI desert painting. The [12-second media study](audits/LOCAL_AI_DESERT_MOTION_20260909/README.md)
+adds camera drift, dust and screen-space heat haze to the unchanged PNG. Source remains flattened;
+creatures stay in fixed poses. No layer extraction, anatomy mapping, universal rig or game adapter
+was implemented. This scoped preview does not replace the static-landing priority below. The native
+loop and preview-control evidence is separate from game or physical-phone qualification.
+
 ## Current presentation priority — Nick, September 8
 
 Landing now targets a large cohesive static painting, as shown in the explicitly selected

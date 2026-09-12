@@ -12,6 +12,7 @@ import { assertIgnoredCache, DEFAULT_CACHE_ROOT, DEFAULT_MANIFEST, validateManif
 import { BLOCK32_DIRECTORY, openBlock32Derivative, verifyPinnedFile } from './q8-block32.mjs';
 import { loadSpeciesReferenceSet, SPECIES_REFERENCE_SET } from './species-references.mjs';
 import { createFrozenGameViteServer } from './frozen-preview-client.mjs';
+import { BROWSER_VARIANT_SOURCE, assertBrowserVariantPlan } from './browser-variant-source.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '../..');
@@ -133,11 +134,14 @@ export async function createGamePreviewServer(options = {}) {
     if (routes.has(url) && (routes.get(url).sha256 !== row.sha256 || routes.get(url).bytes !== row.bytes)) throw Error('Anatomical runtime route collision');
     routes.set(url, captured);
   }
+  const variantSource = await capturedFile(path.join(ROOT, BROWSER_VARIANT_SOURCE.source), BROWSER_VARIANT_SOURCE);
+  const variantPlan = assertBrowserVariantPlan(await fs.readFile(variantSource.file));
+  routes.set(variantPlan.url, variantSource);
   const runtimeFiles = Object.freeze([...routes].filter(([url]) => !url.startsWith(PREFIX + 'model/'))
     .map(([url, row]) => Object.freeze({ url, bytes: row.bytes, sha256: row.sha256 })));
   const config = Object.freeze({ schema: 'cf.local-ai-game-preview.v1', fixture: fixture !== null,
     workerUrl: PREFIX + 'stage-worker.mjs', modelRevision: manifest.revision, modelId: manifest.modelId,
-    modelFiles: Object.freeze(modelFiles), q8Block32: derivative !== null,
+    modelFiles: Object.freeze(modelFiles), q8Block32: derivative !== null, variantPlan,
     reference: Object.freeze({ url: PREFIX + 'reference.png', sha256: referenceFile.sha256,
       width: 480, height: 320, speciesVisualKey: referenceIdentity }),
     ...(species ? { references: species.references } : {}),

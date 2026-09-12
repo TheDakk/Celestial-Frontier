@@ -1,0 +1,73 @@
+{
+  "schema": "cf.portable-combined-controls.v1",
+  "status": "PASS",
+  "checks": [
+    {
+      "label": "focused",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/local-model-variant.test.ts",
+        "tests/local-ai-runtime.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "label": "runtime-pack",
+      "command": [
+        "node",
+        "--test",
+        "tools/local-image-generation/runtime-pack.test.mjs"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "label": "typecheck",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "label": "typecheck-game",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "label": "typecheck-worker",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.worker.json"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "label": "validate",
+      "command": [
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "sourcesUnchanged": true,
+  "orchestrationCorrection": "Prior wrapper held a redundant checkout lock around runtime-pack controls, which own their own lock. This sequence assigns each check one owner; prior 42 lifecycle passes remain scoped."
+}
