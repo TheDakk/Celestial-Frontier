@@ -1,0 +1,4 @@
+apps/game/src/landfall-conditioning.ts(388,55): error TS2532: Object is possibly 'undefined'.
+tests/art-kit-v4.test.ts(68,51): error TS2379: Argument of type '{ plate: any; atlas: any; triptych: any; residents: { [k: string]: any; }; foreground: undefined; }' is not assignable to parameter of type 'KitEngineAssetsV4' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'foreground' are incompatible.
+    Type 'undefined' is not assignable to type 'KitPreparedImageV4'.

@@ -1,6 +1,7 @@
 import {admitKitEngineJob,imageToImageStart,planarToRgba,rgbaToPlanar,placementBox,prepareKitTextTokens,MAX_KIT_TEXT_TOKENS} from './kit-engine-math.mjs';
 import {expandPinnedTransformer,sha256} from './kit-worker-expansion.mjs';
-import {encodeFloat16,decodeFloat16,packedLatentsToTokens,tokensToPackedLatents,createImageIds,eulerOutputStep} from './pipeline-math.mjs';
+import {keyAndDespill,compositeLayer,subtractOcclusion,latentInteriorMask,protectLatents,alphaToRgba,alphaBounds} from './kit-contact-math.mjs';
+import {encodeFloat16,decodeFloat16,packedLatentsToTokens,tokensToPackedLatents,createImageIds,eulerOutputStep,seededGaussianNoise} from './pipeline-math.mjs';
 const parse=async path=>{const r=await fetch(path);if(!r.ok)throw Error('Missing '+path);return r.json();};
 export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expandPinnedTransformer}){
   const adapter=await navigator.gpu?.requestAdapter({powerPreference:'high-performance'});
@@ -61,13 +62,14 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
     const rgba=await pixels(ref),data=await encode(rgba,ref.width,ref.height),value={rgba,data,width:ref.width,height:ref.height};
     if(cache.size>=16)cache.delete(cache.keys().next().value);cache.set(key,value);return value;
   }
-  async function paintPass({prompt,width,height,seed,steps,strength,initial,references}){
+  async function paintPass({prompt,width,height,seed,steps,strength,initial,references,protection}){
     const text=await embedding(prompt),n=width/16*(height/16),total=n+references.reduce((sum,r)=>sum+r.data.length/128,0);
     if(total>16384)throw Error('Image token allocation refused');
     const ids=new BigInt64Array(total*4);ids.set(createImageIds(height/16,width/16));let at=n*4;
     references.forEach((r,i)=>{const value=createImageIds(r.height/16,r.width/16,i);ids.set(value,at);at+=value.length;});
     const txtIds=new BigInt64Array(text.sequence*4);for(let i=0;i<text.sequence;i++)txtIds[i*4+3]=BigInt(i);
     let {latents,sigmas}=imageToImageStart(initial,seed,steps,strength);
+    const originalNoise=protection?seededGaussianNoise(initial.length,seed):null;
     for(let step=0;step<steps;step++){
       const combined=new Float32Array(total*128);combined.set(latents);let offset=latents.length;
       for(const r of references){combined.set(r.data,offset);offset+=r.data.length;}
@@ -78,44 +80,63 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
         timestep:new ort.Tensor('float16',encodeFloat16(new Float32Array([sigmas[step]])),[1]),
       },'noise_pred','float16',[1,total,128]);
       latents=eulerOutputStep(latents,decodeFloat16(data),sigmas[step],sigmas[step+1]);
+      if(protection)latents=protectLatents(latents,initial,originalNoise,protection,sigmas[step+1]);
       progress({phase:'step',step:step+1,steps,imageTokens:total,textTokens:text.sequence});
     }
     const decoded=await run('decode',{packed_latent:new ort.Tensor('float32',tokensToPackedLatents(latents,height/16,width/16),[1,128,height/16,width/16])},'sample','float32',[1,3,height,width]);
     return {decoded,text:{sequence:text.sequence,tokenCount:text.tokenCount,promptSha256:text.promptSha256,chatPromptSha256:text.chatPromptSha256},sigmas:Array.from(sigmas)};
   }
+  async function png(rgba,width,height){
+    const c=new OffscreenCanvas(width,height),ctx=c.getContext('2d');if(!ctx)throw Error('PNG context unavailable');
+    try{ctx.putImageData(new ImageData(rgba,width,height),0,0);return await c.convertToBlob({type:'image/png'});}finally{c.width=1;c.height=1;}
+  }
   async function paint(input){
-    if(busy)throw Error('Kit engine already painting');check();const job=admitKitEngineJob(input);busy=true;const started=performance.now(),captures=[],boxes=[],measurements=[];
-    const canvas=new OffscreenCanvas(job.width,job.height),ctx=canvas.getContext('2d',{willReadFrequently:true});
-    if(!ctx){busy=false;throw Error('Compositor unavailable');}
+    if(busy)throw Error('Kit engine already painting');check();const job=admitKitEngineJob(input);busy=true;
+    const coldStarted=performance.now();
     try{
-      const plate=await pixels(job.plate);ctx.putImageData(new ImageData(plate,job.width,job.height),0,0);
-      const atlas=await reference(job.atlas);
-      for(const [i,p]of job.passes.entries()){
-        check();const start=performance.now();progress({phase:'organism-start',name:p.name,index:i+1,total:job.passes.length});
-        const initial=await reference(p.reference),result=await paintPass({prompt:p.prompt,width:job.passSize,height:job.passSize,seed:(job.seed+i)>>>0,steps:job.steps,strength:job.strength,initial:initial.data,references:[atlas]});
-        const rawCanvas=new OffscreenCanvas(job.passSize,job.passSize),rawCtx=rawCanvas.getContext('2d');if(!rawCtx)throw Error('Capture context unavailable');
-        try{rawCtx.putImageData(new ImageData(planarToRgba(result.decoded,job.passSize,job.passSize).rgba,job.passSize,job.passSize),0,0);progress({phase:'organism-capture',name:p.name,blob:await rawCanvas.convertToBlob({type:'image/png'})});}finally{rawCanvas.width=1;rawCanvas.height=1;}
-        const {rgba,bounds}=planarToRgba(result.decoded,job.passSize,job.passSize,true),box=placementBox(p.placement,bounds,job.width,job.height);
-        const cutout=new OffscreenCanvas(job.passSize,job.passSize),cutctx=cutout.getContext('2d');if(!cutctx)throw Error('Cutout compositor unavailable');
-        try{
-          cutctx.putImageData(new ImageData(rgba,job.passSize,job.passSize),0,0);ctx.save();
-          try{if(p.placement.flip){ctx.translate(box.x+box.width,box.y);ctx.scale(-1,1);ctx.drawImage(cutout,bounds.x,bounds.y,bounds.width,bounds.height,0,0,box.width,box.height);}else ctx.drawImage(cutout,bounds.x,bounds.y,bounds.width,bounds.height,box.x,box.y,box.width,box.height);}finally{ctx.restore();}
-          captures.push({name:p.name,blob:await cutout.convertToBlob({type:'image/png'})});
-        }finally{cutout.width=1;cutout.height=1;}
+      // Session loading is preparation, not a second warm-up painting/inference.
+      for(const kind of ['encode','text','denoise','decode'])await session(kind);
+      const started=performance.now(),coldPreparationMs=started-coldStarted;
+      progress({phase:'warm-engine-start',coldPreparationMs});
+      const captures=[],maskCaptures=[],boxes=[],measurements=[],masks=[],keying=[];
+      const composed=await pixels(job.plate);
+      for(const p of job.passes){
+        const start=performance.now(),raw=await pixels(p.reference);
+        const keyed=keyAndDespill(raw,p.reference.width,p.reference.height);
+        const box=placementBox(p.placement,keyed.bounds,job.width,job.height);
+        const alpha=compositeLayer(composed,job.width,job.height,keyed.rgba,p.reference.width,p.reference.height,keyed.bounds,box,p.placement.flip);
+        subtractOcclusion(masks,alpha);masks.push(alpha);
+        captures.push({name:p.name,blob:await png(keyed.rgba,p.reference.width,p.reference.height)});
         boxes.push({name:p.name,identityKey:p.identityKey,...box,preFinisherBounds:true,postFinisherIdentityAccepted:false});
-        measurements.push({name:p.name,elapsedMs:performance.now()-start,...result.text,sigmas:result.sigmas});
-        progress({phase:'organism-complete',name:p.name,elapsedMs:performance.now()-start});
+        keying.push({name:p.name,...keyed.receipt});
+        progress({phase:'organism-composited',name:p.name,inferencePasses:0,elapsedMs:performance.now()-start});
       }
-      const composite=await canvas.convertToBlob({type:'image/png'}),initial=await encode(ctx.getImageData(0,0,job.width,job.height).data,job.width,job.height),triptych=await reference(job.triptych);
-      progress({phase:'finisher-start'});const finishStart=performance.now();
-      const finished=await paintPass({prompt:job.finisherPrompt,width:job.width,height:job.height,seed:job.seed,steps:1,strength:job.finisherStrength,initial,references:[triptych]});
-      const {rgba}=planarToRgba(finished.decoded,job.width,job.height);ctx.putImageData(new ImageData(rgba,job.width,job.height),0,0);
-      const painting=await canvas.convertToBlob({type:'image/png'});
+      const fg=await pixels(job.foreground),fa=Uint8Array.from({length:fg.length/4},(_,i)=>fg[i*4+3]);
+      const fb=alphaBounds(fa,job.foreground.width,job.foreground.height),occlusion=[];
+      for(const target of job.composition.foreground.placements){
+        const body=boxes.find(b=>b.name===target.name);if(!body)throw Error('Foreground target missing');
+        const w=job.composition.foreground.width*job.width,h=job.composition.foreground.height*job.height;
+        const box={x:body.x+body.width*target.centreAcrossBody-w/2,y:body.y+body.height+job.composition.foreground.groundOffset-h,width:w,height:h};
+        const alpha=compositeLayer(composed,job.width,job.height,fg,job.foreground.width,job.foreground.height,fb,box);
+        const bodyMask=masks[boxes.indexOf(body)];let covered=0;for(let i=0;i<alpha.length;i++)if(alpha[i]>16&&bodyMask[i]>16)covered++;
+        if(!covered)throw Error('Foreground did not overlap target feet');subtractOcclusion(masks,alpha);
+        occlusion.push({name:target.name,coveredPixels:covered,box});
+      }
+      const mask=latentInteriorMask(masks,job.width,job.height);
+      for(let i=0;i<masks.length;i++)maskCaptures.push({name:boxes[i].name,blob:await png(alphaToRgba(masks[i]),job.width,job.height)});
+      const composite=await png(composed,job.width,job.height),protectionMask=await png(alphaToRgba(mask.inner),job.width,job.height);
+      progress({phase:'composite-capture',name:'composite-before-finisher',blob:composite});
+      const initial=await encode(composed,job.width,job.height),triptych=await reference(job.triptych);
+      progress({phase:'finisher-start',protectedTokens:mask.protectedTokens});const finishStart=performance.now();
+      const finished=await paintPass({prompt:job.finisherPrompt,width:job.width,height:job.height,seed:job.seed,steps:1,strength:job.finisherStrength,initial,references:[triptych],protection:mask.latent});
+      const {rgba}=planarToRgba(finished.decoded,job.width,job.height),painting=await png(rgba,job.width,job.height);
       measurements.push({name:'finisher',elapsedMs:performance.now()-finishStart,...finished.text,sigmas:finished.sigmas});
-      return {schema:'cf.kit-engine-result.v4',painting,composite,captures,boxes,measurements,elapsedMs:performance.now()-started,
+      return {schema:'cf.kit-engine-result.v4',painting,composite,captures,maskCaptures,protectionMask,boxes,measurements,keying,
+        occlusion,masking:{protectedTokens:mask.protectedTokens,totalTokens:mask.latent.length,erosionPixels:4,threshold:.55},
+        organismPasses:0,elapsedMs:performance.now()-started,coldPreparationMs,totalMs:performance.now()-coldStarted,warmSessionStart:true,
         width:job.width,height:job.height,sessionCreates:{...creates},expansion:expanded?.receipt,qualityAccepted:false,
         capabilities:{maxBufferSize:adapter.limits.maxBufferSize,shaderF16:adapter.features.has('shader-f16'),adapterInfo:{...adapter.info}}};
-    }finally{canvas.width=1;canvas.height=1;busy=false;}
+    }finally{busy=false;}
   }
   async function dispose(){if(closed)return;closed=true;cache.clear();try{for(const s of sessions.values())await s.release();}finally{sessions.clear();expanded=null;device.destroy();}}
   return {paint,dispose};

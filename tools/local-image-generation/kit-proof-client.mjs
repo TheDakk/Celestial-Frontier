@@ -6,7 +6,7 @@ const record=event=>{const {blob,...facts}=event;events.push({...facts,atMs:perf
 window.kitProof={
  async start(){if(status!=='idle')throw Error('Exactly one run per proof page');status='running';try{const recipe=await fetch('/recipe.json').then(r=>r.json());result=await runtime.generate(recipe,controller.signal,record);status='complete';const image=document.querySelector('#painting');image.src=URL.createObjectURL(result.painting);image.hidden=false;document.querySelector('#status').textContent='Painting ready for native-size review';}catch(e){status='failed';error=String(e.stack??e);document.querySelector('#status').textContent=error;}},
  snapshot(){return {status,error,last:events.at(-1)??null,eventCount:events.length,partialCount:partial.length};},
- report(){const {painting,composite,captures,...details}=result??{};return {status,error,events,details,partial:partial.map(({name})=>name)};},
- async artifact(kind,index=0){const blob=kind==='painting'?result.painting:kind==='composite'?result.composite:kind==='partial'?partial[index].blob:result.captures[index].blob;const bytes=new Uint8Array(await blob.arrayBuffer());let text='';for(let at=0;at<bytes.length;at+=32768)text+=String.fromCharCode(...bytes.subarray(at,at+32768));return btoa(text);},
+ report(){const {painting,composite,captures,maskCaptures,protectionMask,...details}=result??{};return {status,error,events,details,partial:partial.map(({name})=>name)};},
+ async artifact(kind,index=0){const blob=kind==='painting'?result.painting:kind==='composite'?result.composite:kind==='partial'?partial[index].blob:kind==='mask'?result.maskCaptures[index].blob:kind==='protection'?result.protectionMask:result.captures[index].blob;const bytes=new Uint8Array(await blob.arrayBuffer());let text='';for(let at=0;at<bytes.length;at+=32768)text+=String.fromCharCode(...bytes.subarray(at,at+32768));return btoa(text);},
  dispose(){controller.abort();runtime.dispose();},
 };
