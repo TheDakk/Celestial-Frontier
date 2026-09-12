@@ -1,0 +1,25 @@
+✔ tenfold ceiling retains every token and allocates only the actual rounded sequence (1.637958ms)
+✔ low-strength pass preserves source contribution and seed owns only the noise (0.988125ms)
+✔ key intake refuses a dark full plate and an empty key, preserving a complete foreground object (0.456667ms)
+✔ worker expansion preserves element bytes and rejects overlapping patches / corrupt plan before model fetch (3.371666ms)
+✔ an unknown recipe cannot reach a GPU stage (0.161166ms)
+✔ actual engine composes six passes plus exactly one finisher; all four sessions stay warm for a second landing (54.116417ms)
+✔ same reuse oracle rejects actual engine with its session cache bypassed (41.058875ms)
+✔ actual diagnostic worker executes one step at the exact shape, retains four-step sigmas and releases before a distinct partial result (127.377917ms)
+✔ ordinary worker preserves four runs, original progress/completion type and math without diagnostic messages (91.743916ms)
+✔ invalid diagnostic mode/schema/model/profile/seed/schedule/shapes are refused before any GPU request (79.097125ms)
+✔ nonfinite float16 embeddings and reference data are refused before allocation or model creation (27.104084ms)
+✔ deferred actual run and readback promises expose different durable boundaries (115.511417ms)
+✔ run rejection cannot be reported as readback or completion and preserves the failed boundary (72.199375ms)
+✔ readback rejection is distinct from completed execution and cannot publish partial success (68.872125ms)
+✔ device loss or repeated uncaptured errors while run is pending produce one bounded fault and prevent late success (138.842791ms)
+✔ failed release cannot become diagnostic completion after one executed step (110.972542ms)
+✔ the same outcome oracle rejects an actual missing-boundary mutant and a removed first-step stop (247.850709ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1122.190708

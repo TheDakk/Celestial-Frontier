@@ -7,7 +7,8 @@ import {
 import {createNativeProfileCapture} from './gpu-profile.mjs';
 import {denoiserShapeSessionOptions} from './denoiser-shapes.mjs';
 
-// One graph per worker. The owner terminates this worker before the next stage.
+// Legacy diagnostics own one graph per worker; kit-v4 retains its four sessions
+// behind the app-owned warm worker and disposes on cancellation/fault.
 const progress = (phase, details={}) => postMessage({type:'progress',phase,...details});
 const json = async path => { const r=await fetch(path); if(!r.ok) throw Error(`HTTP ${r.status}: ${path}`); return r.json(); };
 const FIRST_STEP_DIAGNOSTIC='cf.denoise-first-step.v1';
@@ -32,8 +33,23 @@ function admitsFirstStepDiagnostic(job){
   }
   return true;
 }
-let used=false;
+let used=false,kitEnginePromise=null,kitBusy=false;
 onmessage=async ({data:job}) => {
+  if(job?.stage==='kit-v4'){
+    if(kitBusy){postMessage({type:'error',requestId:job.requestId,message:'Kit worker busy'});return;}
+    kitBusy=true;
+    try{
+      if(used)throw Error('Cannot mix a legacy diagnostic and kit engine in one worker');
+      const {admitKitEngineJob}=await import('./kit-engine-math.mjs');admitKitEngineJob(job.recipe);
+      kitEnginePromise??=import('./kit-worker-engine.mjs').then(({createKitWorkerEngine})=>createKitWorkerEngine({ort,Tokenizer,progress:details=>postMessage({type:'progress',...details})}));
+      const engine=await kitEnginePromise;
+      const result=await engine.paint(job.recipe);
+      postMessage({type:'complete',requestId:job.requestId,...result});
+    }catch(error){postMessage({type:'error',requestId:job.requestId,message:String(error.stack??error)});
+      try{await (await kitEnginePromise)?.dispose();}catch{}kitEnginePromise=null;
+    }finally{kitBusy=false;}
+    return;
+  }
   if(used) return; used=true;
   let session,device,profileCapture,nativeProfile,restoreStdout;
   let capturingProfile=false,profileResolve,profileReject,profileTimer;
