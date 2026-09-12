@@ -67,7 +67,7 @@ export function latentInteriorMask(masks,w,h,erosionPixels=4){
 }
 /** Compose one organism, optionally as two low runner instances of the same master. */
 export function compositeOrganism(base,W,H,keyed,sw,sh,placement,boxFor){
-  const placements=placement.runners??[placement],alpha=new Uint8Array(W*H),instances=[];
+  const placements=placement.mat??placement.runners??[placement],alpha=new Uint8Array(W*H),instances=[];
   for(const p of placements){
     const box=boxFor(p,keyed.bounds,W,H);
     if(p.heightScale!==undefined){const oldHeight=box.height;box.height*=p.heightScale;box.y+=oldHeight-box.height;}

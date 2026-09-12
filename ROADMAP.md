@@ -17,61 +17,43 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · ACCEPTED PRODUCTION PATH; TARGET IPHONE FIRST
+## SESSION HANDOFF — 2026-09-12 · PHONE REPORTED, MAC INSTALLED PATH PROVED; WEATHER NEXT
 
-Nick approves Kit v4.1 as diffed (dbeb2448); frozen paragraph/4E unchanged, no further
-kit edits. cd6b609f /0eed6a21 stays the accepted painting/tier-2 baseline, unchanged PNG
-and qualityAccepted true. Nick REJECTS edge/runners246cc619. No further finisher-erosion
-experiments. Preserve evidence; the normal game still uses the accepted4px baseline.
-Wiring0d825fe5/0e37e6c6 accepted as the production path, not a release or deployment.
+Nick approves Kit v4.1, wiring0d825fe5/0e37e6c6 as production path, and cd6b609f/0eed6a21
+as accepted painting/tier-2 baseline. Original unchanged/qualityAccepted true. Edge/runners
+246cc619 rejected; no further erosion experiments or kit edits (frozen paragraph/4E intact).
 
-Completed evidence: ordinary Earth Land composite145.95ms, retained-original reload and
-Inspect; separate native worker proof ran two unchanged recipes, second21.617645s,
-all four sessions created once, both output PNGs byte-identical to the accepted original.
-Part K repairs/negative controls: audits/KIT_NORMAL_LAND_20260912/README.md. No full
-ordinary-game installed-model download-to-finisher run or phone qualification yet.
+Physical iPhone17Pro/iOS26.6.2 over USB-C: Safari physical session confirmed; probe4715e0f2
+reports1GiB per-WebGPU-buffer limit, f16,41.23GB quota, no exposed JS/native/GPU memory API.
+Encoder loaded2.788s, then automation session lost during text-encoder load; transformer/
+finisher not observed, cause unconfirmed. Nick reports12GB RAM;1GiB is not total RAM.
+Phone tier UNQUALIFIED; no retry. Probe reported before Mac work; transient server/driver
+closed. Evidence audits/IPHONE_KIT_PROBE_20260912.
 
-NEW ORDER (supersedes all older restart sequences):
-1. Physical target-iPhone probe: maxBufferSize, shader-f16, storage quota, memory at
-   transformer load, and one warm finisher timing if model loads. Report before delivery.
-2. One Mac ordinary-game download-to-finisher run on an installed model; unchanged
-   accepted painting parameters.
-3. Deterministic compositor weather AFTER finisher, recipe-seeded never clock-seeded;
-   read weather, water state, time of day/light from system card. Wet fur/leaves darken
-   and desaturate; light-facing droplet specular; uniform-density whole-frame rain/snow/
-   dust shared by plate/organisms. Anatomy/count/placement intact. Kit weather variants
-   deferred. Cranberry compiler data: larger low mat about16% frame width, more berries.
-   One painting on accepted inputs, beside baseline. Visual acceptance: wet Civet and
-   Platypus consistent with rainy plate, Cranberry legible100%, species/placement intact.
-4. Civet animation end-to-end proof; existing CODEX_HANDOFF animation/battle track.
+Mac ordinary Download/resume -> installed OPFS parent model -> Land -> one finisher ->
+retained PNG completed on72fdbc89:204.265s install,199.50ms composite,31.333s Land-to-ready.
+PNG byte-identical to accepted baseline, parameters unchanged. native-02 raw FAIL is an
+extra reload-instrument race; fix requires new timeOrigin. reload-01 on6ed3958d PASS,
+retained reload/Inspect without download/inference. Earlier native-01 failed before any
+model request on initial-RAF timing; negative controls cover both corrected instrument
+failures. No second native finisher. Evidence audits/MAC_INSTALLED_KIT_20260912.
 
-Latest decision receipt: audits/KIT_WEATHER_DECISIONS_20260912/DECISIONS.md. Weather/mat
-are authorized but not implemented. Nick supplied iPhone17Pro, iOS26.6.2 over USB-C.
-After Nick unlocked and enabled Remote Automation, Safari session creation succeeded:
-physical iPhone, simulator=false, iOS26.6.2 build23G90, Safari26.6.1. Session/TLS connection
-files are private /private/tmp data; source/audit: audits/IPHONE_KIT_PROBE_20260912.
-One source-bound phone probe on4715e0f2 ran and was reported: maxBufferSize1GiB,
-shader-f16 true, quota41.23GB, memory API unavailable. VAE encoder loaded2.788s;
-Safari invalidated the session during text-encoder loading. Transformer and finisher
-not reached/observed; cause unconfirmed, phone tier UNQUALIFIED. No phone retry.
-Temporary server/owned driver closed. Actual evidence: IPHONE_KIT_PROBE_20260912/native-01.
-Next Mac installed-model run is prepared: tools/local-image-generation/run-kit-installed-land.mjs,
-Mac native-01 ended before inference on an early install-UI assertion (fixed with negative
-controls). native-02 on72fdbc89 completed real pinned download/install204.265s and one
-ordinary Land finisher31.333s; retained PNG byte-identical to accepted baseline, parameters
-unchanged. Additional reload check failed by observing departing document; raw FAIL retained.
-Corrected check requires a new timeOrigin, matching retained original and settled crossfade.
-Next ONLY no-inference run-kit-normal-land.mjs to MAC_INSTALLED_KIT_20260912/reload-01;
-no second download/model run. Then authorized weather/mat painting, then Civet.
-No new parameters, kit edits or delivery architecture.
+Authorized weather/mat profile implemented and prepared (not yet run):
+audits/ART_KIT_WEATHER_MAT_20260912. Same inputs/seed133/prompt402/one0.35finisher/4px masks.
+Cranberry connected16%-wide low mat, same centre/ground, overlapping accepted branches
+for more berries. Other placements/species unchanged. Deterministic weather AFTER finisher,
+from system-card weather/water/time/light and recipe seed: wet fur/leaves, sparse diffuse
+sky-facing droplets, one precipitation density across whole frame. No invented sun.
+Raw finisher and final weathered PNG both retained. Normal game baseline stays accepted
+until Nick's visual decision. Tests/TypeScript/root validate pass, static mat inspected.
+NEXT sign then exactly one native run per audit README; review beside baseline, six crops
+and actual post-finisher pixel-order control. No parameter sweep or kit edit. Then Civet
+animation end-to-end proof per CODEX_HANDOFF; no Effects class before separate approval.
 
-OpenAI/Codex on macOS: /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracking origin/openai/mac. Current signed4715e0f2:33 ahead/0 behind upstream,
-144 ahead/0 behind cached origin/develop; phone report/Mac preparation commit follows. Startup receipt reused
-within uninterrupted session. Unrelated .DS_Store untouched. No fetch, pack, integrated
-chain, unit-test checkout lock or pre-probe storage/delivery work.
-GitHub step NONE; PR42 parked. Budget file UNFROZEN/public, private fallback3000; zero
-exact hosted authorization, no push/label/dispatch/merge/release/deploy. Claude need not
-open/sync. After eventual authorized develop integration only, clean anthropic/mac may
-fetch/merge origin/develop. Codex's next step is actual target probe. Report IDs/ahead at
-stops. Resume this handoff, never PAUSED_CHECKPOINT.
+OpenAI/Codex macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
+tracking origin/openai/mac. Last signed6ed3958d; preparation/evidence commit follows.
+Cached refs only, unrelated .DS_Store untouched, same startup receipt. GitHub step NONE,
+PR42 parked; budget UNFROZEN/public/private fallback3000 but zero hosted authority.
+No push/label/dispatch/merge/release/deploy, pack or integrated chain. Unit tests hold no
+checkout lease. Claude need not open/sync; only after eventual authorized develop
+integration may clean anthropic/mac fetch/merge origin/develop. Report IDs/ahead at stops.

@@ -68,6 +68,16 @@ export const EARTH_PAINTED_EDGE_RUNNERS_V1 = deepFreeze({
     ] } : row),
 });
 
+/** Approved post-finisher weather experiment: one wider, connected berry mat. */
+export const EARTH_PAINTED_WEATHER_MAT_V1 = deepFreeze({
+  ...EARTH_PAINTED_COMPOSITION_V1, id: 'cf.art.earth-painted-weather-mat.v1',
+  residents: EARTH_PAINTED_COMPOSITION_V1.residents.map(row => row.name === 'Cranberry'
+    ? { ...row, width: 0.16, mat: [
+      { x: 0.315, groundY: 0.90, width: 0.11, heightScale: 0.75, flip: false },
+      { x: 0.365, groundY: 0.90, width: 0.11, heightScale: 0.75, flip: true },
+    ] } : row),
+});
+
 interface SnapshotBudget { remaining: number; }
 /** Snapshot descriptors before accessing values, then serialize only detached
  * null-prototype objects/arrays. Getters, toJSON hooks, sparse arrays, cycles,

@@ -26,8 +26,11 @@ unchanged painting parameters, then one deterministic post-finisher weather/Cran
 mat painting, then Civet proof. Weather reads the compiled system card and recipe seed,
 never the clock; wet fur/leaves, light-facing droplets and uniform whole-frame precipitation
 leave anatomy/count/placement intact. Cranberry becomes a larger low mat about16% wide
-with more berries, in compiler data. These changes are authorized, not yet implemented.
-Kit-authored weather variants deferred. ROADMAP owns the current sequence.
+with more berries, in compiler data. The candidate implementation is awaiting visual acceptance.
+Weather/mat implementation now exists as a separately selected profile, prepared for
+one visual proof. Raw finisher is retained before postprocessing; normal game retains
+the accepted baseline pending visual approval. Kit-authored weather variants deferred.
+ROADMAP owns the current sequence; audits/ART_KIT_WEATHER_MAT_20260912 owns this proof.
 
 **Nick's September 12 approved order:** v4 at `6f5c396e` is approved. ART_KIT §9
 now limits first authoring to the Earth temperate plate, six Earth cut-outs and five

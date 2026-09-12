@@ -2,9 +2,12 @@ import {seededGaussianNoise,createSigmaSchedule} from './pipeline-math.mjs';
 export const KIT_ENGINE_SCHEMA='cf.kit-engine.v4';
 export function admitKitEngineJob(job){
   if(job?.schema!==KIT_ENGINE_SCHEMA)throw Error('Kit engine schema refused');
-  if(!['cf.kit-contact.v1','cf.kit-edge-runners.v1'].includes(job.experiment)||job.skipOrganismPasses!==true||job.textTokenCeiling!==512||job.finisherStrength!==.35||job.finisherSteps!==1)throw Error('Contact experiment refused');
+  if(!['cf.kit-contact.v1','cf.kit-edge-runners.v1','cf.kit-weather-mat.v1'].includes(job.experiment)||job.skipOrganismPasses!==true||job.textTokenCeiling!==512||job.finisherStrength!==.35||job.finisherSteps!==1)throw Error('Contact experiment refused');
   const edge=job.experiment==='cf.kit-edge-runners.v1';
   if((job.interiorErosionPixels??4)!==(edge?8:4))throw Error('Interior erosion experiment refused');
+  const weather=job.experiment==='cf.kit-weather-mat.v1',mat=job.passes?.find(p=>p.name==='Cranberry')?.placement?.mat;
+  if(weather?(!Array.isArray(mat)||mat.length!==2||typeof job.compositorSystemCard!=='string'||mat.some(r=>!['x','groundY','width','heightScale'].every(k=>Number.isFinite(r[k])&&r[k]>0&&r[k]<1)||typeof r.flip!=='boolean')):mat!==undefined||job.compositorSystemCard!==undefined)throw Error('Weather mat experiment refused');
+  if(job.passes?.some(p=>p.name!=='Cranberry'&&p.placement?.mat!==undefined))throw Error('Unexpected organism mat');
   const runners=job.passes?.find(p=>p.name==='Cranberry')?.placement?.runners;
   if(edge?(!Array.isArray(runners)||runners.length!==2||runners.some(r=>!['x','groundY','width','heightScale'].every(k=>Number.isFinite(r[k])&&r[k]>0&&r[k]<1)||typeof r.flip!=='boolean')):runners!==undefined)throw Error('Cranberry runner experiment refused');
   if(job.passes?.some(p=>p.name!=='Cranberry'&&p.placement?.runners!==undefined))throw Error('Unexpected organism runners');
