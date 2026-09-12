@@ -54,7 +54,7 @@ try{
  await until('crossfade settled',`!window.__CF_SLICE__.api.state().localAi.crossfading`);
  const restored=await state('retained-original-restored');need(restored.localAi.alpha===1&&restored.localAi.jobs.length===0,'Restore lost original or started an inference');
  await screenshot('02-retained-original.png');
- need(await evaluate('window.__CF_SLICE__.api.surveyOn({seed:133,ordinal:2})'),'Surface Survey setup failed');
+ await click('#docksurvey'); // surveyOn is system-only; exercise the real surface control.
  await until('Inspect',`!!document.querySelector('[data-ai-act="inspect-current"]')`);
  await click('[data-ai-act="inspect-current"]');await until('native viewer',`document.querySelector('#cf-landfall-viewer')?.open`);
  result.viewer=await evaluate(`(()=>{const d=document.querySelector('#cf-landfall-viewer');return {sha256:d.dataset.imageSha256,originalId:d.dataset.originalId,width:d.querySelector('img').naturalWidth,height:d.querySelector('img').naturalHeight};})()`);

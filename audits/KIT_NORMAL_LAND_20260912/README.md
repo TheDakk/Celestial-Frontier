@@ -86,3 +86,11 @@ After signing, execute exactly:
 
 The full Part K closure remains pending native outcome proof; green unit controls do
 not claim ordinary-game visual acceptance. No pack or integrated chain ran.
+
+## Browser-01 diagnosis
+
+Implementation signed0d825fe5. Ordinary Land mounted the composite in182.74ms and
+reload restored the exact accepted original; no runtime exceptions. The proof then
+called surveyOn from surface mode, but that evidence helper explicitly accepts only
+system mode. The correction clicks the actual #docksurvey control. Preserve browser-01
+as failed harness evidence; corrected browser-02 precedes the warm native run.
