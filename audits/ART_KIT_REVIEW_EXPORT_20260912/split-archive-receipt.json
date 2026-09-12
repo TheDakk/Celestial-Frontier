@@ -1,0 +1,85 @@
+{
+  "schema": "cf.art-review-split.v1",
+  "sourceSha256": "712637c5e12df35b02b906ae3587f799a1848663616a4b6ec6bb23a484605566",
+  "maximumBytesPerPart": 29000000,
+  "totalUniquePngs": 45,
+  "everySourceFileIncluded": true,
+  "sharedSourceFilesIdentical": true,
+  "parts": [
+    {
+      "part": 1,
+      "archive": "/private/tmp/celestial-frontier-art-review-20260912-part-1-of-3-direction-and-native-painting.zip",
+      "bytes": 26020060,
+      "sha256": "1fe96f02a60b39a2926b2f152d2c169f5cba592ea13ec9ab865a66ba939c7c74",
+      "pngs": 19,
+      "imagePaths": [
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/composite-before-finisher.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-01-raw.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-01.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-02-raw.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-02.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-03-raw.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-03.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-04-raw.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-04.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-05-raw.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-05.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-06-raw.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-06.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-01/painting.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/painting-beside-living-worlds.png",
+        "celestial-frontier-art-review-20260912/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+        "celestial-frontier-art-review-20260912/audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+        "celestial-frontier-art-review-20260912/audits/MIDGAME_ART_DIRECTION_20260908/03-earth-full-landfall.png",
+        "celestial-frontier-art-review-20260912/audits/MIDGAME_ART_DIRECTION_20260908/04-alien-full-landfall.png"
+      ],
+      "crcAndExactBytesVerified": true
+    },
+    {
+      "part": 2,
+      "archive": "/private/tmp/celestial-frontier-art-review-20260912-part-2-of-3-masters-and-fitted-inputs.zip",
+      "bytes": 25980755,
+      "sha256": "f6cca9bc6175f53737f6234928175fde1378559957200ad1ea7f2518180c1e09",
+      "pngs": 21,
+      "imagePaths": [
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/cranberry.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/devils-club.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/earth-temperate.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-bird.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-fish.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-insect.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-mammal-quadruped.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-reptile.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/frog.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/persimmon.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/masters/platypus.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/inputs/atlas.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/inputs/civet.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/inputs/cranberry.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/inputs/devils-club.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/inputs/earth-temperate.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/inputs/frog.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/inputs/persimmon.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/inputs/platypus.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/inputs/triptych.png"
+      ],
+      "crcAndExactBytesVerified": true
+    },
+    {
+      "part": 3,
+      "archive": "/private/tmp/celestial-frontier-art-review-20260912-part-3-of-3-sheets-and-comparisons.zip",
+      "bytes": 25351471,
+      "sha256": "6f65c46fea3a241d843184bdee6690824eb92b2e1d177ac9c2919ca8440feba8",
+      "pngs": 5,
+      "imagePaths": [
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/earth-cutouts-sheet.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_FIRST_20260912/family-and-biome-sheet.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/native-review-column.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/painting-boxes.png",
+        "celestial-frontier-art-review-20260912/audits/ART_KIT_ENGINE_PROOF_20260912/triptych-review-column.png"
+      ],
+      "crcAndExactBytesVerified": true
+    }
+  ]
+}

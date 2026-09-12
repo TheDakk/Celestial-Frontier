@@ -72,6 +72,14 @@ prompt Markdown, manifest, receipt and reproducible exporter are committed under
 `audits/ART_KIT_REVIEW_EXPORT_20260912/`. This is a review archive, not a runtime pack.
 No new painting/inference or Github action. Painting acceptance remains pending.
 
+Nick's 30 MB per-zip limit is handled by three independently extractable numbered
+parts in `/private/tmp/`, all below 29,000,000 bytes. Part1 contains direction images
+and native painting outputs, part2 masters/fitted inputs, part3 sheets/comparisons.
+Upload all three to the same Claude conversation before review. Every part includes
+the review guide, exact prompts, v4 kit and evidence; all45 PNGs are preserved exactly
+once across the set. `split-review.py` and `split-archive-receipt.json` in the export
+audit own reproducibility, exact paths/sizes/hashes and integrity verification.
+
 ## Animation and battle track
 
 Scheduled after the first engine painting is accepted and before the library rollout:
