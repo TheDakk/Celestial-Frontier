@@ -27,9 +27,10 @@ mat painting, then Civet proof. Weather reads the compiled system card and recip
 never the clock; wet fur/leaves, light-facing droplets and uniform whole-frame precipitation
 leave anatomy/count/placement intact. Cranberry becomes a larger low mat about16% wide
 with more berries, in compiler data. The candidate implementation is awaiting visual acceptance.
-Weather/mat implementation now exists as a separately selected profile, prepared for
-one visual proof. Raw finisher is retained before postprocessing; normal game retains
-the accepted baseline pending visual approval. Kit-authored weather variants deferred.
+Weather/mat profile ran once on9f51f2c9 in23.562s warm. Exact pixel replay proves weather
+follows the retained raw finisher, with no-weather/pre-finisher negative controls. Five
+registrations show unchanged placement; Cranberry registration is inconclusive. Visual
+acceptance remains pending; normal game retains the accepted baseline. Kit variants deferred.
 ROADMAP owns the current sequence; audits/ART_KIT_WEATHER_MAT_20260912 owns this proof.
 
 **Nick's September 12 approved order:** v4 at `6f5c396e` is approved. ART_KIT §9

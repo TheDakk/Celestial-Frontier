@@ -1,0 +1,93 @@
+{
+  "path": "/private/tmp/celestial-frontier-weather-review-20260912.zip",
+  "bytes": 19874778,
+  "sha256": "364b2ee400e07d3134d364c74b4d09cd2b99eec49b9e8490b48c98f11589dcae",
+  "under30MB": true,
+  "files": [
+    {
+      "name": "REVIEW_PROMPT.md",
+      "bytes": 1612,
+      "sha256": "b0a9e7237c7cc4fe6649fffa7e5f1c1fcb40d13c239692374c290c329de388dc"
+    },
+    {
+      "name": "weather-candidate.png",
+      "bytes": 1609684,
+      "sha256": "27101ff3af6e91b3e59087e7b1c2c4564d7c3cd1fa9ca6aec11c31250508fc16"
+    },
+    {
+      "name": "unweathered-finisher.png",
+      "bytes": 1612554,
+      "sha256": "6122041b8a113c883078415305fbe7b0f8203852b8caa2f35231008d37cafa59"
+    },
+    {
+      "name": "accepted-baseline.png",
+      "bytes": 1612288,
+      "sha256": "52b58c47caa2b7db86636187343669ca475faf62b78ffcd0e9f50e82b76cc2ff"
+    },
+    {
+      "name": "living-worlds-triptych.png",
+      "bytes": 3014976,
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    },
+    {
+      "name": "runtime-prompt.txt",
+      "bytes": 1724,
+      "sha256": "741e3078a4a12a669a0fc9846f68789e1717bfc31cd584910568067ff541194c"
+    },
+    {
+      "name": "civet-200pct.png",
+      "bytes": 144151,
+      "sha256": "fe7775055f470d1cff205cfc3cc587e98b97a1edc81a16fada4ef9b56d7bdf32"
+    },
+    {
+      "name": "postprocess-oracle.json",
+      "bytes": 1277,
+      "sha256": "2ae85eab69ce936e9a10260132f4c361d6a43765815f6ae5b37b9698a1436073"
+    },
+    {
+      "name": "frog-200pct.png",
+      "bytes": 55073,
+      "sha256": "d338ed2ae076d440727d139bc74d82dc17e6ed05c1e10412badb3e9ec452acd8"
+    },
+    {
+      "name": "platypus-200pct.png",
+      "bytes": 76835,
+      "sha256": "e87488838531b7eb81fe0cd91f672cced9a646168eb7fe51bf306591c05dd2ad"
+    },
+    {
+      "name": "devils-club-200pct.png",
+      "bytes": 111029,
+      "sha256": "f797c4aad303e5de04c517f3b454d061369d4abc7b2d50d312f88203f6055497"
+    },
+    {
+      "name": "beside-accepted-painting.png",
+      "bytes": 3529206,
+      "sha256": "5ad04994a80d21c14783ec9ab95b96f3cdd4daa61df8fa4ac300f4a6414ca0e4"
+    },
+    {
+      "name": "beside-triptych.png",
+      "bytes": 6515869,
+      "sha256": "d917bfc7078a0d3c6f5d8e896b2c04596b78658ab2b127a25e10e636af121bbf"
+    },
+    {
+      "name": "cranberry-200pct.png",
+      "bytes": 53215,
+      "sha256": "820cdc20211c0ab91da620d5c388bd305b870f8fbc2b7d64b187dd4315f4aaca"
+    },
+    {
+      "name": "review.json",
+      "bytes": 5342,
+      "sha256": "78ad054201116cf14f76ebe5c18741db40d73636fa0f66039685239791eb4c45"
+    },
+    {
+      "name": "persimmon-200pct.png",
+      "bytes": 218495,
+      "sha256": "37aecd69098ada66dc97c1d47c5a0b61da6b529e555887ca9a3134f325cf575d"
+    },
+    {
+      "name": "registered-boxes.png",
+      "bytes": 1398142,
+      "sha256": "344dc47434c74e01f32ae2ec313eb3a641e27d95038636c4edcdbc27c71c186d"
+    }
+  ]
+}

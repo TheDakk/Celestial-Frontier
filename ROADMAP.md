@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · PHONE REPORTED, MAC INSTALLED PATH PROVED; WEATHER NEXT
+## SESSION HANDOFF — 2026-09-12 · PHONE/MAC PROBED, WEATHER PAINTING SHOWN; CIVET NEXT
 
 Nick approves Kit v4.1, wiring0d825fe5/0e37e6c6 as production path, and cd6b609f/0eed6a21
 as accepted painting/tier-2 baseline. Original unchanged/qualityAccepted true. Edge/runners
@@ -38,7 +38,7 @@ retained reload/Inspect without download/inference. Earlier native-01 failed bef
 model request on initial-RAF timing; negative controls cover both corrected instrument
 failures. No second native finisher. Evidence audits/MAC_INSTALLED_KIT_20260912.
 
-Authorized weather/mat profile implemented and prepared (not yet run):
+Authorized weather/mat profile completed one native run on9f51f2c9:
 audits/ART_KIT_WEATHER_MAT_20260912. Same inputs/seed133/prompt402/one0.35finisher/4px masks.
 Cranberry connected16%-wide low mat, same centre/ground, overlapping accepted branches
 for more berries. Other placements/species unchanged. Deterministic weather AFTER finisher,
@@ -46,12 +46,16 @@ from system-card weather/water/time/light and recipe seed: wet fur/leaves, spars
 sky-facing droplets, one precipitation density across whole frame. No invented sun.
 Raw finisher and final weathered PNG both retained. Normal game baseline stays accepted
 until Nick's visual decision. Tests/TypeScript/root validate pass, static mat inspected.
-NEXT sign then exactly one native run per audit README; review beside baseline, six crops
-and actual post-finisher pixel-order control. No parameter sweep or kit edit. Then Civet
-animation end-to-end proof per CODEX_HANDOFF; no Effects class before separate approval.
+Run PASS23.562s warm/30.017s total; native/static pixels match. Post-finisher replay exactly
+matches final PNG; no-weather/pre-finisher negatives reject, masks/alpha unchanged. Five
+texture registrations show unchanged placement; Cranberry registration inconclusive. Six
+200% crops inspected, comparison shown; Nick's visual decision pending, qualityAccepted false.
+No further painting sweep. NEXT Civet animation end-to-end proof per CODEX_HANDOFF; no
+Effects class before separate approval. Phone is no longer needed and can be unplugged.
 
 OpenAI/Codex macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracking origin/openai/mac. Last signed6ed3958d; preparation/evidence commit follows.
+tracking origin/openai/mac. Native source signed9f51f2c9; weather evidence commit follows (38 ahead of cached upstream,
+149 ahead of cached origin/develop after that commit).
 Cached refs only, unrelated .DS_Store untouched, same startup receipt. GitHub step NONE,
 PR42 parked; budget UNFROZEN/public/private fallback3000 but zero hosted authority.
 No push/label/dispatch/merge/release/deploy, pack or integrated chain. Unit tests hold no
