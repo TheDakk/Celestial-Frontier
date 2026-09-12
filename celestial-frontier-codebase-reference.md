@@ -24,10 +24,14 @@ The audit `ART_KIT_ENGINE_FIRST_20260912` retains all captures, prompts and revi
 text/VAE-encoder/transformer/VAE-decoder sessions. Inputs are pre-fitted offline and
 hashed. In-worker pinned expansion performs no OPFS writes. The text ceiling is 5120,
 using actual token lengths rounded to 16 without truncation. The first native proof
-is pending at 1024×576 with 384-square passes, four steps and one 0.08 finisher.
+completed on signed30ef7d15 in425.707s at1024×576 with384-square passes, four steps and
+one0.08 finisher. All four sessions were created once. Actual prompts1730–1860 tokens
+completed; the5120 maximum remains unmeasured.
 [Evidence](audits/ART_KIT_ENGINE_PROOF_20260912/README.md): 17 worker and 23 compiler/runtime
 tests, tsc and root validate pass. Normal-game V1/V2 wiring and old OPFS removal remain
-pending. No input capture, native performance result or painting is quality-accepted.
+pending. The native painting, comparison and organism boxes are shown for feedback;
+Civet identity, botany/readability and composition remain unaccepted. Mac execution
+is not phone qualification; worker/GPU memory measurements were unavailable.
 
 Standalone animation preview, September9: [desert living-painting study](audits/LOCAL_AI_DESERT_MOTION_20260909/README.md)
 is an audit-only HTML/WebGL ambient renderer plus12sMP4/GIF. It preserves the source PNG and uses

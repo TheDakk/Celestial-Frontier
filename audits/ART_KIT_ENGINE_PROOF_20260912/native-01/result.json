@@ -1,0 +1,6903 @@
+{
+  "schema": "cf.kit-engine-native-proof.v4",
+  "status": "PASS",
+  "startedAt": "2026-09-12T16:29:37.584Z",
+  "head": "30ef7d15e7bbc22d3684bf4b069e616d67288d4a",
+  "events": [
+    {
+      "type": "progress",
+      "phase": "loading",
+      "stage": "encode",
+      "atMs": 543.6349999904633,
+      "sequence": 1
+    },
+    {
+      "type": "progress",
+      "phase": "loaded",
+      "stage": "encode",
+      "elapsedMs": 491.30000001192093,
+      "creates": {
+        "text": 0,
+        "encode": 1,
+        "denoise": 0,
+        "decode": 0
+      },
+      "memory": null,
+      "atMs": 1034.8650000095367,
+      "sequence": 2
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "encode",
+      "outputShape": [
+        1,
+        128,
+        21,
+        32
+      ],
+      "atMs": 1034.949999988079,
+      "sequence": 3
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 605.5850000083447,
+      "atMs": 1640.3949999809265,
+      "sequence": 4
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "encode",
+      "atMs": 1640.4449999928474,
+      "sequence": 5
+    },
+    {
+      "type": "progress",
+      "phase": "organism-start",
+      "name": "Civet",
+      "index": 1,
+      "total": 6,
+      "atMs": 1644.1500000059605,
+      "sequence": 6
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "encode",
+      "atMs": 1647.8650000095367,
+      "sequence": 7
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "encode",
+      "outputShape": [
+        1,
+        128,
+        24,
+        24
+      ],
+      "atMs": 1647.919999986887,
+      "sequence": 8
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 377.35499998927116,
+      "atMs": 2025.2400000095367,
+      "sequence": 9
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "encode",
+      "atMs": 2025.2899999916553,
+      "sequence": 10
+    },
+    {
+      "type": "progress",
+      "phase": "loading",
+      "stage": "text",
+      "atMs": 2169.514999985695,
+      "sequence": 11
+    },
+    {
+      "type": "progress",
+      "phase": "loaded",
+      "stage": "text",
+      "elapsedMs": 2809.8199999928474,
+      "creates": {
+        "text": 1,
+        "encode": 1,
+        "denoise": 0,
+        "decode": 0
+      },
+      "memory": null,
+      "atMs": 4979.4749999940395,
+      "sequence": 12
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "text",
+      "outputShape": [
+        1,
+        1824,
+        7680
+      ],
+      "atMs": 4979.579999983311,
+      "sequence": 13
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 27891.590000003576,
+      "atMs": 32871.00999999046,
+      "sequence": 14
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "text",
+      "atMs": 32871.04499998689,
+      "sequence": 15
+    },
+    {
+      "type": "progress",
+      "phase": "loading",
+      "stage": "denoise",
+      "atMs": 32966.64499998093,
+      "sequence": 16
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 1,
+      "total": 206,
+      "sourceBytes": 6144,
+      "expandedBytes": 24576,
+      "atMs": 32985.164999991655,
+      "sequence": 17
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 2,
+      "total": 206,
+      "sourceBytes": 9216,
+      "expandedBytes": 36864,
+      "atMs": 32989.27500000596,
+      "sequence": 18
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 3,
+      "total": 206,
+      "sourceBytes": 377856,
+      "expandedBytes": 1511424,
+      "atMs": 32993.289999991655,
+      "sequence": 19
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 4,
+      "total": 206,
+      "sourceBytes": 562176,
+      "expandedBytes": 2248704,
+      "atMs": 32995.82999998331,
+      "sequence": 20
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 5,
+      "total": 206,
+      "sourceBytes": 709632,
+      "expandedBytes": 2838528,
+      "atMs": 32997.34499999881,
+      "sequence": 21
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 6,
+      "total": 206,
+      "sourceBytes": 783360,
+      "expandedBytes": 3133440,
+      "atMs": 32998.590000003576,
+      "sequence": 22
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 7,
+      "total": 206,
+      "sourceBytes": 930816,
+      "expandedBytes": 3723264,
+      "atMs": 33000.09999999404,
+      "sequence": 23
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 8,
+      "total": 206,
+      "sourceBytes": 1004544,
+      "expandedBytes": 4018176,
+      "atMs": 33001.59999999404,
+      "sequence": 24
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 9,
+      "total": 206,
+      "sourceBytes": 1152000,
+      "expandedBytes": 4608000,
+      "atMs": 33003.06999999285,
+      "sequence": 25
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 10,
+      "total": 206,
+      "sourceBytes": 1225728,
+      "expandedBytes": 4902912,
+      "atMs": 33004.14499998093,
+      "sequence": 26
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 11,
+      "total": 206,
+      "sourceBytes": 1373184,
+      "expandedBytes": 5492736,
+      "atMs": 33005.62000000477,
+      "sequence": 27
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 12,
+      "total": 206,
+      "sourceBytes": 1446912,
+      "expandedBytes": 5787648,
+      "atMs": 33006.62999999523,
+      "sequence": 28
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 13,
+      "total": 206,
+      "sourceBytes": 1594368,
+      "expandedBytes": 6377472,
+      "atMs": 33008.05500000715,
+      "sequence": 29
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 14,
+      "total": 206,
+      "sourceBytes": 1668096,
+      "expandedBytes": 6672384,
+      "atMs": 33009.414999991655,
+      "sequence": 30
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 15,
+      "total": 206,
+      "sourceBytes": 1815552,
+      "expandedBytes": 7262208,
+      "atMs": 33011.12000000477,
+      "sequence": 31
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 16,
+      "total": 206,
+      "sourceBytes": 1889280,
+      "expandedBytes": 7557120,
+      "atMs": 33012.189999997616,
+      "sequence": 32
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 17,
+      "total": 206,
+      "sourceBytes": 2036736,
+      "expandedBytes": 8146944,
+      "atMs": 33013.560000002384,
+      "sequence": 33
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 18,
+      "total": 206,
+      "sourceBytes": 2110464,
+      "expandedBytes": 8441856,
+      "atMs": 33014.840000003576,
+      "sequence": 34
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 19,
+      "total": 206,
+      "sourceBytes": 2257920,
+      "expandedBytes": 9031680,
+      "atMs": 33016.340000003576,
+      "sequence": 35
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 20,
+      "total": 206,
+      "sourceBytes": 2331648,
+      "expandedBytes": 9326592,
+      "atMs": 33017.80500000715,
+      "sequence": 36
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 21,
+      "total": 206,
+      "sourceBytes": 3216384,
+      "expandedBytes": 12865536,
+      "atMs": 33023.460000008345,
+      "sequence": 37
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 22,
+      "total": 206,
+      "sourceBytes": 3658752,
+      "expandedBytes": 14635008,
+      "atMs": 33028.085000008345,
+      "sequence": 38
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 23,
+      "total": 206,
+      "sourceBytes": 4101120,
+      "expandedBytes": 16404480,
+      "atMs": 33031.014999985695,
+      "sequence": 39
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 24,
+      "total": 206,
+      "sourceBytes": 4322304,
+      "expandedBytes": 17289216,
+      "atMs": 33033.37999999523,
+      "sequence": 40
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 25,
+      "total": 206,
+      "sourceBytes": 5207040,
+      "expandedBytes": 20828160,
+      "atMs": 33039.29499998689,
+      "sequence": 41
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 26,
+      "total": 206,
+      "sourceBytes": 5649408,
+      "expandedBytes": 22597632,
+      "atMs": 33043.435000002384,
+      "sequence": 42
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 27,
+      "total": 206,
+      "sourceBytes": 6091776,
+      "expandedBytes": 24367104,
+      "atMs": 33046.564999997616,
+      "sequence": 43
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 28,
+      "total": 206,
+      "sourceBytes": 6312960,
+      "expandedBytes": 25251840,
+      "atMs": 33048.8599999845,
+      "sequence": 44
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 29,
+      "total": 206,
+      "sourceBytes": 6460416,
+      "expandedBytes": 25841664,
+      "atMs": 33050.284999996424,
+      "sequence": 45
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 30,
+      "total": 206,
+      "sourceBytes": 6534144,
+      "expandedBytes": 26136576,
+      "atMs": 33051.75,
+      "sequence": 46
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 31,
+      "total": 206,
+      "sourceBytes": 6681600,
+      "expandedBytes": 26726400,
+      "atMs": 33053.185000002384,
+      "sequence": 47
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 32,
+      "total": 206,
+      "sourceBytes": 6755328,
+      "expandedBytes": 27021312,
+      "atMs": 33054.414999991655,
+      "sequence": 48
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 33,
+      "total": 206,
+      "sourceBytes": 6902784,
+      "expandedBytes": 27611136,
+      "atMs": 33055.840000003576,
+      "sequence": 49
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 34,
+      "total": 206,
+      "sourceBytes": 6976512,
+      "expandedBytes": 27906048,
+      "atMs": 33057.07499998808,
+      "sequence": 50
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 35,
+      "total": 206,
+      "sourceBytes": 7123968,
+      "expandedBytes": 28495872,
+      "atMs": 33058.47999998927,
+      "sequence": 51
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 36,
+      "total": 206,
+      "sourceBytes": 7197696,
+      "expandedBytes": 28790784,
+      "atMs": 33059.64499998093,
+      "sequence": 52
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 37,
+      "total": 206,
+      "sourceBytes": 7345152,
+      "expandedBytes": 29380608,
+      "atMs": 33061.06999999285,
+      "sequence": 53
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 38,
+      "total": 206,
+      "sourceBytes": 7418880,
+      "expandedBytes": 29675520,
+      "atMs": 33062.06999999285,
+      "sequence": 54
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 39,
+      "total": 206,
+      "sourceBytes": 7566336,
+      "expandedBytes": 30265344,
+      "atMs": 33063.43000000715,
+      "sequence": 55
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 40,
+      "total": 206,
+      "sourceBytes": 7640064,
+      "expandedBytes": 30560256,
+      "atMs": 33064.49000000954,
+      "sequence": 56
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 41,
+      "total": 206,
+      "sourceBytes": 7787520,
+      "expandedBytes": 31150080,
+      "atMs": 33065.784999996424,
+      "sequence": 57
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 42,
+      "total": 206,
+      "sourceBytes": 7861248,
+      "expandedBytes": 31444992,
+      "atMs": 33067.159999996424,
+      "sequence": 58
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 43,
+      "total": 206,
+      "sourceBytes": 8008704,
+      "expandedBytes": 32034816,
+      "atMs": 33068.514999985695,
+      "sequence": 59
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 44,
+      "total": 206,
+      "sourceBytes": 8082432,
+      "expandedBytes": 32329728,
+      "atMs": 33069.51999998093,
+      "sequence": 60
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 45,
+      "total": 206,
+      "sourceBytes": 8967168,
+      "expandedBytes": 35868672,
+      "atMs": 33074.90000000596,
+      "sequence": 61
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 46,
+      "total": 206,
+      "sourceBytes": 9409536,
+      "expandedBytes": 37638144,
+      "atMs": 33078.84999999404,
+      "sequence": 62
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 47,
+      "total": 206,
+      "sourceBytes": 9851904,
+      "expandedBytes": 39407616,
+      "atMs": 33082,
+      "sequence": 63
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 48,
+      "total": 206,
+      "sourceBytes": 10073088,
+      "expandedBytes": 40292352,
+      "atMs": 33084.31999999285,
+      "sequence": 64
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 49,
+      "total": 206,
+      "sourceBytes": 10957824,
+      "expandedBytes": 43831296,
+      "atMs": 33090.01999998093,
+      "sequence": 65
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 50,
+      "total": 206,
+      "sourceBytes": 11400192,
+      "expandedBytes": 45600768,
+      "atMs": 33093.814999997616,
+      "sequence": 66
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 51,
+      "total": 206,
+      "sourceBytes": 11842560,
+      "expandedBytes": 47370240,
+      "atMs": 33097.01999998093,
+      "sequence": 67
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 52,
+      "total": 206,
+      "sourceBytes": 12063744,
+      "expandedBytes": 48254976,
+      "atMs": 33099.22499999404,
+      "sequence": 68
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 53,
+      "total": 206,
+      "sourceBytes": 12211200,
+      "expandedBytes": 48844800,
+      "atMs": 33100.659999996424,
+      "sequence": 69
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 54,
+      "total": 206,
+      "sourceBytes": 12284928,
+      "expandedBytes": 49139712,
+      "atMs": 33101.835000008345,
+      "sequence": 70
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 55,
+      "total": 206,
+      "sourceBytes": 12432384,
+      "expandedBytes": 49729536,
+      "atMs": 33103.3599999845,
+      "sequence": 71
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 56,
+      "total": 206,
+      "sourceBytes": 12506112,
+      "expandedBytes": 50024448,
+      "atMs": 33104.34999999404,
+      "sequence": 72
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 57,
+      "total": 206,
+      "sourceBytes": 12653568,
+      "expandedBytes": 50614272,
+      "atMs": 33105.57999998331,
+      "sequence": 73
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 58,
+      "total": 206,
+      "sourceBytes": 12727296,
+      "expandedBytes": 50909184,
+      "atMs": 33106.51999998093,
+      "sequence": 74
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 59,
+      "total": 206,
+      "sourceBytes": 12874752,
+      "expandedBytes": 51499008,
+      "atMs": 33107.77500000596,
+      "sequence": 75
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 60,
+      "total": 206,
+      "sourceBytes": 12948480,
+      "expandedBytes": 51793920,
+      "atMs": 33108.74000000954,
+      "sequence": 76
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 61,
+      "total": 206,
+      "sourceBytes": 13095936,
+      "expandedBytes": 52383744,
+      "atMs": 33110.284999996424,
+      "sequence": 77
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 62,
+      "total": 206,
+      "sourceBytes": 13169664,
+      "expandedBytes": 52678656,
+      "atMs": 33111.36500000954,
+      "sequence": 78
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 63,
+      "total": 206,
+      "sourceBytes": 13317120,
+      "expandedBytes": 53268480,
+      "atMs": 33112.57999998331,
+      "sequence": 79
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 64,
+      "total": 206,
+      "sourceBytes": 13390848,
+      "expandedBytes": 53563392,
+      "atMs": 33113.69999998808,
+      "sequence": 80
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 65,
+      "total": 206,
+      "sourceBytes": 13538304,
+      "expandedBytes": 54153216,
+      "atMs": 33115.210000008345,
+      "sequence": 81
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 66,
+      "total": 206,
+      "sourceBytes": 13612032,
+      "expandedBytes": 54448128,
+      "atMs": 33116.710000008345,
+      "sequence": 82
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 67,
+      "total": 206,
+      "sourceBytes": 13759488,
+      "expandedBytes": 55037952,
+      "atMs": 33118.00999999046,
+      "sequence": 83
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 68,
+      "total": 206,
+      "sourceBytes": 13833216,
+      "expandedBytes": 55332864,
+      "atMs": 33119.034999996424,
+      "sequence": 84
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 69,
+      "total": 206,
+      "sourceBytes": 14717952,
+      "expandedBytes": 58871808,
+      "atMs": 33124.460000008345,
+      "sequence": 85
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 70,
+      "total": 206,
+      "sourceBytes": 15160320,
+      "expandedBytes": 60641280,
+      "atMs": 33128.409999996424,
+      "sequence": 86
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 71,
+      "total": 206,
+      "sourceBytes": 15602688,
+      "expandedBytes": 62410752,
+      "atMs": 33131.34499999881,
+      "sequence": 87
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 72,
+      "total": 206,
+      "sourceBytes": 15823872,
+      "expandedBytes": 63295488,
+      "atMs": 33133.60499998927,
+      "sequence": 88
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 73,
+      "total": 206,
+      "sourceBytes": 16708608,
+      "expandedBytes": 66834432,
+      "atMs": 33139.4849999845,
+      "sequence": 89
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 74,
+      "total": 206,
+      "sourceBytes": 17150976,
+      "expandedBytes": 68603904,
+      "atMs": 33143.69999998808,
+      "sequence": 90
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 75,
+      "total": 206,
+      "sourceBytes": 17593344,
+      "expandedBytes": 70373376,
+      "atMs": 33146.710000008345,
+      "sequence": 91
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 76,
+      "total": 206,
+      "sourceBytes": 17814528,
+      "expandedBytes": 71258112,
+      "atMs": 33148.835000008345,
+      "sequence": 92
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 77,
+      "total": 206,
+      "sourceBytes": 17961984,
+      "expandedBytes": 71847936,
+      "atMs": 33150.17499998212,
+      "sequence": 93
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 78,
+      "total": 206,
+      "sourceBytes": 18035712,
+      "expandedBytes": 72142848,
+      "atMs": 33151.32499998808,
+      "sequence": 94
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 79,
+      "total": 206,
+      "sourceBytes": 18183168,
+      "expandedBytes": 72732672,
+      "atMs": 33152.625,
+      "sequence": 95
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 80,
+      "total": 206,
+      "sourceBytes": 18256896,
+      "expandedBytes": 73027584,
+      "atMs": 33153.62000000477,
+      "sequence": 96
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 81,
+      "total": 206,
+      "sourceBytes": 18404352,
+      "expandedBytes": 73617408,
+      "atMs": 33154.84499999881,
+      "sequence": 97
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 82,
+      "total": 206,
+      "sourceBytes": 18478080,
+      "expandedBytes": 73912320,
+      "atMs": 33155.82499998808,
+      "sequence": 98
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 83,
+      "total": 206,
+      "sourceBytes": 18625536,
+      "expandedBytes": 74502144,
+      "atMs": 33157.06999999285,
+      "sequence": 99
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 84,
+      "total": 206,
+      "sourceBytes": 18699264,
+      "expandedBytes": 74797056,
+      "atMs": 33158.159999996424,
+      "sequence": 100
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 85,
+      "total": 206,
+      "sourceBytes": 18846720,
+      "expandedBytes": 75386880,
+      "atMs": 33159.389999985695,
+      "sequence": 101
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 86,
+      "total": 206,
+      "sourceBytes": 18920448,
+      "expandedBytes": 75681792,
+      "atMs": 33160.514999985695,
+      "sequence": 102
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 87,
+      "total": 206,
+      "sourceBytes": 19067904,
+      "expandedBytes": 76271616,
+      "atMs": 33161.965000003576,
+      "sequence": 103
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 88,
+      "total": 206,
+      "sourceBytes": 19141632,
+      "expandedBytes": 76566528,
+      "atMs": 33162.84999999404,
+      "sequence": 104
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 89,
+      "total": 206,
+      "sourceBytes": 19289088,
+      "expandedBytes": 77156352,
+      "atMs": 33164.014999985695,
+      "sequence": 105
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 90,
+      "total": 206,
+      "sourceBytes": 19362816,
+      "expandedBytes": 77451264,
+      "atMs": 33164.965000003576,
+      "sequence": 106
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 91,
+      "total": 206,
+      "sourceBytes": 19510272,
+      "expandedBytes": 78041088,
+      "atMs": 33166.210000008345,
+      "sequence": 107
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 92,
+      "total": 206,
+      "sourceBytes": 19584000,
+      "expandedBytes": 78336000,
+      "atMs": 33167.25999999046,
+      "sequence": 108
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 93,
+      "total": 206,
+      "sourceBytes": 20468736,
+      "expandedBytes": 81874944,
+      "atMs": 33172.9849999845,
+      "sequence": 109
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 94,
+      "total": 206,
+      "sourceBytes": 20911104,
+      "expandedBytes": 83644416,
+      "atMs": 33176.77500000596,
+      "sequence": 110
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 95,
+      "total": 206,
+      "sourceBytes": 21353472,
+      "expandedBytes": 85413888,
+      "atMs": 33179.93000000715,
+      "sequence": 111
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 96,
+      "total": 206,
+      "sourceBytes": 21574656,
+      "expandedBytes": 86298624,
+      "atMs": 33182.1099999845,
+      "sequence": 112
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 97,
+      "total": 206,
+      "sourceBytes": 22459392,
+      "expandedBytes": 89837568,
+      "atMs": 33187.335000008345,
+      "sequence": 113
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 98,
+      "total": 206,
+      "sourceBytes": 22901760,
+      "expandedBytes": 91607040,
+      "atMs": 33191.19999998808,
+      "sequence": 114
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 99,
+      "total": 206,
+      "sourceBytes": 23344128,
+      "expandedBytes": 93376512,
+      "atMs": 33194.62000000477,
+      "sequence": 115
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 100,
+      "total": 206,
+      "sourceBytes": 23565312,
+      "expandedBytes": 94261248,
+      "atMs": 33196.79999998212,
+      "sequence": 116
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 101,
+      "total": 206,
+      "sourceBytes": 23712768,
+      "expandedBytes": 94851072,
+      "atMs": 33198.17499998212,
+      "sequence": 117
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 102,
+      "total": 206,
+      "sourceBytes": 23786496,
+      "expandedBytes": 95145984,
+      "atMs": 33199.36500000954,
+      "sequence": 118
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 103,
+      "total": 206,
+      "sourceBytes": 23933952,
+      "expandedBytes": 95735808,
+      "atMs": 33200.76999998093,
+      "sequence": 119
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 104,
+      "total": 206,
+      "sourceBytes": 24007680,
+      "expandedBytes": 96030720,
+      "atMs": 33201.75,
+      "sequence": 120
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 105,
+      "total": 206,
+      "sourceBytes": 24155136,
+      "expandedBytes": 96620544,
+      "atMs": 33202.909999996424,
+      "sequence": 121
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 106,
+      "total": 206,
+      "sourceBytes": 24228864,
+      "expandedBytes": 96915456,
+      "atMs": 33203.97999998927,
+      "sequence": 122
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 107,
+      "total": 206,
+      "sourceBytes": 24376320,
+      "expandedBytes": 97505280,
+      "atMs": 33205.17499998212,
+      "sequence": 123
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 108,
+      "total": 206,
+      "sourceBytes": 24450048,
+      "expandedBytes": 97800192,
+      "atMs": 33206.02500000596,
+      "sequence": 124
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 109,
+      "total": 206,
+      "sourceBytes": 24597504,
+      "expandedBytes": 98390016,
+      "atMs": 33207.18000000715,
+      "sequence": 125
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 110,
+      "total": 206,
+      "sourceBytes": 24671232,
+      "expandedBytes": 98684928,
+      "atMs": 33208.37999999523,
+      "sequence": 126
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 111,
+      "total": 206,
+      "sourceBytes": 24818688,
+      "expandedBytes": 99274752,
+      "atMs": 33209.65000000596,
+      "sequence": 127
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 112,
+      "total": 206,
+      "sourceBytes": 24892416,
+      "expandedBytes": 99569664,
+      "atMs": 33210.67499998212,
+      "sequence": 128
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 113,
+      "total": 206,
+      "sourceBytes": 25039872,
+      "expandedBytes": 100159488,
+      "atMs": 33211.810000002384,
+      "sequence": 129
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 114,
+      "total": 206,
+      "sourceBytes": 25113600,
+      "expandedBytes": 100454400,
+      "atMs": 33212.72499999404,
+      "sequence": 130
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 115,
+      "total": 206,
+      "sourceBytes": 25261056,
+      "expandedBytes": 101044224,
+      "atMs": 33214.04499998689,
+      "sequence": 131
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 116,
+      "total": 206,
+      "sourceBytes": 25334784,
+      "expandedBytes": 101339136,
+      "atMs": 33215.10499998927,
+      "sequence": 132
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 117,
+      "total": 206,
+      "sourceBytes": 26219520,
+      "expandedBytes": 104878080,
+      "atMs": 33220.49500000477,
+      "sequence": 133
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 118,
+      "total": 206,
+      "sourceBytes": 26661888,
+      "expandedBytes": 106647552,
+      "atMs": 33224.31999999285,
+      "sequence": 134
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 119,
+      "total": 206,
+      "sourceBytes": 27104256,
+      "expandedBytes": 108417024,
+      "atMs": 33227.65500000119,
+      "sequence": 135
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 120,
+      "total": 206,
+      "sourceBytes": 27325440,
+      "expandedBytes": 109301760,
+      "atMs": 33230.125,
+      "sequence": 136
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 121,
+      "total": 206,
+      "sourceBytes": 28210176,
+      "expandedBytes": 112840704,
+      "atMs": 33235.64499998093,
+      "sequence": 137
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 122,
+      "total": 206,
+      "sourceBytes": 28652544,
+      "expandedBytes": 114610176,
+      "atMs": 33239.64499998093,
+      "sequence": 138
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 123,
+      "total": 206,
+      "sourceBytes": 29094912,
+      "expandedBytes": 116379648,
+      "atMs": 33242.57499998808,
+      "sequence": 139
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 124,
+      "total": 206,
+      "sourceBytes": 29316096,
+      "expandedBytes": 117264384,
+      "atMs": 33244.71999999881,
+      "sequence": 140
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 125,
+      "total": 206,
+      "sourceBytes": 30643200,
+      "expandedBytes": 122572800,
+      "atMs": 33252.75,
+      "sequence": 141
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 126,
+      "total": 206,
+      "sourceBytes": 31306752,
+      "expandedBytes": 125227008,
+      "atMs": 33258.37000000477,
+      "sequence": 142
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 127,
+      "total": 206,
+      "sourceBytes": 31896576,
+      "expandedBytes": 127586304,
+      "atMs": 33262.62000000477,
+      "sequence": 143
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 128,
+      "total": 206,
+      "sourceBytes": 32191488,
+      "expandedBytes": 128765952,
+      "atMs": 33265.53000000119,
+      "sequence": 144
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 129,
+      "total": 206,
+      "sourceBytes": 33518592,
+      "expandedBytes": 134074368,
+      "atMs": 33273.29499998689,
+      "sequence": 145
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 130,
+      "total": 206,
+      "sourceBytes": 34182144,
+      "expandedBytes": 136728576,
+      "atMs": 33279.215000003576,
+      "sequence": 146
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 131,
+      "total": 206,
+      "sourceBytes": 34771968,
+      "expandedBytes": 139087872,
+      "atMs": 33283.00499999523,
+      "sequence": 147
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 132,
+      "total": 206,
+      "sourceBytes": 35066880,
+      "expandedBytes": 140267520,
+      "atMs": 33286.25,
+      "sequence": 148
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 133,
+      "total": 206,
+      "sourceBytes": 36393984,
+      "expandedBytes": 145575936,
+      "atMs": 33294.49500000477,
+      "sequence": 149
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 134,
+      "total": 206,
+      "sourceBytes": 37057536,
+      "expandedBytes": 148230144,
+      "atMs": 33300.99000000954,
+      "sequence": 150
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 135,
+      "total": 206,
+      "sourceBytes": 37647360,
+      "expandedBytes": 150589440,
+      "atMs": 33305.01999998093,
+      "sequence": 151
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 136,
+      "total": 206,
+      "sourceBytes": 37942272,
+      "expandedBytes": 151769088,
+      "atMs": 33307.810000002384,
+      "sequence": 152
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 137,
+      "total": 206,
+      "sourceBytes": 39269376,
+      "expandedBytes": 157077504,
+      "atMs": 33315.625,
+      "sequence": 153
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 138,
+      "total": 206,
+      "sourceBytes": 39932928,
+      "expandedBytes": 159731712,
+      "atMs": 33321.84499999881,
+      "sequence": 154
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 139,
+      "total": 206,
+      "sourceBytes": 40522752,
+      "expandedBytes": 162091008,
+      "atMs": 33325.435000002384,
+      "sequence": 155
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 140,
+      "total": 206,
+      "sourceBytes": 40817664,
+      "expandedBytes": 163270656,
+      "atMs": 33328.43000000715,
+      "sequence": 156
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 141,
+      "total": 206,
+      "sourceBytes": 42144768,
+      "expandedBytes": 168579072,
+      "atMs": 33335.960000008345,
+      "sequence": 157
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 142,
+      "total": 206,
+      "sourceBytes": 42808320,
+      "expandedBytes": 171233280,
+      "atMs": 33341.784999996424,
+      "sequence": 158
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 143,
+      "total": 206,
+      "sourceBytes": 43398144,
+      "expandedBytes": 173592576,
+      "atMs": 33345.875,
+      "sequence": 159
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 144,
+      "total": 206,
+      "sourceBytes": 43693056,
+      "expandedBytes": 174772224,
+      "atMs": 33348.63499999046,
+      "sequence": 160
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 145,
+      "total": 206,
+      "sourceBytes": 45020160,
+      "expandedBytes": 180080640,
+      "atMs": 33357.36500000954,
+      "sequence": 161
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 146,
+      "total": 206,
+      "sourceBytes": 45683712,
+      "expandedBytes": 182734848,
+      "atMs": 33363.37999999523,
+      "sequence": 162
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 147,
+      "total": 206,
+      "sourceBytes": 46273536,
+      "expandedBytes": 185094144,
+      "atMs": 33367.14499998093,
+      "sequence": 163
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 148,
+      "total": 206,
+      "sourceBytes": 46568448,
+      "expandedBytes": 186273792,
+      "atMs": 33370.67499998212,
+      "sequence": 164
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 149,
+      "total": 206,
+      "sourceBytes": 47895552,
+      "expandedBytes": 191582208,
+      "atMs": 33379.12999999523,
+      "sequence": 165
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 150,
+      "total": 206,
+      "sourceBytes": 48559104,
+      "expandedBytes": 194236416,
+      "atMs": 33385.435000002384,
+      "sequence": 166
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 151,
+      "total": 206,
+      "sourceBytes": 49148928,
+      "expandedBytes": 196595712,
+      "atMs": 33389.590000003576,
+      "sequence": 167
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 152,
+      "total": 206,
+      "sourceBytes": 49443840,
+      "expandedBytes": 197775360,
+      "atMs": 33392.914999991655,
+      "sequence": 168
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 153,
+      "total": 206,
+      "sourceBytes": 50770944,
+      "expandedBytes": 203083776,
+      "atMs": 33400.53000000119,
+      "sequence": 169
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 154,
+      "total": 206,
+      "sourceBytes": 51434496,
+      "expandedBytes": 205737984,
+      "atMs": 33406.889999985695,
+      "sequence": 170
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 155,
+      "total": 206,
+      "sourceBytes": 52024320,
+      "expandedBytes": 208097280,
+      "atMs": 33411.43000000715,
+      "sequence": 171
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 156,
+      "total": 206,
+      "sourceBytes": 52319232,
+      "expandedBytes": 209276928,
+      "atMs": 33414.314999997616,
+      "sequence": 172
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 157,
+      "total": 206,
+      "sourceBytes": 53646336,
+      "expandedBytes": 214585344,
+      "atMs": 33422.34999999404,
+      "sequence": 173
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 158,
+      "total": 206,
+      "sourceBytes": 54309888,
+      "expandedBytes": 217239552,
+      "atMs": 33428.965000003576,
+      "sequence": 174
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 159,
+      "total": 206,
+      "sourceBytes": 54899712,
+      "expandedBytes": 219598848,
+      "atMs": 33433.03000000119,
+      "sequence": 175
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 160,
+      "total": 206,
+      "sourceBytes": 55194624,
+      "expandedBytes": 220778496,
+      "atMs": 33436.465000003576,
+      "sequence": 176
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 161,
+      "total": 206,
+      "sourceBytes": 56521728,
+      "expandedBytes": 226086912,
+      "atMs": 33444.689999997616,
+      "sequence": 177
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 162,
+      "total": 206,
+      "sourceBytes": 57185280,
+      "expandedBytes": 228741120,
+      "atMs": 33450.19499999285,
+      "sequence": 178
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 163,
+      "total": 206,
+      "sourceBytes": 57775104,
+      "expandedBytes": 231100416,
+      "atMs": 33454.19999998808,
+      "sequence": 179
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 164,
+      "total": 206,
+      "sourceBytes": 58070016,
+      "expandedBytes": 232280064,
+      "atMs": 33457.55500000715,
+      "sequence": 180
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 165,
+      "total": 206,
+      "sourceBytes": 59397120,
+      "expandedBytes": 237588480,
+      "atMs": 33465.289999991655,
+      "sequence": 181
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 166,
+      "total": 206,
+      "sourceBytes": 60060672,
+      "expandedBytes": 240242688,
+      "atMs": 33471.61500000954,
+      "sequence": 182
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 167,
+      "total": 206,
+      "sourceBytes": 60650496,
+      "expandedBytes": 242601984,
+      "atMs": 33475.62000000477,
+      "sequence": 183
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 168,
+      "total": 206,
+      "sourceBytes": 60945408,
+      "expandedBytes": 243781632,
+      "atMs": 33479.10499998927,
+      "sequence": 184
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 169,
+      "total": 206,
+      "sourceBytes": 62272512,
+      "expandedBytes": 249090048,
+      "atMs": 33487.95499998331,
+      "sequence": 185
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 170,
+      "total": 206,
+      "sourceBytes": 62936064,
+      "expandedBytes": 251744256,
+      "atMs": 33493.71999999881,
+      "sequence": 186
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 171,
+      "total": 206,
+      "sourceBytes": 63525888,
+      "expandedBytes": 254103552,
+      "atMs": 33497.61500000954,
+      "sequence": 187
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 172,
+      "total": 206,
+      "sourceBytes": 63820800,
+      "expandedBytes": 255283200,
+      "atMs": 33500.87000000477,
+      "sequence": 188
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 173,
+      "total": 206,
+      "sourceBytes": 65147904,
+      "expandedBytes": 260591616,
+      "atMs": 33508.35499998927,
+      "sequence": 189
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 174,
+      "total": 206,
+      "sourceBytes": 65811456,
+      "expandedBytes": 263245824,
+      "atMs": 33515.139999985695,
+      "sequence": 190
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 175,
+      "total": 206,
+      "sourceBytes": 66401280,
+      "expandedBytes": 265605120,
+      "atMs": 33519.409999996424,
+      "sequence": 191
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 176,
+      "total": 206,
+      "sourceBytes": 66696192,
+      "expandedBytes": 266784768,
+      "atMs": 33522.82499998808,
+      "sequence": 192
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 177,
+      "total": 206,
+      "sourceBytes": 68023296,
+      "expandedBytes": 272093184,
+      "atMs": 33531.36500000954,
+      "sequence": 193
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 178,
+      "total": 206,
+      "sourceBytes": 68686848,
+      "expandedBytes": 274747392,
+      "atMs": 33538.50999999046,
+      "sequence": 194
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 179,
+      "total": 206,
+      "sourceBytes": 69276672,
+      "expandedBytes": 277106688,
+      "atMs": 33545.42499998212,
+      "sequence": 195
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 180,
+      "total": 206,
+      "sourceBytes": 69571584,
+      "expandedBytes": 278286336,
+      "atMs": 33548.9849999845,
+      "sequence": 196
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 181,
+      "total": 206,
+      "sourceBytes": 70898688,
+      "expandedBytes": 283594752,
+      "atMs": 33557.210000008345,
+      "sequence": 197
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 182,
+      "total": 206,
+      "sourceBytes": 71562240,
+      "expandedBytes": 286248960,
+      "atMs": 33563.35499998927,
+      "sequence": 198
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 183,
+      "total": 206,
+      "sourceBytes": 72152064,
+      "expandedBytes": 288608256,
+      "atMs": 33567.460000008345,
+      "sequence": 199
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 184,
+      "total": 206,
+      "sourceBytes": 72446976,
+      "expandedBytes": 289787904,
+      "atMs": 33570.539999991655,
+      "sequence": 200
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 185,
+      "total": 206,
+      "sourceBytes": 73774080,
+      "expandedBytes": 295096320,
+      "atMs": 33578.24500000477,
+      "sequence": 201
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 186,
+      "total": 206,
+      "sourceBytes": 74437632,
+      "expandedBytes": 297750528,
+      "atMs": 33583.84499999881,
+      "sequence": 202
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 187,
+      "total": 206,
+      "sourceBytes": 75027456,
+      "expandedBytes": 300109824,
+      "atMs": 33587.789999991655,
+      "sequence": 203
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 188,
+      "total": 206,
+      "sourceBytes": 75322368,
+      "expandedBytes": 301289472,
+      "atMs": 33590.72999998927,
+      "sequence": 204
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 189,
+      "total": 206,
+      "sourceBytes": 76649472,
+      "expandedBytes": 306597888,
+      "atMs": 33599.07499998808,
+      "sequence": 205
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 190,
+      "total": 206,
+      "sourceBytes": 77313024,
+      "expandedBytes": 309252096,
+      "atMs": 33605.310000002384,
+      "sequence": 206
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 191,
+      "total": 206,
+      "sourceBytes": 77902848,
+      "expandedBytes": 311611392,
+      "atMs": 33609.3599999845,
+      "sequence": 207
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 192,
+      "total": 206,
+      "sourceBytes": 78197760,
+      "expandedBytes": 312791040,
+      "atMs": 33612.335000008345,
+      "sequence": 208
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 193,
+      "total": 206,
+      "sourceBytes": 79524864,
+      "expandedBytes": 318099456,
+      "atMs": 33620.60499998927,
+      "sequence": 209
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 194,
+      "total": 206,
+      "sourceBytes": 80188416,
+      "expandedBytes": 320753664,
+      "atMs": 33626.70499998331,
+      "sequence": 210
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 195,
+      "total": 206,
+      "sourceBytes": 80778240,
+      "expandedBytes": 323112960,
+      "atMs": 33630.47999998927,
+      "sequence": 211
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 196,
+      "total": 206,
+      "sourceBytes": 81073152,
+      "expandedBytes": 324292608,
+      "atMs": 33633.590000003576,
+      "sequence": 212
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 197,
+      "total": 206,
+      "sourceBytes": 82400256,
+      "expandedBytes": 329601024,
+      "atMs": 33642.060000002384,
+      "sequence": 213
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 198,
+      "total": 206,
+      "sourceBytes": 83063808,
+      "expandedBytes": 332255232,
+      "atMs": 33648.59999999404,
+      "sequence": 214
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 199,
+      "total": 206,
+      "sourceBytes": 83653632,
+      "expandedBytes": 334614528,
+      "atMs": 33653.00499999523,
+      "sequence": 215
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 200,
+      "total": 206,
+      "sourceBytes": 83948544,
+      "expandedBytes": 335794176,
+      "atMs": 33655.875,
+      "sequence": 216
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 201,
+      "total": 206,
+      "sourceBytes": 85275648,
+      "expandedBytes": 341102592,
+      "atMs": 33663.789999991655,
+      "sequence": 217
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 202,
+      "total": 206,
+      "sourceBytes": 85939200,
+      "expandedBytes": 343756800,
+      "atMs": 33669.39499998093,
+      "sequence": 218
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 203,
+      "total": 206,
+      "sourceBytes": 86529024,
+      "expandedBytes": 346116096,
+      "atMs": 33673.01999998093,
+      "sequence": 219
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 204,
+      "total": 206,
+      "sourceBytes": 86823936,
+      "expandedBytes": 347295744,
+      "atMs": 33675.74000000954,
+      "sequence": 220
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 205,
+      "total": 206,
+      "sourceBytes": 86830080,
+      "expandedBytes": 347320320,
+      "atMs": 33676.340000003576,
+      "sequence": 221
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 206,
+      "total": 206,
+      "sourceBytes": 86833152,
+      "expandedBytes": 347332608,
+      "atMs": 33676.95499998331,
+      "sequence": 222
+    },
+    {
+      "type": "progress",
+      "phase": "loaded",
+      "stage": "denoise",
+      "elapsedMs": 5231.384999990463,
+      "creates": {
+        "text": 1,
+        "encode": 1,
+        "denoise": 1,
+        "decode": 0
+      },
+      "memory": null,
+      "atMs": 38206.74000000954,
+      "sequence": 223
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 38215.97499999404,
+      "sequence": 224
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8212.405000001192,
+      "atMs": 46418.31999999285,
+      "sequence": 225
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 46428.659999996424,
+      "sequence": 226
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1824,
+      "atMs": 46481.18000000715,
+      "sequence": 227
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 46485.22999998927,
+      "sequence": 228
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 46486.26999998093,
+      "sequence": 229
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 7148.229999989271,
+      "atMs": 53633.57999998331,
+      "sequence": 230
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 53633.659999996424,
+      "sequence": 231
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 2,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1824,
+      "atMs": 53638.32499998808,
+      "sequence": 232
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 53640.814999997616,
+      "sequence": 233
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 53640.909999996424,
+      "sequence": 234
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 7235.919999986887,
+      "atMs": 60876.82499998808,
+      "sequence": 235
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 60876.8599999845,
+      "sequence": 236
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 3,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1824,
+      "atMs": 60898.939999997616,
+      "sequence": 237
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 60900.014999985695,
+      "sequence": 238
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 60900.034999996424,
+      "sequence": 239
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 7623.905000001192,
+      "atMs": 68524.10499998927,
+      "sequence": 240
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 68526.07999998331,
+      "sequence": 241
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 4,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1824,
+      "atMs": 68529.51999998093,
+      "sequence": 242
+    },
+    {
+      "type": "progress",
+      "phase": "loading",
+      "stage": "decode",
+      "atMs": 68531.96999999881,
+      "sequence": 243
+    },
+    {
+      "type": "progress",
+      "phase": "loaded",
+      "stage": "decode",
+      "elapsedMs": 343.47499999403954,
+      "creates": {
+        "text": 1,
+        "encode": 1,
+        "denoise": 1,
+        "decode": 1
+      },
+      "memory": null,
+      "atMs": 68875.53999999166,
+      "sequence": 244
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "decode",
+      "outputShape": [
+        1,
+        3,
+        384,
+        384
+      ],
+      "atMs": 68875.6099999845,
+      "sequence": 245
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 992.2649999856949,
+      "atMs": 69867.80500000715,
+      "sequence": 246
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "decode",
+      "atMs": 69867.84499999881,
+      "sequence": 247
+    },
+    {
+      "type": "progress",
+      "phase": "organism-capture",
+      "name": "Civet",
+      "atMs": 69900.33500000834,
+      "sequence": 248
+    },
+    {
+      "type": "progress",
+      "phase": "organism-complete",
+      "name": "Civet",
+      "elapsedMs": 68264.32999998331,
+      "atMs": 69911.7349999845,
+      "sequence": 249
+    },
+    {
+      "type": "progress",
+      "phase": "organism-start",
+      "name": "Persimmon",
+      "index": 2,
+      "total": 6,
+      "atMs": 69911.76999998093,
+      "sequence": 250
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "encode",
+      "atMs": 69924.12000000477,
+      "sequence": 251
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "encode",
+      "outputShape": [
+        1,
+        128,
+        24,
+        24
+      ],
+      "atMs": 69924.15000000596,
+      "sequence": 252
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 329.80499997735023,
+      "atMs": 70253.96500000358,
+      "sequence": 253
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "encode",
+      "atMs": 70254.00499999523,
+      "sequence": 254
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "text",
+      "atMs": 70307.05500000715,
+      "sequence": 255
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "text",
+      "outputShape": [
+        1,
+        1744,
+        7680
+      ],
+      "atMs": 70307.09000000358,
+      "sequence": 256
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 28858.12000000477,
+      "atMs": 99165.22499999404,
+      "sequence": 257
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "text",
+      "atMs": 99165.27500000596,
+      "sequence": 258
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 99255.52500000596,
+      "sequence": 259
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 99255.56499999762,
+      "sequence": 260
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8093.754999995232,
+      "atMs": 107349.39499998093,
+      "sequence": 261
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 107349.49000000954,
+      "sequence": 262
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 107356.875,
+      "sequence": 263
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 107359.1099999845,
+      "sequence": 264
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 107359.13499999046,
+      "sequence": 265
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8176.939999997616,
+      "atMs": 115536.09499999881,
+      "sequence": 266
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 115536.12999999523,
+      "sequence": 267
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 2,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 115539.97999998927,
+      "sequence": 268
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 115542.22999998927,
+      "sequence": 269
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 115542.25,
+      "sequence": 270
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8143.060000002384,
+      "atMs": 123685.34499999881,
+      "sequence": 271
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 123685.37999999523,
+      "sequence": 272
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 3,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 123689.43000000715,
+      "sequence": 273
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 123691.68999999762,
+      "sequence": 274
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 123691.71999999881,
+      "sequence": 275
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8319.435000002384,
+      "atMs": 132011.17499998212,
+      "sequence": 276
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 132011.2349999845,
+      "sequence": 277
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 4,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 132016.9050000012,
+      "sequence": 278
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "decode",
+      "atMs": 132017.28999999166,
+      "sequence": 279
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "decode",
+      "outputShape": [
+        1,
+        3,
+        384,
+        384
+      ],
+      "atMs": 132017.30500000715,
+      "sequence": 280
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 838.5799999833107,
+      "atMs": 132855.91499999166,
+      "sequence": 281
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "decode",
+      "atMs": 132855.9549999833,
+      "sequence": 282
+    },
+    {
+      "type": "progress",
+      "phase": "organism-capture",
+      "name": "Persimmon",
+      "atMs": 132871.52500000596,
+      "sequence": 283
+    },
+    {
+      "type": "progress",
+      "phase": "organism-complete",
+      "name": "Persimmon",
+      "elapsedMs": 62968.485000014305,
+      "atMs": 132876.97999998927,
+      "sequence": 284
+    },
+    {
+      "type": "progress",
+      "phase": "organism-start",
+      "name": "Platypus",
+      "index": 3,
+      "total": 6,
+      "atMs": 132877.40000000596,
+      "sequence": 285
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "encode",
+      "atMs": 132882.18500000238,
+      "sequence": 286
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "encode",
+      "outputShape": [
+        1,
+        128,
+        24,
+        24
+      ],
+      "atMs": 132882.19499999285,
+      "sequence": 287
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 373.0349999964237,
+      "atMs": 133255.25,
+      "sequence": 288
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "encode",
+      "atMs": 133255.2949999869,
+      "sequence": 289
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "text",
+      "atMs": 133259.49500000477,
+      "sequence": 290
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "text",
+      "outputShape": [
+        1,
+        1824,
+        7680
+      ],
+      "atMs": 133259.51999998093,
+      "sequence": 291
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 27661.34999999404,
+      "atMs": 160920.90000000596,
+      "sequence": 292
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "text",
+      "atMs": 160920.93500000238,
+      "sequence": 293
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 161015.27500000596,
+      "sequence": 294
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 161015.31999999285,
+      "sequence": 295
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8264.59999999404,
+      "atMs": 169280.12999999523,
+      "sequence": 296
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 169280.31000000238,
+      "sequence": 297
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1824,
+      "atMs": 169290.59999999404,
+      "sequence": 298
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 169293.75,
+      "sequence": 299
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 169293.77500000596,
+      "sequence": 300
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8319.844999998808,
+      "atMs": 177613.6399999857,
+      "sequence": 301
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 177613.68000000715,
+      "sequence": 302
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 2,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1824,
+      "atMs": 177617.18500000238,
+      "sequence": 303
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 177619.57499998808,
+      "sequence": 304
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 177619.58500000834,
+      "sequence": 305
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8344.844999998808,
+      "atMs": 185964.46500000358,
+      "sequence": 306
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 185964.5,
+      "sequence": 307
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 3,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1824,
+      "atMs": 185968.0149999857,
+      "sequence": 308
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 185970.07499998808,
+      "sequence": 309
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 185970.1099999845,
+      "sequence": 310
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8327.54500001669,
+      "atMs": 194297.65000000596,
+      "sequence": 311
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 194297.68999999762,
+      "sequence": 312
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 4,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1824,
+      "atMs": 194301.2649999857,
+      "sequence": 313
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "decode",
+      "atMs": 194302.61500000954,
+      "sequence": 314
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "decode",
+      "outputShape": [
+        1,
+        3,
+        384,
+        384
+      ],
+      "atMs": 194302.625,
+      "sequence": 315
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 1053.375,
+      "atMs": 195356.04999998212,
+      "sequence": 316
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "decode",
+      "atMs": 195356.0949999988,
+      "sequence": 317
+    },
+    {
+      "type": "progress",
+      "phase": "organism-capture",
+      "name": "Platypus",
+      "atMs": 195365.34000000358,
+      "sequence": 318
+    },
+    {
+      "type": "progress",
+      "phase": "organism-complete",
+      "name": "Platypus",
+      "elapsedMs": 62494.05000001192,
+      "atMs": 195373.62000000477,
+      "sequence": 319
+    },
+    {
+      "type": "progress",
+      "phase": "organism-start",
+      "name": "Frog",
+      "index": 4,
+      "total": 6,
+      "atMs": 195373.65000000596,
+      "sequence": 320
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "encode",
+      "atMs": 195376.67499998212,
+      "sequence": 321
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "encode",
+      "outputShape": [
+        1,
+        128,
+        24,
+        24
+      ],
+      "atMs": 195376.68500000238,
+      "sequence": 322
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 374.52500000596046,
+      "atMs": 195751.24000000954,
+      "sequence": 323
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "encode",
+      "atMs": 195751.27500000596,
+      "sequence": 324
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "text",
+      "atMs": 195756.03499999642,
+      "sequence": 325
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "text",
+      "outputShape": [
+        1,
+        1792,
+        7680
+      ],
+      "atMs": 195756.07499998808,
+      "sequence": 326
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 27017.57999998331,
+      "atMs": 222773.68999999762,
+      "sequence": 327
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "text",
+      "atMs": 222773.7649999857,
+      "sequence": 328
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 222862.31999999285,
+      "sequence": 329
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 222862.3599999845,
+      "sequence": 330
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8223.784999996424,
+      "atMs": 231086.2949999869,
+      "sequence": 331
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 231086.4549999833,
+      "sequence": 332
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1792,
+      "atMs": 231092.72499999404,
+      "sequence": 333
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 231095.31000000238,
+      "sequence": 334
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 231095.3299999833,
+      "sequence": 335
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8272.769999980927,
+      "atMs": 239368.1099999845,
+      "sequence": 336
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 239368.15000000596,
+      "sequence": 337
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 2,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1792,
+      "atMs": 239372.06499999762,
+      "sequence": 338
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 239374.25999999046,
+      "sequence": 339
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 239374.27500000596,
+      "sequence": 340
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8245.569999992847,
+      "atMs": 247619.87999999523,
+      "sequence": 341
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 247619.92499998212,
+      "sequence": 342
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 3,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1792,
+      "atMs": 247624.47499999404,
+      "sequence": 343
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 247626.6699999869,
+      "sequence": 344
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 247626.67499998212,
+      "sequence": 345
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8250.104999989271,
+      "atMs": 255876.82499998808,
+      "sequence": 346
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 255876.8599999845,
+      "sequence": 347
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 4,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1792,
+      "atMs": 255880.19999998808,
+      "sequence": 348
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "decode",
+      "atMs": 255880.37999999523,
+      "sequence": 349
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "decode",
+      "outputShape": [
+        1,
+        3,
+        384,
+        384
+      ],
+      "atMs": 255880.3899999857,
+      "sequence": 350
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 828.2049999833107,
+      "atMs": 256708.6399999857,
+      "sequence": 351
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "decode",
+      "atMs": 256708.68999999762,
+      "sequence": 352
+    },
+    {
+      "type": "progress",
+      "phase": "organism-capture",
+      "name": "Frog",
+      "atMs": 256716.03499999642,
+      "sequence": 353
+    },
+    {
+      "type": "progress",
+      "phase": "organism-complete",
+      "name": "Frog",
+      "elapsedMs": 61348.6400000155,
+      "atMs": 256720.7800000012,
+      "sequence": 354
+    },
+    {
+      "type": "progress",
+      "phase": "organism-start",
+      "name": "Devil's Club",
+      "index": 5,
+      "total": 6,
+      "atMs": 256720.79999998212,
+      "sequence": 355
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "encode",
+      "atMs": 256724.28499999642,
+      "sequence": 356
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "encode",
+      "outputShape": [
+        1,
+        128,
+        24,
+        24
+      ],
+      "atMs": 256724.30500000715,
+      "sequence": 357
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 372.52000001072884,
+      "atMs": 257096.84000000358,
+      "sequence": 358
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "encode",
+      "atMs": 257096.875,
+      "sequence": 359
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "text",
+      "atMs": 257102.06999999285,
+      "sequence": 360
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "text",
+      "outputShape": [
+        1,
+        1744,
+        7680
+      ],
+      "atMs": 257102.09999999404,
+      "sequence": 361
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 26169.215000003576,
+      "atMs": 283271.34999999404,
+      "sequence": 362
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "text",
+      "atMs": 283271.40000000596,
+      "sequence": 363
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 283341.37999999523,
+      "sequence": 364
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 283341.43000000715,
+      "sequence": 365
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8102.034999996424,
+      "atMs": 291443.44499999285,
+      "sequence": 366
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 291443.49000000954,
+      "sequence": 367
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 291447.0949999988,
+      "sequence": 368
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 291449.37999999523,
+      "sequence": 369
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 291449.40000000596,
+      "sequence": 370
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8166.539999991655,
+      "atMs": 299616.00999999046,
+      "sequence": 371
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 299616.06999999285,
+      "sequence": 372
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 2,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 299619.7649999857,
+      "sequence": 373
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 299622.06999999285,
+      "sequence": 374
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 299622.0900000036,
+      "sequence": 375
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8107.115000009537,
+      "atMs": 307729.2199999988,
+      "sequence": 376
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 307729.25999999046,
+      "sequence": 377
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 3,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 307733.21000000834,
+      "sequence": 378
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 307735.55500000715,
+      "sequence": 379
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 307735.5799999833,
+      "sequence": 380
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8120.469999998808,
+      "atMs": 315856.0600000024,
+      "sequence": 381
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 315856.0900000036,
+      "sequence": 382
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 4,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 315859.625,
+      "sequence": 383
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "decode",
+      "atMs": 315859.8899999857,
+      "sequence": 384
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "decode",
+      "outputShape": [
+        1,
+        3,
+        384,
+        384
+      ],
+      "atMs": 315859.8949999809,
+      "sequence": 385
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 825.8799999952316,
+      "atMs": 316685.83500000834,
+      "sequence": 386
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "decode",
+      "atMs": 316685.8949999809,
+      "sequence": 387
+    },
+    {
+      "type": "progress",
+      "phase": "organism-capture",
+      "name": "Devil's Club",
+      "atMs": 316697.71000000834,
+      "sequence": 388
+    },
+    {
+      "type": "progress",
+      "phase": "organism-complete",
+      "name": "Devil's Club",
+      "elapsedMs": 59983.40500000119,
+      "atMs": 316703.1399999857,
+      "sequence": 389
+    },
+    {
+      "type": "progress",
+      "phase": "organism-start",
+      "name": "Cranberry",
+      "index": 6,
+      "total": 6,
+      "atMs": 316703.1699999869,
+      "sequence": 390
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "encode",
+      "atMs": 316709.36500000954,
+      "sequence": 391
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "encode",
+      "outputShape": [
+        1,
+        128,
+        24,
+        24
+      ],
+      "atMs": 316709.37999999523,
+      "sequence": 392
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 374.7099999785423,
+      "atMs": 317084.1049999893,
+      "sequence": 393
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "encode",
+      "atMs": 317084.1449999809,
+      "sequence": 394
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "text",
+      "atMs": 317088.0149999857,
+      "sequence": 395
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "text",
+      "outputShape": [
+        1,
+        1744,
+        7680
+      ],
+      "atMs": 317088.03999999166,
+      "sequence": 396
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 26137.435000002384,
+      "atMs": 343225.50499999523,
+      "sequence": 397
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "text",
+      "atMs": 343225.55500000715,
+      "sequence": 398
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 343299.1749999821,
+      "sequence": 399
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 343299.21000000834,
+      "sequence": 400
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8119.789999991655,
+      "atMs": 351419,
+      "sequence": 401
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 351419.0900000036,
+      "sequence": 402
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 351424.6999999881,
+      "sequence": 403
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 351426.86500000954,
+      "sequence": 404
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 351426.875,
+      "sequence": 405
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8147.359999984503,
+      "atMs": 359574.40000000596,
+      "sequence": 406
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 359574.4499999881,
+      "sequence": 407
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 2,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 359578.8549999893,
+      "sequence": 408
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 359581.18000000715,
+      "sequence": 409
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 359581.2150000036,
+      "sequence": 410
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8139.819999992847,
+      "atMs": 367721.0900000036,
+      "sequence": 411
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 367721.3299999833,
+      "sequence": 412
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 3,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 367724.6099999845,
+      "sequence": 413
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 367726.9249999821,
+      "sequence": 414
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        1248,
+        128
+      ],
+      "atMs": 367726.9499999881,
+      "sequence": 415
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8108.915000021458,
+      "atMs": 375835.875,
+      "sequence": 416
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 375835.9099999964,
+      "sequence": 417
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 4,
+      "steps": 4,
+      "imageTokens": 1248,
+      "textTokens": 1744,
+      "atMs": 375839.28999999166,
+      "sequence": 418
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "decode",
+      "atMs": 375839.38499999046,
+      "sequence": 419
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "decode",
+      "outputShape": [
+        1,
+        3,
+        384,
+        384
+      ],
+      "atMs": 375839.3949999809,
+      "sequence": 420
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 866.3050000071526,
+      "atMs": 376705.7649999857,
+      "sequence": 421
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "decode",
+      "atMs": 376705.81999999285,
+      "sequence": 422
+    },
+    {
+      "type": "progress",
+      "phase": "organism-capture",
+      "name": "Cranberry",
+      "atMs": 376715.90000000596,
+      "sequence": 423
+    },
+    {
+      "type": "progress",
+      "phase": "organism-complete",
+      "name": "Cranberry",
+      "elapsedMs": 60017.12000000477,
+      "atMs": 376720.25999999046,
+      "sequence": 424
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "encode",
+      "atMs": 376754.1099999845,
+      "sequence": 425
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "encode",
+      "outputShape": [
+        1,
+        128,
+        36,
+        64
+      ],
+      "atMs": 376754.1550000012,
+      "sequence": 426
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 1589.5550000071526,
+      "atMs": 378343.6899999976,
+      "sequence": 427
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "encode",
+      "atMs": 378343.7299999893,
+      "sequence": 428
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "encode",
+      "atMs": 378350.77500000596,
+      "sequence": 429
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "encode",
+      "outputShape": [
+        1,
+        128,
+        14,
+        32
+      ],
+      "atMs": 378350.8149999976,
+      "sequence": 430
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 299.375,
+      "atMs": 378650.1749999821,
+      "sequence": 431
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "encode",
+      "atMs": 378650.21000000834,
+      "sequence": 432
+    },
+    {
+      "type": "progress",
+      "phase": "finisher-start",
+      "atMs": 378650.81999999285,
+      "sequence": 433
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "text",
+      "atMs": 378656.1749999821,
+      "sequence": 434
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "text",
+      "outputShape": [
+        1,
+        1872,
+        7680
+      ],
+      "atMs": 378656.19499999285,
+      "sequence": 435
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 28610.984999984503,
+      "atMs": 407267.21000000834,
+      "sequence": 436
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "text",
+      "atMs": 407267.25999999046,
+      "sequence": 437
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 407387.65000000596,
+      "sequence": 438
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        2752,
+        128
+      ],
+      "atMs": 407387.6999999881,
+      "sequence": 439
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 13437.185000002384,
+      "atMs": 420831.6850000024,
+      "sequence": 440
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 420838.7800000012,
+      "sequence": 441
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 1,
+      "imageTokens": 2752,
+      "textTokens": 1872,
+      "atMs": 420870.0900000036,
+      "sequence": 442
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "decode",
+      "atMs": 420870.11500000954,
+      "sequence": 443
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "decode",
+      "outputShape": [
+        1,
+        3,
+        576,
+        1024
+      ],
+      "atMs": 420870.1399999857,
+      "sequence": 444
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 5323.719999998808,
+      "atMs": 426189.6550000012,
+      "sequence": 445
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "decode",
+      "atMs": 426189.7049999833,
+      "sequence": 446
+    }
+  ],
+  "sources": [
+    {
+      "url": "/recipe.json",
+      "file": "audits/ART_KIT_ENGINE_PROOF_20260912/recipe.json",
+      "bytes": 86303,
+      "sha256": "497dbf701285e6fdb90b8522b712b07a26e054b4c4b72b79807dc2547d13dac9"
+    },
+    {
+      "url": "/kit-client.mjs",
+      "file": "audits/ART_KIT_ENGINE_PROOF_20260912/kit-client.mjs",
+      "bytes": 3093,
+      "sha256": "8083821a25975a781e4ca8df66b5c74765a688bba4e481e3c209083121b0ebbe"
+    },
+    {
+      "url": "/kit-proof-client.mjs",
+      "file": "tools/local-image-generation/kit-proof-client.mjs",
+      "bytes": 1745,
+      "sha256": "a6e7de172ec31d1adf45a2dfedab20b86f7757679442df3ee3716298949195fa"
+    },
+    {
+      "url": "/stage-worker.mjs",
+      "file": "tools/local-image-generation/stage-worker.mjs",
+      "bytes": 16805,
+      "sha256": "3e8ead4eb94467c50d871b9000964602c3b045312f575cf249438c1b1be5b7ad"
+    },
+    {
+      "url": "/kit-worker-engine.mjs",
+      "file": "tools/local-image-generation/kit-worker-engine.mjs",
+      "bytes": 11968,
+      "sha256": "ebdac83d40c7ec3a2dd337ee1e808228cd45104e9130c331276329a9def218a7"
+    },
+    {
+      "url": "/kit-worker-expansion.mjs",
+      "file": "tools/local-image-generation/kit-worker-expansion.mjs",
+      "bytes": 3909,
+      "sha256": "d75124c0f39ba760af64049e9191806cbd278cb984de6e863264ea491e4b79fc"
+    },
+    {
+      "url": "/kit-engine-math.mjs",
+      "file": "tools/local-image-generation/kit-engine-math.mjs",
+      "bytes": 5004,
+      "sha256": "a9dba457df6bbbea58b01778955c346cf3efefcd1e55f0afc3d750a77609b9f2"
+    },
+    {
+      "url": "/pipeline-math.mjs",
+      "file": "tools/local-image-generation/pipeline-math.mjs",
+      "bytes": 10225,
+      "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+    },
+    {
+      "url": "/gpu-profile.mjs",
+      "file": "tools/local-image-generation/gpu-profile.mjs",
+      "bytes": 9725,
+      "sha256": "4a02596d6a885a88b894c4a285bd93be07437e856107c34489231c7191d2dbf1"
+    },
+    {
+      "url": "/denoiser-shapes.mjs",
+      "file": "tools/local-image-generation/denoiser-shapes.mjs",
+      "bytes": 2370,
+      "sha256": "c66850a4d3564e6336a2d5891152c2120d2847dcef87782d5197aae102e8f6d6"
+    },
+    {
+      "url": "/browser-variant-plan.json",
+      "file": "tools/local-image-generation/browser-variant-plan.json",
+      "bytes": 142918,
+      "sha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81"
+    },
+    {
+      "url": "/inputs/civet.rgba",
+      "file": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/civet.rgba",
+      "bytes": 589824,
+      "sha256": "447d80f0682694f8b483c21c6f45d6db4e7aa2ec9e29180177c8b2fde4835740"
+    },
+    {
+      "url": "/inputs/persimmon.rgba",
+      "file": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/persimmon.rgba",
+      "bytes": 589824,
+      "sha256": "57e0db93c9817f72210dfb46c3d41590f9ed9887aa6cd0c4c75ee801e0862b1f"
+    },
+    {
+      "url": "/inputs/platypus.rgba",
+      "file": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/platypus.rgba",
+      "bytes": 589824,
+      "sha256": "ef0d19aa79cbbf99cd3439c5fdcc6361df4acc00bb8de1f1f06dd8dbc0c9fbaf"
+    },
+    {
+      "url": "/inputs/frog.rgba",
+      "file": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/frog.rgba",
+      "bytes": 589824,
+      "sha256": "fefdfadb4e84da311c4dda6898d90b472d9ed89b1f83858bbb9d6747bdbd9fa5"
+    },
+    {
+      "url": "/inputs/devils-club.rgba",
+      "file": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/devils-club.rgba",
+      "bytes": 589824,
+      "sha256": "ae593073e675943ebe915bd1a69ba54b62e02804f11c942f3311e03e15948356"
+    },
+    {
+      "url": "/inputs/cranberry.rgba",
+      "file": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/cranberry.rgba",
+      "bytes": 589824,
+      "sha256": "2011a3a1371e38f45e9c85403917f966bcc758adb5d906c017917a01e5b9a58b"
+    },
+    {
+      "url": "/inputs/earth-temperate.rgba",
+      "file": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/earth-temperate.rgba",
+      "bytes": 2359296,
+      "sha256": "209907262f72b4ce21f89f0f25d51785f2bf2b704049f889badefe3b84ef5e5a"
+    },
+    {
+      "url": "/inputs/atlas.rgba",
+      "file": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/atlas.rgba",
+      "bytes": 688128,
+      "sha256": "7383061cbcc3e766a146e0aef4cabdd9864f5c4e2acd9edf4e1b9d39725a99b1"
+    },
+    {
+      "url": "/inputs/triptych.rgba",
+      "file": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/triptych.rgba",
+      "bytes": 458752,
+      "sha256": "22aa9825ccf55a4422fe10ea26845fedb1042f201b4d419a4699315f3a6e6974"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "bytes": 51407,
+      "sha256": "5d25483158d53d8f34d0e9c06a654d56c8dca4ebdf370ea0982ef11315a00e0e"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "bytes": 25749873,
+      "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.mjs",
+      "bytes": 46676,
+      "sha256": "3d68fa7af88c48894d4b0c8629de12018ab73b77519bc0b05dc8d908ad82749f"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.wasm",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.wasm",
+      "bytes": 27797172,
+      "sha256": "db816fadbab47a755170c08f933961e231412ac17f5981f9a62e519708a44dea"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.mjs",
+      "bytes": 49268,
+      "sha256": "f4a22e988ac3c2345e58c823a9254ac15f39271f86241bb2bbda0bc7e6b4dde6"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.wasm",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.wasm",
+      "bytes": 16025636,
+      "sha256": "8ef22fea2fec3d90dc2858e0392382cf6800b0855acfd6722ca1390e2fe15c56"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.mjs",
+      "bytes": 24218,
+      "sha256": "5a15f1fd086b3f6c2baf1f35105b8f502653b567e165cef80028870b39748747"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm",
+      "bytes": 13961845,
+      "sha256": "ec8580a9d7b9476ceee52e10a7f94124e4dc71a019d666ed6d4726697c109a4d"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs",
+      "bytes": 865147,
+      "sha256": "c600de656f52722365438926fbce6e926cd8594b1b4cd2f5cd4499c42f110c58"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.all.min.mjs",
+      "bytes": 819520,
+      "sha256": "e7a1ea699f25bdeeb3d9b9ff7ea26edb660fd15cab380e2fe479809d422f5e8b"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.all.mjs",
+      "bytes": 5929648,
+      "sha256": "93c437880b40d8ffe65c971cff28fa554e10b490f30f45382e2ebd78c457cb7b"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.bundle.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.bundle.min.mjs",
+      "bytes": 413328,
+      "sha256": "a32b8c695bfc78c1e6e5b72746364c1a7733b7b17c5759e3cffd8bc8e8158a91"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.bundle.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.jspi.bundle.min.mjs",
+      "bytes": 114239,
+      "sha256": "9afb4911acc005f370e838cf5cfce493728b2634c41afb15a0c716a8053dedee"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.jspi.min.mjs",
+      "bytes": 66510,
+      "sha256": "8d930290d7150c5d1bbd88d4e2988bddaf7e19b916c3b0e0e5e581e090b470f4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.jspi.mjs",
+      "bytes": 676607,
+      "sha256": "4df3efe5189e41e2eea36f16815bce1ff11979cd8ab5e3e27dfb731f95f9c135"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.min.mjs",
+      "bytes": 367933,
+      "sha256": "d0f6cf735704c25e713101804e24532be1ee754292fe05fa7dda708a3be1e6b4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.mjs",
+      "bytes": 2639881,
+      "sha256": "a4d8dde2bc3638eecf29d772ae48035c534d2160bfedf313f0365cb54e701f1f"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.node.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.node.min.mjs",
+      "bytes": 27061,
+      "sha256": "d03374770621e06e4750482236ec6dbd6299d0205b9de44b9eebe52a0721ef71"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.bundle.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.wasm.bundle.min.mjs",
+      "bytes": 72894,
+      "sha256": "7a3913dc5c7a9c3ad1144f5fbfecd402bc5013bcc886bc67664b18d8a15ab298"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.wasm.min.mjs",
+      "bytes": 50126,
+      "sha256": "14a0a63ad1a0fe8127722929fd16fb26c2e5352ea221bc9034d12daf314d0b92"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.wasm.mjs",
+      "bytes": 577671,
+      "sha256": "956c4b3b8d7dd15229c98bcc58869773e1d582737aec04b2e5c634bd932085a4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgl.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgl.min.mjs",
+      "bytes": 472167,
+      "sha256": "ce98866698d20fa9521a5d27520a3273a6860b85ff32a5c9f3fc22ee10b9786a"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgl.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgl.mjs",
+      "bytes": 3534309,
+      "sha256": "415c7a241d1c1c22a47cee581d76dd2aeb63ed90521cf562adf06ca2a5461c23"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.bundle.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.bundle.min.mjs",
+      "bytes": 116102,
+      "sha256": "2b943893e8b444fd3983c205f3574cddd70b1f8a6170c114b03cc3d6060c4cbb"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "bytes": 66348,
+      "sha256": "08272eb8dadd249a0eaa53e19f4e5b5d01bc8a121240719db29093cfb776bc27"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.mjs",
+      "bytes": 676586,
+      "sha256": "1aaf3cde11544e48f111a0911c4d08c6f1401043ec3822601d51dad39353bb9a"
+    },
+    {
+      "url": "/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "file": "tools/local-image-generation/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "bytes": 98937,
+      "sha256": "1c4a848f86156201c033d6cd08c4cf81ae1088552acec3367f31ef086edf5af0"
+    },
+    {
+      "url": "/triptych.png",
+      "file": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "bytes": 3014976,
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/triptych.png",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-proof-client.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-client.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/favicon.ico",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/recipe.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/stage-worker.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/pipeline-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/gpu-profile.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/denoiser-shapes.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-engine-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-worker-engine.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-worker-expansion.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/earth-temperate.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/atlas.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_encoder.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_encoder.onnx.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/civet.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/tokenizer/tokenizer.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/tokenizer/tokenizer_config.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4-00000.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4-00001.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/browser-variant-plan.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981239808-981245951"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981252096-981255167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=963477504-963846143"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971956224-972140543"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972140544-972287999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978038784-978112511"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972288000-972435455"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978112512-978186239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972435456-972582911"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978186240-978259967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972582912-972730367"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978259968-978333695"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972730368-972877823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978333696-978407423"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972877824-973025279"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978407424-978481151"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973025280-973172735"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978481152-978554879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973172736-973320191"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978554880-978628607"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=919928832-920813567"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=953843712-954286079"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=954286080-954728447"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969744384-969965567"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=920813568-921698303"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=954728448-955170815"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=955170816-955613183"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969965568-970186751"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973320192-973467647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978628608-978702335"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973467648-973615103"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978702336-978776063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973615104-973762559"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978776064-978849791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973762560-973910015"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978849792-978923519"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973910016-974057471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978923520-978997247"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974057472-974204927"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978997248-979070975"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974204928-974352383"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979070976-979144703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974352384-974499839"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979144704-979218431"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=921698304-922583039"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=955613184-956055551"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956055552-956497919"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970186752-970407935"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=922583040-923467775"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956497920-956940287"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956940288-957382655"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970407936-970629119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974499840-974647295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979218432-979292159"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974647296-974794751"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979292160-979365887"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974794752-974942207"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979365888-979439615"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974942208-975089663"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979439616-979513343"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975089664-975237119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979513344-979587071"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975237120-975384575"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979587072-979660799"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975384576-975532031"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979660800-979734527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975532032-975679487"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979734528-979808255"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=923467776-924352511"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=957382656-957825023"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=957825024-958267391"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970629120-970850303"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=924352512-925237247"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=958267392-958709759"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=958709760-959152127"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970850304-971071487"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975679488-975826943"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979808256-979881983"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975826944-975974399"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979881984-979955711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975974400-976121855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979955712-980029439"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976121856-976269311"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980029440-980103167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976269312-976416767"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980103168-980176895"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976416768-976564223"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980176896-980250623"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976564224-976711679"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980250624-980324351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976711680-976859135"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980324352-980398079"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=925237248-926121983"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=959152128-959594495"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=959594496-960036863"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971071488-971292671"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=926121984-927006719"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960036864-960479231"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960479232-960921599"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971292672-971513855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976859136-977006591"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980398080-980471807"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977006592-977154047"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980471808-980545535"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977154048-977301503"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980545536-980619263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977301504-977448959"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980619264-980692991"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977448960-977596415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980692992-980766719"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977596416-977743871"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980766720-980840447"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977743872-977891327"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980840448-980914175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977891328-978038783"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980914176-980987903"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=927006720-927891455"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960921600-961363967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=961363968-961806335"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971513856-971735039"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=927891456-928776191"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=961806336-962248703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=962248704-962691071"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971735040-971956223"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=893386752-894713855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=928776192-929439743"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=942047232-942637055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=963846144-964141055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=894713856-896040959"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=929439744-930103295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=942637056-943226879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964141056-964435967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=896040960-897368063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=930103296-930766847"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=943226880-943816703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964435968-964730879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=897368064-898695167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=930766848-931430399"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=943816704-944406527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964730880-965025791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=898695168-900022271"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=931430400-932093951"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=944406528-944996351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965025792-965320703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=900022272-901349375"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=932093952-932757503"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=944996352-945586175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965320704-965615615"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=901349376-902676479"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=932757504-933421055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=945586176-946175999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965615616-965910527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=902676480-904003583"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=933421056-934084607"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=946176000-946765823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965910528-966205439"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=904003584-905330687"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=934084608-934748159"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=946765824-947355647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966205440-966500351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=905330688-906657791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=934748160-935411711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=947355648-947945471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966500352-966795263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=906657792-907984895"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=935411712-936075263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=947945472-948535295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966795264-967090175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=907984896-909311999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=936075264-936738815"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=948535296-949125119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967090176-967385087"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=909312000-910639103"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=936738816-937402367"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=949125120-949714943"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967385088-967679999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=910639104-911966207"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=937402368-938065919"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=949714944-950304767"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967680000-967974911"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=911966208-913293311"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=938065920-938729471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=950304768-950894591"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967974912-968269823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=913293312-914620415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=938729472-939393023"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=950894592-951484415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968269824-968564735"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=914620416-915947519"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=939393024-940056575"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=951484416-952074239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968564736-968859647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=915947520-917274623"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=940056576-940720127"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=952074240-952664063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968859648-969154559"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=917274624-918601727"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=940720128-941383679"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=952664064-953253887"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969154560-969449471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=918601728-919928831"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=941383680-942047231"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=953253888-953843711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969449472-969744383"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981245952-981252095"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981255168-981258239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00000.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00001.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_decoder.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_decoder.onnx.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/persimmon.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/platypus.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/frog.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/devils-club.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/cranberry.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/triptych.rgba",
+      "range": null
+    }
+  ],
+  "memory": [
+    {
+      "at": "2026-09-12T16:29:44.354Z",
+      "rendererHeap": {
+        "usedSize": 616904,
+        "totalSize": 1310720,
+        "embedderHeapUsedSize": 1385328,
+        "backingStorageSize": 91511
+      }
+    },
+    {
+      "at": "2026-09-12T16:29:49.360Z",
+      "rendererHeap": {
+        "usedSize": 740216,
+        "totalSize": 1572864,
+        "embedderHeapUsedSize": 1385328,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:29:54.364Z",
+      "rendererHeap": {
+        "usedSize": 741084,
+        "totalSize": 1572864,
+        "embedderHeapUsedSize": 1385328,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:29:59.367Z",
+      "rendererHeap": {
+        "usedSize": 741952,
+        "totalSize": 1572864,
+        "embedderHeapUsedSize": 1385328,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:04.367Z",
+      "rendererHeap": {
+        "usedSize": 742820,
+        "totalSize": 1572864,
+        "embedderHeapUsedSize": 1385328,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:09.370Z",
+      "rendererHeap": {
+        "usedSize": 743688,
+        "totalSize": 1572864,
+        "embedderHeapUsedSize": 1385328,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:14.374Z",
+      "rendererHeap": {
+        "usedSize": 744556,
+        "totalSize": 1572864,
+        "embedderHeapUsedSize": 1385328,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:19.387Z",
+      "rendererHeap": {
+        "usedSize": 845056,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1754008,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:24.463Z",
+      "rendererHeap": {
+        "usedSize": 847092,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1754008,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:29.558Z",
+      "rendererHeap": {
+        "usedSize": 847976,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1754008,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:34.573Z",
+      "rendererHeap": {
+        "usedSize": 854004,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1756520,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:39.575Z",
+      "rendererHeap": {
+        "usedSize": 857140,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1756496,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:44.578Z",
+      "rendererHeap": {
+        "usedSize": 858016,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1756496,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:49.586Z",
+      "rendererHeap": {
+        "usedSize": 861152,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1757672,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:54.591Z",
+      "rendererHeap": {
+        "usedSize": 873420,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:30:59.592Z",
+      "rendererHeap": {
+        "usedSize": 874296,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:04.593Z",
+      "rendererHeap": {
+        "usedSize": 875172,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:09.595Z",
+      "rendererHeap": {
+        "usedSize": 876048,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:14.598Z",
+      "rendererHeap": {
+        "usedSize": 876924,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:19.599Z",
+      "rendererHeap": {
+        "usedSize": 877800,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:24.602Z",
+      "rendererHeap": {
+        "usedSize": 880472,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:29.605Z",
+      "rendererHeap": {
+        "usedSize": 881348,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:34.606Z",
+      "rendererHeap": {
+        "usedSize": 884484,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:39.608Z",
+      "rendererHeap": {
+        "usedSize": 885360,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:44.612Z",
+      "rendererHeap": {
+        "usedSize": 888496,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:49.614Z",
+      "rendererHeap": {
+        "usedSize": 891632,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:54.617Z",
+      "rendererHeap": {
+        "usedSize": 892508,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:31:59.619Z",
+      "rendererHeap": {
+        "usedSize": 900760,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:04.621Z",
+      "rendererHeap": {
+        "usedSize": 901636,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:09.623Z",
+      "rendererHeap": {
+        "usedSize": 902512,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:14.625Z",
+      "rendererHeap": {
+        "usedSize": 903388,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:19.629Z",
+      "rendererHeap": {
+        "usedSize": 904264,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:24.631Z",
+      "rendererHeap": {
+        "usedSize": 905140,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:29.639Z",
+      "rendererHeap": {
+        "usedSize": 907812,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2008040,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:34.642Z",
+      "rendererHeap": {
+        "usedSize": 910948,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:39.644Z",
+      "rendererHeap": {
+        "usedSize": 911824,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:44.647Z",
+      "rendererHeap": {
+        "usedSize": 914960,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:49.649Z",
+      "rendererHeap": {
+        "usedSize": 915836,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:54.651Z",
+      "rendererHeap": {
+        "usedSize": 918972,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:32:59.653Z",
+      "rendererHeap": {
+        "usedSize": 925352,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:04.656Z",
+      "rendererHeap": {
+        "usedSize": 928020,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:09.658Z",
+      "rendererHeap": {
+        "usedSize": 928896,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:14.660Z",
+      "rendererHeap": {
+        "usedSize": 929772,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:19.663Z",
+      "rendererHeap": {
+        "usedSize": 930648,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:24.666Z",
+      "rendererHeap": {
+        "usedSize": 931524,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:29.673Z",
+      "rendererHeap": {
+        "usedSize": 934196,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:34.675Z",
+      "rendererHeap": {
+        "usedSize": 935072,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:39.679Z",
+      "rendererHeap": {
+        "usedSize": 938208,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:44.682Z",
+      "rendererHeap": {
+        "usedSize": 941344,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:49.684Z",
+      "rendererHeap": {
+        "usedSize": 942220,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:54.689Z",
+      "rendererHeap": {
+        "usedSize": 945356,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:33:59.691Z",
+      "rendererHeap": {
+        "usedSize": 946232,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:04.694Z",
+      "rendererHeap": {
+        "usedSize": 956628,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:09.698Z",
+      "rendererHeap": {
+        "usedSize": 957504,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:14.702Z",
+      "rendererHeap": {
+        "usedSize": 958380,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:19.705Z",
+      "rendererHeap": {
+        "usedSize": 959256,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:24.707Z",
+      "rendererHeap": {
+        "usedSize": 960132,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:29.709Z",
+      "rendererHeap": {
+        "usedSize": 962804,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:34.712Z",
+      "rendererHeap": {
+        "usedSize": 963680,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:39.716Z",
+      "rendererHeap": {
+        "usedSize": 966816,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:44.719Z",
+      "rendererHeap": {
+        "usedSize": 969952,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:49.721Z",
+      "rendererHeap": {
+        "usedSize": 970828,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2107680,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:54.724Z",
+      "rendererHeap": {
+        "usedSize": 973964,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2189072,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:34:59.725Z",
+      "rendererHeap": {
+        "usedSize": 974840,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2189072,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:04.726Z",
+      "rendererHeap": {
+        "usedSize": 983040,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2188544,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:09.728Z",
+      "rendererHeap": {
+        "usedSize": 983916,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2188544,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:14.731Z",
+      "rendererHeap": {
+        "usedSize": 984792,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2188544,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:19.733Z",
+      "rendererHeap": {
+        "usedSize": 985668,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2188544,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:24.734Z",
+      "rendererHeap": {
+        "usedSize": 986544,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2188544,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:29.737Z",
+      "rendererHeap": {
+        "usedSize": 989216,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2317000,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:34.738Z",
+      "rendererHeap": {
+        "usedSize": 990092,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2317000,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:39.740Z",
+      "rendererHeap": {
+        "usedSize": 993216,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2318120,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:44.743Z",
+      "rendererHeap": {
+        "usedSize": 996352,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2320360,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:49.746Z",
+      "rendererHeap": {
+        "usedSize": 997228,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2320360,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:54.750Z",
+      "rendererHeap": {
+        "usedSize": 1000364,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2321480,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:35:59.753Z",
+      "rendererHeap": {
+        "usedSize": 1001240,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2321480,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:36:04.756Z",
+      "rendererHeap": {
+        "usedSize": 1011476,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2327520,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:36:09.761Z",
+      "rendererHeap": {
+        "usedSize": 1012352,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2327520,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:36:14.763Z",
+      "rendererHeap": {
+        "usedSize": 1013228,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2327520,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:36:19.766Z",
+      "rendererHeap": {
+        "usedSize": 1014104,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2327520,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:36:24.770Z",
+      "rendererHeap": {
+        "usedSize": 1014980,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2327520,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:36:29.772Z",
+      "rendererHeap": {
+        "usedSize": 1015856,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2327520,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:36:34.799Z",
+      "rendererHeap": {
+        "usedSize": 1018528,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2328640,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:36:39.920Z",
+      "rendererHeap": {
+        "usedSize": 1019404,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2328640,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:36:44.930Z",
+      "rendererHeap": {
+        "usedSize": 1020280,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2328640,
+        "backingStorageSize": 91518
+      }
+    },
+    {
+      "at": "2026-09-12T16:36:49.947Z",
+      "rendererHeap": {
+        "usedSize": 1023420,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 2329776,
+        "backingStorageSize": 91518
+      }
+    }
+  ],
+  "qualityAccepted": false,
+  "modelVerification": {
+    "schema": "cf.local-image-download-receipt.v1",
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "8b79b92782d198497cd02149eda5df17f278a34d60795084755b8d66bd8dd74e",
+    "startedAt": "2026-09-12T16:29:37.619Z",
+    "finishedAt": "2026-09-12T16:29:40.828Z",
+    "status": "complete",
+    "fileCount": 21,
+    "totalBytes": 6691028208,
+    "timeoutMs": 600000,
+    "verifyOnly": true,
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 7792,
+        "sha256": "4cfe7c534c2f259155b0ec282168bdffeb11241899fa48b4d22f7bda1483f26f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00000.data",
+        "bytes": 1599733760,
+        "sha256": "ed37b81331f4eda3bc150448f2d360b4e42951c57dcb9874ec8d0c7c78fa6f6d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00001.data",
+        "bytes": 594170880,
+        "sha256": "89040c34be052e09698afad17bfea3e1158306369612ae347655dfbd4cfa0f3f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.manifest.json",
+        "bytes": 285,
+        "sha256": "fd22d7819467151ead49d2f25b0d576bcb65134111e5219c264cc605cb62e5b7",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.onnx",
+        "bytes": 5341471,
+        "sha256": "e1670f1d203cf2e5cadecce4b2c13d436eefa228a66b7bc6bc629074e9dc0a1b",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/added_tokens.json",
+        "bytes": 707,
+        "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/chat_template.jinja",
+        "bytes": 4168,
+        "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/merges.txt",
+        "bytes": 1671853,
+        "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/special_tokens_map.json",
+        "bytes": 613,
+        "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer.json",
+        "bytes": 11422654,
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer_config.json",
+        "bytes": 5404,
+        "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/vocab.json",
+        "bytes": 2776833,
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00000.data",
+        "bytes": 1585446912,
+        "sha256": "80aa4b75cdab0395f4374c51eecb59e005a6f81b3e573dddd9826a865bcd11be",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00001.data",
+        "bytes": 1566572544,
+        "sha256": "32576185e1f0ab3937141b0c57acad1f37f298c5e7951b3367096c129e5eca28",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00002.data",
+        "bytes": 981258240,
+        "sha256": "5062b615c62206a2dad22ce01fec6f674b0421336179cadec93fec77d1b2b455",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.manifest.json",
+        "bytes": 368,
+        "sha256": "9cf98a614ffe690a297a286b11642b0611f67f64e80edaaf592645f32e727f29",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.onnx",
+        "bytes": 4991601,
+        "sha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx",
+        "bytes": 760826,
+        "sha256": "05f3f6de75b760d5f3b6cbd6efa40ddc8bb7bc4dad58c1dabc85e96383871a7d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx.data",
+        "bytes": 198508544,
+        "sha256": "357f7da253bfb9e3d5762a4f64fd126eae53b8b79466b7da2da2784d5fce89ae",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx",
+        "bytes": 596081,
+        "sha256": "f7cc93e70cc3a9555cb7bf1b02d2eaab83d706cf0a4ddf6da86dffb56daf05f9",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx.data",
+        "bytes": 137756672,
+        "sha256": "9ac7e0847f5b1a6a077ad38688042a53bc004e986d15dc8c0e37a962aad68671",
+        "disposition": "verified-reused"
+      }
+    ],
+    "failure": null
+  },
+  "recipeSha256": "497dbf701285e6fdb90b8522b712b07a26e054b4c4b72b79807dc2547d13dac9",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.32",
+    "revision": "@9aab8632678bdbd60c393455e1394ee523ba682d",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.4",
+    "protocol_version": "1.3"
+  },
+  "browserPid": 61456,
+  "error": null,
+  "details": {
+    "type": "complete",
+    "requestId": 1,
+    "schema": "cf.kit-engine-result.v4",
+    "boxes": [
+      {
+        "name": "Civet",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
+        "x": 660.48,
+        "y": 333.6569491525423,
+        "width": 153.6,
+        "height": 109.86305084745763,
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      },
+      {
+        "name": "Persimmon",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Persimmon\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2058951517\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+        "x": 25.60000000000001,
+        "y": 225.18568421052635,
+        "width": 215.04,
+        "height": 224.09431578947368,
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      },
+      {
+        "name": "Platypus",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4049771185\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "x": 337.91999999999996,
+        "y": 371.49470790378007,
+        "width": 204.8,
+        "height": 123.86529209621995,
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      },
+      {
+        "name": "Frog",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Frog\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1193089256\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"19\"]]]]",
+        "x": 220.16,
+        "y": 445.68,
+        "width": 71.68,
+        "height": 55.440000000000005,
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      },
+      {
+        "name": "Devil's Club",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Devil's Club\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1714376717\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"11\"]]]]",
+        "x": 808.96,
+        "y": 337.3511111111111,
+        "width": 163.84,
+        "height": 169.5288888888889,
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      },
+      {
+        "name": "Cranberry",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Cranberry\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1741924755\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"9\"]]]]",
+        "x": 291.84000000000003,
+        "y": 428.5976632302405,
+        "width": 112.64,
+        "height": 89.80233676975945,
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      }
+    ],
+    "measurements": [
+      {
+        "name": "Civet",
+        "elapsedMs": 68264.32499998808,
+        "sequence": 1824,
+        "tokenCount": 1824,
+        "promptSha256": "725a3f23e3aa5fe2cd962cafc4adb9b51c4de8131e0977ae127dec246991d2de",
+        "chatPromptSha256": "86affc4f7e8197be04e8679bc619844f59678257d7b1081de6462f04939b48c8",
+        "sigmas": [
+          0.20000000298023224,
+          0.19130660593509674,
+          0.17600573599338531,
+          0.1419466733932495,
+          0
+        ]
+      },
+      {
+        "name": "Persimmon",
+        "elapsedMs": 62968.48000001907,
+        "sequence": 1744,
+        "tokenCount": 1738,
+        "promptSha256": "d1ae45545bc089770789841e60da1fd2869b2df774bc9e2d5a1ea67675ab304f",
+        "chatPromptSha256": "984a2ce0d51c9a2c35e91b1f6f362c2483b4b00e9f941b3586052c074d51ac9f",
+        "sigmas": [
+          0.20000000298023224,
+          0.19130660593509674,
+          0.17600573599338531,
+          0.1419466733932495,
+          0
+        ]
+      },
+      {
+        "name": "Platypus",
+        "elapsedMs": 62494.04500001669,
+        "sequence": 1824,
+        "tokenCount": 1812,
+        "promptSha256": "6fd4bd2a3052c5be17fa519ef8a127d4704f10cc5f50ca16d00e5c51b884b7a1",
+        "chatPromptSha256": "80c2d2b3598029a6e5480a17f4902dcaa517988f521fd7e05bcd95396fd44e63",
+        "sigmas": [
+          0.20000000298023224,
+          0.19130660593509674,
+          0.17600573599338531,
+          0.1419466733932495,
+          0
+        ]
+      },
+      {
+        "name": "Frog",
+        "elapsedMs": 61348.625,
+        "sequence": 1792,
+        "tokenCount": 1792,
+        "promptSha256": "7afd9cf0ef8bc27003204436162623e061936f6b9a466db0736961fed023a27f",
+        "chatPromptSha256": "dfa2f74ab15458d6925300fbc468a1a369158c09439dbe94b696f2d956a95ed4",
+        "sigmas": [
+          0.20000000298023224,
+          0.19130660593509674,
+          0.17600573599338531,
+          0.1419466733932495,
+          0
+        ]
+      },
+      {
+        "name": "Devil's Club",
+        "elapsedMs": 59983.3900000155,
+        "sequence": 1744,
+        "tokenCount": 1737,
+        "promptSha256": "ee68e694cd061c652af912289bd5c8fc0747f32ea8d36999eadf442ff429836b",
+        "chatPromptSha256": "7030075d917e1fc978bac10b10dbf55f4b2270e0d4968c5b76f5e1e2b224498c",
+        "sigmas": [
+          0.20000000298023224,
+          0.19130660593509674,
+          0.17600573599338531,
+          0.1419466733932495,
+          0
+        ]
+      },
+      {
+        "name": "Cranberry",
+        "elapsedMs": 60017.12000000477,
+        "sequence": 1744,
+        "tokenCount": 1730,
+        "promptSha256": "d3c9fdc6a515dbc1d4881c86ab9572944ba2c2a292450444b077760ddc8062cc",
+        "chatPromptSha256": "9a59bbe7036b78ab47eb529d14145ad088e4595e93abb27ea35e0c0e8765cf0f",
+        "sigmas": [
+          0.20000000298023224,
+          0.19130660593509674,
+          0.17600573599338531,
+          0.1419466733932495,
+          0
+        ]
+      },
+      {
+        "name": "finisher",
+        "elapsedMs": 47589.685000002384,
+        "sequence": 1872,
+        "tokenCount": 1860,
+        "promptSha256": "b8248ef02c2b99679b31657165f86ac4556ad2a6fe411f5b6551f959b56f2355",
+        "chatPromptSha256": "bc7bd2a5f9c17118e8310a8df566742944c4572fc590ef9bccc6e66a12416bdc",
+        "sigmas": [
+          0.07999999821186066,
+          0
+        ]
+      }
+    ],
+    "elapsedMs": 425706.84999999404,
+    "width": 1024,
+    "height": 576,
+    "sessionCreates": {
+      "text": 1,
+      "encode": 1,
+      "denoise": 1,
+      "decode": 1
+    },
+    "expansion": {
+      "planSha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81",
+      "sourceBytes": 86833152,
+      "expandedBytes": 347332608,
+      "graphSha256": "cda0a0e0d2778f83236557bcde8d474fed89a2fcbc817ea04f4758d2a064aed8",
+      "operandsSha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82",
+      "storageWrites": 0
+    },
+    "qualityAccepted": false,
+    "capabilities": {
+      "maxBufferSize": 4294967292,
+      "shaderF16": true,
+      "adapterInfo": {}
+    }
+  },
+  "partial": [
+    "Civet",
+    "Persimmon",
+    "Platypus",
+    "Frog",
+    "Devil's Club",
+    "Cranberry"
+  ],
+  "artifacts": [
+    {
+      "file": "organism-01-raw.png",
+      "bytes": 171038,
+      "sha256": "7c3c8b7d0c82bf9fb1990a7d2cc14826ff9dc0273d7e2a736cb8412d3e0bdb45"
+    },
+    {
+      "file": "organism-02-raw.png",
+      "bytes": 216490,
+      "sha256": "dfa4ffd9355cfedf087b306d7467e5912e7cf112272941c5011b0cf8653c93eb"
+    },
+    {
+      "file": "organism-03-raw.png",
+      "bytes": 154690,
+      "sha256": "de7dd102556ec1794999c1da9aaac589fc7189f5d3819048ee396dddefd14d7b"
+    },
+    {
+      "file": "organism-04-raw.png",
+      "bytes": 161829,
+      "sha256": "00740022bd1ed0f8971b31dcb443985ae0e155314c2ec5642796b7b1875b3944"
+    },
+    {
+      "file": "organism-05-raw.png",
+      "bytes": 235438,
+      "sha256": "3576256d6ac43648e161a215f4b42e9da5b38489f2779c75483d096270aaab48"
+    },
+    {
+      "file": "organism-06-raw.png",
+      "bytes": 186149,
+      "sha256": "064b6c58d75dd9f96cd49a1fe28e1685114c489209fc8ed970778e99fe2728b4"
+    },
+    {
+      "file": "painting.png",
+      "bytes": 1615436,
+      "sha256": "e9304930ee2cf5d68313c1b6098d46062bc71aa3c7018d18e5aa4b22515b876e"
+    },
+    {
+      "file": "composite-before-finisher.png",
+      "bytes": 1607329,
+      "sha256": "e1333ac3def097f11b73a1876eb86437fb929a3cfc1d00d50a37343e2c0b012b"
+    },
+    {
+      "file": "organism-01.png",
+      "bytes": 100557,
+      "sha256": "6842e5e887b987984629ff5a6e81f4d981d7b3444995344a6f08cc9da657aeb8"
+    },
+    {
+      "file": "organism-02.png",
+      "bytes": 134386,
+      "sha256": "00638a27fe836ff113e6c8af941a9c5cc04994f2abf65ee5b802369c873f5f04"
+    },
+    {
+      "file": "organism-03.png",
+      "bytes": 85954,
+      "sha256": "2d86b12dc33143fb149c4c49e604ebe029ab0ce11562798de21a8ee1b1b8a034"
+    },
+    {
+      "file": "organism-04.png",
+      "bytes": 88236,
+      "sha256": "cff6df89bf9fdfc16eb31b41612b8a330a5112c8678fa8f9a0f5fb3bd87dfdbd"
+    },
+    {
+      "file": "organism-05.png",
+      "bytes": 147192,
+      "sha256": "82748c58590e4b15c2f0ca97bab887f703bf1573f22315fba185cef850d076e1"
+    },
+    {
+      "file": "organism-06.png",
+      "bytes": 99876,
+      "sha256": "1c36a8f638d80a2e82c95122de9b2df3c269aa26d008084ed317c923c6ada284"
+    }
+  ],
+  "finishedAt": "2026-09-12T16:36:56.058Z"
+}
