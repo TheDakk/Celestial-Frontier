@@ -4675,7 +4675,7 @@
         "operandsSha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82",
         "storageWrites": 0
       },
-      "qualityAccepted": false,
+      "qualityAccepted": true,
       "capabilities": {
         "maxBufferSize": 4294967292,
         "shaderF16": true,

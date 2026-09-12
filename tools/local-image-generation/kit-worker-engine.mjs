@@ -27,7 +27,7 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
   const specs={text:['text_encoder_q4.onnx',['text_encoder_q4-00000.data','text_encoder_q4-00001.data']],encode:['vae_encoder.onnx',['vae_encoder.onnx.data']],decode:['vae_decoder.onnx',['vae_decoder.onnx.data']]};
   async function session(kind){
     check();if(kind==='text'&&precomputedText)throw Error('Phone text encoder load forbidden');if(sessions.has(kind)){progress({phase:'session-reused',stage:kind});return sessions.get(kind);}
-    const start=performance.now();progress({phase:'loading',stage:kind});let graph,externalData;
+    const start=performance.now();progress({phase:'loading',stage:kind,memory:performance.memory?{usedJSHeapSize:performance.memory.usedJSHeapSize,totalJSHeapSize:performance.memory.totalJSHeapSize}:null});let graph,externalData;
     if(kind==='denoise'){
       expanded??=await expand(modelFetch,e=>progress(e),Object.keys(modelFiles).length?new URL('./browser-variant-plan.json',import.meta.url).href:'/browser-variant-plan.json');
       graph=expanded.graph;externalData=['transformer_q8-00000.data','transformer_q8-00001.data','transformer_q8-00002.data'].map(path=>({path,data:sourceUrl(path)}));
