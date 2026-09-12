@@ -469,3 +469,5 @@ Every item was read in source by at least one pass; items marked P were reasoned
 ## Part L. Art Kit version 3
 
 On 2026-09-11 Nick supplied the Art Kit (version 3), the explicit form of the direction the review had been reading from the approved paintings. It is stored verbatim at `ART_KIT.md`. Its section 2 is the canonical style paragraph this review recommended in Parts A and J; the recommendation is satisfied. The mapping onto the codebase, ten reconciliations for Nick's decision, and program version 3 are in `ART_KIT_INTEGRATION.md` in this packet; the copy-ready Codex instructions are in `CODEX_HANDOFF.md`.
+
+**2026-09-12 addendum.** Version 3's two reference images were rejected: the anchor produced token-library fantasy art. Version 4 requirements, the resolved reference lock and the thirteen-kind star table are in `CODEX_HANDOFF.md`; the game's full generation vocabulary (13 star kinds, 8 planet types, 43 live biomes, 14 creature families, 1,014 Earth names, 48 flora forms, and the finite catalogues) is in `GAME_VOCABULARY_COVERAGE.md`.
