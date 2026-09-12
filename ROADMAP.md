@@ -17,44 +17,49 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · FIRST V4 ENGINE PROOF PREPARED
+## SESSION HANDOFF — 2026-09-12 · FIRST V4 ENGINE PAINTING AWAITS FEEDBACK
 
-Nick approved v4 at `6f5c396e`, with engine-first §9. Four MIDGAME images remain
-direction, hashed Atlas/triptych the class locks. V3 and both v3 candidates stay
-rejected. 4E turnaround remains byte-identical to the approved draft.
+Nick approved v4 at6f5c396e, with engine-first§9. Four MIDGAME images remain direction;
+hashed Atlas/triptych are the class locks. V3 and both candidates stay rejected.
+4E turnaround is unchanged. No further reference or effect painting is authorized now.
 
-Signed `1e60f29fa51898b0615d54c44f8c758f1e8cba7d` retains the twelve input masters,
-exact compiler prompts and two shown sheets. No Atlas frames/dark plates appeared;
-the conditional v4.1 background amendment was not triggered. None is quality-accepted:
-requested native sizes were missed, margins are inadequate, Civet identity and plate
-composition need review. Preserve originals; no further library painting now.
+Signed1e60f29f retains the twelve input masters, exact prompts and shown review sheets.
+No Atlas frames/dark plates appeared; conditional v4.1 background amendment was not
+triggered. Captures have size/margin, Civet identity and plate-composition findings;
+none is quality-accepted. Preserve originals.
 
-The first engine proof is prepared in `audits/ART_KIT_ENGINE_PROOF_20260912`.
-`compileEarthKitEngineV4` compiles six organism prompts/placements and one finisher
-from canonical Earth data and the kit. App-owned warm client + stage-worker kit route
-retain four sessions and one VAE encoder; pinned expansion occurs in worker memory.
-Nine fitted RGBA inputs are hashed offline. Nick's tenfold text ceiling is 5120 tokens,
-actual lengths rounded to 16, no truncation. Native larger-sequence behavior is unmeasured.
-Settings: 1024×576, 384-square passes, seed133, four steps at0.2, one finisher at0.08.
-17 worker/math/legacy-diagnostic and23 compiler/runtime tests, tsc and root validate PASS;
-cache-bypass/overflow/background/expansion/cancellation negative controls are retained.
+Signed engine commit30ef7d15e7bbc22d3684bf4b069e616d67288d4a completed the ONE native
+run in audits/ART_KIT_ENGINE_PROOF_20260912/native-01. Engine execution PASS,425.707s,
+1024×576, six384-square organism passes at four steps/strength0.2, seed133, one0.08
+finisher. All four sessions created once, VAE encoder once, pinned in-worker expansion
+347,332,608 bytes with0 storage writes. Warm reuse across two landings has simulated
+negative-controlled evidence, not a second native run. No native retry was made.
 
-Next: signed clean source, then ONE `run-kit-engine-proof.mjs` native run using the
-prepared directory and a new result directory, with approved native browser execution.
-No automatic retry after red. Show untouched painting beside Living Worlds at native
-size and with organism placement boxes; inspect post-finisher identity separately.
-Normal-game V1/V2 action has not yet been rewired, old OPFS layer is not yet removed,
-and Part K1–11,17,33–35 is not closed. New kit reference fitting covers K17's path;
-ten original tool files are tracked, but K35 boot control remains pending.
-No unit-test checkout lock, old --landfall --variant run, integrated chain, pack build
-or six-reference prompt sweep. Current receipt is not painting acceptance.
+Nick's tenfold text ceiling5120 is implemented with actual tensor lengths rounded to16,
+no truncation. Prompts1730–1860 tokens (positions1744–1872) succeeded;5120 native maximum
+is unmeasured. Text inference26.14–28.86s per prompt. Mac maxBufferSize4,294,967,292,
+shader-f16 true; worker/native/GPU memory unavailable, renderer heap is not equivalent.
+This does not qualify Nick's target iPhone or any storage/delivery tier.
 
-After the first engine painting is accepted, do the Animation and battle track below,
-then remaining families/forms/biomes twelve at a time. The inactive Effects proposal
-is retained in ART_KIT_ENGINE_FIRST_20260912; no effects before v4.1 row approval.
-Actual target-iPhone maxBufferSize/shader-f16/quota/transformer-load-memory probe still
-gates storage/delivery engineering. Artwork durability and later register/pruning/split
-work remain scheduled under program v4. No prior failure is relabelled.
+The untouched painting, native-pixel comparison beside Living Worlds and organism boxes
+are shown. Six subjects remain visible, but Civet face/identity, Cranberry habit,
+Frog readability and cold crowded scene composition remain unresolved. Boxes are
+pre-finisher placement geometry, not post-finisher segmentation. Low-strength finisher
+preserved input defects. Stop for Nick's painting feedback; no sweep or another run.
+
+Compiler `compileEarthKitEngineV4` and app-owned warm client run through stage-worker's
+kit route. Nine references were fitted/hash-verified offline. Normal-game V1/V2 action
+is not yet rewired, old OPFS layer is not yet removed, Part K1–11,17,33–35 is not closed.
+New kit offline fitting addresses K17 on this path; ten original tool files are tracked,
+K35 boot control pending.17 worker/math/diagnostic +23 compiler/runtime tests, tsc and
+root validate PASS, with cache-bypass/overflow/background/expansion/cancellation controls.
+No unit-test checkout lock, old --landfall --variant, integrated chain or pack build.
+
+After painting acceptance, prove Animation and battle track below before library rollout.
+Inactive Effects proposal in ART_KIT_ENGINE_FIRST_20260912 needs v4.1 approval before
+any effect. Actual target-iPhone maxBufferSize/shader-f16/quota/load-memory probe gates
+storage/delivery engineering. Artwork durability and later defect/pruning/split work
+remain scheduled. See engine-proof README for exact evidence and limitations.
 
 ## Animation and battle track
 
@@ -75,14 +80,15 @@ bird, fish, insect, reptile, then the rest.
 ## Git and session boundary
 
 OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,
-openai/mac tracking origin/openai/mac. Entry1e60f29f is19 ahead/0 behind cached upstream,
-130 ahead/0 behind cached origin/develop. No fetch. New signed commit IDs/counts are
-reported at each stop; use git log for the final head. .DS_Store remains untouched.
-Same uninterrupted September12 Node26.8.2 startup receipt applies.
+openai/mac tracking origin/openai/mac. Native source30ef7d15 is20 ahead/0 behind cached
+upstream,131 ahead/0 behind cached origin/develop. Evidence commit follows; exact
+final ID/ahead counts are reported at stop and available in git log. No fetch.
+.DS_Store remains untouched. Same uninterrupted September12 Node26.8.2 receipt applies.
 
 GitHub step none; PR42 parked, base develop/source openai/mac, title/body unchanged.
-Budget UNFROZEN/PUBLIC, private fallback3000, exact hosted attempts authorized zero.
+Budget UNFROZEN/PUBLIC, private fallback3000, exact authorized hosted attempts zero.
 No push, label, dispatch, merge, release or deploy. Develop/main/live unchanged.
-Claude Code need not open now. Only after eventual authorized develop integration
-may clean anthropic/mac fetch/merge origin/develop at its next batch. Do not copy
-worktrees. Resume here and CODEX_HANDOFF's engine-first amendment, never PAUSED_CHECKPOINT.
+Codex waits for painting feedback. Claude Code need not open now; only after eventual
+authorized develop integration may clean anthropic/mac fetch/merge origin/develop
+at its next batch. Do not copy worktrees. Resume here and CODEX_HANDOFF's engine-first
+amendment, never PAUSED_CHECKPOINT.

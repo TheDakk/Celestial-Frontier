@@ -19,7 +19,7 @@ biome integration, physical phones or final art. Desert finish remains too styli
 Those experiments changed no game source or model bytes. Their pause is historical; the September 12 program below now owns the next work.
 
 
-## Program version 4 — matches code September 12, 2026; native engine proof pending
+## Program version 4 — matches code September 12, 2026; first native painting shown
 
 Nick's four approved images in [MIDGAME_ART_DIRECTION](audits/MIDGAME_ART_DIRECTION_20260908/README.md)
 define the required finish. [ART_KIT.md](ART_KIT.md), version 4, is the approved canonical
@@ -33,7 +33,7 @@ The pure `compileEarthArtKitV4` in `landfall-conditioning.ts` compiles the bound
 authoring inputs. It preserves canonical Earth admission and emits prompts
 in this exact order: **reference lock → frozen style → system card → subject → accuracy
 (cut-outs only) → layout → technical output → negative**, including class additions.
-The new runtime pipeline is implemented for its first native proof. The card is filled from
+The new runtime pipeline completed its first native proof. The card is filled from
 star, planet, vista and biome data, never typed by hand. Thirteen exact `starClass.kind`
 keys and their hex colours replace invented stellar labels; binary/trinary are light
 modifiers. Genomes/descriptors and family/realm routing supply subjects and counts;
@@ -68,7 +68,7 @@ Nick requested a tenfold text ceiling: **5120 tokens**, with no truncation and t
 length rounded up from actual tokens to the next multiple of 16. A maximum-size float16
 embedding is 75 MiB versus 7.5 MiB at 512; longer attention sequences also increase time
 and intermediate memory. The dynamic ONNX inputs admit these shapes structurally;
-native performance at the new lengths is not yet qualified. Legacy exact-shape
+the actual1730–1860-token prompts completed natively, but5120 itself is unmeasured. Legacy exact-shape
 512-token diagnostics retain their historical contracts.
 
 Evidence and copy-ready commands: [first engine proof](audits/ART_KIT_ENGINE_PROOF_20260912/README.md).
@@ -78,8 +78,13 @@ negative controls; tsc and root validate pass. These are not native performance 
 The normal-game V1/V2 action is not yet rewired to this client, and the old OPFS layer
 has not been removed. Do not claim the Part K integration register closed. Never resume
 the pause checkpoint's integrated-chain/new-pack/`--landfall --variant` sequence.
-One measured native run still must show the painting beside Living Worlds, with
-per-organism placement boxes and post-finisher visual identity findings.
+The single native run on signed30ef7d15 completed in425.707s, producing1024×576 with
+six organism passes and one finisher; all four sessions were created once, including
+the encoder. Text inference took26.14–28.86s per prompt. The painting, native-pixel
+Living Worlds comparison, placement boxes and visual findings are retained in the
+proof audit. Civet identity, plant habit/readability and the cold crowded scene remain
+unaccepted. Worker/native/GPU memory was not available; renderer heap is not a substitute.
+Do not repeat native inference or expand the library before Nick's painting feedback.
 No six-reference prompt sweeps. Blocking Part K 1–11, 17, 33–35 get negative controls.
 The ten tool files are already tracked; K35's missing-file boot control remains pending.
 Unit tests must not take the checkout lock.
@@ -89,8 +94,8 @@ at transformer load before storage/delivery engineering. Artwork durability foll
 storage.persist/status, iOS home-screen guidance, PNG share-sheet export, protected
 originals and labelled regeneration on loss. Then pruning/split, phone finisher/tier
 policy, remaining library rollout and view-envelope sharing, per program v4. PR42 stays
-parked; no hosted write is authorized. One measured native engine proof is the next
-implementation milestone; the old --landfall --variant run remains forbidden.
+parked; no hosted write is authorized. The first engine painting now awaits feedback;
+the old --landfall --variant run remains forbidden.
 
 The original dirty engine work is signed in `77aaeec5`; the superseded v3 adoption work
 is checkpointed in `efa77c8d`, and the revised packet is verbatim in `7191dbc2`. The six
