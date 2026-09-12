@@ -7,8 +7,9 @@ Four sessions remain page-owned across successful landings. Other worlds retain 
 painter until supported kit assets exist. Ordinary Land/retention/Inspect browser proof
 passes; one native worker run produced two byte-identical landings, the second in21.62s
 with all four session creation counts1. Evidence: audits/KIT_NORMAL_LAND_20260912. The
-authorized8px-mask/two-Cranberry-runner experiment is separately selectable; normal game
-keeps the accepted4px baseline. No phone tier is qualified.
+authorized8px-mask/two-Cranberry-runner experiment ran once in18.25s; five boxes pass but
+Cranberry registration is unresolved. It remains unaccepted; normal game keeps the
+accepted4px baseline. Review: audits/ART_KIT_EDGE_RUNNERS_20260912. No phone tier is qualified.
 
 **September 12 acceptance update:** Nick accepts cd6b609f / 0eed6a21 as the first engine
 painting and tier-2 baseline. The retained PNG is unchanged; its qualityAccepted is true.

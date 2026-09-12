@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · NORMAL LAND AND WARM PROOF PASS; ONE EDGE EXPERIMENT NEXT
+## SESSION HANDOFF — 2026-09-12 · NORMAL LAND AND WARM PROOF PASS; ONE EDGE EXPERIMENT COMPLETE; TARGET IPHONE NEXT
 
 Nick accepted cd6b609f / 0eed6a21 as first engine painting/tier-2 baseline. PNG retained
 unchanged and qualityAccepted true. Signeddbeb2448 applies precisely two v4.1 section0/5
@@ -36,20 +36,27 @@ second21.617645s warm, all four session creation counts1, one transformer expans
 Both output PNGs identical. Original acceptance remains with cd6b609f /0eed6a21.
 Evidence, Part K controls and exact limitations: audits/KIT_NORMAL_LAND_20260912/README.md.
 
-Step3 prepared: audits/ART_KIT_EDGE_RUNNERS_20260912/prepared. Compiler-selected experiment
-uses8px interior erosion and two low Cranberry runners; same prompt402tokens, seed133,
-plate, inputs, one0.35finisher/no organism passes. Normal game keeps accepted4px baseline.
-8 targeted controls, full TypeScript/root validation pass; static composite inspected.
-Sign preparation, then exactly one native run to native-01 per that audit README.
-Show beside accepted painting with measured boxes/crops. No sweep or automatic retry.
-Then step4 actual target-iPhone probe (iPhone/iOS/connection question pending), then
-step5 Civet animation proof. Existing CODEX_HANDOFF animation track applies; no Effects
-painting without separate v4.1 class approval; no full library rollout yet.
+Step3 executed ONCE on signed246cc619: audits/ART_KIT_EDGE_RUNNERS_20260912/native-01.
+Same402token prompt, seed133, plate/inputs, one0.35finisher/no organism passes;8px interior
+erosion and two low Cranberry runners.18.253s warm,23.734s total. Five registered boxes
+have effectively100% overlap; Civet30%. Cranberry registration unresolved: full box
+criterion does not pass. qualityAccepted false, accepted baseline remains active.
+Codex inspected native painting and all six200% crops: five organisms readable, no obvious
+pink fringe, subtle contact shadows; Cranberry is small/less legible. No acceptance claim.
+Review comparisons, metrics, exact prompt and REVIEW_PROMPT.md in that audit. No rerun.
+8 experiment controls plus registration controls, TypeScript and root validation pass.
+
+Next step4 is actual target-iPhone probe: maxBufferSize,shader-f16,storage quota,memory
+at transformer load. iPhone/iOS/connection question is pending. Local xcrun devicectl is
+unavailable; do not install a new toolchain or substitute Mac/simulator results. Need
+Nick's target and accessible Safari Web Inspector before device-dependent work. Then
+step5 Civet animation proof, per existing CODEX_HANDOFF track. No Effects without the
+separate class approval and no full library rollout. No broader creative rework authorized.
 
 This is the uninterrupted startup session (existing toolchain receipt). No integrated
 chain, pack, old --landfall --variant, unit checkout lock or new pre-probe storage work.
-OpenAI/Codex owns openai/mac here. Last signed0e37e6c6 is29 ahead/0 behind upstream,
-140 ahead/0 behind cached origin/develop. No fetch; unrelated .DS_Store untouched.
+OpenAI/Codex owns openai/mac here. Last signed246cc619 is30 ahead/0 behind upstream,
+141 ahead/0 behind cached origin/develop; final review/evidence commit follows. No fetch; unrelated .DS_Store untouched.
 GitHub step NONE; PR42 parked until split. No push/label/dispatch/merge/release/deploy.
 Claude Code need not open/sync now. After eventual authorized develop integration only,
 clean anthropic/mac may fetch/merge origin/develop. Report local IDs/ahead at every stop.

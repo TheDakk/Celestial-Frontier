@@ -1,7 +1,8 @@
 # One edge/runners experiment — September 12, 2026
 
 Authorized after ordinary Land proof and two-landing warm measurement passed.
-Prepared only; native-01 is the one next run. No parameter sweep or automatic retry.
+native-01 completed once on246cc619. Technical inference PASS; quality acceptance FAILS
+the complete box criterion because Cranberry registration is unresolved. No retry.
 
 Same accepted masters and fitted inputs, seed133, plate1024x576, prompt402tokens under512,
 strength0.35, one masked finisher, no organism inference. Only experimental changes:
@@ -15,9 +16,11 @@ wrong recipe admission, and disabled session cache. Initial mask fixture occupie
 same thresholded latent cells at4px/8px; corrected fixture crosses the16px-cell threshold.
 Both logs retained. Full TypeScript and root validation pass. No unit checkout lock.
 
-Next native command (clean signed source, outside macOS sandbox):
+Executed native command (clean signed source, outside macOS sandbox; do not repeat):
 node tools/local-image-generation/run-kit-engine-proof.mjs audits/ART_KIT_EDGE_RUNNERS_20260912/prepared audits/ART_KIT_EDGE_RUNNERS_20260912/native-01
 
-Then review native sizes, organism boxes/crops and compare beside accepted painting.
-qualityAccepted remains false pending Nick. Phone/iOS/connection details remain pending;
+Review artifacts and REVIEW_PROMPT.md contain native comparisons, boxes and200% crops.
+18.253s warm,23.734s total; five boxes effectively100% overlap, Civet30%, Cranberry
+unreliable registration. qualityAccepted remains false; accepted baseline unchanged.
+Phone/iOS/connection details remain pending;
 actual iPhone probe precedes Civet animation proof. No GitHub step; PR42 parked.
