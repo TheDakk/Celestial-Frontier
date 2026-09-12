@@ -10,6 +10,7 @@ import {createHash} from 'node:crypto';
 import {fetchModel,DEFAULT_CACHE_ROOT} from './fetch-model.mjs';
 import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
 import {admitPhysicalPhone} from './iphone-probe-contract.mjs';
+import {admitsIphoneProbePage} from './iphone-navigation-contract.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'),dir=path.join(root,'tools/local-image-generation');
 if(![7,8].includes(process.argv.length)||(process.argv.length===8&&process.argv[7]!=='--embedded'))throw Error('Usage: run-iphone-kit-probe.mjs SESSION_JSON HTTPS_KEY HTTPS_CERT HOST NEW_AUDIT_DIRECTORY');
 const embedded=process.argv[7]==='--embedded';
@@ -59,10 +60,25 @@ try{
    res.setHeader('Content-Type',({'.mjs':'text/javascript','.json':'application/json','.wasm':'application/wasm'})[path.extname(file)]??'application/octet-stream');res.setHeader('Accept-Ranges','bytes');res.setHeader('Content-Length',end-start+1);
    if(req.method==='HEAD'){res.end();return;}const stream=createReadStream(file,{start,end});stream.on('error',()=>res.destroy());res.on('close',()=>stream.destroy());stream.pipe(res);
   }catch{if(!res.headersSent)res.writeHead(416);res.end();}
- });await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,host,resolve);});
+ });
+ report.transport={connections:0,tlsErrors:[]};
+ server.on('connection',()=>{report.transport.connections++;});
+ server.on('tlsClientError',error=>{if(report.transport.tlsErrors.length<20)report.transport.tlsErrors.push({code:error.code??null,message:String(error.message).slice(0,1024)});});
+ await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,host,resolve);});
  report.probeOrigin=`https://${host}:${server.address().port}`;await save();
  await command('POST','/timeouts',{pageLoad:30000,script:30000});
  await command('POST','/url',{url:report.probeOrigin+'/'});
+ report.navigation=[];const navigationDeadline=performance.now()+20000;
+ while(true){
+  const page=await evaluate('return {url:location.href,title:document.title,readyState:document.readyState,secureContext:isSecureContext,crossOriginIsolated,probeClient:!!window.kitProof,bodyText:document.body?.innerText?.slice(0,3000)??null}');
+  report.navigation.push(page);await save();
+  if(admitsIphoneProbePage(page,report.probeOrigin))break;
+  if(performance.now()>navigationDeadline){
+   const shot=await command('GET','/screenshot');await fs.writeFile(path.join(out,'navigation-failure.png'),Buffer.from(shot,'base64'));
+   throw Error('Probe page never committed as secure/isolated/client-ready: '+JSON.stringify(page));
+  }
+  await new Promise(r=>setTimeout(r,1000));
+ }
  report.capabilityProbe=await command('POST','/execute/async',{script:`const done=arguments[arguments.length-1];(async()=>{const adapter=await navigator.gpu?.requestAdapter({powerPreference:'high-performance'});let storage;try{storage=await navigator.storage.estimate();}catch(e){storage={unavailable:String(e)}};return {userAgent:navigator.userAgent,secureContext:isSecureContext,crossOriginIsolated,webgpu:!!navigator.gpu,adapterAvailable:!!adapter,maxBufferSize:adapter?.limits.maxBufferSize??null,maxStorageBufferBindingSize:adapter?.limits.maxStorageBufferBindingSize??null,shaderF16:adapter?.features.has('shader-f16')??null,storage,jsHeap:performance.memory?{usedJSHeapSize:performance.memory.usedJSHeapSize,totalJSHeapSize:performance.memory.totalJSHeapSize}:null,nativeGpuMemory:null,memoryNote:'Standard Safari page APIs may not expose native or GPU memory; null means unavailable.'};})().then(done).catch(e=>done({error:String(e)}));`,args:[]});
  console.log(JSON.stringify({phase:'capabilities',...report.capabilityProbe}));await save();
  const c=report.capabilityProbe;if(!c.secureContext||c.error)throw Error('Capability instrument did not reach secure origin');
