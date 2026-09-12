@@ -1,0 +1,4777 @@
+{
+  "schema": "cf.kit-engine-native-proof.v4",
+  "status": "PASS",
+  "startedAt": "2026-09-12T21:19:01.003Z",
+  "head": "9f51f2c9f32bc68b9228e543f6cfe6a5b6537121",
+  "events": [
+    {
+      "phase": "landing-start",
+      "landing": 1,
+      "atMs": 49.12000000476837,
+      "sequence": 1
+    },
+    {
+      "type": "progress",
+      "phase": "loading",
+      "stage": "encode",
+      "atMs": 65.56500002741814,
+      "sequence": 2
+    },
+    {
+      "type": "progress",
+      "phase": "loaded",
+      "stage": "encode",
+      "elapsedMs": 397.0949999988079,
+      "creates": {
+        "text": 0,
+        "encode": 1,
+        "denoise": 0,
+        "decode": 0
+      },
+      "memory": null,
+      "atMs": 462.64500001072884,
+      "sequence": 3
+    },
+    {
+      "type": "progress",
+      "phase": "loading",
+      "stage": "text",
+      "atMs": 462.69000002741814,
+      "sequence": 4
+    },
+    {
+      "type": "progress",
+      "phase": "loaded",
+      "stage": "text",
+      "elapsedMs": 1320.449999988079,
+      "creates": {
+        "text": 1,
+        "encode": 1,
+        "denoise": 0,
+        "decode": 0
+      },
+      "memory": null,
+      "atMs": 1783.125,
+      "sequence": 5
+    },
+    {
+      "type": "progress",
+      "phase": "loading",
+      "stage": "denoise",
+      "atMs": 1783.1700000166893,
+      "sequence": 6
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 1,
+      "total": 206,
+      "sourceBytes": 6144,
+      "expandedBytes": 24576,
+      "atMs": 1808.4950000047684,
+      "sequence": 7
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 2,
+      "total": 206,
+      "sourceBytes": 9216,
+      "expandedBytes": 36864,
+      "atMs": 1809.9900000095367,
+      "sequence": 8
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 3,
+      "total": 206,
+      "sourceBytes": 377856,
+      "expandedBytes": 1511424,
+      "atMs": 1812.7950000166893,
+      "sequence": 9
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 4,
+      "total": 206,
+      "sourceBytes": 562176,
+      "expandedBytes": 2248704,
+      "atMs": 1815.035000026226,
+      "sequence": 10
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 5,
+      "total": 206,
+      "sourceBytes": 709632,
+      "expandedBytes": 2838528,
+      "atMs": 1816.780000001192,
+      "sequence": 11
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 6,
+      "total": 206,
+      "sourceBytes": 783360,
+      "expandedBytes": 3133440,
+      "atMs": 1818.25,
+      "sequence": 12
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 7,
+      "total": 206,
+      "sourceBytes": 930816,
+      "expandedBytes": 3723264,
+      "atMs": 1819.6350000202656,
+      "sequence": 13
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 8,
+      "total": 206,
+      "sourceBytes": 1004544,
+      "expandedBytes": 4018176,
+      "atMs": 1820.9800000190735,
+      "sequence": 14
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 9,
+      "total": 206,
+      "sourceBytes": 1152000,
+      "expandedBytes": 4608000,
+      "atMs": 1822.3900000154972,
+      "sequence": 15
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 10,
+      "total": 206,
+      "sourceBytes": 1225728,
+      "expandedBytes": 4902912,
+      "atMs": 1823.625,
+      "sequence": 16
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 11,
+      "total": 206,
+      "sourceBytes": 1373184,
+      "expandedBytes": 5492736,
+      "atMs": 1825.1050000190735,
+      "sequence": 17
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 12,
+      "total": 206,
+      "sourceBytes": 1446912,
+      "expandedBytes": 5787648,
+      "atMs": 1826.3550000190735,
+      "sequence": 18
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 13,
+      "total": 206,
+      "sourceBytes": 1594368,
+      "expandedBytes": 6377472,
+      "atMs": 1827.6850000023842,
+      "sequence": 19
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 14,
+      "total": 206,
+      "sourceBytes": 1668096,
+      "expandedBytes": 6672384,
+      "atMs": 1828.8200000226498,
+      "sequence": 20
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 15,
+      "total": 206,
+      "sourceBytes": 1815552,
+      "expandedBytes": 7262208,
+      "atMs": 1830.2950000166893,
+      "sequence": 21
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 16,
+      "total": 206,
+      "sourceBytes": 1889280,
+      "expandedBytes": 7557120,
+      "atMs": 1831.6150000095367,
+      "sequence": 22
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 17,
+      "total": 206,
+      "sourceBytes": 2036736,
+      "expandedBytes": 8146944,
+      "atMs": 1833.0200000107288,
+      "sequence": 23
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 18,
+      "total": 206,
+      "sourceBytes": 2110464,
+      "expandedBytes": 8441856,
+      "atMs": 1834.3200000226498,
+      "sequence": 24
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 19,
+      "total": 206,
+      "sourceBytes": 2257920,
+      "expandedBytes": 9031680,
+      "atMs": 1835.6050000190735,
+      "sequence": 25
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 20,
+      "total": 206,
+      "sourceBytes": 2331648,
+      "expandedBytes": 9326592,
+      "atMs": 1836.7000000178814,
+      "sequence": 26
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 21,
+      "total": 206,
+      "sourceBytes": 3216384,
+      "expandedBytes": 12865536,
+      "atMs": 1841.9300000071526,
+      "sequence": 27
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 22,
+      "total": 206,
+      "sourceBytes": 3658752,
+      "expandedBytes": 14635008,
+      "atMs": 1847.0850000083447,
+      "sequence": 28
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 23,
+      "total": 206,
+      "sourceBytes": 4101120,
+      "expandedBytes": 16404480,
+      "atMs": 1850.6950000226498,
+      "sequence": 29
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 24,
+      "total": 206,
+      "sourceBytes": 4322304,
+      "expandedBytes": 17289216,
+      "atMs": 1853.2950000166893,
+      "sequence": 30
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 25,
+      "total": 206,
+      "sourceBytes": 5207040,
+      "expandedBytes": 20828160,
+      "atMs": 1858.925000011921,
+      "sequence": 31
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 26,
+      "total": 206,
+      "sourceBytes": 5649408,
+      "expandedBytes": 22597632,
+      "atMs": 1863.7300000190735,
+      "sequence": 32
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 27,
+      "total": 206,
+      "sourceBytes": 6091776,
+      "expandedBytes": 24367104,
+      "atMs": 1867.0950000286102,
+      "sequence": 33
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 28,
+      "total": 206,
+      "sourceBytes": 6312960,
+      "expandedBytes": 25251840,
+      "atMs": 1869.9000000059605,
+      "sequence": 34
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 29,
+      "total": 206,
+      "sourceBytes": 6460416,
+      "expandedBytes": 25841664,
+      "atMs": 1872.9850000143051,
+      "sequence": 35
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 30,
+      "total": 206,
+      "sourceBytes": 6534144,
+      "expandedBytes": 26136576,
+      "atMs": 1874.905000001192,
+      "sequence": 36
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 31,
+      "total": 206,
+      "sourceBytes": 6681600,
+      "expandedBytes": 26726400,
+      "atMs": 1876.535000026226,
+      "sequence": 37
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 32,
+      "total": 206,
+      "sourceBytes": 6755328,
+      "expandedBytes": 27021312,
+      "atMs": 1877.755000025034,
+      "sequence": 38
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 33,
+      "total": 206,
+      "sourceBytes": 6902784,
+      "expandedBytes": 27611136,
+      "atMs": 1879.0850000083447,
+      "sequence": 39
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 34,
+      "total": 206,
+      "sourceBytes": 6976512,
+      "expandedBytes": 27906048,
+      "atMs": 1880.8550000190735,
+      "sequence": 40
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 35,
+      "total": 206,
+      "sourceBytes": 7123968,
+      "expandedBytes": 28495872,
+      "atMs": 1882.8350000083447,
+      "sequence": 41
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 36,
+      "total": 206,
+      "sourceBytes": 7197696,
+      "expandedBytes": 28790784,
+      "atMs": 1884.1900000274181,
+      "sequence": 42
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 37,
+      "total": 206,
+      "sourceBytes": 7345152,
+      "expandedBytes": 29380608,
+      "atMs": 1885.6050000190735,
+      "sequence": 43
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 38,
+      "total": 206,
+      "sourceBytes": 7418880,
+      "expandedBytes": 29675520,
+      "atMs": 1886.9350000023842,
+      "sequence": 44
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 39,
+      "total": 206,
+      "sourceBytes": 7566336,
+      "expandedBytes": 30265344,
+      "atMs": 1888.3600000143051,
+      "sequence": 45
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 40,
+      "total": 206,
+      "sourceBytes": 7640064,
+      "expandedBytes": 30560256,
+      "atMs": 1889.655000001192,
+      "sequence": 46
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 41,
+      "total": 206,
+      "sourceBytes": 7787520,
+      "expandedBytes": 31150080,
+      "atMs": 1891.0550000071526,
+      "sequence": 47
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 42,
+      "total": 206,
+      "sourceBytes": 7861248,
+      "expandedBytes": 31444992,
+      "atMs": 1892.1950000226498,
+      "sequence": 48
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 43,
+      "total": 206,
+      "sourceBytes": 8008704,
+      "expandedBytes": 32034816,
+      "atMs": 1893.5200000107288,
+      "sequence": 49
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 44,
+      "total": 206,
+      "sourceBytes": 8082432,
+      "expandedBytes": 32329728,
+      "atMs": 1894.5650000274181,
+      "sequence": 50
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 45,
+      "total": 206,
+      "sourceBytes": 8967168,
+      "expandedBytes": 35868672,
+      "atMs": 1899.1950000226498,
+      "sequence": 51
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 46,
+      "total": 206,
+      "sourceBytes": 9409536,
+      "expandedBytes": 37638144,
+      "atMs": 1903.0200000107288,
+      "sequence": 52
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 47,
+      "total": 206,
+      "sourceBytes": 9851904,
+      "expandedBytes": 39407616,
+      "atMs": 1906.3850000202656,
+      "sequence": 53
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 48,
+      "total": 206,
+      "sourceBytes": 10073088,
+      "expandedBytes": 40292352,
+      "atMs": 1909.050000011921,
+      "sequence": 54
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 49,
+      "total": 206,
+      "sourceBytes": 10957824,
+      "expandedBytes": 43831296,
+      "atMs": 1914.535000026226,
+      "sequence": 55
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 50,
+      "total": 206,
+      "sourceBytes": 11400192,
+      "expandedBytes": 45600768,
+      "atMs": 1918.7250000238419,
+      "sequence": 56
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 51,
+      "total": 206,
+      "sourceBytes": 11842560,
+      "expandedBytes": 47370240,
+      "atMs": 1921.8550000190735,
+      "sequence": 57
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 52,
+      "total": 206,
+      "sourceBytes": 12063744,
+      "expandedBytes": 48254976,
+      "atMs": 1924.2150000035763,
+      "sequence": 58
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 53,
+      "total": 206,
+      "sourceBytes": 12211200,
+      "expandedBytes": 48844800,
+      "atMs": 1925.8150000274181,
+      "sequence": 59
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 54,
+      "total": 206,
+      "sourceBytes": 12284928,
+      "expandedBytes": 49139712,
+      "atMs": 1927.3700000047684,
+      "sequence": 60
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 55,
+      "total": 206,
+      "sourceBytes": 12432384,
+      "expandedBytes": 49729536,
+      "atMs": 1928.9500000178814,
+      "sequence": 61
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 56,
+      "total": 206,
+      "sourceBytes": 12506112,
+      "expandedBytes": 50024448,
+      "atMs": 1930.1100000143051,
+      "sequence": 62
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 57,
+      "total": 206,
+      "sourceBytes": 12653568,
+      "expandedBytes": 50614272,
+      "atMs": 1931.4850000143051,
+      "sequence": 63
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 58,
+      "total": 206,
+      "sourceBytes": 12727296,
+      "expandedBytes": 50909184,
+      "atMs": 1932.6100000143051,
+      "sequence": 64
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 59,
+      "total": 206,
+      "sourceBytes": 12874752,
+      "expandedBytes": 51499008,
+      "atMs": 1933.9650000035763,
+      "sequence": 65
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 60,
+      "total": 206,
+      "sourceBytes": 12948480,
+      "expandedBytes": 51793920,
+      "atMs": 1935.1850000023842,
+      "sequence": 66
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 61,
+      "total": 206,
+      "sourceBytes": 13095936,
+      "expandedBytes": 52383744,
+      "atMs": 1936.4950000047684,
+      "sequence": 67
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 62,
+      "total": 206,
+      "sourceBytes": 13169664,
+      "expandedBytes": 52678656,
+      "atMs": 1937.550000011921,
+      "sequence": 68
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 63,
+      "total": 206,
+      "sourceBytes": 13317120,
+      "expandedBytes": 53268480,
+      "atMs": 1938.8600000143051,
+      "sequence": 69
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 64,
+      "total": 206,
+      "sourceBytes": 13390848,
+      "expandedBytes": 53563392,
+      "atMs": 1940.1800000071526,
+      "sequence": 70
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 65,
+      "total": 206,
+      "sourceBytes": 13538304,
+      "expandedBytes": 54153216,
+      "atMs": 1941.4150000214577,
+      "sequence": 71
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 66,
+      "total": 206,
+      "sourceBytes": 13612032,
+      "expandedBytes": 54448128,
+      "atMs": 1943.080000013113,
+      "sequence": 72
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 67,
+      "total": 206,
+      "sourceBytes": 13759488,
+      "expandedBytes": 55037952,
+      "atMs": 1944.8200000226498,
+      "sequence": 73
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 68,
+      "total": 206,
+      "sourceBytes": 13833216,
+      "expandedBytes": 55332864,
+      "atMs": 1945.9200000166893,
+      "sequence": 74
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 69,
+      "total": 206,
+      "sourceBytes": 14717952,
+      "expandedBytes": 58871808,
+      "atMs": 1950.8350000083447,
+      "sequence": 75
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 70,
+      "total": 206,
+      "sourceBytes": 15160320,
+      "expandedBytes": 60641280,
+      "atMs": 1954.7450000047684,
+      "sequence": 76
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 71,
+      "total": 206,
+      "sourceBytes": 15602688,
+      "expandedBytes": 62410752,
+      "atMs": 1958.035000026226,
+      "sequence": 77
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 72,
+      "total": 206,
+      "sourceBytes": 15823872,
+      "expandedBytes": 63295488,
+      "atMs": 1960.5850000083447,
+      "sequence": 78
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 73,
+      "total": 206,
+      "sourceBytes": 16708608,
+      "expandedBytes": 66834432,
+      "atMs": 1965.6150000095367,
+      "sequence": 79
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 74,
+      "total": 206,
+      "sourceBytes": 17150976,
+      "expandedBytes": 68603904,
+      "atMs": 1969.530000001192,
+      "sequence": 80
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 75,
+      "total": 206,
+      "sourceBytes": 17593344,
+      "expandedBytes": 70373376,
+      "atMs": 1972.4300000071526,
+      "sequence": 81
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 76,
+      "total": 206,
+      "sourceBytes": 17814528,
+      "expandedBytes": 71258112,
+      "atMs": 1974.905000001192,
+      "sequence": 82
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 77,
+      "total": 206,
+      "sourceBytes": 17961984,
+      "expandedBytes": 71847936,
+      "atMs": 1976.4400000274181,
+      "sequence": 83
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 78,
+      "total": 206,
+      "sourceBytes": 18035712,
+      "expandedBytes": 72142848,
+      "atMs": 1977.6400000154972,
+      "sequence": 84
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 79,
+      "total": 206,
+      "sourceBytes": 18183168,
+      "expandedBytes": 72732672,
+      "atMs": 1978.8250000178814,
+      "sequence": 85
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 80,
+      "total": 206,
+      "sourceBytes": 18256896,
+      "expandedBytes": 73027584,
+      "atMs": 1979.9300000071526,
+      "sequence": 86
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 81,
+      "total": 206,
+      "sourceBytes": 18404352,
+      "expandedBytes": 73617408,
+      "atMs": 1981.3650000095367,
+      "sequence": 87
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 82,
+      "total": 206,
+      "sourceBytes": 18478080,
+      "expandedBytes": 73912320,
+      "atMs": 1982.5150000154972,
+      "sequence": 88
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 83,
+      "total": 206,
+      "sourceBytes": 18625536,
+      "expandedBytes": 74502144,
+      "atMs": 1983.880000025034,
+      "sequence": 89
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 84,
+      "total": 206,
+      "sourceBytes": 18699264,
+      "expandedBytes": 74797056,
+      "atMs": 1985.0750000178814,
+      "sequence": 90
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 85,
+      "total": 206,
+      "sourceBytes": 18846720,
+      "expandedBytes": 75386880,
+      "atMs": 1986.3500000238419,
+      "sequence": 91
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 86,
+      "total": 206,
+      "sourceBytes": 18920448,
+      "expandedBytes": 75681792,
+      "atMs": 1987.4700000286102,
+      "sequence": 92
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 87,
+      "total": 206,
+      "sourceBytes": 19067904,
+      "expandedBytes": 76271616,
+      "atMs": 1988.7600000202656,
+      "sequence": 93
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 88,
+      "total": 206,
+      "sourceBytes": 19141632,
+      "expandedBytes": 76566528,
+      "atMs": 1989.9200000166893,
+      "sequence": 94
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 89,
+      "total": 206,
+      "sourceBytes": 19289088,
+      "expandedBytes": 77156352,
+      "atMs": 1991.1150000095367,
+      "sequence": 95
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 90,
+      "total": 206,
+      "sourceBytes": 19362816,
+      "expandedBytes": 77451264,
+      "atMs": 1992.330000013113,
+      "sequence": 96
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 91,
+      "total": 206,
+      "sourceBytes": 19510272,
+      "expandedBytes": 78041088,
+      "atMs": 1993.7200000286102,
+      "sequence": 97
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 92,
+      "total": 206,
+      "sourceBytes": 19584000,
+      "expandedBytes": 78336000,
+      "atMs": 1994.8150000274181,
+      "sequence": 98
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 93,
+      "total": 206,
+      "sourceBytes": 20468736,
+      "expandedBytes": 81874944,
+      "atMs": 2000.6100000143051,
+      "sequence": 99
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 94,
+      "total": 206,
+      "sourceBytes": 20911104,
+      "expandedBytes": 83644416,
+      "atMs": 2004.5100000202656,
+      "sequence": 100
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 95,
+      "total": 206,
+      "sourceBytes": 21353472,
+      "expandedBytes": 85413888,
+      "atMs": 2007.6350000202656,
+      "sequence": 101
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 96,
+      "total": 206,
+      "sourceBytes": 21574656,
+      "expandedBytes": 86298624,
+      "atMs": 2010.2700000107288,
+      "sequence": 102
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 97,
+      "total": 206,
+      "sourceBytes": 22459392,
+      "expandedBytes": 89837568,
+      "atMs": 2015.2950000166893,
+      "sequence": 103
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 98,
+      "total": 206,
+      "sourceBytes": 22901760,
+      "expandedBytes": 91607040,
+      "atMs": 2019.0150000154972,
+      "sequence": 104
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 99,
+      "total": 206,
+      "sourceBytes": 23344128,
+      "expandedBytes": 93376512,
+      "atMs": 2021.7150000035763,
+      "sequence": 105
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 100,
+      "total": 206,
+      "sourceBytes": 23565312,
+      "expandedBytes": 94261248,
+      "atMs": 2023.6900000274181,
+      "sequence": 106
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 101,
+      "total": 206,
+      "sourceBytes": 23712768,
+      "expandedBytes": 94851072,
+      "atMs": 2024.8850000202656,
+      "sequence": 107
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 102,
+      "total": 206,
+      "sourceBytes": 23786496,
+      "expandedBytes": 95145984,
+      "atMs": 2025.8550000190735,
+      "sequence": 108
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 103,
+      "total": 206,
+      "sourceBytes": 23933952,
+      "expandedBytes": 95735808,
+      "atMs": 2027.1450000107288,
+      "sequence": 109
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 104,
+      "total": 206,
+      "sourceBytes": 24007680,
+      "expandedBytes": 96030720,
+      "atMs": 2028.2200000286102,
+      "sequence": 110
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 105,
+      "total": 206,
+      "sourceBytes": 24155136,
+      "expandedBytes": 96620544,
+      "atMs": 2029.4700000286102,
+      "sequence": 111
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 106,
+      "total": 206,
+      "sourceBytes": 24228864,
+      "expandedBytes": 96915456,
+      "atMs": 2030.6650000214577,
+      "sequence": 112
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 107,
+      "total": 206,
+      "sourceBytes": 24376320,
+      "expandedBytes": 97505280,
+      "atMs": 2032.0200000107288,
+      "sequence": 113
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 108,
+      "total": 206,
+      "sourceBytes": 24450048,
+      "expandedBytes": 97800192,
+      "atMs": 2033.0150000154972,
+      "sequence": 114
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 109,
+      "total": 206,
+      "sourceBytes": 24597504,
+      "expandedBytes": 98390016,
+      "atMs": 2034.0600000023842,
+      "sequence": 115
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 110,
+      "total": 206,
+      "sourceBytes": 24671232,
+      "expandedBytes": 98684928,
+      "atMs": 2035.0600000023842,
+      "sequence": 116
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 111,
+      "total": 206,
+      "sourceBytes": 24818688,
+      "expandedBytes": 99274752,
+      "atMs": 2036.175000011921,
+      "sequence": 117
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 112,
+      "total": 206,
+      "sourceBytes": 24892416,
+      "expandedBytes": 99569664,
+      "atMs": 2037.030000001192,
+      "sequence": 118
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 113,
+      "total": 206,
+      "sourceBytes": 25039872,
+      "expandedBytes": 100159488,
+      "atMs": 2037.9950000047684,
+      "sequence": 119
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 114,
+      "total": 206,
+      "sourceBytes": 25113600,
+      "expandedBytes": 100454400,
+      "atMs": 2038.8400000035763,
+      "sequence": 120
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 115,
+      "total": 206,
+      "sourceBytes": 25261056,
+      "expandedBytes": 101044224,
+      "atMs": 2040.0100000202656,
+      "sequence": 121
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 116,
+      "total": 206,
+      "sourceBytes": 25334784,
+      "expandedBytes": 101339136,
+      "atMs": 2041.1100000143051,
+      "sequence": 122
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 117,
+      "total": 206,
+      "sourceBytes": 26219520,
+      "expandedBytes": 104878080,
+      "atMs": 2046.2300000190735,
+      "sequence": 123
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 118,
+      "total": 206,
+      "sourceBytes": 26661888,
+      "expandedBytes": 106647552,
+      "atMs": 2049.910000026226,
+      "sequence": 124
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 119,
+      "total": 206,
+      "sourceBytes": 27104256,
+      "expandedBytes": 108417024,
+      "atMs": 2052.935000002384,
+      "sequence": 125
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 120,
+      "total": 206,
+      "sourceBytes": 27325440,
+      "expandedBytes": 109301760,
+      "atMs": 2055.0950000286102,
+      "sequence": 126
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 121,
+      "total": 206,
+      "sourceBytes": 28210176,
+      "expandedBytes": 112840704,
+      "atMs": 2060.0450000166893,
+      "sequence": 127
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 122,
+      "total": 206,
+      "sourceBytes": 28652544,
+      "expandedBytes": 114610176,
+      "atMs": 2063.9600000083447,
+      "sequence": 128
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 123,
+      "total": 206,
+      "sourceBytes": 29094912,
+      "expandedBytes": 116379648,
+      "atMs": 2066.895000010729,
+      "sequence": 129
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 124,
+      "total": 206,
+      "sourceBytes": 29316096,
+      "expandedBytes": 117264384,
+      "atMs": 2069.2200000286102,
+      "sequence": 130
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 125,
+      "total": 206,
+      "sourceBytes": 30643200,
+      "expandedBytes": 122572800,
+      "atMs": 2076.5,
+      "sequence": 131
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 126,
+      "total": 206,
+      "sourceBytes": 31306752,
+      "expandedBytes": 125227008,
+      "atMs": 2082.6950000226498,
+      "sequence": 132
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 127,
+      "total": 206,
+      "sourceBytes": 31896576,
+      "expandedBytes": 127586304,
+      "atMs": 2086.640000015497,
+      "sequence": 133
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 128,
+      "total": 206,
+      "sourceBytes": 32191488,
+      "expandedBytes": 128765952,
+      "atMs": 2089.405000001192,
+      "sequence": 134
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 129,
+      "total": 206,
+      "sourceBytes": 33518592,
+      "expandedBytes": 134074368,
+      "atMs": 2097.0700000226498,
+      "sequence": 135
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 130,
+      "total": 206,
+      "sourceBytes": 34182144,
+      "expandedBytes": 136728576,
+      "atMs": 2103.5,
+      "sequence": 136
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 131,
+      "total": 206,
+      "sourceBytes": 34771968,
+      "expandedBytes": 139087872,
+      "atMs": 2107.2200000286102,
+      "sequence": 137
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 132,
+      "total": 206,
+      "sourceBytes": 35066880,
+      "expandedBytes": 140267520,
+      "atMs": 2110.060000002384,
+      "sequence": 138
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 133,
+      "total": 206,
+      "sourceBytes": 36393984,
+      "expandedBytes": 145575936,
+      "atMs": 2118.2600000202656,
+      "sequence": 139
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 134,
+      "total": 206,
+      "sourceBytes": 37057536,
+      "expandedBytes": 148230144,
+      "atMs": 2123.8700000047684,
+      "sequence": 140
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 135,
+      "total": 206,
+      "sourceBytes": 37647360,
+      "expandedBytes": 150589440,
+      "atMs": 2127.390000015497,
+      "sequence": 141
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 136,
+      "total": 206,
+      "sourceBytes": 37942272,
+      "expandedBytes": 151769088,
+      "atMs": 2130,
+      "sequence": 142
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 137,
+      "total": 206,
+      "sourceBytes": 39269376,
+      "expandedBytes": 157077504,
+      "atMs": 2137.630000025034,
+      "sequence": 143
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 138,
+      "total": 206,
+      "sourceBytes": 39932928,
+      "expandedBytes": 159731712,
+      "atMs": 2142.9650000035763,
+      "sequence": 144
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 139,
+      "total": 206,
+      "sourceBytes": 40522752,
+      "expandedBytes": 162091008,
+      "atMs": 2146.475000023842,
+      "sequence": 145
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 140,
+      "total": 206,
+      "sourceBytes": 40817664,
+      "expandedBytes": 163270656,
+      "atMs": 2149.1800000071526,
+      "sequence": 146
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 141,
+      "total": 206,
+      "sourceBytes": 42144768,
+      "expandedBytes": 168579072,
+      "atMs": 2156.9600000083447,
+      "sequence": 147
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 142,
+      "total": 206,
+      "sourceBytes": 42808320,
+      "expandedBytes": 171233280,
+      "atMs": 2162.810000002384,
+      "sequence": 148
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 143,
+      "total": 206,
+      "sourceBytes": 43398144,
+      "expandedBytes": 173592576,
+      "atMs": 2166.5100000202656,
+      "sequence": 149
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 144,
+      "total": 206,
+      "sourceBytes": 43693056,
+      "expandedBytes": 174772224,
+      "atMs": 2169.350000023842,
+      "sequence": 150
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 145,
+      "total": 206,
+      "sourceBytes": 45020160,
+      "expandedBytes": 180080640,
+      "atMs": 2176.5,
+      "sequence": 151
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 146,
+      "total": 206,
+      "sourceBytes": 45683712,
+      "expandedBytes": 182734848,
+      "atMs": 2181.895000010729,
+      "sequence": 152
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 147,
+      "total": 206,
+      "sourceBytes": 46273536,
+      "expandedBytes": 185094144,
+      "atMs": 2185.685000002384,
+      "sequence": 153
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 148,
+      "total": 206,
+      "sourceBytes": 46568448,
+      "expandedBytes": 186273792,
+      "atMs": 2188.4300000071526,
+      "sequence": 154
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 149,
+      "total": 206,
+      "sourceBytes": 47895552,
+      "expandedBytes": 191582208,
+      "atMs": 2195.8700000047684,
+      "sequence": 155
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 150,
+      "total": 206,
+      "sourceBytes": 48559104,
+      "expandedBytes": 194236416,
+      "atMs": 2202.2750000059605,
+      "sequence": 156
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 151,
+      "total": 206,
+      "sourceBytes": 49148928,
+      "expandedBytes": 196595712,
+      "atMs": 2206.5400000214577,
+      "sequence": 157
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 152,
+      "total": 206,
+      "sourceBytes": 49443840,
+      "expandedBytes": 197775360,
+      "atMs": 2209.1950000226498,
+      "sequence": 158
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 153,
+      "total": 206,
+      "sourceBytes": 50770944,
+      "expandedBytes": 203083776,
+      "atMs": 2217.0750000178814,
+      "sequence": 159
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 154,
+      "total": 206,
+      "sourceBytes": 51434496,
+      "expandedBytes": 205737984,
+      "atMs": 2222.3650000095367,
+      "sequence": 160
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 155,
+      "total": 206,
+      "sourceBytes": 52024320,
+      "expandedBytes": 208097280,
+      "atMs": 2226.1050000190735,
+      "sequence": 161
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 156,
+      "total": 206,
+      "sourceBytes": 52319232,
+      "expandedBytes": 209276928,
+      "atMs": 2228.800000011921,
+      "sequence": 162
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 157,
+      "total": 206,
+      "sourceBytes": 53646336,
+      "expandedBytes": 214585344,
+      "atMs": 2235.955000013113,
+      "sequence": 163
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 158,
+      "total": 206,
+      "sourceBytes": 54309888,
+      "expandedBytes": 217239552,
+      "atMs": 2241.300000011921,
+      "sequence": 164
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 159,
+      "total": 206,
+      "sourceBytes": 54899712,
+      "expandedBytes": 219598848,
+      "atMs": 2245.0750000178814,
+      "sequence": 165
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 160,
+      "total": 206,
+      "sourceBytes": 55194624,
+      "expandedBytes": 220778496,
+      "atMs": 2247.725000023842,
+      "sequence": 166
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 161,
+      "total": 206,
+      "sourceBytes": 56521728,
+      "expandedBytes": 226086912,
+      "atMs": 2254.985000014305,
+      "sequence": 167
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 162,
+      "total": 206,
+      "sourceBytes": 57185280,
+      "expandedBytes": 228741120,
+      "atMs": 2260.2600000202656,
+      "sequence": 168
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 163,
+      "total": 206,
+      "sourceBytes": 57775104,
+      "expandedBytes": 231100416,
+      "atMs": 2264.0450000166893,
+      "sequence": 169
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 164,
+      "total": 206,
+      "sourceBytes": 58070016,
+      "expandedBytes": 232280064,
+      "atMs": 2267.4200000166893,
+      "sequence": 170
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 165,
+      "total": 206,
+      "sourceBytes": 59397120,
+      "expandedBytes": 237588480,
+      "atMs": 2274.850000023842,
+      "sequence": 171
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 166,
+      "total": 206,
+      "sourceBytes": 60060672,
+      "expandedBytes": 240242688,
+      "atMs": 2280.550000011921,
+      "sequence": 172
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 167,
+      "total": 206,
+      "sourceBytes": 60650496,
+      "expandedBytes": 242601984,
+      "atMs": 2284.705000013113,
+      "sequence": 173
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 168,
+      "total": 206,
+      "sourceBytes": 60945408,
+      "expandedBytes": 243781632,
+      "atMs": 2287.3050000071526,
+      "sequence": 174
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 169,
+      "total": 206,
+      "sourceBytes": 62272512,
+      "expandedBytes": 249090048,
+      "atMs": 2294.3650000095367,
+      "sequence": 175
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 170,
+      "total": 206,
+      "sourceBytes": 62936064,
+      "expandedBytes": 251744256,
+      "atMs": 2299.935000002384,
+      "sequence": 176
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 171,
+      "total": 206,
+      "sourceBytes": 63525888,
+      "expandedBytes": 254103552,
+      "atMs": 2303.875,
+      "sequence": 177
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 172,
+      "total": 206,
+      "sourceBytes": 63820800,
+      "expandedBytes": 255283200,
+      "atMs": 2306.4800000190735,
+      "sequence": 178
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 173,
+      "total": 206,
+      "sourceBytes": 65147904,
+      "expandedBytes": 260591616,
+      "atMs": 2313.7950000166893,
+      "sequence": 179
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 174,
+      "total": 206,
+      "sourceBytes": 65811456,
+      "expandedBytes": 263245824,
+      "atMs": 2319.0400000214577,
+      "sequence": 180
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 175,
+      "total": 206,
+      "sourceBytes": 66401280,
+      "expandedBytes": 265605120,
+      "atMs": 2322.860000014305,
+      "sequence": 181
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 176,
+      "total": 206,
+      "sourceBytes": 66696192,
+      "expandedBytes": 266784768,
+      "atMs": 2325.690000027418,
+      "sequence": 182
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 177,
+      "total": 206,
+      "sourceBytes": 68023296,
+      "expandedBytes": 272093184,
+      "atMs": 2332.9600000083447,
+      "sequence": 183
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 178,
+      "total": 206,
+      "sourceBytes": 68686848,
+      "expandedBytes": 274747392,
+      "atMs": 2338.410000026226,
+      "sequence": 184
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 179,
+      "total": 206,
+      "sourceBytes": 69276672,
+      "expandedBytes": 277106688,
+      "atMs": 2342.110000014305,
+      "sequence": 185
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 180,
+      "total": 206,
+      "sourceBytes": 69571584,
+      "expandedBytes": 278286336,
+      "atMs": 2345.015000015497,
+      "sequence": 186
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 181,
+      "total": 206,
+      "sourceBytes": 70898688,
+      "expandedBytes": 283594752,
+      "atMs": 2352.2000000178814,
+      "sequence": 187
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 182,
+      "total": 206,
+      "sourceBytes": 71562240,
+      "expandedBytes": 286248960,
+      "atMs": 2358.9150000214577,
+      "sequence": 188
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 183,
+      "total": 206,
+      "sourceBytes": 72152064,
+      "expandedBytes": 288608256,
+      "atMs": 2363.270000010729,
+      "sequence": 189
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 184,
+      "total": 206,
+      "sourceBytes": 72446976,
+      "expandedBytes": 289787904,
+      "atMs": 2366.265000015497,
+      "sequence": 190
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 185,
+      "total": 206,
+      "sourceBytes": 73774080,
+      "expandedBytes": 295096320,
+      "atMs": 2373.890000015497,
+      "sequence": 191
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 186,
+      "total": 206,
+      "sourceBytes": 74437632,
+      "expandedBytes": 297750528,
+      "atMs": 2379.380000025034,
+      "sequence": 192
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 187,
+      "total": 206,
+      "sourceBytes": 75027456,
+      "expandedBytes": 300109824,
+      "atMs": 2383.190000027418,
+      "sequence": 193
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 188,
+      "total": 206,
+      "sourceBytes": 75322368,
+      "expandedBytes": 301289472,
+      "atMs": 2386.110000014305,
+      "sequence": 194
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 189,
+      "total": 206,
+      "sourceBytes": 76649472,
+      "expandedBytes": 306597888,
+      "atMs": 2393.080000013113,
+      "sequence": 195
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 190,
+      "total": 206,
+      "sourceBytes": 77313024,
+      "expandedBytes": 309252096,
+      "atMs": 2398.5100000202656,
+      "sequence": 196
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 191,
+      "total": 206,
+      "sourceBytes": 77902848,
+      "expandedBytes": 311611392,
+      "atMs": 2402.515000015497,
+      "sequence": 197
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 192,
+      "total": 206,
+      "sourceBytes": 78197760,
+      "expandedBytes": 312791040,
+      "atMs": 2405.235000014305,
+      "sequence": 198
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 193,
+      "total": 206,
+      "sourceBytes": 79524864,
+      "expandedBytes": 318099456,
+      "atMs": 2412.2600000202656,
+      "sequence": 199
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 194,
+      "total": 206,
+      "sourceBytes": 80188416,
+      "expandedBytes": 320753664,
+      "atMs": 2417.265000015497,
+      "sequence": 200
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 195,
+      "total": 206,
+      "sourceBytes": 80778240,
+      "expandedBytes": 323112960,
+      "atMs": 2421.3700000047684,
+      "sequence": 201
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 196,
+      "total": 206,
+      "sourceBytes": 81073152,
+      "expandedBytes": 324292608,
+      "atMs": 2423.8450000286102,
+      "sequence": 202
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 197,
+      "total": 206,
+      "sourceBytes": 82400256,
+      "expandedBytes": 329601024,
+      "atMs": 2431.25,
+      "sequence": 203
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 198,
+      "total": 206,
+      "sourceBytes": 83063808,
+      "expandedBytes": 332255232,
+      "atMs": 2436.3850000202656,
+      "sequence": 204
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 199,
+      "total": 206,
+      "sourceBytes": 83653632,
+      "expandedBytes": 334614528,
+      "atMs": 2440.035000026226,
+      "sequence": 205
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 200,
+      "total": 206,
+      "sourceBytes": 83948544,
+      "expandedBytes": 335794176,
+      "atMs": 2442.875,
+      "sequence": 206
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 201,
+      "total": 206,
+      "sourceBytes": 85275648,
+      "expandedBytes": 341102592,
+      "atMs": 2450.080000013113,
+      "sequence": 207
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 202,
+      "total": 206,
+      "sourceBytes": 85939200,
+      "expandedBytes": 343756800,
+      "atMs": 2455.7750000059605,
+      "sequence": 208
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 203,
+      "total": 206,
+      "sourceBytes": 86529024,
+      "expandedBytes": 346116096,
+      "atMs": 2459.780000001192,
+      "sequence": 209
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 204,
+      "total": 206,
+      "sourceBytes": 86823936,
+      "expandedBytes": 347295744,
+      "atMs": 2462.5,
+      "sequence": 210
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 205,
+      "total": 206,
+      "sourceBytes": 86830080,
+      "expandedBytes": 347320320,
+      "atMs": 2463.1650000214577,
+      "sequence": 211
+    },
+    {
+      "type": "progress",
+      "phase": "expansion",
+      "completed": 206,
+      "total": 206,
+      "sourceBytes": 86833152,
+      "expandedBytes": 347332608,
+      "atMs": 2463.630000025034,
+      "sequence": 212
+    },
+    {
+      "type": "progress",
+      "phase": "loaded",
+      "stage": "denoise",
+      "elapsedMs": 4344.824999988079,
+      "creates": {
+        "text": 1,
+        "encode": 1,
+        "denoise": 1,
+        "decode": 0
+      },
+      "memory": null,
+      "atMs": 6128.425000011921,
+      "sequence": 213
+    },
+    {
+      "type": "progress",
+      "phase": "loading",
+      "stage": "decode",
+      "atMs": 6128.690000027418,
+      "sequence": 214
+    },
+    {
+      "type": "progress",
+      "phase": "loaded",
+      "stage": "decode",
+      "elapsedMs": 392.1850000023842,
+      "creates": {
+        "text": 1,
+        "encode": 1,
+        "denoise": 1,
+        "decode": 1
+      },
+      "memory": null,
+      "atMs": 6520.550000011921,
+      "sequence": 215
+    },
+    {
+      "type": "progress",
+      "phase": "warm-engine-start",
+      "coldPreparationMs": 6455.069999992847,
+      "atMs": 6520.680000007153,
+      "sequence": 216
+    },
+    {
+      "type": "progress",
+      "phase": "organism-composited",
+      "name": "Civet",
+      "inferencePasses": 0,
+      "elapsedMs": 31.759999990463257,
+      "atMs": 6560.725000023842,
+      "sequence": 217
+    },
+    {
+      "type": "progress",
+      "phase": "organism-composited",
+      "name": "Persimmon",
+      "inferencePasses": 0,
+      "elapsedMs": 23.03999999165535,
+      "atMs": 6583.795000016689,
+      "sequence": 218
+    },
+    {
+      "type": "progress",
+      "phase": "organism-composited",
+      "name": "Platypus",
+      "inferencePasses": 0,
+      "elapsedMs": 21.46500000357628,
+      "atMs": 6605.245000004768,
+      "sequence": 219
+    },
+    {
+      "type": "progress",
+      "phase": "organism-composited",
+      "name": "Frog",
+      "inferencePasses": 0,
+      "elapsedMs": 16.53499999642372,
+      "atMs": 6621.785000026226,
+      "sequence": 220
+    },
+    {
+      "type": "progress",
+      "phase": "organism-composited",
+      "name": "Devil's Club",
+      "inferencePasses": 0,
+      "elapsedMs": 21.084999978542328,
+      "atMs": 6642.895000010729,
+      "sequence": 221
+    },
+    {
+      "type": "progress",
+      "phase": "organism-composited",
+      "name": "Cranberry",
+      "inferencePasses": 0,
+      "elapsedMs": 29.875,
+      "atMs": 6672.795000016689,
+      "sequence": 222
+    },
+    {
+      "type": "progress",
+      "phase": "composite-capture",
+      "name": "composite-before-finisher",
+      "atMs": 6754.530000001192,
+      "sequence": 223
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "encode",
+      "atMs": 6757.490000009537,
+      "sequence": 224
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "encode",
+      "outputShape": [
+        1,
+        128,
+        36,
+        64
+      ],
+      "atMs": 6757.535000026226,
+      "sequence": 225
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 2112.6800000071526,
+      "atMs": 8870.630000025034,
+      "sequence": 226
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "encode",
+      "atMs": 8870.810000002384,
+      "sequence": 227
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "encode",
+      "atMs": 8881.075000017881,
+      "sequence": 228
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "encode",
+      "outputShape": [
+        1,
+        128,
+        14,
+        32
+      ],
+      "atMs": 8881.105000019073,
+      "sequence": 229
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "encode",
+      "elapsedMs": 307.6200000047684,
+      "atMs": 9188.745000004768,
+      "sequence": 230
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "encode",
+      "atMs": 9188.800000011921,
+      "sequence": 231
+    },
+    {
+      "type": "progress",
+      "phase": "finisher-start",
+      "protectedTokens": 110,
+      "atMs": 9190.770000010729,
+      "sequence": 232
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "text",
+      "atMs": 9348.910000026226,
+      "sequence": 233
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "text",
+      "outputShape": [
+        1,
+        416,
+        7680
+      ],
+      "atMs": 9348.94500002265,
+      "sequence": 234
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 8499.75,
+      "atMs": 17848.690000027418,
+      "sequence": 235
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "text",
+      "atMs": 17848.725000023842,
+      "sequence": 236
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "denoise",
+      "atMs": 17896.465000003576,
+      "sequence": 237
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "denoise",
+      "outputShape": [
+        1,
+        2752,
+        128
+      ],
+      "atMs": 17896.505000025034,
+      "sequence": 238
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "denoise",
+      "elapsedMs": 8714.879999995232,
+      "atMs": 26611.5,
+      "sequence": 239
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "denoise",
+      "atMs": 26611.610000014305,
+      "sequence": 240
+    },
+    {
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 1,
+      "imageTokens": 2752,
+      "textTokens": 416,
+      "atMs": 26625.615000009537,
+      "sequence": 241
+    },
+    {
+      "type": "progress",
+      "phase": "session-reused",
+      "stage": "decode",
+      "atMs": 26626.835000008345,
+      "sequence": 242
+    },
+    {
+      "type": "progress",
+      "phase": "inference-start",
+      "stage": "decode",
+      "outputShape": [
+        1,
+        3,
+        576,
+        1024
+      ],
+      "atMs": 26626.855000019073,
+      "sequence": 243
+    },
+    {
+      "type": "progress",
+      "phase": "inference-complete",
+      "stage": "decode",
+      "elapsedMs": 3370.7899999916553,
+      "atMs": 29997.690000027418,
+      "sequence": 244
+    },
+    {
+      "type": "progress",
+      "phase": "readback-complete",
+      "stage": "decode",
+      "atMs": 29997.740000009537,
+      "sequence": 245
+    },
+    {
+      "phase": "landing-complete",
+      "landing": 1,
+      "elapsedMs": 23561.939999997616,
+      "sessionCreates": {
+        "text": 1,
+        "encode": 1,
+        "denoise": 1,
+        "decode": 1
+      },
+      "atMs": 30085,
+      "sequence": 246
+    }
+  ],
+  "sources": [
+    {
+      "url": "/recipe.json",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/recipe.json",
+      "bytes": 43028,
+      "sha256": "6dab268d09a21a7a7bf8dd49f9b019b613646ef448d76f344ebbd60536cf1029"
+    },
+    {
+      "url": "/kit-client.mjs",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/kit-client.mjs",
+      "bytes": 3128,
+      "sha256": "e9a01736504d829ac2006866d3ca3cc95cfacb745e770defdc34c31d9102099c"
+    },
+    {
+      "url": "/kit-proof-client.mjs",
+      "file": "tools/local-image-generation/kit-proof-client.mjs",
+      "bytes": 2396,
+      "sha256": "48db361b187d3f7a46e3314d80b1941b056d75fec81428c5e28f4ddbdb49d7a2"
+    },
+    {
+      "url": "/stage-worker.mjs",
+      "file": "tools/local-image-generation/kit-stage-worker.mjs",
+      "bytes": 1071,
+      "sha256": "035a36cdf8a43c427db6c8d771125d9ed55d212adc025973ad87ee5b37c6074a"
+    },
+    {
+      "url": "/kit-worker-engine.mjs",
+      "file": "tools/local-image-generation/kit-worker-engine.mjs",
+      "bytes": 14741,
+      "sha256": "e1799b34920b89645ef8a5780617ebc8d26d082ecb4f57d1e2d97f60f84bcfbb"
+    },
+    {
+      "url": "/kit-worker-expansion.mjs",
+      "file": "tools/local-image-generation/kit-worker-expansion.mjs",
+      "bytes": 3925,
+      "sha256": "35adfcf3a4bbcd81229e0ec56a14f21e003b20ead43c18eb698da94987caef32"
+    },
+    {
+      "url": "/kit-engine-math.mjs",
+      "file": "tools/local-image-generation/kit-engine-math.mjs",
+      "bytes": 6665,
+      "sha256": "18153a8df11ca8f9e6729f5ed379f24300893c936740a5d7c4a115fe9b8c337e"
+    },
+    {
+      "url": "/kit-contact-math.mjs",
+      "file": "tools/local-image-generation/kit-contact-math.mjs",
+      "bytes": 6029,
+      "sha256": "b2b185178e7f4d21601f064fad5a79953c03f9303e4ea55844d185ff8b636c59"
+    },
+    {
+      "url": "/kit-weather-math.mjs",
+      "file": "tools/local-image-generation/kit-weather-math.mjs",
+      "bytes": 3422,
+      "sha256": "a8f6a163d739f5c4e26a4645bfc380624619eff89394b5907f606809c787aa91"
+    },
+    {
+      "url": "/pipeline-math.mjs",
+      "file": "tools/local-image-generation/pipeline-math.mjs",
+      "bytes": 10225,
+      "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+    },
+    {
+      "url": "/gpu-profile.mjs",
+      "file": "tools/local-image-generation/gpu-profile.mjs",
+      "bytes": 9725,
+      "sha256": "4a02596d6a885a88b894c4a285bd93be07437e856107c34489231c7191d2dbf1"
+    },
+    {
+      "url": "/denoiser-shapes.mjs",
+      "file": "tools/local-image-generation/denoiser-shapes.mjs",
+      "bytes": 2370,
+      "sha256": "c66850a4d3564e6336a2d5891152c2120d2847dcef87782d5197aae102e8f6d6"
+    },
+    {
+      "url": "/browser-variant-plan.json",
+      "file": "tools/local-image-generation/browser-variant-plan.json",
+      "bytes": 142918,
+      "sha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81"
+    },
+    {
+      "url": "/inputs/civet.rgba",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/inputs/civet.rgba",
+      "bytes": 589824,
+      "sha256": "447d80f0682694f8b483c21c6f45d6db4e7aa2ec9e29180177c8b2fde4835740"
+    },
+    {
+      "url": "/inputs/persimmon.rgba",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/inputs/persimmon.rgba",
+      "bytes": 589824,
+      "sha256": "57e0db93c9817f72210dfb46c3d41590f9ed9887aa6cd0c4c75ee801e0862b1f"
+    },
+    {
+      "url": "/inputs/platypus.rgba",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/inputs/platypus.rgba",
+      "bytes": 589824,
+      "sha256": "ef0d19aa79cbbf99cd3439c5fdcc6361df4acc00bb8de1f1f06dd8dbc0c9fbaf"
+    },
+    {
+      "url": "/inputs/frog.rgba",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/inputs/frog.rgba",
+      "bytes": 589824,
+      "sha256": "fefdfadb4e84da311c4dda6898d90b472d9ed89b1f83858bbb9d6747bdbd9fa5"
+    },
+    {
+      "url": "/inputs/devils-club.rgba",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/inputs/devils-club.rgba",
+      "bytes": 589824,
+      "sha256": "ae593073e675943ebe915bd1a69ba54b62e02804f11c942f3311e03e15948356"
+    },
+    {
+      "url": "/inputs/cranberry.rgba",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/inputs/cranberry.rgba",
+      "bytes": 589824,
+      "sha256": "2011a3a1371e38f45e9c85403917f966bcc758adb5d906c017917a01e5b9a58b"
+    },
+    {
+      "url": "/inputs/earth-temperate.rgba",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/inputs/earth-temperate.rgba",
+      "bytes": 2359296,
+      "sha256": "209907262f72b4ce21f89f0f25d51785f2bf2b704049f889badefe3b84ef5e5a"
+    },
+    {
+      "url": "/inputs/atlas.rgba",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/inputs/atlas.rgba",
+      "bytes": 688128,
+      "sha256": "7383061cbcc3e766a146e0aef4cabdd9864f5c4e2acd9edf4e1b9d39725a99b1"
+    },
+    {
+      "url": "/inputs/triptych.rgba",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/inputs/triptych.rgba",
+      "bytes": 458752,
+      "sha256": "22aa9825ccf55a4422fe10ea26845fedb1042f201b4d419a4699315f3a6e6974"
+    },
+    {
+      "url": "/inputs/foreground-grass.rgba",
+      "file": "audits/ART_KIT_WEATHER_MAT_20260912/prepared/inputs/foreground-grass.rgba",
+      "bytes": 16384,
+      "sha256": "cd0bb228a8ad5a2ea1b77dfa005738e0dde72d4e373c8ef70c75df4bb982927b"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "bytes": 51407,
+      "sha256": "5d25483158d53d8f34d0e9c06a654d56c8dca4ebdf370ea0982ef11315a00e0e"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "bytes": 25749873,
+      "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.mjs",
+      "bytes": 46676,
+      "sha256": "3d68fa7af88c48894d4b0c8629de12018ab73b77519bc0b05dc8d908ad82749f"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.wasm",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.wasm",
+      "bytes": 27797172,
+      "sha256": "db816fadbab47a755170c08f933961e231412ac17f5981f9a62e519708a44dea"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.mjs",
+      "bytes": 49268,
+      "sha256": "f4a22e988ac3c2345e58c823a9254ac15f39271f86241bb2bbda0bc7e6b4dde6"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.wasm",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.wasm",
+      "bytes": 16025636,
+      "sha256": "8ef22fea2fec3d90dc2858e0392382cf6800b0855acfd6722ca1390e2fe15c56"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.mjs",
+      "bytes": 24218,
+      "sha256": "5a15f1fd086b3f6c2baf1f35105b8f502653b567e165cef80028870b39748747"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm",
+      "bytes": 13961845,
+      "sha256": "ec8580a9d7b9476ceee52e10a7f94124e4dc71a019d666ed6d4726697c109a4d"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs",
+      "bytes": 865147,
+      "sha256": "c600de656f52722365438926fbce6e926cd8594b1b4cd2f5cd4499c42f110c58"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.all.min.mjs",
+      "bytes": 819520,
+      "sha256": "e7a1ea699f25bdeeb3d9b9ff7ea26edb660fd15cab380e2fe479809d422f5e8b"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.all.mjs",
+      "bytes": 5929648,
+      "sha256": "93c437880b40d8ffe65c971cff28fa554e10b490f30f45382e2ebd78c457cb7b"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.bundle.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.bundle.min.mjs",
+      "bytes": 413328,
+      "sha256": "a32b8c695bfc78c1e6e5b72746364c1a7733b7b17c5759e3cffd8bc8e8158a91"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.bundle.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.jspi.bundle.min.mjs",
+      "bytes": 114239,
+      "sha256": "9afb4911acc005f370e838cf5cfce493728b2634c41afb15a0c716a8053dedee"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.jspi.min.mjs",
+      "bytes": 66510,
+      "sha256": "8d930290d7150c5d1bbd88d4e2988bddaf7e19b916c3b0e0e5e581e090b470f4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.jspi.mjs",
+      "bytes": 676607,
+      "sha256": "4df3efe5189e41e2eea36f16815bce1ff11979cd8ab5e3e27dfb731f95f9c135"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.min.mjs",
+      "bytes": 367933,
+      "sha256": "d0f6cf735704c25e713101804e24532be1ee754292fe05fa7dda708a3be1e6b4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.mjs",
+      "bytes": 2639881,
+      "sha256": "a4d8dde2bc3638eecf29d772ae48035c534d2160bfedf313f0365cb54e701f1f"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.node.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.node.min.mjs",
+      "bytes": 27061,
+      "sha256": "d03374770621e06e4750482236ec6dbd6299d0205b9de44b9eebe52a0721ef71"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.bundle.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.wasm.bundle.min.mjs",
+      "bytes": 72894,
+      "sha256": "7a3913dc5c7a9c3ad1144f5fbfecd402bc5013bcc886bc67664b18d8a15ab298"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.wasm.min.mjs",
+      "bytes": 50126,
+      "sha256": "14a0a63ad1a0fe8127722929fd16fb26c2e5352ea221bc9034d12daf314d0b92"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.wasm.mjs",
+      "bytes": 577671,
+      "sha256": "956c4b3b8d7dd15229c98bcc58869773e1d582737aec04b2e5c634bd932085a4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgl.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgl.min.mjs",
+      "bytes": 472167,
+      "sha256": "ce98866698d20fa9521a5d27520a3273a6860b85ff32a5c9f3fc22ee10b9786a"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgl.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgl.mjs",
+      "bytes": 3534309,
+      "sha256": "415c7a241d1c1c22a47cee581d76dd2aeb63ed90521cf562adf06ca2a5461c23"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.bundle.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.bundle.min.mjs",
+      "bytes": 116102,
+      "sha256": "2b943893e8b444fd3983c205f3574cddd70b1f8a6170c114b03cc3d6060c4cbb"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "bytes": 66348,
+      "sha256": "08272eb8dadd249a0eaa53e19f4e5b5d01bc8a121240719db29093cfb776bc27"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.mjs",
+      "file": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.mjs",
+      "bytes": 676586,
+      "sha256": "1aaf3cde11544e48f111a0911c4d08c6f1401043ec3822601d51dad39353bb9a"
+    },
+    {
+      "url": "/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "file": "tools/local-image-generation/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "bytes": 98937,
+      "sha256": "1c4a848f86156201c033d6cd08c4cf81ae1088552acec3367f31ef086edf5af0"
+    },
+    {
+      "url": "/triptych.png",
+      "file": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "bytes": 3014976,
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/triptych.png",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-proof-client.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-client.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/recipe.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/favicon.ico",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/stage-worker.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-engine-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-worker-engine.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/pipeline-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-worker-expansion.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-weather-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-contact-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_encoder.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_encoder.onnx.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4-00000.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4-00001.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/browser-variant-plan.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981239808-981245951"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981252096-981255167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=963477504-963846143"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971956224-972140543"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972140544-972287999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978038784-978112511"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972288000-972435455"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978112512-978186239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972435456-972582911"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978186240-978259967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972582912-972730367"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978259968-978333695"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972730368-972877823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978333696-978407423"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972877824-973025279"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978407424-978481151"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973025280-973172735"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978481152-978554879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973172736-973320191"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978554880-978628607"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=919928832-920813567"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=953843712-954286079"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=954286080-954728447"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969744384-969965567"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=920813568-921698303"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=954728448-955170815"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=955170816-955613183"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969965568-970186751"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973320192-973467647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978628608-978702335"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973467648-973615103"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978702336-978776063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973615104-973762559"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978776064-978849791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973762560-973910015"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978849792-978923519"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973910016-974057471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978923520-978997247"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974057472-974204927"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978997248-979070975"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974204928-974352383"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979070976-979144703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974352384-974499839"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979144704-979218431"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=921698304-922583039"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=955613184-956055551"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956055552-956497919"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970186752-970407935"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=922583040-923467775"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956497920-956940287"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956940288-957382655"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970407936-970629119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974499840-974647295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979218432-979292159"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974647296-974794751"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979292160-979365887"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974794752-974942207"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979365888-979439615"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974942208-975089663"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979439616-979513343"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975089664-975237119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979513344-979587071"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975237120-975384575"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979587072-979660799"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975384576-975532031"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979660800-979734527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975532032-975679487"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979734528-979808255"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=923467776-924352511"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=957382656-957825023"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=957825024-958267391"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970629120-970850303"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=924352512-925237247"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=958267392-958709759"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=958709760-959152127"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970850304-971071487"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975679488-975826943"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979808256-979881983"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975826944-975974399"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979881984-979955711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975974400-976121855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979955712-980029439"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976121856-976269311"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980029440-980103167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976269312-976416767"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980103168-980176895"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976416768-976564223"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980176896-980250623"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976564224-976711679"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980250624-980324351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976711680-976859135"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980324352-980398079"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=925237248-926121983"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=959152128-959594495"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=959594496-960036863"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971071488-971292671"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=926121984-927006719"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960036864-960479231"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960479232-960921599"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971292672-971513855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976859136-977006591"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980398080-980471807"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977006592-977154047"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980471808-980545535"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977154048-977301503"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980545536-980619263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977301504-977448959"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980619264-980692991"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977448960-977596415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980692992-980766719"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977596416-977743871"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980766720-980840447"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977743872-977891327"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980840448-980914175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977891328-978038783"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980914176-980987903"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=927006720-927891455"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960921600-961363967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=961363968-961806335"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971513856-971735039"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=927891456-928776191"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=961806336-962248703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=962248704-962691071"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971735040-971956223"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=893386752-894713855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=928776192-929439743"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=942047232-942637055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=963846144-964141055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=894713856-896040959"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=929439744-930103295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=942637056-943226879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964141056-964435967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=896040960-897368063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=930103296-930766847"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=943226880-943816703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964435968-964730879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=897368064-898695167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=930766848-931430399"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=943816704-944406527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964730880-965025791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=898695168-900022271"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=931430400-932093951"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=944406528-944996351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965025792-965320703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=900022272-901349375"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=932093952-932757503"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=944996352-945586175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965320704-965615615"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=901349376-902676479"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=932757504-933421055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=945586176-946175999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965615616-965910527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=902676480-904003583"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=933421056-934084607"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=946176000-946765823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965910528-966205439"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=904003584-905330687"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=934084608-934748159"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=946765824-947355647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966205440-966500351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=905330688-906657791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=934748160-935411711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=947355648-947945471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966500352-966795263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=906657792-907984895"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=935411712-936075263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=947945472-948535295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966795264-967090175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=907984896-909311999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=936075264-936738815"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=948535296-949125119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967090176-967385087"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=909312000-910639103"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=936738816-937402367"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=949125120-949714943"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967385088-967679999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=910639104-911966207"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=937402368-938065919"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=949714944-950304767"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967680000-967974911"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=911966208-913293311"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=938065920-938729471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=950304768-950894591"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967974912-968269823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=913293312-914620415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=938729472-939393023"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=950894592-951484415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968269824-968564735"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=914620416-915947519"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=939393024-940056575"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=951484416-952074239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968564736-968859647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=915947520-917274623"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=940056576-940720127"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=952074240-952664063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968859648-969154559"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=917274624-918601727"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=940720128-941383679"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=952664064-953253887"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969154560-969449471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=918601728-919928831"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=941383680-942047231"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=953253888-953843711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969449472-969744383"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981245952-981252095"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981255168-981258239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00000.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00001.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_decoder.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_decoder.onnx.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/earth-temperate.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/civet.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/persimmon.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/platypus.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/frog.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/devils-club.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/cranberry.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/foreground-grass.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/triptych.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/tokenizer/tokenizer.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/tokenizer/tokenizer_config.json",
+      "range": null
+    }
+  ],
+  "memory": [
+    {
+      "at": "2026-09-12T21:19:04.655Z",
+      "rendererHeap": {
+        "usedSize": 684796,
+        "totalSize": 1572864,
+        "embedderHeapUsedSize": 1385328,
+        "backingStorageSize": 48949
+      }
+    },
+    {
+      "at": "2026-09-12T21:19:09.661Z",
+      "rendererHeap": {
+        "usedSize": 808396,
+        "totalSize": 1572864,
+        "embedderHeapUsedSize": 1748224,
+        "backingStorageSize": 48949
+      }
+    },
+    {
+      "at": "2026-09-12T21:19:14.664Z",
+      "rendererHeap": {
+        "usedSize": 828860,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1755896,
+        "backingStorageSize": 48949
+      }
+    },
+    {
+      "at": "2026-09-12T21:19:19.666Z",
+      "rendererHeap": {
+        "usedSize": 829728,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1755896,
+        "backingStorageSize": 48949
+      }
+    },
+    {
+      "at": "2026-09-12T21:19:24.680Z",
+      "rendererHeap": {
+        "usedSize": 832456,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1757616,
+        "backingStorageSize": 48949
+      }
+    },
+    {
+      "at": "2026-09-12T21:19:29.683Z",
+      "rendererHeap": {
+        "usedSize": 833324,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1757616,
+        "backingStorageSize": 48949
+      }
+    },
+    {
+      "at": "2026-09-12T21:19:34.702Z",
+      "rendererHeap": {
+        "usedSize": 879332,
+        "totalSize": 1835008,
+        "embedderHeapUsedSize": 1886864,
+        "backingStorageSize": 49068
+      }
+    }
+  ],
+  "qualityAccepted": false,
+  "modelVerification": {
+    "schema": "cf.local-image-download-receipt.v1",
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "8b79b92782d198497cd02149eda5df17f278a34d60795084755b8d66bd8dd74e",
+    "startedAt": "2026-09-12T21:19:01.035Z",
+    "finishedAt": "2026-09-12T21:19:04.038Z",
+    "status": "complete",
+    "fileCount": 21,
+    "totalBytes": 6691028208,
+    "timeoutMs": 600000,
+    "verifyOnly": true,
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 7792,
+        "sha256": "4cfe7c534c2f259155b0ec282168bdffeb11241899fa48b4d22f7bda1483f26f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00000.data",
+        "bytes": 1599733760,
+        "sha256": "ed37b81331f4eda3bc150448f2d360b4e42951c57dcb9874ec8d0c7c78fa6f6d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00001.data",
+        "bytes": 594170880,
+        "sha256": "89040c34be052e09698afad17bfea3e1158306369612ae347655dfbd4cfa0f3f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.manifest.json",
+        "bytes": 285,
+        "sha256": "fd22d7819467151ead49d2f25b0d576bcb65134111e5219c264cc605cb62e5b7",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.onnx",
+        "bytes": 5341471,
+        "sha256": "e1670f1d203cf2e5cadecce4b2c13d436eefa228a66b7bc6bc629074e9dc0a1b",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/added_tokens.json",
+        "bytes": 707,
+        "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/chat_template.jinja",
+        "bytes": 4168,
+        "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/merges.txt",
+        "bytes": 1671853,
+        "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/special_tokens_map.json",
+        "bytes": 613,
+        "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer.json",
+        "bytes": 11422654,
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer_config.json",
+        "bytes": 5404,
+        "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/vocab.json",
+        "bytes": 2776833,
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00000.data",
+        "bytes": 1585446912,
+        "sha256": "80aa4b75cdab0395f4374c51eecb59e005a6f81b3e573dddd9826a865bcd11be",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00001.data",
+        "bytes": 1566572544,
+        "sha256": "32576185e1f0ab3937141b0c57acad1f37f298c5e7951b3367096c129e5eca28",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00002.data",
+        "bytes": 981258240,
+        "sha256": "5062b615c62206a2dad22ce01fec6f674b0421336179cadec93fec77d1b2b455",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.manifest.json",
+        "bytes": 368,
+        "sha256": "9cf98a614ffe690a297a286b11642b0611f67f64e80edaaf592645f32e727f29",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.onnx",
+        "bytes": 4991601,
+        "sha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx",
+        "bytes": 760826,
+        "sha256": "05f3f6de75b760d5f3b6cbd6efa40ddc8bb7bc4dad58c1dabc85e96383871a7d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx.data",
+        "bytes": 198508544,
+        "sha256": "357f7da253bfb9e3d5762a4f64fd126eae53b8b79466b7da2da2784d5fce89ae",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx",
+        "bytes": 596081,
+        "sha256": "f7cc93e70cc3a9555cb7bf1b02d2eaab83d706cf0a4ddf6da86dffb56daf05f9",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx.data",
+        "bytes": 137756672,
+        "sha256": "9ac7e0847f5b1a6a077ad38688042a53bc004e986d15dc8c0e37a962aad68671",
+        "disposition": "verified-reused"
+      }
+    ],
+    "failure": null
+  },
+  "recipeSha256": "6dab268d09a21a7a7bf8dd49f9b019b613646ef448d76f344ebbd60536cf1029",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.32",
+    "revision": "@9aab8632678bdbd60c393455e1394ee523ba682d",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.4",
+    "protocol_version": "1.3"
+  },
+  "browserPid": 73115,
+  "error": null,
+  "details": {
+    "type": "complete",
+    "requestId": 1,
+    "schema": "cf.kit-engine-result.v4",
+    "weather": {
+      "schema": "cf.kit-compositor-weather.v1",
+      "seed": 133,
+      "card": {
+        "weather": "rain",
+        "waterState": "liquid",
+        "timeOfDay": "day",
+        "light": "day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.",
+        "lightFacing": "upward diffuse sky, no invented sun direction"
+      },
+      "kind": "rain",
+      "wetPixels": 52072,
+      "droplets": 357,
+      "precipitationStrokes": 1062,
+      "wholeFrameDensity": 0.0018,
+      "geometryChanged": false,
+      "stage": "after-finisher"
+    },
+    "boxes": [
+      {
+        "name": "Civet",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
+        "x": 616.9814354066986,
+        "y": 270.72,
+        "width": 240.59712918660284,
+        "height": 172.79999999999995,
+        "instances": [
+          {
+            "x": 616.9814354066986,
+            "y": 270.72,
+            "width": 240.59712918660284,
+            "height": 172.79999999999998
+          }
+        ],
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      },
+      {
+        "name": "Persimmon",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Persimmon\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2058951517\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+        "x": 17.097142857142856,
+        "y": 207.36000000000004,
+        "width": 232.04571428571433,
+        "height": 241.92,
+        "instances": [
+          {
+            "x": 17.097142857142856,
+            "y": 207.36000000000004,
+            "width": 232.0457142857143,
+            "height": 241.92
+          }
+        ],
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      },
+      {
+        "name": "Platypus",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4049771185\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "x": 354.2179310344828,
+        "y": 391.68,
+        "width": 172.2041379310345,
+        "height": 103.68,
+        "instances": [
+          {
+            "x": 354.2179310344828,
+            "y": 391.68,
+            "width": 172.20413793103447,
+            "height": 103.67999999999999
+          }
+        ],
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      },
+      {
+        "name": "Frog",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Frog\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1193089256\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"19\"]]]]",
+        "x": 174.08,
+        "y": 406.78299212598426,
+        "width": 122.88000000000002,
+        "height": 94.33700787401574,
+        "instances": [
+          {
+            "x": 174.08,
+            "y": 406.78299212598426,
+            "width": 122.88,
+            "height": 94.33700787401574
+          }
+        ],
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      },
+      {
+        "name": "Devil's Club",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Devil's Club\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1714376717\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"11\"]]]]",
+        "x": 808.96,
+        "y": 337.8295406360424,
+        "width": 163.84000000000003,
+        "height": 169.0504593639576,
+        "instances": [
+          {
+            "x": 808.96,
+            "y": 337.8295406360424,
+            "width": 163.84,
+            "height": 169.0504593639576
+          }
+        ],
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      },
+      {
+        "name": "Cranberry",
+        "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Cranberry\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1741924755\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"9\"]]]]",
+        "x": 266.24,
+        "y": 450.9926132404181,
+        "width": 163.83999999999997,
+        "height": 67.40738675958187,
+        "instances": [
+          {
+            "x": 266.24,
+            "y": 450.9926132404181,
+            "width": 112.64,
+            "height": 67.4073867595819
+          },
+          {
+            "x": 317.44,
+            "y": 450.9926132404181,
+            "width": 112.64,
+            "height": 67.4073867595819
+          }
+        ],
+        "preFinisherBounds": true,
+        "postFinisherIdentityAccepted": false
+      }
+    ],
+    "measurements": [
+      {
+        "name": "finisher",
+        "elapsedMs": 20891.65000000596,
+        "sequence": 416,
+        "tokenCount": 402,
+        "promptSha256": "741e3078a4a12a669a0fc9846f68789e1717bfc31cd584910568067ff541194c",
+        "chatPromptSha256": "18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde",
+        "sigmas": [
+          0.3499999940395355,
+          0
+        ]
+      }
+    ],
+    "keying": [
+      {
+        "name": "Civet",
+        "erodedPixels": 1863,
+        "despilledPixels": 85,
+        "unresolvedEdgePixels": 0
+      },
+      {
+        "name": "Persimmon",
+        "erodedPixels": 6287,
+        "despilledPixels": 360,
+        "unresolvedEdgePixels": 25
+      },
+      {
+        "name": "Platypus",
+        "erodedPixels": 1425,
+        "despilledPixels": 1,
+        "unresolvedEdgePixels": 0
+      },
+      {
+        "name": "Frog",
+        "erodedPixels": 1993,
+        "despilledPixels": 0,
+        "unresolvedEdgePixels": 0
+      },
+      {
+        "name": "Devil's Club",
+        "erodedPixels": 5605,
+        "despilledPixels": 502,
+        "unresolvedEdgePixels": 2
+      },
+      {
+        "name": "Cranberry",
+        "erodedPixels": 5944,
+        "despilledPixels": 941,
+        "unresolvedEdgePixels": 76
+      }
+    ],
+    "occlusion": [
+      {
+        "name": "Civet",
+        "coveredPixels": 394,
+        "box": {
+          "x": 748.9433110047846,
+          "y": 420.59999999999997,
+          "width": 92.16,
+          "height": 25.919999999999998
+        }
+      },
+      {
+        "name": "Platypus",
+        "coveredPixels": 433,
+        "box": {
+          "x": 377.0195862068966,
+          "y": 472.44,
+          "width": 92.16,
+          "height": 25.919999999999998
+        }
+      }
+    ],
+    "masking": {
+      "protectedTokens": 110,
+      "totalTokens": 2304,
+      "erosionPixels": 4,
+      "threshold": 0.55
+    },
+    "organismPasses": 0,
+    "elapsedMs": 23561.939999997616,
+    "coldPreparationMs": 6455.069999992847,
+    "totalMs": 30017.014999985695,
+    "warmSessionStart": true,
+    "width": 1024,
+    "height": 576,
+    "sessionCreates": {
+      "text": 1,
+      "encode": 1,
+      "denoise": 1,
+      "decode": 1
+    },
+    "expansion": {
+      "planSha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81",
+      "sourceBytes": 86833152,
+      "expandedBytes": 347332608,
+      "graphSha256": "cda0a0e0d2778f83236557bcde8d474fed89a2fcbc817ea04f4758d2a064aed8",
+      "operandsSha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82",
+      "storageWrites": 0
+    },
+    "qualityAccepted": false,
+    "capabilities": {
+      "maxBufferSize": 4294967292,
+      "shaderF16": true,
+      "adapterInfo": {}
+    }
+  },
+  "landings": [
+    {
+      "type": "complete",
+      "requestId": 1,
+      "schema": "cf.kit-engine-result.v4",
+      "weather": {
+        "schema": "cf.kit-compositor-weather.v1",
+        "seed": 133,
+        "card": {
+          "weather": "rain",
+          "waterState": "liquid",
+          "timeOfDay": "day",
+          "light": "day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.",
+          "lightFacing": "upward diffuse sky, no invented sun direction"
+        },
+        "kind": "rain",
+        "wetPixels": 52072,
+        "droplets": 357,
+        "precipitationStrokes": 1062,
+        "wholeFrameDensity": 0.0018,
+        "geometryChanged": false,
+        "stage": "after-finisher"
+      },
+      "boxes": [
+        {
+          "name": "Civet",
+          "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
+          "x": 616.9814354066986,
+          "y": 270.72,
+          "width": 240.59712918660284,
+          "height": 172.79999999999995,
+          "instances": [
+            {
+              "x": 616.9814354066986,
+              "y": 270.72,
+              "width": 240.59712918660284,
+              "height": 172.79999999999998
+            }
+          ],
+          "preFinisherBounds": true,
+          "postFinisherIdentityAccepted": false
+        },
+        {
+          "name": "Persimmon",
+          "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Persimmon\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2058951517\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+          "x": 17.097142857142856,
+          "y": 207.36000000000004,
+          "width": 232.04571428571433,
+          "height": 241.92,
+          "instances": [
+            {
+              "x": 17.097142857142856,
+              "y": 207.36000000000004,
+              "width": 232.0457142857143,
+              "height": 241.92
+            }
+          ],
+          "preFinisherBounds": true,
+          "postFinisherIdentityAccepted": false
+        },
+        {
+          "name": "Platypus",
+          "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4049771185\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]",
+          "x": 354.2179310344828,
+          "y": 391.68,
+          "width": 172.2041379310345,
+          "height": 103.68,
+          "instances": [
+            {
+              "x": 354.2179310344828,
+              "y": 391.68,
+              "width": 172.20413793103447,
+              "height": 103.67999999999999
+            }
+          ],
+          "preFinisherBounds": true,
+          "postFinisherIdentityAccepted": false
+        },
+        {
+          "name": "Frog",
+          "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Frog\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1193089256\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"19\"]]]]",
+          "x": 174.08,
+          "y": 406.78299212598426,
+          "width": 122.88000000000002,
+          "height": 94.33700787401574,
+          "instances": [
+            {
+              "x": 174.08,
+              "y": 406.78299212598426,
+              "width": 122.88,
+              "height": 94.33700787401574
+            }
+          ],
+          "preFinisherBounds": true,
+          "postFinisherIdentityAccepted": false
+        },
+        {
+          "name": "Devil's Club",
+          "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Devil's Club\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1714376717\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"11\"]]]]",
+          "x": 808.96,
+          "y": 337.8295406360424,
+          "width": 163.84000000000003,
+          "height": 169.0504593639576,
+          "instances": [
+            {
+              "x": 808.96,
+              "y": 337.8295406360424,
+              "width": 163.84,
+              "height": 169.0504593639576
+            }
+          ],
+          "preFinisherBounds": true,
+          "postFinisherIdentityAccepted": false
+        },
+        {
+          "name": "Cranberry",
+          "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Cranberry\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1741924755\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"9\"]]]]",
+          "x": 266.24,
+          "y": 450.9926132404181,
+          "width": 163.83999999999997,
+          "height": 67.40738675958187,
+          "instances": [
+            {
+              "x": 266.24,
+              "y": 450.9926132404181,
+              "width": 112.64,
+              "height": 67.4073867595819
+            },
+            {
+              "x": 317.44,
+              "y": 450.9926132404181,
+              "width": 112.64,
+              "height": 67.4073867595819
+            }
+          ],
+          "preFinisherBounds": true,
+          "postFinisherIdentityAccepted": false
+        }
+      ],
+      "measurements": [
+        {
+          "name": "finisher",
+          "elapsedMs": 20891.65000000596,
+          "sequence": 416,
+          "tokenCount": 402,
+          "promptSha256": "741e3078a4a12a669a0fc9846f68789e1717bfc31cd584910568067ff541194c",
+          "chatPromptSha256": "18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde",
+          "sigmas": [
+            0.3499999940395355,
+            0
+          ]
+        }
+      ],
+      "keying": [
+        {
+          "name": "Civet",
+          "erodedPixels": 1863,
+          "despilledPixels": 85,
+          "unresolvedEdgePixels": 0
+        },
+        {
+          "name": "Persimmon",
+          "erodedPixels": 6287,
+          "despilledPixels": 360,
+          "unresolvedEdgePixels": 25
+        },
+        {
+          "name": "Platypus",
+          "erodedPixels": 1425,
+          "despilledPixels": 1,
+          "unresolvedEdgePixels": 0
+        },
+        {
+          "name": "Frog",
+          "erodedPixels": 1993,
+          "despilledPixels": 0,
+          "unresolvedEdgePixels": 0
+        },
+        {
+          "name": "Devil's Club",
+          "erodedPixels": 5605,
+          "despilledPixels": 502,
+          "unresolvedEdgePixels": 2
+        },
+        {
+          "name": "Cranberry",
+          "erodedPixels": 5944,
+          "despilledPixels": 941,
+          "unresolvedEdgePixels": 76
+        }
+      ],
+      "occlusion": [
+        {
+          "name": "Civet",
+          "coveredPixels": 394,
+          "box": {
+            "x": 748.9433110047846,
+            "y": 420.59999999999997,
+            "width": 92.16,
+            "height": 25.919999999999998
+          }
+        },
+        {
+          "name": "Platypus",
+          "coveredPixels": 433,
+          "box": {
+            "x": 377.0195862068966,
+            "y": 472.44,
+            "width": 92.16,
+            "height": 25.919999999999998
+          }
+        }
+      ],
+      "masking": {
+        "protectedTokens": 110,
+        "totalTokens": 2304,
+        "erosionPixels": 4,
+        "threshold": 0.55
+      },
+      "organismPasses": 0,
+      "elapsedMs": 23561.939999997616,
+      "coldPreparationMs": 6455.069999992847,
+      "totalMs": 30017.014999985695,
+      "warmSessionStart": true,
+      "width": 1024,
+      "height": 576,
+      "sessionCreates": {
+        "text": 1,
+        "encode": 1,
+        "denoise": 1,
+        "decode": 1
+      },
+      "expansion": {
+        "planSha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81",
+        "sourceBytes": 86833152,
+        "expandedBytes": 347332608,
+        "graphSha256": "cda0a0e0d2778f83236557bcde8d474fed89a2fcbc817ea04f4758d2a064aed8",
+        "operandsSha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82",
+        "storageWrites": 0
+      },
+      "qualityAccepted": false,
+      "capabilities": {
+        "maxBufferSize": 4294967292,
+        "shaderF16": true,
+        "adapterInfo": {}
+      }
+    }
+  ],
+  "partial": [
+    "composite-before-finisher"
+  ],
+  "artifacts": [
+    {
+      "file": "partial-01-composite-before-finisher.png",
+      "bytes": 1600314,
+      "sha256": "226456a3d12c93c439493d7b828e1ab29e552aaf65e7f81b3b4f181accd58e84"
+    },
+    {
+      "file": "painting.png",
+      "bytes": 1609684,
+      "sha256": "27101ff3af6e91b3e59087e7b1c2c4564d7c3cd1fa9ca6aec11c31250508fc16"
+    },
+    {
+      "file": "finisher-before-weather.png",
+      "bytes": 1612554,
+      "sha256": "6122041b8a113c883078415305fbe7b0f8203852b8caa2f35231008d37cafa59"
+    },
+    {
+      "file": "composite-before-finisher.png",
+      "bytes": 1600314,
+      "sha256": "226456a3d12c93c439493d7b828e1ab29e552aaf65e7f81b3b4f181accd58e84"
+    },
+    {
+      "file": "organism-01.png",
+      "bytes": 91464,
+      "sha256": "01312530857e54d8593f0e7b5941d5d3214704375eea90a62e2e08a46447452c"
+    },
+    {
+      "file": "organism-01-mask.png",
+      "bytes": 22959,
+      "sha256": "98c866da6c457912c2d63dc90471fdc4e950e47ab801176d84924f80b87862ae"
+    },
+    {
+      "file": "organism-02.png",
+      "bytes": 113793,
+      "sha256": "c2f1a023a504a2b868d063f9fc6c842b9c283d9bdab5c4b38da86d02607b0525"
+    },
+    {
+      "file": "organism-02-mask.png",
+      "bytes": 35651,
+      "sha256": "24829404975cd06012b869d4b4f296d938a1995d793154afc3ba47b74433ffaf"
+    },
+    {
+      "file": "organism-03.png",
+      "bytes": 79939,
+      "sha256": "f252923fdec80a6e692b75bf995f2b702c957fffad02d1476f1bada99cc12b0f"
+    },
+    {
+      "file": "organism-03-mask.png",
+      "bytes": 19295,
+      "sha256": "cc0ea5393910fa5f0df7d25a316300334915e4900f413a99bc7f223031a0a3ad"
+    },
+    {
+      "file": "organism-04.png",
+      "bytes": 80931,
+      "sha256": "fda7376535f58ef5748ed2c41a0c39eab12a5bf539e8280fefd03e689c26d44a"
+    },
+    {
+      "file": "organism-04-mask.png",
+      "bytes": 18705,
+      "sha256": "309c16adf67dbdb829aecb8e46b6305d394681036a4247404c6ef177cd3da9c0"
+    },
+    {
+      "file": "organism-05.png",
+      "bytes": 127089,
+      "sha256": "a6737fb9d5c8c384504201ec9eaf8adcff15329f1dfecc3785a96bad9ac7d756"
+    },
+    {
+      "file": "organism-05-mask.png",
+      "bytes": 27071,
+      "sha256": "2609bb02730c86a2a16d35edc0d5b2ff9b4c07e138b8f55355a3d73900e5ea0f"
+    },
+    {
+      "file": "organism-06.png",
+      "bytes": 78928,
+      "sha256": "31aa9ba298689f8bd6033cacacf5daca5944bb516f4d23da22f9c4e0aba4c33e"
+    },
+    {
+      "file": "organism-06-mask.png",
+      "bytes": 23252,
+      "sha256": "cf53f4bbc801fae0158c93b6e4c1394a690467b2acf07d616c2d833fb97b3a97"
+    },
+    {
+      "file": "protected-interiors.png",
+      "bytes": 35152,
+      "sha256": "fcc8293d39affe3edb4b399409be79eccf613c6dd99bf3117942fb793af82011"
+    }
+  ],
+  "finishedAt": "2026-09-12T21:19:40.867Z"
+}
