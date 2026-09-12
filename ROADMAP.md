@@ -50,13 +50,19 @@ are authorized but not implemented. Nick supplied iPhone17Pro, iOS26.6.2 over US
 After Nick unlocked and enabled Remote Automation, Safari session creation succeeded:
 physical iPhone, simulator=false, iOS26.6.2 build23G90, Safari26.6.1. Session/TLS connection
 files are private /private/tmp data; source/audit: audits/IPHONE_KIT_PROBE_20260912.
-One source-bound HTTPS phone probe is prepared, no model run yet. Physical admission
-negative controls and root validation pass. Sign then run to native-01; report before
-Mac installed-model run. No new tool installation, delivery engineering or kit edit.
+One source-bound phone probe on4715e0f2 ran and was reported: maxBufferSize1GiB,
+shader-f16 true, quota41.23GB, memory API unavailable. VAE encoder loaded2.788s;
+Safari invalidated the session during text-encoder loading. Transformer and finisher
+not reached/observed; cause unconfirmed, phone tier UNQUALIFIED. No phone retry.
+Temporary server/owned driver closed. Actual evidence: IPHONE_KIT_PROBE_20260912/native-01.
+Next Mac installed-model run is prepared: tools/local-image-generation/run-kit-installed-land.mjs,
+one clean signed ordinary game Download/resume -> Land -> finisher -> reload/Inspect run
+using pinned Hugging Face download and OPFS parent model. Output MAC_INSTALLED_KIT_20260912/native-01.
+No new parameters, kit edits or delivery architecture. Then weather/mat, then Civet.
 
 OpenAI/Codex on macOS: /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracking origin/openai/mac. Current signedb76916e7:32 ahead/0 behind upstream,
-143 ahead/0 behind cached origin/develop; phone probe preparation commit follows. Startup receipt reused
+tracking origin/openai/mac. Current signed4715e0f2:33 ahead/0 behind upstream,
+144 ahead/0 behind cached origin/develop; phone report/Mac preparation commit follows. Startup receipt reused
 within uninterrupted session. Unrelated .DS_Store untouched. No fetch, pack, integrated
 chain, unit-test checkout lock or pre-probe storage/delivery work.
 GitHub step NONE; PR42 parked. Budget file UNFROZEN/public, private fallback3000; zero

@@ -11,7 +11,10 @@ authorized8px-mask/two-Cranberry-runner experiment ran once in18.25s; five boxes
 Cranberry registration is unresolved. Nick REJECTED it; no further finisher-erosion
 experiments. cd6b609f remains the accepted painting/tier-2 baseline. Nick accepts v4.1
 as diffed and wiring0d825fe5/0e37e6c6 as the production path; nothing was deployed.
-No phone tier is qualified. Latest direction: audits/KIT_WEATHER_DECISIONS_20260912/DECISIONS.md.
+Physical iPhone17Pro/iOS26.6.2 probe reports1GiB maxBufferSize, f16 and41.23GB quota;
+no exposed memory API. Safari session lost during text-encoder load, before transformer
+or finisher; cause unconfirmed, no phone tier qualified. Phone report precedes the next
+Mac installed-model test. Latest direction: audits/KIT_WEATHER_DECISIONS_20260912/DECISIONS.md.
 
 **September 12 acceptance update:** Nick accepts cd6b609f / 0eed6a21 as the first engine
 painting and tier-2 baseline. The retained PNG is unchanged; its qualityAccepted is true.
