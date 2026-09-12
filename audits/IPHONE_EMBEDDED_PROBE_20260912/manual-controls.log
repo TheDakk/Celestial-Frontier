@@ -1,0 +1,11 @@
+✔ phone worker uses pinned embedding, never imports tokenizer, and rejects repeat/four-session controls (93.668209ms)
+✔ one secure physical-family browser start; repeat, desktop, missing/low GPU and insecure controls reject (0.366583ms)
+✔ exact three-session one-finisher outcome; text access, absent timing, extra passes and missing session reject (0.094042ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 135.39375

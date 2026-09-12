@@ -18,5 +18,6 @@
   "phoneInstalled": true,
   "phoneTrusted": true,
   "noMacTrustStoreChanges": true,
-  "phoneTrustEvidence": "iPhone Safari secure page report in setup-server-status.json; physical automation rechecks before model load"
+  "phoneTrustEvidence": "Nick explicitly confirms Certificate Trust Settings switch ON; normal Safari secure/isolation/WebGPU report passes; automated Safari still rejects same certificate (native-03).",
+  "automationTrustVerified": false
 }

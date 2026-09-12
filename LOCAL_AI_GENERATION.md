@@ -11,7 +11,9 @@ retained weather PNG reload and Inspect PASS. After unlock, physical phone sessi
 first embedded probe stopped at insecure-page navigation before any model request. Nick's
 explicit retry native-02 identified Safari/server TLS certificate rejection; zero model
 loads, no timing/memory. Result reported; trusted local HTTPS needed before another phone
-attempt. No trust setting changed. Civet animation proof remains next. Earlier
+attempt. Nick authorized a short-lived trusted certificate/profile; normal Safari secure check now
+passes and Nick confirms full trust ON. Automation still rejects it (native-03, no model
+load). Ordinary-Safari one-start recorder prepared for the same probe. Civet proof follows. Earlier
 paragraphs below record the superseded baseline decisions. No kit edit or GitHub step.
 
 

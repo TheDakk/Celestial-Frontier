@@ -84,3 +84,26 @@ Nick then authorized trusted-local-HTTPS setup. See trusted-https/README.md for 
 profile, exact certificate identity, private runtime path, live setup URLs and removal.
 Apple/native and OpenSSL trust checks pass; iPhone installation/trust remains pending its
 required Settings taps. No model attempt or new phone qualification during setup.
+
+## Trusted certificate: ordinary Safari succeeds, automation still refuses
+
+Nick explicitly confirms the full-trust switch ON. Regular Safari loaded the trusted check
+page and reported secureContext/isolation/WebGPU true. Physical WebDriver native-03 on
+3dc3dc7f still rejected the new server certificate, before HTTP/model access. Two TLS alerts;
+zero model starts/events and no timing. Same new leaf fingerprint verified locally. Do not
+claim root-trust switch was off or that normal browsing proves automation trust. Result
+reported; no further automation retry. All temporary servers/driver closed afterward.
+WebKit documents separate automation windows/preferences/storage, but does not establish
+the precise cause of this certificate difference:
+https://webkit.org/blog/9395/webdriver-is-coming-to-safari-in-ios-13/ .
+
+Continue the authorized same-phone probe in ordinary Safari through the known-working
+secure origin49765. run-manual-iphone-probe.mjs serves only pinned inputs/embedding/image
+models and records page reports on the Mac; one user Start tap claims the attempt. Before
+start model routes refuse. No text encoder/tokenizer routes; same phone-only worker.
+Single-start/secure iPhone-family/capability/three-session/result negative controls pass.
+Loss of heartbeat60s or deadline15min stops, never retries. Records JS memory where exposed;
+ordinary page UA + user confirmation identifies target, not WebDriver-attested identity for
+this run. No transport authentication beyond task-local same-origin TLS; no deployment.
+Capture decoded final PNG and raw finisher. Record capability/result before any delivery tier.
+Then remove the profile; no kit changes. Model execution has not occurred in this batch yet.

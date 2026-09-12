@@ -99,3 +99,15 @@ and committed. No model ran. Next physical native-03 uses new server-key.pem/ser
 accepted embedding, encode/denoise/decode only. This continues the authorized trusted-HTTPS
 repair/probe, stops after its first result. Source setup82e92439 (45 upstream/156 cached
 develop ahead); trust-result commit follows. Remove the phone profile after test.
+
+
+Native-03 on3dc3dc7f still failed automated Safari TLS before model load, despite Nick
+confirming root full-trust switch ON and normal Safari secure-page reports passing.
+Zero HTTP/model requests, two certificate alerts; no hardware inference. Automation stopped.
+Next use regular Safari's proven secure origin for the same authorized one-run probe:
+run-manual-iphone-probe.mjs NEW_AUDIT, user taps Start once, same pinned embedding and three
+sessions. Single-start/capability/result negative controls PASS. This measures actual phone
+Safari but is user/UA-identified, not automation-attested. No model runs until start; no
+retry on lost60s heartbeat. Preserve native-03. Sign recorder, serve49765, user opens URL.
+Trust setup commits82e92439/3dc3dc7f; new result/recorder commit follows (47 upstream and
+158 cached develop ahead after it). Profile removal follows probe, rain selection pending.
