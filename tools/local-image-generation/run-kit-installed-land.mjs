@@ -8,6 +8,7 @@ import {execFileSync} from 'node:child_process';
 import {createFrozenGameViteServer} from './frozen-preview-client.mjs';
 import {openChromiumCdp} from '../../port/v2/tools/browsercdp.mjs';
 import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
+import {installedProofState} from './installed-proof-state.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'),out=path.resolve(process.argv[2]??'');
 if(process.argv.length!==3||!out.startsWith(root+'/audits/'))throw Error('Usage: run-kit-installed-land.mjs NEW_AUDIT_DIRECTORY');
 await fs.mkdir(out);const result={schema:'cf.kit-installed-land.v1',status:'FAIL',head:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),events:[],requests:[],states:[],screenshots:[],inferenceRuns:0};
@@ -43,12 +44,14 @@ try{
  await until('Land control',`!!document.querySelector('[data-act="landcta"]')`);
  await click('[data-ai-model-storage="survey"] > summary');
  const installStart=performance.now();await click('[data-ai-model-storage="survey"] [data-ai-act="install"]');
- const installEnd=performance.now()+900000;let lastInstall='';
+ const installEnd=performance.now()+900000;let lastInstall='',installStarted=false;
  while(true){const text=await evaluate(`document.querySelector('[data-ai-model-storage="survey"]')?.textContent??''`);
   if(text!==lastInstall){lastInstall=text;console.log(text.slice(0,320));result.installStatus=text;}
-  if(text.includes('Model ready. Land to finish a painting.'))break;
+  const phase=installedProofState(text,installStarted);if(phase==='ready')break;
+  if(phase==='working')installStarted=true;
+  if(phase==='pending'&&performance.now()-installStart>10000)throw Error('Install never started');
   if(performance.now()>installEnd)throw Error('Model install exceeded15minutes');
-  if(!text.includes('Pause model preparation')&&!text.includes('Model downloading')&&!text.includes('Model verifying'))throw Error('Install ended without ready: '+text);
+  if(phase==='failed')throw Error('Install ended without ready: '+text);
   await new Promise(r=>setTimeout(r,3000));
  }
  result.installElapsedMs=performance.now()-installStart;await state('model-installed');await screenshot('00-model-installed.png');
