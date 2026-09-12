@@ -8,42 +8,58 @@ biome integration, physical phones or final art. Desert finish remains too styli
 Those experiments changed no game source or model bytes. Their pause is historical; the September 12 program below now owns the next work.
 
 
-## Program version 3 — direction updated September 12, 2026; engine rebuild pending
+## Program version 4 — revised September 12, 2026; engine rebuild pending
 
-[ART_KIT.md](ART_KIT.md) is canonical. The compiled prompt is to be rebuilt in
-`landfall-conditioning.ts` as the one game-data interpreter, in this exact order:
-**reference lock → frozen style → system card → subject → accuracy (cut-outs only)
-→ layout → technical output → negative**. Source assembly is not implemented by this
-document update. The two bootstrap reference prompts retain the kit's style/output/shared
-negative wording and use its section 9 sheet/three-panel exceptions; their exact text is
-retained in [the adoption audit](audits/ART_KIT_ADOPTION_20260912/).
+Nick's four approved images in [MIDGAME_ART_DIRECTION](audits/MIDGAME_ART_DIRECTION_20260908/README.md)
+define the required finish. [ART_KIT.md](ART_KIT.md), version 4, is the proposed canonical
+style statement; **stop at its diff for Nick's approval before painting**. The existing
+Living Worlds triptych is the scene lock and Discovery Atlas the cut-out lock; exact
+SHA-256 values are in kit §1. V3 is retired unchanged; the v3 sheet and plate are rejected
+and must never condition a new image. Current local-model riverbank output is the gap,
+not a reference. Earlier dated favorable comments do not supersede this direction lock.
 
-The compiler derives the card from the unchanged star/planet data, the subject from
-genomes/descriptors, counts from body plans, and layout from class. Named Earth species
-retain named anatomy under the proposed Earth-card line, pending Nick's decision.
-The local model has no negative input: local adaptation must express constraints positively,
-record the actual consumed text, and never claim an unused negative controlled inference.
-Reserved key colours affect only painted pigment vocabulary, never seeded genome data.
+The compiled prompt will be rebuilt in `landfall-conditioning.ts` as the one interpreter,
+in this exact order: **reference lock → frozen style → system card → subject → accuracy
+(cut-outs only) → layout → technical output → negative**, including class additions.
+This documentation batch does not implement the compiler. The card must be filled from
+star, planet, vista and biome data, never typed by hand. Thirteen exact `starClass.kind`
+keys and their hex colours replace invented stellar labels; binary/trinary are light
+modifiers. Genomes/descriptors and family/realm routing supply subjects and counts;
+named Earth anatomy keeps fur, feather and botany. Reserved key hues map only in compiled
+painted pigment words; no seed or identity changes. Actual consumed local text is hashed;
+the model's absent negative input must not be presented as an enforced constraint.
 
-The unverified September 9 working copy is preserved in signed checkpoint `77aaeec5`;
-all ten previously untracked tool files are included. The pause checkpoint is historical.
-Do not execute its integrated-chain/new-pack/`--landfall --variant` restart sequence.
-Replace OPFS variant storage with in-worker expansion; do not extend that storage layer.
+After diff approval, compile and paint family, form and biome references twelve at a
+time; Nick sees every review sheet. Source keys decide the queue: approximately 25
+family/realm references, 48 flora/fungi/microbe forms, 43 live biomes. Do not manufacture
+rows to satisfy estimates. Use [GAME_VOCABULARY_COVERAGE](audits/CLAUDE_FULL_REVIEW_20260910/GAME_VOCABULARY_COVERAGE.md)
+and verify the current routing when building the queue. Existing class layouts, sizes,
+magenta key and production discipline remain; people are inactive, rarity uses all ten
+display tiers with five paired material treatments.
 
-Stop after showing `frontier-sheet-01.png` and `frontier-plate-01.png`, before further
-calibration. Then complete kit adoption and the engine: repaint six Earth cut-outs on
-magenta and an Earth biome anchor, pre-fit references offline and hash fitted bytes,
-unfreeze steps/seed/size, compose per-organism passes on the plate and apply one
-low-strength finisher. Keep sessions warm across landings and build the VAE encoder once.
-Run one measured native painting and judge it at native size against plate-01, recording
-per-organism boxes. No six-reference prompt sweep. Fix only Part K 1–11, 17, 33–35
-that block this path, each with a negative control; checkpointing alone does not close K35.
+Then the main deliverable: six Earth magenta cut-outs and an Earth temperate biome anchor,
+pre-fit references offline and hash fitted bytes, unfreeze steps/seed/size, per-organism
+passes composed on the plate and one low-strength finisher in `stage-worker.mjs`. Keep
+sessions warm across landings and build the VAE encoder once. Replace OPFS variant storage
+with in-worker expansion; never resume the pause checkpoint's integrated-chain/new-pack/
+`--landfall --variant` restart sequence. One measured native run, native-size comparison
+beside the Living Worlds triptych, bounding boxes and identity findings per organism.
+No six-reference prompt sweeps. Blocking Part K 1–11, 17, 33–35 get negative controls.
+The ten tool files are already tracked; K35's missing-file boot control remains pending.
+Unit tests must not take the checkout lock.
 
-One target-iPhone probe must report maxBufferSize, shader-f16, storage quota and memory
-at transformer load before storage/delivery engineering. Then artwork durability:
-persist request/status, iOS home-screen guidance, PNG share-sheet export, protected
-originals, and labelled regeneration after loss. Remaining defects, pruning, stale-claim
-cleanup and PR42 splitting wait for painting acceptance. No hosted write is authorized.
+One actual target-iPhone probe reports maxBufferSize, shader-f16, storage quota and memory
+at transformer load before storage/delivery engineering. Artwork durability follows:
+storage.persist/status, iOS home-screen guidance, PNG share-sheet export, protected
+originals and labelled regeneration on loss. Then pruning/split, phone finisher/tier
+policy, remaining library rollout and view-envelope sharing, per program v4. PR42 stays
+parked; no hosted write or native inference is authorized by this diff-review stop.
+
+The original dirty engine work is signed in `77aaeec5`; the superseded v3 adoption work
+is checkpointed in `efa77c8d`, and the revised packet is verbatim in `7191dbc2`. The six
+packet documents remain at their original paths, with no duplicate packet elsewhere.
+The September 9 source/evidence descriptions below remain implementation history;
+this program, not PAUSED_CHECKPOINT.md, owns the restart.
 
 Matches code as of **2026-09-09**. Browser proof of concept for the future engine game.
 The approved Living Worlds paintings set the required finish. No generated local candidate
@@ -51,8 +67,9 @@ has passed that quality gate, and no phone has been qualified.
 
 ## September 9 continuation
 
-Nick described the latest image as fantastic. Preserve its painted finish as the working visual
-direction; named species/count/botany and physical-device acceptance remain separate.
+Nick described the then-latest image as fantastic on September 9. That is historical
+feedback; September 12 locks the four approved MIDGAME images, not this local output.
+Named species/count/botany and physical-device acceptance remain separate.
 The full-painting viewer now offers Fit painting and native-pixel panning from a verified retained
 original, including a Survey entry after reload. It neither re-encodes the image nor navigates the
 world. Close/pagehide release transient display resources; focus and background isolation belong

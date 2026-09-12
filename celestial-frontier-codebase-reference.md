@@ -1,6 +1,12 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-**Current work authority — September 12, 2026:** [ART_KIT.md](ART_KIT.md) is canonical; [ROADMAP.md](ROADMAP.md) and [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) own program version 3. The pause-era continuation below describes checkpointed source, not the restart plan. OPFS variant storage is to be replaced by in-worker expansion. No engine rebuild or new native inference has occurred in the initial reference-adoption stop.
+**Current work authority — revised September 12, 2026:** Nick's four approved
+[MIDGAME images](audits/MIDGAME_ART_DIRECTION_20260908/README.md) define the direction;
+[ART_KIT.md](ART_KIT.md) v4 is the proposed canonical statement awaiting diff approval.
+[ROADMAP.md](ROADMAP.md) and [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) own program v4.
+V3 and both generated v3 reference candidates are rejected/retired. No engine rebuild or
+painting occurs before this diff-review stop; the card/compiler implementation is pending.
+OPFS variant storage is to be replaced by in-worker expansion, not extended.
 
 Standalone animation preview, September9: [desert living-painting study](audits/LOCAL_AI_DESERT_MOTION_20260909/README.md)
 is an audit-only HTML/WebGL ambient renderer plus12sMP4/GIF. It preserves the source PNG and uses
@@ -13,12 +19,13 @@ and [alien desert text-only](audits/LOCAL_AI_DESERT_TEST_20260909/README.md) nat
 experiments now have retained1024x576 outputs (71.126s/58.751s respectively). Different inputs,
 not a controlled speed comparison. Neither binds canonical encounters or qualifies normal-game
 biome integration, physical phones or final art. Desert finish remains too stylized/smooth.
-Broader implementation stays paused; no game source or model bytes changed for these experiments.
+Those experiments changed no game source or model bytes. Their pause is historical;
+program v4 now owns the restart.
 
 
-## Paused local continuation — matches working copy September 9, 2026
+## Historical checkpointed continuation — source as of September 9, 2026
 
-Nick paused development. The [complete checkpoint](audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md) owns the current implementation and exact evidence boundary. The portable six-reference first-step diagnostic completed (85.013s execution,0.275ms readback); this is not a full image or a repair of the older normal-game600s failure. New browser block32 derivation, transactional OPFS storage, explicit Prepare/Verify controls, bounded original lookup and pinned-plan runtime/mobile integration exist in the **uncommitted working copy and are not yet integration-tested**. Parent model6.23GiB plus optional336MiB derived storage remain separate from painting cache/GPU RAM. Final integrated checks, new package/native run, exact art review and physical-phone qualification are pending. The V2 draft release note records the optional action; no production version or accepted base control placement changed. Earlier verified-scope descriptions below must not be read as verification of this later integration.
+Nick paused development on September 9. The [complete checkpoint](audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md) records that historical implementation/evidence boundary; its restart commands are superseded by program v4. The portable six-reference first-step diagnostic completed (85.013s execution,0.275ms readback); this is not a full image or a repair of the older normal-game600s failure. New browser block32 derivation, transactional OPFS storage, explicit Prepare/Verify controls, bounded original lookup and pinned-plan runtime/mobile integration are preserved in signed checkpoint `77aaeec5` and remain **not integration-tested**. Parent model6.23GiB plus optional336MiB derived storage remain separate from painting cache/GPU RAM. Final integrated checks, new package/native run, exact art review and physical-phone qualification are pending. The V2 draft release note records the optional action; no production version or accepted base control placement changed. Earlier verified-scope descriptions below must not be read as verification of this later integration.
 
 
 ## Local AI inspection and delivery — matches code as of 2026-09-09

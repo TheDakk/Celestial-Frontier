@@ -1,5 +1,7 @@
 # Art Kit v3 — first-reference review stop
 
+**SUPERSEDED / REJECTED — Nick, September 12 revised packet:** v3, both paintings and these proposed decisions are retired; do not use their prompts or hand-typed system card. See root ART_KIT.md v4 and ROADMAP.md. The material below is preserved historical evidence only.
+
 September 12, 2026. Nick resumed from Claude's completed review. This is program step 1's
 explicit stop after the first two images; it is not engine completion or art acceptance.
 

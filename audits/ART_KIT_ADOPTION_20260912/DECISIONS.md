@@ -1,5 +1,7 @@
 # Three decisions for Nick — Art Kit v3 adoption
 
+**SUPERSEDED / REJECTED — Nick, September 12 revised packet:** v3, both paintings and these proposed decisions are retired; do not use their prompts or hand-typed system card. See root ART_KIT.md v4 and ROADMAP.md. The material below is preserved historical evidence only.
+
 Prepared September 12, 2026. These are proposals, not changes to the kit or seeded game
 content. The supplied ART_KIT.md remains byte-for-byte version 3. Initial sheet/plate use
 its existing AMBER row and current companion wording. No volume generation before decisions.

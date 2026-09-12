@@ -1,6 +1,15 @@
 # Celestial Frontier — Master Art Direction
 
-**Canonical direction — September 12, 2026:** [ART_KIT.md](ART_KIT.md), version 3, is Nick’s canonical style statement. Its supplied bytes and fenced sections remain unchanged. The descriptive direction below remains in place; it does not supersede the kit. Adopt via [program version 3](audits/CLAUDE_FULL_REVIEW_20260910/ART_KIT_INTEGRATION.md), with Nick’s September 12 priority: painted graphics and the local AI engine first. The first two reference paintings are pending human review, not accepted locks.
+**Canonical direction — revised September 12, 2026:** Nick's four approved images in
+[audits/MIDGAME_ART_DIRECTION_20260908](audits/MIDGAME_ART_DIRECTION_20260908/README.md)
+define the direction: Living Worlds triptych, Discovery Atlas, Earth full landfall and
+fungal full landfall. [ART_KIT.md](ART_KIT.md), **version 4**, is the proposed canonical
+style statement translating that direction into source-derived prompts; its diff awaits
+Nick's approval before any painting. V3 is [retired unchanged](audits/ART_KIT_RETIRED/ART_KIT_v3_20260911.md).
+Both v3 frontier-sheet-01/frontier-plate-01 paintings are rejected, never references.
+The existing triptych is the scene lock and atlas the cut-out lock, with verified hashes
+in v4. The descriptive direction below remains; earlier local paintings and favorable
+finish comments are diagnostic history, not substitute reference locks.
 
 **Hard quality requirement — Nick, September 9, 2026:** the embedded image model must produce
 the same cohesive painted quality and approved art direction as the accepted full landfalls.
