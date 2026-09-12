@@ -101,3 +101,17 @@ Size proposal clarification (Codex's point is correct): section 5 sizes are auth
 **Normal-game wiring (0d825fe5, 0e37e6c6): accepted as the production path.** Ordinary Land mounts the composite in about 146 ms, the accepted original survives reload, Inspect opens it, the second landing on the same warm worker takes 21.6 s with all four sessions created once, the OPFS variant layer and the six-reference scene generator are removed, and Part K items 1 to 11, 17 and 33 to 35 carry negative controls. The remaining unproven step is a full download-to-finisher run on an installed model in the ordinary game, which is the same run the iPhone probe needs.
 
 **Blocking question for Nick:** the target iPhone model, iOS version and how it connects for the probe. Codex has asked twice; nothing on the phone tier can move until it is answered.
+
+---
+
+## Addendum: weather-and-mat candidate (Codex 9f51f2c9 / 4a2458fd), iPhone probe, Mac installed-model run
+
+**Weather-and-mat candidate: ACCEPT as the new baseline, with the weather layer's intensity to be tuned without any further model run.**
+
+- Cranberry: clearly improved. At 100% it reads as a low berry-covered mat at 16% width; at 200% the runners, small leaves and berries are all legible. Accept.
+- Weather layer: correct in kind, too quiet in degree. Civet and platypus fur is darker and less saturated, which reads as damp rather than wet; the 357 droplet highlights and the precipitation strokes are barely visible at 100%. The frog and plants are unchanged. Anatomy, count, placement and contact shadows unchanged; no fringe. This is an intensity setting, not a design problem.
+- Key property to exploit: the layer runs after the finisher on the saved raw finisher output and is deterministic, so tuning it costs zero inference. Codex can produce a small ladder of intensities from the same raw finisher (for example droplet count and specular strength at 2× and 3×, precipitation density at 2×) and show them side by side for Nick to pick, with no GPU run and no acceptance risk to the original.
+
+**iPhone 17 Pro probe (iOS 26.6.2):** the useful numbers are in. Per-buffer WebGPU limit 1 GiB, shader-f16 present, 41 GB storage quota, secure context and cross-origin isolation true. The VAE encoder loaded in 2.8 s. Safari then invalidated the session while loading the 2.19 GB text encoder; cause unconfirmed, not proof of a hardware limit. Two conclusions: the phone can hold the buffers the finisher needs if no single tensor exceeds 1 GiB (to verify against the transformer's largest initializer), and the stage that failed is the one the plan already removes. Next probe should ship the precomputed text embedding for the accepted recipe and never load the text encoder on the phone; then load only the VAE encoder, the transformer and the decoder, and attempt one warm finisher.
+
+**Mac installed-model run:** the real path works end to end. Pinned download and install 204 s, ordinary Land composite in 200 ms, one installed-model finisher, retained original and settled crossfade 31.3 s after Land, output byte-identical to the accepted baseline, reload and Inspect proven. The raw run's FAIL was an instrument reload-check bug, corrected and re-proven without inference. This closes the "download to finisher in the ordinary game" gap on desktop.
