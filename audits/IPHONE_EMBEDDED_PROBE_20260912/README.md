@@ -79,3 +79,8 @@ session/server/driver closed. Certificate SAN matches192.168.1.62; validitySep12
 private key remains private. No trust settings, insecure-certificate capability, kit,
 model or painting parameters changed. Establish a trusted local HTTPS connection before
 any newly authorized phone attempt. Rain selection pending; Civet proof remains next.
+
+Nick then authorized trusted-local-HTTPS setup. See trusted-https/README.md for the checked
+profile, exact certificate identity, private runtime path, live setup URLs and removal.
+Apple/native and OpenSSL trust checks pass; iPhone installation/trust remains pending its
+required Settings taps. No model attempt or new phone qualification during setup.

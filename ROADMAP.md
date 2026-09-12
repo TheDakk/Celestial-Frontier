@@ -74,3 +74,21 @@ retry; all owned sessions/server/driver closed. Trust settings unchanged. A trus
 HTTPS connection is required before another authorized phone attempt. Earlier failed
 attempts retained. Latest source372a1fc0 (43 ahead upstream,154 ahead cached develop),
 result commit follows. Rain A–F choice pending; accepted1x stays active.
+
+
+## Active secure-HTTPS setup (supersedes phone retry stop above)
+
+Nick approved establishing trusted local HTTPS. New short-lived root/server certificate,
+profile and negative controls prepared; Apple native trust evaluator and strict managed
+OpenSSL HTTPS verification PASS, no Mac trust-store changes. Root signing key removed;
+server key private. Evidence audits/IPHONE_EMBEDDED_PROBE_20260912/trusted-https.
+HTTP setup http://192.168.1.62:49764/; HTTPS check https://192.168.1.62:49765/.
+Certificate-only server remains active, shell session76799, tool serve-iphone-trust-setup.mjs.
+Live setup-server-status.json is untracked while serving; do not commit mutable status.
+No model routes or inference. User must install profile CF Local Probe 20260912 and enable
+SSL trust via iPhone Settings; instructions/link already given, confirmation pending. After
+confirmation inspect iPhone report/physical secure context before any model load. Use the
+new private server-key.pem/server.pem under /private/tmp/cf-iphone-trusted-tls-20260912.
+Root expiresSep14 22:59UTC, serverSep13 22:59UTC. Remove profile after probe. Do not weaken
+TLS validation. Last signed8249989a (44 upstream/155 cached develop ahead); setup commit
+follows. No GitHub action, PR42 parked, no Claude sync needed. Rain choice still pending.
