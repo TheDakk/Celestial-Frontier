@@ -4,7 +4,7 @@ import {applyKitWeather} from './kit-weather-math.mjs';
 import {keyAndDespill,compositeLayer,compositeOrganism,subtractOcclusion,latentInteriorMask,protectLatents,alphaToRgba,alphaBounds} from './kit-contact-math.mjs';
 import {encodeFloat16,decodeFloat16,packedLatentsToTokens,tokensToPackedLatents,createImageIds,eulerOutputStep,seededGaussianNoise} from './pipeline-math.mjs';
 const parse=async path=>{const r=await fetch(path);if(!r.ok)throw Error('Missing '+path);return r.json();};
-export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expandPinnedTransformer,modelFiles={}}){
+export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expandPinnedTransformer,modelFiles={},precomputedText=null}){
   const urls=[];
   const sourceUrl=path=>{const value=modelFiles[path];if(value instanceof Blob){const url=URL.createObjectURL(value);urls.push(url);modelFiles={...modelFiles,[path]:url};return url;}return value??('/model/'+path);};
   const modelFetch=async(url,options)=>{
@@ -26,7 +26,7 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
   const check=()=>{if(closed)throw Error('Kit engine closed');if(fault)throw fault;};
   const specs={text:['text_encoder_q4.onnx',['text_encoder_q4-00000.data','text_encoder_q4-00001.data']],encode:['vae_encoder.onnx',['vae_encoder.onnx.data']],decode:['vae_decoder.onnx',['vae_decoder.onnx.data']]};
   async function session(kind){
-    check();if(sessions.has(kind)){progress({phase:'session-reused',stage:kind});return sessions.get(kind);}
+    check();if(kind==='text'&&precomputedText)throw Error('Phone text encoder load forbidden');if(sessions.has(kind)){progress({phase:'session-reused',stage:kind});return sessions.get(kind);}
     const start=performance.now();progress({phase:'loading',stage:kind});let graph,externalData;
     if(kind==='denoise'){
       expanded??=await expand(modelFetch,e=>progress(e),Object.keys(modelFiles).length?new URL('./browser-variant-plan.json',import.meta.url).href:'/browser-variant-plan.json');
@@ -52,7 +52,7 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
     }finally{if(outputs)for(const tensor of Object.values(outputs))tensor.dispose();for(const tensor of Object.values(feeds))tensor.dispose();}
   }
   async function embedding(prompt){
-    check();tokenizer??=new Tokenizer(await modelJson('tokenizer/tokenizer.json'),await modelJson('tokenizer/tokenizer_config.json'));
+    check();if(precomputedText)return admitPrecomputedKitText(precomputedText,prompt);tokenizer??=new Tokenizer(await modelJson('tokenizer/tokenizer.json'),await modelJson('tokenizer/tokenizer_config.json'));
     const {wrapped,ids,mask,sequence,tokenCount}=prepareKitTextTokens(tokenizer,prompt);
     const data=await run('text',{input_ids:new ort.Tensor('int64',ids,[1,sequence]),attention_mask:new ort.Tensor('int64',mask,[1,sequence])},'prompt_embeds','float16',[1,sequence,7680]);
     return {data,sequence,tokenCount,promptSha256:await sha256(new TextEncoder().encode(prompt)),chatPromptSha256:await sha256(new TextEncoder().encode(wrapped))};
@@ -105,7 +105,8 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
     const coldStarted=performance.now();
     try{
       // Session loading is preparation, not a second warm-up painting/inference.
-      for(const kind of ['encode','text','denoise','decode'])await session(kind);
+      if(precomputedText)await admitPrecomputedKitText(precomputedText,job.finisherPrompt);
+      for(const kind of (precomputedText?['encode','denoise','decode']:['encode','text','denoise','decode']))await session(kind);
       const started=performance.now(),coldPreparationMs=started-coldStarted;
       progress({phase:'warm-engine-start',coldPreparationMs});
       const captures=[],maskCaptures=[],boxes=[],measurements=[],masks=[],keying=[];
@@ -150,5 +151,13 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
     }finally{busy=false;}
   }
   async function dispose(){if(closed)return;closed=true;cache.clear();try{for(const s of sessions.values())await s.release();}finally{sessions.clear();expanded=null;for(const url of urls)URL.revokeObjectURL(url);device.destroy();}}
-  return {paint,dispose};
+  return {paint,dispose,precomputeText:embedding};
+}
+
+/** Exact accepted-prompt embedding only. No text-encoder fallback on a mismatch. */
+export async function admitPrecomputedKitText(value,prompt){
+ const {manifest:m,data}=value??{};
+ if(m?.schema!=='cf.kit-text-embedding.v1'||m.modelRevision!=='3bffc0efef1d9f84727036cdbc44df3b6ab51131'||m.type!=='float16'||m.sequence!==416||m.tokenCount!==402||m.width!==7680||!(data instanceof Uint16Array)||data.length!==416*7680||m.promptSha256!==await sha256(new TextEncoder().encode(prompt))||m.dataSha256!==await sha256(data)||m.chatPromptSha256!=='18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde')throw Error('Precomputed text identity/shape/hash refused');
+ for(const v of data)if((v&0x7c00)===0x7c00)throw Error('Precomputed text nonfinite');
+ return {data:data.slice(),sequence:m.sequence,tokenCount:m.tokenCount,promptSha256:m.promptSha256,chatPromptSha256:m.chatPromptSha256};
 }

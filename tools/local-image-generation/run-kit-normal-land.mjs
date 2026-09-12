@@ -13,7 +13,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'),ou
 if(process.argv.length!==3||!out.startsWith(root+'/audits/'))throw Error('Usage: run-kit-normal-land.mjs NEW_AUDIT_DIRECTORY');
 await fs.mkdir(out);const result={schema:'cf.kit-normal-land.v1',status:'FAIL',head:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),events:[],requests:[],states:[],screenshots:[],inferenceRuns:0};
 const need=(v,m)=>{if(!v)throw Error(m);};const sha=b=>createHash('sha256').update(b).digest('hex');
-const accepted=await fs.readFile(path.join(root,'audits/ART_KIT_CONTACT_REVISION_20260912/native-01/painting.png'));
+const accepted=await fs.readFile(path.join(root,'audits/ART_KIT_WEATHER_MAT_20260912/native-01/painting.png'));
 let release,vite,server,cdp,sid;
 try{
  need(!execFileSync('git',['status','--porcelain','--untracked-files=no'],{cwd:root,encoding:'utf8'}).trim(),'Native UI proof requires committed source');

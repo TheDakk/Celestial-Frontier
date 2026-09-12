@@ -49,7 +49,7 @@ describe('ordinary kit landfall adapter; explicit fake model and storage',()=>{
  it('preloads composite without inference; only kit recipe reaches the retained-original queue',async()=>{
   const h=await harness();expect((await h.api.composite(h.input)).size).toBeGreaterThan(1000);expect(mocks.generate).not.toHaveBeenCalled();
   h.api.enqueue(h.input);await tick();expect(mocks.generate).toHaveBeenCalledOnce();
-  const recipe=mocks.generate.mock.calls[0]![0];expect(recipe.schema).toBe('cf.kit-engine.v4');expect(recipe.skipOrganismPasses).toBe(true);expect(recipe.finisherStrength).toBe(.35);
+  const recipe=mocks.generate.mock.calls[0]![0];expect(recipe.schema).toBe('cf.kit-engine.v4');expect(recipe.skipOrganismPasses).toBe(true);expect(recipe.finisherStrength).toBe(.35);expect(recipe.experiment).toBe('cf.kit-weather-mat.v1');expect(recipe.compositionProfile).toBe('weather-mat-v1');expect(recipe.passes[5].placement.mat).toHaveLength(2);expect(recipe.compositorSystemCard).toContain('weather rain');
   expect(h.retain).toHaveBeenCalledOnce();expect(h.api.snapshot()[0]?.status).toBe('ready');expect(h.view).toHaveBeenCalledOnce();
   h.api.enqueue(h.input);await tick();expect(mocks.generate).toHaveBeenCalledOnce(); // retained revisit, no accidental new GPU job
  });

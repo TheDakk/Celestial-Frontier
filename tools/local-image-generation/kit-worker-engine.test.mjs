@@ -7,7 +7,7 @@ import {createHash} from 'node:crypto';
 import {createKitWorkerEngine} from './kit-worker-engine.mjs';
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const names=['Civet','Persimmon','Platypus','Frog',"Devil's Club",'Cranberry'];
-async function exercise(factory){
+async function exercise(factory,precomputed=false){
   const prior={navigator:Object.getOwnPropertyDescriptor(globalThis,'navigator'),fetch:globalThis.fetch,OffscreenCanvas:globalThis.OffscreenCanvas,ImageData:globalThis.ImageData};
   const calls={create:{text:0,encode:0,denoise:0,decode:0},run:{text:0,encode:0,denoise:0,decode:0},release:0,draw:0,expansion:0,destroy:0};
   const bytes=new Uint8Array(128*128*4);
@@ -37,7 +37,7 @@ async function exercise(factory){
     finisherPrompt:'f'.repeat(120),passes:names.map((name,i)=>({name,identityKey:'identity-'+i,reference:ref,placement:{x:.12+i*.14,groundY:.8,width:.12,flip:i%2===0}}))};
   let engine;
   try{
-    engine=await factory({ort,Tokenizer,progress(){},expand:async()=>{calls.expansion++;return {graph:Uint8Array.of(1),data:Uint8Array.of(2),receipt:{storageWrites:0}};}});
+    engine=await factory({ort,Tokenizer,...(precomputed?{precomputedText:{manifest:{schema:'cf.kit-text-embedding.v1',modelRevision:'3bffc0efef1d9f84727036cdbc44df3b6ab51131',type:'float16',sequence:416,tokenCount:402,width:7680,promptSha256:hash(Buffer.from(job.finisherPrompt)),chatPromptSha256:'18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde',dataSha256:hash(new Uint16Array(416*7680))},data:new Uint16Array(416*7680)}}:{}),progress(){},expand:async()=>{calls.expansion++;return {graph:Uint8Array.of(1),data:Uint8Array.of(2),receipt:{storageWrites:0}};}});
     const first=await engine.paint(job),second=await engine.paint(job);
     return {first,second,calls};
   }finally{await engine?.dispose();Object.defineProperty(globalThis,'navigator',prior.navigator);globalThis.fetch=prior.fetch;globalThis.OffscreenCanvas=prior.OffscreenCanvas;globalThis.ImageData=prior.ImageData;}
@@ -50,4 +50,17 @@ test('same reuse oracle rejects actual engine with its session cache bypassed',a
   source=source.replace(/from '(\.\/[^']+)'/g,(_,relative)=>'from '+JSON.stringify(new URL(relative,url).href)).replace('import.meta.url',JSON.stringify(url.href));
   const module=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
   const r=await exercise(module.createKitWorkerEngine);assert.throws(()=>reuseOracle(r));assert.ok(r.calls.create.encode>1);assert.ok(r.calls.create.denoise>1);
+});
+
+const phoneOracle=r=>{assert.deepEqual(r.calls.create,{text:0,encode:1,denoise:1,decode:1});assert.equal(r.calls.run.text,0);assert.equal(r.calls.run.denoise,2);assert.equal(r.calls.run.decode,2);assert.equal(r.calls.release,3);};
+test('precomputed accepted text loads only three sessions; ignoring the embedding is rejected',async()=>{
+ phoneOracle(await exercise(createKitWorkerEngine,true));
+ const wrong=await exercise(options=>createKitWorkerEngine({...options,precomputedText:null}),true);assert.throws(()=>phoneOracle(wrong));
+});
+test('precomputed embedding refuses wrong prompt, revision, shape, bytes and nonfinite data',async()=>{
+ const {admitPrecomputedKitText}=await import('./kit-worker-engine.mjs'),data=new Uint16Array(416*7680),prompt='f'.repeat(120);
+ const manifest={schema:'cf.kit-text-embedding.v1',modelRevision:'3bffc0efef1d9f84727036cdbc44df3b6ab51131',type:'float16',sequence:416,tokenCount:402,width:7680,promptSha256:hash(Buffer.from(prompt)),chatPromptSha256:'18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde',dataSha256:hash(data)};
+ await admitPrecomputedKitText({manifest,data},prompt);await assert.rejects(()=>admitPrecomputedKitText({manifest,data},prompt+'wrong'));
+ for(const change of [{modelRevision:'0'.repeat(40)},{sequence:512},{dataSha256:'0'.repeat(64)},{chatPromptSha256:'0'.repeat(64)}])await assert.rejects(()=>admitPrecomputedKitText({manifest:{...manifest,...change},data},prompt));
+ const nan=data.slice();nan[0]=0x7c00;await assert.rejects(()=>admitPrecomputedKitText({manifest:{...manifest,dataSha256:hash(nan)},data:nan},prompt),/nonfinite/);
 });

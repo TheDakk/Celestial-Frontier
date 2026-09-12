@@ -100,7 +100,7 @@ export async function createLocalAiGameV1(options: LocalAiGameOptionsV1): Promis
     prepare(request, roster) {
       const compiled = buildCanonicalLandfallConditioningV1(request, roster); if (!compiled.ok) return null;
       try {
-        const recipe = compileEarthKitEngineV4(compiled.recipe.sourceSnapshot, kit, assets, baseline.settings);
+        const recipe = compileEarthKitEngineV4(compiled.recipe.sourceSnapshot, kit, assets, { ...baseline.settings, compositionProfile: 'weather-mat-v1' });
         const recipeJson = canonicalKitJson(recipe);
         return Object.freeze({ recipeKey: digest(recipeJson), worldKey: request.worldKey,
           environmentId: request.environmentFingerprint, ecologyEpoch: roster.ecologyEpoch,
