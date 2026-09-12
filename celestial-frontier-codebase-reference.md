@@ -1,5 +1,7 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**Current work authority — September 12, 2026:** [ART_KIT.md](ART_KIT.md) is canonical; [ROADMAP.md](ROADMAP.md) and [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) own program version 3. The pause-era continuation below describes checkpointed source, not the restart plan. OPFS variant storage is to be replaced by in-worker expansion. No engine rebuild or new native inference has occurred in the initial reference-adoption stop.
+
 Standalone animation preview, September9: [desert living-painting study](audits/LOCAL_AI_DESERT_MOTION_20260909/README.md)
 is an audit-only HTML/WebGL ambient renderer plus12sMP4/GIF. It preserves the source PNG and uses
 camera/dust/heat effects; no creature articulation or game integration. Scoped loop/preview-control
