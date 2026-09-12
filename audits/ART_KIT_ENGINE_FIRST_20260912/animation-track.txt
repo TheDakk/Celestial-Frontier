@@ -1,0 +1,15 @@
+## Animation and battle track
+
+Scheduled after the first engine painting is accepted and before the library rollout:
+one Blender master rig per painter family with gene-driven proportions within per-family
+bounds, canid first; the kit 4E turnaround as reference; the finisher paints each creature's
+texture atlas once in the frozen style; Blender renders the token pose and the clip set
+(idle, melee, ranged or cast, hit, faint, victory, with land, flying and aquatic variants)
+using that texture; export to Pixi as skeleton plus texture or sprite sheets. Battle staging
+uses the landfall plate as backdrop, depth by scale and overlap, and the turn choreography:
+push-in, ability banner, strike, hit flash, short shake, damage number, recoil, return.
+The eleven ability themes become painted effect sheets, which requires a v4.1 Effects
+cut-out class; propose the row and stop for Nick's approval before painting any effect.
+Proof before scale: the Civet end to end (master, texture, idle, attack, hit, one staged turn
+in the browser) shown beside its own landfall painting. Families in order: mammal quadruped,
+bird, fish, insect, reptile, then the rest.

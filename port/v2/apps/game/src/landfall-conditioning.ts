@@ -4,6 +4,8 @@
  * adapter retains the exact snapshot's Earth scope and D-9e refusal boundary. */
 import { snapshotEarthLayerDataV1 } from '@cf/art/earth-resident-plan';
 import { speciesVisualKey } from '@cf/art/species-identity';
+import { starClass, KIND_DESC, SOL_PLANETS } from '@cf/domain-starcatalog';
+import { systemFor } from '@cf/domain-worldgen';
 import { buildEarthLayeredRecipeV1 } from './earth-layered-recipe.js';
 import {
   buildLandfallAppearanceSnapshotV1,
@@ -251,4 +253,130 @@ export function buildCanonicalLandfallConditioningV2(request: unknown, liveRoste
   if (!snapshot.ok) return Object.freeze({ ok: false,
     reason: snapshot.reason === 'unproven-roster' ? 'unproven-roster' : 'unsupported-snapshot' });
   return buildLandfallConditioningV2(snapshot.snapshot);
+}
+
+
+/** Approved kit interpreter's first bounded adapter. The host supplies the exact
+ * Markdown bytes; this owner extracts, fills and orders blocks. No separately
+ * authored system cards or send-time rewrites. Other worlds and unlisted family
+ * exemplars remain unsupported until their source adapters are implemented. */
+export function compileEarthArtKitV4(input: unknown, kit: string) {
+  if (!kit.startsWith('# Celestial Frontier Art Kit\n') || !kit.includes('style_id: frontier   |   version 4,'))
+    throw Error('Art Kit v4 required; retired kits are refused');
+  const admitted = buildLandfallConditioningV1(input);
+  if (!admitted.ok) throw Error('Art Kit source refused: ' + admitted.reason);
+  const { sourceSnapshot: source, scene, residents } = admitted.recipe;
+  const between = (text: string, first: string, last: string) => {
+    if (text.split(first).length !== 2) throw Error('Nonunique kit marker: ' + first);
+    const tail = text.slice(text.indexOf(first) + first.length);
+    if (tail.split(last).length !== 2) throw Error('Nonunique kit end: ' + last);
+    return tail.slice(0, tail.indexOf(last));
+  };
+  const block = (heading: string) => {
+    if (kit.split('\n## ' + heading + '\n').length !== 2) throw Error('Missing kit section: ' + heading);
+    const section = kit.split('\n## ' + heading + '\n')[1]!.split('\n## ')[0]!;
+    return between(section, '```text\n', '\n```');
+  };
+  const reference = block('1. Reference lock'), style = block('2. Frozen style');
+  const universe = block('3. The one universe'), technical = block('5. Technical output');
+  const negative = block('6. Shared negative');
+  const sharedNegative = between(negative, 'Paste in every prompt, then add the class\'s NEGATIVE ADDITIONS.\n\n', '\n\n  For CUT-OUT classes, add:');
+  const cutoutNegative = between(negative, '  For CUT-OUT classes, add:\n', '\n\n  For SCENE classes, do not add those clauses.');
+  const cutoutTechnical = between(technical, 'table says 1536, 512 or 256):\n', '\n\nSCENE BLOCK');
+  const sceneTechnical = between(technical, 'SCENE BLOCK (paste for universe, stars, planet biomes):\n', '\n\nGlow is painted');
+  const star = starClass(source.roster.starSeed);
+  const planet = SOL_PLANETS.find(row => row.P.seed === source.roster.planetSeed);
+  if (!planet || star.kind !== 'G' || source.request.options.stc !== star.col) throw Error('Unsupported star/planet card');
+  const system = systemFor(source.roster.starSeed) as Record<string, unknown>;
+  const starRow = between(universe, '\n  G      ', '\n  A      ');
+  const profile = source.roster.biomeProfile;
+  const options = source.request.options;
+  const flora = residents.filter(row => row.kingdom === 'flora');
+  const fauna = residents.filter(row => row.kingdom === 'fauna');
+  // These source-owned named paint colours replace random procedural colour
+  // genes for Earth, just as the named anatomy table replaces random limb genes.
+  const pigments: Record<string, string> = {
+    Civet: 'matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings',
+    Platypus: 'sleek dark-brown fur and a dark rubbery bill',
+    Frog: 'green skin', Persimmon: 'green leaves, orange fruit, brown wood',
+    Cranberry: 'green leaves and red berries', "Devil's Club": 'green leaves and red berry cones',
+  };
+  const card = [
+    `SYSTEM CARD - ${system.sol ? 'Sol' : source.roster.starSeed} / ${planet.name}; ${source.roster.worldKey}`,
+    `  Star: ${star.kind}; ${KIND_DESC[star.kind]}; ${star.col}; radius ${star.r}. ${starRow}`,
+    `  Light: ${scene.timeOfDay}; ${scene.weather}; ${system.binary || system.trinary ? JSON.stringify({ binary: system.binary, trinary: system.trinary }) : 'one primary, no companions'}; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.`,
+    `  Mineral palette: ${planet.P.type}; seaHue ${planet.P.seaHue}, landHue ${planet.P.landHue}, iceAmt ${planet.P.iceAmt}; blue water, green land, pale ice; hue absent from source.`,
+    `  Atmosphere: vista palette ${options.pal}, climate ${source.roster.climateBand}, weather ${scene.weather}, water ${scene.water}; rain softens distant blue-grey layers.`,
+    `  Flora pigment: ${source.roster.biomeProfileKey}; forms ${Array.from(profile.flora).join(', ')}; ${flora.map(row => `${row.name}: ${pigments[row.name]}`).join('; ')}.`,
+    `  Fauna adaptation: families ${Array.from(profile.fauna).join(', ')}; Earth named anatomy and natural materials take priority over raw procedural genes: ${fauna.map(row => `${row.name}: ${row.namedRule.diagnostics.map(d => d.required).join('; ')}; ${pigments[row.name]}`).join(' | ')}.`,
+    `  One signature: ${profile.hazard === null ? 'no biome hazard in source; no added hazard motif' : profile.hazard}.`,
+  ].join('\n');
+  const prompts = residents.map(row => {
+    const animal = row.kingdom === 'fauna';
+    const cls = block(animal ? '4E. Fauna (cut-out)' : '4D. Flora (cut-out)');
+    const counts = animal ? 'one head, exactly one head; four limbs, two fore and two hind, exactly four limbs' : 'one connected specimen, exactly one connected growth';
+    const size = row.name === 'Persimmon' ? 'tree taller than a human' : row.name === "Devil's Club" ? 'shrub comparable to human height' : 'a fraction of human height';
+    const accuracyTemplate = between(cls, 'ACCURACY (paste and fill):\n', animal ? '\n\nLAYOUT, TOKEN POSE' : '\n\nLAYOUT (paste)');
+    const accuracy = accuracyTemplate.replace(/<[^>]+>/g, token => token.includes('count') || token.includes('stalks') ? counts : size);
+    const layout = between(cls, animal ? 'LAYOUT, TOKEN POSE (paste; the gameplay image):\n' : 'LAYOUT (paste):\n', animal ? '\n\nLAYOUT, TURNAROUND' : '\n\nNEGATIVE ADDITIONS:');
+    const additions = between(cls, 'NEGATIVE ADDITIONS:\n', '\n\nOUTPUT:');
+    const subject = `One Earth ${row.name}; ${size}; ${counts}; ${row.namedRule.diagnostics.map(d => d.required).join('; ')}; ${pigments[row.name]}; ${animal ? 'no armour, no harness, no gear; alert natural expression, named anatomy preserved' : 'complete anchoring base through crown, no soil'}.`;
+    return { key: row.name.toLowerCase().replace(/'/g, '').replace(/ /g, '-'), name: row.name,
+      kind: 'cut-out' as const, width: 1024, height: 1024, identityKey: row.identityKey,
+      sourceOwners: row.namedRule.sourceOwners, systemCard: card,
+      prompt: [reference, style, card, 'SUBJECT\n' + subject, 'ACCURACY\n' + accuracy,
+        'LAYOUT\n' + layout, 'TECHNICAL OUTPUT\n' + cutoutTechnical,
+        'NEGATIVE\n' + sharedNegative + '\n' + cutoutNegative + '\n' + additions].join('\n\n') };
+  });
+  const biomeClass = block('4C. Planets (orbital cut-out, biome scene)');
+  const biomeLayout = between(biomeClass, 'BIOME - LAYOUT (paste):\n', '\n\nBIOME - OUTPUT:');
+  const biomeAdditions = biomeClass.split('NEGATIVE ADDITIONS (both profiles):\n')[1];
+  if (!biomeAdditions) throw Error('Missing biome negative');
+  const plate = { key: 'earth-temperate', name: 'Earth temperate biome plate', kind: 'scene' as const,
+    width: 2560, height: 1440, systemCard: card,
+    prompt: [reference, style, card,
+      `SUBJECT\nEarth ${scene.biome} riverbank; damp grey-brown stones, blue liquid water and green banks; distant tree and shrub growth from this biome, blue-grey rainy atmosphere washing out distant layers; rain falling across the river; a distant stand of trees gives scale; diffuse cloud-filtered daylight with no visible sun position supplied by the vista. Empty foreground landing areas for the six resident passes: no foreground organisms or animals painted into this anchor.`,
+      'LAYOUT\n' + biomeLayout, 'TECHNICAL OUTPUT\n' + sceneTechnical,
+      'NEGATIVE\n' + sharedNegative + '\n' + biomeAdditions].join('\n\n') };
+  // Named catalogue exemplars illustrate painter families; they are not added
+  // to the Earth landing roster and cannot masquerade as live creature IDs.
+  const exemplars = [
+    { family: 'mammal quadruped', name: 'Fox', realm: 'land',
+      owner: 'art/mammaloverrides.ts#QUAD2_SPEC.Fox',
+      counts: 'one head, exactly one head; four legs, two fore and two hind, exactly four legs; one tail, exactly one tail',
+      anatomy: 'fine pointed muzzle, large upright ears, long plume tail with pale cream tip, dark stockings; narrow canid body, alert eyes, closed natural jaw',
+      pigment: 'warm russet fur (#c4642a), cream tail tip (#f2efe6), dark brown stockings (#241b19)' },
+    { family: 'bird', name: 'Pheasant', realm: 'land', owner: 'art/faunaoverrides.ts#birdB3Pheasant',
+      counts: 'one head, exactly one head; two legs, exactly two legs; two folded wings, exactly two wings; one long feathered tail, exactly one tail',
+      anatomy: 'rounded chest, long barred pointed tail, folded feathered wings, white neck ring, green head, red cheek patch, short horn-coloured bill, alert golden eyes',
+      pigment: 'ochre and chestnut feathers (#c28a46, #8a4525), dark green head (#164f43), red cheek (#bd3c36), cream neck ring (#f1e9d6)' },
+    { family: 'fish', name: 'Trout', realm: 'aquatic', owner: 'art/faunaoverrides3.ts#FAUNA3_NAME.Trout',
+      counts: 'one head, exactly one head; one forked tail, exactly one tail; two pectoral fins, exactly two pectoral fins; two pelvic fins, exactly two pelvic fins; one main dorsal fin, exactly one main dorsal fin; no legs, zero legs',
+      anatomy: 'fusiform salmonid body, blunt snout, spotted scales, natural fins and gill covers, clear lateral silhouette with slight three-quarter turn, naturally suspended swimming posture, watchful lateral eye and closed mouth',
+      pigment: 'muted bronze-brown scales (#7b6136), pale underside, dark spots' },
+    { family: 'insect', name: 'Beetle', realm: 'land', owner: 'art/faunaoverrides.ts#FAUNA_NAME.Beetle/faunaBeetle',
+      counts: 'one head, exactly one head; six jointed legs, three near and three far, exactly six legs; two antennae, exactly two antennae; two closed elytra, exactly two wing cases',
+      anatomy: 'oval chitin body with a central elytra seam, pronotum and small head, six jointed legs, small compound eyes and natural mandibles; low crawling stance with body raised enough to read the legs',
+      pigment: 'burnished brown chitin (#96551f), dark jointed legs (#20242c)' },
+    { family: 'reptile', name: 'Skink', realm: 'land', owner: 'art/faunaoverrides2.ts#faunaESquamata.Skink',
+      counts: 'one head, exactly one head; four small legs, two fore and two hind, exactly four legs; one long tapered tail, exactly one tail',
+      anatomy: 'slender glossy scaled body and slender head, tiny legs, tail a little longer than body (source ratio 1.08), low lizard posture, small lateral eyes and closed natural jaw',
+      pigment: 'glossy brown scales (#7c5b34), restrained natural highlights' },
+  ];
+  const familyClass = block('4E. Fauna (cut-out)');
+  const familyLayout = between(familyClass, 'LAYOUT, TOKEN POSE (paste; the gameplay image):\n', '\n\nLAYOUT, TURNAROUND');
+  const familyReferences = exemplars.map(row => {
+    const familyCard = card.replace('\n  One signature:', `; family-reference exemplar only, not an Earth landing resident: ${row.name}, ${row.family}, ${row.realm}; ${row.pigment}.\n  One signature:`);
+    const accuracy = between(familyClass, 'ACCURACY (paste and fill):\n', '\n\nLAYOUT, TOKEN POSE')
+      .replace(/<[^>]+>/g, token => token.includes('count') ? row.counts : 'a fraction of human height');
+    return { key: 'family-' + row.family.replace(/ /g, '-'), name: row.name, family: row.family,
+      kind: 'cut-out' as const, width: 1024, height: 1024, realm: row.realm,
+      sourceOwners: [row.owner], systemCard: familyCard, liveResident: false,
+      prompt: [reference, style, familyCard,
+        `SUBJECT\nOne Earth ${row.name}, a ${row.family} family reference; a fraction of human height; ${row.counts}; ${row.pigment}; ${row.anatomy}; no armour, no harness, no gear, no added growth or bioluminescence.`,
+        'ACCURACY\n' + accuracy, 'LAYOUT\n' + familyLayout, 'TECHNICAL OUTPUT\n' + cutoutTechnical,
+        'NEGATIVE\n' + sharedNegative + '\n' + cutoutNegative + '\n' + between(familyClass, 'NEGATIVE ADDITIONS:\n', '\n\nOUTPUT:')].join('\n\n') };
+  });
+  return freeze({ schema: 'cf.art.kit-earth-inputs.v4', sourceSnapshot: source, systemCard: card, prompts, plate, familyReferences,
+    qualityAccepted: false, scope: 'six-earth-cutouts-temperate-plate-five-named-family-exemplars' });
 }

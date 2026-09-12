@@ -1,5 +1,16 @@
 # Local AI landfalls
 
+**Nick's September 12 approved order:** v4 at `6f5c396e` is approved. ART_KIT §9
+now limits first authoring to the Earth temperate plate, six Earth cut-outs and five
+family references, then the measured engine painting. Inspect first cut-outs for
+Atlas frames/dark backgrounds and stop with a proposed v4.1 sentence if present.
+Keep 4E turnaround unchanged. After painting acceptance, the [Animation and battle
+track](audits/CLAUDE_FULL_REVIEW_20260910/CODEX_HANDOFF.md#animation-and-battle-track)
+(Civet proof, family masters/textures/clips and staged turns) precedes full-library
+rollout. Effects require a separately approved v4.1 class. This order supersedes
+earlier full-library-first or v4-awaiting-approval language below.
+
+
 Standalone visual scope, September9: user-requested [fungal reference-guided](audits/LOCAL_AI_FUNGAL_TEST_20260909/README.md)
 and [alien desert text-only](audits/LOCAL_AI_DESERT_TEST_20260909/README.md) native local-model
 experiments now have retained1024x576 outputs (71.126s/58.751s respectively). Different inputs,
@@ -11,17 +22,18 @@ Those experiments changed no game source or model bytes. Their pause is historic
 ## Program version 4 — revised September 12, 2026; engine rebuild pending
 
 Nick's four approved images in [MIDGAME_ART_DIRECTION](audits/MIDGAME_ART_DIRECTION_20260908/README.md)
-define the required finish. [ART_KIT.md](ART_KIT.md), version 4, is the proposed canonical
-style statement; **stop at its diff for Nick's approval before painting**. The existing
+define the required finish. [ART_KIT.md](ART_KIT.md), version 4, is the approved canonical
+style statement (Nick, `6f5c396e`), with the engine-first §9 amendment. The existing
 Living Worlds triptych is the scene lock and Discovery Atlas the cut-out lock; exact
 SHA-256 values are in kit §1. V3 is retired unchanged; the v3 sheet and plate are rejected
 and must never condition a new image. Current local-model riverbank output is the gap,
 not a reference. Earlier dated favorable comments do not supersede this direction lock.
 
-The compiled prompt will be rebuilt in `landfall-conditioning.ts` as the one interpreter,
+The pure `compileEarthArtKitV4` in `landfall-conditioning.ts` compiles the bounded twelve
+authoring inputs. It preserves canonical Earth admission and emits prompts
 in this exact order: **reference lock → frozen style → system card → subject → accuracy
 (cut-outs only) → layout → technical output → negative**, including class additions.
-This documentation batch does not implement the compiler. The card must be filled from
+The measured runtime pipeline is still pending. The card is filled from
 star, planet, vista and biome data, never typed by hand. Thirteen exact `starClass.kind`
 keys and their hex colours replace invented stellar labels; binary/trinary are light
 modifiers. Genomes/descriptors and family/realm routing supply subjects and counts;
@@ -29,13 +41,18 @@ named Earth anatomy keeps fur, feather and botany. Reserved key hues map only in
 painted pigment words; no seed or identity changes. Actual consumed local text is hashed;
 the model's absent negative input must not be presented as an enforced constraint.
 
-After diff approval, compile and paint family, form and biome references twelve at a
-time; Nick sees every review sheet. Source keys decide the queue: approximately 25
-family/realm references, 48 flora/fungi/microbe forms, 43 live biomes. Do not manufacture
-rows to satisfy estimates. Use [GAME_VOCABULARY_COVERAGE](audits/CLAUDE_FULL_REVIEW_20260910/GAME_VOCABULARY_COVERAGE.md)
-and verify the current routing when building the queue. Existing class layouts, sizes,
-magenta key and production discipline remain; people are inactive, rarity uses all ten
-display tiers with five paired material treatments.
+First inputs only: Earth temperate biome plate, six Earth cut-outs and five named family
+exemplars. All twelve untouched captures, exact prompts, source receipts, pixel intake
+and both review sheets are in [ART_KIT_ENGINE_FIRST_20260912](audits/ART_KIT_ENGINE_FIRST_20260912/README.md).
+None inherited an Atlas frame or dark plate; no background v4.1 amendment was triggered.
+The generator missed all requested native sizes; margin and identity findings remain
+explicitly unaccepted. No source image was cropped, repainted or silently called compliant.
+The exporter is `port/v2/tools/landfall-snapshot/kit-export.mjs`, a pure Node authoring
+build, with no inference or game build. Family exemplars are not new landing residents.
+
+Only after the first engine painting is accepted and the Animation and battle track is
+proved, roll out remaining families, forms and biomes twelve at a time, showing every
+sheet. Use exact source keys from GAME_VOCABULARY_COVERAGE, not approximate row counts.
 
 Then the main deliverable: six Earth magenta cut-outs and an Earth temperate biome anchor,
 pre-fit references offline and hash fitted bytes, unfreeze steps/seed/size, per-organism
@@ -53,7 +70,8 @@ at transformer load before storage/delivery engineering. Artwork durability foll
 storage.persist/status, iOS home-screen guidance, PNG share-sheet export, protected
 originals and labelled regeneration on loss. Then pruning/split, phone finisher/tier
 policy, remaining library rollout and view-envelope sharing, per program v4. PR42 stays
-parked; no hosted write or native inference is authorized by this diff-review stop.
+parked; no hosted write is authorized. One measured native engine proof is the next
+implementation milestone; the old --landfall --variant run remains forbidden.
 
 The original dirty engine work is signed in `77aaeec5`; the superseded v3 adoption work
 is checkpointed in `efa77c8d`, and the revised packet is verbatim in `7191dbc2`. The six

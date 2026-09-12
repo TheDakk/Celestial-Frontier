@@ -1,5 +1,16 @@
 # Creature animation — shared anatomy and motion contract
 
+**Nick's September 12 approved order:** v4 at `6f5c396e` is approved. ART_KIT §9
+now limits first authoring to the Earth temperate plate, six Earth cut-outs and five
+family references, then the measured engine painting. Inspect first cut-outs for
+Atlas frames/dark backgrounds and stop with a proposed v4.1 sentence if present.
+Keep 4E turnaround unchanged. After painting acceptance, the [Animation and battle
+track](audits/CLAUDE_FULL_REVIEW_20260910/CODEX_HANDOFF.md#animation-and-battle-track)
+(Civet proof, family masters/textures/clips and staged turns) precedes full-library
+rollout. Effects require a separately approved v4.1 class. This order supersedes
+earlier full-library-first or v4-awaiting-approval language below.
+
+
 Matches the source inventory as of **2026-09-08 local**. Nick’s requirement is a shared procedural
 animation system for land, flying and aquatic life, including generated variations and descendants.
 This reference describes the required architecture and the explicitly limited implementation below.

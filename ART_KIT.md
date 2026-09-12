@@ -1,6 +1,6 @@
 # Celestial Frontier Art Kit
 
-Art direction and prompt kit, version 4, 2026-09-12. Proposed canonical style statement for Nick's approved Living Worlds, Discovery Atlas, Earth landfall and fungal landfall: one painted hand, the game's thirteen star kinds, source-derived subjects, and the retained class layouts and production rules. **Awaiting Nick's diff approval; no painting from v4 before approval.**
+Art direction and prompt kit, version 4, 2026-09-12. Canonical style statement for Nick's approved Living Worlds, Discovery Atlas, Earth landfall and fungal landfall: one painted hand, the game's thirteen star kinds, source-derived subjects, and the retained class layouts and production rules. **Approved by Nick at 6f5c396e, with the September 12 engine-first order in section 9.**
 
 Each section is plain text inside a fenced block so it can be copied into a prompt tool exactly as written.
 
@@ -24,7 +24,7 @@ Each section is plain text inside a fenced block so it can be copied into a prom
 16. [6. Shared negative](#6-shared-negative)
 17. [7. Writing a subject line](#7-writing-a-subject-line)
 18. [8. Production discipline](#8-production-discipline)
-19. [9. Before any volume generation](#9-before-any-volume-generation)
+19. [9. Engine proof before library rollout](#9-engine-proof-before-library-rollout)
 
 ## 0. How to use
 
@@ -92,9 +92,8 @@ The local model's current riverbank output is a gap to close, not a reference.
 ## 2. Frozen style
 
 ```text
-Paste this paragraph verbatim in every prompt. This v4 diff must be approved
-before painting. After approval, changes to the paragraph require a new kit
-version; never revise it at send time.
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
 
   Rich natural-history fantasy painting, one hand across every subject,
   tactile directional brushwork, believable connected anatomy, weathered rock,
@@ -766,32 +765,38 @@ fantasy library learned by losing a day.
   anchor, references, queue and sessions. Nothing is reused across them.
 ```
 
-## 9. Before any volume generation
+## 9. Engine proof before library rollout
 
 ```text
-  a. STOP at this v4 diff for Nick's approval. No painting until he approves.
-  b. Use the existing Discovery Atlas and Living Worlds reference locks in
-     section 1. Do not generate a replacement sheet or scene reference.
-  c. After approval, compile the family, form and biome library from the
-     actual source vocabulary: approximately 25 creature family/realm rows,
-     48 flora/fungi/microbe form references and 43 live biome plates. Exact
-     keys and routing decide the queue, not a target count or invented rows.
-  d. Generate twelve library images at a time (a final partial batch is
-     allowed). Keep individual masters; assemble review sheets from those
-     captures in generation order, with labels outside the original pixels.
-     Show Nick every sheet and each scene beside the approved triptych.
-     Review every image before the next batch. These review sheets are not
-     new style locks and are not generated token-library reference art.
-  e. Attach the atlas to cut-out generation and the triptych to scene
-     generation, never both in one session. Use each active class's existing
-     layout, size, technical block and complete negative additions. Inspect
-     every master at native size; reject wrong dimensions/keying and drift.
-  f. The compiler fills every system card and subject slot from game data.
-     No hand-typed cards, invented star classes or design-only biome rows.
-     The anchor, shared negative, layouts and sizes stay fixed after approval;
-     a source vocabulary change needs an explicit kit revision.
-  g. Then build the local AI pipeline: six Earth cut-outs and the temperate
-     biome anchor, per-organism composition and one low-strength finisher.
-     Show its first measured native painting beside the Living Worlds
-     triptych, with a bounding box and identity review for every organism.
+  a. Nick approved v4 at 6f5c396e, subject to this engine-first order. Use the
+     existing Discovery Atlas and Living Worlds locks in section 1. No v3
+     painting and no replacement style locks. Keep the 4E turnaround unchanged.
+  b. Paint only the first engine painting's inputs: the Earth temperate biome
+     plate; six Earth cut-outs (Civet, Platypus, Frog, Persimmon, Cranberry,
+     Devil's Club); five family references (mammal quadruped, bird, fish,
+     insect, reptile). Show Nick the sheets of these twelve individual masters.
+  c. On the first cut-out batch, inspect every image for frames or dark plate
+     backgrounds inherited from the Discovery Atlas. If any appear, propose
+     a one-sentence v4.1 addition to the cut-out block and STOP for Nick's
+     approval. Do not apply that addition or repaint before approval.
+  d. The one compiler fills every card and subject slot from actual game data.
+     No hand-typed card, invented class or design-only biome row. Attach the
+     atlas to cut-outs and the triptych to scenes, never both in one session.
+     Use complete applicable class blocks and preserve exact prompt hashes,
+     untouched captures, layouts, sizes and keying rules. Review every master.
+  e. Immediately after the bounded first inputs, build the local AI pipeline:
+     one interpreter in landfall-conditioning.ts; offline pre-fit/hash of the
+     six Earth cut-outs and biome anchor; unfreeze steps, seed and size;
+     per-organism passes composed on the plate and one low-strength finisher
+     in stage-worker.mjs. Keep sessions warm across landings and build the VAE
+     encoder once. In-worker expansion replaces OPFS variant storage. Show
+     the first measured native painting beside the Living Worlds triptych
+     with a bounding box and identity finding for every organism. No six-reference scene-generator prompt sweep.
+  f. After Nick accepts the first engine painting, complete the Animation and
+     battle track in CODEX_HANDOFF.md before the remaining library rollout.
+     A v4.1 Effects cut-out class is a proposal requiring Nick's approval
+     before painting any effect. No effect class is activated by this section.
+  g. Only after engine-painting acceptance and the animation proof, roll out
+     remaining families, forms and biome plates twelve images at a time,
+     showing every sheet. Exact source keys decide rows, not count estimates.
 ```

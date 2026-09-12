@@ -17,71 +17,73 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · ART KIT V4 DIFF REVIEW STOP
+## SESSION HANDOFF — 2026-09-12 · APPROVED V4, ENGINE FIRST
 
-Nick's revised September 12 packet supersedes the previous packet and all v3 kit work.
-**Direction lock:** the four approved images in
-[audits/MIDGAME_ART_DIRECTION_20260908](audits/MIDGAME_ART_DIRECTION_20260908/README.md):
-02 Living Worlds triptych, 01 Discovery Atlas, 03 Earth full landfall, 04 fungal full landfall.
-V3 and both frontier-sheet-01/frontier-plate-01 paintings are rejected, never references.
-Retired v3 lives unchanged at [ART_KIT_v3_20260911.md](audits/ART_KIT_RETIRED/ART_KIT_v3_20260911.md),
-SHA-256 `2266febc5937b447572358cee6bde66b4a710a87cff1a841e2aabe0c989204a3`.
+Nick approved ART_KIT v4 at signed `6f5c396e92e82f64daa1a087c24d0d564c7e69aa`,
+with the reordered §9 now in [ART_KIT.md](ART_KIT.md). The four approved MIDGAME
+images remain direction; triptych/atlas remain the hashed scene/cut-out locks.
+V3 and both v3 candidates are rejected. Keep 4E turnaround byte-identical to 6f5c396e.
 
-**Current stop: show the [ART_KIT.md](ART_KIT.md) v4 diff and await Nick's approval. No painting.**
-[Diff and checks](audits/ART_KIT_V4_20260912/README.md). V4 uses the supplied natural-history
-style paragraph, no named illustrators/franchises, actual 13 star kinds/hexes, compiler-only
-cards, Earth anatomy/fur/feather/botany, inactive people, ten rarity tiers. Layouts, sizes,
-magenta key, shared negative and §§7–8 discipline retained. Existing scene/cut-out locks
-are hash-verified triptych/atlas, not newly generated sheets. Engine compiler not yet rebuilt.
+First input batch is captured and shown in two review sheets; none of the twelve
+masters is quality-accepted. No cut-out inherited a frame/dark plate. All requested
+native sizes failed (cut-outs 1254 square; plate 1672×941), with margin, Civet identity
+and plate-composition findings retained in the audit. The pure compiler reproduces all
+twelve exact prompts from canonical Earth data and named painter-family diagnostics.
+21 focused tests, tsc and root validate pass. The next engine gap is prompt capacity:
+Civet is 1812 tokens before chat wrapping versus the old worker's 512 limit.
 
-Read revised packet in Nick's order: [GAME_VOCABULARY_COVERAGE](audits/CLAUDE_FULL_REVIEW_20260910/GAME_VOCABULARY_COVERAGE.md),
-[ART_KIT_INTEGRATION](audits/CLAUDE_FULL_REVIEW_20260910/ART_KIT_INTEGRATION.md),
-[CODEX_HANDOFF](audits/CLAUDE_FULL_REVIEW_20260910/CODEX_HANDOFF.md), then README and FULL_REVIEW
-in that directory. Revised first actions/program v4 override historical v3 sections still
-quoted in the supplied packet. Packet remains verbatim; no duplicate packet in the tree.
+The bounded input scope is Earth temperate biome plate, six Earth cut-outs (Civet,
+Platypus, Frog, Persimmon, Cranberry, Devil's Club), and five family references
+(mammal quadruped, bird, fish, insect, reptile). Show the twelve-input sheets.
+The one conditioning owner must compile system cards from canonical game data;
+no manually typed card. First cut-out batch: inspect every capture for Atlas frames
+or dark plate backgrounds. If found, propose one v4.1 cut-out-block sentence and
+stop for Nick's approval before applying it or repainting.
 
-**Program version 4, after diff approval:**
+Then main deliverable: rebuild landfall-conditioning.ts as one kit interpreter;
+offline pre-fit/hash refs; unfreeze steps/seed/size; per-organism passes composed
+on the plate plus one low-strength stage-worker.mjs finisher; warm sessions across
+landings; VAE encoder once; in-worker expansion replaces OPFS variant storage.
+One measured native painting beside Living Worlds at native size with organism boxes.
+Fix blocking Part K 1–11, 17, 33–35 with negative controls. Ten tools already tracked;
+K35 boot control pending. No unit-test checkout lock, old --landfall --variant run,
+old integrated-chain/pack restart or six-reference prompt sweep.
 
-1. Compile actual family/form/biome rows from source and paint twelve images per batch,
-   showing every sheet. About 25 creature family/realm references, 48 flora/fungi/microbe
-   forms and 43 live biome plates; source keys, not estimates, decide the exact queue.
-   Nobody types a system card; no invented generated class or design-only biome row.
-2. Main deliverable: one `landfall-conditioning.ts` interpreter in kit order from unchanged
-   game data; six Earth cut-outs on magenta, Earth temperate biome anchor; pre-fit/hash
-   reference bytes offline; unfreeze steps/seed/size; per-organism passes and one low-strength
-   finisher in `stage-worker.mjs`. Warm sessions across landings, one VAE encoder; in-worker
-   expansion replaces OPFS variant storage. One measured native run, native-size painting
-   beside the triptych and organism boxes/identity findings; show Nick.
-3. Fix blocking Part K 1–10, 11, 17, 33–35, each with negative controls. The ten files are
-   tracked already, but K35's missing-file boot control remains pending. Unit tests do not
-   acquire the checkout lock. No six-reference prompt sweep, old integrated-chain/new-pack
-   restart, or `--landfall --variant` attempt.
-4. Actual target-iPhone probe: maxBufferSize, shader-f16, storage quota, memory at transformer
-   load. Device/iOS/access remain unestablished. No storage or delivery engineering first.
-5. Artwork durability: persist/status, iOS home-screen guidance, PNG share sheet export,
-   protected originals and labelled regeneration on loss.
-6. Prune and split PR42 after painting acceptance; then phone finisher/tier policy,
-   remaining source-owned library, battle staging, listening session and view-envelope sharing.
+After the first painting is accepted, do the Animation and battle track below,
+then remaining family/form/biome library twelve at a time, showing every sheet.
+Effects class is a separate v4.1 proposal: no effect painting before approval.
+Actual iPhone maxBufferSize/shader-f16/quota/transformer-load memory probe still gates
+storage/delivery engineering; artwork durability, pruning/split, later phone tier
+and remaining rollout follow the revised program. No prior failure is relabelled.
 
-Verified owner: OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`,
-`openai/mac` tracking `origin/openai/mac`; SSH origin git@github.com:TheDakk/Celestial-Frontier.git.
-Prior engine checkpoint `77aaeec5` includes all ten tools. This request's signed dirty
-checkpoint is `efa77c8d3c99c14dd9a41712d104e628db3ad229` (16 ahead/0 behind cached upstream,
-127 ahead/0 behind cached develop). Revised packet commit `7191dbc22071106f3cf5b0d153f3b7acd52a24f6`
-is 17/0 and 128/0 respectively. No fetch. .DS_Store remains untouched.
-The earlier 1Password signing blockage is resolved by these successful signed checkpoints.
+## Animation and battle track
 
-This batch changes documentation only. No generated pixels, engine/UI source, save shape,
-runtime/test lock or release identity changed. Prior native aggregate FAIL/species rejections
-remain unchanged. Root validation and exact doc/hash checks are recorded in the v4 audit.
-Same uninterrupted session uses September 12 Node 26.8.2 startup/capability receipt; no
-additional maintenance, native inference, pack build or browser certificate was run.
+Scheduled after the first engine painting is accepted and before the library rollout:
+one Blender master rig per painter family with gene-driven proportions within per-family
+bounds, canid first; the kit 4E turnaround as reference; the finisher paints each creature's
+texture atlas once in the frozen style; Blender renders the token pose and the clip set
+(idle, melee, ranged or cast, hit, faint, victory, with land, flying and aquatic variants)
+using that texture; export to Pixi as skeleton plus texture or sprite sheets. Battle staging
+uses the landfall plate as backdrop, depth by scale and overlap, and the turn choreography:
+push-in, ability banner, strike, hit flash, short shake, damage number, recoil, return.
+The eleven ability themes become painted effect sheets, which requires a v4.1 Effects
+cut-out class; propose the row and stop for Nick's approval before painting any effect.
+Proof before scale: the Civet end to end (master, texture, idle, attack, hit, one staged turn
+in the browser) shown beside its own landfall painting. Families in order: mammal quadruped,
+bird, fish, insect, reptile, then the rest.
 
-Codex next step: retain the signed v4 diff-review commit and wait for Nick's diff approval.
-GitHub step **none**; PR42 parked, base develop/source openai/mac, title/body unchanged until
-split. No push, label, dispatch, merge, release or deploy. Budget recorded UNFROZEN/PUBLIC,
-private fallback 3,000; exact hosted attempts authorized/used zero; no fresh SSH remote read.
-Claude Code: no need to open now unless Nick wants its review of the v4 diff. These commits
-are local to Codex. After eventual authorized develop integration, clean anthropic/mac may
-fetch/merge origin/develop at its next batch; never copy between worktrees. Develop/main/live
-site remain unchanged. Resume from this handoff, never PAUSED_CHECKPOINT's restart commands.
+## Git and session boundary
+
+OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,
+openai/mac tracking origin/openai/mac. Approved entry commit 6f5c396e is 18 ahead/0
+behind cached upstream, 129 ahead/0 behind cached origin/develop. No fetch. .DS_Store
+untouched. Same uninterrupted September 12 Node26.8.2 startup receipt applies.
+[Current evidence](audits/ART_KIT_ENGINE_FIRST_20260912/README.md) owns exact work/results.
+
+GitHub step none; PR42 parked, base develop/source openai/mac, title/body unchanged.
+Budget recorded UNFROZEN/PUBLIC, private fallback3000; exact authorized hosted attempts
+zero. No push, label, dispatch, merge, release or deploy. Develop/main/live unchanged.
+Claude Code need not open now; these are Codex-local changes. Only after eventual
+authorized develop integration may clean anthropic/mac fetch/merge origin/develop
+at its next batch. Do not manually copy worktrees. Resume from this handoff and
+CODEX_HANDOFF's appended engine-first order, never PAUSED_CHECKPOINT's restart.

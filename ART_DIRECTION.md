@@ -1,11 +1,21 @@
 # Celestial Frontier — Master Art Direction
 
+**Nick's September 12 approved order:** v4 at `6f5c396e` is approved. ART_KIT §9
+now limits first authoring to the Earth temperate plate, six Earth cut-outs and five
+family references, then the measured engine painting. Inspect first cut-outs for
+Atlas frames/dark backgrounds and stop with a proposed v4.1 sentence if present.
+Keep 4E turnaround unchanged. After painting acceptance, the [Animation and battle
+track](audits/CLAUDE_FULL_REVIEW_20260910/CODEX_HANDOFF.md#animation-and-battle-track)
+(Civet proof, family masters/textures/clips and staged turns) precedes full-library
+rollout. Effects require a separately approved v4.1 class. This order supersedes
+earlier full-library-first or v4-awaiting-approval language below.
+
+
 **Canonical direction — revised September 12, 2026:** Nick's four approved images in
 [audits/MIDGAME_ART_DIRECTION_20260908](audits/MIDGAME_ART_DIRECTION_20260908/README.md)
 define the direction: Living Worlds triptych, Discovery Atlas, Earth full landfall and
-fungal full landfall. [ART_KIT.md](ART_KIT.md), **version 4**, is the proposed canonical
-style statement translating that direction into source-derived prompts; its diff awaits
-Nick's approval before any painting. V3 is [retired unchanged](audits/ART_KIT_RETIRED/ART_KIT_v3_20260911.md).
+fungal full landfall. [ART_KIT.md](ART_KIT.md), **version 4**, is the approved canonical
+style statement translating that direction into source-derived prompts (Nick, `6f5c396e`). V3 is [retired unchanged](audits/ART_KIT_RETIRED/ART_KIT_v3_20260911.md).
 Both v3 frontier-sheet-01/frontier-plate-01 paintings are rejected, never references.
 The existing triptych is the scene lock and atlas the cut-out lock, with verified hashes
 in v4. The descriptive direction below remains; earlier local paintings and favorable

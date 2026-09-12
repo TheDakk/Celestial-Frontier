@@ -64,3 +64,31 @@ Nick's art direction is unchanged and is defined by four images in `audits/MIDGA
 - **Claude (`anthropic/mac`):** docs-only commits ahead of origin containing these files; not pushed; Codex's copies on `openai/mac` are the working copies. No push is needed; identical files merge cleanly later.
 - **Codex (`openai/mac`):** overwrite, checkpoint, retire v3, write v4, update the three references, then program step 1. GitHub step now: none. PR42 stays parked.
 - **Nick:** open the Codex app to hand over the zip and the prompt. Claude does not need to be opened until the v4 diff or the first painting is ready for review.
+
+
+## Nick's approved engine-first order — September 12, 2026
+
+V4 at 6f5c396e is approved with ART_KIT §9 reordered: only Earth temperate plate,
+six named Earth cut-outs and five family references first; show those sheets, then
+build the local AI pipeline and show the first measured painting beside the triptych
+with organism boxes. Remaining families/forms/biomes wait for painting acceptance
+and the animation proof below, then roll out twelve at a time. Inspect the first
+cut-out batch for inherited frames/dark plate backgrounds; if any appear, propose
+one v4.1 cut-out sentence and stop for Nick. Keep 4E turnaround unchanged.
+This addition supersedes the earlier full-library-first program in this file.
+
+## Animation and battle track
+
+Scheduled after the first engine painting is accepted and before the library rollout:
+one Blender master rig per painter family with gene-driven proportions within per-family
+bounds, canid first; the kit 4E turnaround as reference; the finisher paints each creature's
+texture atlas once in the frozen style; Blender renders the token pose and the clip set
+(idle, melee, ranged or cast, hit, faint, victory, with land, flying and aquatic variants)
+using that texture; export to Pixi as skeleton plus texture or sprite sheets. Battle staging
+uses the landfall plate as backdrop, depth by scale and overlap, and the turn choreography:
+push-in, ability banner, strike, hit flash, short shake, damage number, recoil, return.
+The eleven ability themes become painted effect sheets, which requires a v4.1 Effects
+cut-out class; propose the row and stop for Nick's approval before painting any effect.
+Proof before scale: the Civet end to end (master, texture, idle, attack, hit, one staged turn
+in the browser) shown beside its own landfall painting. Families in order: mammal quadruped,
+bird, fish, insect, reptile, then the rest.

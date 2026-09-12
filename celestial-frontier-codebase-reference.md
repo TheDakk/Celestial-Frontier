@@ -1,11 +1,25 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**Nick's September 12 approved order:** v4 at `6f5c396e` is approved. ART_KIT §9
+now limits first authoring to the Earth temperate plate, six Earth cut-outs and five
+family references, then the measured engine painting. Inspect first cut-outs for
+Atlas frames/dark backgrounds and stop with a proposed v4.1 sentence if present.
+Keep 4E turnaround unchanged. After painting acceptance, the [Animation and battle
+track](audits/CLAUDE_FULL_REVIEW_20260910/CODEX_HANDOFF.md#animation-and-battle-track)
+(Civet proof, family masters/textures/clips and staged turns) precedes full-library
+rollout. Effects require a separately approved v4.1 class. This order supersedes
+earlier full-library-first or v4-awaiting-approval language below.
+
+
 **Current work authority — revised September 12, 2026:** Nick's four approved
 [MIDGAME images](audits/MIDGAME_ART_DIRECTION_20260908/README.md) define the direction;
-[ART_KIT.md](ART_KIT.md) v4 is the proposed canonical statement awaiting diff approval.
+[ART_KIT.md](ART_KIT.md) v4 is the approved canonical statement at `6f5c396e`.
 [ROADMAP.md](ROADMAP.md) and [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) own program v4.
-V3 and both generated v3 reference candidates are rejected/retired. No engine rebuild or
-painting occurs before this diff-review stop; the card/compiler implementation is pending.
+V3 and both generated v3 reference candidates are rejected/retired. The pure
+`compileEarthArtKitV4` in `landfall-conditioning.ts` now compiles the bounded twelve
+authoring inputs from canonical Earth data and source-owned named family exemplars.
+The audit `ART_KIT_ENGINE_FIRST_20260912` retains all captures, prompts and review sheets.
+The measured runtime pipeline remains pending; none of these captures is quality-accepted.
 OPFS variant storage is to be replaced by in-worker expansion, not extended.
 
 Standalone animation preview, September9: [desert living-painting study](audits/LOCAL_AI_DESERT_MOTION_20260909/README.md)
