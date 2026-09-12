@@ -1,5 +1,51 @@
 ## SESSION HANDOFF — 2026-09-12 · ACCEPTED PRODUCTION PATH; TARGET IPHONE FIRST
 
+## SESSION HANDOFF — 2026-09-12 · PHONE/MAC PROBED, WEATHER PAINTING SHOWN; CIVET NEXT
+
+Nick approves Kit v4.1, wiring0d825fe5/0e37e6c6 as production path, and cd6b609f/0eed6a21
+as accepted painting/tier-2 baseline. Original unchanged/qualityAccepted true. Edge/runners
+246cc619 rejected; no further erosion experiments or kit edits (frozen paragraph/4E intact).
+
+Physical iPhone17Pro/iOS26.6.2 over USB-C: Safari physical session confirmed; probe4715e0f2
+reports1GiB per-WebGPU-buffer limit, f16,41.23GB quota, no exposed JS/native/GPU memory API.
+Encoder loaded2.788s, then automation session lost during text-encoder load; transformer/
+finisher not observed, cause unconfirmed. Nick reports12GB RAM;1GiB is not total RAM.
+Phone tier UNQUALIFIED; no retry. Probe reported before Mac work; transient server/driver
+closed. Evidence audits/IPHONE_KIT_PROBE_20260912.
+
+Mac ordinary Download/resume -> installed OPFS parent model -> Land -> one finisher ->
+retained PNG completed on72fdbc89:204.265s install,199.50ms composite,31.333s Land-to-ready.
+PNG byte-identical to accepted baseline, parameters unchanged. native-02 raw FAIL is an
+extra reload-instrument race; fix requires new timeOrigin. reload-01 on6ed3958d PASS,
+retained reload/Inspect without download/inference. Earlier native-01 failed before any
+model request on initial-RAF timing; negative controls cover both corrected instrument
+failures. No second native finisher. Evidence audits/MAC_INSTALLED_KIT_20260912.
+
+Authorized weather/mat profile completed one native run on9f51f2c9:
+audits/ART_KIT_WEATHER_MAT_20260912. Same inputs/seed133/prompt402/one0.35finisher/4px masks.
+Cranberry connected16%-wide low mat, same centre/ground, overlapping accepted branches
+for more berries. Other placements/species unchanged. Deterministic weather AFTER finisher,
+from system-card weather/water/time/light and recipe seed: wet fur/leaves, sparse diffuse
+sky-facing droplets, one precipitation density across whole frame. No invented sun.
+Raw finisher and final weathered PNG both retained. Normal game baseline stays accepted
+until Nick's visual decision. Tests/TypeScript/root validate pass, static mat inspected.
+Run PASS23.562s warm/30.017s total; native/static pixels match. Post-finisher replay exactly
+matches final PNG; no-weather/pre-finisher negatives reject, masks/alpha unchanged. Five
+texture registrations show unchanged placement; Cranberry registration inconclusive. Six
+200% crops inspected, comparison shown; Nick's visual decision pending, qualityAccepted false.
+No further painting sweep. NEXT Civet animation end-to-end proof per CODEX_HANDOFF; no
+Effects class before separate approval. Phone is no longer needed and can be unplugged.
+
+OpenAI/Codex macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
+tracking origin/openai/mac. Native source signed9f51f2c9; weather evidence commit follows (38 ahead of cached upstream,
+149 ahead of cached origin/develop after that commit).
+Cached refs only, unrelated .DS_Store untouched, same startup receipt. GitHub step NONE,
+PR42 parked; budget UNFROZEN/public/private fallback3000 but zero hosted authority.
+No push/label/dispatch/merge/release/deploy, pack or integrated chain. Unit tests hold no
+checkout lease. Claude need not open/sync; only after eventual authorized develop
+integration may clean anthropic/mac fetch/merge origin/develop. Report IDs/ahead at stops.
+
+
 Nick approves Kit v4.1 as diffed (dbeb2448); frozen paragraph/4E unchanged, no further
 kit edits. cd6b609f /0eed6a21 stays the accepted painting/tier-2 baseline, unchanged PNG
 and qualityAccepted true. Nick REJECTS edge/runners246cc619. No further finisher-erosion

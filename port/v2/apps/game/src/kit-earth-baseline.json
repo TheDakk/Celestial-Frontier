@@ -1,7 +1,7 @@
 {
   "composite": {
     "url": "/__local_ai/inputs/earth-composite.png",
-    "sha256": "3b9c3988c508a8cee1045215926644ceefdec8ad8de8fcca79839223c7583e6b",
+    "sha256": "226456a3d12c93c439493d7b828e1ab29e552aaf65e7f81b3b4f181accd58e84",
     "width": 1024,
     "height": 576
   },
@@ -12,6 +12,12 @@
     "seed": 133,
     "steps": 4,
     "strength": 0.2,
-    "finisherStrength": 0.35
+    "finisherStrength": 0.35,
+    "compositionProfile": "weather-mat-v1"
+  },
+  "acceptedPainting": {
+    "sourceHead": "9f51f2c9f32bc68b9228e543f6cfe6a5b6537121",
+    "sha256": "27101ff3af6e91b3e59087e7b1c2c4564d7c3cd1fa9ca6aec11c31250508fc16",
+    "qualityAccepted": true
   }
 }

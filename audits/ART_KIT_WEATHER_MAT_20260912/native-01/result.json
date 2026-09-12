@@ -4035,7 +4035,7 @@
       }
     }
   ],
-  "qualityAccepted": false,
+  "qualityAccepted": true,
   "modelVerification": {
     "schema": "cf.local-image-download-receipt.v1",
     "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
@@ -4428,7 +4428,7 @@
       "operandsSha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82",
       "storageWrites": 0
     },
-    "qualityAccepted": false,
+    "qualityAccepted": true,
     "capabilities": {
       "maxBufferSize": 4294967292,
       "shaderF16": true,
@@ -4773,5 +4773,11 @@
       "sha256": "fcc8293d39affe3edb4b399409be79eccf613c6dd99bf3117942fb793af82011"
     }
   ],
-  "finishedAt": "2026-09-12T21:19:40.867Z"
+  "finishedAt": "2026-09-12T21:19:40.867Z",
+  "acceptance": {
+    "by": "Nick",
+    "scope": "weather/mat painting and Cranberry mat as is",
+    "sourceHead": "9f51f2c9",
+    "date": "2026-09-12"
+  }
 }

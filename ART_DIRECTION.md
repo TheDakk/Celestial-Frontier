@@ -1,5 +1,15 @@
 # Celestial Frontier — Master Art Direction
 
+**Latest acceptance, September12:** Nick accepts weather/mat9f51f2c9 as the active ordinary
+Earth baseline and Cranberry mat as is. PNG/raw finisher retained; audit qualityAccepted true.
+The normal compiler now selects weather-mat-v1 with its matching immediate composite.
+Six no-inference intensity variants are shown in audits/ART_KIT_WEATHER_LADDER_20260912;
+Nick's rain-default selection is pending, so accepted1x stays active. A newly authorized
+phone probe verifies initializer bounds and bypasses text encoder with pinned precomputed
+accepted-recipe embedding. Probe result pending; then Civet animation proof. Earlier
+paragraphs below record the superseded baseline decisions. No kit edit or GitHub step.
+
+
 **Normal Land implementation, September12:** the ordinary boot adapter now selects the
 accepted Earth kit composite and one masked finisher, with retained originals and400ms
 crossfade. The old game six-reference generator and OPFS variant owners are removed.

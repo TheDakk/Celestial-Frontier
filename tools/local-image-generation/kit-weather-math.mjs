@@ -8,12 +8,13 @@ export function readCompositorSystemCard(card){
  return {weather:m[1],waterState:m[2],timeOfDay,light:light[0][1],lightFacing:'upward diffuse sky, no invented sun direction'};
 }
 function rng(seed){let a=seed>>>0;return ()=>{a=(a+0x6d2b79f5)>>>0;let t=Math.imul(a^(a>>>15),1|a);t^=t+Math.imul(t^(t>>>7),61|t);return ((t^(t>>>14))>>>0)/4294967296;};}
-export function applyKitWeather(source,w,h,organisms,seed,systemCard){
+export function applyKitWeather(source,w,h,organisms,seed,systemCard,intensity={dropletCount:1,specularStrength:1,precipitationDensity:1}){
+ if(Object.keys(intensity).sort().join(',')!=='dropletCount,precipitationDensity,specularStrength'||![1,2,3].includes(intensity.dropletCount)||![1,2,3].includes(intensity.specularStrength)||![1,2].includes(intensity.precipitationDensity))throw Error('Weather intensity refused');
  if(!(source instanceof Uint8ClampedArray)||source.length!==w*h*4||!Number.isSafeInteger(seed)||seed<0||seed>0xffffffff||organisms.some(o=>o.alpha.length!==w*h))throw Error('Weather input shape');
  const card=readCompositorSystemCard(systemCard),random=rng(seed^0x57585452),out=source.slice();
  const kind=/snow/.test(card.weather)?'snow':/dust|sand/.test(card.weather)?'dust':/rain|storm/.test(card.weather)?'rain':'none';
  const illumination=card.timeOfDay==='night'?.36:card.timeOfDay==='dusk'?.66:1;
- const wet=kind==='rain'&&card.waterState==='liquid';let wetPixels=0,droplets=0;
+ const wet=kind==='rain'&&card.waterState==='liquid';let wetPixels=0,droplets=0;const extraEdges=[];
  const blend=(x,y,colour,opacity)=>{if(x<0||y<0||x>=w||y>=h)return;const p=(y*w+x)*4;for(let c=0;c<3;c++)out[p+c]=Math.round(out[p+c]*(1-opacity)+colour[c]*opacity);};
  if(wet)for(const o of organisms){const fur=o.name==='Civet'||o.name==='Platypus',flora=['Persimmon',"Devil's Club",'Cranberry'].includes(o.name);if(!fur&&!flora)continue;
   for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=y*w+x,p=i*4,a=o.alpha[i]/255;if(!a)continue;
@@ -22,10 +23,14 @@ export function applyKitWeather(source,w,h,organisms,seed,systemCard){
    for(let c=0;c<3;c++)out[p+c]=Math.round(source[p+c]*(1-a)+((1-desaturate)*source[p+c]+desaturate*luma)*(1-darken)*a);
    wetPixels++;
    // Upward silhouette edges face the card's diffuse sky. Sparse glints, never an outline.
-   if(a>.65&&(y===0||o.alpha[i-w]<48)&&random()<.26){blend(x,y,[186,205,218],.38*illumination);droplets++;}
+   if(a>.65&&(y===0||o.alpha[i-w]<48)){if(random()<.26){blend(x,y,[186,205,218],Math.min(1,.38*illumination*intensity.specularStrength));droplets++;}else extraEdges.push([x,y]);}
   }
  }
- const density=kind==='rain'?.0018:kind==='snow'?.0013:kind==='dust'?.0015:0,strokes=Math.round(w*h*density);
+ const baseDroplets=droplets,extraRandom=rng(seed^0x44524f50);
+ // Extra droplets use a separate stream; accepted rain positions and original glints stay fixed.
+ for(let i=extraEdges.length-1;i>0;i--){const j=Math.floor(extraRandom()*(i+1));[extraEdges[i],extraEdges[j]]=[extraEdges[j],extraEdges[i]];}
+ for(const [x,y]of extraEdges.slice(0,baseDroplets*(intensity.dropletCount-1))){blend(x,y,[186,205,218],Math.min(1,.38*illumination*intensity.specularStrength));droplets++;}
+ const density=(kind==='rain'?.0018:kind==='snow'?.0013:kind==='dust'?.0015:0)*intensity.precipitationDensity,strokes=Math.round(w*h*density/intensity.precipitationDensity)*intensity.precipitationDensity;
  for(let i=0;i<strokes;i++){
   const x=Math.floor(random()*w),y=Math.floor(random()*h),length=kind==='rain'?8+Math.floor(random()*12):kind==='snow'?1+Math.floor(random()*3):4+Math.floor(random()*9);
   const colour=kind==='dust'?[169,151,120]:[192,211,225],opacity=(kind==='rain'?.12:kind==='snow'?.26:.10)*illumination*(.55+random()*.45);

@@ -1,0 +1,21 @@
+✔ complete owner publishes without an empty window and cannot replace a live or unreadable owner (3.03975ms)
+✔ four parallel unit suites cannot acquire the checkout lease; injected acquisition is rejected (0.279ms)
+✔ shipped fitted pixels equal accepted inputs; wrong fitted geometry and URL traversal refuse admission (8.24925ms)
+✔ preview boot refuses each omitted load-bearing source, including the ten checkpoint files (0.525875ms)
+✔ shipped worker refuses a legacy scene job and reuses the same engine for two kit jobs (0.282917ms)
+✔ weather is repeatable by recipe seed, darkens/desaturates fur, preserves inputs/alpha, and covers the entire frame (10.754459ms)
+✔ system-card weather, water, time and light control effects; missing/ambiguous cards fail (2.897625ms)
+✔ weather recipe keeps the accepted finisher and five placements; mat is16% wide and remains one organism (26.684ms)
+✔ intensity variants preserve baseline pixels and alpha, increase exact droplet counts and rain count, reject unsupported settings (2.180625ms)
+✔ actual engine skips organism inference and runs one protected finisher; all four sessions stay warm (347.669ms)
+✔ same reuse oracle rejects actual engine with its session cache bypassed (334.477625ms)
+✔ precomputed accepted text loads only three sessions; ignoring the embedding is rejected (545.268375ms)
+✔ precomputed embedding refuses wrong prompt, revision, shape, bytes and nonfinite data (34.21575ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1307.1585

@@ -1,0 +1,184 @@
+{
+  "schema": "cf.weather-intensity-ladder.v1",
+  "modelRuns": 0,
+  "sourceFinisherPngSha256": "6122041b8a113c883078415305fbe7b0f8203852b8caa2f35231008d37cafa59",
+  "acceptedPaintingSha256": "27101ff3af6e91b3e59087e7b1c2c4564d7c3cd1fa9ca6aec11c31250508fc16",
+  "variants": [
+    {
+      "id": "A",
+      "intensity": {
+        "dropletCount": 2,
+        "specularStrength": 2,
+        "precipitationDensity": 1
+      },
+      "pngSha256": "06d950af89872faa0485e104efdc74dd2c8d3605b855989fd9820ca90ba5eeea",
+      "receipt": {
+        "schema": "cf.kit-compositor-weather.v1",
+        "seed": 133,
+        "card": {
+          "weather": "rain",
+          "waterState": "liquid",
+          "timeOfDay": "day",
+          "light": "day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.",
+          "lightFacing": "upward diffuse sky, no invented sun direction"
+        },
+        "kind": "rain",
+        "wetPixels": 52072,
+        "droplets": 714,
+        "precipitationStrokes": 1062,
+        "wholeFrameDensity": 0.0018,
+        "geometryChanged": false,
+        "stage": "after-finisher"
+      },
+      "qualityAccepted": false
+    },
+    {
+      "id": "B",
+      "intensity": {
+        "dropletCount": 3,
+        "specularStrength": 3,
+        "precipitationDensity": 1
+      },
+      "pngSha256": "0d23ffc6c6908f56107f0fccdf8258c2a268288b474bed487a9b145503b3f46e",
+      "receipt": {
+        "schema": "cf.kit-compositor-weather.v1",
+        "seed": 133,
+        "card": {
+          "weather": "rain",
+          "waterState": "liquid",
+          "timeOfDay": "day",
+          "light": "day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.",
+          "lightFacing": "upward diffuse sky, no invented sun direction"
+        },
+        "kind": "rain",
+        "wetPixels": 52072,
+        "droplets": 1071,
+        "precipitationStrokes": 1062,
+        "wholeFrameDensity": 0.0018,
+        "geometryChanged": false,
+        "stage": "after-finisher"
+      },
+      "qualityAccepted": false
+    },
+    {
+      "id": "C",
+      "intensity": {
+        "dropletCount": 1,
+        "specularStrength": 1,
+        "precipitationDensity": 2
+      },
+      "pngSha256": "3df0f84b86f54fe8e1c5cc12db2c7905c90c62f8ccd9d93311d3f83a5520647b",
+      "receipt": {
+        "schema": "cf.kit-compositor-weather.v1",
+        "seed": 133,
+        "card": {
+          "weather": "rain",
+          "waterState": "liquid",
+          "timeOfDay": "day",
+          "light": "day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.",
+          "lightFacing": "upward diffuse sky, no invented sun direction"
+        },
+        "kind": "rain",
+        "wetPixels": 52072,
+        "droplets": 357,
+        "precipitationStrokes": 2124,
+        "wholeFrameDensity": 0.0036,
+        "geometryChanged": false,
+        "stage": "after-finisher"
+      },
+      "qualityAccepted": false
+    },
+    {
+      "id": "D",
+      "intensity": {
+        "dropletCount": 2,
+        "specularStrength": 2,
+        "precipitationDensity": 2
+      },
+      "pngSha256": "1f0aa2361b4324435fddb239328e954cb143a41fa7cbc4fcd80d1b66c0940cee",
+      "receipt": {
+        "schema": "cf.kit-compositor-weather.v1",
+        "seed": 133,
+        "card": {
+          "weather": "rain",
+          "waterState": "liquid",
+          "timeOfDay": "day",
+          "light": "day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.",
+          "lightFacing": "upward diffuse sky, no invented sun direction"
+        },
+        "kind": "rain",
+        "wetPixels": 52072,
+        "droplets": 714,
+        "precipitationStrokes": 2124,
+        "wholeFrameDensity": 0.0036,
+        "geometryChanged": false,
+        "stage": "after-finisher"
+      },
+      "qualityAccepted": false
+    },
+    {
+      "id": "E",
+      "intensity": {
+        "dropletCount": 3,
+        "specularStrength": 3,
+        "precipitationDensity": 2
+      },
+      "pngSha256": "4b776b03194acdf9a5facfb22c2e564e43a683e4e31cf4be932615acefbf6d26",
+      "receipt": {
+        "schema": "cf.kit-compositor-weather.v1",
+        "seed": 133,
+        "card": {
+          "weather": "rain",
+          "waterState": "liquid",
+          "timeOfDay": "day",
+          "light": "day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.",
+          "lightFacing": "upward diffuse sky, no invented sun direction"
+        },
+        "kind": "rain",
+        "wetPixels": 52072,
+        "droplets": 1071,
+        "precipitationStrokes": 2124,
+        "wholeFrameDensity": 0.0036,
+        "geometryChanged": false,
+        "stage": "after-finisher"
+      },
+      "qualityAccepted": false
+    },
+    {
+      "id": "F",
+      "intensity": {
+        "dropletCount": 3,
+        "specularStrength": 2,
+        "precipitationDensity": 2
+      },
+      "pngSha256": "1b1eb4a4ab1e321692c8a9811f001f2aa8a97e78c678a529955e997bcd09bf0c",
+      "receipt": {
+        "schema": "cf.kit-compositor-weather.v1",
+        "seed": 133,
+        "card": {
+          "weather": "rain",
+          "waterState": "liquid",
+          "timeOfDay": "day",
+          "light": "day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.",
+          "lightFacing": "upward diffuse sky, no invented sun direction"
+        },
+        "kind": "rain",
+        "wetPixels": 52072,
+        "droplets": 1071,
+        "precipitationStrokes": 2124,
+        "wholeFrameDensity": 0.0036,
+        "geometryChanged": false,
+        "stage": "after-finisher"
+      },
+      "qualityAccepted": false
+    }
+  ],
+  "controls": {
+    "baselinePixelExact": true,
+    "sourceAndMasksUnchanged": true,
+    "alphaUnchanged": true,
+    "repeatability": true,
+    "exactDropletMultiples": true,
+    "noWeatherControlRejected": true
+  }
+}

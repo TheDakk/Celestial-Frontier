@@ -32,3 +32,11 @@ test('weather recipe keeps the accepted finisher and five placements; mat is16% 
  assert.throws(()=>admitKitEngineJob({...job,interiorErosionPixels:8}));assert.throws(()=>admitKitEngineJob({...job,compositorSystemCard:undefined}));
  const wrong=structuredClone(job);wrong.passes[0].placement.mat=p.placement.mat;assert.throws(()=>admitKitEngineJob(wrong),/Unexpected/);
 });
+
+test('intensity variants preserve baseline pixels and alpha, increase exact droplet counts and rain count, reject unsupported settings',()=>{
+ const f=fixture(),base=applyKitWeather(f.rgba,f.w,f.h,f.organisms,133,card()),run=i=>applyKitWeather(f.rgba,f.w,f.h,f.organisms,133,card(),i);
+ assert.deepEqual(base,run({dropletCount:1,specularStrength:1,precipitationDensity:1}));
+ const doubled=run({dropletCount:2,specularStrength:2,precipitationDensity:2});assert.equal(doubled.receipt.droplets,base.receipt.droplets*2);assert.equal(doubled.receipt.precipitationStrokes,base.receipt.precipitationStrokes*2);assert.notDeepEqual(doubled.rgba,base.rgba);
+ for(let p=3;p<base.rgba.length;p+=4)assert.equal(doubled.rgba[p],base.rgba[p]);
+ assert.throws(()=>run({dropletCount:4,specularStrength:1,precipitationDensity:1}));assert.throws(()=>run({dropletCount:1,specularStrength:1,precipitationDensity:3}));
+});
