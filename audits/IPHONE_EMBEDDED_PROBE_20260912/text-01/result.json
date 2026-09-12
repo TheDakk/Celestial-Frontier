@@ -1,0 +1,169 @@
+{
+  "status": "PASS",
+  "head": "f725f63306e8cca96f7b30e929b3b1bfb4a33477",
+  "requests": [
+    "/",
+    "/client.mjs",
+    "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+    "/tokenizer.mjs",
+    "/kit-worker-engine.mjs",
+    "/kit-engine-math.mjs",
+    "/kit-worker-expansion.mjs",
+    "/kit-weather-math.mjs",
+    "/kit-contact-math.mjs",
+    "/pipeline-math.mjs",
+    "/favicon.ico",
+    "/model/tokenizer/tokenizer.json",
+    "/model/tokenizer/tokenizer_config.json",
+    "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+    "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+    "/model/text_encoder_q4.onnx",
+    "/model/text_encoder_q4-00000.data",
+    "/model/text_encoder_q4-00001.data"
+  ],
+  "events": [
+    {
+      "phase": "loading",
+      "stage": "text"
+    },
+    {
+      "phase": "loaded",
+      "stage": "text",
+      "elapsedMs": 1729,
+      "creates": {
+        "text": 1,
+        "encode": 0,
+        "denoise": 0,
+        "decode": 0
+      },
+      "memory": {
+        "usedJSHeapSize": 2228542006,
+        "totalJSHeapSize": 2254848910
+      }
+    },
+    {
+      "phase": "inference-start",
+      "stage": "text",
+      "outputShape": [
+        1,
+        416,
+        7680
+      ]
+    },
+    {
+      "phase": "inference-complete",
+      "stage": "text",
+      "elapsedMs": 5977.0999999940395
+    },
+    {
+      "phase": "readback-complete",
+      "stage": "text"
+    }
+  ],
+  "paintingRuns": 0,
+  "verified": {
+    "schema": "cf.local-image-download-receipt.v1",
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "2230e0469495f676aab7a41ba8e95fb8b146a31417fbaad26dc7dd6d35a4abec",
+    "startedAt": "2026-09-12T21:57:50.177Z",
+    "finishedAt": "2026-09-12T21:57:51.197Z",
+    "status": "complete",
+    "fileCount": 11,
+    "totalBytes": 2215128628,
+    "timeoutMs": 600000,
+    "verifyOnly": true,
+    "files": [
+      {
+        "path": "text_encoder_q4-00000.data",
+        "bytes": 1599733760,
+        "sha256": "ed37b81331f4eda3bc150448f2d360b4e42951c57dcb9874ec8d0c7c78fa6f6d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00001.data",
+        "bytes": 594170880,
+        "sha256": "89040c34be052e09698afad17bfea3e1158306369612ae347655dfbd4cfa0f3f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.manifest.json",
+        "bytes": 285,
+        "sha256": "fd22d7819467151ead49d2f25b0d576bcb65134111e5219c264cc605cb62e5b7",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.onnx",
+        "bytes": 5341471,
+        "sha256": "e1670f1d203cf2e5cadecce4b2c13d436eefa228a66b7bc6bc629074e9dc0a1b",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/added_tokens.json",
+        "bytes": 707,
+        "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/chat_template.jinja",
+        "bytes": 4168,
+        "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/merges.txt",
+        "bytes": 1671853,
+        "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/special_tokens_map.json",
+        "bytes": 613,
+        "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer.json",
+        "bytes": 11422654,
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer_config.json",
+        "bytes": 5404,
+        "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/vocab.json",
+        "bytes": 2776833,
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "disposition": "verified-reused"
+      }
+    ],
+    "failure": null
+  },
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.32",
+    "revision": "@9aab8632678bdbd60c393455e1394ee523ba682d",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.4",
+    "protocol_version": "1.3"
+  },
+  "embedding": {
+    "schema": "cf.kit-text-embedding.v1",
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "type": "float16",
+    "byteOrder": "little-endian",
+    "width": 7680,
+    "sequence": 416,
+    "tokenCount": 402,
+    "promptSha256": "741e3078a4a12a669a0fc9846f68789e1717bfc31cd584910568067ff541194c",
+    "chatPromptSha256": "18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde",
+    "dataSha256": "46f0533d51e3c436b6d6cf6bcfa3e8af0c5d402b51e6d4570e13dda0724a20c7",
+    "bytes": 6389760,
+    "sourceHead": "f725f63306e8cca96f7b30e929b3b1bfb4a33477"
+  }
+}
