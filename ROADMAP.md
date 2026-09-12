@@ -92,3 +92,10 @@ new private server-key.pem/server.pem under /private/tmp/cf-iphone-trusted-tls-2
 Root expiresSep14 22:59UTC, serverSep13 22:59UTC. Remove profile after probe. Do not weaken
 TLS validation. Last signed8249989a (44 upstream/155 cached develop ahead); setup commit
 follows. No GitHub action, PR42 parked, no Claude sync needed. Rain choice still pending.
+
+Trusted HTTPS check now PASS: iPhone Safari reported secureContext/isolation/WebGPU true
+on49765 after profile installation/trust. Bootstrap server76799 closed; status now final
+and committed. No model ran. Next physical native-03 uses new server-key.pem/server.pem,
+accepted embedding, encode/denoise/decode only. This continues the authorized trusted-HTTPS
+repair/probe, stops after its first result. Source setup82e92439 (45 upstream/156 cached
+develop ahead); trust-result commit follows. Remove the phone profile after test.

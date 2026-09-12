@@ -15,7 +15,8 @@
     "untrustedRejected": true,
     "outsideNameConstraintRejected": true
   },
-  "phoneInstalled": false,
-  "phoneTrusted": false,
-  "noMacTrustStoreChanges": true
+  "phoneInstalled": true,
+  "phoneTrusted": true,
+  "noMacTrustStoreChanges": true,
+  "phoneTrustEvidence": "iPhone Safari secure page report in setup-server-status.json; physical automation rechecks before model load"
 }
