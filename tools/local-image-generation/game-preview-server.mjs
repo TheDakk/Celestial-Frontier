@@ -178,7 +178,7 @@ export async function createGamePreviewServer(options = {}) {
         }
         const source = routes.get(pathname);
         if (!source) {
-          if (pathname.startsWith(PREFIX)) { refuse(404, 'Unknown local AI source'); return; }
+          if (pathname.startsWith(PREFIX) && !pathname.startsWith(PREFIX+'inputs/') && !/^\/\_\_local_ai\/kit-[a-z-]+\.mjs$/.test(pathname)) { refuse(404, 'Unknown local AI source'); return; }
           vite.middlewares(req, res, () => refuse(404, 'Game route not found')); return;
         }
         if (!sameStat(source.stat, await fileStat(source.file))) { refuse(409, 'Verified preview source changed'); return; }

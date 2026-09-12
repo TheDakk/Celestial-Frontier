@@ -2,6 +2,7 @@
  * when server.hmr/ws are false. Disable the one eager connection in a served
  * copy, preserving its CSS/query helpers and all real error reporting. */
 import fs from 'node:fs/promises';
+import {assertTrackedKitSources} from './kit-tracked-inputs.mjs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath,pathToFileURL} from 'node:url';
@@ -34,6 +35,7 @@ export function frozenPreviewClientPlugin(){
 /** Shared by the real model preview and its no-inference native boot check. */
 export async function createFrozenGameViteServer({mode='evidence',createViteServer}={}){
   need(['evidence','development'].includes(mode),'Invalid frozen preview mode');
+  assertTrackedKitSources(ROOT);
   const pkg=JSON.parse(await fs.readFile(path.join(ROOT,'port/v2/node_modules/vite/package.json'),'utf8'));
   need(pkg.version===FROZEN_VITE_CLIENT_PIN.version,'Locked Vite version changed');
   frozenPreviewClientSource(await fs.readFile(path.join(ROOT,FROZEN_VITE_CLIENT_PIN.source),'utf8'));
@@ -41,5 +43,5 @@ export async function createFrozenGameViteServer({mode='evidence',createViteServ
   const gameRoot=path.join(ROOT,'port/v2/apps/game');
   return create({root:gameRoot,configFile:path.join(gameRoot,'vite.config.ts'),mode,
     plugins:[frozenPreviewClientPlugin()],server:{middlewareMode:true,hmr:false,ws:false,forwardConsole:false,
-      fs:{allow:[path.join(ROOT,'port')]}},appType:'spa'});
+      fs:{allow:[ROOT]}},appType:'spa'});
 }

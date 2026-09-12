@@ -1,5 +1,12 @@
 # Local AI landfalls
 
+**Normal Land implementation, September12:** the ordinary boot adapter now selects the
+accepted Earth kit composite and one masked finisher, with retained originals and400ms
+crossfade. The old game six-reference generator and OPFS variant owners are removed.
+Four sessions remain page-owned across successful landings. Other worlds retain their
+painter until supported kit assets exist. Browser-free controls pass; native UI/warm
+measurement are pending in audits/KIT_NORMAL_LAND_20260912. No phone tier is qualified.
+
 **September 12 acceptance update:** Nick accepts cd6b609f / 0eed6a21 as the first engine
 painting and tier-2 baseline. The retained PNG is unchanged; its qualityAccepted is true.
 Art Kit v4.1 applies the two approved section0/5 insertions; frozen style and4E unchanged.

@@ -1,0 +1,6 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/local-ai-game.ts(2,17): error TS2307: Cannot find module '../../../../../ART_KIT.md?raw' or its corresponding type declarations.
+tests/local-ai-game.test.ts(19,56): error TS2305: Module '"../apps/game/src/local-ai-game.js"' has no exported member 'LocalAiGameRuntimeManifestV1'.

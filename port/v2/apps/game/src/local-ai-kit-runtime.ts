@@ -10,7 +10,7 @@ export interface KitLandfallResultV4 {
 }
 /** App-owned worker lifetime: successful landings retain the same engine;
  * cancellation/fault/disposal terminates it and the next landing starts fresh. */
-export function createWarmKitLandfallRuntimeV4(workerUrl: string) {
+export function createWarmKitLandfallRuntimeV4(workerUrl: string, modelFiles: Readonly<Record<string, string | Blob>> = {}) {
   let worker: Worker | null = null, active = false, sequence = 0, disposed = false;
   const destroy = (): void => { worker?.terminate(); worker = null; };
   let cancelActive: (() => void) | null = null;
@@ -53,7 +53,7 @@ export function createWarmKitLandfallRuntimeV4(workerUrl: string) {
           }
           finish(null, data as unknown as KitLandfallResultV4);
         };
-        try { current.postMessage({ stage: 'kit-v4', requestId, recipe }); } catch (error) { finish(error instanceof Error ? error : Error(String(error))); }
+        try { current.postMessage({ stage: 'kit-v4', requestId, recipe, modelFiles }); } catch (error) { finish(error instanceof Error ? error : Error(String(error))); }
         if (signal.aborted) abort();
       });
     } finally { active = false; }

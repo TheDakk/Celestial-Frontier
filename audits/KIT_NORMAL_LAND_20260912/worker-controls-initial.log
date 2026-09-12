@@ -1,0 +1,17 @@
+✔ one-pixel erosion and sampled inward despill remove injected pink edge without recolouring the interior (1.962917ms)
+✔ premultiplied sampling cannot carry invisible magenta into a scaled edge (0.177875ms)
+✔ latent interiors stay anchored while boundary and ground remain editable; no-mask control fails (2.962084ms)
+✔ prepared profile meets scale relationships and refuses the former unmasked recipe (0.980625ms)
+✔ complete owner publishes without an empty window and cannot replace a live or unreadable owner (2.112625ms)
+✔ four parallel unit suites cannot acquire the checkout lease; injected acquisition is rejected (0.587333ms)
+✔ shipped fitted pixels equal accepted inputs; wrong fitted geometry and URL traversal refuse admission (4.065584ms)
+✔ actual engine skips organism inference and runs one protected finisher; all four sessions stay warm (316.608291ms)
+✔ same reuse oracle rejects actual engine with its session cache bypassed (296.405208ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 659.166625

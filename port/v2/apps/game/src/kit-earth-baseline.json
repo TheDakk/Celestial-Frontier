@@ -1,0 +1,17 @@
+{
+  "composite": {
+    "url": "/__local_ai/inputs/earth-composite.png",
+    "sha256": "3b9c3988c508a8cee1045215926644ceefdec8ad8de8fcca79839223c7583e6b",
+    "width": 1024,
+    "height": 576
+  },
+  "settings": {
+    "width": 1024,
+    "height": 576,
+    "passSize": 384,
+    "seed": 133,
+    "steps": 4,
+    "strength": 0.2,
+    "finisherStrength": 0.35
+  }
+}

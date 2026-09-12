@@ -6,12 +6,10 @@ import http from 'node:http';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {FROZEN_VITE_CLIENT_PIN,frozenPreviewClientSource,frozenPreviewClientPlugin,createFrozenGameViteServer} from './frozen-preview-client.mjs';
-import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 const original=await fs.readFile(path.join(ROOT,FROZEN_VITE_CLIENT_PIN.source),'utf8');
 const CONNECT='transport.connect(createHMRHandler(handleMessage));';
 let release;
-before(()=>{release=acquireWorkspaceLock('frozen Vite client controls');});
 after(()=>release?.());
 
 test('served copy disables eager transport while preserving exports, CSS/query helpers and error paths',()=>{
@@ -55,5 +53,5 @@ test('real frozen Vite middleware serves its transformed client and normal game 
     assert.ok(!code.includes(CONNECT));assert.ok(!code.includes('__HMR_PORT__'));
     const index=await fetch(base+'/');assert.equal(index.status,200);assert.match(await index.text(),/src\/main.ts/);
     assert.equal(vite.config.server.ws,false);assert.equal(vite.config.server.hmr,false);assert.equal(vite.config.server.forwardConsole.enabled,false);
-  }finally{await new Promise((resolve,reject)=>{server.close(error=>error?reject(error):resolve());server.closeAllConnections();});await vite.close();}
+  }finally{try{if(server.listening)await new Promise((resolve,reject)=>{server.close(error=>error?reject(error):resolve());server.closeAllConnections();});}finally{await vite.close();}}
 });

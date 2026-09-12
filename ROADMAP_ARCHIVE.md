@@ -1,3 +1,37 @@
+## SESSION HANDOFF — 2026-09-12 · ACCEPTED TIER-2 BASELINE; NORMAL LAND INTEGRATION
+
+Nick accepts contact revision cd6b609f / 0eed6a21 as the first engine painting and
+tier-2 baseline. Its original PNG is retained unchanged; native result and review now
+carry qualityAccepted true. Acceptance does not qualify iPhone or ordinary-game wiring.
+Art Kit v4.1 adds exactly the approved runtime-projection sentence in section0 and
+runtime-minimum/authoring-target sentence in section5. Frozen style and4E unchanged.
+
+Ordered authority: (1) ordinary Land uses painter composite immediately, async finisher
+crossfade, retained original, View and Inspect; remove OPFS variant and six-reference
+scene paths; close Part K1–11,17,33–35 with negative controls. (2) retain four sessions
+across landings and measure second landing in one native run. (3) one same-input painting
+experiment: erode interior masks6–8px OR second masked0.2 pass; Cranberry as two low
+runners; compare to accepted original. No new creative experiment before step3.
+(4) actual target-iPhone probe. (5) Civet animation end to end. Existing animation track
+in CODEX_HANDOFF remains, Effects require separate approval; no library rollout yet.
+
+Evidence/acceptance: audits/ART_KIT_CONTACT_REVISION_20260912/ACCEPTANCE.md. Baseline
+24.173s warm,32.063s total, one0.35 finisher/no organism passes, seed133,1024×576,
+402tokens under512, Civet30% and six registered IoUs100% (registration, not segmentation).
+Normal-game code is prepared;59 adapter/storage/compiler/delivery tests,4 presentation
+tests,10 worker/integration controls and TypeScript/root validation pass. Native browser
+proof is next; no new inference has run. See audits/KIT_NORMAL_LAND_20260912/README.md. No unit-test checkout lock, old variant
+native run, integrated chain or pack build. Phone probe still gates new storage/delivery
+engineering; explicit retained-original integration and corrupt-install repair are in scope.
+
+OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac
+tracking origin/openai/mac. Entry0eed6a21 is26 ahead/0 behind upstream,137 ahead/0 behind
+cached origin/develop. No fetch, .DS_Store untouched, existing uninterrupted startup receipt.
+GitHub step NONE. PR42 parked until split; no push/label/dispatch/merge/release/deploy.
+Claude Code need not open/sync now. After eventual authorized develop integration only,
+clean anthropic/mac may fetch/merge origin/develop at its next batch. Signed local IDs and
+ahead counts reported at each stop. Resume this handoff, never PAUSED_CHECKPOINT.
+
 ## SESSION HANDOFF — 2026-09-12 · CONTACT REVISION AWAITS PAINTING ACCEPTANCE
 
 Nick accepts all twelve first v4 authoring inputs including the Earth plate. The four

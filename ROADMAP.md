@@ -37,12 +37,21 @@ in CODEX_HANDOFF remains, Effects require separate approval; no library rollout 
 Evidence/acceptance: audits/ART_KIT_CONTACT_REVISION_20260912/ACCEPTANCE.md. Baseline
 24.173s warm,32.063s total, one0.35 finisher/no organism passes, seed133,1024×576,
 402tokens under512, Civet30% and six registered IoUs100% (registration, not segmentation).
-Normal-game work is next, not already complete. No unit-test checkout lock, old variant
+Normal-game code is prepared;59 adapter/storage/compiler/delivery tests,4 presentation,
+21 parallel frozen-preview/species tests,5 final integration controls plus worker controls
+and TypeScript/root validation pass. Native browser proof is next; no inference has run.
+Source signing failed with1Password agent error; Nick has been asked to unlock again.
+All current work is staged. Do not rerun completed preparation or tests on signer resume.
+Sign the source, then run-kit-normal-land.mjs to browser-01 (no inference, accepted PNG),
+then run-kit-engine-proof.mjs with warm-prepared, warm-native-01 and --landings=2.
+Exact commands, receipts and limitations: audits/KIT_NORMAL_LAND_20260912/README.md.
+The actual iPhone/iOS/connection question is pending. No new creative experiment before
+step3; no native run before clean signed source. Part K closure awaits native outcomes. No unit-test checkout lock, old variant
 native run, integrated chain or pack build. Phone probe still gates new storage/delivery
 engineering; explicit retained-original integration and corrupt-install repair are in scope.
 
 OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac
-tracking origin/openai/mac. Entry0eed6a21 is26 ahead/0 behind upstream,137 ahead/0 behind
+tracking origin/openai/mac. Last signed dbeb2448 is27 ahead/0 behind upstream,138 ahead/0 behind
 cached origin/develop. No fetch, .DS_Store untouched, existing uninterrupted startup receipt.
 GitHub step NONE. PR42 parked until split; no push/label/dispatch/merge/release/deploy.
 Claude Code need not open/sync now. After eventual authorized develop integration only,

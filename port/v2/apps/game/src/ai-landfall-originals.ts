@@ -120,6 +120,7 @@ export function createAiLandfallOriginalStoreV1(options: {
   let opening: Promise<IDBDatabase> | null = null;
   const open = (): Promise<IDBDatabase> => {
     if (closed) return Promise.reject(new Error('Landfall original store is closed'));
+    if (database) return Promise.resolve(database);
     if (opening) return opening;
     opening = new Promise((resolve, reject) => {
       const request = factory.open(name, 1);
@@ -140,10 +141,11 @@ export function createAiLandfallOriginalStoreV1(options: {
           result.close(); reject(new Error('Landfall original database opening was canceled')); return;
         }
         database = result;
-        result.onversionchange = () => { closed = true; result.close(); };
+        result.onversionchange = () => { result.close(); if (database === result) { database = null; opening = null; } };
         resolve(result);
       };
     });
+    opening = opening.catch(error => { opening = null; throw error; });
     return opening;
   };
   const fetchRecord = async (input: AiLandfallInputV1, id: string | null): Promise<AiLandfallOriginalV1 | null> => {

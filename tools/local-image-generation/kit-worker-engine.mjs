@@ -3,7 +3,16 @@ import {expandPinnedTransformer,sha256} from './kit-worker-expansion.mjs';
 import {keyAndDespill,compositeLayer,subtractOcclusion,latentInteriorMask,protectLatents,alphaToRgba,alphaBounds} from './kit-contact-math.mjs';
 import {encodeFloat16,decodeFloat16,packedLatentsToTokens,tokensToPackedLatents,createImageIds,eulerOutputStep,seededGaussianNoise} from './pipeline-math.mjs';
 const parse=async path=>{const r=await fetch(path);if(!r.ok)throw Error('Missing '+path);return r.json();};
-export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expandPinnedTransformer}){
+export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expandPinnedTransformer,modelFiles={}}){
+  const urls=[];
+  const sourceUrl=path=>{const value=modelFiles[path];if(value instanceof Blob){const url=URL.createObjectURL(value);urls.push(url);modelFiles={...modelFiles,[path]:url};return url;}return value??('/model/'+path);};
+  const modelFetch=async(url,options)=>{
+    const path=url.startsWith('/model/')?url.slice(7):null,value=path===null?null:modelFiles[path];
+    // Blob slices provide bounded in-worker expansion ranges without reading a whole shard.
+    if(value instanceof Blob){const range=options?.headers?.Range?.match(/^bytes=(\d+)-(\d+)$/);if(range){const start=Number(range[1]),end=Number(range[2]);if(end>=value.size||start>end)throw Error('Model range refused');return new Response(value.slice(start,end+1),{status:206,headers:{'content-range':`bytes ${start}-${end}/${value.size}`}});}return new Response(value);}
+    return fetch(path===null?url:(value??url),options);
+  };
+  const modelJson=async path=>{const r=await modelFetch('/model/'+path);if(!r.ok)throw Error('Model metadata unavailable');return r.json();};
   const adapter=await navigator.gpu?.requestAdapter({powerPreference:'high-performance'});
   if(!adapter||!adapter.features.has('shader-f16')||adapter.info.isFallbackAdapter)throw Error('Native f16 GPU required');
   const device=await adapter.requestDevice({requiredFeatures:['shader-f16'],requiredLimits:{maxBufferSize:adapter.limits.maxBufferSize,maxStorageBufferBindingSize:adapter.limits.maxStorageBufferBindingSize,maxStorageBuffersPerShaderStage:adapter.limits.maxStorageBuffersPerShaderStage}});
@@ -19,10 +28,10 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
     check();if(sessions.has(kind)){progress({phase:'session-reused',stage:kind});return sessions.get(kind);}
     const start=performance.now();progress({phase:'loading',stage:kind});let graph,externalData;
     if(kind==='denoise'){
-      expanded??=await expand(fetch,e=>progress(e));
-      graph=expanded.graph;externalData=['transformer_q8-00000.data','transformer_q8-00001.data','transformer_q8-00002.data'].map(path=>({path,data:'/model/'+path}));
+      expanded??=await expand(modelFetch,e=>progress(e),Object.keys(modelFiles).length?new URL('./browser-variant-plan.json',import.meta.url).href:'/browser-variant-plan.json');
+      graph=expanded.graph;externalData=['transformer_q8-00000.data','transformer_q8-00001.data','transformer_q8-00002.data'].map(path=>({path,data:sourceUrl(path)}));
       externalData.push({path:'repacked-scale-zero.data',data:expanded.data});
-    }else{const [file,shards]=specs[kind];graph='/model/'+file;externalData=shards.map(path=>({path,data:'/model/'+path}));}
+    }else{const [file,shards]=specs[kind];graph=sourceUrl(file);externalData=shards.map(path=>({path,data:sourceUrl(path)}));}
     const created=await ort.InferenceSession.create(graph,{executionProviders:['webgpu'],graphOptimizationLevel:'all',externalData});
     check();sessions.set(kind,created);creates[kind]++;progress({phase:'loaded',stage:kind,elapsedMs:performance.now()-start,creates:{...creates},memory:performance.memory?{usedJSHeapSize:performance.memory.usedJSHeapSize,totalJSHeapSize:performance.memory.totalJSHeapSize}:null});return created;
   }
@@ -42,7 +51,7 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
     }finally{if(outputs)for(const tensor of Object.values(outputs))tensor.dispose();for(const tensor of Object.values(feeds))tensor.dispose();}
   }
   async function embedding(prompt){
-    check();tokenizer??=new Tokenizer(await parse('/model/tokenizer/tokenizer.json'),await parse('/model/tokenizer/tokenizer_config.json'));
+    check();tokenizer??=new Tokenizer(await modelJson('tokenizer/tokenizer.json'),await modelJson('tokenizer/tokenizer_config.json'));
     const {wrapped,ids,mask,sequence,tokenCount}=prepareKitTextTokens(tokenizer,prompt);
     const data=await run('text',{input_ids:new ort.Tensor('int64',ids,[1,sequence]),attention_mask:new ort.Tensor('int64',mask,[1,sequence])},'prompt_embeds','float16',[1,sequence,7680]);
     return {data,sequence,tokenCount,promptSha256:await sha256(new TextEncoder().encode(prompt)),chatPromptSha256:await sha256(new TextEncoder().encode(wrapped))};
@@ -138,6 +147,6 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
         capabilities:{maxBufferSize:adapter.limits.maxBufferSize,shaderF16:adapter.features.has('shader-f16'),adapterInfo:{...adapter.info}}};
     }finally{busy=false;}
   }
-  async function dispose(){if(closed)return;closed=true;cache.clear();try{for(const s of sessions.values())await s.release();}finally{sessions.clear();expanded=null;device.destroy();}}
+  async function dispose(){if(closed)return;closed=true;cache.clear();try{for(const s of sessions.values())await s.release();}finally{sessions.clear();expanded=null;for(const url of urls)URL.revokeObjectURL(url);device.destroy();}}
   return {paint,dispose};
 }

@@ -11,7 +11,8 @@ import {fetchModel,DEFAULT_CACHE_ROOT} from './fetch-model.mjs';
 import {openChromiumCdp} from '../../port/v2/tools/browsercdp.mjs';
 import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
 const dir=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(dir,'../..');
-if(process.argv.length!==4)throw Error('Usage: run-kit-engine-proof.mjs PREPARED_DIRECTORY NEW_RESULT_DIRECTORY');
+if(![4,5].includes(process.argv.length)||(process.argv.length===5&&process.argv[4]!=='--landings=2'))throw Error('Usage: run-kit-engine-proof.mjs PREPARED_DIRECTORY NEW_RESULT_DIRECTORY [--landings=2]');
+const landingCount=process.argv[4]==='--landings=2'?2:1;
 const prepared=path.resolve(process.argv[2]),output=path.resolve(process.argv[3]);await fs.mkdir(output);
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const receipt={schema:'cf.kit-engine-native-proof.v4',status:'FAIL',startedAt:new Date().toISOString(),head:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),events:[],sources:[],requests:[],memory:[],qualityAccepted:false};
@@ -26,6 +27,7 @@ try{
   receipt.recipeSha256=manifest.recipeSha256;
   const routes=new Map([['/recipe.json',path.join(prepared,'recipe.json')],['/kit-client.mjs',path.join(prepared,'kit-client.mjs')]]);
   for(const name of ['kit-proof-client.mjs','stage-worker.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','pipeline-math.mjs','gpu-profile.mjs','denoiser-shapes.mjs','browser-variant-plan.json'])routes.set('/'+name,path.join(dir,name));
+  if(landingCount===2)routes.set('/stage-worker.mjs',path.join(dir,'kit-stage-worker.mjs'));
   for(const row of manifest.files){const file=path.join(prepared,'inputs',path.basename(row.url));if(sha(await fs.readFile(file))!==row.sha256)throw Error('Prepared RGBA changed');routes.set(row.url,file);}
   for(const row of pin.files)routes.set('/model/'+row.path,path.join(cacheDir,row.path));
   const dist=path.join(dir,'node_modules/onnxruntime-web/dist');for(const name of await fs.readdir(dist))if(/\.(mjs|wasm)$/.test(name))routes.set('/node_modules/onnxruntime-web/dist/'+name,path.join(dist,name));
@@ -49,7 +51,7 @@ try{
   });
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   cdp=await openChromiumCdp({label:'CF kit v4 first engine painting',userDataPrefix:'cf-kit-engine-',commandTimeoutMs:45000});receipt.browser=cdp.browser;receipt.browserPid=cdp.pid;
-  const {targetId}=await cdp.send('Target.createTarget',{url:`http://127.0.0.1:${server.address().port}/`});({sessionId}=await cdp.send('Target.attachToTarget',{targetId,flatten:true}));await cdp.send('Runtime.enable',{},sessionId);
+  const {targetId}=await cdp.send('Target.createTarget',{url:`http://127.0.0.1:${server.address().port}/?landings=${landingCount}`});({sessionId}=await cdp.send('Target.attachToTarget',{targetId,flatten:true}));await cdp.send('Runtime.enable',{},sessionId);
   const evaluate=async(expression,awaitPromise=true)=>{const r=await cdp.send('Runtime.evaluate',{expression,awaitPromise,returnByValue:true},sessionId);if(r.exceptionDetails)throw Error(r.exceptionDetails.exception?.description??r.exceptionDetails.text);return r.result.value;};
   const ready=performance.now()+15000;while(!await evaluate('!!window.kitProof')){if(performance.now()>ready)throw Error('Proof page did not initialize');await new Promise(r=>setTimeout(r,100));}
   await evaluate('void window.kitProof.start()',false);
@@ -65,6 +67,7 @@ try{
   const capture=async(kind,file,index=0)=>{const encoded=await evaluate(`window.kitProof.artifact(${JSON.stringify(kind)},${index})`);const bytes=Buffer.from(encoded,'base64');await fs.writeFile(path.join(output,file),bytes,{flag:'wx'});return {file,bytes:bytes.length,sha256:sha(bytes)};};
   receipt.artifacts=[];for(let i=0;i<state.partialCount;i++)receipt.artifacts.push(await capture('partial',`partial-${String(i+1).padStart(2,'0')}-${report.partial[i].toLowerCase().replace(/[^a-z0-9]+/g,'-')}.png`,i));
   if(receipt.status==='PASS'){receipt.artifacts.push(await capture('painting','painting.png'));receipt.artifacts.push(await capture('composite','composite-before-finisher.png'));for(let i=0;i<6;i++){receipt.artifacts.push(await capture('cutout',`organism-${String(i+1).padStart(2,'0')}.png`,i));receipt.artifacts.push(await capture('mask',`organism-${String(i+1).padStart(2,'0')}-mask.png`,i));}receipt.artifacts.push(await capture('protection','protected-interiors.png'));}
+  if(receipt.status==='PASS'&&landingCount===2){if(receipt.landings?.length!==2||receipt.landings.some(row=>Object.values(row.sessionCreates).some(n=>n!==1)))throw Error('Two warm landings did not reuse all four sessions');for(let i=0;i<2;i++)receipt.artifacts.push(await capture('landing',`landing-${i+1}-painting.png`,i));receipt.secondLandingWarmMs=receipt.landings[1].elapsedMs;}
   for(const row of receipt.sources)if(sha(await fs.readFile(path.join(root,row.file)))!==row.sha256)throw Error('Runtime source changed: '+row.file);
 }catch(error){receipt.status='FAIL';receipt.error=String(error.stack??error);console.error(receipt.error);}
 finally{

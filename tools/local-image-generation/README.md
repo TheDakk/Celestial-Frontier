@@ -1,5 +1,11 @@
 # Browser local-image proof
 
+Current game owner: kit-stage-worker.mjs / kit-worker-engine.mjs and the ordinary
+local-ai-game adapter. The six-reference scene generator and OPFS variant adapter are
+retired from the game; historical diagnostic commands below are not the restart path.
+Normal Land evidence lives in audits/KIT_NORMAL_LAND_20260912. No pack build or hosted
+action is authorized. Unit suites do not acquire the actual checkout lock.
+
 ## Paused local continuation — matches working copy September 9, 2026
 
 Nick's September12 review accepts the twelve first v4 inputs and authorizes one
