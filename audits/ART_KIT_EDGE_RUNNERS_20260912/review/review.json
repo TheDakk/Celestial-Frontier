@@ -1,0 +1,195 @@
+{
+  "schema": "cf.kit-contact-review.v1",
+  "nativeHead": "246cc61948bd09815a8c15129bce7190480c7bce",
+  "paintingSha256": "37de307a4256ae6d3d2a5c79f76a82e40efd06f831fcd44352d7ac1cca273029",
+  "nativeCompositeMatchesStatic": true,
+  "warmEngineMs": 18253.485000014305,
+  "sessionPreparationMs": 5480.074999988079,
+  "totalEngineMs": 23733.564999997616,
+  "warmUnder240s": true,
+  "sessionCreates": {
+    "text": 1,
+    "encode": 1,
+    "denoise": 1,
+    "decode": 1
+  },
+  "organismInferencePasses": 0,
+  "measurements": [
+    {
+      "name": "finisher",
+      "elapsedMs": 15884.770000010729,
+      "sequence": 416,
+      "tokenCount": 402,
+      "promptSha256": "741e3078a4a12a669a0fc9846f68789e1717bfc31cd584910568067ff541194c",
+      "chatPromptSha256": "18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde",
+      "sigmas": [
+        0.3499999940395355,
+        0
+      ]
+    }
+  ],
+  "civetRegisteredHeightFraction": 0.29999999999999993,
+  "civetHeightAtLeast28Percent": true,
+  "allRegisteredBoxIoUAtLeast90Percent": false,
+  "organisms": [
+    {
+      "name": "Civet",
+      "compositeBox": {
+        "x": 616.9814354066986,
+        "y": 270.72,
+        "width": 240.59712918660284,
+        "height": 172.79999999999995
+      },
+      "score": 0.9503079961518098,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 1181,
+      "postBox": {
+        "x": 616.9814354066986,
+        "y": 270.72,
+        "width": 240.59712918660284,
+        "height": 172.79999999999995
+      },
+      "iou": 1,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 0,
+      "fringeVisualReview": "No obvious magenta fringe in the inspected native 200% crop; colour-candidate counts are not a fringe verdict.",
+      "speciesVisualReview": "Recognizable anatomy/botany in native image and 200% crop."
+    },
+    {
+      "name": "Persimmon",
+      "compositeBox": {
+        "x": 17.097142857142856,
+        "y": 207.36000000000004,
+        "width": 232.04571428571433,
+        "height": 241.92
+      },
+      "score": 0.8015267595198087,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 1280,
+      "postBox": {
+        "x": 17.097142857142842,
+        "y": 207.36000000000007,
+        "width": 232.04571428571433,
+        "height": 241.92
+      },
+      "iou": 0.9999999999999998,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 1,
+      "fringeVisualReview": "No obvious magenta fringe in the inspected native 200% crop; colour-candidate counts are not a fringe verdict.",
+      "speciesVisualReview": "Recognizable anatomy/botany in native image and 200% crop."
+    },
+    {
+      "name": "Platypus",
+      "compositeBox": {
+        "x": 354.2179310344828,
+        "y": 391.68,
+        "width": 172.2041379310345,
+        "height": 103.68
+      },
+      "score": 0.8636840268591526,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 495,
+      "postBox": {
+        "x": 354.21793103448283,
+        "y": 391.67999999999995,
+        "width": 172.2041379310345,
+        "height": 103.68
+      },
+      "iou": 0.999999999999998,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 1,
+      "fringeVisualReview": "No obvious magenta fringe in the inspected native 200% crop; colour-candidate counts are not a fringe verdict.",
+      "speciesVisualReview": "Recognizable anatomy/botany in native image and 200% crop."
+    },
+    {
+      "name": "Frog",
+      "compositeBox": {
+        "x": 174.08,
+        "y": 406.78299212598426,
+        "width": 122.88000000000002,
+        "height": 94.33700787401574
+      },
+      "score": 0.7935590369112621,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 340,
+      "postBox": {
+        "x": 174.08000000000004,
+        "y": 406.78299212598426,
+        "width": 122.88000000000002,
+        "height": 94.33700787401574
+      },
+      "iou": 0.9999999999999993,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 1,
+      "fringeVisualReview": "No obvious magenta fringe in the inspected native 200% crop; colour-candidate counts are not a fringe verdict.",
+      "speciesVisualReview": "Recognizable anatomy/botany in native image and 200% crop."
+    },
+    {
+      "name": "Devil's Club",
+      "compositeBox": {
+        "x": 808.96,
+        "y": 337.8295406360424,
+        "width": 163.84000000000003,
+        "height": 169.0504593639576
+      },
+      "score": 0.7558576071048434,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 724,
+      "postBox": {
+        "x": 808.96,
+        "y": 337.82954063604245,
+        "width": 163.84000000000003,
+        "height": 169.0504593639576
+      },
+      "iou": 0.9999999999999992,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 27,
+      "fringeVisualReview": "No obvious magenta fringe in the inspected native 200% crop; colour-candidate counts are not a fringe verdict.",
+      "speciesVisualReview": "Recognizable anatomy/botany in native image and 200% crop."
+    },
+    {
+      "name": "Cranberry",
+      "compositeBox": {
+        "x": 281.6,
+        "y": 487.3923344947735,
+        "width": 199.68,
+        "height": 48.287665505226585
+      },
+      "error": "Error: No reliable organism registration",
+      "speciesAccepted": false,
+      "boxCriterion": false,
+      "pinkEdgeCandidates": 23,
+      "fringeVisualReview": "No obvious magenta fringe in the inspected native 200% crop; colour-candidate counts are not a fringe verdict.",
+      "speciesVisualReview": "Two berry runners visible, but small and less legible than baseline; registration unresolved. Not accepted."
+    }
+  ],
+  "limits": "Post boxes are masked texture registration estimates, not segmentation. Species, shadows and pink-fringe decisions require visual review. Pink candidate counts are not a semantic fringe verdict.",
+  "qualityAccepted": false,
+  "visualReview": {
+    "reviewer": "Codex",
+    "species": "Five readable; Cranberry remains unresolved at this reduced size.",
+    "contactShadows": "Subtle dark contacts remain under Civet and Platypus; no claim of a decisive improvement.",
+    "decision": "Do not replace accepted baseline. One experiment complete; no retry.",
+    "phoneTier": "unqualified"
+  }
+}
