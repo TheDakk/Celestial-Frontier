@@ -63,3 +63,11 @@ Unrelated .DS_Store untouched. Same Sept12
 startup receipt. GitHub step NONE; PR42 parked, no push/label/dispatch/merge/release/deploy.
 Budget UNFROZEN/public/private fallback3000, zero exact hosted authority. Unit tests hold
 no checkout lease. Claude need not open/sync; no PR now. Report signedIDs/ahead at stops.
+
+
+Nick subsequently explicitly authorized one retry ("try again"). Before it, the probe
+now waits up to20s for the exact secure/isolated/client-ready document after WebDriver
+navigation, records URL/title/state, and captures a failure screenshot plus transport/TLS
+errors. Negative controls reject blank/wrong/insecure/unfinished documents. No TLS bypass,
+model or kit parameter changes. Sign this instrument change, then one native-02 attempt;
+report first result without further retries. Earlier native-01 remains preserved.
