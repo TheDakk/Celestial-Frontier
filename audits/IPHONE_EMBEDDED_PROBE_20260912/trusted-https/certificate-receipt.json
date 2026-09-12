@@ -1,0 +1,21 @@
+{
+  "schema": "cf.local-probe-trust.v1",
+  "certificateName": "CF Local Probe 20260912",
+  "host": "192.168.1.62",
+  "rootSha256": "acd9ee8371d2125cdfe70d238a875e135d01414ca704fe977d1c6513c6eca519",
+  "serverCertificate": "notBefore=Sep 12 22:59:55 2026 GMT\nnotAfter=Sep 13 22:59:55 2026 GMT\nsha256 Fingerprint=50:AB:0F:92:36:6D:BC:55:11:BD:64:9A:BC:B0:98:ED:8F:C3:F5:14:76:D1:38:9F:41:69:F2:A8:D4:31:86:B6\nX509v3 Subject Alternative Name: \n    IP Address:192.168.1.62\n",
+  "rootValidity": "notBefore=Sep 12 22:59:54 2026 GMT\nnotAfter=Sep 14 22:59:54 2026 GMT\n",
+  "profileSha256": "60212dc3ed64220c1431885fa588a5f7cf8396556048764ea786d993d6af0875",
+  "publicCertificateOnly": true,
+  "rootSigningKeyRemoved": true,
+  "privateRuntimeDirectory": "/private/tmp/cf-iphone-trusted-tls-20260912",
+  "checks": {
+    "trustedCorrectIp": true,
+    "wrongIpRejected": true,
+    "untrustedRejected": true,
+    "outsideNameConstraintRejected": true
+  },
+  "phoneInstalled": false,
+  "phoneTrusted": false,
+  "noMacTrustStoreChanges": true
+}
