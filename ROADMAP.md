@@ -61,6 +61,17 @@ any effect. Actual target-iPhone maxBufferSize/shader-f16/quota/load-memory prob
 storage/delivery engineering. Artwork durability and later defect/pruning/split work
 remain scheduled. See engine-proof README for exact evidence and limitations.
 
+## Review export — September 12
+
+Nick requested all current review images and prompts as a zip. The verified export is
+`/private/tmp/celestial-frontier-art-review-20260912.zip`: all45 current PNGs, the exact
+12 authoring prompts,7 runtime prompts and7 chat-wrapped strings, current ART_KIT v4,
+review instructions, image index and measured evidence. PNG bytes are unchanged; all
+archive entries/CRC and native prompt hashes are verified. The review guide, exact
+prompt Markdown, manifest, receipt and reproducible exporter are committed under
+`audits/ART_KIT_REVIEW_EXPORT_20260912/`. This is a review archive, not a runtime pack.
+No new painting/inference or Github action. Painting acceptance remains pending.
+
 ## Animation and battle track
 
 Scheduled after the first engine painting is accepted and before the library rollout:
@@ -81,8 +92,9 @@ bird, fish, insect, reptile, then the rest.
 
 OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,
 openai/mac tracking origin/openai/mac. Native source30ef7d15 is20 ahead/0 behind cached
-upstream,131 ahead/0 behind cached origin/develop. Evidence commit follows; exact
-final ID/ahead counts are reported at stop and available in git log. No fetch.
+upstream,131 ahead/0 behind cached origin/develop. Signed evidenceb5a577f9 is21 ahead
+of upstream/132 ahead of develop. Review export commit follows; exact final ID/ahead
+counts are reported at stop and available in git log. No fetch.
 .DS_Store remains untouched. Same uninterrupted September12 Node26.8.2 receipt applies.
 
 GitHub step none; PR42 parked, base develop/source openai/mac, title/body unchanged.

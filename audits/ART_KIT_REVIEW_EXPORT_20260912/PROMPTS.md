@@ -1,0 +1,1913 @@
+# Exact image-generation prompts
+
+The text inside each fence is copied from the retained prompt or native recipe. The separate TXT files preserve exact bytes. Runtime chat wrappers are also included and verified against the native receipt. No prompt has been rewritten.
+
+## Twelve authoring prompts
+
+### civet-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Civet; a fraction of human height; one head, exactly one head; four limbs, two fore and two hind, exactly four limbs; low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings; no armour, no harness, no gear; alert natural expression, named anatomy preserved.
+
+ACCURACY
+  Anatomy/count constraints: one head, exactly one head; four limbs, two fore and two hind, exactly four limbs.
+  Must include: the complete creature from head to tail or feet; every limb
+  described.
+  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second
+  creature; a companion unless described; extra or missing limbs; top-down view.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated standing full-body creature, centred, weighty and readable,
+  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy
+  and any carried equipment visible. No floor plane.
+  Default facing: south/front with slight three-quarter turn.
+  Framing target: 80 percent. Safe margin: at least 8 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+`````
+
+### cranberry-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Cranberry; a fraction of human height; one connected specimen, exactly one connected growth; low creeping runners; small simple oval green leaves; red berries close to the ground; green leaves and red berries; complete anchoring base through crown, no soil.
+
+ACCURACY
+  Anatomy/count constraints: one connected specimen, exactly one connected growth.
+  Must include: the complete growth from base to crown; its anchoring base.
+  Must exclude: ground; floor plane; cast shadow; soil mound; pot; scenery;
+  text; a second specimen; an insect or animal.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated plant or growth, centred, full height, weighty and readable,
+  shown in three-quarter view with its anchoring base visible. Entire form in
+  frame. No floor plane, no soil mound, no pot, no companion plant.
+  Framing target: 78 percent. Safe margin: at least 10 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No flower-shop bouquet forms,
+  no potted plant, no soil clump, no insect visitors, no second specimen, no
+  gardening context, no glow used as an effect rather than painted as shape.
+`````
+
+### devils-club-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Devil's Club; shrub comparable to human height; one connected specimen, exactly one connected growth; thick spiny canes; huge palmate lobed green leaves; upright terminal red berry cones; green leaves and red berry cones; complete anchoring base through crown, no soil.
+
+ACCURACY
+  Anatomy/count constraints: one connected specimen, exactly one connected growth.
+  Must include: the complete growth from base to crown; its anchoring base.
+  Must exclude: ground; floor plane; cast shadow; soil mound; pot; scenery;
+  text; a second specimen; an insect or animal.
+  Scale relationship: shrub comparable to human height.
+
+LAYOUT
+  One isolated plant or growth, centred, full height, weighty and readable,
+  shown in three-quarter view with its anchoring base visible. Entire form in
+  frame. No floor plane, no soil mound, no pot, no companion plant.
+  Framing target: 78 percent. Safe margin: at least 10 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No flower-shop bouquet forms,
+  no potted plant, no soil clump, no insect visitors, no second specimen, no
+  gardening context, no glow used as an effect rather than painted as shape.
+`````
+
+### earth-temperate-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+Earth temperate riverbank; damp grey-brown stones, blue liquid water and green banks; distant tree and shrub growth from this biome, blue-grey rainy atmosphere washing out distant layers; rain falling across the river; a distant stand of trees gives scale; diffuse cloud-filtered daylight with no visible sun position supplied by the vista. Empty foreground landing areas for the six resident passes: no foreground organisms or animals painted into this anchor.
+
+LAYOUT
+  A full-bleed painted landscape of the planet surface, wide composition,
+  three depth layers, a low horizon giving the sky two thirds unless the brief
+  says otherwise, and one light source consistent with the system card. Every
+  shadow falls the same way. Painted atmospheric perspective, cooling and
+  washing out with distance. Leave the lower third quiet enough that cut-out
+  flora, landmarks and creatures can be composited onto it.
+
+TECHNICAL OUTPUT
+  Create a 2560 x 1440 painted image, full-bleed to all four edges, opaque,
+  with no transparency, no border, no frame and no margin. Do not repaint or
+  crop during export.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No Earth continents or recognisable Earth geography unless the source names
+  Earth, no blue sky with white cumulus unless named, no photographic satellite
+  imagery, no
+  visible tiling or repeated texture, no UI, no waypoint markers, no text, no
+  characters other than the one scale figure if named.
+`````
+
+### family-bird-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.; family-reference exemplar only, not an Earth landing resident: Pheasant, bird, land; ochre and chestnut feathers (#c28a46, #8a4525), dark green head (#164f43), red cheek (#bd3c36), cream neck ring (#f1e9d6).
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Pheasant, a bird family reference; a fraction of human height; one head, exactly one head; two legs, exactly two legs; two folded wings, exactly two wings; one long feathered tail, exactly one tail; ochre and chestnut feathers (#c28a46, #8a4525), dark green head (#164f43), red cheek (#bd3c36), cream neck ring (#f1e9d6); rounded chest, long barred pointed tail, folded feathered wings, white neck ring, green head, red cheek patch, short horn-coloured bill, alert golden eyes; no armour, no harness, no gear, no added growth or bioluminescence.
+
+ACCURACY
+  Anatomy/count constraints: one head, exactly one head; two legs, exactly two legs; two folded wings, exactly two wings; one long feathered tail, exactly one tail.
+  Must include: the complete creature from head to tail or feet; every limb
+  described.
+  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second
+  creature; a companion unless described; extra or missing limbs; top-down view.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated standing full-body creature, centred, weighty and readable,
+  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy
+  and any carried equipment visible. No floor plane.
+  Default facing: south/front with slight three-quarter turn.
+  Framing target: 80 percent. Safe margin: at least 8 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+`````
+
+### family-fish-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.; family-reference exemplar only, not an Earth landing resident: Trout, fish, aquatic; muted bronze-brown scales (#7b6136), pale underside, dark spots.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Trout, a fish family reference; a fraction of human height; one head, exactly one head; one forked tail, exactly one tail; two pectoral fins, exactly two pectoral fins; two pelvic fins, exactly two pelvic fins; one main dorsal fin, exactly one main dorsal fin; no legs, zero legs; muted bronze-brown scales (#7b6136), pale underside, dark spots; fusiform salmonid body, blunt snout, spotted scales, natural fins and gill covers, clear lateral silhouette with slight three-quarter turn, naturally suspended swimming posture, watchful lateral eye and closed mouth; no armour, no harness, no gear, no added growth or bioluminescence.
+
+ACCURACY
+  Anatomy/count constraints: one head, exactly one head; one forked tail, exactly one tail; two pectoral fins, exactly two pectoral fins; two pelvic fins, exactly two pelvic fins; one main dorsal fin, exactly one main dorsal fin; no legs, zero legs.
+  Must include: the complete creature from head to tail or feet; every limb
+  described.
+  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second
+  creature; a companion unless described; extra or missing limbs; top-down view.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated standing full-body creature, centred, weighty and readable,
+  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy
+  and any carried equipment visible. No floor plane.
+  Default facing: south/front with slight three-quarter turn.
+  Framing target: 80 percent. Safe margin: at least 8 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+`````
+
+### family-insect-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.; family-reference exemplar only, not an Earth landing resident: Beetle, insect, land; burnished brown chitin (#96551f), dark jointed legs (#20242c).
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Beetle, a insect family reference; a fraction of human height; one head, exactly one head; six jointed legs, three near and three far, exactly six legs; two antennae, exactly two antennae; two closed elytra, exactly two wing cases; burnished brown chitin (#96551f), dark jointed legs (#20242c); oval chitin body with a central elytra seam, pronotum and small head, six jointed legs, small compound eyes and natural mandibles; low crawling stance with body raised enough to read the legs; no armour, no harness, no gear, no added growth or bioluminescence.
+
+ACCURACY
+  Anatomy/count constraints: one head, exactly one head; six jointed legs, three near and three far, exactly six legs; two antennae, exactly two antennae; two closed elytra, exactly two wing cases.
+  Must include: the complete creature from head to tail or feet; every limb
+  described.
+  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second
+  creature; a companion unless described; extra or missing limbs; top-down view.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated standing full-body creature, centred, weighty and readable,
+  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy
+  and any carried equipment visible. No floor plane.
+  Default facing: south/front with slight three-quarter turn.
+  Framing target: 80 percent. Safe margin: at least 8 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+`````
+
+### family-mammal-quadruped-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.; family-reference exemplar only, not an Earth landing resident: Fox, mammal quadruped, land; warm russet fur (#c4642a), cream tail tip (#f2efe6), dark brown stockings (#241b19).
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Fox, a mammal quadruped family reference; a fraction of human height; one head, exactly one head; four legs, two fore and two hind, exactly four legs; one tail, exactly one tail; warm russet fur (#c4642a), cream tail tip (#f2efe6), dark brown stockings (#241b19); fine pointed muzzle, large upright ears, long plume tail with pale cream tip, dark stockings; narrow canid body, alert eyes, closed natural jaw; no armour, no harness, no gear, no added growth or bioluminescence.
+
+ACCURACY
+  Anatomy/count constraints: one head, exactly one head; four legs, two fore and two hind, exactly four legs; one tail, exactly one tail.
+  Must include: the complete creature from head to tail or feet; every limb
+  described.
+  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second
+  creature; a companion unless described; extra or missing limbs; top-down view.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated standing full-body creature, centred, weighty and readable,
+  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy
+  and any carried equipment visible. No floor plane.
+  Default facing: south/front with slight three-quarter turn.
+  Framing target: 80 percent. Safe margin: at least 8 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+`````
+
+### family-reptile-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.; family-reference exemplar only, not an Earth landing resident: Skink, reptile, land; glossy brown scales (#7c5b34), restrained natural highlights.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Skink, a reptile family reference; a fraction of human height; one head, exactly one head; four small legs, two fore and two hind, exactly four legs; one long tapered tail, exactly one tail; glossy brown scales (#7c5b34), restrained natural highlights; slender glossy scaled body and slender head, tiny legs, tail a little longer than body (source ratio 1.08), low lizard posture, small lateral eyes and closed natural jaw; no armour, no harness, no gear, no added growth or bioluminescence.
+
+ACCURACY
+  Anatomy/count constraints: one head, exactly one head; four small legs, two fore and two hind, exactly four legs; one long tapered tail, exactly one tail.
+  Must include: the complete creature from head to tail or feet; every limb
+  described.
+  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second
+  creature; a companion unless described; extra or missing limbs; top-down view.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated standing full-body creature, centred, weighty and readable,
+  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy
+  and any carried equipment visible. No floor plane.
+  Default facing: south/front with slight three-quarter turn.
+  Framing target: 80 percent. Safe margin: at least 8 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+`````
+
+### frog-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Frog; a fraction of human height; one head, exactly one head; four limbs, two fore and two hind, exactly four limbs; small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin; no armour, no harness, no gear; alert natural expression, named anatomy preserved.
+
+ACCURACY
+  Anatomy/count constraints: one head, exactly one head; four limbs, two fore and two hind, exactly four limbs.
+  Must include: the complete creature from head to tail or feet; every limb
+  described.
+  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second
+  creature; a companion unless described; extra or missing limbs; top-down view.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated standing full-body creature, centred, weighty and readable,
+  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy
+  and any carried equipment visible. No floor plane.
+  Default facing: south/front with slight three-quarter turn.
+  Framing target: 80 percent. Safe margin: at least 8 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+`````
+
+### persimmon-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Persimmon; tree taller than a human; one connected specimen, exactly one connected growth; branching woody tree; broad simple oval green leaves; orange fruits with four-lobed calyx; green leaves, orange fruit, brown wood; complete anchoring base through crown, no soil.
+
+ACCURACY
+  Anatomy/count constraints: one connected specimen, exactly one connected growth.
+  Must include: the complete growth from base to crown; its anchoring base.
+  Must exclude: ground; floor plane; cast shadow; soil mound; pot; scenery;
+  text; a second specimen; an insect or animal.
+  Scale relationship: tree taller than a human.
+
+LAYOUT
+  One isolated plant or growth, centred, full height, weighty and readable,
+  shown in three-quarter view with its anchoring base visible. Entire form in
+  frame. No floor plane, no soil mound, no pot, no companion plant.
+  Framing target: 78 percent. Safe margin: at least 10 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No flower-shop bouquet forms,
+  no potted plant, no soil clump, no insect visitors, no second specimen, no
+  gardening context, no glow used as an effect rather than painted as shape.
+`````
+
+### platypus-prompt.txt
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Platypus; a fraction of human height; one head, exactly one head; four limbs, two fore and two hind, exactly four limbs; low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill; no armour, no harness, no gear; alert natural expression, named anatomy preserved.
+
+ACCURACY
+  Anatomy/count constraints: one head, exactly one head; four limbs, two fore and two hind, exactly four limbs.
+  Must include: the complete creature from head to tail or feet; every limb
+  described.
+  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second
+  creature; a companion unless described; extra or missing limbs; top-down view.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated standing full-body creature, centred, weighty and readable,
+  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy
+  and any carried equipment visible. No floor plane.
+  Default facing: south/front with slight three-quarter turn.
+  Framing target: 80 percent. Safe margin: at least 8 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+`````
+
+## Seven native runtime prompts
+
+### 1. Civet
+
+Actual tokens: 1824; tensor positions: 1824.
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Civet; a fraction of human height; one head, exactly one head; four limbs, two fore and two hind, exactly four limbs; low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings; no armour, no harness, no gear; alert natural expression, named anatomy preserved.
+
+ACCURACY
+  Anatomy/count constraints: one head, exactly one head; four limbs, two fore and two hind, exactly four limbs.
+  Must include: the complete creature from head to tail or feet; every limb
+  described.
+  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second
+  creature; a companion unless described; extra or missing limbs; top-down view.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated standing full-body creature, centred, weighty and readable,
+  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy
+  and any carried equipment visible. No floor plane.
+  Default facing: south/front with slight three-quarter turn.
+  Framing target: 80 percent. Safe margin: at least 8 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+`````
+
+### 2. Persimmon
+
+Actual tokens: 1738; tensor positions: 1744.
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Persimmon; tree taller than a human; one connected specimen, exactly one connected growth; branching woody tree; broad simple oval green leaves; orange fruits with four-lobed calyx; green leaves, orange fruit, brown wood; complete anchoring base through crown, no soil.
+
+ACCURACY
+  Anatomy/count constraints: one connected specimen, exactly one connected growth.
+  Must include: the complete growth from base to crown; its anchoring base.
+  Must exclude: ground; floor plane; cast shadow; soil mound; pot; scenery;
+  text; a second specimen; an insect or animal.
+  Scale relationship: tree taller than a human.
+
+LAYOUT
+  One isolated plant or growth, centred, full height, weighty and readable,
+  shown in three-quarter view with its anchoring base visible. Entire form in
+  frame. No floor plane, no soil mound, no pot, no companion plant.
+  Framing target: 78 percent. Safe margin: at least 10 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No flower-shop bouquet forms,
+  no potted plant, no soil clump, no insect visitors, no second specimen, no
+  gardening context, no glow used as an effect rather than painted as shape.
+`````
+
+### 3. Platypus
+
+Actual tokens: 1812; tensor positions: 1824.
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Platypus; a fraction of human height; one head, exactly one head; four limbs, two fore and two hind, exactly four limbs; low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill; no armour, no harness, no gear; alert natural expression, named anatomy preserved.
+
+ACCURACY
+  Anatomy/count constraints: one head, exactly one head; four limbs, two fore and two hind, exactly four limbs.
+  Must include: the complete creature from head to tail or feet; every limb
+  described.
+  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second
+  creature; a companion unless described; extra or missing limbs; top-down view.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated standing full-body creature, centred, weighty and readable,
+  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy
+  and any carried equipment visible. No floor plane.
+  Default facing: south/front with slight three-quarter turn.
+  Framing target: 80 percent. Safe margin: at least 8 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+`````
+
+### 4. Frog
+
+Actual tokens: 1792; tensor positions: 1792.
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Frog; a fraction of human height; one head, exactly one head; four limbs, two fore and two hind, exactly four limbs; small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin; no armour, no harness, no gear; alert natural expression, named anatomy preserved.
+
+ACCURACY
+  Anatomy/count constraints: one head, exactly one head; four limbs, two fore and two hind, exactly four limbs.
+  Must include: the complete creature from head to tail or feet; every limb
+  described.
+  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second
+  creature; a companion unless described; extra or missing limbs; top-down view.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated standing full-body creature, centred, weighty and readable,
+  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy
+  and any carried equipment visible. No floor plane.
+  Default facing: south/front with slight three-quarter turn.
+  Framing target: 80 percent. Safe margin: at least 8 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+`````
+
+### 5. Devil's Club
+
+Actual tokens: 1737; tensor positions: 1744.
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Devil's Club; shrub comparable to human height; one connected specimen, exactly one connected growth; thick spiny canes; huge palmate lobed green leaves; upright terminal red berry cones; green leaves and red berry cones; complete anchoring base through crown, no soil.
+
+ACCURACY
+  Anatomy/count constraints: one connected specimen, exactly one connected growth.
+  Must include: the complete growth from base to crown; its anchoring base.
+  Must exclude: ground; floor plane; cast shadow; soil mound; pot; scenery;
+  text; a second specimen; an insect or animal.
+  Scale relationship: shrub comparable to human height.
+
+LAYOUT
+  One isolated plant or growth, centred, full height, weighty and readable,
+  shown in three-quarter view with its anchoring base visible. Entire form in
+  frame. No floor plane, no soil mound, no pot, no companion plant.
+  Framing target: 78 percent. Safe margin: at least 10 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No flower-shop bouquet forms,
+  no potted plant, no soil clump, no insect visitors, no second specimen, no
+  gardening context, no glow used as an effect rather than painted as shape.
+`````
+
+### 6. Cranberry
+
+Actual tokens: 1730; tensor positions: 1744.
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Cranberry; a fraction of human height; one connected specimen, exactly one connected growth; low creeping runners; small simple oval green leaves; red berries close to the ground; green leaves and red berries; complete anchoring base through crown, no soil.
+
+ACCURACY
+  Anatomy/count constraints: one connected specimen, exactly one connected growth.
+  Must include: the complete growth from base to crown; its anchoring base.
+  Must exclude: ground; floor plane; cast shadow; soil mound; pot; scenery;
+  text; a second specimen; an insect or animal.
+  Scale relationship: a fraction of human height.
+
+LAYOUT
+  One isolated plant or growth, centred, full height, weighty and readable,
+  shown in three-quarter view with its anchoring base visible. Entire form in
+  frame. No floor plane, no soil mound, no pot, no companion plant.
+  Framing target: 78 percent. Safe margin: at least 10 percent on every side.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No flower-shop bouquet forms,
+  no potted plant, no soil clump, no insect visitors, no second specimen, no
+  gardening context, no glow used as an effect rather than painted as shape.
+`````
+
+### 7. finisher
+
+Actual tokens: 1860; tensor positions: 1872.
+
+`````text
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes:
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+Finish the existing Earth temperate landfall composition in the frozen painted hand. Preserve all six placed organisms, their exact anatomy, counts, silhouettes, materials, locations and relative sizes; unify shared light, contact and atmosphere without adding or moving organisms.
+One Civet, exactly one Civet, at 72 percent across and grounded at 77 percent down: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail.
+One Persimmon, exactly one Persimmon, at 13 percent across and grounded at 78 percent down: branching woody tree; broad simple oval green leaves; orange fruits with four-lobed calyx.
+One Platypus, exactly one Platypus, at 43 percent across and grounded at 86 percent down: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail.
+One Frog, exactly one Frog, at 25 percent across and grounded at 87 percent down: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs.
+One Devil's Club, exactly one Devil's Club, at 87 percent across and grounded at 88 percent down: thick spiny canes; huge palmate lobed green leaves; upright terminal red berry cones.
+One Cranberry, exactly one Cranberry, at 34 percent across and grounded at 90 percent down: low creeping runners; small simple oval green leaves; red berries close to the ground.
+
+LAYOUT
+  A full-bleed painted landscape of the planet surface, wide composition,
+  three depth layers, a low horizon giving the sky two thirds unless the brief
+  says otherwise, and one light source consistent with the system card. Every
+  shadow falls the same way. Painted atmospheric perspective, cooling and
+  washing out with distance. Leave the lower third quiet enough that cut-out
+  flora, landmarks and creatures can be composited onto it.
+
+TECHNICAL OUTPUT
+  Create a 2560 x 1440 painted image, full-bleed to all four edges, opaque,
+  with no transparency, no border, no frame and no margin. Do not repaint or
+  crop during export.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No Earth continents or recognisable Earth geography unless the source names
+  Earth, no blue sky with white cumulus unless named, no photographic satellite
+  imagery, no
+  visible tiling or repeated texture, no UI, no waypoint markers, no text, no
+  characters other than the one scale figure if named.
+`````
