@@ -7,8 +7,9 @@ Six no-inference intensity variants are shown in audits/ART_KIT_WEATHER_LADDER_2
 Nick's rain-default selection is pending, so accepted1x stays active. A newly authorized
 phone probe verifies initializer bounds and bypasses text encoder with pinned precomputed
 accepted-recipe embedding. Embedding/probe signed8a739f73; no-inference ordinary Land,
-retained weather PNG reload and Inspect PASS. Phone session remains unavailable, zero
-phone model attempts; waiting reconnect/unlock, then first result and Civet animation proof. Earlier
+retained weather PNG reload and Inspect PASS. After unlock, physical phone session succeeded;
+first embedded probe stopped at insecure-page navigation before any model request. No new
+memory/timing, cause unresolved; no retry. Result reported, Civet animation proof next. Earlier
 paragraphs below record the superseded baseline decisions. No kit edit or GitHub step.
 
 

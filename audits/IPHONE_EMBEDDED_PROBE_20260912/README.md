@@ -42,3 +42,24 @@ requests. Screenshot inspected. No repeat of installed-model or finisher experim
 Safari session-preflight-02 still could not create a usable physical-phone session and
 supplied no specific cause. No phone model attempt consumed. Temporary driver closed;
 waiting for Nick's reconnect/unlock confirmation. Rain variant selection also pending.
+
+## First embedded phone attempt — stopped before model load
+
+Nick confirmed phone unlocked. Physical Safari session on iPhone/iOS26.6.2 succeeded.
+One probe on signedcaf3db63 then stopped INSTRUMENT_OR_CONNECTION_FAILED: navigation
+never reached the transient HTTPS server (zero HTTP requests), and capability script
+observed secureContext false, crossOriginIsolated false, no exposed GPU/storage APIs.
+The script fails closed there, before kitProof.start. Cause is not resolved: no page URL,
+TLS error page or screenshot was captured before session cleanup. Do not identify this
+as OOM, a transformer limit, lack of WebGPU, or proven certificate rejection.
+
+Model/inference attempts0; text encoder requests/events0; VAE/transformer/decoder loads0;
+transformer memory and warm finisher timing unavailable. Prior secure phone probe's1GiB/
+f16 findings are not invalidated by this insecure-page instrument result. The pinned
+initializer and embedding checks remain valid. No probe retry occurred. Session closed,
+HTTPS server closed, owned Safari driver stopped. Phone tier remains unqualified.
+
+First result reported to Nick. Evidence native-01/result.json and session-preflight-03.json.
+Next phone attempt needs a separately authorized correction of the navigation/secure-origin
+boundary. No new model/device/delivery tier qualification. Civet animation proof remains
+next development work; rain variant A–F selection pending, accepted1x remains active.
