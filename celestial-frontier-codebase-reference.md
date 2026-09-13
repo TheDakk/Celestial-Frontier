@@ -1,5 +1,9 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+Tooling configuration updated 2026-09-12: [UI_TOOLCHAIN.md](UI_TOOLCHAIN.md) records the exact
+GSAP/emitter and atlas pins, optional PNG CLI probes, and deterministic creature-atlas command.
+These additions do not establish runtime parts-rig or effects integration.
+
 Civet animation proof status, September12: exact named viverrid anatomy export and a4E
 turnaround exist. Two private Blender tokens fail visual review (projection/shape drift).
 The larger shape/UV correction awaits approval; no local texture-finisher pass, rendered

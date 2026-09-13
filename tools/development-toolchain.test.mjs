@@ -1,6 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { TOOLCHAIN, main, versionState, inspectPcm16Wav, audioWitnessErrors, pngComparisonErrors, audioRenderVenvErrors, parseImageMagickMetric } from './development-toolchain.mjs';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { inspectPngTool, toolchainVerdict, TOOLCHAIN, main, versionState, inspectPcm16Wav, audioWitnessErrors, pngComparisonErrors, audioRenderVenvErrors, parseImageMagickMetric } from './development-toolchain.mjs';
 
 function tone() {
   const frames = 48000, bytes = Buffer.alloc(44 + frames * 2);
@@ -18,6 +21,7 @@ test('scope is frozen and rejects action modes before performing work', async ()
   assert.equal(TOOLCHAIN.every(Object.isFrozen), true);
   assert.deepEqual(TOOLCHAIN.map(row => `${row.kind}:${row.name}`), [
     'formula:imagemagick', 'formula:ffmpeg', 'formula:python@3.12', 'formula:node', 'formula:gh',
+    'formula:pngquant', 'formula:oxipng',
     'cask:blender', 'cask:inkscape', 'cask:reaper', 'cask:surge-xt', 'npm:gsap',
   ]);
   assert.deepEqual(TOOLCHAIN.filter(row => row.workspace).map(row => row.workspace), ['tools/ui-motion']);
@@ -103,4 +107,38 @@ test('ImageMagick metric accepts the optional normalized suffix and rejects junk
   for (const value of ['', ' ', 'NaN', 'Infinity', '-1', '1e999', '0 warning', 'warning: 0 (0)',
     '0 (0) extra', '0\n1', '0 (NaN)', '0 (-1)', '0 (2)', '0 (0) (0)', '0 (0', '0)'])
     assert.throws(() => parseImageMagickMetric(value), /ImageMagick metric/);
+});
+
+
+test('optional PNG CLI versions are observed; missing/broken tools warn without failing', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-png-probe-'));
+  try {
+    const tools = TOOLCHAIN.filter(row => row.optional);
+    for (const [index, tool] of tools.entries()) {
+      const file = path.join(dir, tool.name);
+      fs.writeFileSync(file, '#!/bin/sh\nprintf "' + (index ? 'oxipng 10.2.1' : '3.0.3') + '\n"\n', { mode: 0o755 });
+      const found = inspectPngTool(tool, null, dir);
+      assert.equal(found.installed, true);
+      assert.equal(found.version, index ? '10.2.1' : '3.0.3');
+      fs.unlinkSync(file);
+      const missing = inspectPngTool(tool, null, dir);
+      assert.equal(missing.installed, false); assert.equal(missing.version, null);
+      for (const mode of ['check', 'verify']) {
+        const verdict = toolchainVerdict(mode, [missing]);
+        assert.equal(verdict.status, 'PASS'); assert.match(verdict.warnings[0], /missing/);
+      }
+      fs.writeFileSync(file, '#!/bin/sh\nprintf "garbage\n"\n', { mode: 0o755 });
+      const bad = inspectPngTool(tool, null, dir);
+      assert.equal(bad.installed, false); assert.equal(bad.version, null);
+      assert.match(bad.warning, /unrecognized/);
+      fs.unlinkSync(file);
+    }
+    // Optionality must not hide broken required tools, capabilities or metadata.
+    assert.equal(toolchainVerdict('verify', [{ name: 'node', installed: false }]).status, 'FAIL');
+    assert.equal(toolchainVerdict('verify', [], [], [{ pass: false }]).status, 'FAIL');
+    assert.equal(toolchainVerdict('check', [], [{ name: 'node', error: 'network' }]).status, 'FAIL');
+    const missing = { name: 'pngquant', optional: true, installed: false };
+    assert.equal(toolchainVerdict('check', [missing], [{ name: 'pngquant', error: 'network' }]).status, 'PASS');
+    assert.equal(toolchainVerdict('check', [{ ...missing, installed: true }], [{ name: 'pngquant', error: 'network' }]).status, 'FAIL');
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });

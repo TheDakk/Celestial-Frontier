@@ -12,6 +12,7 @@ import { fileURLToPath } from 'node:url';
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const TOOLCHAIN = Object.freeze([
   ...['imagemagick', 'ffmpeg', 'python@3.12', 'node', 'gh'].map(name => Object.freeze({ kind: 'formula', name })),
+  ...['pngquant', 'oxipng'].map(name => Object.freeze({ kind: 'formula', name, optional: true })),
   ...[['blender', 'Blender.app'], ['inkscape', 'Inkscape.app'], ['reaper', 'REAPER.app'], ['surge-xt', 'Surge XT.app']]
     .map(([name, bundle]) => Object.freeze({ kind: 'cask', name, bundle })),
   Object.freeze({ kind: 'npm', name: 'gsap', workspace: 'tools/ui-motion' }),
@@ -111,12 +112,45 @@ real=lambda value:str(pathlib.Path(value).resolve())
 digest=lambda value:hashlib.sha256(pathlib.Path(value).read_bytes()).hexdigest()
 print(json.dumps({"version":sys.version,"major":sys.version_info.major,"minor":sys.version_info.minor,"architecture":platform.machine(),"isolatedVenv":sys.prefix!=sys.base_prefix,"prefixRealPath":real(sys.prefix),"basePrefixRealPath":real(sys.base_prefix),"executableRealPath":real(sys.executable),"baseExecutableRealPath":real(sys._base_executable),"ssl":ssl.OPENSSL_VERSION,"sslModuleRealPath":real(ssl.__file__),"sslModuleSha256":digest(ssl.__file__),"sslExtensionRealPath":real(_ssl.__file__),"sslExtensionSha256":digest(_ssl.__file__),"sslContextReady":isinstance(ssl.create_default_context(),ssl.SSLContext),"sqlite":sqlite3.sqlite_version,"digest":hashlib.sha256(b"cf-toolchain").hexdigest(),"zlibRoundTrip":zlib.decompress(zlib.compress(b"cf-toolchain"))==b"cf-toolchain"}))`;
 
+// Optional PNG tools are also supported on PATH outside a Homebrew installation.
+export function inspectPngTool(tool, prefix, searchPath = process.env.PATH ?? '', run = command) {
+  const candidates = [prefix && path.join(prefix, 'opt', tool.name, 'bin', tool.name),
+    ...searchPath.split(path.delimiter).filter(Boolean).map(dir => path.join(dir, tool.name))].filter(Boolean);
+  const executable = candidates.find(file => {
+    try { fs.accessSync(file, fs.constants.X_OK); return fs.statSync(file).isFile(); } catch { return false; }
+  });
+  if (!executable) return { ...tool, installed: false, version: null, warning: `${tool.name} missing; optional PNG copy optimization unavailable` };
+  try {
+    const result = run(executable, ['--version']);
+    const output = `${result.stdout} ${result.stderr ?? ''}`.trim();
+    const match = /^(?:oxipng\s+)?(\d+\.\d+\.\d+)(?:\s|$)/.exec(output);
+    if (!match) throw new Error('unrecognized version output');
+    return { ...tool, installed: true, version: match[1], executable: fs.realpathSync(executable),
+      verification: '--version only; no master optimized' };
+  } catch (error) {
+    return { ...tool, installed: false, version: null, executable,
+      warning: `${tool.name} unavailable: ${String(error)}` };
+  }
+}
+
+export function toolchainVerdict(mode, inventory, available = [], capabilities = []) {
+  const warnings = inventory.filter(row => row.warning).map(row => row.warning);
+  const failedLookup = available.filter(row => row.error);
+  const optionalAbsent = name => inventory.some(row => row.name === name && row.optional && !row.installed);
+  for (const row of failedLookup.filter(row => optionalAbsent(row.name)))
+    warnings.push(`${row.name}: optional absent tool freshness unknown: ${row.error}`);
+  const pass = mode === 'check' ? failedLookup.every(row => optionalAbsent(row.name))
+    : inventory.every(row => row.installed || row.optional) && capabilities.every(row => row.pass);
+  return { status: pass ? 'PASS' : 'FAIL', warnings };
+}
+
 function installedInventory(report) {
   const brew = ['/opt/homebrew/bin/brew', '/usr/local/bin/brew'].find(file => fs.existsSync(file));
   const prefix = brew ? command(brew, ['--prefix']).stdout.trim() : null;
   report.homebrew = brew ? { executable: brew, prefix, version: command(brew, ['--version']).stdout.trim().split('\n')[0] } : { installed: false };
   return TOOLCHAIN.map(tool => {
     try {
+      if (tool.optional) return inspectPngTool(tool, prefix);
       if (tool.kind === 'formula') {
         const opt = prefix && path.join(prefix, 'opt', tool.name);
         if (!opt || !fs.existsSync(opt)) return { ...tool, installed: false, version: null };
@@ -243,8 +277,9 @@ export async function main(args = process.argv.slice(2)) {
     scope: 'development tools only; no installation, upgrades, GUI launches, license reads, or runtime/workspace pin changes' };
   try {
     report.inventory = installedInventory(report);
-    if (mode === 'check') { report.available = await checkLatest(report.inventory); report.status = report.available.every(row => !row.error) ? 'PASS' : 'FAIL'; }
-    else { verifyCapabilities(report.inventory, report); report.status = report.inventory.every(row => row.installed) && report.capabilities.every(row => row.pass) ? 'PASS' : 'FAIL'; }
+    if (mode === 'check') report.available = await checkLatest(report.inventory);
+    else verifyCapabilities(report.inventory, report);
+    Object.assign(report, toolchainVerdict(mode, report.inventory, report.available, report.capabilities));
   } catch (error) { report.status = 'FAIL'; report.error = String(error); }
   process.stdout.write(JSON.stringify(report, null, 2) + '\n');
   if (report.status !== 'PASS') process.exitCode = 1;
