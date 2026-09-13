@@ -11,6 +11,7 @@ import type { EffectDelivery } from '../effects/sequencer.js';
 import type { BodyCard } from '../motion/body-card.js';
 import { PLATE_ORDER, combatantScale, parallaxOffset, type ArenaLayout, type PlateId } from './arena.js';
 import { buildTurnPlan, sampleTurn, type Side, type StageSample, type TurnArena, type TurnPlan, type TurnPlanInput } from './choreography.js';
+import { TurnCuePlayer, buildTurnCuePlan, type CueSink, type TurnCuePlan } from './cue-plan.js';
 import type { BattleRigV1, RigNodeLike } from './fixture-rig.js';
 
 export interface StageNodeLike extends RigNodeLike { alpha: number; readonly scale: { set(x: number, y: number): unknown }; }
@@ -29,13 +30,16 @@ export interface BattleStageEffects {
   /** Theme material colour for the particle views; absent = untinted. */
   tintForTheme?(theme: string): number;
 }
+/** Sound cues synced to the turn beats (B1): the sink receives each admitted cue once, on its beat, from the stage's own clock. */
+export interface BattleStageCues { readonly sink: CueSink; readonly phone?: boolean; }
 export interface BattleStageOptions {
   readonly factory: BattleStageFactory; readonly clock: () => number; readonly layout: ArenaLayout;
   readonly plates: Readonly<Record<PlateId, EffectTextureLike>>;
   readonly rigs: Readonly<Record<Side, BattleRigV1>>; readonly masses: Readonly<Record<Side, number>>;
   readonly worldLife?: WorldLifeLayerLike | null; readonly effects?: BattleStageEffects | null; readonly reducedMotion?: boolean;
+  readonly cues?: BattleStageCues | null;
 }
-export interface StageFrame { readonly sample: StageSample; readonly done: boolean; readonly label: string; }
+export interface StageFrame { readonly sample: StageSample; readonly done: boolean; readonly label: string; readonly cuesFired: number; }
 export const HUD = Object.freeze({ barX: 16, barY: 12, barH: 8, cursorH: 14 });
 
 export class BattleStage {
@@ -47,6 +51,7 @@ export class BattleStage {
   readonly #scales: Record<Side, number>;
   readonly #fx: StageContainerLike; readonly #flash: StageGraphicsLike; readonly #bar: StageGraphicsLike; readonly #cursor: StageGraphicsLike; readonly #number: StageTextLike;
   #plan: TurnPlan | null = null; #startMs = 0; #player: EffectSequencePlayer | null = null; #fxNodes: object[] = []; #disposed = false;
+  #cues: TurnCuePlayer | null = null;
 
   constructor(o: BattleStageOptions) {
     this.#o = o;
@@ -74,6 +79,9 @@ export class BattleStage {
   }
 
   get plan(): TurnPlan | null { return this.#plan; }
+  /** The current turn's cue plan (null without a sink or before the first turn). */
+  get cuePlan(): TurnCuePlan | null { return this.#cues?.plan ?? null; }
+  cuesFired(): number { return this.#cues?.fired.length ?? 0; }
   /** Half the standing width of each rig at stage scale, as a fraction of frame width (the run-up stops at contact). */
   halfWidths(): Readonly<{ left: number; right: number }> {
     const hw = (side: Side): number => (this.#o.rigs[side].bounds.width * this.#o.rigs[side].cutout.width * this.#scales[side]) / (2 * this.#o.layout.frame.width);
@@ -87,6 +95,8 @@ export class BattleStage {
       arena: { ...(turn as TurnPlanInput).arena, halfWidths: (turn as TurnPlanInput).arena.halfWidths ?? this.halfWidths() } });
     this.#clearEffect();
     this.#plan = plan; this.#startMs = this.#o.clock();
+    const cues = this.#o.cues;
+    if (cues) this.#cues = new TurnCuePlayer(buildTurnCuePlan(plan, cues.phone !== undefined ? { phone: cues.phone } : {}), cues.sink, () => this.#o.clock() - this.#startMs);
     const fx = this.#o.effects;
     if (plan.effect && fx && !plan.reducedMotion) {
       const start = plan.effect.startMs; let armed = false;
@@ -125,7 +135,8 @@ export class BattleStage {
     this.#cursor.visible = s.cursor.visible && s.cursor.on;
     if (this.#cursor.visible) { const st = L.stands[s.cursor.side]; this.#cursor.clear(); this.#cursor.rect(st.x * w - 6, st.y * h - h * 0.5, 12, HUD.cursorH); this.#cursor.fill({ color: 0xffd166, alpha: 1 }); }
     this.#o.worldLife?.update();
-    return Object.freeze({ sample: s, done: ms >= plan.beats.end, label: this.label });
+    const cues = this.#cues?.tick();
+    return Object.freeze({ sample: s, done: ms >= plan.beats.end, label: this.label, cuesFired: cues?.fired ?? 0 });
   }
 
   dispose(): void {
@@ -142,6 +153,7 @@ export class BattleStage {
   }
   #clearEffect(): void {
     if (this.#player) { this.#player.dispose(); for (const n of this.#fxNodes) this.#fx.removeChild(n); this.#fxNodes = []; this.#player = null; }
+    if (this.#cues) { this.#cues.dispose(); this.#cues = null; }
   }
   #assertLive(): void { if (this.#disposed) throw new Error('battle2 stage is disposed'); }
 }

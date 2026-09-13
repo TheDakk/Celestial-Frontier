@@ -5,4 +5,5 @@ export * from './arena.js';
 export * from './fixture-rig.js';
 export * from './fallback.js';
 export * from './choreography.js';
+export * from './cue-plan.js';
 export * from './stage.js';
