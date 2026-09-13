@@ -1798,7 +1798,32 @@ const R2_MICROBE_COLONY_SEEDS: ReadonlySet<number> = new Set([
   1077367562, 4135221025, 753721544, 3287574574, 1224906226, 2757882450, 1718796946,
 ]);
 
-export function resolveProceduralCanvas(g: G, observeAnatomy?: (geometry: import('./quadruped-anatomy.js').QuadrupedDrawnGeometry, ink: ArtCanvas) => void, captureParts = false): ArtCanvas | null {
+type DrawnObserver = (geometry: import('./quadruped-anatomy.js').QuadrupedDrawnGeometry, ink: ArtCanvas) => void;
+/** Ordinary paint is completed without stage readbacks. Optional authoring masks
+ * are observed from a second deterministic invocation of the same winning owner.
+ * That readback render is never substituted for the ordinary cut-out or portrait. */
+export function resolveProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, captureParts = false): ArtCanvas | null {
+  if (!captureParts) return paintProceduralCanvas(g, observeAnatomy);
+  if (!observeAnatomy) throw Error('Painter mask capture requires an anatomy consumer');
+  let primary: {geometry: import('./quadruped-anatomy.js').QuadrupedDrawnGeometry; ink: ArtCanvas} | undefined;
+  const normal = paintProceduralCanvas(g, (geometry, ink) => { primary = {geometry, ink}; });
+  if (!normal || !primary) throw Error('No winning anatomy observer for part capture');
+  let captured: import('./painter-part-capture.js').PaintedPartMasks | undefined;
+  paintProceduralCanvas(g, geometry => {
+    if (JSON.stringify(geometry.landmarks) !== JSON.stringify(primary!.geometry.landmarks) || JSON.stringify(geometry.materials) !== JSON.stringify(primary!.geometry.materials)) throw Error('Painter mask replay changed resolved anatomy');
+    captured = geometry.partMasks;
+  }, true);
+  if (!captured || captured.width !== primary.ink.width || captured.height !== primary.ink.height) throw Error('Painter mask replay dimensions');
+  const rgba = primary.ink.getContext('2d')!.getImageData(0, 0, captured.width, captured.height).data;
+  const labels = captured.labels.slice();
+  for (let i = 0; i < labels.length; i++) {
+    if (!rgba[i * 4 + 3]) labels[i] = 0;
+    else if (!labels[i]) throw Error('Painter mask replay missed ordinary visible ink');
+  }
+  observeAnatomy({...primary.geometry, partMasks: {...captured, labels}}, primary.ink);
+  return normal;
+}
+function paintProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, captureParts = false): ArtCanvas | null {
   /* ★ WAVE 17 — THE LAST MONO-TEMPLATE (Nick's audit §12/§13, for the
      PROCEDURAL spread). Wave 1 gave the NAMED fungi and microbes structural
      families, but every procedural genome in those two kingdoms still fell
