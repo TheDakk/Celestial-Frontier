@@ -12,6 +12,9 @@ export function maskJointPatch(sample,width,height,covered){
  }
  return out;
 }
+export function assertJointPatchInk(rgba,joint){
+ for(let i=0;i<rgba.length;i+=4)if(rgba[i+3]&&rgba[i]>150&&rgba[i+2]>150&&Math.min(rgba[i],rgba[i+2])-rgba[i+1]>85)throw Error('Turnaround patch contains key colour: '+joint);
+}
 export async function addJointPatches({baseDirectory,recordFile,turnaroundFile,patchFile,output}){
  if(fs.existsSync(output))throw Error('Patch output must be new');
  const record=JSON.parse(fs.readFileSync(recordFile)),decl=JSON.parse(fs.readFileSync(patchFile)),source=fs.readFileSync(turnaroundFile),base=JSON.parse(fs.readFileSync(path.join(baseDirectory,'binding.json')));
@@ -32,11 +35,11 @@ export async function addJointPatches({baseDirectory,recordFile,turnaroundFile,p
   const sourceSize=Math.round(size*metadata.width/w),sx=Math.round(p.sourceCentre[0]*metadata.width-sourceSize/2),sy=Math.round(p.sourceCentre[1]*metadata.height-sourceSize/2);
   if(sx<0||sy<0||sx+sourceSize>metadata.width||sy+sourceSize>metadata.height)throw Error('Patch outside turnaround');
   const sample=await sharp(source).extract({left:sx,top:sy,width:sourceSize,height:sourceSize}).resize(size,size).ensureAlpha().raw().toBuffer();
-  // Refuse a key-coloured source rather than smearing it across a joint.
-  for(let i=0;i<sample.length;i+=4)if(sample[i]>150&&sample[i+2]>150&&Math.min(sample[i],sample[i+2])-sample[i+1]>85)throw Error('Turnaround patch contains key colour: '+p.joint);
   const layer=base.parts.find(part=>part.joint===p.joint)?.layer;if(!layer)throw Error('No painted part for patch joint: '+p.joint);
   const coverage=new Uint8Array(size*size);for(let y=0;y<size;y++)for(let x=0;x<size;x++)coverage[y*size+x]=layerCoverage[layer][(y+box.y)*w+x+box.x];
   const rgba=maskJointPatch(sample,size,size,coverage);if(!rgba.some((a,i)=>i%4===3&&a))throw Error('Empty joint underlap: '+p.joint);
+  // Only retained disc pixels can reach the rig; excluded crop corners are not ink.
+  assertJointPatchInk(rgba,p.joint);
   const id='patch-'+p.joint.toLowerCase(),bytes=await sharp(Buffer.from(rgba),{raw:{width:size,height:size,channels:4}}).png().toBuffer();partBytes.set(id,bytes);
   patches.push({id,joint:parent.get(p.joint),layer,kind:'joint-patch',cutout:box,sourceRectangle:{x:sx,y:sy,width:sourceSize,height:sourceSize},coveredJoint:p.joint});
  }

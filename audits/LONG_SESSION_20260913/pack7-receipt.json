@@ -1,0 +1,38 @@
+{
+  "commit": "63f16d68",
+  "paths": [
+    {
+      "path": "audits/LONG_SESSION_20260913/CONTRACTS.md",
+      "sha256": "b705bc5d452196150ad7ff2172497732ad0f342dd7d5805c3a1a991739286044"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG.md",
+      "sha256": "15c1564331a85c781e0b844c5520874ef65b039e9c46371b2ecfa825a445af4c"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-B.md",
+      "sha256": "0c5c58926eba62f2dfdd382d8b338c870c9f522f34edcf320031edfc19092d9f"
+    },
+    {
+      "path": "audits/C2_MOTION_INTEROP_20260913/CLAUDE_REVIEW_RESPONSE.md",
+      "sha256": "a456b1ca152c0099b2c46bddcaa836eb48fd2e94c74a516c27e386c6b1660bfc"
+    },
+    {
+      "path": "audits/C2_MOTION_INTEROP_20260913/producer-probe-after.json",
+      "sha256": "2d66990d168bf80d9729c86cb5a6175a3b9481bdd8bbf86d0599eef49cf80042"
+    },
+    {
+      "path": "audits/C2_PARTS_MOTION_20260913/CLAUDE_REVIEW_RESPONSE.md",
+      "sha256": "c0fb4a216d8b338acf41be56ec99e038dc9dca8ad223274dc090b41772db9f69"
+    },
+    {
+      "path": "MOTION_KIT.md",
+      "sha256": "a2f1b55fcbcb82d15d8b6667137892aa42bb44338da2d04519ebcf34a6e0829e"
+    },
+    {
+      "path": "SOUND_KIT.md",
+      "sha256": "f74514cb967ea474b994a0c69ca0437cd7b35b6bc595523b54dc625fdeb0f5b0"
+    }
+  ],
+  "excluded": "port/v2/apps/game/src/motion/gsap-adapter.ts (protected source, not requested)"
+}
