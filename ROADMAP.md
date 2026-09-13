@@ -30,7 +30,11 @@ PROPOSED labels are supplied bytes; Nick's existing approval remains authoritati
 WORK_ORDER.md received September13 from Nick's explicitly attached sibling-worktree file,
 read and retained verbatim at audits/LONG_SESSION_20260913/WORK_ORDER.md. Hash/byte/source
 receipt: work-order-receipt.json beside it. No sibling worktree edit or Git operation.
-Nick says more material is coming; current C1 kit-wording approval stop remains in place.
+Additional long-session zip retained: CONTRACTS.md, LOG-A4.md, LOG-A5.md and the incoming
+LOG.md verbatim as LOG-CLAUDE-PACKET.md, preserving our local chronological log. WORK_ORDER
+is byte-identical. Provenance: long-session-pack-receipt.json. Treat Claude's reported tests
+as reported evidence, not locally reproduced results; no source/evidence media came in the zip.
+Current C1 kit-wording approval stop remains in place; the packet grants no new approval.
 C1 proposal: audits/LONG_SESSION_20260913/ART_KIT_V43_PROPOSED.diff. Exact eleven review rows,
 all game accents source-verified, accent-only/body-colour rule and subject-slot binding.
 Canonical ART_KIT.md unchanged v4.2; frozen style/4E unchanged. STOP for Nick's diff approval.
@@ -50,7 +54,10 @@ parts, pose application and one deterministic atlas per creature with pinned pac
 body cards from resolved anatomy using Motion Kit §§3–6; report absent fields. Civet versus
 Platypus in accepted arena with Motion timings; ten-second Civet/fox/procedural captures.
 C2 interface: load parts for a resolved record; apply a pose of joint rotations and offsets;
-expose part display objects and pivots. Claude's fixture uses this same contract until C2 lands.
+expose part display objects and pivots. CONTRACTS.md supplies CreatureRigV1: recipeHash,
+templateId, parts {id,display,pivot,layer}, root, applyPose(joint rotation radians and dx/dy
+in body-length units), normalized bounds {width,height,groundLineY}, dispose. Joint names
+match record landmarks. Claude's fixture uses this same contract until C2 lands.
 Claude owns the body-card compiler (A1), effects sequencer (A2), battle scene adapter (A3), sound
 derivation (A4) and world-life (A5). Codex supplies rig/parts and source assets, without editing
 those modules. Effect anchors schema: cf.effect-sequence-anchors/v1. Missing anatomy fields
@@ -59,7 +66,10 @@ finisher passes. Retain older proof evidence/assets.
 
 C3: quadruped voice archetype, Wild theme set, battle set, temperate rain bed, fur impacts;
 rights recorded; 48kHz WAV masters plus Opus. Derive Civet/fox/procedural voices from one
-archetype. Motion/Sound frozen paragraphs already approved; do not ask again. SOUND_KIT v1
+archetype. CONTRACTS.md defines quadruped.<cue>.wav and numbered footfall filenames,
+mono48kHz24-bit, <2s cues/<300ms steps, dry, -1dBTP, rights and SHA256 per source; Wild phase
+files, battle cue ids, bed.temperate.wav24–40s with loop sidecar and weather.rain.wav.
+Motion/Sound frozen paragraphs already approved; do not ask again. SOUND_KIT v1
 approved by Nick, frozen text unchanged. Root MOTION_KIT now includes the supplied world-life
 layer. Both retain supplied PROPOSED status labels verbatim. First new-class sounds require
 Nick's review; the parts-rig body-card audit still reports missing record fields.
@@ -87,7 +97,7 @@ Klein phone probing remains stopped; no delivery engineering before phone-tier r
 
 Ownership verified: OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac,
 openai/mac → origin/openai/mac; SSH origin git@github.com:TheDakk/Celestial-Frontier.git.
-Pre-intake commit e89cb621:69 ahead upstream/180 ahead cached origin/develop, zero behind. No remote
+Pre-packet commit a79d4035:70 ahead upstream/181 ahead cached origin/develop, zero behind. No remote
 refresh needed or performed; .DS_Store excluded. Current budget file says UNFROZEN, but Nick's
 explicit GitHub step NONE controls: no push/label/dispatch/merge/release/deploy or hosted attempt.
 This batch is documentation only; no runtime/build/render or tool maintenance needed.

@@ -67,3 +67,25 @@ intake. Direct no-new-branches rule stands. More material is coming per Nick; no
 v4.3 approval. Pending: approve e89cb621 proposal, then one Wild repaint. MID despill already
 done once. No code, sound, painting, history rewrite, GitHub write or package acceptance in
 this documentation intake. Source-byte comparison and git diff --check pass.
+
+## Additional long-session packet intake — C1 still awaiting wording approval
+
+Source: /Users/nick/Downloads/codex-long-session-pack-20260913.zip.
+`long-session-pack-receipt.json` records zip and every retained file hash/byte count.
+WORK_ORDER matches the prior supplied bytes. CONTRACTS.md, LOG-A4.md and LOG-A5.md retained
+verbatim; incoming LOG.md retained verbatim as LOG-CLAUDE-PACKET.md so neither lane's log is
+lost. This is document intake, not a merge of Claude's modules or verification of their tests.
+
+Read CreatureRigV1 fields/units/joint-name contract; C3 exact cue filenames, source formats,
+rights/hashes, bed loop-sidecar and separate rain requirement. CONTRACTS remains unedited.
+Claude's A4 reports placeholder/non-shippable sound, approximate formant processing and no
+LUFS measurement; A5 reports synthetic sheets and no accepted-plate wiring. Those reports
+are preserved, not promoted to Nick's visual/listening acceptance. The packet includes no
+source code, WAVs, image evidence or v4.3 approval. Before named-Earth integration, reconcile
+A4's reported Civet genome-derived massive/luminous values with the painter-authority rule;
+no edits to Claude's lane and no fabricated record fields in this intake.
+
+Validation: five document byte comparisons and git diff --check. Pre-packet a79d4035,
+70 ahead upstream/181 ahead cached origin/develop. Containing commit records this intake.
+No painting, sound, model run, main.ts edit, new branch, history rewrite or GitHub action.
+Next: Nick's v4.3 wording approval at e89cb621; C1 one Wild repaint thereafter. MID complete.
