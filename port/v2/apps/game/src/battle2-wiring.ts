@@ -260,7 +260,8 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
           const masterPath = record.identity.earthName === 'Civet' ? BATTLE2_ASSETS.civetMaster : null;
           if (!masterPath) throw new MotionCompileError('missing-record', `no keyed master path is registered for ${record.identity.earthName ?? record.identity.speciesVisualKey.slice(0, 24)}`);
           const master = await assets.image(masterPath), keyed = keyer(master.pixels(), master.width, master.height);
-          const cut = cutFixtureParts(keyed.alpha, master.width, master.height, record);
+          // Boundary-band underlap (C2 review, 2026-09-13): ancestors carry their descendants' cut bands at a limit-driven depth, so joints do not open.
+          const cut = cutFixtureParts(keyed.alpha, master.width, master.height, record, { underlapPx: Math.round(master.width * 0.02), underlapByLimit: { limitsDeg: card.bounds.limitsDeg, capPx: Math.floor(Math.min(master.width, master.height) / 8) } });
           const partSprite = (part: FixturePartCut): RigSpriteLike => {
             const w = Math.max(1, part.box.width), h = Math.max(1, part.box.height), rgba = new Uint8ClampedArray(w * h * 4);
             for (let y = 0; y < part.box.height; y++) for (let x = 0; x < part.box.width; x++) { if (!part.mask[y * part.box.width + x]) continue; const s = ((part.box.y + y) * master.width + part.box.x + x) * 4, d = (y * w + x) * 4; rgba[d] = keyed.rgba[s]!; rgba[d + 1] = keyed.rgba[s + 1]!; rgba[d + 2] = keyed.rgba[s + 2]!; rgba[d + 3] = keyed.rgba[s + 3]!; }

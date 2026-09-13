@@ -46,6 +46,18 @@ export interface FixturePartCut {
   /** 0/255 mask over `box`, row-major. */
   readonly mask: Uint8Array;
   readonly pixelCount: number;
+  /** Underlap pixels this part duplicates from its descendant parts along their shared cuts (0 without `underlapPx`). */
+  readonly underlapCount: number;
+}
+export interface FixtureCutOptions {
+  /** Boundary-band underlap in cut-out pixels: every ancestor part also carries its descendant parts' pixels within this distance of
+   * their shared cut, drawn beneath the descendant (parent-first order), so a rotating part vacates a band the ancestor still paints.
+   * 0 (default) keeps the strict one-owner cut. */
+  readonly underlapPx?: number;
+  /** Per-cut depth from the joint limits: at each seed the band is at least `distance(seed, descendant pivot) * sin(cumulative limit)`
+   * (the farthest the cut can swing), capped at `capPx`. Cumulative limit = the sum of the joint limits from the ancestor's child down
+   * to the descendant's joint. Use with `underlapPx` as the floor. */
+  readonly underlapByLimit?: Readonly<{ limitsDeg: Readonly<Record<JointName, Readonly<{ min: number; max: number }>>>; capPx: number; margin?: number }>;
 }
 export interface FixtureCut {
   readonly label: typeof FIXTURE_RIG_LABEL;
@@ -53,7 +65,9 @@ export interface FixtureCut {
   readonly alphaCount: number;
   readonly alphaBox: PixelBox;
   readonly parts: readonly FixturePartCut[];
+  readonly underlapPx: number;
 }
+
 
 interface PartDef { readonly id: string; readonly joint: JointName; readonly parentJoint: JointName; readonly bones: readonly JointName[]; readonly layer: RigLayer; }
 const parentOf = (j: JointName): JointName => QUADRUPED_GRAPH.find(([c]) => c === j)?.[1] ?? 'root';
@@ -72,6 +86,24 @@ export const FIXTURE_PARTS: readonly PartDef[] = Object.freeze(([
   }),
   ...['tail0', 'tail1', 'tail2', 'tail3'].map((t): PartDef => ({ id: t, joint: t, parentJoint: parentOf(t), bones: [t], layer: 'far' })),
 ] as PartDef[]).map((p) => Object.freeze({ ...p, bones: Object.freeze([...p.bones]) })));
+/** Parent part index of a part (the part owning the bone the part pivots on), or -1 for the torso root. */
+export function fixtureParentPart(partIndex: number): number {
+  const def = FIXTURE_PARTS[partIndex]!;
+  const parent = FIXTURE_PARTS.findIndex((p) => p.bones.includes(def.parentJoint));
+  return parent === partIndex ? -1 : parent; // the torso pivots on its own pelvis bone: it is the root part
+}
+/** True when part `ancestor` is on the parent chain of part `part` (a child, grandchild, ...). */
+export function fixtureIsAncestor(ancestor: number, part: number): boolean {
+  for (let p = fixtureParentPart(part); p >= 0; p = fixtureParentPart(p)) if (p === ancestor) return true;
+  return false;
+}
+/** Draw order inside a layer: parents before children (torso, neck, head; leg upper, lower, paw; tail0..3), so a child covers its parent's underlap at rest. */
+export const FIXTURE_DRAW_ORDER: readonly number[] = Object.freeze((() => {
+  const order: number[] = [], seen = new Set<number>();
+  const visit = (i: number): void => { if (seen.has(i)) return; const p = fixtureParentPart(i); if (p >= 0) visit(p); seen.add(i); order.push(i); };
+  FIXTURE_PARTS.forEach((_, i) => visit(i));
+  return order;
+})());
 
 const lm = (record: ResolvedAnatomyRecord, j: JointName): readonly [number, number] => {
   const p = record.landmarks[j];
@@ -86,8 +118,11 @@ const segDist2 = (px: number, py: number, ax: number, ay: number, bx: number, by
 };
 
 /** Partition the alpha (row-major, length width*height, >0 = painted) into part masks. Pure. */
-export function cutFixtureParts(alpha: Uint8Array, width: number, height: number, record: ResolvedAnatomyRecord): FixtureCut {
+export function cutFixtureParts(alpha: Uint8Array, width: number, height: number, record: ResolvedAnatomyRecord, options: FixtureCutOptions = {}): FixtureCut {
   if (!(alpha instanceof Uint8Array) || alpha.length !== width * height || !(width > 0) || !(height > 0)) throw new TypeError('fixture rig: alpha must be width*height bytes');
+  const underlapPx = options.underlapPx ?? 0, byLimit = options.underlapByLimit ?? null, capPx = Math.min(width, height) / 4;
+  if (!Number.isFinite(underlapPx) || underlapPx < 0 || underlapPx > capPx) throw new RangeError(`fixture rig: underlapPx ${String(options.underlapPx)} must be 0..${Math.floor(capPx)}`);
+  if (byLimit && (!Number.isFinite(byLimit.capPx) || byLimit.capPx <= 0 || byLimit.capPx > capPx)) throw new RangeError(`fixture rig: underlapByLimit.capPx must be 0..${Math.floor(capPx)}`);
   if (record.template?.id !== 'quadruped') throw new TypeError(`fixture rig: template "${String(record.template?.id)}" is not quadruped`);
   const layers = new Set(record.geometry?.depthLayers?.map((d) => d.id) ?? []);
   if (!layers.has('far') || !layers.has('near')) throw new TypeError('fixture rig: record must declare far and near depth layers');
@@ -110,13 +145,44 @@ export function cutFixtureParts(alpha: Uint8Array, width: number, height: number
     owner[i] = best; grow(box[best]!, x, y); grow(all, x, y);
   }
   const toBox = (b: typeof all): PixelBox => b.n === 0 ? { x: 0, y: 0, width: 0, height: 0 } : { x: b.x0, y: b.y0, width: b.x1 - b.x0 + 1, height: b.y1 - b.y0 + 1 };
+  // Boundary-band underlap: an ancestor part duplicates its descendant's pixels within underlapPx of their shared cut. Seeds are
+  // the ancestor-owned pixels that touch the descendant; each seed stamps a disc into the descendant's territory. Deterministic, no clock.
+  const extra = FIXTURE_PARTS.map(() => new Set<number>());
+  if (underlapPx > 0 || byLimit) {
+    // Cumulative swing (radians) of descendant c relative to ancestor o: the sum of joint limits on the chain o→…→c.
+    const swing = (o: number, c: number): number => {
+      let total = 0;
+      for (let p = c; p >= 0 && p !== o; p = fixtureParentPart(p)) { const lim = byLimit!.limitsDeg[FIXTURE_PARTS[p]!.joint]; total += lim ? Math.max(Math.abs(lim.min), Math.abs(lim.max)) : 0; }
+      return Math.min(Math.PI / 2, (total * Math.PI) / 180);
+    };
+    const pivotPx = (c: number): readonly [number, number] => { const pv = lm(record, FIXTURE_PARTS[c]!.parentJoint); return [pv[0] * width, pv[1] * height]; };
+    const depthAt = (x: number, y: number, o: number, c: number): number => {
+      if (!byLimit) return underlapPx;
+      const pv = pivotPx(c), d = Math.hypot(x + 0.5 - pv[0], y + 0.5 - pv[1]) * Math.sin(swing(o, c)) * (byLimit.margin ?? 1.1);
+      return Math.min(byLimit.capPx, Math.max(underlapPx, d));
+    };
+    for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+      const i = y * width + x, o = owner[i]!; if (o === 255) continue;
+      // A seed: an ancestor-owned pixel with a 4-neighbour owned by one of its descendant parts (the head also borders the torso at the crown).
+      for (const [nx, ny] of [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]] as const) {
+        if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+        const c = owner[ny * width + nx]!; if (c === 255 || c === o || !fixtureIsAncestor(o, c)) continue;
+        const depth = depthAt(x, y, o, c), r2 = depth * depth, R = Math.ceil(depth);
+        for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R; dx++) {
+          if (dx * dx + dy * dy > r2) continue; const sx = x + dx, sy = y + dy; if (sx < 0 || sy < 0 || sx >= width || sy >= height) continue;
+          const si = sy * width + sx; if (owner[si] === c) extra[o]!.add(si);
+        }
+      }
+    }
+    extra.forEach((set, pi) => { for (const si of set) grow(box[pi]!, si % width, Math.floor(si / width)); box[pi]!.n -= set.size; });
+  }
   const parts = FIXTURE_PARTS.map((def, pi): FixturePartCut => {
-    const bx = toBox(box[pi]!), mask = new Uint8Array(bx.width * bx.height);
-    for (let y = 0; y < bx.height; y++) for (let x = 0; x < bx.width; x++) if (owner[(bx.y + y) * width + bx.x + x] === pi) mask[y * bx.width + x] = 255;
+    const bx = toBox(box[pi]!), mask = new Uint8Array(bx.width * bx.height), dup = extra[pi]!;
+    for (let y = 0; y < bx.height; y++) for (let x = 0; x < bx.width; x++) { const i = (bx.y + y) * width + bx.x + x; if (owner[i] === pi || dup.has(i)) mask[y * bx.width + x] = 255; }
     const pv = lm(record, def.parentJoint);
-    return Object.freeze({ id: def.id, joint: def.joint, parentJoint: def.parentJoint, pivot: Object.freeze({ x: pv[0], y: pv[1] }), layer: def.layer, bones: def.bones, box: Object.freeze(bx), mask, pixelCount: box[pi]!.n });
+    return Object.freeze({ id: def.id, joint: def.joint, parentJoint: def.parentJoint, pivot: Object.freeze({ x: pv[0], y: pv[1] }), layer: def.layer, bones: def.bones, box: Object.freeze(bx), mask, pixelCount: box[pi]!.n, underlapCount: dup.size });
   });
-  return Object.freeze({ label: FIXTURE_RIG_LABEL, width, height, alphaCount: all.n, alphaBox: Object.freeze(toBox(all)), parts: Object.freeze(parts) });
+  return Object.freeze({ label: FIXTURE_RIG_LABEL, width, height, alphaCount: all.n, alphaBox: Object.freeze(toBox(all)), parts: Object.freeze(parts), underlapPx });
 }
 
 /* ---------- forward kinematics over the template GRAPH ---------- */
@@ -155,8 +221,8 @@ export function createFixtureRig(options: FixtureRigOptions): BattleRigV1 {
   const layerOrder = [...(record.geometry.depthLayers ?? [])].sort((a, b) => a.order - b.order).map((d) => d.id as RigLayer);
   const sprites = new Map<string, RigSpriteLike>();
   const parts: RigPartV1[] = [];
-  for (const layer of layerOrder) for (const part of cut.parts) {
-    if (part.layer !== layer) continue;
+  for (const layer of layerOrder) for (const pi of FIXTURE_DRAW_ORDER) {
+    const part = cut.parts[pi]!; if (part.layer !== layer) continue;
     const sprite = factory.partSprite(part);
     const px = part.pivot.x * W, py = part.pivot.y * H;
     sprite.anchor.set(part.box.width ? (px - part.box.x) / part.box.width : 0, part.box.height ? (py - part.box.y) / part.box.height : 0);

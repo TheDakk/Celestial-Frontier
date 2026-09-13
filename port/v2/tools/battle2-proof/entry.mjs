@@ -35,7 +35,8 @@ try {
   // Civet: keyed master + landmark record → fixture rig with one canvas per part (mask applied).
   const civetRecord = await json('civet.landmarks.json'), civetCanvas = await imageCanvas(await bytes('civet.png'));
   const cc = civetCanvas.getContext('2d'), craw = cc.getImageData(0, 0, civetCanvas.width, civetCanvas.height), keyed = keyAndDespill(craw.data, civetCanvas.width, civetCanvas.height);
-  const t0 = performance.now(), cut = cutFixtureParts(keyed.alpha, civetCanvas.width, civetCanvas.height, civetRecord); state.cutMs = performance.now() - t0;
+  const civetCardForCut = compileBodyCard(civetRecord);
+  const t0 = performance.now(), cut = cutFixtureParts(keyed.alpha, civetCanvas.width, civetCanvas.height, civetRecord, { underlapPx: Math.round(civetCanvas.width * 0.02), underlapByLimit: { limitsDeg: civetCardForCut.bounds.limitsDeg, capPx: Math.floor(Math.min(civetCanvas.width, civetCanvas.height) / 8) } }); state.cutMs = performance.now() - t0; state.underlapPixels = cut.parts.reduce((n, p) => n + p.underlapCount, 0);
   const partSprite = (part) => {
     const c = canvas(Math.max(1, part.box.width), Math.max(1, part.box.height)), img = c.getContext('2d').createImageData(c.width, c.height);
     for (let y = 0; y < part.box.height; y++) for (let x = 0; x < part.box.width; x++) { if (!part.mask[y * part.box.width + x]) continue; const s = ((part.box.y + y) * civetCanvas.width + part.box.x + x) * 4, d = (y * c.width + x) * 4; img.data.set(keyed.rgba.subarray(s, s + 4), d); }
