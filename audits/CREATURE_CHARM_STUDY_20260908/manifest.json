@@ -1,0 +1,342 @@
+{
+  "schema": "cf-offline-art-evidence/v1",
+  "recordedAt": "2026-09-08T11:53:37.263801+00:00",
+  "status": "CHECKPOINT",
+  "humanDirectionApproval": "Space/creature references approved in painted audit approval.json; individual art/runtime/device acceptance separate.",
+  "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "worktree": "openai/mac dirty staged local only; signing blocker retained",
+  "evidence": [
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/ARCHITECTURE_RECOMMENDATION.md",
+      "bytes": 16124,
+      "sha256": "c44b32afe96f25e2c57d8a0d851ebe379f13e1fb5b70854a237fc8fcc445eff7"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/ARTFLOW.md",
+      "bytes": 8099,
+      "sha256": "a1926d201a5ddef4a3386f86c70556830066c8bb5e1927866dd240498abfe1a2"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/BATCH_INTENT.md",
+      "bytes": 2682,
+      "sha256": "0ce6b7f76a51b2586e94ca061d84de1c2c0aca54263c380011fc8d13415241f7"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/README.md",
+      "bytes": 8853,
+      "sha256": "70ac4219db39220d4681f191efa494d89e700768539919fc84989a2e0a8cd2cf"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/audit_motion.py",
+      "bytes": 5019,
+      "sha256": "5f051e03a0cd4850b30364cc82c72f94e1cca58cc5bc2f35c34f1b80264e8ae6"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/motion-execution.json",
+      "bytes": 468,
+      "sha256": "130cd2ae9f1a56e24ad0743b9f4c9eb35d5208316b656df98e6a022e72974cc5"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/motion.log",
+      "bytes": 4027,
+      "sha256": "990cd726a6068f6561b6a13fc5f6f1879d3c5639f03fdaad4a9c99106faa844e"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/package_samples.py",
+      "bytes": 2954,
+      "sha256": "8cb0c3f78f342f3269d54e899ab1b08d6b4041092de8ac40e9db2c8509465fb7"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/package_samples_font.py",
+      "bytes": 2995,
+      "sha256": "e7ed8e4f9735981be5fdc3497923cc64f7d900f8bda1f49b00dff271f2ceef5d"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/private-source-preservation.json",
+      "bytes": 18327,
+      "sha256": "2f2692f76d29aeeffc8332ef4bcadf55287fda840983be8c7cb2fd3d61fbb0c2"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/reference-research.json",
+      "bytes": 2209,
+      "sha256": "1db852689fc8297a076e1dd6ebfb245995a0ff17411f31fd996995f565cc04ea"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/render-first-execution.json",
+      "bytes": 822,
+      "sha256": "0191dbc17a28de07c9de1d90a34a7bc35804780dc9e667416ff3effdcf854f94"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/render-first.log",
+      "bytes": 1850,
+      "sha256": "5c108d6b718a40d0f7e0bc938a45b1903635fcac8abac5cf996cf42a1453e315"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/render-study.json",
+      "bytes": 4651,
+      "sha256": "33aa97acc027126b9e151250ecafd0fac28b1df0fae67b3fdf879ab3f551ca02"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/review.html",
+      "bytes": 5646,
+      "sha256": "4b0be1fc47a63b56947827bdc7587e05b1a144fe03fc80650caadccafcd08b79"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/root-validation.json",
+      "bytes": 363,
+      "sha256": "d1121a39deb918b608d0b890c11b44acba0d23d947abe6a03484acbf2d71a4ce"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/root-validation.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/sample-package-first-failure.json",
+      "bytes": 521,
+      "sha256": "228c81de2868293b8c30a2a8ed4d96f7bfa23c2ac7e02e66b6de3c8f490eafc3"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/sample-package.json",
+      "bytes": 13560,
+      "sha256": "cf4380059774fab81febac50ceb229b40826b563933c593dc46c190c9441c52a"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/natural-001-132.webp",
+      "bytes": 3176,
+      "sha256": "40f4b370c3a51854d468969357c1c6287dd941c80ce0a6bb575f3ed2045ce305"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/natural-001-300.webp",
+      "bytes": 8568,
+      "sha256": "d58ef37240f5b85db3cc85d9add85c88e854ed4b6f43a45e2742fb042e94d1d7"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/natural-001-440.webp",
+      "bytes": 14418,
+      "sha256": "548975eba2f803f3ee9ca63b161e10fcc8a7ebc2683c482456bcd2f37744a4f4"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/natural-001-640.webp",
+      "bytes": 18812,
+      "sha256": "0022c0e9385f62044c517d17866d184dab590fa7dd6ce406088d3090ee4df090"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/natural-013-640.webp",
+      "bytes": 18816,
+      "sha256": "6249eb4ae88aad76f651e7d816af1cb2bf743955adcdb97aaf220ad3f104dab0"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/natural-021-640.webp",
+      "bytes": 18702,
+      "sha256": "19782574cc074eacc37faaa59dcebdc27eaf86544ec94e726e0523bc848c2c80"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/natural-041-640.webp",
+      "bytes": 18784,
+      "sha256": "e6320e9876450e314f55f4e6b7fe11464d46ce38aa2b155a57635ee9c99bb6a4"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/natural-053-640.webp",
+      "bytes": 18838,
+      "sha256": "700a9ee461b4e85a775277a550c5b4bc53c8b18d5f1b9b0d212e1a6dce02bcab"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/previous-132.webp",
+      "bytes": 2818,
+      "sha256": "ea9ee4377fee9ec88d4f1900eb21a0690b2242790aacc95b3d445dc9987937a7"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/previous-300.webp",
+      "bytes": 6670,
+      "sha256": "5ca81d7262ef352faae48b2ba574ecdde7aeb5268bbf22330a09581697e2e543"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/previous-440.webp",
+      "bytes": 6824,
+      "sha256": "06864c72d741b2e9e51f26b8a75c05e130fd2b7f2e341a89038e997adbd88a4c"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/storybook-001-132.webp",
+      "bytes": 3336,
+      "sha256": "96addb055e2104e3386c9e9c245dc0d50f6a35f0dc5b27b122b404acc119a3ad"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/storybook-001-300.webp",
+      "bytes": 9292,
+      "sha256": "f3229d7fbe9fef385093856afc181acda04f09d28ebb06002ac5e7de28359ea2"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/storybook-001-440.webp",
+      "bytes": 15658,
+      "sha256": "40f5c7654932999174919ba57f2de32304473fa8fbc5e4e664a0f07328d5831e"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/storybook-001-640.webp",
+      "bytes": 20584,
+      "sha256": "7826ea421cf73b5bca54155a444b6064a6c3186223f8a89a9189d81b0f6ef279"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/storybook-013-640.webp",
+      "bytes": 20722,
+      "sha256": "6cb90b60dbca80c41bd3d3bc80e7e61f20c4cce3c7cf8dfee76284d4e6e4a342"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/storybook-021-640.webp",
+      "bytes": 20572,
+      "sha256": "edbff85dba566cc7dc8f95dcafa16f551df911242c18ce4657f69be55460a15e"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/storybook-041-640.webp",
+      "bytes": 20512,
+      "sha256": "2a749506be08d35c79a2127d145e6fd5331387afbe587493f0eb9bb2353dce9d"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples/storybook-053-640.webp",
+      "bytes": 20668,
+      "sha256": "65541fb3e31c83729d2b23de0278f627de9bfb5bcb5f6ffd95f6ea0e190e2936"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/comparison.png",
+      "bytes": 129031,
+      "sha256": "f66d4a08ead5758017901d09f81e025d3febb7192d053d114621dfa33a8a1852"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-001-132.webp",
+      "bytes": 3176,
+      "sha256": "40f4b370c3a51854d468969357c1c6287dd941c80ce0a6bb575f3ed2045ce305"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-001-300.webp",
+      "bytes": 8568,
+      "sha256": "d58ef37240f5b85db3cc85d9add85c88e854ed4b6f43a45e2742fb042e94d1d7"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-001-440.webp",
+      "bytes": 14418,
+      "sha256": "548975eba2f803f3ee9ca63b161e10fcc8a7ebc2683c482456bcd2f37744a4f4"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-001-640.webp",
+      "bytes": 18812,
+      "sha256": "0022c0e9385f62044c517d17866d184dab590fa7dd6ce406088d3090ee4df090"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-013-640.webp",
+      "bytes": 18816,
+      "sha256": "6249eb4ae88aad76f651e7d816af1cb2bf743955adcdb97aaf220ad3f104dab0"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-021-640.webp",
+      "bytes": 18702,
+      "sha256": "19782574cc074eacc37faaa59dcebdc27eaf86544ec94e726e0523bc848c2c80"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-041-640.webp",
+      "bytes": 18784,
+      "sha256": "e6320e9876450e314f55f4e6b7fe11464d46ce38aa2b155a57635ee9c99bb6a4"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/natural-053-640.webp",
+      "bytes": 18838,
+      "sha256": "700a9ee461b4e85a775277a550c5b4bc53c8b18d5f1b9b0d212e1a6dce02bcab"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/previous-132.webp",
+      "bytes": 2818,
+      "sha256": "ea9ee4377fee9ec88d4f1900eb21a0690b2242790aacc95b3d445dc9987937a7"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/previous-300.webp",
+      "bytes": 6670,
+      "sha256": "5ca81d7262ef352faae48b2ba574ecdde7aeb5268bbf22330a09581697e2e543"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/previous-440.webp",
+      "bytes": 6824,
+      "sha256": "06864c72d741b2e9e51f26b8a75c05e130fd2b7f2e341a89038e997adbd88a4c"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-001-132.webp",
+      "bytes": 3336,
+      "sha256": "96addb055e2104e3386c9e9c245dc0d50f6a35f0dc5b27b122b404acc119a3ad"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-001-300.webp",
+      "bytes": 9292,
+      "sha256": "f3229d7fbe9fef385093856afc181acda04f09d28ebb06002ac5e7de28359ea2"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-001-440.webp",
+      "bytes": 15658,
+      "sha256": "40f5c7654932999174919ba57f2de32304473fa8fbc5e4e664a0f07328d5831e"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-001-640.webp",
+      "bytes": 20584,
+      "sha256": "7826ea421cf73b5bca54155a444b6064a6c3186223f8a89a9189d81b0f6ef279"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-013-640.webp",
+      "bytes": 20722,
+      "sha256": "6cb90b60dbca80c41bd3d3bc80e7e61f20c4cce3c7cf8dfee76284d4e6e4a342"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-021-640.webp",
+      "bytes": 20572,
+      "sha256": "edbff85dba566cc7dc8f95dcafa16f551df911242c18ce4657f69be55460a15e"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-041-640.webp",
+      "bytes": 20512,
+      "sha256": "2a749506be08d35c79a2127d145e6fd5331387afbe587493f0eb9bb2353dce9d"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/storybook-053-640.webp",
+      "bytes": 20668,
+      "sha256": "65541fb3e31c83729d2b23de0278f627de9bfb5bcb5f6ffd95f6ea0e190e2936"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/samples-final/wolf-articulated-study.mp4",
+      "bytes": 43605,
+      "sha256": "7b21349ad602b644cbe2aa725019c23fea3be0b17b5ca371fc94706fc3f43e5d"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/saved-motion.json",
+      "bytes": 6590,
+      "sha256": "919ccd35653b1189df29cd5518f1f3acf89819b5a64e87dc24effc28db5687b0"
+    },
+    {
+      "path": "audits/CREATURE_CHARM_STUDY_20260908/visual-review.json",
+      "bytes": 690,
+      "sha256": "a073669eb0bea651ed49021beebe9400bed4b8a6428dbec58037db47e6800801"
+    }
+  ],
+  "references": [
+    {
+      "path": "ART_DIRECTION.md",
+      "sha256": "56ffb19790b111187d70795a037ae078d1398388c2b9a04345dcc9e5b2d7d7e7"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "sha256": "84e22fd573902878908f2b17c7e92ff60aa96186b6b2f2c5c31c33b8b5a63757"
+    },
+    {
+      "path": "BIOME_ATLAS.md",
+      "sha256": "ac01ca27bd71e612ddb3a70472fb0e2d1c79aa447875aa47f2b0181e52d37d2f"
+    },
+    {
+      "path": "port/v2/tools/blender/creature_charm_study.py",
+      "sha256": "12a69f4060ea45d4ba324ced52b0672a9f7345016152374eac98433c07aa6221"
+    },
+    {
+      "path": "port/v2/apps/game/src/combat-battle-scene.ts",
+      "sha256": "c7ed59e4b4559fe0356bf78cdaa5a45fe506c301e28894d662ae0b58665fc3a5"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesidentity.ts",
+      "sha256": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0"
+    }
+  ],
+  "runtimeChangedByThisOfflineBatch": false
+}

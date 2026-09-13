@@ -1,0 +1,519 @@
+{
+  "schema": "cf-av-playable-implementation/v1",
+  "parentCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "branch": "openai/mac",
+  "localOnly": true,
+  "sourceFiles": [
+    {
+      "path": "port/v2/apps/game/src/audiovisual-pilot.ts",
+      "bytes": 16791,
+      "sha256": "7080b10ac4e99b34adbd86a5bef46eb2e71c9d95673aae30a748f896059926b8"
+    },
+    {
+      "path": "port/v2/apps/game/src/combat-battle-scene-style.ts",
+      "bytes": 1467,
+      "sha256": "9e41e95b4bfc7e1206bc1d707726534f7df8ff8466e4ac376fa0f8f9d92ff267"
+    },
+    {
+      "path": "port/v2/apps/game/src/combat-battle-scene.ts",
+      "bytes": 12758,
+      "sha256": "c7ed59e4b4559fe0356bf78cdaa5a45fe506c301e28894d662ae0b58665fc3a5"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 832464,
+      "sha256": "7ddd9d43c65236f2479fe1bf89a94000782d542127fb190eed98308241cd7da1"
+    },
+    {
+      "path": "port/v2/apps/game/src/pilot-runtime-style.ts",
+      "bytes": 6525,
+      "sha256": "12ca6ae00d0b660767f0aa6109b4f5bbcdbd8e4323b5e40273959ba79df1abb5"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 156697,
+      "sha256": "3e87b04efff74314c625192fcc8494f75c81554386a28455af00184c127be94e"
+    },
+    {
+      "path": "port/v2/apps/game/src/tame-greeting-audio.ts",
+      "bytes": 59959,
+      "sha256": "8f717a25fd39cd0ce57b39853a75eb5c6a38263337c98458658ba926ed49a38c"
+    },
+    {
+      "path": "port/v2/budgets/compendium-memory-v1.json",
+      "bytes": 154295,
+      "sha256": "f07f3bff7fa7246e3db7098b567c70afcc78e77dc4ea63bb2ffbaa4a69998da5"
+    },
+    {
+      "path": "port/v2/packages/audio/src/combat-cues.ts",
+      "bytes": 23581,
+      "sha256": "8ba3e3364c790fa4b53c331b565290657263ac9d4f991966a9abb959c2026564"
+    },
+    {
+      "path": "port/v2/packages/audio/test/combat-cues.test.ts",
+      "bytes": 18504,
+      "sha256": "bb6b5a16683610ec7d8948190621652af6ea971b23505aee8c1b638a048444e9"
+    },
+    {
+      "path": "port/v2/tests/arc6-combat-main-wiring.test.ts",
+      "bytes": 21370,
+      "sha256": "0c7d8a671d1f4513aa7a7b6cb369753ffa3609b30a6b55475983bf73a49a3454"
+    },
+    {
+      "path": "port/v2/tests/combat-battle-scene.test.ts",
+      "bytes": 12810,
+      "sha256": "076281b0d78c6ad50a6e7bf90d45139e4e92150826ef57d8b8ed78a962440cd8"
+    },
+    {
+      "path": "port/v2/tests/compendium-budget.test.ts",
+      "bytes": 146461,
+      "sha256": "d7ee413cc40c070e6319f217baa1a56111e548dbeb936ee4b4692d14d3e77697"
+    },
+    {
+      "path": "port/v2/tests/evidence-chain-tools.test.ts",
+      "bytes": 41269,
+      "sha256": "757a953d95089f9ff4efc0ef47dad8d5ba7ff541e4ccde9eb66523b332273639"
+    },
+    {
+      "path": "port/v2/tests/exceptional-crafting-evidence-contract.test.ts",
+      "bytes": 23544,
+      "sha256": "a3befef0424ad4b5a934cdd45b5a2ef7abfc4ad25cd61d124f4bfb31acec1845"
+    },
+    {
+      "path": "port/v2/tests/glass-post-close-geometry.test.ts",
+      "bytes": 15040,
+      "sha256": "9f5ff8d237fe4d3a0443394c9742f3fba97a20b258c8b260662ad0fb95888fd6"
+    },
+    {
+      "path": "port/v2/tests/guide-release.test.ts",
+      "bytes": 220553,
+      "sha256": "be63111e8b111f6ee4cf0103359f5979fde7b0c386ebcfda5a10677a50282745"
+    },
+    {
+      "path": "port/v2/tests/pilot-landing-main-wiring.test.ts",
+      "bytes": 8655,
+      "sha256": "56267b617155ddd73f510ea337b916a4370ce3ccf2a8630d28aedc7ce4fde638"
+    },
+    {
+      "path": "port/v2/tests/pilot-landing-presentation.test.ts",
+      "bytes": 16098,
+      "sha256": "d77fda119a4a5b6f751d5ba49fc6c7b894961097f5556b3d0e716da97b2a5403"
+    },
+    {
+      "path": "port/v2/tests/slicesmoke-sixth-red-contract.test.ts",
+      "bytes": 208778,
+      "sha256": "7a4e7da0035e9918d9faa265690c9ee435e7df26a4939eccb2f9faabdba8a116"
+    },
+    {
+      "path": "port/v2/tests/tame-greeting-audio.test.ts",
+      "bytes": 83522,
+      "sha256": "1bc1510fc55841af368ed8ede13386e3b8ebd6c768d5430bc0b654d6ab39822d"
+    },
+    {
+      "path": "port/v2/tools/glassmatrix.mjs",
+      "bytes": 1149989,
+      "sha256": "e224c58c64f9ead8a22d4ec5521643721f4706bcc096cd6986d10ad9b7d66183"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "bytes": 1889328,
+      "sha256": "5673844ebbaf048b03744c6a52013dc50b397b71ead3b248308787eb44a9f167"
+    }
+  ],
+  "checks": {
+    "develop": {
+      "status": "PASS",
+      "files": 327,
+      "passed": 3610,
+      "skipped": 1
+    },
+    "legacyValidate": "PASS",
+    "scopedNativeLandingBattle": "PASS",
+    "fullNativeAdmission": "NOT_RUN",
+    "humanAcceptance": "OPEN"
+  },
+  "producer": "3c8cda1771d6230fb86e773fc0cde86cb3c51686b6cc8fce3141b38a7516e28b",
+  "measurement": "4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12",
+  "carriers": [
+    {
+      "path": "CREATURE_BLENDER_FINDINGS.md",
+      "bytes": 10453,
+      "sha256": "4ba1fc282fce9283afbe7322d5025065529c05cc4477208bdafce079a9e1ee90"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2823,
+      "sha256": "8d5e426b8763118c958542c163f8992875442ac4f7c2d1588565d61b6422553d"
+    },
+    {
+      "path": "REVIEW_NOTES.md",
+      "bytes": 6969,
+      "sha256": "907d117c21d99bf14161babdd4642d0dfae1b25cf7fa8a3f59efbd07f8b6edbb"
+    },
+    {
+      "path": "battle-caught-exception/earth-approach-phone.png",
+      "bytes": 160069,
+      "sha256": "20509c3019184b9de33d4d4f9e8c2a7facb39d2543d90042afeca945441602ed"
+    },
+    {
+      "path": "battle-caught-exception/failure-state.json",
+      "bytes": 13713,
+      "sha256": "b0780e3f5e2787ed99d1eb143aa57fd455c7dfff5a0437d2e38afaee79543045"
+    },
+    {
+      "path": "battle-caught-exception/failure.png",
+      "bytes": 197842,
+      "sha256": "885ca27e3c865ee1745c2c60592be410aba0a054ff8b0b8e8371f3ced9bf2ec6"
+    },
+    {
+      "path": "battle-caught-exception/review.json",
+      "bytes": 78652,
+      "sha256": "4bebf652e9ede1cbec57915c828ddee15587a34617f605dc6b64b0e2dd8cc528"
+    },
+    {
+      "path": "battle-caught-exception/runner.mjs",
+      "bytes": 14984,
+      "sha256": "b40e259c8f635e30c777e975938fbbd0764fded11ac71ea004487867156a6585"
+    },
+    {
+      "path": "battle-caught-exception/scout-arrival-phone.png",
+      "bytes": 170207,
+      "sha256": "c098296aa404eb41592381624fe411d63b0d9905bd07e149e659c1aeec266f49"
+    },
+    {
+      "path": "battle-native-state/earth-approach-phone.png",
+      "bytes": 159996,
+      "sha256": "7e8cc7a006f83cf91df928a22095b588e1b037ffffbc9277969e3cfd37e5f780"
+    },
+    {
+      "path": "battle-native-state/failure-state.json",
+      "bytes": 13724,
+      "sha256": "6428bd586b1d4779b8caea500aeb0f0859a410e4e848456fef18eedec6ceb5b0"
+    },
+    {
+      "path": "battle-native-state/failure.png",
+      "bytes": 197841,
+      "sha256": "29565a0113a8426bab32f632e4fda7c1ae915a25f22369b2969a30dd06816019"
+    },
+    {
+      "path": "battle-native-state/review.json",
+      "bytes": 76184,
+      "sha256": "d8726003c6c4ef2fd878cf951d8b6607c71f77c2386ab55074ed1281c4e30c82"
+    },
+    {
+      "path": "battle-native-state/runner.mjs",
+      "bytes": 14380,
+      "sha256": "a17bc5d274dd17457501f025a89f9828beb94b59e5020588df08928b387aa959"
+    },
+    {
+      "path": "battle-native-state/scout-arrival-phone.png",
+      "bytes": 170220,
+      "sha256": "f7736b7066197d8273ef040cc3c25345942ac08e68a8ce5eb0b533e51dcf5242"
+    },
+    {
+      "path": "battle-wait-timeout/earth-approach-phone.png",
+      "bytes": 160004,
+      "sha256": "59e1d11c8c115d4ab196902f402fb6e33c893a2858bb55ed6fb05b82418a0362"
+    },
+    {
+      "path": "battle-wait-timeout/review.json",
+      "bytes": 75293,
+      "sha256": "8e3b621c28b4f3fb353cc56f033a71b8f6e748d021ab4382655beca6feae9834"
+    },
+    {
+      "path": "battle-wait-timeout/runner.mjs",
+      "bytes": 13660,
+      "sha256": "febd569d70964745cb0f6d69c42c670155a5b1ba7d39f54248fa2393ad975447"
+    },
+    {
+      "path": "battle-wait-timeout/scout-arrival-phone.png",
+      "bytes": 170207,
+      "sha256": "c098296aa404eb41592381624fe411d63b0d9905bd07e149e659c1aeec266f49"
+    },
+    {
+      "path": "cf-av-draft-authority-20260907.json",
+      "bytes": 215,
+      "sha256": "cf085feb52134fce094bc1e520b5a2d60169c032284ed481f9195f21e3e4dc10"
+    },
+    {
+      "path": "cf-av-explorer-draft-pin-20260907.json",
+      "bytes": 180,
+      "sha256": "d10d45215a76f58df60aef9ee75e7a9561a4e6a829e412801f727897ae12d18b"
+    },
+    {
+      "path": "cf-av-explorer-draft-pin-20260907.mjs",
+      "bytes": 1873,
+      "sha256": "9289a11f36a7194c48d683c8e7e9a9ef04a6f49c4a374b14cb0558b9771bb88e"
+    },
+    {
+      "path": "cf-av-producer-20260907.json",
+      "bytes": 6119,
+      "sha256": "561dd2b543fa6946b73e70780a5fbca3eaf77c361696a7b0279d623fd8948d9b"
+    },
+    {
+      "path": "cf-av-producer-20260907.mjs",
+      "bytes": 635,
+      "sha256": "dd110fa66bc7dec59e0ac3aa5c4336f2b25ea611f87935df7c806d0894a3a190"
+    },
+    {
+      "path": "cf-av-refresh-producer-20260907.mjs",
+      "bytes": 2318,
+      "sha256": "2aae3d63ca3da48f4589bd0998d7777f9ce370849a0ed07139410f7a22bafca9"
+    },
+    {
+      "path": "cf-av-refreshed-producer-20260907.json",
+      "bytes": 1230,
+      "sha256": "5010689f6d3216fb5b45efb0220e893eec4a8626ef0c076e02c15fce9ca1837c"
+    },
+    {
+      "path": "explorer-landing-battle-pass/combat-attack-phone.png",
+      "bytes": 149838,
+      "sha256": "0ec0c48c35a903283792135aea4b972d41bd807f85f04beb6288ab26d135e065"
+    },
+    {
+      "path": "explorer-landing-battle-pass/combat-desktop.png",
+      "bytes": 863124,
+      "sha256": "b3e939feee8dc4020cb5233a51bd39b9545006df4e1d43468fad294195af9890"
+    },
+    {
+      "path": "explorer-landing-battle-pass/combat-result-desktop.png",
+      "bytes": 893429,
+      "sha256": "916a0f6be31e73ea8fcbef428eb556d7c3bce16e1fdef6bc3ee84ead384b0a6b"
+    },
+    {
+      "path": "explorer-landing-battle-pass/earth-approach-phone.png",
+      "bytes": 159989,
+      "sha256": "4412a073ceac1e0e29ee3e3f74b09d8a3fa1b3cfc61719986af1d7b6b0418588"
+    },
+    {
+      "path": "explorer-landing-battle-pass/review.json",
+      "bytes": 99258,
+      "sha256": "3942f99b60d7dd5de24029923923a2957b58dc188dbcedc63e017975ac81bb1c"
+    },
+    {
+      "path": "explorer-landing-battle-pass/runner.mjs",
+      "bytes": 14380,
+      "sha256": "a17bc5d274dd17457501f025a89f9828beb94b59e5020588df08928b387aa959"
+    },
+    {
+      "path": "explorer-landing-battle-pass/scout-arrival-phone.png",
+      "bytes": 170220,
+      "sha256": "f7736b7066197d8273ef040cc3c25345942ac08e68a8ce5eb0b533e51dcf5242"
+    },
+    {
+      "path": "landing-header-contained/build-files.json",
+      "bytes": 13148,
+      "sha256": "00719a1803c9a1aed41dd521e6223e9cf8b2a95f01d46e88482f48f001b50864"
+    },
+    {
+      "path": "landing-header-contained/built-service-worker.js",
+      "bytes": 20584,
+      "sha256": "9ce562b15746189631431469d774abd7961a5cb364d7b227ccfa6b1bca67223f"
+    },
+    {
+      "path": "landing-header-contained/earth-approach-phone.png",
+      "bytes": 160651,
+      "sha256": "9713eb03e11f06251b22907748e23cd2d77ba56f01d6f8109b82e59516a57d41"
+    },
+    {
+      "path": "landing-header-contained/earth-landed-desktop.png",
+      "bytes": 359056,
+      "sha256": "6cbe13b83720baf904f0c1899016ca692f5acd9fe519f852f2bb5beb37947f0a"
+    },
+    {
+      "path": "landing-header-contained/earth-landed-phone.png",
+      "bytes": 194787,
+      "sha256": "37ebac11b3d4460860fbd4f0c80b9cfe5f0fa08b163b74818ba17b3723333aac"
+    },
+    {
+      "path": "landing-header-contained/review.json",
+      "bytes": 75921,
+      "sha256": "5997300e1135c03654cf3d91cf691a99b77e175263c67f5b0fefda3e0706032c"
+    },
+    {
+      "path": "landing-header-contained/runner.mjs",
+      "bytes": 11230,
+      "sha256": "d146f0e9bb9099bea2342a72fd7b31602f88d22a14ed81a5d4886b8c98e8de33"
+    },
+    {
+      "path": "landing-header-contained/scout-arrival-phone.png",
+      "bytes": 170207,
+      "sha256": "c098296aa404eb41592381624fe411d63b0d9905bd07e149e659c1aeec266f49"
+    },
+    {
+      "path": "landing-header-contained/scout-shipyard-desktop.png",
+      "bytes": 1024879,
+      "sha256": "4835cd8a8c48dae0a602932663e4d395d59a4b5757a9d0d98a97dd2c11e556fa"
+    },
+    {
+      "path": "landing-header-overflow/earth-approach-phone.png",
+      "bytes": 160646,
+      "sha256": "565d8a7d7f27610533b73bf5cfa980aa4bd003eefb16d3776c82d1b5f95813ce"
+    },
+    {
+      "path": "landing-header-overflow/review.json",
+      "bytes": 74667,
+      "sha256": "2ec4613930cc81edb16a5063b2baf16629d0cbc22781eb0508978657bfa62f0b"
+    },
+    {
+      "path": "landing-header-overflow/runner.mjs",
+      "bytes": 11230,
+      "sha256": "d146f0e9bb9099bea2342a72fd7b31602f88d22a14ed81a5d4886b8c98e8de33"
+    },
+    {
+      "path": "landing-header-overflow/scout-arrival-phone.png",
+      "bytes": 170217,
+      "sha256": "62dbbcd902dcce24ade7bb9fc3132ef1e38260cc0b297410fbdb92a914eed220"
+    },
+    {
+      "path": "landing-scene-covered/earth-approach-phone.png",
+      "bytes": 160633,
+      "sha256": "9b91353f8ab4cf06858b55f2e9a76fa31043cdda78bcf865bf92ca18cf71c5a0"
+    },
+    {
+      "path": "landing-scene-covered/earth-landed-desktop.png",
+      "bytes": 969092,
+      "sha256": "0ea8e4381f5f50ac339ebefc196f950c5a1c4a6576b6dc210ede03fde9d95b38"
+    },
+    {
+      "path": "landing-scene-covered/earth-landed-phone.png",
+      "bytes": 194787,
+      "sha256": "37ebac11b3d4460860fbd4f0c80b9cfe5f0fa08b163b74818ba17b3723333aac"
+    },
+    {
+      "path": "landing-scene-covered/review.json",
+      "bytes": 51121,
+      "sha256": "aff4d0794313b827549a0ed66cba3dd387b979409459b9c1d53723e35c1f0535"
+    },
+    {
+      "path": "landing-scene-covered/runner.mjs",
+      "bytes": 10530,
+      "sha256": "beb41e10ce33573e79b022bdbd65ce3a7229f13568006b7141c40ccea36f3abe"
+    },
+    {
+      "path": "landing-scene-covered/scout-arrival-phone.png",
+      "bytes": 168770,
+      "sha256": "3a5aab43eb6a39abbde713a87600d38f88c1940ba7c5f7c8ab8e58dcf07ccea4"
+    },
+    {
+      "path": "landing-scene-covered/scout-shipyard-desktop.png",
+      "bytes": 1024879,
+      "sha256": "4835cd8a8c48dae0a602932663e4d395d59a4b5757a9d0d98a97dd2c11e556fa"
+    },
+    {
+      "path": "logs/cf-av-audio-continuation-preparation-20260907.log.gz",
+      "bytes": 2715,
+      "sha256": "b5f9c05fa636eda3d37b8fca9662be136b9b05c78bf3f7fd5ae85c38390cce82"
+    },
+    {
+      "path": "logs/cf-av-battle-exception-native-20260907.log.gz",
+      "bytes": 393,
+      "sha256": "945b5509cf8710b0dcd21e404eb60f94b60ec6153d6c4699e882d52b0b67c26d"
+    },
+    {
+      "path": "logs/cf-av-battle-native-20260907.log.gz",
+      "bytes": 159,
+      "sha256": "3d016a4c148841dc683f37c650497795eded663fb500f1f44fb0e63ff72aecbd"
+    },
+    {
+      "path": "logs/cf-av-battle-observable-native-20260907.log.gz",
+      "bytes": 396,
+      "sha256": "d04953ffca194c89ed200d9320ab1ebf249caa6d15ef80094cc203171b6e8436"
+    },
+    {
+      "path": "logs/cf-av-build-preparation-20260907.log.gz",
+      "bytes": 2785,
+      "sha256": "1c870d22db64b51c71b21109488d6dd9d701cf9e5c008c0cc004807d8e6007d9"
+    },
+    {
+      "path": "logs/cf-av-contained-preparation-20260907.log.gz",
+      "bytes": 2696,
+      "sha256": "37c7035f828417b97fc415e17d8badd336207cf969606facfeedb5a9198a9e01"
+    },
+    {
+      "path": "logs/cf-av-develop-final-static-20260907.log.gz",
+      "bytes": 2703,
+      "sha256": "105f41664bcad9d93c6292f0435bef58df105a68240281fe815f5b4f79bbc7d0"
+    },
+    {
+      "path": "logs/cf-av-develop-static-20260907.log.gz",
+      "bytes": 811352,
+      "sha256": "5a6249a50c394b0106ba258e9073c7fe64743dbf09be85b023ebf175dac166ec"
+    },
+    {
+      "path": "logs/cf-av-explorer-final-preparation-20260907.log.gz",
+      "bytes": 2703,
+      "sha256": "08a7d1596fca67b80865933b42bc736f70bc3b2e008ad84f2fadf6854c10f022"
+    },
+    {
+      "path": "logs/cf-av-explorer-native-20260907.log.gz",
+      "bytes": 98,
+      "sha256": "758032e3367d6dd5b6fbad2ab0213b698a1b71788594c4a8fe51dd643fd8b2ce"
+    },
+    {
+      "path": "logs/cf-av-explorer-preparation-20260907.log.gz",
+      "bytes": 746,
+      "sha256": "586b8bd65e0b803c02d96d10ee1dcd66643075e23e1ac2e19b8dcdd58aa75a75"
+    },
+    {
+      "path": "logs/cf-av-final-preparation-20260907.log.gz",
+      "bytes": 711,
+      "sha256": "95b726e19956db9e89a45bcf3627666ffc6b7f12c3feb9fc8d1601967d6eb48e"
+    },
+    {
+      "path": "logs/cf-av-header-final-20260907.log.gz",
+      "bytes": 2766,
+      "sha256": "243831c693a49e9d01f60bbeea13318caa2212b0b1ccd032fe37af49e9d9ef28"
+    },
+    {
+      "path": "logs/cf-av-header-preparation-20260907.log.gz",
+      "bytes": 682,
+      "sha256": "27347d7976ede4c4e4e4a8a50a79ce68e2071a29ef592dff3f5b7d45df43b5be"
+    },
+    {
+      "path": "logs/cf-av-landing-contained-native-20260907.log.gz",
+      "bytes": 106,
+      "sha256": "acbccfc8fc43e89bb6ec8fe7ecc128238e857159504896c5be0370dead4bdb09"
+    },
+    {
+      "path": "logs/cf-av-landing-header-native-20260907.log.gz",
+      "bytes": 184,
+      "sha256": "7632676e9df7835e3ee61fb0fce22353dc9ea1e880ece87583cd014e9af19d21"
+    },
+    {
+      "path": "logs/cf-av-landing-native-20260907.log.gz",
+      "bytes": 97,
+      "sha256": "30c97f354b36a5d210397377aec4cdae5b0f2713da761653f66c827ed6084dea"
+    },
+    {
+      "path": "logs/cf-av-producer-20260907.log.gz",
+      "bytes": 2043,
+      "sha256": "179f234f4be838df53c5c6dbb85a27ce462c094c37e4e8791df8e3d6877857de"
+    },
+    {
+      "path": "logs/cf-battle-preparation-20260907.log.gz",
+      "bytes": 384,
+      "sha256": "f78b80ed593808641db734e0bb2e85693100149c0841d10315afb50676c419cb"
+    },
+    {
+      "path": "logs/cf-battle-preparation-corrected-20260907.log.gz",
+      "bytes": 724,
+      "sha256": "a87be84342ce5c59f0fac40d335edf207d3ff4f87d1b9c2b32f693dd675bcc17"
+    },
+    {
+      "path": "logs/cf-landing-preparation-20260907.log.gz",
+      "bytes": 618,
+      "sha256": "d422f8dc696f7d00c8fe16704d98ca8231b687e5713d4865d770d8964f9c6b1a"
+    },
+    {
+      "path": "logs/cf-landing-preparation-corrected-20260907.log.gz",
+      "bytes": 596,
+      "sha256": "e47727fb6463b03b87919110b2a7264eb0c144ceb7d3c5774551f93c8a1fa87c"
+    },
+    {
+      "path": "logs/cf-landing-preparation-final-20260907.log.gz",
+      "bytes": 394,
+      "sha256": "f4d7c350c89985a2dc2f22a85419b39dd531e3727ee00f91d48e7b5813c4edc4"
+    }
+  ]
+}

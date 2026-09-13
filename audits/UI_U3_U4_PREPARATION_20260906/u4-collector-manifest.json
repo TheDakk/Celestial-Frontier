@@ -1,0 +1,46 @@
+{
+  "schema": "cf-ui-prepared-unapplied/v1",
+  "observedSource": "437a3aa08f1e5cb3c1b0b134e02f8cbe92c56204",
+  "status": "prepared-unapplied",
+  "certification": false,
+  "archive": {
+    "file": "u4-collector.tar.gz",
+    "bytes": 18020,
+    "sha256": "ddf40b478df467c95cb9ac430cf0440711922353a1eed32a64780b5dc45e9293",
+    "rawBytes": 61440,
+    "rawSha256": "8239d0246b1230ba145b1b7369e1d070ef4b932a31ff7a0f7ca754b204f904ca"
+  },
+  "files": [
+    {
+      "path": "PREPARATION.json",
+      "bytes": 962,
+      "sha256": "98ae2616e051989c413735b96fb3d47f8bc7af8e2be2fb8e41d9aaa377087675"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6716,
+      "sha256": "b09e50215e664a0287c6bb66855166b0007430f3d78dd8b98f8810150afe300c"
+    },
+    {
+      "path": "browser-readers.mjs",
+      "bytes": 11679,
+      "sha256": "71eab9447144682d6bdd6167d32a851ca7481aaff7faa62a2ef34ca2315ee593"
+    },
+    {
+      "path": "collect.mjs",
+      "bytes": 33985,
+      "sha256": "8da67404c3ac15cdc8224408c6709acbfcd774fd79af9530a9cfc6c5c70fd320"
+    },
+    {
+      "path": "config.example.json",
+      "bytes": 343,
+      "sha256": "950865e8d6cc9fe252bdd9e815577ad774ed9f1ddfdac9fc3df2d4d7c1ad48d6"
+    },
+    {
+      "path": "syntax-review.json",
+      "bytes": 1684,
+      "sha256": "099192480f0750a45ea868e3737a6089f8ee11ad88704dcddf40851ce190fa88"
+    }
+  ],
+  "notes": "No product application, tests, build or native checkpoint. Prior preparations remain immutable. Read archived README for scope, parser-only checks and gaps."
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "cf-earth-scene-cohesion-static/v1",
+  "status": "PASS",
+  "startedAt": "2026-09-08T23:19:25.995Z",
+  "sourceCommit": "5e222931efd642c03ce55c5e67f7670a7aef890c",
+  "sources": {
+    "study-harness.ts": "637bd4aaf98cfe324df4e7e2093d76df49d2b7fc137a6bdb08f734a62fb9f461",
+    "study.tsconfig.json": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4",
+    "study-runner.mjs": "9aaba69627ffc29420314510aa56ff521eb6851c4d2ffd6a6b237fa72cb2ead0",
+    "serve-study.mjs": "609949af02305a1653d8953ccb3519528a69441a9f56e169a94657e681ce62e5",
+    "cohesion-owner.ts": "4e27b06e262a9a193ea2c99f86b227552e72bb943fdd7fcc6ce6a3791d4d2fc7",
+    "asset.json": "e23adaa7c810436878dce1530824a8e658c806766c379794d70094f5f6ba6870"
+  },
+  "stages": [
+    {
+      "name": "study-typecheck",
+      "command": "port/v2/node_modules/.bin/tsc",
+      "args": [
+        "--noEmit",
+        "-p",
+        "audits/CREATURE_SCENE_COHESION_20260908/study.tsconfig.json"
+      ],
+      "exitCode": 0,
+      "log": "study-typecheck-final.log"
+    },
+    {
+      "name": "runner-syntax",
+      "command": "node",
+      "args": [
+        "--check",
+        "audits/CREATURE_SCENE_COHESION_20260908/study-runner.mjs"
+      ],
+      "exitCode": 0,
+      "log": "runner-syntax-final.log"
+    },
+    {
+      "name": "server-syntax",
+      "command": "node",
+      "args": [
+        "--check",
+        "audits/CREATURE_SCENE_COHESION_20260908/serve-study.mjs"
+      ],
+      "exitCode": 0,
+      "log": "server-syntax-final.log"
+    },
+    {
+      "name": "root-validate",
+      "command": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "log": "root-validate-final.log"
+    }
+  ],
+  "finishedAt": "2026-09-08T23:19:38.430Z"
+}

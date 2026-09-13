@@ -1,0 +1,15 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "earth-surface-turn-mesh-pipe",
+    "--",
+    "node",
+    "audits/AV_EARTH_SURFACE_TURN_20260908/mesh-pipe-checks.mjs"
+  ],
+  "startedAt": "2026-09-08T12:38:41.873548+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 23.231
+}

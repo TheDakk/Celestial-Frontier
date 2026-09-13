@@ -1,0 +1,147 @@
+{
+  "schema": "cf-u2-checkpoint-evidence/v1",
+  "source": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "productSource": "3f1578e2e416cf5e566e1f799c16ea0a081ae037",
+  "status": "vitest-pass-static-develop-strict-unused-binding-red-small-large-slice-not-run",
+  "executionStatus": "fail",
+  "startedAt": "2026-09-08T02:56:36.398Z",
+  "endedAt": "2026-09-08T02:57:27.523Z",
+  "firstFailure": {
+    "stage": "static-develop",
+    "exitCode": 1,
+    "command": "npm exec -- tsc --noEmit --noUnusedLocals",
+    "diagnostic": "tests/glass-post-close-geometry.test.ts(63,9): error TS6133: 'objective' is declared but its value is never read.",
+    "classification": "test-source unused local; no native product verdict"
+  },
+  "observedResults": {
+    "vitest": {
+      "status": "pass",
+      "filesPassed": 324,
+      "testsPassed": 3494,
+      "testsSkipped": 1
+    },
+    "strictTypecheck": {
+      "status": "fail",
+      "diagnosticCount": 1
+    },
+    "smallPhone": "NOT RUN",
+    "largePhone": "NOT RUN",
+    "slice": "NOT RUN"
+  },
+  "stages": [
+    {
+      "name": "signature",
+      "status": "pass",
+      "exitCode": 0
+    },
+    {
+      "name": "clone",
+      "status": "pass",
+      "exitCode": 0
+    },
+    {
+      "name": "root-install",
+      "status": "pass",
+      "exitCode": 0
+    },
+    {
+      "name": "v2-install",
+      "status": "pass",
+      "exitCode": 0
+    },
+    {
+      "name": "static-develop",
+      "status": "fail",
+      "exitCode": 1
+    }
+  ],
+  "provenance": {
+    "signedSourceStage": "pass",
+    "cloneStage": "pass",
+    "isolatedOfflineRootInstall": "pass",
+    "isolatedOfflineV2Install": "pass",
+    "changedProduct": [],
+    "ambientSha256": "95e30c9454a9707e734f6dfcde762897cab42d9b434ecce19851d0577182e7ac",
+    "hostedActions": 0,
+    "note": "Execution/logs copied byte-for-byte from the stopped run; no rerun, browser, build, or additional Git verification performed by retainer."
+  },
+  "correction": {
+    "file": "port/v2/tests/glass-post-close-geometry.test.ts",
+    "originalSource": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+    "originalSha256": "efdf6fdacb874cc927d0d0c8dbe07e6f3d7ed455d6a04080c3db9e0bb90f9450",
+    "correctedSha256": "9f5ff8d237fe4d3a0443394c9742f3fba97a20b258c8b260662ad0fb95888fd6",
+    "originalBytes": 15058,
+    "correctedBytes": 15040,
+    "exactMatchCount": 1,
+    "removedBinding": "objective",
+    "preservedFixtureCreation": "node('objchip', () => box(220, 10, 90, 44));",
+    "validation": "NOT RUN; awaiting root combined preparation",
+    "scope": "Remove only unused local binding; preserve objchip node creation and registration side effect."
+  },
+  "files": [
+    {
+      "file": "clone.log.gz",
+      "rawBytes": 676,
+      "rawSha256": "047b76608774c8b5b252d64f7878793f0a14936b093027707884de350d4ae8f8",
+      "bytes": 214,
+      "sha256": "a4e093666d31c2b39dc580dd54c000f7ebecaa7b2684be8e871cd35c5871fbb8"
+    },
+    {
+      "file": "controller.cjs.gz",
+      "rawBytes": 4885,
+      "rawSha256": "e0ee481b5833f07f233a60b0993fe7c7a9c84c5a6e8a5de4cd218b7b43763a17",
+      "bytes": 2041,
+      "sha256": "5ca89c6122d3e7629a2ec2867f2916ba7e83ca79936582d84386cf228a981439"
+    },
+    {
+      "file": "execution.json.gz",
+      "rawBytes": 3777,
+      "rawSha256": "1a36b9dbdebc43bcb7669440f98de49a3a22d23f50a54714ba54de16a80f9949",
+      "bytes": 1135,
+      "sha256": "4e9dae3d7008bb6dbfd178bac11ab3b5c40d6987f36c8f09d07dbbb6c798b9a1"
+    },
+    {
+      "file": "root-install.log.gz",
+      "rawBytes": 28,
+      "rawSha256": "b57d686f0c5f31b2ab3870d461a7d4c3b7090004a086f747c9818e3c8be1589f",
+      "bytes": 48,
+      "sha256": "b8c7dc2b1de241321e78289755630b2f81be68e719fb1dd5f7828568aa44b03b"
+    },
+    {
+      "file": "signature.log.gz",
+      "rawBytes": 135,
+      "rawSha256": "f6da87af347cddf791a8771d5098e5c45e9c9ddf4aa8cd551fac5d7d5821a3e7",
+      "bytes": 152,
+      "sha256": "334f0dcc90089880e4acd4d3003ef1731ea177cffb7b7b3b4a73d6f6d8ffa57e"
+    },
+    {
+      "file": "static-develop.log.gz",
+      "rawBytes": 6692,
+      "rawSha256": "5c029f1489301d9a7949fddf87937a4d4b373b4390eaf899dc693fd4c9e755a1",
+      "bytes": 2439,
+      "sha256": "8dd3a562820e7d6ab20297b122f19c45997080262da38f635618c66a0d66c3c3"
+    },
+    {
+      "file": "test-correction.diff.gz",
+      "rawBytes": 678,
+      "rawSha256": "7b7036b798ad24ca0a7badebb73c4733a2837a065a230987bd11cb95305ba9e7",
+      "bytes": 283,
+      "sha256": "8e32448cf183b1edefdeb22cfdc31576ce44d62262b75ccbdaba8c8c9fd7915b"
+    },
+    {
+      "file": "test-correction.json.gz",
+      "rawBytes": 665,
+      "rawSha256": "57a0da549498b73190655a86f565156d4c697a0c37a1c25c70daad44b8bb9819",
+      "bytes": 442,
+      "sha256": "e4bc1ea9d289e92b9000097ed949fe39e3c2fb6bc5af69ee6a09ce568355a8f8"
+    },
+    {
+      "file": "v2-install.log.gz",
+      "rawBytes": 332,
+      "rawSha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de",
+      "bytes": 178,
+      "sha256": "55d839bb353a982076ae477da0687bb5e410e0336640a4a8e1e8cfe33942ba3c"
+    }
+  ],
+  "certification": false
+}

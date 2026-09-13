@@ -1,0 +1,444 @@
+{
+  "schema": "cf-charter-settlement-audio-checkpoint/v1",
+  "createdAt": "2026-09-08T09:03:53.330710+00:00",
+  "parentCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "branch": "openai/mac",
+  "sourceState": "dirty-local-only",
+  "signedCommitPending": true,
+  "publishable": false,
+  "browserFreeDevelop": {
+    "status": "PASS",
+    "files": 331,
+    "testsPassed": 3727,
+    "testsSkipped": 1,
+    "typescriptPrograms": 3
+  },
+  "rootValidation": {
+    "status": "PASS",
+    "renderedSpecies": 1010,
+    "unchangedFingerprints": 50
+  },
+  "nativeDiagnostic": {
+    "status": "PASS",
+    "path": "native-retirement-corrected/review.json",
+    "priorNativeFailures": [
+      "native-first/review.json",
+      "native-ordinal-corrected/review.json"
+    ]
+  },
+  "visualReview": {
+    "status": "INSPECTED_WITH_FOLLOWUP",
+    "finding": "Scrolled objective text paints behind the sticky Charters title"
+  },
+  "retainedPreparationFailure": "preparation.json",
+  "certification": false,
+  "humanAcceptance": false,
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 834563,
+      "sha256": "da4f8b5d800794c752c1ac9cbd4f32c4a8fb1be261a94e9f5fc09b3dd148b9e2"
+    },
+    {
+      "path": "port/v2/apps/game/src/audiovisual-pilot.ts",
+      "bytes": 19802,
+      "sha256": "4c98a67a7ca74d1bcf67f88004f1dcf0a2d8ddc5977b5ef3ec58b0d75178cc5a"
+    },
+    {
+      "path": "port/v2/apps/game/src/tame-greeting-audio.ts",
+      "bytes": 62219,
+      "sha256": "c43d98e0c4f0b0ec2667d609c2a1beac0220b28370515bc01ec611d2fbe01a7b"
+    },
+    {
+      "path": "port/v2/apps/game/src/pilot-sound-player.ts",
+      "bytes": 4165,
+      "sha256": "9a0c09dfa7e55f91bcd99e305bb59ec0b2e0c8f2f13adf8d3b60263f30f6fce8"
+    },
+    {
+      "path": "port/v2/apps/game/src/pilot-pcm.ts",
+      "bytes": 6760,
+      "sha256": "681b29cb93528e88c67eff2effed2b8ff5659826e4529ccc3c3906b8ea8d6cc8"
+    },
+    {
+      "path": "port/v2/apps/game/src/pilot-assets.ts",
+      "bytes": 3262,
+      "sha256": "e17dbffb5baa6f935bfe745393e05a09022b53554a9f5ca202b88ed79ca40fbb"
+    },
+    {
+      "path": "port/v2/apps/game/src/starter-charters.ts",
+      "bytes": 36105,
+      "sha256": "3a8362c21689d7e9a2629d76987a0b9b9dbe538f4f637abf0e7179c1ab656eb4"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 157169,
+      "sha256": "11a0cadca032640c8e3898d0c8175b03d86233492aa5420be8fc00d2c17969ef"
+    },
+    {
+      "path": "port/v2/packages/audio/src/runtime.ts",
+      "bytes": 90874,
+      "sha256": "329480375409e5b8cab3683473d9320a35d21f9301ffedc62f2eb61ca07094c0"
+    },
+    {
+      "path": "port/v2/packages/persistence/src/outcome-transaction.ts",
+      "bytes": 58363,
+      "sha256": "bb765b96e2f9ea575103150e1eb0cb407f32cfafb955751bda79905680d4a85f"
+    },
+    {
+      "path": "port/v2/apps/game/src/f4-runtime-authority.ts",
+      "bytes": 34100,
+      "sha256": "d450f50c17adf9aa3925a22573cb43211331a1d1b0cbfeb6d29f47be96e8b231"
+    },
+    {
+      "path": "port/v2/budgets/compendium-memory-v1.json",
+      "bytes": 157467,
+      "sha256": "3237aca8e5946b4c8e0a4f7a7e14da02442100a6d904ead8b39445ac08baf724"
+    },
+    {
+      "path": "port/v2/tests/compendium-budget.test.ts",
+      "bytes": 146461,
+      "sha256": "1787221eb26291a24e1d00a22f2c10ce1e936d3bf56dfcc2fd01d051f5bcb720"
+    },
+    {
+      "path": "port/v2/tests/pilot-settlement-main-wiring.test.ts",
+      "bytes": 9492,
+      "sha256": "299b5c50baea31ec9f10e4f641ebdb241327edbc716af86c2a1561ab2edc9dff"
+    },
+    {
+      "path": "port/v2/tests/pilot-settlement-presentation.test.ts",
+      "bytes": 11369,
+      "sha256": "0c4d50314583514e8d8b5f5022955f2f9a9302f74a751856dfc5e37ac6ec8519"
+    },
+    {
+      "path": "port/v2/tests/tame-greeting-audio.test.ts",
+      "bytes": 95234,
+      "sha256": "662fd2b0cfef6d16e46808163e90b57fae1e645277774ffd627f619d335c9afe"
+    },
+    {
+      "path": "port/v2/tests/arc9-main-wiring.test.ts",
+      "bytes": 21844,
+      "sha256": "457589335c0aa7876bfcbb8bdbe3c3a7bf9b21f00c7fc1b9be0b7ccb753b5e76"
+    },
+    {
+      "path": "port/v2/tests/starter-charter-binder-main-wiring.test.ts",
+      "bytes": 13440,
+      "sha256": "71098c4ecf966f646b6712763995d9cb71dbb089e8e93e27bd2190bc3c7cb257"
+    },
+    {
+      "path": "port/v2/tests/guide-release.test.ts",
+      "bytes": 220874,
+      "sha256": "0b8f87e7e8b491ab2a2823acfc6894c67c850397f228dd19a0440e7c59fbea7a"
+    },
+    {
+      "path": "port/v2/tests/slicesmoke-sixth-red-contract.test.ts",
+      "bytes": 212030,
+      "sha256": "5cbd9bc82b1136623e06c3be0446c450a469d394609da3ff83773a6abe6a35d7"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "bytes": 1890119,
+      "sha256": "8baaa2c2730b8c21fa3f954545ecc34a714333f508d026c33a5106a063384522"
+    },
+    {
+      "path": "port/v2/tools/glassmatrix.mjs",
+      "bytes": 1150810,
+      "sha256": "d9cb689e6e311a775aeb450cb666b74d81dc3631c8448b0808f751cb07e1b82b"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-settlement.wav",
+      "bytes": 67244,
+      "sha256": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3"
+    },
+    {
+      "path": "celestial-frontier.html",
+      "bytes": 1964530,
+      "sha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746"
+    }
+  ],
+  "references": [
+    {
+      "path": "AUDIO.md",
+      "bytes": 69171,
+      "sha256": "bad61500d39dbcf95e242fc04aba560884f77551a0370a9ecabd4fa20a615587"
+    },
+    {
+      "path": "ART_DIRECTION.md",
+      "bytes": 124145,
+      "sha256": "47d8d11a1ffdeffedb3eaf58c5c80b7d8b5a8b79af00648e10aff958017fbd9e"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 456400,
+      "sha256": "79cdded9a1ad89b48a37fc75570f4993e1873927f00b30d7f16ca533d28f77a3"
+    },
+    {
+      "path": "AAA_COVERAGE_LEDGER.md",
+      "bytes": 5283,
+      "sha256": "186ba0df66ebd54789c96b91530f823734c66d4ee679b2b923fe77cc9c913197"
+    },
+    {
+      "path": "AAA_GAP_AUDIT.md",
+      "bytes": 4381,
+      "sha256": "2d636ada1797df8b0c88911c80c0883515cb76fb6c005cd9a73afc34747df999"
+    },
+    {
+      "path": "port/AAA_AUDIOVISUAL_CAMPAIGN.md",
+      "bytes": 69743,
+      "sha256": "458db2a09cd45ce3d0bc047787c9c3c3c9ff3a5c13333f1044f652128cbf4d68"
+    },
+    {
+      "path": "port/v2/README.md",
+      "bytes": 432660,
+      "sha256": "f64c9d24453e6f101c3e320ba7db29980962673add375315b9c8908019f6621d"
+    },
+    {
+      "path": "audits/AV_24H_CAMPAIGN_20260907.md",
+      "bytes": 13180,
+      "sha256": "2ccbe597ddfc287710a092c3ebdd4e26e297daaadf209efe772d56eee6ca90d4"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/BATCH_INTENT.md",
+      "bytes": 1573,
+      "sha256": "e14f5393fb3836aa63bc9a0f926837c55771e3bc9d51ee4393e9706e5cd6752c"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/ORDINAL_CORRECTION.md",
+      "bytes": 2527,
+      "sha256": "1d2b8ae93deb863b995c27c860b2cda3cef4b75685cb5496887cc180ca83c482"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/README.md",
+      "bytes": 5975,
+      "sha256": "ea2ab1e911ebab5e854d8cbe0e2e4c5e0b2bf487b6d730992d4032ad9216508a"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/VOICE_RETIREMENT_CORRECTION.md",
+      "bytes": 1709,
+      "sha256": "886a6847316875f074e894f9163b4667af56c09b06429f67aff8da019337d169"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/audio-focused.json",
+      "bytes": 465,
+      "sha256": "4df85b4cfd00a18a069618f18bfd4e77d89712dc93502f699ebb5e5c829c6b85"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/audio-focused.log",
+      "bytes": 247,
+      "sha256": "498438b3a3a1e2e508580d591b45cca703f9cb70b228a421ae804ae188fc9132"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/completion-controls-first-error.json",
+      "bytes": 566,
+      "sha256": "2f6cfa3035dd722870d52c46d74b3f742595bc6c6a75ef05d814485381e2da9d"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/completion-observer-controls.json",
+      "bytes": 943,
+      "sha256": "de368ba99e45408fb2c2030bd08d7a22e257651e6901c5ad8d24d2fdb35c6528"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/completion-observer-controls.mjs",
+      "bytes": 1751,
+      "sha256": "76dcfff33fa5c923f799f24c1eb77101a22cea9954e9603fe0c7bb68b30d6d07"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/develop-profile-corrected.log",
+      "bytes": 6988,
+      "sha256": "7b2e0282ec1df97724cb7b35e8b6a86e7808840291352d3c21eec5fe5a618348"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/develop-profile.log",
+      "bytes": 16751,
+      "sha256": "6278d6e8b5254e9bbf618f28d5543a8d357987c46a9706f0c7b6c23745fdb520"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/draft-authority.json",
+      "bytes": 180,
+      "sha256": "67a93d3ad303dc6ce77ff45c4f75e0e4ee8b5c1c00d419f1e0adeeb5f21a2849"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/draft-pin.log",
+      "bytes": 65,
+      "sha256": "6c986790abca4a14e515803cbbdb22bd09b5153635e49fdd77c8d371779c34a1"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/draft-pin.mjs",
+      "bytes": 1873,
+      "sha256": "9289a11f36a7194c48d683c8e7e9a9ef04a6f49c4a374b14cb0558b9771bb88e"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/focused.py",
+      "bytes": 841,
+      "sha256": "5073c22ebba4b304b2f08d4caa430bb40dc1fe57b89aa9b953a4a1a22f44bc39"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/initial-release-oracles/glassmatrix-source-receipt.json",
+      "bytes": 396,
+      "sha256": "8880d3ac5b141a79314d1a7f0d3e5194ef98255527f06aaa9109506cc6de1e9a"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/initial-release-oracles/glassmatrix.mjs.txt",
+      "bytes": 1149989,
+      "sha256": "e224c58c64f9ead8a22d4ec5521643721f4706bcc096cd6986d10ad9b7d66183"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/initial-release-oracles/guide-release.test.ts.txt",
+      "bytes": 220553,
+      "sha256": "be63111e8b111f6ee4cf0103359f5979fde7b0c386ebcfda5a10677a50282745"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/initial-release-oracles/manifest.json",
+      "bytes": 602,
+      "sha256": "19a9268a6800a6af676fe7ea614961002ad0fdbf4961910611efd9534fafe3c8"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/initial-release-oracles/slicesmoke.mjs.txt",
+      "bytes": 1889328,
+      "sha256": "aa3878509864534ceeb85180978cad34ace1cda73d7a79ac5869233df2b5d0a8"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/main-focused.json",
+      "bytes": 328,
+      "sha256": "b13842f94ebd63a2999111434a2a1ff1167ce028d18984b9ae426e6344c2b5b9"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/main-focused.log",
+      "bytes": 244,
+      "sha256": "bfcdbc15c2f5d7f95e475fdbd06e5042f63dc5d3e0f2d5d638f3555df82a0386"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-first/charter-available-phone.png",
+      "bytes": 457969,
+      "sha256": "44fbf37a79684820b608c938b0794fe64975b25f13ea2e8206498b7e2cd223a1"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-first/failure.png",
+      "bytes": 444468,
+      "sha256": "e4cff49ea620d423de475a747771f014544b764fb962bbfb07b06b333bd8f4db"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-first/review.json",
+      "bytes": 76642,
+      "sha256": "63fb088e26db15ae19d67547880ef7916e5a508a5ed09951061f07589c4346ef"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-first/runner.mjs",
+      "bytes": 19943,
+      "sha256": "9714451e845b1a8236e7c6cedfb8d4163bd05b497f45a52b69b1897f84c97057"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-ordinal-corrected/charter-available-phone.png",
+      "bytes": 457981,
+      "sha256": "eaabad85405a4593765b8d8012e64ae4da944d16caa031fb43221887ee3b6063"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-ordinal-corrected/failure.png",
+      "bytes": 444695,
+      "sha256": "986ad5f51547acf58d53cbd4cccbe6e0a0bb0d86761f7db0e4e4511b15e1fc3c"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-ordinal-corrected/review.json",
+      "bytes": 88383,
+      "sha256": "cf8434225a3691dc8ca0233d0446297228bd201fe969d72e76e56e41f5019415"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-ordinal-corrected/runner.mjs",
+      "bytes": 21191,
+      "sha256": "382f113ca92f45440ac57618b3c534f6ef6004c8148ae191c0a7aefe6c056278"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-retirement-corrected/charter-accepted-phone.png",
+      "bytes": 444640,
+      "sha256": "cb766c44953e84883322261cabd16cf00ae61c3c396a4fe3802e94ed77d421bd"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-retirement-corrected/charter-available-phone.png",
+      "bytes": 457628,
+      "sha256": "9506420ee596d7479c68d38306d03872afdff269a79c5770a72e248527ad1adc"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-retirement-corrected/review.json",
+      "bytes": 77252,
+      "sha256": "bbdbbc9889bd537e6f0283e3a0ead6e97a5a3360a8a7855a3a60b3f5261d0cfd"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-retirement-corrected/runner.mjs",
+      "bytes": 21955,
+      "sha256": "b314e377ba166bd6946c4f81050b29090b5d3151b61f45418727ba5b7d4b0c64"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-retirement-corrected/visual-inspection.json",
+      "bytes": 671,
+      "sha256": "1c6a59f3558f36c3851cddc86a82359914512ae58aa4db9972bd00c29e03ae5f"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/native-runner.mjs",
+      "bytes": 21955,
+      "sha256": "b314e377ba166bd6946c4f81050b29090b5d3151b61f45418727ba5b7d4b0c64"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/preparation-corrected.json",
+      "bytes": 419,
+      "sha256": "6e7a498c38150a69f62a164df6493a2696b845614f9ff123a10a178057f9ceee"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/preparation.json",
+      "bytes": 1130,
+      "sha256": "8fc7df609bcdd87c77fc7c96ba22bfab69c52db0eb597ea0493976e336872980"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/prepare-corrected.py",
+      "bytes": 1213,
+      "sha256": "74c18ba40dd21738c3ec7bb56c2c35e7ff3566b8203eb7ce19f4856f671a8d88"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/prepare.py",
+      "bytes": 1208,
+      "sha256": "5e71de170e75516273b77d54d67743f30bc3693403639367e45b6d00597043b9"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/producer-build.log",
+      "bytes": 5535,
+      "sha256": "e0a0e1fc8a71e29e51cf3d3ed0d2968bc94b6c23472bd36d1123e0fd66d5f96f"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/producer-refresh.json",
+      "bytes": 1230,
+      "sha256": "4ee250684b24f0e98c6f38105d9d3e527ac47e9d2eb7d93739afc0bd0aca668e"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/producer-refresh.log",
+      "bytes": 65,
+      "sha256": "c60d0063a33db32a005e11d7d4102cf160f35602544754c09987c761d1598df5"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/producer.json",
+      "bytes": 6119,
+      "sha256": "1af4a45687984f1a86f3f10b9944b8430c0f9907b58ef47c86c669e9693b0467"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/producer.mjs",
+      "bytes": 606,
+      "sha256": "2fc583850c05b2cb6ad8752db60a63521b879caa09f50575cae2d0b160f0964f"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/refresh-producer.mjs",
+      "bytes": 2420,
+      "sha256": "b56e92c818f8a4361bdb9db72cca984d3786a16eb01f78b528050a91efac5b22"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/root-validation.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/seal-manifest.py",
+      "bytes": 3754,
+      "sha256": "bc5dd1a3c3614c30eddcec7766f5426e92a561b5a9071b59e9e8514e753f28f8"
+    }
+  ],
+  "evidenceCount": 48,
+  "evidenceBytes": 6364059
+}

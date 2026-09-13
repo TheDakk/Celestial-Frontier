@@ -1,0 +1,128 @@
+{
+  "schema": "cf-creature-charm-study/v1",
+  "status": "PASS",
+  "sourceMasterSha256": "a5e635a7587e1e8b8be7a3bd3636f56375ba84654989e696cf251b4a1c188e8a",
+  "phenotypeSha256": "757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476",
+  "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Wolf\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"792844710\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+  "recipeSha256": "12a69f4060ea45d4ba324ced52b0672a9f7345016152374eac98433c07aa6221",
+  "blenderVersion": "5.2.1 LTS",
+  "buildHash": "9e2066aef7ef",
+  "treatments": [
+    {
+      "name": "natural",
+      "sourceSkinCoordinatesUnchanged": true,
+      "skinVertices": 68890,
+      "fiberVertices": 29155,
+      "enabledDevices": [
+        {
+          "name": "Apple M4 Pro (GPU - 16 cores)",
+          "type": "METAL",
+          "id": "METAL_Apple M4 Pro (GPU - 16 cores)"
+        }
+      ],
+      "cpuEnabled": false,
+      "keyframes": [
+        1,
+        13,
+        21,
+        29,
+        41,
+        53,
+        65
+      ],
+      "masterSha256": "3a2cb57231ef82d2c2928380e31abcaf6129136d7ec273087fe33b82d27c2a36",
+      "renders": [
+        {
+          "frame": 1,
+          "path": "natural/pose-001.png",
+          "sha256": "162e2b086c41504a7cc28587c2d4d0118fcccd002af78f9ecf8811693156bd75",
+          "seconds": 3.783
+        },
+        {
+          "frame": 13,
+          "path": "natural/pose-013.png",
+          "sha256": "d2bcc320a1a4e43b6f3b8d6d4fce1b1b99b13623c01666ef3be7e78de4c75cb2",
+          "seconds": 2.271
+        },
+        {
+          "frame": 21,
+          "path": "natural/pose-021.png",
+          "sha256": "139e19ab54e2102ef69835acc45f7579ccf8bac3cca9ae54d7dd600b392757fc",
+          "seconds": 2.621
+        },
+        {
+          "frame": 41,
+          "path": "natural/pose-041.png",
+          "sha256": "6b73303e0ca3a290172da7357dc6d4a9b5cfc3120b28c56da2ba74b4c02053c3",
+          "seconds": 1.745
+        },
+        {
+          "frame": 53,
+          "path": "natural/pose-053.png",
+          "sha256": "c5ecac2d790cbd12cf9b7e128b49399408c45cad56e352cd71e2c84679ee935c",
+          "seconds": 1.644
+        }
+      ]
+    },
+    {
+      "name": "storybook",
+      "sourceSkinCoordinatesUnchanged": true,
+      "skinVertices": 68890,
+      "fiberVertices": 16595,
+      "enabledDevices": [
+        {
+          "name": "Apple M4 Pro (GPU - 16 cores)",
+          "type": "METAL",
+          "id": "METAL_Apple M4 Pro (GPU - 16 cores)"
+        }
+      ],
+      "cpuEnabled": false,
+      "keyframes": [
+        1,
+        13,
+        21,
+        29,
+        41,
+        53,
+        65
+      ],
+      "masterSha256": "5e6ad74d6de549ace56b4c13766016c39253096c0b72f318f9d3507a3ee6eb39",
+      "renders": [
+        {
+          "frame": 1,
+          "path": "storybook/pose-001.png",
+          "sha256": "a8ed2ca2caec0b8f04b5532cc074ae0b0f606bc1bc274dd12322858cd8e02e39",
+          "seconds": 1.615
+        },
+        {
+          "frame": 13,
+          "path": "storybook/pose-013.png",
+          "sha256": "ac8b256fa07445c46bdabb84f86f369577b250bb308ff8b775142bb2be0ad2d7",
+          "seconds": 1.158
+        },
+        {
+          "frame": 21,
+          "path": "storybook/pose-021.png",
+          "sha256": "dc7d6148ff8c683e938fcf5104b811ce8706ee03df6ca19824234f6e16934889",
+          "seconds": 1.393
+        },
+        {
+          "frame": 41,
+          "path": "storybook/pose-041.png",
+          "sha256": "7a8930a6477c9163329c57cc16299f33dacb242607c9d1a076142347743aeca5",
+          "seconds": 1.661
+        },
+        {
+          "frame": 53,
+          "path": "storybook/pose-053.png",
+          "sha256": "e8a73f90ae69d5982e958739ee695ab234a139458102c7b401f3192a23ec7196",
+          "seconds": 1.46
+        }
+      ]
+    }
+  ],
+  "runtimeIntegrated": false,
+  "humanAcceptance": false,
+  "seconds": 20.856,
+  "originalInputsUnchanged": true
+}

@@ -1,0 +1,190 @@
+{
+  "schema": "cf.local-ai-runtime-source-pins.v1",
+  "files": [
+    {
+      "source": "audits/AI_GAME_INTEGRATION_20260909/platypus-reference-binding.json",
+      "target": null,
+      "bytes": 2987,
+      "sha256": "adeccf420d3c62694367403da019102dddd748a655a6f66b8d7014c985ddd308"
+    },
+    {
+      "source": "audits/AI_GAME_INTEGRATION_20260909/platypus-reference.png",
+      "target": "__local_ai/reference.png",
+      "bytes": 1969238,
+      "sha256": "0b4584f76ce18f42e38e0c28e9a42758280d0c0de390d45371422a7e4c91fe57"
+    },
+    {
+      "source": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/diffusers-040c7cd-LICENSE",
+      "target": "__local_ai/notices/diffusers-040c7cd-LICENSE",
+      "bytes": 11357,
+      "sha256": "f9e2070c247517b1ddf65f7b11b393484a18da91a958fd18a97bd0f241c3125c"
+    },
+    {
+      "source": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/onnxruntime-2e2543f-ThirdPartyNotices.txt",
+      "target": "__local_ai/notices/onnxruntime-2e2543f-ThirdPartyNotices.txt",
+      "bytes": 336906,
+      "sha256": "53d3fa5821ac016ac24dd35775c996efec86e2ae0841e9a3a5e146c0ae916845"
+    },
+    {
+      "source": "audits/AI_LANDFALL_CONTINUATION_20260909/runtime-pack/license-source/provenance.json",
+      "target": "__local_ai/license-source-provenance.json",
+      "bytes": 2977,
+      "sha256": "4391607aa2dbb1b2759d6459e43e7611b2de925a61e5a322b8ee4c92afe8f2a6"
+    },
+    {
+      "source": "tools/local-image-generation/THIRD_PARTY_NOTICES.md",
+      "target": "__local_ai/notices/THIRD_PARTY_NOTICES.md",
+      "bytes": 4151,
+      "sha256": "2feae1e66d3a1ce59cb2473e79e230c5dc4535f311adb6e23a45c87db9ee19ce"
+    },
+    {
+      "source": "tools/local-image-generation/denoiser-shapes.mjs",
+      "target": "__local_ai/denoiser-shapes.mjs",
+      "bytes": 2370,
+      "sha256": "c66850a4d3564e6336a2d5891152c2120d2847dcef87782d5197aae102e8f6d6"
+    },
+    {
+      "source": "tools/local-image-generation/gpu-profile.mjs",
+      "target": "__local_ai/gpu-profile.mjs",
+      "bytes": 9725,
+      "sha256": "4a02596d6a885a88b894c4a285bd93be07437e856107c34489231c7191d2dbf1"
+    },
+    {
+      "source": "tools/local-image-generation/licenses/flux2-klein-4b-LICENSE.md",
+      "target": "__local_ai/notices/licenses/flux2-klein-4b-LICENSE.md",
+      "bytes": 9584,
+      "sha256": "ca02bc51900ab07789d1b70283329e7137f5af98f5161c23a1c81fc38a4af1fe"
+    },
+    {
+      "source": "tools/local-image-generation/licenses/onnxruntime-1.29.0-LICENSE",
+      "target": "__local_ai/notices/licenses/onnxruntime-1.29.0-LICENSE",
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "source": "tools/local-image-generation/licenses/onnxruntime-web-1.29.0-installed-banner.txt",
+      "target": "__local_ai/notices/licenses/onnxruntime-web-1.29.0-installed-banner.txt",
+      "bytes": 132,
+      "sha256": "188cf2eb1cabf1a851856f9bf347885455ce47a130d42a25b675475351c0cbc0"
+    },
+    {
+      "source": "tools/local-image-generation/licenses/provenance.json",
+      "target": "__local_ai/notices/licenses/provenance.json",
+      "bytes": 4012,
+      "sha256": "c971bc7d7f484f21a9aad2563389a098cca780f3ba72bf3c024c0025213fe35c"
+    },
+    {
+      "source": "tools/local-image-generation/licenses/qwen3-4b-LICENSE",
+      "target": "__local_ai/notices/licenses/qwen3-4b-LICENSE",
+      "bytes": 11343,
+      "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e"
+    },
+    {
+      "source": "tools/local-image-generation/licenses/tokenizers-0.2.0-LICENSE",
+      "target": "__local_ai/notices/licenses/tokenizers-0.2.0-LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "source": "tools/local-image-generation/model-manifest.json",
+      "target": null,
+      "bytes": 7268,
+      "sha256": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef"
+    },
+    {
+      "source": "tools/local-image-generation/node_modules/@huggingface/tokenizers/LICENSE",
+      "target": null,
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "source": "tools/local-image-generation/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "target": "__local_ai/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "bytes": 98937,
+      "sha256": "1c4a848f86156201c033d6cd08c4cf81ae1088552acec3367f31ef086edf5af0"
+    },
+    {
+      "source": "tools/local-image-generation/node_modules/@huggingface/tokenizers/package.json",
+      "target": null,
+      "bytes": 1965,
+      "sha256": "f6b9849b58de625c4fd79583242dd4506914b92082f9af17719d39416658ef24"
+    },
+    {
+      "source": "tools/local-image-generation/node_modules/onnxruntime-common/package.json",
+      "target": null,
+      "bytes": 977,
+      "sha256": "976083947171b96bb7e998fdc8137bc50d3efb44c786ff3dbafb7f1bc4684dc8"
+    },
+    {
+      "source": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "target": "__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "bytes": 51407,
+      "sha256": "5d25483158d53d8f34d0e9c06a654d56c8dca4ebdf370ea0982ef11315a00e0e"
+    },
+    {
+      "source": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "target": "__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "bytes": 25749873,
+      "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549"
+    },
+    {
+      "source": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "target": "__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "bytes": 66348,
+      "sha256": "08272eb8dadd249a0eaa53e19f4e5b5d01bc8a121240719db29093cfb776bc27"
+    },
+    {
+      "source": "tools/local-image-generation/node_modules/onnxruntime-web/package.json",
+      "target": null,
+      "bytes": 4593,
+      "sha256": "9c803baa1820e75a82907bbf29c0a4be84d4eaec33693b4ab3bd5051fde85ee9"
+    },
+    {
+      "source": "tools/local-image-generation/package-lock.json",
+      "target": null,
+      "bytes": 7034,
+      "sha256": "a248f29f9522b42eadf191b1f5351f4df76c50e93c310959c0c817f2c68b2792"
+    },
+    {
+      "source": "tools/local-image-generation/pipeline-math.mjs",
+      "target": "__local_ai/pipeline-math.mjs",
+      "bytes": 10225,
+      "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+    },
+    {
+      "source": "tools/local-image-generation/source-contract.md",
+      "target": "__local_ai/source-contract.md",
+      "bytes": 18988,
+      "sha256": "d0da10bfacd809fc09191b495224a20de29f8d3a5efecb2f502b7ebf4ca540cf"
+    },
+    {
+      "source": "tools/local-image-generation/stage-worker.mjs",
+      "target": "__local_ai/stage-worker.mjs",
+      "bytes": 11212,
+      "sha256": "337aaea3f7f9804a4409887367b922ed68e02a8ee3dc7f0c859c913dfa52d8ac"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "onnxruntime-web",
+      "version": "1.29.0",
+      "integrity": "sha512-LuQlpX6MFLJZu756erwUeb1mNfoJGbs1kzDwJGNlf5RvfYMdqhcY3vNpDPK40CUV2HoWTkIj+uS0o36GFHjeYw==",
+      "packageJson": "tools/local-image-generation/node_modules/onnxruntime-web/package.json"
+    },
+    {
+      "name": "onnxruntime-common",
+      "version": "1.29.0",
+      "integrity": "sha512-/F63/e2VJoaVXGGNu6S5QH7jivBThGO95OzAVXXQ8hTta/b1QxI8udHa6cI3+3mAb5WWIIaMMwfZw01oivjJ1g==",
+      "packageJson": "tools/local-image-generation/node_modules/onnxruntime-common/package.json"
+    },
+    {
+      "name": "@huggingface/tokenizers",
+      "version": "0.2.0",
+      "integrity": "sha512-LidMHe1FpcSYH4vcSjXooda34pC0M8m1gmDOv7SQi6Iv+ib1zX7J3sHBCC9/3FPCkn2k1b55FneVqMRxrr99pg==",
+      "packageJson": "tools/local-image-generation/node_modules/@huggingface/tokenizers/package.json"
+    }
+  ],
+  "packageLock": "tools/local-image-generation/package-lock.json",
+  "modelManifest": "tools/local-image-generation/model-manifest.json",
+  "referenceBinding": "audits/AI_GAME_INTEGRATION_20260909/platypus-reference-binding.json"
+}

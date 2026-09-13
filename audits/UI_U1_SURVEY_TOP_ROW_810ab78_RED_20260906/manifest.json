@@ -1,0 +1,26 @@
+{
+  "source": "810ab78f7874a93150bda0a01e557d99f9975556",
+  "status": "INSTRUMENT RED \u2014 exact style-attribute restoration mismatch",
+  "files": [
+    {
+      "file": "report.json.gz",
+      "sha256": "cd6fc6732bb802430bb6e48ebbb9cc809660ac690f546aa4bd61f086ec3b8242",
+      "originalSha256": "7aba3cf9faadda2c58577f8079cb32e07bd30242cb100074e78bf6b6f35370fa"
+    },
+    {
+      "file": "survey-top-390x844.png",
+      "sha256": "adfbb78d87f678c9853b1b203b958aef839cd7208d3300c49fa06049b91909db",
+      "originalSha256": "adfbb78d87f678c9853b1b203b958aef839cd7208d3300c49fa06049b91909db"
+    },
+    {
+      "file": "cf-u1-survey-top-normal-build-810ab78.log.gz",
+      "sha256": "9477ad6e1cd75b544c9aaf90a1a1321d2aa0144628f61075680ec338959d4a4d",
+      "originalSha256": "ce0236f8b7898b7e2837702b0c7b3ca4c498500d87d67a2146634ae9f200bd8d"
+    },
+    {
+      "file": "cf-u1-survey-top-browser-810ab78.log.gz",
+      "sha256": "2e32a0c7df200b4691a11cd076a1fc9eb91a0d8917575495b8a9d3cec9e297d5",
+      "originalSha256": "80754cb0987c88843a1856877a19b301cd9ed4a874e39824b38dad16da5f9dc1"
+    }
+  ]
+}

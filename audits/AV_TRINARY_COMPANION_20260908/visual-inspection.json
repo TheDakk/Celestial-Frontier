@@ -1,0 +1,25 @@
+{
+  "schema": "cf-trinary-visual-inspection/v1",
+  "inspectedAt": "2026-09-08T10:55:34.161280+00:00",
+  "status": "PASS",
+  "method": "Codex viewed all three original PNG files using view_image",
+  "humanAcceptance": false,
+  "scope": "Third-star presence and observed screenshot composition only; not full UI/device acceptance",
+  "captures": [
+    {
+      "path": "trinary-phone-overview.png",
+      "sha256": "dd31d3f618e64e54e60bb66203c3583718f5120c2ebbf362e6fdc430565d889c",
+      "observation": "Phone overview shows all three suns inside the four-world system, with the triple-system caption and existing UI controls. The native Follow achievement toast remains present."
+    },
+    {
+      "path": "trinary-phone-reduced-effects-off.png",
+      "sha256": "799d748cb7637d23f5a3b47a07816a6562ed2d0ea0efedcaede864e2e7b21771",
+      "observation": "Phone Reduced Motion plus Effects Off close-up visibly retains the orange third-star glow. The textured primary is partly offscreen due to the deliberate camera framing; this does not establish companion close-up surface detail."
+    },
+    {
+      "path": "trinary-desktop-1440x1000-dpr1.png",
+      "sha256": "fa71c00dc79f230507765af49b928da829f6ec15ea8b06256189e6456d437dea",
+      "observation": "Desktop close-up visibly retains the centered orange third-star glow, readable caption and separate commands. Primary is partly offscreen by deliberate framing. Companion granulated surfaces remain a visible unfinished gap."
+    }
+  ]
+}

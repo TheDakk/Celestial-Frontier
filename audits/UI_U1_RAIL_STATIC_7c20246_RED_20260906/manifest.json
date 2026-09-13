@@ -1,0 +1,63 @@
+{
+  "schema": "cf-u1-rail-static-stop/v1",
+  "source": "7c20246b2b0c238a7e1bf14d1c405ddb368bf75a",
+  "status": "type-declaration-only RED; browser stages NOT RUN",
+  "files": [
+    {
+      "path": "execution.json.gz",
+      "bytes": 800,
+      "sha256": "5dc911c6306e6d73ac8ebcf9679f4fe07793e52a6a709b6477b6ac0a88a6f499",
+      "payloadBytes": 3142,
+      "payloadSha256": "14a771d0b9ec5f1fffd37cf48b42435e31f4d2cc80d64b1b16ecc930a609be0b"
+    },
+    {
+      "path": "signature.log.gz",
+      "bytes": 152,
+      "sha256": "46390f50d1ba3b76bc1b2d34d8466f87472378c99b14d1c3dc6d64950eb0e9d5",
+      "payloadBytes": 135,
+      "payloadSha256": "f6da87af347cddf791a8771d5098e5c45e9c9ddf4aa8cd551fac5d7d5821a3e7"
+    },
+    {
+      "path": "clone.log.gz",
+      "bytes": 92,
+      "sha256": "93875928e45e21d62ad45f6d09084efca906f837f20f7cfb1e259c6ccbac1226",
+      "payloadBytes": 75,
+      "payloadSha256": "fd2863a167cc0e296573cc3c2ab9ec8d7e6f9196150e93bd32e0c28a61e0e813"
+    },
+    {
+      "path": "root-install.log.gz",
+      "bytes": 48,
+      "sha256": "5406770f9e0c1a3a0e66949ce571c90fde625ac0e4cb9197d5632ace3e61b0bb",
+      "payloadBytes": 28,
+      "payloadSha256": "1037194a63e34298af3a9177cc9ecb318193f1a5b1e0003f2ee097ddc0169fd9"
+    },
+    {
+      "path": "v2-install.log.gz",
+      "bytes": 178,
+      "sha256": "03ba5e266bb97fa3efd1c7544b3e6f734851227228371a21e2e99b4c3653dc9e",
+      "payloadBytes": 332,
+      "payloadSha256": "eec981112503bc416ba691bb8d68705f1f2f163c9b18c74491df037984e54ac2"
+    },
+    {
+      "path": "static-develop.log.gz",
+      "bytes": 2606,
+      "sha256": "d65a9b7324f61fe2df9ce28b61931a8329ee8b2728195fe8404e16073312adae",
+      "payloadBytes": 7135,
+      "payloadSha256": "63496529d272611a6f35978c20176b3a52888e1b26c2d59e561e147c4bd46605"
+    },
+    {
+      "path": "cf-u1-rail-declaration-typecheck-20260906.log.gz",
+      "bytes": 20,
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "payloadBytes": 0,
+      "payloadSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cf-u1-rail-declaration-validate-20260906.log.gz",
+      "bytes": 708,
+      "sha256": "e4e8b9c652f3488e877f4b2d8e230ead9cd547181fcb61655fa14c48d7fd6201",
+      "payloadBytes": 1093,
+      "payloadSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    }
+  ]
+}

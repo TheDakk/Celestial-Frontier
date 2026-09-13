@@ -1,0 +1,93 @@
+{
+  "scope": "Two unchanged baseline landings, one native run; no inference during preparation",
+  "sameRecipeSha256": "3760bc2c1d31722d3b47891f1989d1029718b7dddd25ec98c210d8f996207591",
+  "clientSource": "port/v2/apps/game/src/local-ai-kit-runtime.ts",
+  "clientSourceSha256": "61711c87a167c4f5d745c83fb98c6aed38ecf87531ea95c008d36c3fa196a793",
+  "files": [
+    {
+      "path": "recipe.json",
+      "bytes": 40598,
+      "sha256": "3760bc2c1d31722d3b47891f1989d1029718b7dddd25ec98c210d8f996207591"
+    },
+    {
+      "path": "prepared-manifest.json",
+      "bytes": 6888,
+      "sha256": "04b42ef2a9b327cd7e3e26b4e5d9784b43adf847f3b17a6fa28dbebd3feeb0df"
+    },
+    {
+      "path": "runtime-prompt.txt",
+      "bytes": 1724,
+      "sha256": "741e3078a4a12a669a0fc9846f68789e1717bfc31cd584910568067ff541194c"
+    },
+    {
+      "path": "runtime-prompt-chat-wrapped.txt",
+      "bytes": 1793,
+      "sha256": "18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde"
+    },
+    {
+      "path": "compositor-preview.json",
+      "bytes": 1848,
+      "sha256": "e586f88087a5630316e37b6dd43603b7da8993a557dcb0981a5cb7afb3c58ca9"
+    },
+    {
+      "path": "compositor-preview.png",
+      "bytes": 1390224,
+      "sha256": "3b9c3988c508a8cee1045215926644ceefdec8ad8de8fcca79839223c7583e6b"
+    },
+    {
+      "path": "compositor-preview.rgba",
+      "bytes": 2359296,
+      "sha256": "6b5746f846bdfdf0bbf2a6b99998654836b9c612c1880a4a99b8fe29d8871b57"
+    },
+    {
+      "path": "inputs/civet.rgba",
+      "bytes": 589824,
+      "sha256": "447d80f0682694f8b483c21c6f45d6db4e7aa2ec9e29180177c8b2fde4835740"
+    },
+    {
+      "path": "inputs/persimmon.rgba",
+      "bytes": 589824,
+      "sha256": "57e0db93c9817f72210dfb46c3d41590f9ed9887aa6cd0c4c75ee801e0862b1f"
+    },
+    {
+      "path": "inputs/platypus.rgba",
+      "bytes": 589824,
+      "sha256": "ef0d19aa79cbbf99cd3439c5fdcc6361df4acc00bb8de1f1f06dd8dbc0c9fbaf"
+    },
+    {
+      "path": "inputs/frog.rgba",
+      "bytes": 589824,
+      "sha256": "fefdfadb4e84da311c4dda6898d90b472d9ed89b1f83858bbb9d6747bdbd9fa5"
+    },
+    {
+      "path": "inputs/devils-club.rgba",
+      "bytes": 589824,
+      "sha256": "ae593073e675943ebe915bd1a69ba54b62e02804f11c942f3311e03e15948356"
+    },
+    {
+      "path": "inputs/cranberry.rgba",
+      "bytes": 589824,
+      "sha256": "2011a3a1371e38f45e9c85403917f966bcc758adb5d906c017917a01e5b9a58b"
+    },
+    {
+      "path": "inputs/earth-temperate.rgba",
+      "bytes": 2359296,
+      "sha256": "209907262f72b4ce21f89f0f25d51785f2bf2b704049f889badefe3b84ef5e5a"
+    },
+    {
+      "path": "inputs/atlas.rgba",
+      "bytes": 688128,
+      "sha256": "7383061cbcc3e766a146e0aef4cabdd9864f5c4e2acd9edf4e1b9d39725a99b1"
+    },
+    {
+      "path": "inputs/triptych.rgba",
+      "bytes": 458752,
+      "sha256": "22aa9825ccf55a4422fe10ea26845fedb1042f201b4d419a4699315f3a6e6974"
+    },
+    {
+      "path": "inputs/foreground-grass.rgba",
+      "bytes": 16384,
+      "sha256": "cd0bb228a8ad5a2ea1b77dfa005738e0dde72d4e373c8ef70c75df4bb982927b"
+    }
+  ]
+}

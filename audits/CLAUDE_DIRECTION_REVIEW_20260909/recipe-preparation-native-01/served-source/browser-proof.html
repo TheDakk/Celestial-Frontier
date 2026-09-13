@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Celestial Frontier · Local painting proof</title>
+<link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box}body{margin:0;padding:24px;background:#111a1d;color:#e8e5d9;font:16px/1.5 system-ui}main{max-width:1100px;margin:auto}h1{font:28px Georgia}h2{font:24px Georgia}button{font:inherit;padding:10px 18px;margin:0 8px 12px 0;background:#23373b;border:1px solid #728e88;border-radius:5px;color:inherit;cursor:pointer}button:focus-visible{outline:3px solid #dfbd78;outline-offset:3px}button:disabled{opacity:.6;cursor:default}[hidden]{display:none!important}canvas{max-width:100%;height:auto;display:block}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.5 monospace}p{max-width:800px}nav{border-bottom:1px solid #445854;margin-bottom:20px}.landing-slot{min-height:72px;display:flex;align-items:start;gap:12px;flex-wrap:wrap}#landing-progress{max-width:520px;width:100%}progress{display:block;width:100%;height:18px;accent-color:#c9ac74}#landing-label{display:block;font-weight:600}#notice{border:1px solid #9f936d;background:#253934;padding:16px;margin:18px 0}#notice p{margin:0 0 12px}#roster{white-space:pre-line}details{margin-top:24px}small{color:#b8c5bc}@media(max-width:420px){body{padding:16px}h1{font-size:24px}.landing-slot{gap:0}}
+</style>
+<main><h1>Celestial Frontier · Local painting proof</h1>
+<p>A browser research preview of one canonical Earth landfall. The new landing interaction runs here while model delivery and artwork quality remain under development.</p>
+<nav aria-label="Preview navigation"><button id="planet">Earth</button><button id="explore">Field journal</button></nav>
+<div id="notice" hidden><p id="notice-text" role="status" aria-live="polite"></p><button id="notice-open">View landfall</button></div>
+<section id="planet-panel" aria-label="Earth landfall">
+<h2>Earth · riverbank</h2>
+<div class="landing-slot"><button id="generate">Land</button><div id="landing-progress" hidden><span id="landing-label">Landing · ETA estimating…</span><progress id="landing-meter" max="1" aria-label="Landing progress"></progress></div><button id="cancel" disabled>Cancel landing</button></div>
+<p id="status" role="status">Ready</p><canvas id="painting" width="768" height="432" hidden></canvas>
+</section>
+<section id="journal-panel" hidden aria-label="Field journal"><h2>Field journal</h2><p>Generation continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.</p><p id="roster">Land on Earth to prepare the preview roster.</p><small>The full game will keep exploration, fleet management, and Compendium activities available during generation.</small></section>
+<details><summary>Generation evidence</summary><pre id="events"></pre></details></main>
+<script type="module" src="/browser-proof.mjs"></script></html>

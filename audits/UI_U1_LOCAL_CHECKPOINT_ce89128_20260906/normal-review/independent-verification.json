@@ -1,0 +1,227 @@
+{
+  "schema": "cf-u1-review-independent-verification/v1",
+  "verifiedAt": "2026-09-06T19:44:05.192Z",
+  "status": "PASS",
+  "source": "ce8912864fabbe5624651e76c06b94f95b734f39",
+  "scope": "Read-only replay of existing full three-view normal U1 review; no browser run, tests, product edits, or certification claim.",
+  "report": {
+    "file": "/private/tmp/cf-u1-checkpoint-review-ce89128-20260906/review.json",
+    "sha256": "8cae0570b8c289968b96d03a61667319651cc7512d60d30e2c1b2d9c5e06fe16",
+    "schema": "cf-u1-shell-review/v1",
+    "scope": "full",
+    "status": "PASS"
+  },
+  "methods": {
+    "publicExports": [
+      "assessNativeReviewDelivery",
+      "assessNativeReviewKeyboardDelivery",
+      "assessReviewFrameSettlement"
+    ],
+    "trustedSourceExtractedPureAssessors": [
+      "metricDeltas",
+      "topLeftOutcome",
+      "launcherOutcome",
+      "assessProgrammaticSettingsDelivery",
+      "notificationBoundsPass"
+    ],
+    "sourceSha256": {
+      "port/v2/tools/ui-shell-review.mjs": "d9e8757b1f86aa971cb68590b4cb1b3479ff2f729012b16a79ccec0b7a25a6ac",
+      "port/v2/tools/ui-review-evaluation.mjs": "d2fc925a4991e2762f1bbc91a7b95c3f7022fc40b502401db69c455d9419c628"
+    },
+    "expressionCatalogue": "Rehashed and linked to terminal evaluation receipts; expressions were not executed."
+  },
+  "counts": {
+    "evaluations": 761,
+    "catalogueExpressions": 210,
+    "baselineMetrics": 146,
+    "geometryControls": 131,
+    "geometryControlsWithRawReplay": 128,
+    "geometryControlsWithRetainedDeltasOnly": 3,
+    "nativeLauncherRoundTrips": 27,
+    "notificationNegativeObservations": 12,
+    "additionalPhoneLayoutProbes": 2,
+    "narrowCollisionControls": 1,
+    "sameTaskSettingsMetricChecks": 3,
+    "frameSettlements": 75,
+    "frameSettlementsByDocument": [
+      33,
+      21,
+      21
+    ],
+    "portraitRestoration": {
+      "receiptId": 33,
+      "requestedViewport": {
+        "width": 390,
+        "height": 844
+      },
+      "evaluations": [
+        {
+          "id": 283,
+          "label": "phone.portrait-restore.fonts-two-frames",
+          "status": "answered",
+          "elapsedMs": 43.57629199999974,
+          "transportMs": 29.305749999999534
+        },
+        {
+          "id": 284,
+          "label": "phone.portrait-restore.shell-geometry",
+          "status": "answered",
+          "elapsedMs": 29.602875000000495,
+          "transportMs": 16.097125000000233
+        }
+      ],
+      "inPageSettlementMs": 11.199999928474426
+    },
+    "debuggerArms": 66,
+    "autoResumedDomPauses": 4,
+    "reportedRuntimeErrors": 0,
+    "reportedDebuggerErrors": 0,
+    "pngs": 9,
+    "productionGoldensRehashed": 3,
+    "nativePointerInputs": 63,
+    "nativePointerTypes": {
+      "touch": 0,
+      "mouse": 63
+    },
+    "trustedPointerEventEdges": 189,
+    "programmaticClickEvents": 3,
+    "trustedEscapePresses": 3,
+    "trustedKeyboardEdges": 6
+  },
+  "sections": [
+    {
+      "name": "source and report identity",
+      "status": "PASS"
+    },
+    {
+      "name": "evaluation catalogue and ordered terminal receipts",
+      "status": "PASS"
+    },
+    {
+      "name": "native pointer and keyboard receipt replay and global trace linkage",
+      "status": "PASS"
+    },
+    {
+      "name": "baseline metrics and source geometry assessors",
+      "status": "PASS"
+    },
+    {
+      "name": "notification bounds, defined negative observations and launcher journeys",
+      "status": "PASS"
+    },
+    {
+      "name": "phone large-text, narrow Settings and same-task Settings restoration",
+      "status": "PASS"
+    },
+    {
+      "name": "frame settlement replay and named portrait restoration linkage",
+      "status": "PASS"
+    },
+    {
+      "name": "debugger auto-resume and reported error status",
+      "status": "PASS"
+    },
+    {
+      "name": "retained PNG bytes, dimensions and golden provenance",
+      "status": "PASS"
+    },
+    {
+      "name": "final source unchanged",
+      "status": "PASS"
+    }
+  ],
+  "images": [
+    {
+      "file": "u1-main-phone.png",
+      "bytes": 186986,
+      "sha256": "01610f6db32d0bdca491acc7ab5b60f8ab325697463ad9a1ea983737338ad29f",
+      "width": 390,
+      "height": 844,
+      "pass": true
+    },
+    {
+      "file": "u1-notifications-phone.png",
+      "bytes": 181402,
+      "sha256": "adc5fb30e473ac922ba2ff2948a3589d7d640472bc59419c8821464ee62ce495",
+      "width": 390,
+      "height": 844,
+      "pass": true
+    },
+    {
+      "file": "u1-main-phone-comparison.png",
+      "bytes": 623633,
+      "sha256": "bd59295482801279a2ca2c3014d4a73b0fbd6ee59cde498a71304b8289bc5596",
+      "width": 1234,
+      "height": 908,
+      "pass": true
+    },
+    {
+      "file": "u1-main-desktop.png",
+      "bytes": 266958,
+      "sha256": "5074864e4262b3c5ef3ce3a198cb4e94166a2130732ef84d4710a749b6831a63",
+      "width": 1440,
+      "height": 900,
+      "pass": true
+    },
+    {
+      "file": "u1-notifications-desktop.png",
+      "bytes": 289616,
+      "sha256": "36abda6252cd0bdab538d7b123a9eff9ff438f81cd87492e3d616b67f396adc5",
+      "width": 1440,
+      "height": 900,
+      "pass": true
+    },
+    {
+      "file": "u1-main-desktop-comparison.png",
+      "bytes": 1173420,
+      "sha256": "8859e47e43d168d63f5c5ef80ddfc5993084a85a3975230b82dcf5ad2f330a18",
+      "width": 4384,
+      "height": 964,
+      "pass": true
+    },
+    {
+      "file": "u1-main-tablet.png",
+      "bytes": 218537,
+      "sha256": "a849af7c2d0bc6c5b4011e1a02630645271a50649c4912995299d50049f2908f",
+      "width": 834,
+      "height": 1112,
+      "pass": true
+    },
+    {
+      "file": "u1-notifications-tablet.png",
+      "bytes": 233215,
+      "sha256": "89a7943592843ae7baca6fc03127ce1ccfcfa6cbcc648df61439a03b38a73a5d",
+      "width": 834,
+      "height": 1112,
+      "pass": true
+    },
+    {
+      "file": "u1-main-tablet-comparison.png",
+      "bytes": 937620,
+      "sha256": "9e046b03279efde90af95eaaaf9a466e280016fd59331112b781262734d215d1",
+      "width": 2566,
+      "height": 1176,
+      "pass": true
+    }
+  ],
+  "findings": [],
+  "limits": [
+    "This verifies retained evidence and source assessor verdicts; it is not an independent browser rerun or visual pixel-equality/UAT judgment.",
+    "Three initial objective-displacement controls retain metric deltas and restoration flags without raw states; their arithmetic and negative outcome are checked, but their missing raw observations cannot be replayed.",
+    "Launcher/Notifications Close records omit some raw restored geometry; retained arithmetic, focus, canonical scene, and outcome flags are checked. The DOM-only phone shell oracle and exact style/class restoration flags require the original browser observations.",
+    "Build asset hashes are reported provenance only in this verification; the normal build inventory was not independently reread. Nine output PNGs and three production golden PNGs were independently rehashed.",
+    "Debugger instrumentation can affect timing. Historical navigation and portrait-restoration failure causes remain unresolved; current-path nonrecurrence does not repair or close those historical blockers.",
+    "Source 381ddf59858bd863640703e83d2d98beeedf59fa remains the separate bounded diagnostic; this full review is solely ce8912864fabbe5624651e76c06b94f95b734f39.",
+    "No Slice, Glass, full chain, real-device UAT, U2–U4, Phase 2, or hosted outcome is asserted here."
+  ],
+  "trackedSourceUnchanged": true,
+  "ambientUntracked": [
+    ".DS_Store"
+  ],
+  "verifierCorrection": {
+    "initialStatus": "FAIL",
+    "reason": "Verifier assumed journeys.after was a trail array; retained schema stores a scene object.",
+    "correction": "Read journeys.after.trail and trailVisible, replayed the same native receipt section only, and confirmed all three terminal scenes are Cosmos.",
+    "productOrReportChanged": false
+  }
+}

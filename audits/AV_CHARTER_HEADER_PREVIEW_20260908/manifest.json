@@ -1,0 +1,817 @@
+{
+  "schema": "cf-charter-header-preview-checkpoint/v1",
+  "createdAt": "2026-09-08T09:55:34.698011+00:00",
+  "parentCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "branch": "openai/mac",
+  "sourceState": "dirty-local-only",
+  "signedCommitPending": true,
+  "publishable": false,
+  "browserFreeDevelop": {
+    "status": "PASS",
+    "files": 331,
+    "testsPassed": 3727,
+    "testsSkipped": 1,
+    "typescriptPrograms": 3
+  },
+  "rootValidation": {
+    "status": "PASS",
+    "renderedSpecies": 1010,
+    "unchangedFingerprints": 50
+  },
+  "nativeDiagnostic": {
+    "status": "PASS",
+    "conditions": 6,
+    "path": "native-desktop-corrected/review.json",
+    "priorFailures": [
+      "native-first/review.json",
+      "native-scrollbar-corrected/review.json"
+    ]
+  },
+  "visualReview": {
+    "titlePaint": "PASS",
+    "separateOpenFinding": "Forced-colors bottom-guidance stroke appears excessively heavy"
+  },
+  "preview": {
+    "status": "PASS",
+    "contentSha256": "1aa9002a70dcb89500f3adc7a1872e90e41e854ac6ff3598a781ebd92cfff614",
+    "manifestSha256": "415dc35b4fa5d340e96b1f39ee7c0ca751c65c58cf8bfd5367b83df5078ef365",
+    "url": "http://127.0.0.1:53304/?avpilot=1",
+    "pid": 30765,
+    "execSession": 60130
+  },
+  "certification": false,
+  "humanAcceptance": false,
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/ui-sheet-style.ts",
+      "bytes": 7889,
+      "sha256": "73f0f6adc6e3d58f333996ec279e3b53b580ef512e6297d29445779f381d72cc"
+    },
+    {
+      "path": "port/v2/apps/game/src/ui-presentation-tokens.ts",
+      "bytes": 3262,
+      "sha256": "2a53bfe1510bfbf4d72aa0a29ba40c6f446bbc952bd961445e0eb2871c07b0c7"
+    },
+    {
+      "path": "port/v2/apps/game/src/panels.ts",
+      "bytes": 9441,
+      "sha256": "f911daebf7f344e335e4bb1777d386978c22a4cf41ff2b997e00c25fd9026e8d"
+    },
+    {
+      "path": "port/v2/apps/game/src/pilot-runtime-style.ts",
+      "bytes": 6525,
+      "sha256": "12ca6ae00d0b660767f0aa6109b4f5bbcdbd8e4323b5e40273959ba79df1abb5"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 834563,
+      "sha256": "da4f8b5d800794c752c1ac9cbd4f32c4a8fb1be261a94e9f5fc09b3dd148b9e2"
+    },
+    {
+      "path": "port/v2/apps/game/index.html",
+      "bytes": 67200,
+      "sha256": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 157274,
+      "sha256": "1d7726038e18db85f28154f08e24f8307fc714acd81fb44cd16cac72ce9a69b4"
+    },
+    {
+      "path": "port/v2/budgets/compendium-memory-v1.json",
+      "bytes": 158511,
+      "sha256": "42a6f2d945e26c8ee309a4fc86b3dc94a80c1a0863eaf6ac4912131bb11d393e"
+    },
+    {
+      "path": "port/v2/tests/compendium-budget.test.ts",
+      "bytes": 146461,
+      "sha256": "edc10ba0ccb86e894a725cc3c335d1705b1f70d54d172711c083042434757d12"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "bytes": 1890119,
+      "sha256": "f777baf95d66b8d6bac86329141b7075dd174dc9ae705ba1896867983c602240"
+    },
+    {
+      "path": "port/v2/tools/devpreview.mjs",
+      "bytes": 47425,
+      "sha256": "2b8e96d46e53f6bf319c6bcfe06fd851680607b32e3818b7c39dcbd70ad2cf5c"
+    },
+    {
+      "path": "port/v2/tools/devpreviewcheck.mjs",
+      "bytes": 17695,
+      "sha256": "2005dc23090a05cebdd957a02bf6d021cfcb1b07976a4db483b6ab8586a7746f"
+    },
+    {
+      "path": "port/v2/tools/devpreview-readiness.mjs",
+      "bytes": 3072,
+      "sha256": "cf4da319d9be367024a4d290bf2e27997f45806817d394f09d975660140db6bb"
+    },
+    {
+      "path": "celestial-frontier.html",
+      "bytes": 1964530,
+      "sha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746"
+    }
+  ],
+  "references": [
+    {
+      "path": "UI_PRESENTATION.md",
+      "bytes": 243318,
+      "sha256": "1a7779e2af680d02e125f75a3ca28b60d5759073a3184f43d8b6ed8b93130486"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 456917,
+      "sha256": "954106ef1b613189c28bacbf73cb02d0ded5320c4ee053f64aa93f54660fe0d6"
+    },
+    {
+      "path": "AAA_COVERAGE_LEDGER.md",
+      "bytes": 5370,
+      "sha256": "64158b173b2a18ea6ae347a8647e47fb087257c26f695e792605a21711820b98"
+    },
+    {
+      "path": "AAA_GAP_AUDIT.md",
+      "bytes": 4468,
+      "sha256": "ec1d1c1ed6236531c988c37cddd4c55cb6a585cec1cf340078bbad390218c381"
+    },
+    {
+      "path": "ART_DIRECTION.md",
+      "bytes": 124225,
+      "sha256": "5a7c079cbcd209ade06909103c2bfc90789cf0033d931882ff0a88fe87bca8ad"
+    },
+    {
+      "path": "AUDIO.md",
+      "bytes": 69251,
+      "sha256": "2c561ec7edf6c9112d299620a4431c985f1d0f5bf6907c94d7a12a4d2835e3c5"
+    },
+    {
+      "path": "port/AAA_AUDIOVISUAL_CAMPAIGN.md",
+      "bytes": 70680,
+      "sha256": "a7e6ffbf9b259dcb99c47fa4637cd405ddfbff5e29c3830450275c4c59e24b1e"
+    },
+    {
+      "path": "port/DEVELOPMENT_PREVIEW.md",
+      "bytes": 92481,
+      "sha256": "91e2c0db2554f88ea540316b76b67b77ece972165ee9aabbcd9fb7a4bdb3a264"
+    },
+    {
+      "path": "port/v2/README.md",
+      "bytes": 433118,
+      "sha256": "2d35b421f11cafcae232905c9a8e49c4e016f44b31db94974d802beb9c6d5dc0"
+    },
+    {
+      "path": "port/playtests/20260908_AV_REFRESHED_LOCAL_PREVIEW.md",
+      "bytes": 2493,
+      "sha256": "9a3c2516efc60d5652092ad0f1689e540d5040f5347dea19922a194fe54028d8"
+    },
+    {
+      "path": "audits/AV_24H_CAMPAIGN_20260907.md",
+      "bytes": 14107,
+      "sha256": "3bed632315a4adc7b4b8e35c7b2cd530bfc7b3ea2dbe990d11880e6bc47e3c88"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/BATCH_INTENT.md",
+      "bytes": 1469,
+      "sha256": "fa0a010e4d2f747bf7bb683ceebd78cc0b7fb4996b384804cdbeb9ab7721e723"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/DESKTOP_FIXTURE_CORRECTION.md",
+      "bytes": 864,
+      "sha256": "f49a4026dec7a22476f1d26745d750500e51dca32b68fca37860e1cfea8e2408"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md",
+      "bytes": 7380,
+      "sha256": "ee2761877e8d610fda96dd790fd6456a6ebe658c753aef585ae319ce9dbfa81c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/SCROLLBAR_OBSERVER_CORRECTION.md",
+      "bytes": 1633,
+      "sha256": "969294d7752154863f7ed9df1c88a8d1325fdc71400e6d2c9a4ff9b51c38edfd"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/develop-profile.log",
+      "bytes": 6998,
+      "sha256": "62d11fb02406a86aaa353df04ebdc0b101c816e504c05e3c40c21c2d69dc5ad8"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/draft-authority.json",
+      "bytes": 180,
+      "sha256": "292d6317ee2274d97b59c055a7fbbaf0bd4a97005498759fefe76c890a4a5056"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/draft-pin.log",
+      "bytes": 65,
+      "sha256": "396dd6c56a3f2e58795f052acc202832027acc1b72ebf47c165c9b7da36cbc43"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/draft-pin.mjs",
+      "bytes": 1873,
+      "sha256": "9289a11f36a7194c48d683c8e7e9a9ef04a6f49c4a374b14cb0558b9771bb88e"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/evidence-dist.json",
+      "bytes": 14200,
+      "sha256": "4576c719804848cfd18d3590ba3cfd8ffe7788913ffdce225ebc393e018b6f44"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-corrected-execution.json",
+      "bytes": 456,
+      "sha256": "2f24bb4010f68e5a6d7561b5e8984f146c943410e538c65f58ed74e1cb942f6b"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-corrected-execution.log",
+      "bytes": 511,
+      "sha256": "cbf9e80ccf304802fbae0020e25df8f2aad5afb97034778dd4862386cfb3f80f"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-current-after-restoration.png",
+      "bytes": 365354,
+      "sha256": "e3c4798f192f0e82f1d88d3689874e5889e88bb2f48b9dfd217b4b307e33679f"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-current-before-scroll.png",
+      "bytes": 369601,
+      "sha256": "a070bfa7078e3431454b0a9ac0a9f70ef8b8a615b484f8ba1fc38d3114eb99cc"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-current-header-control-restored.png",
+      "bytes": 6499,
+      "sha256": "e762b12881039a87cf211c8de0e63b6c4aef1287aff579f67bb65bf2b2d33d4a"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-current-header-restored.png",
+      "bytes": 6499,
+      "sha256": "e762b12881039a87cf211c8de0e63b6c4aef1287aff579f67bb65bf2b2d33d4a"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-current-header-text-hidden.png",
+      "bytes": 6499,
+      "sha256": "e762b12881039a87cf211c8de0e63b6c4aef1287aff579f67bb65bf2b2d33d4a"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-current-header-visible.png",
+      "bytes": 6499,
+      "sha256": "e762b12881039a87cf211c8de0e63b6c4aef1287aff579f67bb65bf2b2d33d4a"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-pilot-after-restoration.png",
+      "bytes": 419527,
+      "sha256": "f809bc55769c6f47a4e954a424fe58f862abf404d103f2c59bc56923b1b49e21"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-pilot-before-scroll.png",
+      "bytes": 424249,
+      "sha256": "85a50fcd5ca827553ce40797d09b0b347f0460d96304d6d6cff5548e181bdb8f"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-pilot-header-control-restored.png",
+      "bytes": 6178,
+      "sha256": "3fcd59464da47ee0e95e514617875392d576543c3a51d7872ae36e3740992572"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-pilot-header-restored.png",
+      "bytes": 6178,
+      "sha256": "3fcd59464da47ee0e95e514617875392d576543c3a51d7872ae36e3740992572"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-pilot-header-text-hidden.png",
+      "bytes": 6178,
+      "sha256": "3fcd59464da47ee0e95e514617875392d576543c3a51d7872ae36e3740992572"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/desktop-pilot-header-visible.png",
+      "bytes": 6178,
+      "sha256": "3fcd59464da47ee0e95e514617875392d576543c3a51d7872ae36e3740992572"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-after-restoration.png",
+      "bytes": 275559,
+      "sha256": "e0d9508914a61fb0fa951dc31c454d23b24f7fad0aa51046cfc407c213acd707"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-before-scroll.png",
+      "bytes": 285520,
+      "sha256": "3cfd9395d07a650ed4d7fb97907c4e7c2350212e5746129ae7eea438a3bc4160"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-header-control-restored.png",
+      "bytes": 14726,
+      "sha256": "6f9fd53aa366e111fdd49e45e2ffb6dfe173ed0fa74d0d7cab5b27948638c271"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-header-restored.png",
+      "bytes": 14726,
+      "sha256": "6f9fd53aa366e111fdd49e45e2ffb6dfe173ed0fa74d0d7cab5b27948638c271"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-header-text-hidden.png",
+      "bytes": 14726,
+      "sha256": "6f9fd53aa366e111fdd49e45e2ffb6dfe173ed0fa74d0d7cab5b27948638c271"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-header-visible.png",
+      "bytes": 14726,
+      "sha256": "6f9fd53aa366e111fdd49e45e2ffb6dfe173ed0fa74d0d7cab5b27948638c271"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-after-restoration.png",
+      "bytes": 315888,
+      "sha256": "b81c0d9fb071d3430b659c185060076cc9c9bade0316fb4b7123fd0dae783e06"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-before-scroll.png",
+      "bytes": 316773,
+      "sha256": "7faa1ea39309641d17b177d1725deeabc84aa202e3b283170c8f4ca89367dda3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-forced-after-restoration.png",
+      "bytes": 214316,
+      "sha256": "14c3edde6583afd6f2859fba91f573d7f6261ddb52f08b809b85d3ff3bcc92d7"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-forced-before-scroll.png",
+      "bytes": 215604,
+      "sha256": "3a829306b3bda9014cda8146cff014a8c2d9b81c86df3e3032b003ad237f21b8"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-forced-header-control-restored.png",
+      "bytes": 14926,
+      "sha256": "ca7bded059ec0771fb90ae1b3e43ab9d8313e02bdedde1e5b143a643e8c14bbf"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-forced-header-restored.png",
+      "bytes": 14926,
+      "sha256": "ca7bded059ec0771fb90ae1b3e43ab9d8313e02bdedde1e5b143a643e8c14bbf"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-forced-header-text-hidden.png",
+      "bytes": 14926,
+      "sha256": "ca7bded059ec0771fb90ae1b3e43ab9d8313e02bdedde1e5b143a643e8c14bbf"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-forced-header-visible.png",
+      "bytes": 14926,
+      "sha256": "ca7bded059ec0771fb90ae1b3e43ab9d8313e02bdedde1e5b143a643e8c14bbf"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-header-control-restored.png",
+      "bytes": 16025,
+      "sha256": "8ff680f0363eaac29e8ba4d8c5b9546bee49a05390fc532aa42a511de846605c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-header-restored.png",
+      "bytes": 16025,
+      "sha256": "8ff680f0363eaac29e8ba4d8c5b9546bee49a05390fc532aa42a511de846605c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-header-text-hidden.png",
+      "bytes": 16025,
+      "sha256": "8ff680f0363eaac29e8ba4d8c5b9546bee49a05390fc532aa42a511de846605c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-current-large-max-header-visible.png",
+      "bytes": 16025,
+      "sha256": "8ff680f0363eaac29e8ba4d8c5b9546bee49a05390fc532aa42a511de846605c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-pilot-after-restoration.png",
+      "bytes": 428893,
+      "sha256": "5dc496798273d4bf2f49220997d998d661732dfb744c7c31345cce57a57202b3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-pilot-before-scroll.png",
+      "bytes": 447994,
+      "sha256": "5e98a7062d254cc02b7f290c6ebb107b659b43d0eea23c3cff2f7b5c595533c3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-pilot-fault-transparent-text-hidden.png",
+      "bytes": 42215,
+      "sha256": "a850075197e818db7b924058e90b64907a0498c67e4cdfdfa147715e62d9ad98"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-pilot-fault-transparent.png",
+      "bytes": 48885,
+      "sha256": "b52802a16b680c3f75f39f3bcb7975cd8fbe5d0fb731fa60f1f84582cbd5ae25"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-pilot-header-control-restored.png",
+      "bytes": 13229,
+      "sha256": "170efef9744d5a37da79065b8f565c63b81571fda5faf148c95e9702f4b8b2d3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-pilot-header-restored.png",
+      "bytes": 13229,
+      "sha256": "170efef9744d5a37da79065b8f565c63b81571fda5faf148c95e9702f4b8b2d3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-pilot-header-text-hidden.png",
+      "bytes": 13229,
+      "sha256": "170efef9744d5a37da79065b8f565c63b81571fda5faf148c95e9702f4b8b2d3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/phone-pilot-header-visible.png",
+      "bytes": 13229,
+      "sha256": "170efef9744d5a37da79065b8f565c63b81571fda5faf148c95e9702f4b8b2d3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/review.json",
+      "bytes": 108193,
+      "sha256": "5df84506cae625a61710822aef64652f0b4af250ffeba74038b0220721ebcf6a"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected/runner.mjs",
+      "bytes": 19847,
+      "sha256": "605ed0ef67d9cf36e62a3f60218f605c39cf7607ffba895cab2793ccab8bc8df"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected-execution.json",
+      "bytes": 455,
+      "sha256": "a72736627890dd9e8116730c28adf3598dc78e4b904a1a68f97a27a30dc9d394"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-desktop-corrected-execution.log",
+      "bytes": 147,
+      "sha256": "504d36b94f55642eec1f82c4a554057b8d6fd956ef64969524ed8517323d4b0b"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/failure.png",
+      "bytes": 315754,
+      "sha256": "cd3fb8804b2117307c59822a4ee2c11f0594a09596b347f8f5cac5f69e36dc97"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-current-after-restoration.png",
+      "bytes": 275725,
+      "sha256": "f82a6f59605b272f3066aeeb0316a509404cc5e441046bbd7b8fc3cdfad1d0ca"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-current-before-scroll.png",
+      "bytes": 285091,
+      "sha256": "1d7c320a33d0a852fc8a7f3169a155f2e39ec9c585d677804a03ec5fb0e28046"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-current-header-control-restored.png",
+      "bytes": 15084,
+      "sha256": "fb6ef869226aaa7864d2a161d637c1317c839d8261174d69df248da793fb83b4"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-current-header-restored.png",
+      "bytes": 15084,
+      "sha256": "fb6ef869226aaa7864d2a161d637c1317c839d8261174d69df248da793fb83b4"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-current-header-text-hidden.png",
+      "bytes": 15084,
+      "sha256": "fb6ef869226aaa7864d2a161d637c1317c839d8261174d69df248da793fb83b4"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-current-header-visible.png",
+      "bytes": 15084,
+      "sha256": "fb6ef869226aaa7864d2a161d637c1317c839d8261174d69df248da793fb83b4"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-current-large-max-before-scroll.png",
+      "bytes": 316832,
+      "sha256": "a5078c3b6707813eac4d9f11f81cd4338df42f8391be711cc2bde44687492b8c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-current-large-max-header-restored.png",
+      "bytes": 16423,
+      "sha256": "26e4543b4b254900b17d5c201459813decad33bc00f58a5523c975c942cac9a4"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-current-large-max-header-text-hidden.png",
+      "bytes": 16423,
+      "sha256": "db47eb218c80c64498a1330d2926579a950b699d550669b63465f686d0cee414"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-current-large-max-header-visible.png",
+      "bytes": 16423,
+      "sha256": "db47eb218c80c64498a1330d2926579a950b699d550669b63465f686d0cee414"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-pilot-after-restoration.png",
+      "bytes": 428918,
+      "sha256": "ca43a9954ea83694f0c460576f21c606a2752dd4a8c482e1fa79bde21d653add"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-pilot-before-scroll.png",
+      "bytes": 448194,
+      "sha256": "5faefa3c3fa1eba38de14f1c3d1fe433c717b2c8444d3e43290690fe87029899"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-pilot-fault-transparent-text-hidden.png",
+      "bytes": 42709,
+      "sha256": "96111505da62e9e1b3ef8bff8bd340fbbe3aaa173ab9562ebc7c40c335b91dab"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-pilot-fault-transparent.png",
+      "bytes": 49435,
+      "sha256": "ba2ea1d78def03c930429ba9d512d75b3fe5b027b853549cc622b83fc6066746"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-pilot-header-control-restored.png",
+      "bytes": 13306,
+      "sha256": "7f5ad5b19215283dd3a995c1aa23a5abad02a8d8363f437fab54e26e12924ee0"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-pilot-header-restored.png",
+      "bytes": 13306,
+      "sha256": "7f5ad5b19215283dd3a995c1aa23a5abad02a8d8363f437fab54e26e12924ee0"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-pilot-header-text-hidden.png",
+      "bytes": 13306,
+      "sha256": "7f5ad5b19215283dd3a995c1aa23a5abad02a8d8363f437fab54e26e12924ee0"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/phone-pilot-header-visible.png",
+      "bytes": 13306,
+      "sha256": "7f5ad5b19215283dd3a995c1aa23a5abad02a8d8363f437fab54e26e12924ee0"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/review.json",
+      "bytes": 57484,
+      "sha256": "3b5798d4e0cd581033228c046dd921b45eee896aca5634079fb2f925d98495c2"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first/runner.mjs",
+      "bytes": 19477,
+      "sha256": "8f39c416bc062b541d5640ec81f1b7211bd977d2847509bba6006a2e596e1340"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first-execution.json",
+      "bytes": 442,
+      "sha256": "e612c4f999253f757167cdc5482dda8aabec3fba3d4b8afc5af1502928935c38"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-first-execution.log",
+      "bytes": 503,
+      "sha256": "6493a5f7ee9d5fcfbf3bcf81a4de099659884ad9ddf085841b20cb6afb47a6a1"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-header.mjs",
+      "bytes": 19847,
+      "sha256": "605ed0ef67d9cf36e62a3f60218f605c39cf7607ffba895cab2793ccab8bc8df"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/failure.png",
+      "bytes": 443225,
+      "sha256": "c38bb0ed24fd72e89597ee45117561b66101bdd39b4eadea71d91495930c17e9"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-after-restoration.png",
+      "bytes": 275473,
+      "sha256": "5063d9f9089ecac8a2634c84c7ecc35fd686b96d3509bfbdf65fde61426f4873"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-before-scroll.png",
+      "bytes": 285517,
+      "sha256": "ac2262965440b68d80d5a2105fc96b3335ed3d0c4e5ebc95088551cf208542b2"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-header-control-restored.png",
+      "bytes": 14726,
+      "sha256": "6f9fd53aa366e111fdd49e45e2ffb6dfe173ed0fa74d0d7cab5b27948638c271"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-header-restored.png",
+      "bytes": 14726,
+      "sha256": "6f9fd53aa366e111fdd49e45e2ffb6dfe173ed0fa74d0d7cab5b27948638c271"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-header-text-hidden.png",
+      "bytes": 14726,
+      "sha256": "6f9fd53aa366e111fdd49e45e2ffb6dfe173ed0fa74d0d7cab5b27948638c271"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-header-visible.png",
+      "bytes": 14726,
+      "sha256": "6f9fd53aa366e111fdd49e45e2ffb6dfe173ed0fa74d0d7cab5b27948638c271"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-after-restoration.png",
+      "bytes": 315807,
+      "sha256": "13edf58ef2acfea2608e7440673e9478a9f619723354ba06849195f8afa14bcf"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-before-scroll.png",
+      "bytes": 316477,
+      "sha256": "af8980e3ea1e5ac6b195c889438b2429a665f3367392b4fcdc304b9242a3fe10"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-forced-after-restoration.png",
+      "bytes": 214310,
+      "sha256": "3ef0953a468ab4052987d82f4369d0bcf69799c8a8ffac23352ba77e134ffe3c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-forced-before-scroll.png",
+      "bytes": 215604,
+      "sha256": "3a829306b3bda9014cda8146cff014a8c2d9b81c86df3e3032b003ad237f21b8"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-forced-header-control-restored.png",
+      "bytes": 14926,
+      "sha256": "ca7bded059ec0771fb90ae1b3e43ab9d8313e02bdedde1e5b143a643e8c14bbf"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-forced-header-restored.png",
+      "bytes": 14926,
+      "sha256": "ca7bded059ec0771fb90ae1b3e43ab9d8313e02bdedde1e5b143a643e8c14bbf"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-forced-header-text-hidden.png",
+      "bytes": 14926,
+      "sha256": "ca7bded059ec0771fb90ae1b3e43ab9d8313e02bdedde1e5b143a643e8c14bbf"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-forced-header-visible.png",
+      "bytes": 14926,
+      "sha256": "ca7bded059ec0771fb90ae1b3e43ab9d8313e02bdedde1e5b143a643e8c14bbf"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-header-control-restored.png",
+      "bytes": 16025,
+      "sha256": "8ff680f0363eaac29e8ba4d8c5b9546bee49a05390fc532aa42a511de846605c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-header-restored.png",
+      "bytes": 16025,
+      "sha256": "8ff680f0363eaac29e8ba4d8c5b9546bee49a05390fc532aa42a511de846605c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-header-text-hidden.png",
+      "bytes": 16025,
+      "sha256": "8ff680f0363eaac29e8ba4d8c5b9546bee49a05390fc532aa42a511de846605c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-current-large-max-header-visible.png",
+      "bytes": 16025,
+      "sha256": "8ff680f0363eaac29e8ba4d8c5b9546bee49a05390fc532aa42a511de846605c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-pilot-after-restoration.png",
+      "bytes": 428874,
+      "sha256": "9e08c67754c2ab2cd968c272d89b553d544b782a8cbbc0e2f9f484d573d46134"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-pilot-before-scroll.png",
+      "bytes": 447809,
+      "sha256": "355638012472b9d6319fee4e718baf5cd57914ad5bc0fa6941483707e776b03c"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-pilot-fault-transparent-text-hidden.png",
+      "bytes": 42215,
+      "sha256": "a850075197e818db7b924058e90b64907a0498c67e4cdfdfa147715e62d9ad98"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-pilot-fault-transparent.png",
+      "bytes": 48885,
+      "sha256": "b52802a16b680c3f75f39f3bcb7975cd8fbe5d0fb731fa60f1f84582cbd5ae25"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-pilot-header-control-restored.png",
+      "bytes": 13229,
+      "sha256": "170efef9744d5a37da79065b8f565c63b81571fda5faf148c95e9702f4b8b2d3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-pilot-header-restored.png",
+      "bytes": 13229,
+      "sha256": "170efef9744d5a37da79065b8f565c63b81571fda5faf148c95e9702f4b8b2d3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-pilot-header-text-hidden.png",
+      "bytes": 13229,
+      "sha256": "170efef9744d5a37da79065b8f565c63b81571fda5faf148c95e9702f4b8b2d3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/phone-pilot-header-visible.png",
+      "bytes": 13229,
+      "sha256": "170efef9744d5a37da79065b8f565c63b81571fda5faf148c95e9702f4b8b2d3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/review.json",
+      "bytes": 90291,
+      "sha256": "32ba11f5b9e7c78aa18eeadf36ddef622ef53d995dce469e12a5d4d7fd33e52b"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-scrollbar-corrected/runner.mjs",
+      "bytes": 19848,
+      "sha256": "1449b1e4f8a649e6edb2cebd945592a78b4d66081941772187533f25f5a4c5be"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/preparation.json",
+      "bytes": 1287,
+      "sha256": "b6b7f8dc11c38c2ed856d70a3f56657cafbe1a21d8ce1b7d7447b3a86808d91b"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/prepare.py",
+      "bytes": 1208,
+      "sha256": "5e71de170e75516273b77d54d67743f30bc3693403639367e45b6d00597043b9"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/preview-browser-check.json",
+      "bytes": 317,
+      "sha256": "18c4c5c0a26fc2a9edb2479ed99bec8a0bab288c2795cb0da5bfd777103bbc39"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/preview-browser-check.log",
+      "bytes": 465,
+      "sha256": "9382bb2512a251d350a8d804aea93fdc5cf476786466338ef70f93af5fd05f90"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/preview-manifest.json",
+      "bytes": 58413,
+      "sha256": "415dc35b4fa5d340e96b1f39ee7c0ca751c65c58cf8bfd5367b83df5078ef365"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/preview-package.json",
+      "bytes": 391,
+      "sha256": "baa3a7ce88c4a6e8e85ea34f294b6137a1e341dfde76a17c3fff9db44db75ac3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/preview-package.log",
+      "bytes": 5586,
+      "sha256": "a2fa0cafcc850df3838d48006f67074553acdf43e82f6f8632fed6f2e3e47a8d"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/preview-panel.json",
+      "bytes": 160,
+      "sha256": "7556e44d5a6b9e7c4fcd6be48ec93b0c74a66992b74fe53fe61e09ac327a6c1b"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/preview-server.json",
+      "bytes": 539,
+      "sha256": "d7350fba0ab0622afafa4a491a80545cd9a460cf8a544e8f2845b5b109db6500"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/preview-verify.json",
+      "bytes": 314,
+      "sha256": "bcd9ebb41aeadb8bf167c0eb265d757192a4457eeeea704bc2483c03f027340a"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/preview-verify.log",
+      "bytes": 214,
+      "sha256": "03bb67e0b09538400a852321cbc9d41e21afe84ef90e210bbb478601b4472484"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/producer-build.log",
+      "bytes": 5535,
+      "sha256": "fc93a2a4c87beffde3d774449825c7928fd820b0c3d8a08615df2693cb65ec4d"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/producer-refresh.json",
+      "bytes": 1230,
+      "sha256": "3c7ed3cf6ff11144eeb5ac2574509f8aa8a2017c88863bf96b5c204850a42bd7"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/producer-refresh.log",
+      "bytes": 65,
+      "sha256": "0f103930dbc9935b77c935e46d68319663360d1150b1bad10968855dfd1eba2e"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/producer.json",
+      "bytes": 6055,
+      "sha256": "3c32a9e03a7fc2fd8ef6f6c93f79a5caf6f511f9578202bc04fa668a4b7c0ef5"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/producer.mjs",
+      "bytes": 604,
+      "sha256": "6b9936ca21167c5d4cfd30fc004e4acc105238a620e197634ff80fba749b7735"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/refresh-producer.mjs",
+      "bytes": 2378,
+      "sha256": "26187f2df476273f53329d8319cb6b6b7a8b56446e585b467ad1b047e34826f9"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/root-validation.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/run-step.py",
+      "bytes": 950,
+      "sha256": "ed44a7352e1cbfb5692f969fc5d399d1fd8849bcd9c030019511841bbfdbabc1"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/seal-manifest.py",
+      "bytes": 3872,
+      "sha256": "e8a9ab18b73ea5bfd99156ab8ee3d37e530d4cbeaacaa502443b1924344174c3"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/served-verification.json",
+      "bytes": 469,
+      "sha256": "ebfd3eca2dfada4f2d920a530a0762fa37554d3bd10036b5a119ddfec6108b7a"
+    },
+    {
+      "path": "audits/AV_CHARTER_HEADER_PREVIEW_20260908/visual-inspection.json",
+      "bytes": 1545,
+      "sha256": "3b7d083e27502bc29c68ed0836b11ea6e35fb90ecf280603a6932b4a4f39b015"
+    }
+  ],
+  "evidenceCount": 128,
+  "evidenceBytes": 10516870
+}

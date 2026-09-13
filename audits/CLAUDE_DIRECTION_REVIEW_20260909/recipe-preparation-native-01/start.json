@@ -1,0 +1,13 @@
+{
+  "schema": "cf.recipe-preparation-native/v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-09T12:26:40.383Z",
+  "scope": "Actual controller and HTTP/native trusted clicks; explicitly synthetic 2x1 RGB worker; no inference or art acceptance",
+  "qualityAccepted": false,
+  "sources": [],
+  "mutations": [],
+  "cases": [],
+  "browserEvents": [],
+  "requests": [],
+  "cleanup": {}
+}

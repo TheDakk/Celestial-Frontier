@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "buildId": "42d79c05f4b5269766d35e82c03f7b828f70062dc2bdca54ee98ca5f643465b4",
+  "fileCount": 97,
+  "totalBytes": 56529354,
+  "budget": {
+    "currentBytes": 56529354,
+    "priorBytes": 56529354,
+    "retainedStaticBytes": 113058708,
+    "shippedLimitBytes": 134217728,
+    "retainedLimitBytes": 268435456,
+    "currentHeadroomBytes": 77688374,
+    "retainedHeadroomBytes": 155376748,
+    "excludesBrowserStorageOverhead": true,
+    "excludesModelAndOriginals": true
+  },
+  "distributionQualified": false,
+  "physicalPhoneQualified": false,
+  "fullModelInstallQualified": false
+}
+

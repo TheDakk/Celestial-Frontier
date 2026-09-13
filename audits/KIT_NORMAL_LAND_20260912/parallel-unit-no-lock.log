@@ -1,0 +1,44 @@
+✔ served copy disables eager transport while preserving exports, CSS/query helpers and error paths (0.539167ms)
+✔ actual upstream eager-start span constructs transport once; corrected span never starts it (0.417834ms)
+✔ dependency byte changes, duplicate or missing eager starts refuse instead of suppressing unknown code (0.285584ms)
+✔ plugin only transforms the exact installed client and requires a genuinely disabled server (0.256583ms)
+4:08:08 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+✖ real frozen Vite middleware serves its transformed client and normal game index without a socket listener (170.127625ms)
+Test-owned source copies: /private/tmp/cf-species-reference-controls-oMHI6N
+✔ real six-image set returns exact reviewed source hashes in canonical full-identity order (22.939709ms)
+✔ same-size altered PNG bytes are refused and restoring exact bytes reopens the set (12.268792ms)
+✔ a missing source refuses readiness instead of silently dropping a species (13.092458ms)
+✔ missing, extra, reordered, repeated or renumbered references cannot masquerade as the six residents (32.325833ms)
+✔ changing one full genome field cannot retain the old canonical identity key (6.994417ms)
+✔ a shortened or substituted identity key cannot stand in for the full canonical genome (12.567041ms)
+✔ snapshot bytes and schema remain bound to the declared snapshot digest (22.026166ms)
+✔ preparation and conditioning-only status cannot silently claim a different product contract (32.264125ms)
+✔ source path traversal, absolute paths and alternate separators are refused (82.087917ms)
+✔ runtime target collisions and paths outside the fixed local AI subtree refuse (54.606875ms)
+✔ declared source geometry and prepared geometry cannot disagree with the exact source header (45.964709ms)
+✔ unsupported or truncated PNG/WebP headers are refused without calling a decoder (0.305041ms)
+✔ a repinned malformed image signature still refuses and original source restores (12.66325ms)
+✔ copying another resident image under a new target is not an independent identity reference (9.551541ms)
+✔ symlink files and root aliases cannot escape the declared source ownership (10.462625ms)
+✔ unbounded or inconsistent declared image pins refuse before readiness (35.837875ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 20
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101076.837708
+
+✖ failing tests:
+
+test at tools/local-image-generation/frozen-preview-client.test.mjs:46:1
+✖ real frozen Vite middleware serves its transformed client and normal game index without a socket listener (170.127625ms)
+  Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+      at Server.close (node:net:2819:12)
+      at Server.wrapper (node:events:639:12)
+      at Server.emit (node:events:514:20)
+      at emitCloseNT (node:net:2879:8)
+      at process.processTicksAndRejections (node:internal/process/task_queues:89:21) {
+    code: 'ERR_SERVER_NOT_RUNNING'
+  }

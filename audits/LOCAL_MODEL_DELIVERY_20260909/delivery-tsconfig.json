@@ -1,0 +1,18 @@
+{
+  "extends": "../../port/v2/tsconfig.json",
+  "compilerOptions": {
+    "types": [],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true
+  },
+  "include": [],
+  "files": [
+    "../../port/v2/apps/game/src/local-model-delivery.ts",
+    "../../port/v2/apps/game/src/local-model-sha256.ts",
+    "../../port/v2/apps/game/src/local-model-manifest.ts"
+  ]
+}

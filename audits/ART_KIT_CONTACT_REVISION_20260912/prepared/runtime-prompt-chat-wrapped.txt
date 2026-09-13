@@ -1,0 +1,24 @@
+<|im_start|>user
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+Light: day; rain; diffuse cloud-filtered light, soft neutral contact shadows.
+Mineral palette: terran; blue water, green land, pale ice.
+Atmosphere: rain; rain softens distant blue-grey layers.
+Pigments: Civet: matte warm grey-ochre fur, dark spots, face mask and tail rings; Persimmon: green leaves, orange fruit, brown wood; Platypus: sleek dark-brown fur and a dark rubbery bill; Frog: green skin; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+
+One Civet: low long body, spotted natural fur. One Persimmon: branching woody tree. One Platypus: low sleek dark-brown furred body. One Frog: small green crouched body. One Devil's Club: thick spiny canes. One Cranberry: low creeping runners. Integrate feet and stems into wet ground with visible contact shadows under Civet and Platypus, shared light and natural ground reflections.
+
+A coherent riverbank scene with distinct readable subjects, the Civet as hero, a smaller Platypus, a clearly visible Frog, a taller Persimmon, and foreground grass overlapping the lowest animal feet.<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+

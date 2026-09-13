@@ -1,0 +1,29 @@
+{
+  "schema": "cf.source-correspondence-retrieval.v1",
+  "observedAt": "2026-09-09T16:20:12.428475+00:00",
+  "reason": "First DNS-restricted attempt retained. Read-only outside-sandbox access for these three exact small official text sources.",
+  "requests": [
+    {
+      "url": "https://registry.npmjs.org/onnxruntime-web/1.29.0",
+      "name": "npm-onnxruntime-web-1.29.0.json",
+      "status": 200,
+      "bytes": 5620,
+      "sha256": "de4d23a9eed9c769a3eac3baa6319fae4539228ce657e2ab8fb976d84b5d814b"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/2e2543fbe9fae542f921d47a72d21d5a4ef0b710/js/web/script/prepack.ts",
+      "name": "source-prepack.ts",
+      "status": 200,
+      "bytes": 877,
+      "sha256": "ff251557aaffa1fac06b63172178c260aaff0c358905a4117a4d05a36f5b20d4"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/2e2543fbe9fae542f921d47a72d21d5a4ef0b710/js/web/script/pull-prebuilt-wasm-artifacts.ts",
+      "name": "source-pull-prebuilt.ts",
+      "status": 200,
+      "bytes": 9988,
+      "sha256": "713805affb3d959a840b9d4fc7af975f1ff8e841540102bae09ecb87a46e6169"
+    }
+  ],
+  "scope": "small official package/source text only; no software/model download, execution or publishing"
+}

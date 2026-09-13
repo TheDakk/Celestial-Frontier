@@ -143,6 +143,7 @@ let redirectingFocus = false;
 let finishing = false;
 
 const CHROME = [
+  '#topbar', '#sceneactions', '#notificationpanel',
   '#dock', '#raillft', '#railrgt', '#searchbox', '#setpanel', '#guidepanel',
   '#codexpanel', '#recpanel', '#atlaspanel', '#chpanel', '#shipyardpanel',
   '#inventorypanel', '#combatpanel', '#survey', '#importsheet',
@@ -173,12 +174,12 @@ export function initTraining(deps: TrainingDeps): void {
     'bottom:calc(var(--safe-bottom,0px) + var(--dock-h,44px) + 40px);' +   /* measured dock + its 12px inset + 28px clearance */
     'width:min(440px,calc(100vw - var(--safe-left,0px) - var(--safe-right,0px) - 16px));box-sizing:border-box;' +
     'max-height:calc(100dvh - var(--safe-top,0px) - var(--safe-bottom,0px) - var(--dock-h,44px) - 56px);overflow:auto;' +
-    'z-index:30;border-radius:14px;padding:14px 16px;color:var(--ink,#dbe7f8);font:inherit;line-height:1.55';
+    'border-radius:14px;padding:14px 16px;color:var(--ink,#dbe7f8);font:inherit;line-height:1.55';
   document.body.appendChild(cardEl);
   spotEl = document.createElement('div');
   spotEl.id = 'tutspot';
   spotEl.style.cssText = 'position:fixed;border:2px solid #ffd9a0;border-radius:12px;pointer-events:none;' +
-    'z-index:29;box-shadow:0 0 0 4000px rgba(3,5,10,0.25);display:none;transition:all 0.25s';
+    'box-shadow:0 0 0 4000px rgba(3,5,10,0.25);display:none;transition:all 0.25s';
   document.body.appendChild(spotEl);
   announceEl = document.createElement('div');
   announceEl.id = 'tutlive';
@@ -223,7 +224,7 @@ function renderStep(): void {
        the next turn, after openPanel has finished displaying Atlas, so the
        inert chart cannot survive over the Earth Land action or later tour. */
     window.setTimeout(() => {
-      if (trainingActive() && steps[stepIdx] === st) deps0?.closePanels();
+      if (trainingActive() && steps[stepIdx] === st && !openTrainingSettings()) deps0?.closePanels();
     }, 0);
   }
   placeSpot();
@@ -260,7 +261,14 @@ function applyAllow(st: TutStep): void {
      allowed control lives inside a shared rail/dock, only its siblings are
      inert; this keeps the desktop Atlas button as real as the phone one. */
   restoreLocks();
-  const allow = st.allow || [];
+  const lessonAllow = st.allow || [];
+  const allow = [...lessonAllow, ...(finishing ? [] : ['#docksets', '#setpanel'])];
+  const lessonTargets = [...lessonSpotTargets(st), ...lessonAllow.flatMap((selector) =>
+    selector === '#cosmos' ? [] : [...document.querySelectorAll<HTMLElement>(selector)])];
+  for (const surface of document.querySelectorAll<HTMLElement>('#survey,.panel')) {
+    surface.classList.toggle('tutpri', surface.id !== 'setpanel'
+      && lessonTargets.some((target) => target === surface || surface.contains(target)));
+  }
   allowedRoots = [];
   for (const sel of allow) {
     if (sel === '#cosmos') {
@@ -296,6 +304,7 @@ function applyAllow(st: TutStep): void {
 function clearAllow(): void {
   restoreLocks();
   allowedRoots = [];
+  for (const surface of document.querySelectorAll('#survey.tutpri,.panel.tutpri')) surface.classList.remove('tutpri');
 }
 /** Rebind the current lesson after its owning surface replaces DOM nodes.
  * Survey legitimately rebuilds its action row after reopen, chart, and Land;
@@ -366,7 +375,13 @@ function focusWithoutScroll(el: HTMLElement | null): boolean {
   }
   return document.activeElement === el;
 }
+function openTrainingSettings(): HTMLElement | null {
+  const panel = document.getElementById('setpanel');
+  return panel && panel.getAttribute('aria-hidden') !== 'true' && visible(panel) ? panel : null;
+}
 function preferredLessonFocus(st: TutStep): HTMLElement | null {
+  const settings = openTrainingSettings();
+  if (settings) return focusablesWithin(settings)[0] || settings;
   const primary = cardEl?.querySelector<HTMLElement>('[data-sel="tutbtn"]');
   if (primary && visible(primary)) return primary;
   for (const spot of lessonSpotTargets(st)) {
@@ -387,7 +402,7 @@ function queueLessonFocus(st: TutStep): void {
      matters when Atlas onOpen advances the lesson before the panel manager
      seats and focuses its close button. The lesson wins on the same turn. */
   focusTimer = window.setTimeout(() => {
-    if (!trainingActive() || steps[stepIdx] !== st) return;
+    if (!trainingActive() || steps[stepIdx] !== st || openTrainingSettings()) return;
     focusWithoutScroll(preferredLessonFocus(st));
   }, 0);
 }
@@ -435,6 +450,11 @@ function guardTrainingKeydown(event: KeyboardEvent): void {
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
+    const settings = openTrainingSettings();
+    if (settings) {
+      settings.querySelector<HTMLElement>(':scope > [data-pnx="set"]')?.click();
+      return;
+    }
     retainLessonSurface(st);
     queueLessonFocus(st);
     return;

@@ -1,0 +1,1300 @@
+{
+  "schema": "cf-earth-layered-review-packet/v1",
+  "createdAt": "2026-09-08T17:35:10.467456+00:00",
+  "sourceParent": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "sourceState": "local-staged-successor-signing-pending",
+  "status": "SCOPED_IMPLEMENTATION_NATIVE_AND_LOCAL_PREVIEW_PASS",
+  "certification": false,
+  "result": "audits/AV_EARTH_LAYERED_SCENE_20260908/final-results.json",
+  "historicalManifests": "Older manifests retain their checkpoint bytes; current references evolve in this successor. Six older binary recoveries remain unchanged.",
+  "direction": "Approved rich painted references retained; present resident bodies remain below art target. UI placement and Earth identity preserved.",
+  "humanArtAcceptance": false,
+  "hostedAttempts": 0,
+  "files": [
+    {
+      "path": "ART_DIRECTION.md",
+      "bytes": 140940,
+      "sha256": "23d4356609a6858371c1bfa213e693f0593a81761d9cba87eeb3b9a59ddf90e5"
+    },
+    {
+      "path": "BIOME_ATLAS.md",
+      "bytes": 87139,
+      "sha256": "18d29f0e570d6307ce7d5fdf43f16cdb4e0537ef0dd94646506b3492087a4818"
+    },
+    {
+      "path": "DETERMINISM.md",
+      "bytes": 39435,
+      "sha256": "78db14324c2506e84c47730fb4f8034cf3b2b5008a44bb3f49218d09132ce3bd"
+    },
+    {
+      "path": "GITHUB_ACTIONS_BUDGET.md",
+      "bytes": 122505,
+      "sha256": "5f9101e67b8b7d67eddf30be4cdf30284e7e7748cf4a03712607969e92172914"
+    },
+    {
+      "path": "PARALLEL_GIT_PROTOCOL.md",
+      "bytes": 23455,
+      "sha256": "41e70976fb8e81005f8818518f48646617bcdd32409f910bb2c4444262500a6e"
+    },
+    {
+      "path": "PROCESS_LAWS.md",
+      "bytes": 319442,
+      "sha256": "c90d60e19b80e51e27631bb32d8d23e65c623953d264e8ce9803c3a00b493164"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 13169,
+      "sha256": "d229d044ce1e57320881ca9c412949dcf74d1799822fa26f6f40d3abe1f4d658"
+    },
+    {
+      "path": "ROADMAP_ARCHIVE.md",
+      "bytes": 2642021,
+      "sha256": "66e86feee5ec52d770961aaa63aedaf4ff3ee6fb6de09c5a668bb37889b8e1d9"
+    },
+    {
+      "path": "SPECIES_AND_GENOME.md",
+      "bytes": 35214,
+      "sha256": "e311cf93120d05156f611b6fcf22d7b394caa98a510464bfc25166a14d826232"
+    },
+    {
+      "path": "UI_PRESENTATION.md",
+      "bytes": 251032,
+      "sha256": "b732f05bce590f8242fbcac7cff42b2c1a08c42ce4adf51b2f9d6d898d822a96"
+    },
+    {
+      "path": "UI_TOOLCHAIN.md",
+      "bytes": 21399,
+      "sha256": "efe252b5437a70b4417d6a0066d7141c53cdee2f7c9974a23a20caa4ff637f4a"
+    },
+    {
+      "path": "WORLD_GENERATION.md",
+      "bytes": 34127,
+      "sha256": "da5b83a5cfce2fb4b763b39643b8d4a7e32dae41658c112a52b33d9ebba5e7bb"
+    },
+    {
+      "path": "audits/AV_24H_CAMPAIGN_20260907.md",
+      "bytes": 28514,
+      "sha256": "4a06179cc16dc824a8d9564ee7cdce746a71e683651aebfd40bc788da94a5a80"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/BATCH_INTENT.md",
+      "bytes": 1991,
+      "sha256": "a4290525903f08b31fbcd75944c445363e3955f58f9236a0b40b9fa6159edac0"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/BIOME_MAPPING.md",
+      "bytes": 13926,
+      "sha256": "8304475c97b1d06c8de018fdaf03633a560cc7842b670c417dc9dd15715873c8"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/FINAL_SOURCE_REVIEW.md",
+      "bytes": 1638,
+      "sha256": "25eaa1c7379550551be3bca46572ea897620e2ca5552e620ee6f6be7acfbda9a"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/FIRST_CHECK_FAILURE.md",
+      "bytes": 1187,
+      "sha256": "788b7026fe4fba7fba4bb66ed4efcc285ecc30be670fc69cca83b09e4283bbf2"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/FIRST_NATIVE_FAILURE.md",
+      "bytes": 4415,
+      "sha256": "731929e8fe2c6b23d1eda9a9a0f714de27edead430db8ef5bdd82590309b5e09"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/FOURTH_CHECK_FAILURE.md",
+      "bytes": 1074,
+      "sha256": "f01d0b1a457d84ceae064ed747c86bd27fa3205b3baf26cb9aa06f85efef6271"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/IMAGE_PROMPT.txt",
+      "bytes": 1993,
+      "sha256": "b19d4a4de2349b736e50a5d1f02578c045c5e7730868a12219976bdf811edb70"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/README.md",
+      "bytes": 15375,
+      "sha256": "c6ffa9b872c66b689f49460e82ceaa4c6663478b9637a22afa24aca065554e03"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/SECOND_CHECK_FAILURE.md",
+      "bytes": 1397,
+      "sha256": "626885a6a0e7cd9e708f26be9131043102abf2e70c2d4b753f8dfcb751ec963c"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/SECOND_NATIVE_FAILURE.md",
+      "bytes": 5433,
+      "sha256": "a7b19d97bc88bb8b62080de00c287a2b930a5e0a9be5a523e28d638ff90277e0"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/SOURCE_REVIEW_CORRECTIONS.md",
+      "bytes": 3626,
+      "sha256": "311b9a2f7cf7a5042effec6d7e012e033a1894602b3f0b2abd59ed2211c3dab6"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/THIRD_CHECK_FAILURE.md",
+      "bytes": 1009,
+      "sha256": "f4d957800060d1273ac017015be6482f8342b67c720c3571aa496fae83bb5969"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/THIRD_NATIVE_FAILURE.md",
+      "bytes": 5753,
+      "sha256": "c23432708e019bde20d010e361821bc56a652e423ac69760371e707c7d51fb69"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/asset-provenance.json",
+      "bytes": 1326,
+      "sha256": "286050a2c1882125bca6482aba0f1e5756db1a48a1a92ebcb0685a065f7146b6"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/audit-final-root-validation.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/audit-final-route-audit.log",
+      "bytes": 298,
+      "sha256": "f227c76391a84357327a57ffb800820edfe7062e3ed9a4ccfa7f39be267b8db3"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/audit-final-route-controls.log",
+      "bytes": 14299,
+      "sha256": "65135533406e7c1ae9900afa89cc45a0514d1eb0d98f475ceff9f3c5c179dfbe"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/audit-final-spec-check.log",
+      "bytes": 94,
+      "sha256": "b990b069a1d3ed60a587623f110cf6ad1ee1f3b6fffc919befb4f5bbcad01310"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/audit-route-controls.log",
+      "bytes": 41139,
+      "sha256": "df1ee57361ab8d4f7a0dd806884be49be2c28d117c17dbc3a94d22f6db21958c"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/automation-delete.json",
+      "bytes": 267,
+      "sha256": "cc543bad1275dfdbf603fa1bcc3efb5cf3aea513cfe105ac1e2955be1eb21254"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/automation-pause.json",
+      "bytes": 339,
+      "sha256": "b95b1d4ad2744371fc580ca39759a6379ffe2330dcdff585445d2171aa6cac06"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/browser-free-audit-final.json",
+      "bytes": 934,
+      "sha256": "cce4c12023d3d8450821cf22894fc2a8faa7b1568b2e45721224000d59111664"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/browser-free-audit.json",
+      "bytes": 376,
+      "sha256": "21ed213ffa9f2ef09ad1f727f839cd282cc5d753b852a8a2120143b31ecb50f9"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/browser-free-corrected.json",
+      "bytes": 1918,
+      "sha256": "6384055807d4dfc9cc54a97a0a24f2bf485c5c90ab283a21d938fa34fd547b46"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/browser-free-settled.json",
+      "bytes": 3213,
+      "sha256": "9f8864aeacd9d628859c3cb1209af0dc02690dd3974adba5d7d1a7d8618c9a93"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/browser-free-verified.json",
+      "bytes": 2141,
+      "sha256": "7d00cbb07c3037158b1c9d8855059823f60231216ce9d0a35cc3ee37a2caa516"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/browser-free-visible.json",
+      "bytes": 3107,
+      "sha256": "d60dab3d94c8c814ec3621b2f100935e3053c0890fc9ed8f11236da58fbd2b85"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/browser-free.json",
+      "bytes": 2177,
+      "sha256": "2fb4eda5ca9680c82d602311b6d5fbd23d0eccdaada28d3f483cab3bd6b7c723"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/canonical-earth.json",
+      "bytes": 26385,
+      "sha256": "2f05c033cd80f578ff68b78b65bbd815450421e974c4be34e52661df91f1f5eb"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/capture-facts.mjs",
+      "bytes": 700,
+      "sha256": "81747410d0d99324ca53786fc07efe6ffe57470f0bcfdd75e8390cf5e6f62a01"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/checkpoint-staged.py",
+      "bytes": 3577,
+      "sha256": "e706355a6bd4536271fb0334acb9335dd3be33c5fe0773360787ccacbbb7ed47"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/checks-audit-final.mjs",
+      "bytes": 1841,
+      "sha256": "cbdc707e488f002f795c75bdef943994e323eb55756a82dfc0f57489724aebe1"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/checks-audit.mjs",
+      "bytes": 1829,
+      "sha256": "25539de290bb5c132a3a043ba63d7f6e50a146fa003f7fce72e60faefa131418"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/checks-corrected.mjs",
+      "bytes": 2427,
+      "sha256": "53c5976373396bf45349ce2f5956f5497991f922272a72b62e4672fd24e3bedc"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/checks-settled.mjs",
+      "bytes": 2553,
+      "sha256": "1f52c1fb2a29acd33e9c7608967f2be6c1eb9fed4f863b1350d8c9e14cb65963"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/checks-verified.mjs",
+      "bytes": 2804,
+      "sha256": "e5ce1f39d1dd2a8893f63aa8ba0a0d8d4dca5295dc770a86afe2758b1e8a809a"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/checks-visible.mjs",
+      "bytes": 2464,
+      "sha256": "c6a0ee83e21a512aeff16ef2ca46dec5f604e4d487f46449a45726d19c103f4b"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/checks.mjs",
+      "bytes": 2397,
+      "sha256": "f9ec3e514be308a2de4590ce2765395f037a98d4a8062cd3450b5fb2a6106785"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/corrected-final-focused.log",
+      "bytes": 11764,
+      "sha256": "208e883a7daea178fbbd240b4c0e7d3334f2046e0501d6d164a213f4194020cf"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/corrected-producer-final.log",
+      "bytes": 6219,
+      "sha256": "eeca629eeb5d0a5985d4ffa640231a64591a186bc4a8cf7b5485ed9634910aff"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/corrected-producer-refresh-final.log",
+      "bytes": 65,
+      "sha256": "d0366724ebdc984c6e538b21eb888e76d51b682afb173eab23028cbc42f13447"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/draft-pin.json",
+      "bytes": 180,
+      "sha256": "183463b8e97a0fef699efc8b9c807e5d52238562b8216d8ecf88420d42398a88"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/draft-pin.log",
+      "bytes": 65,
+      "sha256": "42a50083e965137272f772f70cc538f7adf6f886e8ca1c2e0c46d2439c8f5e59"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/draft-pin.mjs",
+      "bytes": 1873,
+      "sha256": "9289a11f36a7194c48d683c8e7e9a9ef04a6f49c4a374b14cb0558b9771bb88e"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/earth-riverbank-source.png",
+      "bytes": 2668880,
+      "sha256": "8d9825f6fbdc3a6e44fd87d927ae422187bf02aaa8b87856a6f776e191c16b2d"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/evidence-dist-settled.json",
+      "bytes": 16680,
+      "sha256": "ddd1cd159093f93fb0fdb263000a9b567a72b23768672dad4ed0290c66e4c4d9"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/evidence-dist-visible.json",
+      "bytes": 16680,
+      "sha256": "c613610abbb83324a6183b84994936ca53226a16ff0192d5e04cfb48049f6659"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/evidence-dist.json",
+      "bytes": 16672,
+      "sha256": "2145d97bfebdd0cf89e63c4124a3e4546063f1638f0ff3e6bb50047e32da234c"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/fact-entry.ts",
+      "bytes": 1089,
+      "sha256": "c8f4f1cbae4574d8bdda0bb60aff0aa0a5ce23f794fb3b2a07e868a96a7e152c"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/final-focused.log",
+      "bytes": 8135,
+      "sha256": "5aac103a3fe89aa923134ad7719fc30e1f0c45762eacb8f3233ae7c1ea8b3ae1"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/final-results.json",
+      "bytes": 5623,
+      "sha256": "f75c6c013bb1748992e1f34a226fd4d2d4ea64dd5a4b4bfb180ad9e9de04f69f"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/freeze-evidence.py",
+      "bytes": 1506,
+      "sha256": "7d3611bb48ae57c7d76bc75f0d8fa578d4cc33591d2c01226444b8bce6dcd94b"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/freeze-settled-evidence.py",
+      "bytes": 1516,
+      "sha256": "1f235bb8075a4ab16f33f1e9a420938044cd25c03ef2cffa422a812a7e1c7f79"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/freeze-visible-evidence.py",
+      "bytes": 1516,
+      "sha256": "b707eddc303d83c1023b5b52f1f4870a2d212584ac8f15631389d0ea37c8630e"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/local-preview-server.json",
+      "bytes": 539,
+      "sha256": "07a893094fa8f63f9c2f07d9cdc2f6a633f52e8501700a3c047140119b1a05fa"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-blocked-settled-execution.json",
+      "bytes": 498,
+      "sha256": "85f24a49e62f04f65e3f58b43249c9a2d82613446dd416002dc3ebbc71c75f57"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-blocked-settled-execution.log",
+      "bytes": 142,
+      "sha256": "0b2c9c8f1fcaefbdf51ae16be37e36fc96936f3fce36635ab5596e9397c331ae"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-blocked-settled/earth-layers-blocked.png",
+      "bytes": 609308,
+      "sha256": "691c1d91bf241e04e64d719d98ab58116b49de31674ec363a8d4b2bf75d77b5f"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-blocked-settled/review.json",
+      "bytes": 454994,
+      "sha256": "1fe0fd8109664f74bc0280e3782c992c7cbd8dcb7ea368e8dd4b8872bac3a7e5"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-blocked-settled/runner.mjs",
+      "bytes": 62126,
+      "sha256": "76ca9686c913f52568b2fc3b7268085818806c6de8edcb7590abc091e5b770cf"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-default-settled-execution.json",
+      "bytes": 498,
+      "sha256": "b6075d037374b6e95649e64a3655d754bcef7241d76d5c2a9db3a4bd61f030d3"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-default-settled-execution.log",
+      "bytes": 142,
+      "sha256": "7528ab625669001eb3fb3616985a9700e815ef577686f83b00cc3132b9f96817"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-default-settled/earth-layers-default.png",
+      "bytes": 610081,
+      "sha256": "6686679883702bc0411fabf81c5ac24739450a7a7c6affc6a64c9f9b9609f58c"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-default-settled/review.json",
+      "bytes": 461474,
+      "sha256": "a69e8f9caf9da4176220c8988a2d80ece88bff4c824041e5c27a92b5707200db"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-default-settled/runner.mjs",
+      "bytes": 62126,
+      "sha256": "76ca9686c913f52568b2fc3b7268085818806c6de8edcb7590abc091e5b770cf"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-diagnostic-execution.json",
+      "bytes": 507,
+      "sha256": "3953d78a0813d0a9ddd20c036a7ab816be8face84904133ba79d43bb0840a4a4"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-diagnostic-execution.log",
+      "bytes": 145,
+      "sha256": "abdc44cff3684a0cbd6b7e605f69657d32d8badfb9d93759e212e7675bb49bc9"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-diagnostic/earth-layers-desktop.png",
+      "bytes": 747331,
+      "sha256": "f844c7a9dc8af058a463bbbfa09a62e86cbb72055cd9a58350df40aa69aa4ebe"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-diagnostic/review.json",
+      "bytes": 544175,
+      "sha256": "924d0cb8d7d6cf008923f2d8324fc07f763b9770fc1fdfd060eedfe5d1f03413"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-diagnostic/runner.mjs",
+      "bytes": 55550,
+      "sha256": "1432423fbb222a76a88638cd221052c53ca058d81fabc7b31c2199b3a1be5482"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-settled-execution.json",
+      "bytes": 498,
+      "sha256": "14c65e6d491dec6d61adc063c1eb30b242b3393d0554aa66a149a208250d3130"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-settled-execution.log",
+      "bytes": 142,
+      "sha256": "ad49ce1af4a520d738f29e29c8344407c26e98c943151aaf403bb27f95b3628e"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-settled/earth-layers-desktop.png",
+      "bytes": 747279,
+      "sha256": "5c4cc2b9ff8628b2f8421517ce20475813e9e1a0b5084914bfd5af311d29443e"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-settled/review.json",
+      "bytes": 794986,
+      "sha256": "a03b88edd453443c4a4129a88479047178a6d4e29b33aa3c90e91a61dab706be"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-settled/runner.mjs",
+      "bytes": 62126,
+      "sha256": "76ca9686c913f52568b2fc3b7268085818806c6de8edcb7590abc091e5b770cf"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-visible-execution.json",
+      "bytes": 505,
+      "sha256": "d1ce2a143dad0a9e0025593406429bf63d0c8d489ba91e2dd724d2e8c7e55498"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-visible-execution.log",
+      "bytes": 872,
+      "sha256": "2834517b0a2fae7e377df9d31f76756445df2f709aa2b0faae954a7021cd68f3"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-visible/failure.png",
+      "bytes": 747350,
+      "sha256": "1477f4bd959f03e858b9a1c5981aa75ab71cbb1f18eecd4b3880550e7dfbd8ab"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-visible/review.json",
+      "bytes": 157857,
+      "sha256": "180ab94e6aed1874320ab1fe59e18450cc9d17783d82b6dcc241f5f50fd122ea"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-desktop-visible/runner.mjs",
+      "bytes": 55324,
+      "sha256": "4f61ec141bb07cf84b397a5bd75d378e78ca538586d7457d11aa72aa77fb3091"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-earth-layers-diagnostic-runner.mjs",
+      "bytes": 55550,
+      "sha256": "1432423fbb222a76a88638cd221052c53ca058d81fabc7b31c2199b3a1be5482"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-earth-layers-policy-runner.mjs",
+      "bytes": 48213,
+      "sha256": "81f8044d5b62304746049aea1f03d7919cdd6eeccc673e5a8267d08a9c504a7b"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-earth-layers-runner.mjs",
+      "bytes": 46949,
+      "sha256": "a5a59f00d1f637c7f61b323c40da8ac1bdf92872f890be2e1742f241e06c10ca"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-earth-layers-settled-runner.mjs",
+      "bytes": 62126,
+      "sha256": "76ca9686c913f52568b2fc3b7268085818806c6de8edcb7590abc091e5b770cf"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-earth-layers-source-runner.mjs",
+      "bytes": 47825,
+      "sha256": "e7567722f50724992376eb744dd187b46fbb811b3fbb0fa8a88830a9fee90889"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-earth-layers-visible-runner.mjs",
+      "bytes": 55324,
+      "sha256": "4f61ec141bb07cf84b397a5bd75d378e78ca538586d7457d11aa72aa77fb3091"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-execution.json",
+      "bytes": 474,
+      "sha256": "3bd908da6e0623aa2f9db4cdf3efa1a874b4810a043dd4b1a36ff33ff5f11b63"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-execution.log",
+      "bytes": 919,
+      "sha256": "5d4b7a57c77f4321517a599bed311d34ee209e2df3214df1c6cbe1fe12170aa5"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-policy-execution.json",
+      "bytes": 488,
+      "sha256": "bca7eb91edb159807372a551145df9817b430d6ce46a9e13654aa9831d2458f9"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-policy-execution.log",
+      "bytes": 1223,
+      "sha256": "9e996afd7d9878df631bc664dbfb983bbaa69fca2fc0b172cf724ea1021a62df"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-policy/earth-layers-phone.png",
+      "bytes": 464795,
+      "sha256": "1801cce60848e3abb25f6cf3dea72679bbc1b346b9326b2eee3d15f33c766900"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-policy/failure.png",
+      "bytes": 465916,
+      "sha256": "da66ddc046fc9897bb4f7192bf1077a4d6912565cce516f6acdfcf440c0317b3"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-policy/review.json",
+      "bytes": 249214,
+      "sha256": "9cebc06b77e4b034e754e8fee30e223c1882ff2cc84b7dd6ac7d88155dc7027f"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-policy/runner.mjs",
+      "bytes": 48213,
+      "sha256": "81f8044d5b62304746049aea1f03d7919cdd6eeccc673e5a8267d08a9c504a7b"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-settled-execution.json",
+      "bytes": 492,
+      "sha256": "2bfdc87dbdcbe9dacb261d80eb2eba9f1fb7ae2bf0ca4d9b54ebb0ed2249ef36"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-settled-execution.log",
+      "bytes": 140,
+      "sha256": "6b2ff594ce7766df026f702a88e64bf3f8dd32924aa92318ab7b3db8bef44656"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-settled/earth-layers-phone.png",
+      "bytes": 654871,
+      "sha256": "cc558ea47a5772afacac2945d266a809cfe697111038a994ff2a768f582e7835"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-settled/review.json",
+      "bytes": 785174,
+      "sha256": "22a490ce74a5262a5300c189723d17b15f2a037b286e9bb6494dfe3133f07e09"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-settled/runner.mjs",
+      "bytes": 62126,
+      "sha256": "76ca9686c913f52568b2fc3b7268085818806c6de8edcb7590abc091e5b770cf"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-visible-execution.json",
+      "bytes": 498,
+      "sha256": "4d6fc467b88fdb49a45df5abc5ee286088dfbc6870904c0aa8ee91e612216ed3"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-visible-execution.log",
+      "bytes": 140,
+      "sha256": "fab6a626caf1ac89a4f7b54d6cd9096413724761289646919f918b02bdadd9fb"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-visible/earth-layers-phone.png",
+      "bytes": 654871,
+      "sha256": "cc558ea47a5772afacac2945d266a809cfe697111038a994ff2a768f582e7835"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-visible/review.json",
+      "bytes": 516380,
+      "sha256": "04e20266f775902811ae6eb459835bfc52964d30d77649065a18efd4713c9045"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone-visible/runner.mjs",
+      "bytes": 55324,
+      "sha256": "4f61ec141bb07cf84b397a5bd75d378e78ca538586d7457d11aa72aa77fb3091"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone/failure.png",
+      "bytes": 314961,
+      "sha256": "6eed3223c47c6605538acaf329be34e9279a6661cfa43116f79708a6a2fd83a5"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone/review.json",
+      "bytes": 142040,
+      "sha256": "d14b15597a842a55275d86a59cd8645f61d0d1388cda1d44a472d77179c4217d"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-phone/runner.mjs",
+      "bytes": 47825,
+      "sha256": "e7567722f50724992376eb744dd187b46fbb811b3fbb0fa8a88830a9fee90889"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/preview-build.json",
+      "bytes": 490,
+      "sha256": "16ebb7d40f70f06fc9d6887979bdb39408653ce79ac0a24179e95c3ee9a961b2"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/preview-build.log",
+      "bytes": 6266,
+      "sha256": "af10656ea476c3e0fffbe738ae6db07c1f6ba6f62132f60cb0f95d2de27c507b"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/preview-check.json",
+      "bytes": 422,
+      "sha256": "451b1f07fc7acb5eaf1060bd3c53068c0beb846e09bdabf0b69ad60e346f87ab"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/preview-check.log",
+      "bytes": 465,
+      "sha256": "9382bb2512a251d350a8d804aea93fdc5cf476786466338ef70f93af5fd05f90"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-corrected.json",
+      "bytes": 6055,
+      "sha256": "124a5da34ae13f7c30e57668aa98926718baeeee3a1da8ab65e46ca3f47f6eae"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-corrected.mjs",
+      "bytes": 611,
+      "sha256": "ca34113011bac596f530f7a03fd4ed81eb2703f85e3a4c91f7fbd5b93e911071"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-final.log",
+      "bytes": 6219,
+      "sha256": "28cbab83bed27fd6a51a2ce964e3c8854852fb8690f17764274e50bcd888cace"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-refresh-corrected.json",
+      "bytes": 1230,
+      "sha256": "89afed45bd7f56cd126d3d9e46b74c4197ec1b0960b4f6fcad22b8b6747ab7cc"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-refresh-final.log",
+      "bytes": 65,
+      "sha256": "820b08e015791f94332b9a63100c688c836c534aae0116ec740e2ee15b7bf14c"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-refresh-settled.json",
+      "bytes": 1230,
+      "sha256": "dd0159ca0cfc6320f481120b5e98ef526b8e3f83627098ed33219cc9c1680fdb"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-refresh-visible.json",
+      "bytes": 1230,
+      "sha256": "32d595e94764a9832ad5eafb9f270ecbf0ef57e308fc2067299b6deda67dbcc9"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-refresh.json",
+      "bytes": 1230,
+      "sha256": "fa425c5cd5a29703426adfb5300e316c02d8d5c5c8bb3e1ee6381b15c0dbb65b"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-settled.json",
+      "bytes": 6055,
+      "sha256": "6f71398f5ade1729b3637dd0083ffdd02a669a4f0825a59a579dae5818069cea"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-settled.mjs",
+      "bytes": 609,
+      "sha256": "9cf51ea7a3347dbd45d6b22a5d749012dc2b06198ea3b145052aa48a02fedeb1"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-visible.json",
+      "bytes": 6055,
+      "sha256": "5c4720537b77a58ecadccd1d956e1815ad552b8d80e64793a2d726648b7c8dbf"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer-visible.mjs",
+      "bytes": 609,
+      "sha256": "3904c38daef47e24c5cc042398721e6c337b4f2328763469570d9922b615eb03"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer.json",
+      "bytes": 6055,
+      "sha256": "0ff9b94a7ef0b11f9ba4ba96ac639124b11d4e578c883149691a3c888f8d7b16"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/producer.mjs",
+      "bytes": 601,
+      "sha256": "e200e2a99f5bbf0a2c1fa7759f335cc12d08f0dc39949c2c852153b4a9afba8d"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/refresh-producer-corrected.mjs",
+      "bytes": 2418,
+      "sha256": "bc693114bf35d8d0cfb5ec73c317d57da2b8296beaedfbe5fa92147162913f92"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/refresh-producer-settled.mjs",
+      "bytes": 2410,
+      "sha256": "c4ea5cbde0a0f8dc8f59d3a0998b9350f3842a4811fef2d9dbf64f13754028ed"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/refresh-producer-visible.mjs",
+      "bytes": 2414,
+      "sha256": "f383350c70d440ad89536cbe00e1fce9010fe432cdc4e6290808e7c5ea23476b"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/refresh-producer.mjs",
+      "bytes": 2398,
+      "sha256": "a9cb3ef4fcb10e71d615e64b210a408587a7280ff708f45aef40c6d044112509"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/run-step.py",
+      "bytes": 950,
+      "sha256": "ed44a7352e1cbfb5692f969fc5d399d1fd8849bcd9c030019511841bbfdbabc1"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/seal-manifest.py",
+      "bytes": 2443,
+      "sha256": "4a75666a85029377599166c3f03d500a3ef106aab7414ff585bba7e6be523e88"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/serve-preview.mjs",
+      "bytes": 2990,
+      "sha256": "6990c914b61cbe24643d30ff18c5ff6dae61ee9d180d187ffe9a4ff15c196cec"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/session-state.json",
+      "bytes": 1586,
+      "sha256": "73f534bb303959aff587143c88ac36ec9151cce63114f2143313917c14cdef0b"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/settled-art-audit-final.log",
+      "bytes": 294,
+      "sha256": "6704efe9dee9b24d027f8afe8622ffeb17c9c465ed330d6f675016531e980127"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/settled-art-unused-final.log",
+      "bytes": 58,
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/settled-final-focused.log",
+      "bytes": 7438,
+      "sha256": "4b64f8705416638374e96271421aeb6d83aa1a795c374f164db45b5d739d772c"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/settled-override-check-final.log",
+      "bytes": 298,
+      "sha256": "f227c76391a84357327a57ffb800820edfe7062e3ed9a4ccfa7f39be267b8db3"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/settled-producer-final.log",
+      "bytes": 6219,
+      "sha256": "0c4e471d9297909a147c14d28c4e182d4290b1e0406f28e862a5c165905721ba"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/settled-producer-refresh-final.log",
+      "bytes": 65,
+      "sha256": "25916913091802caf54d2a9799954cc329128e2f0374abcad11bb943ce623c4d"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/settled-root-validation.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/settled-spec-check.log",
+      "bytes": 94,
+      "sha256": "b990b069a1d3ed60a587623f110cf6ad1ee1f3b6fffc919befb4f5bbcad01310"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/settled-typescript-final.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/source-freeze-audit.json",
+      "bytes": 119297,
+      "sha256": "402ec4902cc716fcff0947794cc97dea1152eb0efde23aba1c5b46fef70dff49"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/source-freeze-final.json",
+      "bytes": 119297,
+      "sha256": "979fbe15404bc861107faf3af021bde0547dc9e8ad9b0fb0bb3e7b97e4fef6f5"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/source-freeze.json",
+      "bytes": 119297,
+      "sha256": "c37ae60a4ef9105add934b81c02eb87f29f5051ec643ee471213c74a2925f9be"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/source-verification-join.json",
+      "bytes": 415,
+      "sha256": "c41c48177a9f9e99e318c7568f69ecc3ae50d0328058d06bd27fcc3bc1ed91f1"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/verified-art-audit-final.log",
+      "bytes": 294,
+      "sha256": "6704efe9dee9b24d027f8afe8622ffeb17c9c465ed330d6f675016531e980127"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/verified-art-unused-final.log",
+      "bytes": 58,
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/verified-final-focused.log",
+      "bytes": 7048,
+      "sha256": "36a4dabe02cf63813758e2d71c9bce8e2f7b1bd30624af2b69c8aada8f8689e3"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/verified-override-check-final.log",
+      "bytes": 183,
+      "sha256": "e8e3b21e714b211eb1682b88501ee2baf42b78d487fb7171d5b8300ac93d3021"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/verified-typescript-final.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/visible-art-audit-final.log",
+      "bytes": 294,
+      "sha256": "6704efe9dee9b24d027f8afe8622ffeb17c9c465ed330d6f675016531e980127"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/visible-art-unused-final.log",
+      "bytes": 58,
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/visible-final-focused.log",
+      "bytes": 7092,
+      "sha256": "09cf9674b39d0c0ea2751ec537f72762c594c01ccbeb11acac71b6ed212bfcae"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/visible-override-check-final.log",
+      "bytes": 298,
+      "sha256": "f227c76391a84357327a57ffb800820edfe7062e3ed9a4ccfa7f39be267b8db3"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/visible-producer-final.log",
+      "bytes": 6219,
+      "sha256": "cbaee373af6ef2c2e1c3611d979363af407abb4f683d6e6b7bcc5fbf660b5155"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/visible-producer-refresh-final.log",
+      "bytes": 65,
+      "sha256": "a18f1896ea429724adf1830a935a931cadd362b471831eaea5ff19367ec4545d"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/visible-root-validation.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/visible-spec-check.log",
+      "bytes": 94,
+      "sha256": "b990b069a1d3ed60a587623f110cf6ad1ee1f3b6fffc919befb4f5bbcad01310"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/visible-typescript-final.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/manifest.json",
+      "bytes": 20893,
+      "sha256": "c11cc282b517749c56d475d17dd0ba737de252c16eb1e024d40dd70ac56abb1e"
+    },
+    {
+      "path": "audits/AV_PAINTED_MARS_COMPOSITION_20260908/native-composition-receipt-runner.mjs",
+      "bytes": 44963,
+      "sha256": "050370b927fc3955a543bc3da857a37015d4e749e0051329bdd73f249ddd56a1"
+    },
+    {
+      "path": "audits/README.md",
+      "bytes": 385662,
+      "sha256": "9617c34c519c550fcf16c953d0b3bcae9f30778a781329c30c4ce90fbada83bd"
+    },
+    {
+      "path": "audits/TOOLCHAIN_STARTUP_20260907/manifest.json",
+      "bytes": 2573,
+      "sha256": "902e191ef3d3b69131ba34d164325074835b56becf1c49950b9d835b69b628db"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 471515,
+      "sha256": "a7313a50ef7e651d25fa49d9970d4c38ec6e28514cda1460f8a9488b9c5603d8"
+    },
+    {
+      "path": "port/playtests/20260908_EARTH_LAYERED_LOCAL_PREVIEW.md",
+      "bytes": 2021,
+      "sha256": "c5cf26800a4d1660836ab8dd3941868aa84916cd8f3fb2fd116e998d0ee74a4e"
+    },
+    {
+      "path": "port/v2/DEVIATIONS.md",
+      "bytes": 391562,
+      "sha256": "b203b5a740a1426e1d556c8ff45d186dffcff0a58a7edfa94381eaf664e2c0ae"
+    },
+    {
+      "path": "port/v2/README.md",
+      "bytes": 438482,
+      "sha256": "441827fed417f3ba94a08085ff496282da8656b4cc0828cffb09b2ab11204a59"
+    },
+    {
+      "path": "port/v2/apps/game/index.html",
+      "bytes": 67200,
+      "sha256": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f"
+    },
+    {
+      "path": "port/v2/apps/game/pwa-build.ts",
+      "bytes": 29323,
+      "sha256": "60c470218a76c6d694348b4bc4090e65795fb7408c0296a381086f4130d097fc"
+    },
+    {
+      "path": "port/v2/apps/game/src/app-chrome.ts",
+      "bytes": 14075,
+      "sha256": "7eabf5ad3cd687ed0a12246c27a6a4509a0630e5b4381773c5bcff56e36f5005"
+    },
+    {
+      "path": "port/v2/apps/game/src/arc0-landing-action.ts",
+      "bytes": 68006,
+      "sha256": "e08dcfb59b9410dcc3f65f4e5ce42f842497428bc2eb445550b5aa6ab30260ea"
+    },
+    {
+      "path": "port/v2/apps/game/src/assets/painted/earth-riverbank-v1.webp",
+      "bytes": 130306,
+      "sha256": "2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8"
+    },
+    {
+      "path": "port/v2/apps/game/src/biome-vista-cache.ts",
+      "bytes": 1463,
+      "sha256": "e17af0c9c061d15bfbb5523b1c8f92f45f67a0a6758f3f55ade8137d6e6049b8"
+    },
+    {
+      "path": "port/v2/apps/game/src/biome-vista-protocol.ts",
+      "bytes": 12210,
+      "sha256": "912c1c1463e4b8876c329bcb72da98dbfc593a173db20444b0e88a6a436d854c"
+    },
+    {
+      "path": "port/v2/apps/game/src/biome-vista-surface.ts",
+      "bytes": 10777,
+      "sha256": "4d0c72d2b305a6e23fda93bcb22b0ff0c5945f3fc5f3b10f681d9dc7e0be0f79"
+    },
+    {
+      "path": "port/v2/apps/game/src/biome-vista.worker.ts",
+      "bytes": 3068,
+      "sha256": "f999e9233beda4f4e066030fd59720fe687b6f09e07db404a7ed471bd40b83a3"
+    },
+    {
+      "path": "port/v2/apps/game/src/descent-policy.ts",
+      "bytes": 13752,
+      "sha256": "a76f71e129c15c24837d6d81ab7db9dad6001a73e64a0c2e0854e67343a3e6f1"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-layout.test.ts",
+      "bytes": 4580,
+      "sha256": "4743f3e1a7a8aec38a86fb37e933cdcaf4cfd7e3ae4cb00fe192a301c77eaf80"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-layout.ts",
+      "bytes": 1717,
+      "sha256": "9fc1e9985c6bd9be072b99d3a92a095497edf2b38622dd4142d3f3b88df23528"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-load.test.ts",
+      "bytes": 17269,
+      "sha256": "c29176f058b62e3670bfd2a3c652f12969c6a0c72235a9345a781eece9284845"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-load.ts",
+      "bytes": 6470,
+      "sha256": "fc5a051f3ce2b49088c82e4c383800a14aef73f75f8ea41fa3bbdba53c612c97"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-protocol.test.ts",
+      "bytes": 5520,
+      "sha256": "89f45290108759700bff275f8254387de2e153b051246f38c0de2ebc6c9bee30"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-protocol.ts",
+      "bytes": 3400,
+      "sha256": "ad9e20d8a4b33f071d47dcd56ee7bf3a7f991754eed88d13aca513ca1a499668"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-recipe.ts",
+      "bytes": 15885,
+      "sha256": "ab1fd02bd9a125a07f4a2abc671658cae3d94b5368bf3c226f5b1fc46e1fb824"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-resources.test.ts",
+      "bytes": 5748,
+      "sha256": "1e7af9a95c62bd6ee93e1b49194a34b03324f49a44cb7a6da6c3a2dbf7c7474a"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-resources.ts",
+      "bytes": 1005,
+      "sha256": "3a5b940e36a87e6a2fda553baded4251bc6426cd00091f938565ba10323beab3"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-resident.worker.ts",
+      "bytes": 1365,
+      "sha256": "d6ce1473bec2d40031a583b00cd76a22c6fbb9b30e63d07ef981d754748403f1"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 852311,
+      "sha256": "4ddd9d07b172e6ad1f646bcc00ab1d266067b4c0db97d8b5ed79ace4b648ad13"
+    },
+    {
+      "path": "port/v2/apps/game/src/painted-vista-load.test.ts",
+      "bytes": 9487,
+      "sha256": "10701bb932b845daf24e4cada31f337f56107f01e9d7bd940726c7951760804e"
+    },
+    {
+      "path": "port/v2/apps/game/src/painted-vista-load.ts",
+      "bytes": 6221,
+      "sha256": "5ae385fa776846801c15f36fce95f3b02236b5fa59dbeb09143b225fdd2d58b2"
+    },
+    {
+      "path": "port/v2/apps/game/src/pixi-managed-resource-owner.ts",
+      "bytes": 11243,
+      "sha256": "2d9eaeb667f5a4a763e25bd8e168b721494dda49c252e2411031a258d2653708"
+    },
+    {
+      "path": "port/v2/apps/game/src/planet-surface-turn-view.test.ts",
+      "bytes": 15855,
+      "sha256": "269ab5e44814ab929603ac17f17513c9bc9a8c89fac10d87187f4f3d886b4b9c"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 157962,
+      "sha256": "8c59ba64c600b60f85adaf616ea48aecacd8c995a5705196a2e181b1e53868f4"
+    },
+    {
+      "path": "port/v2/apps/game/src/scene-texture-owner.ts",
+      "bytes": 12535,
+      "sha256": "db7af3f23c3b7d652df37cb54f1082eea177380aefd4f86bc16365a6adbed709"
+    },
+    {
+      "path": "port/v2/apps/game/src/ui-sheet-style.ts",
+      "bytes": 7889,
+      "sha256": "73f0f6adc6e3d58f333996ec279e3b53b580ef512e6297d29445779f381d72cc"
+    },
+    {
+      "path": "port/v2/apps/game/src/world-roster.ts",
+      "bytes": 24167,
+      "sha256": "0e071ec4c355cb354db6031eb94c98bfaa008c4f9ef2485670b41d376fa4830f"
+    },
+    {
+      "path": "port/v2/apps/game/tsconfig.worker.json",
+      "bytes": 389,
+      "sha256": "a4acd79177e942e92308af77790e59517d7ea31e258c36c1ba1c588ce0c47a1e"
+    },
+    {
+      "path": "port/v2/budgets/compendium-memory-v1.json",
+      "bytes": 172066,
+      "sha256": "dbe0e4c3a3af2b7148b0edeb956ee8ecdffb0ac5c6a5494f7d33704928792798"
+    },
+    {
+      "path": "port/v2/packages/art/package.json",
+      "bytes": 1324,
+      "sha256": "3c52fcacf4cc6346798585225552d03cdceeaebb3da108689c821abae1809ed4"
+    },
+    {
+      "path": "port/v2/packages/art/src/earth-resident-layer.ts",
+      "bytes": 5169,
+      "sha256": "f927da3f51128967b83d84f1ccb5c66e9b3ed7d4732f5a0764632af347c97355"
+    },
+    {
+      "path": "port/v2/packages/art/src/earth-resident-plan.ts",
+      "bytes": 7654,
+      "sha256": "72d27b39e9c15382638f4db09074198e0eb296a18affafc740bbdc89e7f311f6"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides2.ts",
+      "bytes": 235945,
+      "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides5.ts",
+      "bytes": 116158,
+      "sha256": "2e71508a633e111c396378bee19164149e4b61653001c88476d0d95d9fe63382"
+    },
+    {
+      "path": "port/v2/packages/art/src/floraoverrides.ts",
+      "bytes": 25880,
+      "sha256": "6323d1c46e998568bf57cbbfc9355557e22b9b70de227f68bfda932231b2ed6c"
+    },
+    {
+      "path": "port/v2/packages/art/src/florarost.ts",
+      "bytes": 44113,
+      "sha256": "e3b89406d88af811e5810a2b72508ff68a20280fe71bfb3d7f6f5c8a9e53c8b2"
+    },
+    {
+      "path": "port/v2/packages/art/src/hdportrait.worker.verbatim.js",
+      "bytes": 294932,
+      "sha256": "e219d4a0aa8c69fe540ebbe6ebc9beb13abc060ada2c5d3b6cf8c76aa1ad05d1"
+    },
+    {
+      "path": "port/v2/packages/art/src/mammaloverrides.ts",
+      "bytes": 29311,
+      "sha256": "2ef6c2e8e592c14d3ce77d4f77b2637ffa0ae55b771375ec833e6a299db68702"
+    },
+    {
+      "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
+      "bytes": 358210,
+      "sha256": "baa8df44c485c0febaf1c8d05579d846a4c3b2114454c7e42d1c4177a4703e55"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciescanvas.ts",
+      "bytes": 1783,
+      "sha256": "17594498f0d4ed8140a3708ef4b0150b0d08a538a0777ae5fee822782ae095d4"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesoverrides.ts",
+      "bytes": 126067,
+      "sha256": "9c212624234a64d78a75a362e48625bec16a36f4831fd29ba86f09f236f9441b"
+    },
+    {
+      "path": "port/v2/packages/art/src/surface.ts",
+      "bytes": 12532,
+      "sha256": "a896ff25c61fdc11beb09a2015bd80dd4546b595d63aad927202de72d8217c3f"
+    },
+    {
+      "path": "port/v2/packages/art/test/biome-vista.test.ts",
+      "bytes": 13452,
+      "sha256": "7768b29481dfb773dd8566bc30d0dfb1479d32ed4c1a1e8388b7a36d777a8f45"
+    },
+    {
+      "path": "port/v2/packages/art/test/earth-resident-layer.test.ts",
+      "bytes": 9381,
+      "sha256": "aaf9c5d588433b51947b28f6b2a2ceeebbea16ba82d49946152447577cc5972f"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "bytes": 14498,
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "bytes": 13307,
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7"
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/index.ts",
+      "bytes": 116,
+      "sha256": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72"
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "bytes": 3639,
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/index.ts",
+      "bytes": 170,
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "bytes": 20728,
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "bytes": 271,
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749"
+    },
+    {
+      "path": "port/v2/packages/domain/strays/src/index.ts",
+      "bytes": 285,
+      "sha256": "fa905124c4d182f361b868cf0319fdb9279bd8d13cfb1f85c991d00f83d225ec"
+    },
+    {
+      "path": "port/v2/packages/domain/strays/src/strays.verbatim.js",
+      "bytes": 22644,
+      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+    },
+    {
+      "path": "port/v2/packages/persistence/src/outcome-transaction.ts",
+      "bytes": 58363,
+      "sha256": "bb765b96e2f9ea575103150e1eb0cb407f32cfafb955751bda79905680d4a85f"
+    },
+    {
+      "path": "port/v2/tests/biome-vista-cache.test.ts",
+      "bytes": 1507,
+      "sha256": "e6f147a2e4e280592e36974eb85cb6915c388a21fd8dfd204f982685433ecb4a"
+    },
+    {
+      "path": "port/v2/tests/biome-vista-protocol.test.ts",
+      "bytes": 6052,
+      "sha256": "1a4b4975cc2d172df4ad9c335a380c2bfe2285c45193f03af94f963519f4375d"
+    },
+    {
+      "path": "port/v2/tests/biome-vista-surface.test.ts",
+      "bytes": 23610,
+      "sha256": "0927df763fcde183ce8acd82b47cc50038d0dc0ae4d740f6d0407278dd6c5e8f"
+    },
+    {
+      "path": "port/v2/tests/biome-vista-worker-error.test.ts",
+      "bytes": 7207,
+      "sha256": "e099eb218ae02678c31dcbe4e84681f1dcac2e15ec1514a1c4ce871cf62e7101"
+    },
+    {
+      "path": "port/v2/tests/compendium-budget.test.ts",
+      "bytes": 146461,
+      "sha256": "777cacc882437f33fc7c0570cefb973a33975bf9826647976851558735577d78"
+    },
+    {
+      "path": "port/v2/tests/current-producer-authorities.test.ts",
+      "bytes": 7416,
+      "sha256": "7c7e1bae4e184610eae2ea65be55dc4549efcaea8eae877211cd068514c0b0ce"
+    },
+    {
+      "path": "port/v2/tests/earth-layered-recipe.test.ts",
+      "bytes": 8989,
+      "sha256": "e9df6cf38bad3170025b32c13ccbb345dfb4fd00c629f0c8c60221cfb82bebfa"
+    },
+    {
+      "path": "port/v2/tests/earth-layered-shake-settlement.test.ts",
+      "bytes": 7538,
+      "sha256": "a90bc644cb5acd757a646b8531868d89a36912cf577ab3fbf6a51152ecb0d956"
+    },
+    {
+      "path": "port/v2/tests/guide-release.test.ts",
+      "bytes": 220874,
+      "sha256": "0b8f87e7e8b491ab2a2823acfc6894c67c850397f228dd19a0440e7c59fbea7a"
+    },
+    {
+      "path": "port/v2/tests/painted-mars-binding.test.ts",
+      "bytes": 6810,
+      "sha256": "c9041e17fd56ceae646cdfa9213cc984ee85916beaa19eb97584163e39ae4962"
+    },
+    {
+      "path": "port/v2/tests/pwa-offline.test.ts",
+      "bytes": 53880,
+      "sha256": "7870472264ce618e7a5fe4a0d1734d20e7b927e783c3ac20f2c12be0315c3014"
+    },
+    {
+      "path": "port/v2/tests/scene-texture-owner.test.ts",
+      "bytes": 11039,
+      "sha256": "7fc1586017c9108e443ce3fe57f2385471c8030f473b57eff70d83852385f30f"
+    },
+    {
+      "path": "port/v2/tests/slicesmoke-dtrain-release-convergence.test.ts",
+      "bytes": 9367,
+      "sha256": "f27931891c06cf47fece5cfbd13273834e4ca1746f575cf7ece0dabb9de63e86"
+    },
+    {
+      "path": "port/v2/tests/slicesmoke-guide-release-scroll-contract.test.ts",
+      "bytes": 15851,
+      "sha256": "a4720b11dc490baae0b14949b39800208c075474171f0a1f9dd9fa81f0f83780"
+    },
+    {
+      "path": "port/v2/tests/visual-policy-main-wiring.test.ts",
+      "bytes": 3473,
+      "sha256": "a3ac0e1aa96a5d6d3172d4c2cd978b9fe4dd2c096cfd2cd6c0a81373e4b232c9"
+    },
+    {
+      "path": "port/v2/tools/arc4-browser-contract.mjs",
+      "bytes": 562401,
+      "sha256": "3d8e1c2b8c08013ddbe0ee266cccc99ceaff593629519f26d1f5d7072d816e94"
+    },
+    {
+      "path": "port/v2/tools/browsercdp.mjs",
+      "bytes": 159934,
+      "sha256": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca"
+    },
+    {
+      "path": "port/v2/tools/overridecheck.control.mjs",
+      "bytes": 67042,
+      "sha256": "8078d476341ecc20f799ec4050dd8f992fae14f5f0d7ab0fe532e32edea31624"
+    },
+    {
+      "path": "port/v2/tools/overridecheck.mjs",
+      "bytes": 101295,
+      "sha256": "9a2a930297dbd5cc5d05935db6909a310ba685d9d07139a636e509cf107029f1"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "bytes": 1890119,
+      "sha256": "ed95d1a5b16daf215f12d45c6ee4eadf708768c1526f943367df24cfb79bde3d"
+    }
+  ]
+}

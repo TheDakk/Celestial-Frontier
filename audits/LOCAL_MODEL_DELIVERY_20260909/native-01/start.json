@@ -1,0 +1,17 @@
+{
+  "schema": "cf.local-model-delivery-native.v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-09T14:12:55.126Z",
+  "scope": "Actual native browser OPFS + HTTP Range + Blob URL; tiny synthetic bytes only",
+  "qualityAccepted": false,
+  "deviceQualified": false,
+  "actualModelDownloaded": false,
+  "sources": [],
+  "virtualSources": [],
+  "observations": [],
+  "requests": [],
+  "clicks": [],
+  "screenshots": [],
+  "browserEvents": [],
+  "cleanup": {}
+}

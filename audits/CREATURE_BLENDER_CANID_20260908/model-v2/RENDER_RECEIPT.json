@@ -1,0 +1,64 @@
+{
+  "schema": "cf.canid-render/v1",
+  "status": "PASS",
+  "visualAcceptance": "UNREVIEWED",
+  "blender": "5.2.1 LTS",
+  "buildHash": "9e2066aef7ef",
+  "backend": "METAL",
+  "devices": [
+    {
+      "name": "Apple M4 Pro (GPU - 16 cores)",
+      "type": "METAL",
+      "id": "METAL_Apple M4 Pro (GPU - 16 cores)"
+    }
+  ],
+  "cpuEnabled": false,
+  "samples": 16,
+  "sceneDevice": "GPU",
+  "renderSize": [
+    440,
+    440
+  ],
+  "seed": 0,
+  "animatedSeed": false,
+  "frames": [
+    {
+      "frame": 1,
+      "file": "renders/wolf-frame-001.png",
+      "bytes": 87728,
+      "sha256": "888f80006da354b5dde932d1a3c7c438546786d67537fb51c50d4b0b7ec3bf5c",
+      "renderSeconds": 1.369
+    },
+    {
+      "frame": 25,
+      "file": "renders/wolf-frame-025.png",
+      "bytes": 87550,
+      "sha256": "eefeaed739dd0431761b644cd3d35b0b3f21fbc70b438cdef14235d6ed95e502",
+      "renderSeconds": 1.193
+    },
+    {
+      "frame": 49,
+      "file": "renders/wolf-frame-049.png",
+      "bytes": 87737,
+      "sha256": "b9ee56fb4c6832741f8d0c001539b8a7c820913531b6e7fff30ddbc497f94f19",
+      "renderSeconds": 0.862
+    },
+    {
+      "frame": 81,
+      "file": "renders/wolf-frame-081.png",
+      "bytes": 87197,
+      "sha256": "045c2dc5d2a406df0687aee6d275ec7a2d269b8c8e54c40bddaed9ef637a885f",
+      "renderSeconds": 1.237
+    },
+    {
+      "frame": 97,
+      "file": "renders/wolf-frame-097.png",
+      "bytes": 87724,
+      "sha256": "6d5366782762db902d59e9241fa50f7605d8016cc3fa42ee8ffa78ab824e031e",
+      "renderSeconds": 1.04
+    }
+  ],
+  "blendSha256": "a5e635a7587e1e8b8be7a3bd3636f56375ba84654989e696cf251b4a1c188e8a",
+  "phenotypeSha256": "757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476",
+  "runtimeIntegrated": false
+}

@@ -1,0 +1,16 @@
+✔ admits complete ordered synthetic counterpart only; no native inference claim (0.479834ms)
+✔ rejects absent/not-ready/inconsistent-phase/error status (0.183375ms)
+✔ rejects incomplete and mismatched totals (0.1415ms)
+✔ rejects a stale or substituted normalized manifest SHA (0.07325ms)
+✔ rejects missing, duplicated or reordered Blob carriers (0.142042ms)
+✔ rejects corrupt head/tail and wrong declared Blob length (0.120167ms)
+✔ rejects a changed file path even when byte samples match another carrier (0.06425ms)
+✔ pinned CLI compiles only the two production owners and preserves the real constructor error code (137.465917ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 263.518542

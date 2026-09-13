@@ -1,0 +1,9 @@
+{
+  "command": [
+    "node",
+    "--input-type=module",
+    "-e",
+    "import {buildMobilePack,verifyMobilePack} from './tools/local-image-generation/mobile-pack.mjs';import fs from 'node:fs/promises';\nconst build=await buildMobilePack({output:'/private/tmp/cf-mobile-pack-20260909-species-03',runtimeDirectory:'/private/tmp/cf-runtime-pack-20260909-species-01',runtimeManifestSha256:'ddc09e2128a6fbfea11b3c6b0596359eb97fd7f18198fed38c74b3736502476b',localDiagnostic:true});\nawait fs.writeFile('audits/AI_SPECIES_MOBILE_20260909/mobile-delivery/build-03/artifact.json',JSON.stringify(build,null,2)+'\\n',{flag:'wx'});console.log(JSON.stringify(build));"
+  ],
+  "exitCode": 0
+}

@@ -70,6 +70,29 @@ function wiringErrors(main: string, owner: string): string[] {
     errors.push('surface-thin-adapter');
   }
 
+  const earthLayout = section(main, 'function currentEarthLayeredLayout():', '\n/** Each optional painting');
+  const planetsideLookup = "document.getElementById('planetside')";
+  // Planetside remains Main-owned. Every other lookup in this adapter would
+  // bypass the chrome geometry port, including an ID supplied through a variable.
+  const earthWithoutPlanetside = earthLayout.replace(planetsideLookup, '');
+  if (/\b(?:getElementById|querySelector(?:All)?)\s*\(/u.test(earthWithoutPlanetside)
+    || /\[\s*['"](?:getElementById|querySelector(?:All)?)['"]\s*\]/u.test(earthWithoutPlanetside)) {
+    errors.push('raw-main-dom');
+  }
+  if (earthLayout.length === 0 || occurrences(earthLayout, planetsideLookup) !== 1
+    || occurrences(earthLayout, 'appChrome.surfaceLayoutRects()') !== 1
+    || !earthLayout.includes('const upper = chrome.upper;')
+    || !earthLayout.includes("const lower = visibleRect(document.getElementById('planetside')) ?? chrome.dock;")
+    || !owner.includes('readonly surfaceLayoutRects: () => AppChromeSurfaceLayoutRects | null;')
+    || !owner.includes('    surfaceLayoutRects,\n')) {
+    errors.push('surface-layout-geometry-port');
+  }
+
+  // Main owns action registration; AppChrome still exclusively renders status.
+  // Permit only the exact Charters registration, never a second raw DOM reader.
+  const charterRegistration = "registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('objchip')], onOpen: fillCharters });";
+  if (occurrences(main, charterRegistration) !== 1) errors.push('charters-action-registration');
+  const mainOutsideChartersRegistration = main.replace(charterRegistration, '');
   for (const selector of [
     "getElementById('trail')",
     "getElementById('playerchip')",
@@ -81,7 +104,7 @@ function wiringErrors(main: string, owner: string): string[] {
     "getElementById('hintpill')",
     "getElementById('topbar')",
     "getElementById('dock')",
-  ]) if (main.includes(selector)) errors.push('raw-main-dom');
+  ]) if (mainOutsideChartersRegistration.includes(selector)) errors.push('raw-main-dom');
   if (occurrences(main, 'appChrome.rankCeremonyAnchor();') !== 1
     || !owner.includes('readonly rankCeremonyAnchor: () => AppChromeAnchorPoint | null;')
     || !rankAnchor.includes('const rect = playerChip.getBoundingClientRect();')
@@ -157,11 +180,14 @@ function wiringErrors(main: string, owner: string): string[] {
   }
 
   for (const contract of [
-    "escapeHtml(view.explorerName || 'Explorer')",
+    "playerChip.textContent = view.explorerName || 'Explorer';",
     'escapeHtml(view.objective.text)',
     'escapeHtml(view.objective.name)',
     "Math.max(0, Math.min(100, (view.hp / Math.max(1, view.hpMax)) * 100)) + '%'",
-    "primeChip.textContent = `✦ Prime Codex ${view.primeCount} / 9`;",
+    '<span class="ico" aria-hidden="true">✦</span>',
+    '<span class="lbl">Prime<span class="prime-full-label"> Codex</span></span>',
+    '<span class="prime-count">${escapeHtml(view.primeCount)}/9</span>',
+    "primeChip.setAttribute('aria-label', `Open Prime Codex, ${view.primeCount} of 9 signatures`);",
     'syncTopbarH();',
   ]) if (!renderStatus.includes(contract)) errors.push('render-contract');
   if (!owner.includes('${escapeHtml(segment)}</span>')
@@ -178,9 +204,13 @@ function wiringErrors(main: string, owner: string): string[] {
     'observeResize(context, syncContextH);',
     'observeResize(hint, syncHintH);',
     'for (const element of surfaceTopChrome) observeResize(element, syncSurfaceChromeBottom);',
-    'const bodyClassObserver = makeMutationObserver(syncSurfaceChromeBottom);',
     "attributeFilter: ['class'],",
   ]) if (!resizeLifecycle.includes(observation)) errors.push('observer-ownership');
+  const bodyClassPublication = section(resizeLifecycle, 'const bodyClassObserver = ', '\n  bodyClassObserver.observe(')
+    .replace(/^\s*\/\/[^\n]*\n/gm, '');
+  if (bodyClassPublication !== 'const bodyClassObserver = makeMutationObserver(() => {\n    syncTopbarH();\n    syncSurfaceChromeBottom();\n  });') {
+    errors.push('body-class-height-measurement');
+  }
   if (occurrences(resizeLifecycle, 'observeResize(') !== 5
     || occurrences(resizeLifecycle, 'makeMutationObserver(') !== 1) {
     errors.push('observer-cardinality');
@@ -198,6 +228,9 @@ function wiringErrors(main: string, owner: string): string[] {
     errors.push('owner-resize-order');
   }
   if (!resizeLifecycle.includes('addResizeListener(onResize);')) errors.push('resize-listener');
+  if (!owner.includes("rootStyle.setProperty('--row1-h', Math.max(40, searchbox.getBoundingClientRect().bottom) + 'px');")) {
+    errors.push('row-one-measurement');
+  }
   if (!dispose.includes('if (disposed) return;')
     || !dispose.includes('removeResizeListener(onResize);')
     || !dispose.includes('for (const observer of resizeObservers) observer.disconnect();')
@@ -232,6 +265,15 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
       "function updateChips(): void {\n  document.getElementById('playerchip')!.textContent = 'bypass';",
     );
     expect(wiringErrors(directDom, ownerSource)).toContain('raw-main-dom');
+    const directObjective = mainSource.replace(
+      'function updateChips(): void {',
+      "function updateChips(): void {\n  document.getElementById('objchip')!.textContent = 'bypass';",
+    );
+    expect(wiringErrors(directObjective, ownerSource)).toContain('raw-main-dom');
+    const wrongChartersOpener = replaceOnce(mainSource,
+      "btns: [document.getElementById('objchip')], onOpen: fillCharters",
+      "btns: [document.getElementById('docksurvey')], onOpen: fillCharters");
+    expect(wiringErrors(wrongChartersOpener, ownerSource)).toContain('charters-action-registration');
 
     const directRankAnchor = replaceOnce(
       mainSource,
@@ -264,6 +306,24 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
       .toContain('replacement-teardown');
   });
 
+  it('rejects literal and dynamic chrome lookups in the Earth scene geometry adapter', () => {
+    const layout = section(mainSource, 'function currentEarthLayeredLayout():', '\n/** Each optional painting');
+    const seam = '  const chrome = appChrome.surfaceLayoutRects();';
+    for (const lookup of [
+      "  void document.getElementById('dock');\n",
+      "  const ownerId = 'topbar'; void document.getElementById(ownerId);\n",
+      "  const ownerId = 'objchip'; void document['getElementById'](ownerId);\n",
+    ]) {
+      const changed = replaceOnce(layout, seam, lookup + seam);
+      const mutant = replaceOnce(mainSource, layout, changed);
+      expect(wiringErrors(mutant, ownerSource), lookup).toContain('raw-main-dom');
+    }
+    const withoutPort = replaceOnce(mainSource, layout,
+      replaceOnce(layout, 'appChrome.surfaceLayoutRects()', 'null'));
+    expect(wiringErrors(withoutPort, ownerSource)).toContain('surface-layout-geometry-port');
+    expect(wiringErrors(mainSource, ownerSource)).toEqual([]);
+  });
+
   it('negative-controls every status projection and the owner render contract', () => {
     const mainStatus = section(mainSource, 'function updateChips(): void {', '\nfunction hudText(): void {');
     for (const [needle, replacement] of [
@@ -287,12 +347,17 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
       expect(wiringErrors(mutated, ownerSource), needle).toContain('status-projection');
     }
 
-    const unescapedExplorer = replaceOnce(
+    const unsafeExplorerHtml = replaceOnce(
       ownerSource,
-      "escapeHtml(view.explorerName || 'Explorer')",
-      "view.explorerName || 'Explorer'",
+      "playerChip.textContent = view.explorerName || 'Explorer';",
+      "playerChip.innerHTML = view.explorerName || 'Explorer';",
     );
-    expect(wiringErrors(mainSource, unescapedExplorer)).toContain('render-contract');
+    expect(wiringErrors(mainSource, unsafeExplorerHtml)).toContain('render-contract');
+    const unescapedPrimeCount = replaceOnce(ownerSource, '${escapeHtml(view.primeCount)}/9</span>', '${view.primeCount}/9</span>');
+    expect(wiringErrors(mainSource, unescapedPrimeCount)).toContain('render-contract');
+    const guessedRowOne = replaceOnce(ownerSource, "Math.max(40, searchbox.getBoundingClientRect().bottom) + 'px'", "'40px'");
+    expect(wiringErrors(mainSource, guessedRowOne)).toContain('row-one-measurement');
+    expect(wiringErrors(mainSource, ownerSource)).toEqual([]);
     const unescapedTrail = replaceOnce(ownerSource, '${escapeHtml(segment)}</span>', '${segment}</span>');
     expect(wiringErrors(mainSource, unescapedTrail)).toContain('trail-escaping');
     const unescapedContext = replaceOnce(
@@ -329,6 +394,15 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
     );
     expect(wiringErrors(mainSource, duplicateSurfaceObserver)).toContain('observer-ownership');
     expect(wiringErrors(mainSource, duplicateSurfaceObserver)).toContain('observer-cardinality');
+
+    const bodyClassPublication = section(ownerSource, 'const bodyClassObserver = ', '\n  bodyClassObserver.observe(');
+    const staleHeaderMutation = replaceOnce(ownerSource, bodyClassPublication,
+      replaceOnce(bodyClassPublication, '    syncTopbarH();\n', ''));
+    expect(wiringErrors(mainSource, staleHeaderMutation)).toContain('body-class-height-measurement');
+    const reversedMutationOrder = replaceOnce(ownerSource, bodyClassPublication,
+      replaceOnce(bodyClassPublication, '    syncTopbarH();\n    syncSurfaceChromeBottom();',
+        '    syncSurfaceChromeBottom();\n    syncTopbarH();'));
+    expect(wiringErrors(mainSource, reversedMutationOrder)).toContain('body-class-height-measurement');
 
     const broadMutation = replaceOnce(
       ownerSource,

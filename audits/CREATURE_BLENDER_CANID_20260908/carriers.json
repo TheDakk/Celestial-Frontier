@@ -1,0 +1,173 @@
+{
+  "schema": "cf-canid-carrier-transforms/v1",
+  "records": [
+    {
+      "path": "model-v1/BUILD_RECEIPT.json",
+      "originalBytes": 15557,
+      "originalSha256": "ca476bf99120186d851ca8452b4474153b88764462bf6707aa2df9d052f369c2",
+      "sanitizedPaths": false,
+      "compressed": false
+    },
+    {
+      "path": "model-v1/RENDER_RECEIPT.json",
+      "originalBytes": 1740,
+      "originalSha256": "b248d9263e5950f87a35a33427b3b13d6b8c16baf02b9917ab4c2850e65a53b5",
+      "sanitizedPaths": false,
+      "compressed": false
+    },
+    {
+      "path": "model-v1/build-process.json",
+      "originalBytes": 600,
+      "originalSha256": "fa636d71f7c230c9ab7c967d89149f0d5982227ad7202308bf741a3c669ef6fe",
+      "sanitizedPaths": true,
+      "compressed": false
+    },
+    {
+      "path": "logs/build-v1.log.gz",
+      "originalBytes": 618,
+      "originalSha256": "2081d9866b45946407ed714343172eb23213b93a8a354850bd452cd6f92a4675",
+      "sanitizedPaths": true,
+      "compressed": true
+    },
+    {
+      "path": "model-v1/render-process.json",
+      "originalBytes": 104,
+      "originalSha256": "a154c30efc9ca0fec87cc41ef0cafbab6f7868cbb8b5ad7b828f262117bfc632",
+      "sanitizedPaths": true,
+      "compressed": false
+    },
+    {
+      "path": "logs/render-v1.log.gz",
+      "originalBytes": 1692,
+      "originalSha256": "92df010e118157d8e95276b9d0332de3ec7880e8560ec06804ca85dd3a8ffdbf",
+      "sanitizedPaths": true,
+      "compressed": true
+    },
+    {
+      "path": "model-v2/BUILD_RECEIPT.json",
+      "originalBytes": 15769,
+      "originalSha256": "06bdab7ac054e6532033fd51c932e451e7a6f175ce4ec6ea2f71c1e16b59e612",
+      "sanitizedPaths": false,
+      "compressed": false
+    },
+    {
+      "path": "model-v2/RENDER_RECEIPT.json",
+      "originalBytes": 1741,
+      "originalSha256": "4f455d74d494f6c95eeaebd0407e2095f09826273e8908aa8dd28a90e3f55ff5",
+      "sanitizedPaths": false,
+      "compressed": false
+    },
+    {
+      "path": "model-v2/build-process.json",
+      "originalBytes": 635,
+      "originalSha256": "d0939d52628d34c5072d7eb162959673f5cd5c18c78297371e947e8b7a252e59",
+      "sanitizedPaths": true,
+      "compressed": false
+    },
+    {
+      "path": "logs/build-v2.log.gz",
+      "originalBytes": 618,
+      "originalSha256": "e7dd3f4b57ad171671b741d1b36485db34e45aceaede8efd13314ec8ff6c4b34",
+      "sanitizedPaths": true,
+      "compressed": true
+    },
+    {
+      "path": "model-v2/render-process.json",
+      "originalBytes": 104,
+      "originalSha256": "4ee854cdbe9719cce378131e7e1083eebe4468b62f05bb85517d0dab8324cbba",
+      "sanitizedPaths": true,
+      "compressed": false
+    },
+    {
+      "path": "logs/render-v2.log.gz",
+      "originalBytes": 1693,
+      "originalSha256": "af67380b9c6ec8db38991aa042853e4497f3dc640ff6da0819059cc8ab74cc69",
+      "sanitizedPaths": true,
+      "compressed": true
+    },
+    {
+      "path": "model-v2/SAVED_AUDIT_RECEIPT.json",
+      "originalBytes": 1578,
+      "originalSha256": "3c778ac87576b482ebbadbe20a2486aa13b5ac962ab0ea4257238f87c7227a8f",
+      "sanitizedPaths": false,
+      "compressed": false
+    },
+    {
+      "path": "logs/audit-v2.log.gz",
+      "originalBytes": 304,
+      "originalSha256": "b0a57445c09651dbea156a2662d35b090b7e2ceaeff89d4450a2692957d77b79",
+      "sanitizedPaths": true,
+      "compressed": true
+    },
+    {
+      "path": "model-v2/audit-process.json",
+      "originalBytes": 104,
+      "originalSha256": "2cbf7b303c8d2be4a1b97309737848fa7a91afaf23816330bd87e8494bd8f877",
+      "sanitizedPaths": true,
+      "compressed": false
+    },
+    {
+      "path": "inputs/manifest.json",
+      "originalBytes": 866,
+      "originalSha256": "08aa20cc357914c5577c133ee9b03ebc85e898f66fba5291d5949521cfd9c5b4",
+      "sanitizedPaths": false,
+      "compressed": false
+    },
+    {
+      "path": "inputs/procedural-quad-control.json",
+      "originalBytes": 6599,
+      "originalSha256": "727cdfe9f02ccfb60df807a145c837bf795d94059733afd767dcc402777e67cc",
+      "sanitizedPaths": false,
+      "compressed": false
+    },
+    {
+      "path": "inputs/wolf-lineage-ab.json",
+      "originalBytes": 13674,
+      "originalSha256": "0b121ebb814c19757e2599dc5778b54010acf4ed83d26c3e4832326c1406c4bc",
+      "sanitizedPaths": false,
+      "compressed": false
+    },
+    {
+      "path": "inputs/wolf-lineage-ba.json",
+      "originalBytes": 13676,
+      "originalSha256": "2b15778887a2dfc36ed616d3d43be87b8f320eabaaac06ec4dd7cd9c40bd688b",
+      "sanitizedPaths": false,
+      "compressed": false
+    },
+    {
+      "path": "inputs/wolf.json",
+      "originalBytes": 6924,
+      "originalSha256": "757478b4b85981601e3b2c0077828893bf7fe184813710f039866e1b9bd37476",
+      "sanitizedPaths": false,
+      "compressed": false
+    },
+    {
+      "path": "logs/cf-creature-bridge-focused-20260908.log.gz",
+      "originalBytes": 1277,
+      "originalSha256": "69506daf611f8aac6eb0a006571274cedd4e9b2940ce4635e429bf65746b236e",
+      "sanitizedPaths": true,
+      "compressed": true
+    },
+    {
+      "path": "logs/cf-creature-bridge-corrected-20260908.log.gz",
+      "originalBytes": 1543,
+      "originalSha256": "ca4094c8bdbb4ea1e7b974d34606fb8b73664917ba63e7946b78db3d636a0fcb",
+      "sanitizedPaths": true,
+      "compressed": true
+    },
+    {
+      "path": "comparison/native-review/runner.mjs",
+      "originalBytes": 4221,
+      "originalSha256": "b8ea22bea53cec02c3d8f8d7f9e20cd84f5a92497dbc9d3ecf8aa8f478220e18",
+      "sanitizedPaths": false,
+      "compressed": false
+    },
+    {
+      "path": "comparison-initial/derivation-recipe.py",
+      "originalBytes": 5357,
+      "originalSha256": "c609f9d89b3e6eb934ed0bd81df6ab60cc6e8995caa169cadb2b93708d8c48e3",
+      "sanitizedPaths": true,
+      "compressed": false
+    }
+  ]
+}

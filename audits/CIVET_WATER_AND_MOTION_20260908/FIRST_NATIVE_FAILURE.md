@@ -1,0 +1,7 @@
+# First native result — retained FAIL
+
+Desktop recorded three real native WebM clips,34 frame observations and nine control groups before the first water-toggle restoration failed. Breathing's two crests/exhale, separate head anticipation/thrust, live tail/limb changes, exact paw pixels, all five deficient-motion controls, active real resize/Stop, reduced/effects and hide controls had passed. Phone, water-region pixel probes, final layout and disposal were not reached.
+
+The second water checkbox click raised `TypeError: Borrowed filter chain changed outside this water owner`; the restored image still equalled the off image. One Runtime exception, zero browser-cleanup errors; browser closed. Preserve all native-first report/source/images/videos as failed aggregate evidence.
+
+Cause: the installed Pixi effects setter changes the original `undefined` filter chain to `null` when removing its first filter. The owner's strict null/undefined identity comparison rejected that legitimate empty chain on re-enable. The correction treats only empty filter representations as equivalent, retaining exact ordered object identity for every nonempty/foreign chain. No rig, image, water geometry, palette or acceptance threshold changed. The runner also stops promptly at a recorded Runtime exception rather than advancing to a later pixel assertion. A new native output qualifies the corrected source; no unchanged red retry or relabelling.

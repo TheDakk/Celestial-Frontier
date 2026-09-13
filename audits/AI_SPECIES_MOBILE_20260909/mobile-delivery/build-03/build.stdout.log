@@ -1,0 +1,104 @@
+vite v8.2.0 building client environment for evidence...
+[2K
+transforming...✓ 1035 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/notices/licenses/onnxruntime-web-1.29.0-installed-banner.txt                 0.13 kB │ gzip:     0.13 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/manifest.webmanifest                                                                    0.72 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/audit.html                                                                              0.86 kB │ gzip:     0.42 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/hybrid-matrix.html                                                                      0.95 kB │ gzip:     0.44 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/notices/licenses/onnxruntime-1.29.0-LICENSE                                  1.07 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/icons/celestial-frontier-maskable.svg                                                   1.13 kB │ gzip:     0.53 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/icons/celestial-frontier.svg                                                            1.13 kB │ gzip:     0.53 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/audiovisual-pilot.html                                                                  1.13 kB │ gzip:     0.45 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/RUNTIME_NOTICES.md                                                           1.39 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/deployment.json                                                              1.59 kB │ gzip:     0.77 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/denoiser-shapes.mjs                                                          2.37 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/license-source-provenance.json                                               2.97 kB │ gzip:     1.20 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/notices/licenses/provenance.json                                             4.01 kB │ gzip:     1.64 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/notices/THIRD_PARTY_NOTICES.md                                               4.15 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/Inter-LICENSE-CkXC2-KD.txt                                                       4.38 kB │ gzip:     1.97 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/planet-surface-turn.worker-jKUKmrS4.js                                           6.38 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/runtime-pack-manifest.json                                                              8.80 kB │ gzip:     2.62 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/runtime.json                                                                 9.03 kB │ gzip:     1.48 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/notices/licenses/flux2-klein-4b-LICENSE.md                                   9.58 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/gpu-profile.mjs                                                              9.72 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/pipeline-math.mjs                                                           10.22 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/stage-worker.mjs                                                            11.21 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/notices/licenses/qwen3-4b-LICENSE                                           11.34 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/notices/diffusers-040c7cd-LICENSE                                           11.35 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/notices/licenses/tokenizers-0.2.0-LICENSE                                   11.35 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/scout-chemical-132-Dt4gyYnA.webp                                                12.53 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/source-contract.md                                                          18.98 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/cf-pilot-ui-nav-bMnbTxA8.wav                                                    26.92 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/cf-pilot-combat-contact-DHZD2lYd.wav                                            33.64 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/service-worker.js                                                                      33.76 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/scout-chemical-300-CxcU_kic.webp                                                40.66 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/cf-pilot-ui-refusal-CMon7hko.wav                                                43.24 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs       51.40 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs                        66.34 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/cf-pilot-ui-settlement-uF_X4Ois.wav                                             67.24 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/index.html                                                                             69.13 kB │ gzip:    15.17 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/scout-chemical-512-DcNawgH5.webp                                                92.89 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs                    98.93 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/mars-dunesea-v1-cFwkRNdy.webp                                                  127.08 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/earth-riverbank-v1-C4EQQH_D.webp                                               130.30 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/cf-pilot-scout-landing-D1k5tYuE.wav                                            134.44 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/references/1-civet.webp                                                    179.81 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/biome-vista.worker-D3XRSJZJ.js                                                 220.62 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/cf-pilot-scout-approach-Be38_iqZ.wav                                           230.44 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/notices/onnxruntime-2e2543f-ThirdPartyNotices.txt                          336.90 kB │ gzip:    46.74 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/earth-rainy-phone-DFt5murF.webp                                                343.07 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/InterVariable-DiVDrmQJ.woff2                                                   352.24 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/earth-civet-landing-v1-DxWosWSp.webp                                           600.75 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/earth-rainy-landscape-DPgApIAi.webp                                            765.31 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/earth-resident.worker-BSlMnLCV.js                                              957.25 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/species-art.worker-DnnSDKMy.js                                               1,312.22 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/references/4-frog.png                                                    1,955.52 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/reference.png                                                            1,969.23 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/references/6-cranberry.png                                               2,005.71 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/references/2-persimmon.png                                               2,326.60 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/references/5-devils-club.png                                             2,581.31 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/cf-pilot-exploration-music-CMF8UCKw.wav                                      4,608.04 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/cf-pilot-temperate-bed-C_jKRyj6.wav                                          4,608.04 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm  25,749.87 kB │ gzip: 6,442.00 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/webworkerAll-Bz2JnXQB.js                                                         0.05 kB │ gzip:     0.06 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/release-identity-CIuedefi.js                                                     0.08 kB │ gzip:     0.08 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/getTextureBatchBindGroup-DkbnCTGz.js                                             0.34 kB │ gzip:     0.26 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/getPo2TextureFromSource-BTcd7Ah1.js                                              0.41 kB │ gzip:     0.28 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/modulepreload-polyfill-P2Xu9kJm.js                                               0.67 kB │ gzip:     0.38 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/CanvasPool-BewL5izq.js                                                           0.75 kB │ gzip:     0.41 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/speciesidentity-Dv9PKGDT.js                                                      1.28 kB │ gzip:     0.50 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/surface-polish-CBmmi-Kj.js                                                       4.67 kB │ gzip:     1.65 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/src-PpYgFp_O.js                                                                  5.10 kB │ gzip:     2.43 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/lib-BHX2vzcH.js                                                                  5.76 kB │ gzip:     2.21 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/canvasUtils-CWV5icuA.js                                                          6.02 kB │ gzip:     2.03 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/src-aprXGpsF.js                                                                  8.08 kB │ gzip:     2.64 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/BufferResource-CBxAIQXt.js                                                      10.52 kB │ gzip:     2.77 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/planet-surface-turn-view-DxZP3AEj.js                                            13.78 kB │ gzip:     5.26 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/init-Cw2CTxAB.js                                                                15.26 kB │ gzip:     4.77 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/earth-layered-recipe-DUnTdFTy.js                                                15.43 kB │ gzip:     3.93 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/pilot-sound-player-ClZlhdAJ.js                                                  16.14 kB │ gzip:     6.19 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/audit-DPpPJhvk.js                                                               16.56 kB │ gzip:     6.50 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/audiovisualPilot-zRKOG3uY.js                                                    19.11 kB │ gzip:     7.29 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/init-DzCRp0mF.js                                                                24.67 kB │ gzip:     8.49 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/audiovisual-pilot-BveKy37o.js                                                   25.07 kB │ gzip:     6.50 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/world-roster-MmiDos-4.js                                                        29.16 kB │ gzip:     9.31 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/hybridMatrix-DdNUFXT8.js                                                        33.83 kB │ gzip:    11.00 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/WebGPURenderer-9hw_QH6b.js                                                      38.48 kB │ gzip:    10.75 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/browserAll-CZbsrlbl.js                                                          42.58 kB │ gzip:    11.08 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/local-ai-game-BzamWdnw.js                                                       54.70 kB │ gzip:    20.23 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/WebGLRenderer-DYlUTdA1.js                                                       67.98 kB │ gzip:    18.67 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/RenderTargetSystem-Cjin1jYB.js                                                  71.08 kB │ gzip:    20.21 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/CanvasRenderer-D2F2hEh-.js                                                      87.38 kB │ gzip:    27.45 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/Geometry-C5FtorEc.js                                                           101.61 kB │ gzip:    31.13 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/visual-effect-policy-CBh2K0FN.js                                               117.24 kB │ gzip:    31.41 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/src-dauYwI8V.js                                                                129.28 kB │ gzip:    50.67 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/guide-content-Cy7MxzST.js                                                      130.87 kB │ gzip:    44.27 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/release-content-BLslG7q3.js                                                    151.53 kB │ gzip:    58.18 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/tame-greeting-audio-BU1NYcIw.js                                                231.93 kB │ gzip:    64.11 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/speciesart-CIMT0oYh.js                                                       1,266.02 kB │ gzip:   354.45 kB
+../../../../private/tmp/cf-mobile-pack-20260909-species-03/assets/main-DxcF-Peg.js                                                             1,490.76 kB │ gzip:   391.82 kB
+
+✓ built in 2.11s
+{"directory":"/private/tmp/cf-mobile-pack-20260909-species-03","manifestSha256":"5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c","status":"PASS","buildId":"42d79c05f4b5269766d35e82c03f7b828f70062dc2bdca54ee98ca5f643465b4","fileCount":97,"totalBytes":56529354,"budget":{"currentBytes":56529354,"priorBytes":56529354,"retainedStaticBytes":113058708,"shippedLimitBytes":134217728,"retainedLimitBytes":268435456,"currentHeadroomBytes":77688374,"retainedHeadroomBytes":155376748,"excludesBrowserStorageOverhead":true,"excludesModelAndOriginals":true},"distributionQualified":false,"physicalPhoneQualified":false,"fullModelInstallQualified":false}

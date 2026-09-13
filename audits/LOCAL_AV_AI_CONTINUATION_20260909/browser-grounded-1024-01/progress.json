@@ -1,0 +1,342 @@
+{
+  "events": [
+    {
+      "phase": "start",
+      "seed": 133,
+      "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+      "referenceEnabled": true,
+      "profile": false,
+      "q8Block32": true,
+      "atMs": 100.2900002002716
+    },
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "text_encoder_q4.onnx",
+      "atMs": 121.88000011444092
+    },
+    {
+      "stage": "text",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "text_encoder_q4.onnx",
+      "inputNames": [
+        "input_ids",
+        "attention_mask"
+      ],
+      "outputNames": [
+        "prompt_embeds"
+      ],
+      "elapsedMs": 4198.84500002861,
+      "atMs": 4318.110000133514
+    },
+    {
+      "stage": "text",
+      "type": "complete",
+      "dims": [
+        1,
+        512,
+        7680
+      ],
+      "tokenCount": 480,
+      "elapsedMs": 11521.069999933243,
+      "atMs": 11639.72000002861
+    },
+    {
+      "stage": "text",
+      "phase": "worker-terminated",
+      "atMs": 11639.905000209808
+    },
+    {
+      "phase": "reference-prepared",
+      "url": "/reference.png",
+      "width": 512,
+      "height": 288,
+      "matte": null,
+      "pixelSha256": "bed3684dde2c27b8b62ebd2d7ae115a90892ea086d43de2a8bd795697091f8b0",
+      "atMs": 11733.405000209808
+    },
+    {
+      "stage": "encode",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "vae_encoder.onnx",
+      "atMs": 11764.295000076294
+    },
+    {
+      "stage": "encode",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "vae_encoder.onnx",
+      "inputNames": [
+        "sample"
+      ],
+      "outputNames": [
+        "packed_latent"
+      ],
+      "elapsedMs": 456.5499999523163,
+      "atMs": 12199.320000171661
+    },
+    {
+      "stage": "encode",
+      "type": "complete",
+      "elapsedMs": 905.0099999904633,
+      "atMs": 12647.695000171661
+    },
+    {
+      "stage": "encode",
+      "phase": "worker-terminated",
+      "atMs": 12647.759999990463
+    },
+    {
+      "phase": "reference-prepared",
+      "url": "/identity.webp",
+      "width": 480,
+      "height": 320,
+      "matte": "#72786e",
+      "pixelSha256": "96fe0622f6dca3e0ed1a3052aea75a771bf58294b938387778a8b2435e7b2323",
+      "atMs": 12655.53500008583
+    },
+    {
+      "stage": "encode",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "vae_encoder.onnx",
+      "atMs": 12665.66000008583
+    },
+    {
+      "stage": "encode",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "vae_encoder.onnx",
+      "inputNames": [
+        "sample"
+      ],
+      "outputNames": [
+        "packed_latent"
+      ],
+      "elapsedMs": 465.07499980926514,
+      "atMs": 13129.259999990463
+    },
+    {
+      "stage": "encode",
+      "type": "complete",
+      "elapsedMs": 927.3599998950958,
+      "atMs": 13591.495000123978
+    },
+    {
+      "stage": "encode",
+      "phase": "worker-terminated",
+      "atMs": 13591.560000181198
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "transformer-q8-block32.onnx",
+      "atMs": 13605.550000190735
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "transformer-q8-block32.onnx",
+      "inputNames": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "timestep",
+        "img_ids",
+        "txt_ids"
+      ],
+      "outputNames": [
+        "noise_pred"
+      ],
+      "elapsedMs": 8045.90499997139,
+      "atMs": 21650.555000066757
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 1,
+      "steps": 4,
+      "elapsedMs": 20532.189999818802,
+      "atMs": 34134.670000076294
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 2,
+      "steps": 4,
+      "elapsedMs": 32875.39999985695,
+      "atMs": 46477.31500005722
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 3,
+      "steps": 4,
+      "elapsedMs": 45973,
+      "atMs": 59574.88499999046
+    },
+    {
+      "stage": "denoise",
+      "type": "progress",
+      "phase": "step",
+      "step": 4,
+      "steps": 4,
+      "elapsedMs": 58543.699999809265,
+      "atMs": 72145.65000009537
+    },
+    {
+      "stage": "denoise",
+      "type": "complete",
+      "sigmas": [
+        1,
+        0.9622336779129861,
+        0.89465780804073,
+        0.7389686527095128,
+        0
+      ],
+      "elapsedMs": 58647.47499990463,
+      "atMs": 72250.05500006676
+    },
+    {
+      "stage": "denoise",
+      "phase": "worker-terminated",
+      "atMs": 72251.86000013351
+    },
+    {
+      "stage": "decode",
+      "type": "progress",
+      "phase": "loading",
+      "graph": "vae_decoder.onnx",
+      "atMs": 72527.97000002861
+    },
+    {
+      "stage": "decode",
+      "type": "progress",
+      "phase": "loaded",
+      "graph": "vae_decoder.onnx",
+      "inputNames": [
+        "packed_latent"
+      ],
+      "outputNames": [
+        "sample"
+      ],
+      "elapsedMs": 801.1200001239777,
+      "atMs": 73180.55500006676
+    },
+    {
+      "stage": "decode",
+      "type": "complete",
+      "dims": [
+        1,
+        3,
+        576,
+        1024
+      ],
+      "elapsedMs": 4423.694999933243,
+      "atMs": 76803.19500017166
+    },
+    {
+      "stage": "decode",
+      "phase": "worker-terminated",
+      "atMs": 76803.3900001049
+    },
+    {
+      "phase": "complete",
+      "elapsedMs": 76800.41999983788,
+      "clipped": 69,
+      "min": -1.1289410591125488,
+      "max": 0.9789131879806519,
+      "qualityAccepted": false,
+      "atMs": 76899.78000020981
+    }
+  ],
+  "memory": [
+    {
+      "atMs": 5719.867542,
+      "processCount": 7,
+      "summedProcessRssKiB": 930720
+    },
+    {
+      "atMs": 10751.386208,
+      "processCount": 9,
+      "summedProcessRssKiB": 3379424
+    },
+    {
+      "atMs": 15769.480458,
+      "processCount": 8,
+      "summedProcessRssKiB": 2579552
+    },
+    {
+      "atMs": 20861.416625,
+      "processCount": 8,
+      "summedProcessRssKiB": 3027664
+    },
+    {
+      "atMs": 25941.27525,
+      "processCount": 10,
+      "summedProcessRssKiB": 2241152
+    },
+    {
+      "atMs": 31073.353125,
+      "processCount": 9,
+      "summedProcessRssKiB": 620720
+    },
+    {
+      "atMs": 36169.085958,
+      "processCount": 9,
+      "summedProcessRssKiB": 638320
+    },
+    {
+      "atMs": 41221.167667,
+      "processCount": 8,
+      "summedProcessRssKiB": 720400
+    },
+    {
+      "atMs": 46334.74575,
+      "processCount": 8,
+      "summedProcessRssKiB": 503056
+    },
+    {
+      "atMs": 51361.819542,
+      "processCount": 8,
+      "summedProcessRssKiB": 514096
+    },
+    {
+      "atMs": 56406.736333,
+      "processCount": 8,
+      "summedProcessRssKiB": 510928
+    },
+    {
+      "atMs": 61436.365,
+      "processCount": 8,
+      "summedProcessRssKiB": 513152
+    },
+    {
+      "atMs": 66595.965708,
+      "processCount": 8,
+      "summedProcessRssKiB": 692320
+    },
+    {
+      "atMs": 71671.378625,
+      "processCount": 8,
+      "summedProcessRssKiB": 244912
+    },
+    {
+      "atMs": 76690.646958,
+      "processCount": 8,
+      "summedProcessRssKiB": 241984
+    },
+    {
+      "atMs": 81713.425542,
+      "processCount": 8,
+      "summedProcessRssKiB": 293104
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "cf.scoped-local-controls.v1",
+  "status": "PASS",
+  "tests": 8,
+  "failures": 0,
+  "command": "node tools/with-toolchain-lock.mjs --label mobile-delivery-controls-02 -- node --test tools/local-image-generation/mobile-pack.test.mjs",
+  "measuredFiles": [
+    {
+      "path": "pwa-build.ts",
+      "bytes": 33950,
+      "sha256": "e4af98745e374d0e684eedfb66442502bbef42cef0fc08720da27b7dcff3a41c"
+    },
+    {
+      "path": "mobile-pack.mjs",
+      "bytes": 16364,
+      "sha256": "04ec5628593dda3a886dd8dc207c04325cb8ae98c8b9584858bd267cb02d5de5"
+    },
+    {
+      "path": "mobile-pack.test.mjs",
+      "bytes": 8480,
+      "sha256": "50ed5e9a651dfff0d25904cf81954e151760c0a2f642ca966a843f03cafb8f66"
+    },
+    {
+      "path": "stdout.log",
+      "bytes": 1221,
+      "sha256": "33ed1437e0b220f74beda7083d522ff14ff50539e904dd1a990b4dca393c5507"
+    }
+  ],
+  "scope": "Node executed service-worker logic, pure byte boundaries and default generated SW identity; no real browser, package assembly, model installation or physical phone.",
+  "nativeAllocationForOverlapMutant": false
+}

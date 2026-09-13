@@ -1,0 +1,67 @@
+{
+  "schema": "cf-u1-hint-preparation/v1",
+  "parentSource": "1609cf3991e20da45d5e4628fd2163278ece5ec8",
+  "qualification": "working-copy preparation; no browser run or certificate",
+  "results": {
+    "evidenceBuild": "pass",
+    "rootValidateAndFingerprint": "pass",
+    "glyphStrokeVitest": {
+      "passed": 25
+    },
+    "rootNoUnusedTypeScript": "pass",
+    "releaseBudgetEvidenceVitest": {
+      "files": 3,
+      "passed": 72
+    }
+  },
+  "carriers": [
+    {
+      "source": "/private/tmp/cf-u1-hint-evidence-build-20260906.log",
+      "file": "cf-u1-hint-evidence-build-20260906.log.gz",
+      "rawBytes": 5295,
+      "rawSha256": "b426e7b775ef18ca7363c531fe12ca71320ee7c5f0fc1e828e80b5de46b138df",
+      "gzipBytes": 1881,
+      "gzipSha256": "9c9881d3bd6714d33a27c0a5ac3c55a6f9b11e56a9a04847b57e60863161711f"
+    },
+    {
+      "source": "/private/tmp/cf-u1-hint-root-validate-20260906.log",
+      "file": "cf-u1-hint-root-validate-20260906.log.gz",
+      "rawBytes": 1093,
+      "rawSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+      "gzipBytes": 708,
+      "gzipSha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736"
+    },
+    {
+      "source": "/private/tmp/cf-u1-glyph-stroke-focused-20260906.log",
+      "file": "cf-u1-glyph-stroke-focused-20260906.log.gz",
+      "rawBytes": 241,
+      "rawSha256": "bab142e7968c77de93aacf32d2781c237d34088ed5f70a88a67b37b88a0604be",
+      "gzipBytes": 196,
+      "gzipSha256": "1d3256b9587cd50128e1263e8da84394caa627933ac602adbea4128a5db21c9d"
+    },
+    {
+      "source": "/private/tmp/cf-u1-glyph-stroke-types-20260906.log",
+      "file": "cf-u1-glyph-stroke-types-20260906.log.gz",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipBytes": 20,
+      "gzipSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "/private/tmp/cf-u1-hint-release-budget-focused-20260906.log",
+      "file": "cf-u1-hint-release-budget-focused-20260906.log.gz",
+      "rawBytes": 376,
+      "rawSha256": "b658740c48c28ff7e81d0544620f439600da9115df9c30fe76e7432b7c4a487a",
+      "gzipBytes": 271,
+      "gzipSha256": "2994c736427bc5934f7e00a1e5e4b8fd2fc4bfccbfd528f53da6f917f3d4faa9"
+    },
+    {
+      "source": "/private/tmp/cf-u1-hint-producer-20260906.json",
+      "file": "cf-u1-hint-producer-20260906.json.gz",
+      "rawBytes": 1216,
+      "rawSha256": "13d7eb2170f6791f8711257ccc83483859334d9119bc74e61c47f9de72c71bf5",
+      "gzipBytes": 568,
+      "gzipSha256": "31bda4d3b08266389758fc77a06a12dcbb8535e66e8e816e3a1c13b46c157b3a"
+    }
+  ]
+}

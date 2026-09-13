@@ -1,0 +1,42 @@
+{
+  "sources": [
+    {
+      "path": "tools/local-image-generation/run-mobile-model-delivery.mjs",
+      "sha256": "b7737886109f93bf08bb95dc71742ca104fb7353ecb9edc72379e9c2a241f353"
+    },
+    {
+      "path": "tools/local-image-generation/run-mobile-model-delivery.test.mjs",
+      "sha256": "d7394cec9f94d0f046c04d708ee88003933600a5409707916c84dd227a9fdbcf"
+    },
+    {
+      "path": "tools/local-image-generation/offline-landfall-proof.mjs",
+      "sha256": "18d97a6e22249be19026dccd91e66c989fdb1696b96110f6721603f5e7abb29f"
+    },
+    {
+      "path": "tools/local-image-generation/offline-landfall-proof.test.mjs",
+      "sha256": "4bbdcbf63b9e57247feb78113d29e9c8b69331c13b54f2504c13b23864c0ac83"
+    }
+  ],
+  "checks": [
+    {
+      "label": "runner",
+      "command": [
+        "node",
+        "--test",
+        "tools/local-image-generation/run-mobile-model-delivery.test.mjs",
+        "tools/local-image-generation/offline-landfall-proof.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "validate",
+      "command": [
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "sourcesUnchanged": true,
+  "status": "PASS"
+}

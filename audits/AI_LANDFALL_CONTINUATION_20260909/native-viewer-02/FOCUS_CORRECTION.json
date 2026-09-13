@@ -1,0 +1,8 @@
+{
+  "firstStatus": "FAIL",
+  "retainedResultUnchanged": true,
+  "observed": "Small-close stayed on canonical Earth but panelOpen was null; original Notifications panel had closed during native resize. Exact Inspect-button restoration was impossible in that state.",
+  "productCorrection": "Capture semantic focus-return before storage read; re-resolve a refilled same-job Inspect button or, if the former panel is now closed, its visible existing opener. Do not reopen or move any panel.",
+  "rulerCorrection": "Require live same-job Inspect only if Notifications remains open; otherwise require visible Notifications opener. Capture exact focus target and conditionally reopen once before keyboard checks.",
+  "partialPassingEvidence": "Desktop 1024x576 exact PNG, small-fit278x156.375, native1024x576 pan320px, background isolation, tiny-image negative control, Close same-Earth. Whole native02 remains FAIL."
+}

@@ -1,0 +1,105 @@
+{
+  "schema": "cf-u2-qualified-native-diagnostic/v1",
+  "source": "437a3aa08f1e5cb3c1b0b134e02f8cbe92c56204",
+  "status": "QUALIFIED_SYNTHETIC_CAPACITY_EVIDENCE",
+  "certification": false,
+  "limitations": [
+    "Static HTML charset missing; static emoji decoded incorrectly.",
+    "Objective height216.5 differs from retained262.88; only22.5px overlap reproduced, not center collision.",
+    "Native input event callback ordering differs from Glass synchronous click.",
+    "Original toast/side/published-variable state absent from retained437 report."
+  ],
+  "files": [
+    {
+      "file": "ANALYSIS.md.gz",
+      "rawBytes": 3526,
+      "rawSha256": "a6b63927ba6d5d79ad622409970b9440cf60e51904de152acc3270730a0388b6",
+      "bytes": 1871,
+      "sha256": "3ad8a9e38d180b7120c4ebc525ef4fd9f49a14f9d5d02109676c5132801d6b94"
+    },
+    {
+      "file": "app-chrome.js.gz",
+      "rawBytes": 10248,
+      "rawSha256": "29a8075206fad68d2ec317443ba0c414b266dc9014fbbf13cb2f3bc46f89ee97",
+      "bytes": 3408,
+      "sha256": "08249a3ae417dc1fa9b28d0616fb64fe9d58d126b9281a2db6d8ffd2f0322ea4"
+    },
+    {
+      "file": "bootstrap.js.gz",
+      "rawBytes": 4280,
+      "rawSha256": "ae86c1629f3ef4a717c93e8b51ad74ce8db75a0fc7f039d552ac92a66d9a64bb",
+      "bytes": 1798,
+      "sha256": "865559559b23854e73bf58e60781310121d9b35bcfc616db866a46b47f14fc51"
+    },
+    {
+      "file": "index.html.gz",
+      "rawBytes": 67073,
+      "rawSha256": "18c1694a061e976690004064b761f8d0e7310be38b606afa913ecd6e84b1efeb",
+      "bytes": 14484,
+      "sha256": "69c9a86c00fd846b28bfd6c58c4e3dbdc4d95a6350a34fd71b939671c5c39eb0"
+    },
+    {
+      "file": "panels.js.gz",
+      "rawBytes": 7433,
+      "rawSha256": "4e78fdc53bd1eb352d2c112b79734d592c150085ae74923c65f9fd2c57641bfd",
+      "bytes": 2748,
+      "sha256": "d6bdcabedf0f81bd565b8096405da19efee6737190d4b5648417a7024ced7f7b"
+    },
+    {
+      "file": "report.json.gz",
+      "rawBytes": 27850,
+      "rawSha256": "a51adba53960b4ceee9eef47ffb5e4edda740abbe1f6a631d55acbfa5876dd70",
+      "bytes": 3817,
+      "sha256": "6d4ce56fab6d8101d383babd9cda9650b316a2eb9574daacb553c70e6c77dee6"
+    },
+    {
+      "file": "settled.png",
+      "rawBytes": 174990,
+      "rawSha256": "c140ef5b918957358f8dac9bcc0e1441ab75589c18e8d146bd947d183ba6e1b1",
+      "bytes": 174990,
+      "sha256": "c140ef5b918957358f8dac9bcc0e1441ab75589c18e8d146bd947d183ba6e1b1"
+    },
+    {
+      "file": "sheet-layout.js.gz",
+      "rawBytes": 9200,
+      "rawSha256": "3a0836c289b56c7b5f3a95770d49ff831acedfddb684fbbcdfdb5d4ee2bd453c",
+      "bytes": 2989,
+      "sha256": "36c7fc4d53ca5b36c6f45f1ba573821af4b8236f27b106f889b09ddd11f91c7c"
+    },
+    {
+      "file": "ui-presentation-tokens.js.gz",
+      "rawBytes": 3245,
+      "rawSha256": "bbd93dcb3902cdae6bcaf076e7d5110d7b9cccdfb45fbd3099c8167869c77d8b",
+      "bytes": 1341,
+      "sha256": "cde003d397a33efc1f4c38cab8d2e9f404e3ef7925e596ca14e8fb9016ab32b0"
+    },
+    {
+      "file": "ui-sheet-style.js.gz",
+      "rawBytes": 7461,
+      "rawSha256": "b19bb5d86d06f8f7f00cab15329f66bab6a75f8f7cfaa22313855f9480848bd7",
+      "bytes": 2056,
+      "sha256": "580b8b92cc045e44a788689b128e5bcf9259ad59f107be86f78796ea59e36c7a"
+    },
+    {
+      "file": "ui-shell-style.js.gz",
+      "rawBytes": 14962,
+      "rawSha256": "454a0b6999ca57e3ac1598588ed9a4acea433b97e92fcea6fdb19429e6da54e3",
+      "bytes": 3942,
+      "sha256": "e8a1762a30fb6deb5b0e28a5d6bc65000bada6cd0ac620360d8ec26c18c8ad7b"
+    },
+    {
+      "file": "cf-u2-objective-native-diagnostic-20260906.mjs.gz",
+      "rawBytes": 11050,
+      "rawSha256": "d33b8724a809be30360d8e63128cff07cd00f310bf492efe018ad87ce3c7b891",
+      "bytes": 4343,
+      "sha256": "269716fe2908eabbf7d2383c45d039040889e1712b82d0a60125e5b447bcab29"
+    },
+    {
+      "file": "cf-u2-objective-native-diagnostic-20260906.log.gz",
+      "rawBytes": 18031,
+      "rawSha256": "0414036938a8d4150ad340f5d3893ab3fd9cea433d2eeef78095c010c5db8d47",
+      "bytes": 1390,
+      "sha256": "a7d6e4d376e0b3bb89e7c836bf01add81ccac1d9d41deb3329f089b66032d65b"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "schema": "cf.arena-effects-intake/v1",
+  "images": [
+    {
+      "name": "arena-far",
+      "masterSha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2",
+      "width": 1672,
+      "height": 941,
+      "qualityAccepted": false,
+      "meetsRuntimeFloor": true
+    },
+    {
+      "name": "arena-mid",
+      "masterSha256": "189d0fc31a81330249fbce3cf03c8c3a0319cce47b9480f8623d8779dec96391",
+      "width": 1672,
+      "height": 941,
+      "qualityAccepted": false,
+      "meetsRuntimeFloor": true,
+      "bounds": {
+        "x": 1,
+        "y": 407,
+        "width": 1670,
+        "height": 533
+      },
+      "keyer": {
+        "erodedPixels": 8401,
+        "despilledPixels": 585,
+        "unresolvedEdgePixels": 190
+      },
+      "keyPixels": 876025,
+      "standAlphas": [
+        255,
+        255
+      ],
+      "keyedSha256": "f60de65e6f4592a4b7d8890e92d986930be8521e1c7d768d8b39548d4c5fa377"
+    },
+    {
+      "name": "arena-near",
+      "masterSha256": "8fc1191f88eaae7561316c1c43d84b1d907ce459852b13935228e3b23e7559c4",
+      "width": 1672,
+      "height": 941,
+      "qualityAccepted": false,
+      "meetsRuntimeFloor": true,
+      "bounds": {
+        "x": 1,
+        "y": 731,
+        "width": 1670,
+        "height": 209
+      },
+      "keyer": {
+        "erodedPixels": 4173,
+        "despilledPixels": 97,
+        "unresolvedEdgePixels": 0
+      },
+      "keyPixels": 1285719,
+      "standAlphas": [
+        0,
+        0
+      ],
+      "keyedSha256": "83eca67c68d9a7d72a009d26ee3734c83b4ee547446b0e2241ba8fc4ec51f5d2"
+    },
+    {
+      "name": "wild-launch",
+      "masterSha256": "17b0ca11a91720fe020c6ce7140e7a876a3f32848f139d68c1e78f2c7ec76580",
+      "width": 1254,
+      "height": 1254,
+      "qualityAccepted": false,
+      "meetsRuntimeFloor": true,
+      "bounds": {
+        "x": 77,
+        "y": 225,
+        "width": 950,
+        "height": 820
+      },
+      "keyer": {
+        "erodedPixels": 16264,
+        "despilledPixels": 71,
+        "unresolvedEdgePixels": 15
+      },
+      "keyPixels": 1342162,
+      "keyedSha256": "7ba832b64c4da426d7329be77f433888bc0242fdcba3813f6b4da9599abf64b3"
+    },
+    {
+      "name": "wild-travel",
+      "masterSha256": "cdfc251351e09485f51f43ead64b7809f1267be52e1836279b6e6392125fb2ea",
+      "width": 1254,
+      "height": 1254,
+      "qualityAccepted": false,
+      "meetsRuntimeFloor": true,
+      "bounds": {
+        "x": 42,
+        "y": 301,
+        "width": 1161,
+        "height": 648
+      },
+      "keyer": {
+        "erodedPixels": 18669,
+        "despilledPixels": 341,
+        "unresolvedEdgePixels": 99
+      },
+      "keyPixels": 1296345,
+      "keyedSha256": "7134cd4576c5db8db79de92079af01842ca63a56c5d2cfc654fda5d79036166b"
+    },
+    {
+      "name": "wild-impact",
+      "masterSha256": "2bfd550532bd0b212a33c4fd084c5b69d62e1616653568e07b4c02638ec1a64d",
+      "width": 1254,
+      "height": 1254,
+      "qualityAccepted": false,
+      "meetsRuntimeFloor": true,
+      "bounds": {
+        "x": 52,
+        "y": 215,
+        "width": 1166,
+        "height": 836
+      },
+      "keyer": {
+        "erodedPixels": 20485,
+        "despilledPixels": 968,
+        "unresolvedEdgePixels": 153
+      },
+      "keyPixels": 1263699,
+      "keyedSha256": "f2339b0a20db313735e5c8c5aba3133d414e307eec19e42e4367d47d9f03c1db"
+    }
+  ],
+  "groundLineNormalized": 0.78,
+  "nearLowerBandDeviation": "requested lower tenth; delivered approximately lower fifth, with exact alpha bounds recorded",
+  "originalMastersOptimized": false,
+  "extractedMasks": false,
+  "composite": "arena-composed-review.png",
+  "qualityAccepted": false
+}

@@ -1,6 +1,11 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
+import { transformSync } from 'rolldown/utils';
+import {
+  importSaveV2, projectLegacyPlayerSettlementChampionV1, type ContentRegistry,
+} from '@cf/persistence';
+import { projectCombatChronicleV1 } from '../../../apps/game/src/combat-chronicle.js';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
@@ -122,6 +127,81 @@ function planned(
 }
 
 describe('Arc 8 completed-transcript combat cue owner', () => {
+  it('projects the real fresh Explorer through cues and Chronicle without changing Frontier Resolve', () => {
+    const registry = JSON.parse(readFileSync(new URL(
+      '../../../../baseline-v1.8.9/content-registry.json', import.meta.url,
+    ), 'utf8')) as ContentRegistry;
+    const fresh = importSaveV2('{}', registry, 1_753_900_060_000);
+    if (!fresh.ok) throw new Error(`fresh Explorer fixture refused: ${fresh.reason}`);
+    const champion = projectLegacyPlayerSettlementChampionV1(fresh.state);
+    const ability = champion.stats.ab;
+    const target = encounter({
+      world: 'ordinary', worldType: 'airless', defenderGenome: makeGenome(999, 'fauna', 0.5),
+    });
+    const settlement = planned(champion, target, 'native-explorer-chronicle');
+    const before = JSON.stringify(settlement);
+    expect(ability).toEqual({
+      id: 'resolve', n: 'Frontier Resolve',
+      d: 'Hardened by the void — recovers each round and shrugs off blows',
+      regen: 0.04, taken: 0.9,
+    });
+    expect(settlement.transcript.A.ab).toEqual(ability);
+    const participants = projectCombatCueParticipantsV1(settlement);
+    expect(participants.champion.ability).toEqual({
+      theme: 'resolve', themeLabel: 'Frontier Resolve', color: champion.stats.hex,
+      fields: ability,
+    });
+    expect(participants.champion.bodyMaterial).toBeNull();
+    const cues = combatCuePlan(settlement, participants);
+    const chronicle = projectCombatChronicleV1(settlement, cues);
+    expect(chronicle.championName).toBe(champion.name);
+    expect(chronicle.steps).toHaveLength(settlement.transcript.log.length);
+    expect(chronicle.steps.some(step => step.rows.some(row => row.kind === 'damage'))).toBe(true);
+    expect(chronicle.winnerSide).toBe(settlement.transcript.winner);
+    expect(chronicle.steps.at(-1)).toMatchObject({ hpA: settlement.transcript.hpA, hpB: settlement.transcript.hpB });
+    expect(JSON.stringify(settlement)).toBe(before);
+    expect(champion.stats.ab).toEqual(ability);
+  });
+
+  it('keeps the Explorer exception exact and rejects missing creature metadata in the source helper', () => {
+    const source = readFileSync(new URL('../src/combat-cues.ts', import.meta.url), 'utf8');
+    const declaration = (name: string, next: string): string => {
+      const start = source.indexOf(`function ${name}(`), end = source.indexOf(`\nfunction ${next}(`, start);
+      if (start < 0 || end <= start || source.indexOf(`function ${name}(`, start + 1) !== -1)
+        throw new Error(`ability helper source boundary drifted: ${name}`);
+      return source.slice(start, end);
+    };
+    const helpers = [declaration('boundedText', 'finiteInteger'), declaration('exactKeys', 'sameCanonicalValue'),
+      declaration('abilityFact', 'bodyMaterialFact')].join('\n');
+    const transformed = transformSync('combat-ability-helpers.ts', helpers);
+    if (transformed.errors.length) throw new Error(JSON.stringify(transformed.errors));
+    const emitted = transformed.code;
+    const project = new Function(`${emitted}\nreturn abilityFact;`)() as
+      (value: unknown, explorerColor?: unknown) => { theme: string; fields: Record<string, unknown> };
+    const resolve = {
+      id: 'resolve', n: 'Frontier Resolve',
+      d: 'Hardened by the void — recovers each round and shrugs off blows', regen: 0.04, taken: 0.9,
+    };
+    expect(project(resolve, '#ffcf8a').theme).toBe('resolve');
+    // Creature participants never receive explorerColor, even for a copied Resolve shape.
+    expect(() => project(resolve)).toThrow(/combat ability theme/u);
+    expect(() => project(resolve, '#ffffff')).toThrow(/combat ability theme/u);
+    for (const mutant of [
+      { ...resolve, id: 'other' }, { ...resolve, n: 'Other Resolve' }, { ...resolve, d: 'Other text' },
+      { ...resolve, regen: 0.05 }, { ...resolve, taken: 1 }, { ...resolve, extra: true },
+      { ...resolve, theme: '' }, { ...resolve, themeLabel: 'partial' }, { ...resolve, col: '#ffcf8a' },
+    ]) expect(() => project(mutant, '#ffcf8a')).toThrow(/combat ability/u);
+    for (const field of Object.keys(resolve)) {
+      const missing: Record<string, unknown> = { ...resolve }; delete missing[field];
+      expect(() => project(missing, '#ffcf8a')).toThrow(/combat ability/u);
+    }
+    const creature = battleStats(makeGenome(999, 'fauna', 0.5)).ab;
+    expect(project(creature).fields).toEqual(creature);
+    for (const key of ['theme', 'themeLabel', 'col']) {
+      const missing: Record<string, unknown> = { ...creature }; delete missing[key];
+      expect(() => project(missing)).toThrow(/combat ability/u);
+    }
+  });
   it('maps every existing transcript event family with stable paired caption/visual tokens', () => {
     const target = encounter({
       world: 'ordinary', worldType: 'airless', defenderGenome: makeGenome(999, 'fauna', 0.5),

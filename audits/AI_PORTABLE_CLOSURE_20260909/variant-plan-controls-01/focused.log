@@ -1,0 +1,11 @@
+✔ binary graph splices exactly reconstruct changed payload and outer length, preserving other bytes (1.485959ms)
+✔ graph splices refuse changed outer data and field order/count (0.34525ms)
+✔ production plan builder refuses synthetic, corrupt and non-Buffer model carriers (0.264375ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46.752834

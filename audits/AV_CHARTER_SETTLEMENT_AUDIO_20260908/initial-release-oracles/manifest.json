@@ -1,0 +1,22 @@
+{
+  "status": "RETAINED_FIRST_RED",
+  "files": [
+    {
+      "source": "port/v2/tools/slicesmoke.mjs",
+      "snapshot": "slicesmoke.mjs.txt",
+      "sha256": "aa3878509864534ceeb85180978cad34ace1cda73d7a79ac5869233df2b5d0a8"
+    },
+    {
+      "source": "port/v2/tests/guide-release.test.ts",
+      "snapshot": "guide-release.test.ts.txt",
+      "sha256": "be63111e8b111f6ee4cf0103359f5979fde7b0c386ebcfda5a10677a50282745"
+    }
+  ],
+  "profile": "../develop-profile.log",
+  "passed": 3723,
+  "failed": 4,
+  "skipped": 1,
+  "typescriptRan": false,
+  "rootValidationRan": false,
+  "nativeRan": false
+}

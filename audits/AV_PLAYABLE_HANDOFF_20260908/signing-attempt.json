@@ -1,0 +1,14 @@
+{
+  "schema": "cf-local-signing-attempt/v1",
+  "command": "git commit -S --file /private/tmp/cf-av-commit-message-20260908.txt",
+  "execSessionId": 88126,
+  "exitCode": 128,
+  "terminalError": [
+    "error: 1Password: failed to fill whole buffer",
+    "fatal: failed to write commit object"
+  ],
+  "evidenceScope": "Literal failed command/result transcribed from the tool receipt, not a new signature verification or retry.",
+  "headAfterFailure": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "newCommitCreated": false,
+  "status": "Waiting for restored 1Password connection; no unsigned fallback."
+}

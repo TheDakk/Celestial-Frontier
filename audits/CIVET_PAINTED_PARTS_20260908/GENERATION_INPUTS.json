@@ -1,0 +1,15 @@
+{
+  "mode": "built-in image_gen edit",
+  "inputs": [
+    {
+      "path": "audits/CREATURE_SCENE_COHESION_20260908/civet-selected-v1.webp",
+      "role": "Exact identity/pose target"
+    },
+    {
+      "path": "audits/CIVET_WATER_AND_MOTION_20260908/native-filter-state/desktop-environment-water.png",
+      "role": "Scene lighting and brushwork reference only"
+    }
+  ],
+  "intent": "One painted near-leg atlas; review assembly before runtime use; real alpha required",
+  "output": "Preserve full original atlas and generation prompt; do not replace prior assets"
+}

@@ -1,4 +1,7 @@
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { gunzipSync } from 'node:zlib';
+import { assessCompactRailCopies } from '../tools/ui-rail-copy-check.mjs';
 import { describe, expect, it } from 'vitest';
 
 const sliceSource = readFileSync(
@@ -30,7 +33,7 @@ function executableDeclaration<T>(name: string, nextDeclaration: string): T {
   const prefix = `const ${name} = `;
   const owner = section(sliceSource, prefix, nextDeclaration);
   const expression = owner.slice(prefix.length).trim().replace(/;\s*$/u, '');
-  return Function(`return (${expression});`)() as T;
+  return Function('assessCompactRailCopies', `return (${expression});`)(assessCompactRailCopies) as T;
 }
 
 interface AtlasTravelObservation {
@@ -153,6 +156,207 @@ function greenAtlasTravelObservation(): AtlasTravelObservation {
 }
 
 describe('Slice Atlas native Travel contract', () => {
+  it('requires the intended native Records control at all three collision panel boundaries', () => {
+    const press = {
+      target: { settled: true, tag: 'BUTTON', type: 'button', id: 'dockrecords', hit: true,
+        width: 44, height: 44, x: 634, y: 566 },
+      pointer: { trusted: true, pointerType: 'mouse', tag: 'BUTTON', id: 'dockrecords',
+        atlasTravelId: null, atlasRowId: null, x: 634, y: 566 },
+    };
+    const assess = (value: typeof press | null) => assessAtlasOpenerPress(value, { ids: ['dockrecords'] }).ok;
+    expect(assess(press)).toBe(true);
+    expect(assess(null)).toBe(false);
+    expect(assess({ ...press, target: { ...press.target, id: 'railrecords' },
+      pointer: { ...press.pointer, id: 'railrecords' } })).toBe(false);
+    expect(assess({ ...press, target: { ...press.target, hit: false } })).toBe(false);
+    expect(assess({ ...press, pointer: { ...press.pointer, trusted: false } })).toBe(false);
+    expect(assess({ ...press, pointer: { ...press.pointer, id: 'docksets' } })).toBe(false);
+    expect(assess({ ...press, pointer: { ...press.pointer, x: 650 } })).toBe(false);
+    expect(assess(press)).toBe(true);
+    const owner = section(sliceSource, '  const collisionSetup = collisionFixtureReady.state;',
+      '  const collisionAssessment = assessCollisionWorldOutcome(collisionBundle);');
+    expect(owner).toContain("nativeControlClick(collisionTarget.session, '#dockrecords')");
+    expect(owner).toContain("assessAtlasOpenerPress(press, { ids: ['dockrecords'] })");
+    expect(owner).toContain('if (!assessment.ok)');
+    expect(owner).toContain('collisionRecordsPresses.push({ label, ...press })');
+    for (const label of ['baseline open', 'baseline close', 'reload open']) {
+      expect(owner.split(`pressCollisionRecords('${label}')`)).toHaveLength(2);
+    }
+    expect(owner).toContain('window.__CF_SLICE__.api.state().panelOpen===null');
+    expect(owner).toContain('native Records close ${JSON.stringify(collisionRecordsClosePress)}');
+    expect(owner).toContain('recordsPresses: collisionRecordsPresses');
+    expect(owner).not.toContain("'#railrecords,#dockrecords'");
+  });
+
+  it('observes boxless Survey ownership and hidden desktop copies and rejects either painted rail root before exact restoration', () => {
+    const assess = executableDeclaration<(rows: unknown) => boolean>(
+      'collisionRailCopiesHidden', '  const collisionRailCopiesExpression =');
+    const retained = JSON.parse(gunzipSync(readFileSync(new URL(
+      '../../../audits/UI_U1_LOCAL_CHECKPOINT_ce89128_20260906/slice/slice-smoke-local-u1-ce8912864fab-20260906-slice.json.gz',
+      import.meta.url,
+    ))).toString('utf8')) as {
+      status: string; certifying: boolean; source: { commit: string; state: string };
+      findings: Array<{ scope: string; message: string }>;
+    };
+    const finding = retained.findings.find(row => row.scope === 'u1-rail-duplicates');
+    const prefix = 'U1 RAIL DUPLICATES: desktop copies or boxed rail roots remain beside the compact launcher: ';
+    expect(finding?.message.startsWith(prefix)).toBe(true);
+    const baseline = JSON.parse(finding!.message.slice(prefix.length)) as Array<{
+      id: string; exists: boolean; parentId: string; parentTag: string; display: string;
+      copyIds: string[]; copiesHidden: boolean; rectCount: number; width: number; height: number; painted: boolean;
+    }>;
+    expect(retained.source.commit).toBe('ce8912864fabbe5624651e76c06b94f95b734f39');
+    expect(retained.source.state).toBe('dirty-diagnostic');
+    expect(retained.status).toBe('fail'); expect(retained.certifying).toBe(false);
+    // Its observed geometry is the positive fixture; the whole historical
+    // report remains noncertifying RED and is never rewritten as a PASS.
+    expect(baseline[1]!.copyIds).toEqual(['railatlas', 'railshipyard', 'railinventory', 'railrecords']);
+    expect(assess(baseline)).toBe(true);
+    expect(assessCompactRailCopies(baseline)).toEqual({ pass: true, reasons: [] });
+    for (const broken of [[], null, [baseline[0], baseline[0]], [...baseline].reverse(), [...baseline, baseline[1]], [null, baseline[1]]]) {
+      expect(assess(broken)).toBe(false);
+      expect(assessCompactRailCopies(broken).reasons.length).toBeGreaterThan(0);
+    }
+    for (const copyIds of [
+      ['railatlas', 'railshipyard'],
+      ['railshipyard', 'railatlas', 'railinventory', 'railrecords'],
+      ['railatlas', 'railshipyard', 'railinventory', 'railrecords', 'dockrecords'],
+    ]) {
+      const broken = structuredClone(baseline); broken[1]!.copyIds = copyIds;
+      expect(assess(broken)).toBe(false);
+      expect(assessCompactRailCopies(broken).reasons).toContainEqual(expect.stringContaining('railrgt: hidden-copy identity/order'));
+    }
+    for (const index of [0, 1]) {
+      const exposed = structuredClone(baseline);
+      exposed[index] = { ...exposed[index]!, display: 'flex', rectCount: 1, width: 92, height: 44, painted: true };
+      expect(assess(exposed)).toBe(false);
+      expect(assess(baseline)).toBe(true);
+      for (const [key, value] of [['exists', false], [index === 0 ? 'parentId' : 'parentTag', 'FOREIGN'], ['width', 44],
+        ['height', 44], ['display', 'flex'], ['rectCount', 1], ['painted', true], ['copiesHidden', false],
+        ['copyIds', ['docksurvey']]] as const) {
+        const mutant = structuredClone(baseline);
+        Object.assign(mutant[index]!, { [key]: value });
+        expect(assess(mutant), `${index}/${key}`).toBe(false);
+        expect(assessCompactRailCopies(mutant).reasons).toContainEqual(expect.stringContaining(`${baseline[index]!.id}:`));
+        expect(assess(baseline), 'restored baseline stays accepted after each deliberate fault').toBe(true);
+      }
+    }
+    const read = section(sliceSource, '  const collisionRailCopiesExpression =',
+      '  /* Outcome-level collision proof.');
+    expect(read).toContain('getComputedStyle(element)');
+    expect(read).toContain('element?.getBoundingClientRect()');
+    expect(read).toContain('element?.getClientRects().length');
+    const control = section(sliceSource, '  const collisionRailBaseline =',
+      '  const collisionRecordsPresses = [];');
+    expect(control).toContain('if (!collisionRailCopiesHidden(collisionRailBaseline))');
+    expect(control).toContain("for (const id of ['raillft', 'railrgt'])");
+    expect(control).toContain("element.style.setProperty('display','flex','important')");
+    expect(control).toContain("finally{element.setAttribute('style','');element.removeAttribute('style');if(priorStyle.present)element.setAttribute('style',priorStyle.value);}");
+    expect(control).toContain('styleRestored:restoredStyle.present===priorStyle.present&&restoredStyle.value===priorStyle.value');
+    expect(control).toContain("shown?.painted !== true || shown.display !== 'flex'");
+    expect(control).toContain('!collisionRailCopiesHidden(control.restored)');
+    expect(control).toContain('JSON.stringify(control.restored) !== JSON.stringify(collisionRailBaseline)');
+  });
+
+  it('restores the complete absent, empty or nonempty rail-root style carrier after exposing it', () => {
+    const require = createRequire(import.meta.url);
+    const { JSDOM } = require('jsdom') as {
+      JSDOM: new (html: string, options: Record<string, unknown>) => {
+        window: { document: Document; eval(source: string): unknown; close(): void };
+      };
+    };
+    const readOwner = section(sliceSource, '  const collisionRailCopiesExpression =',
+      '  /* Outcome-level collision proof.');
+    const read = Function(`${readOwner}; return collisionRailCopiesExpression;`)() as string;
+    const controlOwner = section(sliceSource,
+      '    const control = await evalF4Control(collisionTarget.session, `(()=>{',
+      '    const shown = control.shown.find');
+    for (const value of [null, '', 'color: red; --u1-probe: 7; ', 'display: none !important;']) {
+      const dom = new JSDOM('<style>#raillft{display:contents}#railrgt,#railcodex{display:none}</style><nav id="dock"><div id="raillft"><button id="docksurvey">Survey</button><button id="railcodex">Compendium</button></div></nav><nav id="railrgt"><button id="railatlas">Atlas</button><button id="railshipyard">Shipyard</button><button id="railinventory">Inventory</button><button id="railrecords">Records</button></nav>',
+        { runScripts: 'outside-only' });
+      const element = dom.window.document.getElementById('raillft')!;
+      if (value !== null) element.setAttribute('style', value);
+      const prior = { present: value !== null, value };
+      // The browser control is synchronous inside Runtime.evaluate; replacing
+      // its await wrapper here lets this test exercise that exact DOM body.
+      const body = controlOwner.slice(controlOwner.indexOf('`') + 1, controlOwner.lastIndexOf('`'));
+      const expression = Function('id', 'collisionRailCopiesExpression', `return \`${body}\`;`)(
+        'raillft', read) as string;
+      try {
+        const control = dom.window.eval(expression) as {
+          priorStyle: typeof prior; restoredStyle: typeof prior; styleRestored: boolean;
+          shown: Array<{ id: string; display: string }>; restored: Array<{ id: string; display: string }>;
+        };
+        expect(control.priorStyle).toEqual(prior);
+        expect(control.restoredStyle).toEqual(prior);
+        expect(control.styleRestored).toBe(true);
+        expect(element.hasAttribute('style')).toBe(prior.present);
+        expect(element.getAttribute('style')).toBe(value);
+        expect(control.shown.find((row) => row.id === 'raillft')?.display).toBe('flex');
+        expect(control.shown.find((row) => row.id === 'railrgt')?.display).toBe('none');
+        expect(control.restored.find((row) => row.id === 'raillft')?.display).toBe(value === 'display: none !important;' ? 'none' : 'contents');
+        expect(control.restored.find((row) => row.id === 'railrgt')?.display).toBe('none');
+        element.style.setProperty('display', 'flex', 'important');
+        expect(element.getAttribute('style')).not.toBe(value);
+      } finally { dom.window.close(); }
+    }
+  });
+
+  it('requires a native Survey close with unchanged document and selected route before each collision Atlas open', () => {
+    const closeOwner = section(sliceSource, '  const assessCollisionSurveyClosure =',
+      '  const collisionSurveyStateExpression =');
+    const assess = Function('assessAtlasOpenerPress', `${closeOwner};return assessCollisionSurveyClosure;`)(
+      assessAtlasOpenerPress) as (evidence: unknown) => boolean;
+    const before = { documentToken: 'collision-document', cardOpen: true, display: 'block',
+      ariaHidden: 'false', expanded: 'true', route: { mode: 'system', gal: 3, star: 4, planet: null,
+        planetOrdinal: null, navGalaxyKey: 'galaxy-3', navStarKey: 'exact-star-4', navWorldKey: null,
+        galX: 90, galY: -60, starX: 100, starY: 200, cardTitle: 'Alpha world', panelOpen: null } };
+    const after = { ...before, cardOpen: false, display: 'none', ariaHidden: 'true', expanded: 'false' };
+    const press = { target: { settled: true, tag: 'BUTTON', type: 'button', id: 'docksurvey',
+      hit: true, width: 82, height: 44, x: 520, y: 270 },
+    pointer: { trusted: true, pointerType: 'mouse', tag: 'BUTTON', id: 'docksurvey',
+      atlasTravelId: null, atlasRowId: null, x: 520, y: 270 } };
+    const evidence = { before, after, press };
+    expect(assess(evidence)).toBe(true);
+    expect(assess({ before: after, after, press: null })).toBe(true);
+    expect(assess({ before: after, after, press })).toBe(false);
+    expect(assess({ ...evidence, press: null })).toBe(false);
+    expect(assess({ ...evidence, press: { ...press,
+      pointer: { ...press.pointer, trusted: false } } })).toBe(false);
+    expect(assess({ ...evidence, press: { ...press,
+      target: { ...press.target, hit: false } } })).toBe(false);
+    expect(assess({ ...evidence, press: { ...press,
+      pointer: { ...press.pointer, id: 'dockcharts' } } })).toBe(false);
+    expect(assess({ ...evidence, press: { ...press,
+      pointer: { ...press.pointer, x: press.pointer.x + 2 } } })).toBe(false);
+    expect(assess({ ...evidence, after: { ...after, documentToken: 'replacement-document' } })).toBe(false);
+    expect(assess({ ...evidence, after: { ...after, cardOpen: true } })).toBe(false);
+    expect(assess({ ...evidence, after: { ...after, display: 'block' } })).toBe(false);
+    expect(assess({ ...evidence, after: { ...after, expanded: 'true' } })).toBe(false);
+    expect(assess({ ...evidence, after: { ...after, ariaHidden: 'false' } })).toBe(false);
+    for (const key of Object.keys(before.route)) {
+      expect(assess({ ...evidence, after: { ...after, route: { ...after.route, [key]: 'changed' } } }), key).toBe(false);
+    }
+    expect(assess({ ...evidence, before: { ...before, route: {} }, after: { ...after, route: {} } })).toBe(false);
+    expect(assess(evidence)).toBe(true);
+    const owner = section(sliceSource, '  const collisionAtlasOpeners = [];',
+      '  const collisionReloadSearches = [];');
+    expect(owner).toContain("nativeControlClick(collisionTarget.session, '#docksurvey')");
+    expect(owner).toContain("assessAtlasOpenerPress(press, { ids: ['docksurvey'] })");
+    expect(owner).toContain('if (before.cardOpen === true)');
+    expect(owner).toContain('if (!assessment.ok)');
+    expect(owner).toContain('if (!assessCollisionSurveyClosure(evidence))');
+    expect(owner).toContain('collisionSurveyCloses.push(evidence)');
+    expect(owner).not.toContain('.click()');
+    expect(owner.indexOf("await closeCollisionSurveyForAtlas('initial open')"))
+      .toBeLessThan(owner.indexOf('const collisionAtlasOpening = await nativeControlClick('));
+    expect(owner.indexOf('await closeCollisionSurveyForAtlas(`reopen ${index}`)'))
+      .toBeLessThan(owner.indexOf('const reopen = await nativeControlClick('));
+    expect(owner.indexOf('const reopenAssessment = assessAtlasOpenerPress(reopen)'))
+      .toBeLessThan(owner.indexOf('const pressAssessment = assessAtlasPointerPress(press, { atlasId })'));
+    expect(sliceSource).toContain('surveyCloses: collisionSurveyCloses');
+  });
+
   it('declares both native Atlas openers as non-submit buttons', () => {
     const markupErrors = (source: string): string[] => ['railatlas', 'dockatlas'].filter((id) => (
       source.split(`<button id="${id}" type="button"`).length - 1 !== 1
@@ -284,11 +488,11 @@ describe('Slice Atlas native Travel contract', () => {
     const openerPress = {
       target: {
         settled: true, x: 80, y: 240, width: 48, height: 48,
-        id: 'railatlas', tag: 'BUTTON', type: 'button',
+        id: 'dockatlas', tag: 'BUTTON', type: 'button',
         atlasTravelId: null, atlasRowId: null, hit: true,
       },
       pointer: {
-        trusted: true, pointerType: 'mouse', tag: 'BUTTON', id: 'railatlas',
+        trusted: true, pointerType: 'mouse', tag: 'BUTTON', id: 'dockatlas',
         atlasTravelId: null, atlasRowId: null, x: 80, y: 240,
       },
     };
@@ -409,7 +613,16 @@ describe('Slice Atlas native Travel contract', () => {
     const spaceTakeAt = keyboard.indexOf('const atlasSpaceKeyReceipt = await takeDesktopAtlasKeyReceipt();');
     const spaceWaitAt = keyboard.indexOf("waitDesktopValue('Atlas Space travel'");
     const spaceOutcomeGuardAt = keyboard.indexOf('ATLAS SPACE TRAVEL: red exact key receipt/outcome stopped dependent Enter');
-    const enterReopenAt = keyboard.indexOf("const opener=document.getElementById('railatlas')", spaceOutcomeGuardAt);
+    const surveyCloseAt = keyboard.indexOf("await pressArc3SurveyLifecyclePointer('close')", spaceOutcomeGuardAt);
+    const enterReopenAt = keyboard.indexOf("await openDesktopRailPanel('railatlas', 'atlas', 'ATLAS ENTER REOPEN')", spaceOutcomeGuardAt);
+    expect(surveyCloseAt).toBeGreaterThan(spaceOutcomeGuardAt);
+    expect(surveyCloseAt).toBeLessThan(enterReopenAt);
+    expect(keyboard).toContain('atlasSpaceSurveyClose?.interaction?.trusted !== true');
+    expect(keyboard).toContain('atlasSpaceAfterClose.cardOpen !== false');
+    expect(keyboard).toContain('canonicalJson(arc3SurveyRouteProjection(atlasSpaceAfterClose))');
+    expect(keyboard).toContain('await sliceToken(sess) !== atlasSpaceSurveyCloseToken');
+    expect(keyboard).toContain("atlasEnterOpenerReceipt?.buttonId !== 'railatlas'");
+    expect(keyboard).toContain('atlasEnterOpenerReceipt?.trusted !== true');
     const enterSetupGuardAt = keyboard.indexOf('ATLAS ENTER SETUP: red restored Travel target stopped key dispatch');
     const enterArmAt = keyboard.indexOf('await armDesktopAtlasKeyReceipt();', spaceArmAt + 1);
     const enterDispatchAt = keyboard.indexOf("await keyIn('Enter', 'Enter');", enterArmAt);

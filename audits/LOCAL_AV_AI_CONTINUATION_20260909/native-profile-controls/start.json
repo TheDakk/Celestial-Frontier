@@ -1,0 +1,19 @@
+{
+  "startedAt": "2026-09-09T06:01:48.874442+00:00",
+  "sourceSha256": {
+    "tools/local-image-generation/proof-server.mjs": "c88a1108723f9691503be0eeb0fab759d2a02975bffa86192de1d7f1ec1c34c2",
+    "tools/local-image-generation/fetch-model.mjs": "79ee68e8bcfc37d7dc406df008765e123ac030f7195232f19fac6488a64dac9c",
+    "tools/local-image-generation/probe-webgpu.mjs": "d6212b638a2d8ebcb39553ec1d83e48eeae10e1f2d293813b813e74964be5068",
+    "tools/local-image-generation/browser-lifecycle.test.mjs": "41f26f8a735b43aa1827276e53a4361993994c436f7363c22e31600bfd912c06",
+    "tools/local-image-generation/pipeline-math.test.mjs": "f4b610e76479a52d25a55e3ec620c0d1865a23bdfe9b0060a7aed22fe659f7b0",
+    "tools/local-image-generation/run-browser-proof.mjs": "63e81688ce84ee670ba347fd8dea772642ad1a9582894bed86036095bb449235",
+    "tools/local-image-generation/browser-proof.mjs": "83d61632e2520bf4a79e21e941449865ddab24b1cbe25d84207262b8ab035d1a",
+    "tools/local-image-generation/gpu-profile.mjs": "b1eb17c3b591c2d8d395de8b86486b8c94e26dc77ab22915b64b124a56468a63",
+    "tools/local-image-generation/half-storage.test.mjs": "6cb71881255185f68dbb2e0189d5a69481560c0a30b2494503db51db11b41fd2",
+    "tools/local-image-generation/gpu-profile.test.mjs": "933b813d4a0d82614ca73d17fc64aacd685ccefcc34eb08c38ee29d79cfdd2d0",
+    "tools/local-image-generation/download-controls.test.mjs": "82aca72a1f41972e017556329ef317bb94a2482de5881986c86a5ec1d1d3c989",
+    "tools/local-image-generation/stage-worker.mjs": "fc1ba964af4b7f882427e71086c7543f01c3f90e3a1c72bfb9b17bec151bc103",
+    "tools/local-image-generation/pipeline-math.mjs": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+  },
+  "steps": []
+}

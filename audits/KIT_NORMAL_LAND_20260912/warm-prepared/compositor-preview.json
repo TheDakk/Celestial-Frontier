@@ -1,0 +1,78 @@
+{
+  "boxes": [
+    {
+      "name": "Civet",
+      "x": 616.9814354066986,
+      "y": 270.72,
+      "width": 240.59712918660284,
+      "height": 172.79999999999998,
+      "keying": {
+        "erodedPixels": 1863,
+        "despilledPixels": 85,
+        "unresolvedEdgePixels": 0
+      }
+    },
+    {
+      "name": "Persimmon",
+      "x": 17.097142857142856,
+      "y": 207.36000000000004,
+      "width": 232.0457142857143,
+      "height": 241.92,
+      "keying": {
+        "erodedPixels": 6287,
+        "despilledPixels": 360,
+        "unresolvedEdgePixels": 25
+      }
+    },
+    {
+      "name": "Platypus",
+      "x": 354.2179310344828,
+      "y": 391.68,
+      "width": 172.20413793103447,
+      "height": 103.67999999999999,
+      "keying": {
+        "erodedPixels": 1425,
+        "despilledPixels": 1,
+        "unresolvedEdgePixels": 0
+      }
+    },
+    {
+      "name": "Frog",
+      "x": 174.08,
+      "y": 406.78299212598426,
+      "width": 122.88,
+      "height": 94.33700787401574,
+      "keying": {
+        "erodedPixels": 1993,
+        "despilledPixels": 0,
+        "unresolvedEdgePixels": 0
+      }
+    },
+    {
+      "name": "Devil's Club",
+      "x": 808.96,
+      "y": 337.8295406360424,
+      "width": 163.84,
+      "height": 169.0504593639576,
+      "keying": {
+        "erodedPixels": 5605,
+        "despilledPixels": 502,
+        "unresolvedEdgePixels": 2
+      }
+    },
+    {
+      "name": "Cranberry",
+      "x": 291.84000000000003,
+      "y": 428.5234843205575,
+      "width": 112.64,
+      "height": 89.87651567944252,
+      "keying": {
+        "erodedPixels": 5944,
+        "despilledPixels": 941,
+        "unresolvedEdgePixels": 76
+      }
+    }
+  ],
+  "pixelSha256": "6b5746f846bdfdf0bbf2a6b99998654836b9c612c1880a4a99b8fe29d8871b57",
+  "note": "Static compositor only; no inference. Native composite must match pixels."
+}

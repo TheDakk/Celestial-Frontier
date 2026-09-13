@@ -1556,7 +1556,9 @@ describe('v2 Guide capability filter', () => {
     expect(audioBullet).toContain('Guardian or Titan entrance, phase, victory, and defeat motifs');
     expect(audioBullet).toContain('at most two combat voices overlap');
     expect(audioBullet).toContain('master Sound governs them, Creature voices does not');
-    expect(audioBullet).toContain('Authored ambience, music, recorded assets, and other creature actions remain future work');
+    expect(audioBullet).toContain('In the optional audiovisual preview, accepting a Starter Charter now plays a short confirmation after the acceptance succeeds, including when existing progress completes it immediately');
+    expect(audioBullet).toContain('It follows your explicit pilot-sound choice; duplicate or failed acceptances stay quiet');
+    expect(audioBullet).toContain('Other sound mappings and creature actions remain future work');
     const creatureListenBullet = V2_DRAFT_RELEASE.sections
       .flatMap((section) => section.bullets)
       .find((bullet) => bullet.includes('CREATURE CALLS ARE YOURS TO REQUEST'));
@@ -2671,9 +2673,9 @@ describe('legacy and v2 release channels', () => {
       /Promotion and recovery now recheck the exact primary, backup, revision, and lease evidence immediately before writing/,
       /every ordinary save-mutating preference and Training control—including Creature Voices—remains inspection-only; a protected reload is the only recovery path/,
       /exactly one 44-pixel top-right Close action/,
-      /Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/,
+      /Spacing inside the side navigation belongs to its controls and leaves the active panel open/,
       /a genuine empty-sky press still dismisses it/,
-      /bottom-right dock edge/,
+      /measured bottom-right utility controls and share their right edge/,
       /GRAPHICS CHOICES NOW CONTROL THE SKY:[^\n]*Effects Off allocates no frontier fog particles[^\n]*Screen Shake adds only a short deterministic planetfall impulse/,
       /Resize bursts settle at most once per animation frame and density-only work never creates a save write/,
       /CF1 addresses preserve galaxy, star, planet, coordinates/,
@@ -2828,7 +2830,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 79,
+        inventory: bullets.length === 83,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,
@@ -2856,7 +2858,7 @@ describe('legacy and v2 release channels', () => {
       category: section.category,
       bullets: index === 1 ? section.bullets.filter((_, bulletIndex) => bulletIndex !== 3) : section.bullets,
     }));
-    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(78);
+    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(82);
     expect(bulletinOutcome(missingMiddle).inventory).toBe(false);
     const missingRequired = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,

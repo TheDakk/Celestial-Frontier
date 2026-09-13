@@ -31,6 +31,15 @@ for current system behavior. If the source and the reference disagree, the sourc
 update the reference. (`HANDOFF.md` and `celestial-frontier-feedback.md` are FROZEN v1.0
 artifacts kept for history — not current state; don't read them for live truth.)
 
+**Coding-session startup:** before the first coding/build/render batch of each new game
+development session, read the startup runbook in `UI_TOOLCHAIN.md`. Check official stable
+updates and automatically install eligible updates to approved idle authoring tools, then
+verify changed capabilities before work. This applies in any task; it is not tied to a chat
+or timer. Reuse the startup receipt within the uninterrupted session, not on every message.
+Follow the shared lock and active-process checks; never update through a running asset job
+or certificate chain. A check-only command does not install updates: the agent completes the
+runbook's scoped update steps. Runtime/test dependencies and sealed inputs retain their locks.
+
 ## Doc hygiene — "logs archive, references refresh" (standing principle)
 Two kinds of markdown, two disciplines. **Logs** are chronological/append-only (ROADMAP, any
 changelog or dev-history): keep the recent entries live, move aged ones VERBATIM to a sibling

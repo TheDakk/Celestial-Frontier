@@ -307,7 +307,122 @@ function isCanonIndex(node) {
     && node.left.right?.type === 'Literal' && node.left.right.value === '|';
 }
 
+/* One bounded auxiliary consumer of existing audited routes. This exact
+   six-name adapter is not another catalog or precedence authority. Seal its
+   function bytes and direct import provenance; only the actual member nodes
+   inside that body may read tables outside the two canonical dispatchers.
+   A formatting or behavior change requires deliberate source review/reseal.
+   Current Compendium-owner equality and pixel/contact tests remain separate. */
+const EARTH_RESIDENT_DISPATCH_SHA256 = '9a99a692ba30750eb2a2340b2b8078f804d7844b084d1f38c90d137adc33d75d';
+const EARTH_RESIDENT_DISPATCH_IMPORTS = new Map([
+  ['speciesGenomePalette', './speciesoverrides.js'],
+  ['faunaQuadruped', './quadrupedoverrides.js'],
+  ['QUAD2_SPEC', './mammaloverrides.js'],
+  ['faunaMonotreme', './faunaoverrides5.js'],
+  ['FAUNA2_NAME', './faunaoverrides2.js'],
+  ['FLORA_ICONIC', './floraoverrides.js'],
+  ['FLORA2_SPEC', './florarost.js'],
+]);
+function auditedEarthResidentMembers(program, label, source) {
+  const members = new Set();
+  if (label !== 'earth-resident-layer.ts') return members;
+  const matches = [];
+  const collectFunctions = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (node.type === 'FunctionDeclaration' && node.id?.name === 'paintNamedResident') matches.push(node);
+    for (const value of Object.values(node)) {
+      if (Array.isArray(value)) { for (const child of value) if (child?.type) collectFunctions(child); }
+      else if (value?.type) collectFunctions(value);
+    }
+  };
+  collectFunctions(program);
+  const fn = matches[0];
+  if (matches.length !== 1 || !program.body.includes(fn)
+      || nodeSha256(source, fn) !== EARTH_RESIDENT_DISPATCH_SHA256) {
+    parserError(label, fn, 'Earth resident dispatcher changed from its exact six-name body contract');
+  }
+  for (const [name, expectedSource] of EARTH_RESIDENT_DISPATCH_IMPORTS) {
+    const matches = [];
+    for (const statement of program.body) {
+      if (statement.type !== 'ImportDeclaration') continue;
+      for (const specifier of statement.specifiers || []) {
+        if (specifier.local?.name === name) matches.push({ statement, specifier });
+      }
+    }
+    const imported = matches[0];
+    if (matches.length !== 1 || imported.statement.source?.value !== expectedSource
+        || imported.statement.importKind === 'type' || imported.specifier.importKind === 'type'
+        || imported.specifier.type !== 'ImportSpecifier'
+        || exportedName(imported.specifier.imported) !== name
+        || writtenNames(label).has(name)) {
+      parserError(label, imported?.specifier || fn,
+        `Earth resident dispatcher import ${name} changed from its exact owner ${expectedSource}`);
+    }
+  }
+  const collectMembers = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (node.type === 'MemberExpression' && routeRoot(node)) members.add(node);
+    for (const value of Object.values(node)) {
+      if (Array.isArray(value)) { for (const child of value) if (child?.type) collectMembers(child); }
+      else if (value?.type) collectMembers(value);
+    }
+  };
+  collectMembers(fn);
+  if (members.size !== 4) parserError(label, fn, 'Earth resident dispatcher does not own its four exact table reads');
+  return members;
+}
+
+/* Descriptor-first detached data is another exact bounded capability. Its
+   prototype identity read and three fresh-output construction calls are not
+   general permission for Object prototype access or mutation elsewhere. Seal
+   the complete exported declaration so changed input/descriptor/prototype
+   behavior rejects before granting any of its four member-node exceptions. */
+const EARTH_RESIDENT_SNAPSHOT_SHA256 = '62bfacb4c5bdda7fbb8f8609f7eaa7d78e9cb4c82dc0134dad25d01ef1a6ba63';
+function auditedEarthSnapshotMembers(program, label, source) {
+  const members = new Set();
+  if (label !== 'earth-resident-plan.ts') return members;
+  const declarations = program.body.filter(node => node.type === 'ExportNamedDeclaration'
+    && node.declaration?.type === 'FunctionDeclaration'
+    && node.declaration.id?.name === 'snapshotEarthLayerDataV1');
+  const functions = [];
+  const collectFunctions = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (node.type === 'FunctionDeclaration' && node.id?.name === 'snapshotEarthLayerDataV1') functions.push(node);
+    for (const value of Object.values(node)) {
+      if (Array.isArray(value)) { for (const child of value) if (child?.type) collectFunctions(child); }
+      else if (value?.type) collectFunctions(value);
+    }
+  };
+  collectFunctions(program);
+  const declaration = declarations[0];
+  if (declarations.length !== 1 || functions.length !== 1
+      || nodeSha256(source, declaration) !== EARTH_RESIDENT_SNAPSHOT_SHA256) {
+    parserError(label, declaration || functions[0], 'Earth resident snapshot changed from its exact detached descriptor contract');
+  }
+  const names = new Set(['prototype', 'setPrototypeOf', 'create', 'defineProperty']);
+  const counts = new Map();
+  const collectMembers = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (node.type === 'MemberExpression' && node.object?.type === 'Identifier'
+        && node.object.name === 'Object' && !node.computed && names.has(propertyName(node))) {
+      members.add(node);
+      const name = propertyName(node); counts.set(name, (counts.get(name) || 0) + 1);
+    }
+    for (const value of Object.values(node)) {
+      if (Array.isArray(value)) { for (const child of value) if (child?.type) collectMembers(child); }
+      else if (value?.type) collectMembers(value);
+    }
+  };
+  collectMembers(declaration.declaration);
+  if (members.size !== 4 || [...names].some(name => counts.get(name) !== 1)) {
+    parserError(label, declaration, 'Earth resident snapshot does not own its four exact Object members');
+  }
+  return members;
+}
+
 function auditRouteTableReferences(program, label, source) {
+  const earthResidentMembers = auditedEarthResidentMembers(program, label, source);
+  const earthSnapshotMembers = auditedEarthSnapshotMembers(program, label, source);
   const approvedBareSignatures = APPROVED_BARE_REEXPORTS.get(label) || Object.freeze([]);
   const bareReexports = program.body.filter((node) => node.type === 'ExportNamedDeclaration'
     && typeof node.source?.value === 'string' && !node.source.value.startsWith('.'));
@@ -388,7 +503,8 @@ function auditRouteTableReferences(program, label, source) {
       if (object?.type === 'Identifier' && object.name === 'Object') {
         const method = propertyName(node);
         if (!(parent?.type === 'CallExpression' && parent.callee === node
-            && !node.computed && APPROVED_OBJECT_CALLS.has(method))) {
+            && !node.computed && APPROVED_OBJECT_CALLS.has(method))
+            && !earthSnapshotMembers.has(node)) {
           parserError(label, node, 'trusted built-in Object member escapes its approved direct-call context');
         }
       }
@@ -469,7 +585,7 @@ function auditRouteTableReferences(program, label, source) {
       const method = propertyName(node.callee);
       const legalIncludes = root === 'FLORA_DUPES' && !node.callee.computed && method === 'includes'
         && node.arguments.length === 1 && isNameIndex(node.arguments[0]);
-      if (root && !legalIncludes) {
+      if (root && !legalIncludes && !earthResidentMembers.has(node.callee)) {
         parserError(label, node.callee, `${root} route table is called outside exact FLORA_DUPES.includes(name)`);
       }
     }
@@ -486,7 +602,7 @@ function auditRouteTableReferences(program, label, source) {
         && (root === 'CANON' ? isCanonIndex(node.property) : isNameIndex(node.property))
         && label === 'speciesoverrides.ts'
         && (functionScope === 'hasNamedRoute' || functionScope === 'resolveOverrideCanvas');
-      if (root && !legalIncludes && !legalIndex) {
+      if (root && !legalIncludes && !legalIndex && !earthResidentMembers.has(node)) {
         const member = node.computed ? 'computed member' : `member ${namedProperty}`;
         parserError(label, node, `${root} route table uses unsupported ${member}`);
       }

@@ -157,7 +157,7 @@ function arc9MainErrors(source: string): string[] {
   );
   const starterCharterAction = section(
     source,
-    'async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {',
+    'async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean> {',
     '\nasync function runArc9BinderSetClaim(setId: Arc9BinderClaimableSetIdV1): Promise<void> {',
   );
   const binderAction = section(
@@ -393,7 +393,7 @@ describe('Arc 9 Main/Records integration', () => {
 
     expect(arc9MainErrors(replaceInSectionExact(
       mainSource,
-      'async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {',
+      'async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean> {',
       '\nasync function runArc9BinderSetClaim(setId: Arc9BinderClaimableSetIdV1): Promise<void> {',
       '    actionClaim.settle(durable);',
       '    actionClaim.settle(durable);\n    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);',

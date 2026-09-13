@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "steps": [
+    {
+      "name": "source-controls",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "snapshot-final-static",
+        "--",
+        "node",
+        "--test",
+        "tools/local-image-generation/source-integrity.test.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "8f091a06cec86866cb5cf0a74e9999cabbe32e5f3fd1f95a8a7eb528a18661b9"
+    },
+    {
+      "name": "runner-syntax",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "snapshot-final-static",
+        "--",
+        "node",
+        "--check",
+        "tools/local-image-generation/run-browser-proof.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "root-validate",
+      "command": [
+        "node",
+        "tools/with-toolchain-lock.mjs",
+        "--label",
+        "snapshot-final-static",
+        "--",
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "logSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    }
+  ],
+  "startedAt": "2026-09-09T07:12:22.517501+00:00",
+  "finishedAt": "2026-09-09T07:12:35.057214+00:00",
+  "legacyHtmlSha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746"
+}

@@ -1,0 +1,4 @@
+{
+  "firstResult": "46 targeted PASS; TypeScript stops with missing jsdom declarations and derived implicit-any spy rows.",
+  "correction": "Use existing repository createRequire jsdom fixture pattern and narrow its document to DOM Document. No package install, runtime change or weakened guard."
+}

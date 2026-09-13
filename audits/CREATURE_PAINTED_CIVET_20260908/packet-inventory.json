@@ -1,0 +1,1834 @@
+{
+  "schema": "cf-civet-preserved-packet-inventory/v1",
+  "sourceParent": "5e222931efd642c03ce55c5e67f7670a7aef890c",
+  "scope": "Original study and supplied reference artifacts, complete before signing. This inventory and later commit receipt are excluded to avoid self-reference. Mutable root references are owned by Git.",
+  "files": 365,
+  "bytes": 70819567,
+  "inventory": [
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/ALPHA_EDIT_PROMPT.txt",
+      "bytes": 581,
+      "sha256": "bb4a4dffeadb92e691f1dacc42b891e235b9d06e7d987b808b74f6928d2e4b70"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/ALPHA_V1_VISUAL_FAILURE.md",
+      "bytes": 396,
+      "sha256": "16ea6b0b412b2f63b6b95acbd9d492684623e71c77b4c60b8911372a83e689b3"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/ALPHA_V2_DETAIL_FAILURE.md",
+      "bytes": 495,
+      "sha256": "488172c4df20694681fdd3d64741daa1b87b8548ae3510f4629c1c933d3697c7"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/BASELINE_CAPTURE.md",
+      "bytes": 3465,
+      "sha256": "0e5b0968ce66e9ad22310319750ddf35a226547bfcef05db4448636accfb5042"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/BATCH_INTENT.md",
+      "bytes": 1703,
+      "sha256": "affd622e64de2139034d70c3b9c97160a369ddad06112f90144364532f1f944e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/CONTACT_ANALYSIS_METHOD_CLARIFICATION.md",
+      "bytes": 798,
+      "sha256": "e75774a7627c2f95e0a2d3516ca987d1926db010b1a5ed78dac8f729060029a3"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/CONTACT_RULER_DIAGNOSIS.md",
+      "bytes": 2477,
+      "sha256": "f35e965c3765856d507049c4048f87acb0c41e1261221a69eb261cc28def3024"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/FINAL_SOURCE_REVIEW.md",
+      "bytes": 3317,
+      "sha256": "9ccd3cb2e7a9f84d2d869e5559a12c25d10241496815b735c6eeda612631e149"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/FIRST_ASSET_FAILURE.md",
+      "bytes": 481,
+      "sha256": "74eb248d24f1e6d4b41548277051f720f040066e9b8fae320ad1286126e0f4d6"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/FIRST_NATIVE_FAILURE.md",
+      "bytes": 1527,
+      "sha256": "0ab1582563662f922d196904118296a8c3112e7f583272ebca20f77674474720"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/IMAGE_PROMPT.txt",
+      "bytes": 2365,
+      "sha256": "000f4084c7b8488c46945413fd56026128a4aa0e3756998ebcdc1d77361d5005"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/README.md",
+      "bytes": 7402,
+      "sha256": "296eabe8d7225e1cd06b66ac0dabdc3d464a1253378370a36833b6185ddaeaa8"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/SECOND_ASSET_FAILURE.md",
+      "bytes": 486,
+      "sha256": "c86b3815dc22764e4dfd2ec394998e67594bc6d2ce2543b878fc433bdb349ddb"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/SECOND_NATIVE_FAILURE.md",
+      "bytes": 1712,
+      "sha256": "88b9aca001c2ec6e05024633b8ef60ff26ea91859aabdb00746aca7e4a15a055"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/VISUAL_REVIEW.md",
+      "bytes": 2990,
+      "sha256": "bdfcde5cfa9bd18edb5a26a0afda69d1ff4e4d207c03eb9ba76fd39317d44fe0"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/__pycache__/contact-analysis.cpython-312.pyc",
+      "bytes": 10281,
+      "sha256": "b301ff8c55a6d16ac6b28bb7e0c9589dae1884c75636506eaf5dc90752dcc48a"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-source-rgb-preservation.json",
+      "bytes": 409,
+      "sha256": "da27ae6518958df750a1be7ac027c9420bc6cf7309b0566be0eaafb4730af8d8"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v1/civet-painted-v1.png",
+      "bytes": 2224077,
+      "sha256": "f2d8bf0b9bafd1aecc6e95af48b5cf83c0a96facbbc3ae136dee31f52fc634bd"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v1/civet-painted-v1.webp",
+      "bytes": 1520932,
+      "sha256": "d12f99a50fae83585a2faacbef5027d8d44aef5a40875a2d3c1aee05d949b33a"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v1/edge-review-dark.png",
+      "bytes": 963276,
+      "sha256": "fb9cfffb70c72bd67d4038906089dc34de9e019f61fec2e07ab62a05a5eec92a"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v1/edge-review-light.png",
+      "bytes": 950551,
+      "sha256": "595d7513acd948dc1af1e2e9283abd403f4c61e6955d14c239a8b323711d7a19"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v1/extraction.json",
+      "bytes": 1935,
+      "sha256": "f7f90b954af1a42004f414e7dd35ac5222d31e2f1253842ebc43ec8deb6e83f3"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v1/matte.png",
+      "bytes": 21257,
+      "sha256": "8bcc5689943683c56e982aaf57e852da184392e17ad1fb085f0eff2927f7d3af"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v1/solid-interior.png",
+      "bytes": 6496,
+      "sha256": "78a278418d800b225639738c18a1e070c0152d0930367a41054ae8b669446db3"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v1/warm-edge.png",
+      "bytes": 33794,
+      "sha256": "49ecf467bdab351a8279d5534b5f54595acada506992944b40b31e37d456e523"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/civet-painted-v1.png",
+      "bytes": 2222934,
+      "sha256": "d2a02b36ba747e30f1c1b0fb8eabae9738b9871105c7cdaa36bcae845513f63b"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/civet-painted-v1.webp",
+      "bytes": 1511222,
+      "sha256": "a9242afc1c29094b91b0d2e7657296186498c4714970106cea8edab1a9b11d14"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/component-mask.png",
+      "bytes": 6560,
+      "sha256": "9befa219653ac1498b514ad9ef85f1e695cd51ade5e85d914fc5c5c9573694d2"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/edge-review-dark.png",
+      "bytes": 955513,
+      "sha256": "2e08a0f88ee6f053df31dffa21bd60aba220ed42a2cbeb65c6280e3de69fc15f"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/edge-review-light.png",
+      "bytes": 944074,
+      "sha256": "da17b89cdd0581367c648b82f5c262847131d9b3fa1fd6c919652563a0000abf"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/extraction.json",
+      "bytes": 2512,
+      "sha256": "6aeb80ec7af7f8ff1661905d0ccc615cca0bc48c9a3008e0429250e68a69636f"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/interior-envelope.png",
+      "bytes": 6470,
+      "sha256": "11d8b9ad770b7175237cc20255c613d70600c713bb9431e9b866681c64b60d3e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/matte.png",
+      "bytes": 20216,
+      "sha256": "db74f9d4ab4456661a8e12019a9fbde296db7670fc6b0eb56f2ae191e4aadc7a"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/rough-matte.png",
+      "bytes": 21085,
+      "sha256": "390b7ceadd97b612d0354cb3fac87b0d992f8426c37b59e1aa5577042ed9b46c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/solid-interior.png",
+      "bytes": 9753,
+      "sha256": "56dbb22ee7295d27be7dd884c2a20e1bf0fda73775f90e7e04b90951cfdfceb0"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/warm-edge.png",
+      "bytes": 32199,
+      "sha256": "e7000b6b9ad51b130c4c11d66b501d6c627aeac439f27387061230c1af6e65f6"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v2/whisker-review-4x.png",
+      "bytes": 461305,
+      "sha256": "8f17168610cbc67bc120fd47c8cad7cdd4863e183af7b9d47363a11e4d586727"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/civet-painted-v1.png",
+      "bytes": 2219705,
+      "sha256": "55633a07d1d03ef55d9a3493bd5e03b871eb1ef0db57b2cb5b6d39ec48ff2508"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/civet-painted-v1.webp",
+      "bytes": 1506424,
+      "sha256": "a161790540788b9c5cc83d27dc3057623efc26b6c418e327d0238733719a6d3e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/component-mask.png",
+      "bytes": 6560,
+      "sha256": "e6e97316ce58dda521ee06327ab5264891f02539353bcebe17c84b714603d989"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/edge-review-dark.png",
+      "bytes": 942904,
+      "sha256": "32176991dea23ccd067aa3c6cae8bcc14df78c8cef4a097b173df3f8eca8d042"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/edge-review-light.png",
+      "bytes": 936742,
+      "sha256": "20bcdd84da9bd9fe92cae1f86e85185fe412a04295531784971b306b884816df"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/extraction.json",
+      "bytes": 2707,
+      "sha256": "a2254cfd29bec2bcfce7973faf273d979478fff1cae2a0c792dfd0c16212afa2"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/interior-envelope.png",
+      "bytes": 7274,
+      "sha256": "b29a5cc83bcf394a221ef296e91c80fb7409de85e2b752ab7c5a01d422ea684f"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/matte.png",
+      "bytes": 17349,
+      "sha256": "908e50fc8781b452de01d19ebfc309b49f2a301d7c77fc3a3c6f9fd7896d4518"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/rough-matte.png",
+      "bytes": 21067,
+      "sha256": "e8efff359d8b7acc4a61494a39c0d40933c3c8c8e49527634b85015c5c504f4b"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/solid-interior.png",
+      "bytes": 9740,
+      "sha256": "562c354594641b0468c237a18e1f93f633c32b70bafa5c0d45b568326d5a8c44"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/warm-edge.png",
+      "bytes": 32199,
+      "sha256": "ce4f578594a5166a6f33c0eb941d7666b369fa41f638ed0b6db3c259789a7a8b"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/whisker-envelope.png",
+      "bytes": 18306,
+      "sha256": "d550854feaa51ed8a929d79ed55cd2560d2d19d103ab52b16156c59705c1e217"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/alpha-v3/whisker-review-4x.png",
+      "bytes": 370906,
+      "sha256": "160a0450b448a98957cd8b54bda15da7abc011348a8a859b51a8c8fc7741c216"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/asset.json",
+      "bytes": 1017,
+      "sha256": "9046bf17d8184125cf571932b1edf92a618db5e2c1b7e8917b90449b44450219"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/baseline-harness.ts",
+      "bytes": 7684,
+      "sha256": "fda9f577c9e396565b4860a551b0769b15687adf868814b4ded73e9360ed38ac"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/baseline.html",
+      "bytes": 686,
+      "sha256": "2512c7c376e5af1c1dad6643c34fb90518d242940f1be39d3ab7de33d0b11864"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/civet-alpha-crop.png",
+      "bytes": 42815,
+      "sha256": "9dc23b9a6532e2bcfafca8df174c27fcf1448a15a4d9177746693270010ca052"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/civet-current-132.png",
+      "bytes": 23640,
+      "sha256": "5279a3d0943bf0c90a5281709e97e8097a42fad5021e1b123e92f712dc95a583"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/civet-current-300.png",
+      "bytes": 105250,
+      "sha256": "60ec0013ef439d8c7fff74b1fa9faee06db69f92ec05839cf911c1b9e52e5557"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/civet-current-440.png",
+      "bytes": 223317,
+      "sha256": "930ca5e4e074c2f29a5543f9de9bae8292a673c174cf28e6ac4180ac4f5ec02b"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/civet-ink-880.png",
+      "bytes": 64832,
+      "sha256": "1cced614c90d3c9b75e6c9c1ef3b3d3e97de9957089bf8a94dbadb65c00fabdd"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/dist/assets/baseline-Dd_Uz4ac.js",
+      "bytes": 2095624,
+      "sha256": "8b60e27d2880d53c259e87dfe681ee58dac807e07f98ee8c3d8e56bed3e46047"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/dist/baseline.html",
+      "bytes": 707,
+      "sha256": "7853a15887cafb006ab809027a40f97c79d5922354e836fcfca47632e4a58954"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/earth-background-original.webp",
+      "bytes": 130306,
+      "sha256": "2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/earth-residents-original.png",
+      "bytes": 101870,
+      "sha256": "3b607744ca034460a71eb601f1dc717817de31207fa0402f2afb097127e5e588"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/earth-residents-without-civet.png",
+      "bytes": 92306,
+      "sha256": "64d24cdbc37a7212e0c7cc9c511d0f754d7c8e17c93f43abd3c4a2d991788ca9"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/native-baseline-review.png",
+      "bytes": 283468,
+      "sha256": "c8bd60e87a07f67269574bb44a6945929cbc3cbf727b19c3edda6336165a7cd6"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/report.json",
+      "bytes": 13498,
+      "sha256": "ac49273008785fc792347bde5f8ddfc075235560b4d33896fd562ebebc885440"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline/runner.mjs",
+      "bytes": 7754,
+      "sha256": "489b7639dcc5d6c96ab617a4d8125410388cc55d9fc7ccee1119ebbf61cabcbc"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline-harness.ts",
+      "bytes": 7684,
+      "sha256": "fda9f577c9e396565b4860a551b0769b15687adf868814b4ded73e9360ed38ac"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline-runner.mjs",
+      "bytes": 7754,
+      "sha256": "489b7639dcc5d6c96ab617a4d8125410388cc55d9fc7ccee1119ebbf61cabcbc"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/baseline.html",
+      "bytes": 686,
+      "sha256": "2512c7c376e5af1c1dad6643c34fb90518d242940f1be39d3ab7de33d0b11864"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/civet-alpha-edit-opaque.png",
+      "bytes": 2054749,
+      "sha256": "680b05fd802de02e7f578ace24cc0d813fbc95bb4455eb4b22e44021a7f17f31"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/civet-first-opaque.png",
+      "bytes": 2180743,
+      "sha256": "86025b8d8c1e337e9795433f48251d6a91bd76fee69e8e13c564c7fedbb1377e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/civet-painted-v1.webp",
+      "bytes": 179856,
+      "sha256": "7df99d643544f47f0b9cfd22e97e3bcb8af5ccc184a51f29d2e6c42c603815ac"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/contact-analysis-first-failure.json",
+      "bytes": 470,
+      "sha256": "9f468c3fbdae7f9b15524ad7a75ba3e74010769775b069cc5cfb538acb5ec6f7"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/contact-analysis-first-failure.py",
+      "bytes": 7375,
+      "sha256": "b4ca22ecdbd61bb301f37bb4c43f35831a08c69c15aa5835cc343f5e322341b3"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/contact-analysis.json",
+      "bytes": 10135,
+      "sha256": "8392d8d26b6c274a8fa193d59b232dc201c073b72a889fe4adba218ffea4c619"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/contact-analysis.py",
+      "bytes": 7505,
+      "sha256": "b23dbf481e5eecca2e302f5515abc34cf1febd301853f1d3e9e3eb48921d1081"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/contact-foot-partitions.json",
+      "bytes": 2186,
+      "sha256": "22c0ed9effc1b8c2524278ab52f1036a9b90256f08edd8b192a816e145c6299e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/contact-foot-partitions.py",
+      "bytes": 2274,
+      "sha256": "a0e01995a534478bff85e5bfa938e9ea4b6252edad5f05d7f9b6fd10e90c2814"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/extract-alpha-v2.mjs",
+      "bytes": 3548,
+      "sha256": "5ad6a77da5c1793143e6ab43bf3963b50416ef4ca4c850a23ef43b83ddb82f50"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/extract-alpha-v3.mjs",
+      "bytes": 4468,
+      "sha256": "054cdc31f1bbaa83f65500e954d1cc5f94bcfbe57f20f6536445c39bb5f8c5ad"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/extract-alpha.mjs",
+      "bytes": 2639,
+      "sha256": "3420c25f2760cf1edd92da86c257b1d4931bdb10ca2de9b0f619f2294d1c3c74"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/final-results.json",
+      "bytes": 3805,
+      "sha256": "40b9f6d1ba820851f541228583f68b9b9eec38a7418710f82d7442c5678f066a"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/first-asset.json",
+      "bytes": 405,
+      "sha256": "b56d8fd031147640cf817077e5cd2fc5ecb5f0768fa0197b7d974ad884dca58e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/generation-calls.json",
+      "bytes": 1495,
+      "sha256": "1585e8d028c62f738daa900ef4eee267cce93aafbe3c78467dd174d268b1a995"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/local-preview.json",
+      "bytes": 741,
+      "sha256": "d8b7bd88cca4165c155ad27ccb0f02f29fee2ccc056656f1e9924e76393a4245"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/rig-focused-final.log",
+      "bytes": 311,
+      "sha256": "ea28557a0876084a5cd4d93c9abc9b3cd89347bd07d6c0e80174b023aa01e8f6"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/rig-focused-first.log",
+      "bytes": 311,
+      "sha256": "2803e7f64d07ed4f4243f0a9e87494a3bc7a3cef12e151d5213769db95622610"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/root-validate-final.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/root-validate-first.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/root-validate-runner-final.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/runner-final-static.json",
+      "bytes": 1300,
+      "sha256": "9acd8edbc5d59b680524ca1e0db10573e17015c8ccfaf52ad7497889713a370d"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/runner-syntax-runner-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/second-asset.json",
+      "bytes": 410,
+      "sha256": "d396f0da080cb0cacea1ea152da813404472637a429066a6cd46e321a1b47b82"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/serve-study.mjs",
+      "bytes": 2654,
+      "sha256": "5853afc75d99bf4eef093c5287cf792c6c754c443f988a094f24f8c091547ef6"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/served-html-verification.json",
+      "bytes": 320,
+      "sha256": "a2caccc1ef4b724caf41809d57fbcc9b8af65fe7933ef197c2e4d0dcf593c4ba"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/static-final.json",
+      "bytes": 1832,
+      "sha256": "22fd928147e2d3f164167bba5335c43e1f7d940867ba9bf2b7ba5201ede676d8"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/static-first.json",
+      "bytes": 1326,
+      "sha256": "86256cfb6476971dc3085eed1fd52faba0d15bc543a03c4d4aaa3f12c933c49e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-harness.ts",
+      "bytes": 23011,
+      "sha256": "a7380d3ef18887cd7ea6addbf5ff87635c4a7480a7c394472d90fb5d4bf641b1"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/asset.json",
+      "bytes": 1017,
+      "sha256": "9046bf17d8184125cf571932b1edf92a618db5e2c1b7e8917b90449b44450219"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-breathe-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-breathe-132.png",
+      "bytes": 11426,
+      "sha256": "2c0b4afb0819ff2df929679c425177e4327238db62f6d56b2bb99f866c6953b7"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-breathe-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-breathe-300.png",
+      "bytes": 51305,
+      "sha256": "b3d3b7c10a51fe0b766d29efb539a46fced515c765fef31ef31192cc1eddb743"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-breathe-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-breathe-440.png",
+      "bytes": 103436,
+      "sha256": "cb0d97d2719657f576c3f988e1b0b2d62c00a2fea4bb94ca381bfc1792e86959"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-breathe-earth.png",
+      "bytes": 930723,
+      "sha256": "ee65eb0dc715d0adfff16a720f46f7abdaec86f5caad9d45e5535841216e2d99"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-restored-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-restored-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-restored-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-restored-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-restored-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-restored-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-constant-rest-restored-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-final-rest-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-final-rest-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-final-rest-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-final-rest-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-final-rest-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-final-rest-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-final-rest-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-native-study.png",
+      "bytes": 918860,
+      "sha256": "f39d422c0f64d6365d01aa0881675ec979d49a493214a803aee640942d09142d"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-recoil-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-recoil-132.png",
+      "bytes": 11247,
+      "sha256": "0f5096db12156d8a7a5de6cdbea7d9c920ef18bd2c9297ef42037ad5caa96143"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-recoil-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-recoil-300.png",
+      "bytes": 50400,
+      "sha256": "bddaa87e1f3f44eecdd4937c393483b612101545d0974a42ae2713f4ec419f6e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-recoil-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-recoil-440.png",
+      "bytes": 102108,
+      "sha256": "c6abd17213bdd3117b1de1dc63fd31d027fda8f627a6bdf5f467cd4140ac2969"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-recoil-earth.png",
+      "bytes": 930635,
+      "sha256": "0898628ff81dd085c92b7e5fb28eb3c0318270b13d56c0dc9a455979f70344a2"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-132.png",
+      "bytes": 11607,
+      "sha256": "cfdba62bc8090392b2964e1b232c12b0be1b6efd57b99773278a71f0607468fb"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-300.png",
+      "bytes": 52181,
+      "sha256": "d79be6e396af99ef357baa05db7c9d57fde245564edf87a13ac3973dd9a7c874"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-440.png",
+      "bytes": 105691,
+      "sha256": "bfd99e151b73cf8db5989e7dfeba3020ee378834c685f64a87a2d562a30664be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-earth.png",
+      "bytes": 930678,
+      "sha256": "84cf07e95fa289249a629e09177b2729f014d1b043eb681425b516d5c3f8e95f"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-restored-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-restored-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-restored-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-restored-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-restored-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-restored-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-shift-paws-restored-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-strike-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-strike-132.png",
+      "bytes": 11550,
+      "sha256": "684fa8c4ffccf38c8ac2df40bef2ef37cef29aeb4f862526a37cb5633c825d69"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-strike-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-strike-300.png",
+      "bytes": 51892,
+      "sha256": "bd0e09bf9b0016ac23bfa19200ed2148f035f6ebac1832cb0621e8ad9e0d3044"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-strike-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-strike-440.png",
+      "bytes": 104981,
+      "sha256": "edc52b28a9816796fc17fbe7b0b18d6430f724650bc6afabcec43ed5750f45ad"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/desktop-strike-earth.png",
+      "bytes": 930681,
+      "sha256": "efee53299371179ee478c1baf6a596455235c48203018e5ee9aca625c9dda5a2"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/BufferResource-B2JaIKPf.js",
+      "bytes": 18784,
+      "sha256": "80df9993a779cbc928290ad7d05cf8e58af865551942629dfd383d2d2449c517"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/CanvasPool-D0IGP4PS.js",
+      "bytes": 2477,
+      "sha256": "6345931d1402a27cfe0f1e5eca849774a6f18a3f5e4e60d9331e85afed9dfa07"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/CanvasRenderer-xSO5tPZD.js",
+      "bytes": 281481,
+      "sha256": "e06fedaaca817b620184614b9c2a3e0a6901f99d97c389c4a48d32d93fba964c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/Geometry-CgCjw-Bj.js",
+      "bytes": 354431,
+      "sha256": "760db2ef9640c546ad97e4934f04f168687c7eefa0098569af55b7c4b314e1b0"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/RenderTargetSystem-C8zObf9q.js",
+      "bytes": 175871,
+      "sha256": "515370eff8879080fed99e19a956deb1d8d26cfe9123f826df164bf6be6362b8"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/browserAll-WguK13Q6.js",
+      "bytes": 107427,
+      "sha256": "1660ff48cc69964beed30f25422ebe07ac86452f197fe8af1c4edf84392a2603"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/canvasUtils-D4O_SOPi.js",
+      "bytes": 13460,
+      "sha256": "71614c39fc5273dd4b9e248835c2d367ee08b3506baf85e65e17cbc994d3c5c4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/civet-current-132-Cq7RzW8j.png",
+      "bytes": 23640,
+      "sha256": "5279a3d0943bf0c90a5281709e97e8097a42fad5021e1b123e92f712dc95a583"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/getTextureBatchBindGroup-BqyP7eOb.js",
+      "bytes": 1188,
+      "sha256": "08c2f010f1fa2fbb0233a183d9602a7e9ddf11793975f1efeae530f197341754"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/init-B0VU1LiC.js",
+      "bytes": 36646,
+      "sha256": "13910c5ed12cc8f33521415ad17146106411e1d9247ba26c0cbea8b9d4a02ca4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/init-QRPuQXsh.js",
+      "bytes": 68751,
+      "sha256": "9a39682710f2d9104d9ef1709731164b8110b6e5aa8e12a5fbaf9590f7757140"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/study-DG2Wvep6.js",
+      "bytes": 285002,
+      "sha256": "3b1b71c6df9246d2d6a3abb07fb3587e12d85d68a0ecc153b77eeb8da2a23d89"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/assets/webworkerAll-U5Yd4QlQ.js",
+      "bytes": 267,
+      "sha256": "bfb6cec1c340895d7018b1b0efb962ff883d11dd20f6963624f9d9f58f8fc436"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/study-assets/civet-painted-v1.webp",
+      "bytes": 179856,
+      "sha256": "7df99d643544f47f0b9cfd22e97e3bcb8af5ccc184a51f29d2e6c42c603815ac"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/study-assets/earth-background-original.webp",
+      "bytes": 130306,
+      "sha256": "2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/study-assets/earth-residents-without-civet.png",
+      "bytes": 92306,
+      "sha256": "64d24cdbc37a7212e0c7cc9c511d0f754d7c8e17c93f43abd3c4a2d991788ca9"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/dist/study.html",
+      "bytes": 3727,
+      "sha256": "48d4cd68d92330f546c968f676dc89f638b1b1209b2b3c05e6c1fc2dbdac3811"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-breathe-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-breathe-132.png",
+      "bytes": 11426,
+      "sha256": "2c0b4afb0819ff2df929679c425177e4327238db62f6d56b2bb99f866c6953b7"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-breathe-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-breathe-300.png",
+      "bytes": 51305,
+      "sha256": "b3d3b7c10a51fe0b766d29efb539a46fced515c765fef31ef31192cc1eddb743"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-breathe-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-breathe-440.png",
+      "bytes": 103436,
+      "sha256": "cb0d97d2719657f576c3f988e1b0b2d62c00a2fea4bb94ca381bfc1792e86959"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-breathe-earth.png",
+      "bytes": 930723,
+      "sha256": "ee65eb0dc715d0adfff16a720f46f7abdaec86f5caad9d45e5535841216e2d99"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-restored-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-restored-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-restored-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-restored-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-restored-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-restored-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-constant-rest-restored-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-final-rest-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-final-rest-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-final-rest-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-final-rest-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-final-rest-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-final-rest-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-final-rest-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-native-study.png",
+      "bytes": 882153,
+      "sha256": "fe771822801f8bac2e8c8ea93b4469149b882c2caecf3d91094418647353cf7f"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-recoil-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-recoil-132.png",
+      "bytes": 11247,
+      "sha256": "0f5096db12156d8a7a5de6cdbea7d9c920ef18bd2c9297ef42037ad5caa96143"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-recoil-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-recoil-300.png",
+      "bytes": 50400,
+      "sha256": "bddaa87e1f3f44eecdd4937c393483b612101545d0974a42ae2713f4ec419f6e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-recoil-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-recoil-440.png",
+      "bytes": 102108,
+      "sha256": "c6abd17213bdd3117b1de1dc63fd31d027fda8f627a6bdf5f467cd4140ac2969"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-recoil-earth.png",
+      "bytes": 930635,
+      "sha256": "0898628ff81dd085c92b7e5fb28eb3c0318270b13d56c0dc9a455979f70344a2"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-132.png",
+      "bytes": 11607,
+      "sha256": "cfdba62bc8090392b2964e1b232c12b0be1b6efd57b99773278a71f0607468fb"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-300.png",
+      "bytes": 52181,
+      "sha256": "d79be6e396af99ef357baa05db7c9d57fde245564edf87a13ac3973dd9a7c874"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-440.png",
+      "bytes": 105691,
+      "sha256": "bfd99e151b73cf8db5989e7dfeba3020ee378834c685f64a87a2d562a30664be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-earth.png",
+      "bytes": 930678,
+      "sha256": "84cf07e95fa289249a629e09177b2729f014d1b043eb681425b516d5c3f8e95f"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-restored-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-restored-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-restored-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-restored-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-restored-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-restored-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-shift-paws-restored-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-strike-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-strike-132.png",
+      "bytes": 11550,
+      "sha256": "684fa8c4ffccf38c8ac2df40bef2ef37cef29aeb4f862526a37cb5633c825d69"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-strike-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-strike-300.png",
+      "bytes": 51892,
+      "sha256": "bd0e09bf9b0016ac23bfa19200ed2148f035f6ebac1832cb0621e8ad9e0d3044"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-strike-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-strike-440.png",
+      "bytes": 104981,
+      "sha256": "edc52b28a9816796fc17fbe7b0b18d6430f724650bc6afabcec43ed5750f45ad"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/phone-strike-earth.png",
+      "bytes": 930681,
+      "sha256": "efee53299371179ee478c1baf6a596455235c48203018e5ee9aca625c9dda5a2"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/report.json",
+      "bytes": 552116,
+      "sha256": "cd84e42ea90c7f05a0754d4efa5595dea8e8fc20500bafd5ff4b1d87a9db97d9"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/serve-study.mjs",
+      "bytes": 2654,
+      "sha256": "5853afc75d99bf4eef093c5287cf792c6c754c443f988a094f24f8c091547ef6"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/study-harness.ts",
+      "bytes": 23011,
+      "sha256": "a7380d3ef18887cd7ea6addbf5ff87635c4a7480a7c394472d90fb5d4bf641b1"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/study-runner.mjs",
+      "bytes": 21202,
+      "sha256": "8cf678dfcd000b68f3061d5e6da737b25bbadb23cfbeaee0d3258bb14fe88209"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/study.html",
+      "bytes": 3127,
+      "sha256": "aa5b56b182d8599785532302d88176d4c7f963e244ef0acdd28d365557f0b6f4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-final/study.tsconfig.json",
+      "bytes": 229,
+      "sha256": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/asset.json",
+      "bytes": 1017,
+      "sha256": "9046bf17d8184125cf571932b1edf92a618db5e2c1b7e8917b90449b44450219"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/desktop-breathe-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/desktop-breathe-132.png",
+      "bytes": 11426,
+      "sha256": "2dd229231331d640e485299361d8ea95579cd8f137a1a7e92441eb84ba36f633"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/desktop-breathe-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/desktop-breathe-300.png",
+      "bytes": 51256,
+      "sha256": "7bc99a2eec5ca9b89285b9b13d1600084ab1205dd222199bece847693edbb758"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/desktop-breathe-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/desktop-breathe-440.png",
+      "bytes": 103509,
+      "sha256": "88584ea4f11ae3e81c102377b551791600e50b4cc869dfe9c653bcbfdb76d06c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/desktop-breathe-earth.png",
+      "bytes": 930685,
+      "sha256": "934d7bf44af2ca174febc7567fe23f86d6cdde7641d9349a1009b022e9a6dd64"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/BufferResource-B2JaIKPf.js",
+      "bytes": 18784,
+      "sha256": "80df9993a779cbc928290ad7d05cf8e58af865551942629dfd383d2d2449c517"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/CanvasPool-D0IGP4PS.js",
+      "bytes": 2477,
+      "sha256": "6345931d1402a27cfe0f1e5eca849774a6f18a3f5e4e60d9331e85afed9dfa07"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/CanvasRenderer-xSO5tPZD.js",
+      "bytes": 281481,
+      "sha256": "e06fedaaca817b620184614b9c2a3e0a6901f99d97c389c4a48d32d93fba964c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/Geometry-CgCjw-Bj.js",
+      "bytes": 354431,
+      "sha256": "760db2ef9640c546ad97e4934f04f168687c7eefa0098569af55b7c4b314e1b0"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/RenderTargetSystem-C8zObf9q.js",
+      "bytes": 175871,
+      "sha256": "515370eff8879080fed99e19a956deb1d8d26cfe9123f826df164bf6be6362b8"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/browserAll-WguK13Q6.js",
+      "bytes": 107427,
+      "sha256": "1660ff48cc69964beed30f25422ebe07ac86452f197fe8af1c4edf84392a2603"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/canvasUtils-D4O_SOPi.js",
+      "bytes": 13460,
+      "sha256": "71614c39fc5273dd4b9e248835c2d367ee08b3506baf85e65e17cbc994d3c5c4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/civet-current-132-Cq7RzW8j.png",
+      "bytes": 23640,
+      "sha256": "5279a3d0943bf0c90a5281709e97e8097a42fad5021e1b123e92f712dc95a583"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/getTextureBatchBindGroup-BqyP7eOb.js",
+      "bytes": 1188,
+      "sha256": "08c2f010f1fa2fbb0233a183d9602a7e9ddf11793975f1efeae530f197341754"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/init-B0VU1LiC.js",
+      "bytes": 36646,
+      "sha256": "13910c5ed12cc8f33521415ad17146106411e1d9247ba26c0cbea8b9d4a02ca4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/init-QRPuQXsh.js",
+      "bytes": 68751,
+      "sha256": "9a39682710f2d9104d9ef1709731164b8110b6e5aa8e12a5fbaf9590f7757140"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/study-i6lNQhqi.js",
+      "bytes": 284374,
+      "sha256": "2e3be697667a532204dac96994bf9d554eb37c0cde14d65b10dbb3f0941541b9"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/assets/webworkerAll-U5Yd4QlQ.js",
+      "bytes": 267,
+      "sha256": "bfb6cec1c340895d7018b1b0efb962ff883d11dd20f6963624f9d9f58f8fc436"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/study-assets/civet-painted-v1.webp",
+      "bytes": 179856,
+      "sha256": "7df99d643544f47f0b9cfd22e97e3bcb8af5ccc184a51f29d2e6c42c603815ac"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/study-assets/earth-background-original.webp",
+      "bytes": 130306,
+      "sha256": "2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/study-assets/earth-residents-without-civet.png",
+      "bytes": 92306,
+      "sha256": "64d24cdbc37a7212e0c7cc9c511d0f754d7c8e17c93f43abd3c4a2d991788ca9"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/dist/study.html",
+      "bytes": 3727,
+      "sha256": "027b97fa378cfc7730b863ce32abe80883e65b8693870676fc8fc6527089b656"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/report.json",
+      "bytes": 15831,
+      "sha256": "59a1c7e1652095a18d6a96df2c2181640f1365df7e159ed99494b6dcbb8a4223"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/serve-study.mjs",
+      "bytes": 2654,
+      "sha256": "5853afc75d99bf4eef093c5287cf792c6c754c443f988a094f24f8c091547ef6"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/study-harness.ts",
+      "bytes": 22039,
+      "sha256": "22c64f1d908f623a57108166ce5e21d5f97311438e3aacaaad80cbdf72dd7c26"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/study-runner.mjs",
+      "bytes": 19147,
+      "sha256": "06b0ec480cfd37a7a4432109379003037b25ab60c7bdfe99e8e71c157cea4359"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/study.html",
+      "bytes": 3127,
+      "sha256": "aa5b56b182d8599785532302d88176d4c7f963e244ef0acdd28d365557f0b6f4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-first/study.tsconfig.json",
+      "bytes": 229,
+      "sha256": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/asset.json",
+      "bytes": 1017,
+      "sha256": "9046bf17d8184125cf571932b1edf92a618db5e2c1b7e8917b90449b44450219"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-breathe-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-breathe-132.png",
+      "bytes": 11426,
+      "sha256": "2c0b4afb0819ff2df929679c425177e4327238db62f6d56b2bb99f866c6953b7"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-breathe-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-breathe-300.png",
+      "bytes": 51305,
+      "sha256": "b3d3b7c10a51fe0b766d29efb539a46fced515c765fef31ef31192cc1eddb743"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-breathe-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-breathe-440.png",
+      "bytes": 103436,
+      "sha256": "cb0d97d2719657f576c3f988e1b0b2d62c00a2fea4bb94ca381bfc1792e86959"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-breathe-earth.png",
+      "bytes": 930723,
+      "sha256": "ee65eb0dc715d0adfff16a720f46f7abdaec86f5caad9d45e5535841216e2d99"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-restored-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-restored-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-restored-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-restored-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-restored-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-restored-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-constant-rest-restored-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-final-rest-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-final-rest-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-final-rest-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-final-rest-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-final-rest-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-final-rest-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-final-rest-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-recoil-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-recoil-132.png",
+      "bytes": 11247,
+      "sha256": "0f5096db12156d8a7a5de6cdbea7d9c920ef18bd2c9297ef42037ad5caa96143"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-recoil-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-recoil-300.png",
+      "bytes": 50400,
+      "sha256": "bddaa87e1f3f44eecdd4937c393483b612101545d0974a42ae2713f4ec419f6e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-recoil-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-recoil-440.png",
+      "bytes": 102108,
+      "sha256": "c6abd17213bdd3117b1de1dc63fd31d027fda8f627a6bdf5f467cd4140ac2969"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-recoil-earth.png",
+      "bytes": 930635,
+      "sha256": "0898628ff81dd085c92b7e5fb28eb3c0318270b13d56c0dc9a455979f70344a2"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-132.png",
+      "bytes": 11607,
+      "sha256": "cfdba62bc8090392b2964e1b232c12b0be1b6efd57b99773278a71f0607468fb"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-300.png",
+      "bytes": 52181,
+      "sha256": "d79be6e396af99ef357baa05db7c9d57fde245564edf87a13ac3973dd9a7c874"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-440.png",
+      "bytes": 105691,
+      "sha256": "bfd99e151b73cf8db5989e7dfeba3020ee378834c685f64a87a2d562a30664be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-earth.png",
+      "bytes": 930678,
+      "sha256": "84cf07e95fa289249a629e09177b2729f014d1b043eb681425b516d5c3f8e95f"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-restored-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-restored-132.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-restored-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-restored-300.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-restored-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-restored-440.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-shift-paws-restored-earth.png",
+      "bytes": 930656,
+      "sha256": "9449df29afc64dd589c0ed482d4c2b744e7a3469e02de88fb6ae13d0aec8a671"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-strike-132-rest.png",
+      "bytes": 11370,
+      "sha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-strike-132.png",
+      "bytes": 11550,
+      "sha256": "684fa8c4ffccf38c8ac2df40bef2ef37cef29aeb4f862526a37cb5633c825d69"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-strike-300-rest.png",
+      "bytes": 51061,
+      "sha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-strike-300.png",
+      "bytes": 51892,
+      "sha256": "bd0e09bf9b0016ac23bfa19200ed2148f035f6ebac1832cb0621e8ad9e0d3044"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-strike-440-rest.png",
+      "bytes": 103241,
+      "sha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-strike-440.png",
+      "bytes": 104981,
+      "sha256": "edc52b28a9816796fc17fbe7b0b18d6430f724650bc6afabcec43ed5750f45ad"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/desktop-strike-earth.png",
+      "bytes": 930681,
+      "sha256": "efee53299371179ee478c1baf6a596455235c48203018e5ee9aca625c9dda5a2"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/BufferResource-B2JaIKPf.js",
+      "bytes": 18784,
+      "sha256": "80df9993a779cbc928290ad7d05cf8e58af865551942629dfd383d2d2449c517"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/CanvasPool-D0IGP4PS.js",
+      "bytes": 2477,
+      "sha256": "6345931d1402a27cfe0f1e5eca849774a6f18a3f5e4e60d9331e85afed9dfa07"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/CanvasRenderer-xSO5tPZD.js",
+      "bytes": 281481,
+      "sha256": "e06fedaaca817b620184614b9c2a3e0a6901f99d97c389c4a48d32d93fba964c"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/Geometry-CgCjw-Bj.js",
+      "bytes": 354431,
+      "sha256": "760db2ef9640c546ad97e4934f04f168687c7eefa0098569af55b7c4b314e1b0"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/RenderTargetSystem-C8zObf9q.js",
+      "bytes": 175871,
+      "sha256": "515370eff8879080fed99e19a956deb1d8d26cfe9123f826df164bf6be6362b8"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/browserAll-WguK13Q6.js",
+      "bytes": 107427,
+      "sha256": "1660ff48cc69964beed30f25422ebe07ac86452f197fe8af1c4edf84392a2603"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/canvasUtils-D4O_SOPi.js",
+      "bytes": 13460,
+      "sha256": "71614c39fc5273dd4b9e248835c2d367ee08b3506baf85e65e17cbc994d3c5c4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/civet-current-132-Cq7RzW8j.png",
+      "bytes": 23640,
+      "sha256": "5279a3d0943bf0c90a5281709e97e8097a42fad5021e1b123e92f712dc95a583"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/getTextureBatchBindGroup-BqyP7eOb.js",
+      "bytes": 1188,
+      "sha256": "08c2f010f1fa2fbb0233a183d9602a7e9ddf11793975f1efeae530f197341754"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/init-B0VU1LiC.js",
+      "bytes": 36646,
+      "sha256": "13910c5ed12cc8f33521415ad17146106411e1d9247ba26c0cbea8b9d4a02ca4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/init-QRPuQXsh.js",
+      "bytes": 68751,
+      "sha256": "9a39682710f2d9104d9ef1709731164b8110b6e5aa8e12a5fbaf9590f7757140"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/study-DG2Wvep6.js",
+      "bytes": 285002,
+      "sha256": "3b1b71c6df9246d2d6a3abb07fb3587e12d85d68a0ecc153b77eeb8da2a23d89"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/assets/webworkerAll-U5Yd4QlQ.js",
+      "bytes": 267,
+      "sha256": "bfb6cec1c340895d7018b1b0efb962ff883d11dd20f6963624f9d9f58f8fc436"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/study-assets/civet-painted-v1.webp",
+      "bytes": 179856,
+      "sha256": "7df99d643544f47f0b9cfd22e97e3bcb8af5ccc184a51f29d2e6c42c603815ac"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/study-assets/earth-background-original.webp",
+      "bytes": 130306,
+      "sha256": "2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/study-assets/earth-residents-without-civet.png",
+      "bytes": 92306,
+      "sha256": "64d24cdbc37a7212e0c7cc9c511d0f754d7c8e17c93f43abd3c4a2d991788ca9"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/dist/study.html",
+      "bytes": 3727,
+      "sha256": "48d4cd68d92330f546c968f676dc89f638b1b1209b2b3c05e6c1fc2dbdac3811"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/report.json",
+      "bytes": 227155,
+      "sha256": "2928a3d3028678ffd3a04f5fe6fe16728ba28a0efa67d4f6959b271f0b234a08"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/serve-study.mjs",
+      "bytes": 2654,
+      "sha256": "5853afc75d99bf4eef093c5287cf792c6c754c443f988a094f24f8c091547ef6"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/study-harness.ts",
+      "bytes": 23011,
+      "sha256": "a7380d3ef18887cd7ea6addbf5ff87635c4a7480a7c394472d90fb5d4bf641b1"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/study-runner.mjs",
+      "bytes": 19673,
+      "sha256": "bb05842ad49d843da1a95f8c062b9d6c6687628122ac7dd71024e79c57f20628"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/study.html",
+      "bytes": 3127,
+      "sha256": "aa5b56b182d8599785532302d88176d4c7f963e244ef0acdd28d365557f0b6f4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-native-fixed/study.tsconfig.json",
+      "bytes": 229,
+      "sha256": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-runner.mjs",
+      "bytes": 21202,
+      "sha256": "8cf678dfcd000b68f3061d5e6da737b25bbadb23cfbeaee0d3258bb14fe88209"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-typecheck-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study-typecheck-first.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study.html",
+      "bytes": 3127,
+      "sha256": "aa5b56b182d8599785532302d88176d4c7f963e244ef0acdd28d365557f0b6f4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/study.tsconfig.json",
+      "bytes": 229,
+      "sha256": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/v2-three-typechecks-final.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/v2-three-typechecks-first.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/verify-final.mjs",
+      "bytes": 2147,
+      "sha256": "613af7f3082e8ec4885f4cbf81e7752a12e6b69306f14b953048fea033bd15b6"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/verify-runner-final.mjs",
+      "bytes": 1962,
+      "sha256": "cee9a9a990cbd3b800c8af940a56e4142620e54bbde18c0663f4e81c38486b48"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/verify-static.mjs",
+      "bytes": 1950,
+      "sha256": "890374946d32cb5209535d2b117c465a2eb731318279395b9432d79316b5efc2"
+    },
+    {
+      "path": "audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/README.md",
+      "bytes": 4339,
+      "sha256": "eb15c452f3651cb70fed9bce4eb520e2cad9a52a4733f40b06af2a2d923461f0"
+    },
+    {
+      "path": "audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/alien-flora-reference.png",
+      "bytes": 2787923,
+      "sha256": "611a19a1a10ed4e5ba3225ec686d1f025c3bf2c83442ec2d830b3b7943ff4d5c"
+    },
+    {
+      "path": "audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/earth-flora-fauna-reference.png",
+      "bytes": 2570683,
+      "sha256": "96cfb499f8e2d8fdd15cc1a09dcfa6238195152ee619290c294e71707544987a"
+    },
+    {
+      "path": "audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/manifest.json",
+      "bytes": 3863,
+      "sha256": "19043da217567e4306b751a3535b6a3a5407065ba1b4a90598348022fab5d43c"
+    },
+    {
+      "path": "audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json",
+      "bytes": 1904,
+      "sha256": "976ab2e2dd4c410d8f29a275cedd1097791ed256e76e9558c270fdbea6bc4bcb"
+    },
+    {
+      "path": "port/v2/tests/painted-civet-rig.test.ts",
+      "bytes": 15809,
+      "sha256": "a013a5a5bffbb552487f05da96ae709c0e3ce47736f288c6ae51754ab994b72d"
+    },
+    {
+      "path": "port/v2/tools/painted-creature/civet-rig.ts",
+      "bytes": 6142,
+      "sha256": "161a3ddd690b21c11575a539587a629910ac89b98ab849e846e1b15a0bffe0bc"
+    },
+    {
+      "path": "audits/CREATURE_PAINTED_CIVET_20260908/FORMAT_EVIDENCE.md",
+      "bytes": 3298,
+      "sha256": "5c93cba8b7e42d7e43eaab00e144ccbc216cc7f0494503ae14c803e11c1415f2"
+    }
+  ]
+}

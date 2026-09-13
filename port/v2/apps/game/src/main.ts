@@ -17,7 +17,9 @@
    on the V2 program roadmap. Atlas charting/favorites and rarity stings are live.
    Static deterministic Canvas species portraits and the preserved 43-biome landing vistas are live;
    retained Pixi actors, meshes, and portrait animation remain later work. */
-import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin } from 'pixi.js';
+import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin, RendererType, MeshPipe } from 'pixi.js';
+import { createSystemStarField } from './system-star-field.js';
+import { createSystemProtostarCanvas, SYSTEM_PROTOSTAR_WIDTH, SYSTEM_PROTOSTAR_HEIGHT } from './system-protostar.js';
 import {
   galSpriteFor, decoSprite, getPlanetSprite, starSprite,
   _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr,
@@ -195,6 +197,17 @@ import {
   resolveCameraShakePolicyV1,
   type CameraShakePolicyV1,
 } from './camera-shake-policy.js';
+import { PAINTED_MARS_VISTA_ID, isPaintedMarsVistaV1 } from './painted-mars-binding.js';
+import { PaintedVistaLoadV1 } from './painted-vista-load.js';
+import { EARTH_LAYERED_SCENE_ID, buildEarthLayeredRecipeV1 } from './earth-layered-recipe.js';
+import { PAINTED_EARTH_LANDING_ID, buildPaintedEarthLandingRecipeV1 } from './painted-earth-landing-recipe.js';
+import type { LocalAiGameV1 } from './local-ai-game.js';
+import { createAiPresentationRefresh, isAiActionTarget } from './ai-presentation.js';
+import type { AiLandfallInputV1, AiLandfallOriginalV1 } from './ai-landfall-originals.js';
+const LOCAL_AI_LANDFALL_ID = 'cf-local-ai-landfall-v1' as const;
+import { EarthLayeredLoadV1 } from './earth-layered-load.js';
+import { retireEarthLayerResourcesV1 } from './earth-layered-resources.js';
+import { earthLayeredMountLayoutV1 } from './earth-layered-layout.js';
 import type { VisualPolicyDeviceTierV1 } from './visual-policy-contract.js';
 import { selectFogParticleCandidatesV1 } from './fog-particle-selection.js';
 import {
@@ -217,6 +230,8 @@ import type {
   GuideCategoryId, GuideCategoryView, GuideTopicId, GuideTopicView,
 } from './guide-content.js';
 import type { ReleaseNoteView, V2ShippedRelease } from './release-content.js';
+import type { AudiovisualPilot, PilotSceneSnapshot } from './audiovisual-pilot.js';
+import { CombatBattleSceneController } from './combat-battle-scene.js';
 import {
   V2_CURRENT_RELEASE_VERSION,
   V2_DEVELOPMENT_VERSION,
@@ -594,8 +609,17 @@ import {
   f4AuthorityConvergenceWitnessErrors,
   latchF4AuthorityConvergenceReload,
 } from './f4-convergence-latch.js';
+import { UI_PRESENTATION_CSS } from './ui-presentation-tokens.js';
+import { UI_SHELL_CSS } from './ui-shell-style.js';
+import { UI_SHEET_CSS } from './ui-sheet-style.js';
+import { createSheetLayoutController } from './sheet-layout.js';
+import { createNotificationHistory, NOTIFICATION_HISTORY_CSS } from './notification-history.js';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
+const uiPresentationStyle = document.createElement('style');
+uiPresentationStyle.id = 'cf-ui-presentation';
+uiPresentationStyle.textContent = UI_PRESENTATION_CSS + UI_SHELL_CSS + NOTIFICATION_HISTORY_CSS + UI_SHEET_CSS;
+document.head.append(uiPresentationStyle);
 installBatchTextureArrayUidCompaction(BatchTextureArray);
 document.title = `Celestial Frontier v${V2_DEVELOPMENT_VERSION} — Development`;
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the hooks */
@@ -607,6 +631,8 @@ const REGISTRY = REGISTRY_JSON as unknown as ContentRegistry;
 const customNames = new Map<string, string>();
 
 extensions.add(CullerPlugin);   /* offscreen sprites skip render — thousands of stars, one flag */
+// Renderer pipes are captured at app.init; the optional view itself loads later.
+if (new URLSearchParams(location.search).get('planetturn') === '1') extensions.add(MeshPipe);
 
 const app = new Application();
 const pixiManagedResourceOwner = new PixiManagedResourceOwner(() => app.renderer, cleanHash);
@@ -769,6 +795,7 @@ let lastSmokeArc0LandingFaultWitness: Readonly<{
 }> | null = null;
 let currentCapturePresentationFence: string | null = null;
 let tameGreetingAudioOwner: TameGreetingAudioOwner | null = null;
+let combatBattleScene: CombatBattleSceneController | null = null;
 let smokeRejectNextArc4ActionStorage = false;
 let smokeStaleNextArc4ActionAuthority = false;
 let smokeRejectNextArc4Publication = false;
@@ -1495,8 +1522,14 @@ const showF4 = async (): Promise<void> => {
 };
 addEventListener('pagehide', (event) => {
   travelPresentationOwner.cancel();
+  combatBattleScene?.stop('hidden');
   tameGreetingAudioOwner?.setHidden(true);
-  if (!event.persisted) void tameGreetingAudioOwner?.dispose();
+  if (!event.persisted) {
+    combatBattleScene?.dispose(); combatBattleScene = null;
+    audiovisualPilotClosed = true; audiovisualPilot?.dispose(); audiovisualPilot = null;
+    resetAudiovisualPilotPresentation();
+    void tameGreetingAudioOwner?.dispose();
+  }
   stopF4Heartbeat();
   void checkpointAndHideF4();
   if (event.persisted) {
@@ -2042,7 +2075,58 @@ function abortRenderBeforeReceiptForSmoke(): boolean {
   smokeAbortNextRenderBeforeReceipt = false;
   return true;
 }
+let audiovisualPilot: AudiovisualPilot | null = null;
+let audiovisualPilotClosed = false;
+let audiovisualPilotBiomeKey: string | null = null;
+let audiovisualPilotVistaReady = false;
+let audiovisualPilotVistaBinding: string | null = null;
+let audiovisualPilotSurfaceVisible = false;
+type AudiovisualPilotPresentationState = Readonly<{
+  enhanced: boolean;
+  surfaceVisible: boolean;
+  starterScoutImageUrl: string | null;
+}>;
+function applyAudiovisualPilotSceneVisibility(): void {
+  const hidden = nav.mode === 'surface' && audiovisualPilotSurfaceVisible;
+  world.visible = !hidden;
+  if (surfaceVistaSprite !== null) surfaceVistaSprite.visible = !hidden;
+}
+function applyAudiovisualPilotPresentation(state: AudiovisualPilotPresentationState): void {
+  audiovisualPilotSurfaceVisible = state.enhanced && state.surfaceVisible;
+  applyAudiovisualPilotSceneVisibility();
+  if (!engineeringPanelReleased) {
+    engineeringPanelController.setPresentation(state.enhanced
+      ? { mode: 'audiovisual-pilot', ...(state.starterScoutImageUrl === null
+        ? {} : { starterScoutImageUrl: state.starterScoutImageUrl }) }
+      : null);
+  }
+}
+function resetAudiovisualPilotPresentation(): void {
+  applyAudiovisualPilotPresentation({ enhanced: false, surfaceVisible: false, starterScoutImageUrl: null });
+}
+function pilotSceneSnapshot(): PilotSceneSnapshot {
+  return { mode: nav.mode, routeKey: currentTameGreetingRouteKey(),
+    biomeKey: audiovisualPilotBiomeKey, vistaReady: audiovisualPilotVistaReady,
+    vistaBinding: audiovisualPilotVistaBinding, ship: currentShipVisualState(),
+    motion: motionOK(), effects: save.fxOn };
+}
+function syncAudiovisualPilot(): void {
+  audiovisualPilot?.sync(pilotSceneSnapshot());
+  applyAudiovisualPilotSceneVisibility();
+}
+function startAudiovisualPilot(): void {
+  if (new URLSearchParams(location.search).get('avpilot') !== '1' || audiovisualPilotClosed) return;
+  void import('./audiovisual-pilot.js').then(({ mountAudiovisualPilot }) => {
+    if (audiovisualPilotClosed || !tameGreetingAudioOwner) return;
+    audiovisualPilot = mountAudiovisualPilot({ document, initial: pilotSceneSnapshot(), audio: tameGreetingAudioOwner,
+      onPresentationChange: applyAudiovisualPilotPresentation });
+  }).catch(() => {
+    if (!audiovisualPilotClosed) resetAudiovisualPilotPresentation();
+    /* Candidate media failure cannot block ordinary play. */
+  });
+}
 function recordRenderedScene(state: NavState): void {
+  audiovisualPilotBiomeKey = null; audiovisualPilotVistaReady = false; audiovisualPilotVistaBinding = null;
   renderedSceneReceipt = Object.freeze({
     serial: renderedSceneReceipt.serial + 1,
     mode: state.mode,
@@ -2051,6 +2135,7 @@ function recordRenderedScene(state: NavState): void {
     starKey: state.mode === 'system' || state.mode === 'surface' ? getProvenStarKey(state.star) : null,
     worldKey: state.mode === 'surface' ? getProvenPlanetKey(state.planet) : null,
   });
+  syncAudiovisualPilot();
 }
 const cam = { x: 0, y: 0, z: 1 };
 const camT = { x: 0, y: 0, z: 1 };   /* eased target — the goTo feel */
@@ -2298,9 +2383,9 @@ function showSurvey(
     : '';
   card.innerHTML =
     '<div class="survey-head">' +
-    `<div><h2 data-sel="title">${esc(d.title)}</h2>` +
-    `<div data-sel="sub">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div></div>` +
+    `<h2 data-sel="title">${esc(d.title)}</h2>` +
     '<button type="button" class="surface-close" data-survey-close aria-label="Close Survey card">✕</button></div>' +
+    `<div data-sel="sub">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
     travelHtml +
     (actionsHtml || '') +   /* the card's ACTION ROW (Land · +Atlas · share) — buttons are trusted markup, never save text */
     approachEcologyHtml + combatHtml + captureHtml + rarity + rows.map(([k, v, cls]) =>
@@ -2550,6 +2635,7 @@ function visualPolicyDeviceTier(): VisualPolicyDeviceTierV1 {
 function refreshVisualPolicies(): void {
   const deviceTier = visualPolicyDeviceTier();
   const motion = motionOK() ? 'full' as const : 'reduced' as const;
+  combatBattleScene?.setPolicy({ effectsOn: save.fxOn, motion, deviceTier });
   activeVisualEffectPolicy = resolveVisualEffectPolicyV1({
     effectsOn: save.fxOn, motion, deviceTier,
   });
@@ -2649,7 +2735,16 @@ function triggerCameraShake(): void {
     });
   } catch { return; }
   activeCameraShakes.add(animation);
-  const release = (): void => { activeCameraShakes.delete(animation); };
+  const release = (): void => {
+    activeCameraShakes.delete(animation);
+    // Landing translates the canvas without resizing it. Re-measure the Earth
+    // composition once the last impulse ends so a transient offset cannot become rest.
+    if (activeCameraShakes.size === 0 && (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
+      || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+      || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID)) {
+      syncSurfaceVistaPresentation();
+    }
+  };
   void animation.finished.then(release, release);
 }
 function applyGlass(): void {
@@ -4159,7 +4254,7 @@ function fillCharters(): void {
   );
   restoreFocus();
 }
-registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
+registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('objchip')], onOpen: fillCharters });
 document.getElementById('chpanel')!.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
   const button = event.target.closest<HTMLButtonElement>('[data-starter-charter-accept]');
@@ -4167,7 +4262,7 @@ document.getElementById('chpanel')!.addEventListener('click', (event) => {
   const id = STARTER_CHARTER_IDS_V1.find(
     (candidate): candidate is StarterCharterIdV1 => candidate === button.dataset.starterCharterAccept,
   );
-  if (id !== undefined) void runStarterCharterAccept(id);
+  if (id !== undefined) void acceptStarterCharterWithPilot(id, event.isTrusted);
 });
 const primeCodexOpener = appChrome.primeCodexOpener();
 registerPanel({
@@ -4193,15 +4288,24 @@ let combatChronicleAudioSession: Readonly<{
 }> | null = null;
 const combatChronicleController = new CombatChronicleController({
   root: combatChroniclePanel,
-  onCue: (emission) => { void playCombatChronicleCue(emission); },
+  onCue: (emission) => {
+    try { combatBattleScene?.presentCue(emission); }
+    catch { /* Decorative battle motion cannot interrupt Chronicle outcomes. */ }
+    void playCombatChronicleCue(emission);
+  },
   onShare: (shareText) => { void copyCombatChronicleLog(shareText); },
   onStopVoices: (reason, generation) => {
+    combatBattleScene?.stop(reason);
     if (combatChronicleAudioSession?.generation !== generation) return;
     combatChronicleAudioSession = null;
     tameGreetingAudioOwner?.cancelCombatPlayback(`chronicle-${reason}`);
   },
 });
 combatChronicleController.attach(combatChronicleMount);
+combatBattleScene = new CombatBattleSceneController({
+  root: combatChroniclePanel, artLoader: speciesArtLoader,
+  counterpartIsCurrent: receipt => combatChronicleController.counterpartIsCurrent(receipt),
+});
 registerPanel({
   id: 'combat',
   el: combatChroniclePanel,
@@ -4210,6 +4314,33 @@ registerPanel({
 registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [document.getElementById('dockatlas'), document.getElementById('railatlas')], onOpen: () => { fillAtlas(); gameEvent('atlas-open', { open: true }); } });
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
 registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
+let localAiGame: LocalAiGameV1 | null = null;
+let mountedLocalAiOriginal: AiLandfallOriginalV1 | null = null;
+let localAiStatus = '';
+let cancelAiCrossfade: (() => void) | null = null;
+const notificationPanel = document.getElementById('notificationpanel')!;
+const notificationButtons = ['shelfnotifications', 'docknotifications']
+  .map((id) => document.getElementById(id)!);
+const notificationHistory = createNotificationHistory({
+  panel: notificationPanel,
+  buttons: notificationButtons,
+  history: () => save?.notifications ?? [],
+  replace: (history) => { save.notifications = history; },
+  mayWrite: () => !!save && !playerMutationsBlocked() && !trainingActive()
+    && activePersist === null && !namedSearchPersistenceHeld
+    && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
+    && !importWriteInFlight && !persistHold,
+  mayRecord: () => !!save && !playerMutationsBlocked() && !trainingActive()
+    && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
+    && !importWriteInFlight && !persistHold,
+  deferRecord: () => !!save && productActionInFlight && f4RuntimeMayMutate() && !smokeForceReadOnly
+    && !trainingActive() && !trainingCheckpointWriteHeld && !replacementTransaction
+    && !replacementReloadPending && !importWriteInFlight && !persistHold,
+  persist: () => persistView(),
+  fill: (html) => fillPanel('notifications', html + (localAiGame?.html() ?? '')),
+});
+registerPanel({ id: 'notifications', el: notificationPanel,
+  btns: notificationButtons, onOpen: () => notificationHistory.render() });
 const codexOpenController = createPanelOpenController({
   id: 'codex',
   defaultRequest: () => '',
@@ -4866,9 +4997,11 @@ let compendiumFeedStatusCounterpart: Readonly<{
 const TOAST_DEDUP_MS = 1800;
 function toastDetailText(): string | null {
   const title = toastEl.querySelector<HTMLElement>('[data-sel="toast-title"]');
-  const lineBreak = title?.nextSibling;
+  const message = title?.nextSibling;
+  const lineBreak = message?.firstChild;
   const detail = lineBreak?.nextSibling;
-  return title && lineBreak?.nodeName === 'BR' && detail?.nodeType === Node.TEXT_NODE
+  return title && message instanceof HTMLElement && message.matches('span[data-sel="toast-message"]')
+    && lineBreak?.nodeName === 'BR' && detail?.nodeType === Node.TEXT_NODE && detail.nextSibling === null
     ? detail.textContent : null;
 }
 function tameToastCounterpartIsCurrent(receipt: AudioCounterpartReceipt): boolean {
@@ -4975,6 +5108,7 @@ async function runCompendiumAudition(
   compendiumAuditionController.settle(request, result);
 }
 function showToast(title: string, msg: string, assertive: boolean): void {
+  notificationHistory.record(title, msg, Date.now());
   invalidateTameToastCounterpart();
   /* A prior Feed may have used this visible carrier in AT-excluded mode.
      Restore the complete accessible status contract before changing text so
@@ -4982,7 +5116,7 @@ function showToast(title: string, msg: string, assertive: boolean): void {
   toastEl.setAttribute('role', 'status');
   toastEl.setAttribute('aria-live', assertive ? 'assertive' : 'polite');
   toastEl.removeAttribute('aria-hidden');
-  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;   /* every sink escapes (audit #6) */
+  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><span data-sel="toast-message"><br>${esc(msg)}</span>`;   /* every sink escapes (audit #6) */
   _toastSerial++;
   toastEl.style.opacity = '1';
   clearTimeout(_toastHide);
@@ -4992,6 +5126,7 @@ function showToast(title: string, msg: string, assertive: boolean): void {
   }, 3600);
 }
 function showCompendiumFeedVisualToast(title: string, msg: string): void {
+  notificationHistory.record(title, msg, Date.now());
   invalidateTameToastCounterpart();
   /* Feed's inline polite role=status is its sole accessible result. Configure
      this supplemental visible carrier as presentation-only before mutating
@@ -4999,7 +5134,7 @@ function showCompendiumFeedVisualToast(title: string, msg: string): void {
   toastEl.setAttribute('role', 'presentation');
   toastEl.setAttribute('aria-live', 'off');
   toastEl.setAttribute('aria-hidden', 'true');
-  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;
+  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><span data-sel="toast-message"><br>${esc(msg)}</span>`;
   _toastT = performance.now();
   _toastSerial++;
   toastEl.style.opacity = '1';
@@ -5373,6 +5508,8 @@ function refreshEngineeringPanelState(): void {
 }
 
 function updateChips(): void {
+  notificationHistory.refreshBadge();
+  syncAudiovisualPilot();
   const stage = ascStage();
   const objective = currentV2Objective(save.ascCh, save.ascProg, stage);
   const projection = projectV2Charter(save.ascCh, save.ascProg, stage);
@@ -5413,9 +5550,11 @@ function hudText(): void {
     setTrail([galaxyName(nav.gal.seed), starName(nav.star.seed)]);
     setHint('tap a world to survey · press Land on its card · zoom out to rise');
     const sys = systemScene(nav.star.seed);
-    const raw = systemFor(nav.star.seed) as { binary?: unknown };
+    const raw = systemFor(nav.star.seed) as { binary?: unknown; trinary?: unknown };
     const desc = nav.star.seed === 424242 ? 'Sol — humanity’s own yellow star' : 'this star';
-    const extra = raw.binary ? ' · a binary pair — two suns share this sky' : '';
+    const extra = raw.binary
+      ? raw.trinary ? ' · a triple system — three suns share this sky' : ' · a binary pair — two suns share this sky'
+      : '';
     setCtx(sys.planets.length
       ? sys.planets.length + ' worlds orbit ' + desc + extra
       : 'no planets here — zoom out and try another star');
@@ -5464,15 +5603,19 @@ function bhDiscSpr(): HTMLCanvasElement {   /* the supermassive black hole (main
   return (_bhDiscC = cv);
 }
 const _coronaC = new Map<string, HTMLCanvasElement>();
-function coronaSpr(col: string): HTMLCanvasElement {   /* main-sequence glow (main.js ~5121) */
-  const hit = _coronaC.get(col); if (hit) return hit;
+function coronaSpr(col: string, companion = false): HTMLCanvasElement {
+  /* Companions use the canonical three-stop glow, then the shared V2 polish. */
+  const key = companion ? col + ':companion' : col;
+  const hit = _coronaC.get(key); if (hit) return hit;
   const S = 256, cv = document.createElement('canvas'); cv.width = cv.height = S;
   const g = cv.getContext('2d')!, C = S / 2;
   const sg = g.createRadialGradient(C, C, 0, C, C, C);
-  sg.addColorStop(0, '#ffffff'); sg.addColorStop(0.25, col); sg.addColorStop(0.6, col + '66'); sg.addColorStop(1, 'transparent');
+  sg.addColorStop(0, '#ffffff'); sg.addColorStop(0.25, col);
+  if (!companion) sg.addColorStop(0.6, col + '66');
+  sg.addColorStop(1, 'transparent');
   g.fillStyle = sg; g.beginPath(); g.arc(C, C, C, 0, TAU); g.fill();
   const finished = polishSystemCanvasV1(cv);
-  _coronaC.set(col, finished);
+  _coronaC.set(key, finished);
   peakLocalCanvasCacheEntries = Math.max(
     peakLocalCanvasCacheEntries,
     _coronaC.size + _termC.size,
@@ -5687,6 +5830,9 @@ let surfClouds: { a: Sprite; b: Sprite; w: number } | null = null;
 let surfaceVistaWorker: Worker | null = null;
 let surfaceVistaDeadline: ReturnType<typeof setTimeout> | null = null;
 let surfaceVistaSprite: Sprite | null = null;
+let surfacePlanetSprite: Sprite | null = null;
+let surfacePaintedGlobe: Sprite | null = null;
+let surfaceEarthCloudDeck: { container: Container; visible: boolean } | null = null;
 let surfaceVistaGeneration = 0;
 let surfaceVistaWorldKey: string | null = null;
 let surfaceVistaEnvironmentFingerprint: string | null = null;
@@ -5697,6 +5843,15 @@ let surfaceVistaStaleDrops = 0;
 let surfaceVistaFaults = 0;
 let surfaceVistaLastBiome: string | null = null;
 let surfaceVistaLastError: string | null = null;
+let surfaceVistaArtVariant: 'canonical-v1' | typeof PAINTED_MARS_VISTA_ID
+  | typeof EARTH_LAYERED_SCENE_ID | typeof PAINTED_EARTH_LANDING_ID | typeof LOCAL_AI_LANDFALL_ID | null = null;
+let surfaceEarthLayeredLoad: EarthLayeredLoadV1 | null = null;
+let surfaceEarthLayeredLast: ReturnType<EarthLayeredLoadV1['snapshot']> | null = null;
+let surfaceEarthResidentSprite: Sprite | null = null;
+type SurfaceEarthLayerResource = { canvas: HTMLCanvasElement; lease: SceneTextureLease<Texture> | null; sprite: Sprite | null };
+let surfaceEarthLayeredResources: SurfaceEarthLayerResource[] = [];
+let surfacePaintedVistaLoad: PaintedVistaLoadV1 | null = null;
+let surfacePaintedVistaLast: ReturnType<PaintedVistaLoadV1['snapshot']> | null = null;
 const surfaceVistaCanvasCache = new Map<string, HTMLCanvasElement>();
 const SURFACE_VISTA_DEADLINE_MS = 12_000;
 function noteSurfaceVistaFault(error: unknown, fallback: string): void {
@@ -5716,20 +5871,109 @@ let surfacePlanetTextureGeneration = 0;
 let surfacePlanetTextureOwner:
   SurfacePlanetTextureAttachment<HTMLCanvasElement, Texture> | null = null;
 const SURFACE_PLANET_DIAMETER_CSS_PX = 420;
+let surfacePlanetTurnView: import('./planet-surface-turn-view.js').SurfacePlanetTurnViewV1 | null = null;
+let surfacePlanetTurnPending = false;
+let surfacePlanetTurnLast: unknown = null;
+function startSurfacePlanetTurn(planet: Record<string, unknown>, fallback: Sprite): void {
+  if (new URLSearchParams(location.search).get('planetturn') !== '1'
+    || app.renderer.type !== RendererType.WEBGL || nav.mode !== 'surface'
+    || getProvenPlanetKey(nav.planet) !== 'CF1|g:999@90,-60|s:424242@560,170|p:133#2') return;
+  if (!app.renderer.renderPipes.mesh) {
+    surfacePlanetTurnLast = { status: 'failed', error: 'Earth turn mesh renderer unavailable' };
+    return;
+  }
+  const generation = surfacePlanetTextureGeneration;
+  const isCurrent = (): boolean => generation === surfacePlanetTextureGeneration
+    && nav.mode === 'surface'
+    && getProvenPlanetKey(nav.planet) === 'CF1|g:999@90,-60|s:424242@560,170|p:133#2'
+    && !fallback.destroyed;
+  surfacePlanetTurnPending = true;
+  void import('./planet-surface-turn-view.js').then(({ SurfacePlanetTurnViewV1 }) => {
+    if (!isCurrent()) return;
+    surfacePlanetTurnPending = false;
+    const cards = (globalThis as typeof globalThis & {
+      CARD_FACTS?: Map<number, Record<string, unknown>>;
+    }).CARD_FACTS;
+    surfacePlanetTurnView = new SurfacePlanetTurnViewV1({
+      parent: world, fallback, diameter: SURFACE_PLANET_DIAMETER_CSS_PX,
+      material: new URLSearchParams(location.search).get('planetmaterial') === '1',
+      planet: { ...planet }, facts: cards?.get(133) ? { ...cards.get(133)! } : null,
+      isCurrent, acquireLease: canvas => sceneTextureLease(canvas, 'planet-texture'),
+    });
+  }).catch(error => {
+    if (!isCurrent()) return;
+    surfacePlanetTurnPending = false;
+    surfacePlanetTurnLast = { status: 'failed', error: String(error).slice(0, 256) };
+  });
+}
+
 let systemPlanetTextureRefreshTimer: ReturnType<typeof setTimeout> | null = null;
 const baseR = (): number => Math.max(0.7 / cam.z, 0.55);   /* Renderer star sizing (main.js 4126) */
 
 function releaseSurfacePlanetTextureOwner():
   SurfacePlanetTextureAttachment<HTMLCanvasElement, Texture> | null {
   surfacePlanetTextureGeneration++;
+  surfacePlanetTurnPending = false;
+  if (surfacePlanetTurnView) {
+    surfacePlanetTurnView.dispose();
+    surfacePlanetTurnLast = surfacePlanetTurnView.snapshot();
+    surfacePlanetTurnView = null;
+  }
+  surfacePlanetSprite = null;
   const previous = surfacePlanetTextureOwner;
   previous?.cancelPending();
   surfacePlanetTextureOwner = null;
   return previous;
 }
 
+function retireSurfaceEarthLayers(entries: readonly SurfaceEarthLayerResource[]): {
+  retained: SurfaceEarthLayerResource[]; errors: unknown[];
+} {
+  const retained: SurfaceEarthLayerResource[] = [], errors: unknown[] = [];
+  for (const entry of entries) {
+    const sprite = entry.sprite;
+    if (sprite) {
+      for (const cleanup of [
+        () => { if (sprite.texture != null && sprite.texture !== Texture.EMPTY) sprite.texture = Texture.EMPTY; },
+        () => { if (sprite.parent !== null) sprite.removeFromParent(); },
+        () => { if (!sprite.destroyed) sprite.destroy({ children: true }); },
+      ]) {
+        try { cleanup(); } catch (error) { errors.push(error); }
+      }
+      // Pixi may mark destroyed before detach completes; inspect real ownership.
+      if (sprite.parent !== null || (sprite.texture != null && sprite.texture !== Texture.EMPTY)) {
+        retained.push(entry);
+        errors.push(new Error('Earth layer display still retains its backing texture'));
+        continue;
+      }
+    }
+    const retired = retireEarthLayerResourcesV1([entry]);
+    retained.push(...retired.retained); errors.push(...retired.errors);
+  }
+  return { retained, errors };
+}
+
 function releaseSurfaceVistaOwner(): void {
+  cancelAiCrossfade?.(); cancelAiCrossfade = null;
+  mountedLocalAiOriginal = null;
   surfaceVistaGeneration++;
+  if (surfaceEarthLayeredLoad) {
+    surfaceEarthLayeredLoad.dispose();
+    surfaceEarthLayeredLast = surfaceEarthLayeredLoad.snapshot();
+    surfaceEarthLayeredLoad = null;
+  }
+  // Earth entries retain their own display references across failed cleanup.
+  surfaceEarthResidentSprite = null;
+  if (surfaceEarthLayeredResources.some(entry => entry.sprite === surfaceVistaSprite)) {
+    surfaceVistaSprite = null;
+  }
+  if (surfacePaintedVistaLoad) {
+    surfacePaintedVistaLoad.dispose();
+    surfacePaintedVistaLast = surfacePaintedVistaLoad.snapshot();
+    surfacePaintedVistaLoad = null;
+  }
+  surfaceVistaArtVariant = null;
+  syncSurfaceVistaPresentation();
   surfaceVistaWorldKey = null;
   surfaceVistaEnvironmentFingerprint = null;
   if (surfaceVistaDeadline !== null) {
@@ -5746,6 +5990,9 @@ function releaseSurfaceVistaOwner(): void {
     surfaceVistaSprite.destroy({ children: true });
     surfaceVistaSprite = null;
   }
+  const retired = retireSurfaceEarthLayers(surfaceEarthLayeredResources);
+  surfaceEarthLayeredResources = retired.retained;
+  if (retired.errors.length) throw new AggregateError(retired.errors, 'Earth layered resources failed to retire');
 }
 
 function releaseSurfaceVistaCache(): void {
@@ -5754,6 +6001,70 @@ function releaseSurfaceVistaCache(): void {
     canvas.height = 1;
   }
   surfaceVistaCanvasCache.clear();
+}
+
+function currentEarthLayeredLayout(imageWidth = 960, imageHeight = 430): ReturnType<typeof earthLayeredMountLayoutV1> {
+  const canvas = app.canvas.getBoundingClientRect();
+  if (canvas.width <= 0 || canvas.height <= 0) return null;
+  const visibleRect = (element: HTMLElement | null): DOMRect | null => {
+    if (!element) return null;
+    const style = getComputedStyle(element), rect = element.getBoundingClientRect();
+    return style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity) > 0
+      && rect.width > 0 && rect.height > 0 ? rect : null;
+  };
+  const chrome = appChrome.surfaceLayoutRects();
+  if (chrome === null) return null;
+  const upper = chrome.upper;
+  const lower = visibleRect(document.getElementById('planetside')) ?? chrome.dock;
+  const scaleY = app.screen.height / canvas.height;
+  return earthLayeredMountLayoutV1({
+    viewportWidth: app.screen.width, viewportHeight: app.screen.height, imageWidth, imageHeight,
+    topChromeBottom: Math.min(app.screen.height, Math.max(0,
+      Math.max(canvas.top, ...upper.map(rect => rect.bottom)) - canvas.top) * scaleY),
+    rosterTop: Math.min(app.screen.height, Math.max(0,
+      (lower?.top ?? canvas.bottom) - canvas.top) * scaleY),
+  });
+}
+
+/** Each optional painting owns only its exact scene decorations. Earth fits
+ * between real DOM chrome and its Biosphere strip; native controls do not move. */
+function syncSurfaceVistaPresentation(): void {
+  const earth = surfaceVistaSprite !== null && (surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+    || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID
+    || (surfaceEarthResidentSprite !== null && surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID));
+  const earthLayout = earth ? currentEarthLayeredLayout(surfaceVistaSprite!.texture.width, surfaceVistaSprite!.texture.height) : null;
+  if (earth) {
+    for (const sprite of [surfaceVistaSprite, surfaceEarthResidentSprite]) {
+      if (!sprite) continue;
+      sprite.visible = earthLayout !== null;
+      if (earthLayout) {
+        sprite.scale.set(earthLayout.scale);
+        sprite.position.set(earthLayout.centerX, earthLayout.centerY);
+      }
+    }
+  }
+  const painted = surfaceVistaSprite !== null && (surfaceVistaArtVariant === PAINTED_MARS_VISTA_ID
+    || (earth && earthLayout !== null));
+  const cloud = earth && earthLayout ? surfClouds?.a.parent ?? null : null;
+  if (surfaceEarthCloudDeck && surfaceEarthCloudDeck.container !== cloud) {
+    if (!surfaceEarthCloudDeck.container.destroyed) surfaceEarthCloudDeck.container.visible = surfaceEarthCloudDeck.visible;
+    surfaceEarthCloudDeck = null;
+  }
+  if (cloud) {
+    surfaceEarthCloudDeck ??= { container: cloud, visible: cloud.visible };
+    cloud.visible = false;
+  }
+  if (surfacePaintedGlobe !== null
+    && (!painted || surfacePaintedGlobe !== surfacePlanetSprite)) {
+    if (!surfacePaintedGlobe.destroyed) surfacePaintedGlobe.visible = true;
+    surfacePaintedGlobe = null;
+  }
+  if (painted && surfacePlanetSprite !== null && surfaceVistaSprite !== null) {
+    surfacePaintedGlobe = surfacePlanetSprite;
+    surfacePaintedGlobe.visible = false;
+    // Mars keeps its accepted full-screen contain composition.
+    if (!earth) surfaceVistaSprite.y = app.screen.height / 2;
+  }
 }
 
 function mountSurfaceVistaCanvas(canvas: HTMLCanvasElement): void {
@@ -5777,14 +6088,75 @@ function mountSurfaceVistaCanvas(canvas: HTMLCanvasElement): void {
   const worldIndex = app.stage.children.indexOf(world);
   app.stage.addChildAt(sprite, worldIndex < 0 ? app.stage.children.length : worldIndex);
   surfaceVistaSprite = sprite;
+  audiovisualPilotVistaReady = true; syncAudiovisualPilot();
+}
+
+/** Publish the complete one- or two-layer Earth composition together. Its explicit
+ * leases retire on scene exit; canvases never enter the opaque-vista cache. */
+function mountEarthLayeredCanvases(
+  background: HTMLCanvasElement, residents: HTMLCanvasElement | null,
+  variant: typeof EARTH_LAYERED_SCENE_ID | typeof PAINTED_EARTH_LANDING_ID | typeof LOCAL_AI_LANDFALL_ID = EARTH_LAYERED_SCENE_ID,
+): boolean | 'retained-failure' {
+  if (nav.mode !== 'surface' || !surfacePlanetSprite
+    || (variant !== EARTH_LAYERED_SCENE_ID) !== (residents === null)) return false;
+  const layout = currentEarthLayeredLayout(background.width, background.height);
+  if (!layout) return false;
+  const owned: SurfaceEarthLayerResource[] = [
+    { canvas: background, lease: null, sprite: null },
+  ];
+  if (residents) owned.push({ canvas: residents, lease: null, sprite: null });
+  const sprites: Sprite[] = [];
+  try {
+    for (const [index, entry] of owned.entries()) {
+      const lease = sceneTextureLease(entry.canvas);
+      entry.lease = lease;
+      const sprite = new Sprite(lease.texture); entry.sprite = sprite; sprites.push(sprite);
+      sprite.label = variant === LOCAL_AI_LANDFALL_ID ? 'local-ai-landfall-still'
+        : variant === PAINTED_EARTH_LANDING_ID ? 'earth-painted-landing-still'
+        : index === 0 ? 'earth-painted-background' : 'earth-canonical-residents';
+      sprite.eventMode = 'none'; sprite.anchor.set(0.5); sprite.scale.set(layout.scale);
+      sprite.position.set(layout.centerX, layout.centerY);
+    }
+    const index = app.stage.children.indexOf(world);
+    app.stage.addChildAt(sprites[0]!, index < 0 ? app.stage.children.length : index);
+    if (sprites[1]) app.stage.addChildAt(sprites[1], app.stage.children.indexOf(sprites[0]!) + 1);
+    // The old scene remains intact until every successor has mounted.
+    if (surfaceVistaSprite) {
+      surfaceVistaSprite.texture = Texture.EMPTY; surfaceVistaSprite.removeFromParent();
+      surfaceVistaSprite.destroy({ children: true });
+    }
+    surfaceVistaSprite = sprites[0]!;
+    surfaceEarthResidentSprite = sprites[1] ?? null;
+    surfaceEarthLayeredResources.push(...owned);
+    surfaceVistaArtVariant = variant;
+    syncSurfaceVistaPresentation();
+    // This option excludes avpilot; publish data without another view callback
+    // inside the atomic layer transaction.
+    audiovisualPilotVistaReady = true;
+    return true;
+  } catch (error) {
+    if (surfaceVistaSprite === sprites[0]) surfaceVistaSprite = null;
+    if (surfaceEarthResidentSprite === sprites[1]) surfaceEarthResidentSprite = null;
+    surfaceVistaArtVariant = null;
+    try { syncSurfaceVistaPresentation(); }
+    catch (failure) { noteSurfaceVistaFault(failure, 'Earth globe rollback failed'); }
+    const retired = retireSurfaceEarthLayers(owned);
+    // Failed leases retain their backing canvases until an explicit later cleanup.
+    surfaceEarthLayeredResources = surfaceEarthLayeredResources.filter(entry => !owned.includes(entry));
+    surfaceEarthLayeredResources.push(...retired.retained);
+    noteSurfaceVistaFault(error, 'Earth layered mount failed');
+    for (const failure of retired.errors) noteSurfaceVistaFault(failure, 'Earth layer rollback failed');
+    return retired.retained.length ? 'retained-failure' : false;
+  }
 }
 
 function requestSurfaceVista(
   planet: PlanetNode,
   state: Extract<NavState, { mode: 'surface' }>,
   roster: CanonicalWorldRoster | null,
+  paintedFallback = false,
 ): void {
-  if (!roster || typeof Worker !== 'function') return;
+  if (!roster) return;
   const provenWorldKey = getProvenPlanetKey(state.planet);
   if (provenWorldKey === null || roster.worldKey !== provenWorldKey
     || roster.starSeed !== state.star.seed) {
@@ -5804,20 +6176,122 @@ function requestSurfaceVista(
     noteSurfaceVistaFault(error, 'biome vista request construction failed');
     return;
   }
-  const cacheKey = `vista-v1|${request.environmentFingerprint}|${roster.fullRosterFingerprint}|${request.scene}|${request.biomeKey}`;
+  audiovisualPilotBiomeKey = request.biomeKey;
+  audiovisualPilotVistaBinding = JSON.stringify(request);
+  surfaceVistaWorldKey = request.worldKey;
+  surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;
+  if (currentAiLandfallInput()) { restoreCurrentAiLandfall(); return; }
+  const query = new URLSearchParams(location.search);
+  const landingRecipe = !paintedFallback && query.get('paintedlanding') === '1'
+    && query.get('planetturn') !== '1' && query.get('avpilot') !== '1'
+    ? buildPaintedEarthLandingRecipeV1(request, roster) : null;
+  if (landingRecipe) {
+    const generation = surfaceVistaGeneration;
+    const isCurrent = (): boolean => surfaceVistaGeneration === generation
+      && roster.ecologyEpoch === currentEcologyEpoch()
+      && surfaceVistaWorldKey === request.worldKey
+      && nav.mode === 'surface' && nav.star.seed === roster.starSeed
+      && getProvenPlanetKey(nav.planet) === request.worldKey
+      && surfaceVistaEnvironmentFingerprint === request.environmentFingerprint;
+    surfacePaintedVistaLoad?.dispose();
+    surfacePaintedVistaLoad = new PaintedVistaLoadV1({
+      url: new URL('./assets/painted/earth-civet-landing-v1.webp', import.meta.url).href,
+      sha256: landingRecipe.sha256, expectedBytes: landingRecipe.expectedBytes,
+      width: landingRecipe.width, height: landingRecipe.height, isCurrent,
+      commit: canvas => {
+        if (!isCurrent()) return false;
+        const mounted = mountEarthLayeredCanvases(canvas, null, PAINTED_EARTH_LANDING_ID);
+        if (mounted !== true) return mounted;
+        surfaceVistaResults++; surfaceVistaLastBiome = request.biomeKey;
+        return true;
+      },
+      fallback: error => {
+        if (!isCurrent()) return;
+        noteSurfaceVistaFault(error, 'Earth painted landing unavailable');
+        requestSurfaceVista(planet, state, roster, true);
+      },
+    });
+    return;
+  }
+  // The static landing has no worker dependency. Existing enhancement paths
+  // keep their original worker-support boundary and canonical fallback.
+  if (typeof Worker !== 'function') return;
+  const earthRecipe = !paintedFallback && query.get('livingvista') === '1'
+    && query.get('planetturn') !== '1' && query.get('avpilot') !== '1'
+    ? buildEarthLayeredRecipeV1(request, roster) : null;
+  if (earthRecipe) {
+    const generation = surfaceVistaGeneration;
+    const isCurrent = (): boolean => surfaceVistaGeneration === generation
+      && roster.ecologyEpoch === currentEcologyEpoch()
+      && nav.mode === 'surface' && nav.star.seed === roster.starSeed
+      && getProvenPlanetKey(nav.planet) === request.worldKey
+      && surfaceVistaEnvironmentFingerprint === request.environmentFingerprint;
+    surfaceEarthLayeredLoad = new EarthLayeredLoadV1({
+      plan: earthRecipe, token: `${DOCUMENT_TOKEN}:${generation}`, isCurrent,
+      commit: (background, residents) => {
+        if (!isCurrent()) return false;
+        const mounted = mountEarthLayeredCanvases(background, residents);
+        if (mounted !== true) return mounted;
+        surfaceVistaResults++; surfaceVistaLastBiome = request.biomeKey;
+        return true;
+      },
+      fallback: error => {
+        if (!isCurrent()) return;
+        noteSurfaceVistaFault(error, 'Earth layered scene unavailable');
+        requestSurfaceVista(planet, state, roster, true);
+      },
+    });
+    return;
+  }
+  const painted = !paintedFallback
+    && new URLSearchParams(location.search).get('paintedvista') === '1'
+    && isPaintedMarsVistaV1(request);
+  const variant = painted ? PAINTED_MARS_VISTA_ID : 'canonical-v1';
+  const cacheKey = `${painted ? PAINTED_MARS_VISTA_ID : 'vista-v1'}|${request.environmentFingerprint}|${roster.fullRosterFingerprint}|${request.scene}|${request.biomeKey}`;
   const cachedOutcome = mountCachedBiomeVistaV1(surfaceVistaCacheOwner, cacheKey);
   if (cachedOutcome !== 'miss') {
     if (cachedOutcome === 'fault') {
       noteSurfaceVistaFault(null, 'biome vista cache mount failed');
+      if (painted) requestSurfaceVista(planet, state, roster, true);
     }
     else {
       surfaceVistaCacheHits++;
+      surfaceVistaArtVariant = variant;
+      syncSurfaceVistaPresentation();
       surfaceVistaLastBiome = request.biomeKey;
     }
     return;
   }
 
   const generation = surfaceVistaGeneration;
+  if (painted) {
+    const isCurrent = (): boolean => surfaceVistaGeneration === generation
+      && surfaceVistaWorldKey === request.worldKey
+      && surfaceVistaEnvironmentFingerprint === request.environmentFingerprint
+      && nav.mode === 'surface' && nav.star.seed === roster.starSeed
+      && getProvenPlanetKey(nav.planet) === request.worldKey;
+    surfacePaintedVistaLoad?.dispose();
+    surfacePaintedVistaLoad = new PaintedVistaLoadV1({
+      url: new URL('./assets/painted/mars-dunesea-v1.webp', import.meta.url).href,
+      sha256: '59b9b940c17c5995d71b4f7d756f4e051ed43393d77d0213f63df52a655882e2',
+      width: 960, height: 430, isCurrent,
+      commit: canvas => {
+        if (!isCurrent()) return false;
+        if (mountAndCommitBiomeVistaV1(surfaceVistaCacheOwner, cacheKey, canvas) === 'fault') return false;
+        surfaceVistaArtVariant = PAINTED_MARS_VISTA_ID;
+        syncSurfaceVistaPresentation();
+        surfaceVistaResults++;
+        surfaceVistaLastBiome = request.biomeKey;
+        return true;
+      },
+      fallback: error => {
+        if (!isCurrent()) return;
+        noteSurfaceVistaFault(error, 'painted vista unavailable');
+        requestSurfaceVista(planet, state, roster, true);
+      },
+    });
+    return;
+  }
   let worker: Worker;
   try {
     worker = new Worker(
@@ -5832,8 +6306,6 @@ function requestSurfaceVista(
     return;
   }
   surfaceVistaWorker = worker;
-  surfaceVistaWorldKey = request.worldKey;
-  surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;
   surfaceVistaWorkerStarts++;
   const stale = (): boolean => surfaceVistaWorker !== worker
     || surfaceVistaGeneration !== generation
@@ -5936,6 +6408,8 @@ function requestSurfaceVista(
       return;
     }
     surfaceVistaResults++;
+    surfaceVistaArtVariant = 'canonical-v1';
+    syncSurfaceVistaPresentation();
     surfaceVistaLastBiome = response.biomeKey;
     finishWorker();
   });
@@ -5967,8 +6441,11 @@ function clearWorld(openNextScope = true): void {
   /* Destroy display objects first, then the scene owner's unique CanvasSource
      set. The painter caches may retain bounded CPU canvases for deterministic
      reuse, but Pixi must not keep their evicted GPU sources reachable. */
+  const releaseFailures: unknown[] = [];
   const previousSurfacePlanetTextureOwner = releaseSurfacePlanetTextureOwner();
-  releaseSurfaceVistaOwner();
+  try { releaseSurfaceVistaOwner(); }
+  catch (error) { releaseFailures.push(error); }
+  applyAudiovisualPilotSceneVisibility();
   if (systemPlanetTextureRefreshTimer !== null) {
     clearTimeout(systemPlanetTextureRefreshTimer);
     systemPlanetTextureRefreshTimer = null;
@@ -5979,7 +6456,6 @@ function clearWorld(openNextScope = true): void {
   fineTextureScope = null;
   retireFineTextureOwner(previousFineLayer, previousFineScope);
   for (const c of world.removeChildren()) c.destroy({ children: true, context: true });
-  const releaseFailures: unknown[] = [];
   if (previousSurfacePlanetTextureOwner) {
     try { previousSurfacePlanetTextureOwner.dispose(); }
     catch (error) { releaseFailures.push(error); }
@@ -6572,6 +7048,7 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
   const sys = systemScene(starSeed);
   const raw = systemFor(starSeed) as Record<string, unknown> & {
     binary?: { sep: number; r2: number; col2: string } | null;
+    trinary?: { sep: number; r2: number; col2: string } | null;
     dwarfs?: Array<{ name?: string; orb: number; seed?: number }>;
   };
   /* the primary — each kind wearing its Renderer face (main.js ~5085) */
@@ -6580,7 +7057,7 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
     b.anchor.set(0.5); b.width = 110; b.height = 110; b.eventMode = 'none';
     world.addChild(b);
   } else if (sys.kind === 'NS' || sys.kind === 'MAG') {
-    /* rotating beams + white-hot core (MAG's field-line ellipses: recorded gap) */
+    /* rotating beams; magnetars retain their static canonical magnetic field */
     const beams = new Container(); beams.eventMode = 'none';
     for (const rot of [0, Math.PI]) {
       const bm = new Sprite(sceneTexture(_beamSpr()));
@@ -6589,11 +7066,23 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
     }
     world.addChild(beams);
     orbiters.push({ c: beams, kind: 'beam', orb: 0 });
+    const field = createSystemStarField(sys.kind);
+    if (field) world.addChild(field);
     const core = new Sprite(sceneTexture(_nsCoreSpr()));
     core.anchor.set(0.5); core.width = 18; core.height = 18; core.eventMode = 'none';
     world.addChild(core);
+  } else if (sys.kind === 'PROTO') {
+    /* Static canonical dust disk and warm core; one scene-owned canvas/texture.
+       Protostars do not use the ordinary star-surface close-up path. */
+    const protostar = new Sprite(sceneTexture(createSystemProtostarCanvas()));
+    protostar.label = 'system-protostar-disk';
+    protostar.anchor.set(0.5);
+    protostar.width = SYSTEM_PROTOSTAR_WIDTH;
+    protostar.height = SYSTEM_PROTOSTAR_HEIGHT;
+    protostar.eventMode = 'none';
+    world.addChild(protostar);
   } else {
-    /* corona gradient, verbatim stops; PROTO keeps this fallback (recorded) */
+    /* corona gradient, verbatim stops */
     const col = sys.starCol || '#ffe9c4';
     const srad = Math.max(sys.starR, 8);
     const corona = new Sprite(sceneTexture(coronaSpr(col)));
@@ -6609,6 +7098,15 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
       b2.eventMode = 'none';
       world.addChild(b2);
       orbiters.push({ c: b2, kind: 'rock', orb: raw.binary.sep, sp: 0.25, a0: 0, mul: 1 });
+      if (raw.trinary) {
+        const b3 = new Sprite(sceneTexture(coronaSpr(raw.trinary.col2 || col, true)));
+        b3.label = 'system-trinary-companion';
+        b3.anchor.set(0.5); b3.width = raw.trinary.r2 * 4.8; b3.height = raw.trinary.r2 * 4.8;
+        b3.position.set(Math.cos(2.1) * raw.trinary.sep, Math.sin(2.1) * raw.trinary.sep);
+        b3.eventMode = 'none';
+        world.addChild(b3);
+        orbiters.push({ c: b3, kind: 'rock', orb: raw.trinary.sep, sp: 0.16, a0: 2.1, mul: 1 });
+      }
     }
   }
   /* asteroid belt + kuiper ring — real rock lumps (main.js ~5160) */
@@ -7302,6 +7800,10 @@ function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): stri
         (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
     bioscanCardActionHtml(bioscanState) +
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
+    (onThisSurface && mountedLocalAiOriginal && surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID
+      && !localAiGame?.snapshot().some(job => job.status === 'ready' && job.originalId === mountedLocalAiOriginal?.originalId)
+      ? '<button data-ai-act="inspect-current" style="min-height:44px;padding:8px 12px;background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;font:12px system-ui;cursor:pointer">Inspect painting</button>' : '') +
+    (localAiGame?.html(address?.key) ?? (localAiStatus ? '<p style="flex-basis:100%">' + esc(localAiStatus) + '</p>' : '')) +
     '</div>';
 }
 function refreshPlanetSurveyCard(): boolean {
@@ -8152,7 +8654,229 @@ async function addToAtlas(): Promise<boolean> {
     if (activePersist === actionBarrier) activePersist = null;
   }
 }
+/** AI input is projected only from the current proven route and canonical roster. */
+function currentAiLandfallInput(): AiLandfallInputV1 | null {
+  if (!localAiGame || nav.mode !== 'surface' || worldIdentityProtection !== null
+    || replacementTransaction || replacementReloadPending || importWriteInFlight
+    || savedRouteWriteHeld || trainingActive() || trainingCheckpointWriteHeld) return null;
+  const roster = canonicalCurrentSurfaceRoster();
+  const planet = planetNodeForProof(nav.star, nav.planet);
+  if (!roster || !planet) return null;
+  const request = buildBiomeVistaRenderRequestV1(planet, nav.star.seed, roster.worldKey,
+    systemFor(nav.star.seed) as Record<string, unknown>, roster);
+  return localAiGame.prepare(request, roster);
+}
+function queueCurrentAiLandfall(): void {
+  const input = currentAiLandfallInput();
+  if (!localAiGame || !input || nav.mode !== 'surface') return;
+  // The painting queue never owns navigation.
+  try { localAiGame.enqueue(input); }
+  catch (error) { noteSurfaceVistaFault(error, 'AI queue unavailable'); toast('Painting paused', 'Finish model storage or an earlier painting, then land again. Your expedition is safe.'); }
+}
+const refreshLocalAiPresentation = createAiPresentationRefresh(() => {
+  refreshPlanetSurveyCard();
+  if (notificationPanel.style.display !== 'none') notificationHistory.render();
+});
+/** Stop competing asynchronous vista publications without retiring visible art. */
+function stopPendingAiVistaWork(): void {
+  surfaceVistaGeneration++;
+  if (surfaceEarthLayeredLoad) {
+    surfaceEarthLayeredLoad.dispose();
+    surfaceEarthLayeredLast = surfaceEarthLayeredLoad.snapshot();
+    surfaceEarthLayeredLoad = null;
+  }
+  if (surfacePaintedVistaLoad) {
+    surfacePaintedVistaLoad.dispose();
+    surfacePaintedVistaLast = surfacePaintedVistaLoad.snapshot();
+    surfacePaintedVistaLoad = null;
+  }
+  if (surfaceVistaDeadline !== null) {
+    clearTimeout(surfaceVistaDeadline);
+    surfaceVistaDeadline = null;
+  }
+  if (surfaceVistaWorker) {
+    surfaceVistaWorker.terminate();
+    surfaceVistaWorker = null;
+  }
+}
+async function mountLocalAiOriginal(original: Pick<AiLandfallOriginalV1, 'input' | 'blob' | 'width' | 'height'> & Partial<AiLandfallOriginalV1>): Promise<boolean> {
+  const matches = (): boolean => {
+    const current = currentAiLandfallInput();
+    return current !== null && current.worldKey === original.input.worldKey
+      && current.environmentId === original.input.environmentId && current.ecologyEpoch === original.input.ecologyEpoch
+      && current.snapshotDigest === original.input.snapshotDigest;
+  };
+  if (!matches()) return false;
+  const generation = surfaceVistaGeneration;
+  let bitmap: ImageBitmap | null = null;
+  let canvas: HTMLCanvasElement | null = null;
+  try {
+    bitmap = await createImageBitmap(original.blob);
+    if (!matches() || surfaceVistaGeneration !== generation
+      || bitmap.width !== original.width || bitmap.height !== original.height) return false;
+    canvas = document.createElement('canvas'); canvas.width = bitmap.width; canvas.height = bitmap.height;
+    const context = canvas.getContext('2d'); if (!context) return false;
+    context.drawImage(bitmap, 0, 0);
+    cancelAiCrossfade?.(); cancelAiCrossfade = null;
+    stopPendingAiVistaWork();
+    const previous = { sprite: surfaceVistaSprite, resident: surfaceEarthResidentSprite,
+      resources: [...surfaceEarthLayeredResources], variant: surfaceVistaArtVariant,
+      worldKey: surfaceVistaWorldKey, environment: surfaceVistaEnvironmentFingerprint,
+      ready: audiovisualPilotVistaReady };
+    // Keep the old display attached while the existing helper mounts/validates
+    // its successor. Clearing these pointers prevents that helper retiring it.
+    surfaceVistaSprite = null;
+    surfaceEarthResidentSprite = null;
+    surfaceVistaWorldKey = original.input.worldKey;
+    surfaceVistaEnvironmentFingerprint = original.input.environmentId;
+    let mounted: boolean | 'retained-failure' = false;
+    try { mounted = mountEarthLayeredCanvases(canvas, null, LOCAL_AI_LANDFALL_ID); }
+    catch (error) { noteSurfaceVistaFault(error, 'AI landfall mount preparation failed'); }
+    if (mounted === true || mounted === 'retained-failure') canvas = null;
+    if (mounted !== true) {
+      surfaceVistaSprite = previous.sprite && !previous.sprite.destroyed && previous.sprite.parent !== null ? previous.sprite : null;
+      surfaceEarthResidentSprite = previous.resident && !previous.resident.destroyed && previous.resident.parent !== null ? previous.resident : null;
+      surfaceVistaArtVariant = surfaceVistaSprite ? previous.variant : null;
+      surfaceVistaWorldKey = previous.worldKey;
+      surfaceVistaEnvironmentFingerprint = previous.environment;
+      audiovisualPilotVistaReady = previous.ready;
+      try { syncSurfaceVistaPresentation(); }
+      catch (error) { noteSurfaceVistaFault(error, 'Prior landfall presentation restore failed'); }
+      return false;
+    }
+    let retirementDone = false;
+    const retirePrevious = (): void => {
+      if (retirementDone) return; retirementDone = true;
+    const retired = retireSurfaceEarthLayers(previous.resources);
+    surfaceEarthLayeredResources = surfaceEarthLayeredResources.filter(entry => !previous.resources.includes(entry));
+    surfaceEarthLayeredResources.push(...retired.retained);
+    for (const error of retired.errors) noteSurfaceVistaFault(error, 'Prior landfall resource retirement failed');
+    // Canonical cached vistas are owned by their cache, not the layered lease list.
+    if (previous.sprite && !previous.resources.some(entry => entry.sprite === previous.sprite)) {
+      try {
+        previous.sprite.texture = Texture.EMPTY;
+        previous.sprite.removeFromParent();
+        previous.sprite.destroy({ children: true });
+      } catch (error) { noteSurfaceVistaFault(error, 'Prior cached vista retirement failed'); }
+    }
+    };
+    const successor = surfaceVistaSprite as Sprite | null;
+    if (original.originalId && successor && previous.sprite && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      successor.alpha = 0;
+      const began = performance.now(); let frame = 0;
+      const finish = (): void => { cancelAnimationFrame(frame); if (!successor.destroyed) successor.alpha = 1; retirePrevious(); cancelAiCrossfade = null; };
+      cancelAiCrossfade = finish;
+      const tick = (): void => {
+        if (successor.destroyed || surfaceVistaSprite !== successor) { finish(); return; }
+        successor.alpha = Math.min(1, (performance.now() - began) / 400);
+        if (successor.alpha === 1) finish(); else frame = requestAnimationFrame(tick);
+      };
+      frame = requestAnimationFrame(tick);
+    } else retirePrevious();
+    mountedLocalAiOriginal = original.originalId ? original as AiLandfallOriginalV1 : null;
+    refreshLocalAiPresentation();
+    return true;
+  } finally {
+    try { bitmap?.close(); } finally { if (canvas) { canvas.width = 1; canvas.height = 1; } }
+  }
+}
+function restoreCurrentAiLandfall(): void {
+  const input = currentAiLandfallInput(), owner = localAiGame;
+  if (!input || !owner) return;
+  const generation = surfaceVistaGeneration;
+  void (async () => {
+    const composite = await owner.composite(input);
+    if (localAiGame !== owner || surfaceVistaGeneration !== generation) return;
+    await mountLocalAiOriginal({ input, blob: composite, width: 1024, height: 576 });
+    const original = await owner.find(input);
+    if (original && localAiGame === owner && !mountedLocalAiOriginal) await mountLocalAiOriginal(original);
+  })().catch(error => noteSurfaceVistaFault(error, 'Landfall painter unavailable'));
+}
+async function viewLocalAiOriginal(original: AiLandfallOriginalV1): Promise<boolean> {
+  // View is presentation only. It cannot travel, land, consume a turn or enqueue a job.
+  if (blockRouteChangeWhileProductAction() || currentAiLandfallInput()?.snapshotDigest !== original.input.snapshotDigest) return false;
+  return mountLocalAiOriginal(original);
+}
+async function handleLocalAiAction(event: MouseEvent): Promise<boolean> {
+  const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-ai-act]') : null;
+  if (!target) return false;
+  if ((event.isTrusted || __CF_EVIDENCE_BUILD__ && new URLSearchParams(location.search).has('smoke')) && localAiGame) {
+    try {
+      if (target.dataset.aiAct === 'inspect-current') {
+        const original = mountedLocalAiOriginal, input = currentAiLandfallInput();
+        if (original && input?.snapshotDigest === original.input.snapshotDigest
+          && surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID) await localAiGame.inspect(original.input, original.originalId);
+      } else await localAiGame.action(target.dataset.aiAct ?? '', target.dataset.aiJob ?? '');
+    }
+    catch (error) { noteSurfaceVistaFault(error, 'Local AI action failed'); toast('Painting unavailable', 'Your expedition and retained originals are safe.'); }
+  }
+  return true;
+}
+notificationPanel.addEventListener('click', event => { void handleLocalAiAction(event); });
+
+/* Capture native activation before persistence. A truthy doLand result can also
+   mean Training or committed-but-unpublished recovery, so presentation requires
+   the independently published durable route and a fresh exact scene receipt. */
+async function landWithPilotPresentation(trusted: boolean): Promise<boolean> {
+  const pilot = audiovisualPilot;
+  const surface = nav.mode === 'system' ? activeCardPlanetState() : null;
+  const destination = surface === null ? null : canonicalWorldAddressForNav(surface);
+  const runtime = f4Runtime;
+  const beforeRevision = runtime?.revision ?? -1;
+  const beforeScene = renderedSceneReceipt.serial;
+  const wasTraining = trainingActive() || trainingCheckpointWriteHeld;
+  let presentation: ReturnType<AudiovisualPilot['beginLanding']> = null;
+  try {
+    if (pilot && destination && !wasTraining) {
+      presentation = pilot.beginLanding(destination.key, trusted);
+    }
+  } catch { /* Optional media cannot prevent the ordinary Landing action. */ }
+  try {
+    const landed = await doLand();
+    try {
+      if (landed && trusted && surface && destination && runtime !== null && runtime === f4Runtime
+        && runtime.revision > beforeRevision && lastArc0LandingOutcome === `committed:${runtime.revision}`
+        && f4RuntimeMayMutate(runtime) && !wasTraining && !trainingActive() && !trainingCheckpointWriteHeld
+        && !replacementTransaction && !replacementReloadPending && !importWriteInFlight
+        && worldIdentityProtection === null && !savedRouteWriteHeld
+        && nav.mode === 'surface' && canonicalWorldAddressForNav(nav)?.key === destination.key
+        && renderedSceneReceipt.serial > beforeScene && renderedSceneReceipt.mode === 'surface'
+        && renderedSceneReceipt.ecologyEpoch === currentEcologyEpoch()
+        && renderedSceneReceipt.galaxyKey === getProvenGalaxyKey(surface.gal)
+        && renderedSceneReceipt.starKey === getProvenStarKey(surface.star)
+        && renderedSceneReceipt.worldKey === getProvenPlanetKey(surface.planet)) queueCurrentAiLandfall();
+    } catch { /* Painting cannot undo or hold the independently durable landing. */ }
+    if (!presentation || !pilot || !surface || !destination) return landed;
+    try {
+      const snapshot = pilotSceneSnapshot();
+      const published = landed && trusted && audiovisualPilot === pilot
+        && runtime !== null && runtime === f4Runtime
+        && runtime.revision > beforeRevision
+        && lastArc0LandingOutcome === `committed:${runtime.revision}`
+        && f4RuntimeMayMutate(runtime)
+        && !wasTraining && !trainingActive() && !trainingCheckpointWriteHeld
+        && !replacementTransaction && !replacementReloadPending && !importWriteInFlight
+        && worldIdentityProtection === null && !savedRouteWriteHeld
+        && nav.mode === 'surface' && snapshot.mode === 'surface'
+        && snapshot.routeKey === destination.key
+        && renderedSceneReceipt.serial > beforeScene
+        && renderedSceneReceipt.mode === 'surface'
+        && renderedSceneReceipt.ecologyEpoch === currentEcologyEpoch()
+        && renderedSceneReceipt.galaxyKey === getProvenGalaxyKey(surface.gal)
+        && renderedSceneReceipt.starKey === getProvenStarKey(surface.star)
+        && renderedSceneReceipt.worldKey === getProvenPlanetKey(surface.planet);
+      if (published) tameGreetingAudioOwner?.syncRoute(destination.key);
+      pilot.sync(snapshot);
+      presentation.finish(published ? snapshot : null);
+      presentation = null;
+    } catch { /* Failed decorative publication leaves the landed game intact. */ }
+    return landed;
+  } finally {
+    try { presentation?.cancel(); } catch { /* Optional cleanup cannot alter the action outcome. */ }
+  }
+}
 card.addEventListener('click', async (e) => {
+  if (isAiActionTarget(e.target)) { await handleLocalAiAction(e); return; }
   if ((e.target as HTMLElement).closest('[data-survey-close]')) {
     hideSurvey(true);
     return;
@@ -8170,7 +8894,7 @@ card.addEventListener('click', async (e) => {
     action.run();
     if (keyboard) app.canvas.focus();
   } else if (a === 'landcta') {
-    const landed = await doLand();
+    const landed = await landWithPilotPresentation(e.isTrusted);
     if (landed && keyboard) card.querySelector<HTMLElement>('[data-act="leaveworld"]')?.focus();
   }
   else if (a === 'leaveworld') {
@@ -8202,10 +8926,9 @@ card.addEventListener('click', async (e) => {
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
 sideEl.className = 'glass';
-sideEl.style.cssText = 'position:fixed;left:calc(var(--safe-left,0px) + 12px);bottom:calc(var(--safe-bottom,0px) + var(--dock-h) + var(--ctx-h) + 86px);' +
-  'max-width:min(560px,calc(100vw - var(--safe-left,0px) - var(--safe-right,0px) - 24px));box-sizing:border-box;display:none;z-index:21;border-radius:12px;padding:8px 10px;' +
-  'overflow-x:auto;white-space:nowrap;scrollbar-width:thin';
+sideEl.style.display = 'none';
 document.body.appendChild(sideEl);
+createSheetLayoutController();
 let planetsideGeneration = 0;
 let planetsideWorldKey: string | null = null;
 let planetsideAudioRoster: CanonicalWorldRoster | null = null;
@@ -8320,13 +9043,23 @@ function syncPlanetsideLayout(): void {
   if (getComputedStyle(sideEl).display === 'none' || nav.mode !== 'surface') {
     document.documentElement.style.removeProperty('--planetside-top');
     syncSurfaceChromeBottom();
+    if (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
+      || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+      || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID) syncSurfaceVistaPresentation();
     return;
   }
   const r = sideEl.getBoundingClientRect();
   if (r.width > 0 && r.height > 0) document.documentElement.style.setProperty('--planetside-top', r.top.toFixed(2) + 'px');
   syncSurfaceChromeBottom();
+  if (surfaceVistaArtVariant === EARTH_LAYERED_SCENE_ID
+    || surfaceVistaArtVariant === PAINTED_EARTH_LANDING_ID
+      || surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID) syncSurfaceVistaPresentation();
 }
-new ResizeObserver(syncPlanetsideLayout).observe(sideEl);
+const surfaceSceneLayoutObserver = new ResizeObserver(syncPlanetsideLayout);
+for (const element of [sideEl, ...['topbar', 'searchbox', 'objchip', 'sceneactions']
+  .map(id => document.getElementById(id)).filter(element => element !== null)]) {
+  surfaceSceneLayoutObserver.observe(element);
+}
 addEventListener('resize', syncPlanetsideLayout, { passive: true });
 /* CSS can hide Planetside while Training owns the same screen. A hidden
    surface owns no thumbnail resources; when that class clears, rebuild the
@@ -8612,6 +9345,19 @@ function sceneResourceDiagnostics(): unknown {
     fineScopeActive: fineTextureScope !== null,
     retiredFineOwnerCount: retiredFineTextureOwners.size,
     surfaceTextureOwnerActive: surfacePlanetTextureOwner !== null,
+    surfacePlanetTurn: surfacePlanetTurnView?.snapshot() ?? null,
+    surfacePlanetTurnPending,
+    surfacePlanetTurnLast,
+    surfacePlanetTurnProgramCache: (() => {
+      const shader = (app.renderer as unknown as { shader?: { _programDataHash?:
+        Record<string, { uniformDirtyGroups?: Record<string, unknown> }> } }).shader;
+      const programs = shader?._programDataHash ?? {};
+      const key = surfacePlanetTurnView?.snapshot().appProgramKey
+        ?? (surfacePlanetTurnLast as { appProgramKey?: number } | null)?.appProgramKey;
+      const entry = key == null ? undefined : programs[String(key)];
+      return { programCount: Object.keys(programs).length, turnProgramPresent: !!entry,
+        turnUniformGroupCount: Object.keys(entry?.uniformDirtyGroups ?? {}).length };
+    })(),
     surfaceCurrentTierPx: surfaceTextureAttachment?.currentTierPx ?? 0,
     surfaceCurrentBackingWidth: surfaceTextureAttachment?.currentBackingWidth ?? 0,
     surfaceCurrentBackingHeight: surfaceTextureAttachment?.currentBackingHeight ?? 0,
@@ -8632,6 +9378,13 @@ function sceneResourceDiagnostics(): unknown {
     surfaceVistaFaults,
     surfaceVistaLastBiome,
     surfaceVistaLastError,
+    surfaceVistaArtVariant,
+    surfacePaintedComposition: surfacePaintedGlobe !== null,
+    surfaceEarthResidentLayer: surfaceEarthResidentSprite !== null,
+    surfaceEarthLayeredCanvasCount: surfaceEarthLayeredResources.length,
+    surfaceEarthLayeredLoad: surfaceEarthLayeredLoad?.snapshot() ?? surfaceEarthLayeredLast,
+    surfacePaintedVista: surfacePaintedVistaLoad?.snapshot() ?? null,
+    surfacePaintedVistaLast,
     pendingSystemRefreshes: systemPlanetTextureRefreshTimer === null ? 0 : 1,
     pendingPersistenceWrites: activePersist === null ? 0 : 1,
     ringGeometryEntries: _rgCache.size,
@@ -8702,10 +9455,11 @@ function drawSurface(
   preparedRoster: CanonicalWorldRoster | null = null,
 ): void {
   if (p.seed !== state.planet.seed || p.ordinal !== state.planet.ordinal) return;
-  /* Surface mode keeps the painterly globe as its usable interaction owner
-     while the deterministic 960x430 biome vista renders behind it. The globe
-     remains the fail-soft fallback if the optional worker cannot answer; the
-     survey card carries the roster — every species row is real Ecology output.
+  /* Surface mode retains the painterly globe and deterministic 960x430 biome
+     vista as its native presentation. A fully loaded, exact-bound opt-in pilot
+     may hide these decorative layers; fallback restores both. Native DOM
+     Survey, roster and Leave controls keep their existing interaction owners;
+     every species row remains real Ecology output.
      FIT the globe to the viewport (phone catch: at z=1 the 420px master
      overfilled a 390px screen as blur; the globe should present itself) */
   document.body.classList.add('surface-mode');
@@ -8726,6 +9480,7 @@ function drawSurface(
   spr.width = SURFACE_PLANET_DIAMETER_CSS_PX;
   spr.height = SURFACE_PLANET_DIAMETER_CSS_PX;
   world.addChild(spr);
+  surfacePlanetSprite = spr;
   surfacePlanetTextureOwner = new SurfacePlanetTextureAttachment({
     identity: {
       generation: surfacePlanetTextureGeneration,
@@ -8751,6 +9506,7 @@ function drawSurface(
        globe (the Renderer's rate is tuned to its 6px world masters) */
     const tex = sceneTexture(_cloudSpr(p.P), 'surface-cloud');
     const wrap = new Container();
+    wrap.label = 'surface-cloud-deck';
     wrap.eventMode = 'none';
     const mk = (): Sprite => {
       const s = new Sprite(tex);
@@ -8772,6 +9528,7 @@ function drawSurface(
   if (abortRenderBeforeReceiptForSmoke()) return;
   recordRenderedScene(state);
   requestSurfaceVista(p, state, currentSurfaceRoster);
+  startSurfacePlanetTurn(p.P, spr);
 }
 function goUp(): void {
   if (blockRouteChangeWhileProductAction()) return;
@@ -8919,10 +9676,10 @@ function zoomLimits(): [number, number] {
   if (nav.mode === 'universe') return [0.0024, 40];
   if (nav.mode === 'galaxy') return [gz0 * 0.5, mw / 2.5];
   if (nav.mode === 'system') return [sz0 * 0.5, mw / 3];
-  /* The game's 6× cap assumes interactive ground tiles. This surface keeps a
-     420px painterly globe as the interaction owner while its biome vista is a
-     presentation backdrop, so cap where the globe stays crisp (the phone
-     pinch proved that the master smears at 6×). */
+  /* The game's 6× cap assumes interactive ground tiles. Native canvas/DOM
+     controls own this surface's navigation; the globe and vista are decorative.
+     Keep the existing cap where the fallback globe stays crisp (the phone
+     pinch proved that the master smears at 6×). The painted panorama is static. */
   return [0.45, Math.max(0.9, (mw / 420) * 1.6)];
 }
 
@@ -9127,6 +9884,10 @@ async function persistView(
         return false;
       }
       epochStage = staged.stage;
+      /* Notification presentation waits until a product receipt releases its
+         exact source snapshot. It joins this existing checkpoint, never a new
+         timer or competing write. */
+      if (!productActionInFlight) notificationHistory.flushPending();
       /* Route + epoch are detached checkpoint fields. Neither may become live
          merely because a CAS was attempted; durable publication follows the
          exact committed stage below. */
@@ -9446,7 +10207,7 @@ function boundedCollectionRefusalNeedsReload(outcome: BoundedCollectionRefusalV1
     || kind === 'storage-error';
 }
 
-async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
+async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean> {
   const runtime = f4Runtime;
   if (starterCharterAcceptPendingId !== null || smokeForceReadOnly
     || !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
@@ -9456,7 +10217,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
     lastStarterCharterAcceptStatus = 'Starter Charter acceptance is unavailable until the current save operation settles.';
     if (openPanelId() === 'ch') fillCharters();
     toast('Charter acceptance unavailable', 'Finish the current expedition save, then try again.');
-    return;
+    return false;
   }
   const projection = projectStarterCharterBoardV1(save);
   if (projection.kind !== 'projected') {
@@ -9464,13 +10225,13 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
     lastStarterCharterAcceptStatus = 'Starter Charters are protected because their saved authority could not be verified. Nothing changed.';
     if (openPanelId() === 'ch') fillCharters();
     toast('Starter Charters protected', 'Nothing changed. Reload after restoring save authority.', true);
-    return;
+    return false;
   }
   if (save.chacc.includes(id) || save.chDone.includes(id)) {
     lastStarterCharterAcceptOutcome = `current:${id}`;
     lastStarterCharterAcceptStatus = 'That Starter Charter is already accepted or complete.';
     if (openPanelId() === 'ch') fillCharters();
-    return;
+    return false;
   }
   const row = projection.board.rows.find(({ definition }) => definition.id === id);
   if (row === undefined || row.status !== 'available'
@@ -9479,7 +10240,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
     lastStarterCharterAcceptStatus = 'That Starter Charter is locked or unavailable. Nothing changed.';
     if (openPanelId() === 'ch') fillCharters();
     toast('Charter unavailable', row?.lockedReason ?? 'Three accepted Charters is the exact active cap.');
-    return;
+    return false;
   }
   const operation = operationForStarterCharterAcceptV1(id);
   const actionClaim = productActionCoordinator.tryClaim(operation);
@@ -9488,7 +10249,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
     lastStarterCharterAcceptStatus = 'Another expedition action is still settling. Nothing changed.';
     if (openPanelId() === 'ch') fillCharters();
     toast('Charter acceptance unavailable', 'Another expedition action is still settling.');
-    return;
+    return false;
   }
   const actionBarrier = actionClaim.barrier;
   const sourceState = save;
@@ -9526,6 +10287,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
   lastStarterCharterAcceptOutcome = 'pending';
   lastStarterCharterAcceptStatus = null;
   if (openPanelId() === 'ch') fillCharters();
+  let publishedRevision: number | null = null;
   let durable = false;
   let convergence = false;
   let writeAttempted = false;
@@ -9540,7 +10302,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
       || starterCharterAcceptPendingId !== id) {
       lastStarterCharterAcceptOutcome = 'refused:authority-changed';
       lastStarterCharterAcceptStatus = 'Save authority changed before acceptance. Nothing changed.';
-      return;
+      return false;
     }
     writeAttempted = true;
     outcome = await commitStarterCharterAcceptV1({
@@ -9553,7 +10315,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
       lastStarterCharterAcceptOutcome = `current:${outcome.id}`;
       lastStarterCharterAcceptStatus = 'That Starter Charter is already durably accepted or complete.';
       toast('Charter unchanged', 'That Starter Charter is already accepted or complete.');
-      return;
+      return false;
     }
     if (outcome.kind === 'refused') {
       lastStarterCharterAcceptOutcome = `refused:${outcome.detail}`;
@@ -9568,7 +10330,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
         lastStarterCharterAcceptStatus = 'That Starter Charter is locked or unavailable. Nothing changed.';
         toast('Charter unavailable', 'Nothing changed. Reopen Charters after the current expedition state advances.');
       }
-      return;
+      return false;
     }
 
     durable = true;
@@ -9582,7 +10344,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
         runtime,
         `Starter Charter acceptance committed; ${outcome.detail}`,
       );
-      return;
+      return false;
     }
 
     try {
@@ -9644,6 +10406,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
         priorBestRankIndex: outcome.facts.stage.priorBestRankIndex,
         nextBestRankIndex: outcome.facts.stage.nextBestRankIndex,
       });
+      publishedRevision = outcome.transaction.revision;
     } catch (error) {
       restoreLiveParent();
       convergence = true;
@@ -9677,6 +10440,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
       try { fillCharters(); }
       catch (error) {
         if (durable) {
+          convergence = true;
           restoreLiveParent();
           scheduleF4AuthorityConvergenceReload(
             runtime,
@@ -9685,6 +10449,28 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
         }
       }
     }
+  }
+  // A successful write alone is not audible success. Final publication and
+  // barrier release must finish on the same exact live durable revision.
+  return publishedRevision !== null && !convergence && runtime === f4Runtime
+    && save === sourceState && runtime.revision === publishedRevision
+    && f4RuntimeMayMutate(runtime) && !activePersist
+    && !replacementTransaction && !replacementReloadPending && !importWriteInFlight;
+}
+
+async function acceptStarterCharterWithPilot(id: StarterCharterIdV1, trusted: boolean): Promise<void> {
+  const pilot = audiovisualPilot;
+  let presentation: ReturnType<AudiovisualPilot['beginSettlement']> = null;
+  try { presentation = pilot?.beginSettlement(trusted) ?? null; }
+  catch { /* Optional audio cannot prevent the ordinary acceptance. */ }
+  try {
+    const published = await runStarterCharterAccept(id);
+    try {
+      presentation?.finish(published && trusted && audiovisualPilot === pilot);
+      presentation = null;
+    } catch { /* Optional audio cannot change the durable acceptance. */ }
+  } finally {
+    try { presentation?.cancel(); } catch { /* Preserve the gameplay outcome. */ }
   }
 }
 
@@ -15551,6 +16337,15 @@ function presentCommittedCombatChronicle(
     throw new Error('Combat Chronicle did not retain its current presentation');
   }
   try {
+    combatBattleScene?.setPolicy({
+      effectsOn: save.fxOn, motion: motionOK() ? 'full' : 'reduced', deviceTier: visualPolicyDeviceTier(),
+    });
+    combatBattleScene?.start({ mount: combatChronicleMount, settlement, chronicle, cuePlan, generation });
+  } catch {
+    combatBattleScene?.stop('close');
+    /* The verified settlement and its Chronicle remain usable without art. */
+  }
+  try {
     const claim = tameGreetingAudioOwner?.claimCommittedCombatSession(outcome, cuePlan) ?? null;
     if (claim !== null) {
       combatChronicleAudioSession = Object.freeze({ claim, generation, plan: cuePlan });
@@ -17463,6 +18258,11 @@ async function loadSave(): Promise<void> {
     compendiumRenameController.dispose();
     compendiumScoutController.dispose();
     travelPresentationOwner.dispose();
+    combatBattleScene?.dispose(); combatBattleScene = null;
+    audiovisualPilotClosed = true;
+    audiovisualPilot?.dispose();
+    audiovisualPilot = null;
+    resetAudiovisualPilotPresentation();
     engineeringPanelReleased = true;
     engineeringPanelController.dispose();
     captureCardController.dispose();
@@ -17581,6 +18381,10 @@ async function loadSave(): Promise<void> {
             lastOutcome: lastEcologyEdgeOutcome,
           }),
         },
+        localAi: { available: localAiGame !== null, status: localAiStatus,
+          jobs: localAiGame?.snapshot() ?? [], mounted: surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID,
+          input: currentAiLandfallInput(), originalId: mountedLocalAiOriginal?.originalId ?? null,
+          crossfading: cancelAiCrossfade !== null, alpha: surfaceVistaSprite?.alpha ?? null },
         landing: {
           schema: 'cf-v2-arc0-landing-app-state/v1',
           lastOutcome: lastArc0LandingOutcome,
@@ -18158,6 +18962,8 @@ async function loadSave(): Promise<void> {
     world.scale.set(cam.z);
     if (world.alpha < 1) world.alpha = animate ? Math.min(1, world.alpha + tk.deltaMS / 400) : 1;
     const t = animate ? performance.now() * 0.001 : 0;
+    surfacePlanetTurnView?.tick(tk.deltaMS, world.visible && !document.hidden,
+      animate, save.fxOn);
     /* The ticker may observe an active-play edge, but it never publishes one.
        One receipt-free lease/revision CAS owns the durable transition first;
        Reduced Motion changes only rendering and cannot enter this request. */
@@ -18443,6 +19249,8 @@ async function loadSave(): Promise<void> {
            heavy painter Worker cannot start until complete app wiring, one
            animation frame, and this serviced task boundary. */
         speciesArtLoader.activate();
+        startAudiovisualPilot();
+        startLocalAiPreview();
         try {
           const binding = __CF_EVIDENCE_BUILD__
             ? (window as unknown as Record<string, unknown>).__cfSliceReadyWitness : undefined;
@@ -18473,3 +19281,20 @@ async function loadSave(): Promise<void> {
   if (document.readyState === 'complete') emitBootReady();
   else addEventListener('load', emitBootReady, { once: true });
 })();
+
+// Ordinary Land uses the approved tier-2 kit when its library supports the world.
+// Unsupported worlds retain the ordinary painter; there is no scene-generator fallback.
+function startLocalAiPreview(): void {
+  if (localAiStatus || localAiGame) return;
+  localAiStatus = 'Preparing the landfall painter…';
+  void import('./local-ai-game.js').then(module => module.createLocalAiGameV1({
+    refresh: refreshLocalAiPresentation, notice: (title, message) => toast(title, message),
+    view: viewLocalAiOriginal,
+    captureView: () => {
+      const serial = renderedSceneReceipt.serial, runtime = f4Runtime;
+      return () => renderedSceneReceipt.serial === serial && f4Runtime === runtime
+        && !replacementTransaction && !replacementReloadPending && !importWriteInFlight;
+    },
+  })).then(owner => { localAiGame = owner; localAiStatus = ''; refreshLocalAiPresentation(); restoreCurrentAiLandfall(); })
+    .catch(error => { localAiStatus = 'Local finisher unavailable. The ordinary painter remains available.'; noteSurfaceVistaFault(error, 'Local AI setup unavailable'); refreshLocalAiPresentation(); });
+}

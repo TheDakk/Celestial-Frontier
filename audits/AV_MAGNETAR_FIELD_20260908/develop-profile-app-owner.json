@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "magnetar-app-owner-profile-20260908",
+    "--",
+    "node",
+    "port/v2/tools/check-profile.mjs",
+    "--profile=develop"
+  ],
+  "exitCode": 0,
+  "seconds": 47.426,
+  "predecessor": "develop-profile-corrected.json",
+  "correction": "Moved identical actual-Pixi assertions under the existing app TypeScript owner, matching scene-text/pixi-batch tests. No configuration/dependency/skipLibCheck change."
+}

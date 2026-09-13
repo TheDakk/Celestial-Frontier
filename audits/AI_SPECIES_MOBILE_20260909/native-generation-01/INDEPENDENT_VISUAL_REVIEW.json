@@ -1,0 +1,653 @@
+{
+  "schema": "cf.manual-landfall-visual-review.v1",
+  "reviewedAt": "2026-09-09",
+  "reviewer": "OpenAI/Codex independent reference-review subagent",
+  "method": "Direct view_image of unchanged original and accepted Living Worlds reference; manual observations only, no pixel classifier, segmentation or V1 fidelity evaluator.",
+  "output": {
+    "path": "audits/AI_SPECIES_MOBILE_20260909/native-generation-01/raw-original.png",
+    "bytes": 1536737,
+    "sha256": "44f03a6c6c2e47c38d93106ce4ba08a3dcd7bac17320fd582aa57b8b6aa4c400",
+    "width": 1024,
+    "height": 576
+  },
+  "bindings": [
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/native-generation-01/actual-landfall-recipe.json",
+      "bytes": 71128,
+      "sha256": "c5d2d181c00a29b6559bded209ff030a342512ad1267ba0fc13e334c35ba3aa8"
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/native-generation-01/actual-landfall-input.json",
+      "bytes": 54618,
+      "sha256": "b626877dea3a35ee2dbdf14b0fe99b42d2cc7128c0e3b7dea41f9b0a739042d3"
+    },
+    {
+      "path": "audits/AI_SPECIES_MOBILE_20260909/references/reference-set-v1.json",
+      "bytes": 42212,
+      "sha256": "4558707f3a21e6990fc2e7e6c40836c9d638cefe97a674ca3ca9356f1ed0e1a1"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "bytes": 3014976,
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+    }
+  ],
+  "renderSchema": "cf.ai-landfall-render.v2",
+  "referenceCount": 6,
+  "references": [
+    {
+      "imageIndex": 1,
+      "sha256": "186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365",
+      "width": 480,
+      "height": 320,
+      "sourceWidth": 768,
+      "sourceHeight": 512,
+      "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]"
+    },
+    {
+      "imageIndex": 2,
+      "sha256": "36aec0bc09432255b4351b22a2b99bde55f85a0f7eab309bb62dab46b88164d9",
+      "width": 480,
+      "height": 320,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Persimmon\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2058951517\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]"
+    },
+    {
+      "imageIndex": 3,
+      "sha256": "0b4584f76ce18f42e38e0c28e9a42758280d0c0de390d45371422a7e4c91fe57",
+      "width": 480,
+      "height": 320,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4049771185\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]"
+    },
+    {
+      "imageIndex": 4,
+      "sha256": "53d4edb530e4691dffb6000b58be6ed2076302a544deec04217d64a03ef08b17",
+      "width": 480,
+      "height": 320,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Frog\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1193089256\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"19\"]]]]"
+    },
+    {
+      "imageIndex": 5,
+      "sha256": "c2474e48a1a38fb2419fe01008a3906d5727b7e520f8867f954b6d8ed7ac94fc",
+      "width": 480,
+      "height": 320,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Devil's Club\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1714376717\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"11\"]]]]"
+    },
+    {
+      "imageIndex": 6,
+      "sha256": "31be9a75a0bdea51580435c6bf1f4a03b44d3f7fd6e80aa6537893f92a8f6b93",
+      "width": 480,
+      "height": 320,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Cranberry\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1741924755\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"9\"]]]]"
+    }
+  ],
+  "fullIdentityEvidence": "Identities copied from the exact retained recipe for review binding; visible pixels do not prove all hidden genome fields.",
+  "imageAccepted": false,
+  "speciesFidelityAccepted": false,
+  "canonicalPlacementAccepted": false,
+  "completePlantCountCertified": false,
+  "visibleAnimalBodies": 3,
+  "observations": [
+    {
+      "name": "Civet",
+      "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
+      "fullGenome": {
+        "seed": 3212817920,
+        "kingdom": "fauna",
+        "color": 14,
+        "form": 12,
+        "body": 13,
+        "loco": 6,
+        "trait": 14,
+        "size": 4,
+        "diet": 5,
+        "head": 5,
+        "limbs": 3,
+        "skin": 8,
+        "tail": 1,
+        "pattern": 0,
+        "eyes": 5,
+        "behavior": 9,
+        "habitat": 5,
+        "detail": 4,
+        "accent": 3,
+        "temper": 1,
+        "sense": 7,
+        "repro": 7,
+        "life": 5,
+        "metab": 4,
+        "lumin": true,
+        "gen": 0,
+        "heat": 1,
+        "_earthName": "Civet",
+        "_cradle": 1
+      },
+      "namedRule": {
+        "id": "earth-civet-v1",
+        "name": "Civet",
+        "kingdom": "fauna",
+        "family": "mammal",
+        "taxon": "viverrid",
+        "sourceOwners": [
+          "art/mammaloverrides.ts#QUAD2_SPEC.Civet",
+          "art/quadrupedoverrides.ts#mammalDViverrid"
+        ],
+        "diagnostics": [
+          {
+            "role": "body",
+            "required": "low long body, spotted natural fur"
+          },
+          {
+            "role": "head",
+            "required": "one pointed muzzle, small round ears, dark face mask"
+          },
+          {
+            "role": "limbs",
+            "required": "four short legs with paws"
+          },
+          {
+            "role": "tail",
+            "required": "one long ringed tail"
+          }
+        ],
+        "forbiddenSubstitutions": [
+          "fox head",
+          "duplicate head or body",
+          "extra legs",
+          "unringed tail"
+        ]
+      },
+      "expectedPlacement": {
+        "x": 0.72,
+        "groundY": 0.77,
+        "width": 0.15,
+        "flip": false
+      },
+      "manualApproximateVisibleBounds": [
+        0.05,
+        0.59,
+        0.35,
+        0.82
+      ],
+      "visiblePresence": "one intended motif recognizable",
+      "namedAnatomyAssessment": "visible-core-only",
+      "placementAssessment": "not accepted",
+      "visibleFindings": [
+        "One separate spotted, low quadruped has a pointed masked face, small rounded ears, four visible paw contacts and one continuous ringed tail.",
+        "The hindquarter is fairly bulky; no duplicated head/body or clearly extra limb is visible."
+      ],
+      "limitationsOrFailures": [
+        "Left foreground instead of the required right anchor; approximately twice the requested complete-subject width."
+      ]
+    },
+    {
+      "name": "Persimmon",
+      "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Persimmon\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2058951517\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+      "fullGenome": {
+        "seed": 2058951517,
+        "kingdom": "flora",
+        "color": 2,
+        "form": 17,
+        "body": 4,
+        "loco": 0,
+        "trait": 9,
+        "size": 3,
+        "diet": 2,
+        "head": 7,
+        "limbs": 1,
+        "skin": 7,
+        "tail": 1,
+        "pattern": 6,
+        "eyes": 1,
+        "behavior": 10,
+        "habitat": 5,
+        "detail": 9,
+        "accent": 2,
+        "temper": 4,
+        "sense": 3,
+        "repro": 5,
+        "life": 4,
+        "metab": 5,
+        "lumin": false,
+        "gen": 0,
+        "heat": 1,
+        "_earthName": "Persimmon",
+        "_cradle": 1
+      },
+      "namedRule": {
+        "id": "earth-persimmon-v1",
+        "name": "Persimmon",
+        "kingdom": "flora",
+        "family": "tree",
+        "taxon": "fruit-tree",
+        "sourceOwners": [
+          "art/florarost.ts#FLORA2_SPEC.Persimmon",
+          "art/floraoverrides2.ts#plantBody.Persimmon"
+        ],
+        "diagnostics": [
+          {
+            "role": "stem",
+            "required": "branching woody tree"
+          },
+          {
+            "role": "leaves",
+            "required": "broad simple oval green leaves"
+          },
+          {
+            "role": "fruit",
+            "required": "orange fruits with four-lobed calyx"
+          }
+        ],
+        "forbiddenSubstitutions": [
+          "pinnate compound leaves",
+          "citrus fruit",
+          "generic berry bush"
+        ]
+      },
+      "expectedPlacement": {
+        "x": 0.13,
+        "groundY": 0.78,
+        "width": 0.21,
+        "flip": false
+      },
+      "manualApproximateVisibleBounds": [
+        0.33,
+        0.04,
+        0.72,
+        0.65
+      ],
+      "visiblePresence": "one intended motif recognizable",
+      "namedAnatomyAssessment": "incomplete",
+      "placementAssessment": "not accepted",
+      "visibleFindings": [
+        "One central branching woody tree bears simple oval-to-pointed leaves and separate orange fruits.",
+        "Several fruit tops have dark green caps, but the four-lobed calyx is not reliably resolved at the original 1024x576 pixels."
+      ],
+      "limitationsOrFailures": [
+        "Centered tree instead of the left anchor, wider and rooted much higher in the image.",
+        "Broadleaf fruit-tree recognition is insufficient to pass the specific calyx requirement."
+      ]
+    },
+    {
+      "name": "Platypus",
+      "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4049771185\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]",
+      "fullGenome": {
+        "seed": 4049771185,
+        "kingdom": "fauna",
+        "color": 13,
+        "form": 14,
+        "body": 12,
+        "loco": 1,
+        "trait": 15,
+        "size": 2,
+        "diet": 4,
+        "head": 0,
+        "limbs": 0,
+        "skin": 6,
+        "tail": 4,
+        "pattern": 7,
+        "eyes": 0,
+        "behavior": 3,
+        "habitat": 9,
+        "detail": 8,
+        "accent": 16,
+        "temper": 7,
+        "sense": 4,
+        "repro": 6,
+        "life": 3,
+        "metab": 0,
+        "lumin": false,
+        "gen": 0,
+        "heat": 1,
+        "_earthName": "Platypus",
+        "_cradle": 1
+      },
+      "namedRule": {
+        "id": "earth-platypus-v1",
+        "name": "Platypus",
+        "kingdom": "fauna",
+        "family": "mammal",
+        "taxon": "monotreme",
+        "sourceOwners": [
+          "art/speciesoverrides.ts#CANON.fauna|Platypus",
+          "art/faunaoverrides5.ts#faunaMonotreme"
+        ],
+        "diagnostics": [
+          {
+            "role": "body",
+            "required": "low sleek dark-brown furred body"
+          },
+          {
+            "role": "head",
+            "required": "broad flat rubbery duck bill"
+          },
+          {
+            "role": "limbs",
+            "required": "four short limbs with webbed clawed feet"
+          },
+          {
+            "role": "tail",
+            "required": "broad flat blunt paddle tail"
+          }
+        ],
+        "forbiddenSubstitutions": [
+          "rodent muzzle",
+          "furred nose instead of bill",
+          "round rodent ears",
+          "thin tail"
+        ]
+      },
+      "expectedPlacement": {
+        "x": 0.43,
+        "groundY": 0.86,
+        "width": 0.2,
+        "flip": true
+      },
+      "manualApproximateVisibleBounds": [
+        0.33,
+        0.61,
+        0.72,
+        0.91
+      ],
+      "visiblePresence": "one intended motif recognizable",
+      "namedAnatomyAssessment": "fail",
+      "placementAssessment": "not accepted",
+      "visibleFindings": [
+        "One separate dark furry body has a broad rubbery bill and a flat-looking tail tip.",
+        "Visible rounded external ears, raised head/chest, high belly and long upright mammalian legs contradict the low monotreme body plan.",
+        "Foot digits are visible but broad webbing is not clearly resolved. The tail narrows into a long stalk before the paddle-like tip."
+      ],
+      "limitationsOrFailures": [
+        "Round rodent-like ears are an explicit forbidden substitution. A bill and paddle tip do not establish a correct Platypus.",
+        "Faces right although the recipe requests left; substantially wider than the requested 20 percent."
+      ]
+    },
+    {
+      "name": "Frog",
+      "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Frog\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1193089256\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"19\"]]]]",
+      "fullGenome": {
+        "seed": 1193089256,
+        "kingdom": "fauna",
+        "color": 0,
+        "form": 12,
+        "body": 10,
+        "loco": 11,
+        "trait": 19,
+        "size": 0,
+        "diet": 5,
+        "head": 9,
+        "limbs": 4,
+        "skin": 3,
+        "tail": 1,
+        "pattern": 4,
+        "eyes": 1,
+        "behavior": 0,
+        "habitat": 17,
+        "detail": 7,
+        "accent": 4,
+        "temper": 8,
+        "sense": 5,
+        "repro": 5,
+        "life": 0,
+        "metab": 2,
+        "lumin": false,
+        "gen": 0,
+        "heat": 1,
+        "_earthName": "Frog",
+        "_cradle": 1
+      },
+      "namedRule": {
+        "id": "earth-frog-v1",
+        "name": "Frog",
+        "kingdom": "fauna",
+        "family": "amphibian",
+        "taxon": "anuran",
+        "sourceOwners": [
+          "art/faunaoverrides2.ts#FAUNA2_NAME.Frog",
+          "art/faunaoverrides2.ts#amphFrog"
+        ],
+        "diagnostics": [
+          {
+            "role": "body",
+            "required": "small green crouched body"
+          },
+          {
+            "role": "head",
+            "required": "wide mouth and two domed eyes"
+          },
+          {
+            "role": "limbs",
+            "required": "four limbs, long folded hind legs"
+          }
+        ],
+        "forbiddenSubstitutions": [
+          "mammal fur",
+          "upright mammal posture",
+          "adult tail"
+        ]
+      },
+      "expectedPlacement": {
+        "x": 0.25,
+        "groundY": 0.87,
+        "width": 0.07,
+        "flip": false
+      },
+      "manualApproximateVisibleBounds": [
+        0.67,
+        0.71,
+        0.85,
+        0.89
+      ],
+      "visiblePresence": "one intended motif recognizable",
+      "namedAnatomyAssessment": "visible-core-only",
+      "placementAssessment": "not accepted",
+      "visibleFindings": [
+        "One green mottled crouched anuran has a wide mouth, a domed near eye and a partly visible far eye, two forefeet, a strongly folded near hind limb and a partly occluded far hind limb.",
+        "No fur, adult tail or upright mammalian posture is visible; hidden limb endpoints and toe counts cannot be fully assessed."
+      ],
+      "limitationsOrFailures": [
+        "Right foreground instead of the left-quarter anchor; approximately 18 percent wide rather than 7 percent. Its scale relative to the mammals is too prominent for the prescribed placement."
+      ]
+    },
+    {
+      "name": "Devil's Club",
+      "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Devil's Club\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1714376717\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"11\"]]]]",
+      "fullGenome": {
+        "seed": 1714376717,
+        "kingdom": "flora",
+        "color": 14,
+        "form": 12,
+        "body": 2,
+        "loco": 0,
+        "trait": 11,
+        "size": 1,
+        "diet": 4,
+        "head": 8,
+        "limbs": 5,
+        "skin": 6,
+        "tail": 1,
+        "pattern": 7,
+        "eyes": 2,
+        "behavior": 3,
+        "habitat": 6,
+        "detail": 9,
+        "accent": 15,
+        "temper": 5,
+        "sense": 5,
+        "repro": 6,
+        "life": 5,
+        "metab": 1,
+        "lumin": false,
+        "gen": 0,
+        "heat": 1,
+        "_earthName": "Devil's Club",
+        "_cradle": 1
+      },
+      "namedRule": {
+        "id": "earth-devils-club-v1",
+        "name": "Devil's Club",
+        "kingdom": "flora",
+        "family": "shrub",
+        "taxon": "spiny-shrub",
+        "sourceOwners": [
+          "art/floraoverrides.ts#FLORA_ICONIC",
+          "art/floraoverrides.ts#floraDevilsClub"
+        ],
+        "diagnostics": [
+          {
+            "role": "stem",
+            "required": "thick spiny canes"
+          },
+          {
+            "role": "leaves",
+            "required": "huge palmate lobed green leaves"
+          },
+          {
+            "role": "fruit",
+            "required": "upright terminal red berry cones"
+          }
+        ],
+        "forbiddenSubstitutions": [
+          "small narrow leaves",
+          "smooth canes",
+          "generic berry bush"
+        ]
+      },
+      "expectedPlacement": {
+        "x": 0.87,
+        "groundY": 0.88,
+        "width": 0.16,
+        "flip": false
+      },
+      "manualApproximateVisibleBounds": [
+        0.72,
+        0.32,
+        1.0,
+        1.0
+      ],
+      "visiblePresence": "one intended motif recognizable",
+      "namedAnatomyAssessment": "fail",
+      "placementAssessment": "not accepted",
+      "visibleFindings": [
+        "Large palmate lobed leaves and an upright red terminal berry mass distinguish this from the small-leaved red berries below.",
+        "The berry mass has several adjoining upward lobes rather than clearly separate slender cones. Visible principal canes/petioles appear smooth; the required projecting prickles are not legible."
+      ],
+      "limitationsOrFailures": [
+        "Thick spiny canes are not established.",
+        "Right placement broadly agrees, but the plant is enlarged and cropped by right/bottom edges; complete base/width are not the prescribed anchor."
+      ]
+    },
+    {
+      "name": "Cranberry",
+      "identityKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Cranberry\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1741924755\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"9\"]]]]",
+      "fullGenome": {
+        "seed": 1741924755,
+        "kingdom": "flora",
+        "color": 4,
+        "form": 4,
+        "body": 9,
+        "loco": 0,
+        "trait": 9,
+        "size": 3,
+        "diet": 1,
+        "head": 9,
+        "limbs": 3,
+        "skin": 0,
+        "tail": 5,
+        "pattern": 0,
+        "eyes": 5,
+        "behavior": 7,
+        "habitat": 0,
+        "detail": 4,
+        "accent": 10,
+        "temper": 7,
+        "sense": 9,
+        "repro": 2,
+        "life": 0,
+        "metab": 2,
+        "lumin": false,
+        "gen": 0,
+        "heat": 1,
+        "_earthName": "Cranberry",
+        "_cradle": 1
+      },
+      "namedRule": {
+        "id": "earth-cranberry-v1",
+        "name": "Cranberry",
+        "kingdom": "flora",
+        "family": "shrub",
+        "taxon": "creeping-shrub",
+        "sourceOwners": [
+          "art/florarost.ts#FLORA2_SPEC.Cranberry",
+          "art/floraoverrides2.ts#berryHabit.cranberry"
+        ],
+        "diagnostics": [
+          {
+            "role": "stem",
+            "required": "low creeping runners"
+          },
+          {
+            "role": "leaves",
+            "required": "small simple oval green leaves"
+          },
+          {
+            "role": "fruit",
+            "required": "red berries close to the ground"
+          }
+        ],
+        "forbiddenSubstitutions": [
+          "tall woody bush",
+          "large leaves",
+          "hanging grape bunches"
+        ]
+      },
+      "expectedPlacement": {
+        "x": 0.34,
+        "groundY": 0.9,
+        "width": 0.11,
+        "flip": false
+      },
+      "manualApproximateVisibleBounds": [
+        0.76,
+        0.75,
+        1.0,
+        1.0
+      ],
+      "visiblePresence": "one intended motif recognizable",
+      "namedAnatomyAssessment": "incomplete",
+      "placementAssessment": "not accepted",
+      "visibleFindings": [
+        "Small oval leaves and distinct red berries sit on thin arching low shoots along the lower right bank.",
+        "Some shoots spread laterally, but the connected ground-hugging runner habit is occluded/cropped and cannot be confidently established."
+      ],
+      "limitationsOrFailures": [
+        "Lower right instead of the prescribed left-of-center anchor; complete growth form extends outside the frame.",
+        "Low red-berry foliage alone is insufficient to pass the creeping-runner requirement."
+      ]
+    }
+  ],
+  "scene": {
+    "cohesion": "Rain, cool diffuse illumination, mist, wet rock reflections, shadow/contact and vegetation occlusion make one environment without studio mattes or visible cutout halos.",
+    "limits": "The central tree is displayed prominently on a small island and all animals line the foreground; several plant edges are cropped. The smooth broad fur masses, glossy berries and clean leaf edges remain more illustrative than the accepted reference. The reference uses a different scene and resolution; this is a direction comparison, not a controlled pixel benchmark.",
+    "artDirectionCompatibleFeatures": true,
+    "fullArtQualityAccepted": false
+  },
+  "measurementLimits": "Visible bounds are approximate manual normalized extents, not measured segmentation, scientific size estimates or automated anchor scores.",
+  "runBoundary": {
+    "aggregateRunStatus": "FAIL",
+    "reason": "Retained result records an unexpected browser exception/crash after successful image/retention checks; root reports a Vite client websocket exception and owns its diagnosis. This visual review does not relabel that run.",
+    "nativeDeviceQualified": false,
+    "physicalPhoneQualified": false,
+    "universalProceduralCoverage": false,
+    "generationRepeated": false
+  }
+}

@@ -1,0 +1,560 @@
+{
+  "schema": "cf.art-review-export.v1",
+  "date": "2026-09-12",
+  "nativeSourceCommit": "30ef7d15e7bbc22d3684bf4b069e616d67288d4a",
+  "evidenceCommit": "b5a577f99aa7ba6490b66a3a78ae78f8f64c2cb5",
+  "imageCount": 45,
+  "authoringPromptCount": 12,
+  "runtimePromptCount": 7,
+  "exactRuntimeChatPromptsVerified": 7,
+  "qualityAccepted": false,
+  "files": [
+    {
+      "path": "ART_KIT.md",
+      "bytes": 40898,
+      "sha256": "8939ae9b8cb8c09868f2c3b712923745532c47235125dce091bfc43595ddd5a7",
+      "source": "ART_KIT.md"
+    },
+    {
+      "path": "IMAGE_INDEX.md",
+      "bytes": 4237,
+      "sha256": "55c10d30822b3da5ac7f7c854e5450004c881bebdc6773fc64b83eb30af2e04b"
+    },
+    {
+      "path": "PROMPTS.md",
+      "bytes": 133595,
+      "sha256": "b098bf4038f0b917a16bfc234d9efe439b9c8e0a71e2cbb3ba948dabbcbe3155"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1228,
+      "sha256": "d42830068bc584c2b1a0947c1b33f587946847bca389fe944b65b12800da4f04"
+    },
+    {
+      "path": "REVIEW_PROMPT.md",
+      "bytes": 8584,
+      "sha256": "6b94a3554fce01d20d5c4deb7a73a33374f4cf25537de50bdcfcd872c44ca0d6",
+      "source": "audits/ART_KIT_REVIEW_EXPORT_20260912/REVIEW_PROMPT.md"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/README.md",
+      "bytes": 5554,
+      "sha256": "ecff30c6f03d21f3d907dfe942968bcd28bccae3ff26078d908ac3f5cd49e37d",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/README.md"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/canonical-snapshot.json",
+      "bytes": 12860,
+      "sha256": "a23ef143d97bb7e72c8b5cc72b858266246fd72682dd29de00e0e3fc69848b3f",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/canonical-snapshot.json"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/capture-intake.json",
+      "bytes": 8008,
+      "sha256": "dd56e0b945bb93ab734dc266b55a67cee58ea7bb47dd5903cea75189f47831b5",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/capture-intake.json"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/compiled-inputs.json",
+      "bytes": 97622,
+      "sha256": "a40fc38329386f4aaeb6014f0e389c199769e753a5c8f0705dc4840aa1ab7218",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/compiled-inputs.json"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/earth-cutouts-sheet.png",
+      "bytes": 8098405,
+      "sha256": "54c594802750a7418276b7fcd24bea2b2dd2a6416ff43796cb1450ebec9dd7de",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/earth-cutouts-sheet.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/family-and-biome-sheet.png",
+      "bytes": 7327687,
+      "sha256": "5726fef6ea4d933cc5ac65a542122d0a7d355831fc9248531f9f96104757da40",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/family-and-biome-sheet.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/family-compiled-inputs.json",
+      "bytes": 145857,
+      "sha256": "ebf7647e56e637b782a2a711fd2eb7182968e733fb8583f47f57d72a9a94d7de",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/family-compiled-inputs.json"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+      "bytes": 1931944,
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/cranberry.png",
+      "bytes": 1876904,
+      "sha256": "88f6f2a92524207a494e21564e54fa3916e15ca3aa1ff7885327a008bbf34732",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/cranberry.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/devils-club.png",
+      "bytes": 2479254,
+      "sha256": "bfcb0b735475403d4c49bcdcc7893d0f3c98a704f5f9e5394df70cdee99b37db",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/devils-club.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/earth-temperate.png",
+      "bytes": 3092094,
+      "sha256": "98bf240c48dd32e8696760ae2eb398946698f6404e6fffc34cb3745b362bd103",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/earth-temperate.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-bird.png",
+      "bytes": 1649562,
+      "sha256": "1e538078a1d64ee605122a8bb0c1fe7f0e26bfac9a34508d85ab4daf1112aef6",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-bird.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-fish.png",
+      "bytes": 1684572,
+      "sha256": "1997f036417384af559f5127b9eb98d4871a9cae5cec57cffa645b857a3adc22",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-fish.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-insect.png",
+      "bytes": 1687707,
+      "sha256": "5cf63ca2f7465212bc1f770babe650bd390986c7dc16a841179c326a31a74168",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-insect.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-mammal-quadruped.png",
+      "bytes": 1967990,
+      "sha256": "15a3c9d7ee511360ed846a3fe1406c4fde124d99191c7f098538937ff164fdf3",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-mammal-quadruped.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-reptile.png",
+      "bytes": 1368119,
+      "sha256": "897a091b1eb8c5f74cb6f312a38e77de58a769bec876d62df4520c93f56ac7f6",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-reptile.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/frog.png",
+      "bytes": 1764263,
+      "sha256": "fb229a4a7bd86507af68da9561a5e31282d594da27901d7f30ddc11cd3c84779",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/frog.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/persimmon.png",
+      "bytes": 2299825,
+      "sha256": "bccad6827ad3a84974e958c2833c5fc8b9116802a7e4af4eac3fa73eb2f502d3",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/persimmon.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/platypus.png",
+      "bytes": 1744237,
+      "sha256": "55ed1d0549f4b74d0300e1c3428ca36e07a576b4e39a9c1f357e0da188bd39f9",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/platypus.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompt-reproduction.json",
+      "bytes": 441,
+      "sha256": "5df6d6f369596becff26fb64c9d8f4c85400233727cf88ecb9c13a08d7f063c7",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompt-reproduction.json"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/civet-prompt.txt",
+      "bytes": 7020,
+      "sha256": "725a3f23e3aa5fe2cd962cafc4adb9b51c4de8131e0977ae127dec246991d2de",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/civet-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/cranberry-prompt.txt",
+      "bytes": 6652,
+      "sha256": "d3c9fdc6a515dbc1d4881c86ab9572944ba2c2a292450444b077760ddc8062cc",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/cranberry-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/devils-club-prompt.txt",
+      "bytes": 6670,
+      "sha256": "ee68e694cd061c652af912289bd5c8fc0747f32ea8d36999eadf442ff429836b",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/devils-club-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/earth-temperate-prompt.txt",
+      "bytes": 6217,
+      "sha256": "330d2b8dd758982dec9f39f99e2fe4e99f3be74adf2e45e309c03d757c1b46a4",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/earth-temperate-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-bird-prompt.txt",
+      "bytes": 7413,
+      "sha256": "2b2fa3e930dcf326f9cfb44e4afa8ea088d24f7e7ea5c18c4dc61ecf83763712",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-bird-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-fish-prompt.txt",
+      "bytes": 7525,
+      "sha256": "6f12fb2b10496d180022e0d26d3460598e11df74f7414d117ef719c6c30c99c8",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-fish-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-insect-prompt.txt",
+      "bytes": 7396,
+      "sha256": "db8a12dcdb7aa848a5b46f90d99394f2448cc31c74c8964ef2c9475bb7e7850d",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-insect-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-mammal-quadruped-prompt.txt",
+      "bytes": 7286,
+      "sha256": "aef988bc6d2c8ed5ffaa4b1025d0f173fba52afadf65a2d9b118f16101216b21",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-mammal-quadruped-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-reptile-prompt.txt",
+      "bytes": 7290,
+      "sha256": "bf9efa25639763d4e80d3bb59d7fa1ccdc1c2fdf7d93b8702df579eac9776d82",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/family-reptile-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/frog-prompt.txt",
+      "bytes": 6910,
+      "sha256": "7afd9cf0ef8bc27003204436162623e061936f6b9a466db0736961fed023a27f",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/frog-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/persimmon-prompt.txt",
+      "bytes": 6662,
+      "sha256": "d1ae45545bc089770789841e60da1fd2869b2df774bc9e2d5a1ea67675ab304f",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/persimmon-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/platypus-prompt.txt",
+      "bytes": 6991,
+      "sha256": "6fd4bd2a3052c5be17fa519ef8a127d4704f10cc5f50ca16d00e5c51b884b7a1",
+      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/platypus-prompt.txt"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/README.md",
+      "bytes": 7588,
+      "sha256": "d74151eb52252e436c055d24779f0eb0fd35780f530d82da7ce2858341349f15",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/README.md"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/atlas.png",
+      "bytes": 329555,
+      "sha256": "e31fbf46ee0ff33b9f31d94406ca3127295ea3adc6681cfe339f3bfa143bffc4",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/atlas.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/civet.png",
+      "bytes": 80652,
+      "sha256": "64dedadb1c618af42a2022973628c78e3ef94577c0fb6acba0ad5b6380df8dad",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/civet.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/cranberry.png",
+      "bytes": 87549,
+      "sha256": "5736b9fbcb81b83844b3c6a0ee4b44100f4a6407407a53a722d28944eeeb4039",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/cranberry.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/devils-club.png",
+      "bytes": 126330,
+      "sha256": "cb94f8ae4f54acdd5b5db5defb7f95f56dfedcf93897912480ee0cfbd9c0a356",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/devils-club.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/earth-temperate.png",
+      "bytes": 1239549,
+      "sha256": "43614d37584a852f08d2439dab8473eb7f01b6b694f20400d0aa57436fc6f9ff",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/earth-temperate.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/frog.png",
+      "bytes": 69827,
+      "sha256": "84e5cc54f54ed28faa2f3874fa2000696b0b0d328387e90afb4bd35c12bd5676",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/frog.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/persimmon.png",
+      "bytes": 114288,
+      "sha256": "b51837d4cd473307049babd14a492a3412cbd9293ec15584c86653a09212c1e9",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/persimmon.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/platypus.png",
+      "bytes": 66495,
+      "sha256": "caef7524d820f5e65b55123fb76fa72b6fac7a7988455558a08c3a2789358f9b",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/platypus.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/triptych.png",
+      "bytes": 253811,
+      "sha256": "883c3c0b8d33da11218d9579e1831091af189409ba442d5665239fad54b10060",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/inputs/triptych.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/composite-before-finisher.png",
+      "bytes": 1607329,
+      "sha256": "e1333ac3def097f11b73a1876eb86437fb929a3cfc1d00d50a37343e2c0b012b",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/composite-before-finisher.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-01-raw.png",
+      "bytes": 171038,
+      "sha256": "7c3c8b7d0c82bf9fb1990a7d2cc14826ff9dc0273d7e2a736cb8412d3e0bdb45",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-01-raw.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-01.png",
+      "bytes": 100557,
+      "sha256": "6842e5e887b987984629ff5a6e81f4d981d7b3444995344a6f08cc9da657aeb8",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-01.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-02-raw.png",
+      "bytes": 216490,
+      "sha256": "dfa4ffd9355cfedf087b306d7467e5912e7cf112272941c5011b0cf8653c93eb",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-02-raw.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-02.png",
+      "bytes": 134386,
+      "sha256": "00638a27fe836ff113e6c8af941a9c5cc04994f2abf65ee5b802369c873f5f04",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-02.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-03-raw.png",
+      "bytes": 154690,
+      "sha256": "de7dd102556ec1794999c1da9aaac589fc7189f5d3819048ee396dddefd14d7b",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-03-raw.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-03.png",
+      "bytes": 85954,
+      "sha256": "2d86b12dc33143fb149c4c49e604ebe029ab0ce11562798de21a8ee1b1b8a034",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-03.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-04-raw.png",
+      "bytes": 161829,
+      "sha256": "00740022bd1ed0f8971b31dcb443985ae0e155314c2ec5642796b7b1875b3944",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-04-raw.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-04.png",
+      "bytes": 88236,
+      "sha256": "cff6df89bf9fdfc16eb31b41612b8a330a5112c8678fa8f9a0f5fb3bd87dfdbd",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-04.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-05-raw.png",
+      "bytes": 235438,
+      "sha256": "3576256d6ac43648e161a215f4b42e9da5b38489f2779c75483d096270aaab48",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-05-raw.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-05.png",
+      "bytes": 147192,
+      "sha256": "82748c58590e4b15c2f0ca97bab887f703bf1573f22315fba185cef850d076e1",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-05.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-06-raw.png",
+      "bytes": 186149,
+      "sha256": "064b6c58d75dd9f96cd49a1fe28e1685114c489209fc8ed970778e99fe2728b4",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-06-raw.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-06.png",
+      "bytes": 99876,
+      "sha256": "1c36a8f638d80a2e82c95122de9b2df3c269aa26d008084ed317c923c6ada284",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/organism-06.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/painting.png",
+      "bytes": 1615436,
+      "sha256": "e9304930ee2cf5d68313c1b6098d46062bc71aa3c7018d18e5aa4b22515b876e",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/painting.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/result.json",
+      "bytes": 173663,
+      "sha256": "c771916e9be71fae44e8f96452ed1cb9e75b4f5d3ee7eace4e78ad856da9ef5f",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-01/result.json"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/native-review-column.png",
+      "bytes": 3886736,
+      "sha256": "9b9e43e9508ffd90fd4bd6955c1d704113871328fdeaa4ba2167ae24db64ae0d",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/native-review-column.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/painting-beside-living-worlds.png",
+      "bytes": 8595910,
+      "sha256": "9ee83af27ea2aa108e22b93937f32a11477cdc6812f8fd3d0959deb11d8cbb3e",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/painting-beside-living-worlds.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/painting-boxes.png",
+      "bytes": 1398226,
+      "sha256": "541ee2e21dfb7a2ed549746078a7859ac8e38cee319da3491f12c84288606c5c",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/painting-boxes.png"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/prepared-manifest.json",
+      "bytes": 5849,
+      "sha256": "ae8979dd602492279200b1fa2624ab807a729145be5d761b32913a3dcd41cad5",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/prepared-manifest.json"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/recipe.json",
+      "bytes": 86303,
+      "sha256": "497dbf701285e6fdb90b8522b712b07a26e054b4c4b72b79807dc2547d13dac9",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/recipe.json"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/retention-check.json",
+      "bytes": 334,
+      "sha256": "a8850fd1095d4d12952a7563ea2ad173f7af53b7f063ece34e3414f679876a8c",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/retention-check.json"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/review.json",
+      "bytes": 3027,
+      "sha256": "68ac74c56a9a1c347a37d856f25556458e709c06fe4eba749336eeb2269a29d0",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/review.json"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_PROOF_20260912/triptych-review-column.png",
+      "bytes": 4459244,
+      "sha256": "c8677518a587abf5eece520bdd0500ab6e89b2b8aff77754fbfeb717942b6488",
+      "source": "audits/ART_KIT_ENGINE_PROOF_20260912/triptych-review-column.png"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas-prompt.txt",
+      "bytes": 3832,
+      "sha256": "395efb2b19958779e920b3fa9524724b74efadeecf8e09c93bd0ec664f3830d4",
+      "source": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas-prompt.txt"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "bytes": 2954509,
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+      "source": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds-prompt.txt",
+      "bytes": 3481,
+      "sha256": "51b502d63a95d2b7f72c63a268f2af96ad703d5f31e9c17bf1290d7a3fbd052a",
+      "source": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds-prompt.txt"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "bytes": 3014976,
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+      "source": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/03-earth-full-landfall-prompt.txt",
+      "bytes": 3628,
+      "sha256": "7abd6563fab6bf666fa10c450c4654722be12d4723af345e77933e1afba71c5c",
+      "source": "audits/MIDGAME_ART_DIRECTION_20260908/03-earth-full-landfall-prompt.txt"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/03-earth-full-landfall.png",
+      "bytes": 3156154,
+      "sha256": "93c1b9cd6a57dc087cd4896ce05cb6025fbe5877dcba3a52f7b0ab6268289eec",
+      "source": "audits/MIDGAME_ART_DIRECTION_20260908/03-earth-full-landfall.png"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/04-alien-full-landfall-prompt.txt",
+      "bytes": 3738,
+      "sha256": "d15e6e70c632872a5ccd6a7b9315f80b60a36e2fabc7a9bbaa39571aba5c6378",
+      "source": "audits/MIDGAME_ART_DIRECTION_20260908/04-alien-full-landfall-prompt.txt"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/04-alien-full-landfall.png",
+      "bytes": 3255598,
+      "sha256": "c808c6fe442d5827c4c0f56649115de60266f3863b057d2e65c3231c32b6e116",
+      "source": "audits/MIDGAME_ART_DIRECTION_20260908/04-alien-full-landfall.png"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/README.md",
+      "bytes": 6402,
+      "sha256": "671b990ef33e19efade4173acb0cf1fb28e6a3a6d820072d714d9241d293f0c0",
+      "source": "audits/MIDGAME_ART_DIRECTION_20260908/README.md"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/intake.json",
+      "bytes": 1609,
+      "sha256": "a6f1eed37e7014a8bb6be6d9e7374a2c19c69d9df11afad50080152a6dcf3679",
+      "source": "audits/MIDGAME_ART_DIRECTION_20260908/intake.json"
+    },
+    {
+      "path": "prompts/runtime/01-civet-chat-wrapped.txt",
+      "bytes": 7089,
+      "sha256": "86affc4f7e8197be04e8679bc619844f59678257d7b1081de6462f04939b48c8"
+    },
+    {
+      "path": "prompts/runtime/01-civet.txt",
+      "bytes": 7020,
+      "sha256": "725a3f23e3aa5fe2cd962cafc4adb9b51c4de8131e0977ae127dec246991d2de"
+    },
+    {
+      "path": "prompts/runtime/02-persimmon-chat-wrapped.txt",
+      "bytes": 6731,
+      "sha256": "984a2ce0d51c9a2c35e91b1f6f362c2483b4b00e9f941b3586052c074d51ac9f"
+    },
+    {
+      "path": "prompts/runtime/02-persimmon.txt",
+      "bytes": 6662,
+      "sha256": "d1ae45545bc089770789841e60da1fd2869b2df774bc9e2d5a1ea67675ab304f"
+    },
+    {
+      "path": "prompts/runtime/03-platypus-chat-wrapped.txt",
+      "bytes": 7060,
+      "sha256": "80c2d2b3598029a6e5480a17f4902dcaa517988f521fd7e05bcd95396fd44e63"
+    },
+    {
+      "path": "prompts/runtime/03-platypus.txt",
+      "bytes": 6991,
+      "sha256": "6fd4bd2a3052c5be17fa519ef8a127d4704f10cc5f50ca16d00e5c51b884b7a1"
+    },
+    {
+      "path": "prompts/runtime/04-frog-chat-wrapped.txt",
+      "bytes": 6979,
+      "sha256": "dfa2f74ab15458d6925300fbc468a1a369158c09439dbe94b696f2d956a95ed4"
+    },
+    {
+      "path": "prompts/runtime/04-frog.txt",
+      "bytes": 6910,
+      "sha256": "7afd9cf0ef8bc27003204436162623e061936f6b9a466db0736961fed023a27f"
+    },
+    {
+      "path": "prompts/runtime/05-devils-club-chat-wrapped.txt",
+      "bytes": 6739,
+      "sha256": "7030075d917e1fc978bac10b10dbf55f4b2270e0d4968c5b76f5e1e2b224498c"
+    },
+    {
+      "path": "prompts/runtime/05-devils-club.txt",
+      "bytes": 6670,
+      "sha256": "ee68e694cd061c652af912289bd5c8fc0747f32ea8d36999eadf442ff429836b"
+    },
+    {
+      "path": "prompts/runtime/06-cranberry-chat-wrapped.txt",
+      "bytes": 6721,
+      "sha256": "9a59bbe7036b78ab47eb529d14145ad088e4595e93abb27ea35e0c0e8765cf0f"
+    },
+    {
+      "path": "prompts/runtime/06-cranberry.txt",
+      "bytes": 6652,
+      "sha256": "d3c9fdc6a515dbc1d4881c86ab9572944ba2c2a292450444b077760ddc8062cc"
+    },
+    {
+      "path": "prompts/runtime/07-finisher-chat-wrapped.txt",
+      "bytes": 7276,
+      "sha256": "bc7bd2a5f9c17118e8310a8df566742944c4572fc590ef9bccc6e66a12416bdc"
+    },
+    {
+      "path": "prompts/runtime/07-finisher.txt",
+      "bytes": 7207,
+      "sha256": "b8248ef02c2b99679b31657165f86ac4556ad2a6fe411f5b6551f959b56f2355"
+    }
+  ]
+}

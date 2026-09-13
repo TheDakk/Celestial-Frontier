@@ -198,7 +198,7 @@ function digest(text: string): string {
   return `${text.length.toString(36)}-${left}${right}`;
 }
 
-function abilityFact(value: unknown): CombatCueAbilityFactV1 {
+function abilityFact(value: unknown, explorerColor?: unknown): CombatCueAbilityFactV1 {
   if (value === null || typeof value !== 'object' || Array.isArray(value)
     || Object.getPrototypeOf(value) !== Object.prototype) {
     throw new TypeError('settled combat ability is invalid');
@@ -212,6 +212,19 @@ function abilityFact(value: unknown): CombatCueAbilityFactV1 {
       fields[key] = Object.is(child, -0) ? 0 : child;
     } else if (typeof child === 'string' || typeof child === 'boolean') fields[key] = child;
     else throw new TypeError('settled combat ability is invalid');
+  }
+  // Native Frontier Resolve has no creature-element theme. Project only its
+  // exact existing identity and explorer palette; never add fields to combat
+  // stats or treat another malformed ability as this player-only exception.
+  if (explorerColor === '#ffcf8a'
+    && exactKeys(fields, ['id', 'n', 'd', 'regen', 'taken'])
+    && fields.id === 'resolve' && fields.n === 'Frontier Resolve'
+    && fields.d === 'Hardened by the void — recovers each round and shrugs off blows'
+    && fields.regen === 0.04 && fields.taken === 0.9) {
+    return Object.freeze({
+      theme: fields.id, themeLabel: fields.n, color: explorerColor,
+      fields: Object.freeze(fields),
+    });
   }
   const theme = boundedText(fields.theme, 'combat ability theme', 64);
   const themeLabel = boundedText(fields.themeLabel, 'combat ability label', 96);
@@ -245,7 +258,7 @@ function participantFacts(plan: CombatSettlementPlanV1): CombatCueParticipantsV1
     combatName: boundedText(champion.name, 'combat champion name'),
     statName: boundedText(plan.transcript.A.name, 'combat champion stat name'),
     maxHp: finiteNumber(plan.transcript.maxA, 'combat champion maximum HP', 1),
-    ability: abilityFact(plan.transcript.A.ab),
+    ability: abilityFact(plan.transcript.A.ab, champion.kind === 'player' ? plan.transcript.A.hex : undefined),
     bodyMaterial: aBody,
   });
   const b: CombatCueParticipantFactV1 = Object.freeze({

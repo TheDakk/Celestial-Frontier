@@ -1,0 +1,38 @@
+✔ actual four-stage flow publishes exact decoded pixels only after every worker retires (5.401792ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: false) (1.047416ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: true) (0.621916ms)
+✔ gpu-error progress is terminal; a late completion cannot produce another stage or painting (0.869416ms)
+✔ text timeout terminates the exact worker and blocks publication (0.499ms)
+✔ encode timeout terminates the exact worker and blocks publication (0.539791ms)
+✔ denoise timeout terminates the exact worker and blocks publication (1.061833ms)
+✔ decode timeout terminates the exact worker and blocks publication (0.750792ms)
+✔ a repeated generation rejects while the first owns its worker and controls (0.70075ms)
+✔ reference-disabled generation never fetches or decodes reference data (0.766875ms)
+✔ nonfinite decoder pixels fail before canvas publication despite successful worker completion (0.700417ms)
+✔ an explicit reference matte precedes drawing and its prepared tensor is separately hashed (0.731458ms)
+✔ invalid reference matte refuses before any reference fetch, bitmap or scratch allocation (0.468833ms)
+✔ reference context-null failure closes bitmap once and retires scratch without an encoder (0.43575ms)
+✔ reference context-throw failure closes bitmap once and retires scratch without an encoder (0.43725ms)
+✔ reference draw failure closes bitmap once and retires scratch without an encoder (0.757333ms)
+✔ reference getImageData failure closes bitmap once and retires scratch without an encoder (0.724958ms)
+✔ a cleanup error preserves the original preparation fault and still attempts scratch retirement (0.481833ms)
+✔ cancellation during bitmap decoding closes its late result without allocating scratch or starting an encoder (0.529542ms)
+✔ cancellation after awaited body blocks later preparation and publication (0.477583ms)
+✔ cancellation after awaited source-hash blocks later preparation and publication (0.39725ms)
+✔ cancellation after awaited pixel-hash blocks later preparation and publication (0.403875ms)
+✔ the same resource outcome ruler rejects a missed close, double close and unretired canvas (0.972709ms)
+✔ profiled flow retains one raw trace per retired stage outside the progress log (0.622ms)
+✔ profile publication refuses an incomplete state boundary (1.004209ms)
+✔ profile publication refuses an incomplete endedBeforeRelease boundary (0.559708ms)
+✔ profile publication refuses an incomplete sessionReleased boundary (0.437125ms)
+✔ a failed native profile preserves raw evidence before stopping its generation (0.491375ms)
+✔ Only the explicitly identified derivative reaches the denoiser; other graphs remain canonical (0.73ms)
+✔ Unknown model derivative refuses before launching any inference worker (0.275583ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 66.3225

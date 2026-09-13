@@ -1,0 +1,136 @@
+✔ actual four-stage flow publishes exact decoded pixels only after every worker retires (9.030125ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: false) (1.518875ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: true) (0.980083ms)
+✔ gpu-error progress is terminal; a late completion cannot produce another stage or painting (1.262084ms)
+✔ text timeout terminates the exact worker and blocks publication (1.432334ms)
+✔ encode timeout terminates the exact worker and blocks publication (0.899625ms)
+✔ denoise timeout terminates the exact worker and blocks publication (1.094042ms)
+✔ decode timeout terminates the exact worker and blocks publication (1.078292ms)
+✔ a repeated generation rejects while the first owns its worker and controls (0.786666ms)
+✔ reference-disabled generation never fetches or decodes reference data (0.994583ms)
+✔ nonfinite decoder pixels fail before canvas publication despite successful worker completion (1.041708ms)
+✔ an explicit reference matte precedes drawing and its prepared tensor is separately hashed (3.422167ms)
+✔ invalid reference matte refuses before any reference fetch, bitmap or scratch allocation (0.768792ms)
+✔ reference context-null failure closes bitmap once and retires scratch without an encoder (0.5375ms)
+✔ reference context-throw failure closes bitmap once and retires scratch without an encoder (0.483583ms)
+✔ reference draw failure closes bitmap once and retires scratch without an encoder (0.476791ms)
+✔ reference getImageData failure closes bitmap once and retires scratch without an encoder (0.6675ms)
+✔ a cleanup error preserves the original preparation fault and still attempts scratch retirement (0.509542ms)
+✔ cancellation during bitmap decoding closes its late result without allocating scratch or starting an encoder (0.6755ms)
+✔ cancellation after awaited body blocks later preparation and publication (0.762625ms)
+✔ cancellation after awaited source-hash blocks later preparation and publication (1.492334ms)
+✔ cancellation after awaited pixel-hash blocks later preparation and publication (1.444625ms)
+✔ the same resource outcome ruler rejects a missed close, double close and unretired canvas (1.961542ms)
+✔ profiled flow retains one raw trace per retired stage outside the progress log (1.166875ms)
+✔ profile publication refuses an incomplete state boundary (0.968917ms)
+✔ profile publication refuses an incomplete endedBeforeRelease boundary (0.843375ms)
+✔ profile publication refuses an incomplete sessionReleased boundary (0.660709ms)
+✔ a failed native profile preserves raw evidence before stopping its generation (0.4755ms)
+✔ Only the explicitly identified derivative reaches the denoiser; other graphs remain canonical (1.317459ms)
+✔ Unknown model derivative refuses before launching any inference worker (0.354083ms)
+✔ actual Land control keeps journal navigation available and completion requires an explicit return (0.808791ms)
+✔ returning to cancel never shows a completed landing notice or a working return action (0.419791ms)
+✔ actual Land control preserves selected reference and profiling options (0.372625ms)
+✔ No opt-in returns no additional session options and does not tighten the existing path (1.454667ms)
+✔ Opt-in supplies exact model symbolic names and counts output plus identity-reference tokens (0.160375ms)
+✔ Qualified resolutions and zero, one or two references produce the corresponding actual sequence (1.073916ms)
+✔ Unsupported flags/stages/output dimensions fail before any session can be constructed (0.462834ms)
+✔ The fixed batch-one, 512-token embedding requires exact float16-bit storage and length (0.210916ms)
+✔ Reference shape/type/truncation contradictions are refused; restored encoded data is accepted (0.351458ms)
+✔ Specialization does not modify or replace any numerical generation input (0.116542ms)
+✔ Native microseconds and host/GPU overlap remain separate, with actual CPU provider (2.552959ms)
+✔ Same program with different tensor dimensions is a distinct bounded group (0.31175ms)
+✔ More unique graph nodes than the unchanged group cap aggregate by actual op/program/shape (12.022875ms)
+✔ Different ops and programs stay distinct even when their node label and shapes agree (15.511542ms)
+✔ Malformed native name contract cannot silently merge into a generic program group (0.519125ms)
+✔ Native stdout requires exact complete framing; partial end cannot pass (1.231958ms)
+✔ Single multiline stdout message also retains complete actual bytes (0.125875ms)
+✔ Missing GPU, missing Nodes, empty/zero GPU cannot become zero-cost success (0.144458ms)
+✔ Malformed timestamps, JSEP fields, metadata and stale versions fail closed (0.829458ms)
+✔ Byte/event/group capacities reject a complete trace instead of truncating its admission (0.388792ms)
+✔ Interleaved, malformed, trailing or interrupted stdout stays a retained failure (0.20325ms)
+✔ CLI profile is explicit; accepted reference variants retain their own meaning (0.357667ms)
+✔ CLI rejects profile-only preflight, contradictory conditioning, duplicates and unknown flags (0.239083ms)
+✔ Explicit larger output changes only the bounded dimensions; arbitrary sizes are refused (0.123792ms)
+✔ Q8 derivative is explicit, can be profiled, and cannot bypass model verification via preflight (0.062292ms)
+✔ Identity-only conditioning is explicit, exclusive, and preserves qualified dimensions (0.120167ms)
+✔ Fixed denoiser shapes are explicit, orthogonal to references, and require inference (0.107542ms)
+✖ Actual default server recipe preserves retained scene prompt and generation inputs (90.455209ms)
+✖ Actual dual-reference server recipe remains byte-identical to its retained canonical recipe (75.387042ms)
+✖ Identity-only actual server serves one exact Civet reference and no full-scene image (49.3605ms)
+✔ Server rejects conflicting or nonboolean identity modes before starting (0.512667ms)
+✔ ordered 0-reference work is ready only after publication (0.956292ms)
+✔ ordered 1-reference work is ready only after publication (0.356292ms)
+✔ ordered 2-reference work is ready only after publication (0.263291ms)
+✔ unknown and cleanup telemetry cannot change stage, percentage or ETA clock (0.721ms)
+✔ unknown stage control and malformed active event refuse atomically (0.262292ms)
+✔ future-time early completion cannot poison a later valid event (0.317209ms)
+✔ encoder, denoiser and decoder cannot skip their predecessors (0.285625ms)
+✔ real loading then loaded is required before any stage outcome (0.234125ms)
+✔ repeated encode completion cannot impersonate a second reference (0.315916ms)
+✔ duplicate, skipped, fractional and mismatched denoise steps do not advance work (0.657917ms)
+✔ denoise completion and profiling cannot substitute for missing steps (0.091458ms)
+✔ step four still requires denoiser completion before decoder starts (0.070667ms)
+✔ phase complete does not impersonate the worker type complete (0.1ms)
+✔ nonfinite and backward recognized timestamps refuse without side effects (0.101375ms)
+✔ failed jobs cannot be revived or calibrate a first ETA (0.059ms)
+✔ canceled jobs cannot be revived or calibrate a first ETA (0.029875ms)
+✔ completed jobs ignore stale failure/worker events and preserve their exact result (0.041666ms)
+✔ cancellation flag refuses nonboolean truthy values (0.038167ms)
+✔ first-run ETA estimates only measured remaining denoise steps (0.035333ms)
+✔ completed same-key total duration informs a later same-page plan (0.078833ms)
+✔ total ETA does not cross changed plan scope {"key":"different-model-recipe-backend"} (0.107125ms)
+✔ total ETA does not cross changed plan scope {"steps":3} (0.04375ms)
+✔ total ETA does not cross changed plan scope {"referenceCount":2} (0.030792ms)
+✔ failed retry never replaces the previous successful total duration (0.04825ms)
+✔ zero-duration synthetic completion and another owner cannot supply calibration (0.074875ms)
+✔ plan guards bound exact keys, dimensions of work and supplied monotonic time (0.266ms)
+ℹ tests 87
+ℹ suites 0
+ℹ pass 84
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 286.241125
+
+✖ failing tests:
+
+test at tools/local-image-generation/identity-conditioning.test.mjs:35:1
+✖ Actual default server recipe preserves retained scene prompt and generation inputs (90.455209ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tools/local-image-generation/identity-conditioning.test.mjs:49:1
+✖ Actual dual-reference server recipe remains byte-identical to its retained canonical recipe (75.387042ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tools/local-image-generation/identity-conditioning.test.mjs:59:1
+✖ Identity-only actual server serves one exact Civet reference and no full-scene image (49.3605ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }

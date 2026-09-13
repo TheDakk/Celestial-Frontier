@@ -1,0 +1,15 @@
+{
+  "sourceHead": "2f7e344a68df47b85ac47996363c8889dbb305ee",
+  "modelRuns": 0,
+  "uploads": 0,
+  "imageCount": 13,
+  "packages": [
+    {
+      "path": "/private/tmp/celestial-frontier-claude-civet-review-20260912.zip",
+      "bytes": 25971294,
+      "sha256": "ee0c72def62db92800fe9bd769bc58325c0379ab3f20f6081640f1e57eebcc38",
+      "entries": 78,
+      "crcAndExactBytesVerified": true
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "cf.bounded-review-files.v1",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7666,
+      "sha256": "561bf655f3075a7fc01d7897c77be6cff50a7bb01ef7af4881046b2cd47831a3"
+    },
+    {
+      "path": "existing-reference-inventory.json",
+      "bytes": 18082,
+      "sha256": "3320acc7ebd35fdf9b7c337f8f93935d50c88efdd56b44a5909f17fb5c52d885"
+    },
+    {
+      "path": "native-source-correspondence.json",
+      "bytes": 1934,
+      "sha256": "163d1555fe77b26b4b5b2fddf7b422e316ae5ac0b9389c4e712be3fe99e67e0b"
+    },
+    {
+      "path": "npm-onnxruntime-web-1.29.0.json",
+      "bytes": 5620,
+      "sha256": "de4d23a9eed9c769a3eac3baa6319fae4539228ce657e2ab8fb976d84b5d814b"
+    },
+    {
+      "path": "source-prepack.ts",
+      "bytes": 877,
+      "sha256": "ff251557aaffa1fac06b63172178c260aaff0c358905a4117a4d05a36f5b20d4"
+    },
+    {
+      "path": "source-pull-prebuilt.ts",
+      "bytes": 9988,
+      "sha256": "713805affb3d959a840b9d4fc7af975f1ff8e841540102bae09ecb87a46e6169"
+    },
+    {
+      "path": "source-retrieval-01.json",
+      "bytes": 1307,
+      "sha256": "d10b1b14411aa247fed9495b6c7eb08639a8683b75f78b0381e2f14895c57d2c"
+    },
+    {
+      "path": "source-retrieval-02.json",
+      "bytes": 1274,
+      "sha256": "5c39ebebf3671aa5d2d1ff1e1560c98aa45ccdffca13be19f5ac96fad8cc3cb9"
+    }
+  ],
+  "jsonParse": "pass",
+  "markdownLocalLinks": "pass",
+  "nativeOrModelRun": false,
+  "fullDistributionQualified": false
+}

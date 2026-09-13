@@ -1,0 +1,670 @@
+{
+  "schema": "cf-u1-checkpoint-reds/v1",
+  "hostedAttempts": 0,
+  "runs": [
+    {
+      "source": "35ded10f3d052ab5603e781ee06d2a25448397f5",
+      "kind": "preparation-instrument",
+      "findings": [
+        "Sandbox npm ci DNS ENOTFOUND fetching locked GSAP.",
+        "Premature typecheck invoked before install completion; tsc unavailable; no product test ran."
+      ],
+      "correction": "Await successful dependency install before all dependent checks."
+    },
+    {
+      "source": "37d82ef50e1c4e1554a572473019c4451c690559",
+      "kind": "local-vitest",
+      "rootMainAbsent": true,
+      "typecheck": "PASS",
+      "artunused": "PASS",
+      "testFiles": {
+        "failed": 7,
+        "passed": 303
+      },
+      "tests": {
+        "failed": 12,
+        "passed": 3241,
+        "skipped": 1
+      },
+      "failures": [
+        "tests/compendium-budget.test.ts > Arc 1A Compendium budget authority > owns a strict v2 record and schema bound to the sealed 1,500-row input",
+        "tests/compendium-budget.test.ts > Arc 1A Compendium budget authority > fails the current producer closed without rebinding historical samples",
+        "tests/compendium-budget.test.ts > Arc 1A Compendium budget authority > binds active ruler authority while preserving calibration-required and drift controls",
+        "tests/current-producer-authorities.test.ts > current producer authorities > binds every live memory budget required by the active check profile",
+        "tests/exceptional-crafting-evidence-contract.test.ts > Pureforged browser-evidence truth > replays every current rendered release control and preserves the Research reach boundary",
+        "tests/guide-release.test.ts > legacy and v2 release channels > keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes",
+        "tests/runtime-hardening.test.ts > persistView execution-time admission > commits once, publishes after durability, and clears its own queue tail",
+        "tests/runtime-hardening.test.ts > persistView execution-time admission > drains an already-started write while refusing a queued writer when import claims ownership",
+        "tests/runtime-hardening.test.ts > persistView execution-time admission > retains exact replacement ownership and rejects a released or superseded claim",
+        "tests/runtime-hardening.test.ts > persistView execution-time admission > keeps the private heartbeat self-bypass and named-search lifecycle exemption",
+        "tests/slicesmoke-atlas-travel-contract.test.ts > Slice Atlas native Travel contract > declares both native Atlas openers as non-submit buttons",
+        "tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps a fixed 81-row Guide oracle with five independent population controls"
+      ],
+      "logSha256": "aeba4456bedf028125872219538723d6e1bfbc352c4ac0db0cb5b43a16eef390",
+      "corrections": [
+        "Move unused GSAP into isolated tools/ui-motion and restore sealed game package/lock bytes; measurement pins unchanged.",
+        "Complete producer successor record with all component hashes.",
+        "Update removed-one bulletin controls to80 from81, retaining assertions.",
+        "Supply new dependencies to extracted persistView harness and strengthen deferred-notification ordering controls.",
+        "Restore native dockatlas markup attribute ordering."
+      ],
+      "remainingChecks": "Glass selftest, Slice, phone canaries and visual review not run after red."
+    },
+    {
+      "source": "4e6047b",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3255passed/1skipped, Glassselftest PASS",
+      "failures": [
+        "GOLDEN LAYOUT drift: search bar not top-right",
+        "HP TOPBAR: nested label geometry or independent dark backing is broken",
+        "RIGHT RAIL GAP: reported 8px root-owned geometry was not established",
+        "LEFT RAIL GAP: symmetric 8px root-owned geometry was not established",
+        "RIGHT RAIL BOUNDARY CONTROL FAILED \u2014 removing only the rail boundary did not recreate dismissal",
+        "LEFT RAIL BOUNDARY CONTROL FAILED \u2014 removing only the rail boundary did not recreate dismissal",
+        "SEARCH OUTSIDE DISMISS: bounded rail ownership changed established Search dismissal/focus",
+        "ARC 5 FEED COMMIT: two native same-parent Use 1 actions did not resolve to one exact durable companion/flora winner, one real stale loser, visible settled acknowledgement, and reload fixed point",
+        "PHONE GOLDEN LAYOUT drift: search bar not top-right"
+      ],
+      "logSha256": "5854c0931719d59f80a1a543a1f3869e442f2f663d626d6dbb28bcbabb740579",
+      "remainingChecks": "phonecanaries andvisualreview notrunafterred"
+    },
+    {
+      "source": "b08f8ac72529190a4cb2b77c1afa2a443020e593",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3258passed/1skipped, Glassselftest PASS",
+      "failures": [
+        "PHONE PRIME TIER CONTROLS FAILED: intended HP-overlap mutation produced no overlap."
+      ],
+      "diagnosis": "The translated dock creates a containing block for fixed descendants. Viewport coordinates do not recreate the intended collision.",
+      "correction": "Translate Prime from its actual painted rectangle to the HP rectangle, preserving exact style restoration and the existing overlap assertion.",
+      "logSha256": "95d8f0f99bcdb769fed31d671ec7742235d542b496d77bf7909b74a62323656a",
+      "gzipFile": "UI_U1_SLICE_RED_b08f8ac_20260906.log.gz",
+      "gzipSha256": "56ccc95ffbecda657248b03687f1e6915509cbf1866d8835b93b89d0d0bc2ea0",
+      "remainingChecks": "phonecanaries andvisualreview notrunafterred"
+    },
+    {
+      "source": "b4318371dd248b3ea57b3a7591da890103cd339b",
+      "kind": "local-vitest-contract",
+      "rootMainAbsent": true,
+      "precedingChecks": "install, typecheck, artunused PASS",
+      "testFiles": {
+        "failed": 1,
+        "passed": 309
+      },
+      "tests": {
+        "failed": 1,
+        "passed": 3257,
+        "skipped": 1
+      },
+      "failures": [
+        "slicesmoke-sixth-red-contract: three source markers still require fixed-position HP collision instead of the corrected measured translation."
+      ],
+      "correction": "Update the source-marker contract to require both actual painted rectangles and their relative translation; preserve mutation and restoration assertions.",
+      "logSha256": "4ae50333a07cea6b609e16a3484ba626d533beaacfe738000a99ba561af14fff",
+      "remainingChecks": "Glass selftest, Slice, phone canaries and visual review not run after red."
+    },
+    {
+      "source": "ab9b807171366aaf119425ecd829d98859abba7f",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3258passed/1skipped, Glassselftest PASS; root validate PASS",
+      "failures": [
+        "PHONE PRIME OVERLAY YIELD CONTROL FAILED: intended Guide overlap mutation placed Prime below the viewport."
+      ],
+      "diagnosis": "The transformed dock is the containing block for fixed Prime. The copied Guide/Survey mutations used viewport coordinates as containing-block offsets.",
+      "correction": "Both controls now translate actual painted Prime rectangles into actual panel rectangles; retain collision rejection and exact restoration.",
+      "logSha256": "c01079068f996b103311672d0295a1e63c3088a3b93ee615d7d8c2f47207a780",
+      "gzipFile": "UI_U1_SLICE_RED_ab9b807_20260906.log.gz",
+      "gzipSha256": "969e111e703983cabdca61cd1281f7afc6a2d8db067c40c4dc4bdc26395e78fd",
+      "remainingChecks": "Phone canaries and visual review not run after red."
+    },
+    {
+      "source": "2deec82580e9f812caf3a5984ff602706b464369",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3258passed/1skipped, Glass selftest PASS",
+      "failures": [
+        "harness: transient-read authoritative reload did not expose a ready slice within15000ms (stale document token)"
+      ],
+      "diagnosis": "The native retry used fixed (30,300), which overlaps the relocated Survey in retained same-source layout. Only app.canvas pointerdown triggers storage retry; the old instrument recorded no exact event target.",
+      "logSha256": "9a7b6f91e32658ab8dfbe30dac303506c17ae54fbc7b1220659236d63dffa45d",
+      "gzipFile": "UI_U1_SLICE_RED_2deec82_20260906.log.gz",
+      "gzipSha256": "09e7d2f2827bdc996a0d95124fd27dd46b8e1e74f8d5bacb7c41d21d715b410a",
+      "remainingChecks": "Phone canaries and visual review not run after red.",
+      "correction": "Select an observed unobstructed root-canvas point; dispatch native press/release; require a matching trusted pointerdown receipt across reload and clean its owned listener/session marker. Keep15s cap, new document token, zero pre-click writes and exact final revision/write assertions.",
+      "focusedVerification": "Existing sixth-red contract24testsPASS, including wrong-target, missing/untrusted/stale receipt and invalid coordinates."
+    },
+    {
+      "source": "40aad54a17c87d5c4b2e5398608afb9d3902a5e6",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3259passed/1skipped, Glass selftest PASS",
+      "failures": [
+        "harness: collision baseline Records close did not reach its isolated browser outcome within8000ms (last false)"
+      ],
+      "diagnosis": "U1 hide rule #railinventory,#railrecords loses specificity to #railrgt button. Retained screenshot confirms duplicate rail controls still painted. Collision helper chooses first painted Records match and discarded its press receipt; the exact failed800x600 click hit was not retained.",
+      "logSha256": "1964c445573f7f5cc7d42dfb1b2f6501db2e3a80d5814fe93d1d40ae7d03add8",
+      "gzipFile": "UI_U1_SLICE_RED_40aad54_20260906.log.gz",
+      "gzipSha256": "21c47a0b0006f45fd41c996c4c5d8cffe90bbab1e969d32c9cdf61e105395a03",
+      "remainingChecks": "Phone canaries and visual review not run after red.",
+      "correction": "Strengthen the owned hide selector; require allthree Records native press receipts for the intended dock control; add live visibility/mutation/restoration checks for duplicate rail controls. No timeout increase or closure assertion relaxation.",
+      "screenshot": {
+        "file": "UI_U1_DUPLICATE_RAILS_40aad54_20260906.png",
+        "sha256": "8aa5ad771a71700ef417d81ba1460080bf5991e9c0165d73ff5dd7440a1385e2",
+        "scope": "Same-source retained universe view proves painted duplicates; not the failed800x600 collision frame."
+      }
+    },
+    {
+      "source": "7778230fe6a0f635b62b304407e7100d77ab7992",
+      "kind": "local-typecheck",
+      "rootMainAbsent": true,
+      "precedingChecks": "fresh npm ci PASS",
+      "failures": [
+        "Two possibly-undefined indexed accesses in new two-row mutation test fixture under noUncheckedIndexedAccess."
+      ],
+      "correction": "Non-null assertions for the known two-row fixture indexes only; all positive and mutant expectations unchanged.",
+      "logSha256": "fc9e50e868acdf27e05675bcd25acfd8a988be99f12ebdbf58d0bfb6e23703c7",
+      "gzipFile": "UI_U1_TYPECHECK_RED_7778230_20260906.log.gz",
+      "gzipSha256": "926ba7bc5f3690f7bf3ce31d0fee7a82b878d29ba724a8a26741c22a1b88e993",
+      "remainingChecks": "artunused, Vitest, Glass selftest and all browser checks not run after red."
+    },
+    {
+      "source": "2c26ee7aaf4bf8e70afe18a356d518db7a494901",
+      "kind": "local-vitest-contract",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck/artunused PASS",
+      "testFiles": {
+        "failed": 1,
+        "passed": 309
+      },
+      "tests": {
+        "failed": 1,
+        "passed": 3260,
+        "skipped": 1
+      },
+      "failures": [
+        "Current producer pins were updated, but required successor narrative did not include its new SHA and component hashes."
+      ],
+      "correction": "Append the producer-only successor and all five component hashes to the existing narrative; preserve its entire old prefix, historical samples, measurement, ruler and ceilings.",
+      "logSha256": "60dfbebdf93e0b561ceec9fd4cf2d6629a8b2c70e57345c0978cc2823ceef139",
+      "gzipFile": "UI_U1_VITEST_RED_2c26ee7_20260906.log.gz",
+      "gzipSha256": "af8ca0dee5dd03a078d11e91fc624222228bbbdef578235789c274b093129cb5",
+      "remainingChecks": "Glass selftest and all browser checks not run after red."
+    },
+    {
+      "source": "4af8073531613859c318af84a1df61ae6d37735b",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3261passed/1skipped, Glass selftest PASS",
+      "failures": [
+        "LEFT RAIL GAP: hidden railrecords was not browser-mouse hittable",
+        "LEFT RAIL BOUNDARY CONTROL: hidden railrecords was not browser-mouse hittable",
+        "PANEL NON-ELEMENT TARGET: hidden railrecords was not browser-mouse hittable",
+        "ARC 2 INVENTORY: hidden railinventory was not browser-mouse hittable",
+        "ARC 2 INVENTORY LEDGER: prerequisite native sequence incomplete"
+      ],
+      "diagnosis": "After correcting duplicate-rail visibility, remaining instrument callers still target the now-hidden compatibility controls. Inventory is owned by the visible topbar dockinventory; Records by dockrecords. The missing ledger follows the failed opener prerequisite.",
+      "logSha256": "72771ce8109b07b15dd7211b1d8960f46beec99f909226346a56b5d7f0b45f24",
+      "gzipFile": "UI_U1_SLICE_RED_4af8073_20260906.log.gz",
+      "gzipSha256": "c96855071c5b190098027307529e68ab78deb48fb9519fa8874693bbfc70b525",
+      "remainingChecks": "Phone canaries, normal build and visual review not run after red.",
+      "correction": "Visible dockrecords/dockinventory native opener and exact focus contracts; observed closest-button identity alongside raw nested targets; both real 8px rail-gap mutations and all Inventory outcomes retained. Glass uses the visible controls, Atlas/Shipyard yield Survey from701px, and the hidden-opener proof uses native Atlas/Survey/Close with baseline, rejection and restoration. Historical Glass ledgers unchanged.",
+      "focusedVerification": {
+        "slice": "typecheck, 3 focused files/20tests and smokereport selftest PASS",
+        "glass": "new focused Glass journey32tests and syntax checks PASS",
+        "review": "Independent bounded Slice diff review clear; full successor chain pending."
+      },
+      "preparation": {
+        "sourceKind": "working tree, not an exact-source candidate",
+        "reportedBy": "bounded Slice agent",
+        "initialFailure": "TS2305: partial declaration shim does not include existing assessInventoryPanelClose export. No downstream tests ran.",
+        "failedEdit": "A repo-relative edit path was used from port/v2 and raised FileNotFoundError. Typecheck was mistakenly repeated before the actual absolute-path fix and returned the same error.",
+        "correction": "Import of the real existing JavaScript export carries a narrowly documented ts-expect-error for the partial shim; no new declaration or product change. Final typecheck/20tests/selftest passed.",
+        "evidenceLimitation": "No filesystem logs retained for these preparation calls; agent tool outputs only (c35c04,59058b,537812). The next fresh signed-source chain supplies independently retained logs."
+      }
+    },
+    {
+      "source": "62a601c4381d2367f17732e2bf10df6a003ab3ac",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "fresh typecheck, artunused, Vitest311files/3296passed/1skipped and Glass selftest PASS",
+      "runId": "20260906065155741-65134-c940284a4ef9",
+      "status": "fail",
+      "startedAt": "2026-09-06T06:51:55.741Z",
+      "endedAt": "2026-09-06T06:57:33.497Z",
+      "durationMs": 337756,
+      "failures": [
+        "SATURATED CHARTER RECOVERY: first Land was not an exact durable wave-off; no second touch was issued",
+        "SATURATED CHARTER RECOVERY: browser-touch re-land did not reach its durable fixed point",
+        "U1 RAIL DUPLICATES CONTROL: showing one copy was not rejected or exact restoration failed"
+      ],
+      "diagnosis": [
+        "Wave-off:13of14checks pass. Prior Share-success notification is newly admitted with Land; before/after legacy and player notifs differ by exactly that one known unread entry. Full unrelated-state equality correctly rejects this baseline mismatch.",
+        "Duplicate-rail mutant is painted/rejected and both controls return hidden, but strict styleRestored is false. Original evidence does not include prior/current attribute bytes; exact absence-versus-empty cause is not proven from this artifact."
+      ],
+      "correction": "Fixture-local existing __smokePersistNow checkpoint after accepted Share: require one receipt-free revision, exact known unread notice/codec history, full expected raw successor with codec timer normalization, unchanged receipts/RNG/product data and intact adjacent toast/queued ceremony. Reacquire Land authority only after proof; seven live cloned controls. Wave-off assessor unchanged. Rail mutation restores exact style presence/value and records prior/restored carriers; absent/empty/nonempty cases tested.",
+      "carriers": [
+        {
+          "file": "UI_U1_SLICE_RED_62a601c_20260906.log.gz",
+          "sha256": "373b205639121a8ae1dc806a81e6b8a41dbe531c285476cbf492388c7fa323fe",
+          "uncompressedSha256": "e87a455a84d07d61dbcf1243771aa93668715ec7fa95d8ff951e71eeba9ad3a5",
+          "uncompressedBytes": 605945
+        },
+        {
+          "file": "UI_U1_SLICE_RED_62a601c_20260906.json.gz",
+          "sha256": "b0a960cd2ecb08ba37d639aa39a949c847da0335ba9e4be3ccbc36d1a0941dea",
+          "uncompressedSha256": "36bb1d4fbc31bbe448dd3dc9377d120860908fa496cce390fce4ad549fbd6d21",
+          "uncompressedBytes": 1519558
+        }
+      ],
+      "remainingChecks": "Both phone canaries, normal build and visual review not run after red.",
+      "railStylePreparation": {
+        "result": "typecheck and9focused Atlas tests PASS",
+        "file": "UI_U1_RAIL_STYLE_PREP_20260906.log.gz",
+        "sha256": "a69321f789bde81a4c77578a76f947918d28e7bcd451d87d9e1ce77ba215195d",
+        "uncompressedSha256": "9fd34b8c95b6d0b0c8c0a3849416b5adc23d1ea5d003b4b8d9bd19305a9f91e1"
+      },
+      "shareCheckpointPreparation": {
+        "result": "17focused Arc0 tests, syntax and diff checks PASS",
+        "file": "UI_U1_SHARE_CHECKPOINT_PREP_20260906.log.gz",
+        "sha256": "3396fe3b57a0d6442515436d3f2ebf049959d52c329a6dac919b5d617586ceb0",
+        "uncompressedSha256": "9b49178534e81a7168b5e6c86e7c668257d75c444c472df2ea321d898ac19d50"
+      },
+      "waveOffEvaluatorUnchangedSha256": "4da3759c5c2eef42036c421ca0b16cdb91fa212dc9d352bedbed44c29c75690b",
+      "finalPreparation": {
+        "typecheck": "PASS after both corrections",
+        "review": "Independent bounded checkpoint diff review clear",
+        "file": "UI_U1_SUCCESSOR_TYPECHECK_20260906.log.gz",
+        "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
+        "uncompressedSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+      }
+    },
+    {
+      "source": "19f83664442323687222e35bbbd97028161d4712",
+      "kind": "local-vitest-contract",
+      "rootMainAbsent": true,
+      "precedingChecks": "fresh install, typecheck and artunused PASS",
+      "testFiles": {
+        "failed": 1,
+        "passed": 310
+      },
+      "tests": {
+        "failed": 1,
+        "passed": 3298,
+        "skipped": 1
+      },
+      "failures": [
+        "Share settlement six-site source contract still ends its Charter section at beforeLand = adjacentShare.state after that baseline moved behind the proved passive checkpoint."
+      ],
+      "correction": "One section endpoint now names beforeLand = shareNoticeState; all six existing Share expectation and waiter assertions unchanged.",
+      "logSha256": "a72a29e421f3443cd99018e87e8b2a880138ac3b9d3d5c6e5adf8479c9094368",
+      "gzipFile": "UI_U1_VITEST_RED_19f8366_20260906.log.gz",
+      "gzipSha256": "b6bf82efae88b882450312973331b935e78c618c68d91ca96970aca9abec0a3c",
+      "focusedVerification": "Share settlement contract31testsPASS",
+      "remainingChecks": "Glass selftest and every browser stage not run after red."
+    },
+    {
+      "source": "b3aadd951a9992774e4b674eac918fedfca17765",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "fresh typecheck, artunused, full Vitest and Glass selftest PASS",
+      "runId": "20260906071618933-68483-43e248accf91",
+      "durationMs": 349407,
+      "failures": [
+        "U1 RAIL DUPLICATES CONTROL: showing one copy was not rejected or exact restoration failed: {\"id\":\"railinventory\",\"shown\":[{\"id\":\"railinventory\",\"exists\":true,\"parentId\":\"railrgt\",\"display\":\"flex\",\"rectCount\":1,\"width\":128.296875,\"height\":44,\"painted\":true},{\"id\":\"railrecords\",\"exists\":true,\"parentId\":\"railrgt\",\"display\":\"none\",\"rectCount\":0,\"width\":0,\"height\":0,\"painted\":false}],\"restored\":[{\"id\":\"railinventory\",\"exists\":true,\"parentId\":\"railrgt\",\"display\":\"none\",\"rectCount\":0,\"width\":0,\"height\":0,\"painted\":false},{\"id\":\"railrecords\",\"exists\":true,\"parentId\":\"railrgt\",\"display\":\"none\",\"rectCount\":0,\"width\":0,\"height\":0,\"painted\":false}],\"priorStyle\":{\"present\":false,\"value\":null},\"restoredStyle\":{\"present\":true,\"value\":\"\"},\"styleRestored\":false}"
+      ],
+      "diagnosis": "Only rail-duplicate exact attribute restoration is red. The new carriers prove absent style became present empty. Share passive checkpoint and subsequent wave-off checks passed. Synthetic Edge152 control reproduces remove-only and clear-CSSOM-then-remove behavior; set-empty-then-remove restores all three exact prior states.",
+      "correction": "Reset the style attribute to empty before removing it, then reinstate any original present value. Exact presence/value and painted show/reject/restore assertions remain.",
+      "carriers": [
+        {
+          "file": "UI_U1_SLICE_RED_b3aadd9_20260906.log.gz",
+          "sha256": "ad83b42170f3c0fe10f977ac708445bb27d90e69e092adf222d17d100ff2c869",
+          "uncompressedSha256": "f5ae17785b2f69ba5eb3604f6ab37fa48035868cb7a02c2e5c561295840dabf0"
+        },
+        {
+          "file": "UI_U1_SLICE_RED_b3aadd9_20260906.json.gz",
+          "sha256": "fabc8f0ae621ea0919ee8c82f368d11ecf6548964db9a01877471a3392731a8b",
+          "uncompressedSha256": "21797d5dfe728d2b754c87887b2a00231f5b1985b268babce6bc1046bba0a78d"
+        }
+      ],
+      "nativeControl": {
+        "file": "UI_U1_NATIVE_STYLE_DIAGNOSIS_20260906.json.gz",
+        "sha256": "29d6e12fb463f77819e19151f1c28a8e102336078a58b9329203386166b6db45",
+        "uncompressedSha256": "1c92397cc4d7a1591cbec7a0ef97d1ca03ca46decdff7e3d4ea6bcc48e2ba16c",
+        "cases": 9,
+        "correctedCasesPassed": 3,
+        "deliberateOldStrategyFailures": 2,
+        "focusedTestsPassed": 9
+      },
+      "remainingChecks": "Both phone canaries and normal visual review not run after red."
+    },
+    {
+      "source": "42c080580cdcbab3f999e5c2aadced6f3174aa8a",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "fresh typecheck, artunused, full Vitest and Glass selftest PASS",
+      "runId": "20260906072756242-69973-291c6db9e4ef",
+      "durationMs": 368650,
+      "failures": [
+        "WORLD IDENTITY COLLISION ATLAS REOPEN 1: exact native opener receipt was red before Travel: {\"press\":{\"target\":null,\"pointer\":null},\"assessment\":{\"ok\":false,\"checks\":{\"target\":false,\"geometry\":false,\"pointer\":false,\"coordinates\":false}}}"
+      ],
+      "diagnosis": "Style attribute correction passed. Later collision Atlas loop tries to reopen after its first Travel leaves Survey open; Survey hides right rail and U1 desktop hides the dock Atlas duplicate. Native helper correctly reports no visible target.",
+      "correction": "Both collision Atlas openings first close an open Survey through native #docksurvey, prove its exact trusted input and closed DOM/ARIA state, and retain the same document plus all 14 route/selected-world/panel fields. Existing Atlas and Travel assertions remain unchanged.",
+      "carriers": [
+        {
+          "file": "UI_U1_SLICE_RED_42c0805_20260906.log.gz",
+          "sha256": "b18e29e28c651129077efd6709b04ffaf583394103d58d04a91c31afdfbe5308",
+          "uncompressedSha256": "248120f19209f237fe42530bf792939b19a66c3c6788f37949d7eb539990e9df"
+        },
+        {
+          "file": "UI_U1_SLICE_RED_42c0805_20260906.json.gz",
+          "sha256": "deccae46434f73dcd20b698d5cafe4e3024117bd0603d11194b4c54801d42079",
+          "uncompressedSha256": "cc93cbef7718630436b4174af1048fe20d267e2eff5a21ce51a868b797483927"
+        }
+      ],
+      "remainingChecks": "Both phone canaries and visual review not run after red.",
+      "preparation": {
+        "result": "Typecheck and 10 focused Atlas contract tests PASS",
+        "file": "UI_U1_COLLISION_SURVEY_CLOSE_PREP_20260906.log.gz",
+        "sha256": "5b6608eecd8bb638fe28ed11340cfb744998736782f9962c19bc0e2a5fc6dfc4",
+        "uncompressedSha256": "bb37434b5ae665c45ad4aa9700e9eaa13f0d71ab0671cc9dceff59c00e4a9fe8"
+      }
+    },
+    {
+      "source": "6fb67a26cbab6a8621e9f86e6494a0552c912114",
+      "kind": "local-glass-small-phone",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, 311 Vitest files/3300 tests/1 skipped, Glass selftest and immutable Slice develop PASS",
+      "slice": {
+        "runId": "20260906074236094-71755-19b4f4c46ce2",
+        "durationMs": 375056,
+        "evidenceDirectory": "UI_U1_SLICE_6fb67a2_20260906"
+      },
+      "runId": "20260906074853253-72032-42a226ac671e",
+      "failures": [
+        "TEXT_CONTRAST_LOW small-phone/hud #ctxbar: white caption measured against white bright-art backing, ratio1 vs required4.5."
+      ],
+      "correction": "#ctxbar receives the existing rgba(10,16,30,.94) backdrop; zero padding/border/radius and lane geometry remain. Existing contrast evaluator and threshold unchanged.",
+      "carriers": [
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_6fb67a2_20260906.json.gz",
+          "sha256": "2504ae15837b1f1e6a93e3132e36e9c119f4dbcdf02e333bdfcbabc1f93c3aa9",
+          "uncompressedSha256": "3a4871e963e429a2ce8cd79bae0aecdd62c50236a8dd541b7338dc7c64dcdf03"
+        },
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_6fb67a2_20260906.log.gz",
+          "sha256": "9cee14efb2c4263b43b46f2ccac4a36da97a4434cdd410d4eac849b91ce2547a",
+          "uncompressedSha256": "bc596c6b6085030d30096d2721c4f5b12d07becda265f52fd90ac739151c1ebd"
+        }
+      ],
+      "remainingChecks": "large-phone, normal-build and visual review not run after red.",
+      "producerDerivation": {
+        "exitCode": 2,
+        "meaning": "Expected pre-pin producer movement and quarantined SceneMemory drift; Compendium measurement matches.",
+        "producerSha256": "f144d466e59f6ce336a5f4090be368cf776268b8917386ccd6a6d81c0d595436",
+        "record": "UI_U1_CAPTION_PRODUCER_20260906.json",
+        "log": "UI_U1_CAPTION_PRODUCER_20260906.log.gz",
+        "logSha256": "4c4cdf7687ec0a0678debd7ce1a1b524dd82dfcb22783cffdc7fc38e7aaca453"
+      }
+    },
+    {
+      "source": "55aa04fe34b013a3cf7e47c75c822998fa0347cf",
+      "kind": "local-glass-small-phone",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck/artunused/full Vitest/Glass selftest and immutable Slice PASS",
+      "slice": {
+        "runId": "20260906075455519-73621-42ac2c1ecd66",
+        "durationMs": 374463,
+        "evidenceDirectory": "UI_U1_SLICE_55aa04f_20260906"
+      },
+      "runId": "20260906080111706-73865-07c4725c23be",
+      "failures": [
+        {
+          "viewport": "small-phone",
+          "surface": "hud",
+          "code": "SURFACE_OVERLAP",
+          "element": "#ctxbar \u00d7 #hintpill",
+          "actual": {
+            "a": {
+              "left": 80,
+              "top": 174.5,
+              "right": 240,
+              "bottom": 404,
+              "width": 160,
+              "height": 229.5
+            },
+            "b": {
+              "left": 9.6,
+              "top": 402.5,
+              "right": 310.4,
+              "bottom": 444,
+              "width": 300.8,
+              "height": 41.5
+            }
+          },
+          "expected": "non-overlapping rendered rectangles"
+        }
+      ],
+      "correction": "Caption uses available capped width and phone bottom is max(nominal164px, existing measured hint height + hint bottom +8px). Existing app-chrome ResizeObserver owns --hint-h; no extra observer or tool change. Larger font remains authoritative.",
+      "carriers": [
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_55aa04f_20260906.json.gz",
+          "sha256": "f5c0967987b54d8d5c071d3e8922716b68359412c2ebd4bc54b3ec3365598d8f",
+          "originalSha256": "828a8f591e154ab1406d1a96f21936f4f2efe8882c2fcbe44ef8fcc7fb684156"
+        },
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_55aa04f_20260906.log.gz",
+          "sha256": "1bcd0917a6e78065736f9b1bc662ce2c851bd0aee2432e149f097d22e3c0fea4",
+          "originalSha256": "c1667ccb009cbfdd98b0ed8db390ea27855dc2f9c63f644f9d763295416516a4"
+        }
+      ],
+      "remainingChecks": "large-phone/normal-build/review not run after red.",
+      "producerDerivation": {
+        "exitCode": 2,
+        "meaning": "Compendium measurement matches; expected pre-pin producer movement and quarantined SceneMemory drift",
+        "producerSha256": "ffb80c98195f8bb2e9bbeccdf6f52e5923843c2ed6f2a668634d6c35f5b26939",
+        "record": "UI_U1_CAPTION_LANE_PRODUCER_20260906.json"
+      }
+    },
+    {
+      "source": "7f5e63b451c33574d415c3ff21281531b29bc6d7",
+      "kind": "local-glass-small-phone",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck/artunused/full Vitest/Glass selftest and immutable Slice PASS",
+      "slice": {
+        "runId": "20260906080729860-75805-c343feb5e74c",
+        "durationMs": 374168,
+        "evidenceDirectory": "UI_U1_SLICE_7f5e63b_20260906"
+      },
+      "runId": "20260906081345769-76471-ba053513e720",
+      "findings": [],
+      "instrumentFailures": [
+        "small-phone: phone dock eight-track control stayed green or failed to restore ({\"ok\":false,\"broken\":{\"ok\":true,\"errors\":[],\"display\":\"grid\",\"ids\":[\"dockcharters\",\"dockcodex\",\"primechip\",\"dockshipyard\",\"dockatlas\",\"dockrecords\",\"docknotifications\",\"dockguide\",\"docksets\"],\"expected\":[\"dockcharters\",\"dockcodex\",\"primechip\",\"dockshipyard\",\"dockatlas\",\"dockrecords\",\"docknotifications\",\"dockguide\",\"docksets\"],\"rows\":[{\"top\":455.71875,\"height\":52.28125,\"ids\":[\"dockcharters\",\"dockcodex\",\"primechip\",\"dockshipyard\",\"dockatlas\"],\"centres\":[32,96,160,224,288]},{\"top\":512,\"height\":44,\"ids\":[\"dockrecords\",\"docknotifications\",\"dockguide\",\"docksets\"],\"centres\":[64,128,192,256]}],\"rect\":{\"id\":\"dock\",\"left\":0,\"top\":455.71875,\"right\":320,\"bottom\":556,\"width\":320,\"height\":100.28125,\"cx\":160,\"cy\":505.859375,\"visible\":true},\"centres\":[{\"id\":\"dockcharters\",\"rect\":{\"id\":\"dockcharters\",\"left\":3,\"top\":455.71875,\"right\":61,\"bottom\":508,\"width\":58,\"height\":52.28125,\"cx\":32,\"cy\":481.859375,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"dockcodex\",\"rect\":{\"id\":\"dockcodex\",\"left\":67,\"top\":455.71875,\"right\":125,\"bottom\":508,\"width\":58,\"height\":52.28125,\"cx\":96,\"cy\":481.859375,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"primechip\",\"rect\":{\"id\":\"primechip\",\"left\":131,\"top\":455.71875,\"right\":189,\"bottom\":508,\"width\":58,\"height\":52.28125,\"cx\":160,\"cy\":481.859375,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"dockshipyard\",\"rect\":{\"id\":\"dockshipyard\",\"left\":195,\"top\":455.71875,\"right\":253,\"bottom\":508,\"width\":58,\"height\":52.28125,\"cx\":224,\"cy\":481.859375,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"dockatlas\",\"rect\":{\"id\":\"dockatlas\",\"left\":259,\"top\":455.71875,\"right\":317,\"bottom\":508,\"width\":58,\"height\":52.28125,\"cx\":288,\"cy\":481.859375,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"dockrecords\",\"rect\":{\"id\":\"dockrecords\",\"left\":42,\"top\":512,\"right\":86,\"bottom\":556,\"width\":44,\"height\":44,\"cx\":64,\"cy\":534,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"docknotifications\",\"rect\":{\"id\":\"docknotifications\",\"left\":106,\"top\":512,\"right\":150,\"bottom\":556,\"width\":44,\"height\":44,\"cx\":128,\"cy\":534,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"dockguide\",\"rect\":{\"id\":\"dockguide\",\"left\":170,\"top\":512,\"right\":214,\"bottom\":556,\"width\":44,\"height\":44,\"cx\":192,\"cy\":534,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"},{\"id\":\"docksets\",\"rect\":{\"id\":\"docksets\",\"left\":234,\"top\":512,\"right\":278,\"bottom\":556,\"width\":44,\"height\":44,\"cx\":256,\"cy\":534,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"dock\"}],\"relocatedInventory\":{\"id\":\"dockinventory\",\"rect\":{\"id\":\"dockinventory\",\"left\":10,\"top\":8,\"right\":139.71875,\"bottom\":52,\"width\":129.71875,\"height\":44,\"cx\":74.859375,\"cy\":30,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"topbar\"},\"sceneactions\":[{\"id\":\"docksurvey\",\"rect\":{\"id\":\"docksurvey\",\"left\":18,\"top\":138,\"right\":103.75,\"bottom\":182,\"width\":85.75,\"height\":44,\"cx\":60.875,\"cy\":160,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"sceneactions\"},{\"id\":\"dockcharts\",\"rect\":{\"id\":\"dockcharts\",\"left\":111.75,\"top\":138,\"right\":197.5,\"bottom\":182,\"width\":85.75,\"height\":44,\"cx\":154.625,\"cy\":160,\"visible\":true},\"named\":true,\"hit\":true,\"parent\":\"sceneactions\"}]}})"
+      ],
+      "correction": "Ten explicit26px tracks must produce a measured64px-pitch rejection; broken/restored geometry and exact style presence/value are retained. Restoration uses the proven native set-empty-then-remove strategy. Historical control identity and all positive geometry checks unchanged; no product/pin edits.",
+      "carriers": [
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_7f5e63b_20260906.json.gz",
+          "sha256": "7f4d913b8bfd7dc105654f235e2cdd1fdbb02a516d2623887978c887ddf27e33",
+          "originalSha256": "139d31be6807b32171421bcb3f523b051dc0722c30cff388f0600e8f22e1fc44"
+        },
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_7f5e63b_20260906.log.gz",
+          "sha256": "074f6cd4280f9d89a4c3b04b5e5e9c32415b054078fe91f33e0a8e4f6180534f",
+          "originalSha256": "861a2229429f2298587e50b33cc86c2409b0570246f08f51276efb47c9fc72f8"
+        }
+      ],
+      "remainingChecks": "large-phone/normal-build/review not run after red.",
+      "preparation": "Independent bounded diff plus root review; node syntax and diff checks; no mirrored test added. The native corrected control will run in the fresh required sequence."
+    },
+    {
+      "source": "06c6db3de3722e98788c2e5cc2e9a5ffd5a29c69",
+      "kind": "local-glass-small-phone",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck/artunused/full Vitest/Glass selftest and immutable Slice PASS",
+      "slice": {
+        "runId": "20260906081806742-78145-ba27abe04ef9",
+        "durationMs": 374536,
+        "evidenceDirectory": "UI_U1_SLICE_06c6db3_20260906"
+      },
+      "runId": "20260906082423040-78387-ac3e5c4b06d1",
+      "findings": [
+        {
+          "viewport": "small-phone",
+          "surface": "records-over-survey",
+          "code": "TEXT_CONTRAST_LOW",
+          "element": "#dockrecords",
+          "actual": {
+            "ratio": 1.1,
+            "threshold": 4.5,
+            "color": "rgb(240, 244, 255)",
+            "background": [
+              255,
+              255,
+              255,
+              1
+            ],
+            "sample": "\ud83c\udfc6"
+          },
+          "expected": "WCAG contrast against bright artwork beneath glass"
+        }
+      ],
+      "instrumentFailures": [],
+      "correction": "Narrow button.dock-utility contrast mapping samples the actual glyph, visible unread badge and direct outer text separately while keeping native owner IDs. Related nonmodal control requires exact visible phone9/desktop5 membership, corrupts actual painted foreground/backing, compares complete owner/sample coverage and restores exact styles. Existing compositor, thresholds and control IDs remain.",
+      "carriers": [
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_06c6db3_20260906.json.gz",
+          "sha256": "0475cf79f20da422f050f79dc311dae0c9feaaeeef0191639e7b51e259885239",
+          "originalSha256": "82190e0ea90e5864ceb0c48b23a89679ac700cd77049342975042d796cb17728"
+        },
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_06c6db3_20260906.log.gz",
+          "sha256": "33d0e6a92cece6d23d0c5aa730787d43beaa4c14f38f8c2cea0f67919bc4f403",
+          "originalSha256": "391fe382ac9f79a093e39741a73204944f8e14777616b451c480d021228d1d53"
+        }
+      ],
+      "remainingChecks": "large-phone/normal-build/review not run after red.",
+      "preparation": "Independent bounded implementation and root diff review; syntax/diff checks pass. Existing browser contrast selftest now covers readable nested faces, distinct owners, glyph-only red, badge-only red, hidden badge exclusion, direct text red and restoration. These native cases await the required fresh sequence."
+    },
+    {
+      "source": "0b247a230612bac55e4f2204c70428c9ae262609",
+      "kind": "local-glass-small-phone",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck/artunused/full Vitest/Glass selftest and immutable Slice PASS",
+      "slice": {
+        "runId": "20260906084151354-80399-f342cc20fd0b",
+        "durationMs": 374600,
+        "evidenceDirectory": "UI_U1_SLICE_0b247a2_20260906"
+      },
+      "runId": "20260906084807830-80700-fc3dd8792bc3",
+      "findings": [
+        {
+          "viewport": "small-phone",
+          "surface": "inventory-over-survey",
+          "code": "TEXT_CONTRAST_LOW",
+          "element": "#dockinventory",
+          "actual": {
+            "ratio": 1,
+            "threshold": 4.5,
+            "color": "rgb(255, 255, 255)",
+            "background": [
+              255,
+              255,
+              255,
+              1
+            ],
+            "sample": "\u2699 Dakk \u00b7 Pathfinder \u2014 \u2726 5000 \u00b7 5 worlds"
+          },
+          "expected": "WCAG contrast against bright artwork beneath glass"
+        }
+      ],
+      "instrumentFailures": [],
+      "correction": "Prepared bounded Inventory mapping: sample the direct painted #playerchip when selected via button#dockinventory, retaining #dockinventory owner metadata; direct HUD #playerchip selections keep their identity. Direct outer text remains sampled. Native selftest cases cover readable backing, white-on-white failures, both identities, direct text and exact restoration. Syntax/diff checks pass; native execution awaits the signed successor. No product, compositor, threshold or input-owner change.",
+      "carriers": [
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_0b247a2_20260906.json.gz",
+          "sha256": "8fd7532532e6b76b5a648a4fb25dd338ae241c74d61f2e1070583a29abb73ea3",
+          "originalSha256": "96e5bd9d9fa3801cadba89b62992ac3297146566f2cbb184ef983d5b390136ce"
+        },
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_0b247a2_20260906.log.gz",
+          "sha256": "88a1f8b9c5b0f5ddbf7cb4e861ff633c2e129f5984e1814f566fe880ca768f11",
+          "originalSha256": "8eca8992b15002cf72eae6cb536aed117143e80b8e190ccbc38dc0c2108d63b5"
+        }
+      ],
+      "remainingChecks": "large-phone/normal-build/review not run after red."
+    },
+    {
+      "source": "db777b106a84e3c05486c0bb56ea46f2fe6d0af4",
+      "kind": "local-normal-build-ui-review",
+      "precedingChecks": "Fresh typecheck/artunused/full Vitest/Glass selftest/Slice/both phone canaries and normal build PASS; no main.js",
+      "evidenceDirectory": "UI_U1_REVIEW_RED_db777b1_20260906",
+      "slice": {
+        "runId": "20260906085625526-82209-453fabe83ec1",
+        "durationMs": 383535
+      },
+      "glass": [
+        {
+          "run": {
+            "id": "20260906090250806-82514-679166b32a10",
+            "artifactPath": "apps/game/smoke/glassmatrix-20260906090250806-82514-679166b32a10.json",
+            "provenance": "The unique run artifact is authority; the fixed-name report is a mutable current pointer only."
+          },
+          "scope": "targeted-diagnostic",
+          "certifying": false,
+          "summary": {
+            "viewportCount": 1,
+            "findingCount": 0,
+            "instrumentFailureCount": 0,
+            "counts": {}
+          },
+          "durationMs": 14601,
+          "viewportTimings": [
+            {
+              "label": "small-phone",
+              "durationMs": 11366
+            }
+          ]
+        },
+        {
+          "run": {
+            "id": "20260906090307199-82638-97dc02107523",
+            "artifactPath": "apps/game/smoke/glassmatrix-20260906090307199-82638-97dc02107523.json",
+            "provenance": "The unique run artifact is authority; the fixed-name report is a mutable current pointer only."
+          },
+          "scope": "targeted-diagnostic",
+          "certifying": false,
+          "summary": {
+            "viewportCount": 1,
+            "findingCount": 0,
+            "instrumentFailureCount": 0,
+            "counts": {}
+          },
+          "durationMs": 14243,
+          "viewportTimings": [
+            {
+              "label": "large-phone",
+              "durationMs": 11176
+            }
+          ]
+        }
+      ],
+      "finding": {
+        "metric": "phone dock height (default text)",
+        "actual": 93.6875,
+        "expected": 92,
+        "delta": 1.6875
+      },
+      "cause": "Compendium natural Inter text width54.338px exceeds54px content box and wraps final m; the two-line label drives45.6875px row.",
+      "correction": "Phone-only padding-inline0 gives56px content without changing font,58px chip,64px pitch or44px target. Native before/after/exact restoration proves92px baseline and original93.6875px red. Review scope labels92px as default Inter content baseline, not a fixed v1 law; assertion and threshold unchanged.",
+      "diagnosis": {
+        "file": "UI_U1_DOCK_LABEL_DIAGNOSIS_20260906.json.gz",
+        "sha256": "72a58726e1d3af9d44fca81543b1254e26ca9aaeb6de8c3f724e6bc052ca751b",
+        "deliberateExitCode": 1
+      },
+      "remainingChecks": "Fresh signed successor sequence and three-view visual review pending."
+    }
+  ]
+}

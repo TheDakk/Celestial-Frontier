@@ -1,0 +1,10 @@
+{
+  "status": "FAIL",
+  "stage": "first source-only Vite SSR diagnostic",
+  "factsCaptured": false,
+  "errors": [
+    "Vite enabled websocket listen 0.0.0.0:24678 despite middlewareMode: EPERM",
+    "Audit-root entry bare @cf imports did not resolve workspace packages"
+  ],
+  "correction": "Disable ws/hmr and dependency discovery; exact relative workspace facade imports. No browser or build/test chain ran; lock released."
+}

@@ -1,0 +1,8 @@
+{
+  "source": "port/v2/tools/glassmatrix.mjs",
+  "carrier": "audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/initial-release-oracles/glassmatrix.mjs.txt",
+  "rawBytes": 1149989,
+  "sha256": "e224c58c64f9ead8a22d4ec5521643721f4706bcc096cd6986d10ad9b7d66183",
+  "scope": "First failed full preparation; original Glass release oracle before bounded correction",
+  "status": "RETAINED_INITIAL_FAILURE"
+}

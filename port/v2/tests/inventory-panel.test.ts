@@ -147,20 +147,49 @@ afterEach(() => {
 });
 
 describe('Arc 2 Inventory presentation', () => {
-  it('seats ten exact phone-dock controls in two 5×44px rows and one accessible dialog shell', () => {
+  it('keeps Survey in the first native scene slot, one objective Charters opener, relocated Inventory, and one accessible dialog shell', () => {
     const index = fs.readFileSync(path.join(here, '../apps/game/index.html'), 'utf8');
     const main = fs.readFileSync(path.join(here, '../apps/game/src/main.ts'), 'utf8');
     const parsed = new JSDOM(index);
     const document = parsed.window.document;
-    expect(document.querySelectorAll('#dock > button')).toHaveLength(10);
+    expect([...document.querySelectorAll('#dock > button')].map(button => button.id)).toEqual([
+      'dockcodex', 'primechip', 'dockshipyard', 'dockatlas',
+      'dockrecords', 'docknotifications', 'dockguide', 'docksets',
+    ]);
+    expect(document.querySelector('#topbar #dockinventory')).not.toBeNull();
+    expect([...document.querySelectorAll('#sceneactions > button')].map(button => button.id))
+      .toEqual(['dockcharts']);
+    const leftRail = document.getElementById('raillft')!;
+    expect(leftRail.parentElement).toBe(document.getElementById('dock'));
+    expect([...leftRail.children].map(button => button.id)).toEqual(['docksurvey', 'railcodex']);
+    expect(leftRail.previousElementSibling).toBeNull();
+    expect(leftRail.nextElementSibling?.id).toBe('dockcodex');
+    expect(leftRail.hasAttribute('data-panel-boundary')).toBe(true);
+    expect(document.querySelector('#dockcharters,#railcharters')).toBeNull();
+    const objective = document.querySelector('#topbar #objchip')!;
+    expect(objective.tagName).toBe('BUTTON');
+    expect(objective.getAttribute('type')).toBe('button');
+    expect(objective.getAttribute('aria-controls')).toBe('chpanel');
+    const sceneActions = document.getElementById('sceneactions')!;
+    expect(sceneActions.parentElement).toBe(document.getElementById('dock'));
+    expect(sceneActions.previousElementSibling?.id).toBe('dockatlas');
+    expect(sceneActions.nextElementSibling?.id).toBe('dockrecords');
+    expect(sceneActions.getAttribute('role')).toBe('group');
+    expect(sceneActions.hasAttribute('data-panel-boundary')).toBe(true);
+    const survey = document.getElementById('docksurvey')!;
+    expect(survey.classList.contains('dock-scene')).toBe(true);
+    expect(survey.classList.contains('dock-utility')).toBe(false);
+    expect(survey.querySelector('.utility-face')).toBeNull();
+    expect(survey.querySelector(':scope > .ico')?.textContent).toBe('🔭');
+    expect(survey.querySelector('.lbl')?.textContent).toBe('Survey');
+    expect(survey.getAttribute('aria-label')).toBe('survey card');
+    expect(survey.getAttribute('aria-controls')).toBe('survey');
     expect(document.querySelector('#dockinventory')).toMatchObject({
       id: 'dockinventory',
     });
     expect(document.querySelector('#railinventory')).not.toBeNull();
     expect(document.querySelector('#dockinventory')?.getAttribute('aria-controls')).toBe('inventorypanel');
     expect(document.querySelector('#railinventory')?.getAttribute('aria-controls')).toBe('inventorypanel');
-    expect(index).toMatch(/#dock\s*\{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*repeat\(5,\s*44px\);[^}]*grid-auto-rows:\s*44px;/s);
-    expect(index).toMatch(/#dock button\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px;/s);
     expect(index).toMatch(/#inventorypanel \.inventory-pager button:disabled\s*\{[^}]*opacity:\s*\.56;/s);
     expect(document.querySelectorAll('#inventorypanel')).toHaveLength(1);
     const sheet = document.querySelector('#inventorysheet');

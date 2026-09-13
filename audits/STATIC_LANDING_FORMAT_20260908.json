@@ -1,0 +1,40 @@
+{
+  "status": "SOURCE_AND_DOC_WHITESPACE_PASS_RAW_LOG_WARNINGS_RETAINED",
+  "sourceAndDocCheck": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      ".",
+      ":(exclude)**/*.log"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "rawLogWarnings": [
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/evidence-build-v2.log",
+      "sha256": "f7af6470e9735f6f304e17ffeb0e4d3a1ff631bebda0df87c5bf1f5a04e8d3ee"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-focused.log",
+      "sha256": "dd395c14cf81c3d6098b7de7a8bd34e9316316b427d7cab5b727e5227f76c536"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-typecheck.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-focused.log",
+      "sha256": "dad2a1841bf6b3d2e5849f35de6cfb8687f322ddad8121d293d761a67469c2b0"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-package.log",
+      "sha256": "f240bb247af2678381e1f9148e1c80f47c8090b450720e304396d2fa5e5e1f77"
+    }
+  ],
+  "reason": "Captured Vite stdout includes trailing whitespace and Vitest/npm output ends with blank lines. Exact raw evidence is preserved rather than rewriting bytes to silence diff formatting. No implementation/document whitespace findings remain."
+}

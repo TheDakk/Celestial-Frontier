@@ -1,0 +1,46 @@
+{
+  "schema": "cf.claude-review-artifacts/v1",
+  "reviewedHead": "8bdbea9a65b1f64c09906fd99589d75e5d8bc50a",
+  "immutableOriginals": [
+    {
+      "file": "CLAUDE_REQUEST.md",
+      "bytes": 4661,
+      "sha256": "23de88a2873b093221430bf832aa07c00b40ce913d639dc0f39a24181f8f76d2"
+    },
+    {
+      "file": "CLAUDE_RESPONSE.md",
+      "bytes": 19160,
+      "sha256": "ab31dee7522a4358a5be46868e8b14d0a1283ebd0ba9a8fa8850c094056dadc9"
+    },
+    {
+      "file": "CLAUDE_RESPONSE.json",
+      "bytes": 21412,
+      "sha256": "f5de78535e322ffa34d978994b2b06d164485908ca434e8bec5156bcb8fa55fe"
+    },
+    {
+      "file": "CLAUDE_RECEIPT.json",
+      "bytes": 3315,
+      "sha256": "ec3afa84275a41db5d9149b3bd8a4f601412f258bc44554ce77d8d5b1e166ac6"
+    },
+    {
+      "file": "CLAUDE_START.json",
+      "bytes": 2234,
+      "sha256": "a502e02f2c8acd63c93051c14b439555655902d85fa08bbd61377049d6e466b3"
+    },
+    {
+      "file": "CLAUDE_STDERR.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "IMPLEMENTATION_SIGNATURE.json",
+      "bytes": 9225,
+      "sha256": "6ce187ce7b517f65867ab04102c1ff39a6ac16ca517223352dcda91cae492d6b"
+    },
+    {
+      "file": "run-claude-review.py",
+      "bytes": 3777,
+      "sha256": "271b81a214b19690a7dbfffc34ce39faf01517c42c34ba5c1afe5fcb8ffa1d0e"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "cf-metal-render-qualification/v1",
+  "blenderVersion": "5.2.1 LTS",
+  "buildHash": "9e2066aef7ef",
+  "backend": "METAL",
+  "sceneDevice": "GPU",
+  "enabledDevices": [
+    {
+      "name": "Apple M4 Pro (GPU - 16 cores)",
+      "type": "METAL",
+      "id": "METAL_Apple M4 Pro (GPU - 16 cores)"
+    }
+  ],
+  "cpuEnabled": false,
+  "samples": 16,
+  "resolution": [
+    192,
+    192
+  ],
+  "renderSeconds": 151.113,
+  "output": {
+    "path": "metal-qualification.png",
+    "bytes": 36148,
+    "sha256": "7f6244d69b3bd8064e3ca9f64c608e00110b1ceb6cb4148a68be6422f8f3df54"
+  },
+  "scope": "Bounded actual synthetic material/lighting render; not candidate anatomy or performance comparison."
+}

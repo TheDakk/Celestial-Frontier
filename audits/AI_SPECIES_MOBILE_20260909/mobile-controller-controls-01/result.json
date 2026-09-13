@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "command": [
+    "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "mobile-controller-controls-01",
+    "--",
+    "node",
+    "--test",
+    "tools/local-image-generation/run-mobile-model-delivery.test.mjs"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "syntaxExitCode": 0,
+  "sourcesUnchanged": true,
+  "browserRun": false,
+  "productChanged": false,
+  "packChanged": false
+}

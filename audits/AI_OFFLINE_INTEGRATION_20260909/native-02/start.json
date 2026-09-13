@@ -1,0 +1,25 @@
+{
+  "schema": "cf.native-optional-mobile-model-delivery.v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-09T19:34:02.094Z",
+  "sourcePack": {
+    "directory": "/private/tmp/cf-mobile-pack-20260909-species-03",
+    "manifestSha256": "5dc7a6e41eebe0e71c399db7c526d87ca47a43d850bb1fc3111dcf8c94aa0d5c"
+  },
+  "sources": [],
+  "observations": [],
+  "controllers": [],
+  "clicks": [],
+  "screenshots": [],
+  "browserEvents": [],
+  "network": [],
+  "workerTargetEvents": [],
+  "interceptions": [],
+  "cleanup": {},
+  "actualRemoteDownload": false,
+  "modelExecuted": false,
+  "physicalPhoneQualified": false,
+  "qualityAccepted": false,
+  "scope": "Desktop native browser: actual optional static package, explicit native install/pause/resume/verify; exact pinned model bytes from disclosed loopback transport; full OPFS verification and offline app/runtime.",
+  "normalOfflineLandfallRequested": true
+}

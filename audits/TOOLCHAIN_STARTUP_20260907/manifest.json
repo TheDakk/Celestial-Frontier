@@ -1,0 +1,81 @@
+{
+  "schema": "cf-toolchain-startup-receipt/v1",
+  "sessionDateLocal": "2026-09-07",
+  "checkAtUtc": "2026-09-08T02:03:37.780Z",
+  "owner": "OpenAI/Codex macOS openai/mac",
+  "baseSource": "ea74425c1c3737d8081d7c4de8e454912812ffd7",
+  "status": "PASS",
+  "updates": {
+    "node": [
+      "26.7.0",
+      "26.8.1"
+    ],
+    "libffi": [
+      "3.7.1",
+      "3.8.0"
+    ],
+    "simdutf": [
+      "9.0.0",
+      "9.1.1"
+    ],
+    "merve": [
+      "1.2.2_1",
+      "1.2.2_2"
+    ],
+    "simdjson": [
+      "4.6.6",
+      "4.6.11"
+    ]
+  },
+  "nodeRuntime": "v26.8.1",
+  "npm": "11.19.0",
+  "homebrew": "6.0.22",
+  "capabilitiesPassed": 7,
+  "processCheck": "Active Node processes belonged to the bundled ChatGPT CUA runtime, not the idle Homebrew Node installation; REAPER was active and had no update. No processes stopped.",
+  "outdatedExit": 1,
+  "outdatedExitMeaning": "Updates available (Node only); subsequent process inventory run separately because && stopped after this expected status.",
+  "reaperMetadata": "7.79.0_06dd787u matches installed7.79; scoped brew outdated has no casks.",
+  "inkscape": "Metadata only; not launched. Existing registration-crash qualification remains unresolved and U2 does not require it.",
+  "locks": "Scoped metadata refresh and actual upgrade+verification each held shared toolchain lock; no development ran during update.",
+  "hostedActions": 0,
+  "caffeinatePid": 93550,
+  "files": [
+    {
+      "file": "check.json",
+      "bytes": 5764,
+      "sha256": "b2d3e05a42befa56edf009f789828bc74554ea915ced60ad4e0afec153eace85"
+    },
+    {
+      "file": "brew-update.log",
+      "bytes": 859,
+      "sha256": "88ce700f89be35f1c6f5c0998dbac20f7ceead7f909a8c0678c09b3665afa0cd"
+    },
+    {
+      "file": "outdated.json",
+      "bytes": 216,
+      "sha256": "49acffe13b2178a91ab7d75ff08fdba6d0f92cc4355f2a2af0846dad4e68d22b"
+    },
+    {
+      "file": "busy.txt",
+      "bytes": 1088,
+      "sha256": "4db1dbf79e4590ba5993c8a3053214b78d54f9d4f2395c30f930763c1e5b391d"
+    },
+    {
+      "file": "node-plan.log",
+      "bytes": 223,
+      "sha256": "7b68eed00993298c92af3a53cf27cf62212a390279a0dcec5014eac2dc2be30e"
+    },
+    {
+      "file": "node-upgrade.log.gz",
+      "bytes": 609,
+      "sha256": "01e8df57429fa4c910ed7225e4023f2b4a806cf0740d3ebb7897691f7122314b",
+      "rawBytes": 1648,
+      "rawSha256": "2de6f096be784945b2d8bca7bf229d7888a9f77d19507c0f4feb62efa04c5d53"
+    },
+    {
+      "file": "verify.json",
+      "bytes": 9482,
+      "sha256": "b42331e97c5174df2f81161ec1a5ee0c822ffd9bb3667e756ebe8a04c4c30144"
+    }
+  ]
+}
