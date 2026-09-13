@@ -35,3 +35,14 @@ Wiring passes `{ container: () => new Container(), graphics: () => new Graphics(
 ## 4. Effects anchors (already consumed by `effects/anchors.ts`)
 
 `cf.effect-sequence-anchors/v1` exactly as Codex emits it; per-phase anchors are the runtime fallback when common-canvas registration is not established.
+
+## 5. Material owner (added 2026-09-13 after A1)
+
+For every creature the **resolved-anatomy record is the authority for materials**, because it comes from the winning painter owner and describes what was actually drawn. Codex's procedural observer (C2) must therefore emit the material it painted (from the genome's FA_SKIN routing through the painter), never a default such as `fur`. Claude's motion and sound compilers read `record.materials.surface` first and fall back to the genome only when the record omits it, recording the fallback in `card.notes`. The A1 proof run recorded one disagreement on the procedural quadruped (record `fur`, genome `translucent`); that is an observer defect to fix in C2, not a compiler choice.
+
+## 6. Engines available on anthropic/mac (for C2 to target)
+
+- `motion/`: `compileBodyCard(record, genome?)`, `buildTimeline(card, actionId, seed)`, `sampleTimeline(tl, ms)`, `createGsapPlayer(tl, target: PoseTarget, {now})`. PoseTarget is `setJoint(name, rotationRadians, dx, dy)` with the record's joint names; the rig's `applyPose` in section 2 is the same vocabulary.
+- `effects/`: `parseAnchors`, `placeEffectSequence(anchors, attackerStand, targetStand, groundLine)`, `buildEffectSchedule`, `EffectSequencePlayer` on Pixi 8 `ParticleContainer`.
+- `worldlife/`: `compileWorldLife(card, seed, 'arena'|'landfall')`, adapter with a display factory and injected clock.
+- `soundkit/`: `compileVoiceCard`, `deriveCue(card, cueId, sources, seed)`; source sets named per section 1.
