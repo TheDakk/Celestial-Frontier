@@ -1,0 +1,101 @@
+--- a/ART_KIT.md
++++ b/ART_KIT.md
+@@ -325,6 +325,45 @@
+   characters other than the one scale figure if named.
+ ```
+ 
++### Arena scene profile
++
++```text
++WHAT (iii) ARENA: a procedural combat environment assembled from a biome-family
++  template and the same compiler-filled system card and frozen style as its
++  biome plate. The template is reusable; the battle context supplies its seed.
++
++ARENA - SUBJECT SLOT, in this order:
++  source biome family and defining landform; fighting-ground material and
++  sheen; system-card light, mineral palette, atmosphere, weather and time of
++  day; the home world's physical signature; the requested depth plate
++  (far, mid or near). No combatants are painted into the arena.
++
++ARENA - LAYOUT (paste):
++  A wide, side-view painted fighting stage at low eye level, with a flat,
++  continuous fighting-ground band and clear combatant stands at the left
++  and right thirds. Compose for two opposing creatures, each one third to
++  one half of frame height. Keep their silhouettes and run-up path clear.
++  Put atmospheric depth behind the fight, with no competing foreground.
++  Use one shared horizon, ground registration and system-card light direction
++  across all three plates. Every shadow agrees with that light.
++  FAR: distant landforms, sky and atmosphere behind the combatants.
++  MID: the fighting ground and restrained biome landmarks behind the stands.
++  NEAR: a quiet ground edge that supports parallax without covering the stands,
++  paws, effects or fighting path. Parallax must not reveal gaps between plates.
++
++ARENA - OUTPUT:
++  Scene block, three separately painted 2560 x 1440 masters per biome-family
++  template: far, mid and near, each with its own brief; never one image sliced.
++  The masters remain opaque scene paintings. Matching mid/near extraction
++  masks are retained as separate intake data for layered composition; never
++  paint a checkerboard or imitation transparency into a master.
++
++ARENA - NEGATIVE ADDITIONS:
++  No characters, resident creatures, scale figures, baked-in attack effects,
++  UI, timing bar, labels, steep or broken fighting ground, competing foreground,
++  obstacles on the fighting path, inconsistent perspective or mismatched light.
++```
++
+ ## 4D. Flora (cut-out)
+ 
+ ```text
+@@ -623,6 +662,52 @@
+   look, no glow used as the icon, no person, no hands, no scene.
+ 
+ OUTPUT: cut-out block, 512 square; status and condition icons 256 square.
++```
++
++## 4K. Effects (cut-out sequences)
++
++```text
++WHAT: painted ability-theme effect sequences with launch, travel and impact
++  phases, using the unchanged frozen style. The source theme keys are:
++  fire (Fire), frost (Frost), storm (Storm), tide (Tide), stone (Stone),
++  venom (Venom), void (Void), sand (Sand), chem (Chem), psionic (Psionic),
++  wild (Wild). Use only the theme and ability selected by game data.
++
++SUBJECT SLOT, in this order:
++  source ability theme and the physical action it represents; material and
++  palette; sequence phase (launch, travel or impact); the phase's strong shape
++  and direction of motion; its origin or contact anchor and relative scale.
++  Keep the same painted material, palette, direction and scale relationship
++  across the sequence. A melee travel phase may be a short directional sweep;
++  it need not invent a projectile for an ability that does not have one.
++
++ACCURACY:
++  Must include: a readable theme-specific effect silhouette in each phase,
++  with shared anchors and consistent scale for runtime sequencing.
++  Must exclude: creatures, body parts, scenery, ground, cast shadows, text,
++  symbols used as labels, UI and a baked-in target.
++
++LAYOUT (paste):
++  One isolated phase of the named ability effect, painted as a crisp-edged,
++  fully opaque shape against the flat pure magenta key (#FF00FF). Keep the
++  entire shape within the frame with room for its motion. Paint energy,
++  spray, dust and impact as bounded shapes and grouped marks in the frozen
++  hand, with no halo or soft haze bleeding into the key. Keep the canvas size,
++  registered origin/contact anchor and scale consistent between phase images.
++  Runtime placement and tweening connect the phases; do not paint a battle
++  scene or generate a contact sheet.
++
++NEGATIVE ADDITIONS:
++  No magenta or pink within the effect, soft transparent fringe, photographic
++  particles, lens flare, glowing outline, baked motion blur, lettering,
++  frames, scenery, body parts or duplicate phase images in one output.
++
++OUTPUT:
++  Cut-out block, 1024 square per phase master, subject to section 5's existing
++  authoring-target and runtime-input admission rule. Deliver launch, travel
++  and impact as separately named images; retain their ordered phase/anchor
++  metadata. Any extra key images use the same registration. Review sheets
++  and runtime effect atlases are assembled from these masters after intake.
+ ```
+ 
+ ## 5. Technical output

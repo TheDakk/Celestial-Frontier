@@ -17,54 +17,57 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · TEN-SECOND FALLBACK CAPTURES READY
+## SESSION HANDOFF — 2026-09-12 · ARENA / EFFECTS v4.2 PROPOSAL AWAITS APPROVAL
 
-**STOP for Nick's review.** The approved2D quadruped attempt preserves exact master rest pixels
-on Civet,fox and the painter-emitted procedural control, but fails shape at clip extremes.
-Use no success wording for articulated motion: folded/overstretched triangles remain, and the
-fox has8 unreachable IK samples. All three review videos explicitly show WHOLE-PORTRAIT FALLBACK.
-Native sourcefb008d58 completes10.163/10.181/10.120s videos at60.00fps; fallback-only update
-p95 .10/.10/.00ms. E is intact beside the stage, which uses the retained unoccupied biome plate
-from E's recipe. Opponent is whole-portrait Platypus. Captures do not prove ears/jaw/tail motion
-or normal-game integration. Full details, failures, hashes and playable MP4s:
-audits/CIVET_2D_PROOF_20260912/README.md and captures/. Earlier recorder failures retained;
-final recorder continuously feeds rest frames until its start event before timing10 seconds.
-Browser/server closed, no model run. Three template tests, two recorder contracts,79 existing
-bridge/kinematics/rig tests, package TypeScript and root validate passed in this source batch.
+**STOP for Nick's approval before painting.** Exact two-addition patch and compiler/staging
+contract: audits/ARENA_EFFECTS_V42_PROPOSAL_20260912/PROPOSAL.md and
+ART_KIT_v4.2.proposed.diff. Active ART_KIT.md is unchanged v4.1, including frozen paragraph
+and 4E. Proposed additions: Arena profile under planets (far/mid/near biome-family plates),
+and Effects cut-out sequences for the eleven source ability themes (launch/travel/impact).
+The latest supplied Civet review is retained verbatim at
+audits/CLAUDE_CIVET_REVIEW_20260912/CLAUDE_CIVET_ARCHITECTURE_REVIEW.md.
+Its older stepped-playback instruction is superseded by Nick's explicit smooth 60 fps motion.
 
-**Next steps:** Nick reviews the fallback captures. Proposed next bounded repair is shared
-skin weighting/foot constraints and unreachable-IK handling; do not start it automatically
-past this review stop. After the proof decision: up to6 deterministic weather variants on the
-saved raw finisher (sky-facing sheen, wet-fur value/contrast compression, foreground streaks
-at plate-sky density), no inference, beside E/triptych for Nick's pick. Then at most3 approximately
-1GB finisher candidates on Mac, redistribution permitted, same composite/masked0.35 and
-compatible precomputed embedding; one best-candidate phone attempt. No delivery engineering
-before that result. Klein phone probing remains stopped. Phone17Pro/iOS26.6.2/USB-C; normal
-Safari quota1,048,576,000bytes versus Klein expanded transformer4,393,808,634bytes. Earlier
-session loss is not established OOM. CF Local Probe certificate was left installed for now.
+**After approval:** paint only Earth temperate arena far/mid/near and one Wild effect sequence;
+stage Civet versus Platypus with a parts rig, then show the proof. The former proposed
+continuous-mesh repair is superseded. Use strong shared key poses, easing, anticipation,
+overshoot and secondary motion; Mac 60 fps / phone 30 fps budget. Combatants face each other
+at one third to one half frame height. Parallax run-up <0.5 s, attack 0.5–0.75 s, hit about
+0.3 s, return <0.5 s; brief hitstop, flash, shake, damage number and quick timing bar.
+Arena recipe = biome-family template + compiler-filled system card + stable battle-context
+seed, never clock. Wild uses its home world; guardian its lair with the system's One signature;
+duels alternate home by round with seeded initial host. Phone composes template/card lighting
+without a finisher; desktop may finish. Cache through originals lifecycle. No implementation,
+painting, inference or browser work in this proposal batch. Full effects/library rollout waits.
 
-Accepted ordinary-game art stays rain E (3x droplets/3x specular/2x rain), original and raw
-finisher retained; source8b01e38c and browser proofaaacfd6f. Civet proportion authority is what
-faunaResetViverridD draws, not ignored QUAD2 generic dimensions. Authored master JSON measures
-the accepted view, preserving its perspective/raised-paw support offsets; procedural geometry
-is observed from its actual winning draw owner. No raw genes override named Earth anatomy.
-Keep turnaround/canid assets for later engine port; Blender browser projection is abandoned.
-No3D tokens/projections,texture-finisher passes,effect paintings or kit edits.
+Prior ten-second captures from native fb008d58 remain labelled WHOLE-PORTRAIT FALLBACK at
+audits/CIVET_2D_PROOF_20260912/captures/. Rest matches all three masters exactly; continuous
+mesh failed shape, including eight unreachable fox IK samples. Captures do not qualify
+articulated motion or normal-game integration. Signed 7a2e5312 retains their evidence.
+Painter-drawn Civet geometry remains authority over unused QUAD2 values; authored masters
+retain hash-bound pose records. No genes override named Earth anatomy. Turnaround/canid
+masters remain for later engine port; no new 3D tokens/projection or texture-finisher passes.
 
-Claude's four supplied reviews remain verbatim in signed7f2aa40b and match the supplied ZIP.
-Their historical restart/Blender prose is review history; Nick's current approved2D request
-controls execution. No larger Blender rework approval question remains active.
+Accepted ordinary-game art remains E (3x droplets / 3x specular / 2x rain), source 8b01e38c,
+browser evidence aaacfd6f; original and raw finisher retained. After the proof: up to six
+no-inference weather variants using sky-facing sheen, wet-fur value/contrast compression and
+foreground streaks at plate-sky density, beside E/triptych for Nick's pick. Then at most three
+approximately 1 GB redistribution-permitted finisher candidates on Mac, same composite and
+masked 0.35 with compatible precomputed embedding; one best-candidate phone attempt.
+No delivery engineering before that result. Klein phone probing stays stopped: normal Safari
+quota 1,048,576,000 bytes versus expanded transformer 4,393,808,634 bytes. Prior session loss
+is not established OOM. Target iPhone 17 Pro / iOS 26.6.2 / USB-C; certificate left installed.
 
-**Clean promotion plan:** prune superseded code and pack assets on openai/mac first. Then
-split PR42 into three ordered squash-merged tiers into develop: production UI; painted landfall
-engine; research tools. Then one develop→main release PR with the full chain. Ready no PR until
-Civet2D proof,second weather pick and phone-tier decision have landed. Audits LFS migration is
-pending Nick's decision; no history rewrite. Detailed plan remains the supplied
-CLAUDE_FULL_REVIEW_20260910/CLEAN_PROMOTION_PLAN.md. No GitHub authority is implied.
+**Clean promotion plan:** prune superseded code and pack assets on openai/mac first, then
+three ordered squash-merged tiers into develop: production UI; painted landfall engine;
+research tools. One develop→main release PR with the full chain follows. Ready no PR until
+Civet 2D proof, second weather pick and phone-tier decision have landed. Audits LFS migration
+awaits Nick's decision; no history rewrite. Detailed supplied plan:
+audits/CLAUDE_FULL_REVIEW_20260910/CLEAN_PROMOTION_PLAN.md.
 
 Ownership: OpenAI/Codex macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracking origin/openai/mac. Signedfb008d58 is60 ahead upstream/171 ahead cachedorigin/develop,
-zero behind; final evidence/doc commit follows. Only unrelated.DS_Store is excluded. Reuse
-Sept12 startup receipt (Node26.8.2). GitHub step NONE; PR42 parked; zero hosted attempts or
-writes authorized despite budget UNFROZEN/public/private fallback3000. No PR needed now;
-no release/deployment. Claude Code need not open/sync; these local changes are not in develop.
+tracking origin/openai/mac. Pre-proposal signed HEAD 7a2e5312: 61 ahead upstream, 172 ahead
+cached origin/develop, zero behind. Proposal/doc commit follows; unrelated .DS_Store excluded.
+Reuse September 12 startup receipt (Node 26.8.2). GitHub step NONE; PR42 parked. No hosted
+attempts, writes, release or deployment authorized. Codex waits for the two kit additions'
+approval; Claude Code need not open or sync, and these local changes are not in develop.

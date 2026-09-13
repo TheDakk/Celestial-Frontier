@@ -1,17 +1,24 @@
 # Creature animation — shared anatomy and motion contract
 
-**Current browser track — matches code as of 2026-09-12:** Nick abandoned Blender projection
-for browser battle. Preserve the turnaround and canid masters for the later engine port; no
-further 3D tokens/projections or texture-finisher passes. The approved bounded replacement is
-[a shared 2D quadruped template](audits/CIVET_2D_PROOF_20260912/README.md), with hash-bound authored
-Civet/fox landmarks and draw-time procedural geometry from the winning painter. Native source2c33f8c7
-proved exact rest for all three but failed shape at clip extremes; the isolated review uses
-labelled whole-portrait fallback. Qualified ten-second fallback captures are now available from native sourcefb008d58,
-measured at60fps; these timings do not qualify mesh deformation. Nick's review is pending.
-Joint articulation remains unfinished; no more rework runs past this capture stop. This supersedes the Blender
-proof and its earlier pending rework approval below. No normal-game battle animation is changed.
-The template consumes record-owned anatomy, alpha triangulation, two shared-vertex depth layers
-and finite idle/attack/hit curves. Unsupported geometry keeps a labelled whole-portrait fallback.
+**Current browser track — matches code as of 2026-09-12:** Blender projection remains
+abandoned; retain turnaround/canid masters for the later engine port. The continuous-mesh
+[quadruped attempt](audits/CIVET_2D_PROOF_20260912/README.md) preserves exact rest pixels but
+fails shape at clip extremes. Native fb008d58 provides ten-second, 60 fps labelled
+whole-portrait fallback captures; these do not qualify articulated motion. No normal-game
+battle animation changed.
+
+**Current direction, pending art approval:** Nick requests a parts-rig Civet versus Platypus
+proof in a procedural Earth temperate arena. The [v4.2 proposal](audits/ARENA_EFFECTS_V42_PROPOSAL_20260912/PROPOSAL.md)
+adds three arena depth plates under planets and launch/travel/impact Effects cut-outs.
+The active kit is unchanged. Stop before painting until Nick approves both additions, then
+paint only those three plates and one Wild sequence for the bounded parts-rig turn.
+The previous proposed continuous-mesh repair is superseded. Share strong pose curves with
+60 fps tweening, easing, anticipation, overshoot and secondary motion (phone budget 30 fps).
+Use battle-context seeds and compiler-filled home-world cards, never the clock; wild home,
+guardian lair/One signature, seeded alternating duel hosts. Phone composes without a finisher;
+desktop may finish. Preserve originals. Full compiler, tempo and framing contract is in the
+proposal. Authored parts remain hash-bound asset data; procedural parts follow the winning
+painter. No per-creature clip edits, new 3D projection or texture-finisher passes.
 Do not infer universal family coverage, hidden-surface reconstruction or accepted motion.
 
 
@@ -22,7 +29,7 @@ Atlas frames/dark backgrounds and stop with a proposed v4.1 sentence if present.
 Keep 4E turnaround unchanged. After painting acceptance, the [Animation and battle
 track](audits/CLAUDE_FULL_REVIEW_20260910/CODEX_HANDOFF.md#animation-and-battle-track)
 (Civet proof, family masters/textures/clips and staged turns) precedes full-library
-rollout. Effects require a separately approved v4.1 class. This order supersedes
+rollout. Effects now await the separately proposed v4.2 class above. This order supersedes
 earlier full-library-first or v4-awaiting-approval language below.
 
 
