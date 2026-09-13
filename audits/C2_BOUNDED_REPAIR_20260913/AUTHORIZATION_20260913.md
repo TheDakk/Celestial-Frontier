@@ -21,3 +21,7 @@ Any change to the 8 % compression bound, any per-creature clip curve, any Motion
 ## Stop conditions that still apply
 
 Stop and report if: a gate fails after the band underlaps on any cut (report the counts and the frame; do not add a third mechanism), a rest render changes by any channel, the atlas exceeds its budget, or the capture shows a shape failure the oracle did not predict. Otherwise proceed through 1 to 5 and hand the captures to Nick's eye.
+
+## Amendment (2026-09-13, after the band gate failed)
+
+See `audits/C2_BAND_UNDERLAPS_20260913/CLAUDE_REVIEW_RESPONSE.md` section 4: ancestry from pixel ownership (unowned joints resolve to their owning part, the remainder for pelvis/root), depth additionally capped at half the descendant's smaller box dimension, and a pair-isolated seam gate with `--disc=0.06`. Authorized under the same delegation, same stop conditions.
