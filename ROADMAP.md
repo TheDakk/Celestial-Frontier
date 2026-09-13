@@ -64,3 +64,17 @@ now, no release/deployment. Claude Code need not open/sync; local changes are no
 Recorder-only source2652f5cb timed out before returning a capture; attempt-02 retains it.
 Next uses real native input for the audio gesture plus explicit bounded startup diagnostics.
 Art/curves unchanged; no new art attempt and no mesh-success claim.
+
+Source4eb7e24c diagnosed recorder-start deadline: zero-rate canvas stream needs a new draw
+before first frame request. Add that rest draw; retain attempt-03; art/curves still unchanged.
+
+
+**Current stop:** signed HEAD4eb7e24c (58 ahead origin/openai/mac,169 ahead cachedorigin/develop,
+zero behind). The one-line recorder first-frame fix and attempt-03 evidence are staged. Two
+attempts to sign it failed with "1Password: agent returned an error"; no new commit exists.
+Nick has been asked to unlock/allow Git signing. After it works, sign staged work, verify it,
+then run the isolated recorder once into a NEW output directory; check ffprobe durations.
+No rig/art/curve parameter change is authorized by that recorder repair. The native geometry
+finding remains failed; captures must say whole-portrait fallback. No ten-second file is yet
+qualified; first short videos remain at /private/tmp/cf-quadruped-proof-20260912-01. Refresh
+references and retain final media/receipts, then stop for Nick's review. No queued work starts.

@@ -90,3 +90,10 @@ returned. Browser/server closed; report retained at attempt-02. No anatomy/curve
 successful capture is claimed. The next instrument correction uses real native button input
 for audio activation, with separate five-second audio/recorder-start deadlines to diagnose
 rather than enlarge the timeout. No automatic retry of unchanged source.
+
+
+Third attempt (4eb7e24c) identified the startup deadlock specifically as recorder-start, not
+audio resume. With captureStream(0), requesting a frame before any post-stream canvas draw
+left the recorder waiting for video metadata while the animation waited for recorder start.
+Correction: render the unchanged rest stage once after recorder.start, then request that
+frame. Native click and the short deadlines remain. Report retained at attempt-03.

@@ -6456,5 +6456,8 @@ painter's drawn proportions take precedence over the ignored generic QUAD2 dimen
 `port/v2/tools/creature-animation/quadruped-template.mjs` owns bounded graph admission,
 alpha-driven conforming triangulation, two depth index sets, inherited affine skinning and
 shared finite clips. `port/v2/tools/quadruped-proof` is an isolated Pixi review/capture tool,
-not a game route. Native evidence and art acceptance are pending. Blender projection is
+not a game route. Native exact-rest checks pass on all three, but triangle-extreme shape checks fail;
+review staging uses the explicit whole-portrait fallback. Encoded-duration verification found
+short first recordings; the recorder correction awaits local signing. Art acceptance remains
+pending. Blender projection is
 abandoned for this browser proof; original canid/turnaround assets remain for the engine port.
