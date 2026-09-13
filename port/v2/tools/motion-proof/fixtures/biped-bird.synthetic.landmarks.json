@@ -1,0 +1,114 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "synthetic:biped-bird",
+    "seed": 659713,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "family": "bird",
+  "geometry": {
+    "cutoutAssetHash": "synthetic-no-cutout",
+    "width": 1024,
+    "height": 1024,
+    "groundLineY": 0.85,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.46,
+      0.48
+    ],
+    "pelvis": [
+      0.42,
+      0.5
+    ],
+    "spine": [
+      0.5,
+      0.47
+    ],
+    "chest": [
+      0.58,
+      0.45
+    ],
+    "neck0": [
+      0.64,
+      0.38
+    ],
+    "neck1": [
+      0.68,
+      0.3
+    ],
+    "head": [
+      0.72,
+      0.24
+    ],
+    "beak": [
+      0.8,
+      0.25
+    ],
+    "legFarKnee": [
+      0.42,
+      0.62
+    ],
+    "legFarAnkle": [
+      0.38,
+      0.74
+    ],
+    "legFarFoot": [
+      0.46,
+      0.85
+    ],
+    "wingFarRoot": [
+      0.52,
+      0.42
+    ],
+    "wingFarTip": [
+      0.32,
+      0.4
+    ],
+    "legNearKnee": [
+      0.44,
+      0.64
+    ],
+    "legNearAnkle": [
+      0.4,
+      0.76
+    ],
+    "legNearFoot": [
+      0.48,
+      0.87
+    ],
+    "wingNearRoot": [
+      0.54,
+      0.44
+    ],
+    "wingNearTip": [
+      0.34,
+      0.42
+    ],
+    "tailFan": [
+      0.3,
+      0.52
+    ]
+  },
+  "materials": {
+    "surface": "feathered",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "biped-bird-v1"
+}

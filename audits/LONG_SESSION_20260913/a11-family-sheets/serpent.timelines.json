@@ -1,0 +1,2672 @@
+{
+ "idle": {
+  "kind": "motion-timeline",
+  "actionId": "idle",
+  "family": "idle",
+  "loop": true,
+  "seed": 659716,
+  "recipeHash": null,
+  "massClass": "medium",
+  "bodyMs": 2873.8938238471746,
+  "durationMs": 2873.8938238471746,
+  "phases": [
+   [
+    "period",
+    2873.8938238471746
+   ]
+  ],
+  "tracks": {
+   "root": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "head": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": -0.03490658503988659,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0.03490658503988659,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": -0.017453292519943295,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "jaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg0": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0.03490658503988659,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": -0.03490658503988659,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg1": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0.05235987755982989,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": -0.05235987755982989,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg2": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg3": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg4": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg5": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg6": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg7": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg8": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0.05235987755982989,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg9": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0.06981317007977318,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ]
+  },
+  "root": {
+   "dx": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": 0.003,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": -0.003,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "dy": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 718.4734559617937,
+     "t": 0.25,
+     "value": -0.002,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 1436.9469119235873,
+     "t": 0.5,
+     "value": -0.004,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2155.420367885381,
+     "t": 0.75,
+     "value": -0.002,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 2873.8938238471746,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ]
+  },
+  "secondary": [
+   {
+    "partId": "tail",
+    "joint": "seg7",
+    "driver": "seg6",
+    "order": 0,
+    "lagMs": 50,
+    "overshoot": 0.05,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 50,
+      "t": 0.017397998348132035,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "seg8",
+    "driver": "seg6",
+    "order": 1,
+    "lagMs": 100,
+    "overshoot": 0.0425,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 100,
+      "t": 0.03479599669626407,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 818.4734559617937,
+      "t": 0.28479599669626404,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 1536.9469119235873,
+      "t": 0.5347959966962641,
+      "value": 0.05458517235612266,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 1596.9469119235873,
+      "t": 0.5556735947140226,
+      "value": 0.05235987755982989,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 2255.420367885381,
+      "t": 0.7847959966962641,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 2973.8938238471746,
+      "t": 1.034795996696264,
+      "value": 0,
+      "ease": "sine-in-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "seg9",
+    "driver": "seg6",
+    "order": 2,
+    "lagMs": 150,
+    "overshoot": 0.034999999999999996,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 150,
+      "t": 0.052193995044396105,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 868.4734559617937,
+      "t": 0.3021939950443961,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 1586.9469119235873,
+      "t": 0.5521939950443961,
+      "value": 0.07225663103256524,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 1676.9469119235873,
+      "t": 0.5835103920710337,
+      "value": 0.06981317007977318,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 2305.420367885381,
+      "t": 0.8021939950443961,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 3023.8938238471746,
+      "t": 1.0521939950443961,
+      "value": 0,
+      "ease": "sine-in-out"
+     }
+    ]
+   }
+  ],
+  "deform": {
+   "squash": 0,
+   "stretch": 0
+  },
+  "hitstopMs": 0,
+  "luminousPulseMs": 0,
+  "clamped": [],
+  "notes": [
+   "gait \"walk\" has no serpent approach; using slither"
+  ],
+  "hash": "aa02fbb7"
+ },
+ "approach:slither": {
+  "kind": "motion-timeline",
+  "actionId": "approach:slither",
+  "family": "approach",
+  "loop": false,
+  "seed": 659716,
+  "recipeHash": null,
+  "massClass": "medium",
+  "bodyMs": 420,
+  "durationMs": 660,
+  "phases": [
+   [
+    "stride",
+    420
+   ]
+  ],
+  "tracks": {
+   "root": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "head": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0.03490658503988659,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "jaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg0": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": 0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0.03490658503988659,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": -0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg1": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": 0.24434609527920614,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": -0.24434609527920614,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg2": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": 0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": -0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg3": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": -0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": 0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg4": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": -0.24434609527920614,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": 0.24434609527920614,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg5": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": -0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": 0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg6": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": 0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": -0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg7": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": 0.24434609527920614,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": -0.24434609527920614,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg8": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": 0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": -0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "seg9": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": -0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": 0.13962634015954636,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ]
+  },
+  "root": {
+   "dx": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ],
+   "dy": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 105,
+     "t": 0.25,
+     "value": -0.004,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 210,
+     "t": 0.5,
+     "value": 0,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 315,
+     "t": 0.75,
+     "value": -0.004,
+     "ease": "sine-in-out"
+    },
+    {
+     "ms": 420,
+     "t": 1,
+     "value": 0,
+     "ease": "sine-in-out"
+    }
+   ]
+  },
+  "secondary": [
+   {
+    "partId": "tail",
+    "joint": "seg7",
+    "driver": "seg6",
+    "order": 0,
+    "lagMs": 50,
+    "overshoot": 0.05,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 155,
+      "t": 0.36904761904761907,
+      "value": 0.25656340004316647,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 185,
+      "t": 0.44047619047619047,
+      "value": 0.24434609527920614,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 260,
+      "t": 0.6190476190476191,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 365,
+      "t": 0.8690476190476191,
+      "value": -0.25656340004316647,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 395,
+      "t": 0.9404761904761905,
+      "value": -0.24434609527920614,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 470,
+      "t": 1.119047619047619,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 500,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "seg8",
+    "driver": "seg6",
+    "order": 1,
+    "lagMs": 100,
+    "overshoot": 0.0425,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 205,
+      "t": 0.4880952380952381,
+      "value": 0.14556045961632708,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 265,
+      "t": 0.6309523809523809,
+      "value": 0.13962634015954636,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 310,
+      "t": 0.7380952380952381,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 415,
+      "t": 0.9880952380952381,
+      "value": -0.14556045961632708,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 475,
+      "t": 1.130952380952381,
+      "value": -0.13962634015954636,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 520,
+      "t": 1.2380952380952381,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 580,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "seg9",
+    "driver": "seg6",
+    "order": 2,
+    "lagMs": 150,
+    "overshoot": 0.034999999999999996,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 255,
+      "t": 0.6071428571428571,
+      "value": -0.1445132620651305,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 345,
+      "t": 0.8214285714285714,
+      "value": -0.13962634015954636,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 360,
+      "t": 0.8571428571428571,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 465,
+      "t": 1.1071428571428572,
+      "value": 0.1445132620651305,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 555,
+      "t": 1.3214285714285714,
+      "value": 0.13962634015954636,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 570,
+      "t": 1.3571428571428572,
+      "value": 0,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 660,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   }
+  ],
+  "deform": {
+   "squash": 0,
+   "stretch": 0
+  },
+  "hitstopMs": 0,
+  "luminousPulseMs": 0,
+  "clamped": [],
+  "notes": [
+   "gait \"walk\" has no serpent approach; using slither"
+  ],
+  "hash": "0833e37e"
+ },
+ "melee:strike": {
+  "kind": "motion-timeline",
+  "actionId": "melee:strike",
+  "family": "melee",
+  "loop": false,
+  "seed": 659716,
+  "recipeHash": null,
+  "massClass": "medium",
+  "bodyMs": 506.66666666666663,
+  "durationMs": 746.6666666666666,
+  "phases": [
+   [
+    "anticipation",
+    140
+   ],
+   [
+    "strike",
+    90
+   ],
+   [
+    "smear",
+    16.666666666666668
+   ],
+   [
+    "recovery",
+    260
+   ]
+  ],
+  "tracks": {
+   "root": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "head": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": -0.3490658503988659,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0.08726646259971647,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0.2617993877991494,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": -0.08726646259971647,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "jaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": -0.3490658503988659,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": -0.7330382858376184,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "seg0": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": -0.3141592653589793,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": -0.08726646259971647,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0.06981317007977318,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": -0.17453292519943295,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "seg1": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": -0.20943951023931956,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0.08726646259971647,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0.03490658503988659,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": -0.13962634015954636,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "seg2": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": -0.10471975511965978,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0.20943951023931956,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "seg3": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": 0.10471975511965978,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0.06981317007977318,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "seg4": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": 0.13962634015954636,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "seg5": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "seg6": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "seg7": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "seg8": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "seg9": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": 0,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ]
+  },
+  "root": {
+   "dx": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": -0.08,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": 0.4,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": 0.48,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0.12,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ],
+   "dy": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 140,
+     "t": 0.27631578947368424,
+     "value": 0.01,
+     "ease": "ease-in"
+    },
+    {
+     "ms": 230,
+     "t": 0.45394736842105265,
+     "value": -0.03,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 246.66666666666666,
+     "t": 0.4868421052631579,
+     "value": -0.01,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 389.66666666666663,
+     "t": 0.7690789473684211,
+     "value": 0,
+     "ease": "back-out"
+    },
+    {
+     "ms": 506.66666666666663,
+     "t": 1,
+     "value": 0,
+     "ease": "ease-out"
+    }
+   ]
+  },
+  "secondary": [
+   {
+    "partId": "tail",
+    "joint": "seg7",
+    "driver": "seg6",
+    "order": 0,
+    "lagMs": 50,
+    "overshoot": 0.05,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 586.6666666666666,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "seg8",
+    "driver": "seg6",
+    "order": 1,
+    "lagMs": 100,
+    "overshoot": 0.0425,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 666.6666666666666,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "seg9",
+    "driver": "seg6",
+    "order": 2,
+    "lagMs": 150,
+    "overshoot": 0.034999999999999996,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 746.6666666666666,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   }
+  ],
+  "deform": {
+   "squash": 0,
+   "stretch": 0
+  },
+  "hitstopMs": 70,
+  "luminousPulseMs": 0,
+  "clamped": [],
+  "notes": [
+   "gait \"walk\" has no serpent approach; using slither"
+  ],
+  "hash": "f47963de"
+ },
+ "hit": {
+  "kind": "motion-timeline",
+  "actionId": "hit",
+  "family": "hit",
+  "loop": false,
+  "seed": 659716,
+  "recipeHash": null,
+  "massClass": "medium",
+  "bodyMs": 450,
+  "durationMs": 690,
+  "phases": [
+   [
+    "recoil",
+    110
+   ],
+   [
+    "stagger",
+    160
+   ],
+   [
+    "settle",
+    180
+   ]
+  ],
+  "tracks": {
+   "root": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "head": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": -0.4886921905584123,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": -0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "jaw": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "seg0": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": -0.20943951023931956,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": -0.05585053606381855,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "seg1": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0.10471975511965978,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": -0.09773843811168247,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "seg2": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0.17453292519943295,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": -0.05585053606381855,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "seg3": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0.10471975511965978,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": 0.05585053606381855,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "seg4": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": 0.09773843811168247,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "seg5": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": 0.05585053606381855,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "seg6": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": -0.05585053606381855,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "seg7": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": -0.09773843811168247,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "seg8": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": -0.05585053606381855,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "seg9": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": 0.05585053606381855,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ]
+  },
+  "root": {
+   "dx": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": -0.08,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": -0.14,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ],
+   "dy": [
+    {
+     "ms": 0,
+     "t": 0,
+     "value": 0,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 110,
+     "t": 0.24444444444444444,
+     "value": 0.012,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 270,
+     "t": 0.6,
+     "value": 0.0072,
+     "ease": "ease-out"
+    },
+    {
+     "ms": 450,
+     "t": 1,
+     "value": 0,
+     "ease": "back-out"
+    }
+   ]
+  },
+  "secondary": [
+   {
+    "partId": "tail",
+    "joint": "seg7",
+    "driver": "seg6",
+    "order": 0,
+    "lagMs": 50,
+    "overshoot": 0.05,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 160,
+      "t": 0.35555555555555557,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 320,
+      "t": 0.7111111111111111,
+      "value": -0.10262536001726659,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 350,
+      "t": 0.7777777777777778,
+      "value": -0.09773843811168247,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 500,
+      "t": 1.1111111111111112,
+      "value": 0,
+      "ease": "back-out"
+     },
+     {
+      "ms": 530,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "seg8",
+    "driver": "seg6",
+    "order": 1,
+    "lagMs": 100,
+    "overshoot": 0.0425,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 210,
+      "t": 0.4666666666666667,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 370,
+      "t": 0.8222222222222222,
+      "value": -0.05822418384653084,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 430,
+      "t": 0.9555555555555556,
+      "value": -0.05585053606381855,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 550,
+      "t": 1.2222222222222223,
+      "value": 0,
+      "ease": "back-out"
+     },
+     {
+      "ms": 610,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   },
+   {
+    "partId": "tail",
+    "joint": "seg9",
+    "driver": "seg6",
+    "order": 2,
+    "lagMs": 150,
+    "overshoot": 0.034999999999999996,
+    "damping": 0.8,
+    "squash": 0,
+    "stretch": 0,
+    "rigid": false,
+    "quiverMs": 0,
+    "wobbleMs": 0,
+    "pulseMs": 0,
+    "kind": "tail",
+    "flutterMs": 0,
+    "keys": [
+     {
+      "ms": 0,
+      "t": 0,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 260,
+      "t": 0.5777777777777777,
+      "value": 0,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 420,
+      "t": 0.9333333333333333,
+      "value": 0.057805304826052194,
+      "ease": "ease-out"
+     },
+     {
+      "ms": 510,
+      "t": 1.1333333333333333,
+      "value": 0.05585053606381855,
+      "ease": "sine-in-out"
+     },
+     {
+      "ms": 600,
+      "t": 1.3333333333333333,
+      "value": 0,
+      "ease": "back-out"
+     },
+     {
+      "ms": 690,
+      "t": 1,
+      "value": 0,
+      "ease": "ease-out"
+     }
+    ]
+   }
+  ],
+  "deform": {
+   "squash": 0,
+   "stretch": 0
+  },
+  "hitstopMs": 0,
+  "luminousPulseMs": 0,
+  "clamped": [],
+  "notes": [
+   "gait \"walk\" has no serpent approach; using slither"
+  ],
+  "hash": "3ac699fd"
+ }
+}

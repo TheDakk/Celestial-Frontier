@@ -2,7 +2,8 @@
  * action id and the recipe seed into a plain-JSON MotionTimeline; sampleTimeline
  * evaluates it at any millisecond with the frozen easing family. No clock, no
  * randomness beyond the seeded idle period, no renderer. */
-import { DEG, QUADRUPED_ACTIONS, type Ease, type MotionAction } from './actions.js';
+import { DEG, type Ease, type MotionAction } from './actions.js';
+import { actionsFor, MELEE_ALIAS, templateMelees } from './family-actions.js';
 import type { BodyCard, Weapon } from './body-card.js';
 import { secondaryParams, type SecondaryParams } from './secondary.js';
 import { hitstopMs, idlePeriodMs, phaseDurations, type MassClassName } from './timing.js';
@@ -32,12 +33,14 @@ export const EASE_FN: Readonly<Record<Ease, (t: number) => number>> = Object.fre
   'back-out': (t) => { const s = 1.70158, p = t - 1; return p * p * ((s + 1) * p + s) + 1; },
   'sine-in-out': (t) => -(Math.cos(Math.PI * t) - 1) / 2,
 });
-const MELEE_ORDER: readonly Weapon[] = ['bite', 'claw', 'gore', 'tail', 'headbutt'];
+/** approach → the card's template gait; melee → the first card weapon the template's library (or its alias table) has a verb for, else the library's first melee verb with a note. */
 export function resolveActionId(card: BodyCard, actionId: string): { id: string; note: string | null } {
   if (actionId === 'approach') return { id: 'approach:' + card.locomotion.templateGait, note: null };
   if (actionId === 'melee') {
-    const w = card.weapons.find((x) => MELEE_ORDER.includes(x));
-    return w ? { id: 'melee:' + w, note: null } : { id: 'melee:bite', note: `no ${card.template.id} melee for weapons [${card.weapons.join(',')}]; bite used` };
+    const verbs = templateMelees(card.template.id), alias = MELEE_ALIAS[card.template.id] ?? {};
+    const w = card.weapons.map((x: Weapon) => alias[x] ?? x).find((x) => verbs.includes(x));
+    const first = verbs[0] ?? 'bite';
+    return w ? { id: 'melee:' + w, note: null } : { id: 'melee:' + first, note: `no ${card.template.id} melee for weapons [${card.weapons.join(',')}]; ${first} used` };
   }
   return { id: actionId, note: null };
 }
@@ -62,11 +65,11 @@ const CHAIN_ATTENUATION = 0.6;
 
 export function buildTimeline(card: BodyCard, actionId: string, seed: number): MotionTimeline {
   const resolved = resolveActionId(card, actionId);
-  const action: MotionAction | undefined = QUADRUPED_ACTIONS[resolved.id];
+  const action: MotionAction | undefined = actionsFor(card.template.id)?.[resolved.id];
   if (!action) throw new Error(`motion: ${card.template.id} has no action "${resolved.id}"`);
   const mass = card.massClass.multiplier, notes: string[] = [...card.notes];
   if (resolved.note) notes.push(resolved.note);
-  const phases = action.family === 'idle' ? [['period', idlePeriodMs(seed, mass)] as const] : phaseDurations(action.family, mass);
+  const phases = action.family === 'idle' || action.family === 'sway' ? [['period', idlePeriodMs(seed, mass)] as const] : phaseDurations(action.family, mass);
   const bodyMs = phases.reduce((s, [, ms]) => s + ms, 0);
   const clamped: string[] = [];
   const tracks: Record<string, Keyframe[]> = {};

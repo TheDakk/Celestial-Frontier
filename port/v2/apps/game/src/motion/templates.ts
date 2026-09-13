@@ -9,6 +9,7 @@
  * shoulder). Positive = clockwise on screen for a right-facing body, so a positive
  * `spine` dips the front and a positive `head` pitches nose-down. `root` is the
  * whole-body rotation about the root landmark; root offsets are in body lengths. */
+import { FAMILY_TEMPLATES, type FamilyTemplateId } from './family-templates.js';
 export type JointName = string;
 export type Vec2 = readonly [number, number];
 export interface JointLimitDeg { readonly min: number; readonly max: number; }
@@ -17,9 +18,9 @@ export interface ProportionBound {
   /** Measures the bound from normalized landmarks and bone lengths. */
   readonly measure: (lm: Readonly<Record<JointName, Vec2>>, bones: Readonly<Record<JointName, number>>) => number;
 }
-export interface SecondaryChain { readonly id: string; readonly driver: JointName; readonly joints: readonly JointName[]; }
+export interface SecondaryChain { readonly id: string; readonly driver: JointName; readonly joints: readonly JointName[]; /** A11 chain kind for §6 rules; absent on the quadruped chains (tail/ear by name). */ readonly kind?: string; }
 export interface MotionTemplate {
-  readonly id: 'quadruped';
+  readonly id: 'quadruped' | FamilyTemplateId;
   readonly version: 1;
   readonly clipSetId: string;
   /** [child, parent] pairs, parents first — root is implicit. */
@@ -29,6 +30,8 @@ export interface MotionTemplate {
   readonly limitsDeg: Readonly<Record<JointName, JointLimitDeg>>;
   readonly secondaryChains: readonly SecondaryChain[];
   readonly proportions: readonly ProportionBound[];
+  /** A11: the two landmarks whose distance is the body length (default pelvis→chest). */
+  readonly bodyAxis?: readonly [JointName, JointName];
 }
 export interface MotionFallback { readonly kind: 'whole-portrait'; readonly reason: string; readonly templateId: string; }
 
@@ -81,7 +84,7 @@ export const QUADRUPED_TEMPLATE: MotionTemplate = Object.freeze({
   ]),
 });
 
-const REGISTRY: Readonly<Record<string, MotionTemplate>> = Object.freeze({ quadruped: QUADRUPED_TEMPLATE });
+const REGISTRY: Readonly<Record<string, MotionTemplate>> = Object.freeze({ quadruped: QUADRUPED_TEMPLATE, ...FAMILY_TEMPLATES });
 export const KNOWN_TEMPLATE_IDS = Object.freeze(Object.keys(REGISTRY));
 /** Kit §3: an unsupported template compiles to the labelled whole-portrait fallback. */
 export function resolveTemplate(id: string, version = 1): MotionTemplate | MotionFallback {

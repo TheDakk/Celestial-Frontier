@@ -6,6 +6,8 @@
 import { FA_HEAD, FA_LOCO, FA_SKIN, FA_TAIL } from '@cf/domain-speciestraits';
 import { classifyRealm } from '@cf/domain-genome';
 import { isMotionFallback, resolveTemplate, type JointLimitDeg, type JointName, type MotionFallback, type MotionTemplate, type Vec2 } from './templates.js';
+import { PLANT_TEMPLATE_IDS, templateIdForFamily } from './family-templates.js';
+import { templateGaits } from './family-actions.js';
 import { MASS_BY_SIZE_INDEX, MASS_CLASS, type MassClassName } from './timing.js';
 import { materialFromSkinName, type Material, type Realm } from './secondary.js';
 
@@ -13,6 +15,8 @@ export interface ResolvedAnatomyRecord {
   readonly kind: string;
   readonly identity: { readonly speciesVisualKey: string; readonly seed: number; readonly ownerId: string; readonly earthName: string | null };
   readonly template: { readonly id: string; readonly version: number };
+  /** A11: painter/rig family (mammal, bird, fish, tree, …); routed through TEMPLATE_BY_FAMILY and cross-checked against `template`. */
+  readonly family?: string;
   readonly geometry: { readonly cutoutAssetHash: string; readonly width: number; readonly height: number; readonly groundLineY: number;
     readonly depthLayers: readonly { readonly id: string; readonly order: number }[]; readonly contactPolicy?: string };
   readonly landmarks: Readonly<Record<string, readonly number[]>>;
@@ -28,9 +32,10 @@ export interface MotionGenomeFields {
 }
 export type Gait = 'walk' | 'trot' | 'gallop' | 'hop' | 'slither' | 'crawl' | 'swim' | 'jet' | 'fly' | 'glide' | 'roll' | 'cling-crawl' | 'drift';
 export type Weapon = 'bite' | 'claw' | 'gore' | 'tail' | 'sting' | 'peck' | 'headbutt' | 'constrict' | 'spit';
-export type PartGroup = 'body' | 'head' | 'legs' | 'tail' | 'ears';
+export type PartGroup = 'body' | 'head' | 'legs' | 'tail' | 'ears' | 'wings' | 'fins' | 'antennae' | 'fronds' | 'arms';
+export const PART_GROUPS: readonly PartGroup[] = Object.freeze(['body', 'head', 'legs', 'tail', 'ears', 'wings', 'fins', 'antennae', 'fronds', 'arms']);
 export interface BodyPart { readonly joint: JointName; readonly parent: JointName; readonly group: PartGroup; readonly pivot: Vec2; readonly tip: Vec2; readonly boneLength: number; }
-export interface SecondaryPart { readonly id: string; readonly driver: JointName; readonly joints: readonly JointName[]; readonly lagOrder: readonly number[]; readonly material: Material; }
+export interface SecondaryPart { readonly id: string; readonly driver: JointName; readonly joints: readonly JointName[]; readonly lagOrder: readonly number[]; readonly material: Material; readonly kind?: string; }
 export interface ClampedBound { readonly id: string; readonly measured: number; readonly clamped: number; }
 export interface BodyCard {
   readonly kind: 'body-card';
@@ -38,7 +43,8 @@ export interface BodyCard {
   readonly recipeHash: string | null;
   readonly template: { readonly id: MotionTemplate['id']; readonly version: number; readonly clipSetId: string };
   readonly massClass: { readonly name: MassClassName; readonly multiplier: number };
-  readonly locomotion: { readonly loco: string | null; readonly gait: Gait; readonly templateGait: 'walk' | 'trot' | 'gallop' | 'hop' };
+  /** templateGait is one of the template library's approach:* verbs ('none' for plants). */
+  readonly locomotion: { readonly loco: string | null; readonly gait: Gait; readonly templateGait: string };
   readonly realm: Realm;
   readonly materials: Readonly<Record<PartGroup, Material>>;
   readonly parts: readonly BodyPart[];
@@ -51,7 +57,7 @@ export interface BodyCard {
   readonly bounds: { readonly inside: boolean; readonly clamped: readonly ClampedBound[]; readonly limitsDeg: Readonly<Record<JointName, JointLimitDeg>> };
   readonly notes: readonly string[];
 }
-export type MotionRefusalReason = 'missing-record' | 'missing-landmarks' | 'unsupported-template' | 'out-of-bounds' | 'unsupported-materials';
+export type MotionRefusalReason = 'missing-record' | 'missing-landmarks' | 'joint-inventory' | 'family-mismatch' | 'unsupported-template' | 'out-of-bounds' | 'unsupported-materials';
 export class MotionCompileError extends Error {
   readonly reason: MotionRefusalReason;
   readonly fallback: MotionFallback | null;
@@ -74,25 +80,39 @@ export const LOCO_GAIT: Readonly<Record<string, Gait>> = Object.freeze({
 const HEAD_WEAPON: Readonly<Record<string, Weapon>> = Object.freeze({ 'fanged': 'bite', 'horned': 'gore', 'beaked': 'peck', 'mandibled': 'bite', 'domed and bulbous': 'headbutt' });
 const TAIL_WEAPON: Readonly<Record<string, Weapon>> = Object.freeze({ 'whip-like': 'tail', 'spiked': 'tail', 'stinger-tipped': 'sting' });
 const BOUND_TOLERANCE = 0.15;
-const TEMPLATE_GAITS = new Set<Gait>(['walk', 'trot', 'gallop', 'hop']);
-const groupOf = (joint: string): PartGroup => /^tail/.test(joint) ? 'tail' : /^ear/.test(joint) ? 'ears' : /^(neck|head|jaw)$/.test(joint) ? 'head' : /^(pelvis|spine|chest)$/.test(joint) ? 'body' : 'legs';
+/** Natural weapons a template always carries [primary, secondary]; head/tail genome weapons are added around them as before. */
+const TEMPLATE_WEAPONS: Readonly<Record<string, readonly Weapon[]>> = Object.freeze({
+  quadruped: ['bite', 'claw'], hopper: ['bite', 'claw'], 'biped-bird': ['peck', 'claw'], fish: ['bite'], insect: ['bite'], serpent: ['bite', 'constrict'], arachnid: ['sting', 'bite'], radial: ['sting'], 'plant-woody': [], 'plant-herb': [],
+});
+/** Gait a template falls back to when the card's FA_LOCO gait has no approach in its library (first approach verb in table order). */
+const GAIT_FALLBACK: Readonly<Record<string, Record<string, string>>> = Object.freeze({ 'biped-bird': { fly: 'flight', glide: 'flight' }, insect: { fly: 'flight', glide: 'flight' }, radial: { jet: 'pulse', swim: 'pulse' }, fish: { jet: 'swim', drift: 'swim' }, serpent: { crawl: 'slither', swim: 'slither' }, arachnid: { crawl: 'scuttle', walk: 'scuttle', 'cling-crawl': 'scuttle' }, hopper: {} });
+const groupOf = (joint: string): PartGroup =>
+  /^tail|^abdomen$|^sting$/.test(joint) ? 'tail' : /^ear/.test(joint) ? 'ears' : /wing|tailFan/.test(joint) ? 'wings' : /caudal|dorsal|pectoral/.test(joint) ? 'fins' : /antenna/.test(joint) ? 'antennae'
+  : /branch|leaf|stem|frond/.test(joint) ? 'fronds' : /^arm\d/.test(joint) ? 'arms' : /^(neck\d?|head|jaw|beak|mandible|chelicera)/.test(joint) ? 'head' : /^(pelvis|spine\d?|chest|thorax|cephalothorax|centre|bell|trunk|seg\d)$/.test(joint) ? 'body' : 'legs';
 const at = <T>(arr: readonly T[], i: number | undefined): T | undefined => typeof i === 'number' ? arr[((i | 0) % arr.length + arr.length) % arr.length] : undefined;
 const realmFromLabel = (label: string): Realm =>
   /Aerial/.test(label) ? 'aerial' : /Aquatic/.test(label) ? 'aquatic' : /Amphibious/.test(label) ? 'amphibious' : /Gas Giant/.test(label) ? 'gas-giant' : 'land';
 
 export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGenomeFields): BodyCard {
-  if (!record || typeof record !== 'object' || !record.template || !record.identity) throw new MotionCompileError('missing-record', 'record lacks template/identity');
-  const resolved = resolveTemplate(String(record.template.id), Number(record.template.version));
+  if (!record || typeof record !== 'object' || !record.identity || (!record.template && !record.family)) throw new MotionCompileError('missing-record', 'record lacks template/identity');
+  // A11: the painter family routes to a template; when the record also names a template the two must agree.
+  const familyTemplate = record.family ? templateIdForFamily(String(record.family)) : null;
+  if (record.family && !familyTemplate) throw new MotionCompileError('unsupported-template', `family "${record.family}" routes to no motion template`, { kind: 'whole-portrait', templateId: String(record.family), reason: `family "${record.family}" has no motion library` });
+  if (familyTemplate && record.template && String(record.template.id) !== familyTemplate) throw new MotionCompileError('family-mismatch', `family "${record.family}" routes to ${familyTemplate} but the record names template "${record.template.id}"`);
+  const templateId = record.template ? String(record.template.id) : familyTemplate as string, templateVersion = record.template ? Number(record.template.version) : 1;
+  const resolved = resolveTemplate(templateId, templateVersion);
   if (isMotionFallback(resolved)) throw new MotionCompileError('unsupported-template', resolved.reason, resolved);
-  if (record.kind !== resolved.id) throw new MotionCompileError('unsupported-template', `record kind "${record.kind}" is not ${resolved.id}`, { kind: 'whole-portrait', templateId: String(record.template.id), reason: `kind ${record.kind} does not match template ${resolved.id}` });
+  if (record.kind !== resolved.id) throw new MotionCompileError('unsupported-template', `record kind "${record.kind}" is not ${resolved.id}`, { kind: 'whole-portrait', templateId, reason: `kind ${record.kind} does not match template ${resolved.id}` });
   const lmIn = record.landmarks;
   if (!lmIn || typeof lmIn !== 'object') throw new MotionCompileError('missing-landmarks', 'record has no landmarks');
   const landmarks: Record<JointName, Vec2> = {};
   for (const j of resolved.joints) {
     const p = lmIn[j];
-    if (!Array.isArray(p) || p.length !== 2 || !p.every((v) => Number.isFinite(v) && v >= 0 && v <= 1)) throw new MotionCompileError('missing-landmarks', `landmark "${j}" missing or not a normalized [x,y]`);
+    if (!Array.isArray(p) || p.length !== 2 || !p.every((v) => Number.isFinite(v) && v >= 0 && v <= 1)) throw new MotionCompileError('missing-landmarks', `landmark "${j}" missing or not a normalized [x,y] (${resolved.id} inventory: ${resolved.joints.length} joints)`);
     landmarks[j] = [p[0] as number, p[1] as number];
   }
+  const foreign = Object.keys(lmIn).filter((j) => !resolved.joints.includes(j));
+  if (foreign.length) throw new MotionCompileError('joint-inventory', `landmarks [${foreign.join(', ')}] are not in the ${resolved.id} joint inventory`);
   const bones: Record<JointName, number> = {};
   const parts: BodyPart[] = resolved.graph.map(([child, parent]) => {
     const pivot = landmarks[parent] as Vec2, tip = landmarks[child] as Vec2, boneLength = Math.hypot(tip[0] - pivot[0], tip[1] - pivot[1]);
@@ -115,16 +135,21 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   const massName: MassClassName = earth ? earth.mass : (at(MASS_BY_SIZE_INDEX, genome?.size) ?? 'medium');
   const locoName = earth ? earth.loco : (at(FA_LOCO as readonly string[], genome?.loco) ?? null);
   const gait: Gait = earth ? earth.gait : (locoName ? LOCO_GAIT[locoName] ?? 'walk' : 'walk');
-  if (!TEMPLATE_GAITS.has(gait)) { notes.push(`gait "${gait}" has no ${resolved.id} approach; using walk`); }
-  const templateGait = (TEMPLATE_GAITS.has(gait) ? gait : 'walk') as BodyCard['locomotion']['templateGait'];
+  const gaits = templateGaits(resolved.id), gaitAlias = GAIT_FALLBACK[resolved.id]?.[gait];
+  const isPlant = PLANT_TEMPLATE_IDS.includes(resolved.id as typeof PLANT_TEMPLATE_IDS[number]);
+  let templateGait: string = gaits.includes(gait) ? gait : gaitAlias && gaits.includes(gaitAlias) ? gaitAlias : gaits[0] ?? 'none';
+  if (!isPlant && !gaits.includes(gait)) notes.push(`gait "${gait}" has no ${resolved.id} approach; using ${templateGait}`);
+  if (isPlant) templateGait = 'none';
   const weapons: Weapon[] = [];
   const addWeapon = (w: Weapon | undefined): void => { if (w && !weapons.includes(w)) weapons.push(w); };
-  if (earth) earth.weapons.forEach(addWeapon);
+  const natural = TEMPLATE_WEAPONS[resolved.id] ?? ['bite', 'claw'];
+  if (isPlant) { /* plants carry no weapons */ }
+  else if (earth && resolved.id === 'quadruped') earth.weapons.forEach(addWeapon);
   else {
-    const headName = at(FA_HEAD as readonly string[], genome?.head), tailName = at(FA_TAIL as readonly string[], genome?.tail);
-    addWeapon(headName ? HEAD_WEAPON[headName] : undefined); addWeapon('bite');
+    const headName = earth ? undefined : at(FA_HEAD as readonly string[], genome?.head), tailName = earth ? undefined : at(FA_TAIL as readonly string[], genome?.tail);
+    addWeapon(headName ? HEAD_WEAPON[headName] : undefined); addWeapon(natural[0]);
     if (tailName) addWeapon(TAIL_WEAPON[tailName]);
-    addWeapon('claw');
+    addWeapon(natural[1]);
   }
   const luminous = genome?.lumin === true;
   let realm: Realm = 'land';
@@ -142,10 +167,11 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
     else if (genomeMaterial && recordMaterial && recordMaterial !== genomeMaterial) notes.push(`materials: record surface "${surface}" wins over genome skin "${skinName}" (observer disagreement)`);
   }
   if (!material) throw new MotionCompileError('unsupported-materials', `surface "${surface}" maps to no kit material`);
-  const materials = Object.freeze({ body: material, head: material, legs: material, tail: material, ears: material });
-  const secondaryParts: SecondaryPart[] = resolved.secondaryChains.map((c) => ({ id: c.id, driver: c.driver, joints: c.joints, lagOrder: c.joints.map((_, i) => i), material }));
-  const torso = bones.chest !== undefined && bones.spine !== undefined ? Math.hypot((landmarks.chest as Vec2)[0] - (landmarks.pelvis as Vec2)[0], (landmarks.chest as Vec2)[1] - (landmarks.pelvis as Vec2)[1]) : 0;
-  const torsoClamp = clamped.find((c) => c.id === 'torso');
+  const materials = Object.freeze(Object.fromEntries(PART_GROUPS.map((g) => [g, material]))) as Readonly<Record<PartGroup, Material>>;
+  const secondaryParts: SecondaryPart[] = resolved.secondaryChains.map((c) => ({ id: c.id, driver: c.driver, joints: c.joints, lagOrder: c.joints.map((_, i) => i), material, ...(c.kind ? { kind: c.kind } : {}) }));
+  const [axisA, axisB] = resolved.bodyAxis ?? ['pelvis', 'chest'];
+  const torso = landmarks[axisA] && landmarks[axisB] ? Math.hypot((landmarks[axisB] as Vec2)[0] - (landmarks[axisA] as Vec2)[0], (landmarks[axisB] as Vec2)[1] - (landmarks[axisA] as Vec2)[1]) : 0;
+  const torsoClamp = clamped.find((c) => c.id === 'torso' || c.id === 'body');
   return {
     kind: 'body-card', identity: record.identity, recipeHash: record.recipeHash ?? null,
     template: { id: resolved.id, version: resolved.version, clipSetId: resolved.clipSetId },
