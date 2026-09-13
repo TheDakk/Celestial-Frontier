@@ -14,15 +14,19 @@
  *  arachnid    root cephalothorax abdomen sting cheliceraFar cheliceraNear · leg{1,2,3,4}{Far,Near}{Knee,Foot}
  *  radial      root centre bell · arm{0..5}Seg{0,1,2}
  *  plant-woody root trunk · branch{0,1,2}{Base,Tip} · leaf{0,1,2}
- *  plant-herb  root · stem{0..3}Seg{0,1,2} · frond{0..3}                                                    */
+ *  plant-herb  root · stem{0..3}Seg{0,1,2} · frond{0..3}
+ *  myriapod    root head mandible seg0..seg7 · leg{A,B,C,D}{Far,Near}{Knee,Foot} (from seg0/2/4/6) · antennaFar antennaNear
+ *  cephalopod  root mantle head eyeFar eyeNear siphon finFar finNear · arm{0..7}Seg{0,1,2} (from head; 0..3 hang left, 4..7 right)
+ *  flyer-membrane root pelvis spine chest neck head jaw · wing{Far,Near}{Root,Elbow,Wrist,Tip} · leg{Far,Near}{Knee,Foot} · ear{Far,Near}Tip · tail0
+ *  primate     root pelvis spine chest neck head jaw · arm{Far,Near}{Shoulder,Elbow,Hand} · leg{Far,Near}{Hip,Knee,Foot} · tail0..2   */
 import type { JointLimitDeg, JointName, MotionTemplate, ProportionBound, SecondaryChain, Vec2 } from './templates.js';
 
 type Pair = readonly [JointName, JointName];
 type Bones = Readonly<Record<JointName, number>>;
 type LM = Readonly<Record<JointName, Vec2>>;
-export type ChainKind = 'tail' | 'ear' | 'wing' | 'tailfan' | 'fin' | 'antenna' | 'frond' | 'bell' | 'arm';
-export type FamilyTemplateId = 'hopper' | 'biped-bird' | 'fish' | 'insect' | 'serpent' | 'arachnid' | 'radial' | 'plant-woody' | 'plant-herb';
-export const FAMILY_TEMPLATE_IDS: readonly FamilyTemplateId[] = Object.freeze(['hopper', 'biped-bird', 'fish', 'insect', 'serpent', 'arachnid', 'radial', 'plant-woody', 'plant-herb']);
+export type ChainKind = 'tail' | 'ear' | 'wing' | 'tailfan' | 'fin' | 'antenna' | 'frond' | 'bell' | 'arm' | 'membrane' | 'tentacle';
+export type FamilyTemplateId = 'hopper' | 'biped-bird' | 'fish' | 'insect' | 'serpent' | 'arachnid' | 'radial' | 'plant-woody' | 'plant-herb' | 'myriapod' | 'cephalopod' | 'flyer-membrane' | 'primate';
+export const FAMILY_TEMPLATE_IDS: readonly FamilyTemplateId[] = Object.freeze(['hopper', 'biped-bird', 'fish', 'insect', 'serpent', 'arachnid', 'radial', 'plant-woody', 'plant-herb', 'myriapod', 'cephalopod', 'flyer-membrane', 'primate']);
 export const PLANT_TEMPLATE_IDS: readonly FamilyTemplateId[] = Object.freeze(['plant-woody', 'plant-herb']);
 
 const dist = (a: Vec2, b: Vec2): number => Math.hypot(a[0] - b[0], a[1] - b[1]);
@@ -137,6 +141,52 @@ const RADIAL = build({
   proportions: [axisBound('centre', 'bell', 0.03, 0.6), ...boneBounds(), ...arms.map((a) => ratioBound('arm/bell:' + a, [a + 'Seg0', a + 'Seg1', a + 'Seg2'], 'centre', 'bell', 0.3, 8))],
 });
 
+/* ---- myriapod (B3): eight segments behind the head, four leg pairs on seg0/2/4/6, forcipule bite and a rear sting ---- */
+const myriaPairs = ['legA', 'legB', 'legC', 'legD'] as const;
+const myriaLegs = myriaPairs.flatMap((p) => sides.map((s) => p + s));
+const MYRIAPOD = build({
+  id: 'myriapod', clipSetId: 'myriapod-v1', legs: myriaLegs, bodyAxis: ['seg7', 'head'],
+  graph: [['head', 'root'], ['mandible', 'head'], ...seq('seg', 8, 'root'), ...myriaPairs.flatMap((p, i) => sides.flatMap((s) => chain('seg' + i * 2, [p + s + 'Knee', p + s + 'Foot']))), ['antennaFar', 'head'], ['antennaNear', 'head']],
+  limits: [[/^root$/, { min: -20, max: 20 }], [/^head$/, { min: -35, max: 35 }], [/^mandible$/, { min: -40, max: 5 }], [/^seg[0-3]$/, { min: -35, max: 35 }], [/^seg[4-7]$/, { min: -60, max: 60 }], [/Knee$/, { min: -60, max: 60 }], [/Foot$/, { min: -70, max: 70 }], [/^antenna/, { min: -50, max: 50 }]],
+  secondaryChains: [sec('tail', 'tail', 'seg5', ['seg6', 'seg7']), sec('antennaFar', 'antenna', 'head', ['antennaFar']), sec('antennaNear', 'antenna', 'head', ['antennaNear'])],
+  proportions: [axisBound('seg7', 'head', 0.1, 0.95), ...boneBounds(), ...myriaLegs.map((l) => ratioBound('leg/body:' + l, [l + 'Knee', l + 'Foot'], 'seg7', 'head', 0.05, 1.5))],
+});
+
+/* ---- cephalopod (B3): mantle above, head below, eight three-segment arms from the head, siphon for the jet, two mantle fins ---- */
+const cephArms = [0, 1, 2, 3, 4, 5, 6, 7].map((n) => 'arm' + n);
+const CEPHALOPOD = build({
+  id: 'cephalopod', clipSetId: 'cephalopod-v1', legs: [], bodyAxis: ['head', 'mantle'],
+  graph: [['mantle', 'root'], ['head', 'root'], ['eyeFar', 'head'], ['eyeNear', 'head'], ['siphon', 'head'], ['finFar', 'mantle'], ['finNear', 'mantle'], ...cephArms.flatMap((a) => chain('head', [a + 'Seg0', a + 'Seg1', a + 'Seg2']))],
+  limits: [[/^root$/, { min: -30, max: 30 }], [/^mantle$/, { min: -25, max: 25 }], [/^head$/, { min: -30, max: 30 }], [/^eye/, { min: -20, max: 20 }], [/^siphon$/, { min: -45, max: 45 }], [/^fin/, { min: -40, max: 40 }], [/Seg0$/, { min: -55, max: 55 }], [/Seg1$/, { min: -70, max: 70 }], [/Seg2$/, { min: -80, max: 80 }]],
+  secondaryChains: [sec('finFar', 'fin', 'mantle', ['finFar']), sec('finNear', 'fin', 'mantle', ['finNear']), ...cephArms.map((a) => sec(a, 'tentacle', 'head', [a + 'Seg0', a + 'Seg1', a + 'Seg2']))],
+  proportions: [axisBound('head', 'mantle', 0.05, 0.7), ...boneBounds(), ...cephArms.map((a) => ratioBound('arm/body:' + a, [a + 'Seg0', a + 'Seg1', a + 'Seg2'], 'head', 'mantle', 0.3, 6))],
+});
+
+/* ---- flyer-membrane (B3): bat; four-bone membrane wings from the chest, two-bone legs, ears, one tail bone ---- */
+const batWings = sides.map((s) => 'wing' + s), batLegs = sides.map((s) => 'leg' + s);
+const FLYER = build({
+  id: 'flyer-membrane', clipSetId: 'flyer-membrane-v1', legs: batLegs, bodyAxis: ['pelvis', 'chest'],
+  graph: [['pelvis', 'root'], ['spine', 'pelvis'], ['chest', 'spine'], ['neck', 'chest'], ['head', 'neck'], ['jaw', 'head'],
+    ...batWings.flatMap((w) => chain('chest', [w + 'Root', w + 'Elbow', w + 'Wrist', w + 'Tip'])), ...batLegs.flatMap((l) => chain('pelvis', [l + 'Knee', l + 'Foot'])), ['earFarTip', 'head'], ['earNearTip', 'head'], ['tail0', 'pelvis']],
+  limits: [[/^root$/, { min: -35, max: 35 }], [/^(pelvis|chest)$/, { min: -20, max: 20 }], [/^spine$/, { min: -25, max: 25 }], [/^neck$/, { min: -35, max: 35 }], [/^head$/, { min: -40, max: 40 }], [/^jaw$/, { min: -40, max: 5 }],
+    [/^wing.*Root$/, { min: -80, max: 100 }], [/^wing.*Elbow$/, { min: -90, max: 90 }], [/^wing.*Wrist$/, { min: -80, max: 80 }], [/^wing.*Tip$/, { min: -70, max: 70 }], [/Knee$/, { min: -70, max: 70 }], [/Foot$/, { min: -60, max: 60 }], [/^ear/, { min: -40, max: 40 }], [/^tail0$/, { min: -45, max: 45 }]],
+  secondaryChains: [sec('wingFar', 'membrane', 'chest', ['wingFarRoot', 'wingFarElbow', 'wingFarWrist', 'wingFarTip']), sec('wingNear', 'membrane', 'chest', ['wingNearRoot', 'wingNearElbow', 'wingNearWrist', 'wingNearTip']),
+    sec('earFar', 'ear', 'head', ['earFarTip']), sec('earNear', 'ear', 'head', ['earNearTip']), sec('tail', 'tail', 'pelvis', ['tail0'])],
+  proportions: [axisBound('pelvis', 'chest', 0.05, 0.6), ...boneBounds(), ...batWings.map((w) => ratioBound('wing/torso:' + w, [w + 'Root', w + 'Elbow', w + 'Wrist', w + 'Tip'], 'pelvis', 'chest', 0.8, 12)), ...batLegs.map((l) => ratioBound('leg/torso:' + l, [l + 'Knee', l + 'Foot'], 'pelvis', 'chest', 0.2, 4))],
+});
+
+/* ---- primate (B3): upright torso, three-bone arms from the chest, three-bone legs from the pelvis, three-bone tail ---- */
+const primArms = sides.map((s) => 'arm' + s), primLegs = sides.map((s) => 'leg' + s);
+const PRIMATE = build({
+  id: 'primate', clipSetId: 'primate-v1', legs: primLegs, bodyAxis: ['pelvis', 'chest'],
+  graph: [['pelvis', 'root'], ['spine', 'pelvis'], ['chest', 'spine'], ['neck', 'chest'], ['head', 'neck'], ['jaw', 'head'],
+    ...primArms.flatMap((a) => chain('chest', [a + 'Shoulder', a + 'Elbow', a + 'Hand'])), ...primLegs.flatMap((l) => chain('pelvis', [l + 'Hip', l + 'Knee', l + 'Foot'])), ...seq('tail', 3, 'pelvis')],
+  limits: [[/^root$/, { min: -30, max: 30 }], [/^pelvis$/, { min: -25, max: 25 }], [/^spine$/, { min: -30, max: 30 }], [/^chest$/, { min: -25, max: 25 }], [/^neck$/, { min: -35, max: 35 }], [/^head$/, { min: -40, max: 40 }], [/^jaw$/, { min: -35, max: 5 }],
+    [/Shoulder$/, { min: -100, max: 100 }], [/Elbow$/, { min: -110, max: 110 }], [/Hand$/, { min: -60, max: 60 }], [/Hip$/, { min: -80, max: 80 }], [/Knee$/, { min: -110, max: 110 }], [/Foot$/, { min: -50, max: 50 }], [/^tail0$/, { min: -40, max: 40 }], [/^tail[12]$/, { min: -50, max: 50 }]],
+  secondaryChains: [sec('tail', 'tail', 'pelvis', ['tail0', 'tail1', 'tail2'])],
+  proportions: [axisBound('pelvis', 'chest', 0.06, 0.6), ...boneBounds(), ...primArms.map((a) => ratioBound('arm/torso:' + a, [a + 'Shoulder', a + 'Elbow', a + 'Hand'], 'pelvis', 'chest', 0.5, 4)), ...primLegs.map((l) => ratioBound('leg/torso:' + l, [l + 'Hip', l + 'Knee', l + 'Foot'], 'pelvis', 'chest', 0.5, 4))],
+});
+
 /* ---- plants ---- */
 const branches = [0, 1, 2].map((n) => 'branch' + n);
 const WOODY = build({
@@ -157,6 +207,7 @@ const HERB = build({
 
 export const FAMILY_TEMPLATES: Readonly<Record<FamilyTemplateId, MotionTemplate>> = F({
   hopper: HOPPER, 'biped-bird': BIRD, fish: FISH, insect: INSECT, serpent: SERPENT, arachnid: ARACHNID, radial: RADIAL, 'plant-woody': WOODY, 'plant-herb': HERB,
+  myriapod: MYRIAPOD, cephalopod: CEPHALOPOD, 'flyer-membrane': FLYER, primate: PRIMATE,
 });
 /** Painter family / rig family / flora architecture → template. Unlisted families have no motion library (whole-portrait fallback). */
 export const TEMPLATE_BY_FAMILY: Readonly<Record<string, FamilyTemplateId | 'quadruped'>> = F({
@@ -164,6 +215,7 @@ export const TEMPLATE_BY_FAMILY: Readonly<Record<string, FamilyTemplateId | 'qua
   frog: 'hopper', hopper: 'hopper', leaper: 'hopper',
   bird: 'biped-bird', fish: 'fish', marine: 'fish', insect: 'insect', arachnid: 'arachnid', crust: 'arachnid', snake: 'serpent', serpent: 'serpent',
   jelly: 'radial', sessile: 'radial', radial: 'radial',
+  myriapod: 'myriapod', centipede: 'myriapod', millipede: 'myriapod', ceph: 'cephalopod', cephalopod: 'cephalopod', bat: 'flyer-membrane', 'flyer-membrane': 'flyer-membrane', primate: 'primate',
   tree: 'plant-woody', shrub: 'plant-woody', vine: 'plant-woody', cane: 'plant-woody',
   fern: 'plant-herb', grass: 'plant-herb', rosette: 'plant-herb', seaweed: 'plant-herb', fungal: 'plant-herb',
 });

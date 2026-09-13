@@ -83,12 +83,14 @@ const BOUND_TOLERANCE = 0.15;
 /** Natural weapons a template always carries [primary, secondary]; head/tail genome weapons are added around them as before. */
 const TEMPLATE_WEAPONS: Readonly<Record<string, readonly Weapon[]>> = Object.freeze({
   quadruped: ['bite', 'claw'], hopper: ['bite', 'claw'], 'biped-bird': ['peck', 'claw'], fish: ['bite'], insect: ['bite'], serpent: ['bite', 'constrict'], arachnid: ['sting', 'bite'], radial: ['sting'], 'plant-woody': [], 'plant-herb': [],
+  myriapod: ['bite', 'sting'], cephalopod: ['constrict', 'bite'], 'flyer-membrane': ['bite', 'claw'], primate: ['claw', 'bite'],
 });
 /** Gait a template falls back to when the card's FA_LOCO gait has no approach in its library (first approach verb in table order). */
-const GAIT_FALLBACK: Readonly<Record<string, Record<string, string>>> = Object.freeze({ 'biped-bird': { fly: 'flight', glide: 'flight' }, insect: { fly: 'flight', glide: 'flight' }, radial: { jet: 'pulse', swim: 'pulse' }, fish: { jet: 'swim', drift: 'swim' }, serpent: { crawl: 'slither', swim: 'slither' }, arachnid: { crawl: 'scuttle', walk: 'scuttle', 'cling-crawl': 'scuttle' }, hopper: {} });
+const GAIT_FALLBACK: Readonly<Record<string, Record<string, string>>> = Object.freeze({ 'biped-bird': { fly: 'flight', glide: 'flight' }, insect: { fly: 'flight', glide: 'flight' }, radial: { jet: 'pulse', swim: 'pulse' }, fish: { jet: 'swim', drift: 'swim' }, serpent: { crawl: 'slither', swim: 'slither' }, arachnid: { crawl: 'scuttle', walk: 'scuttle', 'cling-crawl': 'scuttle' }, hopper: {},
+  myriapod: { walk: 'crawl', 'cling-crawl': 'crawl', trot: 'crawl' }, cephalopod: { swim: 'jet', drift: 'jet', walk: 'crawl', 'cling-crawl': 'crawl' }, 'flyer-membrane': { fly: 'flight', glide: 'flight', walk: 'crawl', 'cling-crawl': 'crawl' }, primate: { 'cling-crawl': 'climb', crawl: 'walk', trot: 'walk', gallop: 'walk' } });
 const groupOf = (joint: string): PartGroup =>
   /^tail|^abdomen$|^sting$/.test(joint) ? 'tail' : /^ear/.test(joint) ? 'ears' : /wing|tailFan/.test(joint) ? 'wings' : /caudal|dorsal|pectoral/.test(joint) ? 'fins' : /antenna/.test(joint) ? 'antennae'
-  : /branch|leaf|stem|frond/.test(joint) ? 'fronds' : /^arm\d/.test(joint) ? 'arms' : /^(neck\d?|head|jaw|beak|mandible|chelicera)/.test(joint) ? 'head' : /^(pelvis|spine\d?|chest|thorax|cephalothorax|centre|bell|trunk|seg\d)$/.test(joint) ? 'body' : 'legs';
+  : /branch|leaf|stem|frond/.test(joint) ? 'fronds' : /^arm(\d|Far|Near)/.test(joint) ? 'arms' : /^(neck\d?|head|jaw|beak|mandible|chelicera|eye)/.test(joint) ? 'head' : /^(pelvis|spine\d?|chest|thorax|cephalothorax|centre|bell|trunk|seg\d|mantle|siphon)$/.test(joint) ? 'body' : /^fin/.test(joint) ? 'fins' : 'legs';
 const at = <T>(arr: readonly T[], i: number | undefined): T | undefined => typeof i === 'number' ? arr[((i | 0) % arr.length + arr.length) % arr.length] : undefined;
 const realmFromLabel = (label: string): Realm =>
   /Aerial/.test(label) ? 'aerial' : /Aquatic/.test(label) ? 'aquatic' : /Amphibious/.test(label) ? 'amphibious' : /Gas Giant/.test(label) ? 'gas-giant' : 'land';

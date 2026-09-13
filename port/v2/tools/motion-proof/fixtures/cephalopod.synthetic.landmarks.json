@@ -1,0 +1,166 @@
+{
+  "kind": "cephalopod",
+  "identity": {
+    "speciesVisualKey": "synthetic:cephalopod",
+    "seed": 659722,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "cephalopod",
+    "version": 1
+  },
+  "family": "ceph",
+  "geometry": {
+    "cutoutAssetHash": "synthetic-no-cutout",
+    "width": 1024,
+    "height": 1024,
+    "groundLineY": 0.95,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5,
+      0.5
+    ],
+    "mantle": [
+      0.5,
+      0.32
+    ],
+    "head": [
+      0.5,
+      0.58
+    ],
+    "eyeFar": [
+      0.44,
+      0.56
+    ],
+    "eyeNear": [
+      0.56,
+      0.56
+    ],
+    "siphon": [
+      0.42,
+      0.5
+    ],
+    "finFar": [
+      0.42,
+      0.24
+    ],
+    "finNear": [
+      0.58,
+      0.24
+    ],
+    "arm0Seg0": [
+      0.36,
+      0.66
+    ],
+    "arm0Seg1": [
+      0.3,
+      0.76
+    ],
+    "arm0Seg2": [
+      0.26,
+      0.86
+    ],
+    "arm1Seg0": [
+      0.41,
+      0.68
+    ],
+    "arm1Seg1": [
+      0.37,
+      0.8
+    ],
+    "arm1Seg2": [
+      0.35,
+      0.92
+    ],
+    "arm2Seg0": [
+      0.45,
+      0.7
+    ],
+    "arm2Seg1": [
+      0.43,
+      0.82
+    ],
+    "arm2Seg2": [
+      0.42,
+      0.94
+    ],
+    "arm3Seg0": [
+      0.485,
+      0.7
+    ],
+    "arm3Seg1": [
+      0.485,
+      0.83
+    ],
+    "arm3Seg2": [
+      0.485,
+      0.95
+    ],
+    "arm4Seg0": [
+      0.515,
+      0.7
+    ],
+    "arm4Seg1": [
+      0.515,
+      0.83
+    ],
+    "arm4Seg2": [
+      0.515,
+      0.95
+    ],
+    "arm5Seg0": [
+      0.55,
+      0.7
+    ],
+    "arm5Seg1": [
+      0.57,
+      0.82
+    ],
+    "arm5Seg2": [
+      0.58,
+      0.94
+    ],
+    "arm6Seg0": [
+      0.59,
+      0.68
+    ],
+    "arm6Seg1": [
+      0.63,
+      0.8
+    ],
+    "arm6Seg2": [
+      0.65,
+      0.92
+    ],
+    "arm7Seg0": [
+      0.64,
+      0.66
+    ],
+    "arm7Seg1": [
+      0.7,
+      0.76
+    ],
+    "arm7Seg2": [
+      0.74,
+      0.86
+    ]
+  },
+  "materials": {
+    "surface": "slick and wet",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "cephalopod-v1"
+}
