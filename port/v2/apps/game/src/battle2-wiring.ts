@@ -20,9 +20,12 @@
  * workers. Everything pixi/DOM/asset-shaped is injectable so the tests drive the module with fakes.
  *
  * The stage never changes HP or rewards; the Chronicle log stays the accessible owner of the outcome.
- * Not yet done here: synchronising turns to the Chronicle cue cadence (the study plays the transcript
- * through at its own pace), per-ability themes (every turn stages the accepted Wild sequence), arena
- * selection beyond the one accepted temperate arena, and the C2 parts rig (fixture rig until it lands). */
+ * Batch 2: each combatant stages its own ability theme (Wild painted, the other ten as the labelled
+ * procedural emitter in the theme's material colour) and the turn cues ride the beats when an `audio`
+ * runtime port is supplied (main.ts passes none yet: the shared runtime is private to the tame-greeting
+ * owner, so the study reports `audio: none`). Not yet done here: synchronising turns to the Chronicle
+ * cue cadence (the study plays the transcript through at its own pace), arena selection beyond the one
+ * accepted temperate arena, and the C2 parts rig (fixture rig until it lands). */
 import arenaRecipeUrl from '../../../../../audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json?url';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import { BattleStage, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, turnPlanInputFromTranscriptEvent,
@@ -31,6 +34,7 @@ import { BattleStage, composeArena, createFixtureRig, createPortraitRig, cutFixt
 import { abilityTheme } from '@cf/domain-combatcore';
 import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from './effects/anchors.js';
 import { EffectThemeLibrary, isEffectTheme, isProceduralImage } from './effects/theme-library.js';
+import { PARTICLE_DISC_SIZE, particleDiscRgba } from './effects/particle-texture.js';
 import { createPixiEffectHost, type EffectParticleLike, type EffectSpriteLike, type EffectTextureLike } from './effects/pixi-adapter.js';
 import { compileBodyCard, MotionCompileError, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from './motion/body-card.js';
 import { createTurnCueSink, type TurnAudioRuntime, type TurnCueSink } from './soundkit/turn-audio.js';
@@ -290,7 +294,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     for (const p of anchors.phases) phaseTextures.set(p.keyedImage, assets.image(p.keyedImage).then(texture));
     const resolvedPhaseTextures = new Map<string, EffectTextureLike>();
     for (const [k, v] of phaseTextures) resolvedPhaseTextures.set(k, await v);
-    const dot = new Uint8ClampedArray(8 * 8 * 4); for (let y = 0; y < 8; y++) for (let x = 0; x < 8; x++) { const i = (y * 8 + x) * 4, d = Math.hypot(x - 3.5, y - 3.5); dot[i] = dot[i + 1] = dot[i + 2] = 255; dot[i + 3] = d <= 4 ? 255 : 0; }
+    const dot = particleDiscRgba(PARTICLE_DISC_SIZE);
     const worldLife = new WorldLifePixiAdapter({ spec: compileWorldLife(recipe.systemCard, recipe.seed, 'arena', { tier: input.deviceTier === 'low' ? 'phone' : 'desktop' }),
       factory: { container: () => new pixi.Container(), graphics: () => new pixi.Graphics() }, clock: input.clock, width: BATTLE2_FRAME.width, height: BATTLE2_FRAME.height, reducedMotion: input.reducedMotion });
     const style = { fontFamily: 'system-ui', fontSize: 34, fontWeight: '700', fill: '#fff2c8', stroke: { color: '#2a1a0a', width: 4 } };
@@ -298,7 +302,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low' }) : null;
     const built = new BattleStage({ factory, clock: input.clock, layout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass },
       worldLife, reducedMotion: input.reducedMotion, cues: cueSink ? { sink: cueSink, phone: input.deviceTier === 'low' } : null, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
-        particleTexture: texture(raster(dot, 8, 8)), seed: recipe.seed,
+        particleTexture: texture(raster(dot, PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE)), seed: recipe.seed,
         phaseTextures: (a) => a.phases.map((p) => { if (isProceduralImage(p.keyedImage)) return null; const t = resolvedPhaseTextures.get(p.keyedImage); if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }),
         emittersForTheme: (t) => themes.emittersFor(t), tintForTheme: (t) => themes.tintFor(t) } });
     const themeA = genomeTheme(championGenome), themeB = genomeTheme(input.settlement.encounter.defender.battleGenome);

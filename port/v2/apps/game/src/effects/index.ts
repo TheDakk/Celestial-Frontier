@@ -17,6 +17,7 @@ export {
   EFFECT_THEMES, EffectThemeLibrary, PAINTED_EFFECT_LABEL, PROCEDURAL_EFFECT_LABEL, PROCEDURAL_SEQUENCE_PREFIX, THEME_EMITTERS, THEME_MATERIALS,
   isEffectTheme, isProceduralImage, isProceduralSequence, proceduralAnchorsFor, type EffectTheme, type ThemeEffect, type ThemeMaterial,
 } from './theme-library.js';
+export { PARTICLE_DISC_SIZE, PARTICLE_RIM, particleDiscRgba } from './particle-texture.js';
 export {
   EFFECT_FIXED_STEP_MS, EffectSequencePlayer, createPixiEffectHost, mirrorDirection,
   type EffectParticleContainerLike, type EffectParticleLike, type EffectPixiHost, type EffectPlayerFrame,
