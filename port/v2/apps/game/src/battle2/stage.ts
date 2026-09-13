@@ -4,8 +4,8 @@
  * (no pixi.js import; the wiring binds real classes). The clock is injected; dispose is total.
  * The combat outcome adapter at the bottom maps a @cf/domain-combatcore transcript log entry to a
  * TurnPlanInput; nothing here imports main.ts state. */
-import type { EffectSequenceAnchors } from '../effects/anchors.js';
-import { EMITTER_PRESETS } from '../effects/emitter.js';
+import type { EffectPhaseName, EffectSequenceAnchors } from '../effects/anchors.js';
+import { EMITTER_PRESETS, type EmitterConfig } from '../effects/emitter.js';
 import { EffectSequencePlayer, type EffectPixiHost, type EffectTextureLike } from '../effects/pixi-adapter.js';
 import type { EffectDelivery } from '../effects/sequencer.js';
 import type { BodyCard } from '../motion/body-card.js';
@@ -22,8 +22,12 @@ export interface BattleStageFactory { container(): StageContainerLike; sprite(te
 export interface WorldLifeLayerLike { readonly container: object; update(): unknown; dispose(): void; }
 export interface BattleStageEffects {
   readonly host: EffectPixiHost; readonly particleTexture: EffectTextureLike; readonly seed: number;
-  /** One texture per anchors phase, in phase order (resolved by keyedImage name at the wiring site). */
-  phaseTextures(anchors: EffectSequenceAnchors): readonly EffectTextureLike[];
+  /** One texture per anchors phase, in phase order (resolved by keyedImage name at the wiring site); null = procedural phase, no sprite. */
+  phaseTextures(anchors: EffectSequenceAnchors): readonly (EffectTextureLike | null)[];
+  /** Theme emitter presets (Art Kit §4K materials); absent = the Motion Kit §7 defaults for every theme. */
+  emittersForTheme?(theme: string): Readonly<Record<EffectPhaseName, EmitterConfig>>;
+  /** Theme material colour for the particle views; absent = untinted. */
+  tintForTheme?(theme: string): number;
 }
 export interface BattleStageOptions {
   readonly factory: BattleStageFactory; readonly clock: () => number; readonly layout: ArenaLayout;
@@ -86,8 +90,10 @@ export class BattleStage {
     const fx = this.#o.effects;
     if (plan.effect && fx && !plan.reducedMotion) {
       const start = plan.effect.startMs; let armed = false;
+      const tint = fx.tintForTheme?.(plan.theme);
       this.#player = new EffectSequencePlayer({ host: fx.host, schedule: plan.effect.schedule, phaseTextures: fx.phaseTextures(plan.effect.anchors), particleTexture: fx.particleTexture,
-        emitters: EMITTER_PRESETS, seed: fx.seed, arena: { width: this.#o.layout.frame.width, height: this.#o.layout.frame.height },
+        ...(tint !== undefined ? { particleTint: tint } : {}),
+        emitters: fx.emittersForTheme?.(plan.theme) ?? EMITTER_PRESETS, seed: fx.seed, arena: { width: this.#o.layout.frame.width, height: this.#o.layout.frame.height },
         clock: () => { if (!armed) { armed = true; return start; } return this.#o.clock() - this.#startMs; } });
       for (const s of this.#player.sprites) { this.#fx.addChild(s); this.#fxNodes.push(s); }
       this.#fx.addChild(this.#player.particles); this.#fxNodes.push(this.#player.particles);
@@ -109,7 +115,7 @@ export class BattleStage {
     this.#place(plan.target.side, s.target.displacementX, s.target.facing); this.#o.rigs[plan.target.side].applyPose(s.target.pose);
     if (this.#player && plan.effect && ms >= plan.effect.startMs) {
       this.#player.tick();
-      s.effect?.tracks.forEach((t, i) => { const sp = this.#player!.sprites[i]; if (sp) sp.alpha = t.transform.alpha; });
+      s.effect?.tracks.forEach((t, i) => { const sp = this.#player!.spriteForTrack(i); if (sp) sp.alpha = t.transform.alpha; });
     }
     this.#flash.alpha = s.camera.flash * 0.85;
     const n = s.numbers[0];
