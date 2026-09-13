@@ -11,10 +11,10 @@ History may be messy; the tree at the head must be clean. Do not cherry-pick a "
 - Delete superseded code: `scene-image-cache-plan.ts` and test (no importers); `civet-rig.ts` deformer and `painted-civet-rig.test.ts`; the livingvista quartet (`earth-resident.worker/layer/protocol/load`); pilot studies and their query lanes unless Nick ships them; the Blender Civet projection builder `civet_proof.py` (retain the canid master, `audit_canid.py` and the Civet turnaround under `audits/` as engine-port assets); `run-offline-runtime.mjs` CLI; the stale `audiovisual-pilot-review.mjs`. Already removed: OPFS variant layer, six-reference scene generator.
 - Pack hygiene: exclude `assets/pilot/**` and all WAV from the PWA inventory; convert any shipped audio to Opus or AAC.
 - Docs: move query-lane sentences out of `V2_DRAFT_RELEASE`; correct the stale claims in FULL_REVIEW Part G; every reference doc carries a current "matches code as of" marker.
-- Evidence size: `audits/` grew from 79 MB to over 700 MB. Options: (a) migrate bulky evidence (profiles, GIFs, tarballs, screenshots over ~1 MB) to Git LFS on `openai/mac` before its PR is readied; this rewrites the agent branch and requires Nick's explicit approval per protocol; (b) accept the size. Decision pending Nick.
+- Evidence size: `audits/` grew from 79 MB to over 700 MB. Options: (a) migrate bulky evidence (profiles, GIFs, tarballs, screenshots over ~1 MB) to Git LFS on `openai/mac` before its PR is readied; this rewrites the agent branch and requires Nick's explicit approval per protocol; (b) accept the size. Nick approved option (a) on 2026-09-12; Codex performs it on `openai/mac` with Nick's explicit go at that moment; Claude re-merges afterwards.
 - Remaining Part K items not yet closed, with negative controls.
 
-## Step 2. Tiered PRs into develop, squash-merged
+## Step 2. Tiered PRs into develop (merge commits, not squash; revised 2026-09-12 because two agents share history)
 
 | Tier | Contents | Admission |
 |---|---|---|
