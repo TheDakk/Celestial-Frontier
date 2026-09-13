@@ -1,5 +1,11 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+Civet animation proof status, September12: exact named viverrid anatomy export and a4E
+turnaround exist. Two private Blender tokens fail visual review (projection/shape drift).
+The larger shape/UV correction awaits approval; no local texture-finisher pass, rendered
+clips, staged browser turn, gene-driven family coverage or animation acceptance yet.
+Evidence audits/CIVET_ANIMATION_PROOF_20260912. Rain E remains active without inference.
+
 **Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
 emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical
 Earth loads the hash-verified accepted E PNG through the normal original-retention queue, without
