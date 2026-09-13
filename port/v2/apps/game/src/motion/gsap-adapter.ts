@@ -36,7 +36,10 @@ export function createGsapPlayer(timeline: MotionTimeline, target: PoseTarget, o
   }
   addTrack(root, 'dx', timeline.root.dx); addTrack(root, 'dy', timeline.root.dy);
   tl.to({}, { duration: timeline.durationMs / 1000 }, 0); // pin the total length so progress is honest
-  const push = (): void => { for (const [joint, cell] of Object.entries(values)) target.setJoint(joint, cell.v, root.dx, root.dy); };
+  // CreatureRigV1.applyPose reads every joint's dx/dy as that joint's LOCAL offset in body lengths; inherited transforms
+  // compound them. The timeline authors translation on root only, so root alone carries it and every other joint gets
+  // 0/0 until explicit per-joint translation tracks exist (C2 interop probe, 2026-09-13: the old broadcast moved the head twice).
+  const push = (): void => { for (const [joint, cell] of Object.entries(values)) target.setJoint(joint, cell.v, joint === 'root' ? root.dx : 0, joint === 'root' ? root.dy : 0); };
   let startMs = 0, running = false;
   const seek = (ms: number): void => {
     if (timeline.loop) { const w = ((ms % timeline.bodyMs) + timeline.bodyMs) % timeline.bodyMs; tl.time(w / 1000, false);
