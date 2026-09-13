@@ -261,7 +261,7 @@ export function buildCanonicalLandfallConditioningV2(request: unknown, liveRoste
  * authored system cards or send-time rewrites. Other worlds and unlisted family
  * exemplars remain unsupported until their source adapters are implemented. */
 export function compileEarthArtKitV4(input: unknown, kit: string) {
-  if (!kit.startsWith('# Celestial Frontier Art Kit\n') || !['4', '4.2'].some(version => kit.includes(`style_id: frontier   |   version ${version},`)))
+  if (!kit.startsWith('# Celestial Frontier Art Kit\n') || !['4', '4.2', '4.3'].some(version => kit.includes(`style_id: frontier   |   version ${version},`)))
     throw Error('Art Kit v4 required; retired kits are refused');
   const admitted = buildLandfallConditioningV1(input);
   if (!admitted.ok) throw Error('Art Kit source refused: ' + admitted.reason);

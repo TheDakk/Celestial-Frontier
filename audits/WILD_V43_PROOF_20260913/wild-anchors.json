@@ -1,0 +1,87 @@
+{
+  "schema": "cf.effect-sequence-anchors/v1",
+  "sequenceId": "wild-maw-proof-v43",
+  "theme": "wild",
+  "abilityId": "maw",
+  "abilityName": "Savage Maw",
+  "canvasSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "coordinateSpace": "normalized full canvas; top-left origin",
+  "phaseOrder": [
+    "launch",
+    "travel",
+    "impact"
+  ],
+  "direction": "left-to-right",
+  "originAnchor": [
+    0.2,
+    0.55
+  ],
+  "contactAnchor": [
+    0.8,
+    0.55
+  ],
+  "phases": [
+    {
+      "phase": "launch",
+      "image": "registered/wild-launch.png",
+      "keyedImage": "registered/wild-launch.png",
+      "imageSha256": "164b45aad0448d2d642698136570b06b05a75f8ddf9f9a08421cf2d8edd3ed1b",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "phase": "travel",
+      "image": "registered/wild-travel.png",
+      "keyedImage": "registered/wild-travel.png",
+      "imageSha256": "78e11c152e4d09ccc20c7c4ccd858cc46d4afe211bf4956674ee2c9b924a1705",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "qualityAccepted": false
+    },
+    {
+      "phase": "impact",
+      "image": "registered/wild-impact.png",
+      "keyedImage": "registered/wild-impact.png",
+      "imageSha256": "54fdf384a6ca0f475f20cc6e3ad296b3c672d193039c263c831cdbc139ddaa37",
+      "canvasSize": {
+        "width": 1024,
+        "height": 1024
+      },
+      "originAnchor": [
+        0.2,
+        0.55
+      ],
+      "contactAnchor": [
+        0.8,
+        0.55
+      ],
+      "qualityAccepted": false
+    }
+  ],
+  "qualityAccepted": false,
+  "registration": "Shared 1024-square intake canvas; visible launch/travel origins and impact contact aligned within half a pixel. Empty anchors are virtual. Visual motion acceptance pending; generated masters did not obey requested occupied bounds."
+}
