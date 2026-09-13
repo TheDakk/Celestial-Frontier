@@ -194,7 +194,8 @@ actions hover with a 1.4 s bob; gas-giant floaters drift continuously.
 ## 7. Staging by surface
 
 ```text
-ARENA (battle): side view; combatants at one third to one half of frame
+ARENA (battle): the whole arena is alive: plate life as in LANDFALL runs
+  behind the fight at reduced density; side view; combatants at one third to one half of frame
   height on the left and right thirds, facing each other on the shared
   fighting-ground line; parallax rates far .10, mid .50, near 1.20 of the
   run-up displacement; no camera moves. Turn sequence: timing bar ready ->
@@ -202,8 +203,14 @@ ARENA (battle): side view; combatants at one third to one half of frame
   Effects sequence: launch at attacker, travel, impact at target) ->
   hitstop, flash, shake, damage number -> target hit or dodge -> return ->
   idle. Both combatants idle throughout. Victory or faint ends the turn.
-LANDFALL: residents are still; later, idle life only (breathe, flick) at
-  landfall tempo; no travel until the family templates are proven.
+LANDFALL (world life): nothing in the world is static. Plate life is
+  deterministic layered motion on the painting: rain and snow streaks at the
+  card's density, mist and dust drift, water shimmer and ripple, foliage sway
+  by weather strength, distant fliers or swimmers as small silhouettes, light
+  flicker for luminous flora. Resident life uses the family templates: breathe,
+  weight shift, flick, head turn, plant sway and disturb; travel (the approach
+  gait at idle tempo) only after a family template is proven. Everything is
+  seeded from the recipe so the same landing replays identically.
 COMPENDIUM: portrait grow on reveal; idle breathe; page transitions use the
   panel easing.
 SHIPYARD and SHIPS: launch (anticipation dip, ease-in rise), dock (ease-out,
@@ -259,7 +266,8 @@ LOOT and INVENTORY: pickup pop 90 back-out; reveal flourish scaled by rarity
      the Wild sequence. Ten-second captures.
   c. Then hopper, biped-bird, fish, insect, in that order, each with its
      proof creature and two reuse controls.
-  d. Then ships, panels, loot and Compendium motion from section 7.
+  d. Then landfall world life (plate life first, then resident idle life),
+     ships, panels, loot and Compendium motion from section 7.
   e. Then freeze sections 1, 2, 5, 6; templates grow only by adding a
      template with its own proof.
 ```
