@@ -1,0 +1,478 @@
+{
+  "schema": "cf.claude-civet-review-packet.v1",
+  "sourceHead": "2f7e344a68df47b85ac47996363c8889dbb305ee",
+  "branch": "openai/mac",
+  "scope": "Read-only review; Civet failure and reusable fauna/flora architecture",
+  "kitSha256": "7abf7834fab0056cadc673d1df4f3f614538cb279089236c5ed1951344d7a457",
+  "excluded": [
+    "editable private .blend masters",
+    "model weights",
+    "dependencies",
+    "private keys and certificates",
+    "full runnable checkout"
+  ],
+  "files": [
+    {
+      "path": "ART_KIT.md",
+      "bytes": 41459,
+      "sha256": "7abf7834fab0056cadc673d1df4f3f614538cb279089236c5ed1951344d7a457",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "CREATURE_ANIMATION.md",
+      "bytes": 19568,
+      "sha256": "bd5d69910b32d8414a0ca693f789e9cc408053a1f13462b582bb6b5b69aaedf0",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "LOCAL_AI_GENERATION.md",
+      "bytes": 30880,
+      "sha256": "aa3b502a3e944d652c5b214d90d5caa89440260d33e03f31d3e3b7a8a56d9551",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 7125,
+      "sha256": "bcf2c01fa94620fb3e315cc5be191749cb883f4ee3cdcb82d62b08a07a52c873",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+      "bytes": 1931944,
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/earth-temperate.png",
+      "bytes": 3092094,
+      "sha256": "98bf240c48dd32e8696760ae2eb398946698f6404e6fffc34cb3745b362bd103",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/ART_KIT_WEATHER_LADDER_20260912/E.png",
+      "bytes": 1412807,
+      "sha256": "4b776b03194acdf9a5facfb22c2e564e43a683e4e31cf4be932615acefbf6d26",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/ART_KIT_WEATHER_LADDER_20260912/manifest.json",
+      "bytes": 6559,
+      "sha256": "15bfe8c137483512c455bdf70481a658fe969b864b57f77f0b8098fc2bff8d24",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/ART_KIT_WEATHER_MAT_20260912/native-01/finisher-before-weather.png",
+      "bytes": 1612554,
+      "sha256": "6122041b8a113c883078415305fbe7b0f8203852b8caa2f35231008d37cafa59",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/ART_KIT_WEATHER_MAT_20260912/native-01/painting.png",
+      "bytes": 1609684,
+      "sha256": "27101ff3af6e91b3e59087e7b1c2c4564d7c3cd1fa9ca6aec11c31250508fc16",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/README.md",
+      "bytes": 2985,
+      "sha256": "5a366b3fe65fb87ab0fa4df61ffdd9f548d8254d6b3ac884b1a7f550b9ce283b",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/civet-turnaround-01.png",
+      "bytes": 1886598,
+      "sha256": "5a7d18cbf0c0214ffd9b76f13597a9ce78997fec2c6cfbcb82f7177382abc924",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/first-token/REVIEW.md",
+      "bytes": 325,
+      "sha256": "7a82ccb8056b0f0433f2bcd1cd6ffaf9b343aaea526abe819814911c1351696c",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/first-token/receipt.json",
+      "bytes": 2553,
+      "sha256": "dba48ad835ba6c4ebcdf92b92586fe9c844ee037abf5722481bba89d2f85cbe3",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/first-token/token.png",
+      "bytes": 123113,
+      "sha256": "c88700f6c9e00233ad3e7a5d2ae48e3b9e832787f0f74c7677d455b62dbf2b39",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/phenotype.json",
+      "bytes": 6807,
+      "sha256": "89bec13dffc9ba1712994346001370a81af30f46d2612ab6698c1fffe47e32a9",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/private-masters.json",
+      "bytes": 615,
+      "sha256": "81a355a590a55ac18aefa3d9901ff8caec3f55661934ce91303dc24645208f27",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/second-token/REVIEW.md",
+      "bytes": 339,
+      "sha256": "c94cd69dbc87b262e9d7c0406c2b0e8e44211884309b5f32e9467bcb8913877d",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/second-token/receipt.json",
+      "bytes": 2659,
+      "sha256": "62e8b2a02ec30a18db7e9b250953c24c29210a4a7306c669a370772ed5c24813",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/second-token/token.png",
+      "bytes": 125106,
+      "sha256": "159408c72bc4be619e692084a76a02edc57b1e3b2bb22be56e1c5320b5446468",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/turnaround-intake.json",
+      "bytes": 577,
+      "sha256": "2daa3c08dd1fc7893a7c1e096612f226eeee80caa6bbd97b50f85f5d53cab6c4",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CIVET_ANIMATION_PROOF_20260912/turnaround-prompt.txt",
+      "bytes": 7769,
+      "sha256": "9392852c4b54f4c59a9c31db80166b29260051f177a9d3d5447ef1845ec91335",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CLAUDE_FULL_REVIEW_20260910/CODEX_HANDOFF.md",
+      "bytes": 14387,
+      "sha256": "83ffd26570f0d9bf4589a746a7e70d8479ef5df4b71a4d5335ec99097cfcbe7a",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/CLAUDE_FULL_REVIEW_20260910/GAME_VOCABULARY_COVERAGE.md",
+      "bytes": 12620,
+      "sha256": "9da513b90552a1b802f9bb341c3383a7a47938af0cfce86c287278bce76c4012",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/IPHONE_EMBEDDED_PROBE_20260912/manual-01/README.md",
+      "bytes": 2295,
+      "sha256": "5b309fcc26353335566fe8476014ed0584cdea7749518a4a5e46cf389079f018",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "bytes": 2954509,
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+      "bytes": 3014976,
+      "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/03-earth-full-landfall.png",
+      "bytes": 3156154,
+      "sha256": "93c1b9cd6a57dc087cd4896ce05cb6025fbe5877dcba3a52f7b0ab6268289eec",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/04-alien-full-landfall.png",
+      "bytes": 3255598,
+      "sha256": "c808c6fe442d5827c4c0f56649115de60266f3863b057d2e65c3231c32b6e116",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/RAIN_E_ADOPTION_20260912/README.md",
+      "bytes": 2278,
+      "sha256": "496489d4eb1ea6c173c9e4a387c6e563c5ada1ecc5f8f000301cbea9429395cb",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/RAIN_E_ADOPTION_20260912/ordinary-game-01/03-inspect.png",
+      "bytes": 1302344,
+      "sha256": "33e8189932bed0b728f2d3738a3b16a3ad045abc5f4b00457983569a0f1ef7b2",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/RAIN_E_ADOPTION_20260912/ordinary-game-01/result.json",
+      "bytes": 229343,
+      "sha256": "ebb0a960cf45206195cc8eb505061019f3f0d8c83f4558874b738352b425ec3d",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/RAIN_E_ADOPTION_20260912/recipe.json",
+      "bytes": 43247,
+      "sha256": "aa324082d710261df353141de60939d5148f5f888b070f1a8d314a3774be154e",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "audits/RAIN_E_ADOPTION_20260912/replay.json",
+      "bytes": 904,
+      "sha256": "debce1fc668b563d949d7ecff4b184585d85527c459948e0df27111cc97c775e",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/apps/game/src/hybridmatrixaudit.ts",
+      "bytes": 62780,
+      "sha256": "c826b6ca714e9c33d8d8fa458b4b1da5aae8fff4da4cc7d1feace127883fda9d",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/apps/game/src/kit-earth-baseline.json",
+      "bytes": 865,
+      "sha256": "b87ec05873de04e852a369e9058701bb3ede494716178141fb8a36f16e764193",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/apps/game/src/landfall-conditioning.ts",
+      "bytes": 34553,
+      "sha256": "ca49f52dc6df510a45eab7b04316ca558df1c8b3ca347eae7b024c8a312f11c9",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-game.ts",
+      "bytes": 14458,
+      "sha256": "1947c7fc1257e6e8d4e79c2c69dc6a0d3fa923f138e0a8733b495f15d5583bca",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-kit-runtime.ts",
+      "bytes": 4035,
+      "sha256": "61711c87a167c4f5d745c83fb98c6aed38ecf87531ea95c008d36c3fa196a793",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/apps/game/src/pilot-specimens.ts",
+      "bytes": 5219,
+      "sha256": "c9c33619b55e69663740332237f7b1f4e9710bd633f6b3f83063e608f8550ef2",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/src/birdoverrides.ts",
+      "bytes": 9167,
+      "sha256": "48ffa589f2273f0f29fd85df1f05fd070477ade70f1cdeb7698f5321e5702dc7",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/src/earth-resident-plan.ts",
+      "bytes": 9732,
+      "sha256": "8929f953dfd77f0b82e3026e2cd17a05e3c35059d0619b91511b7d73a70f8907",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides.ts",
+      "bytes": 253580,
+      "sha256": "9e109fea1bda4d312eb733f8aa56aacba67ab0ceb79a6a8d9228bec6bc118694",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides2.ts",
+      "bytes": 235945,
+      "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides3.ts",
+      "bytes": 153673,
+      "sha256": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/src/invertoverrides.ts",
+      "bytes": 231622,
+      "sha256": "c0a76508b48d6f97793f37d9962e6140242ef9229a168ef6f538508d4ecaf746",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/src/mammaloverrides.ts",
+      "bytes": 29311,
+      "sha256": "2ef6c2e8e592c14d3ce77d4f77b2637ffa0ae55b771375ec833e6a299db68702",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/src/proceduraloverrides.ts",
+      "bytes": 13174,
+      "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
+      "bytes": 358210,
+      "sha256": "baa8df44c485c0febaf1c8d05579d846a4c3b2114454c7e42d1c4177a4703e55",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesidentity.ts",
+      "bytes": 3190,
+      "sha256": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesoverrides.ts",
+      "bytes": 126067,
+      "sha256": "9c212624234a64d78a75a362e48625bec16a36f4831fd29ba86f09f236f9441b",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/art/test/familyspread.test.ts",
+      "bytes": 4066,
+      "sha256": "f73e972d3efa85e3398d767b8eb4fc4b5364b41d53cdcb9989c9b1729cc88db3",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
+      "bytes": 6433,
+      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
+      "bytes": 13811,
+      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
+      "bytes": 4570,
+      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/index.ts",
+      "bytes": 3281,
+      "sha256": "eee2058546ab009b6b33376bad1005d6a597bd2b336506851d9be562d8cbef61",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "bytes": 13307,
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "bytes": 3639,
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "bytes": 20728,
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/tests/creature-blender-export.test.ts",
+      "bytes": 12260,
+      "sha256": "2316e3126873f93e281ff1f670e61d8e7cc5ce3d7c1ae1aa98c3676de992530a",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/tests/landfall-conditioning.test.ts",
+      "bytes": 17576,
+      "sha256": "05ba76172265f91f40436f16595c8b6ffaa037197994cb60d3f0205771f88b96",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/tests/local-ai-game.test.ts",
+      "bytes": 10916,
+      "sha256": "6258f6e6b51b64edf64600d6f1a3313c29a8c95073eaf3ebd355e2d1a5a67b4d",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/tools/blender/audit_canid.py",
+      "bytes": 11424,
+      "sha256": "ac0199091cd043123fa28b6af06aec39bdddb8f4c1c731c66cef63b701e1b2cd",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/tools/blender/civet_proof.py",
+      "bytes": 8941,
+      "sha256": "663cf08876cff620dfce3e52447c705d92c03ac817e9d0905690a809b68fb65d",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/tools/blender/creature_canid.py",
+      "bytes": 39362,
+      "sha256": "aab9af8cf6b0d310bf9d53414e3c895321e47b2787f423f4981b533c8225d771",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/kinematics.ts",
+      "bytes": 8239,
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/tools/creature-blender-export.d.mts",
+      "bytes": 1440,
+      "sha256": "2db4b0d934d126f2261d003e83603c4dbae69119c999021fb907f131a819fa4b",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "port/v2/tools/creature-blender-export.mjs",
+      "bytes": 20283,
+      "sha256": "b2b365da9a9fc31843571db5b8a2746e417268a4dfa1432abf79684f58ea3357",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "tools/local-image-generation/kit-contact-math.mjs",
+      "bytes": 6029,
+      "sha256": "b2b185178e7f4d21601f064fad5a79953c03f9303e4ea55844d185ff8b636c59",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "tools/local-image-generation/kit-engine-math.mjs",
+      "bytes": 7036,
+      "sha256": "af2f81b11112413c0989d88a9620f2e00d03089a901784359f5fddb45e9a25eb",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "tools/local-image-generation/kit-weather-math.mjs",
+      "bytes": 4434,
+      "sha256": "abd3202a2da4cf242f8f031b9a7dd1038e192aed0c28969b3c470780e11f8fbd",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "tools/local-image-generation/kit-worker-engine.mjs",
+      "bytes": 16132,
+      "sha256": "966c8652fb11302898d1f58d7532e8e42b1efe1814840564d64d4dd85373af45",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "tools/local-image-generation/kit-worker-engine.test.mjs",
+      "bytes": 8538,
+      "sha256": "f147c4ef15f07ea9094bb9838baac91cbd91b60492da4adae27dc202cefa202e",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "tools/local-image-generation/pipeline-math.mjs",
+      "bytes": 10225,
+      "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "REVIEW_REQUEST.md",
+      "bytes": 8990,
+      "sha256": "3df84f3a0c3ba76c3cb84cc12b6d9959c17367b56fc35315651fddd2c5bd6389",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    },
+    {
+      "path": "historical-sources/d4fe8037-civet_proof.py",
+      "bytes": 7554,
+      "sha256": "f43749d7b5cb5e7e1dd771bad29247272c8307ea8da7fb798a88e8dd957f888d",
+      "note": "Historical first-render builder"
+    },
+    {
+      "path": "CIVET_SOURCE_DIFF.patch",
+      "bytes": 18285,
+      "sha256": "2b7edf30b13ff1f1c1247ab5745cf252851a0eac96e20c7eedd4060ac48743a6",
+      "note": "Current source/evidence; status distinctions in REVIEW_REQUEST.md"
+    }
+  ]
+}

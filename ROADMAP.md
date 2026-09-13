@@ -91,3 +91,15 @@ The requested family architecture must be established during the correction, not
 from a single posed Civet. No phone Klein retries. Smaller finisher evaluation and second
 weather ladder remain queued per Nick's order; no delivery engineering before phone result.
 Rain E activation8b01e38c/browser evidenceaaacfd6f remains accepted and unchanged.
+
+## Claude review handoff prepared — September12
+
+Nick requested material to provide Claude. audits/CLAUDE_CIVET_REVIEW_20260912 records a
+25,971,294-byte ZIP under /private/tmp/celestial-frontier-claude-civet-review-20260912.zip,
+13 original-resolution images,78 entries, exact source head2f7e344a, hash index and copy-ready
+read-only brief. CRC/exact bytes verified. No new model/render/browser/GitHub operation.
+Review asks for independent diagnosis and a reusable fauna/flora/lineage architecture,
+then the smallest bounded Civet proof; it does not approve further rework or kit changes.
+Nick may open Claude and upload the ZIP; no repo sync or manually copied worktree files.
+PR42 parked, GitHub step none. Current signed parent2f7e344a:53 ahead upstream/164 ahead cached
+develop, zero behind; packet documentation commit follows. Only unrelated.DS_Store untracked.
