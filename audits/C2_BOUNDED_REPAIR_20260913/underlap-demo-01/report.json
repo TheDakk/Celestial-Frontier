@@ -1,0 +1,208 @@
+{
+  "schema": "cf.rig-pose-render/v1",
+  "byLimit": true,
+  "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+  "record": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+  "size": {
+    "width": 1254,
+    "height": 1254
+  },
+  "alphaPixels": 516758,
+  "underlapPx": 25,
+  "cuts": {
+    "strict": {
+      "underlapPx": 0,
+      "underlapPixels": 0,
+      "poses": {
+        "rest": {
+          "file": "civet-strict-rest.png",
+          "opaque": 516758,
+          "restChangedChannels": 0,
+          "gapPixelsInsideEnvelope": 13679,
+          "perJoint": {
+            "head": 0,
+            "neck": 0,
+            "jaw": 0,
+            "tail1": 1291,
+            "tail2": 3276,
+            "tail3": 656,
+            "foreNearKnee": 1250,
+            "foreNearAnkle": 959,
+            "hindNearKnee": 1678,
+            "hindNearAnkle": 4947,
+            "foreFarKnee": 959,
+            "hindFarAnkle": 2345
+          }
+        },
+        "hit-recoil": {
+          "file": "civet-strict-hit-recoil.png",
+          "opaque": 477126,
+          "restChangedChannels": null,
+          "gapPixelsInsideEnvelope": 24049,
+          "perJoint": {
+            "head": 4106,
+            "neck": 3306,
+            "jaw": 2456,
+            "tail1": 2897,
+            "tail2": 5790,
+            "tail3": 830,
+            "foreNearKnee": 4054,
+            "foreNearAnkle": 1237,
+            "hindNearKnee": 1506,
+            "hindNearAnkle": 5355,
+            "foreFarKnee": 2010,
+            "hindFarAnkle": 2335
+          }
+        },
+        "melee-strike": {
+          "file": "civet-strict-melee-strike.png",
+          "opaque": 388534,
+          "restChangedChannels": null,
+          "gapPixelsInsideEnvelope": 15571,
+          "perJoint": {
+            "head": 4152,
+            "neck": 2278,
+            "jaw": 4292,
+            "tail1": 276,
+            "tail2": 133,
+            "tail3": 47,
+            "foreNearKnee": 3003,
+            "foreNearAnkle": 107,
+            "hindNearKnee": 340,
+            "hindNearAnkle": 821,
+            "foreFarKnee": 2960,
+            "hindFarAnkle": 1251
+          }
+        }
+      }
+    },
+    "underlap": {
+      "underlapPx": 25,
+      "underlapPixels": 217066,
+      "poses": {
+        "rest": {
+          "file": "civet-underlap-rest.png",
+          "opaque": 516758,
+          "restChangedChannels": 0,
+          "gapPixelsInsideEnvelope": 13679,
+          "perJoint": {
+            "head": 0,
+            "neck": 0,
+            "jaw": 0,
+            "tail1": 1291,
+            "tail2": 3276,
+            "tail3": 656,
+            "foreNearKnee": 1250,
+            "foreNearAnkle": 959,
+            "hindNearKnee": 1678,
+            "hindNearAnkle": 4947,
+            "foreFarKnee": 959,
+            "hindFarAnkle": 2345
+          }
+        },
+        "hit-recoil": {
+          "file": "civet-underlap-hit-recoil.png",
+          "opaque": 516910,
+          "restChangedChannels": null,
+          "gapPixelsInsideEnvelope": 15207,
+          "perJoint": {
+            "head": 1,
+            "neck": 6,
+            "jaw": 632,
+            "tail1": 1288,
+            "tail2": 5328,
+            "tail3": 732,
+            "foreNearKnee": 199,
+            "foreNearAnkle": 1862,
+            "hindNearKnee": 416,
+            "hindNearAnkle": 5510,
+            "foreFarKnee": 223,
+            "hindFarAnkle": 1633
+          }
+        },
+        "melee-strike": {
+          "file": "civet-underlap-melee-strike.png",
+          "opaque": 419394,
+          "restChangedChannels": null,
+          "gapPixelsInsideEnvelope": 7484,
+          "perJoint": {
+            "head": 0,
+            "neck": 4,
+            "jaw": 1046,
+            "tail1": 186,
+            "tail2": 101,
+            "tail3": 41,
+            "foreNearKnee": 1129,
+            "foreNearAnkle": 208,
+            "hindNearKnee": 233,
+            "hindNearAnkle": 714,
+            "foreFarKnee": 1283,
+            "hindFarAnkle": 1643
+          }
+        }
+      }
+    }
+  },
+  "seamDeltas": {
+    "strict": {
+      "hit-recoil": {
+        "head": 4106,
+        "neck": 3306,
+        "jaw": 2456,
+        "tail1": 1606,
+        "tail2": 2514,
+        "tail3": 174,
+        "foreNearKnee": 2804,
+        "foreNearAnkle": 278,
+        "hindNearKnee": -172,
+        "hindNearAnkle": 408,
+        "foreFarKnee": 1051,
+        "hindFarAnkle": -10
+      },
+      "melee-strike": {
+        "head": 4152,
+        "neck": 2278,
+        "jaw": 4292,
+        "tail1": -1015,
+        "tail2": -3143,
+        "tail3": -609,
+        "foreNearKnee": 1753,
+        "foreNearAnkle": -852,
+        "hindNearKnee": -1338,
+        "hindNearAnkle": -4126,
+        "foreFarKnee": 2001,
+        "hindFarAnkle": -1094
+      }
+    },
+    "underlap": {
+      "hit-recoil": {
+        "head": 1,
+        "neck": 6,
+        "jaw": 632,
+        "tail1": -3,
+        "tail2": 2052,
+        "tail3": 76,
+        "foreNearKnee": -1051,
+        "foreNearAnkle": 903,
+        "hindNearKnee": -1262,
+        "hindNearAnkle": 563,
+        "foreFarKnee": -736,
+        "hindFarAnkle": -712
+      },
+      "melee-strike": {
+        "head": 0,
+        "neck": 4,
+        "jaw": 1046,
+        "tail1": -1105,
+        "tail2": -3175,
+        "tail3": -615,
+        "foreNearKnee": -121,
+        "foreNearAnkle": -751,
+        "hindNearKnee": -1445,
+        "hindNearAnkle": -4233,
+        "foreFarKnee": 324,
+        "hindFarAnkle": -702
+      }
+    }
+  }
+}
