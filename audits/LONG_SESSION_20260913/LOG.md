@@ -1,156 +1,20 @@
-# Long session package log — 2026-09-13
+# Long-session log
 
-## Intake / C1 — pending supplied documents, not accepted
+Packages per WORK_ORDER.md. One entry per package on acceptance: commit, evidence paths, what was not done. Per-package drafts live in LOG-A1.md etc. until folded in here.
 
-Authority: Nick's 2026-09-13 long-session message. This log records that message; it is not a
-replacement for the supplied WORK_ORDER.md. The work order, eleven-row ARENA_EFFECTS_REVIEW
-and revised world-life MOTION_KIT were absent at the stated paths and in Downloads during intake.
-File-location question sent. No supplied work-order commit or v4.3 diff is claimed.
+| Package | Status | Commit | Evidence |
+|---|---|---|---|
+| A1 motion compiler | accepted (mechanical); open decision: procedural material owner (genome says translucent, painter record says fur) | see git log | audits/LONG_SESSION_20260913/a1-pose-sheets/ (civet, fox, procedural sheets + cards + timelines, byte-identical on re-run); 25 tests |
+| A2 effects sequencer | accepted (mechanical); travel mode per theme (melee: hold-and-reveal; projectile: slide) to be set in A3 | see git log | audits/LONG_SESSION_20260913/a2-sequence-sheet/ (12-frame sheet, identical SHA on re-run); 21 tests |
+| A5 world-life | accepted (mechanical); wiring to the real plate is A3/A6 | see git log | audits/LONG_SESSION_20260913/a5-life-sheet/ (landfall and arena sheets, replay digest reproduced); 29 tests |
+| A4 sound derivation | accepted (mechanical); listening is Nick's | see git log | audits/LONG_SESSION_20260913/a4-voices/ (nine placeholder-archetype WAVs, byte-identical on re-render); 19 tests |
+| A3 battle scene v2 | accepted (mechanical); Nick's eye on the capture; fixture rig until C2; main.ts wiring pending | see git log | audits/LONG_SESSION_20260913/a3-battle/proof-run-01/civet-vs-platypus-10s.mp4 + nine beat frames; 25 tests |
+| A6 part 1 defects | accepted (mechanical): K19, K20, K21, K22 part 1, K24, K25, K27, K28, K29, K30/31 fixed with negative controls; K22 part 2 (import t:0) left for Nick's decision | uncommitted on anthropic/mac at handoff (Nick commits after review; no git write by the agent) | audits/LONG_SESSION_20260913/LOG-A6-defects.md; smoke 553/0, validate PASS |
+| A6 part 2 docs and wiring | built and green on the mechanical gates; Nick's eye on the flagged studies is open: `?battle2=1` (A3 stage over the Chronicle mount) and `?worldlife=1` (A5 layer over the landfall vista); material owner flipped to record-first per CONTRACTS §5; MOTION_KIT/SOUND_KIT marked "matches code as of 2026-09-13" | uncommitted on anthropic/mac at handoff (Nick commits after review); three announced main.ts hunks, listed in LOG-A6-wiring.md | audits/LONG_SESSION_20260913/LOG-A6-wiring.md; tests/battle2-wiring (11), tests/worldlife-wiring (10), tests/motion-body-card (13, record-first controls); typecheck 0; validate PASS; smoke 553/0 |
 
-Decisions recorded in ROADMAP.md and PARALLEL_GIT_PROTOCOL.md: proceed C1–C5 without generic
-confirmations; explicit review stops; no new branches; merge commits into develop; research
-tier as tools; LFS migration only on Nick's go; Claude's five module paths/tests reserved;
-announce any main.ts hunk in the commit message. No main.ts or code changed this batch.
 
-Existing C1 intake evidence, already completed once in signed07c93945:
-- ../ARENA_V1_ACCEPTANCE_20260912/acceptance.json — arena template v1 accepted.
-- ../ARENA_V1_ACCEPTANCE_20260912/despill-receipt.json — exact190 RGB corrections, unchanged alpha.
-- ../ARENA_V1_ACCEPTANCE_20260912/arena-template-v1.png — corrected composite review image.
-- Original masters unchanged; no second despill pass or repaint.
+## Suite baseline note (2026-09-13)
 
-Next: receive and commit WORK_ORDER.md verbatim; read its interface/evidence requirements,
-receive exact theme table and revised Motion Kit; propose v4.3 and stop for wording approval.
-No C2–C5 completion, painting, sound recording, history rewrite or GitHub action claimed.
-Pre-batch HEAD07c93945:66 ahead origin/openai/mac;177 ahead cached origin/develop;0 behind.
-Verification: documentation diff check; prior handoff archived verbatim. No runtime changes
-or new tests. Claude may continue disjoint modules; no other-app opening or sync required.
-
-## C1 — supplied documents retained; wording proposal ready, awaiting approval
-
-Signed8a2dfdc0 retains all three supplied files verbatim: revised world-life Motion Kit,
-Sound Kit and Claude's arena/effects review. `supplied-kits-receipt.json` records source paths,
-byte lengths and SHA-256; the kits retain their supplied PROPOSED labels while Nick's v1/frozen
-approval remains authoritative. WORK_ORDER.md is still missing; no interface/evidence guessed.
-
-Proposal: `ART_KIT_V43_PROPOSED.diff`; receipt: `v43-proposal-receipt.json`.
-Adds the exact eleven review rows in4K, hex as accent only/never effect body colour, Wild warm
-ochre/earth with slate-blue sheen, and binds the subject palette to the table. Version/date
-labels proposed4.3. All eleven accents verified against combatcore.verbatim.js; domain code
-unchanged. Frozen paragraph and full4E byte-identical; canonical ART_KIT stillv4.2.
-Existing4K registration rule stands: next Wild prompt requires common canvas and identical
-origin/contact anchors for all three phases; per-phase JSON is retained as runtime fallback.
-MID despill already complete in07c93945 and not repeated. No painting, sound, runtime change,
-new branches, Claude-owned modules/main.ts edits, history rewrite or GitHub write.
-
-Verification: supplied bytes match Downloads; eleven-row/source-hex checks; frozen/4E equality;
-proposal passes git apply --check against unchanged kit; documentation diff check.
-Acceptance: NOT YET — stop for Nick's kit wording approval. C2 also needs WORK_ORDER.md.
-At8a2dfdc0:68 ahead upstream/179 ahead cached origin/develop,0 behind. Claude may continue its
-reserved modules; no sync or other-app opening required for this local proposal.
-
-## Work-order intake — received; C1 wording approval still pending
-
-Nick supplied WORK_ORDER.md from the named anthropic/mac path. Read only that attached source
-and copied its exact bytes to this audit directory under his explicit attachment/intake
-instruction; no sibling edit, branch operation or code transfer. Provenance, bytes and hash:
-`work-order-receipt.json`. Pre-intake commit e89cb621; the containing commit records this intake.
-
-Contracts read: C2 loads parts for a record, applies joint rotations/offsets, exposes display
-objects/pivots. A1 owns body-card compilation and named missing-field refusal; A2 consumes
-cf.effect-sequence-anchors/v1; A3 uses labelled fixture rigs until C2; A4 consumes C3 sources by
-archetype and voice card. Keep all Claude-owned paths/tests untouched. Report C1 images,
-C2 ten-second captures, C3 listening files, C4 sheets, C5 exact-head green evidence; mechanical
-packages require typecheck, package tests/negative controls and root validation.
-
-The work order permits temporary subagents on disjoint paths but none were spawned for this
-intake. Direct no-new-branches rule stands. More material is coming per Nick; no inference of
-v4.3 approval. Pending: approve e89cb621 proposal, then one Wild repaint. MID despill already
-done once. No code, sound, painting, history rewrite, GitHub write or package acceptance in
-this documentation intake. Source-byte comparison and git diff --check pass.
-
-## Additional long-session packet intake — C1 still awaiting wording approval
-
-Source: /Users/nick/Downloads/codex-long-session-pack-20260913.zip.
-`long-session-pack-receipt.json` records zip and every retained file hash/byte count.
-WORK_ORDER matches the prior supplied bytes. CONTRACTS.md, LOG-A4.md and LOG-A5.md retained
-verbatim; incoming LOG.md retained verbatim as LOG-CLAUDE-PACKET.md so neither lane's log is
-lost. This is document intake, not a merge of Claude's modules or verification of their tests.
-
-Read CreatureRigV1 fields/units/joint-name contract; C3 exact cue filenames, source formats,
-rights/hashes, bed loop-sidecar and separate rain requirement. CONTRACTS remains unedited.
-Claude's A4 reports placeholder/non-shippable sound, approximate formant processing and no
-LUFS measurement; A5 reports synthetic sheets and no accepted-plate wiring. Those reports
-are preserved, not promoted to Nick's visual/listening acceptance. The packet includes no
-source code, WAVs, image evidence or v4.3 approval. Before named-Earth integration, reconcile
-A4's reported Civet genome-derived massive/luminous values with the painter-authority rule;
-no edits to Claude's lane and no fabricated record fields in this intake.
-
-Validation: five document byte comparisons and git diff --check. Pre-packet a79d4035,
-70 ahead upstream/181 ahead cached origin/develop. Containing commit records this intake.
-No painting, sound, model run, main.ts edit, new branch, history rewrite or GitHub action.
-Next: Nick's v4.3 wording approval at e89cb621; C1 one Wild repaint thereafter. MID complete.
-
-## C1 — v4.3 adopted; Wild images delivered, visual acceptance pending
-
-Nick approved e89cb621 with exactly two header-label removals and the specified history clause.
-ART_KIT adoption diff/receipt at ../WILD_V43_PROOF_20260913. Frozen style/4E/domain hexes unchanged.
-Three built-in calls, one per phase, no rerolls; exact prompts and immutable original1254-square
-PNGs hashed in generation.json. Review wild-masters-review.png and wild-registered-review.png.
-Generator occupied bounds drifted; keyed copies uniformly resized/translated onto1024-square
-shared origin/contact anchors, with per-phase master fallback JSON retained. No warp/crop.
-Keyer unresolved edges89/597/529 recorded; no zero-fringe or user acceptance claim.
-
-MID190 RGB corrections from07c93945 reverified, alpha and accepted master hashes unchanged;
-mid-verification.json records zero new passes. C1 art not yet accepted: stop before staging.
-Only runtime change admits4.3 in Earth compiler, with retired-v3 mutant updated. Initial guard
-refusal retained; final3 compiler tests and9 contact/despill controls pass; full v2 TypeScript
-and root validate logs retained. A wrong-cwd edit initially changed nothing, then corrected.
-No main.ts or Claude-lane edits, no C2/C3, local inference,3D,GitHub,branch or history operation.
-Pre-batch db3d1e74:71 ahead upstream/182 ahead cached origin/develop. This containing commit
-records C1 delivery; images still need Nick's eye. Claude can continue its reserved modules.
-
-## Pack2 and C2 material prerequisite — cumulative feedback incorporated
-
-Pack2 retained verbatim in6030e636; updated contracts, A1/A2 reports, separate incoming log.
-The initially mentioned long-session ZIP was still Pack1; actual Pack2 was located in Downloads
-as codex-pack-2-20260913.zip, then inspected. No sibling edits or code copies. Nick reports
-four engine commits on anthropic/mac:5d0abd01/c03aad82/50a7fbd2/5f22581b; status retained as
-reported, not locally verified. The contracts' obsolete report prose is preserved verbatim;
-Nick's later material-owner decision controls. Keep combining every incoming packet/message.
-
-C2 prerequisite: observer reports actual spec.alien.skin ahead of spec/family coat, fixing
-fur versus translucent and the other alien-material cases without changing painting. Two
-real-painter command-stream tests pass across five skin routes, named-Earth/no-observer
-controls, deliberate false-fur control; pre-fix red retained. Full typecheck/root validate pass.
-Evidence: ../C2_MATERIAL_OBSERVER_20260913/README.md and logs. Old captured records untouched.
-Added measured alpha bounds to registered Wild anchors per A2 contract; image hashes intact.
-C1 art remains f802dde7, no further repaint or MID pass. Show the same three phases for review.
-No full C2 rig/staging/captures yet; image acceptance still pending before staging. C3 exact
-filenames/48k24-bit mono/dry/rights/SHA list remain binding. No Claude-lane or main.ts edit,
-GitHub action, new branch, history rewrite, kit change or source sound recorded.
-Pack2 commit73 ahead upstream/184 ahead cached develop; containing prerequisite commit follows.
-
-## Review delivery and continued C2 runtime coding — package not yet complete
-
-Nick clarified that coding should continue and requested concrete reviewer material. Prepared
-REVIEW_REQUEST.md and two review ZIPs,11,884,553 and18,452,967bytes (<30MB each). Paths, hashes
-and inventories at ../WILD_V43_PROOF_20260913/review-packages.json. The first combined archive
-was over30MB, so it was split before delivery. Send both to Claude; read-only C1 review,
-separate material/phase/edge/registration/MID verdicts. C1 image review gates staging, not
-independent rig implementation. Earlier handoff wording that implied all C2 must wait is
-superseded by this clarification; every other accepted decision/scope remains in force.
-
-Implemented creature-rig.ts and existing-helper type declarations: record/binding/atlas
-hash admission, actual Pixi part objects, two layers, record-joint parent-pivot transforms,
-body-length offsets, PoseTarget adapter, rest reset, refusal-before-mutation and disposal.
-Five tests with negative controls pass, including full-graph40-part mean<2ms CPU on Mac;
-TypeScript, root validation and pinned-atlas determinism/overflow controls pass. Initial
-readonly test-fixture type errors retained then fixed by immutable mutants. Evidence:
-../C2_RIG_RUNTIME_20260913/README.md and logs. No browser60fps claim or accepted visual rig.
-
-Remaining: authored masks, turnaround patches, procedural part-mask emission, real creature
-atlases, actual rest-pixel/extreme-pose/native timing proof, staged turn and ten-second captures.
-No new painting, C3 recording, kit/main.ts/Claude-module edit, GitHub action, new branch or
-history rewrite. Pre-runtime9ae342da:74 ahead upstream/185 ahead cached origin/develop.
-This containing commit records progress, not C2 acceptance. Claude can continue its lane;
-no immediate app opening or synchronization is needed to send the review ZIPs.
+The full `vitest run` on this tree has 24 failing tests in 12 files. All 24 fail identically on Codex's committed head openai/mac 1e65e006 (verified in a temporary detached checkout of that exact commit, then removed): app-chrome-main-wiring (3), compendium-budget (2), current-producer-authorities (suite), evidence-build-runtime (2, needs the evidence build with onnxruntime), exceptional-crafting-evidence-contract (2), guide-release (1), painted-earth-mount-ownership (12), pwa-offline (1), slicesmoke-sixth-red-contract (1), and three `node:test` .mjs files under tools/ that vitest collects with 0 tests. None is caused by the merge or by packages A1 to A6. They belong to Codex's lane (C5 pruning and exact-head admission) and are recorded here so nobody mistakes them for new reds.
+| A7 pose editor | accepted (mechanical); Nick's tool | 20f50f70 | audits/LONG_SESSION_20260913/a7-pose-editor/capture-01/; 11 tests |
+| A11 family motion templates | accepted (mechanical); synthetic landmarks, not anatomy evidence; myriapod, cephalopod, flyer-membrane, primate still unbuilt (registry test names them) | see git log | audits/LONG_SESSION_20260913/a11-family-sheets/ (nine sheets, byte-identical on re-run); 54 motion tests |
