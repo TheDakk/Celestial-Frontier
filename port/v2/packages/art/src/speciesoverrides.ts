@@ -1798,7 +1798,7 @@ const R2_MICROBE_COLONY_SEEDS: ReadonlySet<number> = new Set([
   1077367562, 4135221025, 753721544, 3287574574, 1224906226, 2757882450, 1718796946,
 ]);
 
-export function resolveProceduralCanvas(g: G): ArtCanvas | null {
+export function resolveProceduralCanvas(g: G, observeAnatomy?: (geometry: import('./quadruped-anatomy.js').QuadrupedDrawnGeometry, ink: ArtCanvas) => void): ArtCanvas | null {
   /* ★ WAVE 17 — THE LAST MONO-TEMPLATE (Nick's audit §12/§13, for the
      PROCEDURAL spread). Wave 1 gave the NAMED fungi and microbes structural
      families, but every procedural genome in those two kingdoms still fell
@@ -1892,7 +1892,7 @@ export function resolveProceduralCanvas(g: G): ArtCanvas | null {
      actionable without pretending a procedural creature has a name */
   const who = 'proc:' + plan.kind + ':' + String(g.seed);
   switch (plan.kind) {
-    case 'quad': faunaQuadruped(ink.c, g, pal, plan.spec, who); break;
+    case 'quad': faunaQuadruped(ink.c, g, pal, plan.spec, who, observeAnatomy ? geometry => observeAnatomy(geometry, ink.cv) : undefined); break;
     case 'fish': fishBody(ink.c, g, pal, plan.spec, who); break;
     case 'insect': insectBody(ink.c, g, pal, plan.spec, who); break;
     case 'bird': faunaBird(ink.c, g, pal, plan.spec, who); break;

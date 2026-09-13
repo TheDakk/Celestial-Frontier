@@ -6,6 +6,17 @@ prepare their own work and publish it only through the budget-authorized path,
 with the standing green-PR authorization defined below; no release authority is
 implied.
 
+## Current clean promotion plan — Nick, 2026-09-12
+
+Prune superseded code and pack assets on `openai/mac` before splitting PR42. The split is
+three ordered tiers, each squash-merged into `develop`: production UI; painted landfall
+engine; research tools. Follow with one `develop` → `main` release PR running the full chain.
+Do not make any PR Ready until the Civet 2D proof, the second weather pick and the phone-tier
+decision have landed. This records the future order only: PR42 remains parked and no GitHub
+write, hosted attempt, merge, release or deployment is currently authorized. Exact hosted
+and release authorization requirements below still apply. Audits LFS migration awaits Nick's
+separate decision; do not rewrite history without it.
+
 ## Ownership
 
 | Agent environment | Allowed branch | Allowed folder |

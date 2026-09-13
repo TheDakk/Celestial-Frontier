@@ -17,89 +17,44 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · E ACTIVE; CIVET PROOF NEXT; SMALLER PHONE FINISHER QUEUED
+## SESSION HANDOFF — 2026-09-12 · 2D CIVET PROOF
 
-**Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
-emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical
-Earth loads the hash-verified accepted E PNG through the normal original-retention queue, without
-inference or a model install. Recipe/hash mismatches cannot inherit acceptance. Prior1x original
-and raw finisher are retained unchanged. Evidence: audits/RAIN_E_ADOPTION_20260912.
-Klein phone probing is stopped by Nick's budget decision; this does not establish the cause of
-Safari's earlier heartbeat loss. After the Civet proof, evaluate at most three approximately1GB
-finisher candidates on Mac, with redistribution-permitting licenses, the same painter composite,
-masked0.35 finish, and each model's compatible precomputed text embedding. Compare beside E,
-then one phone attempt with the best candidate; no delivery engineering before that result.
-Queue up to six new deterministic weather variants on the saved raw finisher: soft sky-contour
-sheen, darker/higher-contrast wet fur, and foreground precipitation at the plate's sky density.
-Show beside E/triptych; no inference. Civet end-to-end proof remains next. No kit/GitHub edits.
+Current instruction: replace abandoned Blender projection with one reusable 2D deformable-mesh
+quadruped template over the accepted Civet, fox family reference and one painter-emitted
+procedural quadruped. Retain turnaround and canid masters for later engine port. No more 3D
+tokens/projections, texture finisher, effect painting, kit edits or Klein phone probing.
+Shared finite idle/attack/hit and a staged Pixi turn beside accepted E; stop at ten-second
+captures for Nick. Explicit whole-portrait fallback if rest/shape cannot hold. Full details,
+authority reconciliation and limitations: audits/CIVET_2D_PROOF_20260912/README.md.
+Source prepared; native capture pending. Three new template tests/negative controls,79 existing
+bridge/kinematics/rig tests, package TypeScript and root validation PASS. No normal-game battle
+route changed. Keep the source clean and signed before the isolated native runner.
 
-Current evidence: c77e5217 phone manual-01 ended CONNECTION_LOST during transformer session
-loading after VAE encoder2.625s and expansion206/206 completed. Zero text requests, no decoder
-or finisher reached; exposed memory null. MaxBuffer/storage binding1GiB, quota1,048,576,000bytes;
-largest initializer108MiB but expanded total4,393,808,634bytes. Signed result63b9308b. Nick's
-phone decision excludes Klein; no further Klein attempt. All probe servers/sessions are closed.
-He leaves CF Local Probe 20260912 installed for now; leaf expiresSep13/rootSep14. Root signing
-key removed; later smaller-model phone attempt may need fresh certificate setup.
+Claude's four latest supplied files committed verbatim in signed7f2aa40b; hashes match
+/Users/nick/Downloads/claude-reviews-20260912-civet-and-promotion.zip. Supplied historical kit/
+Blender restart prose remains verbatim evidence; Nick's current 2D approval governs execution.
+No earlier pending larger-Blender-rework question remains active.
 
-Civet proof: Blender master rig and bounded gene-driven proportions, unchanged4E turnaround,
-one frozen-style texture atlas painted by finisher, idle/attack/hit clips, one staged browser
-turn beside own accepted landfall. Existing Wolf clay study and old Civet parts are not accepted
-proof assets. Effects class/painting awaits separate approval. Proof before library rollout.
-Mac ordinary installed-model run and four warm sessions already proved; no repeat authorized.
-Rain E activation checks: focused28 game/compiler tests and9 weather/engine tests PASS, three
-TypeScript programs and root validate PASS. Exact saved-raw replay and negative controls;
-ordinary Land/retention/Inspect no-inference browser proof follows signed source.
+Accepted ordinary-game painting: rain E (droplets3x/specular3x/rain2x), original and raw finisher
+retained; activation8b01e38c and normal-game evidenceaaacfd6f accepted. After this proof: up to six
+new deterministic weather variants (sky-facing sheen band, wet-fur value/contrast compression,
+foreground streaks at sky density), no inference, beside E/triptych for Nick's pick. Then at most
+three redistribution-permitting approximately1GB phone finisher candidates tested on Mac with
+the same composite, masked0.35 and compatible precomputed embedding; one best-candidate phone
+attempt, no delivery engineering before result. Klein phone probing stopped by Nick. Earlier
+session loss is not established OOM: normal Safari quota1,048,576,000bytes and expanded transformer
+4,393,808,634bytes. Phone17Pro/iOS26.6.2/USB-C; CF Local Probe certificate left installed for now.
 
-OpenAI/Codex macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac tracking
-origin/openai/mac. Signed63b9308b is48 ahead upstream/0 behind and159 ahead cacheddevelop/0
-behind; E source commit follows. Unrelated.DS_Store untouched. Reuse Sept12 startup receipt.
-GitHub step NONE, PR42 parked, no PR needed, zero hosted attempts authorized. No release or
-deployment; budget UNFROZEN/public/private fallback3000. Anthropic/Claude Code need not open
-or sync now; these commits are local and not in develop. Report IDs/ahead at each stop.
+**Clean promotion plan:** prune superseded code and pack assets on openai/mac first; split PR42
+into three ordered squash-merged tiers into develop (production UI; painted landfall engine;
+research tools); then one develop→main release PR with the full chain. Ready no PR until the
+Civet 2D proof, second weather pick and phone-tier decision have landed. Audits LFS migration
+awaits Nick's decision; do not rewrite history. Detailed supplied plan:
+audits/CLAUDE_FULL_REVIEW_20260910/CLEAN_PROMOTION_PLAN.md. This records future order only.
 
-Ordinary-game proof on signed8b01e38c PASS: painter composite201.296ms, accepted E loaded
-by normal code (no injected original), retained/reloaded and opened in Inspect with exact
-PNG SHA. Zero model/worker requests and inference. Screenshot visually inspected.
-Evidence ordinary-game-01; source49 ahead upstream/160 ahead cacheddevelop, zero behind.
-
-Civet proof started September12: audits/CIVET_ANIMATION_PROOF_20260912 contains one unreviewed
-4E turnaround from accepted Civet/Atlas, compiled card and exact frozen paragraph. The bridge
-now exports the actual QUAD2_SPEC.Civet/viverrid owner with full genome/source proportions;
-20 tests PASS, including swapped-identity/proportion controls. First private Blender master
-and token render pending. Family gene bounds, local-finisher texture pass, clips and Pixi turn
-remain unfinished; no claim of completed animation. Rain E source8b01e38c and evidenceaaacfd6f
-are signed,50 ahead upstream/161 ahead cacheddevelop, zero behind. No GitHub/Claude sync.
-
-## Civet stop — first two token renders fail visual review
-
-Source d4fe8037 built the first connected Civet master; correctionc9202c71 clamped UV samples
-and recorded explicit reference calibration. Both Blender5.2.1LTS/Metal runs completed,
-but neither meets the accepted Civet appearance: large unpainted back/pink seams first;
-stretched fur, remaining pink seams and proportion drift second. Both renders/receipts and
-private master hashes retained. No local texture-finisher pass or rendered clip set ran;
-no staged Pixi turn, gene-driven family bounds or universal animation coverage claimed.
-
-A larger Civet-only shape/UV rework is pending Nick's approval under AGENTS.md: "Ask Nick
-before starting a materially larger exploratory or rework loop." The concrete question
-covers a corrected shape/UV layout, then one texture-finisher pass, clips and browser turn.
-Do not silently resume more model/render attempts while that question is pending.
-
-Universal coverage requires reusable family templates with source-owned anatomy and tested
-proportion bounds, including plant-specific stem/branch/leaf motion. The current fixed Civet
-candidate and six-Earth compiler are not that coverage; unsupported forms keep static fallbacks.
-The requested family architecture must be established during the correction, not inferred
-from a single posed Civet. No phone Klein retries. Smaller finisher evaluation and second
-weather ladder remain queued per Nick's order; no delivery engineering before phone result.
-Rain E activation8b01e38c/browser evidenceaaacfd6f remains accepted and unchanged.
-
-## Claude review handoff prepared — September12
-
-Nick requested material to provide Claude. audits/CLAUDE_CIVET_REVIEW_20260912 records a
-25,971,294-byte ZIP under /private/tmp/celestial-frontier-claude-civet-review-20260912.zip,
-13 original-resolution images,78 entries, exact source head2f7e344a, hash index and copy-ready
-read-only brief. CRC/exact bytes verified. No new model/render/browser/GitHub operation.
-Review asks for independent diagnosis and a reusable fauna/flora/lineage architecture,
-then the smallest bounded Civet proof; it does not approve further rework or kit changes.
-Nick may open Claude and upload the ZIP; no repo sync or manually copied worktree files.
-PR42 parked, GitHub step none. Current signed parent2f7e344a:53 ahead upstream/164 ahead cached
-develop, zero behind; packet documentation commit follows. Only unrelated.DS_Store untracked.
+Ownership: OpenAI/Codex macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
+tracking origin/openai/mac. Signed7f2aa40b is55 ahead upstream/166 ahead cachedorigin/develop,
+zero behind both; scoped 2D source/doc commit follows. Unrelated.DS_Store untouched. Reuse
+September12 startup receipt (Node26.8.2). GitHub step NONE; PR42 parked; zero hosted attempts
+or GitHub writes authorized despite budget UNFROZEN/public/private fallback3000. No PR needed
+now, no release/deployment. Claude Code need not open/sync; local changes are not in develop.

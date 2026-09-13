@@ -1,5 +1,17 @@
 # Creature animation — shared anatomy and motion contract
 
+**Current browser track — matches code as of 2026-09-12:** Nick abandoned Blender projection
+for browser battle. Preserve the turnaround and canid masters for the later engine port; no
+further 3D tokens/projections or texture-finisher passes. The approved bounded replacement is
+[a shared 2D quadruped template](audits/CIVET_2D_PROOF_20260912/README.md), with hash-bound authored
+Civet/fox landmarks and draw-time procedural geometry from the winning painter. Source is
+prepared; native ten-second captures and Nick's review are pending. This supersedes the Blender
+proof and its earlier pending rework approval below. No normal-game battle animation is changed.
+The template consumes record-owned anatomy, alpha triangulation, two shared-vertex depth layers
+and finite idle/attack/hit curves. Unsupported geometry keeps a labelled whole-portrait fallback.
+Do not infer universal family coverage, hidden-surface reconstruction or accepted motion.
+
+
 **Nick's September 12 approved order:** v4 at `6f5c396e` is approved. ART_KIT §9
 now limits first authoring to the Earth temperate plate, six Earth cut-outs and five
 family references, then the measured engine painting. Inspect first cut-outs for
