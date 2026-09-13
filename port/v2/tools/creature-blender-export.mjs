@@ -81,16 +81,17 @@ export function createCreatureBlenderBridge() {
   // A higher-priority exact Wolf owner would make the canid bridge obsolete.
   const priority = [['faunaoverrides.ts','FAUNA_NAME'],['faunaoverrides2.ts','FAUNA2_NAME'],['faunaoverrides3.ts','FAUNA3_NAME'],['birdoverrides.ts','BIRD_NAME'],['invertoverrides.ts','INVERT_NAME']];
   for (const [file, name] of priority) {
-    if (/['"]Wolf['"]\s*:/.test(table(read(ART + file), name))) throw new Error('Wolf has a different higher-priority painter');
+    if (/['"](?:Wolf|Civet)['"]\s*:/.test(table(read(ART + file), name))) throw new Error('Wolf/Civet has a different higher-priority painter');
   }
-  if (/['"]fauna\|Wolf['"]\s*:/.test(table(owner, 'CANON'))) throw new Error('Wolf has a canonical override before quadruped');
+  if (/['"]fauna\|(?:Wolf|Civet)['"]\s*:/.test(table(owner, 'CANON'))) throw new Error('Wolf/Civet has a canonical override before quadruped');
   if (QUAD_SPEC.Wolf?.mammalCPlan !== 'canid-c1' || QUAD_SPEC.Wolf.family !== 'canid'
     || ['mammalEPlan','mammalDPlan','mammalBPlan','pinnipedPose','gliderPlan'].some(key => QUAD_SPEC.Wolf[key])) throw new Error('Wolf whole-form owner changed');
   if (!quad.includes("case 'canid-c1': faunaResetCanidC(c, g, p0, spec, name); return;")) throw new Error('canid dispatch changed');
   const routeHelpers = exactSpan(owner, 'type EarthKingdom =', '/** Integrate bounded child traits');
   // Only the Wolf named route is admitted. All other names fail explicitly below.
+  const {QUAD2_SPEC}=evaluate(table(read(`${ART}mammaloverrides.ts`),'QUAD2_SPEC'),{},['QUAD2_SPEC']);
   const empty = Object.freeze({});
-  const routeEnv = { QUAD_SPEC, CANON: empty, FAUNA_NAME: empty, FAUNA2_NAME: empty, FAUNA3_NAME: empty, BIRD_NAME: empty, INVERT_NAME: empty, QUAD2_SPEC: empty, FLORA_ICONIC: empty, FLORA2_SPEC: empty, FLORA_DUPES: [], FUNGI_NAME: empty, MICROBE_NAME: empty };
+  const routeEnv = { QUAD_SPEC, CANON: empty, FAUNA_NAME: empty, FAUNA2_NAME: empty, FAUNA3_NAME: empty, BIRD_NAME: empty, INVERT_NAME: empty, QUAD2_SPEC, FLORA_ICONIC: empty, FLORA2_SPEC: empty, FLORA_DUPES: [], FUNGI_NAME: empty, MICROBE_NAME: empty };
   const routePrefix = exactSpan(owner, 'export function resolveOverrideCanvas(g: G): ArtCanvas | null {', '  const canon =');
   const route = evaluate(`${routeHelpers}\n${routePrefix}return {kingdom,name,reviewedFaunaBlend};}`, { ...routeEnv, resolveProceduralCanvas: () => null }, ['resolveOverrideCanvas','isReviewedFaunaLineage']);
   const palette = evaluate(`${fn(owner,'palette')}\n${fn(quad,'pal')}`, traits, ['palette','pal']);
@@ -99,6 +100,9 @@ export function createCreatureBlenderBridge() {
   const tail = exactSpan(canid, '    const tailLen =', '    tail.moveTo(left + bodyW * 0.15');
   const fields = ['groundY','bodyW','bodyH','legLen','left','right','bodyBottom','rumpTop','shoulderTop','headRx','headRy','hx','hy','muzzleLen','earH','legW','tailLen','tipX','tipY','tailW'];
   const proportions = evaluate(`${fn(quad,'nameSeedQ')}\n${head}let tipX,tipY,tailW;${tail}return {${fields.join(',')}};}`, { ...rand, ...palette, S: 1 }, ['faunaResetCanidC']).faunaResetCanidC;
+  if(QUAD2_SPEC.Civet?.mammalDPlan!=='Civet'||!quad.includes('faunaResetViverridD(c, g, p0, spec, plan);'))throw new Error('Civet whole-form owner changed');
+  const viverridHead=exactSpan(fn(quad,'faunaResetViverridD'),'function faunaResetViverridD','  mammalBGround(');
+  const civetProportions=evaluate(`${fn(quad,'nameSeedQ')}\n${viverridHead}return {groundY,left,right,rumpTop,shoulderTop,bodyBottom,hx,hy,headRx,headRy,muzzleLen,legW};}`,{...rand,...palette,S:1},['faunaResetViverridD']).faunaResetViverridD;
   const genericPrefix = exactSpan(fn(quad, 'faunaQuadruped'), '  const r =', '  const humpAt =');
   const generic = evaluate(`${fn(quad,'nameSeedQ')}\n${fn(quad,'mixSaltQ')}\nfunction generic(g,spec,name=''){${genericPrefix}return {groundY,legLen,bodyH,bodyW,cx,cy,back};}`, { ...rand, ...palette, S: 1, p0: {} }, ['generic']).generic;
   const lineagePrefix = exactSpan(fn(owner,'applyReviewedFaunaLineageDrift'), '  const anchor =', '  const p =');
@@ -132,7 +136,13 @@ export function createCreatureBlenderBridge() {
     const named = String(g._earthName || '').replace(/[’‘]/g,"'");
     const blend = String(g._earthBlend || '').replace(/[’‘]/g,"'");
     let finalRoute, morphology, reason;
-    if ((named && named !== 'Wolf') || (!named && blend && blend !== 'Wolf')) {
+    if(named==='Civet'&&g.kingdom==='fauna'&&!blend){
+      const selected=route.resolveOverrideCanvas(g);
+      if(!selected||selected.name!=='Civet'||selected.kingdom!=='fauna')throw new Error('Civet named route refused');
+      finalRoute={kind:'named',kingdom:'fauna',name:'Civet',painter:'faunaQuadruped → faunaMammalD → faunaResetViverridD'};
+      morphology={kind:'viverrid-d',spec:identity.snapshotSpeciesGenome(QUAD2_SPEC.Civet),coordinates:{space:'painter-normalized',canvasSize:440,x:'right',y:'down',fittedRaster:false},proportions:civetProportions(null,g,{},QUAD2_SPEC.Civet,'Civet'),palette:palette.pal(palette.palette(g),QUAD2_SPEC.Civet),lineage:null};
+      reason='bounded named Civet anatomy export; Blender proof remains unaccepted';
+    } else if ((named && named !== 'Wolf') || (!named && blend && blend !== 'Wolf')) {
       finalRoute={kind:'unsupported-owner',kingdom:g.kingdom,name:named||blend,painter:null}; morphology=null; reason='named/lineage owner outside this bounded bridge';
     } else if (named || blend) {
       const selected = route.resolveOverrideCanvas(g);
@@ -151,7 +161,7 @@ export function createCreatureBlenderBridge() {
       morphology={kind:plan?.kind??'unsupported',plan,coordinates:{space:'painter-normalized',canvasSize:440,x:'right',y:'down',fittedRaster:false},proportions:plan?.kind==='quad'?generic(g,plan.spec):null};
       reason=plan===null?'existing specialized morphology has no compatible bridge':'actual procedural plan exported; Wolf recipe cannot substitute its anatomy';
     }
-    const result={schema:SCHEMA,id,genome:g,speciesVisualKey:key,sources:[...sources.values()].sort((a,b)=>a.path.localeCompare(b.path)),route:finalRoute,morphology,admission:{status:finalRoute.kind==='named'&&morphology?.kind==='canid-c1'&&morphology.lineage===null?'supported':'static-fallback',reason},visualAcceptance:'UNREVIEWED',anatomicalAnimation:'incomplete'};
+    const result={schema:SCHEMA,id,genome:g,speciesVisualKey:key,sources:[...sources.values()].sort((a,b)=>a.path.localeCompare(b.path)),route:finalRoute,morphology,admission:{status:finalRoute.kind==='named'&&['canid-c1','viverrid-d'].includes(morphology?.kind)&&morphology.lineage===null?'supported':'static-fallback',reason},visualAcceptance:'UNREVIEWED',anatomicalAnimation:'incomplete'};
     jsonGenome(result); return freeze(result);
   }
   let fixtureCache = null;

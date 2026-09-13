@@ -61,3 +61,11 @@ Ordinary-game proof on signed8b01e38c PASS: painter composite201.296ms, accepted
 by normal code (no injected original), retained/reloaded and opened in Inspect with exact
 PNG SHA. Zero model/worker requests and inference. Screenshot visually inspected.
 Evidence ordinary-game-01; source49 ahead upstream/160 ahead cacheddevelop, zero behind.
+
+Civet proof started September12: audits/CIVET_ANIMATION_PROOF_20260912 contains one unreviewed
+4E turnaround from accepted Civet/Atlas, compiled card and exact frozen paragraph. The bridge
+now exports the actual QUAD2_SPEC.Civet/viverrid owner with full genome/source proportions;
+20 tests PASS, including swapped-identity/proportion controls. First private Blender master
+and token render pending. Family gene bounds, local-finisher texture pass, clips and Pixi turn
+remain unfinished; no claim of completed animation. Rain E source8b01e38c and evidenceaaacfd6f
+are signed,50 ahead upstream/161 ahead cacheddevelop, zero behind. No GitHub/Claude sync.

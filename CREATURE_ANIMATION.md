@@ -219,3 +219,11 @@ full-genome/share/save identity. Test wing folds, swimming direction and amphibi
 in their actual supported view. A correct solver on synthetic joints is necessary mathematical
 proof, not a native art/motion certificate. Full admission, physical devices, native-heap budgets,
 human fluidity/painting review and all prior ROADMAP blockers remain open.
+
+Civet proof started September12: audits/CIVET_ANIMATION_PROOF_20260912 contains one unreviewed
+4E turnaround from accepted Civet/Atlas, compiled card and exact frozen paragraph. The bridge
+now exports the actual QUAD2_SPEC.Civet/viverrid owner with full genome/source proportions;
+20 tests PASS, including swapped-identity/proportion controls. First private Blender master
+and token render pending. Family gene bounds, local-finisher texture pass, clips and Pixi turn
+remain unfinished; no claim of completed animation. Rain E source8b01e38c and evidenceaaacfd6f
+are signed,50 ahead upstream/161 ahead cacheddevelop, zero behind. No GitHub/Claude sync.
