@@ -20,7 +20,7 @@ import { type Form } from './surface.js';
 import { alienEyes, alienSkin, alienGlow, alienSail, alienArmor, type AlienTraits } from './alientraits.js';
 import { Tube, pathThrough, spline } from './torso.js';
 import { coatMaterial, type Material, countershade, coatSpots, coatRosettes, coatBars, coatPatches, coatBlotches, coatBrindle, coatShaggy, shaggyRim, coatBlocks } from './skin.js';
-import type { ArtContext2D } from './speciescanvas.js';
+import { createSpeciesCanvas, type ArtContext2D } from './speciescanvas.js';
 import type { QuadrupedAnatomyObserver } from './quadruped-anatomy.js';
 import { PainterPartCapture, type PaintedPart } from './painter-part-capture.js';
 
@@ -2807,7 +2807,17 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
   if (captureParts && (!observeAnatomy || spec.mammalEPlan || spec.mammalDPlan || spec.mammalCPlan || spec.mammalBPlan || spec.pinnipedPose || spec.gliderPlan || (spec.alien?.legPairs ?? 2) !== 2 || spec.tail !== 'banded')) {
     throw Error('Quadruped part capture requires the observed four-legged banded-tail painter');
   }
-  const masks = captureParts ? new PainterPartCapture(c.canvas.width, c.canvas.height, () => c.getImageData(0, 0, c.canvas.width, c.canvas.height).data) : undefined;
+  // Never repeatedly read the live painter canvas: native Canvas2D can change
+  // its rendering backend after frequent readbacks, changing rasterized bytes.
+  // Snapshot into a separate readback canvas, keeping the winning surface intact.
+  const copy = captureParts ? createSpeciesCanvas(c.canvas.width, c.canvas.height) : undefined;
+  const readback = copy?.getContext('2d', {willReadFrequently: true});
+  if (captureParts && !readback) throw Error('Painter mask readback context unavailable');
+  const masks = readback ? new PainterPartCapture(c.canvas.width, c.canvas.height, () => {
+    readback.clearRect(0, 0, c.canvas.width, c.canvas.height);
+    readback.drawImage(c.canvas, 0, 0);
+    return readback.getImageData(0, 0, c.canvas.width, c.canvas.height).data;
+  }) : undefined;
   const part = (id: string, joint: string, layer: 'far' | 'near' = 'near'): PaintedPart => ({id, joint, layer});
   const stage = (id: string, joint: string, layer: 'far' | 'near' = 'near'): void => masks?.begin([part(id, joint, layer)]);
   const drawnAxis = (axis: (t: number) => readonly [number, number]): readonly (readonly [number, number])[] => {

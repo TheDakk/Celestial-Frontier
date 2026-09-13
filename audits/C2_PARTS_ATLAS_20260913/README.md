@@ -113,3 +113,14 @@ native-fox-rest-01 retains source hashes/browser provenance and the rendered mas
 22parts,0changedRGBAchannels. Missing-head negative changes284037channels. Mean empty-pose
 update0.0069ms. This qualifies the rest atlas, not joint shape/contact/fps or motion captures.
 Pack6 supplied audio-owner/impact-hold decisions are recorded; no protected source integrated.
+
+### Native painter mask observation — first refusal retained
+
+native-painter-parts-01 on cee01f47 refused because capture altered ordinary painter pixels;
+no mask/record artifacts admitted. Direct repeated getImageData on the live Canvas2D surface
+is the suspected cause (readbacks can change rendering execution). Capture now copies the
+surface to a separate willReadFrequently canvas before reading; no draw/RNG command changed.
+This hypothesis is not yet native-qualified. The next bounded comparison uses a NEW
+native-painter-parts-02 directory on committed source. It records changed-channel count/max
+on failure and a deliberately corrupted-pixel control. Typecheck,4focusedtests/rootvalidate
+pass. No motion, staging or C3 acceptance. Original refusal remains in report.json.

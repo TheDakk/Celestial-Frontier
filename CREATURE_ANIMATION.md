@@ -333,3 +333,7 @@ family observers are not implemented by the existence of Claude's Motion templat
 proc render parity/material/record validation is pending. Painter masks cannot manufacture
 hidden surfaces; identical overpainting retains prior visible ownership. Motion interop remains
 blocked by the producer root-offset broadcast recorded in C2_MOTION_INTEROP_20260913.
+
+Painter mask reads now use a separate readback canvas after native-painter-parts-01
+refused a changed ordinary render. The live painter is never read repeatedly; native
+qualification of this correction remains pending. Source drawing commands stay unchanged.

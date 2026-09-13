@@ -6496,3 +6496,7 @@ is invented. `tools/creature-animation/part-masks.mjs` validates both authored d
 painter labels with full visible-RGBA reconstruction. Native masks bypass the magenta keyer.
 Fox's22-part atlas has exact offline reconstruction; native checks and all motion acceptance
 remain pending. CONTRACTS§2 root offsets are local; Claude producer broadcast fix is separate.
+
+Painter mask reads now use a separate readback canvas after native-painter-parts-01
+refused a changed ordinary render. The live painter is never read repeatedly; native
+qualification of this correction remains pending. Source drawing commands stay unchanged.
