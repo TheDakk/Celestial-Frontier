@@ -19,4 +19,30 @@ The full `vitest run` on this tree has 24 failing tests in 12 files. All 24 fail
 | A7 pose editor | accepted (mechanical); Nick's tool | 20f50f70 | audits/LONG_SESSION_20260913/a7-pose-editor/capture-01/; 11 tests |
 | A11 family motion templates | accepted (mechanical); synthetic landmarks, not anatomy evidence; myriapod, cephalopod, flyer-membrane, primate still unbuilt (registry test names them) | see git log | audits/LONG_SESSION_20260913/a11-family-sheets/ (nine sheets, byte-identical on re-run); 54 motion tests |
 
-- 2026-09-13 Wild second intake reviewed: travel ACCEPT, impact TARGETED INTAKE FIX (two clusters), registration ACCEPT, no further erosion; response in audits/WILD_V43_PROOF_20260913/second-pass/.
+
+## Codex C1 — Pack3 receipt and bounded second intake, 2026-09-13
+
+Pack3 retained verbatim in signed56509c0c; earlier local log retained verbatim in
+LOG-CODEX-PRE-PACK3.md. CONTRACTS is unchanged byte-for-byte. Input hashes in pack3-receipt.json.
+One requested second despill pass: radius8 then one-pixel erode, from first keyed copies.
+Travel110/impact85 unresolved: under40 target FAILED. No retry, repaint or generation.
+Evidence: ../WILD_V43_PROOF_20260913/second-pass/ (three-phase sheet, two native200% comparisons,
+receipt with per-pixel neighbour indices, review prompt); updated registered hashes/paths and
+fallback keyed hash; originals unchanged. Launch/MID unchanged. Nick's decision remains pending;
+independent C2 coding continues. Claude's24pre-existing test failures stay C5. No main.ts,
+Claude modules, GitHub write or history rewrite.
+
+
+## Codex C2 — authored mask/atlas checkpoint, 2026-09-13
+
+C1 one-pass result retained in signed597821d2 (77ahead upstream/188ahead cached develop).
+Independent C2 work added hash-bound authored polygon masks, strict visible-pixel coverage
+admission, pinned one-atlas build and actual CreatureRigV1 binding for the accepted Civet.
+22parts,2046×919atlas, zero changed visible channels in reconstruction and zero changed
+RGBAchannels in packed-part readback. Original master unchanged. Evidence and limits:
+../C2_PARTS_ATLAS_20260913/README.md. No native motion or C2acceptance claimed; joint patches,
+fox/procedural masks, native rest/extremes and three10secondcaptures remain. Motion Kit body
+card fields absent from the Civet record are listed explicitly; no hand-typed body card.
+Two mask tests and pinned atlas controls pass; five existing rig tests pass; full v2typecheck
+and root validation pass. No new per-creature clips, Claude-module/main.ts/kit edit, source
+sound, inference, GitHub write or history rewrite. C3 follows the actual C2proof.
