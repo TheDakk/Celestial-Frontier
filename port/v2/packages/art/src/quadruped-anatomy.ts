@@ -7,5 +7,6 @@ export interface QuadrupedDrawnGeometry {
   readonly groundLineY: number;
   readonly landmarks: Readonly<Record<string, readonly [number, number]>>;
   readonly materials: Readonly<{ surface: string; paletteSource: string }>;
+  readonly partMasks?: import('./painter-part-capture.js').PaintedPartMasks;
 }
 export type QuadrupedAnatomyObserver = (geometry: QuadrupedDrawnGeometry) => void;
