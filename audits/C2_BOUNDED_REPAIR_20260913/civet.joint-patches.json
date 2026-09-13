@@ -1,0 +1,96 @@
+{
+  "schema": "cf.authored-joint-patches/v1",
+  "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+  "turnaroundSha256": "5a7d18cbf0c0214ffd9b76f13597a9ce78997fec2c6cfbcb82f7177382abc924",
+  "patches": [
+    {
+      "joint": "head",
+      "radius": 0.045,
+      "sourceCentre": [
+        0.35,
+        0.49
+      ]
+    },
+    {
+      "joint": "jaw",
+      "radius": 0.014,
+      "sourceCentre": [
+        0.5,
+        0.48
+      ]
+    },
+    {
+      "joint": "earFarTip",
+      "radius": 0.014,
+      "sourceCentre": [
+        0.53,
+        0.41
+      ]
+    },
+    {
+      "joint": "earNearTip",
+      "radius": 0.014,
+      "sourceCentre": [
+        0.53,
+        0.41
+      ]
+    },
+    {
+      "joint": "hindNearAnkle",
+      "radius": 0.022,
+      "sourceCentre": [
+        0.5,
+        0.48
+      ]
+    },
+    {
+      "joint": "hindFarAnkle",
+      "radius": 0.018,
+      "sourceCentre": [
+        0.5,
+        0.48
+      ]
+    },
+    {
+      "joint": "foreNearAnkle",
+      "radius": 0.02,
+      "sourceCentre": [
+        0.5,
+        0.48
+      ]
+    },
+    {
+      "joint": "foreFarAnkle",
+      "radius": 0.018,
+      "sourceCentre": [
+        0.5,
+        0.48
+      ]
+    },
+    {
+      "joint": "tail2",
+      "radius": 0.025,
+      "sourceCentre": [
+        0.5,
+        0.48
+      ]
+    },
+    {
+      "joint": "tail3",
+      "radius": 0.025,
+      "sourceCentre": [
+        0.5,
+        0.48
+      ]
+    },
+    {
+      "joint": "neck",
+      "radius": 0.04,
+      "sourceCentre": [
+        0.35,
+        0.49
+      ]
+    }
+  ],
+  "declarationHash": "7f9f30aa0dc0c9ecc849dd9d41d65df44a7612c56859b99445a6352b037494a1"
+}

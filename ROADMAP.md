@@ -42,11 +42,15 @@ Civet10.22139s clip at60.002fps/0.30ms p95 CPU update, but has a visible head/ne
 capture exceeds unchanged8%body-length compression bound. Procedural was not reached.
 C2 is NOT accepted. Static rest and sparse contacts did not prove moving shape.
 
-NEXT: Nick reviews three completed labelled whole-portrait fallback captures beside rainE,
-portrait-fallback-01 on1e5c80be: durations10.220/10.167/10.174s,60.002fps,p95CPU0.2/0.2/0.3ms.
-Dense120Hz diagnostic finds fox refusal at1375ms, command phase. No bound weakening or curve
-edit. Failed parts clip retained. REVIEW_PROMPT.md and four ZIPs15.3–16.1MB listed in
-review-zip-manifest.json. C2 articulated shape NOT accepted. Stop at this review boundary.
+NEXT: Pack7 response imported verbatim63f16d68 (96aheadupstream). Fallback presentation
+ACCEPTED; parts FAIL stands. Two bounded repairs in C2_BOUNDED_REPAIR_20260913/candidate-01:
+Civet head radius.045 plus neck.040 atchest; fox re-observed knee points give alllegs≥3%BL
+slack. Old declarations and record retained. Native still/contact gates precede any new10s
+capture: Civet7400mszeroarena inside resthead/neck/chest silhouette, old.025fails, zero rest
+RGBAchange; oldfoxrefuses1375ms, newfox120Hzscanunderunchanged8%bound and clean cardlegSlack.
+Square-crop guard initially refused unused magenta corner; now rejects retained patch ink
+after disc/coverage mask, with negatives. Same samplecentres, masterbytes, curves and kit.
+Prior Codex LOG archived verbatim before Pack7 replacement. No protected paths changed.
 
 C3 then original rights-recorded quadruped/Wild/battle/rain/fur48k24bitmono dry WAV +Opus/SHA,
 CONTRACTS1 names; first new sound class stops. Existing proof whoosh/ping is not C3. C4 library
@@ -55,7 +59,7 @@ CONTRACTS1 names; first new sound class stops. Existing proof whoosh/ping is not
 C5 prune then3merge-commit tiers to develop (UI,painted engine,research as tools), no newbranches.
 LFS migration only on Nick's explicit go. No PRReady until Civet/weather/phone decisions.
 
-Codex next: await Nick's capture review; no broader parts rework without scoped direction. Claude next: review supplied
+Codex next: run bounded native still/contact gates, then capture only if they pass. Claude next: review supplied
 motion evidence if Nick requests; corrected producer is already consumed read-only, no app
 switch or routine sync needed. Fullsuite24preexistingfailures remain C5. Rootvalidate/focused
 checks required for this batch; no integrated chain. Signing has succeeded after the generic

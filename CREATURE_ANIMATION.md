@@ -1,5 +1,7 @@
 # Creature animation — shared anatomy and motion contract
 
+**Pack7 bounded corrections — matches code as of 2026-09-13:** fallback presentation is accepted. Candidate01 adds the prescribed Civet underlaps and re-observes three fox knee points, preserving roots/ankles/paws and shared curves. All fox legs have at least3%BL rest slack; the8% contact cap is unchanged. The patch key guard now evaluates retained disc ink, with retained-magenta refusal. Native7400ms silhouette/rest and1375ms old-fox negative plus dense corrected-fox qualification are pending; parts motion is not accepted.
+
 **C2 native finding — matches code as of 2026-09-13:** parts rest passes, but motion does not. Civet has a visible head/neck gap; fox exceeds the unchanged contact-compression bound. The isolated runner now supports explicitly labelled whole-portrait fallback captures under Nick's fallback authorization. It records a 120 Hz parts-contact diagnostic; fallback does not satisfy articulated shape, ear/tail/jaw or parts reuse gates. Evidence: audits/C2_PARTS_MOTION_20260913/proof-02 and README.md. No production or Claude-owned module changed.
 
 **C2 motion continuation, matches code September13:** the corrected GSAP producer hash is

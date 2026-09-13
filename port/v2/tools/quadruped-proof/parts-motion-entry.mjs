@@ -1,4 +1,4 @@
-import {Application,Container,Texture,Sprite,Text,Graphics,Particle,ParticleContainer} from 'pixi.js';
+import {Application,Container,Texture,Sprite,Text,Graphics,Particle,ParticleContainer,RenderTexture} from 'pixi.js';
 import {loadCreatureRigV1} from '../../apps/game/src/creature-rig.ts';
 import {createQuadrupedContactSolver,poseMatrices} from '../../apps/game/src/creature-rig-contact.ts';
 import {transformPoint} from '../creature-animation/kinematics.ts';
@@ -15,7 +15,7 @@ const get=n=>fetch(n).then(r=>{if(!r.ok)throw Error(n);return r;});
 const json=n=>get(n).then(r=>r.json()),bytes=n=>get(n).then(r=>r.arrayBuffer());
 const image=async n=>{const b=await bytes(n),bmp=await createImageBitmap(new Blob([b])),c=new OffscreenCanvas(bmp.width,bmp.height);c.getContext('2d').drawImage(bmp,0,0);return {bytes:new Uint8Array(b),canvas:c,rgba:c.getContext('2d').getImageData(0,0,c.width,c.height).data};};
 const tex=c=>Texture.from(c),b64=b=>{const a=new Uint8Array(b);let s='';for(let i=0;i<a.length;i+=8192)s+=String.fromCharCode(...a.subarray(i,i+8192));return btoa(s);};
-const fallback=new URLSearchParams(location.search).get('mode')==='portrait-fallback';
+const proofMode=new URLSearchParams(location.search).get('mode'),fallback=proofMode==='portrait-fallback',repairGatesOnly=proofMode==='repair-gates';
 const W=896,H=504,G=.78*H,BASE=72,state={status:'RUNNING',specimens:[],errors:[],captures:[],scope:'C2 parts rig study; existing cue placeholders, no C3 source acceptance'};window.cfPartsMotion={state};
 const app=new Application();await app.init({width:1536,height:740,resolution:1,background:'#141d22',antialias:false,preference:'webgl',autoStart:false});document.body.append(app.canvas);
 const scene=new Container();scene.y=BASE;app.stage.addChild(scene);
@@ -33,7 +33,7 @@ try{
  const subjects=[];for(const id of ['civet','fox','procedural']){const record=await json(id+'.record.json'),binding=await json(id+'.binding.json'),master=new Uint8Array(await bytes(id+'.master.png')),paint=await image(id+'.keyed.png'),atlas=new Uint8Array(await bytes(id+'.atlas.png'));
  const alpha=Uint8Array.from({length:paint.canvas.width*paint.canvas.height},(_,i)=>paint.rgba[i*4+3]),rig=await loadCreatureRigV1(record,binding,master,alpha,atlas),card=compileBodyCard(record,id==='procedural'?genome:undefined),box=bounds(paint.rgba,paint.canvas.width,paint.canvas.height),scale=H*.42/box.height,holder=new Container();holder.addChild(rig.root);rig.root.scale.set(scale);rig.root.position.set(-record.landmarks.root[0]*scale,-record.geometry.groundLineY*scale);holder.position.set(W/3,G);scene.addChild(holder);
  const portrait=new Sprite(tex(paint.canvas));portrait.width=1;portrait.height=1;rig.root.parent.addChild(portrait);portrait.scale.set(scale/paint.canvas.width);portrait.position.copyFrom(rig.root.position);portrait.visible=fallback;rig.root.visible=!fallback;
- const row={id,parts:rig.parts.length,recordRecipeHash:record.recipeHash,card,mode:fallback?'WHOLE-PORTRAIT FALLBACK — parts shape gate failed':'PARTS RIG — motion review',maxContactErrorPx:0,maxUnconstrainedContactErrorPx:0,contactSamples:0,maxCompression:0};state.specimens.push(row);subjects.push({id,record,rig,portrait,holder,card,scale,box,solver:createQuadrupedContactSolver(record),row});}
+ const row={id,parts:rig.parts.length,recordRecipeHash:record.recipeHash,card,mode:fallback?'WHOLE-PORTRAIT FALLBACK — parts shape gate failed':'PARTS RIG — motion review',maxContactErrorPx:0,maxUnconstrainedContactErrorPx:0,contactSamples:0,maxCompression:0};state.specimens.push(row);subjects.push({id,record,binding,master,alpha,paint,rig,portrait,holder,card,scale,box,solver:createQuadrupedContactSolver(record),row});}
  const pl=await image('platypus.png'),keyed=keyAndDespill(pl.rgba,pl.canvas.width,pl.canvas.height);pl.canvas.getContext('2d').putImageData(new ImageData(keyed.rgba,pl.canvas.width,pl.canvas.height),0,0);const pb=bounds(keyed.rgba,pl.canvas.width,pl.canvas.height),opponent=new Sprite(tex(pl.canvas));opponent.anchor.set(.5,pb.y+pb.height);const ps=H*.252/(pb.height*pl.canvas.height);opponent.scale.set(-ps,ps);opponent.position.set(W*2/3,G);scene.addChild(opponent);
  const fxLayer=new Container();scene.addChild(fxLayer);const near=new Sprite(tex((await image('near.png')).canvas));near.width=W;near.height=H;scene.addChild(near);
  const effectTextures=[];for(const n of ['launch','travel','impact'])effectTextures.push(tex((await image(n+'.png')).canvas));
@@ -61,10 +61,42 @@ try{
  const updateMs=performance.now()-begin;app.renderer.render(app.stage);return {updateMs,phase:sample.phase};}
  // Exercise all three actual timelines before any capture. This is a contact
  // gate; visual joint seams/spikes are judged from the retained extremes.
- state.partsDiagnostic=[];for(const s of subjects){select(s.id);let firstFailure=null,samples=0;for(let ms=0;ms<=10000;ms+=1000/120){const reverse=ms>=5000,t=reverse?ms-5000:ms,plan=plans[reverse?1:0],planted=reverse||t<plan.beats.commandEnd||t>=plan.beats.returnEnd;try{s.solver.resolve(motionPose(plan,t,reverse),planted);samples++;}catch(error){firstFailure={atMs:ms,phase:sampleTurn(plan,t).phase,reason:error.message};break;}}state.partsDiagnostic.push({id:s.id,samples,firstFailure});if(firstFailure&&!fallback)throw Error('Dense contact admission '+s.id+': '+JSON.stringify(firstFailure));for(const ms of [0,400,900,1300,1600,1800,2000,2200,2600,3000,4000,5000,6200,6700,6900,7200,8000,9500])frame(ms);if(!fallback&&s.row.maxUnconstrainedContactErrorPx<=.5)throw Error('Unconstrained contact negative control did not fail: '+s.id);}
+ state.partsDiagnostic=[];for(const s of subjects){select(s.id);let firstFailure=null,samples=0,maxCompressionBL=0;for(let ms=0;ms<=10000;ms+=1000/120){const reverse=ms>=5000,t=reverse?ms-5000:ms,plan=plans[reverse?1:0],planted=reverse||t<plan.beats.commandEnd||t>=plan.beats.returnEnd;try{const solved=s.solver.resolve(motionPose(plan,t,reverse),planted);maxCompressionBL=Math.max(maxCompressionBL,solved.compression/s.card.bodyLength);samples++;}catch(error){firstFailure={atMs:ms,phase:sampleTurn(plan,t).phase,reason:error.message};break;}}state.partsDiagnostic.push({id:s.id,samples,firstFailure,maxCompressionBL});if(firstFailure&&!fallback&&!repairGatesOnly)throw Error('Dense contact admission '+s.id+': '+JSON.stringify(firstFailure));if(!repairGatesOnly)for(const ms of [0,400,900,1300,1600,1800,2000,2200,2600,3000,4000,5000,6200,6700,6900,7200,8000,9500])frame(ms);if(!fallback&&!repairGatesOnly&&s.row.maxUnconstrainedContactErrorPx<=.5)throw Error('Unconstrained contact negative control did not fail: '+s.id);}
+ // Still-frame qualification precedes any new ten-second capture. All pixels
+ // are measured at native cut-out size, on a transparent target, without arena.
+ async function repairGates(){
+  const artifacts={},rows=[];
+  const png=async(name,rgba,w,h)=>{const c=new OffscreenCanvas(w,h);c.getContext('2d').putImageData(new ImageData(Uint8ClampedArray.from(rgba),w,h),0,0);artifacts[name]=b64(await(await c.convertToBlob({type:'image/png'})).arrayBuffer());};
+  const difference=(a,b)=>{let n=0;for(let i=0;i<a.length;i++)if(a[i]!==b[i])n++;return n;};
+  for(const id of ['civet','fox']){
+   select(id);const s=selected,w=s.record.geometry.width,h=s.record.geometry.height,rt=RenderTexture.create({width:w,height:h,resolution:1});
+   const pixels=node=>{app.renderer.render({container:node,target:rt,clear:true});return new Uint8Array(app.renderer.extract.pixels({target:rt}).pixels);};
+   const ref=new Sprite(tex(s.paint.canvas)),oracle=pixels(ref);s.rig.root.position.set(0,0);s.rig.root.scale.set(w,h);s.rig.applyPose({});
+   const rest=pixels(s.rig.root);const row={id,restDifferentChannels:difference(oracle,rest),card:s.card};await png(id+'-rest.png',rest,w,h);
+   if(id==='civet'){
+    const oldRig=await loadCreatureRigV1(s.record,await json('civet-old.binding.json'),s.master,s.alpha,new Uint8Array(await bytes('civet-old.atlas.png')));oldRig.root.scale.set(w,h);
+    // The requested mask is exactly the opaque-at-rest head/neck/chest union,
+    // with no erosion, cropped ROI, or removal of inconvenient boundary pixels.
+    for(const part of s.rig.parts)part.display.visible=['head','neck','chest'].includes(part.id);
+    const region=pixels(s.rig.root);for(const part of s.rig.parts)part.display.visible=true;
+    const pose=s.solver.resolve(motionPose(plans[1],2400,true),true).pose;
+    oldRig.applyPose(pose);s.rig.applyPose(pose);const old=pixels(oldRig.root),actual=pixels(s.rig.root);
+    let tested=0,oldMissing=0,missing=0,opaqueTested=0,opaqueMissing=0;const marked=actual.slice();
+    for(let i=0;i<w*h;i++)if(region[i*4+3]){tested++;if(old[i*4+3]===0)oldMissing++;if(actual[i*4+3]===0){missing++;marked.set([255,30,30,255],i*4);}if(region[i*4+3]===255){opaqueTested++;if(actual[i*4+3]===0)opaqueMissing++;}}
+    Object.assign(row,{timeMs:7400,pose,regionPixels:tested,zeroAlphaPixelsInsideRestRegion:missing,opaqueRestRegionPixels:opaqueTested,zeroAlphaInsideOpaqueRestRegion:opaqueMissing,old025NegativeControl:oldMissing,gate:missing===0&&oldMissing>0?'PASS':'FAIL'});
+    await png('civet-hit-7400-old.png',old,w,h);await png('civet-hit-7400-repaired.png',actual,w,h);await png('civet-hit-7400-missing-red.png',marked,w,h);await png('civet-rest-region.png',region,w,h);oldRig.dispose();
+   }else{
+    const oldRecord=await json('fox-old.record.json'),oldSubject={...s,record:oldRecord,card:compileBodyCard(oldRecord)},oldPlan=makePlan(oldSubject,false);let refusal=null;
+    try{createQuadrupedContactSolver(oldRecord).resolve(motionPose(oldPlan,1375),true);}catch(error){refusal=error.message;}
+    const diagnostic=state.partsDiagnostic.find(d=>d.id==='fox');Object.assign(row,{oldRecordAt1375:refusal,diagnostic,gate:refusal?.includes('compression bound')&&!diagnostic.firstFailure&&diagnostic.maxCompressionBL<.08&&Object.values(s.card.bounds.legSlack).every(v=>v>=.03)?'PASS':'FAIL'});
+   }
+   rows.push(row);s.rig.root.position.set(-s.record.landmarks.root[0]*s.scale,-s.record.geometry.groundLineY*s.scale);s.rig.root.scale.set(s.scale);rt.destroy(true);ref.destroy({texture:true,textureSource:true});
+  }
+  return {status:rows.every(r=>r.restDifferentChannels===0&&r.gate==='PASS')?'PASS':'FAIL',scope:'Pack7 still/contact gates; no new ten-second motion capture',rows,artifacts};
+ }
  const capture=async id=>{select(id);frame(0);initAudio({sndOn:()=>true,sfxVol:()=>.35});prepareStingAudioForGesture();const ac=window.ac?.();if(ac)await ac.resume();const destination=ac?.createMediaStreamDestination();let silence;if(destination){sfxOut(ac).connect(destination);silence=ac.createBufferSource();silence.buffer=ac.createBuffer(1,128,ac.sampleRate);silence.loop=true;silence.connect(destination);silence.start();}
  const stream=app.canvas.captureStream(0),track=stream.getVideoTracks()[0];if(destination)for(const t of destination.stream.getAudioTracks())stream.addTrack(t);const chunks=[],recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9,opus',videoBitsPerSecond:6500000});recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};let started=false;recorder.onstart=()=>{started=true;};const stopped=new Promise(r=>recorder.onstop=r);recorder.start();await primeRecorder({started:()=>started,paint:()=>frame(0),requestFrame:()=>track.requestFrame(),schedule:requestAnimationFrame,now:()=>performance.now()});
  const updates=[],deltas=[],events=[];let start,previous;const fired=new Set();await new Promise((resolve,reject)=>{const tick=at=>{try{start??=at;const ms=Math.min(10000,at-start);if(previous!==undefined)deltas.push(at-previous);previous=at;updates.push(frame(ms).updateMs);track.requestFrame();for(let i=0;i<2;i++)for(const[cue,when]of [['approach',plans[i].beats.commandEnd],['impact',plans[i].beats.impactAt]]){const key=i+cue;if(ms>=i*5000+when&&!fired.has(key)){fired.add(key);cue==='approach'?playWhoosh():playSurveyPing();events.push({cue,atMs:ms});}}if(ms>=10000)resolve();else requestAnimationFrame(tick);}catch(e){reject(e);}};requestAnimationFrame(tick);});
  await new Promise(r=>setTimeout(r,120));track.requestFrame();recorder.stop();await stopped;silence?.stop();stream.getTracks().forEach(t=>t.stop());if(destination)sfxOut(ac).disconnect(destination);const blob=new Blob(chunks,{type:recorder.mimeType}),raw=await blob.arrayBuffer(),sorted=updates.slice().sort((a,b)=>a-b);const result={id,mode:selected.row.mode,frames:updates.length,fps:deltas.length/(deltas.reduce((a,b)=>a+b,0)/1000),updateMeanMs:updates.reduce((a,b)=>a+b,0)/updates.length,updateP95Ms:sorted[Math.floor(sorted.length*.95)],updateMaxMs:Math.max(...updates),events,video:b64(raw),contact:selected.row};state.captures.push({...result,video:undefined});return result;};
- Object.assign(window.cfPartsMotion,{select,frame,capture,plans:()=>plans});select('civet');frame(0);state.status='READY';
+ Object.assign(window.cfPartsMotion,{select,frame,capture,repairGates,plans:()=>plans});select('civet');frame(0);state.status='READY';
 }catch(e){state.status='FAIL';state.errors.push(String(e.stack??e));}
