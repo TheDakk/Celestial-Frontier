@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "calls": 6,
+  "files": {
+    "arena-far": "exec-40884683-9ff6-4ae9-9c05-89744c0db00d.png",
+    "arena-mid": "exec-2c4936e9-6feb-4fcc-82ee-60b7d84e8485.png",
+    "arena-near": "exec-13103434-1b91-4ec8-af37-cf61b02e44bd.png",
+    "wild-launch": "exec-7147209f-8768-474d-b3d2-fd9f61e4ca11.png",
+    "wild-travel": "exec-a51b2d26-c3ac-4d71-916a-a0646a4263c2.png",
+    "wild-impact": "exec-225b4006-abdb-4590-9e6a-01efc27d2930.png"
+  }
+}
