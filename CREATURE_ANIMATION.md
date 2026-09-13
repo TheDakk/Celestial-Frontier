@@ -1,5 +1,15 @@
 # Creature animation — shared anatomy and motion contract
 
+**C2 authored parts, matches code as of September13:** the accepted Civet now has22
+hash-bound authored parts and10 hidden joint patches cut from its retained turnaround,
+packed into one32-part atlas. `part-masks.mjs` refuses incomplete/overlapping/colour-changing
+reconstruction; `joint-patches.mjs` confines patch pixels beneath opaque base paint in their
+own depth layer. `civet.part-masks-v2.json` fixes the head-crest ownership seen in the initial
+mask map. Two refused patch fits are retained: key-coloured samples, then wrong near-only
+coverage for far legs. No new art was generated. Source hashes, actual binding and atlas are
+at audits/C2_PARTS_ATLAS_20260913/civet-patched/. Native rest comparison is the next gate;
+no animation or C2 acceptance is claimed. Fox/procedural masks and Motion-timed captures remain.
+
 **C2 runtime progress, September13:** [creature-rig.ts](port/v2/apps/game/src/creature-rig.ts)
 loads hash-bound part atlases and applies the record-joint CreatureRigV1/PoseTarget vocabulary
 using inherited affine transforms and actual Pixi objects. Five negative-controlled tests,
@@ -45,7 +55,7 @@ curves through paused timelines and explicit time. @pixi/particle-emitter 5.0.10
 travel/impact, with its Pixi 6/7 peer boundary and seeded-time integration unresolved against
 Pixi 8.19.0. No direct runtime attachment yet. The [atlas command](port/v2/tools/creature-animation/rig-atlas.mjs)
 uses CLI 0.3.0/core 0.3.9 with sorted, hash-checked copies, 4 px padding and 1 px extrusion,
-exactly one atlas, no timestamps; only synthetic parts have been packed. PNG masters remain
+exactly one atlas, no timestamps; actual Civet parts are now packed in the C2 evidence above. PNG masters remain
 immutable; optimize copies only. [Current tooling contract](UI_TOOLCHAIN.md).
 
 **Current direction, art candidates await acceptance:** Nick approved v4.2 from d2b8d8cd

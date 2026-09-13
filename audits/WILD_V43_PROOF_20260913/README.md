@@ -1,5 +1,25 @@
 # C1 — Art Kit v4.3 adoption and one Wild repaint
 
+## Current Pack4 intake — 2026-09-13
+
+Pack4 retained verbatim in6b574220. It supersedes the Pack3 intake decision: launch/travel,
+registration and retained shapes accepted by Claude; impact requires the two targeted clusters.
+Nick owns final visual acceptance. One explicit-target radius8 RGB-only pass changed9pixels
+in the lower-right tuft; zero eligible pixels in the top-right rectangle after protecting sheen,
+low-saturation pale paint and dark umber. No erosion, alpha change, outside-target change,
+travel correction, repaint or generation. The unchanged top-right crop remains visible for review.
+
+Current images, before/after400% crops, classification split, exact changed/source pixel lists,
+registration receipt and review prompt are under [targeted-pass](targeted-pass/REVIEW_REQUEST.md).
+Both anchor files reference the current derived copies; original image hashes remain attached
+to their unchanged original paths, with corrected keyedImageSha256 in the fallback.
+The historical110/85 diagnostics are not visual pink counts; the new receipt explicitly splits
+pink-band candidates from protected sheen/pale/umber and retains Claude's visual44/31 estimates.
+No under40 threshold drives another pass. C1 is not declared visually complete.
+
+The sections below retain prior generation/intake evidence; current status above supersedes
+the earlier request for another generic cleanup authorization.
+
 Nick approved e89cb621 with only the two header labels and exact history-clause update.
 `adopted-kit.diff` is the final adoption diff; `kit-adoption.json` records its SHA256 and
 unchanged frozen style/4E. No game theme hex changed. The Earth compiler now admits4.3;

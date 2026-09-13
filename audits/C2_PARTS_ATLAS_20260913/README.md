@@ -49,3 +49,25 @@ notes and use its actual emitted timings. No body card was typed or alternate co
 C1's authorized second pass missed its fringe target; further intake is pending Nick's scope
 choice. This independent C2 code proceeds without interpreting that as image acceptance.
 No kit edit, source sound recording, model inference, main.ts hunk, GitHub write or history rewrite.
+
+
+## Pack4 continuation — corrected mask and turnaround joint underlaps
+
+civet.part-masks-v2.json fixes the head crest so it follows the head. Original declaration
+and its initial atlas are historical evidence; civet-v2 is the corrected22-part base.
+civet-patched is the current32-part atlas (2047×951), with10 round underlaps sampled from
+painted fur in the retained turnaround, never generated. Every patch pixel is confined to
+opaque base paint in that patch's own far/near layer, and patches precede base parts there.
+This guarantees offline rest occlusion; native GPU rest admission follows on committed source.
+
+Initial source samples containing magenta were refused; joint-patch-initial-refusal.json names
+the offending crops. The second attempt found the builder had limited coverage to the near
+layer even for far-leg patches; joint-patch-second-refusal.txt retains that finding. Coverage
+now follows the base part's actual layer. Corrected declaration civet.joint-patches-v2.json
+binds the exact turnaround SHA. The cropped fur tone at moving joints still needs visual
+review; a hidden texture patch is not proof of a good moving silhouette.
+
+parts-rest-runner.mjs / parts-rest-entry.mjs provide a bounded native Pixi comparison against
+the whole keyed master. They refuse dirty source, record bundled source hashes, use one
+isolated loopback browser and compare every rendered RGBA channel, with a missing-head
+negative control. This is a rest-render test, not invented clip curves or animation acceptance.

@@ -78,7 +78,7 @@
     {
       "phase": "impact",
       "image": "wild-impact.png",
-      "keyedImage": "targeted-pass/keyed/wild-impact.png",
+      "keyedImage": "second-pass/keyed/wild-impact.png",
       "imageSha256": "978296588ae7ad5694380c92ab7499f34a4a9ec27c654b064b82b7c0a924fc79",
       "canvasSize": {
         "width": 1254,
@@ -99,7 +99,7 @@
         "height": 711
       },
       "qualityAccepted": false,
-      "keyedImageSha256": "5289b10b14a7de12b4a3c7e1ddd171a7adc990780c15b937ca04e44c5d9c0c5f"
+      "keyedImageSha256": "4170164be8efab0311d06492f68aca2ec8d2ea72bb6f888c0c729509ba251beb"
     }
   ],
   "qualityAccepted": false,
