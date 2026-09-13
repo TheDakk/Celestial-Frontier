@@ -17,8 +17,52 @@ Packages per WORK_ORDER.md. One entry per package on acceptance: commit, evidenc
 
 The full `vitest run` on this tree has 24 failing tests in 12 files. All 24 fail identically on Codex's committed head openai/mac 1e65e006 (verified in a temporary detached checkout of that exact commit, then removed): app-chrome-main-wiring (3), compendium-budget (2), current-producer-authorities (suite), evidence-build-runtime (2, needs the evidence build with onnxruntime), exceptional-crafting-evidence-contract (2), guide-release (1), painted-earth-mount-ownership (12), pwa-offline (1), slicesmoke-sixth-red-contract (1), and three `node:test` .mjs files under tools/ that vitest collects with 0 tests. None is caused by the merge or by packages A1 to A6. They belong to Codex's lane (C5 pruning and exact-head admission) and are recorded here so nobody mistakes them for new reds.
 | A7 pose editor | accepted (mechanical); Nick's tool | 20f50f70 | audits/LONG_SESSION_20260913/a7-pose-editor/capture-01/; 11 tests |
-| B1–B4 batch 2 | built and green (typecheck 0; 26 suites / 220 tests; root validate PASS); live capture REVIEW (602 frames, cues within one frame of their beats; found and fixed the frozen particle count and the pale-on-pale disc); Nick's eye open on the four B3 sheets and the capture; main.ts audio port is Nick's call | see git log | audits/LONG_SESSION_20260913/LOG-B.md; b3-family-sheets/; b-batch-capture/proof-run-01/ (A1 procedural evidence refreshed) |
-| A11 family motion templates | accepted (mechanical); synthetic landmarks, not anatomy evidence; myriapod, cephalopod, flyer-membrane, primate built in B3 (LOG-B.md) | see git log | audits/LONG_SESSION_20260913/a11-family-sheets/ (nine sheets, byte-identical on re-run); 54 motion tests |
+| A11 family motion templates | accepted (mechanical); synthetic landmarks, not anatomy evidence; myriapod, cephalopod, flyer-membrane, primate still unbuilt (registry test names them) | see git log | audits/LONG_SESSION_20260913/a11-family-sheets/ (nine sheets, byte-identical on re-run); 54 motion tests |
 
 - 2026-09-13 Wild second intake reviewed: travel ACCEPT, impact TARGETED INTAKE FIX (two clusters), registration ACCEPT, no further erosion; response in audits/WILD_V43_PROOF_20260913/second-pass/.
-- 2026-09-13 Wild targeted impact pass reviewed: both clusters ACCEPT (tuft rose streak and leaf rim are master paint; my second-pass read corrected); C1 mechanical intake complete pending Nick's eye; response in audits/WILD_V43_PROOF_20260913/targeted-pass/.
+
+
+## Codex Pack4 / C1 targeted correction — 2026-09-13
+
+Pack4 committed verbatim6b574220; previous local log retained inLOG-CODEX-PRE-PACK4.md;
+all9path hashes inpack4-receipt.json. One radius8 explicit-target RGB pass on second-pass
+keyed impact:9pixels changed in lower-right rectangle,0eligible in top-right rectangle after
+required exclusions. Zero alpha/protected/outside-target changes; no erosion or generation.
+Travel/launch/MID and all masters unchanged. Updated hashes in anchors and current registration
+receipt; prior receipts retained. Evidence: ../WILD_V43_PROOF_20260913/targeted-pass/.
+Mechanical diagnostic split before correction: travel85pink-band,1pale,24umber; impact52pink-band,
+9sheen,16pale,8umber. Heuristic counts are not Claude's visual44/31 estimates; both retained.
+No under40 target or global retry. Nick retains final image acceptance; unchanged top-right
+crop explicitly supplied. Independent C2 continues. No main.ts/kit/Claude-module/GitHub edit.
+
+
+## Codex C2 — turnaround patches ready for native rest admission
+
+Head-crest polygon corrected;22-part Civet base repacked. Ten existing-turnaround fur underlaps
+added beneath opaque base pixels in their own depth layers; one32-part2047×951current atlas.
+Two source-fit refusals retained and corrected (magenta source crops; near-only coverage for
+far legs). Native rest runner compares to whole master and removes the head as a negative
+control; native result follows on a clean committed head. No Motion curves typed, fox/procedural
+proof yet, source sound, kit/main.ts/Claude-module/GitHub edit. Evidence: ../C2_PARTS_ATLAS_20260913/.
+
+
+C2native admission is waiting on local1Password signing, not a new scope approval. Both
+signing attempts failed with agent-returned-error; source/evidence staged and preserved.
+No native successor run or unsigned-commit bypass. Latest signedHEAD6b574220,79aheadupstream/
+190aheadcacheddevelop. Native command and exact resume boundary are inROADMAP.
+
+
+Signing unblocked: verified1b0b5707,80aheadupstream/191aheadcacheddevelop. Native-rest-01
+failed at bundle construction before any browser: output.file cannot emit Pixi dynamic chunks.
+Runner corrected to output.dir; failed report preserved. No painting or source asset change.
+
+
+## C2native rest passed; motion-producer contract issue — 2026-09-13
+
+Native-rest-02 on signedde9c9a32 PASS:32parts,0changedRGBAchannels, missing-head negative
+control234,525changedchannels, pose update mean0.0068ms (notanimationFPS). First bundler
+failure preserved. Real GSAP producer read-only probe returnsCONTRACT_MISMATCH: root(.2,-.1)
+broadcast to root/spine/head; hierarchical local-offset semantics compound it. Prepared
+producer.patch and CLAUDE_REVIEW_REQUEST.md in ../C2_MOTION_INTEROP_20260913. No Claude source
+edited; Nick asked whether to grant a one-time ownership exception or have Claude apply it.
+No new painting/sound or GitHub write. Three motion captures remain; C2notcomplete.

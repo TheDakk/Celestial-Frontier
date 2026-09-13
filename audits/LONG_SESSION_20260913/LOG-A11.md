@@ -68,5 +68,5 @@ Quadruped regression: re-running the civet sheet gives `.timelines.json` byte-id
 - Plant verb durations, hopper/insect/arachnid gait timings (all on the 420 ms stride) and every pose number are A11 defaults for Nick to tune in the one table; nothing is visually accepted.
 - Chain rotations accumulate base→tip, so authored coil/curl numbers on long chains (serpent, radial arms, herb stems) read larger than any single key; the serpent anticipation was softened once for this.
 - `templateGait`/`gait` for plants: `gait` still reports the genome-derived value ('walk' by default) while `templateGait` is `'none'`; harmless but worth a glance.
-- Four kit §4 templates remain unbuilt and labelled: myriapod, cephalopod, flyer-membrane, primate.
+- Four kit §4 templates remained unbuilt after A11: myriapod, cephalopod, flyer-membrane, primate. Built in batch 2 (B3), see LOG-B.md; their joint tables live there.
 - The pose sheet's per-cell caption changed (top-two joints instead of jaw/head/tail0); the committed A1 SVGs are not regenerated.
