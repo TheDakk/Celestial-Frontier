@@ -1,0 +1,158 @@
+{
+  "schema": "cf.worldlife.life-sheet/v1",
+  "surface": "arena",
+  "seed": 593405465,
+  "cardSource": "audits/ARENA_EFFECTS_V42_PROOF_20260912/system-card.txt",
+  "cardSha256": "a6a075e07dd25e62cfe2383ed01a59a093ac2b4bf1174cb938ef7a0265b30a3f",
+  "frameMs": [
+    0,
+    400,
+    800,
+    1200,
+    1600,
+    2000,
+    2400,
+    2800
+  ],
+  "frameDigests": [
+    "5c5914441c4f77199596ad2a05971555dd8109d810795ef553626f30f51abd8a",
+    "6c4e409d13b770e878df9b48986340e26f576c7bc3d57e1231b89a5aa82431a1",
+    "82db5cc7b4d26660db0700cb535505c08afa1589c391e527bc5d9fdc88dd65fe",
+    "15a6fc22a7e25006262369d97ae960de57d5d1ec54b204ea0033620e65f205ec",
+    "ebe56ae8dd8eb169f97320c1bbca571075244736680c2f3a4887f4c31c6579ab",
+    "d56b534f1407d709eb9912793351dd8054e534e47faf2b6c0fa686be1e5a0de6",
+    "0c5dcb53e5b336b2abd3cb64d8ac722bf8da3a0643c70a9c7c5ca862edf164c0",
+    "3d86220974bd072868f02d7d81f29adc1a7c18e540ee4e5d9362a0649216c923"
+  ],
+  "replayDigest": "b119493da9048a58b01d04e5ee42e7b791e6078880457124ab9b0cd9e1e94aef",
+  "spec": {
+    "schema": "cf.worldlife.spec/v1",
+    "seed": 593405465,
+    "surface": "arena",
+    "tier": "desktop",
+    "card": {
+      "biome": "temperate",
+      "weather": "rain",
+      "water": "liquid",
+      "timeOfDay": "day",
+      "luminous": false,
+      "strength": "mild"
+    },
+    "illumination": 1,
+    "frame": {
+      "width": 1024,
+      "height": 576,
+      "groundLine": 0.78
+    },
+    "precipitation": {
+      "kind": "rain",
+      "density": 0.00108,
+      "requestedCount": 223,
+      "count": 223,
+      "overBudget": false,
+      "angle": -0.12,
+      "speed": 1.5625,
+      "length": [
+        0.017361111111111112,
+        0.03819444444444445
+      ],
+      "opacity": 0.12,
+      "color": 12637153,
+      "field": "[892 numbers]"
+    },
+    "drift": {
+      "count": 5,
+      "speedX": 0.012,
+      "speedY": -0.002,
+      "opacity": 0.12,
+      "color": 13161694,
+      "blobs": [
+        [
+          0.9579039148520678,
+          0.9447012393968179,
+          0.21859955320600422,
+          0.5073815896175802
+        ],
+        [
+          0.10479743010364473,
+          0.5208167644916102,
+          0.1668888914724812,
+          0.9454075000248849
+        ],
+        [
+          0.9603284480981529,
+          0.5013422888470813,
+          0.1597198520274833,
+          0.566087749786675
+        ],
+        [
+          0.8062925860285759,
+          0.9134287962689995,
+          0.17772153093479573,
+          0.29322738526389003
+        ],
+        [
+          0.6581504789646715,
+          0.9445188838755711,
+          0.23937796915415677,
+          0.7985651365015656
+        ]
+      ]
+    },
+    "shimmer": {
+      "rippleFrequencyHz": 0.55,
+      "amplitude": 0.07,
+      "phases": [
+        0.039853816386312246,
+        0.30189642729237676,
+        0.5256317078601569
+      ]
+    },
+    "sway": {
+      "amplitude": 0.5,
+      "frequencyBand": [
+        0.2,
+        0.4
+      ],
+      "bands": [
+        {
+          "band": 0,
+          "frequencyHz": 0.3492692210245878,
+          "phase": 0.9967428809031844,
+          "amplitude": 0.5
+        },
+        {
+          "band": 1,
+          "frequencyHz": 0.33652352429926397,
+          "phase": 0.9831571993418038,
+          "amplitude": 0.4
+        },
+        {
+          "band": 2,
+          "frequencyHz": 0.35318713085725906,
+          "phase": 0.0056599583476781845,
+          "amplitude": 0.25
+        }
+      ]
+    },
+    "fliers": {
+      "kind": "bird",
+      "count": 1,
+      "paths": [
+        {
+          "x0": 0.23851792141795158,
+          "y0": 0.3497342842211947,
+          "direction": -1,
+          "speed": 0.021386971454601732,
+          "bob": 0.009486565491883085,
+          "bobHz": 0.4875046323053539,
+          "phase": 0.6444766903296113
+        }
+      ]
+    },
+    "flicker": null,
+    "budget": {
+      "streakCap": 400
+    }
+  }
+}
