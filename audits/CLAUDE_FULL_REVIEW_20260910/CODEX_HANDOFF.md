@@ -65,91 +65,19 @@ Nick's art direction is unchanged and is defined by four images in `audits/MIDGA
 - **Codex (`openai/mac`):** overwrite, checkpoint, retire v3, write v4, update the three references, then program step 1. GitHub step now: none. PR42 stays parked.
 - **Nick:** open the Codex app to hand over the zip and the prompt. Claude does not need to be opened until the v4 diff or the first painting is ready for review.
 
+## 2026-09-12 addendum: Art Kit v4 draft review and the animation and battle track
 
-## Nick's approved engine-first order — September 12, 2026
+**Verdict on Codex's v4 draft (openai/mac 6f5c396e): approve, with three watch items.** Reference lock hashes match the MIDGAME packet; the star table carries the thirteen source kinds with source hexes; binary and trinary are Light modifiers; the magenta rule is compile-time only; the system card is a compiler schema; people are inactive; rarity maps ten tiers onto five treatments; the fur and Earth bans are gone; section 9 stops for Nick before painting. Watch items:
 
-V4 at 6f5c396e is approved with ART_KIT §9 reordered: only Earth temperate plate,
-six named Earth cut-outs and five family references first; show those sheets, then
-build the local AI pipeline and show the first measured painting beside the triptych
-with organism boxes. Remaining families/forms/biomes wait for painting acceptance
-and the animation proof below, then roll out twelve at a time. Inspect the first
-cut-out batch for inherited frames/dark plate backgrounds; if any appear, propose
-one v4.1 cut-out sentence and stop for Nick. Keep 4E turnaround unchanged.
-This addition supersedes the earlier full-library-first program in this file.
+1. The Discovery Atlas is the cut-out reference but shows framed plates with backgrounds. The text says the frame and background are not the output layout; check the first cut-out batch for inherited frames or dark plate backgrounds, and if they appear, add the sentence "the reference's frame and backdrop are not part of the subject" to the cut-out block in a v4.1.
+2. Reorder section 9 c to g so the engine comes before the full library: paint only what the first painting needs (the Earth temperate biome plate, the six Earth cut-outs, and the five most common family references: mammal quadruped, bird, fish, insect, reptile), then build and show the engine painting, then roll out the remaining families, forms and plates twelve at a time.
+3. The turnaround layout (4E) becomes the input to the animation track below; keep it.
 
-## Animation and battle track
+**Animation and battle track (Nick, 2026-09-12: creatures inside the biome, Final Fantasy-style turn battles with attacks).** Runs after the first engine painting is accepted and before the full library rollout.
 
-Scheduled after the first engine painting is accepted and before the library rollout:
-one Blender master rig per painter family with gene-driven proportions within per-family
-bounds, canid first; the kit 4E turnaround as reference; the finisher paints each creature's
-texture atlas once in the frozen style; Blender renders the token pose and the clip set
-(idle, melee, ranged or cast, hit, faint, victory, with land, flying and aquatic variants)
-using that texture; export to Pixi as skeleton plus texture or sprite sheets. Battle staging
-uses the landfall plate as backdrop, depth by scale and overlap, and the turn choreography:
-push-in, ability banner, strike, hit flash, short shake, damage number, recoil, return.
-The eleven ability themes become painted effect sheets, which requires a v4.1 Effects
-cut-out class; propose the row and stop for Nick's approval before painting any effect.
-Proof before scale: the Civet end to end (master, texture, idle, attack, hit, one staged turn
-in the browser) shown beside its own landfall painting. Families in order: mammal quadruped,
-bird, fish, insect, reptile, then the rest.
-
-## Nick's latest acceptance and weather order — September 12, 2026
-
-User direction, superseding the earlier experiment and execution order. This records
-approval and requested work; it does not claim the new weather or Cranberry work is implemented.
-
-- Art Kit v4.1 approved as diffed. No further kit edits; frozen paragraph and4E unchanged.
-- Edge/runners experiment246cc619 REJECTED. Keep its audit evidence. No further
-  finisher-erosion experiments. cd6b609f remains the accepted painting/tier-2 baseline;
-  qualityAccepted true and original bytes unchanged.
-- Normal-game wiring0d825fe5 /0e37e6c6 accepted as the production path. This is not
-  deployment authorization or evidence of the pending installed-model end-to-end run.
-- Weather on organisms YES: deterministic compositor layer AFTER the finisher, seeded
-  from the recipe, never the clock. Read weather, water state, time of day and light
-  from the system card. Darken/desaturate wet fur and leaves; droplet specular on
-  light-facing edges; matching rain, snow or dust streaks over the entire frame at
-  one density. Anatomy, count and placement untouched. Kit-authored variants deferred.
-- Cranberry: larger low mat, about16% of frame width, with more berries; compiler data.
-
-## Execute in this order
-
-1. Actual target-iPhone probe: maxBufferSize, shader-f16, storage quota, memory at
-   transformer load, plus one warm finisher timing if the model loads. Report before
-   any delivery work. Missing/unexposed memory must be recorded as unavailable, not
-   invented or conflated with total native/GPU memory.
-2. One ordinary-game download-to-finisher run on an installed model on the Mac,
-   no new painting parameters.
-3. Implement deterministic post-finisher weather and Cranberry mat; one painting on
-   accepted inputs, shown beside accepted baseline. Visual acceptance: Civet/Platypus
-   read as wet in rain like the plate; Cranberry legible at100%; species/placement unchanged.
-4. Civet animation proof end to end; existing animation/battle track still applies.
-
-## Current blocker and probe tooling
-
-The supplied target line literally contains [model], [version], [USB / same Wi-Fi].
-The actual iPhone model, iOS version, connection and remote-inspection availability
-were requested; no target was inferred and no device session was opened.
-Installed /System/Cryptexes/App/usr/bin/safaridriver documentation supports paired iOS
-sessions, with platformName=iOS, safari:deviceType=iPhone, safari:useSimulator=false,
-and deviceName/deviceUDID selection. Actual reachability/permissions are unverified.
-The existing probe-webgpu.mjs owns a Mac Chromium browser and cannot qualify iPhone.
-No new tool installation, model run, painting, storage or delivery work in this batch.
-
-GitHub step NONE. PR42 parked. Codex owns openai/mac on macOS in its exact worktree.
-Claude need not open or sync; future sync only after authorized develop integration.
-
-## Nick update — rain E / smaller phone finisher, September 12
-
-**Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
-emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical
-Earth loads the hash-verified accepted E PNG through the normal original-retention queue, without
-inference or a model install. Recipe/hash mismatches cannot inherit acceptance. Prior1x original
-and raw finisher are retained unchanged. Evidence: audits/RAIN_E_ADOPTION_20260912.
-Klein phone probing is stopped by Nick's budget decision; this does not establish the cause of
-Safari's earlier heartbeat loss. After the Civet proof, evaluate at most three approximately1GB
-finisher candidates on Mac, with redistribution-permitting licenses, the same painter composite,
-masked0.35 finish, and each model's compatible precomputed text embedding. Compare beside E,
-then one phone attempt with the best candidate; no delivery engineering before that result.
-Queue up to six new deterministic weather variants on the saved raw finisher: soft sky-contour
-sheen, darker/higher-contrast wet fur, and foreground precipitation at the plate's sky density.
-Show beside E/triptych; no inference. Civet end-to-end proof remains next. No kit/GitHub edits.
+- Chain per creature: genome → family rig (one Blender master per painter family, the existing canid master first; proportions driven by genes within per-family bounds) → kit 4E turnaround as the reference → the finisher paints the creature's texture atlas ONCE in the frozen style → Blender renders the token pose and the clip set with that texture → exported to Pixi as skeleton plus texture (or sprite sheets where cheaper). The AI touches the texture once and never a frame, so animation is deterministic and flicker-free, and the same asset serves landfall composition, Compendium plate and battle.
+- Clip set per family: idle, melee attack, ranged or cast, hit, faint, victory, with land, flying and aquatic variants where the painter routing demands them. Stage families in this order: mammal quadruped, bird, fish, insect, reptile, then the rest.
+- Battle staging in the browser: the landfall plate is the backdrop, depth by scale and overlap, turn choreography of camera push-in, ability banner, strike, hit flash, short shake, damage number, recoil and return; existing audio cues and combat math drive it.
+- Ability effects: the 11 themes (Fire, Frost, Storm, Tide, Stone, Venom, Void, Sand, Chem, Psionic, Wild) as painted effect sheets, crisp-edged shapes on the key, in the frozen style. This needs a kit revision (v4.1) adding an Effects cut-out class; Nick approves the row before any effect is painted.
+- Guards: per-family gene bounds with a review sheet at the extremes of each family; separate hover and waterline rules for flying and aquatic battles.
+- Proof before scale: one creature end to end, the Civet, from Blender master to finished texture to idle, attack and hit clips to one staged turn in the browser, shown beside its own landfall painting. Only after that holds does family-by-family repetition begin.
