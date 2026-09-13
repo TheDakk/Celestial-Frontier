@@ -22,8 +22,8 @@
  * The stage never changes HP or rewards; the Chronicle log stays the accessible owner of the outcome.
  * Batch 2: each combatant stages its own ability theme (Wild painted, the other ten as the labelled
  * procedural emitter in the theme's material colour) and the turn cues ride the beats when an `audio`
- * runtime port is supplied (main.ts passes none yet: the shared runtime is private to the tame-greeting
- * owner, so the study reports `audio: none`). Not yet done here: synchronising turns to the Chronicle
+ * runtime port is supplied (main.ts passes the accessible audio owner's `decorativeVoicePort()`, which
+ * admits decorative requests only while the owner is live, visible and answerable). Not yet done here: synchronising turns to the Chronicle
  * cue cadence (the study plays the transcript through at its own pace), arena selection beyond the one
  * accepted temperate arena, and the C2 parts rig (fixture rig until it lands). */
 import arenaRecipeUrl from '../../../../../audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json?url';
@@ -107,7 +107,7 @@ export interface Battle2StudyInput {
   /** Portrait art for combatants without a landmark record (default: the species art loader's 132 px thumb). */
   readonly portrait?: (genome: Readonly<Record<string, unknown>>) => Promise<Battle2Image>;
   readonly win?: Pick<Window, 'addEventListener' | 'removeEventListener'> & { readonly MutationObserver?: typeof MutationObserver };
-  /** Audio runtime port for the turn cues (B1). Absent = the study stages silently and reports `audio: none`; main.ts holds no shared runtime handle yet. */
+  /** Audio runtime port for the turn cues (B1). Absent = the study stages silently and reports `audio: none`; main.ts passes the audio owner's decorative port. */
   readonly audio?: TurnAudioRuntime | null;
 }
 export type Battle2Phase = 'loading' | 'playing' | 'finished' | 'failed' | 'disposed';

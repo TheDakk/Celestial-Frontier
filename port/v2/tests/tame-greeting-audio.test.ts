@@ -53,6 +53,7 @@ import {
   type TameGreetingAudioPolicy,
   type TameGreetingCaptureOutcome,
 } from '../apps/game/src/tame-greeting-audio.js';
+import { planCues } from '../apps/game/src/soundkit/mix.js';
 import { canonicalWorldRoster } from '../apps/game/src/world-roster.js';
 import {
   createCurrentWorldApproachDistantEcologyPlaybackV1,
@@ -2002,5 +2003,31 @@ describe('explicit decorative audiovisual pilot', () => {
     expect(h.owner.diagnostics().runtime.voices.active).toBe(0);
     expect(h.pendingDeadlines()).toBe(0);
     await h.owner.dispose();
+  });
+});
+
+describe('decorative voice port (batch 2: the battle2 study through the accessible owner)', () => {
+  /** The kit intent for a battle cue (category, priority, concurrency) with the buffer-only graph the pilot test uses on the fake context. */
+  const decorativeRequest = (): AudioVoiceRequest => {
+    const { cueId: _cueId, ...intent } = planCues(['battle:cursor']).admitted[0]!;
+    const base: AudioVoiceRequest = { ...intent, nodeCount: 1, maxDurationMs: 300, meaning: Object.freeze({ kind: 'decorative' }), create: (context, reservation) => {
+      const source = (context as FakeContext).createBufferSource(); return Object.freeze({ source, sources: [source], output: source, nodes: [source], reservation });
+    } };
+    return Object.freeze(base);
+  };
+  it('passes a decorative request to the runtime only while the owner is live, visible, answerable and the policy is on; refuses everything else without touching the runtime', async () => {
+    const h = harness();
+    const port = h.owner.decorativeVoicePort();
+    const cold = port.playVoice(decorativeRequest()); expect(cold.kind).toBe('rejected'); expect(['not-running', 'muted']).toContain((cold as { reason: string }).reason); // no gesture yet: the runtime itself refuses (it starts muted and not running)
+    expect(h.owner.armNativeCombatGesture()).toBe(true); await Promise.resolve(); await Promise.resolve();
+    const started = port.playVoice(decorativeRequest()); expect(started).toMatchObject({ kind: 'started' });
+    expect(h.owner.diagnostics().runtime.voices.ids).toContain((started as { voiceId: string }).voiceId);
+    expect(port.playVoice({ ...decorativeRequest(), meaning: { kind: 'meaningful', counterpart: counterpart('x') } } as never)).toMatchObject({ kind: 'rejected', reason: 'invalid-request' });
+    expect(port.playVoice(null as never)).toMatchObject({ kind: 'rejected', reason: 'invalid-request' });
+    h.owner.setHidden(true); expect(port.playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'not-running' }); h.owner.setHidden(false);
+    h.owner.setAnswerable(false); expect(port.playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'not-running' }); h.owner.setAnswerable(true);
+    const muted = harness({ soundOn: false }); expect(muted.owner.armNativeCombatGesture()).toBe(false);
+    expect(muted.owner.decorativeVoicePort().playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'muted' });
+    await h.owner.dispose(); expect(port.playVoice(decorativeRequest())).toMatchObject({ kind: 'rejected', reason: 'not-running' });
   });
 });

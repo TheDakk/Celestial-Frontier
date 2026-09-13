@@ -60,6 +60,8 @@ export interface EffectSequencePlayerOptions {
   readonly seed: number;
   /** Injected clock in ms; the player never reads Date.now or performance.now itself. */
   readonly clock: () => number;
+  /** The clock value at which the schedule's ms 0 sits. Absent = the first tick's clock value (a player that starts on its first tick). */
+  readonly startAtMs?: number;
   readonly arena: { readonly width: number; readonly height: number };
 }
 
@@ -83,7 +85,8 @@ export class EffectSequencePlayer {
 
   constructor(options: EffectSequencePlayerOptions) {
     if (options.phaseTextures.length !== options.schedule.tracks.length) throw new TypeError('one phase texture (or null) per schedule track is required');
-    this.#o = options;
+    if (options.startAtMs !== undefined && !Number.isFinite(options.startAtMs)) throw new TypeError('startAtMs must be finite');
+    this.#o = options; this.#startMs = options.startAtMs ?? null;
     this.#byTrack = Object.freeze(options.phaseTextures.map((texture, i) => {
       if (!texture) return null;
       const sprite = options.host.createSprite(texture);

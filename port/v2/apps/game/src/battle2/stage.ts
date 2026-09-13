@@ -99,12 +99,12 @@ export class BattleStage {
     if (cues) this.#cues = new TurnCuePlayer(buildTurnCuePlan(plan, cues.phone !== undefined ? { phone: cues.phone } : {}), cues.sink, () => this.#o.clock() - this.#startMs);
     const fx = this.#o.effects;
     if (plan.effect && fx && !plan.reducedMotion) {
-      const start = plan.effect.startMs; let armed = false;
       const tint = fx.tintForTheme?.(plan.theme);
       this.#player = new EffectSequencePlayer({ host: fx.host, schedule: plan.effect.schedule, phaseTextures: fx.phaseTextures(plan.effect.anchors), particleTexture: fx.particleTexture,
         ...(tint !== undefined ? { particleTint: tint } : {}),
         emitters: fx.emittersForTheme?.(plan.theme) ?? EMITTER_PRESETS, seed: fx.seed, arena: { width: this.#o.layout.frame.width, height: this.#o.layout.frame.height },
-        clock: () => { if (!armed) { armed = true; return start; } return this.#o.clock() - this.#startMs; } });
+        // The effect's ms 0 is the action start on the turn clock; an explicit start means a skipped or jumped frame lands at the right effect time.
+        startAtMs: plan.effect.startMs, clock: () => this.#o.clock() - this.#startMs });
       for (const s of this.#player.sprites) { this.#fx.addChild(s); this.#fxNodes.push(s); }
       this.#fx.addChild(this.#player.particles); this.#fxNodes.push(this.#player.particles);
     }
