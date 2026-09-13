@@ -68,6 +68,9 @@ export const EARTH_PAINTED_EDGE_RUNNERS_V1 = deepFreeze({
     ] } : row),
 });
 
+/** Nick's accepted E rain default, September 12; other precipitation retains its original density. */
+export const EARTH_RAIN_INTENSITY_V1 = deepFreeze({ dropletCount: 3, specularStrength: 3, precipitationDensity: 2 });
+
 /** Approved post-finisher weather experiment: one wider, connected berry mat. */
 export const EARTH_PAINTED_WEATHER_MAT_V1 = deepFreeze({
   ...EARTH_PAINTED_COMPOSITION_V1, id: 'cf.art.earth-painted-weather-mat.v1',

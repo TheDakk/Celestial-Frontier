@@ -137,3 +137,19 @@ No new tool installation, model run, painting, storage or delivery work in this 
 
 GitHub step NONE. PR42 parked. Codex owns openai/mac on macOS in its exact worktree.
 Claude need not open or sync; future sync only after authorized develop integration.
+
+## Nick update — rain E / smaller phone finisher, September 12
+
+**Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
+emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical
+Earth loads the hash-verified accepted E PNG through the normal original-retention queue, without
+inference or a model install. Recipe/hash mismatches cannot inherit acceptance. Prior1x original
+and raw finisher are retained unchanged. Evidence: audits/RAIN_E_ADOPTION_20260912.
+Klein phone probing is stopped by Nick's budget decision; this does not establish the cause of
+Safari's earlier heartbeat loss. After the Civet proof, evaluate at most three approximately1GB
+finisher candidates on Mac, with redistribution-permitting licenses, the same painter composite,
+masked0.35 finish, and each model's compatible precomputed text embedding. Compare beside E,
+then one phone attempt with the best candidate; no delivery engineering before that result.
+Queue up to six new deterministic weather variants on the saved raw finisher: soft sky-contour
+sheen, darker/higher-contrast wet fur, and foreground precipitation at the plate's sky density.
+Show beside E/triptych; no inference. Civet end-to-end proof remains next. No kit/GitHub edits.

@@ -1,27 +1,18 @@
 # Local AI landfalls
 
-**Latest acceptance, September12:** Nick accepts weather/mat9f51f2c9 as the active ordinary
-Earth baseline and Cranberry mat as is. PNG/raw finisher retained; audit qualityAccepted true.
-The normal compiler now selects weather-mat-v1 with its matching immediate composite.
-Six no-inference intensity variants are shown in audits/ART_KIT_WEATHER_LADDER_20260912;
-Nick's rain-default selection is pending, so accepted1x stays active. A newly authorized
-phone probe verifies initializer bounds and bypasses text encoder with pinned precomputed
-accepted-recipe embedding. Embedding/probe signed8a739f73; no-inference ordinary Land,
-retained weather PNG reload and Inspect PASS. After unlock, physical phone session succeeded;
-first embedded probe stopped at insecure-page navigation before any model request. Nick's
-explicit retry native-02 identified Safari/server TLS certificate rejection; zero model
-loads, no timing/memory. Result reported; trusted local HTTPS needed before another phone
-attempt. Nick authorized a short-lived trusted certificate/profile; normal Safari secure check now
-passes and Nick confirms full trust ON. Automation still rejects it (native-03, no model
-load). Ordinary Safari manual-01 on c77e5217 reached transformer loading after VAE encoder
-loaded in 2.625s and expansion completed, then lost its heartbeat for60s. No retry; no finisher
-or decoder reached, zero text requests and no exposed memory. Secure/isolation/f16 true;
-maxBufferSize and storage binding1GiB, origin quota1,048,576,000bytes. Largest initializer108MiB
-passes the1GiB bound but phone remains unqualified; loss cause unconfirmed. Server closed.
-Nick keeps the temporary profile installed for possible future testing; no new attempt
-is authorized. Civet proof follows; rain choice pending. Earlier paragraphs below record
-superseded baseline decisions. No kit edit or GitHub step.
-
+**Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
+emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical
+Earth loads the hash-verified accepted E PNG through the normal original-retention queue, without
+inference or a model install. Recipe/hash mismatches cannot inherit acceptance. Prior1x original
+and raw finisher are retained unchanged. Evidence: audits/RAIN_E_ADOPTION_20260912.
+Klein phone probing is stopped by Nick's budget decision; this does not establish the cause of
+Safari's earlier heartbeat loss. After the Civet proof, evaluate at most three approximately1GB
+finisher candidates on Mac, with redistribution-permitting licenses, the same painter composite,
+masked0.35 finish, and each model's compatible precomputed text embedding. Compare beside E,
+then one phone attempt with the best candidate; no delivery engineering before that result.
+Queue up to six new deterministic weather variants on the saved raw finisher: soft sky-contour
+sheen, darker/higher-contrast wet fur, and foreground precipitation at the plate's sky density.
+Show beside E/triptych; no inference. Civet end-to-end proof remains next. No kit/GitHub edits.
 
 **Normal Land implementation, September12:** the ordinary boot adapter now selects the
 accepted Earth kit composite and one masked finisher, with retained originals and400ms

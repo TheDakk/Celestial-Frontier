@@ -79,8 +79,17 @@ export async function createLocalAiGameV1(options: LocalAiGameOptionsV1): Promis
   };
   // Start only the small painter image at boot; never wait for a model to show a landing.
   void readComposite().catch(() => {});
+  const isAcceptedRecipe = (input: AiLandfallInputV1): boolean => input.recipeKey === baseline.acceptedPainting.recipeSha256
+    && digest(input.recipeJson) === baseline.acceptedPainting.recipeSha256;
   const jobs = new AiLandfallJobsV1({ store,
     generate: async (input, signal, progress) => {
+      if (isAcceptedRecipe(input)) {
+        const response = await fetch(baseline.acceptedPainting.url, { signal });
+        if (!response.ok) throw Error('Accepted Earth painting unavailable');
+        const bytes = await response.arrayBuffer();
+        if (bytes.byteLength > 16 * 1024 * 1024 || new LocalModelSha256V1().update(new Uint8Array(bytes)).digestHex() !== baseline.acceptedPainting.sha256) throw Error('Accepted Earth painting changed');
+        return { blob: new Blob([bytes], { type: 'image/png' }), width: baseline.settings.width, height: baseline.settings.height };
+      }
       if (!capability.supported || !modelFiles) throw Error('Local finisher is unavailable; the painter stays visible');
       runtime ??= createWarmKitLandfallRuntimeV4('/__local_ai/kit-stage-worker.mjs', modelFiles);
       let completed = 0;
@@ -109,7 +118,7 @@ export async function createLocalAiGameV1(options: LocalAiGameOptionsV1): Promis
     },
     composite: () => readComposite(),
     enqueue(input) {
-      if (!modelFiles || !capability.supported || deliveryBusy) return '';
+      if (!isAcceptedRecipe(input) && (!modelFiles || !capability.supported || deliveryBusy)) return '';
       return jobs.enqueue(input);
     },
     find: input => store.find(input), snapshot: () => jobs.snapshot(),

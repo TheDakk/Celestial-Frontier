@@ -17,37 +17,42 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · PHONE FIRST RESULT RECORDED; CIVET PROOF NEXT
+## SESSION HANDOFF — 2026-09-12 · E ACTIVE; CIVET PROOF NEXT; SMALLER PHONE FINISHER QUEUED
 
-Accepted weather/mat9f51f2c9 remains the active ordinary-game Earth painting, retained with
-qualityAccepted true; Cranberry mat accepted as is. Six offline weather variants A–F shown
-in audits/ART_KIT_WEATHER_LADDER_20260912; Nick has not chosen, so accepted1x remains active.
-Kitv4.1/frozen paragraph/4E unchanged. No new finisher erosion experiments or v3 paintings.
+**Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
+emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical
+Earth loads the hash-verified accepted E PNG through the normal original-retention queue, without
+inference or a model install. Recipe/hash mismatches cannot inherit acceptance. Prior1x original
+and raw finisher are retained unchanged. Evidence: audits/RAIN_E_ADOPTION_20260912.
+Klein phone probing is stopped by Nick's budget decision; this does not establish the cause of
+Safari's earlier heartbeat loss. After the Civet proof, evaluate at most three approximately1GB
+finisher candidates on Mac, with redistribution-permitting licenses, the same painter composite,
+masked0.35 finish, and each model's compatible precomputed text embedding. Compare beside E,
+then one phone attempt with the best candidate; no delivery engineering before that result.
+Queue up to six new deterministic weather variants on the saved raw finisher: soft sky-contour
+sheen, darker/higher-contrast wet fur, and foreground precipitation at the plate's sky density.
+Show beside E/triptych; no inference. Civet end-to-end proof remains next. No kit/GitHub edits.
 
-Phone manual-01 on signedc77e5217: CONNECTION_LOST during transformer load after VAE encoder
-completed2.625s and all206 expansions completed. No heartbeat60s; stopped once, no retry.
-Secure/isolation/WebGPU/f16 true; maxBufferSize/storage binding1GiB, quota1,048,576,000bytes,
-usage0. Largest pinned initializer108MiB PASS; total expanded initializer bytes4,393,808,634.
-Zero text-encoder requests, pinned accepted-recipe embedding supplied; no decoder/finisher
-reached, zero inference-start events, memory unavailable. No OOM cause established; phone
-remains unqualified. Evidence audits/IPHONE_EMBEDDED_PROBE_20260912/manual-01. User-operated
-Safari identity this run; earlier WebDriver confirmed physical iOS26.6.2. Prior TLS/session
-failures preserved. Server/session37991 closed and checkout lease released.
-Nick chooses to leave CF Local Probe 20260912 installed for future testing; phone need not
-stay connected. No retry authorized. Leaf expiresSep13 22:59:55UTC, rootSep14 22:59:54UTC;
-root signing key removed, server key private. A later attempt may need fresh TLS setup.
+Current evidence: c77e5217 phone manual-01 ended CONNECTION_LOST during transformer session
+loading after VAE encoder2.625s and expansion206/206 completed. Zero text requests, no decoder
+or finisher reached; exposed memory null. MaxBuffer/storage binding1GiB, quota1,048,576,000bytes;
+largest initializer108MiB but expanded total4,393,808,634bytes. Signed result63b9308b. Nick's
+phone decision excludes Klein; no further Klein attempt. All probe servers/sessions are closed.
+He leaves CF Local Probe 20260912 installed for now; leaf expiresSep13/rootSep14. Root signing
+key removed; later smaller-model phone attempt may need fresh certificate setup.
 
-NEXT: Civet animation proof end to end: per-family Blender master with game-data proportions,
-kit4E turnaround reference, one frozen-style painted texture atlas, idle/attack/hit clips,
-one staged browser turn beside its accepted landfall. Existing Wolf clay study is not the
-Civet proof and old Civet painted-parts assets are unaccepted. No effects painting/class until
-separate v4.1 Effects approval. Proof before remaining family/library rollout. Mac installed
-ordinary-game and warm-session evidence already complete; do not repeat those model runs.
+Civet proof: Blender master rig and bounded gene-driven proportions, unchanged4E turnaround,
+one frozen-style texture atlas painted by finisher, idle/attack/hit clips, one staged browser
+turn beside own accepted landfall. Existing Wolf clay study and old Civet parts are not accepted
+proof assets. Effects class/painting awaits separate approval. Proof before library rollout.
+Mac ordinary installed-model run and four warm sessions already proved; no repeat authorized.
+Rain E activation checks: focused28 game/compiler tests and9 weather/engine tests PASS, three
+TypeScript programs and root validate PASS. Exact saved-raw replay and negative controls;
+ordinary Land/retention/Inspect no-inference browser proof follows signed source.
 
-OpenAI/Codex macOS owns /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac,
-tracking origin/openai/mac. Latest signed sourcec77e5217:47 ahead upstream/0 behind,
-158 ahead cached origin/develop/0 behind; phone evidence commit follows. Unrelated .DS_Store
-untouched. Reuse uninterrupted Sept12 startup receipt. No unit checkout locks.
-GitHub step NONE; PR42 parked, no push/label/dispatch/merge/release/deploy. Budget UNFROZEN,
-public, private fallback3000; zero exact hosted attempts authorized. No new PR needed.
-Anthropic/Claude Code need not open or sync now; these local commits are not in develop.
+OpenAI/Codex macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac tracking
+origin/openai/mac. Signed63b9308b is48 ahead upstream/0 behind and159 ahead cacheddevelop/0
+behind; E source commit follows. Unrelated.DS_Store untouched. Reuse Sept12 startup receipt.
+GitHub step NONE, PR42 parked, no PR needed, zero hosted attempts authorized. No release or
+deployment; budget UNFROZEN/public/private fallback3000. Anthropic/Claude Code need not open
+or sync now; these commits are local and not in develop. Report IDs/ahead at each stop.

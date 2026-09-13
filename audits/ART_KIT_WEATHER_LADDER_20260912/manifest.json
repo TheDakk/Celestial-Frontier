@@ -142,7 +142,8 @@
         "geometryChanged": false,
         "stage": "after-finisher"
       },
-      "qualityAccepted": false
+      "qualityAccepted": true,
+      "acceptance": "Nick selected E as rain compiler default and active ordinary-game painting; original retained; no inference."
     },
     {
       "id": "F",

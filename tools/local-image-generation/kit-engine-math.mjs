@@ -7,6 +7,7 @@ export function admitKitEngineJob(job){
   if((job.interiorErosionPixels??4)!==(edge?8:4))throw Error('Interior erosion experiment refused');
   const weather=job.experiment==='cf.kit-weather-mat.v1',mat=job.passes?.find(p=>p.name==='Cranberry')?.placement?.mat;
   if(weather?(!Array.isArray(mat)||mat.length!==2||typeof job.compositorSystemCard!=='string'||mat.some(r=>!['x','groundY','width','heightScale'].every(k=>Number.isFinite(r[k])&&r[k]>0&&r[k]<1)||typeof r.flip!=='boolean')):mat!==undefined||job.compositorSystemCard!==undefined)throw Error('Weather mat experiment refused');
+  if(job.weatherIntensity!==undefined&&(!weather||Object.keys(job.weatherIntensity).sort().join(',')!=='dropletCount,precipitationDensity,specularStrength'||![1,2,3].includes(job.weatherIntensity.dropletCount)||![1,2,3].includes(job.weatherIntensity.specularStrength)||![1,2].includes(job.weatherIntensity.precipitationDensity)))throw Error('Weather intensity refused');
   if(job.passes?.some(p=>p.name!=='Cranberry'&&p.placement?.mat!==undefined))throw Error('Unexpected organism mat');
   const runners=job.passes?.find(p=>p.name==='Cranberry')?.placement?.runners;
   if(edge?(!Array.isArray(runners)||runners.length!==2||runners.some(r=>!['x','groundY','width','heightScale'].every(k=>Number.isFinite(r[k])&&r[k]>0&&r[k]<1)||typeof r.flip!=='boolean')):runners!==undefined)throw Error('Cranberry runner experiment refused');

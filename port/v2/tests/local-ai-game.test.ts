@@ -27,7 +27,7 @@ function canonical() {
  const built=canonicalWorldRoster(address.address,0);if(!built.ok)throw Error('fixture');
  return {roster:built.roster,request:buildBiomeVistaRenderRequestV1(planet,star.seed,built.roster.worldKey,systemFor(star.seed) as Record<string,unknown>,built.roster)};
 }
-async function harness() {
+async function harness(accepted = false) {
  const originals=new Map<string,AiLandfallOriginalV1>();
  const retain=vi.fn(async(input:AiLandfallInputV1,pixels:any)=>{const row={...pixels,input,schema:'cf.ai-landfall-original.v1',originalId:input.recipeKey,sha256:'a'.repeat(64)} as AiLandfallOriginalV1; originals.set(input.recipeKey,row);return row;});
  const read=vi.fn(async(input:AiLandfallInputV1)=>originals.get(input.recipeKey)??null);
@@ -39,17 +39,35 @@ async function harness() {
  const files=Object.fromEntries(pin.files.map(f=>[f.path,'/__local_ai/model/'+f.path]));
  const config={modelId:pin.modelId,modelRevision:pin.revision,modelSource:'verified-installed-developer-cache',modelFiles:files};
  const png=readFileSync(new URL('../apps/game/public/__local_ai/inputs/earth-composite.png',import.meta.url));
- vi.stubGlobal('fetch',vi.fn(async(url:string)=>new Response(url.endsWith('runtime.json')?JSON.stringify(config):png)));
+ vi.stubGlobal('fetch',vi.fn(async(url:string)=>new Response(url.endsWith('runtime.json')?JSON.stringify(config):url.endsWith('earth-rain-e.png')?readFileSync(new URL('../apps/game/public/__local_ai/inputs/earth-rain-e.png',import.meta.url)):png)));
  let current=true;const notice=vi.fn(),view=vi.fn(async()=>true),refresh=vi.fn();
  const api=await createLocalAiGameV1({notice,view,refresh,captureView:()=>()=>current});
- const c=canonical(),input=api.prepare(c.request,c.roster);if(!input)throw Error('canonical kit did not compile');
+ const c=canonical(),prepared=api.prepare(c.request,c.roster);if(!prepared)throw Error('canonical kit did not compile');
+ const input=accepted?prepared:{...prepared,recipeKey:'unaccepted-test-recipe'};
  return {api,input,originals,retain,read,state,install,verify,dispose,notice,view,refresh,setCurrent:(v:boolean)=>{current=v;}};
 }
 describe('ordinary kit landfall adapter; explicit fake model and storage',()=>{
+ it('ordinary accepted Earth loads and retains E without a GPU; changed recipe cannot inherit acceptance',async()=>{
+  mocks.probe.mockResolvedValue({supported:false});
+  const h=await harness(true);expect(h.api.enqueue(h.input)).not.toBe('');await tick();await tick();
+  expect(mocks.generate).not.toHaveBeenCalled();expect(mocks.runtime).not.toHaveBeenCalled();expect(h.retain).toHaveBeenCalledOnce();
+  const png=readFileSync(new URL('../apps/game/public/__local_ai/inputs/earth-rain-e.png',import.meta.url));
+  expect(new Uint8Array(await h.retain.mock.calls[0]![1].blob.arrayBuffer())).toEqual(new Uint8Array(png));
+  expect(h.api.snapshot()[0]?.status).toBe('ready');expect(h.view).toHaveBeenCalledOnce();
+  const changed={...h.input,recipeJson:h.input.recipeJson.replace('"seed":133','"seed":134')};expect(changed.recipeJson).not.toBe(h.input.recipeJson);
+  expect(h.api.enqueue(changed)).toBe('');expect(h.api.enqueue({...h.input,recipeKey:'wrong'})).toBe('');
+  h.api.enqueue(h.input);await tick();expect(h.retain).toHaveBeenCalledOnce();
+  await h.api.action('inspect',h.api.snapshot()[0]!.jobId);expect(mocks.open).toHaveBeenCalledOnce();
+ });
+ it('an altered accepted PNG is refused without inference, retention or replacing an original',async()=>{
+  const h=await harness(true);vi.stubGlobal('fetch',vi.fn(async()=>new Response('altered accepted PNG')));
+  h.api.enqueue(h.input);await tick();await tick();expect(h.api.snapshot()[0]?.status).toBe('failed');
+  expect(h.api.snapshot()[0]?.error).toContain('Accepted Earth painting changed');expect(h.retain).not.toHaveBeenCalled();expect(mocks.generate).not.toHaveBeenCalled();
+ });
  it('preloads composite without inference; only kit recipe reaches the retained-original queue',async()=>{
   const h=await harness();expect((await h.api.composite(h.input)).size).toBeGreaterThan(1000);expect(mocks.generate).not.toHaveBeenCalled();
   h.api.enqueue(h.input);await tick();expect(mocks.generate).toHaveBeenCalledOnce();
-  const recipe=mocks.generate.mock.calls[0]![0];expect(recipe.schema).toBe('cf.kit-engine.v4');expect(recipe.skipOrganismPasses).toBe(true);expect(recipe.finisherStrength).toBe(.35);expect(recipe.experiment).toBe('cf.kit-weather-mat.v1');expect(recipe.compositionProfile).toBe('weather-mat-v1');expect(recipe.passes[5].placement.mat).toHaveLength(2);expect(recipe.compositorSystemCard).toContain('weather rain');
+  const recipe=mocks.generate.mock.calls[0]![0];expect(recipe.schema).toBe('cf.kit-engine.v4');expect(recipe.skipOrganismPasses).toBe(true);expect(recipe.finisherStrength).toBe(.35);expect(recipe.experiment).toBe('cf.kit-weather-mat.v1');expect(recipe.compositionProfile).toBe('weather-mat-v1');expect(recipe.passes[5].placement.mat).toHaveLength(2);expect(recipe.compositorSystemCard).toContain('weather rain');expect(recipe.weatherIntensity).toEqual({dropletCount:3,specularStrength:3,precipitationDensity:2});
   expect(h.retain).toHaveBeenCalledOnce();expect(h.api.snapshot()[0]?.status).toBe('ready');expect(h.view).toHaveBeenCalledOnce();
   h.api.enqueue(h.input);await tick();expect(mocks.generate).toHaveBeenCalledOnce(); // retained revisit, no accidental new GPU job
  });

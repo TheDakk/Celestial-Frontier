@@ -140,7 +140,7 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
       progress({phase:'finisher-start',protectedTokens:mask.protectedTokens});const finishStart=performance.now();
       const finished=await paintPass({prompt:job.finisherPrompt,width:job.width,height:job.height,seed:job.seed,steps:1,strength:job.finisherStrength,initial,references:[triptych],protection:mask.latent});
       const {rgba}=planarToRgba(finished.decoded,job.width,job.height),finisherOriginal=await png(rgba,job.width,job.height);
-      const weather=job.compositorSystemCard?applyKitWeather(rgba,job.width,job.height,masks.map((alpha,i)=>({name:boxes[i].name,alpha})),job.seed,job.compositorSystemCard):null;
+      const weather=job.compositorSystemCard?applyKitWeather(rgba,job.width,job.height,masks.map((alpha,i)=>({name:boxes[i].name,alpha})),job.seed,job.compositorSystemCard,job.weatherIntensity):null;
       const painting=weather?await png(weather.rgba,job.width,job.height):finisherOriginal;
       measurements.push({name:'finisher',elapsedMs:performance.now()-finishStart,...finished.text,sigmas:finished.sigmas});
       return {schema:'cf.kit-engine-result.v4',painting,finisherOriginal,weather:weather?.receipt??null,composite,captures,maskCaptures,protectionMask,boxes,measurements,keying,
