@@ -1,5 +1,15 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**Current C2 status — matches code September13:** Civet32/fox22/procedural21part atlases all
+pass native rest comparison with0changedRGBAchannels and nonzero missing-head controls.
+Procedural masks come from an isolated seeded observation replay of the winning painter;
+ordinary paint remains byte-identical and material is correctly translucent. All3actual Motion
+body cards/timelines compile repeatably. See audits/C2_PARTS_ATLAS_20260913/README.md. Earlier
+pending/rest-readback notes below describe intermediate states. Motion/ground/contact/fps and
+10second captures are NOT admitted; Claude's producer root-offset broadcast still needs its
+prepared fix. No protected module or ordinary battle wiring changed here.
+
+
 **C2 runtime progress, September13:** [creature-rig.ts](port/v2/apps/game/src/creature-rig.ts)
 loads hash-bound part atlases and applies the record-joint CreatureRigV1/PoseTarget vocabulary
 using inherited affine transforms and actual Pixi objects. Five negative-controlled tests,
