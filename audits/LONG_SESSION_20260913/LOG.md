@@ -129,3 +129,28 @@ No full C2 rig/staging/captures yet; image acceptance still pending before stagi
 filenames/48k24-bit mono/dry/rights/SHA list remain binding. No Claude-lane or main.ts edit,
 GitHub action, new branch, history rewrite, kit change or source sound recorded.
 Pack2 commit73 ahead upstream/184 ahead cached develop; containing prerequisite commit follows.
+
+## Review delivery and continued C2 runtime coding — package not yet complete
+
+Nick clarified that coding should continue and requested concrete reviewer material. Prepared
+REVIEW_REQUEST.md and two review ZIPs,11,884,553 and18,452,967bytes (<30MB each). Paths, hashes
+and inventories at ../WILD_V43_PROOF_20260913/review-packages.json. The first combined archive
+was over30MB, so it was split before delivery. Send both to Claude; read-only C1 review,
+separate material/phase/edge/registration/MID verdicts. C1 image review gates staging, not
+independent rig implementation. Earlier handoff wording that implied all C2 must wait is
+superseded by this clarification; every other accepted decision/scope remains in force.
+
+Implemented creature-rig.ts and existing-helper type declarations: record/binding/atlas
+hash admission, actual Pixi part objects, two layers, record-joint parent-pivot transforms,
+body-length offsets, PoseTarget adapter, rest reset, refusal-before-mutation and disposal.
+Five tests with negative controls pass, including full-graph40-part mean<2ms CPU on Mac;
+TypeScript, root validation and pinned-atlas determinism/overflow controls pass. Initial
+readonly test-fixture type errors retained then fixed by immutable mutants. Evidence:
+../C2_RIG_RUNTIME_20260913/README.md and logs. No browser60fps claim or accepted visual rig.
+
+Remaining: authored masks, turnaround patches, procedural part-mask emission, real creature
+atlases, actual rest-pixel/extreme-pose/native timing proof, staged turn and ten-second captures.
+No new painting, C3 recording, kit/main.ts/Claude-module edit, GitHub action, new branch or
+history rewrite. Pre-runtime9ae342da:74 ahead upstream/185 ahead cached origin/develop.
+This containing commit records progress, not C2 acceptance. Claude can continue its lane;
+no immediate app opening or synchronization is needed to send the review ZIPs.

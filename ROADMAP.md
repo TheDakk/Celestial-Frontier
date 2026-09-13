@@ -46,8 +46,9 @@ within.5pixel, empty anchors virtual. wild-anchors.json uses registered copies; 
 wild-anchors-master-fallback.json retains original per-phase anchors. No warp/rotation/crop.
 Review wild-masters-review.png and wild-registered-review.png. Keyer reports89/597/529 unresolved
 fine-edge pixels; do not claim zero fringe or accepted artwork. STOP for Nick's image review
-before staging. C2 material-observer prerequisite now fixed; full rig/captures and C3 remain
-pending. No new kit wording request. Keep combining incoming feedback; do not drop earlier
+before staging; this does NOT block independent C2 coding. C2 material observer is fixed and
+parts runtime now implemented/tested; authored/procedural masks, joint patches, real atlases,
+visual proof/captures and C3 remain pending. No new kit wording request. Keep combining incoming feedback; do not drop earlier
 requirements unless a later explicit decision supersedes them.
 
 MID's one-pass exact190 RGB correction from07c93945 reverified, alpha and all arena masters
@@ -58,6 +59,23 @@ Earth compiler version guard updated to admit4.3 and retired-v3 test mutant upda
 pre-adoption guard refusal retained; final3 compiler tests prove deterministic output, retired
 kit/malformed source refusal and unchanged engine prompt. Nine contact/despill controls pass;
 full v2 TypeScript/root validation logs retained. No native inference or scene/finisher run.
+
+C1 review delivery: two ZIPs at /private/tmp/cf-wild-v43-review-part1-20260913.zip (11.9MB)
+and part2 (18.5MB), each below30MB; paths/hashes/file lists in
+WILD_V43_PROOF_20260913/review-packages.json. Send both to Claude with REVIEW_REQUEST.md in
+the packet. It requests per-phase/material/edge/registration/MID verdicts, read-only; Nick
+retains final acceptance. Do not leave Nick without the review artifacts/prompt.
+
+C2 runtime now at apps/game/src/creature-rig.ts: loadCreatureRigV1 admits the existing
+record/master/alpha and a hash-bound cf.creature-parts/v1 single-atlas binding; actual Pixi
+parts, far/near layers, record-joint parent-pivot inherited transforms, normalized cutout
+space, radians/body-length offsets, atomic invalid-pose refusal and disposal. PoseTarget
+adapter supplies setJoint. Reuses existing GRAPH/kinematics/admitRecord; no fixed mesh.
+Five tests include negative controls and 40-part CPU mean<2ms; full TypeScript, root validate
+and pinned packer controls pass. This is not a browser/GPU timing or visual rig proof.
+Next independent C2 work is authored masks/joint patches and painter-emitted procedural masks,
+then real atlases; native proof/staging waits for C1 image review and required asset readiness.
+Evidence: audits/C2_RIG_RUNTIME_20260913/README.md. No main.ts or Claude-module changes.
 
 C2: parts masks per authored master, turnaround joint patches, painter-emitted procedural
 parts, pose application and one deterministic atlas per creature with pinned packer. Compile
@@ -120,8 +138,8 @@ Klein phone probing remains stopped; no delivery engineering before phone-tier r
 
 Ownership verified: OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac,
 openai/mac → origin/openai/mac; SSH origin git@github.com:TheDakk/Celestial-Frontier.git.
-Pack2 commit6030e636:73 ahead upstream/184 ahead cached origin/develop, zero behind. No remote
+Pre-runtime9ae342da:74 ahead upstream/185 ahead cached origin/develop, zero behind. No remote
 refresh needed or performed; .DS_Store excluded. Current budget file says UNFROZEN, but Nick's
 explicit GitHub step NONE controls: no push/label/dispatch/merge/release/deploy or hosted attempt.
 This C1 batch reuses the uninterrupted September12 maintenance receipt; Node26.8.2 verified.
-Latest prerequisite changes only the drawn-material observer/test and anchor metadata; no main.ts hunk.
+Latest C2 runtime/test/declaration and review-package documentation remain local; no main.ts hunk.
