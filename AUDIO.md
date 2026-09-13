@@ -1,5 +1,12 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
+**Proposed Sound Kit v1 retained, September 12:** [SOUND_KIT.md](SOUND_KIT.md) is committed
+verbatim, with no new sources, derivation or wiring. Recording waits for Nick's approval of
+the frozen paragraphs. Then only §8b: quadruped voice archetype, Wild theme set, battle set,
+temperate rain bed and fur impacts. Derive Civet, fox and the procedural control from the
+one archetype, present all three side by side for listening, and wire the arena proof for
+sound. No wider library approval is implied. [Receipt and scope](audits/MOTION_SOUND_KITS_20260912/ADOPTION.md).
+
 ## Canonical Explorer Chronicle repair — 2026-09-08
 
 A native fresh-Earth challenge exposed a pre-existing presentation failure: its durable result

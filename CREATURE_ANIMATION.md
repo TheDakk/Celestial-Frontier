@@ -1,5 +1,13 @@
 # Creature animation — shared anatomy and motion contract
 
+**Proposed Motion Kit v1 retained, September 12:** [MOTION_KIT.md](MOTION_KIT.md) is verbatim
+proposal text. Nick directs the later Civet parts-rig proof to compile its body card from the
+resolved-anatomy record using sections 3–6 and their timings, with every missing field reported.
+No kit text or animation implementation changed in this retention batch. Initial record gaps,
+timing differences and the bounded sound dependency are in
+[the receipt](audits/MOTION_SOUND_KITS_20260912/ADOPTION.md). Arena/effect art acceptance is
+still pending; storing the kit does not approve broad motion work or frozen paragraphs.
+
 **Current browser track — matches code as of 2026-09-12:** Blender projection remains
 abandoned; retain turnaround/canid masters for the later engine port. The continuous-mesh
 [quadruped attempt](audits/CIVET_2D_PROOF_20260912/README.md) preserves exact rest pixels but

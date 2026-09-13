@@ -17,7 +17,24 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · v4.2 ART CANDIDATES AWAIT ACCEPTANCE
+## SESSION HANDOFF — 2026-09-12 · MOTION/SOUND PROPOSALS RETAINED; ART REVIEW PENDING
+
+MOTION_KIT.md and SOUND_KIT.md are verbatim PROPOSED v1 from the supplied zip, not approved
+frozen contracts. Exact hashes and read-only body-card gap report:
+audits/MOTION_SOUND_KITS_20260912/ADOPTION.md and verification.json. No implementation,
+recording, sound derivation or kit edits in this batch. User direction for the later proof:
+compile the Civet body card from resolved anatomy per Motion Kit §§3–6, use its timings and
+report every missing record field. Current Civet gaps include resolved mass, locomotion,
+realm, per-part materials, secondary lag order, natural weapons, luminous and joint limits;
+identity, template, landmarks and bone lengths already exist. Never use raw identity genes
+to override named Earth anatomy. Recheck the actual parts-rig record when built.
+
+Sound recording waits for Nick to approve the frozen paragraphs. Then only Sound Kit §8b:
+quadruped archetype voice, Wild theme set, battle set, temperate rain bed and fur impacts.
+Derive Civet, fox and one procedural quadruped from that one archetype, show them side by
+side to listen, and wire sound into the arena proof. No other family/theme/music/library
+volume authorized. This message does not accept the current arena/effect candidates.
+
 
 **STOP for Nick's visual acceptance before any battle staging.** Applied the approved
 v4.2 diff from d2b8d8cd with all three user amendments: Arena FAR opaque, MID/NEAR painted on
@@ -40,8 +57,11 @@ The ordinary-game accepted painting remains rain E; no local model/finisher/3D r
 
 **After art acceptance:** stage Civet versus Platypus with the parts rig in this arena;
 GSAP shared tweened key poses, easing/anticipation/overshoot/secondary motion, Mac 60 fps,
-phone 30 fps budget. Run-up <0.5 s, attack 0.5–0.75 s, hit ~0.3 s, return <0.5 s, brief
-hitstop/flash/shake/damage number/quick timing bar. Then ten-second Civet, fox and procedural
+phone 30 fps budget. Timing now comes from MOTION_KIT §5 with the compiled mass factor:
+approach420ms; melee140/90/one-frame smear/260ms; hit450ms; return380ms at mass1.00.
+This supersedes the earlier approximate timing targets for this proof; report actual compiled
+values and unresolved fields. Retain hitstop/flash/shake/damage number/quick timing bar.
+Then ten-second Civet, fox and procedural
 quadruped captures. No per-creature clip edits. Prior continuous mesh failed shape despite
 exact rest; retained whole-portrait fallback captures are not accepted articulation. Keep
 turnaround/canid masters for the later engine port; Blender projection remains abandoned.
@@ -77,8 +97,8 @@ develop→main full-chain release PR. No Ready PR until Civet proof, weather pic
 decision land. Audits LFS decision pending; no history rewrite. PR42 parked. GitHub step NONE.
 
 Ownership: OpenAI/Codex macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracking origin/openai/mac. Pre-batch signed HEAD3404e5d3:63 ahead upstream/174 ahead cached
-origin/develop, zero behind; final art/code/doc commit follows. Unrelated .DS_Store excluded.
+tracking origin/openai/mac. Pre-batch signed HEAD75a5c4a4:64 ahead upstream/175 ahead cached
+origin/develop, zero behind; proposed-kit/doc commit follows. Unrelated .DS_Store excluded.
 Reuse September12 startup receipt (Node26.8.2). Codex waits for art acceptance; Claude Code
 need not open/sync. Budget UNFROZEN/public assumption/private cap3000; zero hosted writes or
 attempts authorized. No PR now, no release/deployment. Local work is not in develop/main.
