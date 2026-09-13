@@ -42,16 +42,15 @@ Civet10.22139s clip at60.002fps/0.30ms p95 CPU update, but has a visible head/ne
 capture exceeds unchanged8%body-length compression bound. Procedural was not reached.
 C2 is NOT accepted. Static rest and sparse contacts did not prove moving shape.
 
-NEXT: stop per authorization's seam-gate failure condition. Auditsd1c9fbc4,implementation
-2ec4f4be. C2_BAND_UNDERLAPS_20260913/native-gates-01: rest0RGBAchange,38parts/2047x1589atlas
-pass. All23cutentries retain some positivepose-minus-rest seamdelta; sharedjointdiscs are
-not independent totals. Recoilhead1771→0,neck1473→912,jaw2350→1478; strikehead2010→1032.
-14pxneckgaprun exceeds2pxrim. Approachstrideextremes alsofail. No new10scapture, no subsequent
-fox/proceduralstep, no thirdmechanism. Master/masks/pivots/clips/8%bound/kit unchanged.
-16groupedbands cover23ancestorcuts;12nonancestoradjacencies are reported. Optionaldiscs
-replaced in candidate, originaldisc-onlycontrolretained. Cause of remainingfailures not yet
-established. RESULT.json and REVIEW_PROMPT.md provide exactread-onlyreviewscope; nativePNGs,
-oracleJSONs and sourcehashes retained. Acceptedfallback/foxcandidate01 remain.
+NEXT: pair-band amendment review imported verbatim3bc8db0c (102aheadupstream). Three
+authorizedchanges: unownedjoint→part ancestry, halfdescendantminboxsizecap, pairisolated
+seamoracle --disc=.06. C2_PAIR_BANDS_20260913/civet:29cuts,16bands,38parts,2039x2047atlas;
+exactly sixtrue siblings remainunbanded. OldcompositeFAIL kept. Same masks/pivots/poses/
+record/8%bound/kit. Native --pair-gates compares fullrest0RGBA, then eachpair's rest/recoil/
+strike/bothstrideextremes with its disc-onlycontrol. Pairbands exclude unrelated contributions
+from groupedruntimepatches. Stop firstleakingpair andreport; otherwise proceedCivet10scapture,
+thenfoxacceptedcandidate01 andprocedural throughsamegates/captures, no furtherscopestop.
+Declaration/atlas/source/authorizationreceipts retained. No Claude-owned source changed.
 
 C3 then original rights-recorded quadruped/Wild/battle/rain/fur48k24bitmono dry WAV +Opus/SHA,
 CONTRACTS1 names; first new sound class stops. Existing proof whoosh/ping is not C3. C4 library
@@ -60,7 +59,7 @@ CONTRACTS1 names; first new sound class stops. Existing proof whoosh/ping is not
 C5 prune then3merge-commit tiers to develop (UI,painted engine,research as tools), no newbranches.
 LFS migration only on Nick's explicit go. No PRReady until Civet/weather/phone decisions.
 
-Codex next: stop on failed band gate; Nick/Claude review remaining seams before further work. Claude next: review supplied
+Codex next: qualify corrected pair bands, capture only after every pair passes. Claude next: review supplied
 motion evidence if Nick requests; corrected producer is already consumed read-only, no app
 switch or routine sync needed. Fullsuite24preexistingfailures remain C5. Rootvalidate/focused
 checks required for this batch; no integrated chain. Signing has succeeded after the generic
