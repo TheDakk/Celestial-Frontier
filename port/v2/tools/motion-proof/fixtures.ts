@@ -1,0 +1,9 @@
+/* Shared fixture loader for the motion tests (not a test file). */
+import { readFileSync } from 'node:fs';
+import type { MotionGenomeFields, ResolvedAnatomyRecord } from '../../apps/game/src/motion/index.js';
+const PROOF = new URL('../../../../audits/CIVET_2D_PROOF_20260912/', import.meta.url);
+const read = <T>(rel: string): T => JSON.parse(readFileSync(new URL(rel, PROOF), 'utf8')) as T;
+export const civetRecord = (): ResolvedAnatomyRecord => read('civet.landmarks.json');
+export const foxRecord = (): ResolvedAnatomyRecord => read('fox.landmarks.json');
+export const proceduralRecord = (): ResolvedAnatomyRecord => read('captures/procedural-resolved-anatomy.json');
+export const proceduralGenome = (): MotionGenomeFields => read('procedural-genome.json');
