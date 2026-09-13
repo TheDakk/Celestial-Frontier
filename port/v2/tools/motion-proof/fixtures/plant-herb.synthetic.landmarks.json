@@ -1,0 +1,106 @@
+{
+  "kind": "plant-herb",
+  "identity": {
+    "speciesVisualKey": "synthetic:plant-herb",
+    "seed": 659720,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "plant-herb",
+    "version": 1
+  },
+  "family": "fern",
+  "geometry": {
+    "cutoutAssetHash": "synthetic-no-cutout",
+    "width": 1024,
+    "height": 1024,
+    "groundLineY": 0.9,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5,
+      0.9
+    ],
+    "stem0Seg0": [
+      0.54,
+      0.74
+    ],
+    "stem0Seg1": [
+      0.6,
+      0.58
+    ],
+    "stem0Seg2": [
+      0.68,
+      0.44
+    ],
+    "frond0": [
+      0.78,
+      0.36
+    ],
+    "stem1Seg0": [
+      0.46,
+      0.74
+    ],
+    "stem1Seg1": [
+      0.4,
+      0.58
+    ],
+    "stem1Seg2": [
+      0.32,
+      0.44
+    ],
+    "frond1": [
+      0.22,
+      0.36
+    ],
+    "stem2Seg0": [
+      0.52,
+      0.72
+    ],
+    "stem2Seg1": [
+      0.55,
+      0.54
+    ],
+    "stem2Seg2": [
+      0.58,
+      0.36
+    ],
+    "frond2": [
+      0.62,
+      0.24
+    ],
+    "stem3Seg0": [
+      0.48,
+      0.72
+    ],
+    "stem3Seg1": [
+      0.45,
+      0.54
+    ],
+    "stem3Seg2": [
+      0.42,
+      0.36
+    ],
+    "frond3": [
+      0.38,
+      0.24
+    ]
+  },
+  "materials": {
+    "surface": "slick and wet",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "plant-herb-v1"
+}

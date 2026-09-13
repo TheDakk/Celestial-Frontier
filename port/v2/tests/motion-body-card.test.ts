@@ -29,8 +29,9 @@ describe('motion templates: contracts with Codex-owned vocabularies', () => {
     expect(MASS_BY_SIZE_INDEX).toHaveLength(FA_SIZE.length);
   });
   it('labels unknown templates as the whole-portrait fallback', () => {
-    const f = resolveTemplate('serpent');
-    expect(isMotionFallback(f) && f.reason).toMatch(/serpent/);
+    // A11: serpent/hopper now have libraries; myriapod/primate are kit §4 names still without one.
+    const f = resolveTemplate('myriapod');
+    expect(isMotionFallback(f) && f.reason).toMatch(/myriapod/);
     expect(isMotionFallback(resolveTemplate('quadruped', 2))).toBe(true);
     expect(isMotionFallback(resolveTemplate('quadruped'))).toBe(false);
   });
@@ -101,12 +102,12 @@ describe('compileBodyCard', () => {
     expect(civet.notes.some((n) => /record surface .* wins over genome skin "translucent"/.test(n))).toBe(true);
   });
   it('refuses an unsupported template with a labelled fallback', () => {
-    const r = { ...civetRecord(), kind: 'serpent', template: { id: 'serpent', version: 1 } };
+    const r = { ...civetRecord(), kind: 'myriapod', template: { id: 'myriapod', version: 1 } };
     const e = refusal(() => compileBodyCard(r));
     expect(e.reason).toBe('unsupported-template');
-    expect(e.fallback).toMatchObject({ kind: 'whole-portrait', templateId: 'serpent' });
+    expect(e.fallback).toMatchObject({ kind: 'whole-portrait', templateId: 'myriapod' });
     expect(compileBodyCardOrFallback(r)).toMatchObject({ kind: 'whole-portrait' });
-    expect(refusal(() => compileBodyCard({ ...civetRecord(), kind: 'hopper' })).reason).toBe('unsupported-template');
+    expect(refusal(() => compileBodyCard({ ...civetRecord(), kind: 'primate' })).reason).toBe('unsupported-template');
   });
   it('refuses missing or malformed landmarks by name', () => {
     expect(refusal(() => compileBodyCard(withLandmark(civetRecord(), 'hindNearPaw', null)))).toMatchObject({ reason: 'missing-landmarks', message: /hindNearPaw/ });

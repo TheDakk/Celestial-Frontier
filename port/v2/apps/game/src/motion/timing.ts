@@ -27,6 +27,11 @@ export const ACTION_PHASES: Readonly<Record<string, readonly Phase[]>> = Object.
   return: [['walk', 380]],
   tame: [['approach', 260], ['lower', 200], ['settle', 180]],
   feed: [['down', 160], ['chew', 120], ['chew2', 120], ['up', 180]],
+  // A11 plant verbs (kit §4 names; durations are A11 defaults, not kit rows). `sway` loops on the seeded idle period.
+  sway: [['period', 3000]],
+  disturb: [['recoil', 120], ['settle', 260]],
+  harvest: [['shake', 180], ['detach', 90], ['settle', 220]],
+  grow: [['rise', 320], ['overshoot', 120], ['settle', 160]],
 });
 export const HITSTOP = Object.freeze({ baseMs: 70, capMs: 140 });
 export const FLASH = Object.freeze({ whiteFrames: 2, fadeMs: 120 });

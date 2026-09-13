@@ -52,23 +52,38 @@ export function materialFromSkinName(name: string): Material | null {
   if (/crystal/.test(n)) return 'crystalline';
   return null;
 }
+/** A11 chain-kind rules (kit §6): applied on top of the material when a chain declares its kind. Absent kind = material only (quadruped tails/ears). */
+export interface ChainRule { readonly lagS?: number; readonly overshoot?: number; readonly flutterS?: number; readonly quiverS?: number; readonly wobbleS?: number; }
+export const CHAIN_RULES: Readonly<Record<string, ChainRule>> = Object.freeze({
+  wing:    { flutterS: 0.06 },            // feathered flutter; rigid (chitinous) wings keep sharp stops
+  tailfan: { flutterS: 0.06 },
+  fin:     { lagS: 0.05, overshoot: 0.10 }, // fin lag, then the medium's damping
+  antenna: { quiverS: 0.04 },
+  frond:   { lagS: 0.05, overshoot: 0.15 }, // sway lag by segment base→tip
+  bell:    { wobbleS: 0.12, overshoot: 0.30 },
+  arm:     { lagS: 0.06 },
+  tail: {}, ear: {},
+});
 export interface SecondaryParams {
   readonly partId: string; readonly joint: string; readonly driver: string; readonly order: number;
   readonly lagMs: number; readonly overshoot: number; readonly damping: number;
   readonly squash: number; readonly stretch: number; readonly rigid: boolean;
   readonly quiverMs: number; readonly wobbleMs: number; readonly pulseMs: number;
+  readonly kind?: string; readonly flutterMs?: number;
 }
-export interface SecondaryPartInput { readonly id: string; readonly driver: string; readonly joints: readonly string[]; readonly material: Material; }
+export interface SecondaryPartInput { readonly id: string; readonly driver: string; readonly joints: readonly string[]; readonly material: Material; readonly kind?: string; }
 /** Per-joint lag/overshoot/squash parameters for one secondary chain. */
 export function secondaryParams(part: SecondaryPartInput, realm: Realm, luminous: boolean): SecondaryParams[] {
-  const rule = MATERIAL_RULES[part.material], medium = MEDIUM_RULES[realm];
+  const rule = MATERIAL_RULES[part.material], medium = MEDIUM_RULES[realm], chain = part.kind ? CHAIN_RULES[part.kind] ?? {} : null;
+  const lagS = chain && !rule.rigid ? chain.lagS ?? rule.lagS : rule.lagS, overshoot = chain && !rule.rigid ? chain.overshoot ?? rule.overshoot : rule.overshoot;
   return part.joints.map((joint, order) => ({
     partId: part.id, joint, driver: part.driver, order,
-    lagMs: rule.lagS * 1000 * (order + 1),
-    overshoot: rule.overshoot * (1 - order * 0.15),
+    lagMs: lagS * 1000 * (order + 1),
+    overshoot: overshoot * (1 - order * 0.15),
     damping: Math.min(1, rule.damping * medium.damping),
     squash: rule.squash, stretch: rule.stretch, rigid: rule.rigid,
-    quiverMs: (rule.quiverS ?? 0) * 1000, wobbleMs: (rule.wobbleS ?? 0) * 1000,
+    quiverMs: Math.max(rule.quiverS ?? 0, chain?.quiverS ?? 0) * 1000, wobbleMs: Math.max(rule.wobbleS ?? 0, chain?.wobbleS ?? 0) * 1000,
     pulseMs: luminous ? LUMINOUS_PULSE.idleMs : 0,
+    ...(chain ? { kind: part.kind, flutterMs: rule.flutter && chain.flutterS ? chain.flutterS * 1000 : 0 } : {}),
   }));
 }

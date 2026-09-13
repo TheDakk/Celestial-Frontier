@@ -1,0 +1,503 @@
+{
+ "kind": "body-card",
+ "identity": {
+  "speciesVisualKey": "synthetic:biped-bird",
+  "seed": 659713,
+  "ownerId": "synthetic:a11-fixture",
+  "earthName": null
+ },
+ "recipeHash": null,
+ "template": {
+  "id": "biped-bird",
+  "version": 1,
+  "clipSetId": "biped-bird-v1"
+ },
+ "massClass": {
+  "name": "medium",
+  "multiplier": 1
+ },
+ "locomotion": {
+  "loco": "gliders",
+  "gait": "glide",
+  "templateGait": "flight"
+ },
+ "realm": "aerial",
+ "materials": {
+  "body": "feathered",
+  "head": "feathered",
+  "legs": "feathered",
+  "tail": "feathered",
+  "ears": "feathered",
+  "wings": "feathered",
+  "fins": "feathered",
+  "antennae": "feathered",
+  "fronds": "feathered",
+  "arms": "feathered"
+ },
+ "parts": [
+  {
+   "joint": "pelvis",
+   "parent": "root",
+   "group": "body",
+   "pivot": [
+    0.46,
+    0.48
+   ],
+   "tip": [
+    0.42,
+    0.5
+   ],
+   "boneLength": 0.044721359549995836
+  },
+  {
+   "joint": "spine",
+   "parent": "pelvis",
+   "group": "body",
+   "pivot": [
+    0.42,
+    0.5
+   ],
+   "tip": [
+    0.5,
+    0.47
+   ],
+   "boneLength": 0.08544003745317534
+  },
+  {
+   "joint": "chest",
+   "parent": "spine",
+   "group": "body",
+   "pivot": [
+    0.5,
+    0.47
+   ],
+   "tip": [
+    0.58,
+    0.45
+   ],
+   "boneLength": 0.08246211251235315
+  },
+  {
+   "joint": "neck0",
+   "parent": "chest",
+   "group": "head",
+   "pivot": [
+    0.58,
+    0.45
+   ],
+   "tip": [
+    0.64,
+    0.38
+   ],
+   "boneLength": 0.09219544457292891
+  },
+  {
+   "joint": "neck1",
+   "parent": "neck0",
+   "group": "head",
+   "pivot": [
+    0.64,
+    0.38
+   ],
+   "tip": [
+    0.68,
+    0.3
+   ],
+   "boneLength": 0.08944271909999163
+  },
+  {
+   "joint": "head",
+   "parent": "neck1",
+   "group": "head",
+   "pivot": [
+    0.68,
+    0.3
+   ],
+   "tip": [
+    0.72,
+    0.24
+   ],
+   "boneLength": 0.07211102550927974
+  },
+  {
+   "joint": "beak",
+   "parent": "head",
+   "group": "head",
+   "pivot": [
+    0.72,
+    0.24
+   ],
+   "tip": [
+    0.8,
+    0.25
+   ],
+   "boneLength": 0.08062257748298557
+  },
+  {
+   "joint": "legFarKnee",
+   "parent": "pelvis",
+   "group": "legs",
+   "pivot": [
+    0.42,
+    0.5
+   ],
+   "tip": [
+    0.42,
+    0.62
+   ],
+   "boneLength": 0.12
+  },
+  {
+   "joint": "legFarAnkle",
+   "parent": "legFarKnee",
+   "group": "legs",
+   "pivot": [
+    0.42,
+    0.62
+   ],
+   "tip": [
+    0.38,
+    0.74
+   ],
+   "boneLength": 0.12649110640673514
+  },
+  {
+   "joint": "legFarFoot",
+   "parent": "legFarAnkle",
+   "group": "legs",
+   "pivot": [
+    0.38,
+    0.74
+   ],
+   "tip": [
+    0.46,
+    0.85
+   ],
+   "boneLength": 0.13601470508735444
+  },
+  {
+   "joint": "legNearKnee",
+   "parent": "pelvis",
+   "group": "legs",
+   "pivot": [
+    0.42,
+    0.5
+   ],
+   "tip": [
+    0.44,
+    0.64
+   ],
+   "boneLength": 0.14142135623730953
+  },
+  {
+   "joint": "legNearAnkle",
+   "parent": "legNearKnee",
+   "group": "legs",
+   "pivot": [
+    0.44,
+    0.64
+   ],
+   "tip": [
+    0.4,
+    0.76
+   ],
+   "boneLength": 0.12649110640673514
+  },
+  {
+   "joint": "legNearFoot",
+   "parent": "legNearAnkle",
+   "group": "legs",
+   "pivot": [
+    0.4,
+    0.76
+   ],
+   "tip": [
+    0.48,
+    0.87
+   ],
+   "boneLength": 0.1360147050873544
+  },
+  {
+   "joint": "wingFarRoot",
+   "parent": "chest",
+   "group": "wings",
+   "pivot": [
+    0.58,
+    0.45
+   ],
+   "tip": [
+    0.52,
+    0.42
+   ],
+   "boneLength": 0.06708203932499365
+  },
+  {
+   "joint": "wingFarTip",
+   "parent": "wingFarRoot",
+   "group": "wings",
+   "pivot": [
+    0.52,
+    0.42
+   ],
+   "tip": [
+    0.32,
+    0.4
+   ],
+   "boneLength": 0.2009975124224178
+  },
+  {
+   "joint": "wingNearRoot",
+   "parent": "chest",
+   "group": "wings",
+   "pivot": [
+    0.58,
+    0.45
+   ],
+   "tip": [
+    0.54,
+    0.44
+   ],
+   "boneLength": 0.04123105625617654
+  },
+  {
+   "joint": "wingNearTip",
+   "parent": "wingNearRoot",
+   "group": "wings",
+   "pivot": [
+    0.54,
+    0.44
+   ],
+   "tip": [
+    0.34,
+    0.42
+   ],
+   "boneLength": 0.2009975124224178
+  },
+  {
+   "joint": "tailFan",
+   "parent": "pelvis",
+   "group": "tail",
+   "pivot": [
+    0.42,
+    0.5
+   ],
+   "tip": [
+    0.3,
+    0.52
+   ],
+   "boneLength": 0.1216552506059644
+  }
+ ],
+ "secondaryParts": [
+  {
+   "id": "wingFar",
+   "driver": "chest",
+   "joints": [
+    "wingFarRoot",
+    "wingFarTip"
+   ],
+   "lagOrder": [
+    0,
+    1
+   ],
+   "material": "feathered",
+   "kind": "wing"
+  },
+  {
+   "id": "wingNear",
+   "driver": "chest",
+   "joints": [
+    "wingNearRoot",
+    "wingNearTip"
+   ],
+   "lagOrder": [
+    0,
+    1
+   ],
+   "material": "feathered",
+   "kind": "wing"
+  },
+  {
+   "id": "tailFan",
+   "driver": "pelvis",
+   "joints": [
+    "tailFan"
+   ],
+   "lagOrder": [
+    0
+   ],
+   "material": "feathered",
+   "kind": "tailfan"
+  }
+ ],
+ "weapons": [
+  "peck",
+  "claw"
+ ],
+ "luminous": false,
+ "bodyLength": 0.16763054614240208,
+ "groundLineY": 0.85,
+ "landmarks": {
+  "root": [
+   0.46,
+   0.48
+  ],
+  "pelvis": [
+   0.42,
+   0.5
+  ],
+  "spine": [
+   0.5,
+   0.47
+  ],
+  "chest": [
+   0.58,
+   0.45
+  ],
+  "neck0": [
+   0.64,
+   0.38
+  ],
+  "neck1": [
+   0.68,
+   0.3
+  ],
+  "head": [
+   0.72,
+   0.24
+  ],
+  "beak": [
+   0.8,
+   0.25
+  ],
+  "legFarKnee": [
+   0.42,
+   0.62
+  ],
+  "legFarAnkle": [
+   0.38,
+   0.74
+  ],
+  "legFarFoot": [
+   0.46,
+   0.85
+  ],
+  "legNearKnee": [
+   0.44,
+   0.64
+  ],
+  "legNearAnkle": [
+   0.4,
+   0.76
+  ],
+  "legNearFoot": [
+   0.48,
+   0.87
+  ],
+  "wingFarRoot": [
+   0.52,
+   0.42
+  ],
+  "wingFarTip": [
+   0.32,
+   0.4
+  ],
+  "wingNearRoot": [
+   0.54,
+   0.44
+  ],
+  "wingNearTip": [
+   0.34,
+   0.42
+  ],
+  "tailFan": [
+   0.3,
+   0.52
+  ]
+ },
+ "bounds": {
+  "inside": true,
+  "clamped": [],
+  "limitsDeg": {
+   "root": {
+    "min": -25,
+    "max": 25
+   },
+   "pelvis": {
+    "min": -20,
+    "max": 20
+   },
+   "spine": {
+    "min": -25,
+    "max": 25
+   },
+   "chest": {
+    "min": -20,
+    "max": 20
+   },
+   "neck0": {
+    "min": -45,
+    "max": 45
+   },
+   "neck1": {
+    "min": -45,
+    "max": 45
+   },
+   "head": {
+    "min": -40,
+    "max": 40
+   },
+   "beak": {
+    "min": -30,
+    "max": 5
+   },
+   "legFarKnee": {
+    "min": -70,
+    "max": 70
+   },
+   "legFarAnkle": {
+    "min": -85,
+    "max": 85
+   },
+   "legFarFoot": {
+    "min": -45,
+    "max": 45
+   },
+   "legNearKnee": {
+    "min": -70,
+    "max": 70
+   },
+   "legNearAnkle": {
+    "min": -85,
+    "max": 85
+   },
+   "legNearFoot": {
+    "min": -45,
+    "max": 45
+   },
+   "wingFarRoot": {
+    "min": -60,
+    "max": 95
+   },
+   "wingFarTip": {
+    "min": -70,
+    "max": 70
+   },
+   "wingNearRoot": {
+    "min": -60,
+    "max": 95
+   },
+   "wingNearTip": {
+    "min": -70,
+    "max": 70
+   },
+   "tailFan": {
+    "min": -40,
+    "max": 40
+   }
+  }
+ },
+ "notes": [
+  "gait \"glide\" has no biped-bird approach; using flight"
+ ]
+}

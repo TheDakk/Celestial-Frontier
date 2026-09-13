@@ -1,0 +1,543 @@
+{
+ "kind": "body-card",
+ "identity": {
+  "speciesVisualKey": "synthetic:arachnid",
+  "seed": 659717,
+  "ownerId": "synthetic:a11-fixture",
+  "earthName": null
+ },
+ "recipeHash": null,
+ "template": {
+  "id": "arachnid",
+  "version": 1,
+  "clipSetId": "arachnid-v1"
+ },
+ "massClass": {
+  "name": "medium",
+  "multiplier": 1
+ },
+ "locomotion": {
+  "loco": "wall-clingers",
+  "gait": "cling-crawl",
+  "templateGait": "scuttle"
+ },
+ "realm": "land",
+ "materials": {
+  "body": "chitinous",
+  "head": "chitinous",
+  "legs": "chitinous",
+  "tail": "chitinous",
+  "ears": "chitinous",
+  "wings": "chitinous",
+  "fins": "chitinous",
+  "antennae": "chitinous",
+  "fronds": "chitinous",
+  "arms": "chitinous"
+ },
+ "parts": [
+  {
+   "joint": "cephalothorax",
+   "parent": "root",
+   "group": "body",
+   "pivot": [
+    0.5,
+    0.55
+   ],
+   "tip": [
+    0.56,
+    0.54
+   ],
+   "boneLength": 0.06082762530298224
+  },
+  {
+   "joint": "abdomen",
+   "parent": "cephalothorax",
+   "group": "tail",
+   "pivot": [
+    0.56,
+    0.54
+   ],
+   "tip": [
+    0.4,
+    0.56
+   ],
+   "boneLength": 0.16124515496597103
+  },
+  {
+   "joint": "sting",
+   "parent": "abdomen",
+   "group": "tail",
+   "pivot": [
+    0.4,
+    0.56
+   ],
+   "tip": [
+    0.3,
+    0.5
+   ],
+   "boneLength": 0.11661903789690606
+  },
+  {
+   "joint": "cheliceraFar",
+   "parent": "cephalothorax",
+   "group": "head",
+   "pivot": [
+    0.56,
+    0.54
+   ],
+   "tip": [
+    0.64,
+    0.58
+   ],
+   "boneLength": 0.08944271909999152
+  },
+  {
+   "joint": "cheliceraNear",
+   "parent": "cephalothorax",
+   "group": "head",
+   "pivot": [
+    0.56,
+    0.54
+   ],
+   "tip": [
+    0.66,
+    0.6
+   ],
+   "boneLength": 0.11661903789690595
+  },
+  {
+   "joint": "leg1FarKnee",
+   "parent": "cephalothorax",
+   "group": "legs",
+   "pivot": [
+    0.56,
+    0.54
+   ],
+   "tip": [
+    0.68,
+    0.48
+   ],
+   "boneLength": 0.13416407864998742
+  },
+  {
+   "joint": "leg1FarFoot",
+   "parent": "leg1FarKnee",
+   "group": "legs",
+   "pivot": [
+    0.68,
+    0.48
+   ],
+   "tip": [
+    0.76,
+    0.7
+   ],
+   "boneLength": 0.23409399821439247
+  },
+  {
+   "joint": "leg1NearKnee",
+   "parent": "cephalothorax",
+   "group": "legs",
+   "pivot": [
+    0.56,
+    0.54
+   ],
+   "tip": [
+    0.7,
+    0.5
+   ],
+   "boneLength": 0.1456021977856103
+  },
+  {
+   "joint": "leg1NearFoot",
+   "parent": "leg1NearKnee",
+   "group": "legs",
+   "pivot": [
+    0.7,
+    0.5
+   ],
+   "tip": [
+    0.78,
+    0.72
+   ],
+   "boneLength": 0.23409399821439247
+  },
+  {
+   "joint": "leg2FarKnee",
+   "parent": "cephalothorax",
+   "group": "legs",
+   "pivot": [
+    0.56,
+    0.54
+   ],
+   "tip": [
+    0.62,
+    0.44
+   ],
+   "boneLength": 0.11661903789690602
+  },
+  {
+   "joint": "leg2FarFoot",
+   "parent": "leg2FarKnee",
+   "group": "legs",
+   "pivot": [
+    0.62,
+    0.44
+   ],
+   "tip": [
+    0.68,
+    0.72
+   ],
+   "boneLength": 0.286356421265527
+  },
+  {
+   "joint": "leg2NearKnee",
+   "parent": "cephalothorax",
+   "group": "legs",
+   "pivot": [
+    0.56,
+    0.54
+   ],
+   "tip": [
+    0.64,
+    0.46
+   ],
+   "boneLength": 0.11313708498984758
+  },
+  {
+   "joint": "leg2NearFoot",
+   "parent": "leg2NearKnee",
+   "group": "legs",
+   "pivot": [
+    0.64,
+    0.46
+   ],
+   "tip": [
+    0.7,
+    0.74
+   ],
+   "boneLength": 0.286356421265527
+  },
+  {
+   "joint": "leg3FarKnee",
+   "parent": "cephalothorax",
+   "group": "legs",
+   "pivot": [
+    0.56,
+    0.54
+   ],
+   "tip": [
+    0.5,
+    0.44
+   ],
+   "boneLength": 0.11661903789690606
+  },
+  {
+   "joint": "leg3FarFoot",
+   "parent": "leg3FarKnee",
+   "group": "legs",
+   "pivot": [
+    0.5,
+    0.44
+   ],
+   "tip": [
+    0.44,
+    0.72
+   ],
+   "boneLength": 0.286356421265527
+  },
+  {
+   "joint": "leg3NearKnee",
+   "parent": "cephalothorax",
+   "group": "legs",
+   "pivot": [
+    0.56,
+    0.54
+   ],
+   "tip": [
+    0.52,
+    0.46
+   ],
+   "boneLength": 0.08944271909999163
+  },
+  {
+   "joint": "leg3NearFoot",
+   "parent": "leg3NearKnee",
+   "group": "legs",
+   "pivot": [
+    0.52,
+    0.46
+   ],
+   "tip": [
+    0.46,
+    0.74
+   ],
+   "boneLength": 0.286356421265527
+  },
+  {
+   "joint": "leg4FarKnee",
+   "parent": "cephalothorax",
+   "group": "legs",
+   "pivot": [
+    0.56,
+    0.54
+   ],
+   "tip": [
+    0.44,
+    0.5
+   ],
+   "boneLength": 0.12649110640673522
+  },
+  {
+   "joint": "leg4FarFoot",
+   "parent": "leg4FarKnee",
+   "group": "legs",
+   "pivot": [
+    0.44,
+    0.5
+   ],
+   "tip": [
+    0.34,
+    0.74
+   ],
+   "boneLength": 0.25999999999999995
+  },
+  {
+   "joint": "leg4NearKnee",
+   "parent": "cephalothorax",
+   "group": "legs",
+   "pivot": [
+    0.56,
+    0.54
+   ],
+   "tip": [
+    0.46,
+    0.52
+   ],
+   "boneLength": 0.10198039027185574
+  },
+  {
+   "joint": "leg4NearFoot",
+   "parent": "leg4NearKnee",
+   "group": "legs",
+   "pivot": [
+    0.46,
+    0.52
+   ],
+   "tip": [
+    0.36,
+    0.76
+   ],
+   "boneLength": 0.25999999999999995
+  }
+ ],
+ "secondaryParts": [
+  {
+   "id": "abdomen",
+   "driver": "cephalothorax",
+   "joints": [
+    "abdomen",
+    "sting"
+   ],
+   "lagOrder": [
+    0,
+    1
+   ],
+   "material": "chitinous",
+   "kind": "tail"
+  }
+ ],
+ "weapons": [
+  "sting",
+  "bite"
+ ],
+ "luminous": false,
+ "bodyLength": 0.16124515496597103,
+ "groundLineY": 0.74,
+ "landmarks": {
+  "root": [
+   0.5,
+   0.55
+  ],
+  "cephalothorax": [
+   0.56,
+   0.54
+  ],
+  "abdomen": [
+   0.4,
+   0.56
+  ],
+  "sting": [
+   0.3,
+   0.5
+  ],
+  "cheliceraFar": [
+   0.64,
+   0.58
+  ],
+  "cheliceraNear": [
+   0.66,
+   0.6
+  ],
+  "leg1FarKnee": [
+   0.68,
+   0.48
+  ],
+  "leg1FarFoot": [
+   0.76,
+   0.7
+  ],
+  "leg1NearKnee": [
+   0.7,
+   0.5
+  ],
+  "leg1NearFoot": [
+   0.78,
+   0.72
+  ],
+  "leg2FarKnee": [
+   0.62,
+   0.44
+  ],
+  "leg2FarFoot": [
+   0.68,
+   0.72
+  ],
+  "leg2NearKnee": [
+   0.64,
+   0.46
+  ],
+  "leg2NearFoot": [
+   0.7,
+   0.74
+  ],
+  "leg3FarKnee": [
+   0.5,
+   0.44
+  ],
+  "leg3FarFoot": [
+   0.44,
+   0.72
+  ],
+  "leg3NearKnee": [
+   0.52,
+   0.46
+  ],
+  "leg3NearFoot": [
+   0.46,
+   0.74
+  ],
+  "leg4FarKnee": [
+   0.44,
+   0.5
+  ],
+  "leg4FarFoot": [
+   0.34,
+   0.74
+  ],
+  "leg4NearKnee": [
+   0.46,
+   0.52
+  ],
+  "leg4NearFoot": [
+   0.36,
+   0.76
+  ]
+ },
+ "bounds": {
+  "inside": true,
+  "clamped": [],
+  "limitsDeg": {
+   "root": {
+    "min": -25,
+    "max": 25
+   },
+   "cephalothorax": {
+    "min": -15,
+    "max": 15
+   },
+   "abdomen": {
+    "min": -35,
+    "max": 65
+   },
+   "sting": {
+    "min": -70,
+    "max": 70
+   },
+   "cheliceraFar": {
+    "min": -45,
+    "max": 45
+   },
+   "cheliceraNear": {
+    "min": -45,
+    "max": 45
+   },
+   "leg1FarKnee": {
+    "min": -65,
+    "max": 65
+   },
+   "leg1FarFoot": {
+    "min": -75,
+    "max": 75
+   },
+   "leg1NearKnee": {
+    "min": -65,
+    "max": 65
+   },
+   "leg1NearFoot": {
+    "min": -75,
+    "max": 75
+   },
+   "leg2FarKnee": {
+    "min": -65,
+    "max": 65
+   },
+   "leg2FarFoot": {
+    "min": -75,
+    "max": 75
+   },
+   "leg2NearKnee": {
+    "min": -65,
+    "max": 65
+   },
+   "leg2NearFoot": {
+    "min": -75,
+    "max": 75
+   },
+   "leg3FarKnee": {
+    "min": -65,
+    "max": 65
+   },
+   "leg3FarFoot": {
+    "min": -75,
+    "max": 75
+   },
+   "leg3NearKnee": {
+    "min": -65,
+    "max": 65
+   },
+   "leg3NearFoot": {
+    "min": -75,
+    "max": 75
+   },
+   "leg4FarKnee": {
+    "min": -65,
+    "max": 65
+   },
+   "leg4FarFoot": {
+    "min": -75,
+    "max": 75
+   },
+   "leg4NearKnee": {
+    "min": -65,
+    "max": 65
+   },
+   "leg4NearFoot": {
+    "min": -75,
+    "max": 75
+   }
+  }
+ },
+ "notes": [
+  "gait \"cling-crawl\" has no arachnid approach; using scuttle"
+ ]
+}

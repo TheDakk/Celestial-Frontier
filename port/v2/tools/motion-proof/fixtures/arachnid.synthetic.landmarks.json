@@ -1,0 +1,126 @@
+{
+  "kind": "arachnid",
+  "identity": {
+    "speciesVisualKey": "synthetic:arachnid",
+    "seed": 659717,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "arachnid",
+    "version": 1
+  },
+  "family": "arachnid",
+  "geometry": {
+    "cutoutAssetHash": "synthetic-no-cutout",
+    "width": 1024,
+    "height": 1024,
+    "groundLineY": 0.74,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5,
+      0.55
+    ],
+    "cephalothorax": [
+      0.56,
+      0.54
+    ],
+    "abdomen": [
+      0.4,
+      0.56
+    ],
+    "sting": [
+      0.3,
+      0.5
+    ],
+    "leg1FarKnee": [
+      0.68,
+      0.48
+    ],
+    "leg1FarFoot": [
+      0.76,
+      0.7
+    ],
+    "leg2FarKnee": [
+      0.62,
+      0.44
+    ],
+    "leg2FarFoot": [
+      0.68,
+      0.72
+    ],
+    "leg3FarKnee": [
+      0.5,
+      0.44
+    ],
+    "leg3FarFoot": [
+      0.44,
+      0.72
+    ],
+    "leg4FarKnee": [
+      0.44,
+      0.5
+    ],
+    "leg4FarFoot": [
+      0.34,
+      0.74
+    ],
+    "cheliceraFar": [
+      0.64,
+      0.58
+    ],
+    "leg1NearKnee": [
+      0.7,
+      0.5
+    ],
+    "leg1NearFoot": [
+      0.78,
+      0.72
+    ],
+    "leg2NearKnee": [
+      0.64,
+      0.46
+    ],
+    "leg2NearFoot": [
+      0.7,
+      0.74
+    ],
+    "leg3NearKnee": [
+      0.52,
+      0.46
+    ],
+    "leg3NearFoot": [
+      0.46,
+      0.74
+    ],
+    "leg4NearKnee": [
+      0.46,
+      0.52
+    ],
+    "leg4NearFoot": [
+      0.36,
+      0.76
+    ],
+    "cheliceraNear": [
+      0.66,
+      0.6
+    ]
+  },
+  "materials": {
+    "surface": "chitinous",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "arachnid-v1"
+}
