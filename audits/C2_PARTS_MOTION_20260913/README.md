@@ -27,3 +27,10 @@ export is `parseEffectSequenceAnchors`, returning `{ok, anchors}` or a refusal. 
 uses that real API and rejects its named refusal; browser bundle resolves successfully. No
 producer source changed. Signing returned a 1Password agent error; this does not establish a
 locked app. Git uses op-ssh-sign; its executable and agent sockets exist. Nick reports unlocked.
+
+Native proof-01 on200e5d17 passed all3contact admissions (maximum constrained error below
+3e-13px; bypassed solver drifts11.14/9.99/10.21px). Capture stopped before media recording:
+proof harness called initAudio without required sndOn/sfxVol providers. Corrected to the
+existing isolated-proof options (sound on,volume.35). No audio-owner/game/kit change. Failed
+report and first Civet plan retained. Next run proof-02 uses corrected committed harness;
+no motion image acceptance or encoded video claimed for proof-01.

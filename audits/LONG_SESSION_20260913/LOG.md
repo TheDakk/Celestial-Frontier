@@ -100,3 +100,10 @@ curves on every creature. Captures contain an outgoing and incoming turn beside 
 seeded Pixi8 effects,240msimpacthold,kit choreography. Existing whoosh/ping only; C3 pending.
 Native first run is NEW audits/C2_PARTS_MOTION_20260913/proof-01 after commit. All failures kept;
 no automatic retry, no kit/main.ts/GitHub edit. Stop at ten-second captures for Nick's eye.
+
+Native proof-01 on200e5d17 passed all3contact admissions (maximum constrained error below
+3e-13px; bypassed solver drifts11.14/9.99/10.21px). Capture stopped before media recording:
+proof harness called initAudio without required sndOn/sfxVol providers. Corrected to the
+existing isolated-proof options (sound on,volume.35). No audio-owner/game/kit change. Failed
+report and first Civet plan retained. Next run proof-02 uses corrected committed harness;
+no motion image acceptance or encoded video claimed for proof-01.
