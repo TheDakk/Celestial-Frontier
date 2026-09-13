@@ -10157,6 +10157,9 @@ function smokeResumeSettingsPersistence(): Readonly<{
   });
 }
 const productActionCoordinator = createProductActionCoordinator();
+/* K20: deferred notices drain when the receipt-bearing action settles, not only
+   inside a later checkpoint. Every settle site clears productActionInFlight first. */
+productActionCoordinator.bindSettleHook(() => notificationHistory.flushPending());
 const smokeProductActionHold = __CF_EVIDENCE_BUILD__
   ? createProductActionDiagnosticHold() : inactiveEvidenceHold;
 let arc9ProgressionRefreshQueued = false;

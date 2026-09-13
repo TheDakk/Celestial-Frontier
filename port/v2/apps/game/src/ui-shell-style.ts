@@ -26,7 +26,9 @@ export const UI_SHELL_CSS = `
 #objchip{grid-column:2;grid-row:2;justify-self:end;position:static;inset:auto;z-index:auto;display:block;margin:0;padding:8px 11px;font-size:10.5px;letter-spacing:.01em;line-height:1.45;color:#f0cf8a;width:max-content;max-width:min(236px,100%);box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;border:1px solid rgba(255,207,138,.48);border-radius:22px;background:rgba(10,16,30,.94);pointer-events:auto;min-width:44px;min-height:44px;font-family:var(--ui);font-weight:400;text-align:left;cursor:pointer;touch-action:manipulation}
 #objchip::before{content:'Objective';display:block;margin-bottom:2px;font-size:8px;line-height:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#d4be97}
 #objchip:empty{display:none}#objchip .prog{color:#7ec8f0;font-weight:600;white-space:nowrap}
-body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
+/* K21: #objchip is the only Charters opener; it stays reachable while a card or
+   panel is open. Only the hidden trail yields to open surfaces. */
+body:is(.card-open,.panel-open) #trail{display:none}
 #ctxbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 64px);width:max-content;max-width:min(620px,90vw);text-align:center;pointer-events:none;z-index:var(--cf-layer-caption);box-sizing:border-box;padding:0;border:0;background:rgba(10,16,30,.94);border-radius:0;font-size:12.5px;line-height:1.5;color:var(--dim);text-shadow:0 1px 12px #000c}
 #hintpill{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 18px);z-index:var(--cf-layer-caption);pointer-events:none;font-size:11px;line-height:1.5;letter-spacing:.04em;color:var(--dim);padding:0;border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;text-align:center;text-shadow:0 1px 3px #000,0 0 8px #000;-webkit-text-stroke:2px #000;paint-order:stroke fill;white-space:normal;max-width:min(620px,90vw);width:max-content;box-sizing:border-box}
 #hintpill .kw{color:#7ec8f0;font-weight:600}
@@ -89,14 +91,17 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   body.fs-lg #dock .prime-count{font-size:9px!important}body.fs-xl #dock .prime-count{font-size:10px!important}
 }
 @media(max-width:900px) and (orientation:landscape){
-  body.panel-open #topbar{top:calc(var(--safe-top) + 6px);left:auto;right:calc(var(--safe-right) + 12px);bottom:auto;width:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);padding:0;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:6px;background:none;visibility:visible}
+  body.panel-open #topbar{top:calc(var(--safe-top) + 6px);left:auto;right:calc(var(--safe-right) + 12px);bottom:auto;width:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);padding:0;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;gap:6px;background:none;visibility:visible}
   body.panel-open #dockinventory{grid-column:1;grid-row:1}
   body.panel-open #searchbox{grid-column:1;grid-row:2;justify-self:stretch;width:100%;max-width:none}
+  body.panel-open #objchip{grid-column:1;grid-row:3;justify-self:stretch;width:100%;max-width:none}
   body.panel-open #hpbar{display:none}
   body.panel-open #dock{left:auto;right:calc(var(--safe-right) + 12px);transform:none;width:min(320px,calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2))}
 }
+/* K19: desktop panel anchors are owned by UI_SHEET_CSS later in the same sheet
+   (equal specificity, later wins); only the toast's right edge is owned here. */
 @media(min-width:901px){
-  #setpanel,#recpanel,#shipyardpanel,#inventorypanel,#combatpanel,#toast{right:calc(var(--safe-right) + 16px);bottom:calc(var(--safe-bottom) + var(--dock-h) + 24px)}
+  #toast{right:calc(var(--safe-right) + 16px)}
 }
 @media(max-width:${UI_PRESENTATION_PHONE_MAX}px),(pointer:coarse){#searchbox,body.fs-lg #searchbox{font-size:16px!important}body.fs-xl #searchbox{font-size:17px!important}}
 body.fs-lg #sceneactions button{font-size:13px}body.fs-xl #sceneactions button{font-size:15px}

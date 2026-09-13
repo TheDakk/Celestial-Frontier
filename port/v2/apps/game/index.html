@@ -16,6 +16,9 @@
       --safe-bottom: env(safe-area-inset-bottom, 0px);
       --safe-left: env(safe-area-inset-left, 0px);
       --ink: #e9edff; --dim: #b8c7df; --faint: #91a8ca; --emph: inherit;
+      /* K24: the boot font is defined before main.ts evaluates so the first
+         paint never falls back to serif. Must equal ui-presentation-tokens.ts. */
+      --ui: Inter,system-ui,-apple-system,sans-serif;
     }
     html, body { margin: 0; height: 100%; background: #05070d; overflow: hidden;
       font: 13px/1.5 var(--ui); color: var(--ink);

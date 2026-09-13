@@ -46,6 +46,7 @@ import {
   type CombatSettlementOutcomeV1,
   type CombatSettlementPlanV1,
   type PlayerSettlementChampionV1,
+  FRONTIER_RESOLVE_ABILITY_V1, PLAYER_COMBAT_HEX_V1,
 } from '@cf/domain-combatcore';
 import {
   isWorldOpportunitySnapshot,
@@ -512,13 +513,9 @@ function playerStatsFrom(state: SaveStateV2): BattleStats {
     vit, fer, res, agi, ins,
     tier: Math.max(0, Math.min(14, Math.floor((total - 250) / 130))),
     total,
-    hex: '#ffcf8a',
+    hex: PLAYER_COMBAT_HEX_V1,
     name: state.explorerName || 'You',
-    ab: Object.freeze({
-      id: 'resolve', n: 'Frontier Resolve',
-      d: 'Hardened by the void — recovers each round and shrugs off blows',
-      regen: 0.04, taken: 0.9,
-    }),
+    ab: Object.freeze({ ...FRONTIER_RESOLVE_ABILITY_V1 }),
   }) as unknown as BattleStats;
 }
 
