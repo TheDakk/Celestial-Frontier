@@ -1,5 +1,12 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**C2 runtime progress, September13:** [creature-rig.ts](port/v2/apps/game/src/creature-rig.ts)
+loads hash-bound part atlases and applies the record-joint CreatureRigV1/PoseTarget vocabulary
+using inherited affine transforms and actual Pixi objects. Five negative-controlled tests,
+TypeScript/root validation and pinned-atlas controls pass; 40-part CPU update budget passes.
+[Evidence and remaining masks/patches/captures](audits/C2_RIG_RUNTIME_20260913/README.md).
+Independent C2 coding continues while C1 images are reviewed; staging is the visual gate.
+
 **Pack2 / material observer, September13:** CONTRACTS.md§§2/5/6 fixes C2's joint vocabulary
 and Claude engine surfaces. The observer now reports the selected alien skin before its coat
 fallback, matching actual paint routing; named Earth anatomy and draw commands unchanged.
