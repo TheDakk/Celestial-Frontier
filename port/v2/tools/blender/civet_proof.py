@@ -1,7 +1,7 @@
 """Bounded Civet master/clip proof. Shared tissue/weight primitives, exact Civet phenotype.
 Editable output stays outside Git; never substitutes Wolf anatomy or installs runtime art.
 """
-import sys, json, math, hashlib, argparse
+import sys, json, math, hashlib, argparse, bisect
 from pathlib import Path
 import bpy
 from mathutils import Vector
@@ -24,6 +24,11 @@ def main():
     # The current named owner supplies fixed canonical proportions. Gene variation is
     # intentionally not invented for this pure named animal; family bounds remain future work.
     p.update(bodyW=p['right']-p['left'],bodyH=p['bodyBottom']-p['rumpTop'],legLen=p['groundY']-p['bodyBottom'],earH=p['headRy']*.68,tailLen=.257,tailW=.060,tipX=.055,tipY=p['groundY']-.080)
+    # Authored reference calibration within the named Civet body plan. Source proportions
+    # remain recorded unchanged; these are explicit rig calibration, not genome mutations.
+    calibration={'muzzleLength':.68,'torsoDepth':.84,'headRadius':1.12}
+    p['muzzleLen']*=calibration['muzzleLength'];p['bodyH']*=calibration['torsoDepth']
+    p['headRx']*=calibration['headRadius'];p['headRy']*=calibration['headRadius']
     bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
     coll=bpy.data.collections.new('CF_CivetProof');bpy.context.scene.collection.children.link(coll)
     parts,bones,paws=tissue.organism(p,coll)
@@ -38,6 +43,24 @@ def main():
     skin['speciesVisualKey']=phen['speciesVisualKey'];rig['speciesVisualKey']=phen['speciesVisualKey']
     # Three-view projection UVs use the finisher-painted turnaround as one texture atlas.
     # Same scale/front-left-side-back layout, no isolated image parts used as a fake rig.
+    texture=bpy.data.images.load(str(Path(a.texture).resolve()))
+    iw,ih=texture.size;pixels=list(texture.pixels)
+    columns=[]
+    for x in range(iw):
+        valid=[]
+        for y in range(ih):
+            k=((ih-1-y)*iw+x)*4;r,gc,b=pixels[k:k+3]
+            if not(r>.60 and b>.60 and gc<.30):valid.append(y)
+        columns.append(valid)
+    def texture_point(u,y,lo,hi):
+        x=max(lo,min(hi,int(u/1774*iw)));ys=columns[x]
+        if not ys:raise ValueError('Projection column has no creature texels')
+        target=y/887*ih;at=bisect.bisect_left(ys,target)
+        picked=min(ys[max(0,at-1):min(len(ys),at+1)],key=lambda yy:abs(yy-target))
+        # Move border samples inward to avoid bilinear filtering of the magenta key.
+        if picked==ys[0]:picked=ys[min(4,len(ys)-1)]
+        if picked==ys[-1]:picked=ys[max(0,len(ys)-5)]
+        return ((x+.5)/iw,1-(picked+.5)/ih)
     uv=skin.data.uv_layers.new(name='CivetTurnaroundProjection')
     for poly in skin.data.polygons:
         front=poly.normal.x>.65 and poly.center.x>.75
@@ -49,9 +72,10 @@ def main():
             if front:u=190-v.y/4/.075*120
             elif back:u=1588+v.y/4/.075*118
             else:u=1435-(xn-.055)/(.88-.055)*1060
-            uv.data[index].uv=(max(0,min(1773,u))/1774,1-max(0,min(886,y))/887)
+            lo,hi=(75,310) if front else (1490,1695) if back else (410,1400)
+            uv.data[index].uv=texture_point(u,y,int(lo/1774*iw),int(hi/1774*iw))
     mat=bpy.data.materials.new('CivetPaintedAtlas');mat.use_nodes=True
-    nodes=mat.node_tree.nodes;shader=nodes.get('Principled BSDF');tex=nodes.new('ShaderNodeTexImage');tex.image=bpy.data.images.load(str(Path(a.texture).resolve()));tex.interpolation='Linear';tex.extension='EXTEND'
+    nodes=mat.node_tree.nodes;shader=nodes.get('Principled BSDF');tex=nodes.new('ShaderNodeTexImage');tex.image=texture;tex.interpolation='Linear';tex.extension='EXTEND'
     separate=nodes.new('ShaderNodeSeparateColor');mat.node_tree.links.new(tex.outputs['Color'],separate.inputs['Color'])
     red=nodes.new('ShaderNodeMath');red.operation='GREATER_THAN';red.inputs[1].default_value=.7;mat.node_tree.links.new(separate.outputs['Red'],red.inputs[0])
     blue=nodes.new('ShaderNodeMath');blue.operation='GREATER_THAN';blue.inputs[1].default_value=.7;mat.node_tree.links.new(separate.outputs['Blue'],blue.inputs[0])
@@ -89,7 +113,7 @@ def main():
     if not any(d['use'] for d in devices):raise ValueError('Qualified Metal device unavailable')
     rig['phenotype']=json.dumps(phen);rig['clipRanges']=json.dumps(frames)
     bpy.ops.wm.save_as_mainfile(filepath=str(out/'civet-master.blend'))
-    receipt={'status':'MASTER_BUILT','qualityAccepted':False,'topology':topology,'weightError':weight_error,'clips':frames,'devices':devices,'genome':g,'speciesVisualKey':phen['speciesVisualKey'],'textureSha256':hashlib.sha256(Path(a.texture).read_bytes()).hexdigest(),'limitation':'Named Civet only; gene-driven family bounds and local-finisher texture completion not yet proved.'}
+    receipt={'status':'MASTER_BUILT','qualityAccepted':False,'topology':topology,'weightError':weight_error,'clips':frames,'devices':devices,'genome':g,'speciesVisualKey':phen['speciesVisualKey'],'referenceCalibration':calibration,'textureSha256':hashlib.sha256(Path(a.texture).read_bytes()).hexdigest(),'limitation':'Named Civet only; gene-driven family bounds and local-finisher texture completion not yet proved.'}
     if a.render:
         bpy.ops.render.render(write_still=True);receipt['tokenRendered']=True
     (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
