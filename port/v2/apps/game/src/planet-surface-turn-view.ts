@@ -77,11 +77,16 @@ export interface SurfacePlanetTurnOptionsV1 {
 
 /** One opt-in surface view. Workers bake once; the shared app ticker moves a
  * single uniform. This prototype extends only a small canonical longitude arc. */
+export const PLANET_SURFACE_TURN_DEADLINE_MS = 12_000;
+export const PLANET_SURFACE_TURN_ERROR_SCHEMA = 'cf-earth-turn-error/v1' as const;
+const PLANET_SURFACE_TURN_TIMEOUT = 'Earth surface atlas timed out';
+
 export class SurfacePlanetTurnViewV1 {
   private status: 'pending' | 'ready' | 'failed' | 'disposed' = 'pending';
   private error: string | null = null;
   private worker: Worker | null = null;
   private deadline: ReturnType<typeof setTimeout> | null = null;
+  private expiresAt: number | null = null;
   private canvas: HTMLCanvasElement | null = null;
   private lease: SceneTextureLease<Texture> | null = null;
   private geometry: MeshGeometry | null = null;
@@ -103,7 +108,8 @@ export class SurfacePlanetTurnViewV1 {
       this.worker = new Worker(new URL('./planet-surface-turn.worker.ts', import.meta.url),
         { type: 'module', name: 'cf-earth-surface-turn' });
       this.starts++;
-      this.deadline = setTimeout(() => this.fail('Earth surface atlas timed out'), 12000);
+      this.expiresAt = performance.now() + PLANET_SURFACE_TURN_DEADLINE_MS;
+      this.deadline = setTimeout(() => this.fail(PLANET_SURFACE_TURN_TIMEOUT), PLANET_SURFACE_TURN_DEADLINE_MS);
       this.worker.onerror = () => this.fail('Earth surface atlas worker failed');
       this.worker.onmessage = (event: MessageEvent<unknown>) => this.accept(event.data);
       this.worker.postMessage({ schema: 'cf-earth-turn-request/v1',
@@ -126,9 +132,21 @@ export class SurfacePlanetTurnViewV1 {
   private accept(value: unknown): void {
     if (this.status !== 'pending') return;
     if (!this.options.isCurrent()) { this.dispose(); return; }
+    // K27: a result arriving at or after the monotonic boundary is late even
+    // when a throttled timer has not fired yet; it is never mounted.
+    if (this.expiresAt !== null && performance.now() >= this.expiresAt) {
+      this.fail(PLANET_SURFACE_TURN_TIMEOUT); return;
+    }
     try {
       this.stopWorker();
       const result = value as Record<string, unknown> | null;
+      // K28: the worker reports its real reason; surface it instead of the
+      // generic shape refusal.
+      if (result && result.schema === PLANET_SURFACE_TURN_ERROR_SCHEMA) {
+        const reason = typeof result.message === 'string' && result.message.length > 0
+          ? result.message.slice(0, 256) : 'no reason given';
+        throw new Error(`Earth surface atlas worker error: ${reason}`);
+      }
       if (!result || result.schema !== 'cf-earth-turn-result/v1'
         || result.sourceSeed !== 133 || result.width !== PLANET_TURN_ATLAS_WIDTH
         || result.height !== PLANET_TURN_ATLAS_HEIGHT || result.uExtent !== PLANET_TURN_ATLAS_U_EXTENT

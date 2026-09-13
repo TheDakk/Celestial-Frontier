@@ -20,6 +20,7 @@ import {
   type DuelResult,
   type GuardianPrimeEncounterV1,
   type PrimeSignatureIdV1,
+  FRONTIER_RESOLVE_ABILITY_V1, PLAYER_COMBAT_HEX_V1,
 } from '@cf/domain-combatcore';
 import {
   auditAudioStaticPurity,
@@ -176,25 +177,44 @@ describe('Arc 8 completed-transcript combat cue owner', () => {
     const transformed = transformSync('combat-ability-helpers.ts', helpers);
     if (transformed.errors.length) throw new Error(JSON.stringify(transformed.errors));
     const emitted = transformed.code;
-    const project = new Function(`${emitted}\nreturn abilityFact;`)() as
-      (value: unknown, explorerColor?: unknown) => { theme: string; fields: Record<string, unknown> };
+    type Project = (value: unknown, champion?: { kind: 'player'; color: unknown } | null) =>
+      { theme: string; themeLabel: string; fields: Record<string, unknown> };
+    // K25: the helper reads the Explorer identity from the combat domain source,
+    // injected here exactly as the module imports it.
+    const compile = (source: object, hex: string): Project =>
+      new Function('FRONTIER_RESOLVE_ABILITY_V1', 'PLAYER_COMBAT_HEX_V1', `${emitted}\nreturn abilityFact;`)(source, hex) as Project;
+    const project = compile(FRONTIER_RESOLVE_ABILITY_V1, PLAYER_COMBAT_HEX_V1);
+    const explorer = { kind: 'player' as const, color: PLAYER_COMBAT_HEX_V1 };
     const resolve = {
       id: 'resolve', n: 'Frontier Resolve',
       d: 'Hardened by the void — recovers each round and shrugs off blows', regen: 0.04, taken: 0.9,
     };
-    expect(project(resolve, '#ffcf8a').theme).toBe('resolve');
-    // Creature participants never receive explorerColor, even for a copied Resolve shape.
+    expect(resolve).toEqual(FRONTIER_RESOLVE_ABILITY_V1);
+    expect(project(resolve, explorer).theme).toBe('resolve');
+    // Creature participants never carry the Explorer identity, even for a copied Resolve shape.
     expect(() => project(resolve)).toThrow(/combat ability theme/u);
-    expect(() => project(resolve, '#ffffff')).toThrow(/combat ability theme/u);
+    expect(() => project(resolve, null)).toThrow(/combat ability theme/u);
+    expect(() => project(resolve, { kind: 'player', color: '#ffffff' })).toThrow(/combat ability theme/u);
     for (const mutant of [
       { ...resolve, id: 'other' }, { ...resolve, n: 'Other Resolve' }, { ...resolve, d: 'Other text' },
       { ...resolve, regen: 0.05 }, { ...resolve, taken: 1 }, { ...resolve, extra: true },
       { ...resolve, theme: '' }, { ...resolve, themeLabel: 'partial' }, { ...resolve, col: '#ffcf8a' },
-    ]) expect(() => project(mutant, '#ffcf8a')).toThrow(/combat ability/u);
+    ]) expect(() => project(mutant, explorer)).toThrow(/combat ability/u);
     for (const field of Object.keys(resolve)) {
       const missing: Record<string, unknown> = { ...resolve }; delete missing[field];
-      expect(() => project(missing, '#ffcf8a')).toThrow(/combat ability/u);
+      expect(() => project(missing, explorer)).toThrow(/combat ability/u);
     }
+    // K25 control: a copy edit in the SOURCE no longer breaks admission — the cue
+    // owner follows the domain's ability, not text written into combat-cues.ts.
+    const edited = Object.freeze({ ...resolve, n: 'Frontier Grit', d: 'Rewritten copy for a later release', regen: 0.05 });
+    const editedProject = compile(edited, PLAYER_COMBAT_HEX_V1);
+    expect(editedProject({ ...edited }, explorer)).toMatchObject({ theme: 'resolve', themeLabel: 'Frontier Grit' });
+    expect(() => editedProject(resolve, explorer)).toThrow(/combat ability theme/u); // the old transcript is now a mismatch
+    expect(() => project({ ...edited }, explorer)).toThrow(/combat ability theme/u);
+    expect(compile(FRONTIER_RESOLVE_ABILITY_V1, '#123456')(resolve, { kind: 'player', color: '#123456' }).theme).toBe('resolve');
+    expect(() => compile(FRONTIER_RESOLVE_ABILITY_V1, '#123456')(resolve, explorer)).toThrow(/combat ability theme/u);
+    expect(source).not.toContain('Hardened by the void');
+    expect(source).not.toContain("'#ffcf8a'");
     const creature = battleStats(makeGenome(999, 'fauna', 0.5)).ab;
     expect(project(creature).fields).toEqual(creature);
     for (const key of ['theme', 'themeLabel', 'col']) {

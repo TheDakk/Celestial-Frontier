@@ -9,3 +9,4 @@ export * from './lineage-codec.js';
 export * from './guardian-prime.js';
 export * from './combat-settlement.js';
 export * from './creature-level-progress.js';
+export * from './player-ability.js';

@@ -9,6 +9,7 @@ import {
   type NotificationEntry,
 } from '../apps/game/src/notification-history.js';
 import { projectCheckpointState } from '../apps/game/src/checkpoint-state.js';
+import { createProductActionCoordinator } from '../apps/game/src/product-action-coordinator.js';
 
 interface TestWindow extends Window {
   close(): void;
@@ -313,5 +314,115 @@ describe('notification history presentation and saved read state', () => {
     expect(next[0]!.id).toBe(-2_147_483_646);
     expect(new Set(next.map(({ id }) => id)).size).toBe(next.length);
     expect(history.map(({ id }) => id)).toEqual([2_147_483_647, -2_147_483_648, -2_147_483_647]);
+  });
+});
+
+describe('K20: notices deferred during a product action drain when the action settles', () => {
+  const deferredNotice = { id: 1, tt: 'Arrived in flight', ms: 'Deferred notice', t: NOW, read: false };
+  function inFlight() {
+    const h = harness([]);
+    h.open();
+    h.setDeferred(true);
+    h.controller.record(deferredNotice.tt, deferredNotice.ms, NOW);
+    expect(h.replace).not.toHaveBeenCalled();
+    expect(h.panel.querySelector('[data-notification-pending]')).not.toBeNull();
+    expect(h.panel.querySelector('[data-notification-read]')).toBeNull();
+    expect(h.panel.textContent).toContain('Awaiting checkpoint');
+    const coordinator = createProductActionCoordinator();
+    const claim = coordinator.tryClaim('fixture-action');
+    if (!claim) throw new Error('fixture claim refused');
+    return { h, coordinator, claim };
+  }
+
+  it('records the notice with a Mark read control at settle, without a checkpoint or navigation', () => {
+    const { h, coordinator, claim } = inFlight();
+    const settled: unknown[] = [];
+    coordinator.bindSettleHook((outcome) => { settled.push(outcome); h.controller.flushPending(); });
+    h.setDeferred(false); // main.ts clears productActionInFlight before every settle
+    claim.settle(true);
+    expect(settled).toEqual([{ operation: 'fixture-action', durable: true }]);
+    expect(h.replace).toHaveBeenCalledOnce();
+    expect(h.history()).toEqual([deferredNotice]);
+    expect(h.panel.querySelector('[data-notification-pending]')).toBeNull();
+    expect(h.mark(1).disabled).toBe(false);
+    expect(h.persist).not.toHaveBeenCalled();
+    h.expectBadge(1);
+    expect(() => coordinator.bindSettleHook(() => undefined)).toThrow('already bound');
+  });
+
+  it('negative control: settling without the bound hook leaves the row awaiting a checkpoint', () => {
+    const { h, claim } = inFlight();
+    h.setDeferred(false);
+    claim.settle(true);
+    expect(h.replace).not.toHaveBeenCalled();
+    expect(h.history()).toEqual([]);
+    expect(h.panel.querySelector('[data-notification-pending]')).not.toBeNull();
+    expect(h.panel.querySelector('[data-notification-read]')).toBeNull();
+    h.expectBadge(1);
+  });
+
+  it('keeps the drain refusal-safe: a hook firing while recording is still refused leaves the notice pending', () => {
+    const { h, coordinator, claim } = inFlight();
+    coordinator.bindSettleHook(() => h.controller.flushPending());
+    h.setDeferred(false); h.setRecordable(false);
+    claim.settle(false);
+    expect(h.replace).not.toHaveBeenCalled();
+    expect(h.panel.querySelector('[data-notification-pending]')).not.toBeNull();
+    h.setRecordable(true);
+    h.controller.flushPending();
+    expect(h.history()).toEqual([deferredNotice]);
+  });
+});
+
+describe('K22: notification timestamps between append, checkpoint, export and import', () => {
+  /* The v1.8.9 loader repairs a zero, negative, absent or non-numeric `t` to
+     the injected import clock; that contract is fixture-anchored
+     (packages/persistence/test/import-v2.test.ts, migration-v5.test.ts) and is
+     retained. This pins the writer/reader agreement for every in-range value
+     and names the one deliberate asymmetry so a later change is a decision. */
+  function durableBase() {
+    const imported = importSaveV2('{}', REGISTRY, NOW);
+    if (!imported.ok) throw new Error(imported.reason);
+    return imported.state;
+  }
+  const importedT = (t: unknown): number => {
+    const data = JSON.parse(exportSaveV2(durableBase(), NOW)) as Record<string, unknown>;
+    data.notifs = [{ id: 1, tt: 'Shaped', ms: 'row', ...(t === undefined ? {} : { t }), read: false }];
+    const reloaded = importSaveV2(JSON.stringify(data), REGISTRY, NOW);
+    if (!reloaded.ok) throw new Error(reloaded.reason);
+    return reloaded.state.notifications[0]!.t;
+  };
+
+  it('round-trips every positive finite clock unchanged through append → checkpoint → export → import', () => {
+    for (const now of [1, 123, NOW, 4e12, 5e12]) {
+      const entry = appendNotification([], 'Clock', 'finite', now)[0]!;
+      const durable = durableBase();
+      const outcome = projectCheckpointState({ durable, live: { ...durable, notifications: [entry] },
+        savedView: null, epoch: 0, trainingReplacement: false });
+      if (outcome.kind !== 'projected') throw new Error(outcome.detail);
+      expect(outcome.droppedFields).toEqual([]);
+      const reloaded = importSaveV2(exportSaveV2(outcome.state, NOW), REGISTRY, NOW);
+      if (!reloaded.ok) throw new Error(reloaded.reason);
+      expect(reloaded.state.notifications, `now=${now}`).toEqual([entry]);
+      expect(importedT(now), `now=${now}`).toBe(entry.t);
+    }
+  });
+
+  it('names the retained legacy repair: a non-positive or non-numeric t reads back as the import clock', () => {
+    const zero = appendNotification([], 'Clock unavailable', 'no finite time', Number.NaN)[0]!;
+    expect(zero.t).toBe(0); // the writer clamps a missing clock to the floor
+    const durable = durableBase();
+    const outcome = projectCheckpointState({ durable, live: { ...durable, notifications: [zero] },
+      savedView: null, epoch: 0, trainingReplacement: false });
+    if (outcome.kind !== 'projected') throw new Error(outcome.detail);
+    expect(outcome.state.notifications[0]!.t).toBe(0); // the checkpoint keeps 0 (row.t >= 0 is valid)
+    const reloaded = importSaveV2(exportSaveV2(outcome.state, NOW), REGISTRY, NOW);
+    if (!reloaded.ok) throw new Error(reloaded.reason);
+    expect(reloaded.state.notifications[0]!.t).toBe(NOW); // the fixture-anchored loader repairs it
+    for (const t of [0, -5, undefined, null, 'abc', Number.NaN, Number.POSITIVE_INFINITY, '']) {
+      expect(importedT(t), `t=${String(t)}`).toBe(NOW);
+    }
+    // Direction control: the same comparator sees an in-range value survive.
+    expect(importedT(7)).toBe(7);
   });
 });
