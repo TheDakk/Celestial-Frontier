@@ -11,6 +11,7 @@ import { EffectSequencePlayer, mirrorDirection, type EffectParticleLike, type Ef
 import { buildEffectSchedule } from '../apps/game/src/effects/sequencer.js';
 import { EFFECT_THEMES, EffectThemeLibrary, PAINTED_EFFECT_LABEL, PROCEDURAL_EFFECT_LABEL, THEME_EMITTERS, THEME_MATERIALS, isProceduralImage, isProceduralSequence, proceduralAnchorsFor } from '../apps/game/src/effects/theme-library.js';
 import { COMBAT_THEMES } from '../apps/game/src/battle2/stage.js';
+import { PARTICLE_DISC_SIZE, PARTICLE_RIM, particleDiscRgba } from '../apps/game/src/effects/particle-texture.js';
 import { buildTurnPlan, sampleTurn } from '../apps/game/src/battle2/choreography.js';
 import { ABILITY_THEMES } from '../apps/game/src/soundkit/cues.js';
 
@@ -92,6 +93,17 @@ describe('player with procedural phases and theme tint', () => {
     expect(mixed.sprites).toHaveLength(2); expect(mixed.spriteTracks).toEqual([0, 2]); expect(mixed.spriteForTrack(1)).toBeNull(); expect(mixed.spriteForTrack(2)).toBe(mixed.sprites[1]);
     expect(() => playerFor([TEX, TEX], wild(), host(), () => 0)).toThrow(/one phase texture/);
   });
+  it('tells a pixi ParticleContainer to rebuild when the live count changes, and not otherwise (B4 capture finding: the count was frozen at one dot)', () => {
+    let now = 0; const updates: number[] = []; let live = 0;
+    const h = host(); h.createParticleContainer = () => ({ addParticle: (...p: unknown[]) => { live += p.length; }, removeParticle: (...p: unknown[]) => { live -= p.length; }, update: () => { updates.push(live); } });
+    const p = playerFor([null, null, null], proceduralAnchorsFor('stone'), h, () => now);
+    p.tick(); expect(updates).toEqual([]); // nothing live yet
+    now = 40; p.tick(); expect(updates.length).toBe(1); expect(updates[0]).toBeGreaterThan(0); // the burst arrived: one rebuild
+    const before = updates.length; now = 41; p.tick(); expect(updates.length).toBe(before); // same count → no rebuild
+    now = 3000; p.tick(); expect(updates.at(-1)).toBe(0); // everything died → rebuild to zero
+    now = 3001; p.tick(); const after = updates.length; p.dispose(); expect(updates.length).toBe(after); // nothing live at dispose → no extra rebuild
+    const plain = playerFor([null, null, null], proceduralAnchorsFor('stone'), host(), () => 0); plain.tick(); expect(() => { /* fake without update() */ plain.dispose(); }).not.toThrow();
+  });
   it('mirrors emitter directions for a right-to-left sequence (particles fly toward the target on both sides)', () => {
     expect(mirrorDirection(EMITTER_PRESETS.launch, false)).toBe(EMITTER_PRESETS.launch);
     expect(mirrorDirection(EMITTER_PRESETS.launch, true).directionRad).toBeCloseTo(Math.PI);
@@ -102,5 +114,16 @@ describe('player with procedural phases and theme tint', () => {
     const meanVx = (h: ReturnType<typeof host>, p: EffectSequencePlayer) => { const s = p.emitterState('launch'); return s.particles.reduce((a, q) => a + q.vx, 0) / Math.max(1, s.particles.length); };
     expect(meanVx(l, pl)).toBeGreaterThan(0); expect(meanVx(r, pr)).toBeLessThan(0);
     expect(pl.emitterState('launch').config.directionRad).toBeCloseTo(THEME_EMITTERS.sand.launch.directionRad); expect(pr.emitterState('launch').config.directionRad).toBeCloseTo(Math.PI - THEME_EMITTERS.sand.launch.directionRad);
+  });
+});
+
+describe('particle disc (the one tintable texture)', () => {
+  it('is deterministic, opaque white at the core, darker and translucent at the rim, transparent at the corners, and refuses bad sizes', () => {
+    const a = particleDiscRgba(), b = particleDiscRgba(PARTICLE_DISC_SIZE);
+    expect(a.length).toBe(PARTICLE_DISC_SIZE * PARTICLE_DISC_SIZE * 4); expect(Buffer.from(a).equals(Buffer.from(b))).toBe(true);
+    const px = (x: number, y: number) => Array.from(a.subarray((y * PARTICLE_DISC_SIZE + x) * 4, (y * PARTICLE_DISC_SIZE + x) * 4 + 4));
+    expect(px(8, 8)).toEqual([255, 255, 255, 255]); expect(px(0, 0)).toEqual([0, 0, 0, 0]); expect(px(15, 0)[3]).toBe(0);
+    const rim = px(14, 8); expect(rim[0]).toBeLessThan(255); expect(rim[0]).toBeGreaterThanOrEqual(Math.round(255 * (1 - PARTICLE_RIM.darkness)) - 1); expect(rim[3]).toBeGreaterThan(0); expect(rim[3]).toBeLessThan(255);
+    expect(() => particleDiscRgba(3)).toThrow(/4\.\.256/); expect(() => particleDiscRgba(7.5)).toThrow(); expect(particleDiscRgba(4)).toHaveLength(64);
   });
 });

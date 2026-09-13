@@ -22,6 +22,9 @@ export interface EffectParticleLike {
 export interface EffectParticleContainerLike {
   addParticle(...particles: EffectParticleLike[]): unknown;
   removeParticle(...particles: EffectParticleLike[]): unknown;
+  /** pixi 8 ParticleContainer: after particles are added or removed the container must be told to rebuild its buffers
+   * (dynamic position/rotation/color uploads happen every frame on their own). Optional so a fake needs nothing. */
+  update?(): unknown;
 }
 export interface EffectPixiHost {
   createSprite(texture: EffectTextureLike): EffectSpriteLike;
@@ -143,6 +146,7 @@ export class EffectSequencePlayer {
       }
     }
     for (let i = n; i < this.#inUse; i++) this.particles.removeParticle(this.#pool[i]!);
+    if (n !== this.#inUse) this.particles.update?.(); // B4 capture finding: without this, pixi kept the first frame's particle count (one dot)
     this.#inUse = n;
     return n;
   }
@@ -152,6 +156,7 @@ export class EffectSequencePlayer {
 
   dispose(): void {
     for (let i = 0; i < this.#inUse; i++) this.particles.removeParticle(this.#pool[i]!);
+    if (this.#inUse > 0) this.particles.update?.();
     this.#inUse = 0; this.#pool.length = 0;
     for (const sprite of this.sprites) sprite.visible = false;
   }

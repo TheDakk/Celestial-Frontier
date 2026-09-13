@@ -23,11 +23,16 @@
  },
  "realm": "land",
  "materials": {
-  "body": "translucent",
-  "head": "translucent",
-  "legs": "translucent",
-  "tail": "translucent",
-  "ears": "translucent"
+  "body": "furred",
+  "head": "furred",
+  "legs": "furred",
+  "tail": "furred",
+  "ears": "furred",
+  "wings": "furred",
+  "fins": "furred",
+  "antennae": "furred",
+  "fronds": "furred",
+  "arms": "furred"
  },
  "parts": [
   {
@@ -467,7 +472,7 @@
     2,
     3
    ],
-   "material": "translucent"
+   "material": "furred"
   },
   {
    "id": "earFar",
@@ -480,7 +485,7 @@
     0,
     1
    ],
-   "material": "translucent"
+   "material": "furred"
   },
   {
    "id": "earNear",
@@ -493,7 +498,7 @@
     0,
     1
    ],
-   "material": "translucent"
+   "material": "furred"
   }
  ],
  "weapons": [
@@ -762,6 +767,6 @@
   }
  },
  "notes": [
-  "materials: genome skin \"translucent\" overrides record surface \"fur\""
+  "materials: record surface \"fur\" wins over genome skin \"translucent\" (observer disagreement)"
  ]
 }
