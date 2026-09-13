@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { buildTimeline, compileBodyCard, createGsapPlayer, EASE_FN, EASES, hitstopMs, idlePeriodMs, QUADRUPED_ACTION_IDS, QUADRUPED_ACTIONS,
+import { type MotionTimeline, buildTimeline, compileBodyCard, createGsapPlayer, EASE_FN, EASES, hitstopMs, idlePeriodMs, QUADRUPED_ACTION_IDS, QUADRUPED_ACTIONS,
   sampleTimeline, scaleMs, type BodyCard, type Keyframe, type PoseTarget } from '../apps/game/src/motion/index.js';
 import { civetRecord, foxRecord, proceduralGenome, proceduralRecord } from '../tools/motion-proof/fixtures.js';
 
@@ -127,9 +127,10 @@ describe('gsap adapter', () => {
     for (const offset of [0, 60, 119, 150, 200, 280, 400, tl.bodyMs, tl.durationMs]) {
       clock = 5000 + offset; player.tick();
       const pure = sampleTimeline(tl, offset);
+      // Rotations per joint; root displacement compared separately and carried by root ALONE (a child never receives a manufactured local offset).
       for (const [joint, [rot, dx, dy]] of seen) {
         expect(rot, `${joint}@${offset}`).toBeCloseTo(pure.joints[joint]!, 4);
-        expect(dx).toBeCloseTo(pure.root.dx, 5); expect(dy).toBeCloseTo(pure.root.dy, 5);
+        if (joint === 'root') { expect(dx).toBeCloseTo(pure.root.dx, 5); expect(dy).toBeCloseTo(pure.root.dy, 5); } else { expect(dx, `${joint}@${offset} dx`).toBe(0); expect(dy, `${joint}@${offset} dy`).toBe(0); }
       }
     }
     expect(seen.size).toBe(31);
@@ -137,5 +138,26 @@ describe('gsap adapter', () => {
     idle.start(); clock += 7000; const progress = idle.tick();
     expect(progress).toBeGreaterThan(0); expect(progress).toBeLessThan(1);
     idle.stop(); player.stop();
+  });
+  it('translation only: root moves by the requested vector exactly once, a hierarchical child inherits it exactly once and gets no local offset; the old broadcast fails this (negative control)', () => {
+    const keys = (end: number) => [{ ms: 0, value: 0, ease: 'ease-out' as const }, { ms: 100, value: end, ease: 'ease-out' as const }];
+    const tl = { tracks: { root: keys(0), spine: keys(0), head: keys(0) }, root: { dx: keys(0.2), dy: keys(-0.1) }, secondary: [], durationMs: 100, bodyMs: 100, loop: false } as unknown as MotionTimeline;
+    /** A CreatureRigV1-shaped target: each joint's dx/dy is its LOCAL offset; world position = parent world + local (rotations zero here). */
+    const hierarchy = (): PoseTarget & { world(joint: string): [number, number] } => {
+      const parent: Record<string, string | null> = { root: null, spine: 'root', head: 'spine' }, local: Record<string, [number, number]> = {};
+      return { setJoint: (n, _r, dx, dy) => { local[n] = [dx, dy]; }, world: (j) => { let x = 0, y = 0; for (let k: string | null = j; k; k = parent[k] ?? null) { x += local[k]?.[0] ?? 0; y += local[k]?.[1] ?? 0; } return [x, y]; } };
+    };
+    const rig = hierarchy(), calls: [string, number, number][] = [];
+    const player = createGsapPlayer(tl, { setJoint: (n, r, dx, dy) => { rig.setJoint(n, r, dx, dy); calls.push([n, dx, dy]); } }, { now: () => 0 });
+    player.seek(100); player.stop();
+    expect(calls.find(([n]) => n === 'root')!.slice(1)).toEqual([0.2, -0.1]);
+    for (const [n, dx, dy] of calls) if (n !== 'root') { expect(dx, n).toBe(0); expect(dy, n).toBe(0); }
+    expect(rig.world('root')).toEqual([0.2, -0.1]); expect(rig.world('spine')).toEqual([0.2, -0.1]); expect(rig.world('head')).toEqual([0.2, -0.1]); // inherited exactly once
+    // Negative control: the pre-fix broadcast (root dx/dy sent to every joint) compounds through the hierarchy and must fail this contract.
+    const broadcast = hierarchy(); for (const j of ['root', 'spine', 'head']) broadcast.setJoint(j, 0, 0.2, -0.1);
+    expect(broadcast.world('head')).not.toEqual([0.2, -0.1]); expect(broadcast.world('head')[0]).toBeCloseTo(0.6, 9); // moved three times
+    // Mid-way the eased root value is between 0 and the end, still root-only.
+    player.seek(50); const mid = calls.filter(([n]) => n === 'root').at(-1)!; expect(mid[1]).toBeGreaterThan(0); expect(mid[1]).toBeLessThan(0.2); expect(calls.filter(([n]) => n !== 'root').every(([, dx, dy]) => dx === 0 && dy === 0)).toBe(true);
+    player.stop();
   });
 });
