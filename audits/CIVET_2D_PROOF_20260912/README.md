@@ -97,3 +97,9 @@ audio resume. With captureStream(0), requesting a frame before any post-stream c
 left the recorder waiting for video metadata while the animation waited for recorder start.
 Correction: render the unchanged rest stage once after recorder.start, then request that
 frame. Native click and the short deadlines remain. Report retained at attempt-03.
+
+
+Attempt04 (33bcc129) still hit the recorder-start deadline with a single supplied frame.
+The next recorder-only source feeds the unchanged rest stage on animation frames until the
+start event arrives, before beginning the10-second timeline. The bounded startup contract
+has positive/never-starting negative controls. No artwork, rig or animation parameter changes.

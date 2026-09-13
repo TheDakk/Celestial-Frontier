@@ -78,3 +78,7 @@ No rig/art/curve parameter change is authorized by that recorder repair. The nat
 finding remains failed; captures must say whole-portrait fallback. No ten-second file is yet
 qualified; first short videos remain at /private/tmp/cf-quadruped-proof-20260912-01. Refresh
 references and retain final media/receipts, then stop for Nick's review. No queued work starts.
+
+1Password unlocked; signed33bcc129 is59 ahead upstream/170 ahead cacheddevelop. Attempt04
+still hit recorder-start; next feeds rest frames continuously until acknowledgment (bounded,
+negative-controlled). Captures and visual review remain pending; no rig/art changes.

@@ -6,6 +6,7 @@ import {resolveProceduralCanvas} from '../../packages/art/src/speciesoverrides.t
 import {speciesVisualKey} from '../../packages/art/src/speciesidentity.ts';
 import {initAudio,prepareStingAudioForGesture,playWhoosh,playSurveyPing} from '../../packages/audio/src/index.ts';
 import {sfxOut} from '../../packages/audio/src/stings.verbatim.js';
+import {primeRecorder} from './capture-contract.mjs';
 const required=(v,m)=>{if(!v)throw Error(m);};
 const json=p=>fetch(p).then(r=>{required(r.ok,p);return r.json();});
 const bytes=p=>fetch(p).then(r=>{required(r.ok,p);return r.arrayBuffer();});
@@ -93,7 +94,7 @@ try{
     // fallback idle. A silent audio source prevents recorder track startup from
     // waiting for the first cue and discarding the leading idle interval.
     const stream=app.canvas.captureStream(0),videoTrack=stream.getVideoTracks()[0];if(destination)for(const track of destination.stream.getAudioTracks())stream.addTrack(track);
-    const chunks=[],recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9,opus',videoBitsPerSecond:7000000});recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};const stopped=new Promise(resolve=>recorder.onstop=resolve),started=new Promise(resolve=>recorder.onstart=resolve);state.capturePhase='recorder-start';recorder.start();app.renderer.render(app.stage);videoTrack.requestFrame();await Promise.race([started,new Promise((_,reject)=>setTimeout(()=>reject(Error('Recorder start deadline')),5000))]);state.capturePhase='recording';
+    const chunks=[],recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9,opus',videoBitsPerSecond:7000000});recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};const stopped=new Promise(resolve=>recorder.onstop=resolve);let hasStarted=false;recorder.onstart=()=>{hasStarted=true;};state.capturePhase='recorder-start';recorder.start();await primeRecorder({started:()=>hasStarted,paint:()=>frame(0),requestFrame:()=>videoTrack.requestFrame(),schedule:requestAnimationFrame,now:()=>performance.now()});state.capturePhase='recording';
     const updates=[],deltas=[],events=[];let previous,start,whoosh=false,ping=false;
     await new Promise(resolve=>{const tick=now=>{if(start===undefined)start=now;const ms=Math.min(10000,now-start);if(previous!==undefined)deltas.push(now-previous);previous=now;
       updates.push(frame(ms).updateMs);videoTrack.requestFrame();if(ms>=3000&&!whoosh){playWhoosh();whoosh=true;events.push({cue:'existing whoosh',atMs:ms});}if(ms>=4230&&!ping){playSurveyPing();ping=true;events.push({cue:'existing ping',atMs:ms});}
