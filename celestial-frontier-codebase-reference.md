@@ -7,8 +7,9 @@ These additions do not establish runtime parts-rig or effects integration.
 Civet animation proof status, September13: parts-rig proof remains pending. Blender projection
 is abandoned for the browser; retain turnaround/canid assets for later engine port. Continuous
 mesh fails shape; retained whole-portrait captures are labelled fallback, not articulation.
-Arena template v1 is accepted; MID's exact190-pixel copy-only despill is complete. C1 v4.3 theme
-material diff awaits approval, then one common-canvas Wild repaint precedes C2 parts-rig work.
+Arena template v1 is accepted; MID's exact190-pixel copy-only despill is complete/reverified.
+C1 v4.3 theme table is adopted; one three-phase Wild repaint with registered intake copies
+awaits Nick's image review before C2. Earth compiler admits4.3; retired-kit refusal remains.
 World-life Motion Kit and Sound Kit supplied v1 files are retained verbatim in8a2dfdc0; Nick's
 approval is recorded separately from their supplied PROPOSED labels. Work order/interface file
 is now retained at audits/LONG_SESSION_20260913/WORK_ORDER.md. C2 exposes record-based part

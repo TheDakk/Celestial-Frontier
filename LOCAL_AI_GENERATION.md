@@ -1,13 +1,13 @@
 # Local AI landfalls
 
-**September 12 v4.2 authoring update:** Arena/Effects additions are approved with the three
-key-ground/registration/enumeration amendments; active ART_KIT.md is v4.2. The Earth compiler
-accepts that exact marker and isolates the added Arena subsection from the existing biome
-block. Frozen paragraph and 4E remain unchanged. Arena authoring reuses the preserved compiler
-Earth card; no hand-filled card or local model run. The six new art candidates await review
-before parts-rig staging; [proof and limitations](audits/ARENA_EFFECTS_V42_PROOF_20260912/README.md).
-The terrain keyer uses an explicit opt-in for full-width ground and requires a keyed upper
-field; normal organism isolation checks remain. No live arena runtime path is claimed.
+**September13 v4.3 authoring adoption:** active ART_KIT.md is4.3 with the approved Effects
+material table. Earth compiler admits4.3; its negative control still refuses retiredv3.
+Frozen paragraph/4E unchanged; the runtime finisher prompt remains byte-identical to the
+accepted recipe. Three Wild repaint prompts reuse the preserved compiler Earth card verbatim;
+no hand-filled card or local inference. [C1 proof](audits/WILD_V43_PROOF_20260913/README.md)
+records original masters, registered copies, fallback anchors and fine-edge limitations.
+Arena v1 remains accepted; MID's prior190-pixel copy-only despill was verified, not repeated.
+Effects await Nick's image review before staging. No new live arena runtime path is claimed.
 
 **Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
 emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical

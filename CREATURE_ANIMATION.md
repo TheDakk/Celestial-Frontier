@@ -1,7 +1,8 @@
 # Creature animation — shared anatomy and motion contract
 
 **Current September12 direction:** arena template v1 accepted, Wild shapes/phases accepted
-but palette rejected. v4.3 proposal/approval and one Wild repaint precede the parts-rig turn.
+but the first palette rejected. v4.3 is now adopted and one three-phase repaint awaits Nick's
+image review at audits/WILD_V43_PROOF_20260913 before the parts-rig turn.
 Motion frozen paragraphs are approved; revised world-life Motion Kit received verbatim on September13.
 Use §§3–6 resolved body-card/timing rules and report gaps when building. No named-anatomy
 fields were invented. @pixi/particle-emitter removed; [seeded-battle-emitter.ts](port/v2/apps/game/src/seeded-battle-emitter.ts)
@@ -15,7 +16,7 @@ v1 and its frozen paragraphs. Compile the parts-rig body card from the winning p
 resolved anatomy using §§3–6, including mass-scaled timings; report missing fields rather than
 reading named Earth genes. The initial record-gap audit remains at
 [audits/MOTION_SOUND_KITS_20260912/ADOPTION.md](audits/MOTION_SOUND_KITS_20260912/ADOPTION.md).
-C1 now awaits approval of the proposed v4.3 diff. No runtime animation change in this intake.
+C1 now awaits review of the repainted Wild phases. No runtime animation change in this batch.
 Claude owns motion/, effects/, battle2/, soundkit/, worldlife/ and their tests.
 
 **Current browser track — matches code as of 2026-09-12:** Blender projection remains

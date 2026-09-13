@@ -89,3 +89,22 @@ Validation: five document byte comparisons and git diff --check. Pre-packet a79d
 70 ahead upstream/181 ahead cached origin/develop. Containing commit records this intake.
 No painting, sound, model run, main.ts edit, new branch, history rewrite or GitHub action.
 Next: Nick's v4.3 wording approval at e89cb621; C1 one Wild repaint thereafter. MID complete.
+
+## C1 — v4.3 adopted; Wild images delivered, visual acceptance pending
+
+Nick approved e89cb621 with exactly two header-label removals and the specified history clause.
+ART_KIT adoption diff/receipt at ../WILD_V43_PROOF_20260913. Frozen style/4E/domain hexes unchanged.
+Three built-in calls, one per phase, no rerolls; exact prompts and immutable original1254-square
+PNGs hashed in generation.json. Review wild-masters-review.png and wild-registered-review.png.
+Generator occupied bounds drifted; keyed copies uniformly resized/translated onto1024-square
+shared origin/contact anchors, with per-phase master fallback JSON retained. No warp/crop.
+Keyer unresolved edges89/597/529 recorded; no zero-fringe or user acceptance claim.
+
+MID190 RGB corrections from07c93945 reverified, alpha and accepted master hashes unchanged;
+mid-verification.json records zero new passes. C1 art not yet accepted: stop before staging.
+Only runtime change admits4.3 in Earth compiler, with retired-v3 mutant updated. Initial guard
+refusal retained; final3 compiler tests and9 contact/despill controls pass; full v2 TypeScript
+and root validate logs retained. A wrong-cwd edit initially changed nothing, then corrected.
+No main.ts or Claude-lane edits, no C2/C3, local inference,3D,GitHub,branch or history operation.
+Pre-batch db3d1e74:71 ahead upstream/182 ahead cached origin/develop. This containing commit
+records C1 delivery; images still need Nick's eye. Claude can continue its reserved modules.

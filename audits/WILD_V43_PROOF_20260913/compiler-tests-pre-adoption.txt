@@ -1,0 +1,59 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/art-kit-v4.test.ts (3 tests | 3 failed) 16ms
+     × reproduces a data-filled card and exact kit blocks without mutating the snapshot 9ms
+     × rejects the retired kit, missing/duplicated blocks and mutated source identity 4ms
+     × keeps the frozen paragraph, visual card, subject and layout; excludes authoring metadata 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/art-kit-v4.test.ts > approved v4 prompt compilation, without a checkout lock or inference > reproduces a data-filled card and exact kit blocks without mutating the snapshot
+Error: Art Kit v4 required; retired kits are refused
+ ❯ compileEarthArtKitV4 apps/game/src/landfall-conditioning.ts:265:11
+    263| export function compileEarthArtKitV4(input: unknown, kit: string) {
+    264|   if (!kit.startsWith('# Celestial Frontier Art Kit\n') || !['4', '4.2…
+    265|     throw Error('Art Kit v4 required; retired kits are refused');
+       |           ^
+    266|   const admitted = buildLandfallConditioningV1(input);
+    267|   if (!admitted.ok) throw Error('Art Kit source refused: ' + admitted.…
+ ❯ tests/art-kit-v4.test.ts:10:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/art-kit-v4.test.ts > approved v4 prompt compilation, without a checkout lock or inference > rejects the retired kit, missing/duplicated blocks and mutated source identity
+AssertionError: expected [Function] to throw error including 'Missing kit section' but got 'Art Kit v4 required; retired kits are…'
+
+Expected: "Missing kit section"
+Received: "Art Kit v4 required; retired kits are refused"
+
+ ❯ tests/art-kit-v4.test.ts:41:99
+     39|     const source=produceCanonicalEarthSnapshot().snapshot;
+     40|     expect(()=>compileEarthArtKitV4(source,kit.replace('style_id: fron…
+     41|     expect(()=>compileEarthArtKitV4(source,kit.replace('## 2. Frozen s…
+       |                                                                                                   ^
+     42|     expect(()=>compileEarthArtKitV4(source,kit+'\n## 2. Frozen style\n…
+     43|     const mutant=JSON.parse(JSON.stringify(source));mutant.roster.star…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/art-kit-v4.test.ts > authorized contact experiment runtime projection > keeps the frozen paragraph, visual card, subject and layout; excludes authoring metadata
+Error: Art Kit v4 required; retired kits are refused
+ ❯ compileEarthArtKitV4 apps/game/src/landfall-conditioning.ts:265:11
+    263| export function compileEarthArtKitV4(input: unknown, kit: string) {
+    264|   if (!kit.startsWith('# Celestial Frontier Art Kit\n') || !['4', '4.2…
+    265|     throw Error('Art Kit v4 required; retired kits are refused');
+       |           ^
+    266|   const admitted = buildLandfallConditioningV1(input);
+    267|   if (!admitted.ok) throw Error('Art Kit source refused: ' + admitted.…
+ ❯ compileEarthKitEngineV4 apps/game/src/landfall-conditioning.ts:400:20
+ ❯ tests/art-kit-v4.test.ts:58:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  00:19:31
+   Duration  284ms (transform 158ms, setup 0ms, import 196ms, tests 16ms, environment 0ms)
+

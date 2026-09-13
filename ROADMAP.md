@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-13 · C1 v4.3 DIFF AWAITING APPROVAL
+## SESSION HANDOFF — 2026-09-13 · C1 WILD PHASES AWAITING IMAGE REVIEW
 
 Nick authorizes continuation through C1–C5 without repeated proceed questions. Stop for kit
 wording changes, first image/sound of a new class, GitHub writes, history rewrites, or scope
@@ -34,20 +34,28 @@ Additional long-session zip retained: CONTRACTS.md, LOG-A4.md, LOG-A5.md and the
 LOG.md verbatim as LOG-CLAUDE-PACKET.md, preserving our local chronological log. WORK_ORDER
 is byte-identical. Provenance: long-session-pack-receipt.json. Treat Claude's reported tests
 as reported evidence, not locally reproduced results; no source/evidence media came in the zip.
-Current C1 kit-wording approval stop remains in place; the packet grants no new approval.
-C1 proposal: audits/LONG_SESSION_20260913/ART_KIT_V43_PROPOSED.diff. Exact eleven review rows,
-all game accents source-verified, accent-only/body-colour rule and subject-slot binding.
-Canonical ART_KIT.md unchanged v4.2; frozen style/4E unchanged. STOP for Nick's diff approval.
-No new painting or sound in this batch. After approval use identical canvas/origin/contact
-across Wild phases and retain per-phase JSON fallback; existing4K already requires registration.
+Nick approved e89cb621; ART_KIT now4.3 with only the exact requested header/history adoption
+changes beyond that diff. Frozen paragraph/4E and game theme hexes unchanged. Evidence:
+audits/WILD_V43_PROOF_20260913/README.md, adopted-kit.diff, kit-adoption.json, generation.json.
 
-C1: propose v4.3 theme material table from the review; stop for wording approval; then repaint
-Wild once with common-canvas registration, retaining per-phase anchor JSON as fallback. Game
-hexes stay unchanged and are accents only. Arena FAR/MID/NEAR are accepted template v1.
-MID's intake-only despill is already complete in signed 07c93945: exactly190 RGB pixels on a
-copy, zero alpha changes, originals unchanged. Do not repeat the applied pass. Evidence:
-audits/ARENA_V1_ACCEPTANCE_20260912/{acceptance.json,despill-receipt.json,arena-template-v1.png}.
-Wild shapes/phases accepted, palette rejected; no accepted complete Wild sequence yet.
+C1: exactly three built-in imagegen calls, one Wild phase each, no rerolls. Warm ochre/earth,
+fur tufts/torn leaves replace the rejected blue palette. Original1254-square masters retained.
+Generator enlarged phases beyond requested bounds; uniform-scale/translation intake copies
+now share1024square, origin(.20,.55), contact(.80,.55). Visually measured active anchors map
+within.5pixel, empty anchors virtual. wild-anchors.json uses registered copies; separate
+wild-anchors-master-fallback.json retains original per-phase anchors. No warp/rotation/crop.
+Review wild-masters-review.png and wild-registered-review.png. Keyer reports89/597/529 unresolved
+fine-edge pixels; do not claim zero fringe or accepted artwork. STOP for Nick's image review
+before staging. No C2/C3 work or new kit wording request.
+
+MID's one-pass exact190 RGB correction from07c93945 reverified, alpha and all arena masters
+unchanged. mid-verification.json references the original completed copy and composite;
+no repeated pass. Arena FAR/MID/NEAR remain accepted templatev1. Rain E remains active.
+
+Earth compiler version guard updated to admit4.3 and retired-v3 test mutant updated. Initial
+pre-adoption guard refusal retained; final3 compiler tests prove deterministic output, retired
+kit/malformed source refusal and unchanged engine prompt. Nine contact/despill controls pass;
+full v2 TypeScript/root validation logs retained. No native inference or scene/finisher run.
 
 C2: parts masks per authored master, turnaround joint patches, painter-emitted procedural
 parts, pose application and one deterministic atlas per creature with pinned packer. Compile
@@ -97,7 +105,8 @@ Klein phone probing remains stopped; no delivery engineering before phone-tier r
 
 Ownership verified: OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac,
 openai/mac → origin/openai/mac; SSH origin git@github.com:TheDakk/Celestial-Frontier.git.
-Pre-packet commit a79d4035:70 ahead upstream/181 ahead cached origin/develop, zero behind. No remote
+Pre-C1 commit db3d1e74:71 ahead upstream/182 ahead cached origin/develop, zero behind. No remote
 refresh needed or performed; .DS_Store excluded. Current budget file says UNFROZEN, but Nick's
 explicit GitHub step NONE controls: no push/label/dispatch/merge/release/deploy or hosted attempt.
-This batch is documentation only; no runtime/build/render or tool maintenance needed.
+This C1 batch reuses the uninterrupted September12 maintenance receipt; Node26.8.2 verified.
+Only the compiler version admission/test changed in runtime source; no main.ts hunk.

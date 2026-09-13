@@ -1,23 +1,15 @@
 # Celestial Frontier — Master Art Direction
 
-**Arena v1 accepted, September12:** Nick accepted FAR/MID/NEAR from75a5c4a4. One RGB-only
-intake pass corrects exactly190 unresolved MID pixels on a copy; alpha and masters unchanged.
-[Acceptance and corrected arena](audits/ARENA_V1_ACCEPTANCE_20260912/README.md). Wild shapes
-and phases accepted, palette rejected as Frost. v4.3 theme-table proposal needs the missing
-supplied review; no kit change or Wild repaint yet. Motion/Sound frozen paragraphs approved;
-revised Motion Kit with world-life still missing. This supersedes earlier pending-arena wording.
-
-**Art Kit v4.2 adopted, September 12:** Nick approved d2b8d8cd with opaque Arena FAR,
-key-painted MID/NEAR (no extracted masks), shared normalized ground line 0.78, explicit
-class routing and Effects sequence anchor JSON. Frozen style and 4E are byte-identical.
-Six built-in imagegen masters and their exact prompts are ready for review at
-[audits/ARENA_EFFECTS_V42_PROOF_20260912](audits/ARENA_EFFECTS_V42_PROOF_20260912/README.md).
-They are candidates, not accepted artwork: NEAR occupies roughly the lower fifth, and
-key-edge/phase-registration flags are retained. Stop before battle staging until Nick accepts
-these plates and the Wild sequence. Next is the GSAP parts-rig turn, then ten-second Civet,
-fox and procedural quadruped captures. The continuous mesh failed shape; fallback captures
-remain evidence. Blender projection is abandoned; old turnaround/canid assets stay for port.
-Rain E remains the active ordinary-game painting. No local inference or 3D render this batch.
+**Art Kit v4.3 adopted — September13:** Nick approved e89cb621 with exact header/history
+changes. Closed eleven-theme Effects material table; game hex accent only, Wild warm ochre
+and earth. Frozen paragraph and4E unchanged. Three new Wild masters/registered copies await
+Nick's review before staging: [C1 proof](audits/WILD_V43_PROOF_20260913/README.md).
+No rerolls; generator bounds drift and unresolved fine-edge pixels are recorded. All original
+masters retained. Arena FAR/MID/NEAR remain accepted templatev1; previously completed MID
+190-pixel RGB-only despill and unchanged alpha/master hashes reverified. No repeat pass.
+Motion/Sound v1 supplied files including world-life are retained with Nick's approval recorded
+separately from supplied PROPOSED labels. C2 parts rig follows Wild image acceptance; continuous
+mesh and Blender projection remain abandoned for this browser track. No new 3D or local inference.
 
 **Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
 emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical
