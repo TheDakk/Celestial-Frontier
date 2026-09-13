@@ -1,6 +1,6 @@
 # Celestial Frontier Sound Kit
 
-Sound direction and audio contract, PROPOSED version 1, 2026-09-12. Companion to ART_KIT.md and MOTION_KIT.md. One sound hand for the whole universe, and, like the art, procedurally generated: a finite set of recorded source sounds becomes an infinite set of unique creature voices, arena atmospheres and impacts through deterministic, seed-driven processing compiled by one interpreter.
+Sound direction and audio contract, APPROVED version 1, 2026-09-12. Companion to ART_KIT.md and MOTION_KIT.md. One sound hand for the whole universe, and, like the art, procedurally generated: a finite set of recorded source sounds becomes an infinite set of unique creature voices, arena atmospheres and impacts through deterministic, seed-driven processing compiled by one interpreter.
 
 Each section is plain text inside a fenced block. Sections 1 and 2 are frozen once approved; section 3 is filled by the compiler; section 4 is the closed cue vocabulary.
 
@@ -8,7 +8,7 @@ Each section is plain text inside a fenced block. Sections 1 and 2 are frozen on
 
 ```text
 CELESTIAL FRONTIER - SOUND KIT
-sound_id: frontier-sound   |   proposed v1, 2026-09-12   |   one hand, compiled
+sound_id: frontier-sound   |   approved v1, 2026-09-12   |   one hand, compiled
 
 Every sound recipe is assembled in this order:
     SOUND LOCK -> FROZEN SOUND -> VOICE CARD -> CUE -> MIX -> OUTPUT
