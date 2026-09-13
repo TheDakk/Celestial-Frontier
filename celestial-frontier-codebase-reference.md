@@ -6500,3 +6500,8 @@ remain pending. CONTRACTS§2 root offsets are local; Claude producer broadcast f
 Painter mask reads now use a separate readback canvas after native-painter-parts-01
 refused a changed ordinary render. The live painter is never read repeatedly; native
 qualification of this correction remains pending. Source drawing commands stay unchanged.
+
+Current optional mask capture completes ordinary paint first and observes a second seeded
+invocation of the same owner. The normal portrait and cut-out always come from the first
+invocation. Replay anatomy/material and full original-alpha coverage are strict gates; it
+never replaces the ordinary painting with pixels from the readback render. Native proof pending.

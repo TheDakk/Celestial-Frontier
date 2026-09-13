@@ -124,3 +124,14 @@ This hypothesis is not yet native-qualified. The next bounded comparison uses a 
 native-painter-parts-02 directory on committed source. It records changed-channel count/max
 on failure and a deliberately corrupted-pixel control. Typecheck,4focusedtests/rootvalidate
 pass. No motion, staging or C3 acceptance. Original refusal remains in report.json.
+
+### Painter readback separation
+
+native-painter-parts-02 on fabfd5e5 still refused370changedchannels,max30. Copying at each
+stage did not establish ordinary-render parity; both refusals retained. The authoring wrapper
+now completes the ordinary render first, then runs the same seeded winning painter separately
+for masks. It returns the original portrait/ink, compares replay anatomy/material, clips mask
+labels only where original alpha is transparent, and refuses any missed visible original pixel.
+No colour/alpha change to the ordinary master is allowed. This is a bounded observation replay,
+not a new creature, model painting, changed parameters or guessed family record. Its native
+check uses NEW native-painter-parts-03 on committed source. No motion acceptance claimed.
