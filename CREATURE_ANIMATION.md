@@ -7,7 +7,9 @@ verified; the earlier root-broadcast block is resolved. `creature-rig-contact.ts
 record-driven planted-contact constraint using existing two-bone math, preserving perspective
 paw offsets and refusing unreachable poses. Flight passes through; no creature clip is edited.
 The isolated parts-motion proof consumes actual Claude compiler/GSAP/choreography/effects
-read-only and real atlases; native motion/captures remain pending. Seven focused checks pass.
+read-only and real atlases. Parts motion fails the visual/contact gate; three labelled
+whole-portrait fallback10s captures are ready in C2_PARTS_MOTION_20260913/portrait-fallback-01.
+All60.002fps,p95CPU0.2/0.2/0.3ms; no articulated acceptance. Seven focused checks pass.
 
 
 **Current C2 status — matches code September13:** Civet32/fox22/procedural21part atlases all
@@ -15,9 +17,9 @@ pass native rest comparison with0changedRGBAchannels and nonzero missing-head co
 Procedural masks come from an isolated seeded observation replay of the winning painter;
 ordinary paint remains byte-identical and material is correctly translucent. All3actual Motion
 body cards/timelines compile repeatably. See audits/C2_PARTS_ATLAS_20260913/README.md. Earlier
-pending/rest-readback notes below describe intermediate states. Motion/ground/contact/fps and
-10second captures are NOT admitted; Claude's producer root-offset broadcast still needs its
-prepared fix. No protected module or ordinary battle wiring changed here.
+pending/rest-readback notes below describe intermediate states. The producer root-offset fix
+is verified; native parts motion still fails. Fallback captures await Nick's eye. No protected
+module or ordinary battle wiring changed here.
 
 
 **C2 authored parts, matches code as of September13:** the accepted Civet now has22
@@ -28,7 +30,8 @@ own depth layer. `civet.part-masks-v2.json` fixes the head-crest ownership seen 
 mask map. Two refused patch fits are retained: key-coloured samples, then wrong near-only
 coverage for far legs. No new art was generated. Source hashes, actual binding and atlas are
 at audits/C2_PARTS_ATLAS_20260913/civet-patched/. Native rest comparison passed on de9c9a32:0changedRGBAchannels, with234,525changedchannels
-when the head is removed. No animation or C2 acceptance is claimed. Fox/procedural masks and Motion-timed captures remain.
+when the head is removed. Fox/procedural masks and native rest also pass. Moving parts shape
+fails; completed labelled fallback captures do not close articulated C2 acceptance.
 
 **C2 runtime progress, September13:** [creature-rig.ts](port/v2/apps/game/src/creature-rig.ts)
 loads hash-bound part atlases and applies the record-joint CreatureRigV1/PoseTarget vocabulary
@@ -345,23 +348,22 @@ weather ladder remain queued per Nick's order; no delivery engineering before ph
 Rain E activation8b01e38c/browser evidenceaaacfd6f remains accepted and unchanged.
 
 **Pack5 continuation, matches code September13:** fox has22 authored parts with exact offline
-rest reconstruction and atlas pixel readback. Native check pending. Optional quadruped
+rest reconstruction and atlas pixel readback. Native rest passes; motion contact refuses. Optional quadruped
 `captureParts` emits final visible ownership from actual draw-stage RGBA changes; no ordinary
 painter commands change. Tube segment ownership uses the painted axis, not a fitted skeleton.
 Supported capture is explicitly bounded to observed four-legged banded-tail geometry; other
 family observers are not implemented by the existence of Claude's Motion templates. Native
-proc render parity/material/record validation is pending. Painter masks cannot manufacture
-hidden surfaces; identical overpainting retains prior visible ownership. Motion interop remains
-blocked by the producer root-offset broadcast recorded in C2_MOTION_INTEROP_20260913.
+proc render parity/material/record validation passes in native-painter-parts-03. Painter masks cannot manufacture
+hidden surfaces; identical overpainting retains prior visible ownership. Motion interop uses the corrected, hash-verified producer in C2_MOTION_INTEROP_20260913.
 
 Painter mask reads now use a separate readback canvas after native-painter-parts-01
 refused a changed ordinary render. The live painter is never read repeatedly; native
-qualification of this correction remains pending. Source drawing commands stay unchanged.
+qualification required the separated replay below. Source drawing commands stay unchanged.
 
 Current optional mask capture completes ordinary paint first and observes a second seeded
 invocation of the same owner. The normal portrait and cut-out always come from the first
 invocation. Replay anatomy/material and full original-alpha coverage are strict gates; it
-never replaces the ordinary painting with pixels from the readback render. Native proof pending.
+never replaces the ordinary painting with pixels from the readback render. Native rest proof passes.
 
 Native separated mask observation is now qualified on782e827a:0ordinary-render changed
 channels,21parts,31joints and actual translucent material. Procedural atlas readback/rest

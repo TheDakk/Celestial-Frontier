@@ -122,3 +122,21 @@ tail or jaw. No per-creature curve changes, bound relaxation, repaint, new sound
 A 120 Hz deterministic contact scan records the first refused parts interval before fallback
 capture; that refusal remains evidence, not a fallback pass of the articulated shape gate.
 C2 parts acceptance remains open. Review both the failed parts clip and labelled fallback.
+
+
+## C2 review stop — native fallback evidence
+
+Signed source1e5c80be produced portrait-fallback-01: Civet10.219556s,fox10.167333s,
+procedural10.174130s; all60.002fps, p95 CPU updates0.20/0.20/0.30ms (renderer excluded).
+ffprobe independently checks encoded duration. All3frames explicitly label whole-portrait
+fallback; no articulated-ear/tail/jaw claim. Dense120Hz diagnostic finds first fox contact
+refusal at1375ms in command phase; Civet/procedural scan passes, which does not establish
+shape. Civet parts video/neck gap retained in proof-02. C2 articulated acceptance remains OPEN.
+
+REVIEW_PROMPT.md is copy-ready for Claude; REVIEW_SUMMARY.json records measured outcomes.
+review-zip-manifest.json records four independently valid ZIPs in /private/tmp/cf-c2-review-20260913,
+15.3–16.1MB each (under30MB): three fallback reviews and failed-parts evidence. Each repeats
+prompt, relevant source, report and one creature's clip/stills/plan. No master/kit/source paint
+changed. Rootvalidate passes; recorder duration/startup tests2/2, syntax checks and diffcheck pass.
+Nick reviews captures next. Codex stops here; Claude can review the supplied bundle, no app
+switch required for sync. C3 sources follow the proof review; no GitHub/PR42 action.

@@ -1,0 +1,26 @@
+[
+  {
+    "file": "/private/tmp/cf-c2-review-20260913/C2-civet-review.zip",
+    "bytes": 16020554,
+    "sha256": "739ccfff4780ee6e9ac192cfc2d13da420b06c7ce9543273637800ed408c6453",
+    "entries": 14
+  },
+  {
+    "file": "/private/tmp/cf-c2-review-20260913/C2-fox-review.zip",
+    "bytes": 15429510,
+    "sha256": "52335d53ab31fce886d4c6ca340a376e6ad6eaac3020da64e7c6af14ffaf804e",
+    "entries": 14
+  },
+  {
+    "file": "/private/tmp/cf-c2-review-20260913/C2-procedural-review.zip",
+    "bytes": 15336473,
+    "sha256": "3ad4a15d7c197852faec561df571cbf7686aa386e1bd8996890a8a99cf8323f5",
+    "entries": 14
+  },
+  {
+    "file": "/private/tmp/cf-c2-review-20260913/C2-failed-parts-review.zip",
+    "bytes": 15728323,
+    "sha256": "be900003511401dba5f791d4119ea9f94b47633bc985de3c46967c2208e9233c",
+    "entries": 14
+  }
+]

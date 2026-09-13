@@ -1,0 +1,80 @@
+{
+  "status": "REVIEW_REQUIRED_PARTS_FAILED",
+  "source": "1e5c80be",
+  "fallback": "explicitly authorized whole-portrait staging",
+  "partsFailures": [
+    "Civet head/neck gap in proof-02/civet-hit.png",
+    "Fox compression refusal first at1375ms on dense scan"
+  ],
+  "captures": [
+    {
+      "id": "civet",
+      "fps": 60.00279547133644,
+      "updateP95Ms": 0.20000001788139343,
+      "encodedMedia": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "codec_type": "video"
+          },
+          {
+            "codec_name": "opus",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "10.219556",
+          "size": "8842010"
+        }
+      }
+    },
+    {
+      "id": "fox",
+      "fps": 60.00219641983567,
+      "updateP95Ms": 0.20000001788139343,
+      "encodedMedia": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "codec_type": "video"
+          },
+          {
+            "codec_name": "opus",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "10.167333",
+          "size": "8277263"
+        }
+      }
+    },
+    {
+      "id": "procedural",
+      "fps": 60.00219641983567,
+      "updateP95Ms": 0.29999998211860657,
+      "encodedMedia": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "codec_type": "video"
+          },
+          {
+            "codec_name": "opus",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "10.174130",
+          "size": "8319188"
+        }
+      }
+    }
+  ]
+}
