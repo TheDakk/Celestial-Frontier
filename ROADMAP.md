@@ -98,3 +98,9 @@ sandbox, with a NEW evidence directory:
 It requires clean committed source (.DS_Store excepted), checks actual Pixi pixels and a missing-head
 negative control, and records source/browser provenance. It has NOT run yet. Then continue C2
 from its actual result. No C3 source or staging has been produced; no GitHub write is needed.
+
+
+Signing unblocked and verified:1b0b5707. Native-rest-01 stopped before browser launch because
+Rolldown produced multiple Pixi chunks but the runner specified output.file. Runner now uses
+output.dir with named entry/chunks. Failure retained in native-rest-01/report.json. Next native
+attempt uses native-rest-02 on the corrected committed runner; no game/asset change.
