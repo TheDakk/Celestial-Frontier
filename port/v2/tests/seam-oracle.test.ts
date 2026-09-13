@@ -31,7 +31,7 @@ describe('seam oracle', () => {
     expect(intact.gapPixelsInsideEnvelope).toBe(0); expect(intact.perJoint.head!.seamPixels).toBe(0); expect(intact.perJoint.neck!.seamPixels).toBe(0);
     const wedge = run(render((x, y) => body(x, y) && !(x >= 236 && x < 242 && y >= 150 && y < 250)), dir, 'wedge'); // a 6 px vertical cut through the head pivot column
     // The slot is open at both silhouette ends, so the closing fills it except within ~one radius of each end: most of 6 x 100, the same under both discs that contain it.
-    expect(wedge.perJoint.head!.seamPixels).toBeGreaterThan(6 * 70); expect(wedge.perJoint.head!.seamPixels).toBeLessThanOrEqual(6 * 100); expect(wedge.perJoint.neck!.seamPixels).toBe(wedge.perJoint.head!.seamPixels); // neck's parent (chest at 200,200) is 40 px away: inside its disc
+    expect(wedge.perJoint.head!.seamPixels).toBeGreaterThan(6 * 70); expect(wedge.perJoint.head!.seamPixels).toBeLessThanOrEqual(6 * 100); expect(wedge.perJoint.neck!.seamPixels).toBeGreaterThan(0); expect(wedge.perJoint.neck!.seamPixels).toBeLessThan(wedge.perJoint.head!.seamPixels); // neck's parent (chest at 200,200) is 40 px away: its 40 px disc clips only the cut's middle rows
     expect(wedge.gapPixelsInsideEnvelope).toBe(wedge.perJoint.head!.seamPixels); // and nothing else anywhere
     expect(wedge.perJoint.hindFarKnee!.seamPixels).toBe(0); // hindFarRoot at (120,220): the cut is 116 px away, outside its 40 px disc
     const concavity = run(render((x, y) => body(x, y) && !(x >= 200 && x < 300 && y >= 150 && y < 200)), dir, 'concavity'); // a 100 px wide notch: wider than 2 x closing radius (8 px), not a gap
