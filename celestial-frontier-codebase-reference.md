@@ -6457,7 +6457,8 @@ painter's drawn proportions take precedence over the ignored generic QUAD2 dimen
 alpha-driven conforming triangulation, two depth index sets, inherited affine skinning and
 shared finite clips. `port/v2/tools/quadruped-proof` is an isolated Pixi review/capture tool,
 not a game route. Native exact-rest checks pass on all three, but triangle-extreme shape checks fail;
-review staging uses the explicit whole-portrait fallback. Encoded-duration verification found
-short first recordings; the recorder correction awaits local signing. Art acceptance remains
-pending. Blender projection is
+review staging uses the explicit whole-portrait fallback. Encoded-duration verification rejected
+short initial recordings. Sourcefb008d58 now supplies three independently verified ten-second
+fallback captures at60fps; this is not mesh-performance or visual acceptance. The articulated
+proof remains unfinished and Nick reviews these captures before another batch. Blender projection is
 abandoned for this browser proof; original canid/turnaround assets remain for the engine port.

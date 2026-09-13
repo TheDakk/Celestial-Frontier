@@ -6,9 +6,9 @@ further 3D tokens/projections or texture-finisher passes. The approved bounded r
 [a shared 2D quadruped template](audits/CIVET_2D_PROOF_20260912/README.md), with hash-bound authored
 Civet/fox landmarks and draw-time procedural geometry from the winning painter. Native source2c33f8c7
 proved exact rest for all three but failed shape at clip extremes; the isolated review uses
-labelled whole-portrait fallback. Qualified ten-second captures and Nick's review are pending
-a recorder correction; source4eb7e24c is signed and the next local signing is blocked by
-1Password returning an agent error. This supersedes the Blender
+labelled whole-portrait fallback. Qualified ten-second fallback captures are now available from native sourcefb008d58,
+measured at60fps; these timings do not qualify mesh deformation. Nick's review is pending.
+Joint articulation remains unfinished; no more rework runs past this capture stop. This supersedes the Blender
 proof and its earlier pending rework approval below. No normal-game battle animation is changed.
 The template consumes record-owned anatomy, alpha triangulation, two shared-vertex depth layers
 and finite idle/attack/hit curves. Unsupported geometry keeps a labelled whole-portrait fallback.

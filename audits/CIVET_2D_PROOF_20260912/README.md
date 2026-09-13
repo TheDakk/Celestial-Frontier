@@ -1,6 +1,7 @@
 # Quadruped 2D proof — September 12
 
-Status: source prepared; native captures pending. Nick authorizes this bounded replacement
+Status: ten-second captures ready for review; **WHOLE-PORTRAIT FALLBACK** on all three.
+The deformable-mesh shape gate fails; articulated proof and visual acceptance remain open. Nick authorizes this bounded replacement
 for the abandoned Blender projection proof. No inference, 3D render, effect painting or kit edit.
 Claude's supplied review is retained verbatim at
 `../CLAUDE_CIVET_REVIEW_20260912/CLAUDE_CIVET_ARCHITECTURE_REVIEW.md` (signed 7f2aa40b).
@@ -103,3 +104,40 @@ Attempt04 (33bcc129) still hit the recorder-start deadline with a single supplie
 The next recorder-only source feeds the unchanged rest stage on animation frames until the
 start event arrives, before beginning the10-second timeline. The bounded startup contract
 has positive/never-starting negative controls. No artwork, rig or animation parameter changes.
+
+
+## Review stop — source fb008d58, native attempt05
+
+The recorder now completes all three captures; its start event requires continuously supplied
+rest frames before the timeline begins. Independent ffprobe confirms each native file contains
+at least10 seconds. The MP4 review copies retain those timelines (about0.2s container/recorder
+padding), H.264 video and AAC audio; source WebMs remain at the hash-indexed private paths.
+Decoded early/late Civet frames were visually checked, as were staged-turn stills. Existing
+cue audio is present but quiet (Civet maximum−44.3dB); no listening acceptance is claimed.
+
+| Subject | Native duration | Native frame rate | Fallback update p95 |
+|---|---:|---:|---:|
+| civet | 10.163s | 60.00fps | 0.10ms |
+| fox | 10.181s | 60.00fps | 0.10ms |
+| procedural | 10.120s | 60.00fps | 0.00ms |
+
+These timings measure the **fallback**, not a qualified deformable mesh. Each original mesh
+reproduces the keyed master exactly at rest; zero moved support vertices in idle/hit; admission
+and procedural-observer pixel controls pass. Shape still fails at8/51 Civet,14/51 fox and7/51
+procedural samples, including folded triangles; fox also records8 unreachable IK samples.
+Ears/jaw/tail articulation is not present in the fallback captures. No success claim is made
+for those movement requirements, universal coverage or normal-game battle integration.
+
+Review files: [Civet](captures/civet-10s.mp4), [fox](captures/fox-10s.mp4),
+[procedural quadruped](captures/procedural-10s.mp4). Each includes accepted E alongside the stage.
+[Native report](captures/report.json), [media manifest](captures/media-manifest.json),
+[source manifest](captures/source-manifest.json), and resolved-anatomy JSONs are retained.
+All four supplied Claude reviews remain verbatim. Accepted E and the raw masters are unchanged.
+No inference,3D render,effects painting,kit edit,GitHub write or queued experiment occurred.
+
+Next decision is Nick's review of the explicitly allowed fallback. Recommendation: repair the
+shared weight field / foot constraints and unreachable-IK handling before treating the articulated
+Civet proof as complete; this is a proposed next bounded batch, not permission to keep iterating
+past this capture stop. After the proof decision: the new-lever weather ladder for Nick's pick,
+then the smaller-finisher Mac comparison (at most3, redistribution permitted) and one best
+candidate phone attempt. Promotion gates and the undecided LFS/history boundary remain unchanged.
