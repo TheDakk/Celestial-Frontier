@@ -66,3 +66,20 @@ Checks before native run: three template tests with negative controls; 79 existi
 kinematics and articulated-rig tests; V2 package TypeScript and root validate all PASS.
 An initial negative-test fixture hit a proportion bound before its intended alpha test; the
 fixture was corrected and the failure retained in this account. No acceptance threshold changed.
+
+
+## First native result — source 2c33f8c7
+
+All three native Sprite/mesh rest comparisons are pixel-identical. Admission controls and
+painter-observer pixel equality pass, and locked support vertices have zero movement in
+idle/hit. Shape fails: Civet8, fox14, procedural7 of51 extrema violate the shared triangle
+bounds; worst signed area ratios −.793/−2.069/−1.457. Fox also records8 unreachable IK
+samples. All captures are explicitly WHOLE-PORTRAIT FALLBACK; articulated success is not
+claimed. Fallback capture fps58.70/60.00/60.00; Civet misses60. Zero browser exceptions.
+
+Independent ffprobe found9.875/8.317/8.316-second recordings despite the10-second sampled
+timelines. The first artifacts remain under /private/tmp/cf-quadruped-proof-20260912-01,
+with committed reports and hash index at attempt-01. The recorder is corrected to resume
+audio before recording, start its silent track immediately, await recorder start, and request
+every canvas frame explicitly. The next capture changes no artwork, anatomy, template curves
+or thresholds. This is an instrument correction, not another art/rig experiment.

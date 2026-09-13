@@ -3,7 +3,7 @@ const here=path.dirname(fileURLToPath(import.meta.url)),repo=path.resolve(here,'
 if(fs.existsSync(out))throw Error('Build must be new');fs.mkdirSync(out);const sha=b=>crypto.createHash('sha256').update(b).digest('hex'),sources=new Map();
 const record=p=>{const b=fs.readFileSync(p);return {path:path.relative(repo,p),bytes:b.length,sha256:sha(b)};};
 const add=p=>sources.set(p,record(p));
-for(const name of ['entry.mjs','index.html','build.mjs','runner.mjs'])add(path.join(here,name));
+for(const name of ['entry.mjs','index.html','build.mjs','runner.mjs','capture-contract.mjs'])add(path.join(here,name));
 for(const name of ['port/v2/package-lock.json','port/v2/tools/browsercdp.mjs'])add(path.join(repo,name));
 const bundle=await rolldown({input:path.join(here,'entry.mjs'),platform:'browser',plugins:[{name:'source-receipt',transform(_,id){if(path.isAbsolute(id)&&fs.existsSync(id)&&fs.statSync(id).isFile())add(id);}}]});
 try{await bundle.write({dir:out,format:'es',entryFileNames:'bundle.js',chunkFileNames:'chunk-[hash].js'});}finally{await bundle.close();}
