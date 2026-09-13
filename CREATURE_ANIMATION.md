@@ -342,3 +342,9 @@ Current optional mask capture completes ordinary paint first and observes a seco
 invocation of the same owner. The normal portrait and cut-out always come from the first
 invocation. Replay anatomy/material and full original-alpha coverage are strict gates; it
 never replaces the ordinary painting with pixels from the readback render. Native proof pending.
+
+Native separated mask observation is now qualified on782e827a:0ordinary-render changed
+channels,21parts,31joints and actual translucent material. Procedural atlas readback/rest
+reconstruction0changedchannels. Real Claude compiler accepts all3records and produces repeated
+identical body cards/timelines; missing-head controls refuse. Evidence: C2_PARTS_ATLAS_20260913/
+body-cards-01 and native-painter-parts-03. Native rig motion acceptance still pending.
