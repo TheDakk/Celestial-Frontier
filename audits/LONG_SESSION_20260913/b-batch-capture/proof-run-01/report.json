@@ -1,20 +1,42 @@
 {
   "status": "REVIEW",
-  "source": "323835fe6c2abb5cf871cdde508d12b375769756",
+  "source": "5e1ff758115987e3534001ebaf2f4e282a07e13d",
   "worktreeStatus": [
-    "M audits/LONG_SESSION_20260913/LOG-B.md",
+    "M MOTION_KIT.md",
+    " M SOUND_KIT.md",
+    " M audits/LONG_SESSION_20260913/LOG-B.md",
     " M audits/LONG_SESSION_20260913/LOG.md",
-    " M audits/LONG_SESSION_20260913/a1-pose-sheets/procedural.body-card.json",
-    " M audits/LONG_SESSION_20260913/a1-pose-sheets/procedural.pose-sheet.svg",
-    " M audits/LONG_SESSION_20260913/a1-pose-sheets/procedural.timelines.json",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/build-manifest.json",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/build.log",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/civet-vs-platypus-10s.mp4",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-approach.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-command.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-flash-fade.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-hitstop.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-impact+170.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-impact+40.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-number.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-ready.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-return.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-strike.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-turn2-impact+170.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-turn2-impact+40.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-turn2-launch.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-turn2-strike.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn1-wild-impact+190.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn2-tide-impact+180.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn2-tide-launch+80.png",
+    " D audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/report.json",
     " M port/v2/apps/game/src/battle2-wiring.ts",
-    " M port/v2/apps/game/src/effects/index.ts",
+    " M port/v2/apps/game/src/battle2/README.md",
+    " M port/v2/apps/game/src/battle2/stage.ts",
     " M port/v2/apps/game/src/effects/pixi-adapter.ts",
-    " M port/v2/apps/game/src/effects/theme-library.ts",
+    " M port/v2/apps/game/src/effects/sequencer.ts",
+    " M port/v2/apps/game/src/main.ts",
+    " M port/v2/apps/game/src/tame-greeting-audio.ts",
+    " M port/v2/tests/effects-sequencer.test.ts",
     " M port/v2/tests/effects-theme-library.test.ts",
-    " M port/v2/tools/battle2-proof/entry.mjs",
-    " M port/v2/tools/battle2-proof/runner.mjs",
-    "?? port/v2/apps/game/src/effects/particle-texture.ts"
+    " M port/v2/tests/tame-greeting-audio.test.ts"
   ],
   "errors": [],
   "captures": [
@@ -22,7 +44,7 @@
       "durationMs": 10000,
       "frames": 602,
       "updateP95Ms": 0.30000001192092896,
-      "updateMaxMs": 1.0999999940395355,
+      "updateMaxMs": 1,
       "phases": [
         {
           "phase": "ready",
@@ -30,11 +52,11 @@
         },
         {
           "phase": "command",
-          "atMs": 916.5999999999999
+          "atMs": 900
         },
         {
           "phase": "approach",
-          "atMs": 1316.6
+          "atMs": 1300
         },
         {
           "phase": "action",
@@ -42,7 +64,7 @@
         },
         {
           "phase": "hitstop",
-          "atMs": 1866.6000000000001
+          "atMs": 1866.7
         },
         {
           "phase": "impact",
@@ -70,7 +92,7 @@
         },
         {
           "phase": "action",
-          "atMs": 5249.7
+          "atMs": 5249.8
         },
         {
           "phase": "hitstop",
@@ -78,7 +100,7 @@
         },
         {
           "phase": "impact",
-          "atMs": 5633.1
+          "atMs": 5633.2
         },
         {
           "phase": "return",
@@ -196,7 +218,7 @@
           "turn": 0,
           "cueId": "battle:cursor",
           "atMs": 900,
-          "lateMs": 16.6,
+          "lateMs": 0,
           "source": "battle",
           "beat": "command"
         },
@@ -204,7 +226,7 @@
           "turn": 0,
           "cueId": "battle:confirm",
           "atMs": 1300,
-          "lateMs": 16.6,
+          "lateMs": 0,
           "source": "battle",
           "beat": "command"
         },
@@ -212,7 +234,7 @@
           "turn": 0,
           "cueId": "battle:approach-start",
           "atMs": 1300,
-          "lateMs": 16.6,
+          "lateMs": 0,
           "source": "battle",
           "beat": "approach"
         },
@@ -244,7 +266,7 @@
           "turn": 0,
           "cueId": "ability:wild:impact",
           "atMs": 1852.5,
-          "lateMs": 14.1,
+          "lateMs": 14.2,
           "source": "left",
           "beat": "impact"
         },
@@ -252,7 +274,7 @@
           "turn": 0,
           "cueId": "battle:flash-sting",
           "atMs": 1852.5,
-          "lateMs": 14.1,
+          "lateMs": 14.2,
           "source": "battle",
           "beat": "impact"
         },
@@ -260,7 +282,7 @@
           "turn": 0,
           "cueId": "battle:shake-rumble",
           "atMs": 1852.5,
-          "lateMs": 14.1,
+          "lateMs": 14.2,
           "source": "battle",
           "beat": "impact"
         },
@@ -316,7 +338,7 @@
           "turn": 1,
           "cueId": "creature:attack-vocal",
           "atMs": 1657,
-          "lateMs": 10.53,
+          "lateMs": 10.63,
           "source": "right",
           "beat": "action"
         },
@@ -324,7 +346,7 @@
           "turn": 1,
           "cueId": "ability:tide:launch",
           "atMs": 1657,
-          "lateMs": 10.53,
+          "lateMs": 10.63,
           "source": "right",
           "beat": "launch"
         },
@@ -364,7 +386,7 @@
           "turn": 1,
           "cueId": "creature:hurt",
           "atMs": 2048,
-          "lateMs": 2.93,
+          "lateMs": 3.03,
           "source": "left",
           "beat": "reaction"
         },
@@ -382,8 +404,8 @@
         "right": "tide: procedural emitter effect (labelled; no painted sequence for this theme yet)"
       },
       "mimeType": "video/webm;codecs=vp9",
-      "bytes": 8829348,
-      "sha256": "3c5ed805d85f68ace2b197166096df5a6900366bd1f7b08a835a4a90e6cc5973",
+      "bytes": 8829568,
+      "sha256": "60c31907730712b5d43a77e69d4398233b9476cf7a043293ea3f182cc061cbc4",
       "encodedMedia": {
         "programs": [],
         "stream_groups": [],
@@ -394,14 +416,14 @@
           }
         ],
         "format": {
-          "duration": "10.114773",
-          "size": "8829348"
+          "duration": "10.104144",
+          "size": "8829568"
         }
       },
       "mp4": {
         "path": "civet-vs-platypus-10s.mp4",
-        "bytes": 4589967,
-        "sha256": "2b2e580dc96e414bf6b0c023c1703968c036d0b6a156a1fe33085c40a7ba0ff4"
+        "bytes": 4586796,
+        "sha256": "e15f9b6b5fcca47841d18974da8ce735b96684e7338ca3a6a3e298ac5026c817"
       }
     }
   ],
@@ -428,37 +450,37 @@
       "label": "strike",
       "ms": 1852.5,
       "file": "frame-strike.png",
-      "sha256": "6f92d7e2d3c7ec13bb86b960baa193a95411c5876502b0bfd26b5814dcf8ad16"
+      "sha256": "ed81de84aa22ecaec7c40b73ed24703bcdcaa6e19786b318324411716ba3e4d7"
     },
     {
       "label": "hitstop",
       "ms": 1872.5,
       "file": "frame-hitstop.png",
-      "sha256": "813f80c3bfa7c8e5d5a16918c1d6d13c99798c56f43454fbab68fa1d21bd5897"
+      "sha256": "9e052e5612ff8cde5073a8fb883e682d87a6d1aa0838a700e57df30db193cd08"
     },
     {
       "label": "flash-fade",
       "ms": 1932.5,
       "file": "frame-flash-fade.png",
-      "sha256": "edfd92e595da2ff8c2a610f304547e2c4d188d0cbffdd811073edcef2a26bb41"
+      "sha256": "b30f7517a060823353f8b3474414d6d2837c94ed17d459370c2aeba1968a2586"
     },
     {
       "label": "impact+40",
       "ms": 1892.5,
       "file": "frame-impact+40.png",
-      "sha256": "9b98822b4f7b9f3256a4cf7943131085cc352fd3ea951aaf00b0504b700d6c9a"
+      "sha256": "1b95c3995c35945a3dd38a48e2549c07ae7265b1ed95edc3c0322417ea4c3930"
     },
     {
       "label": "impact+170",
       "ms": 2022.5,
       "file": "frame-impact+170.png",
-      "sha256": "848986eb905cb3c9f14b01983ce920500984888ad2287a610d1bf77361f3e325"
+      "sha256": "717730ebcf962dec65e449987898de0a089acf064cfbcb5f2eed0bbbf2c3c0ad"
     },
     {
       "label": "number",
       "ms": 2152.5,
       "file": "frame-number.png",
-      "sha256": "cdb10b0f05a7e71e5841d5b30f50bac588902db6e579bcc4af6743c7fda9f5fe"
+      "sha256": "dcf17b669b3682e59d5f707b4186a7d7054148f9d50009ca8d1004eea7aa1358"
     },
     {
       "label": "return",
@@ -470,28 +492,28 @@
       "label": "turn2-strike",
       "ms": 5571.166666666666,
       "file": "frame-turn2-strike.png",
-      "sha256": "9a91c897e2709b4b15bbfd23a5f82a86d2ac53c470f90002a96e050d7331d047"
+      "sha256": "adbb6117e6612768976eb1fa4ee6a0ae7023b96e20665e7967b0edaed174545b"
     },
     {
       "label": "turn2-launch",
       "ms": 5299.166666666666,
       "file": "frame-turn2-launch.png",
-      "sha256": "87f7e443324d67fe607c41815e2923ceb3eddb78518d4339466f26e612a6330d"
+      "sha256": "add0cd4fbef06d6e1cd5c9bb0c8347829018fb0ec3f51b9d45bb21cf008442b6"
     },
     {
       "label": "turn2-impact+40",
       "ms": 5610.666666666666,
       "file": "frame-turn2-impact+40.png",
-      "sha256": "020445c5d32c89c2dea280135592d2a49d0427680ca16a0f5241235a9dc3c9af"
+      "sha256": "f5700f997854815ff5ac5c139f5c1e175abfab8772ffecb72d4036e1e63cf794"
     },
     {
       "label": "turn2-impact+170",
       "ms": 5740.666666666666,
       "file": "frame-turn2-impact+170.png",
-      "sha256": "719e4d7d36ea9901c46fe26ff8f34e359a98a3d5793232c470d1dafe08d528b9"
+      "sha256": "ed86e54344474aee139e3e039696f096d299491792f7c8266fff1627057ff1a7"
     }
   ],
-  "origin": "http://127.0.0.1:61190",
+  "origin": "http://127.0.0.1:61323",
   "browser": {
     "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
     "product": "Edg/153.0.4234.32",
@@ -571,7 +593,7 @@
       }
     ],
     "captures": [],
-    "cutMs": 33.70000001788139
+    "cutMs": 34.099999994039536
   },
   "canvasRect": {
     "x": 0,
