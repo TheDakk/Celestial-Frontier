@@ -48,3 +48,18 @@ pixels unchanged. Old declarations/records/atlases preserved as controls. Native
 measures Civet7400ms full rest head/neck/chest union (no ROI erosion), old0.025negative, zero
 restRGBAchange, oldfox1375msrefusal, newfox120Hzscan and actual card legSlack. No8%boundchange.
 No new10s capture before these gates pass. No kit/main.ts/protected module/GitHub edit.
+
+## Pack7 native result — Civet FAIL, fox PASS; capture stopped
+
+1873abe0 native-gates-01: both corrected rigs0restRGBAchanges. Fox old1375mscompression
+refusal retained; new120Hzscan1200samples passes,max5.0189%BL<8%, actual card alllegs3.19–4.23%
+slack and no notes. Civet7400msresthead/neck/chestunion143503pixels: old24473zeroalpha,
+new24370,target0FAIL. Count includes vacated outer boundary as well as internal gaps; visible
+throat seam independently remains. No third repair, bound relaxation or new10scapture.
+Civet/proc contactscanmax5.8267/5.2172% is not shape acceptance. All native failures retained.
+
+RESULT.json, REVIEW_PROMPT.md and native stills are the review handoff. Typecheck,7rig/contact
+tests,2patch tests,rootvalidate and diffcheck pass. Review kit/producer hashes unchanged.
+Nick's accepted portrait fallback retained. Codex stops for scope/review before more Civet
+work; Claude can review this bounded evidence and propose one next correction for Nick.
+C3 waits behind proof. No app switch for synchronization, no GitHub/PR42/kit/main.ts change.

@@ -42,15 +42,16 @@ Civet10.22139s clip at60.002fps/0.30ms p95 CPU update, but has a visible head/ne
 capture exceeds unchanged8%body-length compression bound. Procedural was not reached.
 C2 is NOT accepted. Static rest and sparse contacts did not prove moving shape.
 
-NEXT: Pack7 response imported verbatim63f16d68 (96aheadupstream). Fallback presentation
-ACCEPTED; parts FAIL stands. Two bounded repairs in C2_BOUNDED_REPAIR_20260913/candidate-01:
-Civet head radius.045 plus neck.040 atchest; fox re-observed knee points give alllegs≥3%BL
-slack. Old declarations and record retained. Native still/contact gates precede any new10s
-capture: Civet7400mszeroarena inside resthead/neck/chest silhouette, old.025fails, zero rest
-RGBAchange; oldfoxrefuses1375ms, newfox120Hzscanunderunchanged8%bound and clean cardlegSlack.
-Square-crop guard initially refused unused magenta corner; now rejects retained patch ink
-after disc/coverage mask, with negatives. Same samplecentres, masterbytes, curves and kit.
-Prior Codex LOG archived verbatim before Pack7 replacement. No protected paths changed.
+NEXT: review the failed bounded Civet repair before authorizing more scope. Pack7 verbatim
+63f16d68; corrections1873abe0. Fallback presentation ACCEPTED; parts FAIL stands.
+C2_BOUNDED_REPAIR_20260913/native-gates-01: both0restRGBAchange. Correctedfox120Hzscan passes,
+maxcompression5.0189%BL<unchanged8%; old record still refuses1375ms. Real card alllegs≥3%BL
+slack,no notes. Civet prescribedhead.045+neck.040 fails7400mszeroarena gate: old24473 versus
+new24370transparent pixels in143503pixelresthead/neck/chestunion. Includes vacatedboundary
+as well as internalgaps; throat seam visually remains. No thirdrepair or new10scapture.
+RESULT.json and REVIEW_PROMPT.md provide evidence and copy-ready Claude review scope.
+Same sourcecentres; master/turnaround/curves/kit unchanged. Retained patch-ink guard has
+negativecontrols; earlier squarecropcorner refusal retained. PriorCodexLOG archivedverbatim.
 
 C3 then original rights-recorded quadruped/Wild/battle/rain/fur48k24bitmono dry WAV +Opus/SHA,
 CONTRACTS1 names; first new sound class stops. Existing proof whoosh/ping is not C3. C4 library
@@ -59,7 +60,7 @@ CONTRACTS1 names; first new sound class stops. Existing proof whoosh/ping is not
 C5 prune then3merge-commit tiers to develop (UI,painted engine,research as tools), no newbranches.
 LFS migration only on Nick's explicit go. No PRReady until Civet/weather/phone decisions.
 
-Codex next: run bounded native still/contact gates, then capture only if they pass. Claude next: review supplied
+Codex next: stop for review/scope on remaining Civet gap; fox repair is mechanically qualified. Claude next: review supplied
 motion evidence if Nick requests; corrected producer is already consumed read-only, no app
 switch or routine sync needed. Fullsuite24preexistingfailures remain C5. Rootvalidate/focused
 checks required for this batch; no integrated chain. Signing has succeeded after the generic
