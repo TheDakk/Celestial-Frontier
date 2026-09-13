@@ -6444,3 +6444,17 @@ helppop outside-tap closer. `resetMemoryState` now clears the engineer's track
 
 *Generated for continuity. If the source and this document disagree, trust the source —
 then update this file.*
+
+## Quadruped 2D proof — matches code as of 2026-09-12
+
+`port/v2/packages/art/src/quadruped-anatomy.ts` defines a draw-time observation boundary.
+`resolveProceduralCanvas` optionally exposes the selected generic quadruped owner's actual
+limb, body, head, ear and banded-tail coordinates with its ink canvas. Existing drawing is
+unchanged; other routes do not falsely emit this template. Authored master landmarks live in
+`audits/CIVET_2D_PROOF_20260912`, hash-bound to the accepted Civet/fox PNGs. The specialized Civet
+painter's drawn proportions take precedence over the ignored generic QUAD2 dimensions.
+`port/v2/tools/creature-animation/quadruped-template.mjs` owns bounded graph admission,
+alpha-driven conforming triangulation, two depth index sets, inherited affine skinning and
+shared finite clips. `port/v2/tools/quadruped-proof` is an isolated Pixi review/capture tool,
+not a game route. Native evidence and art acceptance are pending. Blender projection is
+abandoned for this browser proof; original canid/turnaround assets remain for the engine port.
