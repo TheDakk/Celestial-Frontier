@@ -26,7 +26,9 @@ tokens/projections, texture finisher, effect painting, kit edits or Klein phone 
 Shared finite idle/attack/hit and a staged Pixi turn beside accepted E; stop at ten-second
 captures for Nick. Explicit whole-portrait fallback if rest/shape cannot hold. Full details,
 authority reconciliation and limitations: audits/CIVET_2D_PROOF_20260912/README.md.
-Source prepared; native capture pending. Three new template tests/negative controls,79 existing
+First native source2c33f8c7: exact rest passes for all three; shape fails and all use labelled
+whole-portrait fallback. First capture durations were short; one recorder-only correction is
+prepared, with no artwork/curve change. Capture again and verify durations independently. Three new template tests/negative controls,79 existing
 bridge/kinematics/rig tests, package TypeScript and root validation PASS. No normal-game battle
 route changed. Keep the source clean and signed before the isolated native runner.
 

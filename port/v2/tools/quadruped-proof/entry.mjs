@@ -86,14 +86,19 @@ try{
   }
   const select=id=>{selected=subjects.find(x=>x.id===id);required(selected,id);for(const s of subjects)s.holder.visible=s===selected;frame(0);};
   const capture=async id=>{
-    select(id);prepareStingAudioForGesture();const audioContext=window.ac?.(),destination=audioContext?.createMediaStreamDestination();if(destination)sfxOut(audioContext).connect(destination);
-    const stream=app.canvas.captureStream(60);if(destination)for(const track of destination.stream.getAudioTracks())stream.addTrack(track);
-    const chunks=[],recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9,opus',videoBitsPerSecond:7000000});recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};const stopped=new Promise(resolve=>recorder.onstop=resolve);recorder.start();
+    select(id);prepareStingAudioForGesture();const audioContext=window.ac?.();if(audioContext)await audioContext.resume();
+    const destination=audioContext?.createMediaStreamDestination();let silentClock;
+    if(destination){sfxOut(audioContext).connect(destination);silentClock=audioContext.createBufferSource();silentClock.buffer=audioContext.createBuffer(1,128,audioContext.sampleRate);silentClock.loop=true;silentClock.connect(destination);silentClock.start();}
+    // Request every presentation frame explicitly, including an unchanged
+    // fallback idle. A silent audio source prevents recorder track startup from
+    // waiting for the first cue and discarding the leading idle interval.
+    const stream=app.canvas.captureStream(0),videoTrack=stream.getVideoTracks()[0];if(destination)for(const track of destination.stream.getAudioTracks())stream.addTrack(track);
+    const chunks=[],recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9,opus',videoBitsPerSecond:7000000});recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};const stopped=new Promise(resolve=>recorder.onstop=resolve),started=new Promise(resolve=>recorder.onstart=resolve);recorder.start();videoTrack.requestFrame();await started;
     const updates=[],deltas=[],events=[];let previous,start,whoosh=false,ping=false;
     await new Promise(resolve=>{const tick=now=>{if(start===undefined)start=now;const ms=Math.min(10000,now-start);if(previous!==undefined)deltas.push(now-previous);previous=now;
-      updates.push(frame(ms).updateMs);if(ms>=3000&&!whoosh){playWhoosh();whoosh=true;events.push({cue:'existing whoosh',atMs:ms});}if(ms>=4230&&!ping){playSurveyPing();ping=true;events.push({cue:'existing ping',atMs:ms});}
+      updates.push(frame(ms).updateMs);videoTrack.requestFrame();if(ms>=3000&&!whoosh){playWhoosh();whoosh=true;events.push({cue:'existing whoosh',atMs:ms});}if(ms>=4230&&!ping){playSurveyPing();ping=true;events.push({cue:'existing ping',atMs:ms});}
       if(ms>=10000)resolve();else requestAnimationFrame(tick);};requestAnimationFrame(tick);});
-    recorder.stop();await stopped;stream.getTracks().forEach(t=>t.stop());if(destination)sfxOut(audioContext).disconnect(destination);
+    await new Promise(resolve=>setTimeout(resolve,100));recorder.stop();await stopped;silentClock?.stop();silentClock?.disconnect();stream.getTracks().forEach(t=>t.stop());if(destination)sfxOut(audioContext).disconnect(destination);
     const blob=new Blob(chunks,{type:recorder.mimeType}),b=await blob.arrayBuffer(),sorted=updates.slice().sort((a,b)=>a-b),sortedFrames=deltas.slice().sort((a,b)=>a-b);
     const result={id,mode:selected.row.mode,durationMs:10000,frames:updates.length,fps:deltas.length/(deltas.reduce((a,b)=>a+b,0)/1000),updateMeanMs:updates.reduce((a,b)=>a+b,0)/updates.length,updateP95Ms:sorted[Math.floor(sorted.length*.95)],updateMaxMs:Math.max(...updates),frameP95Ms:sortedFrames[Math.floor(sortedFrames.length*.95)],events,mimeType:blob.type,bytes:b.byteLength,sha256:await hashBytes(b),video:b64(b)};
     state.captures.push({...result,video:undefined});return result;
