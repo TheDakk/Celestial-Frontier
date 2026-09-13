@@ -156,10 +156,12 @@ export function cutFixtureParts(alpha: Uint8Array, width: number, height: number
       return Math.min(Math.PI / 2, (total * Math.PI) / 180);
     };
     const pivotPx = (c: number): readonly [number, number] => { const pv = lm(record, FIXTURE_PARTS[c]!.parentJoint); return [pv[0] * width, pv[1] * height]; };
+    // A band deeper than half the descendant's own size copies the whole appendage (a ghost ear when it swings): cap by the descendant box.
+    const sizeCap = (c: number): number => { const b = box[c]!; return b.n === 0 ? 0 : 0.5 * Math.min(b.x1 - b.x0 + 1, b.y1 - b.y0 + 1); };
     const depthAt = (x: number, y: number, o: number, c: number): number => {
-      if (!byLimit) return underlapPx;
+      if (!byLimit) return Math.min(underlapPx, Math.max(1, sizeCap(c)));
       const pv = pivotPx(c), d = Math.hypot(x + 0.5 - pv[0], y + 0.5 - pv[1]) * Math.sin(swing(o, c)) * (byLimit.margin ?? 1.1);
-      return Math.min(byLimit.capPx, Math.max(underlapPx, d));
+      return Math.min(byLimit.capPx, Math.max(1, sizeCap(c)), Math.max(underlapPx, d));
     };
     for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
       const i = y * width + x, o = owner[i]!; if (o === 255) continue;
