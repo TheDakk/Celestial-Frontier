@@ -5,6 +5,8 @@
  * sway / disturb / harvest / grow instead of the fauna set. */
 import { type Ease, type KeyPose, type MotionAction, QUADRUPED_ACTIONS } from './actions.js';
 import type { FamilyTemplateId } from './family-templates.js';
+
+const cephArmsA = [0, 1, 2, 3, 4, 5, 6, 7].map((n) => 'arm' + n);
 import { tAt } from './timing.js';
 
 type J = Record<string, number>;
@@ -178,6 +180,93 @@ const RADIAL = fauna({
   feed: feed({ bell: 5, ...splay(30, 40, 45) }, splay(40, 52, 55), splay(25, 35, 40)),
 });
 
+/* ---- myriapod (B3): alternating tetrapod on four pairs, a segment wave through the body; forcipule bite, rear sting ---- */
+const myA = ['legAFar', 'legBNear', 'legCFar', 'legDNear'], myB = ['legANear', 'legBFar', 'legCNear', 'legDFar'];
+const mtripod = (k: number, f: number): J => ({ ...legSet(myA, -k, f), ...legSet(myB, k, -f) });
+const allLegsM = (knee: number, foot: number): J => legSet([...myA, ...myB], knee, foot);
+const legA = (knee: number, foot = 0): J => legSet(['legAFar', 'legANear'], knee, foot);
+const mwave = (k: number): J => mul({ seg0: 6, seg1: 10, seg2: 6, seg3: -6, seg4: -10, seg5: -6, seg6: 6, seg7: 10 }, k);
+const MYRIAPOD = fauna({
+  idle: [{ ...mwave(0.3), ...ant(-3) }, { head: -2, seg7: 3 }, { ...mwave(-0.3), ...ant(3) }, 0.003, -0.002, -0.005],
+  alert: [{ head: -15, ...ant(-30), seg0: -8, seg1: -4, ...legA(-20) }, -0.008],
+  approach: { crawl: loop4({ ...mtripod(22, 12), ...mwave(0.6) }, allLegsM(-3, 5), { ...mtripod(-22, -12), ...mwave(-0.6) }, 0, -0.005, 0.003) },
+  melee: { mandible: melee({ head: -14, seg0: -10, seg1: -6, ...legA(-25) }, { head: 12, mandible: -20, seg0: 6, ...legA(-10) }, { head: 20, mandible: -38, seg0: 8, seg1: 4, ...legA(28, -10) }, { head: 2, ...legA(5) }, [-0.04, 0.28, 0.34, 0.10], [0.02, -0.03, -0.01, 0.01]),
+    sting: melee(mwave(0.5), { seg5: 20, seg6: 35, seg7: 45 }, { seg4: 15, seg5: 30, seg6: 42, seg7: 55, head: -8 }, { seg6: 10, seg7: 15 }, [-0.03, 0.20, 0.26, 0.08], [0.01, -0.02, -0.01, 0]) },
+  cast: cast({ head: -18, seg0: -20, seg1: -12, ...legA(-45, 10), ...ant(-15) }, { head: -20, seg0: -22, seg1: -12, ...legA(-48, 10), ...ant(-25) }, { head: 18, mandible: -15, seg0: 6, ...legA(10) }, -0.04),
+  hit: hit({ head: -20, seg0: 8, seg1: 10, seg2: 6, ...ant(25), ...legA(-10) }, { head: -6, ...mwave(-0.4) }, 0.01),
+  dodge: dodge({ ...allLegsM(28, -32), head: -5, ...mwave(0.8) }, -0.22, -0.030),
+  faint: faint({ ...allLegsM(35, -45), head: 6 }, { root: 10, head: 20, ...allLegsM(55, -65), ...mwave(0.3), ...ant(30) }, 0.05, 0.14),
+  victory: victory({ head: -25, seg0: -25, seg1: -15, seg2: -6, ...legA(-55, 10), ...ant(-35) }, { head: -32, mandible: -15, seg0: -25, seg1: -15, seg2: -6, ...legA(-55, 10), ...ant(-45) }, -0.05),
+  tame: tame(mtripod(12, 8), { head: 18, seg0: 6, ...ant(12), ...legA(15) }, { head: 5 }),
+  feed: feed({ head: 22, seg0: 6, ...legA(12) }, { mandible: -20 }, { mandible: -3 }),
+});
+
+/* ---- cephalopod (B3): arms 0..3 hang left (sign −) and 4..7 right (sign +), so csplay(+) opens the crown; the front pair (3, 4) lashes ---- */
+const csplay = (s0: number, s1: number, s2: number): J => Object.fromEntries(cephArmsA.flatMap((a, n) => { const k = n < 4 ? -1 : 1; return [[a + 'Seg0', s0 * k], [a + 'Seg1', s1 * k], [a + 'Seg2', s2 * k]]; }));
+const calt = (s0: number, s1: number, s2: number): J => Object.fromEntries(cephArmsA.flatMap((a, n) => { const k = n % 2 === 0 ? 1 : -1; return [[a + 'Seg0', s0 * k], [a + 'Seg1', s1 * k], [a + 'Seg2', s2 * k]]; }));
+const front = (a: number, b: number, c: number): J => ({ arm3Seg0: a, arm3Seg1: b, arm3Seg2: c, arm4Seg0: a, arm4Seg1: b, arm4Seg2: c });
+const fins = (v: number): J => ({ finFar: -v, finNear: v });
+const eyes = (v: number): J => ({ eyeFar: v, eyeNear: v });
+const CEPHALOPOD = fauna({
+  idle: [{ mantle: 2, ...csplay(3, 4, 5) }, { head: -2, ...fins(6), siphon: -4 }, { mantle: -2, ...csplay(-2, -3, -4) }, 0.002, -0.005, -0.010],
+  alert: [{ mantle: -10, head: -5, ...csplay(-15, -20, -25), ...eyes(-8), ...fins(20) }, -0.020],
+  approach: { jet: [P(0.3, 'ease-in', { mantle: -12, siphon: 25, ...csplay(-28, -34, -40) }, 0, -0.060), P(0.6, 'ease-out', { mantle: 10, siphon: -10, ...csplay(18, 24, 30), ...fins(15) }, 0.30, -0.120), P(0.85, 'sine-in-out', { mantle: 3, ...csplay(6, 8, 10) }, 0.45, -0.050), P(1, 'sine-in-out', REST, 0, -0.020)],
+    crawl: loop4(calt(20, 25, 30), { mantle: -2, ...fins(5) }, calt(-20, -25, -30), 0, -0.004, 0.002) },
+  melee: { lash: melee({ mantle: -6, ...front(-40, -50, -55), ...eyes(-5) }, { mantle: 8, root: 6, ...front(45, 60, 70) }, { root: 10, mantle: 10, ...front(40, 60, -80) }, { mantle: 3, ...front(10, 15, 20) }, [-0.04, 0.28, 0.34, 0.10], [0.02, -0.03, -0.01, 0.01]),
+    bite: melee({ head: -10, mantle: -4, ...csplay(-10, -15, -20) }, { head: 8, root: 4, ...csplay(15, 20, 25) }, { head: 15, root: 8, ...csplay(25, 35, 40), ...eyes(6) }, { head: 2 }, [-0.04, 0.26, 0.32, 0.10], [0.02, -0.03, -0.01, 0.01]) },
+  cast: cast({ mantle: -18, head: -8, ...csplay(-30, -40, -45), ...fins(25), siphon: 15 }, { mantle: -20, head: -10, ...csplay(-32, -42, -48), ...fins(28), siphon: 18 }, { mantle: 12, head: 6, ...csplay(28, 38, 42), siphon: -20 }, -0.08),
+  hit: hit({ mantle: 12, head: -10, root: -10, ...csplay(-12, -20, -25), ...eyes(-8) }, { root: -5, ...csplay(8, 12, 15) }),
+  dodge: dodge({ mantle: -12, root: -18, siphon: 30, ...csplay(-25, -35, -40) }, -0.22, -0.070),
+  faint: faint({ mantle: 8, ...csplay(12, 18, 22) }, { root: 28, mantle: 18, head: 10, ...csplay(28, 38, 45), ...fins(-15) }, 0.06, 0.18),
+  victory: victory({ mantle: -18, root: -22, ...csplay(-35, -45, -50), ...fins(30) }, { mantle: 12, root: -8, ...csplay(30, 42, 50), ...fins(35), ...eyes(10) }, -0.10),
+  tame: tame({ ...csplay(5, 8, 10), mantle: 2 }, { head: 8, ...csplay(14, 20, 24) }, { head: 3 }),
+  feed: feed({ head: 5, ...csplay(28, 38, 42) }, csplay(40, 50, 55), csplay(24, 32, 38)),
+});
+
+/* ---- flyer-membrane (B3): + LIFTS a wing (bones point backward from the chest, like the bird); crawl is the folded-wing scramble ---- */
+const bw = (root: number, elbow: number, wrist: number, tip: number): J => ({ ...pair('wing', root, 'Root'), ...pair('wing', elbow, 'Elbow'), ...pair('wing', wrist, 'Wrist'), ...pair('wing', tip, 'Tip') });
+const bl = (knee: number, foot: number): J => ({ ...pair('leg', knee, 'Knee'), ...pair('leg', foot, 'Foot') });
+const bears = (v: number): J => pair('ear', v, 'Tip');
+const FLYER = fauna({
+  idle: [{ spine: -1, chest: -2, ...bw(2, -2, 0, 0) }, { neck: -2, head: 1, ...bears(-3) }, { ...bw(-2, 2, 0, 0), tail0: 2 }, 0.003, -0.004, -0.010],
+  alert: [{ neck: -14, head: -10, ...bears(-25), ...bw(20, -10, 0, 5), spine: -3 }, -0.010],
+  approach: { flight: [P(0.25, 'sine-in-out', { ...bw(70, -30, -20, -10), ...bl(30, -30), spine: -6, neck: 4 }, 0, -0.120), P(0.5, 'sine-in-out', { ...bw(10, 10, 15, 20), ...bl(30, -30), spine: -4 }, 0, -0.160),
+      P(0.75, 'sine-in-out', { ...bw(-50, 40, 35, 30), ...bl(30, -30), spine: 2, neck: -3 }, 0, -0.120), P(1, 'sine-in-out', { ...bw(20, 0, 0, 5), ...bl(30, -30), spine: -4 }, 0, -0.100)],
+    crawl: loop4({ ...bw(-30, 30, 20, 10), ...bl(-20, 15), spine: 4 }, { ...bw(-25, 25, 15, 5), ...bl(0, 10) }, { ...bw(-35, 35, 25, 15), ...bl(20, -15), spine: 4 }, 0, -0.006, 0.004) },
+  melee: { bite: melee({ neck: -20, head: -16, spine: -4, ...bw(30, -15, 0, 0), ...bears(-15) }, { neck: 22, head: 14, jaw: -15, spine: 6, ...bw(45, -10, 0, 5) }, { neck: 30, head: 20, jaw: -35, spine: 8, ...bw(50, -5, 0, 10) }, { neck: -4, head: 2 }, [-0.03, 0.26, 0.30, 0.08]),
+    claw: melee({ ...bl(-30, 20), spine: -6, ...bw(35, -15, 0, 0) }, { legNearKnee: -60, legNearFoot: 35, ...bw(55, -10, 0, 5), spine: -8 }, { legNearKnee: -68, legNearFoot: 48, ...bw(60, -5, 0, 10), root: 6 }, { legNearKnee: -15, legNearFoot: 10 }, [-0.04, 0.28, 0.32, 0.10], [0.02, -0.06, -0.03, 0.01]) },
+  cast: cast({ ...bw(85, -40, -30, -20), spine: -12, neck: -10, tail0: -10 }, { ...bw(90, -45, -35, -25), spine: -12, neck: -12, head: -5, ...bears(-10) }, { ...bw(-20, 20, 15, 10), neck: 15, head: 20, jaw: -15, spine: -6 }, -0.05),
+  hit: hit({ neck: -15, head: -18, spine: 8, chest: -5, ...bw(25, -10, 0, 0), ...bears(12), tail0: 10 }, { neck: -6, head: -6, legFarKnee: -15, legFarFoot: 20, spine: 3 }),
+  dodge: dodge({ ...bl(20, -30), ...bw(40, -15, 0, 5), spine: -4 }, -0.25, -0.060),
+  faint: faint({ ...bl(40, -50), spine: 8, neck: 6, head: 6 }, { ...bl(30, -30), root: 14, spine: 10, neck: 22, head: 20, ...bw(-30, -30, -20, -10), tail0: 20 }, 0.08, 0.20),
+  victory: victory({ ...bw(85, -45, -35, -25), spine: -15, neck: -10, head: -12, tail0: -15 }, { ...bw(90, -50, -40, -30), spine: -15, neck: -12, head: -30, jaw: -10, ...bears(-20) }, -0.04),
+  tame: tame({ ...bl(-12, 10), head: -4 }, { neck: 20, head: 18, ...bw(-5, 0, 0, 0), spine: 2, ...bears(-8) }, { head: 5 }),
+  feed: feed({ neck: 30, head: 20, spine: 4 }, { jaw: -14 }, { jaw: -2 }),
+});
+
+/* ---- primate (B3): arms and legs alternate in the knuckle-walk; punch drives the near arm; climb reaches overhead ---- */
+const pa = (sh: number, el: number, hand: number): J => ({ ...pair('arm', sh, 'Shoulder'), ...pair('arm', el, 'Elbow'), ...pair('arm', hand, 'Hand') });
+const pl = (hip: number, knee: number, foot: number): J => ({ ...pair('leg', hip, 'Hip'), ...pair('leg', knee, 'Knee'), ...pair('leg', foot, 'Foot') });
+const alt = (base: string, v: number, suffix: string): J => ({ [base + 'Far' + suffix]: -v, [base + 'Near' + suffix]: v });
+const tail3 = (a: number, b: number, c: number): J => ({ tail0: a, tail1: b, tail2: c });
+const climbA: J = { armFarShoulder: -70, armFarElbow: 45, armNearShoulder: -40, armNearElbow: 30, legFarHip: 20, legFarKnee: -45, legNearHip: 40, legNearKnee: -60, spine: -6 };
+const climbB: J = { armFarShoulder: -40, armFarElbow: 30, armNearShoulder: -70, armNearElbow: 45, legFarHip: 40, legFarKnee: -60, legNearHip: 20, legNearKnee: -45, spine: -6 };
+const PRIMATE = fauna({
+  idle: [{ spine: -2, chest: -1, ...tail3(3, 4, 5) }, { neck: -2, head: 2, ...pa(2, -3, 0) }, { spine: 1, ...tail3(-3, -4, -5) }, 0.003, -0.003, -0.008],
+  alert: [{ neck: -12, head: -10, spine: -6, chest: -4, ...pa(-20, -15, 0), ...tail3(-15, -10, -5) }, -0.010],
+  approach: { walk: loop4({ ...pa(0, 10, 0), ...pl(0, -15, 5), ...alt('arm', 25, 'Shoulder'), ...alt('leg', 25, 'Hip'), spine: 3 }, { ...pa(0, 15, 0), ...pl(0, -10, 10) }, { ...pa(0, 10, 0), ...pl(0, -15, 5), ...alt('arm', -25, 'Shoulder'), ...alt('leg', -25, 'Hip'), spine: 3 }, 0, -0.008, 0.004),
+    climb: loop4(climbA, { ...pa(-50, 35, 0), ...pl(30, -50, 10), spine: -4 }, climbB, 0, -0.050, -0.030) },
+  melee: { punch: melee({ armNearShoulder: 35, armNearElbow: -80, spine: -6, chest: -4, ...pl(10, -15, 0) }, { armNearShoulder: -60, armNearElbow: -20, armNearHand: -10, spine: 8, chest: 6 }, { armNearShoulder: -75, armNearElbow: -5, armNearHand: -20, spine: 10, chest: 8, root: 4, head: 4 }, { armNearShoulder: -20, armNearElbow: -25, spine: 3 }, [-0.05, 0.30, 0.36, 0.10], [0.02, -0.03, -0.01, 0.01]),
+    bite: melee({ neck: -18, head: -14, spine: -6, ...pa(-15, -20, 0) }, { neck: 18, head: 12, jaw: -14, spine: 8, ...pa(-30, -15, 0) }, { neck: 26, head: 18, jaw: -32, spine: 10, ...pa(-35, -10, 0) }, { neck: -3, head: 2 }, [-0.04, 0.26, 0.32, 0.10]) },
+  cast: cast({ ...pa(-95, -30, -20), spine: -15, chest: -10, neck: -10, head: -8, ...tail3(-10, -8, -5) }, { ...pa(-100, -35, -25), spine: -15, chest: -10, neck: -12, head: -10 }, { ...pa(-40, -10, 15), neck: 12, head: 15, jaw: -10, spine: 4 }, -0.06),
+  hit: hit({ neck: -16, head: -18, spine: 8, chest: -6, ...pa(20, -25, 0), ...tail3(10, 8, 5) }, { neck: -6, head: -6, spine: 3, ...pl(-10, -15, 10) }),
+  dodge: dodge({ ...pl(25, -40, 10), ...pa(-30, -20, 0), spine: -6, neck: -6 }, -0.25, -0.050),
+  faint: faint({ ...pl(30, -45, 10), ...pa(20, -30, 0), spine: 8, head: 6 }, { ...pl(40, -30, 20), ...pa(35, -40, 10), root: 14, spine: 12, neck: 22, head: 26, ...tail3(15, 12, 8) }, 0.08, 0.20),
+  victory: victory({ ...pa(-100, -40, -20), spine: -18, chest: -10, neck: -8, head: -12, ...tail3(-12, -10, -6) }, { ...pa(-100, -45, -25), spine: -18, chest: -10, neck: -12, head: -28, jaw: -12, ...tail3(-16, -12, -8) }, -0.06),
+  tame: tame({ ...pl(-10, -12, 5), head: -4, ...pa(-8, -10, 0) }, { neck: 20, head: 18, spine: 3, ...pa(-15, -30, 10), ...tail3(4, 3, 2) }, { head: 5 }),
+  feed: feed({ neck: 24, head: 18, ...pa(-40, -70, 15) }, { jaw: -14 }, { jaw: -2 }),
+});
+
 /* ---- plants: branch/stem n alternates side (even right, odd left); sway(k) bends every chain base→tip ---- */
 const wsway = (k: number): J => ({ trunk: 0.3 * k, ...Object.fromEntries([0, 1, 2].flatMap((n) => { const s = n === 1 ? -1 : 1; return [['branch' + n + 'Base', k * s], ['branch' + n + 'Tip', 1.5 * k * s], ['leaf' + n, 2 * k * s]]; })) });
 const hsway = (k: number): J => Object.fromEntries([0, 1, 2, 3].flatMap((n) => { const s = n % 2 === 0 ? 1 : -1; return [['stem' + n + 'Seg0', 0.6 * k * s], ['stem' + n + 'Seg1', k * s], ['stem' + n + 'Seg2', 1.4 * k * s], ['frond' + n, 2 * k * s]]; }));
@@ -192,10 +281,12 @@ const HERB = plant(hsway, { frond0: 35, frond1: -35, frond2: 35, frond3: -35 });
 
 export const ACTIONS_BY_TEMPLATE: Readonly<Record<'quadruped' | FamilyTemplateId, Readonly<Record<string, MotionAction>>>> = Object.freeze({
   quadruped: QUADRUPED_ACTIONS, hopper: HOPPER, 'biped-bird': BIRD, fish: FISH, insect: INSECT, serpent: SERPENT, arachnid: ARACHNID, radial: RADIAL, 'plant-woody': WOODY, 'plant-herb': HERB,
+  myriapod: MYRIAPOD, cephalopod: CEPHALOPOD, 'flyer-membrane': FLYER, primate: PRIMATE,
 });
 /** Card weapon → the template's melee action name when the family's weapon has its own verb. */
 export const MELEE_ALIAS: Readonly<Record<string, Readonly<Record<string, string>>>> = Object.freeze({
   hopper: { claw: 'kick' }, insect: { bite: 'mandible' }, serpent: { bite: 'strike' }, radial: { sting: 'sting-arms', tail: 'sting-arms', bite: 'sting-arms' }, fish: {}, 'biped-bird': {}, arachnid: {}, quadruped: {},
+  myriapod: { bite: 'mandible' }, cephalopod: { constrict: 'lash', tail: 'lash' }, 'flyer-membrane': {}, primate: { claw: 'punch' },
 });
 export const actionsFor = (templateId: string): Readonly<Record<string, MotionAction>> | undefined => ACTIONS_BY_TEMPLATE[templateId as 'quadruped' | FamilyTemplateId];
 /** Gaits (approach:*) and melee verbs (melee:*) a template's library offers, in table order. */

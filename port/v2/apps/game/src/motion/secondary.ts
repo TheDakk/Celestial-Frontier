@@ -62,6 +62,8 @@ export const CHAIN_RULES: Readonly<Record<string, ChainRule>> = Object.freeze({
   frond:   { lagS: 0.05, overshoot: 0.15 }, // sway lag by segment base→tip
   bell:    { wobbleS: 0.12, overshoot: 0.30 },
   arm:     { lagS: 0.06 },
+  membrane: { lagS: 0.04, overshoot: 0.05 }, // B3 bat wing: the membrane trails the finger bones without feather flutter
+  tentacle: { lagS: 0.07, overshoot: 0.20 }, // B3 cephalopod arm: long lag, soft overshoot
   tail: {}, ear: {},
 });
 export interface SecondaryParams {

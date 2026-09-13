@@ -17,11 +17,11 @@ const KIT_SECTION_4 = ['quadruped', 'hopper', 'biped-bird', 'fish', 'insect', 'a
 const A11_SCOPE = ['quadruped', ...FAMILY_TEMPLATE_IDS];
 
 describe('A11 registry', () => {
-  it('registers every A11 template and still labels the four kit §4 names outside A11 as the whole-portrait fallback (the known gap)', () => {
+  it('registers every kit §4 template (A11 nine + B3 four); nothing in §4 falls to the whole-portrait fallback any more; a non-kit name still does', () => {
     for (const id of A11_SCOPE) expect(isMotionFallback(resolveTemplate(id)), id).toBe(false);
-    const gap = KIT_SECTION_4.filter((id) => !A11_SCOPE.includes(id));
-    expect(gap).toEqual(['myriapod', 'cephalopod', 'flyer-membrane', 'primate']);
-    for (const id of gap) { const f = resolveTemplate(id); expect(isMotionFallback(f) && f.reason, id).toMatch(new RegExp(id)); }
+    expect(KIT_SECTION_4.filter((id) => !A11_SCOPE.includes(id))).toEqual([]);
+    expect([...KIT_SECTION_4].sort()).toEqual([...A11_SCOPE].sort());
+    for (const id of ['gastropod', 'monotreme', 'plasma']) { const f = resolveTemplate(id); expect(isMotionFallback(f) && f.reason, id).toMatch(new RegExp(id)); }
   });
   it('keeps every joint inventory closed: limits for every joint, parents declared first, chains and body axis inside the inventory, ≤ 32 bones', () => {
     for (const t of Object.values(FAMILY_TEMPLATES)) {
@@ -48,7 +48,8 @@ describe('A11 registry', () => {
       frog: 'hopper', hopper: 'hopper', tree: 'plant-woody', shrub: 'plant-woody', vine: 'plant-woody', cane: 'plant-woody', fern: 'plant-herb', grass: 'plant-herb', rosette: 'plant-herb', seaweed: 'plant-herb', fungal: 'plant-herb', mammal: 'quadruped', reptile: 'quadruped' };
     for (const [f, t] of Object.entries(want)) expect(templateIdForFamily(f), f).toBe(t);
     expect(templateIdForFamily('Bird')).toBe('biped-bird');
-    for (const f of ['ceph', 'myriapod', 'gastropod', 'bat', 'primate', 'plasma']) expect(templateIdForFamily(f), f).toBeNull();
+    for (const [f, t] of Object.entries({ ceph: 'cephalopod', cephalopod: 'cephalopod', myriapod: 'myriapod', centipede: 'myriapod', millipede: 'myriapod', bat: 'flyer-membrane', primate: 'primate' })) expect(templateIdForFamily(f), f).toBe(t);
+    for (const f of ['gastropod', 'plasma', 'monotreme']) expect(templateIdForFamily(f), f).toBeNull();
     for (const t of Object.values(TEMPLATE_BY_FAMILY)) expect(isMotionFallback(resolveTemplate(t))).toBe(false);
   });
 });
@@ -67,6 +68,7 @@ describe('A11 synthetic fixtures and body cards', () => {
     const want: Record<string, [gait: string, weapons: string[], material: string, parts: number]> = {
       hopper: ['hop', ['bite', 'claw'], 'slick', 30], 'biped-bird': ['flight', ['peck', 'claw'], 'feathered', 18], fish: ['swim', ['bite'], 'scaled', 12], insect: ['crawl', ['bite'], 'chitinous', 20],
       serpent: ['slither', ['bite', 'constrict'], 'scaled', 12], arachnid: ['scuttle', ['sting', 'bite'], 'chitinous', 21], radial: ['drift', ['sting'], 'translucent', 20], 'plant-woody': ['none', [], 'warty', 10], 'plant-herb': ['none', [], 'slick', 16],
+      myriapod: ['crawl', ['bite', 'sting'], 'chitinous', 28], cephalopod: ['jet', ['constrict', 'bite'], 'slick', 31], 'flyer-membrane': ['flight', ['bite', 'claw'], 'furred', 21], primate: ['walk', ['claw', 'bite'], 'furred', 21],
     };
     for (const id of FAMILY_TEMPLATE_IDS) {
       const c = card(id), [gait, weapons, material, parts] = want[id]!;
@@ -77,15 +79,16 @@ describe('A11 synthetic fixtures and body cards', () => {
       expect(JSON.stringify(c)).toBe(JSON.stringify(compileBodyCard(structuredClone(syntheticRecord(id)), syntheticGenome(id))));
     }
     expect(card('fish').realm).toBe('aquatic'); expect(card('biped-bird').realm).toBe('aerial'); expect(card('hopper').realm).toBe('amphibious');
+    expect(card('cephalopod').realm).toBe('aquatic'); expect(card('flyer-membrane').realm).toBe('aerial'); expect(card('primate').parts.filter((p) => p.group === 'arms')).toHaveLength(6); expect(card('cephalopod').parts.filter((p) => p.group === 'fins')).toHaveLength(2);
   });
   it('routes by family when the record omits template, refuses a family/template disagreement and an unroutable family', () => {
     const { template: _t, ...noTemplate } = syntheticRecord('fish');
     expect(compileBodyCard(noTemplate as unknown as ResolvedAnatomyRecord, syntheticGenome('fish')).template.id).toBe('fish');
     const e = refusal(() => compileBodyCard({ ...syntheticRecord('fish'), family: 'bird' }));
     expect(e.reason).toBe('family-mismatch'); expect(e.message).toMatch(/"bird" routes to biped-bird/);
-    const u = refusal(() => compileBodyCard({ ...syntheticRecord('fish'), family: 'cephalopod' }));
-    expect(u.reason).toBe('unsupported-template'); expect(u.fallback).toMatchObject({ kind: 'whole-portrait', templateId: 'cephalopod' });
-    expect(compileBodyCardOrFallback({ ...syntheticRecord('fish'), family: 'cephalopod' })).toMatchObject({ kind: 'whole-portrait' });
+    const u = refusal(() => compileBodyCard({ ...syntheticRecord('fish'), family: 'gastropod' }));
+    expect(u.reason).toBe('unsupported-template'); expect(u.fallback).toMatchObject({ kind: 'whole-portrait', templateId: 'gastropod' });
+    expect(compileBodyCardOrFallback({ ...syntheticRecord('fish'), family: 'gastropod' })).toMatchObject({ kind: 'whole-portrait' });
   });
   it('refuses a landmark set that does not match the joint inventory, by name, in both directions', () => {
     const missing = refusal(() => { const r = syntheticRecord('insect'); const { legMidNearFoot: _x, ...landmarks } = r.landmarks; return compileBodyCard({ ...r, landmarks }); });
@@ -111,14 +114,15 @@ describe('A11 action libraries', () => {
   afterEach(() => vi.restoreAllMocks());
   it('offers the §4 verb set with the family gaits and weapons named in the brief; plants get sway/disturb/harvest/grow', () => {
     const want: Record<string, [gaits: string[], melees: string[]]> = { hopper: [['hop'], ['kick', 'bite']], 'biped-bird': [['walk', 'flight'], ['peck', 'claw']], fish: [['swim'], ['bite']], insect: [['crawl', 'flight'], ['mandible']],
-      serpent: [['slither'], ['strike', 'constrict']], arachnid: [['scuttle'], ['sting', 'bite']], radial: [['drift', 'pulse'], ['sting-arms']] };
+      serpent: [['slither'], ['strike', 'constrict']], arachnid: [['scuttle'], ['sting', 'bite']], radial: [['drift', 'pulse'], ['sting-arms']],
+      myriapod: [['crawl'], ['mandible', 'sting']], cephalopod: [['jet', 'crawl'], ['lash', 'bite']], 'flyer-membrane': [['flight', 'crawl'], ['bite', 'claw']], primate: [['walk', 'climb'], ['punch', 'bite']] };
     for (const id of FAUNA) {
       expect(templateGaits(id), id).toEqual(want[id]![0]); expect(templateMelees(id), id).toEqual(want[id]![1]);
       for (const v of ['idle', 'alert', 'cast', 'hit', 'dodge', 'faint', 'victory', 'tame', 'feed']) expect(actionsFor(id)![v], `${id}/${v}`).toBeDefined();
       expect(actionsFor(id)!.idle!.loop).toBe(true);
     }
     for (const id of PLANT_TEMPLATE_IDS) { expect(Object.keys(actionsFor(id)!)).toEqual(['sway', 'disturb', 'harvest', 'grow']); expect(actionsFor(id)!.sway!.loop).toBe(true); }
-    expect(actionsFor('cephalopod')).toBeUndefined();
+    expect(actionsFor('gastropod')).toBeUndefined();
   });
   it('every key pose of every action names only inventory joints, uses frozen eases, sits inside the joint limits at its extremes, and is deterministic', () => {
     for (const id of FAMILY_TEMPLATE_IDS) {
@@ -148,7 +152,8 @@ describe('A11 action libraries', () => {
   });
   it('resolves approach and melee per family (aliases: insect bite→mandible, serpent bite→strike, radial sting→sting-arms, hopper claw→kick)', () => {
     const want: Record<string, [string, string]> = { hopper: ['approach:hop', 'melee:bite'], 'biped-bird': ['approach:flight', 'melee:peck'], fish: ['approach:swim', 'melee:bite'], insect: ['approach:crawl', 'melee:mandible'],
-      serpent: ['approach:slither', 'melee:strike'], arachnid: ['approach:scuttle', 'melee:sting'], radial: ['approach:drift', 'melee:sting-arms'] };
+      serpent: ['approach:slither', 'melee:strike'], arachnid: ['approach:scuttle', 'melee:sting'], radial: ['approach:drift', 'melee:sting-arms'],
+      myriapod: ['approach:crawl', 'melee:mandible'], cephalopod: ['approach:jet', 'melee:lash'], 'flyer-membrane': ['approach:flight', 'melee:bite'], primate: ['approach:walk', 'melee:punch'] };
     for (const id of FAUNA) { expect(resolveActionId(card(id), 'approach').id, id).toBe(want[id]![0]); expect(resolveActionId(card(id), 'melee').id, id).toBe(want[id]![1]); }
     const kicker: BodyCard = { ...card('hopper'), weapons: ['claw'] }; expect(resolveActionId(kicker, 'melee')).toEqual({ id: 'melee:kick', note: null });
     const unarmed: BodyCard = { ...card('fish'), weapons: ['gore'] }; expect(resolveActionId(unarmed, 'melee')).toMatchObject({ id: 'melee:bite', note: expect.stringMatching(/no fish melee for weapons \[gore\]; bite used/) });
@@ -163,6 +168,12 @@ describe('A11 action libraries', () => {
     const sting = buildTimeline(card('arachnid'), 'melee', SEED); expect(deg(sting, 'abdomen', 3)).toBeCloseTo(62); expect(deg(sting, 'sting', 3)).toBeCloseTo(68);
     const hop = buildTimeline(card('hopper'), 'approach', SEED); expect(hop.root.dy[2]!.value).toBe(-0.18); expect(deg(hop, 'hindFarKnee', 2)).toBeCloseTo(-70);
     const flight = buildTimeline(card('biped-bird'), 'approach', SEED); expect(deg(flight, 'wingFarRoot', 1)).toBeCloseTo(65); expect(deg(flight, 'wingFarRoot', 3)).toBeCloseTo(-45);
+    // B3 strong poses: cephalopod lash whips the front pair −80 at the tip, bat bite opens the jaw 35, primate punch drives the near shoulder −75 at 0.36 BL, myriapod forcipules open 38.
+    const lash = buildTimeline(card('cephalopod'), 'melee', SEED); expect(deg(lash, 'arm3Seg2', 3)).toBeCloseTo(-80); expect(deg(lash, 'arm4Seg1', 3)).toBeCloseTo(60);
+    const batBite = buildTimeline(card('flyer-membrane'), 'melee', SEED); expect(deg(batBite, 'jaw', 3)).toBeCloseTo(-35); expect(deg(batBite, 'neck', 3)).toBeCloseTo(30);
+    const punch = buildTimeline(card('primate'), 'melee', SEED); expect(deg(punch, 'armNearShoulder', 3)).toBeCloseTo(-75); expect(punch.root.dx[3]!.value).toBe(0.36);
+    const forcipule = buildTimeline(card('myriapod'), 'melee', SEED); expect(deg(forcipule, 'mandible', 3)).toBeCloseTo(-38);
+    const batFlight = buildTimeline(card('flyer-membrane'), 'approach', SEED); expect(deg(batFlight, 'wingFarRoot', 1)).toBeCloseTo(70); expect(deg(batFlight, 'wingFarRoot', 3)).toBeCloseTo(-50);
   });
   it('idle (and plant sway) periods are seeded, non-integer and differ across two seeds for every template; mass scaling stays inside 0.6x..2.0x', () => {
     for (const id of FAMILY_TEMPLATE_IDS) {
@@ -193,6 +204,10 @@ describe('A11 secondary motion by chain kind and medium (kit §6)', () => {
     const bell = buildTimeline(card('radial'), 'hit', SEED).secondary.find((s) => s.partId === 'bell')!;
     expect(bell).toMatchObject({ kind: 'bell', wobbleMs: 120 }); expect(bell.damping).toBeCloseTo(0.35 * 0.75);
     expect(MEDIUM_RULES.aquatic).toEqual({ damping: 0.75, bobMs: 0, drift: true }); expect(MEDIUM_RULES.aerial.bobMs).toBe(1400);
+    const membrane = buildTimeline(card('flyer-membrane'), 'hit', SEED).secondary.filter((s) => s.partId === 'wingFar');
+    expect(membrane.map((s) => [s.kind, s.lagMs, s.flutterMs])).toEqual([['membrane', 40, 0], ['membrane', 80, 0], ['membrane', 120, 0], ['membrane', 160, 0]]); // furred: no feather flutter
+    const tentacle = buildTimeline(card('cephalopod'), 'hit', SEED).secondary.filter((s) => s.partId === 'arm0');
+    expect(tentacle.map((s) => [s.kind, s.lagMs])).toEqual([['tentacle', 70], ['tentacle', 140], ['tentacle', 210]]); expect(tentacle[0]!.overshoot).toBeCloseTo(0.2); expect(tentacle[0]!.damping).toBeCloseTo(0.6 * 0.75);
     const civet = buildTimeline(compileBodyCard(civetRecord()), 'hit', SEED);
     expect(civet.secondary.every((s) => !('kind' in s) && !('flutterMs' in s))).toBe(true);
     expect(civet.secondary.filter((s) => s.partId === 'tail').map((s) => s.lagMs)).toEqual([80, 160, 240, 320]);

@@ -1,0 +1,126 @@
+{
+  "kind": "flyer-membrane",
+  "identity": {
+    "speciesVisualKey": "synthetic:flyer-membrane",
+    "seed": 659723,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "flyer-membrane",
+    "version": 1
+  },
+  "family": "bat",
+  "geometry": {
+    "cutoutAssetHash": "synthetic-no-cutout",
+    "width": 1024,
+    "height": 1024,
+    "groundLineY": 0.8,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5,
+      0.5
+    ],
+    "pelvis": [
+      0.46,
+      0.56
+    ],
+    "spine": [
+      0.5,
+      0.5
+    ],
+    "chest": [
+      0.55,
+      0.44
+    ],
+    "neck": [
+      0.6,
+      0.4
+    ],
+    "head": [
+      0.66,
+      0.36
+    ],
+    "jaw": [
+      0.7,
+      0.4
+    ],
+    "wingFarRoot": [
+      0.5,
+      0.4
+    ],
+    "wingFarElbow": [
+      0.36,
+      0.3
+    ],
+    "wingFarWrist": [
+      0.2,
+      0.34
+    ],
+    "wingFarTip": [
+      0.06,
+      0.46
+    ],
+    "legFarKnee": [
+      0.42,
+      0.66
+    ],
+    "legFarFoot": [
+      0.4,
+      0.76
+    ],
+    "earFarTip": [
+      0.64,
+      0.26
+    ],
+    "wingNearRoot": [
+      0.52,
+      0.42
+    ],
+    "wingNearElbow": [
+      0.38,
+      0.32
+    ],
+    "wingNearWrist": [
+      0.22,
+      0.36
+    ],
+    "wingNearTip": [
+      0.08,
+      0.48
+    ],
+    "legNearKnee": [
+      0.44,
+      0.68
+    ],
+    "legNearFoot": [
+      0.42,
+      0.78
+    ],
+    "earNearTip": [
+      0.66,
+      0.28
+    ],
+    "tail0": [
+      0.4,
+      0.62
+    ]
+  },
+  "materials": {
+    "surface": "furred",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "flyer-membrane-v1"
+}
