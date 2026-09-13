@@ -1,0 +1,12 @@
+{
+  "schema": "cf.civet-turnaround.v4",
+  "tool": "built-in image_gen",
+  "qualityAccepted": false,
+  "referenceRoles": {
+    "identity": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+    "style": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  },
+  "sha256": "5a7d18cbf0c0214ffd9b76f13597a9ce78997fec2c6cfbcb82f7177382abc924",
+  "layout": "ART_KIT.md 4E unchanged, front/left side/back; same baseline; 2:1; magenta",
+  "review": "No inherited frames or dark plate backgrounds. Unreviewed animator reference, not replacement for accepted token."
+}

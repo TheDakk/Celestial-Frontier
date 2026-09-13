@@ -22,6 +22,18 @@ const fan=()=>Array.from({length:60},(_,i)=>{const heat=Math.floor(i/20),s=i%20;
 beforeAll(()=>{bridge=createCreatureBlenderBridge();records=bridge.specimens();});
 
 describe('offline complete-genome morphology bridge',()=>{
+  it('exports accepted Earth Civet through its actual viverrid owner and rejects swapped identity/proportions',()=>{
+    const recipe=JSON.parse(fs.readFileSync(path.join(root,'audits/RAIN_E_ADOPTION_20260912/recipe.json'),'utf8'));
+    const genome=recipe.sourceSnapshot.roster.view.all.find((g:Genome)=>g._earthName==='Civet');
+    const row=bridge.exportGenome(genome,'earth-civet');
+    expect(row.genome).toEqual(genome);expect(row.speciesVisualKey).toBe(speciesVisualKey(genome));
+    expect(row.route.painter).toBe('faunaQuadruped → faunaMammalD → faunaResetViverridD');
+    expect(row.morphology?.kind).toBe('viverrid-d');expect(row.admission.status).toBe('supported');
+    expect(row.morphology?.proportions).toMatchObject({groundY:.795,left:.3,right:.65,headRx:.07,muzzleLen:.125,legW:.022});
+    expect(bridge.verify(row)).toBe(true);
+    const changed=copy(row) as any;changed.genome._earthName='Wolf';expect(()=>bridge.verify(changed)).toThrow('phenotype mismatch');
+    const moved=copy(row) as any;moved.morphology.proportions.headRx=.2;expect(()=>bridge.verify(moved)).toThrow('phenotype mismatch');
+  });
   it('accepts an erased type-only module marker while rejecting runtime module boundaries',()=>{
     const source=fs.readFileSync(path.join(root,'port/v2/tools/creature-blender-export.mjs'),'utf8');
     const matches=[...source.matchAll(/^function evaluate\([\s\S]*?^}/gm)];
