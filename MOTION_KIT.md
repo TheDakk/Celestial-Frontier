@@ -4,6 +4,8 @@ Motion direction and animation contract, PROPOSED version 1, 2026-09-12. Compani
 
 Each section is plain text inside a fenced block. Sections 1 and 2 are frozen once approved; section 3 is filled by the compiler from the resolved-anatomy record; sections 4 to 7 are the closed action, timing, secondary-motion and staging vocabularies.
 
+Matches code as of 2026-09-13 (see Implementation at the end; sections 1, 2, 5 and 6 are Nick's wording and are not touched by that note).
+
 ## 0. How to use
 
 ```text
@@ -271,3 +273,7 @@ LOOT and INVENTORY: pickup pop 90 back-out; reveal flourish scaled by rarity
   e. Then freeze sections 1, 2, 5, 6; templates grow only by adding a
      template with its own proof.
 ```
+
+## Implementation
+
+Matches code as of 2026-09-13. The kit is implemented in `port/v2/apps/game/src/motion/` (body-card compiler `compileBodyCard`, template library `templates.ts`, action library `actions.ts`, timing table `timing.ts`, material secondary motion `secondary.ts`, timeline builder `timeline.ts`, GSAP player `gsap-adapter.ts`, budget guard `budget.ts`); staging by surface in `battle2/` (arena, choreography, stage, fixture and portrait rigs) and `worldlife/` (plate life); effects in `effects/`. Materials follow CONTRACTS §5: the resolved-anatomy record wins, the genome's FA_SKIN fills in only when the record omits a surface, and either case is written to `card.notes`. Live wiring is flag-gated (`?battle2=1`, `?worldlife=1`) through `battle2-wiring.ts` and `worldlife-wiring.ts`; the default game path is unchanged. Not yet implemented: the C2 parts rig (the battle stage uses the labelled fixture rig), turns synchronised to the Chronicle cue cadence, per-ability effect themes beyond the accepted Wild sequence, arena selection beyond the one accepted temperate arena, resident idle life and foliage sway on landfalls, the `tame`/`feed`/victory-split rows (A1 defaults in `timing.ts`, a wording decision), and a measured §8 update-time budget (the guard is structural).
