@@ -42,16 +42,17 @@ Civet10.22139s clip at60.002fps/0.30ms p95 CPU update, but has a visible head/ne
 capture exceeds unchanged8%body-length compression bound. Procedural was not reached.
 C2 is NOT accepted. Static rest and sparse contacts did not prove moving shape.
 
-NEXT: review the failed bounded Civet repair before authorizing more scope. Pack7 verbatim
-63f16d68; corrections1873abe0. Fallback presentation ACCEPTED; parts FAIL stands.
-C2_BOUNDED_REPAIR_20260913/native-gates-01: both0restRGBAchange. Correctedfox120Hzscan passes,
-maxcompression5.0189%BL<unchanged8%; old record still refuses1375ms. Real card alllegs≥3%BL
-slack,no notes. Civet prescribedhead.045+neck.040 fails7400mszeroarena gate: old24473 versus
-new24370transparent pixels in143503pixelresthead/neck/chestunion. Includes vacatedboundary
-as well as internalgaps; throat seam visually remains. No thirdrepair or new10scapture.
-RESULT.json and REVIEW_PROMPT.md provide evidence and copy-ready Claude review scope.
-Same sourcecentres; master/turnaround/curves/kit unchanged. Retained patch-ink guard has
-negativecontrols; earlier squarecropcorner refusal retained. PriorCodexLOG archivedverbatim.
+NEXT: delegated band authorization imported verbatimd1c9fbc4 after prior evidencea822b07.
+C2_BAND_UNDERLAPS_20260913/civet implements all23ancestor/descendant cuts,16grouped bands,
+38parts, one2047x1589atlas. Per-cut limit-driven depth.02Wfloor/W8cap; descendant's own opaque
+ink, attached toancestor, drawnunderneath. Masks/pivots/clips/kit/8%boundunchanged. Disc-only
+control retained. Native seam-oracle gates now replace vacated full-rest-silhouette count.
+Native --band-gates: rest0RGBAchange,recoil7400ms,strike,bothapproachstrideextremes; per-cut
+pose-minus-rest increase0,disc-onlyfails. Report any2pxrim rather than assuming tolerance.
+Proceed to10sCivet capture onlyifpassed, then acceptedfoxcandidate01 and procedural through
+samegates/captures. Stopon atlas/rest/seam failure or unpredictedshape failure; no thirdmechanism.
+Oldfixeddisc failure retained; foxcontact qualifiedmax5.0189% and clean≥3%slackcard.
+Authorizationreceipt and read-onlyproducerhashes committed; no Claude-lane source extracted.
 
 C3 then original rights-recorded quadruped/Wild/battle/rain/fur48k24bitmono dry WAV +Opus/SHA,
 CONTRACTS1 names; first new sound class stops. Existing proof whoosh/ping is not C3. C4 library
@@ -60,7 +61,7 @@ CONTRACTS1 names; first new sound class stops. Existing proof whoosh/ping is not
 C5 prune then3merge-commit tiers to develop (UI,painted engine,research as tools), no newbranches.
 LFS migration only on Nick's explicit go. No PRReady until Civet/weather/phone decisions.
 
-Codex next: stop for review/scope on remaining Civet gap; fox repair is mechanically qualified. Claude next: review supplied
+Codex next: gate all Civet bands, then capture and proceed to fox/procedural if green. Claude next: review supplied
 motion evidence if Nick requests; corrected producer is already consumed read-only, no app
 switch or routine sync needed. Fullsuite24preexistingfailures remain C5. Rootvalidate/focused
 checks required for this batch; no integrated chain. Signing has succeeded after the generic
