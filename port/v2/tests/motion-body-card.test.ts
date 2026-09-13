@@ -72,14 +72,33 @@ describe('compileBodyCard', () => {
     expect(f.locomotion).toEqual({ loco: 'runners', gait: 'trot', templateGait: 'trot' });
     expect(f.massClass.name).toBe('medium');
   });
-  it('reads a procedural genome: size→mass, loco→gait, skin→material (noting the record), head/tail→weapons, lumin', () => {
+  it('reads a procedural genome: size→mass, loco→gait, record material first (genome disagreement noted), head/tail→weapons, lumin', () => {
     const c = compileBodyCard(proceduralRecord(), proceduralGenome());
     expect(c.massClass).toEqual({ name: 'huge', multiplier: 1.40 });
     expect(c.locomotion).toEqual({ loco: 'ambush predators', gait: 'walk', templateGait: 'walk' });
-    expect(c.materials.body).toBe('translucent');
-    expect(c.notes.some((n) => /genome skin "translucent" overrides record surface "fur"/.test(n))).toBe(true);
+    // CONTRACTS §5: the painter record owns materials; the genome's translucent skin is only a note.
+    expect(proceduralRecord().materials?.surface).toBe('fur');
+    expect(c.materials.body).toBe('furred');
+    expect(c.notes.some((n) => /record surface "fur" wins over genome skin "translucent"/.test(n))).toBe(true);
+    expect(c.notes.some((n) => /overrides record surface/.test(n))).toBe(false);
     expect(c.weapons).toEqual(['gore', 'bite', 'sting', 'claw']);
     expect(c.luminous).toBe(true); expect(c.realm).toBe('land');
+  });
+  it('material owner controls: the genome fills in only when the record omits surface, and says so; agreement leaves no note', () => {
+    const { materials: _omit, ...withoutMaterials } = proceduralRecord();
+    const fallback = compileBodyCard(withoutMaterials as ResolvedAnatomyRecord, proceduralGenome());
+    expect(fallback.materials.body).toBe('translucent');
+    expect(fallback.notes.some((n) => /record omits surface; genome skin "translucent" used as fallback/.test(n))).toBe(true);
+    // Negative control: without record and without a genome skin the compiler refuses rather than guessing fur.
+    expect(refusal(() => compileBodyCard(withoutMaterials as ResolvedAnatomyRecord)).reason).toBe('unsupported-materials');
+    // Agreement control: a record whose surface matches the genome's skin carries no materials note at all.
+    const agreeing = compileBodyCard({ ...proceduralRecord(), materials: { surface: 'translucent' } }, proceduralGenome());
+    expect(agreeing.materials.body).toBe('translucent');
+    expect(agreeing.notes.some((n) => /^materials:/.test(n))).toBe(false);
+    // Named-species control: the Civet record's fur wins even when a genome skin is supplied.
+    const civet = compileBodyCard(civetRecord(), { skin: FA_SKIN.indexOf('translucent') });
+    expect(civet.materials.body).toBe('furred');
+    expect(civet.notes.some((n) => /record surface .* wins over genome skin "translucent"/.test(n))).toBe(true);
   });
   it('refuses an unsupported template with a labelled fallback', () => {
     const r = { ...civetRecord(), kind: 'serpent', template: { id: 'serpent', version: 1 } };

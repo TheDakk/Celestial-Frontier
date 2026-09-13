@@ -17,7 +17,7 @@
    on the V2 program roadmap. Atlas charting/favorites and rarity stings are live.
    Static deterministic Canvas species portraits and the preserved 43-biome landing vistas are live;
    retained Pixi actors, meshes, and portrait animation remain later work. */
-import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin, RendererType, MeshPipe } from 'pixi.js';
+import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin, RendererType, MeshPipe, Particle, ParticleContainer } from 'pixi.js';
 import { createSystemStarField } from './system-star-field.js';
 import { createSystemProtostarCanvas, SYSTEM_PROTOSTAR_WIDTH, SYSTEM_PROTOSTAR_HEIGHT } from './system-protostar.js';
 import {
@@ -6178,6 +6178,8 @@ function requestSurfaceVista(
   }
   audiovisualPilotBiomeKey = request.biomeKey;
   audiovisualPilotVistaBinding = JSON.stringify(request);
+  // A6 study flag (?worldlife=1): the A5 world-life layer over the vista sprite of this landfall; dynamic import only under the flag, never on the default path.
+  if (new URLSearchParams(location.search).get('worldlife') === '1') void import('./worldlife-wiring.js').then(m => m.mountWorldLifeStudy({ request, roster, stage: app.stage, vistaSprite: () => surfaceVistaSprite, ticker: app.ticker, clock: () => performance.now(), reducedMotion: () => !motionOK(), tier: TOUCH_DPR ? 'phone' : 'desktop', pixi: { Container, Graphics } })).catch(() => { /* the flagged study never blocks the vista */ });
   surfaceVistaWorldKey = request.worldKey;
   surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;
   if (currentAiLandfallInput()) { restoreCurrentAiLandfall(); return; }
@@ -16348,6 +16350,8 @@ function presentCommittedCombatChronicle(
     combatBattleScene?.stop('close');
     /* The verified settlement and its Chronicle remain usable without art. */
   }
+  // A6 study flag (?battle2=1): the A3 battle stage v2 over the same Chronicle mount; dynamic import only under the flag, never on the default path.
+  if (new URLSearchParams(location.search).get('battle2') === '1') void import('./battle2-wiring.js').then(m => m.mountBattle2Study({ mount: combatChronicleMount, settlement, chronicle, generation, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { /* the flagged study never blocks the Chronicle */ });
   try {
     const claim = tameGreetingAudioOwner?.claimCommittedCombatSession(outcome, cuePlan) ?? null;
     if (claim !== null) {

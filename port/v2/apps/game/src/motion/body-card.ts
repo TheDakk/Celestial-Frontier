@@ -130,13 +130,16 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   let realm: Realm = 'land';
   if (genome?.realm && ['land', 'aerial', 'aquatic', 'amphibious', 'gas-giant'].includes(genome.realm)) realm = genome.realm as Realm;
   else if (genome && !earth && genome.kingdom === 'fauna') realm = realmFromLabel(String(classifyRealm(genome as Parameters<typeof classifyRealm>[0])));
-  // Materials: record surface for named species; genome skin for procedural (record disagreement is noted, never silent).
+  // Materials (CONTRACTS §5, 2026-09-13): the resolved-anatomy record is the authority because it
+  // describes what the winning painter actually drew. The genome's FA_SKIN is read only when the
+  // record omits `materials.surface`; that fallback, and any disagreement, is recorded in notes.
   const surface = record.materials?.surface ?? null;
   const recordMaterial = surface ? materialFromSkinName(surface) : null;
   let material: Material | null = recordMaterial;
-  if (!earth && typeof genome?.skin === 'number') {
+  if (typeof genome?.skin === 'number') {
     const skinName = at(FA_SKIN as readonly string[], genome.skin), genomeMaterial = skinName ? materialFromSkinName(skinName) : null;
-    if (genomeMaterial) { if (recordMaterial && recordMaterial !== genomeMaterial) notes.push(`materials: genome skin "${skinName}" overrides record surface "${surface}"`); material = genomeMaterial; }
+    if (genomeMaterial && !recordMaterial) { material = genomeMaterial; notes.push(`materials: record omits surface; genome skin "${skinName}" used as fallback`); }
+    else if (genomeMaterial && recordMaterial && recordMaterial !== genomeMaterial) notes.push(`materials: record surface "${surface}" wins over genome skin "${skinName}" (observer disagreement)`);
   }
   if (!material) throw new MotionCompileError('unsupported-materials', `surface "${surface}" maps to no kit material`);
   const materials = Object.freeze({ body: material, head: material, legs: material, tail: material, ears: material });
