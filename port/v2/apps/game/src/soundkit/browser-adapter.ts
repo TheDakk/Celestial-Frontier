@@ -15,7 +15,10 @@ export interface BufferContextLike extends AudioContextLike {
   createBufferSource(): BufferSourceLike;
 }
 
-export function toAudioBuffer(context: BufferContextLike, derived: DerivedCue): AudioBufferLike {
+/** Any rendered cue: a creature cue from deriveCue or a placeholder battle/ability cue from battle-synth. */
+export type RenderedCue = Pick<DerivedCue, 'samples' | 'sampleRate'>;
+
+export function toAudioBuffer(context: BufferContextLike, derived: RenderedCue): AudioBufferLike {
   const buffer = context.createBuffer(1, derived.samples.length, derived.sampleRate);
   buffer.copyToChannel(derived.samples, 0);
   return buffer;
@@ -24,7 +27,7 @@ export function toAudioBuffer(context: BufferContextLike, derived: DerivedCue): 
 /** Build a runtime request whose graph is one buffer source into one gain (nodeCount 2). */
 export function createDerivedVoiceRequest(
   intent: SoundKitVoiceIntent,
-  derived: DerivedCue,
+  derived: RenderedCue,
   meaning: AudioVoiceMeaning = { kind: 'decorative' },
   gain = 1,
 ): AudioVoiceRequest {
