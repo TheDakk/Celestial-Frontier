@@ -55,3 +55,14 @@ No native successor run or unsigned-commit bypass. Latest signedHEAD6b574220,79a
 Signing unblocked: verified1b0b5707,80aheadupstream/191aheadcacheddevelop. Native-rest-01
 failed at bundle construction before any browser: output.file cannot emit Pixi dynamic chunks.
 Runner corrected to output.dir; failed report preserved. No painting or source asset change.
+
+
+## C2native rest passed; motion-producer contract issue — 2026-09-13
+
+Native-rest-02 on signedde9c9a32 PASS:32parts,0changedRGBAchannels, missing-head negative
+control234,525changedchannels, pose update mean0.0068ms (notanimationFPS). First bundler
+failure preserved. Real GSAP producer read-only probe returnsCONTRACT_MISMATCH: root(.2,-.1)
+broadcast to root/spine/head; hierarchical local-offset semantics compound it. Prepared
+producer.patch and CLAUDE_REVIEW_REQUEST.md in ../C2_MOTION_INTEROP_20260913. No Claude source
+edited; Nick asked whether to grant a one-time ownership exception or have Claude apply it.
+No new painting/sound or GitHub write. Three motion captures remain; C2notcomplete.

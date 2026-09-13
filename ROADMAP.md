@@ -104,3 +104,18 @@ Signing unblocked and verified:1b0b5707. Native-rest-01 stopped before browser l
 Rolldown produced multiple Pixi chunks but the runner specified output.file. Runner now uses
 output.dir with named entry/chunks. Failure retained in native-rest-01/report.json. Next native
 attempt uses native-rest-02 on the corrected committed runner; no game/asset change.
+
+
+### Current resume boundary — native rest passed, motion interop decision
+
+1Password signing is resolved. Native-rest-02 on signedde9c9a32 passed:32parts,0changedRGBA
+channels; missing-head negative control234,525changedchannels; mean pose update0.0068ms.
+This is not motion/60fps/ground-contact acceptance. First bundle failure remains preserved.
+C2_MOTION_INTEROP_20260913/producer-probe.json proves Claude's actual GSAP adapter sends
+root translation to everyjoint, conflicting with the rig's inherited local-offset semantics.
+A one-line producer.patch and copy-ready CLAUDE_REVIEW_REQUEST.md are prepared. Claude's
+motion/ path remains untouched. Nick has been asked who should apply this bounded producer
+fix (one-time Codex ownership exception versus Claude lane). No kit change is needed.
+After the corrected producer is available, run its focused interop negative control, then
+continue the Motion-timed C2proof. Fox/procedural part emission and three captures still remain.
+C3 follows actual C2proof. No generic proceed needed, GitHub stepnone, PR42parked.

@@ -7,8 +7,8 @@ reconstruction; `joint-patches.mjs` confines patch pixels beneath opaque base pa
 own depth layer. `civet.part-masks-v2.json` fixes the head-crest ownership seen in the initial
 mask map. Two refused patch fits are retained: key-coloured samples, then wrong near-only
 coverage for far legs. No new art was generated. Source hashes, actual binding and atlas are
-at audits/C2_PARTS_ATLAS_20260913/civet-patched/. Native rest comparison is the next gate;
-no animation or C2 acceptance is claimed. Fox/procedural masks and Motion-timed captures remain.
+at audits/C2_PARTS_ATLAS_20260913/civet-patched/. Native rest comparison passed on de9c9a32:0changedRGBAchannels, with234,525changedchannels
+when the head is removed. No animation or C2 acceptance is claimed. Fox/procedural masks and Motion-timed captures remain.
 
 **C2 runtime progress, September13:** [creature-rig.ts](port/v2/apps/game/src/creature-rig.ts)
 loads hash-bound part atlases and applies the record-joint CreatureRigV1/PoseTarget vocabulary
