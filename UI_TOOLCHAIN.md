@@ -1,5 +1,36 @@
 # Celestial Frontier — development toolchain
 
+## September 12 parts-rig tooling additions — matches configuration 2026-09-12
+
+Nick authorized exact game-app dependencies GSAP 3.15.0 and @pixi/particle-emitter 5.0.10,
+and port/v2 dev dependencies free-tex-packer-core 0.3.9 / free-tex-packer-cli 0.3.0.
+The supplied [tooling note](audits/CLAUDE_FULL_REVIEW_20260910/TOOLING_ADDITIONS_20260912.md)
+is retained verbatim; current user instructions control its use. Both PNG executables were
+queried: pngquant 3.0.3 and oxipng 10.2.1. The updated --check records executable/version and
+warns when either optional tool is missing. [Check receipt](audits/TOOLING_ADDITIONS_20260912/toolchain-check.json).
+
+Use paused GSAP timelines evaluated at explicit clip time for shared parts-rig pose tweening.
+Use the pinned emitter for effect travel/impact, but its declared Pixi peers are >=6.0.4 <8.0.0;
+the game stays Pixi 8.19.0. The dependency is installed, not yet connected to Pixi 8 containers.
+The parts-rig/effects proof must resolve that boundary without silently changing these pins or
+shipping a second renderer. Its default Math.random/ticker behavior also needs a seeded,
+explicit-time integration; never patch global randomness or feed it into game generation.
+No new runtime animation, emitter rendering or arena painting is claimed by this setup batch.
+
+`node port/v2/tools/creature-animation/rig-atlas.mjs manifest.json NEW_OUTPUT_DIRECTORY`
+runs the pinned CLI/core on copies into exactly one atlas per creature. The manifest is
+`{"creatureId":"civet","parts":[{"name":"body.png","path":"copies/body.png","sha256":"..."}]}`;
+paths resolve relative to the manifest. Names sort by code-point order; padding 4 px,
+extrude 1 px, no rotation/trim, fixed MaxRects method, 2048 maximum dimensions. Overflow or
+missing frames refuses; output JSON has no timestamps or machine paths. Existing output
+directories refuse. Original input hashes are checked before and after. Synthetic repeat
+packs in reversed input order match PNG/JSON/receipt bytes and preserve every source pixel.
+
+PNG optimization applies only to separate working/export copies. Hash and preserve original
+master bytes first: the kit reference binds those originals. pngquant is lossy; oxipng is
+lossless for decoded pixels but still changes bytes. Neither runs on a master path, including
+a master that has already been hashed. No production pack build or master optimization ran.
+
 ## September 12 startup — current session
 
 Official stable metadata check passed at 2026-09-12T14:20:30Z. Managed Node was idle; Homebrew metadata refreshed and Node alone upgraded 26.8.1 → 26.8.2 under the shared maintenance lock, with cleanup/analytics disabled. No dependency upgrades. REAPER build suffix resolved as current by brew outdated. All seven synthetic capability checks passed; [receipt](audits/ART_KIT_ADOPTION_20260912/toolchain-verify.json). Runtime/test locks unchanged.
@@ -180,11 +211,15 @@ Preserve the earlier enumeration-only and CPU-render provenance.
 | Blender | 5.2.1 LTS, /Applications/Blender.app | Python-controlled modeling, materials, lighting, background renders; existing source/save/reopen/render evidence retained. |
 | Inkscape | 1.4.4, /Applications/Inkscape.app; outside-sandbox confirmation 2026-09-08 artifact PASS | Isolated 128×128 SVG→PNG export matches September 7 bytes. GDK CVDisplayLink warning accompanied exit 0, not a crash; [artifact verdict](audits/INKSCAPE_CONFIRMATION_20260908/artifact-verdict.json) preserves the controller red. Keep emoji; no new icon study. |
 | ImageMagick | 7.1.2-31, Homebrew imagemagick | Contact sheets, dimensions, color/alpha inspection and pixel comparisons for U3/U4 and exported assets. |
+| pngquant | 3.0.3, Homebrew; CLI version observed September 12 | Lossy optimization of PNG copies only; optional, missing tool warns. |
+| oxipng | 10.2.1, Homebrew; CLI version observed September 12 | Lossless optimization of PNG copies only; original bytes stay immutable. |
 | FFmpeg / ffprobe | 9.0.1, Homebrew ffmpeg 9.0.1_1 | Audio/video conversion, file inspection, PCM export, loudness/true-peak measurement and later motion proof clips. It is not a synthesizer host. |
 | Surge XT | 1.3.4 app, VST3 and AU | Original synth patches; /Library/Audio/Plug-Ins/VST3/Surge XT.vst3 and matching AU exist. The installed Surge CLI is not proven as an offline WAV renderer. |
 | REAPER | 7.79.0_06dd787u | Existing .rpp, embedded MIDI/plugin state and reference renders. Desktop process/dialogs remain possible; a license file exists, validity/recognition unverified. Never print/read its key for inventory. |
 | Python | Homebrew python@3.12 3.12.14 | Isolated scripting runtime at tools/audio-render/.venv; standard library only for now. Apple Python 3.9.6 remains separate. |
-| GSAP | 3.15.0 in tools/ui-motion | Isolated motion-authoring dependency; not imported by the game. Future integration respects reduced motion and native focus/click owners. |
+| GSAP | Exact 3.15.0 in tools/ui-motion and port/v2 game app | Paused timelines selected for parts-rig tweening; runtime wiring pending. Preserve reduced motion and native focus/click owners. |
+| @pixi/particle-emitter | Exact 5.0.10 in port/v2 game app | Selected travel/impact simulation; Pixi 6/7 peer boundary must be resolved for Pixi 8.19.0 before use. |
+| free-tex-packer core / CLI | Exact 0.3.9 / 0.3.0 in port/v2 devDependencies | Deterministic one-atlas-per-creature command; synthetic repeat/pixel tests pass. |
 | Node / npm | 26.8.1 / 11.19.0 | Managed Node updated while idle at the 2026-09-07 startup; CLI capability verified. Bundled app Node processes remain separate. |
 | Homebrew | 6.0.22 | Official formula/cask installation and scoped stable updates. |
 | GitHub CLI | 2.100.0 (updated from 2.97.0) | Repository metadata and separately authorized GitHub operations; maintenance does not authorize hosted work. |
@@ -256,9 +291,11 @@ This inventory/runbook covers macOS; Windows requires its own verified inventory
    `HOMEBREW_NO_INSTALL_CLEANUP=1` and `HOMEBREW_NO_ANALYTICS=1`. Upgrade named formulae/casks
    only; for casks use `--no-quit`. No blanket `brew upgrade`, force/reinstall, auto-uninstall
    or cleanup. Inspect dependent changes too: Homebrew may repair/upgrade dependents.
-4. The active Homebrew allowlist is imagemagick, ffmpeg, python@3.12, node, gh, blender,
+4. The active Homebrew allowlist is imagemagick, pngquant, oxipng, ffmpeg, python@3.12, node, gh, blender,
    inkscape, reaper and surge-xt. npm comes with the managed Node installation. Homebrew itself
-   updates through brew update. GSAP updates only inside tools/ui-motion with an exact selected
+   updates through brew update. pngquant/oxipng share ImageMagick's idle-only update policy.
+   Game-app GSAP/emitter and atlas packer pins stay under the game dependency lock; no automatic updates.
+   GSAP maintenance updates only inside tools/ui-motion with an exact selected
    stable version and refreshed integrity lock; check the current license before a major change.
    Stage/review its isolated diff and verify before using it. No packages are added to the audio
    venv automatically; when an audio host is later approved, its dependency lock becomes its owner.

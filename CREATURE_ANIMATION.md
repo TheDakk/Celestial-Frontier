@@ -7,6 +7,14 @@ fails shape at clip extremes. Native fb008d58 provides ten-second, 60 fps labell
 whole-portrait fallback captures; these do not qualify articulated motion. No normal-game
 battle animation changed.
 
+**Tooling configured September 12:** game-app GSAP 3.15.0 owns the forthcoming shared pose
+curves through paused timelines and explicit time. @pixi/particle-emitter 5.0.10 is pinned for
+travel/impact, with its Pixi 6/7 peer boundary and seeded-time integration unresolved against
+Pixi 8.19.0. No direct runtime attachment yet. The [atlas command](port/v2/tools/creature-animation/rig-atlas.mjs)
+uses CLI 0.3.0/core 0.3.9 with sorted, hash-checked copies, 4 px padding and 1 px extrusion,
+exactly one atlas, no timestamps; only synthetic parts have been packed. PNG masters remain
+immutable; optimize copies only. [Current tooling contract](UI_TOOLCHAIN.md).
+
 **Current direction, pending art approval:** Nick requests a parts-rig Civet versus Platypus
 proof in a procedural Earth temperate arena. The [v4.2 proposal](audits/ARENA_EFFECTS_V42_PROPOSAL_20260912/PROPOSAL.md)
 adds three arena depth plates under planets and launch/travel/impact Effects cut-outs.

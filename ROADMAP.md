@@ -17,7 +17,21 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · ARENA / EFFECTS v4.2 PROPOSAL AWAITS APPROVAL
+## SESSION HANDOFF — 2026-09-12 · TOOLING CONFIGURED; v4.2 STILL AWAITS APPROVAL
+
+Tooling batch: game app has exact gsap 3.15.0 / @pixi/particle-emitter 5.0.10; port/v2
+has dev pins free-tex-packer-core 0.3.9 / CLI 0.3.0. Supplied TOOLING_ADDITIONS_20260912.md
+is verbatim under CLAUDE_FULL_REVIEW_20260910. pngquant 3.0.3 / oxipng 10.2.1 CLI versions
+recorded by updated toolchain --check; missing tools warn. UI_TOOLCHAIN owns the contract.
+New rig-atlas.mjs runs sorted, hash-checked copies through the CLI, fixed padding/extrusion,
+one atlas, no timestamp metadata; only synthetic fixtures packed. Never optimize master bytes.
+GSAP paused timelines are selected for the future parts rig. Emitter 5.0.10 requires Pixi 6/7
+peers, while game stays 8.19.0; resolve renderer and seeded/time integration before effects use.
+Installed does not mean integrated. No runtime proof, paintings or active kit edits this batch.
+Nine focused tests with missing-tool, malformed-version, hash, duplicate, overwrite and atlas-overflow
+controls passed; CLI atlas pixel/repeat identity, toolchain --check, v2 TypeScript and root validate
+passed. Package/version receipts are under audits/TOOLING_ADDITIONS_20260912/.
+
 
 **STOP for Nick's approval before painting.** Exact two-addition patch and compiler/staging
 contract: audits/ARENA_EFFECTS_V42_PROPOSAL_20260912/PROPOSAL.md and
@@ -66,8 +80,8 @@ awaits Nick's decision; no history rewrite. Detailed supplied plan:
 audits/CLAUDE_FULL_REVIEW_20260910/CLEAN_PROMOTION_PLAN.md.
 
 Ownership: OpenAI/Codex macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracking origin/openai/mac. Pre-proposal signed HEAD 7a2e5312: 61 ahead upstream, 172 ahead
-cached origin/develop, zero behind. Proposal/doc commit follows; unrelated .DS_Store excluded.
+tracking origin/openai/mac. Signed proposal d2b8d8cd: 62 ahead upstream, 173 ahead cached
+origin/develop, zero behind. Tooling commit follows; unrelated .DS_Store excluded.
 Reuse September 12 startup receipt (Node 26.8.2). GitHub step NONE; PR42 parked. No hosted
 attempts, writes, release or deployment authorized. Codex waits for the two kit additions'
 approval; Claude Code need not open or sync, and these local changes are not in develop.
