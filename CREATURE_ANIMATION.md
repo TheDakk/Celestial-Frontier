@@ -1,5 +1,13 @@
 # Creature animation — shared anatomy and motion contract
 
+**C2 motion continuation, matches code September13:** the corrected GSAP producer hash is
+verified; the earlier root-broadcast block is resolved. `creature-rig-contact.ts` adds a generic
+record-driven planted-contact constraint using existing two-bone math, preserving perspective
+paw offsets and refusing unreachable poses. Flight passes through; no creature clip is edited.
+The isolated parts-motion proof consumes actual Claude compiler/GSAP/choreography/effects
+read-only and real atlases; native motion/captures remain pending. Seven focused checks pass.
+
+
 **Current C2 status — matches code September13:** Civet32/fox22/procedural21part atlases all
 pass native rest comparison with0changedRGBAchannels and nonzero missing-head controls.
 Procedural masks come from an isolated seeded observation replay of the winning painter;
