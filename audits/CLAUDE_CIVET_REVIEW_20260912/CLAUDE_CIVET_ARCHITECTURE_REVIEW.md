@@ -118,3 +118,11 @@ Nick's aim: very smooth creature and attack animations that represent what each 
 - **Effects class (kit addition, Nick to approve):** eleven ability-theme effect sequences (Fire, Frost, Storm, Tide, Stone, Venom, Void, Sand, Chem, Psionic, Wild) painted as crisp-edged shapes on the key in the frozen style, with launch, travel and impact phases. Creature pose plus theme effect makes each ability read as itself on the same creature.
 - **Smoothness stack:** parts rig, strong key poses, 60 fps tweening with easing, anticipation and overshoot; secondary motion (tail follow-through, ear flick, weight shift, squash on landing); melee and ranged/cast pose sets per family; 60 fps Mac, 30 fps phone budget.
 - **Proof change:** the staged turn plays in an Earth temperate arena plate instead of the landfall plate; one theme effect (Wild) is added once the Effects class is approved. All other approved wording stands.
+
+## Addendum: procedural arenas, home versus visitor, fighting-game staging (Nick, 2026-09-12)
+
+- **Infinite arenas:** arena = biome-family template (43) + system card (star light, palette, weather, time of day) + seed derived from the battle context (never the clock), so encounters replay identically and shared replays match. Variation from card, seeded landform variants, and the finisher where available. Phone tier: template plates with card lighting, no finisher; desktop may finish. Cached per world like originals.
+- **Home versus visitor rule (deterministic, decided once):** wild encounter → the wild creature's home world; guardian → its lair with the system's One signature; duels → alternate by round or challenger's home first, seeded.
+- **Staging:** side view, wide stage, flat fighting ground band, three parallax plates (far, mid, near) per the kit's own scrolling-scene rule, creatures at one third to one half of frame height facing each other, low eye level; parallax on run-ups gives depth without camera moves.
+- **Tempo:** run-up under 0.5 s, attack 0.5 to 0.75 s, hit reaction about 0.3 s, return under 0.5 s; brief hitstop; flash, shake, number; quick timing bar.
+- **Kit:** the Arena profile is three parallax plates per biome family; the compiler gains the arena rule. Effects class unchanged. Nick approves both rows as diffs before painting.
