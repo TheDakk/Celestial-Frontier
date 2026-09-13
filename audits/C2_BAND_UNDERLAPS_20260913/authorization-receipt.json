@@ -1,0 +1,42 @@
+[
+  {
+    "path": "audits/C2_BOUNDED_REPAIR_20260913/AUTHORIZATION_20260913.md",
+    "sha256": "cc378a9ce4650a7ba544f6f665699ab1e473969d225a55fe7d8d74b0e606bd29"
+  },
+  {
+    "path": "audits/C2_BOUNDED_REPAIR_20260913/CLAUDE_UNDERLAP_DEMONSTRATION.md",
+    "sha256": "9368b54f4ec5f14e33210c57e31502a4743880d14551930a8153cf034c45c715"
+  },
+  {
+    "path": "audits/C2_BOUNDED_REPAIR_20260913/CLAUDE_REVIEW_RESPONSE.md",
+    "sha256": "80e9b4784d5cdb6058ee7b0d54109e92bd0eeaa6a6efa47e6b8dce8a85fff4a5"
+  },
+  {
+    "path": "audits/C2_BOUNDED_REPAIR_20260913/underlap-demo-01/report.json",
+    "sha256": "8d053219d2baf8b014689c6fdf0bce0a9ab9600f71258a3584bb90983d94fc37"
+  },
+  {
+    "path": "audits/C2_BOUNDED_REPAIR_20260913/underlap-demo-01/head-crop-strict-vs-underlap.png",
+    "sha256": "3f67ccd2c5dfe5ac59d2c7abe8508ea095def6f25242373c25d3fc80954a7415"
+  },
+  {
+    "path": "audits/C2_BOUNDED_REPAIR_20260913/seam-oracle-civet-7400-old.json",
+    "sha256": "c442b272dd241eaeedfe06d914ad01c56095a7ccf838d58cc3f8f6233d517426"
+  },
+  {
+    "path": "audits/C2_BOUNDED_REPAIR_20260913/seam-oracle-civet-7400-repaired.json",
+    "sha256": "39745c59daaa1dbba6e77dd016ae9d63e0052c5620f174f9115f63ec6d9567ab"
+  },
+  {
+    "path": "audits/C2_BOUNDED_REPAIR_20260913/seam-oracle-civet-rest.json",
+    "sha256": "96d5fc164d41103250ca616c87f60c146bdf219c6f17eb781c11f840394931d6"
+  },
+  {
+    "path": "audits/LONG_SESSION_20260913/LOG-B.md",
+    "sha256": "50b7a520192795f26b4c8a885c3aa1f4f71c2f9fd5361443e767ce5cad4185ef"
+  },
+  {
+    "path": "audits/LONG_SESSION_20260913/LOG.md",
+    "sha256": "8dedeb1c7b5b8f952966f1e84059d56b12ddb18a6899771f9ba9b7898f0c9520"
+  }
+]
