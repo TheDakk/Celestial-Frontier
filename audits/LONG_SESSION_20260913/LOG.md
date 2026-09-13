@@ -107,3 +107,18 @@ proof harness called initAudio without required sndOn/sfxVol providers. Correcte
 existing isolated-proof options (sound on,volume.35). No audio-owner/game/kit change. Failed
 report and first Civet plan retained. Next run proof-02 uses corrected committed harness;
 no motion image acceptance or encoded video claimed for proof-01.
+
+
+Native proof-02 on cd792e1f is FAILED, preserved unchanged. Civet encoded 10.22139 seconds,
+60.002 fps and 0.30 ms p95 CPU update, but visual inspection of civet-hit.png shows a head/neck
+gap: the parts shape gate fails. Fox's live capture refused the existing 8% body-length
+contact-compression bound; the earlier sparse admission missed that interval. Procedural
+capture did not run. Performance does not establish visual acceptance.
+
+Use Nick's explicitly authorized whole-portrait fallback, labelled in every frame, for the
+bounded three ten-second review captures. Same real body cards, shared GSAP timing, arena,
+Wild and choreography; only whole-portrait compression/displacement, no articulated ears,
+tail or jaw. No per-creature curve changes, bound relaxation, repaint, new sounds or kit edit.
+A 120 Hz deterministic contact scan records the first refused parts interval before fallback
+capture; that refusal remains evidence, not a fallback pass of the articulated shape gate.
+C2 parts acceptance remains open. Review both the failed parts clip and labelled fallback.

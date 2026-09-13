@@ -1,5 +1,7 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**C2 native finding — matches code as of 2026-09-13:** parts rest passes, but motion does not. Civet has a visible head/neck gap; fox exceeds the unchanged contact-compression bound. The isolated runner now supports explicitly labelled whole-portrait fallback captures under Nick's fallback authorization. It records a 120 Hz parts-contact diagnostic; fallback does not satisfy articulated shape, ear/tail/jaw or parts reuse gates. Evidence: audits/C2_PARTS_MOTION_20260913/proof-02 and README.md. No production or Claude-owned module changed.
+
 **C2 motion continuation, matches code September13:** the corrected GSAP producer hash is
 verified; the earlier root-broadcast block is resolved. `creature-rig-contact.ts` adds a generic
 record-driven planted-contact constraint using existing two-bone math, preserving perspective

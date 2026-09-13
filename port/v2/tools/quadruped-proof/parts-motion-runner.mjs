@@ -1,10 +1,11 @@
 import fs from 'node:fs';import path from 'node:path';import os from 'node:os';import http from 'node:http';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';import {rolldown} from 'rolldown';
 import {openChromiumCdp} from '../browsercdp.mjs';import {acquireWorkspaceLock} from '../workspacelock.mjs';import {requireTenSecondMedia} from './capture-contract.mjs';
 const root=path.resolve(import.meta.dirname,'../../../..'),output=path.resolve(process.argv[2]),producer=path.resolve(process.argv[3]);
+const mode=process.argv[4]??'parts';if(!['parts','--portrait-fallback'].includes(mode))throw Error('Unknown proof mode');
 if(fs.existsSync(output))throw Error('New output directory required');const sha=b=>createHash('sha256').update(b).digest('hex');
 if(sha(fs.readFileSync(path.join(producer,'motion/gsap-adapter.ts')))!=='6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74')throw Error('Unexpected GSAP producer bytes');
 const dirty=execFileSync('git',['status','--porcelain','--untracked-files=all'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(s=>s&&s!=='?? .DS_Store');if(dirty.length)throw Error('Commit before native motion proof');
-fs.mkdirSync(output,{recursive:true});const scratch=fs.mkdtempSync(path.join(os.tmpdir(),'cf-parts-motion-')),sources=new Map(),report={status:'RUNNING',source:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),errors:[],captures:[]};let browser,server,release;
+fs.mkdirSync(output,{recursive:true});const scratch=fs.mkdtempSync(path.join(os.tmpdir(),'cf-parts-motion-')),sources=new Map(),report={status:'RUNNING',mode,source:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),errors:[],captures:[]};let browser,server,release;
 const persist=()=>fs.writeFileSync(path.join(output,'report.json'),JSON.stringify(report,null,2)+'\n');
 const remember=p=>sources.set(p,{path:p,sha256:sha(fs.readFileSync(p))});
 try{
@@ -22,7 +23,7 @@ try{
  const files=new Map(fs.readdirSync(scratch).map(n=>[n,fs.readFileSync(path.join(scratch,n))]));server=http.createServer((req,res)=>{const n=new URL(req.url,'http://127.0.0.1').pathname.slice(1)||'index.html',b=files.get(n);if(!b){res.writeHead(404);res.end();return;}res.writeHead(200,{'Content-Type':n.endsWith('.js')?'text/javascript':n.endsWith('.html')?'text/html':n.endsWith('.json')?'application/json':'image/png'});res.end(b);});await new Promise(r=>server.listen(0,'127.0.0.1',r));
  browser=await openChromiumCdp({label:'C2 actual parts ten-second proof',userDataPrefix:'cf-parts-motion',commandTimeoutMs:60000,onEvent:e=>{if(e.method==='Runtime.exceptionThrown')report.errors.push(e.params.exceptionDetails);}});report.browser=browser.browser;
  const {targetId}=await browser.send('Target.createTarget',{url:'about:blank'}),{sessionId}=await browser.send('Target.attachToTarget',{targetId,flatten:true}),send=(m,p={})=>browser.send(m,p,sessionId),evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true,userGesture:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
- await send('Page.enable');await send('Runtime.enable');await send('Emulation.setDeviceMetricsOverride',{width:1536,height:740,deviceScaleFactor:1,mobile:false});await send('Page.navigate',{url:'http://127.0.0.1:'+server.address().port});
+ await send('Page.enable');await send('Runtime.enable');await send('Emulation.setDeviceMetricsOverride',{width:1536,height:740,deviceScaleFactor:1,mobile:false});await send('Page.navigate',{url:'http://127.0.0.1:'+server.address().port+(mode==='--portrait-fallback'?'/?mode=portrait-fallback':'/')});
  const deadline=performance.now()+60000;for(;;){const state=await evaluate('window.cfPartsMotion?.state');if(state?.status==='FAIL'){report.observation=state;throw Error('Motion admission failed: '+JSON.stringify(state.errors));}if(state?.status==='READY'){report.observation=state;break;}if(performance.now()>deadline)throw Error('Motion readiness timeout');await new Promise(r=>setTimeout(r,100));}
  for(const id of ['civet','fox','procedural']){
   const plans=await evaluate('window.cfPartsMotion.select('+JSON.stringify(id)+')');fs.writeFileSync(path.join(output,id+'-plans.json'),JSON.stringify(plans,null,2)+'\n');
