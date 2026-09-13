@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/art-kit-v4.test.ts (3 tests | 1 failed) 27ms
+     × rejects the retired kit, missing/duplicated blocks and mutated source identity 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/art-kit-v4.test.ts > approved v4 prompt compilation, without a checkout lock or inference > rejects the retired kit, missing/duplicated blocks and mutated source identity
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/art-kit-v4.test.ts:40:135
+     38|   it('rejects the retired kit, missing/duplicated blocks and mutated s…
+     39|     const source=produceCanonicalEarthSnapshot().snapshot;
+     40|     expect(()=>compileEarthArtKitV4(source,kit.replace('style_id: fron…
+       |                                                                                                                                       ^
+     41|     expect(()=>compileEarthArtKitV4(source,kit.replace('## 2. Frozen s…
+     42|     expect(()=>compileEarthArtKitV4(source,kit+'\n## 2. Frozen style\n…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 21 passed (22)
+   Start at  23:23:25
+   Duration  339ms (transform 294ms, setup 0ms, import 373ms, tests 111ms, environment 0ms)
+

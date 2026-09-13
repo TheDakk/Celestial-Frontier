@@ -37,7 +37,7 @@ describe('approved v4 prompt compilation, without a checkout lock or inference',
   });
   it('rejects the retired kit, missing/duplicated blocks and mutated source identity',()=>{
     const source=produceCanonicalEarthSnapshot().snapshot;
-    expect(()=>compileEarthArtKitV4(source,kit.replace('style_id: frontier   |   version 4,','style_id: frontier   |   version 3,'))).toThrow('v4 required');
+    expect(()=>compileEarthArtKitV4(source,kit.replace('style_id: frontier   |   version 4.2,','style_id: frontier   |   version 3,'))).toThrow('v4 required');
     expect(()=>compileEarthArtKitV4(source,kit.replace('## 2. Frozen style','## 2. Lost style'))).toThrow('Missing kit section');
     expect(()=>compileEarthArtKitV4(source,kit+'\n## 2. Frozen style\n')).toThrow('Missing kit section');
     const mutant=JSON.parse(JSON.stringify(source));mutant.roster.starSeed=44;

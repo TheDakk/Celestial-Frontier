@@ -1,5 +1,14 @@
 # Local AI landfalls
 
+**September 12 v4.2 authoring update:** Arena/Effects additions are approved with the three
+key-ground/registration/enumeration amendments; active ART_KIT.md is v4.2. The Earth compiler
+accepts that exact marker and isolates the added Arena subsection from the existing biome
+block. Frozen paragraph and 4E remain unchanged. Arena authoring reuses the preserved compiler
+Earth card; no hand-filled card or local model run. The six new art candidates await review
+before parts-rig staging; [proof and limitations](audits/ARENA_EFFECTS_V42_PROOF_20260912/README.md).
+The terrain keyer uses an explicit opt-in for full-width ground and requires a keyed upper
+field; normal organism isolation checks remain. No live arena runtime path is claimed.
+
 **Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
 emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical
 Earth loads the hash-verified accepted E PNG through the normal original-retention queue, without
@@ -12,7 +21,7 @@ masked0.35 finish, and each model's compatible precomputed text embedding. Compa
 then one phone attempt with the best candidate; no delivery engineering before that result.
 Queue up to six new deterministic weather variants on the saved raw finisher: soft sky-contour
 sheen, darker/higher-contrast wet fur, and foreground precipitation at the plate's sky density.
-Show beside E/triptych; no inference. Civet end-to-end proof remains next. No kit/GitHub edits.
+Show beside E/triptych; no inference. Civet parts-rig proof follows acceptance of the v4.2 arena/effect art. No GitHub step.
 
 **Normal Land implementation, September12:** the ordinary boot adapter now selects the
 accepted Earth kit composite and one masked finisher, with retained originals and400ms

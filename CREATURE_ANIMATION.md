@@ -15,11 +15,12 @@ uses CLI 0.3.0/core 0.3.9 with sorted, hash-checked copies, 4 px padding and 1 p
 exactly one atlas, no timestamps; only synthetic parts have been packed. PNG masters remain
 immutable; optimize copies only. [Current tooling contract](UI_TOOLCHAIN.md).
 
-**Current direction, pending art approval:** Nick requests a parts-rig Civet versus Platypus
-proof in a procedural Earth temperate arena. The [v4.2 proposal](audits/ARENA_EFFECTS_V42_PROPOSAL_20260912/PROPOSAL.md)
-adds three arena depth plates under planets and launch/travel/impact Effects cut-outs.
-The active kit is unchanged. Stop before painting until Nick approves both additions, then
-paint only those three plates and one Wild sequence for the bounded parts-rig turn.
+**Current direction, art candidates await acceptance:** Nick approved v4.2 from d2b8d8cd
+with FAR opaque, MID/NEAR on magenta (no extracted masks), shared ground y=0.78 and Effects
+anchor JSON. The [six painted candidates](audits/ARENA_EFFECTS_V42_PROOF_20260912/README.md)
+are saved; active kit updated, frozen style/4E unchanged. Stop before staging until Nick
+accepts the three plates and Wild sequence. Then parts-rig Civet versus Platypus in this
+procedural Earth arena, followed by ten-second captures for Civet, fox and procedural control.
 The previous proposed continuous-mesh repair is superseded. Share strong pose curves with
 60 fps tweening, easing, anticipation, overshoot and secondary motion (phone budget 30 fps).
 Use battle-context seeds and compiler-filled home-world cards, never the clock; wild home,

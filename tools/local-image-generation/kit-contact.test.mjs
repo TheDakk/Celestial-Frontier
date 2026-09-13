@@ -55,3 +55,15 @@ test('two low runner instances share one organism mask; single-instance control 
   assert.throws(()=>admitKitEngineJob({...edge,passes:baseline.passes}));
   assert.throws(()=>admitKitEngineJob({...baseline,passes:edge.passes}));
 });
+
+
+test('arena terrain opt-in permits full-width ground but refuses opaque-scene extraction',()=>{
+  const w=200,h=60,rgba=new Uint8ClampedArray(w*h*4);
+  for(let y=0;y<h;y++)for(let x=0;x<w;x++)rgba.set(y<40?[255,0,255,255]:[70,60,45,255],(y*w+x)*4);
+  assert.throws(()=>keyAndDespill(rgba,w,h),/isolation lost/);
+  const terrain=keyAndDespill(rgba,w,h,{terrainLayer:true});
+  assert.equal(terrain.alpha[20*w+50],0);assert.equal(terrain.alpha[50*w+50],255);
+  assert.equal(terrain.bounds.width,198);
+  const opaque=rgba.slice();for(let x=0;x<w;x++)opaque.set([70,60,45,255],x*4);
+  assert.throws(()=>keyAndDespill(opaque,w,h,{terrainLayer:true}),/keyed upper field/);
+});

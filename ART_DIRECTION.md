@@ -1,10 +1,16 @@
 # Celestial Frontier — Master Art Direction
 
-Civet animation proof status, September12: exact named viverrid anatomy export and a4E
-turnaround exist. Two private Blender tokens fail visual review (projection/shape drift).
-The larger shape/UV correction awaits approval; no local texture-finisher pass, rendered
-clips, staged browser turn, gene-driven family coverage or animation acceptance yet.
-Evidence audits/CIVET_ANIMATION_PROOF_20260912. Rain E remains active without inference.
+**Art Kit v4.2 adopted, September 12:** Nick approved d2b8d8cd with opaque Arena FAR,
+key-painted MID/NEAR (no extracted masks), shared normalized ground line 0.78, explicit
+class routing and Effects sequence anchor JSON. Frozen style and 4E are byte-identical.
+Six built-in imagegen masters and their exact prompts are ready for review at
+[audits/ARENA_EFFECTS_V42_PROOF_20260912](audits/ARENA_EFFECTS_V42_PROOF_20260912/README.md).
+They are candidates, not accepted artwork: NEAR occupies roughly the lower fifth, and
+key-edge/phase-registration flags are retained. Stop before battle staging until Nick accepts
+these plates and the Wild sequence. Next is the GSAP parts-rig turn, then ten-second Civet,
+fox and procedural quadruped captures. The continuous mesh failed shape; fallback captures
+remain evidence. Blender projection is abandoned; old turnaround/canid assets stay for port.
+Rain E remains the active ordinary-game painting. No local inference or 3D render this batch.
 
 **Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
 emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical
@@ -18,7 +24,7 @@ masked0.35 finish, and each model's compatible precomputed text embedding. Compa
 then one phone attempt with the best candidate; no delivery engineering before that result.
 Queue up to six new deterministic weather variants on the saved raw finisher: soft sky-contour
 sheen, darker/higher-contrast wet fur, and foreground precipitation at the plate's sky density.
-Show beside E/triptych; no inference. Civet end-to-end proof remains next. No kit/GitHub edits.
+Show beside E/triptych; no inference. Civet parts-rig proof follows acceptance of the v4.2 arena/effect art. No GitHub step.
 
 **Normal Land implementation, September12:** the ordinary boot adapter now selects the
 accepted Earth kit composite and one masked finisher, with retained originals and400ms

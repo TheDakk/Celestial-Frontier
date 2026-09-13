@@ -12,10 +12,11 @@ export function alphaBounds(alpha,w,h){
   for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(alpha[y*w+x]>16){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x+1);y1=Math.max(y1,y+1);}
   if(!x1||!y1)throw Error('Empty alpha');return {x:x0,y:y0,width:x1-x0,height:y1-y0};
 }
-export function keyAndDespill(rgba,w,h){
+export function keyAndDespill(rgba,w,h,{terrainLayer=false}={}){
   if(rgba.length!==w*h*4)throw Error('Cutout byte shape');
   const original=new Uint8Array(w*h);let before=0;
   for(let i=0;i<original.length;i++){const [r,g,b]=rgba.subarray(i*4,i*4+3);original[i]=r>150&&b>150&&pinkExcess(r,g,b)>85?0:255;before+=original[i]>0;}
+  if(terrainLayer&&original.subarray(0,w).filter(a=>a===0).length<w*.95)throw Error('Terrain requires a keyed upper field');
   const alpha=erodeAlpha(original,w,h,1),interior=erodeAlpha(alpha,w,h,3),out=new Uint8ClampedArray(rgba);let after=0,despilled=0,unresolved=0;
   for(let y=0;y<h;y++)for(let x=0;x<w;x++){
     const i=y*w+x,p=i*4;out[p+3]=alpha[i];if(!alpha[i])continue;after++;
@@ -32,7 +33,7 @@ export function keyAndDespill(rgba,w,h){
     despilled++;
   }
   const bounds=alphaBounds(alpha,w,h);
-  if(bounds.width>w*.98||bounds.height>h*.98)throw Error('Cutout isolation lost');
+  if(!terrainLayer&&(bounds.width>w*.98||bounds.height>h*.98))throw Error('Cutout isolation lost');
   return {rgba:out,alpha,bounds,receipt:{erodedPixels:before-after,despilledPixels:despilled,unresolvedEdgePixels:unresolved}};
 }
 /** Premultiplied bilinear sampling prevents invisible magenta bleeding during scale. */
