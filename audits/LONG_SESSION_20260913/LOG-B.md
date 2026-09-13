@@ -91,3 +91,15 @@ Status: built and green (typecheck 0; every battle2 / effects / motion / soundki
 Also: `species-portrait.ts` replaces the battle2 wiring's private portrait loader (same code, now shared).
 
 Not done: main.ts still holds no shared handle for the audio owner beyond the decorative port (the study is the only consumer); foliage sway on landfalls (no foliage nodes on a flat vista); painted resident poses beyond the portrait rig until C2 parts land.
+
+# Batch 4 (C2 unblock, Claude lane) — seam oracle, boundary-band underlap, authorization — 2026-09-13
+
+Nick delegated approvals ("you can authorize some changes for me"). Done in this batch:
+
+| Item | Files | Result |
+|---|---|---|
+| Seam oracle | `tools/motion-proof/seam-oracle.mjs`, `tests/seam-oracle.test.ts` | Transparent pixels inside the closed body envelope near each joint pivot: vacated space and leg concavities excluded, joint wedges counted. Replaces the vacated-silhouette ruler that could never reach zero. |
+| Boundary-band underlap on the fixture rig | `battle2/fixture-rig.ts` (`cutFixtureParts({ underlapPx, underlapByLimit })`, `FIXTURE_DRAW_ORDER`, `fixtureParentPart`, `fixtureIsAncestor`), `battle2/rig-render.ts` (pure posed render, `poseFromTimeline`, `changedChannels`), `tests/battle2-rig-underlap.test.ts` | Every ancestor part carries its descendants' cut bands beneath them, parents drawn first. Depth per cut = distance to the descendant pivot × sin(cumulative joint limit) × 1.1, floor 2 % W, cap W/8. Rest render 0 changed channels. |
+| Demonstration on the real Civet master | `tools/motion-proof/rig-pose-render.mjs`; `audits/C2_BOUNDED_REPAIR_20260913/underlap-demo-01/` + `CLAUDE_UNDERLAP_DEMONSTRATION.md` | Hit recoil head/neck seam pixels: strict 4,106 / 3,306 → underlap 1 / 6; strike 4,152 / 2,278 → 0 / 4. A fixed depth (44 to 82 px) only closed 65 to 85 %. |
+| Live stage | `battle2-wiring.ts`, `tools/battle2-proof/entry.mjs`; `b-batch-capture/proof-run-02/` | The battle2 study and proof page cut the fixture rig with the limit-driven underlap; capture REVIEW, 602 frames, p95 0.30 ms; the civet's joints no longer open black wedges. |
+| Authorization for Codex | `audits/C2_BOUNDED_REPAIR_20260913/AUTHORIZATION_20260913.md` | Band underlaps on every cut with the depth rule, seam-oracle gates on hit/strike/approach, then the civet, fox and procedural captures without further scope stops. Bound, curves, kits, GitHub still off limits. |
