@@ -71,3 +71,19 @@ parts-rest-runner.mjs / parts-rest-entry.mjs provide a bounded native Pixi compa
 the whole keyed master. They refuse dirty source, record bundled source hashes, use one
 isolated loopback browser and compare every rendered RGBA channel, with a missing-head
 negative control. This is a rest-render test, not invented clip curves or animation acceptance.
+
+
+## Native rest admission — PASS on de9c9a32
+
+native-rest-01 stopped before browser launch: Rolldown output.file rejected Pixi's multiple
+chunks. That failure is preserved; the runner now uses output.dir. native-rest-02 then passed
+in native WebGL:32parts,0changedRGBAchannels against the whole keyed master. Missing-head
+negative control changes234,525channels. Mean empty-pose update0.0068ms over1000measurements
+after200warmups. This measures pose updates only, not60fpsanimation or contact mechanics.
+Source hashes/browser provenance and native screenshot are in native-rest-02/report.json.
+
+Next interop check found a producer-side contract mismatch: Claude's GSAP adapter broadcasts
+root offsets to all joints, compounding translation in a hierarchical rig. Actual-producer
+probe and prepared minimal patch/review request: ../C2_MOTION_INTEROP_20260913/. Protected
+Claude sources were read only and remain unchanged. Ownership decision pending; no workaround
+silently changes CreatureRigV1 semantics. Motion/fox/procedural/captures/C3 still outstanding.
