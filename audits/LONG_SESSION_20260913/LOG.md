@@ -31,3 +31,14 @@ rest on18bd7368 PASS:22parts,0changedRGBAchannels, missing-head mutant284037chan
 0.0069ms mean empty-pose update. Report/screenshot: ../C2_PARTS_ATLAS_20260913/native-fox-rest-01/.
 Not motion acceptance. Native procedural masks next; producer root-broadcast fix still pending
 in protected Claude motion/. Audio-owner and240msimpact-hold decisions adopted as supplied.
+
+### Native painter mask observation — first refusal retained
+
+native-painter-parts-01 on cee01f47 refused because capture altered ordinary painter pixels;
+no mask/record artifacts admitted. Direct repeated getImageData on the live Canvas2D surface
+is the suspected cause (readbacks can change rendering execution). Capture now copies the
+surface to a separate willReadFrequently canvas before reading; no draw/RNG command changed.
+This hypothesis is not yet native-qualified. The next bounded comparison uses a NEW
+native-painter-parts-02 directory on committed source. It records changed-channel count/max
+on failure and a deliberately corrupted-pixel control. Typecheck,4focusedtests/rootvalidate
+pass. No motion, staging or C3 acceptance. Original refusal remains in report.json.
