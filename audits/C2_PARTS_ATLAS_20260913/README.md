@@ -135,3 +135,20 @@ labels only where original alpha is transparent, and refuses any missed visible 
 No colour/alpha change to the ordinary master is allowed. This is a bounded observation replay,
 not a new creature, model painting, changed parameters or guessed family record. Its native
 check uses NEW native-painter-parts-03 on committed source. No motion acceptance claimed.
+
+### Procedural masks and actual Motion compiler — admitted
+
+native-painter-parts-03 on782e827a PASS: ordinary rendered pixels unchanged (0channels),
+34714paintedpixels,21parts,31quadruped joints,actualsurface translucent. No new genome or
+painting parameters. The separate observation replay supplies labels only; native original
+ink remains authoritative. Its hash-bound record/master/labels/declaration are retained there.
+Procedural atlas is one543x261image,0changedrest/packedRGBAchannels. Native rig rest next.
+
+body-cards-01 uses the actual read-only Claude compiler and retains source/input hashes,
+all3cards and idle/melee/hit timelines. All repeat byte-identically; missing head refuses for
+each. Civet small0.85/furred,fox medium1.0/furred,procedural huge1.4/translucent. No cards or
+per-creature curves typed by hand. Card notes are empty; source records still lack explicit
+mass,locomotion,realm,weapons,luminous and numeric rotation/secondary limits. The compiler
+supplies those via named-Earth mapping or procedural genome/template defaults, not our rig.
+This is compiler interop only, not GSAP/ground-contact/fps/motion acceptance. Prepared producer
+root-offset fix remains blocked by cross-lane ownership. No protected source edited or merged.
