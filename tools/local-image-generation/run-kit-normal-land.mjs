@@ -13,7 +13,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'),ou
 if(process.argv.length!==3||!out.startsWith(root+'/audits/'))throw Error('Usage: run-kit-normal-land.mjs NEW_AUDIT_DIRECTORY');
 await fs.mkdir(out);const result={schema:'cf.kit-normal-land.v1',status:'FAIL',head:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),events:[],requests:[],states:[],screenshots:[],inferenceRuns:0};
 const need=(v,m)=>{if(!v)throw Error(m);};const sha=b=>createHash('sha256').update(b).digest('hex');
-const accepted=await fs.readFile(path.join(root,'audits/ART_KIT_WEATHER_MAT_20260912/native-01/painting.png'));
+const accepted=await fs.readFile(path.join(root,'audits/ART_KIT_WEATHER_LADDER_20260912/E.png'));
 let release,vite,server,cdp,sid;
 try{
  need(!execFileSync('git',['status','--porcelain','--untracked-files=no'],{cwd:root,encoding:'utf8'}).trim(),'Native UI proof requires committed source');
@@ -45,11 +45,12 @@ try{
  const began=performance.now();await click('[data-act="landcta"]');
  await until('composite',`(()=>{const s=window.__CF_SLICE__.api.state();return s.mode==='surface'&&s.planet===133&&s.localAi.mounted;})()`);
  const first=await state('ordinary-Land-composite');result.compositeAfterClickMs=performance.now()-began;
- need(first.localAi.originalId===null&&first.localAi.jobs.length===0,'Unexpected inference or original on initial Land');
  await screenshot('01-ordinary-land-composite.png');
- // Import the existing accepted PNG through the real independent original store. No fabricated model run.
- result.retained=await evaluate(`(async()=>{const input=window.__CF_SLICE__.api.state().localAi.input;if(!input)throw Error('Missing canonical input');const {createAiLandfallOriginalStoreV1}=await import('/src/ai-landfall-originals.ts');const store=createAiLandfallOriginalStoreV1();try{const blob=await fetch('/accepted-baseline.png').then(r=>r.blob());const original=await store.retain(input,{blob,width:1024,height:576});return {originalId:original.originalId,sha256:original.sha256};}finally{store.close();}})()`);
- need(result.retained.sha256===sha(accepted),'Retained accepted original changed');
+ await until('accepted E retained by ordinary game',`(()=>{const s=window.__CF_SLICE__.api.state();return s.localAi.originalId&&s.localAi.alpha===1;})()`);
+ const active=await state('accepted-E-active');
+ result.retained=await evaluate(`(async()=>{const {input,originalId}=window.__CF_SLICE__.api.state().localAi;const {createAiLandfallOriginalStoreV1}=await import('/src/ai-landfall-originals.ts');const store=createAiLandfallOriginalStoreV1();try{const original=await store.read(input,originalId);return {originalId:original.originalId,sha256:original.sha256};}finally{store.close();}})()`);
+ need(result.retained.sha256===sha(accepted),'Ordinary game did not retain accepted E');
+ need(active.localAi.jobs.length===1&&active.localAi.jobs[0].status==='ready','Accepted original queue did not finish');
  const priorTimeOrigin=await evaluate('performance.timeOrigin');
  await cdp.send('Page.reload',{ignoreCache:true},sid);
  await until('retained original settled in the new document',`(${retainedReloadReady.toString()})(window.__CF_SLICE__?.api?.state?.(),${JSON.stringify(result.retained.originalId)},${priorTimeOrigin},performance.timeOrigin)`,60000);

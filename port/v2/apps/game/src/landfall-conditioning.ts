@@ -2,7 +2,7 @@
  * Named Earth diagnostics come from the actual painter owners cited below;
  * raw procedural limb/color/body genes are NOT named Earth anatomy. This first
  * adapter retains the exact snapshot's Earth scope and D-9e refusal boundary. */
-import { snapshotEarthLayerDataV1, EARTH_PAINTED_COMPOSITION_V1, EARTH_PAINTED_EDGE_RUNNERS_V1, EARTH_PAINTED_WEATHER_MAT_V1 } from '@cf/art/earth-resident-plan';
+import { snapshotEarthLayerDataV1, EARTH_RAIN_INTENSITY_V1, EARTH_PAINTED_COMPOSITION_V1, EARTH_PAINTED_EDGE_RUNNERS_V1, EARTH_PAINTED_WEATHER_MAT_V1 } from '@cf/art/earth-resident-plan';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import { starClass, KIND_DESC, SOL_PLANETS } from '@cf/domain-starcatalog';
 import { systemFor } from '@cf/domain-worldgen';
@@ -416,7 +416,7 @@ export function compileEarthKitEngineV4(input: unknown, kit: string, assets: Kit
   const finisherPrompt = [compiled.frozenParagraph, compiled.runtimeCard, subject, layout].join('\n\n');
   return freeze({ schema: 'cf.kit-engine.v4', experiment: settings.compositionProfile === 'weather-mat-v1' ? 'cf.kit-weather-mat.v1' : settings.compositionProfile === 'edge-runners-v1' ? 'cf.kit-edge-runners.v1' : 'cf.kit-contact.v1', ...settings,
     ...(settings.compositionProfile === 'edge-runners-v1' ? { interiorErosionPixels: 8 } : {}),
-    ...(settings.compositionProfile === 'weather-mat-v1' ? { compositorSystemCard: compiled.systemCard } : {}),
+    ...(settings.compositionProfile === 'weather-mat-v1' ? { compositorSystemCard: compiled.systemCard, weatherIntensity: /rain|storm/.test(model.recipe.scene.weather) ? EARTH_RAIN_INTENSITY_V1 : { dropletCount: 1, specularStrength: 1, precipitationDensity: 1 } } : {}),
     plate: assets.plate, atlas: assets.atlas, triptych: assets.triptych, foreground: assets.foreground,
     composition: profile, passes, finisherPrompt, sourceSnapshot: compiled.sourceSnapshot,
     qualityAccepted: false, mastersAccepted: true, textTokenCeiling: 512, finisherSteps: 1, skipOrganismPasses: true });
