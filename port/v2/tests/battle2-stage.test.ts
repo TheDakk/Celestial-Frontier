@@ -5,6 +5,8 @@ import { PORTRAIT_RIG_LABEL, createPortraitRig, portraitClip, samplePortraitClip
 import { FIXTURE_RIG_LABEL, createFixtureRig, cutFixtureParts, type BattleRigV1, type FixturePartCut, type RigContainerLike, type RigSpriteLike } from '../apps/game/src/battle2/fixture-rig.js';
 import { BattleStage, MELEE_THEMES, deliveryForTheme, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from '../apps/game/src/battle2/stage.js';
 import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from '../apps/game/src/effects/anchors.js';
+import { EMITTER_PRESETS } from '../apps/game/src/effects/emitter.js';
+import { EffectThemeLibrary, isProceduralImage } from '../apps/game/src/effects/theme-library.js';
 import type { EffectParticleLike, EffectSpriteLike, EffectTextureLike } from '../apps/game/src/effects/pixi-adapter.js';
 import { compileBodyCard, compileBodyCardOrFallback } from '../apps/game/src/motion/body-card.js';
 import { isMotionFallback } from '../apps/game/src/motion/templates.js';
@@ -106,6 +108,28 @@ describe('BattleStage (structural Pixi 8, injected clock)', () => {
     const plan = stage.play(adapted.input); expect(plan.reducedMotion).toBe(true);
     now = plan.beats.impactAt + 10; const s = stage.tick()!.sample;
     expect(s.camera).toEqual({ shake: { x: 0, y: 0 }, flash: 0 }); expect(s.effect).toBeNull(); expect(s.attacker.displacementX).toBe(0); expect((stage.root as Node).children[5]).toMatchObject({ children: [] });
+    stage.dispose();
+  });
+});
+
+describe('B2 per-ability theme effects on the stage', () => {
+  it('a procedural theme plays with no phase sprite, theme emitters and tint resolved by plan.theme; the painted theme keeps its sprites', () => {
+    let now = 0; const clock = () => now;
+    const { f } = stageFactory(), rigs = { left: civetRig(), right: portraitRig() };
+    const emittersForTheme = vi.fn((t: string) => { void t; return { launch: { ...EMITTER_PRESETS.launch, burst: 5, maxParticles: 5 }, travel: { ...EMITTER_PRESETS.travel, maxParticles: 5 }, impact: { ...EMITTER_PRESETS.impact, burst: 5, maxParticles: 5 } }; });
+    const tintForTheme = vi.fn((t: string) => (t === 'tide' ? 0xd8f4f0 : 0x8a6a42));
+    const stage = new BattleStage({ factory: f, clock, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs, masses: { left: 0.85, right: 0.85 },
+      effects: { host, particleTexture: { width: 8, height: 8 }, seed: 3, phaseTextures: (a) => a.phases.map((p) => (isProceduralImage(p.keyedImage) ? null : TEX)), emittersForTheme, tintForTheme }, worldLife: { container: new Node(), update: vi.fn(), dispose: vi.fn() } });
+    const lib = new EffectThemeLibrary([wild()]);
+    const c = ctx({ anchorsForTheme: (t) => lib.anchorsFor(t) });
+    const tide = turnPlanInputFromTranscriptEvent({ side: 'B', an: 'Platypus', dn: 'Civet', dmg: 4, hpA: 20, hpB: 12 }, c); if (tide.kind !== 'turn') throw new Error(tide.reason);
+    const plan = stage.play(tide.input), root = stage.root as Node, fx = root.children[5] as Node;
+    expect(plan.theme).toBe('tide'); expect(plan.delivery).toBe('cast'); expect(fx.children.length).toBe(1); // particle container only, no phase sprites
+    expect(emittersForTheme).toHaveBeenCalledWith('tide'); expect(tintForTheme).toHaveBeenCalledWith('tide');
+    now = plan.beats.impactAt + 5; const frame = stage.tick()!; expect(frame.sample.effect!.phase).toBe('impact'); expect(frame.sample.camera.flash).toBe(1);
+    const wildTurn = turnPlanInputFromTranscriptEvent({ side: 'A', an: 'Civet', dn: 'Platypus', dmg: 9, hpA: 20, hpB: 3 }, c); if (wildTurn.kind !== 'turn') throw new Error(wildTurn.reason);
+    now = plan.beats.end + 1; stage.tick(); const p2 = stage.play(wildTurn.input);
+    expect(p2.theme).toBe('wild'); expect(fx.children.length).toBe(4); expect(emittersForTheme).toHaveBeenLastCalledWith('wild');
     stage.dispose();
   });
 });

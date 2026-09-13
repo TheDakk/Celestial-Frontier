@@ -16,6 +16,8 @@ export interface EffectSpriteLike {
 }
 export interface EffectParticleLike {
   x: number; y: number; scaleX: number; scaleY: number; anchorX: number; anchorY: number; rotation: number; alpha: number;
+  /** Material colour (theme library); optional so a plain fake particle still satisfies the contract. */
+  tint?: number;
 }
 export interface EffectParticleContainerLike {
   addParticle(...particles: EffectParticleLike[]): unknown;
@@ -46,9 +48,11 @@ export const EFFECT_FIXED_STEP_MS = 1000 / 60;
 export interface EffectSequencePlayerOptions {
   readonly host: EffectPixiHost;
   readonly schedule: EffectSchedule;
-  /** One texture per anchors phase, in phase order. */
-  readonly phaseTextures: readonly EffectTextureLike[];
+  /** One entry per anchors phase, in phase order; null = a procedural phase with no painted sprite (emitters only). */
+  readonly phaseTextures: readonly (EffectTextureLike | null)[];
   readonly particleTexture: EffectTextureLike;
+  /** Theme material colour applied to every particle view (Art Kit §4K); absent = the texture's own colour. */
+  readonly particleTint?: number;
   readonly emitters: Readonly<Record<EffectPhaseName, EmitterConfig>>;
   readonly seed: number;
   /** Injected clock in ms; the player never reads Date.now or performance.now itself. */
@@ -58,10 +62,16 @@ export interface EffectSequencePlayerOptions {
 
 export interface EffectPlayerFrame { readonly sample: EffectSample; readonly liveParticles: number; readonly done: boolean; }
 
+/** Mirror an emitter's direction for a right-to-left sequence (the sprites flip through the schedule; particles flip here). */
+export const mirrorDirection = (config: EmitterConfig, flipX: boolean): EmitterConfig => (flipX ? { ...config, directionRad: Math.PI - config.directionRad } : config);
+
 export class EffectSequencePlayer {
+  /** The sprites that exist (painted phases only), in track order; `spriteForTrack` maps a track index to its sprite or null. */
   readonly sprites: readonly EffectSpriteLike[];
+  readonly spriteTracks: readonly number[];
   readonly particles: EffectParticleContainerLike;
   readonly #o: EffectSequencePlayerOptions;
+  readonly #byTrack: readonly (EffectSpriteLike | null)[];
   readonly #pool: EffectParticleLike[] = [];
   readonly #emitters: Map<EffectPhaseName, EmitterState>;
   #startMs: number | null = null;
@@ -69,16 +79,19 @@ export class EffectSequencePlayer {
   #inUse = 0;
 
   constructor(options: EffectSequencePlayerOptions) {
-    if (options.phaseTextures.length !== options.schedule.tracks.length) throw new TypeError('one phase texture per schedule track is required');
+    if (options.phaseTextures.length !== options.schedule.tracks.length) throw new TypeError('one phase texture (or null) per schedule track is required');
     this.#o = options;
-    this.sprites = Object.freeze(options.phaseTextures.map((texture, i) => {
+    this.#byTrack = Object.freeze(options.phaseTextures.map((texture, i) => {
+      if (!texture) return null;
       const sprite = options.host.createSprite(texture);
       const anchor = options.schedule.tracks[i]!.anchor;
       sprite.anchor.set(anchor.x, anchor.y);
       sprite.visible = false;
       return sprite;
     }));
-    this.#emitters = new Map((['launch', 'travel', 'impact'] as const).map((phase, i) => [phase, createEmitterState(options.emitters[phase], (options.seed + i * 7919) | 0)]));
+    this.sprites = Object.freeze(this.#byTrack.filter((s): s is EffectSpriteLike => s !== null));
+    this.spriteTracks = Object.freeze(this.#byTrack.map((s, i) => (s ? i : -1)).filter((i) => i >= 0));
+    this.#emitters = new Map((['launch', 'travel', 'impact'] as const).map((phase, i) => [phase, createEmitterState(mirrorDirection(options.emitters[phase], options.schedule.flipX), (options.seed + i * 7919) | 0)]));
     const cap = Math.max(...[...this.#emitters.values()].map((s) => s.config.maxParticles));
     this.particles = options.host.createParticleContainer(cap);
   }
@@ -104,7 +117,8 @@ export class EffectSequencePlayer {
     }
     const sample = sampleSchedule(schedule, ms);
     sample.tracks.forEach((t, i) => {
-      const sprite = this.sprites[i]!, texture = this.#o.phaseTextures[i]!;
+      const sprite = this.#byTrack[i], texture = this.#o.phaseTextures[i];
+      if (!sprite || !texture) return;
       sprite.visible = t.visible;
       sprite.x = t.transform.x * arena.width; sprite.y = t.transform.y * arena.height;
       const s = (t.transform.scale * arena.width) / texture.width;
@@ -121,7 +135,7 @@ export class EffectSequencePlayer {
     for (const state of this.#emitters.values()) {
       for (const p of state.particles) {
         let view = this.#pool[n];
-        if (!view) { view = host.createParticle(particleTexture); view.anchorX = 0.5; view.anchorY = 0.5; this.#pool.push(view); }
+        if (!view) { view = host.createParticle(particleTexture); view.anchorX = 0.5; view.anchorY = 0.5; if (this.#o.particleTint !== undefined) view.tint = this.#o.particleTint; this.#pool.push(view); }
         if (n >= this.#inUse) this.particles.addParticle(view);
         view.x = p.x; view.y = p.y; view.rotation = p.rotation; view.alpha = p.alpha;
         const s = p.size / particleTexture.width; view.scaleX = s; view.scaleY = s;
@@ -134,6 +148,7 @@ export class EffectSequencePlayer {
   }
 
   emitterState(phase: EffectPhaseName): EmitterState { return this.#emitters.get(phase)!; }
+  spriteForTrack(index: number): EffectSpriteLike | null { return this.#byTrack[index] ?? null; }
 
   dispose(): void {
     for (let i = 0; i < this.#inUse; i++) this.particles.removeParticle(this.#pool[i]!);

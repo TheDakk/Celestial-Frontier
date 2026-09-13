@@ -108,6 +108,6 @@ describe('effects pixi adapter', () => {
     const anchors = wildAnchors();
     const schedule = buildEffectSchedule(anchors, { delivery: 'cast', attackerMassClass: 1 }, placeEffectSequence(anchors, { attacker: { x: 0.2, y: 0.78 }, target: { x: 0.6, y: 0.78 } }));
     expect(() => new EffectSequencePlayer({ host: createPixiEffectHost(fakePixi), schedule, phaseTextures: [TEX], particleTexture: DOT,
-      emitters: EMITTER_PRESETS, seed: 1, clock: () => 0, arena: { width: 1, height: 1 } })).toThrow(/one phase texture per schedule track/);
+      emitters: EMITTER_PRESETS, seed: 1, clock: () => 0, arena: { width: 1, height: 1 } })).toThrow(/one phase texture \(or null\) per schedule track/);
   });
 });

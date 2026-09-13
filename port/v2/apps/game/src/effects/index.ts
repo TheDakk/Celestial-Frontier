@@ -14,7 +14,11 @@ export {
   type EffectDelivery, type EffectSample, type EffectSchedule, type EffectTiming, type EffectTransform, type PhaseTrack, type TrackSample,
 } from './sequencer.js';
 export {
-  EFFECT_FIXED_STEP_MS, EffectSequencePlayer, createPixiEffectHost,
+  EFFECT_THEMES, EffectThemeLibrary, PAINTED_EFFECT_LABEL, PROCEDURAL_EFFECT_LABEL, PROCEDURAL_SEQUENCE_PREFIX, THEME_EMITTERS, THEME_MATERIALS,
+  isEffectTheme, isProceduralImage, isProceduralSequence, proceduralAnchorsFor, type EffectTheme, type ThemeEffect, type ThemeMaterial,
+} from './theme-library.js';
+export {
+  EFFECT_FIXED_STEP_MS, EffectSequencePlayer, createPixiEffectHost, mirrorDirection,
   type EffectParticleContainerLike, type EffectParticleLike, type EffectPixiHost, type EffectPlayerFrame,
   type EffectSequencePlayerOptions, type EffectSpriteLike, type EffectTextureLike,
 } from './pixi-adapter.js';

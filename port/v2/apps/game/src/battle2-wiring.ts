@@ -28,7 +28,9 @@ import { speciesVisualKey } from '@cf/art/species-identity';
 import { BattleStage, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, turnPlanInputFromTranscriptEvent,
   type BattleRigV1, type BattleStageFactory, type FixturePartCut, type RigContainerLike, type RigSpriteLike,
   type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext, type TurnPlanInput } from './battle2/index.js';
+import { abilityTheme } from '@cf/domain-combatcore';
 import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from './effects/anchors.js';
+import { EffectThemeLibrary, isEffectTheme, isProceduralImage } from './effects/theme-library.js';
 import { createPixiEffectHost, type EffectParticleLike, type EffectSpriteLike, type EffectTextureLike } from './effects/pixi-adapter.js';
 import { compileBodyCard, MotionCompileError, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from './motion/body-card.js';
 import { MASS_BY_SIZE_INDEX, MASS_CLASS } from './motion/timing.js';
@@ -106,6 +108,8 @@ export interface Battle2Status {
   readonly phase: Battle2Phase; readonly reason: string | null; readonly label: string | null;
   readonly turns: number; readonly turnIndex: number; readonly skipped: readonly string[];
   readonly rigs: Readonly<{ left: string | null; right: string | null }>; readonly ticks: number;
+  /** Per-combatant ability theme and how its effect plays (painted sequence or the labelled procedural emitter). */
+  readonly effects: Readonly<{ left: string | null; right: string | null }>;
 }
 export interface Battle2StudyHandle { readonly ready: Promise<Battle2Status>; status(): Battle2Status; dispose(reason?: string): void; }
 
@@ -113,6 +117,11 @@ export interface Battle2StudyHandle { readonly ready: Promise<Battle2Status>; st
 export function fnv1a32(text: string): number { let h = 0x811c9dc5; for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 0x01000193); } return h >>> 0; }
 export function genomeSeed(genome: Readonly<Record<string, unknown>> | null | undefined, fallbackText: string): number {
   const s = genome?.seed; return typeof s === 'number' && Number.isFinite(s) ? s >>> 0 : fnv1a32(fallbackText);
+}
+/** The combatant's one ability theme (combat domain, `abilityTheme(genome)`); the player placeholder has no creature genome and keeps the melee default. */
+export function genomeTheme(genome: Readonly<Record<string, unknown>> | null | undefined): string {
+  if (!genome) return 'wild';
+  try { const t = abilityTheme(genome as Record<string, unknown>); return isEffectTheme(t) ? t : 'wild'; } catch { return 'wild'; }
 }
 export function genomeMass(genome: Readonly<Record<string, unknown>> | null | undefined): number {
   const size = genome?.size; if (typeof size !== 'number' || !Number.isFinite(size)) return MASS_CLASS.medium;
@@ -195,9 +204,9 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   section.setAttribute('aria-hidden', 'true'); section.style.cssText = 'display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#141d22';
   input.mount.prepend(section);
   let phase: Battle2Phase = 'loading', reason: string | null = null, label: string | null = null, ticks = 0, turnIndex = -1;
-  const skipped: string[] = []; let turns: TurnPlanInput[] = []; const rigLabels = { left: null as string | null, right: null as string | null };
+  const skipped: string[] = []; let turns: TurnPlanInput[] = []; const rigLabels = { left: null as string | null, right: null as string | null }, effectLabels = { left: null as string | null, right: null as string | null };
   let app: Battle2AppLike | null = null, stage: BattleStage | null = null, ticking = false, disposed = false;
-  const status = (): Battle2Status => Object.freeze({ phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks });
+  const status = (): Battle2Status => Object.freeze({ phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }) });
   const setPhase = (next: Battle2Phase, why: string | null = null): void => { phase = next; reason = why; section.dataset.battle2Status = next; if (why) section.dataset.battle2Reason = why; };
   const tick = (): void => {
     if (disposed || !stage || !app) return;
@@ -234,6 +243,8 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     if (typeof recipe.groundLineNormalized !== 'number' || typeof recipe.seed !== 'number' || typeof recipe.systemCard !== 'string') throw new Error('battle2 arena recipe lacks groundLineNormalized/seed/systemCard');
     const parsed = parseEffectSequenceAnchors(anchorsRaw); if (!parsed.ok) throw new Error(`battle2 anchors refused: ${parsed.reason}`);
     const anchors: EffectSequenceAnchors = parsed.anchors;
+    // One painted sequence (Wild) today; every other theme plays the labelled procedural emitter with its §4K material colour.
+    const themes = new EffectThemeLibrary([anchors]);
     const records = input.records ?? [await assets.json(BATTLE2_ASSETS.civetRecord) as ResolvedAnatomyRecord];
     if (disposed) throw new Error('disposed while loading');
     const texture = (img: Battle2Image): EffectTextureLike => pixi.Texture.from(img.source);
@@ -280,11 +291,15 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const factory: BattleStageFactory = { container: () => new pixi.Container(), sprite: (t) => new pixi.Sprite(t), text: (t) => new pixi.Text({ text: t, style, anchor: 0.5 }), graphics: () => new pixi.Graphics() };
     const built = new BattleStage({ factory, clock: input.clock, layout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass },
       worldLife, reducedMotion: input.reducedMotion, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
-        particleTexture: texture(raster(dot, 8, 8)), seed: recipe.seed, phaseTextures: (a) => a.phases.map((p) => resolvedPhaseTextures.get(p.keyedImage) ?? texture(far)) } });
+        particleTexture: texture(raster(dot, 8, 8)), seed: recipe.seed,
+        phaseTextures: (a) => a.phases.map((p) => { if (isProceduralImage(p.keyedImage)) return null; const t = resolvedPhaseTextures.get(p.keyedImage); if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }),
+        emittersForTheme: (t) => themes.emittersFor(t), tintForTheme: (t) => themes.tintFor(t) } });
+    const themeA = genomeTheme(championGenome), themeB = genomeTheme(input.settlement.encounter.defender.battleGenome);
+    effectLabels.left = `${themeA}: ${themes.resolve(themeA).label}`; effectLabels.right = `${themeB}: ${themes.resolve(themeB).label}`;
     const ctx: TurnOutcomeContext = {
-      A: { side: 'A', name: input.chronicle.championName, mass: left.mass, card: left.card, theme: 'wild', seed: left.seed },
-      B: { side: 'B', name: input.chronicle.defenderName, mass: right.mass, card: right.card, theme: 'wild', seed: right.seed },
-      arena: { groundLineY: layout.groundLineY, stands: layout.stands }, seed: fnv1a32(input.settlement.battleId) ^ recipe.seed, anchorsForTheme: () => anchors, readyMs: 900, commandMs: 400, reducedMotion: input.reducedMotion,
+      A: { side: 'A', name: input.chronicle.championName, mass: left.mass, card: left.card, theme: themeA, seed: left.seed },
+      B: { side: 'B', name: input.chronicle.defenderName, mass: right.mass, card: right.card, theme: themeB, seed: right.seed },
+      arena: { groundLineY: layout.groundLineY, stands: layout.stands }, seed: fnv1a32(input.settlement.battleId) ^ recipe.seed, anchorsForTheme: (t) => themes.anchorsFor(t), readyMs: 900, commandMs: 400, reducedMotion: input.reducedMotion,
     };
     for (const row of input.settlement.transcript.log) { const t = turnPlanInputFromTranscriptEvent(row, ctx); if (t.kind === 'turn') turns.push(t.input); else skipped.push(t.reason); }
     if (turns.length === 0) { built.dispose(); throw new Error('battle2: the transcript has no stageable turn'); }
