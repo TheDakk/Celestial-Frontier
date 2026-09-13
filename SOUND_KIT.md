@@ -4,6 +4,8 @@ Sound direction and audio contract, PROPOSED version 1, 2026-09-12. Companion to
 
 Each section is plain text inside a fenced block. Sections 1 and 2 are frozen once approved; section 3 is filled by the compiler; section 4 is the closed cue vocabulary.
 
+Matches code as of 2026-09-13 (see Implementation at the end; sections 1, 2, 5 and 6 are Nick's wording and are not touched by that note).
+
 ## 0. How to use
 
 ```text
@@ -190,3 +192,7 @@ bed under 400 KB, a music piece under 1.2 MB.
   e. Then freeze sections 1, 2, 5 and 6; sources grow only by adding a
      named set with its own listening review.
 ```
+
+## Implementation
+
+Matches code as of 2026-09-13. The kit is implemented in `port/v2/apps/game/src/soundkit/` (voice-card compiler `voice-card.ts`, deterministic derivation `derive.ts` over the pure DSP in `dsp.ts`, the closed cue registry `cues.ts`, mix and ducking integration `mix.ts`, WAV output `wav.ts`, the browser hand-off `browser-adapter.ts`, and the labelled non-shippable `placeholder-archetype.ts`). The voice card reads `record.materials.surface` first and the genome's FA_SKIN only when the record omits it (CONTRACTS §5). Battle and ability cues render through a labelled placeholder synth (`battle-synth.ts`, all 33 ability and 16 battle ids, never shippable) and ride the turn beats through `battle2/cue-plan.ts` and `turn-audio.ts` (one buffer-source request per cue through the mix policy into the runtime's own admission; `main.ts` hands the study the accessible owner's `decorativeVoicePort()`, which passes only decorative requests and only while the owner is live, visible, answerable and the policy is on). Not yet implemented: the recorded source sets of CONTRACTS §1 (C3; every voice so far is derived from the placeholder archetype and is not shippable), derivation for ambience, space, economy, ui and music cue ids (registered and mixed, no recipes yet), a measured LUFS gate (only peak is enforced), and true formant/WSOLA processing (the current filters are documented approximations in `dsp.ts`).

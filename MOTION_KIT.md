@@ -4,6 +4,8 @@ Motion direction and animation contract, PROPOSED version 1, 2026-09-12. Compani
 
 Each section is plain text inside a fenced block. Sections 1 and 2 are frozen once approved; section 3 is filled by the compiler from the resolved-anatomy record; sections 4 to 7 are the closed action, timing, secondary-motion and staging vocabularies.
 
+Matches code as of 2026-09-13 (see Implementation at the end; sections 1, 2, 5 and 6 are Nick's wording and are not touched by that note).
+
 ## 0. How to use
 
 ```text
@@ -159,6 +161,8 @@ Never below 60 percent of base on tiny bodies; never above 200 percent.
   hitstop          70 on the target and attacker, scaled by the ATTACKER's
                    mass class, capped 140
   flash            two frames white on the target, then 120 fade
+  impact hold      the impact image holds 240 after the hitstop, then fades
+                   over the flash's 120, so it reads after the white, not under it
   shake            amplitude 6 px at mass 1.00 for 180, decaying
   damage number    pop 90 (back-out), rise 420, fade last 160
   timing bar       fills in game-owned turn time; the bar's motion uses
@@ -271,3 +275,7 @@ LOOT and INVENTORY: pickup pop 90 back-out; reveal flourish scaled by rarity
   e. Then freeze sections 1, 2, 5, 6; templates grow only by adding a
      template with its own proof.
 ```
+
+## Implementation
+
+Matches code as of 2026-09-13. The kit is implemented in `port/v2/apps/game/src/motion/` (body-card compiler `compileBodyCard`, template library `templates.ts`, action library `actions.ts`, timing table `timing.ts`, material secondary motion `secondary.ts`, timeline builder `timeline.ts`, GSAP player `gsap-adapter.ts`, budget guard `budget.ts`); staging by surface in `battle2/` (arena, choreography, stage, fixture and portrait rigs) and `worldlife/` (plate life); effects in `effects/`. Materials follow CONTRACTS §5: the resolved-anatomy record wins, the genome's FA_SKIN fills in only when the record omits a surface, and either case is written to `card.notes`. Live wiring is flag-gated (`?battle2=1`, `?worldlife=1`) through `battle2-wiring.ts` and `worldlife-wiring.ts`; the default game path is unchanged. Every §4 template has a library (`family-templates.ts`, `family-actions.ts`; the four added in batch 2 are proven on synthetic fixtures only). Every ability theme stages an effect on the strike beat: Wild its painted sequence, the other ten a labelled procedural emitter in the theme's §4K material colour (`effects/theme-library.ts`) until their sequences are painted. Sound cues ride the same beats (`battle2/cue-plan.ts`). The §5 impact hold (240 after the hitstop) was added 2026-09-13 on Nick's delegation after the batch-2 capture showed the painted impact disappearing with the flash. Not yet implemented: the C2 parts rig (the battle stage uses the labelled fixture rig), turns synchronised to the Chronicle cue cadence, arena selection beyond the one accepted temperate arena, resident idle life and foliage sway on landfalls, the `tame`/`feed`/victory-split rows (A1 defaults in `timing.ts`, a wording decision), and a measured §8 update-time budget (the guard is structural).

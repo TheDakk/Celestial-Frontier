@@ -1,0 +1,122 @@
+{
+  "zipSha256": "ee0661c00654f14cf48f613852bcba43fd0e05068b7107aa5082a30bace70d3c",
+  "source": "/Users/nick/Downloads/codex-pack-6-20260913.zip",
+  "previousLog": "LOG-CODEX-PRE-PACK6.md",
+  "files": [
+    {
+      "path": "audits/LONG_SESSION_20260913/CONTRACTS.md",
+      "bytes": 4905,
+      "sha256": "b705bc5d452196150ad7ff2172497732ad0f342dd7d5805c3a1a991739286044"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG.md",
+      "bytes": 4665,
+      "sha256": "393e791b94088913de97592c6c7425a4b1a10df867e9bfb99864f0dd7d189d61"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A3.md",
+      "bytes": 9920,
+      "sha256": "707d00fa9415cc18ba12dfb7fb5e8d0d0ceb0b10125d763d9067ddca7f415f42"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A6-defects.md",
+      "bytes": 12330,
+      "sha256": "9b06011a0527ce4dd20b390117d1eda59395afe66e69cdf929b809363e043e3a"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A6-wiring.md",
+      "bytes": 11301,
+      "sha256": "31dd8e5ec16c4ad1306c31e625f6a371e789657b73cf9cea9e0701d55eca15c7"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A7.md",
+      "bytes": 7090,
+      "sha256": "65449b3d52230bf1067291e7141168e1e712d2101e7c8f2235dd0a4e1de3eadf"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A11.md",
+      "bytes": 11797,
+      "sha256": "7a517d00381eae73dcc82a93d9ac471e8618cb940cf5e9a74f676aeff79ad533"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-B.md",
+      "bytes": 15075,
+      "sha256": "6ede2972a38a6d39431982294b6b649f783599f2752733c8674e3b8ca2c06e8a"
+    },
+    {
+      "path": "audits/WILD_V43_PROOF_20260913/WILD_V43_REVIEW_RESPONSE_20260913.md",
+      "bytes": 6007,
+      "sha256": "6fad31b4f433067f529addf952330e8f1bd8b464ec87088fcda4b49fad3dad37"
+    },
+    {
+      "path": "audits/WILD_V43_PROOF_20260913/second-pass/WILD_V43_SECOND_INTAKE_REVIEW_RESPONSE_20260913.md",
+      "bytes": 5678,
+      "sha256": "7ddc73c27c8807c004a4def08582f1cd88d728ee003f0dab0825847fbb6d7a5b"
+    },
+    {
+      "path": "audits/WILD_V43_PROOF_20260913/targeted-pass/WILD_V43_TARGETED_PASS_REVIEW_RESPONSE_20260913.md",
+      "bytes": 3667,
+      "sha256": "2eed61dca142f65f895124f66da5e4936cf9b2a5130d91909ff7280f3c249fca"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b3-family-sheets/cephalopod.pose-sheet.png",
+      "bytes": 367424,
+      "sha256": "91947f51ec74e6250fc0616428aad0dccd5c86a4b6f6ec0db3b7308469476a1f"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b3-family-sheets/flyer-membrane.pose-sheet.png",
+      "bytes": 290133,
+      "sha256": "30ca65eb0f6d9ee77b0f32c3cd98bbb6afdc0cdf0908427d97044ca728a905cf"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b3-family-sheets/myriapod.pose-sheet.png",
+      "bytes": 272117,
+      "sha256": "aa4138dfba1ef28925452283d7a9810c3d3a3d6846efa767f5884cde06ee8af5"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b3-family-sheets/primate.pose-sheet.png",
+      "bytes": 263664,
+      "sha256": "358688de92353f7c2031b78bd4b0665ab6874f77c615e554a13c0d8524012c31"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/report.json",
+      "bytes": 17397,
+      "sha256": "9cacc0ebf78003714c338878a7e5bc06f74793610621d2729a7df74998528040"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-impact+170.png",
+      "bytes": 1182387,
+      "sha256": "717730ebcf962dec65e449987898de0a089acf064cfbcb5f2eed0bbbf2c3c0ad"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/frame-turn2-impact+170.png",
+      "bytes": 1180020,
+      "sha256": "ed86e54344474aee139e3e039696f096d299491792f7c8266fff1627057ff1a7"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn1-wild-impact+190.png",
+      "bytes": 711687,
+      "sha256": "72ce1067c3c5e22135bc51465a6e1835e5da49e44aa0f1f306e5c2f22fded0a5"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn2-tide-impact+180.png",
+      "bytes": 631087,
+      "sha256": "1d4316044f15f6615ed9191a887102f87f65bb6e07df76c89da3041f4617595a"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn2-tide-launch+80.png",
+      "bytes": 1013697,
+      "sha256": "4d5f3f2e5750f12300056622eb079f6a8fd9370f4d3599e9c92995139893fb1c"
+    },
+    {
+      "path": "MOTION_KIT.md",
+      "bytes": 15992,
+      "sha256": "c477fe3dd986df21b156feecaeb7635d6871c53a9e2dbb3e97735974222970bf"
+    },
+    {
+      "path": "SOUND_KIT.md",
+      "bytes": 11234,
+      "sha256": "23ed639c7d6b3aba672251068e9cae430f487c90611f348f57e8b4baf3513c08"
+    }
+  ]
+}
