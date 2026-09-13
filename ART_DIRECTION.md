@@ -1,5 +1,12 @@
 # Celestial Frontier — Master Art Direction
 
+**Arena v1 accepted, September12:** Nick accepted FAR/MID/NEAR from75a5c4a4. One RGB-only
+intake pass corrects exactly190 unresolved MID pixels on a copy; alpha and masters unchanged.
+[Acceptance and corrected arena](audits/ARENA_V1_ACCEPTANCE_20260912/README.md). Wild shapes
+and phases accepted, palette rejected as Frost. v4.3 theme-table proposal needs the missing
+supplied review; no kit change or Wild repaint yet. Motion/Sound frozen paragraphs approved;
+revised Motion Kit with world-life still missing. This supersedes earlier pending-arena wording.
+
 **Art Kit v4.2 adopted, September 12:** Nick approved d2b8d8cd with opaque Arena FAR,
 key-painted MID/NEAR (no extracted masks), shared normalized ground line 0.78, explicit
 class routing and Effects sequence anchor JSON. Frozen style and 4E are byte-identical.

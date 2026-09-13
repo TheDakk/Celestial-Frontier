@@ -17,88 +17,63 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · MOTION/SOUND PROPOSALS RETAINED; ART REVIEW PENDING
+## SESSION HANDOFF — 2026-09-12 · ARENA v1 ACCEPTED; v4.3 REVIEW FILES NEEDED
 
-MOTION_KIT.md and SOUND_KIT.md are verbatim PROPOSED v1 from the supplied zip, not approved
-frozen contracts. Exact hashes and read-only body-card gap report:
-audits/MOTION_SOUND_KITS_20260912/ADOPTION.md and verification.json. No implementation,
-recording, sound derivation or kit edits in this batch. User direction for the later proof:
-compile the Civet body card from resolved anatomy per Motion Kit §§3–6, use its timings and
-report every missing record field. Current Civet gaps include resolved mass, locomotion,
-realm, per-part materials, secondary lag order, natural weapons, luminous and joint limits;
-identity, template, landmarks and bone lengths already exist. Never use raw identity genes
-to override named Earth anatomy. Recheck the actual parts-rig record when built.
+STOP at the v4.3 proposal/approval boundary. Missing supplied files: ARENA_EFFECTS_REVIEW_20260912.md
+(the eleven-row material table) and revised MOTION_KIT.md including world-life. Neither is in
+this worktree/Downloads; path question is pending. Do not invent the ten unknown theme rows or
+world-life text. Current ART_KIT.md remains v4.2; no repaint. Known Wild row/rules and exact
+remaining order: audits/ARENA_V1_ACCEPTANCE_20260912/V43_PENDING.md.
 
-Sound recording waits for Nick to approve the frozen paragraphs. Then only Sound Kit §8b:
-quadruped archetype voice, Wild theme set, battle set, temperate rain bed and fur impacts.
-Derive Civet, fox and one procedural quadruped from that one archetype, show them side by
-side to listen, and wire sound into the arena proof. No other family/theme/music/library
-volume authorized. This message does not accept the current arena/effect candidates.
+Arena FAR/MID/NEAR from75a5c4a4 ACCEPTED as template v1. Acceptance manifest and one corrected
+MID copy at audits/ARENA_V1_ACCEPTANCE_20260912/. Exactly190 RGB pixels corrected in one applied
+pass, all alpha and accepted masters unchanged. Initial guard found212 total residual edge
+pixels and wrote nothing; corrected selection reconstructs exactly the original190 unresolved
+cases. It does not recolour the other22. No repaint. Wild shapes/phases ACCEPTED, palette
+REJECTED (reads Frost); retain per-phase anchor JSON as fallback. No current Wild art accepted
+as a complete effect. Active ordinary-game rain E remains unchanged.
 
+v4.3 must be a proposed diff: closed eleven-theme material/shape table in Effects, game hex
+accent only. Wild = claw rake, fur tufts, torn leaves, kicked earth, wind streaks in warm ochre
+and earth tones, #9fb6d6 sheen. Game theme hexes unchanged. Show full diff and stop for Nick.
+After approval repaint Wild launch/travel/impact once with common-canvas registration.
 
-**STOP for Nick's visual acceptance before any battle staging.** Applied the approved
-v4.2 diff from d2b8d8cd with all three user amendments: Arena FAR opaque, MID/NEAR painted on
-magenta then keyed (no extracted masks); ground y=0.78; class enumerations in 0/1/5/6 and
-Effects anchor JSON. Frozen paragraph and 4E unchanged. Final diff, all six exact prompts,
-masters, keyed review copies, composite, anchor JSON and intake are retained at
-audits/ARENA_EFFECTS_V42_PROOF_20260912/README.md. Built-in imagegen: six calls, no rerolls.
-The supplied ART_KIT_V42_REVIEW_20260912.md was absent from the stated path and Downloads;
-Nick's explicit message supplied sufficient approval/amendments. Do not claim it was read.
+Motion/Sound frozen paragraphs are APPROVED. SOUND_KIT.md status metadata now approved v1,
+frozen text unchanged. Revised Motion Kit commit waits for supplied world-life file; older
+proposed13,236-byte root retained meanwhile. Do not ask for frozen approval again. Compile
+Civet body card from resolved anatomy per Motion §§3–6 and use mass-scaled timings; report
+missing mass/locomotion/realm/per-part materials/secondary order/weapons/luminous/joint limits
+rather than interpreting raw genes for named Earth anatomy. Prior gap audit retained.
 
-Earth temperate plates delivered 1672x941; Wild/Savage Maw launch/travel/impact 1254 square.
-All exceed runtime floors. Shared ground line is registered in the recipe; MID is solid and
-NEAR transparent at both stands at y=0.78. Authoring seed derives from fixed proof battle
-context, never clock; system card is copied verbatim from preserved Earth compiler output.
-No hand-typed card. NEAR is roughly the lower fifth, beyond the requested lower tenth.
-MID and effects have unresolved key-edge pixels; phase positions differ from requested
-percentage anchors. Actual per-phase anchors and measured alpha bounds are recorded.
-No qualityAccepted flag is true, no production-ready or clean-edge claim. Masters unchanged.
-The ordinary-game accepted painting remains rain E; no local model/finisher/3D run occurred.
+First sound work is authorized when the order reaches it: quadruped archetype voice set,
+Wild theme set, battle set, temperate rain bed, fur impacts only. Derive Civet, fox and one
+procedural voice from the one archetype, present all three side by side to listen, and wire
+approach, strike, hitstop, impact, hurt, damage ticks, victory. None recorded/derived/wired
+in this batch. Then Civet–Platypus parts-rig turn in accepted arena v1 with repainted Wild,
+and ten-second Civet/fox/procedural captures. No new 3D/projection/texture-finisher work.
 
-**After art acceptance:** stage Civet versus Platypus with the parts rig in this arena;
-GSAP shared tweened key poses, easing/anticipation/overshoot/secondary motion, Mac 60 fps,
-phone 30 fps budget. Timing now comes from MOTION_KIT §5 with the compiled mass factor:
-approach420ms; melee140/90/one-frame smear/260ms; hit450ms; return380ms at mass1.00.
-This supersedes the earlier approximate timing targets for this proof; report actual compiled
-values and unresolved fields. Retain hitstop/flash/shake/damage number/quick timing bar.
-Then ten-second Civet, fox and procedural
-quadruped captures. No per-creature clip edits. Prior continuous mesh failed shape despite
-exact rest; retained whole-portrait fallback captures are not accepted articulation. Keep
-turnaround/canid masters for the later engine port; Blender projection remains abandoned.
+Tooling correction done: @pixi/particle-emitter removed with37 unused transitives; game stays
+Pixi8.19.0. SeededBattleEmitter uses actual Pixi8 ParticleContainer, finite recipe-seeded
+coefficients and absolute elapsed-time updates, <=200 particles, caller-owned texture.
+Three tests: clock/RNG refusal, seed mutation, 30/60Hz and seek equality, real Pixi object
+updates/disposal, budgets/time refusal. No browser/performance or game-wiring claim.
+Tests live in app source beside other Pixi tests: root strict types collide with Pixi's
+bundled WebGPU declarations, already isolated by the existing app tsconfig. No typecheck
+flags weakened. Two targeted-despill tests pass, v2 TypeScript and root validate pass.
+GSAP3.15.0/core0.3.9/CLI0.3.0 remain pinned; deterministic one-atlas tool unchanged. PNG masters
+immutable; optimizers copies-only, approved idle policy unchanged. No unit checkout lock.
 
-Arena runtime still to implement: biome-family template + compiler-filled home-world card
-+ stable battle-context seed. Wild uses wild home; guardian lair and One signature; duel
-hosts alternate by round with seeded initial host. Phone composes card-lit plates without
-finisher, desktop may finish. Cache like originals. No delivery engineering this batch.
+After proof: second no-inference weather ladder (sheen/value/foreground rain), then up to3
+~1GB redistribution-permitted finisher candidates on Mac, one best phone attempt. Klein phone
+probing stopped; no delivery work before phone result. iPhone17Pro/iOS26.6.2/USB-C. Retain rain
+E/original/raw finisher, old fallback captures and canid/turnaround assets for later port.
 
-Tooling already signed in 3404e5d3: game gsap 3.15.0 / @pixi/particle-emitter 5.0.10; v2 dev
-free-tex-packer-core 0.3.9 / CLI 0.3.0. GSAP timelines selected. Emitter Pixi 6/7 peers are
-incompatible with direct Pixi 8.19.0 attachment; resolve renderer and seeded explicit-time
-integration before effects use. No pin change or second renderer silently. Deterministic
-one-atlas-per-creature command uses sorted hash-bound copies, fixed padding/extrusion and
-no timestamp metadata. pngquant/oxipng approved idle tools; optimize copies only, never masters.
-
-Focused compiler tests (22) and keyer tests (7) with negative controls, v2 TypeScript and root
-validate pass. Initial stale-version and threshold-boundary test failures are preserved with
-corrections; no native or hosted retry. Details in the proof README. No checkout lock in tests.
-
-After the proof: up to six deterministic no-inference weather variants (sky-facing sheen,
-wet-fur value/contrast, foreground streaks at plate-sky density), beside E/triptych for a pick.
-Then at most three ~1 GB redistribution-permitted finisher candidates on Mac with same
-composite/masked0.35/compatible embedding; one best-candidate phone attempt. No delivery
-engineering before that result. Klein phone probing stopped. iPhone17Pro/iOS26.6.2/USB-C;
-normal Safari quota1,048,576,000 vs expanded Klein transformer4,393,808,634 bytes. Prior
-session loss not established OOM. Certificate left installed. Rain E source8b01e38c/evidence
-aaacfd6f retained; original and raw finisher intact.
-
-Clean promotion: prune superseded code/pack assets on openai/mac first, then three ordered
-squash tiers into develop (production UI; painted landfall engine; research tools), then one
-develop→main full-chain release PR. No Ready PR until Civet proof, weather pick and phone-tier
-decision land. Audits LFS decision pending; no history rewrite. PR42 parked. GitHub step NONE.
+Promotion: prune superseded code/pack assets on openai/mac, three ordered squash tiers to
+develop (UI; landfall engine; research), one develop→main full-chain release. Ready no PR until
+Civet proof/weather pick/phone-tier decision. LFS migration pending Nick; no history rewrite.
+GitHub step NONE, PR42 parked. No hosted write/attempt, release or deployment authorized.
 
 Ownership: OpenAI/Codex macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracking origin/openai/mac. Pre-batch signed HEAD75a5c4a4:64 ahead upstream/175 ahead cached
-origin/develop, zero behind; proposed-kit/doc commit follows. Unrelated .DS_Store excluded.
-Reuse September12 startup receipt (Node26.8.2). Codex waits for art acceptance; Claude Code
-need not open/sync. Budget UNFROZEN/public assumption/private cap3000; zero hosted writes or
-attempts authorized. No PR now, no release/deployment. Local work is not in develop/main.
+tracking origin/openai/mac. Pre-batch1e65e006:65 ahead upstream/176 ahead cached origin/develop,
+zero behind. Local completion commit follows; unrelated .DS_Store excluded. Reuse Sept12
+startup receipt (Node26.8.2). Claude Code need not open/sync; local work is not in develop.

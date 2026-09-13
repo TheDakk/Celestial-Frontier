@@ -1,6 +1,16 @@
 # Celestial Frontier — development toolchain
 
-## September 12 parts-rig tooling additions — matches configuration 2026-09-12
+## September 12 particle emitter correction — current configuration
+
+Nick removed @pixi/particle-emitter5.0.10 because its peers are Pixi<8. Its37 unused transitive
+packages are removed; game Pixi stays8.19.0, with no peer overrides or second renderer.
+The small seeded-battle-emitter.ts uses Pixi8 ParticleContainer/Particle and absolute elapsed
+recipe time, with a200-particle cap, seeded coefficients and caller-owned textures. Three
+Node tests exercise real Pixi objects, frame-rate replay, budgets and cleanup; browser GPU
+rendering and timing remain for the parts-rig proof. GSAP3.15.0 and atlas core0.3.9/CLI0.3.0
+pins remain. pngquant/oxipng idle policy unchanged. Earlier installation notes below are history.
+
+## September 12 parts-rig tooling additions — original configuration
 
 Nick authorized exact game-app dependencies GSAP 3.15.0 and @pixi/particle-emitter 5.0.10,
 and port/v2 dev dependencies free-tex-packer-core 0.3.9 / free-tex-packer-cli 0.3.0.
@@ -218,7 +228,7 @@ Preserve the earlier enumeration-only and CPU-render provenance.
 | REAPER | 7.79.0_06dd787u | Existing .rpp, embedded MIDI/plugin state and reference renders. Desktop process/dialogs remain possible; a license file exists, validity/recognition unverified. Never print/read its key for inventory. |
 | Python | Homebrew python@3.12 3.12.14 | Isolated scripting runtime at tools/audio-render/.venv; standard library only for now. Apple Python 3.9.6 remains separate. |
 | GSAP | Exact 3.15.0 in tools/ui-motion and port/v2 game app | Paused timelines selected for parts-rig tweening; runtime wiring pending. Preserve reduced motion and native focus/click owners. |
-| @pixi/particle-emitter | Exact 5.0.10 in port/v2 game app | Selected travel/impact simulation; Pixi 6/7 peer boundary must be resolved for Pixi 8.19.0 before use. |
+| Seeded battle emitter | Repository implementation on Pixi 8.19.0 | Replaces removed @pixi/particle-emitter; recipe-seeded travel/impact particles, awaiting browser proof. |
 | free-tex-packer core / CLI | Exact 0.3.9 / 0.3.0 in port/v2 devDependencies | Deterministic one-atlas-per-creature command; synthetic repeat/pixel tests pass. |
 | Node / npm | 26.8.1 / 11.19.0 | Managed Node updated while idle at the 2026-09-07 startup; CLI capability verified. Bundled app Node processes remain separate. |
 | Homebrew | 6.0.22 | Official formula/cask installation and scoped stable updates. |

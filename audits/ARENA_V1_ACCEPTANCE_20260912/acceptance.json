@@ -1,0 +1,55 @@
+{
+  "schema": "cf.arena-template-acceptance/v1",
+  "templateId": "earth-temperate-arena",
+  "templateVersion": 1,
+  "sourceCommit": "75a5c4a4",
+  "qualityAccepted": true,
+  "acceptanceAuthority": "Nick: Earth temperate FAR/MID/NEAR ACCEPTED as arena template v1",
+  "groundLineNormalized": 0.78,
+  "recipeSource": "../ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+  "plates": [
+    {
+      "name": "arena-far",
+      "masterSha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2",
+      "width": 1672,
+      "height": 941,
+      "qualityAccepted": true,
+      "master": "../ARENA_EFFECTS_V42_PROOF_20260912/arena-far.png"
+    },
+    {
+      "name": "arena-mid",
+      "masterSha256": "189d0fc31a81330249fbce3cf03c8c3a0319cce47b9480f8623d8779dec96391",
+      "width": 1672,
+      "height": 941,
+      "qualityAccepted": true,
+      "master": "../ARENA_EFFECTS_V42_PROOF_20260912/arena-mid.png"
+    },
+    {
+      "name": "arena-near",
+      "masterSha256": "8fc1191f88eaae7561316c1c43d84b1d907ce459852b13935228e3b23e7559c4",
+      "width": 1672,
+      "height": 941,
+      "qualityAccepted": true,
+      "master": "../ARENA_EFFECTS_V42_PROOF_20260912/arena-near.png"
+    }
+  ],
+  "midIntakeCopy": {
+    "path": "arena-mid-despilled.png",
+    "sha256": "d9a3690dceb71420cb1fc64898b1d74a677af4e26216a0437348959f57b55d0e",
+    "operation": "one approved intake-only RGB despill pass on exactly190 unresolved edges; alpha unchanged"
+  },
+  "composite": {
+    "path": "arena-template-v1.png",
+    "sha256": "84e023f37216cbe2c6df54313dfb1a59a6c7db3bf94d441f53cbbda36c0abd5c"
+  },
+  "ordinaryGamePainting": "rain E unchanged; arena not yet wired to battle",
+  "wild": {
+    "shapesAccepted": true,
+    "phasesAccepted": true,
+    "paletteAccepted": false,
+    "qualityAccepted": false,
+    "reason": "reads as Frost",
+    "perPhaseAnchorFallback": "../ARENA_EFFECTS_V42_PROOF_20260912/wild-anchors.json",
+    "next": "v4.3 theme-table proposal/approval, then exactly one common-canvas repaint"
+  }
+}

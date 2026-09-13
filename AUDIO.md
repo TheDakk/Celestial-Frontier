@@ -1,5 +1,13 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
+**Frozen Sound Kit v1 approved, September12:** root SOUND_KIT.md now says approved v1;
+only two status labels changed. Motion frozen paragraphs are approved too. Authorized first
+sources: quadruped voice archetype, Wild theme, battle set, temperate rain bed and fur impacts.
+Then derive Civet/fox/procedural voices from that one archetype for side-by-side listening,
+and wire approach/strike/hitstop/impact/hurt/damage ticks/victory to the arena proof. No sources
+or derived voices recorded yet: current stop is the v4.3 proposal, which needs the missing
+review. This supersedes earlier requests to approve the frozen paragraphs; do not ask again.
+
 **Proposed Sound Kit v1 retained, September 12:** [SOUND_KIT.md](SOUND_KIT.md) is committed
 verbatim, with no new sources, derivation or wiring. Recording waits for Nick's approval of
 the frozen paragraphs. Then only §8b: quadruped voice archetype, Wild theme set, battle set,

@@ -1,5 +1,14 @@
 # Creature animation — shared anatomy and motion contract
 
+**Current September12 direction:** arena template v1 accepted, Wild shapes/phases accepted
+but palette rejected. v4.3 proposal/approval and one Wild repaint precede the parts-rig turn.
+Motion frozen paragraphs are approved; supplied revised world-life Motion Kit is missing.
+Use §§3–6 resolved body-card/timing rules and report gaps when building. No named-anatomy
+fields were invented. @pixi/particle-emitter removed; [seeded-battle-emitter.ts](port/v2/apps/game/src/seeded-battle-emitter.ts)
+uses the existing Pixi8 ParticleContainer, recipe seed and absolute elapsed time. Tested in
+Node against real Pixi objects; browser rendering/performance and battle wiring are pending.
+This supersedes the earlier tooling compatibility/pending-frozen-approval text below.
+
 **Proposed Motion Kit v1 retained, September 12:** [MOTION_KIT.md](MOTION_KIT.md) is verbatim
 proposal text. Nick directs the later Civet parts-rig proof to compile its body card from the
 resolved-anatomy record using sections 3–6 and their timings, with every missing field reported.
