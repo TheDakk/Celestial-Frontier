@@ -50,3 +50,8 @@ C2native admission is waiting on local1Password signing, not a new scope approva
 signing attempts failed with agent-returned-error; source/evidence staged and preserved.
 No native successor run or unsigned-commit bypass. Latest signedHEAD6b574220,79aheadupstream/
 190aheadcacheddevelop. Native command and exact resume boundary are inROADMAP.
+
+
+Signing unblocked: verified1b0b5707,80aheadupstream/191aheadcacheddevelop. Native-rest-01
+failed at bundle construction before any browser: output.file cannot emit Pixi dynamic chunks.
+Runner corrected to output.dir; failed report preserved. No painting or source asset change.

@@ -8,7 +8,7 @@ let server,browser,release;
 const remember=p=>{const b=fs.readFileSync(p);sources.set(p,{path:path.relative(root,p),sha256:sha(b)});};
 try{
  release=acquireWorkspaceLock('C2 native parts rest proof');
- const bundle=await rolldown({input:path.join(here,'parts-rest-entry.mjs'),platform:'browser',plugins:[{name:'source-hashes',transform(_,id){if(path.isAbsolute(id)&&fs.existsSync(id)&&fs.statSync(id).isFile())remember(id);}}]});try{await bundle.write({file:path.join(scratch,'bundle.js'),format:'es'});}finally{await bundle.close();}
+ const bundle=await rolldown({input:path.join(here,'parts-rest-entry.mjs'),platform:'browser',plugins:[{name:'source-hashes',transform(_,id){if(path.isAbsolute(id)&&fs.existsSync(id)&&fs.statSync(id).isFile())remember(id);}}]});try{await bundle.write({dir:scratch,entryFileNames:'bundle.js',chunkFileNames:'chunk-[hash].js',format:'es'});}finally{await bundle.close();}
  const assets={'record.json':'audits/CIVET_2D_PROOF_20260912/civet.landmarks.json','master.png':'audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png','keyed.png':'audits/C2_PARTS_ATLAS_20260913/civet-v2/keyed.png','binding.json':'audits/C2_PARTS_ATLAS_20260913/civet-patched/binding.json','atlas.png':'audits/C2_PARTS_ATLAS_20260913/civet-patched/atlas/civet.png'};
  for(const [name,relative]of Object.entries(assets)){const p=path.join(root,relative);remember(p);fs.copyFileSync(p,path.join(scratch,name));}remember(path.join(here,'parts-rest-runner.mjs'));
  fs.writeFileSync(path.join(scratch,'index.html'),'<html><head><style>html,body{margin:0;background:#24282b}</style></head><body><script type="module" src="bundle.js"></script></body></html>');
