@@ -6,6 +6,21 @@ prepare their own work and publish it only through the budget-authorized path,
 with the standing green-PR authorization defined below; no release authority is
 implied.
 
+## Long-session decision override — Nick, 2026-09-13
+
+No new branches. Prune on openai/mac first; the three promotion tiers into develop use merge
+commits, not squash: production UI, painted landfall engine, research tooling as tools.
+Audits LFS migration is approved in principle for Codex to perform on openai/mac only when
+Nick says go; no history rewrite is authorized now. GitHub step remains none until C5 and
+requires the exact write authorization; PR42 stays parked. Prior squash/pending-decision and
+bounded-review-branch directions below are superseded for this session. The remaining clean
+promotion and release gates still apply.
+
+Nick reports anthropic/mac now contains Codex history. Claude owns new motion/, effects/,
+battle2/, soundkit/, worldlife/ modules and their tests; Codex must not edit those paths.
+Any main.ts hunk must be announced in its commit message. WORK_ORDER.md supplies the shared
+rig runtime interface and package evidence requirements; its file is still pending intake.
+
 ## Current clean promotion plan — Nick, 2026-09-12
 
 Prune superseded code and pack assets on `openai/mac` before splitting PR42. The split is
