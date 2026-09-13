@@ -1,0 +1,11 @@
+{
+  "status": "proposed; awaiting Nick wording approval; canonical ART_KIT unchanged",
+  "baseArtKitSha256": "f613d7c8119a1e1554fd963a1e5ca6661d6c24a89efd924268aeb5688335871b",
+  "proposedArtKitSha256": "dad1d7bf72f6cff5b5ee38f057d9d21ba3508af29d336c1726c959494bd53bf4",
+  "tableRows": 11,
+  "tableVerbatimFromReview": true,
+  "gameThemeHexesVerified": true,
+  "frozenStyleUnchanged": true,
+  "fauna4EUnchanged": true,
+  "registration": "Existing 4K requires consistent canvas/origin/contact. After approval, next Wild prompt explicitly requires identical canvas size and identical origin/contact anchors across launch/travel/impact; keep per-phase anchor JSON as fallback. No repaint yet."
+}

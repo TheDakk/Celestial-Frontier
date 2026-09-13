@@ -17,18 +17,23 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-13 · LONG SESSION C1 INPUTS PENDING
+## SESSION HANDOFF — 2026-09-13 · C1 v4.3 DIFF AWAITING APPROVAL
 
 Nick authorizes continuation through C1–C5 without repeated proceed questions. Stop for kit
 wording changes, first image/sound of a new class, GitHub writes, history rewrites, or scope
 questions; every C4 sheet also stops for Nick's eye. Report each package with the evidence
 specified in the supplied work order, and log each package in audits/LONG_SESSION_20260913/LOG.md.
 
-WORK_ORDER.md is not yet present at audits/LONG_SESSION_20260913/WORK_ORDER.md or in Downloads.
-Also missing: ARENA_EFFECTS_REVIEW_20260912.md (the exact eleven theme rows) and the revised
-MOTION_KIT.md containing world-life. A file-location question is pending. Do not fabricate the
-work order, theme rows, rig interface, evidence requirements or revised kit. Commit supplied
-files verbatim when available. ART_KIT remains v4.2 until the proposed v4.3 diff is approved.
+Supplied arena review, revised world-life MOTION_KIT.md and SOUND_KIT.md committed verbatim
+in8a2dfdc0. Hash/byte receipt: audits/LONG_SESSION_20260913/supplied-kits-receipt.json. The kits'
+PROPOSED labels are supplied bytes; Nick's existing approval remains authoritative.
+WORK_ORDER.md alone remains missing from its named audit path and Downloads. Do not invent its
+rig interface or evidence requirements; receive and commit it verbatim before dependent work.
+C1 proposal: audits/LONG_SESSION_20260913/ART_KIT_V43_PROPOSED.diff. Exact eleven review rows,
+all game accents source-verified, accent-only/body-colour rule and subject-slot binding.
+Canonical ART_KIT.md unchanged v4.2; frozen style/4E unchanged. STOP for Nick's diff approval.
+No new painting or sound in this batch. After approval use identical canvas/origin/contact
+across Wild phases and retain per-phase JSON fallback; existing4K already requires registration.
 
 C1: propose v4.3 theme material table from the review; stop for wording approval; then repaint
 Wild once with common-canvas registration, retaining per-phase anchor JSON as fallback. Game
@@ -48,8 +53,9 @@ repair, Blender projections or texture finisher passes. Retain older proof evide
 C3: quadruped voice archetype, Wild theme set, battle set, temperate rain bed, fur impacts;
 rights recorded; 48kHz WAV masters plus Opus. Derive Civet/fox/procedural voices from one
 archetype. Motion/Sound frozen paragraphs already approved; do not ask again. SOUND_KIT v1
-status approved, frozen text unchanged. Root MOTION_KIT still the older proposed file pending
-supplied world-life revision. First new-class sounds require Nick's review.
+approved by Nick, frozen text unchanged. Root MOTION_KIT now includes the supplied world-life
+layer. Both retain supplied PROPOSED status labels verbatim. First new-class sounds require
+Nick's review; the parts-rig body-card audit still reports missing record fields.
 
 C4: approved-order library batches of twelve, arenas per biome family; stop at every sheet.
 C5: prune on openai/mac, then promotion tiers into develop with MERGE COMMITS, not squash:
@@ -73,7 +79,7 @@ Klein phone probing remains stopped; no delivery engineering before phone-tier r
 
 Ownership verified: OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac,
 openai/mac → origin/openai/mac; SSH origin git@github.com:TheDakk/Celestial-Frontier.git.
-Pre-batch07c93945:66 ahead upstream/177 ahead cached origin/develop, zero behind. No remote
+Supplied-file commit8a2dfdc0:68 ahead upstream/179 ahead cached origin/develop, zero behind. No remote
 refresh needed or performed; .DS_Store excluded. Current budget file says UNFROZEN, but Nick's
 explicit GitHub step NONE controls: no push/label/dispatch/merge/release/deploy or hosted attempt.
 This batch is documentation only; no runtime/build/render or tool maintenance needed.

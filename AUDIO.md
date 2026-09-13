@@ -1,19 +1,15 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
-**Frozen Sound Kit v1 approved, September12:** root SOUND_KIT.md now says approved v1;
-only two status labels changed. Motion frozen paragraphs are approved too. Authorized first
-sources: quadruped voice archetype, Wild theme, battle set, temperate rain bed and fur impacts.
-Then derive Civet/fox/procedural voices from that one archetype for side-by-side listening,
-and wire approach/strike/hitstop/impact/hurt/damage ticks/victory to the arena proof. No sources
-or derived voices recorded yet: current stop is the v4.3 proposal, which needs the missing
-review. This supersedes earlier requests to approve the frozen paragraphs; do not ask again.
-
-**Proposed Sound Kit v1 retained, September 12:** [SOUND_KIT.md](SOUND_KIT.md) is committed
-verbatim, with no new sources, derivation or wiring. Recording waits for Nick's approval of
-the frozen paragraphs. Then only §8b: quadruped voice archetype, Wild theme set, battle set,
-temperate rain bed and fur impacts. Derive Civet, fox and the procedural control from the
-one archetype, present all three side by side for listening, and wire the arena proof for
-sound. No wider library approval is implied. [Receipt and scope](audits/MOTION_SOUND_KITS_20260912/ADOPTION.md).
+**Sound Kit v1 approved — matches intake as of September13:** [SOUND_KIT.md](SOUND_KIT.md)
+was replaced with the supplied bytes verbatim in8a2dfdc0. The supplied PROPOSED labels do not
+withdraw Nick's approval of v1/frozen paragraphs; do not ask again. Hashes and source paths:
+[audits/LONG_SESSION_20260913/supplied-kits-receipt.json](audits/LONG_SESSION_20260913/supplied-kits-receipt.json).
+C3 sources: quadruped voice archetype, Wild theme set, battle set, temperate rain bed, fur
+impacts; original/commissioned rights recorded, 48kHz24-bit WAV masters and Opus. Derive
+Civet/fox/procedural voices from one archetype for side-by-side listening, then wire the proof's
+approach/strike/hitstop/impact/hurt/damage ticks/victory. No sources or voices recorded yet.
+Current stop is C1 v4.3 wording approval; first sounds of a new class also stop for review.
+Claude owns soundkit/ and its tests. No audio runtime change in this documentation batch.
 
 ## Canonical Explorer Chronicle repair — 2026-09-08
 

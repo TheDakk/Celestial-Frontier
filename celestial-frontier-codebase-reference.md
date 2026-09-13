@@ -4,11 +4,14 @@ Tooling configuration updated 2026-09-12: [UI_TOOLCHAIN.md](UI_TOOLCHAIN.md) rec
 GSAP/atlas pins, the replacement Pixi 8 seeded emitter, optional PNG CLI probes, and deterministic creature-atlas command.
 These additions do not establish runtime parts-rig or effects integration.
 
-Civet animation proof status, September12: exact named viverrid anatomy export and a4E
-turnaround exist. Two private Blender tokens fail visual review (projection/shape drift).
-The larger shape/UV correction awaits approval; no local texture-finisher pass, rendered
-clips, staged browser turn, gene-driven family coverage or animation acceptance yet.
-Evidence audits/CIVET_ANIMATION_PROOF_20260912. Rain E remains active without inference.
+Civet animation proof status, September13: parts-rig proof remains pending. Blender projection
+is abandoned for the browser; retain turnaround/canid assets for later engine port. Continuous
+mesh fails shape; retained whole-portrait captures are labelled fallback, not articulation.
+Arena template v1 is accepted; MID's exact190-pixel copy-only despill is complete. C1 v4.3 theme
+material diff awaits approval, then one common-canvas Wild repaint precedes C2 parts-rig work.
+World-life Motion Kit and Sound Kit supplied v1 files are retained verbatim in8a2dfdc0; Nick's
+approval is recorded separately from their supplied PROPOSED labels. Work order/interface file
+remains missing. See ROADMAP.md and audits/LONG_SESSION_20260913/LOG.md for lane boundaries.
 
 **Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
 emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical

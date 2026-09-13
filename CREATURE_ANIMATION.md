@@ -2,20 +2,21 @@
 
 **Current September12 direction:** arena template v1 accepted, Wild shapes/phases accepted
 but palette rejected. v4.3 proposal/approval and one Wild repaint precede the parts-rig turn.
-Motion frozen paragraphs are approved; supplied revised world-life Motion Kit is missing.
+Motion frozen paragraphs are approved; revised world-life Motion Kit received verbatim on September13.
 Use §§3–6 resolved body-card/timing rules and report gaps when building. No named-anatomy
 fields were invented. @pixi/particle-emitter removed; [seeded-battle-emitter.ts](port/v2/apps/game/src/seeded-battle-emitter.ts)
 uses the existing Pixi8 ParticleContainer, recipe seed and absolute elapsed time. Tested in
 Node against real Pixi objects; browser rendering/performance and battle wiring are pending.
 This supersedes the earlier tooling compatibility/pending-frozen-approval text below.
 
-**Proposed Motion Kit v1 retained, September 12:** [MOTION_KIT.md](MOTION_KIT.md) is verbatim
-proposal text. Nick directs the later Civet parts-rig proof to compile its body card from the
-resolved-anatomy record using sections 3–6 and their timings, with every missing field reported.
-No kit text or animation implementation changed in this retention batch. Initial record gaps,
-timing differences and the bounded sound dependency are in
-[the receipt](audits/MOTION_SOUND_KITS_20260912/ADOPTION.md). Arena/effect art acceptance is
-still pending; storing the kit does not approve broad motion work or frozen paragraphs.
+**Motion Kit v1 intake — September13:** [MOTION_KIT.md](MOTION_KIT.md) is the supplied world-life
+revision, committed verbatim in8a2dfdc0. Its PROPOSED labels remain source text; Nick has approved
+v1 and its frozen paragraphs. Compile the parts-rig body card from the winning painter's
+resolved anatomy using §§3–6, including mass-scaled timings; report missing fields rather than
+reading named Earth genes. The initial record-gap audit remains at
+[audits/MOTION_SOUND_KITS_20260912/ADOPTION.md](audits/MOTION_SOUND_KITS_20260912/ADOPTION.md).
+C1 now awaits approval of the proposed v4.3 diff. No runtime animation change in this intake.
+Claude owns motion/, effects/, battle2/, soundkit/, worldlife/ and their tests.
 
 **Current browser track — matches code as of 2026-09-12:** Blender projection remains
 abandoned; retain turnaround/canid masters for the later engine port. The continuous-mesh
