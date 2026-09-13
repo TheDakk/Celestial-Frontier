@@ -1,0 +1,23 @@
+{
+  "approval": "Nick approved Motion/Sound frozen paragraphs and v1 in the conversation; supplied PROPOSED labels retained verbatim, not a withdrawal of approval.",
+  "files": [
+    {
+      "path": "audits/CLAUDE_FULL_REVIEW_20260910/ARENA_EFFECTS_REVIEW_20260912.md",
+      "source": "/Users/nick/Downloads/ARENA_EFFECTS_REVIEW_20260912.md",
+      "bytes": 3954,
+      "sha256": "135b4931b4f2bcc1d5a93f4f05118a2fbdf7d85e9111d25b866a37613687ebdb"
+    },
+    {
+      "path": "MOTION_KIT.md",
+      "source": "/Users/nick/Downloads/MOTION_KIT.md",
+      "bytes": 13865,
+      "sha256": "7d489de52f6797c99af0e393e317edf043eaec10698ae113bb8625d86af3d054"
+    },
+    {
+      "path": "SOUND_KIT.md",
+      "source": "/Users/nick/Downloads/SOUND_KIT.md",
+      "bytes": 9661,
+      "sha256": "8fee9f2bb8aee1269d2807a4bed0f7bf0e46d0681a1f9b925914b2af1980c7f0"
+    }
+  ]
+}
