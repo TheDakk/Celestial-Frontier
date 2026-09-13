@@ -1,0 +1,11 @@
+✔ authored mask ownership reconstructs visible pixels; drops, duplicates and changed colours fail (293.557292ms)
+✔ corruption, wrong master, wrong record and unknown joint refuse before output (123.625209ms)
+✔ painter labels reconstruct actual alpha and refuse dropped, unknown or rehashed foreign owners (367.842791ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 871.381375

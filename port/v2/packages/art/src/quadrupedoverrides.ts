@@ -22,6 +22,7 @@ import { Tube, pathThrough, spline } from './torso.js';
 import { coatMaterial, type Material, countershade, coatSpots, coatRosettes, coatBars, coatPatches, coatBlotches, coatBrindle, coatShaggy, shaggyRim, coatBlocks } from './skin.js';
 import type { ArtContext2D } from './speciescanvas.js';
 import type { QuadrupedAnatomyObserver } from './quadruped-anatomy.js';
+import { PainterPartCapture, type PaintedPart } from './painter-part-capture.js';
 
 type G = Record<string, unknown>;
 type Ctx = ArtContext2D;
@@ -2802,7 +2803,18 @@ function faunaMammalC(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<Q
   }
 }
 
-export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '', observeAnatomy?: QuadrupedAnatomyObserver): void {
+export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '', observeAnatomy?: QuadrupedAnatomyObserver, captureParts = false): void {
+  if (captureParts && (!observeAnatomy || spec.mammalEPlan || spec.mammalDPlan || spec.mammalCPlan || spec.mammalBPlan || spec.pinnipedPose || spec.gliderPlan || (spec.alien?.legPairs ?? 2) !== 2 || spec.tail !== 'banded')) {
+    throw Error('Quadruped part capture requires the observed four-legged banded-tail painter');
+  }
+  const masks = captureParts ? new PainterPartCapture(c.canvas.width, c.canvas.height, () => c.getImageData(0, 0, c.canvas.width, c.canvas.height).data) : undefined;
+  const part = (id: string, joint: string, layer: 'far' | 'near' = 'near'): PaintedPart => ({id, joint, layer});
+  const stage = (id: string, joint: string, layer: 'far' | 'near' = 'near'): void => masks?.begin([part(id, joint, layer)]);
+  const drawnAxis = (axis: (t: number) => readonly [number, number]): readonly (readonly [number, number])[] => {
+    const m = c.getTransform();
+    return Array.from({length: 65}, (_, i) => { const p = axis(i / 64); return [m.a * p[0] + m.c * p[1] + m.e, m.b * p[0] + m.d * p[1] + m.f] as const; });
+  };
+  stage('torso', 'spine');
   if (spec.mammalEPlan) { faunaMammalE(c, g, p0, spec, spec.mammalEPlan); return; }
   if (spec.mammalDPlan) { faunaMammalD(c, g, p0, spec, spec.mammalDPlan); return; }
   if (spec.mammalCPlan) { faunaMammalC(c, g, p0, spec, spec.mammalCPlan, name); return; }
@@ -3342,6 +3354,10 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
   const drawnJoints: Record<string, readonly [number, number]> = {};
   const drawLeg = (u: number, xoff: number, hind: boolean, far: boolean): void => {
     const limb = legTube(u, xoff, hind);
+    if (masks) {
+      const id = (hind ? 'hind' : 'fore') + (far ? 'Far' : 'Near'), label = (hind ? 'hind' : 'fore') + (far ? '-far' : '-near');
+      masks.begin([part(label + '-upper', id + 'Knee', far ? 'far' : 'near'), part(label + '-lower', id + 'Ankle', far ? 'far' : 'near'), part(label + '-paw', id + 'Paw', far ? 'far' : 'near')], drawnAxis(t => limb.axis(t)), [.45, .82]);
+    }
     if (observeAnatomy) {
       const id = (hind ? 'hind' : 'fore') + (far ? 'Far' : 'Near');
       for (const [joint, t] of [['Root', 0], ['Knee', .45], ['Ankle', .82], ['Paw', 1]] as const) {
@@ -3444,6 +3460,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
     } else {
       drawFoot(ft[0], m, hind);
     }
+    stage('torso', 'spine');
   };
   /* ★ LIMB PAIRS. The genome's locomotion genes have described many-legged
      creatures since v1.0 and the art has only ever drawn four legs. Pairs are
@@ -3556,6 +3573,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
     },
   });
   c.fillStyle = p.base;
+  stage('neck', 'neck');
   c.beginPath(); neckTube.trace(c, 44); c.fill();
   c.save(); c.beginPath(); neckTube.trace(c, 44); c.clip();
   if (!spec.alien?.skin) countershade(c, neckTube, p, 0.9);
@@ -3571,6 +3589,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
   else if (coat === 'shaggy') coatShaggy(c, neckTube, r, p, { count: 46 });
   c.restore();
   if (coat === 'shaggy') shaggyRim(c, neckTube, r, p, Math.max(4, bodyH * 0.095), 0.70);
+  stage('torso', 'spine');
   /* ---- the torso: a SOLID whose radius profile is the species ---- */
   c.fillStyle = p.base;
   c.beginPath(); body.trace(c); c.fill();
@@ -3923,9 +3942,11 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
       R: (t: number) => jd * (0.42 + Math.sin(Math.min(1, 0.2 + t) * Math.PI) * 0.52),
     });
     c.fillStyle = `rgb(${p.cr * 0.66 | 0},${p.cg * 0.66 | 0},${p.cb * 0.66 | 0})`;
+    stage('jaw', 'jaw');
     c.beginPath(); jaw.trace(c, 30); c.fill();
   }
   c.fillStyle = p.base;
+  stage('head', 'head');
   c.beginPath(); head.trace(c, 52); c.fill();
   c.save(); c.beginPath(); head.trace(c, 52); c.clip();
   if (!spec.alien?.skin) countershade(c, head, p, 0.92);
@@ -4281,6 +4302,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
       /* the ear grows UP from the skull, but its BASE stays buried in the head:
          an ear that clears the crown entirely is a shape sitting on an animal */
       const ey = headY - headR * 0.30 - earR * 0.34;
+      stage(s < 0 ? 'ear-far' : 'ear-near', s < 0 ? 'earFarTip' : 'earNearTip');
       if (observeAnatomy) {
         const id = s < 0 ? 'earFar' : 'earNear';
         drawnJoints[id + 'Root'] = [ex / S, ey / S];
@@ -4407,6 +4429,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
       }
     }
   }
+  stage('head', 'head');
   /* face markings */
   if (spec.face === 'mask') {   /* panda patches */
     c.fillStyle = '#15181e';
@@ -4826,6 +4849,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
     }
   }
 
+  stage('torso', 'spine');
   /* ---- tail ---- */
   const tail = spec.tail ?? 'stub';
   /* ⚠ THE TAIL WAS STILL ANCHORED TO THE PRE-WAVE-7 BODY. It started at a
@@ -5130,6 +5154,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
     }
     const tailR = (t: number): number => bodyH * 0.20 * (1 - t * 0.30);
     const tailT = new Tube({ P: tailAt, R: tailR });
+    if (masks) masks.begin([part('tail-root', 'tail1'), part('tail-middle', 'tail2'), part('tail-tip', 'tail3')], drawnAxis(tailAt), [1 / 3, 2 / 3]);
     c.fillStyle = p.base;
     c.beginPath(); tailT.trace(c, 36); c.fill();
     c.save();
@@ -5205,6 +5230,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
     }
     observeAnatomy({ ownerId: 'faunaQuadruped', kind: 'quadruped', width: S,
       groundLineY: groundY / S, landmarks: drawnJoints,
+      ...(masks ? {partMasks: masks.finish()} : {}),
       materials: { surface: String(spec.alien?.skin ?? spec.mat ?? FAM0.mat), paletteSource: name.startsWith('proc:') ? 'genome' : 'named' } });
   }
 }

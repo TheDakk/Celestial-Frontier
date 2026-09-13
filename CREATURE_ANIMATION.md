@@ -323,3 +323,13 @@ The requested family architecture must be established during the correction, not
 from a single posed Civet. No phone Klein retries. Smaller finisher evaluation and second
 weather ladder remain queued per Nick's order; no delivery engineering before phone result.
 Rain E activation8b01e38c/browser evidenceaaacfd6f remains accepted and unchanged.
+
+**Pack5 continuation, matches code September13:** fox has22 authored parts with exact offline
+rest reconstruction and atlas pixel readback. Native check pending. Optional quadruped
+`captureParts` emits final visible ownership from actual draw-stage RGBA changes; no ordinary
+painter commands change. Tube segment ownership uses the painted axis, not a fitted skeleton.
+Supported capture is explicitly bounded to observed four-legged banded-tail geometry; other
+family observers are not implemented by the existence of Claude's Motion templates. Native
+proc render parity/material/record validation is pending. Painter masks cannot manufacture
+hidden surfaces; identical overpainting retains prior visible ownership. Motion interop remains
+blocked by the producer root-offset broadcast recorded in C2_MOTION_INTEROP_20260913.

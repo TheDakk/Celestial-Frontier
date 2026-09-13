@@ -6486,3 +6486,13 @@ short initial recordings. Sourcefb008d58 now supplies three independently verifi
 fallback captures at60fps; this is not mesh-performance or visual acceptance. The articulated
 proof remains unfinished and Nick reviews these captures before another batch. Blender projection is
 abandoned for this browser proof; original canid/turnaround assets remain for the engine port.
+
+### C2 painter part observation — matches code September13,2026
+
+`packages/art/src/painter-part-capture.ts` is optional authoring instrumentation: actual RGBA
+changes at semantic draw stages own procedural part masks. `resolveProceduralCanvas` accepts
+captureParts only for the supported quadruped observer; no default per-family anatomy/material
+is invented. `tools/creature-animation/part-masks.mjs` validates both authored declarations and
+painter labels with full visible-RGBA reconstruction. Native masks bypass the magenta keyer.
+Fox's22-part atlas has exact offline reconstruction; native checks and all motion acceptance
+remain pending. CONTRACTS§2 root offsets are local; Claude producer broadcast fix is separate.

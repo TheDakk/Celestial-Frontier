@@ -87,3 +87,22 @@ root offsets to all joints, compounding translation in a hierarchical rig. Actua
 probe and prepared minimal patch/review request: ../C2_MOTION_INTEROP_20260913/. Protected
 Claude sources were read only and remain unchanged. Ownership decision pending; no workaround
 silently changes CreatureRigV1 semantics. Motion/fox/procedural/captures/C3 still outstanding.
+
+## Pack5 — independent fox and procedural parts
+
+C1 mechanical intake is now complete per supplied final review; no further Wild correction.
+Fox has22 authored parts, one2038x1085atlas,0changedvisible-rest and packed RGBA channels.
+The head/ears/jaw,12leg segments,3tail segments,neck/chest/torso have authored mask ownership.
+No fox turnaround has been supplied; no joint patches or motion acceptance claimed for fox.
+
+Optional painter capture reads actual ink at semantic stage boundaries, assigning pixels whose
+visible RGBA changed. It never mutates painter state/RNG. Tube subdivisions follow the actual
+painted axis; overlapping new paint owns changed pixels, identical overpaint retains previous
+ownership. Empty occluded stages are omitted. This supplies visible masks, not hidden surfaces.
+Unsupported nonquad or non-four-legged/banded-tail capture refuses; remaining family observers
+must use LOG-A11/LOG-B inventories when implemented. Native observer parity, actual material and
+hash-bound record checks are prepared in painter-parts-entry; native execution follows commit.
+
+Targeted tests include missing/unknown labels, conflicting owners, rehashed wrong record,
+foreign family joints, painted alpha loss, colour change and duplicate parts. Native rest/motion
+are separate gates. No model, main.ts, protected Claude module, kit or GitHub change.

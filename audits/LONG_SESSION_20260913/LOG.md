@@ -22,3 +22,19 @@ The full `vitest run` on this tree has 24 failing tests in 12 files. All 24 fail
 
 - 2026-09-13 Wild second intake reviewed: travel ACCEPT, impact TARGETED INTAKE FIX (two clusters), registration ACCEPT, no further erosion; response in audits/WILD_V43_PROOF_20260913/second-pass/.
 - 2026-09-13 Wild targeted impact pass reviewed: both clusters ACCEPT (tuft rose streak and leaf rim are master paint; my second-pass read corrected); C1 mechanical intake complete pending Nick's eye; response in audits/WILD_V43_PROOF_20260913/targeted-pass/.
+
+## Codex Pack5 continuation
+
+Packet committed verbatim0341be68; prior local LOG retained verbatim before overwrite. C1
+mechanically complete; Nick final image acceptance. No further Wild correction. C2 independent
+fox22-part atlas has0changedoffline rest/packed channels. Added optional winning-painter RGBA
+part ownership capture and hash-bound intake, with negative controls. Native fox rest and fresh
+procedural record/mask emission are next on committed source. Motion root-broadcast producer
+mismatch remains pending owner fix; protected Claude paths untouched. No C2 completion claim,
+C3 source, kit/main.ts edit or GitHub write.
+
+C2 continuation signing attempt failed:1Password agent returned an error. Work remains staged,
+not committed; native fox/painter checks have not run. HEAD0341be68 verified signed,83ahead
+upstream/194aheadcacheddevelop. Rootvalidate, v2typecheck,9focused Vitest and3node tests pass.
+Nick was asked to unlock/approve signing. Producer review prompt remains available; neither
+GitHub nor another agent's protected source was touched.

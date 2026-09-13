@@ -1,5 +1,5 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
-import {cutAuthoredParts,assertRestCoverage} from './part-masks.mjs';
+import {cutAuthoredParts,cutPainterParts,assertRestCoverage} from './part-masks.mjs';
 import {hashJSON} from './quadruped-template.mjs';
 const root=new URL('../../../../',import.meta.url);
 const record=JSON.parse(fs.readFileSync(new URL('audits/CIVET_2D_PROOF_20260912/civet.landmarks.json',root)));
@@ -18,4 +18,12 @@ test('corruption, wrong master, wrong record and unknown joint refuse before out
  await assert.rejects(cutAuthoredParts(record,new Uint8Array([0]),raw,await seal(base)),/mismatched cut-out/);
  await assert.rejects(cutAuthoredParts(record,bytes,raw,await seal({...base,recordRecipeHash:'0'.repeat(64)})),/record binding/);
  const bad=structuredClone(base);bad.parts[0].joint='serpent';await assert.rejects(cutAuthoredParts(record,bytes,raw,await seal(bad)),/unknown joint/);
+});
+test('painter labels reconstruct actual alpha and refuse dropped, unknown or rehashed foreign owners',async()=>{
+ const labels=new Uint8Array(1254*1254).fill(1),body={schema:'cf.painter-part-intake/v1',recordRecipeHash:record.recipeHash,cutoutSha256:record.geometry.cutoutAssetHash,parts:[{id:'torso',joint:'spine',layer:'near'}]};
+ const d=await seal(body),result=await cutPainterParts(record,bytes,raw,labels,d);assert.equal(result.receipt.restDifferentChannels,0);assert.deepEqual(result.parts[0].rgba,raw);
+ const missing=labels.slice();missing[10]=0;await assert.rejects(cutPainterParts(record,bytes,raw,missing,d),/missing/);
+ const unknown=labels.slice();unknown[10]=2;await assert.rejects(cutPainterParts(record,bytes,raw,unknown,d),/unknown/);
+ await assert.rejects(cutPainterParts(record,bytes,raw,labels,await seal({...body,recordRecipeHash:'0'.repeat(64)})),/binding/);
+ await assert.rejects(cutPainterParts(record,bytes,raw,labels,await seal({...body,parts:[{id:'torso',joint:'mandible',layer:'near'}]})),/identity/);
 });
