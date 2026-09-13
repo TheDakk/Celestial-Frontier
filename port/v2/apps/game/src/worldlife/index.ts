@@ -12,3 +12,7 @@ export {
   WorldLifePixiAdapter, type WorldLifeDisplayFactoryV1, type WorldLifeNodeLike, type WorldLifeGraphicsLike,
   type WorldLifeContainerLike, type WorldLifeFoliageLike,
 } from './pixi-adapter.js';
+export {
+  planResidents, ResidentIdleLayer, RESIDENT_PLAN_SCHEMA_V1, RESIDENT_COUNT, RESIDENT_BAND, RESIDENT_HEIGHT, RESIDENT_ALERT,
+  type ResidentCandidate, type ResidentV1, type ResidentPlanV1, type ResidentFactory, type ResidentIdleLayerOptions, type ResidentNodeLike, type ResidentStatus,
+} from './residents.js';

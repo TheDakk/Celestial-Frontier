@@ -6,7 +6,9 @@
  * with image names under `procedural/`, so the sequencer and the turn choreography treat both kinds
  * identically; only the stage knows a procedural phase has no sprite. No clock, no randomness. */
 import { EFFECT_ANCHORS_SCHEMA, parseEffectSequenceAnchors, type EffectPhaseName, type EffectSequenceAnchors } from './anchors.js';
-import { EMITTER_PRESETS, normalizeEmitterConfig, type EmitterConfig } from './emitter.js';
+import { EMITTER_PRESETS, PHONE_PARTICLE_SCALE, normalizeEmitterConfig, scaleEmitterBudget, type EmitterConfig } from './emitter.js';
+
+export type EffectTier = 'desktop' | 'phone';
 
 export const EFFECT_THEMES = Object.freeze(['fire', 'frost', 'storm', 'tide', 'stone', 'venom', 'void', 'sand', 'chem', 'psionic', 'wild'] as const);
 export type EffectTheme = (typeof EFFECT_THEMES)[number];
@@ -100,6 +102,12 @@ export class EffectThemeLibrary {
     return Object.freeze({ theme, painted, anchors: painted ?? proceduralAnchorsFor(theme), emitters: THEME_EMITTERS[theme], material: THEME_MATERIALS[theme], label: painted ? PAINTED_EFFECT_LABEL : PROCEDURAL_EFFECT_LABEL });
   }
   anchorsFor(theme: string): EffectSequenceAnchors { return this.resolve(theme).anchors; }
-  emittersFor(theme: string): Phases { return this.resolve(theme).emitters; }
+  /** Phase emitters for the theme; the phone tier runs the same shapes at half the particle budget (kit §8). */
+  emittersFor(theme: string, tier: EffectTier = 'desktop'): Phases {
+    const base = this.resolve(theme).emitters;
+    if (tier === 'desktop') return base;
+    if (tier !== 'phone') throw new TypeError(`theme library: unknown tier "${String(tier)}"`);
+    return Object.freeze({ launch: scaleEmitterBudget(base.launch, PHONE_PARTICLE_SCALE), travel: scaleEmitterBudget(base.travel, PHONE_PARTICLE_SCALE), impact: scaleEmitterBudget(base.impact, PHONE_PARTICLE_SCALE) });
+  }
   tintFor(theme: string): number { return this.resolve(theme).material.tint; }
 }

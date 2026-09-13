@@ -6,7 +6,7 @@ export {
   type NormalizedPoint, type PhasePlacement, type PixelBounds, type PlacementOptions, type SequencePlacement, type StandPoints,
 } from './anchors.js';
 export {
-  EMITTER_PARTICLE_CAP, EMITTER_PRESETS, alphaAt, createEmitterState, normalizeEmitterConfig, stepEmitter,
+  EMITTER_PARTICLE_CAP, EMITTER_PRESETS, PHONE_PARTICLE_SCALE, alphaAt, createEmitterState, normalizeEmitterConfig, scaleEmitterBudget, stepEmitter,
   type AlphaCurve, type EmitterConfig, type EmitterState, type Particle, type Range,
 } from './emitter.js';
 export {
@@ -15,7 +15,7 @@ export {
 } from './sequencer.js';
 export {
   EFFECT_THEMES, EffectThemeLibrary, PAINTED_EFFECT_LABEL, PROCEDURAL_EFFECT_LABEL, PROCEDURAL_SEQUENCE_PREFIX, THEME_EMITTERS, THEME_MATERIALS,
-  isEffectTheme, isProceduralImage, isProceduralSequence, proceduralAnchorsFor, type EffectTheme, type ThemeEffect, type ThemeMaterial,
+  isEffectTheme, isProceduralImage, isProceduralSequence, proceduralAnchorsFor, type EffectTheme, type EffectTier, type ThemeEffect, type ThemeMaterial,
 } from './theme-library.js';
 export { PARTICLE_DISC_SIZE, PARTICLE_RIM, particleDiscRgba } from './particle-texture.js';
 export {

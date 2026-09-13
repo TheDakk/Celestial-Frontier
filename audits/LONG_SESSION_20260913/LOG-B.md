@@ -76,3 +76,18 @@ A1 evidence refresh: `a1-pose-sheets/procedural.{body-card,timelines,pose-sheet}
 A third capture finding came with the refresh: the effect player armed its ms 0 on its own first tick, so a jumped or skipped frame (the runner's `reset(); frame(ms)` beat frames) rendered the effect at its start instead of at the right time. `EffectSequencePlayerOptions.startAtMs` (the stage passes the action start on the turn clock) fixes it; tested with a late first tick landing in the impact phase versus the old first-tick arming.
 
 Capture refreshed after all three (`b-batch-capture/proof-run-01/`, same runner): the impact +170 frames now show the painted Wild impact and the tide splash after the flash has cleared, in both the continuous video and the runner's jumped beat frames.
+
+# Batch 3 (B5, B8, B10, B11) — voices per creature, resident life on landfalls, phone budgets, leg-slack diagnostic — 2026-09-13
+
+Status: built and green (typecheck 0; every battle2 / effects / motion / soundkit / worldlife / audio-owner suite; root validate PASS). No kit wording change. No GitHub step.
+
+| Package | Files | What the game gained |
+|---|---|---|
+| B5 creature voices | `soundkit/creature-voices.ts` (new); `battle2-wiring.ts`; `tests/soundkit-creature-voices.test.ts` | One voice card per combatant from its anatomy record, or a genome-only quadruped record when only a genome exists; every `creature:*` cue the turn fires is derived through the A4 engine from the injected source library (the labelled placeholder archetype until C3) and cached per side and cue. The turn sink plays it through the runtime; a side with neither record nor genome (the player placeholder) is skipped with a reason. `status().voices` reports archetype, material and pitch per side. |
+| B8 resident idle life | `worldlife/residents.ts` (new), `species-portrait.ts` (new, shared portrait loader and alpha box), `worldlife-wiring.ts`, `battle2/fallback.ts` (`alert` portrait clip), `main.ts` world-life hunk; `tests/worldlife-residents.test.ts`, `worldlife-wiring.test.ts` | Under `?worldlife=1` the landfall's fauna rows become one to three residents (desktop 3, phone 1; seeded from the card) standing in a depth band around the ground line without overlap, scaled by depth and mass class, facing seeded, each a whole-portrait rig breathing its seeded idle period with an alert every 6 to 14 s. They sit between the vista and the weather so rain falls in front of them, bind and resize with the vista, freeze under reduced motion, and dispose with it. A failed portrait is recorded and skipped. |
+| B10 phone budget | `effects/emitter.ts` (`scaleEmitterBudget`, `PHONE_PARTICLE_SCALE`), `effects/theme-library.ts` (`emittersFor(theme, tier)`), `battle2-wiring.ts` | Kit §8: the phone tier runs every theme's emitters at half the particle cap, burst and rate with the same lives, speeds and sizes. |
+| B11 leg slack | `motion/body-card.ts` (`bounds.legSlack`, `LEG_SLACK_MIN_BL`) | The body card now measures rest slack per two-bone leg chain in body lengths and notes any chain under 3 % (near-collinear), the C2 fox refusal's cause. Noted, not refused: it is an observer error in the record, and the fox and civet records both carry one such chain today. |
+
+Also: `species-portrait.ts` replaces the battle2 wiring's private portrait loader (same code, now shared).
+
+Not done: main.ts still holds no shared handle for the audio owner beyond the decorative port (the study is the only consumer); foliage sway on landfalls (no foliage nodes on a flat vista); painted resident poses beyond the portrait rig until C2 parts land.

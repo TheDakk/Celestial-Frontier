@@ -54,7 +54,7 @@ export interface BodyCard {
   readonly bodyLength: number;
   readonly groundLineY: number;
   readonly landmarks: Readonly<Record<JointName, Vec2>>;
-  readonly bounds: { readonly inside: boolean; readonly clamped: readonly ClampedBound[]; readonly limitsDeg: Readonly<Record<JointName, JointLimitDeg>> };
+  readonly bounds: { readonly inside: boolean; readonly clamped: readonly ClampedBound[]; readonly limitsDeg: Readonly<Record<JointName, JointLimitDeg>>; /** Rest slack per leg chain in body lengths (B3 diagnostic; see LEG_SLACK_MIN_BL). */ readonly legSlack: Readonly<Record<string, number>> };
   readonly notes: readonly string[];
 }
 export type MotionRefusalReason = 'missing-record' | 'missing-landmarks' | 'joint-inventory' | 'family-mismatch' | 'unsupported-template' | 'out-of-bounds' | 'unsupported-materials';
@@ -80,6 +80,8 @@ export const LOCO_GAIT: Readonly<Record<string, Gait>> = Object.freeze({
 const HEAD_WEAPON: Readonly<Record<string, Weapon>> = Object.freeze({ 'fanged': 'bite', 'horned': 'gore', 'beaked': 'peck', 'mandibled': 'bite', 'domed and bulbous': 'headbutt' });
 const TAIL_WEAPON: Readonly<Record<string, Weapon>> = Object.freeze({ 'whip-like': 'tail', 'spiked': 'tail', 'stinger-tipped': 'sting' });
 const BOUND_TOLERANCE = 0.15;
+/** Rest leg slack below this fraction of body length is noted on the card (kit §3 anatomy; the C2 planted-contact solver needs it). */
+export const LEG_SLACK_MIN_BL = 0.03;
 /** Natural weapons a template always carries [primary, secondary]; head/tail genome weapons are added around them as before. */
 const TEMPLATE_WEAPONS: Readonly<Record<string, readonly Weapon[]>> = Object.freeze({
   quadruped: ['bite', 'claw'], hopper: ['bite', 'claw'], 'biped-bird': ['peck', 'claw'], fish: ['bite'], insect: ['bite'], serpent: ['bite', 'constrict'], arachnid: ['sting', 'bite'], radial: ['sting'], 'plant-woody': [], 'plant-herb': [],
@@ -171,16 +173,31 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   if (!material) throw new MotionCompileError('unsupported-materials', `surface "${surface}" maps to no kit material`);
   const materials = Object.freeze(Object.fromEntries(PART_GROUPS.map((g) => [g, material]))) as Readonly<Record<PartGroup, Material>>;
   const secondaryParts: SecondaryPart[] = resolved.secondaryChains.map((c) => ({ id: c.id, driver: c.driver, joints: c.joints, lagOrder: c.joints.map((_, i) => i), material, ...(c.kind ? { kind: c.kind } : {}) }));
+  // B3/C2 diagnostic: rest slack per two-bone leg chain (reach of Root→Knee→Ankle minus the rest vertical drop at the
+  // rest horizontal offset), in body lengths. A collinear chain (slack near 0) cannot absorb any lift under a planted-paw
+  // constraint (the fox foreNear refusal, C2 review 2026-09-13); it is an observer error in the record, so it is noted, not refused.
+  const legSlack: Record<string, number> = {};
+  for (const leg of resolved.legs) {
+    const r = landmarks[leg + 'Root'], k = landmarks[leg + 'Knee'], a = landmarks[leg + 'Ankle'];
+    if (!r || !k || !a) continue;
+    const upper = Math.hypot(k[0] - r[0], k[1] - r[1]), lower = Math.hypot(a[0] - k[0], a[1] - k[1]), dx = a[0] - r[0], vertical = a[1] - r[1];
+    const reach = Math.sqrt(Math.max(0, (upper + lower) ** 2 - dx * dx));
+    legSlack[leg] = reach - vertical;
+  }
   const [axisA, axisB] = resolved.bodyAxis ?? ['pelvis', 'chest'];
   const torso = landmarks[axisA] && landmarks[axisB] ? Math.hypot((landmarks[axisB] as Vec2)[0] - (landmarks[axisA] as Vec2)[0], (landmarks[axisB] as Vec2)[1] - (landmarks[axisA] as Vec2)[1]) : 0;
   const torsoClamp = clamped.find((c) => c.id === 'torso' || c.id === 'body');
+  const bodyLength = torsoClamp ? torsoClamp.clamped : torso;
+  const slackBL = Object.freeze(Object.fromEntries(Object.entries(legSlack).map(([leg, v]) => [leg, bodyLength > 0 ? v / bodyLength : 0])));
+  const straight = Object.entries(slackBL).filter(([, v]) => v < LEG_SLACK_MIN_BL).map(([leg, v]) => `${leg} ${(v * 100).toFixed(1)}%`);
+  if (straight.length) notes.push(`leg slack under ${LEG_SLACK_MIN_BL * 100}% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): ${straight.join(', ')}`);
   return {
     kind: 'body-card', identity: record.identity, recipeHash: record.recipeHash ?? null,
     template: { id: resolved.id, version: resolved.version, clipSetId: resolved.clipSetId },
     massClass: { name: massName, multiplier: MASS_CLASS[massName] },
     locomotion: { loco: locoName, gait, templateGait }, realm, materials, parts, secondaryParts, weapons, luminous,
-    bodyLength: torsoClamp ? torsoClamp.clamped : torso, groundLineY: record.geometry.groundLineY, landmarks,
-    bounds: { inside: clamped.length === 0, clamped, limitsDeg: resolved.limitsDeg }, notes,
+    bodyLength, groundLineY: record.geometry.groundLineY, landmarks,
+    bounds: { inside: clamped.length === 0, clamped, limitsDeg: resolved.limitsDeg, legSlack: slackBL }, notes,
   };
 }
 /** Battle-scene convenience: a card, or the labelled whole-portrait fallback for templates without a library. */

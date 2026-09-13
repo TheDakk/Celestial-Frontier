@@ -8,11 +8,11 @@ import { idlePeriodMs, phaseDurations } from '../motion/timing.js';
 import type { BattleRigV1, RigContainerLike, RigPose, RigSpriteLike } from './fixture-rig.js';
 
 export const PORTRAIT_RIG_LABEL = 'whole-portrait fallback (no landmark record; hit pose approximated by root offsets)' as const;
-export type PortraitAction = 'idle' | 'approach' | 'melee' | 'cast' | 'hit' | 'dodge' | 'faint' | 'victory';
+export type PortraitAction = 'idle' | 'alert' | 'approach' | 'melee' | 'cast' | 'hit' | 'dodge' | 'faint' | 'victory';
 export interface PortraitClip { readonly kind: 'portrait-clip'; readonly actionId: PortraitAction; readonly loop: boolean; readonly durationMs: number; readonly dx: readonly Keyframe[]; readonly dy: readonly Keyframe[]; readonly rot: readonly Keyframe[]; }
 
 const REST: Keyframe = { ms: 0, t: 0, value: 0, ease: 'ease-out' };
-const LIBRARY_ID: Readonly<Record<PortraitAction, string>> = Object.freeze({ idle: 'idle', approach: 'approach:walk', melee: 'melee:bite', cast: 'cast', hit: 'hit', dodge: 'dodge', faint: 'faint', victory: 'victory' });
+const LIBRARY_ID: Readonly<Record<PortraitAction, string>> = Object.freeze({ idle: 'idle', alert: 'alert', approach: 'approach:walk', melee: 'melee:bite', cast: 'cast', hit: 'hit', dodge: 'dodge', faint: 'faint', victory: 'victory' });
 
 /** Root-only clip: the library action's root dx/dy (body lengths) and root rotation, mass-scaled. */
 export function portraitClip(actionId: PortraitAction, mass: number, seed: number): PortraitClip {
