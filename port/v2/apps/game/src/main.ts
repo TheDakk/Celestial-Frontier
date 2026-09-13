@@ -6179,7 +6179,7 @@ function requestSurfaceVista(
   audiovisualPilotBiomeKey = request.biomeKey;
   audiovisualPilotVistaBinding = JSON.stringify(request);
   // A6 study flag (?worldlife=1): the A5 world-life layer over the vista sprite of this landfall; dynamic import only under the flag, never on the default path.
-  if (new URLSearchParams(location.search).get('worldlife') === '1') void import('./worldlife-wiring.js').then(m => m.mountWorldLifeStudy({ request, roster, stage: app.stage, vistaSprite: () => surfaceVistaSprite, ticker: app.ticker, clock: () => performance.now(), reducedMotion: () => !motionOK(), tier: TOUCH_DPR ? 'phone' : 'desktop', pixi: { Container, Graphics } })).catch(() => { /* the flagged study never blocks the vista */ });
+  if (new URLSearchParams(location.search).get('worldlife') === '1') void import('./worldlife-wiring.js').then(m => m.mountWorldLifeStudy({ request, roster, stage: app.stage, vistaSprite: () => surfaceVistaSprite, ticker: app.ticker, clock: () => performance.now(), reducedMotion: () => !motionOK(), tier: TOUCH_DPR ? 'phone' : 'desktop', pixi: { Container, Graphics }, residents: { rows: roster.view.all, artLoader: speciesArtLoader, pixi: { Sprite, Texture } } })).catch(() => { /* the flagged study never blocks the vista */ });
   surfaceVistaWorldKey = request.worldKey;
   surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;
   if (currentAiLandfallInput()) { restoreCurrentAiLandfall(); return; }

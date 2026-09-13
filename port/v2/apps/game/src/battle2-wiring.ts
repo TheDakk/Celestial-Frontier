@@ -38,8 +38,11 @@ import { PARTICLE_DISC_SIZE, particleDiscRgba } from './effects/particle-texture
 import { createPixiEffectHost, type EffectParticleLike, type EffectSpriteLike, type EffectTextureLike } from './effects/pixi-adapter.js';
 import { compileBodyCard, MotionCompileError, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from './motion/body-card.js';
 import { createTurnCueSink, type TurnAudioRuntime, type TurnCueSink } from './soundkit/turn-audio.js';
+import { createCreatureVoiceHook, type CreatureVoiceHook } from './soundkit/creature-voices.js';
+import { synthesizePlaceholderQuadruped } from './soundkit/placeholder-archetype.js';
 import { MASS_BY_SIZE_INDEX, MASS_CLASS } from './motion/timing.js';
 import type { SpeciesArtLoader } from './species-art-loader.js';
+import { loaderPortrait } from './species-portrait.js';
 import { compileWorldLife, WorldLifePixiAdapter, type WorldLifeGraphicsLike } from './worldlife/index.js';
 
 export const BATTLE2_FLAG = 'battle2' as const;
@@ -119,6 +122,8 @@ export interface Battle2Status {
   readonly effects: Readonly<{ left: string | null; right: string | null }>;
   /** Turn audio: 'none' without a runtime port, else the cue log so far (cueId → result). */
   readonly audio: string;
+  /** Per-side creature voice (B5): archetype, material and pitch, or why the side is silent. */
+  readonly voices: Readonly<{ left: string | null; right: string | null }>;
 }
 export interface Battle2StudyHandle { readonly ready: Promise<Battle2Status>; status(): Battle2Status; dispose(reason?: string): void; }
 
@@ -178,21 +183,6 @@ async function runtimeKeyer(): Promise<Battle2Keyer> {
   if (typeof mod.keyAndDespill !== 'function') throw new Error('battle2 keyer unavailable: kit-contact-math.mjs exports no keyAndDespill');
   return (rgba, w, h) => mod.keyAndDespill!(rgba, w, h);
 }
-function loaderPortrait(loader: SpeciesArtLoader | null): (genome: Readonly<Record<string, unknown>>) => Promise<Battle2Image> {
-  return async (genome) => {
-    if (!loader) throw new Error('battle2 portrait unavailable: no species art loader');
-    const lease = loader.leaseThumb(genome as Record<string, unknown>);
-    try {
-      const asset = lease.current ?? await new Promise<{ url: string }>((resolve, reject) => {
-        const off = lease.subscribe((thumb, error) => { if (thumb) { off(); resolve(thumb); } else if (error) { off(); reject(error instanceof Error ? error : new Error(String(error))); } });
-      });
-      const image = new Image(); image.decoding = 'async'; image.src = asset.url; await image.decode();
-      const canvas = document.createElement('canvas'); canvas.width = image.naturalWidth; canvas.height = image.naturalHeight;
-      canvas.getContext('2d')!.drawImage(image, 0, 0);
-      return { width: canvas.width, height: canvas.height, source: canvas, pixels: () => canvas.getContext('2d')!.getImageData(0, 0, canvas.width, canvas.height).data };
-    } finally { lease.release(); }
-  };
-}
 function placeholderImage(raster: Battle2Raster, width = 132, height = 132): Battle2Image {
   // A deterministic flat tile (no text rendering, no clock): the player champion has no creature art.
   const rgba = new Uint8ClampedArray(width * height * 4);
@@ -216,7 +206,8 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   const skipped: string[] = []; let turns: TurnPlanInput[] = []; const rigLabels = { left: null as string | null, right: null as string | null }, effectLabels = { left: null as string | null, right: null as string | null };
   let app: Battle2AppLike | null = null, stage: BattleStage | null = null, ticking = false, disposed = false, cueSink: TurnCueSink | null = null;
   const audioSummary = (): string => (cueSink ? `${cueSink.log.length} cues: ${cueSink.log.map((e) => `${e.cueId}=${e.result}`).join(', ')}` : 'none');
-  const status = (): Battle2Status => Object.freeze({ phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), audio: audioSummary() });
+  let voices: CreatureVoiceHook | null = null;
+  const status = (): Battle2Status => Object.freeze({ phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }) });
   const setPhase = (next: Battle2Phase, why: string | null = null): void => { phase = next; reason = why; section.dataset.battle2Status = next; if (why) section.dataset.battle2Reason = why; };
   const tick = (): void => {
     if (disposed || !stage || !app) return;
@@ -299,12 +290,16 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       factory: { container: () => new pixi.Container(), graphics: () => new pixi.Graphics() }, clock: input.clock, width: BATTLE2_FRAME.width, height: BATTLE2_FRAME.height, reducedMotion: input.reducedMotion });
     const style = { fontFamily: 'system-ui', fontSize: 34, fontWeight: '700', fill: '#fff2c8', stroke: { color: '#2a1a0a', width: 4 } };
     const factory: BattleStageFactory = { container: () => new pixi.Container(), sprite: (t) => new pixi.Sprite(t), text: (t) => new pixi.Text({ text: t, style, anchor: 0.5 }), graphics: () => new pixi.Graphics() };
-    cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low' }) : null;
+    // B5: one voice per side from its record (or genome), derived through the A4 engine from the labelled placeholder archetype until C3 lands.
+    voices = createCreatureVoiceHook({ sources: synthesizePlaceholderQuadruped().sources, seed: recipe.seed ^ fnv1a32(input.settlement.battleId),
+      sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName },
+        right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName } } });
+    cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low', creatureVoice: voices }) : null;
     const built = new BattleStage({ factory, clock: input.clock, layout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass },
       worldLife, reducedMotion: input.reducedMotion, cues: cueSink ? { sink: cueSink, phone: input.deviceTier === 'low' } : null, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
         particleTexture: texture(raster(dot, PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE)), seed: recipe.seed,
         phaseTextures: (a) => a.phases.map((p) => { if (isProceduralImage(p.keyedImage)) return null; const t = resolvedPhaseTextures.get(p.keyedImage); if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }),
-        emittersForTheme: (t) => themes.emittersFor(t), tintForTheme: (t) => themes.tintFor(t) } });
+        emittersForTheme: (t) => themes.emittersFor(t, input.deviceTier === 'low' ? 'phone' : 'desktop'), tintForTheme: (t) => themes.tintFor(t) } });
     const themeA = genomeTheme(championGenome), themeB = genomeTheme(input.settlement.encounter.defender.battleGenome);
     effectLabels.left = `${themeA}: ${themes.resolve(themeA).label}`; effectLabels.right = `${themeB}: ${themes.resolve(themeB).label}`;
     const ctx: TurnOutcomeContext = {

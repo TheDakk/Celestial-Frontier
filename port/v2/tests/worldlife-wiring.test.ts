@@ -35,7 +35,7 @@ describe('main.ts worldlife gate (source text)', () => {
   });
   it('the gate passes the vista sprite accessor, the injected clock and the phone tier', () => {
     const line = mainSource.split('\n').find((l) => l.includes("import('./worldlife-wiring.js')"))!;
-    expect(line).toContain('vistaSprite: () => surfaceVistaSprite'); expect(line).toContain('clock: () => performance.now()'); expect(line).toContain("tier: TOUCH_DPR ? 'phone' : 'desktop'"); expect(line).toContain('reducedMotion: () => !motionOK()');
+    expect(line).toContain('vistaSprite: () => surfaceVistaSprite'); expect(line).toContain('clock: () => performance.now()'); expect(line).toContain("tier: TOUCH_DPR ? 'phone' : 'desktop'"); expect(line).toContain('reducedMotion: () => !motionOK()'); expect(line).toContain('residents: { rows: roster.view.all, artLoader: speciesArtLoader, pixi: { Sprite, Texture } }');
     expect(worldLifeEnabled('?worldlife=1')).toBe(true); expect(worldLifeEnabled('?worldlife=0')).toBe(false); expect(worldLifeEnabled('')).toBe(false);
   });
 });
@@ -69,7 +69,7 @@ describe('currentLandfallSystemCard (the kit compiler\'s card)', () => {
 });
 
 /* ---------- fakes ---------- */
-class FakeNode implements WorldLifeNodeLike { x = 0; y = 0; alpha = 1; rotation = 0; visible = true; destroyed = false; parent: object | null = null; destroy(): void { this.destroyed = true; } }
+class FakeNode implements WorldLifeNodeLike { x = 0; y = 0; alpha = 1; rotation = 0; visible = true; destroyed = false; parent: object | null = null; readonly scale = { set: () => undefined }; readonly anchor = { set: () => undefined }; destroy(): void { this.destroyed = true; } }
 class FakeGraphics extends FakeNode implements WorldLifeGraphicsLike { ops = 0; clear() { this.ops++; } moveTo() {} lineTo() {} circle() {} stroke() {} fill() {} }
 class FakeContainer extends FakeNode implements WorldLifeContainerLike { children: WorldLifeNodeLike[] = []; addChild(c: WorldLifeNodeLike) { this.children.push(c); } removeChild(c: WorldLifeNodeLike) { this.children = this.children.filter((x) => x !== c); } }
 class FakeStage { children: object[] = []; addChildAt(c: object, i: number) { this.children.splice(i, 0, c); (c as FakeNode).parent = this; } add(c: object) { this.children.push(c); (c as FakeNode).parent = this; } remove(c: object) { this.children = this.children.filter((x) => x !== c); (c as FakeNode).parent = null; } }
@@ -130,6 +130,27 @@ describe('world-life wiring (fake pixi, stage, sprite, ticker, clock)', () => {
     handle.dispose();
   });
 
+  it('B8: with roster rows and a portrait source the study plans fauna residents, binds them under the weather, ticks them on the injected clock, and disposes them with the vista', async () => {
+    const rows = [{ seed: 11, size: 2, kingdom: 'fauna', name: 'Civet' }, { seed: 12, size: 4, kingdom: 'fauna' }, { seed: 13, kingdom: 'flora' }, { seed: 14, size: 1, kingdom: 'fauna' }];
+    class FakeSpriteNode extends FakeContainer { constructor(public texture: unknown) { super(); } }
+    const portraits: number[] = [];
+    const portrait = async (g: Readonly<Record<string, unknown>>) => { portraits.push(Number(g.seed)); const w = 100, h = 100, px = new Uint8ClampedArray(w * h * 4); for (let i = 3; i < px.length; i += 4) px[i] = 255; return { width: w, height: h, source: { seed: g.seed }, pixels: () => px }; };
+    const h = harness({ residents: { rows, portrait, pixi: { Sprite: FakeSpriteNode as never, Texture: { from: (s: unknown) => s } } } });
+    const handle = mountWorldLifeStudy(h.input);
+    expect(handle.status().residents.plan?.residents.map((r) => r.genome.kingdom)).toEqual(['fauna', 'fauna', 'fauna']); expect(handle.status().residents.status).toBeNull(); // planned before any vista
+    const sprite = new FakeSprite(300, 200, 400, 200); h.stage.add(sprite); h.setSprite(sprite); h.ticker.step();
+    const c1 = handle.container() as FakeContainer; const layerNode = h.stage.children[h.stage.children.indexOf(sprite) + 1] as FakeContainer; expect(h.stage.children.indexOf(c1)).toBe(h.stage.children.indexOf(sprite) + 2); // vista, residents, weather
+    expect([layerNode.x, layerNode.y]).toEqual([100, 100]);
+    await new Promise((r) => setTimeout(r, 0)); await new Promise((r) => setTimeout(r, 0));
+    expect(portraits.sort()).toEqual([11, 12, 14]); expect(handle.status().residents.status).toMatchObject({ planned: 3, placed: 3, pending: 0, failed: [] });
+    expect(layerNode.children).toHaveLength(3); // three residents under the rain
+    const holder = layerNode.children[0] as FakeContainer, root = holder.children[0] as FakeContainer, art = root.children[0] as FakeContainer; const y0 = art.y; // the rig moves its portrait sprite
+    h.setNow(700); h.ticker.step(); expect(art.y).not.toBe(y0); // idle bob on the injected clock
+    h.setReduced(true); h.ticker.step(); h.setNow(1500); h.ticker.step(); const yr = art.y; h.setNow(2300); h.ticker.step(); expect(art.y).toBe(yr); h.setReduced(false);
+    h.stage.remove(sprite); sprite.destroyed = true; h.ticker.step(); expect(handle.status().residents.status).toBeNull(); expect(layerNode.destroyed).toBe(true); expect(handle.status().phase).toBe('idle');
+    const none = mountWorldLifeStudy(harness({ residents: { rows: [{ seed: 1, kingdom: 'flora' }], portrait, pixi: { Sprite: FakeSpriteNode as never, Texture: { from: (s: unknown) => s } } } }).input);
+    expect(none.status().residents.plan?.residents).toEqual([]); handle.dispose(); none.dispose();
+  });
   it('binds at the phone streak cap on phones and at the desktop cap otherwise; the spec is deterministic', () => {
     const desktop = mountWorldLifeStudy(harness({ tier: 'desktop' }).input), phone = mountWorldLifeStudy(harness({ tier: 'phone' }).input);
     const d = desktop.status().spec!, p = phone.status().spec!;

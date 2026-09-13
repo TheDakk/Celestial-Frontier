@@ -61,6 +61,13 @@ export const EMITTER_PRESETS: Readonly<Record<EffectPhaseName, EmitterConfig>> =
 const isRange = (r: unknown): r is Range => Array.isArray(r) && r.length === 2
   && Number.isFinite(r[0]) && Number.isFinite(r[1]) && (r[0] as number) >= 0 && (r[1] as number) >= (r[0] as number);
 
+/** Motion Kit §8 phone budget: the same effect with half the particles (cap, burst and rate), same lives, speeds and sizes. */
+export const PHONE_PARTICLE_SCALE = 0.5 as const;
+export function scaleEmitterBudget(config: EmitterConfig, scale: number): EmitterConfig {
+  if (!Number.isFinite(scale) || scale <= 0 || scale > 1) throw new RangeError(`emitter budget scale ${String(scale)}: expected 0 < scale <= 1`);
+  if (scale === 1) return config;
+  return normalizeEmitterConfig({ ...config, maxParticles: Math.max(1, Math.round(config.maxParticles * scale)), burst: Math.round(config.burst * scale), rate: config.rate * scale });
+}
 /** Validate and freeze a config; the particle cap is clamped to the budget, everything else must be sane. */
 export function normalizeEmitterConfig(config: EmitterConfig): EmitterConfig {
   if (!EFFECT_PHASE_NAMES.includes(config.phase)) throw new TypeError(`emitter.phase: unknown phase ${String(config.phase)}`);
