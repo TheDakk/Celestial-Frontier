@@ -61,7 +61,8 @@ const gap = new Uint8Array(N); let gapTotal = 0; for (let i = 0; i < N; i++) if 
 // Per joint: gap pixels inside the disc around the joint's rest pivot (its parent landmark).
 const R = discFrac * W, perJoint = {};
 for (const j of joints) {
-  const p = parentOf.get(j); const lm = record.landmarks?.[p ?? 'root']; if (!lm) { perJoint[j] = null; continue; }
+  const p = parentOf.get(j); if (!p) { perJoint[j] = null; continue; } // not a graph joint: no pivot, no count
+  const lm = record.landmarks?.[p]; if (!lm) { perJoint[j] = null; continue; }
   const cx = lm[0] * W, cy = lm[1] * H; let n = 0, box = [W, H, -1, -1];
   const x0 = Math.max(0, Math.floor(cx - R)), x1 = Math.min(W - 1, Math.ceil(cx + R)), y0 = Math.max(0, Math.floor(cy - R)), y1 = Math.min(H - 1, Math.ceil(cy + R));
   for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) if (gap[y * W + x] && Math.hypot(x - cx, y - cy) <= R) { n++; if (x < box[0]) box[0] = x; if (y < box[1]) box[1] = y; if (x > box[2]) box[2] = x; if (y > box[3]) box[3] = y; }
