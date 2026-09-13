@@ -157,3 +157,24 @@ unresolved, targetunder40 FAILED. No automatic repeat. Review images/prompt/rece
 Updated anchors identify candidate derived copies; every master, launch and MID unchanged.
 C2 independent coding continues; no effect staging acceptance implied. All24pre-existing full
 suite failures listed in incomingLOG belong to C5; do not run a new full-chain admission now.
+
+
+### Current C2 implementation checkpoint — 2026-09-13
+
+Signed Pack 3 = 56509c0c; signed C1 second intake = 597821d2 (77 ahead origin/openai/mac,
+188 ahead cached origin/develop, 0 behind). C1 still fails the under40 target (110 travel /85 impact).
+Nick has been asked whether to authorize another targeted intake correction or review these
+candidates. Do not automatically rerun second-despill.mjs or generate art. The delivered review prompt is
+ audits/WILD_V43_PROOF_20260913/second-pass/REVIEW_REQUEST.md.
+
+C2 now has part-masks.mjs and build-authored-parts.mjs under port/v2/tools/creature-animation:
+hash-bound authored polygons, complete pixel coverage, one pinned atlas and CreatureRigV1 binding.
+The actual Civet22-part /2046×919 atlas preserves visible RGBA offline; see
+ audits/C2_PARTS_ATLAS_20260913/README.md, which lists missing Motion Kit body-card fields.
+This is not native or animation acceptance. Next: fit turnaround joint patches, inspect authored
+cuts at Motion extremes, emit fresh procedural masks from the winning painter, fox/procedural
+atlases, native rest/ground/performance checks, and three ten-second captures. C3 follows C2.
+Mask/atlas negative controls, existing five Pixi rig tests, v2 typecheck and root validate pass.
+Claude's A1–A11 code is not integrated here; do not copy or edit its owned modules. No main.ts hunk.
+Nick need not open Claude for manual synchronization now. GitHub step none; PR42 parked; no new
+branch, LFS/history rewrite, develop/main merge, release or deployment.

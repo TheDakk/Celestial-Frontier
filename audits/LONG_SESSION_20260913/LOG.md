@@ -31,3 +31,18 @@ receipt with per-pixel neighbour indices, review prompt); updated registered has
 fallback keyed hash; originals unchanged. Launch/MID unchanged. Nick's decision remains pending;
 independent C2 coding continues. Claude's24pre-existing test failures stay C5. No main.ts,
 Claude modules, GitHub write or history rewrite.
+
+
+## Codex C2 — authored mask/atlas checkpoint, 2026-09-13
+
+C1 one-pass result retained in signed597821d2 (77ahead upstream/188ahead cached develop).
+Independent C2 work added hash-bound authored polygon masks, strict visible-pixel coverage
+admission, pinned one-atlas build and actual CreatureRigV1 binding for the accepted Civet.
+22parts,2046×919atlas, zero changed visible channels in reconstruction and zero changed
+RGBAchannels in packed-part readback. Original master unchanged. Evidence and limits:
+../C2_PARTS_ATLAS_20260913/README.md. No native motion or C2acceptance claimed; joint patches,
+fox/procedural masks, native rest/extremes and three10secondcaptures remain. Motion Kit body
+card fields absent from the Civet record are listed explicitly; no hand-typed body card.
+Two mask tests and pinned atlas controls pass; five existing rig tests pass; full v2typecheck
+and root validation pass. No new per-creature clips, Claude-module/main.ts/kit edit, source
+sound, inference, GitHub write or history rewrite. C3 follows the actual C2proof.
