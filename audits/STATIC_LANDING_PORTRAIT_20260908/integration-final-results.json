@@ -1,0 +1,108 @@
+{
+  "schema": "cf-painted-earth-integration-completion/v1",
+  "status": "PASS_SCOPED",
+  "certification": false,
+  "createdAt": "2026-09-09T02:46:49.939472+00:00",
+  "startingCommit": "acca36b469da2024a7112c3cdd426f351f6bd2f5",
+  "scope": "One canonical Earth static display prototype, lossless export, exact-size/hash resource binding, unchanged UI/roster, durable on-demand-generation requirements. No runtime generator.",
+  "evidence": [
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-results.json",
+      "bytes": 13708,
+      "sha256": "ef3f2f2912dd391ae76fd7cf682a3dbef02817aa084247a1a2e74cfa2033c757"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v3-remaining/chain-report.json",
+      "bytes": 28007,
+      "sha256": "049944d96d580065f3de1e0a58c85d50d55fa79c7f1f832d53ce0f71b08af020"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/preview-package-results.json",
+      "bytes": 8680,
+      "sha256": "28a9783b93cfeb8dd580044e1ebe03c5e531175c215d01b4edfeb89fb5b99b5b"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/INDEPENDENT_REVIEW.md",
+      "bytes": 1701,
+      "sha256": "1b5f7b1b4b26718ef4e5c0775178c41efc1da5bd47dd19fd75aa14c738173f0b"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/player-storage-build.json",
+      "bytes": 11434,
+      "sha256": "e8dfc64f955afeff815be8041357ef1bd7515e58cabbf4263add782b27b5ecfa"
+    }
+  ],
+  "firstFailuresPreserved": [
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.json",
+      "bytes": 2981,
+      "sha256": "70a8a3a37fcf1cecfd7e34cedd676579c997dc0badfb0a023504c466b9a659f4"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/export-lossless/receipt.json",
+      "bytes": 4251,
+      "sha256": "7be3b2bbaf978f0d46ce3f0a64cb35e9fa3026faba36f8bfd755a6ffeeb704ad"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-results.json",
+      "bytes": 14578,
+      "sha256": "c772da01d8ef7942ee40c373037de19148ee3f7cb23c5827dc5568a629ffe4f2"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-v2/chain-report.json",
+      "bytes": 26025,
+      "sha256": "45c9b4ec08a2d321da3dd9f50396920ae9923bde25d31fd3db57cf5dfc121ab0"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/player-storage-first-parse.json",
+      "bytes": 437,
+      "sha256": "20b8c70049d349384b8726cea53710cb80e17b354d301bc9ad7fc11e4f69a57b"
+    }
+  ],
+  "asset": {
+    "path": "port/v2/apps/game/src/assets/painted/earth-civet-landing-v1.webp",
+    "bytes": 600756,
+    "sha256": "cd2c616abb35610f6ec63382f6476436f27a8c1a2c698757c8a66d34a5b2e0ec"
+  },
+  "checks": {
+    "focusedFiles": 11,
+    "focusedTestsPassed": 146,
+    "changedFixtureTestsPassed": 5,
+    "typeScriptProgramsPassed": 3,
+    "legacyValidation": "PASS; HTML byte-identical",
+    "nativeModes": {
+      "desktop": "native-v2 PASS",
+      "phone": "native-v2 PASS",
+      "blocked": "native-v3-remaining PASS after observer correction",
+      "default": "native-v3-remaining PASS"
+    },
+    "remainingNativeNegativeControls": 10,
+    "humanPreview": "package/browser-check PASS; dirty-local-only"
+  },
+  "preview": {
+    "createdAt": "2026-09-09T02:39:10.302Z",
+    "pid": 24408,
+    "root": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-static-earth-local-20260908",
+    "url": "http://127.0.0.1:64179/?paintedlanding=1",
+    "sourceCommit": "acca36b469da2024a7112c3cdd426f351f6bd2f5",
+    "sourceState": "dirty-local-only",
+    "publishable": false,
+    "contentSha256": "473671306f100ece340e6e78ba2c7d2d9a5902103035c3ba2274e655dd41c0d5",
+    "manifestSha256": "ec101f05e7b8a351086db25bd3635712547aeb46925fdda7998c4638c1b43419"
+  },
+  "notImplemented": [
+    "On-demand generative model or AI service",
+    "Universal painted scene quality",
+    "New time/season model",
+    "Exact scene-image sharing",
+    "New painted Compendium portraits or battle rigs"
+  ],
+  "hostedActions": {
+    "authorized": 0,
+    "attempts": 0,
+    "cost": 0,
+    "pushed": false,
+    "release": false
+  },
+  "limits": "All pre-existing ROADMAP blockers remain. No human acceptance, physical iPhone/Safari, full battery, native heap, resize/re-entry or new generation performance qualification."
+}

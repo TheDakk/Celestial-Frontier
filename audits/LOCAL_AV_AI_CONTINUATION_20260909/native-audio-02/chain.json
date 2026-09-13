@@ -1,0 +1,37 @@
+{
+  "schema": "cf-native-audio-mix-chain/v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-09T05:50:07.824Z",
+  "steps": [
+    {
+      "name": "typecheck",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/typescript/bin/tsc",
+        "-p",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-native-mix/tsconfig.json"
+      ],
+      "startedAt": "2026-09-09T05:50:07.825Z",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "finishedAt": "2026-09-09T05:50:08.091Z"
+    },
+    {
+      "name": "build",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-native-mix/build.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/LOCAL_AV_AI_CONTINUATION_20260909/native-audio-02/build"
+      ],
+      "startedAt": "2026-09-09T05:50:08.091Z",
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "finishedAt": "2026-09-09T05:50:08.120Z"
+    }
+  ],
+  "error": "Error: build failed; no successor attempted\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-native-mix/chain.mjs:21:35\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+  "workspaceReleased": true,
+  "finishedAt": "2026-09-09T05:50:08.121Z"
+}

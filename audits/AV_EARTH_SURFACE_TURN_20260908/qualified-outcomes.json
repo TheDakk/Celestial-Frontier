@@ -1,0 +1,120 @@
+{
+  "scope": "scoped phone outcomes plus separate fresh desktop diagnostic; combined chain remains FAIL",
+  "phoneReportStatus": "FAIL",
+  "desktopReportStatus": "PASS",
+  "metrics": [
+    {
+      "name": "earth-phone exact uniform ownership",
+      "owners": {
+        "key": 5,
+        "turn": 6,
+        "mesh": 1,
+        "global": [
+          5
+        ],
+        "cached": [
+          1,
+          5,
+          6
+        ]
+      },
+      "orphanControlRejected": true
+    },
+    {
+      "name": "earth-phone actual motion and painted-output controls",
+      "initialPixels": {
+        "width": 420,
+        "height": 420,
+        "hash": "5f61f3fc",
+        "nontransparentPixels": 138520,
+        "uniform": 0.0004759751236142404
+      },
+      "midPixels": {
+        "width": 420,
+        "height": 420,
+        "hash": "918728d3",
+        "nontransparentPixels": 138520,
+        "uniform": 0.21929116438231458
+      },
+      "settledPixels": {
+        "width": 420,
+        "height": 420,
+        "hash": "614ed7d8",
+        "nontransparentPixels": 138520,
+        "uniform": 0
+      },
+      "laterPixels": {
+        "width": 420,
+        "height": 420,
+        "hash": "614ed7d8",
+        "nontransparentPixels": 138520,
+        "uniform": 0
+      },
+      "control": {
+        "method": "actual scene frame, ticker paused, only Earth turn Mesh hidden and restored",
+        "width": 780,
+        "height": 1688,
+        "hiddenDifference": 864023,
+        "restoredDifference": 0
+      }
+    },
+    {
+      "name": "earth-desktop exact uniform ownership",
+      "owners": {
+        "key": 5,
+        "turn": 6,
+        "mesh": 1,
+        "global": [
+          5
+        ],
+        "cached": [
+          1,
+          5,
+          6
+        ]
+      },
+      "orphanControlRejected": true
+    },
+    {
+      "name": "earth-desktop actual motion and painted-output controls",
+      "initialPixels": {
+        "width": 420,
+        "height": 420,
+        "hash": "1e6ea288",
+        "nontransparentPixels": 138520,
+        "uniform": 0.00022508895082715456
+      },
+      "midPixels": {
+        "width": 420,
+        "height": 420,
+        "hash": "ce78f52d",
+        "nontransparentPixels": 138520,
+        "uniform": 0.2190306600675765
+      },
+      "settledPixels": {
+        "width": 420,
+        "height": 420,
+        "hash": "614ed7d8",
+        "nontransparentPixels": 138520,
+        "uniform": 0
+      },
+      "laterPixels": {
+        "width": 420,
+        "height": 420,
+        "hash": "614ed7d8",
+        "nontransparentPixels": 138520,
+        "uniform": 0
+      },
+      "control": {
+        "method": "actual scene frame, ticker paused, only Earth turn Mesh hidden and restored",
+        "width": 1440,
+        "height": 1000,
+        "hiddenDifference": 412233,
+        "restoredDifference": 0
+      }
+    }
+  ],
+  "sameDocumentReentry": "NOT REACHED: resize ended at galaxy after successful phone retirement",
+  "nativeHeapCertificate": false,
+  "physicalDeviceQualification": false
+}

@@ -1,0 +1,2047 @@
+{
+  "schema": "cf-native-charter-header-preview/v1",
+  "status": "FAIL",
+  "certification": false,
+  "startedAt": "2026-09-08T09:45:28.241Z",
+  "dist": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/charter-header-evidence-dist-20260908",
+  "sources": {
+    "port/v2/apps/game/src/main.ts": "da4f8b5d800794c752c1ac9cbd4f32c4a8fb1be261a94e9f5fc09b3dd148b9e2",
+    "port/v2/apps/game/src/panels.ts": "f911daebf7f344e335e4bb1777d386978c22a4cf41ff2b997e00c25fd9026e8d",
+    "port/v2/apps/game/src/ui-sheet-style.ts": "73f0f6adc6e3d58f333996ec279e3b53b580ef512e6297d29445779f381d72cc",
+    "port/v2/apps/game/src/ui-presentation-tokens.ts": "2a53bfe1510bfbf4d72aa0a29ba40c6f446bbc952bd961445e0eb2871c07b0c7",
+    "port/v2/apps/game/src/pilot-runtime-style.ts": "12ca6ae00d0b660767f0aa6109b4f5bbcdbd8e4323b5e40273959ba79df1abb5",
+    "port/v2/apps/game/src/audiovisual-pilot.ts": "4c98a67a7ca74d1bcf67f88004f1dcf0a2d8ddc5977b5ef3ec58b0d75178cc5a",
+    "port/v2/apps/game/index.html": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f",
+    "audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-header.mjs": "8f39c416bc062b541d5640ec81f1b7211bd977d2847509bba6006a2e596e1340"
+  },
+  "served": {
+    "index.html": "4eb18176557f272fbe43ba6daf86873ad73791e1fbd4dcb8b0b6e25efd368b18",
+    "assets/main-CAaS-U1C.js": "e243322c1ada820b73f9fbd1d4ba570ef77a19a3070291c485a6b0ed961281f9",
+    "assets/Geometry-C5FtorEc.js": "9bbbacd5502e42fb7c51a5306bda3b59b718a2bacd20badde40fe7e8ab1afbb6",
+    "assets/getTextureBatchBindGroup-DkbnCTGz.js": "3ce2d33bde60e5f2cc123fab89998b4c1580eecab18b1294321b14d255b83be5",
+    "assets/speciesidentity-DkdaK0o4.js": "bbcbd03c4f82bb640db2cda363b4579b60631a4182d759861009771f4f39d772",
+    "assets/CanvasPool-BewL5izq.js": "8b4af0914a4436094e428b6747bef851805c1c84f361ba8819c1fbdcab6b806a",
+    "assets/CanvasRenderer-DXKJLlc8.js": "1e4c6c1578a4d34a9274e2c4a68b4dc37c541e225d963bf661f682486d930051",
+    "assets/canvasUtils-CWV5icuA.js": "faaff76b40957b52f7817add636bb204e563dfab14ed3a0b6f563c96c259938b",
+    "assets/surface-polish-CBmmi-Kj.js": "9d74988f7575b155e811c18ff7bcc594d7158fbee211bfbacabdeafcfdfe0552",
+    "assets/visual-effect-policy-Bvngx8nL.js": "4c150d4f5af91b69dc3b7f069059a5e9bc6daec8fe31ba0eaab4bb4ac61fdef4",
+    "assets/src-D1xb2OX1.js": "b65c8f4cc2ee2064ff67d0c795945d41119030489bf45185ba96a5e756fcedef",
+    "assets/getPo2TextureFromSource-0axNaDip.js": "b30689d034d24afffd35fc3a31fbc217dd73090d008e0ec963372dfdc5fcae68",
+    "assets/release-identity-CIuedefi.js": "849faf8ee532d75c477524be0847f7db9f6ae443b86c328434bd8101a6c0a82d",
+    "assets/tame-greeting-audio-Cu-PsMZu.js": "7b35cb3164e3a843532ff4744485a9f7ba7377aa73872cb740cf47ee8b6f5122",
+    "assets/RenderTargetSystem-DKTlyS8X.js": "fa6f7819177a12bf7438d3f56905fed48dfc79e1d45c76df828e20ce7fccee22",
+    "manifest.webmanifest": "827ec2c2a4bb946c558321624cc241bcf71c0008aac15dbc2c852f76e2c06f40",
+    "assets/WebGLRenderer-6mXMZ2W0.js": "0564e0461c5adbde63f59574d08acae1c0fe047a3fc02946ad0436f2acf8381d",
+    "assets/BufferResource-e5xCyZ5_.js": "6ee514005f66ab3071ec8b93506a1cd968593d7ac051716399272ac7a384f4d4",
+    "assets/InterVariable-DiVDrmQJ.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+    "assets/browserAll-CAHNI2rF.js": "e4e09a2f845f764445a9672423c95a8f4142f3b314aee86ace1cc59e1cf68b03",
+    "assets/init-S6n54E3j.js": "d9d1196b839d592b9b80843129c776109e53dbb6b96b905b6405bb65f0c42cfb",
+    "icons/celestial-frontier.svg": "97b8d42d779cebcddca5980c60635a8c767c2b7ea43a23871ccd386a7d716c04",
+    "service-worker.js": "2727bdce8f19022b8bf7a3f3e5e2a0bece3e7d8482c8187d01cb01589a9b8512",
+    "assets/Inter-LICENSE-CkXC2-KD.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "assets/WebGPURenderer-Btvgrbn5.js": "e638b9294f9884f469f9bb2b3bee08ac684a6fb1021511eb29cf68baa355aa5f",
+    "assets/audiovisual-pilot-xkKqITae.js": "c3b06772475ab3edc63e467062b1f8627c55307978e8aa9daeacf9c8d6d4bd5a",
+    "assets/audiovisualPilot-YSvrk05a.js": "c3d756c388a8235fd50c726ad9f0ab48e842472e4793c34316538d6a843526f4",
+    "assets/audit-BESfJQH9.js": "3e11872550aabc8e75fc69a64fbf6b819ba259ae7c8c3eb9c828aaadff861090",
+    "assets/biome-vista.worker-D3XRSJZJ.js": "f30f76537077952e792da01712b59650172dc2e7b78698040abc780843c6f7e2",
+    "assets/cf-pilot-combat-contact-DHZD2lYd.wav": "fc3bcb5da5ee2a81a45d32de933cea234eb42850b151ba46565d1ad300eb6a20",
+    "assets/cf-pilot-exploration-music-CMF8UCKw.wav": "fa144fe615faef75fc426f86a44f299dcf48a1637893ccef9cf95fa2ab40a111",
+    "assets/cf-pilot-scout-approach-Be38_iqZ.wav": "ad4020be2cda99df2ba91290965b1d125bf909c4b7279833da51b5b55ad5f373",
+    "assets/cf-pilot-scout-landing-D1k5tYuE.wav": "6e8e3edf1dca6f232ebb13233e6921a64c33bd33830a5c1358165a764779852a",
+    "assets/cf-pilot-temperate-bed-C_jKRyj6.wav": "36caaa89651e44e92f9faddc53d74104cb9e1f5e11eb5a5757efbbdb978be69c",
+    "assets/cf-pilot-ui-nav-bMnbTxA8.wav": "14cecfcf6525c0c3637455ae7c711972021814ae5b5caf711baf7c6bb796a4c8",
+    "assets/cf-pilot-ui-refusal-CMon7hko.wav": "3e4fcbd34d6b65583883e31347ef99c4dd538aa07a311fe7612083e3f37b9b20",
+    "assets/cf-pilot-ui-settlement-uF_X4Ois.wav": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3",
+    "assets/earth-rainy-landscape-DPgApIAi.webp": "478fd649a1aed198e64a9a053c464f9f98630943ac8e11bf1b184b253f47060b",
+    "assets/earth-rainy-phone-DFt5murF.webp": "3689d1273b7bc75806f87eea9718304109a06d31f98682c6161e05b1a06b83ef",
+    "assets/guide-content-Cy7MxzST.js": "5c16f71f1959f41eb1a5b9262873077f41de3df4551dbadc8d23d3f7a5a0b908",
+    "assets/hybridMatrix-DiGQ5L5t.js": "43f3c1833e62a26ecb5c72b33316aab6b79a8732f7e6020bec8e8a294856c5b1",
+    "assets/pilot-sound-player-Dg8Fl5YX.js": "bc9c81864c841e561046c5bcd0cd802b8b0d59a6ee52c9ff23f7d031697bb458",
+    "assets/release-content-CoG3Qv15.js": "b517a5c8df4b33405d21f19633b887c349b4529d5ea5c85a97db07d2ae751e62",
+    "assets/scout-chemical-132-Dt4gyYnA.webp": "e961336688e8a0687eb6f09dd3f1a22306077694390002ffcda6763b7ba37fc4",
+    "assets/scout-chemical-300-CxcU_kic.webp": "ec2ac6134e4dfc3e74e932c8277e558cdac22f18274f4c806278adc19c510752",
+    "assets/scout-chemical-512-DcNawgH5.webp": "7d58149bed26e0e6aad629d8a7ff50911c9d8540e2cc8c1f8ad60f081299f343",
+    "assets/species-art.worker-DnnSDKMy.js": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172",
+    "assets/speciesart-CGOfbRs-.js": "6865ce59f9d21f2efdd9c9eb6ae64fcb1d2b377c1d63a790cd7c34c6c9130e51",
+    "assets/webworkerAll-Dl-gkjA6.js": "791e45d86752eb73039eb295ef453ce3e7b70d0a15fc8d297812370d688f7e30",
+    "audiovisual-pilot.html": "2699e51c402154544224dbbf82d074dbb5cb1d93494dc1e0ae89ef0e72a9e6b1",
+    "audit.html": "603ee30fe1dbcd93615b93808faa7d8f195a7f34037b3440d6a7ffc7eb1bb41c",
+    "hybrid-matrix.html": "3c167ab230c9e1cc9d91a750b5f6789e483067b2daa589399c909ac291395336",
+    "icons/celestial-frontier-maskable.svg": "ff05489ed56a7193bbaf8fe5e3f6b43e8ba46667be2f8e1e9bdd7ff46da2488c"
+  },
+  "cases": [
+    {
+      "name": "phone-pilot",
+      "status": "PASS",
+      "state": {
+        "documentToken": "032012a2-7943-4dec-9f24-097a7262a42b",
+        "bodyClass": "",
+        "pilot": true,
+        "viewport": [
+          390,
+          844,
+          2
+        ],
+        "mode": "system",
+        "persistence": {
+          "schema": "cf-v2-app-persistence/v1",
+          "ready": true,
+          "documentToken": "032012a2-7943-4dec-9f24-097a7262a42b",
+          "bootKind": "fresh-v5",
+          "hold": null,
+          "protectedDetail": null,
+          "authorityBootKind": "absent",
+          "seedBootstrapPending": false,
+          "bootRouteRepairPending": false,
+          "productBootstrapPending": false,
+          "engineeringBootstrapPending": false,
+          "ownershipBootstrapPending": false,
+          "ownershipV2BootstrapPending": false,
+          "visibilityOverrideHidden": false,
+          "lastOutcome": "training-committed:3",
+          "hideWitness": null,
+          "heartbeatStorageFault": null,
+          "revisionVerificationFault": null,
+          "heartbeatRunning": true,
+          "convergenceReloadScheduled": false,
+          "convergenceReloadHold": {
+            "schema": "cf-v2-product-action-hold-diagnostics/v1",
+            "phase": "idle",
+            "operation": null,
+            "sequence": 0
+          },
+          "leaseReadCount": 3,
+          "revisionReadCount": 1,
+          "mutationBlocked": false,
+          "mutationBlockCount": 0,
+          "mutationBlockWitness": null,
+          "importPhase": null,
+          "importRace": null,
+          "runtime": {
+            "schema": "cf-v2-f4-runtime/v1",
+            "revision": 3,
+            "visible": true,
+            "answerable": true,
+            "leaseOwned": true,
+            "staleBlocked": false,
+            "leaseHeartbeat": 0,
+            "activePlayMs": 157,
+            "accruing": true,
+            "sessionSeed": 4133073698,
+            "sessionOrdinal": 0,
+            "sessionDraws": {},
+            "commits": 2,
+            "staleWrites": 0,
+            "leaseLosses": 0
+          },
+          "ecology": {
+            "schema": "cf-v2-ecology-epoch-edge/v1",
+            "publishedEpoch": 0,
+            "candidateEpoch": 0,
+            "activePlayOriginMs": 0,
+            "observedActivePlayMs": 157,
+            "edgeDue": false,
+            "autoCheckpointDue": false,
+            "inFlight": false,
+            "stagedIntent": null,
+            "stagedEpoch": null,
+            "retrySuppressedEpoch": null,
+            "lastCommittedRevision": null,
+            "stages": 0,
+            "commits": 0,
+            "publications": 0,
+            "rejections": 0,
+            "invalidStageCompletions": 0,
+            "projection": {
+              "state": "current",
+              "publishedEpoch": 0,
+              "projectedEpoch": 0,
+              "refreshEpoch": null,
+              "refreshSerial": null
+            },
+            "projectionRefreshesStarted": 0,
+            "projectionRefreshesCompleted": 0,
+            "projectionRefreshesFailed": 0,
+            "projectionSuppressions": 0,
+            "invalidProjectionCompletions": 0,
+            "projectionDirty": false,
+            "projectionSuppressed": false,
+            "checkpointInFlight": false,
+            "lastOutcome": "boot:0"
+          }
+        },
+        "panel": null,
+        "scrollTop": 0,
+        "forcedColors": false,
+        "inputs": [
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 902.7999999523163
+          }
+        ]
+      },
+      "opened": {
+        "panel": {
+          "x": 8,
+          "y": 120,
+          "width": 360,
+          "height": 532.25,
+          "left": 8,
+          "top": 120,
+          "right": 368,
+          "bottom": 652.25
+        },
+        "header": {
+          "x": 23,
+          "y": 135,
+          "width": 286,
+          "height": 53.78125,
+          "left": 23,
+          "top": 135,
+          "right": 309,
+          "bottom": 188.78125
+        },
+        "close": {
+          "x": 309,
+          "y": 135,
+          "width": 44,
+          "height": 44,
+          "left": 309,
+          "top": 135,
+          "right": 353,
+          "bottom": 179
+        },
+        "label": {
+          "x": 23,
+          "y": 276.78125,
+          "width": 186,
+          "height": 36,
+          "left": 23,
+          "top": 276.78125,
+          "right": 209,
+          "bottom": 312.78125
+        },
+        "line": {
+          "top": 277.78125,
+          "bottom": 292.78125,
+          "left": 23,
+          "right": 193.328125,
+          "height": 15
+        },
+        "band": {
+          "left": 9,
+          "right": 367,
+          "top": 121,
+          "bottom": 188.78125
+        },
+        "clip": {
+          "x": 10,
+          "y": 122,
+          "width": 356,
+          "height": 65,
+          "scale": 1
+        },
+        "overlap": 0,
+        "scrollTop": 0,
+        "scrollHeight": 774,
+        "clientHeight": 530,
+        "title": "Charters — Current Expedition",
+        "objective": "Make planetfall on 2 worlds of Sol",
+        "headerStyle": {
+          "position": "sticky",
+          "top": "0px",
+          "background": "rgb(10, 16, 30)",
+          "opacity": "1",
+          "zIndex": "1"
+        },
+        "pseudo": {
+          "content": "\"\"",
+          "top": "-14px",
+          "bottom": "0px",
+          "left": "-14px",
+          "right": "-58px",
+          "background": "rgb(10, 16, 30)"
+        },
+        "closeHit": true
+      },
+      "wheels": [
+        {
+          "x": 170,
+          "y": 248.78125,
+          "deltaY": 120,
+          "events": [
+            {
+              "type": "wheel",
+              "trusted": true,
+              "close": null,
+              "opener": false,
+              "panel": true,
+              "at": 1297.6000000238419
+            }
+          ]
+        }
+      ],
+      "scrolled": {
+        "panel": {
+          "x": 8,
+          "y": 120,
+          "width": 360,
+          "height": 532.25,
+          "left": 8,
+          "top": 120,
+          "right": 368,
+          "bottom": 652.25
+        },
+        "header": {
+          "x": 23,
+          "y": 135,
+          "width": 286,
+          "height": 53.78125,
+          "left": 23,
+          "top": 135,
+          "right": 309,
+          "bottom": 188.78125
+        },
+        "close": {
+          "x": 309,
+          "y": 135,
+          "width": 44,
+          "height": 44,
+          "left": 309,
+          "top": 135,
+          "right": 353,
+          "bottom": 179
+        },
+        "label": {
+          "x": 23,
+          "y": 156.78125,
+          "width": 186,
+          "height": 36,
+          "left": 23,
+          "top": 156.78125,
+          "right": 209,
+          "bottom": 192.78125
+        },
+        "line": {
+          "top": 157.78125,
+          "bottom": 172.78125,
+          "left": 23,
+          "right": 193.328125,
+          "height": 15
+        },
+        "band": {
+          "left": 9,
+          "right": 367,
+          "top": 121,
+          "bottom": 188.78125
+        },
+        "clip": {
+          "x": 10,
+          "y": 122,
+          "width": 356,
+          "height": 65,
+          "scale": 1
+        },
+        "overlap": 15,
+        "scrollTop": 120,
+        "scrollHeight": 774,
+        "clientHeight": 530,
+        "title": "Charters — Current Expedition",
+        "objective": "Make planetfall on 2 worlds of Sol",
+        "headerStyle": {
+          "position": "sticky",
+          "top": "0px",
+          "background": "rgb(10, 16, 30)",
+          "opacity": "1",
+          "zIndex": "1"
+        },
+        "pseudo": {
+          "content": "\"\"",
+          "top": "-14px",
+          "bottom": "0px",
+          "left": "-14px",
+          "right": "-58px",
+          "background": "rgb(10, 16, 30)"
+        },
+        "closeHit": true
+      },
+      "fixed": {
+        "width": 712,
+        "height": 130,
+        "changedPixels": 0,
+        "changedChannels": 0
+      },
+      "restored": {
+        "width": 712,
+        "height": 130,
+        "changedPixels": 0,
+        "changedChannels": 0
+      },
+      "faultGeometry": {
+        "panel": {
+          "x": 8,
+          "y": 120,
+          "width": 360,
+          "height": 532.25,
+          "left": 8,
+          "top": 120,
+          "right": 368,
+          "bottom": 652.25
+        },
+        "header": {
+          "x": 23,
+          "y": 135,
+          "width": 286,
+          "height": 53.78125,
+          "left": 23,
+          "top": 135,
+          "right": 309,
+          "bottom": 188.78125
+        },
+        "close": {
+          "x": 309,
+          "y": 135,
+          "width": 44,
+          "height": 44,
+          "left": 309,
+          "top": 135,
+          "right": 353,
+          "bottom": 179
+        },
+        "label": {
+          "x": 23,
+          "y": 156.78125,
+          "width": 186,
+          "height": 36,
+          "left": 23,
+          "top": 156.78125,
+          "right": 209,
+          "bottom": 192.78125
+        },
+        "line": {
+          "top": 157.78125,
+          "bottom": 172.78125,
+          "left": 23,
+          "right": 193.328125,
+          "height": 15
+        },
+        "band": {
+          "left": 9,
+          "right": 367,
+          "top": 121,
+          "bottom": 188.78125
+        },
+        "clip": {
+          "x": 10,
+          "y": 122,
+          "width": 356,
+          "height": 65,
+          "scale": 1
+        },
+        "overlap": 15,
+        "scrollTop": 120,
+        "scrollHeight": 774,
+        "clientHeight": 530,
+        "title": "Charters — Current Expedition",
+        "objective": "Make planetfall on 2 worlds of Sol",
+        "headerStyle": {
+          "position": "sticky",
+          "top": "0px",
+          "background": "rgba(0, 0, 0, 0)",
+          "opacity": "1",
+          "zIndex": "1"
+        },
+        "pseudo": {
+          "content": "\"\"",
+          "top": "-14px",
+          "bottom": "0px",
+          "left": "-14px",
+          "right": "-58px",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        "closeHit": true
+      },
+      "negative": {
+        "width": 712,
+        "height": 130,
+        "changedPixels": 2479,
+        "changedChannels": 7414
+      },
+      "afterControl": {
+        "width": 712,
+        "height": 130,
+        "changedPixels": 0,
+        "changedChannels": 0
+      },
+      "finalGeometry": {
+        "panel": {
+          "x": 8,
+          "y": 120,
+          "width": 360,
+          "height": 532.25,
+          "left": 8,
+          "top": 120,
+          "right": 368,
+          "bottom": 652.25
+        },
+        "header": {
+          "x": 23,
+          "y": 135,
+          "width": 286,
+          "height": 53.78125,
+          "left": 23,
+          "top": 135,
+          "right": 309,
+          "bottom": 188.78125
+        },
+        "close": {
+          "x": 309,
+          "y": 135,
+          "width": 44,
+          "height": 44,
+          "left": 309,
+          "top": 135,
+          "right": 353,
+          "bottom": 179
+        },
+        "label": {
+          "x": 23,
+          "y": 156.78125,
+          "width": 186,
+          "height": 36,
+          "left": 23,
+          "top": 156.78125,
+          "right": 209,
+          "bottom": 192.78125
+        },
+        "line": {
+          "top": 157.78125,
+          "bottom": 172.78125,
+          "left": 23,
+          "right": 193.328125,
+          "height": 15
+        },
+        "band": {
+          "left": 9,
+          "right": 367,
+          "top": 121,
+          "bottom": 188.78125
+        },
+        "clip": {
+          "x": 10,
+          "y": 122,
+          "width": 356,
+          "height": 65,
+          "scale": 1
+        },
+        "overlap": 15,
+        "scrollTop": 120,
+        "scrollHeight": 774,
+        "clientHeight": 530,
+        "title": "Charters — Current Expedition",
+        "objective": "Make planetfall on 2 worlds of Sol",
+        "headerStyle": {
+          "position": "sticky",
+          "top": "0px",
+          "background": "rgb(10, 16, 30)",
+          "opacity": "1",
+          "zIndex": "1"
+        },
+        "pseudo": {
+          "content": "\"\"",
+          "top": "-14px",
+          "bottom": "0px",
+          "left": "-14px",
+          "right": "-58px",
+          "background": "rgb(10, 16, 30)"
+        },
+        "closeHit": true
+      }
+    },
+    {
+      "name": "phone-current",
+      "status": "PASS",
+      "state": {
+        "documentToken": "032012a2-7943-4dec-9f24-097a7262a42b",
+        "bodyClass": "",
+        "pilot": false,
+        "viewport": [
+          390,
+          844,
+          2
+        ],
+        "mode": "system",
+        "persistence": {
+          "schema": "cf-v2-app-persistence/v1",
+          "ready": true,
+          "documentToken": "032012a2-7943-4dec-9f24-097a7262a42b",
+          "bootKind": "fresh-v5",
+          "hold": null,
+          "protectedDetail": null,
+          "authorityBootKind": "absent",
+          "seedBootstrapPending": false,
+          "bootRouteRepairPending": false,
+          "productBootstrapPending": false,
+          "engineeringBootstrapPending": false,
+          "ownershipBootstrapPending": false,
+          "ownershipV2BootstrapPending": false,
+          "visibilityOverrideHidden": false,
+          "lastOutcome": "training-committed:3",
+          "hideWitness": null,
+          "heartbeatStorageFault": null,
+          "revisionVerificationFault": null,
+          "heartbeatRunning": true,
+          "convergenceReloadScheduled": false,
+          "convergenceReloadHold": {
+            "schema": "cf-v2-product-action-hold-diagnostics/v1",
+            "phase": "idle",
+            "operation": null,
+            "sequence": 0
+          },
+          "leaseReadCount": 3,
+          "revisionReadCount": 1,
+          "mutationBlocked": false,
+          "mutationBlockCount": 0,
+          "mutationBlockWitness": null,
+          "importPhase": null,
+          "importRace": null,
+          "runtime": {
+            "schema": "cf-v2-f4-runtime/v1",
+            "revision": 3,
+            "visible": true,
+            "answerable": true,
+            "leaseOwned": true,
+            "staleBlocked": false,
+            "leaseHeartbeat": 0,
+            "activePlayMs": 1625,
+            "accruing": true,
+            "sessionSeed": 4133073698,
+            "sessionOrdinal": 0,
+            "sessionDraws": {},
+            "commits": 2,
+            "staleWrites": 0,
+            "leaseLosses": 0
+          },
+          "ecology": {
+            "schema": "cf-v2-ecology-epoch-edge/v1",
+            "publishedEpoch": 0,
+            "candidateEpoch": 0,
+            "activePlayOriginMs": 0,
+            "observedActivePlayMs": 1625,
+            "edgeDue": false,
+            "autoCheckpointDue": false,
+            "inFlight": false,
+            "stagedIntent": null,
+            "stagedEpoch": null,
+            "retrySuppressedEpoch": null,
+            "lastCommittedRevision": null,
+            "stages": 0,
+            "commits": 0,
+            "publications": 0,
+            "rejections": 0,
+            "invalidStageCompletions": 0,
+            "projection": {
+              "state": "current",
+              "publishedEpoch": 0,
+              "projectedEpoch": 0,
+              "refreshEpoch": null,
+              "refreshSerial": null
+            },
+            "projectionRefreshesStarted": 0,
+            "projectionRefreshesCompleted": 0,
+            "projectionRefreshesFailed": 0,
+            "projectionSuppressions": 0,
+            "invalidProjectionCompletions": 0,
+            "projectionDirty": false,
+            "projectionSuppressed": false,
+            "checkpointInFlight": false,
+            "lastOutcome": "boot:0"
+          }
+        },
+        "panel": null,
+        "scrollTop": 0,
+        "forcedColors": false,
+        "inputs": [
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 902.7999999523163
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": true,
+            "panel": false,
+            "at": 1004.6999999284744
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": true,
+            "at": 1297.6000000238419
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": "ch",
+            "opener": false,
+            "panel": true,
+            "at": 2102.5
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 2183.1999999284744
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 2266.5
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 2348.6999999284744
+          }
+        ]
+      },
+      "opened": {
+        "panel": {
+          "x": 8,
+          "y": 120,
+          "width": 360,
+          "height": 532.25,
+          "left": 8,
+          "top": 120,
+          "right": 368,
+          "bottom": 652.25
+        },
+        "header": {
+          "x": 23,
+          "y": 135,
+          "width": 238,
+          "height": 53.78125,
+          "left": 23,
+          "top": 135,
+          "right": 261,
+          "bottom": 188.78125
+        },
+        "close": {
+          "x": 313,
+          "y": 135,
+          "width": 44,
+          "height": 44,
+          "left": 313,
+          "top": 135,
+          "right": 357,
+          "bottom": 179
+        },
+        "label": {
+          "x": 23,
+          "y": 275.28125,
+          "width": 186,
+          "height": 36,
+          "left": 23,
+          "top": 275.28125,
+          "right": 209,
+          "bottom": 311.28125
+        },
+        "line": {
+          "top": 276.28125,
+          "bottom": 291.28125,
+          "left": 23,
+          "right": 193.625,
+          "height": 15
+        },
+        "band": {
+          "left": 9,
+          "right": 367,
+          "top": 121,
+          "bottom": 188.78125
+        },
+        "clip": {
+          "x": 10,
+          "y": 122,
+          "width": 356,
+          "height": 65,
+          "scale": 1
+        },
+        "overlap": 0,
+        "scrollTop": 0,
+        "scrollHeight": 745,
+        "clientHeight": 530,
+        "title": "Charters — Current Expedition",
+        "objective": "Make planetfall on 2 worlds of Sol",
+        "headerStyle": {
+          "position": "sticky",
+          "top": "0px",
+          "background": "rgb(10, 16, 30)",
+          "opacity": "1",
+          "zIndex": "1"
+        },
+        "pseudo": {
+          "content": "\"\"",
+          "top": "-14px",
+          "bottom": "0px",
+          "left": "-14px",
+          "right": "-58px",
+          "background": "rgb(10, 16, 30)"
+        },
+        "closeHit": true
+      },
+      "wheels": [
+        {
+          "x": 170,
+          "y": 248.78125,
+          "deltaY": 120,
+          "events": [
+            {
+              "type": "wheel",
+              "trusted": true,
+              "close": null,
+              "opener": false,
+              "panel": true,
+              "at": 2663.600000023842
+            }
+          ]
+        }
+      ],
+      "scrolled": {
+        "panel": {
+          "x": 8,
+          "y": 120,
+          "width": 360,
+          "height": 532.25,
+          "left": 8,
+          "top": 120,
+          "right": 368,
+          "bottom": 652.25
+        },
+        "header": {
+          "x": 23,
+          "y": 135,
+          "width": 238,
+          "height": 53.78125,
+          "left": 23,
+          "top": 135,
+          "right": 261,
+          "bottom": 188.78125
+        },
+        "close": {
+          "x": 313,
+          "y": 135,
+          "width": 44,
+          "height": 44,
+          "left": 313,
+          "top": 135,
+          "right": 357,
+          "bottom": 179
+        },
+        "label": {
+          "x": 23,
+          "y": 155.28125,
+          "width": 186,
+          "height": 36,
+          "left": 23,
+          "top": 155.28125,
+          "right": 209,
+          "bottom": 191.28125
+        },
+        "line": {
+          "top": 156.28125,
+          "bottom": 171.28125,
+          "left": 23,
+          "right": 193.625,
+          "height": 15
+        },
+        "band": {
+          "left": 9,
+          "right": 367,
+          "top": 121,
+          "bottom": 188.78125
+        },
+        "clip": {
+          "x": 10,
+          "y": 122,
+          "width": 356,
+          "height": 65,
+          "scale": 1
+        },
+        "overlap": 15,
+        "scrollTop": 120,
+        "scrollHeight": 745,
+        "clientHeight": 530,
+        "title": "Charters — Current Expedition",
+        "objective": "Make planetfall on 2 worlds of Sol",
+        "headerStyle": {
+          "position": "sticky",
+          "top": "0px",
+          "background": "rgb(10, 16, 30)",
+          "opacity": "1",
+          "zIndex": "1"
+        },
+        "pseudo": {
+          "content": "\"\"",
+          "top": "-14px",
+          "bottom": "0px",
+          "left": "-14px",
+          "right": "-58px",
+          "background": "rgb(10, 16, 30)"
+        },
+        "closeHit": true
+      },
+      "fixed": {
+        "width": 712,
+        "height": 130,
+        "changedPixels": 0,
+        "changedChannels": 0
+      },
+      "restored": {
+        "width": 712,
+        "height": 130,
+        "changedPixels": 0,
+        "changedChannels": 0
+      },
+      "afterControl": {
+        "width": 712,
+        "height": 130,
+        "changedPixels": 0,
+        "changedChannels": 0
+      },
+      "finalGeometry": {
+        "panel": {
+          "x": 8,
+          "y": 120,
+          "width": 360,
+          "height": 532.25,
+          "left": 8,
+          "top": 120,
+          "right": 368,
+          "bottom": 652.25
+        },
+        "header": {
+          "x": 23,
+          "y": 135,
+          "width": 238,
+          "height": 53.78125,
+          "left": 23,
+          "top": 135,
+          "right": 261,
+          "bottom": 188.78125
+        },
+        "close": {
+          "x": 313,
+          "y": 135,
+          "width": 44,
+          "height": 44,
+          "left": 313,
+          "top": 135,
+          "right": 357,
+          "bottom": 179
+        },
+        "label": {
+          "x": 23,
+          "y": 155.28125,
+          "width": 186,
+          "height": 36,
+          "left": 23,
+          "top": 155.28125,
+          "right": 209,
+          "bottom": 191.28125
+        },
+        "line": {
+          "top": 156.28125,
+          "bottom": 171.28125,
+          "left": 23,
+          "right": 193.625,
+          "height": 15
+        },
+        "band": {
+          "left": 9,
+          "right": 367,
+          "top": 121,
+          "bottom": 188.78125
+        },
+        "clip": {
+          "x": 10,
+          "y": 122,
+          "width": 356,
+          "height": 65,
+          "scale": 1
+        },
+        "overlap": 15,
+        "scrollTop": 120,
+        "scrollHeight": 745,
+        "clientHeight": 530,
+        "title": "Charters — Current Expedition",
+        "objective": "Make planetfall on 2 worlds of Sol",
+        "headerStyle": {
+          "position": "sticky",
+          "top": "0px",
+          "background": "rgb(10, 16, 30)",
+          "opacity": "1",
+          "zIndex": "1"
+        },
+        "pseudo": {
+          "content": "\"\"",
+          "top": "-14px",
+          "bottom": "0px",
+          "left": "-14px",
+          "right": "-58px",
+          "background": "rgb(10, 16, 30)"
+        },
+        "closeHit": true
+      }
+    },
+    {
+      "name": "phone-current-large-max",
+      "status": "RUNNING",
+      "state": {
+        "documentToken": "032012a2-7943-4dec-9f24-097a7262a42b",
+        "bodyClass": "fs-xl tone-max",
+        "pilot": false,
+        "viewport": [
+          390,
+          844,
+          2
+        ],
+        "mode": "system",
+        "persistence": {
+          "schema": "cf-v2-app-persistence/v1",
+          "ready": true,
+          "documentToken": "032012a2-7943-4dec-9f24-097a7262a42b",
+          "bootKind": "fresh-v5",
+          "hold": null,
+          "protectedDetail": null,
+          "authorityBootKind": "absent",
+          "seedBootstrapPending": false,
+          "bootRouteRepairPending": false,
+          "productBootstrapPending": false,
+          "engineeringBootstrapPending": false,
+          "ownershipBootstrapPending": false,
+          "ownershipV2BootstrapPending": false,
+          "visibilityOverrideHidden": false,
+          "lastOutcome": "committed:5",
+          "hideWitness": null,
+          "heartbeatStorageFault": null,
+          "revisionVerificationFault": null,
+          "heartbeatRunning": true,
+          "convergenceReloadScheduled": false,
+          "convergenceReloadHold": {
+            "schema": "cf-v2-product-action-hold-diagnostics/v1",
+            "phase": "idle",
+            "operation": null,
+            "sequence": 0
+          },
+          "leaseReadCount": 5,
+          "revisionReadCount": 1,
+          "mutationBlocked": false,
+          "mutationBlockCount": 0,
+          "mutationBlockWitness": null,
+          "importPhase": null,
+          "importRace": null,
+          "runtime": {
+            "schema": "cf-v2-f4-runtime/v1",
+            "revision": 5,
+            "visible": true,
+            "answerable": true,
+            "leaseOwned": true,
+            "staleBlocked": false,
+            "leaseHeartbeat": 0,
+            "activePlayMs": 2927,
+            "accruing": true,
+            "sessionSeed": 4133073698,
+            "sessionOrdinal": 0,
+            "sessionDraws": {},
+            "commits": 4,
+            "staleWrites": 0,
+            "leaseLosses": 0
+          },
+          "ecology": {
+            "schema": "cf-v2-ecology-epoch-edge/v1",
+            "publishedEpoch": 0,
+            "candidateEpoch": 0,
+            "activePlayOriginMs": 0,
+            "observedActivePlayMs": 2927,
+            "edgeDue": false,
+            "autoCheckpointDue": false,
+            "inFlight": false,
+            "stagedIntent": null,
+            "stagedEpoch": null,
+            "retrySuppressedEpoch": null,
+            "lastCommittedRevision": 5,
+            "stages": 2,
+            "commits": 2,
+            "publications": 0,
+            "rejections": 0,
+            "invalidStageCompletions": 0,
+            "projection": {
+              "state": "current",
+              "publishedEpoch": 0,
+              "projectedEpoch": 0,
+              "refreshEpoch": null,
+              "refreshSerial": null
+            },
+            "projectionRefreshesStarted": 0,
+            "projectionRefreshesCompleted": 0,
+            "projectionRefreshesFailed": 0,
+            "projectionSuppressions": 0,
+            "invalidProjectionCompletions": 0,
+            "projectionDirty": false,
+            "projectionSuppressed": false,
+            "checkpointInFlight": false,
+            "lastOutcome": "steady:0:revision:5"
+          }
+        },
+        "panel": null,
+        "scrollTop": 0,
+        "forcedColors": false,
+        "inputs": [
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 902.7999999523163
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": true,
+            "panel": false,
+            "at": 1004.6999999284744
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": true,
+            "at": 1297.6000000238419
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": "ch",
+            "opener": false,
+            "panel": true,
+            "at": 2102.5
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 2183.1999999284744
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 2266.5
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 2348.6999999284744
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": true,
+            "panel": false,
+            "at": 2466.100000023842
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": true,
+            "at": 2663.600000023842
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": "ch",
+            "opener": false,
+            "panel": true,
+            "at": 3333
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 3415.399999976158
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 3498.6999999284744
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": null,
+            "opener": false,
+            "panel": false,
+            "at": 3598.6999999284744
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "close": "set",
+            "opener": false,
+            "panel": false,
+            "at": 3683.899999976158
+          }
+        ]
+      },
+      "opened": {
+        "panel": {
+          "x": 8,
+          "y": 132,
+          "width": 360,
+          "height": 470,
+          "left": 8,
+          "top": 132,
+          "right": 368,
+          "bottom": 602
+        },
+        "header": {
+          "x": 23,
+          "y": 147,
+          "width": 238,
+          "height": 84.5625,
+          "left": 23,
+          "top": 147,
+          "right": 261,
+          "bottom": 231.5625
+        },
+        "close": {
+          "x": 313,
+          "y": 147,
+          "width": 44,
+          "height": 44,
+          "left": 313,
+          "top": 147,
+          "right": 357,
+          "bottom": 191
+        },
+        "label": {
+          "x": 23,
+          "y": 358.5625,
+          "width": 186,
+          "height": 48,
+          "left": 23,
+          "top": 358.5625,
+          "right": 209,
+          "bottom": 406.5625
+        },
+        "line": {
+          "top": 360.5625,
+          "bottom": 380.5625,
+          "left": 23,
+          "right": 173.734375,
+          "height": 20
+        },
+        "band": {
+          "left": 9,
+          "right": 367,
+          "top": 133,
+          "bottom": 231.5625
+        },
+        "clip": {
+          "x": 10,
+          "y": 134,
+          "width": 356,
+          "height": 96,
+          "scale": 1
+        },
+        "overlap": 0,
+        "scrollTop": 0,
+        "scrollHeight": 959,
+        "clientHeight": 468,
+        "title": "Charters — Current Expedition",
+        "objective": "Make planetfall on 2 worlds of Sol",
+        "headerStyle": {
+          "position": "sticky",
+          "top": "0px",
+          "background": "rgb(10, 16, 30)",
+          "opacity": "1",
+          "zIndex": "1"
+        },
+        "pseudo": {
+          "content": "\"\"",
+          "top": "-14px",
+          "bottom": "0px",
+          "left": "-14px",
+          "right": "-58px",
+          "background": "rgb(10, 16, 30)"
+        },
+        "closeHit": true
+      },
+      "wheels": [
+        {
+          "x": 170,
+          "y": 291.5625,
+          "deltaY": 120,
+          "events": [
+            {
+              "type": "wheel",
+              "trusted": true,
+              "close": null,
+              "opener": false,
+              "panel": true,
+              "at": 3980.6999999284744
+            }
+          ]
+        },
+        {
+          "x": 170,
+          "y": 291.5625,
+          "deltaY": 68.28125,
+          "events": [
+            {
+              "type": "wheel",
+              "trusted": true,
+              "close": null,
+              "opener": false,
+              "panel": true,
+              "at": 4196.699999928474
+            }
+          ]
+        }
+      ],
+      "scrolled": {
+        "panel": {
+          "x": 8,
+          "y": 132,
+          "width": 360,
+          "height": 470,
+          "left": 8,
+          "top": 132,
+          "right": 368,
+          "bottom": 602
+        },
+        "header": {
+          "x": 23,
+          "y": 147,
+          "width": 238,
+          "height": 84.5625,
+          "left": 23,
+          "top": 147,
+          "right": 261,
+          "bottom": 231.5625
+        },
+        "close": {
+          "x": 313,
+          "y": 147,
+          "width": 44,
+          "height": 44,
+          "left": 313,
+          "top": 147,
+          "right": 357,
+          "bottom": 191
+        },
+        "label": {
+          "x": 23,
+          "y": 170.5625,
+          "width": 186,
+          "height": 48,
+          "left": 23,
+          "top": 170.5625,
+          "right": 209,
+          "bottom": 218.5625
+        },
+        "line": {
+          "top": 172.5625,
+          "bottom": 192.5625,
+          "left": 23,
+          "right": 173.734375,
+          "height": 20
+        },
+        "band": {
+          "left": 9,
+          "right": 367,
+          "top": 133,
+          "bottom": 231.5625
+        },
+        "clip": {
+          "x": 10,
+          "y": 134,
+          "width": 356,
+          "height": 96,
+          "scale": 1
+        },
+        "overlap": 20,
+        "scrollTop": 188,
+        "scrollHeight": 959,
+        "clientHeight": 468,
+        "title": "Charters — Current Expedition",
+        "objective": "Make planetfall on 2 worlds of Sol",
+        "headerStyle": {
+          "position": "sticky",
+          "top": "0px",
+          "background": "rgb(10, 16, 30)",
+          "opacity": "1",
+          "zIndex": "1"
+        },
+        "pseudo": {
+          "content": "\"\"",
+          "top": "-14px",
+          "bottom": "0px",
+          "left": "-14px",
+          "right": "-58px",
+          "background": "rgb(10, 16, 30)"
+        },
+        "closeHit": true
+      },
+      "fixed": {
+        "width": 712,
+        "height": 192,
+        "changedPixels": 0,
+        "changedChannels": 0
+      },
+      "restored": {
+        "width": 712,
+        "height": 192,
+        "changedPixels": 60,
+        "changedChannels": 180
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "selector": "[data-sel=tutskip]",
+      "point": {
+        "x": 247.1328125,
+        "y": 666.859375
+      },
+      "type": "click",
+      "trusted": true,
+      "close": null,
+      "opener": false,
+      "panel": false,
+      "at": 902.7999999523163
+    },
+    {
+      "selector": "#objchip",
+      "point": {
+        "x": 270.1953125,
+        "y": 90.71875
+      },
+      "type": "click",
+      "trusted": true,
+      "close": null,
+      "opener": true,
+      "panel": false,
+      "at": 1004.6999999284744
+    },
+    {
+      "selector": "#chpanel [data-pnx=\"ch\"]",
+      "point": {
+        "x": 331,
+        "y": 157
+      },
+      "type": "click",
+      "trusted": true,
+      "close": "ch",
+      "opener": false,
+      "panel": true,
+      "at": 2102.5
+    },
+    {
+      "selector": "[data-cf-pilot-controls] summary",
+      "point": {
+        "x": 313.9921875,
+        "y": 717
+      },
+      "type": "click",
+      "trusted": true,
+      "close": null,
+      "opener": false,
+      "panel": false,
+      "at": 2183.1999999284744
+    },
+    {
+      "selector": "[data-cf-pilot-controls] button:nth-of-type(1)",
+      "point": {
+        "x": 228,
+        "y": 479.609375
+      },
+      "type": "click",
+      "trusted": true,
+      "close": null,
+      "opener": false,
+      "panel": false,
+      "at": 2266.5
+    },
+    {
+      "selector": "[data-cf-pilot-controls] summary",
+      "point": {
+        "x": 228,
+        "y": 363.4375
+      },
+      "type": "click",
+      "trusted": true,
+      "close": null,
+      "opener": false,
+      "panel": false,
+      "at": 2348.6999999284744
+    },
+    {
+      "selector": "#objchip",
+      "point": {
+        "x": 270.1953125,
+        "y": 90.71875
+      },
+      "type": "click",
+      "trusted": true,
+      "close": null,
+      "opener": true,
+      "panel": false,
+      "at": 2466.100000023842
+    },
+    {
+      "selector": "#chpanel [data-pnx=\"ch\"]",
+      "point": {
+        "x": 335,
+        "y": 157
+      },
+      "type": "click",
+      "trusted": true,
+      "close": "ch",
+      "opener": false,
+      "panel": true,
+      "at": 3333
+    },
+    {
+      "selector": "#docksets",
+      "point": {
+        "x": 291,
+        "y": 810
+      },
+      "type": "click",
+      "trusted": true,
+      "close": null,
+      "opener": false,
+      "panel": false,
+      "at": 3415.399999976158
+    },
+    {
+      "selector": "[data-pref=\"size\"][data-value=\"fs-xl\"]",
+      "point": {
+        "x": 262.65625,
+        "y": 415
+      },
+      "type": "click",
+      "trusted": true,
+      "close": null,
+      "opener": false,
+      "panel": false,
+      "at": 3498.6999999284744
+    },
+    {
+      "selector": "[data-pref=\"tone\"][data-value=\"tone-max\"]",
+      "point": {
+        "x": 262.65625,
+        "y": 395
+      },
+      "type": "click",
+      "trusted": true,
+      "close": null,
+      "opener": false,
+      "panel": false,
+      "at": 3598.6999999284744
+    },
+    {
+      "selector": "#setpanel [data-pnx=\"set\"]",
+      "point": {
+        "x": 335,
+        "y": 169
+      },
+      "type": "click",
+      "trusted": true,
+      "close": "set",
+      "opener": false,
+      "panel": false,
+      "at": 3683.899999976158
+    },
+    {
+      "selector": "#objchip",
+      "point": {
+        "x": 270.1953125,
+        "y": 98.6875
+      },
+      "type": "click",
+      "trusted": true,
+      "close": null,
+      "opener": true,
+      "panel": false,
+      "at": 3765.899999976158
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "phone-pilot-before-scroll.png",
+      "sha256": "5faefa3c3fa1eba38de14f1c3d1fe433c717b2c8444d3e43290690fe87029899",
+      "clip": null
+    },
+    {
+      "path": "phone-pilot-header-visible.png",
+      "sha256": "7f5ad5b19215283dd3a995c1aa23a5abad02a8d8363f437fab54e26e12924ee0",
+      "clip": {
+        "x": 10,
+        "y": 122,
+        "width": 356,
+        "height": 65,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-pilot-header-text-hidden.png",
+      "sha256": "7f5ad5b19215283dd3a995c1aa23a5abad02a8d8363f437fab54e26e12924ee0",
+      "clip": {
+        "x": 10,
+        "y": 122,
+        "width": 356,
+        "height": 65,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-pilot-header-restored.png",
+      "sha256": "7f5ad5b19215283dd3a995c1aa23a5abad02a8d8363f437fab54e26e12924ee0",
+      "clip": {
+        "x": 10,
+        "y": 122,
+        "width": 356,
+        "height": 65,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-pilot-fault-transparent.png",
+      "sha256": "ba2ea1d78def03c930429ba9d512d75b3fe5b027b853549cc622b83fc6066746",
+      "clip": {
+        "x": 10,
+        "y": 122,
+        "width": 356,
+        "height": 65,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-pilot-fault-transparent-text-hidden.png",
+      "sha256": "96111505da62e9e1b3ef8bff8bd340fbbe3aaa173ab9562ebc7c40c335b91dab",
+      "clip": {
+        "x": 10,
+        "y": 122,
+        "width": 356,
+        "height": 65,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-pilot-header-control-restored.png",
+      "sha256": "7f5ad5b19215283dd3a995c1aa23a5abad02a8d8363f437fab54e26e12924ee0",
+      "clip": {
+        "x": 10,
+        "y": 122,
+        "width": 356,
+        "height": 65,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-pilot-after-restoration.png",
+      "sha256": "ca43a9954ea83694f0c460576f21c606a2752dd4a8c482e1fa79bde21d653add",
+      "clip": null
+    },
+    {
+      "path": "phone-current-before-scroll.png",
+      "sha256": "1d7c320a33d0a852fc8a7f3169a155f2e39ec9c585d677804a03ec5fb0e28046",
+      "clip": null
+    },
+    {
+      "path": "phone-current-header-visible.png",
+      "sha256": "fb6ef869226aaa7864d2a161d637c1317c839d8261174d69df248da793fb83b4",
+      "clip": {
+        "x": 10,
+        "y": 122,
+        "width": 356,
+        "height": 65,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-current-header-text-hidden.png",
+      "sha256": "fb6ef869226aaa7864d2a161d637c1317c839d8261174d69df248da793fb83b4",
+      "clip": {
+        "x": 10,
+        "y": 122,
+        "width": 356,
+        "height": 65,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-current-header-restored.png",
+      "sha256": "fb6ef869226aaa7864d2a161d637c1317c839d8261174d69df248da793fb83b4",
+      "clip": {
+        "x": 10,
+        "y": 122,
+        "width": 356,
+        "height": 65,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-current-header-control-restored.png",
+      "sha256": "fb6ef869226aaa7864d2a161d637c1317c839d8261174d69df248da793fb83b4",
+      "clip": {
+        "x": 10,
+        "y": 122,
+        "width": 356,
+        "height": 65,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-current-after-restoration.png",
+      "sha256": "f82a6f59605b272f3066aeeb0316a509404cc5e441046bbd7b8fc3cdfad1d0ca",
+      "clip": null
+    },
+    {
+      "path": "phone-current-large-max-before-scroll.png",
+      "sha256": "a5078c3b6707813eac4d9f11f81cd4338df42f8391be711cc2bde44687492b8c",
+      "clip": null
+    },
+    {
+      "path": "phone-current-large-max-header-visible.png",
+      "sha256": "db47eb218c80c64498a1330d2926579a950b699d550669b63465f686d0cee414",
+      "clip": {
+        "x": 10,
+        "y": 134,
+        "width": 356,
+        "height": 96,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-current-large-max-header-text-hidden.png",
+      "sha256": "db47eb218c80c64498a1330d2926579a950b699d550669b63465f686d0cee414",
+      "clip": {
+        "x": 10,
+        "y": 134,
+        "width": 356,
+        "height": 96,
+        "scale": 1
+      }
+    },
+    {
+      "path": "phone-current-large-max-header-restored.png",
+      "sha256": "26e4543b4b254900b17d5c201459813decad33bc00f58a5523c975c942cac9a4",
+      "clip": {
+        "x": 10,
+        "y": 134,
+        "width": 356,
+        "height": 96,
+        "scale": 1
+      }
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Fresh isolated expedition and native Charters opener/scroll/Close; pixel controls temporarily hide existing objective text and remove header paint only.",
+    "Six scoped phone/desktop style cases; not a layout certificate, physical-device check or human visual acceptance.",
+    "Coverage means no objective ink leaks into the independently cropped sticky title/Close band at the measured overlap; no broad UI/art audit."
+  ],
+  "origin": "http://127.0.0.1:53151",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  },
+  "pendingEvaluation": null,
+  "waiting": null,
+  "failure": "AssertionError [ERR_ASSERTION]: Restored header pixels changed\n\n60 !== 0\n\n    at probe (file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-header.mjs:65:457)\n    at async file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_CHARTER_HEADER_PREVIEW_20260908/native-header.mjs:75:21",
+  "failureState": {
+    "documentToken": "032012a2-7943-4dec-9f24-097a7262a42b",
+    "bodyClass": "fs-xl tone-max panel-open",
+    "pilot": false,
+    "viewport": [
+      390,
+      844,
+      2
+    ],
+    "mode": "system",
+    "persistence": {
+      "schema": "cf-v2-app-persistence/v1",
+      "ready": true,
+      "documentToken": "032012a2-7943-4dec-9f24-097a7262a42b",
+      "bootKind": "fresh-v5",
+      "hold": null,
+      "protectedDetail": null,
+      "authorityBootKind": "absent",
+      "seedBootstrapPending": false,
+      "bootRouteRepairPending": false,
+      "productBootstrapPending": false,
+      "engineeringBootstrapPending": false,
+      "ownershipBootstrapPending": false,
+      "ownershipV2BootstrapPending": false,
+      "visibilityOverrideHidden": false,
+      "lastOutcome": "committed:5",
+      "hideWitness": null,
+      "heartbeatStorageFault": null,
+      "revisionVerificationFault": null,
+      "heartbeatRunning": true,
+      "convergenceReloadScheduled": false,
+      "convergenceReloadHold": {
+        "schema": "cf-v2-product-action-hold-diagnostics/v1",
+        "phase": "idle",
+        "operation": null,
+        "sequence": 0
+      },
+      "leaseReadCount": 5,
+      "revisionReadCount": 1,
+      "mutationBlocked": false,
+      "mutationBlockCount": 0,
+      "mutationBlockWitness": null,
+      "importPhase": null,
+      "importRace": null,
+      "runtime": {
+        "schema": "cf-v2-f4-runtime/v1",
+        "revision": 5,
+        "visible": true,
+        "answerable": true,
+        "leaseOwned": true,
+        "staleBlocked": false,
+        "leaseHeartbeat": 0,
+        "activePlayMs": 3844,
+        "accruing": true,
+        "sessionSeed": 4133073698,
+        "sessionOrdinal": 0,
+        "sessionDraws": {},
+        "commits": 4,
+        "staleWrites": 0,
+        "leaseLosses": 0
+      },
+      "ecology": {
+        "schema": "cf-v2-ecology-epoch-edge/v1",
+        "publishedEpoch": 0,
+        "candidateEpoch": 0,
+        "activePlayOriginMs": 0,
+        "observedActivePlayMs": 3844,
+        "edgeDue": false,
+        "autoCheckpointDue": false,
+        "inFlight": false,
+        "stagedIntent": null,
+        "stagedEpoch": null,
+        "retrySuppressedEpoch": null,
+        "lastCommittedRevision": 5,
+        "stages": 2,
+        "commits": 2,
+        "publications": 0,
+        "rejections": 0,
+        "invalidStageCompletions": 0,
+        "projection": {
+          "state": "current",
+          "publishedEpoch": 0,
+          "projectedEpoch": 0,
+          "refreshEpoch": null,
+          "refreshSerial": null
+        },
+        "projectionRefreshesStarted": 0,
+        "projectionRefreshesCompleted": 0,
+        "projectionRefreshesFailed": 0,
+        "projectionSuppressions": 0,
+        "invalidProjectionCompletions": 0,
+        "projectionDirty": false,
+        "projectionSuppressed": false,
+        "checkpointInFlight": false,
+        "lastOutcome": "steady:0:revision:5"
+      }
+    },
+    "panel": "ch",
+    "scrollTop": 188,
+    "forcedColors": false,
+    "inputs": [
+      {
+        "type": "click",
+        "trusted": true,
+        "close": null,
+        "opener": false,
+        "panel": false,
+        "at": 902.7999999523163
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": null,
+        "opener": true,
+        "panel": false,
+        "at": 1004.6999999284744
+      },
+      {
+        "type": "wheel",
+        "trusted": true,
+        "close": null,
+        "opener": false,
+        "panel": true,
+        "at": 1297.6000000238419
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": "ch",
+        "opener": false,
+        "panel": true,
+        "at": 2102.5
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": null,
+        "opener": false,
+        "panel": false,
+        "at": 2183.1999999284744
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": null,
+        "opener": false,
+        "panel": false,
+        "at": 2266.5
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": null,
+        "opener": false,
+        "panel": false,
+        "at": 2348.6999999284744
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": null,
+        "opener": true,
+        "panel": false,
+        "at": 2466.100000023842
+      },
+      {
+        "type": "wheel",
+        "trusted": true,
+        "close": null,
+        "opener": false,
+        "panel": true,
+        "at": 2663.600000023842
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": "ch",
+        "opener": false,
+        "panel": true,
+        "at": 3333
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": null,
+        "opener": false,
+        "panel": false,
+        "at": 3415.399999976158
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": null,
+        "opener": false,
+        "panel": false,
+        "at": 3498.6999999284744
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": null,
+        "opener": false,
+        "panel": false,
+        "at": 3598.6999999284744
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": "set",
+        "opener": false,
+        "panel": false,
+        "at": 3683.899999976158
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "close": null,
+        "opener": true,
+        "panel": false,
+        "at": 3765.899999976158
+      },
+      {
+        "type": "wheel",
+        "trusted": true,
+        "close": null,
+        "opener": false,
+        "panel": true,
+        "at": 3980.6999999284744
+      },
+      {
+        "type": "wheel",
+        "trusted": true,
+        "close": null,
+        "opener": false,
+        "panel": true,
+        "at": 4196.699999928474
+      }
+    ]
+  },
+  "failedEvaluation": null,
+  "endedAt": "2026-09-08T09:45:34.098Z"
+}

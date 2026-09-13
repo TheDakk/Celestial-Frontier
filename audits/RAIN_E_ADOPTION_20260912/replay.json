@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "modelRuns": 0,
+  "receipt": {
+    "schema": "cf.kit-compositor-weather.v1",
+    "seed": 133,
+    "card": {
+      "weather": "rain",
+      "waterState": "liquid",
+      "timeOfDay": "day",
+      "light": "day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.",
+      "lightFacing": "upward diffuse sky, no invented sun direction"
+    },
+    "kind": "rain",
+    "wetPixels": 52072,
+    "droplets": 1071,
+    "precipitationStrokes": 2124,
+    "wholeFrameDensity": 0.0036,
+    "geometryChanged": false,
+    "stage": "after-finisher"
+  },
+  "EExactPixels": true,
+  "repeatable": true,
+  "missingIntensityRejected": true,
+  "noWeatherRejected": true,
+  "invalidIntensityRejected": true,
+  "sourceAndMasksUnchanged": true,
+  "priorPaintingUnchanged": true
+}

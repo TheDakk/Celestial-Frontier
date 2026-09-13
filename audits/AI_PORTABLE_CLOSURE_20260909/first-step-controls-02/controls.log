@@ -1,0 +1,22 @@
+✔ real harness owns eight serial workers, stops after the diagnostic result, restores constructor and never returns an image (15.99225ms)
+✔ native device failure, wrong worker target and unexpected painting refuse with restored global ownership (0.64675ms)
+✔ same replay rejects missing, reordered, stale, cross-worker and faulted evidence (5.03225ms)
+✔ replay refuses a terminal, step or cleanup moved before its actual prerequisite (4.339083ms)
+✔ actual diagnostic worker executes one step at the exact shape, retains four-step sigmas and releases before a distinct partial result (135.0135ms)
+✔ ordinary worker preserves four runs, original progress/completion type and math without diagnostic messages (104.170834ms)
+✔ invalid diagnostic mode/schema/model/profile/seed/schedule/shapes are refused before any GPU request (82.873833ms)
+✔ nonfinite float16 embeddings and reference data are refused before allocation or model creation (28.67075ms)
+✔ deferred actual run and readback promises expose different durable boundaries (112.4775ms)
+✔ run rejection cannot be reported as readback or completion and preserves the failed boundary (73.677708ms)
+✔ readback rejection is distinct from completed execution and cannot publish partial success (72.4935ms)
+✔ device loss or repeated uncaptured errors while run is pending produce one bounded fault and prevent late success (147.625083ms)
+✔ failed release cannot become diagnostic completion after one executed step (113.667792ms)
+✔ the same outcome oracle rejects an actual missing-boundary mutant and a removed first-step stop (287.848959ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1210.346084

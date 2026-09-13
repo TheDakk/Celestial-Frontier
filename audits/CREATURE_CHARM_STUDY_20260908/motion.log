@@ -1,0 +1,40 @@
+00:00.383  blend            | Read blend: "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-canid-20260908/canid/wolf-canid-v2/wolf-canid.blend"
+00:00.503  blend            | Read blend: "/private/tmp/cf-creature-charm-20260908/first/natural/wolf-charm.blend"
+00:03.305  blend            | Read blend: "/private/tmp/cf-creature-charm-20260908/first/storybook/wolf-charm.blend"
+00:07.496  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/000.png'
+00:08.723  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/001.png'
+00:09.933  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/002.png'
+00:11.521  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/003.png'
+00:12.764  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/004.png'
+00:14.114  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/005.png'
+00:15.257  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/006.png'
+00:16.354  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/007.png'
+00:17.722  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/008.png'
+00:19.238  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/009.png'
+00:20.609  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/010.png'
+00:22.239  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/011.png'
+00:23.509  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/012.png'
+00:24.953  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/013.png'
+00:26.069  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/014.png'
+00:27.192  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/015.png'
+00:28.268  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/016.png'
+00:29.081  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/017.png'
+00:30.044  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/018.png'
+00:31.042  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/019.png'
+00:32.167  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/020.png'
+00:33.496  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/021.png'
+00:34.813  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/022.png'
+00:36.086  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/023.png'
+00:37.348  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/024.png'
+00:38.358  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/025.png'
+00:39.111  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/026.png'
+00:40.448  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/027.png'
+00:41.642  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/028.png'
+00:43.050  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/029.png'
+00:44.310  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/030.png'
+00:45.628  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/031.png'
+00:46.897  render           | Saved: '/private/tmp/cf-creature-charm-20260908/motion-check/frames/032.png'
+CF_SAVED_CHARM_MOTION PASS
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit

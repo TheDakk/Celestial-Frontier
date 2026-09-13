@@ -1,0 +1,24 @@
+{
+  "kind": "Transcribed independent read-only review; not an execution log",
+  "recordedAt": "2026-09-09T07:41:13.778307+00:00",
+  "commit": "e7157ec204f7f2bec5934fd4b80344a9e0d9e298",
+  "sources": {
+    "port/v2/apps/game/src/scene-image-cache-plan.ts": "6c3da36af08c7330e452ec1f9bfb51f3559e845b4791ecb3bd1d26fa9eba2c89",
+    "port/v2/tests/scene-image-cache-plan.test.ts": "484fe4f0d30e80f084961618ddd4dbce498a6b910834522f317ef5eef153f25f"
+  },
+  "outcome": "No actionable findings",
+  "reviewed": [
+    "Origin bytes counted once plus candidate/staging/future reserves",
+    "Maximum of scene-cap and total-quota reclaim requirements",
+    "Protected originals/non-scene bytes and exact surviving copies",
+    "Consistent copy identities and deterministic LRU",
+    "Paused outputs contain no partial removal proposal",
+    "Safe integer guards and restored/outcome controls"
+  ],
+  "limits": [
+    "Caller supplied trusted inventory/copy evidence",
+    "Advisory revisions only; no atomic reservation or deletion",
+    "No device qualification"
+  ],
+  "priorFinding": "Conflicting hash/length assertions for one surviving copy were corrected before first tests."
+}

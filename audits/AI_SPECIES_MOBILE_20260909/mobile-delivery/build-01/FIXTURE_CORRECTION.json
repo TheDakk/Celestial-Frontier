@@ -1,0 +1,9 @@
+{
+  "classification": "test fixture setup failure",
+  "firstResult": "0 PASS / 8 before-hook failures; HTTP and mutant cases not reached",
+  "cause": "fs.cp with errorOnExist:true rejects the already-existing directory returned by mkdtemp.",
+  "correction": "Copy into a new package child under the fresh temporary parent; retain errorOnExist:true/force:false, same immutable source package and all assertions.",
+  "productChanged": false,
+  "buildRepeated": false,
+  "followingPureControlsInFirstRun": "not-run"
+}

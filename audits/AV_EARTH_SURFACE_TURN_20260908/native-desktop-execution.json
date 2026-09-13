@@ -1,0 +1,17 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "earth-surface-turn-fresh-desktop",
+    "--",
+    "node",
+    "audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop-runner.mjs",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/earth-turn-mesh-pipe-dist-20260908",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_TURN_20260908/native-desktop"
+  ],
+  "startedAt": "2026-09-08T12:46:12.061300+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 21.366
+}

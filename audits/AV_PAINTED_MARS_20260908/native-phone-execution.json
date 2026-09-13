@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "audits/AV_PAINTED_MARS_20260908/native-painted-mars-runner.mjs",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/painted-mars-evidence-dist-20260908",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_20260908/native-phone",
+    "phone"
+  ],
+  "startedAt": "2026-09-08T14:37:32.061627+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 4.022
+}

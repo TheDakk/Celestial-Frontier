@@ -1,0 +1,55 @@
+{
+  "schema": "cf-painted-civet-study-asset/v2",
+  "path": "civet-selected-v1.webp",
+  "sha256": "186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365",
+  "bytes": 179816,
+  "width": 768,
+  "height": 512,
+  "alphaBounds": {
+    "x0": 14,
+    "y0": 102,
+    "x1": 755,
+    "y1": 415
+  },
+  "contactY": 413,
+  "civetPaws": [
+    {
+      "x0": 0.3515625,
+      "y0": 0.767578125,
+      "x1": 0.4231770833333333,
+      "y1": 0.8125
+    },
+    {
+      "x0": 0.4231770833333333,
+      "y0": 0.767578125,
+      "x1": 0.5013020833333334,
+      "y1": 0.8125
+    },
+    {
+      "x0": 0.5572916666666666,
+      "y0": 0.767578125,
+      "x1": 0.6328125,
+      "y1": 0.8125
+    },
+    {
+      "x0": 0.6328125,
+      "y0": 0.767578125,
+      "x1": 0.7135416666666666,
+      "y1": 0.8125
+    }
+  ],
+  "pawSolidCounts": [
+    772,
+    723,
+    753,
+    869
+  ],
+  "transparentPixels": 281825,
+  "opaquePixels": 106076,
+  "partialPixels": 5315,
+  "sourceMaster": "selected-alpha-v1/civet-selected-master.png",
+  "sourceMasterSha256": "d353ddb8664e27c68ac83085abc70c78393d52a137241720607d6f4e26564cbc",
+  "selection": "Calmer original painted RGB selected after new reference-led generation was rejected for busy highlights and matte holes. Nose alpha repaired from actual source contour/luminance; all RGB preserved. Scene treatment supplies diffuse cohesion.",
+  "alphaAuthority": "Nick explicitly authorized ImageMagick alpha extraction",
+  "productionAcceptance": false
+}

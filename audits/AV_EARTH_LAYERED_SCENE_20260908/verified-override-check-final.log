@@ -1,0 +1,5 @@
+
+> cf-v2@0.0.0 overridecheck
+> node tools/overridecheck.mjs
+
+overridecheck: earth-resident-layer.ts@1687 QUAD2_SPEC route table uses unsupported member Civet — the PARSER is broken

@@ -1,0 +1,18 @@
+{
+  "source": "/Users/nick/.codex/generated_images/01a08300-a4ef-7a60-a9df-aabf7a21aaab/exec-e101b9dc-2003-4d86-9813-a88b12d575eb.png",
+  "path": "audits/STATIC_LANDING_PORTRAIT_20260908/civet-landing-original.png",
+  "sha256": "e7ef04af6c5d75bad9e41a26082f814a95893928e814309dd8a720e4fa2a2740",
+  "bytes": 2885444,
+  "dimensions": [
+    1875,
+    839
+  ],
+  "mode": "built-in image_gen reference-guided edit",
+  "status": "CANDIDATE_PENDING_NATIVE_AND_HUMAN_REVIEW",
+  "readback": "exact",
+  "inputs": [
+    "port/v2/apps/game/src/assets/painted/earth-riverbank-v1.webp",
+    "audits/CREATURE_SCENE_COHESION_20260908/civet-selected-v1.webp",
+    "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png"
+  ]
+}

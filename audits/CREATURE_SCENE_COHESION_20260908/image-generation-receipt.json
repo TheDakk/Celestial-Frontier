@@ -1,0 +1,18 @@
+{
+  "schema": "cf-civet-reference-refinement/v1",
+  "source": "/Users/nick/.codex/generated_images/01a08300-a4ef-7a60-a9df-aabf7a21aaab/exec-7312f176-99b2-47a2-9dee-54335c223659.png",
+  "localCopy": "audits/CREATURE_SCENE_COHESION_20260908/civet-reference-refinement-original.png",
+  "bytes": 2228141,
+  "sha256": "c2ad0568182b7a4b60a9a569c65e6f8292e8a011209d1d5bcea6f4a37a3b4ece",
+  "width": 1536,
+  "height": 1024,
+  "bitDepth": 8,
+  "pngColorType": 2,
+  "alphaPresentInIHDR": false,
+  "prompt": "IMAGE_EDIT_PROMPT.txt",
+  "references": [
+    "../CREATURE_PAINTED_CIVET_20260908/alpha-v3/civet-painted-v1.png",
+    "../PAINTED_EARTH_AND_ALIEN_FLORA_20260908/earth-flora-fauna-reference.png",
+    "../CREATURE_PAINTED_CIVET_20260908/baseline/earth-background-original.webp"
+  ]
+}

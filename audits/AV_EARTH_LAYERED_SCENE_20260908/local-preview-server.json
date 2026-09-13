@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-09-08T17:22:20.979Z",
+  "pid": 84380,
+  "root": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-earth-layered-local-20260908",
+  "url": "http://127.0.0.1:58517/?livingvista=1",
+  "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "sourceState": "dirty-local-only",
+  "publishable": false,
+  "contentSha256": "3fbcdcf310d03e6904c40b76e73c29a68381cb7b2908e44570743b576ac878ed",
+  "manifestSha256": "e3b12cd3c0264adc9b7727592b72c0b860bd1a710c39e0f87d0ce1d01bc8a5cb"
+}

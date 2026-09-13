@@ -1,0 +1,21 @@
+✔ actual four-stage flow publishes exact decoded pixels only after every worker retires (6.708833ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: false) (1.37825ms)
+✔ cancel during pending reference fetch cannot launch an encoder (fetch ignores abort: true) (1.473209ms)
+✔ gpu-error progress is terminal; a late completion cannot produce another stage or painting (1.004833ms)
+✔ text timeout terminates the exact worker and blocks publication (0.674542ms)
+✔ encode timeout terminates the exact worker and blocks publication (1.006375ms)
+✔ denoise timeout terminates the exact worker and blocks publication (1.024042ms)
+✔ decode timeout terminates the exact worker and blocks publication (0.899625ms)
+✔ a repeated generation rejects while the first owns its worker and controls (1.35425ms)
+✔ reference-disabled generation never fetches or decodes reference data (0.952709ms)
+✔ nonfinite decoder pixels fail before canvas publication despite successful worker completion (1.041458ms)
+✔ an explicit reference matte precedes drawing and its prepared tensor is separately hashed (0.642583ms)
+✔ invalid reference matte fails before starting the encoder (0.53625ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 80.522

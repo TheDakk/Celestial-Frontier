@@ -1,0 +1,16 @@
+{
+  "schema": "cf.portable-closure-startup.v1",
+  "objective": "Resolve staged signing and portable six-reference inference; prepare verified local block32 derivation if supported by measurements.",
+  "app": "OpenAI/Codex",
+  "os": "macOS",
+  "root": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "branch": "openai/mac",
+  "upstream": "origin/openai/mac",
+  "head": "f6eed9b4c65a1aafc0ddd19f0be73851b3c87d13",
+  "signingReceiptSha256": "4192a8a5cf94c905c8e2cc2435d0d137b830a9be5c90ecd880a4c04a34a66cc7",
+  "signingOutcome": "Configured 1Password helper succeeded; prior ssh-keygen override failures retained. No persistent signing/security changes. Tool requested PTY; Python heredoc stdin probe is false, so do not claim stdin TTY caused success.",
+  "startupReceiptReused": "audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json",
+  "sameUninterruptedSession": true,
+  "hostedWrites": 0,
+  "phoneQualification": "Pending actual model/iOS/device evidence; question asked, no reply yet."
+}

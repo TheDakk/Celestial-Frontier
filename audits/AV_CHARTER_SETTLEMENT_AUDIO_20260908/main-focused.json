@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "tests/pilot-settlement-main-wiring.test.ts",
+    "tests/starter-charter-binder-main-wiring.test.ts",
+    "tests/arc9-main-wiring.test.ts",
+    "tests/progression-ceremony-main-wiring.test.ts"
+  ],
+  "exitCode": 0,
+  "seconds": 0.4949309825897217
+}

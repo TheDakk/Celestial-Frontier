@@ -1,0 +1,39 @@
+{
+  "schema": "cf.local-ai-runtime-deployment.v1",
+  "staticPrefix": "/__local_ai/",
+  "documents": {
+    "requiredHeaders": {
+      "Cross-Origin-Opener-Policy": "same-origin",
+      "Cross-Origin-Embedder-Policy": "require-corp"
+    },
+    "secureContextRequired": true
+  },
+  "runtimeAssets": {
+    "requiredHeaders": {
+      "Cross-Origin-Resource-Policy": "same-origin",
+      "X-Content-Type-Options": "nosniff"
+    },
+    "mime": {
+      ".mjs": "text/javascript",
+      ".wasm": "application/wasm",
+      ".json": "application/json",
+      ".png": "image/png"
+    },
+    "preserveRelativePaths": true,
+    "immutableContentOnly": true,
+    "htmlFallbackForMissingAssets": false
+  },
+  "applicationRequirements": [
+    "Resolve runtime.json/worker/reference at the same game origin.",
+    "Do not enqueue inference until the exact pinned OPFS model is verified; fill modelFiles only with verified Blob URLs.",
+    "Do not fall back to developer-cache URLs or auto-download weights.",
+    "Integrate these bytes into the complete application inventory and unchanged 128 MiB admission check.",
+    "Measure complete current/retained builds against the unchanged 256 MiB retained-update constraint.",
+    "Verify the real application CSP: native WASM/glue compilation and Blob data access may need explicit policy support.",
+    "Version asset URLs with the external manifest SHA; do not serve changed bytes under an accepted immutable identity."
+  ],
+  "serviceWorkerIncluded": false,
+  "wholeAppAdmissionQualified": false,
+  "retainedUpdateQualified": false,
+  "phoneQualified": false
+}

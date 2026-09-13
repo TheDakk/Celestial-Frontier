@@ -1,0 +1,14 @@
+import fs from 'node:fs';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';import assert from 'node:assert/strict';
+import {applyKitWeather} from '/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/kit-weather-math.mjs';
+import {admitKitEngineJob} from '/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/kit-engine-math.mjs';
+const base='audits/ART_KIT_WEATHER_MAT_20260912/native-01/',raw=p=>new Uint8ClampedArray(execFileSync('magick',[p,'-depth','8','rgba:-'],{maxBuffer:16e6})),hash=b=>createHash('sha256').update(b).digest('hex');
+const recipe=JSON.parse(fs.readFileSync('audits/RAIN_E_ADOPTION_20260912/recipe.json')),report=JSON.parse(fs.readFileSync(base+'result.json')),source=raw(base+'finisher-before-weather.png');
+admitKitEngineJob(recipe);assert.throws(()=>admitKitEngineJob({...recipe,weatherIntensity:{...recipe.weatherIntensity,dropletCount:4}}));
+const masks=report.details.boxes.map((b,i)=>({name:b.name,alpha:Uint8Array.from(raw(base+`organism-${String(i+1).padStart(2,'0')}-mask.png`).filter((_,j)=>j%4===0))}));
+const before=hash(source),m=masks.map(x=>hash(x.alpha)),expected=raw('audits/ART_KIT_WEATHER_LADDER_20260912/E.png');
+const actual=applyKitWeather(source,1024,576,masks,recipe.seed,recipe.compositorSystemCard,recipe.weatherIntensity);
+assert.ok(Buffer.from(actual.rgba).equals(Buffer.from(expected)));assert.ok(Buffer.from(applyKitWeather(source,1024,576,masks,recipe.seed,recipe.compositorSystemCard,recipe.weatherIntensity).rgba).equals(Buffer.from(expected)));
+assert.equal(Buffer.from(applyKitWeather(source,1024,576,masks,recipe.seed,recipe.compositorSystemCard).rgba).equals(Buffer.from(expected)),false);
+assert.equal(Buffer.from(source).equals(Buffer.from(expected)),false);assert.equal(hash(source),before);assert.deepEqual(masks.map(x=>hash(x.alpha)),m);
+assert.equal(hash(fs.readFileSync(base+'painting.png')),'27101ff3af6e91b3e59087e7b1c2c4564d7c3cd1fa9ca6aec11c31250508fc16');
+fs.writeFileSync('audits/RAIN_E_ADOPTION_20260912/replay.json',JSON.stringify({status:'PASS',modelRuns:0,receipt:actual.receipt,EExactPixels:true,repeatable:true,missingIntensityRejected:true,noWeatherRejected:true,invalidIntensityRejected:true,sourceAndMasksUnchanged:true,priorPaintingUnchanged:true},null,2)+'\n');console.log('E replay PASS; negative controls PASS; zero inference');

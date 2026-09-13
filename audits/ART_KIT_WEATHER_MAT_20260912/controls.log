@@ -1,0 +1,18 @@
+✔ one-pixel erosion and sampled inward despill remove injected pink edge without recolouring the interior (1.787625ms)
+✔ premultiplied sampling cannot carry invisible magenta into a scaled edge (0.167ms)
+✔ latent interiors stay anchored while boundary and ground remain editable; no-mask control fails (3.009667ms)
+✔ prepared profile meets scale relationships and refuses the former unmasked recipe (1.262791ms)
+✔ 8px erosion opens additional boundary area; unchanged 4px control fails the wider-edge criterion (2.050625ms)
+✔ two low runner instances share one organism mask; single-instance control fails (8.360584ms)
+✔ weather is repeatable by recipe seed, darkens/desaturates fur, preserves inputs/alpha, and covers the entire frame (10.430959ms)
+✔ system-card weather, water, time and light control effects; missing/ambiguous cards fail (3.068458ms)
+✔ actual engine skips organism inference and runs one protected finisher; all four sessions stay warm (359.744667ms)
+✔ same reuse oracle rejects actual engine with its session cache bypassed (332.719ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 738.144125

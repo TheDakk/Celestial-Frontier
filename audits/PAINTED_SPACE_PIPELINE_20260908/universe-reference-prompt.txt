@@ -1,0 +1,23 @@
+REFERENCE LOCK
+Use the attached Celestial Frontier landscape only to inherit its rich hand-painted science-fiction visual language, material depth and selective detail. Do not copy the Wolf, explorer, ship, landscape composition or repeat the same ochre world. This is a PROVISIONAL visual reference sheet requested for comparison, not approved production art or a procedural runtime output.
+
+STYLE
+Original painted space exploration, visible oil brushwork, believable planetary forms, carefully graded atmospheric edges and shadows. Rich mineral colour with controlled luminous accents against deep blue-charcoal space. Beautiful astronomical variety without neon rainbow overload, flat vector icons, glossy product CGI or photographic collage.
+
+LAYOUT
+A clean landscape reference sheet, 4 columns by 2 rows, EIGHT separated object studies of equal visual importance. Thin charcoal gutters and consistent near-black opaque space backgrounds. No text, no captions, no symbols, no frames within frames. Each object fully inside its cell with generous margins. Maintain a consistent light from upper left for externally illuminated bodies; self-luminous stars glow from their own surfaces. Show actual distinct silhouettes, including rings where specified. These are proposal archetypes, not claims of exact seeded instances. Approximate 1536x1024 or larger.
+
+TOP ROW LEFT TO RIGHT
+1. TERRAN PLANET: round blue-green ocean world with irregular ochre/olive continents, thin layered white weather systems, subtle azure atmosphere and readable night-side terminator; richly painted but not a copy of Earth.
+2. RINGED GAS GIANT: broad cream, muted copper and charcoal atmospheric bands with one distinct oval storm, wide tilted dusty ivory rings, planet correctly occluding rear rings and a physically convincing ring shadow. No solid continents.
+3. ICE WORLD: pearl-white and deep cyan sphere, giant ice fractures, a few slate exposed regions, pale blue limb, crisp but restrained lighting; no oceans or green vegetation.
+4. LAVA WORLD: dark red-black crust sphere crossed by a few connected molten fissures, cooled basalt plates, narrow ember glow, believable round volume; no decorative rune pattern.
+
+BOTTOM ROW LEFT TO RIGHT
+5. GOLDEN MAIN-SEQUENCE STAR: granular gold-ivory self-luminous orb, irregular surface texture and restrained painterly corona; no planetary cast shadow or halo-obscured face.
+6. PROTOSTAR: warm central forming star within a broad thin dusty copper accretion disk, outer disk dark and inner regions luminous, angled shallow three-quarter; clearly different from the ringed gas planet, no planet or extra companion.
+7. BLACK HOLE: dark central silhouette wrapped by a luminous tilted accretion disk with the far disk visibly bending above and below from lensing; legible restrained gold-white plasma, black center, no portal/runes or purple fantasy vortex.
+8. SPIRAL GALAXY: a distant entire spiral galaxy in an angled disc, warm ivory core, two broad soft blue-grey arms, patchy rust dust lanes and subtle scattered star-forming knots; full silhouette kept inside its cell and recognizably immense, not a gas cloud ball.
+
+TECHNICAL OUTPUT
+A single opaque full-colour PNG. No transparency or magenta extraction, no checkerboard, no labels, no starfield clutter over the objects, no text or watermarks. Individual surfaces must remain legible at small reference-sheet size. Do not repeat one planet eight times. This sheet reviews silhouettes, palette, light and painted treatment; it is not a physically-scaled orbital scene or a usable layered sprite atlas.

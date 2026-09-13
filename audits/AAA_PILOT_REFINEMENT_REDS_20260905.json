@@ -1,0 +1,15 @@
+{
+  "schema": "cf-pilot-refinement-reds/v1",
+  "hostedAttempts": 0,
+  "source": "72d1be5c0c9bfa7e6fa9aa1e20601496b066ecd2",
+  "profile": "tracked-input develop",
+  "testResult": {
+    "filesPassed": 308,
+    "testsPassed": 3239,
+    "skipped": 1
+  },
+  "failedStage": "tsc --noEmit --noUnusedLocals",
+  "cause": "New pilot test explicitly assigned undefined to an exact optional field; the omitted-binding behavior passed at runtime but the fixture was not type-correct.",
+  "correction": "Omit vistaBinding from the test snapshot and retain absent-binding fallback assertions. No product or authority change.",
+  "retry": "No unchanged retry. Signed test-only successor required."
+}

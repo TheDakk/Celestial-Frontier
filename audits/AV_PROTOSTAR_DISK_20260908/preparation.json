@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "steps": [
+    {
+      "name": "draft-pin",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PROTOSTAR_DISK_20260908/draft-pin.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PROTOSTAR_DISK_20260908/draft-authority.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.435
+    },
+    {
+      "name": "producer-build",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PROTOSTAR_DISK_20260908/producer.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 2.502
+    },
+    {
+      "name": "producer-refresh",
+      "command": [
+        "node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PROTOSTAR_DISK_20260908/refresh-producer.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 0.045
+    },
+    {
+      "name": "develop-profile",
+      "command": [
+        "node",
+        "port/v2/tools/check-profile.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 0,
+      "seconds": 48.536
+    },
+    {
+      "name": "root-validation",
+      "command": [
+        "node",
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "seconds": 12.106
+    }
+  ]
+}

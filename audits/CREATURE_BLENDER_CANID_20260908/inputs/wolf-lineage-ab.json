@@ -1,0 +1,485 @@
+{
+  "schema": "cf.creature-blender-phenotype/v1",
+  "id": "wolf-lineage-ab",
+  "genome": {
+    "_anchorVal": 0.73,
+    "_earthBlend": "Wolf",
+    "_earthBlendKingdom": "fauna",
+    "_src": {
+      "accent": 0,
+      "behavior": 1,
+      "body": 1,
+      "color": 1,
+      "detail": 1,
+      "diet": 0,
+      "eyes": 1,
+      "form": 0,
+      "habitat": 0,
+      "head": 0,
+      "heat": 1,
+      "kingdom": 0,
+      "limbs": 0,
+      "loco": 1,
+      "pattern": 0,
+      "size": 0,
+      "skin": 0,
+      "tail": 0,
+      "trait": 1
+    },
+    "accent": 1,
+    "behavior": 7,
+    "body": 11,
+    "color": 11,
+    "detail": 9,
+    "diet": 1,
+    "eyes": 3,
+    "form": 15,
+    "gen": 1,
+    "habitat": 7,
+    "head": 9,
+    "heat": 0,
+    "kingdom": "fauna",
+    "limbs": 0,
+    "loco": 12,
+    "lumin": false,
+    "parents": [
+      792844710,
+      2782513550
+    ],
+    "pattern": 7,
+    "seed": 251979854,
+    "size": 3,
+    "skin": 8,
+    "tail": 3,
+    "trait": 21
+  },
+  "speciesVisualKey": "[\"object\",[[\"_anchorVal\",[\"number\",\"0.73\"]],[\"_earthBlend\",[\"string\",\"Wolf\"]],[\"_earthBlendKingdom\",[\"string\",\"fauna\"]],[\"_src\",[\"object\",[[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"1\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"0\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"1\"]]]]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"11\"]],[\"color\",[\"number\",\"11\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"0\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",false]],[\"parents\",[\"array\",[[\"number\",\"792844710\"],[\"number\",\"2782513550\"]]]],[\"pattern\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"251979854\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"21\"]]]]",
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/hybridmatrixaudit.ts",
+      "bytes": 62780,
+      "sha256": "c826b6ca714e9c33d8d8fa458b4b1da5aae8fff4da4cc7d1feace127883fda9d"
+    },
+    {
+      "path": "port/v2/apps/game/src/pilot-specimens.ts",
+      "bytes": 5219,
+      "sha256": "c9c33619b55e69663740332237f7b1f4e9710bd633f6b3f83063e608f8550ef2"
+    },
+    {
+      "path": "port/v2/packages/art/src/birdoverrides.ts",
+      "bytes": 9167,
+      "sha256": "48ffa589f2273f0f29fd85df1f05fd070477ade70f1cdeb7698f5321e5702dc7"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides.ts",
+      "bytes": 253580,
+      "sha256": "9e109fea1bda4d312eb733f8aa56aacba67ab0ceb79a6a8d9228bec6bc118694"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides2.ts",
+      "bytes": 235945,
+      "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides3.ts",
+      "bytes": 153673,
+      "sha256": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec"
+    },
+    {
+      "path": "port/v2/packages/art/src/invertoverrides.ts",
+      "bytes": 231622,
+      "sha256": "c0a76508b48d6f97793f37d9962e6140242ef9229a168ef6f538508d4ecaf746"
+    },
+    {
+      "path": "port/v2/packages/art/src/proceduraloverrides.ts",
+      "bytes": 13174,
+      "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be"
+    },
+    {
+      "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
+      "bytes": 358210,
+      "sha256": "baa8df44c485c0febaf1c8d05579d846a4c3b2114454c7e42d1c4177a4703e55"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesidentity.ts",
+      "bytes": 3190,
+      "sha256": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesoverrides.ts",
+      "bytes": 125871,
+      "sha256": "fb51a52caaeba9c0295409d5a6cf03293d0750b585171699c1ff2d38e6363353"
+    },
+    {
+      "path": "port/v2/packages/art/test/familyspread.test.ts",
+      "bytes": 4066,
+      "sha256": "f73e972d3efa85e3398d767b8eb4fc4b5364b41d53cdcb9989c9b1729cc88db3"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
+      "bytes": 6433,
+      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
+      "bytes": 13811,
+      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
+      "bytes": 4570,
+      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/index.ts",
+      "bytes": 3281,
+      "sha256": "eee2058546ab009b6b33376bad1005d6a597bd2b336506851d9be562d8cbef61"
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "bytes": 13307,
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7"
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "bytes": 3639,
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "bytes": 20728,
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "port/v2/tools/creature-blender-export.mjs",
+      "bytes": 18851,
+      "sha256": "22e85235cb3d974030ec3fad40cb3223720841e118da6fe59218352948da21ba"
+    }
+  ],
+  "route": {
+    "kind": "reviewed-lineage",
+    "kingdom": "fauna",
+    "name": "Wolf",
+    "painter": "faunaQuadruped → faunaMammalC → faunaResetCanidC"
+  },
+  "morphology": {
+    "kind": "canid-c1",
+    "spec": {
+      "depth": 0.1377,
+      "ears": "large",
+      "family": "canid",
+      "hue": "#7d7f86",
+      "jaw": "broad",
+      "legs": 0.155,
+      "len": 0.2033,
+      "mammalCPlan": "canid-c1",
+      "muzzle": 0.46,
+      "muzzleHue": "#cac5b8",
+      "neck": 0.08,
+      "tail": "bushy",
+      "tailTip": "#241f1d"
+    },
+    "coordinates": {
+      "space": "painter-normalized",
+      "canvasSize": 440,
+      "x": "right",
+      "y": "down",
+      "fittedRaster": false
+    },
+    "proportions": {
+      "groundY": 0.805,
+      "bodyW": 0.368,
+      "bodyH": 0.15147,
+      "legLen": 0.16275,
+      "left": 0.275,
+      "right": 0.643,
+      "bodyBottom": 0.66025,
+      "rumpTop": 0.5360446,
+      "shoulderTop": 0.5012065,
+      "headRx": 0.103,
+      "headRy": 0.075,
+      "hx": 0.708,
+      "hy": 0.5822065,
+      "muzzleLen": 0.077,
+      "earH": 0.058,
+      "legW": 0.029,
+      "tailLen": 0.205,
+      "tipX": 0.07000000000000003,
+      "tipY": 0.690544,
+      "tailW": 0.036
+    },
+    "palette": {
+      "base": "#7d7f86",
+      "cr": 125,
+      "cg": 127,
+      "cb": 134,
+      "lit": "rgb(160,162,171)",
+      "dark": "rgb(56,57,60)"
+    },
+    "lineage": {
+      "anchor": 0.73,
+      "drift": 0.2765134274010013,
+      "paths": [
+        {
+          "kind": "stroke",
+          "points": [
+            [
+              "move",
+              0.31136363636363634,
+              0.5409090909090909
+            ],
+            [
+              "quadratic",
+              0.4590909090909091,
+              0.48409090909090907,
+              0.6227272727272727,
+              0.5113636363636364
+            ]
+          ],
+          "alpha": 0.35696859353664084,
+          "width": 0.004564385318823188,
+          "color": "rgb(255,179,255)"
+        },
+        {
+          "kind": "fill",
+          "points": [
+            [
+              "move",
+              0.3778409090909091,
+              0.5133133281278842
+            ],
+            [
+              "line",
+              0.38920454545454547,
+              0.4900382890532206
+            ],
+            [
+              "line",
+              0.4005681818181818,
+              0.5133133281278842
+            ],
+            [
+              "close"
+            ]
+          ],
+          "alpha": 0.35696859353664084,
+          "color": "rgb(72,30,69)"
+        },
+        {
+          "kind": "fill",
+          "points": [
+            [
+              "move",
+              0.4556818181818182,
+              0.5
+            ],
+            [
+              "line",
+              0.46704545454545454,
+              0.4750517234245045
+            ],
+            [
+              "line",
+              0.4784090909090909,
+              0.5
+            ],
+            [
+              "close"
+            ]
+          ],
+          "alpha": 0.35696859353664084,
+          "color": "rgb(72,30,69)"
+        },
+        {
+          "kind": "fill",
+          "points": [
+            [
+              "move",
+              0.5335227272727273,
+              0.5133133281278842
+            ],
+            [
+              "line",
+              0.5448863636363637,
+              0.4900382890532206
+            ],
+            [
+              "line",
+              0.55625,
+              0.5133133281278842
+            ],
+            [
+              "close"
+            ]
+          ],
+          "alpha": 0.35696859353664084,
+          "color": "rgb(72,30,69)"
+        },
+        {
+          "kind": "stroke",
+          "points": [
+            [
+              "move",
+              0.3613636363636364,
+              0.5613636363636364
+            ],
+            [
+              "quadratic",
+              0.3840909090909091,
+              0.6068181818181818,
+              0.4022727272727273,
+              0.6431818181818182
+            ]
+          ],
+          "alpha": 0.25272644515248066,
+          "width": 0.004564385318823188,
+          "color": "rgb(255,179,255)"
+        },
+        {
+          "kind": "stroke",
+          "points": [
+            [
+              "move",
+              0.41818181818181815,
+              0.5613636363636364
+            ],
+            [
+              "quadratic",
+              0.4409090909090909,
+              0.6068181818181818,
+              0.4590909090909091,
+              0.6431818181818182
+            ]
+          ],
+          "alpha": 0.25272644515248066,
+          "width": 0.004564385318823188,
+          "color": "rgb(255,179,255)"
+        },
+        {
+          "kind": "stroke",
+          "points": [
+            [
+              "move",
+              0.475,
+              0.5613636363636364
+            ],
+            [
+              "quadratic",
+              0.49772727272727274,
+              0.6068181818181818,
+              0.5159090909090909,
+              0.6431818181818182
+            ]
+          ],
+          "alpha": 0.25272644515248066,
+          "width": 0.004564385318823188,
+          "color": "rgb(255,179,255)"
+        },
+        {
+          "kind": "stroke",
+          "points": [
+            [
+              "move",
+              0.5318181818181819,
+              0.5613636363636364
+            ],
+            [
+              "quadratic",
+              0.5545454545454546,
+              0.6068181818181818,
+              0.5727272727272728,
+              0.6431818181818182
+            ]
+          ],
+          "alpha": 0.25272644515248066,
+          "width": 0.004564385318823188,
+          "color": "rgb(255,179,255)"
+        }
+      ],
+      "geometryOwner": "applyReviewedFaunaLineageDrift:Wolf",
+      "recipeSupported": false
+    }
+  },
+  "admission": {
+    "status": "static-fallback",
+    "reason": "reviewed Wolf lineage requires rooted ridge/coat recipe; static fallback retained"
+  },
+  "visualAcceptance": "UNREVIEWED",
+  "anatomicalAnimation": "incomplete",
+  "inputProvenance": {
+    "kind": "crossGenome",
+    "order": [
+      "wolf",
+      "alien"
+    ],
+    "parents": [
+      {
+        "seed": 792844710,
+        "kingdom": "fauna",
+        "color": 12,
+        "form": 15,
+        "body": 0,
+        "loco": 9,
+        "trait": 15,
+        "size": 3,
+        "diet": 1,
+        "head": 9,
+        "limbs": 0,
+        "skin": 8,
+        "tail": 3,
+        "pattern": 7,
+        "eyes": 3,
+        "behavior": 2,
+        "habitat": 7,
+        "detail": 2,
+        "accent": 1,
+        "temper": 9,
+        "sense": 6,
+        "repro": 1,
+        "life": 3,
+        "metab": 3,
+        "lumin": false,
+        "gen": 0,
+        "heat": 1,
+        "_earthName": "Wolf"
+      },
+      {
+        "seed": 2782513550,
+        "kingdom": "fauna",
+        "color": 11,
+        "form": 10,
+        "body": 11,
+        "loco": 11,
+        "trait": 21,
+        "size": 5,
+        "diet": 5,
+        "head": 8,
+        "limbs": 5,
+        "skin": 3,
+        "tail": 3,
+        "pattern": 0,
+        "eyes": 3,
+        "behavior": 7,
+        "habitat": 18,
+        "detail": 9,
+        "accent": 10,
+        "temper": 3,
+        "sense": 4,
+        "repro": 7,
+        "life": 4,
+        "metab": 5,
+        "lumin": false,
+        "gen": 0,
+        "heat": 0
+      }
+    ],
+    "seedRecipe": {
+      "row": 2,
+      "slot": 1,
+      "attempt": 0,
+      "seed": 2782513550,
+      "heat": 0,
+      "contrastSearch": false
+    }
+  }
+}

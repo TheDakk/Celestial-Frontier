@@ -1,0 +1,14 @@
+{
+  "command": [
+    "git",
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "exitCode": 2,
+  "raw": "audits/LOCAL_AV_AI_CONTINUATION_20260909/audio-focused/run.log:9: new blank line at EOF.\naudits/LOCAL_AV_AI_CONTINUATION_20260909/loader-focused/run.log:9: new blank line at EOF.\naudits/LOCAL_AV_AI_CONTINUATION_20260909/static-checks/release-contract.log:9: new blank line at EOF.\naudits/LOCAL_AV_AI_CONTINUATION_20260909/static-corrected/typecheck.log:4: new blank line at EOF.\nport/v2/tools/audio-native-mix/README.md:19: trailing whitespace.\n+error is corrected. The author ran only `node --check` on `build.mjs`, `runner.mjs` and `chain.mjs`: \n",
+  "interpretation": "Five whitespace findings retained to preserve exact raw logs and frozen native-harness source hashes; not PASS. No product-code whitespace finding and no whitespace policy weakened.",
+  "stagedTaskFiles": 213,
+  "stagedBytes": 28890772,
+  "modelWeightsOrNodeModulesOrNewRepackIncluded": false
+}

@@ -1,0 +1,11 @@
+import fs from 'node:fs';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';import assert from 'node:assert/strict';
+import {applyKitWeather} from '../../../tools/local-image-generation/kit-weather-math.mjs';
+const base=new URL('../',import.meta.url).pathname.replace(/\/$/,''),run=base+'/native-01',r=JSON.parse(fs.readFileSync(run+'/result.json')),recipe=JSON.parse(fs.readFileSync(base+'/prepared/recipe.json'));
+const raw=p=>new Uint8ClampedArray(execFileSync('magick',[p,'-depth','8','rgba:-'],{maxBuffer:16*1024*1024})),hash=b=>createHash('sha256').update(b).digest('hex'),W=r.details.width,H=r.details.height;
+const organisms=r.details.boxes.map((b,i)=>{const p=raw(run+`/organism-${String(i+1).padStart(2,'0')}-mask.png`);return {name:b.name,alpha:Uint8Array.from({length:W*H},(_,j)=>p[j*4])};});
+const original=raw(run+'/finisher-before-weather.png'),final=raw(run+'/painting.png'),composite=raw(run+'/composite-before-finisher.png'),maskHashes=organisms.map(o=>hash(o.alpha));
+const after=applyKitWeather(original,W,H,organisms,recipe.seed,recipe.compositorSystemCard),before=applyKitWeather(composite,W,H,organisms,recipe.seed,recipe.compositorSystemCard);
+assert.deepEqual(after.rgba,final);assert.deepEqual(after.receipt,r.details.weather);assert.notDeepEqual(original,final);assert.notDeepEqual(before.rgba,final);assert.deepEqual(maskHashes,organisms.map(o=>hash(o.alpha)));assert.equal(hash(original),hash(raw(run+'/finisher-before-weather.png')));
+let changedPixels=0,alphaChanged=0;for(let i=0;i<W*H;i++){const p=i*4;if(original[p]!==final[p]||original[p+1]!==final[p+1]||original[p+2]!==final[p+2])changedPixels++;if(original[p+3]!==final[p+3])alphaChanged++;}assert.equal(alphaChanged,0);
+const evidence={schema:'cf.weather-postprocess-oracle.v1',status:'PASS',head:r.head,sourceFinisherPixelSha256:hash(original),finalPixelSha256:hash(final),postFinisherExactMatch:true,noWeatherNegativeRejected:true,preFinisherWeatherNegativeRejected:true,originalAndMasksUnchanged:true,alphaChanged,changedPixels,receipt:after.receipt,limitation:'Pixel order and unchanged masks do not prove post-finisher anatomy or semantic species identity.'};
+fs.writeFileSync(base+'/review/postprocess-oracle.json',JSON.stringify(evidence,null,2)+'\n');console.log(JSON.stringify(evidence,null,2));

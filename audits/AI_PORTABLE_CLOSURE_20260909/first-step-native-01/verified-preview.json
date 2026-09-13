@@ -1,0 +1,420 @@
+{
+  "url": "http://127.0.0.1:65244/",
+  "config": {
+    "schema": "cf.local-ai-game-preview.v1",
+    "fixture": false,
+    "workerUrl": "/__local_ai/stage-worker.mjs",
+    "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "modelFiles": {
+      "README.md": "/__local_ai/model/README.md",
+      "text_encoder_q4-00000.data": "/__local_ai/model/text_encoder_q4-00000.data",
+      "text_encoder_q4-00001.data": "/__local_ai/model/text_encoder_q4-00001.data",
+      "text_encoder_q4.manifest.json": "/__local_ai/model/text_encoder_q4.manifest.json",
+      "text_encoder_q4.onnx": "/__local_ai/model/text_encoder_q4.onnx",
+      "tokenizer/added_tokens.json": "/__local_ai/model/tokenizer/added_tokens.json",
+      "tokenizer/chat_template.jinja": "/__local_ai/model/tokenizer/chat_template.jinja",
+      "tokenizer/merges.txt": "/__local_ai/model/tokenizer/merges.txt",
+      "tokenizer/special_tokens_map.json": "/__local_ai/model/tokenizer/special_tokens_map.json",
+      "tokenizer/tokenizer.json": "/__local_ai/model/tokenizer/tokenizer.json",
+      "tokenizer/tokenizer_config.json": "/__local_ai/model/tokenizer/tokenizer_config.json",
+      "tokenizer/vocab.json": "/__local_ai/model/tokenizer/vocab.json",
+      "transformer_q8-00000.data": "/__local_ai/model/transformer_q8-00000.data",
+      "transformer_q8-00001.data": "/__local_ai/model/transformer_q8-00001.data",
+      "transformer_q8-00002.data": "/__local_ai/model/transformer_q8-00002.data",
+      "transformer_q8.manifest.json": "/__local_ai/model/transformer_q8.manifest.json",
+      "transformer_q8.onnx": "/__local_ai/model/transformer_q8.onnx",
+      "vae_decoder.onnx": "/__local_ai/model/vae_decoder.onnx",
+      "vae_decoder.onnx.data": "/__local_ai/model/vae_decoder.onnx.data",
+      "vae_encoder.onnx": "/__local_ai/model/vae_encoder.onnx",
+      "vae_encoder.onnx.data": "/__local_ai/model/vae_encoder.onnx.data"
+    },
+    "q8Block32": false,
+    "reference": {
+      "url": "/__local_ai/reference.png",
+      "sha256": "0b4584f76ce18f42e38e0c28e9a42758280d0c0de390d45371422a7e4c91fe57",
+      "width": 480,
+      "height": 320,
+      "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4049771185\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]"
+    },
+    "references": [
+      {
+        "imageIndex": 1,
+        "url": "/__local_ai/references/1-civet.webp",
+        "sha256": "186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365",
+        "width": 480,
+        "height": 320,
+        "sourceWidth": 768,
+        "sourceHeight": 512,
+        "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]"
+      },
+      {
+        "imageIndex": 2,
+        "url": "/__local_ai/references/2-persimmon.png",
+        "sha256": "36aec0bc09432255b4351b22a2b99bde55f85a0f7eab309bb62dab46b88164d9",
+        "width": 480,
+        "height": 320,
+        "sourceWidth": 1536,
+        "sourceHeight": 1024,
+        "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Persimmon\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"2058951517\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]"
+      },
+      {
+        "imageIndex": 3,
+        "url": "/__local_ai/reference.png",
+        "sha256": "0b4584f76ce18f42e38e0c28e9a42758280d0c0de390d45371422a7e4c91fe57",
+        "width": 480,
+        "height": 320,
+        "sourceWidth": 1536,
+        "sourceHeight": 1024,
+        "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4049771185\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]"
+      },
+      {
+        "imageIndex": 4,
+        "url": "/__local_ai/references/4-frog.png",
+        "sha256": "53d4edb530e4691dffb6000b58be6ed2076302a544deec04217d64a03ef08b17",
+        "width": 480,
+        "height": 320,
+        "sourceWidth": 1536,
+        "sourceHeight": 1024,
+        "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Frog\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"10\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"11\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"1193089256\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"3\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"19\"]]]]"
+      },
+      {
+        "imageIndex": 5,
+        "url": "/__local_ai/references/5-devils-club.png",
+        "sha256": "c2474e48a1a38fb2419fe01008a3906d5727b7e520f8867f954b6d8ed7ac94fc",
+        "width": 480,
+        "height": 320,
+        "sourceWidth": 1536,
+        "sourceHeight": 1024,
+        "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Devil's Club\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"6\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"1714376717\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"11\"]]]]"
+      },
+      {
+        "imageIndex": 6,
+        "url": "/__local_ai/references/6-cranberry.png",
+        "sha256": "31be9a75a0bdea51580435c6bf1f4a03b44d3f7fd6e80aa6537893f92a8f6b93",
+        "width": 480,
+        "height": 320,
+        "sourceWidth": 1536,
+        "sourceHeight": 1024,
+        "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Cranberry\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"9\"]],[\"color\",[\"number\",\"4\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"4\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"flora\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1741924755\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"9\"]]]]"
+      }
+    ],
+    "qualityAccepted": false,
+    "modelSource": "verified-installed-developer-cache"
+  },
+  "modelFiles": [
+    {
+      "path": "README.md",
+      "bytes": 7792,
+      "sha256": "4cfe7c534c2f259155b0ec282168bdffeb11241899fa48b4d22f7bda1483f26f",
+      "url": "/__local_ai/model/README.md"
+    },
+    {
+      "path": "text_encoder_q4-00000.data",
+      "bytes": 1599733760,
+      "sha256": "ed37b81331f4eda3bc150448f2d360b4e42951c57dcb9874ec8d0c7c78fa6f6d",
+      "url": "/__local_ai/model/text_encoder_q4-00000.data"
+    },
+    {
+      "path": "text_encoder_q4-00001.data",
+      "bytes": 594170880,
+      "sha256": "89040c34be052e09698afad17bfea3e1158306369612ae347655dfbd4cfa0f3f",
+      "url": "/__local_ai/model/text_encoder_q4-00001.data"
+    },
+    {
+      "path": "text_encoder_q4.manifest.json",
+      "bytes": 285,
+      "sha256": "fd22d7819467151ead49d2f25b0d576bcb65134111e5219c264cc605cb62e5b7",
+      "url": "/__local_ai/model/text_encoder_q4.manifest.json"
+    },
+    {
+      "path": "text_encoder_q4.onnx",
+      "bytes": 5341471,
+      "sha256": "e1670f1d203cf2e5cadecce4b2c13d436eefa228a66b7bc6bc629074e9dc0a1b",
+      "url": "/__local_ai/model/text_encoder_q4.onnx"
+    },
+    {
+      "path": "tokenizer/added_tokens.json",
+      "bytes": 707,
+      "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+      "url": "/__local_ai/model/tokenizer/added_tokens.json"
+    },
+    {
+      "path": "tokenizer/chat_template.jinja",
+      "bytes": 4168,
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "url": "/__local_ai/model/tokenizer/chat_template.jinja"
+    },
+    {
+      "path": "tokenizer/merges.txt",
+      "bytes": 1671853,
+      "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+      "url": "/__local_ai/model/tokenizer/merges.txt"
+    },
+    {
+      "path": "tokenizer/special_tokens_map.json",
+      "bytes": 613,
+      "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+      "url": "/__local_ai/model/tokenizer/special_tokens_map.json"
+    },
+    {
+      "path": "tokenizer/tokenizer.json",
+      "bytes": 11422654,
+      "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "url": "/__local_ai/model/tokenizer/tokenizer.json"
+    },
+    {
+      "path": "tokenizer/tokenizer_config.json",
+      "bytes": 5404,
+      "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+      "url": "/__local_ai/model/tokenizer/tokenizer_config.json"
+    },
+    {
+      "path": "tokenizer/vocab.json",
+      "bytes": 2776833,
+      "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+      "url": "/__local_ai/model/tokenizer/vocab.json"
+    },
+    {
+      "path": "transformer_q8-00000.data",
+      "bytes": 1585446912,
+      "sha256": "80aa4b75cdab0395f4374c51eecb59e005a6f81b3e573dddd9826a865bcd11be",
+      "url": "/__local_ai/model/transformer_q8-00000.data"
+    },
+    {
+      "path": "transformer_q8-00001.data",
+      "bytes": 1566572544,
+      "sha256": "32576185e1f0ab3937141b0c57acad1f37f298c5e7951b3367096c129e5eca28",
+      "url": "/__local_ai/model/transformer_q8-00001.data"
+    },
+    {
+      "path": "transformer_q8-00002.data",
+      "bytes": 981258240,
+      "sha256": "5062b615c62206a2dad22ce01fec6f674b0421336179cadec93fec77d1b2b455",
+      "url": "/__local_ai/model/transformer_q8-00002.data"
+    },
+    {
+      "path": "transformer_q8.manifest.json",
+      "bytes": 368,
+      "sha256": "9cf98a614ffe690a297a286b11642b0611f67f64e80edaaf592645f32e727f29",
+      "url": "/__local_ai/model/transformer_q8.manifest.json"
+    },
+    {
+      "path": "transformer_q8.onnx",
+      "bytes": 4991601,
+      "sha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102",
+      "url": "/__local_ai/model/transformer_q8.onnx"
+    },
+    {
+      "path": "vae_decoder.onnx",
+      "bytes": 760826,
+      "sha256": "05f3f6de75b760d5f3b6cbd6efa40ddc8bb7bc4dad58c1dabc85e96383871a7d",
+      "url": "/__local_ai/model/vae_decoder.onnx"
+    },
+    {
+      "path": "vae_decoder.onnx.data",
+      "bytes": 198508544,
+      "sha256": "357f7da253bfb9e3d5762a4f64fd126eae53b8b79466b7da2da2784d5fce89ae",
+      "url": "/__local_ai/model/vae_decoder.onnx.data"
+    },
+    {
+      "path": "vae_encoder.onnx",
+      "bytes": 596081,
+      "sha256": "f7cc93e70cc3a9555cb7bf1b02d2eaab83d706cf0a4ddf6da86dffb56daf05f9",
+      "url": "/__local_ai/model/vae_encoder.onnx"
+    },
+    {
+      "path": "vae_encoder.onnx.data",
+      "bytes": 137756672,
+      "sha256": "9ac7e0847f5b1a6a077ad38688042a53bc004e986d15dc8c0e37a962aad68671",
+      "url": "/__local_ai/model/vae_encoder.onnx.data"
+    }
+  ],
+  "runtimeFiles": [
+    {
+      "url": "/__local_ai/stage-worker.mjs",
+      "bytes": 15755,
+      "sha256": "21901fad78ef6ed2473a85f0538426f946e625859fe1d7976dec838122cf02b5"
+    },
+    {
+      "url": "/__local_ai/pipeline-math.mjs",
+      "bytes": 10225,
+      "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+    },
+    {
+      "url": "/__local_ai/gpu-profile.mjs",
+      "bytes": 9725,
+      "sha256": "4a02596d6a885a88b894c4a285bd93be07437e856107c34489231c7191d2dbf1"
+    },
+    {
+      "url": "/__local_ai/denoiser-shapes.mjs",
+      "bytes": 2370,
+      "sha256": "c66850a4d3564e6336a2d5891152c2120d2847dcef87782d5197aae102e8f6d6"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "bytes": 51407,
+      "sha256": "5d25483158d53d8f34d0e9c06a654d56c8dca4ebdf370ea0982ef11315a00e0e"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "bytes": 25749873,
+      "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.mjs",
+      "bytes": 46676,
+      "sha256": "3d68fa7af88c48894d4b0c8629de12018ab73b77519bc0b05dc8d908ad82749f"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.wasm",
+      "bytes": 27797172,
+      "sha256": "db816fadbab47a755170c08f933961e231412ac17f5981f9a62e519708a44dea"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.mjs",
+      "bytes": 49268,
+      "sha256": "f4a22e988ac3c2345e58c823a9254ac15f39271f86241bb2bbda0bc7e6b4dde6"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.wasm",
+      "bytes": 16025636,
+      "sha256": "8ef22fea2fec3d90dc2858e0392382cf6800b0855acfd6722ca1390e2fe15c56"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.mjs",
+      "bytes": 24218,
+      "sha256": "5a15f1fd086b3f6c2baf1f35105b8f502653b567e165cef80028870b39748747"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm",
+      "bytes": 13961845,
+      "sha256": "ec8580a9d7b9476ceee52e10a7f94124e4dc71a019d666ed6d4726697c109a4d"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs",
+      "bytes": 865147,
+      "sha256": "c600de656f52722365438926fbce6e926cd8594b1b4cd2f5cd4499c42f110c58"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.all.min.mjs",
+      "bytes": 819520,
+      "sha256": "e7a1ea699f25bdeeb3d9b9ff7ea26edb660fd15cab380e2fe479809d422f5e8b"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.all.mjs",
+      "bytes": 5929648,
+      "sha256": "93c437880b40d8ffe65c971cff28fa554e10b490f30f45382e2ebd78c457cb7b"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.bundle.min.mjs",
+      "bytes": 413328,
+      "sha256": "a32b8c695bfc78c1e6e5b72746364c1a7733b7b17c5759e3cffd8bc8e8158a91"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.jspi.bundle.min.mjs",
+      "bytes": 114239,
+      "sha256": "9afb4911acc005f370e838cf5cfce493728b2634c41afb15a0c716a8053dedee"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.jspi.min.mjs",
+      "bytes": 66510,
+      "sha256": "8d930290d7150c5d1bbd88d4e2988bddaf7e19b916c3b0e0e5e581e090b470f4"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.jspi.mjs",
+      "bytes": 676607,
+      "sha256": "4df3efe5189e41e2eea36f16815bce1ff11979cd8ab5e3e27dfb731f95f9c135"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.min.mjs",
+      "bytes": 367933,
+      "sha256": "d0f6cf735704c25e713101804e24532be1ee754292fe05fa7dda708a3be1e6b4"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.mjs",
+      "bytes": 2639881,
+      "sha256": "a4d8dde2bc3638eecf29d772ae48035c534d2160bfedf313f0365cb54e701f1f"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.node.min.mjs",
+      "bytes": 27061,
+      "sha256": "d03374770621e06e4750482236ec6dbd6299d0205b9de44b9eebe52a0721ef71"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.wasm.bundle.min.mjs",
+      "bytes": 72894,
+      "sha256": "7a3913dc5c7a9c3ad1144f5fbfecd402bc5013bcc886bc67664b18d8a15ab298"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.wasm.min.mjs",
+      "bytes": 50126,
+      "sha256": "14a0a63ad1a0fe8127722929fd16fb26c2e5352ea221bc9034d12daf314d0b92"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.wasm.mjs",
+      "bytes": 577671,
+      "sha256": "956c4b3b8d7dd15229c98bcc58869773e1d582737aec04b2e5c634bd932085a4"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.webgl.min.mjs",
+      "bytes": 472167,
+      "sha256": "ce98866698d20fa9521a5d27520a3273a6860b85ff32a5c9f3fc22ee10b9786a"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.webgl.mjs",
+      "bytes": 3534309,
+      "sha256": "415c7a241d1c1c22a47cee581d76dd2aeb63ed90521cf562adf06ca2a5461c23"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.bundle.min.mjs",
+      "bytes": 116102,
+      "sha256": "2b943893e8b444fd3983c205f3574cddd70b1f8a6170c114b03cc3d6060c4cbb"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "bytes": 66348,
+      "sha256": "08272eb8dadd249a0eaa53e19f4e5b5d01bc8a121240719db29093cfb776bc27"
+    },
+    {
+      "url": "/__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.mjs",
+      "bytes": 676586,
+      "sha256": "1aaf3cde11544e48f111a0911c4d08c6f1401043ec3822601d51dad39353bb9a"
+    },
+    {
+      "url": "/__local_ai/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "bytes": 98937,
+      "sha256": "1c4a848f86156201c033d6cd08c4cf81ae1088552acec3367f31ef086edf5af0"
+    },
+    {
+      "url": "/__local_ai/reference.png",
+      "bytes": 1969238,
+      "sha256": "0b4584f76ce18f42e38e0c28e9a42758280d0c0de390d45371422a7e4c91fe57"
+    },
+    {
+      "url": "/__local_ai/references/1-civet.webp",
+      "bytes": 179816,
+      "sha256": "186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365"
+    },
+    {
+      "url": "/__local_ai/references/2-persimmon.png",
+      "bytes": 2326605,
+      "sha256": "36aec0bc09432255b4351b22a2b99bde55f85a0f7eab309bb62dab46b88164d9"
+    },
+    {
+      "url": "/__local_ai/references/4-frog.png",
+      "bytes": 1955527,
+      "sha256": "53d4edb530e4691dffb6000b58be6ed2076302a544deec04217d64a03ef08b17"
+    },
+    {
+      "url": "/__local_ai/references/5-devils-club.png",
+      "bytes": 2581318,
+      "sha256": "c2474e48a1a38fb2419fe01008a3906d5727b7e520f8867f954b6d8ed7ac94fc"
+    },
+    {
+      "url": "/__local_ai/references/6-cranberry.png",
+      "bytes": 2005710,
+      "sha256": "31be9a75a0bdea51580435c6bf1f4a03b44d3f7fd6e80aa6537893f92a8f6b93"
+    }
+  ]
+}

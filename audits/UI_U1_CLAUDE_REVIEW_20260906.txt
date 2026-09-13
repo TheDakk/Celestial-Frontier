@@ -1,0 +1,84 @@
+Now I'll gather several independent pieces of evidence in parallel: the decompressed native traces for 08cd97d and 6a88f85, the review tool's phone flow logic, product code paths that could shift scope without a pointer event, the phone screenshots and 9c869c3 image set, and the app-chrome/ui-shell diffs.
+
+I'll gather the event timeline, the relevant camera/zoom code sections in main.ts, the earlier scene-change review failure record, and the layout screenshots—these can all be pulled independently.
+
+I still need to gather the camera/navigation code paths (boot task, camT.z sites, minWH, resize logic, navToView callers), review descendGalaxy's zoom handling and ticker body, check what the review tool does around the failed screenshots, and grab the tablet image — all of which I can pursue independently.
+
+I've found the likely mechanism in the source and now want empirical proof instead of just argument. Next I'll check the legacy v1 transition logic for inheritance, look for camera/viewport diagnostics in the built app, find the shared CDP launcher, and build a scratch copy of the v2 app to run a focused headless reproduction (viewport shrink after Escape-to-Cosmos, screenshot capture, and a small-shrink control).
+
+I'll confirm whether v1's `minWH` is live-updated, set up the game workspace with the correct script, and check `openChromiumCdp`'s options/return along with the review tool's server and session-`send` helpers so my diagnostic script uses the shared launcher correctly.
+
+I need to see the full `vite build` error since my truncated output may have hidden a real issue outside `port/v2`. I'll write the focused diagnostic script now, as it doesn't depend on the build result.
+
+I'll extract port/baseline-v1.8.9 into the scratch checkout to get its content registry and rebuild, then run the diagnostic once that's done.
+
+I'll now run the focused diagnostic against the scratch build, covering all four arms (screenshot-capture, >20% shrink, <20% control, width shrink), executing out-of-sandbox since it needs a headless browser on macOS.
+
+The diagnostic shows arm A triggered resize events but stayed at Cosmos, while B/C/D each logged two trail mutations but also ended at Cosmos — I need to inspect the actual logged values to distinguish a genuine descent-and-return from a same-text re-render.
+
+Arms A–D rule out the transient-viewport theory, but I found a new lead: missing `size` on the nav record could make the zoom-descent condition fire prematurely at Cosmos, triggering `descendGalaxy('zoom')` through an async travel path that can stall behind a blocked write. I'll now independently check the passing runs' phone journeys for a 4th Escape, inspect the nav galaxy record and `uniNodes` sizes, trace `settleArc9DirectTravel`'s awaits, and add a long-dwell diagnostic arm sampling the trail for 8s after reaching Cosmos.
+
+I've confirmed the descent fires late during the universe transition rather than immediately at Cosmos, and Escape 1's no-op traces to the route-change block during the Skip write. Next I'll set a DOM breakpoint on #trail to capture the exact call stack triggering the descent, then check the zoom handler, the training completion path, and the galaxy/universe scene code for any stray camera write.
+
+I'll investigate three independent threads: running the DOM-breakpoint instrument three times to capture the initiator stack if the descent recurs, checking whether `settleArc9DirectTravel` re-validates the live `nav` before publishing post-await, and comparing `ProvenGalaxy`'s `size` field against the universe node's.
+
+I've confirmed the dwell arm doesn't reproduce the issue and the parking math checks out, but two things remain unresolved: I still need to measure transient geometry during rapid resize events (arm F) and test whether a sustained >20% shrink causes a refused-vs-delayed descent (arm G), plus check the renderer resize path for re-parking `camT.z`.
+
+Running the final two diagnostic arms now: per-frame viewport sampling during screenshot captures, and a sustained >20% shrink test with the initiator breakpoint. Since the resize path only calls `rerender` without re-parking `camT.z`, this shrink test cleanly isolates the `checkTransitions` mechanism.
+
+I'll check whether arm F's record made it into the result file before the deadline, remove the leftover debugger breakpoint from arm G that was pausing the resize-driven trail rebuild and tripping the deadline, then re-run G once that's cleared.
+
+The screenshot theory is ruled out—ten captures generated twenty resize events, but every animation frame stayed at 390×844, so the ticker never saw a shrunken minWH() during capture. Only arm G remains, testing whether sustained >20% shrink with trail sampling actually triggers checkTransitions.
+
+I'll first check whether the trail log survived in the result file before the timeout, then rewrite arm G as a parameterised `H:<height>` arm that shrinks, sleeps, restores, and evaluates afterward (capturing exception/console events too), and run it at heights 300, 310, and 330.
+
+The private list contains only the H arms (300/310/330), which will run sequentially in one process.
+
+I'll do one last check for whether the page exposes the `lastArc9TravelOutcome` diagnostics object, so I can confirm if the zoom-descent was attempted and refused versus never triggered—then I'll write up the findings.
+
+Review complete. Nothing was edited in any worktree; `anthropic/mac` (`c860f57`) and `173c806` are untouched; the only artifacts are under my session scratchpad (a `git archive` of `08cd97d`'s `port/v2` + baseline, one diagnostic script, its JSON results).
+
+# U1 checkpoint review — `0a6ee0f` (tested source `08cd97d`)
+
+**Verdict: CHANGES REQUIRED.** The navigation blocker is real, unrepaired and — after eight focused reproduction arms — still unattributed; and the production-layout revision has two parity misses that need Nick's call before U2.
+
+## 1. Navigation blocker (priority)
+
+**What the trace establishes** (`UI_U1_PRODUCTION_LAYOUT_08cd97d_20260906/review.json.gz`):
+Skip click 785 ms (trusted, `tutskip` in path) → Escape 1 no trail change → Escape 2 → `Cosmos/Milky Way` 1152 → Escape 3 → `Cosmos` 1312 → **`Cosmos/Milky Way` again at 3930 with zero pointer events and no body-class change**. Every passing run (`9c869c3`, `8ecc5a0`, `cfd63ae`) shows the identical three-Escape shape, so this is not a bounce that a fourth Escape would have covered. Escape 1's no-op is consistent with `blockRouteChangeWhileProductAction()` (main.ts:16048) while the Skip's write was still in flight — it appears in passing runs too.
+
+**Which code can produce that publish.** The 3930 change is a galaxy-mode `setTrail(['Cosmos', galaxyName])` (main.ts:5499) with the galaxy caption. Reading every writer: `publishGalaxyDescent` (7039) reached via `descendGalaxy` (7061, explicit or `'zoom'`) or `descendGalaxyForEvidence`; `publishAcceptedSearchNavigation` (4543, needs a search commit — none); boot `resolveViewToNav` (16100–16132, boot-only); training completion (16510–16535) navigates nowhere; keyboard zoom (9168) needs `+`/`=` with a keyboard target. So the initiator is `descendGalaxy`, and the only input-free caller is **`checkTransitions()` → `descendGalaxy(best,'zoom')` from the ticker (8956–8971, called at 18271)**, which then goes through **`settleArc9DirectTravel` (9991)** — an async owner that `await`s `settleF4Heartbeat()` and `commitArc9TravelSettlementV1(...)` before `publishNavigation()`. That async gap is the shape of the 2.6 s silence.
+
+**Two real source hazards on that path** (confirmed by reading, independent of the trigger):
+- `settleArc9DirectTravel` checks `nav !== sourceNav` **only before** the commit await (≈10036); after `commitArc9TravelSettlementV1` resolves it publishes unconditionally. A zoom-descent initiated in any universe window will publish later even if the scene has since changed.
+- `checkTransitions` calls `descendGalaxy('zoom')` **every tick** while the condition holds; the one-shot latch is set only on acceptance (7088–7091), so a refusal under `arc9TravelWriteTemporarilyBlocked()` (9985: `activePersist`, replacement, import, ecology) keeps re-arming until authority frees — then it commits and publishes.
+
+**What I could NOT reproduce** (scratch build of `08cd97d`, Edge via the shared `browsercdp.mjs` launcher, 390×844 mobile, Skip + Escape ×3, all ~30 launches clean):
+- Dwell at Cosmos 3 × 8 s with a CDP `subtree-modified` breakpoint on `#trail`: no mutation, no stack.
+- `Page.captureScreenshot({captureBeyondViewport:true})` ×13: fires **two `resize` events per capture**, but a per-`requestAnimationFrame` sampler never observed any size other than 390×844 → the ticker cannot have seen a shrunken `minWH()`. Screenshot theory **falsified**.
+- Viewport shrink to 390×330 / 310 / 300 and 300×844, two frames and sustained 1.5 s: trail re-renders (same text), no descent, no exceptions. Although `goUp()` parks `camT.z` at 0.8× of a threshold computed from ascent-time `minWH()` while `checkTransitions` re-evaluates it with live `innerWidth/innerHeight` (2020) — inherited verbatim from v1 html 5848/5863 — a 23 % shrink did not fire a descent in practice, so that mechanism is not the trigger either (or it was attempted and refused; the distributable exposes no `lastArc9TravelOutcome`, so I cannot tell).
+
+**Distinction Codex asked for.** The *mechanism* that can produce a delayed, input-free galaxy arrival exists in the product (async travel owner without a post-commit scene check + per-tick re-arming). The *trigger* that made the descent condition true between 1312 and 3930 ms is unproven, and nothing in the trace can show it: no `innerWidth/innerHeight`, no `camT`, no travel outcome. The review instrument is also structurally unable to know that a product action is still settling when it declares "reached Cosmos" — that is an unsafe-readiness gap regardless of trigger.
+
+**Smallest next diagnostic** (instrument-only; no waits, no assertion change, no product edit) — `port/v2/tools/ui-shell-review.mjs`:
+1. In `installNativeReviewTrace`'s `snapshot()` (≈246) add `innerWidth`, `innerHeight`, `visualViewport.width/height`; register `window`/`visualViewport` `resize` listeners that append the snapshot to `trace.changes`. ~6 lines; the next recurrence proves or denies viewport perturbation in its own trace.
+2. After the Cosmos assertion (395) and before each intentional press, arm `DOMDebugger.setDOMBreakpoint(#trail,'subtree-modified')` with `Debugger.enable`, record `Debugger.paused.callFrames` + `asyncStackTrace`, `Debugger.resume`, then remove it before `clickNative`. **Trap I hit:** the pause blocks `Runtime.evaluate`; the resume must be wired on the *session's* event stream and the tool must not evaluate while paused, or the launcher's command deadline fires. Yields the initiator function on the next recurrence.
+3. Optional: run the phone row against the evidence/smoke build (which exposes `lastArc9TravelOutcome`, `productActionInFlight`) to see attempted-vs-refused-vs-committed.
+
+**Smallest product correction candidate** — apply only once (2) names the zoom path: in `settleArc9DirectTravel`, re-check `nav === sourceNav && authorityStillValid()` after `commitArc9TravelSettlementV1` and, on mismatch, keep the durable record but skip `publishNavigation()`; and have `checkTransitions` not re-arm `descendGalaxy('zoom')` on a refusal (set the latch on refused-with-intent, cleared when the condition drops). Both are guards, not behavior changes, but the second touches the verbatim-ported dive; do not apply blind.
+
+## 2. Production-layout fidelity (be6447e..08cd97d; images are `9c869c3`, earlier source)
+
+Scope is clean: no `.github`, policy, artlock/`reference/`, legacy source, game package manifests or `main.ts` in either range; producer pins moved with the records (measurement not independently re-derived by me). The `app-chrome.ts` body-class observer now calls `syncTopbarH()` before `syncSurfaceChromeBottom()` — correct for the coalesced same-task case; `type="button"` on the three rails, `#trail aria-hidden`, and keeping " HP" in `aria-valuetext` while dropping it visually are all right.
+
+Findings, ranked:
+1. **Phone shelf is not the v1 geometry** (`ui-shell-style.ts`, `index.html` header). Golden: nameplate 22 px, HP a 16 px slim bar, search 34 px, objective a floating pill at y≈272, ~100 px of chrome. U1: nameplate 44 px, a "HEALTH" card 44 px, search 44 px, an objective *card* in the shelf, plus Survey/Charts as two stacked 42 px pills — ~270 px of chrome. Codex's own record says the shelf height is "content-derived, not a claimed fixed legacy measurement"; the brief said "port the phone shelf EXACTLY". This is the oversized-shelf problem the program was written to remove. **Nick must decide: exact v1 shelf, or accept the card shelf as an amendment.**
+2. **Nameplate lost the rank.** Golden shows `PROOF EXPLORER — CADET`; `app-chrome.ts:237` now sets `playerChip.textContent = explorerName` only. Restore the rank suffix (the rank data is still computed two lines above).
+3. **Desktop/tablet pill widths** — confirmed: left/right column pills ~170 × 32 px with ~20 px gaps versus production's ~70–110 × 20 px tight pills; objective boxed under Search instead of production's floating pill. Nick's call, as Codex flagged.
+4. Caption has a dark backing box and larger type; production is plain text. Minor.
+5. Dock matches (5 × 60 px @ 64 px pitch, gold Prime 0/9, four utility circles). The 2 px sheet-edge exposure is visible in the Notifications capture at x≈10, y≈160–210 (Survey/Charts under the sheet's left edge) — U2 item, as recorded.
+
+Not verified by me: 72 px roster clearance, larger-text and short-landscape probes, Slice and both phone Glass rows (not run on this source by anyone).
+
+## Recommendation
+Do not treat U1 as visually acceptable or start U2. Next Codex session: add diagnostics (1)+(2) to the review tool, run the normal review again on that instrument-only successor; separately, fix finding 2 and get Nick's decisions on 1 and 3 before any further layout work. Keep the blocker open in ROADMAP until a stack names the initiator.

@@ -1,0 +1,97 @@
+{
+  "schema": "cf-integration-focused/v1",
+  "sourceParent": "a84f4ea959ae51c6423ed6c88e5274bfa88d8786",
+  "startedAt": "2026-09-09T03:52:29.427787+00:00",
+  "steps": [
+    {
+      "label": "focused",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "vitest",
+        "run",
+        "tests/app-chrome.test.ts",
+        "tests/app-chrome-main-wiring.test.ts",
+        "tests/earth-layered-chrome-layout.test.ts",
+        "apps/game/src/earth-layered-layout.test.ts",
+        "tests/build-mode.test.ts",
+        "tests/pwa-offline.test.ts",
+        "tests/slicesmoke-sixth-red-contract.test.ts"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "exitCode": 0,
+      "log": "repaired-focused.log",
+      "logSha256": "d35769123658931aa0a1afd60c4c6f817f103d174a99fa60adb6402357192547"
+    },
+    {
+      "label": "root-ts",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "tsc",
+        "--noEmit",
+        "--noUnusedLocals"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "exitCode": 0,
+      "log": "repaired-root-ts.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "game-ts",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.json"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "exitCode": 0,
+      "log": "repaired-game-ts.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "worker-ts",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "tsc",
+        "--noEmit",
+        "-p",
+        "apps/game/tsconfig.worker.json"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "exitCode": 0,
+      "log": "repaired-worker-ts.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "validate",
+      "command": [
+        "node",
+        "tools/validate.js"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "exitCode": 0,
+      "log": "repaired-validate.log",
+      "logSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    }
+  ],
+  "sourceFiles": {
+    "port/v2/apps/game/src/main.ts": "31d882890a4a10f16e6967ce41b09e2ed073e3f9c307eda79d8068cc2148f645",
+    "port/v2/apps/game/src/app-chrome.ts": "5c69a9715604f489329b5251028ea5646b1d61f85a44c77cf1b777d3a280e915",
+    "port/v2/tests/app-chrome.test.ts": "c7864ada1207a2702a82b6fcbbf4c8833c894e502d6bc6bbbf8e648f6a9deea7",
+    "port/v2/tests/app-chrome-main-wiring.test.ts": "9cbfcc31f1863f8ba44720a6441b446ece23a2a073198edda659553c2111ed6b",
+    "port/v2/tests/earth-layered-chrome-layout.test.ts": "31d24b61946b1263d2ca75cc307ef5343211556631b34a29fb695a84df28d5fe",
+    "port/v2/tests/build-mode.test.ts": "e06d9f8c8031265bf0590697db5a6f092158798edd19a1948274806dea5736c0",
+    "port/v2/tools/slicesmoke.mjs": "41863262380b0837fc407296abcb12cf17fdbec7584c51622086d0f7258ce5ea"
+  },
+  "endedAt": "2026-09-09T03:52:49.684851+00:00",
+  "htmlUnchanged": true
+}

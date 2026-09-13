@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "startedAt": "2026-09-09T16:39:02.073Z",
+  "inference": false,
+  "inputs": [
+    {
+      "path": "tokenizer/tokenizer.json",
+      "bytes": 11422654,
+      "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+    },
+    {
+      "path": "tokenizer/tokenizer_config.json",
+      "bytes": 5404,
+      "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0"
+    }
+  ],
+  "tokenCount": 452,
+  "limit": 512,
+  "promptSha256": "7f95577b510511bcfe0f7808b84837f82afd417a4fe7000b764e73402105c851",
+  "conditioningSha256": "e87bfde4f26e3cf3cd76c5c74c5afd5917c49f15b259ef36115ed91e09b3f638",
+  "sourceSnapshotDigest": "36e850b41c3b5f4ae7b1edc9f23319e8af58a36a6bf903e3960e94596fcd793a",
+  "finishedAt": "2026-09-09T16:39:02.606Z"
+}

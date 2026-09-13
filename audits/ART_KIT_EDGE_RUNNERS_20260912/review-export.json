@@ -1,0 +1,25 @@
+{
+  "path": "/private/tmp/celestial-frontier-edge-runners-review-20260912.zip",
+  "bytes": 19899101,
+  "sha256": "040a74ae16e172123bed706e7cfa572e8fd5ea95a68e2326bdee1d0d6ea3ed98",
+  "entries": [
+    "REVIEW_PROMPT.md",
+    "runtime-prompt.txt",
+    "metrics.json",
+    "experiment.png",
+    "composite-before-finisher.png",
+    "accepted-baseline.png",
+    "approved-living-worlds-triptych.png",
+    "review/beside-accepted-painting.png",
+    "review/beside-triptych.png",
+    "review/registered-boxes.png",
+    "review/civet-200pct.png",
+    "review/platypus-200pct.png",
+    "review/frog-200pct.png",
+    "review/cranberry-200pct.png",
+    "review/devils-club-200pct.png",
+    "review/persimmon-200pct.png"
+  ],
+  "archiveVerified": true,
+  "belowClaude30MB": true
+}

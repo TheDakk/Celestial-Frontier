@@ -1,5 +1,148 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
+**Latest scope:** Nick confirms the full landfall painting direction “100%”, requests the
+same finish for universal objects and asks for day/night, seasonal/orbital conditions and
+shareable discoveries. [Current source and proposed appearance recipe](audits/MIDGAME_ART_DIRECTION_20260908/TIME_AND_SHARING.md)
+keep those future conditions separate from full organism identity, biome authority and protected
+gameplay time. Current painted examples are authored review images; universal procedural quality,
+dynamic daylight/seasons and exact-view sharing are not implemented by these images.
+
+
+Current scene target (Nick, September8): creatures belong inside their biome with canonical
+relative size, ground contact, occlusion and matching light/atmosphere. Compendium may reframe
+the same identity for detail. Existing vista size/perspective clamps are not metre-accurate
+world units; an explicit scale contract is needed before such a claim. See the
+[scene brief](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/ENGINE_AND_SCENE_BRIEF.md).
+
+
+## Static landing direction and real mapping limits — 2026-09-08
+
+Nick selected one cohesive still landfall painting with canonical inhabitants, followed by the
+same identities in Compendium and future articulated 2D battles. Live landing animation is not a
+current requirement. See [the decision](audits/STATIC_LANDING_PORTRAIT_20260908/DIRECTION_DECISION.md).
+Multiple organisms remain bound to actual roster/biome authority; a painting never adds encounters,
+healing effects or category rules. The new fungal landfall is an allowed-family concept, not a
+verified seed. One read-only derivation of a known foreign system retained three real worlds with
+habitat/painter/profile conflicts in [alien-source](audits/MIDGAME_ART_DIRECTION_20260908/alien-source/README.md).
+No seed sweep, gene reroll, filter rewrite or D-9e repair occurred. Earth uses the existing named
+roster; reference fauna/flora are not substituted for its canonical named organisms.
+
+## Earth and alien plant reference distinction — 2026-09-08
+
+The [new Earth flora/fauna and alien-flora sheets](audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/README.md)
+extend the existing painted direction. Named Earth plants retain real species growth habits,
+branching, leaves, flowers, fruits and canonical colors. Alien flora may use richer unusual
+whole growth structures and organic materials while retaining its seeded final form, color
+atlas and allowed biome-family mapping. Reference roots are anatomy cues; scene plants remain
+grounded and embedded appropriately. These sheets add no biome/species IDs or probabilities,
+change no canonical roster, and do not repair the global D-9e generation-filter gap. They are
+opaque authoring references; neither is a shipped flora asset pack. Matches code as of 2026-09-08.
+
+## Movement context versus body plan — 2026-09-08
+
+[CREATURE_ANIMATION.md](CREATURE_ANIMATION.md) defines the shared land/air/water architecture.
+Biome profiles choose scene/ecology context; their fourteen coarse fauna families are not joint
+or skeleton definitions. A scene selects only movement capabilities supported by the organism’s
+resolved named/lineage/procedural anatomy. Water contact must not convert a land animal to fish,
+a glider must not acquire powered flight, and an amphibious creature keeps one identity through
+its supported transitions. Current extremophile/raw-locomotion and plan-preservation conflicts
+are inventoried, not fixed here. Preserve all existing biome mapping, anchors and D-9e blockers.
+
+## Local shallow-water study — matches study code as of 2026-09-08
+
+The [current Civet comparison](audits/CIVET_WATER_AND_MOTION_20260908/README.md) follows Nick’s
+shallow-water interpretation of the unchanged Earth anchor. Four narrow borrowed-background
+waterlines, broken ripples and submerged contacts integrate the paws; modest creature-only
+scene light leaves all unowned background pixels exact. This supersedes the prior mud/pebble
+reading. No reflection, invented grass/rocks, geography or biome admission change follows.
+The five unfinished residents are hidden only in this review. The native six-resident plan,
+full nineteen-genome binding, identities, botanical growth forms and accepted anchors remain.
+Earth fauna/flora use named natural anatomy and botany; alien flora keep seeded growth/palettes.
+Final desktop/phone water and motion outcomes PASS; finer edges/material blending and human
+acceptance remain open. The older scene packet remains immutable comparison evidence.
+
+## Supplied painted-biome direction — 2026-09-08
+
+Nick approved the original space/creature references for visual direction and has now supplied
+a [nine-panel biome reference](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/biome-reference.png).
+Canyon, volcanic terrain, dunes, ice, tidal flat, cave, fungal forms, crystals and alien pods are
+visual studies for composition, materials, light and atmosphere. They add no biome IDs,
+probabilities, climate, life, species or generated-world facts. Match any future vista to its
+actual canonical biome and seed; this sheet is neither a runtime installation nor nine exact
+world renders. [New reference authority](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/intake.json).
+The accompanying UI example supplies graphic/material inspiration only; CF's control placement
+and layout remain unchanged.
+
+The earlier [four-biome sheet](audits/PAINTED_SPACE_PIPELINE_20260908/biome-comparison.png) remains
+a provisional comparison of jungle, cryogeyser ice, coral/archipelago shoreline and volcanic
+basalt from existing families. Its warm ocean sunset and exact geyser count still need review;
+none is an accepted runtime vista or exact seed render. [Original review and profile plan](audits/PAINTED_SPACE_PIPELINE_20260908/README.md).
+Canonical biome composition remains authoritative. Matches code as of 2026-09-08 local.
+
+## Optional inhabited Earth scene — 2026-09-08, local candidate
+
+The optional exact Earth epoch-0 riverbank scene now explicitly checks its six named
+resident art families against the selected canonical `BiomeProfileV1`. Temperate admits
+fauna mammal/bird/insect/amphibian and flora tree/shrub/flower/grass/fern. The chosen
+Civet and Platypus are mammals, Frog is an amphibian, Persimmon is a tree, and Devil's
+Club/Cranberry are shrubs according to the existing named-art owners. Their complete
+original genomes remain unchanged. The scene binds the complete request and complete
+ordered canonical roster, independent of the roster's cosmetic preview truncation.
+
+This is a curated presentation gate for one captured world, not a repaired global
+biome-to-species generator. Earth names overlay seeded rows; their random habitat/loco
+fields do not establish named-species habitat compatibility. Family compatibility is
+also not evidence that all six coexist in one real geographic location. Full generation
+filter D-9e remains unfixed and decision-gated. The background is an authored rainy
+Earth riverbank interpretation of the existing temperate/rain/water request.
+
+The resident layer reuses the current Compendium's named body owners, species palette
+input and markings on transparent ink, with explicit relative widths and alpha-derived
+static ground contact. No creature/body/palette is regenerated or recolored to match the
+background, and no movement or metric-world-scale claim is made. The older bare painter
+route was found insufficient for named anatomy/palette and is not used by this new scene.
+See [mapping and source review](audits/AV_EARTH_LAYERED_SCENE_20260908/BIOME_MAPPING.md).
+Focused checks/native visual acceptance remain owned by this batch's root review receipt;
+this entry does not itself certify the local candidate.
+
+## Opt-in canonical painted Mars — 2026-09-08, scoped composition native PASS
+
+`?paintedvista=1` admits one static dune landscape only for the complete canonical Mars request
+at `CF1|g:999@90,-60|s:424242@560,170|p:134#3`. The
+[world-fact receipt](audits/AV_PAINTED_MARS_20260908/canonical-mars.json) binds environment
+`cwe1:145:0d97c0f8`, biome `dunesea`, palette `sand`, `wx:null`, two moons, no flora/fauna,
+water `none` and no ring. Generic profile possibilities do not add inhabitants or a sandstorm to
+this exact request. The candidate follows the approved reference's top-right dunes; root's
+inspection found two small moons and no inhabitants. Raw generation and its prompt are retained.
+
+One opaque 960×430, 127,088-byte WebP is selected by exact request and variant cache identity,
+with native-worker fallback on a current load failure. Only successful exact painted-Mars mounting
+now hides its own decorative globe and centers the full uncropped panorama, including cache hits.
+Default, pending and fallback views, world visibility, camera state and native DOM controls remain;
+restoration cannot reveal Earth's finite-turn fallback. The retained globe texture remains available.
+The panorama is static, with existing camera pan/zoom limits rather than navigable ground tiles.
+Existing canvas/scene-texture ownership and the Worker-availability guard remain; stale/exit loads
+abort and decoded bitmaps close. Earth's opaque inhabited composite and species rules are unchanged.
+No biome/world facts, online generation, animation or morphing are added.
+
+The composition successor passed 216 tests in 13 files, all three TypeScript programs,
+art-unused/art-audit/override/spec checks and root validation; no source-check failure occurred in
+this batch and bounded source review found no blocker. Four fresh native modes—phone, desktop,
+blocked asset and default—passed full-image centering/painted-only globe ownership, native
+Survey/Close and exit/cleanup checks. Phone policy/cache hits passed; blocked/default retain the
+canonical vista and globe, including a real wave-off followed by the learned 100% Land path.
+Two prior runner failures remain retained without product changes. Current agent inspection sees
+clear desktop scenery and an unobscured phone panorama band, with large vertical starfield gaps
+still limiting immersion. No further Mars layout loop is included. These fixed Chromium runs do
+not qualify resize, physical devices, PWA or full certification; a new preview is separate.
+[Current composition evidence](audits/AV_PAINTED_MARS_COMPOSITION_20260908/README.md). Earlier native
+phone/desktop/blocked-asset and preview PASS results, richer-dunes judgment, globe/header overlap
+and coarse globe/polar-band observations remain bound to the prior composition in the immutable
+[painted Mars audit](audits/AV_PAINTED_MARS_20260908/README.md), with its original failures retained.
+Finished landscape/AAA quality, physical-phone qualification and human asset acceptance remain
+open; no hosted result is implied.
+
+
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated biome/vista/evidence blocks below remain immutable):** hosted run `33584052508` tested
 > exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
@@ -388,14 +531,14 @@ reference each other at runtime**; they are parallel tables joined only by strin
 - `bands` — climate-band gate; `any` means eligible in every band.
 - `rare` — the wonder-class flag, rendered violet on the survey card. **8** biomes carry it.
 
-> ⚠ **`sig`, `fauna` and `flora` have NO runtime reader.** Only `weather` and `hazard` are consumed
+> ⚠ **Legacy v1.8.9 capture: `sig`, `fauna` and `flora` had no runtime reader.** Only `weather` and `hazard` were consumed
 > (by `_hdVistaEco`). The signature colors are *authored reference values, not applied colors* — the
 > map dot and vista tint resolve through `CA_BODY` / `CA_CLASSRING` instead. Treat this table as the
 > intended content contract, which is exactly what a re-implementation should be checked against —
 > but do not assume the shipped renderer currently honours the fauna/flora columns. See the
 > dead-filter note below.
 
-> ⚠ **The biome→fauna link is currently dead code.** `main.js:11112` reads `wbRoll.fauna`, but
+> ⚠ **The global generation biome→fauna link remains dead code (D-9e).** `main.js:11112` reads `wbRoll.fauna`, but
 > `wbRoll` is a **`BIOME_SETS`** entry and that table has no `fauna` field (verified: zero occurrences
 > in the whole block). So the biome-matched species filter always falls through to an unfiltered
 > shuffle, and a jungle landing can show glacier fauna. The data it wants is one table over, on

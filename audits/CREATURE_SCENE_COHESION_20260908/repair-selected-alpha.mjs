@@ -1,0 +1,26 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+const base=path.dirname(new URL(import.meta.url).pathname),prior=path.join(base,'../CREATURE_PAINTED_CIVET_20260908');
+const out=path.join(base,'selected-alpha-v1');if(fs.existsSync(out))throw Error('Immutable output exists');fs.mkdirSync(out);
+const magick='/opt/homebrew/bin/magick';const run=args=>execFileSync(magick,args,{maxBuffer:20_000_000});
+const original=path.join(prior,'civet-first-opaque.png'),oldMaster=path.join(prior,'alpha-v3/civet-painted-v1.png');
+const noseKey=path.join(out,'nose-luminance-key.png'),envelope=path.join(out,'nose-envelope.png'),mask=path.join(out,'selected-matte.png');
+run([original,'-fx','max(0,min(1,(0.82-max(r,max(g,b)))/0.22))','-colorspace','Gray',noseKey]);
+run(['-size','1536x1024','xc:black','-fill','white','-draw',"path 'M 1418,322 C 1430,320 1446,321 1450,326 C 1454,330 1454,336 1450,342 C 1446,348 1438,353 1431,355 C 1425,351 1422,346 1416,343 C 1410,339 1409,330 1414,325 Z'",envelope]);
+run([noseKey,envelope,'-compose','Multiply','-composite',noseKey]);
+run([oldMaster,'-alpha','extract',noseKey,'-compose','Lighten','-composite',mask]);
+const master=path.join(out,'civet-selected-master.png');run([original,mask,'-alpha','off','-compose','CopyOpacity','-composite',master]);
+const rgb1=run([original,'-depth','8','rgb:-']),rgb2=run([master,'-alpha','off','-depth','8','rgb:-']);if(!rgb1.equals(rgb2))throw Error('Matte repair changed original RGB');
+const derivative=path.join(base,'civet-selected-v1.webp');if(fs.existsSync(derivative))throw Error('Derivative exists');
+run([master,'-resize','768x512','-define','webp:lossless=true','-define','webp:exact=true',derivative]);
+for(const [name,color] of [['dark','#101820'],['light','#faf4e6']])run([master,'-background',color,'-alpha','remove','-alpha','off',path.join(out,'review-'+name+'.png')]);
+const rgba=run([derivative,'-depth','8','rgba:-']);let x0=768,y0=512,x1=-1,y1=-1,contactY=-1,zero=0,opaque=0,partial=0;
+for(let y=0;y<512;y++)for(let x=0;x<768;x++){const a=rgba[(y*768+x)*4+3];if(a===0)zero++;else if(a===255)opaque++;else partial++;if(a>12){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y);}if(a>=230)contactY=y;}
+const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const paws=[[270,325],[325,385],[428,486],[486,548]].map(([x0,x1])=>({x0:x0/768,y0:393/512,x1:x1/768,y1:416/512}));
+const counts=paws.map(p=>{let n=0;for(let y=Math.floor(p.y0*512);y<p.y1*512;y++)for(let x=Math.floor(p.x0*768);x<p.x1*768;x++)if(rgba[(y*768+x)*4+3]>=230)n++;return n;});if(counts.some(n=>n===0))throw Error('Empty actual paw region');
+const asset={schema:'cf-painted-civet-study-asset/v2',path:'civet-selected-v1.webp',sha256:sha(derivative),bytes:fs.statSync(derivative).size,width:768,height:512,alphaBounds:{x0,y0,x1,y1},contactY,civetPaws:paws,pawSolidCounts:counts,transparentPixels:zero,opaquePixels:opaque,partialPixels:partial,sourceMaster:'selected-alpha-v1/civet-selected-master.png',sourceMasterSha256:sha(master),selection:'Calmer original painted RGB selected after new reference-led generation was rejected for busy highlights and matte holes. Nose alpha repaired from actual source contour/luminance; all RGB preserved. Scene treatment supplies diffuse cohesion.',alphaAuthority:'Nick explicitly authorized ImageMagick alpha extraction',productionAcceptance:false};
+fs.writeFileSync(path.join(base,'asset.json'),JSON.stringify(asset,null,2)+'\n',{flag:'wx'});
+fs.writeFileSync(path.join(out,'repair-receipt.json'),JSON.stringify({schema:'cf-civet-selected-alpha-repair/v1',originalRGBBytesUnchanged:rgb1.length,sourceRGBSha256:sha(original),sourceOldMatteSha256:sha(oldMaster),asset},null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(asset));

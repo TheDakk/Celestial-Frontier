@@ -1,0 +1,7 @@
+{
+  "status": "INSTRUMENT_FAIL",
+  "error": "AssertionError before asset enumeration: parser expected bare const ASSETS=[...], but emitted source wraps JSON with Object.freeze. No size result or runtime verification produced.",
+  "originalPattern": "const ASSETS=(\\[.*?\\]);",
+  "correctedPattern": "const ASSETS=Object\\.freeze\\((\\[.*?\\])\\);",
+  "sourceSha256": "41a343327b0daa115361f3d0fe04e3f7ea1b7a185c6267dbcd01762ab74044c2"
+}

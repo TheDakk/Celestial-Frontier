@@ -1,0 +1,23 @@
+{
+  "status": "FAIL",
+  "results": [
+    {
+      "label": "fidelity",
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/landfall-fidelity.test.ts"
+      ],
+      "exitCode": 1,
+      "signal": null,
+      "error": null
+    }
+  ],
+  "sourcesUnchanged": true,
+  "changed": [],
+  "sourceCount": 906,
+  "browser": false,
+  "modelRun": false,
+  "unchangedRetry": false
+}

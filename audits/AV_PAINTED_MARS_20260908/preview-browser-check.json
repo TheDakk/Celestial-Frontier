@@ -1,0 +1,16 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "painted-mars-preview-browser",
+    "--",
+    "node",
+    "port/v2/tools/devpreviewcheck.mjs",
+    "--root=/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-painted-mars-local-20260908"
+  ],
+  "startedAt": "2026-09-08T14:39:59.628684+00:00",
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 2.523
+}

@@ -1,0 +1,14 @@
+{
+  "status": "LOCAL_PRESERVED_CLOUD_APPROVAL_PENDING",
+  "logicalBundleId": "cf-creature-canid-sources-20260908",
+  "sourceFiles": 90,
+  "packageFiles": 94,
+  "packageBytes": 24022413,
+  "archiveSha256": "d258b60cfbfbf013cef0da8af8a956e4437aed0a8992b9bc5a442697b6ac5516",
+  "sourceInventorySha256": "dd9b994115a2a6a5965ba6707b1f6c86a4c21b10e51d04dba666d76714e3f685",
+  "cloudCopyStarted": false,
+  "approvalReviewRejections": 2,
+  "reason": "Automatic approval review requires explicit authorization for this payload and iCloud destination; repository backup records were not accepted as a substitute. User question pending.",
+  "localPayloadInspection": "90 task-created source files only; first extension allowlist accidentally omitted eight existing .js authority files, retained as a failed inspection; corrected list includes them. No upload followed.",
+  "localPreservation": "90 original input/model/recipe/render/evidence files and their exact hashes copied to existing private durable storage; source mtime and bytes preserved. Independent cloud verification remains open."
+}

@@ -1,0 +1,12 @@
+✔ Actual default server recipe preserves retained scene prompt and generation inputs (73.683833ms)
+✔ Actual dual-reference server recipe remains byte-identical to its retained canonical recipe (68.968333ms)
+✔ Identity-only actual server serves one exact Civet reference and no full-scene image (62.818ms)
+✔ Server rejects conflicting or nonboolean identity modes before starting (0.345166ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 259.496

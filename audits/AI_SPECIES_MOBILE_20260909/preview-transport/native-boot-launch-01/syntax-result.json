@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "command": [
+    "node",
+    "--check",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/run-frozen-preview-boot.mjs"
+  ],
+  "exitCode": 0,
+  "startedAt": "2026-09-09T17:11:27.323391+00:00",
+  "finishedAt": "2026-09-09T17:11:27.358737+00:00",
+  "sourceSha256": "995905c31e48d584b5bc08cc5535704208eccfbf62a154db7bed97e02906127f"
+}

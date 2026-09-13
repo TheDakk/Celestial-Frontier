@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "path": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-runtime.patch",
+  "patchSha256": "2469e2e49a2b4bc6b766c2fbbc9318a616a7d88cd3cc1434e15bfccf6f6318b7",
+  "reviewedFiles": [
+    "port/v2/apps/game/src/main.ts",
+    "port/v2/apps/game/src/painted-vista-load.ts",
+    "port/v2/apps/game/src/painted-vista-load.test.ts",
+    "port/v2/tests/earth-layered-shake-settlement.test.ts",
+    "port/v2/apps/game/src/painted-earth-landing-recipe.ts",
+    "port/v2/tests/painted-earth-landing-binding.test.ts"
+  ],
+  "applyCheck": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "firstFailure": "prepared-runtime.json retains wrong-file-path ENOENT caused by local variable reuse in authoring script; actual patch unchanged. This corrected call checks the intended patch once.",
+  "applied": false,
+  "runtimeState": "All six draft runtime files restored to startingHEAD/absent, exact preservedsource copies verified. No code discarded; no unbound assetinstalled."
+}

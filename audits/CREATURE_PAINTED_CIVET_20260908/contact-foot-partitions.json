@@ -1,0 +1,93 @@
+{
+  "schema": "cf-civet-four-paw-coverage-analysis/v1",
+  "certification": false,
+  "sourceYRange": [
+    393,
+    415
+  ],
+  "basis": "Four separately visible 440px and132px rest paw clusters, projected using native-recorded mesh transforms. At300px the two front clusters touch; these unchanged source partitions preserve independent ink counts.",
+  "rows": [
+    {
+      "size": 440,
+      "imageSha256": "8c724b4cd2a41555cd291cd1efaf803c277c55c20a385387badd1f020a8ee52c",
+      "feet": [
+        {
+          "sourceX0": 270,
+          "sourceX1": 325,
+          "solid": 207
+        },
+        {
+          "sourceX0": 325,
+          "sourceX1": 385,
+          "solid": 189
+        },
+        {
+          "sourceX0": 428,
+          "sourceX1": 486,
+          "solid": 203
+        },
+        {
+          "sourceX0": 486,
+          "sourceX1": 548,
+          "solid": 228
+        }
+      ]
+    },
+    {
+      "size": 300,
+      "imageSha256": "afa2ae3bfd589ff41da0f1f1eed552579a729872cf7a011e500d4d1e1ff5f3be",
+      "feet": [
+        {
+          "sourceX0": 270,
+          "sourceX1": 325,
+          "solid": 97
+        },
+        {
+          "sourceX0": 325,
+          "sourceX1": 385,
+          "solid": 87
+        },
+        {
+          "sourceX0": 428,
+          "sourceX1": 486,
+          "solid": 96
+        },
+        {
+          "sourceX0": 486,
+          "sourceX1": 548,
+          "solid": 108
+        }
+      ]
+    },
+    {
+      "size": 132,
+      "imageSha256": "d67780c87a4b5b4bfa539df3f4b641a39f831afb4740397fe17b125ca1e71fd4",
+      "feet": [
+        {
+          "sourceX0": 270,
+          "sourceX1": 325,
+          "solid": 18
+        },
+        {
+          "sourceX0": 325,
+          "sourceX1": 385,
+          "solid": 14
+        },
+        {
+          "sourceX0": 428,
+          "sourceX1": 486,
+          "solid": 14
+        },
+        {
+          "sourceX0": 486,
+          "sourceX1": 548,
+          "solid": 19
+        }
+      ]
+    }
+  ],
+  "allTwelvePartitionsContainSolidInk": true,
+  "analysisSourceSha256": "a0e01995a534478bff85e5bfa938e9ea4b6252edad5f05d7f9b6fd10e90c2814",
+  "originalNativeStatus": "FAIL",
+  "zeroChangedPixelCriterion": "unchanged"
+}

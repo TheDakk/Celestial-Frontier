@@ -92,6 +92,9 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      spec, i.e. four times as long as deep. A mongoose is lithe, not a ribbon. */
   'Mongoose': { legs: 0.0671, depth: 0.0856, len: 0.1685, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#9a8a6c', family: 'mustelid', mammalDPlan: 'Mongoose' },
   'Meerkat': { legs: 0.0943, depth: 0.0998, len: 0.1047, neck: 0.08, muzzle: 0.32, ears: 'round', tail: 'long', hue: '#b5a184', family: 'mustelid' , pose: 'sentinel' },
+  /* Specialized viverrid owner overrides generic dimensions below. Its drawn
+     .300–.650 body span/.795 ground/.125 muzzle are anatomy authority; these
+     generic fields are compatibility inputs, never the animation record. */
   'Civet': { legs: 0.078, depth: 0.1039, len: 0.188, neck: 0.05, carry: 0.40, muzzle: 0.38, ears: 'round', tail: 'banded', coat: 'spots', face: 'mask', hue: '#a8996f', family: 'mustelid', faceMark: 'darkMask', mammalDPlan: 'Civet' },
   'Coati': { legs: 0.084, depth: 0.1053, len: 0.182, neck: 0.06, carry: 0.35, tailScale: 1.3, muzzle: 0.54, ears: 'round', tail: 'banded', hue: '#8e6440', family: 'procyonid', tailPose: 'upright', faceMark: 'darkMask' },
   'Kinkajou': { legs: 0.075, depth: 0.1095, len: 0.1437, neck: 0.05, carry: 0.35, tailScale: 1.95, muzzle: 0.30, ears: 'round', tail: 'long', hue: '#a06e3c', family: 'procyonid', headScale: 1.28, iris: '#24170f', mammalCPlan: 'procyonid-c1' },

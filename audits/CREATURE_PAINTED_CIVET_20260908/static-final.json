@@ -1,0 +1,62 @@
+{
+  "schema": "cf-civet-study-static/v1",
+  "status": "PASS",
+  "startedAt": "2026-09-08T22:30:51.629Z",
+  "sourceCommit": "5e222931efd642c03ce55c5e67f7670a7aef890c",
+  "sources": {
+    "study-harness.ts": "a7380d3ef18887cd7ea6addbf5ff87635c4a7480a7c394472d90fb5d4bf641b1",
+    "study.tsconfig.json": "a51ba80d7c242560c03d3a147cfadb43518f90d5ca3e46d14d14ac4c9cdbfdf4",
+    "study-runner.mjs": "bb05842ad49d843da1a95f8c062b9d6c6687628122ac7dd71024e79c57f20628",
+    "serve-study.mjs": "5853afc75d99bf4eef093c5287cf792c6c754c443f988a094f24f8c091547ef6",
+    "../../port/v2/tools/painted-creature/civet-rig.ts": "161a3ddd690b21c11575a539587a629910ac89b98ab849e846e1b15a0bffe0bc",
+    "../../port/v2/tests/painted-civet-rig.test.ts": "a013a5a5bffbb552487f05da96ae709c0e3ce47736f288c6ae51754ab994b72d"
+  },
+  "stages": [
+    {
+      "name": "rig-focused",
+      "command": "npm",
+      "args": [
+        "--prefix",
+        "port/v2",
+        "test",
+        "--",
+        "tests/painted-civet-rig.test.ts"
+      ],
+      "exitCode": 0,
+      "log": "rig-focused-final.log"
+    },
+    {
+      "name": "study-typecheck",
+      "command": "port/v2/node_modules/.bin/tsc",
+      "args": [
+        "--noEmit",
+        "-p",
+        "audits/CREATURE_PAINTED_CIVET_20260908/study.tsconfig.json"
+      ],
+      "exitCode": 0,
+      "log": "study-typecheck-final.log"
+    },
+    {
+      "name": "v2-three-typechecks",
+      "command": "npm",
+      "args": [
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "log": "v2-three-typechecks-final.log"
+    },
+    {
+      "name": "root-validate",
+      "command": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "log": "root-validate-final.log"
+    }
+  ],
+  "finishedAt": "2026-09-08T22:31:07.059Z"
+}

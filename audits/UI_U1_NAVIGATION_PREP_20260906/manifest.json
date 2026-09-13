@@ -1,0 +1,53 @@
+{
+  "schema": "cf-u1-navigation-preparation/v1",
+  "certification": false,
+  "files": [
+    {
+      "file": "cf-u1-navigation-focused-20260906.log.gz",
+      "bytes": 534,
+      "sha256": "254924cecf2d7a56fa2768a216f29b52ceb6f038c5c64f54048d2c04bd422555",
+      "originalBytes": 993,
+      "originalSha256": "816571e117a0b141f78a70dce2831a1c28f332ed1b012f51c0cc3c246ee38cd1"
+    },
+    {
+      "file": "cf-u1-navigation-admission-control-20260906.log.gz",
+      "bytes": 226,
+      "sha256": "ad51ed5ff4ee7a502a2825485d4c9e7624c64b0a1d6019fb6d3a82d3907a7577",
+      "originalBytes": 298,
+      "originalSha256": "20530260b477b250e36bde62804fcff16ff4ae8a270843ab26b2cabbdece9486"
+    },
+    {
+      "file": "cf-u1-navigation-calibration-20260906.json.gz",
+      "bytes": 1669,
+      "sha256": "256aa64f3f545df0542855124089032ebe2a40426fcffc3de3b3802712c883e2",
+      "originalBytes": 10901,
+      "originalSha256": "8156f76ba35f63f25d057ddf6ae67bfe93d7f96d000d949c07fadc1b036719d6"
+    },
+    {
+      "file": "cf-u1-navigation-named-calibration-20260906.json.gz",
+      "bytes": 1251,
+      "sha256": "044ca5cd64396ff6c977bf5b96360db7ff08562dd184ac238b22600377e539e0",
+      "originalBytes": 5775,
+      "originalSha256": "160075e0cb206a06bccab976dfe06f8490201bb6a63ec107d70c8980afa9a610"
+    },
+    {
+      "file": "cf-u1-navigation-scheduled-calibration-20260906.json.gz",
+      "bytes": 1733,
+      "sha256": "8c530d57dea559084df00277aa764e4279f04079d2139925938fd7e69ff13921",
+      "originalBytes": 12648,
+      "originalSha256": "5ee56c91715e18280f80c436a1db2327a878c9de96e4e1e2f06b006cf67026f3"
+    },
+    {
+      "file": "cf-u1-navigation-root-validate-20260906.log.gz",
+      "bytes": 708,
+      "sha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736",
+      "originalBytes": 1093,
+      "originalSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    }
+  ],
+  "instrumentSha256": {
+    "ui-shell-review.mjs": "a529b0c6fd592332fca3f81e62af01fd70ed4613a98f4bdb183caecbd821161b",
+    "ui-review-trail-debugger.mjs": "9bce14a31c8ab3e91bfb728f29bb757c65abceff159ecec77edebd9cc67d8435",
+    "ui-review-navigation-selftest.mjs": "d8c6181cd95fcea82e245ea06efac68ef95f980bd42bd601900789385b9cf109"
+  }
+}

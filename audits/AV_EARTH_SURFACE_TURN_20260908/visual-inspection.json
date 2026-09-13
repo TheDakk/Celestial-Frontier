@@ -1,0 +1,25 @@
+{
+  "inspectedAt": "2026-09-08T12:49:05.222087+00:00",
+  "method": "Codex view_image of actual retained native screenshots",
+  "images": [
+    {
+      "path": "native-mesh-pipe/earth-phone-midpoint.png",
+      "sha256": "809e350e5195a19481ce93f7750360bdd2c3c26b4145c07f2de3796b47394dc1"
+    },
+    {
+      "path": "native-owner-aware/earth-phone-reduced.png",
+      "sha256": "eee44b1559dbc0fd55904b04c57537df356e595b40486cb76d4aae38d22dbe2e"
+    },
+    {
+      "path": "native-desktop/earth-desktop-midpoint.png",
+      "sha256": "081dcefdc2266b7006c3c57074e56850f476468d340f27c7184888f7c5ad2f18"
+    }
+  ],
+  "findings": [
+    "The projected blue/green canonical surface fills the existing globe with a consistent lit upper-left and shaded right side.",
+    "The Reduced screenshot retains the established clouded/lit canonical sprite.",
+    "This is the older canonical appearance, not the approved rich painted replacement. The finite projection visibly stretches the polar regions; a periodic full globe map remains future work.",
+    "Nonpilot UI retains its existing globe/vista composition and default-looking Listen to biosphere button; UI styling/placement acceptance is not supplied by this check.",
+    "Earth-species appearance and species-appropriate movement constraints remain binding; no creature art was replaced."
+  ]
+}

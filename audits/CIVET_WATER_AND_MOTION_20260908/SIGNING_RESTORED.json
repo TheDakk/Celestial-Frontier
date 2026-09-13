@@ -1,0 +1,14 @@
+{
+  "schema": "cf-restored-local-signing/v1",
+  "checkedAt": "2026-09-08T23:45:52.851712+00:00",
+  "userState": "Nick confirmed 1Password is open",
+  "command": "git commit -S -m Add painted Civet studies and Earth scene art direction",
+  "commit": "86ea06b79e11382b62173fbb2ccfc8c90fb37baa",
+  "commitExit": 0,
+  "files": 735,
+  "defaultVerify": "Failed because gpg.ssh.allowedSignersFile is not configured; no persistent configuration changed.",
+  "scopedVerifyExit": 0,
+  "scopedVerifyOutput": "Good \"git\" signature for local-review with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n",
+  "verificationTrust": "One-command temporary allowed-signers file containing the already configured user.signingkey public key; temporary file removed.",
+  "hostedActions": 0
+}

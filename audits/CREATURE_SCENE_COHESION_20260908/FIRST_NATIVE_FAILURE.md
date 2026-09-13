@@ -1,0 +1,7 @@
+# First native cohesion result — retained FAIL
+
+`native-first/report.json` stopped on desktop after eight original motion/policy probes and five control groups, at `assert(contact.pixels > 0)` in the new cohesion acceptance. Phone, new negative controls, native grounding toggle and disposal were not reached. Browser closed; Runtime and cleanup errors were zero.
+
+All four Civet contact rectangles observed ground pixels and 14–21 pixels darkened by their own tight contact, independent of the broad body shadow. Lighting luma ratios were 0.9033 Civet / 0.9061 legacy; 359,128 unowned background pixels were observed and unchanged.
+
+The instrument required alpha exactly zero for every old resident’s ground sample. Their retained source layer already includes translucent painter shadows: Persimmon alpha 107/113, Platypus 92, Frog 128, Devil’s Club 102 near contact. The zero-alpha rule therefore made several real ground rectangles empty. This was an instrument error, not proof that those contacts passed. The same source solid-ink threshold used to locate feet is 230: the corrected legacy ruler admits alpha below 230 (partially visible ground); Civet still requires alpha zero. Each tight contact must visibly darken actual pixels against a no-contact reference, and missing/shifted shadows must still fail. The failed report/images/source stay immutable; no assertion or threshold is silently waived.

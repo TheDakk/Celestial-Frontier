@@ -1,0 +1,226 @@
+{
+  "schema": "cf-protostar-disk-checkpoint/v1",
+  "createdAt": "2026-09-08T06:43:52.349627+00:00",
+  "parentCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "branch": "openai/mac",
+  "sourceState": "dirty-local-only",
+  "signedCommitPending": true,
+  "publishable": false,
+  "browserFreeDevelop": {
+    "status": "PASS",
+    "files": 329,
+    "testsPassed": 3646,
+    "testsSkipped": 1,
+    "typescriptPrograms": 3
+  },
+  "rootValidation": {
+    "status": "PASS",
+    "renderedSpecies": 1010,
+    "unchangedFingerprints": 50
+  },
+  "nativeDiagnostic": {
+    "status": "PASS",
+    "path": "native-first/review.json",
+    "firstAttempt": true
+  },
+  "certification": false,
+  "humanAcceptance": false,
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/system-protostar.ts",
+      "bytes": 1547,
+      "sha256": "04710ced6266153910d4e40d2aae95b4461bb50f10e600d4b533894f5277d1b6"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 833201,
+      "sha256": "bd4e1e866909d45982ea6f5bd4c2fb91f347eecebacff804d70a2c0bd3b3c67d"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 156922,
+      "sha256": "f2234b7e9214ef70def77d58a6baf666472df683b33f40191619c19e750e42b1"
+    },
+    {
+      "path": "port/v2/budgets/compendium-memory-v1.json",
+      "bytes": 156385,
+      "sha256": "4595e4040f2aeee3f167ba022b4aab88abf28daa0852606f2a1e4f09e0f0abc7"
+    },
+    {
+      "path": "port/v2/tests/compendium-budget.test.ts",
+      "bytes": 146461,
+      "sha256": "fa70c12f2f26f47b07438283dcac2aed5851f18085b93ea640e7e5c548f573bf"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "bytes": 1889328,
+      "sha256": "9dffffb16914d73f3f3764f2c6a9151720f2be3018d2217e68fa148414405ffa"
+    },
+    {
+      "path": "port/v2/apps/game/src/scene-texture-owner.ts",
+      "bytes": 12535,
+      "sha256": "db7af3f23c3b7d652df37cb54f1082eea177380aefd4f86bc16365a6adbed709"
+    },
+    {
+      "path": "celestial-frontier.html",
+      "bytes": 1964530,
+      "sha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746"
+    }
+  ],
+  "references": [
+    {
+      "path": "ART_DIRECTION.md",
+      "bytes": 123330,
+      "sha256": "2714b4e4a805e8996d4a4d714e318b53d572ac259299a8603514e5bd232926be"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 455585,
+      "sha256": "114f3d0b2a90b169a0f429a3ebcb5c0193f8b1f9cd1f5cf7793139fc283185a9"
+    },
+    {
+      "path": "AAA_COVERAGE_LEDGER.md",
+      "bytes": 5032,
+      "sha256": "3d80cb9ada5b3b0664da5dcabcbc18b373e360c966d6ce5316304f7de3737702"
+    },
+    {
+      "path": "AAA_GAP_AUDIT.md",
+      "bytes": 4073,
+      "sha256": "af906e777d92604eb190feec0048d5106ad9d23136707fea2eade25059b36453"
+    },
+    {
+      "path": "port/AAA_AUDIOVISUAL_CAMPAIGN.md",
+      "bytes": 68677,
+      "sha256": "7ff414f37447c546443fd9387621aa63a1a42cb96f202693d6ce245d834abc7e"
+    },
+    {
+      "path": "port/v2/README.md",
+      "bytes": 431960,
+      "sha256": "0adeb36da3a571d0c6eae3898b4f547625765929b1dc81e556833115a14ddfc0"
+    },
+    {
+      "path": "audits/AV_24H_CAMPAIGN_20260907.md",
+      "bytes": 12370,
+      "sha256": "58a06d3a505cf1afb42ec452c17da3c6e1d3ea7faf0280cb99543a63ceb5fb98"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/NEXT_AUDIO.md",
+      "bytes": 2085,
+      "sha256": "9f5c2011ae661ea9dc4a8e1469713ca6fc4f38dbde8a34f55e5b4ab8901fcdda"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/README.md",
+      "bytes": 4968,
+      "sha256": "d95a15b2073d138f66cd4265991013e6b15a48ba24db8931b468c1cde036e967"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/develop-profile.log",
+      "bytes": 6998,
+      "sha256": "0232588eef6a1e6693cc56ee2c59804326b2f416360ddb65d842acd5507abee5"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/draft-authority.json",
+      "bytes": 180,
+      "sha256": "255b629085d65c8a322a39090437e8222747fca60a2487f82ae0b051eca0f419"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/draft-pin.log",
+      "bytes": 65,
+      "sha256": "1db228163e3628a406543c0bb5af961856f0bd102be34517b5a8c7b8f3e3d351"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/draft-pin.mjs",
+      "bytes": 1873,
+      "sha256": "9289a11f36a7194c48d683c8e7e9a9ef04a6f49c4a374b14cb0558b9771bb88e"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/native-first/proto-desktop-1440x1000-dpr1.png",
+      "bytes": 377392,
+      "sha256": "882fb53655e5bd3f560d23c64d6d2a7deb1e35490234dfc721a72f3789cf40cb"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/native-first/proto-phone-390x844-dpr2.png",
+      "bytes": 315903,
+      "sha256": "8d635215b0a61e1e98015d383305a9942a7f13c6a57e0431c5d3963cef39046c"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/native-first/proto-phone-overview.png",
+      "bytes": 277992,
+      "sha256": "ef4f4f9b16d1505ea4d119c735ea3363afb1f48f947202ce8cd5d0025da0e498"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/native-first/proto-phone-reduced-effects-off.png",
+      "bytes": 324118,
+      "sha256": "620cf0827ebeec603cb283d0c57b44bd3ebaaf2cbe850fa27736e43546920822"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/native-first/review.json",
+      "bytes": 111017,
+      "sha256": "a7d79e609fb801fff8ff2fc2a11f5829895d395d8d5e806b4093b64953a11e68"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/native-first/visual-inspection.json",
+      "bytes": 763,
+      "sha256": "6e87e5eeea7bbd5cb9461c8589c302a7e49d9295102e9db1037a33a0f0633905"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/native-runner.mjs",
+      "bytes": 22811,
+      "sha256": "5c1394f113a82d2f69df3e4296621e3036ad199a9c69f33a535addefd0d383a4"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/preparation.json",
+      "bytes": 1255,
+      "sha256": "65271806f027e2cbb878c1cf7db8d20b6c14c0941fa90925e4ec908327304b9e"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/prepare.py",
+      "bytes": 1208,
+      "sha256": "5e71de170e75516273b77d54d67743f30bc3693403639367e45b6d00597043b9"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/producer-build.log",
+      "bytes": 5535,
+      "sha256": "e7a817d0356579cd9b7d9b4dfc3b8637cca4526020ba3581f982e8d69b21b2b7"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/producer-refresh.json",
+      "bytes": 1230,
+      "sha256": "f36408ee1438f1a2999aef607ffc7c1542beba88adc7a436827877a8c4074fb7"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/producer-refresh.log",
+      "bytes": 65,
+      "sha256": "7d9905dd85ef398e21c684f2d54d97a4a0b03edecc271788c2251820b74e0bcd"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/producer.json",
+      "bytes": 6055,
+      "sha256": "e0d2691db2c91cd8c10abffb59b84a8cf429cf0d581b47546a335c832349f812"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/producer.mjs",
+      "bytes": 641,
+      "sha256": "b2ab14b87a15b9b8bf34164b2145eca6b79ce154e942c99d07cf9620b20a6b56"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/refresh-producer.mjs",
+      "bytes": 2383,
+      "sha256": "4819cbb563b742c5793eeb789f3c71ff90f0d4d15ffcb96dd7d10c72c29395ca"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/root-validation.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/AV_PROTOSTAR_DISK_20260908/seal-manifest.py",
+      "bytes": 2207,
+      "sha256": "b172375ad7f4e0f278f14d870fed4998d8a455db49f1cc76c74a30f1382abe1f"
+    }
+  ],
+  "evidenceCount": 23,
+  "evidenceBytes": 1467837
+}

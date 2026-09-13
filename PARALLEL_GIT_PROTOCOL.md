@@ -6,6 +6,17 @@ prepare their own work and publish it only through the budget-authorized path,
 with the standing green-PR authorization defined below; no release authority is
 implied.
 
+## Current clean promotion plan — Nick, 2026-09-12
+
+Prune superseded code and pack assets on `openai/mac` before splitting PR42. The split is
+three ordered tiers, each squash-merged into `develop`: production UI; painted landfall
+engine; research tools. Follow with one `develop` → `main` release PR running the full chain.
+Do not make any PR Ready until the Civet 2D proof, the second weather pick and the phone-tier
+decision have landed. This records the future order only: PR42 remains parked and no GitHub
+write, hosted attempt, merge, release or deployment is currently authorized. Exact hosted
+and release authorization requirements below still apply. Audits LFS migration awaits Nick's
+separate decision; do not rewrite history without it.
+
 ## Ownership
 
 | Agent environment | Allowed branch | Allowed folder |
@@ -164,6 +175,14 @@ Before every new coding batch:
 6. Never use `git reset --hard`, `git clean -fd`, rebase, force-push, or any
    operation that discards work. If Git reports a conflict, stop and report
    it unless the user explicitly asks for conflict resolution.
+7. On the first coding batch of a new game-development session, complete
+   `UI_TOOLCHAIN.md`'s coding-session startup runbook before code/build/render work:
+   check official stable availability, apply eligible approved authoring-tool updates
+   under the shared lock while tools are idle, verify changed capabilities, and record
+   the result or explicit deferrals. Reuse that receipt within the uninterrupted session;
+   do not repeat updates on every message or attach them to a chat/timer. Each machine
+   needs its own verified inventory. Game/runtime/test locks, sealed inputs and GitHub
+   authority remain unchanged. This instruction does not interrupt existing jobs.
 
 ## Required preflight reminder to the user
 

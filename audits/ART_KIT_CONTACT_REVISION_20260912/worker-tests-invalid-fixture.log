@@ -1,0 +1,34 @@
+✔ one-pixel erosion and sampled inward despill remove injected pink edge without recolouring the interior (2.226291ms)
+✔ premultiplied sampling cannot carry invisible magenta into a scaled edge (0.187042ms)
+✔ latent interiors stay anchored while boundary and ground remain editable; no-mask control fails (2.996125ms)
+✖ prepared profile meets scale relationships and refuses the former unmasked recipe (0.643334ms)
+✔ restored ceiling rejects overflow without truncation and allocates actual projected length (1.182042ms)
+✔ low-strength pass preserves source contribution and seed owns only the noise (0.704333ms)
+✔ key intake refuses a dark full plate and an empty key, preserving a complete foreground object (0.761791ms)
+✔ worker expansion preserves element bytes and rejects overlapping patches / corrupt plan before model fetch (3.407042ms)
+✔ an unknown recipe cannot reach a GPU stage (0.159792ms)
+✔ actual engine skips organism inference and runs one protected finisher; all four sessions stay warm (339.760333ms)
+✔ same reuse oracle rejects actual engine with its session cache bypassed (324.433584ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 712.16375
+
+✖ failing tests:
+
+test at tools/local-image-generation/kit-contact.test.mjs:31:1
+✖ prepared profile meets scale relationships and refuses the former unmasked recipe (0.643334ms)
+  Error: Organism placement outside plate
+      at placementBox (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/kit-engine-math.mjs:55:104)
+      at box (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/kit-contact.test.mjs:33:39)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/kit-contact.test.mjs:34:154)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

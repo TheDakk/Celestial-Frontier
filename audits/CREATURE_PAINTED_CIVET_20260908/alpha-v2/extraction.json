@@ -1,0 +1,63 @@
+{
+  "schema": "cf-civet-alpha-extraction/v1",
+  "authority": "Nick: Use ImageMagick for alpha extraction",
+  "at": "2026-09-08T22:07:40.064Z",
+  "source": {
+    "path": "civet-first-opaque.png",
+    "sha256": "86025b8d8c1e337e9795433f48251d6a91bd76fee69e8e13c564c7fedbb1377e"
+  },
+  "tool": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+  "files": {
+    "civet-painted-v1.png": {
+      "bytes": 2222934,
+      "sha256": "d2a02b36ba747e30f1c1b0fb8eabae9738b9871105c7cdaa36bcae845513f63b",
+      "identity": "1536x1024 srgba 4.0 opaque=False"
+    },
+    "civet-painted-v1.webp": {
+      "bytes": 1511222,
+      "sha256": "a9242afc1c29094b91b0d2e7657296186498c4714970106cea8edab1a9b11d14",
+      "identity": "1536x1024 srgba 4.0 opaque=False"
+    },
+    "component-mask.png": {
+      "bytes": 6560,
+      "sha256": "9befa219653ac1498b514ad9ef85f1e695cd51ade5e85d914fc5c5c9573694d2",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    },
+    "edge-review-dark.png": {
+      "bytes": 955513,
+      "sha256": "2e08a0f88ee6f053df31dffa21bd60aba220ed42a2cbeb65c6280e3de69fc15f",
+      "identity": "1536x1024 srgb  3.0 opaque=True"
+    },
+    "edge-review-light.png": {
+      "bytes": 944074,
+      "sha256": "da17b89cdd0581367c648b82f5c262847131d9b3fa1fd6c919652563a0000abf",
+      "identity": "1536x1024 srgb  3.0 opaque=True"
+    },
+    "interior-envelope.png": {
+      "bytes": 6470,
+      "sha256": "11d8b9ad770b7175237cc20255c613d70600c713bb9431e9b866681c64b60d3e",
+      "identity": "1536x1024 gray  1.0 opaque=True"
+    },
+    "matte.png": {
+      "bytes": 20216,
+      "sha256": "db74f9d4ab4456661a8e12019a9fbde296db7670fc6b0eb56f2ae191e4aadc7a",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    },
+    "rough-matte.png": {
+      "bytes": 21085,
+      "sha256": "390b7ceadd97b612d0354cb3fac87b0d992f8426c37b59e1aa5577042ed9b46c",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    },
+    "solid-interior.png": {
+      "bytes": 9753,
+      "sha256": "56dbb22ee7295d27be7dd884c2a20e1bf0fda73775f90e7e04b90951cfdfceb0",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    },
+    "warm-edge.png": {
+      "bytes": 32199,
+      "sha256": "e7000b6b9ad51b130c4c11d66b501d6c627aeac439f27387061230c1af6e65f6",
+      "identity": "1536x1024 gray  2.0 opaque=True"
+    }
+  },
+  "limits": "Heuristic matte extraction from opaque generated pixels; dark/light visual edge review required. No claim of original alpha recovery or identical antialias colors."
+}

@@ -1,5 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
+import { transformSync } from 'rolldown/utils';
 import { describe, expect, it } from 'vitest';
 
 const indexSource = readFileSync(
@@ -116,8 +118,23 @@ function compendiumHeadingSharesCloseRow(source: string): boolean {
 
 function compendiumHeadingIsDirectPanelChild(main: string, panels: string): boolean {
   const listBinding = /const panel\s*=\s*document\.getElementById\('codexpanel'\)!;[\s\S]{0,200}?panel\.classList\.add\('codex-list-mode'\);[\s\S]{0,200}?fillPanel\('codex',\s*`<h3>Compendium\b/.test(main);
-  const topLevelFill = /def\.el\.innerHTML\s*=\s*html\s*;\s*seatPnx\(def\)\s*;/.test(panels);
-  return listBinding && topLevelFill;
+  if (!listBinding) return false;
+  // Execute the shipped refill/Close owner. Its argument spelling can change
+  // while the direct-child contract remains intact (U2 retains the Close node).
+  const start = panels.indexOf('function seatPnx('), end = panels.indexOf('let _opener:');
+  if (start < 0 || end <= start) return false;
+  const transformed = transformSync('panel-close-owner.ts', panels.slice(start, end).replace(/^export /gm, ''));
+  if (transformed.errors.length) throw new Error(JSON.stringify(transformed.errors));
+  const { JSDOM } = createRequire(import.meta.url)('jsdom');
+  const dom = new JSDOM('<!doctype html><aside id="codexpanel" aria-label="Compendium"></aside>');
+  try {
+    const el = dom.window.document.getElementById('codexpanel');
+    new Function('document', 'PANELS', `${transformed.code}; fillPanel('codex', '<h3>Compendium</h3><div>Populated list</div>');`)(
+      dom.window.document, [{ id: 'codex', el }]);
+    return el.querySelectorAll(':scope > h3').length === 1
+      && el.querySelectorAll(':scope > button[data-pnx="codex"]').length === 1
+      && el.firstElementChild.matches('button[data-pnx="codex"]');
+  } finally { dom.window.close(); }
 }
 
 describe('narrow-phone Inventory row reflow contract', () => {

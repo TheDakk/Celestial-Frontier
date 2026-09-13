@@ -1,0 +1,8 @@
+{
+  "status": "FAIL",
+  "command": "node tools/with-toolchain-lock.mjs --label creature-charm-sample-package -- python3 audits/CREATURE_CHARM_STUDY_20260908/package_samples.py",
+  "exitCode": 1,
+  "firstFailure": "ImageMagick unable to read font Helvetica",
+  "stage": "first labelled comparison tile; prior WebP derivatives retained in samples/; video not started",
+  "correction": "Fresh samples-final/ and copied controller with inspected absolute system Arial.ttf path; no Blender rerender or source-model change."
+}

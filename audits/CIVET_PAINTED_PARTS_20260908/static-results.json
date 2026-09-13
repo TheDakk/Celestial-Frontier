@@ -1,0 +1,25 @@
+{
+  "schema": "cf-creature-kinematics-static/v1",
+  "status": "FAIL",
+  "certification": false,
+  "startedAt": "2026-09-09T01:38:17.708Z",
+  "finishedAt": "2026-09-09T01:38:17.748Z",
+  "sourceCommit": "afee1924aac880bed4360deae2a26d081ca18d45",
+  "node": {
+    "executable": "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+    "version": "v26.8.1"
+  },
+  "scope": "One fail-stop static chain; no focused-test rerun, browser, profile, or universal-animation admission.",
+  "startupReceipt": "audits/TOOLCHAIN_STARTUP_20260908_CIVET/manifest.json",
+  "sources": [],
+  "steps": [],
+  "outputs": [],
+  "cleanupErrors": [],
+  "pending": null,
+  "locks": {
+    "foreground": "/private/tmp/celestial-frontier-toolchain-501.lock",
+    "checkout": "/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/celestial-frontier-workspace-e5c3a01ec0513024d9ea.lock.json",
+    "released": true
+  },
+  "error": "Error: ENOENT: no such file or directory, open '/Users/nick/Projects/celestial-frontier-openai-mac/main.js'\n    at Object.openSync (node:fs:779:18)\n    at Object.readFileSync (node:fs:625:35)\n    at readRecord (file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/static-runner.mjs:15:19)\n    at Array.map (<anonymous>)\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_PAINTED_PARTS_20260908/static-runner.mjs:74:30"
+}

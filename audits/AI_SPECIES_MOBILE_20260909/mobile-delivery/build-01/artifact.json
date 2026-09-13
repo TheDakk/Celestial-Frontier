@@ -1,0 +1,22 @@
+{
+  "directory": "/private/tmp/cf-mobile-pack-20260909-species-01",
+  "manifestSha256": "4ed80ae51e216306a548d55e1f980735c08ff25bec6b563e2887cc9e992b7e53",
+  "status": "PASS",
+  "buildId": "9eb570011711a9f939815f07cfd57433cae578669b3695272fa6d8c283e52a47",
+  "fileCount": 97,
+  "totalBytes": 56528315,
+  "budget": {
+    "currentBytes": 56528315,
+    "priorBytes": 56528315,
+    "retainedStaticBytes": 113056630,
+    "shippedLimitBytes": 134217728,
+    "retainedLimitBytes": 268435456,
+    "currentHeadroomBytes": 77689413,
+    "retainedHeadroomBytes": 155378826,
+    "excludesBrowserStorageOverhead": true,
+    "excludesModelAndOriginals": true
+  },
+  "distributionQualified": false,
+  "physicalPhoneQualified": false,
+  "fullModelInstallQualified": false
+}

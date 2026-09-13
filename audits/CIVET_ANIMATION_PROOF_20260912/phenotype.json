@@ -1,0 +1,204 @@
+{
+  "schema": "cf.creature-blender-phenotype/v1",
+  "id": "earth-civet",
+  "genome": {
+    "_cradle": 1,
+    "_earthName": "Civet",
+    "accent": 3,
+    "behavior": 9,
+    "body": 13,
+    "color": 14,
+    "detail": 4,
+    "diet": 5,
+    "eyes": 5,
+    "form": 12,
+    "gen": 0,
+    "habitat": 5,
+    "head": 5,
+    "heat": 1,
+    "kingdom": "fauna",
+    "life": 5,
+    "limbs": 3,
+    "loco": 6,
+    "lumin": true,
+    "metab": 4,
+    "pattern": 0,
+    "repro": 7,
+    "seed": 3212817920,
+    "sense": 7,
+    "size": 4,
+    "skin": 8,
+    "tail": 1,
+    "temper": 1,
+    "trait": 14
+  },
+  "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/hybridmatrixaudit.ts",
+      "bytes": 62780,
+      "sha256": "c826b6ca714e9c33d8d8fa458b4b1da5aae8fff4da4cc7d1feace127883fda9d"
+    },
+    {
+      "path": "port/v2/apps/game/src/pilot-specimens.ts",
+      "bytes": 5219,
+      "sha256": "c9c33619b55e69663740332237f7b1f4e9710bd633f6b3f83063e608f8550ef2"
+    },
+    {
+      "path": "port/v2/packages/art/src/birdoverrides.ts",
+      "bytes": 9167,
+      "sha256": "48ffa589f2273f0f29fd85df1f05fd070477ade70f1cdeb7698f5321e5702dc7"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides.ts",
+      "bytes": 253580,
+      "sha256": "9e109fea1bda4d312eb733f8aa56aacba67ab0ceb79a6a8d9228bec6bc118694"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides2.ts",
+      "bytes": 235945,
+      "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides3.ts",
+      "bytes": 153673,
+      "sha256": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec"
+    },
+    {
+      "path": "port/v2/packages/art/src/invertoverrides.ts",
+      "bytes": 231622,
+      "sha256": "c0a76508b48d6f97793f37d9962e6140242ef9229a168ef6f538508d4ecaf746"
+    },
+    {
+      "path": "port/v2/packages/art/src/mammaloverrides.ts",
+      "bytes": 29311,
+      "sha256": "2ef6c2e8e592c14d3ce77d4f77b2637ffa0ae55b771375ec833e6a299db68702"
+    },
+    {
+      "path": "port/v2/packages/art/src/proceduraloverrides.ts",
+      "bytes": 13174,
+      "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be"
+    },
+    {
+      "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
+      "bytes": 358210,
+      "sha256": "baa8df44c485c0febaf1c8d05579d846a4c3b2114454c7e42d1c4177a4703e55"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesidentity.ts",
+      "bytes": 3190,
+      "sha256": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesoverrides.ts",
+      "bytes": 126067,
+      "sha256": "9c212624234a64d78a75a362e48625bec16a36f4831fd29ba86f09f236f9441b"
+    },
+    {
+      "path": "port/v2/packages/art/test/familyspread.test.ts",
+      "bytes": 4066,
+      "sha256": "f73e972d3efa85e3398d767b8eb4fc4b5364b41d53cdcb9989c9b1729cc88db3"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
+      "bytes": 6433,
+      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
+      "bytes": 13811,
+      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
+      "bytes": 4570,
+      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/index.ts",
+      "bytes": 3281,
+      "sha256": "eee2058546ab009b6b33376bad1005d6a597bd2b336506851d9be562d8cbef61"
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "bytes": 13307,
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7"
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "bytes": 3639,
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "bytes": 20728,
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "port/v2/tools/creature-blender-export.mjs",
+      "bytes": 20283,
+      "sha256": "b2b365da9a9fc31843571db5b8a2746e417268a4dfa1432abf79684f58ea3357"
+    }
+  ],
+  "route": {
+    "kind": "named",
+    "kingdom": "fauna",
+    "name": "Civet",
+    "painter": "faunaQuadruped → faunaMammalD → faunaResetViverridD"
+  },
+  "morphology": {
+    "kind": "viverrid-d",
+    "spec": {
+      "carry": 0.4,
+      "coat": "spots",
+      "depth": 0.1039,
+      "ears": "round",
+      "face": "mask",
+      "faceMark": "darkMask",
+      "family": "mustelid",
+      "hue": "#a8996f",
+      "legs": 0.078,
+      "len": 0.188,
+      "mammalDPlan": "Civet",
+      "muzzle": 0.38,
+      "neck": 0.05,
+      "tail": "banded"
+    },
+    "coordinates": {
+      "space": "painter-normalized",
+      "canvasSize": 440,
+      "x": "right",
+      "y": "down",
+      "fittedRaster": false
+    },
+    "proportions": {
+      "groundY": 0.795,
+      "left": 0.3,
+      "right": 0.65,
+      "rumpTop": 0.42,
+      "shoulderTop": 0.405,
+      "bodyBottom": 0.65,
+      "hx": 0.755,
+      "hy": 0.47,
+      "headRx": 0.07,
+      "headRy": 0.058,
+      "muzzleLen": 0.125,
+      "legW": 0.022
+    },
+    "palette": {
+      "base": "#a8996f",
+      "cr": 168,
+      "cg": 153,
+      "cb": 111,
+      "lit": "rgb(215,195,142)",
+      "dark": "rgb(75,68,49)"
+    },
+    "lineage": null
+  },
+  "admission": {
+    "status": "supported",
+    "reason": "bounded named Civet anatomy export; Blender proof remains unaccepted"
+  },
+  "visualAcceptance": "UNREVIEWED",
+  "anatomicalAnimation": "incomplete"
+}

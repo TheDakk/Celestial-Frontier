@@ -1,0 +1,384 @@
+{
+  "schema": "cf-painted-earth-landing-static/v1",
+  "certification": false,
+  "status": "PASS",
+  "startedAt": "2026-09-09T02:27:58.284Z",
+  "startingCommit": "acca36b469da2024a7112c3cdd426f351f6bd2f5",
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 854732,
+      "sha256": "d396d611efc1db31f6839bba65527fe9eec1f5df1de888845acd44aba2d82cb0"
+    },
+    {
+      "path": "port/v2/apps/game/src/painted-earth-landing-recipe.ts",
+      "bytes": 1019,
+      "sha256": "8975ea6637ca2a68f5d7ae1c00bb24dfaf59beba4baddab0b415c49eb0d7f097"
+    },
+    {
+      "path": "port/v2/tests/painted-earth-landing-binding.test.ts",
+      "bytes": 4760,
+      "sha256": "031dd840530bca619617b57fb3393f19528600e7d95dc0c50e4875137bfae846"
+    },
+    {
+      "path": "port/v2/apps/game/src/pilot-canonical-vista.ts",
+      "bytes": 4678,
+      "sha256": "c408b4ab50484dd2c088e6aa0261e75a651d0abe4099902c8f2a9246ed8bc5e7"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-recipe.ts",
+      "bytes": 15885,
+      "sha256": "ab1fd02bd9a125a07f4a2abc671658cae3d94b5368bf3c226f5b1fc46e1fb824"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-layout.ts",
+      "bytes": 1717,
+      "sha256": "9fc1e9985c6bd9be072b99d3a92a095497edf2b38622dd4142d3f3b88df23528"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-layered-resources.ts",
+      "bytes": 1005,
+      "sha256": "3a5b940e36a87e6a2fda553baded4251bc6426cd00091f938565ba10323beab3"
+    },
+    {
+      "path": "port/v2/apps/game/src/painted-vista-load.ts",
+      "bytes": 7157,
+      "sha256": "dce66122c7504289606887ead03ce47db4b06fef13b4322e6e88e9fb0f3499de"
+    },
+    {
+      "path": "port/v2/apps/game/src/biome-vista-surface.ts",
+      "bytes": 10777,
+      "sha256": "4d0c72d2b305a6e23fda93bcb22b0ff0c5945f3fc5f3b10f681d9dc7e0be0f79"
+    },
+    {
+      "path": "port/v2/apps/game/src/biome-vista-protocol.ts",
+      "bytes": 12210,
+      "sha256": "912c1c1463e4b8876c329bcb72da98dbfc593a173db20444b0e88a6a436d854c"
+    },
+    {
+      "path": "port/v2/apps/game/src/biome-vista-cache.ts",
+      "bytes": 1463,
+      "sha256": "e17af0c9c061d15bfbb5523b1c8f92f45f67a0a6758f3f55ade8137d6e6049b8"
+    },
+    {
+      "path": "port/v2/apps/game/src/biome-vista.worker.ts",
+      "bytes": 3068,
+      "sha256": "f999e9233beda4f4e066030fd59720fe687b6f09e07db404a7ed471bd40b83a3"
+    },
+    {
+      "path": "port/v2/apps/game/src/world-roster.ts",
+      "bytes": 24167,
+      "sha256": "0e071ec4c355cb354db6031eb94c98bfaa008c4f9ef2485670b41d376fa4830f"
+    },
+    {
+      "path": "port/v2/apps/game/src/scene-texture-owner.ts",
+      "bytes": 12535,
+      "sha256": "db7af3f23c3b7d652df37cb54f1082eea177380aefd4f86bc16365a6adbed709"
+    },
+    {
+      "path": "port/v2/apps/game/src/pixi-managed-resource-owner.ts",
+      "bytes": 11243,
+      "sha256": "2d9eaeb667f5a4a763e25bd8e168b721494dda49c252e2411031a258d2653708"
+    },
+    {
+      "path": "port/v2/apps/game/src/descent-policy.ts",
+      "bytes": 13752,
+      "sha256": "a76f71e129c15c24837d6d81ab7db9dad6001a73e64a0c2e0854e67343a3e6f1"
+    },
+    {
+      "path": "port/v2/apps/game/src/arc0-landing-action.ts",
+      "bytes": 68006,
+      "sha256": "e08dcfb59b9410dcc3f65f4e5ce42f842497428bc2eb445550b5aa6ab30260ea"
+    },
+    {
+      "path": "port/v2/packages/persistence/src/outcome-transaction.ts",
+      "bytes": 58363,
+      "sha256": "bb765b96e2f9ea575103150e1eb0cb407f32cfafb955751bda79905680d4a85f"
+    },
+    {
+      "path": "port/v2/packages/art/src/earth-resident-plan.ts",
+      "bytes": 7654,
+      "sha256": "72d27b39e9c15382638f4db09074198e0eb296a18affafc740bbdc89e7f311f6"
+    },
+    {
+      "path": "port/v2/apps/game/src/assets/painted/earth-civet-landing-v1.webp",
+      "bytes": 600756,
+      "sha256": "cd2c616abb35610f6ec63382f6476436f27a8c1a2c698757c8a66d34a5b2e0ec"
+    },
+    {
+      "path": "port/v2/apps/game/src/assets/painted/earth-riverbank-v1.webp",
+      "bytes": 130306,
+      "sha256": "2993cd8054a2424f20ba24040717acdb17aa9c7157500cd5b945170cd1f625d8"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/canonical-earth.json",
+      "bytes": 26385,
+      "sha256": "2f05c033cd80f578ff68b78b65bbd815450421e974c4be34e52661df91f1f5eb"
+    },
+    {
+      "path": "audits/AV_EARTH_LAYERED_SCENE_20260908/native-earth-layers-settled-runner.mjs",
+      "bytes": 62126,
+      "sha256": "76ca9686c913f52568b2fc3b7268085818806c6de8edcb7590abc091e5b770cf"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-runner.mjs",
+      "bytes": 61703,
+      "sha256": "714d2dfba790e6b00cbab57b98dee70af748787b5ee48f901bc655aea6e5ab38"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v2-runner.mjs",
+      "bytes": 66442,
+      "sha256": "851fae7eb087a3b6a52124aef42286bcb643dbca108778b906357c47937a9e95"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v2-chain.mjs",
+      "bytes": 5705,
+      "sha256": "4a6b816828516d8bc1c37df22d2308eef85533bb79b1957c5d5699691cc1058a"
+    },
+    {
+      "path": "port/v2/apps/game/src/painted-vista-load.test.ts",
+      "bytes": 15141,
+      "sha256": "05b72476e7cf4d399dd2351ba7f06a873f7f8acb1619369206ee9931fd2cb953"
+    },
+    {
+      "path": "port/v2/tests/earth-layered-shake-settlement.test.ts",
+      "bytes": 8130,
+      "sha256": "77e14d79af8ad56d78b84e99a7ea562f7b89d4f2110648f6f5a0c37ebbae7ad5"
+    },
+    {
+      "path": "port/v2/tests/painted-earth-mount-ownership.test.ts",
+      "bytes": 10044,
+      "sha256": "5219134a58007706086cd0549839bc297983dd9198881ec712739743c9841683"
+    },
+    {
+      "path": "port/v2/tools/arc4-browser-contract.mjs",
+      "bytes": 562401,
+      "sha256": "3d8e1c2b8c08013ddbe0ee266cccc99ceaff593629519f26d1f5d7072d816e94"
+    },
+    {
+      "path": "port/v2/tools/browsercdp.mjs",
+      "bytes": 159934,
+      "sha256": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca"
+    },
+    {
+      "path": "port/v2/apps/game/src/app-chrome.ts",
+      "bytes": 14075,
+      "sha256": "7eabf5ad3cd687ed0a12246c27a6a4509a0630e5b4381773c5bcff56e36f5005"
+    },
+    {
+      "path": "port/v2/apps/game/src/ui-sheet-style.ts",
+      "bytes": 7889,
+      "sha256": "73f0f6adc6e3d58f333996ec279e3b53b580ef512e6297d29445779f381d72cc"
+    },
+    {
+      "path": "port/v2/apps/game/index.html",
+      "bytes": 67200,
+      "sha256": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f"
+    },
+    {
+      "path": "port/v2/packages/domain/strays/src/index.ts",
+      "bytes": 285,
+      "sha256": "fa905124c4d182f361b868cf0319fdb9279bd8d13cfb1f85c991d00f83d225ec"
+    },
+    {
+      "path": "port/v2/packages/domain/strays/src/strays.verbatim.js",
+      "bytes": 22644,
+      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "bytes": 14498,
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 158128,
+      "sha256": "466288dddfa71474f0a0da1e8d944824dd8b9047df1c33e008666a4d655c08ce"
+    },
+    {
+      "path": "port/v2/apps/game/vite.config.ts",
+      "bytes": 1043,
+      "sha256": "417c3878a7256ffea85d4321e459f944fcdfdc979f724f063df6b0e52d0efda0"
+    },
+    {
+      "path": "port/v2/tsconfig.json",
+      "bytes": 329,
+      "sha256": "d345415ed7ce8ee346b346161c75a2f34db48ccd604ddb77b9cc949f1e56d291"
+    },
+    {
+      "path": "port/v2/apps/game/tsconfig.json",
+      "bytes": 509,
+      "sha256": "f67ed5604d17ef604f4460c2195a88da847a50bc6020d53f5c70de4da0e6fc65"
+    },
+    {
+      "path": "port/v2/apps/game/tsconfig.worker.json",
+      "bytes": 389,
+      "sha256": "a4acd79177e942e92308af77790e59517d7ea31e258c36c1ba1c588ce0c47a1e"
+    },
+    {
+      "path": "port/v2/package.json",
+      "bytes": 3088,
+      "sha256": "cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7"
+    },
+    {
+      "path": "port/v2/package-lock.json",
+      "bytes": 90228,
+      "sha256": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1757,
+      "sha256": "1aff75844db6816f6a40849f745eafeb2842cfecfa0733db0ae6cd31760c94e2"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 19884,
+      "sha256": "8427627abba8f6bd1dd37212870f4f4ff8741029aa3efcf16850f2e3b6a276e5"
+    },
+    {
+      "path": "tools/validate.js",
+      "bytes": 2784,
+      "sha256": "d220a48bf720ba07965888ee409229930359c3ede3ec76f6842183b3ca64a460"
+    },
+    {
+      "path": "tools/build.js",
+      "bytes": 1126,
+      "sha256": "9d9837deea2889f6a8b9a0e4a58ed43ef002bd346aea06f5c6476913c85e3ebf"
+    },
+    {
+      "path": "tools/baseline.json",
+      "bytes": 82916,
+      "sha256": "6f9a42a29c7a3276a72417267254b59be4ebf9999dfa5656073988c1fbf8081c"
+    },
+    {
+      "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-runner.mjs",
+      "bytes": 5452,
+      "sha256": "7c4407ed9aaca9717cdfc5b4ae010e2bf9b042b8e5394d9e5e46a37bedc356f0"
+    }
+  ],
+  "steps": [
+    {
+      "id": "native-syntax-runner",
+      "cmd": "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+      "args": [
+        "--check",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v2-runner.mjs"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "startedAt": "2026-09-09T02:27:58.373Z",
+      "status": "PASS",
+      "endedAt": "2026-09-09T02:27:58.405Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": {
+        "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-native-syntax-runner.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "native-syntax-chain",
+      "cmd": "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+      "args": [
+        "--check",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/STATIC_LANDING_PORTRAIT_20260908/native-landing-still-v2-chain.mjs"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "startedAt": "2026-09-09T02:27:58.414Z",
+      "status": "PASS",
+      "endedAt": "2026-09-09T02:27:58.444Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": {
+        "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-native-syntax-chain.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "focused",
+      "cmd": "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/painted-earth-landing-binding.test.ts"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "startedAt": "2026-09-09T02:27:58.449Z",
+      "status": "PASS",
+      "endedAt": "2026-09-09T02:27:59.019Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": {
+        "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-focused.log",
+        "bytes": 242,
+        "sha256": "dd395c14cf81c3d6098b7de7a8bd34e9316316b427d7cab5b727e5227f76c536"
+      }
+    },
+    {
+      "id": "typecheck",
+      "cmd": "/opt/homebrew/bin/npm",
+      "args": [
+        "--prefix",
+        "port/v2",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "startedAt": "2026-09-09T02:27:59.024Z",
+      "status": "PASS",
+      "endedAt": "2026-09-09T02:28:01.476Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": {
+        "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-typecheck.log",
+        "bytes": 134,
+        "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+      }
+    },
+    {
+      "id": "validate",
+      "cmd": "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "startedAt": "2026-09-09T02:28:01.482Z",
+      "status": "PASS",
+      "endedAt": "2026-09-09T02:28:14.223Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": {
+        "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-corrected-validate.log",
+        "bytes": 1093,
+        "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+      }
+    }
+  ],
+  "pending": null,
+  "cleanupErrors": [],
+  "locksReleased": true,
+  "scope": "One focused/static fail-stop chain. No repeated kinematics, full profile or browser certification.",
+  "prior": {
+    "path": "audits/STATIC_LANDING_PORTRAIT_20260908/integration-static-results.json",
+    "bytes": 14578,
+    "sha256": "c772da01d8ef7942ee40c373037de19148ee3f7cb23c5827dc5568a629ffe4f2"
+  },
+  "fix": "TS2352 in mutable adversarial deep-clone fixture: explicitly bridge readonly clone through unknown; no runtime behavior or assertion changes. Original146 focused passes retained; rerun only changed5-test file.",
+  "legacyBefore": {
+    "path": "celestial-frontier.html",
+    "bytes": 1964530,
+    "sha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746"
+  },
+  "legacyAfter": {
+    "path": "celestial-frontier.html",
+    "bytes": 1964530,
+    "sha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746"
+  },
+  "endedAt": "2026-09-09T02:28:14.240Z"
+}

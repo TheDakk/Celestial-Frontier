@@ -1,0 +1,180 @@
+{
+  "schema": "cf.ai-game-final-source.v1",
+  "recordedAt": "2026-09-09T14:52:05.443090+00:00",
+  "parent": "98cb65c8c79d8e70bd6c6becb7d64b8a81b552a8",
+  "ownership": {
+    "agent": "OpenAI/Codex",
+    "os": "macOS",
+    "physicalRoot": "/Users/nick/Projects/celestial-frontier-openai-mac",
+    "branch": "openai/mac",
+    "upstream": "origin/openai/mac"
+  },
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/earth-layered-layout.ts",
+      "bytes": 1960,
+      "sha256": "387a7aed0f17c92db04d8cb899a14ab7f85d971fd55f85d25729316b4043e699"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 865676,
+      "sha256": "8c3267940296d8c78e43d7cf548ebc5f0369d6a1e2c8b08158221b328e135d0a"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 158714,
+      "sha256": "b2e6673b2f673a31f68acc4a05b9f4bded9363bfabf2285cd03cd993eccfab52"
+    },
+    {
+      "path": "port/v2/tests/earth-layered-chrome-layout.test.ts",
+      "bytes": 4727,
+      "sha256": "767c2f2b497043d1238e046fcdf7495062f8c32a283ffdcf68855342dd271bf6"
+    },
+    {
+      "path": "port/v2/tests/earth-layered-shake-settlement.test.ts",
+      "bytes": 8183,
+      "sha256": "e37166c3173be84c5c80fa32a27e454d3e847d8551c7d103f762f9acd5d9f827"
+    },
+    {
+      "path": "port/v2/tests/painted-earth-mount-ownership.test.ts",
+      "bytes": 17083,
+      "sha256": "2155d4b3979f7e2c785023e131a4cbabf3a6db99fe152934dc18825cf322a33f"
+    },
+    {
+      "path": "port/v2/tests/pilot-landing-main-wiring.test.ts",
+      "bytes": 10299,
+      "sha256": "6515ae916f385a0a36ae3b7630395ab5ac2a076382de77777fac01bdafa774a1"
+    },
+    {
+      "path": "tools/local-image-generation/stage-worker.mjs",
+      "bytes": 11212,
+      "sha256": "337aaea3f7f9804a4409887367b922ed68e02a8ee3dc7f0c859c913dfa52d8ac"
+    },
+    {
+      "path": "port/v2/apps/game/src/ai-landfall-jobs.ts",
+      "bytes": 8016,
+      "sha256": "2de3efd298b331ece5b0ec7c8c1095745f65c20899e95c260027587e37a4b5d7"
+    },
+    {
+      "path": "port/v2/apps/game/src/ai-landfall-originals.ts",
+      "bytes": 10148,
+      "sha256": "3e5b972b023c895c5f9c5ce44ce727b0150d5fb5fcaa37fb05729ed010061011"
+    },
+    {
+      "path": "port/v2/apps/game/src/landfall-conditioning.ts",
+      "bytes": 14207,
+      "sha256": "6cce11db47d7d096fc21c61a733f990f6a66eb51fdcd3b1540a73ccd4aa43402"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-game.ts",
+      "bytes": 11515,
+      "sha256": "3f53dc5bd3fa443da7ba18b5429cf64b90190f93344ffe99d52d68aaefb36262"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-runtime.ts",
+      "bytes": 10009,
+      "sha256": "827cb9fa48d0e1a4e7367c484a7ef9cbe9f62f4b1585dd4c0df528c003dcbdef"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-model-delivery.ts",
+      "bytes": 23791,
+      "sha256": "1754f0f127cdf550ffc5956e5daac4cc3c4bde829175b3e73ca04abbb7d16ea8"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-model-manifest.ts",
+      "bytes": 3866,
+      "sha256": "398dd13f6dc6a764a9903782a1000305ee99a1a9dc3d1ad57292a2c27dfee0c6"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-model-sha256.ts",
+      "bytes": 5162,
+      "sha256": "783905b7f23d1d6355d61e196eb2ebc332e7cebfe37236aa271cfed1318db677"
+    },
+    {
+      "path": "port/v2/tests/ai-landfall-jobs.test.ts",
+      "bytes": 8631,
+      "sha256": "b7323951861f24ffb0f856f46da2e078c07232cdf461fc1b56d84230151da3db"
+    },
+    {
+      "path": "port/v2/tests/ai-landfall-originals.test.ts",
+      "bytes": 9629,
+      "sha256": "3312740616fa9066fc86330f92269b2cbaa63861450702f373a52e30522cb555"
+    },
+    {
+      "path": "port/v2/tests/landfall-conditioning.test.ts",
+      "bytes": 14322,
+      "sha256": "53a517e5c7177825f75c9c59584d40f9d84c3940db02ccf3fa5b8892b5a6c39d"
+    },
+    {
+      "path": "port/v2/tests/local-ai-game.test.ts",
+      "bytes": 17374,
+      "sha256": "86fc36aab5bae099933352793628bb4f841cedc8b7c7ed4b0cc74e0200c40425"
+    },
+    {
+      "path": "port/v2/tests/local-ai-runtime.test.ts",
+      "bytes": 21781,
+      "sha256": "d0efc58e788fdb456ac15e537afc6aacb875a0b6b09ab1c78596556b3216796e"
+    },
+    {
+      "path": "port/v2/tests/local-model-delivery.test.ts",
+      "bytes": 15497,
+      "sha256": "82945c783ddcc1a0a2fec64278b60d4b95dc1ac4e91987e3f9d66ebc92836fa4"
+    },
+    {
+      "path": "port/v2/tests/local-model-sha256.test.ts",
+      "bytes": 5621,
+      "sha256": "e3e923786a322b9126e4bcbc713e959854586b64757ccd49b56e02a29af2afff"
+    },
+    {
+      "path": "tools/local-image-generation/game-preview-server.mjs",
+      "bytes": 15334,
+      "sha256": "7cb8ce9b5511eca92fa5fbeeeeaabdcc6bbde883cb74f6769200b61ac5fdd031"
+    },
+    {
+      "path": "tools/local-image-generation/game-preview-server.test.mjs",
+      "bytes": 10327,
+      "sha256": "cfb8479766c471621467cfb68a3616a993fdf62d158dc5de30ce5acd9e99d4e9"
+    },
+    {
+      "path": "tools/local-image-generation/run-game-integration.mjs",
+      "bytes": 29881,
+      "sha256": "0108f15bb892fdfe86d0bbb57e3e6369c97a37d8d02b242fe521ecb41dc74e7a"
+    }
+  ],
+  "receipts": [
+    {
+      "path": "native-game-01/result.json",
+      "sha256": "06cc18575b56f17a346a1f984d5f6a20aeefbf60fc5c57bbd944188bbefb1439"
+    },
+    {
+      "path": "native-game-02/result.json",
+      "sha256": "635a01b56535c686e4a54f9bcac11b9beae8cc413aa03593e2b90e18b9a1fcda"
+    },
+    {
+      "path": "retry-guard-01/result.json",
+      "sha256": "86e7e08be6b1ab81ef01709d4a90a38ddec13523a2ca95dd6813c86da58d95c9"
+    },
+    {
+      "path": "validation-retry-guard.json",
+      "sha256": "84b1244e931decff002d04bcdfe8946d35550b9afe81b0a282a39991ed096eac"
+    },
+    {
+      "path": "NATIVE_COMPARISON.json",
+      "sha256": "7bd77ac73c8927bbe98266ac65aa8484e9664606b5e57be7e2aecf5f8d2e780e"
+    }
+  ],
+  "finalChangesAfterNative02": [
+    "Controller Retry guard with separate 11-case focused tests and all-three-TypeScript/root validation",
+    "Current references, handoff and source/evidence inventory"
+  ],
+  "native02MeasuredController": {
+    "path": "native-game-02/measured-local-ai-game.ts",
+    "sha256": "ecfba435f3b998b132acc47d2ae355be7e2b3aa676bc50c5940f9f118443871a",
+    "provenance": "Reconstructed solely by reversing the later exact Retry guard and verified byte-for-byte against the original source-before SHA; measured run/result unchanged"
+  },
+  "qualityAccepted": false,
+  "physicalMobileQualified": false,
+  "shippingRuntimeReady": false,
+  "fullAdmission": false,
+  "hostedActions": false
+}

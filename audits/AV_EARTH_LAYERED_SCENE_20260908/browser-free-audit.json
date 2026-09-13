@@ -1,0 +1,18 @@
+{
+  "status": "FAIL",
+  "scope": "Earth layered scene focused verification; historical full-profile and navigation failures remain open",
+  "steps": [
+    {
+      "name": "route-controls",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "overridecontrol"
+      ],
+      "exitCode": 1,
+      "error": null,
+      "seconds": 12.621
+    }
+  ],
+  "sourceFreeze": 786
+}

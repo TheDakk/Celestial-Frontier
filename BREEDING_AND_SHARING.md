@@ -1,5 +1,52 @@
 # Celestial Frontier — Breeding & Sharing
 
+## Requested time-aware art and sharing — source reviewed 2026-09-08
+
+Nick approves the full landfall painting direction and requests procedural coverage, planetary
+rotation/daylight and seasons, plus shareable discoveries. Current source still chooses a fixed
+seeded day/dusk/night appearance; cosmetic orbital motion is not a physical year/season authority.
+CF1 native Share/Follow carries a location, not the sender's exact time/roster/art snapshot.
+CFB/CFB2 remain domain codecs without native V2 creature share/import wiring. Nothing here changes
+those formats, world/genome generation, current biome authority, saves or gameplay clock rules.
+
+[TIME_AND_SHARING.md](audits/MIDGAME_ART_DIRECTION_20260908/TIME_AND_SHARING.md) records actual
+owners and the proposed versioned appearance recipe: exact world/place, full organism identities,
+art catalogue, explicit clock coordinate, supported rotation/axis/orbit/light/season conditions
+and camera. A view snapshot would be separate from a CF1 location or ownership transfer. Keep
+visual conditions separate from the protected active-play economy and committed ecology epoch;
+wall-clock manipulation must not award yield/recovery or rewrite organisms. Seasons require an
+explicit approximation of tilt, latitude and orbital phase; not all worlds have four Earth seasons.
+This is a recorded design requirement, not implemented climate/physics or all-world painted output.
+
+
+> **2026-09-08 current sharing and visual-identity boundary (matches local code):**
+> The V2 player UI currently exposes **CF1 address Share/Follow**. A CF1 code carries galaxy/star
+> coordinates and seeds, an optional planet seed and name; the recipient regenerates and verifies
+> that hierarchy and applies its own reach policy. It is a pointer, not a creature snapshot or a
+> bypass of Land. **CFB creature/Champion sharing is not yet exposed in the V2 UI.** The legacy
+> `CFB-` codec and versioned `CFB2-` lineage codec exist in
+> [domain combatcore](port/v2/packages/domain/combatcore/src/lineage-codec.ts), separately from
+> player wiring. Both normalize incoming genome values; CFB strips parent seeds, while CFB2
+> restores one exact ordered uint32 parent pair after checking its version-2 witness. CFB2 also
+> omits feeding/brood state. Neither is a lossless archive of every original genome value or proof
+> that the receiving expedition owns a creature.
+>
+> [Canonical species identity](port/v2/packages/domain/acquisition/src/model.ts) hashes the complete
+> immutable genome as `species-v1` / `genome-v1`, excluding the separate mutable fields XP, injury,
+> feeding, brood, assignment and bond. A name or seed alone cannot identify an inherited hybrid.
+> [Portrait cache identity](port/v2/packages/art/src/speciesidentity.ts) separately preserves every
+> supplied genome field and ordered lineage input. Compatible **Celestial Frontier** instances can
+> reproduce the same supported biological identity and visual recipe; unrelated games would need
+> to implement the same formats and rules. This does not guarantee identical GPU/font/DPR pixels.
+>
+> **Planned, not implemented:** new painted art should use a separate versioned visual recipe and
+> catalogue identity, stable asset IDs/content hashes and deterministic choices derived from the
+> complete species identity. Preserve existing genome semantics and supported older recipes; an
+> unknown version must not silently reinterpret an old creature. CF1/CFB currently carry no such
+> visual-recipe/catalogue pin. See the
+> [painted-space direction addendum](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/README.md).
+>
+
 > **2026-09-01 current automatic-arrival transient-latch overlay (matches local code as of
 > 2026-09-01; supersedes older “current” labels without rewriting historical evidence):** PR #35
 > run `33522000552` tested exact head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base
@@ -368,7 +415,7 @@ Per-creature genome fields that persist (in `codex` entries, save `codex[]`):
 ## 5. Determinism
 **Share codes MUST be deterministic / cross-device** — the whole "same universe on every device" promise depends on it, and it's a hard rule (no `Math.random`/`Date.now` in anything that feeds generation).
 
-- A code carries the **seed**, not rendered output. Everything downstream — portrait, battle stats, tastes, flora stat flavour, ability — is a **pure function of that seed** via `mulberry32`/`hashInt` (`floraStat` uses `hashInt`, `faunaTastes` uses `mulberry32(seed^0xFEED)`), so the recipient regenerates a byte-identical creature.
+- **CF1 carries a seeded address; creature codes carry genome data, not rendered output.** An inherited creature is determined by its complete immutable genome and supported generation/rendering rules, including lineage and inherited traits—not its seed alone. Legacy CFB and the domain CFB2 codec apply the normalization described above, so their compatibility promise concerns the resulting normalized creature, not byte-for-byte preservation of the original genome. CFB2 preserves one ordered parent-seed pair; legacy CFB does not. Compatible Celestial Frontier instances can derive the same supported biology and appearance from the same accepted identity/recipe. Browser, GPU, font, antialiasing and DPR differences mean this is not a guarantee of identical rendered pixel bytes.
 - **Duels are deterministic:** `runDuel` (~L11312) seeds its RNG with `mulberry32(hashInt(seedA, seedB, 0xD0E1))` — the same matchup plays out identically on every device (the tutorial even advertises this).
 - Codes **deliberately don't carry runtime randomness** — no `Math.random` state, no battlefield modifiers (`_mult`/`_wf`), no injuries (`hurt`). The **only** leveled state that travels is champion `xp`, and it's clamped to the L9 ceiling and marked exhibit-only so a shared champion can't be farmed as an owned/breedable creature.
 - `CF1-` world codes store galaxy/star coords + seed; the world is regenerated from seed on arrival — the code is a pointer, not a snapshot.

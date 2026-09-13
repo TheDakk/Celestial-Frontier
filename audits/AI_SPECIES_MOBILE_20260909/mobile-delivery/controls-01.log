@@ -1,0 +1,17 @@
+(node:85063) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ ordinary PWA generated worker revision is byte-identical to signed pre-mobile HEAD (17.479ms)
+✔ combined and retained exact byte boundaries reject invalid counts and +1 (0.168417ms)
+✔ exact external model policy rejects changed host, revision, queries, duplicates and oversized files (0.293834ms)
+✔ optional first install pre-caches only exact app/runtime assets; external request is explicit, streaming and uncached (7.797334ms)
+✔ optional model transport refuses unpinned endpoints, query changes, writes, credentials, bad ranges and absent owners without fetching (2.5785ms)
+✔ ordinary worker retains external refusal and optional exact app/runtime reads survive network loss (4.994209ms)
+✔ PWA inspector binds table digest and rejects omitted, duplicate or changed assets (1.641834ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 127.620291

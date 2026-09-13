@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "meaning": "Native served input equals the pinned-tokenizer admission recipe except the explicitly selected Q8 derivative",
+  "referenceOnly": "/identity.webp",
+  "promptSha256": "c2f2512fd647e258d14cdb2952069f37cff82b6c1237917d0d64cc56d8039467",
+  "canonicalSnapshotSha256": "a23ef143d97bb7e72c8b5cc72b858266246fd72682dd29de00e0e3fc69848b3f",
+  "seed": 133,
+  "width": 1024,
+  "height": 576,
+  "generationMs": 69948.08500003815,
+  "qualityAccepted": false,
+  "repeatabilityClaim": false
+}

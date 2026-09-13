@@ -1,0 +1,36 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/landfall-fidelity.test.ts (28 tests | 1 failed) 205ms
+     × requires explicit plant-count evidence and all diagnostics; favorable finish cannot repair their failures 7ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 27 passed (28)
+   Start at  15:25:00
+   Duration  504ms (transform 182ms, setup 0ms, import 227ms, tests 205ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/landfall-fidelity.test.ts > six-reference V2 review binding without changing historical V1 or claiming visual approval > requires explicit plant-count evidence and all diagnostics; favorable finish cannot repair their failures
+AssertionError: expected { ok: false, reason: 'invalid-data' } to deeply equal { ok: false, …(1) }
+
+- Expected
++ Received
+
+  {
+    "ok": false,
+-   "reason": "incomplete-review",
++   "reason": "invalid-data",
+  }
+
+ ❯ tests/landfall-fidelity.test.ts:407:81
+    405|     expect(assessLandfallFidelityV2(contract, review)).toMatchObject({…
+    406|     for (const invalid of [{ ...review.scene, floraCount: undefined },…
+    407|       expect(assessLandfallFidelityV2(contract, { ...review, scene: in…
+       |                                                                                 ^
+    408|     review.residents[1]!.diagnostics[2]!.result = 'fail';
+    409|     expect(assessLandfallFidelityV2(contract, review)).toMatchObject({…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

@@ -1,0 +1,11 @@
+{
+  "schema": "cf.kit-normal-land.v1",
+  "status": "FAIL",
+  "head": "f725f63306e8cca96f7b30e929b3b1bfb4a33477",
+  "events": [],
+  "requests": [],
+  "states": [],
+  "screenshots": [],
+  "inferenceRuns": 0,
+  "error": "Error: Native UI proof requires committed source\n    at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/run-kit-normal-land.mjs:15:32)\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/run-kit-normal-land.mjs:19:2"
+}

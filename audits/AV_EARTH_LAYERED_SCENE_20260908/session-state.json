@@ -1,0 +1,37 @@
+{
+  "recordedAt": "2026-09-08T17:28:08.380459+00:00",
+  "app": "Codex",
+  "host": "macOS",
+  "physicalRoot": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "branch": "openai/mac",
+  "upstream": "origin/openai/mac",
+  "head": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "ahead": 38,
+  "behind": 0,
+  "sshOrigin": "git@github.com:TheDakk/Celestial-Frontier.git",
+  "authentication": "Prior uninterrupted TheDakk account/read/fetch proof retained; no remote/config change or GitHub write in this batch",
+  "caffeinate": {
+    "pid": 93550,
+    "command": "/usr/bin/caffeinate -i",
+    "verifiedAlive": true
+  },
+  "preview": {
+    "pid": 84380,
+    "execSession": 99962,
+    "verifiedAlive": true,
+    "receipt": "local-preview-server.json"
+  },
+  "foregroundJobs": "All owned test/build/native jobs completed; local preview intentionally remains running",
+  "startupReceipt": "audits/TOOLCHAIN_STARTUP_20260907/manifest.json",
+  "freshAuthoringUpdates": false,
+  "automation": "coding heartbeat deleted; do not recreate",
+  "signing": "Previous 1Password failed to fill whole buffer; restoration evidence absent; no retry or unsigned fallback",
+  "budget": {
+    "mode": "UNFROZEN",
+    "visibility": "PUBLIC per standing recorded user confirmation",
+    "privateFallbackCap": 3000,
+    "exactHostedAuthority": 0,
+    "attempts": 0
+  },
+  "handoff": "Codex keeps local candidate on openai/mac. Claude/macOS/anthropic/mac need not open or sync now; review durable packet Thursday. Future exact authorized integration openai/mac to develop; no PR, main release or deployment."
+}

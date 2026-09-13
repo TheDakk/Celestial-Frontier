@@ -1,0 +1,35 @@
+✔ one-pixel erosion and sampled inward despill remove injected pink edge without recolouring the interior (1.630083ms)
+✔ premultiplied sampling cannot carry invisible magenta into a scaled edge (0.146625ms)
+✔ latent interiors stay anchored while boundary and ground remain editable; no-mask control fails (2.86275ms)
+✔ prepared profile meets scale relationships and refuses the former unmasked recipe (2.11425ms)
+✔ 8px erosion opens additional boundary area; unchanged 4px control fails the wider-edge criterion (2.192167ms)
+✔ two low runner instances share one organism mask; single-instance control fails (7.893791ms)
+✖ arena terrain opt-in permits full-width ground but refuses opaque-scene extraction (1.739ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 61.226083
+
+✖ failing tests:
+
+test at tools/local-image-generation/kit-contact.test.mjs:60:1
+✖ arena terrain opt-in permits full-width ground but refuses opaque-scene extraction (1.739ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/kit-contact.test.mjs:63:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /isolation lost/,
+    operator: 'throws',
+    diff: 'simple'
+  }

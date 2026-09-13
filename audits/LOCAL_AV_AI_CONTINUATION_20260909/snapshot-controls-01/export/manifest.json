@@ -1,0 +1,9 @@
+{
+  "schema": "cf.landfall-snapshot-export/v1",
+  "status": "FAIL",
+  "sources": [],
+  "files": [],
+  "warnings": [],
+  "error": "Error: Build failed with 1 error:\n\n[plugin landfall-source-binding] \u0000rolldown/runtime.js\nError: Virtual snapshot source refused\n    at TransformPluginContextImpl.transform (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/landfall-snapshot/export.mjs:32:65)\n    at plugin (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/bindingify-input-options-EnUlEF0T.mjs:1537:30)\n    at plugin.<computed> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/bindingify-input-options-EnUlEF0T.mjs:1906:18)\n    at aggregateBindingErrorsIntoJsError (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:48:18)\n    at unwrapBindingResult (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:18:128)\n    at #build (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/rolldown-DP_p9pd3.mjs:132:34)\n    at async exportCanonicalEarthSnapshot (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/landfall-snapshot/export.mjs:35:5)\n    at async file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/landfall-snapshot/export.mjs:57:96",
+  "workspaceReleased": true
+}

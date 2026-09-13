@@ -1,0 +1,120 @@
+{
+  "planet": {
+    "name": "Mars",
+    "orb": 140,
+    "seed": 134,
+    "ordinal": 3,
+    "type": "desert",
+    "ring": false,
+    "moons": 2,
+    "P": {
+      "type": "desert",
+      "seed": 134,
+      "hue": 20,
+      "sizeMul": 0.65,
+      "ring": false,
+      "moons": 2
+    }
+  },
+  "request": {
+    "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "environmentFingerprint": "cwe1:145:0d97c0f8",
+    "profileSchema": "cf.domain.biome-profile.v1",
+    "profileDigest": "bpd1-6fce883d4d70e3b6bde0fb184b416e8e",
+    "biomeKey": "dunesea",
+    "scene": "generic",
+    "options": {
+      "seed": 134,
+      "era": "none",
+      "pal": "sand",
+      "biome": "land",
+      "wx": null,
+      "moons": 2,
+      "aurora": false,
+      "nightize": false,
+      "duskize": false,
+      "flora": false,
+      "water": "none",
+      "genes": null,
+      "floraGenes": [],
+      "ring": false,
+      "stc": "#fff4d8",
+      "herd": 0,
+      "aqua": 0,
+      "air": 0,
+      "wb": "dunesea",
+      "evt": null,
+      "titan": false,
+      "salt": 0
+    }
+  },
+  "roster": {
+    "address": {
+      "format": "CF1",
+      "galaxy": {
+        "seed": 999,
+        "x": 90,
+        "y": -60,
+        "size": 78,
+        "sp": 0,
+        "tilt": 0.62,
+        "rot": 0.5,
+        "home": true,
+        "quasar": false,
+        "dwarf": false,
+        "parentCell": {
+          "x": 0,
+          "y": -1
+        }
+      },
+      "star": {
+        "seed": 424242,
+        "x": 560,
+        "y": 170,
+        "layer": "coarse",
+        "parentCell": {
+          "x": 13,
+          "y": 4
+        }
+      },
+      "planet": {
+        "seed": 134,
+        "ordinal": 3
+      },
+      "key": "CF1|g:999@90,-60|s:424242@560,170|p:134#3"
+    },
+    "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:134#3",
+    "starSeed": 424242,
+    "planetSeed": 134,
+    "planetOrdinal": 3,
+    "biosphereKey": "none",
+    "ecologyEpoch": 0,
+    "climateBand": "temperate",
+    "biomeProfileSchema": "cf.domain.biome-profile.v1",
+    "biomeProfileDigest": "bpd1-6fce883d4d70e3b6bde0fb184b416e8e",
+    "biomeProfileKey": "dunesea",
+    "biomeProfile": {
+      "sig": "#d8b878",
+      "fauna": [
+        "reptile",
+        "arachnid",
+        "insect",
+        "mammal"
+      ],
+      "flora": [
+        "cactus",
+        "shrub"
+      ],
+      "hazard": "sandstorm",
+      "weather": "dry-heat"
+    },
+    "environmentFingerprint": "cwe1:145:0d97c0f8",
+    "fullRosterFingerprint": "cwr1:0:50:fdbc2351",
+    "view": {
+      "all": [],
+      "preview": [],
+      "total": 0,
+      "hiddenFromPreview": 0
+    }
+  }
+}

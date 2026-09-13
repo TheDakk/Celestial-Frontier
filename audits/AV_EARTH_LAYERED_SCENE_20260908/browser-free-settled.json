@@ -1,0 +1,124 @@
+{
+  "status": "PASS",
+  "scope": "Earth layered scene focused verification; historical full-profile and navigation failures remain open",
+  "steps": [
+    {
+      "name": "producer-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_LAYERED_SCENE_20260908/producer-settled.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 3.787
+    },
+    {
+      "name": "producer-refresh-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_LAYERED_SCENE_20260908/refresh-producer-settled.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.048
+    },
+    {
+      "name": "final-focused",
+      "cmd": "npm",
+      "args": [
+        "test",
+        "--",
+        "tests/earth-layered-recipe.test.ts",
+        "tests/earth-layered-shake-settlement.test.ts",
+        "tests/visual-policy-main-wiring.test.ts",
+        "packages/art/test/earth-resident-layer.test.ts",
+        "apps/game/src/earth-layered-load.test.ts",
+        "apps/game/src/earth-layered-resources.test.ts",
+        "apps/game/src/earth-layered-layout.test.ts",
+        "tests/scene-texture-owner.test.ts",
+        "apps/game/src/earth-layered-protocol.test.ts",
+        "packages/art/test/biome-vista.test.ts",
+        "apps/game/src/painted-vista-load.test.ts",
+        "tests/painted-mars-binding.test.ts",
+        "tests/biome-vista-surface.test.ts",
+        "tests/biome-vista-cache.test.ts",
+        "tests/biome-vista-protocol.test.ts",
+        "tests/biome-vista-worker-error.test.ts",
+        "apps/game/src/planet-surface-turn-view.test.ts",
+        "tests/pwa-offline.test.ts",
+        "tests/current-producer-authorities.test.ts",
+        "tests/compendium-budget.test.ts",
+        "tests/guide-release.test.ts",
+        "tests/slicesmoke-guide-release-scroll-contract.test.ts",
+        "tests/slicesmoke-dtrain-release-convergence.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 6.13
+    },
+    {
+      "name": "typescript-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 2.602
+    },
+    {
+      "name": "art-unused-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 1.587
+    },
+    {
+      "name": "art-audit-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "artaudit"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.673
+    },
+    {
+      "name": "override-check-final",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "overridecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.671
+    },
+    {
+      "name": "spec-check",
+      "cmd": "node",
+      "args": [
+        "tools/speccheck.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.3
+    },
+    {
+      "name": "root-validation",
+      "cmd": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 11.99
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "tools/local-image-generation/browser-lifecycle.test.mjs"
+  ],
+  "sourceSha256": {
+    "tools/local-image-generation/browser-proof.mjs": "8f5366af6b96ac8d19978b3107b0b0543a6c5248af5b1af5dd65f97ecd7ae41c",
+    "tools/local-image-generation/browser-lifecycle.test.mjs": "1428e9e1b7c5bf5ee3153286daed98303707fb0af71a08371e534edc11b230f5",
+    "tools/local-image-generation/proof-server.mjs": "5d4c67370114263717d6944c33b74e048ce150f05dc812f44bcfea77e8f56452",
+    "tools/local-image-generation/run-browser-proof.mjs": "f7f96b2d6192ec664857790b7bcd7122f936ea08b96a84dd2eddbc72cfebd65b"
+  }
+}

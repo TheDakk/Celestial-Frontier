@@ -1,0 +1,8 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+tests/local-ai-game.test.ts(2,23): error TS7016: Could not find a declaration file for module 'jsdom'. '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/jsdom/lib/api.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/jsdom` if it exists or add a new declaration (.d.ts) file containing `declare module 'jsdom';`
+tests/local-ai-game.test.ts(423,36): error TS7006: Parameter 'row' implicitly has an 'any' type.
+tests/local-ai-game.test.ts(425,39): error TS7006: Parameter 'row' implicitly has an 'any' type.

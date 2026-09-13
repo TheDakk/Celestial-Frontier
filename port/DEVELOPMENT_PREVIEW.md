@@ -1,12 +1,15 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-## Current build boundary — matches implementation as of 2026-09-04
+## Current build boundary — matches code as of 2026-09-08
 
 Preview packaging and package verification require the ordinary **distributable** build marker.
 `--mode evidence` is reserved for explicit instruments and is refused as a human preview even if
 its file hashes are coherent. The packaged browser check no longer calls `__CF_SLICE__`: it
-observes populated player/navigation UI and a live canvas, requires the diagnostic API absent,
-then opens the actual Guide and verifies full manifest-bound identity. For fresh Training, it
+requires a connected, populated canonical breadcrumb as scene-publication state and strictly
+painted player UI and canvas, while requiring the diagnostic API absent. U1 intentionally hides
+the breadcrumb; the separate `trailVisible` observation reports its actual visibility without
+making hidden text a painted-UI claim. Blank or disconnected breadcrumb state still fails.
+The check then opens the actual Guide and verifies full manifest-bound identity. For fresh Training, it
 first clicks the real Skip Training action in its disposable browser profile and waits for normal
 completion/control restoration. Painted-but-inert background UI can prove rendering, never action
 reachability: Guide activation separately refuses inert/disabled controls. Existing origin isolation,
@@ -14,6 +17,10 @@ exact-commit packaging, local-only dirty diagnostics and no-publication defaults
 Both build outputs and the distributable Edge flow passed locally; exact details and the repaired
 readiness-instrument red are in `../audits/FULL_REVIEW_DISPOSITION_20260904.md`. This dirty diagnostic
 is not publishable or a clean-source certificate; historical overlays do not certify this boundary.
+The 2026-09-08 readiness correction and retained package evidence are recorded in
+[the playable audiovisual handoff](../audits/AV_PLAYABLE_HANDOFF_20260908/README.md).
+The separate [September8 refreshed local preview](../audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md)
+adds the accumulated stellar and Charter-audio work; the earlier package remains immutable.
 
 > **2026-09-02 current browser-ownership/Glass repair overlay (supersedes older “current” labels;
 > dated evidence remains immutable):** exact clean source
@@ -633,8 +640,9 @@ approved builds come from the exact committed snapshot; dirty local builds are v
 nonpublishable. The producer and browser check also use the shared workspace lock, so they
 fail closed rather than overlap `overridecontrol` or another source-mutating/build gate.
 `preview:smoke` then serves those exact packaged bytes over loopback and boots them in the
-owned real Chromium harness at 320×568. It requires populated ordinary player/trail UI, a live
-canvas, no exposed diagnostic API, the distributable marker, manifest binding, and
+owned real Chromium harness at 320×568. It requires connected, populated canonical breadcrumb
+state, strictly painted populated player UI and canvas, no exposed diagnostic API, the
+distributable marker, manifest binding, and
 Guide identity to be live; it rejects either historical corner badge id/style and requires the
 Guide to show v2.0 plus the full manifest commit.
 Every CI/publication workflow that packages a preview runs this outcome check before

@@ -1,0 +1,33 @@
+{
+  "base": "8c10463a7b0330e12f5ca42f958c85ab9b7eb6a3",
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/landfall-fidelity.ts",
+      "bytes": 22786,
+      "sha256": "7d6dd3eb4154dd99629a25bf5d8f0f2b2b3fd5482e4b9e268008117d0aa7b085"
+    },
+    {
+      "path": "port/v2/tests/landfall-fidelity.test.ts",
+      "bytes": 33522,
+      "sha256": "4f3244aed93ef1518ef687a2abf06074842e24274fca1292823e95dbad5fe309"
+    },
+    {
+      "path": "audits/AI_OFFLINE_INTEGRATION_20260909/species-review/retained-v2-reported-outcomes.json",
+      "bytes": 9339,
+      "sha256": "c69f73c238d6f02970cb2f28068c357794aca47b4b34b3809d340124ff8a7439"
+    },
+    {
+      "path": "audits/AI_OFFLINE_INTEGRATION_20260909/species-review/formal-v2-review.json",
+      "bytes": 19295,
+      "sha256": "ef6e7efb355a734b19437f8eab4ea50ed5f4e7a7669d1058f44936910daff4ee"
+    }
+  ],
+  "controls": "controls-02/result.json",
+  "controlsStatus": "PASS",
+  "focusedPassed": 28,
+  "typescriptProgramsPassed": 3,
+  "rootValidationPassed": true,
+  "firstFailureRetained": "controls-01/result.json",
+  "artAcceptance": false,
+  "commitMade": false
+}

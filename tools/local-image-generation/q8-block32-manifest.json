@@ -1,0 +1,24 @@
+{
+  "schema": "cf.q8-block32-runtime-pin/v1",
+  "variant": "q8-block32-repacked-v1",
+  "runtimeQualified": false,
+  "qualityAccepted": false,
+  "changedNodes": 103,
+  "parent": {
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "graphSha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102"
+  },
+  "files": [
+    {
+      "path": "transformer-q8-block32.onnx",
+      "bytes": 4991273,
+      "sha256": "cda0a0e0d2778f83236557bcde8d474fed89a2fcbc817ea04f4758d2a064aed8"
+    },
+    {
+      "path": "repacked-scale-zero.data",
+      "bytes": 347332608,
+      "sha256": "5ba0370ea1eb7af85042aea2a143398990d87759efaf5f36857ad019ce066d82"
+    }
+  ]
+}

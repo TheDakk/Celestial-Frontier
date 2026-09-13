@@ -1,0 +1,89 @@
+{
+  "schema": "cf-native-audio-mix-chain/v1",
+  "status": "PASS",
+  "startedAt": "2026-09-09T05:56:32.016Z",
+  "steps": [
+    {
+      "name": "syntax-build",
+      "args": [
+        "--check",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-native-mix/build.mjs"
+      ],
+      "startedAt": "2026-09-09T05:56:32.017Z",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "finishedAt": "2026-09-09T05:56:32.046Z"
+    },
+    {
+      "name": "syntax-runner",
+      "args": [
+        "--check",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-native-mix/runner.mjs"
+      ],
+      "startedAt": "2026-09-09T05:56:32.046Z",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "finishedAt": "2026-09-09T05:56:32.073Z"
+    },
+    {
+      "name": "syntax-chain",
+      "args": [
+        "--check",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-native-mix/chain.mjs"
+      ],
+      "startedAt": "2026-09-09T05:56:32.073Z",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "finishedAt": "2026-09-09T05:56:32.102Z"
+    },
+    {
+      "name": "typecheck",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/typescript/bin/tsc",
+        "-p",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-native-mix/tsconfig.json"
+      ],
+      "startedAt": "2026-09-09T05:56:32.102Z",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "finishedAt": "2026-09-09T05:56:32.415Z"
+    },
+    {
+      "name": "build",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-native-mix/build.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/LOCAL_AV_AI_CONTINUATION_20260909/native-audio-03/build"
+      ],
+      "startedAt": "2026-09-09T05:56:32.415Z",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "finishedAt": "2026-09-09T05:56:32.534Z"
+    },
+    {
+      "name": "native",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-native-mix/runner.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/LOCAL_AV_AI_CONTINUATION_20260909/native-audio-03/build",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/LOCAL_AV_AI_CONTINUATION_20260909/native-audio-03/native"
+      ],
+      "startedAt": "2026-09-09T05:56:32.534Z",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "finishedAt": "2026-09-09T05:56:33.962Z"
+    }
+  ],
+  "workspaceReleased": true,
+  "finishedAt": "2026-09-09T05:56:33.962Z"
+}

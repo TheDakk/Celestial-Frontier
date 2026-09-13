@@ -1,0 +1,17 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "tools/local-image-generation/pipeline-math.test.mjs",
+    "tools/local-image-generation/half-storage.test.mjs",
+    "tools/local-image-generation/browser-lifecycle.test.mjs"
+  ],
+  "sourceSha256": {
+    "pipeline-math.mjs": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5",
+    "pipeline-math.test.mjs": "f4b610e76479a52d25a55e3ec620c0d1865a23bdfe9b0060a7aed22fe659f7b0",
+    "half-storage.test.mjs": "6cb71881255185f68dbb2e0189d5a69481560c0a30b2494503db51db11b41fd2",
+    "browser-proof.mjs": "9fd1ef12861f0f3cfb832374d6c6de7a56f56f414385c4ac8c1cdcf552dc179d",
+    "browser-lifecycle.test.mjs": "c16f811273ca0de3a1f57d224e53b4239ba3d223d7f0bb53a1d0fb4cd87b9f65"
+  },
+  "startedAt": "2026-09-09T05:21:27.589182+00:00"
+}

@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "startedAt": "2026-09-09T07:31:29.648806+00:00",
+  "sources": {
+    "port/v2/apps/game/src/scene-image-cache-plan.ts": "6c3da36af08c7330e452ec1f9bfb51f3559e845b4791ecb3bd1d26fa9eba2c89",
+    "port/v2/tests/scene-image-cache-plan.test.ts": "484fe4f0d30e80f084961618ddd4dbce498a6b910834522f317ef5eef153f25f",
+    "port/v2/package.json": "cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7",
+    "port/v2/package-lock.json": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d",
+    "tools/validate.js": "d220a48bf720ba07965888ee409229930359c3ede3ec76f6842183b3ca64a460",
+    "tools/build.js": "9d9837deea2889f6a8b9a0e4a58ed43ef002bd346aea06f5c6476913c85e3ebf",
+    "celestial-frontier.html": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746"
+  },
+  "steps": [
+    {
+      "name": "focused",
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/scene-image-cache-plan.test.ts"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "exitCode": 0,
+      "logSha256": "0de9439f8c0ec4b1156cd5dd628b02ac4f622cc9310f7422838545a1099f36d3"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+      "exitCode": 0,
+      "logSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "name": "root-validate",
+      "command": [
+        "node",
+        "tools/validate.js"
+      ],
+      "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+      "exitCode": 0,
+      "logSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    }
+  ],
+  "sourceRecheck": {
+    "port/v2/apps/game/src/scene-image-cache-plan.ts": {
+      "sha256": "6c3da36af08c7330e452ec1f9bfb51f3559e845b4791ecb3bd1d26fa9eba2c89",
+      "unchanged": true
+    },
+    "port/v2/tests/scene-image-cache-plan.test.ts": {
+      "sha256": "484fe4f0d30e80f084961618ddd4dbce498a6b910834522f317ef5eef153f25f",
+      "unchanged": true
+    },
+    "port/v2/package.json": {
+      "sha256": "cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7",
+      "unchanged": true
+    },
+    "port/v2/package-lock.json": {
+      "sha256": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d",
+      "unchanged": true
+    },
+    "tools/validate.js": {
+      "sha256": "d220a48bf720ba07965888ee409229930359c3ede3ec76f6842183b3ca64a460",
+      "unchanged": true
+    },
+    "tools/build.js": {
+      "sha256": "9d9837deea2889f6a8b9a0e4a58ed43ef002bd346aea06f5c6476913c85e3ebf",
+      "unchanged": true
+    },
+    "celestial-frontier.html": {
+      "sha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746",
+      "unchanged": true
+    }
+  },
+  "finishedAt": "2026-09-09T07:31:44.146042+00:00"
+}

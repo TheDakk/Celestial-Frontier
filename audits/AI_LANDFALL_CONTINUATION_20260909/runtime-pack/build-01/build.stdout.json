@@ -1,0 +1,34 @@
+{
+  "directory": "/private/tmp/cf-runtime-pack-20260909-build-01",
+  "manifestSha256": "e2442474afd168c2a7a9f1fb798591583b3ead962ef9135a0980c0f9d739ae21",
+  "sourcePinsSha256": "e8e46745d13041b01b80fbffc8e16d489f9a0962914957b0783b35a559a90514",
+  "config": {
+    "schema": "cf.local-ai-runtime-pack.v1",
+    "workerUrl": "/__local_ai/stage-worker.mjs",
+    "modelRevision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "sourceManifestSha256": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef",
+    "modelSource": "verified-opfs-only",
+    "modelFiles": {},
+    "q8Block32": false,
+    "autoDownload": false,
+    "qualityAccepted": false,
+    "reference": {
+      "url": "/__local_ai/reference.png",
+      "sha256": "0b4584f76ce18f42e38e0c28e9a42758280d0c0de390d45371422a7e4c91fe57",
+      "width": 480,
+      "height": 320,
+      "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Platypus\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"3\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"13\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"4049771185\"]],[\"sense\",[\"number\",\"4\"]],[\"size\",[\"number\",\"2\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"15\"]]]]"
+    }
+  },
+  "status": "PASS",
+  "fileCount": 23,
+  "totalBytes": 28393596,
+  "manifestBytes": 7814,
+  "remaining128MiBBytes": 105824132,
+  "distributionQualified": false,
+  "combinedAppAdmissionQualified": false,
+  "retainedUpdateQualified": false,
+  "deviceQualified": false
+}
+

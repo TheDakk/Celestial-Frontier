@@ -45,6 +45,19 @@ function inheritedOwner() {
   return owner;
 }
 
+/** Fully write a private inode, then publish by exclusive hard link (rename could overwrite).
+ * Exported only to exercise publication races on test-owned temporary paths. */
+export function publishWorkspaceOwner(destination, record) {
+  const temporary = destination + '.' + record.token + '.pending';
+  let owned = false;
+  try {
+    fs.writeFileSync(temporary, JSON.stringify(record) + '\n', { flag: 'wx', mode: 0o600 });
+    owned = true;
+    fs.linkSync(temporary, destination);
+  } finally {
+    if (owned) try { fs.unlinkSync(temporary); } catch (error) { if (error?.code !== 'ENOENT') throw error; }
+  }
+}
 export function acquireWorkspaceLock(label, { inheritFromParent = false } = {}) {
   if (typeof label !== 'string' || !label.trim()) throw new Error('workspace lock label is required');
   if (inheritFromParent && inheritedOwner()) return () => {};
@@ -52,9 +65,7 @@ export function acquireWorkspaceLock(label, { inheritFromParent = false } = {}) 
   const record = { pid: process.pid, label: label.trim(), token, repoRoot, acquiredAt: new Date().toISOString() };
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
-      const fd = fs.openSync(lockPath, 'wx', 0o600);
-      try { fs.writeFileSync(fd, JSON.stringify(record) + '\n'); }
-      finally { fs.closeSync(fd); }
+      publishWorkspaceOwner(lockPath, record);
       let released = false;
       const release = () => {
         if (released) return;
@@ -73,9 +84,10 @@ export function acquireWorkspaceLock(label, { inheritFromParent = false } = {}) 
       if (owner && processIsAlive(owner.pid)) {
         throw new Error(`workspace gate ${JSON.stringify(label)} cannot overlap ${JSON.stringify(owner.label || 'unknown')} (pid ${owner.pid})`);
       }
-      /* A dead process can leave only this exact checkout-keyed temp file.
-         Remove it once, then retry the atomic create. */
-      try { fs.unlinkSync(lockPath); } catch (unlinkError) { if (unlinkError?.code !== 'ENOENT') throw unlinkError; }
+      // Never unlink an unowned inode: concurrent stale reclaimers could otherwise
+      // delete a successor's live lease. A stale/malformed lease is diagnostic, not
+      // authority to steal it; deliberate cleanup happens outside a running gate.
+      throw new Error(`workspace gate ${JSON.stringify(label)} found a stale or unreadable owner at ${lockPath}; inspect the owner before explicit cleanup`);
     }
   }
   throw new Error(`workspace gate ${JSON.stringify(label)} could not acquire ${lockPath}`);

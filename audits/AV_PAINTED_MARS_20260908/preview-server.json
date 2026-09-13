@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-09-08T14:40:50.134Z",
+  "pid": 58886,
+  "root": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/dev-preview-painted-mars-local-20260908",
+  "url": "http://127.0.0.1:56099/?paintedvista=1",
+  "sourceCommit": "837db4aaa0ef5d3d8bffc79c70f62dcc2503032d",
+  "sourceState": "dirty-local-only",
+  "publishable": false,
+  "contentSha256": "8721f86dce95a43e7c773f96d3b82b9a59150bedcf70053a224b3f0a79423651",
+  "manifestSha256": "5c058b509b105440e4e7142e4885dd0997d424533e15a72fa088df47529d46d6"
+}

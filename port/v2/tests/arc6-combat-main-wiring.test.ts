@@ -415,7 +415,12 @@ describe('Arc 6 player-live combat wiring', () => {
       'let combatChronicleAudioSession:',
       "registerPanel({ id: 'atlas'",
     );
-    expect(panelOwner).toContain('onCue: (emission) => { void playCombatChronicleCue(emission); }');
+    expect(ordered(panelOwner, [
+      'onCue: (emission) => {',
+      'try { combatBattleScene?.presentCue(emission); }',
+      'catch { /* Decorative battle motion cannot interrupt Chronicle outcomes. */ }',
+      'void playCombatChronicleCue(emission);',
+    ])).toBe(true);
     expect(panelOwner).toContain('if (combatChronicleAudioSession?.generation !== generation) return;');
     expect(panelOwner).toContain('tameGreetingAudioOwner?.cancelCombatPlayback(`chronicle-${reason}`);');
     expect(panelOwner).toContain('onClose: () => combatChronicleController.close()');

@@ -1,0 +1,7 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+tests/local-ai-game.test.ts(76,60): error TS2345: Argument of type '({ signal }: any) => any' is not assignable to parameter of type '() => Promise<{ phase: string; ready: boolean; }>'.
+  Target signature provides too few arguments. Expected 1 or more, but got 0.
+tests/local-ai-game.test.ts(78,169): error TS2493: Tuple type '[]' of length '0' has no element at index '0'.

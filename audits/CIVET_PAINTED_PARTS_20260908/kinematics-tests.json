@@ -1,0 +1,68 @@
+{
+  "schema": "cf-creature-animation-kinematics-test-receipt/v1",
+  "receiptKind": "transcribed-from-existing-tool-output",
+  "status": "PASS",
+  "certification": false,
+  "createdAtUtc": "2026-09-09T01:35:43.970767+00:00",
+  "command": "/opt/homebrew/bin/node tools/with-toolchain-lock.mjs --label generic-creature-kinematics -- /opt/homebrew/bin/node --input-type=module -e 'import {spawnSync} from \"node:child_process\"; import {acquireWorkspaceLock} from \"./port/v2/tools/workspacelock.mjs\"; const release = acquireWorkspaceLock(\"generic creature kinematics focused test\"); try { const result = spawnSync(process.execPath,[\"node_modules/vitest/vitest.mjs\",\"run\",\"tests/creature-animation-kinematics.test.ts\"],{cwd:\"port/v2\",stdio:\"inherit\"}); if(result.error) throw result.error; process.exitCode = result.status ?? 1; } finally { release(); }'",
+  "workingDirectory": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "ownership": {
+    "agent": "OpenAI/Codex",
+    "os": "macOS",
+    "branch": "openai/mac",
+    "repository": "/Users/nick/Projects/celestial-frontier-openai-mac"
+  },
+  "locks": [
+    "shared foreground toolchain wrapper",
+    "checkout workspace lease"
+  ],
+  "node": {
+    "executable": "/opt/homebrew/bin/node",
+    "version": "v26.8.1",
+    "versionProvenance": "Read from the same executable for this receipt; no test was rerun."
+  },
+  "vitest": {
+    "version": "4.1.10",
+    "root": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2"
+  },
+  "results": {
+    "exitCode": 0,
+    "testFilesPassed": 1,
+    "testFilesTotal": 1,
+    "testsPassed": 15,
+    "testsTotal": 15,
+    "startTimeLabel": "21:29:09",
+    "durationMs": 358,
+    "transformMs": 20,
+    "setupMs": 0,
+    "importMs": 27,
+    "testsMs": 253,
+    "environmentMs": 0
+  },
+  "originalToolResult": {
+    "chunkId": "5049ff",
+    "wallTimeSeconds": 0.54594975,
+    "exitCode": 0
+  },
+  "rawLogFile": null,
+  "logProvenance": "No raw log file was created for the completed run. The output below is transcribed from the existing exec tool result; this JSON is a durable receipt, not an original raw log. The output did not supply a date or time zone for its start-time label.",
+  "outputTranscription": "\n RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2\n\n\n Test Files  1 passed (1)\n      Tests  15 passed (15)\n   Start at  21:29:09\n   Duration  358ms (transform 20ms, setup 0ms, import 27ms, tests 253ms, environment 0ms)\n\n",
+  "sourceHashProvenance": "Current bytes of the two files frozen after the completed test run. Hashes were read while writing this receipt; the original test output did not itself include source hashes.",
+  "sources": [
+    {
+      "path": "port/v2/tools/creature-animation/kinematics.ts",
+      "bytes": 8239,
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "port/v2/tests/creature-animation-kinematics.test.ts",
+      "bytes": 9853,
+      "sha256": "542ed7088ff378bd7874bb7832a9906b25e704fcff6ec142527c14caa602c295"
+    }
+  ],
+  "limits": [
+    "Pure mathematical primitives tested on heterogeneous synthetic geometry.",
+    "No named-creature or genome dependency; no generated anatomy adapters, runtime family integration, rendering or universal-animation completion claim.",
+    "No tests, builds or browser runs were repeated to produce this receipt."
+  ]
+}

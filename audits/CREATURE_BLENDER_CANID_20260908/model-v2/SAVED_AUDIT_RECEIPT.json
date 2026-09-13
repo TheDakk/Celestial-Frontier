@@ -1,0 +1,54 @@
+{
+  "schema": "cf.canid-saved-audit/v1",
+  "status": "PASS",
+  "blendSha256": "a5e635a7587e1e8b8be7a3bd3636f56375ba84654989e696cf251b4a1c188e8a",
+  "auditorSha256": "ac0199091cd043123fa28b6af06aec39bdddb8f4c1c731c66cef63b701e1b2cd",
+  "visualAcceptance": "UNREVIEWED",
+  "method": "saved mesh topology and world-space weighted contacts; all 97 evaluated frames; scratch-only mutants",
+  "negativeControls": {
+    "disconnected-component": "skin must be one connected manifold component",
+    "wrong-phenotype": "phenotype hash mismatch",
+    "wrong-key": "visual key mismatch",
+    "moved-paw": "paw grounding changed"
+  },
+  "topology": {
+    "vertices": 68890,
+    "polygons": 68888,
+    "components": 1,
+    "nonmanifoldEdges": 0,
+    "maximumWeightSumError": 4.470348358154297e-08
+  },
+  "animation": {
+    "actions": 1,
+    "curves": 48,
+    "keyframes": 480,
+    "nlaTracks": 0,
+    "drivers": 0,
+    "curveModifiers": 0
+  },
+  "motion": {
+    "frames": 97,
+    "contactVertices": {
+      "hind_near_paw": 344,
+      "hind_far_paw": 340,
+      "fore_near_paw": 344,
+      "fore_far_paw": 336
+    },
+    "maximumPawDisplacement": 6.032785304152089e-08,
+    "maximumSkinMotion": 0.07398694168899042,
+    "settledSkinDelta": 0.0
+  },
+  "restoredMotion": {
+    "frames": 97,
+    "contactVertices": {
+      "hind_near_paw": 344,
+      "hind_far_paw": 340,
+      "fore_near_paw": 344,
+      "fore_far_paw": 336
+    },
+    "maximumPawDisplacement": 6.032785304152089e-08,
+    "maximumSkinMotion": 0.07398694168899042,
+    "settledSkinDelta": 0.0
+  },
+  "masterUnchanged": true
+}

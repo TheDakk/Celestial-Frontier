@@ -1,0 +1,99 @@
+REFERENCE LOCK
+Initial creation of frontier-sheet-01.png under Art Kit v3 section 9b. There is
+no approved frontier-sheet-01.png yet and no reference is attached. The frozen
+style is the authority. This is the special reference sheet, not a production
+single-subject asset: section 9b explicitly requires rows of subjects and one
+orbital planet, overriding single-subject and contact-sheet exclusions only
+for this initial sheet. No printed labels, grid lines or frames.
+
+FROZEN STYLE
+  Classic painted science-fantasy oil illustration in the hand of the TSR
+  masters Gerald Brom, Keith Parkinson and Jeff Easley, carried off-world:
+  painterly heroic realism with visible confident oil brushwork, rich colour
+  deepened by dramatic warm-versus-cool lighting and strong chiaroscuro,
+  grounded weighty anatomy and hard-used equipment, crisp ornate detail at the
+  focal point softening toward the edges, with Brom's macabre elegance
+  surfacing in the strange and predatory subjects. The world is a frontier of
+  unmapped planets: sun-scoured hull plate, scored ceramic, woven fibre and
+  patinated alloy in place of mail and plate, salvage and field repair on every
+  surface; alien life built of chitin, membrane, mineral growth and
+  bioluminescent pigment rather than fur and feather; each world lit by one
+  distinct colour of sun that falls across the whole subject. Serious and
+  wondrous in tone, never cartoonish, never photorealistic, never anime, never
+  cel-shaded, never a 3D render. Museum-quality oil illustration, extremely
+  high detail, sharp focus.
+
+SYSTEM CARD
+SYSTEM CARD - Amber Glass (reference study; no new game system)
+  Star: AMBER, an orange sun. Pigment: burnt orange, gold, ochre.
+  Light: warm, honeyed, medium contrast; from upper left, long shadows toward
+    lower right, dark olive-brown shadows.
+  Mineral palette: glossy black glass, matte ochre sand, rust-red stone.
+  Atmosphere: thin dust-orange haze, washing distant forms toward pale ochre.
+  Flora pigment: ochre, rust, olive-black.
+  Fauna adaptation: banded rust and tan camouflage against ochre and olive-black
+    growth, medium-sized shaded eyes, ridged chitin shedding daytime heat.
+  One signature: black glass dunes.
+
+SUBJECT
+One square reference sheet: about twelve subjects per row, rows for fauna,
+flora, people, ships and items, plus one orbital planet. Twelve per row holds;
+sixteen wraps. All subjects belong to the one system card above, painted by
+one hand. Each subject is separate and complete, never touching another.
+Fauna row: twelve distinct alien organisms, banded rust and tan matte chitin,
+olive-black membrane and black glass mineral growth; weighty quadrupeds,
+six-legged crawlers and winged membrane creatures, no armour or harness.
+Quadrupeds each have four legs, two near and two far, one head, one head only;
+six-legged crawlers each have six legs, three near and three far, one head,
+one head only; fliers each have two membrane wings, one on each side, two
+legs, one on each side, one head, one head only. Faces have paired shaded
+medium eyes, two eyes, a ridged brow and closed jaws, watchful or predatory.
+Flora row: twelve separate growth forms: stalks, canopies, mineral corals,
+seed forms; matte ochre, waxy rust and olive-black membrane, whole bases visible.
+People row: twelve separate frontier explorers and traders, one head, two
+arms, two hands, two legs each; one head, an arm and hand on each side, a leg
+on each side. Scored ochre ceramic over olive-black woven fibre, patinated
+alloy and rust-red field repairs; faces visible, appraising or resolute.
+Ships row: twelve separate compact vessels, glossy black glass fittings,
+scored ochre hull ceramic and rust-red patch plates, drives as structure;
+three-quarter from slightly above, noses to lower left, every hull complete.
+Items row: twelve separate tools, salvage cells, eggs and relics in black
+glass, ochre ceramic and patinated alloy, readable at small size.
+One orbital planet below: one whole disc, one disc only; black glass dune
+bands and ochre land, thin dust-orange atmosphere contained inside its opaque
+edge; no moons, zero moons, no rings, zero rings. Upper-left lit limb.
+
+ACCURACY
+Five rows of about twelve subjects, then one orbital planet. Every figure,
+growth, vessel and object is individually isolated on the magenta key. Full
+anatomy and functional parts inside each subject's clear margin. No scenery,
+floor, cast shadow or ground base. No cropped bodies or overlapping subjects.
+
+LAYOUT
+One square sheet, rows for fauna, flora, people, ships and items, plus one
+orbital planet. Approximately twelve per row, not sixteen. Unlabelled.
+Fauna and people face front-to-three-quarter. Flora shows complete base to
+crown. Ships in three-quarter view from above. Items on a readable diagonal.
+This section 9b reference-sheet layout is the explicit exception to the
+production contact-sheet ban in the unchanged shared negative below.
+
+TECHNICAL OUTPUT
+  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.

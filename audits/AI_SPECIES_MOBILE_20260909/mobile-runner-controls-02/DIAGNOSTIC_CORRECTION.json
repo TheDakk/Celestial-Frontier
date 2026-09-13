@@ -1,0 +1,5 @@
+{
+  "firstResult": "7 PASS / 1 FAIL before browser or model byte access",
+  "finding": "Node strip-only mode cannot compile the actual DeliveryError constructor parameter property.",
+  "correction": "Use the installed Node transform mode, bind both input and derived JS bytes, require one exact SHA import, and test actual transformed production-owner import/error-code behavior without storage or network calls. Await parent-run changed controls after native generation; no unchanged retry."
+}

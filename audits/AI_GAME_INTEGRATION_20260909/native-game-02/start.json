@@ -1,0 +1,17 @@
+{
+  "schema": "cf.real-game-local-ai-integration.v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-09T14:34:47.413Z",
+  "scope": "One actual Earth Land action, native Notifications during inference, explicit View, retained exact original and reload",
+  "qualityAccepted": false,
+  "deviceQualified": false,
+  "actualModelDownloaded": false,
+  "synthetic": false,
+  "sources": [],
+  "observations": [],
+  "clicks": [],
+  "screenshots": [],
+  "browserEvents": [],
+  "targetEvents": [],
+  "cleanup": {}
+}

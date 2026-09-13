@@ -1,0 +1,24 @@
+{
+  "first": {
+    "path": "atlas-first-original.png",
+    "bytes": 2369792,
+    "sha256": "234b3512dc2b4eb0b0b466bbbf8f8d1dfda70be5f243f003d6727c7719c433a4",
+    "status": "REJECTED",
+    "reasons": [
+      "Opaque RGB checkerboard, not alpha",
+      "Inconsistent assembled/body scales",
+      "Detached lower hind paw incomplete",
+      "Lower reference tail at edge"
+    ]
+  },
+  "correction": {
+    "path": "atlas-corrected-original.png",
+    "bytes": 1787464,
+    "sha256": "1716a24e133d9a3277ed94defd7bf0c5c8e77d0cd4f85a23d4cd2525e78be436",
+    "identify": "1536 1024 srgb  3.0 True srgb(239,12,241) srgb(251,2,250) srgb(251,3,251)\n",
+    "status": "AWAITING_ALPHA_AND_ASSEMBLY_REVIEW"
+  },
+  "generator": "built-in image_gen",
+  "newGeneratorCalls": 2,
+  "moreCallsAuthorizedByThisPilot": false
+}

@@ -1,0 +1,13 @@
+✔ phone worker uses pinned embedding, never imports tokenizer, and rejects repeat/four-session controls (86.758291ms)
+✔ actual engine skips organism inference and runs one protected finisher; all four sessions stay warm (334.539541ms)
+✔ same reuse oracle rejects actual engine with its session cache bypassed (314.12725ms)
+✔ precomputed accepted text loads only three sessions; ignoring the embedding is rejected (491.473833ms)
+✔ precomputed embedding refuses wrong prompt, revision, shape, bytes and nonfinite data (30.305375ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1211.853542

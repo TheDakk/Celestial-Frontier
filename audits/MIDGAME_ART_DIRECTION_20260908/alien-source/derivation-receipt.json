@@ -1,0 +1,168 @@
+{
+  "recordedUTC": "2026-09-09T01:53:47.612Z",
+  "scope": "One known procedural system from world-roster.test.ts, epoch 0. Pure roster/presentation projection; no canvas, browser, tests, genome/domain/runtime mutation or seed sweep.",
+  "command": "node tools/with-toolchain-lock.mjs --label alien-landfall-source -- node audits/MIDGAME_ART_DIRECTION_20260908/alien-source/capture-facts.mjs",
+  "sources": [
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/alien-source/fact-entry.ts",
+      "bytes": 2404,
+      "sha256": "fbece60184fd499d8a2d7206d058b0885d2615d76063019abe156be022b739d3"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/alien-source/capture-facts.mjs",
+      "bytes": 2076,
+      "sha256": "d5f067239cc9425ac8a1ffbcd39056075858c1754fb7bf9477643c1afafb94d8"
+    },
+    {
+      "path": "port/v2/apps/game/src/world-roster.ts",
+      "bytes": 24167,
+      "sha256": "0e071ec4c355cb354db6031eb94c98bfaa008c4f9ef2485670b41d376fa4830f"
+    },
+    {
+      "path": "port/v2/apps/game/src/biome-vista-surface.ts",
+      "bytes": 10777,
+      "sha256": "4d0c72d2b305a6e23fda93bcb22b0ff0c5945f3fc5f3b10f681d9dc7e0be0f79"
+    },
+    {
+      "path": "port/v2/packages/art/src/proceduraloverrides.ts",
+      "bytes": 13174,
+      "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "bytes": 20728,
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    }
+  ],
+  "planets": [
+    {
+      "seed": 127909732,
+      "name": "Velae",
+      "worldKey": "CF1|g:394332036@-300.95,175.47|s:676840317@27.3,-24.6|p:127909732#0",
+      "biosphere": "sparse",
+      "biome": "canyon",
+      "profile": {
+        "sig": "#b06a48",
+        "fauna": [
+          "reptile",
+          "bird",
+          "mammal"
+        ],
+        "flora": [
+          "shrub",
+          "cactus"
+        ],
+        "hazard": "flash-flood",
+        "weather": "dry"
+      },
+      "rows": 8,
+      "kingdoms": [
+        "flora",
+        "flora",
+        "flora",
+        "fauna",
+        "fauna",
+        "fauna",
+        "microbe",
+        "microbe"
+      ],
+      "owners": [
+        "plant",
+        "alienPlant",
+        "alienPlant",
+        "quad",
+        null,
+        "quad",
+        null,
+        null
+      ]
+    },
+    {
+      "seed": 3221821492,
+      "name": "Lonos",
+      "worldKey": "CF1|g:394332036@-300.95,175.47|s:676840317@27.3,-24.6|p:3221821492#1",
+      "biosphere": "sparse",
+      "biome": "tundra",
+      "profile": {
+        "sig": "#9fb0a0",
+        "fauna": [
+          "mammal",
+          "bird"
+        ],
+        "flora": [
+          "moss",
+          "shrub",
+          "grass"
+        ],
+        "hazard": "cold",
+        "weather": "wind-cold"
+      },
+      "rows": 8,
+      "kingdoms": [
+        "flora",
+        "flora",
+        "flora",
+        "fauna",
+        "fauna",
+        "microbe",
+        "microbe",
+        "microbe"
+      ],
+      "owners": [
+        "plant",
+        "alienPlant",
+        "alienPlant",
+        "quad",
+        "radial",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "seed": 571651108,
+      "name": "Droae",
+      "worldKey": "CF1|g:394332036@-300.95,175.47|s:676840317@27.3,-24.6|p:571651108#2",
+      "biosphere": "sparse",
+      "biome": "dunesea",
+      "profile": {
+        "sig": "#d8b878",
+        "fauna": [
+          "reptile",
+          "arachnid",
+          "insect",
+          "mammal"
+        ],
+        "flora": [
+          "cactus",
+          "shrub"
+        ],
+        "hazard": "sandstorm",
+        "weather": "dry-heat"
+      },
+      "rows": 9,
+      "kingdoms": [
+        "flora",
+        "flora",
+        "flora",
+        "flora",
+        "fauna",
+        "fauna",
+        "microbe",
+        "microbe",
+        "microbe"
+      ],
+      "owners": [
+        "alienPlant",
+        "plant",
+        "alienPlant",
+        "plant",
+        null,
+        "insect",
+        null,
+        null,
+        null
+      ]
+    }
+  ]
+}

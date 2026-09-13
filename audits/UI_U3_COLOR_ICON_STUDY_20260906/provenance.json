@@ -1,0 +1,90 @@
+{
+  "schema": "cf-u3-color-icon-study/v1",
+  "date": "2026-09-06",
+  "sourceCommit": "75d9894b43243614c4d9d0dff8820c5c45329cee",
+  "scope": "One bounded review iteration, three colorful original concepts only; product emoji unchanged",
+  "author": "OpenAI/Codex for Celestial Frontier",
+  "license": "Original agent-authored SVG paths and shapes. No third-party artwork or embedded font software. No new repository-wide license assigned. Unicode reference glyphs use host fonts.",
+  "icons": [
+    {
+      "id": "survey",
+      "label": "Survey",
+      "currentEmoji": "🔭",
+      "concept": "Inspect the selected world",
+      "file": "survey.svg"
+    },
+    {
+      "id": "shipyard",
+      "label": "Shipyard",
+      "currentEmoji": "🛠",
+      "concept": "A ship in its service gantry",
+      "file": "shipyard.svg"
+    },
+    {
+      "id": "atlas",
+      "label": "Atlas",
+      "currentEmoji": "🌍",
+      "concept": "Worlds connected by a route",
+      "file": "atlas.svg"
+    }
+  ],
+  "displaySizesPx": [
+    22,
+    32
+  ],
+  "inkscape": "NOT_USED_STOPPED_FOR_SESSION",
+  "files": {
+    "README.md": {
+      "bytes": 1711,
+      "sha256": "e6a20e93ab383765f3fdc1ea1625117b4c4e31e9262b24f48e24a27f1afcc01d"
+    },
+    "atlas.svg": {
+      "bytes": 851,
+      "sha256": "e0329114f50af3e76673b49d58c631fcd7ca3b6de5194ec8e71530cf5d3c17a4"
+    },
+    "browser-export-receipt.json": {
+      "bytes": 1849,
+      "sha256": "f1fdd86b267f006531704ab0c4a92ff89d65a8db663e660e7f64bfe5d3a590db"
+    },
+    "color-study.png": {
+      "bytes": 130901,
+      "sha256": "6d11235ee2fa5c0c0c48ee0d74bf36d217c438b6bd49df76b9187e565a113095"
+    },
+    "index.html": {
+      "bytes": 10446,
+      "sha256": "b7f0b9bc8acf5f3a913e46c913c769f946275431ec7a95a9b0d3ee6fe92ba785"
+    },
+    "make-study.py": {
+      "bytes": 7685,
+      "sha256": "456a4690e589917a02a88fade23d3303d8f6469c5464c43ed8f17d6512305a47"
+    },
+    "render-browser.mjs": {
+      "bytes": 4971,
+      "sha256": "fde40dde30cd05cbad23eef6654ab0e6f7ecb099b632a2d93cf710bbfe474b19"
+    },
+    "shipyard.svg": {
+      "bytes": 837,
+      "sha256": "e984f6ad78cf69b952159d17059c6460fb8a745691ffbd0944af3e941049792b"
+    },
+    "survey.svg": {
+      "bytes": 849,
+      "sha256": "dcb36c3dc4ef31a0e245fd1fe8e95b7dceb94d678020386d57980bad99ec0e29"
+    }
+  },
+  "exportStatus": "PASS",
+  "image": {
+    "file": "color-study.png",
+    "bytes": 130901,
+    "sha256": "6d11235ee2fa5c0c0c48ee0d74bf36d217c438b6bd49df76b9187e565a113095",
+    "width": 1120,
+    "height": 900
+  },
+  "visualInspection": {
+    "status": "COMPLETE",
+    "missingGlyphs": false,
+    "clipping": false,
+    "labelOverlap": false,
+    "scope": "Inspected exact1120x900 color-study.png; no product or physical-device validation"
+  },
+  "svgDocumentsParsed": 3
+}

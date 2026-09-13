@@ -1,0 +1,1 @@
+{"status":"PASS_SYNTHETIC_REVIEW_CONTROLLER_CONTROLS","cases":[{"id":"01-friendly-HTTP503","status":"PASS"},{"id":"02-friendly-cancel","status":"PASS"},{"id":"03-identity-bound-return","status":"PASS"}],"result":"audits/CLAUDE_DIRECTION_REVIEW_20260909/review-controller-native-01/result.json"}

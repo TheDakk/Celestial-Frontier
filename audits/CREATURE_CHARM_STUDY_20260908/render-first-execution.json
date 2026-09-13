@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-09-08T11:14:17.965323+00:00",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "creature-charm-study-first",
+    "--",
+    "/Applications/Blender.app/Contents/MacOS/Blender",
+    "--background",
+    "--factory-startup",
+    "--python",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/blender/creature_charm_study.py",
+    "--",
+    "--master",
+    "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-canid-20260908/canid/wolf-canid-v2/wolf-canid.blend",
+    "--phenotype",
+    "/Users/nick/Projects/Celestial-Frontier-asset-sources/creature-canid-20260908/canid/wolf-canid-v2/input/phenotype.json",
+    "--output",
+    "/private/tmp/cf-creature-charm-20260908/first"
+  ],
+  "status": "PASS",
+  "exitCode": 0,
+  "seconds": 22.285
+}

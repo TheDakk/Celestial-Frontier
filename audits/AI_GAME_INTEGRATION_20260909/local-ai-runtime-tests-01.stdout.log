@@ -1,0 +1,30 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > runs four serial workers, transfers correct tensors and returns a real Blob only after RGBA conversion 31ms
+ × tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > reports only actual monotonic stage/step work and leaves ready/original retention to its caller 11ms
+   → expected [ …(5) ] to deeply equal [ …(4) ]
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > refuses recipe dimensions, step count, seed, model or derivative changes before any work 2ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > refuses changed named identity, reference SHA or reference dimensions before any worker 1ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > rejects a real reference SHA mismatch before bitmap or encoder allocation 2ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > rejects oversized headers and streamed bytes, cancels an oversized stream, and releases its reader 5ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > cancels a non-OK reference response body before rejecting without image allocation 3ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > rejects wrong typed lengths for every model stage without starting the next stage or publishing 20ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > rejects same-length wrong tensor types rather than trusting length alone 2ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > rejects missing, duplicate or out-of-order denoising progress using actual stage outcomes 18ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > rejects early completion and repeated loading; unknown telemetry cannot advance completion 1ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > cancels an active worker once, rejects late results, and creates no next worker 0ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > allocates nothing for pre-aborted work 0ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > closes a bitmap that arrives after cancellation without canvas/encoder allocation 12ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > closes bitmaps and retires scratch canvases through reference failures, including close failure 12ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > retires the final canvas and refuses wrong/oversized PNG blobs or invalid decoded numbers 39ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > retires the painting canvas if context, pixel upload or PNG conversion fails 47ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > refuses delayed encoded PNG publication after cancellation and retires its canvas 10ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > fails a ten-minute held worker deadline and clears its timer and abort listener 1ms
+ ✓ tests/local-ai-runtime.test.ts > local AI stage orchestrator — synthetic workers, no inference claim > propagates GPU, worker, deserialization and callback failures with exactly one retirement 3ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 19 passed (20)
+   Start at  10:16:47
+   Duration  325ms (transform 26ms, setup 0ms, import 35ms, tests 221ms, environment 0ms)
+

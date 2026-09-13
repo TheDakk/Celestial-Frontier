@@ -1,0 +1,377 @@
+{
+  "checks": [
+    {
+      "name": "same-seed-version-and-supplied-example",
+      "result": {
+        "assertions": [
+          "Three independent isolated CLI invocations return exit0/no stderr and identical bytes",
+          "CLI equals supplied example.json semantically and in-process build output",
+          "Queue/prompt hashes recompute; every job remains blocked with null reference; sector remains proposal-only"
+        ],
+        "example_byte_identical": false,
+        "jobs": 6,
+        "queue_sha256": "21ededbe622b758ec315feb4aa67c45b6438b549b4f7f179c8e64d5d2e552602",
+        "repeats": 3,
+        "seed": "frontier-001",
+        "stdout_bytes": 11722,
+        "stdout_sha256": "8f2160eae74421acb7e81b6cd142dcead67e534232a306fe86b8a3dd53bf5cda"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "catalogue-reorder-invariance",
+      "result": {
+        "assertions": [
+          "All six-item catalogue permutations preserve the entire build result for the supplied seed"
+        ],
+        "catalogue_entries": 6,
+        "permutations": 720,
+        "seed": "frontier-001"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "duplicate-id-rejection",
+      "result": {
+        "assertions": [
+          "Identical and conflicting duplicates are refused by queue and public build before output"
+        ],
+        "boundary": "The sector helper alone does not validate catalogue IDs; build validates through queue first.",
+        "rejections": [
+          {
+            "entry": "queue",
+            "exception": "Duplicate asset ID",
+            "input": "identical"
+          },
+          {
+            "entry": "build",
+            "exception": "Duplicate asset ID",
+            "input": "identical"
+          },
+          {
+            "entry": "queue",
+            "exception": "Duplicate asset ID",
+            "input": "conflicting-brief"
+          },
+          {
+            "entry": "build",
+            "exception": "Duplicate asset ID",
+            "input": "conflicting-brief"
+          }
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "twenty-seed-variation",
+      "result": {
+        "assertions": [
+          "Twenty seeds vary faction/ship/planet selections, excluding seed text from variation measure",
+          "Every selected ID exists with compatible kind/faction",
+          "Every seed selection remains equal after catalogue reversal"
+        ],
+        "distinct_selection_tuples": 8,
+        "factions": {
+          "salvage": 8,
+          "survey": 12
+        },
+        "planets": {
+          "planet-ivory": 13,
+          "planet-ochre": 7
+        },
+        "seeds": 20,
+        "selections": [
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-salvage-needle",
+            "faction": "salvage",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-000",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-salvage-needle",
+            "faction": "salvage",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-001",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-moth",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-002",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-moth",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-003",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-moth",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-004",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-kestrel",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-005",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-moth",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ochre",
+            "seed": "frontier-006",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-salvage-crab",
+            "faction": "salvage",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-007",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-salvage-crab",
+            "faction": "salvage",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ochre",
+            "seed": "frontier-008",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-salvage-crab",
+            "faction": "salvage",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-009",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-kestrel",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ochre",
+            "seed": "frontier-010",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-kestrel",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ochre",
+            "seed": "frontier-011",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-salvage-needle",
+            "faction": "salvage",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ochre",
+            "seed": "frontier-012",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-kestrel",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-013",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-kestrel",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-014",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-moth",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-015",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-moth",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-016",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-salvage-crab",
+            "faction": "salvage",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ochre",
+            "seed": "frontier-017",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-salvage-crab",
+            "faction": "salvage",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ivory",
+            "seed": "frontier-018",
+            "status": "proposal-only-no-art-exists"
+          },
+          {
+            "catalog_version": "proposal-1",
+            "encounter_asset_id": "ship-survey-kestrel",
+            "faction": "survey",
+            "generator_version": "sector-demo-1",
+            "planet_asset_id": "planet-ochre",
+            "seed": "frontier-019",
+            "status": "proposal-only-no-art-exists"
+          }
+        ],
+        "ships": {
+          "ship-salvage-crab": 5,
+          "ship-salvage-needle": 3,
+          "ship-survey-kestrel": 6,
+          "ship-survey-moth": 6
+        }
+      },
+      "status": "PASS"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-I",
+        "-B",
+        "/private/tmp/cf-painted-space-review-20260908/demo/procedural_plan.py",
+        "frontier-001"
+      ],
+      "exit_code": 0,
+      "run": 1,
+      "stderr": "",
+      "stdout_bytes": 11722,
+      "stdout_sha256": "8f2160eae74421acb7e81b6cd142dcead67e534232a306fe86b8a3dd53bf5cda"
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-I",
+        "-B",
+        "/private/tmp/cf-painted-space-review-20260908/demo/procedural_plan.py",
+        "frontier-001"
+      ],
+      "exit_code": 0,
+      "run": 2,
+      "stderr": "",
+      "stdout_bytes": 11722,
+      "stdout_sha256": "8f2160eae74421acb7e81b6cd142dcead67e534232a306fe86b8a3dd53bf5cda"
+    },
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-I",
+        "-B",
+        "/private/tmp/cf-painted-space-review-20260908/demo/procedural_plan.py",
+        "frontier-001"
+      ],
+      "exit_code": 0,
+      "run": 3,
+      "stderr": "",
+      "stdout_bytes": 11722,
+      "stdout_sha256": "8f2160eae74421acb7e81b6cd142dcead67e534232a306fe86b8a3dd53bf5cda"
+    }
+  ],
+  "environment": {
+    "dont_write_bytecode": true,
+    "isolated": 1,
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python_executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "python_version": "3.9.6"
+  },
+  "inputs_unchanged": true,
+  "inspection": {
+    "effects": "metadata computation and stdout only; no provider/network/art/runtime operations",
+    "file_read": "adjacent SPACE-ANCHOR.txt",
+    "imports": [
+      "hashlib",
+      "json",
+      "pathlib.Path",
+      "sys"
+    ]
+  },
+  "limitations": [
+    "Metadata demo only: no generated/painted assets, renderer, provider call, runtime integration, game compatibility or art acceptance verified.",
+    "The supplied reference remains unapproved: all six jobs stay blocked-reference-review with null reference hashes.",
+    "Determinism is established only for inspected source/input hashes, declared versions and sampled seeds; no cross-language or untested Python-version parity claim.",
+    "Catalogue permutations are exhaustive only for the supplied six entries and frontier-001; all twenty variation seeds also use reverse-order controls.",
+    "Twenty-seed variation proves nonconstant compatible metadata selection, not distribution quality or gameplay balance.",
+    "Duplicate rejection belongs to queue/build; direct sector calls do not independently validate duplicate IDs."
+  ],
+  "schema": "cf-painted-space-metadata-demo-verification/v1",
+  "seconds": 0.2913,
+  "source_hashes": {
+    "/private/tmp/cf-painted-space-review-20260908/demo/SPACE-ANCHOR.txt": "6cf19739882ae4f232bc33d9b6ae2ba9dd42fa09758a26f77fdb87694b9f3428",
+    "/private/tmp/cf-painted-space-review-20260908/demo/example.json": "ef0629073d28c5a259e815be102a67546da08583b47ee54064970464af8fe1a5",
+    "/private/tmp/cf-painted-space-review-20260908/demo/procedural_plan.py": "1587ded528cee8c9fb07671e7b2d55391c27ca10d5eb2dce4743d90bcf90a7b0"
+  },
+  "source_hashes_after": {
+    "/private/tmp/cf-painted-space-review-20260908/demo/SPACE-ANCHOR.txt": "6cf19739882ae4f232bc33d9b6ae2ba9dd42fa09758a26f77fdb87694b9f3428",
+    "/private/tmp/cf-painted-space-review-20260908/demo/example.json": "ef0629073d28c5a259e815be102a67546da08583b47ee54064970464af8fe1a5",
+    "/private/tmp/cf-painted-space-review-20260908/demo/procedural_plan.py": "1587ded528cee8c9fb07671e7b2d55391c27ca10d5eb2dce4743d90bcf90a7b0"
+  },
+  "status": "PASS",
+  "validation_command": {
+    "argv": [
+      "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "-I",
+      "-B",
+      "-c",
+      "from pathlib import Path\nimport collections, hashlib, itertools, json, platform, subprocess, sys, time\nsource=Path('/private/tmp/cf-painted-space-review-20260908/demo/procedural_plan.py')\ninputs=[source,source.with_name('SPACE-ANCHOR.txt'),source.with_name('example.json')]\nsha=lambda b:hashlib.sha256(b).hexdigest()\nsource_hashes={str(p):sha(p.read_bytes()) for p in inputs}\nstarted=time.time()\nreport={'schema':'cf-painted-space-metadata-demo-verification/v1','status':'RUNNING','source_hashes':source_hashes,'environment':{'python_executable':sys.executable,'python_version':platform.python_version(),'platform':platform.platform(),'isolated':sys.flags.isolated,'dont_write_bytecode':sys.dont_write_bytecode},'inspection':{'imports':['hashlib','json','pathlib.Path','sys'],'file_read':'adjacent SPACE-ANCHOR.txt','effects':'metadata computation and stdout only; no provider/network/art/runtime operations'},'checks':[],'commands':[]}\nassert sys.flags.isolated==1 and sys.dont_write_bytecode\nns={'__file__':str(source),'__name__':'reviewed_metadata_demo'}\nexec(compile(source.read_bytes(),str(source),'exec'),ns)\noriginal=ns['CATALOG'];seed='frontier-001'\nreport['versions']={key:ns[key] for key in ['GENERATOR_VERSION','CATALOG_VERSION','STYLE_ID']}\ndef check(name,fn):\n try:\n  result=fn();report['checks'].append({'name':name,'status':'PASS','result':result})\n except Exception as exc:\n  report['checks'].append({'name':name,'status':'FAIL','error':type(exc).__name__+': '+str(exc)})\ndef repeated():\n argv=[sys.executable,'-I','-B',str(source),seed];runs=[]\n for i in range(3):\n  p=subprocess.run(argv,capture_output=True,check=False,timeout=10)\n  report['commands'].append({'argv':argv,'run':i+1,'exit_code':p.returncode,'stdout_sha256':sha(p.stdout),'stdout_bytes':len(p.stdout),'stderr':p.stderr.decode('utf-8')})\n  assert p.returncode==0 and not p.stderr\n  runs.append(p.stdout)\n assert runs[0]==runs[1]==runs[2], 'Same seed/version changed exact stdout bytes'\n actual=json.loads(runs[0]);example=json.loads(inputs[2].read_bytes());assert actual==example,'Supplied companion JSON differs semantically'\n assert actual==ns['build'](seed),'CLI and source-call result differ'\n assert all(j['status']=='blocked-reference-review' and j['reference_sha256'] is None for j in actual['jobs'])\n assert actual['sector']['status']=='proposal-only-no-art-exists'\n assert actual['queue_sha256']==ns['digest'](ns['canonical'](actual['jobs']))\n assert all(j['prompt_sha256']==ns['digest'](j['resolved_prompt']) for j in actual['jobs'])\n return {'assertions':['Three independent isolated CLI invocations return exit0/no stderr and identical bytes','CLI equals supplied example.json semantically and in-process build output','Queue/prompt hashes recompute; every job remains blocked with null reference; sector remains proposal-only'],'repeats':3,'seed':seed,'stdout_sha256':sha(runs[0]),'stdout_bytes':len(runs[0]),'example_byte_identical':runs[0]==inputs[2].read_bytes(),'queue_sha256':actual['queue_sha256'],'jobs':len(actual['jobs'])}\ndef reordered():\n baseline=ns['build'](seed);count=0\n try:\n  for permutation in itertools.permutations(original):\n   ns['CATALOG']=list(permutation)\n   assert ns['build'](seed)==baseline,'Catalogue reorder changed queue or sector'\n   count+=1\n finally:ns['CATALOG']=original\n assert count==720\n return {'assertions':['All six-item catalogue permutations preserve the entire build result for the supplied seed'],'catalogue_entries':6,'permutations':count,'seed':seed}\ndef duplicates():\n cases=[]\n for mode in ['identical','conflicting-brief']:\n  duplicate=dict(original[0])\n  if mode=='conflicting-brief':duplicate['brief']='Conflicting duplicate metadata control'\n  bad=original+[duplicate]\n  for entry in ['queue','build']:\n   try:\n    ns['CATALOG']=bad\n    try:\n     ns['queue'](bad) if entry=='queue' else ns['build'](seed)\n    except ValueError as exc:\n     assert str(exc)=='Duplicate asset ID';cases.append({'input':mode,'entry':entry,'exception':str(exc)})\n    else:raise AssertionError(entry+' accepted duplicate asset ID')\n   finally:ns['CATALOG']=original\n return {'assertions':['Identical and conflicting duplicates are refused by queue and public build before output'],'rejections':cases,'boundary':'The sector helper alone does not validate catalogue IDs; build validates through queue first.'}\ndef variation():\n rows=[]\n for i in range(20):\n  current=f'frontier-{i:03d}';a=ns['sector'](current,original);b=ns['sector'](current,list(reversed(original)))\n  assert a==b,'Selection changed when catalogue reversed'\n  by_id={item['asset_id']:item for item in original};ship=by_id[a['encounter_asset_id']];planet=by_id[a['planet_asset_id']]\n  assert ship['kind']=='ship' and ship['faction']==a['faction'] and planet['kind']=='planet'\n  rows.append(a)\n def counts(field):return dict(sorted(collections.Counter(r[field] for r in rows).items()))\n meaningful={tuple(r[k] for k in ['faction','encounter_asset_id','planet_asset_id']) for r in rows}\n assert len(meaningful)>1 and len(counts('faction'))>1 and len(counts('encounter_asset_id'))>1 and len(counts('planet_asset_id'))>1,'No meaningful metadata variation across twenty seeds'\n return {'assertions':['Twenty seeds vary faction/ship/planet selections, excluding seed text from variation measure','Every selected ID exists with compatible kind/faction','Every seed selection remains equal after catalogue reversal'],'seeds':20,'distinct_selection_tuples':len(meaningful),'factions':counts('faction'),'ships':counts('encounter_asset_id'),'planets':counts('planet_asset_id'),'selections':rows}\ncheck('same-seed-version-and-supplied-example',repeated)\ncheck('catalogue-reorder-invariance',reordered)\ncheck('duplicate-id-rejection',duplicates)\ncheck('twenty-seed-variation',variation)\nreport['source_hashes_after']={str(p):sha(p.read_bytes()) for p in inputs}\nreport['inputs_unchanged']=report['source_hashes_after']==source_hashes\nreport['limitations']=['Metadata demo only: no generated/painted assets, renderer, provider call, runtime integration, game compatibility or art acceptance verified.','The supplied reference remains unapproved: all six jobs stay blocked-reference-review with null reference hashes.','Determinism is established only for inspected source/input hashes, declared versions and sampled seeds; no cross-language or untested Python-version parity claim.','Catalogue permutations are exhaustive only for the supplied six entries and frontier-001; all twenty variation seeds also use reverse-order controls.','Twenty-seed variation proves nonconstant compatible metadata selection, not distribution quality or gameplay balance.','Duplicate rejection belongs to queue/build; direct sector calls do not independently validate duplicate IDs.']\nreport['status']='PASS' if report['inputs_unchanged'] and all(c['status']=='PASS' for c in report['checks']) else 'FAIL'\nreport['seconds']=round(time.time()-started,4)\nprint(json.dumps(report,ensure_ascii=False,sort_keys=True,indent=2))\n"
+    ],
+    "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+    "exit_code": 0,
+    "harness_sha256": "666efd038ba03afdfb618305c55dbacbb900aa22de6a327500e15f98e3e51e2e",
+    "note": "argv includes the exact executed standard-library-only harness source; child CLI commands are recorded separately.",
+    "stderr": ""
+  },
+  "versions": {
+    "CATALOG_VERSION": "proposal-1",
+    "GENERATOR_VERSION": "sector-demo-1",
+    "STYLE_ID": "frontier-oil-01"
+  }
+}

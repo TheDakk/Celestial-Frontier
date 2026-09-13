@@ -1,6 +1,6 @@
 # Celestial Frontier Art Kit
 
-Art direction and prompt kit, version 3, 2026-09-11. The painted hand of Dakk's Ultimate Tokens carried into Celestial Frontier: one frozen anchor, a closed star table that lights every world, eleven image classes with their own layout and negative, and the production rules that keep a library from drifting.
+Art direction and prompt kit, version 4.2, 2026-09-12. Canonical style statement for Nick's approved Living Worlds, Discovery Atlas, Earth landfall and fungal landfall: one painted hand, the game's thirteen star kinds, source-derived subjects, and the retained class layouts and production rules. **Version 4 approved at 6f5c396e; v4.1 accepted; v4.2 approved from d2b8d8cd with the September 12 Arena/key-ground/anchor amendments.**
 
 Each section is plain text inside a fenced block so it can be copied into a prompt tool exactly as written.
 
@@ -20,38 +20,44 @@ Each section is plain text inside a fenced block so it can be copied into a prom
 12. [4H. Landmarks and props (cut-out)](#4h-landmarks-and-props-cut-out)
 13. [4I. Items, loot and resources (cut-out)](#4i-items-loot-and-resources-cut-out)
 14. [4J. Emblems: upgrades, abilities, status (cut-out)](#4j-emblems-upgrades-abilities-status-cut-out)
-15. [5. Technical output](#5-technical-output)
-16. [6. Shared negative](#6-shared-negative)
-17. [7. Writing a subject line](#7-writing-a-subject-line)
-18. [8. Production discipline](#8-production-discipline)
-19. [9. Before any volume generation](#9-before-any-volume-generation)
+15. [4K. Effects (cut-out sequences)](#4k-effects-cut-out-sequences)
+16. [5. Technical output](#5-technical-output)
+17. [6. Shared negative](#6-shared-negative)
+18. [7. Writing a subject line](#7-writing-a-subject-line)
+19. [8. Production discipline](#8-production-discipline)
+20. [9. Engine proof before library rollout](#9-engine-proof-before-library-rollout)
 
 ## 0. How to use
 
 ```text
 CELESTIAL FRONTIER - ART DIRECTION AND PROMPT KIT
-style_id: frontier   |   version 3, 2026-09-11   |   one hand for the whole universe
+style_id: frontier   |   version 4.2, 2026-09-12   |   one hand for the whole universe
 
 Every image prompt is built in this order:
     REFERENCE LOCK  ->  FROZEN STYLE  ->  SYSTEM CARD  ->  SUBJECT
     ->  ACCURACY  ->  LAYOUT  ->  TECHNICAL OUTPUT  ->  NEGATIVE
 
 Sections 1, 2 and 6 are identical in every prompt and are never reworded.
-Section 3 is filled once per star system and pasted into every prompt for that
-system. Section 4 picks ONE class and supplies its LAYOUT, its OUTPUT and its
+Section 3 is filled by the one compiler from game data and shared by prompts
+for the same system, planet and vista inputs. Nobody types a system card.
+Section 4 picks ONE class and supplies its LAYOUT, its OUTPUT and its
 NEGATIVE ADDITIONS. Section 5 supplies the technical block for that class's
 kind (cut-out or scene). Only the SUBJECT line and the system card change per
 image.
 
+RUNTIME PROJECTION: a local model without a negative input receives only the frozen style, the system card's Light, Mineral palette, Atmosphere and pigment lines, the subject, and the layout sentence. Reference-lock text, hashes, technical output and negatives are library-generator instructions and are never sent to such a model.
+
 ACCURACY is used by the cut-out classes only (planets-orbital, flora, fauna,
-people, ships, landmarks, items, emblems). Scene classes omit it.
+ships, landmarks, items, emblems, effects, Arena MID and NEAR). Scene classes
+including Arena FAR omit it. People are inactive
+until the game has people, as section 4F states.
 
 Two kinds of image, and they take opposite rules:
     CUT-OUT   one isolated subject on the key colour, composited in the game
-              (orbital planets, flora, fauna, people, ships, landmarks, items,
-              emblems)
+              (orbital planets, flora, fauna, ships, landmarks, items, emblems,
+               effects; Arena MID and NEAR use the arena key-painted exception)
     SCENE     a full-bleed painting with no isolation
-              (universe, stars, planet biomes)
+              (universe, stars, planet biomes, Arena FAR)
 Pasting a cut-out negative into a scene prompt, or the reverse, is the one
 copy-paste mistake that quietly ruins a batch.
 
@@ -64,105 +70,149 @@ what makes image 1,200 match image 3.
 ```text
 Paste in every prompt. Attach the ONE reference the class calls for, never both.
 
-For cut-out classes:
-  Match the exact visual language of the attached approved reference sheet
-  frontier-sheet-01.png, style_id "frontier". Do not redesign or reinterpret
-  the style. The sheet is a reference only: never crop artwork out of it.
+For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
+emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
 
-For scene classes:
-  Match the exact visual language of the attached approved reference plate
-  frontier-plate-01.png, style_id "frontier". Do not redesign or reinterpret
-  the style. The plate is a reference only: never crop artwork out of it.
+For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
+MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
 ```
 
 ## 2. Frozen style
 
 ```text
-Paste in every prompt. Never edit this paragraph once the reference sheet is
-accepted. A materially different look is a new style with a new name, never an
-edit to this one.
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
 
-  Classic painted science-fantasy oil illustration in the hand of the TSR
-  masters Gerald Brom, Keith Parkinson and Jeff Easley, carried off-world:
-  painterly heroic realism with visible confident oil brushwork, rich colour
-  deepened by dramatic warm-versus-cool lighting and strong chiaroscuro,
-  grounded weighty anatomy and hard-used equipment, crisp ornate detail at the
-  focal point softening toward the edges, with Brom's macabre elegance
-  surfacing in the strange and predatory subjects. The world is a frontier of
-  unmapped planets: sun-scoured hull plate, scored ceramic, woven fibre and
-  patinated alloy in place of mail and plate, salvage and field repair on every
-  surface; alien life built of chitin, membrane, mineral growth and
-  bioluminescent pigment rather than fur and feather; each world lit by one
-  distinct colour of sun that falls across the whole subject. Serious and
-  wondrous in tone, never cartoonish, never photorealistic, never anime, never
-  cel-shaded, never a 3D render. Museum-quality oil illustration, extremely
-  high detail, sharp focus.
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
 
-THE COMPANION CLAUSE (decide once, before the sample sheet):
-The fantasy library's anchor says "never cute". This kit leaves it out, because
-a creature-collecting game needs companions a player wants to keep. Appeal is
-delivered by the FAUNA class's companion rule (section 4E), not by the anchor.
-If you would rather the whole universe stay grim, insert "never cute" after
-"wondrous in tone," and delete the companion rule. Either way, decide now:
-editing the anchor after volume generation means repainting the library.
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
 ```
 
 ## 3. The one universe
 
 ```text
-The star decides the light. The light decides the palette. The palette decides
-the plants. The plants decide the animals. Nothing in a system is coloured by
-taste; it is coloured by its sun. Procedural generation picks from the closed
-star table below, so every system belongs to the same universe.
+The game data decides the subject and its palette. Star light falls across
+that subject in the same painted hand. This table interprets existing data;
+it never changes a seed, star kind, colour gene, body plan or biome.
 
-THE STAR TABLE (closed vocabulary; add a class only by adding a row here)
+THE STAR TABLE (exactly the thirteen starClass.kind keys)
+Source: port/v2/packages/domain/starcatalog/src/index.ts, starClass and KIND_DESC.
+Hex colours below are source values, not new generation colours. Pigment/light
+words describe their painted rendition; radius and surface behaviour come from
+the actual class data. A dark body is not made luminous by a pigment label.
 
-  EMBER     a cool red dwarf. Pigment: dull cadmium red, dried blood, black
-            core. Light: low, deep red, weak contrast, long raking shadows.
-            Flora pigment: near-black, deep violet, burgundy. Fauna: large
-            eyes, dark hides, warm-blooded glow spots.
-  AMBER     an orange sun. Pigment: burnt orange, gold, ochre. Light: warm,
-            honeyed, medium contrast. Flora: ochre, rust, olive-black.
-            Fauna: banded rust and tan camouflage.
-  WHITE     a yellow-white sun. Pigment: near-white with a warm edge. Light:
-            neutral, clean, medium-hard shadows. Flora: deep green-black,
-            teal, bottle green. Fauna: mottled greens and greys.
-  AZURE     a blue-white giant. Pigment: hard white, cobalt edge. Light:
-            hard, cold, short black shadows, bleached highlights. Flora:
-            pale silver, cyan, bleached bone. Fauna: pale mineral plating,
-            small shielded eyes.
-  CINDER    a dying orange giant. Pigment: swollen dull orange, sooty limb.
-            Light: enormous, dim, everything the colour of embers. Flora:
-            charcoal and copper, sparse. Fauna: armoured, slow, heat-shedding
-            frills.
-  TWIN      a binary: a white dwarf with an ember companion. Pigment: one
-            pinpoint cold white, one dull red. Light: two shadows of two
-            colours on everything. Flora: mineral crusts, little pigment.
-            Fauna: crystalline growths, split colouring by side.
+  BD     #c98a6a  brown dwarf. Pigment: muted copper-brown, dusty sienna.
+         Light: low warm copper, subdued contrast.
+  M      #ff9a6a  red dwarf. Pigment: pale vermilion, warm salmon-orange.
+         Light: warm red-orange, dim relative to the brighter star kinds.
+  K      #ffd9a0  orange dwarf. Pigment: pale ochre, warm cream-gold.
+         Light: soft golden-orange, warm diffuse fill.
+  G      #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  A      #e8efff  hot white star. Pigment: pearl white with a faint blue cast.
+         Light: cool white, pale blue fill.
+  B      #9ab8ff  blue giant. Pigment: pale cobalt-blue, cool white.
+         Light: blue-white, cool blue fill.
+  PROTO  #ff9a5a  protostar in a dusty disk. Pigment: warm orange, ochre.
+         Light: warm orange filtered by the source-described dusty disk.
+  RG     #ff8a4a  swollen red giant. Pigment: orange-red, warm vermilion.
+         Light: broad warm orange-red source.
+  SG     #ff7a50  red supergiant. Pigment: coral-red, orange vermilion.
+         Light: broad coral-red source, scale from its larger source radius.
+  WD     #eef4ff  white dwarf. Pigment: chalk white with a faint ice-blue cast.
+         Light: compact cool-white source.
+  NS     #dceaff  neutron star. Pigment: pale ice blue, cool white.
+         Light: compact blue-white source; source-described radiation beams
+         are painted structure, not glowing outlines on organisms.
+  MAG    #cfe0ff  magnetar. Pigment: pale blue, cool pearl white.
+         Light: compact cool blue-white source; magnetic structure is painted
+         with readable edges, not a second invented sun.
+  BH     #9a86c8  stellar-mass black hole. Pigment: muted blue-violet, slate.
+         Light: only surrounding source-described accreting matter emits;
+         the central body stays dark. Apply the key rule at compile time.
 
-  KEY RULE: no system uses magenta, hot pink or violet-pink as star light,
-  flora pigment, bioluminescence or hull colour. Those hues are reserved for
-  the cut-out key (section 5), which is the standing method for every cut-out.
+BINARY AND TRINARY ARE LIGHT MODIFIERS, NOT STAR KINDS.
+Read sys.binary and sys.trinary from worldgen; preserve the actual primary.
+The binary companion colour is #ff9a6a or #ffd9a0, the third is #ff9a6a.
+Compile their pigment through the same colour vocabulary, using their stored
+radii and geometry for relative scale and light placement. Two sources yield
+two shadows of two colours; three sources retain three directions, with
+relative intensity carried by the data-derived composition. Never insert a
+white dwarf or change the primary to fit a template. Nursery births and
+remnants likewise retain the source's exact kinds and counts.
 
-THE SYSTEM CARD (fill once per system; paste into every prompt for it)
+KEY RULE: reserve magenta, hot pink and violet-pink for the cut-out key.
+Apply the exclusion only when compiling painted pigment words: map a seeded
+hue in the reserved band to the nearest permitted pigment word for rendering.
+Star colour hexes, genome values, names and identity remain unchanged. This
+rule applies to painted star light, flora pigment, bioluminescence and hull
+colour; it does not rewrite the game's palette or rarity colours.
 
-  SYSTEM CARD - <system name>
-    Star: <one row of the star table, e.g. AZURE, a blue-white giant>
-    Light: <copied from the table row, then made specific to this world:
-       direction, hardness, shadow colour>
-    Mineral palette: <the two or three rock and soil colours of this system>
-    Atmosphere: <tint and density, e.g. thin dust-orange haze / dense pale green>
-    Flora pigment: <from the table row, narrowed to this world>
-    Fauna adaptation: <camouflage against the named flora; eye size set by the
-       light level; what the animals do about the heat or the cold>
-    One signature: <the single visual fact a player recognises this system by,
-       e.g. floating mineral shards, black glass dunes, a ring's shadow>
+THE SYSTEM CARD (compiler output schema; never a hand-filled example)
 
-  A creature painted without the card is lit by a generic sun and will not sit
-  on its own planet's biome plate.
+  SYSTEM CARD - <source system identity/name>
+    Star: <starClass.kind, KIND_DESC and source colour via the table above>
+    Light: <star and companion data, vista day/twilight/night, atmosphere;
+       composition direction, softness and shadow colour derived from inputs>
+    Mineral palette: <planet type plus hue, seaHue, landHue and ice genes>
+    Atmosphere: <vista palette, climate and weather data>
+    Flora pigment: <biome flora/form routing plus species colour/finish genes>
+    Fauna adaptation: <biome fauna family/realm routing and actual genome
+       body plan, skin, eyes, pattern and colour; never invented anatomy>
+    One signature: <source biome hazard expressed as a visible physical fact>
 
-  UNIVERSE prompts (deep space between systems) carry a card with only the
-  Light and One signature lines filled.
+Star and planet owners: packages/domain/starcatalog, worldgen and planetgen.
+Vista owner: apps/game/src/biome-vista-surface.ts. Biome owner:
+packages/domain/biome-profile; species/genome/descriptor and art-routing owners
+supply organism form and palette. All paths are under port/v2. The day flag
+is seeded input, never a wall-clock read. Missing source fields are reported,
+not filled with an invented system or an invented class.
+
+For space-only prompts, compile only Light and One signature from the actual
+cosmic object's source data; do not invent planet or biome data for it.
+The same admitted inputs produce the same card. A changed planet/vista gets
+its own derived context while keeping system/star identity. Every subject in
+one scene shares this context, so it sits on its own planet's biome plate.
+
+LIVE VOCABULARY: use GAME_VOCABULARY_COVERAGE.md in
+audits/CLAUDE_FULL_REVIEW_20260910/ as the source map.
+Active planet types are gas, rocky, desert, ice, terran, ocean, venus and lava.
+Use the 43 live biome keys, actual creature family/realm routing, flora/fungi/
+microbe forms and named Earth species. Design-only biome packs are not rows.
+Every queued subject must resolve to a current source key; class layouts and
+size allowances below do not create catalogued objects. People are not active.
+No new star, organism, ship, item, ability or rarity class is invented here.
 ```
 
 ## 4A. Universe (scene)
@@ -273,18 +323,69 @@ BIOME - OUTPUT: scene block, 2560 x 1440.
   never one plate sliced.
 
 NEGATIVE ADDITIONS (both profiles):
-  No Earth continents or recognisable Earth geography, no Earth foliage (oak,
-  palm, pine, lawn grass) unless the brief names it as convergent, no blue sky
-  with white cumulus unless named, no photographic satellite imagery, no
+  No Earth continents or recognisable Earth geography unless the source names
+  Earth, no blue sky with white cumulus unless named, no photographic satellite
+  imagery, no
   visible tiling or repeated texture, no UI, no waypoint markers, no text, no
   characters other than the one scale figure if named.
+```
+
+### Arena scene profile
+
+```text
+WHAT (iii) ARENA: a procedural combat environment assembled from a biome-family
+  template and the same compiler-filled system card and frozen style as its
+  biome plate. The template is reusable; the battle context supplies its seed.
+
+ARENA - SUBJECT SLOT, in this order:
+  source biome family and defining landform; fighting-ground material and
+  sheen; system-card light, mineral palette, atmosphere, weather and time of
+  day; the home world's physical signature; the requested depth plate
+  (far, mid or near). No combatants are painted into the arena.
+
+ARENA - LAYOUT (paste):
+  A wide, side-view painted fighting stage at low eye level, with a flat,
+  continuous fighting-ground band and clear combatant stands at the left
+  and right thirds. Compose for two opposing creatures, each one third to
+  one half of frame height. Keep their silhouettes and run-up path clear.
+  Put atmospheric depth behind the fight, with no competing foreground.
+  Use one shared horizon, ground registration and system-card light direction
+  across all three plates. Every shadow agrees with that light.
+  Fighting-ground line: y = 0.78 in normalized full-frame coordinates,
+  measured down from the top; record it in the arena recipe for all layers.
+  Stands, paws, contact shadows and impact anchors register to this line.
+  FAR: distant landforms, sky and atmosphere behind the combatants.
+  MID: the fighting ground, horizon band and restrained biome landmarks
+  behind the stands; flat magenta key above and outside this terrain content.
+  NEAR: a quiet ground edge that supports parallax without covering the stands,
+  paws, effects or fighting path; flat magenta key above its content.
+  Parallax must not reveal gaps between plates.
+
+ARENA - OUTPUT:
+  Three separately painted 2560 x 1440 masters per biome-family template,
+  each with its own brief; never one image sliced. FAR uses the full-bleed
+  opaque scene block. MID and NEAR use the Arena key-painted technical block:
+  flat magenta above/outside the terrain, keyed at intake like cut-outs.
+  No extracted masks. Preserve the original key-painted master bytes.
+
+ARENA MID/NEAR - ACCURACY:
+  Must include: one continuous terrain layer, the shared ground registration
+  and the flat key field above its content; clear stands and fighting path.
+  Must exclude: sky painted into the key, creatures, props across the path,
+  detached terrain tiles, checkerboards and imitation transparency.
+
+ARENA - NEGATIVE ADDITIONS:
+  No characters, resident creatures, scale figures, baked-in attack effects,
+  UI, timing bar, labels, steep or broken fighting ground, competing foreground,
+  obstacles on the fighting path, inconsistent perspective or mismatched light.
 ```
 
 ## 4D. Flora (cut-out)
 
 ```text
-WHAT: collectible and ambient growth: stalks, canopies, fungal towers, mineral
-corals, drifting seed forms. Painted as cut-outs for gameplay and for
+WHAT: source-owned flora, fungi and microbe forms, and named Earth botany:
+stalks, canopies, fungal towers, mineral corals, drifting seed forms. Painted
+as cut-outs for gameplay and for
 compositing onto biome plates.
 
 SUBJECT SLOT, in this order:
@@ -310,7 +411,7 @@ LAYOUT (paste):
   Framing target: 78 percent. Safe margin: at least 10 percent on every side.
 
 NEGATIVE ADDITIONS:
-  No Earth-identifiable species, no lawn grass, no flower-shop bouquet forms,
+  No flower-shop bouquet forms,
   no potted plant, no soil clump, no insect visitors, no second specimen, no
   gardening context, no glow used as an effect rather than painted as shape.
 
@@ -327,8 +428,8 @@ error-prone class, so its brief is the strictest.
 SUBJECT SLOT, in this order:
   body plan and size against a human; the limb and head counts, each stated
   twice ("six legs, three on the near flank and three on the far"); materials
-  by colour and sheen (chitin, membrane, hide, mineral plate) with the colour
-  from the system card's fauna line; how it moves and what that does to its
+  by colour and sheen (fur, feather, chitin, membrane, hide, mineral plate),
+  with the colour from the system card's fauna line; how it moves and what that does to its
   build; its natural weapons, named as anatomy and matched to what it actually
   does in combat; any gear, harness or growth it carries, or "no armour, no
   harness" outright, because a tough creature is otherwise painted in steel;
@@ -363,7 +464,7 @@ token pose is approved, from the same brief):
   Add to the negative: no action pose, no overlapping limbs, no three-quarter
   view, no fourth figure.
 
-THE COMPANION RULE (only if the anchor keeps "wondrous" without "never cute"):
+THE COMPANION RULE (only for companion-flagged game data):
   A creature flagged as a companion in its data adds one line to its brief:
   "built to be kept: rounder mass, a larger eye, a readable and friendly
   expression, still painted with the same weight and material truth as every
@@ -371,6 +472,8 @@ THE COMPANION RULE (only if the anchor keeps "wondrous" without "never cute"):
   carry that line. Both come off the same sheet in the same hand.
 
 THE GUARDIAN RULE:
+  Applies to source-owned apex guardians (raw grades 12 to 14), not a new
+  display rarity; all three display as Transcendent.
   A planetary guardian is painted at 1536 square, fills the battle screen, and
   carries the system's One signature on its body (the black glass, the ring
   shadow, the mineral shards). Its focal detail is more ornate than any other
@@ -384,13 +487,11 @@ THE MORPH RULE (breeding and variants):
   body. A morph's turnaround is not regenerated; the parent's stands.
 
 NEGATIVE ADDITIONS:
-  No Earth animal recoloured, no mammalian fur or feathers unless named, no
-  default bipedal humanoid stance unless named, no armour plating the brief did
+  No default bipedal humanoid stance unless named, no armour plating the brief did
   not ask for, no human eyes, no weapons held in hands unless named, no rider,
   no second creature.
-  If "never cute" is kept in the anchor, add: no mascot styling, no oversized
-  head. If it is not, do not add those two, or companions will fight the
-  negative.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
 
 OUTPUT: cut-out block, 1024 square; guardians 1536 square. A big creature
 shipped small goes visibly soft on screen.
@@ -399,9 +500,9 @@ shipped small goes visibly soft on screen.
 ## 4F. People (cut-out)
 
 ```text
-WHAT: the player's explorer, crew, traders, and the sapient aliens a player
-meets and talks to. A person is a fauna row with a person's counts and a
-person's dress.
+STATUS: NOT APPLICABLE until the game has people. No people rows may be
+queued or painted. The layout below is retained as an inactive template, not
+a claim that the current generator produces people.
 
 SUBJECT SLOT, in this order:
   species and build; "one head, two arms, two hands, two legs" or the alien
@@ -427,7 +528,10 @@ OUTPUT: cut-out block, 1024 square.
 ## 4G. Ships (cut-out)
 
 ```text
-WHAT: the player's vessel and its upgrades, alien vessels, wrecks as objects.
+WHAT: the player's four source-owned ship stages: Scout, Jump, Survey Cruiser,
+Frontier (apps/game/src/shipyard-preview.ts). Other size/layout allowances
+are inactive unless a matching current source record exists; do not invent
+a ship class to exercise a template.
 
 SUBJECT SLOT, in this order:
   hull class and size against a human (a figure is not painted; the scale is
@@ -516,15 +620,23 @@ LAYOUT (paste):
   Framing target: 74 percent. Safe margin: at least 12 percent on every side.
 
 THE RARITY RULE:
-  Rarity is read from the object itself, in this closed ladder, so the UI can
-  add its own frame without fighting the painting:
-    common     plain working material, scuffed, no ornament
-    uncommon   one deliberate fitting in a second material
-    rare       worked surface, engraved or inlaid, one contrasting stone
-    epic       precious material as the body (the system's crystal, a blue-hued
-               exotic wood, patinated gold), ornament on every edge
-    legendary  a relic: a material that exists nowhere else in the system,
-               and the system's One signature worked into it
+  Source: RARITY_V17 and displayRarity in
+  port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js.
+  Ten display tiers map in adjacent pairs onto five material treatments:
+    0 Common       / 1 Uncommon     plain working material, scuffed, no ornament
+    2 Notable      / 3 Rare         one deliberate fitting in a second material
+    4 Exotic       / 5 Legendary    worked surface, engraved or inlaid,
+                                   one contrasting stone
+    6 Mythic       / 7 Celestial    precious material as the body (the system's
+                                   crystal, a blue-hued exotic wood, patinated
+                                   gold), ornament on every edge
+    8 Primordial   / 9 Transcendent a relic: a material that exists nowhere else
+                                   in the system, and the system's One
+                                   signature worked into it
+  These are material treatments, not new rarity tiers. Raw grades 10 to 14
+  retain their identity and display as Transcendent via the existing clamp.
+  Source rarity hexes belong to the interface, never to a ring painted into
+  the object. Organism anatomy and colours remain data-owned.
   No glow, no aura, no coloured rim on the object for rarity. The interface
   does that.
 
@@ -568,6 +680,54 @@ NEGATIVE ADDITIONS:
 OUTPUT: cut-out block, 512 square; status and condition icons 256 square.
 ```
 
+## 4K. Effects (cut-out sequences)
+
+```text
+WHAT: painted ability-theme effect sequences with launch, travel and impact
+  phases, using the unchanged frozen style. The source theme keys are:
+  fire (Fire), frost (Frost), storm (Storm), tide (Tide), stone (Stone),
+  venom (Venom), void (Void), sand (Sand), chem (Chem), psionic (Psionic),
+  wild (Wild). Use only the theme and ability selected by game data.
+
+SUBJECT SLOT, in this order:
+  source ability theme and the physical action it represents; material and
+  palette; sequence phase (launch, travel or impact); the phase's strong shape
+  and direction of motion; its origin or contact anchor and relative scale.
+  Keep the same painted material, palette, direction and scale relationship
+  across the sequence. A melee travel phase may be a short directional sweep;
+  it need not invent a projectile for an ability that does not have one.
+
+ACCURACY:
+  Must include: a readable theme-specific effect silhouette in each phase,
+  with shared anchors and consistent scale for runtime sequencing.
+  Must exclude: creatures, body parts, scenery, ground, cast shadows, text,
+  symbols used as labels, UI and a baked-in target.
+
+LAYOUT (paste):
+  One isolated phase of the named ability effect, painted as a crisp-edged,
+  fully opaque shape against the flat pure magenta key (#FF00FF). Keep the
+  entire shape within the frame with room for its motion. Paint energy,
+  spray, dust and impact as bounded shapes and grouped marks in the frozen
+  hand, with no halo or soft haze bleeding into the key. Keep the canvas size,
+  registered origin/contact anchor and scale consistent between phase images.
+  Runtime placement and tweening connect the phases; do not paint a battle
+  scene or generate a contact sheet.
+
+NEGATIVE ADDITIONS:
+  No magenta or pink within the effect, soft transparent fringe, photographic
+  particles, lens flare, glowing outline, baked motion blur, lettering,
+  frames, scenery, body parts or duplicate phase images in one output.
+
+OUTPUT:
+  Cut-out block, 1024 square per phase master, subject to section 5's existing
+  authoring-target and runtime-input admission rule. Deliver launch, travel
+  and impact as separately named images. Deliver one anchor JSON per sequence
+  recording canvas size, origin and contact anchors, phase order and each
+  phase image name; normalized anchors are measured from the top-left.
+  Any extra key images use the same registration. Review sheets
+  and runtime effect atlases are assembled from these masters after intake.
+```
+
 ## 5. Technical output
 
 ```text
@@ -578,6 +738,7 @@ screen, so it stays sharp on high-density displays. Generate at this size,
 keep that file as the master, ship it as WebP.
 
   fauna, people, flora, props, ships ........ 1024 square
+  Effects phases (cut-out) .................. 1024 square
   guardians, capital ships, screen-filling
      landmarks and canopies ................. 1536 square
   orbital planets ........................... 1024 square
@@ -586,6 +747,10 @@ keep that file as the master, ship it as WebP.
   fauna turnaround (animators only) ......... 2048 x 1024
   universe, stars, biome plates, parallax
      layers ................................. 2560 x 1440
+  Arena FAR (scene), MID and NEAR
+     (key-painted terrain) .................. 2560 x 1440
+
+Section 5 sizes are authoring targets. A master is accepted at any size at or above the runtime input size for its class (currently 384 square for cut-outs and 1024x576 for plates); the intake check records the delivered size.
 
   A transparent creature WebP lands near 150 KB and a biome plate near 600 KB.
 
@@ -606,7 +771,7 @@ demonstrably emits a true alpha channel: test ten images, check every file for
 a baked checkerboard and for a halo, and switch only if all ten are clean.
 
 CUT-OUT BLOCK (paste for orbital planets, flora, fauna, people, ships,
-landmarks, items, emblems; put the class's size in place of 1024 where the
+landmarks, items, emblems, Effects; put the class's size in place of 1024 where the
 table says 1536, 512 or 256):
   Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one
   flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
@@ -623,11 +788,29 @@ SCENE BLOCK (paste for universe, stars, planet biomes):
 
 Glow is painted as shape in both kinds, or the cut-out eats the creature's
 edge and the scene goes muddy.
+
+Arena FAR uses the SCENE BLOCK above. Arena MID/NEAR use the cut-out
+technical method with the terrain-specific block below; their landscape
+canvas and ground content replace the object block's square/no-ground rules.
+
+ARENA KEY-PAINTED BLOCK (paste for Arena MID and NEAR):
+  Create a 2560 x 1440 PNG terrain layer. Paint the named ground/horizon
+  content with a crisp fully opaque edge; every pixel above or outside it
+  is flat uniform pure magenta (#FF00FF), with no gradient, texture, noise,
+  checkerboard, transparency pattern, frame or halo. No painted sky in the
+  key field and no magenta/pink in the terrain. Key at intake like a cut-out;
+  do not extract masks from an opaque scene. Preserve full-frame registration
+  at fighting-ground y = 0.78; do not crop or recenter the layer.
 ```
 
 ## 6. Shared negative
 
 ```text
+Class routing: CUT-OUT means orbital planets, flora, fauna, ships, landmarks,
+items, emblems and Effects (people remain inactive). SCENE means universe,
+stars, planet biomes and Arena FAR. Arena MID/NEAR use the key-painted
+terrain exception below.
+
 Paste in every prompt, then add the class's NEGATIVE ADDITIONS.
 
   No text, letters, numbers, watermark, signature, border, frame, grid, UI
@@ -644,6 +827,13 @@ Paste in every prompt, then add the class's NEGATIVE ADDITIONS.
   Background must be one flat uniform magenta fill and nothing else.
 
   For SCENE classes, do not add those clauses. They will fight the scene.
+
+  For Arena MID/NEAR, replace those object-isolation clauses with:
+  No painted sky or scenery outside the specified terrain layer; no
+  characters, detached display base, white background, checkered background,
+  baked transparency pattern or soft fringe bleeding into the key. The field
+  above/outside the terrain must be flat uniform magenta. Ground, horizon
+  band and terrain shadows are intentional content, not forbidden scenery.
 ```
 
 ## 7. Writing a subject line
@@ -710,24 +900,38 @@ fantasy library learned by losing a day.
   anchor, references, queue and sessions. Nothing is reused across them.
 ```
 
-## 9. Before any volume generation
+## 9. Engine proof before library rollout
 
 ```text
-  a. Settle the companion clause in section 2.
-  b. Paint the cut-out reference: frontier-sheet-01.png, one square sheet,
-     about twelve subjects per row, rows for fauna, flora, people, ships and
-     items, plus one orbital planet. Twelve per row holds; sixteen wraps.
-     Iterate until you accept it, then record its SHA-256.
-  c. Paint the scene reference: frontier-plate-01.png, one wide plate in
-     three panels: a universe vista, a star, a biome, all from one system
-     card. Iterate, accept, record its SHA-256.
-  d. Attach the sheet to every cut-out generation and the plate to every
-     scene generation, never both in one session.
-  e. Calibrate on one image from every class and profile in section 4 (eleven images),
-     all from the same system card, and look at every one of them. They must
-     hold together as one world, and sit beside the fantasy tokens as work by
-     the same hand.
-  f. Then freeze: the anchor, the star table, the shared negative, the class
-     layouts and the size table do not change again. The system card grows one system at
-     a time; the star table grows only by adding a row.
+  a. Nick approved v4 at 6f5c396e, subject to this engine-first order. Use the
+     existing Discovery Atlas and Living Worlds locks in section 1. No v3
+     painting and no replacement style locks. Keep the 4E turnaround unchanged.
+  b. Paint only the first engine painting's inputs: the Earth temperate biome
+     plate; six Earth cut-outs (Civet, Platypus, Frog, Persimmon, Cranberry,
+     Devil's Club); five family references (mammal quadruped, bird, fish,
+     insect, reptile). Show Nick the sheets of these twelve individual masters.
+  c. On the first cut-out batch, inspect every image for frames or dark plate
+     backgrounds inherited from the Discovery Atlas. If any appear, propose
+     a one-sentence v4.1 addition to the cut-out block and STOP for Nick's
+     approval. Do not apply that addition or repaint before approval.
+  d. The one compiler fills every card and subject slot from actual game data.
+     No hand-typed card, invented class or design-only biome row. Attach the
+     atlas to cut-outs and the triptych to scenes, never both in one session.
+     Use complete applicable class blocks and preserve exact prompt hashes,
+     untouched captures, layouts, sizes and keying rules. Review every master.
+  e. Immediately after the bounded first inputs, build the local AI pipeline:
+     one interpreter in landfall-conditioning.ts; offline pre-fit/hash of the
+     six Earth cut-outs and biome anchor; unfreeze steps, seed and size;
+     per-organism passes composed on the plate and one low-strength finisher
+     in stage-worker.mjs. Keep sessions warm across landings and build the VAE
+     encoder once. In-worker expansion replaces OPFS variant storage. Show
+     the first measured native painting beside the Living Worlds triptych
+     with a bounding box and identity finding for every organism. No six-reference scene-generator prompt sweep.
+  f. After Nick accepts the first engine painting, complete the Animation and
+     battle track in CODEX_HANDOFF.md before the remaining library rollout.
+     A v4.1 Effects cut-out class is a proposal requiring Nick's approval
+     before painting any effect. No effect class is activated by this section.
+  g. Only after engine-painting acceptance and the animation proof, roll out
+     remaining families, forms and biome plates twelve images at a time,
+     showing every sheet. Exact source keys decide rows, not count estimates.
 ```

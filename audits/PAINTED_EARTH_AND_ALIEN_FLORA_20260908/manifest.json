@@ -1,0 +1,65 @@
+{
+  "schema": "cf.painted-earth-alien-flora-reference-intake.v1",
+  "recordedAtUtc": "2026-09-08T22:13:43.306098+00:00",
+  "owner": "OpenAI/Codex macOS /Users/nick/Projects/celestial-frontier-openai-mac openai/mac",
+  "authority": "Nick supplied these exact two image paths during the 2026-09-08 local Civet batch and requested inspection, durable art-direction recording and necessary Earth/alien-flora adjustments. This is reference-style authority within the existing local campaign; it does not authorize anatomy replacement, catalog identity changes or roster/ecology edits.",
+  "referenceRelationship": "Additive clarification of the approved rich-painted space/creature and biome direction; not a new style or project restart.",
+  "constraints": [
+    "Earth fauna retain named species anatomy, proportions, markings, canonical colors and appropriate motion.",
+    "Earth flora retain named botanical species, growth form, branching, leaf/flower/fruit structures and canonical colors.",
+    "Alien flora retain seeded identities, complete compatible growth/root/branch structure and biome-appropriate mapping and palette.",
+    "The sheet examples do not define catalog names, species counts, new ecology rules or generated rosters.",
+    "Alien orange/blue/ivory is reference color variety, not a universal palette; exposed roots are not mandatory in-world geometry.",
+    "The ongoing canonical Civet stays a Civet; the fox in the Earth sheet is a style example, not replacement identity.",
+    "Preserve accepted UI controls, emoji, text, placement and all earlier verification blockers."
+  ],
+  "assets": [
+    {
+      "role": "Alien flora: painted whole-form growth and material reference, 12 examples",
+      "sourcePath": "/Users/nick/Library/Mobile Documents/com~apple~CloudDocs/Downloads/Codex Image Sep 8, 2026, 06_03_08 PM.png",
+      "preservedPath": "audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/alien-flora-reference.png",
+      "sha256": "611a19a1a10ed4e5ba3225ec686d1f025c3bf2c83442ec2d830b3b7943ff4d5c",
+      "bytes": 2787923,
+      "width": 1254,
+      "height": 1254,
+      "pngBitDepth": 8,
+      "pngColorType": 2,
+      "dimensionsEvidence": "PNG IHDR parsed from exact preserved bytes",
+      "visualInspection": "Both user-supplied source images inspected via view_image on 2026-09-08",
+      "copyVerification": "Destination read-back exactly equals source bytes before and after copy; SHA-256 agrees",
+      "sourceMutation": false
+    },
+    {
+      "role": "Earth flora/fauna: painted natural anatomy, botanical structure and canonical colors, 16 examples",
+      "sourcePath": "/Users/nick/Library/Mobile Documents/com~apple~CloudDocs/Downloads/Codex Image Sep 8, 2026, 06_09_02 PM.png",
+      "preservedPath": "audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/earth-flora-fauna-reference.png",
+      "sha256": "96cfb499f8e2d8fdd15cc1a09dcfa6238195152ee619290c294e71707544987a",
+      "bytes": 2570683,
+      "width": 1254,
+      "height": 1254,
+      "pngBitDepth": 8,
+      "pngColorType": 2,
+      "dimensionsEvidence": "PNG IHDR parsed from exact preserved bytes",
+      "visualInspection": "Both user-supplied source images inspected via view_image on 2026-09-08",
+      "copyVerification": "Destination read-back exactly equals source bytes before and after copy; SHA-256 agrees",
+      "sourceMutation": false
+    }
+  ],
+  "runtimeIntegration": false,
+  "assetGeneration": false,
+  "hostedActions": 0,
+  "automationsCreated": 0,
+  "checksRun": [
+    "PNG signature/IHDR dimensions",
+    "exact source-to-copy/read-back byte equality",
+    "SHA-256",
+    "visual inspection of both supplied references and current Civet study"
+  ],
+  "notClaimed": [
+    "independent/cloud backup",
+    "production asset approval",
+    "catalog coverage",
+    "anatomical certification",
+    "new runtime tests or browser admission"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "schema": "cf-u2-checkpoint-evidence/v1",
+  "source": "e88ea7b1ce31dc3a4be583927183f70bc9c608a0",
+  "status": "SCOPED_INSTRUMENT_RED",
+  "files": [
+    {
+      "file": "execution.json.gz",
+      "rawBytes": 4422,
+      "rawSha256": "d5fbe524111951fd67b0ef36879f02d4b2c9ab94737ac7726045f50ba8879729",
+      "bytes": 962,
+      "sha256": "8082ca7ad15eaa7dcc2e390721c86a0f8d038d4ccd5f64c3f4667293e0cfaf94"
+    },
+    {
+      "file": "clone.log.gz",
+      "rawBytes": 75,
+      "rawSha256": "66ddd5adcfccde2ab30e55394a5d65a7c991a804b962b79b9d4975ddaf1026ae",
+      "bytes": 93,
+      "sha256": "658803336d9494a990f7bf50838c5d8fb29086559f4e3170776015702bdfd635"
+    },
+    {
+      "file": "normal-build.log.gz",
+      "rawBytes": 5281,
+      "rawSha256": "e0d3eb9123db94abd8560061fb6f26352ab1dc8f8412dec4a92f14d0ca3909dd",
+      "bytes": 1876,
+      "sha256": "e3964001d2b837b20ebd6537cfd5943ca9f27c3d5818521a9c5e0f99fd2a0f45"
+    },
+    {
+      "file": "root-install.log.gz",
+      "rawBytes": 28,
+      "rawSha256": "f7b7dd8b14c002a7dd41a84effce16f837bcf1ab04e67549fa6e543758e45f54",
+      "bytes": 48,
+      "sha256": "19846c253f1db245f6b7f891d416805c2bf287cac703e3ade9f2474cfbeed7ea"
+    },
+    {
+      "file": "sheet-review.log.gz",
+      "rawBytes": 640,
+      "rawSha256": "39907ec4db672ce3ec4cd892d4a4d8c19a2a80f93a12208b67f9fbca0064e8a1",
+      "bytes": 316,
+      "sha256": "093ae4b08e3a9987bf0676a2d06fdb23ec4a2d6a362c1639a1a8a99dfc153e28"
+    },
+    {
+      "file": "signature.log.gz",
+      "rawBytes": 135,
+      "rawSha256": "f6da87af347cddf791a8771d5098e5c45e9c9ddf4aa8cd551fac5d7d5821a3e7",
+      "bytes": 152,
+      "sha256": "334f0dcc90089880e4acd4d3003ef1731ea177cffb7b7b3b4a73d6f6d8ffa57e"
+    },
+    {
+      "file": "static-develop.log.gz",
+      "rawBytes": 6966,
+      "rawSha256": "9b236c59859ae77dcf8e84f69a3f833be59a42b77250a765fe68a00c7a76800d",
+      "bytes": 2703,
+      "sha256": "bc717edd32f3d25f8bfd9418d1daf9512026f752d9f9b50e9d1fffc3aa033a90"
+    },
+    {
+      "file": "v2-install.log.gz",
+      "rawBytes": 332,
+      "rawSha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de",
+      "bytes": 178,
+      "sha256": "55d839bb353a982076ae477da0687bb5e410e0336640a4a8e1e8cfe33942ba3c"
+    },
+    {
+      "file": "review.json.gz",
+      "rawBytes": 389657,
+      "rawSha256": "5ae47e97be42ad7a3a07770783a9e7b475974f0cfabc8de02cb4e65b541a454a",
+      "bytes": 26745,
+      "sha256": "b6cefa269de3946516131eddb67a2d4fb5703c678149b5c2258623a16f18fc1b"
+    },
+    {
+      "file": "small-phone-default-settings-scrolled.png",
+      "rawBytes": 201686,
+      "rawSha256": "618c21ebd798b9b7e528ae435e35f2a7c12e711d325baa3e15e9b02bcbc09a16",
+      "bytes": 201686,
+      "sha256": "618c21ebd798b9b7e528ae435e35f2a7c12e711d325baa3e15e9b02bcbc09a16"
+    },
+    {
+      "file": "small-phone-default-training-settings.png",
+      "rawBytes": 192102,
+      "rawSha256": "a9f4d179807c6e92ce8863004d7ba600db3d4fef32145c7f5d9f9e8babbde2b2",
+      "bytes": 192102,
+      "sha256": "a9f4d179807c6e92ce8863004d7ba600db3d4fef32145c7f5d9f9e8babbde2b2"
+    }
+  ],
+  "notRun": [
+    "remaining scoped rows",
+    "small-phone",
+    "large-phone",
+    "Slice"
+  ]
+}

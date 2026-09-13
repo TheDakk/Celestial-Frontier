@@ -1,5 +1,952 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+Tooling configuration updated 2026-09-12: [UI_TOOLCHAIN.md](UI_TOOLCHAIN.md) records the exact
+GSAP/emitter and atlas pins, optional PNG CLI probes, and deterministic creature-atlas command.
+These additions do not establish runtime parts-rig or effects integration.
+
+Civet animation proof status, September12: exact named viverrid anatomy export and a4E
+turnaround exist. Two private Blender tokens fail visual review (projection/shape drift).
+The larger shape/UV correction awaits approval; no local texture-finisher pass, rendered
+clips, staged browser turn, gene-driven family coverage or animation acceptance yet.
+Evidence audits/CIVET_ANIMATION_PROOF_20260912. Rain E remains active without inference.
+
+**Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
+emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical
+Earth loads the hash-verified accepted E PNG through the normal original-retention queue, without
+inference or a model install. Recipe/hash mismatches cannot inherit acceptance. Prior1x original
+and raw finisher are retained unchanged. Evidence: audits/RAIN_E_ADOPTION_20260912.
+Klein phone probing is stopped by Nick's budget decision; this does not establish the cause of
+Safari's earlier heartbeat loss. After the Civet proof, evaluate at most three approximately1GB
+finisher candidates on Mac, with redistribution-permitting licenses, the same painter composite,
+masked0.35 finish, and each model's compatible precomputed text embedding. Compare beside E,
+then one phone attempt with the best candidate; no delivery engineering before that result.
+Queue up to six new deterministic weather variants on the saved raw finisher: soft sky-contour
+sheen, darker/higher-contrast wet fur, and foreground precipitation at the plate's sky density.
+Show beside E/triptych; no inference. Civet end-to-end proof remains next. No kit/GitHub edits.
+
+**Normal Land implementation, September12:** the ordinary boot adapter now selects the
+accepted Earth kit composite and one masked finisher, with retained originals and400ms
+crossfade. The old game six-reference generator and OPFS variant owners are removed.
+Four sessions remain page-owned across successful landings. Other worlds retain their
+painter until supported kit assets exist. Ordinary Land/retention/Inspect browser proof
+passes; one native worker run produced two byte-identical landings, the second in21.62s
+with all four session creation counts1. Evidence: audits/KIT_NORMAL_LAND_20260912. The
+authorized8px-mask/two-Cranberry-runner experiment ran once in18.25s; five boxes pass but
+Cranberry registration is unresolved. Nick REJECTED it; no further finisher-erosion
+experiments. cd6b609f remains the accepted painting/tier-2 baseline. Nick accepts v4.1
+as diffed and wiring0d825fe5/0e37e6c6 as the production path; nothing was deployed.
+Physical iPhone17Pro/iOS26.6.2 probe reports1GiB maxBufferSize, f16 and41.23GB quota;
+no exposed memory API. Safari session lost during text-encoder load, before transformer
+or finisher; cause unconfirmed, no phone tier qualified. The subsequent Mac ordinary
+download/install-to-finisher run produced the accepted PNG byte-for-byte in31.33s
+from Land. Its additional reload instrument required a new-document timing correction;
+no second inference authorized. Evidence: audits/MAC_INSTALLED_KIT_20260912. Latest direction: audits/KIT_WEATHER_DECISIONS_20260912/DECISIONS.md.
+
+**September 12 acceptance update:** Nick accepts cd6b609f / 0eed6a21 as the first engine
+painting and tier-2 baseline. The retained PNG is unchanged; its qualityAccepted is true.
+Art Kit v4.1 applies the two approved section0/5 insertions; frozen style and4E unchanged.
+Next: physical iPhone probe/report, one Mac ordinary-game installed-model run with
+unchanged painting parameters, then one deterministic post-finisher weather/Cranberry
+mat painting, then Civet proof. Weather reads the compiled system card and recipe seed,
+never the clock; wet fur/leaves, light-facing droplets and uniform whole-frame precipitation
+leave anatomy/count/placement intact. Cranberry becomes a larger low mat about16% wide
+with more berries, in compiler data. The candidate implementation is awaiting visual acceptance.
+Weather/mat profile ran once on9f51f2c9 in23.562s warm. Exact pixel replay proves weather
+follows the retained raw finisher, with no-weather/pre-finisher negative controls. Five
+registrations show unchanged placement; Cranberry registration is inconclusive. Visual
+acceptance remains pending; normal game retains the accepted baseline. Kit variants deferred.
+ROADMAP owns the current sequence; audits/ART_KIT_WEATHER_MAT_20260912 owns this proof.
+
+**Nick's September 12 approved order:** v4 at `6f5c396e` is approved. ART_KIT §9
+now limits first authoring to the Earth temperate plate, six Earth cut-outs and five
+family references, then the measured engine painting. Inspect first cut-outs for
+Atlas frames/dark backgrounds and stop with a proposed v4.1 sentence if present.
+Keep 4E turnaround unchanged. After painting acceptance, the [Animation and battle
+track](audits/CLAUDE_FULL_REVIEW_20260910/CODEX_HANDOFF.md#animation-and-battle-track)
+(Civet proof, family masters/textures/clips and staged turns) precedes full-library
+rollout. Effects require a separately approved v4.1 class. This order supersedes
+earlier full-library-first or v4-awaiting-approval language below.
+
+
+**Current work authority — revised September 12, 2026:** Nick's four approved
+[MIDGAME images](audits/MIDGAME_ART_DIRECTION_20260908/README.md) define the direction;
+[ART_KIT.md](ART_KIT.md) v4 is the approved canonical statement at `6f5c396e`.
+[ROADMAP.md](ROADMAP.md) and [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) own program v4.
+V3 and both generated v3 reference candidates are rejected/retired. The pure
+`compileEarthArtKitV4` in `landfall-conditioning.ts` now compiles the bounded twelve
+authoring inputs from canonical Earth data and source-owned named family exemplars.
+The audit `ART_KIT_ENGINE_FIRST_20260912` retains all captures, prompts and review sheets.
+Nick accepts the twelve first v4 inputs and plate per the verbatim review in4a00a72b;
+the first painting is a targeted composition/contact revision. The kit and4E are unchanged.
+`compileEarthKitEngineV4` projects only model-relevant style/card/subject/layout to402
+chat tokens under the restored512 ceiling. Painted scales belong to earth-resident-plan:
+Civet height0.30, Platypus0.18, Frog width0.12, Persimmon height0.42. Same accepted inputs,
+seed133 and plate; one lower-band grass cut-out overlays both animals' lowest feet.
+One-pixel erosion/despill and premultiplied composition precede exactly one0.35 finisher;
+visible organism-interior latents anchor anatomy. All six organism passes are skipped.
+Four warm sessions and in-worker expansion remain. The one authorized revision on
+signed cd6b609f completed in24.173s warm/32.063s total with0 organism passes. All six
+registered box IoUs round to100%; Civet height30%. Codex finds preserved species,
+subtle contact shadows and no visible pink fringe at200%. Nick's acceptance is pending.
+The authorized run is consumed; no retry.
+[Evidence/acceptance](audits/ART_KIT_CONTACT_REVISION_20260912/README.md) separates pixel
+registration from segmentation and human species/shadow/fringe acceptance. Normal-game
+V1/V2 wiring, old OPFS removal, iPhone probe and remaining Part K work are pending.
+
+Standalone animation preview, September9: [desert living-painting study](audits/LOCAL_AI_DESERT_MOTION_20260909/README.md)
+is an audit-only HTML/WebGL ambient renderer plus12sMP4/GIF. It preserves the source PNG and uses
+camera/dust/heat effects; no creature articulation or game integration. Scoped loop/preview-control
+checks passed. It does not change runtime source, the accepted still landing priority or paused work.
+
+
+Standalone visual scope, September9: user-requested [fungal reference-guided](audits/LOCAL_AI_FUNGAL_TEST_20260909/README.md)
+and [alien desert text-only](audits/LOCAL_AI_DESERT_TEST_20260909/README.md) native local-model
+experiments now have retained1024x576 outputs (71.126s/58.751s respectively). Different inputs,
+not a controlled speed comparison. Neither binds canonical encounters or qualifies normal-game
+biome integration, physical phones or final art. Desert finish remains too stylized/smooth.
+Those experiments changed no game source or model bytes. Their pause is historical;
+program v4 now owns the restart.
+
+
+## Historical checkpointed continuation — source as of September 9, 2026
+
+Nick paused development on September 9. The [complete checkpoint](audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md) records that historical implementation/evidence boundary; its restart commands are superseded by program v4. The portable six-reference first-step diagnostic completed (85.013s execution,0.275ms readback); this is not a full image or a repair of the older normal-game600s failure. New browser block32 derivation, transactional OPFS storage, explicit Prepare/Verify controls, bounded original lookup and pinned-plan runtime/mobile integration are preserved in signed checkpoint `77aaeec5` and remain **not integration-tested**. Parent model6.23GiB plus optional336MiB derived storage remain separate from painting cache/GPU RAM. Final integrated checks, new package/native run, exact art review and physical-phone qualification are pending. The V2 draft release note records the optional action; no production version or accepted base control placement changed. Earlier verified-scope descriptions below must not be read as verification of this later integration.
+
+
+## Local AI inspection and delivery — matches code as of 2026-09-09
+
+`landfall-viewer.ts` owns a read-only native dialog for exact retained paintings, fit/native-size
+panning, lifetime background isolation, keyboard/focus handling and transient URL cleanup.
+`local-ai-game.ts` rereads/rehashes before inspection, fences competing/stale reads and requires
+explicit OPFS readiness for static installed-only runtime manifests. Main stores only its currently
+mounted original reference, restores an Inspect entry after reload, and preserves the normal
+scene/navigation/transaction owners. The base scene band and existing controls stay fixed.
+
+`landfall-conditioning.ts` adds a V2 compiler with six ordered complete species identities while
+preserving V1 bytes. `local-ai-runtime.ts` verifies those bindings, source digests and geometry,
+then sequentially encodes the six references. `local-ai-game.ts` supports exact same-snapshot/
+same-model V1 original lookup and preserves native model-storage disclosure state during progress.
+No hard spatial/count constraint or broad cross-model original index is implemented.
+
+`tools/local-image-generation/species-references.mjs` admits the exact reference-set manifest;
+`runtime-pack.mjs` builds/verifies its 35.72 MiB runtime closure. `mobile-pack.mjs` combines this
+with the normal app/PWA into 53.91 MiB, without weights. Optional `pwa-build.ts` policy permits
+explicit exact model GET/Range outside CacheStorage and bounds all retained build payloads during
+install. It now treats an explicit empty resulting client ID as an import only for a persisted
+`worker:true` owner bound to a retained build; window-only, unowned and stale requests still refuse.
+Normal PWA output is unchanged. Package03 built and independently verified at56,529,354bytes /97
+files; its exact external SHA is recorded in the delivery packet. Separate small native04 passed
+online/offline worker-module execution through the existing pre-GPU rejection and exact lazy WASM
+hash delivery, without WASM instantiation, model storage, GPU/model work or inference.
+Full-model native01/02 both retain aggregate FAIL. Attempt02 positively proved controlled
+Install/Pause/normal-reload/Resume of all20 files /6.23GiB, true offline normal-game rehash after
+both servers closed, and all20 native Blob reads through the compiled production owner. Its final
+module observer failed; these are storage/delivery subresults, not runtime or phone acceptance.
+`compile-delivery-diagnostic.mjs` uses the pinned TS7 CLI for exactly the two delivery/SHA sources;
+`native-model-mirror.mjs` reads/hash-verifies existing local bytes and is never shipped as fallback.
+Phone/CDN/resource/performance and distribution qualification remain open.
+`landfall-fidelity.ts` preserves its detached V1 builder and adds separately branded V2
+artifact-bound observations. V2 requires the canonical prompt, all nineteen genomes and six
+resident identities/anchors, six ordered reference digests/geometry, matching reference identity
+on each report row, and an explicit flora-count outcome. Cross-version or mixed carriers refuse.
+It recognizes no pixels, authenticates no reviewer and always leaves semantic/full-quality
+acceptance false. The exact retained V2 output is now formally species-rejected; its earlier
+V1-only API boundary and native aggregate FAIL remain historical evidence. All nineteen genomes
+and accepted anchors remain canonical.
+
+`run-mobile-model-delivery.mjs --landfall` delegates to `offline-landfall-proof.mjs` after real
+OPFS installation, offline native verification/Blob readback and the existing pre-GPU module
+reply. The default runner performs no inference. The explicit mode drives native Earth Land,
+portable V2 inference, progress/ETA, retained Ready, Inspect/View and unchanged original reuse
+through normal offline reload. It reads the visible original Blob without injecting storage.
+Dedicated worker targets are observed without debugger attachment; absent positive startup
+evidence during known inference yields `workerStartupEvidenceAvailable:false` and
+`noReloadInference:null`. Repeated exact-original/route/zero-job observations establish only
+`noReloadJobObserved`. Neither post-generation result was reached in actual native02: its full
+20-file install with Range resume (103.635 seconds from Resume to ready), true offline in-game
+rehash (79.326 seconds), native Blob readback, module guard, durable Land and early responsive
+Notifications passed.
+After all six reference encodings it reached Drawing at 31.706 seconds, then failed the unchanged
+600-second stage timeout without a completed denoise step, PNG, Ready, Inspect/View or reload
+proof. `modelExecutionAttempted:true` with `modelExecuted:false` records the missing completed-
+denoise observation, not absence of earlier model work. The aggregate FAIL, first inventory-
+observer failure, screenshot timeout and all logs remain retained. All 31 measured sources and
+final package verification stayed unchanged; owned resources closed. Exact results are in
+LOCAL_AI_GENERATION; no phone, latency, resource or quality approval is implied.
+See [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) and the
+[species/delivery packet](audits/AI_SPECIES_MOBILE_20260909/README.md) for exact outcomes and limits.
+
+## Earth layout geometry ownership — matches code as of 2026-09-09
+
+`painted-vista-load.ts` now checks the existing8-second monotonic expiry after awaited stages
+and before final canvas ownership transfer. Expired work closes decoded images and retains the
+existing failure/disposal rules even when a browser timer is throttled; no identity/layout change.
+
+
+AppChrome's `surfaceLayoutRects()` supplies frozen detached visible rectangles for its existing
+ordered topbar/search/objective/scene-actions elements and dock. Main owns the canvas and
+Planetside rectangle, retaining visible Planetside → dock → canvas fallback, scale conversion,
+clamping and the same12px scene clearance. Disposed chrome returns null. The direct element
+visibility predicate is unchanged; this does not newly qualify hidden ancestors or native devices.
+Literal and dynamic chrome lookups in the Earth adapter are rejected by the wiring guard.
+139 focused tests, all3 TypeScript programs and root validation passed; no layout redesign or
+new native run. [Integration repairs and retained failures](audits/DEVELOP_INTEGRATION_20260909/README.md).
+
+## On-demand landfall requirement — clarified 2026-09-08
+
+Nick's vision is to produce the finished, cohesive landfall painting **when a world is visited
+as play proceeds**. Millions of possible worlds do not mean millions of images prepared and
+installed in advance. A static landing presentation describes the displayed scene; it does not
+require a prepainted planet catalogue. The current one-world still demonstrates quality and
+placement, not the production generation mechanism.
+
+Nick explicitly confirms on September9 that the **browser game is the local-AI proof of concept
+for a later full-engine game**. Continue actual browser inference; no native delivery pivot. Players
+should need no separate AI installer. The isolated authoring proof in `tools/local-image-generation/`
+pins FLUX.2 Klein4B ONNX export3bffc0ef, ORT Web1.29.0 and Tokenizers0.2.0. This is a research
+candidate, not a selected shipping model. The20 runtime model files total6,691,020,416 bytes
+(6.23GiB), separate from runtime packages, model staging, saves, scene cache and live GPU/RAM.
+The built-in Codex tool created direction/reference artwork during authoring; it is not an embedded
+game generator. Later retained native candidates are actual local browser model outputs. Hardware, download size, quality, latency, costs and exact shared-image retention need
+qualification. A seed alone is not an exact-pixel contract. September9's continued local coding direction now covers the isolated local browser proof and
+its pinned development model cache. It does not accept mandatory player storage or raise shipping
+budgets. No generation service is called; separate Git integration authority is recorded in ROADMAP. [Feasibility and workflow](audits/STATIC_LANDING_PORTRAIT_20260908/LOCAL_GENERATION_FEASIBILITY.md).
+Local direction is conditional on feasibility, modest storage and no separate player AI setup.
+Nick now prefers adaptive scene-cache allowances: smaller on limited devices and several GB on
+capable desktops. Proposed tiers remain provisional; disk storage and RAM/GPU budgets are separate.
+All build/model/save/update bytes still count toward the total footprint. A pure advisory cache
+planner is implemented below; no live cache manager, model budget or runtime gate changed. [Current adaptive limits and retention proposal](audits/ON_DEMAND_LOCAL_GENERATION_REQUIREMENTS_20260908.md).
+Actual browser inference now produces raw768×432 paintings on the M4 Pro24GiB Mac using the
+native ORT WebGPU provider. Three retained runs cover scene reference (196s), no-reference
+ablation (142s), and scene plus exact Civet reference (227s). The extra identity reference improves
+the long pale muzzle and golden coat, but whole-tail framing, diagnostic botany/anatomy and
+full-screen detail remain below acceptance. Some operators run on CPU; no all-GPU or qualified
+unique-RAM/VRAM claim. These are isolated authoring results, not embedded gameplay or phone proof.
+Corrected native profiling attributes95.5% of sampler GPU time to quantized matrix operations;
+the same-Mac profiled768×432 output matches the prior unprofiled output exactly. A native1024×576
+comparison takes300s and produces duplicated/fused Civet bodies and ambiguous water contact.
+That candidate is explicitly rejected; added resolution did not meet the quality bar. The separate
+Q8 block32 derivative now completes the same768×432 dual-reference recipe in69,029ms versus
+238,809ms in the original profiled run (3.46× wall-time improvement on this Mac). All412 Q8
+operations use the native wide kernel; measured sampler GPU time drops206.66s→33.33s. The raw
+paintings look nearly identical but their pixel hashes differ; remaining anatomy/botany/framing
+limits persist and art acceptance remains false. No general speed, phone or unique-memory claim.
+Conversion preserves all represented quantized weights and independently verifies347,332,608
+new parameter bytes. The original shards remain unchanged; this optional developer derivative
+adds352,323,881 graph/data bytes (about336MiB), separate from any player delivery budget.
+[Exact conversion, native comparison and review](audits/LOCAL_AV_AI_CONTINUATION_20260909/README.md).
+Preserve full genomes, named Earth anatomy, biome authority, current clocks, saves and share codes.
+
+
+
+## Local AI in the game — matches code September9,2026
+
+The optional `?localai=1` preview now connects the ordinary durable Land action to a separate
+page-owned local generation queue. Its progress and explicit View/cancel controls live in Survey
+and Notifications. Completion requires an immutable original committed and reread from a separate
+IndexedDB art store; no auto-navigation, gameplay reward or save-schema change. The full native
+1024×576 image fits the existing measured scene band without moving controls. Model installation
+is explicit, chunked, resumable and hash-verified through OPFS. This remains an Earth-only
+experimental preview served by local development tooling; it is not a shipped mobile model pack.
+
+Canonical conditioning preserves all19 genomes and six named species with source-backed anatomy,
+botany and composition anchors. Six ordered identity-bound references supply independent VAE token
+groups; the135.671-second actual painting remains unaccepted for Platypus anatomy, diagnostic
+botany and canonical placement. Whole-image guidance is not a hard count or spatial constraint. The pinned model is6.69GB, and browser capability checks
+are not device qualification. The [current implementation and limits](LOCAL_AI_GENERATION.md)
+own the game/delivery boundary. The earlier isolated progress/ETA/fixed-shape proof and all failed
+candidates remain immutable evidence in [the preceding review packet](audits/CLAUDE_DIRECTION_REVIEW_20260909/HANDOFF.md).
+Nick's intended Claude-app review remains pending; a saved CLI response is not that review.
+
+### Browser reference ownership — matches code September9,2026
+
+Reference-image preparation now closes created bitmaps exactly once and retires
+scratch canvases on success, failure and late cancellation. Matte is validated
+before allocation; cancellation checks follow every awaited preparation boundary.
+30 controller tests and six native ImageBitmap/Canvas2D scenarios pass, with both
+prepared-reference hashes unchanged and no visible painting on controlled refusal.
+The native audit uses explicit substitute inference workers, not a model/GPU run.
+
+The optional `--identity-only` proof mode conditions on just the selected Civet
+portrait; the conflicting full-scene reference is omitted. Existing default/dual
+recipes remain byte-identical.20 recipe/parser checks and a367/512-token check pass.
+The native1024 comparison completes in69,948ms. A native-resolution recheck identifies
+one head and one tail, but the Civet body/leg attachment is ambiguous; dry-bank contact
+alone does not establish anatomical coherence. Platypus and named botany still fail.
+[Review clarification](audits/CLAUDE_DIRECTION_REVIEW_20260909/NATIVE_VISUAL_RECHECK.md)
+retains both the original review and Claude's unconfirmed duplicate-head observation.
+Raw pixels are unchanged; qualityAccepted remains false.
+No gameplay, UI placement, clock, save, model download or device budget changes.
+
+### Advisory scene cache planning — matches code September9,2026
+
+`scene-image-cache-plan.ts` adds a pure calculation for an already identified encoded
+scene variant. The explicit provisional profiles are decimal500MB/1GB/2GB, with a
+selected desktop ceiling up to5GB. This is not automatic device qualification or an
+enabled cache manager. Origin usage includes installed and unknown bytes once;
+disjoint future reserves and additional candidate staging reduce available headroom.
+Missing/invalid estimates, unsafe arithmetic or insufficient disposable space pause
+admission, with no partial eviction proposal.
+
+Only unlocked scene variants with a matching verified surviving exact copy can enter
+the deterministic LRU proposal. Originals, saves, recipes, models, builds, pins, read
+leases and in-flight entries stay protected. One copy ID cannot claim conflicting
+bytes. A seed does not establish recoverability; a new sole original requires separate
+protected retention before this disposable-variant planner can admit it. Outputs bind
+inventory/reservation revisions but grant no reservation, deletion or game authority.
+
+All24 focused outcome controls, all3 V2 TypeScript programs and root validation pass
+on unchanged source. Negative/restored controls cover budget pressure and protected
+entries. This introduces no storage I/O, migration, settings, live quota measurement,
+service-worker change or player-visible release note. Atomic execution, durable binary
+originals and device qualification remain open. [Contract and evidence](audits/LOCAL_AV_AI_CONTINUATION_20260909/SCENE_CACHE_PLAN.md).
+
+### Canonical appearance input bridge — matches code September9,2026
+
+`landfall-appearance-snapshot.ts` now builds `cf.art.landfall-snapshot.v1` from an
+actual branded canonical roster and matching biome request. The first supported
+recipe is exact Earth epoch0: all19 complete ordered genomes/environment/profile
+bindings, explicit static presentation inputs and the existing six display identities
+with full genomes/families/anchors. Preview limits are omitted. Returned graphs are
+detached/deeply frozen and cannot become live roster authority by JSON parsing.
+Unsupported worlds/epochs return unsupported, with no replacement or reroll.
+
+The isolated `port/v2/tools/landfall-snapshot/` Node producer calls the actual CF1,
+roster and vista builders; the browser proof consumes that versioned output instead
+of extracting TypeScript JSON literals. It records59transformed/input source files
+plus the compiler's known virtual runtime helper, verifies stability and releases
+its build lease. Model/reference/prompt/scheduler settings stay separate. Native
+preflight proves the served recipe matches the prior request/full roster/prompt and
+all generation inputs except the new appearance metadata. No repeated GPU run was
+needed for unchanged generation data. Seven source-export refusal controls pass;
+this is internal artifact integrity, not external authentication or a sharing codec.
+
+Nine new snapshot tests plus existing roster/Earth tests total33PASS; all3V2 TS
+programs and the isolated entry TS pass. The first exporter incorrectly rejected
+Rolldown's virtual runtime helper; its failed source/receipt remain. The corrected
+export and native preflight pass. `requestSurfaceVista` is the eventual actual-play
+capture boundary; this batch mounts no generated art and adds no model download.
+Full changed-head admission, arbitrary worlds, seasons, exact-image sharing,
+physical devices and image quality remain open.
+
+Two subsequent1024 art studies retain separate limits: stronger replacement wording
+still produces overlapping Civet bodies (77s, rejected); one scene reference plus
+its base wording produces one Civet (68s), but loses the selected facial identity
+and keeps feet in shallow water. Removing the reference and its wording together
+is not an isolated image-count experiment. Neither output is accepted. Exact failed
+prompt source is retained, and the prior identity prompt is restored. No seed sweep,
+image retouch or low-quality image promotion occurred.
+
+## Selected landing presentation — Nick, 2026-09-08
+
+Nick explicitly selected the [Living Worlds painting](audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png)
+for the landing-screen direction: one large cohesive **static** environment painting, with multiple
+canonical flora/fauna where the composition supports them. Live resident motion on landing is no
+longer required now. This supersedes that earlier presentation priority while preserving its studies.
+[Exact decision and supplied image](audits/STATIC_LANDING_PORTRAIT_20260908/DIRECTION_DECISION.md).
+
+Landing art, Compendium portraits and later articulated 2D battle sprites must share the same full
+organism identity, anatomy, markings and versioned art recipe. Author/retain complete organisms and
+background separately, with matched scene lighting and contact, then flatten the landing view if
+appropriate. A crop of a flattened or occluded animal does not supply hidden anatomy or a rig.
+Battle depth may use posing, overlap, scale and authored perspective; no copied Pokémon assets or
+3D simulation is implied. Existing flora effects/healing, classifications, discovery/capture rules,
+complete genomes/lineage, biome mapping and saves stay owned by current gameplay data.
+
+The new [four-image direction packet](audits/MIDGAME_ART_DIRECTION_20260908/README.md) includes the
+atlas, selected triptych, full six-organism Earth landfall and fungal-family concept. The last two
+are review compositions, not yet accepted runtime assets or exact geometric/genome parity proof.
+The alien image uses documented fungal families; one retained real-system derivation exposes
+existing habitat/painter conflicts in all three worlds. It is explicitly not an exact encounter,
+and does not close D-9e. The multi-organism Earth's Civet has face/coat drift from the selected
+canonical master; preserve this visual limit rather than silently replacing that identity.
+
+The optional `paintedlanding=1` Earth Civet still pilot is now applied and bound to its real asset;
+bounded integration verification passed. [STATIC_LANDING_PORTRAIT_20260908](audits/STATIC_LANDING_PORTRAIT_20260908/README.md)
+owns the source, export, exact results and retained first failures. The same full-request/all19-genome admission
+and accepted UI band select one leased opaque still, with no overlaid unfinished resident sprites.
+Native roster rows remain intact. Nick explicitly authorized ImageMagick resize/encoding while
+preserving quality. The unchanged 1875×839 original remains retained; the 960×430 lossless WebP
+is 600,756 bytes, SHA `cd2c616abb35610f6ec63382f6476436f27a8c1a2c698757c8a66d34a5b2e0ec`.
+Its decoded RGB exactly matches the resized reference; resampling still reduces detail at zoom.
+The loader checks that exact declared byte count under a 640 KiB hard ceiling; existing loads
+without a declared size retain their 512 KiB limit. The original preparation failure and unapplied
+patch receipts remain historical evidence, not current installation state. This is not all-world
+art coverage, Compendium replacement, completed battle animation or full admission.
+
+Matches code as of September 8: 146 focused tests passed; the new deep-clone fixture then
+failed TypeScript TS2352. Its explicit mutable-clone cast was corrected, its five tests rerun,
+and all three V2 TypeScript programs plus root validation passed. The unchanged evidence build
+passed native desktop and phone review. A wrong-asset observer inventory error stopped its first
+chain; a separately recorded correction passed only the remaining wrong-SHA/default modes,
+with ten negative controls. Prior passes and the first failure were retained, with no rebuild.
+[Visual review](audits/STATIC_LANDING_PORTRAIT_20260908/VISUAL_REVIEW.md) and
+[verification](audits/STATIC_LANDING_PORTRAIT_20260908/integration-native-corrected-results.json)
+remain scoped; physical devices, native heap and all-world procedural quality stay unqualified.
+
+Current audiovisual source map — 2026-09-08: `main.ts` owns exact durable landing admission;
+`audiovisual-pilot.ts` and `pilot-runtime-style.ts` own the finite vista/header presentation;
+`tame-greeting-audio.ts` owns the pre-await route ticket and stale consumed-claim serial guard;
+`combat-battle-scene.ts`/style reuse native Chronicle cues and canonical portrait leases.
+`packages/audio/src/combat-cues.ts` now projects canonical Explorer Frontier Resolve metadata
+without changing its ability fields; real-player projection and strict malformed-creature controls
+cover the native pre-panel failure. Exact results/limits: `audits/AV_PLAYABLE_IMPLEMENTATION_20260907/`.
+
+
+Execution priority2026-09-07: Nick requested playable graphics/audio progress before exhaustive
+U3/U4 polish; see ROADMAP.md and audits/AV_PLAYABLE_PRIORITY_20260907/PLAN_AND_CLAUDE_REVIEW.md.
+The U2 tool correction was signed as `837db4aaa0ef5d3d8bffc79c70f62dcc2503032d`. Its canonical
+run passed 324 Vitest files (3,494 tests, 1 skipped), then stopped in static-develop on one
+unused test binding. No browser stage ran; U2 and audiovisual acceptance remain pending.
+The [retained checkpoint](audits/UI_U2_LOCAL_CHECKPOINT_837db4a_20260907/manifest.json) preserves
+the first failure and the binding-only correction with fixture creation unchanged.
+
+U1 layout correction (2026-09-06): the existing body-class observer republishes the final
+header height after a same-task Settings open/change/close transition, keeping the rails below
+Search/Objective even when ResizeObserver sees no net size change. Restored visible rail
+controls declare their native button type explicitly.
+
+## Current v2 U1 shell and U2 sheets — matches code as of 2026-09-07
+
+Nick authorized U2–U4 and compact notifications when space is tight; emoji remain in product.
+Signed3a61352fb1ba5348d1a73ee4d6e7ce33f1f2967d passed complete develop static (322files,
+3479tests,1skip). Small-phone passed all3 Capture outcomes, caption preferences/restoration and
+the exact Charters Close/frame receipt with an empty atomic Objective audit. It later stopped
+INSTRUMENT RED/zero product findings: the top-clearance setup toggled an already-closed Survey
+open and then waited5000ms for it to close. Large-phone and Slice were NOT RUN. The nine-carrier
+checkpoint and named terminal/browser read[]/[] retain this failure; no full U2 PASS is claimed.
+
+Nick resumed on2026-09-07. The re-derived tool correction observes strict Survey state, closes
+only when open with one trusted activation and the existing5000ms strict-false wait, then binds
+one named fonts/two-frame receipt. Painted controls define clearance while AppChrome retains its
+distinct full-wrapper measurement. Only band-fixture fixed rows omit the separately measured
+injected trail. Seven named fixture/restoration/cleanup boundaries preserve the first error;
+failed cleanup cannot authorize dependent geometry. This instrument correction preserved
+thresholds and the pre-audiovisual product bytes.
+Claude's full response and original unapplied draft remain immutable. Independent source review
+CLEAR;99 focused tests, all3 TypeScript programs and root validate/50 fingerprints PASS after two
+retained test-preparation corrections. The later signed `837db4a` attempt stopped during static
+test-source checking as recorded above; small-phone, large-phone and Slice were NOT RUN.
+Read ROADMAP.md and audits/UI_U2_POST_CLOSE_CORRECTION_20260907.md for current status;
+audits/UI_U2_NEXT_SESSION_20260906.md preserves the unapplied U3/U4 preparation map.
+
+The current bounded correction measures every visible portrait sheet's header/insets plus44px
+body, the stacked Survey/biosphere allocation, and standalone Planetside72px below actual painted
+upper chrome. Compact notices use4px vertical and8px horizontal padding. When capacity remains
+tight, passive hint and context paint may yield while preserving their text. Every decision starts
+with natural guidance; the dependent caption is measured with a temporary native hint-height
+projection, restored exactly afterward. Glass independently measures both captions and available
+space, tests their actual text preferences, and requires exact restoration. After native Close,
+remaining clipping is valid only when independent geometry still proves pressure. Earlier generic
+preference and native target-size/clipping checks remain strict. Focused84 checks, all3 TypeScript
+programs, root validate, one evidence build and101 release/budget/evidence checks PASS. Producer
+for that sheet-only preparation was aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe;
+measurement/ceilings were unchanged. Its81-bullet draft had orderedSHA
+3bc464f58faec3988d6632e034abfbc6923593feb3a2685ece78d05bfc7ea4b2.
+The3a61352 result remains the prior native evidence; `837db4a` added no browser result or
+fresh Compendium certificate. These pins describe that pre-audiovisual checkpoint.
+
+All prior failures and both older unknown causes remain OPEN; no U2–U4 completion, physical UAT,
+Phase2, pilot or hosted closure is claimed.
+The [U2 audit](audits/UI_U2_SHEETS_20260906.md) preserves all evidence and the
+[UI program](port/UI_PARITY_PROGRAM_U1_U4.md) owns scope.
+
+`port/v2/apps/game/src/ui-presentation-tokens.ts` supplies Inter/spacing/type/color/layer
+variables; `ui-shell-style.ts` adapts verified production v1.8.9 placement to existing v2
+native controls. Survey replaces the Charters shortcut on every platform. Compact upper-row
+emoji board pills are Survey (🔭), Compendium, Prime (N/9), Shipyard and Atlas. Four centered
+lower utilities are Records (including Achievements), Notifications, Guide and Settings.
+Ten half-columns span a dock capped at 320px and bounded by viewport width minus safe sides and
+20px. Board pitch is dock width / 5 (at most 64px), board width is pitch minus 4px with a 44px
+minimum, and lower targets/faces stay 44px/36px. A panel-open short-landscape dock additionally
+fits the existing header safe column: `min(320px, (viewport width − safe left − safe right − 36px) / 2)`.
+Default height remains 92px; UI_PRESENTATION.md owns geometry. Compact Charts is hidden and
+Settings → Star charts remains available. Phone Search stays upper-right with the Search
+placeholder. Wide Survey replaces Charters above Compendium at upper-left, with Charts below;
+Prime stays top-center, four utilities bottom-right and Atlas/Shipyard on the right rail.
+Desktop/tablet name, Objective and text controls use bounded `width:max-content` to fit their labels.
+Objective sits below Search at upper-right and is a named native button: the sole Charters
+opener through the existing panel/focus owner after duplicate dock/rail shortcuts are removed.
+Native keyboard activation and focus return apply; the button remains available while landed
+and falls back to Charters when no objective is active. Objective progress and Charter gameplay
+are unchanged. Name-only Inventory and Health stay upper-left; Health geometry, exact ratio,
+red heart and meter accessibility retain their owners. `#raillft` is nested in the dock and
+becomes boxless on compact layouts, exposing Survey in the first slot while hiding its rail
+Compendium duplicate. `#sceneactions` now contains only Charts. AppChrome ignores boxless wrappers
+in top-chrome measurement. Survey/Charts handlers are unchanged. The canonical trail remains
+populated but hidden; there is no Current view label.
+Bottom guidance remains plain text, now with a 2px opaque black glyph stroke painted behind
+the fill, providing at least 1px of exterior outline. It adds no pill or box. Caption/hint geometry,
+the compact short-landscape exception and 72px roster band retain live measurements.
+UI_PRESENTATION.md owns exact values, the accepted
+safety deviations from production and the honest injected floating-trail negative control.
+`sheet-layout.ts#createSheetLayoutController` observes visible hint/context/dock rectangles,
+toast size/style and header/body changes, publishing the lower-lane, toast and sheet-floor CSS
+properties through its own coalesced measurement observer, installed by `main.ts`. Portrait
+layouts up to 900px compare the full toast with measured sheet header/edges plus 44px body room;
+Planetside uses a72px total band below actual painted upper controls, publishing `--cf-planetside-start` without relying on the previous AppChrome receipt. When space is tight,
+compact mode reserves the actual full-headline height with4px vertical/8px horizontal padding at the selected text size through the fade.
+The visually hidden `[data-sel="toast-message"]` span retains full message text, AT/history and
+timer ownership; `toastDetailText()` reads that structure while Tame and Feed retain their distinct
+announcement roles. Full presentation returns when room permits. `ui-sheet-style.ts` owns sheet
+bounds, sticky header/Close styling, stack layers and shared motion/control states. Survey's
+unchanged subtitle/badge now follow its sticky title/Close in the scrolling body. The in-progress
+landed correction reserves measured Survey header/edges plus 44px body before Planetside's cap;
+scroll padding keeps native focus/scroll targets below the sticky header.
+After publishing the final floor, the controller measures `--cf-planetside-height` so Survey
+capacity subtracts current strip height, start and 8px gap instead of stale `--planetside-top`.
+If any visible portrait sheet or the standalone biosphere still lacks its measured minimum,
+hint and context paint temporarily yield through clipped1px styling while accessibility text
+remains. Every decision restores natural guidance and temporarily projects native hint height
+for its dependent caption, then restores that foreign property exactly. Paint returns with room;
+a closed Survey can still leave standalone biosphere pressure. This bounded U2 allocation leaves accepted U1 shell geometry intact. The ID-qualified
+short-landscape sheet override preserves
+the full safe-height left workspace rather than losing to the common sheet selector. Planetside
+consumes a separate measured floor in landscape that reserves toast height only across an
+intersecting horizontal column; other sheet lanes reserve the actual painted toast. Planetside
+width is observed.
+The panel is still its scroll owner, and Compendium keeps its virtual scrollport.
+`panels.ts#seatPnx` tags the original direct h2/h3 `.sheet-header` and keeps a direct first
+`.sheet-close`; `fillPanel` retains that Close node and any Close-owned focus.
+Current title paint (2026-09-08), owned by `ui-sheet-style.ts`: `.panel .sheet-header` is opaque
+`#0a101e`, with a `::after` underlay inset `-14px -58px 0 -14px`, `z-index:-1` and
+`pointer-events:none`; forced colors uses `Canvas`. This covers scrolled content behind the title
+and Close gutter without changing siblings, geometry, scroll/padding, focus or Survey. Scoped native phone/desktop verification and title inspection PASS in the
+[Charters header audit](audits/AV_CHARTER_HEADER_PREVIEW_20260908/README.md). Training admits
+`#docksets/#setpanel` except during completion, closes Settings through its native owner on
+Escape, and prevents pending lesson callbacks from stealing its focus or closing it. Exact
+lesson targets own `.tutpri`; teardown removes marks. Steps/events and persistence are unchanged.
+Passive layout wrappers continue to pass canvas input.
+`notification-history.ts` retains explicit saved Mark read on the existing notification shape
+and UI checkpoint whitelist. The Survey/Charters correction passed scoped verification in six
+fresh phone/tablet/desktop contexts, including native pointer/Enter/Space opening and Close/Escape
+focus return. Nick accepted this U1 layout for UAT on 2026-09-06 at product
+`053ef439774520577071f0ca50887337dd938755` / records `b08c9521c90f806e42496361127c542d206628f5`.
+Device UAT and technical-gate closure are not claimed. `audits/UI_U1_SURVEY_CHARTERS_20260906.md`
+owns accepted-layout results and the preserved first keyboard-instrument red; its successor changes only probe key
+dispatch, leaving product source unchanged. The earlier six-board scoped PASS and instrument red
+remain predecessor evidence
+in `audits/UI_U1_SURVEY_TOP_ROW_20260906.md`.
+Prior partial evidence stays in `audits/UI_U1_COMPACT_CONTROLS_20260906.md`. Both the unattributed
+navigation blocker and the normal-review portrait-restoration blocker remain OPEN; this correction
+did not run full normal review, Slice, phone Glass or the full chain at that checkpoint.
+U2–U4 are now authorized; integrated-pilot approval remains open and Phase2 remains unstarted.
+
+The phone-only restoration diagnostic passed at signed source
+`381ddf59858bd863640703e83d2d98beeedf59fa`, with product `053ef439…` unchanged. Named evaluation
+283 (fonts/two animation frames), evaluation 284 (geometry) and ordered receipt 33 prove current
+390×844 restoration completion. Original native predecessors, 15000ms transport and debugger
+auto-resume timing remain intact. `audits/UI_U1_UAT_RESTORATION_20260906.md` owns exact evidence.
+Both older blockers remain historical OPEN: their old cause is unknown and nonrecurrence is not
+repair. The rail instrument correction passed on clean signed source
+`1609cf3991e20da45d5e4628fd2163278ece5ec8`: isolated develop profile 312 files/3333 passed/one skip,
+then Slice PASS in 370012ms with ten PNGs, zero findings and exact named verification. Complete
+boundary ancestry, rail-only protection, unprotected native dismissal and exact restoration are
+retained; `port/v2/tools/ui-rail-copy-check.mjs` checks the boxless left owner and four hidden right
+copies. Small-phone Glass then stopped PRODUCT RED on one `#hintpill` contrast finding (1 versus
+4.5); large phone was NOT RUN. The [manifest](audits/UI_U1_LOCAL_CHECKPOINT_1609cf3_20260906/manifest.json)
+preserves clean-source provenance and the original ambient file's unchanged hash. The ce89128
+normal three-view PASS remains prior geometry evidence, not verification of the new text outline.
+
+The [bounded hint correction](audits/UI_U1_HINT_CONTRAST_20260906.md) adds the black glyph outline
+without changing pill or layout geometry. Glass admits only proven opaque stroke behind fill,
+preserving the 4.5 threshold and effective-opacity checks. Preparation passed 25 stroke tests, 72 release/budget/evidence tests, root TypeScript, evidence
+build and root validate. The first committed candidate a528791 passed static (313 files, 3358 passed, one skipped) and
+the native outline controls. Small-phone then stopped on a stale dock-fault description with zero
+product findings; large-phone and Slice did not run. The responsive-slot assertion is corrected
+without changing the product. Its successor bb9ebe4 passed static (314 files, 3364 passed, one
+skipped) and the dock/outline controls, then stopped because Charts is intentionally hidden on
+phones. The current instrument correction audits Settings → Star charts on compact layouts
+and retains the visible wide-screen Charts route. Twelve source-executing route tests, root
+TypeScript and validate passed.
+
+Retained U1 validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
+PASS (315 files, 3376 passed, one skipped). Small-phone stopped PRODUCT RED with a real 22.5px
+Planetside/hint overlap at 320×568, zero instrument failures. Its later native Charts Settings
+phase, large-phone and Slice were NOT RUN. [The final U1 audit](audits/UI_U1_HINT_CONTRAST_20260906.md)
+retains the nine-carrier checkpoint. U1 visual acceptance stands; the technical gate remains OPEN.
+U2 now implements the measured-lane/header/stack correction and awaits native and checkpoint
+verification, including the previously unreached Charts Settings route. The historical report
+is unchanged. [ROADMAP](ROADMAP.md) owns the current candidate, release/producer authority and
+outcomes. Physical UAT and both older 08cd97d/c57aaaeb causes remain unknown/OPEN. Subsequent
+U3/U4 checkpoints are authorized; Phase2 and hosted actions remain outside that authority.
+
+U1 review instrumentation (2026-09-06) now records public viewport/resize facts and
+auto-resumed trail-writer stacks between intentional controls. It does not read camera/travel
+authority or repair navigation; nonrecurrence cannot close the retained blocker. Exact source
+and results: `audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`.
+
+## Audiovisual pilot implementation — matches code as of 2026-09-08 local
+
+Matches the scoped implementation as of **2026-09-08 local**. Nick authorized B–D
+production under the integrated-pilot approval stop; develop `c1791e2` (including PR #41) is
+its merged foundation. `audiovisual-pilot.html` is the compact Earth/Scout direction study,
+48-condition portrait comparison and eight-cue listening set. It links separately to the
+playable `?avpilot=1` comparison, current v2 without the pilot and production v1.8.9. The real
+game activates the pilot after answerable boot. Scene assets remain under active authoring;
+this candidate direction still awaits human acceptance.
+
+The study and opt-in native windows share navy glass, restrained gold accents, locally bundled
+Inter under SIL Open Font License 1.1, compact spacing and the shared token hierarchy. The
+study exposes the bundled license in its provenance disclosure. Panels retain their distinct
+Inventory, Shipyard and Atlas layouts; 8px panels and 6px controls preserve 44px input targets
+and visible focus. Canonical rarity, resource and status color owners retain their meanings.
+The real game honors the existing Settings font, text-size and tone preferences. Compact review
+controls yield to native windows, Training and modal ownership; decorative layers are pointer
+transparent. The top bar, dock and rails retain their existing structure.
+
+The material-rendered Scout appears inside the existing native Shipyard preview only for the
+exact eligible starter stage/livery with no installed systems or hardpoints. Other loadouts
+and unavailable images retain the native loadout preview. The rainy Earth landscape candidate
+is bound to the exact canonical render request, including world identity, roster, environment
+and weather. It becomes visible only when the canonical vista is ready and every candidate
+image has loaded successfully. Until then, or for another world/request, the native globe/vista
+remains the fallback. Galaxy art and canonical flora/fauna generation are unchanged.
+
+The opt-in native Land action now arms one finite Scout arrival before persistence and reveals
+it only after Main proves the exact committed revision, current runtime/world and fresh rendered
+scene, then the matching Earth vista and ship image are ready. It lasts 1.8 seconds; phones use
+the visible Survey header beside its existing Close, while other layouts use the scene layer.
+Reduced motion keeps a static arrival; Effects Off, refused/wave-off, Training, convergence,
+wrong/stale scene, hidden or disposed owners cancel it without changing gameplay or input.
+
+All eight body plans retain protected runtime static portraits at 132/300/440; 300 displays the
+existing 440 source. The optional accent outside the frame demonstrates motion policy only.
+Existing painter/artlock inputs remain. Supporting component mockups and review provenance are
+secondary accessible disclosures.
+
+**Offline creature export — matches code as of 2026-09-08.**
+`port/v2/tools/creature-blender-export.mjs` exposes `createCreatureBlenderBridge()` with
+`exportGenome`, `specimens` and `verify`; its CLI writes a new directory outside the source/Git
+paths. It evaluates fixed owned source declarations and records their byte hashes. The JSON
+contains a complete detached genome, exact `speciesVisualKey`, final painter route, normalized
+pre-fit morphology and explicit admission/fallback. Lossy JSON identities and forged known
+fixture derivations reject. The existing pilot Wolf uses actual `QUAD_SPEC.Wolf` and
+`faunaResetCanidC` proportions; two real ordered Wolf crosses retain reviewed drift, while an
+unchanged procedural audit specimen retains its actual plan. Only pure named Wolf is admitted
+by `port/v2/tools/blender/creature_canid.py`; lineage/procedural and unsupported morphology keep
+their static fallback. The recipe authors depth, tissue and finite poses without a runtime import.
+
+Nineteen focused exporter tests, all three TypeScript programs and root validation passed.
+The second saved Wolf candidate and five 440px M4 Pro Metal poses passed scoped structural and
+motion checks: connected skin, normalized weights, planted paws and exact final settlement,
+with four rejected negative controls. One sampling correction changed neither proportions nor
+bones. Visual inspection still finds clay-like material, abrupt limb junctions and limited fur
+detail; art remains unaccepted. This adds no runtime rig or full admission. All eight family
+completion goals and human/device acceptance remain open. Exact model counts, source hashes,
+first failures and private backup state are in the
+[Wolf candidate audit](audits/CREATURE_BLENDER_CANID_20260908/README.md).
+
+The separate `creature_charm_study.py` offline recipe (2026-09-08) retains that exact Wolf
+skin/identity while authoring two procedural coats and a finite neck/head strike/recoil action.
+Ten640px Metal stills and a33-frame512px video are retained. A fresh saved-model check verifies
+all65 frames, original coordinates/topology, inherited coat weights, four planted paws and
+exact final settlement; masters remain unchanged. This is not an opening jaw, locomotion,
+browser rig or all-attack implementation. Visual review remains below target: limited face
+character, noisy surface and abrupt limb joins. [Charm study and current artflow](audits/CREATURE_CHARM_STUDY_20260908/README.md)
+record the whole-universe/UI richness requirement and recommendation to preserve V2
+generation/combat/persistence while extracting presentation owners.
+
+**Approved space/creature visual direction and supplied source — 2026-09-08.** Nick explicitly
+approved two attached images as the exact direction for the game: 16 space objects and 12
+original creature concepts. Approval applies to those visual references; the audit owns their
+exact retained PNG bytes and approval hashes under `approved-space-reference.png` and
+`approved-creature-reference.png`. Nick subsequently supplied biome and UI-material references in
+[the direction addendum](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/README.md). The UI
+example is appearance inspiration only; copying its layout/controls is explicitly prohibited.
+Individual production assets, canonical anatomy, runtime integration, animation and
+performance acceptance are separate and remain unclaimed.
+
+The exact user-supplied ZIP provides the previously unavailable pipeline snapshot; the original
+Dakk worktree is untouched. The earlier three built-in concepts—Wolf/explorer/ship vista,
+four-biome comparison and eight-universe-object comparison—remain provisional historical
+artifacts. Their initial direction question is superseded by the two approved attachments.
+The earlier reference-only batch installed no renderer change. The local Earth finite-turn
+implementation below now addresses a bounded part of the requested motion. Full planetary
+rotation still requires wrap-compatible surfaces and separate illumination; creature actions need
+coherent rigs or compatible articulated layers. Whole-painting translation does not complete them.
+
+The source offers exact prompt/reference hashes, retained captures/revisions and premultiplied
+alpha export patterns, but depends on omitted suite inputs and operational files. Its importer
+consumes agent-generated files; it does not expose the built-in image tool as a provider or
+browser endpoint. The alpha gate's RGB-banner path and the keyer's interior purple/pink color
+changes require profile-specific handling. The separately checked demo proves deterministic
+metadata selection only, never deterministic generated pixels or browser performance. Preserve
+the existing Pixi scenes, accessible UI, genome/combat/persistence authorities and static fallback;
+paintings do not supply articulation, compatible rigs, event playback or resource teardown.
+[Pipeline assessment and approved space/creature references](audits/PAINTED_SPACE_PIPELINE_20260908/README.md)
+retain the source evidence and proposed browser boundary without changing the separate Wolf
+study or native battle implementation below.
+
+Nick's scene goal is one consistent canonical creature in biome-relative scale, close Compendium
+framing and articulated attack-specific battles. Existing vistas use bounded relative scale, not
+an established universal metre metric. Existing universe animation is kinematic; gravity labels
+do not establish an N-body solver. The globe's baked color/light sprite is not an axial map.
+[Scene/engine brief](audits/PAINTED_SPACE_DIRECTION_ADDENDUM_20260908/ENGINE_AND_SCENE_BRIEF.md)
+records the canonical finite-turn prototype boundary and future Unity/Unreal portability goal.
+Current liveCF1 and unexposed normalizedCFB/CFB2 codec boundaries remain explicit in the sharing
+reference. That scene-brief batch changed no codec, renderer or ownership. A separate versioned
+production art recipe remains planned; the isolated Civet study below adds its own bounded
+versioned texture/mesh recipe without changing native routes.
+
+## Shared animation requirement — current architecture, 2026-09-08
+
+Nick requires one programmatic anatomy/motion system covering procedural land, flying and aquatic
+creatures and their variations, with arms, legs, heads, torsos, wings, fins, tails and flexible
+appendages. [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md) owns the shared contract and coverage
+sequence. Reusable joint/chain mathematics is the first isolated tooling foundation; the game’s
+painters do not yet emit common rig geometry or a universal animation-ready skin.
+
+The actual winning named/lineage/procedural painter must emit the same resolved anatomy used for
+both rich painting and motion. Raw descriptor genes alone are insufficient: modern procedural
+leg counts derive from body/locomotion; swimmers and special named owners can override body plans.
+Use variable semantic appendage arrays and family-appropriate land/air/water capabilities. Do not
+impose a quadruped skeleton on wings, fish, jelly or plants, or infer anatomy from an image alone.
+Preserve full genome/lineage identity, named Earth anatomy/colors, alien palettes and biome mapping.
+The [source inventory](audits/CIVET_PAINTED_PARTS_20260908/SOURCE_TAXONOMY.md) records existing
+mismatches, including raw-limb/eye omissions, extremophile locomotion semantics and four-wing
+routing; these are documented conflicts, not silently corrected by animation work.
+
+The latest Civet atlas is unaccepted authoring evidence after a first checkerboard/parts failure
+and one magenta-matte correction. Five alpha-extracted components remain unqualified as an assembled
+skin; no new painted asset or motion was wired into the native game or earlier preview. Nick’s
+universal-system clarification redirected the next step to the shared foundation. Fine-art blending,
+all-family locomotion, physical/human review and prior admission/ownership blockers remain open.
+
+## Earth organisms and alien flora — direction updated 2026-09-08
+
+Nick’s [two additional reference sheets](audits/PAINTED_EARTH_AND_ALIEN_FLORA_20260908/README.md)
+separate Earth flora/fauna from alien flora while continuing the approved painted style.
+Earth animals keep recognizable named anatomy, proportions, markings and natural colors;
+richness comes from coherent volume, directional fur/feathers/scales, expressive natural faces
+and material detail. Earth plants retain their actual whole growth habit, branching/crown,
+leaf shapes, flowers and fruit. A reference berry shrub is not a replacement for the named
+Cranberry, Persimmon or Devil’s Club. Examples do not add species or modify the Earth roster.
+
+Alien flora can express unusual complete architectures—fans, fronds, branching clusters,
+pods, fibrous bases and porous tissues—with coherent attached roots/stems/leaves, tactile
+surfaces and layered light. Existing seeded final forms, color atlas and biome profile remain
+authoritative. The sheet’s copper/blue accents are examples, not a universal recolor; exposed
+reference roots do not require uprooted plants in a landscape. Neither sheet rewrites genes,
+lineage, encounter selection, biome mapping or the documented global D-9e gap.
+
+The current painted animal study remains Civet. Its natural anatomy and calmer painted fur
+support the Earth sheet’s direction; face hierarchy, clean edges and scene contact determine
+final fit. Native Chronicle/Compendium/Planetside integration and human acceptance remain open.
+This updates authoring requirements; the sheets are opaque references, not runtime sprite packs.
+
+## Painted Civet water and articulated motion — matches study code as of 2026-09-08
+
+The [current local study](audits/CIVET_WATER_AND_MOTION_20260908/README.md) follows Nick’s
+shallow-water reading of the accepted Earth anchor, superseding the earlier mud/pebble
+interpretation. Four measured paw contacts receive a narrow foreground waterline sampled from
+the existing background, faint broken ripples and submerged contact shadows. Modest resident-only
+overcast light preserves the painted source and all unowned background pixels. No reflection or
+new scenery was invented. The five unfinished residents are absent from this review; the game’s
+six-resident roster, exact genomes, biome mapping and accepted anchors remain unchanged.
+
+The calmer original Civet still supplies all RGB; its repaired-alpha 768×512 WebP is 179,816 bytes,
+SHA `186d76da888a4d6a1393eef85b0c47dfc3fd4f9653258dad3bdc027c4e400365`. Earth reference anatomy,
+natural colors and botanical growth forms remain binding, as do seeded alien forms/palettes.
+The painted direction fits the supplied references, but the creature remains warmer/sharper than
+the rainy landscape; fine fur/whisker edges, fluid legs and human art acceptance remain open.
+
+`port/v2/tools/painted-creature/civet-articulated-rig.ts` adds twelve local aspect-correct bone
+transforms to the connected 49×33 mesh: neck, four upper/knee chains and three tail segments.
+Breathe now shows two chest cycles over 6 s; brace/thrust lasts 1.6 s and reaction 1.1 s.
+Four whole paw regions stay fixed while the lower-left tail is free. Stop/reset pose is disabled
+at rest. Creature/Environment tabs keep the subject near controls; width changes preserve the
+active clip. Every clip settles exactly with no idle animation loop. This remains one painted
+projection with planted legs; fluid stepping/turning needs separately painted overlapping parts
+or a proper 3D rig. It is not yet native game integration or a finished animation set.
+
+44 focused rig tests, the study and all three V2 typechecks, and root validation PASS. Final native
+Edge desktop/phone PASS has 34 frame observations, 18 control groups and three actual-canvas WebM
+recordings per mode. Positive controls use real native clicks; frozen/subpixel/rigid/dead-tail/
+held-breath and eight water faults reject. Four paw contacts, unchanged unowned background,
+finite completion/cancellation, width-resize continuity and resource retirement have outcome
+proof. The first TypeScript red and first native off→on filter-state failure remain immutable;
+empty undefined/null filter chains are now treated equivalently without accepting foreign filters.
+These scoped results do not close full admission, physical-device, native-heap or human review.
+No native Guide/Training/release-note, version, save, roster, RNG or UI placement changed.
+The earlier [cohesion study](audits/CREATURE_SCENE_COHESION_20260908/README.md) and original
+[Civet study](audits/CREATURE_PAINTED_CIVET_20260908/README.md) retain their failures and evidence.
+
+## Painted Civet authoring study — matches study code as of 2026-09-08
+
+The local [Civet review packet](audits/CREATURE_PAINTED_CIVET_20260908/README.md) binds one
+rich painted rest asset to the exact original 29-field Earth 133 epoch 0 Civet genome. The current
+named painter supplied actual transparent ink and 132/300/440 baseline images. Its long pointed
+muzzle, mask, tan spotted coat, ringed tail, rounded ears, four planted feet and whole-body
+proportions are the authoring constraints; no genome or named/lineage route is rewritten.
+
+`port/v2/tools/painted-creature/civet-rig.ts` owns a finite, single-view connected mesh study:
+4.2 s breathing, 1 s brace/neck thrust/recoil and 0.7 s reaction, each returning exactly to rest.
+The study uses one 768×512 texture (179,856 compressed bytes; 1,572,864 RGBA bytes) across
+close views and the unchanged Earth relative anchor. This is texture deformation, not a
+3D skeleton, jaw opening, walking or actual Chronicle/Compendium/Planetside integration.
+The current game still uses its existing painters and whole-portrait battle motion.
+
+The image generator twice returned opaque checkerboards. Nick then explicitly authorized
+ImageMagick alpha extraction. Both generator failures and the first two matte edge failures
+remain intact. The study matte attenuates fine whiskers and retains a light fur fringe under
+magnification; production clean-edge and human art acceptance remain open. The painted source,
+matte recipes, derivative, exact identity, source bindings and all verification results are
+retained in the packet. No full admission, physical-device qualification or art-lock CI follows.
+
+## Layered Earth riverbank — matches local code as of 2026-09-08
+
+`?livingvista=1` admits only the complete canonical Earth request, environment/profile and
+ordered 19-genome roster. It pairs a painted rainy riverbank with a separate transparent layer
+of six existing named residents: Civet, Platypus, Frog, Persimmon, Cranberry and Devil’s Club.
+An explicit temperate-profile check requires their fauna families and plant forms. Current
+named Earth art owners preserve anatomy and colors; original genomes and encounters do not change.
+The documented global D-9e generation-filter gap remains a separate unresolved issue.
+
+Both 960×430 layers publish together; pending, failed and option-off routes retain the original
+opaque vista. The pair fits uncropped between measured upper chrome and the Biosphere strip with12px
+clearance. Existing ResizeObserver boundaries republish both sprites together, and completion of
+the final landing camera impulse restores the resting layout after canvas translation. Only successful
+Earth painting hides its own decorative globe and cloud deck; native controls/camera retain ownership. This option defers to `planetturn=1` and
+`avpilot=1`. The background is hash/dimension checked; bounded workers, generation/epoch fences
+and retryable scene leases govern publication and cleanup. No layered CPU cache is added.
+Two full RGBA canvases use 3,302,400 bytes before temporary painter, decode and GPU allocations.
+This is static, relative scene placement, not articulated animation or a claim that the existing
+creature painters meet the approved rich-detail target. No runtime AI or player authoring installs.
+[Implementation, mapping and verification limits](audits/AV_EARTH_LAYERED_SCENE_20260908/README.md) own acceptance results.
+
+**Canonical painted Mars panorama — local implementation as of 2026-09-08; scoped native PASS.**
+`?paintedvista=1` uses `painted-mars-binding.ts` to admit the complete source-proven request:
+`CF1|g:999@90,-60|s:424242@560,170|p:134#3`, environment `cwe1:145:0d97c0f8`, profile digest
+`bpd1-6fce883d4d70e3b6bde0fb184b416e8e`, `dunesea`, palette `sand`, `wx:null`, two moons,
+zero flora/fauna, water `none` and no ring. This is an exact request binding, not a desert
+classifier. The image follows the approved biome sheet's top-right dune style; root inspected
+two small moons and no inhabitants. The raw generated PNG and exact prompt are preserved.
+
+`assets/painted/mars-dunesea-v1.webp` is one opaque 960×430 asset, 127,088 bytes, SHA256
+`59b9b940c17c5995d71b4f7d756f4e051ed43393d77d0213f63df52a655882e2`.
+`painted-vista-load.ts` validates/decodes it under current-generation authority; Main binds the
+`painted-mars-dunesea-v1` cache variant separately from canonical output. World/environment binding
+publishes before cache lookup. `syncSurfaceVistaPresentation()` now applies only after successful
+painted mounting, including cache hits: it hides the exact `surfacePlanetSprite` recorded as
+`surfacePaintedGlobe` and centers the full uncropped vista vertically. Release/variant changes
+restore only that owned globe; Earth's finite-turn fallback cannot be revealed incidentally.
+The hidden globe texture is retained for fallback, without a GPU-memory saving claim. Default,
+pending and failed-load presentation, world visibility, camera state and native DOM controls are
+unchanged. Existing pan/zoom limits remain; the panorama is static, not navigable ground geometry.
+
+A current load failure returns to the native vista worker. Stale/exit loads abort and decoded
+bitmaps close; the existing one-entry CPU canvas cache and scene texture leases retain ownership.
+The inherited Worker-availability guard still runs before either route. The Mars-only option
+does not replace Earth’s opaque composite. The separate `livingvista=1` option above explicitly
+separates Earth background and residents while preserving named appearance and lineage rules. This adds no online generation, animation, morphing or domain/save changes.
+The composition successor passed 216 tests in 13 files, all three TypeScript programs,
+art-unused/art-audit/override/spec checks and root validation; no source-check failure occurred in
+this batch and bounded source review found no blocker. Four fresh native modes passed: phone,
+desktop, blocked asset and default. Painted output stays fully uncropped/centered and hides only
+its owned globe; the forced-visible-globe control is rejected, with visible pixel deltas 253,643
+(phone) and 119,191 (desktop) and exact restoration. Twelve phone/thirteen desktop native control
+rectangles and hit targets remain unchanged. All modes passed Survey reopen/Close and native
+exit/resource cleanup; phone Reduced Motion/Effects Off and cache hits passed. Blocked/default
+retain the visible globe and canonical vista. The blocked run also proves actual wave-off followed
+by the exact learned 100% Land action. Two first runner failures remain: the original arrival-only
+wait missed legitimate wave-off, and its successor confused per-action receipt ordinal with two
+random draws. The new observer uses domain/raw receipt proof; product/static source is unchanged.
+Agent review finds a clear desktop landscape and unobscured phone band, but large vertical
+starfield gaps still limit phone immersion. This batch stops before another Mars layout loop.
+Fixed Chromium results exclude resize, physical-device/PWA qualification and full certification;
+new preview packaging is a separate step.
+[Current composition audit](audits/AV_PAINTED_MARS_COMPOSITION_20260908/README.md).
+
+The immutable [prior painted Mars audit](audits/AV_PAINTED_MARS_20260908/README.md) retains its exact
+source/build identities, corrected/static checks, original failures, native phone/desktop/blocked
+PASS and ordinary local preview PASS. Its richer-dunes judgment and globe/header overlap/coarse
+polar-band observations describe the prior composition, not verification of this successor.
+Finished-art/human acceptance, physical-device qualification and full admission remain open;
+no hosted result follows.
+
+**Canonical Earth finite surface turn — matches local implementation as of 2026-09-08.**
+`?planetturn=1` admits only the canonical Earth route (galaxy 999, Sol 424242, planet 133) on
+WebGL. `planet-surface-turn.worker.ts` makes one 768×384 RGBA atlas through
+`port/v2/apps/game/src/planet-surface-atlas.ts`, preserving the supplied Sol overrides and detached climate facts.
+The atlas contains existing seeded, unlit terrain; it adds no painted style, clouds or city lights.
+`planet-surface-turn-view.ts` projects it onto the front sphere with fixed view-space light and
+separate existing cloud presentation. `planet-surface-turn-math.ts` owns the finite 18-second,
+0.22-radian maximum yaw and exact zero-angle settlement.
+
+The optional `?planetturn=1&planetmaterial=1` path adds
+`port/v2/apps/game/src/planet-surface-material.ts` to the existing shader and sets `uMaterial`.
+Three analytic value-noise octaves reuse 12 scalar hashes for bounded proportional grain,
+modest fixed-light relief, ocean sheen and an inner atmospheric rim. It adds no texture fetch,
+mesh layer, dependency or GL capability requirement. Atlas bytes, canonical coasts/palette/domain
+and the 420px silhouette are unchanged; perceptual color masks are not true elevation, ocean or
+biome classifications. `uMaterial` defaults off and is reset on every accepted view in the same
+application-owned GL program/uniform group. Existing turn timing, policy fallback, hidden pause
+and exit cleanup remain unchanged. Fresh fixed phone/desktop material comparisons and
+retirement passed; the visible result remains subtle and does not establish approved painted
+quality or phone performance. Keep the exact approved space/creature and
+supplied biome direction; UI references authorize material treatment only.
+[Current material proof and comparison](audits/AV_EARTH_SURFACE_MATERIAL_20260908/README.md).
+
+MeshPipe registers before app.init, and an unavailable pipe retains the canonical fallback.
+The application shares one GL program and uniform group. Per-view worker/buffer/texture leases
+are released at exit/failure; stale results do not mount. Hidden views pause elapsed time, and
+motion/effects policy restores the canonical fallback. Use the flag without `avpilot` when viewing
+the globe because the separate Earth comparison can hide it. Browser players require no Blender
+or other authoring installation. The raw atlas is 1,179,648 bytes (1.125 MiB); its GPU texture
+requires at least that storage again, before canvas/geometry/driver overhead. Phone performance
+and memory are unqualified. Atlas/projection/lifetime tests and scoped phone/fresh-desktop
+paint/retirement outcomes passed. The combined run stopped after phone exit and desktop resize
+unexpectedly reached the galaxy; native same-document re-entry remains unverified.
+
+The canonical surface source is nonperiodic. This finite sample extent does not solve a full
+360-degree seam or unknown backside; those need an explicit versioned mapping decision.
+[Earth surface-turn implementation and evidence](audits/AV_EARTH_SURFACE_TURN_20260908/README.md).
+No richer painted art, codec change, full animation or device acceptance follows from this work.
+
+Separately, the native Combat Chronicle now uses `combat-battle-scene.ts` and its owned style
+for two canonical portrait slots, with at most two existing thumbnail leases. Its registered
+cue clock drives finite 200ms lunge, recoil, dodge and stun translations of whole portraits;
+player champions without a fauna genome use their actual nameplate. Static outcome text remains
+with reduced motion or Effects Off, and the existing Chronicle owns accessible narration.
+This adds no anatomical rig, limb motion or biome locomotion. Native battle review and human
+art/listening acceptance remain open; existing painter/artlock inputs remain unchanged.
+
+The same eight original PCM16/48 kHz audio cues remain listening candidates; masters, MIDI,
+Surge patches and REAPER projects stay private. The shared Tame/creature audio owner admits at
+most four decorative pilot voices, one per category, with finite lifetimes and existing
+mute/hide/route/teardown guards. The separate decoded-data cache remains bounded at 19,503,360
+bytes; native playing AudioBuffers are additional allocations. The real game creates no second
+audio context. Music/bed return to silence after 24 seconds without an automatic resume loop.
+After explicit pilot activation, existing Shipyard/Inventory/Compendium navigation clicks may
+add a short UI cue. The existing 1.4-second Scout landing recording now follows the verified
+arrival through one pre-await native activation and exact destination handoff in the shared
+Tame/creature context. Rejected/stale handoffs stay silent; no second context or post-await
+reactivation is created. The existing 700ms `cf-pilot-ui-settlement` cue now follows successful
+Starter Charter acceptance, including immediate completion, through the original trusted Accept
+event's captured shared-context activation on the same current route. Main consumes it once only
+after durable publication, ceremonies, final Charters refresh and barrier release; duplicate,
+refused, converging or failed results remain silent. Pilot listening opt-in and existing sound,
+visibility and lifetime guards remain required. No assets, reward rules or audio context are added.
+Corrected browser-free develop and scoped native checks PASS; retained observer failures and
+the scrolled-header visual follow-up are in the
+[Starter Charter audio audit](audits/AV_CHARTER_SETTLEMENT_AUDIO_20260908/README.md).
+Other unmapped authored recordings remain listening candidates. Canonical creature synthesis and
+legacy sting compatibility ownership remain unchanged; human listening/device acceptance is open.
+
+Eight authoritative rights rows, file/header/hash checks and sanitized processing evidence
+remain the audio intake. Matched-level human listening, anatomy/art direction, comfort and
+physical iPhone/Safari/PWA evidence remain open. Build-time complete-pack admission enforces
+128 MiB; the 256 MiB retained-update ceiling remains policy rather than runtime enforcement.
+Current media inventories, backup status and exact-source checks belong to
+`audits/AAA_PILOT_BCD_20260905.md`, `AAA_GAP_AUDIT.md` and `AAA_COVERAGE_LEDGER.md`.
+
+Work stays command-line only. Isolated headless review may inspect generated game pages and
+assets; it never inspects the desktop, an existing browser/profile or user REAPER settings.
+Those diagnostics do not establish human visual/listening acceptance or a new certificate.
+No further audio render, Phase 2/chrome migration, hosted attempt, purchase or release is part
+of this refinement.
+
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
@@ -168,6 +1115,17 @@ claim native browser geometry or device acceptance. See `UI_PRESENTATION.md`.
 The main header now accurately identifies 15 current Training lesson IDs, the remaining
 hands-on curriculum, and already-live Atlas favorites/rarity stings. Dated evidence overlays
 below retain their checkpoint scope; `ROADMAP.md` owns current integration and verification.
+
+## Approved audiovisual authoring exception — 2026-09-04
+
+Nick permits Blender-authored assets and REAPER/Surge audio alongside existing procedural
+painters/runtime. Canvas-only asset origin is relaxed; painterly identity, protected static
+portraits, deterministic game state and runtime budgets remain. Phase 0/1 pilot only: eight body
+plans at 132/300/440, static/animated. See `port/AAA_AUDIOVISUAL_CAMPAIGN.md` and
+`port/AAA_ASSET_POLICY.md`. The pilot implementation above owns current media status. Product
+baseline is landed develop `c1791e2`, including Batch 4/PR #41. WIP remains parked. V2 starts
+fresh: no player import door; existing codec/evidence seam stays. Claude owns CI/budget policy.
+No Phase 2/release. This reference was reconciled against code on 2026-09-05 local.
 
 > **2026-09-04 UTC current PR #35 forensic-prevention architecture overlay (matches current local
 > code):** `.github/workflows/test.yml` retains one two-minute authorization job and one battery
@@ -2132,7 +3090,7 @@ below retain their checkpoint scope; `ROADMAP.md` owns current integration and v
 > deterministic contented expression with no replay. The newer current Arc 5 overlay above
 > supersedes this checkpoint's former absence of Breed/Recovery, Rename and Field Scout; missions,
 > tastes, growth, care/healing, poison, bond, explorer-eating and friendly duels remain open.
-> Arc 7 has pure identity/taxonomy/ecology/expression, an injected runtime, lab and empty-rights
+> Arc 7 has pure identity/taxonomy/ecology/expression, an injected runtime, lab and eight-cue pilot rights
 > validator, plus exact app-owned Tame, Feed and explicit owned-fauna Compendium audition. The same
 > shared owner also accepts one generic current-world biosphere pulse after an exact visible
 > Planetside counterpart; its app join and renderer bind canonical Survey roster, schema/digest and
@@ -3978,6 +4936,35 @@ before generation. `slimGal` is owned by Descriptors in v2, not WorldGen.
   brown dwarf, black hole). The separate deterministic `spectral()` designation is
   internal rarity/art data; current v2 does not render it as a **Spectral class** row.
   `starDescriptor`, `supernovaDescriptor`, `protostarDescriptor` remain pure.
+  Current v2 presentation (2026-09-08): `apps/game/src/system-star-field.ts` creates a
+  scene-owned static field only for `MAG`. Its two blue (`#96c8ff`) ellipses use radii 24×10,
+  rotations ±0.5 radians, stroke width 1.2 and alpha 0.45; Main mounts them after the beams
+  and before the white-hot core. Reduced Motion and Effects Off retain this static identity.
+  No RNG, save, texture or animation behavior changes. Browser-free develop passes; native
+  phone/desktop visibility, policy retention and context cleanup pass in
+  `audits/AV_MAGNETAR_FIELD_20260908/` as scoped diagnostics, not certification or human UAT.
+  Current `PROTO` restoration (2026-09-08) uses an explicit Main branch and
+  `apps/game/src/system-protostar.ts`: a fresh 420×240 canvas, 100,800 pixels / 403,200 RGBA
+  bytes, displayed at 140×80 world units. The original dusty radial gradient spans 14→70,
+  rotated 0.4 radians with vertical scale 0.34, beneath a warm radius-30 core. `PROTO` no
+  longer enters the ordinary star-surface path. The static result remains under Reduced
+  Motion and Effects Off, owned by one existing `sceneTexture` lease without a new cache,
+  ticker, RNG or save behavior. Browser-free develop and scoped native original-pixel,
+  zoom-policy and cleanup checks pass in the [protostar disk audit](audits/AV_PROTOSTAR_DISK_20260908/);
+  this is not human/device acceptance or full certification.
+  Current trinary restoration (2026-09-08): inside the generated binary branch, `raw.trinary`
+  mounts passive `system-trinary-companion`, sized `4.8 * r2` at the final generated `sep`.
+  Existing rock-orbit ownership uses phase `t * 0.16 + 2.1`, with reduced motion held at `t = 0`.
+  `coronaSpr(col, true)` uses a separate cached 256×256 companion variant with white/color/
+  transparent stops at 0/0.25/1, omitting the primary's 0.6 stop and retaining shared v2 polish.
+  Existing scene-texture leases and teardown own the sprite; binary painting is unchanged.
+  The world-count caption names three suns for triples and two for binaries. RNG, save, route
+  and gameplay remain unchanged; granulated companion close-up surfaces are still unimplemented.
+  Browser-free develop and scoped native exact-address Search → Follow, phone/desktop paint,
+  gradient, orbit, reduced/off and cleanup checks PASS in the
+  [trinary companion audit](audits/AV_TRINARY_COMPANION_20260908/README.md). The first crowded-map
+  pointer entry selected a nearby star and is retained separately; physical-device/human
+  acceptance and full certification are not claimed.
 - **Planets:** `planetParams(seed)` returns a `P` object with `type` (lava/venus/ice/
   ocean/desert/gas/rocky/terran…), `sizeMul`, `hue`, `ring`, `moons`, plus type-specific
   fields. `planetDescriptor` builds deterministic survey data (atmosphere, climate,
@@ -4728,6 +5715,8 @@ Compendium / Star Atlas / Cosmic Events / Settings.
 
 ## 9. Audio
 
+**V2 audio map matches code as of 2026-09-09.**
+
 > **See `AUDIO.md` for the full system** (creature voices, combat, ambience, the
 > feedback grammar, the toggles, and the traps). This section is the code map only.
 
@@ -4743,8 +5732,25 @@ writes roll back, reentrant generations force an all-bus recompute, and non-sett
 quarantine within a 12-pass bound. Mute and stop are synchronous, unmute does not allocate,
 failed or closing contexts stay fail-closed, and hostile close/re-entry cannot resurrect an old
 owner. Every voice lifecycle releases its mix owner; diagnostics/lab validation bind owners,
-factors and effective gains. Current creature-expression requests are neutral, so no audible mix or
-saved policy changes. The absolute eight-creature-emitter/120-node policy remains intact.
+factors and target gains. Creature-expression and generic-ecology requests remain neutral.
+Registered combat cues reduce music/ambience targets to 0.75 times the saved gains, leaving the
+other three buses unchanged. Native category transitions take 25ms downward and 90ms upward;
+interruption cancels future automation and holds the current interpolated gain before retargeting.
+Equal overlap does not restart or compound the reduction. The latest saved gains own recovery;
+category zero and master mute/hide/disposal remain immediate. At most five per-graph transition
+records use cancel/set/linear AudioParam APIs, clear at context detach and add no nodes or timers.
+Minimal injected adapters without these capabilities retain immediate setters. Diagnostics report
+the target, not a sample partway through a native ramp. The eight-creature-emitter/120-node cap,
+identity, source envelopes and saved policy remain intact. HUMAN/device listening is still open.
+
+The isolated native mixer proof `audits/LOCAL_AV_AI_CONTINUATION_20260909/native-audio-03/`
+passes six400ms48kHz renders: two positive scenarios, three deliberately broken controls and a
+restored positive. Eighteen exact PCM planes prove smooth duck/recovery, interrupted recovery,
+overlap, latest saved volume, immediate category-zero silence and cleanup. Actual production
+runtime and canonical combat requests run through a disclosed OfflineAudioContext scheduling
+adapter. This does not qualify native game gestures, natural-ended/watchdog timing, speakers or
+human listening. Both first harness failures remain; see the packet's chain and raw reports.
+
 
 `creature-expression-voice.ts` supplies a deterministic asset-free fauna graph bounded to one
 oscillator and one gain node in a single expression concurrency group. `tame-greeting-audio.ts`
@@ -4816,14 +5822,15 @@ only an exact cue object from that plan. Damage retains deterministic legacy-sha
 its proved critical/ability-proc layers; authored synthesized contours cover initiative, dodge,
 stun-skipped, burn, regeneration, defeat, resolution and Guardian/Titan entrance, phase, victory and
 defeat. Composite families remain one voice; priority arbitration keeps at most two concurrent combat
-voices. The combat/gameplay bus and master Sound govern it; Creature Voices does not. Skip,
+voices. Each owns the restrained music/ambience reduction described above; the final owner releases
+it through the existing lifecycle. The combat/gameplay bus and master Sound govern it; Creature Voices does not. Skip,
 Close, replacement, hidden/unanswerable state, route/counterpart loss, Sound Off, context loss and
 dispose synchronously cancel the session, while Skip renders the remainder silently.
 
-Compatibility survey/navigation stings remain separate. No other creature expression, authored or
-continuous ambience, music or recorded combat asset is player-live. Catalogue-only
-audition policy, more-specific ecology content, UI/combat ducking, decoded-byte/media
-plateau, full captions/mono/dynamic-range/reduced-intensity behavior, device
+Compatibility survey/navigation stings remain separate. Outside the explicitly opted-in audiovisual
+pilot, no other creature expression, authored continuous ambience, music or recorded combat asset
+is player-live. Catalogue-only audition policy, more-specific ecology content, UI-owned ducking,
+decoded-byte/media plateau, full captions/mono/dynamic-range/reduced-intensity behavior, device
 heat and HUMAN listening/quality acceptance remain open. This narrow implementation does not close
 Arc 7, Arc 8 or Gate G and grants no release/version authority.
 
@@ -5441,3 +6448,21 @@ helppop outside-tap closer. `resetMemoryState` now clears the engineer's track
 
 *Generated for continuity. If the source and this document disagree, trust the source —
 then update this file.*
+
+## Quadruped 2D proof — matches code as of 2026-09-12
+
+`port/v2/packages/art/src/quadruped-anatomy.ts` defines a draw-time observation boundary.
+`resolveProceduralCanvas` optionally exposes the selected generic quadruped owner's actual
+limb, body, head, ear and banded-tail coordinates with its ink canvas. Existing drawing is
+unchanged; other routes do not falsely emit this template. Authored master landmarks live in
+`audits/CIVET_2D_PROOF_20260912`, hash-bound to the accepted Civet/fox PNGs. The specialized Civet
+painter's drawn proportions take precedence over the ignored generic QUAD2 dimensions.
+`port/v2/tools/creature-animation/quadruped-template.mjs` owns bounded graph admission,
+alpha-driven conforming triangulation, two depth index sets, inherited affine skinning and
+shared finite clips. `port/v2/tools/quadruped-proof` is an isolated Pixi review/capture tool,
+not a game route. Native exact-rest checks pass on all three, but triangle-extreme shape checks fail;
+review staging uses the explicit whole-portrait fallback. Encoded-duration verification rejected
+short initial recordings. Sourcefb008d58 now supplies three independently verified ten-second
+fallback captures at60fps; this is not mesh-performance or visual acceptance. The articulated
+proof remains unfinished and Nick reviews these captures before another batch. Blender projection is
+abandoned for this browser proof; original canid/turnaround assets remain for the engine port.

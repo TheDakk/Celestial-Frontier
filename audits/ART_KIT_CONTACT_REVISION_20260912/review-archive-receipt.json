@@ -1,0 +1,199 @@
+{
+  "path": "/private/tmp/celestial-frontier-contact-review-20260912.zip",
+  "bytes": 26240093,
+  "sha256": "b3b442952651dd473f2546c4f20bff6d58680931ea9e9f78bf9f507c3e6df224",
+  "limitBytes": 30000000,
+  "zipIntegrity": "PASS",
+  "files": [
+    {
+      "path": "KIT_V4_1_PROPOSALS.md",
+      "bytes": 1155,
+      "sha256": "db47c7d5542e69dc04a874942c587e56ad7874f8a10cdb3b84fc31a360de1168"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7690,
+      "sha256": "d1a55b3bbb0eaf6d66cd5dc1421d2917e10b4ed22852f85f62b735a19ae3df2f"
+    },
+    {
+      "path": "REVIEW_PROMPT.md",
+      "bytes": 1613,
+      "sha256": "99782a0595a42b7f8ddea06f3c6c13dd1fbbe8698300387da05c5c08c5bfa520"
+    },
+    {
+      "path": "kit-preserved.json",
+      "bytes": 184,
+      "sha256": "3b2f3b9cd6ca6eb4d40807062b8b05a5e4fff1b6d66eecee109bc5fcdccd02f6"
+    },
+    {
+      "path": "native-01/composite-before-finisher.png",
+      "bytes": 1600009,
+      "sha256": "7ae77130bd362a14379f28a183ecdf4a3a03a550116133838d9f6fb7c73a06d4"
+    },
+    {
+      "path": "native-01/organism-01-mask.png",
+      "bytes": 22959,
+      "sha256": "98c866da6c457912c2d63dc90471fdc4e950e47ab801176d84924f80b87862ae"
+    },
+    {
+      "path": "native-01/organism-01.png",
+      "bytes": 91464,
+      "sha256": "01312530857e54d8593f0e7b5941d5d3214704375eea90a62e2e08a46447452c"
+    },
+    {
+      "path": "native-01/organism-02-mask.png",
+      "bytes": 35651,
+      "sha256": "24829404975cd06012b869d4b4f296d938a1995d793154afc3ba47b74433ffaf"
+    },
+    {
+      "path": "native-01/organism-02.png",
+      "bytes": 113793,
+      "sha256": "c2f1a023a504a2b868d063f9fc6c842b9c283d9bdab5c4b38da86d02607b0525"
+    },
+    {
+      "path": "native-01/organism-03-mask.png",
+      "bytes": 20382,
+      "sha256": "46cd610ce9e4e2efd6e5398dd0c2f823b5b937d6251488045a77ce665dfb18bf"
+    },
+    {
+      "path": "native-01/organism-03.png",
+      "bytes": 79939,
+      "sha256": "f252923fdec80a6e692b75bf995f2b702c957fffad02d1476f1bada99cc12b0f"
+    },
+    {
+      "path": "native-01/organism-04-mask.png",
+      "bytes": 18574,
+      "sha256": "da1be83cb48896c98389a6e2267eca9972e5744a9ffd2f60ddde7781f22c870c"
+    },
+    {
+      "path": "native-01/organism-04.png",
+      "bytes": 80931,
+      "sha256": "fda7376535f58ef5748ed2c41a0c39eab12a5bf539e8280fefd03e689c26d44a"
+    },
+    {
+      "path": "native-01/organism-05-mask.png",
+      "bytes": 27071,
+      "sha256": "2609bb02730c86a2a16d35edc0d5b2ff9b4c07e138b8f55355a3d73900e5ea0f"
+    },
+    {
+      "path": "native-01/organism-05.png",
+      "bytes": 127089,
+      "sha256": "a6737fb9d5c8c384504201ec9eaf8adcff15329f1dfecc3785a96bad9ac7d756"
+    },
+    {
+      "path": "native-01/organism-06-mask.png",
+      "bytes": 21768,
+      "sha256": "20a7d8d627ac01ebe61a04823b986097b3b988949d84392a03ed491499be2086"
+    },
+    {
+      "path": "native-01/organism-06.png",
+      "bytes": 78928,
+      "sha256": "31aa9ba298689f8bd6033cacacf5daca5944bb516f4d23da22f9c4e0aba4c33e"
+    },
+    {
+      "path": "native-01/painting.png",
+      "bytes": 1612288,
+      "sha256": "52b58c47caa2b7db86636187343669ca475faf62b78ffcd0e9f50e82b76cc2ff"
+    },
+    {
+      "path": "native-01/partial-01-composite-before-finisher.png",
+      "bytes": 1600009,
+      "sha256": "7ae77130bd362a14379f28a183ecdf4a3a03a550116133838d9f6fb7c73a06d4"
+    },
+    {
+      "path": "native-01/progress.json",
+      "bytes": 236,
+      "sha256": "4b301d9b9455fb3148db3d749357924bd091232252a7ae3c019c11d2c2029cff"
+    },
+    {
+      "path": "native-01/protected-interiors.png",
+      "bytes": 35068,
+      "sha256": "50f6e9a1fba44bffc7cbe3b064092de45cae1e168925071a3ae8541ee416bab6"
+    },
+    {
+      "path": "native-01/result.json",
+      "bytes": 118890,
+      "sha256": "18c9cc201e6bdf7c6c07be70908de029d25f3fac432cf58c0f6fb10866b7ca03"
+    },
+    {
+      "path": "prepared/recipe.json",
+      "bytes": 40598,
+      "sha256": "3760bc2c1d31722d3b47891f1989d1029718b7dddd25ec98c210d8f996207591"
+    },
+    {
+      "path": "prepared/runtime-prompt-chat-wrapped.txt",
+      "bytes": 1793,
+      "sha256": "18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde"
+    },
+    {
+      "path": "prepared/runtime-prompt.txt",
+      "bytes": 1724,
+      "sha256": "741e3078a4a12a669a0fc9846f68789e1717bfc31cd584910568067ff541194c"
+    },
+    {
+      "path": "review/beside-first-painting.png",
+      "bytes": 3853132,
+      "sha256": "d0036583a308a5f0efa2ea9c615a19f329908e26d9a4c2ac030df85c68276a4a"
+    },
+    {
+      "path": "review/beside-triptych.png",
+      "bytes": 6522732,
+      "sha256": "c76c74e71ea85f6c2e8cef1151ee4ac26acbc3f7f7fb3b4d1012259b7304fdd7"
+    },
+    {
+      "path": "review/civet-200pct.png",
+      "bytes": 148307,
+      "sha256": "ab23146779fed91adadab997f0754c2865c81a9cd11e3674fe7d208081a2ea35"
+    },
+    {
+      "path": "review/contact-column.png",
+      "bytes": 1927321,
+      "sha256": "b60ea447ee3dfaa97666250b232ed12120c7c5ddef2e7ab6fb2c72007441779b"
+    },
+    {
+      "path": "review/cranberry-200pct.png",
+      "bytes": 48694,
+      "sha256": "0386f64de66a8089b29b5dcee0e584dfc75ffd6fb1630cd46d90579e6ed65410"
+    },
+    {
+      "path": "review/devils-club-200pct.png",
+      "bytes": 112650,
+      "sha256": "8a574f86ba67fd231ace7f4b781626ee5d70552f8b35f0ffdb5883a371061400"
+    },
+    {
+      "path": "review/first-column.png",
+      "bytes": 1939421,
+      "sha256": "d98955209539b803847fb76cdc78fe698f69ba6452ef68e0176de36559806106"
+    },
+    {
+      "path": "review/frog-200pct.png",
+      "bytes": 54714,
+      "sha256": "c52850a46ffcffc6928e5f32fd327041046b74884e5722a7154a57b456d930ad"
+    },
+    {
+      "path": "review/persimmon-200pct.png",
+      "bytes": 218906,
+      "sha256": "72749c73f04b7d27750a7db4bbba8400132f4c375f549e37690d65620c6bba4e"
+    },
+    {
+      "path": "review/platypus-200pct.png",
+      "bytes": 78617,
+      "sha256": "e040b1a656a0b71c35b8df480c90f7e319fb06c40baba8bc43628f8e8299abb0"
+    },
+    {
+      "path": "review/registered-boxes.png",
+      "bytes": 1399210,
+      "sha256": "e6efd3a946183fa1f5751151d713d6eac8bf8ed190fb0ecfc120b79d7217c969"
+    },
+    {
+      "path": "review/review.json",
+      "bytes": 9507,
+      "sha256": "460aecf076f568bf7b5a793978dbdcedfd833e6d606c1a82c2d0d114b3f73e4a"
+    },
+    {
+      "path": "review/triptych-column.png",
+      "bytes": 4455583,
+      "sha256": "3e61f5454cb5fa87f3d49cbd15be9fd58c1d92089dd1131523283e32f1398a1b"
+    }
+  ]
+}

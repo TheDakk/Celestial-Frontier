@@ -103,7 +103,7 @@ function executableDeclaration<T>(name: string, nextDeclaration: string): T {
     'hasUnnegatedSentenceClaim',
     'V2_DRAFT_BULLET_COUNT',
     `return (${expression});`,
-  )(hasUnnegatedSentenceClaim, 79) as T;
+  )(hasUnnegatedSentenceClaim, 83) as T;
 }
 
 interface GuideSpec {
@@ -123,6 +123,63 @@ function escapeHtml(value: string): string {
 }
 
 describe('sixth Slice red contract repairs', () => {
+  it('uses one measured unowned root-canvas point for owned and empty-sky native presses', () => {
+    const expression = executableDeclaration<string>('emptySkyPointExpression', '  const emptySkyPointerMatches =');
+    const matches = executableDeclaration<(receipt: unknown, point: unknown) => boolean>(
+      'emptySkyPointerMatches', '  const emptySky = await evalIn(emptySkyPointExpression);');
+    const dom = new JSDOM('<canvas id="root"></canvas><canvas id="other"></canvas><div id="settings"></div>',
+      { runScripts: 'outside-only' });
+    const { document } = dom.window;
+    const canvas = document.getElementById('root')!;
+    const other = document.getElementById('other')!;
+    const settings = document.getElementById('settings')!;
+    let target = 'root';
+    Object.defineProperty(dom.window, 'innerWidth', { value: 1280 });
+    Object.defineProperty(dom.window, 'innerHeight', { value: 800 });
+    Object.defineProperty(canvas, 'getBoundingClientRect', { value: () => ({
+      left: 0, right: 1280, top: 0, bottom: 800, width: 1280, height: 800 }) });
+    Object.defineProperty(document, 'elementFromPoint', { value: (x: number, y: number) =>
+      target === 'blocked' ? settings : target === 'other' ? other
+        : target === 'first-blocked' && x === 640 && y === 8 ? settings : canvas });
+    dom.window.__CF_SLICE__ = { app: { canvas }, api: { state: () => ({ panelOpen: 'set', cardOpen: false,
+      mode: 'system', gal: 999, star: 424242, planet: null, galX: 90, galY: -60, starX: 560, starY: 170 }) } };
+    const sample = () => dom.window.eval(expression) as { ok: boolean; x: number; y: number;
+      rootCanvas: boolean; prior: string | null; attempts: unknown[]; scene: string };
+    try {
+      const point = sample();
+      expect(point).toMatchObject({ ok: true, x: 640, y: 8, rootCanvas: true, prior: null });
+      target = 'first-blocked';
+      expect(sample()).toMatchObject({ ok: true, x: 8, y: 8, rootCanvas: true });
+      expect(sample().attempts).toHaveLength(2);
+      target = 'blocked'; expect(sample().ok).toBe(false);
+      target = 'other'; expect(sample().ok).toBe(false);
+      target = 'root'; canvas.setAttribute('data-panel-boundary', '');
+      expect(sample().ok).toBe(false);
+      canvas.removeAttribute('data-panel-boundary');
+      expect(sample()).toEqual(point);
+      const receipt = { tag: 'CANVAS', rootCanvas: true, trusted: true, pointerType: 'mouse', x: point.x, y: point.y };
+      expect(matches(receipt, point)).toBe(true);
+      for (const mutant of [null, { ...receipt, tag: 'DIV' }, { ...receipt, rootCanvas: false },
+        { ...receipt, trusted: false }, { ...receipt, pointerType: 'touch' },
+        { ...receipt, x: point.x + 2 }, { ...receipt, y: NaN }]) expect(matches(mutant, point)).toBe(false);
+      expect(matches(receipt, { ...point, ok: false })).toBe(false);
+      expect(matches(receipt, point)).toBe(true);
+      const owner = section(sliceSource, '  const emptySky = await evalIn(emptySkyPointExpression);',
+        '  const shot3 = await send');
+      expect(owner).not.toContain('900,300');
+      expect(owner.split('await clickDesktopPoint(emptySky)')).toHaveLength(3);
+      expect(owner).toContain('!emptySkyPointerMatches(shieldReceipt, emptySky)');
+      expect(owner).toContain('!emptySkyPointerMatches(receipt, emptySky)');
+      expect(owner).toContain('shielded.scene !== emptySky.scene');
+      expect(owner).toContain('tapClose.scene !== emptySky.scene');
+      expect(owner).toContain("tapClose.panelOpen !== null");
+      expect(owner).toContain("shielded.panelOpen !== 'set'");
+      expect(owner).toContain('if (!unownedAgain) failSliceWithoutCascade');
+      expect(owner).toContain('delete window.__cfPanelBoundaryCanvas;return restored');
+      expect(sliceSource).toContain('rootCanvas:target===window.__CF_SLICE__?.app?.canvas');
+    } finally { dom.window.close(); }
+  });
+
   it('binds Guide navigation to publication and the exact current 41-topic capability identity', () => {
     const owner = section(
       sliceSource,
@@ -325,6 +382,83 @@ describe('sixth Slice red contract repairs', () => {
       liveProgressionContract: true,
       liveProgressionContradiction: false,
     });
+    const releaseRowsBefore = [...releaseDom.window.document.querySelectorAll('li')].map(row => row.textContent);
+    // Exercise both actual rendered-release oracles, keeping unrelated Guide copy intact.
+    const glassAudioOwner = section(glassSource, '        const developmentDetailCheck = `',
+      '        const developmentDetail = await evalIn(developmentDetailCheck);');
+    const glassAudioCheck = Function('hasUnnegatedSentenceClaim', 'guideReleaseBaseline',
+      `${glassAudioOwner}\nreturn developmentDetailCheck;`)(hasUnnegatedSentenceClaim,
+      { rnSeen: '0', releasePending: null }) as string;
+    const audioRow = [...releaseDom.window.document.querySelectorAll('li')]
+      .find(row => row.textContent?.includes('THE FRONTIER SPEAKS'));
+    expect(audioRow).toBeDefined();
+    if (!audioRow) throw new Error('Missing rendered pilot Charter audio release row');
+    const audioHtml = audioRow.innerHTML, audioText = audioRow.textContent!;
+    const audioOmissions = [
+      'In the optional audiovisual preview, ',
+      'after the acceptance succeeds',
+      ', including when existing progress completes it immediately',
+      'explicit pilot-sound choice',
+      'duplicate or failed acceptances stay quiet',
+      'Other sound mappings and creature actions remain future work',
+    ];
+    const audioOverclaims = [
+      'Starter Charter acceptance plays a confirmation before the acceptance succeeds.',
+      'Starter Charter acceptance plays a confirmation without your explicit pilot-sound choice.',
+      'Duplicate acceptances play a confirmation.',
+      'Failed acceptances play a confirmation.',
+      'Other sound mappings and creature actions are now available.',
+    ];
+    for (const [label, expression, verdict] of [
+      ['Slice', releaseCheck, 'complete'], ['Glass', glassAudioCheck, 'ok'],
+    ] as const) {
+      const sample = () => releaseDom.window.eval(expression) as Record<string, unknown>;
+      expect(sample(), `${label} audio baseline`).toMatchObject({
+        [verdict]: true, audioContract: true, audioContradiction: false, bulletCount: 83,
+      });
+      for (const omitted of audioOmissions) {
+        expect(audioText.split(omitted), `${label}: unique omission ${omitted}`).toHaveLength(2);
+        try {
+          audioRow.textContent = audioText.replace(omitted, 'required audio clause omitted');
+          expect(sample(), `${label}: missing ${omitted}`).toMatchObject({
+            [verdict]: false, audioContract: false, audioContradiction: false, bulletCount: 83,
+          });
+        } finally { audioRow.innerHTML = audioHtml; }
+        expect(sample(), `${label}: omission restored`).toMatchObject({ [verdict]: true, audioContract: true });
+      }
+      for (const claim of audioOverclaims) {
+        try {
+          audioRow.textContent = `${audioText} ${claim}`;
+          expect(sample(), `${label}: ${claim}`).toMatchObject({
+            [verdict]: false, audioContract: false, audioContradiction: true, bulletCount: 83,
+          });
+        } finally { audioRow.innerHTML = audioHtml; }
+        expect(sample(), `${label}: overclaim restored`).toMatchObject({ [verdict]: true, audioContract: true });
+      }
+      expect(audioRow.innerHTML).toBe(audioHtml);
+      expect([...releaseDom.window.document.querySelectorAll('li')].map(row => row.textContent)).toEqual(releaseRowsBefore);
+    }
+    for (const [current, stale] of [
+      ['Phones keep five icon-only scene buttons above four compact utility icons', 'five labelled controls in one centered desktop deck'],
+      ['Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge',
+        'Desktop utilities stay in the old viewport corner'],
+      ['Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill', 'Signature count is removed on phones'],
+      ['Spacing inside the side navigation belongs to its controls and leaves the active panel open',
+        'Spacing inside either desktop rail belongs to that command deck and leaves the active panel open'],
+    ] as const) {
+      const row = [...releaseDom.window.document.querySelectorAll('li')].find(item => item.textContent?.includes(current));
+      expect(row, current).toBeTruthy();
+      if (!row) throw new Error(`Missing current launcher release row: ${current}`);
+      const prior = row.textContent;
+      try {
+        row.textContent = prior!.replace(current, stale);
+        expect(releaseDom.window.eval(releaseCheck)).toMatchObject({ complete: false, populated: true,
+          canonical: true, bulletCount: 83, liveProgressionContract: true, liveProgressionContradiction: false });
+      } finally { row.textContent = prior; }
+      expect(releaseDom.window.eval(releaseCheck)).toMatchObject({ complete: true, populated: true,
+        canonical: true, bulletCount: 83, liveProgressionContract: true, liveProgressionContradiction: false });
+      expect([...releaseDom.window.document.querySelectorAll('li')].map(item => item.textContent)).toEqual(releaseRowsBefore);
+    }
     const currentGuideCopy = catalogue.flatMap((category) => category.topics).map((topic) => {
       const dom = new JSDOM(`<article>${topic.body}</article>`);
       const copy = dom.window.document.querySelector('article')?.textContent ?? '';
@@ -865,8 +999,8 @@ describe('sixth Slice red contract repairs', () => {
     expect(cf1).not.toContain("result.mode==='system'&&result.title==='Blue Earth'?result:null");
   });
 
-  it('keeps a fixed 79-row Guide oracle with five independent population controls', () => {
-    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 79;');
+  it('keeps a fixed 83-row Guide oracle with five independent population controls', () => {
+    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 83;');
     const owner = section(
       sliceSource,
       '  const releaseDraftCheck = `',
@@ -909,10 +1043,10 @@ describe('sixth Slice red contract repairs', () => {
     const glassMissingBulletCount = Number(
       glassSource.match(/inventory\?\.bulletCount===(\d+)/)?.[1],
     );
-    expect(glassExpectedBulletCount).toBe(79);
-    expect(glassMissingBulletCount).toBe(78);
+    expect(glassExpectedBulletCount).toBe(83);
+    expect(glassMissingBulletCount).toBe(82);
     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
-    expect(glassSource).toContain('79-outcome development inventory');
+    expect(glassSource).toContain('83-outcome development inventory');
     expect(glassSource).not.toContain('55-outcome development inventory');
   });
 
@@ -1501,6 +1635,19 @@ describe('sixth Slice red contract repairs', () => {
         'const existingRetryGreen = existingRetryOutcome(existingRetry);'],
       ['fresh retry positive decision',
         'const freshRetryGreen = freshRetryOutcome(freshRetry);'],
+      ['actual root canvas owner', 'const S=window.__CF_SLICE__,canvas=S?.app?.canvas,'],
+      ['hit-tested native canvas target', 'hit=document.elementFromPoint(x,y)'],
+      ['reject obscured canvas points', 'if(hit!==canvas)continue;'],
+      ['same-document canvas target', 'canvasPoint.documentToken !== retryBootToken'],
+      ['native measured press', "type: 'mousePressed', x: canvasPoint.x, y: canvasPoint.y"],
+      ['native measured release', "type: 'mouseReleased', x: canvasPoint.x, y: canvasPoint.y"],
+      ['trusted root canvas receipt', 'trusted:event.isTrusted,targetCanvas:event.target===canvas'],
+      ['one owned event listener', '{capture:true,once:true,signal:abort.signal}'],
+      ['receipt remains through authoritative reload', 'await waitForSlice(retrySession, \'transient-read authoritative reload\', { previousToken: retryBootToken });'],
+      ['exact receipt decision', 'if (!transientCanvasActivationPasses(canvasPoint, canvasPress))'],
+      ['owned receipt cleanup', 'const canvasCleanup = await evalRetry('],
+      ['cleanup failure stops successor', 'if (canvasFailure !== null || canvasCleanup !== true)'],
+      ['bounded failure diagnostics', 'point: canvasPoint, observed'],
       ['both retry branches wait for the final revision-two successor',
         'const expectedWrites = 2;'],
       ['existing retry exact two-write topology',
@@ -1531,8 +1678,34 @@ describe('sixth Slice red contract repairs', () => {
     expect(transient).not.toContain('transientRetryProbe(vrRaw)');
     expect(transient).not.toContain('transientPreClickOutcome(value.preClick, vrRaw)');
     expect(transient).not.toContain('seedRaw === undefined ? 2 : 1');
+    expect(transient).not.toContain('x: 30, y: 300');
     expect(transient).not.toContain("count: 1, me: 'Dakk'");
     expect(transient).not.toContain('value.authority?.ordinal === 0');
+  });
+
+  it('requires a measured root-canvas hit and the matching trusted pointerdown after transient recovery', () => {
+    const owner = section(sliceSource,
+      '  const transientCanvasActivationPasses = (point, receipt) =>',
+      '  const transientRetryProbe = async (seedRaw) => {');
+    const assess = Function(`${owner}; return transientCanvasActivationPasses;`)() as
+      (point: unknown, receipt: unknown) => boolean;
+    const point = { ok: true, documentToken: 'protected-first-document', canvasTag: 'CANVAS',
+      canvasConnected: true, canvasOwnsPoint: true, x: 640, y: 400, viewportWidth: 1280, viewportHeight: 800 };
+    const receipt = { schema: 'cf-v2-transient-canvas-press/v1', documentToken: point.documentToken,
+      type: 'pointerdown', trusted: true, targetCanvas: true, button: 0, pointerType: 'mouse', x: 640, y: 400 };
+    expect(assess(point, receipt)).toBe(true);
+    expect(assess({ ...point, canvasTag: 'BUTTON', canvasOwnsPoint: false }, receipt)).toBe(false);
+    expect(assess({ ...point, canvasConnected: false }, receipt)).toBe(false);
+    expect(assess({ ...point, x: -1 }, { ...receipt, x: -1 })).toBe(false);
+    expect(assess({ ...point, y: point.viewportHeight }, { ...receipt, y: point.viewportHeight })).toBe(false);
+    expect(assess(point, null)).toBe(false);
+    expect(assess(point, { ...receipt, targetCanvas: false })).toBe(false);
+    expect(assess(point, { ...receipt, trusted: false })).toBe(false);
+    expect(assess(point, { ...receipt, documentToken: 'a-different-document' })).toBe(false);
+    expect(assess(point, { ...receipt, type: 'click' })).toBe(false);
+    expect(assess(point, { ...receipt, button: 2 })).toBe(false);
+    expect(assess(point, { ...receipt, x: point.x + 1 })).toBe(false);
+    expect(assess(point, receipt)).toBe(true);
   });
 
   it('collects one exact convergence-release witness for both Arc 4 reload paths', () => {
@@ -3199,8 +3372,313 @@ describe('sixth Slice red contract repairs', () => {
     dom.window.close();
   });
 
+  it('requires unchanged canvas pinch paths and blank header exposure beside the native objective', () => {
+    const start = '  const phonePinchPlanExpression = `';
+    const expression = section(sliceSource, start, '`;\n  const phonePinchPointerMatches =').slice(start.length);
+    const dom = new JSDOM('<!doctype html><header id="topbar" style="pointer-events:none"><button id="objchip" type="button" aria-controls="chpanel">Chapter 3 boundary objective</button></header><canvas id="root"></canvas><canvas id="foreign"></canvas><div id="cover"></div>', { runScripts: 'outside-only' });
+    const win = dom.window as unknown as Window & typeof globalThis & { __CF_SLICE__: { app: { canvas: HTMLCanvasElement | null } } };
+    const document = win.document, canvas = document.getElementById('root') as HTMLCanvasElement;
+    const nav = document.getElementById('topbar')!, objective = document.getElementById('objchip')!;
+    win.__CF_SLICE__ = { app: { canvas } };
+    Object.defineProperties(win, { innerWidth: { value: 390 }, innerHeight: { value: 844 } });
+    const rect = (left: number, top: number, right: number, bottom: number) => ({ left, top, right, bottom, width: right - left, height: bottom - top });
+    let objectiveRect = rect(160, 60, 380, 104);
+    Object.defineProperty(nav, 'getBoundingClientRect', { value: () => rect(0, 0, 390, 112) });
+    Object.defineProperty(canvas, 'getBoundingClientRect', { value: () => rect(0, 0, 390, 844) });
+    Object.defineProperty(objective, 'getBoundingClientRect', { value: () => objectiveRect });
+    let cover: { x: number; y: number; node: Element } | null = null;
+    document.elementFromPoint = ((x: number, y: number) => {
+      if (cover && x === cover.x && y === cover.y) return cover.node;
+      if (x >= objectiveRect.left && x < objectiveRect.right && y >= objectiveRect.top && y < objectiveRect.bottom) return objective;
+      if (nav.style.pointerEvents === 'auto' && x >= 0 && x < 390 && y >= 0 && y < 112) return nav;
+      return canvas;
+    }) as typeof document.elementFromPoint;
+    type Plan = { ok: boolean; firstStartInsideObjective: boolean; objectivePoint: { rootCanvas: boolean; id: string; objectiveOwned: boolean }; headerBlankPoint: { rootCanvas: boolean; id: string }; frames: Array<Array<{ x: number; y: number; rootCanvas: boolean }>> };
+    const run = (): Plan => win.eval(expression) as Plan;
+    try {
+      const baseline = run();
+      expect(baseline.ok).toBe(true);
+      expect(baseline.firstStartInsideObjective).toBe(false);
+      expect(baseline.objectivePoint).toMatchObject({ id: 'objchip', rootCanvas: false, objectiveOwned: true });
+      expect(baseline.headerBlankPoint.rootCanvas).toBe(true);
+      expect(baseline.frames[0]?.map(({ x, y }) => ({ x, y }))).toEqual([{ x: 150, y: 400 }, { x: 240, y: 400 }]);
+      expect(baseline.frames[4]?.map(({ x, y }) => ({ x, y }))).toEqual([{ x: 90, y: 400 }, { x: 300, y: 400 }]);
+      nav.style.pointerEvents = 'auto';
+      const blocked = run();
+      expect(blocked.ok).toBe(false);
+      expect(blocked.headerBlankPoint).toMatchObject({ id: 'topbar', rootCanvas: false });
+      expect(blocked.objectivePoint.objectiveOwned).toBe(true);
+      expect(blocked.frames[0]?.[0]?.rootCanvas).toBe(true);
+      nav.style.pointerEvents = 'none';
+      expect(run().ok).toBe(true);
+      for (const [x, node] of [[240, document.getElementById('cover')!], [90, document.getElementById('cover')!], [240, document.getElementById('foreign')!]] as const) {
+        cover = { x, y: 400, node };
+        expect(run().ok, `blocked path at${x}/${node.id}`).toBe(false);
+        cover = null;
+        expect(run().ok).toBe(true);
+      }
+      objectiveRect = rect(10, 900, 166, 1100);
+      expect(run().ok).toBe(false);
+      objectiveRect = rect(10, 234, 166, 486);
+      expect(run().firstStartInsideObjective).toBe(true);
+      expect(run().frames[0]?.[0]?.rootCanvas).toBe(false);
+      expect(run().ok).toBe(false);
+      objectiveRect = rect(160, 60, 380, 104);
+      expect(run().ok).toBe(true);
+      (objective as HTMLButtonElement).disabled = true;
+      expect(run().ok).toBe(false);
+      (objective as HTMLButtonElement).disabled = false;
+      expect(run().ok).toBe(true);
+      cover = { x: 270, y: 82, node: document.getElementById('cover')! };
+      expect(run().ok).toBe(false);
+      cover = null;
+      expect(run().ok).toBe(true);
+      win.__CF_SLICE__.app.canvas = null;
+      expect(run().ok).toBe(false);
+      win.__CF_SLICE__.app.canvas = canvas;
+      expect(run().ok).toBe(true);
+    } finally { dom.window.close(); }
+  });
+
+  it('binds the unchanged pinch to two distinct trusted root-canvas touch deliveries', () => {
+    const start = '  const phonePinchPointerMatches = ';
+    const expression = section(sliceSource, start, ';\n  const phonePinchPlan =').slice(start.length);
+    const assess = new Function(`return (${expression});`)() as (receipts: unknown, plan: unknown) => boolean;
+    const plan = { ok: true, frames: [[{ x: 150, y: 400 }, { x: 240, y: 400 }]] };
+    const receipts = [10, 11].map((pointerId, index) => ({ pointerId, rootCanvas: true, tag: 'CANVAS', trusted: true,
+      pointerType: 'touch', x: index === 0 ? 150 : 240, y: 400 }));
+    expect(assess(receipts, plan)).toBe(true);
+    for (const changes of [{ rootCanvas: false }, { tag: 'NAV' }, { trusted: false }, { pointerType: 'mouse' }, { x: 152 }, { pointerId: 11 }]) {
+      expect(assess([{ ...receipts[0], ...changes }, receipts[1]], plan), JSON.stringify(changes)).toBe(false);
+    }
+    expect(assess([receipts[0]], plan)).toBe(false);
+    expect(assess([...receipts, receipts[0]], plan)).toBe(false);
+    expect(assess(receipts, { ...plan, ok: false })).toBe(false);
+    expect(assess(receipts, plan)).toBe(true);
+    const owner = section(sliceSource, '  /* Keep the original pinch path.', "  const shotPh = await send('Page.captureScreenshot'");
+    proveEachMarkerRequired(owner, [
+      ['old wrapper fault injection', "nav.style.setProperty('pointer-events','auto','important')"],
+      ['actual blank-header interception', "phonePinchControl.broken?.headerBlankPoint?.id !== 'topbar'"],
+      ['same formerly blocked contact', 'phonePinchPlan.firstStartInsideObjective && phonePinchControl.broken?.frames?.[0]?.[0]?.rootCanvas !== false'],
+      ['exact property restoration', 'finally{restoreInlineStyleProperties(nav.style,prior);}'],
+      ['restored path recheck', '!phonePinchControl.restoration?.ok || !phonePinchControl.restored?.ok'],
+      ['native two-finger start', "type: 'touchStart', touchPoints: [{ x: 150, y: 400, id: 1 }, { x: 240, y: 400, id: 2 }]"],
+      ['original four outward steps', 'for (let s = 1; s <= 4; s++)'],
+      ['original gesture distance', "touchPoints: [{ x: 150 - s * 15, y: 400, id: 1 }, { x: 240 + s * 15, y: 400, id: 2 }]"],
+      ['trusted delivery assessment', 'phonePinchPointerMatches(phonePinchReceipts, phonePinchControl.restored)'],
+      ['unchanged zoom outcome', "if (!(z1 > z0 * 1.15)) fails.push('PHONE: pinch-out did not zoom"],
+      ['listener cleanup', 'delete window.__cfPhonePinchAbort;delete window.__cfPhonePinchReceipts;'],
+    ]);
+  });
+
+  it('consumes font readiness and two rendered frames before reading native chrome geometry', async () => {
+    const start='  const renderedChromeBoundary = `';
+    const expression=section(sliceSource,start,'`;\n  const geoCheck =').slice(start.length);
+    const observe=async (candidate: string) => {
+      let fontsReady!: () => void;
+      const ready=new Promise<void>(resolve=>{fontsReady=resolve;});
+      const frames: Array<() => void>=[];
+      let finished=false,observed: unknown=null,height=114;
+      const fonts={ready,status:'loading'};
+      const document={fonts,documentElement:{},getElementById:()=>({getBoundingClientRect:()=>({height})})};
+      const run=new Function('document','getComputedStyle','requestAnimationFrame','return '+candidate)(document,
+        ()=>({getPropertyValue:()=>String(height)}),(callback:()=>void)=>{frames.push(callback);}) as Promise<unknown>;
+      void run.then(value=>{finished=true;observed=value;});
+      await Promise.resolve();await Promise.resolve();
+      const beforeFonts={queued:frames.length,finished};
+      fonts.status='loaded';fontsReady();await Promise.resolve();await Promise.resolve();
+      const beforeFirst={queued:frames.length,finished};
+      frames.shift()?.();height=131.4375;await Promise.resolve();await Promise.resolve();
+      const afterFirst={queued:frames.length,finished};
+      frames.shift()?.();await Promise.resolve();await Promise.resolve();
+      return {beforeFonts,beforeFirst,afterFirst,finished,observed};
+    };
+    const baseline=await observe(expression);
+    expect(baseline).toEqual({beforeFonts:{queued:0,finished:false},beforeFirst:{queued:1,finished:false},
+      afterFirst:{queued:1,finished:false},finished:true,
+      observed:{frames:2,fontStatus:'loaded',topbarHeight:131.4375,publishedTopbarHeight:131.4375}});
+    const noFonts=await observe(expression.replace('if(document.fonts)await document.fonts.ready;',''));
+    expect(noFonts.beforeFonts).not.toEqual(baseline.beforeFonts);
+    const oneFrame=await observe(expression.replace('requestAnimationFrame(()=>{frames+=1;resolve();});','resolve();'));
+    expect(oneFrame.afterFirst).not.toEqual(baseline.afterFirst);
+    expect(oneFrame.observed).toMatchObject({frames:1,topbarHeight:131.4375});
+    expect(sliceSource).toContain('const desktopGeometryBoundary = await evalIn(renderedChromeBoundary);');
+    expect(sliceSource).toContain('const phoneGeometryBoundary = await evalPh(renderedChromeBoundary);');
+    expect(sliceSource.indexOf('await evalIn(renderedChromeBoundary)')).toBeLessThan(sliceSource.indexOf('const geo = await evalIn(geoCheck)'));
+    expect(sliceSource.indexOf('await evalPh(renderedChromeBoundary)')).toBeLessThan(sliceSource.indexOf('const phGeo = await evalPh(geoCheck)'));
+    expect(expression).not.toMatch(/dispatchEvent|__CF_SLICE__|syncTopbar|setTimeout/);
+  });
+
+  it('rejects clipped U1 header rectangles and missing, undersized or misplaced docked phone Survey outcomes', () => {
+    const start = '  const geoCheck = `';
+    const expression = section(sliceSource, start, '`;\n  const desktopGeometryBoundary =').slice(start.length);
+    const dom = new JSDOM(`<!doctype html><style>*{opacity:1;visibility:visible}
+      #railcodex,#railrgt,#trail,#dockcharts,#docksurvey .lbl{display:none}#raillft,#sceneactions{display:contents}</style>
+      <header id="topbar"><button id="dockinventory" type="button" aria-label="Inventory"><span id="playerchip">Explorer</span></button>
+        <div id="hpbar">100/100</div><input id="searchbox"><button id="objchip" type="button" aria-controls="chpanel">Objective</button>
+        <div id="trail"><span class="seg cur">Cosmos</span></div></header>
+      <div id="ctxbar">Context</div><div id="hintpill">Hint</div><nav id="dock">
+        <div id="raillft"><button id="docksurvey" class="dock-scene" type="button" aria-label="survey card">
+          <span class="ico" id="surveyicon">🔭</span><span class="lbl" id="surveylabel">Survey</span></button>
+          <button id="railcodex" type="button">Compendium</button></div><button id="primechip" type="button">Prime</button>
+        <div id="sceneactions" role="group"><button id="dockcharts" type="button">Charts</button></div></nav>
+      <nav id="railrgt"></nav>`, { runScripts: 'outside-only' });
+    const win = dom.window as unknown as Window & typeof globalThis;
+    const document = win.document;
+    Object.defineProperties(win, { innerWidth: { value: 390, configurable: true }, innerHeight: { value: 844 } });
+    type Box = { left: number; top: number; width: number; height: number };
+    const boxes = new Map<string, Box>([
+      ['topbar', { left: 0, top: 0, width: 390, height: 112 }],
+      ['dockinventory', { left: 10, top: 8, width: 140.4, height: 44 }],
+      ['playerchip', { left: 10, top: 8, width: 140.4, height: 44 }],
+      ['hpbar', { left: 10, top: 60, width: 140.4, height: 44 }],
+      ['searchbox', { left: 235.7, top: 8, width: 144.3, height: 44 }],
+      ['trail', { left: 0, top: 0, width: 0, height: 0 }],
+      ['sceneactions', { left: 0, top: 0, width: 0, height: 0 }],
+      ['raillft', { left: 0, top: 0, width: 0, height: 0 }],
+      ['railcodex', { left: 0, top: 0, width: 0, height: 0 }],
+      ['docksurvey', { left: 37, top: 740, width: 60, height: 44 }],
+      ['surveyicon', { left: 60, top: 755, width: 14, height: 14 }],
+      ['surveylabel', { left: 0, top: 0, width: 0, height: 0 }],
+      ['dockcharts', { left: 0, top: 0, width: 0, height: 0 }],
+      ['objchip', { left: 160.4, top: 60, width: 219.6, height: 44 }],
+      ['ctxbar', { left: 100, top: 650, width: 190, height: 28 }],
+      ['hintpill', { left: 130, top: 696, width: 130, height: 24 }],
+      ['dock', { left: 35, top: 740, width: 320, height: 92 }],
+      ['primechip', { left: 165, top: 740, width: 60, height: 44 }],
+    ]);
+    for (const [id] of boxes) {
+      const node = document.getElementById(id)!;
+      Object.defineProperty(node, 'getBoundingClientRect', { value: () => {
+        const b = boxes.get(id)!;
+        return { ...b, x: b.left, y: b.top, right: b.left + b.width, bottom: b.top + b.height };
+      } });
+    }
+    let blockedHit: string | null = null;
+    document.elementFromPoint = ((x: number, y: number) => {
+      for (const id of ['dockinventory', 'searchbox', 'objchip', 'docksurvey', 'dockcharts', 'primechip']) {
+        const b = boxes.get(id)!;
+        if (x >= b.left && x <= b.left + b.width && y >= b.top && y <= b.top + b.height) {
+          return id === blockedHit ? document.body : document.getElementById(id);
+        }
+      }
+      return document.body;
+    }) as typeof document.elementFromPoint;
+    const run = (): string[] => win.eval(expression) as string[];
+    const setPhoneWidth = (width: number) => {
+      Object.defineProperty(win, 'innerWidth', { value: width, configurable: true });
+      const column = Math.max(128, Math.min(176, width * .36)), dockWidth = Math.min(320, width - 20),
+        pitch = dockWidth / 5, dockLeft = (width - dockWidth) / 2,
+        searchWidth = Math.min(width * .37, width - column - 30);
+      for (const id of ['playerchip', 'dockinventory', 'hpbar']) boxes.set(id, { ...boxes.get(id)!, width: column });
+      boxes.set('topbar', { ...boxes.get('topbar')!, width });
+      boxes.set('searchbox', { ...boxes.get('searchbox')!, left: width - 10 - searchWidth, width: searchWidth });
+      boxes.set('objchip', { ...boxes.get('objchip')!, left: column + 20, width: width - column - 30 });
+      boxes.set('dock', { ...boxes.get('dock')!, left: dockLeft, width: dockWidth });
+      boxes.set('primechip', { ...boxes.get('primechip')!, left: dockLeft + pitch * 2 + 2, width: pitch - 4 });
+      boxes.set('docksurvey', { ...boxes.get('docksurvey')!, left: dockLeft + 2, width: pitch - 4 });
+      boxes.set('surveyicon', { ...boxes.get('surveyicon')!, left: dockLeft + pitch * .5 - 7 });
+      for (const id of ['ctxbar', 'hintpill']) boxes.set(id, { ...boxes.get(id)!, left: (width - boxes.get(id)!.width) / 2 });
+    };
+    try {
+      for (const [width, expectedEnvelope, expectedSceneWidth] of [[320, 300, 56], [390, 320, 60], [430, 320, 60]] as const) {
+        setPhoneWidth(width);
+        expect(run(), width + 'px responsive top-row Survey').toEqual([]);
+        expect(boxes.get('dock')!.width).toBe(expectedEnvelope);
+        expect(boxes.get('docksurvey')!.width).toBeCloseTo(expectedSceneWidth);
+      }
+      setPhoneWidth(390);
+      expect(run()).toEqual([]);
+      const mutations: ReadonlyArray<readonly [string, string, Partial<Box>, string]> = [
+        ['objective outside viewport', 'objchip', { left: 410 }, 'objective chip'],
+        ['objective overlaps Search', 'objchip', { top: 8 }, 'objective chip'],
+        ['objective vertically clipped', 'objchip', { height: 700 }, 'objective chip'],
+        ['HP overlaps nameplate', 'hpbar', { top: 40 }, 'HP bar'],
+        ['header clips its current lower row', 'topbar', { height: 100 }, 'HP bar'],
+        ['Survey outside the dock', 'docksurvey', { top: 120 }, 'phone Survey'],
+        ['Survey in the former lower utility row', 'docksurvey', { top: 788, width: 44 }, 'phone Survey'],
+        ['Survey in the wrong top-row slot', 'docksurvey', { left: 293 }, 'phone Survey'],
+        ['Prime displaced toward the former six-column center', 'primechip', { left: 135 + 1/3 }, 'Prime pill'],
+        ['dock retains the obsolete 370px envelope', 'dock', { left: 10, width: 370 }, 'compact dock'],
+        ['Survey target below 44px height', 'docksurvey', { height: 43 }, 'phone Survey'],
+        ['Survey target below 44px width', 'docksurvey', { width: 43 }, 'phone Survey'],
+        ['Survey emoji detached from its scene target', 'surveyicon', { top: 788 }, 'phone Survey'],
+        ['Search is undersized', 'searchbox', { height: 43 }, 'search is not'],
+        ['Search drifts back toward center', 'searchbox', { left: 160.4 }, 'search is not'],
+      ];
+      for (const [name, id, changes, prefix] of mutations) {
+        const prior = boxes.get(id)!;
+        try {
+          boxes.set(id, { ...prior, ...changes });
+          expect(run().some(finding => finding.startsWith(prefix)), name).toBe(true);
+        } finally { boxes.set(id, prior); }
+        expect(run(), `${name} restoration`).toEqual([]);
+      }
+      const survey = document.getElementById('docksurvey')!, scene = document.getElementById('sceneactions')!,
+        leftRail = document.getElementById('raillft')!, codex = document.getElementById('railcodex')!,
+        charts = document.getElementById('dockcharts')!, dock = document.getElementById('dock')!;
+      const phoneSurveyFailed = () => run().some(finding => finding.startsWith('phone Survey'));
+      const objective = document.getElementById('objchip') as HTMLButtonElement;
+      for (const defect of ['disabled', 'wrong panel', 'covered'] as const) {
+        if (defect === 'disabled') objective.disabled = true;
+        if (defect === 'wrong panel') objective.setAttribute('aria-controls', 'inventorypanel');
+        if (defect === 'covered') blockedHit = 'objchip';
+        expect(run().some(finding => finding.startsWith('objective chip')), defect).toBe(true);
+        objective.disabled = false; objective.setAttribute('aria-controls', 'chpanel'); blockedHit = null;
+        expect(run()).toEqual([]);
+      }
+      const obsolete = document.createElement('button'); obsolete.id = 'dockcharters'; dock.appendChild(obsolete);
+      expect(run().some(finding => finding.startsWith('removed Charters shortcut'))).toBe(true);
+      obsolete.remove(); expect(run()).toEqual([]);
+      const icon = document.getElementById('surveyicon')!;
+      icon.classList.replace('ico', 'utility-face');
+      expect(phoneSurveyFailed(), 'Survey cannot retain a small utility face').toBe(true);
+      icon.classList.replace('utility-face', 'ico');
+      expect(run()).toEqual([]);
+      survey.remove();
+      expect(phoneSurveyFailed(), 'missing Survey cannot count as a boxless group PASS').toBe(true);
+      leftRail.insertBefore(survey, codex);
+      expect(run()).toEqual([]);
+      survey.style.display = 'none';
+      expect(phoneSurveyFailed(), 'hidden Survey is unavailable').toBe(true);
+      survey.style.removeProperty('display');
+      expect(run()).toEqual([]);
+      blockedHit = 'docksurvey';
+      expect(phoneSurveyFailed(), 'covered Survey is unavailable').toBe(true);
+      blockedHit = null;
+      expect(run()).toEqual([]);
+      document.body.appendChild(leftRail);
+      expect(phoneSurveyFailed(), 'viewport-aligned Survey without the dock owner is rejected').toBe(true);
+      dock.prepend(leftRail);
+      expect(run()).toEqual([]);
+      document.body.appendChild(scene);
+      expect(phoneSurveyFailed(), 'Charts group outside its dock owner is rejected').toBe(true);
+      dock.appendChild(scene);
+      expect(run()).toEqual([]);
+      charts.style.display = 'flex';
+      expect(phoneSurveyFailed(), 'phone Charts must be explicitly hidden').toBe(true);
+      charts.style.removeProperty('display');
+      expect(run()).toEqual([]);
+      const trail=document.getElementById('trail')!;
+      trail.style.display='flex';
+      expect(run().some(finding=>finding.startsWith('canonical trail'))).toBe(true);
+      trail.style.removeProperty('display');
+      expect(run()).toEqual([]);
+      const geometryOwner = section(sliceSource, '  /* The objective now flows', '  /* Search owns');
+      proveEachMarkerRequired(geometryOwner, [
+        ['real out-of-viewport and Search mutations', "for(const name of ['outside viewport','overlaps Search'])"],
+        ['actual objective and Charts rectangles', 'const a=o.getBoundingClientRect(),c=charts.getBoundingClientRect()'],
+        ['static-flow transform mutation', "o.style.setProperty('transform','translate('+dx+'px,'+dy+'px)','important')"],
+        ['observed geometry reproduction', 'ok:reproduced&&bad.some'],
+        ['exact style-presence restoration', "styleRestored=o.getAttribute('style')===prior"],
+        ['baseline returns green', '&&styleRestored&&restored.length===0'],
+        ['causal stop', "failSliceWithoutCascade('GEOMETRY CHECKER CONTROL FAILED"],
+      ]);
+    } finally { dom.window.close(); }
+  });
+
   it('seals the repaired phone, lazy publication, and Charter causal prefixes before browser spend', () => {
-    expect(indexSource).toContain(
+    expect(indexSource).not.toContain(
       'body:is(.card-open,.panel-open) #primechip { display: none; }',
     );
     const phonePrime = section(
@@ -3212,15 +3690,16 @@ describe('sixth Slice red contract repairs', () => {
       ['green Prime base', 'if (phGeo.length === 0) {'],
       ['Prime base causal stop', "failSliceWithoutCascade('PHONE GOLDEN LAYOUT drift:"],
       ['shared property carrier runtime', '${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}'],
-      ['four owned Prime properties', "captureInlineStyleProperties(prime.style,['display','top','left','transform'])"],
+      ['four owned Prime properties', "captureInlineStyleProperties(prime.style,['display','top','left','transform','position','bottom'])"],
       ['Prime property restore binding', 'const restore=()=>restoreInlineStyleProperties(prime.style,prior);'],
       ['hidden Prime control', "prime.style.setProperty('display','none','important')"],
+      ['current native Prime failure', "finding.startsWith('Prime pill is not a visible reachable native button')"],
       ['hidden Prime restoration proof', 'hiddenRestoration=inspectInlineStyleProperties(prime.style,prior)'],
       ['hidden Prime restoration gate', 'if(!hiddenRestoration.ok)throw new Error'],
       ['hidden Prime outer gate', '|| !phonePrimeControls.hiddenRestoration?.ok'],
-      ['measured HP collision', "prime.style.setProperty('top',h.top+'px','important')"],
-      ['measured HP left collision', "prime.style.setProperty('left',h.left+'px','important')"],
-      ['measured HP transform collision', "prime.style.setProperty('transform','none','important')"],
+      ['measured HP and Prime rectangles', 'const h=hp.getBoundingClientRect(),p=prime.getBoundingClientRect();'],
+      ['measured HP horizontal translation', "prime.style.setProperty('transform','translate('+(h.left-p.left)+'px,'+"],
+      ['measured HP vertical translation', "(h.top-p.top)+'px)','important');"],
       ['exact Prime restoration', 'finally{restore();}'],
       ['Prime control causal stop', "failSliceWithoutCascade('PHONE PRIME TIER CONTROLS FAILED"],
       ['restored Prime recheck', 'phonePrimeControls.restored.length !== 0'],
@@ -3240,8 +3719,11 @@ describe('sixth Slice red contract repairs', () => {
       ['phone Prime overlay causal control', 'if (!phonePrimeOverlay.ok) {'],
       ['Prime overlay base causal stop', "failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD:"],
       ['visible Prime/panel collision control', "prime.style.setProperty('display','block','important')"],
+      ['measured Prime/panel rectangles', "const p=document.getElementById('guidepanel').getBoundingClientRect(),q=prime.getBoundingClientRect();"],
+      ['measured Prime/panel horizontal translation', "'translate('+(p.left+8-q.left)+'px,'+"],
+      ['measured Prime/panel vertical translation', "(p.top+8-q.top)+'px)','important');"],
       ['measured Prime/panel overlap', '!phonePrimeOverlayCtl.result?.overlap'],
-      ['Prime overlay property carrier', "captureInlineStyleProperties(prime.style,['display'])"],
+      ['Prime overlay property carrier', "captureInlineStyleProperties(prime.style,['display','position','left','top','bottom','transform','z-index'])"],
       ['Prime overlay restore binding', 'const restore=()=>restoreInlineStyleProperties(prime.style,prior);'],
       ['Prime overlay exact restoration', 'const restoration=inspectInlineStyleProperties(prime.style,prior)'],
       ['Prime overlay causal stop', "failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD CONTROL FAILED"],
@@ -3274,8 +3756,11 @@ describe('sixth Slice red contract repairs', () => {
       ['Survey Prime base causal stop', "failSliceWithoutCascade('PHONE PRIME SURVEY YIELD:"],
       ['Survey property carrier runtime', '${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}'],
       ['visible Prime/Survey collision control', "prime.style.setProperty('display','block','important')"],
+      ['measured Prime/Survey rectangles', "const p=document.getElementById('survey').getBoundingClientRect(),q=prime.getBoundingClientRect();"],
+      ['measured Prime/Survey horizontal translation', "'translate('+(p.left+8-q.left)+'px,'+"],
+      ['measured Prime/Survey vertical translation', "(p.top+8-q.top)+'px)','important');"],
       ['measured Prime/Survey overlap', '!phoneSurveyPrimeOverlayCtl.result?.overlap'],
-      ['Survey Prime property carrier', "captureInlineStyleProperties(prime.style,['display'])"],
+      ['Survey Prime property carrier', "captureInlineStyleProperties(prime.style,['display','position','left','top','bottom','transform','z-index'])"],
       ['Survey Prime restore binding', 'const restore=()=>restoreInlineStyleProperties(prime.style,prior);'],
       ['Survey Prime final restoration', 'finally{restore();}'],
       ['Survey Prime exact restoration', 'const restoration=inspectInlineStyleProperties(prime.style,prior)'],

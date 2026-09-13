@@ -1,0 +1,28 @@
+[
+  {
+    "image": "frontier-sheet-01.png",
+    "bytes": 2215793,
+    "width": 1254,
+    "height": 1254,
+    "sha256": "dae574e5d34de1e65cb3649993782f3c2e01ce9637d977680194e97149005e95",
+    "source": "/Users/nick/.codex/generated_images/01a095fb-851e-7d61-9aea-08db6c84e4ed/exec-d04fd849-c65b-4ef3-af2e-d077bfed2ce1.png",
+    "prompt": "frontier-sheet-01.prompt.txt",
+    "promptSha256": "6576f14a0b8cf0c53e00548a98597e1ce9fd35620476bd4d4f57a8960ee7272e",
+    "tool": "built-in image_gen",
+    "accepted": false,
+    "untouched": true
+  },
+  {
+    "image": "frontier-plate-01.png",
+    "bytes": 2710486,
+    "width": 1672,
+    "height": 941,
+    "sha256": "4d04b97613cf1f6b9cc5a6e14ffefa7fcbb89ce6dd31e161bf668bb881dd3c98",
+    "source": "/Users/nick/.codex/generated_images/01a095fb-851e-7d61-9aea-08db6c84e4ed/exec-c9d15735-bf04-4941-8bc6-0492fb528f6e.png",
+    "prompt": "frontier-plate-01.prompt.txt",
+    "promptSha256": "a58748e98bea7f8eeffa22e4124413647bcaad057dc79e42de6e5ae9154fd0f6",
+    "tool": "built-in image_gen",
+    "accepted": false,
+    "untouched": true
+  }
+]

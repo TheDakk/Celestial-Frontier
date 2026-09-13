@@ -1,0 +1,15 @@
+{
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "earth-surface-turn-corrected-verification",
+    "--",
+    "node",
+    "audits/AV_EARTH_SURFACE_TURN_20260908/continue-checks.mjs"
+  ],
+  "startedAt": "2026-09-08T12:29:50.014406+00:00",
+  "status": "FAIL",
+  "exitCode": 1,
+  "seconds": 6.095
+}

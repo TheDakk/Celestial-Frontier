@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "continuationOf": "native-corrected/review.json",
+  "steps": [
+    {
+      "name": "producer-mesh-pipe",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_TURN_20260908/producer-mesh-pipe.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 3.29
+    },
+    {
+      "name": "producer-refresh-mesh-pipe",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_TURN_20260908/refresh-producer-mesh-pipe.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.049
+    },
+    {
+      "name": "mesh-pipe-focused",
+      "cmd": "npm",
+      "args": [
+        "test",
+        "--",
+        "tests/current-producer-authorities.test.ts",
+        "tests/compendium-budget.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 4.112
+    },
+    {
+      "name": "mesh-pipe-types",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 2.788
+    },
+    {
+      "name": "mesh-pipe-root",
+      "cmd": "node",
+      "args": [
+        "tools/validate.js"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 12.877
+    }
+  ]
+}

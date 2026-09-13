@@ -1,0 +1,10 @@
+[
+  "node",
+  "tools/with-toolchain-lock.mjs",
+  "--label",
+  "mobile-changed-package-controls",
+  "--",
+  "node",
+  "--test",
+  "tools/local-image-generation/mobile-pack-package.test.mjs"
+]

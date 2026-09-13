@@ -1,0 +1,12 @@
+{
+  "status": "APPLIED_AND_BOUND_PENDING_VERIFICATION",
+  "startingHead": "acca36b469da2024a7112c3cdd426f351f6bd2f5",
+  "patchSha256": "2469e2e49a2b4bc6b766c2fbbc9318a616a7d88cd3cc1434e15bfccf6f6318b7",
+  "asset": {
+    "path": "port/v2/apps/game/src/assets/painted/earth-civet-landing-v1.webp",
+    "bytes": 600756,
+    "sha256": "cd2c616abb35610f6ec63382f6476436f27a8c1a2c698757c8a66d34a5b2e0ec"
+  },
+  "native": "NOT_RUN",
+  "notes": "Explicit resize/encode permission now granted; losslessRGB matches resizedreference exactly. Newdeclaredsizecap work pending; olddefault512KiB retained."
+}

@@ -1,0 +1,16 @@
+{
+  "startedAt": "2026-09-09T07:35:34.339144+00:00",
+  "parent": "c430380fcec424b2d03c71afd9e12858086f77e0",
+  "files": 15,
+  "signingProgram": "/usr/bin/ssh-keygen",
+  "socketVerified": true,
+  "publicKeySource": "existing inline Git public key; blob omitted",
+  "hostedActions": false,
+  "commitExitCode": 0,
+  "commitOutput": "[openai/mac e7157ec2] Add protected advisory budgets for generated scene variants\n 15 files changed, 858 insertions(+), 6 deletions(-)\n create mode 100644 audits/LOCAL_AV_AI_CONTINUATION_20260909/SCENE_CACHE_PLAN.md\n create mode 100644 audits/LOCAL_AV_AI_CONTINUATION_20260909/cache-plan-checkpoint-whitespace.json\n create mode 100644 audits/LOCAL_AV_AI_CONTINUATION_20260909/cache-plan-controls-01/RESULT.json\n create mode 100644 audits/LOCAL_AV_AI_CONTINUATION_20260909/cache-plan-controls-01/focused.log\n create mode 100644 audits/LOCAL_AV_AI_CONTINUATION_20260909/cache-plan-controls-01/root-validate.log\n create mode 100644 audits/LOCAL_AV_AI_CONTINUATION_20260909/cache-plan-controls-01/run.py\n create mode 100644 audits/LOCAL_AV_AI_CONTINUATION_20260909/cache-plan-controls-01/typecheck.log\n create mode 100644 audits/LOCAL_AV_AI_CONTINUATION_20260909/snapshot-checkpoint-signing.json\n create mode 100644 port/v2/apps/game/src/scene-image-cache-plan.ts\n create mode 100644 port/v2/tests/scene-image-cache-plan.test.ts\n",
+  "head": "e7157ec204f7f2bec5934fd4b80344a9e0d9e298",
+  "verifyExitCode": 0,
+  "verifyOutput": "Good \"git\" signature for 79046704+TheDakk@users.noreply.github.com with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n",
+  "aheadBehind": "0\t4",
+  "finishedAt": "2026-09-09T07:35:34.518301+00:00"
+}

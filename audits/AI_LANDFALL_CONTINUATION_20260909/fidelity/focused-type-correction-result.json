@@ -1,0 +1,40 @@
+{
+  "schema": "cf.focused-owner-receipt.v1",
+  "status": "PASS",
+  "command": [
+    "/opt/homebrew/Cellar/node/26.8.1/bin/node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "tests/landfall-fidelity.test.ts",
+    "--reporter=verbose"
+  ],
+  "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+  "node": "v26.8.1",
+  "vitest": "4.1.10",
+  "startedAt": "2026-09-09T15:44:29.768Z",
+  "finishedAt": "2026-09-09T15:44:30.412Z",
+  "durationMs": 643.3618749999999,
+  "exitCode": 0,
+  "error": null,
+  "signal": null,
+  "sourcesBefore": {
+    "port/v2/apps/game/src/landfall-fidelity.ts": "067f552dce335f9e305ab1aa5f622be15a23ef032e3d56893dbe44c0195c63f3",
+    "port/v2/tests/landfall-fidelity.test.ts": "464199d05b830a5e192a8cf7bbd18dbaf698f09e002346de846258730919e2d5",
+    "port/v2/apps/game/src/landfall-conditioning.ts": "6cce11db47d7d096fc21c61a733f990f6a66eb51fdcd3b1540a73ccd4aa43402",
+    "port/v2/apps/game/src/landfall-appearance-snapshot.ts": "94d97e8716cfb28d6108583a781116122c1693859c6ac0b32ce5148571d68a69",
+    "port/v2/apps/game/src/earth-layered-recipe.ts": "ab1fd02bd9a125a07f4a2abc671658cae3d94b5368bf3c226f5b1fc46e1fb824",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/known-negative-observations.json": "d4b251ebcc277a1139b1fe04bb05978b1f329698b86e7448ffbad50454d318e6"
+  },
+  "sourcesAfter": {
+    "port/v2/apps/game/src/landfall-fidelity.ts": "067f552dce335f9e305ab1aa5f622be15a23ef032e3d56893dbe44c0195c63f3",
+    "port/v2/tests/landfall-fidelity.test.ts": "464199d05b830a5e192a8cf7bbd18dbaf698f09e002346de846258730919e2d5",
+    "port/v2/apps/game/src/landfall-conditioning.ts": "6cce11db47d7d096fc21c61a733f990f6a66eb51fdcd3b1540a73ccd4aa43402",
+    "port/v2/apps/game/src/landfall-appearance-snapshot.ts": "94d97e8716cfb28d6108583a781116122c1693859c6ac0b32ce5148571d68a69",
+    "port/v2/apps/game/src/earth-layered-recipe.ts": "ab1fd02bd9a125a07f4a2abc671658cae3d94b5368bf3c226f5b1fc46e1fb824",
+    "audits/AI_LANDFALL_CONTINUATION_20260909/fidelity/known-negative-observations.json": "d4b251ebcc277a1139b1fe04bb05978b1f329698b86e7448ffbad50454d318e6"
+  },
+  "sourceUnchanged": true,
+  "logKind": "raw stdout plus stderr",
+  "logSha256": "f9c6891473f2a289025df0edf727f3c056b27c2432f87691ed8c3c1cd7f83c56",
+  "scope": "Only changed explicit never-return declaration; existing18 focused behavior controls rerun once. No TypeScript/full admission, browser or model claim."
+}

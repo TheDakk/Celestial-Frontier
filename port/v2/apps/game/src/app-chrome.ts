@@ -41,6 +41,21 @@ export interface AppChromeAnchorPoint {
   readonly y: number;
 }
 
+/** Detached CSS-pixel geometry; no DOM element or live DOMRect escapes. */
+export interface AppChromeLayoutRect {
+  readonly left: number;
+  readonly top: number;
+  readonly right: number;
+  readonly bottom: number;
+  readonly width: number;
+  readonly height: number;
+}
+
+export interface AppChromeSurfaceLayoutRects {
+  readonly upper: readonly AppChromeLayoutRect[];
+  readonly dock: AppChromeLayoutRect | null;
+}
+
 export interface AppChromeResizeObserver {
   observe(target: Element): void;
   disconnect(): void;
@@ -67,6 +82,8 @@ export interface AppChromeController {
   /** Geometry-only port for rank ceremony presentation. The chrome owner
    * retains the player-chip element; callers never receive or query its DOM. */
   readonly rankCeremonyAnchor: () => AppChromeAnchorPoint | null;
+  /** Visible upper chrome and dock rectangles for a caller-owned scene layout. */
+  readonly surfaceLayoutRects: () => AppChromeSurfaceLayoutRects | null;
   /** Static Prime status control resolved by the chrome DOM owner. Main may
    * register it with the one-panel/action layer without duplicating lookup. */
   readonly primeCodexOpener: () => HTMLElement;
@@ -134,6 +151,7 @@ export function createAppChromeController(
   const trail = requiredById(chromeDocument, 'trail');
   const playerChip = requiredById(chromeDocument, 'playerchip');
   const primeChip = requiredById(chromeDocument, 'primechip');
+  const hpBar = requiredById(chromeDocument, 'hpbar');
   const hpFill = requiredElement(chromeDocument, '#hpbar .fill');
   const hpText = requiredElement(chromeDocument, '#hpbar .txt');
   const objectiveChip = requiredById(chromeDocument, 'objchip');
@@ -141,7 +159,9 @@ export function createAppChromeController(
   const hint = requiredById(chromeDocument, 'hintpill');
   const topbar = requiredById(chromeDocument, 'topbar');
   const dock = requiredById(chromeDocument, 'dock');
-  const surfaceTopChrome = [topbar, requiredById(chromeDocument, 'searchbox'), objectiveChip];
+  const searchbox = requiredById(chromeDocument, 'searchbox');
+  const sceneActions = chromeDocument.getElementById('sceneactions');
+  const surfaceTopChrome = [topbar, searchbox, objectiveChip, ...(sceneActions ? [sceneActions] : [])];
   const rootStyle = chromeDocument.documentElement.style;
   let lastSurfaceTrailBottom = 0;
   let contextText = '';
@@ -153,6 +173,22 @@ export function createAppChromeController(
     const rect = element.getBoundingClientRect();
     return style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity) > 0
       && rect.width > 0 && rect.height > 0 ? rect.bottom : null;
+  };
+
+  const surfaceLayoutRects = (): AppChromeSurfaceLayoutRects | null => {
+    if (disposed) return null;
+    const visibleRect = (element: HTMLElement): AppChromeLayoutRect | null => {
+      const style = computedStyle(element), rect = element.getBoundingClientRect();
+      if (style.display === 'none' || style.visibility === 'hidden' || !(Number(style.opacity) > 0)
+        || !(rect.width > 0 && rect.height > 0)) return null;
+      return Object.freeze({ left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom,
+        width: rect.width, height: rect.height });
+    };
+    return Object.freeze({
+      upper: Object.freeze(surfaceTopChrome.map(visibleRect)
+        .filter((rect): rect is AppChromeLayoutRect => rect !== null)),
+      dock: visibleRect(dock),
+    });
   };
 
   const syncSurfaceChromeBottom = (): void => {
@@ -192,6 +228,7 @@ export function createAppChromeController(
   const syncTopbarH = (): void => {
     /* the game's height-sync law: MEASURED, never guessed */
     rootStyle.setProperty('--topbar-h', topbar.offsetHeight + 'px');
+    rootStyle.setProperty('--row1-h', Math.max(40, searchbox.getBoundingClientRect().bottom) + 'px');
   };
   const syncDockH = (): void => {
     rootStyle.setProperty('--dock-h', dock.offsetHeight + 'px');
@@ -230,17 +267,28 @@ export function createAppChromeController(
       playerChip.dataset.rankName = rank.name;
       playerChip.title = `Explorer rank: ${rank.name}`;
     }
-    playerChip.innerHTML = `⚙ ${escapeHtml(view.explorerName || 'Explorer')}`
-      + (rank === null ? '' : ` <span class="player-rank">· ${escapeHtml(rank.name)}</span>`)
-      + ` <span class="dim">— ✦ ${view.essence}<span class="player-worlds"> · ${view.landedWorlds} worlds</span></span>`;
+    playerChip.textContent = view.explorerName || 'Explorer';
     hpFill.style.width = Math.max(0, Math.min(100, (view.hp / Math.max(1, view.hpMax)) * 100)) + '%';
-    hpText.textContent = `${view.hp}/${view.hpMax} HP`;
-    primeChip.textContent = `✦ Prime Codex ${view.primeCount} / 9`;
+    hpText.textContent = `${view.hp}/${view.hpMax}`;
+    const meterMax = Math.max(1, view.hpMax);
+    hpBar.setAttribute('role', 'meter');
+    hpBar.setAttribute('aria-label', 'Explorer health');
+    hpBar.setAttribute('aria-valuemin', '0');
+    hpBar.setAttribute('aria-valuemax', String(meterMax));
+    hpBar.setAttribute('aria-valuenow', String(Math.max(0, Math.min(meterMax, view.hp))));
+    hpBar.setAttribute('aria-valuetext', `${view.hp}/${view.hpMax} HP`);
+    primeChip.innerHTML = '<span class="ico" aria-hidden="true">✦</span> '
+      + '<span class="lbl">Prime<span class="prime-full-label"> Codex</span></span> '
+      + `<span class="prime-count">${escapeHtml(view.primeCount)}/9</span>`;
+    primeChip.setAttribute('aria-label', `Open Prime Codex, ${view.primeCount} of 9 signatures`);
     objectiveChip.innerHTML = view.objective?.kind === 'progress'
       ? `⬆ ${escapeHtml(view.objective.text)} · <span class="prog" data-sel="objprog">${view.objective.have} / ${view.objective.need}</span>`
       : view.objective?.kind === 'boundary'
         ? `⬆ ${escapeHtml(view.objective.name)} is recorded — the next Charter action is not available in this development slice`
-        : '';
+        : '📜 View Charters';
+    // The objective is the one Charters opener. Panel selection owns expanded
+    // state; status refreshes change only its content and accessible name.
+    objectiveChip.setAttribute('aria-label', `Charters — ${objectiveChip.textContent?.trim() || 'View expedition objectives'}`);
     syncTopbarH();
   };
 
@@ -272,7 +320,12 @@ export function createAppChromeController(
   observeResize(context, syncContextH);
   observeResize(hint, syncHintH);
   for (const element of surfaceTopChrome) observeResize(element, syncSurfaceChromeBottom);
-  const bodyClassObserver = makeMutationObserver(syncSurfaceChromeBottom);
+  const bodyClassObserver = makeMutationObserver(() => {
+    // A same-task panel open/close can publish an intermediate header height without
+    // a net ResizeObserver size change. Measure the final body-class state too.
+    syncTopbarH();
+    syncSurfaceChromeBottom();
+  });
   bodyClassObserver.observe(chromeDocument.body, {
     attributes: true,
     attributeFilter: ['class'],
@@ -306,6 +359,7 @@ export function createAppChromeController(
   return Object.freeze({
     renderStatus,
     rankCeremonyAnchor,
+    surfaceLayoutRects,
     primeCodexOpener: () => primeChip,
     setTrail,
     setContext,

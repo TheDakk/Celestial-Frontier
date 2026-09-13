@@ -1,0 +1,25 @@
+Test-owned source copies: /private/tmp/cf-species-reference-controls-zQB3MC
+✔ real six-image set returns exact reviewed source hashes in canonical full-identity order (29.062417ms)
+✔ same-size altered PNG bytes are refused and restoring exact bytes reopens the set (18.911209ms)
+✔ a missing source refuses readiness instead of silently dropping a species (20.23975ms)
+✔ missing, extra, reordered, repeated or renumbered references cannot masquerade as the six residents (57.385083ms)
+✔ changing one full genome field cannot retain the old canonical identity key (12.165042ms)
+✔ a shortened or substituted identity key cannot stand in for the full canonical genome (25.231208ms)
+✔ snapshot bytes and schema remain bound to the declared snapshot digest (38.028625ms)
+✔ preparation and conditioning-only status cannot silently claim a different product contract (74.635291ms)
+✔ source path traversal, absolute paths and alternate separators are refused (81.959209ms)
+✔ runtime target collisions and paths outside the fixed local AI subtree refuse (82.321709ms)
+✔ declared source geometry and prepared geometry cannot disagree with the exact source header (89.618042ms)
+✔ unsupported or truncated PNG/WebP headers are refused without calling a decoder (0.609333ms)
+✔ a repinned malformed image signature still refuses and original source restores (22.246542ms)
+✔ copying another resident image under a new target is not an independent identity reference (15.819084ms)
+✔ symlink files and root aliases cannot escape the declared source ownership (24.040042ms)
+✔ unbounded or inconsistent declared image pins refuse before readiness (71.367083ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 760.977125

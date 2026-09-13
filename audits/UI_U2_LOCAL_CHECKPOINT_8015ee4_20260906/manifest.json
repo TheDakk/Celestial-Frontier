@@ -1,0 +1,98 @@
+{
+  "schema": "cf-u2-checkpoint-evidence/v1",
+  "source": "8015ee4ff257b9c12db4eec2ff37808ec38d06ad",
+  "status": "static-pass-small-phone-charters-body-capacity-product-red-large-slice-not-run",
+  "executionStatus": "fail",
+  "files": [
+    {
+      "file": "clone.log.gz",
+      "rawBytes": 445,
+      "rawSha256": "18ce672cb713f22520ebe046c022eca6ac181941d917bdd8089e5e3b474b2324",
+      "bytes": 183,
+      "sha256": "6ff5659ab3e981256f4a492e856b1bf41b57622051ad4c85027def66375899d7"
+    },
+    {
+      "file": "controller.cjs.gz",
+      "rawBytes": 4877,
+      "rawSha256": "e1cfd896aedf69014f67602b797e7756bd751956ebe394692d2419e783afac3a",
+      "bytes": 2038,
+      "sha256": "fe358d80290ad163a41eab2353e76d2ab050dfdff775703196cedc4ea1d19eb2"
+    },
+    {
+      "file": "execution.json.gz",
+      "rawBytes": 4306,
+      "rawSha256": "721f79c5490b919074c705aa28819769b4604885dc6cdec3e8bcc3ed39b74643",
+      "bytes": 1181,
+      "sha256": "70bc812f78e6de72d2e20deba104db4d9245989be3bc06db4057468b2678f046"
+    },
+    {
+      "file": "root-install.log.gz",
+      "rawBytes": 28,
+      "rawSha256": "f601a456635e3c0f4a26b5dec01314f54dd7d22d7d6ba08493cf8f0fbb6da8a9",
+      "bytes": 48,
+      "sha256": "5e6f1d6474b2d492ff43153931e6395cc14af1ea71b6a4d60e5b889710a2cc58"
+    },
+    {
+      "file": "signature.log.gz",
+      "rawBytes": 135,
+      "rawSha256": "f6da87af347cddf791a8771d5098e5c45e9c9ddf4aa8cd551fac5d7d5821a3e7",
+      "bytes": 152,
+      "sha256": "334f0dcc90089880e4acd4d3003ef1731ea177cffb7b7b3b4a73d6f6d8ffa57e"
+    },
+    {
+      "file": "small-phone.log.gz",
+      "rawBytes": 21044,
+      "rawSha256": "dfe4b7e20af69a2b1e06e5ab7822237de82d92b1bc1aa4028db694bd35802d6a",
+      "bytes": 4548,
+      "sha256": "cf9fe5915b7eb15f2de54b0b06069c4ebee17de736dce8973271e02b7143c883"
+    },
+    {
+      "file": "static-develop.log.gz",
+      "rawBytes": 6670,
+      "rawSha256": "6c6b3a844d032442c4d7e219e537e9a3e7e80706eb1dc41df30b5c7fec160dc6",
+      "bytes": 2564,
+      "sha256": "7a5f7a80b17e48adabd5948745bf3b497004f66a7b3c917de16b1738844b2d1d"
+    },
+    {
+      "file": "v2-install.log.gz",
+      "rawBytes": 332,
+      "rawSha256": "aea3f9b482395ce10c898acd90c5768431e4c804c6f0c01c1df9cdcd58dc43de",
+      "bytes": 178,
+      "sha256": "55d839bb353a982076ae477da0687bb5e410e0336640a4a8e1e8cfe33942ba3c"
+    },
+    {
+      "file": "glassmatrix-local-u2-8015ee4-20260906-small-phone.json.gz",
+      "rawBytes": 105502,
+      "rawSha256": "fdb4d08e1bf0bcf4c4869030d6a5a75c9701404146564652db420b3ace42b308",
+      "bytes": 12564,
+      "sha256": "221df158a3894869364a0ef43177412762c6d85ec4b57f9d28a818548833d48c"
+    }
+  ],
+  "stages": [
+    {
+      "name": "signature",
+      "status": "pass"
+    },
+    {
+      "name": "clone",
+      "status": "pass"
+    },
+    {
+      "name": "root-install",
+      "status": "pass"
+    },
+    {
+      "name": "v2-install",
+      "status": "pass"
+    },
+    {
+      "name": "static-develop",
+      "status": "pass"
+    },
+    {
+      "name": "small-phone",
+      "status": "fail"
+    }
+  ],
+  "certification": false
+}

@@ -1,0 +1,8 @@
+{
+  "kind": "Verbatim roadmap log archival",
+  "blockSha256": "04408e130828bb61d0b2ee7602efee1bc7632259a5fb683e4fae337ddb3e09be",
+  "blockBytes": 9341,
+  "previousArchivePreservedAsExactSuffix": true,
+  "roadmapLines": 295,
+  "why": "ROADMAP approached400lines; aged completed static-study logs moved, current boundaries/blockers summarized with exact evidence links."
+}

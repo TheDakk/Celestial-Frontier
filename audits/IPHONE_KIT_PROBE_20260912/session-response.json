@@ -1,0 +1,10 @@
+{
+  "httpStatus": 500,
+  "response": {
+    "value": {
+      "error": "session not created",
+      "message": "Could not create a session: Some devices were found, but could not be used:\n- Nick\u2019s iPhone Pro ([device identifier redacted; physical device retained in private session file]): device is locked",
+      "stacktrace": ""
+    }
+  }
+}

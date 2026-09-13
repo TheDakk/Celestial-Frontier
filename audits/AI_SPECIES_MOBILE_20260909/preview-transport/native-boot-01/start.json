@@ -1,0 +1,15 @@
+{
+  "schema": "cf.frozen-preview-native-boot.v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-09T17:12:04.539Z",
+  "scope": "Real game boot, trusted Skip training and reload through frozen local Vite; no AI model access or inference",
+  "sources": [],
+  "observations": [],
+  "browserEvents": [],
+  "targetEvents": [],
+  "requests": [],
+  "webSockets": [],
+  "clients": [],
+  "screenshots": [],
+  "cleanup": {}
+}

@@ -1,0 +1,60 @@
+{
+  "status": "FAIL",
+  "scope": "Painted Mars focused verification; historical full-profile and navigation failures remain open",
+  "steps": [
+    {
+      "name": "draft-pin",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_20260908/draft-pin.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_20260908/draft-pin.json"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.436
+    },
+    {
+      "name": "producer-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_20260908/producer.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 3.111
+    },
+    {
+      "name": "producer-refresh-final",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_PAINTED_MARS_20260908/refresh-producer.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.032
+    },
+    {
+      "name": "final-focused",
+      "cmd": "npm",
+      "args": [
+        "test",
+        "--",
+        "apps/game/src/painted-vista-load.test.ts",
+        "tests/painted-mars-binding.test.ts",
+        "tests/biome-vista-surface.test.ts",
+        "tests/biome-vista-cache.test.ts",
+        "tests/biome-vista-protocol.test.ts",
+        "tests/biome-vista-worker-error.test.ts",
+        "tests/pwa-offline.test.ts",
+        "tests/current-producer-authorities.test.ts",
+        "tests/compendium-budget.test.ts",
+        "tests/guide-release.test.ts",
+        "tests/slicesmoke-guide-release-scroll-contract.test.ts",
+        "tests/slicesmoke-dtrain-release-convergence.test.ts"
+      ],
+      "exitCode": 1,
+      "error": null,
+      "seconds": 4.494
+    }
+  ]
+}

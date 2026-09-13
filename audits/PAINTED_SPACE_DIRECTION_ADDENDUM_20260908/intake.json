@@ -1,0 +1,30 @@
+{
+  "recordedAt": "2026-09-08T11:57:40.517572+00:00",
+  "scope": "Nick supplied additional biome and UI visual references and reaffirmed reproducible share codes and practically unbounded procedural exploration.",
+  "userUIInstruction": "I don\u2019t want to copy this UI at all, so make note of that.",
+  "codeRequirement": "Shared creature data must reproduce the same generated organism across player games; richer art must preserve full genome and lineage identity.",
+  "crossGameInterpretation": "Other Celestial Frontier instances are the existing goal. Unrelated game engines require an agreed import schema and compatible renderer; automatic universal transfer is not claimed.",
+  "images": [
+    {
+      "source": "/Users/nick/Library/Mobile Documents/com~apple~CloudDocs/Downloads/Codex Image Sep 8, 2026, 07_51_47 AM.png",
+      "path": "biome-reference.png",
+      "sha256": "86b6629d53a3fda1e07f725913b5c0b69a9918e91af3df222e44ee2dc6647248",
+      "bytes": 3484074,
+      "width": 1536,
+      "height": 1024,
+      "role": "Biome appearance reference; no automatic changes to IDs, climate, life or world facts."
+    },
+    {
+      "source": "/Users/nick/Library/Mobile Documents/com~apple~CloudDocs/Downloads/Codex Image Sep 8, 2026, 07_53_56 AM.png",
+      "path": "ui-material-reference.png",
+      "sha256": "fd23ef6877a01ba44a2c8b798ba8b3edd072a9bdeaee318e675022f692f4fcab",
+      "bytes": 2236844,
+      "width": 1672,
+      "height": 941,
+      "role": "Graphic/material inspiration only. Explicitly do not copy UI; preserve current placement, controls and navigation."
+    }
+  ],
+  "priorCheckpoint": "../PAINTED_SPACE_PIPELINE_20260908/manifest.json",
+  "priorRecovery": "port/v2/apps/game/smoke/charm-study-staged-20260908.json",
+  "runtimeChanged": false
+}

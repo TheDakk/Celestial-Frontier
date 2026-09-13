@@ -1,0 +1,28 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/ai-presentation.test.ts (4 tests | 1 failed) 79ms
+   × actual survey handler closes synchronously; the old awaited guard fails that timing 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ai-presentation.test.ts > actual survey handler closes synchronously; the old awaited guard fails that timing
+SyntaxError: Return statement is not allowed here
+ ❯ compiled tests/ai-presentation.test.ts:20:39
+     18| });
+     19| const source=readFileSync(new URL('../apps/game/src/main.ts',import.me…
+     20| function compiled(text:string){return stripTypeScriptTypes(text,{mode:…
+       |                                       ^
+     21| it('actual View function never travels, lands or enqueues on a snapsho…
+     22|  const start=source.indexOf('async function viewLocalAiOriginal('),end…
+ ❯ run tests/ai-presentation.test.ts:33:94
+ ❯ tests/ai-presentation.test.ts:34:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  16:00:26
+   Duration  302ms (transform 11ms, setup 0ms, import 170ms, tests 79ms, environment 0ms)
+

@@ -1,0 +1,20 @@
+{
+  "purpose": "Exact failed instrument preserved before grouping correction; original run remains FAIL. source-contract was not in runner mjs/json/html inventory.",
+  "files": {
+    "gpu-profile.mjs": {
+      "sha256": "b1eb17c3b591c2d8d395de8b86486b8c94e26dc77ab22915b64b124a56468a63",
+      "bytes": 7992,
+      "matchesStartSourceBinding": true
+    },
+    "gpu-profile.test.mjs": {
+      "sha256": "933b813d4a0d82614ca73d17fc64aacd685ccefcc34eb08c38ee29d79cfdd2d0",
+      "bytes": 5552,
+      "matchesStartSourceBinding": true
+    },
+    "source-contract.md": {
+      "sha256": "fd2b36256947c6cdb197e977ed000ba4df5707278f77e4da8e294e528742db52",
+      "bytes": 12721,
+      "matchesStartSourceBinding": null
+    }
+  }
+}

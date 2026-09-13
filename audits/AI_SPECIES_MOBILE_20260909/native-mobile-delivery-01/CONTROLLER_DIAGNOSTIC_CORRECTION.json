@@ -1,0 +1,11 @@
+{
+  "measuredRunner": {
+    "path": "tools/local-image-generation/run-mobile-model-delivery.mjs",
+    "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/run-mobile-model-delivery.mjs",
+    "bytes": 32174,
+    "sha256": "e2a104223335a8b1f093e49e171dac490a6b3b1c6ce5e15b7f35f09bc059c339"
+  },
+  "firstResultSha256": "b2983fe6eeb2188ce1e9c045ae7105058e757c0b1addb817fbce779aab978d53",
+  "preservedRunner": "measured-runner.mjs",
+  "correction": "Both Page.reload calls used ignoreCache:true. First reload document remained uncontrolled while explicit full installation succeeded. Diagnostic-only correction will request normal reload and require the exact activated same-origin service worker before Resume and offline Verify. Original receipt stays FAIL; product and pack unchanged."
+}

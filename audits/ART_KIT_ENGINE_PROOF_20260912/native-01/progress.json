@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "error": null,
+  "last": {
+    "type": "progress",
+    "phase": "readback-complete",
+    "stage": "decode",
+    "atMs": 426189.7049999833,
+    "sequence": 446
+  },
+  "eventCount": 446,
+  "partialCount": 6
+}

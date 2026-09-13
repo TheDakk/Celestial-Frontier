@@ -1,0 +1,1538 @@
+{
+  "kind": "local-pilot-review-diagnostic",
+  "certification": false,
+  "buildIdentity": {
+    "initialJavaScript": {
+      "candidate": {
+        "files": [
+          {
+            "file": "assets/CanvasPool-BewL5izq.js",
+            "bytes": 804,
+            "gzipBytes": 456
+          },
+          {
+            "file": "assets/CanvasRenderer-DXKJLlc8.js",
+            "bytes": 87438,
+            "gzipBytes": 27229
+          },
+          {
+            "file": "assets/canvasUtils-CWV5icuA.js",
+            "bytes": 6070,
+            "gzipBytes": 2069
+          },
+          {
+            "file": "assets/Geometry-C5FtorEc.js",
+            "bytes": 101664,
+            "gzipBytes": 30814
+          },
+          {
+            "file": "assets/getPo2TextureFromSource-0axNaDip.js",
+            "bytes": 25109,
+            "gzipBytes": 8605
+          },
+          {
+            "file": "assets/getTextureBatchBindGroup-DkbnCTGz.js",
+            "bytes": 404,
+            "gzipBytes": 316
+          },
+          {
+            "file": "assets/main-FX5mqXNK.js",
+            "bytes": 1366021,
+            "gzipBytes": 351904
+          },
+          {
+            "file": "assets/release-identity-CIuedefi.js",
+            "bytes": 134,
+            "gzipBytes": 138
+          },
+          {
+            "file": "assets/RenderTargetSystem-DKTlyS8X.js",
+            "bytes": 71135,
+            "gzipBytes": 20083
+          },
+          {
+            "file": "assets/speciesidentity-DkdaK0o4.js",
+            "bytes": 2006,
+            "gzipBytes": 865
+          },
+          {
+            "file": "assets/src-D1xb2OX1.js",
+            "bytes": 134337,
+            "gzipBytes": 52589
+          },
+          {
+            "file": "assets/surface-polish-CBmmi-Kj.js",
+            "bytes": 4731,
+            "gzipBytes": 1687
+          },
+          {
+            "file": "assets/tame-greeting-audio-B3yk-J46.js",
+            "bytes": 223654,
+            "gzipBytes": 60974
+          },
+          {
+            "file": "assets/visual-effect-policy-DufeEEC0.js",
+            "bytes": 157782,
+            "gzipBytes": 43497
+          }
+        ],
+        "bytes": 2181289,
+        "gzipBytes": 601226
+      },
+      "baseline": {
+        "files": [
+          {
+            "file": "assets/CanvasPool-BewL5izq.js",
+            "bytes": 804,
+            "gzipBytes": 456
+          },
+          {
+            "file": "assets/CanvasRenderer-DXKJLlc8.js",
+            "bytes": 87438,
+            "gzipBytes": 27229
+          },
+          {
+            "file": "assets/canvasUtils-CWV5icuA.js",
+            "bytes": 6070,
+            "gzipBytes": 2069
+          },
+          {
+            "file": "assets/Geometry-C5FtorEc.js",
+            "bytes": 101664,
+            "gzipBytes": 30814
+          },
+          {
+            "file": "assets/getPo2TextureFromSource-0axNaDip.js",
+            "bytes": 25109,
+            "gzipBytes": 8605
+          },
+          {
+            "file": "assets/getTextureBatchBindGroup-DkbnCTGz.js",
+            "bytes": 404,
+            "gzipBytes": 316
+          },
+          {
+            "file": "assets/main-CeS1pWbj.js",
+            "bytes": 1733448,
+            "gzipBytes": 449995
+          },
+          {
+            "file": "assets/release-identity-CIuedefi.js",
+            "bytes": 134,
+            "gzipBytes": 138
+          },
+          {
+            "file": "assets/RenderTargetSystem-DKTlyS8X.js",
+            "bytes": 71135,
+            "gzipBytes": 20083
+          },
+          {
+            "file": "assets/speciesidentity-_hbsn_1n.js",
+            "bytes": 141053,
+            "gzipBytes": 54616
+          }
+        ],
+        "bytes": 2167259,
+        "gzipBytes": 594321
+      }
+    },
+    "serviceWorkerSha256": "5af4c841cfa266d676e5164b90efd9745bd7d56f871f244fbf59d949b924323e",
+    "completePackBytes": 15607722,
+    "assets": [
+      {
+        "path": "/assets/BufferResource-e5xCyZ5_.js",
+        "sha256": "6ee514005f66ab3071ec8b93506a1cd968593d7ac051716399272ac7a384f4d4",
+        "bytes": 10576
+      },
+      {
+        "path": "/assets/CanvasPool-BewL5izq.js",
+        "sha256": "8b4af0914a4436094e428b6747bef851805c1c84f361ba8819c1fbdcab6b806a",
+        "bytes": 804
+      },
+      {
+        "path": "/assets/CanvasRenderer-DXKJLlc8.js",
+        "sha256": "1e4c6c1578a4d34a9274e2c4a68b4dc37c541e225d963bf661f682486d930051",
+        "bytes": 87438
+      },
+      {
+        "path": "/assets/Geometry-C5FtorEc.js",
+        "sha256": "9bbbacd5502e42fb7c51a5306bda3b59b718a2bacd20badde40fe7e8ab1afbb6",
+        "bytes": 101664
+      },
+      {
+        "path": "/assets/RenderTargetSystem-DKTlyS8X.js",
+        "sha256": "fa6f7819177a12bf7438d3f56905fed48dfc79e1d45c76df828e20ce7fccee22",
+        "bytes": 71135
+      },
+      {
+        "path": "/assets/WebGLRenderer-6mXMZ2W0.js",
+        "sha256": "0564e0461c5adbde63f59574d08acae1c0fe047a3fc02946ad0436f2acf8381d",
+        "bytes": 68035
+      },
+      {
+        "path": "/assets/WebGPURenderer-Btvgrbn5.js",
+        "sha256": "e638b9294f9884f469f9bb2b3bee08ac684a6fb1021511eb29cf68baa355aa5f",
+        "bytes": 38536
+      },
+      {
+        "path": "/assets/audiovisual-pilot-BvGhQWyK.js",
+        "sha256": "5bdaf7df5cfe54f10899ec742538d4900f889ff9683c95b6ce6bebed03f7d576",
+        "bytes": 5644
+      },
+      {
+        "path": "/assets/audiovisualPilot-BU_s1uNi.js",
+        "sha256": "3fe57c3617b84003a6c9c2d87ae10728714486e36682edb9c417e9779fdea1cf",
+        "bytes": 15184
+      },
+      {
+        "path": "/assets/audit-BESfJQH9.js",
+        "sha256": "3e11872550aabc8e75fc69a64fbf6b819ba259ae7c8c3eb9c828aaadff861090",
+        "bytes": 16573
+      },
+      {
+        "path": "/assets/biome-vista.worker-D3XRSJZJ.js",
+        "sha256": "f30f76537077952e792da01712b59650172dc2e7b78698040abc780843c6f7e2",
+        "bytes": 220682
+      },
+      {
+        "path": "/assets/browserAll-CAHNI2rF.js",
+        "sha256": "e4e09a2f845f764445a9672423c95a8f4142f3b314aee86ace1cc59e1cf68b03",
+        "bytes": 42649
+      },
+      {
+        "path": "/assets/canvasUtils-CWV5icuA.js",
+        "sha256": "faaff76b40957b52f7817add636bb204e563dfab14ed3a0b6f563c96c259938b",
+        "bytes": 6070
+      },
+      {
+        "path": "/assets/cf-pilot-combat-contact-DHZD2lYd.wav",
+        "sha256": "fc3bcb5da5ee2a81a45d32de933cea234eb42850b151ba46565d1ad300eb6a20",
+        "bytes": 33644
+      },
+      {
+        "path": "/assets/cf-pilot-exploration-music-CMF8UCKw.wav",
+        "sha256": "fa144fe615faef75fc426f86a44f299dcf48a1637893ccef9cf95fa2ab40a111",
+        "bytes": 4608044
+      },
+      {
+        "path": "/assets/cf-pilot-scout-approach-Be38_iqZ.wav",
+        "sha256": "ad4020be2cda99df2ba91290965b1d125bf909c4b7279833da51b5b55ad5f373",
+        "bytes": 230444
+      },
+      {
+        "path": "/assets/cf-pilot-scout-landing-D1k5tYuE.wav",
+        "sha256": "6e8e3edf1dca6f232ebb13233e6921a64c33bd33830a5c1358165a764779852a",
+        "bytes": 134444
+      },
+      {
+        "path": "/assets/cf-pilot-temperate-bed-C_jKRyj6.wav",
+        "sha256": "36caaa89651e44e92f9faddc53d74104cb9e1f5e11eb5a5757efbbdb978be69c",
+        "bytes": 4608044
+      },
+      {
+        "path": "/assets/cf-pilot-ui-nav-bMnbTxA8.wav",
+        "sha256": "14cecfcf6525c0c3637455ae7c711972021814ae5b5caf711baf7c6bb796a4c8",
+        "bytes": 26924
+      },
+      {
+        "path": "/assets/cf-pilot-ui-refusal-CMon7hko.wav",
+        "sha256": "3e4fcbd34d6b65583883e31347ef99c4dd538aa07a311fe7612083e3f37b9b20",
+        "bytes": 43244
+      },
+      {
+        "path": "/assets/cf-pilot-ui-settlement-uF_X4Ois.wav",
+        "sha256": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3",
+        "bytes": 67244
+      },
+      {
+        "path": "/assets/getPo2TextureFromSource-0axNaDip.js",
+        "sha256": "b30689d034d24afffd35fc3a31fbc217dd73090d008e0ec963372dfdc5fcae68",
+        "bytes": 25109
+      },
+      {
+        "path": "/assets/getTextureBatchBindGroup-DkbnCTGz.js",
+        "sha256": "3ce2d33bde60e5f2cc123fab89998b4c1580eecab18b1294321b14d255b83be5",
+        "bytes": 404
+      },
+      {
+        "path": "/assets/guide-content-Cy7MxzST.js",
+        "sha256": "5c16f71f1959f41eb1a5b9262873077f41de3df4551dbadc8d23d3f7a5a0b908",
+        "bytes": 130928
+      },
+      {
+        "path": "/assets/hybridMatrix-DiGQ5L5t.js",
+        "sha256": "43f3c1833e62a26ecb5c72b33316aab6b79a8732f7e6020bec8e8a294856c5b1",
+        "bytes": 33851
+      },
+      {
+        "path": "/assets/init-S6n54E3j.js",
+        "sha256": "d9d1196b839d592b9b80843129c776109e53dbb6b96b905b6405bb65f0c42cfb",
+        "bytes": 15305
+      },
+      {
+        "path": "/assets/main-FX5mqXNK.js",
+        "sha256": "aa7696bd63412a85549451419019d094107c8e676b548b605f8fddeb00d7d775",
+        "bytes": 1366021
+      },
+      {
+        "path": "/assets/pilot-sound-player-DKmjMlO5.js",
+        "sha256": "b105947756e28381f2d23aad7ac742872535f8e5b87fd6dcb9fc870ef5dc1ca6",
+        "bytes": 14745
+      },
+      {
+        "path": "/assets/release-content-Di0VW4Gn.js",
+        "sha256": "7cf701ee50d8566803f8973feca158903e590057bb83e3ff1feedee20de7e562",
+        "bytes": 146934
+      },
+      {
+        "path": "/assets/release-identity-CIuedefi.js",
+        "sha256": "849faf8ee532d75c477524be0847f7db9f6ae443b86c328434bd8101a6c0a82d",
+        "bytes": 134
+      },
+      {
+        "path": "/assets/scout-chemical-132-CwpnGunm.webp",
+        "sha256": "be78ba5669344aa5466b29f38569c14ecb4710c986252252d5d3d72a588e4c9a",
+        "bytes": 11962
+      },
+      {
+        "path": "/assets/scout-chemical-300-DaCbzFLe.webp",
+        "sha256": "e452ac530cdf7876cb177404f68bedcf6e5aee253ed74df6026905ac64d92886",
+        "bytes": 42896
+      },
+      {
+        "path": "/assets/scout-chemical-512-Dlxi4nLC.webp",
+        "sha256": "5cc671cee894ef2bb23dd530cccd7cad2c86dcb3b207623ca72c7440880ae2f7",
+        "bytes": 102294
+      },
+      {
+        "path": "/assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172",
+        "bytes": 1312281
+      },
+      {
+        "path": "/assets/speciesart-CGOfbRs-.js",
+        "sha256": "6865ce59f9d21f2efdd9c9eb6ae64fcb1d2b377c1d63a790cd7c34c6c9130e51",
+        "bytes": 1266043
+      },
+      {
+        "path": "/assets/speciesidentity-DkdaK0o4.js",
+        "sha256": "bbcbd03c4f82bb640db2cda363b4579b60631a4182d759861009771f4f39d772",
+        "bytes": 2006
+      },
+      {
+        "path": "/assets/src-D1xb2OX1.js",
+        "sha256": "b65c8f4cc2ee2064ff67d0c795945d41119030489bf45185ba96a5e756fcedef",
+        "bytes": 134337
+      },
+      {
+        "path": "/assets/surface-polish-CBmmi-Kj.js",
+        "sha256": "9d74988f7575b155e811c18ff7bcc594d7158fbee211bfbacabdeafcfdfe0552",
+        "bytes": 4731
+      },
+      {
+        "path": "/assets/tame-greeting-audio-B3yk-J46.js",
+        "sha256": "dc3236f9680c2ded1d24312b92e5061600ba80bde29936af5a6197218ee6ac27",
+        "bytes": 223654
+      },
+      {
+        "path": "/assets/temperate-atmosphere-512-D5CgP5XX.webp",
+        "sha256": "64b258bc86f681725f1eaf837fc8c552b949d2d72840067f3a36a0ccb42827cb",
+        "bytes": 75942
+      },
+      {
+        "path": "/assets/visual-effect-policy-DufeEEC0.js",
+        "sha256": "1cd4bb63d81ca3ce61554a9615e2bd580fea2fd26f2b8d114df7ae0f5351f294",
+        "bytes": 157782
+      },
+      {
+        "path": "/assets/webworkerAll-Dl-gkjA6.js",
+        "sha256": "791e45d86752eb73039eb295ef453ce3e7b70d0a15fc8d297812370d688f7e30",
+        "bytes": 73
+      },
+      {
+        "path": "/audiovisual-pilot.html",
+        "sha256": "c2a5a58a2d17b6007d9c4be59dec2d8ea681a59de831ed767d8fcda56a7a3108",
+        "bytes": 822
+      },
+      {
+        "path": "/audit.html",
+        "sha256": "603ee30fe1dbcd93615b93808faa7d8f195a7f34037b3440d6a7ffc7eb1bb41c",
+        "bytes": 699
+      },
+      {
+        "path": "/hybrid-matrix.html",
+        "sha256": "3c167ab230c9e1cc9d91a750b5f6789e483067b2daa589399c909ac291395336",
+        "bytes": 788
+      },
+      {
+        "path": "/icons/celestial-frontier-maskable.svg",
+        "sha256": "ff05489ed56a7193bbaf8fe5e3f6b43e8ba46667be2f8e1e9bdd7ff46da2488c",
+        "bytes": 1130
+      },
+      {
+        "path": "/icons/celestial-frontier.svg",
+        "sha256": "97b8d42d779cebcddca5980c60635a8c767c2b7ea43a23871ccd386a7d716c04",
+        "bytes": 1132
+      },
+      {
+        "path": "/index.html",
+        "sha256": "04a155b9badc0d4b6ff78c30cc06ee1047dd32399b20743103f5a30d1d43e417",
+        "bytes": 77757
+      },
+      {
+        "path": "/manifest.webmanifest",
+        "sha256": "827ec2c2a4bb946c558321624cc241bcf71c0008aac15dbc2c852f76e2c06f40",
+        "bytes": 726
+      }
+    ]
+  },
+  "startedAt": "2026-09-06T00:53:38.869Z",
+  "finishedAt": "2026-09-06T00:53:47.370Z",
+  "rows": [
+    {
+      "id": "wolf",
+      "size": 132,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Wolf\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"792844710\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "21e671fbd09231047150b405aabeceda586ee7209ea027e4b07c079ecec9ce13",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Wolf\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"792844710\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "21e671fbd09231047150b405aabeceda586ee7209ea027e4b07c079ecec9ce13",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "wolf",
+      "size": 300,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Wolf\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"792844710\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "e8cfe5bfbe84afc0aaa5e847e6e17741dd78c4b8e2bae712f10c46639f222f26",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Wolf\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"792844710\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "e8cfe5bfbe84afc0aaa5e847e6e17741dd78c4b8e2bae712f10c46639f222f26",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "wolf",
+      "size": 440,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Wolf\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"792844710\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "e8cfe5bfbe84afc0aaa5e847e6e17741dd78c4b8e2bae712f10c46639f222f26",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Wolf\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"9\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"792844710\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "e8cfe5bfbe84afc0aaa5e847e6e17741dd78c4b8e2bae712f10c46639f222f26",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "kangaroo",
+      "size": 132,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Kangaroo\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4108794714\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"0\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "0367684106daf6cf57082edf6d9df49766a71a0071b439ae8ca32406ad19fd13",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Kangaroo\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4108794714\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"0\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "0367684106daf6cf57082edf6d9df49766a71a0071b439ae8ca32406ad19fd13",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "kangaroo",
+      "size": 300,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Kangaroo\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4108794714\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"0\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "8aca19fefa26029aeb25d9219cb63c86aa4edc4d9573c78b29df08aae5d03525",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Kangaroo\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4108794714\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"0\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "8aca19fefa26029aeb25d9219cb63c86aa4edc4d9573c78b29df08aae5d03525",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "kangaroo",
+      "size": 440,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Kangaroo\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4108794714\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"0\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "8aca19fefa26029aeb25d9219cb63c86aa4edc4d9573c78b29df08aae5d03525",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Kangaroo\"]],[\"accent\",[\"number\",\"6\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4108794714\"]],[\"sense\",[\"number\",\"0\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"0\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "8aca19fefa26029aeb25d9219cb63c86aa4edc4d9573c78b29df08aae5d03525",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "eagle-hybrid",
+      "size": 132,
+      "static": {
+        "key": "[\"object\",[[\"_anchorVal\",[\"number\",\"0.73\"]],[\"_earthBlend\",[\"string\",\"Eagle\"]],[\"_earthBlendKingdom\",[\"string\",\"fauna\"]],[\"_src\",[\"object\",[[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"0\"]],[\"kingdom\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"1\"]]]]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"parents\",[\"array\",[[\"number\",\"3837331972\"],[\"number\",\"133\"]]]],[\"pattern\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"427462844\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"18\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "f1947c15258fa1e007a1d2ce3ffb30e075a243c47cfb37af4a946595c85a71d5",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_anchorVal\",[\"number\",\"0.73\"]],[\"_earthBlend\",[\"string\",\"Eagle\"]],[\"_earthBlendKingdom\",[\"string\",\"fauna\"]],[\"_src\",[\"object\",[[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"0\"]],[\"kingdom\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"1\"]]]]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"parents\",[\"array\",[[\"number\",\"3837331972\"],[\"number\",\"133\"]]]],[\"pattern\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"427462844\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"18\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "f1947c15258fa1e007a1d2ce3ffb30e075a243c47cfb37af4a946595c85a71d5",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "eagle-hybrid",
+      "size": 300,
+      "static": {
+        "key": "[\"object\",[[\"_anchorVal\",[\"number\",\"0.73\"]],[\"_earthBlend\",[\"string\",\"Eagle\"]],[\"_earthBlendKingdom\",[\"string\",\"fauna\"]],[\"_src\",[\"object\",[[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"0\"]],[\"kingdom\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"1\"]]]]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"parents\",[\"array\",[[\"number\",\"3837331972\"],[\"number\",\"133\"]]]],[\"pattern\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"427462844\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"18\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "ad33e6406b6e6c37c6fca50780069fbea1f015e0c498b0d427206c12cd73d534",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_anchorVal\",[\"number\",\"0.73\"]],[\"_earthBlend\",[\"string\",\"Eagle\"]],[\"_earthBlendKingdom\",[\"string\",\"fauna\"]],[\"_src\",[\"object\",[[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"0\"]],[\"kingdom\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"1\"]]]]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"parents\",[\"array\",[[\"number\",\"3837331972\"],[\"number\",\"133\"]]]],[\"pattern\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"427462844\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"18\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "ad33e6406b6e6c37c6fca50780069fbea1f015e0c498b0d427206c12cd73d534",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "eagle-hybrid",
+      "size": 440,
+      "static": {
+        "key": "[\"object\",[[\"_anchorVal\",[\"number\",\"0.73\"]],[\"_earthBlend\",[\"string\",\"Eagle\"]],[\"_earthBlendKingdom\",[\"string\",\"fauna\"]],[\"_src\",[\"object\",[[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"0\"]],[\"kingdom\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"1\"]]]]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"parents\",[\"array\",[[\"number\",\"3837331972\"],[\"number\",\"133\"]]]],[\"pattern\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"427462844\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"18\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "ad33e6406b6e6c37c6fca50780069fbea1f015e0c498b0d427206c12cd73d534",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_anchorVal\",[\"number\",\"0.73\"]],[\"_earthBlend\",[\"string\",\"Eagle\"]],[\"_earthBlendKingdom\",[\"string\",\"fauna\"]],[\"_src\",[\"object\",[[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"0\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"1\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"0\"]],[\"kingdom\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"1\"]]]]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"1\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"parents\",[\"array\",[[\"number\",\"3837331972\"],[\"number\",\"133\"]]]],[\"pattern\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"427462844\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"18\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "ad33e6406b6e6c37c6fca50780069fbea1f015e0c498b0d427206c12cd73d534",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "serpentine-10",
+      "size": 132,
+      "static": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"10\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"16\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "37273baef9d903771d097001d34c4db7560e4d1f0a6637b89f3190626ef83577",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"10\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"16\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "37273baef9d903771d097001d34c4db7560e4d1f0a6637b89f3190626ef83577",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "serpentine-10",
+      "size": 300,
+      "static": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"10\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"16\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "73d1ba6f43a06b13a547cb5d6ba8e2b83249e552712b350fc6e473aed10c4693",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"10\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"16\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "73d1ba6f43a06b13a547cb5d6ba8e2b83249e552712b350fc6e473aed10c4693",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "serpentine-10",
+      "size": 440,
+      "static": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"10\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"16\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "73d1ba6f43a06b13a547cb5d6ba8e2b83249e552712b350fc6e473aed10c4693",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"8\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"0\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"15\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"10\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"16\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "73d1ba6f43a06b13a547cb5d6ba8e2b83249e552712b350fc6e473aed10c4693",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "dragonfly",
+      "size": 132,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Dragonfly\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"862555894\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "0b8699fa79687960c9a71ca97118a7c2b72c40ad5c5f7935bb09a97031ba6746",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Dragonfly\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"862555894\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "0b8699fa79687960c9a71ca97118a7c2b72c40ad5c5f7935bb09a97031ba6746",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "dragonfly",
+      "size": 300,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Dragonfly\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"862555894\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "7b7a3eca2f42ed06868ee6de9dffd960419725e5744fc798817d05e4da92a776",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Dragonfly\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"862555894\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "7b7a3eca2f42ed06868ee6de9dffd960419725e5744fc798817d05e4da92a776",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "dragonfly",
+      "size": 440,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Dragonfly\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"862555894\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "7b7a3eca2f42ed06868ee6de9dffd960419725e5744fc798817d05e4da92a776",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Dragonfly\"]],[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"11\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"7\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"1\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"862555894\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"15\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "7b7a3eca2f42ed06868ee6de9dffd960419725e5744fc798817d05e4da92a776",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "octopus",
+      "size": 132,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Octopus\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"6160491\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "cb933448e85dc0101b25a7d95d7a632a1249adbcf5fa5ccdf4d730224199e264",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Octopus\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"6160491\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "cb933448e85dc0101b25a7d95d7a632a1249adbcf5fa5ccdf4d730224199e264",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "octopus",
+      "size": 300,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Octopus\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"6160491\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "4bc4750f7f6a3274fd0a45903c557b26e156f7491c11b784420938ad2f322001",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Octopus\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"6160491\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "4bc4750f7f6a3274fd0a45903c557b26e156f7491c11b784420938ad2f322001",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "octopus",
+      "size": 440,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Octopus\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"6160491\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "4bc4750f7f6a3274fd0a45903c557b26e156f7491c11b784420938ad2f322001",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Octopus\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"3\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"3\"]],[\"seed\",[\"number\",\"6160491\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "4bc4750f7f6a3274fd0a45903c557b26e156f7491c11b784420938ad2f322001",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "blue-whale",
+      "size": 132,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Blue Whale\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2875388574\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"12\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "27d6ce4593015ca1ca5863c72a64f623728d48cb285e4b2ba6b442cb7747f6d6",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Blue Whale\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2875388574\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"12\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "27d6ce4593015ca1ca5863c72a64f623728d48cb285e4b2ba6b442cb7747f6d6",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "blue-whale",
+      "size": 300,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Blue Whale\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2875388574\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"12\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "b8189b85ed766b4c1fffbbf15e5874c0ab180a0b33c07ec24fe061e1da133223",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Blue Whale\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2875388574\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"12\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "b8189b85ed766b4c1fffbbf15e5874c0ab180a0b33c07ec24fe061e1da133223",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "blue-whale",
+      "size": 440,
+      "static": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Blue Whale\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2875388574\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"12\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "b8189b85ed766b4c1fffbbf15e5874c0ab180a0b33c07ec24fe061e1da133223",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"_earthName\",[\"string\",\"Blue Whale\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"5\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2875388574\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"5\"]],[\"trait\",[\"number\",\"12\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "b8189b85ed766b4c1fffbbf15e5874c0ab180a0b33c07ec24fe061e1da133223",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "fungus-42",
+      "size": 132,
+      "static": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fungi\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"42\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"8\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "aa5a751ab2f82a1696d2fe08a590a228a2a2e1d8f71e9868226f84c737539f94",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fungi\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"42\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"8\"]]]]",
+        "width": 132,
+        "height": 132,
+        "naturalWidth": 132,
+        "sha256": "aa5a751ab2f82a1696d2fe08a590a228a2a2e1d8f71e9868226f84c737539f94",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "fungus-42",
+      "size": 300,
+      "static": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fungi\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"42\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"8\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "936f97662e7df10f79b1eabd8bde1f4a36d4b2253843a99e51cd93ac0ee7fc2c",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fungi\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"42\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"8\"]]]]",
+        "width": 300,
+        "height": 300,
+        "naturalWidth": 440,
+        "sha256": "936f97662e7df10f79b1eabd8bde1f4a36d4b2253843a99e51cd93ac0ee7fc2c",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "id": "fungus-42",
+      "size": 440,
+      "static": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fungi\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"42\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"8\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "936f97662e7df10f79b1eabd8bde1f4a36d4b2253843a99e51cd93ac0ee7fc2c",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "animatedPresentation": {
+        "key": "[\"object\",[[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"1\"]],[\"color\",[\"number\",\"2\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"6\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fungi\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"1\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"42\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"4\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"8\"]]]]",
+        "width": 440,
+        "height": 440,
+        "naturalWidth": 440,
+        "sha256": "936f97662e7df10f79b1eabd8bde1f4a36d4b2253843a99e51cd93ac0ee7fc2c",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1"
+      },
+      "anatomicalAnimation": "INCOMPLETE"
+    },
+    {
+      "control": "external marker moves; reduced motion disables it",
+      "pass": true,
+      "firstMarkers": [
+        {
+          "animation": "none",
+          "transform": "none"
+        },
+        {
+          "animation": "cf-pilot-portrait-accent",
+          "transform": "matrix(0.998136, 0.0610356, -0.0610356, 0.998136, 0, 0)"
+        }
+      ],
+      "nextMarkers": [
+        {
+          "animation": "none",
+          "transform": "none"
+        },
+        {
+          "animation": "cf-pilot-portrait-accent",
+          "transform": "matrix(0.96364, 0.267203, -0.267203, 0.96364, 0, 0)"
+        }
+      ]
+    },
+    {
+      "control": "different portrait pixels rejected",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "scrollWidth": 376,
+      "targets": [
+        {
+          "label": "Open playable pilot",
+          "height": 44.5
+        },
+        {
+          "label": "Open current game",
+          "height": 44.5
+        },
+        {
+          "label": "quadruped \u00b7 Wolfbiped \u00b7 Kangarooavian \u00b7 Eagle \u00d7 procedural fauna 133serpentine \u00b7 Procedural serpentine \u00b7 seed 10arthropod \u00b7 Dragonflytentacled \u00b7 Octopusaquatic \u00b7 Blue Whaleflora-fungus \u00b7 Procedural fungus \u00b7 seed 42",
+          "height": 44
+        },
+        {
+          "label": "132 px300 px440 px",
+          "height": 44
+        },
+        {
+          "label": "Play complete scene",
+          "height": 44.5
+        },
+        {
+          "label": "Stop all",
+          "height": 44.5
+        },
+        {
+          "label": "Play exploration phrase",
+          "height": 44.5
+        },
+        {
+          "label": "Play temperate woodland",
+          "height": 44.5
+        },
+        {
+          "label": "Play navigation",
+          "height": 44.5
+        },
+        {
+          "label": "Play refusal",
+          "height": 44.5
+        },
+        {
+          "label": "Play settlement",
+          "height": 44.5
+        },
+        {
+          "label": "Play scout approach",
+          "height": 44.5
+        },
+        {
+          "label": "Play scout landing",
+          "height": 44.5
+        },
+        {
+          "label": "Play combat contact",
+          "height": 44.5
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "width": 430,
+      "scrollWidth": 415,
+      "targets": [
+        {
+          "label": "Open playable pilot",
+          "height": 44.5
+        },
+        {
+          "label": "Open current game",
+          "height": 44.5
+        },
+        {
+          "label": "quadruped \u00b7 Wolfbiped \u00b7 Kangarooavian \u00b7 Eagle \u00d7 procedural fauna 133serpentine \u00b7 Procedural serpentine \u00b7 seed 10arthropod \u00b7 Dragonflytentacled \u00b7 Octopusaquatic \u00b7 Blue Whaleflora-fungus \u00b7 Procedural fungus \u00b7 seed 42",
+          "height": 44
+        },
+        {
+          "label": "132 px300 px440 px",
+          "height": 44
+        },
+        {
+          "label": "Play complete scene",
+          "height": 44.5
+        },
+        {
+          "label": "Stop all",
+          "height": 44.5
+        },
+        {
+          "label": "Play exploration phrase",
+          "height": 44.5
+        },
+        {
+          "label": "Play temperate woodland",
+          "height": 44.5
+        },
+        {
+          "label": "Play navigation",
+          "height": 44.5
+        },
+        {
+          "label": "Play refusal",
+          "height": 44.5
+        },
+        {
+          "label": "Play settlement",
+          "height": 44.5
+        },
+        {
+          "label": "Play scout approach",
+          "height": 44.5
+        },
+        {
+          "label": "Play scout landing",
+          "height": 44.5
+        },
+        {
+          "label": "Play combat contact",
+          "height": 44.5
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "width": 820,
+      "scrollWidth": 805,
+      "targets": [
+        {
+          "label": "Open playable pilot",
+          "height": 44.5
+        },
+        {
+          "label": "Open current game",
+          "height": 44.5
+        },
+        {
+          "label": "quadruped \u00b7 Wolfbiped \u00b7 Kangarooavian \u00b7 Eagle \u00d7 procedural fauna 133serpentine \u00b7 Procedural serpentine \u00b7 seed 10arthropod \u00b7 Dragonflytentacled \u00b7 Octopusaquatic \u00b7 Blue Whaleflora-fungus \u00b7 Procedural fungus \u00b7 seed 42",
+          "height": 44
+        },
+        {
+          "label": "132 px300 px440 px",
+          "height": 44
+        },
+        {
+          "label": "Play complete scene",
+          "height": 44.5
+        },
+        {
+          "label": "Stop all",
+          "height": 44.5
+        },
+        {
+          "label": "Play exploration phrase",
+          "height": 44.5
+        },
+        {
+          "label": "Play temperate woodland",
+          "height": 44.5
+        },
+        {
+          "label": "Play navigation",
+          "height": 44.5
+        },
+        {
+          "label": "Play refusal",
+          "height": 44.5
+        },
+        {
+          "label": "Play settlement",
+          "height": 44.5
+        },
+        {
+          "label": "Play scout approach",
+          "height": 44.5
+        },
+        {
+          "label": "Play scout landing",
+          "height": 44.5
+        },
+        {
+          "label": "Play combat contact",
+          "height": 44.5
+        }
+      ]
+    },
+    {
+      "journey": "Sol system \u2192 Earth Survey \u2192 durable Land safely \u2192 canonical biosphere",
+      "nativeInput": true,
+      "importDoor": false,
+      "worldKey": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+      "pilotSoundStarted": true,
+      "explicitStop": true,
+      "baselineComparison": true,
+      "controlsYieldedToTrainingAndSurvey": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "humanListening": "PENDING"
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Headless desktop Chromium is not a physical iPhone, Safari or installed-PWA acceptance.",
+    "All eight anatomical animations remain incomplete; motion is an external frame marker.",
+    "No human visual or listening verdict is inferred."
+  ],
+  "status": "PASS",
+  "productSource": "dbf3e6c9a70d6649b6883cc233616579e9c05878",
+  "productUnchangedAtVerificationSource": "ab91d59ad0ff6badefa19fdc134c3f395241da57",
+  "submittedImages": [
+    {
+      "file": "families-132-comparison.png",
+      "sha256": "5bdc7ed306f97e77e696ab354940d2b99cbb9d0d664ae9240a91e3d56e1eae4d",
+      "bytes": 180565
+    },
+    {
+      "file": "families-300-comparison.png",
+      "sha256": "c8af84a43f458bd9b1a9b3544b8777ebf1d16fa11baec14c86b21a65f32b8e43",
+      "bytes": 543681
+    },
+    {
+      "file": "families-440-comparison.png",
+      "sha256": "40f4fb477ce4d3d4aa655b49f6cf48795cd27f22396f692512f31db73e6982ec",
+      "bytes": 982066
+    },
+    {
+      "file": "desktop-direction.png",
+      "sha256": "ead180224b333ae745d77df3f0e2f27cfc7891b1908e7887e3cda5fb06084d81",
+      "bytes": 242709
+    },
+    {
+      "file": "scout-comparison.png",
+      "sha256": "9a170644f0bd9c4e4c9f19180be32c8682e26b76205062decf3282bdc3049fda",
+      "bytes": 801606
+    },
+    {
+      "file": "temperate-comparison.png",
+      "sha256": "e56f36bcedef4f77d7ece7e3765a74c88067e24675138346fed4ea19369e479c",
+      "bytes": 93569
+    },
+    {
+      "file": "mockups-390.png",
+      "sha256": "da9df486f65bda3c04623fb2003d33261964e4618763b19c88451db198b3663e",
+      "bytes": 186588
+    },
+    {
+      "file": "playable-landed-390.png",
+      "sha256": "eaf7dcfa803944976c2c2daf17392d0aa189311627a06cf9addd24d30917555c",
+      "bytes": 226923
+    },
+    {
+      "file": "playable-current-landed-390.png",
+      "sha256": "ccc5ce3cb53807622dd11a7c2aefb23a15b21ad18cd54d390d0daab9329b8fe2",
+      "bytes": 221636
+    }
+  ],
+  "rawImages": {
+    "storage": "private local diagnostic artifacts",
+    "count": 37
+  },
+  "visualAcceptance": "PENDING",
+  "physicalPhoneAcceptance": "PENDING",
+  "captureScope": "Only the generated game in a new isolated headless browser; no desktop/user-window capture.",
+  "blenderAssets": {
+    "schema": "cf-av-bounded-b-shipping-index/v1",
+    "source_baseline": "c1791e210158de864fdd475323c3091d9ecbae58",
+    "candidate_version": "scout-v2-atmosphere-v1",
+    "files": [
+      {
+        "path": "outputs/biome/temperate-atmosphere-512.webp",
+        "bytes": 75942,
+        "sha256": "64b258bc86f681725f1eaf837fc8c552b949d2d72840067f3a36a0ccb42827cb",
+        "dimensions": [
+          512,
+          341
+        ],
+        "decoded_rgba_bytes": 698368,
+        "alpha_bbox": [
+          0,
+          0,
+          512,
+          341
+        ],
+        "alpha_extrema": [
+          0,
+          90
+        ]
+      },
+      {
+        "path": "outputs/ship/scout-chemical-132.webp",
+        "bytes": 11962,
+        "sha256": "be78ba5669344aa5466b29f38569c14ecb4710c986252252d5d3d72a588e4c9a",
+        "dimensions": [
+          132,
+          132
+        ],
+        "decoded_rgba_bytes": 69696,
+        "alpha_bbox": [
+          16,
+          9,
+          116,
+          123
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "outputs/ship/scout-chemical-300.webp",
+        "bytes": 42896,
+        "sha256": "e452ac530cdf7876cb177404f68bedcf6e5aee253ed74df6026905ac64d92886",
+        "dimensions": [
+          300,
+          300
+        ],
+        "decoded_rgba_bytes": 360000,
+        "alpha_bbox": [
+          40,
+          23,
+          260,
+          277
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "outputs/ship/scout-chemical-512.webp",
+        "bytes": 102294,
+        "sha256": "5cc671cee894ef2bb23dd530cccd7cad2c86dcb3b207623ca72c7440880ae2f7",
+        "dimensions": [
+          512,
+          512
+        ],
+        "decoded_rgba_bytes": 1048576,
+        "alpha_bbox": [
+          70,
+          41,
+          442,
+          471
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ],
+    "total_bytes": 233094,
+    "canonical_inputs": [
+      {
+        "path": "port/v2/apps/game/src/shipyard-preview.ts",
+        "sha256": "8b9d4196254f133faa01878915ad4501b257284efef6ca729442ca2e81eb41d8"
+      },
+      {
+        "path": "port/v2/packages/scene/src/ship-visual-state.ts",
+        "sha256": "9bfd27d3d6a75779d3372dfb6386e8e98ef22d92a33b0346819225024c70d762"
+      },
+      {
+        "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+        "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+      }
+    ],
+    "ship_projection": {
+      "chassisStage": 0,
+      "liverySeed": 20945,
+      "hardpoints": {
+        "array": false,
+        "autoext": false,
+        "cscoop": false
+      },
+      "installedSystemIds": [],
+      "canonical_hull_path": "M180 18 236 105 211 148 180 132 149 148 124 105Z",
+      "v1_v2_master_alpha_identical": false,
+      "v1_v2_alpha_assessment": {
+        "nonzero_mask_changed_pixels": 0,
+        "opaque_threshold250_changed_pixels": 0,
+        "threshold128_changed_pixels": 2,
+        "interpretation": "Geometric nonzero and opaque silhouettes unchanged; two antialiased threshold pixels differ, so exact alpha identity is not claimed"
+      }
+    },
+    "biome_projection": {
+      "profile": "temperate",
+      "kind": "transparent atmospheric layer only",
+      "canonical_vista_remains": true,
+      "new_residents": 0,
+      "coarse_biome_excluded": true
+    },
+    "provenance": {
+      "author": "Codex-authored Blender geometry/material/scripts for Nick",
+      "external_content": "None; no downloaded textures, fonts, meshes or samples",
+      "source_tool": "Blender 5.2.1 LTS / 9e2066aef7ef",
+      "renderer": "Cycles CPU / four threads",
+      "export": "Bundled Pillow 12.3.0, premultiplied-alpha Lanczos for ship; lossless exact WebP"
+    },
+    "budget_note": "File bytes and theoretical 4-byte RGBA storage only; no measured upload spike/GPU/cache plateau or complete128/256MiB pack proof. Load one ship size; do not load PNG duplicates."
+  },
+  "optimizedAssetIndex": [
+    {
+      "file": "port/v2/apps/game/assets/pilot/audio/cf-pilot-combat-contact.wav",
+      "bytes": 33644,
+      "sha256": "fc3bcb5da5ee2a81a45d32de933cea234eb42850b151ba46565d1ad300eb6a20"
+    },
+    {
+      "file": "port/v2/apps/game/assets/pilot/audio/cf-pilot-exploration-music.wav",
+      "bytes": 4608044,
+      "sha256": "fa144fe615faef75fc426f86a44f299dcf48a1637893ccef9cf95fa2ab40a111"
+    },
+    {
+      "file": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-approach.wav",
+      "bytes": 230444,
+      "sha256": "ad4020be2cda99df2ba91290965b1d125bf909c4b7279833da51b5b55ad5f373"
+    },
+    {
+      "file": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-landing.wav",
+      "bytes": 134444,
+      "sha256": "6e8e3edf1dca6f232ebb13233e6921a64c33bd33830a5c1358165a764779852a"
+    },
+    {
+      "file": "port/v2/apps/game/assets/pilot/audio/cf-pilot-temperate-bed.wav",
+      "bytes": 4608044,
+      "sha256": "36caaa89651e44e92f9faddc53d74104cb9e1f5e11eb5a5757efbbdb978be69c"
+    },
+    {
+      "file": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-nav.wav",
+      "bytes": 26924,
+      "sha256": "14cecfcf6525c0c3637455ae7c711972021814ae5b5caf711baf7c6bb796a4c8"
+    },
+    {
+      "file": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-refusal.wav",
+      "bytes": 43244,
+      "sha256": "3e4fcbd34d6b65583883e31347ef99c4dd538aa07a311fe7612083e3f37b9b20"
+    },
+    {
+      "file": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-settlement.wav",
+      "bytes": 67244,
+      "sha256": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3"
+    },
+    {
+      "file": "port/v2/apps/game/assets/pilot/biome/temperate-atmosphere-512.webp",
+      "bytes": 75942,
+      "sha256": "64b258bc86f681725f1eaf837fc8c552b949d2d72840067f3a36a0ccb42827cb"
+    },
+    {
+      "file": "port/v2/apps/game/assets/pilot/ship/scout-chemical-132.webp",
+      "bytes": 11962,
+      "sha256": "be78ba5669344aa5466b29f38569c14ecb4710c986252252d5d3d72a588e4c9a"
+    },
+    {
+      "file": "port/v2/apps/game/assets/pilot/ship/scout-chemical-300.webp",
+      "bytes": 42896,
+      "sha256": "e452ac530cdf7876cb177404f68bedcf6e5aee253ed74df6026905ac64d92886"
+    },
+    {
+      "file": "port/v2/apps/game/assets/pilot/ship/scout-chemical-512.webp",
+      "bytes": 102294,
+      "sha256": "5cc671cee894ef2bb23dd530cccd7cad2c86dcb3b207623ca72c7440880ae2f7"
+    }
+  ],
+  "backupRecord": "AAA_PILOT_BCD_BACKUP_20260905.json",
+  "verification": {
+    "source": "ab91d59ad0ff6badefa19fdc134c3f395241da57",
+    "rootMainJsAbsent": true,
+    "developProfile": {
+      "status": "PASS",
+      "testFiles": 308,
+      "testsPassed": 3224,
+      "testsSkipped": 1,
+      "vitestSeconds": 44.24,
+      "outputSha256": "b49b9fbbeafc613ea138060f072b01c66f628efb3028af97566731ec63567930",
+      "includes": [
+        "npm test",
+        "artunused",
+        "app+worker typecheck",
+        "artaudit",
+        "overridecheck",
+        "speccheck"
+      ]
+    },
+    "rootValidate": {
+      "status": "PASS",
+      "source": "dbf3e6c9a70d6649b6883cc233616579e9c05878",
+      "unchangedLegacyInputsAtVerifiedHead": true,
+      "fingerprintProbes": 50,
+      "renderedEarthSpecies": 1010,
+      "bootErrors": 0,
+      "outputSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    "actionsPolicySelftest": {
+      "status": "PASS",
+      "controls": 81,
+      "outputSha256": "0063238bf68259d103bbe4ff952457663a031ff20bed4807b703778e1df62a9e"
+    },
+    "localRedRecord": "AAA_PILOT_BCD_REDS_20260905.json",
+    "hostedAttempts": 0
+  },
+  "unmeasured": [
+    "Physical iPhone/Safari, heat, GPU/native heap and audio interruptions",
+    "256MiB aggregate retained-update runtime enforcement",
+    "Human/matched-current listening A/B",
+    "Faithful anatomical animation of all eight families",
+    "Short authored motion capture (external marker is tested, not creature motion)"
+  ]
+}

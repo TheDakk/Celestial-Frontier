@@ -1,0 +1,14 @@
+{
+  "source": "/Users/nick/.codex/generated_images/01a08300-a4ef-7a60-a9df-aabf7a21aaab/exec-c7d95f91-fcf6-4a62-ac8b-26c0c6350195.png",
+  "path": "audits/MIDGAME_ART_DIRECTION_20260908/03-earth-full-landfall.png",
+  "sha256": "93c1b9cd6a57dc087cd4896ce05cb6025fbe5877dcba3a52f7b0ab6268289eec",
+  "bytes": 3156154,
+  "dimensions": [
+    1672,
+    941
+  ],
+  "mode": "built-in image_gen",
+  "status": "FULL_SCENE_CONCEPT_FOR_REVIEW",
+  "readback": "exact",
+  "mapping": "six named residents from canonical Earth epoch0; scene art not exact geometry/identity parity evidence"
+}

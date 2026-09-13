@@ -1,0 +1,4989 @@
+{
+  "schema": "cf.frozen-preview-native-boot.v1",
+  "status": "PASS",
+  "startedAt": "2026-09-09T17:12:04.539Z",
+  "scope": "Real game boot, trusted Skip training and reload through frozen local Vite; no AI model access or inference",
+  "sources": [
+    {
+      "path": "tools/local-image-generation/run-frozen-preview-boot.mjs",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/run-frozen-preview-boot.mjs",
+      "bytes": 14409,
+      "sha256": "995905c31e48d584b5bc08cc5535704208eccfbf62a154db7bed97e02906127f"
+    },
+    {
+      "path": "tools/local-image-generation/frozen-preview-client.mjs",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/frozen-preview-client.mjs",
+      "bytes": 3399,
+      "sha256": "8959f0e1b070093216cb157a117db5731069ca81c317ca390ab6e8737fc00f83"
+    },
+    {
+      "path": "tools/local-image-generation/game-preview-server.mjs",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/game-preview-server.mjs",
+      "bytes": 15772,
+      "sha256": "d2b080becd2d06f2f5a31e6c9e64c2833cd305a62d1cdcc23effc1535e4c473c"
+    },
+    {
+      "path": "tools/local-image-generation/source-integrity.mjs",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/source-integrity.mjs",
+      "bytes": 713,
+      "sha256": "5d6e389fc7dac0bd1ae7dc388ce0380ba4b6ebb0e8c934af8e841b5eea36bae9"
+    },
+    {
+      "path": "port/v2/node_modules/vite/dist/client/client.mjs",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/vite/dist/client/client.mjs",
+      "bytes": 38514,
+      "sha256": "81046c87b1a73014203be2d7f643ee786b8264384952648ebf2ae418008be5d4"
+    },
+    {
+      "path": "port/v2/node_modules/vite/package.json",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/vite/package.json",
+      "bytes": 5081,
+      "sha256": "cc205a705dc4cb59ffeb0a16509437b05b31498773a1244747ce786c91f47e8b"
+    },
+    {
+      "path": "port/v2/package-lock.json",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/package-lock.json",
+      "bytes": 90228,
+      "sha256": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d"
+    },
+    {
+      "path": "port/v2/tools/browsercdp.mjs",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs",
+      "bytes": 159934,
+      "sha256": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca"
+    },
+    {
+      "path": "port/v2/tools/browserpath.mjs",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/browserpath.mjs",
+      "bytes": 7617,
+      "sha256": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0"
+    },
+    {
+      "path": "port/v2/tools/workspacelock.mjs",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/workspacelock.mjs",
+      "bytes": 6863,
+      "sha256": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606"
+    },
+    {
+      "path": "port/v2/apps/game/index.html",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/index.html",
+      "bytes": 67200,
+      "sha256": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f"
+    },
+    {
+      "path": "port/v2/apps/game/vite.config.ts",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/vite.config.ts",
+      "bytes": 1043,
+      "sha256": "417c3878a7256ffea85d4321e459f944fcdfdc979f724f063df6b0e52d0efda0"
+    },
+    {
+      "path": "port/v2/apps/game/pwa-build.ts",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/pwa-build.ts",
+      "bytes": 33950,
+      "sha256": "e4af98745e374d0e684eedfb66442502bbef42cef0fc08720da27b7dcff3a41c"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/main.ts",
+      "bytes": 866665,
+      "sha256": "fbd9bd7816c8adb944510f9388805480e45188cd686440253e7d98ee97377393"
+    },
+    {
+      "path": "port/v2/apps/game/src/training.ts",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/training.ts",
+      "bytes": 35347,
+      "sha256": "8e524f48487a205219d119eae2fc51355b99e6b01d73f0639fb43fddc1b7fa84"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/release-content.ts",
+      "bytes": 159100,
+      "sha256": "571e2e8152801bca101ce6ca5647387a0068cfa836b4a2b21635cfe5230523e2"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-game.ts",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-ai-game.ts",
+      "bytes": 18095,
+      "sha256": "40ec5629a2dce7a358a36a09279488f2562c2665eee919807d049d3788025e4b"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-ai-runtime.ts",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-ai-runtime.ts",
+      "bytes": 14218,
+      "sha256": "cd91455a260e80b0475559cf85e02db0d068d9e75f7365d1ca13fa7946cbc410"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-model-delivery.ts",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-model-delivery.ts",
+      "bytes": 23791,
+      "sha256": "1754f0f127cdf550ffc5956e5daac4cc3c4bde829175b3e73ca04abbb7d16ea8"
+    },
+    {
+      "path": "port/v2/apps/game/src/local-model-manifest.ts",
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/local-model-manifest.ts",
+      "bytes": 3866,
+      "sha256": "398dd13f6dc6a764a9903782a1000305ee99a1a9dc3d1ad57292a2c27dfee0c6"
+    }
+  ],
+  "observations": [
+    {
+      "label": "fresh-training",
+      "documentToken": "1fb323e2-0081-4629-b60a-212d10e5ffa7",
+      "mode": "system",
+      "star": 424242,
+      "planet": null,
+      "tutActive": true,
+      "tutDone": false,
+      "trainingCheckpointWriteHeld": false,
+      "savedRouteWriteHeld": false,
+      "persistence": {
+        "schema": "cf-v2-app-persistence/v1",
+        "ready": false,
+        "documentToken": "1fb323e2-0081-4629-b60a-212d10e5ffa7",
+        "bootKind": "fresh-v5",
+        "hold": null,
+        "protectedDetail": null,
+        "authorityBootKind": "absent",
+        "seedBootstrapPending": false,
+        "bootRouteRepairPending": false,
+        "productBootstrapPending": false,
+        "engineeringBootstrapPending": false,
+        "ownershipBootstrapPending": false,
+        "ownershipV2BootstrapPending": false,
+        "visibilityOverrideHidden": false,
+        "lastOutcome": "seed-committed:2",
+        "hideWitness": null,
+        "heartbeatStorageFault": null,
+        "revisionVerificationFault": null,
+        "heartbeatRunning": true,
+        "convergenceReloadScheduled": false,
+        "convergenceReloadHold": {
+          "schema": "cf-v2-product-action-hold-diagnostics/v1",
+          "phase": "idle",
+          "operation": null,
+          "sequence": 0
+        },
+        "leaseReadCount": 2,
+        "revisionReadCount": 1,
+        "mutationBlocked": false,
+        "mutationBlockCount": 0,
+        "mutationBlockWitness": null,
+        "importPhase": null,
+        "importRace": null,
+        "runtime": {
+          "schema": "cf-v2-f4-runtime/v1",
+          "revision": 2,
+          "visible": true,
+          "answerable": false,
+          "leaseOwned": true,
+          "staleBlocked": false,
+          "leaseHeartbeat": 0,
+          "activePlayMs": 0,
+          "accruing": false,
+          "sessionSeed": 3785887030,
+          "sessionOrdinal": 0,
+          "sessionDraws": {},
+          "commits": 1,
+          "staleWrites": 0,
+          "leaseLosses": 0
+        },
+        "ecology": {
+          "schema": "cf-v2-ecology-epoch-edge/v1",
+          "publishedEpoch": 0,
+          "candidateEpoch": 0,
+          "activePlayOriginMs": 0,
+          "observedActivePlayMs": 0,
+          "edgeDue": false,
+          "autoCheckpointDue": false,
+          "inFlight": false,
+          "stagedIntent": null,
+          "stagedEpoch": null,
+          "retrySuppressedEpoch": null,
+          "lastCommittedRevision": null,
+          "stages": 0,
+          "commits": 0,
+          "publications": 0,
+          "rejections": 0,
+          "invalidStageCompletions": 0,
+          "projection": {
+            "state": "current",
+            "publishedEpoch": 0,
+            "projectedEpoch": 0,
+            "refreshEpoch": null,
+            "refreshSerial": null
+          },
+          "projectionRefreshesStarted": 0,
+          "projectionRefreshesCompleted": 0,
+          "projectionRefreshesFailed": 0,
+          "projectionSuppressions": 0,
+          "invalidProjectionCompletions": 0,
+          "projectionDirty": false,
+          "projectionSuppressed": false,
+          "checkpointInFlight": false,
+          "lastOutcome": "boot:0"
+        }
+      },
+      "renderedScene": {
+        "serial": 1,
+        "mode": "system",
+        "ecologyEpoch": 0,
+        "galaxyKey": "CF1|g:999@90,-60",
+        "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+        "worldKey": null
+      },
+      "tickerTicks": 0,
+      "localAi": {
+        "available": false,
+        "status": "",
+        "jobs": [],
+        "mounted": false
+      },
+      "canvasCount": 1,
+      "crossOriginIsolated": true,
+      "atMs": 869.3900001049042
+    },
+    {
+      "label": "durable-Sol",
+      "documentToken": "1fb323e2-0081-4629-b60a-212d10e5ffa7",
+      "mode": "system",
+      "star": 424242,
+      "planet": null,
+      "tutActive": false,
+      "tutDone": true,
+      "trainingCheckpointWriteHeld": false,
+      "savedRouteWriteHeld": false,
+      "persistence": {
+        "schema": "cf-v2-app-persistence/v1",
+        "ready": true,
+        "documentToken": "1fb323e2-0081-4629-b60a-212d10e5ffa7",
+        "bootKind": "fresh-v5",
+        "hold": null,
+        "protectedDetail": null,
+        "authorityBootKind": "absent",
+        "seedBootstrapPending": false,
+        "bootRouteRepairPending": false,
+        "productBootstrapPending": false,
+        "engineeringBootstrapPending": false,
+        "ownershipBootstrapPending": false,
+        "ownershipV2BootstrapPending": false,
+        "visibilityOverrideHidden": false,
+        "lastOutcome": "training-committed:3",
+        "hideWitness": null,
+        "heartbeatStorageFault": null,
+        "revisionVerificationFault": null,
+        "heartbeatRunning": true,
+        "convergenceReloadScheduled": false,
+        "convergenceReloadHold": {
+          "schema": "cf-v2-product-action-hold-diagnostics/v1",
+          "phase": "idle",
+          "operation": null,
+          "sequence": 0
+        },
+        "leaseReadCount": 3,
+        "revisionReadCount": 1,
+        "mutationBlocked": false,
+        "mutationBlockCount": 0,
+        "mutationBlockWitness": null,
+        "importPhase": null,
+        "importRace": null,
+        "runtime": {
+          "schema": "cf-v2-f4-runtime/v1",
+          "revision": 3,
+          "visible": true,
+          "answerable": true,
+          "leaseOwned": true,
+          "staleBlocked": false,
+          "leaseHeartbeat": 0,
+          "activePlayMs": 210,
+          "accruing": true,
+          "sessionSeed": 3785887030,
+          "sessionOrdinal": 0,
+          "sessionDraws": {},
+          "commits": 2,
+          "staleWrites": 0,
+          "leaseLosses": 0
+        },
+        "ecology": {
+          "schema": "cf-v2-ecology-epoch-edge/v1",
+          "publishedEpoch": 0,
+          "candidateEpoch": 0,
+          "activePlayOriginMs": 0,
+          "observedActivePlayMs": 210,
+          "edgeDue": false,
+          "autoCheckpointDue": false,
+          "inFlight": false,
+          "stagedIntent": null,
+          "stagedEpoch": null,
+          "retrySuppressedEpoch": null,
+          "lastCommittedRevision": null,
+          "stages": 0,
+          "commits": 0,
+          "publications": 0,
+          "rejections": 0,
+          "invalidStageCompletions": 0,
+          "projection": {
+            "state": "current",
+            "publishedEpoch": 0,
+            "projectedEpoch": 0,
+            "refreshEpoch": null,
+            "refreshSerial": null
+          },
+          "projectionRefreshesStarted": 0,
+          "projectionRefreshesCompleted": 0,
+          "projectionRefreshesFailed": 0,
+          "projectionSuppressions": 0,
+          "invalidProjectionCompletions": 0,
+          "projectionDirty": false,
+          "projectionSuppressed": false,
+          "checkpointInFlight": false,
+          "lastOutcome": "boot:0"
+        }
+      },
+      "renderedScene": {
+        "serial": 2,
+        "mode": "system",
+        "ecologyEpoch": 0,
+        "galaxyKey": "CF1|g:999@90,-60",
+        "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+        "worldKey": null
+      },
+      "tickerTicks": 16,
+      "localAi": {
+        "available": false,
+        "status": "",
+        "jobs": [],
+        "mounted": false
+      },
+      "canvasCount": 1,
+      "crossOriginIsolated": true,
+      "atMs": 1465.460000038147
+    },
+    {
+      "label": "reloaded-Sol",
+      "documentToken": "db71f8de-3fb2-4eb5-b410-d103332ce5cd",
+      "mode": "system",
+      "star": 424242,
+      "planet": null,
+      "tutActive": false,
+      "tutDone": true,
+      "trainingCheckpointWriteHeld": false,
+      "savedRouteWriteHeld": false,
+      "persistence": {
+        "schema": "cf-v2-app-persistence/v1",
+        "ready": true,
+        "documentToken": "db71f8de-3fb2-4eb5-b410-d103332ce5cd",
+        "bootKind": "current-v5",
+        "hold": null,
+        "protectedDetail": null,
+        "authorityBootKind": "loaded",
+        "seedBootstrapPending": false,
+        "bootRouteRepairPending": false,
+        "productBootstrapPending": false,
+        "engineeringBootstrapPending": false,
+        "ownershipBootstrapPending": false,
+        "ownershipV2BootstrapPending": false,
+        "visibilityOverrideHidden": false,
+        "lastOutcome": null,
+        "hideWitness": null,
+        "heartbeatStorageFault": null,
+        "revisionVerificationFault": null,
+        "heartbeatRunning": true,
+        "convergenceReloadScheduled": false,
+        "convergenceReloadHold": {
+          "schema": "cf-v2-product-action-hold-diagnostics/v1",
+          "phase": "idle",
+          "operation": null,
+          "sequence": 0
+        },
+        "leaseReadCount": 3,
+        "revisionReadCount": 1,
+        "mutationBlocked": false,
+        "mutationBlockCount": 0,
+        "mutationBlockWitness": null,
+        "importPhase": null,
+        "importRace": null,
+        "runtime": {
+          "schema": "cf-v2-f4-runtime/v1",
+          "revision": 3,
+          "visible": true,
+          "answerable": true,
+          "leaseOwned": true,
+          "staleBlocked": false,
+          "leaseHeartbeat": 1,
+          "activePlayMs": 177,
+          "accruing": true,
+          "sessionSeed": 3785887030,
+          "sessionOrdinal": 0,
+          "sessionDraws": {},
+          "commits": 0,
+          "staleWrites": 0,
+          "leaseLosses": 0
+        },
+        "ecology": {
+          "schema": "cf-v2-ecology-epoch-edge/v1",
+          "publishedEpoch": 0,
+          "candidateEpoch": 0,
+          "activePlayOriginMs": 139,
+          "observedActivePlayMs": 177,
+          "edgeDue": false,
+          "autoCheckpointDue": false,
+          "inFlight": false,
+          "stagedIntent": null,
+          "stagedEpoch": null,
+          "retrySuppressedEpoch": null,
+          "lastCommittedRevision": null,
+          "stages": 0,
+          "commits": 0,
+          "publications": 0,
+          "rejections": 0,
+          "invalidStageCompletions": 0,
+          "projection": {
+            "state": "current",
+            "publishedEpoch": 0,
+            "projectedEpoch": 0,
+            "refreshEpoch": null,
+            "refreshSerial": null
+          },
+          "projectionRefreshesStarted": 0,
+          "projectionRefreshesCompleted": 0,
+          "projectionRefreshesFailed": 0,
+          "projectionSuppressions": 0,
+          "invalidProjectionCompletions": 0,
+          "projectionDirty": false,
+          "projectionSuppressed": false,
+          "checkpointInFlight": false,
+          "lastOutcome": "boot:0"
+        }
+      },
+      "renderedScene": {
+        "serial": 1,
+        "mode": "system",
+        "ecologyEpoch": 0,
+        "galaxyKey": "CF1|g:999@90,-60",
+        "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+        "worldKey": null
+      },
+      "tickerTicks": 579,
+      "localAi": {
+        "available": false,
+        "status": "",
+        "jobs": [],
+        "mounted": false
+      },
+      "canvasCount": 1,
+      "crossOriginIsolated": true,
+      "atMs": 10320.78500008583
+    },
+    {
+      "label": "reloaded-Sol-settled",
+      "documentToken": "db71f8de-3fb2-4eb5-b410-d103332ce5cd",
+      "mode": "system",
+      "star": 424242,
+      "planet": null,
+      "tutActive": false,
+      "tutDone": true,
+      "trainingCheckpointWriteHeld": false,
+      "savedRouteWriteHeld": false,
+      "persistence": {
+        "schema": "cf-v2-app-persistence/v1",
+        "ready": true,
+        "documentToken": "db71f8de-3fb2-4eb5-b410-d103332ce5cd",
+        "bootKind": "current-v5",
+        "hold": null,
+        "protectedDetail": null,
+        "authorityBootKind": "loaded",
+        "seedBootstrapPending": false,
+        "bootRouteRepairPending": false,
+        "productBootstrapPending": false,
+        "engineeringBootstrapPending": false,
+        "ownershipBootstrapPending": false,
+        "ownershipV2BootstrapPending": false,
+        "visibilityOverrideHidden": false,
+        "lastOutcome": null,
+        "hideWitness": null,
+        "heartbeatStorageFault": null,
+        "revisionVerificationFault": null,
+        "heartbeatRunning": true,
+        "convergenceReloadScheduled": false,
+        "convergenceReloadHold": {
+          "schema": "cf-v2-product-action-hold-diagnostics/v1",
+          "phase": "idle",
+          "operation": null,
+          "sequence": 0
+        },
+        "leaseReadCount": 3,
+        "revisionReadCount": 1,
+        "mutationBlocked": false,
+        "mutationBlockCount": 0,
+        "mutationBlockWitness": null,
+        "importPhase": null,
+        "importRace": null,
+        "runtime": {
+          "schema": "cf-v2-f4-runtime/v1",
+          "revision": 3,
+          "visible": true,
+          "answerable": true,
+          "leaseOwned": true,
+          "staleBlocked": false,
+          "leaseHeartbeat": 1,
+          "activePlayMs": 1211,
+          "accruing": true,
+          "sessionSeed": 3785887030,
+          "sessionOrdinal": 0,
+          "sessionDraws": {},
+          "commits": 0,
+          "staleWrites": 0,
+          "leaseLosses": 0
+        },
+        "ecology": {
+          "schema": "cf-v2-ecology-epoch-edge/v1",
+          "publishedEpoch": 0,
+          "candidateEpoch": 0,
+          "activePlayOriginMs": 139,
+          "observedActivePlayMs": 1211,
+          "edgeDue": false,
+          "autoCheckpointDue": false,
+          "inFlight": false,
+          "stagedIntent": null,
+          "stagedEpoch": null,
+          "retrySuppressedEpoch": null,
+          "lastCommittedRevision": null,
+          "stages": 0,
+          "commits": 0,
+          "publications": 0,
+          "rejections": 0,
+          "invalidStageCompletions": 0,
+          "projection": {
+            "state": "current",
+            "publishedEpoch": 0,
+            "projectedEpoch": 0,
+            "refreshEpoch": null,
+            "refreshSerial": null
+          },
+          "projectionRefreshesStarted": 0,
+          "projectionRefreshesCompleted": 0,
+          "projectionRefreshesFailed": 0,
+          "projectionSuppressions": 0,
+          "invalidProjectionCompletions": 0,
+          "projectionDirty": false,
+          "projectionSuppressed": false,
+          "checkpointInFlight": false,
+          "lastOutcome": "boot:0"
+        }
+      },
+      "renderedScene": {
+        "serial": 1,
+        "mode": "system",
+        "ecologyEpoch": 0,
+        "galaxyKey": "CF1|g:999@90,-60",
+        "starKey": "CF1|g:999@90,-60|s:424242@560,170",
+        "worldKey": null
+      },
+      "tickerTicks": 641,
+      "localAi": {
+        "available": false,
+        "status": "",
+        "jobs": [],
+        "mounted": false
+      },
+      "canvasCount": 1,
+      "crossOriginIsolated": true,
+      "atMs": 11353.985000133514
+    }
+  ],
+  "browserEvents": [
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "network",
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "timestamp": 1788973925865.11,
+          "url": "http://127.0.0.1:62235/favicon.ico",
+          "networkRequestId": "95058.291"
+        }
+      },
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "method": "Log.entryAdded",
+      "params": {
+        "entry": {
+          "source": "network",
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "timestamp": 1788973926950.706,
+          "url": "http://127.0.0.1:62235/favicon.ico",
+          "networkRequestId": "95058.582"
+        }
+      },
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    }
+  ],
+  "targetEvents": [
+    {
+      "method": "Target.targetCreated",
+      "params": {
+        "targetInfo": {
+          "targetId": "129522966D063C4864C93E4A90462E76",
+          "type": "page",
+          "title": "about:blank",
+          "url": "about:blank",
+          "attached": false,
+          "canAccessOpener": false,
+          "browserContextId": "95927418D2C669C6ECA345874CA34543",
+          "pid": 0
+        }
+      }
+    },
+    {
+      "method": "Target.targetCreated",
+      "params": {
+        "targetInfo": {
+          "targetId": "F0CD647CC6EF5719C1AF1BDD7B7631D0",
+          "type": "page",
+          "title": "",
+          "url": "about:blank",
+          "attached": false,
+          "canAccessOpener": false,
+          "browserContextId": "95927418D2C669C6ECA345874CA34543",
+          "pid": 0
+        }
+      }
+    },
+    {
+      "method": "Target.targetInfoChanged",
+      "params": {
+        "targetInfo": {
+          "targetId": "F0CD647CC6EF5719C1AF1BDD7B7631D0",
+          "type": "page",
+          "title": "about:blank",
+          "url": "about:blank",
+          "attached": false,
+          "canAccessOpener": false,
+          "browserContextId": "95927418D2C669C6ECA345874CA34543",
+          "pid": 0
+        }
+      }
+    },
+    {
+      "method": "Target.targetInfoChanged",
+      "params": {
+        "targetInfo": {
+          "targetId": "F0CD647CC6EF5719C1AF1BDD7B7631D0",
+          "type": "page",
+          "title": "about:blank",
+          "url": "about:blank",
+          "attached": true,
+          "canAccessOpener": false,
+          "browserContextId": "95927418D2C669C6ECA345874CA34543",
+          "pid": 95056
+        }
+      }
+    },
+    {
+      "method": "Target.targetInfoChanged",
+      "params": {
+        "targetInfo": {
+          "targetId": "F0CD647CC6EF5719C1AF1BDD7B7631D0",
+          "type": "page",
+          "title": "127.0.0.1:62235",
+          "url": "http://127.0.0.1:62235/",
+          "attached": true,
+          "canAccessOpener": false,
+          "browserContextId": "95927418D2C669C6ECA345874CA34543",
+          "pid": 95058
+        }
+      }
+    },
+    {
+      "method": "Target.targetInfoChanged",
+      "params": {
+        "targetInfo": {
+          "targetId": "F0CD647CC6EF5719C1AF1BDD7B7631D0",
+          "type": "page",
+          "title": "Celestial Frontier v2.0 — Development",
+          "url": "http://127.0.0.1:62235/",
+          "attached": true,
+          "canAccessOpener": false,
+          "browserContextId": "95927418D2C669C6ECA345874CA34543",
+          "pid": 95058
+        }
+      }
+    },
+    {
+      "method": "Target.targetInfoChanged",
+      "params": {
+        "targetInfo": {
+          "targetId": "F0CD647CC6EF5719C1AF1BDD7B7631D0",
+          "type": "page",
+          "title": "Celestial Frontier v2.0 — Development",
+          "url": "http://127.0.0.1:62235/",
+          "attached": false,
+          "canAccessOpener": false,
+          "browserContextId": "95927418D2C669C6ECA345874CA34543",
+          "pid": 95058
+        }
+      }
+    },
+    {
+      "method": "Target.targetDestroyed",
+      "params": {
+        "targetId": "F0CD647CC6EF5719C1AF1BDD7B7631D0"
+      }
+    },
+    {
+      "method": "Target.targetDestroyed",
+      "params": {
+        "targetId": "129522966D063C4864C93E4A90462E76"
+      }
+    }
+  ],
+  "requests": [
+    {
+      "requestId": "C1A98E4B3FB3FF25A790D84BE089720A",
+      "url": "http://127.0.0.1:62235/",
+      "method": "GET",
+      "type": "Document",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.2",
+      "url": "http://127.0.0.1:62235/@vite/client",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.3",
+      "url": "http://127.0.0.1:62235/src/main.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.6",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/pixi__js.js?v=d9ae7fc4",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.7",
+      "url": "http://127.0.0.1:62235/src/system-star-field.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.8",
+      "url": "http://127.0.0.1:62235/src/system-protostar.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.9",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.10",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.11",
+      "url": "http://127.0.0.1:62235/src/panels.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.12",
+      "url": "http://127.0.0.1:62235/src/panel-refill-focus.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.13",
+      "url": "http://127.0.0.1:62235/src/compendium.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.14",
+      "url": "http://127.0.0.1:62235/src/compendium-feed.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.15",
+      "url": "http://127.0.0.1:62235/src/compendium-explorer-meal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.16",
+      "url": "http://127.0.0.1:62235/src/explorer-meal-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.17",
+      "url": "http://127.0.0.1:62235/src/compendium-audition.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.18",
+      "url": "http://127.0.0.1:62235/src/compendium-breed.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.19",
+      "url": "http://127.0.0.1:62235/src/compendium-rename.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.20",
+      "url": "http://127.0.0.1:62235/src/compendium-scout.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.21",
+      "url": "http://127.0.0.1:62235/src/compendium-creature-progression.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.22",
+      "url": "http://127.0.0.1:62235/src/compendium-creature-progression-surface.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.23",
+      "url": "http://127.0.0.1:62235/src/species-art-loader.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.24",
+      "url": "http://127.0.0.1:62235/src/training.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.25",
+      "url": "http://127.0.0.1:62235/src/training-restore.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.26",
+      "url": "http://127.0.0.1:62235/src/boot-route-repair.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.27",
+      "url": "http://127.0.0.1:62235/src/arc5-boot-runtime-gate.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.28",
+      "url": "http://127.0.0.1:62235/src/planet-texture-demand.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.29",
+      "url": "http://127.0.0.1:62235/src/planet-texture-attachment.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.30",
+      "url": "http://127.0.0.1:62235/src/scene-texture-owner.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.31",
+      "url": "http://127.0.0.1:62235/src/pixi-managed-resource-owner.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.32",
+      "url": "http://127.0.0.1:62235/src/pixi-batch-texture-array.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.33",
+      "url": "http://127.0.0.1:62235/src/scene-text.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.34",
+      "url": "http://127.0.0.1:62235/src/shipyard-preview.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.35",
+      "url": "http://127.0.0.1:62235/src/world-roster.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.36",
+      "url": "http://127.0.0.1:62235/src/biome-ecology-audio.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.37",
+      "url": "http://127.0.0.1:62235/src/approach-ecology-audio.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.38",
+      "url": "http://127.0.0.1:62235/src/biome-vista-surface.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.39",
+      "url": "http://127.0.0.1:62235/src/descent-policy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.40",
+      "url": "http://127.0.0.1:62235/src/landing-card.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.41",
+      "url": "http://127.0.0.1:62235/src/biome-vista-cache.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.42",
+      "url": "http://127.0.0.1:62235/src/visual-effect-policy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.43",
+      "url": "http://127.0.0.1:62235/src/camera-shake-policy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.44",
+      "url": "http://127.0.0.1:62235/src/painted-mars-binding.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.45",
+      "url": "http://127.0.0.1:62235/src/painted-vista-load.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.46",
+      "url": "http://127.0.0.1:62235/src/earth-layered-recipe.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.47",
+      "url": "http://127.0.0.1:62235/src/painted-earth-landing-recipe.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.48",
+      "url": "http://127.0.0.1:62235/src/earth-layered-load.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.49",
+      "url": "http://127.0.0.1:62235/src/earth-layered-resources.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.50",
+      "url": "http://127.0.0.1:62235/src/earth-layered-layout.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.51",
+      "url": "http://127.0.0.1:62235/src/fog-particle-selection.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.52",
+      "url": "http://127.0.0.1:62235/src/biome-vista-protocol.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.53",
+      "url": "http://127.0.0.1:62235/src/biome-vista-worker-error.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.54",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/surface-polish.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.55",
+      "url": "http://127.0.0.1:62235/src/combat-battle-scene.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.56",
+      "url": "http://127.0.0.1:62235/src/release-identity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.57",
+      "url": "http://127.0.0.1:62235/src/rarity-presentation.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.58",
+      "url": "http://127.0.0.1:62235/src/search-travel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.59",
+      "url": "http://127.0.0.1:62235/src/app-chrome.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.60",
+      "url": "http://127.0.0.1:62235/src/pwa-update.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.61",
+      "url": "http://127.0.0.1:62235/src/pwa-reload.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.62",
+      "url": "http://127.0.0.1:62235/src/frame-coalescer.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.63",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.64",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.65",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.66",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/breed.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.67",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/guardian-acquisition.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.68",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/guardian-companion.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.69",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldgen/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.70",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldconfig/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.71",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/naming/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.72",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/rand/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.73",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.74",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/strays/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.75",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genome/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.76",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.77",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.78",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.79",
+      "url": "http://127.0.0.1:62235/src/f3-persistence-browser-probe.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.80",
+      "url": "http://127.0.0.1:62235/src/ecology-epoch-edge.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.81",
+      "url": "http://127.0.0.1:62235/src/inventory-actions.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.82",
+      "url": "http://127.0.0.1:62235/src/inventory-panel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.83",
+      "url": "http://127.0.0.1:62235/src/arc0-landing-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.84",
+      "url": "http://127.0.0.1:62235/src/arc0-atlas-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.85",
+      "url": "http://127.0.0.1:62235/src/arc0-world-name-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.86",
+      "url": "http://127.0.0.1:62235/src/checkpoint-state.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.87",
+      "url": "http://127.0.0.1:62235/src/engineering-panel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.88",
+      "url": "http://127.0.0.1:62235/src/product-action-coordinator.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.89",
+      "url": "http://127.0.0.1:62235/src/travel-presentation.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.90",
+      "url": "http://127.0.0.1:62235/src/engineering-panel-model.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.91",
+      "url": "http://127.0.0.1:62235/src/arc3-engineering-actions.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.92",
+      "url": "http://127.0.0.1:62235/src/arc4-capture-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.93",
+      "url": "http://127.0.0.1:62235/src/arc5-feed-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.94",
+      "url": "http://127.0.0.1:62235/src/arc5-breed-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.95",
+      "url": "http://127.0.0.1:62235/src/arc5-rename-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.96",
+      "url": "http://127.0.0.1:62235/src/arc5-scout-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.97",
+      "url": "http://127.0.0.1:62235/src/capture-card.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.98",
+      "url": "http://127.0.0.1:62235/src/acquisition-snapshot.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.99",
+      "url": "http://127.0.0.1:62235/src/tame-greeting-audio.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.100",
+      "url": "http://127.0.0.1:62235/src/f4-runtime-authority.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.101",
+      "url": "http://127.0.0.1:62235/src/arc6-combat-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.102",
+      "url": "http://127.0.0.1:62235/src/combat-card.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.103",
+      "url": "http://127.0.0.1:62235/src/combat-chronicle.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.104",
+      "url": "http://127.0.0.1:62235/src/arc9-progression-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.105",
+      "url": "http://127.0.0.1:62235/src/progression-ceremony.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.106",
+      "url": "http://127.0.0.1:62235/src/arc9-nameplate-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.107",
+      "url": "http://127.0.0.1:62235/src/arc9-frontier-ending-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.108",
+      "url": "http://127.0.0.1:62235/src/prime-codex-panel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.109",
+      "url": "http://127.0.0.1:62235/src/starter-charters.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.110",
+      "url": "http://127.0.0.1:62235/src/binder-sets.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.111",
+      "url": "http://127.0.0.1:62235/src/paragon-finder.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.112",
+      "url": "http://127.0.0.1:62235/src/arc9-explorer-name-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.113",
+      "url": "http://127.0.0.1:62235/src/arc9-sharing-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.114",
+      "url": "http://127.0.0.1:62235/src/arc9-survey-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.115",
+      "url": "http://127.0.0.1:62235/src/bioscan-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.116",
+      "url": "http://127.0.0.1:62235/src/survey-land-handoff.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.117",
+      "url": "http://127.0.0.1:62235/src/arc9-atlas-favorite-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.118",
+      "url": "http://127.0.0.1:62235/src/arc9-atlas-row-actions.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.119",
+      "url": "http://127.0.0.1:62235/src/star-atlas-panel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.120",
+      "url": "http://127.0.0.1:62235/src/arc9-travel-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.121",
+      "url": "http://127.0.0.1:62235/src/records-rank-model.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.122",
+      "url": "http://127.0.0.1:62235/src/records-rank-panel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.123",
+      "url": "http://127.0.0.1:62235/src/expedition-chronicle.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.124",
+      "url": "http://127.0.0.1:62235/src/nameplate-settings.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.125",
+      "url": "http://127.0.0.1:62235/src/explorer-name-settings.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.126",
+      "url": "http://127.0.0.1:62235/src/f4-convergence-latch.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.127",
+      "url": "http://127.0.0.1:62235/src/ui-presentation-tokens.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.128",
+      "url": "http://127.0.0.1:62235/src/ui-shell-style.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.129",
+      "url": "http://127.0.0.1:62235/src/ui-sheet-style.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.130",
+      "url": "http://127.0.0.1:62235/src/sheet-layout.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.131",
+      "url": "http://127.0.0.1:62235/src/notification-history.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.132",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/baseline-v1.8.9/content-registry.json?import",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.133",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/galaxyart.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.134",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/artextras.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.135",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/thumbart.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.136",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/stings.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.137",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/identity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.138",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/taxonomy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.139",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/sound-witness.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.140",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/purity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.141",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/events.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.142",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/creature-expression-voice.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.143",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/distant-ecology-voice.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.144",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/combat-cues.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.145",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/combat-gameplay-voice.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.146",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/runtime.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.147",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/lab.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.148",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/rights.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.149",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/explorer-meal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.150",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/sessionrng/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.151",
+      "url": "http://127.0.0.1:62235/src/arc9-progression-projection.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.152",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/feed.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.153",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/Geometry-8WkX_eHK.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.154",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/Filter-BvIh8DIW.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.155",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/FilterSystem-BnIr1_wM.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.156",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/canvasUtils-CMQmscDi.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.157",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/Cache-DxKeDC4M.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.158",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/FederatedEventTarget-DkWRZbQL.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.159",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/RenderTargetSystem-DR5iYGo8.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.160",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/GraphicsContext-BvtDZEiK.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.161",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/getTextureBatchBindGroup-M-uxZqx4.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.162",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/GCManagedHash-1gpALQUJ.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.163",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/CanvasPool-D0wjgQdx.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.164",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/CanvasRenderer-DIVvHZUz.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.165",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/BufferResource-Crd1rHK-.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.166",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/BitmapFont-CU9UVCGq.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.167",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/rename.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.168",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/companion-availability.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.169",
+      "url": "http://127.0.0.1:62235/src/audio-identity-projector.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.170",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/speciesbroker.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.171",
+      "url": "http://127.0.0.1:62235/src/species-art-protocol.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.172",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.173",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/biome-profile/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.174",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genetics/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.175",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/surveyphrases/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.176",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/ecology.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.177",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.178",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/vite/dist/client/env.mjs",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.179",
+      "url": "http://127.0.0.1:62235/src/visual-policy-contract.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.180",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/earth-resident-plan.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.181",
+      "url": "http://127.0.0.1:62235/src/earth-layered-protocol.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.182",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/biome-visual-profile.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.183",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/version.json?import",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.184",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/canvas-treatment.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.185",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/visual-treatment.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.186",
+      "url": "http://127.0.0.1:62235/src/combat-battle-scene-style.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.187",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/zoommode.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.188",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/universe.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.189",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/galaxy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.190",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/system.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.191",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/charter.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.192",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/ship-visual-state.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.193",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/address.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.194",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/cf1-code.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.195",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/planner.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.196",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/field-samples.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.197",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/economy-source-model.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.198",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/descent-waveoffs.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.199",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/snapshot.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.200",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/state.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.201",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/canonical.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.202",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/model.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.203",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/legacy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.204",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/snapshot.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.205",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/capture-planner.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.206",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/model-v2.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.207",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldgen/src/worldgen.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.208",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/progression/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.209",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.210",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/describe-pick.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.211",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.212",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/strays/src/strays.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.213",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/naming/src/cleanname.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.214",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.215",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.216",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/lineage-codec.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.217",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/guardian-prime.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.218",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combat-settlement.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.219",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.220",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/repository.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.221",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/revisioned.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.222",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/migration-v5.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.223",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/tab-lease.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.224",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/active-play.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.225",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/outcome-transaction.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.226",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc2-loot.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.227",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc2-fixed-fabrication.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.228",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc2-engineering-loadout.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.229",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc3-engineering.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.230",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc3-legacy-projection.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.231",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc4-ownership.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.232",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc5-ownership-migration.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.233",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/xp-firsts-authority.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.234",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/combat-settlement.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.235",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/guardian-acquisition.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.236",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/guardian-companion.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.237",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/import-v2.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.238",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/export-v2.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.239",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/world-identity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.240",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/descent-waveoffs.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.241",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/catalogue.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.242",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/economy-ledger.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.243",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/engineering-capabilities.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.244",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/engineering-loadout-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.245",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/gear.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.246",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/inventory.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.247",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/legacy-imbue.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.248",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/presentation.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.249",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/recipe.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.250",
+      "url": "http://127.0.0.1:62235/src/arc0-field-samples.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.251",
+      "url": "http://127.0.0.1:62235/src/arc4-capture-capacity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.252",
+      "url": "http://127.0.0.1:62235/src/starter-charter-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.253",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/scout.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.254",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/snapshot-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.255",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/paragon-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.256",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/starcatalog/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.257",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/bioscan.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.258",
+      "url": "http://127.0.0.1:62235/src/bioscan-hazard.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.259",
+      "url": "http://127.0.0.1:62235/src/star-atlas-state.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.260",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.261",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/finite-voice-lifetime.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.262",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/pilot-rights-data.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.263",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/ecology.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.264",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/civilization.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.265",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/explicit-epoch.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.266",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/speciesidentity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.267",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genetics/src/genetics.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.268",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/surveyphrases/src/surveyphrases.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.269",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.270",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.271",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldidentity/src/mint-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.272",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/_snapshot-registry.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.273",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/progression/src/readiness.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.274",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/progression/src/auto-extractor.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.275",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/progression/src/achievements.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.276",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/progression/src/rank.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.277",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.278",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/encutil/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.279",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldidentity/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.280",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/ownership-v2-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.281",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/combat-settlement-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.282",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.283",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/paragon.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.284",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.285",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldidentity/src/authority.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.286",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/capture-scout-xp.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.287",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/model-v2-delta.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.288",
+      "url": "http://127.0.0.1:62235/assets/pilot/fonts/InterVariable.woff2",
+      "method": "GET",
+      "type": "Font",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.289",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/browserAll-DnBTCHFv.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.290",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/init-BVWdfq92.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.291",
+      "url": "http://127.0.0.1:62235/favicon.ico",
+      "method": "GET",
+      "type": "Other",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "27E72E16514D50E56523DB83824BC5C8",
+      "url": "http://127.0.0.1:62235/",
+      "method": "GET",
+      "type": "Document",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.293",
+      "url": "http://127.0.0.1:62235/@vite/client",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.294",
+      "url": "http://127.0.0.1:62235/src/main.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.297",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/vite/dist/client/env.mjs",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.298",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/pixi__js.js?v=d9ae7fc4",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.299",
+      "url": "http://127.0.0.1:62235/src/system-star-field.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.300",
+      "url": "http://127.0.0.1:62235/src/system-protostar.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.301",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.302",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.303",
+      "url": "http://127.0.0.1:62235/src/panels.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.304",
+      "url": "http://127.0.0.1:62235/src/panel-refill-focus.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.305",
+      "url": "http://127.0.0.1:62235/src/compendium.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.306",
+      "url": "http://127.0.0.1:62235/src/compendium-feed.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.307",
+      "url": "http://127.0.0.1:62235/src/compendium-explorer-meal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.308",
+      "url": "http://127.0.0.1:62235/src/explorer-meal-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.309",
+      "url": "http://127.0.0.1:62235/src/compendium-audition.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.310",
+      "url": "http://127.0.0.1:62235/src/compendium-breed.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.311",
+      "url": "http://127.0.0.1:62235/src/compendium-rename.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.312",
+      "url": "http://127.0.0.1:62235/src/compendium-scout.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.313",
+      "url": "http://127.0.0.1:62235/src/compendium-creature-progression.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.314",
+      "url": "http://127.0.0.1:62235/src/compendium-creature-progression-surface.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.315",
+      "url": "http://127.0.0.1:62235/src/species-art-loader.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.316",
+      "url": "http://127.0.0.1:62235/src/training.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.317",
+      "url": "http://127.0.0.1:62235/src/training-restore.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.318",
+      "url": "http://127.0.0.1:62235/src/boot-route-repair.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.319",
+      "url": "http://127.0.0.1:62235/src/arc5-boot-runtime-gate.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.320",
+      "url": "http://127.0.0.1:62235/src/planet-texture-demand.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.321",
+      "url": "http://127.0.0.1:62235/src/planet-texture-attachment.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.322",
+      "url": "http://127.0.0.1:62235/src/scene-texture-owner.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.323",
+      "url": "http://127.0.0.1:62235/src/pixi-managed-resource-owner.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.324",
+      "url": "http://127.0.0.1:62235/src/pixi-batch-texture-array.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.325",
+      "url": "http://127.0.0.1:62235/src/scene-text.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.326",
+      "url": "http://127.0.0.1:62235/src/shipyard-preview.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.327",
+      "url": "http://127.0.0.1:62235/src/world-roster.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.328",
+      "url": "http://127.0.0.1:62235/src/biome-ecology-audio.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.329",
+      "url": "http://127.0.0.1:62235/src/approach-ecology-audio.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.330",
+      "url": "http://127.0.0.1:62235/src/biome-vista-surface.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.331",
+      "url": "http://127.0.0.1:62235/src/descent-policy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.332",
+      "url": "http://127.0.0.1:62235/src/landing-card.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.333",
+      "url": "http://127.0.0.1:62235/src/biome-vista-cache.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.334",
+      "url": "http://127.0.0.1:62235/src/visual-effect-policy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.335",
+      "url": "http://127.0.0.1:62235/src/camera-shake-policy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.336",
+      "url": "http://127.0.0.1:62235/src/painted-mars-binding.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.337",
+      "url": "http://127.0.0.1:62235/src/painted-vista-load.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.338",
+      "url": "http://127.0.0.1:62235/src/earth-layered-recipe.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.339",
+      "url": "http://127.0.0.1:62235/src/painted-earth-landing-recipe.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.340",
+      "url": "http://127.0.0.1:62235/src/earth-layered-load.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.341",
+      "url": "http://127.0.0.1:62235/src/earth-layered-resources.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.342",
+      "url": "http://127.0.0.1:62235/src/earth-layered-layout.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.343",
+      "url": "http://127.0.0.1:62235/src/fog-particle-selection.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.344",
+      "url": "http://127.0.0.1:62235/src/biome-vista-protocol.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.345",
+      "url": "http://127.0.0.1:62235/src/biome-vista-worker-error.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.346",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/surface-polish.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.347",
+      "url": "http://127.0.0.1:62235/src/combat-battle-scene.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.348",
+      "url": "http://127.0.0.1:62235/src/release-identity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.349",
+      "url": "http://127.0.0.1:62235/src/rarity-presentation.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.350",
+      "url": "http://127.0.0.1:62235/src/search-travel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.351",
+      "url": "http://127.0.0.1:62235/src/app-chrome.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.352",
+      "url": "http://127.0.0.1:62235/src/pwa-update.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.353",
+      "url": "http://127.0.0.1:62235/src/pwa-reload.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.354",
+      "url": "http://127.0.0.1:62235/src/frame-coalescer.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.355",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.356",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.357",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.358",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/breed.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.359",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/guardian-acquisition.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.360",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/guardian-companion.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.361",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldgen/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.362",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldconfig/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.363",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/naming/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.364",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/rand/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.365",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.366",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/strays/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.367",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genome/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.368",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.369",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.370",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.371",
+      "url": "http://127.0.0.1:62235/src/f3-persistence-browser-probe.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.372",
+      "url": "http://127.0.0.1:62235/src/ecology-epoch-edge.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.373",
+      "url": "http://127.0.0.1:62235/src/inventory-actions.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.374",
+      "url": "http://127.0.0.1:62235/src/inventory-panel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.375",
+      "url": "http://127.0.0.1:62235/src/arc0-landing-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.376",
+      "url": "http://127.0.0.1:62235/src/arc0-atlas-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.377",
+      "url": "http://127.0.0.1:62235/src/arc0-world-name-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.378",
+      "url": "http://127.0.0.1:62235/src/checkpoint-state.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.379",
+      "url": "http://127.0.0.1:62235/src/engineering-panel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.380",
+      "url": "http://127.0.0.1:62235/src/product-action-coordinator.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.381",
+      "url": "http://127.0.0.1:62235/src/travel-presentation.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.382",
+      "url": "http://127.0.0.1:62235/src/engineering-panel-model.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.383",
+      "url": "http://127.0.0.1:62235/src/arc3-engineering-actions.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.384",
+      "url": "http://127.0.0.1:62235/src/arc4-capture-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.385",
+      "url": "http://127.0.0.1:62235/src/arc5-feed-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.386",
+      "url": "http://127.0.0.1:62235/src/arc5-breed-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.387",
+      "url": "http://127.0.0.1:62235/src/arc5-rename-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.388",
+      "url": "http://127.0.0.1:62235/src/arc5-scout-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.389",
+      "url": "http://127.0.0.1:62235/src/capture-card.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.390",
+      "url": "http://127.0.0.1:62235/src/acquisition-snapshot.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.391",
+      "url": "http://127.0.0.1:62235/src/tame-greeting-audio.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.392",
+      "url": "http://127.0.0.1:62235/src/f4-runtime-authority.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.393",
+      "url": "http://127.0.0.1:62235/src/arc6-combat-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.394",
+      "url": "http://127.0.0.1:62235/src/combat-card.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.395",
+      "url": "http://127.0.0.1:62235/src/combat-chronicle.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.396",
+      "url": "http://127.0.0.1:62235/src/arc9-progression-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.397",
+      "url": "http://127.0.0.1:62235/src/progression-ceremony.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.398",
+      "url": "http://127.0.0.1:62235/src/arc9-nameplate-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.399",
+      "url": "http://127.0.0.1:62235/src/arc9-frontier-ending-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.400",
+      "url": "http://127.0.0.1:62235/src/prime-codex-panel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.401",
+      "url": "http://127.0.0.1:62235/src/starter-charters.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.402",
+      "url": "http://127.0.0.1:62235/src/binder-sets.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.403",
+      "url": "http://127.0.0.1:62235/src/paragon-finder.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.404",
+      "url": "http://127.0.0.1:62235/src/arc9-explorer-name-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.405",
+      "url": "http://127.0.0.1:62235/src/arc9-sharing-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.406",
+      "url": "http://127.0.0.1:62235/src/arc9-survey-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.407",
+      "url": "http://127.0.0.1:62235/src/bioscan-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.408",
+      "url": "http://127.0.0.1:62235/src/survey-land-handoff.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.409",
+      "url": "http://127.0.0.1:62235/src/arc9-atlas-favorite-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.410",
+      "url": "http://127.0.0.1:62235/src/arc9-atlas-row-actions.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.411",
+      "url": "http://127.0.0.1:62235/src/star-atlas-panel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.412",
+      "url": "http://127.0.0.1:62235/src/arc9-travel-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.413",
+      "url": "http://127.0.0.1:62235/src/records-rank-model.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.414",
+      "url": "http://127.0.0.1:62235/src/records-rank-panel.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.415",
+      "url": "http://127.0.0.1:62235/src/expedition-chronicle.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.416",
+      "url": "http://127.0.0.1:62235/src/nameplate-settings.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.417",
+      "url": "http://127.0.0.1:62235/src/explorer-name-settings.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.418",
+      "url": "http://127.0.0.1:62235/src/f4-convergence-latch.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.419",
+      "url": "http://127.0.0.1:62235/src/ui-presentation-tokens.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.420",
+      "url": "http://127.0.0.1:62235/src/ui-shell-style.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.421",
+      "url": "http://127.0.0.1:62235/src/ui-sheet-style.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.422",
+      "url": "http://127.0.0.1:62235/src/sheet-layout.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.423",
+      "url": "http://127.0.0.1:62235/src/notification-history.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.424",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/baseline-v1.8.9/content-registry.json?import",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.425",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/stings.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.426",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/identity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.427",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/taxonomy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.428",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/sound-witness.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.429",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/purity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.430",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/events.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.431",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/creature-expression-voice.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.432",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/distant-ecology-voice.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.433",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/combat-cues.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.434",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/combat-gameplay-voice.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.435",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/runtime.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.436",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/lab.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.437",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/rights.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.438",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/galaxyart.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.439",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/artextras.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.440",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/thumbart.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.441",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/feed.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.442",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/rename.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.443",
+      "url": "http://127.0.0.1:62235/src/audio-identity-projector.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.444",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/explorer-meal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.445",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/sessionrng/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.446",
+      "url": "http://127.0.0.1:62235/src/arc9-progression-projection.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.447",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/companion-availability.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.448",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/speciesbroker.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.449",
+      "url": "http://127.0.0.1:62235/src/species-art-protocol.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.450",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/Geometry-8WkX_eHK.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.451",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/Filter-BvIh8DIW.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.452",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/FilterSystem-BnIr1_wM.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.453",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/canvasUtils-CMQmscDi.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.454",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/Cache-DxKeDC4M.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.455",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/FederatedEventTarget-DkWRZbQL.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.456",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/RenderTargetSystem-DR5iYGo8.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.457",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/GraphicsContext-BvtDZEiK.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.458",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/getTextureBatchBindGroup-M-uxZqx4.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.459",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/GCManagedHash-1gpALQUJ.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.460",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/CanvasPool-D0wjgQdx.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.461",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/CanvasRenderer-DIVvHZUz.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.462",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/BufferResource-Crd1rHK-.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.463",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/BitmapFont-CU9UVCGq.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.464",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/ecology.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.465",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/biome-profile/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.466",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.467",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.468",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genetics/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.469",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/surveyphrases/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.470",
+      "url": "http://127.0.0.1:62235/src/visual-policy-contract.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.471",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/earth-resident-plan.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.472",
+      "url": "http://127.0.0.1:62235/src/earth-layered-protocol.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.473",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/canvas-treatment.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.474",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/visual-treatment.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.475",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/biome-visual-profile.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.476",
+      "url": "http://127.0.0.1:62235/src/combat-battle-scene-style.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.477",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/version.json?import",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.478",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/canonical.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.479",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/model.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.480",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/legacy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.481",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/snapshot.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.482",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/capture-planner.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.483",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/model-v2.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.484",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/planner.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.485",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/field-samples.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.486",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/economy-source-model.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.487",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/descent-waveoffs.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.488",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/snapshot.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.489",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/opportunity/src/state.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.490",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/zoommode.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.491",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/universe.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.492",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/galaxy.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.493",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/system.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.494",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/charter.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.495",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/ship-visual-state.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.496",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/address.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.497",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/scene/src/cf1-code.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.498",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/progression/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.499",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/naming/src/cleanname.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.500",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.501",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/describe-pick.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.502",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.503",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldgen/src/worldgen.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.504",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.505",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.506",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/lineage-codec.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.507",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/guardian-prime.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.508",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combat-settlement.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.509",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.510",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/repository.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.511",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/revisioned.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.512",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/migration-v5.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.513",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/tab-lease.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.514",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/active-play.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.515",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/outcome-transaction.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.516",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc2-loot.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.517",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc2-fixed-fabrication.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.518",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc2-engineering-loadout.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.519",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc3-engineering.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.520",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc3-legacy-projection.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.521",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc4-ownership.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.522",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/arc5-ownership-migration.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.523",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/xp-firsts-authority.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.524",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/combat-settlement.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.525",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/guardian-acquisition.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.526",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/guardian-companion.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.527",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/import-v2.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.528",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/export-v2.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.529",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/world-identity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.530",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/persistence/src/descent-waveoffs.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.531",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/strays/src/strays.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.532",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/catalogue.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.533",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/economy-ledger.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.534",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/engineering-capabilities.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.535",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/engineering-loadout-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.536",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/gear.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.537",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/inventory.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.538",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/legacy-imbue.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.539",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/presentation.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.540",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/recipe.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.541",
+      "url": "http://127.0.0.1:62235/src/arc0-field-samples.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.542",
+      "url": "http://127.0.0.1:62235/src/starter-charter-action.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.543",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/scout.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.544",
+      "url": "http://127.0.0.1:62235/src/arc4-capture-capacity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.545",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/snapshot-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.546",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/paragon-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.547",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/bioscan.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.548",
+      "url": "http://127.0.0.1:62235/src/bioscan-hazard.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.549",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/starcatalog/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.550",
+      "url": "http://127.0.0.1:62235/src/star-atlas-state.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.551",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/finite-voice-lifetime.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.552",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/pilot-rights-data.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.553",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.554",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/art/src/speciesidentity.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.555",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.556",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.557",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/surveyphrases/src/surveyphrases.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.558",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genetics/src/genetics.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.559",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/ecology.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.560",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/civilization.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.561",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/explicit-epoch.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.562",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/_snapshot-registry.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.563",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldidentity/src/mint-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.564",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/progression/src/readiness.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.565",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/progression/src/auto-extractor.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.566",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/progression/src/achievements.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.567",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/progression/src/rank.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.568",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.569",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldidentity/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.570",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/encutil/src/index.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.571",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/ownership-v2-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.572",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/combat-settlement-internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.573",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/loot/src/internal.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.574",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/paragon.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.575",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.576",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldidentity/src/authority.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.577",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/capture-scout-xp.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.578",
+      "url": "http://127.0.0.1:62235/@fs/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/acquisition/src/model-v2-delta.ts",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.579",
+      "url": "http://127.0.0.1:62235/assets/pilot/fonts/InterVariable.woff2",
+      "method": "GET",
+      "type": "Font",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.580",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/browserAll-DnBTCHFv.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.581",
+      "url": "http://127.0.0.1:62235/node_modules/.vite/deps/init-BVWdfq92.js?v=26b843db",
+      "method": "GET",
+      "type": "Script",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    },
+    {
+      "requestId": "95058.582",
+      "url": "http://127.0.0.1:62235/favicon.ico",
+      "method": "GET",
+      "type": "Other",
+      "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+    }
+  ],
+  "webSockets": [],
+  "clients": [
+    {
+      "label": "boot",
+      "file": "boot-served-vite-client.mjs",
+      "bytes": 204532,
+      "sha256": "dc4e9453f1906c7d3548b64e8833431f16ea879f8e0d5bd8dd08a1966fc4e968",
+      "response": {
+        "requestId": "95058.2",
+        "response": {
+          "url": "http://127.0.0.1:62235/@vite/client",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Cache-Control": "no-cache",
+            "Cross-Origin-Opener-Policy": "same-origin",
+            "Etag": "W/\"96c1-mwkljoUe9GJ8IkedFlIsLiJTEaY\"",
+            "Cross-Origin-Resource-Policy": "same-origin",
+            "Connection": "keep-alive",
+            "X-Content-Type-Options": "nosniff",
+            "Cross-Origin-Embedder-Policy": "require-corp",
+            "Access-Control-Allow-Origin": "http://127.0.0.1:62235",
+            "Keep-Alive": "timeout=5",
+            "Content-Length": "204532",
+            "Date": "Wed, 09 Sep 2026 17:12:05 GMT",
+            "Content-Type": "text/javascript",
+            "Vary": "Origin"
+          },
+          "mimeType": "text/javascript",
+          "charset": "",
+          "connectionReused": true,
+          "connectionId": 109,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 62235,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 455,
+          "timing": {
+            "requestTime": 1126249.287024,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.403,
+            "sendEnd": 0.444,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 333.854,
+            "receiveHeadersEnd": 333.894
+          },
+          "responseTime": 1788973925581.263,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+      }
+    },
+    {
+      "label": "reload",
+      "file": "reload-served-vite-client.mjs",
+      "bytes": 204532,
+      "sha256": "dc4e9453f1906c7d3548b64e8833431f16ea879f8e0d5bd8dd08a1966fc4e968",
+      "response": {
+        "requestId": "95058.293",
+        "response": {
+          "url": "http://127.0.0.1:62235/@vite/client",
+          "status": 200,
+          "statusText": "OK",
+          "headers": {
+            "Cache-Control": "no-cache",
+            "Cross-Origin-Opener-Policy": "same-origin",
+            "Etag": "W/\"96c1-mwkljoUe9GJ8IkedFlIsLiJTEaY\"",
+            "Cross-Origin-Resource-Policy": "same-origin",
+            "Connection": "keep-alive",
+            "X-Content-Type-Options": "nosniff",
+            "Cross-Origin-Embedder-Policy": "require-corp",
+            "Access-Control-Allow-Origin": "http://127.0.0.1:62235",
+            "Keep-Alive": "timeout=5",
+            "Content-Length": "204532",
+            "Date": "Wed, 09 Sep 2026 17:12:06 GMT",
+            "Content-Type": "text/javascript",
+            "Vary": "Origin"
+          },
+          "mimeType": "text/javascript",
+          "charset": "",
+          "connectionReused": true,
+          "connectionId": 183,
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 62235,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "fromPrefetchCache": false,
+          "encodedDataLength": 455,
+          "timing": {
+            "requestTime": 1126250.737486,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.911,
+            "sendEnd": 0.942,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 4.12,
+            "receiveHeadersEnd": 4.154
+          },
+          "responseTime": 1788973926701.994,
+          "protocol": "http/1.1",
+          "alternateProtocolUsage": "unspecifiedReason",
+          "securityState": "secure"
+        },
+        "sessionId": "E7C639E4B65CA77F42549E8EF57777DF"
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "01-training.png",
+      "scope": "Normal game training; transport scope only",
+      "bytes": 299171,
+      "sha256": "5872281b3b0680a1f538d4786f071954f38efd041eb30a6cffa386ecd2bdbd15"
+    },
+    {
+      "file": "02-reloaded-Sol.png",
+      "scope": "Normal game restores Sol after reload; transport scope only",
+      "bytes": 263051,
+      "sha256": "7bb2cbfdc8ead43419c520b95576eb1ca2291ad3e24a5d2f2b385f36d40ecaf6"
+    }
+  ],
+  "cleanup": {
+    "targetClosed": true,
+    "browserClosed": true,
+    "serverClosed": true,
+    "viteClosed": true,
+    "workspaceReleased": true,
+    "failures": []
+  },
+  "url": "http://127.0.0.1:62235/",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/152.0.4191.66",
+    "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "js_version": "15.2.23.10",
+    "protocol_version": "1.3"
+  },
+  "browserPid": 95046,
+  "skipGeometry": {
+    "count": 1,
+    "x": 699.1328125,
+    "y": 870.859375,
+    "width": 287.734375,
+    "height": 44,
+    "inViewport": true,
+    "hit": true
+  },
+  "skipClick": {
+    "trusted": true,
+    "x": 699,
+    "y": 870
+  },
+  "checks": {
+    "realGameRendered": true,
+    "trustedSkip": true,
+    "durableSolAfterReload": true,
+    "newDocument": true,
+    "rendererAdvanced": true,
+    "actualServedClientCapturedTwice": true,
+    "noWebSocketCreated": true,
+    "noModelOrInferenceRequests": true,
+    "noRuntimeExceptionOrCrash": true,
+    "evidenceComplete": true
+  },
+  "sourceIntegrity": {
+    "unchanged": true,
+    "checked": 20,
+    "failures": []
+  },
+  "eventOverflow": false,
+  "finishedAt": "2026-09-09T17:12:18.695Z"
+}

@@ -1,0 +1,23 @@
+{
+  "startedAt": "2026-09-09T06:43:18.757772+00:00",
+  "command": [
+    "node",
+    "tools/with-toolchain-lock.mjs",
+    "--label",
+    "q8-repack-conversion",
+    "--",
+    "node",
+    "tools/local-image-repack/repack.mjs",
+    "--source",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/local-image-generation/cgb--flux2-klein-4b-onnx-webgpu/3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "--output",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/local-image-generation/derivatives/flux2-klein-4b-block32-v1"
+  ],
+  "status": "PASS",
+  "exitCode": 0,
+  "finishedAt": "2026-09-09T06:43:22.508165+00:00",
+  "logs": {
+    "stdout.json": "7052d1d1f866913b3cf45e572881f1633a0c2985d771a968968e5b456c22ac92",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

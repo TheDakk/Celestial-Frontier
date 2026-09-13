@@ -1,0 +1,469 @@
+{
+  "schema": "cf-u1-local-checkpoint-evidence/v1",
+  "source": "1609cf3991e20da45d5e4628fd2163278ece5ec8",
+  "acceptedProduct": "053ef439774520577071f0ca50887337dd938755",
+  "status": "STOPPED_AT_SMALL_PHONE_PRODUCT_RED",
+  "retainedAt": "2026-09-06T21:05:04.404Z",
+  "results": {
+    "isolatedDevelopProfile": "PASS: 312 test files; 3333 passed, 1 skipped",
+    "slice": "PASS: develop; exact named verifier PASS; zero findings/scopes; 10 PNGs",
+    "smallPhone": "PRODUCT RED: one TEXT_CONTRAST_LOW finding on #hintpill, ratio 1 below 4.5; zero instrument failures",
+    "largePhone": "NOT RUN: stop after small-phone nonzero",
+    "normalThreeViewReview": "NOT RUN in this candidate batch; ce89128 remains separate evidence",
+    "fullGlass": "NOT RUN",
+    "compendium": "NOT RUN",
+    "recovery": "NOT RUN"
+  },
+  "retry": false,
+  "hostedActions": 0,
+  "runIds": {
+    "slice": "local-u1-1609cf3-20260906-slice",
+    "small": "local-u1-1609cf3-20260906-small-phone",
+    "large": "local-u1-1609cf3-20260906-large-phone"
+  },
+  "provenance": {
+    "ownedWorkspace": "/Users/nick/Projects/celestial-frontier-openai-mac",
+    "testArtifact": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate",
+    "sourceIdentity": {
+      "commit": "1609cf3991e20da45d5e4628fd2163278ece5ec8",
+      "branch": "openai/mac",
+      "state": "committed",
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+    },
+    "beginEndSourceEqual": true,
+    "currentCandidateStatusEmpty": true,
+    "currentCandidateHead": "1609cf3991e20da45d5e4628fd2163278ece5ec8",
+    "currentCandidateBranch": "openai/mac",
+    "localCloneNoHardlinks": true,
+    "offlineLockedInstalls": [
+      "root",
+      "port/v2"
+    ],
+    "rootDependencyLockSha256": "8427627abba8f6bd1dd37212870f4f4ff8741029aa3efcf16850f2e3b6a276e5",
+    "v2DependencyLockSha256": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d",
+    "nodeExecutable": "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+    "rootMainJsAbsent": true,
+    "candidateMainJsAbsent": true,
+    "ambientDsStore": {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/.DS_Store",
+      "preservedSha256": "95e30c9454a9707e734f6dfcde762897cab42d9b434ecce19851d0577182e7ac",
+      "equalsExecutionStart": true
+    },
+    "signatureVerifiedStage": "execution/signature.log.gz"
+  },
+  "verification": {
+    "type": "read-only evidence verification; no browser/test rerun",
+    "slicePublicVerifier": {
+      "ok": true,
+      "assuranceProfile": "develop",
+      "reportSha256": "544ffe1b79446cc9305ec19c1ebc671ec75905f1666f54e43fca0f1d0cbae296"
+    },
+    "glassTerminalContract": {
+      "errors": [],
+      "requirePass": false,
+      "statusValidated": "fail",
+      "scope": "targeted-diagnostic"
+    },
+    "glassBrowserAuthority": {
+      "errors": [],
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.66",
+        "revision": "@cc2931e6363af1d70882ad63ee33b0e8cd524de0",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.10",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      }
+    },
+    "all23CarriersAnd10RecordedPngHashesVerified": true
+  },
+  "slice": {
+    "durationMs": 370012,
+    "findings": 0,
+    "scopes": 0,
+    "screenshots": 10,
+    "overallPassMarkerCount": 1,
+    "arc4Ledger": {
+      "schema": "cf-v2-slice-arc4-ledger/v2",
+      "assuranceProfile": "develop",
+      "stages": [
+        "precondition",
+        "pending-no-optimism",
+        "hit",
+        "storage-refusal",
+        "stale-convergence",
+        "miss",
+        "burn-down",
+        "disabled-suppression"
+      ],
+      "burnSteps": 14,
+      "publicationConvergence": "not-selected-by-develop-profile",
+      "recoveryClaimed": false,
+      "ok": true
+    },
+    "railBoundaryReceipts": [
+      {
+        "label": "RIGHT RAIL BOUNDARY",
+        "railId": "railrgt",
+        "ancestorIds": [],
+        "stages": [
+          {
+            "name": "rail-only-protection",
+            "boundaryChain": [
+              "railrgt"
+            ],
+            "panelBefore": "codex",
+            "panelAfter": "codex",
+            "trusted": true,
+            "pointerType": "mouse",
+            "targetId": "railrgt"
+          },
+          {
+            "name": "unprotected-dismissal",
+            "boundaryChain": [],
+            "panelBefore": "codex",
+            "panelAfter": null,
+            "trusted": true,
+            "pointerType": "mouse",
+            "targetId": "railrgt"
+          },
+          {
+            "name": "restored-protection",
+            "boundaryChain": [
+              "railrgt"
+            ],
+            "panelBefore": "codex",
+            "panelAfter": "codex",
+            "trusted": true,
+            "pointerType": "mouse",
+            "targetId": "railrgt"
+          }
+        ],
+        "firstFailure": null,
+        "restorationFailure": null,
+        "exactAttributesRestored": true,
+        "sourceLog": "slice/slice-smoke-local-u1-1609cf3-20260906-slice.log.gz"
+      },
+      {
+        "label": "LEFT RAIL BOUNDARY",
+        "railId": "raillft",
+        "ancestorIds": [
+          "dock"
+        ],
+        "stages": [
+          {
+            "name": "rail-only-protection",
+            "boundaryChain": [
+              "raillft"
+            ],
+            "panelBefore": "rec",
+            "panelAfter": "rec",
+            "trusted": true,
+            "pointerType": "mouse",
+            "targetId": "raillft"
+          },
+          {
+            "name": "unprotected-dismissal",
+            "boundaryChain": [],
+            "panelBefore": "rec",
+            "panelAfter": null,
+            "trusted": true,
+            "pointerType": "mouse",
+            "targetId": "raillft"
+          },
+          {
+            "name": "restored-protection",
+            "boundaryChain": [
+              "raillft",
+              "dock"
+            ],
+            "panelBefore": "rec",
+            "panelAfter": "rec",
+            "trusted": true,
+            "pointerType": "mouse",
+            "targetId": "raillft"
+          }
+        ],
+        "firstFailure": null,
+        "restorationFailure": null,
+        "exactAttributesRestored": true,
+        "sourceLog": "slice/slice-smoke-local-u1-1609cf3-20260906-slice.log.gz"
+      }
+    ]
+  },
+  "smallPhone": {
+    "durationMs": 5864,
+    "viewportTimings": [
+      {
+        "label": "small-phone",
+        "durationMs": 2784
+      }
+    ],
+    "finding": {
+      "viewport": "small-phone",
+      "surface": "hud",
+      "code": "TEXT_CONTRAST_LOW",
+      "element": "#hintpill",
+      "actual": {
+        "ratio": 1,
+        "threshold": 4.5,
+        "color": "rgb(255, 255, 255)",
+        "background": [
+          255,
+          255,
+          255,
+          1
+        ],
+        "sample": "tap a galaxy to survey · Enter on its card or zoom in to dive"
+      },
+      "expected": "WCAG contrast against bright artwork beneath glass"
+    },
+    "instrumentFailures": 0,
+    "executedNegativeControls": 59,
+    "plannedNegativeControls": 102,
+    "omittedNegativeControls": 43,
+    "blockedNegativeControls": 0,
+    "arc4OutcomeRows": 0,
+    "arc4OutcomeComplete": false
+  },
+  "limitations": [
+    "The small-phone report remains product RED; no targeted PASS, named targeted verification or complete Arc 4 canary inventory is claimed.",
+    "Glass emits no PNGs or raw log; its exact wrapper transcript is execution/small-phone.log.gz. The Glass diagnostic pointer is identified as a mutable pointer.",
+    "The Chrome-only targeted verifier was not invoked, altered or filtered. Generic terminal and Chromium-family authority checks validate the retained Edge red carrier only.",
+    "No full browser chain, device UAT, U2–U4, Phase 2, or hosted outcome follows. Older navigation and portrait-restoration causes remain historical OPEN; current Slice completion does not establish their repair."
+  ],
+  "files": [
+    {
+      "path": "execution/execution.json.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/execution.json",
+      "role": "terminal execution receipt; overall fail at small-phone",
+      "compression": "gzip",
+      "bytes": 968,
+      "sha256": "8acd8bece1bbd3f9684ff45ccf4a8781060f65db934d1848c3ad24dfc8ff9a1f",
+      "payloadBytes": 4945,
+      "payloadSha256": "2089a500ecd17e2d560ebc40a66a11117d384754576bbcdbadaec138091fc163"
+    },
+    {
+      "path": "execution/signature.log.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/signature.log",
+      "role": "signature stage log; pass; exit 0",
+      "compression": "gzip",
+      "bytes": 152,
+      "sha256": "46390f50d1ba3b76bc1b2d34d8466f87472378c99b14d1c3dc6d64950eb0e9d5",
+      "payloadBytes": 135,
+      "payloadSha256": "f6da87af347cddf791a8771d5098e5c45e9c9ddf4aa8cd551fac5d7d5821a3e7"
+    },
+    {
+      "path": "execution/clone.log.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/clone.log",
+      "role": "clone stage log; pass; exit 0",
+      "compression": "gzip",
+      "bytes": 92,
+      "sha256": "2356786184d6c746416501d8f53b8dd4a34b7b0fda44716f202613c199a89269",
+      "payloadBytes": 75,
+      "payloadSha256": "884fb353560b87aee80733d683d91bdbb8df3e57df4eb24b8517b4cc619adb6a"
+    },
+    {
+      "path": "execution/root-install.log.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/root-install.log",
+      "role": "root-install stage log; pass; exit 0",
+      "compression": "gzip",
+      "bytes": 48,
+      "sha256": "2823ec1432770eaee471b4fada8b26be73f589f52d578d7a10e4cd720fd228e3",
+      "payloadBytes": 28,
+      "payloadSha256": "347f27c7308cf5213a8d9f0154ceac8fa317fe7f55c017c4f73774c6a7b611a1"
+    },
+    {
+      "path": "execution/v2-install.log.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/v2-install.log",
+      "role": "v2-install stage log; pass; exit 0",
+      "compression": "gzip",
+      "bytes": 178,
+      "sha256": "03ba5e266bb97fa3efd1c7544b3e6f734851227228371a21e2e99b4c3653dc9e",
+      "payloadBytes": 332,
+      "payloadSha256": "eec981112503bc416ba691bb8d68705f1f2f163c9b18c74491df037984e54ac2"
+    },
+    {
+      "path": "execution/static-develop.log.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/static-develop.log",
+      "role": "static-develop stage log; pass; exit 0",
+      "compression": "gzip",
+      "bytes": 2552,
+      "sha256": "6edb5969a09636ea4a8b59dafe462efd7a801bcd8f2910e24ef881242276744c",
+      "payloadBytes": 6670,
+      "payloadSha256": "3122829e112e4cfaf775a96bafdc7906a19820da744fa25f01d0d7a92ae08326"
+    },
+    {
+      "path": "execution/slice.log.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/slice.log",
+      "role": "slice stage log; pass; exit 0",
+      "compression": "gzip",
+      "bytes": 1490,
+      "sha256": "487b7710e1fd1e59f5ce01b715baa4ad2c66ddc4a3c7b2d74864aa5fa796fb15",
+      "payloadBytes": 2498,
+      "payloadSha256": "e338f0d1c92bfff60b2c5f2393b0e45d299e7995929b3527df9686efb35c6d9c"
+    },
+    {
+      "path": "execution/slice-verify.log.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/slice-verify.log",
+      "role": "slice-verify stage log; pass; exit 0",
+      "compression": "gzip",
+      "bytes": 211,
+      "sha256": "38071e444328011afcc0575637859575c356653fb88d18313f4a1dbbf5351fef",
+      "payloadBytes": 228,
+      "payloadSha256": "ed4c06cad0f6eaaaf544f6ec733eba1ae902ac197022efc44670f7b9ba5f6d00"
+    },
+    {
+      "path": "execution/small-phone.log.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/small-phone.log",
+      "role": "small-phone stage log; fail; exit 1",
+      "compression": "gzip",
+      "bytes": 2193,
+      "sha256": "12822f6afaab6a254b2fe27cd3207daabf364427c67647f37393f91c849acb1c",
+      "payloadBytes": 5748,
+      "payloadSha256": "ab1f5023c007b9d3574716ed1763af21dd9a5b7547ba0a3b497e1e6b1d13f93d"
+    },
+    {
+      "path": "slice/slice-smoke-local-u1-1609cf3-20260906-slice.json.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-smoke-local-u1-1609cf3-20260906-slice.json",
+      "role": "immutable terminal Slice PASS report",
+      "compression": "gzip",
+      "bytes": 1954,
+      "sha256": "65a3e237d834da85e6b2e74bfc1d150e28d545f743e1304991dfcf88c6bef0bd",
+      "payloadBytes": 6008,
+      "payloadSha256": "544ffe1b79446cc9305ec19c1ebc671ec75905f1666f54e43fca0f1d0cbae296"
+    },
+    {
+      "path": "slice/slice-smoke-local-u1-1609cf3-20260906-slice.log.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-smoke-local-u1-1609cf3-20260906-slice.log",
+      "role": "immutable complete Slice raw child log",
+      "compression": "gzip",
+      "bytes": 4909,
+      "sha256": "d4b18c23f30477b8e206d7a165e815dca3c91f7975bf7f4d87d4c95fbcf0a358",
+      "payloadBytes": 15339,
+      "payloadSha256": "fee3030762ee983ba1af5dbcb221e64ca549502a1113952f07951568e6955dc2"
+    },
+    {
+      "path": "slice/slice-local-u1-1609cf3-20260906-slice-codex.png",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-local-u1-1609cf3-20260906-slice-codex.png",
+      "role": "Slice PNG: codex",
+      "compression": "none",
+      "bytes": 623352,
+      "sha256": "d541c0f6717ceb5c840525d21b5bcec46fcf9259ff48155e92151753ff9ad47d",
+      "payloadBytes": 623352,
+      "payloadSha256": "d541c0f6717ceb5c840525d21b5bcec46fcf9259ff48155e92151753ff9ad47d"
+    },
+    {
+      "path": "slice/slice-local-u1-1609cf3-20260906-slice-earth.png",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-local-u1-1609cf3-20260906-slice-earth.png",
+      "role": "Slice PNG: earth",
+      "compression": "none",
+      "bytes": 606236,
+      "sha256": "ed761529ca3cb8e2d928a886660c6b24855cca0c0b8f2b13954a98b05287b79f",
+      "payloadBytes": 606236,
+      "payloadSha256": "ed761529ca3cb8e2d928a886660c6b24855cca0c0b8f2b13954a98b05287b79f"
+    },
+    {
+      "path": "slice/slice-local-u1-1609cf3-20260906-slice-galaxy.png",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-local-u1-1609cf3-20260906-slice-galaxy.png",
+      "role": "Slice PNG: galaxy",
+      "compression": "none",
+      "bytes": 580007,
+      "sha256": "d66667a9a009bd62099fa6c874e598c1eef7ef4d3d8ecdc88e8b042768aa5990",
+      "payloadBytes": 580007,
+      "payloadSha256": "d66667a9a009bd62099fa6c874e598c1eef7ef4d3d8ecdc88e8b042768aa5990"
+    },
+    {
+      "path": "slice/slice-local-u1-1609cf3-20260906-slice-guide.png",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-local-u1-1609cf3-20260906-slice-guide.png",
+      "role": "Slice PNG: guide",
+      "compression": "none",
+      "bytes": 309738,
+      "sha256": "581595504eecb7b009408b98f94710acecc5046bfdd1f37be94294d38da1bbf9",
+      "payloadBytes": 309738,
+      "payloadSha256": "581595504eecb7b009408b98f94710acecc5046bfdd1f37be94294d38da1bbf9"
+    },
+    {
+      "path": "slice/slice-local-u1-1609cf3-20260906-slice-phone.png",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-local-u1-1609cf3-20260906-slice-phone.png",
+      "role": "Slice PNG: phone",
+      "compression": "none",
+      "bytes": 843998,
+      "sha256": "05b9acd8a2aa2db6007d9730b17a970e26093437cf21211b7ceeb8500febf019",
+      "payloadBytes": 843998,
+      "payloadSha256": "05b9acd8a2aa2db6007d9730b17a970e26093437cf21211b7ceeb8500febf019"
+    },
+    {
+      "path": "slice/slice-local-u1-1609cf3-20260906-slice-settings.png",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-local-u1-1609cf3-20260906-slice-settings.png",
+      "role": "Slice PNG: settings",
+      "compression": "none",
+      "bytes": 290179,
+      "sha256": "bfc38a0083dc6b308a94dc0bc46ed5a05582383efeadecfeb1dd4f04f09dcdf5",
+      "payloadBytes": 290179,
+      "payloadSha256": "bfc38a0083dc6b308a94dc0bc46ed5a05582383efeadecfeb1dd4f04f09dcdf5"
+    },
+    {
+      "path": "slice/slice-local-u1-1609cf3-20260906-slice-sol.png",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-local-u1-1609cf3-20260906-slice-sol.png",
+      "role": "Slice PNG: sol",
+      "compression": "none",
+      "bytes": 223793,
+      "sha256": "6b5c078dccd797ccc277252caedfc0a91cc6d49a087d2219d0309032e4ac732c",
+      "payloadBytes": 223793,
+      "payloadSha256": "6b5c078dccd797ccc277252caedfc0a91cc6d49a087d2219d0309032e4ac732c"
+    },
+    {
+      "path": "slice/slice-local-u1-1609cf3-20260906-slice-solmark.png",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-local-u1-1609cf3-20260906-slice-solmark.png",
+      "role": "Slice PNG: solmark",
+      "compression": "none",
+      "bytes": 402351,
+      "sha256": "efc2b7fb6854a907cf0afa935d183bf2e9a225e426368421e29c2c7b7b3d5ef5",
+      "payloadBytes": 402351,
+      "payloadSha256": "efc2b7fb6854a907cf0afa935d183bf2e9a225e426368421e29c2c7b7b3d5ef5"
+    },
+    {
+      "path": "slice/slice-local-u1-1609cf3-20260906-slice-training.png",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-local-u1-1609cf3-20260906-slice-training.png",
+      "role": "Slice PNG: training",
+      "compression": "none",
+      "bytes": 488748,
+      "sha256": "e680dd01b2f96cfcd201efa5ef370d6b0d33a684a4d93726aebcd590f23bfbfc",
+      "payloadBytes": 488748,
+      "payloadSha256": "e680dd01b2f96cfcd201efa5ef370d6b0d33a684a4d93726aebcd590f23bfbfc"
+    },
+    {
+      "path": "slice/slice-local-u1-1609cf3-20260906-slice-universe.png",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/slice-local-u1-1609cf3-20260906-slice-universe.png",
+      "role": "Slice PNG: universe",
+      "compression": "none",
+      "bytes": 381860,
+      "sha256": "caf9f2892030a9d5a98dd992e4ebe52e3e9e564f14b7a1a27b5e8024562192c1",
+      "payloadBytes": 381860,
+      "payloadSha256": "caf9f2892030a9d5a98dd992e4ebe52e3e9e564f14b7a1a27b5e8024562192c1"
+    },
+    {
+      "path": "glass/glassmatrix-local-u1-1609cf3-20260906-small-phone.json.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/glassmatrix-local-u1-1609cf3-20260906-small-phone.json",
+      "role": "immutable terminal small-phone product RED report",
+      "compression": "gzip",
+      "bytes": 5593,
+      "sha256": "2b451bf5b3cf9958f763efd648c53f0654577bffd41a4dc2cc09a33e05809ec7",
+      "payloadBytes": 47675,
+      "payloadSha256": "08462ad4968c06a88dee84a5ddd1531796e479c621db0511531a7cc47feb907a"
+    },
+    {
+      "path": "glass/glassmatrix-small-phone-diagnostic.json.gz",
+      "originalPath": "/private/tmp/cf-u1-rail-final-1609cf3-20260906/candidate/port/v2/apps/game/smoke/glassmatrix-small-phone-diagnostic.json",
+      "role": "mutable diagnostic pointer captured byte-identical to immutable small-phone RED; not independent run authority",
+      "compression": "gzip",
+      "bytes": 5593,
+      "sha256": "2b451bf5b3cf9958f763efd648c53f0654577bffd41a4dc2cc09a33e05809ec7",
+      "payloadBytes": 47675,
+      "payloadSha256": "08462ad4968c06a88dee84a5ddd1531796e479c621db0511531a7cc47feb907a"
+    }
+  ]
+}

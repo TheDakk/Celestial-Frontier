@@ -1,0 +1,1548 @@
+{
+  "id": "02-friendly-cancel",
+  "variant": "current",
+  "kind": "canceled",
+  "status": "PASS",
+  "mode": "hold",
+  "workerRequests": 0,
+  "closing": true,
+  "recipeRequests": [
+    {
+      "caseId": "02-friendly-cancel",
+      "index": 1,
+      "mode": "hold",
+      "status": null,
+      "finished": false,
+      "clientClosedBeforeCleanup": true,
+      "cleanupStarted": true,
+      "requestRowIndex": 7,
+      "requestAbortedEvent": true
+    }
+  ],
+  "cleanupRequests": [],
+  "unexpectedRequests": [],
+  "observations": [
+    {
+      "label": "initial",
+      "atMs": 1061.88625,
+      "state": "ready",
+      "landing": null,
+      "error": null,
+      "hasPng": false,
+      "png": null,
+      "pngPrefix": false,
+      "completionDestination": null,
+      "boundWorld": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+      "noticeWorld": null,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": null,
+      "events": [],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 73.828125,
+            "height": 46
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 183.828125,
+            "y": 283.40625,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · ETA estimating…",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · ETA estimating…",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-error": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "status": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Ready",
+          "rect": {
+            "x": 90,
+            "y": 371.40625,
+            "width": 800,
+            "height": 24
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLand\nCancel landing\n\nReady",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 158.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Land on Earth to prepare the preview roster.The full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": null
+    },
+    {
+      "label": "held-recipe",
+      "atMs": 1066.51425,
+      "state": "running",
+      "landing": {
+        "state": "queued",
+        "key": null,
+        "progress": 0,
+        "stageLabel": "Preparing landing",
+        "etaLabel": "ETA estimating…"
+      },
+      "error": null,
+      "hasPng": false,
+      "png": null,
+      "pngPrefix": false,
+      "completionDestination": null,
+      "boundWorld": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+      "noticeWorld": null,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": null,
+      "events": [],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": true,
+          "text": "Land",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 622,
+            "y": 283.40625,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Preparing landing · ETA estimating…",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 520,
+            "height": 42
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Preparing landing · ETA estimating…",
+          "rect": {
+            "x": 90,
+            "y": 283.40625,
+            "width": 520,
+            "height": 24
+          }
+        },
+        "landing-error": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "status": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Ready",
+          "rect": {
+            "x": 90,
+            "y": 371.40625,
+            "width": 800,
+            "height": 24
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLanding · Preparing landing · ETA estimating…\nCancel landing\n\nReady",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 158.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Land on Earth to prepare the preview roster.The full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": {
+        "caseId": "02-friendly-cancel",
+        "index": 1,
+        "mode": "hold",
+        "status": null,
+        "finished": false,
+        "clientClosedBeforeCleanup": false,
+        "cleanupStarted": false,
+        "requestRowIndex": 7
+      }
+    },
+    {
+      "label": "trusted-navigation-to-journal",
+      "atMs": 1093.130458,
+      "state": "failed",
+      "landing": {
+        "state": "canceled",
+        "key": null,
+        "progress": 0,
+        "stageLabel": "Landing unavailable",
+        "etaLabel": ""
+      },
+      "error": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+      "hasPng": false,
+      "png": null,
+      "pngPrefix": false,
+      "completionDestination": null,
+      "boundWorld": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+      "noticeWorld": null,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": {
+        "phase": "failed",
+        "canceled": true,
+        "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+        "atMs": 89.27999997138977
+      },
+      "events": [
+        {
+          "phase": "failed",
+          "canceled": true,
+          "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+          "atMs": 89.27999997138977
+        }
+      ],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-error": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing canceled. Select Earth to start again.",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 800,
+            "height": 24
+          }
+        },
+        "status": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing canceled",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "\nEarth · riverbank\nLandLanding · Landing unavailable · Cancel landing\nLanding canceled\n",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Field journal\n\nGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.\n\nLand on Earth to prepare the preview roster.\n\nThe full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 90,
+            "y": 280.40625,
+            "width": 1100,
+            "height": 174.90625
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": {
+        "caseId": "02-friendly-cancel",
+        "index": 1,
+        "mode": "hold",
+        "status": null,
+        "finished": false,
+        "clientClosedBeforeCleanup": true,
+        "cleanupStarted": false,
+        "requestRowIndex": 7,
+        "requestAbortedEvent": true
+      }
+    },
+    {
+      "label": "friendly-settled-in-journal",
+      "atMs": 1093.618875,
+      "state": "failed",
+      "landing": {
+        "state": "canceled",
+        "key": null,
+        "progress": 0,
+        "stageLabel": "Landing unavailable",
+        "etaLabel": ""
+      },
+      "error": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+      "hasPng": false,
+      "png": null,
+      "pngPrefix": false,
+      "completionDestination": null,
+      "boundWorld": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+      "noticeWorld": null,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": {
+        "phase": "failed",
+        "canceled": true,
+        "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+        "atMs": 89.27999997138977
+      },
+      "events": [
+        {
+          "phase": "failed",
+          "canceled": true,
+          "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+          "atMs": 89.27999997138977
+        }
+      ],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-error": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing canceled. Select Earth to start again.",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 800,
+            "height": 24
+          }
+        },
+        "status": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing canceled",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "\nEarth · riverbank\nLandLanding · Landing unavailable · Cancel landing\nLanding canceled\n",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Field journal\n\nGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.\n\nLand on Earth to prepare the preview roster.\n\nThe full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 90,
+            "y": 280.40625,
+            "width": 1100,
+            "height": 174.90625
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": {
+        "caseId": "02-friendly-cancel",
+        "index": 1,
+        "mode": "hold",
+        "status": null,
+        "finished": false,
+        "clientClosedBeforeCleanup": true,
+        "cleanupStarted": false,
+        "requestRowIndex": 7,
+        "requestAbortedEvent": true
+      }
+    },
+    {
+      "label": "friendly-outcome-hidden-ancestor",
+      "atMs": 1137.502667,
+      "state": "failed",
+      "landing": {
+        "state": "canceled",
+        "key": null,
+        "progress": 0,
+        "stageLabel": "Landing unavailable",
+        "etaLabel": ""
+      },
+      "error": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+      "hasPng": false,
+      "png": null,
+      "pngPrefix": false,
+      "completionDestination": null,
+      "boundWorld": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+      "noticeWorld": null,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": {
+        "phase": "failed",
+        "canceled": true,
+        "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+        "atMs": 89.27999997138977
+      },
+      "events": [
+        {
+          "phase": "failed",
+          "canceled": true,
+          "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+          "atMs": 89.27999997138977
+        }
+      ],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-error": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing canceled. Select Earth to start again.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "status": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing canceled",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "\nEarth · riverbank\nLandLanding · Landing unavailable · Cancel landing\nLanding canceled\n",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Field journal\n\nGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.\n\nLand on Earth to prepare the preview roster.\n\nThe full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 1100,
+            "height": 174.90625
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": {
+        "caseId": "02-friendly-cancel",
+        "index": 1,
+        "mode": "hold",
+        "status": null,
+        "finished": false,
+        "clientClosedBeforeCleanup": true,
+        "cleanupStarted": false,
+        "requestRowIndex": 7,
+        "requestAbortedEvent": true
+      }
+    },
+    {
+      "label": "friendly-outcome-restored",
+      "atMs": 1185.255167,
+      "state": "failed",
+      "landing": {
+        "state": "canceled",
+        "key": null,
+        "progress": 0,
+        "stageLabel": "Landing unavailable",
+        "etaLabel": ""
+      },
+      "error": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+      "hasPng": false,
+      "png": null,
+      "pngPrefix": false,
+      "completionDestination": null,
+      "boundWorld": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+      "noticeWorld": null,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": {
+        "phase": "failed",
+        "canceled": true,
+        "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+        "atMs": 89.27999997138977
+      },
+      "events": [
+        {
+          "phase": "failed",
+          "canceled": true,
+          "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+          "atMs": 89.27999997138977
+        }
+      ],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-error": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing canceled. Select Earth to start again.",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 800,
+            "height": 24
+          }
+        },
+        "status": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing canceled",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "\nEarth · riverbank\nLandLanding · Landing unavailable · Cancel landing\nLanding canceled\n",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Field journal\n\nGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.\n\nLand on Earth to prepare the preview roster.\n\nThe full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 90,
+            "y": 280.40625,
+            "width": 1100,
+            "height": 174.90625
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": {
+        "caseId": "02-friendly-cancel",
+        "index": 1,
+        "mode": "hold",
+        "status": null,
+        "finished": false,
+        "clientClosedBeforeCleanup": true,
+        "cleanupStarted": false,
+        "requestRowIndex": 7,
+        "requestAbortedEvent": true
+      }
+    },
+    {
+      "label": "friendly-settled-in-Earth",
+      "atMs": 1187.827833,
+      "state": "failed",
+      "landing": {
+        "state": "canceled",
+        "key": null,
+        "progress": 0,
+        "stageLabel": "Landing unavailable",
+        "etaLabel": ""
+      },
+      "error": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+      "hasPng": false,
+      "png": null,
+      "pngPrefix": false,
+      "completionDestination": null,
+      "boundWorld": "CF1|g:999@90,-60|s:424242@560,170|p:133#2",
+      "noticeWorld": null,
+      "workerConstructed": 0,
+      "completedWorkers": 0,
+      "terminatedWorkers": 0,
+      "completeCount": 0,
+      "lastFailure": {
+        "phase": "failed",
+        "canceled": true,
+        "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+        "atMs": 89.27999997138977
+      },
+      "events": [
+        {
+          "phase": "failed",
+          "canceled": true,
+          "message": "AbortError: signal is aborted without reason\n    at window.cfImageProof.cancel (http://127.0.0.1:57492/browser-proof.mjs:182:55)\n    at byId.onclick (http://127.0.0.1:57492/browser-proof.mjs:183:121)",
+          "atMs": 89.27999997138977
+        }
+      ],
+      "painting": {
+        "width": 768,
+        "height": 432
+      },
+      "meter": {
+        "value": 0,
+        "max": 1
+      },
+      "elements": {
+        "generate": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": false,
+          "text": "Land",
+          "rect": {
+            "x": 90,
+            "y": 327.3125,
+            "width": 73.828125,
+            "height": 46
+          }
+        },
+        "cancel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": true,
+          "text": "Cancel landing",
+          "rect": {
+            "x": 183.828125,
+            "y": 327.3125,
+            "width": 144.96875,
+            "height": 46
+          }
+        },
+        "painting": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "notice-open": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": false,
+          "text": "View landfall",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-progress": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-label": {
+          "exists": true,
+          "visible": false,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing · Landing unavailable · ",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "landing-error": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing canceled. Select Earth to start again.",
+          "rect": {
+            "x": 90,
+            "y": 236.5,
+            "width": 800,
+            "height": 24
+          }
+        },
+        "status": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Landing canceled",
+          "rect": {
+            "x": 90,
+            "y": 415.3125,
+            "width": 800,
+            "height": 24
+          }
+        },
+        "planet-panel": {
+          "exists": true,
+          "visible": true,
+          "hidden": false,
+          "disabled": null,
+          "text": "Earth · riverbank\nLand\nCancel landing\n\nLanding canceled",
+          "rect": {
+            "x": 90,
+            "y": 280.40625,
+            "width": 1100,
+            "height": 158.90625
+          }
+        },
+        "journal-panel": {
+          "exists": true,
+          "visible": false,
+          "hidden": true,
+          "disabled": null,
+          "text": "Field journalGeneration continues while you browse. These are the six inhabitants selected by the canonical Earth appearance recipe; this preview does not award discoveries or change a save.Land on Earth to prepare the preview roster.The full game will keep exploration, fleet management, and Compendium activities available during generation.",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      },
+      "workerRequests": 0,
+      "recipeRequest": {
+        "caseId": "02-friendly-cancel",
+        "index": 1,
+        "mode": "hold",
+        "status": null,
+        "finished": false,
+        "clientClosedBeforeCleanup": true,
+        "cleanupStarted": false,
+        "requestRowIndex": 7,
+        "requestAbortedEvent": true
+      }
+    }
+  ],
+  "clicks": [
+    {
+      "id": "generate",
+      "geometry": {
+        "visible": true,
+        "disabled": false,
+        "x": 126.9140625,
+        "y": 306.40625,
+        "width": 1280,
+        "height": 1000,
+        "hit": "generate",
+        "count": 0
+      },
+      "delivered": [
+        {
+          "id": "generate",
+          "isTrusted": true
+        }
+      ]
+    },
+    {
+      "id": "cancel",
+      "geometry": {
+        "visible": true,
+        "disabled": false,
+        "x": 694.484375,
+        "y": 306.40625,
+        "width": 1280,
+        "height": 1000,
+        "hit": "cancel",
+        "count": 1
+      },
+      "delivered": [
+        {
+          "id": "cancel",
+          "isTrusted": true
+        }
+      ]
+    },
+    {
+      "id": "explore",
+      "geometry": {
+        "visible": true,
+        "disabled": false,
+        "x": 237.1640625,
+        "y": 180.5,
+        "width": 1280,
+        "height": 1000,
+        "hit": "explore",
+        "count": 2
+      },
+      "delivered": [
+        {
+          "id": "explore",
+          "isTrusted": true
+        }
+      ]
+    },
+    {
+      "id": "planet",
+      "geometry": {
+        "visible": true,
+        "disabled": false,
+        "x": 128.140625,
+        "y": 180.5,
+        "width": 1280,
+        "height": 1000,
+        "hit": "planet",
+        "count": 3
+      },
+      "delivered": [
+        {
+          "id": "planet",
+          "isTrusted": true
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "02-friendly-cancel-friendly-journal.png",
+      "bytes": 68851,
+      "sha256": "e936e39ec621c2d80ac43378c0063928ad7ee0aeab1f020b3d08730edb7caa96"
+    },
+    {
+      "file": "02-friendly-cancel-friendly-hidden-control.png",
+      "bytes": 63885,
+      "sha256": "db72231ae52249737b144d31ede8adb272f956a5126c57403faefdedaab446df"
+    },
+    {
+      "file": "02-friendly-cancel-friendly-Earth.png",
+      "bytes": 48394,
+      "sha256": "0d4a8218a43c3118c5087d9c4fc96872940df7b08d3ebecc6b3bee43534b08a2"
+    }
+  ],
+  "cleanup": {
+    "targetClosed": true,
+    "heldResponsesRetired": true
+  },
+  "judgments": [
+    {
+      "label": "friendly outcome in journal",
+      "outcome": "canceled",
+      "expected": {
+        "workers": 0,
+        "completions": 0,
+        "panel": "journal"
+      },
+      "expectReject": false,
+      "accepted": true,
+      "error": null
+    },
+    {
+      "label": "hidden ancestor rejected",
+      "outcome": "canceled",
+      "expected": {
+        "workers": 0,
+        "completions": 0,
+        "panel": "journal"
+      },
+      "expectReject": true,
+      "accepted": false,
+      "error": "canceled: friendly outcome is absent, wrong or hidden by an ancestor"
+    },
+    {
+      "label": "hidden ancestor restored",
+      "outcome": "canceled",
+      "expected": {
+        "workers": 0,
+        "completions": 0,
+        "panel": "journal"
+      },
+      "expectReject": false,
+      "accepted": true,
+      "error": null
+    },
+    {
+      "label": "friendly outcome in Earth",
+      "outcome": "canceled",
+      "expected": {
+        "workers": 0,
+        "completions": 0,
+        "panel": "planet"
+      },
+      "expectReject": false,
+      "accepted": true,
+      "error": null
+    }
+  ]
+}

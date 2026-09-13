@@ -1,0 +1,43 @@
+{
+  "status": "FAIL",
+  "continuationOf": "develop-profile.json",
+  "steps": [
+    {
+      "name": "refresh-producer",
+      "cmd": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/AV_EARTH_SURFACE_TURN_20260908/refresh-producer.mjs"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.032
+    },
+    {
+      "name": "focused-binding-repair",
+      "cmd": "npm",
+      "args": [
+        "test",
+        "--",
+        "tests/current-producer-authorities.test.ts",
+        "tests/compendium-budget.test.ts",
+        "tests/exceptional-crafting-evidence-contract.test.ts",
+        "tests/guide-release.test.ts",
+        "tests/slicesmoke-sixth-red-contract.test.ts"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "seconds": 4.348
+    },
+    {
+      "name": "typescript",
+      "cmd": "npm",
+      "args": [
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 1,
+      "error": null,
+      "seconds": 1.627
+    }
+  ]
+}

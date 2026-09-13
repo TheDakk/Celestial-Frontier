@@ -1,0 +1,15 @@
+{
+  "schema": "cf.ambient-motion-preview.v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-10T02:27:12.599Z",
+  "width": 1024,
+  "height": 576,
+  "fps": 24,
+  "frames": 288,
+  "durationSeconds": 12,
+  "scope": "Ambient animation of one immutable local AI PNG; no creature articulation, inference or game integration",
+  "sources": [],
+  "browserEvents": [],
+  "frameHashes": [],
+  "cleanup": {}
+}

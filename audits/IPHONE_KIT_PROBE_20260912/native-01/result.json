@@ -1,0 +1,557 @@
+{
+  "schema": "cf.iphone-kit-probe.v1",
+  "status": "INSTRUMENT_OR_CONNECTION_FAILED",
+  "head": "4715e0f2cede27928ce546a290719a8676bbbb57",
+  "target": {
+    "userModel": "iPhone 17 Pro",
+    "userIos": "26.6.2",
+    "connection": "USB-C",
+    "capabilities": {
+      "safari:deviceName": "Nick’s iPhone Pro",
+      "safari:platformVersion": "26.6.2",
+      "safari:automaticInspection": false,
+      "webkit:WebRTC": {
+        "DisableICECandidateFiltering": false,
+        "DisableInsecureMediaCapture": false
+      },
+      "webkit:alwaysAllowAutoplay": false,
+      "browserVersion": "26.6.1",
+      "safari:deviceType": "iPhone",
+      "strictFileInteractability": false,
+      "browserName": "Safari",
+      "safari:useSimulator": false,
+      "safari:platformBuildVersion": "23G90",
+      "setWindowRect": false,
+      "acceptInsecureCerts": true,
+      "safari:automaticProfiling": false,
+      "safari:experimentalWebSocketUrl": false,
+      "platformName": "iOS",
+      "safari:diagnose": false
+    },
+    "deviceIdSha256": "829da9bde71408632260cdc53812a742ae72c17e15c6af2c1adb6638e1cb8169"
+  },
+  "sources": [
+    {
+      "url": "/recipe.json",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/recipe.json",
+      "sha256": "3760bc2c1d31722d3b47891f1989d1029718b7dddd25ec98c210d8f996207591"
+    },
+    {
+      "url": "/kit-client.mjs",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/kit-client.mjs",
+      "sha256": "e9a01736504d829ac2006866d3ca3cc95cfacb745e770defdc34c31d9102099c"
+    },
+    {
+      "url": "/kit-proof-client.mjs",
+      "path": "tools/local-image-generation/kit-proof-client.mjs",
+      "sha256": "a1384ca65f17849f089fc415082fb31877703757513069501bfef1e87bf2925f"
+    },
+    {
+      "url": "/kit-worker-engine.mjs",
+      "path": "tools/local-image-generation/kit-worker-engine.mjs",
+      "sha256": "22da9ce83489382098b082dd4372704d86fa023e3b014edbf7c25029671581c6"
+    },
+    {
+      "url": "/kit-worker-expansion.mjs",
+      "path": "tools/local-image-generation/kit-worker-expansion.mjs",
+      "sha256": "35adfcf3a4bbcd81229e0ec56a14f21e003b20ead43c18eb698da94987caef32"
+    },
+    {
+      "url": "/kit-engine-math.mjs",
+      "path": "tools/local-image-generation/kit-engine-math.mjs",
+      "sha256": "a37300858ab6d164593bc332bf1a3b23ca6eb77d1a61887924410da779d56a63"
+    },
+    {
+      "url": "/kit-contact-math.mjs",
+      "path": "tools/local-image-generation/kit-contact-math.mjs",
+      "sha256": "cc456f3b27d755b72a289e82d0a5b6b2cbb250d386fc3663a384333d5e87d2d2"
+    },
+    {
+      "url": "/pipeline-math.mjs",
+      "path": "tools/local-image-generation/pipeline-math.mjs",
+      "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+    },
+    {
+      "url": "/browser-variant-plan.json",
+      "path": "tools/local-image-generation/browser-variant-plan.json",
+      "sha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81"
+    },
+    {
+      "url": "/stage-worker.mjs",
+      "path": "tools/local-image-generation/kit-stage-worker.mjs",
+      "sha256": "035a36cdf8a43c427db6c8d771125d9ed55d212adc025973ad87ee5b37c6074a"
+    },
+    {
+      "url": "/inputs/civet.rgba",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/inputs/civet.rgba",
+      "sha256": "447d80f0682694f8b483c21c6f45d6db4e7aa2ec9e29180177c8b2fde4835740"
+    },
+    {
+      "url": "/inputs/persimmon.rgba",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/inputs/persimmon.rgba",
+      "sha256": "57e0db93c9817f72210dfb46c3d41590f9ed9887aa6cd0c4c75ee801e0862b1f"
+    },
+    {
+      "url": "/inputs/platypus.rgba",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/inputs/platypus.rgba",
+      "sha256": "ef0d19aa79cbbf99cd3439c5fdcc6361df4acc00bb8de1f1f06dd8dbc0c9fbaf"
+    },
+    {
+      "url": "/inputs/frog.rgba",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/inputs/frog.rgba",
+      "sha256": "fefdfadb4e84da311c4dda6898d90b472d9ed89b1f83858bbb9d6747bdbd9fa5"
+    },
+    {
+      "url": "/inputs/devils-club.rgba",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/inputs/devils-club.rgba",
+      "sha256": "ae593073e675943ebe915bd1a69ba54b62e02804f11c942f3311e03e15948356"
+    },
+    {
+      "url": "/inputs/cranberry.rgba",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/inputs/cranberry.rgba",
+      "sha256": "2011a3a1371e38f45e9c85403917f966bcc758adb5d906c017917a01e5b9a58b"
+    },
+    {
+      "url": "/inputs/earth-temperate.rgba",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/inputs/earth-temperate.rgba",
+      "sha256": "209907262f72b4ce21f89f0f25d51785f2bf2b704049f889badefe3b84ef5e5a"
+    },
+    {
+      "url": "/inputs/atlas.rgba",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/inputs/atlas.rgba",
+      "sha256": "7383061cbcc3e766a146e0aef4cabdd9864f5c4e2acd9edf4e1b9d39725a99b1"
+    },
+    {
+      "url": "/inputs/triptych.rgba",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/inputs/triptych.rgba",
+      "sha256": "22aa9825ccf55a4422fe10ea26845fedb1042f201b4d419a4699315f3a6e6974"
+    },
+    {
+      "url": "/inputs/foreground-grass.rgba",
+      "path": "audits/KIT_NORMAL_LAND_20260912/warm-prepared/inputs/foreground-grass.rgba",
+      "sha256": "cd0bb228a8ad5a2ea1b77dfa005738e0dde72d4e373c8ef70c75df4bb982927b"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "sha256": "5d25483158d53d8f34d0e9c06a654d56c8dca4ebdf370ea0982ef11315a00e0e"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.mjs",
+      "sha256": "3d68fa7af88c48894d4b0c8629de12018ab73b77519bc0b05dc8d908ad82749f"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.wasm",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.wasm",
+      "sha256": "db816fadbab47a755170c08f933961e231412ac17f5981f9a62e519708a44dea"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.mjs",
+      "sha256": "f4a22e988ac3c2345e58c823a9254ac15f39271f86241bb2bbda0bc7e6b4dde6"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.wasm",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.jspi.wasm",
+      "sha256": "8ef22fea2fec3d90dc2858e0392382cf6800b0855acfd6722ca1390e2fe15c56"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.mjs",
+      "sha256": "5a15f1fd086b3f6c2baf1f35105b8f502653b567e165cef80028870b39748747"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm",
+      "sha256": "ec8580a9d7b9476ceee52e10a7f94124e4dc71a019d666ed6d4726697c109a4d"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs",
+      "sha256": "c600de656f52722365438926fbce6e926cd8594b1b4cd2f5cd4499c42f110c58"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.all.min.mjs",
+      "sha256": "e7a1ea699f25bdeeb3d9b9ff7ea26edb660fd15cab380e2fe479809d422f5e8b"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.all.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.all.mjs",
+      "sha256": "93c437880b40d8ffe65c971cff28fa554e10b490f30f45382e2ebd78c457cb7b"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.bundle.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.bundle.min.mjs",
+      "sha256": "a32b8c695bfc78c1e6e5b72746364c1a7733b7b17c5759e3cffd8bc8e8158a91"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.bundle.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.jspi.bundle.min.mjs",
+      "sha256": "9afb4911acc005f370e838cf5cfce493728b2634c41afb15a0c716a8053dedee"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.jspi.min.mjs",
+      "sha256": "8d930290d7150c5d1bbd88d4e2988bddaf7e19b916c3b0e0e5e581e090b470f4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.jspi.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.jspi.mjs",
+      "sha256": "4df3efe5189e41e2eea36f16815bce1ff11979cd8ab5e3e27dfb731f95f9c135"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.min.mjs",
+      "sha256": "d0f6cf735704c25e713101804e24532be1ee754292fe05fa7dda708a3be1e6b4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.mjs",
+      "sha256": "a4d8dde2bc3638eecf29d772ae48035c534d2160bfedf313f0365cb54e701f1f"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.node.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.node.min.mjs",
+      "sha256": "d03374770621e06e4750482236ec6dbd6299d0205b9de44b9eebe52a0721ef71"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.bundle.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.wasm.bundle.min.mjs",
+      "sha256": "7a3913dc5c7a9c3ad1144f5fbfecd402bc5013bcc886bc67664b18d8a15ab298"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.wasm.min.mjs",
+      "sha256": "14a0a63ad1a0fe8127722929fd16fb26c2e5352ea221bc9034d12daf314d0b92"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.wasm.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.wasm.mjs",
+      "sha256": "956c4b3b8d7dd15229c98bcc58869773e1d582737aec04b2e5c634bd932085a4"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgl.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgl.min.mjs",
+      "sha256": "ce98866698d20fa9521a5d27520a3273a6860b85ff32a5c9f3fc22ee10b9786a"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgl.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgl.mjs",
+      "sha256": "415c7a241d1c1c22a47cee581d76dd2aeb63ed90521cf562adf06ca2a5461c23"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.bundle.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.bundle.min.mjs",
+      "sha256": "2b943893e8b444fd3983c205f3574cddd70b1f8a6170c114b03cc3d6060c4cbb"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "sha256": "08272eb8dadd249a0eaa53e19f4e5b5d01bc8a121240719db29093cfb776bc27"
+    },
+    {
+      "url": "/node_modules/onnxruntime-web/dist/ort.webgpu.mjs",
+      "path": "tools/local-image-generation/node_modules/onnxruntime-web/dist/ort.webgpu.mjs",
+      "sha256": "1aaf3cde11544e48f111a0911c4d08c6f1401043ec3822601d51dad39353bb9a"
+    },
+    {
+      "url": "/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "path": "tools/local-image-generation/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "sha256": "1c4a848f86156201c033d6cd08c4cf81ae1088552acec3367f31ef086edf5af0"
+    }
+  ],
+  "requests": [
+    {
+      "path": "/",
+      "range": null
+    },
+    {
+      "path": "/kit-proof-client.mjs",
+      "range": null
+    },
+    {
+      "path": "/kit-client.mjs",
+      "range": null
+    },
+    {
+      "path": "/favicon.ico",
+      "range": null
+    },
+    {
+      "path": "/recipe.json",
+      "range": null
+    },
+    {
+      "path": "/stage-worker.mjs",
+      "range": null
+    },
+    {
+      "path": "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "range": null
+    },
+    {
+      "path": "/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "range": null
+    },
+    {
+      "path": "/kit-engine-math.mjs",
+      "range": null
+    },
+    {
+      "path": "/kit-worker-engine.mjs",
+      "range": null
+    },
+    {
+      "path": "/pipeline-math.mjs",
+      "range": null
+    },
+    {
+      "path": "/kit-worker-expansion.mjs",
+      "range": null
+    },
+    {
+      "path": "/kit-contact-math.mjs",
+      "range": null
+    },
+    {
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "range": null
+    },
+    {
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "range": null
+    },
+    {
+      "path": "/model/vae_encoder.onnx",
+      "range": null
+    },
+    {
+      "path": "/model/vae_encoder.onnx.data",
+      "range": null
+    },
+    {
+      "path": "/model/text_encoder_q4.onnx",
+      "range": null
+    },
+    {
+      "path": "/model/text_encoder_q4-00000.data",
+      "range": null
+    },
+    {
+      "path": "/model/text_encoder_q4-00001.data",
+      "range": null
+    }
+  ],
+  "events": [
+    {
+      "phase": "landing-start",
+      "atMs": 72.14000000000001,
+      "landing": 1,
+      "sequence": 1
+    },
+    {
+      "phase": "loading",
+      "atMs": 135.94,
+      "sequence": 2,
+      "type": "progress",
+      "stage": "encode"
+    },
+    {
+      "memory": null,
+      "phase": "loaded",
+      "sequence": 3,
+      "atMs": 2923.6000000000004,
+      "creates": {
+        "encode": 1,
+        "denoise": 0,
+        "decode": 0,
+        "text": 0
+      },
+      "elapsedMs": 2787.6,
+      "type": "progress",
+      "stage": "encode"
+    },
+    {
+      "phase": "loading",
+      "atMs": 2923.92,
+      "sequence": 4,
+      "type": "progress",
+      "stage": "text"
+    }
+  ],
+  "inferenceRuns": 1,
+  "deliveryWrites": 0,
+  "modelVerification": {
+    "schema": "cf.local-image-download-receipt.v1",
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "8b79b92782d198497cd02149eda5df17f278a34d60795084755b8d66bd8dd74e",
+    "startedAt": "2026-09-12T20:55:48.308Z",
+    "finishedAt": "2026-09-12T20:55:51.294Z",
+    "status": "complete",
+    "fileCount": 21,
+    "totalBytes": 6691028208,
+    "timeoutMs": 600000,
+    "verifyOnly": true,
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 7792,
+        "sha256": "4cfe7c534c2f259155b0ec282168bdffeb11241899fa48b4d22f7bda1483f26f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00000.data",
+        "bytes": 1599733760,
+        "sha256": "ed37b81331f4eda3bc150448f2d360b4e42951c57dcb9874ec8d0c7c78fa6f6d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00001.data",
+        "bytes": 594170880,
+        "sha256": "89040c34be052e09698afad17bfea3e1158306369612ae347655dfbd4cfa0f3f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.manifest.json",
+        "bytes": 285,
+        "sha256": "fd22d7819467151ead49d2f25b0d576bcb65134111e5219c264cc605cb62e5b7",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.onnx",
+        "bytes": 5341471,
+        "sha256": "e1670f1d203cf2e5cadecce4b2c13d436eefa228a66b7bc6bc629074e9dc0a1b",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/added_tokens.json",
+        "bytes": 707,
+        "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/chat_template.jinja",
+        "bytes": 4168,
+        "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/merges.txt",
+        "bytes": 1671853,
+        "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/special_tokens_map.json",
+        "bytes": 613,
+        "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer.json",
+        "bytes": 11422654,
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer_config.json",
+        "bytes": 5404,
+        "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/vocab.json",
+        "bytes": 2776833,
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00000.data",
+        "bytes": 1585446912,
+        "sha256": "80aa4b75cdab0395f4374c51eecb59e005a6f81b3e573dddd9826a865bcd11be",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00001.data",
+        "bytes": 1566572544,
+        "sha256": "32576185e1f0ab3937141b0c57acad1f37f298c5e7951b3367096c129e5eca28",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00002.data",
+        "bytes": 981258240,
+        "sha256": "5062b615c62206a2dad22ce01fec6f674b0421336179cadec93fec77d1b2b455",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.manifest.json",
+        "bytes": 368,
+        "sha256": "9cf98a614ffe690a297a286b11642b0611f67f64e80edaaf592645f32e727f29",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.onnx",
+        "bytes": 4991601,
+        "sha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx",
+        "bytes": 760826,
+        "sha256": "05f3f6de75b760d5f3b6cbd6efa40ddc8bb7bc4dad58c1dabc85e96383871a7d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx.data",
+        "bytes": 198508544,
+        "sha256": "357f7da253bfb9e3d5762a4f64fd126eae53b8b79466b7da2da2784d5fce89ae",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx",
+        "bytes": 596081,
+        "sha256": "f7cc93e70cc3a9555cb7bf1b02d2eaab83d706cf0a4ddf6da86dffb56daf05f9",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx.data",
+        "bytes": 137756672,
+        "sha256": "9ac7e0847f5b1a6a077ad38688042a53bc004e986d15dc8c0e37a962aad68671",
+        "disposition": "verified-reused"
+      }
+    ],
+    "failure": null
+  },
+  "recipeSha256": "3760bc2c1d31722d3b47891f1989d1029718b7dddd25ec98c210d8f996207591",
+  "probeOrigin": "https://192.168.1.62:53723",
+  "capabilityProbe": {
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1",
+    "nativeGpuMemory": null,
+    "crossOriginIsolated": true,
+    "adapterAvailable": true,
+    "webgpu": true,
+    "maxBufferSize": 1073741824,
+    "maxStorageBufferBindingSize": 1073741824,
+    "jsHeap": null,
+    "storage": {
+      "quota": 41231686042,
+      "usage": 0
+    },
+    "shaderF16": true,
+    "memoryNote": "Standard Safari page APIs may not expose native or GPU memory; null means unavailable.",
+    "secureContext": true
+  },
+  "details": {},
+  "modelError": null,
+  "error": "Error: {\"error\":\"invalid session id\",\"message\":\"\",\"stacktrace\":\"\"}\n    at command (file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/run-iphone-kit-probe.mjs:23:275)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/run-iphone-kit-probe.mjs:67:27",
+  "disposeError": "Error: {\"error\":\"invalid session id\",\"message\":\"\",\"stacktrace\":\"\"}",
+  "sessionCloseError": "Error: {\"error\":\"invalid session id\",\"message\":\"\",\"stacktrace\":\"\"}"
+}

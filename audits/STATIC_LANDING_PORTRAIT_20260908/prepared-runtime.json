@@ -1,0 +1,51 @@
+{
+  "status": "PREPARED_NOT_APPLIED",
+  "reason": "Required ImageMagick resize/encode permission remains pending. No unresolved asset URL or placeholder digest is installed in game code.",
+  "baseCommit": "afee1924aac880bed4360deae2a26d081ca18d45",
+  "patch": "port/v2/tests/painted-earth-landing-binding.test.ts",
+  "patchSha256": "2469e2e49a2b4bc6b766c2fbbc9318a616a7d88cd3cc1434e15bfccf6f6318b7",
+  "records": [
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "candidateSha256": "c827f91e803c3ef7c234babd87b4eeedadb4e6ed3308d309a1e9fe4bfbb72970",
+      "baseSha256": "4ddd9d07b172e6ad1f646bcc00ab1d266067b4c0db97d8b5ed79ace4b648ad13",
+      "retainedCopy": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/main.ts"
+    },
+    {
+      "path": "port/v2/apps/game/src/painted-vista-load.ts",
+      "candidateSha256": "bb2a76fd6e626dc7e10bd2fe58be174a18aee7c4a0bc34740b24c09cb46e6632",
+      "baseSha256": "5ae385fa776846801c15f36fce95f3b02236b5fa59dbeb09143b225fdd2d58b2",
+      "retainedCopy": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/painted-vista-load.ts"
+    },
+    {
+      "path": "port/v2/apps/game/src/painted-vista-load.test.ts",
+      "candidateSha256": "dbd4fc0f39493f7018d38ac9f507151ee9d0c143dd860b511504138167e527cc",
+      "baseSha256": "10701bb932b845daf24e4cada31f337f56107f01e9d7bd940726c7951760804e",
+      "retainedCopy": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/painted-vista-load.test.ts"
+    },
+    {
+      "path": "port/v2/tests/earth-layered-shake-settlement.test.ts",
+      "candidateSha256": "77e14d79af8ad56d78b84e99a7ea562f7b89d4f2110648f6f5a0c37ebbae7ad5",
+      "baseSha256": "a90bc644cb5acd757a646b8531868d89a36912cf577ab3fbf6a51152ecb0d956",
+      "retainedCopy": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/tests/earth-layered-shake-settlement.test.ts"
+    },
+    {
+      "path": "port/v2/apps/game/src/painted-earth-landing-recipe.ts",
+      "candidateSha256": "638abba375542e6b56da39a30e0aab8ce8b4dd82290529368d5f1763934fa489",
+      "baseSha256": null,
+      "retainedCopy": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/apps/game/src/painted-earth-landing-recipe.ts"
+    },
+    {
+      "path": "port/v2/tests/painted-earth-landing-binding.test.ts",
+      "candidateSha256": "5decb8b2519f1388945d27a1e81d28c4b35e0a9d60329cdd905ebf76c9137d95",
+      "baseSha256": null,
+      "retainedCopy": "audits/STATIC_LANDING_PORTRAIT_20260908/prepared-source/port/v2/tests/painted-earth-landing-binding.test.ts"
+    }
+  ],
+  "applyCheck": {
+    "exitCode": 128,
+    "stdout": "",
+    "stderr": "error: can't open patch '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/painted-earth-landing-binding.test.ts': No such file or directory\n"
+  },
+  "checks": "Candidate runtime tests/typechecks/native are NOT RUN. Generic kinematics remains live tooling and receives its own checks."
+}

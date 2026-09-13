@@ -1,0 +1,16 @@
+18671 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+18672 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+18961 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+18962 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+18964 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+26010 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+26011 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+26012 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+45461 /Applications/REAPER.app/Contents/MacOS/REAPER
+83576 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+83578 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+83579 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+93213 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+93215 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+93648 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node
+93649 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node

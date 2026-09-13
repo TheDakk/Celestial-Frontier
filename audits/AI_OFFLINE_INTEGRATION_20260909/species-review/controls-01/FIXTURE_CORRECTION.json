@@ -1,0 +1,7 @@
+{
+  "firstStatus": "FAIL",
+  "passed": 27,
+  "failed": 1,
+  "sourceChanged": false,
+  "fixture": "Missing plant-count field is now omitted; undefined remains separately asserted invalid-data, matching the unchanged hostile-data normalizer. No guard weakened and no later chain stage ran."
+}

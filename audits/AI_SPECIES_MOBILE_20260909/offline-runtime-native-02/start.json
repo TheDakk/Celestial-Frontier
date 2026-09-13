@@ -1,0 +1,15 @@
+{
+  "schema": "cf.offline-runtime-module-diagnostic.v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-09T18:26:59.132Z",
+  "scope": "Actual static PWA offline app/runtime modules; one deliberately invalid profile request reaches existing guard before GPU/model work. No model delivery or inference.",
+  "sources": [],
+  "clicks": [],
+  "network": [],
+  "browserEvents": [],
+  "serviceWorkerFetches": [],
+  "cleanup": {},
+  "modelExecuted": false,
+  "modelDownloaded": false,
+  "physicalPhoneQualified": false
+}

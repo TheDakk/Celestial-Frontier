@@ -1,0 +1,268 @@
+{
+  "schema": "cf.kit-contact-review.v1",
+  "nativeHead": "cd6b609f56ea992e14a196637a611446315e41b2",
+  "paintingSha256": "52b58c47caa2b7db86636187343669ca475faf62b78ffcd0e9f50e82b76cc2ff",
+  "nativeCompositeMatchesStatic": true,
+  "warmEngineMs": 24173.090000003576,
+  "sessionPreparationMs": 7890.299999982119,
+  "totalEngineMs": 32063.394999980927,
+  "warmUnder240s": true,
+  "sessionCreates": {
+    "text": 1,
+    "encode": 1,
+    "denoise": 1,
+    "decode": 1
+  },
+  "organismInferencePasses": 0,
+  "measurements": [
+    {
+      "name": "finisher",
+      "elapsedMs": 21534.239999979734,
+      "sequence": 416,
+      "tokenCount": 402,
+      "promptSha256": "741e3078a4a12a669a0fc9846f68789e1717bfc31cd584910568067ff541194c",
+      "chatPromptSha256": "18ec22841a2ed28356a8092fdd9fd59c5ebd86641b9c536b4f4e89f0bffe1dde",
+      "sigmas": [
+        0.3499999940395355,
+        0
+      ]
+    }
+  ],
+  "civetRegisteredHeightFraction": 0.3,
+  "civetHeightAtLeast28Percent": true,
+  "allRegisteredBoxIoUAtLeast90Percent": true,
+  "organisms": [
+    {
+      "name": "Civet",
+      "compositeBox": {
+        "x": 616.9814354066986,
+        "y": 270.72,
+        "width": 240.59712918660284,
+        "height": 172.79999999999998
+      },
+      "score": 0.9605958847086664,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 1181,
+      "postBox": {
+        "x": 616.9814354066986,
+        "y": 270.72,
+        "width": 240.59712918660284,
+        "height": 172.79999999999998
+      },
+      "iou": 0.9999999999999997,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 1,
+      "fringeVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "finding": "No visible magenta key outline in the 200% nearest-neighbour crop. Red plant pigment and neutral cool edges are retained."
+      },
+      "speciesVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "basis": "Preservation of the user-accepted master at native 100% and the supplied 200% crop",
+        "finding": "Spotted fur, facial mask, pointed muzzle, four legs and ringed tail remain distinct; silhouette and limb attachment hold."
+      }
+    },
+    {
+      "name": "Persimmon",
+      "compositeBox": {
+        "x": 17.097142857142856,
+        "y": 207.36000000000004,
+        "width": 232.0457142857143,
+        "height": 241.92
+      },
+      "score": 0.8335673380837939,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 1280,
+      "postBox": {
+        "x": 17.097142857142856,
+        "y": 207.36000000000007,
+        "width": 232.0457142857143,
+        "height": 241.92
+      },
+      "iou": 1,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 2,
+      "fringeVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "finding": "No visible magenta key outline in the 200% nearest-neighbour crop. Red plant pigment and neutral cool edges are retained."
+      },
+      "speciesVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "basis": "Preservation of the user-accepted master at native 100% and the supplied 200% crop",
+        "finding": "Orange fruit, broad leaves, branching woody trunk and roots remain legible; the tree is taller than the Civet."
+      }
+    },
+    {
+      "name": "Platypus",
+      "compositeBox": {
+        "x": 354.2179310344828,
+        "y": 391.68,
+        "width": 172.20413793103447,
+        "height": 103.67999999999999
+      },
+      "score": 0.8818615500294688,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 469,
+      "postBox": {
+        "x": 354.2179310344828,
+        "y": 391.68,
+        "width": 172.20413793103447,
+        "height": 103.67999999999999
+      },
+      "iou": 1.0000000000000009,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 1,
+      "fringeVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "finding": "No visible magenta key outline in the 200% nearest-neighbour crop. Red plant pigment and neutral cool edges are retained."
+      },
+      "speciesVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "basis": "Preservation of the user-accepted master at native 100% and the supplied 200% crop",
+        "finding": "Broad bill, small eye, low furred body, visible feet and broad flattened tail remain distinct; no added external ears."
+      }
+    },
+    {
+      "name": "Frog",
+      "compositeBox": {
+        "x": 174.08,
+        "y": 406.78299212598426,
+        "width": 122.88,
+        "height": 94.33700787401574
+      },
+      "score": 0.82628483886365,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 339,
+      "postBox": {
+        "x": 174.08,
+        "y": 406.78299212598426,
+        "width": 122.88,
+        "height": 94.33700787401574
+      },
+      "iou": 1.0000000000000007,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 1,
+      "fringeVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "finding": "No visible magenta key outline in the 200% nearest-neighbour crop. Red plant pigment and neutral cool edges are retained."
+      },
+      "speciesVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "basis": "Preservation of the user-accepted master at native 100% and the supplied 200% crop",
+        "finding": "Green smooth skin, high eyes, broad mouth and folded hind limbs remain distinct; enlarged silhouette is readily found."
+      }
+    },
+    {
+      "name": "Devil's Club",
+      "compositeBox": {
+        "x": 808.96,
+        "y": 337.8295406360424,
+        "width": 163.84,
+        "height": 169.0504593639576
+      },
+      "score": 0.773704671498994,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 724,
+      "postBox": {
+        "x": 808.96,
+        "y": 337.82954063604245,
+        "width": 163.84,
+        "height": 169.0504593639576
+      },
+      "iou": 0.9999999999999998,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 25,
+      "fringeVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "finding": "No visible magenta key outline in the 200% nearest-neighbour crop. Red plant pigment and neutral cool edges are retained."
+      },
+      "speciesVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "basis": "Preservation of the user-accepted master at native 100% and the supplied 200% crop",
+        "finding": "Broad palmate leaves, thorny upright stems and red terminal clusters remain legible."
+      }
+    },
+    {
+      "name": "Cranberry",
+      "compositeBox": {
+        "x": 291.84000000000003,
+        "y": 428.5234843205575,
+        "width": 112.64,
+        "height": 89.87651567944252
+      },
+      "score": 0.5734687443240073,
+      "scale": 1,
+      "dx": 0,
+      "dy": 0,
+      "samples": 176,
+      "postBox": {
+        "x": 291.84000000000003,
+        "y": 428.5234843205575,
+        "width": 112.64,
+        "height": 89.87651567944252
+      },
+      "iou": 0.9999999999999993,
+      "method": "masked texture registration; not segmentation",
+      "speciesAccepted": false,
+      "boxCriterion": true,
+      "pinkEdgeCandidates": 11,
+      "fringeVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "finding": "No visible magenta key outline in the 200% nearest-neighbour crop. Red plant pigment and neutral cool edges are retained."
+      },
+      "speciesVisualReview": {
+        "status": "PASS",
+        "reviewer": "Codex",
+        "basis": "Preservation of the user-accepted master at native 100% and the supplied 200% crop",
+        "finding": "Small oval leaves and red berries on low trailing stems remain identifiable; still a compact sprig, not a broad mat."
+      }
+    }
+  ],
+  "limits": "Post boxes are masked texture registration estimates, not segmentation. Species, shadows and pink-fringe decisions require visual review. Pink candidate counts are not a semantic fringe verdict.",
+  "qualityAccepted": true,
+  "visualReview": {
+    "reviewer": "Codex",
+    "allSixIdentifiableAtNativeSize": true,
+    "speciesPreservationPass": true,
+    "noVisiblePinkFringeAt200Percent": true,
+    "contactShadows": {
+      "Civet": "PASS: small dark contact/occlusion patches beneath the paws on the rock, with foreground overlap at the lowest feet. Subtle rather than a broad cast shadow.",
+      "Platypus": "PASS: dark underside/foot contact on the bank, with grass breaking the lower outline. Subtle rather than a broad cast shadow."
+    },
+    "boxExtents": "Visual inspection finds no displaced silhouette or anatomy outside the registered extents. The numerical boxes are registration estimates, not independent semantic segmentation.",
+    "direction": "Larger hero and tertiary animal improve hierarchy against the triptych. The accepted plate and master texture remain recognizable; overall painting acceptance belongs to Nick."
+  },
+  "codexAcceptanceChecksPass": true,
+  "userPaintingAcceptance": "accepted by Nick, 2026-09-12, first engine painting and tier-2 baseline"
+}

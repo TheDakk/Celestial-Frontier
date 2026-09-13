@@ -1,0 +1,7 @@
+{
+  "agentSource": "effective ssh -G git@github.com IdentityAgent",
+  "publicKeyQueryExit": 0,
+  "configuredSigningKeyOffered": true,
+  "privateKeyRead": false,
+  "settingsChanged": false
+}

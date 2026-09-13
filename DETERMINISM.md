@@ -1,5 +1,41 @@
 # Celestial Frontier — Determinism Discipline
 
+## Requested time-aware art and sharing — source reviewed 2026-09-08
+
+Nick approves the full landfall painting direction and requests procedural coverage, planetary
+rotation/daylight and seasons, plus shareable discoveries. Current source still chooses a fixed
+seeded day/dusk/night appearance; cosmetic orbital motion is not a physical year/season authority.
+CF1 native Share/Follow carries a location, not the sender's exact time/roster/art snapshot.
+CFB/CFB2 remain domain codecs without native V2 creature share/import wiring. Nothing here changes
+those formats, world/genome generation, current biome authority, saves or gameplay clock rules.
+
+[TIME_AND_SHARING.md](audits/MIDGAME_ART_DIRECTION_20260908/TIME_AND_SHARING.md) records actual
+owners and the proposed versioned appearance recipe: exact world/place, full organism identities,
+art catalogue, explicit clock coordinate, supported rotation/axis/orbit/light/season conditions
+and camera. A view snapshot would be separate from a CF1 location or ownership transfer. Keep
+visual conditions separate from the protected active-play economy and committed ecology epoch;
+wall-clock manipulation must not award yield/recovery or rewrite organisms. Seasons require an
+explicit approximation of tilt, latitude and orbital phase; not all worlds have four Earth seasons.
+This is a recorded design requirement, not implemented climate/physics or all-world painted output.
+
+
+## Exact Earth visual composition — matches local code as of 2026-09-08
+
+The optional layered riverbank binds the complete canonical request, world/profile digest,
+ecology epoch and all19 ordered original genomes. Six selected named residents are checked
+against the actual temperate fauna-family/flora-form lists. No world/encounter generation,
+SessionRNG, seed, genome, lineage, save or share code changes. D-9e's global dead biome filter
+remains decision-gated. Raw Earth habitat/loco genes do not establish named-species ecology.
+
+`overridecheck.mjs` retains canonical catalog/route/precedence accounting and admits only the
+new exact `paintNamedResident` body, seven direct import owners and four specific AST table
+reads. Its body seal is deliberately source-sensitive; broader reads remain forbidden.
+EL0–EL13 add accepted/restored and rejected body/import/extra-read controls without removing
+older controls. The separate exact snapshot-function seal admits only its four Object operations
+for prototype identity and detached output; EP0–EP10 reject altered admission/input mutation or
+escaping operations. All134 route controls passed on restored source; global permissions stay unchanged. Tests and native proof have distinct scopes; consult the
+[batch review](audits/AV_EARTH_LAYERED_SCENE_20260908/README.md) for actual execution status.
+
 > **2026-08-29 current local commit-clock correction (supersedes narrower same-date descriptions
 > below where they differ):** deterministic product derivation still receives no wall clock and
 > spends no additional gameplay RNG. The transaction owner now detaches the content registry once,
