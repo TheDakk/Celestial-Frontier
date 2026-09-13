@@ -83,3 +83,10 @@ with committed reports and hash index at attempt-01. The recorder is corrected t
 audio before recording, start its silent track immediately, await recorder start, and request
 every canvas frame explicitly. The next capture changes no artwork, anatomy, template curves
 or thresholds. This is an instrument correction, not another art/rig experiment.
+
+
+Second capture attempt (2652f5cb) timed out awaiting the capture promise before any file was
+returned. Browser/server closed; report retained at attempt-02. No anatomy/curve change or
+successful capture is claimed. The next instrument correction uses real native button input
+for audio activation, with separate five-second audio/recorder-start deadlines to diagnose
+rather than enlarge the timeout. No automatic retry of unchanged source.

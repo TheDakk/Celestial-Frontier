@@ -60,3 +60,7 @@ zero behind both; scoped 2D source/doc commit follows. Unrelated.DS_Store untouc
 September12 startup receipt (Node26.8.2). GitHub step NONE; PR42 parked; zero hosted attempts
 or GitHub writes authorized despite budget UNFROZEN/public/private fallback3000. No PR needed
 now, no release/deployment. Claude Code need not open/sync; local changes are not in develop.
+
+Recorder-only source2652f5cb timed out before returning a capture; attempt-02 retains it.
+Next uses real native input for the audio gesture plus explicit bounded startup diagnostics.
+Art/curves unchanged; no new art attempt and no mesh-success claim.

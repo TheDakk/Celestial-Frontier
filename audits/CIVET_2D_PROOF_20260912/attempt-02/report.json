@@ -1,0 +1,2036 @@
+{
+  "status": "FAIL",
+  "source": "2652f5cbc5bcd75fda076cd0372dfd4002e36a56",
+  "errors": [],
+  "captures": [],
+  "origin": "http://127.0.0.1:56514",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.32",
+    "revision": "@9aab8632678bdbd60c393455e1394ee523ba682d",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.4",
+    "protocol_version": "1.3"
+  },
+  "observation": {
+    "status": "READY",
+    "template": {
+      "id": "quadruped",
+      "version": 1,
+      "clipSetId": "quadruped-land-v1",
+      "clips": {
+        "rest": 0,
+        "idle": 3000,
+        "attack": 2200,
+        "hit": 1300
+      },
+      "layers": [
+        "far",
+        "near"
+      ]
+    },
+    "controls": [
+      "corrupted landmark recipe",
+      "swapped cutout hash",
+      "serpent refused by quadruped bounds",
+      "correctly hashed landmarks outside actual painted alpha",
+      "corrupted landmark recipe",
+      "swapped cutout hash",
+      "serpent refused by quadruped bounds",
+      "correctly hashed landmarks outside actual painted alpha",
+      "draw-time emission leaves normal procedural canvas pixel-identical",
+      "corrupted landmark recipe",
+      "swapped cutout hash",
+      "serpent refused by quadruped bounds",
+      "correctly hashed landmarks outside actual painted alpha"
+    ],
+    "specimens": [
+      {
+        "id": "civet",
+        "record": {
+          "kind": "quadruped",
+          "identity": {
+            "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
+            "seed": 3212817920,
+            "ownerId": "authored:Civet/faunaResetViverridD",
+            "earthName": "Civet"
+          },
+          "template": {
+            "id": "quadruped",
+            "version": 1
+          },
+          "geometry": {
+            "cutoutAssetHash": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+            "width": 1254,
+            "height": 1254,
+            "groundLineY": 0.837,
+            "depthLayers": [
+              {
+                "id": "far",
+                "order": 0
+              },
+              {
+                "id": "near",
+                "order": 1
+              }
+            ],
+            "contactPolicy": "preserve authored perspective and raised-paw offsets"
+          },
+          "landmarks": {
+            "root": [
+              0.59,
+              0.47
+            ],
+            "pelvis": [
+              0.45,
+              0.46
+            ],
+            "spine": [
+              0.59,
+              0.43
+            ],
+            "chest": [
+              0.73,
+              0.47
+            ],
+            "neck": [
+              0.8,
+              0.4
+            ],
+            "head": [
+              0.846,
+              0.316
+            ],
+            "jaw": [
+              0.8,
+              0.387
+            ],
+            "tail0": [
+              0.35,
+              0.48
+            ],
+            "tail1": [
+              0.265,
+              0.595
+            ],
+            "tail2": [
+              0.151,
+              0.68
+            ],
+            "tail3": [
+              0.078,
+              0.785
+            ],
+            "earFarRoot": [
+              0.777,
+              0.236
+            ],
+            "earFarTip": [
+              0.773,
+              0.181
+            ],
+            "earNearRoot": [
+              0.906,
+              0.245
+            ],
+            "earNearTip": [
+              0.935,
+              0.193
+            ],
+            "hindFarRoot": [
+              0.59,
+              0.52
+            ],
+            "hindFarKnee": [
+              0.532,
+              0.661
+            ],
+            "hindFarAnkle": [
+              0.555,
+              0.715
+            ],
+            "hindFarPaw": [
+              0.614,
+              0.739
+            ],
+            "hindNearRoot": [
+              0.45,
+              0.52
+            ],
+            "hindNearKnee": [
+              0.372,
+              0.67
+            ],
+            "hindNearAnkle": [
+              0.386,
+              0.75
+            ],
+            "hindNearPaw": [
+              0.424,
+              0.78
+            ],
+            "foreFarRoot": [
+              0.83,
+              0.54
+            ],
+            "foreFarKnee": [
+              0.905,
+              0.662
+            ],
+            "foreFarAnkle": [
+              0.906,
+              0.72
+            ],
+            "foreFarPaw": [
+              0.889,
+              0.768
+            ],
+            "foreNearRoot": [
+              0.71,
+              0.54
+            ],
+            "foreNearKnee": [
+              0.739,
+              0.689
+            ],
+            "foreNearAnkle": [
+              0.774,
+              0.797
+            ],
+            "foreNearPaw": [
+              0.813,
+              0.823
+            ]
+          },
+          "materials": {
+            "surface": "fur",
+            "sheenTier": "painted",
+            "paletteSource": "authored named master"
+          },
+          "clipSetId": "quadruped-land-v1",
+          "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+          "boundsCheck": {
+            "inside": true,
+            "clamped": [],
+            "boneLengths": {
+              "pelvis": 0.14035668847618196,
+              "spine": 0.1431782106327635,
+              "chest": 0.14560219778561037,
+              "neck": 0.09899494936611666,
+              "head": 0.09577055915050302,
+              "jaw": 0.08459905436823743,
+              "hindFarRoot": 0.15231546211727812,
+              "hindFarKnee": 0.1524631102922933,
+              "hindFarAnkle": 0.058694122363316704,
+              "hindFarPaw": 0.06369458375717668,
+              "foreFarRoot": 0.12206555615733705,
+              "foreFarKnee": 0.14320963654726593,
+              "foreFarAnkle": 0.05800862004909264,
+              "foreFarPaw": 0.0509215082258961,
+              "hindNearRoot": 0.06,
+              "hindNearKnee": 0.16906803364326448,
+              "hindNearAnkle": 0.08121576201698777,
+              "hindNearPaw": 0.04841487374764082,
+              "foreNearRoot": 0.07280109889280525,
+              "foreNearKnee": 0.15179591562357655,
+              "foreNearAnkle": 0.11352973178863773,
+              "foreNearPaw": 0.04687216658103175,
+              "tail0": 0.10198039027185571,
+              "tail1": 0.1430034964607509,
+              "tail2": 0.14220056258679153,
+              "tail3": 0.12788275880665068,
+              "earFarRoot": 0.10564563407921783,
+              "earFarTip": 0.05514526271584894,
+              "earNearRoot": 0.09295697929687693,
+              "earNearTip": 0.05953990258641678
+            }
+          },
+          "recipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f"
+        },
+        "triangles": 15493,
+        "vertices": 8720,
+        "alphaLeaves": 3479,
+        "restDifferentChannels": 0,
+        "extremes": [
+          {
+            "clip": "idle",
+            "phase": 0,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.0625,
+            "minRatio": 0.9789669799793046,
+            "maxRatio": 1.0079039891716093,
+            "maxEdgeRatio": 1.0075330786424166,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.125,
+            "minRatio": 0.8503762415493838,
+            "maxRatio": 1.056225306354463,
+            "maxEdgeRatio": 1.0537327492045592,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.1875,
+            "minRatio": 0.587377182993805,
+            "maxRatio": 1.1549918190576136,
+            "maxEdgeRatio": 1.1487664228927452,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.25,
+            "minRatio": 0.275443242455367,
+            "maxRatio": 1.2719938170630485,
+            "maxEdgeRatio": 1.2621901736526435,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.3125,
+            "minRatio": 0.07359658225323074,
+            "maxRatio": 1.3475920991040766,
+            "maxEdgeRatio": 1.3358704296712458,
+            "holdsShape": false
+          },
+          {
+            "clip": "idle",
+            "phase": 0.375,
+            "minRatio": 0.12478560753515922,
+            "maxRatio": 1.3284180073533207,
+            "maxEdgeRatio": 1.3171650978898584,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.4375,
+            "minRatio": 0.4670358534785919,
+            "maxRatio": 1.2001255443319678,
+            "maxEdgeRatio": 1.192430601677587,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.5,
+            "minRatio": 0.9762558464426547,
+            "maxRatio": 1.061798095703125,
+            "maxEdgeRatio": 1.0674492912583373,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.5625,
+            "minRatio": 0.8004758225288242,
+            "maxRatio": 1.529771761939628,
+            "maxEdgeRatio": 1.5433352402543963,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.625,
+            "minRatio": 0.6731862663291395,
+            "maxRatio": 1.8666464604611974,
+            "maxEdgeRatio": 1.9018333492611792,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.6875,
+            "minRatio": 0.654212094610557,
+            "maxRatio": 1.9168252727831714,
+            "maxEdgeRatio": 1.9557812043884173,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.75,
+            "minRatio": 0.7291330653242767,
+            "maxRatio": 1.7186752367124427,
+            "maxEdgeRatio": 1.7435059022542412,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.8125,
+            "minRatio": 0.8453583342488855,
+            "maxRatio": 1.4106915583834052,
+            "maxEdgeRatio": 1.4185031684091605,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.875,
+            "minRatio": 0.943821549648419,
+            "maxRatio": 1.1493807958613615,
+            "maxEdgeRatio": 1.1494801502631222,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.9375,
+            "minRatio": 0.9920958837028593,
+            "maxRatio": 1.0210335550655145,
+            "maxEdgeRatio": 1.0207909996227944,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 1,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.0625,
+            "minRatio": 0.9107755273580551,
+            "maxRatio": 1.1142381918616593,
+            "maxEdgeRatio": 1.123466726686929,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.125,
+            "minRatio": 0.787253191228956,
+            "maxRatio": 1.2411488346988335,
+            "maxEdgeRatio": 1.2742558618804942,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.1875,
+            "minRatio": 0.6674561174586415,
+            "maxRatio": 1.4444649646175094,
+            "maxEdgeRatio": 1.4537731021913816,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.25,
+            "minRatio": 0.6649987176060677,
+            "maxRatio": 1.718676002434222,
+            "maxEdgeRatio": 1.7435098273308485,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.3125,
+            "minRatio": 0.6258239364251494,
+            "maxRatio": 1.9918322566663846,
+            "maxEdgeRatio": 2.0366773799172972,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.375,
+            "minRatio": 0.538392654620111,
+            "maxRatio": 2.2224419364065398,
+            "maxEdgeRatio": 2.287022341101473,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.4375,
+            "minRatio": 0.4117110171355307,
+            "maxRatio": 2.3760234796791337,
+            "maxEdgeRatio": 2.455001190391454,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.5,
+            "minRatio": -0.3582805695477873,
+            "maxRatio": 2.859361073002219,
+            "maxEdgeRatio": 3.088480981941706,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.5625,
+            "minRatio": -0.7928832275792956,
+            "maxRatio": 3.3757200529798865,
+            "maxEdgeRatio": 3.8426700743548245,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.625,
+            "minRatio": -0.7313066804781556,
+            "maxRatio": 3.3263908635708503,
+            "maxEdgeRatio": 3.7668970582203087,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.6875,
+            "minRatio": -0.5967031585169025,
+            "maxRatio": 3.174500702007208,
+            "maxEdgeRatio": 3.55915022759972,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.75,
+            "minRatio": -0.3495040409034118,
+            "maxRatio": 3.0527274491032586,
+            "maxEdgeRatio": 3.222587596349876,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.8125,
+            "minRatio": 0.0997988109011203,
+            "maxRatio": 2.555782985407859,
+            "maxEdgeRatio": 2.5563836826473523,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.875,
+            "minRatio": 0.4974476373754442,
+            "maxRatio": 2.042134716641158,
+            "maxEdgeRatio": 1.9823506570928768,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.9375,
+            "minRatio": 0.8500199555419385,
+            "maxRatio": 1.3106542034074664,
+            "maxEdgeRatio": 1.2928015849003893,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 1,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.0625,
+            "minRatio": 0.9579768497496843,
+            "maxRatio": 1.0549404022458475,
+            "maxEdgeRatio": 1.0545061401322284,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.125,
+            "minRatio": 0.8633981817401946,
+            "maxRatio": 1.2111696342471987,
+            "maxEdgeRatio": 1.2123593209157746,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.1875,
+            "minRatio": 0.7639909312129021,
+            "maxRatio": 1.444457195873838,
+            "maxEdgeRatio": 1.453765165736954,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.25,
+            "minRatio": 0.702240691985935,
+            "maxRatio": 1.7186839524947572,
+            "maxEdgeRatio": 1.7435127836624174,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.3125,
+            "minRatio": 0.6013611410744488,
+            "maxRatio": 1.9918362157477532,
+            "maxEdgeRatio": 2.0366683065696414,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.375,
+            "minRatio": 0.5156058613210917,
+            "maxRatio": 2.2224440258578397,
+            "maxEdgeRatio": 2.287020401453332,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.4375,
+            "minRatio": 0.4532839651219547,
+            "maxRatio": 2.3760034832230303,
+            "maxEdgeRatio": 2.4549899943841393,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.5,
+            "minRatio": 0.42095322348177433,
+            "maxRatio": 2.429844603582751,
+            "maxEdgeRatio": 2.5141024866304096,
+            "holdsShape": false
+          },
+          {
+            "clip": "hit",
+            "phase": 0.5625,
+            "minRatio": 0.42380640748888254,
+            "maxRatio": 2.376047136436682,
+            "maxEdgeRatio": 2.4550132140095062,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.625,
+            "minRatio": 0.4647197178564966,
+            "maxRatio": 2.2224574207502883,
+            "maxEdgeRatio": 2.2870318827215677,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.6875,
+            "minRatio": 0.5335068400017917,
+            "maxRatio": 1.9918194338679314,
+            "maxEdgeRatio": 2.0366700046970316,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.75,
+            "minRatio": 0.6244544018991292,
+            "maxRatio": 1.7186748593230732,
+            "maxEdgeRatio": 1.7435144921548034,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.8125,
+            "minRatio": 0.73227598099038,
+            "maxRatio": 1.44442929935758,
+            "maxEdgeRatio": 1.4537549607483933,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.875,
+            "minRatio": 0.847550199367106,
+            "maxRatio": 1.2151278546079993,
+            "maxEdgeRatio": 1.2138106672281952,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.9375,
+            "minRatio": 0.9514878988265991,
+            "maxRatio": 1.070384614635259,
+            "maxEdgeRatio": 1.068531545717203,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 1,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          }
+        ],
+        "support": [
+          {
+            "clip": "idle",
+            "t": 0.25,
+            "vertices": 283,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "idle",
+            "t": 0.5,
+            "vertices": 283,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "idle",
+            "t": 0.75,
+            "vertices": 283,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "hit",
+            "t": 0.25,
+            "vertices": 283,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "hit",
+            "t": 0.5,
+            "vertices": 283,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "hit",
+            "t": 0.75,
+            "vertices": 283,
+            "maxDisplacement": 0
+          }
+        ],
+        "mode": "WHOLE-PORTRAIT FALLBACK",
+        "ikRefusals": 0,
+        "depthTriangleCounts": [
+          1852,
+          13641
+        ]
+      },
+      {
+        "id": "fox",
+        "record": {
+          "kind": "quadruped",
+          "identity": {
+            "speciesVisualKey": "authored:family-mammal-quadruped:15a3c9d7ee511360ed846a3fe1406c4fde124d99191c7f098538937ff164fdf3",
+            "seed": 0,
+            "ownerId": "authored:family-mammal-quadruped",
+            "earthName": "Red Fox"
+          },
+          "template": {
+            "id": "quadruped",
+            "version": 1
+          },
+          "geometry": {
+            "cutoutAssetHash": "15a3c9d7ee511360ed846a3fe1406c4fde124d99191c7f098538937ff164fdf3",
+            "width": 1254,
+            "height": 1254,
+            "groundLineY": 0.918,
+            "depthLayers": [
+              {
+                "id": "far",
+                "order": 0
+              },
+              {
+                "id": "near",
+                "order": 1
+              }
+            ],
+            "contactPolicy": "preserve authored perspective and raised-paw offsets"
+          },
+          "landmarks": {
+            "root": [
+              0.58,
+              0.5
+            ],
+            "pelvis": [
+              0.423,
+              0.515
+            ],
+            "spine": [
+              0.56,
+              0.465
+            ],
+            "chest": [
+              0.72,
+              0.5
+            ],
+            "neck": [
+              0.753,
+              0.37
+            ],
+            "head": [
+              0.751,
+              0.27
+            ],
+            "jaw": [
+              0.707,
+              0.357
+            ],
+            "tail0": [
+              0.337,
+              0.544
+            ],
+            "tail1": [
+              0.259,
+              0.651
+            ],
+            "tail2": [
+              0.16,
+              0.714
+            ],
+            "tail3": [
+              0.08,
+              0.8
+            ],
+            "earFarRoot": [
+              0.663,
+              0.187
+            ],
+            "earFarTip": [
+              0.634,
+              0.107
+            ],
+            "earNearRoot": [
+              0.815,
+              0.174
+            ],
+            "earNearTip": [
+              0.829,
+              0.098
+            ],
+            "hindFarRoot": [
+              0.516,
+              0.593
+            ],
+            "hindFarKnee": [
+              0.468,
+              0.751
+            ],
+            "hindFarAnkle": [
+              0.5,
+              0.834
+            ],
+            "hindFarPaw": [
+              0.55,
+              0.861
+            ],
+            "hindNearRoot": [
+              0.412,
+              0.595
+            ],
+            "hindNearKnee": [
+              0.354,
+              0.755
+            ],
+            "hindNearAnkle": [
+              0.344,
+              0.862
+            ],
+            "hindNearPaw": [
+              0.371,
+              0.881
+            ],
+            "foreFarRoot": [
+              0.801,
+              0.562
+            ],
+            "foreFarKnee": [
+              0.816,
+              0.71
+            ],
+            "foreFarAnkle": [
+              0.849,
+              0.858
+            ],
+            "foreFarPaw": [
+              0.898,
+              0.881
+            ],
+            "foreNearRoot": [
+              0.687,
+              0.566
+            ],
+            "foreNearKnee": [
+              0.707,
+              0.736
+            ],
+            "foreNearAnkle": [
+              0.723,
+              0.872
+            ],
+            "foreNearPaw": [
+              0.758,
+              0.903
+            ]
+          },
+          "materials": {
+            "surface": "fur",
+            "sheenTier": "painted",
+            "paletteSource": "authored named master"
+          },
+          "clipSetId": "quadruped-land-v1",
+          "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-mammal-quadruped.png",
+          "boundsCheck": {
+            "inside": true,
+            "clamped": [],
+            "boneLengths": {
+              "pelvis": 0.1577149327108882,
+              "spine": 0.14583895227270394,
+              "chest": 0.1637833935415919,
+              "neck": 0.13412307780542468,
+              "head": 0.10001999800039987,
+              "jaw": 0.09749358953285082,
+              "hindFarRoot": 0.12137956994486344,
+              "hindFarKnee": 0.16513025161974412,
+              "hindFarAnkle": 0.08895504482602429,
+              "hindFarPaw": 0.056824290580701535,
+              "foreFarRoot": 0.10200490184299978,
+              "foreFarKnee": 0.1487581930516769,
+              "foreFarAnkle": 0.15163442880823608,
+              "foreFarPaw": 0.054129474410897487,
+              "hindNearRoot": 0.08075270893288963,
+              "hindNearKnee": 0.17018813119603848,
+              "hindNearAnkle": 0.10746627377926525,
+              "hindNearPaw": 0.033015148038438386,
+              "foreNearRoot": 0.07379024325749298,
+              "foreNearKnee": 0.17117242768623692,
+              "foreNearAnkle": 0.13693794214898952,
+              "foreNearPaw": 0.04675467891024388,
+              "tail0": 0.09075791976461335,
+              "tail1": 0.13241223508422473,
+              "tail2": 0.11734564329364766,
+              "tail3": 0.11745637488020824,
+              "earFarRoot": 0.12096693763173473,
+              "earFarTip": 0.08509406559801924,
+              "earNearRoot": 0.11537764081484765,
+              "earNearTip": 0.07727871634544661
+            }
+          },
+          "recipeHash": "041b75fe872b5500a3cb1da08ce2a8a37e2193b66354fe6ce2f4cb848719d84b"
+        },
+        "triangles": 18068,
+        "vertices": 10231,
+        "alphaLeaves": 4094,
+        "restDifferentChannels": 0,
+        "extremes": [
+          {
+            "clip": "idle",
+            "phase": 0,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.0625,
+            "minRatio": 0.9876871262094937,
+            "maxRatio": 1.0160516425967216,
+            "maxEdgeRatio": 1.0144222932727172,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.125,
+            "minRatio": 0.9124747650930658,
+            "maxRatio": 1.1141770859248936,
+            "maxEdgeRatio": 1.1035171002535327,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.1875,
+            "minRatio": 0.7590140388929285,
+            "maxRatio": 1.3147150157019496,
+            "maxEdgeRatio": 1.2890034373188048,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.25,
+            "minRatio": 0.5773565124254674,
+            "maxRatio": 1.5524095058208331,
+            "maxEdgeRatio": 1.5129035571123435,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.3125,
+            "minRatio": 0.46005396789405495,
+            "maxRatio": 1.7061123887542635,
+            "maxEdgeRatio": 1.6592264664181169,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.375,
+            "minRatio": 0.48978490865556523,
+            "maxRatio": 1.6671218627598137,
+            "maxEdgeRatio": 1.622038478507719,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.4375,
+            "minRatio": 0.6888750902144238,
+            "maxRatio": 1.4064499880187213,
+            "maxEdgeRatio": 1.374999119402474,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.5,
+            "minRatio": 0.9846305847167969,
+            "maxRatio": 1.0701751708984375,
+            "maxEdgeRatio": 1.079255451259317,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.5625,
+            "minRatio": 0.5953354360535741,
+            "maxRatio": 1.3111381069757044,
+            "maxEdgeRatio": 1.2948244219753446,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.625,
+            "minRatio": 0.33768472727388144,
+            "maxRatio": 1.5099167303415015,
+            "maxEdgeRatio": 1.492639187419853,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.6875,
+            "minRatio": 0.2992823163513094,
+            "maxRatio": 1.5396080102073029,
+            "maxEdgeRatio": 1.5225967412212604,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.75,
+            "minRatio": 0.4508828166872263,
+            "maxRatio": 1.4225128372199833,
+            "maxEdgeRatio": 1.4049740992693727,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.8125,
+            "minRatio": 0.6863562078215182,
+            "maxRatio": 1.2410559392301366,
+            "maxEdgeRatio": 1.226534253337311,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.875,
+            "minRatio": 0.8859634052496403,
+            "maxRatio": 1.0875395367620513,
+            "maxEdgeRatio": 1.080535611706443,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.9375,
+            "minRatio": 0.9839395438320935,
+            "maxRatio": 1.012311492813751,
+            "maxEdgeRatio": 1.011207093360681,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 1,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.0625,
+            "minRatio": 0.7904267492704093,
+            "maxRatio": 1.1543986359611154,
+            "maxEdgeRatio": 1.1506796394467325,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.125,
+            "minRatio": 0.6478313729166985,
+            "maxRatio": 1.2587799564935267,
+            "maxEdgeRatio": 1.259060535574356,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.1875,
+            "minRatio": 0.5711796381510794,
+            "maxRatio": 1.3146539628505707,
+            "maxEdgeRatio": 1.3193674029064808,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.25,
+            "minRatio": 0.45088235498405993,
+            "maxRatio": 1.4225426159682684,
+            "maxEdgeRatio": 1.4049657711595447,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.3125,
+            "minRatio": 0.24184730765409768,
+            "maxRatio": 1.5839667357504368,
+            "maxEdgeRatio": 1.5676243187849992,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.375,
+            "minRatio": 0.06521175778470933,
+            "maxRatio": 1.7206508737290278,
+            "maxEdgeRatio": 1.7075738053168044,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.4375,
+            "minRatio": -0.05251920409500599,
+            "maxRatio": 1.8125596069730818,
+            "maxEdgeRatio": 1.8019398462921408,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.5,
+            "minRatio": -1.04833974968642,
+            "maxRatio": 3.0291793178766966,
+            "maxEdgeRatio": 3.1298203774624658,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.5625,
+            "minRatio": -2.069007115904242,
+            "maxRatio": 4.05359078606125,
+            "maxEdgeRatio": 4.117317226398213,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.625,
+            "minRatio": -2.0470587871968746,
+            "maxRatio": 4.026819912716746,
+            "maxEdgeRatio": 4.074913884937014,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.6875,
+            "minRatio": -1.8490624497644603,
+            "maxRatio": 3.8253707266412675,
+            "maxEdgeRatio": 3.8640335170713223,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.75,
+            "minRatio": -1.6609310400672257,
+            "maxRatio": 3.6327136401087046,
+            "maxEdgeRatio": 3.63263813595044,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.8125,
+            "minRatio": -0.9803625703789294,
+            "maxRatio": 2.9658990362659097,
+            "maxEdgeRatio": 2.9473881359597685,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.875,
+            "minRatio": -0.06073599634692073,
+            "maxRatio": 1.3557917084544897,
+            "maxEdgeRatio": 1.4873603115650995,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.9375,
+            "minRatio": 0.679480524500832,
+            "maxRatio": 1.1053223749622703,
+            "maxEdgeRatio": 1.1335995145637356,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 1,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.0625,
+            "minRatio": 0.8711249986663461,
+            "maxRatio": 1.0954758133739233,
+            "maxEdgeRatio": 1.091524270313023,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.125,
+            "minRatio": 0.7545183878391981,
+            "maxRatio": 1.1814317139796913,
+            "maxEdgeRatio": 1.177702832353132,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.1875,
+            "minRatio": 0.6476019090041518,
+            "maxRatio": 1.260909377480857,
+            "maxEdgeRatio": 1.2593263061533424,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.25,
+            "minRatio": 0.4508637422695756,
+            "maxRatio": 1.4225382489385083,
+            "maxEdgeRatio": 1.4049911930612133,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.3125,
+            "minRatio": 0.24184642545878887,
+            "maxRatio": 1.5839756766799837,
+            "maxEdgeRatio": 1.5676253995441558,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.375,
+            "minRatio": 0.06519705266691744,
+            "maxRatio": 1.7206340080010705,
+            "maxEdgeRatio": 1.707573050107011,
+            "holdsShape": false
+          },
+          {
+            "clip": "hit",
+            "phase": 0.4375,
+            "minRatio": -0.0525143276900053,
+            "maxRatio": 1.8125248202122748,
+            "maxEdgeRatio": 1.8019274616556276,
+            "holdsShape": false
+          },
+          {
+            "clip": "hit",
+            "phase": 0.5,
+            "minRatio": -0.09381812904030085,
+            "maxRatio": 1.8450444201007485,
+            "maxEdgeRatio": 1.835211006989518,
+            "holdsShape": false
+          },
+          {
+            "clip": "hit",
+            "phase": 0.5625,
+            "minRatio": -0.052535402588546276,
+            "maxRatio": 1.8125148403923959,
+            "maxEdgeRatio": 1.8019175531356968,
+            "holdsShape": false
+          },
+          {
+            "clip": "hit",
+            "phase": 0.625,
+            "minRatio": 0.06520144152455032,
+            "maxRatio": 1.720637591322884,
+            "maxEdgeRatio": 1.7075623181583046,
+            "holdsShape": false
+          },
+          {
+            "clip": "hit",
+            "phase": 0.6875,
+            "minRatio": 0.24183146911673248,
+            "maxRatio": 1.583966267411597,
+            "maxEdgeRatio": 1.5676362493890947,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.75,
+            "minRatio": 0.4508841657079756,
+            "maxRatio": 1.4225306106964126,
+            "maxEdgeRatio": 1.4049820408162406,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.8125,
+            "minRatio": 0.6058838623575866,
+            "maxRatio": 1.2859586672857404,
+            "maxEdgeRatio": 1.2905342999969762,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.875,
+            "minRatio": 0.7281017890200019,
+            "maxRatio": 1.1983001162298024,
+            "maxEdgeRatio": 1.1970219904855541,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.9375,
+            "minRatio": 0.8614535583183169,
+            "maxRatio": 1.1018101880326867,
+            "maxEdgeRatio": 1.0983871280619464,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 1,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          }
+        ],
+        "support": [
+          {
+            "clip": "idle",
+            "t": 0.25,
+            "vertices": 283,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "idle",
+            "t": 0.5,
+            "vertices": 283,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "idle",
+            "t": 0.75,
+            "vertices": 283,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "hit",
+            "t": 0.25,
+            "vertices": 283,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "hit",
+            "t": 0.5,
+            "vertices": 283,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "hit",
+            "t": 0.75,
+            "vertices": 283,
+            "maxDisplacement": 0
+          }
+        ],
+        "mode": "WHOLE-PORTRAIT FALLBACK",
+        "ikRefusals": 8,
+        "depthTriangleCounts": [
+          2189,
+          15879
+        ]
+      },
+      {
+        "id": "procedural",
+        "record": {
+          "kind": "quadruped",
+          "identity": {
+            "speciesVisualKey": "[\"object\",[[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"6\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"8\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"11\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"0\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"1597751321\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"4\"]]]]",
+            "seed": 1597751321,
+            "ownerId": "resolveProceduralCanvas:quad/faunaQuadruped",
+            "earthName": null
+          },
+          "template": {
+            "id": "quadruped",
+            "version": 1
+          },
+          "geometry": {
+            "cutoutAssetHash": "4d75af529dfc9aedd6cc078fe35373c435dcfde3abfe305e03ead60e46ba1e27",
+            "width": 880,
+            "height": 880,
+            "groundLineY": 0.65,
+            "depthLayers": [
+              {
+                "id": "far",
+                "order": 0
+              },
+              {
+                "id": "near",
+                "order": 1
+              }
+            ]
+          },
+          "landmarks": {
+            "hindFarRoot": [
+              0.40849649305487673,
+              0.5248729932879485
+            ],
+            "hindFarKnee": [
+              0.3885743684001892,
+              0.6022804835447496
+            ],
+            "hindFarAnkle": [
+              0.4032696083967768,
+              0.6272016619202285
+            ],
+            "hindFarPaw": [
+              0.4137514804146406,
+              0.645969896997456
+            ],
+            "foreFarRoot": [
+              0.5812558412922438,
+              0.5141326368304369
+            ],
+            "foreFarKnee": [
+              0.5942815495266188,
+              0.5981844484027203
+            ],
+            "foreFarAnkle": [
+              0.5852290277317438,
+              0.6252668885552081
+            ],
+            "foreFarPaw": [
+              0.5795769973308806,
+              0.6459698451735324
+            ],
+            "hindNearRoot": [
+              0.42528649305487676,
+              0.5248729932879485
+            ],
+            "hindNearKnee": [
+              0.40536436840018925,
+              0.6022804835447496
+            ],
+            "hindNearAnkle": [
+              0.4200596083967767,
+              0.6272016619202285
+            ],
+            "hindNearPaw": [
+              0.43054148041464063,
+              0.645969896997456
+            ],
+            "foreNearRoot": [
+              0.5980458412922437,
+              0.5141326368304369
+            ],
+            "foreNearKnee": [
+              0.6110715495266189,
+              0.5981844484027203
+            ],
+            "foreNearAnkle": [
+              0.6020190277317439,
+              0.6252668885552081
+            ],
+            "foreNearPaw": [
+              0.5963669973308806,
+              0.6459698451735324
+            ],
+            "earFarRoot": [
+              0.655385232066312,
+              0.40268548300532014
+            ],
+            "earFarTip": [
+              0.655385232066312,
+              0.3969914830053201
+            ],
+            "earNearRoot": [
+              0.668233232066312,
+              0.40268548300532014
+            ],
+            "earNearTip": [
+              0.668233232066312,
+              0.3969914830053201
+            ],
+            "tail0": [
+              0.3780700177146676,
+              0.531819884980403
+            ],
+            "tail1": [
+              0.3399477954924454,
+              0.5401532183137363
+            ],
+            "tail2": [
+              0.3131811288257787,
+              0.556819884980403
+            ],
+            "tail3": [
+              0.2977700177146676,
+              0.581819884980403
+            ],
+            "root": [
+              0.5040091534716351,
+              0.5250398729405429
+            ],
+            "pelvis": [
+              0.41957789305487675,
+              0.5315366084018307
+            ],
+            "spine": [
+              0.5040091534716351,
+              0.5250398729405429
+            ],
+            "chest": [
+              0.5923372412922437,
+              0.5234534615871355
+            ],
+            "neck": [
+              0.5975330111640443,
+              0.5226566917168991
+            ],
+            "head": [
+              0.673664432066312,
+              0.4144238830053201
+            ],
+            "jaw": [
+              0.6893603230407522,
+              0.41477264282413645
+            ]
+          },
+          "materials": {
+            "surface": "fur",
+            "paletteSource": "genome"
+          },
+          "clipSetId": "quadruped-land-v1",
+          "boundsCheck": {
+            "inside": true,
+            "clamped": [],
+            "boneLengths": {
+              "pelvis": 0.08468084380316732,
+              "spine": 0.08468084380316732,
+              "chest": 0.08834233299515795,
+              "neck": 0.005256507089962612,
+              "head": 0.1323266191293176,
+              "jaw": 0.015699765185910756,
+              "hindFarRoot": 0.012930630005763846,
+              "hindFarKnee": 0.07993003564751909,
+              "hindFarAnkle": 0.028931215152145695,
+              "hindFarPaw": 0.02149689021493454,
+              "foreFarRoot": 0.014480165748536286,
+              "foreFarKnee": 0.08505513566851627,
+              "foreFarAnkle": 0.02855532726935146,
+              "foreFarPaw": 0.021460611836396942,
+              "hindNearRoot": 0.008774501714967069,
+              "hindNearKnee": 0.07993003564751909,
+              "hindNearAnkle": 0.02893121515214564,
+              "hindNearPaw": 0.021496890214934592,
+              "foreNearRoot": 0.010930045201420026,
+              "foreNearKnee": 0.08505513566851632,
+              "foreNearAnkle": 0.02855532726935146,
+              "foreNearPaw": 0.02146061183639697,
+              "tail0": 0.04150884196021749,
+              "tail1": 0.03902240730150991,
+              "tail2": 0.031531448146607965,
+              "tail3": 0.02936839024664125,
+              "earFarRoot": 0.02172370104747341,
+              "earFarTip": 0.005694000000000032,
+              "earNearRoot": 0.01293398500076443,
+              "earNearTip": 0.005694000000000032
+            }
+          },
+          "recipeHash": "e0ab5eddf4ae443c5adec4bef125d2c9805706b18d2913b6f47246122391c321"
+        },
+        "triangles": 3389,
+        "vertices": 1922,
+        "alphaLeaves": 765,
+        "restDifferentChannels": 0,
+        "extremes": [
+          {
+            "clip": "idle",
+            "phase": 0,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.0625,
+            "minRatio": 0.9958953824825585,
+            "maxRatio": 1.0029296819120646,
+            "maxEdgeRatio": 1.0043673634505852,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.125,
+            "minRatio": 0.9791494605597109,
+            "maxRatio": 1.0157166505232453,
+            "maxEdgeRatio": 1.0196781130315384,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.1875,
+            "minRatio": 0.9487956464290619,
+            "maxRatio": 1.039451860357076,
+            "maxEdgeRatio": 1.0455433737477358,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.25,
+            "minRatio": 0.9129746539983898,
+            "maxRatio": 1.0674984902143478,
+            "maxEdgeRatio": 1.0760907402301298,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.3125,
+            "minRatio": 0.8853493097703904,
+            "maxRatio": 1.088380431290716,
+            "maxEdgeRatio": 1.102153706719679,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.375,
+            "minRatio": 0.8784223892726004,
+            "maxRatio": 1.091724050231278,
+            "maxEdgeRatio": 1.1153942017011267,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.4375,
+            "minRatio": 0.8962620480451733,
+            "maxRatio": 1.0739996349439025,
+            "maxEdgeRatio": 1.1122867047013358,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.5,
+            "minRatio": 0.922821044921875,
+            "maxRatio": 1.059814453125,
+            "maxEdgeRatio": 1.0954418536509485,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.5625,
+            "minRatio": 0.909138330258429,
+            "maxRatio": 1.0662737761158496,
+            "maxEdgeRatio": 1.1059768144993904,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.625,
+            "minRatio": 0.8882782359141856,
+            "maxRatio": 1.0845863574650139,
+            "maxEdgeRatio": 1.1093236668830164,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.6875,
+            "minRatio": 0.8926880941726267,
+            "maxRatio": 1.0824586211238056,
+            "maxEdgeRatio": 1.0969914128016691,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.75,
+            "minRatio": 0.918111017672345,
+            "maxRatio": 1.0631876718252897,
+            "maxEdgeRatio": 1.072285706691615,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.8125,
+            "minRatio": 0.9520939830690622,
+            "maxRatio": 1.0368152055889368,
+            "maxEdgeRatio": 1.0432320329560123,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.875,
+            "minRatio": 0.9808348899241537,
+            "maxRatio": 1.0145041421055794,
+            "maxEdgeRatio": 1.0186554805391712,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 0.9375,
+            "minRatio": 0.9964065682142973,
+            "maxRatio": 1.0026246120687574,
+            "maxEdgeRatio": 1.0041155354033648,
+            "holdsShape": true
+          },
+          {
+            "clip": "idle",
+            "phase": 1,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.0625,
+            "minRatio": 0.8928229806479067,
+            "maxRatio": 1.1272774727549404,
+            "maxEdgeRatio": 1.1079273384362402,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.125,
+            "minRatio": 0.6714594068471342,
+            "maxRatio": 1.3902310046833009,
+            "maxEdgeRatio": 1.3340436883316555,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.1875,
+            "minRatio": 0.48617614433169365,
+            "maxRatio": 1.6103822907898575,
+            "maxEdgeRatio": 1.5255138818913734,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.25,
+            "minRatio": 0.4823280933778733,
+            "maxRatio": 1.614933803677559,
+            "maxEdgeRatio": 1.5294824636201643,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.3125,
+            "minRatio": 0.6373633160255849,
+            "maxRatio": 1.430757719092071,
+            "maxEdgeRatio": 1.3691638701889948,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.375,
+            "minRatio": 0.8021802299190313,
+            "maxRatio": 1.1042814604006708,
+            "maxEdgeRatio": 1.108030585289572,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.4375,
+            "minRatio": 0.2894193958491087,
+            "maxRatio": 1.4305045118089765,
+            "maxEdgeRatio": 1.5432887650859417,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 0.5,
+            "minRatio": -0.7909083962440491,
+            "maxRatio": 2.511368283070624,
+            "maxEdgeRatio": 2.6509567277600947,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.5625,
+            "minRatio": -1.4565497003495693,
+            "maxRatio": 3.3032626411877573,
+            "maxEdgeRatio": 3.4141037419453606,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.625,
+            "minRatio": -1.3936475310474634,
+            "maxRatio": 3.2880582720972598,
+            "maxEdgeRatio": 3.3806377294038823,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.6875,
+            "minRatio": -1.218019096646458,
+            "maxRatio": 3.13821338606067,
+            "maxEdgeRatio": 3.2171747460458855,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.75,
+            "minRatio": -0.9402995859272778,
+            "maxRatio": 3.0051853102631867,
+            "maxEdgeRatio": 3.034797758066362,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.8125,
+            "minRatio": -0.35279556224122643,
+            "maxRatio": 2.5423361842986196,
+            "maxEdgeRatio": 2.5010592703272763,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.875,
+            "minRatio": -0.9958945363759995,
+            "maxRatio": 3.014865902950987,
+            "maxEdgeRatio": 2.9944123036704138,
+            "holdsShape": false
+          },
+          {
+            "clip": "attack",
+            "phase": 0.9375,
+            "minRatio": 0.4049091008491814,
+            "maxRatio": 1.6005075699649751,
+            "maxEdgeRatio": 1.594484458087374,
+            "holdsShape": true
+          },
+          {
+            "clip": "attack",
+            "phase": 1,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.0625,
+            "minRatio": 0.9293378195725381,
+            "maxRatio": 1.0781792551279068,
+            "maxEdgeRatio": 1.0684201802501632,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.125,
+            "minRatio": 0.7763212155550718,
+            "maxRatio": 1.2531479643657804,
+            "maxEdgeRatio": 1.2199703218078934,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.1875,
+            "minRatio": 0.6285794135183096,
+            "maxRatio": 1.4344383403658867,
+            "maxEdgeRatio": 1.3742713380939378,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.25,
+            "minRatio": 0.5621748273260891,
+            "maxRatio": 1.5306475476827472,
+            "maxEdgeRatio": 1.450526277187255,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.3125,
+            "minRatio": 0.5774001926183701,
+            "maxRatio": 1.519394639879465,
+            "maxEdgeRatio": 1.4697008766340922,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.375,
+            "minRatio": 0.6368381006177515,
+            "maxRatio": 1.4557518451474607,
+            "maxEdgeRatio": 1.456882889202372,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.4375,
+            "minRatio": 0.6602764241397381,
+            "maxRatio": 1.3763360534794629,
+            "maxEdgeRatio": 1.4219862527932765,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.5,
+            "minRatio": 0.6797822215594351,
+            "maxRatio": 1.2911642473191023,
+            "maxEdgeRatio": 1.3757059123506936,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.5625,
+            "minRatio": 0.7064037057571113,
+            "maxRatio": 1.2243289209436625,
+            "maxEdgeRatio": 1.3276932647945543,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.625,
+            "minRatio": 0.7341346177272499,
+            "maxRatio": 1.1952021799515933,
+            "maxEdgeRatio": 1.2872554757365413,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.6875,
+            "minRatio": 0.7744507030583918,
+            "maxRatio": 1.1630483674816787,
+            "maxEdgeRatio": 1.2340242275653794,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.75,
+            "minRatio": 0.8273204285651445,
+            "maxRatio": 1.1210746564902365,
+            "maxEdgeRatio": 1.1731179271234249,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.8125,
+            "minRatio": 0.886476481333375,
+            "maxRatio": 1.080910281278193,
+            "maxEdgeRatio": 1.1134412358014574,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.875,
+            "minRatio": 0.9427014561370015,
+            "maxRatio": 1.0418917937204242,
+            "maxEdgeRatio": 1.0571116488988503,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 0.9375,
+            "minRatio": 0.9843345717526972,
+            "maxRatio": 1.011682097101584,
+            "maxEdgeRatio": 1.015557414021764,
+            "holdsShape": true
+          },
+          {
+            "clip": "hit",
+            "phase": 1,
+            "minRatio": 1,
+            "maxRatio": 1,
+            "maxEdgeRatio": 1,
+            "holdsShape": true
+          }
+        ],
+        "support": [
+          {
+            "clip": "idle",
+            "t": 0.25,
+            "vertices": 142,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "idle",
+            "t": 0.5,
+            "vertices": 142,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "idle",
+            "t": 0.75,
+            "vertices": 142,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "hit",
+            "t": 0.25,
+            "vertices": 142,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "hit",
+            "t": 0.5,
+            "vertices": 142,
+            "maxDisplacement": 0
+          },
+          {
+            "clip": "hit",
+            "t": 0.75,
+            "vertices": 142,
+            "maxDisplacement": 0
+          }
+        ],
+        "mode": "WHOLE-PORTRAIT FALLBACK",
+        "ikRefusals": 0,
+        "depthTriangleCounts": [
+          517,
+          2872
+        ]
+      }
+    ],
+    "captures": [],
+    "errors": [],
+    "background": "Retained unoccupied Earth biome plate from accepted E recipe; E shown intact alongside",
+    "audio": "Existing whoosh and survey-ping cues reused for isolated choreography; not combat outcome qualification"
+  },
+  "error": "Error: quadruped ten-second 2D proof: timed out waiting for Runtime.evaluate\n    at terminalError (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs:865:38)\n    at armAbsoluteDeadline.nowMs.nowMs (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs:1132:18)\n    at Timeout.observe [as _onTimeout] (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/browsercdp.mjs:65:5)\n    at listOnTimeout (node:internal/timers:685:17)\n    at process.processTimers (node:internal/timers:618:7)",
+  "closed": true
+}

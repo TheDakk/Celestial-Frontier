@@ -22,7 +22,11 @@ try{
  for(const row of observation.specimens){fs.writeFileSync(path.join(out,row.id+'-cutout.png'),Buffer.from(row.cutoutPNG,'base64'));delete row.cutoutPNG;fs.writeFileSync(path.join(out,row.id+'-resolved-anatomy.json'),JSON.stringify(row.record,null,2)+'\n');}
  report.observation=observation;persist();
  for(const id of ['civet','fox','procedural']){
-  const result=await evaluate(`window.cfQuad.capture(${JSON.stringify(id)})`);fs.writeFileSync(path.join(out,id+'-10s.webm'),Buffer.from(result.video,'base64'));delete result.video;
+  await evaluate(`window.cfQuad.select(${JSON.stringify(id)})`);
+  // Real trusted input owns the audio gesture, as in the ordinary game.
+  await send('Input.dispatchMouseEvent',{type:'mousePressed',x:105,y:32,button:'left',clickCount:1});
+  await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:105,y:32,button:'left',clickCount:1});
+  const result=await evaluate('window.cfQuad.capturePromise');fs.writeFileSync(path.join(out,id+'-10s.webm'),Buffer.from(result.video,'base64'));delete result.video;
   const media=JSON.parse(execFileSync('ffprobe',['-v','error','-show_entries','format=duration,size:stream=codec_name,codec_type','-of','json',path.join(out,id+'-10s.webm')],{encoding:'utf8'}));
   result.encodedMedia=media;report.captures.push(result);persist();requireTenSecondMedia(Number(media.format.duration));
   for(const [label,time]of [['rest',0],['anticipation',3484],['strike',4276],['hit',5525]]){await evaluate(`window.cfQuad.frame(${time})`);const {data}=await send('Page.captureScreenshot',{format:'png',clip:{x:0,y:58,width:1536,height:740,scale:1}});fs.writeFileSync(path.join(out,id+'-'+label+'.png'),Buffer.from(data,'base64'));}
