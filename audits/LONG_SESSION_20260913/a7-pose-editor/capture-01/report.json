@@ -1,0 +1,283 @@
+{
+  "status": "REVIEW",
+  "source": "26cae070b90cc18c713bfddd19f605cf6cdf0e21",
+  "action": "melee:bite",
+  "pose": 2,
+  "errors": [],
+  "files": [
+    {
+      "file": "skeleton.png",
+      "selector": "#skeleton",
+      "sha256": "a2bc278be4aad720d55c7266253ac86c64509e938f5a7c967b62669822a36cde"
+    },
+    {
+      "file": "painted.png",
+      "selector": "#painted",
+      "sha256": "685e05759f09c275bd94f9c4c69a8e5731895849dc8ef8846e9851be7456d88d"
+    },
+    {
+      "file": "editor.png",
+      "selector": "page",
+      "sha256": "aa02f37e4f03b32f6f6987f5923c76b799212e4192fa34d2e6cbba2973b1a83f"
+    },
+    {
+      "file": "skeleton-edited.png",
+      "selector": "#skeleton",
+      "sha256": "f404157b90653bc5ecc49270ea927d6e01b96a0076b0cc07915cf596d9101dcc"
+    },
+    {
+      "file": "painted-edited.png",
+      "selector": "#painted",
+      "sha256": "8c489097fca4df6e83595726841ebbfb8df66450dca5515f56d58e11b3d5d6da"
+    }
+  ],
+  "origin": "http://127.0.0.1:58733",
+  "assets": {
+    "record": {
+      "path": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    "master": {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b"
+    }
+  },
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.32",
+    "revision": "@9aab8632678bdbd60c393455e1394ee523ba682d",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.4",
+    "protocol_version": "1.3"
+  },
+  "page": {
+    "status": "READY",
+    "actionId": "melee:bite",
+    "sel": 2,
+    "painted": true,
+    "paintedLabel": "fixture rig (landmark-derived parts) · 19 parts · 516758 px",
+    "actionHash": "16d955be",
+    "overlayHash": "8baab536",
+    "timelineHash": "f085187b",
+    "scrubMs": 209.66666666666666,
+    "statusLine": "quadruped/melee:bite · 5 poses · action hash 16d955be · overlay hash 8baab536 · timeline hash f085187b · body 430.7 ms / total 942.7 ms · clamped none · equals table\nfixture rig (landmark-derived parts) · 19 parts · 516758 px"
+  },
+  "exportedOverlay": {
+    "schema": "cf.motion.action-overlay/v1",
+    "templateId": "quadruped",
+    "actionId": "melee:bite",
+    "poses": [
+      {
+        "t": 0.27631578947368424,
+        "ease": "ease-in",
+        "joints": {
+          "foreFarAnkle": -30,
+          "foreFarKnee": -12,
+          "foreNearAnkle": -30,
+          "foreNearKnee": -12,
+          "head": 10,
+          "hindFarAnkle": 30,
+          "hindFarKnee": 15,
+          "hindNearAnkle": 30,
+          "hindNearKnee": 15,
+          "neck": 8,
+          "spine": 12,
+          "tail0": -9
+        },
+        "root": {
+          "dx": -0.04,
+          "dy": 0.03
+        }
+      },
+      {
+        "t": 0.45394736842105265,
+        "ease": "ease-out",
+        "joints": {
+          "foreFarAnkle": 10,
+          "foreFarKnee": -30,
+          "foreNearAnkle": 10,
+          "foreNearKnee": -30,
+          "head": -6,
+          "hindFarAnkle": -10,
+          "hindFarKnee": 30,
+          "hindNearAnkle": -10,
+          "hindNearKnee": 30,
+          "jaw": -10,
+          "neck": -10,
+          "spine": -6,
+          "tail0": -12
+        },
+        "root": {
+          "dx": 0.36,
+          "dy": -0.05
+        }
+      },
+      {
+        "t": 0.4868421052631579,
+        "ease": "ease-out",
+        "joints": {
+          "foreFarAnkle": 10,
+          "foreFarKnee": -30,
+          "foreNearAnkle": 10,
+          "foreNearKnee": -40,
+          "head": 12,
+          "hindFarAnkle": -10,
+          "hindFarKnee": 30,
+          "hindNearAnkle": -10,
+          "hindNearKnee": 30,
+          "jaw": -25,
+          "neck": 6,
+          "spine": -2
+        },
+        "root": {
+          "dx": 0.4,
+          "dy": -0.01
+        }
+      },
+      {
+        "t": 0.7690789473684211,
+        "ease": "back-out",
+        "joints": {
+          "foreFarAnkle": -10,
+          "foreFarKnee": -4,
+          "foreNearAnkle": -10,
+          "foreNearKnee": -4,
+          "head": 2,
+          "hindFarAnkle": 10,
+          "hindFarKnee": 5,
+          "hindNearAnkle": 10,
+          "hindNearKnee": 5,
+          "spine": 3,
+          "tail0": -3
+        },
+        "root": {
+          "dx": 0.1,
+          "dy": 0.01
+        }
+      },
+      {
+        "t": 1,
+        "ease": "ease-out",
+        "joints": {},
+        "root": {
+          "dx": 0,
+          "dy": 0
+        }
+      }
+    ]
+  },
+  "edit": {
+    "joint": "head",
+    "deg": -30,
+    "page": {
+      "actionHash": "c20f06ab",
+      "overlayHash": "bb28ed63",
+      "timelineHash": "04df1da7",
+      "statusLine": "quadruped/melee:bite · 5 poses · action hash c20f06ab · overlay hash bb28ed63 · timeline hash 04df1da7 · body 430.7 ms / total 942.7 ms · clamped none · EDITED vs table\nfixture rig (landmark-derived parts) · 19 parts · 516758 px"
+    },
+    "exportedOverlay": {
+      "schema": "cf.motion.action-overlay/v1",
+      "templateId": "quadruped",
+      "actionId": "melee:bite",
+      "poses": [
+        {
+          "t": 0.27631578947368424,
+          "ease": "ease-in",
+          "joints": {
+            "foreFarAnkle": -30,
+            "foreFarKnee": -12,
+            "foreNearAnkle": -30,
+            "foreNearKnee": -12,
+            "head": 10,
+            "hindFarAnkle": 30,
+            "hindFarKnee": 15,
+            "hindNearAnkle": 30,
+            "hindNearKnee": 15,
+            "neck": 8,
+            "spine": 12,
+            "tail0": -9
+          },
+          "root": {
+            "dx": -0.04,
+            "dy": 0.03
+          }
+        },
+        {
+          "t": 0.45394736842105265,
+          "ease": "ease-out",
+          "joints": {
+            "foreFarAnkle": 10,
+            "foreFarKnee": -30,
+            "foreNearAnkle": 10,
+            "foreNearKnee": -30,
+            "head": -6,
+            "hindFarAnkle": -10,
+            "hindFarKnee": 30,
+            "hindNearAnkle": -10,
+            "hindNearKnee": 30,
+            "jaw": -10,
+            "neck": -10,
+            "spine": -6,
+            "tail0": -12
+          },
+          "root": {
+            "dx": 0.36,
+            "dy": -0.05
+          }
+        },
+        {
+          "t": 0.4868421052631579,
+          "ease": "ease-out",
+          "joints": {
+            "foreFarAnkle": 10,
+            "foreFarKnee": -30,
+            "foreNearAnkle": 10,
+            "foreNearKnee": -40,
+            "head": -30,
+            "hindFarAnkle": -10,
+            "hindFarKnee": 30,
+            "hindNearAnkle": -10,
+            "hindNearKnee": 30,
+            "jaw": -25,
+            "neck": 6,
+            "spine": -2
+          },
+          "root": {
+            "dx": 0.4,
+            "dy": -0.01
+          }
+        },
+        {
+          "t": 0.7690789473684211,
+          "ease": "back-out",
+          "joints": {
+            "foreFarAnkle": -10,
+            "foreFarKnee": -4,
+            "foreNearAnkle": -10,
+            "foreNearKnee": -4,
+            "head": 2,
+            "hindFarAnkle": 10,
+            "hindFarKnee": 5,
+            "hindNearAnkle": 10,
+            "hindNearKnee": 5,
+            "spine": 3,
+            "tail0": -3
+          },
+          "root": {
+            "dx": 0.1,
+            "dy": 0.01
+          }
+        },
+        {
+          "t": 1,
+          "ease": "ease-out",
+          "joints": {},
+          "root": {
+            "dx": 0,
+            "dy": 0
+          }
+        }
+      ]
+    }
+  }
+}
