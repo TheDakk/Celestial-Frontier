@@ -152,3 +152,11 @@ mass,locomotion,realm,weapons,luminous and numeric rotation/secondary limits. Th
 supplies those via named-Earth mapping or procedural genome/template defaults, not our rig.
 This is compiler interop only, not GSAP/ground-contact/fps/motion acceptance. Prepared producer
 root-offset fix remains blocked by cross-lane ownership. No protected source edited or merged.
+
+## C2 native rest admission across all three records
+
+native-procedural-rest-01 onf5e17fb8 PASS:21parts,0changedRGBAchannels; missing-head negative
+6832changedchannels;0.0066ms mean empty-pose update. This completes native REST admission
+alongside Civet and fox, not motion/contact/60fps/staging. C2 captures remain blocked on the
+prepared Claude GSAP root-offset fix, then shape/contact qualification. Source,atlas hashes,
+compiler cards/timelines and all failed observations retained. C3 not started. GitHub none.

@@ -17,112 +17,66 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-13 · Pack6 / C2 native masks
+## SESSION HANDOFF — 2026-09-13 · Pack6 / C2 rest admission
 
-Pack5 is committed verbatim at0341be68, superseding Pack4. Receipt with19path hashes:
-audits/LONG_SESSION_20260913/pack5-receipt.json. Earlier Codex LOG preserved verbatim in
-LOG-CODEX-PRE-PACK5.md; WORK_ORDER.md, CONTRACTS.md, LOG-A11.md and LOG-B.md bind this lane.
-C1 mechanical intake is COMPLETE per supplied targeted review: both impact clusters accepted,
-rose streak/leaf rim are master paint. Nick owns final image acceptance. No further correction,
-repaint, generation or kit change. Current anchors/receipt use targeted impact, second-pass
-travel and unchanged launch. MID intake accepted. Art Kit4.3 frozen style/4E unchanged.
+Pack6 committed verbatim18bd7368 after staged C2 sourcec1452f46.23provided paths verified
+in audits/LONG_SESSION_20260913/pack6-receipt.json; prior Codex LOG retained verbatim in
+LOG-CODEX-PRE-PACK6.md. Pack6 supersedes Pack5. WORK_ORDER/CONTRACTS/LOG-A11/LOG-B govern.
+MOTION_KIT/SOUND_KIT are supplied bytes; their implementation claims describe Claude's lane.
+Nick's delegated decisions are adopted: study audio through decorativeVoicePort(); impact
+image holds240ms after hitstop then fades120ms. No additional kit wording changed.
 
-C2: CreatureRigV1 implemented with local joint rotations/offsets in body-length units and
-inherited transforms. Civet32parts with10turnaround underlaps in one2047x951atlas; native
-rest-02 passed0changedRGBAchannels, missing-head mutant234525changedchannels,0.0068ms mean
-empty-pose update. No motion/60fps/contact acceptance. Fox now has22hash-bound authored parts
-in one2038x1085atlas, offline rest/atlas readback0changedchannels. No fox turnaround exists;
-no invented turnaround or new image generation. Fox native rest is the next bounded check.
+C1 mechanical intake COMPLETE; Nick owns final image acceptance. Both impact clusters are
+accepted master paint; no further Wild correction, erosion, repaint or generation. Current
+anchors retain targeted impact,second-pass travel,unchanged launch; MID accepted. Art Kit4.3
+and frozen style/4E unchanged. The10unpainted effects remain explicitly procedural until Nick
+schedules4K. No Blender/projection/texture-finisher work.
 
-Optional painter mask capture reads actual RGBA changes at winning quadruped draw stages;
-Tube subdivisions use its drawn axis. It emits masks alongside the anatomy, preserves the
-ordinary draw path, and refuses unsupported capture anatomy. Current bounded observer is the
-four-legged banded-tail procedural fixture; other family observers remain work, never synthetic
-records labelled real. LOG-A11 plus LOG-B contain all14 Motion family vocabularies, including
-myriapod/cephalopod/flyer-membrane/primate. Material fix9ae342da reads the actual skin routing;
-the next native capture must emit translucent and compare observed versus ordinary pixels.
-Native runner modes: civet(default), fox, painter. NEW output directory, clean committed source,
-shared checkout lock only around native job; never unit tests. Atlas intake never keys native
-procedural alpha and independently reconstructs every visible master pixel.
+C2 rest admission: CreatureRigV1 uses record joints/local offsets/body-length units and
+inherited transforms. Civet32parts with10turnaround underlaps,fox22authoredparts,procedural21
+painter-emittedparts all pass native WebGL master comparisons:0changedRGBAchannels each.
+Evidence: audits/C2_PARTS_ATLAS_20260913/native-rest-02 (Civet),native-fox-rest-01,
+native-procedural-rest-01. Missing-head mutants change234525/284037/6832channels respectively;
+mean empty-pose update0.0068/0.0069/0.0066ms. These are NOT60fps,motion,contact or staging gates.
 
-Motion producer interop remains blocked: Claude gsap-adapter broadcasts root translation to
-every joint; our inherited local offsets compound it. Read-only producer proof, one-line patch
-and review prompt in audits/C2_MOTION_INTEROP_20260913/. Nick was asked who applies the fix;
-no reply yet and no protected path edited. Continue independent C2 masks/atlases meanwhile.
-After corrected producer: Motion Kit body card/timings, contact/motion checks, Civet–Platypus
-turn in accepted arena and10second Civet/fox/procedural captures. Do not call static atlases a
-C2 proof. Missing body-card fields are listed in C2_PARTS_ATLAS README; no manually typed card.
+Procedural capture originally perturbed ordinary paint; native-painter-parts-01/02 preserve
+those refusals. Current observation finishes ordinary paint first, then replays the same seeded
+winning owner solely for masks. Original ink stays authoritative; replay anatomy/material and
+full original-alpha coverage must agree. native-painter-parts-03 on782e827a passes0ordinary
+render differences,34714paintedpixels,21parts,31quadrupedjoints,actualsurface translucent.
+Newrecord/master/labels/declaration there. Atlas procedural/ is543x261,0packedpixel changes.
+Only four-legged banded-tail observer capture is implemented; other families must emit actual
+LOG-A11/LOG-B inventories in future, never synthetic records labelled real. Fox has no supplied
+turnaround/patches; no invented asset. Per-creature part data is allowed; clips stay shared.
 
-C3 follows proof: rights-recorded original quadruped archetype, Wild/battle sets, temperate
-rain bed and fur impacts, CONTRACTS1 exact names,48k24bitmono dry WAV plus Opus/SHA. Placeholder
-synths in Claude batch are not C3 sources. First sound class stops for Nick. Ten unpainted theme
-effects remain explicitly procedural until Nick schedules Art Kit4K; no new effects painting.
-C4 library twelve at a time in approved order, arenas per biome, each sheet Nick's eye.
-C5 prune openai/mac then three merge-commit tiers into develop: production UI, painted engine,
-research tooling as tools. No new branches. LFS rewrite only on Nick's explicit go, none now.
-No PR Ready before Civet proof, weather pick and phone-tier decision. PR42 parked.
-Rain E retained/active; second weather ladder and up-to3redistributable~1GBMac finishers then
-one phone attempt remain queued. Klein phone probing stopped; delivery waits phone result.
+body-cards-01 contains actual read-only Claude compiler outputs for Civet/fox/procedural and
+idle/melee/hit timelines, source/input hashes. Repeated outputs identical; missing-head controls
+refuse. Civet small0.85/furred,fox medium1.0/furred,procedural huge1.4/translucent. Explicit
+record fields still missing: mass,locomotion,realm,weapons,luminous,numeric rotation/secondary
+limits. Compiler supplies named mappings or procedural genome/template defaults; cards' notes
+are empty. No manually typed card or changed per-creature curves.
 
-Ownership: OpenAI/Codex on macOS, /Users/nick/Projects/celestial-frontier-openai-mac,
-openai/mac tracks origin/openai/mac. Pack5=83aheadupstream/194aheadcacheddevelop,0behind.
-Uninterrupted September12 toolchain receipt reused. No GitHub write or hosted attempt;
-no push/label/dispatch/merge/release/deploy. Claude owns motion/,effects/,battle2/,soundkit/,
-worldlife/ and tests; do not edit. No main.ts hunk. Nick need not open the other app for routine
-sync; the prepared producer fix is Claude's next coordination item unless Nick grants exception.
-Existing24full-suite failures belong C5; focused negative controls/typecheck/rootvalidate only.
+NEXT C2: producer gsap-adapter still broadcasts root translation to all joints, compounding
+inherited local offsets. Do not change our contract to hide it. Read-only probe, one-line patch
+and copy-ready Claude prompt at audits/C2_MOTION_INTEROP_20260913/. Nick was asked whether
+Claude should fix or grant a one-time exception; no answer/exception yet. Protected source
+untouched. Once corrected: focused interop, Motion-timed joint/ground/contact qualification,
+Civet–Platypus turn in accepted3platearena,10second Civet/fox/procedural captures for Nick.
+C2 is not complete. Do not invent a GSAP acceptance from static rest or sampled timelines.
 
-### Current resume — Pack6 committed, fox native rest passed
+C3 follows C2: original rights-recorded quadruped archetype,Wild/battle sets,temperate rain/fur
+impacts. CONTRACTS1 exact filenames,48k24bitmono dry WAV plus Opus/SHA. Placeholder synth is
+not C3; first new sound class stops for Nick. C4 twelve-at-time approved-order library/arenas,
+every sheet Nick's eye. C5 prune openai/mac then3MERGE-COMMITtiers into develop: production UI,
+painted engine,research tools as tools. No new branches; LFS rewrite only on Nick's explicit go.
+No PRReady before Civet/weatherpick/phone-tier. PR42parked. RainE retained/active; secondweather
+ladder,up-to3redistributable~1GBMacfinishers then1phoneattempt queued. Klein stopped; no delivery
+beforephone-tierresult. Future develop→main release separate exact authorization/full chain.
 
-Signing is resolved: C2 sourcec1452f46, Pack6 verbatim18bd7368 (23paths with SHA/bytes in
-pack6-receipt.json; preoverwrite LOG retained verbatim). Pack6 supersedes Pack5. MOTION_KIT
-and SOUND_KIT supplied implementations describe Claude's lane, not code integrated here.
-Nick's delegated decisions: decorativeVoicePort() owns study audio; impact image holds240ms
-after hitstop, then fades120ms. No additional kit wording changed.
-
-native-fox-rest-01 on18bd7368 passed:22parts,0changedRGBAchannels; missing-head negative
-control284037changedchannels; mean empty-pose update0.0069ms. Evidence and screenshot in
-C2_PARTS_ATLAS_20260913/native-fox-rest-01. No motion/60fps/contact acceptance.
-Next: after committing this evidence, run the NEW native-painter-parts-01 directory in painter
-mode, then construct its procedural atlas from the freshly emitted labels/record. The producer
-GSAP root-broadcast defect is still present read-only in Claude's tree; prepared handoff stands.
-No protected module edits, GitHub action or C3 recording. Continue independent C2 work.
-
-### Native painter mask observation — first refusal retained
-
-native-painter-parts-01 on cee01f47 refused because capture altered ordinary painter pixels;
-no mask/record artifacts admitted. Direct repeated getImageData on the live Canvas2D surface
-is the suspected cause (readbacks can change rendering execution). Capture now copies the
-surface to a separate willReadFrequently canvas before reading; no draw/RNG command changed.
-This hypothesis is not yet native-qualified. The next bounded comparison uses a NEW
-native-painter-parts-02 directory on committed source. It records changed-channel count/max
-on failure and a deliberately corrupted-pixel control. Typecheck,4focusedtests/rootvalidate
-pass. No motion, staging or C3 acceptance. Original refusal remains in report.json.
-
-### Painter readback separation
-
-native-painter-parts-02 on fabfd5e5 still refused370changedchannels,max30. Copying at each
-stage did not establish ordinary-render parity; both refusals retained. The authoring wrapper
-now completes the ordinary render first, then runs the same seeded winning painter separately
-for masks. It returns the original portrait/ink, compares replay anatomy/material, clips mask
-labels only where original alpha is transparent, and refuses any missed visible original pixel.
-No colour/alpha change to the ordinary master is allowed. This is a bounded observation replay,
-not a new creature, model painting, changed parameters or guessed family record. Its native
-check uses NEW native-painter-parts-03 on committed source. No motion acceptance claimed.
-
-### Procedural masks and actual Motion compiler — admitted
-
-native-painter-parts-03 on782e827a PASS: ordinary rendered pixels unchanged (0channels),
-34714paintedpixels,21parts,31quadruped joints,actualsurface translucent. No new genome or
-painting parameters. The separate observation replay supplies labels only; native original
-ink remains authoritative. Its hash-bound record/master/labels/declaration are retained there.
-Procedural atlas is one543x261image,0changedrest/packedRGBAchannels. Native rig rest next.
-
-body-cards-01 uses the actual read-only Claude compiler and retains source/input hashes,
-all3cards and idle/melee/hit timelines. All repeat byte-identically; missing head refuses for
-each. Civet small0.85/furred,fox medium1.0/furred,procedural huge1.4/translucent. No cards or
-per-creature curves typed by hand. Card notes are empty; source records still lack explicit
-mass,locomotion,realm,weapons,luminous and numeric rotation/secondary limits. The compiler
-supplies those via named-Earth mapping or procedural genome/template defaults, not our rig.
-This is compiler interop only, not GSAP/ground-contact/fps/motion acceptance. Prepared producer
-root-offset fix remains blocked by cross-lane ownership. No protected source edited or merged.
+Ownership: OpenAI/Codex on macOS,/Users/nick/Projects/celestial-frontier-openai-mac,openai/mac
+tracksorigin/openai/mac. f5e17fb8=89aheadupstream/200aheadcacheddevelop,0behind; signing works.
+Uninterrupted September12toolchain receipt reused. No Github write/Actions,push,label,dispatch,
+merge,release,deploy or history rewrite. Claude owns motion/,effects/,battle2/,soundkit/,
+worldlife/ and their tests. No main.ts hunk. Claude's next action is the prepared producer fix;
+Nick may pass its review prompt in Claude, no routine branch sync needed. Current targeted
+checks/typecheck/rootvalidate pass;24preexistingfullsuitefailures remain C5,not rerun.
