@@ -47,3 +47,23 @@ proposal passes git apply --check against unchanged kit; documentation diff chec
 Acceptance: NOT YET — stop for Nick's kit wording approval. C2 also needs WORK_ORDER.md.
 At8a2dfdc0:68 ahead upstream/179 ahead cached origin/develop,0 behind. Claude may continue its
 reserved modules; no sync or other-app opening required for this local proposal.
+
+## Work-order intake — received; C1 wording approval still pending
+
+Nick supplied WORK_ORDER.md from the named anthropic/mac path. Read only that attached source
+and copied its exact bytes to this audit directory under his explicit attachment/intake
+instruction; no sibling edit, branch operation or code transfer. Provenance, bytes and hash:
+`work-order-receipt.json`. Pre-intake commit e89cb621; the containing commit records this intake.
+
+Contracts read: C2 loads parts for a record, applies joint rotations/offsets, exposes display
+objects/pivots. A1 owns body-card compilation and named missing-field refusal; A2 consumes
+cf.effect-sequence-anchors/v1; A3 uses labelled fixture rigs until C2; A4 consumes C3 sources by
+archetype and voice card. Keep all Claude-owned paths/tests untouched. Report C1 images,
+C2 ten-second captures, C3 listening files, C4 sheets, C5 exact-head green evidence; mechanical
+packages require typecheck, package tests/negative controls and root validation.
+
+The work order permits temporary subagents on disjoint paths but none were spawned for this
+intake. Direct no-new-branches rule stands. More material is coming per Nick; no inference of
+v4.3 approval. Pending: approve e89cb621 proposal, then one Wild repaint. MID despill already
+done once. No code, sound, painting, history rewrite, GitHub write or package acceptance in
+this documentation intake. Source-byte comparison and git diff --check pass.

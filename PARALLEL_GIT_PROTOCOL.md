@@ -19,7 +19,9 @@ promotion and release gates still apply.
 Nick reports anthropic/mac now contains Codex history. Claude owns new motion/, effects/,
 battle2/, soundkit/, worldlife/ modules and their tests; Codex must not edit those paths.
 Any main.ts hunk must be announced in its commit message. WORK_ORDER.md supplies the shared
-rig runtime interface and package evidence requirements; its file is still pending intake.
+rig runtime interface and package evidence requirements; it was received verbatim September13
+at audits/LONG_SESSION_20260913/WORK_ORDER.md. Nick's direct no-new-branches instruction remains
+controlling; the document's temporary-subagent allowance does not require delegation.
 
 ## Current clean promotion plan — Nick, 2026-09-12
 

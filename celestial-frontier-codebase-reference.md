@@ -11,7 +11,9 @@ Arena template v1 is accepted; MID's exact190-pixel copy-only despill is complet
 material diff awaits approval, then one common-canvas Wild repaint precedes C2 parts-rig work.
 World-life Motion Kit and Sound Kit supplied v1 files are retained verbatim in8a2dfdc0; Nick's
 approval is recorded separately from their supplied PROPOSED labels. Work order/interface file
-remains missing. See ROADMAP.md and audits/LONG_SESSION_20260913/LOG.md for lane boundaries.
+is now retained at audits/LONG_SESSION_20260913/WORK_ORDER.md. C2 exposes record-based part
+loading, pose application (joint rotations/offsets), display objects and pivots. Claude owns
+compilers/sequencers/battle/sound/world-life modules. See ROADMAP.md and the package LOG.md.
 
 **Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
 emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical

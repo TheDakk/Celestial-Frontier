@@ -27,8 +27,10 @@ specified in the supplied work order, and log each package in audits/LONG_SESSIO
 Supplied arena review, revised world-life MOTION_KIT.md and SOUND_KIT.md committed verbatim
 in8a2dfdc0. Hash/byte receipt: audits/LONG_SESSION_20260913/supplied-kits-receipt.json. The kits'
 PROPOSED labels are supplied bytes; Nick's existing approval remains authoritative.
-WORK_ORDER.md alone remains missing from its named audit path and Downloads. Do not invent its
-rig interface or evidence requirements; receive and commit it verbatim before dependent work.
+WORK_ORDER.md received September13 from Nick's explicitly attached sibling-worktree file,
+read and retained verbatim at audits/LONG_SESSION_20260913/WORK_ORDER.md. Hash/byte/source
+receipt: work-order-receipt.json beside it. No sibling worktree edit or Git operation.
+Nick says more material is coming; current C1 kit-wording approval stop remains in place.
 C1 proposal: audits/LONG_SESSION_20260913/ART_KIT_V43_PROPOSED.diff. Exact eleven review rows,
 all game accents source-verified, accent-only/body-colour rule and subject-slot binding.
 Canonical ART_KIT.md unchanged v4.2; frozen style/4E unchanged. STOP for Nick's diff approval.
@@ -47,8 +49,13 @@ C2: parts masks per authored master, turnaround joint patches, painter-emitted p
 parts, pose application and one deterministic atlas per creature with pinned packer. Compile
 body cards from resolved anatomy using Motion Kit §§3–6; report absent fields. Civet versus
 Platypus in accepted arena with Motion timings; ten-second Civet/fox/procedural captures.
-Expose the runtime interface named in WORK_ORDER.md once supplied. No more continuous-mesh
-repair, Blender projections or texture finisher passes. Retain older proof evidence/assets.
+C2 interface: load parts for a resolved record; apply a pose of joint rotations and offsets;
+expose part display objects and pivots. Claude's fixture uses this same contract until C2 lands.
+Claude owns the body-card compiler (A1), effects sequencer (A2), battle scene adapter (A3), sound
+derivation (A4) and world-life (A5). Codex supplies rig/parts and source assets, without editing
+those modules. Effect anchors schema: cf.effect-sequence-anchors/v1. Missing anatomy fields
+must produce named refusal. No more continuous-mesh repair, Blender projections or texture
+finisher passes. Retain older proof evidence/assets.
 
 C3: quadruped voice archetype, Wild theme set, battle set, temperate rain bed, fur impacts;
 rights recorded; 48kHz WAV masters plus Opus. Derive Civet/fox/procedural voices from one
@@ -74,12 +81,13 @@ updates, no peer override/second renderer; not yet battle-wired. Three emitter a
 tests, v2 TypeScript and root validate passed in07c93945. All approved masters immutable;
 PNG optimization copies-only; GSAP3.15.0 and packer core0.3.9/CLI0.3.0 remain pinned.
 Rain E remains accepted/active; raw finisher and originals retained. Existing weather and phone
-follow-ups remain recorded; WORK_ORDER must resolve their placement rather than guessing.
+follow-ups remain recorded; the supplied work order does not place weather/phone evaluation
+within C1–C5. Preserve those queued requirements and resolve scope when their order matters.
 Klein phone probing remains stopped; no delivery engineering before phone-tier result.
 
 Ownership verified: OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac,
 openai/mac → origin/openai/mac; SSH origin git@github.com:TheDakk/Celestial-Frontier.git.
-Supplied-file commit8a2dfdc0:68 ahead upstream/179 ahead cached origin/develop, zero behind. No remote
+Pre-intake commit e89cb621:69 ahead upstream/180 ahead cached origin/develop, zero behind. No remote
 refresh needed or performed; .DS_Store excluded. Current budget file says UNFROZEN, but Nick's
 explicit GitHub step NONE controls: no push/label/dispatch/merge/release/deploy or hosted attempt.
 This batch is documentation only; no runtime/build/render or tool maintenance needed.
