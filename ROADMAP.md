@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-13 · Pack5 / C2 parts
+## SESSION HANDOFF — 2026-09-13 · Pack6 / C2 native masks
 
 Pack5 is committed verbatim at0341be68, superseding Pack4. Receipt with19path hashes:
 audits/LONG_SESSION_20260913/pack5-receipt.json. Earlier Codex LOG preserved verbatim in
@@ -72,17 +72,18 @@ worldlife/ and tests; do not edit. No main.ts hunk. Nick need not open the other
 sync; the prepared producer fix is Claude's next coordination item unless Nick grants exception.
 Existing24full-suite failures belong C5; focused negative controls/typecheck/rootvalidate only.
 
-### Immediate resume — signing agent unavailable
+### Current resume — Pack6 committed, fox native rest passed
 
-The C2 fox/painter batch is staged and passes3node tests,9focused Vitest tests, v2typecheck
-and root validation. Signed commit attempt failed with `1Password: agent returned an error`;
-no unsigned commit substituted. Latest signed HEAD remains0341be68 (83aheadupstream,
-194aheadcacheddevelop,0behind). Nick has been asked to unlock/approve the signing prompt.
-After signing, native commands (outside sandbox, NEW output) are:
-`node port/v2/tools/quadruped-proof/parts-rest-runner.mjs audits/C2_PARTS_ATLAS_20260913/native-fox-rest-01 fox`
-and then after retaining/committing its result,
-`node port/v2/tools/quadruped-proof/parts-rest-runner.mjs audits/C2_PARTS_ATLAS_20260913/native-painter-parts-01 painter`.
-Stop on a failed native result and diagnose it; no automatic retry. Neither has run yet.
-Then build the procedural atlas from its record/master/declaration using build-authored-parts,
-which dispatches painter intake by schema and preserves native alpha. Producer offset fix and
-motion/contact/staging/three10second captures remain after these admissions. C3 follows.
+Signing is resolved: C2 sourcec1452f46, Pack6 verbatim18bd7368 (23paths with SHA/bytes in
+pack6-receipt.json; preoverwrite LOG retained verbatim). Pack6 supersedes Pack5. MOTION_KIT
+and SOUND_KIT supplied implementations describe Claude's lane, not code integrated here.
+Nick's delegated decisions: decorativeVoicePort() owns study audio; impact image holds240ms
+after hitstop, then fades120ms. No additional kit wording changed.
+
+native-fox-rest-01 on18bd7368 passed:22parts,0changedRGBAchannels; missing-head negative
+control284037changedchannels; mean empty-pose update0.0069ms. Evidence and screenshot in
+C2_PARTS_ATLAS_20260913/native-fox-rest-01. No motion/60fps/contact acceptance.
+Next: after committing this evidence, run the NEW native-painter-parts-01 directory in painter
+mode, then construct its procedural atlas from the freshly emitted labels/record. The producer
+GSAP root-broadcast defect is still present read-only in Claude's tree; prepared handoff stands.
+No protected module edits, GitHub action or C3 recording. Continue independent C2 work.

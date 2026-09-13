@@ -1,3 +1,20 @@
+# September13 — resolved C2 signing boundary (verbatim)
+
+### Immediate resume — signing agent unavailable
+
+The C2 fox/painter batch is staged and passes3node tests,9focused Vitest tests, v2typecheck
+and root validation. Signed commit attempt failed with `1Password: agent returned an error`;
+no unsigned commit substituted. Latest signed HEAD remains0341be68 (83aheadupstream,
+194aheadcacheddevelop,0behind). Nick has been asked to unlock/approve the signing prompt.
+After signing, native commands (outside sandbox, NEW output) are:
+`node port/v2/tools/quadruped-proof/parts-rest-runner.mjs audits/C2_PARTS_ATLAS_20260913/native-fox-rest-01 fox`
+and then after retaining/committing its result,
+`node port/v2/tools/quadruped-proof/parts-rest-runner.mjs audits/C2_PARTS_ATLAS_20260913/native-painter-parts-01 painter`.
+Stop on a failed native result and diagnose it; no automatic retry. Neither has run yet.
+Then build the procedural atlas from its record/master/declaration using build-authored-parts,
+which dispatches painter intake by schema and preserves native alpha. Producer offset fix and
+motion/contact/staging/three10second captures remain after these admissions. C3 follows.
+
 # September 13 — pre-Pack5 C2 handoff (verbatim)
 
 ## SESSION HANDOFF — 2026-09-13 · Pack4 / C2 native rest admission

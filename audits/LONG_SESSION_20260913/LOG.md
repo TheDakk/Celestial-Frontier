@@ -22,3 +22,12 @@ The full `vitest run` on this tree has 24 failing tests in 12 files. All 24 fail
 
 - 2026-09-13 Wild second intake reviewed: travel ACCEPT, impact TARGETED INTAKE FIX (two clusters), registration ACCEPT, no further erosion; response in audits/WILD_V43_PROOF_20260913/second-pass/.
 - 2026-09-13 Wild targeted impact pass reviewed: both clusters ACCEPT (tuft rose streak and leaf rim are master paint; my second-pass read corrected); C1 mechanical intake complete pending Nick's eye; response in audits/WILD_V43_PROOF_20260913/targeted-pass/.
+
+## Codex C2 continuation — Pack6
+
+C2 fox/painter source signedc1452f46; Pack6 committed verbatim18bd7368,23paths verified.
+Prior local LOG preserved verbatim in LOG-CODEX-PRE-PACK6.md. Signing resolved. Native fox
+rest on18bd7368 PASS:22parts,0changedRGBAchannels, missing-head mutant284037channels,
+0.0069ms mean empty-pose update. Report/screenshot: ../C2_PARTS_ATLAS_20260913/native-fox-rest-01/.
+Not motion acceptance. Native procedural masks next; producer root-broadcast fix still pending
+in protected Claude motion/. Audio-owner and240msimpact-hold decisions adopted as supplied.
