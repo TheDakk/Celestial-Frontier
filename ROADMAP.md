@@ -56,3 +56,8 @@ behind; E source commit follows. Unrelated.DS_Store untouched. Reuse Sept12 star
 GitHub step NONE, PR42 parked, no PR needed, zero hosted attempts authorized. No release or
 deployment; budget UNFROZEN/public/private fallback3000. Anthropic/Claude Code need not open
 or sync now; these commits are local and not in develop. Report IDs/ahead at each stop.
+
+Ordinary-game proof on signed8b01e38c PASS: painter composite201.296ms, accepted E loaded
+by normal code (no injected original), retained/reloaded and opened in Inspect with exact
+PNG SHA. Zero model/worker requests and inference. Screenshot visually inspected.
+Evidence ordinary-game-01; source49 ahead upstream/160 ahead cacheddevelop, zero behind.

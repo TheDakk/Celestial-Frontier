@@ -23,3 +23,8 @@ Browser proof follows signed source. Unit tests never acquired a checkout lock.
 First offline replay controller exited137 while using assert.deepEqual for a deliberately
 unequal2.36MB array. Cause unconfirmed; no model ran. The corrected comparison uses bounded
 byte equality and preserves this first instrument failure.
+
+Ordinary-game proof on signed8b01e38c PASS: painter composite201.296ms, accepted E loaded
+by normal code (no injected original), retained/reloaded and opened in Inspect with exact
+PNG SHA. Zero model/worker requests and inference. Screenshot visually inspected.
+Evidence ordinary-game-01; source49 ahead upstream/160 ahead cacheddevelop, zero behind.
