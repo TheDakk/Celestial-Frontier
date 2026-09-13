@@ -143,3 +143,17 @@ refresh needed or performed; .DS_Store excluded. Current budget file says UNFROZ
 explicit GitHub step NONE controls: no push/label/dispatch/merge/release/deploy or hosted attempt.
 This C1 batch reuses the uninterrupted September12 maintenance receipt; Node26.8.2 verified.
 Latest C2 runtime/test/declaration and review-package documentation remain local; no main.ts hunk.
+
+
+### Pack3 continuation — 2026-09-13
+
+Pack3 verbatim commit56509c0c supersedes incoming packet status; prior local chronological log
+is preserved in audits/LONG_SESSION_20260913/LOG-CODEX-PRE-PACK3.md. CONTRACTS§§1–6 unchanged.
+A11 family joint inventories are binding when their painter observers are added; current C2
+proof targets quadruped first. Claude lane complete per Nick, code not integrated here.
+C1 second intake attempted once (radius8 inward samples then1pxerode); travel110/impact85
+unresolved, targetunder40 FAILED. No automatic repeat. Review images/prompt/receipt in
+ audits/WILD_V43_PROOF_20260913/second-pass/.
+Updated anchors identify candidate derived copies; every master, launch and MID unchanged.
+C2 independent coding continues; no effect staging acceptance implied. All24pre-existing full
+suite failures listed in incomingLOG belong to C5; do not run a new full-chain admission now.

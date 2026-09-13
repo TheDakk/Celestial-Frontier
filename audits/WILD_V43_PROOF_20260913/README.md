@@ -9,7 +9,27 @@ Three built-in imagegen calls, one per phase, no reroll, local inference or v3 r
 `generation.json` binds exact prompts, original outputs and hashes. The compiler-produced
 Earth system card is reused verbatim from the accepted contact proof; nobody typed a card.
 
-## Images for Nick's review — not yet accepted
+## September 13 Pack 3: second intake result — target missed
+
+Claude accepts the art, launch, registration and prior MID despill; Nick owns final image acceptance.
+One second pass on travel/impact keyed copies used an 8px circular inward search, simultaneous
+magenta suppression toward an opaque interior neighbour, then exactly one pixel of alpha erosion.
+Travel: 612 contaminated edge targets, 469 corrected, **110 unresolved** after erosion.
+Impact: 592 targets, 447 corrected, **85 unresolved** after erosion. Both miss the under40 target.
+The initial keyer receipt counted unresolved searches, whereas this pass counts all surviving
+contaminated edge pixels; those metrics are explicitly distinct. No threshold was changed.
+`second-pass/receipt.json` retains every correction/source index, unresolved index, hashes and
+unchanged registration transform. `second-despill.mjs` fails after preserving these candidates.
+No additional pass or generation was run. Launch/MID and every master remain unchanged.
+
+[Three phases](second-pass/wild-phases-review.png), [travel at200%](second-pass/travel-fringe-200.png),
+[impact at200%](second-pass/impact-fringe-200.png). Fine pink remains visible at200%; these are
+candidates, not a claimed clean intake. Registered anchor hashes/paths now identify the new copies;
+original per-phase fallback image hashes still bind originals, with a separate corrected keyed hash.
+Previous parser inputs are retained in second-pass/*.before. C2 coding continues independently;
+effect staging acceptance awaits Nick's direction on the remaining fringe.
+
+## Original generation and first intake evidence
 
 ![Original master phases](wild-masters-review.png)
 

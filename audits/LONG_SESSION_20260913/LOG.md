@@ -18,3 +18,16 @@ Packages per WORK_ORDER.md. One entry per package on acceptance: commit, evidenc
 The full `vitest run` on this tree has 24 failing tests in 12 files. All 24 fail identically on Codex's committed head openai/mac 1e65e006 (verified in a temporary detached checkout of that exact commit, then removed): app-chrome-main-wiring (3), compendium-budget (2), current-producer-authorities (suite), evidence-build-runtime (2, needs the evidence build with onnxruntime), exceptional-crafting-evidence-contract (2), guide-release (1), painted-earth-mount-ownership (12), pwa-offline (1), slicesmoke-sixth-red-contract (1), and three `node:test` .mjs files under tools/ that vitest collects with 0 tests. None is caused by the merge or by packages A1 to A6. They belong to Codex's lane (C5 pruning and exact-head admission) and are recorded here so nobody mistakes them for new reds.
 | A7 pose editor | accepted (mechanical); Nick's tool | 20f50f70 | audits/LONG_SESSION_20260913/a7-pose-editor/capture-01/; 11 tests |
 | A11 family motion templates | accepted (mechanical); synthetic landmarks, not anatomy evidence; myriapod, cephalopod, flyer-membrane, primate still unbuilt (registry test names them) | see git log | audits/LONG_SESSION_20260913/a11-family-sheets/ (nine sheets, byte-identical on re-run); 54 motion tests |
+
+
+## Codex C1 — Pack3 receipt and bounded second intake, 2026-09-13
+
+Pack3 retained verbatim in signed56509c0c; earlier local log retained verbatim in
+LOG-CODEX-PRE-PACK3.md. CONTRACTS is unchanged byte-for-byte. Input hashes in pack3-receipt.json.
+One requested second despill pass: radius8 then one-pixel erode, from first keyed copies.
+Travel110/impact85 unresolved: under40 target FAILED. No retry, repaint or generation.
+Evidence: ../WILD_V43_PROOF_20260913/second-pass/ (three-phase sheet, two native200% comparisons,
+receipt with per-pixel neighbour indices, review prompt); updated registered hashes/paths and
+fallback keyed hash; originals unchanged. Launch/MID unchanged. Nick's decision remains pending;
+independent C2 coding continues. Claude's24pre-existing test failures stay C5. No main.ts,
+Claude modules, GitHub write or history rewrite.

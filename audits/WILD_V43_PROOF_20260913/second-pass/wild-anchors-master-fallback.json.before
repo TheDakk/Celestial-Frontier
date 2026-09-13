@@ -52,7 +52,7 @@
     {
       "phase": "travel",
       "image": "wild-travel.png",
-      "keyedImage": "second-pass/keyed/wild-travel.png",
+      "keyedImage": "keyed/wild-travel.png",
       "imageSha256": "bd62c402b5bdc4929a29943952b29e5736e27f7f3ec325214bc0f5a68fb29679",
       "canvasSize": {
         "width": 1254,
@@ -67,18 +67,17 @@
         0.55
       ],
       "alphaBoundsPixels": {
-        "x": 41,
-        "y": 329,
-        "width": 1136,
-        "height": 604
+        "x": 37,
+        "y": 326,
+        "width": 1162,
+        "height": 612
       },
-      "qualityAccepted": false,
-      "keyedImageSha256": "0998c36886f2fb6f0f8a6c9fcf7938afbac6e4315045805e53af55a69c09ae1a"
+      "qualityAccepted": false
     },
     {
       "phase": "impact",
       "image": "wild-impact.png",
-      "keyedImage": "second-pass/keyed/wild-impact.png",
+      "keyedImage": "keyed/wild-impact.png",
       "imageSha256": "978296588ae7ad5694380c92ab7499f34a4a9ec27c654b064b82b7c0a924fc79",
       "canvasSize": {
         "width": 1254,
@@ -93,13 +92,12 @@
         0.56
       ],
       "alphaBoundsPixels": {
-        "x": 496,
-        "y": 271,
-        "width": 725,
-        "height": 711
+        "x": 470,
+        "y": 269,
+        "width": 752,
+        "height": 718
       },
-      "qualityAccepted": false,
-      "keyedImageSha256": "4170164be8efab0311d06492f68aca2ec8d2ea72bb6f888c0c729509ba251beb"
+      "qualityAccepted": false
     }
   ],
   "qualityAccepted": false,
