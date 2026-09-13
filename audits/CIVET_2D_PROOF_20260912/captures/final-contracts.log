@@ -1,0 +1,13 @@
+✔ hash-bound master, corruption, swapped cut-out and unsupported serpent controls (6.871959ms)
+✔ alpha topology refines at silhouette, skips empty regions and shares edges (6.039875ms)
+✔ template finite endpoints restore exact rest; curves move jaw, ears, tail and release feet only in attack (64.684541ms)
+✔ independent media duration rejects first short recordings and missing/overlong evidence (0.432333ms)
+✔ startup feeds frames before acknowledgment and refuses a recorder that never starts (0.226458ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 146.419334

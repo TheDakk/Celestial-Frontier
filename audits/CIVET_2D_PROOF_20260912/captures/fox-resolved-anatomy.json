@@ -1,0 +1,200 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "authored:family-mammal-quadruped:15a3c9d7ee511360ed846a3fe1406c4fde124d99191c7f098538937ff164fdf3",
+    "seed": 0,
+    "ownerId": "authored:family-mammal-quadruped",
+    "earthName": "Red Fox"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "geometry": {
+    "cutoutAssetHash": "15a3c9d7ee511360ed846a3fe1406c4fde124d99191c7f098538937ff164fdf3",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.918,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ],
+    "contactPolicy": "preserve authored perspective and raised-paw offsets"
+  },
+  "landmarks": {
+    "root": [
+      0.58,
+      0.5
+    ],
+    "pelvis": [
+      0.423,
+      0.515
+    ],
+    "spine": [
+      0.56,
+      0.465
+    ],
+    "chest": [
+      0.72,
+      0.5
+    ],
+    "neck": [
+      0.753,
+      0.37
+    ],
+    "head": [
+      0.751,
+      0.27
+    ],
+    "jaw": [
+      0.707,
+      0.357
+    ],
+    "tail0": [
+      0.337,
+      0.544
+    ],
+    "tail1": [
+      0.259,
+      0.651
+    ],
+    "tail2": [
+      0.16,
+      0.714
+    ],
+    "tail3": [
+      0.08,
+      0.8
+    ],
+    "earFarRoot": [
+      0.663,
+      0.187
+    ],
+    "earFarTip": [
+      0.634,
+      0.107
+    ],
+    "earNearRoot": [
+      0.815,
+      0.174
+    ],
+    "earNearTip": [
+      0.829,
+      0.098
+    ],
+    "hindFarRoot": [
+      0.516,
+      0.593
+    ],
+    "hindFarKnee": [
+      0.468,
+      0.751
+    ],
+    "hindFarAnkle": [
+      0.5,
+      0.834
+    ],
+    "hindFarPaw": [
+      0.55,
+      0.861
+    ],
+    "hindNearRoot": [
+      0.412,
+      0.595
+    ],
+    "hindNearKnee": [
+      0.354,
+      0.755
+    ],
+    "hindNearAnkle": [
+      0.344,
+      0.862
+    ],
+    "hindNearPaw": [
+      0.371,
+      0.881
+    ],
+    "foreFarRoot": [
+      0.801,
+      0.562
+    ],
+    "foreFarKnee": [
+      0.816,
+      0.71
+    ],
+    "foreFarAnkle": [
+      0.849,
+      0.858
+    ],
+    "foreFarPaw": [
+      0.898,
+      0.881
+    ],
+    "foreNearRoot": [
+      0.687,
+      0.566
+    ],
+    "foreNearKnee": [
+      0.707,
+      0.736
+    ],
+    "foreNearAnkle": [
+      0.723,
+      0.872
+    ],
+    "foreNearPaw": [
+      0.758,
+      0.903
+    ]
+  },
+  "materials": {
+    "surface": "fur",
+    "sheenTier": "painted",
+    "paletteSource": "authored named master"
+  },
+  "clipSetId": "quadruped-land-v1",
+  "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-mammal-quadruped.png",
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.1577149327108882,
+      "spine": 0.14583895227270394,
+      "chest": 0.1637833935415919,
+      "neck": 0.13412307780542468,
+      "head": 0.10001999800039987,
+      "jaw": 0.09749358953285082,
+      "hindFarRoot": 0.12137956994486344,
+      "hindFarKnee": 0.16513025161974412,
+      "hindFarAnkle": 0.08895504482602429,
+      "hindFarPaw": 0.056824290580701535,
+      "foreFarRoot": 0.10200490184299978,
+      "foreFarKnee": 0.1487581930516769,
+      "foreFarAnkle": 0.15163442880823608,
+      "foreFarPaw": 0.054129474410897487,
+      "hindNearRoot": 0.08075270893288963,
+      "hindNearKnee": 0.17018813119603848,
+      "hindNearAnkle": 0.10746627377926525,
+      "hindNearPaw": 0.033015148038438386,
+      "foreNearRoot": 0.07379024325749298,
+      "foreNearKnee": 0.17117242768623692,
+      "foreNearAnkle": 0.13693794214898952,
+      "foreNearPaw": 0.04675467891024388,
+      "tail0": 0.09075791976461335,
+      "tail1": 0.13241223508422473,
+      "tail2": 0.11734564329364766,
+      "tail3": 0.11745637488020824,
+      "earFarRoot": 0.12096693763173473,
+      "earFarTip": 0.08509406559801924,
+      "earNearRoot": 0.11537764081484765,
+      "earNearTip": 0.07727871634544661
+    }
+  },
+  "recipeHash": "041b75fe872b5500a3cb1da08ce2a8a37e2193b66354fe6ce2f4cb848719d84b"
+}
