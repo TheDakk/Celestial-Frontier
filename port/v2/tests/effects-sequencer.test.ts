@@ -30,7 +30,9 @@ describe('effects sequencer: Motion Kit section 5 schedule', () => {
     expect(s.impactAt).toBe(230);
     expect(s.hitstopAt).toBe(s.impactAt);
     expect(s.hitstopMs).toBe(70);
-    expect(s.impactEnd).toBe(230 + 70 + MOTION_KIT_TIMING.flashFade);
+    expect(s.impactEnd).toBe(230 + 70 + MOTION_KIT_TIMING.impactHold + MOTION_KIT_TIMING.flashFade); expect(MOTION_KIT_TIMING.impactHold).toBe(240);
+    const held = sampleSchedule(s, s.impactAt + 70 + 150).tracks.at(-1)!; expect(held.visible).toBe(true); expect(held.transform.alpha).toBe(1); // still fully shown after the flash has faded (2 frames + 120)
+    expect(sampleSchedule(s, s.impactEnd - 60).tracks.at(-1)!.transform.alpha).toBeCloseTo(0.5, 9); // fading over the last 120
     expect(s.durationMs).toBe(s.impactEnd);
     expect(s.launchAt <= s.travelStart && s.travelStart < s.travelEnd && s.travelEnd <= s.impactAt && s.impactAt < s.impactEnd).toBe(true);
     expect(s.tracks.map((t) => t.phase)).toEqual(['launch', 'travel', 'impact']);
@@ -87,7 +89,8 @@ describe('effects sequencer: Motion Kit section 5 schedule', () => {
     expect(impact.transform.y).toBe(0.78);
     expect(impact.transform.alpha).toBe(1);
     expect(sampleSchedule(s, 230 + 70).transform.alpha).toBe(1);
-    expect(sampleSchedule(s, 230 + 70 + 60).transform.alpha).toBeCloseTo(0.5, 12);
+    expect(sampleSchedule(s, 230 + 70 + 60).transform.alpha).toBe(1); // held through the impact hold
+    expect(sampleSchedule(s, 230 + 70 + MOTION_KIT_TIMING.impactHold + 60).transform.alpha).toBeCloseTo(0.5, 12); // then fades over the flash's 120
     const after = sampleSchedule(s, s.durationMs);
     expect(after.phase).toBe('after');
     expect(after.emitterPhase).toBe('none');

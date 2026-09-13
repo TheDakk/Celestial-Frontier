@@ -3,7 +3,7 @@
  * Melee: launch fills the anticipation at the attacker, the strike is the travel window.
  * Cast: launch rises and holds, the release is the travel window.
  * Neither reads a clock. Impact is aligned to the hitstop frame; hitstop is 70 ms scaled by the
- * ATTACKER's mass class and capped at 140 (Motion Kit §5). */
+ * ATTACKER's mass class and capped at 140 (Motion Kit §5); the impact image then holds 240 ms and fades over the flash fade. */
 import type { EffectPhaseName, EffectSequenceAnchors, NormalizedPoint, PhasePlacement, SequencePlacement } from './anchors.js';
 
 export const EFFECT_SCHEDULE_SCHEMA = 'cf.effect-schedule/v1' as const;
@@ -15,6 +15,8 @@ export const MOTION_KIT_TIMING = Object.freeze({
   melee: Object.freeze({ anticipation: 140, strike: 90, recovery: 260 }),
   cast: Object.freeze({ rise: 180, hold: 120, release: 90, settle: 220 }),
   hitstop: 70, hitstopCap: 140, flashFade: 120,
+  /** Batch 2 (Nick's delegation, 2026-09-13): the impact image holds this long after the hitstop before it fades over flashFade, so the painted impact reads after the white flash instead of under it. */
+  impactHold: 240,
   /** "Never below 60 percent of base on tiny bodies; never above 200 percent." */
   massMin: 0.6, massMax: 2.0,
 });
@@ -92,7 +94,7 @@ export function buildEffectSchedule(anchors: EffectSequenceAnchors, timing: Effe
     launchEnd = travelStart + (k.release * m) / 2; launchGrow = 0.6;
   }
   const impactAt = travelEnd;
-  const impactEnd = impactAt + hitstopMs + MOTION_KIT_TIMING.flashFade;
+  const impactEnd = impactAt + hitstopMs + MOTION_KIT_TIMING.impactHold + MOTION_KIT_TIMING.flashFade;
   const tracks: PhaseTrack[] = [track(placement.launch, launchAt, launchEnd, Math.min(30, (launchEnd - launchAt) / 3), (launchEnd - launchAt) * 0.4, launchGrow, 1)];
   const slot = (travelEnd - travelStart) / placement.travel.length;
   placement.travel.forEach((p, k) => tracks.push(track(p, travelStart + slot * k, travelStart + slot * (k + 1), 0, slot * 0.2, 1, 1)));

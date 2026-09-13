@@ -127,3 +127,14 @@ describe('particle disc (the one tintable texture)', () => {
     expect(() => particleDiscRgba(3)).toThrow(/4\.\.256/); expect(() => particleDiscRgba(7.5)).toThrow(); expect(particleDiscRgba(4)).toHaveLength(64);
   });
 });
+
+describe('player start time', () => {
+  it('an explicit startAtMs puts the schedule at the right time even when the first tick arrives late (a jumped frame), and refuses a non-finite start', () => {
+    const anchors = proceduralAnchorsFor('stone'), stands = { attacker: ARENA.stands.left, target: ARENA.stands.right };
+    const schedule = buildEffectSchedule(anchors, { delivery: 'melee', attackerMassClass: 1 }, placeEffectSequence(anchors, stands));
+    const mk = (startAtMs: number | undefined, now: number) => new EffectSequencePlayer({ host: host(), schedule, phaseTextures: [null, null, null], particleTexture: DOT, emitters: THEME_EMITTERS.stone, seed: 1, clock: () => now, arena: { width: 1024, height: 576 }, ...(startAtMs !== undefined ? { startAtMs } : {}) });
+    const late = mk(1000, 1000 + schedule.impactAt + 50).tick(); expect(late.sample.phase).toBe('impact'); expect(late.liveParticles).toBeGreaterThan(0); // impact burst already simulated
+    const armed = mk(undefined, 1000 + schedule.impactAt + 50).tick(); expect(armed.sample.phase).toBe('launch'); expect(armed.sample.ms).toBe(0); // the old behaviour: ms 0 on the first tick
+    expect(() => mk(Number.NaN, 0)).toThrow(/finite/);
+  });
+});

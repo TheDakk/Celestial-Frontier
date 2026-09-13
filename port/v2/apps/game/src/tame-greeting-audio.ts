@@ -244,7 +244,13 @@ export interface TameGreetingAudioOwner {
   counterpartLost(): void;
   diagnostics(): TameGreetingAudioDiagnostics;
   dispose(): Promise<void>;
+  /** Batch 2 (Nick's delegation, 2026-09-13): a decorative-voice port for the flag-gated battle2 study. Nothing here
+   * arms, claims or counterparts: only `meaning.kind === 'decorative'` requests pass, and only while this owner is
+   * live, visible and answerable and the master policy is on; the runtime's own admission (activation, mute, cooldown,
+   * concurrency, budgets) still rules every request. A study can never make a sound the accessible owner would not. */
+  decorativeVoicePort(): DecorativeVoicePort;
 }
+export interface DecorativeVoicePort { playVoice(request: AudioVoiceRequest): AudioVoiceStartResult; }
 
 export interface TameGreetingAudioOwnerOptions {
   readonly createContext: () => AudioContextLike;
@@ -1370,6 +1376,18 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     this.#endCombatSession('counterpart-lost', false);
     this.#counterpartStatus = 'lost';
     this.#lastDisposition = 'counterpart-lost';
+  }
+
+  decorativeVoicePort(): DecorativeVoicePort {
+    return Object.freeze({
+      playVoice: (request: AudioVoiceRequest): AudioVoiceStartResult => {
+        if (this.#disposed || this.#hidden || !this.#answerable) return Object.freeze({ kind: 'rejected', reason: 'not-running' });
+        if (!enabledMasterPolicy(safePolicy(this.#readPolicy))) return Object.freeze({ kind: 'rejected', reason: 'muted' });
+        const meaning = request && typeof request === 'object' ? (request as { meaning?: { kind?: unknown } }).meaning : undefined;
+        if (!meaning || meaning.kind !== 'decorative') return Object.freeze({ kind: 'rejected', reason: 'invalid-request' });
+        return this.#runtime.playVoice(request);
+      },
+    });
   }
 
   diagnostics(): TameGreetingAudioDiagnostics {
