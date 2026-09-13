@@ -5,7 +5,7 @@ Packages per WORK_ORDER.md. One entry per package on acceptance: commit, evidenc
 | Package | Status | Commit | Evidence |
 |---|---|---|---|
 | A1 motion compiler | in progress | | audits/LONG_SESSION_20260913/a1-pose-sheets/ |
-| A2 effects sequencer | in progress | | audits/LONG_SESSION_20260913/a2-sequence-sheet/ |
+| A2 effects sequencer | accepted (mechanical); travel mode per theme (melee: hold-and-reveal; projectile: slide) to be set in A3 | see git log | audits/LONG_SESSION_20260913/a2-sequence-sheet/ (12-frame sheet, identical SHA on re-run); 21 tests |
 | A5 world-life | accepted (mechanical); wiring to the real plate is A3/A6 | see git log | audits/LONG_SESSION_20260913/a5-life-sheet/ (landfall and arena sheets, replay digest reproduced); 29 tests |
 | A4 sound derivation | accepted (mechanical); listening is Nick's | see git log | audits/LONG_SESSION_20260913/a4-voices/ (nine placeholder-archetype WAVs, byte-identical on re-render); 19 tests |
 | A3 battle scene v2 | queued (fixture rig until C2) | | |
