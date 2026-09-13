@@ -106,3 +106,10 @@ hash-bound record checks are prepared in painter-parts-entry; native execution f
 Targeted tests include missing/unknown labels, conflicting owners, rehashed wrong record,
 foreign family joints, painted alpha loss, colour change and duplicate parts. Native rest/motion
 are separate gates. No model, main.ts, protected Claude module, kit or GitHub change.
+
+## Fox native rest — PASS on18bd7368
+
+native-fox-rest-01 retains source hashes/browser provenance and the rendered master comparison:
+22parts,0changedRGBAchannels. Missing-head negative changes284037channels. Mean empty-pose
+update0.0069ms. This qualifies the rest atlas, not joint shape/contact/fps or motion captures.
+Pack6 supplied audio-owner/impact-hold decisions are recorded; no protected source integrated.
