@@ -46,3 +46,18 @@ Claude seam-oracle.mjs measures all cut descendant-joint discs; report includes 
 for bands and disc-only controls. No positive residual is called a tolerated2pxrim without
 proof. No capture until rest0channels and per-cut gate pass. Stop exactly on declared atlas,
 rest,seam or unpredictedshape failure. Fox acceptedcandidate01 and procedural remain next.
+
+## Band gate stop — native-gates-01 on2ec4f4be
+
+Seam FAIL; no captures and no fox/procedural continuation. Rest0RGBAchanged for both bands
+and disc-only;38parts/2047x1589atlas passes. Recoilhead1771→0,butneck1473→912,jaw2350→1478;
+strikehead2010→1032. All23cut entries have somepositiveframedelta; repeateddescendantdiscs
+are shared counts, not independent totals. Approach uses actualquarter/threequarterstride
+body key times mapped into the phase. Clear14pxtransparentneckrun atx1080,y663..676 exceeds
+the authorized2pxrim. Other ankle/tailgaps remain visible. No thresholdwaiver or thirdmechanism.
+
+RESULT.json and REVIEW_PROMPT.md are the review handoff; fullold/bandnativePNGs and external
+oracle reports retained. Declaration records12nonancestoradjacencies instead of inventing
+new attachments. Cause of remaining failures is not yet established. Typecheck,7rig/contact
+tests,2bandtests,rootvalidate pass; nativegatefailure controls the stop. Nick/Claude review
+next; no app switch or branchsync needed. PR42parked, no GitHub/kit/history/main.ts changes.
