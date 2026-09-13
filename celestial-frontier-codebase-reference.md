@@ -1,5 +1,12 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**Pack2 / material observer, September13:** CONTRACTS.md§§2/5/6 fixes C2's joint vocabulary
+and Claude engine surfaces. The observer now reports the selected alien skin before its coat
+fallback, matching actual paint routing; named Earth anatomy and draw commands unchanged.
+Tests and scope: [C2 prerequisite](audits/C2_MATERIAL_OBSERVER_20260913/README.md). Old captured
+records remain historical; the next procedural proof emits a fresh corrected record. No rig,
+new capture or integration of Claude's four engines is claimed.
+
 Tooling configuration updated 2026-09-12: [UI_TOOLCHAIN.md](UI_TOOLCHAIN.md) records the exact
 GSAP/atlas pins, the replacement Pixi 8 seeded emitter, optional PNG CLI probes, and deterministic creature-atlas command.
 These additions do not establish runtime parts-rig or effects integration.

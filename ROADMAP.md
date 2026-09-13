@@ -46,7 +46,9 @@ within.5pixel, empty anchors virtual. wild-anchors.json uses registered copies; 
 wild-anchors-master-fallback.json retains original per-phase anchors. No warp/rotation/crop.
 Review wild-masters-review.png and wild-registered-review.png. Keyer reports89/597/529 unresolved
 fine-edge pixels; do not claim zero fringe or accepted artwork. STOP for Nick's image review
-before staging. No C2/C3 work or new kit wording request.
+before staging. C2 material-observer prerequisite now fixed; full rig/captures and C3 remain
+pending. No new kit wording request. Keep combining incoming feedback; do not drop earlier
+requirements unless a later explicit decision supersedes them.
 
 MID's one-pass exact190 RGB correction from07c93945 reverified, alpha and all arena masters
 unchanged. mid-verification.json references the original completed copy and composite;
@@ -65,7 +67,20 @@ C2 interface: load parts for a resolved record; apply a pose of joint rotations 
 expose part display objects and pivots. CONTRACTS.md supplies CreatureRigV1: recipeHash,
 templateId, parts {id,display,pivot,layer}, root, applyPose(joint rotation radians and dx/dy
 in body-length units), normalized bounds {width,height,groundLineY}, dispose. Joint names
-match record landmarks. Claude's fixture uses this same contract until C2 lands.
+match record landmarks. PoseTarget.setJoint(name,radians,dx,dy) is the same vocabulary;
+rotation names describe child bones pivoting at the parent per A1. Claude's fixture uses
+this same contract until C2 lands. Pack2 CONTRACTS§6 is retained verbatim in6030e636.
+Nick reports motion5d0abd01, effectsc03aad82, world-life50a7fbd2, sound5f22581b committed/green
+on anthropic/mac; none merged/copied as code here. A3/A6 remain in progress there.
+
+C2 observer now emits spec.alien.skin when that painter route is active, otherwise actual
+spec/family coat. Five material routes and named-Earth protection covered by two real-painter
+command-stream tests; pre-fix red preserved. No rendered pixel change intended or native
+capture claimed. Do not rewrite the old procedural capture: freshly emit its corrected record
+for C2. Evidence audits/C2_MATERIAL_OBSERVER_20260913. TypeScript/root validation pass.
+Registered Wild anchor JSON now includes measured alphaBoundsPixels required by A2; all PNG
+hashes unchanged. No repaint/repeated MID despill. Source-set naming/formats in CONTRACTS§1
+remain binding; synthesized placeholders are not C3 source approval.
 Claude owns the body-card compiler (A1), effects sequencer (A2), battle scene adapter (A3), sound
 derivation (A4) and world-life (A5). Codex supplies rig/parts and source assets, without editing
 those modules. Effect anchors schema: cf.effect-sequence-anchors/v1. Missing anatomy fields
@@ -105,8 +120,8 @@ Klein phone probing remains stopped; no delivery engineering before phone-tier r
 
 Ownership verified: OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac,
 openai/mac → origin/openai/mac; SSH origin git@github.com:TheDakk/Celestial-Frontier.git.
-Pre-C1 commit db3d1e74:71 ahead upstream/182 ahead cached origin/develop, zero behind. No remote
+Pack2 commit6030e636:73 ahead upstream/184 ahead cached origin/develop, zero behind. No remote
 refresh needed or performed; .DS_Store excluded. Current budget file says UNFROZEN, but Nick's
 explicit GitHub step NONE controls: no push/label/dispatch/merge/release/deploy or hosted attempt.
 This C1 batch reuses the uninterrupted September12 maintenance receipt; Node26.8.2 verified.
-Only the compiler version admission/test changed in runtime source; no main.ts hunk.
+Latest prerequisite changes only the drawn-material observer/test and anchor metadata; no main.ts hunk.

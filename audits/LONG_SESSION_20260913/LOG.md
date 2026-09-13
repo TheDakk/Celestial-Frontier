@@ -108,3 +108,24 @@ and root validate logs retained. A wrong-cwd edit initially changed nothing, the
 No main.ts or Claude-lane edits, no C2/C3, local inference,3D,GitHub,branch or history operation.
 Pre-batch db3d1e74:71 ahead upstream/182 ahead cached origin/develop. This containing commit
 records C1 delivery; images still need Nick's eye. Claude can continue its reserved modules.
+
+## Pack2 and C2 material prerequisite — cumulative feedback incorporated
+
+Pack2 retained verbatim in6030e636; updated contracts, A1/A2 reports, separate incoming log.
+The initially mentioned long-session ZIP was still Pack1; actual Pack2 was located in Downloads
+as codex-pack-2-20260913.zip, then inspected. No sibling edits or code copies. Nick reports
+four engine commits on anthropic/mac:5d0abd01/c03aad82/50a7fbd2/5f22581b; status retained as
+reported, not locally verified. The contracts' obsolete report prose is preserved verbatim;
+Nick's later material-owner decision controls. Keep combining every incoming packet/message.
+
+C2 prerequisite: observer reports actual spec.alien.skin ahead of spec/family coat, fixing
+fur versus translucent and the other alien-material cases without changing painting. Two
+real-painter command-stream tests pass across five skin routes, named-Earth/no-observer
+controls, deliberate false-fur control; pre-fix red retained. Full typecheck/root validate pass.
+Evidence: ../C2_MATERIAL_OBSERVER_20260913/README.md and logs. Old captured records untouched.
+Added measured alpha bounds to registered Wild anchors per A2 contract; image hashes intact.
+C1 art remains f802dde7, no further repaint or MID pass. Show the same three phases for review.
+No full C2 rig/staging/captures yet; image acceptance still pending before staging. C3 exact
+filenames/48k24-bit mono/dry/rights/SHA list remain binding. No Claude-lane or main.ts edit,
+GitHub action, new branch, history rewrite, kit change or source sound recorded.
+Pack2 commit73 ahead upstream/184 ahead cached develop; containing prerequisite commit follows.

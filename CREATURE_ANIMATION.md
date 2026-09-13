@@ -1,5 +1,12 @@
 # Creature animation — shared anatomy and motion contract
 
+**Pack2 / material observer, September13:** CONTRACTS.md§§2/5/6 fixes C2's joint vocabulary
+and Claude engine surfaces. The observer now reports the selected alien skin before its coat
+fallback, matching actual paint routing; named Earth anatomy and draw commands unchanged.
+Tests and scope: [C2 prerequisite](audits/C2_MATERIAL_OBSERVER_20260913/README.md). Old captured
+records remain historical; the next procedural proof emits a fresh corrected record. No rig,
+new capture or integration of Claude's four engines is claimed.
+
 **Current September12 direction:** arena template v1 accepted, Wild shapes/phases accepted
 but the first palette rejected. v4.3 is now adopted and one three-phase repaint awaits Nick's
 image review at audits/WILD_V43_PROOF_20260913 before the parts-rig turn.

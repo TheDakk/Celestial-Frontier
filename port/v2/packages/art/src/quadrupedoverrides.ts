@@ -5205,7 +5205,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
     }
     observeAnatomy({ ownerId: 'faunaQuadruped', kind: 'quadruped', width: S,
       groundLineY: groundY / S, landmarks: drawnJoints,
-      materials: { surface: String(spec.mat ?? FAM0.mat), paletteSource: name.startsWith('proc:') ? 'genome' : 'named' } });
+      materials: { surface: String(spec.alien?.skin ?? spec.mat ?? FAM0.mat), paletteSource: name.startsWith('proc:') ? 'genome' : 'named' } });
   }
 }
 
