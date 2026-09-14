@@ -70,7 +70,7 @@ function wiringErrors(main: string, owner: string): string[] {
     errors.push('surface-thin-adapter');
   }
 
-  const earthLayout = section(main, 'function currentEarthLayeredLayout():', '\n/** Each optional painting');
+  const earthLayout = section(main, 'function currentEarthLayeredLayout(', '\n/** Each optional painting');
   const planetsideLookup = "document.getElementById('planetside')";
   // Planetside remains Main-owned. Every other lookup in this adapter would
   // bypass the chrome geometry port, including an ID supplied through a variable.
@@ -307,7 +307,7 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
   });
 
   it('rejects literal and dynamic chrome lookups in the Earth scene geometry adapter', () => {
-    const layout = section(mainSource, 'function currentEarthLayeredLayout():', '\n/** Each optional painting');
+    const layout = section(mainSource, 'function currentEarthLayeredLayout(', '\n/** Each optional painting');
     const seam = '  const chrome = appChrome.surfaceLayoutRects();';
     for (const lookup of [
       "  void document.getElementById('dock');\n",

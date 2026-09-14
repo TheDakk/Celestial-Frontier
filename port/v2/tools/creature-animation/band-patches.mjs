@@ -1,6 +1,7 @@
 /** Authored/painter ownership-cut bands. Sources stay immutable; no rig/curve edits. */
 import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';
 import {GRAPH,hashJSON,hashBytes} from './quadruped-template.mjs';import {packRigAtlas} from './rig-atlas.mjs';
+import {verifyPartsDirectory} from './verify-parts.mjs';
 const require=createRequire(import.meta.url),sharp=createRequire(require.resolve('free-tex-packer-core'))('sharp');
 const parent=new Map(GRAPH);
 export function cutChain(ancestor,descendant){const chain=[];for(let j=descendant;j&&j!==ancestor;j=parent.get(j)){chain.push(j);if(parent.get(j)===ancestor)return chain;}return null;}
@@ -47,8 +48,10 @@ export function buildBandPixels({width:w,height:h,owner,rgba,parts,record,limits
 export async function buildBandAtlas({id,baseDirectory,recordFile,cardFile,output,remainderPart}){
  if(fs.existsSync(output))throw Error('New band output required');const record=JSON.parse(fs.readFileSync(recordFile)),card=JSON.parse(fs.readFileSync(cardFile)),base=JSON.parse(fs.readFileSync(path.join(baseDirectory,'binding.json')));
  if(card.recipeHash!==record.recipeHash||base.recordRecipeHash!==record.recipeHash)throw Error('Band record/card binding mismatch');
+ const verified=await verifyPartsDirectory(baseDirectory);
+ const {recipeHash,...recordBody}=record;if(await hashJSON(recordBody)!==recipeHash)throw Error('Band record hash mismatch');
  const {width:w,height:h}=record.geometry,rgba=new Uint8Array(w*h*4),owner=new Uint8Array(w*h),baseParts=base.parts.filter(p=>p.kind==='part'),sources=new Map();
- for(let k=0;k<baseParts.length;k++){const p=baseParts[k],bytes=fs.readFileSync(path.join(baseDirectory,'parts',p.id+'.png'));sources.set(p.id,bytes);const data=await sharp(bytes).ensureAlpha().raw().toBuffer(),b=p.cutout;
+ for(let k=0;k<baseParts.length;k++){const p=baseParts[k],bytes=verified.sources.get(p.id);sources.set(p.id,bytes);const data=await sharp(bytes).ensureAlpha().raw().toBuffer(),b=p.cutout;
   for(let y=0;y<b.height;y++)for(let x=0;x<b.width;x++){const q=(y*b.width+x)*4;if(!data[q+3])continue;const i=(y+b.y)*w+x+b.x;if(owner[i])throw Error('Overlapping base ownership');owner[i]=k+1;rgba.set(data.subarray(q,q+4),i*4);}
  }
  const built=buildBandPixels({width:w,height:h,owner,rgba,parts:baseParts,record,limits:card.bounds.limitsDeg,remainderPart});
@@ -63,5 +66,5 @@ export async function buildBandAtlas({id,baseDirectory,recordFile,cardFile,outpu
  const atlas=JSON.parse(fs.readFileSync(path.join(output,'atlas',id+'.json'))),atlasBytes=fs.readFileSync(path.join(output,'atlas',id+'.png'));
  const binding={schema:'cf.creature-parts/v1',recordRecipeHash:record.recipeHash,atlasSha256:await hashBytes(atlasBytes),atlasSize:{width:atlas.meta.size.w,height:atlas.meta.size.h},parts:[...built.bands,...baseParts].map(p=>{const f=atlas.frames[p.id+'.png'].frame;return {id:p.id,joint:p.joint,layer:p.layer,kind:p.kind,cutout:p.cutout,frame:{x:f.x,y:f.y,width:f.w,height:f.h}};})};
  fs.writeFileSync(path.join(output,'binding.json'),JSON.stringify({...binding,bindingHash:await hashJSON(binding)},null,2)+'\n');
- const receipt={kind:'band',parts:binding.parts.length,bands:built.bands.length,cuts:built.cuts.length,duplicatedPixels:built.bands.reduce((n,p)=>n+p.pixelCount,0),atlasSize:binding.atlasSize,discPolicy:'disc-only original retained as control; bands replace discs in this candidate',nativeRestGate:'pending'};fs.writeFileSync(path.join(output,'receipt.json'),JSON.stringify(receipt,null,2)+'\n');return receipt;
+ const receipt={kind:'band',parts:binding.parts.length,bands:built.bands.length,cuts:built.cuts.length,duplicatedPixels:built.bands.reduce((n,p)=>n+p.pixelCount,0),atlasSize:binding.atlasSize,discPolicy:'disc-only original retained as control; bands replace discs in this candidate',nativeRestGate:'pending'};receipt.packedPixels=(await verifyPartsDirectory(output)).receipt;fs.writeFileSync(path.join(output,'receipt.json'),JSON.stringify(receipt,null,2)+'\n');return receipt;
 }

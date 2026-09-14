@@ -1,0 +1,15 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import path from 'node:path';import os from 'node:os';
+import {wavFacts,inspectMaster,inspectVoiceSet,sha256,readBoundFile,VOICE_CUES} from './contracts.mjs';
+import {createRequire} from 'node:module';const require=createRequire(import.meta.url),{PNG}=createRequire(require.resolve('free-tex-packer-core'))('pngjs');
+function wav(frames=480){const b=Buffer.alloc(44+frames*3);b.write('RIFF');b.writeUInt32LE(b.length-8,4);b.write('WAVEfmt ',8);b.writeUInt32LE(16,16);b.writeUInt16LE(1,20);b.writeUInt16LE(1,22);b.writeUInt32LE(48000,24);b.writeUInt32LE(144000,28);b.writeUInt16LE(3,32);b.writeUInt16LE(24,34);b.write('data',36);b.writeUInt32LE(frames*3,40);for(let i=44;i<b.length;i+=3)b.writeIntLE(1000, i,3);return b;}
+test('WAV intake refuses malformed, silent, clipped and wrong-format masters',()=>{const b=wav();assert.equal(wavFacts(b).frames,480);for(const mutate of [x=>x.writeUInt32LE(44100,24),x=>x.writeUInt16LE(16,34),x=>x.fill(0,44),x=>x.writeIntLE(0x7fffff,44,3),x=>x.writeUInt32LE(1,40)]){const x=Buffer.from(b);mutate(x);assert.throws(()=>wavFacts(x));}assert.throws(()=>wavFacts(b.subarray(0,b.length-1)));});
+test('runtime minimum admits large masters without resampling and refuses undersize or corrupt PNG',()=>{
+ const image=(width,height)=>PNG.sync.write(new PNG({width,height}));
+ const b=image(1254,1254);assert.equal(inspectMaster(b,'cutout').width,1254);
+ assert.throws(()=>inspectMaster(image(383,384),'cutout'),/below runtime/);
+ assert.throws(()=>inspectMaster(b,'invented'),/unknown/);
+ const corrupt=Buffer.from(b);corrupt[29]^=1;assert.throws(()=>inspectMaster(corrupt,'cutout'));
+ assert.throws(()=>inspectMaster(b.subarray(0,33),'cutout'));
+});
+
+test('voice inventory, rights, dry source and hashes fail closed; source bytes stay unchanged',()=>{const root=fs.mkdtempSync(path.join(os.tmpdir(),'cf-source-intake-'));try{const b=wav(),names=[...VOICE_CUES.map(c=>'quadruped.'+c+'.wav'),...Array.from({length:4},(_,i)=>'quadruped.footfall-set.'+(i+1)+'.wav')];const manifest={schema:'cf.voice-source-intake/v1',archetype:'quadruped',masters:names.map(name=>{fs.writeFileSync(path.join(root,name),b);return {path:name,sha256:sha256(b),dry:true,rights:{owner:'synthetic test only',license:'test-only',source:'unit fixture',redistribution:true}};})};const accepted=inspectVoiceSet(root,manifest);assert.equal(accepted.qualityAccepted,false);assert.equal(accepted.masters.length,12);for(const mutate of [m=>m.masters.pop(),m=>m.masters[0].sha256='0'.repeat(64),m=>m.masters[0].rights.redistribution=false,m=>m.masters[0].dry=false,m=>m.masters[0].path='../escape.wav']){const m=structuredClone(manifest);mutate(m);assert.throws(()=>inspectVoiceSet(root,m));}assert.throws(()=>readBoundFile(root,{path:'../escape.wav',sha256:sha256(b)}),/relative/);for(const n of names)assert.equal(sha256(fs.readFileSync(path.join(root,n))),sha256(b));}finally{fs.rmSync(root,{recursive:true,force:true});}});

@@ -8,8 +8,13 @@ C3 sources: quadruped voice archetype, Wild theme set, battle set, temperate rai
 impacts; original/commissioned rights recorded, 48kHz24-bit WAV masters and Opus. Derive
 Civet/fox/procedural voices from one archetype for side-by-side listening, then wire the proof's
 approach/strike/hitstop/impact/hurt/damage ticks/victory. No sources or voices recorded yet.
-Current stop is C1 v4.3 wording approval; first sounds of a new class also stop for review.
-Claude owns soundkit/ and its tests. No audio runtime change in this documentation batch.
+C1 wording and mechanical intake are complete; first sounds of a new class stop for review.
+Claude owns soundkit/ and its tests. The read-only voice intake CLI is
+`node port/v2/tools/asset-intake/inspect.mjs voice manifest.json`: eight canonical cues and
+four to six numbered footfalls, hash-bound dry 48kHz/24-bit mono PCM and declared redistribution
+rights. It rejects bad RIFF data, silence, sample clipping, wrong sizes/names and missing rights.
+It does not prove true peak, loudness, legal ownership, dry sound or listening quality; those
+are explicit pending results. No source recording, derived voice or Opus is accepted by this tool.
 
 ## Canonical Explorer Chronicle repair — 2026-09-08
 

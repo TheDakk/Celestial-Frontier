@@ -9,6 +9,7 @@ import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import {acquireWorkspaceLock} from './workspacelock.mjs';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { createReviewTrailDebugger } from './ui-review-trail-debugger.mjs';
 import { createReviewEvaluator, reviewFrameSettlement, readReviewFrameSettlements, assessReviewFrameSettlement } from './ui-review-evaluation.mjs';
@@ -20,8 +21,7 @@ export function readU1PhoneShell(training = false) {
   const errors = [], expected = ['docksurvey', 'dockcodex', 'primechip', 'dockshipyard', 'dockatlas',
     'dockrecords', 'docknotifications', 'dockguide', 'docksets'];
   const roots = ['dock', 'topbar', 'sceneactions', 'raillft'].map(id => document.getElementById(id)).filter(Boolean);
-  const prior = roots.map(node => ({ node, pointer: node.style.getPropertyValue('pointer-events'),
-    priority: node.style.getPropertyPriority('pointer-events'), inert: node.hasAttribute('inert') }));
+  const prior = roots.map(node => ({ node, style: node.getAttribute('style'), inert: node.getAttribute('inert') }));
   const box = node => {
     if (!node) return null;
     const r = node.getBoundingClientRect(), s = getComputedStyle(node);
@@ -90,9 +90,9 @@ export function readU1PhoneShell(training = false) {
     if(document.querySelector('#dockcharters,#railcharters')||charter.parent!=='topbar'||!charter.named||(!overlay&&(!charter.native||!charter.hit||!charter.rect?.visible||charter.rect.width<44||charter.rect.height<44)))errors.push('objective is not the sole reachable44px Charters opener');
     return { ok: errors.length === 0, errors, display, ids, expected, rows, rect, expectedWidth, pitch, centres, relocatedInventory, sceneactions, charter };
   } finally {
-    if (training) for (const { node, pointer, priority, inert } of prior) {
-      if (pointer) node.style.setProperty('pointer-events', pointer, priority); else node.style.removeProperty('pointer-events');
-      if (inert) node.setAttribute('inert', ''); else node.removeAttribute('inert');
+    if (training) for (const { node, style, inert } of prior) {
+      if (style === null) { node.setAttribute('style', ''); node.removeAttribute('style'); } else node.setAttribute('style', style);
+      if (inert === null) node.removeAttribute('inert'); else node.setAttribute('inert', inert);
     }
   }
 }
@@ -328,6 +328,10 @@ function assessProgrammaticSettingsDelivery(receipts) {
 }
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 export async function runUiShellReview(buildArgument, outputArgument, options = {}) {
+  const release=acquireWorkspaceLock('UI shell review', {inheritFromParent:true});
+  try { return await runLockedUiShellReview(buildArgument, outputArgument, options); } finally { release(); }
+}
+async function runLockedUiShellReview(buildArgument, outputArgument, options = {}) {
   assert(options.scope === undefined || options.scope === 'phone-restoration', 'unknown U1 review scope');
   const phoneRestorationOnly = options.scope === 'phone-restoration';
   assert(buildArgument && outputArgument, 'usage: node tools/ui-shell-review.mjs BUILD_DIRECTORY NEW_OUTPUT_DIRECTORY');

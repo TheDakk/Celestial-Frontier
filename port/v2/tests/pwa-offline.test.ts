@@ -1155,7 +1155,7 @@ describe('PWA production wiring', () => {
     const main = readFileSync(new URL('../apps/game/src/main.ts', import.meta.url), 'utf8');
     const config = readFileSync(new URL('../apps/game/vite.config.ts', import.meta.url), 'utf8');
     expect(config).toContain("import { celestialFrontierPwaPlugin } from './pwa-build.js';");
-    expect(config).toContain('plugins: [celestialFrontierPwaPlugin()]');
+    expect(config).toMatch(/plugins:\s*\[celestialFrontierPwaPlugin\(\),\s*kitRuntimeAssets\(\)\]/);
     expect(main).toContain("type ReplacementReloadReason = 'training-restart' | 'training-complete' | 'training-recovery' | 'save-import' | 'storage-retry' | 'pwa-update';");
     expect(main).toContain('if (pwaUpdateControl) el.append(pwaUpdateControl.element);');
     expect(ordered(main, [

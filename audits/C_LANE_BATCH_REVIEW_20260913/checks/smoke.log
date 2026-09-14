@@ -1,0 +1,555 @@
+PASS  boots with zero errors
+PASS  probe hook present
+PASS  security: esc() neutralizes markup from tampered saves/codes
+PASS  security: _sanitizeView coerces a non-numeric camera to finite safe numbers
+PASS  balance: salvage never returns a gating exotic in full
+PASS  balance: the cosmic epoch tick is slowed (>= 20 min of play)
+PASS  balance: loot affixes ramp with depth (deep worlds out-roll shallow)
+PASS  balance: affixes never exceed their cap (no over-roll)
+PASS  security: an oversized CF1 code is rejected before decoding
+PASS  security: an oversized CFB code is rejected before decoding
+PASS  security: search renders a hostile saved title as LITERAL text
+PASS  balance: a 9999-brood crafted save fights at the 200-cap power, not 320k
+PASS  balance: below the knee the lineage bonus is UNTOUCHED (brood 20 / fed 50 = exact linear +940)
+PASS  balance: a maxed 200/200 bloodline saturates to +1,500 (~2.5x titan total), not +6,400
+PASS  balance: mirror duels are deterministic per matchup
+PASS  balance: neither duel slot owns the agility tie (review: 93.5% -> ~50%)
+PASS  exploit: salvaging the last copy kills its affix (no resurrection)
+PASS  rarity: RARITY_V17 is the 10-tier ladder
+PASS  rarity: displayRarity collapses score 6 -> Mythic, 7 -> Celestial
+PASS  rarity: displayRarity clamps raw 10+ to Transcendent
+PASS  rarity: no ★/✦/✧/❖ glyphs on any GRADE_TIER star field
+PASS  rarity: no old tier names survive (Anomalous/Unique/Empyrean/Eternal/Omnipotent)
+PASS  rarity: no ALL-CAPS rarity names
+PASS  rarity: a rolled fauna grade has a clean name and no star glyph
+PASS  materials: the roster is the full 47
+PASS  materials: family counts are 15/13/10/2/7
+PASS  materials: every family is a known MAT_FAMILY
+PASS  materials: every base tier is in 0..9
+PASS  materials: every material carries a job and a class
+PASS  materials: 40 legacy materials all resolve their ELEM_NAME
+PASS  materials: 7 cosmics defined, tier >= 7, with their own name+color
+PASS  materials: cosmics are NOT vein-placed yet (no generation, fp-safe)
+PASS  materials: cosmic symbols are all distinct from the legacy 40
+PASS  materials: the detail card surfaces family + role (Iron)
+PASS  materials: the card shows the substance base grade (Iron = Common, tier 0)
+PASS  materials: Gold (tier 2) reads a higher base grade than Iron
+PASS  materials: closing the material card leaves it hidden
+PASS  cosmics 5c: no world below tier 8 yields a cosmic vein
+PASS  cosmics 5c: tier-8 (Primordial) worlds carry foundational cosmics only (Pro/Pri)
+PASS  cosmics 5c: tier-9 (Transcendent) worlds unlock reality-breaking cosmics (Voe/Chr/Dkm)
+PASS  cosmics 5c: every cosmic-vein symbol is a cosmic-family material
+PASS  cosmics 5c: cosmicVeinFor is deterministic (same seed+tier → same result)
+PASS  cosmics 5c: depositsFor never contains a cosmic (fp-safe separate vein)
+PASS  cosmics 5c: every legacy ELEM_NAME key is still a valid MATERIALS key (load filter safe)
+PASS  stellar §8: hot/bright stars yield Stellar Plasma (Pls)
+PASS  stellar §8: dense stellar remnants yield Coronium (Crn)
+PASS  stellar §8: cool dwarfs / protostars yield no stellar cosmic
+PASS  stellar §8: every stellar yield is a cosmic-family material
+PASS  §5: exVeinFor is deterministic (same seed → same vein)
+PASS  §5: only a minority of worlds carry an exceptional vein (~15%)
+PASS  §5: the vein substance always comes from the world's own deposit palette
+PASS  §5: no exceptional vein is ever a cosmic (cosmics are already the summit)
+PASS  §5: exceptional = base tier +1, clamped at 6 (one rule everywhere)
+PASS  §5: _spendMat burns exceptional stock first and reports it
+PASS  §5: exceptional-forged gear auto-equips carrying a seeded affix
+PASS  §5: the forge spent the exceptional stock (cgx empty, cargo spent)
+PASS  §8b: the Corona Scoop exists — sys, rides the Jump Drive, costs a hand-skimmed Plasma
+PASS  intro name prompt shown for fresh expedition
+PASS  name accepted, intro closed
+PASS  fresh expedition: NO changelog gate — training starts directly
+PASS  fresh expedition: the bulletin never appeared
+PASS  Earth NOT pre-charted during training
+PASS  lockdown: Compendium blocked during welcome
+PASS  lockdown: ? popover shows version during welcome
+PASS  lockdown: Guide blocked during welcome
+PASS  lockdown: locked Guide still answers with a pop-up (the one training exception)
+PASS  lockdown: Atlas blocked during welcome
+PASS  lockdown: Settings STAYS available during training
+PASS  step 2: find Earth
+PASS  system view exposes Earth as a pick
+PASS  training: tapping a non-lesson world locks nothing (still step 2)
+PASS  tapping Earth completes step 2
+PASS  step 4: add to Atlas
+PASS  card actions render at the TOP of the body (atlas row first)
+PASS  spectral class row stays outside the folds
+PASS  environment group header present on a planet card
+PASS  environment group is collapsed by default
+PASS  collapsed header carries a digest
+PASS  atmosphere row lives inside the environment fold
+PASS  civilization census folds behind its headline (Earth has one)
+PASS  tapping the chevron unfolds the environment
+PASS  tapping again folds it back
+PASS  fold toggling never advances training
+PASS  Earth (a living world) never offers mining
+PASS  Earth is Earth — home never re-labels as a biome
+PASS  every world is tap-to-landable (Earth carries a plain Land button)
+PASS  step 6 priority: Earth's card outranks any open board for the land press
+PASS  training: off-lesson card buttons are inert (Land does nothing at step 4)
+PASS  training: canvas keys are lesson-gated (Escape cannot strand the atlas lesson)
+PASS  adding Earth to Atlas completes step 4
+PASS  Atlas count is 1 (Earth)
+PASS  step 5 priority: the Star Atlas owns the stack, not Earth's card
+PASS  step 5 priority: #logbtn never masquerades as #log (token match)
+PASS  opening Atlas completes step 5
+PASS  land step: Earth's card SURVIVED the Atlas tap (training sweep skips the survey card)
+PASS  training card carries no ✕ (recruits cannot hand-close the lesson card)
+PASS  land step: Escape releases the survey (the recruit-reachable closer)
+PASS  land step: Earth is still a live pick with the card closed
+PASS  land step: tapping Earth REOPENS the card (pick() opt-in)
+PASS  reopening the card never advances training
+PASS  landing on Earth completes the landing lesson
+PASS  landing lesson: Planetside opened for the landing
+PASS  landing lesson: the vista holds until dismissed (no auto-close)
+PASS  landing lesson: tapping the vista dismisses it
+PASS  training cache granted (6 specimens)
+PASS  training quiet: no Training Cache pop-up (tray-only)
+PASS  training quiet: no Rank Up fanfare mid-training
+PASS  training quiet: the bell tray still counts the story
+PASS  opening Compendium completes step 6
+PASS  step 8 priority: the Compendium owns the stack, not Earth's card
+PASS  kingdoms: filter chips stay hidden during training (one voice)
+PASS  training dodge: the Compendium lesson card docks at the bottom (clears the close)
+PASS  cache holds 3 fauna + 3 flora
+PASS  opening a specimen completes step 7
+PASS  specimen condense: the field notes ship folded with a digest
+PASS  specimen condense: stats render ABOVE the fold
+PASS  specimen condense: the header unfolds the notes (card stays open)
+PASS  specimen condense: reading inside the fold never dismisses the card
+PASS  specimen condense: the toggle folds it back (remembered as cx bit 4)
+PASS  scout: fauna card offers the Field Scout toggle
+PASS  scout: toggling names the scout (state + button)
+PASS  scout: toggling again stands it down
+PASS  step 9: feed
+PASS  feed picker lists flora
+PASS  feeding completes step 9
+PASS  breed picker lists mates
+PASS  breeding completes step 10
+PASS  rigged training breed succeeded
+PASS  battery P1: the union XP lands on the NEWBORN, not the consumed parent
+PASS  battery P1: the first-of-its-kind lineage bonus reaches it too (+2 +5)
+PASS  v1.3.11: the duel offers a skip-to-outcome button
+PASS  training duel resolves and completes step 11
+PASS  hazard step dismisses the lingering duel result
+PASS  hazard nip lands (HP 85/100)
+PASS  step 13: heal
+PASS  heal picker lists flora
+PASS  healing completes step 13
+PASS  opening tray completes step 14
+PASS  tray gets its grace beat on screen (lesson not robbed of frames)
+PASS  tray holds with no countdown while the recruit reads
+PASS  tray yields on the next interaction, freeing the search box
+PASS  searching earth completes step 15
+PASS  character sheet opens on the nameplate tap and stays open
+PASS  character sheet lesson completes step 16
+PASS  forge: the loaned ore opens the hold (cargo button + iron)
+PASS  forge: the character sheet is closed so the rail is reachable
+PASS  forge: the 🛠 Shipyard button opens the yard
+PASS  forge: crafting the plate completes step 17
+PASS  forge: training craft credits NO charter and NO Ascent goal
+PASS  graduation lesson reached (accept your first charter)
+PASS  graduation: opening the board alone does NOT advance
+PASS  graduation: nothing was auto-accepted
+PASS  graduation: ACCEPTING the first charter advances to the finale
+PASS  graduation: exactly ONE charter accepted, by the recruit
+PASS  cleanup: Compendium empty
+PASS  cleanup: HP fully restored
+PASS  QoL: empty-Compendium ❤ tip coaches cataloguing plants
+PASS  cleanup: the loaned ore + practice plate went back to the order
+PASS  the Shipyard button stands on the rail even with an empty hold
+PASS  §8b: an UNSHIELDED remnant skim bites for 3 HP but still pays Coronium
+PASS  §8b: the Corona Scoop ends the bite and ladles +1 per pass
+PASS  cleanup: Atlas keeps only Earth
+PASS  tutorial closes
+PASS  quest nudge: next-step goal names the Ascent chapter-1 goal
+PASS  lockdown lifted after training
+PASS  panelman: Compendium opens
+PASS  graduation clears the training shelf seeds (no shelf pre-expanded for the fresh veteran)
+PASS  panelman: opening Atlas closes Compendium
+PASS  panelman: Atlas wears a corner ✕
+PASS  panelman: ✕ closes the Atlas
+PASS  priority marks clear when training ends (no stale z-order in live play)
+PASS  panelman: Compendium closes Charters (a pair that used to stack)
+PASS  panelman: tapping empty space closes the open panel
+PASS  dormant systems: events + beacon refuse to open (hidden for rework)
+PASS  panelman: settings panel opens with its ✕
+PASS  panelman: settings ✕ closes settings
+PASS  star charts: setting exists and ships OFF
+PASS  star charts: toggles On
+PASS  star charts: toggles back Off
+PASS  ? opens the Guide directly (no build-hash popover in the way)
+PASS  the version popover did NOT appear post-training
+PASS  guide title renamed
+PASS  a11y: the background is INERT while the Guide is open
+PASS  a11y: the Guide itself is never inert
+PASS  guide menu lists categories
+PASS  category drill-down lists topics
+PASS  topic view renders body
+PASS  back returns to category
+PASS  guide items are keyboard-operable (role="button" + tabindex)
+PASS  Enter opens a guide topic (keyboard shim)
+PASS  focus survives the re-render (lands on Back, not <body>)
+PASS  search finds stardust topics
+PASS  search hit opens topic
+PASS  no-results message
+PASS  guide footer shows version + build
+PASS  footer opens cumulative release notes (all versions)
+PASS  release notes close
+PASS  guide closes via Continue
+PASS  a11y: closing the Guide RELEASES the background inertness
+PASS  briefings: the Guide menu offers the 🎓 row post-training
+PASS  briefings: starting one closes the Guide and shows the drill card
+PASS  briefings: Next advances (2/3, Craftables step)
+PASS  briefings: Done ends cleanly (card + spotlight gone)
+PASS  Compendium opens (post-training)
+PASS  Compendium no longer carries the Binder tab
+PASS  Records opens with the Trophies | Binder tab row
+PASS  Binder view renders on Records without throwing (ABILITY_THEMES exported)
+PASS  Records tab returns to the trophy shelves
+PASS  Records closes after the Binder visit
+PASS  tooltip shows on focus
+PASS  tooltip is pure text (no link)
+PASS  settings shows Tooltips toggle (On)
+PASS  tooltips toggle to Off
+PASS  no tooltip while disabled
+PASS  tooltips back On
+PASS  settings shows Motion Auto/Full/Reduced (Auto on)
+PASS  Motion → Reduced stamps body.rmotion
+PASS  Motion → Full lifts the class
+PASS  HD is always on, with no Landing view row in Settings
+PASS  Motion → Auto follows the OS preference
+PASS  settings shows Volume slider at full
+PASS  volume slider drives the SFX level live (sfxVol 0.4)
+PASS  settings: Panel-tint glass slider present at default 72
+PASS  panel-tint slider drives --glass-a live (0.90)
+PASS  panel-tint slider clamps to the readable floor (0.40)
+PASS  settings: Gameplay tab present
+PASS  gameplay: "Confirm before salvaging" toggle shows in the Gameplay group (default On)
+PASS  gameplay: the salvage-confirm toggle flips to Off
+PASS  Nameplate menu opens from Settings
+PASS  Nameplate menu carries the plate colour swatches
+PASS  Nameplate menu shows a live preview pill
+PASS  picking a plate colour selects it
+PASS  Nameplate menu opens the naming dialog
+PASS  rename dialog offers Cancel (initial naming never does)
+PASS  Escape cancels the rename
+PASS  cancel kept the old name
+PASS  rename commits and the nameplate follows
+PASS  the Nameplate menu ✕ closes it
+PASS  Nameplate menu reopens
+PASS  Escape closes the Nameplate menu
+PASS  a11y: the canvas is focusable
+PASS  a11y: cycling targets speaks to the live region
+PASS  a11y: Enter surveys the focused body (the click path, with credit)
+PASS  no errors after all interactions
+PASS  fresh start: the legacy v1 key is consumed at boot
+PASS  fresh start: the farewell card shows, addressed to the old explorer
+PASS  fresh start: the farewell dismisses
+PASS  fresh start: a NEW expedition waits beneath (name prompt, nothing skipped)
+PASS  fresh start: nothing carries over — no old worlds, no old flags, no old charters
+PASS  fresh start: the Ascent is the canon opening (stage 0, chapter 1)
+PASS  fresh start: boots clean
+TIMEOUT waiting: skip: bulletin
+PASS  skip shows confirm
+PASS  Keep Training returns to step
+PASS  skip closes tutorial
+PASS  skip: Earth charted in Atlas
+PASS  atlas chart: the Atlas carries a List | Chart tab row
+PASS  atlas chart: the Chart view paints every charted light (hit-targets registered)
+PASS  atlas chart: List returns to the rows
+PASS  skip: Compendium empty
+PASS  update watch: _updGo (cache-busted navigator) is wired
+PASS  update watch: a newer version.json raises the gold pill (with the version)
+PASS  update watch: the offer announces itself (toast fired)
+PASS  skip: everything unlocked (Compendium opens)
+PASS  skip: everything unlocked (Guide opens)
+PASS  discovery: a fresh expedition has stood on no worlds
+PASS  charters: the board opens progressively — first links only
+PASS  charters: nothing is complete on a fresh expedition
+PASS  discovery: system view exposes a lifeless world as a pick
+PASS  discovery: hover shows the LONG-RANGE GLANCE, not the survey
+PASS  discovery: the glance offers no buttons and no environment rows
+PASS  v1.7 gating: an unlanded world HIDES its grade from orbit (teaser only)
+PASS  discovery: tapping locks the ORBITAL SURVEY (buttons + summary rows)
+PASS  discovery: an unlanded dead world offers Land, never Mine
+PASS  card UX: a locked card wears the close X
+PASS  card UX: dragging the head moves the card and keeps it open
+PASS  card UX: the X releases the lock
+PASS  card UX: tapping the world again re-locks the survey
+PASS  discovery: the glance never misreads a dead world (no biosignatures on venus-type)
+PASS  HD landing view armed for the flight down (always on)
+PASS  discovery: the Land button performs planetfall
+PASS  v1.3.8: the view holds — landing never leaves the system view
+PASS  HD vista: planetfall opens the landing panorama
+PASS  HD vista: the ghost click does NOT dismiss (no pointerdown on the overlay)
+PASS  v1.7 vista: a GENUINE early tap zooms instantly (no 420ms dead window)
+PASS  v1.7 vista: tapping the zoomed image returns from zoom
+PASS  v1.7 vista: a visible ⛶ Full screen button rides the card
+PASS  v1.7 vista: the Full screen button zooms
+PASS  v1.7 vista: tapping off while zoomed exits zoom (does NOT dismiss)
+PASS  HD vista: an armed tap dismisses the panorama (fade-out)
+PASS  v1.7 vista: dismissing also clears the zoom state
+PASS  HD vista: the surface card offers a re-view
+PASS  v1.7 gating: landing REVEALS the world grade (teaser gone)
+PASS  HD vista: re-view reopens the panorama
+PASS  HD vista: the postcard button rides the panorama
+PASS  v1.3.11 vista window: the pop-up card frame wraps the art
+PASS  v1.3.11 vista window: the X sits on the card, not the screen
+TIMEOUT waiting: vista re-dismiss
+PASS  HD vista scene renders: ember volcano + ashfall
+PASS  HD vista scene renders: island day (spacefaring harbor)
+PASS  HD vista scene renders: island night rain + aurora
+PASS  HD vista scene renders: terran snowfall
+PASS  HD vista scene renders: terran twilight
+PASS  HD vista scene renders: aurora night over land
+PASS  HD vista scene renders: rocky world by starlight (nightize)
+PASS  HD vista scene renders: lifeless ocean — bare beach, no moon glitter
+PASS  HD vista scene renders: desert with hardy vegetation (V3)
+PASS  HD vista scene renders: industrial-era town, river kept (V6+V7)
+PASS  HD vista scene renders: the works: beasts + herd + fliers + swimmers + rings + star tint
+PASS  HD vista scene renders: dry world — no river at all (water none)
+PASS  HD vista scene renders: duskized ice world (low sun)
+PASS  cloud deck renders: gas deck, amber day + ring + spot
+PASS  cloud deck renders: gas deck, cyan night + drifters
+PASS  cloud deck renders: gas deck, violet twilight
+PASS  gas giant planetfall opens the Cloud deck vista
+PASS  cloud deck dismisses like every vista
+PASS  Escape dismisses the vista directly (no pointerdown needed)
+PASS  descent: confirm dialog exists in the DOM
+PASS  descent: a lava world sits low on the ladder (5-35%, by biome)
+PASS  descent: grounded worlds are forever safe
+PASS  descent: a cold roll waves off
+PASS  descent: the wave-off scrapes the explorer (never lethal)
+PASS  descent: the pity ramp remembers the attempt
+PASS  descent: +20% after a wave-off
+PASS  descent: the ramp tops out — cold dice land by the sixth dive
+PASS  descent: success clears the ramp
+PASS  descent: a cleared world reads safe (the dive is spent on landing)
+PASS  kingdoms: the filter chips render for a stocked Compendium
+PASS  kingdoms: shelf headers wear their kingdom tint
+PASS  kingdoms: the Flora chip hides every animal shelf and lays plants open
+PASS  kingdoms: the count line reads the filtered truth
+PASS  kingdoms: All restores the full shelves
+PASS  biomes: deterministic per seed
+PASS  biomes: "mostly evaporated" terrans never roll wet biomes
+PASS  biomes: 8 types × every band × 40 seeds — no holes
+PASS  extremophiles: a magma world can carry fauna (1-in-10,000 slice)
+PASS  extremophiles: the slice is thin — 0.001 rolls plain microbes on lava
+PASS  extremophiles: ice, venus, gas, rocky, desert + hot oceans all have a slice
+PASS  extremophiles: outside the slices nothing moved (lava 0.05 = microbial, ice 0.6+0.8 = none)
+PASS  extremophiles: an xfauna world raises at least one creature + its mats
+PASS  breeding: two extremophiles breed a true extremophile
+PASS  breeding: a mixed pair breeds back to the standard pools
+PASS  breeding: the child reads a valid habitat either way
+PASS  biomes: the survey card sub-label wears the biome
+PASS  biomes: the card speaks a Biome row
+PASS  biome scenes: full key × pal sweep renders clean (43 biomes)
+PASS  weather events: all 9 showpieces render clean
+PASS  weather events: the roll is honest — airless rocky worlds never get one
+PASS  colossal wanderer: a titan breaks the horizon without breaking the scene
+PASS  the deep: the abyssal vantage renders beneath the waves
+PASS  discovery: standing on it, mining is open on the spot
+PASS  discovery: the card BLOSSOMS on the ground (environment fold opens)
+PASS  discovery: ground survey reveals the mineral veins without Deep Scanners
+PASS  charters: Make planetfall completes on landing (auto-accepted at training end)
+PASS  charters: completion reveals the next link for its ACCEPT
+PASS  MUD events: the charter toast wears the milestone gold tint
+PASS  charters: the revealed link waits for its ACCEPT (no silent tracking)
+PASS  charters: an unaccepted charter earns nothing from the deed
+PASS  charters: accept honors banked state — already-proven completes on the spot
+PASS  cargo: the hold shows item tiles with element icons
+PASS  cargo: tiles carry quantities
+PASS  cargo: the hold shows Diablo bag slots (empty boxes included)
+PASS  shipyard: the 🛠 rail button opens the yard (sheet yields — one panel)
+PASS  shipyard: the Research Bench lives on its own tab
+PASS  discovery: first landing grants field samples (toast + stardust)
+PASS  MUD events: the samples toast wears the gain tint
+PASS  discovery: samples reach the Cargo hold (button appears)
+PASS  discovery: still in the system view after landing (the view holds)
+PASS  discovery: the landed world is still pickable
+PASS  discovery: from orbit the card stays GROUND-SURVEYED with mining open
+PASS  discovery: a grounded world still offers plain Land (revisits + sightseeing)
+PASS  a11y: a grounded card carries the Leave-this-world button
+PASS  a11y: Leave this world resets the camera to the system overview
+PASS  a11y: leaving never closes the card or leaves the system
+PASS  mining: the first press pulls immediately
+PASS  mining: the drills keep pulling on their own (auto-run)
+PASS  mining: a second press stops the drills
+PASS  v1.4 mining: the card counts the pulls left in the veins
+PASS  v1.4 mining: reserves are finite and deterministic
+PASS  v1.4 Sol lock: a fresh expedition stands on ring 0
+PASS  v1.4 Sol lock: Sol itself is always allowed
+PASS  v1.4 Sol lock: another star in the home galaxy is gated
+PASS  v1.4 Sol lock: foreign STARS are gated, galaxy sightseeing is not (curiosity stays free)
+PASS  v1.4 Ascent: Chapter 1 pinned atop the charter board
+PASS  quest-log: the chapter wears the mainline kicker + progress bars
+PASS  v1.4 Fabricator: crafting consumes elements and yields the part
+PASS  v1.4 Ascent: crafting advances the chapter goal
+PASS  quest-log: the objective chip tracks the chapter when no charter is accepted
+PASS  v1.7.10 Fabricator: every category fold ships CLOSED post-training
+PASS  v1.5.2 Fabricator: a closed category opens on its header (craft buttons live)
+PASS  v1.4 gear: the Mining Rig crafts and self-equips into the empty Tool socket
+PASS  v1.4 gear: the equipped rig multiplies mining yield
+PASS  trail: nine relics exist, one per socket, each tied to a Signature
+PASS  trail: a relic refuses to forge before its Signature is claimed
+PASS  trail: the claimed Signature IS the blueprint (relic forges + self-equips)
+PASS  §24: Graven Aegis holds the suit ladder protection line (+ its own steadiness)
+PASS  §24: the Prismatic Lathe is a strike-specialist SIDEGRADE (above Rig II, below Bore III, best strike)
+PASS  cosmics 5d: five cosmic gear recipes exist, each defined by a world-cosmic
+PASS  cosmics 5d: a foundational cosmic forges its gear and consumes the cosmic
+PASS  cosmics 5d: the cosmic anchors the gear rarity (Protomatter → Primordial/8)
+PASS  cosmics 5d: a reality-breaking cosmic anchors Transcendent gear (Dark Matter → 9)
+PASS  cosmics 5d: the cosmic material knows what it crafts (§17 — every material has a job)
+PASS  stellar §8: skims are GATED on the Jump Drive (no Chapter-1 farming)
+PASS  stellar §8: skimming a hot star captures Stellar Plasma into cargo
+PASS  stellar §8: a star's corona is a FINITE run — it depletes (no infinite plasma)
+PASS  stellar §8: a cool dwarf yields nothing to skim
+PASS  stellar §8: two stellar cosmic gear recipes exist (Celestial-anchored, from Pls/Crn)
+PASS  cosmics: skimming + forging unlock the cosmic achievements
+PASS  cosmics: the three cosmic achievements are defined in ACH
+PASS  titans: a Fire titan is seeded onto a molten world near home
+PASS  titans: Void is region-gated far out — silent near home
+PASS  titans: the titan is the world’s boss (apexNative, no native fauna needed)
+PASS  titans: a titan is a hard boss — above a summit champion, not unwinnable
+PASS  battery: the conquest meter rendered at least one hopeless matchup
+PASS  battery: the matchup meter never prints an absolute 0% or 100%
+PASS  battery: a hopeless matchup reads <1%, not a false 0%
+PASS  titans: felling the titan claims its element
+PASS  titans: a claimed element’s titan stands down
+PASS  records: 🏆 opens the board with the rarity ladder + achievement shelves
+PASS  records: the character sheet no longer carries the trophies
+PASS  a11y: the Expedition journal is a list with labelled rows
+PASS  records: the button toggles it closed
+PASS  v1.5.2b sheet: the nameplate toggles the screen closed
+PASS  v1.5 sheet: the character screen opens centered with all three regions
+PASS  v1.5 paperdoll: all nine sockets pin to the figure
+PASS  v1.5 paperdoll: the full-body painterly explorer fronts the screen
+PASS  v1.5 paperdoll: sockets carry body anchors (inline positions)
+PASS  v1.5.2b: the ship is OFF the doll (it lives at the Shipyard) and the pack socket is worn
+PASS  v1.4 equipment: the effect readout speaks the boost
+PASS  v1.5 paperdoll: tapping a socket opens its picker
+PASS  v1.7 inventory: the hold splits into Materials / Craftables / Gear tabs
+PASS  v1.6 item card: crafted items are tappable tiles in the hold
+PASS  v1.6 item card: tapping an item opens its stat card
+PASS  v1.6 item card: the card surfaces the item effect
+PASS  v1.7 item window: rarity-frame header band + item level
+PASS  v1.7 gear-on-ladder: the item wears a true 10-tier rarity chip
+PASS  v1.7 item window: the Affixes group uses the expand/close fold, open by default
+PASS  v1.7 item window: tapping the fold collapses it (remembered via the shared cardExpand)
+PASS  v1.6 item card: wearables carry an Equip button
+PASS  v1.6 item card: Equip slots the item into its socket
+PASS  v1.7 salvage: wearables carry a Salvage button beside Equip
+PASS  v1.7 salvage: with the guard On, Salvage asks first (confirm prompt with a Salvage button)
+PASS  v1.7 salvage: confirming removes the item, unequips it, and closes the card
+PASS  v1.7 §21: the Materials tab groups by family (base/volatile/precious headers)
+PASS  v1.7 §21: grouped material tiles still carry data-mat (tap-to-card intact)
+PASS  v1.7 §21: the Craftables tab groups by kind (Basic Parts + Components headers)
+PASS  v1.7 §21: grouped craftable tiles still carry data-item (tap-to-card intact)
+PASS  v1.4 rings: the Jump Drive opens the Neighborhood
+PASS  v1.4 rings: the Long-Range Array opens the whole galaxy
+PASS  v1.4 rings: the Intergalactic Drive opens the dark between
+PASS  ring spectrum: the Neighborhood caps at Legendary (5)
+PASS  ring spectrum: the home galaxy caps at Mythic (8)
+PASS  ring spectrum: regions ladder to the summit (far = uncapped)
+PASS  ring spectrum: bred/imported creatures are never capped
+PASS  victory XP: awardXP runs clean (levelOf exported)
+PASS  victory XP: levelOf math holds (6*l^2 — the v1.5 rebalance)
+PASS  ring spectrum: every expedition ringlaws its worlds (no flag since the fresh start)
+PASS  ring spectrum: a deep-spectrum WORLD near home clamps in its own spectral language
+PASS  ring spectrum: the Spectral-class card row speaks the clamped designation
+PASS  ring spectrum: a deep-spectrum roll near home wears Legendary
+PASS  ring spectrum: an Apex Guardian keeps its summit crown
+PASS  save-health: a save exists after the session
+PASS  save-health: no portrait art is EVER serialized (no "art" key in the save)
+PASS  save-health: regenerable Atlas rows carry NO stored thumbs (rebuilt from seed)
+PASS  save-health: the split list-thumb pipeline is wired (speciesThumb exported)
+PASS  P2-005: no world ever lists the same vein twice (dedup across metal/lava/rocky)
+PASS  §5 resolver: a vein reads its substance base grade on ordinary ground
+PASS  §5 resolver: Primordial+ ground raises the grade one step, semantic cap 6
+PASS  CF-008: a notable world wears its epithet
+PASS  CF-008: the epithet is deterministic (same seed → same title)
+PASS  CF-008: ordinary worlds stay plainly named
+PASS  CF-008: Earth is Earth — the cradle never wears an epithet
+PASS  restart precondition: the veteran owns things
+PASS  CF1715-02: restarting un-charts Earth so step 4 is winnable again
+PASS  CF1715-01: the Compendium SURVIVES a training restart
+PASS  CF1715-01: cargo + exceptional stock survive
+PASS  CF1715-01: crafted items survive
+PASS  CF1719-02: Earth&apos;s Atlas entry is RESTORED, not rebuilt (timestamp + ☆ survive)
+PASS  CF1715-02: Earth is re-charted by the training exit (the Atlas heals)
+PASS  CF1720-01 precondition: the recruit re-charted Earth (a stub now sits there)
+PASS  CF1720-01: Earth&apos;s identity MERGES onto the recruit stub (the completed-training path)
+PASS  CF1715-05: no class names a dead archetype ('stun'/'gambit' are gone)
+PASS  CF1718-03: the hardening CSS lives in the LAST stylesheet (cascade-safe)
+PASS  CF1720-07: the ring per-step toggle can actually win the cascade
+PASS  CF1718-04: the titan clamp carries the emitting selector
+PASS  CF1802-15: a saved genome cannot carry battlefield multipliers home
+PASS  CF1802-15: a forged apex band is rejected, a genuine one survives
+PASS  CF1802-15: the numeric fields still clamp
+PASS  CF1802-05: skimming counts as PROGRESS (the set held an event never emitted)
+PASS  CF1802-04: with an empty Atlas the suggestion never points AT the Atlas
+PASS  CF1802-04: every suggestion carries a real destination (go:null toggled the log)
+PASS  CF1802-21: temperament boldness has one entry per FA_TEMPER entry
+PASS  CF1802-21: the most aggressive temperament is the boldest voice
+PASS  CF1802-20: the voice reads more of the genome than family, size and temper
+PASS  CF1802-24: a bat-family voice still moves with size (not pinned at the 6kHz clamp)
+PASS  CF1802-03: a stalled player with NO objective still gets a next step
+PASS  CF1802-03: …and that suggestion carries somewhere to go
+PASS  CF1802-08: viewing a specimen leaves the Compendium open behind it
+PASS  v1.8 denial: the empty breed picker NAMES the gap instead of dead-ending
+PASS  v1.8 denial: it offers a real destination (tap-to-go)
+PASS  v1.8 denial: the CTA actually opens the Star Atlas
+PASS  battery P2: the breed shortfall button never claims to be disabled
+PASS  battery P2: …and carries an accessible name for what it DOES
+PASS  v1.8 prevention: the Breed verb names its shortfall on the button face
+PASS  v1.8 stall: the chip changes VOICE when nothing is moving
+PASS  v1.8 stall: it names a concrete next action, not the goal being failed
+PASS  v1.8 stall: the suggestion carries a destination
+PASS  v1.8 stall: progress CLEARS the suggestion (never a nag)
+PASS  CF1715-09: the meter reports SIMULATED odds, not a power ratio
+PASS  CF1715-09: a hopeless matchup reads as Overwhelming
+PASS  v1.8 meter: the odds are deterministic per matchup (memoised, replayable)
+PASS  v1.8 voice: Earth animals sound like WHAT THEY ARE (wolf roars, sparrow chirps, whale sings)
+PASS  v1.8 voice: a sparrow pitches far above a whale
+PASS  v1.8 voice: it is DETERMINISTIC — the same genome always speaks the same
+PASS  v1.8 voice: a hybrid INHERITS its Earth ancestor and DRIFTS as the anchor weakens
+PASS  v1.8 audio: Settings offers Creature voices and Battle sound toggles
+PASS  v1.8 audio: the voice toggle flips Off
+PASS  v1.8 audio: the battle-sound toggle flips Off
+PASS  v1.8 audio: planetfall has an arrival and the world has a bed
+PASS  v1.8 audio: the ambience bed can always be stopped (bounded, never background cost)
+PASS  v1.8 audio: a BLOCKED action has its own tone (Momentum, audible half)
+PASS  playtest: the survey card yields to the Planetside (never covers the payoff)
+PASS  battery P2: Settings outranks the lesson card during training
+PASS  playtest: NOTHING auto-opens a Compendium shelf any more, training included
+PASS  playtest: NOTHING auto-opens a Fabricator category any more
+PASS  playtest: the chip opens a real MINI QUEST LOG
+PASS  playtest: the log lists objectives with live progress bars
+PASS  playtest: the log offers the full board
+PASS  playtest: the chip folds it away again
+PASS  playtest: the feed + breed lessons LEAVE the specimen card open (the card IS the target)
+PASS  playtest: their copy no longer says Open a beast when one is already open
+PASS  playtest: the heal lesson still clears the card (there it covers the heart)
+PASS  playtest: the heart keeps a 44px TARGET but a glyph-sized highlight
+PASS  playtest: the HP fill can never paint past its track
+PASS  skip: boots clean
+PASS  CF1718-01: the reload RESTARTS training (no swallowed ReferenceError)
+PASS  CF1718-01: the persisted snapshot restores cargo through the reload
+PASS  CF1718-01: items + essence ride too
+PASS  CF1719-01: THE COMPENDIUM CAME BACK through the reload (the outcome, not the code path)
+PASS  CF1720-01: Earth’s history SURVIVES THE RELOAD (☆, subtitle, badge, star, timestamp)
+PASS  CF1719-01: no recovery toast lied — training really did start
+PASS  CF1718-09: rehydrated pstats are clamped and complete
+PASS  CF1720-02: the restore uses the PAYLOAD stats, not the live mid-training ones
+PASS  tsnap session boots clean
+PASS  deep-space resume: training restarts
+PASS  deep-space resume: camera snapped home to Sol system
+PASS  saved vol/rm load and apply (slider 40, explicit Reduced)
+PASS  deep-space resume: boots clean
+PASS  security: a crafted thumbnail string is REJECTED at load (strict base64 charset)
+PASS  security: no injected attribute ever executed from the crafted thumb
+PASS  resilience: malformed save fields no longer kill the whole save (valid sections load)
+PASS  returning veteran: the version bulletin fires
+PASS  bulletin shows the current line alone (no earlier-line leak)
+PASS  bulletin carries a real ship date (nothing In development)
+PASS  resilience: a corrupt save restores from the last-known-good backup
