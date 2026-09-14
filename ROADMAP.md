@@ -17,50 +17,50 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-13 · C2 motion failure and authorized fallback
+## SESSION HANDOFF — 2026-09-13 · consolidated C-lane audit
 
-openai/mac, local only. PR42 parked; no GitHub write, Actions, new branch, kit edit, repaint,
-new audio class, history rewrite or main.ts hunk. Claude-owned motion/effects/battle2/soundkit/
-worldlife and tests remain untouched. Read-only producer bundles are temporary and hash-recorded.
-September12 uninterrupted toolchain receipt reused. .DS_Store is unrelated and left untracked.
+Nick authorized broad independent coding across all C packages and one combined Claude
+review. openai/mac only; no new branch/GitHub/PR42/kit/history operation. Budget file says
+UNFROZEN, but Nick's current exact GitHub authorization is NONE. No model run or new sound.
+Claude-owned motion/effects/battle2/soundkit/worldlife and tests remain untouched. Existing
+September12 toolchain receipt reused within this uninterrupted session. .DS_Store is unrelated.
 
-Interop response/probe committed verbatim e92941cb. Corrected producer SHA
-6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74 matches; root broadcast fixed
-in Claude's lane. No ownership exception needed. Pack6/CONTRACTS/LOG-A11/LOG-B govern.
-C1 mechanically complete; Nick owns final eye. No more Wild intake or generation.
+Review register: audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md; copy-ready REVIEW_PROMPT.md,
+final-checks.json and bundle manifest. Starting head b50668b0. Completed independent work:
+C1 hash/dimension recheck, C2 hidden-band packed-pixel verification and ruler counterexample,
+C3 voice intake, C4 master intake, C5 fixture/test-runner/product/instrument/doc repairs.
+Only main.ts hunks: notification recording excludes activePersist; binary companion uses
+same three-stop glow as trinary. No other main wiring or production art default changed.
 
-C2 actual Civet32/fox22/procedural21 part atlases all pass pixel-identical native rest, with
-missing-head negative controls. Actual procedural material is translucent; masks emitted by
-winning painter replay without altering original ink. Only four-legged banded-tail observation
-is implemented. Fox has no supplied turnaround. Real Motion cards compile deterministically;
-missing record fields: mass, locomotion, realm, weapons, luminous, numeric rotation/secondary
-limits. Compiler uses named mappings/genome defaults. No manually typed body card.
+Latest full Vitest:4338pass,3fail,1skip/4342. Remaining2compendium-budget and1current-producer-
+authorities assertions are genuine admission holds; do not rebaseline ceilings or seals to
+get green. Node tool tests19pass, typecheck/validate/smoke and scoped controls pass (see receipt).
+No integrated native chain or hosted certification. C5 study/pruning candidates15files/11.36MB;
+source imports and precache must change together after phone/visual prerequisites.
 
-200e5d17 adds generic two-bone planted contacts and actual GSAP native proof. cd792e1f fixes
-proof-only audio options. proof-01 preserves that initial audio failure. proof-02 records one
-Civet10.22139s clip at60.002fps/0.30ms p95 CPU update, but has a visible head/neck gap; fox live
-capture exceeds unchanged8%body-length compression bound. Procedural was not reached.
-C2 is NOT accepted. Static rest and sparse contacts did not prove moving shape.
+C2 remains unaccepted. Native f3c6fe7d firstpair head--ear-far failed; fullrest0RGBA and atlas
+budget passed. Latest oracle counterexample proves rigid motion can become red when an
+existing notch enters the fixed rest-pivot disc (0→140; actualgap94). It does NOT establish
+that Civet has no tear, and the agreed gate is unchanged. Claude should reconcile a posed,
+cut-local ruler before another native capture. Retain old failure, foxcandidate01 record,
+procedural actual-material observer and unchanged8%bound. Other family observers remain unbuilt.
 
-NEXT: stop at first pair's failed oracle perauthorization. Review3bc8db0c,implementation
-f3c6fe7d. C2_PAIR_BANDS_20260913/native-gates-01: head--ear-far baseline76; bandsdelta
-+731recoil,+1492strike,+922/+1047stride. Disc-onlycontrols retained. Fullrest0RGBAchanged
-and38parts2039x2047atlas pass. Cause of residual measurement not inferred from countsalone.
-No laterpairs/captures or fox/proceduralsteps ran; no fourthmechanism/thresholdwaiver.
-Ancestry nowaddsall sixmissingcuts; exactlysixtrue siblings unbanded. Depthcappedhalfdescbox.
-29cuts,16groupedbands; diagnosticpairPNGs isolate eachcut's descendantink subset.
-RESULT.json and REVIEW_PROMPT.md with originalnativepairrenders/oracleJSONs are reviewhandoff.
-No masks/pivots/poses/record/8%bound/kit/Claude-lanesource changes.
+Second weather ladder now ready: audits/WEATHER_DETAILS_REVIEW_20260913/review-sheet.png.
+Sixnew-lever variants S/V/P/SV/SP/SVP from the same raw finisher; no inference, exactEdisabled
+control, unchanged sources/masks/alpha. E stays active until Nick picks. No new kit wording.
 
-C3 then original rights-recorded quadruped/Wild/battle/rain/fur48k24bitmono dry WAV +Opus/SHA,
-CONTRACTS1 names; first new sound class stops. Existing proof whoosh/ping is not C3. C4 library
-12at a time after acceptance, every sheet eye. Weather new-lever ladder and up to3redistributable
-~1GBMacfinisher candidates then1phoneattempt remain queued; no further Klein phone probe.
-C5 prune then3merge-commit tiers to develop (UI,painted engine,research as tools), no newbranches.
-LFS migration only on Nick's explicit go. No PRReady until Civet/weather/phone decisions.
+Next: one consolidated Claude review and Nick's weather pick; then C2 gates/captures, actual
+C3 original recordings/rights/truepeak/listening/Opus/three-voice proof, C4 sheets12at a time.
+Smaller redistributable~1GBfinisher candidates (up to3Mac, then1phone) remain unqualified;
+no more Kleinphone probe or delivery engineering before that result. Do not resume pause,
+oldvariant generator, 3Dprojection or rejectederosion experiments.
 
-Codex next: stop for review of the first failed isolated pair; no later work authorized past that gate. Claude next: review supplied
-motion evidence if Nick requests; corrected producer is already consumed read-only, no app
-switch or routine sync needed. Fullsuite24preexistingfailures remain C5. Rootvalidate/focused
-checks required for this batch; no integrated chain. Signing has succeeded after the generic
-1Password agent errors; those errors did not establish that the app was locked.
+C5 eventually integrates reviewed Claude repairs, prunes on openai/mac, requalifies exact
+source authorities, then three merge-commit tiers into develop: productionUI, paintedengine,
+researchtools as tools; one develop→mainreleasePR/fullchain after explicit authorization.
+No PRReady before Civet/weather/phone decisions. LFS only on Nick's explicit go.
+
+Codex next: keep the consolidated evidence/review bundle current and apply reviewable follow-up
+code within this lane; do not restart blind native retries. Claude next: review the supplied
+REVIEW_PROMPT when Nick opens it; do not sync branches or copy protected modules implicitly.
+Nick does not need the other app open for remaining local checks; the bundle is the handoff.

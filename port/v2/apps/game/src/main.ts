@@ -4331,7 +4331,7 @@ const notificationHistory = createNotificationHistory({
     && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
     && !importWriteInFlight && !persistHold,
   mayRecord: () => !!save && !playerMutationsBlocked() && !trainingActive()
-    && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
+    && activePersist === null && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
     && !importWriteInFlight && !persistHold,
   deferRecord: () => !!save && productActionInFlight && f4RuntimeMayMutate() && !smokeForceReadOnly
     && !trainingActive() && !trainingCheckpointWriteHeld && !replacementTransaction
@@ -7092,7 +7092,7 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
     world.addChild(corona);
     sysStar = { seed: starSeed, col, kind: sys.kind, starR: srad };   /* _starSurf close-up gate */
     if (raw.binary) {
-      const b2 = new Sprite(sceneTexture(coronaSpr(raw.binary.col2 || col)));
+      const b2 = new Sprite(sceneTexture(coronaSpr(raw.binary.col2 || col, true)));
       b2.anchor.set(0.5);
       b2.width = raw.binary.r2 * 4.8; b2.height = raw.binary.r2 * 4.8;
       b2.eventMode = 'none';

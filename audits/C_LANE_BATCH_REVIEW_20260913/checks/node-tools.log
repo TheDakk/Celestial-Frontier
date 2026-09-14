@@ -1,0 +1,31 @@
+
+> cf-v2@0.0.0 test:tools
+> node tools/test-node-tools.mjs
+
+✔ WAV intake refuses malformed, silent, clipped and wrong-format masters (0.881833ms)
+✔ runtime minimum admits large masters without resampling and refuses undersize or corrupt PNG (80.23675ms)
+✔ voice inventory, rights, dry source and hashes fail closed; source bytes stay unchanged (4.538041ms)
+✔ depth is pivot-distance and cumulative-limit driven, with fixed floor/cap (0.799167ms)
+✔ bands duplicate only own descendant opaque ink and attach to ancestor in descendant layer (0.766625ms)
+✔ unowned hips and tail root resolve to torso; true siblings do not become ancestors (0.1005ms)
+✔ descendant size cap prevents whole small appendage duplication (0.051209ms)
+✔ joint underlap never introduces a rest-visible pixel outside opaque base coverage (0.873209ms)
+✔ excluded crop corner key is ignored but retained key ink refuses (0.413875ms)
+✔ authored mask ownership reconstructs visible pixels; drops, duplicates and changed colours fail (318.165958ms)
+✔ corruption, wrong master, wrong record and unknown joint refuse before output (137.035833ms)
+✔ painter labels reconstruct actual alpha and refuse dropped, unknown or rehashed foreign owners (418.30975ms)
+✔ hash-bound master, corruption, swapped cut-out and unsupported serpent controls (7.71325ms)
+✔ alpha topology refines at silhouette, skips empty regions and shares edges (2.636792ms)
+✔ template finite endpoints restore exact rest; curves move jaw, ears, tail and release feet only in attack (51.262542ms)
+✔ one CLI atlas is byte-stable across input order; original pixels and hashes survive (721.890709ms)
+✔ verifies the hidden band against packed bytes and refuses a resealed pixel or dimension mismatch (10.53125ms)
+✔ independent media duration rejects first short recordings and missing/overlong evidence (0.469042ms)
+✔ startup feeds frames before acknowledgment and refuses a recorder that never starts (0.265958ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 980.004792

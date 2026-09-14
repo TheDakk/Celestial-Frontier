@@ -1,5 +1,54 @@
 # September13 — Pack6 C2 observation development (verbatim)
 
+## SESSION HANDOFF — 2026-09-13 · C2 motion failure and authorized fallback
+
+openai/mac, local only. PR42 parked; no GitHub write, Actions, new branch, kit edit, repaint,
+new audio class, history rewrite or main.ts hunk. Claude-owned motion/effects/battle2/soundkit/
+worldlife and tests remain untouched. Read-only producer bundles are temporary and hash-recorded.
+September12 uninterrupted toolchain receipt reused. .DS_Store is unrelated and left untracked.
+
+Interop response/probe committed verbatim e92941cb. Corrected producer SHA
+6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74 matches; root broadcast fixed
+in Claude's lane. No ownership exception needed. Pack6/CONTRACTS/LOG-A11/LOG-B govern.
+C1 mechanically complete; Nick owns final eye. No more Wild intake or generation.
+
+C2 actual Civet32/fox22/procedural21 part atlases all pass pixel-identical native rest, with
+missing-head negative controls. Actual procedural material is translucent; masks emitted by
+winning painter replay without altering original ink. Only four-legged banded-tail observation
+is implemented. Fox has no supplied turnaround. Real Motion cards compile deterministically;
+missing record fields: mass, locomotion, realm, weapons, luminous, numeric rotation/secondary
+limits. Compiler uses named mappings/genome defaults. No manually typed body card.
+
+200e5d17 adds generic two-bone planted contacts and actual GSAP native proof. cd792e1f fixes
+proof-only audio options. proof-01 preserves that initial audio failure. proof-02 records one
+Civet10.22139s clip at60.002fps/0.30ms p95 CPU update, but has a visible head/neck gap; fox live
+capture exceeds unchanged8%body-length compression bound. Procedural was not reached.
+C2 is NOT accepted. Static rest and sparse contacts did not prove moving shape.
+
+NEXT: stop at first pair's failed oracle perauthorization. Review3bc8db0c,implementation
+f3c6fe7d. C2_PAIR_BANDS_20260913/native-gates-01: head--ear-far baseline76; bandsdelta
++731recoil,+1492strike,+922/+1047stride. Disc-onlycontrols retained. Fullrest0RGBAchanged
+and38parts2039x2047atlas pass. Cause of residual measurement not inferred from countsalone.
+No laterpairs/captures or fox/proceduralsteps ran; no fourthmechanism/thresholdwaiver.
+Ancestry nowaddsall sixmissingcuts; exactlysixtrue siblings unbanded. Depthcappedhalfdescbox.
+29cuts,16groupedbands; diagnosticpairPNGs isolate eachcut's descendantink subset.
+RESULT.json and REVIEW_PROMPT.md with originalnativepairrenders/oracleJSONs are reviewhandoff.
+No masks/pivots/poses/record/8%bound/kit/Claude-lanesource changes.
+
+C3 then original rights-recorded quadruped/Wild/battle/rain/fur48k24bitmono dry WAV +Opus/SHA,
+CONTRACTS1 names; first new sound class stops. Existing proof whoosh/ping is not C3. C4 library
+12at a time after acceptance, every sheet eye. Weather new-lever ladder and up to3redistributable
+~1GBMacfinisher candidates then1phoneattempt remain queued; no further Klein phone probe.
+C5 prune then3merge-commit tiers to develop (UI,painted engine,research as tools), no newbranches.
+LFS migration only on Nick's explicit go. No PRReady until Civet/weather/phone decisions.
+
+Codex next: stop for review of the first failed isolated pair; no later work authorized past that gate. Claude next: review supplied
+motion evidence if Nick requests; corrected producer is already consumed read-only, no app
+switch or routine sync needed. Fullsuite24preexistingfailures remain C5. Rootvalidate/focused
+checks required for this batch; no integrated chain. Signing has succeeded after the generic
+1Password agent errors; those errors did not establish that the app was locked.
+
+
 ## Archived September 13 — C2 rest and first motion handoff
 
 ## SESSION HANDOFF — 2026-09-13 · Pack6 / C2 rest admission

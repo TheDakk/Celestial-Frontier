@@ -1,0 +1,416 @@
+{
+  "base": "b50668b0",
+  "files": [
+    {
+      "path": "AUDIO.md",
+      "bytes": 73797,
+      "sha256": "22d24a2c963456ddc7ba8f2c4d987569e10cb9dd271a71282677c9382082e15f"
+    },
+    {
+      "path": "CREATURE_ANIMATION.md",
+      "bytes": 33464,
+      "sha256": "0948a0bb976a7b7cb89a85d912781bd3be9bd18c2c7f6f4798737f4ed9a7fcbd"
+    },
+    {
+      "path": "LOCAL_AI_GENERATION.md",
+      "bytes": 7135,
+      "sha256": "912b0bccf487cf5b8178b62bc8140a3bfea948440b832b24c77ffe42e4796ebe"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 4797,
+      "sha256": "27ee60dbf7deee22940b524632c57057b2b52122b9e191abe87c025b48e41783"
+    },
+    {
+      "path": "ROADMAP_ARCHIVE.md",
+      "bytes": 3001632,
+      "sha256": "54d7be34cd26d0ff54167540e1ea096bd30428718899e9cae7dd9482206bc225"
+    },
+    {
+      "path": "UI_TOOLCHAIN.md",
+      "bytes": 33858,
+      "sha256": "6acd63e059ff901295feff585f0bb411f54c83051e771a3542ae443897e88176"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md",
+      "bytes": 11289,
+      "sha256": "4f62c386488d1725e70500012ae8b6ebf8113686ebc737273ea6568443944cf6"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/REVIEW_PROMPT.md",
+      "bytes": 4872,
+      "sha256": "3bde748aa4b64483ff298a985788e5b2be9a1bdd03db24cb79c61ad652587adb"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/art-intake.json",
+      "bytes": 6505,
+      "sha256": "1c17b3694cdef9939760b315633250fe7a42e107f842357d9a0b37a1f2d84a09"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/baseline.json",
+      "bytes": 15099,
+      "sha256": "8d2e3eb16f5ffa452686db589be6c6a6c46e9fd973c183958907898a16ad3a75"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/checks/charts-fixture-controls.log",
+      "bytes": 243,
+      "sha256": "f859248a6fe7fbe30ea595960749bda3bcb13dc57d4f3667a0e8f7a1c0527d4b"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/checks/node-tools.log",
+      "bytes": 2097,
+      "sha256": "718a21b3793fed4956f7b777c1ab5f5d22f97c45402ac221b6ebe5e2487c2971"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/checks/product-instrument-controls.log",
+      "bytes": 245,
+      "sha256": "97432948f81c6ffdb59596ca07f340113ba50e2703f3de6490fe63b771dd36d8"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/checks/smoke.log",
+      "bytes": 34190,
+      "sha256": "021b88629e03249486c81e5e25eab847b8bee6c3f1fc8e7fb50e76aa537f8830"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/checks/test-runner-forwarding.log",
+      "bytes": 11469,
+      "sha256": "f56e2acb3cc1644f4e2b5989bcdf537e54a9bfb633f85e8aa6bd2942e5c89038"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/checks/typecheck.log",
+      "bytes": 134,
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/checks/validate.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/checks/vitest-final.log",
+      "bytes": 14151,
+      "sha256": "2fc5b9233a470b6eac123b5f4d686092d3f81bae0c0d0e95ba1c82d51292c597"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/checks/worker-weather-controls.log",
+      "bytes": 783,
+      "sha256": "4878dce1103b5e814fb38da354716e896c1b6299d7bc395f4a3192ece999a967"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/final-checks.json",
+      "bytes": 1068,
+      "sha256": "7c92ccbaed47dc6724e87dc29b4a71489ec74ca34da68aff7131d50a1d8a4c6d"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/parts-byte-verification.json",
+      "bytes": 726,
+      "sha256": "554c4230f26a635a687cd48c9797fddfb00e35dea3e548302aebc46523b2d8b4"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/pruning-inventory.json",
+      "bytes": 3693,
+      "sha256": "99794bde19732d159372bcf217983a796c5bf737cee0f09b8e833d3203e082e4"
+    },
+    {
+      "path": "audits/C_LANE_BATCH_REVIEW_20260913/seam-oracle-counterexample.json",
+      "bytes": 768,
+      "sha256": "593c6fbc2effb268dadc0e891f00e0e0437b6a85114bcd1aa2dd871e9db8832e"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG.md",
+      "bytes": 12297,
+      "sha256": "043d20acc53bb71051f46d9e8b04fdbd5a74833da23a39a6428b5b06bb489b33"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/P.png",
+      "bytes": 1474374,
+      "sha256": "f9beea29a7e54c9ab7cc96f8b7c814d0c9f41baeafe0490330866ed0e4cb11d3"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/README.md",
+      "bytes": 1390,
+      "sha256": "1113353dea55f14328206f9653d20227e433c8ab6d3ae9d3c0751b26cab776d2"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/S.png",
+      "bytes": 1464032,
+      "sha256": "27b05593c0ab44768f6597b177f19d984c6a63ea8da012d7451445da8373dcea"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/SP.png",
+      "bytes": 1473663,
+      "sha256": "74b1649d94358c96adc297886cafcecfcf03cbc390c56a8bcd494d1a37cf84e9"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/SV.png",
+      "bytes": 1463885,
+      "sha256": "2854820dce4c02fa6b92cba2efa76431968407dd0f1e655d10bca392bcbb2637"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/SVP.png",
+      "bytes": 1473831,
+      "sha256": "85e2367fb5fe75930f46dc2cd50af389d96a1965c38d04674970b83cde5e6d59"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/V.png",
+      "bytes": 1464335,
+      "sha256": "548452ec962d1859827a2ee48ee2e5bb20c757b849fad65bcd6f4c7b789d5ead"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/manifest.json",
+      "bytes": 4496,
+      "sha256": "572d6a37b9c007983941c18f001649ca14c9daeef501caa275490767b1b1a773"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/review-sheet.png",
+      "bytes": 10104703,
+      "sha256": "8a3f170a0723625cee04e3037682be08d160e3fca791fadca10b0e46fb2bfe90"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/tile-E.png",
+      "bytes": 1933191,
+      "sha256": "83d05a85eaddd62412dbf6f2cb9ce37a0f67c3ba902f5ee5ae23f84636742310"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/tile-P.png",
+      "bytes": 1947110,
+      "sha256": "d62aabb547a3d5bc43f270c23a18396ed2b122b0ad9e90b3e8b7bee8ab4ade43"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/tile-S.png",
+      "bytes": 1931333,
+      "sha256": "f579e97a8e6cef1b7b611c995988be97c28c57c83abc4dafbf0ffe5e2f3b02d1"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/tile-SP.png",
+      "bytes": 1948986,
+      "sha256": "c40a2ba9d43ac21be471644b9048799b371a7c8fd123f170ff9ee48f02718e3f"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/tile-SV.png",
+      "bytes": 1938253,
+      "sha256": "7e1e20137a5386ac742a7c826d9198b7c60519532d82c9c97d04a1c582cceab0"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/tile-SVP.png",
+      "bytes": 1954844,
+      "sha256": "963c2125e4acc50374fa07315661b18d63d0cf8e4d6c351e6be7383104bfd714"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/tile-V.png",
+      "bytes": 1936882,
+      "sha256": "0b1c283961aebf85aea122ae5937dcf38f9171b4abdac77ac3776b130979a9a8"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/tile-triptych.png",
+      "bytes": 1484558,
+      "sha256": "fb4de761e0d5ade1561cdc2d54a30581af7a50358fa93aea324286e55c8857ef"
+    },
+    {
+      "path": "audits/WEATHER_DETAILS_REVIEW_20260913/triptych-fit.png",
+      "bytes": 972624,
+      "sha256": "8633ae6fd15fbd3af8d2e2f0276a16e7bccf9f69ca84026a7ec8888e7eb66891"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 523148,
+      "sha256": "97e0517bab0e4d924a2b7a84b049424b40a1b34e7cbf12944041455bf45863b5"
+    },
+    {
+      "path": "port/v2/README.md",
+      "bytes": 444113,
+      "sha256": "c88205aab9d35e9bd6d052156a9b15867468bf985c41c048c149ebe601ca8dd7"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "bytes": 868218,
+      "sha256": "5fa81666fc5a9e9b13bb9e834b0439864e66212853ba6d0b6b7a1e5709998c31"
+    },
+    {
+      "path": "port/v2/apps/game/src/release-content.ts",
+      "bytes": 158920,
+      "sha256": "dc9807b9e44f18a3c4b1490df7238c6b3def4d2c1c59c1fca232389eb515096d"
+    },
+    {
+      "path": "port/v2/package.json",
+      "bytes": 3235,
+      "sha256": "473749d5574c12a80eafa04fe36431b5446e74e63588d6c0626de683716ad248"
+    },
+    {
+      "path": "port/v2/tests/app-chrome-main-wiring.test.ts",
+      "bytes": 23994,
+      "sha256": "18c41397a3582cc67ae8cd63ab196d80743fcdac24898e4fe1a78aba270a88ea"
+    },
+    {
+      "path": "port/v2/tests/evidence-build-runtime.test.ts",
+      "bytes": 12565,
+      "sha256": "ba9222af2c71c6aefde26710d96a62760b2aa71cf016ac5f5e380267a0d7fe8a"
+    },
+    {
+      "path": "port/v2/tests/evidence-chain-tools.test.ts",
+      "bytes": 41269,
+      "sha256": "f587db32420e82e3729636250058cbf8f165d94b587295a119968129a5c47844"
+    },
+    {
+      "path": "port/v2/tests/exceptional-crafting-evidence-contract.test.ts",
+      "bytes": 23544,
+      "sha256": "f1e91d58d2a8fa313f209f87617d5bc8d36c59e4b996ca8c29656d388f08ce63"
+    },
+    {
+      "path": "port/v2/tests/glass-charts-control-route.test.ts",
+      "bytes": 7264,
+      "sha256": "177307820750be8d1533d540c96394ba351406a8df67e6edf78b102e1fa8eb26"
+    },
+    {
+      "path": "port/v2/tests/guide-release.test.ts",
+      "bytes": 220874,
+      "sha256": "e7f1ac9bab12e825b2282146713c96fa02f872901a8bcbcf9b42d1265846c606"
+    },
+    {
+      "path": "port/v2/tests/notification-history.test.ts",
+      "bytes": 16772,
+      "sha256": "ca2cdbcd054953fa61c52ce032e5bc2ad9aa99391704c01c61cb40058075163c"
+    },
+    {
+      "path": "port/v2/tests/painted-earth-mount-ownership.test.ts",
+      "bytes": 17789,
+      "sha256": "a371227926608737f41a5b66473f753daba2797968efd6c0fb6dfd8d34c9947f"
+    },
+    {
+      "path": "port/v2/tests/pwa-offline.test.ts",
+      "bytes": 53908,
+      "sha256": "1197fea0f02d98e7911d5a5acefc0d06c0cb8f2134bbe84123f765a67615bb3d"
+    },
+    {
+      "path": "port/v2/tests/review-runner-safety.test.ts",
+      "bytes": 4523,
+      "sha256": "9bc6462a3884b59694e669c6f9faa8213f68ffe10e0592cc1a0688aa140e043e"
+    },
+    {
+      "path": "port/v2/tests/review-visual-contracts.test.ts",
+      "bytes": 3489,
+      "sha256": "ada70842774651d29c39bba977830aeacd05f28992addd1beb33ffda59f2b960"
+    },
+    {
+      "path": "port/v2/tests/slicesmoke-sixth-red-contract.test.ts",
+      "bytes": 212030,
+      "sha256": "1e67edb5b45bfab19d7ac9a46fd77c1df50ea4bf9a078790f2de840d361022c4"
+    },
+    {
+      "path": "port/v2/tools/asset-intake/README.md",
+      "bytes": 1964,
+      "sha256": "75040ca86db777372c3cb490f06dd3afe7db9eaaaab66c7f4ae413aaa600ee77"
+    },
+    {
+      "path": "port/v2/tools/asset-intake/contracts.mjs",
+      "bytes": 5219,
+      "sha256": "5f33d2d326440ea4d31960890aca0145de15066eb9e09d13956f9e4eee885192"
+    },
+    {
+      "path": "port/v2/tools/asset-intake/contracts.test.mjs",
+      "bytes": 3019,
+      "sha256": "fa587d5b8675fad2652d42914d1fcf9f790f96d21ff0a96e25dfa6688088f4b8"
+    },
+    {
+      "path": "port/v2/tools/asset-intake/inspect.mjs",
+      "bytes": 909,
+      "sha256": "665a641a447c8d17dabc7d3570bb52e0c111efba8ae891baa0903a788076e932"
+    },
+    {
+      "path": "port/v2/tools/audiovisual-pilot-review.mjs",
+      "bytes": 26955,
+      "sha256": "f498975b7402aab727acc5e4ca6c37b4be71be03e41021c9c42c5cec3348923d"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/band-patches.mjs",
+      "bytes": 9416,
+      "sha256": "22e8754f586bd7be3626c8d6e130e53ac7fc2234c1b187838a3fb94eb28afd16"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/seam-oracle-audit.mjs",
+      "bytes": 2303,
+      "sha256": "b407448c786e54c97666d84a85c773913b7b358fe764f64cdbf5d7b97217dfd5"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/verify-parts.mjs",
+      "bytes": 3082,
+      "sha256": "f5278c15111466e447bb9c3dbffabc56fcf3ff6f7fcdee9a01c6e82cb936fd71"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/verify-parts.test.mjs",
+      "bytes": 2156,
+      "sha256": "6e033b2155bcc1f8c1cf73f964a2d24b8a8cde380de4d2ac9723bf8302139306"
+    },
+    {
+      "path": "port/v2/tools/glassmatrix.mjs",
+      "bytes": 1151127,
+      "sha256": "8ee2c86ebb06392af5ef3e59ff067acb3527c473e86c3ae5bf8250e7d90491b2"
+    },
+    {
+      "path": "port/v2/tools/phone-shell-viewport.mjs",
+      "bytes": 328,
+      "sha256": "8f603612fbafbaeb5a8805bc03476b62409cc57b49039a0762e891271db5477d"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "bytes": 1890119,
+      "sha256": "50789ee0cc33fbf2d396a32036013822252270bb43be969f6307db434872dafb"
+    },
+    {
+      "path": "port/v2/tools/test-node-tools.mjs",
+      "bytes": 680,
+      "sha256": "5b44c2af2d703a76d9961cd080f1edd61e785dc8578915d5a4d8cf4d72b1e1eb"
+    },
+    {
+      "path": "port/v2/tools/ui-review-navigation-selftest.mjs",
+      "bytes": 5499,
+      "sha256": "5f8354e8cfb4538c414cc2f1ef6014081a3af08af6ddfb411e6f38cc86c99085"
+    },
+    {
+      "path": "port/v2/tools/ui-shell-review.mjs",
+      "bytes": 80260,
+      "sha256": "3408205405a2926b57ca544c8d274dc8eee3a6b5a3fe045387a16e52b0e3e384"
+    },
+    {
+      "path": "port/v2/vitest.config.ts",
+      "bytes": 315,
+      "sha256": "94a2c2b25d8e745eece843fd04591b8bb756362c38ce53ac0ee3758cd5cd36fa"
+    },
+    {
+      "path": "tools/local-image-generation/kit-weather-details.mjs",
+      "bytes": 2870,
+      "sha256": "17a769a953a7be7601e93f31f75aacd11f2580a224477afe8dfcaecea1a382b3"
+    },
+    {
+      "path": "tools/local-image-generation/kit-weather-details.test.mjs",
+      "bytes": 1602,
+      "sha256": "8ad2b51f5803f6733ada983b226c0445d6da70abf12c403f2f449d6f26e8c799"
+    },
+    {
+      "path": "tools/local-image-generation/probe-webgpu.mjs",
+      "bytes": 4641,
+      "sha256": "fecadd686ba770f2a14a09cb01ef636b8593b8309946c3544f60f0e0f4f0884b"
+    },
+    {
+      "path": "tools/local-image-generation/render-weather-details.mjs",
+      "bytes": 4137,
+      "sha256": "cd855b3e30ad0c2fcc32b547d3361db3adcc12181e3d0ba00c4af91505d88101"
+    },
+    {
+      "path": "tools/local-image-generation/run-browser-proof.mjs",
+      "bytes": 22223,
+      "sha256": "27241eaf0582a73097a468fa661a9645177bf7ce426312636b17a8b77b2b5d1b"
+    },
+    {
+      "path": "tools/local-image-generation/run-game-integration.mjs",
+      "bytes": 31751,
+      "sha256": "238171250662c9db71b3968fc215153ad0343e358bf20d90db914284d2f6daf6"
+    },
+    {
+      "path": "tools/local-image-generation/run-landfall-viewer.mjs",
+      "bytes": 27906,
+      "sha256": "1130161bd3faf4bdfcb41b9d8122d200b15a695dfc8134e739e6234ed08d014e"
+    }
+  ],
+  "selfExcluded": true
+}

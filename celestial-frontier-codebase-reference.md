@@ -6539,3 +6539,17 @@ channels,21parts,31joints and actual translucent material. Procedural atlas read
 reconstruction0changedchannels. Real Claude compiler accepts all3records and produces repeated
 identical body cards/timelines; missing-head controls refuse. Evidence: C2_PARTS_ATLAS_20260913/
 body-cards-01 and native-painter-parts-03. Native rig motion acceptance still pending.
+
+## September 13 C-lane audit boundary
+
+Matches code as of 2026-09-13. Current local-AI behavior is refreshed in LOCAL_AI_GENERATION.md;
+ART_KIT.md remains unchanged at4.3. Ordinary rain E remains accepted/active; the separate
+six-variant weather-details ladder has no inference and awaits Nick's pick. Notification
+recording now checks activePersist before mutating the in-memory checkpoint overlay.
+
+Parts authoring verifies all source/packed RGBA channels including hidden underlaps before
+native motion evidence. The unchanged seam ruler has a reproduced rigid-translation false
+positive; C2 remains unaccepted. C3/C4 have read-only source/master intake tooling, not newly
+accepted sound/library content. Vitest and Node tool tests have separate owners; release
+oracles now bind the actual85-bullet draft, with stale OPFS-variant advertising removed.
+See audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md for measured fixes and remaining holds.

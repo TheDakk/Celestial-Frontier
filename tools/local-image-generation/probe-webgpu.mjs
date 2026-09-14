@@ -1,11 +1,14 @@
 import http from 'node:http';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
 import { openChromiumCdp } from '../../port/v2/tools/browsercdp.mjs';
 
 // Real compute, not feature presence. Uses an isolated profile and loopback origin.
 const output = process.argv[2];
 if (!output) throw new Error('Usage: node probe-webgpu.mjs OUTPUT.json');
+// Lock is retained through process exit, including receipt/cleanup failures.
+acquireWorkspaceLock('WebGPU review probe', {inheritFromParent:true});
 const server = http.createServer((_req, res) => {
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.end('<!doctype html><title>Celestial Frontier WebGPU qualification</title>');

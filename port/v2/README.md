@@ -212,7 +212,7 @@ programs, root validate, one evidence build and101 release/budget/evidence check
 for that sheet-only preparation was aef21961ea701ea7d01e3b4bc5b9fe01a8efff328ca3baa33637e98e3a3acafe.
 Current audiovisual producer identity is recorded in the implementation manifest; measurement
 4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 and ceilings are unchanged.
-The development draft has83 ordered bullets; the current digest is recorded in
+The development draft has85 ordered bullets; the current digest is recorded in
 `../../audits/AV_PROTOSTAR_DISK_20260908/`. The previous landing/battle
 checkpoint retains its earlier354381f4 digest in its own immutable audit.
 These scoped results are not a fresh Compendium certificate.
@@ -4764,3 +4764,11 @@ full 25-generator sweep from TS.
 Memoized generators make **call order observable state** — the fingerprint's `systemSol`
 proves it. The TS port should either not share cached objects across callers or never
 mutate them after creation.
+
+## September 13 C-lane review checks
+
+Vitest excludes Node-owned `tools/**/*.test.mjs`; `npm run test:tools` discovers and executes
+those files using Node, without taking the checkout lock. `npm test` runs Node tools first,
+then Vitest; Vitest reporter/filter arguments still reach their intended owner.
+The consolidated C-lane audit is `audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md` at repository
+root. Remaining memory-authority failures are admission holds, not updated baselines.

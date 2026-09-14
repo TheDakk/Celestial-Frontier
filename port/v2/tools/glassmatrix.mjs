@@ -14,6 +14,7 @@
    its controls failed and its product verdict must not be trusted.
 */
 import fs from 'node:fs';
+import {usesPhoneDock} from './phone-shell-viewport.mjs';
 import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
@@ -9064,6 +9065,9 @@ function installAuditHarness(assessGlyphStrokeContrast) {
         return;
       }
       if (!el.matches('button.dock-utility')) { contrastNodes.add(el); return; }
+      const glyph = el.querySelector(':scope > .utility-face > .ico');
+      if (!glyph || !visible(glyph) || !(glyph.textContent || '').trim())
+        out.push(issue('CONTRAST_SUBJECT_MISSING', surface, selectorName(el), { markup: el.outerHTML.slice(0,1000) }, 'visible utility glyph on its painted face'));
       // The native target is transparent; its glyph and badge have distinct painted backings.
       for (const leaf of el.querySelectorAll(':scope > .utility-face > .ico,:scope > [data-notification-count]'))
         if (visible(leaf)) contrastNodes.add(leaf);
@@ -11295,7 +11299,7 @@ async function main() {
           focusSelectors: vp.label === 'primary-phone' || vp.label === 'desktop' ? ['#searchbox', '#dockguide', '#docksets'] : [],
           canvas: true, expectedDpr, maxBackingPixels,
         }));
-        if (vp.width <= 700) {
+        if (usesPhoneDock(vp)) {
           const phoneDockCheck = `(${readU1PhoneShell.toString()})(false)`;
           addOutcome(vp.label, 'phone-dock', 'PHONE_DOCK_INVENTORY', '#dock', await evalIn(phoneDockCheck),
             'five labelled responsive board faces and four 44px utility targets retain their measured slots; relocated Inventory and scene actions stay centre-owned');
@@ -11350,7 +11354,7 @@ async function main() {
           if (hpControl.ok) recordInstrumentFailure(`${vp.label}: HP dual-background contrast injection stayed green (${JSON.stringify(hpControl)})`);
           recordControls('hp-label-dual-background');
         }
-        const compactCharts = vp.width <= 700 || (vp.width <= 900 && vp.width > vp.height);
+        const compactCharts = usesPhoneDock(vp);
         const auditChartsControl = async (selector, activate) => {
           if (selector !== (compactCharts ? '#setcharts' : '#dockcharts')) throw new Error('Charts audit selected the hidden route');
           const initial = await evalIn('window.__CF_SLICE__.api.state().chartsOn');
@@ -14359,7 +14363,7 @@ async function main() {
           headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
           bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
-          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=83;
+          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=85;
           const unnegated=${hasUnnegatedSentenceClaim};
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
@@ -14773,7 +14777,7 @@ async function main() {
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 83-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 85-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -15114,7 +15118,7 @@ async function main() {
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&publishing?.textContent===publishingText&&S.api.state===priorState;
-            return {ok:!error&&baseline?.ok===true&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===82
+            return {ok:!error&&baseline?.ok===true&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===84
               &&identity?.ok===false&&identity?.identity===false
               &&truthfulFeatureClaims.length===11
               &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)
@@ -15933,7 +15937,7 @@ async function main() {
   if (!arc4CaptureControlRun && !targetedProductBlocked) {
     recordInstrumentFailure('Arc 4 capture presentation/geometry/native-return controls never ran');
   }
-  if (!phoneDockControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 700)) {
+  if (!phoneDockControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some(usesPhoneDock)) {
     recordInstrumentFailure('exact ten-control 5x2 phone dock control never ran');
   }
   if (!reloadBindingControlRun && !targetedProductBlocked) recordInstrumentFailure('live slice-ready binding controls never ran');

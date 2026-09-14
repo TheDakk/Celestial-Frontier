@@ -47,7 +47,7 @@ Official stable metadata check passed at 2026-09-12T14:20:30Z. Managed Node was 
 
 ## Paused local continuation — historical September 9, 2026
 
-Nick paused development. The [complete checkpoint](audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md) owns the current implementation and exact evidence boundary. The portable six-reference first-step diagnostic completed (85.013s execution,0.275ms readback); this is not a full image or a repair of the older normal-game600s failure. New browser block32 derivation, transactional OPFS storage, explicit Prepare/Verify controls, bounded original lookup and pinned-plan runtime/mobile integration exist in the **uncommitted working copy and are not yet integration-tested**. Parent model6.23GiB plus optional336MiB derived storage remain separate from painting cache/GPU RAM. Final integrated checks, new package/native run, exact art review and physical-phone qualification are pending. The V2 draft release note records the optional action; no production version or accepted base control placement changed. Earlier verified-scope descriptions below must not be read as verification of this later integration.
+The September 9 pause is historical and does not authorize a restart. Ordinary Land now uses the accepted kit composite/finisher path; the game OPFS variant layer and six-reference generator were removed. [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) describes current engine and phone boundaries. The active painting is rain E; no Klein phone probe or delivery engineering is next. Native C2 motion remains under review.
 
 Signing succeeded using configured1Password `op-ssh-sign`; do not replace the signing helper with `ssh-keygen`. Independent verification still uses `ssh-keygen`. No persistent security setting changed. Startup receipt reuse applies only within the uninterrupted session; fresh sessions follow the runbook.
 
@@ -230,7 +230,7 @@ Preserve the earlier enumeration-only and CPU-render provenance.
 | GSAP | Exact 3.15.0 in tools/ui-motion and port/v2 game app | Paused timelines selected for parts-rig tweening; runtime wiring pending. Preserve reduced motion and native focus/click owners. |
 | Seeded battle emitter | Repository implementation on Pixi 8.19.0 | Replaces removed @pixi/particle-emitter; recipe-seeded travel/impact particles, awaiting browser proof. |
 | free-tex-packer core / CLI | Exact 0.3.9 / 0.3.0 in port/v2 devDependencies | Deterministic one-atlas-per-creature command; synthetic repeat/pixel tests pass. |
-| Node / npm | 26.8.1 / 11.19.0 | Managed Node updated while idle at the 2026-09-07 startup; CLI capability verified. Bundled app Node processes remain separate. |
+| Node / npm | 26.8.2 / 11.19.0 | Managed Node updated while idle at the 2026-09-12 startup; CLI capability verified. Bundled app Node processes remain separate. |
 | Homebrew | 6.0.22 | Official formula/cask installation and scoped stable updates. |
 | GitHub CLI | 2.100.0 (updated from 2.97.0) | Repository metadata and separately authorized GitHub operations; maintenance does not authorize hosted work. |
 | Apple Git | 2.50.1 | Signed source history and normal agent-branch workflow. Apple/Xcode owns its updates; do not replace it with another Git installation automatically. |

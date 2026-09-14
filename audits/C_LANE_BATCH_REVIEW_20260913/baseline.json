@@ -1,0 +1,243 @@
+{
+  "source": "b50668b0",
+  "tests": 4334,
+  "passed": 4308,
+  "failed": 25,
+  "pending": 1,
+  "failures": [
+    {
+      "file": "port/v2/tests/app-chrome-main-wiring.test.ts",
+      "message": "",
+      "tests": [
+        {
+          "name": "MAIN-1 / CHROME-1 application chrome extraction wiring leaves Main as a projection/viewport adapter over one DOM lifecycle owner",
+          "error": [
+            "AssertionError: expected [ 'surface-layout-geometry-port' ] to deeply equal []\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/app-chrome-main-wiring.test.ts:252:51\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11"
+          ]
+        },
+        {
+          "name": "MAIN-1 / CHROME-1 application chrome extraction wiring rejects literal and dynamic chrome lookups in the Earth scene geometry adapter",
+          "error": [
+            "Error: mutation target is not unique:   const chrome = appChrome.surfaceLayoutRects();\n    at replaceOnce (/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/app-chrome-main-wiring.test.ts:27:48)\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/app-chrome-main-wiring.test.ts:317:23"
+          ]
+        },
+        {
+          "name": "MAIN-1 / CHROME-1 application chrome extraction wiring negative-controls every status projection and the owner render contract",
+          "error": [
+            "AssertionError: expected [ 'surface-layout-geometry-port' ] to deeply equal []\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/app-chrome-main-wiring.test.ts:360:51\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "port/v2/tests/compendium-budget.test.ts",
+      "message": "",
+      "tests": [
+        {
+          "name": "Arc 1A Compendium budget authority owns a strict v2 record and schema bound to the sealed 1,500-row input",
+          "error": [
+            "AssertionError: expected '3e24f5683d10b4b986e44febc63d4c422db58…' to be '4a93479b62b032155a4825bde6425ebd430cc…' // Object.is equality\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/compendium-budget.test.ts:732:46\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11"
+          ]
+        },
+        {
+          "name": "Arc 1A Compendium budget authority binds active ruler authority while preserving calibration-required and drift controls",
+          "error": [
+            "AssertionError: expected { ok: false, …(1) } to deeply equal { ok: true, errors: [] }\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/compendium-budget.test.ts:1624:8\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "port/v2/tests/current-producer-authorities.test.ts",
+      "message": "",
+      "tests": [
+        {
+          "name": "current producer authorities binds every live memory budget required by the active check profile",
+          "error": [
+            "AssertionError: expected [ 'inputs.appPackage', …(4) ] to deeply equal []\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/current-producer-authorities.test.ts:57:8\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "port/v2/tests/evidence-build-runtime.test.ts",
+      "message": "",
+      "tests": [
+        {
+          "name": "explicit evidence-build runtime isolation retains frame → task → answerability → art → pilot activation (evidence=false)",
+          "error": [
+            "ReferenceError: startLocalAiPreview is not defined\n    at eval (eval at appSection (/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/evidence-build-runtime.test.ts:31:10), <anonymous>:22:4)\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/evidence-build-runtime.test.ts:220:18"
+          ]
+        },
+        {
+          "name": "explicit evidence-build runtime isolation retains frame → task → answerability → art → pilot activation (evidence=true)",
+          "error": [
+            "ReferenceError: startLocalAiPreview is not defined\n    at eval (eval at appSection (/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/evidence-build-runtime.test.ts:31:10), <anonymous>:22:4)\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/evidence-build-runtime.test.ts:220:18"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "port/v2/tests/exceptional-crafting-evidence-contract.test.ts",
+      "message": "",
+      "tests": [
+        {
+          "name": "Pureforged browser-evidence truth replays every current rendered release control and preserves the Research reach boundary",
+          "error": [
+            "AssertionError: expected 'development-detail baseline red befor…' to be null\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/exceptional-crafting-evidence-contract.test.ts:346:26\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "Pureforged browser-evidence truth rejects the historical generic Research-reach false green and restores the bulletin",
+          "error": [
+            "AssertionError: expected 'development-detail baseline red befor…' to be null\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/exceptional-crafting-evidence-contract.test.ts:377:26\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "port/v2/tests/guide-release.test.ts",
+      "message": "",
+      "tests": [
+        {
+          "name": "legacy and v2 release channels keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes",
+          "error": [
+            "AssertionError: expected { categories: true, …(6) } to deeply equal { categories: true, …(6) }\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/guide-release.test.ts:2849:21\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "port/v2/tests/painted-earth-mount-ownership.test.ts",
+      "message": "",
+      "tests": [
+        {
+          "name": "actual main Earth mount and retirement transactions publishes and fully retires painted-earth-civet-landing-v1 with the actual one/two canvas count",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.releaseSurfaceVistaOwner [as release] (evalmachine.<anonymous>:40:2)\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/painted-earth-mount-ownership.test.ts:129:11"
+          ]
+        },
+        {
+          "name": "actual main Earth mount and retirement transactions publishes and fully retires painted-earth-riverbank-v1 with the actual one/two canvas count",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.releaseSurfaceVistaOwner [as release] (evalmachine.<anonymous>:40:2)\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/painted-earth-mount-ownership.test.ts:129:11"
+          ]
+        },
+        {
+          "name": "actual main Earth mount and retirement transactions publishes and fully retires cf-local-ai-landfall-v1 with the actual one/two canvas count",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.releaseSurfaceVistaOwner [as release] (evalmachine.<anonymous>:40:2)\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/painted-earth-mount-ownership.test.ts:129:11"
+          ]
+        },
+        {
+          "name": "actual main Earth mount and retirement transactions retains and retries the failed lease after painted-earth-civet-landing-v1 insertion rolls back",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.releaseSurfaceVistaOwner [as release] (evalmachine.<anonymous>:40:2)\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/painted-earth-mount-ownership.test.ts:157:30"
+          ]
+        },
+        {
+          "name": "actual main Earth mount and retirement transactions retains and retries the failed lease after painted-earth-riverbank-v1 insertion rolls back",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.releaseSurfaceVistaOwner [as release] (evalmachine.<anonymous>:40:2)\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/painted-earth-mount-ownership.test.ts:157:30"
+          ]
+        },
+        {
+          "name": "actual main Earth mount and retirement transactions mounts an AI replacement before retiring the previous painting and stops pending publishers",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.mountLocalAiOriginal [as mountAi] (evalmachine.<anonymous>:221:3)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual main Earth mount and retirement transactions preserves the old painted display when AI insert publication fails",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.mountLocalAiOriginal [as mountAi] (evalmachine.<anonymous>:221:3)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual main Earth mount and retirement transactions preserves the old painted display when AI layout publication fails",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.mountLocalAiOriginal [as mountAi] (evalmachine.<anonymous>:221:3)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual main Earth mount and retirement transactions preserves the old painted display when AI late-sync publication fails",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.mountLocalAiOriginal [as mountAi] (evalmachine.<anonymous>:221:3)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual main Earth mount and retirement transactions rejects premature old-art retirement with the same retained-display outcome",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.mountLocalAiOriginal [as mountAi] (evalmachine.<anonymous>:221:3)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual main Earth mount and retirement transactions keeps a failed successor lease while restoring the old painting and later retires both",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.mountLocalAiOriginal [as mountAi] (evalmachine.<anonymous>:221:3)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+          ]
+        },
+        {
+          "name": "actual main Earth mount and retirement transactions rejects early canvas shrinking and omitted retirement with the same ownership outcome rulers",
+          "error": [
+            "ReferenceError: cancelAiCrossfade is not defined\n    at Object.releaseSurfaceVistaOwner [as release] (evalmachine.<anonymous>:40:2)\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/painted-earth-mount-ownership.test.ts:263:68"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "port/v2/tests/pwa-offline.test.ts",
+      "message": "",
+      "tests": [
+        {
+          "name": "PWA production wiring wires only emitted builds into Settings and crosses the owned replacement boundary on reload",
+          "error": [
+            "AssertionError: expected 'import { defineConfig } from \\'vite\\'…' to contain 'plugins: [celestialFrontierPwaPlugin(…'\n    at /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tests/pwa-offline.test.ts:1158:20\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "port/v2/tests/slicesmoke-sixth-red-contract.test.ts",
+      "message": "",
+      "tests": [
+        {
+          "name": "sixth Slice red contract repairs keeps every rendered Guide and release oracle green on current exact copy before browser spend",
+          "error": [
+            "AssertionError: expected Object{ …(55) } to match object { complete: true, honest: true, …(4) }\n(49 matching properties omitted from actual)\n    at Proxy.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@vitest/expect/dist/index.js:1283:10)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "port/v2/tools/creature-animation/band-patches.test.mjs",
+      "message": "No test suite found in file /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/band-patches.test.mjs",
+      "tests": []
+    },
+    {
+      "file": "port/v2/tools/creature-animation/joint-patches.test.mjs",
+      "message": "No test suite found in file /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/joint-patches.test.mjs",
+      "tests": []
+    },
+    {
+      "file": "port/v2/tools/creature-animation/part-masks.test.mjs",
+      "message": "No test suite found in file /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.test.mjs",
+      "tests": []
+    },
+    {
+      "file": "port/v2/tools/creature-animation/quadruped-template.test.mjs",
+      "message": "No test suite found in file /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/quadruped-template.test.mjs",
+      "tests": []
+    },
+    {
+      "file": "port/v2/tools/creature-animation/rig-atlas.test.mjs",
+      "message": "No test suite found in file /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/rig-atlas.test.mjs",
+      "tests": []
+    },
+    {
+      "file": "port/v2/tools/quadruped-proof/capture-contract.test.mjs",
+      "message": "No test suite found in file /Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/capture-contract.test.mjs",
+      "tests": []
+    }
+  ]
+}

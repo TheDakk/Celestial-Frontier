@@ -98,3 +98,27 @@ not inferred from counts alone. PerpairPNGs and all oracleJSONs retained.
 RESULT.json/REVIEW_PROMPT.md provide copy-ready Claude handoff. Fourbandtests,7rig/contact
 tests,typecheck,rootvalidate passed. Nick/delegatedClaude review firstpair next; Codex stops.
 No branchsync/appswitch needed; no GitHub/PR42/kit/8%bound/history/main.ts change.
+
+## Codex consolidated C-lane review batch — engineering ready, packages not auto-accepted
+
+Nick authorized independent roadmap-wide audit/fixes without one-by-one review pauses.
+Starting b50668b0; all changes on openai/mac. C1 active Wild hashes/dimensions rechecked;
+C2 packed-part verifier includes hidden bands (original and candidate all channels match),
+plus reproduced seam-ruler false positive (rigid translation0→140; actualgap94). Agreed
+pair gate unchanged, no new native capture or visual acceptance. C3 exact voice intake and
+C4 master runtime-minimum/PNG integrity intake added; no source sound or library rollout.
+
+Six authorized new-lever weather variants now ready from saved raw finisher, no inference,
+source/masks/alpha unchanged. E remains active. C5 removes stale336MiBclaim and repairs
+Vitest/Node separation, source fixtures, notification checkpoint recording, companion glow,
+landscape dock coverage, missing-icon contrast finding, exact style/inert restoration,
+five review locks and callback-overflow reporting. Two main.ts hunks: mayRecord checkpoint
+guard and binary companion glow. No Claude-owned modules/tests, kit or history changes.
+
+Final full Vitest4338pass/3authorityfail/1skip. Node tools19pass, worker/weather6pass,
+typecheck/rootvalidate(50probeparity)/smoke pass. No fullnative/hosted green claim.
+Remaining Compendium authority failures retained, no baseline/ceiling waiver.15pilot pack
+candidates11,363,130bytes inventoried, not deleted before source/import/delivery admission.
+AUDIT.md, final-checks.json, REVIEW_PROMPT.md and WEATHER_DETAILS_REVIEW_20260913 form one
+consolidated review handoff. C2/C3/C4/C5 remain incomplete as explicitly listed there.
+GitHub NONE; PR42 parked; LFS on explicit go; promotion uses three merge-commit tiers.

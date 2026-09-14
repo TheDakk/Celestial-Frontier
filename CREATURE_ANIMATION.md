@@ -340,10 +340,7 @@ stretched fur, remaining pink seams and proportion drift second. Both renders/re
 private master hashes retained. No local texture-finisher pass or rendered clip set ran;
 no staged Pixi turn, gene-driven family bounds or universal animation coverage claimed.
 
-A larger Civet-only shape/UV rework is pending Nick's approval under AGENTS.md: "Ask Nick
-before starting a materially larger exploratory or rework loop." The concrete question
-covers a corrected shape/UV layout, then one texture-finisher pass, clips and browser turn.
-Do not silently resume more model/render attempts while that question is pending.
+The former Civet-only 3D shape/UV rework was abandoned for browser battles. Retain the turnaround and canid master for a later engine port; do not resume 3D token renders or texture-finisher passes. The current C2 parts proof and broad audit above supersede this historical stop.
 
 Universal coverage requires reusable family templates with source-owned anatomy and tested
 proportion bounds, including plant-specific stem/branch/leaf motion. The current fixed Civet
@@ -376,3 +373,27 @@ channels,21parts,31joints and actual translucent material. Procedural atlas read
 reconstruction0changedchannels. Real Claude compiler accepts all3records and produces repeated
 identical body cards/timelines; missing-head controls refuse. Evidence: C2_PARTS_ATLAS_20260913/
 body-cards-01 and native-painter-parts-03. Native rig motion acceptance still pending.
+
+## September 13 consolidated audit
+
+Matches code as of 2026-09-13. Latest broad-batch authorization permits independent code work
+across C1–C5 while the C2 gate is unresolved; older instructions to stop all work at C2 are
+superseded. The agreed pair gate itself is unchanged, and no new parts capture is accepted.
+
+`verify-parts.mjs` checks the sealed binding, atlas hash, source part hashes, dimensions and
+every packed RGBA channel, including hidden bands. `buildBandAtlas` uses it before reading
+source parts and again after packing. Original Civet22parts:5,573,612channels match. Latest
+candidate38parts:9,875,852channels match. Corrupt/resealed atlas pixels and wrong dimensions
+are refused. This proves packaging, not shape or the provenance of a newly authored mask.
+
+`seam-oracle-audit.mjs` reproduces a measurement confound in the unchanged external ruler:
+one rigid untorn shape with an authored notch goes from0 to140reported seam pixels on an
+18px translation into the fixed rest-joint disc. A real gap reports94. Thus a positive
+pose-minus-rest alone cannot distinguish an actual joint tear from an existing concavity
+entering the disc. This does not prove the Civet is sound or relax its gate. Claude should
+review cut-local, pose-following measurement with both controls before another capture.
+Evidence: audits/C_LANE_BATCH_REVIEW_20260913/seam-oracle-counterexample.json.
+
+The accepted fox candidate-01 record and four-legged procedural observer remain retained.
+Other family templates published by Claude do not establish painter-emitted landmarks/masks
+for those families. Do not invent joint positions or claim universal coverage from the table.
