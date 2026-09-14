@@ -20,6 +20,18 @@ export function sharedCutEdges(ancestor, descendant, width, height) {
   if(!edges.length)throw Error('No shared cut: cannot certify an empty measurement');
   return edges;
 }
+/** Completeness comes from the independently authored/painter ownership declaration,
+ * not from the list of strips whose pixels the next measurement happens to inspect. */
+export function requireCutInventory(groups,cuts){
+  if(!Array.isArray(groups)||!groups.length||!Array.isArray(cuts)||!cuts.length)throw Error('Missing cut inventory');
+  const key=(a,d)=>{if(typeof a!=='string'||!a||typeof d!=='string'||!d||a===d)throw Error('Invalid cut identity');return JSON.stringify([a,d]);};
+  const expected=new Set(cuts.map(c=>key(c.ancestor,c.descendant)));
+  if(expected.size!==cuts.length)throw Error('Duplicate declared cut');
+  const actual=new Set();for(const g of groups){if(!Array.isArray(g.edges)||!g.edges.length)throw Error('Empty compiled cut group');for(const e of g.edges)actual.add(key(e.ancestorPart,e.sourcePart));}
+  const missing=[...expected].filter(k=>!actual.has(k)),unexpected=[...actual].filter(k=>!expected.has(k));
+  if(missing.length||unexpected.length)throw Error('Cut inventory mismatch: '+JSON.stringify({missing:missing.map(JSON.parse),unexpected:unexpected.map(JSON.parse)}));
+  return {declaredCuts:expected.size,compiledCuts:actual.size,missing:0,unexpected:0};
+}
 const cross=(a,b,p)=>(b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0]);
 const inside=(a,b,c,p)=>{
   const area=cross(a,b,c);if(Math.abs(area)<1e-10)return false;

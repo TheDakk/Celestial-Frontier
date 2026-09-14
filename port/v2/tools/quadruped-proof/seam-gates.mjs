@@ -2,7 +2,7 @@
 import {Container,Sprite,Texture,Mesh,MeshGeometry,Matrix,RenderTexture,Rectangle} from 'pixi.js';
 import {loadCreatureRigV1} from '../../apps/game/src/creature-rig.ts';
 import {createSeamGeometry,writeSeamPose} from '../creature-animation/seam-bridge.mjs';
-import {sharedCutEdges,measureCutSeam} from '../creature-animation/cut-seam.mjs';
+import {sharedCutEdges,measureCutSeam,requireCutInventory} from '../creature-animation/cut-seam.mjs';
 export async function runSeamGates({app,subjects,select,plans,motionPose,image,json,bytes,poseMatrices}){
  const rows=[],artifacts={};
  for(const s of subjects){
@@ -13,13 +13,14 @@ export async function runSeamGates({app,subjects,select,plans,motionPose,image,j
   const rigidBinding=await json(s.id+'-rigid.binding.json'),rigid=await loadCreatureRigV1(s.record,rigidBinding,s.master,s.alpha,new Uint8Array(await bytes(s.id+'.atlas.png')));
   const atlasImage=await image(s.id+'.atlas.png'),atlasTexture=s.rig.parts.find(p=>p.id===s.binding.seamBridges.groups[0].id).display.children[0].texture;
   const decl=await json(s.id+'.cuts.json'),poses={};
+  const inventory=requireCutInventory(s.binding.seamBridges.groups,decl.cuts);
   if(s.id==='civet')Object.assign(poses,(await json('saved-poses.json')).pairGates.poses);
   else{const p=plans(),stride=f=>p[0].beats.commandEnd+(p[0].beats.actionStart-p[0].beats.commandEnd)*f*p[0].clips.attacker.approach.timeline.bodyMs/p[0].clips.attacker.approach.timeline.durationMs;
    for(const[name,ms]of [['rest',null],['hit-recoil',7400],['strike',p[0].beats.impactAt],['approach-quarter',stride(.25)],['approach-three-quarter',stride(.75)]]){
     let pose={};if(ms!==null){const rev=ms>=5000,t=rev?ms-5000:ms,plan=p[rev?1:0];pose=s.solver.resolve(motionPose(plan,t,rev),rev||t<plan.beats.commandEnd||t>=plan.beats.returnEnd).pose;}poses[name]={atMs:ms,pose};
    }
   }
-  const reference=new Sprite(Texture.from(s.paint.canvas)),expected=pixels(reference),row={id:s.id,canvas:{width:cw,height:ch,origin:[padx,pady],nativeScale:1},poses,rest:{},pairs:[],updateP95Ms:null};
+  const reference=new Sprite(Texture.from(s.paint.canvas)),expected=pixels(reference),row={id:s.id,canvas:{width:cw,height:ch,origin:[padx,pady],nativeScale:1},poses,inventory,rest:{},pairs:[],updateP95Ms:null};
   for(const [name,rig]of [['rigid',rigid],['strips',s.rig]]){
    rig.root.position.set(0,0);rig.root.scale.set(w,h);rig.applyPose({});const rgba=pixels(rig.root);row.rest[name]=rgba.reduce((n,v,i)=>n+(v!==expected[i]),0);await save(name+'-rest',rgba);
   }

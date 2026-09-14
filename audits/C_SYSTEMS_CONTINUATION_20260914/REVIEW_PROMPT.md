@@ -56,40 +56,43 @@ Finish with one consolidated open-item table distinguishing code defects, human 
 phone/model qualification and later promotion. C2/C3/C4/C5 are not claimed complete. No PR,
 LFS rewrite or hosted work is authorized by this prompt.
 
-New C2 addendum: audits/C2_DEFORMING_SEAMS_20260914/README.md and checks.json. Nick approved
-the mechanism across parts; earlier awaiting-scope text is superseded. Review source-pixel
-provenance, immediate-owner classification, zero-area rest, atomic pose publication and
-source-bound native/capture admission. Distinguish static checks from native/visual acceptance.
-Check the full family coverage requirement; three quadrupeds must not be represented as all life.
+## Current C2 review scope — September14 retry
 
-## Continuous-field candidate rejected before native launch
+Review candidate06 and its compiler/validator, rather than rerunning the rejected skin field.
+Read C2_DEFORMING_SEAMS_20260914/README.md, candidate-06/checks.json and FAMILY_COVERAGE.md.
+Candidate05 has native rest/62listed cuts PASS but rejected full shapes. The completeness
+blind spot is repaired: independently declared29Civet/32fox/26procedural contacts must all be
+present. The previous three bindings now fail. Check pelvis/root ownership, true sibling
+exclusion, immutable source ink, depth caps, zero-area rest, and source-bound capture admission.
+The native candidate06 result is pending a successful signed checkpoint. Do not treat its
+static43tool/7runtime/typecheck/root PASS as native or visual evidence. Preserve every prior FAIL.
 
-The offline shape check rejects candidate04: Civet strike1237 inverted triangles,
-1118 containing visible source ink; fox1716/1544; procedural213/169. This is not a
-transparent-mesh-only artefact. Rest has no inversion. The historical cut-local PASS
-cannot qualify this different deformation. Candidate03 uses the same field without
-vertex deduplication and is also rejected. No native skin run or ten-second capture
-has run. `paint-skin` now refuses folded posed triangles before publishing any buffer;
-its area reference is precomputed, with a passing rigid-motion and failing fold control.
-A capsule-weight scratch comparison also fails and is not adopted. The next repair
-must preserve separate overlapping limbs while smoothing true articulated joints.
-Do not lower motion amplitudes, contact bounds, shape gates or alpha thresholds to pass.
+Continuous-field candidates03/04 are rejected for visible source triangle foldovers; runtime
+fold refusal is tested. Whole-frame PoseTarget collection is implemented with atomicity and
+omission-reset controls; battle2 adoption is pending in its read-only owner. No main.ts hunk.
+Nick authorized independent repairs across parts; no generic scope approval is pending.
 
-`creature-rig-frame.ts` adds a PoseTarget-compatible collector for frame owners: call
-`target.sample(() => player.seek(ms))` to apply the whole rig once per producer frame.
-It resets omitted joints, discards incomplete producer samples, and publishes no partial
-frame on failure. The existing immediate adapter remains for compatibility. This new
-adapter is tested; live battle2 adoption is pending in its read-only owner. No main.ts hunk.
+## C2 current state — matches code as of 2026-09-14
 
-Signing: two failures for the continuous-field checkpoint after three earlier successful
-signed checkpoints. Public-key enumeration succeeds; no root cause established. The
-native runner refused the dirty tree before opening a browser. Never bypass signing.
-Current signed head71e96f97:110ahead/0behind upstream,221ahead/0behind cacheddevelop.
+The current candidate06 repairs all recorded ancestral contacts using original descendant
+texture and zero-area resting hinges; unowned pelvis/root ink resolves to the torso.
+Civet has29contacts/5070edges, fox32/5920, procedural26/1924, in the unchanged38/38/35drawables.
+Separate sibling contacts remain independent. Candidate05 on signed9d2dff26 removed duplicate
+ear ink but still shows angular openings: native-hinges-01 has rest0 and62listed cuts PASS,
+p95 .60/.60/.30ms, but is visually unaccepted. The old gate missed entire omitted pairs.
+The new independent ownership inventory requires all87contacts before native sampling;
+all three candidate05 bindings fail that negative control. Candidate06 passes43tool tests,
+7focused runtime tests, typecheck and root validate. Native render/capture is pending signing.
 
-Whole-universe requirement and actual family gaps are in FAMILY_COVERAGE.md. No claim
-of all-family animation, finished C2, newly recorded C3 or completed C4/C5 is made.
+Signed checkpoints this retry:345061d1 and9d2dff26. Current HEAD9d2dff26 is112ahead/0behind
+origin/openai/mac and223ahead/0behind cachedorigin/develop. Two subsequent1Password signing
+requests failed, including a PTY retry; public-key enumeration succeeds. The checked repair
+is staged. Unlocked vault is not proof of a successful signing authorization; do not bypass
+the configured signer or the clean-source native guard. No new10second capture has run.
+The continuous-field candidates03/04 remain rejected for visible triangle foldovers.
 
-For the combined review, read FAMILY_COVERAGE.md and independently distinguish template
-data from real painter records, masks, atlas admission, full-shape animation and arena wiring.
-Review the new frame collector's one-application guarantee, exception atomicity and omission
-reset. Do not accept candidate03/04 or infer visual acceptance from native-gates03.
+Next after signing: runner --hinge-gates to a new native-hinges-02 directory, inspect complete
+poses as well as87cut results, then --hinge-parts with the unchanged-source gate report only
+if shapes hold. Same accepted masters/arena/E, Motion Kit curves and8% contact bound.
+No main.ts hunk, kit edit, painting/inference, 3D, GitHub write or history rewrite.
+Universal family coverage and actual omissions remain in FAMILY_COVERAGE.md. C2 is open.

@@ -17,7 +17,15 @@ export function validateSeamBridges(groups,parts,width,height,atlasSize,joints){
   for(const e of g.edges){
    need(++count<=20000,'edge budget');const source=owners.get(e.sourcePart),ancestor=owners.get(e.ancestorPart);
    need(source?.kind==='part'&&ancestor?.kind==='part'&&source.joint===e.descendantJoint&&ancestor.joint===g.ancestorJoint&&source.layer===g.layer,'source/ancestor ownership');
-   need(nearestOwner(e.descendantJoint)===e.ancestorPart,'true joint required; rest overlap must not be stitched');
+   need(e.ancestorOverlap===undefined||typeof e.ancestorOverlap==='boolean','ancestral contact mode');
+   if(e.ancestorOverlap===true){
+    // Root/pelvis ink belongs to the torso, declared at spine. Following literal
+    // joints alone incorrectly excludes every pelvis-rooted descendant.
+    let found=false;for(let j=parent.get(e.descendantJoint);j;j=parent.get(j))
+     if((jointOwners.get(j)??(['root','pelvis'].includes(j)?'torso':null))===e.ancestorPart)found=true;
+    need(found,'overlap closure requires a real ancestor; siblings stay independent');
+   }
+   else need(nearestOwner(e.descendantJoint)===e.ancestorPart,'true joint required; undeclared rest overlap must not be stitched');
    need(source.frame.width===source.cutout.width&&source.frame.height===source.cutout.height,'native source pixels required');
    need(Array.isArray(e.edge)&&e.edge.length===2&&e.edge.every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isInteger)&&p[0]>=0&&p[0]<=width&&p[1]>=0&&p[1]<=height),'edge coordinates');
    const [[ax,ay],[bx,by]]=e.edge;need(Math.abs(ax-bx)+Math.abs(ay-by)===1,'unit ownership edge');

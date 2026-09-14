@@ -23,7 +23,7 @@ export interface CreatureRigRecordV1 {
 interface Box {readonly x:number;readonly y:number;readonly width:number;readonly height:number;}
 export interface CreatureSeamGroupV1 {
  readonly id:string;readonly ancestorJoint:string;readonly layer:'far'|'near';readonly rigidUnderlap?:boolean;
- readonly edges:ReadonlyArray<{readonly ancestorPart:string;readonly sourcePart:string;readonly descendantJoint:string;
+ readonly edges:ReadonlyArray<{readonly ancestorPart:string;readonly sourcePart:string;readonly descendantJoint:string;readonly ancestorOverlap?:boolean;
  readonly edge:readonly [readonly [number,number],readonly [number,number]];readonly sourcePixel:readonly [number,number];readonly interiorPixel?:readonly [number,number];readonly sourceDepthPx:number}>;
 }
 /** Produced offline from masks/joint patches and the pinned, unrotated atlas.
