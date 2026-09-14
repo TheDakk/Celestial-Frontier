@@ -37,7 +37,7 @@ try{
  if(mode==='--band-gates'){const b='audits/C2_BAND_UNDERLAPS_20260913/civet/';assets['civet.binding.json']=b+'binding.json';assets['civet.atlas.png']=b+'atlas/civet.png';}
  if(mode==='--pair-gates'){const b='audits/C2_PAIR_BANDS_20260913/civet/';assets['civet.binding.json']=b+'binding.json';assets['civet.atlas.png']=b+'atlas/civet.png';assets['pairs.json']=b+'declaration.json';const d=JSON.parse(fs.readFileSync(path.join(root,b+'declaration.json')));d.cuts.forEach((c,i)=>assets['pair-'+i+'.png']=b+c.pairBand.file);}
  if(['--seam-gates','--seam-parts','--hinge-gates','--hinge-parts'].includes(mode)){
-  const candidate='audits/C2_DEFORMING_SEAMS_20260914/'+(mode.startsWith('--hinge-')?'candidate-06/':'candidate-02/');
+  const candidate='audits/C2_DEFORMING_SEAMS_20260914/'+(mode.startsWith('--hinge-')?'candidate-07/':'candidate-02/');
   const manifest=JSON.parse(fs.readFileSync(path.join(root,candidate+'manifest.json')));
   assets['saved-poses.json']='audits/C2_PAIR_BANDS_20260913/native-gates-01/report.json';
   for(const row of manifest.results){const id=row.id,b=row.base+'/';

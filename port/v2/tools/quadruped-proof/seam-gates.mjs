@@ -2,6 +2,7 @@
 import {Container,Sprite,Texture,Mesh,MeshGeometry,Matrix,RenderTexture,Rectangle} from 'pixi.js';
 import {loadCreatureRigV1} from '../../apps/game/src/creature-rig.ts';
 import {createSeamGeometry,writeSeamPose} from '../creature-animation/seam-bridge.mjs';
+import {ownershipJunctions,measureJunctions} from '../creature-animation/ownership-junctions.mjs';
 import {sharedCutEdges,measureCutSeam,requireCutInventory} from '../creature-animation/cut-seam.mjs';
 export async function runSeamGates({app,subjects,select,plans,motionPose,image,json,bytes,poseMatrices}){
  const rows=[],artifacts={};
@@ -27,10 +28,16 @@ export async function runSeamGates({app,subjects,select,plans,motionPose,image,j
   if(Object.values(row.rest).some(n=>n!==0)){row.status='REST_FAIL';rows.push(row);rigid.dispose();rt.destroy(true);return{status:'FAIL',rows,artifacts};}
   const masks=new Map(),mask=id=>{if(masks.has(id))return masks.get(id);const p=s.binding.parts.find(p=>p.id===id),a=new Uint8Array(w*h),f=p.frame,b=p.cutout;
    for(let y=0;y<b.height;y++)for(let x=0;x<b.width;x++)if(atlasImage.rgba[((f.y+y)*atlasImage.canvas.width+f.x+x)*4+3]>8)a[(b.y+y)*w+b.x+x]=1;masks.set(id,a);return a;};
+  const baseParts=s.binding.parts.filter(p=>p.kind==='part'),owner=new Uint8Array(w*h),junctionAlpha=new Uint8Array(w*h);
+  baseParts.forEach((p,k)=>{const a=mask(p.id);for(let i=0;i<a.length;i++)if(a[i]){if(owner[i])throw Error('Junction base ownership overlaps');owner[i]=k+1;const x=i%w-p.cutout.x,y=Math.floor(i/w)-p.cutout.y;junctionAlpha[i]=atlasImage.rgba[((p.frame.y+y)*atlasImage.canvas.width+p.frame.x+x)*4+3];}});
+  const junctions=ownershipJunctions(owner,baseParts,w,h,junctionAlpha),declared=s.binding.seamBridges.groups.flatMap(g=>g.junctions??[]);
+  const order=a=>JSON.stringify([...a].sort((x,y)=>x.point[1]-y.point[1]||x.point[0]-y.point[0]));
+  if(order(junctions)!==order(declared))throw Error('Missing or changed ownership junctions');
+  row.junctions={count:junctions.length,frames:{}};
   for(const sourceGroup of s.binding.seamBridges.groups){
    const pairs=[...new Set(sourceGroup.edges.map(e=>e.ancestorPart+'--'+e.sourcePart))];
    for(const name of pairs){
-    const subset=sourceGroup.edges.filter(e=>e.ancestorPart+'--'+e.sourcePart===name),g={...sourceGroup,edges:subset},first=subset[0],cut=decl.cuts.find(c=>c.ancestor+'--'+c.descendant===name),ci=decl.cuts.indexOf(cut);
+    const subset=sourceGroup.edges.filter(e=>e.ancestorPart+'--'+e.sourcePart===name),g={...sourceGroup,edges:subset,junctions:[]},first=subset[0],cut=decl.cuts.find(c=>c.ancestor+'--'+c.descendant===name),ci=decl.cuts.indexOf(cut);
     const independent=sharedCutEdges(mask(first.ancestorPart),mask(first.sourcePart),w,h);
     if(JSON.stringify(independent)!==JSON.stringify(subset.map(e=>e.edge)))throw Error('Compiled cut omitted or changed ownership edges: '+name);
     const band=await image(s.id+'-pair-'+ci+'.png'),bandTexture=Texture.from(band.canvas),container=new Container();container.scale.set(w,h);
@@ -52,7 +59,10 @@ export async function runSeamGates({app,subjects,select,plans,motionPose,image,j
    }
   }
   const times=[];for(let i=0;i<240;i++){const pose=Object.values(poses)[i%Object.keys(poses).length].pose,at=performance.now();s.rig.applyPose(pose);times.push(performance.now()-at);}times.sort((a,b)=>a-b);row.updateP95Ms=times[Math.floor(times.length*.95)];
-  for(const[frame,{pose}]of Object.entries(poses)){s.rig.applyPose(pose);await save('full-'+frame,pixels(s.rig.root));}
+  for(const[frame,{pose}]of Object.entries(poses)){s.rig.applyPose(pose);const rgba=pixels(s.rig.root);await save('full-'+frame,rgba);
+   row.junctions.frames[frame]=measureJunctions(junctions,poseMatrices(s.record,pose),w,h,rgba,cw,ch,[padx,pady]);
+  }
+  if(Object.values(row.junctions.frames).some(f=>f.status!=='NO_GAP_AT_JUNCTION')){row.status='JUNCTION_FAIL';rows.push(row);rigid.dispose();rt.destroy(true);return{status:'FAIL',rows,artifacts};}
   row.status=row.updateP95Ms<2?'PASS':'UPDATE_BUDGET_FAIL';rows.push(row);rigid.dispose();rt.destroy(true);
   s.rig.root.position.set(-s.record.landmarks.root[0]*s.scale,-s.record.geometry.groundLineY*s.scale);s.rig.root.scale.set(s.scale);
   if(row.status!=='PASS')return{status:'FAIL',rows,artifacts};
