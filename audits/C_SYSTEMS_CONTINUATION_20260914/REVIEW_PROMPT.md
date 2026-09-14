@@ -61,3 +61,35 @@ the mechanism across parts; earlier awaiting-scope text is superseded. Review so
 provenance, immediate-owner classification, zero-area rest, atomic pose publication and
 source-bound native/capture admission. Distinguish static checks from native/visual acceptance.
 Check the full family coverage requirement; three quadrupeds must not be represented as all life.
+
+## Continuous-field candidate rejected before native launch
+
+The offline shape check rejects candidate04: Civet strike1237 inverted triangles,
+1118 containing visible source ink; fox1716/1544; procedural213/169. This is not a
+transparent-mesh-only artefact. Rest has no inversion. The historical cut-local PASS
+cannot qualify this different deformation. Candidate03 uses the same field without
+vertex deduplication and is also rejected. No native skin run or ten-second capture
+has run. `paint-skin` now refuses folded posed triangles before publishing any buffer;
+its area reference is precomputed, with a passing rigid-motion and failing fold control.
+A capsule-weight scratch comparison also fails and is not adopted. The next repair
+must preserve separate overlapping limbs while smoothing true articulated joints.
+Do not lower motion amplitudes, contact bounds, shape gates or alpha thresholds to pass.
+
+`creature-rig-frame.ts` adds a PoseTarget-compatible collector for frame owners: call
+`target.sample(() => player.seek(ms))` to apply the whole rig once per producer frame.
+It resets omitted joints, discards incomplete producer samples, and publishes no partial
+frame on failure. The existing immediate adapter remains for compatibility. This new
+adapter is tested; live battle2 adoption is pending in its read-only owner. No main.ts hunk.
+
+Signing: two failures for the continuous-field checkpoint after three earlier successful
+signed checkpoints. Public-key enumeration succeeds; no root cause established. The
+native runner refused the dirty tree before opening a browser. Never bypass signing.
+Current signed head71e96f97:110ahead/0behind upstream,221ahead/0behind cacheddevelop.
+
+Whole-universe requirement and actual family gaps are in FAMILY_COVERAGE.md. No claim
+of all-family animation, finished C2, newly recorded C3 or completed C4/C5 is made.
+
+For the combined review, read FAMILY_COVERAGE.md and independently distinguish template
+data from real painter records, masks, atlas admission, full-shape animation and arena wiring.
+Review the new frame collector's one-application guarantee, exception atomicity and omission
+reset. Do not accept candidate03/04 or infer visual acceptance from native-gates03.
