@@ -6,9 +6,10 @@ import {sharedCutEdges,measureCutSeam} from '../creature-animation/cut-seam.mjs'
 export async function runSeamGates({app,subjects,select,plans,motionPose,image,json,bytes,poseMatrices}){
  const rows=[],artifacts={};
  for(const s of subjects){
-  select(s.id);const w=s.record.geometry.width,h=s.record.geometry.height,rt=RenderTexture.create({width:w,height:h,resolution:1});
-  const pixels=node=>{app.renderer.render({container:node,target:rt,clear:true});return Uint8Array.from(app.renderer.extract.pixels({target:rt}).pixels);};
-  const save=async(name,rgba)=>{const c=new OffscreenCanvas(w,h);c.getContext('2d').putImageData(new ImageData(Uint8ClampedArray.from(rgba),w,h),0,0);const b=new Uint8Array(await(await c.convertToBlob({type:'image/png'})).arrayBuffer());let raw='';for(let i=0;i<b.length;i+=8192)raw+=String.fromCharCode(...b.subarray(i,i+8192));artifacts[s.id+'-'+name+'.png']=btoa(raw);};
+  select(s.id);const w=s.record.geometry.width,h=s.record.geometry.height,cw=w*2,ch=h*2,padx=w/2,pady=h/2,rt=RenderTexture.create({width:cw,height:ch,resolution:1});
+  const padded=m=>[m[0],m[1],m[2],m[3],(m[4]+.5)/2,(m[5]+.5)/2];
+  const pixels=node=>{const x=node.x,y=node.y;node.position.set(x+padx,y+pady);try{app.renderer.render({container:node,target:rt,clear:true});return Uint8Array.from(app.renderer.extract.pixels({target:rt}).pixels);}finally{node.position.set(x,y);}};
+  const save=async(name,rgba)=>{const c=new OffscreenCanvas(cw,ch);c.getContext('2d').putImageData(new ImageData(Uint8ClampedArray.from(rgba),cw,ch),0,0);const b=new Uint8Array(await(await c.convertToBlob({type:'image/png'})).arrayBuffer());let raw='';for(let i=0;i<b.length;i+=8192)raw+=String.fromCharCode(...b.subarray(i,i+8192));artifacts[s.id+'-'+name+'.png']=btoa(raw);};
   const rigidBinding=await json(s.id+'-rigid.binding.json'),rigid=await loadCreatureRigV1(s.record,rigidBinding,s.master,s.alpha,new Uint8Array(await bytes(s.id+'.atlas.png')));
   const atlasImage=await image(s.id+'.atlas.png'),atlasTexture=s.rig.parts.find(p=>p.id===s.binding.seamBridges.groups[0].id).display.children[0].texture;
   const decl=await json(s.id+'.cuts.json'),poses={};
@@ -18,7 +19,7 @@ export async function runSeamGates({app,subjects,select,plans,motionPose,image,j
     let pose={};if(ms!==null){const rev=ms>=5000,t=rev?ms-5000:ms,plan=p[rev?1:0];pose=s.solver.resolve(motionPose(plan,t,rev),rev||t<plan.beats.commandEnd||t>=plan.beats.returnEnd).pose;}poses[name]={atMs:ms,pose};
    }
   }
-  const reference=new Sprite(Texture.from(s.paint.canvas)),expected=pixels(reference),row={id:s.id,poses,rest:{},pairs:[],updateP95Ms:null};
+  const reference=new Sprite(Texture.from(s.paint.canvas)),expected=pixels(reference),row={id:s.id,canvas:{width:cw,height:ch,origin:[padx,pady],nativeScale:1},poses,rest:{},pairs:[],updateP95Ms:null};
   for(const [name,rig]of [['rigid',rigid],['strips',s.rig]]){
    rig.root.position.set(0,0);rig.root.scale.set(w,h);rig.applyPose({});const rgba=pixels(rig.root);row.rest[name]=rgba.reduce((n,v,i)=>n+(v!==expected[i]),0);await save(name+'-rest',rgba);
   }
@@ -40,7 +41,7 @@ export async function runSeamGates({app,subjects,select,plans,motionPose,image,j
     for(const [frame,{pose}]of Object.entries(poses)){
      const m=poseMatrices(s.record,pose);bandNode.setFromMatrix(new Matrix(...m[g.ancestorJoint]));for(const{p,node}of baseNodes)node.setFromMatrix(new Matrix(...m[p.joint]));
      writeSeamPose(g,m,w,h,bufs.positions,s.binding.parts.find(p=>p.id===g.id).cutout);geometry.getBuffer('aPosition').update();
-     const args={edges:independent,ancestorMatrix:m[g.ancestorJoint],descendantMatrix:m[first.descendantJoint],width:w,height:h};
+     const args={edges:independent,ancestorMatrix:padded(m[g.ancestorJoint]),descendantMatrix:padded(m[first.descendantJoint]),width:cw,height:ch};
      mesh.visible=false;const control=pixels(container),old=measureCutSeam({...args,rgba:control});mesh.visible=true;const actual=pixels(container),result=measureCutSeam({...args,rgba:actual});
      pair.frames[frame]={rigid:old,strips:result};
      if(name==='head--ear-far'||result.status!=='NO_GAP_AT_CUT'){await save(name+'-'+frame+'-rigid',control);await save(name+'-'+frame+'-strips',actual);}

@@ -68,3 +68,10 @@ on exact authorization. No PRReady before Civet/weather/phone decisions; LFS onl
 Unit tests use npm --prefix port/v2 test: standalone authority build then unlocked Vitest.
 Claude next: no action or app switch now. Later provide the consolidated review prompt plus
 this native evidence. Codex continues code/native repairs locally; report commit/ahead state at stops.
+
+Native attempt02 (ffe0d344) retains rest0 and closes the one hind strike pixel. Nine pairs
+reached; neck/head strike has no gap but leaves the original cut-out canvas, so the diagnostic
+correctly refuses INSTRUMENT_FAIL. Render target now includes half a canvas of transparent
+padding on each side, at original pixel scale, with matching measurement translation. A
+negative-controlled test preserves gap counts under padding and still refuses canvas escape.
+No motion, image, source atlas or coverage threshold change. Continue native qualification.
