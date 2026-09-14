@@ -1,5 +1,12 @@
 # Creature animation — shared anatomy and motion contract
 
+**Retained-frame seam diagnosis — matches code as of 2026-09-14:** the cut-local
+observer follows shared ownership edges through actual pose matrices and has controlled
+rigid-motion and real-gap cases. Verified head--ear-far frames show disc-only/bands
+uncovered counts recoil170/0, strike0/0, stride91/3 and77/3. The six remaining band
+samples are fully transparent. No rim waiver, accepted shape, new capture, mask edit
+or replacement of the agreed native gate follows. See audits/C_LANE_REPAIRS_20260914.
+
 **Pair-band amendment — matches code as of 2026-09-13:** unowned joint ownership now resolves through the painted part hierarchy, with explicit torso remainder for root/pelvis. Band depth is additionally capped by half the descendant's smaller cutout dimension. Civet has29cuts,16bands,38parts/2039x2047atlas; exactly6true sibling adjacencies remain. Pair-isolated native gates use the unchanged external seam oracle atdisc.06 and keep disc-only pair controls; fullrest0channels passes, but first isolated pair head→far-ear fails: recoil+731,strike+1492,stride+922/+1047 above rest76. Native-gates-01 retains controls; no later pairs or captures ran, as authorized. Cause is not established by counts alone. No masks/poses/kit/8%bound or production-rig semantics changed.
 
 **Boundary bands — matches code as of 2026-09-13:** authorized C2 candidate duplicates opaque descendant ink along all23ancestor/descendant cuts using pivot distance and cumulative joint limits (.02Wfloor,W/8cap). It groups16band patches into the existing joint-patch runtime representation, 38totalparts in one2047x1589atlas. Same masks/poses/record; disc-only control retained. Native rest0channels and atlasbudget pass, but the per-cut seam gate fails across recoil,strike and approach. Head recoil closes; neck/jaw/ears/legs/tail residuals remain, including a14pxneckgap beyond2pxrim. No capture or subsequent creature step ran; authorized stop applies. RESULT.json records all deltas; no new motion acceptance. Evidence: C2_BAND_UNDERLAPS_20260913.

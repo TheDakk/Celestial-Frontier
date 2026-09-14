@@ -6553,3 +6553,15 @@ positive; C2 remains unaccepted. C3/C4 have read-only source/master intake tooli
 accepted sound/library content. Vitest and Node tool tests have separate owners; release
 oracles now bind the actual85-bullet draft, with stale OPFS-variant advertising removed.
 See audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md for measured fixes and remaining holds.
+
+
+### September 14 C-lane failure repairs — matches code as of 2026-09-14
+
+The current Compendium measurement/producer bindings match the independently built
+checkout again. No collector/evaluator, fixed ruler, ceiling or historical sample changed;
+current native certification remains separate. `run-unit-tests.mjs` owns the locked build
+before Vitest starts. Tests only read and validate its source/dist receipt, including the
+kit plugin's installed runtime bytes, without taking the checkout lock. Use npm test with
+the port/v2 prefix for focused or full runs. The cut-seam diagnostic follows shared
+ownership edges; retained Civet head--ear-far stride frames still have3uncovered pixels
+each, so parts motion remains unaccepted. Evidence: audits/C_LANE_REPAIRS_20260914.

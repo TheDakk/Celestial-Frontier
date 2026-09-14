@@ -4765,10 +4765,17 @@ Memoized generators make **call order observable state** — the fingerprint's `
 proves it. The TS port should either not share cached objects across callers or never
 mutate them after creation.
 
-## September 13 C-lane review checks
+## C-lane review checks — matches code as of September 14
 
 Vitest excludes Node-owned `tools/**/*.test.mjs`; `npm run test:tools` discovers and executes
-those files using Node, without taking the checkout lock. `npm test` runs Node tools first,
-then Vitest; Vitest reporter/filter arguments still reach their intended owner.
-The consolidated C-lane audit is `audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md` at repository
-root. Remaining memory-authority failures are admission holds, not updated baselines.
+those files using Node, without taking the checkout lock. From the repository root, use
+`npm --prefix port/v2 test -- <Vitest arguments>` for full or focused runs. Node tools run
+first, followed by the standalone locked evidence build, then Vitest after the build lease
+is released. Unit observers independently verify the prepared source/dist receipt; they
+never build or acquire the checkout lock. Bare Vitest refuses the current-authority test
+without that receipt. Reporter/filter arguments still reach Vitest.
+
+The consolidated audit is `audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md`; its three authority
+failures are repaired in `audits/C_LANE_REPAIRS_20260914`. Current source bindings were
+updated after input review, with collector/evaluator, fixed ruler, ceilings and historical
+samples unchanged. This is static admission, not a new native memory certificate.

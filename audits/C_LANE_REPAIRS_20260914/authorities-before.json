@@ -1,0 +1,126 @@
+{
+  "schema": "cf-v2-current-producer-authorities/v1",
+  "build": {
+    "schema": "cf-v2-scene-memory-build/v1",
+    "sha256": "4402295187a4b6b87fac1412d387a9dbd806015cfbd837caec387bd3722901f8",
+    "fileCount": 134
+  },
+  "sceneMemory": {
+    "producer": {
+      "collector": "04291ab5e980ce4cacf1a76caf6d55a015a19575ce8e23e88d01c3d6caff6da3",
+      "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+      "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+      "workspaceLock": "ceb20c120f1c2a889124f5e90050cf0df44768cd9c5a61cb1558ca5373371ae8",
+      "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
+      "verdictContract": "e973f8c8f3eeae05c1c9c1328926f2ccf6f4aba7b3602f6bf5ab623a6163d599",
+      "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
+      "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+      "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+      "package": "473749d5574c12a80eafa04fe36431b5446e74e63588d6c0626de683716ad248",
+      "packageLock": "744f7c5079d0892fee85d6d2af20c343955ff0d47bda9cce8368d9babd6d1402",
+      "appPackage": "282354469f5a4b5bfac27bd33b0d6d1605ff15c3309c09f0b3d25a794cbb1513",
+      "buildDist": "4402295187a4b6b87fac1412d387a9dbd806015cfbd837caec387bd3722901f8",
+      "gameHtml": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f",
+      "gameMain": "5fa81666fc5a9e9b13bb9e834b0439864e66212853ba6d0b6b7a1e5709998c31",
+      "shipVisualState": "9bfd27d3d6a75779d3372dfb6386e8e98ef22d92a33b0346819225024c70d762",
+      "shipyardPreview": "83f8ad7b7c8863e41676e97b58db603cd081a99f96d32d3c87ca8ed2d42aa109",
+      "planetTextureAttachment": "751cb34df8ead64fc5ad274a0fd55dfe1af7bb183949ffebcea2ada5de5903e0",
+      "planetTextureDemand": "a537aacde361e88b692887e6d2fa67674296d828aa0d297673dc34b147322055",
+      "sceneTextureOwner": "db7af3f23c3b7d652df37cb54f1082eea177380aefd4f86bc16365a6adbed709",
+      "pixiManagedResourceOwner": "2d9eaeb667f5a4a763e25bd8e168b721494dda49c252e2411031a258d2653708",
+      "pixiBatchTextureArray": "95ea401f9f05a933f17c9a327b94109bfcc46b0a21cc59789a66537a5b62deb3",
+      "sceneText": "7ea78c599fed72ab1ba65991270b72d642f6ec2f9768f63ad64d280ce9147731"
+    },
+    "budgetMatches": false,
+    "budgetMismatches": [
+      "appPackage",
+      "browserCdp",
+      "buildDist",
+      "collector",
+      "gameHtml",
+      "gameMain",
+      "package",
+      "packageLock",
+      "shipyardPreview",
+      "workspaceLock"
+    ]
+  },
+  "compendium": {
+    "measurement": {
+      "schema": "cf-v2-compendium-measurement-authority/v1",
+      "sha256": "7ebc96e9a3d106ef010bfde3a0a4b76fd607496082cefc0ae040678f61223a2e",
+      "inputs": {
+        "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
+        "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+        "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
+        "budgetSchema": "9601a25a6193bc19b2b7ab09ff68a819bdc0e87241c041d90f0bfb1d9d02620f",
+        "outcomeContract": "1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692",
+        "collector": "3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e",
+        "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+        "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+        "workspaceLock": "ceb20c120f1c2a889124f5e90050cf0df44768cd9c5a61cb1558ca5373371ae8",
+        "package": "473749d5574c12a80eafa04fe36431b5446e74e63588d6c0626de683716ad248",
+        "packageLock": "744f7c5079d0892fee85d6d2af20c343955ff0d47bda9cce8368d9babd6d1402",
+        "appPackage": "282354469f5a4b5bfac27bd33b0d6d1605ff15c3309c09f0b3d25a794cbb1513",
+        "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+        "speciesArtBuildGraph": "e591551391f3ed31a494c94d7e1f659633daa460f0571b973bc81cd6888a9c66",
+        "outcomeInventory": "bd4f8a9ef37538b09582c316837dae05b1bc682cf6cb5f6df0fee4a2621929b0"
+      }
+    },
+    "producer": {
+      "schema": "cf-v2-compendium-producer-authority/v2",
+      "sha256": "ed8823bcaec0e22f47fe1d6554fc06c282fb30edda2e61de393fea620cd129c8",
+      "inputs": {
+        "index": {
+          "relativePath": "index.html",
+          "sha256": "02d4100d417bcda3a66990927dcd377176e5992383364902da5f530cb1f5822a"
+        },
+        "owner": {
+          "relativePath": "assets/tame-greeting-audio-rhsfOKDj.js",
+          "sha256": "86ac176ed49ae0777307b1ab37812d94e88f2f2d7095eebc7f026988913195cb"
+        },
+        "worker": {
+          "relativePath": "assets/species-art.worker-oT5j4xm4.js",
+          "sha256": "38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401"
+        },
+        "painter": {
+          "relativePath": "assets/species-art.worker-oT5j4xm4.js",
+          "sha256": "38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401"
+        },
+        "serviceWorker": {
+          "relativePath": "service-worker.js",
+          "sha256": "38b52dd80c0a2c34f419ae632e58aa2c9ea8972733efcc708d4e1299ad82e7c2"
+        }
+      }
+    },
+    "measurementBudgetMatches": false,
+    "measurementBudgetMismatches": [
+      "inputs.appPackage",
+      "inputs.package",
+      "inputs.packageLock",
+      "inputs.workspaceLock",
+      "sha256"
+    ],
+    "producerBudgetMatches": false,
+    "producerBudgetMismatches": [
+      "inputs.index.sha256",
+      "inputs.owner.relativePath",
+      "inputs.owner.sha256",
+      "inputs.painter.relativePath",
+      "inputs.painter.sha256",
+      "inputs.serviceWorker.sha256",
+      "inputs.worker.relativePath",
+      "inputs.worker.sha256",
+      "sha256"
+    ],
+    "fixedRulerAuthority": {
+      "schema": "cf-v2-compendium-fixed-ruler-authority/v1",
+      "calibrationStatus": "sealed-exact-input",
+      "ceilingScope": "numeric-ceilings-only",
+      "measurementAuthoritySha256": "cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78",
+      "producerAuthoritySha256": "d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271",
+      "currentCertification": "fresh-exact-producer-required"
+    },
+    "numericCeilingsSha256": "a5f05be521eb127f3e74306bd69538bdb6d3b564875ed921f2c7f3c0904def83"
+  }
+}

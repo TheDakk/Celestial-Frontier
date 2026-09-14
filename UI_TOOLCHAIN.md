@@ -41,6 +41,14 @@ master bytes first: the kit reference binds those originals. pngquant is lossy; 
 lossless for decoded pixels but still changes bytes. Neither runs on a master path, including
 a master that has already been hashed. No production pack build or master optimization ran.
 
+## September 14 continued coding session
+
+The September 12 startup receipt continues within the same uninterrupted session. No
+maintenance, dependency installation, image generation or native capture was performed.
+The unit runner now builds under its standalone lease before starting Vitest; unit tests
+remain read-only and do not take the checkout lock. C-lane repair evidence is in
+audits/C_LANE_REPAIRS_20260914. Pinned authoring/runtime dependencies are unchanged.
+
 ## September 12 startup — current session
 
 Official stable metadata check passed at 2026-09-12T14:20:30Z. Managed Node was idle; Homebrew metadata refreshed and Node alone upgraded 26.8.1 → 26.8.2 under the shared maintenance lock, with cleanup/analytics disabled. No dependency upgrades. REAPER build suffix resolved as current by brew outdated. All seven synthetic capability checks passed; [receipt](audits/ART_KIT_ADOPTION_20260912/toolchain-verify.json). Runtime/test locks unchanged.
