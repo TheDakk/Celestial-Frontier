@@ -122,3 +122,16 @@ candidates11,363,130bytes inventoried, not deleted before source/import/delivery
 AUDIT.md, final-checks.json, REVIEW_PROMPT.md and WEATHER_DETAILS_REVIEW_20260913 form one
 consolidated review handoff. C2/C3/C4/C5 remain incomplete as explicitly listed there.
 GitHub NONE; PR42 parked; LFS on explicit go; promotion uses three merge-commit tiers.
+
+
+## September 14 — Codex independent failure repairs
+
+Nick deferred Claude review and requested local correction. The three C-lane authority
+failures are repaired by audited live source/build rebinding with fixed ruler/ceilings/
+historical samples unchanged. Unit workers no longer build or take the checkout lock;
+a standalone pre-test owner supplies source-bound evidence. C2 retained-frame cut
+observer removes the rigid-motion confound but still finds3transparent pixels at each
+head--ear-far stride extreme; the named-pair stop and original FAIL remain. No capture,
+model/kit/art change, Claude-owned edit, GitHub write or history rewrite. Details and
+verification: audits/C_LANE_REPAIRS_20260914/README.md and checks.json. No external review
+requested now. C3/C4/phone/pruning prerequisites remain as recorded in ROADMAP.md.

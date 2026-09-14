@@ -17,50 +17,47 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-13 · consolidated C-lane audit
+## SESSION HANDOFF — 2026-09-14 · local failure repairs
 
-Nick authorized broad independent coding across all C packages and one combined Claude
-review. openai/mac only; no new branch/GitHub/PR42/kit/history operation. Budget file says
-UNFROZEN, but Nick's current exact GitHub authorization is NONE. No model run or new sound.
-Claude-owned motion/effects/battle2/soundkit/worldlife and tests remain untouched. Existing
-September12 toolchain receipt reused within this uninterrupted session. .DS_Store is unrelated.
+Nick asked Codex to repair failures without waiting for Claude. OpenAI/Codex on macOS,
+/Users/nick/Projects/celestial-frontier-openai-mac, openai/mac; upstream origin/openai/mac.
+No new branches, GitHub writes, PR42 changes, kit edits, history rewrite, model run or
+new native capture. Claude-owned motion/effects/battle2/soundkit/worldlife remain read-only.
+The September12 toolchain receipt is reused in this uninterrupted session.
 
-Review register: audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md; copy-ready REVIEW_PROMPT.md,
-final-checks.json and bundle manifest. Starting head b50668b0. Completed independent work:
-C1 hash/dimension recheck, C2 hidden-band packed-pixel verification and ruler counterexample,
-C3 voice intake, C4 master intake, C5 fixture/test-runner/product/instrument/doc repairs.
-Only main.ts hunks: notification recording excludes activePersist; binary companion uses
-same three-stop glow as trinary. No other main wiring or production art default changed.
+Current batch: audits/C_LANE_REPAIRS_20260914/README.md, checks.json and checks/.
+Prior broad register: audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md. Its three red tests
+are historical now: live measurement/producer bindings were repaired after comparing
+actual inputs. Fixed ruler, ceilings, all historical samples, collector/evaluator,
+fixture and browser policy are unchanged. A binding refresh is not a native certificate.
+SceneMemory remains production-only/quarantined, with its stale authority still visible.
 
-Latest full Vitest:4338pass,3fail,1skip/4342. Remaining2compendium-budget and1current-producer-
-authorities assertions are genuine admission holds; do not rebaseline ceilings or seals to
-get green. Node tool tests19pass, typecheck/validate/smoke and scoped controls pass (see receipt).
-No integrated native chain or hosted certification. C5 study/pruning candidates15files/11.36MB;
-source imports and precache must change together after phone/visual prerequisites.
+Unit tests no longer acquire the checkout lock for the authority build. Use
+npm --prefix port/v2 test -- <Vitest arguments>: Node tools, standalone locked build,
+then Vitest after release. Read-only unit observers refuse missing/stale source/dist
+receipts. Bare Vitest cannot run the authority test without that prepared receipt.
+Final check counts are in checks.json; do not substitute a static pass for the native chain.
 
-C2 remains unaccepted. Native f3c6fe7d firstpair head--ear-far failed; fullrest0RGBA and atlas
-budget passed. Latest oracle counterexample proves rigid motion can become red when an
-existing notch enters the fixed rest-pivot disc (0→140; actualgap94). It does NOT establish
-that Civet has no tear, and the agreed gate is unchanged. Claude should reconcile a posed,
-cut-local ruler before another native capture. Retain old failure, foxcandidate01 record,
-procedural actual-material observer and unchanged8%bound. Other family observers remain unbuilt.
+C2 still stops at head--ear-far. New cut-local diagnostic follows shared ownership edges
+through actual pose matrices, using retained native images and hash-verified inputs.
+Disc-only vs bands: recoil170/0 uncovered pixels; strike0/0; stride91/3 and77/3.
+Three samples at each stride extreme are fully transparent; no rim waiver, crop or erode.
+Original morphological FAIL remains. Rest0channels and atlas38parts/2039x2047 still stand.
+No later pair or Civet/fox/procedural capture ran. Keep candidate01 fox record and the8%
+contact bound. Resolve this seam with the existing ink/cap/rest requirements before any
+new capture; do not call the new diagnostic a full shape gate or acceptance.
 
-Second weather ladder now ready: audits/WEATHER_DETAILS_REVIEW_20260913/review-sheet.png.
-Sixnew-lever variants S/V/P/SV/SP/SVP from the same raw finisher; no inference, exactEdisabled
-control, unchanged sources/masks/alpha. E stays active until Nick picks. No new kit wording.
+Weather ladder S/V/P/SV/SP/SVP is ready in WEATHER_DETAILS_REVIEW_20260913; E remains
+active until Nick picks. C3 original recordings/rights/listening/Opus/three-voice proof,
+C4 sheets12at a time and smaller redistributable~1GB finisher qualification remain open.
+Up to3Mac candidates then1phone; no more Kleinphone or delivery engineering before result.
+No pause/variant-generator/3Dprojection/rejectederosion restart.
 
-Next: one consolidated Claude review and Nick's weather pick; then C2 gates/captures, actual
-C3 original recordings/rights/truepeak/listening/Opus/three-voice proof, C4 sheets12at a time.
-Smaller redistributable~1GBfinisher candidates (up to3Mac, then1phone) remain unqualified;
-no more Kleinphone probe or delivery engineering before that result. Do not resume pause,
-oldvariant generator, 3Dprojection or rejectederosion experiments.
+C5: prune on openai/mac after prerequisites, then three merge-commit tiers into develop:
+productionUI, paintedengine, researchtools as tools. One develop→main release PR/fullchain
+only after exact authorization. No PRReady before Civet/weather/phone decisions. LFS only
+on Nick's explicit go. No hosted work authorized now, regardless of budget-file mode.
 
-C5 eventually integrates reviewed Claude repairs, prunes on openai/mac, requalifies exact
-source authorities, then three merge-commit tiers into develop: productionUI, paintedengine,
-researchtools as tools; one develop→mainreleasePR/fullchain after explicit authorization.
-No PRReady before Civet/weather/phone decisions. LFS only on Nick's explicit go.
-
-Codex next: keep the consolidated evidence/review bundle current and apply reviewable follow-up
-code within this lane; do not restart blind native retries. Claude next: review the supplied
-REVIEW_PROMPT when Nick opens it; do not sync branches or copy protected modules implicitly.
-Nick does not need the other app open for remaining local checks; the bundle is the handoff.
+Codex next: continue independent local repairs; C2 capture remains stopped at the named pair.
+Claude next: no action now. When Nick resumes review, use the consolidated batch plus the
+September14 repair addendum. Nick need not open the other app or sync branches now.
