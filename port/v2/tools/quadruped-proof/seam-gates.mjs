@@ -42,7 +42,7 @@ export async function runSeamGates({app,subjects,select,plans,motionPose,image,j
      const m=poseMatrices(s.record,pose);bandNode.setFromMatrix(new Matrix(...m[g.ancestorJoint]));for(const{p,node}of baseNodes)node.setFromMatrix(new Matrix(...m[p.joint]));
      writeSeamPose(g,m,w,h,bufs.positions,s.binding.parts.find(p=>p.id===g.id).cutout);geometry.getBuffer('aPosition').update();
      const args={edges:independent,ancestorMatrix:padded(m[g.ancestorJoint]),descendantMatrix:padded(m[first.descendantJoint]),width:cw,height:ch};
-     mesh.visible=false;const control=pixels(container),old=measureCutSeam({...args,rgba:control});mesh.visible=true;const actual=pixels(container),result=measureCutSeam({...args,rgba:actual});
+     bandNode.visible=true;mesh.visible=false;const control=pixels(container),old=measureCutSeam({...args,rgba:control});bandNode.visible=g.rigidUnderlap!==false;mesh.visible=true;const actual=pixels(container),result=measureCutSeam({...args,rgba:actual});
      pair.frames[frame]={rigid:old,strips:result};
      if(name==='head--ear-far'||result.status!=='NO_GAP_AT_CUT'){await save(name+'-'+frame+'-rigid',control);await save(name+'-'+frame+'-strips',actual);}
     }

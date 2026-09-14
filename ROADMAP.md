@@ -72,3 +72,18 @@ No PRReady before Civet/weather/phone decisions. LFS only Nick's explicitgo. Git
 Codex continues local repairs when signing/qualification permits. Claude: no action now;
 Nick need not open the other app or sync. Later use the one consolidated review prompt with
 named retained failures and actual captures; do not present current proofs as fully animated.
+
+## September14 retry — textured hinges, candidate05
+
+The previously staged batch is signed345061d1 (111aheadupstream/222aheadcacheddevelop).
+Nick asked Codex to retry C2 and confirmed1Password unlocked. Candidate03/04 remain rejected.
+Candidate05 retains independent rigid base parts and the62cut-qualified swept geometry.
+It disables exposed rigid underlap quads and interpolates each hinge across a contiguous
+run of the descendant's own source pixels, inward along the cut normal within the original
+depth cap. Every run stops before alpha<=8 or source bounds; no repaint, erode, new ink,
+new atlas, anatomy/clip/contact change. Single-pixel fallback only where no inward run
+exists. Civet4492textured/30single-pixel;fox4885/24;procedural1609/164.
+Tests verify source holes/bounds/caps, actual atlas UVs and absence of the duplicate quad,
+with the original constant-UV/visible-quad controls. All39tool tests,7focused runtime tests,
+typecheck and root validate pass. Native rest/cut/shape/timing qualification follows.
+No main.ts hunk, kit edit or GitHub action; same approved toolchain receipt for continued C2.

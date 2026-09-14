@@ -12,6 +12,7 @@ export function validateSeamBridges(groups,parts,width,height,atlasSize,joints){
  for(const g of groups){
   const patch=owners.get(g.id);
   need(typeof g.id==='string'&&!ids.has(g.id)&&patch?.kind==='joint-patch'&&patch.joint===g.ancestorJoint&&patch.layer===g.layer,'group identity');ids.add(g.id);
+  need(g.rigidUnderlap===undefined||typeof g.rigidUnderlap==='boolean','underlap mode');
   need(joints.includes(g.ancestorJoint)&&['far','near'].includes(g.layer)&&Array.isArray(g.edges)&&g.edges.length>0,'group');
   for(const e of g.edges){
    need(++count<=20000,'edge budget');const source=owners.get(e.sourcePart),ancestor=owners.get(e.ancestorPart);
@@ -25,6 +26,11 @@ export function validateSeamBridges(groups,parts,width,height,atlasSize,joints){
    need(x>=b.x&&y>=b.y&&x<b.x+b.width&&y<b.y+b.height,'source pixel bounds');
    need(ax===bx?((x===ax||x===ax-1)&&y===Math.min(ay,by)):((y===ay||y===ay-1)&&x===Math.min(ax,bx)),'source pixel touches edge');
    need(Number.isFinite(e.sourceDepthPx)&&e.sourceDepthPx>0&&e.sourceDepthPx<=Math.min(width/8,b.width/2,b.height/2)+1e-9,'unchanged depth cap');
+   if(e.interiorPixel!==undefined){const q=e.interiorPixel;
+    need(Array.isArray(q)&&q.length===2&&q.every(Number.isInteger)&&q[0]>=b.x&&q[1]>=b.y&&q[0]<b.x+b.width&&q[1]<b.y+b.height,'interior pixel bounds');
+    const nx=ax===bx?(x>=ax?1:-1):0,ny=ay===by?(y>=ay?1:-1):0,d=(q[0]-x)*nx+(q[1]-y)*ny;
+    need(d>=0&&d<=Math.floor(e.sourceDepthPx)&&q[0]-x===nx*d&&q[1]-y===ny*d,'interior sample must follow owned normal within cap');
+   }
   }
  }
  need(atlasSize.width>0&&atlasSize.height>0,'atlas size');return count;
@@ -33,10 +39,11 @@ export function createSeamGeometry(group,parts,width,height,atlasSize){
  const owners=new Map(parts.map(p=>[p.id,p])),n=group.edges.length+1,patch=owners.get(group.id);
  const positions=new Float32Array(n*8),pending=new Float32Array(n*8),uvs=new Float32Array(n*8),indices=new Uint32Array(n*6);
  const f=patch.frame;uvs.set([f.x/atlasSize.width,f.y/atlasSize.height,(f.x+f.width)/atlasSize.width,f.y/atlasSize.height,(f.x+f.width)/atlasSize.width,(f.y+f.height)/atlasSize.height,f.x/atlasSize.width,(f.y+f.height)/atlasSize.height]);
- indices.set([0,1,2,0,2,3]);
+ indices.set(group.rigidUnderlap===false?[0,0,0,0,0,0]:[0,1,2,0,2,3]);
  group.edges.forEach((e,index)=>{const k=index+1;
   const p=owners.get(e.sourcePart),u=(p.frame.x+e.sourcePixel[0]-p.cutout.x+.5)/atlasSize.width,v=(p.frame.y+e.sourcePixel[1]-p.cutout.y+.5)/atlasSize.height;
-  for(let j=0;j<4;j++){uvs[k*8+j*2]=u;uvs[k*8+j*2+1]=v;}
+  const q=e.interiorPixel??e.sourcePixel,iu=(p.frame.x+q[0]-p.cutout.x+.5)/atlasSize.width,iv=(p.frame.y+q[1]-p.cutout.y+.5)/atlasSize.height;
+  for(let j=0;j<4;j++){uvs[k*8+j*2]=j<2?iu:u;uvs[k*8+j*2+1]=j<2?iv:v;}
   indices.set([k*4,k*4+1,k*4+2,k*4,k*4+2,k*4+3],k*6);
  });
  return {positions,pending,uvs,indices};
