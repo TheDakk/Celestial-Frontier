@@ -1,5 +1,11 @@
 # Celestial Frontier — development toolchain
 
+**September 14 continuation:** the uninterrupted September 12 startup receipt is reused.
+Offline C3 export exercises the installed FFmpeg 9.0.1/libopus and ffprobe with private test
+signals; no tool or dependency upgrade. Receipts record the encoder version/arguments;
+repeat-byte checks are scoped to this installed codec toolchain. These signals are not C3
+masters or listening deliverables. See audits/C_SYSTEMS_CONTINUATION_20260914.
+
 ## September 12 particle emitter correction — current configuration
 
 Nick removed @pixi/particle-emitter5.0.10 because its peers are Pixi<8. Its37 unused transitive

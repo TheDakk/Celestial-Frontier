@@ -21,17 +21,18 @@ export function inspectMaster(bytes,kind){
  need(size.width>=minimum.width&&size.height>=minimum.height,'master below runtime input size');
  return {...size,minimum,sha256:sha256(bytes),bytes:bytes.length,qualityAccepted:false};
 }
-export function wavFacts(bytes){
+export function wavFacts(bytes,channels=1){
+ need(channels===1||channels===2,'mono or stereo channel policy');
  need(bytes.length>=12&&bytes.toString('ascii',0,4)==='RIFF'&&bytes.toString('ascii',8,12)==='WAVE'&&bytes.readUInt32LE(4)+8===bytes.length,'RIFF length/header');
  let format=null,data=null;
  for(let p=12;p<bytes.length;){need(p+8<=bytes.length,'truncated chunk header');const id=bytes.toString('ascii',p,p+4),n=bytes.readUInt32LE(p+4),end=p+8+n;need(end+(n%2)<=bytes.length,'truncated chunk');
   if(id==='fmt '){need(!format&&n>=16,'duplicate/short format');format={pcm:bytes.readUInt16LE(p+8),channels:bytes.readUInt16LE(p+10),rate:bytes.readUInt32LE(p+12),byteRate:bytes.readUInt32LE(p+16),align:bytes.readUInt16LE(p+20),bits:bytes.readUInt16LE(p+22)};}
   if(id==='data'){need(data===null,'duplicate audio data');data=bytes.subarray(p+8,end);}p=end+n%2;
  }
- need(format&&data&&data.length>0,'missing format/data');need(format.pcm===1&&format.channels===1&&format.rate===48000&&format.bits===24&&format.align===3&&format.byteRate===144000,'48 kHz 24-bit mono PCM required');need(data.length%3===0,'partial PCM frame');
+ need(format&&data&&data.length>0,'missing format/data');need(format.pcm===1&&format.channels===channels&&format.rate===48000&&format.bits===24&&format.align===3*channels&&format.byteRate===144000*channels,'48 kHz 24-bit '+(channels===1?'mono':'stereo')+' PCM required');need(data.length%(3*channels)===0,'partial PCM frame');
  let peak=0;for(let i=0;i<data.length;i+=3){let n=data.readUIntLE(i,3);if(n>=0x800000)n-=0x1000000;peak=Math.max(peak,Math.abs(n)/0x800000);}
  need(peak>0,'silent master');need(peak<=10**(-1/20),'sample clipping/headroom');
- return {frames:data.length/3,durationSeconds:data.length/144000,samplePeakDb:20*Math.log10(peak),format};
+ return {frames:data.length/(3*channels),durationSeconds:data.length/(144000*channels),samplePeakDb:20*Math.log10(peak),format};
 }
 export const VOICE_CUES=Object.freeze(['call','alert','attack-vocal','hurt','faint','victory','breath-idle','land-thud']);
 export const ARCHETYPES=Object.freeze(['quadruped','hopper','biped-bird','fish','insect','arachnid','serpent','myriapod','radial','cephalopod','flyer-membrane','primate']);

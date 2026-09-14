@@ -135,3 +135,19 @@ head--ear-far stride extreme; the named-pair stop and original FAIL remain. No c
 model/kit/art change, Claude-owned edit, GitHub write or history rewrite. Details and
 verification: audits/C_LANE_REPAIRS_20260914/README.md and checks.json. No external review
 requested now. C3/C4/phone/pruning prerequisites remain as recorded in ROADMAP.md.
+
+
+## September 14 — independent C3/C4/P1 coding continuation
+
+Signed prior repairs in f36cb38d after Nick unlocked 1Password (106 ahead of upstream,
+217 ahead of cached develop at that stop). Continued without Claude: C3 offline voice
+Opus export with source and lossy-output true-peak checks, exact decoded duration, byte
+budgets and protected original hashes; C4 complete ordered twelve-slot intake, exercised
+against twelve existing accepted masters; P1 asynchronous native PNG hash with yielding
+fallback and one identity-key calculation per store operation. The acceptance test now
+waits for ready/failed outcomes, preserving altered-image refusal. No storage policy,
+kit, Claude-owned module, main.ts, source recording, painting, inference, native capture,
+GitHub or history change. Compendium producer binding refreshed for the changed app bundle
+only; no ruler/ceiling/sample change or native certificate. C2 named-pair FAIL still stops
+captures. Full checks, limitations and combined later review prompt are recorded in
+audits/C_SYSTEMS_CONTINUATION_20260914; C3/C4 complete packages remain open.

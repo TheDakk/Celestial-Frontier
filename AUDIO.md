@@ -1,6 +1,6 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
-**Sound Kit v1 approved — matches intake as of September13:** [SOUND_KIT.md](SOUND_KIT.md)
+**Sound Kit v1 approved — matches code as of 2026-09-14:** [SOUND_KIT.md](SOUND_KIT.md)
 was replaced with the supplied bytes verbatim in8a2dfdc0. The supplied PROPOSED labels do not
 withdraw Nick's approval of v1/frozen paragraphs; do not ask again. Hashes and source paths:
 [audits/LONG_SESSION_20260913/supplied-kits-receipt.json](audits/LONG_SESSION_20260913/supplied-kits-receipt.json).
@@ -15,6 +15,15 @@ four to six numbered footfalls, hash-bound dry 48kHz/24-bit mono PCM and declare
 rights. It rejects bad RIFF data, silence, sample clipping, wrong sizes/names and missing rights.
 It does not prove true peak, loudness, legal ownership, dry sound or listening quality; those
 are explicit pending results. No source recording, derived voice or Opus is accepted by this tool.
+
+The separate `export-audio.mjs` CLI now exports a complete supplied voice set to a new
+Opus directory, preserving masters and checking source/encoded true peak, decoded duration,
+channel/rate and byte budgets. The receipt binds the source manifest, tool version, encoder
+arguments and output hashes. Real codec tests prove repeat bytes on this installed toolchain
+and reject sample-safe intersample clipping. Short-term mix loudness, dry-source/rights review,
+listening, derived voices and arena wiring remain pending. No actual C3 source has been
+recorded or accepted. See `port/v2/tools/asset-intake/README.md` for technical profiles and
+limitations; stereo bed support is a byte-export primitive, not a completed source set.
 
 ## Canonical Explorer Chronicle repair — 2026-09-08
 

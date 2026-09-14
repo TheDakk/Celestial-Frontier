@@ -1,5 +1,16 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**C-system continuation — matches code as of 2026-09-14:** ordinary-game PNG verification
+uses native asynchronous SHA-256 with a yielding compatibility path; each original operation
+computes its identity key once. Storage schema/IDs, integrity checks, limits and retention
+are unchanged; see LOCAL_AI_GENERATION for temporary-memory tradeoff and unmeasured browser
+performance. C3 offline voice export now measures both source/Opus true peak and preserves
+original bytes; C4 intake validates complete hash-bound batches of up to twelve masters.
+These are technical tools, not recorded sources or accepted library rollout. Evidence and
+negative controls: audits/C_SYSTEMS_CONTINUATION_20260914. Prior C2 pair failure remains;
+head--ear-far has three transparent samples at each saved stride extreme, as recorded in
+C_LANE_REPAIRS_20260914. No new native shape or performance acceptance.
+
 **Pair-band amendment — matches code as of 2026-09-13:** unowned joint ownership now resolves through the painted part hierarchy, with explicit torso remainder for root/pelvis. Band depth is additionally capped by half the descendant's smaller cutout dimension. Civet has29cuts,16bands,38parts/2039x2047atlas; exactly6true sibling adjacencies remain. Pair-isolated native gates use the unchanged external seam oracle atdisc.06 and keep disc-only pair controls; fullrest0channels passes, but first isolated pair head→far-ear fails: recoil+731,strike+1492,stride+922/+1047 above rest76. Native-gates-01 retains controls; no later pairs or captures ran, as authorized. Cause is not established by counts alone. No masks/poses/kit/8%bound or production-rig semantics changed.
 
 **Boundary bands — matches code as of 2026-09-13:** authorized C2 candidate duplicates opaque descendant ink along all23ancestor/descendant cuts using pivot distance and cumulative joint limits (.02Wfloor,W/8cap). It groups16band patches into the existing joint-patch runtime representation, 38totalparts in one2047x1589atlas. Same masks/poses/record; disc-only control retained. Native rest0channels and atlasbudget pass, but the per-cut seam gate fails across recoil,strike and approach. Head recoil closes; neck/jaw/ears/legs/tail residuals remain, including a14pxneckgap beyond2pxrim. No capture or subsequent creature step ran; authorized stop applies. RESULT.json records all deltas; no new motion acceptance. Evidence: C2_BAND_UNDERLAPS_20260913.

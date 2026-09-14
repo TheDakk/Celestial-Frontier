@@ -1,0 +1,195 @@
+{
+  "schema": "cf.art-review-batch-report/v1",
+  "batchId": "existing-first-batch-readback",
+  "planSha256": "2f4fca748e8f7565aef29a07c3bd501f3589078b9fef82b5c6391bb00ea5470d",
+  "status": "TECHNICAL_READY_FOR_REVIEW",
+  "masters": [
+    {
+      "ordinal": 1,
+      "sourceKey": "civet",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+      "kind": "cutout",
+      "width": 1254,
+      "height": 1254,
+      "minimum": {
+        "width": 384,
+        "height": 384
+      },
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+      "bytes": 1931944,
+      "qualityAccepted": false
+    },
+    {
+      "ordinal": 2,
+      "sourceKey": "cranberry",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/cranberry.png",
+      "kind": "cutout",
+      "width": 1254,
+      "height": 1254,
+      "minimum": {
+        "width": 384,
+        "height": 384
+      },
+      "sha256": "88f6f2a92524207a494e21564e54fa3916e15ca3aa1ff7885327a008bbf34732",
+      "bytes": 1876904,
+      "qualityAccepted": false
+    },
+    {
+      "ordinal": 3,
+      "sourceKey": "devils-club",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/devils-club.png",
+      "kind": "cutout",
+      "width": 1254,
+      "height": 1254,
+      "minimum": {
+        "width": 384,
+        "height": 384
+      },
+      "sha256": "bfcb0b735475403d4c49bcdcc7893d0f3c98a704f5f9e5394df70cdee99b37db",
+      "bytes": 2479254,
+      "qualityAccepted": false
+    },
+    {
+      "ordinal": 4,
+      "sourceKey": "earth-temperate",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/earth-temperate.png",
+      "kind": "plate",
+      "width": 1672,
+      "height": 941,
+      "minimum": {
+        "width": 1024,
+        "height": 576
+      },
+      "sha256": "98bf240c48dd32e8696760ae2eb398946698f6404e6fffc34cb3745b362bd103",
+      "bytes": 3092094,
+      "qualityAccepted": false
+    },
+    {
+      "ordinal": 5,
+      "sourceKey": "family-bird",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-bird.png",
+      "kind": "cutout",
+      "width": 1254,
+      "height": 1254,
+      "minimum": {
+        "width": 384,
+        "height": 384
+      },
+      "sha256": "1e538078a1d64ee605122a8bb0c1fe7f0e26bfac9a34508d85ab4daf1112aef6",
+      "bytes": 1649562,
+      "qualityAccepted": false
+    },
+    {
+      "ordinal": 6,
+      "sourceKey": "family-fish",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-fish.png",
+      "kind": "cutout",
+      "width": 1254,
+      "height": 1254,
+      "minimum": {
+        "width": 384,
+        "height": 384
+      },
+      "sha256": "1997f036417384af559f5127b9eb98d4871a9cae5cec57cffa645b857a3adc22",
+      "bytes": 1684572,
+      "qualityAccepted": false
+    },
+    {
+      "ordinal": 7,
+      "sourceKey": "family-insect",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-insect.png",
+      "kind": "cutout",
+      "width": 1254,
+      "height": 1254,
+      "minimum": {
+        "width": 384,
+        "height": 384
+      },
+      "sha256": "5cf63ca2f7465212bc1f770babe650bd390986c7dc16a841179c326a31a74168",
+      "bytes": 1687707,
+      "qualityAccepted": false
+    },
+    {
+      "ordinal": 8,
+      "sourceKey": "family-mammal-quadruped",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-mammal-quadruped.png",
+      "kind": "cutout",
+      "width": 1254,
+      "height": 1254,
+      "minimum": {
+        "width": 384,
+        "height": 384
+      },
+      "sha256": "15a3c9d7ee511360ed846a3fe1406c4fde124d99191c7f098538937ff164fdf3",
+      "bytes": 1967990,
+      "qualityAccepted": false
+    },
+    {
+      "ordinal": 9,
+      "sourceKey": "family-reptile",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-reptile.png",
+      "kind": "cutout",
+      "width": 1254,
+      "height": 1254,
+      "minimum": {
+        "width": 384,
+        "height": 384
+      },
+      "sha256": "897a091b1eb8c5f74cb6f312a38e77de58a769bec876d62df4520c93f56ac7f6",
+      "bytes": 1368119,
+      "qualityAccepted": false
+    },
+    {
+      "ordinal": 10,
+      "sourceKey": "frog",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/frog.png",
+      "kind": "cutout",
+      "width": 1254,
+      "height": 1254,
+      "minimum": {
+        "width": 384,
+        "height": 384
+      },
+      "sha256": "fb229a4a7bd86507af68da9561a5e31282d594da27901d7f30ddc11cd3c84779",
+      "bytes": 1764263,
+      "qualityAccepted": false
+    },
+    {
+      "ordinal": 11,
+      "sourceKey": "persimmon",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/persimmon.png",
+      "kind": "cutout",
+      "width": 1254,
+      "height": 1254,
+      "minimum": {
+        "width": 384,
+        "height": 384
+      },
+      "sha256": "bccad6827ad3a84974e958c2833c5fc8b9116802a7e4af4eac3fa73eb2f502d3",
+      "bytes": 2299825,
+      "qualityAccepted": false
+    },
+    {
+      "ordinal": 12,
+      "sourceKey": "platypus",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/platypus.png",
+      "kind": "cutout",
+      "width": 1254,
+      "height": 1254,
+      "minimum": {
+        "width": 384,
+        "height": 384
+      },
+      "sha256": "55ed1d0549f4b74d0300e1c3428ca36e07a576b4e39a9c1f357e0da188bd39f9",
+      "bytes": 1744237,
+      "qualityAccepted": false
+    }
+  ],
+  "qualityAccepted": false,
+  "pending": [
+    "Nick reviews every image/sheet",
+    "subject and frozen-style conformance",
+    "key-edge intake where applicable"
+  ],
+  "scope": "Inventory, original byte hashes and runtime minima only; existing human approvals are neither inferred nor revoked."
+}

@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-14 · local failure repairs
+## SESSION HANDOFF — 2026-09-14 · independent C-system continuation
 
 Nick asked Codex to repair failures without waiting for Claude. OpenAI/Codex on macOS,
 /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac; upstream origin/openai/mac.
@@ -25,7 +25,19 @@ No new branches, GitHub writes, PR42 changes, kit edits, history rewrite, model 
 new native capture. Claude-owned motion/effects/battle2/soundkit/worldlife remain read-only.
 The September12 toolchain receipt is reused in this uninterrupted session.
 
-Current batch: audits/C_LANE_REPAIRS_20260914/README.md, checks.json and checks/.
+Signed failure-repair checkpoint: f36cb38d (106 ahead of cached upstream / 217 ahead of
+cached origin/develop at that stop). Current continuation evidence:
+audits/C_SYSTEMS_CONTINUATION_20260914/README.md, checks.json and REVIEW_PROMPT.md.
+Previous repair evidence: audits/C_LANE_REPAIRS_20260914/README.md, checks.json and checks/.
+
+New code: C3 immutable-source voice Opus export with source/encoded true-peak and duration
+checks; C4 complete hash-bound batch intake (one to twelve masters; existing twelve read back);
+P1 native asynchronous PNG content verification, yielding compatibility path, one identity-key
+calculation per operation. Storage format/limits/retention unchanged. Extra temporary buffer
+memory is documented, browser performance unmeasured. No recordings or new images produced.
+Ordinary-game acceptance tests wait for real ready/failed state after native hashing.
+Compendium producer binding follows the changed app bundle; fixed measurement ruler,
+ceilings and historical samples remain unchanged. Binding refresh is not native certification.
 Prior broad register: audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md. Its three red tests
 are historical now: live measurement/producer bindings were repaired after comparing
 actual inputs. Fixed ruler, ceilings, all historical samples, collector/evaluator,
@@ -48,7 +60,7 @@ contact bound. Resolve this seam with the existing ink/cap/rest requirements bef
 new capture; do not call the new diagnostic a full shape gate or acceptance.
 
 Weather ladder S/V/P/SV/SP/SVP is ready in WEATHER_DETAILS_REVIEW_20260913; E remains
-active until Nick picks. C3 original recordings/rights/listening/Opus/three-voice proof,
+active until Nick picks. C3 original recordings/rights/listening/actual source exports/three-voice proof,
 C4 sheets12at a time and smaller redistributable~1GB finisher qualification remain open.
 Up to3Mac candidates then1phone; no more Kleinphone or delivery engineering before result.
 No pause/variant-generator/3Dprojection/rejectederosion restart.
@@ -60,4 +72,5 @@ on Nick's explicit go. No hosted work authorized now, regardless of budget-file 
 
 Codex next: continue independent local repairs; C2 capture remains stopped at the named pair.
 Claude next: no action now. When Nick resumes review, use the consolidated batch plus the
-September14 repair addendum. Nick need not open the other app or sync branches now.
+September14 repair and continuation addenda. The continuation REVIEW_PROMPT.md combines them.
+Nick need not open the other app or sync branches now.

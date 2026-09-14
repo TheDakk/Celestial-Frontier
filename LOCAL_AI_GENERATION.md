@@ -1,6 +1,6 @@
 # Local AI generation — painted landfalls
 
-Matches code as of 2026-09-13. [ROADMAP.md](ROADMAP.md) owns the live work order;
+Matches code as of 2026-09-14. [ROADMAP.md](ROADMAP.md) owns the live work order;
 [ART_KIT.md](ART_KIT.md) version 4.3 owns art wording. The four approved MIDGAME images
 remain the direction lock. Version 3 and its two rejected images are retired, never inputs.
 Historical experiments and their failed receipts remain in audits and Git history.
@@ -19,6 +19,15 @@ kit assets and adapters exist. This is not universal painted-world coverage.
 store. It resets failed opens and reopens after version changes. A post-retention abort does
 not turn a committed original into a canceled painting. Retry replaces the failed job row.
 Persistent pagehide handling cancels active page jobs across bfcache cycles.
+
+`landfall-content-hash.ts` verifies PNG bytes with asynchronous native Web Crypto when
+available. Without it, a snapshot is hashed in 64 KiB chunks with task yields. A native
+hash failure propagates; altered originals still refuse. Each store operation computes its
+small identity key once. IDs, schema, integrity policy and the 16 MiB cap are unchanged.
+Blob verification now reads one bounded ArrayBuffer instead of streaming JS hashing; the
+compatibility path also copies that buffer before yielding. This trades extra temporary
+memory for less synchronous hashing. Browser/phone latency and peak memory are not measured
+by the unit proof, and this change is not a new storage or delivery architecture.
 
 View never navigates, lands or starts GPU work. Inspect reads retained original bytes at
 native size; stale scene intent yields a retry notice. Notification progress is coalesced
