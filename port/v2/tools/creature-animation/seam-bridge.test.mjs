@@ -32,3 +32,13 @@ test('subpixel overlap closes the captured strike raster crack; exact-edge contr
  const buf=new Float32Array(16);writeSeamPose(g,{head:matrix(old[0],old[1]),earFarTip:matrix(old[3],old[2])},w,w,buf,parts[2].cutout);
  const vertices=Array.from({length:4},(_,i)=>[buf[8+i*2]*w,buf[9+i*2]*w]);assert.equal(raster(vertices),true);
 });
+
+test('ancestral contacts resolve pelvis ink to torso and refuse independent siblings',()=>{
+ const ps=structuredClone(parts);Object.assign(ps[0],{id:'torso',joint:'spine'});Object.assign(ps[1],{id:'hind-lower',joint:'hindNearKnee'});Object.assign(ps[2],{id:'band-spine-near',joint:'spine'});
+ const g=group();Object.assign(g,{id:'band-spine-near',ancestorJoint:'spine'});Object.assign(g.edges[0],{ancestorPart:'torso',sourcePart:'hind-lower',descendantJoint:'hindNearKnee',ancestorOverlap:true});
+ const admit=()=>validateSeamBridges([g],ps,20,20,{width:20,height:24},ps.map(p=>p.joint));
+ assert.equal(admit(),1); // Old literal-chain walk cannot reach spine from pelvis.
+ Object.assign(ps[0],{id:'other-leg',joint:'foreFarRoot'});Object.assign(ps[2],{id:'band-forefarroot-near',joint:'foreFarRoot'});
+ Object.assign(g,{id:'band-forefarroot-near',ancestorJoint:'foreFarRoot'});Object.assign(g.edges[0],{ancestorPart:'other-leg'});
+ assert.throws(admit,/siblings stay independent/);
+});

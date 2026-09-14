@@ -1,0 +1,14 @@
+{
+  "status": "STATIC_PASS_NATIVE_PENDING_SIGNING",
+  "toolTests": 43,
+  "runtimeTests": 7,
+  "typecheck": "PASS",
+  "rootValidate": "PASS",
+  "independentDeclaredCuts": {
+    "civet": 29,
+    "fox": 32,
+    "procedural": 26
+  },
+  "negativeControls": "candidate05 missing contact inventories refuse for all three; independent sibling refuses; original source bounds and rigid-ear controls retained",
+  "nativeRun": null
+}

@@ -114,3 +114,42 @@ Tests verify source holes/bounds/caps, actual atlas UVs and absence of the dupli
 with the original constant-UV/visible-quad controls. All39tool tests,7focused runtime tests,
 typecheck and root validate pass. Native rest/cut/shape/timing qualification follows.
 No main.ts hunk, kit edit or GitHub action; same approved toolchain receipt for continued C2.
+
+## September 14 — complete ancestral contact inventory, candidate06
+
+Signed candidate05 source9d2dff26 (112ahead upstream/223ahead cached develop) produced
+native-hinges-01:62cut gates PASS, rest0, p95 .60/.60/.30ms. Full shapes still FAIL:
+angular internal openings remain after duplicate ears were removed. No ten-second capture.
+The compiler had omitted non-immediate ancestral contacts. Candidate06 includes all of
+those actual shared edges: Civet29cuts/5070edges, fox32/5920, procedural26/1924.
+Root/pelvis ink resolves to torso despite its declared spine joint. True sibling contacts
+remain independent; regression controls refuse a foreign leg as ancestor. Same masters,
+38/38/35drawables, atlases, recorded anatomy, curves and8% bound; no main.ts hunk.
+Textured source walks and rest-degenerate hinges are unchanged. Forty Node tool tests,
+7focused runtime tests, typecheck and root validate pass (checks/hinge6-*.log.gz).
+Next: native rest/all87cut gates and full-shape inspection. No visual acceptance inferred.
+
+## C2 current state — matches code as of 2026-09-14
+
+The current candidate06 repairs all recorded ancestral contacts using original descendant
+texture and zero-area resting hinges; unowned pelvis/root ink resolves to the torso.
+Civet has29contacts/5070edges, fox32/5920, procedural26/1924, in the unchanged38/38/35drawables.
+Separate sibling contacts remain independent. Candidate05 on signed9d2dff26 removed duplicate
+ear ink but still shows angular openings: native-hinges-01 has rest0 and62listed cuts PASS,
+p95 .60/.60/.30ms, but is visually unaccepted. The old gate missed entire omitted pairs.
+The new independent ownership inventory requires all87contacts before native sampling;
+all three candidate05 bindings fail that negative control. Candidate06 passes43tool tests,
+7focused runtime tests, typecheck and root validate. Native render/capture is pending signing.
+
+Signed checkpoints this retry:345061d1 and9d2dff26. Current HEAD9d2dff26 is112ahead/0behind
+origin/openai/mac and223ahead/0behind cachedorigin/develop. Two subsequent1Password signing
+requests failed, including a PTY retry; public-key enumeration succeeds. The checked repair
+is staged. Unlocked vault is not proof of a successful signing authorization; do not bypass
+the configured signer or the clean-source native guard. No new10second capture has run.
+The continuous-field candidates03/04 remain rejected for visible triangle foldovers.
+
+Next after signing: runner --hinge-gates to a new native-hinges-02 directory, inspect complete
+poses as well as87cut results, then --hinge-parts with the unchanged-source gate report only
+if shapes hold. Same accepted masters/arena/E, Motion Kit curves and8% contact bound.
+No main.ts hunk, kit edit, painting/inference, 3D, GitHub write or history rewrite.
+Universal family coverage and actual omissions remain in FAMILY_COVERAGE.md. C2 is open.
