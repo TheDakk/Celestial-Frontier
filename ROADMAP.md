@@ -17,53 +17,65 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-14 · C2 ancestral contacts, signature pending
+## SESSION HANDOFF — 2026-09-14 · C2 junction closure qualification
 
-Codex works on openai/mac in celestial-frontier-openai-mac. Nick authorized continued
-repairs without Claude; he wants fluid full-body animation for all generated and Earth
-life in seeded biome arenas. Keep the explicit no-GitHub/no-kit/no-new-painting boundaries.
-Reuse the uninterrupted session's toolchain receipt. Read PARALLEL_GIT_PROTOCOL before edits.
-Claude-owned motion/effects/battle2/soundkit/worldlife and their tests remain read-only.
+Codex on macOS, openai/mac, celestial-frontier-openai-mac. Nick authorizes continuing C2 fixes
+without Claude. Universal whole-body procedural/Earth animation is the target; actual gaps
+are in audits/C2_DEFORMING_SEAMS_20260914/FAMILY_COVERAGE.md. No generic scope question is pending; signing is awaiting the account-password
+unlock described below. Preserve masters, anatomy,8%contact bound and real Motion Kit curves.
+Claude-owned motion/effects/battle2/soundkit/worldlife and tests remain read-only. Reuse the
+uninterrupted toolchain receipt; native browser commands require escalation/clean signed source.
 
-## C2 current state — matches code as of 2026-09-14
+## September 14 — three-part junction repair, candidate07
 
-The current candidate06 repairs all recorded ancestral contacts using original descendant
-texture and zero-area resting hinges; unowned pelvis/root ink resolves to the torso.
-Civet has29contacts/5070edges, fox32/5920, procedural26/1924, in the unchanged38/38/35drawables.
-Separate sibling contacts remain independent. Candidate05 on signed9d2dff26 removed duplicate
-ear ink but still shows angular openings: native-hinges-01 has rest0 and62listed cuts PASS,
-p95 .60/.60/.30ms, but is visually unaccepted. The old gate missed entire omitted pairs.
-The new independent ownership inventory requires all87contacts before native sampling;
-all three candidate05 bindings fail that negative control. Candidate06 passes43tool tests,
-7focused runtime tests, typecheck and root validate. Native render/capture is pending signing.
+1Password signing succeeded: e852a1c0,113ahead upstream/224ahead cached develop. Native-hinges-02
+on that exact source passes all87contact pairs, rest0channels, updatep95 .80/.90/.40ms. Full
+shapes remain unaccepted. Pair coverage cannot close a hole between three different posed
+copies of the same original ownership vertex. The independently retained-frame diagnostic
+(junction-diagnostic/) finds Civet strike839 and fox strike1326 uncovered native pixels at
+such points; all rest counts0. This is a new measured blind spot, not a waiver of old failures.
 
-Signed checkpoints this retry:345061d1 and9d2dff26. Current HEAD9d2dff26 is112ahead/0behind
-origin/openai/mac and223ahead/0behind cachedorigin/develop. Two subsequent1Password signing
-requests failed, including a PTY retry; public-key enumeration succeeds. The checked repair
-is staged. Unlocked vault is not proof of a successful signing authorization; do not bypass
-the configured signer or the clean-source native guard. No new10second capture has run.
-The continuous-field candidates03/04 remain rejected for visible triangle foldovers.
+Candidate07 adds64point sockets (18Civet/25fox/21procedural) to existing Mesh drawables. Each
+requires three/four touching source owners with a common painted ancestor present. The vertices
+follow their unchanged part transforms; the closure uses a touching descendant's original atlas
+texel. Pure sibling crossings and edges along separate limbs remain unstitched. No new ink,
+atlas, drawable, mask, record, clip, bound, kit, main.ts or Claude-owned path change. Rest is
+zero-area. The native gate independently rebuilds the junction inventory from atlas ownership
+and checks full-frame alpha, alongside all87pair gates and preserved ear controls. Forty-six
+tool tests,7runtime tests,typecheck/rootvalidate PASS; candidate-07/checks.json records these.
+Next: sign, native-hinges-03, inspect whole shapes;10second motion only when shape holds.
 
-Next after signing: runner --hinge-gates to a new native-hinges-02 directory, inspect complete
-poses as well as87cut results, then --hinge-parts with the unchanged-source gate report only
-if shapes hold. Same accepted masters/arena/E, Motion Kit curves and8% contact bound.
-No main.ts hunk, kit edit, painting/inference, 3D, GitHub write or history rewrite.
-Universal family coverage and actual omissions remain in FAMILY_COVERAGE.md. C2 is open.
+Native command: node port/v2/tools/quadruped-proof/parts-motion-runner.mjs
+ audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03
+ /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src --hinge-gates
+GSAP producer SHA6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74.
+If all gates and full shapes hold, --hinge-parts requires this unchanged-source gate report.
+Candidate03/04 remain rejected for folded visible skin triangles. PoseTarget frame collection
+is implemented/tested; its battle2 adoption remains pending. No all-family/C2 completion claim.
 
-The full repair evidence is audits/C2_DEFORMING_SEAMS_20260914/README.md, candidate-06/checks.json
-and checks/hinge6-*.log.gz. Run native parts-motion-runner.mjs with the read-only producer
-/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src; GSAP adapter SHA
-6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74. Browser commands require
-escalation; no lock inside unit workers. Verify signature, do not bypass a failed gate.
-The PoseTarget frame collector is implemented/tested; live battle2 adoption remains pending.
+Future review: audits/C_SYSTEMS_CONTINUATION_20260914/REVIEW_PROMPT.md plus this C2 audit.
+C3/C4 intake tooling is implemented, actual sound rights/recordings/threevoices and12-image
+sheets remain open. Weather new-lever ladder awaits Nick;E stays active. Phone smaller-finisher
+Mac qualification then1phone attempt remain; no Klein or delivery work before that result.
+C5 only after prerequisites: prune openai/mac,3merge-commit tiers intodevelop including tools,
+then1develop→main release/fullchain under exact authorization. No new branch, GitHub write,
+PRReady, release or history rewrite now; PR42 parked. LFS only on Nick's go.
+Codex continues local C2; Claude no action/app switch needed yet.
 
-Single future review prompt: audits/C_SYSTEMS_CONTINUATION_20260914/REVIEW_PROMPT.md.
-C3 source/Opus intake and C4 ordered master intake are implemented; actual rights/recordings,
-three voices and remaining12-image sheets are open. Weather S/V/P/SV/SP/SVP awaits Nick;
-E remains active. Phone: up to3redistributable ~1GB candidates onMac, then1phone attempt;
-no more Klein probing or premature delivery engineering. C2/C3/C4/C5 are not complete.
+## Candidate07 handoff update — signing authentication failure
 
-C5 follows prerequisites: prune onopenai/mac; three merge-commit tiers intodevelop (productionUI,
-paintedengine, researchtools as tools), then one develop→main release/fullchain only with exact
-authorization. PR42 parked; no PRReady before Civet/weather/phone decisions. LFS requires Nick's go.
-Codex continues local C2 qualification after signing. Claude: no action or app switch needed now.
+Candidate07 remains staged, not natively qualified. Final checks:46Node tool tests,7focused
+runtime tests,typecheck and root validate PASS. All64junction sources independently verify as
+fully opaque original atlas texels; the procedural source was corrected before commit to avoid
+one160-alpha pixel (opaque-source-revision.json). Same geometry/curves/masters/atlas budget.
+
+The two commit attempts at16:32:08/16:32:21UTC failed. Relevant local1Password events identify
+Secure Enclave/system biometric authentication failure before key retrieval, not merely a
+missing socket or an unanswered Git question. See signing-authentication.json for sanitized
+facts. Nick has been asked to unlock with his account password inside1Password; no passwords
+are requested in chat and no security settings/signing helper have changed. Do not retry native
+qualification until the configured signed commit succeeds. HEAD e852a1c0:113ahead/0behind
+upstream,224ahead/0behind cacheddevelop. No GitHub writes; Claude needs no action/app switch.
+
+Pair-only native-hinges-02 PASS is not C2 acceptance. The64point-socket repair addresses a
+measured additional defect, but full poses and10second motion still require native review.

@@ -317,3 +317,40 @@ poses as well as87cut results, then --hinge-parts with the unchanged-source gate
 if shapes hold. Same accepted masters/arena/E, Motion Kit curves and8% contact bound.
 No main.ts hunk, kit edit, painting/inference, 3D, GitHub write or history rewrite.
 Universal family coverage and actual omissions remain in FAMILY_COVERAGE.md. C2 is open.
+
+## September 14 — three-part junction repair, candidate07
+
+1Password signing succeeded: e852a1c0,113ahead upstream/224ahead cached develop. Native-hinges-02
+on that exact source passes all87contact pairs, rest0channels, updatep95 .80/.90/.40ms. Full
+shapes remain unaccepted. Pair coverage cannot close a hole between three different posed
+copies of the same original ownership vertex. The independently retained-frame diagnostic
+(junction-diagnostic/) finds Civet strike839 and fox strike1326 uncovered native pixels at
+such points; all rest counts0. This is a new measured blind spot, not a waiver of old failures.
+
+Candidate07 adds64point sockets (18Civet/25fox/21procedural) to existing Mesh drawables. Each
+requires three/four touching source owners with a common painted ancestor present. The vertices
+follow their unchanged part transforms; the closure uses a touching descendant's original atlas
+texel. Pure sibling crossings and edges along separate limbs remain unstitched. No new ink,
+atlas, drawable, mask, record, clip, bound, kit, main.ts or Claude-owned path change. Rest is
+zero-area. The native gate independently rebuilds the junction inventory from atlas ownership
+and checks full-frame alpha, alongside all87pair gates and preserved ear controls. Forty-six
+tool tests,7runtime tests,typecheck/rootvalidate PASS; candidate-07/checks.json records these.
+Next: sign, native-hinges-03, inspect whole shapes;10second motion only when shape holds.
+
+## Candidate07 handoff update — signing authentication failure
+
+Candidate07 remains staged, not natively qualified. Final checks:46Node tool tests,7focused
+runtime tests,typecheck and root validate PASS. All64junction sources independently verify as
+fully opaque original atlas texels; the procedural source was corrected before commit to avoid
+one160-alpha pixel (opaque-source-revision.json). Same geometry/curves/masters/atlas budget.
+
+The two commit attempts at16:32:08/16:32:21UTC failed. Relevant local1Password events identify
+Secure Enclave/system biometric authentication failure before key retrieval, not merely a
+missing socket or an unanswered Git question. See signing-authentication.json for sanitized
+facts. Nick has been asked to unlock with his account password inside1Password; no passwords
+are requested in chat and no security settings/signing helper have changed. Do not retry native
+qualification until the configured signed commit succeeds. HEAD e852a1c0:113ahead/0behind
+upstream,224ahead/0behind cacheddevelop. No GitHub writes; Claude needs no action/app switch.
+
+Pair-only native-hinges-02 PASS is not C2 acceptance. The64point-socket repair addresses a
+measured additional defect, but full poses and10second motion still require native review.

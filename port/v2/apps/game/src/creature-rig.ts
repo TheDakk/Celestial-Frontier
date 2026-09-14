@@ -23,6 +23,7 @@ export interface CreatureRigRecordV1 {
 interface Box {readonly x:number;readonly y:number;readonly width:number;readonly height:number;}
 export interface CreatureSeamGroupV1 {
  readonly id:string;readonly ancestorJoint:string;readonly layer:'far'|'near';readonly rigidUnderlap?:boolean;
+ readonly junctions?:ReadonlyArray<{readonly point:readonly [number,number];readonly ancestorPart:string;readonly parts:ReadonlyArray<string>;readonly joints:ReadonlyArray<string>;readonly sourcePart:string;readonly sourcePixel:readonly [number,number]}>;
  readonly edges:ReadonlyArray<{readonly ancestorPart:string;readonly sourcePart:string;readonly descendantJoint:string;readonly ancestorOverlap?:boolean;
  readonly edge:readonly [readonly [number,number],readonly [number,number]];readonly sourcePixel:readonly [number,number];readonly interiorPixel?:readonly [number,number];readonly sourceDepthPx:number}>;
 }

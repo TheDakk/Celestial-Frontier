@@ -2,11 +2,12 @@
  * At rest both copies of an edge coincide: the strip has exactly zero area.
  * Under motion its two sides follow the two actual part transforms. */
 import {GRAPH} from './quadruped-template.mjs';
+import {junctionPoints,paintedAncestor} from './ownership-junctions.mjs';
 const parent=new Map(GRAPH);
 const need=(ok,why)=>{if(!ok)throw Error('Seam bridge: '+why);};
 export function validateSeamBridges(groups,parts,width,height,atlasSize,joints){
  need(Array.isArray(groups)&&groups.length>0&&parts.length<=40&&groups.length<=parts.length,'group budget');
- const ids=new Set(),owners=new Map(parts.map(p=>[p.id,p]));let count=0;
+ const ids=new Set(),junctionIds=new Set(),owners=new Map(parts.map(p=>[p.id,p]));let count=0;
  const jointOwners=new Map(parts.filter(p=>p.kind==='part').map(p=>[p.joint,p.id]));
  const nearestOwner=joint=>{for(let j=parent.get(joint);j;j=parent.get(j)){if(j==='root'||j==='pelvis')return 'torso';if(jointOwners.has(j))return jointOwners.get(j);}return null;};
  for(const g of groups){
@@ -14,6 +15,18 @@ export function validateSeamBridges(groups,parts,width,height,atlasSize,joints){
   need(typeof g.id==='string'&&!ids.has(g.id)&&patch?.kind==='joint-patch'&&patch.joint===g.ancestorJoint&&patch.layer===g.layer,'group identity');ids.add(g.id);
   need(g.rigidUnderlap===undefined||typeof g.rigidUnderlap==='boolean','underlap mode');
   need(joints.includes(g.ancestorJoint)&&['far','near'].includes(g.layer)&&Array.isArray(g.edges)&&g.edges.length>0,'group');
+  need(g.junctions===undefined||Array.isArray(g.junctions),'junction list');
+  for(const j of g.junctions??[]){
+   need(Array.isArray(j.point)&&j.point.length===2&&j.point.every(Number.isInteger)&&j.point[0]>0&&j.point[0]<width&&j.point[1]>0&&j.point[1]<height,'junction point');
+   const id=j.point.join(':');need(!junctionIds.has(id)&&junctionIds.size<2048,'junction budget/identity');junctionIds.add(id);
+   need(Array.isArray(j.parts)&&j.parts.length>=3&&j.parts.length<=4&&new Set(j.parts).size===j.parts.length&&Array.isArray(j.joints)&&j.joints.length===j.parts.length,'junction owners');
+   const ps=j.parts.map(id=>owners.get(id)),a=owners.get(j.ancestorPart),src=owners.get(j.sourcePart);
+   need(a?.kind==='part'&&a.joint===g.ancestorJoint&&ps.includes(a)&&ps.every((p,i)=>p?.kind==='part'&&p.joint===j.joints[i]&&(p===a||paintedAncestor(parts,a,p))),'junction ancestry');
+   need(src&&src!==a&&ps.includes(src),'junction descendant ink');
+   need(Array.isArray(j.sourcePixel)&&j.sourcePixel.length===2&&j.sourcePixel.every(Number.isInteger),'junction source pixel');
+   const[x,y]=j.sourcePixel,b=src.cutout;
+   need([j.point[0]-1,j.point[0]].includes(x)&&[j.point[1]-1,j.point[1]].includes(y)&&x>=b.x&&y>=b.y&&x<b.x+b.width&&y<b.y+b.height,'junction pixel touches original point');
+  }
   for(const e of g.edges){
    need(++count<=20000,'edge budget');const source=owners.get(e.sourcePart),ancestor=owners.get(e.ancestorPart);
    need(source?.kind==='part'&&ancestor?.kind==='part'&&source.joint===e.descendantJoint&&ancestor.joint===g.ancestorJoint&&source.layer===g.layer,'source/ancestor ownership');
@@ -44,7 +57,7 @@ export function validateSeamBridges(groups,parts,width,height,atlasSize,joints){
  need(atlasSize.width>0&&atlasSize.height>0,'atlas size');return count;
 }
 export function createSeamGeometry(group,parts,width,height,atlasSize){
- const owners=new Map(parts.map(p=>[p.id,p])),n=group.edges.length+1,patch=owners.get(group.id);
+ const owners=new Map(parts.map(p=>[p.id,p])),n=group.edges.length+1+(group.junctions?.length??0),patch=owners.get(group.id);
  const positions=new Float32Array(n*8),pending=new Float32Array(n*8),uvs=new Float32Array(n*8),indices=new Uint32Array(n*6);
  const f=patch.frame;uvs.set([f.x/atlasSize.width,f.y/atlasSize.height,(f.x+f.width)/atlasSize.width,f.y/atlasSize.height,(f.x+f.width)/atlasSize.width,(f.y+f.height)/atlasSize.height,f.x/atlasSize.width,(f.y+f.height)/atlasSize.height]);
  indices.set(group.rigidUnderlap===false?[0,0,0,0,0,0]:[0,1,2,0,2,3]);
@@ -54,10 +67,15 @@ export function createSeamGeometry(group,parts,width,height,atlasSize){
   for(let j=0;j<4;j++){uvs[k*8+j*2]=j<2?iu:u;uvs[k*8+j*2+1]=j<2?iv:v;}
   indices.set([k*4,k*4+1,k*4+2,k*4,k*4+2,k*4+3],k*6);
  });
+ for(const [i,j]of(group.junctions??[]).entries()){
+  const k=1+group.edges.length+i,p=owners.get(j.sourcePart),u=(p.frame.x+j.sourcePixel[0]-p.cutout.x+.5)/atlasSize.width,v=(p.frame.y+j.sourcePixel[1]-p.cutout.y+.5)/atlasSize.height;
+  for(let n=0;n<4;n++)uvs.set([u,v],k*8+n*2);
+  indices.set([k*4,k*4+1,k*4+2,k*4,k*4+2,k*4+(j.parts.length===4?3:2)],k*6);
+ }
  return {positions,pending,uvs,indices};
 }
 export function writeSeamPose(group,matrices,width,height,output,staticBox){
- need(output.length===(group.edges.length+1)*8,'position buffer');
+ need(output.length===(group.edges.length+1+(group.junctions?.length??0))*8,'position buffer');
  const a=matrices[group.ancestorJoint];need(a?.length===6&&a.every(Number.isFinite),'ancestor matrix');
  const corners=[[staticBox.x,staticBox.y],[staticBox.x+staticBox.width,staticBox.y],[staticBox.x+staticBox.width,staticBox.y+staticBox.height],[staticBox.x,staticBox.y+staticBox.height]];
  corners.forEach(([px,py],i)=>{const x=px/width,y=py/height;output[i*2]=a[0]*x+a[2]*y+a[4];output[i*2+1]=a[1]*x+a[3]*y+a[5];});
@@ -75,6 +93,11 @@ export function writeSeamPose(group,matrices,width,height,output,staticBox){
   const span2=Math.max(((ax0-dx0)*width)**2+((ay0-dy0)*height)**2,((ax1-dx1)*width)**2+((ay1-dy1)*height)**2);
   need(Number.isFinite(span2),'nonfinite span');
   const o=(k+1)*8;output[o]=ax0;output[o+1]=ay0;output[o+2]=ax1;output[o+3]=ay1;output[o+4]=dx1;output[o+5]=dy1;output[o+6]=dx0;output[o+7]=dy0;
+ }
+ for(const[i,j]of(group.junctions??[]).entries()){
+  const ps=junctionPoints(j,matrices,width,height),cx=ps.reduce((n,p)=>n+p[0],0)/ps.length,cy=ps.reduce((n,p)=>n+p[1],0)/ps.length;
+  const radius=Math.max(...ps.map(p=>Math.hypot(p[0]-cx,p[1]-cy))),scale=radius>1e-9?1+1/(64*radius):1;
+  for(let n=0;n<4;n++){const p=ps[Math.min(n,ps.length-1)],o=(1+group.edges.length+i)*8+n*2;output[o]=(cx+(p[0]-cx)*scale)/width;output[o+1]=(cy+(p[1]-cy)*scale)/height;}
  }
  need(output.every(Number.isFinite),'position overflow');
 }

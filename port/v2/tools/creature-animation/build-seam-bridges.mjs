@@ -1,9 +1,10 @@
 /** Compile joint strips from actual shared ownership, reusing the exact parts atlas. */
 import {createRequire} from 'node:module';
 import {verifyPartsDirectory} from './verify-parts.mjs';import {partAncestry,bandDepth} from './band-patches.mjs';
+import {ownershipJunctions} from './ownership-junctions.mjs';
 import {GRAPH,hashJSON} from './quadruped-template.mjs';import {validateSeamBridges} from './seam-bridge.mjs';
 const require=createRequire(import.meta.url),{PNG}=createRequire(require.resolve('free-tex-packer-core'))('pngjs'),parent=new Map(GRAPH);
-export async function buildSeamBinding(baseDirectory,record,card,remainderPart,{includeAncestorOverlaps=false}={}){
+export async function buildSeamBinding(baseDirectory,record,card,remainderPart,{includeAncestorOverlaps=false,includeJunctions=false}={}){
  const verified=await verifyPartsDirectory(baseDirectory),base=verified.binding,parts=base.parts.filter(p=>p.kind==='part');
  if(!base.parts.some(p=>p.kind==='joint-patch')||base.recordRecipeHash!==record.recipeHash||card.recipeHash!==record.recipeHash)throw Error('Bridge base/card/record mismatch');
  const {width:w,height:h}=record.geometry,owner=new Uint8Array(w*h),alpha=new Uint8Array(w*h);
@@ -29,11 +30,15 @@ export async function buildSeamBinding(baseDirectory,record,card,remainderPart,{
    const ck=ap.id+'--'+dp.id;cuts.set(ck,(cuts.get(ck)??0)+1);
   }
  }
+ const junctions=includeJunctions?ownershipJunctions(owner,parts,w,h,alpha):[];
+ for(const j of junctions){const a=parts.find(p=>p.id===j.ancestorPart),source=parts.find(p=>p.id===j.sourcePart),g=groups.get(a.joint+':'+source.layer);
+  if(!g)throw Error('No existing ancestor drawable for junction');(g.junctions??=[]).push(j);
+ }
  const {bindingHash,...body}=base;body.seamBridges={schema:'cf.seam-bridges/v1',groups:[...groups.values()]};
  const edges=validateSeamBridges(body.seamBridges.groups,base.parts,w,h,body.atlasSize,['root',...GRAPH.map(([j])=>j)]);
  const binding={...body,bindingHash:await hashJSON(body)};
  return {binding,receipt:{schema:'cf.seam-bridge-intake/v1',sourceBindingHash:bindingHash,packedPixels:verified.receipt,recordRecipeHash:record.recipeHash,cardHash:await hashJSON(card),
-  edges,groups:groups.size,baseParts:parts.length,drawables:base.parts.length,cuts:Object.fromEntries(cuts),siblings:[...siblings].sort(),overlapsKeptRigid:includeAncestorOverlaps?[]:[...overlaps].sort(),overlapsSwept:includeAncestorOverlaps?[...overlaps].sort():[],
+  edges,junctions:junctions.length,groups:groups.size,baseParts:parts.length,drawables:base.parts.length,cuts:Object.fromEntries(cuts),siblings:[...siblings].sort(),overlapsKeptRigid:includeAncestorOverlaps?[]:[...overlaps].sort(),overlapsSwept:includeAncestorOverlaps?[...overlaps].sort():[],
   restPolicy:'existing opaque underlap plus zero-area coincident edge pairs; native RGBA equality pending',ink:'same descendant edge pixel centre in unchanged atlas',alphaOwnershipThreshold:8,
   depthPolicy:'same rest-source depth and caps; strip follows the unchanged joint motion, not a new displacement clamp',nativeAcceptance:false}};
 }
