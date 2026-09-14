@@ -207,3 +207,10 @@ reproduces the crack; full-precision math covers it. Adjacent strips now overlap
 1/64 source pixel along their edge ends, still exactly zero-area at rest. No gate
 threshold/alpha waiver, source-pixel or curve change. New failing-control test passes.
 Continue all pairs under unchanged rest/cut/performance requirements; capture still pending.
+
+Native attempt02 (ffe0d344) retains rest0 and closes the one hind strike pixel. Nine pairs
+reached; neck/head strike has no gap but leaves the original cut-out canvas, so the diagnostic
+correctly refuses INSTRUMENT_FAIL. Render target now includes half a canvas of transparent
+padding on each side, at original pixel scale, with matching measurement translation. A
+negative-controlled test preserves gap counts under padding and still refuses canvas escape.
+No motion, image, source atlas or coverage threshold change. Continue native qualification.

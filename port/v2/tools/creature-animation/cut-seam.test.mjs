@@ -28,3 +28,11 @@ test('empty, overlapping, malformed and clipped observations refuse rather than 
  assert.throws(()=>measureCutSeam({...args,edges:[]}),/Missing/);assert.throws(()=>measureCutSeam({...args,ancestorMatrix:[0,0,0,0,0,0]}),/matrix/);
  assert.equal(measureCutSeam({...args,ancestorMatrix:[1,0,0,1,1,0]}).status,'INSTRUMENT_FAIL');
 });
+
+test('transparent diagnostic padding preserves the true gap count and detects canvas escape',()=>{
+ const {a,d}=masks(),edges=sharedCutEdges(a,d,w,h),base=measured(a,d,6),rgba=new Uint8Array(w*h*16),small=render(a,d,6);
+ for(let y=0;y<h;y++)for(let x=0;x<w;x++)rgba[((y+h/2)*w*2+x+w/2)*4+3]=small[(y*w+x)*4+3];
+ const args={edges,ancestorMatrix:[1,0,0,1,.25,.25],descendantMatrix:[1,0,0,1,(.5+6/w)/2,.25],width:w*2,height:h*2,rgba};
+ assert.equal(measureCutSeam(args).uncoveredPixels,base.uncoveredPixels);assert.equal(measureCutSeam(args).bridgePixels,base.bridgePixels);
+ assert.equal(measureCutSeam({...args,descendantMatrix:[1,0,0,1,2,.25]}).status,'INSTRUMENT_FAIL');
+});
