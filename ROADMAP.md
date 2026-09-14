@@ -17,88 +17,89 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-12 · MOTION/SOUND PROPOSALS RETAINED; ART REVIEW PENDING
+## SESSION HANDOFF — 2026-09-13 · LONG SESSION BATCHES 1–4 COMPLETE; C2 PARTS RIG IS THE ONLY BLOCKER
 
-MOTION_KIT.md and SOUND_KIT.md are verbatim PROPOSED v1 from the supplied zip, not approved
-frozen contracts. Exact hashes and read-only body-card gap report:
-audits/MOTION_SOUND_KITS_20260912/ADOPTION.md and verification.json. No implementation,
-recording, sound derivation or kit edits in this batch. User direction for the later proof:
-compile the Civet body card from resolved anatomy per Motion Kit §§3–6, use its timings and
-report every missing record field. Current Civet gaps include resolved mass, locomotion,
-realm, per-part materials, secondary lag order, natural weapons, luminous and joint limits;
-identity, template, landmarks and bone lengths already exist. Never use raw identity genes
-to override named Earth anatomy. Recheck the actual parts-rig record when built.
+Read this with `audits/LONG_SESSION_20260913/LOG.md` (per-package table), `LOG-B.md`
+(batches 2–4 in detail) and `CONTRACTS.md` (the cross-lane interfaces). Everything below is
+committed on `anthropic/mac` and **never pushed**: 61 commits ahead of `openai/mac`, tree clean.
+GITHUB_ACTIONS_BUDGET gate unchanged; PR42 parked; no hosted write authorized.
 
-Sound recording waits for Nick to approve the frozen paragraphs. Then only Sound Kit §8b:
-quadruped archetype voice, Wild theme set, battle set, temperate rain bed and fur impacts.
-Derive Civet, fox and one procedural quadruped from that one archetype, show them side by
-side to listen, and wire sound into the arena proof. No other family/theme/music/library
-volume authorized. This message does not accept the current arena/effect candidates.
+### What the game can do now (all under the two study flags, default path untouched)
 
+`?battle2=1` stages a real turn over the Chronicle mount: arena plates with parallax, a rigged
+attacker and a portrait defender, the choreography beats (timing bar, cursor, run-up, hitstop,
+flash, shake, damage number), **per-ability theme effects** (Wild painted; the other ten kit
+themes as labelled procedural emitters in their §4K material colour), **sound cues on the beats**
+(placeholder synth for all 49 ability/battle ids, per-creature derived voices through the A4
+engine, played through the accessible audio owner's `decorativeVoicePort()`), and world life.
+`?worldlife=1` puts rain, drift and **resident idle life** (1–3 fauna from the roster, breathing
+whole-portrait rigs between the vista and the weather) on the landfall.
 
-**STOP for Nick's visual acceptance before any battle staging.** Applied the approved
-v4.2 diff from d2b8d8cd with all three user amendments: Arena FAR opaque, MID/NEAR painted on
-magenta then keyed (no extracted masks); ground y=0.78; class enumerations in 0/1/5/6 and
-Effects anchor JSON. Frozen paragraph and 4E unchanged. Final diff, all six exact prompts,
-masters, keyed review copies, composite, anchor JSON and intake are retained at
-audits/ARENA_EFFECTS_V42_PROOF_20260912/README.md. Built-in imagegen: six calls, no rerolls.
-The supplied ART_KIT_V42_REVIEW_20260912.md was absent from the stated path and Downloads;
-Nick's explicit message supplied sufficient approval/amendments. Do not claim it was read.
+Every kit §4 motion family has a template library (13 + quadruped). Phones run half particle
+budgets. `MOTION_KIT.md` and `SOUND_KIT.md` are marked matches-code as of 2026-09-13.
 
-Earth temperate plates delivered 1672x941; Wild/Savage Maw launch/travel/impact 1254 square.
-All exceed runtime floors. Shared ground line is registered in the recipe; MID is solid and
-NEAR transparent at both stands at y=0.78. Authoring seed derives from fixed proof battle
-context, never clock; system card is copied verbatim from preserved Earth compiler output.
-No hand-typed card. NEAR is roughly the lower fifth, beyond the requested lower tenth.
-MID and effects have unresolved key-edge pixels; phase positions differ from requested
-percentage anchors. Actual per-phase anchors and measured alpha bounds are recorded.
-No qualityAccepted flag is true, no production-ready or clean-edge claim. Masters unchanged.
-The ordinary-game accepted painting remains rain E; no local model/finisher/3D run occurred.
+### Evidence to look at
 
-**After art acceptance:** stage Civet versus Platypus with the parts rig in this arena;
-GSAP shared tweened key poses, easing/anticipation/overshoot/secondary motion, Mac 60 fps,
-phone 30 fps budget. Timing now comes from MOTION_KIT §5 with the compiled mass factor:
-approach420ms; melee140/90/one-frame smear/260ms; hit450ms; return380ms at mass1.00.
-This supersedes the earlier approximate timing targets for this proof; report actual compiled
-values and unresolved fields. Retain hitstop/flash/shake/damage number/quick timing bar.
-Then ten-second Civet, fox and procedural
-quadruped captures. No per-creature clip edits. Prior continuous mesh failed shape despite
-exact rest; retained whole-portrait fallback captures are not accepted articulation. Keep
-turnaround/canid masters for the later engine port; Blender projection remains abandoned.
+- `audits/LONG_SESSION_20260913/b-batch-capture/proof-run-02/` — the current 10 s capture
+  (602 frames, p95 0.30 ms, 0 browser errors), beat frames and mp4-cut frames. Civet joints no
+  longer open black wedges; Wild painted sweep and Tide procedural splash both read.
+- `audits/LONG_SESSION_20260913/b3-family-sheets/`, `a11-family-sheets/` — pose sheets.
+- `audits/C2_BOUNDED_REPAIR_20260913/underlap-demo-01/` — underlap proof on the real Civet master.
 
-Arena runtime still to implement: biome-family template + compiler-filled home-world card
-+ stable battle-context seed. Wild uses wild home; guardian lair and One signature; duel
-hosts alternate by round with seeded initial host. Phone composes card-lit plates without
-finisher, desktop may finish. Cache like originals. No delivery engineering this batch.
+### Open decisions for Nick (nothing blocked on them)
 
-Tooling already signed in 3404e5d3: game gsap 3.15.0 / @pixi/particle-emitter 5.0.10; v2 dev
-free-tex-packer-core 0.3.9 / CLI 0.3.0. GSAP timelines selected. Emitter Pixi 6/7 peers are
-incompatible with direct Pixi 8.19.0 attachment; resolve renderer and seeded explicit-time
-integration before effects use. No pin change or second renderer silently. Deterministic
-one-atlas-per-creature command uses sorted hash-bound copies, fixed padding/extrusion and
-no timestamp metadata. pngquant/oxipng approved idle tools; optimize copies only, never masters.
+1. **K22 part 2** — the import `t:0 → now` asymmetry; fixing it broke v1.8.9 fixture tests
+   (`LOG-A6-defects.md`). Still unfixed by choice.
+2. **Nick's eye** on the B3 family sheets, the proof-run-02 capture and the Wild v4.3 images.
+3. Two batch-2 decisions were **delegated to Claude and already taken**: the audio port
+   (`decorativeVoicePort()`) and the Motion Kit §5 impact hold (240 ms after the hitstop).
 
-Focused compiler tests (22) and keyer tests (7) with negative controls, v2 TypeScript and root
-validate pass. Initial stale-version and threshold-boundary test failures are preserved with
-corrections; no native or hosted retry. Details in the proof README. No checkout lock in tests.
+### The one blocker: C2 articulated parts rig (Codex's lane)
 
-After the proof: up to six deterministic no-inference weather variants (sky-facing sheen,
-wet-fur value/contrast, foreground streaks at plate-sky density), beside E/triptych for a pick.
-Then at most three ~1 GB redistribution-permitted finisher candidates on Mac with same
-composite/masked0.35/compatible embedding; one best-candidate phone attempt. No delivery
-engineering before that result. Klein phone probing stopped. iPhone17Pro/iOS26.6.2/USB-C;
-normal Safari quota1,048,576,000 vs expanded Klein transformer4,393,808,634 bytes. Prior
-session loss not established OOM. Certificate left installed. Rain E source8b01e38c/evidence
-aaacfd6f retained; original and raw finisher intact.
+Codex's parts rig still FAILS the shape gate; the labelled whole-portrait fallback is the
+accepted presentation meanwhile. Four review rounds are recorded, newest last:
 
-Clean promotion: prune superseded code/pack assets on openai/mac first, then three ordered
-squash tiers into develop (production UI; painted landfall engine; research tools), then one
-develop→main full-chain release PR. No Ready PR until Civet proof, weather pick and phone-tier
-decision land. Audits LFS decision pending; no history rewrite. PR42 parked. GitHub step NONE.
+| round | audit dir | outcome |
+|---|---|---|
+| interop | `C2_MOTION_INTEROP_20260913/` | Claude's GSAP producer broadcast root dx/dy to every joint; fixed root-only (64bef82e), probe PASS |
+| parts motion | `C2_PARTS_MOTION_20260913/` | civet neck wedge diagnosed; fox refusal = collinear rest chain; fallback clips ACCEPT |
+| bounded repair | `C2_BOUNDED_REPAIR_20260913/` | disc patches can't reach the cut ends; **fox corrected record ACCEPT**; seam oracle replaces the vacated-silhouette ruler; band underlap proposed and proven in Claude's own rig |
+| band underlaps | `C2_BAND_UNDERLAPS_20260913/` | Codex's bands FAILED: ancestry walk misses pelvis-rooted parts (hips/tail unbanded), depth exceeds the descendant's size (ear ghosts), composite oracle over-counts between parallel legs |
 
-Ownership: OpenAI/Codex macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracking origin/openai/mac. Pre-batch signed HEAD75a5c4a4:64 ahead upstream/175 ahead cached
-origin/develop, zero behind; proposed-kit/doc commit follows. Unrelated .DS_Store excluded.
-Reuse September12 startup receipt (Node26.8.2). Codex waits for art acceptance; Claude Code
-need not open/sync. Budget UNFROZEN/public assumption/private cap3000; zero hosted writes or
-attempts authorized. No PR now, no release/deployment. Local work is not in develop/main.
+**Codex's next step is authorized** (Nick delegated approvals 2026-09-13):
+`audits/C2_BAND_UNDERLAPS_20260913/CLAUDE_REVIEW_RESPONSE.md` §4 plus the amendment in
+`audits/C2_BOUNDED_REPAIR_20260913/AUTHORIZATION_20260913.md` — ancestry from pixel ownership,
+depth capped at half the descendant's box, pair-isolated seam gate (`--disc=0.06`), then the
+civet, fox and procedural captures with no further review stop unless a pair still leaks.
+Still NOT authorized: the 8 % compression bound, clip curves, kit wording, GitHub, history.
+
+### Claude-lane tools a new session should know
+
+- `port/v2/tools/motion-proof/seam-oracle.mjs` — joint-seam ruler (transparent pixels inside the
+  closed body envelope near a joint pivot). Tests in `port/v2/tests/seam-oracle.test.ts`.
+- `port/v2/tools/motion-proof/rig-pose-render.mjs` — browser-free keyed-master cut, pose, render
+  and measure. `port/v2/apps/game/src/battle2/rig-render.ts` is the pure renderer.
+- `port/v2/tools/battle2-proof/runner.mjs <newDir>` — the 10 s capture (**browser-owning: run
+  outside the macOS sandbox**). `tools/motion-proof/pose-sheet.mjs` renders any template.
+
+### Waiting on Codex
+
+C1 Wild v4.3 intake is mechanically complete (three Claude reviews, all accept; Nick owns final
+image acceptance). C2 as above. **C3 recorded sound sources have not begun** — every voice today
+is derived from the labelled placeholder archetype and is not shippable. C5 pruning/PR split/LFS
+is unstarted; the 24 pre-existing full-suite failures belong there (`LOG.md` baseline note).
+
+### Verification commands (all green at handoff)
+
+```
+cd port/v2 && npm run -s typecheck && npx vitest run tests/battle2-*.test.ts tests/effects-*.test.ts tests/motion-*.test.ts tests/soundkit-*.test.ts tests/worldlife-*.test.ts tests/seam-oracle.test.ts
+node tools/validate.js      # from the repo root: FINGERPRINT MATCH
+```
+
+### Protocol reminders
+
+Claude works only on `anthropic/*`, Codex only on `openai/*`; never edit the other worktree, never
+copy source across lanes (Nick carries zips). Commit locally, do not push. Read
+`PARALLEL_GIT_PROTOCOL.md` before every batch. Nick's standing instruction: **work in large
+uninterrupted batches**; stop only for a kit wording change, the first image or sound of a new
+class, a GitHub write, a history rewrite, or a genuine scope question.
