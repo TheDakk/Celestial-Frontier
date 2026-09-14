@@ -17,61 +17,58 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-14 · Deforming joints, native qualification next
+## SESSION HANDOFF — 2026-09-14 · C2 cuts pass; whole-shape repair remains
 
-OpenAI/Codex works on openai/mac in celestial-frontier-openai-mac. Latest signed checkpoint
-before this batch: 88a7b535, 107 ahead / 0 behind origin/openai/mac, 218 ahead / 0 behind
-cached origin/develop. The previous ear-support diagnosis was staged after two signer refusals;
-this batch includes it. Never bypass signing. No GitHub writes; PR42 parked; no new branches,
-kit edits, history rewrite, model run or changes to Claude-owned motion/effects/battle2/soundkit/worldlife.
-Reuse the uninterrupted session's toolchain receipt. No main.ts hunk.
+Codex: openai/mac in celestial-frontier-openai-mac. Signed HEAD71e96f97,110ahead/0behind
+origin/openai/mac and221ahead/0behind cachedorigin/develop. Earlier signed checkpoints:
+e649a2e2 strips, ffe0d344 raster crack repair,71e96f97 transparent diagnostic margins.
+No GitHub writes, new branch, main.ts hunk, kit edit, painting/model run or history rewrite.
+PR42 parked. Claude-owned motion/effects/battle2/soundkit/worldlife remain read-only.
+Reuse this uninterrupted session's toolchain receipt; no new tool install in this batch.
 
-Nick now explicitly authorizes deforming joint repairs across all parts and continued correction
-without intermediate Claude review. Ultimate scope: fluid whole-body arena battles for every
-procedural and named Earth family, land/air/water/plants. Keep actual painter anatomy/material,
-seed determinism and family-specific joints. Quadruped success is not universal coverage.
-No need to ask again for the seam-strip mechanism. Accepted masters/arena/E remain the art basis.
+Nick authorized repairs across all parts, continuing without Claude review. Target: fluid,
+professional whole-body biome-arena battle animation for all generated and Earth life,
+including limbs/wings/fins/tails/stems, land/air/water. No generic fourth-mechanism scope
+question is pending. Preserve anatomy, original ink/atlas ceilings, seeds, Motion Kit curves
+and8% contact bound. Actual family support gaps: C2_DEFORMING_SEAMS_20260914/FAMILY_COVERAGE.md.
 
-Current implementation and controls: audits/C2_DEFORMING_SEAMS_20260914/README.md.
-Candidate-02 contains sealed Civet, corrected fox candidate-01 and procedural atlas bindings,
-with zero-area-at-rest strips joining true parent/child ownership cuts. Incidental overlaps
-stay rigid. Candidate-01 is a rejected compiler prototype. Existing source ink, atlas ceilings,
-Motion Kit curves and 8% contact bound remain unchanged. 4348 tests pass / 1 skipped,
-typecheck/root validation pass; browser bundle compiles. No native pass claimed yet.
+Native gates03 on71e96f97: all62true cuts pass (21Civet/21fox/20procedural), rest0channels;
+updatep95 .60/.60/.30ms. All3dense1200-sample contact scans pass. Earlier ear3pixel controls
+still fail, repaired geometry0. Tests distinguish raster crack and diagnostic clipping.
+BUT full-pose inspection rejects visible duplicate fur/ears and striped broad joints. This
+is not C2 visual acceptance and no new10s capture has completed. Keep all reports verbatim.
 
-Native attempt01 on e649a2e2 closes both ears and preserves rest0; one hind strike pixel
-is a reproduced GPU subpixel crack. The 1/64px strip-end overlap repair is ready for
-qualification; report retained in native-gates-01. Next: signed checkpoint, --seam-gates with producer at sibling
-anthropic/mac (GSAP SHA 6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74).
-Require native rest0, all actual joint cuts closed, rigid-ear negative controls and p95<2ms.
-Then --seam-parts with the source-bound gate report, ten-second captures and whole-shape review.
-Diagnose actual failures and repair under Nick's latest authorization; do not waive gates.
-Historical fixed-disc false-positive evidence remains, as do old native failures. New cut-local
-coverage is not a whole-shape or visual acceptance. The underlap-support audit proves why deeper
-static source copies cannot close the six old ear samples; it no longer awaits scope approval.
+A continuous alpha-adaptive parts-field candidate was then implemented and rejected OFFLINE:
+actual unchanged strong poses fold visible source triangles. Candidate03/04 are rejected,
+not a next native run. Runtime paintSkin fold refusal prevents partial publication. Source
+atlas/master and curves are unchanged. Inspect README.md plus offline/candidate-04-shape.json
+and visible-folds.txt in audits/C2_DEFORMING_SEAMS_20260914. Next repair must preserve independent
+overlapping limb surfaces while deforming true joints continuously; no gate/amplitude waiver.
+The capsule scratch comparison also fails and is not adopted. No need to ask Claude for fixes.
 
-Then audit all family painter record/part-mask coverage against published LOG-A11/LOG-B joints.
-Current procedural mask observation is still limited to qualified four-legged banded-tail geometry;
-other motion templates alone do not prove actual painter support. Extend from real drawn anatomy,
-not invented joint positions. Track unsupported and visually unqualified families explicitly.
+A new tested PoseTarget-compatible creature-rig-frame collector applies one complete producer
+sample once, rather than once per joint. Existing immediate adapter stays compatible. Adoption
+in Claude's battle2 owner remains pending; no ownership exception was taken. Its test is not
+proof of live integration. C2 code is not claimed finished by static checks or gap counts.
 
-Other completed code and consolidated review prompt: audits/C_SYSTEMS_CONTINUATION_20260914/.
-C3 immutable-source voice Opus export, C4 ordered intake and asynchronous PNG verification are
-implemented, not source recordings/library acceptance. Weather S/V/P/SV/SP/SVP awaits Nick's pick;
-E stays active. C3 rights/recordings/voices remain open. Phone: up to3 smaller redistributable
-Mac finisher candidates, then1phone; no more Klein or delivery engineering before result.
-C4 new class/sheet media stops remain. No rejected erosion/3D projection restart.
+Current repair/addendum changes are staged/dirty after two1Password signing refusals despite
+successful public-key enumeration. Native runner refused before browser launch. Nick was asked
+to approve the actual signing request; unlocked vault alone has not completed the signature.
+Do not bypass signing. Continue independent code work; recheck actual staging before signing.
+Final verification:371Vitest files/4351passed/1skipped,37tool tests,typecheck and root
+validate PASS; continuation-checks.json and checks/continuation-*.log.gz record them. Use npm --prefix
+port/v2 test: locked standalone authority build, release, then unit workers without lock.
 
-C5 prune on openai/mac after prerequisites, then three merge-commit tiers into develop:
-production UI, painted engine, research tools as tools; develop→main release/full chain only
-on exact authorization. No PRReady before Civet/weather/phone decisions; LFS only Nick's go.
-Unit tests use npm --prefix port/v2 test: standalone authority build then unlocked Vitest.
-Claude next: no action or app switch now. Later provide the consolidated review prompt plus
-this native evidence. Codex continues code/native repairs locally; report commit/ahead state at stops.
+Other lane work/review prompt: audits/C_SYSTEMS_CONTINUATION_20260914/REVIEW_PROMPT.md,
+plus this C2 addendum. C3 source/Opus intake and C4 ordered master intake implemented, but
+original sound recordings/rights/three-voice proof and remaining12-image sheets are open.
+Weather S/V/P/SV/SP/SVP awaits Nick; E remains accepted/active. Phone: up to3redistributable
+~1GB Mac finisher candidates, then1phone attempt; no more Klein or delivery engineering first.
+C4 first-class/sheet media gates remain; no rejected 3D/erosion/variant restart.
 
-Native attempt02 (ffe0d344) retains rest0 and closes the one hind strike pixel. Nine pairs
-reached; neck/head strike has no gap but leaves the original cut-out canvas, so the diagnostic
-correctly refuses INSTRUMENT_FAIL. Render target now includes half a canvas of transparent
-padding on each side, at original pixel scale, with matching measurement translation. A
-negative-controlled test preserves gap counts under padding and still refuses canvas escape.
-No motion, image, source atlas or coverage threshold change. Continue native qualification.
+C5: prerequisites then prune onopenai/mac; three merge-commit tiers intodevelop (productionUI,
+paintedengine, researchtools as tools); one develop→main release/fullchain only onexactauthorization.
+No PRReady before Civet/weather/phone decisions. LFS only Nick's explicitgo. GitHub step:none.
+Codex continues local repairs when signing/qualification permits. Claude: no action now;
+Nick need not open the other app or sync. Later use the one consolidated review prompt with
+named retained failures and actual captures; do not present current proofs as fully animated.

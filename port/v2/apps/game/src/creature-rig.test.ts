@@ -118,3 +118,16 @@ it('deforming cut publishes actual Pixi mesh geometry, resets its strip exactly,
  const changed=structuredClone(unsigned);changed.seamBridges.groups[0]!.edges[0]!.sourceDepthPx=50;
  const decode=vi.fn(decoder);await expect(loadCreatureRigV1(record,{...changed,bindingHash:await hashJSON(changed)},master,alpha,atlasBytes,decode)).rejects.toThrow('depth cap');expect(decode).not.toHaveBeenCalled();
 });
+
+it('continuous parts render through one atlas mesh field and reset without per-part rigid transforms',async()=>{
+ const original=await binding(),painted=original.parts.map((p,i)=>({...p,frame:{x:i*20,y:0,width:20,height:20}}));
+ const skin:import('../../../tools/creature-animation/paint-skin.mjs').PaintSkin={schema:'cf.paint-skin/v1',vertices:[],parts:[]};
+ for(const p of painted){const start=skin.vertices.length;for(const [x,y]of [[p.cutout.x,p.cutout.y],[p.cutout.x+20,p.cutout.y],[p.cutout.x,p.cutout.y+20]])skin.vertices.push({x:x!,y:y!,weights:[[p.joint,1]]});
+  skin.parts.push({id:p.id,vertices:[0,1,2].map(i=>({triangle:[start,start+1,start+2],barycentric:[i===0?1:0,i===1?1:0,i===2?1:0]})),indices:[0,1,2]});}
+ const {bindingHash,...body}={...original,parts:painted,paintSkin:skin,atlasSize:{width:80,height:20}};
+ const rig=await loadCreatureRigV1(record,{...body,bindingHash:await hashJSON(body)},master,alpha,atlasBytes,()=>Promise.resolve(new Texture({source:new TextureSource({width:80,height:20})})));
+ const geometry=()=>rig.parts.map(p=>Array.from((p.display.children[0] as import('pixi.js').Mesh).geometry.getBuffer('aPosition').data));
+ try{rig.applyPose({});const rest=geometry();rig.applyPose({root:{rotation:0,dx:.1}});expect(geometry()).not.toEqual(rest);expect(snapshot(rig)).toEqual(parts.map(()=>[0,0,0,1,1]));
+  const moved=geometry();expect(()=>rig.applyPose({root:{rotation:0,dx:1e40}})).toThrow('coordinate bound');expect(geometry()).toEqual(moved);rig.applyPose({});expect(geometry()).toEqual(rest);
+ }finally{rig.dispose();}
+});

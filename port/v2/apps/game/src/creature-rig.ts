@@ -1,4 +1,5 @@
 import {Container, Matrix, Rectangle, Sprite, Texture, Mesh, MeshGeometry} from 'pixi.js';
+import {applyPaintSkin,applyPaintPart,paintPartAreas,assertPaintPartShape,validatePaintSkin,type PaintSkin} from '../../../tools/creature-animation/paint-skin.mjs';
 import {validateSeamBridges,createSeamGeometry,writeSeamPose} from '../../../tools/creature-animation/seam-bridge.mjs';
 import {GRAPH, admitRecord, hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
 import {composeAffine, rotationAround, IDENTITY_AFFINE, type Affine2} from '../../../tools/creature-animation/kinematics.js';
@@ -33,6 +34,7 @@ export interface CreaturePartsBindingV1 {
   readonly recordRecipeHash:string;
   readonly atlasSha256:string;
   readonly atlasSize:{width:number;height:number};
+  readonly paintSkin?:PaintSkin;
   readonly seamBridges?:{readonly schema:'cf.seam-bridges/v1';readonly groups:ReadonlyArray<CreatureSeamGroupV1>};
   readonly parts:ReadonlyArray<{id:string;joint:string;layer:'far'|'near';frame:Box;cutout:Box;kind:'part'|'joint-patch'}>;
 }
@@ -71,6 +73,8 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
     requireValue(part.kind==='part'||part.kind==='joint-patch','unknown part kind');
     requireValue(validBox(part.frame,aw,ah)&&validBox(part.cutout,w,h),'part rectangle outside image');
   }
+  requireValue(!(binding.paintSkin&&binding.seamBridges),'one deformation owner');
+  if(binding.paintSkin){requireValue(binding.parts.every(p=>p.frame.width===p.cutout.width&&p.frame.height===p.cutout.height),'paint skin requires native source frames');validatePaintSkin(binding.paintSkin,binding.parts,w,h,joints);}
   if(binding.seamBridges!==undefined){
     requireValue(binding.seamBridges?.schema==='cf.seam-bridges/v1','seam bridge schema');
     validateSeamBridges(binding.seamBridges.groups,binding.parts,w,h,binding.atlasSize,joints);
@@ -88,7 +92,15 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
     (group.layer==='far'?far:near).addChild(display);
     return {group,part,buffers,geometry,display};
   });
-  const entries=binding.parts.filter(part=>!bridgeGroups.has(part.id)).map(part=>{
+  const skin=binding.paintSkin,field=skin?new Float32Array(skin.vertices.length*2):null;
+  const skins=(skin?.parts??[]).map(part=>{
+    const source=binding.parts.find(p=>p.id===part.id)!,uvs=new Float32Array(part.vertices.length*2),positions=uvs.slice(),pending=uvs.slice();
+    part.vertices.forEach((v,i)=>{const x=v.triangle.reduce((n,k,j)=>n+skin!.vertices[k]!.x*v.barycentric[j]!,0),y=v.triangle.reduce((n,k,j)=>n+skin!.vertices[k]!.y*v.barycentric[j]!,0);
+      uvs[i*2]=(source.frame.x+x-source.cutout.x)/aw;uvs[i*2+1]=(source.frame.y+y-source.cutout.y)/ah;});
+    const geometry=new MeshGeometry({positions,uvs,indices:new Uint32Array(part.indices)}),mesh=new Mesh({geometry,texture:atlas}),display=new Container();display.addChild(mesh);
+    (source.layer==='far'?far:near).addChild(display);return {part,source,geometry,positions,pending,display,areas:paintPartAreas(part,skin!)};
+  });
+  const entries=binding.parts.filter(part=>!bridgeGroups.has(part.id)&&!skin).map(part=>{
     const frame=part.frame,box=part.cutout,texture=new Texture({source:atlas.source,frame:new Rectangle(frame.x,frame.y,frame.width,frame.height)});
     textures.push(texture);const sprite=new Sprite(texture),display=new Container();
     sprite.position.set(box.x/w,box.y/h);sprite.scale.set(box.width/w/frame.width,box.height/h/frame.height);
@@ -98,7 +110,7 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   });
   const length=Math.hypot(record.landmarks.chest![0]-record.landmarks.pelvis![0],record.landmarks.chest![1]-record.landmarks.pelvis![1]);
   let disposed=false;
-  const parts=Object.freeze([...entries.map(({part,display,pivot})=>Object.freeze({id:part.id,display,pivot,layer:part.layer})),
+  const parts=Object.freeze([...skins.map(({source,display})=>Object.freeze({id:source.id,display,pivot:{x:record.landmarks[parentOf.get(source.joint)??'root']![0],y:record.landmarks[parentOf.get(source.joint)??'root']![1]},layer:source.layer})),...entries.map(({part,display,pivot})=>Object.freeze({id:part.id,display,pivot,layer:part.layer})),
     ...bridges.map(({group,display})=>Object.freeze({id:group.id,display,pivot:{x:record.landmarks[parentOf.get(group.ancestorJoint)??'root']![0],y:record.landmarks[parentOf.get(group.ancestorJoint)??'root']![1]},layer:group.layer}))]);
   return Object.freeze({recipeHash:record.recipeHash,templateId:record.template.id,root,parts,
     bounds:Object.freeze({width:1,height:1,groundLineY:record.geometry.groundLineY}),
@@ -115,12 +127,14 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
         const local=key?rotationAround({x:pivot[0],y:pivot[1]},key.rotation,{x:(key.dx??0)*length,y:(key.dy??0)*length}):IDENTITY_AFFINE;
         matrices[joint]=parent?composeAffine(matrices[parent]!,local):local;
       }
+      if(skin&&field){applyPaintSkin(skin,matrices,w,h,field);for(const entry of skins){applyPaintPart(entry.part,field,entry.pending);assertPaintPartShape(entry.part,skin,entry.pending,w,h,entry.areas);}}
       // All spans are admitted into private scratch before any visible state changes.
       for(const bridge of bridges)writeSeamPose(bridge.group,matrices,w,h,bridge.buffers.pending,bridge.part.cutout);
+      for(const entry of skins){entry.positions.set(entry.pending);entry.geometry.getBuffer('aPosition').update();}
       for(const entry of entries)entry.display.setFromMatrix(new Matrix(...matrices[entry.part.joint]!));
       for(const bridge of bridges){bridge.buffers.positions.set(bridge.buffers.pending);bridge.geometry.getBuffer('aPosition').update();}
     },
-    dispose(){if(disposed)return;disposed=true;root.destroy({children:true});for(const bridge of bridges)bridge.geometry.destroy();for(const texture of textures)texture.destroy(false);atlas.destroy(true);},
+    dispose(){if(disposed)return;disposed=true;root.destroy({children:true});for(const entry of skins)entry.geometry.destroy();for(const bridge of bridges)bridge.geometry.destroy();for(const texture of textures)texture.destroy(false);atlas.destroy(true);},
   });
 }
 

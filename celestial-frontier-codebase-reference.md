@@ -6597,3 +6597,52 @@ updates prepare all buffers before publishing. The interface, curves and contact
 unchanged. Candidate-02 covers three quadrupeds; native rest, cuts, timing and shape await proof.
 Details: audits/C2_DEFORMING_SEAMS_20260914/README.md. Universal land/air/aquatic/plant coverage
 is required, but painter observation outside the qualified quadruped remains open.
+
+## Native attempt03: cuts pass, full shape rejected locally
+
+On 71e96f97 all62 true cuts pass (Civet21, fox21, procedural20), rest0 for all;
+update p95 0.60/0.60/0.30ms. All three dense1200-sample contact scans pass under
+the unchanged8% bound. But inspection of full strike/recoil PNGs shows duplicate
+fur/ear contours exposed by static underlaps and strip-like stretching at broad
+joints. This mechanical PASS is explicitly NOT visual acceptance. No10s capture
+was declared complete; Codex continues repair under Nick's authorization.
+
+Candidate04 replaces rigid overlaps and stretched strips with an alpha-adaptive
+conforming mesh shared by all source parts. Refinement follows ink boundaries
+and true cuts; neighbouring cells include the same edge vertices. Each part
+samples only its original atlas frame, clipped to its original bounds. Joint
+weights come from actual ownership/cuts; shared coordinates share deformation.
+No per-creature curve, anatomy, frame count, palette or kit edits. Existing matrix
+and part-composition owners remain. This is not the old fixed Civet-literal grid.
+Candidate03 is the same prototype before duplicate vertex removal, never native
+accepted. Candidate04 deduplicates interpolation vertices: 16097 Civet,18256 fox,
+2621 procedural part vertices. Source atlases unchanged. Native pixel equality
+and timing are pending; full animated shape still needs direct inspection.
+The runtime remains quadruped-qualified only; all-family painter coverage is open.
+
+## Continuous-field candidate rejected before native launch
+
+The offline shape check rejects candidate04: Civet strike1237 inverted triangles,
+1118 containing visible source ink; fox1716/1544; procedural213/169. This is not a
+transparent-mesh-only artefact. Rest has no inversion. The historical cut-local PASS
+cannot qualify this different deformation. Candidate03 uses the same field without
+vertex deduplication and is also rejected. No native skin run or ten-second capture
+has run. `paint-skin` now refuses folded posed triangles before publishing any buffer;
+its area reference is precomputed, with a passing rigid-motion and failing fold control.
+A capsule-weight scratch comparison also fails and is not adopted. The next repair
+must preserve separate overlapping limbs while smoothing true articulated joints.
+Do not lower motion amplitudes, contact bounds, shape gates or alpha thresholds to pass.
+
+`creature-rig-frame.ts` adds a PoseTarget-compatible collector for frame owners: call
+`target.sample(() => player.seek(ms))` to apply the whole rig once per producer frame.
+It resets omitted joints, discards incomplete producer samples, and publishes no partial
+frame on failure. The existing immediate adapter remains for compatibility. This new
+adapter is tested; live battle2 adoption is pending in its read-only owner. No main.ts hunk.
+
+Signing: two failures for the continuous-field checkpoint after three earlier successful
+signed checkpoints. Public-key enumeration succeeds; no root cause established. The
+native runner refused the dirty tree before opening a browser. Never bypass signing.
+Current signed head71e96f97:110ahead/0behind upstream,221ahead/0behind cacheddevelop.
+
+Whole-universe requirement and actual family gaps are in FAMILY_COVERAGE.md. No claim
+of all-family animation, finished C2, newly recorded C3 or completed C4/C5 is made.
