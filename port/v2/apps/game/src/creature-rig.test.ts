@@ -96,3 +96,25 @@ it('replays without clock/RNG reads and keeps a full-graph/40-part update below 
   expect(mean).toBeLessThan(2);console.log('C2 full-graph/40-part applyPose mean ms:',mean);
  }finally{random.mockRestore();clock.mockRestore();rig.dispose();}
 });
+
+it('deforming cut publishes actual Pixi mesh geometry, resets its strip exactly, and refuses overflow atomically',async()=>{
+ const original=await binding();
+ const adjusted=original.parts.map((p,i)=>({...p,frame:{x:i*20,y:0,width:20,height:20}}));
+ const patch={id:'band-head-near',joint:'head',layer:'near' as const,kind:'joint-patch' as const,cutout:{x:140,y:205,width:2,height:2},frame:{x:80,y:0,width:2,height:2}};
+ const body={...original,atlasSize:{width:82,height:20},parts:[patch,...adjusted],seamBridges:{schema:'cf.seam-bridges/v1' as const,groups:[{
+  id:patch.id,ancestorJoint:'head',layer:'near' as const,edges:[{ancestorPart:'head',sourcePart:'jaw',descendantJoint:'jaw',edge:[[140,205],[140,206]] as const,sourcePixel:[140,205] as const,sourceDepthPx:5}]}]}};
+ const {bindingHash,...unsigned}=body,value={...unsigned,bindingHash:await hashJSON(unsigned)};
+ const rig=await loadCreatureRigV1(record,value,master,alpha,atlasBytes,()=>Promise.resolve(new Texture({source:new TextureSource({width:82,height:20})})));
+ try{
+  const mesh=rig.parts.find(p=>p.id===patch.id)!.display.children[0] as import('pixi.js').Mesh;
+  rig.applyPose({});const rest=Array.from(mesh.geometry.getBuffer('aPosition').data);
+  expect(rest.slice(8,12)).toEqual([rest[14],rest[15],rest[12],rest[13]]);
+  rig.applyPose({jaw:{rotation:0,dx:.1}});const moved=Array.from(mesh.geometry.getBuffer('aPosition').data);
+  expect(moved.slice(8)).not.toEqual(rest.slice(8));expect(moved.slice(0,8)).toEqual(rest.slice(0,8));
+  const displays=snapshot(rig);expect(()=>rig.applyPose({jaw:{rotation:0,dx:1e40}})).toThrow('coordinate bound');
+  expect(Array.from(mesh.geometry.getBuffer('aPosition').data)).toEqual(moved);expect(snapshot(rig)).toEqual(displays);
+  rig.applyPose({});expect(Array.from(mesh.geometry.getBuffer('aPosition').data)).toEqual(rest);
+ }finally{rig.dispose();}
+ const changed=structuredClone(unsigned);changed.seamBridges.groups[0]!.edges[0]!.sourceDepthPx=50;
+ const decode=vi.fn(decoder);await expect(loadCreatureRigV1(record,{...changed,bindingHash:await hashJSON(changed)},master,alpha,atlasBytes,decode)).rejects.toThrow('depth cap');expect(decode).not.toHaveBeenCalled();
+});

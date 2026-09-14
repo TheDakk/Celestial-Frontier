@@ -1,0 +1,21 @@
+{
+  "kind": "band",
+  "parts": 38,
+  "bands": 16,
+  "cuts": 32,
+  "duplicatedPixels": 463254,
+  "atlasSize": {
+    "width": 2045,
+    "height": 2048
+  },
+  "discPolicy": "disc-only original retained as control; bands replace discs in this candidate",
+  "nativeRestGate": "pending",
+  "packedPixels": {
+    "schema": "cf.parts-byte-verification/v1",
+    "bindingHash": "12416bf72d4de1d105ac2d3c01ba790ac1fa6ca1cc71fb5306477cf522a91cda",
+    "atlasSha256": "0dff6383d7825fa73ec0aa8f231e4e0e32dcb2f9f26d3872515192955416ac5c",
+    "parts": 38,
+    "comparedChannels": 13632700,
+    "changedChannels": 0
+  }
+}

@@ -1,5 +1,14 @@
 # Creature animation — shared anatomy and motion contract
 
+**C2 ear support diagnosis — matches code as of 2026-09-14:** all six saved far-ear
+stride-gap samples have no source ink even in the complete descendant under the head
+transform. Increasing the static band's depth cannot close them. The support observer is
+read-only, refuses scaled/invalid transforms and has inverse-mapping/source-mutation controls;
+it does not replace the seam gate. No master, mask, pivot, curve, band or renderer changed.
+C2 remains failed. A far-ear-only two-joint textured strip is proposed, pending Nick's scope
+approval under the incorporated review's no-fourth-mechanism stop. Details and hashes:
+audits/C2_EAR_SUPPORT_20260914/README.md and support.json. No new native capture.
+
 **Retained-frame seam diagnosis — matches code as of 2026-09-14:** the cut-local
 observer follows shared ownership edges through actual pose matrices and has controlled
 rigid-motion and real-gap cases. Verified head--ear-far frames show disc-only/bands
@@ -404,3 +413,15 @@ Evidence: audits/C_LANE_BATCH_REVIEW_20260913/seam-oracle-counterexample.json.
 The accepted fox candidate-01 record and four-legged procedural observer remain retained.
 Other family templates published by Claude do not establish painter-emitted landmarks/masks
 for those families. Do not invent joint positions or claim universal coverage from the table.
+
+## Deforming parent joints — matches code as of 2026-09-14
+
+Nick authorized this mechanism across parts after the ear source-support proof. Optional
+seamBridges metadata in CreaturePartsBindingV1 binds source edge pixels to actual parent/child
+joints. One Mesh replaces each existing static-band drawable, retaining its static quad and
+adding strips of zero rest area. UVs sample only the original descendant pigment. Binding
+validation checks ownership, atlas coordinates, source cap and geometry before decode; pose
+updates prepare all buffers before publishing. The interface, curves and contact bounds remain
+unchanged. Candidate-02 covers three quadrupeds; native rest, cuts, timing and shape await proof.
+Details: audits/C2_DEFORMING_SEAMS_20260914/README.md. Universal land/air/aquatic/plant coverage
+is required, but painter observation outside the qualified quadruped remains open.

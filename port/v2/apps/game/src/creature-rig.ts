@@ -1,4 +1,5 @@
-import {Container, Matrix, Rectangle, Sprite, Texture} from 'pixi.js';
+import {Container, Matrix, Rectangle, Sprite, Texture, Mesh, MeshGeometry} from 'pixi.js';
+import {validateSeamBridges,createSeamGeometry,writeSeamPose} from '../../../tools/creature-animation/seam-bridge.mjs';
 import {GRAPH, admitRecord, hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
 import {composeAffine, rotationAround, IDENTITY_AFFINE, type Affine2} from '../../../tools/creature-animation/kinematics.js';
 
@@ -19,6 +20,11 @@ export interface CreatureRigRecordV1 {
   readonly landmarks:Readonly<Record<string,readonly [number,number]>>;
 }
 interface Box {readonly x:number;readonly y:number;readonly width:number;readonly height:number;}
+export interface CreatureSeamGroupV1 {
+ readonly id:string;readonly ancestorJoint:string;readonly layer:'far'|'near';
+ readonly edges:ReadonlyArray<{readonly ancestorPart:string;readonly sourcePart:string;readonly descendantJoint:string;
+ readonly edge:readonly [readonly [number,number],readonly [number,number]];readonly sourcePixel:readonly [number,number];readonly sourceDepthPx:number}>;
+}
 /** Produced offline from masks/joint patches and the pinned, unrotated atlas.
  * No anatomy, poses, genes or clip tuning may be supplied by this binding. */
 export interface CreaturePartsBindingV1 {
@@ -27,6 +33,7 @@ export interface CreaturePartsBindingV1 {
   readonly recordRecipeHash:string;
   readonly atlasSha256:string;
   readonly atlasSize:{width:number;height:number};
+  readonly seamBridges?:{readonly schema:'cf.seam-bridges/v1';readonly groups:ReadonlyArray<CreatureSeamGroupV1>};
   readonly parts:ReadonlyArray<{id:string;joint:string;layer:'far'|'near';frame:Box;cutout:Box;kind:'part'|'joint-patch'}>;
 }
 const requireValue=(ok:unknown,reason:string):void=>{if(!ok)throw Error('Creature rig: '+reason);};
@@ -64,11 +71,24 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
     requireValue(part.kind==='part'||part.kind==='joint-patch','unknown part kind');
     requireValue(validBox(part.frame,aw,ah)&&validBox(part.cutout,w,h),'part rectangle outside image');
   }
+  if(binding.seamBridges!==undefined){
+    requireValue(binding.seamBridges?.schema==='cf.seam-bridges/v1','seam bridge schema');
+    validateSeamBridges(binding.seamBridges.groups,binding.parts,w,h,binding.atlasSize,joints);
+  }
   const atlas=await decodeAtlas(atlasBytes.slice());
   if(atlas.width!==aw||atlas.height!==ah){atlas.destroy(true);throw Error('Creature rig: decoded atlas dimensions');}
   const root=new Container(),far=new Container(),near=new Container();root.addChild(far,near);
   const textures:Texture[]=[];
-  const entries=binding.parts.map(part=>{
+  const bridgeGroups=new Map((binding.seamBridges?.groups??[]).map(group=>[group.id,group]));
+  const bridges=(binding.seamBridges?.groups??[]).map(group=>{
+    const part=binding.parts.find(p=>p.id===group.id)!;
+    const buffers=createSeamGeometry(group,binding.parts,w,h,binding.atlasSize);
+    const geometry=new MeshGeometry({positions:buffers.positions,uvs:buffers.uvs,indices:buffers.indices});
+    const mesh=new Mesh({geometry,texture:atlas}),display=new Container();display.addChild(mesh);
+    (group.layer==='far'?far:near).addChild(display);
+    return {group,part,buffers,geometry,display};
+  });
+  const entries=binding.parts.filter(part=>!bridgeGroups.has(part.id)).map(part=>{
     const frame=part.frame,box=part.cutout,texture=new Texture({source:atlas.source,frame:new Rectangle(frame.x,frame.y,frame.width,frame.height)});
     textures.push(texture);const sprite=new Sprite(texture),display=new Container();
     sprite.position.set(box.x/w,box.y/h);sprite.scale.set(box.width/w/frame.width,box.height/h/frame.height);
@@ -78,7 +98,8 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   });
   const length=Math.hypot(record.landmarks.chest![0]-record.landmarks.pelvis![0],record.landmarks.chest![1]-record.landmarks.pelvis![1]);
   let disposed=false;
-  const parts=Object.freeze(entries.map(({part,display,pivot})=>Object.freeze({id:part.id,display,pivot,layer:part.layer})));
+  const parts=Object.freeze([...entries.map(({part,display,pivot})=>Object.freeze({id:part.id,display,pivot,layer:part.layer})),
+    ...bridges.map(({group,display})=>Object.freeze({id:group.id,display,pivot:{x:record.landmarks[parentOf.get(group.ancestorJoint)??'root']![0],y:record.landmarks[parentOf.get(group.ancestorJoint)??'root']![1]},layer:group.layer}))]);
   return Object.freeze({recipeHash:record.recipeHash,templateId:record.template.id,root,parts,
     bounds:Object.freeze({width:1,height:1,groundLineY:record.geometry.groundLineY}),
     applyPose(pose:CreaturePoseV1){
@@ -94,9 +115,12 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
         const local=key?rotationAround({x:pivot[0],y:pivot[1]},key.rotation,{x:(key.dx??0)*length,y:(key.dy??0)*length}):IDENTITY_AFFINE;
         matrices[joint]=parent?composeAffine(matrices[parent]!,local):local;
       }
+      // All spans are admitted into private scratch before any visible state changes.
+      for(const bridge of bridges)writeSeamPose(bridge.group,matrices,w,h,bridge.buffers.pending,bridge.part.cutout);
       for(const entry of entries)entry.display.setFromMatrix(new Matrix(...matrices[entry.part.joint]!));
+      for(const bridge of bridges){bridge.buffers.positions.set(bridge.buffers.pending);bridge.geometry.getBuffer('aPosition').update();}
     },
-    dispose(){if(disposed)return;disposed=true;root.destroy({children:true});for(const texture of textures)texture.destroy(false);atlas.destroy(true);},
+    dispose(){if(disposed)return;disposed=true;root.destroy({children:true});for(const bridge of bridges)bridge.geometry.destroy();for(const texture of textures)texture.destroy(false);atlas.destroy(true);},
   });
 }
 

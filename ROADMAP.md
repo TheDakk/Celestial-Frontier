@@ -17,60 +17,52 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-14 · independent C-system continuation
+## SESSION HANDOFF — 2026-09-14 · Deforming joints, native qualification next
 
-Nick asked Codex to repair failures without waiting for Claude. OpenAI/Codex on macOS,
-/Users/nick/Projects/celestial-frontier-openai-mac, openai/mac; upstream origin/openai/mac.
-No new branches, GitHub writes, PR42 changes, kit edits, history rewrite, model run or
-new native capture. Claude-owned motion/effects/battle2/soundkit/worldlife remain read-only.
-The September12 toolchain receipt is reused in this uninterrupted session.
+OpenAI/Codex works on openai/mac in celestial-frontier-openai-mac. Latest signed checkpoint
+before this batch: 88a7b535, 107 ahead / 0 behind origin/openai/mac, 218 ahead / 0 behind
+cached origin/develop. The previous ear-support diagnosis was staged after two signer refusals;
+this batch includes it. Never bypass signing. No GitHub writes; PR42 parked; no new branches,
+kit edits, history rewrite, model run or changes to Claude-owned motion/effects/battle2/soundkit/worldlife.
+Reuse the uninterrupted session's toolchain receipt. No main.ts hunk.
 
-Signed failure-repair checkpoint: f36cb38d (106 ahead of cached upstream / 217 ahead of
-cached origin/develop at that stop). Current continuation evidence:
-audits/C_SYSTEMS_CONTINUATION_20260914/README.md, checks.json and REVIEW_PROMPT.md.
-Previous repair evidence: audits/C_LANE_REPAIRS_20260914/README.md, checks.json and checks/.
+Nick now explicitly authorizes deforming joint repairs across all parts and continued correction
+without intermediate Claude review. Ultimate scope: fluid whole-body arena battles for every
+procedural and named Earth family, land/air/water/plants. Keep actual painter anatomy/material,
+seed determinism and family-specific joints. Quadruped success is not universal coverage.
+No need to ask again for the seam-strip mechanism. Accepted masters/arena/E remain the art basis.
 
-New code: C3 immutable-source voice Opus export with source/encoded true-peak and duration
-checks; C4 complete hash-bound batch intake (one to twelve masters; existing twelve read back);
-P1 native asynchronous PNG content verification, yielding compatibility path, one identity-key
-calculation per operation. Storage format/limits/retention unchanged. Extra temporary buffer
-memory is documented, browser performance unmeasured. No recordings or new images produced.
-Ordinary-game acceptance tests wait for real ready/failed state after native hashing.
-Compendium producer binding follows the changed app bundle; fixed measurement ruler,
-ceilings and historical samples remain unchanged. Binding refresh is not native certification.
-Prior broad register: audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md. Its three red tests
-are historical now: live measurement/producer bindings were repaired after comparing
-actual inputs. Fixed ruler, ceilings, all historical samples, collector/evaluator,
-fixture and browser policy are unchanged. A binding refresh is not a native certificate.
-SceneMemory remains production-only/quarantined, with its stale authority still visible.
+Current implementation and controls: audits/C2_DEFORMING_SEAMS_20260914/README.md.
+Candidate-02 contains sealed Civet, corrected fox candidate-01 and procedural atlas bindings,
+with zero-area-at-rest strips joining true parent/child ownership cuts. Incidental overlaps
+stay rigid. Candidate-01 is a rejected compiler prototype. Existing source ink, atlas ceilings,
+Motion Kit curves and 8% contact bound remain unchanged. 4348 tests pass / 1 skipped,
+typecheck/root validation pass; browser bundle compiles. No native pass claimed yet.
 
-Unit tests no longer acquire the checkout lock for the authority build. Use
-npm --prefix port/v2 test -- <Vitest arguments>: Node tools, standalone locked build,
-then Vitest after release. Read-only unit observers refuse missing/stale source/dist
-receipts. Bare Vitest cannot run the authority test without that prepared receipt.
-Final check counts are in checks.json; do not substitute a static pass for the native chain.
+Next: signed clean checkpoint, native --seam-gates with the corrected producer at sibling
+anthropic/mac (GSAP SHA 6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74).
+Require native rest0, all actual joint cuts closed, rigid-ear negative controls and p95<2ms.
+Then --seam-parts with the source-bound gate report, ten-second captures and whole-shape review.
+Diagnose actual failures and repair under Nick's latest authorization; do not waive gates.
+Historical fixed-disc false-positive evidence remains, as do old native failures. New cut-local
+coverage is not a whole-shape or visual acceptance. The underlap-support audit proves why deeper
+static source copies cannot close the six old ear samples; it no longer awaits scope approval.
 
-C2 still stops at head--ear-far. New cut-local diagnostic follows shared ownership edges
-through actual pose matrices, using retained native images and hash-verified inputs.
-Disc-only vs bands: recoil170/0 uncovered pixels; strike0/0; stride91/3 and77/3.
-Three samples at each stride extreme are fully transparent; no rim waiver, crop or erode.
-Original morphological FAIL remains. Rest0channels and atlas38parts/2039x2047 still stand.
-No later pair or Civet/fox/procedural capture ran. Keep candidate01 fox record and the8%
-contact bound. Resolve this seam with the existing ink/cap/rest requirements before any
-new capture; do not call the new diagnostic a full shape gate or acceptance.
+Then audit all family painter record/part-mask coverage against published LOG-A11/LOG-B joints.
+Current procedural mask observation is still limited to qualified four-legged banded-tail geometry;
+other motion templates alone do not prove actual painter support. Extend from real drawn anatomy,
+not invented joint positions. Track unsupported and visually unqualified families explicitly.
 
-Weather ladder S/V/P/SV/SP/SVP is ready in WEATHER_DETAILS_REVIEW_20260913; E remains
-active until Nick picks. C3 original recordings/rights/listening/actual source exports/three-voice proof,
-C4 sheets12at a time and smaller redistributable~1GB finisher qualification remain open.
-Up to3Mac candidates then1phone; no more Kleinphone or delivery engineering before result.
-No pause/variant-generator/3Dprojection/rejectederosion restart.
+Other completed code and consolidated review prompt: audits/C_SYSTEMS_CONTINUATION_20260914/.
+C3 immutable-source voice Opus export, C4 ordered intake and asynchronous PNG verification are
+implemented, not source recordings/library acceptance. Weather S/V/P/SV/SP/SVP awaits Nick's pick;
+E stays active. C3 rights/recordings/voices remain open. Phone: up to3 smaller redistributable
+Mac finisher candidates, then1phone; no more Klein or delivery engineering before result.
+C4 new class/sheet media stops remain. No rejected erosion/3D projection restart.
 
-C5: prune on openai/mac after prerequisites, then three merge-commit tiers into develop:
-productionUI, paintedengine, researchtools as tools. One develop→main release PR/fullchain
-only after exact authorization. No PRReady before Civet/weather/phone decisions. LFS only
-on Nick's explicit go. No hosted work authorized now, regardless of budget-file mode.
-
-Codex next: continue independent local repairs; C2 capture remains stopped at the named pair.
-Claude next: no action now. When Nick resumes review, use the consolidated batch plus the
-September14 repair and continuation addenda. The continuation REVIEW_PROMPT.md combines them.
-Nick need not open the other app or sync branches now.
+C5 prune on openai/mac after prerequisites, then three merge-commit tiers into develop:
+production UI, painted engine, research tools as tools; develop→main release/full chain only
+on exact authorization. No PRReady before Civet/weather/phone decisions; LFS only Nick's go.
+Unit tests use npm --prefix port/v2 test: standalone authority build then unlocked Vitest.
+Claude next: no action or app switch now. Later provide the consolidated review prompt plus
+this native evidence. Codex continues code/native repairs locally; report commit/ahead state at stops.

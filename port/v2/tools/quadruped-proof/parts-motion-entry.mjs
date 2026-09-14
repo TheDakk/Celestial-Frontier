@@ -11,11 +11,12 @@ import {keyAndDespill} from '../../../../tools/local-image-generation/kit-contac
 import {initAudio,prepareStingAudioForGesture,playWhoosh,playSurveyPing} from '../../packages/audio/src/index.ts';
 import {sfxOut} from '../../packages/audio/src/stings.verbatim.js';
 import {primeRecorder} from './capture-contract.mjs';
+import {runSeamGates} from './seam-gates.mjs';
 const get=n=>fetch(n).then(r=>{if(!r.ok)throw Error(n);return r;});
 const json=n=>get(n).then(r=>r.json()),bytes=n=>get(n).then(r=>r.arrayBuffer());
 const image=async n=>{const b=await bytes(n),bmp=await createImageBitmap(new Blob([b])),c=new OffscreenCanvas(bmp.width,bmp.height);c.getContext('2d').drawImage(bmp,0,0);return {bytes:new Uint8Array(b),canvas:c,rgba:c.getContext('2d').getImageData(0,0,c.width,c.height).data};};
 const tex=c=>Texture.from(c),b64=b=>{const a=new Uint8Array(b);let s='';for(let i=0;i<a.length;i+=8192)s+=String.fromCharCode(...a.subarray(i,i+8192));return btoa(s);};
-const proofMode=new URLSearchParams(location.search).get('mode'),fallback=proofMode==='portrait-fallback',repairGatesOnly=['repair-gates','band-gates','pair-gates'].includes(proofMode);
+const proofMode=new URLSearchParams(location.search).get('mode'),fallback=proofMode==='portrait-fallback',repairGatesOnly=['repair-gates','band-gates','pair-gates','seam-gates'].includes(proofMode);
 const W=896,H=504,G=.78*H,BASE=72,state={status:'RUNNING',specimens:[],errors:[],captures:[],scope:'C2 parts rig study; existing cue placeholders, no C3 source acceptance'};window.cfPartsMotion={state};
 const app=new Application();await app.init({width:1536,height:740,resolution:1,background:'#141d22',antialias:false,preference:'webgl',autoStart:false});document.body.append(app.canvas);
 const scene=new Container();scene.y=BASE;app.stage.addChild(scene);
@@ -131,5 +132,6 @@ try{
  const stream=app.canvas.captureStream(0),track=stream.getVideoTracks()[0];if(destination)for(const t of destination.stream.getAudioTracks())stream.addTrack(t);const chunks=[],recorder=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9,opus',videoBitsPerSecond:6500000});recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};let started=false;recorder.onstart=()=>{started=true;};const stopped=new Promise(r=>recorder.onstop=r);recorder.start();await primeRecorder({started:()=>started,paint:()=>frame(0),requestFrame:()=>track.requestFrame(),schedule:requestAnimationFrame,now:()=>performance.now()});
  const updates=[],deltas=[],events=[];let start,previous;const fired=new Set();await new Promise((resolve,reject)=>{const tick=at=>{try{start??=at;const ms=Math.min(10000,at-start);if(previous!==undefined)deltas.push(at-previous);previous=at;updates.push(frame(ms).updateMs);track.requestFrame();for(let i=0;i<2;i++)for(const[cue,when]of [['approach',plans[i].beats.commandEnd],['impact',plans[i].beats.impactAt]]){const key=i+cue;if(ms>=i*5000+when&&!fired.has(key)){fired.add(key);cue==='approach'?playWhoosh():playSurveyPing();events.push({cue,atMs:ms});}}if(ms>=10000)resolve();else requestAnimationFrame(tick);}catch(e){reject(e);}};requestAnimationFrame(tick);});
  await new Promise(r=>setTimeout(r,120));track.requestFrame();recorder.stop();await stopped;silence?.stop();stream.getTracks().forEach(t=>t.stop());if(destination)sfxOut(ac).disconnect(destination);const blob=new Blob(chunks,{type:recorder.mimeType}),raw=await blob.arrayBuffer(),sorted=updates.slice().sort((a,b)=>a-b);const result={id,mode:selected.row.mode,frames:updates.length,fps:deltas.length/(deltas.reduce((a,b)=>a+b,0)/1000),updateMeanMs:updates.reduce((a,b)=>a+b,0)/updates.length,updateP95Ms:sorted[Math.floor(sorted.length*.95)],updateMaxMs:Math.max(...updates),events,video:b64(raw),contact:selected.row};state.captures.push({...result,video:undefined});return result;};
- Object.assign(window.cfPartsMotion,{select,frame,capture,repairGates,bandGates,pairGateStart,renderPair,plans:()=>plans});select('civet');frame(0);state.status='READY';
+ const seamGates=()=>runSeamGates({app,subjects,select,plans:()=>plans,motionPose,image,json,bytes,poseMatrices});
+ Object.assign(window.cfPartsMotion,{select,frame,capture,repairGates,bandGates,pairGateStart,renderPair,seamGates,plans:()=>plans});select('civet');frame(0);state.status='READY';
 }catch(e){state.status='FAIL';state.errors.push(String(e.stack??e));}

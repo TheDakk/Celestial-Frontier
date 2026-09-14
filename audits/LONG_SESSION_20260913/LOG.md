@@ -151,3 +151,48 @@ GitHub or history change. Compendium producer binding refreshed for the changed 
 only; no ruler/ceiling/sample change or native certificate. C2 named-pair FAIL still stops
 captures. Full checks, limitations and combined later review prompt are recorded in
 audits/C_SYSTEMS_CONTINUATION_20260914; C3/C4 complete packages remain open.
+
+
+## September 14 — C2 ear repair limit investigated
+
+Nick requested another attempt along Claude's underlap method. Hash-verified inverse mapping
+of the six retained zero-alpha samples finds no source ink in the complete descendant image
+under the head transform. That image contains every permitted static band, so increasing
+band depth cannot close the opening at the cut's silhouette endpoint. No depth/cap/ink,
+mask/pivot/clip, master/atlas, oracle or runtime change; no native capture. Three support
+controls added and the bounded next two-joint-strip proposal recorded in
+C2_EAR_SUPPORT_20260914/README.md. C2 remains unresolved; the incorporated review's prohibition
+on a fourth mechanism after failure requires Nick's scope decision. Claude/GitHub: none.
+
+## September14 C2 authorized deforming seams
+
+
+Status: candidate-02 prepared; native rendering and visual acceptance pending.
+Nick authorized the fourth mechanism for all parts after the static-source support diagnosis,
+and asked for continued repairs without intermediate Claude review. The latest target is
+fluid whole-body battle motion for all procedural and named Earth life, including land,
+air, aquatic and plant families. Three quadrupeds qualify the shared approach, not universal coverage.
+
+The runtime stretches existing descendant-edge pigment between the two joint transforms.
+At rest the new strips have zero area. Original capped rigid underlaps remain; strips share
+their existing drawables and atlas. No new paint, changed originals, skeleton/curve edits,
+contact-bound relaxation or added atlas is involved. Only actual immediate parent joints
+are stitched. Incidental ancestor overlap and sibling contacts remain independent.
+The source-depth cap governs copied ink; it is not a new clamp on approved joint motion.
+
+Candidate-01 is a rejected compiler prototype: it stitched incidental ancestral overlaps
+and incorrectly treated source depth as a motion-displacement budget. It was never rendered
+or accepted. Candidate-02 resolves actual painted parents and retains the original source cap.
+Civet: 4522 edges, 16 groups, 38 drawables. Fox: 4909 edges, 16 groups, 38 drawables.
+Procedural: 1773 edges, 14 groups, 35 drawables. All packed source RGBA channels match.
+
+Native gates use independent shared ownership edges and actual renderer pixels. They require
+rest zero changed channels, no uncovered swept cut pixels, the original ear failures in the
+rigid negative control, and update p95 below 2 ms. The historical fixed-disc ruler remains a
+recorded FAIL: its rigid-notch false positive is independently reproduced, not erased.
+A native gate is not whole-shape acceptance. Capture follows only qualified unchanged inputs;
+full motion, silhouette and staging still require inspection. Claude-owned modules stay read-only.
+
+Static verification: 370 Vitest files, 4348 tests passed / 1 skipped; typecheck PASS;
+root validate PASS including unchanged 50-probe fingerprint; browser bundle compiles.
+No GitHub write, kit edit, new artwork or source recording in this batch. No main.ts hunk.

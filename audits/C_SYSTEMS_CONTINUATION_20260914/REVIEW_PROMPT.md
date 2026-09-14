@@ -8,7 +8,9 @@ Read in order:
 1. audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md and its final-checks.json (historical initial batch).
 2. audits/C_LANE_REPAIRS_20260914/README.md and checks.json (signed f36cb38d).
 3. audits/C_SYSTEMS_CONTINUATION_20260914/README.md, checks.json and authority-refresh.json.
-4. Current ROADMAP.md, affected system references, and actual code/tests. ART/MOTION/SOUND
+4. audits/C2_EAR_SUPPORT_20260914/README.md and support.json: the six gaps have no static
+   descendant support; deeper bands cannot close them. Proposed deformation is not implemented.
+5. Current ROADMAP.md, affected system references, and actual code/tests. ART/MOTION/SOUND
    Kit wording and Claude-owned motion/effects/battle2/soundkit/worldlife are unchanged.
 
 Return blocking findings first, with exact path/line, reproducer, expected/actual outcome
@@ -53,3 +55,9 @@ Vitest run and call a missing prepared-authority receipt a source regression.
 Finish with one consolidated open-item table distinguishing code defects, human media gates,
 phone/model qualification and later promotion. C2/C3/C4/C5 are not claimed complete. No PR,
 LFS rewrite or hosted work is authorized by this prompt.
+
+New C2 addendum: audits/C2_DEFORMING_SEAMS_20260914/README.md and checks.json. Nick approved
+the mechanism across parts; earlier awaiting-scope text is superseded. Review source-pixel
+provenance, immediate-owner classification, zero-area rest, atomic pose publication and
+source-bound native/capture admission. Distinguish static checks from native/visual acceptance.
+Check the full family coverage requirement; three quadrupeds must not be represented as all life.
