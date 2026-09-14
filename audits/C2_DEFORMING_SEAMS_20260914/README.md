@@ -29,3 +29,14 @@ full motion, silhouette and staging still require inspection. Claude-owned modul
 Static verification: 370 Vitest files, 4348 tests passed / 1 skipped; typecheck PASS;
 root validate PASS including unchanged 50-probe fingerprint; browser bundle compiles.
 No GitHub write, kit edit, new artwork or source recording in this batch. No main.ts hunk.
+
+## Native attempt 01 and raster repair
+
+Signed source e649a2e2: rest changed channels 0; both ears, jaw and torso/chest pass.
+Original far-ear controls reproduce 3 uncovered pixels at each stride extreme; strips 0.
+Near hind upper strike has one gap at canvas pixel570,661. Native report retained unchanged.
+The point lies 0.0002px from a triangle edge. Independent 1/256px raster quantization
+reproduces the crack; full-precision math covers it. Adjacent strips now overlap by
+1/64 source pixel along their edge ends, still exactly zero-area at rest. No gate
+threshold/alpha waiver, source-pixel or curve change. New failing-control test passes.
+Continue all pairs under unchanged rest/cut/performance requirements; capture still pending.
