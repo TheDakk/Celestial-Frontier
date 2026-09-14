@@ -50,7 +50,11 @@ export function writeSeamPose(group,matrices,width,height,output,staticBox){
  for(let k=0;k<group.edges.length;k++){
   const e=group.edges[k],d=matrices[e.descendantJoint];
   if(!checked.has(d)){need(d?.length===6&&d.every(Number.isFinite),'descendant matrix');checked.add(d);}
-  const x0=e.edge[0][0]/width,y0=e.edge[0][1]/height,x1=e.edge[1][0]/width,y1=e.edge[1][1]/height;
+  // Adjacent one-pixel strips overlap by 1/64 source pixel at their ends. GPU
+  // subpixel rounding otherwise opens a crack between independently rasterized
+  // triangles (native strike control at 570.5,661.5). Rest stays exactly degenerate.
+  const ex=(e.edge[1][0]-e.edge[0][0])/64,ey=(e.edge[1][1]-e.edge[0][1])/64;
+  const x0=(e.edge[0][0]-ex)/width,y0=(e.edge[0][1]-ey)/height,x1=(e.edge[1][0]+ex)/width,y1=(e.edge[1][1]+ey)/height;
   const ax0=a[0]*x0+a[2]*y0+a[4],ay0=a[1]*x0+a[3]*y0+a[5],ax1=a[0]*x1+a[2]*y1+a[4],ay1=a[1]*x1+a[3]*y1+a[5];
   const dx0=d[0]*x0+d[2]*y0+d[4],dy0=d[1]*x0+d[3]*y0+d[5],dx1=d[0]*x1+d[2]*y1+d[4],dy1=d[1]*x1+d[3]*y1+d[5];
   const span2=Math.max(((ax0-dx0)*width)**2+((ay0-dy0)*height)**2,((ax1-dx1)*width)**2+((ay1-dy1)*height)**2);

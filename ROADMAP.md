@@ -39,7 +39,9 @@ stay rigid. Candidate-01 is a rejected compiler prototype. Existing source ink, 
 Motion Kit curves and 8% contact bound remain unchanged. 4348 tests pass / 1 skipped,
 typecheck/root validation pass; browser bundle compiles. No native pass claimed yet.
 
-Next: signed clean checkpoint, native --seam-gates with the corrected producer at sibling
+Native attempt01 on e649a2e2 closes both ears and preserves rest0; one hind strike pixel
+is a reproduced GPU subpixel crack. The 1/64px strip-end overlap repair is ready for
+qualification; report retained in native-gates-01. Next: signed checkpoint, --seam-gates with producer at sibling
 anthropic/mac (GSAP SHA 6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74).
 Require native rest0, all actual joint cuts closed, rigid-ear negative controls and p95<2ms.
 Then --seam-parts with the source-bound gate report, ten-second captures and whole-shape review.
