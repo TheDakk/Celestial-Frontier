@@ -1,0 +1,513 @@
+{
+  "schema": "cf.c2-ear-support/v1",
+  "nativeSource": "f3c6fe7dfb320290c947d19323820357a50659e6",
+  "status": "REPAIR_NOT_CLOSED",
+  "method": "Counterfactual complete-ear source is a superset of every depth-capped descendant band; no whole-ear asset is built or adopted",
+  "unsupported": 6,
+  "rows": [
+    {
+      "frame": "approach-quarter",
+      "nativeAlpha": 0,
+      "target": [
+        998,
+        197
+      ],
+      "source": [
+        1024.374956377138,
+        222.8310699060122
+      ],
+      "samples": [
+        {
+          "x": 1023,
+          "y": 221,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 221,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 221,
+          "alpha": 0
+        },
+        {
+          "x": 1023,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1023,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 223,
+          "alpha": 0
+        }
+      ],
+      "maximumAlpha": 0,
+      "status": "NO_SOURCE_INK",
+      "scope": "Rigid ancestor transform, complete descendant source, native-size nearest/linear sampling; possible support does not prove closure"
+    },
+    {
+      "frame": "approach-quarter",
+      "nativeAlpha": 0,
+      "target": [
+        999,
+        198
+      ],
+      "source": [
+        1025.3059778842246,
+        223.89558808497497
+      ],
+      "samples": [
+        {
+          "x": 1024,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1026,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1026,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 224,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 224,
+          "alpha": 0
+        },
+        {
+          "x": 1026,
+          "y": 224,
+          "alpha": 0
+        }
+      ],
+      "maximumAlpha": 0,
+      "status": "NO_SOURCE_INK",
+      "scope": "Rigid ancestor transform, complete descendant source, native-size nearest/linear sampling; possible support does not prove closure"
+    },
+    {
+      "frame": "approach-quarter",
+      "nativeAlpha": 0,
+      "target": [
+        1000,
+        198
+      ],
+      "source": [
+        1026.3037477272494,
+        223.96233642091303
+      ],
+      "samples": [
+        {
+          "x": 1025,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1026,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1027,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1026,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1027,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 224,
+          "alpha": 0
+        },
+        {
+          "x": 1026,
+          "y": 224,
+          "alpha": 0
+        },
+        {
+          "x": 1027,
+          "y": 224,
+          "alpha": 0
+        }
+      ],
+      "maximumAlpha": 0,
+      "status": "NO_SOURCE_INK",
+      "scope": "Rigid ancestor transform, complete descendant source, native-size nearest/linear sampling; possible support does not prove closure"
+    },
+    {
+      "frame": "approach-three-quarter",
+      "nativeAlpha": 0,
+      "target": [
+        1004,
+        202
+      ],
+      "source": [
+        1024.804514286603,
+        222.8126384154694
+      ],
+      "samples": [
+        {
+          "x": 1023,
+          "y": 221,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 221,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 221,
+          "alpha": 0
+        },
+        {
+          "x": 1023,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1023,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 223,
+          "alpha": 0
+        }
+      ],
+      "maximumAlpha": 0,
+      "status": "NO_SOURCE_INK",
+      "scope": "Rigid ancestor transform, complete descendant source, native-size nearest/linear sampling; possible support does not prove closure"
+    },
+    {
+      "frame": "approach-three-quarter",
+      "nativeAlpha": 0,
+      "target": [
+        1004,
+        203
+      ],
+      "source": [
+        1024.754122637749,
+        223.81136794929012
+      ],
+      "samples": [
+        {
+          "x": 1023,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1023,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1023,
+          "y": 224,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 224,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 224,
+          "alpha": 0
+        }
+      ],
+      "maximumAlpha": 0,
+      "status": "NO_SOURCE_INK",
+      "scope": "Rigid ancestor transform, complete descendant source, native-size nearest/linear sampling; possible support does not prove closure"
+    },
+    {
+      "frame": "approach-three-quarter",
+      "nativeAlpha": 0,
+      "target": [
+        1005,
+        203
+      ],
+      "source": [
+        1025.7528521715699,
+        223.86175959814415
+      ],
+      "samples": [
+        {
+          "x": 1024,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1026,
+          "y": 222,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1026,
+          "y": 223,
+          "alpha": 0
+        },
+        {
+          "x": 1024,
+          "y": 224,
+          "alpha": 0
+        },
+        {
+          "x": 1025,
+          "y": 224,
+          "alpha": 0
+        },
+        {
+          "x": 1026,
+          "y": 224,
+          "alpha": 0
+        }
+      ],
+      "maximumAlpha": 0,
+      "status": "NO_SOURCE_INK",
+      "scope": "Rigid ancestor transform, complete descendant source, native-size nearest/linear sampling; possible support does not prove closure"
+    }
+  ],
+  "packedParts": {
+    "schema": "cf.parts-byte-verification/v1",
+    "bindingHash": "b9766e3de3af38585f72a79a5c46bb3cadcce49d77aefda158153a96f8d138b6",
+    "atlasSha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79",
+    "parts": 38,
+    "comparedChannels": 9875852,
+    "changedChannels": 0
+  },
+  "inputs": [
+    {
+      "path": "audits/C_LANE_REPAIRS_20260914/cut-seams.json",
+      "sha256": "eefe756100372e5c8da03ac6f9263148736478fe59b423c06d9ad0f67af47749"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "fdd96e54311d80eed18a8701f9feb2bd68ec9e0893f86c3dc57718753c70e153"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc"
+    },
+    {
+      "path": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/civet/binding.json",
+      "sha256": "73be4bf88a5442d5aa8bb6c0cfb8d8d62adb3eb0056e87cbf078a1ddc41d42cb"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/civet/atlas/civet.png",
+      "sha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/civet/declaration.json",
+      "sha256": "af22c6a27cfd4f87750db2edde1a1a7d4b8d3f4dd2b99c014603c379e81e85e9"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/report.json",
+      "sha256": "13ed381efdc5d0c4c0593a0dde2e3d65ce1666741c8f44aece6551a377f42f1c"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/disc-only-rest.png",
+      "sha256": "90ca87b4df71e50ab08772b1718ebc5aaedbca70dcd7c82cfd6eb3771da7400c"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/bands-rest.png",
+      "sha256": "90ca87b4df71e50ab08772b1718ebc5aaedbca70dcd7c82cfd6eb3771da7400c"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/disc-only-hit-recoil.png",
+      "sha256": "c3e59c83e83e14839f950f3397424fbfa395a5758e77ecbe22238a77f5887ef4"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/bands-hit-recoil.png",
+      "sha256": "c1f537125c54da8ab3d08e22adbc185a6bee8f54c0f463f106a8cffe968208a1"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/disc-only-strike.png",
+      "sha256": "6c6c3e2363c441c737021e9d87c681882e2a35cb743fcf6af5a33c6ca0d208ff"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/bands-strike.png",
+      "sha256": "b4b0006bf4c7f8a910d79e2038575dcdd4c40507e87e9f79ea53516e56395f47"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/disc-only-approach-quarter.png",
+      "sha256": "d38117d21fccf04afe2c03cf0ae70d99f02d3b5ea7332194e48a402a66caf01d"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/bands-approach-quarter.png",
+      "sha256": "5abe06a32fa564a28674d8cf295d78b31b93968955ac9912e56c4990c42990b0"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/disc-only-approach-three-quarter.png",
+      "sha256": "df33afe61e277ea437412beabf8c06167af19b67ca9da504f2bccde865b6cba3"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/bands-approach-three-quarter.png",
+      "sha256": "c45b3e6eff3a22c4a2bb6db20d979e067c2bcbac8e950609c48019f74f8cc88e"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/report.json",
+      "sha256": "13ed381efdc5d0c4c0593a0dde2e3d65ce1666741c8f44aece6551a377f42f1c"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig.ts",
+      "sha256": "d760290f2caaa557b3053cf47e5468a06528d5f7cda56202197239d991b3d98b"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "fdd96e54311d80eed18a8701f9feb2bd68ec9e0893f86c3dc57718753c70e153"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc"
+    },
+    {
+      "path": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/civet/parts/ear-far.png",
+      "sha256": "b0e81d683daa243f57e95ad0ed1e6415a9e4b3688d09210d66cd7d884e487729"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/bands-approach-quarter.png",
+      "sha256": "5abe06a32fa564a28674d8cf295d78b31b93968955ac9912e56c4990c42990b0"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/native-gates-01/head--ear-far/bands-approach-three-quarter.png",
+      "sha256": "c45b3e6eff3a22c4a2bb6db20d979e067c2bcbac8e950609c48019f74f8cc88e"
+    }
+  ],
+  "unchanged": [
+    "painting",
+    "masks",
+    "record/pivots",
+    "band depth/caps/ink/attachment",
+    "curves",
+    "atlas",
+    "native gate/threshold"
+  ],
+  "conclusion": "All six saved gap samples lack static descendant source ink; increasing band depth cannot close them. A cut/pivot or deformation change requires separate shape/rest qualification."
+}
