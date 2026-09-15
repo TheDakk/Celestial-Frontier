@@ -1,0 +1,50 @@
+{
+  "schema": "cf.local-batch-checks/v1",
+  "sourceBase": "61512b3a92c25582167e6f7b5dbcf11f5f80eec9",
+  "scope": "New sound/arena intake source before documentation and packaging; no production UI change.",
+  "nodeTools": {
+    "passed": 50,
+    "failed": 0
+  },
+  "vitest": {
+    "filesPassed": 371,
+    "passed": 4351,
+    "skipped": 1
+  },
+  "checks": [
+    {
+      "command": "npm --prefix port/v2 test -- --reporter=dot",
+      "exitCode": 0,
+      "log": "audits/CROSS_PACKAGE_PROGRESS_20260914/checks/tests.log.gz",
+      "uncompressedSha256": "faee528174bdb12ebabcd3f5202ae2094e80571b2efc037eeaa02a44656cb6fa"
+    },
+    {
+      "command": "npm --prefix port/v2 run typecheck",
+      "exitCode": 0,
+      "log": "audits/CROSS_PACKAGE_PROGRESS_20260914/checks/typecheck.log.gz",
+      "uncompressedSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "command": "node tools/validate.js",
+      "exitCode": 0,
+      "log": "audits/CROSS_PACKAGE_PROGRESS_20260914/checks/validate.log.gz",
+      "uncompressedSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    }
+  ],
+  "newIntakeSourceHashes": {
+    "port/v2/tools/asset-intake/arena-set.mjs": "ea714c18b456ad40a0f4d64aa4552e8b3518a3dbb95f215c0678b479f5ec3e21",
+    "port/v2/tools/asset-intake/arena-set.test.mjs": "d2434518d289af85e9fd88600dec983ae3335c90242787f421b1fcb55cbb4465",
+    "port/v2/tools/asset-intake/art-batch.mjs": "80d7228d88aa896dab26d7b168d931eb7ecae3c0cc8eadf276a7613fd4c95a80",
+    "port/v2/tools/asset-intake/art-batch.test.mjs": "2105de117e47a9349d7868ff8f86b8286f79216883a7af3425b48182c0dcc879",
+    "port/v2/tools/asset-intake/audio-export.mjs": "7f78b1b07d30301e672022925629a0f5dcbe182ee2d18d826bd71a50716c04b5",
+    "port/v2/tools/asset-intake/audio-export.test.mjs": "cc6c8c48937de9b2924ad71412bd1aea884da201ae91d5de427ad2c2c041ad6a",
+    "port/v2/tools/asset-intake/contracts.mjs": "1dfb26faa4ebb27c7457bf6756595bd71d3a7e045e0793a832393093e601ec6f",
+    "port/v2/tools/asset-intake/contracts.test.mjs": "fa587d5b8675fad2652d42914d1fcf9f790f96d21ff0a96e25dfa6688088f4b8",
+    "port/v2/tools/asset-intake/export-audio.mjs": "8a022a4965bc69b450e0c8f5ad2b4c0b76803912c15843f8c971f185612ccfbb",
+    "port/v2/tools/asset-intake/inspect-arena.mjs": "8b15bc772af58ce8edcf86e90c2d4e181cf9dbb3a8473c1286ebac2950d48d01",
+    "port/v2/tools/asset-intake/inspect-batch.mjs": "3bd727cd6aac663c7f7e2ce4f4d64dff7579a9aeb5b66669452905950e4d2be4",
+    "port/v2/tools/asset-intake/inspect.mjs": "e015dc311eafdceaed21c2e9898ee90d10320499588ff0b2f1cbc59b6eb288c7",
+    "port/v2/tools/asset-intake/sound-set.mjs": "6c0d3946b905922f141a87ac04de3a4663a809a4700e8e4285a2c27489544545",
+    "port/v2/tools/asset-intake/sound-set.test.mjs": "fd6a0acb712153853865acad567252af0cb405224dcf701cd06954ef4e48c8e5"
+  }
+}

@@ -419,3 +419,9 @@ records the compiler's known virtual runtime helper by byte count/hash; the firs
 blanket-rejection failure remains retained. All3V2 TS/entryTS and33 focused tests
 pass; corrected export/native preflight/7refusal controls pass. It provides real
 canonical appearance inputs to the proof, no image or player-model qualification.
+
+## Cross-package intake — September 14
+
+No installation or dependency change. Existing PNG/PCM tooling now checks closed sound inventories,
+hash-bound loop declarations and accepted arena triplets. The uninterrupted startup receipt remains
+in force. Synthetic test inputs are private and removed; no new image or sound authoring took place.
