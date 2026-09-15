@@ -23,8 +23,7 @@ extra rows, directory escapes, implicit rights or inferred dry-source permission
 RIFF structure, integer PCM 48kHz/24-bit/mono, nonzero signal, duration and sample headroom
 are checked. Sample headroom is only a necessary test, not a true-peak measurement. The
 report explicitly retains true peak/loudness, rights review, listening, derivation, Opus and
-arena wiring as pending. Stereo beds/theme/battle/fur sets are not implemented by this
-voice-set validator. C3 is not complete until the actual sources and all required evidence exist.
+arena wiring as pending. Other source sets use the separate adapter below; fur-source naming remains unspecified. C3 is not complete until the actual sources and all required evidence exist.
 
 `npm run test:tools` from port/v2 exercises corruption, size, naming, silence, clipping,
 rights, dry declaration and missing-cue controls using private synthetic fixtures. They are
@@ -64,10 +63,44 @@ is verified on the installed toolchain, not promised across FFmpeg/libopus versi
 The byte exporter exposes creature (mono 64 kb/s, under 2 s / 30,000 bytes), impact/UI
 (mono 64 kb/s, under 0.6 s / 30,000 bytes), and bed (stereo 96 kb/s, 24–40 s / under
 400,000 bytes) technical profiles. Voice footfalls retain the stricter under-0.3 s intake
-rule. Only the voice-set manifest adapter exists; the bed primitive does not complete a
-rain-bed source, loop qualification, theme/battle/fur set, music or runtime wiring.
+rule. Only the voice-set export adapter exists; the bed primitive does not complete a
+rain-bed source, rendered loop qualification, theme/battle/fur export, music or runtime wiring.
 
 Real codec tests use private synthetic fixtures and exercise intersample clipping, repeat
 byte equality, source protection and manifest drift. They explicitly skip only when FFmpeg
 or ffprobe is absent; a present but broken codec fails. No source or listening acceptance
 is inferred. C3 recording, rights review, mix targets, derived voices and arena playback remain.
+
+## Theme, battle and first bed/weather source intake
+
+`node port/v2/tools/asset-intake/inspect.mjs sound-set MANIFEST.json`
+
+Schema `cf.sound-source-intake/v1`, `kind`, optional `key`, and `masters` rows with the same
+hash/dry/rights fields as voice intake. `ability` uses one of the eleven CONTRACTS theme keys and
+exact `<theme>.launch.wav`, `.travel.wav`, `.impact.wav` names; `battle` has no key and requires
+all sixteen CONTRACTS names. `bed` currently admits key `temperate`, `bed.temperate.wav`, stereo;
+`weather` admits key `rain`, `weather.rain.wav`, with explicit row `channels: 1 | 2`.
+These bounded first-source keys do not add game or kit classes. Ability and battle PCM is mono.
+
+Bed/weather rows require hash-bound `loop: {path, sha256}` JSON. Schema `cf.audio-loop/v1` declares
+`sourceSha256`, `sampleRate: 48000`, `channels`, `startFrame`, exclusive `endFrame`, and positive
+`crossfadeFrames` below half the loop. All are checked against the actual PCM. Per-channel raw
+boundary and adjacent sample steps are reported, without crossfading or declaring a clean loop.
+Bed source and selected loop are 24–40 seconds. Ability impact and battle cursor/confirm/cancel/
+hitstop-thump enforce under 600 ms; other unspecified duration limits are not invented. All sources
+require dry, non-silent 48 kHz/24-bit PCM and sample headroom. Rights are declarations pending review.
+Fur-source naming, actual recordings, true peak/mix, non-voice Opus adapters, listening and playback remain.
+
+## Existing arena triplet intake
+
+`node port/v2/tools/asset-intake/inspect-arena.mjs MANIFEST.json [SOURCE_ROOT]`
+
+Schema `cf.arena-intake/v1`: bound `recipe: {path, sha256}`, ordered `layers` with roles `far`,
+`mid`, `near` and bound `source` / `runtime` pairs. The existing `cf.arena.authoring-proof/v1`
+recipe must bind the full compiler-emitted system card, a closed seeded battle context, one canvas,
+one normalized ground line, and the original role/hash declarations. FAR must remain opaque and
+pixel-identical to its source. MID/NEAR must be distinct copies with transparent and visible pixels.
+The tool never types cards, keys paint, extracts masks, changes bytes or assigns quality acceptance.
+It checks declared source/runtime hashes, not keyer lineage or whether a copy depicts the same scene;
+those evidence and edge/style reviews remain separate. See the accepted Earth readback and negative
+controls in audits/CROSS_PACKAGE_PROGRESS_20260914. This is not a live arena replay qualification.

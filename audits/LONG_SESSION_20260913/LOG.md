@@ -354,3 +354,20 @@ upstream,224ahead/0behind cacheddevelop. No GitHub writes; Claude needs no actio
 
 Pair-only native-hinges-02 PASS is not C2 acceptance. The64point-socket repair addresses a
 measured additional defect, but full poses and10second motion still require native review.
+
+## Codex cross-package continuation — September 14
+
+Signed 61512b3a qualified candidate07 natively: all87pair contacts/all64junctions at5poses pass,
+rest0changedchannels, updatep95 .80/.90/.40ms. Full shapes remain visually unaccepted; no new10s
+articulated capture. Signing succeeded; earlier Secure Enclave authentication failures remain historical.
+C3 now checks eleven-theme/sixteen-battle/firsttemperate/rain source sets and hash-bound loop ranges;
+C4 checks the accepted arena's compiler card, seed, ground and registered alpha copies. No real sound,
+new image, kit edit, main.ts hunk or Claude-owned path changed. Full local checks pass:50tool tests,
+371Vitestfiles/4351tests (1skip),typecheck and root fingerprint. Evidence and the consolidated review
+prompt: CROSS_PACKAGE_PROGRESS_20260914. C3 recording/listening, C2 whole-shape/captures, family rollout,
+weather choice and smaller phone finisher remain. Codex continues locally; Claude needs no app switch.
+No GitHub or history rewrite; PR42 parked. Promotion uses merge commits after prerequisites.
+
+The subsequent cross-package intake/evidence commit failed at20:06UTC in1Password Secure Enclave
+authentication. Changes remain staged; latest signed head61512b3a (114aheadupstream/225aheaddevelop).
+The review snapshot explicitly includes the uncommitted patch. No unsigned commit or signing bypass.

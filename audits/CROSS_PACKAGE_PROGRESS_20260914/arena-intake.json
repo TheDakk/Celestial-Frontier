@@ -1,0 +1,103 @@
+{
+  "schema": "cf.arena-intake-report/v1",
+  "recipeSha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4",
+  "seed": 593405465,
+  "systemCardSourceSha256": "330d2b8dd758982dec9f39f99e2fe4e99f3be74adf2e45e309c03d757c1b46a4",
+  "groundLineNormalized": 0.78,
+  "layers": [
+    {
+      "role": "far",
+      "groundLineNormalized": 0.78,
+      "original": {
+        "width": 1672,
+        "height": 941,
+        "minimum": {
+          "width": 1024,
+          "height": 576
+        },
+        "sha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2",
+        "bytes": 2560302,
+        "qualityAccepted": false
+      },
+      "runtime": {
+        "width": 1672,
+        "height": 941,
+        "minimum": {
+          "width": 1024,
+          "height": 576
+        },
+        "sha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2",
+        "bytes": 2560302,
+        "qualityAccepted": false
+      },
+      "transparentPixels": 0,
+      "visiblePixels": 1573352,
+      "translucentPixels": 0
+    },
+    {
+      "role": "mid",
+      "groundLineNormalized": 0.78,
+      "original": {
+        "width": 1672,
+        "height": 941,
+        "minimum": {
+          "width": 1024,
+          "height": 576
+        },
+        "sha256": "189d0fc31a81330249fbce3cf03c8c3a0319cce47b9480f8623d8779dec96391",
+        "bytes": 2181733,
+        "qualityAccepted": false
+      },
+      "runtime": {
+        "width": 1672,
+        "height": 941,
+        "minimum": {
+          "width": 1024,
+          "height": 576
+        },
+        "sha256": "d9a3690dceb71420cb1fc64898b1d74a677af4e26216a0437348959f57b55d0e",
+        "bytes": 2865228,
+        "qualityAccepted": false
+      },
+      "transparentPixels": 876025,
+      "visiblePixels": 697327,
+      "translucentPixels": 0
+    },
+    {
+      "role": "near",
+      "groundLineNormalized": 0.78,
+      "original": {
+        "width": 1672,
+        "height": 941,
+        "minimum": {
+          "width": 1024,
+          "height": 576
+        },
+        "sha256": "8fc1191f88eaae7561316c1c43d84b1d907ce459852b13935228e3b23e7559c4",
+        "bytes": 1374464,
+        "qualityAccepted": false
+      },
+      "runtime": {
+        "width": 1672,
+        "height": 941,
+        "minimum": {
+          "width": 1024,
+          "height": 576
+        },
+        "sha256": "83eca67c68d9a7d72a009d26ee3734c83b4ee547446b0e2241ba8fc4ec51f5d2",
+        "bytes": 1686808,
+        "qualityAccepted": false
+      },
+      "transparentPixels": 1285719,
+      "visiblePixels": 287633,
+      "translucentPixels": 0
+    }
+  ],
+  "qualityAccepted": false,
+  "scope": "Hashes, compiler-card provenance, seeded context, registration and alpha only. Existing human acceptance is unchanged.",
+  "pending": [
+    "composition and style review",
+    "edge/despill review",
+    "runtime replay and choreography"
+  ]
+}

@@ -25,6 +25,14 @@ listening, derived voices and arena wiring remain pending. No actual C3 source h
 recorded or accepted. See `port/v2/tools/asset-intake/README.md` for technical profiles and
 limitations; stereo bed support is a byte-export primitive, not a completed source set.
 
+The additional `inspect.mjs sound-set` adapter checks the eleven theme inventories, sixteen battle
+cues, first stereo temperate bed and explicitly mono/stereo rain layer. Hash-bound loop JSON records
+exclusive sample end, crossfade range and per-channel boundary discontinuities. These are measurements,
+not a clean-loop verdict; no crossfade is rendered. Known impact/UI cues enforce the under-600 ms limit;
+unspecified cue limits are reported without inventing a policy. The stereo bed source and selected loop
+both require 24–40 seconds. Fur-source naming and non-voice set Opus adapters remain open. Tests use
+private synthetic fixtures, never accepted audio. See audits/CROSS_PACKAGE_PROGRESS_20260914.
+
 ## Canonical Explorer Chronicle repair — 2026-09-08
 
 A native fresh-Earth challenge exposed a pre-existing presentation failure: its durable result

@@ -7,7 +7,7 @@ by genes. Unknown painter outputs must not silently become a quadruped or a fini
 
 | Family template | Motion producer | Actual observed/declared parts in Codex proof | Whole animated shape |
 |---|---|---|---|
-| quadruped | Implemented in Claude's read-only lane | Civet authored; fox authored; one four-legged banded-tail procedural | Unaccepted; 62 cuts/rest/contact pass, full poses expose overlap artefacts |
+| quadruped | Implemented in Claude's read-only lane | Civet authored; fox authored; one four-legged banded-tail procedural | Unaccepted; 87 pair cuts and 64 junctions pass across the three records; full poses still expose cut/overlap artifacts |
 | hopper | Implemented | Missing painter observation and qualified master | Unqualified |
 | biped-bird | Implemented | Missing drawn wing/leg/beak parts and record | Unqualified |
 | fish | Implemented | Missing drawn spine/caudal/dorsal/pectoral parts and record | Unqualified |

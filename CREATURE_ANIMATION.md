@@ -1,147 +1,25 @@
 # Creature animation — shared anatomy and motion contract
 
-**C2 ear support diagnosis — matches code as of 2026-09-14:** all six saved far-ear
-stride-gap samples have no source ink even in the complete descendant under the head
-transform. Increasing the static band's depth cannot close them. The support observer is
-read-only, refuses scaled/invalid transforms and has inverse-mapping/source-mutation controls;
-it does not replace the seam gate. No master, mask, pivot, curve, band or renderer changed.
-That historical diagnosis did not qualify motion. Nick subsequently authorized deforming
-repairs across parts; no generic mechanism approval is pending. Details and hashes:
-audits/C2_EAR_SUPPORT_20260914/README.md and support.json. No new native capture.
+Matches code as of 2026-09-14. C2 source **61512b3a** passes the independently enumerated
+87 pair contacts and 64 three/four-owner junctions at all five native poses. All three masters
+retain zero changed rest channels; CPU update p95 is 0.80/0.90/0.40 ms (Civet/fox/procedural).
+This is coverage and update-time evidence, not whole-motion acceptance. Full posed images still
+show hard cut/overlap edges and stretched paint. No new ten-second articulated capture is qualified.
+See [current evidence](audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json) and
+[combined review](audits/CROSS_PACKAGE_PROGRESS_20260914/README.md).
 
-**Retained-frame seam diagnosis — matches code as of 2026-09-14:** the cut-local
-observer follows shared ownership edges through actual pose matrices and has controlled
-rigid-motion and real-gap cases. Verified head--ear-far frames show disc-only/bands
-uncovered counts recoil170/0, strike0/0, stride91/3 and77/3. The six remaining band
-samples are fully transparent. No rim waiver, accepted shape, new capture, mask edit
-or replacement of the agreed native gate follows. See audits/C_LANE_REPAIRS_20260914.
+The target is fluid whole-body motion for named and procedural land, air, aquatic and rooted life
+in seeded biome arenas. Preserve the actual painted anatomy, stable joint inventories and recipe
+identity. Blender projection is abandoned for the browser; retain the turnaround/canid master for
+a later engine port. No 3D or texture-finisher pass belongs to this track.
 
-**Pair-band amendment — matches code as of 2026-09-13:** unowned joint ownership now resolves through the painted part hierarchy, with explicit torso remainder for root/pelvis. Band depth is additionally capped by half the descendant's smaller cutout dimension. Civet has29cuts,16bands,38parts/2039x2047atlas; exactly6true sibling adjacencies remain. Pair-isolated native gates use the unchanged external seam oracle atdisc.06 and keep disc-only pair controls; fullrest0channels passes, but first isolated pair head→far-ear fails: recoil+731,strike+1492,stride+922/+1047 above rest76. Native-gates-01 retains controls; no later pairs or captures ran, as authorized. Cause is not established by counts alone. No masks/poses/kit/8%bound or production-rig semantics changed.
-
-**Boundary bands — matches code as of 2026-09-13:** authorized C2 candidate duplicates opaque descendant ink along all23ancestor/descendant cuts using pivot distance and cumulative joint limits (.02Wfloor,W/8cap). It groups16band patches into the existing joint-patch runtime representation, 38totalparts in one2047x1589atlas. Same masks/poses/record; disc-only control retained. Native rest0channels and atlasbudget pass, but the per-cut seam gate fails across recoil,strike and approach. Head recoil closes; neck/jaw/ears/legs/tail residuals remain, including a14pxneckgap beyond2pxrim. No capture or subsequent creature step ran; authorized stop applies. RESULT.json records all deltas; no new motion acceptance. Evidence: C2_BAND_UNDERLAPS_20260913.
-
-**Pack7 bounded corrections — matches code as of 2026-09-13:** fallback presentation is accepted. Candidate01 adds the prescribed Civet underlaps and re-observes three fox knee points, preserving roots/ankles/paws and shared curves. All fox legs have at least3%BL rest slack; the8% contact cap is unchanged. The patch key guard now evaluates retained disc ink, with retained-magenta refusal. Native qualification now records zero rest differences on both; fox old1375ms refusal and corrected120Hzscan pass at5.0189% maximum compression. Civet7400ms gate fails:24370transparent pixels in the full rest region versus24473old, with a visible throat seam. No new motion capture; parts motion is not accepted. Evidence: C2_BOUNDED_REPAIR_20260913/native-gates-01 and RESULT.json.
-
-**C2 native finding — matches code as of 2026-09-13:** parts rest passes, but motion does not. Civet has a visible head/neck gap; fox exceeds the unchanged contact-compression bound. The isolated runner now supports explicitly labelled whole-portrait fallback captures under Nick's fallback authorization. It records a 120 Hz parts-contact diagnostic; fallback does not satisfy articulated shape, ear/tail/jaw or parts reuse gates. Evidence: audits/C2_PARTS_MOTION_20260913/proof-02 and README.md. No production or Claude-owned module changed.
-
-**C2 motion continuation, matches code September13:** the corrected GSAP producer hash is
-verified; the earlier root-broadcast block is resolved. `creature-rig-contact.ts` adds a generic
-record-driven planted-contact constraint using existing two-bone math, preserving perspective
-paw offsets and refusing unreachable poses. Flight passes through; no creature clip is edited.
-The isolated parts-motion proof consumes actual Claude compiler/GSAP/choreography/effects
-read-only and real atlases. Parts motion fails the visual/contact gate; three labelled
-whole-portrait fallback10s captures are ready in C2_PARTS_MOTION_20260913/portrait-fallback-01.
-All60.002fps,p95CPU0.2/0.2/0.3ms; no articulated acceptance. Seven focused checks pass.
-
-
-**Current C2 status — matches code September13:** Civet32/fox22/procedural21part atlases all
-pass native rest comparison with0changedRGBAchannels and nonzero missing-head controls.
-Procedural masks come from an isolated seeded observation replay of the winning painter;
-ordinary paint remains byte-identical and material is correctly translucent. All3actual Motion
-body cards/timelines compile repeatably. See audits/C2_PARTS_ATLAS_20260913/README.md. Earlier
-pending/rest-readback notes below describe intermediate states. The producer root-offset fix
-is verified; native parts motion still fails. Fallback captures await Nick's eye. No protected
-module or ordinary battle wiring changed here.
-
-
-**C2 authored parts, matches code as of September13:** the accepted Civet now has22
-hash-bound authored parts and10 hidden joint patches cut from its retained turnaround,
-packed into one32-part atlas. `part-masks.mjs` refuses incomplete/overlapping/colour-changing
-reconstruction; `joint-patches.mjs` confines patch pixels beneath opaque base paint in their
-own depth layer. `civet.part-masks-v2.json` fixes the head-crest ownership seen in the initial
-mask map. Two refused patch fits are retained: key-coloured samples, then wrong near-only
-coverage for far legs. No new art was generated. Source hashes, actual binding and atlas are
-at audits/C2_PARTS_ATLAS_20260913/civet-patched/. Native rest comparison passed on de9c9a32:0changedRGBAchannels, with234,525changedchannels
-when the head is removed. Fox/procedural masks and native rest also pass. Moving parts shape
-fails; completed labelled fallback captures do not close articulated C2 acceptance.
-
-**C2 runtime progress, September13:** [creature-rig.ts](port/v2/apps/game/src/creature-rig.ts)
-loads hash-bound part atlases and applies the record-joint CreatureRigV1/PoseTarget vocabulary
-using inherited affine transforms and actual Pixi objects. Five negative-controlled tests,
-TypeScript/root validation and pinned-atlas controls pass; 40-part CPU update budget passes.
-[Evidence and remaining masks/patches/captures](audits/C2_RIG_RUNTIME_20260913/README.md).
-Independent C2 coding continues while C1 images are reviewed; staging is the visual gate.
-
-**Pack2 / material observer, September13:** CONTRACTS.md§§2/5/6 fixes C2's joint vocabulary
-and Claude engine surfaces. The observer now reports the selected alien skin before its coat
-fallback, matching actual paint routing; named Earth anatomy and draw commands unchanged.
-Tests and scope: [C2 prerequisite](audits/C2_MATERIAL_OBSERVER_20260913/README.md). Old captured
-records remain historical; the next procedural proof emits a fresh corrected record. No rig,
-new capture or integration of Claude's four engines is claimed.
-
-**Current September12 direction:** arena template v1 accepted, Wild shapes/phases accepted
-but the first palette rejected. v4.3 is now adopted and one three-phase repaint awaits Nick's
-image review at audits/WILD_V43_PROOF_20260913 before the parts-rig turn.
-Motion frozen paragraphs are approved; revised world-life Motion Kit received verbatim on September13.
-Use §§3–6 resolved body-card/timing rules and report gaps when building. No named-anatomy
-fields were invented. @pixi/particle-emitter removed; [seeded-battle-emitter.ts](port/v2/apps/game/src/seeded-battle-emitter.ts)
-uses the existing Pixi8 ParticleContainer, recipe seed and absolute elapsed time. Tested in
-Node against real Pixi objects; browser rendering/performance and battle wiring are pending.
-This supersedes the earlier tooling compatibility/pending-frozen-approval text below.
-
-**Motion Kit v1 intake — September13:** [MOTION_KIT.md](MOTION_KIT.md) is the supplied world-life
-revision, committed verbatim in8a2dfdc0. Its PROPOSED labels remain source text; Nick has approved
-v1 and its frozen paragraphs. Compile the parts-rig body card from the winning painter's
-resolved anatomy using §§3–6, including mass-scaled timings; report missing fields rather than
-reading named Earth genes. The initial record-gap audit remains at
-[audits/MOTION_SOUND_KITS_20260912/ADOPTION.md](audits/MOTION_SOUND_KITS_20260912/ADOPTION.md).
-C1 now awaits review of the repainted Wild phases. No runtime animation change in this batch.
-Claude owns motion/, effects/, battle2/, soundkit/, worldlife/ and their tests.
-
-**Current browser track — matches code as of 2026-09-12:** Blender projection remains
-abandoned; retain turnaround/canid masters for the later engine port. The continuous-mesh
-[quadruped attempt](audits/CIVET_2D_PROOF_20260912/README.md) preserves exact rest pixels but
-fails shape at clip extremes. Native fb008d58 provides ten-second, 60 fps labelled
-whole-portrait fallback captures; these do not qualify articulated motion. No normal-game
-battle animation changed.
-
-**Tooling configured September 12:** game-app GSAP 3.15.0 owns the forthcoming shared pose
-curves through paused timelines and explicit time. @pixi/particle-emitter 5.0.10 is pinned for
-travel/impact, with its Pixi 6/7 peer boundary and seeded-time integration unresolved against
-Pixi 8.19.0. No direct runtime attachment yet. The [atlas command](port/v2/tools/creature-animation/rig-atlas.mjs)
-uses CLI 0.3.0/core 0.3.9 with sorted, hash-checked copies, 4 px padding and 1 px extrusion,
-exactly one atlas, no timestamps; actual Civet parts are now packed in the C2 evidence above. PNG masters remain
-immutable; optimize copies only. [Current tooling contract](UI_TOOLCHAIN.md).
-
-**Current direction, art candidates await acceptance:** Nick approved v4.2 from d2b8d8cd
-with FAR opaque, MID/NEAR on magenta (no extracted masks), shared ground y=0.78 and Effects
-anchor JSON. The [six painted candidates](audits/ARENA_EFFECTS_V42_PROOF_20260912/README.md)
-are saved; active kit updated, frozen style/4E unchanged. Stop before staging until Nick
-accepts the three plates and Wild sequence. Then parts-rig Civet versus Platypus in this
-procedural Earth arena, followed by ten-second captures for Civet, fox and procedural control.
-The previous proposed continuous-mesh repair is superseded. Share strong pose curves with
-60 fps tweening, easing, anticipation, overshoot and secondary motion (phone budget 30 fps).
-Use battle-context seeds and compiler-filled home-world cards, never the clock; wild home,
-guardian lair/One signature, seeded alternating duel hosts. Phone composes without a finisher;
-desktop may finish. Preserve originals. Full compiler, tempo and framing contract is in the
-proposal. Authored parts remain hash-bound asset data; procedural parts follow the winning
-painter. No per-creature clip edits, new 3D projection or texture-finisher passes.
-Do not infer universal family coverage, hidden-surface reconstruction or accepted motion.
-
-
-**Nick's September 12 approved order:** v4 at `6f5c396e` is approved. ART_KIT §9
-now limits first authoring to the Earth temperate plate, six Earth cut-outs and five
-family references, then the measured engine painting. Inspect first cut-outs for
-Atlas frames/dark backgrounds and stop with a proposed v4.1 sentence if present.
-Keep 4E turnaround unchanged. After painting acceptance, the [Animation and battle
-track](audits/CLAUDE_FULL_REVIEW_20260910/CODEX_HANDOFF.md#animation-and-battle-track)
-(Civet proof, family masters/textures/clips and staged turns) precedes full-library
-rollout. Effects now await the separately proposed v4.2 class above. This order supersedes
-earlier full-library-first or v4-awaiting-approval language below.
-
-
-Matches the source inventory as of **2026-09-08 local**. Nick’s requirement is a shared procedural
-animation system for land, flying and aquatic life, including generated variations and descendants.
-This reference describes the required architecture and the explicitly limited implementation below.
-It is not a claim that every family is rigged or that the current game has articulated locomotion.
-
-## Standalone desert ambience study — September 9
-
-Nick requested a preview animating one local AI desert painting. The [12-second media study](audits/LOCAL_AI_DESERT_MOTION_20260909/README.md)
-adds camera drift, dust and screen-space heat haze to the unchanged PNG. Source remains flattened;
-creatures stay in fixed poses. No layer extraction, anatomy mapping, universal rig or game adapter
-was implemented. This scoped preview does not replace the static-landing priority below. The native
-loop and preview-control evidence is separate from game or physical-phone qualification.
+Art Kit v4.3 and supplied Motion/Sound v1 are approved; no wording changes are pending in this batch.
+Arena template v1 is accepted. Wild v4.3 mechanical intake is complete; Nick owns final image acceptance.
+GSAP 3.15.0, the Pixi 8 seeded emitter and one deterministic atlas per creature are the runtime/tooling
+boundary. The incompatible @pixi/particle-emitter is removed. Atlas core 0.3.9/CLI 0.3.0 use sorted,
+hash-bound copies, four-pixel padding, one-pixel extrusion and no timestamps. Originals remain intact.
+The 2048 atlas, 40 drawable and 8% contact bounds are unchanged. Claude owns motion/, effects/,
+battle2/, soundkit/, worldlife/ and their tests; this lane consumes those modules read-only.
 
 ## Current presentation priority — Nick, September 8
 
@@ -160,22 +38,24 @@ Existing collection, healing/properties and classification data stay independent
 
 ## Current implementation and the missing boundary
 
-The game already resolves a complete immutable genome into a named, lineage-owned or procedural
-whole-form painter. Those painters draw anatomy directly into a flattened Canvas2D image. They do
-not yet publish a common joint graph, separate hidden surfaces or animation-ready skin.
-The Wolf/Civet authoring studies are specific experimental assets. A generated parts atlas is not
-a solution for the combinatorial creature population. No per-seed image-generation job or manually
-authored animation per creature is part of this architecture.
+The hash-bound Civet and fox records plus one painter-observed procedural quadruped have real
+parts, deterministic atlases and native rest parity. The procedural material observer reports the
+skin actually painted (translucent in the proof), not a fur fallback. The rig loads original-pixel
+parts, composes inherited joint transforms, constrains planted contact and applies seam geometry.
+PoseTarget rotations use the record's names; root offsets are body-length units. The frame adapter
+collects a full pose before applying it. It has not been adopted by Claude's live battle scene here.
 
-`port/v2/tools/creature-animation/kinematics.ts` is the first isolated mathematical foundation:
-shared joint/transform/chain operations over supplied geometry. It is tooling, not a native game
-adapter or qualified gait set. Its focused test results belong to
-`audits/CIVET_PAINTED_PARTS_20260908/`. It does not decide an organism’s anatomy from raw genes,
-change genomes or make the existing flattened painters animation-ready by itself.
+Candidate07 adds boundary strips and multi-owner point closures to existing drawables. A closure
+uses opaque original descendant ink and collapses at rest. The native gate independently enumerates
+contacts and point junctions; it does not assess natural texture flow or the whole moving silhouette.
+Hard cut edges, overlap artifacts and stretched paint remain visible. Numeric coverage is insufficient.
 
-The missing production boundary is **one resolved anatomy record emitted by the actual winning
-painter owner and consumed by both painted geometry and its rig**. Never maintain a second loose
-name-to-skeleton classifier that can disagree with the body the player sees.
+The production gap remains a resolved anatomy/parts record emitted by every actual winning painter
+and a shape-qualified skin/controller consuming it. Only three quadruped proof records exist; the
+fourteen published motion templates are not fourteen functioning painter integrations. Unsupported
+anatomy refuses or uses the explicitly labelled portrait fallback. No per-seed image generation or
+per-creature motion-curve edits are part of this design. See the
+[coverage inventory](audits/C2_DEFORMING_SEAMS_20260914/FAMILY_COVERAGE.md).
 
 ## Authoritative documents and source order
 
@@ -318,196 +198,16 @@ trait pools, re-roll genomes, rewrite inherited identity or silently “fix” a
 of animation. Preserve the actual static owner when a faithful adapter is not qualified. Global
 D-9e biome/generation coverage remains open; this architecture does not repair it.
 
-## Bounded implementation and acceptance sequence
+## Remaining acceptance sequence
 
-1. Complete the source-backed owner inventory and generic mathematical foundation. **This batch.**
-2. Add the shared resolved-geometry record to one existing winning painter with exact static
-   parity, using Civet only as the first real fixture. Reject disconnected/unsupported painted
-   parts before runtime integration. **Not implemented by the present atlas.**
-3. Qualify one land, one flying and one aquatic owner through the same interface, then a flexible
-   or radial case. Use contrasting proportions/counts within each, not three copies of one rig.
-4. Expand an explicit coverage ledger across named owners, modern procedural plans, HD fallback,
-   reviewed and protected lineages. Every route says animated-supported or exact-static-fallback.
-5. Integrate the qualified shared recipe across existing Compendium/Chronicle/Planetside owners
-   with unchanged identity and accepted controls/placement. No engine migration is implied.
+1. Remove visible joint/overlap distortions while preserving exact rest, real clips and anatomical bounds.
+2. Recheck independent contact/junction coverage and full posed shapes, then ten-second Civet, fox and
+   procedural captures with the accepted arena, shared timing and zero per-creature curve edits.
+3. Complete battle2 frame-adapter integration in its owning lane; measure staged-turn behavior and
+   frame pacing, not just CPU update duration. Existing portrait-fallback captures remain labelled.
+4. Add actual painter-owned parts and records family by family, with material/identity parity and
+   explicit unsupported anatomy. The next approved families are bird, fish, insect and reptile.
+5. Review new media and family reuse at each required stop. Phone animation budget remains unqualified.
 
-Required evidence includes actual visible articulation, nonempty supported contacts, lengths and
-joint limits, continuous first/last phase boundaries, rest restoration, seam/occlusion review,
-negative controls that freeze/collapse/detach parts, diverse morphology extremes and unchanged
-full-genome/share/save identity. Test wing folds, swimming direction and amphibious transitions
-in their actual supported view. A correct solver on synthetic joints is necessary mathematical
-proof, not a native art/motion certificate. Full admission, physical devices, native-heap budgets,
-human fluidity/painting review and all prior ROADMAP blockers remain open.
-
-Civet proof started September12: audits/CIVET_ANIMATION_PROOF_20260912 contains one unreviewed
-4E turnaround from accepted Civet/Atlas, compiled card and exact frozen paragraph. The bridge
-now exports the actual QUAD2_SPEC.Civet/viverrid owner with full genome/source proportions;
-20 tests PASS, including swapped-identity/proportion controls. First private Blender master
-and token render pending. Family gene bounds, local-finisher texture pass, clips and Pixi turn
-remain unfinished; no claim of completed animation. Rain E source8b01e38c and evidenceaaacfd6f
-are signed,50 ahead upstream/161 ahead cacheddevelop, zero behind. No GitHub/Claude sync.
-
-## Civet stop — first two token renders fail visual review
-
-Source d4fe8037 built the first connected Civet master; correctionc9202c71 clamped UV samples
-and recorded explicit reference calibration. Both Blender5.2.1LTS/Metal runs completed,
-but neither meets the accepted Civet appearance: large unpainted back/pink seams first;
-stretched fur, remaining pink seams and proportion drift second. Both renders/receipts and
-private master hashes retained. No local texture-finisher pass or rendered clip set ran;
-no staged Pixi turn, gene-driven family bounds or universal animation coverage claimed.
-
-The former Civet-only 3D shape/UV rework was abandoned for browser battles. Retain the turnaround and canid master for a later engine port; do not resume 3D token renders or texture-finisher passes. The current C2 parts proof and broad audit above supersede this historical stop.
-
-Universal coverage requires reusable family templates with source-owned anatomy and tested
-proportion bounds, including plant-specific stem/branch/leaf motion. The current fixed Civet
-candidate and six-Earth compiler are not that coverage; unsupported forms keep static fallbacks.
-The requested family architecture must be established during the correction, not inferred
-from a single posed Civet. No phone Klein retries. Smaller finisher evaluation and second
-weather ladder remain queued per Nick's order; no delivery engineering before phone result.
-Rain E activation8b01e38c/browser evidenceaaacfd6f remains accepted and unchanged.
-
-**Pack5 continuation, matches code September13:** fox has22 authored parts with exact offline
-rest reconstruction and atlas pixel readback. Native rest passes; motion contact refuses. Optional quadruped
-`captureParts` emits final visible ownership from actual draw-stage RGBA changes; no ordinary
-painter commands change. Tube segment ownership uses the painted axis, not a fitted skeleton.
-Supported capture is explicitly bounded to observed four-legged banded-tail geometry; other
-family observers are not implemented by the existence of Claude's Motion templates. Native
-proc render parity/material/record validation passes in native-painter-parts-03. Painter masks cannot manufacture
-hidden surfaces; identical overpainting retains prior visible ownership. Motion interop uses the corrected, hash-verified producer in C2_MOTION_INTEROP_20260913.
-
-Painter mask reads now use a separate readback canvas after native-painter-parts-01
-refused a changed ordinary render. The live painter is never read repeatedly; native
-qualification required the separated replay below. Source drawing commands stay unchanged.
-
-Current optional mask capture completes ordinary paint first and observes a second seeded
-invocation of the same owner. The normal portrait and cut-out always come from the first
-invocation. Replay anatomy/material and full original-alpha coverage are strict gates; it
-never replaces the ordinary painting with pixels from the readback render. Native rest proof passes.
-
-Native separated mask observation is now qualified on782e827a:0ordinary-render changed
-channels,21parts,31joints and actual translucent material. Procedural atlas readback/rest
-reconstruction0changedchannels. Real Claude compiler accepts all3records and produces repeated
-identical body cards/timelines; missing-head controls refuse. Evidence: C2_PARTS_ATLAS_20260913/
-body-cards-01 and native-painter-parts-03. Native rig motion acceptance still pending.
-
-## September 13 consolidated audit
-
-Matches code as of 2026-09-13. Latest broad-batch authorization permits independent code work
-across C1–C5 while the C2 gate is unresolved; older instructions to stop all work at C2 are
-superseded. The agreed pair gate itself is unchanged, and no new parts capture is accepted.
-
-`verify-parts.mjs` checks the sealed binding, atlas hash, source part hashes, dimensions and
-every packed RGBA channel, including hidden bands. `buildBandAtlas` uses it before reading
-source parts and again after packing. Original Civet22parts:5,573,612channels match. Latest
-candidate38parts:9,875,852channels match. Corrupt/resealed atlas pixels and wrong dimensions
-are refused. This proves packaging, not shape or the provenance of a newly authored mask.
-
-`seam-oracle-audit.mjs` reproduces a measurement confound in the unchanged external ruler:
-one rigid untorn shape with an authored notch goes from0 to140reported seam pixels on an
-18px translation into the fixed rest-joint disc. A real gap reports94. Thus a positive
-pose-minus-rest alone cannot distinguish an actual joint tear from an existing concavity
-entering the disc. This does not prove the Civet is sound or relax its gate. Claude should
-review cut-local, pose-following measurement with both controls before another capture.
-Evidence: audits/C_LANE_BATCH_REVIEW_20260913/seam-oracle-counterexample.json.
-
-The accepted fox candidate-01 record and four-legged procedural observer remain retained.
-Other family templates published by Claude do not establish painter-emitted landmarks/masks
-for those families. Do not invent joint positions or claim universal coverage from the table.
-
-## Deforming parent joints — matches code as of 2026-09-14
-
-Nick authorized this mechanism across parts after the ear source-support proof. Optional
-seamBridges metadata in CreaturePartsBindingV1 binds source edge pixels to actual parent/child
-joints. One Mesh replaces each existing static-band drawable, retaining its static quad and
-adding strips of zero rest area. UVs sample only the original descendant pigment. Binding
-validation checks ownership, atlas coordinates, source cap and geometry before decode; pose
-updates prepare all buffers before publishing. The interface, curves and contact bounds remain
-unchanged. Candidate-02 covers three quadrupeds; native rest, cuts, timing and shape await proof.
-Details: audits/C2_DEFORMING_SEAMS_20260914/README.md. Universal land/air/aquatic/plant coverage
-is required, but painter observation outside the qualified quadruped remains open.
-
-## Native attempt03: cuts pass, full shape rejected locally
-
-On 71e96f97 all62 true cuts pass (Civet21, fox21, procedural20), rest0 for all;
-update p95 0.60/0.60/0.30ms. All three dense1200-sample contact scans pass under
-the unchanged8% bound. But inspection of full strike/recoil PNGs shows duplicate
-fur/ear contours exposed by static underlaps and strip-like stretching at broad
-joints. This mechanical PASS is explicitly NOT visual acceptance. No10s capture
-was declared complete; Codex continues repair under Nick's authorization.
-
-Candidate04 replaces rigid overlaps and stretched strips with an alpha-adaptive
-conforming mesh shared by all source parts. Refinement follows ink boundaries
-and true cuts; neighbouring cells include the same edge vertices. Each part
-samples only its original atlas frame, clipped to its original bounds. Joint
-weights come from actual ownership/cuts; shared coordinates share deformation.
-No per-creature curve, anatomy, frame count, palette or kit edits. Existing matrix
-and part-composition owners remain. This is not the old fixed Civet-literal grid.
-Candidate03 is the same prototype before duplicate vertex removal, never native
-accepted. Candidate04 deduplicates interpolation vertices: 16097 Civet,18256 fox,
-2621 procedural part vertices. Source atlases unchanged. Native pixel equality
-and timing are pending; full animated shape still needs direct inspection.
-The runtime remains quadruped-qualified only; all-family painter coverage is open.
-
-## Continuous-field candidate rejected before native launch
-
-The offline shape check rejects candidate04: Civet strike1237 inverted triangles,
-1118 containing visible source ink; fox1716/1544; procedural213/169. This is not a
-transparent-mesh-only artefact. Rest has no inversion. The historical cut-local PASS
-cannot qualify this different deformation. Candidate03 uses the same field without
-vertex deduplication and is also rejected. No native skin run or ten-second capture
-has run. `paint-skin` now refuses folded posed triangles before publishing any buffer;
-its area reference is precomputed, with a passing rigid-motion and failing fold control.
-A capsule-weight scratch comparison also fails and is not adopted. The next repair
-must preserve separate overlapping limbs while smoothing true articulated joints.
-Do not lower motion amplitudes, contact bounds, shape gates or alpha thresholds to pass.
-
-`creature-rig-frame.ts` adds a PoseTarget-compatible collector for frame owners: call
-`target.sample(() => player.seek(ms))` to apply the whole rig once per producer frame.
-It resets omitted joints, discards incomplete producer samples, and publishes no partial
-frame on failure. The existing immediate adapter remains for compatibility. This new
-adapter is tested; live battle2 adoption is pending in its read-only owner. No main.ts hunk.
-
-Signing: two failures for the continuous-field checkpoint after three earlier successful
-signed checkpoints. Public-key enumeration succeeds; no root cause established. The
-native runner refused the dirty tree before opening a browser. Never bypass signing.
-Current signed head71e96f97:110ahead/0behind upstream,221ahead/0behind cacheddevelop.
-
-Whole-universe requirement and actual family gaps are in FAMILY_COVERAGE.md. No claim
-of all-family animation, finished C2, newly recorded C3 or completed C4/C5 is made.
-
-## September 14 — three-part junction repair, candidate07
-
-1Password signing succeeded: e852a1c0,113ahead upstream/224ahead cached develop. Native-hinges-02
-on that exact source passes all87contact pairs, rest0channels, updatep95 .80/.90/.40ms. Full
-shapes remain unaccepted. Pair coverage cannot close a hole between three different posed
-copies of the same original ownership vertex. The independently retained-frame diagnostic
-(junction-diagnostic/) finds Civet strike839 and fox strike1326 uncovered native pixels at
-such points; all rest counts0. This is a new measured blind spot, not a waiver of old failures.
-
-Candidate07 adds64point sockets (18Civet/25fox/21procedural) to existing Mesh drawables. Each
-requires three/four touching source owners with a common painted ancestor present. The vertices
-follow their unchanged part transforms; the closure uses a touching descendant's original atlas
-texel. Pure sibling crossings and edges along separate limbs remain unstitched. No new ink,
-atlas, drawable, mask, record, clip, bound, kit, main.ts or Claude-owned path change. Rest is
-zero-area. The native gate independently rebuilds the junction inventory from atlas ownership
-and checks full-frame alpha, alongside all87pair gates and preserved ear controls. Forty-six
-tool tests,7runtime tests,typecheck/rootvalidate PASS; candidate-07/checks.json records these.
-Next: sign, native-hinges-03, inspect whole shapes;10second motion only when shape holds.
-
-## Candidate07 handoff update — signing authentication failure
-
-Candidate07 remains staged, not natively qualified. Final checks:46Node tool tests,7focused
-runtime tests,typecheck and root validate PASS. All64junction sources independently verify as
-fully opaque original atlas texels; the procedural source was corrected before commit to avoid
-one160-alpha pixel (opaque-source-revision.json). Same geometry/curves/masters/atlas budget.
-
-The two commit attempts at16:32:08/16:32:21UTC failed. Relevant local1Password events identify
-Secure Enclave/system biometric authentication failure before key retrieval, not merely a
-missing socket or an unanswered Git question. See signing-authentication.json for sanitized
-facts. Nick has been asked to unlock with his account password inside1Password; no passwords
-are requested in chat and no security settings/signing helper have changed. Do not retry native
-qualification until the configured signed commit succeeds. HEAD e852a1c0:113ahead/0behind
-upstream,224ahead/0behind cacheddevelop. No GitHub writes; Claude needs no action/app switch.
-
-Pair-only native-hinges-02 PASS is not C2 acceptance. The64point-socket repair addresses a
-measured additional defect, but full poses and10second motion still require native review.
+Historical failures, commands and receipts remain in audits/C2_* and the chronological roadmap archive.
+They explain the repairs; they do not override the current qualification above.

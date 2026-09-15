@@ -1,5 +1,9 @@
 # Independent C-system continuation — September 14
 
+This is the earlier batch receipt. Current status and one consolidated review prompt are in
+[the cross-package audit](../CROSS_PACKAGE_PROGRESS_20260914/README.md); later C2 seam passes and
+sound/arena intake supersede the pending technical claims below. Earlier evidence is retained.
+
 Nick requested continued local coding while Claude review is deferred. Starting signed
 checkpoint: f36cb38d. This follows C_LANE_BATCH_REVIEW_20260913 and C_LANE_REPAIRS_20260914;
 old failed receipts are historical evidence, not overwritten results.

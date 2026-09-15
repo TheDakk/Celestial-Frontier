@@ -1,82 +1,24 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-**C2 ear support diagnosis — matches code as of 2026-09-14:** all six saved far-ear
-stride-gap samples have no source ink even in the complete descendant under the head
-transform. Increasing the static band's depth cannot close them. The support observer is
-read-only, refuses scaled/invalid transforms and has inverse-mapping/source-mutation controls;
-it does not replace the seam gate. No master, mask, pivot, curve, band or renderer changed.
-C2 remains failed. A far-ear-only two-joint textured strip is proposed, pending Nick's scope
-approval under the incorporated review's no-fourth-mechanism stop. Details and hashes:
-audits/C2_EAR_SUPPORT_20260914/README.md and support.json. No new native capture.
+Matches code as of 2026-09-14. C2 source **61512b3a** passes the independently enumerated
+87 pair contacts and 64 three/four-owner junctions at all five native poses. All three masters
+retain zero changed rest channels; CPU update p95 is 0.80/0.90/0.40 ms (Civet/fox/procedural).
+This is coverage and update-time evidence, not whole-motion acceptance. Full posed images still
+show hard cut/overlap edges and stretched paint. No new ten-second articulated capture is qualified.
+See [current evidence](audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json) and
+[combined review](audits/CROSS_PACKAGE_PROGRESS_20260914/README.md).
 
-**C-system continuation — matches code as of 2026-09-14:** ordinary-game PNG verification
-uses native asynchronous SHA-256 with a yielding compatibility path; each original operation
-computes its identity key once. Storage schema/IDs, integrity checks, limits and retention
-are unchanged; see LOCAL_AI_GENERATION for temporary-memory tradeoff and unmeasured browser
-performance. C3 offline voice export now measures both source/Opus true peak and preserves
-original bytes; C4 intake validates complete hash-bound batches of up to twelve masters.
-These are technical tools, not recorded sources or accepted library rollout. Evidence and
-negative controls: audits/C_SYSTEMS_CONTINUATION_20260914. Prior C2 pair failure remains;
-head--ear-far has three transparent samples at each saved stride extreme, as recorded in
-C_LANE_REPAIRS_20260914. No new native shape or performance acceptance.
+Current animation implementation and family gaps are in CREATURE_ANIMATION.md. The approved kit is
+v4.3; Motion/Sound v1 supplied bytes are retained unchanged. C1 mechanical intake is complete, with
+final Wild image acceptance owned by Nick. The accepted arena remains template v1. GSAP and Pixi 8
+use one renderer; the incompatible emitter package is removed. Source ownership is in CONTRACTS.md.
 
-**Pair-band amendment — matches code as of 2026-09-13:** unowned joint ownership now resolves through the painted part hierarchy, with explicit torso remainder for root/pelvis. Band depth is additionally capped by half the descendant's smaller cutout dimension. Civet has29cuts,16bands,38parts/2039x2047atlas; exactly6true sibling adjacencies remain. Pair-isolated native gates use the unchanged external seam oracle atdisc.06 and keep disc-only pair controls; fullrest0channels passes, but first isolated pair head→far-ear fails: recoil+731,strike+1492,stride+922/+1047 above rest76. Native-gates-01 retains controls; no later pairs or captures ran, as authorized. Cause is not established by counts alone. No masks/poses/kit/8%bound or production-rig semantics changed.
-
-**Boundary bands — matches code as of 2026-09-13:** authorized C2 candidate duplicates opaque descendant ink along all23ancestor/descendant cuts using pivot distance and cumulative joint limits (.02Wfloor,W/8cap). It groups16band patches into the existing joint-patch runtime representation, 38totalparts in one2047x1589atlas. Same masks/poses/record; disc-only control retained. Native rest0channels and atlasbudget pass, but the per-cut seam gate fails across recoil,strike and approach. Head recoil closes; neck/jaw/ears/legs/tail residuals remain, including a14pxneckgap beyond2pxrim. No capture or subsequent creature step ran; authorized stop applies. RESULT.json records all deltas; no new motion acceptance. Evidence: C2_BAND_UNDERLAPS_20260913.
-
-**Pack7 bounded corrections — matches code as of 2026-09-13:** fallback presentation is accepted. Candidate01 adds the prescribed Civet underlaps and re-observes three fox knee points, preserving roots/ankles/paws and shared curves. All fox legs have at least3%BL rest slack; the8% contact cap is unchanged. The patch key guard now evaluates retained disc ink, with retained-magenta refusal. Native qualification now records zero rest differences on both; fox old1375ms refusal and corrected120Hzscan pass at5.0189% maximum compression. Civet7400ms gate fails:24370transparent pixels in the full rest region versus24473old, with a visible throat seam. No new motion capture; parts motion is not accepted. Evidence: C2_BOUNDED_REPAIR_20260913/native-gates-01 and RESULT.json.
-
-**C2 native finding — matches code as of 2026-09-13:** parts rest passes, but motion does not. Civet has a visible head/neck gap; fox exceeds the unchanged contact-compression bound. The isolated runner now supports explicitly labelled whole-portrait fallback captures under Nick's fallback authorization. It records a 120 Hz parts-contact diagnostic; fallback does not satisfy articulated shape, ear/tail/jaw or parts reuse gates. Evidence: audits/C2_PARTS_MOTION_20260913/proof-02 and README.md. No production or Claude-owned module changed.
-
-**C2 motion continuation, matches code September13:** the corrected GSAP producer hash is
-verified; the earlier root-broadcast block is resolved. `creature-rig-contact.ts` adds a generic
-record-driven planted-contact constraint using existing two-bone math, preserving perspective
-paw offsets and refusing unreachable poses. Flight passes through; no creature clip is edited.
-The isolated parts-motion proof consumes actual Claude compiler/GSAP/choreography/effects
-read-only and real atlases. Parts motion fails the visual/contact gate; three labelled
-whole-portrait fallback10s captures are ready in C2_PARTS_MOTION_20260913/portrait-fallback-01.
-All60.002fps,p95CPU0.2/0.2/0.3ms; no articulated acceptance. Seven focused checks pass.
-
-
-**Current C2 status — matches code September13:** Civet32/fox22/procedural21part atlases all
-pass native rest comparison with0changedRGBAchannels and nonzero missing-head controls.
-Procedural masks come from an isolated seeded observation replay of the winning painter;
-ordinary paint remains byte-identical and material is correctly translucent. All3actual Motion
-body cards/timelines compile repeatably. See audits/C2_PARTS_ATLAS_20260913/README.md. Earlier
-pending/rest-readback notes below describe intermediate states. The producer root-offset fix
-is verified; native parts motion still fails. Fallback captures await Nick's eye. No protected
-module or ordinary battle wiring changed here.
-
-
-**C2 runtime progress, September13:** [creature-rig.ts](port/v2/apps/game/src/creature-rig.ts)
-loads hash-bound part atlases and applies the record-joint CreatureRigV1/PoseTarget vocabulary
-using inherited affine transforms and actual Pixi objects. Five negative-controlled tests,
-TypeScript/root validation and pinned-atlas controls pass; 40-part CPU update budget passes.
-[Evidence and remaining masks/patches/captures](audits/C2_RIG_RUNTIME_20260913/README.md).
-Independent C2 coding continues while C1 images are reviewed; staging is the visual gate.
-
-**Pack2 / material observer, September13:** CONTRACTS.md§§2/5/6 fixes C2's joint vocabulary
-and Claude engine surfaces. The observer now reports the selected alien skin before its coat
-fallback, matching actual paint routing; named Earth anatomy and draw commands unchanged.
-Tests and scope: [C2 prerequisite](audits/C2_MATERIAL_OBSERVER_20260913/README.md). Old captured
-records remain historical; the next procedural proof emits a fresh corrected record. No rig,
-new capture or integration of Claude's four engines is claimed.
-
-Tooling configuration updated 2026-09-12: [UI_TOOLCHAIN.md](UI_TOOLCHAIN.md) records the exact
-GSAP/atlas pins, the replacement Pixi 8 seeded emitter, optional PNG CLI probes, and deterministic creature-atlas command.
-These additions do not establish runtime parts-rig or effects integration.
-
-Civet animation proof status, September13: parts-rig proof remains pending. Blender projection
-is abandoned for the browser; retain turnaround/canid assets for later engine port. Continuous
-mesh fails shape; retained whole-portrait captures are labelled fallback, not articulation.
-Arena template v1 is accepted; MID's exact190-pixel copy-only despill is complete/reverified.
-C1 v4.3 theme table is adopted; one three-phase Wild repaint with registered intake copies
-awaits Nick's image review before C2. Earth compiler admits4.3; retired-kit refusal remains.
-World-life Motion Kit and Sound Kit supplied v1 files are retained verbatim in8a2dfdc0; Nick's
-approval is recorded separately from their supplied PROPOSED labels. Work order/interface file
-is now retained at audits/LONG_SESSION_20260913/WORK_ORDER.md. C2 exposes record-based part
-loading, pose application (joint rotations/offsets), display objects and pivots. Claude owns
-compilers/sequencers/battle/sound/world-life modules. See ROADMAP.md and the package LOG.md.
+C3 has voice intake/export and closed theme/battle/first-bed/weather source intake, including bound
+sample-loop declarations. C4 has complete ordered review-batch and seeded arena intake. These check
+technical evidence, not source rights, listening quality, keyed-copy lineage or new visual acceptance.
+No real C3 sources/derived voices exist. AUDIO.md and tools/asset-intake/README.md define the limits.
+Ordinary PNG hashing is asynchronous native SHA-256 with a yielding compatibility path; storage
+schema, IDs, retention, integrity and quotas are unchanged. One identity key is computed per operation.
 
 **Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
 emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical

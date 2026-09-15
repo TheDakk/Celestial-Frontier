@@ -190,3 +190,16 @@ upstream,224ahead/0behind cacheddevelop. No GitHub writes; Claude needs no actio
 
 Pair-only native-hinges-02 PASS is not C2 acceptance. The64point-socket repair addresses a
 measured additional defect, but full poses and10second motion still require native review.
+
+## Native candidate07 qualification — September 14
+
+Matches code as of 2026-09-14. C2 source **61512b3a** passes the independently enumerated
+87 pair contacts and 64 three/four-owner junctions at all five native poses. All three masters
+retain zero changed rest channels; CPU update p95 is 0.80/0.90/0.40 ms (Civet/fox/procedural).
+This is coverage and update-time evidence, not whole-motion acceptance. Full posed images still
+show hard cut/overlap edges and stretched paint. No new ten-second articulated capture is qualified.
+See [current evidence](../../audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json) and
+[combined review](../../audits/CROSS_PACKAGE_PROGRESS_20260914/README.md).
+
+Signing succeeded. `native-hinges-03` is the source-bound PASS receipt; its full-pose PNGs show the
+remaining visible defects. No subsequent motion capture ran. Prior failures and controls remain intact.

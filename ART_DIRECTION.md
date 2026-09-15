@@ -2356,3 +2356,11 @@ it is not a visual verdict.
 All four art-source hashes remain exact;
 no Wave-2e painter was changed. Full shared A/B review, recertification, its
 certification image-inclusive ZIP, reset PR, merge, release, and deployment remain OPEN.
+
+## Read-only arena intake — matches code as of 2026-09-14
+
+The accepted Earth triplet passes source/card/seed, 1672x941 common-canvas and ground-0.78 checks.
+FAR is opaque; the accepted MID/NEAR copies contain transparency. The intake records delivered
+bytes and alpha counts without repaint, erosion or extracted masks. It does not prove keyer lineage,
+style or new image acceptance. See audits/CROSS_PACKAGE_PROGRESS_20260914/arena-intake.json.
+No canonical direction, kit text, accepted original or palette changed.
