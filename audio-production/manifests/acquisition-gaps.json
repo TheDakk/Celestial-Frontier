@@ -196,5 +196,12 @@
     "resolutionHashes": [
       "6f9c48ead4f5b21b5650e2037a97ca1daffc4e8e6aaa61b9c504b4c58c87e9f8"
     ]
+  },
+  {
+    "sourceId": "inat_ccby",
+    "url": "71212",
+    "reason": "No eligible sound in first five observations",
+    "status": "unresolved",
+    "retry": "explicit future fetch; no access bypass"
   }
 ]

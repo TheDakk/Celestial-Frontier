@@ -69,7 +69,7 @@ def package():
                      'port/v2/tests/pwa-offline.test.ts', 'audits/AUDIO_PRODUCTION_20260915/preservation-final.json']:
         p = ROOT / relative
         entries.append((p, relative))
-    for audit_name in ['AUDIO_GAME_COVERAGE_20260915','AUDIO_FAUNA_BIOMES_20260915']:
+    for audit_name in ['AUDIO_GAME_COVERAGE_20260915','AUDIO_FAUNA_BIOMES_20260915','AUDIO_FAUNA_CONTINUATION_20260915']:
         audit=ROOT/'audits'/audit_name
         if audit.exists():
             for p in sorted(audit.rglob('*')):
@@ -81,6 +81,7 @@ def package():
         or c['id'].startswith(('recording.red-fox.', 'recording.osprey.', 'recording.humpback-whale.', 'recording.bee.'))
         or (c['id'].startswith('v2.ability.') and c['id'].endswith(('.cast.1','.impact.1','.heal.1','.shield.1')))
         or c['group'] in ('coverage-score','coverage-environment','ecology-environments')
+        or c['group'].startswith('fauna-supplement-')
         or c['id'].startswith(('v4.reference.lion.', 'v4.reference.wood-frog.', 'v4.reference.bottlenose-dolphin.', 'v4.reference.koala.', 'v4.reference.ash-cicada.', 'v4.reference.lily-leaf-beetle.'))
         or (c['id'].startswith('v2.material.') and c['id'].endswith('.1'))]
     if not all(any(c['id'] == x for c in selected) for x in ['civet-fictional', 'fox-fictional', 'procedural-quadruped']):

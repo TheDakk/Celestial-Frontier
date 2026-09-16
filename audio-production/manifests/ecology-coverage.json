@@ -3,10 +3,16 @@
   "fauna": [
     {
       "name": "Jaguar",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "350370bfc51214b73872f603de557468d1b3dbf9bd66e3a247888abc4fb4fa82",
+        "3eaa46e9023b61961e84aeac7a10bc958216ac927e3627d99f35e011aa900b01"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.jaguar.350370bfc512",
+        "v5.reference.jaguar.3eaa46e9023b"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -17,7 +23,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Jaguar",
+          "sourceId": "inat_ccby",
+          "taxonId": 41970,
+          "scientificName": "Panthera onca",
+          "recordedCommonName": "Jaguar",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "3eaa46e9023b61961e84aeac7a10bc958216ac927e3627d99f35e011aa900b01",
+            "350370bfc51214b73872f603de557468d1b3dbf9bd66e3a247888abc4fb4fa82"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Leopard",
@@ -227,10 +250,14 @@
     },
     {
       "name": "Peccary",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "6d0006b6084fb1fbf8bfa69fdd1dc772b3d1b06df7c1bdd8d3a831e94bed3a81"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.collared-peccary.6d0006b6084f"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -241,7 +268,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Peccary",
+          "sourceId": "inat_ccby",
+          "taxonId": 42113,
+          "scientificName": "Pecari tajacu",
+          "recordedCommonName": "Collared Peccary",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "6d0006b6084fb1fbf8bfa69fdd1dc772b3d1b06df7c1bdd8d3a831e94bed3a81"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Okapi",
@@ -281,10 +324,14 @@
     },
     {
       "name": "Giant Anteater",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "08da89844d494b44c5c5acb715f88f328201adf705a730de2d2c5cd5440cebe0"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.giant-anteater.08da89844d49"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -295,7 +342,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Giant Anteater",
+          "sourceId": "inat_ccby",
+          "taxonId": 47107,
+          "scientificName": "Myrmecophaga tridactyla",
+          "recordedCommonName": "Giant Anteater",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "08da89844d494b44c5c5acb715f88f328201adf705a730de2d2c5cd5440cebe0"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Capuchin",
@@ -363,10 +426,16 @@
     },
     {
       "name": "Spider Monkey",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "58ba929be92cdff1f53c2b891b4d35025d00637f337d45a6f46372c0c848c8b5",
+        "b139a4e7b5da15766f943b757930c5ad67815110ebd7ddda1ce37cd38e68333d"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.central-american-spider-monkey.58ba929be92c",
+        "v5.reference.central-american-spider-monkey.b139a4e7b5da"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -377,14 +446,37 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Spider Monkey",
+          "sourceId": "inat_ccby",
+          "taxonId": 43411,
+          "scientificName": "Ateles geoffroyi",
+          "recordedCommonName": "Central American Spider Monkey",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "58ba929be92cdff1f53c2b891b4d35025d00637f337d45a6f46372c0c848c8b5",
+            "b139a4e7b5da15766f943b757930c5ad67815110ebd7ddda1ce37cd38e68333d"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Tamarin",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "1025251d39db9c0624a94cc917642996af0023266ce607a87b116ea854efb14b",
+        "9e4df8be1d4bfabcc8a8b4a3ce8aea84543dc11b89b126508ba110b22aa68b5e"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.geoffroy-s-tamarin.1025251d39db",
+        "v5.reference.geoffroy-s-tamarin.9e4df8be1d4b"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -395,7 +487,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Tamarin",
+          "sourceId": "inat_ccby",
+          "taxonId": 43384,
+          "scientificName": "Saguinus geoffroyi",
+          "recordedCommonName": "Geoffroy’s Tamarin",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "1025251d39db9c0624a94cc917642996af0023266ce607a87b116ea854efb14b",
+            "9e4df8be1d4bfabcc8a8b4a3ce8aea84543dc11b89b126508ba110b22aa68b5e"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Kinkajou",
@@ -484,7 +593,13 @@
     {
       "name": "Fruit Bat",
       "sourceHashes": [
-        "4b9558585257eef6e538bb00c21b09cdb099f87b0fec3717a78974823fc10058"
+        "07ac66d22c9ac26f635773a026e1d24a0413fd55df23b87432873fa660b142fe",
+        "46c05d9a33cd4b2e5514d25473066503b2fad4ea55eb5f76e43c010cba56ba7a",
+        "4b9558585257eef6e538bb00c21b09cdb099f87b0fec3717a78974823fc10058",
+        "71dd6dac86d9cd74480f78b521021a22d5ec4d3f7151caa7536ed2da6acf21ee",
+        "72d1705f4e12b1dfb7d19cc9091bb8c7f11c5aaf80154342c3a31c817cdc2a1b",
+        "bc7f1ac5f52fa87f33eff62e4ecb9b7e0fe42164b5830f24a4ce6471ae4d2a01",
+        "dc76fc3977e33d79c76dccd19f5d0c5b516566993b81c7ae0dbc8d097b702e95"
       ],
       "binding": {
         "gameName": "Fruit Bat",
@@ -497,7 +612,10 @@
       },
       "referenceStatus": "identified_source_candidates",
       "referenceIds": [
-        "v4.reference.wahlberg-s-epauletted-fruit-bat.4b9558585257"
+        "v4.reference.wahlberg-s-epauletted-fruit-bat.4b9558585257",
+        "v5.reference.bat-screeches.71dd6dac86d9",
+        "v5.reference.bat-screeches.72d1705f4e12",
+        "v5.reference.bat-screeches.bc7f1ac5f52f"
       ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
@@ -509,7 +627,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Fruit Bat",
+          "sourceId": "oga_animal_bat_screeches",
+          "sourceHashes": [
+            "71dd6dac86d9cd74480f78b521021a22d5ec4d3f7151caa7536ed2da6acf21ee",
+            "72d1705f4e12b1dfb7d19cc9091bb8c7f11c5aaf80154342c3a31c817cdc2a1b",
+            "bc7f1ac5f52fa87f33eff62e4ecb9b7e0fe42164b5830f24a4ce6471ae4d2a01",
+            "46c05d9a33cd4b2e5514d25473066503b2fad4ea55eb5f76e43c010cba56ba7a",
+            "07ac66d22c9ac26f635773a026e1d24a0413fd55df23b87432873fa660b142fe",
+            "dc76fc3977e33d79c76dccd19f5d0c5b516566993b81c7ae0dbc8d097b702e95"
+          ],
+          "context": "Fruit bats, Sydney field recording; water fountain and source noise reduction",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Macaw",
@@ -819,10 +954,16 @@
     },
     {
       "name": "Python",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "56eb9d9d9fcd8912b93364ccb4957d59c1ef8edcdf98975f6a215f4c78183544",
+        "cb7e180161eb3ce8b1219af390e559449011888a29bc4168d5092b8d1319156b"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.australian-scrub-python.56eb9d9d9fcd",
+        "v5.reference.australian-scrub-python.cb7e180161eb"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -833,7 +974,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Python",
+          "sourceId": "inat_ccby",
+          "taxonId": 540202,
+          "scientificName": "Simalia kinghorni",
+          "recordedCommonName": "Australian Scrub Python",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "cb7e180161eb3ce8b1219af390e559449011888a29bc4168d5092b8d1319156b",
+            "56eb9d9d9fcd8912b93364ccb4957d59c1ef8edcdf98975f6a215f4c78183544"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Caiman",
@@ -991,10 +1149,14 @@
     },
     {
       "name": "Elephant",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "eeb14990a099676aeba5f9ba98e25afb4f9eb7de6510dbb0d01e3bebea397567"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.african-savanna-elephant.eeb14990a099"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -1005,7 +1167,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Elephant",
+          "sourceId": "inat_ccby",
+          "taxonId": 43694,
+          "scientificName": "Loxodonta africana",
+          "recordedCommonName": "African Savanna Elephant",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "eeb14990a099676aeba5f9ba98e25afb4f9eb7de6510dbb0d01e3bebea397567"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Rhinoceros",
@@ -1063,10 +1241,14 @@
     },
     {
       "name": "Water Buffalo",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "161e28d8d2190d9611e8bc417e025290670368ee1b035f081489ad45dd5aff4a"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.domestic-water-buffalo.161e28d8d219"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -1077,7 +1259,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Water Buffalo",
+          "sourceId": "inat_ccby",
+          "taxonId": 81925,
+          "scientificName": "Bubalus bubalis",
+          "recordedCommonName": "Domestic Water Buffalo",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "161e28d8d2190d9611e8bc417e025290670368ee1b035f081489ad45dd5aff4a"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Deer",
@@ -1179,10 +1377,16 @@
     },
     {
       "name": "Langur",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "71dee35e47abe7f3186d6fb458f040a956877fb35433112f3997f29217669859",
+        "ac4249e49c0d7652fe0e5cc5de8c2dbb3f2a6e47e848ac35f1e03f54a78787a6"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.nilgiri-langur.71dee35e47ab",
+        "v5.reference.nilgiri-langur.ac4249e49c0d"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -1193,14 +1397,37 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Langur",
+          "sourceId": "inat_ccby",
+          "taxonId": 963196,
+          "scientificName": "Semnopithecus johnii",
+          "recordedCommonName": "Nilgiri Langur",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "ac4249e49c0d7652fe0e5cc5de8c2dbb3f2a6e47e848ac35f1e03f54a78787a6",
+            "71dee35e47abe7f3186d6fb458f040a956877fb35433112f3997f29217669859"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Mongoose",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "68a0e1ca6a55e1377644e8d41256acc1f25d490f2c0ca1e6ed667e5c10450fe0",
+        "ed5b8f94701f226e309a9d31aced923cef99404d93569ceeb32b39394d8cd8e2"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.banded-mongoose.68a0e1ca6a55",
+        "v5.reference.banded-mongoose.ed5b8f94701f"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -1211,7 +1438,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Mongoose",
+          "sourceId": "inat_ccby",
+          "taxonId": 41921,
+          "scientificName": "Mungos mungo",
+          "recordedCommonName": "Banded Mongoose",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "68a0e1ca6a55e1377644e8d41256acc1f25d490f2c0ca1e6ed667e5c10450fe0",
+            "ed5b8f94701f226e309a9d31aced923cef99404d93569ceeb32b39394d8cd8e2"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Jackal",
@@ -1311,10 +1555,14 @@
     },
     {
       "name": "Peacock",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "2a4b19ac14a22f63425f98e9d305610c8ce766b02bfac295fdf827a6d5b70ddd"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.peacock-scream.2a4b19ac14a2"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -1325,14 +1573,30 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Peacock",
+          "sourceId": "oga_animal_peacock_scream",
+          "sourceHashes": [
+            "2a4b19ac14a22f63425f98e9d305610c8ce766b02bfac295fdf827a6d5b70ddd"
+          ],
+          "context": "Public-domain permission correspondence retained; extracted scream",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Cobra",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "dd1ae4bd3bc4eb92eae5a40beee96ec23738c0d71813923c76d268fc9d5fd9b3"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.brown-banded-cobra.dd1ae4bd3bc4"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -1343,7 +1607,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Cobra",
+          "sourceId": "inat_ccby",
+          "taxonId": 1438742,
+          "scientificName": "Naja fuxi",
+          "recordedCommonName": "Brown Banded Cobra",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "dd1ae4bd3bc4eb92eae5a40beee96ec23738c0d71813923c76d268fc9d5fd9b3"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Monitor Lizard",
@@ -1633,10 +1913,16 @@
     },
     {
       "name": "Hyena",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "a124bd08ed25a7e6c0f72e0d4dbad9a05ef202357ae0b406c83a29248f2a5a00",
+        "f41407f49b04d426bbc03b3fe730275a58fdb653592adfc520c50b0818d17f0c"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.spotted-hyena.a124bd08ed25",
+        "v5.reference.spotted-hyena.f41407f49b04"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -1647,7 +1933,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Hyena",
+          "sourceId": "inat_ccby",
+          "taxonId": 41886,
+          "scientificName": "Crocuta crocuta",
+          "recordedCommonName": "Spotted Hyena",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "a124bd08ed25a7e6c0f72e0d4dbad9a05ef202357ae0b406c83a29248f2a5a00",
+            "f41407f49b04d426bbc03b3fe730275a58fdb653592adfc520c50b0818d17f0c"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Baboon",
@@ -1717,10 +2020,16 @@
     },
     {
       "name": "Vulture",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "3f19966b9869f8bb2ed4e1d61247bbbe0cddeffd25d137dc7435ef451a80d480",
+        "eb9065f256974f8f4f4f575d3fdcd488c79bc73a7c9754e91f1dbf9989542712"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.turkey-vulture.3f19966b9869",
+        "v5.reference.turkey-vulture.eb9065f25697"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -1731,7 +2040,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Vulture",
+          "sourceId": "inat_ccby",
+          "taxonId": 4756,
+          "scientificName": "Cathartes aura",
+          "recordedCommonName": "Turkey Vulture",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "eb9065f256974f8f4f4f575d3fdcd488c79bc73a7c9754e91f1dbf9989542712",
+            "3f19966b9869f8bb2ed4e1d61247bbbe0cddeffd25d137dc7435ef451a80d480"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Guineafowl",
@@ -2011,10 +2337,14 @@
     },
     {
       "name": "Glass Frog",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "5a0c0239c71b149b33ad81efd52b459a78ef58dd00581c1e41476980c755320d"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.chiriqu-glass-frog.5a0c0239c71b"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -2025,7 +2355,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Glass Frog",
+          "sourceId": "inat_ccby",
+          "taxonId": 65192,
+          "scientificName": "Teratohyla pulverata",
+          "recordedCommonName": "Chiriquí Glass Frog",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "5a0c0239c71b149b33ad81efd52b459a78ef58dd00581c1e41476980c755320d"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Salamander",
@@ -2119,10 +2465,14 @@
     },
     {
       "name": "Asian Elephant",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "6b28defab785d4ead28e7b570f8330832dc7150097bf6d926b30d0c3fb126c94"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.asian-elephant.6b28defab785"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -2133,7 +2483,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Asian Elephant",
+          "sourceId": "inat_ccby",
+          "taxonId": 43697,
+          "scientificName": "Elephas maximus",
+          "recordedCommonName": "Asian Elephant",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "6b28defab785d4ead28e7b570f8330832dc7150097bf6d926b30d0c3fb126c94"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Takin",
@@ -2473,10 +2839,16 @@
     },
     {
       "name": "Lynx",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "2f302148346fd98fbf77a678016ae4825ee30e8e1c291d03f395dd8dfb8e6d88",
+        "f919f38f16dbb1227cd482116e3ea3eaaf446708be509a8e6182a19338d21010"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.eurasian-lynx.2f302148346f",
+        "v5.reference.eurasian-lynx.f919f38f16db"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -2487,7 +2859,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Lynx",
+          "sourceId": "inat_ccby",
+          "taxonId": 41979,
+          "scientificName": "Lynx lynx",
+          "recordedCommonName": "Eurasian Lynx",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "f919f38f16dbb1227cd482116e3ea3eaaf446708be509a8e6182a19338d21010",
+            "2f302148346fd98fbf77a678016ae4825ee30e8e1c291d03f395dd8dfb8e6d88"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Elk",
@@ -2645,10 +3034,14 @@
     },
     {
       "name": "Mink",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "166882ee4173110ce75014b2d26606abafd5de9d3d827da2dc6ade4d7c448a4f"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.american-mink.166882ee4173"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -2659,14 +3052,36 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Mink",
+          "sourceId": "inat_ccby",
+          "taxonId": 1264432,
+          "scientificName": "Neogale vison",
+          "recordedCommonName": "American Mink",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "166882ee4173110ce75014b2d26606abafd5de9d3d827da2dc6ade4d7c448a4f"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Marten",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "1704dd3f4274d6da1c43f271dfd027c9c58a9f9e1eb697c767f9d424275e8bb6",
+        "7c889c6a9b19dc015ea4561234100722d787d40a1db5f11e1a62199120d3d230"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.stone-marten.1704dd3f4274",
+        "v5.reference.stone-marten.7c889c6a9b19"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -2677,7 +3092,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Marten",
+          "sourceId": "inat_ccby",
+          "taxonId": 41800,
+          "scientificName": "Martes foina",
+          "recordedCommonName": "Stone Marten",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "7c889c6a9b19dc015ea4561234100722d787d40a1db5f11e1a62199120d3d230",
+            "1704dd3f4274d6da1c43f271dfd027c9c58a9f9e1eb697c767f9d424275e8bb6"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Flying Squirrel",
@@ -2745,10 +3177,14 @@
     },
     {
       "name": "Rabbit",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "f6ccbfdde9880fb33df0ba28356f34f5e45e380ad15d98661b42be4213d3b49a"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.rabbit-eating.f6ccbfdde988"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -2759,7 +3195,19 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Rabbit",
+          "sourceId": "oga_animal_rabbit_eating",
+          "sourceHashes": [
+            "f6ccbfdde9880fb33df0ba28356f34f5e45e380ad15d98661b42be4213d3b49a"
+          ],
+          "context": "Rabbit eating salad; chewing, not vocal behavior",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Hare",
@@ -2835,10 +3283,16 @@
     },
     {
       "name": "Shrew",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "3a285db782c4181afd59698d5965710baf2c69e7efea86faba2b324c0db4dcbe",
+        "c0b5cefea242c9b9a8ca647bcc14b0738b92964284d8159b2bd029c44debdeb4"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.asian-house-shrew.3a285db782c4",
+        "v5.reference.asian-house-shrew.c0b5cefea242"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -2849,7 +3303,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Shrew",
+          "sourceId": "inat_ccby",
+          "taxonId": 46531,
+          "scientificName": "Suncus murinus",
+          "recordedCommonName": "Asian House Shrew",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "3a285db782c4181afd59698d5965710baf2c69e7efea86faba2b324c0db4dcbe",
+            "c0b5cefea242c9b9a8ca647bcc14b0738b92964284d8159b2bd029c44debdeb4"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Hedgehog",
@@ -2918,6 +3389,7 @@
       "sourceHashes": [
         "54d14eac4d7940ea25acba8a9c63dc17caffcb885c444e65c45c4b548d55d471",
         "9a99bb4daa7145c5c6d64ef46bd4c727146502f61102bc5e608562e31f494783",
+        "bba22883209b435905471d057160f1badae59b89a62e9a8b3199d7e327b17339",
         "cbbf3580e64496f144d511ddfc9af158f1d0067577955125a25d878c985427fc"
       ],
       "binding": {
@@ -2933,7 +3405,8 @@
       "referenceIds": [
         "v4.reference.american-crow.54d14eac4d79",
         "v4.reference.american-crow.9a99bb4daa71",
-        "v4.reference.american-crow.cbbf3580e644"
+        "v4.reference.american-crow.cbbf3580e644",
+        "v5.reference.crow-caw.bba22883209b"
       ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
@@ -2945,7 +3418,19 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Crow",
+          "sourceId": "oga_animal_crow_caw",
+          "sourceHashes": [
+            "bba22883209b435905471d057160f1badae59b89a62e9a8b3199d7e327b17339"
+          ],
+          "context": "Crow recorded in Cairo; source-described identity",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Raven",
@@ -3567,10 +4052,16 @@
     },
     {
       "name": "Moose",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "442619f546ba9c568ea15cb8566437ab2ed4bcbeba87c77ff72901e6fb07d469",
+        "7a1f0076d6f95a6372fdee1007f9962c8e9c8e83595a49d430ca872219bba827"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.moose.442619f546ba",
+        "v5.reference.moose.7a1f0076d6f9"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -3581,7 +4072,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Moose",
+          "sourceId": "inat_ccby",
+          "taxonId": 522193,
+          "scientificName": "Alces alces",
+          "recordedCommonName": "Moose",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "7a1f0076d6f95a6372fdee1007f9962c8e9c8e83595a49d430ca872219bba827",
+            "442619f546ba9c568ea15cb8566437ab2ed4bcbeba87c77ff72901e6fb07d469"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Reindeer",
@@ -3655,10 +4163,14 @@
     },
     {
       "name": "Arctic Fox",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "05197d63d2f4f8a203b603846be224dd3e600e52f1b5967a85049dfca48cb19a"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.arctic-fox.05197d63d2f4"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -3669,7 +4181,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Arctic Fox",
+          "sourceId": "inat_ccby",
+          "taxonId": 233598,
+          "scientificName": "Vulpes lagopus",
+          "recordedCommonName": "Arctic Fox",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "05197d63d2f4f8a203b603846be224dd3e600e52f1b5967a85049dfca48cb19a"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Snowshoe Hare",
@@ -3963,10 +4491,14 @@
     },
     {
       "name": "Ibex",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "73bf9857621962eba3bddfc1f0e90c7e5606cb5b53ade69d4d2139b188b333b8"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.alpine-ibex.73bf98576219"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -3977,14 +4509,36 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Ibex",
+          "sourceId": "inat_ccby",
+          "taxonId": 42357,
+          "scientificName": "Capra ibex",
+          "recordedCommonName": "Alpine Ibex",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "73bf9857621962eba3bddfc1f0e90c7e5606cb5b53ade69d4d2139b188b333b8"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Chamois",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "a8a911ac5dbcbe75d31fb82ec80571eddfaf594809fe0b922fcb89cd17aa9fbc",
+        "e4d8e2c1d808b2d3c3134a7cc597290d8cc049b6f017e91c4300ced99a8e6851"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.northern-chamois.a8a911ac5dbc",
+        "v5.reference.northern-chamois.e4d8e2c1d808"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -3995,7 +4549,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Chamois",
+          "sourceId": "inat_ccby",
+          "taxonId": 42347,
+          "scientificName": "Rupicapra rupicapra",
+          "recordedCommonName": "Northern Chamois",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "e4d8e2c1d808b2d3c3134a7cc597290d8cc049b6f017e91c4300ced99a8e6851",
+            "a8a911ac5dbcbe75d31fb82ec80571eddfaf594809fe0b922fcb89cd17aa9fbc"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Marmot",
@@ -4145,10 +4716,14 @@
     },
     {
       "name": "Capybara",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "3bc01f5ad83e7029d32f715c1e1814e808828a26422307b268ba3ec19341235d"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.capybara.3bc01f5ad83e"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -4159,7 +4734,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Capybara",
+          "sourceId": "inat_ccby",
+          "taxonId": 74442,
+          "scientificName": "Hydrochoerus hydrochaeris",
+          "recordedCommonName": "Capybara",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "3bc01f5ad83e7029d32f715c1e1814e808828a26422307b268ba3ec19341235d"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Fishing Cat",
@@ -4246,6 +4837,7 @@
     {
       "name": "Stork",
       "sourceHashes": [
+        "99332a0e840f797d2730bbc568d304a7e5b2d34fb0a3cebc1ffa0976732e389b",
         "a2a892586be20128ec57c73fd46dc59cef79bba53de1baf101b9f132400c3991",
         "a3b8764e4518016666bfb1e6881e462a84d2890d0650aedd544a1d6c712d4d15"
       ],
@@ -4261,7 +4853,8 @@
       "referenceStatus": "identified_source_candidates",
       "referenceIds": [
         "v4.reference.white-stork.a2a892586be2",
-        "v4.reference.white-stork.a3b8764e4518"
+        "v4.reference.white-stork.a3b8764e4518",
+        "v5.reference.baby-wood-storks-mycteria-americana-ogg.99332a0e840f"
       ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
@@ -4273,17 +4866,33 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Stork",
+          "sourceId": "fws_commons",
+          "sourceHashes": [
+            "99332a0e840f797d2730bbc568d304a7e5b2d34fb0a3cebc1ffa0976732e389b"
+          ],
+          "context": "Wood stork chicks; not adult-species coverage",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Alligator",
       "sourceHashes": [
-        "42e3166bdc9f102299bcba5f3f35cff128dc0ec16a9b2d14780a9b8d2c7775bc"
+        "42e3166bdc9f102299bcba5f3f35cff128dc0ec16a9b2d14780a9b8d2c7775bc",
+        "72a5612e99b6a941d751efbccf1e44f816c06c7884e3108c5298a2ba84b25169",
+        "b019246ade92f25ea00c2185e1b5f2e023770513691ba9ef71e47e6b3d0ca4b1"
       ],
       "binding": null,
       "referenceStatus": "identified_source_candidates",
       "referenceIds": [
-        "v4.reference.alligator.42e3166bdc9f"
+        "v4.reference.alligator.42e3166bdc9f",
+        "v5.reference.alligatorbellow1-ogg.72a5612e99b6",
+        "v5.reference.alligatorhiss-ogg.b019246ade92"
       ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
@@ -4295,7 +4904,29 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Alligator",
+          "sourceId": "fws_commons",
+          "sourceHashes": [
+            "72a5612e99b6a941d751efbccf1e44f816c06c7884e3108c5298a2ba84b25169"
+          ],
+          "context": "American alligator bellow",
+          "classification": "source_identified_reference",
+          "accepted": false
+        },
+        {
+          "gameName": "Alligator",
+          "sourceId": "fws_commons",
+          "sourceHashes": [
+            "b019246ade92f25ea00c2185e1b5f2e023770513691ba9ef71e47e6b3d0ca4b1"
+          ],
+          "context": "American alligator hiss; defensive context, not a game hurt cue",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Cottonmouth",
@@ -4515,10 +5146,16 @@
     },
     {
       "name": "Spotted Hyena",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "a124bd08ed25a7e6c0f72e0d4dbad9a05ef202357ae0b406c83a29248f2a5a00",
+        "f41407f49b04d426bbc03b3fe730275a58fdb653592adfc520c50b0818d17f0c"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.spotted-hyena.a124bd08ed25",
+        "v5.reference.spotted-hyena.f41407f49b04"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -4529,7 +5166,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Spotted Hyena",
+          "sourceId": "inat_ccby",
+          "taxonId": 41886,
+          "scientificName": "Crocuta crocuta",
+          "recordedCommonName": "Spotted Hyena",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "a124bd08ed25a7e6c0f72e0d4dbad9a05ef202357ae0b406c83a29248f2a5a00",
+            "f41407f49b04d426bbc03b3fe730275a58fdb653592adfc520c50b0818d17f0c"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "African Wild Dog",
@@ -4569,10 +5223,14 @@
     },
     {
       "name": "Wildebeest",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "daf78b63fec991c45f93d7f7044fb41f98dc0de9a6f9c73136bec674c9ac76ea"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.common-wildebeest.daf78b63fec9"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -4583,14 +5241,34 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Wildebeest",
+          "sourceId": "inat_ccby",
+          "taxonId": 42280,
+          "scientificName": "Connochaetes taurinus",
+          "recordedCommonName": "Common Wildebeest",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "daf78b63fec991c45f93d7f7044fb41f98dc0de9a6f9c73136bec674c9ac76ea"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Hippopotamus",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "7d4786d1df79a3526fd7acbe0998887646946c5b9e757b90ef7a12dbf0a3f072"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.common-hippopotamus.7d4786d1df79"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -4601,7 +5279,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Hippopotamus",
+          "sourceId": "inat_ccby",
+          "taxonId": 42149,
+          "scientificName": "Hippopotamus amphibius",
+          "recordedCommonName": "Common Hippopotamus",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "7d4786d1df79a3526fd7acbe0998887646946c5b9e757b90ef7a12dbf0a3f072"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Eland",
@@ -4641,10 +5335,14 @@
     },
     {
       "name": "Hartebeest",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "54623334f00f91afd570619526fcd35fd7aba9e7eae4ca833418a2b242e5f4bc"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.hartebeest.54623334f00f"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -4655,7 +5353,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Hartebeest",
+          "sourceId": "inat_ccby",
+          "taxonId": 42418,
+          "scientificName": "Alcelaphus buselaphus",
+          "recordedCommonName": "Hartebeest",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "54623334f00f91afd570619526fcd35fd7aba9e7eae4ca833418a2b242e5f4bc"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Oryx",
@@ -5205,10 +5919,16 @@
     },
     {
       "name": "Ant",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "70927457b5bbb56130188f41b2f1290aeaf967c1c5e5189cce3c2608426984b8",
+        "7e8d55830e7e680713bdf0ecc4219461f365ffd57c57d54ea0250b2a92fd7653"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.jet-ant.70927457b5bb",
+        "v5.reference.jet-ant.7e8d55830e7e"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -5219,7 +5939,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Ant",
+          "sourceId": "inat_ccby",
+          "taxonId": 124150,
+          "scientificName": "Lasius fuliginosus",
+          "recordedCommonName": "Jet Ant",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "7e8d55830e7e680713bdf0ecc4219461f365ffd57c57d54ea0250b2a92fd7653",
+            "70927457b5bbb56130188f41b2f1290aeaf967c1c5e5189cce3c2608426984b8"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Spider",
@@ -5295,10 +6032,18 @@
     },
     {
       "name": "Camel",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "3722f0712ea8946967dde2d298b0b9e8fb1fa8a3b1f2f11676999ce9a1719c94",
+        "48e27b7104678e9a15617de31aa6ba62d8a2310ed194310629b5f54514b10e39",
+        "7b000ac59025b9bd8c6ce8718b6357e49d8ee96d4fbf8ab2338945e0a217faff",
+        "e90f85940593ac2c7508783e00284e78405ec67031ff1e44051fb442bc78e5e6"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.camel-groan.3722f0712ea8",
+        "v5.reference.camel-groan.48e27b710467"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -5309,7 +6054,22 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Camel",
+          "sourceId": "oga_animal_camel_groan",
+          "sourceHashes": [
+            "48e27b7104678e9a15617de31aa6ba62d8a2310ed194310629b5f54514b10e39",
+            "3722f0712ea8946967dde2d298b0b9e8fb1fa8a3b1f2f11676999ce9a1719c94",
+            "7b000ac59025b9bd8c6ce8718b6357e49d8ee96d4fbf8ab2338945e0a217faff",
+            "e90f85940593ac2c7508783e00284e78405ec67031ff1e44051fb442bc78e5e6"
+          ],
+          "context": "Vintage archived recording as described by contributor; not a field identification",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Yak",
@@ -5367,10 +6127,16 @@
     },
     {
       "name": "Bustard",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "37f6417d9643313245d6d272b68154911bf0d500037d30214cfac2eba47cc8f7",
+        "6f5361e9274493006915d90906abc201bad278ad9d7e83a47691c808a677fa07"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.little-bustard.37f6417d9643",
+        "v5.reference.little-bustard.6f5361e92744"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -5381,7 +6147,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Bustard",
+          "sourceId": "inat_ccby",
+          "taxonId": 132,
+          "scientificName": "Tetrax tetrax",
+          "recordedCommonName": "Little Bustard",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "6f5361e9274493006915d90906abc201bad278ad9d7e83a47691c808a677fa07",
+            "37f6417d9643313245d6d272b68154911bf0d500037d30214cfac2eba47cc8f7"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Sandgrouse",
@@ -5451,10 +6234,16 @@
     },
     {
       "name": "Maned Wolf",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "497e879222748da069ece1ac4711e2df9a51ccbb9685afeeff6d8bcf9c6d5909",
+        "a7f6301fc145651db3007f2825af33ba088921709769eb611f3400844310a50d"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.maned-wolf.497e87922274",
+        "v5.reference.maned-wolf.a7f6301fc145"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -5465,7 +6254,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Maned Wolf",
+          "sourceId": "inat_ccby",
+          "taxonId": 42091,
+          "scientificName": "Chrysocyon brachyurus",
+          "recordedCommonName": "Maned Wolf",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "a7f6301fc145651db3007f2825af33ba088921709769eb611f3400844310a50d",
+            "497e879222748da069ece1ac4711e2df9a51ccbb9685afeeff6d8bcf9c6d5909"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Pampas Fox",
@@ -5657,10 +6463,14 @@
     },
     {
       "name": "Sheep",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "b2687077a29c044e57220b660c616f9336a0b454519f67bbc59954e0574acc70"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.sheep-baa.b2687077a29c"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -5671,7 +6481,19 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Sheep",
+          "sourceId": "oga_animal_sheep_baa",
+          "sourceHashes": [
+            "b2687077a29c044e57220b660c616f9336a0b454519f67bbc59954e0574acc70"
+          ],
+          "context": "Recorded sheep baa as attributed by contributor",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Goat",
@@ -5794,6 +6616,7 @@
     {
       "name": "Quail",
       "sourceHashes": [
+        "2cc6cbfe3fa84a3b98e1251f101b74f87ab7cb9ac37ac2af2c677e032931e050",
         "90445c5a8696fa7bc27397687fa24d83731fb56c1d9a04d681de3e15c2ac1a77",
         "f2d01b201769a2821d112fb3ae24f084001912564aeca7f0db910d59625fc705"
       ],
@@ -5809,7 +6632,8 @@
       "referenceStatus": "identified_source_candidates",
       "referenceIds": [
         "v4.reference.california-quail.90445c5a8696",
-        "v4.reference.california-quail.f2d01b201769"
+        "v4.reference.california-quail.f2d01b201769",
+        "v5.reference.quail-sound.2cc6cbfe3fa8"
       ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
@@ -5821,7 +6645,19 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Quail",
+          "sourceId": "oga_animal_quail_sound",
+          "sourceHashes": [
+            "2cc6cbfe3fa84a3b98e1251f101b74f87ab7cb9ac37ac2af2c677e032931e050"
+          ],
+          "context": "Source-described bobwhite quail extracted from summer ambience",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Honeybee",
@@ -7057,10 +7893,14 @@
     },
     {
       "name": "Puffin",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "6fde34cfea3c817987b501bc6880044bfd9454db4505a2244b2d7083d9eb81d7"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.atlantic-puffin.6fde34cfea3c"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -7071,7 +7911,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Puffin",
+          "sourceId": "inat_ccby",
+          "taxonId": 4504,
+          "scientificName": "Fratercula arctica",
+          "recordedCommonName": "Atlantic Puffin",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "6fde34cfea3c817987b501bc6880044bfd9454db4505a2244b2d7083d9eb81d7"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Guillemot",
@@ -7320,8 +8176,12 @@
     {
       "name": "Penguin",
       "sourceHashes": [
+        "362dd13c7f19db34bab615cd0b542938f32e75c00cad7701af81dd1e6a58ff01",
+        "c67a602314342f0ae995ffd780adaca16ef8709e854da934f41093868f00dd1d",
         "d20861398a128bd479e70d7fedff1796f373b02d35d2d95ce7d4ab9b6c43a1aa",
-        "d64921b653ef09c58738badc73dc5d12654db19c8e71b3ead363e215ed7a579c"
+        "d64921b653ef09c58738badc73dc5d12654db19c8e71b3ead363e215ed7a579c",
+        "d983bc83f13d544df19eebd2d0f43b9ef8865bcf736e1263f020291f6f175767",
+        "e290483aff9c94277fd7aaea7b4267d5ccd36728226b59e2f5b619896ff2450c"
       ],
       "binding": {
         "gameName": "Penguin",
@@ -7335,7 +8195,9 @@
       "referenceStatus": "identified_source_candidates",
       "referenceIds": [
         "v4.reference.gentoo-penguin.d20861398a12",
-        "v4.reference.gentoo-penguin.d64921b653ef"
+        "v4.reference.gentoo-penguin.d64921b653ef",
+        "v5.reference.penguin-sounds.362dd13c7f19",
+        "v5.reference.penguin-sounds.c67a60231434"
       ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
@@ -7347,7 +8209,22 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Penguin",
+          "sourceId": "oga_animal_penguin_sounds",
+          "sourceHashes": [
+            "c67a602314342f0ae995ffd780adaca16ef8709e854da934f41093868f00dd1d",
+            "362dd13c7f19db34bab615cd0b542938f32e75c00cad7701af81dd1e6a58ff01",
+            "d983bc83f13d544df19eebd2d0f43b9ef8865bcf736e1263f020291f6f175767",
+            "e290483aff9c94277fd7aaea7b4267d5ccd36728226b59e2f5b619896ff2450c"
+          ],
+          "context": "Leipzig zoo penguins with other birds/water; source noise reduction",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Albatross",
@@ -7745,10 +8622,14 @@
     },
     {
       "name": "Snake",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "ed1550bb8a57bc906a01434e51bd5ef233923963d305cb64d8dc73a55add22e0"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.gopher-snake.ed1550bb8a57"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -7759,7 +8640,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Snake",
+          "sourceId": "inat_ccby",
+          "taxonId": 29044,
+          "scientificName": "Pituophis catenifer",
+          "recordedCommonName": "Gopher Snake",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "ed1550bb8a57bc906a01434e51bd5ef233923963d305cb64d8dc73a55add22e0"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Wild Pig",
@@ -8105,10 +9002,16 @@
     },
     {
       "name": "Giant Otter",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "70a275de9b32972c9629dd2348705f55e8806cbb6ced6bd01a1f7a109031f094",
+        "d0a55ad40d6b22327ccbcb2435a5a18cdb062cfcad041a1cca44efdda3d224b3"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.giant-otter.70a275de9b32",
+        "v5.reference.giant-otter.d0a55ad40d6b"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -8119,7 +9022,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Giant Otter",
+          "sourceId": "inat_ccby",
+          "taxonId": 41845,
+          "scientificName": "Pteronura brasiliensis",
+          "recordedCommonName": "Giant Otter",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "70a275de9b32972c9629dd2348705f55e8806cbb6ced6bd01a1f7a109031f094",
+            "d0a55ad40d6b22327ccbcb2435a5a18cdb062cfcad041a1cca44efdda3d224b3"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Electric Eel",
@@ -8213,10 +9133,14 @@
     },
     {
       "name": "River Dolphin",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "06c0ae0cff48ed919567f60d2ca92a9c4fdbcc1b40f5461872daacab7a7011c7"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.amazon-river-dolphin.06c0ae0cff48"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -8227,7 +9151,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "River Dolphin",
+          "sourceId": "inat_ccby",
+          "taxonId": 41472,
+          "scientificName": "Inia geoffrensis",
+          "recordedCommonName": "Amazon River Dolphin",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "06c0ae0cff48ed919567f60d2ca92a9c4fdbcc1b40f5461872daacab7a7011c7"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Manatee",
@@ -8345,10 +9285,14 @@
     },
     {
       "name": "Pelican",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "89cccc96b27c70644b3e6dd2d0592c67ab2fbb292564e7807a7de4bec4c82978"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.baby-pelican-ogg.89cccc96b27c"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -8359,7 +9303,19 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Pelican",
+          "sourceId": "fws_commons",
+          "sourceHashes": [
+            "89cccc96b27c70644b3e6dd2d0592c67ab2fbb292564e7807a7de4bec4c82978"
+          ],
+          "context": "Unidentified Pelecanus chick; not adult-species coverage",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Osprey",
@@ -9117,10 +10073,14 @@
     },
     {
       "name": "Sea Otter",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "771dd7d1cdabf239a9da66749a050213a989dfb6f605d273547fd91ca473834c"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.sea-otter.771dd7d1cdab"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -9131,7 +10091,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Sea Otter",
+          "sourceId": "inat_ccby",
+          "taxonId": 41860,
+          "scientificName": "Enhydra lutris",
+          "recordedCommonName": "Sea Otter",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "771dd7d1cdabf239a9da66749a050213a989dfb6f605d273547fd91ca473834c"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Goby",
@@ -11253,10 +12229,16 @@
     },
     {
       "name": "Rat",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "05772c4af8b869b82278e1ebcf2d951b421286078d2c63166dd6a24d7fa60c3d",
+        "f80dc6127853ff037c049875bc5aa8a317d01ea4d44d223d5152e18de19314fa"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.brown-rat.05772c4af8b8",
+        "v5.reference.brown-rat.f80dc6127853"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -11267,11 +12249,29 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Rat",
+          "sourceId": "inat_ccby",
+          "taxonId": 44576,
+          "scientificName": "Rattus norvegicus",
+          "recordedCommonName": "Brown Rat",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "05772c4af8b869b82278e1ebcf2d951b421286078d2c63166dd6a24d7fa60c3d",
+            "f80dc6127853ff037c049875bc5aa8a317d01ea4d44d223d5152e18de19314fa"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Cat",
       "sourceHashes": [
+        "2bc92b1c3fd28777b9fe2e54d25e731cda346a911e49687c441cccb3a195ad52",
         "a4684e2a7f1c2560d69f8cb79fdd6f21e2b0107c6f9ade7eec69ab197fc61902",
         "e582839a77e326eaaa6e9bcd844858dcbb6d7149ea0517eaf4cde745de77bb5d"
       ],
@@ -11287,7 +12287,8 @@
       "referenceStatus": "identified_source_candidates",
       "referenceIds": [
         "v4.reference.domestic-cat.a4684e2a7f1c",
-        "v4.reference.domestic-cat.e582839a77e3"
+        "v4.reference.domestic-cat.e582839a77e3",
+        "v5.reference.cat-flapping-ears-sound.2bc92b1c3fd2"
       ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
@@ -11299,7 +12300,19 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Cat",
+          "sourceId": "oga_animal_cat_flapping_ears_sound",
+          "sourceHashes": [
+            "2bc92b1c3fd28777b9fe2e54d25e731cda346a911e49687c441cccb3a195ad52"
+          ],
+          "context": "Ear movement, not vocal behavior",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Seabird",
@@ -11705,10 +12718,14 @@
     },
     {
       "name": "Horse",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "a75b5dfad9aac3be6c745530fd10aa8494ec382691a2862cd9d5131c65abe120"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.domestic-horse.a75b5dfad9aa"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -11719,7 +12736,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Horse",
+          "sourceId": "inat_ccby",
+          "taxonId": 209233,
+          "scientificName": "Equus caballus",
+          "recordedCommonName": "Domestic Horse",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "a75b5dfad9aac3be6c745530fd10aa8494ec382691a2862cd9d5131c65abe120"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Donkey",
@@ -11901,10 +12934,14 @@
     },
     {
       "name": "Moth",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "0c83137710a9b35a0adfd729669ab1d5c54348d6f40e80315b7ee7911866057e"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.common-whistling-moth.0c83137710a9"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -11915,7 +12952,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Moth",
+          "sourceId": "inat_ccby",
+          "taxonId": 636296,
+          "scientificName": "Hecatesia fenestrata",
+          "recordedCommonName": "Common Whistling Moth",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "0c83137710a9b35a0adfd729669ab1d5c54348d6f40e80315b7ee7911866057e"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Wasp",
@@ -11969,7 +13022,10 @@
       "name": "Dog",
       "sourceHashes": [
         "81a7cbd298b881994d7ff946caf45deb798cc1589fc10f739045f96b0fff705f",
-        "9b53846bb315771e6bfb784a6ddce96b06c82ace2f737f33fe9267f548d4e29f"
+        "94b9180914ce6142599562e47a58b224c4ac81575056752df5fd48fb0e570701",
+        "9b53846bb315771e6bfb784a6ddce96b06c82ace2f737f33fe9267f548d4e29f",
+        "9bb77982583ab69a3417cbdfa6085e2cd95947d3d6199bb587cdc7220f1a0529",
+        "bbd0f908b3514dd3bd7d2bc04dcf64f8d360a161e7f43cac5d6761e7add79451"
       ],
       "binding": {
         "gameName": "Dog",
@@ -11983,7 +13039,10 @@
       "referenceStatus": "identified_source_candidates",
       "referenceIds": [
         "v4.reference.domestic-dog.81a7cbd298b8",
-        "v4.reference.domestic-dog.9b53846bb315"
+        "v4.reference.domestic-dog.9b53846bb315",
+        "v5.reference.dog-barking-mono.94b9180914ce",
+        "v5.reference.dog-grunt.9bb77982583a",
+        "v5.reference.dog-barking-mono.bbd0f908b351"
       ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
@@ -11995,7 +13054,30 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Dog",
+          "sourceId": "oga_animal_dog_barking_mono",
+          "sourceHashes": [
+            "bbd0f908b3514dd3bd7d2bc04dcf64f8d360a161e7f43cac5d6761e7add79451",
+            "94b9180914ce6142599562e47a58b224c4ac81575056752df5fd48fb0e570701"
+          ],
+          "context": "Recorded dog bark with noise reduction; incidental insect noise possible",
+          "classification": "source_identified_reference",
+          "accepted": false
+        },
+        {
+          "gameName": "Dog",
+          "sourceId": "oga_animal_dog_grunt",
+          "sourceHashes": [
+            "9bb77982583ab69a3417cbdfa6085e2cd95947d3d6199bb587cdc7220f1a0529"
+          ],
+          "context": "Frieda the dog playing with a toy; grunt, not injury",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Fly",
@@ -12067,10 +13149,16 @@
     },
     {
       "name": "Desert Owl",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "75e771de6cccfc6b6fa513b533644c039cb7b2b4dfabb482729db28b8ec5bcb9",
+        "d90ec2f25217a64f5b2da89dc7e189c9b66b6b206a6c82bf291497f25e21fb71"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.desert-owl.75e771de6ccc",
+        "v5.reference.desert-owl.d90ec2f25217"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -12081,7 +13169,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Desert Owl",
+          "sourceId": "inat_ccby",
+          "taxonId": 507358,
+          "scientificName": "Strix hadorami",
+          "recordedCommonName": "Desert Owl",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "75e771de6cccfc6b6fa513b533644c039cb7b2b4dfabb482729db28b8ec5bcb9",
+            "d90ec2f25217a64f5b2da89dc7e189c9b66b6b206a6c82bf291497f25e21fb71"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Vine Snake",
@@ -12597,10 +13702,14 @@
     },
     {
       "name": "Cassowary",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "7197283256b2de6eadc8e4f8a46dd9281b0bfe0c6587718f406078cb57e5d168"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.southern-cassowary.7197283256b2"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -12611,7 +13720,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Cassowary",
+          "sourceId": "inat_ccby",
+          "taxonId": 20500,
+          "scientificName": "Casuarius casuarius",
+          "recordedCommonName": "Southern Cassowary",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "7197283256b2de6eadc8e4f8a46dd9281b0bfe0c6587718f406078cb57e5d168"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Kiwi",
@@ -12859,10 +13984,16 @@
     },
     {
       "name": "Pronghorn",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "3f0dba4b2724780e1505d7a86609cca7fb849f0b3ffebfdf4099222be207a559",
+        "abe0f8c7dce688ae9af17f6c2ef59db4615ef46f16b21e6442b5f5c61bfd8cdd"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.pronghorn.3f0dba4b2724",
+        "v5.reference.pronghorn.abe0f8c7dce6"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -12873,7 +14004,24 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Pronghorn",
+          "sourceId": "inat_ccby",
+          "taxonId": 42429,
+          "scientificName": "Antilocapra americana",
+          "recordedCommonName": "Pronghorn",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "3f0dba4b2724780e1505d7a86609cca7fb849f0b3ffebfdf4099222be207a559",
+            "abe0f8c7dce688ae9af17f6c2ef59db4615ef46f16b21e6442b5f5c61bfd8cdd"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Springbok",
@@ -12985,10 +14133,14 @@
     },
     {
       "name": "Serow",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "b38e32a5bf6f12721c305d36553e289d38335e85b4d3564cda979b68735eaaa2"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.taiwan-serow.b38e32a5bf6f"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -12999,7 +14151,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Serow",
+          "sourceId": "inat_ccby",
+          "taxonId": 74144,
+          "scientificName": "Capricornis swinhoei",
+          "recordedCommonName": "Taiwan Serow",
+          "relation": "narrower_identified_taxon",
+          "sourceHashes": [
+            "b38e32a5bf6f12721c305d36553e289d38335e85b4d3564cda979b68735eaaa2"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Harpy Eagle",
@@ -13053,10 +14221,14 @@
     },
     {
       "name": "Hoatzin",
-      "sourceHashes": [],
+      "sourceHashes": [
+        "9932688bb0f50203099835fc64d5d6afd7423ea76f057d09cda1fb73c78b4247"
+      ],
       "binding": null,
-      "referenceStatus": "missing",
-      "referenceIds": [],
+      "referenceStatus": "identified_source_candidates",
+      "referenceIds": [
+        "v5.reference.hoatzin.9932688bb0f5"
+      ],
       "behaviors": {
         "call": "not_established_by_recording_identity",
         "alert": "not_established_by_recording_identity",
@@ -13067,7 +14239,23 @@
         "breath-idle": "not_established_by_recording_identity",
         "land-thud": "not_established_by_recording_identity"
       },
-      "accepted": false
+      "accepted": false,
+      "supplementalBindings": [
+        {
+          "gameName": "Hoatzin",
+          "sourceId": "inat_ccby",
+          "taxonId": 1626,
+          "scientificName": "Opisthocomus hoazin",
+          "recordedCommonName": "Hoatzin",
+          "relation": "same_taxon",
+          "sourceHashes": [
+            "9932688bb0f50203099835fc64d5d6afd7423ea76f057d09cda1fb73c78b4247"
+          ],
+          "context": "Research-grade observation identity; audio behavior and field companions still require review.",
+          "classification": "source_identified_reference",
+          "accepted": false
+        }
+      ]
     },
     {
       "name": "Quetzal",
@@ -13773,8 +14961,8 @@
       "notes": "Designed environment component rock. Ingredients: Rockfall. Natural wind/water/geology plus explicitly designed material accents; no claim of a complete real biome recording. Loop, incidental wildlife and seam listening pending."
     }
   ],
-  "sourceReferences": 154,
-  "missingSourceReferences": 477,
+  "sourceReferences": 203,
+  "missingSourceReferences": 428,
   "accepted": 0,
   "behaviorCoverageComplete": false,
   "notes": "Taxon-identified reference candidates are separate from completed per-behavior species coverage."

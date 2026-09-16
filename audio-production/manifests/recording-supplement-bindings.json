@@ -1,0 +1,168 @@
+{
+  "schema": "cf.recording-bindings/v1",
+  "bindings": [
+    {
+      "gameName": "Alligator",
+      "sourceId": "fws_commons",
+      "sourceHashes": [
+        "72a5612e99b6a941d751efbccf1e44f816c06c7884e3108c5298a2ba84b25169"
+      ],
+      "context": "American alligator bellow",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Alligator",
+      "sourceId": "fws_commons",
+      "sourceHashes": [
+        "b019246ade92f25ea00c2185e1b5f2e023770513691ba9ef71e47e6b3d0ca4b1"
+      ],
+      "context": "American alligator hiss; defensive context, not a game hurt cue",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Stork",
+      "sourceId": "fws_commons",
+      "sourceHashes": [
+        "99332a0e840f797d2730bbc568d304a7e5b2d34fb0a3cebc1ffa0976732e389b"
+      ],
+      "context": "Wood stork chicks; not adult-species coverage",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Pelican",
+      "sourceId": "fws_commons",
+      "sourceHashes": [
+        "89cccc96b27c70644b3e6dd2d0592c67ab2fbb292564e7807a7de4bec4c82978"
+      ],
+      "context": "Unidentified Pelecanus chick; not adult-species coverage",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Camel",
+      "sourceId": "oga_animal_camel_groan",
+      "sourceHashes": [
+        "48e27b7104678e9a15617de31aa6ba62d8a2310ed194310629b5f54514b10e39",
+        "3722f0712ea8946967dde2d298b0b9e8fb1fa8a3b1f2f11676999ce9a1719c94",
+        "7b000ac59025b9bd8c6ce8718b6357e49d8ee96d4fbf8ab2338945e0a217faff",
+        "e90f85940593ac2c7508783e00284e78405ec67031ff1e44051fb442bc78e5e6"
+      ],
+      "context": "Vintage archived recording as described by contributor; not a field identification",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Cat",
+      "sourceId": "oga_animal_cat_flapping_ears_sound",
+      "sourceHashes": [
+        "2bc92b1c3fd28777b9fe2e54d25e731cda346a911e49687c441cccb3a195ad52"
+      ],
+      "context": "Ear movement, not vocal behavior",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Crow",
+      "sourceId": "oga_animal_crow_caw",
+      "sourceHashes": [
+        "bba22883209b435905471d057160f1badae59b89a62e9a8b3199d7e327b17339"
+      ],
+      "context": "Crow recorded in Cairo; source-described identity",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Rabbit",
+      "sourceId": "oga_animal_rabbit_eating",
+      "sourceHashes": [
+        "f6ccbfdde9880fb33df0ba28356f34f5e45e380ad15d98661b42be4213d3b49a"
+      ],
+      "context": "Rabbit eating salad; chewing, not vocal behavior",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Dog",
+      "sourceId": "oga_animal_dog_barking_mono",
+      "sourceHashes": [
+        "bbd0f908b3514dd3bd7d2bc04dcf64f8d360a161e7f43cac5d6761e7add79451",
+        "94b9180914ce6142599562e47a58b224c4ac81575056752df5fd48fb0e570701"
+      ],
+      "context": "Recorded dog bark with noise reduction; incidental insect noise possible",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Dog",
+      "sourceId": "oga_animal_dog_grunt",
+      "sourceHashes": [
+        "9bb77982583ab69a3417cbdfa6085e2cd95947d3d6199bb587cdc7220f1a0529"
+      ],
+      "context": "Frieda the dog playing with a toy; grunt, not injury",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Peacock",
+      "sourceId": "oga_animal_peacock_scream",
+      "sourceHashes": [
+        "2a4b19ac14a22f63425f98e9d305610c8ce766b02bfac295fdf827a6d5b70ddd"
+      ],
+      "context": "Public-domain permission correspondence retained; extracted scream",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Fruit Bat",
+      "sourceId": "oga_animal_bat_screeches",
+      "sourceHashes": [
+        "71dd6dac86d9cd74480f78b521021a22d5ec4d3f7151caa7536ed2da6acf21ee",
+        "72d1705f4e12b1dfb7d19cc9091bb8c7f11c5aaf80154342c3a31c817cdc2a1b",
+        "bc7f1ac5f52fa87f33eff62e4ecb9b7e0fe42164b5830f24a4ce6471ae4d2a01",
+        "46c05d9a33cd4b2e5514d25473066503b2fad4ea55eb5f76e43c010cba56ba7a",
+        "07ac66d22c9ac26f635773a026e1d24a0413fd55df23b87432873fa660b142fe",
+        "dc76fc3977e33d79c76dccd19f5d0c5b516566993b81c7ae0dbc8d097b702e95"
+      ],
+      "context": "Fruit bats, Sydney field recording; water fountain and source noise reduction",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Penguin",
+      "sourceId": "oga_animal_penguin_sounds",
+      "sourceHashes": [
+        "c67a602314342f0ae995ffd780adaca16ef8709e854da934f41093868f00dd1d",
+        "362dd13c7f19db34bab615cd0b542938f32e75c00cad7701af81dd1e6a58ff01",
+        "d983bc83f13d544df19eebd2d0f43b9ef8865bcf736e1263f020291f6f175767",
+        "e290483aff9c94277fd7aaea7b4267d5ccd36728226b59e2f5b619896ff2450c"
+      ],
+      "context": "Leipzig zoo penguins with other birds/water; source noise reduction",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Quail",
+      "sourceId": "oga_animal_quail_sound",
+      "sourceHashes": [
+        "2cc6cbfe3fa84a3b98e1251f101b74f87ab7cb9ac37ac2af2c677e032931e050"
+      ],
+      "context": "Source-described bobwhite quail extracted from summer ambience",
+      "classification": "source_identified_reference",
+      "accepted": false
+    },
+    {
+      "gameName": "Sheep",
+      "sourceId": "oga_animal_sheep_baa",
+      "sourceHashes": [
+        "b2687077a29c044e57220b660c616f9336a0b454519f67bbc59954e0574acc70"
+      ],
+      "context": "Recorded sheep baa as attributed by contributor",
+      "classification": "source_identified_reference",
+      "accepted": false
+    }
+  ],
+  "meaning": "Explicit source-described identities and mechanisms; no behavior or listening approval"
+}

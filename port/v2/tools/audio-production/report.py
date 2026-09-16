@@ -4,6 +4,17 @@ import collections, hashlib, json, wave
 from pathlib import Path
 from acquire import BASE, ROOT, MANIFEST, write_json, sha_file, source_manifest
 
+def recording_credit(media):
+    """Keep the supplied attribution and exact license on every attributed derivative."""
+    license_id=media['licenseId'];url=media.get('licenseUrl','')
+    if license_id.startswith('CC-BY-'):
+        expected='https://creativecommons.org/licenses/by/'+license_id.removeprefix('CC-BY-')+'/'
+        if url!=expected or not media.get('attribution') or not media.get('sourcePage'):
+            raise ValueError('Attributed recording lacks exact license/source/attribution')
+    return {'sourceId':media['sourceId'],'creator':media.get('attribution') or media['creator'],
+        'license':license_id+(' ('+url+')' if url else ''),'licenseId':license_id,'licenseUrl':url,
+        'url':media.get('sourcePage',''),'attribution':media.get('attribution','')}
+
 def main():
     acquisition=json.loads((BASE/'manifests/acquisition.json').read_text())
     manifest=source_manifest(); sources={s['id']:s for s in manifest['sources']}
@@ -30,10 +41,9 @@ def main():
     if len({r['id'] for r in outputs})!=len(outputs): raise ValueError('Duplicate candidate IDs across render receipts')
     for row in outputs:
         if any(l['sha256'] in quarantined for l in row['layers']):raise ValueError('Render references quarantined source')
-        row['sourceCredits']=[{'sourceId':l['sourceId'],'creator':source_media[(l['sourceId'],l['sha256'])]['creator'],
-            'license':source_media[(l['sourceId'],l['sha256'])]['licenseId'],
-            'url':source_media[(l['sourceId'],l['sha256'])].get('sourcePage',sources[l['sourceId']]['source_page_url'])}
-            for l in row['layers']]
+        row['sourceCredits']=[recording_credit(source_media[(l['sourceId'],l['sha256'])]) for l in row['layers']]
+        for credit in row['sourceCredits']:
+            if not credit['url']:credit['url']=sources[credit['sourceId']]['source_page_url']
         if not row['layers']:
             row['sourceCredits']=[{'sourceId':'original_surge','creator':'Celestial Frontier original MIDI sketch','license':'Original synthesis; no external sample imported','url':''}]
     write_json(BASE/'audition/catalog.json',{'schema':'cf.audio-audition/v1','outputs':outputs})
@@ -49,7 +59,8 @@ def main():
           'recipe':row,'approved':False,'rights':[{'sourceId':x['sourceId'],'creator':source_media[(x['sourceId'],x['sha256'])]['creator'],
             'licenseId':source_media[(x['sourceId'],x['sha256'])]['licenseId'],
             'sourceUrl':source_media[(x['sourceId'],x['sha256'])].get('sourcePage',sources[x['sourceId']]['source_page_url']),
-            'inputSha256':x['sha256']} for x in row['layers']]})
+            'inputSha256':x['sha256'],**recording_credit(source_media[(x['sourceId'],x['sha256'])]),
+            'modifications':row['notes']} for x in row['layers']]})
     aliases={h:ids for h,ids in content.items() if len(ids)>1}
     write_json(BASE/'reports/duplicate-treatments.json',{'schema':'cf.audio-duplicate-treatments/v1',
         'meaning':'Identical decoded PCM counts once as a distinct performance, regardless of filename or event mapping.',
@@ -60,7 +71,7 @@ def main():
     for r in coverage['requirements']:
         ecological=next((e for e in ecology['fauna'] if e['name']==r.get('name')),None) if ecology and r.get('kingdom')=='fauna' else None
         if ecological:
-            r['candidateSourceHashes']=ecological['sourceHashes'];r['sourceBinding']=ecological['binding']
+            r['candidateSourceHashes']=ecological['sourceHashes'];r['sourceBinding']=ecological['binding'];r['supplementalSourceBindings']=ecological.get('supplementalBindings',[])
             r['behaviorStatus']=ecological['behaviors']
         ids=by_requirement[r['id']]
         if r.get('category')=='family':ids=[x['id'] for x in outputs if any(k.startswith(r['id']+'.') for k in x['requirements'])]
@@ -89,6 +100,16 @@ def main():
         if s.get('notes'):credits.append('  '+s['notes'])
     credits += ['','Original MIDI/Surge sketches: Celestial Frontier production candidates, installed Surge XT 1.3.4 initialized classic oscillator; saved state in each REAPER project. No third-party wavetable was imported. REAPER is the existing licensed installation; $0 spent.','','No creator was contacted. Item-level NPS Credit / Author and description are preserved in acquisition.json. Collection public-domain statements are not relabelled CC0.']
     (BASE/'AUDIO-CREDITS.md').write_text('\n'.join(credits)+'\n')
+    attributed=['# Attributed recording credits','','Unapproved candidate derivatives; original downloaded bytes retained. No creator endorsement is implied.','']
+    for m in acquisition['media']:
+        if not m['licenseId'].startswith('CC-BY-'):continue
+        c=recording_credit(m)
+        derivatives=[r['id'] for r in outputs if any(l['sha256']==m['sha256'] for l in r['layers'])]
+        attributed += ['## '+m.get('recordingTitle',m.get('title','Recording')),'',c['attribution'],
+            '[Original observation]('+c['url']+') · [License]('+c['licenseUrl']+')',
+            'Original SHA-256: '+m['sha256'],
+            ('Rendered candidates: '+', '.join(derivatives)+'. Changes: bounded opening excerpt; input attenuation, 48 kHz PCM conversion, short edge fades, stock REAPER track/render and WAV/Opus encoding. Per-file recipe records exact rates, gains and duration. No listening acceptance.' if derivatives else 'Original only; no rendered derivative yet.'),'']
+    (BASE/'RECORDING_CREDITS.md').write_text('\n'.join(attributed)+'\n')
     counts=collections.Counter(r.get('classification','recipe_or_gap') for r in coverage['requirements'])
     gaps=[r for r in coverage['requirements'] if not r['candidateIds'] and r.get('classification')!='intentional_silence']
     report={'schema':'cf.audio-production-status/v1','sourcePages':len(acquisition['sources']),'sourceAudioEntries':len(acquisition['media']),
