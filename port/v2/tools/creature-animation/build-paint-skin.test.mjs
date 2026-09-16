@@ -1,0 +1,2 @@
+import test from'node:test';import assert from'node:assert/strict';import{buildPaintSkin}from'./build-paint-skin.mjs';
+test('mesh profile refuses nonpositive, fractional and excessive steps before reading sources',async()=>{for(const key of['boundaryStep','interiorStep'])for(const value of[0,-1,.5,2049,Infinity,NaN])await assert.rejects(()=>buildPaintSkin('/not-read',null,null,{[key]:value}),new RegExp('Paint skin: invalid '+key));});

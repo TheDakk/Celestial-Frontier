@@ -1,0 +1,122 @@
+{
+  "schema": "cf.arap-kernel-parity/v1",
+  "status": "PASS",
+  "scope": "CPU microbenchmark and exact buffer/stat parity. Does not qualify native frame time, browser arithmetic or capture acceptance.",
+  "node": "v26.8.2",
+  "source": {
+    "before": "adc9c6a33b447e128a49e678116f5b2eaf6d5b6eaca644819ebf2e3012af81d1",
+    "after": "f438be31afd81f5ca151761ee3020d80e11e497c75959374f39efcd7dbb7212d",
+    "poses": "e21d5f2b5795a71ffb7dea8028d018a7adb8ee9f3ec107cd54dc46e47b558151",
+    "manifest": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+  },
+  "controls": {
+    "singleBitMutationRejected": true
+  },
+  "rows": [
+    {
+      "id": "civet",
+      "fieldVertices": 2532,
+      "pins": 249,
+      "samples": 1211,
+      "parity": {
+        "Float32Array": {
+          "samples": 1211,
+          "outputBytesIdentical": true,
+          "statsIdentical": true,
+          "targetsUnchanged": true
+        },
+        "Float64Array": {
+          "samples": 1211,
+          "outputBytesIdentical": true,
+          "statsIdentical": true,
+          "targetsUnchanged": true
+        }
+      },
+      "micro": {
+        "before": {
+          "samples": 2422,
+          "medianMs": 0.9426250000005894,
+          "p95Ms": 0.9967080000005808,
+          "meanMs": 0.946291726672157
+        },
+        "after": {
+          "samples": 2422,
+          "medianMs": 0.8818750000000364,
+          "p95Ms": 0.9280419999995502,
+          "meanMs": 0.8848331568951335
+        },
+        "medianSpeedup": 1.0688873139623534
+      }
+    },
+    {
+      "id": "fox",
+      "fieldVertices": 2734,
+      "pins": 206,
+      "samples": 1211,
+      "parity": {
+        "Float32Array": {
+          "samples": 1211,
+          "outputBytesIdentical": true,
+          "statsIdentical": true,
+          "targetsUnchanged": true
+        },
+        "Float64Array": {
+          "samples": 1211,
+          "outputBytesIdentical": true,
+          "statsIdentical": true,
+          "targetsUnchanged": true
+        }
+      },
+      "micro": {
+        "before": {
+          "samples": 2422,
+          "medianMs": 1.0326250000016444,
+          "p95Ms": 1.1893340000024182,
+          "meanMs": 1.047121921965349
+        },
+        "after": {
+          "samples": 2422,
+          "medianMs": 0.9593329999988782,
+          "p95Ms": 1.0296249999992142,
+          "meanMs": 0.9702566841453268
+        },
+        "medianSpeedup": 1.076398914665556
+      }
+    },
+    {
+      "id": "procedural",
+      "fieldVertices": 649,
+      "pins": 58,
+      "samples": 1211,
+      "parity": {
+        "Float32Array": {
+          "samples": 1211,
+          "outputBytesIdentical": true,
+          "statsIdentical": true,
+          "targetsUnchanged": true
+        },
+        "Float64Array": {
+          "samples": 1211,
+          "outputBytesIdentical": true,
+          "statsIdentical": true,
+          "targetsUnchanged": true
+        }
+      },
+      "micro": {
+        "before": {
+          "samples": 2422,
+          "medianMs": 0.23008399999889662,
+          "p95Ms": 0.23341699999946286,
+          "meanMs": 0.22787042237822488
+        },
+        "after": {
+          "samples": 2422,
+          "medianMs": 0.21595800000068266,
+          "p95Ms": 0.21912499999962165,
+          "meanMs": 0.21350537696121508
+        },
+        "medianSpeedup": 1.0654108669193514
+      }
+    }
+  ]
+}

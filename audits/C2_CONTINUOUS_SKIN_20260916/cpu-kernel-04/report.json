@@ -1,0 +1,236 @@
+{
+  "schema": "cf.arap-wasm-leaf-comparison/v1",
+  "status": "PASS",
+  "scope": "Wasm sweep against the current JS reference: exact output and statistics in both precisions, independent shape checks, and CPU microbenchmark. Native pixels/live frame time remain native gates.",
+  "maximumAllowedNativeDifferencePx": 0.001,
+  "node": "v26.8.2",
+  "source": {
+    "before": "d4bca2a508d7fbbe3c64c19f7870522847740acdcacbb117dd5034a804f54127",
+    "after": "bf2dbb188f4bbdf3171b54e099897c809d12b034155db8d31ef963a06fe06191",
+    "poses": "e21d5f2b5795a71ffb7dea8028d018a7adb8ee9f3ec107cd54dc46e47b558151",
+    "manifest": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2",
+    "leaf": {
+      "arap-sweep.c": "49a79ac771abe4c5b9522d39578c3b7454aa08a7c827ac06298f5f9d2791793c",
+      "arap-sweep.wasm": "e7e79b7b614b29a1cf69173dfdaf1b161d71eefabc55aac0329ded02f90e4911",
+      "arap-sweep-bytes.mjs": "1c6a47a93ba7cbf487358b6d950a23068d16418d4bf935656f720bb26f9d4b85",
+      "arap-sweep-build.json": "bf4fb6f30b86cd07891fa102f9fb8882e29ecfd507348cf249e8b06789adcc9f",
+      "wasm-arap-sweep.mjs": "c701070d255cdeebebb2966d223974049081ac90c2597cb894cb9ab23bbe162b",
+      "build-arap-sweep.mjs": "edecfdd049d7f31e515e08bc1538b5bd1b55cdb995ac736014beaf39e95a8f9f"
+    }
+  },
+  "controls": {
+    "pointZeroOnePixelMutationRejected": true
+  },
+  "rows": [
+    {
+      "id": "civet",
+      "fieldVertices": 2532,
+      "pins": 249,
+      "samples": 1211,
+      "numerical": {
+        "Float32Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1211,
+          "maxFieldDifferencePx": 0,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.11999994404550543,
+          "maxSourceGapPx": 0.00012999246326824763,
+          "maxPlantedRestDisplacementPx": 0.00005523501681474031,
+          "maxPawTransformErrorPx": 0.00011582489337425505,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 0,
+            "rmsTargetErrorPx": 0,
+            "maximumProjectionPx": 0,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0,
+            "orientationPasses": 0
+          },
+          "worst": null
+        },
+        "Float64Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1211,
+          "maxFieldDifferencePx": 0,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.1199999440451841,
+          "maxSourceGapPx": 0.0001346318494346203,
+          "maxPlantedRestDisplacementPx": 0.00004393844447388377,
+          "maxPawTransformErrorPx": 0.00007562147798728324,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 0,
+            "rmsTargetErrorPx": 0,
+            "maximumProjectionPx": 0,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0,
+            "orientationPasses": 0
+          },
+          "worst": null
+        }
+      },
+      "micro": {
+        "before": {
+          "samples": 2422,
+          "medianMs": 0.7512500000002547,
+          "p95Ms": 0.7860000000000582,
+          "meanMs": 0.7540831090008258
+        },
+        "after": {
+          "samples": 2422,
+          "medianMs": 0.5245000000004438,
+          "p95Ms": 0.5486250000003565,
+          "meanMs": 0.5261330433526071
+        },
+        "medianSpeedup": 1.4323164918963183
+      },
+      "sweepBackend": "wasm"
+    },
+    {
+      "id": "fox",
+      "fieldVertices": 2734,
+      "pins": 206,
+      "samples": 1211,
+      "numerical": {
+        "Float32Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1211,
+          "maxFieldDifferencePx": 0,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.1178334220396939,
+          "maxSourceGapPx": 0.00013112825126781913,
+          "maxPlantedRestDisplacementPx": 0.00006334028829734323,
+          "maxPawTransformErrorPx": 0.00011200866144424814,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 0,
+            "rmsTargetErrorPx": 0,
+            "maximumProjectionPx": 0,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0,
+            "orientationPasses": 0
+          },
+          "worst": null
+        },
+        "Float64Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1211,
+          "maxFieldDifferencePx": 0,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.11783342094776546,
+          "maxSourceGapPx": 0.0001263659179190233,
+          "maxPlantedRestDisplacementPx": 0.000040976968660262355,
+          "maxPawTransformErrorPx": 0.00007793239904070838,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 0,
+            "rmsTargetErrorPx": 0,
+            "maximumProjectionPx": 0,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0,
+            "orientationPasses": 0
+          },
+          "worst": null
+        }
+      },
+      "micro": {
+        "before": {
+          "samples": 2422,
+          "medianMs": 0.8167920000014419,
+          "p95Ms": 0.9908340000001772,
+          "meanMs": 0.84777832741536
+        },
+        "after": {
+          "samples": 2422,
+          "medianMs": 0.5840420000004087,
+          "p95Ms": 0.6418330000014976,
+          "meanMs": 0.6008947320396372
+        },
+        "medianSpeedup": 1.398515860162232
+      },
+      "sweepBackend": "wasm"
+    },
+    {
+      "id": "procedural",
+      "fieldVertices": 649,
+      "pins": 58,
+      "samples": 1211,
+      "numerical": {
+        "Float32Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1211,
+          "maxFieldDifferencePx": 0,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.47646436154914695,
+          "maxSourceGapPx": 0.00006358153149657326,
+          "maxPlantedRestDisplacementPx": 0.00003574052745684941,
+          "maxPawTransformErrorPx": 0.00004699504551573227,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 0,
+            "rmsTargetErrorPx": 0,
+            "maximumProjectionPx": 0,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0,
+            "orientationPasses": 0
+          },
+          "worst": null
+        },
+        "Float64Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1211,
+          "maxFieldDifferencePx": 0,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.4764647761131137,
+          "maxSourceGapPx": 0.00006628372538752144,
+          "maxPlantedRestDisplacementPx": 0.00003574052745684941,
+          "maxPawTransformErrorPx": 0.00003574052777840434,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 0,
+            "rmsTargetErrorPx": 0,
+            "maximumProjectionPx": 0,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0,
+            "orientationPasses": 0
+          },
+          "worst": null
+        }
+      },
+      "micro": {
+        "before": {
+          "samples": 2422,
+          "medianMs": 0.18441600000005565,
+          "p95Ms": 0.18754100000296603,
+          "meanMs": 0.1817047906688751
+        },
+        "after": {
+          "samples": 2422,
+          "medianMs": 0.1321250000000873,
+          "p95Ms": 0.13850000000093132,
+          "meanMs": 0.13097172791077663
+        },
+        "medianSpeedup": 1.3957691579938223
+      },
+      "sweepBackend": "wasm"
+    }
+  ]
+}

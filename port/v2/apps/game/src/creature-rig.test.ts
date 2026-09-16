@@ -2,7 +2,7 @@ import {readFileSync} from 'node:fs';
 import {performance as timer} from 'node:perf_hooks';
 import {expect,it,vi} from 'vitest';
 import {Container,Texture,TextureSource} from 'pixi.js';
-import {loadCreatureRigV1,createCreatureRigPoseTarget,type CreaturePartsBindingV1,type CreatureRigV1} from './creature-rig.js';
+import {loadCreatureRigV1,createCreatureRigPoseTarget,readCreatureRigRuntimeDiagnostics,type CreaturePartsBindingV1,type CreatureRigV1} from './creature-rig.js';
 import {hashBytes,hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
 
 const root=new URL('../../../../../',import.meta.url);
@@ -23,6 +23,8 @@ const snapshot=(rig:CreatureRigV1)=>rig.parts.map(p=>[p.display.x,p.display.y,p.
 it('creates one atlas worth of actual Pixi parts, fixed depth layers and exact rest transforms',async()=>{
  const rig=await load();
  try{
+  expect(readCreatureRigRuntimeDiagnostics(rig)).toEqual({schema:'cf.creature-rig-runtime/v1',sweepBackend:'none',fieldVertices:0,normalPasses:0,robustFallbacks:0});
+  expect(readCreatureRigRuntimeDiagnostics({...rig})).toBeNull();
   expect(rig.root).toBeInstanceOf(Container);expect(rig.parts.map(p=>p.id)).toEqual(parts.map(p=>p.id));
   expect(rig.parts[0]!.display.parent).toBe(rig.root.children[0]);
   expect(rig.parts[1]!.display.parent).toBe(rig.root.children[1]);
@@ -130,4 +132,18 @@ it('continuous parts render through one atlas mesh field and reset without per-p
  try{rig.applyPose({});const rest=geometry();rig.applyPose({root:{rotation:0,dx:.1}});expect(geometry()).not.toEqual(rest);expect(snapshot(rig)).toEqual(parts.map(()=>[0,0,0,1,1]));
   const moved=geometry();expect(()=>rig.applyPose({root:{rotation:0,dx:1e40}})).toThrow('coordinate bound');expect(geometry()).toEqual(moved);rig.applyPose({});expect(geometry()).toEqual(rest);
  }finally{rig.dispose();}
+});
+
+it('refuses a resealed invalid continuous solver before allocating an atlas texture',async()=>{
+ const original=await binding(),part={...original.parts[0]!,frame:{x:0,y:0,width:20,height:20}};
+ const skin:import('../../../tools/creature-animation/paint-skin.mjs').PaintSkin={schema:'cf.paint-skin/v1',
+  vertices:[{x:100,y:200,weights:[['tail1',1]]},{x:120,y:200,weights:[['tail1',1]]},{x:100,y:220,weights:[['tail1',1]]}],
+  parts:[{id:part.id,vertices:[0,1,2].map(i=>({triangle:[0,1,2],barycentric:[i===0?1:0,i===1?1:0,i===2?1:0]})),indices:[0,1,2]}],
+  triangles:[0,0,1],solver:{iterations:4,globalIterations:4,targetWeight:.35,pins:[]}};
+ const {bindingHash,...body}={...original,parts:[part],paintSkin:skin,atlasSize:{width:20,height:20}},decode=vi.fn(decoder);
+ const validBody={...body,paintSkin:{...skin,triangles:[0,1,2]}};
+ const valid=await loadCreatureRigV1(record,{...validBody,bindingHash:await hashJSON(validBody)},master,alpha,atlasBytes,()=>Promise.resolve(new Texture({source:new TextureSource({width:20,height:20})})));
+ try{expect(readCreatureRigRuntimeDiagnostics(valid)).toEqual({schema:'cf.creature-rig-runtime/v1',sweepBackend:'wasm',fieldVertices:3,normalPasses:0,robustFallbacks:0});valid.applyPose({});}finally{valid.dispose();}
+ await expect(loadCreatureRigV1(record,{...body,bindingHash:await hashJSON(body)},master,alpha,atlasBytes,decode)).rejects.toThrow('triangle indices');
+ expect(decode).not.toHaveBeenCalled();
 });

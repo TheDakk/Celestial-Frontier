@@ -1,0 +1,36 @@
+{
+  "status": "NOT_ADOPTED",
+  "reason": "No performance gain; no runtime integration",
+  "files": [
+    {
+      "file": "NOT_ADOPTED.md",
+      "sha256": "40321c5ad58987eb1837fce18d878f5397f1f2fdb3051bc1231adab2471f7350",
+      "bytes": 1683
+    },
+    {
+      "file": "benchmark-as-run.mjs",
+      "sha256": "2a88e8133e8ab211422b74e91a710138a81b288d77ba76f87b99e9ab78ba72b2",
+      "bytes": 3661
+    },
+    {
+      "file": "benchmark-bundle-as-run.mjs",
+      "sha256": "29d48e475fe5d292622fddec4aecf9f5ab8c8bd15faa63b16dcb28f972a21a6f",
+      "bytes": 26150
+    },
+    {
+      "file": "benchmark-report.json",
+      "sha256": "4470e2ff021cfa65d4b1cbebace6ef0ec99f38192aed3ec451b6375a9f63b144",
+      "bytes": 992
+    },
+    {
+      "file": "compiled-paint-part.d.mts",
+      "sha256": "b650706146b8293d99a4adbc9f1cedf37f6519a0997ada1ebd9194dd54ae09ab",
+      "bytes": 443
+    },
+    {
+      "file": "compiled-paint-part.mjs",
+      "sha256": "33f1c18e0914ac7613135467473e21f035c775e64e0e14a1acffc4f80fe16c37",
+      "bytes": 4261
+    }
+  ]
+}

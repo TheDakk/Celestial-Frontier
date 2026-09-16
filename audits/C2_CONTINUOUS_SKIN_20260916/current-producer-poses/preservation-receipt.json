@@ -1,0 +1,31 @@
+{
+  "source": "/private/tmp/cf-current-poses-candidate08-02",
+  "verbatim": true,
+  "files": [
+    {
+      "path": "civet-poses.json",
+      "bytes": 2022503,
+      "sha256": "08ace6f1db2f7c75a409494a76db7ce6bfd483da1458b4c6ff31e9eb38c48339"
+    },
+    {
+      "path": "fox-poses.json",
+      "bytes": 2021989,
+      "sha256": "d40de96dd21855a0f393f858e9df36b8b0e0b4f2bf4669882264221134d6b64a"
+    },
+    {
+      "path": "native-named-pose-comparison.json",
+      "bytes": 658,
+      "sha256": "c1bc3c279675e5bbd7019a04788630966c95c2f396c84df1d458898045afbc92"
+    },
+    {
+      "path": "procedural-poses.json",
+      "bytes": 2005253,
+      "sha256": "5f3131217ef8b4fe71ff7ed1264f3f60ffc2ce7f2634e0331d0d36c58f91916b"
+    },
+    {
+      "path": "report.json",
+      "bytes": 11558,
+      "sha256": "c26a00e96a19a812648d4e4ca38d8617bec9f6e27e1f5803ce4170a36564eeb4"
+    }
+  ]
+}
