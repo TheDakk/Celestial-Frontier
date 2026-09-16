@@ -28,6 +28,111 @@
       "license_id": "Public-Domain",
       "kind": "individual-government-recordings",
       "notes": "US federal works under NOAA copyright policy. Only selected NOAA Passive Acoustics Branch recordings with recording citations; external university/DFO/AWI/Cornell recordings excluded. Source-applied speed/filter changes retained and disclosed. No NOAA endorsement."
+    },
+    {
+      "id": "fws_commons",
+      "title": "US Fish and Wildlife recordings on Commons",
+      "source_page_url": "https://commons.wikimedia.org/wiki/Category:Audio_files_of_animal_sounds_from_the_United_States_Fish_and_Wildlife_Service",
+      "creator": "U.S. Fish and Wildlife Service",
+      "license_id": "Public-Domain",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "oga_animal_camel_groan",
+      "title": "Camel Groan",
+      "source_page_url": "https://opengameart.org/content/camel-groan",
+      "creator": "craigsmith / USC archive; edited by AntumDeluge",
+      "license_id": "CC0-1.0",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "oga_animal_cat_flapping_ears_sound",
+      "title": "Cat Flapping Ears sound",
+      "source_page_url": "https://opengameart.org/content/cat-flapping-ears-sound",
+      "creator": "Bashar3A / Bashar from Skirmish.io",
+      "license_id": "CC0-1.0",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "oga_animal_crow_caw",
+      "title": "Crow caw",
+      "source_page_url": "https://opengameart.org/content/crow-caw",
+      "creator": "zeroisnotnull",
+      "license_id": "CC0-1.0",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "oga_animal_rabbit_eating",
+      "title": "Rabbit Eating",
+      "source_page_url": "https://opengameart.org/content/rabbit-eating",
+      "creator": "Voltiment555",
+      "license_id": "CC0-1.0",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "oga_animal_dog_barking_mono",
+      "title": "Dog barking mono",
+      "source_page_url": "https://opengameart.org/content/dog-barking-mono",
+      "creator": "Brandon Morris / HaelDB",
+      "license_id": "CC0-1.0",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "oga_animal_dog_grunt",
+      "title": "Dog Grunt",
+      "source_page_url": "https://opengameart.org/content/dog-grunt",
+      "creator": "qubodup",
+      "license_id": "CC0-1.0",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "oga_animal_peacock_scream",
+      "title": "Peacock scream",
+      "source_page_url": "https://opengameart.org/content/peacock-scream",
+      "creator": "popthebubbles4; extracted by qubodup",
+      "license_id": "CC0-1.0",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "oga_animal_bat_screeches",
+      "title": "Bat Screeches",
+      "source_page_url": "https://opengameart.org/content/bat-screeches",
+      "creator": "polymorpheva; edited by AntumDeluge",
+      "license_id": "CC0-1.0",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "oga_animal_penguin_sounds",
+      "title": "Penguin Sounds",
+      "source_page_url": "https://opengameart.org/content/penguin-sounds",
+      "creator": "Bidone; edited by AntumDeluge",
+      "license_id": "CC0-1.0",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "oga_animal_quail_sound",
+      "title": "Quail Sound",
+      "source_page_url": "https://opengameart.org/content/quail-sound",
+      "creator": "PrincessGrace; edited by AntumDeluge",
+      "license_id": "CC0-1.0",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "oga_animal_sheep_baa",
+      "title": "Sheep Baa",
+      "source_page_url": "https://opengameart.org/content/sheep-baa",
+      "creator": "mikewest; edited by AntumDeluge",
+      "license_id": "CC0-1.0",
+      "kind": "inspected_recordings"
+    },
+    {
+      "id": "inat_ccby",
+      "title": "Individually CC BY 4.0 iNaturalist recordings",
+      "source_page_url": "https://www.inaturalist.org/",
+      "license_id": "CC-BY-4.0",
+      "creator": "Individual credited sound authors; exact attribution and item links retained per sound",
+      "kind": "individual-media-license",
+      "notes": "Authorized by Nick September 15. No NC/ND/SA licenses; edits listed per rendered candidate."
     }
   ]
 }

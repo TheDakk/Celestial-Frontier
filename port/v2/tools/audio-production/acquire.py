@@ -10,7 +10,7 @@ from html.parser import HTMLParser
 ROOT = Path(__file__).resolve().parents[4]
 BASE = ROOT / 'audio-production'
 MANIFEST = ROOT / 'celestial-frontier-audio-handoff/audio-sources.json'
-ALLOWED_HOSTS = {'kenney.nl', 'opengameart.org', 'www.nps.gov', 'nps.gov', 'creativecommons.org', 'api.inaturalist.org', 'www.inaturalist.org', 'static.inaturalist.org', 'inaturalist-open-data.s3.amazonaws.com', 'www.fisheries.noaa.gov', 'media.fisheries.noaa.gov'}
+ALLOWED_HOSTS = {'kenney.nl', 'opengameart.org', 'www.nps.gov', 'nps.gov', 'creativecommons.org', 'api.inaturalist.org', 'www.inaturalist.org', 'static.inaturalist.org', 'inaturalist-open-data.s3.amazonaws.com', 'www.fisheries.noaa.gov', 'media.fisheries.noaa.gov', 'commons.wikimedia.org', 'upload.wikimedia.org'}
 AUDIO = {'.wav', '.ogg', '.mp3', '.flac', '.aif', '.aiff', '.m4a', '.opus'}
 SAFE = AUDIO | {'.txt', '.md', '.pdf', '.html', '.url', '.png', '.jpg', '.jpeg', '.license'}
 NATURAL = {'Amphibians', 'Birds', 'Geological', 'Hydrological', 'Insects', 'Mammals', 'Meteorological', 'Reptiles'}
@@ -21,8 +21,11 @@ def source_manifest():
     extra=json.loads(SUPPLEMENT.read_text())['sources'] if SUPPLEMENT.exists() else []
     sources=original['sources']+extra
     if len({s['id'] for s in sources})!=len(sources): raise ValueError('Duplicate supplemental source identity')
+    exception_path=BASE/'manifests/license-exceptions.json'
+    exceptions=json.loads(exception_path.read_text())['permitted'] if exception_path.exists() else []
+    allowed={'CC0-1.0','Public-Domain'} | (set(exceptions) & {'CC-BY-1.0','CC-BY-2.0','CC-BY-2.5','CC-BY-3.0','CC-BY-4.0'})
     for s in extra:
-        if s['license_id'] not in ('CC0-1.0','Public-Domain'): raise ValueError('Supplemental license requires approval')
+        if s['license_id'] not in allowed: raise ValueError('Supplemental license requires approval')
         safe_url(s['source_page_url'])
     return {**original,'sources':sources}
 

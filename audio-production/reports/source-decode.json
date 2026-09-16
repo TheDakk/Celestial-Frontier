@@ -7927,13 +7927,13 @@
     {
       "sha256": "714563fc7b762405cb6494b9cff77b9a0d67be0d633929c925752b824776b772",
       "exit": 183,
-      "error": "[mp3float @ 0x74a6c68e00] Header missing\n[aist#0:0/mp3 @ 0x74a7010300] [dec:mp3float @ 0x74a6c14280] Error submitting packet to decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x74a7010300] [dec:mp3float @ 0x74a6c14280] Error processing packet in decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x74a7010300] [dec:mp3float @ 0x74a6c14280] Task finished with error code: -1094995529 (Invalid data found when processing input)\n[aist#0:0/mp3 @ 0x74a7010300] [dec:mp3float @ 0x74a6c14280] Terminating thread with return code -1094995529 (Invalid data found when processing input)\n",
+      "error": "[mp3float @ 0x772ec2ce00] Header missing\n[aist#0:0/mp3 @ 0x772ec04300] [dec:mp3float @ 0x772f408280] Error submitting packet to decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x772ec04300] [dec:mp3float @ 0x772f408280] Error processing packet in decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x772ec04300] [dec:mp3float @ 0x772f408280] Task finished with error code: -1094995529 (Invalid data found when processing input)\n[aist#0:0/mp3 @ 0x772ec04300] [dec:mp3float @ 0x772f408280] Terminating thread with return code -1094995529 (Invalid data found when processing input)\n",
       "path": "source-audio/inat_cc0/714563fc7b762405-1610911.mp3"
     },
     {
       "sha256": "eefe2af978c3eca324ba512f90cb69e9b6d81d6ef73ad56e64cfe9106e83b2ec",
       "exit": 183,
-      "error": "[mp3float @ 0x7bb6854e00] Header missing\n[aist#0:0/mp3 @ 0x7bb7404300] [dec:mp3float @ 0x7bb6800280] Error submitting packet to decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x7bb7404300] [dec:mp3float @ 0x7bb6800280] Error processing packet in decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x7bb7404300] [dec:mp3float @ 0x7bb6800280] Task finished with error code: -1094995529 (Invalid data found when processing input)\n[aist#0:0/mp3 @ 0x7bb7404300] [dec:mp3float @ 0x7bb6800280] Terminating thread with return code -1094995529 (Invalid data found when processing input)\n",
+      "error": "[mp3float @ 0x74b8840e00] Header missing\n[aist#0:0/mp3 @ 0x74b900c300] [dec:mp3float @ 0x74b9010280] Error submitting packet to decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x74b900c300] [dec:mp3float @ 0x74b9010280] Error processing packet in decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x74b900c300] [dec:mp3float @ 0x74b9010280] Task finished with error code: -1094995529 (Invalid data found when processing input)\n[aist#0:0/mp3 @ 0x74b900c300] [dec:mp3float @ 0x74b9010280] Terminating thread with return code -1094995529 (Invalid data found when processing input)\n",
       "path": "source-audio/inat_cc0/eefe2af978c3eca3-1372574.mp3"
     },
     {
@@ -8125,7 +8125,7 @@
     {
       "sha256": "6f8e5f5c1d82b301cf7c9cc7c5890ce16d40840ec809dfbed385f140109f5d0a",
       "exit": 183,
-      "error": "[mp3float @ 0x786684ce00] Header missing\n[aist#0:0/mp3 @ 0x7867010300] [dec:mp3float @ 0x7867400280] Error submitting packet to decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x7867010300] [dec:mp3float @ 0x7867400280] Error processing packet in decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x7867010300] [dec:mp3float @ 0x7867400280] Task finished with error code: -1094995529 (Invalid data found when processing input)\n[aist#0:0/mp3 @ 0x7867010300] [dec:mp3float @ 0x7867400280] Terminating thread with return code -1094995529 (Invalid data found when processing input)\n",
+      "error": "[mp3float @ 0x7a6ec68e00] Header missing\n[aist#0:0/mp3 @ 0x7a6f010300] [dec:mp3float @ 0x7a6ec14280] Error submitting packet to decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x7a6f010300] [dec:mp3float @ 0x7a6ec14280] Error processing packet in decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x7a6f010300] [dec:mp3float @ 0x7a6ec14280] Task finished with error code: -1094995529 (Invalid data found when processing input)\n[aist#0:0/mp3 @ 0x7a6f010300] [dec:mp3float @ 0x7a6ec14280] Terminating thread with return code -1094995529 (Invalid data found when processing input)\n",
       "path": "source-audio/inat_cc0/6f8e5f5c1d82b301-1590302.mp3"
     },
     {
@@ -8361,10 +8361,550 @@
       "exit": 0,
       "error": "",
       "path": "source-audio/noaa_passive_acoustics/e55ab7f865597801-Storm-Meno-Fish-Multisound-NOAA-PAGroup-01-amplified-thunderstorm-clip.mp3"
+    },
+    {
+      "sha256": "72a5612e99b6a941d751efbccf1e44f816c06c7884e3108c5298a2ba84b25169",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/fws_commons/72a5612e99b6a941-Alligatorbellow1.ogg"
+    },
+    {
+      "sha256": "b019246ade92f25ea00c2185e1b5f2e023770513691ba9ef71e47e6b3d0ca4b1",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/fws_commons/b019246ade92f25e-Alligatorhiss.ogg"
+    },
+    {
+      "sha256": "99332a0e840f797d2730bbc568d304a7e5b2d34fb0a3cebc1ffa0976732e389b",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/fws_commons/99332a0e840f797d-Baby_Wood_Storks__Mycteria_americana_.ogg"
+    },
+    {
+      "sha256": "89cccc96b27c70644b3e6dd2d0592c67ab2fbb292564e7807a7de4bec4c82978",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/fws_commons/89cccc96b27c7064-Baby_pelican.ogg"
+    },
+    {
+      "sha256": "48e27b7104678e9a15617de31aa6ba62d8a2310ed194310629b5f54514b10e39",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_camel_groan/48e27b7104678e9a-camel_01.flac"
+    },
+    {
+      "sha256": "3722f0712ea8946967dde2d298b0b9e8fb1fa8a3b1f2f11676999ce9a1719c94",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_camel_groan/3722f0712ea89469-camel_02.flac"
+    },
+    {
+      "sha256": "7b000ac59025b9bd8c6ce8718b6357e49d8ee96d4fbf8ab2338945e0a217faff",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_camel_groan/7b000ac59025b9bd-camel_01.ogg"
+    },
+    {
+      "sha256": "e90f85940593ac2c7508783e00284e78405ec67031ff1e44051fb442bc78e5e6",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_camel_groan/e90f85940593ac2c-camel_02.ogg"
+    },
+    {
+      "sha256": "2bc92b1c3fd28777b9fe2e54d25e731cda346a911e49687c441cccb3a195ad52",
+      "exit": 0,
+      "error": "",
+      "path": "source-archives/oga_animal_cat_flapping_ears_sound/2bc92b1c3fd28777-cat_flap_ears.wav"
+    },
+    {
+      "sha256": "bba22883209b435905471d057160f1badae59b89a62e9a8b3199d7e327b17339",
+      "exit": 0,
+      "error": "",
+      "path": "source-archives/oga_animal_crow_caw/bba22883209b4359-crow_caw.wav"
+    },
+    {
+      "sha256": "f6ccbfdde9880fb33df0ba28356f34f5e45e380ad15d98661b42be4213d3b49a",
+      "exit": 0,
+      "error": "",
+      "path": "source-archives/oga_animal_rabbit_eating/f6ccbfdde9880fb3-RabbitEating.wav"
+    },
+    {
+      "sha256": "bbd0f908b3514dd3bd7d2bc04dcf64f8d360a161e7f43cac5d6761e7add79451",
+      "exit": 0,
+      "error": "",
+      "path": "source-archives/oga_animal_dog_barking_mono/bbd0f908b3514dd3-dog_barking_mono.wav"
+    },
+    {
+      "sha256": "94b9180914ce6142599562e47a58b224c4ac81575056752df5fd48fb0e570701",
+      "exit": 0,
+      "error": "",
+      "path": "source-archives/oga_animal_dog_barking_mono/94b9180914ce6142-dog_barking.wav"
+    },
+    {
+      "sha256": "9bb77982583ab69a3417cbdfa6085e2cd95947d3d6199bb587cdc7220f1a0529",
+      "exit": 0,
+      "error": "",
+      "path": "source-archives/oga_animal_dog_grunt/9bb77982583ab69a-dog-frieda-grunt-96khz-01.flac"
+    },
+    {
+      "sha256": "2a4b19ac14a22f63425f98e9d305610c8ce766b02bfac295fdf827a6d5b70ddd",
+      "exit": 0,
+      "error": "",
+      "path": "source-archives/oga_animal_peacock_scream/2a4b19ac14a22f63-peacockscream.flac"
+    },
+    {
+      "sha256": "71dd6dac86d9cd74480f78b521021a22d5ec4d3f7151caa7536ed2da6acf21ee",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_bat_screeches/71dd6dac86d9cd74-bat_01.flac"
+    },
+    {
+      "sha256": "72d1705f4e12b1dfb7d19cc9091bb8c7f11c5aaf80154342c3a31c817cdc2a1b",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_bat_screeches/72d1705f4e12b1df-bat_02.flac"
+    },
+    {
+      "sha256": "bc7f1ac5f52fa87f33eff62e4ecb9b7e0fe42164b5830f24a4ce6471ae4d2a01",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_bat_screeches/bc7f1ac5f52fa87f-bat_03.flac"
+    },
+    {
+      "sha256": "46c05d9a33cd4b2e5514d25473066503b2fad4ea55eb5f76e43c010cba56ba7a",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_bat_screeches/46c05d9a33cd4b2e-bat_01.ogg"
+    },
+    {
+      "sha256": "07ac66d22c9ac26f635773a026e1d24a0413fd55df23b87432873fa660b142fe",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_bat_screeches/07ac66d22c9ac26f-bat_02.ogg"
+    },
+    {
+      "sha256": "dc76fc3977e33d79c76dccd19f5d0c5b516566993b81c7ae0dbc8d097b702e95",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_bat_screeches/dc76fc3977e33d79-bat_03.ogg"
+    },
+    {
+      "sha256": "c67a602314342f0ae995ffd780adaca16ef8709e854da934f41093868f00dd1d",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_penguin_sounds/c67a602314342f0a-penguin_01.flac"
+    },
+    {
+      "sha256": "362dd13c7f19db34bab615cd0b542938f32e75c00cad7701af81dd1e6a58ff01",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_penguin_sounds/362dd13c7f19db34-penguin_02.flac"
+    },
+    {
+      "sha256": "d983bc83f13d544df19eebd2d0f43b9ef8865bcf736e1263f020291f6f175767",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_penguin_sounds/d983bc83f13d544d-penguin_01.ogg"
+    },
+    {
+      "sha256": "e290483aff9c94277fd7aaea7b4267d5ccd36728226b59e2f5b619896ff2450c",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/oga_animal_penguin_sounds/e290483aff9c9427-penguin_02.ogg"
+    },
+    {
+      "sha256": "2cc6cbfe3fa84a3b98e1251f101b74f87ab7cb9ac37ac2af2c677e032931e050",
+      "exit": 0,
+      "error": "",
+      "path": "source-archives/oga_animal_quail_sound/2cc6cbfe3fa84a3b-quail.flac"
+    },
+    {
+      "sha256": "b2687077a29c044e57220b660c616f9336a0b454519f67bbc59954e0574acc70",
+      "exit": 0,
+      "error": "",
+      "path": "source-archives/oga_animal_sheep_baa/b2687077a29c044e-sheep_baa.flac"
+    },
+    {
+      "sha256": "3eaa46e9023b61961e84aeac7a10bc958216ac927e3627d99f35e011aa900b01",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/3eaa46e9023b6196-582602.mp3"
+    },
+    {
+      "sha256": "350370bfc51214b73872f603de557468d1b3dbf9bd66e3a247888abc4fb4fa82",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/350370bfc51214b7-1015847.m4a"
+    },
+    {
+      "sha256": "6d0006b6084fb1fbf8bfa69fdd1dc772b3d1b06df7c1bdd8d3a831e94bed3a81",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/6d0006b6084fb1fb-1328655.wav"
+    },
+    {
+      "sha256": "08da89844d494b44c5c5acb715f88f328201adf705a730de2d2c5cd5440cebe0",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/08da89844d494b44-1299606.m4a"
+    },
+    {
+      "sha256": "58ba929be92cdff1f53c2b891b4d35025d00637f337d45a6f46372c0c848c8b5",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/58ba929be92cdff1-164629.m4a"
+    },
+    {
+      "sha256": "b139a4e7b5da15766f943b757930c5ad67815110ebd7ddda1ce37cd38e68333d",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/b139a4e7b5da1576-400671.m4a"
+    },
+    {
+      "sha256": "1025251d39db9c0624a94cc917642996af0023266ce607a87b116ea854efb14b",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/1025251d39db9c06-535067.m4a"
+    },
+    {
+      "sha256": "9e4df8be1d4bfabcc8a8b4a3ce8aea84543dc11b89b126508ba110b22aa68b5e",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/9e4df8be1d4bfabc-822504.m4a"
+    },
+    {
+      "sha256": "cb7e180161eb3ce8b1219af390e559449011888a29bc4168d5092b8d1319156b",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/cb7e180161eb3ce8-2056736.m4a"
+    },
+    {
+      "sha256": "56eb9d9d9fcd8912b93364ccb4957d59c1ef8edcdf98975f6a215f4c78183544",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/56eb9d9d9fcd8912-2076848.m4a"
+    },
+    {
+      "sha256": "eeb14990a099676aeba5f9ba98e25afb4f9eb7de6510dbb0d01e3bebea397567",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/eeb14990a099676a-103908.mp3"
+    },
+    {
+      "sha256": "161e28d8d2190d9611e8bc417e025290670368ee1b035f081489ad45dd5aff4a",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/161e28d8d2190d96-1241617.mpga"
+    },
+    {
+      "sha256": "ac4249e49c0d7652fe0e5cc5de8c2dbb3f2a6e47e848ac35f1e03f54a78787a6",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/ac4249e49c0d7652-625308.wav"
+    },
+    {
+      "sha256": "71dee35e47abe7f3186d6fb458f040a956877fb35433112f3997f29217669859",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/71dee35e47abe7f3-625347.wav"
+    },
+    {
+      "sha256": "68a0e1ca6a55e1377644e8d41256acc1f25d490f2c0ca1e6ed667e5c10450fe0",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/68a0e1ca6a55e137-1352800.m4a"
+    },
+    {
+      "sha256": "ed5b8f94701f226e309a9d31aced923cef99404d93569ceeb32b39394d8cd8e2",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/ed5b8f94701f226e-2118119.wav"
+    },
+    {
+      "sha256": "dd1ae4bd3bc4eb92eae5a40beee96ec23738c0d71813923c76d268fc9d5fd9b3",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/dd1ae4bd3bc4eb92-1943042.wav"
+    },
+    {
+      "sha256": "a124bd08ed25a7e6c0f72e0d4dbad9a05ef202357ae0b406c83a29248f2a5a00",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/a124bd08ed25a7e6-848954.wav"
+    },
+    {
+      "sha256": "f41407f49b04d426bbc03b3fe730275a58fdb653592adfc520c50b0818d17f0c",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/f41407f49b04d426-849632.wav"
+    },
+    {
+      "sha256": "eb9065f256974f8f4f4f575d3fdcd488c79bc73a7c9754e91f1dbf9989542712",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/eb9065f256974f8f-292918.wav"
+    },
+    {
+      "sha256": "3f19966b9869f8bb2ed4e1d61247bbbe0cddeffd25d137dc7435ef451a80d480",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/3f19966b9869f8bb-1107301.wav"
+    },
+    {
+      "sha256": "5a0c0239c71b149b33ad81efd52b459a78ef58dd00581c1e41476980c755320d",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/5a0c0239c71b149b-2032434.m4a"
+    },
+    {
+      "sha256": "6b28defab785d4ead28e7b570f8330832dc7150097bf6d926b30d0c3fb126c94",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/6b28defab785d4ea-625302.wav"
+    },
+    {
+      "sha256": "f919f38f16dbb1227cd482116e3ea3eaaf446708be509a8e6182a19338d21010",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/f919f38f16dbb122-162970.wav"
+    },
+    {
+      "sha256": "2f302148346fd98fbf77a678016ae4825ee30e8e1c291d03f395dd8dfb8e6d88",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/2f302148346fd98f-162971.wav"
+    },
+    {
+      "sha256": "166882ee4173110ce75014b2d26606abafd5de9d3d827da2dc6ade4d7c448a4f",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/166882ee4173110c-335666.m4a"
+    },
+    {
+      "sha256": "7c889c6a9b19dc015ea4561234100722d787d40a1db5f11e1a62199120d3d230",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/7c889c6a9b19dc01-71821.mp3"
+    },
+    {
+      "sha256": "1704dd3f4274d6da1c43f271dfd027c9c58a9f9e1eb697c767f9d424275e8bb6",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/1704dd3f4274d6da-193557.m4a"
+    },
+    {
+      "sha256": "3a285db782c4181afd59698d5965710baf2c69e7efea86faba2b324c0db4dcbe",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/3a285db782c4181a-219984.wav"
+    },
+    {
+      "sha256": "c0b5cefea242c9b9a8ca647bcc14b0738b92964284d8159b2bd029c44debdeb4",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/c0b5cefea242c9b9-317857.wav"
+    },
+    {
+      "sha256": "7a1f0076d6f95a6372fdee1007f9962c8e9c8e83595a49d430ca872219bba827",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/7a1f0076d6f95a63-1125768.m4a"
+    },
+    {
+      "sha256": "442619f546ba9c568ea15cb8566437ab2ed4bcbeba87c77ff72901e6fb07d469",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/442619f546ba9c56-1125777.m4a"
+    },
+    {
+      "sha256": "05197d63d2f4f8a203b603846be224dd3e600e52f1b5967a85049dfca48cb19a",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/05197d63d2f4f8a2-1087009.wav"
+    },
+    {
+      "sha256": "73bf9857621962eba3bddfc1f0e90c7e5606cb5b53ade69d4d2139b188b333b8",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/73bf9857621962eb-1130820.wav"
+    },
+    {
+      "sha256": "e4d8e2c1d808b2d3c3134a7cc597290d8cc049b6f017e91c4300ced99a8e6851",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/e4d8e2c1d808b2d3-25134.mp3"
+    },
+    {
+      "sha256": "a8a911ac5dbcbe75d31fb82ec80571eddfaf594809fe0b922fcb89cd17aa9fbc",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/a8a911ac5dbcbe75-842341.mp3"
+    },
+    {
+      "sha256": "3bc01f5ad83e7029d32f715c1e1814e808828a26422307b268ba3ec19341235d",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/3bc01f5ad83e7029-288393.mp3"
+    },
+    {
+      "sha256": "daf78b63fec991c45f93d7f7044fb41f98dc0de9a6f9c73136bec674c9ac76ea",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/daf78b63fec991c4-2118158.wav"
+    },
+    {
+      "sha256": "7d4786d1df79a3526fd7acbe0998887646946c5b9e757b90ef7a12dbf0a3f072",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/7d4786d1df79a352-96727.mp3"
+    },
+    {
+      "sha256": "54623334f00f91afd570619526fcd35fd7aba9e7eae4ca833418a2b242e5f4bc",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/54623334f00f91af-1766380.m4a"
+    },
+    {
+      "sha256": "7e8d55830e7e680713bdf0ecc4219461f365ffd57c57d54ea0250b2a92fd7653",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/7e8d55830e7e6807-966939.m4a"
+    },
+    {
+      "sha256": "70927457b5bbb56130188f41b2f1290aeaf967c1c5e5189cce3c2608426984b8",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/70927457b5bbb561-966940.m4a"
+    },
+    {
+      "sha256": "6f5361e9274493006915d90906abc201bad278ad9d7e83a47691c808a677fa07",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/6f5361e927449300-1617023.mp3"
+    },
+    {
+      "sha256": "37f6417d9643313245d6d272b68154911bf0d500037d30214cfac2eba47cc8f7",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/37f6417d96433132-1996710.wav"
+    },
+    {
+      "sha256": "a7f6301fc145651db3007f2825af33ba088921709769eb611f3400844310a50d",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/a7f6301fc145651d-497937.wav"
+    },
+    {
+      "sha256": "497e879222748da069ece1ac4711e2df9a51ccbb9685afeeff6d8bcf9c6d5909",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/497e879222748da0-1187084.wav"
+    },
+    {
+      "sha256": "6fde34cfea3c817987b501bc6880044bfd9454db4505a2244b2d7083d9eb81d7",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/6fde34cfea3c8179-742086.wav"
+    },
+    {
+      "sha256": "ed1550bb8a57bc906a01434e51bd5ef233923963d305cb64d8dc73a55add22e0",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/ed1550bb8a57bc90-1945073.mp3"
+    },
+    {
+      "sha256": "70a275de9b32972c9629dd2348705f55e8806cbb6ced6bd01a1f7a109031f094",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/70a275de9b32972c-512952.wav"
+    },
+    {
+      "sha256": "d0a55ad40d6b22327ccbcb2435a5a18cdb062cfcad041a1cca44efdda3d224b3",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/d0a55ad40d6b2232-1869225.m4a"
+    },
+    {
+      "sha256": "06c0ae0cff48ed919567f60d2ca92a9c4fdbcc1b40f5461872daacab7a7011c7",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/06c0ae0cff48ed91-2145359.m4a"
+    },
+    {
+      "sha256": "771dd7d1cdabf239a9da66749a050213a989dfb6f605d273547fd91ca473834c",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/771dd7d1cdabf239-505274.mp3"
+    },
+    {
+      "sha256": "05772c4af8b869b82278e1ebcf2d951b421286078d2c63166dd6a24d7fa60c3d",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/05772c4af8b869b8-536357.wav"
+    },
+    {
+      "sha256": "f80dc6127853ff037c049875bc5aa8a317d01ea4d44d223d5152e18de19314fa",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/f80dc6127853ff03-779677.mp3"
+    },
+    {
+      "sha256": "a75b5dfad9aac3be6c745530fd10aa8494ec382691a2862cd9d5131c65abe120",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/a75b5dfad9aac3be-1936740.wav"
+    },
+    {
+      "sha256": "0c83137710a9b35a0adfd729669ab1d5c54348d6f40e80315b7ee7911866057e",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/0c83137710a9b35a-1248610.m4a"
+    },
+    {
+      "sha256": "75e771de6cccfc6b6fa513b533644c039cb7b2b4dfabb482729db28b8ec5bcb9",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/75e771de6cccfc6b-188127.mp3"
+    },
+    {
+      "sha256": "d90ec2f25217a64f5b2da89dc7e189c9b66b6b206a6c82bf291497f25e21fb71",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/d90ec2f25217a64f-619339.mp3"
+    },
+    {
+      "sha256": "7197283256b2de6eadc8e4f8a46dd9281b0bfe0c6587718f406078cb57e5d168",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/7197283256b2de6e-2030001.m4a"
+    },
+    {
+      "sha256": "3f0dba4b2724780e1505d7a86609cca7fb849f0b3ffebfdf4099222be207a559",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/3f0dba4b2724780e-748064.wav"
+    },
+    {
+      "sha256": "abe0f8c7dce688ae9af17f6c2ef59db4615ef46f16b21e6442b5f5c61bfd8cdd",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/abe0f8c7dce688ae-1520470.m4a"
+    },
+    {
+      "sha256": "b38e32a5bf6f12721c305d36553e289d38335e85b4d3564cda979b68735eaaa2",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/b38e32a5bf6f1272-858791.m4a"
+    },
+    {
+      "sha256": "9932688bb0f50203099835fc64d5d6afd7423ea76f057d09cda1fb73c78b4247",
+      "exit": 0,
+      "error": "",
+      "path": "source-audio/inat_ccby/9932688bb0f50203-590961.wav"
     }
   ],
   "pass": false,
-  "rehashCount": 1579,
-  "newlyDecoded": 486,
+  "rehashCount": 1669,
+  "newlyDecoded": 93,
   "priorEvidenceSha256": "eab00085e4c9efe3d06945f120b5de2bcf307a2a3c7ce0f258f92d8dd488b2f3"
 }

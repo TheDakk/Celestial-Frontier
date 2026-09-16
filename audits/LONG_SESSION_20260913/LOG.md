@@ -481,3 +481,12 @@ Evidence: audits/AUDIO_FAUNA_BIOMES_20260915. Native playback/Stop, 43-biome map
 quarantine/headroom controls pass; prior failures retained. Listening and CC BY authorization
 remain pending. No GitHub/kit/Claude-module/accepted-asset change. main.ts hunk remains prior DEV
 review mount/cleanup only. Current consolidated review prompt and ecology ZIP index are in audio-production.
+
+## Codex — September15 attributed fauna continuation
+
+Nick explicitly allowed CC BY with attribution. Added90 originals, rendered83 measured reference
+excerpts in installed REAPER, preserved all source credits/licenses and old failures. Totals:
+1,617 candidate WAV/Opus,203/631 fauna reference names,428 missing.15 Python controls, native
+play/stop/credit/codec and root validate pass. No listening approval, kit edit, ordinary-game
+promotion or GitHub write. Evidence in AUDIO_FAUNA_CONTINUATION_20260915; consolidated review
+and delivery plan record C2 visual work, family integration and actual phone proof still required.

@@ -1,17 +1,17 @@
 {
   "schema": "cf.audio-production-status/v1",
-  "sourcePages": 18,
-  "sourceAudioEntries": 1579,
-  "uniqueSourceAudio": 1575,
+  "sourcePages": 31,
+  "sourceAudioEntries": 1669,
+  "uniqueSourceAudio": 1665,
   "quarantinedSources": 3,
-  "eligibleDecodedSources": 1572,
-  "renderedCandidates": 1534,
-  "uniquePcmPerformances": 1313,
+  "eligibleDecodedSources": 1662,
+  "renderedCandidates": 1617,
+  "uniquePcmPerformances": 1396,
   "requirements": 1205,
-  "requirementsWithoutAssignedCandidate": 889,
+  "requirementsWithoutAssignedCandidate": 840,
   "classifications": {
-    "missing": 856,
-    "identified_recording_reference": 154,
+    "identified_recording_reference": 203,
+    "missing": 807,
     "recipe_or_gap": 193,
     "intentional_silence": 2
   },
@@ -37,6 +37,13 @@
       "sourceId": "nps_natural_sounds",
       "url": "https://www.nps.gov/subjects/sound/singing-sands.htm",
       "reason": "No official audio source element on detail page",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_ccby",
+      "url": "71212",
+      "reason": "No eligible sound in first five observations",
       "status": "unresolved",
       "retry": "explicit future fetch; no access bypass"
     }
@@ -239,6 +246,13 @@
       "resolutionHashes": [
         "6f9c48ead4f5b21b5650e2037a97ca1daffc4e8e6aaa61b9c504b4c58c87e9f8"
       ]
+    },
+    {
+      "sourceId": "inat_ccby",
+      "url": "71212",
+      "reason": "No eligible sound in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
     }
   ],
   "limits": [

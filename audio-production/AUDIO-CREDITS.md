@@ -24,6 +24,20 @@ Original recordings remain unchanged in local audio-production/source-audio and 
   Not a blanket collection license. Only sound.license_code=cc0, research-grade identified observations, no hidden/flagged media; observation/photo licenses never authorize audio.
 - **NOAA Passive Acoustics Branch recordings only** — NOAA Fisheries, Northeast Fisheries Science Center, Passive Acoustics Branch; per-item citation PDF retained; Public-Domain. [Source](https://www.fisheries.noaa.gov/national/science-data/sounds-ocean). 27 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
   US federal works under NOAA copyright policy. Only selected NOAA Passive Acoustics Branch recordings with recording citations; external university/DFO/AWI/Cornell recordings excluded. Source-applied speed/filter changes retained and disclosed. No NOAA endorsement.
+- **US Fish and Wildlife recordings on Commons** — U.S. Fish and Wildlife Service; Public-Domain. [Source](https://commons.wikimedia.org/wiki/Category:Audio_files_of_animal_sounds_from_the_United_States_Fish_and_Wildlife_Service). 4 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Camel Groan** — craigsmith / USC archive; edited by AntumDeluge; CC0-1.0. [Source](https://opengameart.org/content/camel-groan). 4 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Cat Flapping Ears sound** — Bashar3A / Bashar from Skirmish.io; CC0-1.0. [Source](https://opengameart.org/content/cat-flapping-ears-sound). 1 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Crow caw** — zeroisnotnull; CC0-1.0. [Source](https://opengameart.org/content/crow-caw). 1 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Rabbit Eating** — Voltiment555; CC0-1.0. [Source](https://opengameart.org/content/rabbit-eating). 1 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Dog barking mono** — Brandon Morris / HaelDB; CC0-1.0. [Source](https://opengameart.org/content/dog-barking-mono). 2 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Dog Grunt** — qubodup; CC0-1.0. [Source](https://opengameart.org/content/dog-grunt). 1 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Peacock scream** — popthebubbles4; extracted by qubodup; CC0-1.0. [Source](https://opengameart.org/content/peacock-scream). 1 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Bat Screeches** — polymorpheva; edited by AntumDeluge; CC0-1.0. [Source](https://opengameart.org/content/bat-screeches). 6 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Penguin Sounds** — Bidone; edited by AntumDeluge; CC0-1.0. [Source](https://opengameart.org/content/penguin-sounds). 4 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Quail Sound** — PrincessGrace; edited by AntumDeluge; CC0-1.0. [Source](https://opengameart.org/content/quail-sound). 1 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Sheep Baa** — mikewest; edited by AntumDeluge; CC0-1.0. [Source](https://opengameart.org/content/sheep-baa). 1 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+- **Individually CC BY 4.0 iNaturalist recordings** — Individual credited sound authors; exact attribution and item links retained per sound; CC-BY-4.0. [Source](https://www.inaturalist.org/). 63 inspected audio entries. Evidence and item-level recordists: manifests/acquisition.json.
+  Authorized by Nick September 15. No NC/ND/SA licenses; edits listed per rendered candidate.
 
 Original MIDI/Surge sketches: Celestial Frontier production candidates, installed Surge XT 1.3.4 initialized classic oscillator; saved state in each REAPER project. No third-party wavetable was imported. REAPER is the existing licensed installation; $0 spent.
 

@@ -91,6 +91,21 @@ try{
   report.mobile=await evaluate(`(()=>{const d=document.querySelector('dialog[open]'),r=d.getBoundingClientRect();return {left:r.left,right:r.right,width:innerWidth,scrollWidth:d.scrollWidth,clientWidth:d.clientWidth}})()`);
   if(report.mobile.left<0||report.mobile.right>report.mobile.width||report.mobile.scrollWidth>report.mobile.clientWidth)throw Error('Review dialog overflows narrow viewport');
   const mobile=await send('Page.captureScreenshot',{format:'png'});fs.writeFileSync(path.join(out,'narrow.png'),Buffer.from(mobile.data,'base64'));
+  const currentCatalog=JSON.parse(fs.readFileSync(path.join(root,'audio-production/audition/catalog.json')));
+  const attributed=currentCatalog.outputs.find(c=>c.id.startsWith('v5.reference.jaguar.'));
+  if(attributed){
+    await evaluate(`(()=>{const s=document.querySelector('dialog[open] select');s.value=${JSON.stringify(attributed.id)};s.dispatchEvent(new Event('change'));})()`);
+    const text=await evaluate(`document.querySelector('dialog[open]').textContent`);
+    const credit=attributed.sourceCredits[0];
+    report.attribution={id:attributed.id,creatorVisible:text.includes(credit.creator),licenseVisible:text.includes(credit.license),sourceVisible:text.includes(credit.url),changesVisible:text.includes('Modifications:')};
+    if(!report.attribution.creatorVisible||!report.attribution.licenseVisible||!report.attribution.sourceVisible||!report.attribution.changesVisible)throw Error('Attributed derivative lost visible source credit');
+    await click('Play selected');await new Promise(r=>setTimeout(r,500));
+    report.attribution.active=await evaluate(`window.__CF_SLICE__.api.state().audio.runtime.voices.active`);
+    if(report.attribution.active!==1)throw Error('Attributed recording did not play');
+    await click('Stop all review audio');await new Promise(r=>setTimeout(r,300));
+    report.attribution.afterStop=await evaluate(`window.__CF_SLICE__.api.state().audio.runtime.voices.active`);
+    if(report.attribution.afterStop!==0)throw Error('Attributed recording did not release');
+  }
   await click('Close');if(await evaluate(`Boolean(document.querySelector('dialog[open]'))`))throw Error('Close did not close');
   // Decode both delivery containers with the real browser. This offline decoder
   // is diagnostic only; runtime playback still uses the game's single owner.
@@ -101,6 +116,7 @@ try{
     if(!wildlife)throw Error('Ecology lion reference missing');
     selections.push(wildlife,catalog.outputs.find(c=>c.id==='v4.environment.pressure'));
   }
+  if(attributed)selections.push(attributed);
   report.codecs=await evaluate(`(async()=>{
     const samples=${JSON.stringify(selections.map(c=>({id:c.id,wav:c.previewUrl,opus:'/@fs'+path.join(root,'audio-production',c.opus)})))};
     const context=new OfflineAudioContext(2,1,48000),rows=[];

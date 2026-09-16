@@ -13,20 +13,21 @@ and `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` owns the staged product boundary.
 
 ## September15 candidate acquisitions — not distributed
 
-Matches intake as of2026-09-15. Nick approved the supplied free-audio manifest and $0 workflow.
-All13 pack/music downloads and relevant recordings from its two NPS collections are retained
-locally, with1,092 audio entries and1,089 unique decoded hashes. Source-page snapshots, item
-recordists/descriptions, license IDs, original filenames and archive/media hashes are in
-[audio-production/manifests/acquisition.json](audio-production/manifests/acquisition.json).
-[Credits](audio-production/AUDIO-CREDITS.md) retain Kenney, rubberduck, OwlishMedia, yd,
-cynicmusic/The Cynic Project and NPS item-level provenance. NPS public domain is not relabelled
-CC0; designed voices are not authentic wildlife. Creator notification requests were retained
-without sending messages. No optional account/API or additional purchase was used.
+Matches intake as of 2026-09-15. Nick authorized the free-audio handoff and explicitly answered
+“Allow CC BY with attribution.” The supplied manifest is unchanged; the exception is in
+[audio-production/manifests/license-exceptions.json](audio-production/manifests/license-exceptions.json).
+There are 1,669 entries / 1,665 unique originals, of which three damaged originals are quarantined.
+The 63 CC BY 4.0 recordings retain the sound's own license and attribution, original observation,
+exact license URL, source hash and derivative modifications. Sound license is checked separately
+from observation/photo license. The official iNaturalist license mapping is retained and hashed.
+NC/ND/SA, unclear rights and imitations cannot enter this recording-reference bank.
 
-The790 rendered candidates, loop copies and original MIDI sketches/stems are not approved for
-player distribution. Rights traceability is separate from listening, dry-source and biological
-context review. None changes the eight-asset runtime rights manifest above. Original sources,
-project media and masters are local/ignored; this batch does not establish an independent backup.
+[Recording credits](audio-production/RECORDING_CREDITS.md),
+[collection credits](audio-production/AUDIO-CREDITS.md) and
+[acquisition ledger](audio-production/manifests/acquisition.json) bind the evidence.
+1,617 validated candidate WAV/Opus pairs remain DEV review only; none has listening or player
+promotion approval. The eight-asset runtime rights manifest above remains unchanged. Originals,
+project media and masters are local/ignored, not an independently verified backup. $0 spent.
 
 ## 1. Rights rule
 

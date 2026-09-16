@@ -3,28 +3,34 @@
 ## September 15 audio production — matches code as of 2026-09-15
 
 The supplied handoff is now present verbatim in celestial-frontier-audio-handoff/. Nick's direct
-request authorizes its approved CC0/public-domain acquisitions and existing REAPER/Surge/stock
+request authorizes approved CC0/public-domain acquisitions, the explicit CC BY attribution
+exception, and existing REAPER/Surge/stock
 workflow with $0 additional spend. No kit wording changed. The old missing-input and
 original/commissioned-only execution stops are superseded for this task.
 
 Actual game inventory: 631 fauna, 332 flora, 27 fungi, 20 microbes; 43 biome profiles,
 29 weather defaults, 11 themes and source-bound movement/material/event vocabulary.
 
-The fauna/biome continuation acquired 487 additional source entries (206 Rocky Mountain NPS,
-254 individually CC0 iNaturalist recordings and 27 inspected NOAA recordings). There are now
-1,579 source entries / 1,575 unique originals; 1,572 fully decode and three damaged originals
-are retained in quarantine. 359 new REAPER renders comprise 321 identified recording-reference
-excerpts and 38 environment components. Totals: 1,534 validated WAV/Opus pairs, 1,313 unique PCM
-treatments, 42 successful editable production projects, 102 retained loop derivatives and 49
-instrument stems. $0 spent. The two failed fauna project versions are retained separately.
+The latest fauna continuation adds 90 source entries: 63 individually CC BY 4.0 iNaturalist,
+23 CC0 OpenGameArt animal recordings and four public-domain US FWS recordings. Nick explicitly
+approved CC BY with attribution; exact per-recording attribution, license URL, source URL and
+modifications survive into the audition catalogue and RECORDING_CREDITS.md. No NC/ND/SA license
+is admitted. Originals are unchanged. Wikimedia returned HTTP429 after four acquisitions;
+that source remains blocked and was not retried. Tortoise has no eligible sound in the bounded
+query and remains missing. No imitation or generic fictional voice fills an authentic row.
 
-Identified source-reference coverage is 154 / 631 fauna; 477 still lack an eligible reference.
-Broad game names may use explicitly disclosed narrower taxa. This establishes neither exact
-behavior calls nor listening approval. All 1,010 Earth identities retain the existing audio owner;
-379 non-fauna identities remain fictional sonification. No generic voice fills a recording gap.
-All 43 biome profiles now have explicit environment recipes, including gas, ice, cave, volcanic,
-underwater and airless profiles. 486 audited routes resolve 484 rendered recipes and two explicit
-silences, with zero missing components. Exotic environments are designed sound, not field claims.
+There are now 1,669 source entries / 1,665 unique originals; 1,662 fully decode and the same
+three damaged originals remain quarantined. The 83 new REAPER excerpts bring totals to 1,617
+validated WAV/Opus pairs, 1,396 distinct decoded PCM treatments and 44 successful editable
+production projects. Seven lossy ZIP alternates were retained as originals but not rendered as
+extra performances. There are still 102 loop derivatives and 49 instrument stems. $0 spent.
+
+Identified reference coverage is 203 / 631 fauna; 428 remain missing. Broader labels retain the
+actual narrower taxon, age and recording context. References do not establish per-behavior calls
+or listening acceptance. All 1,010 Earth identities retain their existing ordinary-game owner;
+379 non-fauna identities remain fictional sonification. All 43 biome profiles retain explicit
+recipes: 486 audited routes, 484 rendered plans and two airless silences, with zero missing
+components. Current evidence: audits/AUDIO_FAUNA_CONTINUATION_20260915/README.md.
 
 Resolved sound plans use the painter record's family and material. The hash-bound adapter was
 exercised on the real Civet, candidate-01 fox and native-painter-parts-03 procedural records;
@@ -77,13 +83,10 @@ not an inaudible-loop verdict. Source/selected bed intervals remain 24–40 seco
 also satisfy the profile. Unspecified cue durations are not invented. Weather export still has
 no approved technical profile; fur naming and source production remain open.
 
-Nick reports no original/commissioned recordings are available. The frozen kit still requires
-those sources. The exact one-sentence proposal to admit verified CC0/public-domain recordings,
-with three primary source candidates, is in
-[audits/C_PACKAGE_COMPLETION_20260915/SOUND_SOURCE_PROPOSAL.md](audits/C_PACKAGE_COMPLETION_20260915/SOUND_SOURCE_PROPOSAL.md).
-It awaits approval; no kit bytes, rights registry or real source audio changed. Candidate
-license-page checks do not establish listening quality or replace original-file provenance.
-Tests use private synthetic signals that are never accepted C3 masters.
+Nick's supplied free-audio handoff and explicit CC BY approval supersede the old
+original/commissioned-only execution stop. Kit bytes remain unchanged; the older rights-sentence
+proposal is retained as history, not a request to repeat approval. Candidate quality, source
+context, dry-source suitability and listening acceptance remain separate from permitted rights.
 
 ## Canonical Explorer Chronicle repair — 2026-09-08
 

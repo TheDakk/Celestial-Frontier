@@ -13,8 +13,9 @@ in seeded biome arenas. Preserve the actual painted anatomy, stable joint invent
 identity. Blender projection is abandoned for the browser; retain the turnaround/canid master for
 a later engine port. No 3D or texture-finisher pass belongs to this track.
 
-Art Kit v4.3 and supplied Motion/Sound v1 are approved. The separate September 15 Sound Kit
-rights-sentence proposal awaits Nick; no kit bytes changed.
+Art Kit v4.3 and supplied Motion/Sound v1 are approved. Nick's supplied free-audio handoff
+and explicit CC BY attribution approval supersede the source-only execution stop; kit bytes
+remain unchanged. The old wording proposal is not a pending permission request.
 Arena template v1 is accepted. Wild v4.3 mechanical intake is complete; Nick owns final image acceptance.
 GSAP 3.15.0, the Pixi 8 seeded emitter and one deterministic atlas per creature are the runtime/tooling
 boundary. The incompatible @pixi/particle-emitter is removed. Atlas core 0.3.9/CLI 0.3.0 use sorted,
