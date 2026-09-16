@@ -1,7 +1,7 @@
 {
   "path": "/private/tmp/celestial-frontier-procedural-review-20260916.zip",
-  "bytes": 19818882,
-  "sha256": "db2c21ec40fd62c38e6a1027e29668e89db145fa8ec795d67d34d8923a6eae2d",
+  "bytes": 19819987,
+  "sha256": "c6f3aa11fa3ee9e9581383fcc7d2b1754f17ec1c36764c52878cf49b63804f05",
   "media": [
     {
       "file": "procedural-3.mp4",
@@ -76,5 +76,5 @@
       }
     }
   ],
-  "files": 179
+  "files": 180
 }

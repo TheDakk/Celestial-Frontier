@@ -656,3 +656,7 @@ both fish/bird turns. See PROCEDURAL_BATTLE_ITERATION_20260916/README.md and REV
 Exact rest and484+601 samples per procedural creature;1,202 habitat samples. No universal,
 final-art, gameplay integration or phone acceptance. Current source support exclusions explicit.
 No main.ts/kit/GitHub change; PR42 parked. OpenAI continues locally; Claude need not open now.
+
+Signed code/evidence checkpoint73b93592 succeeded through1Password:119 ahead cached
+origin/openai/mac,230 ahead origin/develop. Prior staged continuation is now retained in Git.
+Review ZIP is below30MB and includes one prompt plus four ten-second films. No hosted action.
