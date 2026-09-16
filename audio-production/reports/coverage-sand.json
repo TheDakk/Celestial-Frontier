@@ -1,0 +1,689 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.ability.sand.cast.1",
+      "group": "coverage-sand",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        },
+        {
+          "path": "source-audio/oga_foley/23d2cc7234c2710b-scrape3.wav",
+          "sha256": "23d2cc7234c2710b1683d39f061d9c18056f64d368ff7b90e5c33672d928bddb",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 4.41932
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-sand",
+          "start": 0,
+          "duration": 0.55,
+          "note": 59,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.sand.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "sand",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-sand/v2.ability.sand.cast.1.wav",
+      "masterSha256": "1ee15ec43e48e24ef794b8f9867d4ce39f12e99baf1accb5b3cc3289e42bee7b",
+      "opus": "masters/coverage-sand/v2.ability.sand.cast.1.opus",
+      "opusSha256": "9e263268aad07d6f3de33ed8d3290cce2d2523620ff6c15e1b762c921cee5ae1",
+      "previewSha256": "b8a679a24a3a5f347654bf2f80157afeebef36fbf033c6d5e55aa3ec0d31547a",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.sand.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.7,
+      "opusDbTP": -32.7
+    },
+    {
+      "id": "v2.ability.sand.cast.2",
+      "group": "coverage-sand",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0a1d9047a54158b4-pageturn2.wav",
+          "sha256": "0a1d9047a54158b43df61a20effa262f44b1639be62a419081f31f14cfca7a1f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.809637
+        },
+        {
+          "path": "source-audio/oga_foley/923ab149cb912995-scrape2.wav",
+          "sha256": "923ab149cb912995bc140370f20c99275c92687a160c767a3d122261cf6a8821",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 1.021678
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-sand",
+          "start": 0,
+          "duration": 0.55,
+          "note": 59,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.sand.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "sand",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 1.65,
+      "master": "masters/coverage-sand/v2.ability.sand.cast.2.wav",
+      "masterSha256": "12136fd7810043bca6416c86c393aa41b8416648dceacb05f7eec892fcf3f6ba",
+      "opus": "masters/coverage-sand/v2.ability.sand.cast.2.opus",
+      "opusSha256": "87929a3b588aa1375c58483c5db3d9f8cc3b109f3ece80ee6307fd813c843e94",
+      "previewSha256": "0e5d05cf90dc5b14f85fd43d8fc82b68df9966e2707691448a425e650af6f4e9",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.sand.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.6,
+      "opusDbTP": -33.7
+    },
+    {
+      "id": "v2.ability.sand.cast.3",
+      "group": "coverage-sand",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/520b0845971ba1ef-crumples2.wav",
+          "sha256": "520b0845971ba1ef115d6efbf91bf8edb2e3896ee8abeaf5d89743d196b2aef9",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 2.188889
+        },
+        {
+          "path": "source-audio/oga_foley/dca8c2c544f1645b-scrape1.wav",
+          "sha256": "dca8c2c544f1645be419d528575a33d3452a1e2d5a0c5fbad46a881b9c5d3e04",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.616893
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-sand",
+          "start": 0,
+          "duration": 0.55,
+          "note": 59,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.sand.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "sand",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 3.3,
+      "master": "masters/coverage-sand/v2.ability.sand.cast.3.wav",
+      "masterSha256": "b7bbdd903d0416424b74cab4a67a6c22a27cfe6a5c424914958006cbaa1df099",
+      "opus": "masters/coverage-sand/v2.ability.sand.cast.3.opus",
+      "opusSha256": "80f1423c862960a9ab3674a7b572af9183559c7eea64464c77a9f7d66880a027",
+      "previewSha256": "4c86c35bec9b593481091fba9cf5b9e579c9f10cf64aba12079f4d6be9fa5649",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.sand.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -26.9,
+      "opusDbTP": -27.0
+    },
+    {
+      "id": "v2.ability.sand.impact.1",
+      "group": "coverage-sand",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/564f3538593a4d17-crumples1.wav",
+          "sha256": "564f3538593a4d174517e2970637efa82584001aef3e8e1bf61595e4e2c3322f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.782336
+        },
+        {
+          "path": "source-audio/oga_foley/923ab149cb912995-scrape2.wav",
+          "sha256": "923ab149cb912995bc140370f20c99275c92687a160c767a3d122261cf6a8821",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 1.021678
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-sand",
+          "start": 0,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.sand.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "sand",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 4.949999999999999,
+      "master": "masters/coverage-sand/v2.ability.sand.impact.1.wav",
+      "masterSha256": "5fe4d982241ee35b0303813d3d7973c146827bb3d1c2dc249ae2c12c1de3f835",
+      "opus": "masters/coverage-sand/v2.ability.sand.impact.1.opus",
+      "opusSha256": "d535b2f74d9614160e092e18d3d3b79cd431c8ea82360d8b2a353dc568e434d0",
+      "previewSha256": "0c74d0763bc71bd43277d22c09a1e65129db2b064a2653a19540a7f1f07ba690",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.sand.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -28.9,
+      "opusDbTP": -28.9
+    },
+    {
+      "id": "v2.ability.sand.impact.2",
+      "group": "coverage-sand",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.777354
+        },
+        {
+          "path": "source-audio/oga_foley/dca8c2c544f1645b-scrape1.wav",
+          "sha256": "dca8c2c544f1645be419d528575a33d3452a1e2d5a0c5fbad46a881b9c5d3e04",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.616893
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-sand",
+          "start": 0,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.sand.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "sand",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 7.1499999999999995,
+      "master": "masters/coverage-sand/v2.ability.sand.impact.2.wav",
+      "masterSha256": "f7a2826aa27e8177e14609c4a102332e70ce1e1d56572503c480b22f1e811052",
+      "opus": "masters/coverage-sand/v2.ability.sand.impact.2.opus",
+      "opusSha256": "4fc211021d94e9f3091ad098bdd0a4e2c7be9869bbdf677f1b81c6d9f2afeb9a",
+      "previewSha256": "1745ff2dd365bc19b0cf83bb227b96aa9322d9f183fec9e571b41783cc85f3a3",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.sand.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -11.0
+    },
+    {
+      "id": "v2.ability.sand.impact.3",
+      "group": "coverage-sand",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/66f1cef820f66d86-stones_04.ogg",
+          "sha256": "66f1cef820f66d86414d481b37a48a7b7ea11f4a5d7358372ebcfb506af0e652",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.383396
+        },
+        {
+          "path": "source-audio/oga_foley/23d2cc7234c2710b-scrape3.wav",
+          "sha256": "23d2cc7234c2710b1683d39f061d9c18056f64d368ff7b90e5c33672d928bddb",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 4.41932
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-sand",
+          "start": 0,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.sand.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "sand",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 9.35,
+      "master": "masters/coverage-sand/v2.ability.sand.impact.3.wav",
+      "masterSha256": "b6e0d854fa422f2988c3152c4010d6f0062003dbd733e020db370966eca93a55",
+      "opus": "masters/coverage-sand/v2.ability.sand.impact.3.opus",
+      "opusSha256": "85e2d8ee840bebf59098b1b2ae0a9c42527d112a47554027389fe36af1faadd0",
+      "previewSha256": "b8fe610c1ed9577b0a70a1e67a2615e6faf87f4a9652b814686f032faf6b6e0d",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.sand.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.1,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "v2.ability.sand.sustain.1",
+      "group": "coverage-sand",
+      "kind": "synthetic_fictional",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        },
+        {
+          "path": "source-audio/oga_foley/dca8c2c544f1645b-scrape1.wav",
+          "sha256": "dca8c2c544f1645be419d528575a33d3452a1e2d5a0c5fbad46a881b9c5d3e04",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.616893
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-sand",
+          "start": 0.0,
+          "duration": 0.55,
+          "note": 59,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-sand",
+          "start": 0.6,
+          "duration": 0.55,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-sand",
+          "start": 1.2,
+          "duration": 0.55,
+          "note": 59,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-sand",
+          "start": 1.7999999999999998,
+          "duration": 0.55,
+          "note": 61,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-sand",
+          "start": 2.4,
+          "duration": 0.55,
+          "note": 59,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-sand",
+          "start": 3.0,
+          "duration": 0.55,
+          "note": 61,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.sand.sustain"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "sand",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 11.55,
+      "master": "masters/coverage-sand/v2.ability.sand.sustain.1.wav",
+      "masterSha256": "03bd24849a266b07904620f7b5813ad14868806c2f0ae8fd37bb7f49cff82d36",
+      "opus": "masters/coverage-sand/v2.ability.sand.sustain.1.opus",
+      "opusSha256": "49864ddfd9d659502149bdf9c0fb80bec066d998a0a5a6ad1e0d5f32c2fd5e40",
+      "previewSha256": "34531b01fba21335f53cc5a4ec9ed567444613d41b84739edd3b9a0e5266a896",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/v2.ability.sand.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.2,
+      "opusDbTP": -32.2
+    },
+    {
+      "id": "v2.ability.sand.release.1",
+      "group": "coverage-sand",
+      "kind": "synthetic_fictional",
+      "duration": 0.9,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        },
+        {
+          "path": "source-audio/oga_foley/23d2cc7234c2710b-scrape3.wav",
+          "sha256": "23d2cc7234c2710b1683d39f061d9c18056f64d368ff7b90e5c33672d928bddb",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 4.41932
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-sand",
+          "start": 0,
+          "duration": 0.55,
+          "note": 54,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.sand.release"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "sand",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 16.55,
+      "master": "masters/coverage-sand/v2.ability.sand.release.1.wav",
+      "masterSha256": "9e894d83b72d5a3651f9a35ce7d6d165e6fa1afdca257735d5fef6a72023cddc",
+      "opus": "masters/coverage-sand/v2.ability.sand.release.1.opus",
+      "opusSha256": "9c95b831513e822c9e749805183980fe169be51d3e3fb99d3776fe48a99f7d3f",
+      "previewSha256": "ada048e482bb56080f1569ce948bf1ab9be352e8d7c6fcfe0b42e68cb49afb8c",
+      "previewBytes": 86514,
+      "previewUrl": "/__cf-audio-review/v2.ability.sand.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.2,
+      "opusDbTP": -33.2
+    },
+    {
+      "id": "v2.ability.sand.shield.1",
+      "group": "coverage-sand",
+      "kind": "synthetic_fictional",
+      "duration": 1.4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        },
+        {
+          "path": "source-audio/oga_foley/923ab149cb912995-scrape2.wav",
+          "sha256": "923ab149cb912995bc140370f20c99275c92687a160c767a3d122261cf6a8821",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 1.021678
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-sand",
+          "start": 0,
+          "duration": 0.55,
+          "note": 59,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-sand",
+          "start": 0.3,
+          "duration": 0.55,
+          "note": 66,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.sand.shield"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "sand",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 18.45,
+      "master": "masters/coverage-sand/v2.ability.sand.shield.1.wav",
+      "masterSha256": "667445dda0bdfcdae6c76035351af0f5233aebe45a72b5bd0f250003c6b98dde",
+      "opus": "masters/coverage-sand/v2.ability.sand.shield.1.opus",
+      "opusSha256": "5969dcd5a33b3f61f3af77be4c0ef9078f0220294a73362fd0fb966d451e7817",
+      "previewSha256": "07113f7c479c58676ff39ac6a1a721eddbbbe11db1714629bb8a7a76208185a4",
+      "previewBytes": 134514,
+      "previewUrl": "/__cf-audio-review/v2.ability.sand.shield.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.7,
+      "opusDbTP": -32.7
+    },
+    {
+      "id": "v2.ability.sand.heal.1",
+      "group": "coverage-sand",
+      "kind": "synthetic_fictional",
+      "duration": 1.8,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        },
+        {
+          "path": "source-audio/oga_foley/dca8c2c544f1645b-scrape1.wav",
+          "sha256": "dca8c2c544f1645be419d528575a33d3452a1e2d5a0c5fbad46a881b9c5d3e04",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.616893
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-sand",
+          "start": 0,
+          "duration": 0.55,
+          "note": 59,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-sand",
+          "start": 0.35,
+          "duration": 0.55,
+          "note": 63,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-sand",
+          "start": 0.7,
+          "duration": 0.55,
+          "note": 66,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.sand.heal"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "sand",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 20.849999999999998,
+      "master": "masters/coverage-sand/v2.ability.sand.heal.1.wav",
+      "masterSha256": "60d585370c16c37d13d6c458f689bec90bf141b40b44db0072c3c73e18ea6709",
+      "opus": "masters/coverage-sand/v2.ability.sand.heal.1.opus",
+      "opusSha256": "2875646d2f0ba71be05ea57100615ff379e9190142c740662565719c2ff6fe02",
+      "previewSha256": "a8065eb48b4a586133afbeb7937fd053e0301dd399e9c875d1a84a5de27c72c6",
+      "previewBytes": 172914,
+      "previewUrl": "/__cf-audio-review/v2.ability.sand.heal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.2,
+      "opusDbTP": -32.2
+    },
+    {
+      "id": "v2.ability.sand.tick.1",
+      "group": "coverage-sand",
+      "kind": "synthetic_fictional",
+      "duration": 0.45,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        },
+        {
+          "path": "source-audio/oga_foley/23d2cc7234c2710b-scrape3.wav",
+          "sha256": "23d2cc7234c2710b1683d39f061d9c18056f64d368ff7b90e5c33672d928bddb",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 4.41932
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-sand",
+          "start": 0,
+          "duration": 0.45,
+          "note": 71,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.sand.tick"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "sand",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 23.65,
+      "master": "masters/coverage-sand/v2.ability.sand.tick.1.wav",
+      "masterSha256": "1f3827d8725a805c877c6667a378de9263098d9cd2bb2a6f1f8e69c3d2b47f1a",
+      "opus": "masters/coverage-sand/v2.ability.sand.tick.1.opus",
+      "opusSha256": "5191177845d88104997866e927f3a7b6c13a9c0ac19e4f1824a8647b12811c5a",
+      "previewSha256": "a0b615ae5cb65972a5bd0b95f78186e3dbcd12c45b75e607c601174b7080d724",
+      "previewBytes": 43314,
+      "previewUrl": "/__cf-audio-review/v2.ability.sand.tick.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -33.1,
+      "opusDbTP": -33.3
+    }
+  ],
+  "listeningAccepted": false
+}

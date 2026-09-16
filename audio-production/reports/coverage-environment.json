@@ -1,0 +1,486 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.environment.coast",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 6.6273,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/372d12d439a03b5c-nri-OceanOlympicNP.mp3",
+          "sha256": "372d12d439a03b5ca1e4eb87b0c7305e352f0a3492adecf99636cfc3813d92f4",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 6.627286
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.coast"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-environment/v2.environment.coast.wav",
+      "masterSha256": "19c244a0d653a40a055bdc624e5f730e440741c7bf87e971e1ffe179950e756f",
+      "opus": "masters/coverage-environment/v2.environment.coast.opus",
+      "opusSha256": "35f38b3904795b78c7642c41c792e07fa4e18eb955cedc4887cc5eb523748910",
+      "previewSha256": "e256d1a7c47b663d0cbfed3b590aabc757e20f2d23b0bf9d87fc38dc25782c21",
+      "previewBytes": 1272554,
+      "previewUrl": "/__cf-audio-review/v2.environment.coast.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.3,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "v2.environment.underwater",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 4.407,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/5ae25a9734a05f60-loop_bubbles_1.ogg",
+          "sha256": "5ae25a9734a05f60e57a1b1db2fa9afaddf972c1a2927c1e743e720fcdaaccfe",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.407
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.underwater"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 7.6273,
+      "master": "masters/coverage-environment/v2.environment.underwater.wav",
+      "masterSha256": "56d5be723de4d6caca4eabcc2d71badd1b0b622fad8727897368b640a3887d27",
+      "opus": "masters/coverage-environment/v2.environment.underwater.opus",
+      "opusSha256": "567db13de3c44314f2bb047c32d50182b7ca24fd8bd94174eba825272510c9d3",
+      "previewSha256": "ba81a4b762ec1e0ede1869450fa49237a9ed3278a2f3fc2fa4f1094d14d63c61",
+      "previewBytes": 846258,
+      "previewUrl": "/__cf-audio-review/v2.environment.underwater.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -21.2,
+      "opusDbTP": -21.1
+    },
+    {
+      "id": "v2.environment.cold",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 0.3742,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/68272e3f1cabcabd-footstep_snow_003.ogg",
+          "sha256": "68272e3f1cabcabd02d328fd344454d7c04cb58b5a86972fcdd858f845e3d007",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.cold"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 13.0343,
+      "master": "masters/coverage-environment/v2.environment.cold.wav",
+      "masterSha256": "7beb3da2d6801a90cc367f3dab566b689f4612ac9ee69f974a079c7e71e9127f",
+      "opus": "masters/coverage-environment/v2.environment.cold.opus",
+      "opusSha256": "178115c8b10d97ab1a7f2c863a1a34297a240d59a14b3147c17b81aa88957380",
+      "previewSha256": "fc2f9bdb67384c1c7ebb8645976eecf68b74575b04fa0eae9f01ff08d2a2a7eb",
+      "previewBytes": 71962,
+      "previewUrl": "/__cf-audio-review/v2.environment.cold.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.0,
+      "opusDbTP": -13.1
+    },
+    {
+      "id": "v2.environment.dry",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 4.4193,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/23d2cc7234c2710b-scrape3.wav",
+          "sha256": "23d2cc7234c2710b1683d39f061d9c18056f64d368ff7b90e5c33672d928bddb",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.41932
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.dry"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 14.4085,
+      "master": "masters/coverage-environment/v2.environment.dry.wav",
+      "masterSha256": "82b13116e8f2045e25a03e5d14b86a20da6330dba4e7c308f1bd778f24554746",
+      "opus": "masters/coverage-environment/v2.environment.dry.opus",
+      "opusSha256": "853cc035f9154a5d74ddf5071a7207c7d11c3908cd3b29e3275e14c15a125801",
+      "previewSha256": "c35b7a216bfb7e6cd4972c410cb6c29143086b98823baa9f5a67cacf1ad87b6d",
+      "previewBytes": 848618,
+      "previewUrl": "/__cf-audio-review/v2.environment.dry.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -37.9,
+      "opusDbTP": -37.9
+    },
+    {
+      "id": "v2.environment.rock",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 9.9345,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/090c20e5496977cd-nri-RockslideYOSE.mp3",
+          "sha256": "090c20e5496977cd627d2bfff45006ebcae7da246c3599abf56994c283cd0588",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 9.9345
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.rock"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 19.8278,
+      "master": "masters/coverage-environment/v2.environment.rock.wav",
+      "masterSha256": "b2b6965e6636c87e8fde7a3930787074347777788948b86c6a0bada475b95546",
+      "opus": "masters/coverage-environment/v2.environment.rock.opus",
+      "opusSha256": "cedf454dc5a31a48e9e2b02c6787811aebe45d3a807ed8427b2a03d68081fa45",
+      "previewSha256": "75ad5b3dccb63ffdb8f54e13c26d9f67d9fac44a41ab6ffb78d9857219576849",
+      "previewBytes": 1907538,
+      "previewUrl": "/__cf-audio-review/v2.environment.rock.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -37.9,
+      "opusDbTP": -37.7
+    },
+    {
+      "id": "v2.environment.thermal",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/239f1b60c1015e6e-yell-050301NorrisGeyserBasinBlackGrowlerSteamVentBinaural0101.mp3",
+          "sha256": "239f1b60c1015e6eb160b425ba3c0a34ad8615123e8a9bd77a752736c5a0a2fd",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 171.946667
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.thermal"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 30.7623,
+      "master": "masters/coverage-environment/v2.environment.thermal.wav",
+      "masterSha256": "54d0b391e1f14acf1e9ccaa5c2a96087e373d90dbf00f2dbd0151126b5f90292",
+      "opus": "masters/coverage-environment/v2.environment.thermal.opus",
+      "opusSha256": "ca7d81b87254ebf740e3ea078d6d5fbb49178d544bfe966f9a720ba72c326b3f",
+      "previewSha256": "f6c3b3b990cc0eeede70418333262f09752d028898a2cc98d230305b5d9d7707",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v2.environment.thermal.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.6,
+      "opusDbTP": -19.7
+    },
+    {
+      "id": "v2.environment.foliage",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 3.1617,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0efaa7a0397061cd-320141__owlstorm__blanket-movement-3.wav",
+          "sha256": "0efaa7a0397061cd1aa38a66bfed01fd7d8cee31c2f07d572a08d4143d5bfcab",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 3.161655
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.foliage"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 47.762299999999996,
+      "master": "masters/coverage-environment/v2.environment.foliage.wav",
+      "masterSha256": "16926afc2067ecf10a0e71e4be190d98d664162a2b1e7a4998cfc0a106ab6e44",
+      "opus": "masters/coverage-environment/v2.environment.foliage.opus",
+      "opusSha256": "8f2fb0cae72234393cc703ad76c2c6ea810bc3967b325cd13e77bb41147169fc",
+      "previewSha256": "8abbc593d9d3ce831a9ff7d0d59ad755e40a096132e3fb5acc8b10058a78cd17",
+      "previewBytes": 607162,
+      "previewUrl": "/__cf-audio-review/v2.environment.foliage.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -24.4,
+      "opusDbTP": -25.1
+    },
+    {
+      "id": "v2.environment.rain",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 6.8265,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/4e836ff06b7d88b9-loop_rain.ogg",
+          "sha256": "4e836ff06b7d88b97c17ec08f43c3678201bee1ec414bcb456252f784a7be4a4",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 6.826542
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.rain"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 51.92399999999999,
+      "master": "masters/coverage-environment/v2.environment.rain.wav",
+      "masterSha256": "6dcae978376daeff09df7c7640f711f644694b1bb3384dc7ded3d27aace5fb9d",
+      "opus": "masters/coverage-environment/v2.environment.rain.opus",
+      "opusSha256": "7bfd77dabfaaef2e421567d94164678f73ba7110456bdfff3dd08b97f8dda5c5",
+      "previewSha256": "ebd00ae5eab4a71e9dabf822219655eb4422f60f05161dfbc7fa631d5621d231",
+      "previewBytes": 1310802,
+      "previewUrl": "/__cf-audio-review/v2.environment.rain.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -28.3,
+      "opusDbTP": -28.3
+    },
+    {
+      "id": "v2.environment.snow",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 0.3742,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/68272e3f1cabcabd-footstep_snow_003.ogg",
+          "sha256": "68272e3f1cabcabd02d328fd344454d7c04cb58b5a86972fcdd858f845e3d007",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.snow"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 59.750499999999995,
+      "master": "masters/coverage-environment/v2.environment.snow.wav",
+      "masterSha256": "afbaf64ed65d3b9f771aff8f2b353e519f2c566a1a99acc28474e2e5f6e72cbc",
+      "opus": "masters/coverage-environment/v2.environment.snow.opus",
+      "opusSha256": "528cff6707475c546a519f84129b64cd28b1d4b5de6392c91516e0447bca741d",
+      "previewSha256": "c4d38d4fc6d17b5955b0f12ddc82d4afa59502941be0c219d0f932ff937e18a2",
+      "previewBytes": 71962,
+      "previewUrl": "/__cf-audio-review/v2.environment.snow.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.0,
+      "opusDbTP": -13.1
+    },
+    {
+      "id": "v2.environment.dust",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 0.5887,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.dust"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 61.1247,
+      "master": "masters/coverage-environment/v2.environment.dust.wav",
+      "masterSha256": "f537e2226e0808caea2f33496325532a84ac1aef47d479205f539f6d4e5a77f3",
+      "opus": "masters/coverage-environment/v2.environment.dust.opus",
+      "opusSha256": "82217a865f87d1f62cae788eca027721ee59506259494b8c935ff3b8c5b0f2ec",
+      "previewSha256": "aaef59c5d92118ba7e5909e271dd397930839c18ef62aafc38407770e68de5ac",
+      "previewBytes": 113146,
+      "previewUrl": "/__cf-audio-review/v2.environment.dust.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.6,
+      "opusDbTP": -34.7
+    },
+    {
+      "id": "v2.environment.wind",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 0.6704,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_1/d6ecfd092c261059-breath.ogg",
+          "sha256": "d6ecfd092c261059701fe81581957ce6e67c1737978449bbd98ec6d4f30abb7f",
+          "sourceId": "oga_creatures_1",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.670417
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.wind"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 62.7134,
+      "master": "masters/coverage-environment/v2.environment.wind.wav",
+      "masterSha256": "add92946685fa04f83d4db1f371df61430be198a97f6cbb4753fd608e3322383",
+      "opus": "masters/coverage-environment/v2.environment.wind.opus",
+      "opusSha256": "fee46a6d53864e1c95079cab687c0c1f9136deb80045056a9906c8e464e34a80",
+      "previewSha256": "58f32804fe80180b8c538b2253c6734296252fa0bc34c19a07763ecf0867b14c",
+      "previewBytes": 128830,
+      "previewUrl": "/__cf-audio-review/v2.environment.wind.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.5,
+      "opusDbTP": -23.5
+    },
+    {
+      "id": "v2.environment.thunder",
+      "group": "coverage-environment",
+      "kind": "designed",
+      "duration": 16,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/54d6a7fc85b5c7b0-nri-Thunder.mp3",
+          "sha256": "54d6a7fc85b5c7b0c65dd36ff3c5f398d698c37e733bfc98a234a6724c2d0a49",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 46.03575
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "environment.thunder"
+      ],
+      "notes": "Environmental component. Cold/snow contact, dry abrasion, foliage cloth, wind performed air and dust paper are explicit designed approximations; require listening before looping or promotion.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 64.3838,
+      "master": "masters/coverage-environment/v2.environment.thunder.wav",
+      "masterSha256": "2af42881bce37737b63571822fc9aa7bd10cbf5666982749586f3686b9b213b3",
+      "opus": "masters/coverage-environment/v2.environment.thunder.opus",
+      "opusSha256": "af4ad894a4bff9bd581021ca004d78fbc9ce5c7857a7423d942016632a4f279e",
+      "previewSha256": "e28e1e490bde486ea7936795c474d5bf1074bfc2003e4972416123d39b76835a",
+      "previewBytes": 3072114,
+      "previewUrl": "/__cf-audio-review/v2.environment.thunder.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -10.7
+    }
+  ],
+  "listeningAccepted": false
+}

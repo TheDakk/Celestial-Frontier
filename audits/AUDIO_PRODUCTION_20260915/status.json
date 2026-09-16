@@ -1,0 +1,169 @@
+{
+  "schema": "cf.audio-production-progress/v1",
+  "downloads": {
+    "attempted": 0,
+    "completed": 0,
+    "reason": "Required download manifest not located"
+  },
+  "renderedFiles": 4,
+  "qualifiedRepeatPcm": true,
+  "acceptedGameAssets": 0,
+  "newGameEventMappings": 0,
+  "newAuditionScreen": false,
+  "listeningReview": "not performed",
+  "spentUsd": 0,
+  "hostProof": "reaper-qualification-03/qualification.json",
+  "gameInventory": "game-inventory-v2.json",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "c782fc2687b786b519cb51c28be875ec6c68d0fc4b65296147e0694bb945cfc1",
+      "bytes": 6454
+    },
+    {
+      "path": "checks/root-validate.log",
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+      "bytes": 1093
+    },
+    {
+      "path": "game-inventory-v2.json",
+      "sha256": "f57378cea0ba9e70f05461ac4c3347f914cbc6ec7db19c350c970029a3024bdd",
+      "bytes": 314130
+    },
+    {
+      "path": "game-inventory.json",
+      "sha256": "5baab70727b9a5c5ef5eff44907b8decc663eb996d592b39e80130079d01ef3f",
+      "bytes": 287957
+    },
+    {
+      "path": "reaper-qualification/host-qualification.rpp",
+      "sha256": "04d7fd203319458096584f06d7f7cd10e46cbf3f16eae46337277c4c4d29f214",
+      "bytes": 77829
+    },
+    {
+      "path": "reaper-qualification/host.json",
+      "sha256": "c323590789e57a96cbdb1393a3e7a89af5834bb33a872ef873d26ee62002941d",
+      "bytes": 330
+    },
+    {
+      "path": "reaper-qualification/prepared.json",
+      "sha256": "0c0679ba87409ead71fac8c2e2cafc8648c02ccae7685c24e04926af01a6b7dd",
+      "bytes": 132
+    },
+    {
+      "path": "reaper-qualification/surge-and-stock-effects.trackchunk",
+      "sha256": "751352af2f3eb54886fea2dc5e2902180a8d41ef35415a29198ffbdf27cad69e",
+      "bytes": 69867
+    },
+    {
+      "path": "reaper-qualification/surge-parameters.json",
+      "sha256": "571b018790a7043830a98b0ea9359fd92a635b40f21eebcf3f2d647a6141beee",
+      "bytes": 140134
+    },
+    {
+      "path": "reaper-qualification-02/host-qualification.rpp",
+      "sha256": "68faac49b6dc606dd33b5c58cd455a7ae51ada2bf9b5ac5dbd549d91d9118061",
+      "bytes": 77832
+    },
+    {
+      "path": "reaper-qualification-02/host-qualification.wav",
+      "sha256": "7ff189310ae9c0036942825290923fdd7e204d59d178c243aa6c90a4e5db920c",
+      "bytes": 864690
+    },
+    {
+      "path": "reaper-qualification-02/host.json",
+      "sha256": "c323590789e57a96cbdb1393a3e7a89af5834bb33a872ef873d26ee62002941d",
+      "bytes": 330
+    },
+    {
+      "path": "reaper-qualification-02/prepared.json",
+      "sha256": "0c0679ba87409ead71fac8c2e2cafc8648c02ccae7685c24e04926af01a6b7dd",
+      "bytes": 132
+    },
+    {
+      "path": "reaper-qualification-02/replay/host-qualification.rpp",
+      "sha256": "089294c81136bbb27b909cd8318054e2c8e13c7bbe1925c22c9b70a600525453",
+      "bytes": 77839
+    },
+    {
+      "path": "reaper-qualification-02/replay/host-qualification.wav",
+      "sha256": "c04df02f973363de78800137dd54c0eb464176fe298ebfbd0965435e45aa513a",
+      "bytes": 864690
+    },
+    {
+      "path": "reaper-qualification-02/source-hashes-before-replay.json",
+      "sha256": "2ef90700dbce978067d67e9ee3e8debba75c5389e346c47421e8096bdef31417",
+      "bytes": 195
+    },
+    {
+      "path": "reaper-qualification-02/surge-and-stock-effects.trackchunk",
+      "sha256": "acb140f438596523573a343e891edf397e62aa07d0b1aa5da37a312385bc3d3e",
+      "bytes": 69867
+    },
+    {
+      "path": "reaper-qualification-02/surge-parameters.json",
+      "sha256": "571b018790a7043830a98b0ea9359fd92a635b40f21eebcf3f2d647a6141beee",
+      "bytes": 140134
+    },
+    {
+      "path": "reaper-qualification-03/host-qualification.rpp",
+      "sha256": "2205df3e96af889bdc5380b5a36b9f33749f096607af242cfb1ecd7fdedccbe7",
+      "bytes": 77832
+    },
+    {
+      "path": "reaper-qualification-03/host-qualification.wav",
+      "sha256": "7381c5a71982038dc7f512d50b7a164184eb961a9b4a393b2e6f25c572f8a2fa",
+      "bytes": 864690
+    },
+    {
+      "path": "reaper-qualification-03/host.json",
+      "sha256": "c323590789e57a96cbdb1393a3e7a89af5834bb33a872ef873d26ee62002941d",
+      "bytes": 330
+    },
+    {
+      "path": "reaper-qualification-03/prepare.log",
+      "sha256": "b02fc71440db20a2356280382c19eb0b83bf214dce5cea915de33908b93bf8d6",
+      "bytes": 117
+    },
+    {
+      "path": "reaper-qualification-03/prepared.json",
+      "sha256": "0c0679ba87409ead71fac8c2e2cafc8648c02ccae7685c24e04926af01a6b7dd",
+      "bytes": 132
+    },
+    {
+      "path": "reaper-qualification-03/qualification.json",
+      "sha256": "8f053ffcb22c77ed92b6fb7c0fdbf8fbfb19ee49533cf244e8eb94ecfb416e65",
+      "bytes": 3271
+    },
+    {
+      "path": "reaper-qualification-03/render.log",
+      "sha256": "41b74be7c622cff73bc9c0409195575f71401e29b424e467c08dad02324268fc",
+      "bytes": 117
+    },
+    {
+      "path": "reaper-qualification-03/replay/host-qualification.rpp",
+      "sha256": "0fb4848783420a76c1fe2c67a34a1e548ecc573ca28d1456c5c18d5ee9d2b66d",
+      "bytes": 77839
+    },
+    {
+      "path": "reaper-qualification-03/replay/host-qualification.wav",
+      "sha256": "96a87bb581b635e7ccf8c7c31cb38b9649a388b4a286cdf7c527dab5169f62e0",
+      "bytes": 864690
+    },
+    {
+      "path": "reaper-qualification-03/replay.log",
+      "sha256": "0c292c06935f9e6c4fe75aef8a480243362f1d027dc14c66474201452b9c5109",
+      "bytes": 117
+    },
+    {
+      "path": "reaper-qualification-03/surge-and-stock-effects.trackchunk",
+      "sha256": "590d5837890a2ed51228c31d42ae152ed979230d80c146ad85aa067a6606ab9b",
+      "bytes": 69867
+    },
+    {
+      "path": "reaper-qualification-03/surge-parameters.json",
+      "sha256": "358168d85269be71fb5e9b3d045982d503db035011d42b794ace4decd9c051ea",
+      "bytes": 140172
+    }
+  ]
+}

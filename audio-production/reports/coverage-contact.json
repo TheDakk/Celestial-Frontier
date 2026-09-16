@@ -1,0 +1,3126 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.surface.soil.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.7893,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/0546e1d8ab2def71-footstep_grass_003.ogg",
+          "sha256": "0546e1d8ab2def714425701a18bd34c5ee2794b12e858e5b595aabcf38a34137",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.66932
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.soil"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-contact/v2.surface.soil.1.wav",
+      "masterSha256": "7325506cf7f6cfc8a89c81d2e6a52e3b3ca6cd833d5330a9d7581ba2117a5acb",
+      "opus": "masters/coverage-contact/v2.surface.soil.1.opus",
+      "opusSha256": "f0ad3bb182241238e6c55e42844aa48aa01eb6ce8572a02c6e1eba55f23a166f",
+      "previewSha256": "67ba1e9248493dbbf670d3cb9d1af824b57e1f4d6ce90facd5502abfebe0e0b6",
+      "previewBytes": 75886,
+      "previewUrl": "/__cf-audio-review/v2.surface.soil.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.4,
+      "opusDbTP": -20.5
+    },
+    {
+      "id": "v2.surface.soil.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.7102,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/086fd4ab3546a507-footstep_grass_004.ogg",
+          "sha256": "086fd4ab3546a507ea5f5c759a9a10e535c95ade13705c238bc0eeffd7d4e8ba",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.590227
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.soil"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 1.7893,
+      "master": "masters/coverage-contact/v2.surface.soil.2.wav",
+      "masterSha256": "6f51f6bc579c43a1df800349bfeaa4c6e58ec74e0486e643364ec14c1e9d6407",
+      "opus": "masters/coverage-contact/v2.surface.soil.2.opus",
+      "opusSha256": "6432a16a98b45e7926a5fdfa4cde1fec0e176a84ff46338b72aa3028b9d9aff5",
+      "previewSha256": "e6d008fed90db250bb0f04b9e0fbaa837b7fdaa1c19a959bf864943837f45140",
+      "previewBytes": 68294,
+      "previewUrl": "/__cf-audio-review/v2.surface.soil.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.0,
+      "opusDbTP": -20.2
+    },
+    {
+      "id": "v2.surface.soil.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.8124,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/73a520139f5be716-footstep_grass_002.ogg",
+          "sha256": "73a520139f5be716a403bfe9c80e0e94d1e61d8e9de04a354b336392164b53dc",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.692449
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.soil"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 3.4995,
+      "master": "masters/coverage-contact/v2.surface.soil.3.wav",
+      "masterSha256": "adc340a88d224ff022b613ae86c34ce34917d706ea7e23b26462930b9b691b7a",
+      "opus": "masters/coverage-contact/v2.surface.soil.3.opus",
+      "opusSha256": "dddc60ae01a16046c9699b782de0b74d3c475d4a2400acb1a81b547bdfcd9715",
+      "previewSha256": "941d74804bc3253793ff12c854e5faa61ec9bc6aa8dece9c30d1b8fddc7c098b",
+      "previewBytes": 78104,
+      "previewUrl": "/__cf-audio-review/v2.surface.soil.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.8,
+      "opusDbTP": -19.9
+    },
+    {
+      "id": "v2.surface.grass.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.7893,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/0546e1d8ab2def71-footstep_grass_003.ogg",
+          "sha256": "0546e1d8ab2def714425701a18bd34c5ee2794b12e858e5b595aabcf38a34137",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.66932
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.grass"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 5.3119,
+      "master": "masters/coverage-contact/v2.surface.grass.1.wav",
+      "masterSha256": "6d27ec4fb804fb61ab105134d4f800abda1381de7b3c26a4fd735e87dd747a68",
+      "opus": "masters/coverage-contact/v2.surface.grass.1.opus",
+      "opusSha256": "9e683535897750f8c86e69cdd06b453b934db2660c9b91647badddef9a7d17c9",
+      "previewSha256": "6364eac323ca15022b5300e430040b28993155b177f1e46db698328970aa26f8",
+      "previewBytes": 75886,
+      "previewUrl": "/__cf-audio-review/v2.surface.grass.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.4,
+      "opusDbTP": -20.5
+    },
+    {
+      "id": "v2.surface.grass.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.7102,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/086fd4ab3546a507-footstep_grass_004.ogg",
+          "sha256": "086fd4ab3546a507ea5f5c759a9a10e535c95ade13705c238bc0eeffd7d4e8ba",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.590227
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.grass"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 7.1011999999999995,
+      "master": "masters/coverage-contact/v2.surface.grass.2.wav",
+      "masterSha256": "2a8669603b063b0d00b4fdf3cf1663ff641e43aec1510cb61faaddf888eccea6",
+      "opus": "masters/coverage-contact/v2.surface.grass.2.opus",
+      "opusSha256": "08e0d3fa990056b461b93e5235b75e2490cec2ffefc843fb6e3395d9fd3f8d3b",
+      "previewSha256": "9c558408c0752a4bd006fd253f6b5632e0b2c94e979d353ba266048658efde70",
+      "previewBytes": 68294,
+      "previewUrl": "/__cf-audio-review/v2.surface.grass.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.8,
+      "opusDbTP": -19.9
+    },
+    {
+      "id": "v2.surface.grass.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.8124,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/73a520139f5be716-footstep_grass_002.ogg",
+          "sha256": "73a520139f5be716a403bfe9c80e0e94d1e61d8e9de04a354b336392164b53dc",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.692449
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.grass"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 8.811399999999999,
+      "master": "masters/coverage-contact/v2.surface.grass.3.wav",
+      "masterSha256": "3c23de7dde13b97e0a9a44f7e145f56ab646c94d90d014bd2898212223d467bf",
+      "opus": "masters/coverage-contact/v2.surface.grass.3.opus",
+      "opusSha256": "0fbb09f31160c07be02dc85fb388221b72f18a98cc4324d321b7dcdf70f595ff",
+      "previewSha256": "e45406a3add8e1913c1e856b43253611ffb19e356c2dfe94e4285df25700a780",
+      "previewBytes": 78104,
+      "previewUrl": "/__cf-audio-review/v2.surface.grass.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.8,
+      "opusDbTP": -20.0
+    },
+    {
+      "id": "v2.surface.leaves.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.7087,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.leaves"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 10.6238,
+      "master": "masters/coverage-contact/v2.surface.leaves.1.wav",
+      "masterSha256": "7182d2f446c343ae6c397af0455f13e467d09f5568918e58da58413862bc25a9",
+      "opus": "masters/coverage-contact/v2.surface.leaves.1.opus",
+      "opusSha256": "5db0b6d7f106f3ca8329e81b8af6cec8db6817d2c7b177ade4de091a58ba6b1c",
+      "previewSha256": "8579cf3392aad73d0732a102281f475065af1fb3f245858602acac60d604192e",
+      "previewBytes": 68150,
+      "previewUrl": "/__cf-audio-review/v2.surface.leaves.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.6,
+      "opusDbTP": -34.7
+    },
+    {
+      "id": "v2.surface.leaves.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 1.9296,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0a1d9047a54158b4-pageturn2.wav",
+          "sha256": "0a1d9047a54158b43df61a20effa262f44b1639be62a419081f31f14cfca7a1f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.809637
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.leaves"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 12.3325,
+      "master": "masters/coverage-contact/v2.surface.leaves.2.wav",
+      "masterSha256": "581c202ce5e9a424327b366e0a2bb4f5933484b243d69cadecf920a203344361",
+      "opus": "masters/coverage-contact/v2.surface.leaves.2.opus",
+      "opusSha256": "8902580cb7ddf012337b0ab2e50131a158b88e8c468419c5cbfd7f24fcd63f0c",
+      "previewSha256": "40dc652775702bff0b26ad371d369f91c5e7f23999b6851624dc63dec5eeeccb",
+      "previewBytes": 185356,
+      "previewUrl": "/__cf-audio-review/v2.surface.leaves.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.1,
+      "opusDbTP": -34.6
+    },
+    {
+      "id": "v2.surface.leaves.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 2.3089,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/520b0845971ba1ef-crumples2.wav",
+          "sha256": "520b0845971ba1ef115d6efbf91bf8edb2e3896ee8abeaf5d89743d196b2aef9",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 2.188889
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.leaves"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 15.2621,
+      "master": "masters/coverage-contact/v2.surface.leaves.3.wav",
+      "masterSha256": "64c90d1fa84c75a9f8754c11baa128294bacce84f7159c4cc3dde79b2e4b0fae",
+      "opus": "masters/coverage-contact/v2.surface.leaves.3.opus",
+      "opusSha256": "d50b63fc9e64d45a7479bc00c11edca2c745038cd1c55a3b11b96a1fb04aad55",
+      "previewSha256": "9945aaf9944fdfca7dcc37f1e78a30fbd307e6b1cc01dec99ebda8f4c3526964",
+      "previewBytes": 221768,
+      "previewUrl": "/__cf-audio-review/v2.surface.leaves.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -24.2,
+      "opusDbTP": -24.3
+    },
+    {
+      "id": "v2.surface.wood.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3856,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/4b76bf3ccc8e60d1-impactWood_light_001.ogg",
+          "sha256": "4b76bf3ccc8e60d19188f3165b778a7817786faa6887c55d9049bcbeef3b425f",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.wood"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 18.571,
+      "master": "masters/coverage-contact/v2.surface.wood.1.wav",
+      "masterSha256": "17270421385cd7e3ba319fe2b845fc54de2c9669bd3d98bfa28d6a11bdd09188",
+      "opus": "masters/coverage-contact/v2.surface.wood.1.opus",
+      "opusSha256": "c01400f777099ccb9f98509fe39c7b4a6f14a0b475562468d3b5a0e2827568e5",
+      "previewSha256": "0fd48b50ac594c76659c34eb9abb99995e7aebe61f651d8e52cf32b494463096",
+      "previewBytes": 37132,
+      "previewUrl": "/__cf-audio-review/v2.surface.wood.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.2,
+      "opusDbTP": -17.3
+    },
+    {
+      "id": "v2.surface.wood.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3856,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/b183cf7a5bd78381-impactWood_light_002.ogg",
+          "sha256": "b183cf7a5bd783817e0e4b82af34ac6658fa1927049089dadc8b15c2ecc771dc",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.wood"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 19.9566,
+      "master": "masters/coverage-contact/v2.surface.wood.2.wav",
+      "masterSha256": "810c187e6644538a7199301486ea3a0eeee55087dbf1abe64a48c59280ae661d",
+      "opus": "masters/coverage-contact/v2.surface.wood.2.opus",
+      "opusSha256": "d1aa932c2caf2f74953a0cb37f0b445ce7866412af85cecacb1bd4ae5a5bf800",
+      "previewSha256": "0a675f3b451284242b4cf3b237731bbfb4fc847e6f06f198421f6c06a472caa4",
+      "previewBytes": 37132,
+      "previewUrl": "/__cf-audio-review/v2.surface.wood.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.0,
+      "opusDbTP": -14.0
+    },
+    {
+      "id": "v2.surface.wood.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3856,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/cdfbe8af2fe7ff9e-impactWood_light_003.ogg",
+          "sha256": "cdfbe8af2fe7ff9ee28f337a0a989deee0f327620da456c8413644880e9d0004",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.wood"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 21.342200000000002,
+      "master": "masters/coverage-contact/v2.surface.wood.3.wav",
+      "masterSha256": "5dd6e4d1a102b2ba34ea33b943e20412a7cc4fabd4e7334c380a04ae3f197f71",
+      "opus": "masters/coverage-contact/v2.surface.wood.3.opus",
+      "opusSha256": "0d358fba9f7745ea9bd01e2441cffc5aeb7a19b662ba0bd38a65fa2899a0059c",
+      "previewSha256": "12dfad03909d8709f8b9aba741a3c40f65a6546f405c3dac64a4cdd57931bfb8",
+      "previewBytes": 37132,
+      "previewUrl": "/__cf-audio-review/v2.surface.wood.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -18.5,
+      "opusDbTP": -18.6
+    },
+    {
+      "id": "v2.surface.rock.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.8974,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/57dc6b85ee986e68-stones_02.ogg",
+          "sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.777354
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.rock"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 22.727800000000002,
+      "master": "masters/coverage-contact/v2.surface.rock.1.wav",
+      "masterSha256": "1f38d0e8a12aff743b3008a855eeb7ca97d32dcb747fb1b952263b6c185efd7c",
+      "opus": "masters/coverage-contact/v2.surface.rock.1.opus",
+      "opusSha256": "8df1a3b286d2e4df22803a811e5a8bb9aa75db20ea8bd247dc349ff37cbdb104",
+      "previewSha256": "ac63e258c0c50ee4dd74509ad0032a0fdd3b8964a2593fa525ddc2c23fd838db",
+      "previewBytes": 86264,
+      "previewUrl": "/__cf-audio-review/v2.surface.rock.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "v2.surface.rock.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.5034,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/66f1cef820f66d86-stones_04.ogg",
+          "sha256": "66f1cef820f66d86414d481b37a48a7b7ea11f4a5d7358372ebcfb506af0e652",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.383396
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.rock"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 24.625200000000003,
+      "master": "masters/coverage-contact/v2.surface.rock.2.wav",
+      "masterSha256": "f5eb49494d04ea677fafa6850e5bc5ac0ff67c0216659a6c5e42448078846f16",
+      "opus": "masters/coverage-contact/v2.surface.rock.2.opus",
+      "opusSha256": "0968fb1a40df2556881f9b5d0d1f1a65d29fd845cb652590c58a2cf256f825fc",
+      "previewSha256": "84ea49463ca74454d807acf7fae19e188830fbc5ad1d1016d8d808344121a662",
+      "previewBytes": 48440,
+      "previewUrl": "/__cf-audio-review/v2.surface.rock.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -11.0
+    },
+    {
+      "id": "v2.surface.rock.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 1.3195,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/b86d143d7ef4974c-stones_03.ogg",
+          "sha256": "b86d143d7ef4974c2b97fda9e5d1861482646eec754e15935eeb3680ea0d71da",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.199521
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.rock"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 26.128600000000002,
+      "master": "masters/coverage-contact/v2.surface.rock.3.wav",
+      "masterSha256": "2a7d8969c9e0cd93beff7c9a5715087331537d25a94488a178a3d2fdaa3e70a0",
+      "opus": "masters/coverage-contact/v2.surface.rock.3.opus",
+      "opusSha256": "01b352409429c129ad156ef7ab8ec384528b6c607ed6e9c3605a333f2c4e30d8",
+      "previewSha256": "5f777ab47311eb2f0920612baa8637cf46b4447dcdcfde61887735c43ef4eb09",
+      "previewBytes": 126786,
+      "previewUrl": "/__cf-audio-review/v2.surface.rock.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.8
+    },
+    {
+      "id": "v2.surface.sand.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/23d2cc7234c2710b-scrape3.wav",
+          "sha256": "23d2cc7234c2710b1683d39f061d9c18056f64d368ff7b90e5c33672d928bddb",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.41932
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.sand"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 28.448100000000004,
+      "master": "masters/coverage-contact/v2.surface.sand.1.wav",
+      "masterSha256": "0c3314a06dde2b33e88777cfac0bf5103c419db514ad39681e6b4a696aeba5e2",
+      "opus": "masters/coverage-contact/v2.surface.sand.1.opus",
+      "opusSha256": "87e4955fccba5d318df7f035d32281e27b9d77789bb56d6b4f492f62793574a7",
+      "previewSha256": "42e025e24910a4cf16ca31a71778f5923cd7778e55b3720c8e6008ed65e97aef",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.surface.sand.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -37.9,
+      "opusDbTP": -37.7
+    },
+    {
+      "id": "v2.surface.sand.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 1.1417,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/923ab149cb912995-scrape2.wav",
+          "sha256": "923ab149cb912995bc140370f20c99275c92687a160c767a3d122261cf6a8821",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.021678
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.sand"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 32.448100000000004,
+      "master": "masters/coverage-contact/v2.surface.sand.2.wav",
+      "masterSha256": "2ecab3d029a02a54715af0814236f83fa5422ed1020d5e5c1ca1bf81a848adb8",
+      "opus": "masters/coverage-contact/v2.surface.sand.2.opus",
+      "opusSha256": "90f0d80347fcdf4d4c5d3c90d7e21655fd89e264418b74cd9eaf9b52bd50572f",
+      "previewSha256": "2a37690e03a9ca67045d9e167690f5506cd0c45f1da5891b6891660c02b91fc3",
+      "previewBytes": 109718,
+      "previewUrl": "/__cf-audio-review/v2.surface.sand.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.2,
+      "opusDbTP": -26.9
+    },
+    {
+      "id": "v2.surface.sand.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.7369,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/dca8c2c544f1645b-scrape1.wav",
+          "sha256": "dca8c2c544f1645be419d528575a33d3452a1e2d5a0c5fbad46a881b9c5d3e04",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.616893
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.sand"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 34.589800000000004,
+      "master": "masters/coverage-contact/v2.surface.sand.3.wav",
+      "masterSha256": "85477c202d58025026cb7c6c91aaf20b9a67942cfc3876f3b555a5efb35b7f9b",
+      "opus": "masters/coverage-contact/v2.surface.sand.3.opus",
+      "opusSha256": "1a253ddc5acf970f2df54c598814f60c40f585087f009c61a9fdb4dd0051014e",
+      "previewSha256": "ff6cabd653b0711b5a152c46e99c42cea611b1f5cf0ce5e7ec040ba7ae4efcbe",
+      "previewBytes": 70856,
+      "previewUrl": "/__cf-audio-review/v2.surface.sand.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.5,
+      "opusDbTP": -34.4
+    },
+    {
+      "id": "v2.surface.mud.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.62,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.mud"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 36.3267,
+      "master": "masters/coverage-contact/v2.surface.mud.1.wav",
+      "masterSha256": "9dc1eb20dd352ab0eaf9e11c694bda353fc2a6ef37c0c60f6fe7ccff85434884",
+      "opus": "masters/coverage-contact/v2.surface.mud.1.opus",
+      "opusSha256": "8f5277e40ae5d0a101a04f2d240de7383e5603028cf9d5fa42ce3bbf5390aba4",
+      "previewSha256": "cf6c6aafc1a474d2795929b7c68586252d44da94bd05c62289d70df847ed86fa",
+      "previewBytes": 59634,
+      "previewUrl": "/__cf-audio-review/v2.surface.mud.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.surface.mud.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.mud"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 37.9467,
+      "master": "masters/coverage-contact/v2.surface.mud.2.wav",
+      "masterSha256": "fdffb86e2155ec6cf42cf7d635456244f817f55d3540224f1134ce5ee208560f",
+      "opus": "masters/coverage-contact/v2.surface.mud.2.opus",
+      "opusSha256": "8859ec4be567ac74cc086e0bd136c37611f5b42a7bd96ffea3614f046fd891b2",
+      "previewSha256": "5ec39b1ecf5aa54bbe70da9291f5739f8f5347067f5c3c724216fae0f0c90242",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.surface.mud.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.7,
+      "opusDbTP": -12.7
+    },
+    {
+      "id": "v2.surface.mud.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.6574,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.mud"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 41.9467,
+      "master": "masters/coverage-contact/v2.surface.mud.3.wav",
+      "masterSha256": "9e6697a28c720207b24f6ad2e0c58ff241e81110308693b41a0a062f2172672e",
+      "opus": "masters/coverage-contact/v2.surface.mud.3.opus",
+      "opusSha256": "2d755aae1bd5d2b6b9175ea5f04ed413fbd935e0620df814d2a91c350dc957c2",
+      "previewSha256": "8629faba5da73803a1a1def5eec76114dfb8598845b85c789b92aca3135356e1",
+      "previewBytes": 63224,
+      "previewUrl": "/__cf-audio-review/v2.surface.mud.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.8,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.surface.snow.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.4942,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/68272e3f1cabcabd-footstep_snow_003.ogg",
+          "sha256": "68272e3f1cabcabd02d328fd344454d7c04cb58b5a86972fcdd858f845e3d007",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.snow"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 43.6041,
+      "master": "masters/coverage-contact/v2.surface.snow.1.wav",
+      "masterSha256": "87f2debe1e31ad07255c14a93801f989540c204eabfd0d309bf8587108757c6f",
+      "opus": "masters/coverage-contact/v2.surface.snow.1.opus",
+      "opusSha256": "b81c5d4a828429becec8184c790f2dc300e573a67c7f233a829c16025e82bfa1",
+      "previewSha256": "c5eeb461808c9267936d5b4934b234fcdcbce20d6dc063f3d853cf61b77b578b",
+      "previewBytes": 47558,
+      "previewUrl": "/__cf-audio-review/v2.surface.snow.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.0,
+      "opusDbTP": -13.1
+    },
+    {
+      "id": "v2.surface.snow.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.4942,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/7fe9ce5f5732aaa0-footstep_snow_004.ogg",
+          "sha256": "7fe9ce5f5732aaa0a50ef02bb1ac162c27f6bd85214e86aaea6e13e7a41dbc00",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.snow"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 45.0983,
+      "master": "masters/coverage-contact/v2.surface.snow.2.wav",
+      "masterSha256": "373082fc18d46bebef9426511ddd18548f5625a795c42930828249f8959617c3",
+      "opus": "masters/coverage-contact/v2.surface.snow.2.opus",
+      "opusSha256": "546400f79a9f192072fc778affc2ae4183dea8085e10ab839bf08ada7847a4a3",
+      "previewSha256": "7b7a0cc7974293a35f2a1abcc657504040488218abde252be17828a3ac805ad4",
+      "previewBytes": 47558,
+      "previewUrl": "/__cf-audio-review/v2.surface.snow.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.1,
+      "opusDbTP": -12.2
+    },
+    {
+      "id": "v2.surface.snow.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.4942,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/980fb9a1c9227aed-footstep_snow_001.ogg",
+          "sha256": "980fb9a1c9227aed7995067b0357f373053337f2416316db8ea0438418542fb4",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.snow"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 46.5925,
+      "master": "masters/coverage-contact/v2.surface.snow.3.wav",
+      "masterSha256": "3202f0946f849b27e7991a4325babbe3a231ac5786e32abe1d60e069d385eeec",
+      "opus": "masters/coverage-contact/v2.surface.snow.3.opus",
+      "opusSha256": "8d36b9af3286e15daf3e0ff1b561ab0f1e0fba67193df27470dcec45eb8255ed",
+      "previewSha256": "79332892ddac179cbfab247cffb125cc14fd4e7b5bafee5c07998d97b5b5cb73",
+      "previewBytes": 47558,
+      "previewUrl": "/__cf-audio-review/v2.surface.snow.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.1,
+      "opusDbTP": -12.1
+    },
+    {
+      "id": "v2.surface.ice.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3296,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.ice"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 48.0867,
+      "master": "masters/coverage-contact/v2.surface.ice.1.wav",
+      "masterSha256": "748df378e903df1c6d3e5953f7bd8614184ea9a8714ddd72ee1cd21c49da3510",
+      "opus": "masters/coverage-contact/v2.surface.ice.1.opus",
+      "opusSha256": "79a10a30873e9def6d356b04116a69d1694e548951d789e8b66d54b4f149e450",
+      "previewSha256": "905db04664f5a2082c1d241186ef6fc5ddc634be2dd4febd054dc97128d1875f",
+      "previewBytes": 31756,
+      "previewUrl": "/__cf-audio-review/v2.surface.ice.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.2,
+      "opusDbTP": -15.2
+    },
+    {
+      "id": "v2.surface.ice.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3296,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/710db7451bb7857b-impactGlass_light_002.ogg",
+          "sha256": "710db7451bb7857b9140dfe6afe4621ea2188ad65eda3919c569d1bb285b933d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.ice"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 49.4163,
+      "master": "masters/coverage-contact/v2.surface.ice.2.wav",
+      "masterSha256": "422d8ab2dcfb5a7eed420f054651110c99923fd3a5453ef77f119d6f7e9d49d0",
+      "opus": "masters/coverage-contact/v2.surface.ice.2.opus",
+      "opusSha256": "313d7b4fc42a164afa92c385ac9c98b6f456fc0a6131ba6144292861a3cdd2fc",
+      "previewSha256": "6613837aabfea7aa72600432f47b2c301ac09aa7bd7e58af7225db67e6fc1b88",
+      "previewBytes": 31756,
+      "previewUrl": "/__cf-audio-review/v2.surface.ice.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "v2.surface.ice.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3296,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/765290ce32fa108c-impactGlass_light_003.ogg",
+          "sha256": "765290ce32fa108c939a0dbd6fbacbcd05abde622b57b708eb8a64058ef4225a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.ice"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 50.7459,
+      "master": "masters/coverage-contact/v2.surface.ice.3.wav",
+      "masterSha256": "89afba720147a9c3b2741e0ba37aba3330b70cc6dddc285f364d690ce92ca7c5",
+      "opus": "masters/coverage-contact/v2.surface.ice.3.opus",
+      "opusSha256": "22041289e22966a95ad2b78d4dc876294a59b76a1952e3b6641e886db8b87a5c",
+      "previewSha256": "9bd0fb97887bb526a081051ba1d45c6af81908bd35722a1d1dc9ab463be84b45",
+      "previewBytes": 31756,
+      "previewUrl": "/__cf-audio-review/v2.surface.ice.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.7,
+      "opusDbTP": -14.6
+    },
+    {
+      "id": "v2.surface.water.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.6794,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/018984c8e03488b6-splash_14.ogg",
+          "sha256": "018984c8e03488b65d4c2dd6e08a9c2115b395ded80cf7209f893e7e664c5d0e",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.559354
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.water"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 52.0755,
+      "master": "masters/coverage-contact/v2.surface.water.1.wav",
+      "masterSha256": "554bd3071534ba4033c0c37cfed12918e7e05bf321da01c138ba5ed89673324b",
+      "opus": "masters/coverage-contact/v2.surface.water.1.opus",
+      "opusSha256": "62446b77f0e97c74c3b164290a3e439ad802124c1a7aa9e2bc25682d38c0a9d0",
+      "previewSha256": "32d8ad3cb642111a8457c30b2372f15986be3989ff8353f5ca3dd4c01c1a9f10",
+      "previewBytes": 65336,
+      "previewUrl": "/__cf-audio-review/v2.surface.water.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.8,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.surface.water.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.8835,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/10bf42f906ea0366-splash_13.ogg",
+          "sha256": "10bf42f906ea0366c2091405b7d355e74a496b1fe1c4bd40d8965d703c0db2d7",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.763542
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.water"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 53.7549,
+      "master": "masters/coverage-contact/v2.surface.water.2.wav",
+      "masterSha256": "f6a9d0a41795324b406fb992aa10a8447703493db3f927c8816cd79d43cab714",
+      "opus": "masters/coverage-contact/v2.surface.water.2.opus",
+      "opusSha256": "f6053831ba5e62d9c65074416b5ebdf8f109cb8589a013307bb289ad1591735a",
+      "previewSha256": "b4bfc49913b25c4fe80e297349fa1feda3ebf8a7bbea82596c637943d49ae451",
+      "previewBytes": 84930,
+      "previewUrl": "/__cf-audio-review/v2.surface.water.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.8,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "v2.surface.water.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.4796,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/123f78e6bef82b5d-splash_09.ogg",
+          "sha256": "123f78e6bef82b5dfb24f0a93f759b309bd12b21d05905ab401756fc588a31dc",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.359563
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.surface.water"
+      ],
+      "notes": "Designed surface ingredient; leaves/paper, mud/slime, ice/glass and soil/grass are declared material approximations.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 55.6384,
+      "master": "masters/coverage-contact/v2.surface.water.3.wav",
+      "masterSha256": "40cf7c31a1e06a7a91d7852ff32036bdbd35134228e9e23ea89505eb923d3544",
+      "opus": "masters/coverage-contact/v2.surface.water.3.opus",
+      "opusSha256": "e0ab309e5f1a8b46d632a3ed47c696db977761c103313834c8c7e0edf090bfc4",
+      "previewSha256": "3b91e90d06775ebf0bfaca0fb37f6b578798b64d1ca2346674b0df68eb5a220f",
+      "previewBytes": 46156,
+      "previewUrl": "/__cf-audio-review/v2.surface.water.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.3,
+      "opusDbTP": -16.3
+    },
+    {
+      "id": "v2.contact.body.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/23d2cc7234c2710b-scrape3.wav",
+          "sha256": "23d2cc7234c2710b1683d39f061d9c18056f64d368ff7b90e5c33672d928bddb",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.41932
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.contact.body"
+      ],
+      "notes": "Designed contact layer, not an identified animal footstep recording.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 57.117999999999995,
+      "master": "masters/coverage-contact/v2.contact.body.1.wav",
+      "masterSha256": "e11949b43aef135e59d12c46e81ed202269e9e1ee7f21721207e1e356aae9c80",
+      "opus": "masters/coverage-contact/v2.contact.body.1.opus",
+      "opusSha256": "5f10413ade5d6a08b06fd3d58f60e3f9bafc19282a2562c37dee557e4bd688f1",
+      "previewSha256": "42e025e24910a4cf16ca31a71778f5923cd7778e55b3720c8e6008ed65e97aef",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.contact.body.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -37.9,
+      "opusDbTP": -37.7
+    },
+    {
+      "id": "v2.contact.body.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 1.1417,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/923ab149cb912995-scrape2.wav",
+          "sha256": "923ab149cb912995bc140370f20c99275c92687a160c767a3d122261cf6a8821",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.021678
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.contact.body"
+      ],
+      "notes": "Designed contact layer, not an identified animal footstep recording.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 61.117999999999995,
+      "master": "masters/coverage-contact/v2.contact.body.2.wav",
+      "masterSha256": "6431caba3c16bf9ff57857433904ef6cd7510f31e0142c8ba36a6ef40dbf91e2",
+      "opus": "masters/coverage-contact/v2.contact.body.2.opus",
+      "opusSha256": "63b93ea9c731ca655ed9f30439b29182d5249401a1291e163bfd3ac197be97ac",
+      "previewSha256": "b9b97cb38e14182d270b9031c40b16fb6b6fb0b2f9b0fb67496de0d7527992b1",
+      "previewBytes": 109718,
+      "previewUrl": "/__cf-audio-review/v2.contact.body.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.2,
+      "opusDbTP": -26.9
+    },
+    {
+      "id": "v2.contact.body.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.7369,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/dca8c2c544f1645b-scrape1.wav",
+          "sha256": "dca8c2c544f1645be419d528575a33d3452a1e2d5a0c5fbad46a881b9c5d3e04",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.616893
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.contact.body"
+      ],
+      "notes": "Designed contact layer, not an identified animal footstep recording.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 63.259699999999995,
+      "master": "masters/coverage-contact/v2.contact.body.3.wav",
+      "masterSha256": "24523563da501da9ae0b7235a2b0ac3b1df08a62fd84020282b392a8c3c2bcf0",
+      "opus": "masters/coverage-contact/v2.contact.body.3.opus",
+      "opusSha256": "9e7e9bd83ca419b6e2bd5f23e7c46f6a3b08c9fa2c0fb0cf47d88998c2116119",
+      "previewSha256": "b0b514cadbe23b531eca7da82576e408f0d005ff019d1704a76f6606e664ccea",
+      "previewBytes": 70856,
+      "previewUrl": "/__cf-audio-review/v2.contact.body.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.5,
+      "opusDbTP": -34.4
+    },
+    {
+      "id": "v2.contact.root.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.4527,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.contact.root"
+      ],
+      "notes": "Designed contact layer, not an identified animal footstep recording.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 64.9966,
+      "master": "masters/coverage-contact/v2.contact.root.1.wav",
+      "masterSha256": "9feee7f3f436488d07248448bf8cbd58359897e8003b0a3ebcc1698775daf1b8",
+      "opus": "masters/coverage-contact/v2.contact.root.1.opus",
+      "opusSha256": "dd4185a16fda860da2def85098a4128df47235880ee81e4c5bf365676503434d",
+      "previewSha256": "c9506601509ca96d8424a2480acfa26ba959a71bd59ec2bc5e64de545873d490",
+      "previewBytes": 43574,
+      "previewUrl": "/__cf-audio-review/v2.contact.root.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.8,
+      "opusDbTP": -16.9
+    },
+    {
+      "id": "v2.contact.root.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.433,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15ff82332f342c30-impactWood_heavy_000.ogg",
+          "sha256": "15ff82332f342c30e469215539e1cc57e11b221aa2cf7e11e811d313a9927f3d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313039
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.contact.root"
+      ],
+      "notes": "Designed contact layer, not an identified animal footstep recording.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 66.4493,
+      "master": "masters/coverage-contact/v2.contact.root.2.wav",
+      "masterSha256": "1637e44226fff08c02dec1019bda5b06e5afd3f53955e75bfa1635b8e0e86e96",
+      "opus": "masters/coverage-contact/v2.contact.root.2.opus",
+      "opusSha256": "0ac84883804524d85b1078d3717976b487d035e8eee213bb6ac276aa45659a80",
+      "previewSha256": "96ef66be2ef3d174b8d3551447beeeb5c04fc48686526b89bf67d4060666b392",
+      "previewBytes": 41682,
+      "previewUrl": "/__cf-audio-review/v2.contact.root.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.contact.root.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.4527,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.contact.root"
+      ],
+      "notes": "Designed contact layer, not an identified animal footstep recording.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 67.8823,
+      "master": "masters/coverage-contact/v2.contact.root.3.wav",
+      "masterSha256": "e7be64dc6dfe3f0e5090ed261bfcdc3e3e36f1cb702afa8d24794868f2c22db9",
+      "opus": "masters/coverage-contact/v2.contact.root.3.opus",
+      "opusSha256": "243c694bfd787d8144a1b07fa355c2a0d3c8ec7c0a5451d7a0c8760ea1727020",
+      "previewSha256": "cfd0186f299203a89b70386592cbdb59b11a8c0f6d00a83078b1dbc05ffa83e6",
+      "previewBytes": 43574,
+      "previewUrl": "/__cf-audio-review/v2.contact.root.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.2
+    },
+    {
+      "id": "v2.contact.hoof.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3856,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/4b76bf3ccc8e60d1-impactWood_light_001.ogg",
+          "sha256": "4b76bf3ccc8e60d19188f3165b778a7817786faa6887c55d9049bcbeef3b425f",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.contact.hoof"
+      ],
+      "notes": "Designed contact layer, not an identified animal footstep recording.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 69.33500000000001,
+      "master": "masters/coverage-contact/v2.contact.hoof.1.wav",
+      "masterSha256": "17270421385cd7e3ba319fe2b845fc54de2c9669bd3d98bfa28d6a11bdd09188",
+      "opus": "masters/coverage-contact/v2.contact.hoof.1.opus",
+      "opusSha256": "8cd2172348b4ea0fca276504af1ac54fd365912741724b662d7080fead00c8d9",
+      "previewSha256": "0fd48b50ac594c76659c34eb9abb99995e7aebe61f651d8e52cf32b494463096",
+      "previewBytes": 37132,
+      "previewUrl": "/__cf-audio-review/v2.contact.hoof.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.2,
+      "opusDbTP": -17.3
+    },
+    {
+      "id": "v2.contact.hoof.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3856,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/b183cf7a5bd78381-impactWood_light_002.ogg",
+          "sha256": "b183cf7a5bd783817e0e4b82af34ac6658fa1927049089dadc8b15c2ecc771dc",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.contact.hoof"
+      ],
+      "notes": "Designed contact layer, not an identified animal footstep recording.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 70.7206,
+      "master": "masters/coverage-contact/v2.contact.hoof.2.wav",
+      "masterSha256": "810c187e6644538a7199301486ea3a0eeee55087dbf1abe64a48c59280ae661d",
+      "opus": "masters/coverage-contact/v2.contact.hoof.2.opus",
+      "opusSha256": "000b5339fe9d6a750982185889e72c36403623795fc4a839edc817ceaeb4a27f",
+      "previewSha256": "0a675f3b451284242b4cf3b237731bbfb4fc847e6f06f198421f6c06a472caa4",
+      "previewBytes": 37132,
+      "previewUrl": "/__cf-audio-review/v2.contact.hoof.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.0,
+      "opusDbTP": -14.0
+    },
+    {
+      "id": "v2.contact.hoof.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3856,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/cdfbe8af2fe7ff9e-impactWood_light_003.ogg",
+          "sha256": "cdfbe8af2fe7ff9ee28f337a0a989deee0f327620da456c8413644880e9d0004",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "movement.contact.hoof"
+      ],
+      "notes": "Designed contact layer, not an identified animal footstep recording.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 72.1062,
+      "master": "masters/coverage-contact/v2.contact.hoof.3.wav",
+      "masterSha256": "9fb72fd15838d8896413a673fe5a9e99d6bd0012e79981bca3212a2f70870ae6",
+      "opus": "masters/coverage-contact/v2.contact.hoof.3.opus",
+      "opusSha256": "efca024a1c3e3f7cbed1a02595417c32d5aad91ad26e9547704c7b9e1732192a",
+      "previewSha256": "12dfad03909d8709f8b9aba741a3c40f65a6546f405c3dac64a4cdd57931bfb8",
+      "previewBytes": 37132,
+      "previewUrl": "/__cf-audio-review/v2.contact.hoof.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -18.5,
+      "opusDbTP": -18.6
+    },
+    {
+      "id": "v2.material.foliage.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.7087,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/047b4e27c77e5f7a-pageturn1.wav",
+          "sha256": "047b4e27c77e5f7afba041365b9cba4f2306c6dd913b488fcd8b896f8adc3271",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.588685
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.foliage"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 73.4918,
+      "master": "masters/coverage-contact/v2.material.foliage.1.wav",
+      "masterSha256": "7182d2f446c343ae6c397af0455f13e467d09f5568918e58da58413862bc25a9",
+      "opus": "masters/coverage-contact/v2.material.foliage.1.opus",
+      "opusSha256": "5fbdad28732537c4068ea3f4bfad7e14d9dc80735dae69746601f72547e9c0bd",
+      "previewSha256": "8579cf3392aad73d0732a102281f475065af1fb3f245858602acac60d604192e",
+      "previewBytes": 68150,
+      "previewUrl": "/__cf-audio-review/v2.material.foliage.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.6,
+      "opusDbTP": -34.7
+    },
+    {
+      "id": "v2.material.foliage.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 1.9296,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0a1d9047a54158b4-pageturn2.wav",
+          "sha256": "0a1d9047a54158b43df61a20effa262f44b1639be62a419081f31f14cfca7a1f",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.809637
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.foliage"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 75.20049999999999,
+      "master": "masters/coverage-contact/v2.material.foliage.2.wav",
+      "masterSha256": "581c202ce5e9a424327b366e0a2bb4f5933484b243d69cadecf920a203344361",
+      "opus": "masters/coverage-contact/v2.material.foliage.2.opus",
+      "opusSha256": "df444b72debaeb1e422deefb804ecfabaec14fc1e2fd159ad8e1b7aa6fa7d255",
+      "previewSha256": "40dc652775702bff0b26ad371d369f91c5e7f23999b6851624dc63dec5eeeccb",
+      "previewBytes": 185356,
+      "previewUrl": "/__cf-audio-review/v2.material.foliage.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.1,
+      "opusDbTP": -34.6
+    },
+    {
+      "id": "v2.material.foliage.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 2.3089,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/520b0845971ba1ef-crumples2.wav",
+          "sha256": "520b0845971ba1ef115d6efbf91bf8edb2e3896ee8abeaf5d89743d196b2aef9",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 2.188889
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.foliage"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 78.13009999999998,
+      "master": "masters/coverage-contact/v2.material.foliage.3.wav",
+      "masterSha256": "64c90d1fa84c75a9f8754c11baa128294bacce84f7159c4cc3dde79b2e4b0fae",
+      "opus": "masters/coverage-contact/v2.material.foliage.3.opus",
+      "opusSha256": "8c34c9c6beddcaadbdcb127c4ee418c2d16a3e7a789a1bf3d041f9f5a3a8f04e",
+      "previewSha256": "9945aaf9944fdfca7dcc37f1e78a30fbd307e6b1cc01dec99ebda8f4c3526964",
+      "previewBytes": 221768,
+      "previewUrl": "/__cf-audio-review/v2.material.foliage.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -24.2,
+      "opusDbTP": -24.3
+    },
+    {
+      "id": "v2.material.wood.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.4527,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.wood"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 81.43899999999998,
+      "master": "masters/coverage-contact/v2.material.wood.1.wav",
+      "masterSha256": "8f264d360251f1b4d14f61d4f98f17fb04f4218957a1104c9b09cd3687aa5fdb",
+      "opus": "masters/coverage-contact/v2.material.wood.1.opus",
+      "opusSha256": "eb6b44e10cefff703d76cc3051a8330c0860fa88a5c9797d171d6a6c86ab9022",
+      "previewSha256": "a81857b1f92e198f7b015f2eb04cfcadd51aee18a2b0148494707b34b440400a",
+      "previewBytes": 43574,
+      "previewUrl": "/__cf-audio-review/v2.material.wood.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.9,
+      "opusDbTP": -17.0
+    },
+    {
+      "id": "v2.material.wood.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.433,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15ff82332f342c30-impactWood_heavy_000.ogg",
+          "sha256": "15ff82332f342c30e469215539e1cc57e11b221aa2cf7e11e811d313a9927f3d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313039
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.wood"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 82.89169999999999,
+      "master": "masters/coverage-contact/v2.material.wood.2.wav",
+      "masterSha256": "4e1bda2e0ef8e80cb962840ef0937378bc88c02185b9ee610a3b78ff898f3f3d",
+      "opus": "masters/coverage-contact/v2.material.wood.2.opus",
+      "opusSha256": "ea70b9790e4d0902eda9f8083b504e4e06aef8a46d0e20458aca2da506cf8ea3",
+      "previewSha256": "ca1c7e246492d79dcd6a6bbd8a294ff0cb600c7fe34ba7a87be1d5a57448f86b",
+      "previewBytes": 41682,
+      "previewUrl": "/__cf-audio-review/v2.material.wood.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.material.wood.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.4527,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.wood"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 84.32469999999999,
+      "master": "masters/coverage-contact/v2.material.wood.3.wav",
+      "masterSha256": "285af9a62e868edff624359ac4934ade70d79c8bf20067925024f80a4c9c6dff",
+      "opus": "masters/coverage-contact/v2.material.wood.3.opus",
+      "opusSha256": "2d78c637c47a39bea6bf357ca764f5f5c9b048daaa3b69f82dfeaefe09a53bf1",
+      "previewSha256": "6d5542d5521c55949a17e77daeaae87efbd27f41c439b0fdc947982b05be9983",
+      "previewBytes": 43574,
+      "previewUrl": "/__cf-audio-review/v2.material.wood.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.1
+    },
+    {
+      "id": "v2.material.fungal.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.62,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.fungal"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 85.7774,
+      "master": "masters/coverage-contact/v2.material.fungal.1.wav",
+      "masterSha256": "f3fa883c6267b067739c2925834f86befc27293ba741c7b2431e0e7109906d10",
+      "opus": "masters/coverage-contact/v2.material.fungal.1.opus",
+      "opusSha256": "aeba0104641b229b06c2966b77df41866b13f7f62f4dad593ef403aa5c1ad1d4",
+      "previewSha256": "6a0c0537e0cc3dbca65666892590f7c7976f11215ed40853d22989e77dd9d41b",
+      "previewBytes": 59634,
+      "previewUrl": "/__cf-audio-review/v2.material.fungal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.material.fungal.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.fungal"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 87.3974,
+      "master": "masters/coverage-contact/v2.material.fungal.2.wav",
+      "masterSha256": "e6307e4f1cc0a22a8151813a27f435eac7757afcf7beaa0e66f8ad05f2880b23",
+      "opus": "masters/coverage-contact/v2.material.fungal.2.opus",
+      "opusSha256": "49f76e617a353a6b4dca18207c7db8faeef8fb57d8ac5bb8f18fa3f47e10f6d1",
+      "previewSha256": "f8317e5762d9741adb29279054f1686e3911c17f0cb197662afaebf16f5126f5",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.material.fungal.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.7,
+      "opusDbTP": -12.7
+    },
+    {
+      "id": "v2.material.fungal.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.6574,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.fungal"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 91.3974,
+      "master": "masters/coverage-contact/v2.material.fungal.3.wav",
+      "masterSha256": "ac16d46f92d9900ee7807b6d1d974aa09cc910dee1838e2b1d76807bb66470eb",
+      "opus": "masters/coverage-contact/v2.material.fungal.3.opus",
+      "opusSha256": "3e1c0d65526d0a0277c50bb7dbac1f5f291ba3e7a45f02fe8891f0790318a8e3",
+      "previewSha256": "7dc15b4383b468c088372538fdd55a92b8065681447076833522a78825f06d93",
+      "previewBytes": 63224,
+      "previewUrl": "/__cf-audio-review/v2.material.fungal.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.8,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.material.microbial.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.8165,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/1d03d72347019be8-bubble_01.ogg",
+          "sha256": "1d03d72347019be889280efc6de5ca5ea439d0b24b235e6db87e5bf7583ecb2b",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.696479
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.microbial"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 93.0548,
+      "master": "masters/coverage-contact/v2.material.microbial.1.wav",
+      "masterSha256": "3f50fe1b39762f2e397d788cc1c3380fa0247c0179c4d814e6817a41242159c7",
+      "opus": "masters/coverage-contact/v2.material.microbial.1.opus",
+      "opusSha256": "81f51e37af622f20743e9dbc0d9b126d130fd9558b7e33099fac9081e4808040",
+      "previewSha256": "5706783852190851149b57980cab47e1127184e0b2fd54cd029e6ae7eb6189fc",
+      "previewBytes": 78498,
+      "previewUrl": "/__cf-audio-review/v2.material.microbial.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.0,
+      "opusDbTP": -15.0
+    },
+    {
+      "id": "v2.material.microbial.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.6671,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/6189106305ab917f-bubble_03.ogg",
+          "sha256": "6189106305ab917f1a260b66a74380ed7d6e5be0fb4f5eba3ac93aeb89d9b7ca",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.547104
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.microbial"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 94.8713,
+      "master": "masters/coverage-contact/v2.material.microbial.2.wav",
+      "masterSha256": "03ace362eb40b2fb4f07cdee99f89cb5542e07b20311e1c38803a089ec3af42e",
+      "opus": "masters/coverage-contact/v2.material.microbial.2.opus",
+      "opusSha256": "8dfdb71a149f09937b05f12f89e3f86cd6ecbdd8ec5ea00736c48b365abc0170",
+      "previewSha256": "6355e52fabfbc5bd2a9867fc7420ee4f2d1d14b5cdb99ee642f5e636b5456e8e",
+      "previewBytes": 64156,
+      "previewUrl": "/__cf-audio-review/v2.material.microbial.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.3,
+      "opusDbTP": -10.3
+    },
+    {
+      "id": "v2.material.microbial.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.4804,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/7992a1a4637ea727-bubble_02.ogg",
+          "sha256": "7992a1a4637ea727b177b3edbc086ec280167d67a8fad010bb8fb58893b2e2f2",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.360354
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.microbial"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 96.53840000000001,
+      "master": "masters/coverage-contact/v2.material.microbial.3.wav",
+      "masterSha256": "a347e25d90ead2c38d380a8196feaf2f55f953f57db60a5d50b905453e95f808",
+      "opus": "masters/coverage-contact/v2.material.microbial.3.opus",
+      "opusSha256": "010a4ef9f462f5cda524978c1037538ce0c186c3ea68b90fb98d3a436ace3785",
+      "previewSha256": "564d07acdabd223505fd5847002c5c03312a773e594179c44ca60bb0b55c5ef0",
+      "previewBytes": 46232,
+      "previewUrl": "/__cf-audio-review/v2.material.microbial.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.9,
+      "opusDbTP": -17.9
+    },
+    {
+      "id": "v2.material.scaled.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/23d2cc7234c2710b-scrape3.wav",
+          "sha256": "23d2cc7234c2710b1683d39f061d9c18056f64d368ff7b90e5c33672d928bddb",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.41932
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.scaled"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 98.01880000000001,
+      "master": "masters/coverage-contact/v2.material.scaled.1.wav",
+      "masterSha256": "f39a9aaec00b1d1e7e0394cd38d5e4084e6ce50b7d4e2d70aae3504ab59524ad",
+      "opus": "masters/coverage-contact/v2.material.scaled.1.opus",
+      "opusSha256": "428a7ea308f78af552132a155012b4879161558a7532443c9c7b1b203f0b34fc",
+      "previewSha256": "717254bc5a420657e7d1bd2e5e8cd4e527cd30d41efdc93a5285196a4d76a51a",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.material.scaled.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -37.9,
+      "opusDbTP": -37.7
+    },
+    {
+      "id": "v2.material.scaled.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 1.1417,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/923ab149cb912995-scrape2.wav",
+          "sha256": "923ab149cb912995bc140370f20c99275c92687a160c767a3d122261cf6a8821",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.021678
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.scaled"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 102.01880000000001,
+      "master": "masters/coverage-contact/v2.material.scaled.2.wav",
+      "masterSha256": "ac30d1ab0324d1d0895bc10f96dd04faa89b87daf98cde4f9fff70f95668d063",
+      "opus": "masters/coverage-contact/v2.material.scaled.2.opus",
+      "opusSha256": "7c24764b70f80955fe67be739cabbac54f58d28da57d5f2151e123e2add00db9",
+      "previewSha256": "b9b97cb38e14182d270b9031c40b16fb6b6fb0b2f9b0fb67496de0d7527992b1",
+      "previewBytes": 109718,
+      "previewUrl": "/__cf-audio-review/v2.material.scaled.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.2,
+      "opusDbTP": -26.9
+    },
+    {
+      "id": "v2.material.scaled.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.7369,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/dca8c2c544f1645b-scrape1.wav",
+          "sha256": "dca8c2c544f1645be419d528575a33d3452a1e2d5a0c5fbad46a881b9c5d3e04",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.616893
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.scaled"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 104.16050000000001,
+      "master": "masters/coverage-contact/v2.material.scaled.3.wav",
+      "masterSha256": "d1eadb7d3604c540d0744553db67492b946a5d6792f5b925d918436a199cdfe9",
+      "opus": "masters/coverage-contact/v2.material.scaled.3.opus",
+      "opusSha256": "a8e397b9949feb7dbd15090a2ff23d28aa7e3949c0f22074acb1f29b3ced1f56",
+      "previewSha256": "ff6cabd653b0711b5a152c46e99c42cea611b1f5cf0ce5e7ec040ba7ae4efcbe",
+      "previewBytes": 70856,
+      "previewUrl": "/__cf-audio-review/v2.material.scaled.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.5,
+      "opusDbTP": -34.4
+    },
+    {
+      "id": "v2.material.feathered.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.5351,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.415063
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.feathered"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 105.89740000000002,
+      "master": "masters/coverage-contact/v2.material.feathered.1.wav",
+      "masterSha256": "816750184a43870b30a40864b2f81f39e3baea559003753218e5cf2eed7931f3",
+      "opus": "masters/coverage-contact/v2.material.feathered.1.opus",
+      "opusSha256": "c965752dfce770037ccc3a38604ad75d452f69a15ac8ca6018d9da5db0c07351",
+      "previewSha256": "6cc36ff922d286189bfcff617d4b6c87de89a3a1258c94a4717bb712a2b9552d",
+      "previewBytes": 51484,
+      "previewUrl": "/__cf-audio-review/v2.material.feathered.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -21.4,
+      "opusDbTP": -21.3
+    },
+    {
+      "id": "v2.material.feathered.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.5966,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/a48632d17a4f1416-cloth3.ogg",
+          "sha256": "a48632d17a4f1416541d261a32a31612e01267144c407fa3ecab3ff410f0085b",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.476563
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.feathered"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 107.43250000000002,
+      "master": "masters/coverage-contact/v2.material.feathered.2.wav",
+      "masterSha256": "698ce19338ffaa98f16b5309300bff902c733919149b8f4d27d55664f3405e87",
+      "opus": "masters/coverage-contact/v2.material.feathered.2.opus",
+      "opusSha256": "71d6bd634cb8958faa63e5aa8159af84f63202127fac6c0acb6e15fd7234fad4",
+      "previewSha256": "3057a61aec30ae0e0b1713d69311a0960944400d0660fab0f6c85d3e6c30ff2b",
+      "previewBytes": 57388,
+      "previewUrl": "/__cf-audio-review/v2.material.feathered.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.7,
+      "opusDbTP": -22.7
+    },
+    {
+      "id": "v2.material.feathered.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.781,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/ddb93a3671233f95-cloth1.ogg",
+          "sha256": "ddb93a3671233f95da0e0b10367f082f7eb42fa6caaddcf776410aa8833c747d",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.661042
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.feathered"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 109.02910000000001,
+      "master": "masters/coverage-contact/v2.material.feathered.3.wav",
+      "masterSha256": "acc3c665b0e53b18a93c30f2267cf15033b57ace7f4466e12d689b69c1236c5e",
+      "opus": "masters/coverage-contact/v2.material.feathered.3.opus",
+      "opusSha256": "9a2be937400233b8879c9c2c960d6e1257b5af8332902dcf9d1e67453daa6705",
+      "previewSha256": "a910b9e3ded044e9e69e4ed1d6afe35e847381c2eaf6c58aa63fb8a2ea10d658",
+      "previewBytes": 75090,
+      "previewUrl": "/__cf-audio-review/v2.material.feathered.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.1,
+      "opusDbTP": -15.1
+    },
+    {
+      "id": "v2.material.furred.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0efaa7a0397061cd-320141__owlstorm__blanket-movement-3.wav",
+          "sha256": "0efaa7a0397061cd1aa38a66bfed01fd7d8cee31c2f07d572a08d4143d5bfcab",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 3.161655
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.furred"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 110.81010000000002,
+      "master": "masters/coverage-contact/v2.material.furred.1.wav",
+      "masterSha256": "245cee0194da98d6438f3262f7a4cc84d8b3ad9e4174b658d634217773ec2b6a",
+      "opus": "masters/coverage-contact/v2.material.furred.1.opus",
+      "opusSha256": "605cc44657d25efddd5ad55460bce757fec1bb265ddf706e62d3dd6aef044625",
+      "previewSha256": "98d9141d5bf3d0726f3111a1c93d628422b9722a55e4b404e4e3c11d7962a2d2",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.material.furred.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -31.8,
+      "opusDbTP": -31.7
+    },
+    {
+      "id": "v2.material.furred.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/163e1968d3f6d18a-320143__owlstorm__blanket-movement-5.wav",
+          "sha256": "163e1968d3f6d18ab7859be6922a7584a36a95128be9fbc7c5db4c6cb33e603d",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 5.0
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.furred"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 114.81010000000002,
+      "master": "masters/coverage-contact/v2.material.furred.2.wav",
+      "masterSha256": "bb28d68af1b6fda6a14d7f982ea7ef663d7aba0441ceab7b8a212ca381b86f21",
+      "opus": "masters/coverage-contact/v2.material.furred.2.opus",
+      "opusSha256": "dc20bc49e9e66e987afe799c9417a4e65e1ed5428c380663d68c0368d82e8f68",
+      "previewSha256": "649896a5ed5c02c0cc48b7e7579bf4e6653ee6625b9456abbd6fc5300ced10a6",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.material.furred.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -30.0,
+      "opusDbTP": -30.5
+    },
+    {
+      "id": "v2.material.furred.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/681391cdd2422eee-320137__owlstorm__blanket-movement-1.wav",
+          "sha256": "681391cdd2422eeebc5c230492ea3c6d2e045fafcb993b0854dc6a182db92b1a",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 9.94576
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.furred"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 118.81010000000002,
+      "master": "masters/coverage-contact/v2.material.furred.3.wav",
+      "masterSha256": "a8738397ae9e9fef40261f3ac6863a4316f7651534b42258d3c7c2ec4e291a93",
+      "opus": "masters/coverage-contact/v2.material.furred.3.opus",
+      "opusSha256": "ebd838b35efcf8159b8d3beb529586dae4ba22d32ad68f9bbea6d4e0ab0d445c",
+      "previewSha256": "d1400047bb9331b1a7a2827aaba3ec694c7a6cdda4071829c56390bc7fbdb166",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.material.furred.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -35.5,
+      "opusDbTP": -36.0
+    },
+    {
+      "id": "v2.material.warty.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.62,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.warty"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 122.81010000000002,
+      "master": "masters/coverage-contact/v2.material.warty.1.wav",
+      "masterSha256": "7099cb5d90736166a9d022663254f561fff11acd09809c96e0615153b46de093",
+      "opus": "masters/coverage-contact/v2.material.warty.1.opus",
+      "opusSha256": "caff1fff9ca2a9c53948082b7eb28bc9bb3d83b903897735673765b51042a511",
+      "previewSha256": "c4ca15ab89599f9fea3d85e1c56604244a753448a456043da66026259120b7eb",
+      "previewBytes": 59634,
+      "previewUrl": "/__cf-audio-review/v2.material.warty.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.material.warty.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.warty"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 124.43010000000002,
+      "master": "masters/coverage-contact/v2.material.warty.2.wav",
+      "masterSha256": "fc5631295a05668dca8e8c45d8fdbc7ba1940f48c7ab1033fb64bf448bb99ead",
+      "opus": "masters/coverage-contact/v2.material.warty.2.opus",
+      "opusSha256": "f072b23e344891cde0c75ba53f261195c20c0d5be64d2beafcf7fe64757b1c48",
+      "previewSha256": "f3927f1ce2cda00d0ef62083e633daed7f0ef33c0ad415d6e41675963f2a21ff",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.material.warty.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.7,
+      "opusDbTP": -12.7
+    },
+    {
+      "id": "v2.material.warty.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.6574,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.warty"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 128.43010000000004,
+      "master": "masters/coverage-contact/v2.material.warty.3.wav",
+      "masterSha256": "ad89dc8f26d82e12eb04d1db1568a92c8f00d777075d7314585f7197cb39b175",
+      "opus": "masters/coverage-contact/v2.material.warty.3.opus",
+      "opusSha256": "71df72d2a21929d5eddea0f6cefdd02dc8f92bf0d773db3027d18b894a5f6e30",
+      "previewSha256": "b882bed6074cf3135d8c886baf9086690da56449d946121a7674357961c6d9f8",
+      "previewBytes": 63224,
+      "previewUrl": "/__cf-audio-review/v2.material.warty.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.8,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.material.slick-and-wet.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.6794,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/018984c8e03488b6-splash_14.ogg",
+          "sha256": "018984c8e03488b65d4c2dd6e08a9c2115b395ded80cf7209f893e7e664c5d0e",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.559354
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.slick and wet"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 130.08750000000003,
+      "master": "masters/coverage-contact/v2.material.slick-and-wet.1.wav",
+      "masterSha256": "554bd3071534ba4033c0c37cfed12918e7e05bf321da01c138ba5ed89673324b",
+      "opus": "masters/coverage-contact/v2.material.slick-and-wet.1.opus",
+      "opusSha256": "c17ce6b4137b74301ea3da01f6ba349112d9e591276af1fc3ce5da9cab68171e",
+      "previewSha256": "32d8ad3cb642111a8457c30b2372f15986be3989ff8353f5ca3dd4c01c1a9f10",
+      "previewBytes": 65336,
+      "previewUrl": "/__cf-audio-review/v2.material.slick-and-wet.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.8,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.material.slick-and-wet.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.8835,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/10bf42f906ea0366-splash_13.ogg",
+          "sha256": "10bf42f906ea0366c2091405b7d355e74a496b1fe1c4bd40d8965d703c0db2d7",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.763542
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.slick and wet"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 131.76690000000002,
+      "master": "masters/coverage-contact/v2.material.slick-and-wet.2.wav",
+      "masterSha256": "f6a9d0a41795324b406fb992aa10a8447703493db3f927c8816cd79d43cab714",
+      "opus": "masters/coverage-contact/v2.material.slick-and-wet.2.opus",
+      "opusSha256": "e2db08254e47b1b951902c87249b13b7c4da14094390322cf20a4730f3cd8b4e",
+      "previewSha256": "b4bfc49913b25c4fe80e297349fa1feda3ebf8a7bbea82596c637943d49ae451",
+      "previewBytes": 84930,
+      "previewUrl": "/__cf-audio-review/v2.material.slick-and-wet.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.8,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "v2.material.slick-and-wet.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.4796,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/123f78e6bef82b5d-splash_09.ogg",
+          "sha256": "123f78e6bef82b5dfb24f0a93f759b309bd12b21d05905ab401756fc588a31dc",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.359563
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.slick and wet"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 133.65040000000002,
+      "master": "masters/coverage-contact/v2.material.slick-and-wet.3.wav",
+      "masterSha256": "40cf7c31a1e06a7a91d7852ff32036bdbd35134228e9e23ea89505eb923d3544",
+      "opus": "masters/coverage-contact/v2.material.slick-and-wet.3.opus",
+      "opusSha256": "b3b3e2a94867a48659fbf97d147c4c1c2dfa1417b03630cdd305753eae5b602b",
+      "previewSha256": "3b91e90d06775ebf0bfaca0fb37f6b578798b64d1ca2346674b0df68eb5a220f",
+      "previewBytes": 46156,
+      "previewUrl": "/__cf-audio-review/v2.material.slick-and-wet.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.3,
+      "opusDbTP": -16.3
+    },
+    {
+      "id": "v2.material.chitinous.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3856,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/4b76bf3ccc8e60d1-impactWood_light_001.ogg",
+          "sha256": "4b76bf3ccc8e60d19188f3165b778a7817786faa6887c55d9049bcbeef3b425f",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.chitinous"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 135.13000000000002,
+      "master": "masters/coverage-contact/v2.material.chitinous.1.wav",
+      "masterSha256": "17270421385cd7e3ba319fe2b845fc54de2c9669bd3d98bfa28d6a11bdd09188",
+      "opus": "masters/coverage-contact/v2.material.chitinous.1.opus",
+      "opusSha256": "3ec476746021ec7567cb99d3726a59ebaa1b1a2db280237441cbf4028c699c7e",
+      "previewSha256": "0fd48b50ac594c76659c34eb9abb99995e7aebe61f651d8e52cf32b494463096",
+      "previewBytes": 37132,
+      "previewUrl": "/__cf-audio-review/v2.material.chitinous.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.2,
+      "opusDbTP": -17.3
+    },
+    {
+      "id": "v2.material.chitinous.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3856,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/b183cf7a5bd78381-impactWood_light_002.ogg",
+          "sha256": "b183cf7a5bd783817e0e4b82af34ac6658fa1927049089dadc8b15c2ecc771dc",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.chitinous"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 136.51560000000003,
+      "master": "masters/coverage-contact/v2.material.chitinous.2.wav",
+      "masterSha256": "810c187e6644538a7199301486ea3a0eeee55087dbf1abe64a48c59280ae661d",
+      "opus": "masters/coverage-contact/v2.material.chitinous.2.opus",
+      "opusSha256": "0ce51e5eef0dda1ba639a6660bd4d892bb7039998b2346a5ad6dba52c15dbab7",
+      "previewSha256": "0a675f3b451284242b4cf3b237731bbfb4fc847e6f06f198421f6c06a472caa4",
+      "previewBytes": 37132,
+      "previewUrl": "/__cf-audio-review/v2.material.chitinous.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.0,
+      "opusDbTP": -14.0
+    },
+    {
+      "id": "v2.material.chitinous.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3856,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/cdfbe8af2fe7ff9e-impactWood_light_003.ogg",
+          "sha256": "cdfbe8af2fe7ff9ee28f337a0a989deee0f327620da456c8413644880e9d0004",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.chitinous"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 137.90120000000005,
+      "master": "masters/coverage-contact/v2.material.chitinous.3.wav",
+      "masterSha256": "5dd6e4d1a102b2ba34ea33b943e20412a7cc4fabd4e7334c380a04ae3f197f71",
+      "opus": "masters/coverage-contact/v2.material.chitinous.3.opus",
+      "opusSha256": "916bf47c6739b2666cab2ae81e0e63d809e672b6f1bf6f36863bca56308323a7",
+      "previewSha256": "12dfad03909d8709f8b9aba741a3c40f65a6546f405c3dac64a4cdd57931bfb8",
+      "previewBytes": 37132,
+      "previewUrl": "/__cf-audio-review/v2.material.chitinous.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -18.5,
+      "opusDbTP": -18.6
+    },
+    {
+      "id": "v2.material.plated.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3558,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/25a96f90a9a1f88a-impactMetal_light_002.ogg",
+          "sha256": "25a96f90a9a1f88a531e824e126f0519504625e5635e65a72e4f31611428db29",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.235782
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.plated"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 139.28680000000006,
+      "master": "masters/coverage-contact/v2.material.plated.1.wav",
+      "masterSha256": "af1949042fb6f4561ad10a894ca0f44d8fc5f5cda1d8f14cf98a2b2c34580b20",
+      "opus": "masters/coverage-contact/v2.material.plated.1.opus",
+      "opusSha256": "d819759df4d2b8a211b23b531c7675540b3a70082e3647ce4bb9a4c5d7217a39",
+      "previewSha256": "a5526b3a1ad2e50871c13df9f4ea94b412b6b57ec36d9aa22ee724e45b03a254",
+      "previewBytes": 34270,
+      "previewUrl": "/__cf-audio-review/v2.material.plated.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.6,
+      "opusDbTP": -13.6
+    },
+    {
+      "id": "v2.material.plated.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.4715,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/33b5e6e37c6e9d54-impactMetal_light_000.ogg",
+          "sha256": "33b5e6e37c6e9d54e07bf5a89b12c76e879f40c1ea83cdd82714df1d6f9fec6d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.351474
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.plated"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 140.64260000000004,
+      "master": "masters/coverage-contact/v2.material.plated.2.wav",
+      "masterSha256": "0b7e90d632f142dfe673c95f180424fd431931df1887a2afab5e0bdd50e4876b",
+      "opus": "masters/coverage-contact/v2.material.plated.2.opus",
+      "opusSha256": "cea9aafb42e0981b923da8cf76d2bd66df28a336f7058b0a3b9cfdf7e150fb50",
+      "previewSha256": "db56f1b2c8259fb8d857fdd4883aa7606f16482fa1e80072b3cda8d6325b40a0",
+      "previewBytes": 45378,
+      "previewUrl": "/__cf-audio-review/v2.material.plated.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.3,
+      "opusDbTP": -13.4
+    },
+    {
+      "id": "v2.material.plated.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.602,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/92d5db6bfc672d9d-impactMetal_light_003.ogg",
+          "sha256": "92d5db6bfc672d9dc1b4f390b2900504f013187fa36335472554fafefa9050b1",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.482041
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.plated"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 142.11410000000004,
+      "master": "masters/coverage-contact/v2.material.plated.3.wav",
+      "masterSha256": "3fc571eb4e7f1bf0fd8956d81c81b499b8b9b6b4c5e3df3660df907903f55dac",
+      "opus": "masters/coverage-contact/v2.material.plated.3.opus",
+      "opusSha256": "bb26bd70c0d1678ee2de52e88c82eade754decdddcdd7b1dfa915d212f8ed39c",
+      "previewSha256": "10c551ee6548c4cd65fb5b79035b68223aa6574ef74a727a421deca6afd8bab6",
+      "previewBytes": 57906,
+      "previewUrl": "/__cf-audio-review/v2.material.plated.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.4,
+      "opusDbTP": -13.4
+    },
+    {
+      "id": "v2.material.translucent.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.62,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.translucent"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 143.71610000000004,
+      "master": "masters/coverage-contact/v2.material.translucent.1.wav",
+      "masterSha256": "7099cb5d90736166a9d022663254f561fff11acd09809c96e0615153b46de093",
+      "opus": "masters/coverage-contact/v2.material.translucent.1.opus",
+      "opusSha256": "eaf7f40fb07c2dfa1b848427c41b8872b7a299d2da735cc7613386bfa537b17e",
+      "previewSha256": "c4ca15ab89599f9fea3d85e1c56604244a753448a456043da66026259120b7eb",
+      "previewBytes": 59634,
+      "previewUrl": "/__cf-audio-review/v2.material.translucent.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.material.translucent.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.translucent"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 145.33610000000004,
+      "master": "masters/coverage-contact/v2.material.translucent.2.wav",
+      "masterSha256": "fc5631295a05668dca8e8c45d8fdbc7ba1940f48c7ab1033fb64bf448bb99ead",
+      "opus": "masters/coverage-contact/v2.material.translucent.2.opus",
+      "opusSha256": "c45f7fae71b864a38db3a36d49c21a11b6b247d7c50538d31c359b826b1199ff",
+      "previewSha256": "f3927f1ce2cda00d0ef62083e633daed7f0ef33c0ad415d6e41675963f2a21ff",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.material.translucent.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.7,
+      "opusDbTP": -12.7
+    },
+    {
+      "id": "v2.material.translucent.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.6574,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.translucent"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 149.33610000000004,
+      "master": "masters/coverage-contact/v2.material.translucent.3.wav",
+      "masterSha256": "ad89dc8f26d82e12eb04d1db1568a92c8f00d777075d7314585f7197cb39b175",
+      "opus": "masters/coverage-contact/v2.material.translucent.3.opus",
+      "opusSha256": "69609c3584ede98a1a9fbffa4da7bbeae950fe8cb1b3078cd581769819dd0feb",
+      "previewSha256": "b882bed6074cf3135d8c886baf9086690da56449d946121a7674357961c6d9f8",
+      "previewBytes": 63224,
+      "previewUrl": "/__cf-audio-review/v2.material.translucent.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.8,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.material.crystalline.1",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3296,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.crystalline"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 150.99350000000004,
+      "master": "masters/coverage-contact/v2.material.crystalline.1.wav",
+      "masterSha256": "316b6843bbe70210150fb8fde75f4eaa8b687e7dc1df640f844210a8d80a84aa",
+      "opus": "masters/coverage-contact/v2.material.crystalline.1.opus",
+      "opusSha256": "27e2f605601d597b8cbc667f20a266090e4d7d324589fbfbfedd6520fbd9855a",
+      "previewSha256": "ce2e0fae6cf3dd6325e67d9cc0f9e6e7560064bec79513f0a5acdd44d84d82ff",
+      "previewBytes": 31756,
+      "previewUrl": "/__cf-audio-review/v2.material.crystalline.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.2,
+      "opusDbTP": -15.2
+    },
+    {
+      "id": "v2.material.crystalline.2",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3296,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/710db7451bb7857b-impactGlass_light_002.ogg",
+          "sha256": "710db7451bb7857b9140dfe6afe4621ea2188ad65eda3919c569d1bb285b933d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.crystalline"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 152.32310000000004,
+      "master": "masters/coverage-contact/v2.material.crystalline.2.wav",
+      "masterSha256": "d387df437974325deee59eae88e86c6dcab11272e191fe674fdb55adf3f7e633",
+      "opus": "masters/coverage-contact/v2.material.crystalline.2.opus",
+      "opusSha256": "f3526de27d1d25e597d34cd81632077f169ed2a8f5c7f9f17a7bf0c8c5058d5b",
+      "previewSha256": "51339e81aca8bf17b54a0c6becaeaa25ee982ecbdb777c293d1165369231fa24",
+      "previewBytes": 31756,
+      "previewUrl": "/__cf-audio-review/v2.material.crystalline.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.material.crystalline.3",
+      "group": "coverage-contact",
+      "kind": "designed",
+      "duration": 0.3296,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/765290ce32fa108c-impactGlass_light_003.ogg",
+          "sha256": "765290ce32fa108c939a0dbd6fbacbcd05abde622b57b708eb8a64058ef4225a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "material.crystalline"
+      ],
+      "notes": "Designed body-material texture; not a natural voice or proof of the source material.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 153.65270000000004,
+      "master": "masters/coverage-contact/v2.material.crystalline.3.wav",
+      "masterSha256": "5ffb1632cbc41fa466c1eb04fc599b34e84ce7d1de1fa582a4c94a6d3de7987a",
+      "opus": "masters/coverage-contact/v2.material.crystalline.3.opus",
+      "opusSha256": "584e9d89268e4813b3c1cc48ffa8e6ec3d70e11fe0da7084bafba4437439b178",
+      "previewSha256": "07571bf7926cff4b0fe4d5d3f0d3b2a43d742e27f6607b3b3a40ad7e1ad512bb",
+      "previewBytes": 31754,
+      "previewUrl": "/__cf-audio-review/v2.material.crystalline.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.7,
+      "opusDbTP": -14.6
+    }
+  ],
+  "listeningAccepted": false
+}

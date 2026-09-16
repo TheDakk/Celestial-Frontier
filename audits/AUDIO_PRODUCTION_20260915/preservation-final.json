@@ -1,0 +1,50 @@
+[
+  {
+    "path": "celestial-frontier-audio-handoff/CELESTIAL-FRONTIER-AUDIO-HANDOFF.md",
+    "matchesSuppliedZip": true
+  },
+  {
+    "path": "celestial-frontier-audio-handoff/PASTE-INTO-CODING-AGENT.txt",
+    "matchesSuppliedZip": true
+  },
+  {
+    "path": "celestial-frontier-audio-handoff/README.md",
+    "matchesSuppliedZip": true
+  },
+  {
+    "path": "celestial-frontier-audio-handoff/audio-sources.json",
+    "matchesSuppliedZip": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-combat-contact.wav",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-exploration-music.wav",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-approach.wav",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-landing.wav",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-temperate-bed.wav",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-nav.wav",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-refusal.wav",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-settlement.wav",
+    "matchesHEAD": true
+  }
+]

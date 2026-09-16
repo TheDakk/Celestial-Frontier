@@ -1,0 +1,144 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "civet-fictional",
+      "group": "identity-comparison",
+      "kind": "synthetic_fictional",
+      "duration": 0.6708,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_1/164059a171a8a7d8-grunt_05.ogg",
+          "sha256": "164059a171a8a7d8f1a2fcfdb195a9d50da3ab67bed0b52f4c2c3409fe5df049",
+          "sourceId": "oga_creatures_1",
+          "rate": 1.1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.649917
+        },
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.12,
+          "delay": 0.035,
+          "duration": 0.415063
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "civet-fictional"
+      ],
+      "notes": "One quadruped archetype. Playback-rate treatment changes pitch and time together; not a formant transform or species recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/identity-comparison/civet-fictional.wav",
+      "masterSha256": "2e8a66e712780e0bb62e85e783b5f6cc5d3b057af97bd977fcc5aeccb632b81b",
+      "opus": "masters/identity-comparison/civet-fictional.opus",
+      "opusSha256": "ed9d52cd7ed9b313236cf10cbbf08883c702284ff598a55a8b21347a12f13947",
+      "previewSha256": "0535d00e15c18c857d5db85851328d15acbc7337a11dcd3344a664597013ab6b",
+      "previewBytes": 64510,
+      "previewUrl": "/__cf-audio-review/civet-fictional.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.5,
+      "opusDbTP": -7.4
+    },
+    {
+      "id": "fox-fictional",
+      "group": "identity-comparison",
+      "kind": "synthetic_fictional",
+      "duration": 0.6216,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_1/164059a171a8a7d8-grunt_05.ogg",
+          "sha256": "164059a171a8a7d8f1a2fcfdb195a9d50da3ab67bed0b52f4c2c3409fe5df049",
+          "sourceId": "oga_creatures_1",
+          "rate": 1.2,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.649917
+        },
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.12,
+          "delay": 0.035,
+          "duration": 0.415063
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "fox-fictional"
+      ],
+      "notes": "One quadruped archetype. Playback-rate treatment changes pitch and time together; not a formant transform or species recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1.6707999999999998,
+      "master": "masters/identity-comparison/fox-fictional.wav",
+      "masterSha256": "795fe52b7ba0a5388281d5ec87622735f14048e42cf75f2f7e59d7c4011f6a07",
+      "opus": "masters/identity-comparison/fox-fictional.opus",
+      "opusSha256": "6cef24054fa6da1b89b78f11aea6fa35ba1e65382ad138ef0f43b668044c664f",
+      "previewSha256": "d260444e77d2bb540f8d3b1151fbbdff7782719fc49f8c51db189f165bd9ba40",
+      "previewBytes": 59788,
+      "previewUrl": "/__cf-audio-review/fox-fictional.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.5,
+      "opusDbTP": -7.5
+    },
+    {
+      "id": "procedural-quadruped",
+      "group": "identity-comparison",
+      "kind": "synthetic_fictional",
+      "duration": 0.8446,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_1/164059a171a8a7d8-grunt_05.ogg",
+          "sha256": "164059a171a8a7d8f1a2fcfdb195a9d50da3ab67bed0b52f4c2c3409fe5df049",
+          "sourceId": "oga_creatures_1",
+          "rate": 0.85,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.649917
+        },
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.12,
+          "delay": 0.035,
+          "duration": 0.415063
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "procedural-quadruped"
+      ],
+      "notes": "One quadruped archetype. Playback-rate treatment changes pitch and time together; not a formant transform or species recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 3.2923999999999998,
+      "master": "masters/identity-comparison/procedural-quadruped.wav",
+      "masterSha256": "4f50aa300ee3d5a19088e6484d213d0ad6c376dcbb6d02798c4676e11d7f115f",
+      "opus": "masters/identity-comparison/procedural-quadruped.opus",
+      "opusSha256": "12df43c8fc3f400a357ae49ba3be5340a329b70abacfb307171a667efb729fd9",
+      "previewSha256": "7a8358330ebf7bd2ace2be9c068af587d0506cc4f4e22f4e8322cd1b1ad8587f",
+      "previewBytes": 81196,
+      "previewUrl": "/__cf-audio-review/procedural-quadruped.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.6,
+      "opusDbTP": -7.6
+    }
+  ],
+  "listeningAccepted": false
+}

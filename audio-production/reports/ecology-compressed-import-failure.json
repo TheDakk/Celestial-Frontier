@@ -1,0 +1,283 @@
+{
+  "schema": "cf.audio-decoder-mismatch/v1",
+  "source": "source-audio/inat_cc0/273b5f7af19b1f02-1124533.mp3",
+  "observedCodec": "aac",
+  "observedContainer": "aac",
+  "reaperImportedAs": "WAVE",
+  "sourceDbTP": -21.2,
+  "renderDbTP": "-inf",
+  "failedRunRetained": "reaper/ecology-fauna-01-headroom",
+  "priorRecipe": "reports/ecology-recipe-before-pcm.json",
+  "partialPreviews": [
+    {
+      "priorPath": "audio-production/audition/v4.reference.wood-frog.00f56556d8a6.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.wood-frog.00f56556d8a6.wav",
+      "sha256": "367cb89df2f5e6b273719e344db7fee31bcc1a30c48a14833a05498e302f4009"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.common-crane.0229636a9cf7.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.common-crane.0229636a9cf7.wav",
+      "sha256": "3083377704cb384dbd4be63164cd142079f7575cae202e504c4b983517235025"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.australian-king-parrot.024ba3023be7.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.australian-king-parrot.024ba3023be7.wav",
+      "sha256": "537791654dc6cd1e52ed8e37ce316d0dc73d8aa48133495b856c40bb5db0b1da"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.coyotes.03431aad9e97.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.coyotes.03431aad9e97.wav",
+      "sha256": "1c3abd11cc46d6fad1680772648ad807aa7c1e512cdb82646e776957809d3a71"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.pacific-golden-plover.03d5dadc1e4f.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.pacific-golden-plover.03d5dadc1e4f.wav",
+      "sha256": "e737418a925a8e92895283beb5b12542935782621b6a78945a4b1e53250099c1"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.australian-ibis.044a6d14429f.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.australian-ibis.044a6d14429f.wav",
+      "sha256": "cd4b01ce5fe390055c7d3adefa6f8b9f9a7e70cc430ce1053d1710cb9455eeb3"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.bird-bald-eagle.048bac8d4534.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.bird-bald-eagle.048bac8d4534.wav",
+      "sha256": "a38d4254bbafdd22db86617a2aab935aec17377b78e596bc3bd358191c9da8cc"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.gray-wolf.04d4ed79dd5f.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.gray-wolf.04d4ed79dd5f.wav",
+      "sha256": "9b5dc7336d1db3c43aeae1cc42197c386f5fa023d1aa1c655250c2bbe2967aff"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.humpback-whale.054cae822fbd.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.humpback-whale.054cae822fbd.wav",
+      "sha256": "76ac99c5138d8ebb7d3a73931adde53f4806112fbfd5c54155f04c2baf431e0c"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.elk.05fa93caaeb9.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.elk.05fa93caaeb9.wav",
+      "sha256": "bb5db79fa7e3e7e26e1800a0b0743075ee96438e371b70317ceb19dea6d849a8"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.australian-ibis.060f841416e3.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.australian-ibis.060f841416e3.wav",
+      "sha256": "1f1f622e724d642d964093de99d6c0f29fc537c76d80caaabd4ad24cf49d5404"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.koala.074a40d353ec.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.koala.074a40d353ec.wav",
+      "sha256": "067d2a57ee389069a3db4d3105f976bf7d5b123a5a3fb0339cf77e5b43dc2d0f"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.common-brushtail-possum.0833ed054719.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.common-brushtail-possum.0833ed054719.wav",
+      "sha256": "cd3d6741c9154ec2289b270c9801ca488ab8343d995399e6e1267e6bb1b7bb5a"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.long-tailed-macaque.08f100ee0fa6.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.long-tailed-macaque.08f100ee0fa6.wav",
+      "sha256": "993b5c15f27dde7849d2d605d9b641574ba1afe6844185f52361f61950f91020"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.canada-geese.09938e23be8a.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.canada-geese.09938e23be8a.wav",
+      "sha256": "7d892a99fa285985ca23d5fb8a3bf3f83021fc85df2c9edb7ef9045f4aad0d98"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.common-raccoon.09fc064f9806.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.common-raccoon.09fc064f9806.wav",
+      "sha256": "d3b46e769fbb09c482b72c6cdc59d7f319efe26f916ad1841053194e9d1b041f"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.laysan-albatross.0aec0c74f100.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.laysan-albatross.0aec0c74f100.wav",
+      "sha256": "9c79b42eeed5e73017ef5c526ce06a5110e863cfe1d81956b381fc7784b4b3cb"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.elk.0c6b38fe14ea.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.elk.0c6b38fe14ea.wav",
+      "sha256": "9d8469f7ed1f120abe89aff155f5a9d9e97084657cc40f5842f434a075d1fc86"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.snowy-egret.0eda9e600db8.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.snowy-egret.0eda9e600db8.wav",
+      "sha256": "15dffa1785a282ecdc40f2dceddf8710678b99d197db00319593ed542c7fc35d"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.hairy-woodpecker.0f6672f4ed0b.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.hairy-woodpecker.0f6672f4ed0b.wav",
+      "sha256": "3c6e34b0876b4633cc72d41c710a8e51ba873c4180a0b7265f44c727e8725a50"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.ash-cicada.0fd2024353d2.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.ash-cicada.0fd2024353d2.wav",
+      "sha256": "59bdc3fad9340e398d57325bd9a8c770b36ad42bed30239e478f12b1cfa8d29a"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.bow-winged-grasshopper.103eea9f1c40.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.bow-winged-grasshopper.103eea9f1c40.wav",
+      "sha256": "41a2cf41af0f4f1e8fdc3914b1cc2130beffad164f95b855e1970273159b2074"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.pacific-white-sided-dolphin.10aacd8b0edb.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.pacific-white-sided-dolphin.10aacd8b0edb.wav",
+      "sha256": "d4974a272243cf62a6ddc2fb033e26abfed79bab1fb3653ff93b18b1f81ed3c1"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.little-grebe.10b1f1b31f86.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.little-grebe.10b1f1b31f86.wav",
+      "sha256": "a93b5ee77d35f9c47158b2784a320d4baf00e0ed9f2e86d40fec87c6ceea03ac"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.ring-necked-pheasant.111e6626c372.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.ring-necked-pheasant.111e6626c372.wav",
+      "sha256": "be854fdfe5f8d245073f958d1993e1c0fe471a5856bb7d7f1dbe0b5ce6e352b6"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.house-finch.1382b2479918.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.house-finch.1382b2479918.wav",
+      "sha256": "5854b7c2ceca32b366b2050d248e87a994e5b5eb3a10b62135e15039d2bc90ba"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.northern-elephant-seal.13e1df6616d7.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.northern-elephant-seal.13e1df6616d7.wav",
+      "sha256": "39ae008d1fb6e71feae87293088098fd3e0a58978bbb696d86335f1b7f79dc87"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.asian-house-gecko.14331e1486b9.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.asian-house-gecko.14331e1486b9.wav",
+      "sha256": "73cd513b9ab16fc3496b4e6087e083a66e15824fa961e33cd3c440050ac37b8c"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.red-billed-chough.143fde2e74eb.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.red-billed-chough.143fde2e74eb.wav",
+      "sha256": "19d120bddfa06c1cbe663bd732ccee4551da3b5e14157a24e9ae24984730bbea"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.wolves.1520267dbb85.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.wolves.1520267dbb85.wav",
+      "sha256": "dc26c9a9b991707dedfffd3b73c8e0bb9ac4228f66756c118425369e7c14f9b9"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.eurasian-bittern.175766b71e75.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.eurasian-bittern.175766b71e75.wav",
+      "sha256": "3a5fa9702adb89d9aa413a407e9aeecf14f67a070194b7f97ee5eb5c8c2bf9a0"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.red-legged-seriema.1a2826c9e9e8.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.red-legged-seriema.1a2826c9e9e8.wav",
+      "sha256": "4dcb17367489082b1af144f1eb19d2d644da372b7ac9a810300d8a9ba43819bc"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.eurasian-oystercatcher.1a66aae29bda.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.eurasian-oystercatcher.1a66aae29bda.wav",
+      "sha256": "0d3fb545c1fdea4fd32b3cd2d6a5ec6f45d6feec300606ccc89bdb7072890f7f"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.barn-swallow.1b4038c05709.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.barn-swallow.1b4038c05709.wav",
+      "sha256": "61ba4497efd207bcced0239921acb422e8aea24573ae4b27bb4b7554c2d9708a"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.wild-turkey.1c3e236a0506.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.wild-turkey.1c3e236a0506.wav",
+      "sha256": "c944967212ece5d03b25dd64d955cb43496871bd10f309fdb81eb9024319bcc1"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.gray-partridge.1d0ec0eff897.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.gray-partridge.1d0ec0eff897.wav",
+      "sha256": "2ec7bdd4adeaf818268868f733a69aef1de028d7cb460840892d9f49dfecb43f"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.red-legged-seriema.1d4ecd434598.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.red-legged-seriema.1d4ecd434598.wav",
+      "sha256": "cb7de9e684453a91a49cc87840016319361571859813258ad798d51781d4a3bc"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.chimney-swift.1dd5fcc9dff5.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.chimney-swift.1dd5fcc9dff5.wav",
+      "sha256": "39b72b2f222dc1ac23a6e9c9542077038c10b8d0c85b784dc288361c9982239b"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.common-loon.1fb0b8d51ddc.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.common-loon.1fb0b8d51ddc.wav",
+      "sha256": "99c3cea8e445a0210fc4c88502c2e90f1179e81e7c67a5c0c865518b70def377"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.pacific-white-sided-dolphin.20c37db8bd38.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.pacific-white-sided-dolphin.20c37db8bd38.wav",
+      "sha256": "e838600cb31295ce497fa3a7fa58b13940ef9cc40d5572648158e4e7ff9f558a"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.canada-goose.21a4ccabe65c.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.canada-goose.21a4ccabe65c.wav",
+      "sha256": "2e96a5d3067260c4d5284233140148457149842261fb6c9d67f8035c350791a0"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.barn-swallow.21c3b02d28e0.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.barn-swallow.21c3b02d28e0.wav",
+      "sha256": "90c857e7e10f8a897c76793d21a7a94fb1df979c84fb054d828436d4d95ac999"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.hairy-woodpecker.22204684e9c5.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.hairy-woodpecker.22204684e9c5.wav",
+      "sha256": "06d4d39a1c79fbe94a33e5ce6a06807126b6a3a57a245675b01c391ef483bc9c"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.western-roe-deer.22481454ca94.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.western-roe-deer.22481454ca94.wav",
+      "sha256": "18a04ec26b2d9298e7a86d099666252bb75b95f7577758438be92c5120685de6"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.bow-winged-grasshopper.229c0b3454b0.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.bow-winged-grasshopper.229c0b3454b0.wav",
+      "sha256": "c3fb9ad7c5016951434ff0a8c528f6f094dff4e3f941ff2134ed9990cade6179"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.common-wood-pigeon.22ed4e192a49.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.common-wood-pigeon.22ed4e192a49.wav",
+      "sha256": "065e72dc4eed2993b16fcb91a536e94a8927bc3074f176dc6c180ff6ac196ce3"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.wild-turkey.2463923a9c8b.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.wild-turkey.2463923a9c8b.wav",
+      "sha256": "0255144f50af700240b560e646367777d9450ae1e7fe43a57b98c5a4aba6e260"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.north-american-porcupine.24f03c98948f.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.north-american-porcupine.24f03c98948f.wav",
+      "sha256": "8bebbb7232821b9aff860c328fade09ab4b73b091992b7a021f3e57bee52d8d2"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.northern-gannet.2563d0e7f286.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.northern-gannet.2563d0e7f286.wav",
+      "sha256": "15feadb4b38e6a3598a6bed1c250b8f38ccecc303d0a66146299077ccf50a9dc"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.ash-cicada.25b46c4881e0.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.ash-cicada.25b46c4881e0.wav",
+      "sha256": "05e71855adb98998415d6b97fe21e9db108e43032b895858ccd7d4679c679abc"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.wild-boar.25cc679a1c8f.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.wild-boar.25cc679a1c8f.wav",
+      "sha256": "9a96e877a365406f9721cdde771cc3365b109f1106b0f0e30094717e6dc7f29f"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.trumpeter-swan.260b8bce7b72.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.trumpeter-swan.260b8bce7b72.wav",
+      "sha256": "22404c163ba0da369792f04dddbd1bf824b63c7aed862630ccf6e955d753d983"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.scarlet-tanager.26cf91092d4b.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.scarlet-tanager.26cf91092d4b.wav",
+      "sha256": "3553b40b9e3f532929e63ec78d3a0bd350096aa4fa3bfbe62fa4d75cdb584652"
+    },
+    {
+      "priorPath": "audio-production/audition/v4.reference.lily-leaf-beetle.273b5f7af19b.wav",
+      "retainedPath": "audio-production/quarantine/ecology-headroom-compressed-import/v4.reference.lily-leaf-beetle.273b5f7af19b.wav",
+      "sha256": "0c3532ffc797de58badff1d575568a1615ae8177e36a0d0a8ebcc68bba9c7b14"
+    }
+  ]
+}

@@ -1,0 +1,689 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.ability.frost.cast.1",
+      "group": "coverage-frost",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/kenney_impacts/48616f22c95589ed-impactGlass_medium_002.ogg",
+          "sha256": "48616f22c95589ed9fe55babf0fd012721d7b2ef1b9e85c2ad6408a2cd7c164f",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.543356
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-frost",
+          "start": 0,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.frost.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "frost",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-frost/v2.ability.frost.cast.1.wav",
+      "masterSha256": "886c29aba1fd6e83fab5ddff2781e2f7e86df152e0950f58155abc1b714cb9aa",
+      "opus": "masters/coverage-frost/v2.ability.frost.cast.1.opus",
+      "opusSha256": "78bd7c523b8c0c23acc49c23afe38204f29aae73346f8e7c22dde647f5d6f015",
+      "previewSha256": "7d12a4886f896dfd329ce3e34cc9db1cb05e7bb5fc84d56323e9f9388d3e90ba",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.frost.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.2,
+      "opusDbTP": -15.2
+    },
+    {
+      "id": "v2.ability.frost.cast.2",
+      "group": "coverage-frost",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/710db7451bb7857b-impactGlass_light_002.ogg",
+          "sha256": "710db7451bb7857b9140dfe6afe4621ea2188ad65eda3919c569d1bb285b933d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/kenney_impacts/853fe77ad46bd0cf-impactGlass_medium_004.ogg",
+          "sha256": "853fe77ad46bd0cf106e40e741b039e15b90f73edecd92cde524fbad9e3ebe00",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.543356
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-frost",
+          "start": 0,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.frost.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "frost",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 1.65,
+      "master": "masters/coverage-frost/v2.ability.frost.cast.2.wav",
+      "masterSha256": "781500e332ef88e07fd2209894324131809fcb72b79ed6f78f0c4fa2abd1ef65",
+      "opus": "masters/coverage-frost/v2.ability.frost.cast.2.opus",
+      "opusSha256": "1db2829289959340e78aaf9b8376f1efa271f369be2ea05f49ba7317909b18e0",
+      "previewSha256": "1393e238026946b332383db8d69cbbd19503862c77bbf286294a2bb393dd9bca",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.frost.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.ability.frost.cast.3",
+      "group": "coverage-frost",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/765290ce32fa108c-impactGlass_light_003.ogg",
+          "sha256": "765290ce32fa108c939a0dbd6fbacbcd05abde622b57b708eb8a64058ef4225a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/kenney_impacts/9252d50bfb85edb1-impactGlass_medium_000.ogg",
+          "sha256": "9252d50bfb85edb17d6073c4a7806e10cdb9de56d3dbfc93a4b9727146d2df6d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.543356
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-frost",
+          "start": 0,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.frost.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "frost",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 3.3,
+      "master": "masters/coverage-frost/v2.ability.frost.cast.3.wav",
+      "masterSha256": "34f63c2321607f6cba90719e2934a78ff3456e686f2cc69ad1e542b00102fce9",
+      "opus": "masters/coverage-frost/v2.ability.frost.cast.3.opus",
+      "opusSha256": "64eb8a69cc49f4756b5c8865947869fde60fa8ccb2d5d9e28f77075dfadc6b75",
+      "previewSha256": "9aded0008662358006b39ab89fa163c658f4306c8e561bce31cd41fa5b59bab7",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.frost.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.7,
+      "opusDbTP": -14.6
+    },
+    {
+      "id": "v2.ability.frost.impact.1",
+      "group": "coverage-frost",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/kenney_impacts/853fe77ad46bd0cf-impactGlass_medium_004.ogg",
+          "sha256": "853fe77ad46bd0cf106e40e741b039e15b90f73edecd92cde524fbad9e3ebe00",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.543356
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-frost",
+          "start": 0,
+          "duration": 0.55,
+          "note": 35,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.frost.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "frost",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 4.949999999999999,
+      "master": "masters/coverage-frost/v2.ability.frost.impact.1.wav",
+      "masterSha256": "b56b3613b48e275658d79c87d695abe7a2cb5ad1970fffc2e60ac00021b598cb",
+      "opus": "masters/coverage-frost/v2.ability.frost.impact.1.opus",
+      "opusSha256": "68a85e1fb78834954bbadd6efc216abcce28d3fe42152e7f70443f23f2dc29f9",
+      "previewSha256": "2c6556249f1eff4f8d6df592463a0b196a35d97dd07f32d812b9061ca25d5f07",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.frost.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.2,
+      "opusDbTP": -15.1
+    },
+    {
+      "id": "v2.ability.frost.impact.2",
+      "group": "coverage-frost",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/710db7451bb7857b-impactGlass_light_002.ogg",
+          "sha256": "710db7451bb7857b9140dfe6afe4621ea2188ad65eda3919c569d1bb285b933d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/kenney_impacts/9252d50bfb85edb1-impactGlass_medium_000.ogg",
+          "sha256": "9252d50bfb85edb17d6073c4a7806e10cdb9de56d3dbfc93a4b9727146d2df6d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.543356
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-frost",
+          "start": 0,
+          "duration": 0.55,
+          "note": 35,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.frost.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "frost",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 7.1499999999999995,
+      "master": "masters/coverage-frost/v2.ability.frost.impact.2.wav",
+      "masterSha256": "08ef01259331793b6c90b6e9487e23e20b596b5a0a79410bd6472b96c40eaa33",
+      "opus": "masters/coverage-frost/v2.ability.frost.impact.2.opus",
+      "opusSha256": "fa8a50710a90a1b33889a85169a44c62d24452be83122833e8059e055ba81729",
+      "previewSha256": "d1590efd4d1107c7bc759dcd3e2d1042a7b67da70ad5e784f4eb558a75417cb6",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.frost.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v2.ability.frost.impact.3",
+      "group": "coverage-frost",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/765290ce32fa108c-impactGlass_light_003.ogg",
+          "sha256": "765290ce32fa108c939a0dbd6fbacbcd05abde622b57b708eb8a64058ef4225a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/kenney_impacts/d3d806cb3012c9dd-impactGlass_medium_001.ogg",
+          "sha256": "d3d806cb3012c9ddd87010b30295ccb74d6d8b690077d19e67afd09a9d8feb03",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.543356
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-frost",
+          "start": 0,
+          "duration": 0.55,
+          "note": 35,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.frost.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "frost",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 9.35,
+      "master": "masters/coverage-frost/v2.ability.frost.impact.3.wav",
+      "masterSha256": "7833f0b73f97dd51fad2b186fd034c7664f03ff8f4dad233a3e672c930262cf1",
+      "opus": "masters/coverage-frost/v2.ability.frost.impact.3.opus",
+      "opusSha256": "4a3d6b8ceca6b041f92bb528ffb1ff1eb2876d94ea708c81e35212899d7590f6",
+      "previewSha256": "2cb75e5d74cb7fd896fb77249cbe817a407f7d778967b7e40a6e5ce81d7cca52",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.frost.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.7,
+      "opusDbTP": -14.6
+    },
+    {
+      "id": "v2.ability.frost.sustain.1",
+      "group": "coverage-frost",
+      "kind": "synthetic_fictional",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/kenney_impacts/9252d50bfb85edb1-impactGlass_medium_000.ogg",
+          "sha256": "9252d50bfb85edb17d6073c4a7806e10cdb9de56d3dbfc93a4b9727146d2df6d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.543356
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-frost",
+          "start": 0.0,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-frost",
+          "start": 0.6,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-frost",
+          "start": 1.2,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-frost",
+          "start": 1.7999999999999998,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-frost",
+          "start": 2.4,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-frost",
+          "start": 3.0,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.frost.sustain"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "frost",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 11.55,
+      "master": "masters/coverage-frost/v2.ability.frost.sustain.1.wav",
+      "masterSha256": "c07e9eb3cd70e9de9f05f5e2480d3209323a145e412c2a04c4c7daa833044691",
+      "opus": "masters/coverage-frost/v2.ability.frost.sustain.1.opus",
+      "opusSha256": "d95a9688b363102d789f2cb4e06020d182b9eaa248c97bd30bba701483b65c5d",
+      "previewSha256": "84f7754aeee5bac8f5e13e00f0c2f671988cf5a9aa14b1632e3c6ea9fab703b7",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/v2.ability.frost.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.2,
+      "opusDbTP": -15.2
+    },
+    {
+      "id": "v2.ability.frost.release.1",
+      "group": "coverage-frost",
+      "kind": "synthetic_fictional",
+      "duration": 0.9,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/kenney_impacts/d3d806cb3012c9dd-impactGlass_medium_001.ogg",
+          "sha256": "d3d806cb3012c9ddd87010b30295ccb74d6d8b690077d19e67afd09a9d8feb03",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.543356
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-frost",
+          "start": 0,
+          "duration": 0.55,
+          "note": 42,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.frost.release"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "frost",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 16.55,
+      "master": "masters/coverage-frost/v2.ability.frost.release.1.wav",
+      "masterSha256": "3c5ba1bfdb71843c12b983b836c2017e4f0e34b7a286332c7893711d00eb4dd3",
+      "opus": "masters/coverage-frost/v2.ability.frost.release.1.opus",
+      "opusSha256": "6ee760b772ea81e73e3afc35b334831c3a47ce4046e420813b64ced8725ca9d3",
+      "previewSha256": "7f7ba81c8d032e0c5c2bd24b8ae9ad54ad2b1cffc938af78513d216270d94e04",
+      "previewBytes": 86514,
+      "previewUrl": "/__cf-audio-review/v2.ability.frost.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.2,
+      "opusDbTP": -15.1
+    },
+    {
+      "id": "v2.ability.frost.shield.1",
+      "group": "coverage-frost",
+      "kind": "synthetic_fictional",
+      "duration": 1.4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/kenney_impacts/dccea1ecc3d942ee-impactGlass_medium_003.ogg",
+          "sha256": "dccea1ecc3d942ee5fd217c684632638f6c039c97cd3ae59c75ab15d0c3f0b59",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.543356
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-frost",
+          "start": 0,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-frost",
+          "start": 0.3,
+          "duration": 0.55,
+          "note": 54,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.frost.shield"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "frost",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 18.45,
+      "master": "masters/coverage-frost/v2.ability.frost.shield.1.wav",
+      "masterSha256": "9e6a274978bccd3653a0aed93e1589b675ab03626756cff8b563f1c9565fa22a",
+      "opus": "masters/coverage-frost/v2.ability.frost.shield.1.opus",
+      "opusSha256": "f8fb5b565ec1a8cdee8c784fc63546e1a79158a9e25e6696866a68534b226b41",
+      "previewSha256": "d92bba574f9b8fa7bac914dacf233899a3fcf506b141be759ed40a9c4ef54b7d",
+      "previewBytes": 134514,
+      "previewUrl": "/__cf-audio-review/v2.ability.frost.shield.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.2,
+      "opusDbTP": -15.2
+    },
+    {
+      "id": "v2.ability.frost.heal.1",
+      "group": "coverage-frost",
+      "kind": "synthetic_fictional",
+      "duration": 1.8,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/kenney_impacts/48616f22c95589ed-impactGlass_medium_002.ogg",
+          "sha256": "48616f22c95589ed9fe55babf0fd012721d7b2ef1b9e85c2ad6408a2cd7c164f",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.543356
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-frost",
+          "start": 0,
+          "duration": 0.55,
+          "note": 47,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-frost",
+          "start": 0.35,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-frost",
+          "start": 0.7,
+          "duration": 0.55,
+          "note": 54,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.frost.heal"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "frost",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 20.849999999999998,
+      "master": "masters/coverage-frost/v2.ability.frost.heal.1.wav",
+      "masterSha256": "ad0f6fa0a7664b62191493f0e469dbb1db0e8c9aebc20c57cf40294341bacce2",
+      "opus": "masters/coverage-frost/v2.ability.frost.heal.1.opus",
+      "opusSha256": "14bb423f0563738e296ca9226d885af3c5e3489e7ed9ac4e15cb5acc589253a5",
+      "previewSha256": "d6d02a6bc9d6ee6ffafc9d7c645c463f59bbb0c030b0d40b3af74aa4ef487771",
+      "previewBytes": 172914,
+      "previewUrl": "/__cf-audio-review/v2.ability.frost.heal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.2,
+      "opusDbTP": -15.2
+    },
+    {
+      "id": "v2.ability.frost.tick.1",
+      "group": "coverage-frost",
+      "kind": "synthetic_fictional",
+      "duration": 0.45,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.209592
+        },
+        {
+          "path": "source-audio/kenney_impacts/853fe77ad46bd0cf-impactGlass_medium_004.ogg",
+          "sha256": "853fe77ad46bd0cf106e40e741b039e15b90f73edecd92cde524fbad9e3ebe00",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.543356
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-frost",
+          "start": 0,
+          "duration": 0.45,
+          "note": 59,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.frost.tick"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "frost",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 23.65,
+      "master": "masters/coverage-frost/v2.ability.frost.tick.1.wav",
+      "masterSha256": "a8e8af03787e0a54b87ec388a2ca73a801427583ae18eedc950230305d8c317a",
+      "opus": "masters/coverage-frost/v2.ability.frost.tick.1.opus",
+      "opusSha256": "dbd1cde0b5ab5cf551296c2f959a5ae4a2e76fd63ed9fe5c655d88faa27c88bf",
+      "previewSha256": "3b536f9e60211c7153e75233eff90b00430e24af921eb10841d2ba9b89115a7d",
+      "previewBytes": 43314,
+      "previewUrl": "/__cf-audio-review/v2.ability.frost.tick.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.2,
+      "opusDbTP": -15.1
+    }
+  ],
+  "listeningAccepted": false
+}
