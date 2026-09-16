@@ -68,3 +68,7 @@ then qualify real aquatic/airborne procedural generations and variable-count ana
 to use habitat admission rather than assigning fish to land or air to every unknown creature.
 Nick owns visual acceptance. Claude needs only REVIEW_PROMPT.md and the named evidence when
 Nick chooses review; no app switch or branch integration is needed now. PR42 remains parked.
+
+Signed checkpoint:73b93592. See CHECKPOINT_STATUS.md. Review ZIP in review-bundle.json
+contains the prompt, code, source records, receipts and four MP4s below30MB. The first embedded
+gallery crashed; a single-player selector recovered and playback was observed (PREVIEW_CHECK.md).

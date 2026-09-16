@@ -49,10 +49,10 @@ flight; Frog ground contact remains open. Then connect admitted encounter/world/
 through CreatureRigV1 to ordinary gameplay and separately qualify30fps on the physical phone.
 Preserve8% contact bound, exact rest/source joins and strict<2ms per-creature update requirement.
 
-Signed parent remains1a6dd61d,118 ahead cached origin/openai/mac and229 ahead origin/develop.
-Prior continuation is staged because the configured1Password signer failed. Check this batch's
-checkpoint receipt for the final attempt outcome; no unsigned fallback or signing configuration
-change. Code checks are complete; hosted chain was not run.
+Signed code/evidence checkpoint73b93592 contains the accumulated continuation and this batch;
+119 ahead cached origin/openai/mac and230 ahead origin/develop at that checkpoint. Signing
+succeeded through the configured1Password helper, without a fallback or configuration change.
+A documentation receipt follows it. Code checks are complete; hosted chain was not run.
 
 C3 remains signed b79fd32e:1,669 source entries/1,665 unique originals,1,662 decode,three quarantined;
 1,617 WAV/Opus pairs and203/631 fauna reference identities,428 missing.43 biome recipes/486 routes,
