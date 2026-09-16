@@ -1,0 +1,26 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/audio-production-plan.test.ts (5 tests | 1 failed) 45ms
+     × covers actual combat families and ability roles without increasing primary loudness 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/audio-production-plan.test.ts > resolved production sound plans > covers actual combat families and ability roles without increasing primary loudness
+TypeError: ABILITY_THEMES is not iterable
+ ❯ apps/game/src/audio-production-plan.test.ts:49:24
+     47|   it('covers actual combat families and ability roles without increasi…
+     48|     for(const event of Object.keys(PRODUCTION_COMBAT_ROLES) as (keyof …
+     49|     for(const theme of ABILITY_THEMES){
+       |                        ^
+     50|       for(const phase of ['cast','impact','sustain','release','shield'…
+     51|       const a=compileProductionAbility(theme,'impact',1,'battle:133'),…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  19:04:30
+   Duration  201ms (transform 67ms, setup 0ms, import 84ms, tests 45ms, environment 0ms)
+

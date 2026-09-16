@@ -1,0 +1,2846 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.battle.alert.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.2227,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/0b574cea597d9650-error_004.ogg",
+          "sha256": "0b574cea597d96507e782ae9764f88482ce49f46e931e57054bf7150047f2d69",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.102698
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.alert"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-events/v2.battle.alert.1.wav",
+      "masterSha256": "f6841b00f865c99d558889db2ce9e60b929df9d4847c2b46ff041592e7d011ef",
+      "opus": "masters/coverage-events/v2.battle.alert.1.opus",
+      "opusSha256": "1e5c1bb95dafe923a576761cc8827a3bed9aaf05350bbdc8a5e23e2d3782246b",
+      "previewSha256": "8826e5d60e92091388a111f7db7c6a45ce8a2fea5ec97ea02a5282b73b14552b",
+      "previewBytes": 21494,
+      "previewUrl": "/__cf-audio-review/v2.battle.alert.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.9,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "v2.battle.alert.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.62,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/3f75b11df5b06d68-error_005.ogg",
+          "sha256": "3f75b11df5b06d68d2c25fbf0e9c9d9e7dd9250562a4007ee34856b8a309a2ae",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.500045
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.alert"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 1.2227000000000001,
+      "master": "masters/coverage-events/v2.battle.alert.2.wav",
+      "masterSha256": "137b3c55ba4416f6f2fae5b70f16a669dec073ea56eff60edf23e87521e975d8",
+      "opus": "masters/coverage-events/v2.battle.alert.2.opus",
+      "opusSha256": "e03602b95040722229003f32705f2576bf9c81cc29554f6c09d96f3932f27be5",
+      "previewSha256": "adcf1996bc919f9d7a0eb2e961eb05b672d46c0c2b7c23d4f8812b4d8bd40cc9",
+      "previewBytes": 59634,
+      "previewUrl": "/__cf-audio-review/v2.battle.alert.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.4
+    },
+    {
+      "id": "v2.battle.alert.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.2846,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/46e67425d1633977-error_001.ogg",
+          "sha256": "46e67425d16339772e8d328fb36a49426c9467418686e11beeb71ff84b0f6433",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.164558
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.alert"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 2.8427000000000002,
+      "master": "masters/coverage-events/v2.battle.alert.3.wav",
+      "masterSha256": "5659019b1c85c0856c797e21070ed25ba13a83bf6829fe922318003123543833",
+      "opus": "masters/coverage-events/v2.battle.alert.3.opus",
+      "opusSha256": "7887901ef16a6b7560de07495b6c5dd5d181986db6739123341b88e96dd7aa68",
+      "previewSha256": "829923cacff4f6f9c50300debc855d41d14c6ef37d09e2e130f6e69acfcfa4ab",
+      "previewBytes": 27436,
+      "previewUrl": "/__cf-audio-review/v2.battle.alert.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.2,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.battle.ready.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.1633,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/4cc6ac5341b9b2c8-select_002.ogg",
+          "sha256": "4cc6ac5341b9b2c86fef80c347de028e9ab9f2e037586ac7d9fa59a403a1c012",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.043288
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.ready"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 4.1273,
+      "master": "masters/coverage-events/v2.battle.ready.1.wav",
+      "masterSha256": "3a90d0be381bb620abd4b85550de2e078d93fb52430e65b2864ae7f1841e676a",
+      "opus": "masters/coverage-events/v2.battle.ready.1.opus",
+      "opusSha256": "a460dfd759d306d3391e64700051c54aa641bcfaa03231d862ccc158811dc11d",
+      "previewSha256": "9d9f414e268ae9edef2c9e31654af0ead8bd673f7fb573fb4503023852e58d90",
+      "previewBytes": 15790,
+      "previewUrl": "/__cf-audio-review/v2.battle.ready.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.7,
+      "opusDbTP": -14.6
+    },
+    {
+      "id": "v2.battle.ready.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.5028,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/9a612fd2f513d52a-select_003.ogg",
+          "sha256": "9a612fd2f513d52a296906b41071c990f75defe56be3bee60d2d4e2423b51b8b",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.382766
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.ready"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 5.2905999999999995,
+      "master": "masters/coverage-events/v2.battle.ready.2.wav",
+      "masterSha256": "b9134024de05f95cf028acb9322bb38b484a6d50da13c46f13ec788c4d020eaf",
+      "opus": "masters/coverage-events/v2.battle.ready.2.opus",
+      "opusSha256": "2772db4109faad8caafc0799c29d4210130b3bf2857c201841c2e2d33c86367b",
+      "previewSha256": "8e30749c68b8b909fccd471bffba144127ce7748d47ffb667c691c2fe9bc2d59",
+      "previewBytes": 48382,
+      "previewUrl": "/__cf-audio-review/v2.battle.ready.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.9,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.battle.ready.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.5028,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/ad09146e4ea33b93-select_005.ogg",
+          "sha256": "ad09146e4ea33b931b2f5dfb4051a4f1fe4a36f1a48c42c5e9269c292ae21214",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.382766
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.ready"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 6.7934,
+      "master": "masters/coverage-events/v2.battle.ready.3.wav",
+      "masterSha256": "148977a09a019369f36de9da1aad1f7ead9d65cc11da324a1640a307a40540d5",
+      "opus": "masters/coverage-events/v2.battle.ready.3.opus",
+      "opusSha256": "f64de21fac8a2e99127a09413908dc41ceffc128ff3e762eac2c3de576ad3e52",
+      "previewSha256": "6db84e959e6508f5acfb996610f1d42967fac24554bdcc9a3b5db5818c7edae8",
+      "previewBytes": 48382,
+      "previewUrl": "/__cf-audio-review/v2.battle.ready.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.4,
+      "opusDbTP": -12.2
+    },
+    {
+      "id": "v2.battle.miss.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.7195,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/4cd96dc630bed984-knifeSlice.ogg",
+          "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.599542
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.miss"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 8.2962,
+      "master": "masters/coverage-events/v2.battle.miss.1.wav",
+      "masterSha256": "6d7773196e06d9a94309e317700801571b2042506ba46184e5b2f0550807cdc7",
+      "opus": "masters/coverage-events/v2.battle.miss.1.opus",
+      "opusSha256": "bd1b49104d8025880645b39b6943a52f3833db9b2d506fc3253fdfd6be99875c",
+      "previewSha256": "36a7eae56426ffd4f0096c709895559de83998629d67171b01a9837f85601674",
+      "previewBytes": 69186,
+      "previewUrl": "/__cf-audio-review/v2.battle.miss.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.8,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "v2.battle.miss.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.6888,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/6c2064d0ef988d1e-knifeSlice2.ogg",
+          "sha256": "6c2064d0ef988d1ec3d56868e823ea8823a5cac00f2742560052633529407def",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.568792
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.miss"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 10.0157,
+      "master": "masters/coverage-events/v2.battle.miss.2.wav",
+      "masterSha256": "bf8033ae489f25a29a1fad7c3ba9b8031a651b6ee6e3eebe94a2d3cef1a94868",
+      "opus": "masters/coverage-events/v2.battle.miss.2.opus",
+      "opusSha256": "947321541e896a825204ad03064c3f67f9f276ef41b68e317ee96068c8eb8037",
+      "previewSha256": "c8fc0229eb53fbe14b02a8c0bd986f444d523a91bf6429a43a5d95cbad935ca3",
+      "previewBytes": 66238,
+      "previewUrl": "/__cf-audio-review/v2.battle.miss.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.6,
+      "opusDbTP": -10.7
+    },
+    {
+      "id": "v2.battle.deny.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.2227,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/0b574cea597d9650-error_004.ogg",
+          "sha256": "0b574cea597d96507e782ae9764f88482ce49f46e931e57054bf7150047f2d69",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.102698
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.deny"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 11.704500000000001,
+      "master": "masters/coverage-events/v2.battle.deny.1.wav",
+      "masterSha256": "f6841b00f865c99d558889db2ce9e60b929df9d4847c2b46ff041592e7d011ef",
+      "opus": "masters/coverage-events/v2.battle.deny.1.opus",
+      "opusSha256": "0da7131279b9e1cce0dd15018a20a4f577ce21aff6826051993beaf664a67ada",
+      "previewSha256": "8826e5d60e92091388a111f7db7c6a45ce8a2fea5ec97ea02a5282b73b14552b",
+      "previewBytes": 21494,
+      "previewUrl": "/__cf-audio-review/v2.battle.deny.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.9,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "v2.battle.deny.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.62,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/3f75b11df5b06d68-error_005.ogg",
+          "sha256": "3f75b11df5b06d68d2c25fbf0e9c9d9e7dd9250562a4007ee34856b8a309a2ae",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.500045
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.deny"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 12.927200000000001,
+      "master": "masters/coverage-events/v2.battle.deny.2.wav",
+      "masterSha256": "137b3c55ba4416f6f2fae5b70f16a669dec073ea56eff60edf23e87521e975d8",
+      "opus": "masters/coverage-events/v2.battle.deny.2.opus",
+      "opusSha256": "d93ba1fddbe2a8c0740a9bd54b0d14d8a5d1c3c9ec198ce547666ef1a90a4735",
+      "previewSha256": "adcf1996bc919f9d7a0eb2e961eb05b672d46c0c2b7c23d4f8812b4d8bd40cc9",
+      "previewBytes": 59634,
+      "previewUrl": "/__cf-audio-review/v2.battle.deny.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.4
+    },
+    {
+      "id": "v2.battle.deny.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.2846,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/46e67425d1633977-error_001.ogg",
+          "sha256": "46e67425d16339772e8d328fb36a49426c9467418686e11beeb71ff84b0f6433",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.164558
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.deny"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 14.5472,
+      "master": "masters/coverage-events/v2.battle.deny.3.wav",
+      "masterSha256": "5659019b1c85c0856c797e21070ed25ba13a83bf6829fe922318003123543833",
+      "opus": "masters/coverage-events/v2.battle.deny.3.opus",
+      "opusSha256": "bdd5f2ee2b47e9db37c785b163bb7cfd75ddb4512662105dee2711cf683b9e64",
+      "previewSha256": "829923cacff4f6f9c50300debc855d41d14c6ef37d09e2e130f6e69acfcfa4ab",
+      "previewBytes": 27436,
+      "previewUrl": "/__cf-audio-review/v2.battle.deny.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.2,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.battle.impact.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.5753,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/2d7c719c05999e05-impactPunch_medium_003.ogg",
+          "sha256": "2d7c719c05999e0532f4384e1018e04cd916db715140bf16dee2dff3f820e908",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.455261
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.impact"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 15.8318,
+      "master": "masters/coverage-events/v2.battle.impact.1.wav",
+      "masterSha256": "b4a9cb67ee2ea1866995a94d0a9f78816e28d2241d7fd70171c494baca630459",
+      "opus": "masters/coverage-events/v2.battle.impact.1.opus",
+      "opusSha256": "279e6ce45c3a1a3cf6f4fa592ddea40491273f9dc3fa45389ca11340ffbe241c",
+      "previewSha256": "710b8ccc28948ea63b407a371bef0a93a00305d74bc8b15031cd9af00001849a",
+      "previewBytes": 55342,
+      "previewUrl": "/__cf-audio-review/v2.battle.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.battle.impact.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.5505,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/486988aa2d6440ff-impactPunch_medium_000.ogg",
+          "sha256": "486988aa2d6440ffc4c62a0e8ccf3c23673ba84424bd4723378d451b7255eb5c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.430544
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.impact"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 17.4071,
+      "master": "masters/coverage-events/v2.battle.impact.2.wav",
+      "masterSha256": "9621d3377f64020493ef496959ffd014e9f843774cd3e8705b69ea39d700c63d",
+      "opus": "masters/coverage-events/v2.battle.impact.2.opus",
+      "opusSha256": "a06627873ad8e18d68a576c59f246b47d58fe9a8fd398a951c82524ba84a2236",
+      "previewSha256": "08b4444bcdf4856fd94584baec603f572f231b08c4811675efe93e34b137ffaf",
+      "previewBytes": 52962,
+      "previewUrl": "/__cf-audio-review/v2.battle.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.2,
+      "opusDbTP": -12.3
+    },
+    {
+      "id": "v2.battle.impact.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.6629,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/4a256878a3afb994-impactPunch_medium_004.ogg",
+          "sha256": "4a256878a3afb994ec9a4399336687748e68c7c136872c08c9c797d8c4e2464a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.542925
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.impact"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 18.9576,
+      "master": "masters/coverage-events/v2.battle.impact.3.wav",
+      "masterSha256": "412929abf98cc3c53700f3f0f0a866b6b1de0bf4abb465d8d47bd05321a7a45b",
+      "opus": "masters/coverage-events/v2.battle.impact.3.opus",
+      "opusSha256": "25a473dffb9adb877a61e7a4bdba1f00075f9cc480ae89b629a1cd259a7b4f22",
+      "previewSha256": "57e2ab2089f649c6d647b6ac1010a659cfdf74bf537bad74704b772658eace88",
+      "previewBytes": 63752,
+      "previewUrl": "/__cf-audio-review/v2.battle.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.1,
+      "opusDbTP": -12.1
+    },
+    {
+      "id": "v2.battle.critical.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.5938,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/4ab53b26f4ea5751-impactPunch_heavy_003.ogg",
+          "sha256": "4ab53b26f4ea575120dcc1348526c9e0db2afc6af7a442aa0489bdead2ca80b6",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.47381
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.critical"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 20.6205,
+      "master": "masters/coverage-events/v2.battle.critical.1.wav",
+      "masterSha256": "df79b6a145cef0f7c0c53a70072e403ebf4538d461107b59aa88f3dd11a5a45b",
+      "opus": "masters/coverage-events/v2.battle.critical.1.opus",
+      "opusSha256": "e0abb5d24d5c46027c9ee04648e50ece40de583bc5e7cdbd3f2360d08178aa15",
+      "previewSha256": "eae251ebfdf78832fac9ebdefa25302fe2c5427cc9bc771f517edf1396bd6e62",
+      "previewBytes": 57118,
+      "previewUrl": "/__cf-audio-review/v2.battle.critical.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.9,
+      "opusDbTP": -12.2
+    },
+    {
+      "id": "v2.battle.critical.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.5775,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/7993dd4c156b9979-impactPunch_heavy_002.ogg",
+          "sha256": "7993dd4c156b9979ad69f17be5ebe31850b16039a3857f8477141be54dfee1b3",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.457483
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.critical"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 22.2143,
+      "master": "masters/coverage-events/v2.battle.critical.2.wav",
+      "masterSha256": "c4f7ee3fcc7303484eaea49df497d553d35d59cad05b62d8826dc6ecec93a9a9",
+      "opus": "masters/coverage-events/v2.battle.critical.2.opus",
+      "opusSha256": "9bc9f37a47d582ab96243cfeb0072dff0235b540eeb92673bf6c28c180b21f71",
+      "previewSha256": "608e2c6fbfc6f2d3c45bc76172b9696ad3ed117fb8d6a9fd1b48c8de559f4c22",
+      "previewBytes": 55554,
+      "previewUrl": "/__cf-audio-review/v2.battle.critical.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.2
+    },
+    {
+      "id": "v2.battle.critical.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.769,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/b33a8f14068aec24-impactPunch_heavy_000.ogg",
+          "sha256": "b33a8f14068aec24ec69ba85e5e87fdc41228975f6a1a3e44a6e7d6fc3d9f8d8",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.649025
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.critical"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 23.791800000000002,
+      "master": "masters/coverage-events/v2.battle.critical.3.wav",
+      "masterSha256": "70671c5dd90a36068899a5d47d0d2eb7819afa4a10b2db368ec3103460cc565a",
+      "opus": "masters/coverage-events/v2.battle.critical.3.opus",
+      "opusSha256": "9d2898d88f9c92c1dfaad2fc4e931452bee419851f01b8e99e4377076c4982d2",
+      "previewSha256": "28ad6426cfb25b782f9bcede00e7d1ee36c666db7502537b433f6611ec9eff81",
+      "previewBytes": 73938,
+      "previewUrl": "/__cf-audio-review/v2.battle.critical.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.3
+    },
+    {
+      "id": "v2.battle.strike.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.5159,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/2cd9e6926f4602a4-blade_03.ogg",
+          "sha256": "2cd9e6926f4602a4350e703eeae4df520053e290f358ab692632d651ad368a7c",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.395875
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.strike"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 25.5608,
+      "master": "masters/coverage-events/v2.battle.strike.1.wav",
+      "masterSha256": "0b7164955defc1362b72f03dc2de27c8422112759ac1defdb5c45e1f1c9be186",
+      "opus": "masters/coverage-events/v2.battle.strike.1.opus",
+      "opusSha256": "4218d6f2fb0b46b65d6e61b6dd0b2dcf54d30f11a5dfcfb7302461783a9a8847",
+      "previewSha256": "db51f850219f9a842ae1a3192f7b91fe8a2dc93b99a4b42f3db84a3e28af364c",
+      "previewBytes": 49640,
+      "previewUrl": "/__cf-audio-review/v2.battle.strike.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.4,
+      "opusDbTP": -11.4
+    },
+    {
+      "id": "v2.battle.strike.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.4334,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/c770afec8f62f14d-blade_02.ogg",
+          "sha256": "c770afec8f62f14d3d082d5437c5cec28e2751d393df645ddd938eabc2588abd",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313396
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.strike"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 27.0767,
+      "master": "masters/coverage-events/v2.battle.strike.2.wav",
+      "masterSha256": "142379bbe6f4ccbde14feb3419060e9a77ba057f03591cffaa39ac4ae190241f",
+      "opus": "masters/coverage-events/v2.battle.strike.2.opus",
+      "opusSha256": "13571f9913f3888f6b69688652d2ac8b0a337a4d145a84a4daa3541954863209",
+      "previewSha256": "b4d6dd9704d14cf84cfea5660b638b1691a59fa5499570b4b735484b7275e1e2",
+      "previewBytes": 41720,
+      "previewUrl": "/__cf-audio-review/v2.battle.strike.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.2,
+      "opusDbTP": -11.3
+    },
+    {
+      "id": "v2.battle.strike.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.4109,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/caf7a7cb9b25cda4-blade_01.ogg",
+          "sha256": "caf7a7cb9b25cda4bd487c1d12d18b74a34bb18c816fd67277cf3c8d7ef32a3a",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.290917
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.strike"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 28.510099999999998,
+      "master": "masters/coverage-events/v2.battle.strike.3.wav",
+      "masterSha256": "c90c347b63eb78c0ed2e2f11c3458c152d54e5b542b25600dac420e2e5e5765d",
+      "opus": "masters/coverage-events/v2.battle.strike.3.opus",
+      "opusSha256": "85252278029efb26d546ac6acbf80fb02d51aa89e0e43a7b8380b4f6d1cee680",
+      "previewSha256": "c41027bea6157ea9c00cdd1f0a50d68317dec672657f54be4f039c99bb408754",
+      "previewBytes": 39560,
+      "previewUrl": "/__cf-audio-review/v2.battle.strike.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.9,
+      "opusDbTP": -12.1
+    },
+    {
+      "id": "v2.battle.heavy-impact.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.9247,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/059558ec751115ca-impactMining_002.ogg",
+          "sha256": "059558ec751115ca6b1441e00f0adc837c1a3eeb0a066b109e0fd879fc5d0b0c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.804671
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.heavy-impact"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 29.921,
+      "master": "masters/coverage-events/v2.battle.heavy-impact.1.wav",
+      "masterSha256": "0d787b04bbde2c233825722985263c78b41b6962bb8f2b28d41cc80718134ff5",
+      "opus": "masters/coverage-events/v2.battle.heavy-impact.1.opus",
+      "opusSha256": "a4177cb021c78f678478de7ca19992d7d62ff1188d0340f6747dea6d33b1f58e",
+      "previewSha256": "1848bc422f54b49248d4eae121863b728a5895870eb0434932c90e91842e5163",
+      "previewBytes": 88886,
+      "previewUrl": "/__cf-audio-review/v2.battle.heavy-impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.2,
+      "opusDbTP": -12.3
+    },
+    {
+      "id": "v2.battle.heavy-impact.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 1.0574,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/36b4ea107222d073-impactMining_000.ogg",
+          "sha256": "36b4ea107222d073c67ca64dde26944975609202d5090b2f2021213c1a7e35cd",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.937438
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.heavy-impact"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 31.8457,
+      "master": "masters/coverage-events/v2.battle.heavy-impact.2.wav",
+      "masterSha256": "56eb3c4f1ecc4c24caa3caddc059ececd68a88fe7819523fa589ded0362d1e8a",
+      "opus": "masters/coverage-events/v2.battle.heavy-impact.2.opus",
+      "opusSha256": "be999da3e86c695eed48198a6edaa99b3032462ce71857a3f63190af2e9ad103",
+      "previewSha256": "1c0791d212683f2d77044b9ad12a1e5cef41abf39d280b80768bd42d9430f8bd",
+      "previewBytes": 101624,
+      "previewUrl": "/__cf-audio-review/v2.battle.heavy-impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.1,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.battle.heavy-impact.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 1.1117,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/4237fa2cd80364ad-impactMining_003.ogg",
+          "sha256": "4237fa2cd80364ad81cd0af44f67d7497f1c5edcc7bdb02cd22be2ba4580c83d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.991723
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.heavy-impact"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 33.9031,
+      "master": "masters/coverage-events/v2.battle.heavy-impact.3.wav",
+      "masterSha256": "620e07761ae15f06d20190c9b6d846e79d4c145b64b4bd5e5663d6d47c3623d7",
+      "opus": "masters/coverage-events/v2.battle.heavy-impact.3.opus",
+      "opusSha256": "7c8c19d0deb70aed75f0ad0579e16d867e9a02181e17b9473e1d9122e068a29d",
+      "previewSha256": "02172e1536ae19f25b784c57feedbbd83d0ed5c734a7a250af851e6efb1d032c",
+      "previewBytes": 106838,
+      "previewUrl": "/__cf-audio-review/v2.battle.heavy-impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.1,
+      "opusDbTP": -12.2
+    },
+    {
+      "id": "v2.battle.recoil.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.2552,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/5069e3571a77d7f7-impactSoft_medium_002.ogg",
+          "sha256": "5069e3571a77d7f7aae9ef71d0364aa245fb7d64a7c8cc9956f221d03088c089",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.135193
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.recoil"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 36.0148,
+      "master": "masters/coverage-events/v2.battle.recoil.1.wav",
+      "masterSha256": "07081b17e177cdb8951a4eeefc25c699a6649b7b25540c51d4f19fae8c46feb2",
+      "opus": "masters/coverage-events/v2.battle.recoil.1.opus",
+      "opusSha256": "a18bc027a40de1091c7b91431296055fc627fb24bbf7b30600147088c482a800",
+      "previewSha256": "5d5153756a39b72b73bfcbc3dccfb8c079beb627c21c20c91f4ec68153475a6f",
+      "previewBytes": 24614,
+      "previewUrl": "/__cf-audio-review/v2.battle.recoil.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.1,
+      "opusDbTP": -12.5
+    },
+    {
+      "id": "v2.battle.recoil.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.2602,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/5c4a1f35fde7e140-impactSoft_medium_003.ogg",
+          "sha256": "5c4a1f35fde7e14046931da7bc3d1b23736541b7190ba107e08a379c4ca43cd6",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.140227
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.recoil"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 37.27,
+      "master": "masters/coverage-events/v2.battle.recoil.2.wav",
+      "masterSha256": "5cc9164a5d20bd20d04fcf94f16fe59fb24a0490c41a8a36346b6046e673de04",
+      "opus": "masters/coverage-events/v2.battle.recoil.2.opus",
+      "opusSha256": "728b31c7689e799a56360868eafbebf6699591c54c0aaba498a7e36ab0827228",
+      "previewSha256": "70144246dcce1468a94d5e63bea6e387af5918cce337e7e37e4b82e61939ce5c",
+      "previewBytes": 25094,
+      "previewUrl": "/__cf-audio-review/v2.battle.recoil.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.4
+    },
+    {
+      "id": "v2.battle.recoil.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.3033,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/7642a4fd43e547af-impactSoft_medium_001.ogg",
+          "sha256": "7642a4fd43e547afe4f7adfadb3dabb681c0ff512f52c1674bae30a726841faf",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.183288
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.recoil"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 38.5302,
+      "master": "masters/coverage-events/v2.battle.recoil.3.wav",
+      "masterSha256": "6e452456fbcff961b779c6d3e1c2c45d8274fe06329433744fa181d0c21fbe61",
+      "opus": "masters/coverage-events/v2.battle.recoil.3.opus",
+      "opusSha256": "d6536cd3db3220dc05a0ffc14be40c04dd9f8724e5ac5277428e6ff526adec87",
+      "previewSha256": "63976a335457696af85f6eb74954137d4ddbdbca5e016d290f41863c344797fe",
+      "previewBytes": 29230,
+      "previewUrl": "/__cf-audio-review/v2.battle.recoil.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.4
+    },
+    {
+      "id": "v2.battle.heal.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.4098,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/063564703b6094d7-confirmation_001.ogg",
+          "sha256": "063564703b6094d70718a3e787a55cc9141611e4ecd6b6637f8828f79b4a8c3a",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.289841
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.heal"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 39.8335,
+      "master": "masters/coverage-events/v2.battle.heal.1.wav",
+      "masterSha256": "e630cfd23af832f89d3d5de8b3550aff627c3b3a88e41651f4f80f1b4f619f72",
+      "opus": "masters/coverage-events/v2.battle.heal.1.opus",
+      "opusSha256": "5d397e7918c954077a4b769661687dd3fb1d0d6dc17643630944b3f4b2d2db79",
+      "previewSha256": "1d0b54ccdd19720787ad98f923c0953308f108abdbcb9263777a948476802000",
+      "previewBytes": 39454,
+      "previewUrl": "/__cf-audio-review/v2.battle.heal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.4,
+      "opusDbTP": -12.4
+    },
+    {
+      "id": "v2.battle.heal.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.442,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/3091bf0be0497f82-confirmation_003.ogg",
+          "sha256": "3091bf0be0497f825769ee0733ca7bdc3bcd59bd6c6e8f2ba8f93d580ff38022",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.322018
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.heal"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 41.2433,
+      "master": "masters/coverage-events/v2.battle.heal.2.wav",
+      "masterSha256": "cef5b67d202f13291290d444a46c1d05e20508fb010de8bd5f4e822251093cb0",
+      "opus": "masters/coverage-events/v2.battle.heal.2.opus",
+      "opusSha256": "06e8480a175b0247ee82a425bf6de48814d56aaa3e31bab345ecbc7204836061",
+      "previewSha256": "b0ffbc70499ee13a27dfaf8073602cdeceea8a633718e18cfe4db26e58343995",
+      "previewBytes": 42546,
+      "previewUrl": "/__cf-audio-review/v2.battle.heal.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.7,
+      "opusDbTP": -12.7
+    },
+    {
+      "id": "v2.battle.heal.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.659,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/33b17a9a9a2397c6-confirmation_002.ogg",
+          "sha256": "33b17a9a9a2397c62b285c52c33a907fdffb476909c99e42dde603f6a7a8b12c",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.539002
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.heal"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 42.6853,
+      "master": "masters/coverage-events/v2.battle.heal.3.wav",
+      "masterSha256": "c1e80f502ebd832a1031670572d68725bf3f6d4b3012be4d944545f48a7edab2",
+      "opus": "masters/coverage-events/v2.battle.heal.3.opus",
+      "opusSha256": "caa3b63fbe084926bb0bd3bfe9e51d51c487d2f7b1532cfeb7adcdbde09c438f",
+      "previewSha256": "53f82d5cede750618a3ee04efad213df93f04247517eeadf4d51cbe87e83e988",
+      "previewBytes": 63378,
+      "previewUrl": "/__cf-audio-review/v2.battle.heal.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.6,
+      "opusDbTP": -12.6
+    },
+    {
+      "id": "v2.battle.status.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/1527944e16eb14b4-computerNoise_000.ogg",
+          "sha256": "1527944e16eb14b48ee03fe3e7ce6aae94262833a4e1f83928d451a7414fe4e1",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 5.0
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.status"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 44.3443,
+      "master": "masters/coverage-events/v2.battle.status.1.wav",
+      "masterSha256": "5f405b0874b81299588ff1280fb5f611f7a59c7e567619ecd133950c3e617079",
+      "opus": "masters/coverage-events/v2.battle.status.1.opus",
+      "opusSha256": "0e12e1b209c8fbad94b9bef15af95872dace58b0cfbc4aece74beff372a36ba7",
+      "previewSha256": "997c53408d691b46e83e7ee308eccf0802d23c73da124d817735ce8b16db4d9d",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.battle.status.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.1
+    },
+    {
+      "id": "v2.battle.status.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/29b4842f6d8c0ba2-computerNoise_001.ogg",
+          "sha256": "29b4842f6d8c0ba2b0cb00bfaff3b852b492bb43197a82e697917aacbe106757",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 5.0
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.status"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 48.3443,
+      "master": "masters/coverage-events/v2.battle.status.2.wav",
+      "masterSha256": "bbf58a4d592dd90938be50546c51f3708e6e2cfefedffc5fc0a05b4f7868cf4a",
+      "opus": "masters/coverage-events/v2.battle.status.2.opus",
+      "opusSha256": "414721508e5f8d50f44cad172e9299a7cd38ea103e4577b08807346dea0769fe",
+      "previewSha256": "d103d0217b37a7c755d5116e922c2d0229ee8b27563fea6c1cd408f14bd883d3",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.battle.status.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.battle.status.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/5b1b73bbe6e6ad1b-computerNoise_003.ogg",
+          "sha256": "5b1b73bbe6e6ad1b1d39422f640f1bbee3376e8e18916f9305b04b9d143f5cf3",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 5.0
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.status"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 52.3443,
+      "master": "masters/coverage-events/v2.battle.status.3.wav",
+      "masterSha256": "15ec8eaf6b6e4fef9457027302073cd5fefe0fd185e3ce3305c4ba9bb549e41d",
+      "opus": "masters/coverage-events/v2.battle.status.3.opus",
+      "opusSha256": "7ab3edc3ab661d28cd99d3b026f82f382baee81a9e8547989472f6c1746458b9",
+      "previewSha256": "841b27c093761898665560461a4767d54736c6e85949252c6d7351151a5ddc79",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.battle.status.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.2
+    },
+    {
+      "id": "v2.battle.tick.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.1748,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/0253d5f7d8d2afbb-tick_004.ogg",
+          "sha256": "0253d5f7d8d2afbbc370eac2a4539bb844239f0c98343e516d376b137c06d27c",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.054807
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.tick"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 56.3443,
+      "master": "masters/coverage-events/v2.battle.tick.1.wav",
+      "masterSha256": "6442a4bd5555e19d1680f1c403f5240e4e35acad2fad0ec1ea858ba993eb05e4",
+      "opus": "masters/coverage-events/v2.battle.tick.1.opus",
+      "opusSha256": "99fc60434a68b7e4dd14d525a06e5c0e13eeb5a89320cd2fa5fa973da3d76335",
+      "previewSha256": "33c3cc74e63455b3cd686d7aac52c23ed9e5ce997f4640a3262e602764e02d9a",
+      "previewBytes": 16894,
+      "previewUrl": "/__cf-audio-review/v2.battle.tick.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.9,
+      "opusDbTP": -13.9
+    },
+    {
+      "id": "v2.battle.tick.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.1432,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/869442f54214be90-tick_002.ogg",
+          "sha256": "869442f54214be902ec7437f79e400dc91c1bfd90d18a6dd2d5b7e41ffbf457b",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.02322
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.tick"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 57.519099999999995,
+      "master": "masters/coverage-events/v2.battle.tick.2.wav",
+      "masterSha256": "39ff54aabee73fabcea869c64d7b74b5eec715a6462e81036c98a0e0ce5c9c4a",
+      "opus": "masters/coverage-events/v2.battle.tick.2.opus",
+      "opusSha256": "f107ceafd5db799d49f30dace1f30a193309fced1a08975953f6baf433c36bfb",
+      "previewSha256": "221c496a3a0f008499e78647296596bb6831e2d60cb832314f3494485861fe89",
+      "previewBytes": 13862,
+      "previewUrl": "/__cf-audio-review/v2.battle.tick.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.0,
+      "opusDbTP": -20.0
+    },
+    {
+      "id": "v2.battle.tick.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.1432,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/9d057b918024c787-tick_001.ogg",
+          "sha256": "9d057b918024c787bbe6c00beed13a7ef72a3fa0c259add3cef36582792f4230",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.02322
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.tick"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 58.662299999999995,
+      "master": "masters/coverage-events/v2.battle.tick.3.wav",
+      "masterSha256": "5ad8eaf50617da29f48d8e7c23a8d89ebde7aa3a5ad1fc2e12c962ac3c5d7666",
+      "opus": "masters/coverage-events/v2.battle.tick.3.opus",
+      "opusSha256": "fdfc061018179542861b3e56cedebea1e5e5895bc057c68ae8bc5effafecfdbf",
+      "previewSha256": "bebc266c6ae1b3c5d5b7ff32b03d8330fe77812b019e383e90f99b71a4c9ae1c",
+      "previewBytes": 13862,
+      "previewUrl": "/__cf-audio-review/v2.battle.tick.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -21.7,
+      "opusDbTP": -21.5
+    },
+    {
+      "id": "v2.battle.defeat.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.2227,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/0b574cea597d9650-error_004.ogg",
+          "sha256": "0b574cea597d96507e782ae9764f88482ce49f46e931e57054bf7150047f2d69",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.102698
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.defeat"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 59.805499999999995,
+      "master": "masters/coverage-events/v2.battle.defeat.1.wav",
+      "masterSha256": "f6841b00f865c99d558889db2ce9e60b929df9d4847c2b46ff041592e7d011ef",
+      "opus": "masters/coverage-events/v2.battle.defeat.1.opus",
+      "opusSha256": "38bb4f2315fd0cd56e0d92565d04d68c2e7ad48548034c849d7449d708bfa374",
+      "previewSha256": "8826e5d60e92091388a111f7db7c6a45ce8a2fea5ec97ea02a5282b73b14552b",
+      "previewBytes": 21494,
+      "previewUrl": "/__cf-audio-review/v2.battle.defeat.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.9,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "v2.battle.defeat.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.62,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/3f75b11df5b06d68-error_005.ogg",
+          "sha256": "3f75b11df5b06d68d2c25fbf0e9c9d9e7dd9250562a4007ee34856b8a309a2ae",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.500045
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.defeat"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 61.0282,
+      "master": "masters/coverage-events/v2.battle.defeat.2.wav",
+      "masterSha256": "137b3c55ba4416f6f2fae5b70f16a669dec073ea56eff60edf23e87521e975d8",
+      "opus": "masters/coverage-events/v2.battle.defeat.2.opus",
+      "opusSha256": "4636cd4b92a7a403e3d262afbbddf99b19b4fcd5d3ca5543ee975557b25699d7",
+      "previewSha256": "adcf1996bc919f9d7a0eb2e961eb05b672d46c0c2b7c23d4f8812b4d8bd40cc9",
+      "previewBytes": 59634,
+      "previewUrl": "/__cf-audio-review/v2.battle.defeat.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.4
+    },
+    {
+      "id": "v2.battle.defeat.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.2846,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/46e67425d1633977-error_001.ogg",
+          "sha256": "46e67425d16339772e8d328fb36a49426c9467418686e11beeb71ff84b0f6433",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.164558
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.defeat"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 62.648199999999996,
+      "master": "masters/coverage-events/v2.battle.defeat.3.wav",
+      "masterSha256": "5659019b1c85c0856c797e21070ed25ba13a83bf6829fe922318003123543833",
+      "opus": "masters/coverage-events/v2.battle.defeat.3.opus",
+      "opusSha256": "a82add371e57ec292fae8f31756a8e95cb81813aa84d7c9e97973c5bbf56162e",
+      "previewSha256": "829923cacff4f6f9c50300debc855d41d14c6ef37d09e2e130f6e69acfcfa4ab",
+      "previewBytes": 27436,
+      "previewUrl": "/__cf-audio-review/v2.battle.defeat.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.2,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.battle.resolve.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.4098,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/063564703b6094d7-confirmation_001.ogg",
+          "sha256": "063564703b6094d70718a3e787a55cc9141611e4ecd6b6637f8828f79b4a8c3a",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.289841
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.resolve"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 63.93279999999999,
+      "master": "masters/coverage-events/v2.battle.resolve.1.wav",
+      "masterSha256": "c379ae2205ce4180d30a1de3354f0d6d0db62b8a9853eb84f0f9e9821d670256",
+      "opus": "masters/coverage-events/v2.battle.resolve.1.opus",
+      "opusSha256": "a19b9c79e92cbc3d0fea2feb50762b156ca1b1936989e42c6766690472c25f66",
+      "previewSha256": "ce4d53eb3ae0b02f513df2200afb985481e90ef828e0f34df0baa2c3cbd19c7f",
+      "previewBytes": 39454,
+      "previewUrl": "/__cf-audio-review/v2.battle.resolve.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.4,
+      "opusDbTP": -12.4
+    },
+    {
+      "id": "v2.battle.resolve.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.442,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/3091bf0be0497f82-confirmation_003.ogg",
+          "sha256": "3091bf0be0497f825769ee0733ca7bdc3bcd59bd6c6e8f2ba8f93d580ff38022",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.322018
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.resolve"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 65.34259999999999,
+      "master": "masters/coverage-events/v2.battle.resolve.2.wav",
+      "masterSha256": "e948f6f0a0d57ae05b8f46bc7c271da69d4afcfe47c339a4b7e1db53f2d61a73",
+      "opus": "masters/coverage-events/v2.battle.resolve.2.opus",
+      "opusSha256": "264d2d6c9d59528794b40f23c6f2eaea410ba3a2acbd8bd2a629894a5ac7d362",
+      "previewSha256": "2f189211bd607bd3b92947c52f58870a3d15fe3dea7c5bb3362fb63dbac1dfd7",
+      "previewBytes": 42546,
+      "previewUrl": "/__cf-audio-review/v2.battle.resolve.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.7,
+      "opusDbTP": -12.7
+    },
+    {
+      "id": "v2.battle.resolve.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.659,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/33b17a9a9a2397c6-confirmation_002.ogg",
+          "sha256": "33b17a9a9a2397c62b285c52c33a907fdffb476909c99e42dde603f6a7a8b12c",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.539002
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.resolve"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 66.78459999999998,
+      "master": "masters/coverage-events/v2.battle.resolve.3.wav",
+      "masterSha256": "fc8d9f9334ee8ebbd72c3d6af99ea35e970d6c23eac67ded43973ae6466b83f5",
+      "opus": "masters/coverage-events/v2.battle.resolve.3.opus",
+      "opusSha256": "0bafb4387193ef65d958c5fb79472357f4442c7d64ecaa5bc24cd0a70ddd3785",
+      "previewSha256": "0bc2ca57f0d4522960f67cc726747efb0c600a73aa286f72012c02e07d747307",
+      "previewBytes": 63378,
+      "previewUrl": "/__cf-audio-review/v2.battle.resolve.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.6,
+      "opusDbTP": -12.5
+    },
+    {
+      "id": "v2.battle.victory.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.6561,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_jingles/017e600a154f5040-jingles_PIZZI05.ogg",
+          "sha256": "017e600a154f504039b302b4848a5ad5870248280b4320b037f1d82324988bf5",
+          "sourceId": "kenney_jingles",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.536122
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.victory"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 68.44359999999999,
+      "master": "masters/coverage-events/v2.battle.victory.1.wav",
+      "masterSha256": "ffad793d8199ff8fd2febc42b3d35302228d10e82be33133b4c51759372d612d",
+      "opus": "masters/coverage-events/v2.battle.victory.1.opus",
+      "opusSha256": "264b833708cb42dfabf6998a42769981902cda76ac68e2eb1cd255f9f90a00ab",
+      "previewSha256": "5a6fe3b6b5adc1b9758f9402742c45fd7501c03b1fe93e7c0d54ce459bc7be85",
+      "previewBytes": 63100,
+      "previewUrl": "/__cf-audio-review/v2.battle.victory.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.6,
+      "opusDbTP": -16.6
+    },
+    {
+      "id": "v2.battle.victory.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 1.0289,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_jingles/03f2048dc74dae10-jingles_STEEL16.ogg",
+          "sha256": "03f2048dc74dae100bc29b8cd59b4497ac7a057dae32c207916495c5dc214083",
+          "sourceId": "kenney_jingles",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.908912
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.victory"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 70.09969999999998,
+      "master": "masters/coverage-events/v2.battle.victory.2.wav",
+      "masterSha256": "8649b348bfb53949a44312b6374bcddd6aa48c95d2d8fe935aaddd07830d645e",
+      "opus": "masters/coverage-events/v2.battle.victory.2.opus",
+      "opusSha256": "b8f929705f5eff9ea43284ef916f4711ae953040ba280939491adc3b2788f429",
+      "previewSha256": "0aeb6e4ba64c886ae4681fbb308c491162ce51de7e0c170af925a215f775a664",
+      "previewBytes": 98888,
+      "previewUrl": "/__cf-audio-review/v2.battle.victory.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.6
+    },
+    {
+      "id": "v2.battle.victory.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.8658,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_jingles/05bad8a2e9e557f7-jingles_SAX14.ogg",
+          "sha256": "05bad8a2e9e557f73dcc947f7d8b525d25d0346be75965e0611bc47fcbf2aa0f",
+          "sourceId": "kenney_jingles",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.74576
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "battle-role.victory"
+      ],
+      "notes": "Role-specific settled battle cue candidate.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 72.12859999999998,
+      "master": "masters/coverage-events/v2.battle.victory.3.wav",
+      "masterSha256": "74e76025a409627bb7fdee615a7a9458a15eba908f4da5bed0bf8cfdac0deb4b",
+      "opus": "masters/coverage-events/v2.battle.victory.3.opus",
+      "opusSha256": "9333c4be8e9e553783a8ef4effa8205c6a3788f9dd67a60b7f85da1ec184477a",
+      "previewSha256": "fc1872e6a0d112cdcc77477dee73745594a2a040a34801de30985bdd8f0306c7",
+      "previewBytes": 83230,
+      "previewUrl": "/__cf-audio-review/v2.battle.victory.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.9,
+      "opusDbTP": -20.9
+    },
+    {
+      "id": "v2.ui.scan.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/1527944e16eb14b4-computerNoise_000.ogg",
+          "sha256": "1527944e16eb14b48ee03fe3e7ce6aae94262833a4e1f83928d451a7414fe4e1",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 5.0
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.scan"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 73.99439999999998,
+      "master": "masters/coverage-events/v2.ui.scan.1.wav",
+      "masterSha256": "69dddcce38a0461d1aef314a2ae5c0856196abfda2566f7ba65cd628784f3b87",
+      "opus": "masters/coverage-events/v2.ui.scan.1.opus",
+      "opusSha256": "9f5014d6c4c2c110c4dd54f8f2c67236a8205009f44b481c811c0084c88320e7",
+      "previewSha256": "9ac3708034bbad42a0c6800a0e41dff59bee06824a8bb7a2ac372d6244d646ad",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.ui.scan.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.1
+    },
+    {
+      "id": "v2.ui.scan.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/29b4842f6d8c0ba2-computerNoise_001.ogg",
+          "sha256": "29b4842f6d8c0ba2b0cb00bfaff3b852b492bb43197a82e697917aacbe106757",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 5.0
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.scan"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 77.99439999999998,
+      "master": "masters/coverage-events/v2.ui.scan.2.wav",
+      "masterSha256": "d8a4790c0eb9272929866eddbe33510349039f5326257e16d39fc087d572fc81",
+      "opus": "masters/coverage-events/v2.ui.scan.2.opus",
+      "opusSha256": "f58092451af9f1cdbc5c013a9c69a74fc65db9af5918fba2908c09ed4a472607",
+      "previewSha256": "0863c1bfac717989870e48803c132a2094065ef1651012096087ae6ae5e7b2b0",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.ui.scan.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.ui.scan.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/5b1b73bbe6e6ad1b-computerNoise_003.ogg",
+          "sha256": "5b1b73bbe6e6ad1b1d39422f640f1bbee3376e8e18916f9305b04b9d143f5cf3",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 5.0
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.scan"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 81.99439999999998,
+      "master": "masters/coverage-events/v2.ui.scan.3.wav",
+      "masterSha256": "0a9a0f481830a3e0af9e4c69ca290db92e77c001a2d94a8120d9f79d12053afe",
+      "opus": "masters/coverage-events/v2.ui.scan.3.opus",
+      "opusSha256": "8babdc5fcbc6f72eca85713840be28b3f59e68191edc5762e2f45808d3a591f0",
+      "previewSha256": "7f43f548945eb4f673370821d852c454f3c7637ffd792372dd26929e9d60c07c",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.ui.scan.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.2
+    },
+    {
+      "id": "v2.ui.discovery.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.4098,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/063564703b6094d7-confirmation_001.ogg",
+          "sha256": "063564703b6094d70718a3e787a55cc9141611e4ecd6b6637f8828f79b4a8c3a",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.289841
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.discovery"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 85.99439999999998,
+      "master": "masters/coverage-events/v2.ui.discovery.1.wav",
+      "masterSha256": "1d6025b636570136f14e0bcfa06cd936405b66176463633fe1743ec4dcc1dcaa",
+      "opus": "masters/coverage-events/v2.ui.discovery.1.opus",
+      "opusSha256": "fb946780ea9979b8d0c7402036bd5e06ee743e1454f31e68d5a26cebb5f2b8d4",
+      "previewSha256": "f0d271335f67b9fd9f954cd00142017efa688c219c7a8bcfefd3659664976cb5",
+      "previewBytes": 39454,
+      "previewUrl": "/__cf-audio-review/v2.ui.discovery.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.4,
+      "opusDbTP": -12.4
+    },
+    {
+      "id": "v2.ui.discovery.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.442,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/3091bf0be0497f82-confirmation_003.ogg",
+          "sha256": "3091bf0be0497f825769ee0733ca7bdc3bcd59bd6c6e8f2ba8f93d580ff38022",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.322018
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.discovery"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 87.40419999999999,
+      "master": "masters/coverage-events/v2.ui.discovery.2.wav",
+      "masterSha256": "0ee518670aadc57f3c6523d2666e483aa4bce081a175670cdc4522ca783b3f09",
+      "opus": "masters/coverage-events/v2.ui.discovery.2.opus",
+      "opusSha256": "347f801eab29b36a6e3f4e701c3c0c3d0838ed6d8556445e0c6cd5a14a51bdad",
+      "previewSha256": "081254481ef77ee8fba1b803da608c5ed6f8332b6df20227da169d22864b5909",
+      "previewBytes": 42546,
+      "previewUrl": "/__cf-audio-review/v2.ui.discovery.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.7,
+      "opusDbTP": -12.7
+    },
+    {
+      "id": "v2.ui.discovery.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.659,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/33b17a9a9a2397c6-confirmation_002.ogg",
+          "sha256": "33b17a9a9a2397c62b285c52c33a907fdffb476909c99e42dde603f6a7a8b12c",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.539002
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.discovery"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 88.84619999999998,
+      "master": "masters/coverage-events/v2.ui.discovery.3.wav",
+      "masterSha256": "31b1addace0efe1147df84bf44b9899945aeefcb8aec7c3aec85b5f3891c5cb3",
+      "opus": "masters/coverage-events/v2.ui.discovery.3.opus",
+      "opusSha256": "64cd7a13d65a16e15a51c4547d34625fc1e6d4b4f1ca305e6d5bd64fe11950e4",
+      "previewSha256": "4cfef73d8cf6fe9615ff7090b4804d4ba405ef89a4f3e508a1bb33cd15e9df05",
+      "previewBytes": 63378,
+      "previewUrl": "/__cf-audio-review/v2.ui.discovery.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.6,
+      "opusDbTP": -12.5
+    },
+    {
+      "id": "v2.ui.rarity.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.6561,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_jingles/017e600a154f5040-jingles_PIZZI05.ogg",
+          "sha256": "017e600a154f504039b302b4848a5ad5870248280b4320b037f1d82324988bf5",
+          "sourceId": "kenney_jingles",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.536122
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.rarity"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 90.50519999999999,
+      "master": "masters/coverage-events/v2.ui.rarity.1.wav",
+      "masterSha256": "63a15189aebd199109878f2ee9ead5ed8b65d09e70445f6b59361b3590cff1d5",
+      "opus": "masters/coverage-events/v2.ui.rarity.1.opus",
+      "opusSha256": "4bf40d0cddb6457d3540dad039c250c4966278c270cab1a8e516310097093692",
+      "previewSha256": "490513756a3f95b0bfc2e07e5ed341a9f01e3cc90c0430a3d9f6d147574ef072",
+      "previewBytes": 63100,
+      "previewUrl": "/__cf-audio-review/v2.ui.rarity.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.6,
+      "opusDbTP": -16.6
+    },
+    {
+      "id": "v2.ui.rarity.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 1.0289,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_jingles/03f2048dc74dae10-jingles_STEEL16.ogg",
+          "sha256": "03f2048dc74dae100bc29b8cd59b4497ac7a057dae32c207916495c5dc214083",
+          "sourceId": "kenney_jingles",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.908912
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.rarity"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 92.16129999999998,
+      "master": "masters/coverage-events/v2.ui.rarity.2.wav",
+      "masterSha256": "444ccbb544a843a2872b1f01ebcd3c65735921c9df4ee0ecfa1f52506079ed05",
+      "opus": "masters/coverage-events/v2.ui.rarity.2.opus",
+      "opusSha256": "fb291cd940bed1cab619fad17d37b8cf25fcd3f54032cc4bf6d90c52ced6e2cf",
+      "previewSha256": "3f832912455318b362053260396090243664a96478dc4b5697a616dc58e0e099",
+      "previewBytes": 98888,
+      "previewUrl": "/__cf-audio-review/v2.ui.rarity.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.6
+    },
+    {
+      "id": "v2.ui.rarity.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.8658,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_jingles/05bad8a2e9e557f7-jingles_SAX14.ogg",
+          "sha256": "05bad8a2e9e557f73dcc947f7d8b525d25d0346be75965e0611bc47fcbf2aa0f",
+          "sourceId": "kenney_jingles",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.74576
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.rarity"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 94.19019999999998,
+      "master": "masters/coverage-events/v2.ui.rarity.3.wav",
+      "masterSha256": "74e76025a409627bb7fdee615a7a9458a15eba908f4da5bed0bf8cfdac0deb4b",
+      "opus": "masters/coverage-events/v2.ui.rarity.3.opus",
+      "opusSha256": "15496e2ae6fdeb7868066627e961d2261eafe93d7a7e4015e9c6d010e534e9dd",
+      "previewSha256": "fc1872e6a0d112cdcc77477dee73745594a2a040a34801de30985bdd8f0306c7",
+      "previewBytes": 83230,
+      "previewUrl": "/__cf-audio-review/v2.ui.rarity.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.9,
+      "opusDbTP": -20.9
+    },
+    {
+      "id": "v2.ui.inventory.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.4338,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/24ff224fe2c09c6a-open_002.ogg",
+          "sha256": "24ff224fe2c09c6aed1b41249825382dc74cf324b887ff279d8494912ce2beee",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313787
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.inventory"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 96.05599999999998,
+      "master": "masters/coverage-events/v2.ui.inventory.1.wav",
+      "masterSha256": "7f8316564257a888faf6651a5588c5c1bb98e1286298142a2a4c285a7deedaa2",
+      "opus": "masters/coverage-events/v2.ui.inventory.1.opus",
+      "opusSha256": "f1f4845716ee2b55a306bff834c65c23c0a028845e0f6ced134e7f6babbb0dc6",
+      "previewSha256": "956c3eee4bb7357c848c61af2206dfdd0edd97628f130635e3fe77e149e207dd",
+      "previewBytes": 41758,
+      "previewUrl": "/__cf-audio-review/v2.ui.inventory.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.0,
+      "opusDbTP": -14.3
+    },
+    {
+      "id": "v2.ui.inventory.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.4429,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/4e02b8287bc4d9e7-open_004.ogg",
+          "sha256": "4e02b8287bc4d9e7bf7a889cb9e48613c8eb22a310dfb0bf29c2bfd0a1e4bea5",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.32288
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.inventory"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 97.48979999999999,
+      "master": "masters/coverage-events/v2.ui.inventory.2.wav",
+      "masterSha256": "bcba60612f6d22965b74e78e9f0816dd716bb51718d9a918b3e727b823721b09",
+      "opus": "masters/coverage-events/v2.ui.inventory.2.opus",
+      "opusSha256": "4186e0a3dcf6536f344204cc53408941c9b7a0840f5ea91f36eac912c2fc5366",
+      "previewSha256": "e41aba8cf9f6fe11416949ebd3c33b2b727d0e125ca463c07f386fe7ff79db5a",
+      "previewBytes": 42632,
+      "previewUrl": "/__cf-audio-review/v2.ui.inventory.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.3,
+      "opusDbTP": -12.5
+    },
+    {
+      "id": "v2.ui.inventory.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.2678,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/a27c6bb0df7da1e6-open_001.ogg",
+          "sha256": "a27c6bb0df7da1e6af5dd5937593c98bc58b6e513f42fe6a3254cd6a6949c648",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.147778
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.inventory"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 98.93269999999998,
+      "master": "masters/coverage-events/v2.ui.inventory.3.wav",
+      "masterSha256": "d15d1ff6f86d0233d33cacf838422aeeb70c0a39360fd1e9e0d8cf9e9109e3af",
+      "opus": "masters/coverage-events/v2.ui.inventory.3.opus",
+      "opusSha256": "b6bfacee11ccf39bc82273000d796e4018b31f0e4c3c6a3e1d1c959f58d23e16",
+      "previewSha256": "b03b791812fce8b299668af6ce837e800c1408339bdad44096fdf5fbfd9cc03c",
+      "previewBytes": 25822,
+      "previewUrl": "/__cf-audio-review/v2.ui.inventory.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.1,
+      "opusDbTP": -14.6
+    },
+    {
+      "id": "v2.ui.harvest.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.4527,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.harvest"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 100.20049999999998,
+      "master": "masters/coverage-events/v2.ui.harvest.1.wav",
+      "masterSha256": "8f264d360251f1b4d14f61d4f98f17fb04f4218957a1104c9b09cd3687aa5fdb",
+      "opus": "masters/coverage-events/v2.ui.harvest.1.opus",
+      "opusSha256": "d43866edc85ab9a02551d309d0397d6ec78cb9905f2de855a067731cbbd9e607",
+      "previewSha256": "a81857b1f92e198f7b015f2eb04cfcadd51aee18a2b0148494707b34b440400a",
+      "previewBytes": 43574,
+      "previewUrl": "/__cf-audio-review/v2.ui.harvest.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.9,
+      "opusDbTP": -17.0
+    },
+    {
+      "id": "v2.ui.harvest.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.433,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15ff82332f342c30-impactWood_heavy_000.ogg",
+          "sha256": "15ff82332f342c30e469215539e1cc57e11b221aa2cf7e11e811d313a9927f3d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.313039
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.harvest"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 101.65319999999997,
+      "master": "masters/coverage-events/v2.ui.harvest.2.wav",
+      "masterSha256": "4e1bda2e0ef8e80cb962840ef0937378bc88c02185b9ee610a3b78ff898f3f3d",
+      "opus": "masters/coverage-events/v2.ui.harvest.2.opus",
+      "opusSha256": "d72ce46a7581fd3e003f22a6e935378566f687655a889ae8d3773fb4a05373c9",
+      "previewSha256": "ca1c7e246492d79dcd6a6bbd8a294ff0cb600c7fe34ba7a87be1d5a57448f86b",
+      "previewBytes": 41682,
+      "previewUrl": "/__cf-audio-review/v2.ui.harvest.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.8
+    },
+    {
+      "id": "v2.ui.harvest.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.4527,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.harvest"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 103.08619999999998,
+      "master": "masters/coverage-events/v2.ui.harvest.3.wav",
+      "masterSha256": "285af9a62e868edff624359ac4934ade70d79c8bf20067925024f80a4c9c6dff",
+      "opus": "masters/coverage-events/v2.ui.harvest.3.opus",
+      "opusSha256": "e7fe799f20a72e05a8e831bdf6b6f84d8cf6b4e91133c96823cb45bae49e20c7",
+      "previewSha256": "6d5542d5521c55949a17e77daeaae87efbd27f41c439b0fdc947982b05be9983",
+      "previewBytes": 43574,
+      "previewUrl": "/__cf-audio-review/v2.ui.harvest.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.1
+    },
+    {
+      "id": "v2.ui.travel.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/009ef3beadec605a-spaceEngineSmall_004.ogg",
+          "sha256": "009ef3beadec605ab0e60cd64c73b6ca42590058e8491e72b4bc813ba0e3ab57",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 5.0
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.travel"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 104.53889999999998,
+      "master": "masters/coverage-events/v2.ui.travel.1.wav",
+      "masterSha256": "db51ca673a5f0ddb6fac2115160c8120f38e31f51ce3256a59599c58ca798472",
+      "opus": "masters/coverage-events/v2.ui.travel.1.opus",
+      "opusSha256": "48cf8b1d30824cccfd3f63b0ecfeb8feb248998225950f93bd148ddff04f215a",
+      "previewSha256": "85a95d410cfe47ef002c3094ca93eeb7e56609526bf92b9ee7057fde725127b9",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.ui.travel.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.3,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.ui.travel.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/2bec8ff75d81f0c3-spaceEngineSmall_000.ogg",
+          "sha256": "2bec8ff75d81f0c37a6b78bd63beea6c70375e49ee30b0bbe7f38d654d576831",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 5.0
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.travel"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 108.53889999999998,
+      "master": "masters/coverage-events/v2.ui.travel.2.wav",
+      "masterSha256": "ba4e9d8f717878af33e7c9d9f02d69f8c1d28be823210d1df08b9264504fe6c0",
+      "opus": "masters/coverage-events/v2.ui.travel.2.opus",
+      "opusSha256": "a7ad71fdd95212a86cf80686806ae92e052523fdf7cc746e2a1fe69032b5b610",
+      "previewSha256": "d0d7b1841c9600a3d1ffa679407ac7f304f1ce63d6d34ffc8b9a92c89a90b235",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.ui.travel.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v2.ui.travel.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 3,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/3d7da67ca2d24ca2-spaceEngineSmall_002.ogg",
+          "sha256": "3d7da67ca2d24ca2abd1e257556d74ff28cf152402968c2035d6f1ea92517f25",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 5.0
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.travel"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 112.53889999999998,
+      "master": "masters/coverage-events/v2.ui.travel.3.wav",
+      "masterSha256": "3df026cb8883df7b5ca541aa0024e10167353f7b13d73540f606466be71a4027",
+      "opus": "masters/coverage-events/v2.ui.travel.3.opus",
+      "opusSha256": "edb117868b48a66f59763b5b50e318eed0cd06553dc5d1e123ee790ca235036b",
+      "previewSha256": "c83aacef93d5e1bc7e1742975568b861f762cd932c215110dcb012ddfb9bae6e",
+      "previewBytes": 288114,
+      "previewUrl": "/__cf-audio-review/v2.ui.travel.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.1,
+      "opusDbTP": -12.1
+    },
+    {
+      "id": "v2.ui.save.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.4098,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/063564703b6094d7-confirmation_001.ogg",
+          "sha256": "063564703b6094d70718a3e787a55cc9141611e4ecd6b6637f8828f79b4a8c3a",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.289841
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.save"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 116.53889999999998,
+      "master": "masters/coverage-events/v2.ui.save.1.wav",
+      "masterSha256": "1d6025b636570136f14e0bcfa06cd936405b66176463633fe1743ec4dcc1dcaa",
+      "opus": "masters/coverage-events/v2.ui.save.1.opus",
+      "opusSha256": "0dca906d8e529ddf0ff19b052a6b6ca1b408d31faae93c977d157b6d5b6c192a",
+      "previewSha256": "f0d271335f67b9fd9f954cd00142017efa688c219c7a8bcfefd3659664976cb5",
+      "previewBytes": 39454,
+      "previewUrl": "/__cf-audio-review/v2.ui.save.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.4,
+      "opusDbTP": -12.4
+    },
+    {
+      "id": "v2.ui.save.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.442,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/3091bf0be0497f82-confirmation_003.ogg",
+          "sha256": "3091bf0be0497f825769ee0733ca7bdc3bcd59bd6c6e8f2ba8f93d580ff38022",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.322018
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.save"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 117.94869999999999,
+      "master": "masters/coverage-events/v2.ui.save.2.wav",
+      "masterSha256": "0ee518670aadc57f3c6523d2666e483aa4bce081a175670cdc4522ca783b3f09",
+      "opus": "masters/coverage-events/v2.ui.save.2.opus",
+      "opusSha256": "73128bdaebac3559e982363fa867e07606b92fb8089040158657720f99055076",
+      "previewSha256": "081254481ef77ee8fba1b803da608c5ed6f8332b6df20227da169d22864b5909",
+      "previewBytes": 42546,
+      "previewUrl": "/__cf-audio-review/v2.ui.save.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.7,
+      "opusDbTP": -12.7
+    },
+    {
+      "id": "v2.ui.save.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.659,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/33b17a9a9a2397c6-confirmation_002.ogg",
+          "sha256": "33b17a9a9a2397c62b285c52c33a907fdffb476909c99e42dde603f6a7a8b12c",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.539002
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.save"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 119.39069999999998,
+      "master": "masters/coverage-events/v2.ui.save.3.wav",
+      "masterSha256": "31b1addace0efe1147df84bf44b9899945aeefcb8aec7c3aec85b5f3891c5cb3",
+      "opus": "masters/coverage-events/v2.ui.save.3.opus",
+      "opusSha256": "043ec095545bbc0ec43b8470c1aa5c25e1523625cbe57b36ffb6466b1f828a50",
+      "previewSha256": "4cfef73d8cf6fe9615ff7090b4804d4ba405ef89a4f3e508a1bb33cd15e9df05",
+      "previewBytes": 63378,
+      "previewUrl": "/__cf-audio-review/v2.ui.save.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.6,
+      "opusDbTP": -12.5
+    },
+    {
+      "id": "v2.ui.notification.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.1633,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/4cc6ac5341b9b2c8-select_002.ogg",
+          "sha256": "4cc6ac5341b9b2c86fef80c347de028e9ab9f2e037586ac7d9fa59a403a1c012",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.043288
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.notification"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 121.04969999999999,
+      "master": "masters/coverage-events/v2.ui.notification.1.wav",
+      "masterSha256": "69a7326660208b74b2f6a0ddefe688bccdc2ec3cdb669e258d5097903178679c",
+      "opus": "masters/coverage-events/v2.ui.notification.1.opus",
+      "opusSha256": "33cb600d702dbc9982a203c08ba8c7a24c0d75974de501bbcbf0273254e4ec47",
+      "previewSha256": "2c2c160308bfc9924803cdb614c5227df8be64d551dc72b909ba47283e2b8c13",
+      "previewBytes": 15790,
+      "previewUrl": "/__cf-audio-review/v2.ui.notification.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.7,
+      "opusDbTP": -14.6
+    },
+    {
+      "id": "v2.ui.notification.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.5028,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/9a612fd2f513d52a-select_003.ogg",
+          "sha256": "9a612fd2f513d52a296906b41071c990f75defe56be3bee60d2d4e2423b51b8b",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.382766
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.notification"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 122.213,
+      "master": "masters/coverage-events/v2.ui.notification.2.wav",
+      "masterSha256": "dde147483c01c5e007ebd6436173e0e43e7c6c3e627815c2e187854c7200ab04",
+      "opus": "masters/coverage-events/v2.ui.notification.2.opus",
+      "opusSha256": "1c43799099bb9ade6bf4efe1aa94958eef97fe35a7f55b71a53a9a0233ff030e",
+      "previewSha256": "8e30749c68b8b909fccd471bffba144127ce7748d47ffb667c691c2fe9bc2d59",
+      "previewBytes": 48382,
+      "previewUrl": "/__cf-audio-review/v2.ui.notification.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.9,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.ui.notification.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.5028,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_interface/ad09146e4ea33b93-select_005.ogg",
+          "sha256": "ad09146e4ea33b931b2f5dfb4051a4f1fe4a36f1a48c42c5e9269c292ae21214",
+          "sourceId": "kenney_interface",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.382766
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.notification"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 123.71579999999999,
+      "master": "masters/coverage-events/v2.ui.notification.3.wav",
+      "masterSha256": "2c04b2cb946237dc133aa5f9160a19c1b34d5b96490f273d34fecf8908db7706",
+      "opus": "masters/coverage-events/v2.ui.notification.3.opus",
+      "opusSha256": "e995ff17f762b88ad834d9c31ffaa450ab9bc43a49f234024dca42ca13cfc568",
+      "previewSha256": "6db84e959e6508f5acfb996610f1d42967fac24554bdcc9a3b5db5818c7edae8",
+      "previewBytes": 48382,
+      "previewUrl": "/__cf-audio-review/v2.ui.notification.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.4,
+      "opusDbTP": -12.2
+    },
+    {
+      "id": "v2.ui.reward.1",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 1.7298,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/122b633be3e61f35-item_coins_04.ogg",
+          "sha256": "122b633be3e61f35363b28e7ca5f11257d9d7f2759547ba1441cf541a3e5792b",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 1.60975
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.reward"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 125.21859999999998,
+      "master": "masters/coverage-events/v2.ui.reward.1.wav",
+      "masterSha256": "64a4b2932756c336a29d7e651ff1d3321c306fa1099dc566f7fcc5106fa7c3a4",
+      "opus": "masters/coverage-events/v2.ui.reward.1.opus",
+      "opusSha256": "a0095a2c1d53eec3c5081d1a2a99d0f4f93b16f14fc6e5d7d6a461cf4099ca2a",
+      "previewSha256": "6b484e4dd1a793b5c16c9cd4570501f9b94650d057aaa028ec1850457afa16c1",
+      "previewBytes": 166174,
+      "previewUrl": "/__cf-audio-review/v2.ui.reward.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.9
+    },
+    {
+      "id": "v2.ui.reward.2",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.5263,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/4e701b281a4f8876-item_coins_01.ogg",
+          "sha256": "4e701b281a4f88768beccbe87af4574d13ac5a4bc5cab6c522f0e79823d6e428",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.406333
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.reward"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 127.94839999999998,
+      "master": "masters/coverage-events/v2.ui.reward.2.wav",
+      "masterSha256": "291b4315d6f822d10cfcbe6d1df4c53a5704566b1eb441c57522e0331e9334ea",
+      "opus": "masters/coverage-events/v2.ui.reward.2.opus",
+      "opusSha256": "86c08c5f29e7c580609890edee127068e67472e384ca0617be274d81fc6b68ec",
+      "previewSha256": "b25a91bfd18a63920a2bdb8b4c71b15db00c5b19f639598516ca53d3f613e2b6",
+      "previewBytes": 50638,
+      "previewUrl": "/__cf-audio-review/v2.ui.reward.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.6,
+      "opusDbTP": -10.6
+    },
+    {
+      "id": "v2.ui.reward.3",
+      "group": "coverage-events",
+      "kind": "designed",
+      "duration": 0.736,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/c1124868c928ef06-item_coins_02.ogg",
+          "sha256": "c1124868c928ef06e9b95fd9bd314eb3aa9a2869cbfde7f5aadcc341fe3edca0",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.615979
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ui.reward"
+      ],
+      "notes": "Contextual UI candidate; not a new gameplay event.",
+      "synthProfile": null,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 129.47469999999998,
+      "master": "masters/coverage-events/v2.ui.reward.3.wav",
+      "masterSha256": "883f5bdf8746f2dd59f061620949f9008d8ff7160844d7bc0b9da1b0f1599cd9",
+      "opus": "masters/coverage-events/v2.ui.reward.3.opus",
+      "opusSha256": "65bf789ba5a02dfe22a28ddf3b24dd62b921ee32bbbf9a72247b33f05507e33c",
+      "previewSha256": "b07c1efcd44d06a55e66233bb9b24cac4de0f2d56c63443d95a00cb88b9911ea",
+      "previewBytes": 70770,
+      "previewUrl": "/__cf-audio-review/v2.ui.reward.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    }
+  ],
+  "listeningAccepted": false
+}

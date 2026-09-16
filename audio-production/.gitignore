@@ -1,0 +1,10 @@
+# Original acquisitions and generated audio stay local; ledgers/scripts are versioned.
+source-archives/
+source-audio/
+quarantine/
+masters/
+reaper/
+audition/
+review-packs/
+license-evidence/
+manifests/download-cache.json

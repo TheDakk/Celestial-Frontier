@@ -1,0 +1,11 @@
+{
+  "operation": "git commit -S -F /private/tmp/cf-audio-coverage-commit.txt",
+  "exit": 128,
+  "error": "1Password: agent returned an error; failed to write commit object",
+  "head": "b95c4dc03259dc85f1e345a60e241c01154da069",
+  "aheadUpstream": 115,
+  "aheadCachedDevelop": 226,
+  "unsignedFallback": false,
+  "githubWrites": 0,
+  "result": "staged locally, not committed"
+}

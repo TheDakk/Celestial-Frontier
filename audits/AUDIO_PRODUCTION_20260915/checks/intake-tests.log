@@ -1,0 +1,24 @@
+✔ arena intake binds full compiler card, context, ground, dimensions and keyed copies; mutations refuse (417.912166ms)
+✔ closed twelve-at-a-time inventory retains original bytes and refuses missing, duplicate, reordered and stale inputs (81.694792ms)
+✔ real codec export is deterministic, preserves decoded duration and source bytes, and measures both peaks (296.430875ms)
+✔ sample-safe intersample clipping is rejected by real true-peak measurement (46.64425ms)
+✔ missing metrics, false encoded peak, wrong channels, duration and unsupported profiles refuse (3.30175ms)
+✔ complete voice export preserves source hashes and refuses existing output or changed manifest before publication (2978.471667ms)
+✔ theme, battle and overlapped bed exports preserve source/sidecar bytes and fit exact budgets (6028.231333ms)
+✔ loop derivative joins the exact declared samples, preserves channels and source; seed changes phase only (8.296416ms)
+✔ odd mono PCM frame count retains RIFF padding; the old unpadded output refuses (0.6755ms)
+✔ WAV intake refuses malformed, silent, clipped and wrong-format masters (1.333ms)
+✔ 24-bit extensible PCM is equivalent; float subtype, layout and reduced precision refuse (0.733334ms)
+✔ runtime minimum admits large masters without resampling and refuses undersize or corrupt PNG (81.71875ms)
+✔ voice inventory, rights, dry source and hashes fail closed; source bytes stay unchanged (3.465458ms)
+✔ all closed ability/battle inventories pass; missing, extra, renamed, wet and unlicensed cues refuse (24.527375ms)
+✔ bed inventory binds a stereo source and exact loop sidecar; malformed or stale loops refuse (74.216708ms)
+✔ loop discontinuity is measured per channel without claiming it is inaudible (0.121583ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9486.176875

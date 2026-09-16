@@ -1,0 +1,200 @@
+[
+  {
+    "sourceId": "kenney_scifi",
+    "url": "https://kenney.nl/media/pages/assets/sci-fi-sounds/6b296f9ecf-1677589334/kenney_sci-fi-sounds.zip",
+    "reason": "Archive member not extracted (unsupported/non-audio): Audio/desktop.ini",
+    "status": "excluded_non_audio",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Housekeeping sidecar is not sound coverage; intentionally not extracted."
+  },
+  {
+    "sourceId": "nps_yellowstone",
+    "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-nutcracker.htm",
+    "reason": "No official audio source element on detail page",
+    "status": "unresolved",
+    "retry": "explicit future fetch; no access bypass"
+  },
+  {
+    "sourceId": "nps_yellowstone",
+    "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-mountainlion.htm",
+    "reason": "No official audio source element on detail page",
+    "status": "unresolved",
+    "retry": "explicit future fetch; no access bypass"
+  },
+  {
+    "sourceId": "nps_natural_sounds",
+    "url": "https://www.nps.gov/subjects/sound/singing-sands.htm",
+    "reason": "No official audio source element on detail page",
+    "status": "unresolved",
+    "retry": "explicit future fetch; no access bypass"
+  },
+  {
+    "sourceId": "oga_foley",
+    "url": "https://opengameart.org/sites/default/files/Owlish%20Media%20Sound%20Effects.zip",
+    "reason": "Archive member not extracted (unsupported/non-audio): Cloth, Rustle/320137__owlstorm__blanket-movement-1.pkf",
+    "status": "excluded_non_audio",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Housekeeping sidecar is not sound coverage; intentionally not extracted."
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "43577",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "75112ea4975c6f015c0ee0d8f58b4f5a806a8f868f5d6207002fb80b7c5726ad"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "410834",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "938c353fdb8774aa9ecd90adf017e19369273f9e2d0963b286d57dcfa1877d55",
+      "d51ca1c2712ec1e473d8b8c4ccd6e3d546794be05e01a420f7ed9ebe7b6f83de"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "339907",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "4890f6da06135c9c8872c1499904a5d81cb2e85be471b8fc5c0484ee471c2f86",
+      "4728cf76d58c91355403c76287b260c67339e2a248abe0fb5106d2a24de3f962"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "43459",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "08f100ee0fa62f62683b1b02197e8bb8ea33f61bc95a3e4a8b244921efd0b5b3"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "851014",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "ec20e60213673be366be54c7c1b979db9b1318076432f500c28a32aac98f40e7",
+      "49558e8e80b10946b50ef45622f48fc976a6809ed9a08f502f2888f2beac2bdb"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "41964",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "8039e7fc3eda3c92a4dd3076792c1f59c6157930c918e9a42f1b3ac046adb4b7"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "43335",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "8a21c52a22e822e6289b1bb354b0f669cd8b55945bccb7d7be5b7c53971ba9cb"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "41976",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "9771b3fed2645005b8081d0ab6308429cd7b25a47a9a80247c58a2d461ae4b39"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "9083",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "4144fac9e0b0d0901e18581c79b86b671e8f91264cca5cae35923fb2d692b0a9",
+      "c8d333fe1e67222c0a2a8a33f163d2ec69c776b28e1f97f40f877ff5e9059d1e"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "30746",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "7e905d47c11d6d530d6efee5b38b4db929861d6192ea6d27171342c5835d5b1c",
+      "df842971c2e54cbcadd9202b3ec0e35fc409868dc8b2158aa6b2c809283b4223"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "4144",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "0aec0c74f10091aaea529b802487c7fca1c9b67a0b662713bd132edd5eab3f03",
+      "fff6eab17f746a0845b4e59d6a7ce77940dd8093bade62a10282d2598b1df37a"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "4134",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "459a6cbbf9f0ce73f8fd60e43fd8fd3d72b4d65bc3175eeddaadbe0234f3639d",
+      "3acfc33479f9e18ab6b50d580309f7e51737c571dce57b9bf6a84fc9ee7d677e"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "43617",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "88eaa910fba4165624b9b56d4c5f2d38493e50e128c93cd3f1ae114fe2e61ad5"
+    ]
+  },
+  {
+    "sourceId": "inat_cc0",
+    "url": "883485",
+    "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+    "status": "resolved",
+    "retry": "explicit future fetch; no access bypass",
+    "resolution": "Public CC0 sound is eligible even when the observation location is obscured; no coordinates exported. Acquired clean alternatives.",
+    "resolutionHashes": [
+      "6f9c48ead4f5b21b5650e2037a97ca1daffc4e8e6aaa61b9c504b4c58c87e9f8"
+    ]
+  }
+]

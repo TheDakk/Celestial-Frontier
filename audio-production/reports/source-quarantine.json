@@ -1,0 +1,31 @@
+{
+  "schema": "cf.audio-source-quarantine/v1",
+  "failed": [
+    {
+      "sourceId": "inat_cc0",
+      "title": "Red-footed Booby",
+      "path": "source-audio/inat_cc0/714563fc7b762405-1610911.mp3",
+      "sha256": "714563fc7b762405cb6494b9cff77b9a0d67be0d633929c925752b824776b772",
+      "error": "[mp3float @ 0x74a6c68e00] Header missing\n[aist#0:0/mp3 @ 0x74a7010300] [dec:mp3float @ 0x74a6c14280] Error submitting packet to decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x74a7010300] [dec:mp3float @ 0x74a6c14280] Error processing packet in decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x74a7010300] [dec:mp3float @ 0x74a6c14280] Task finished with error code: -1094995529 (Invalid data found when processing input)\n[aist#0:0/mp3 @ 0x74a7010300] [dec:mp3float @ 0x74a6c14280] Terminating thread with return code -1094995529 (Invalid data found when processing input)\n",
+      "action": "Original preserved at source path; refused by recipe validator."
+    },
+    {
+      "sourceId": "inat_cc0",
+      "title": "Red-tailed Tropicbird",
+      "path": "source-audio/inat_cc0/eefe2af978c3eca3-1372574.mp3",
+      "sha256": "eefe2af978c3eca324ba512f90cb69e9b6d81d6ef73ad56e64cfe9106e83b2ec",
+      "error": "[mp3float @ 0x7bb6854e00] Header missing\n[aist#0:0/mp3 @ 0x7bb7404300] [dec:mp3float @ 0x7bb6800280] Error submitting packet to decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x7bb7404300] [dec:mp3float @ 0x7bb6800280] Error processing packet in decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x7bb7404300] [dec:mp3float @ 0x7bb6800280] Task finished with error code: -1094995529 (Invalid data found when processing input)\n[aist#0:0/mp3 @ 0x7bb7404300] [dec:mp3float @ 0x7bb6800280] Terminating thread with return code -1094995529 (Invalid data found when processing input)\n",
+      "action": "Original preserved at source path; refused by recipe validator."
+    },
+    {
+      "sourceId": "inat_cc0",
+      "title": "Lion",
+      "path": "source-audio/inat_cc0/6f8e5f5c1d82b301-1590302.mp3",
+      "sha256": "6f8e5f5c1d82b301cf7c9cc7c5890ce16d40840ec809dfbed385f140109f5d0a",
+      "error": "[mp3float @ 0x786684ce00] Header missing\n[aist#0:0/mp3 @ 0x7867010300] [dec:mp3float @ 0x7867400280] Error submitting packet to decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x7867010300] [dec:mp3float @ 0x7867400280] Error processing packet in decoder: Invalid data found when processing input\n[aist#0:0/mp3 @ 0x7867010300] [dec:mp3float @ 0x7867400280] Task finished with error code: -1094995529 (Invalid data found when processing input)\n[aist#0:0/mp3 @ 0x7867010300] [dec:mp3float @ 0x7867400280] Terminating thread with return code -1094995529 (Invalid data found when processing input)\n",
+      "action": "Original preserved at source path; refused by recipe validator."
+    }
+  ],
+  "pass": false,
+  "allOriginalsRetained": true
+}

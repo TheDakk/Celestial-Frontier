@@ -45,3 +45,32 @@ test('complete voice export preserves source hashes and refuses existing output 
   try{assert.throws(()=>exportVoiceSet(file,path.join(root,'refused')),/manifest changed/);assert.equal(fs.existsSync(path.join(root,'refused')),false);}finally{defaultFs.readFileSync=read;}
  }finally{fs.rmSync(root,{recursive:true,force:true});}
 });
+
+
+test('theme, battle and overlapped bed exports preserve source/sidecar bytes and fit exact budgets',codecTest,async()=>{
+ const fs=await import('node:fs'),os=await import('node:os'),path=await import('node:path');
+ const {exportSoundSet}=await import('./audio-export.mjs'),{sha256}=await import('./contracts.mjs'),{BATTLE_SOURCES}=await import('./sound-set.mjs');
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'cf-set-export-'));
+ const put=(name,data)=>{fs.writeFileSync(path.join(root,name),data);return{path:name,sha256:sha256(data)};};
+ const rights={owner:'private synthetic test fixture',license:'test-only',source:'codec test, not C3 media',redistribution:true};
+ try{
+  for(const kind of ['ability','battle','bed']){
+   const names=kind==='ability'?['wild.launch.wav','wild.travel.wav','wild.impact.wav']:kind==='battle'?BATTLE_SOURCES.map(n=>n+'.wav'):['bed.temperate.wav'];
+   const masters=names.map(name=>{const bound=put(name,fixture({frames:kind==='bed'?25*48000:24000,channels:kind==='bed'?2:1}));
+    return {...bound,dry:true,rights,...(kind==='bed'?{loop:put('bed-loop.json',Buffer.from(JSON.stringify({schema:'cf.audio-loop/v1',sourceSha256:bound.sha256,sampleRate:48000,channels:2,startFrame:0,endFrame:25*48000,crossfadeFrames:4800})))}:{})};});
+   const manifest={schema:'cf.sound-source-intake/v1',kind,...(kind==='battle'?{}:{key:kind==='ability'?'wild':'temperate'}),masters};
+   const file=path.join(root,kind+'.json');fs.writeFileSync(file,JSON.stringify(manifest));
+   const out=path.join(root,kind+'-opus'),r=exportSoundSet(file,out,{seed:133});assert.equal(r.outputs.length,names.length);assert.equal(r.qualityAccepted,false);assert.throws(()=>exportSoundSet(file,out),/new output/);
+   for(const row of masters){assert.equal(sha256(fs.readFileSync(path.join(root,row.path))),row.sha256);if(row.loop)assert.equal(sha256(fs.readFileSync(path.join(root,row.loop.path))),row.loop.sha256);}
+   if(kind==='bed'){
+    assert.equal(r.outputs[0].receipt.encoded.frames,24.9*48000);assert.equal(r.outputs[0].loop.recipe.phaseOffsetFrames>=0,true);assert.ok(r.outputs[0].originalMeasurement.truePeakDbTP<=-1);
+    const second=exportSoundSet(file,path.join(root,'bed-repeat'),{seed:133});assert.deepEqual(r,second);
+    assert.deepEqual(fs.readFileSync(path.join(out,'bed.temperate.opus')),fs.readFileSync(path.join(root,'bed-repeat/bed.temperate.opus')));
+    // Both source and declared loop can pass the intake's 24-second minimum,
+    // while the overlap would shorten the delivered loop below it. Refuse, no pad.
+    const source=put('bed.temperate.wav',fixture({frames:24*48000,channels:2}));manifest.masters=[{...masters[0],...source,loop:put('short-loop.json',Buffer.from(JSON.stringify({schema:'cf.audio-loop/v1',sourceSha256:source.sha256,sampleRate:48000,channels:2,startFrame:0,endFrame:24*48000,crossfadeFrames:4800})))}];
+    fs.writeFileSync(file,JSON.stringify(manifest));assert.throws(()=>exportSoundSet(file,path.join(root,'too-short')),/shorter than 24/);assert.equal(fs.existsSync(path.join(root,'too-short')),false);
+   }
+  }
+ }finally{fs.rmSync(root,{recursive:true,force:true});}
+});

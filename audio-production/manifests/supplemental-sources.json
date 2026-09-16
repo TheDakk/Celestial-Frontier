@@ -1,0 +1,33 @@
+{
+  "schema": "cf.audio-supplemental-sources/v1",
+  "authorization": "Nick: acquire relevant public-domain wildlife/environment recordings; close fauna and biome gaps. Supplied manifest unchanged.",
+  "sources": [
+    {
+      "id": "nps_rocky_mountain",
+      "title": "Rocky Mountain National Park Sound Library",
+      "creator": "Jacob Job / Colorado State University / National Park Service; preserve item credits",
+      "source_page_url": "https://www.nps.gov/romo/learn/photosmultimedia/soundlibrary.htm",
+      "license_id": "Public-Domain",
+      "kind": "collection",
+      "notes": "Explicit collection public-domain statement. Field contexts and individual titles retained; no implied species or behavior substitution."
+    },
+    {
+      "id": "inat_cc0",
+      "title": "Individually CC0 iNaturalist wildlife sound recordings",
+      "creator": "Individual recordists listed per sound in acquisition.json",
+      "source_page_url": "https://www.inaturalist.org/",
+      "license_id": "CC0-1.0",
+      "kind": "individual-media-license",
+      "notes": "Not a blanket collection license. Only sound.license_code=cc0, research-grade identified observations, no hidden/flagged media; observation/photo licenses never authorize audio."
+    },
+    {
+      "id": "noaa_passive_acoustics",
+      "title": "NOAA Passive Acoustics Branch recordings only",
+      "creator": "NOAA Fisheries, Northeast Fisheries Science Center, Passive Acoustics Branch; per-item citation PDF retained",
+      "source_page_url": "https://www.fisheries.noaa.gov/national/science-data/sounds-ocean",
+      "license_id": "Public-Domain",
+      "kind": "individual-government-recordings",
+      "notes": "US federal works under NOAA copyright policy. Only selected NOAA Passive Acoustics Branch recordings with recording citations; external university/DFO/AWI/Cornell recordings excluded. Source-applied speed/filter changes retained and disclosed. No NOAA endorsement."
+    }
+  ]
+}

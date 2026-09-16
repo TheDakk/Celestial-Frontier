@@ -1,6 +1,6 @@
 # Creature animation — shared anatomy and motion contract
 
-Matches code as of 2026-09-14. C2 source **61512b3a** passes the independently enumerated
+Matches code as of 2026-09-15. C2 source **61512b3a** passes the independently enumerated
 87 pair contacts and 64 three/four-owner junctions at all five native poses. All three masters
 retain zero changed rest channels; CPU update p95 is 0.80/0.90/0.40 ms (Civet/fox/procedural).
 This is coverage and update-time evidence, not whole-motion acceptance. Full posed images still
@@ -13,13 +13,32 @@ in seeded biome arenas. Preserve the actual painted anatomy, stable joint invent
 identity. Blender projection is abandoned for the browser; retain the turnaround/canid master for
 a later engine port. No 3D or texture-finisher pass belongs to this track.
 
-Art Kit v4.3 and supplied Motion/Sound v1 are approved; no wording changes are pending in this batch.
+Art Kit v4.3 and supplied Motion/Sound v1 are approved. The separate September 15 Sound Kit
+rights-sentence proposal awaits Nick; no kit bytes changed.
 Arena template v1 is accepted. Wild v4.3 mechanical intake is complete; Nick owns final image acceptance.
 GSAP 3.15.0, the Pixi 8 seeded emitter and one deterministic atlas per creature are the runtime/tooling
 boundary. The incompatible @pixi/particle-emitter is removed. Atlas core 0.3.9/CLI 0.3.0 use sorted,
 hash-bound copies, four-pixel padding, one-pixel extrusion and no timestamps. Originals remain intact.
 The 2048 atlas, 40 drawable and 8% contact bounds are unchanged. Claude owns motion/, effects/,
 battle2/, soundkit/, worldlife/ and their tests; this lane consumes those modules read-only.
+
+## Whole-body action and looking — September 15
+
+The painted pose is the rest reference, not a limit on the animal's behavior.
+`creature-rig-performance.ts` consumes compiled players for every record-named joint,
+samples transitions at explicit command time and publishes one complete frame. Sparse
+joints reset and root offsets remain root-only. Nine actual Civet/fox/procedural idle,
+melee and hit actions match the pinned read-only GSAP producer; 30/60/120 Hz controls
+exercise transition parity. No species-specific motion curves were added.
+
+`creature-rig-aim.ts` solves in-view gaze from source-bound eye/forward points and the
+actual ancestor pivots, preserving body/limb action. It refuses malformed/out-of-bound
+input and requests a body turn or another view when its chain/source coverage cannot
+reach a target. These are outcomes for a future controller to satisfy, not completed
+turn animations. All three actual proof records still lack gaze/view declarations;
+no alternate-view rigs or ordinary-game consumers are integrated. The existing skin
+still fails visual shape review. See audits/C_PACKAGE_COMPLETION_20260915 for tests,
+retained negative controls, actual-producer evidence and the complete remaining plan.
 
 ## Current presentation priority — Nick, September 8
 

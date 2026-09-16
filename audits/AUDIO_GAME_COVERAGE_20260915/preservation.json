@@ -1,0 +1,58 @@
+[
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-combat-contact.wav",
+    "sha256": "fc3bcb5da5ee2a81a45d32de933cea234eb42850b151ba46565d1ad300eb6a20",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-exploration-music.wav",
+    "sha256": "fa144fe615faef75fc426f86a44f299dcf48a1637893ccef9cf95fa2ab40a111",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-approach.wav",
+    "sha256": "ad4020be2cda99df2ba91290965b1d125bf909c4b7279833da51b5b55ad5f373",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-landing.wav",
+    "sha256": "6e8e3edf1dca6f232ebb13233e6921a64c33bd33830a5c1358165a764779852a",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-temperate-bed.wav",
+    "sha256": "36caaa89651e44e92f9faddc53d74104cb9e1f5e11eb5a5757efbbdb978be69c",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-nav.wav",
+    "sha256": "14cecfcf6525c0c3637455ae7c711972021814ae5b5caf711baf7c6bb796a4c8",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-refusal.wav",
+    "sha256": "3e4fcbd34d6b65583883e31347ef99c4dd538aa07a311fe7612083e3f37b9b20",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-settlement.wav",
+    "sha256": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3",
+    "matchesHEAD": true
+  },
+  {
+    "path": "ART_KIT.md",
+    "matchesHEAD": true
+  },
+  {
+    "path": "MOTION_KIT.md",
+    "matchesHEAD": true
+  },
+  {
+    "path": "SOUND_KIT.md",
+    "matchesHEAD": true
+  },
+  {
+    "path": "port/v2/apps/game/src/release-content.ts",
+    "matchesHEAD": true
+  }
+]

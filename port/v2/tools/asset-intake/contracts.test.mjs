@@ -3,6 +3,16 @@ import {wavFacts,inspectMaster,inspectVoiceSet,sha256,readBoundFile,VOICE_CUES} 
 import {createRequire} from 'node:module';const require=createRequire(import.meta.url),{PNG}=createRequire(require.resolve('free-tex-packer-core'))('pngjs');
 function wav(frames=480){const b=Buffer.alloc(44+frames*3);b.write('RIFF');b.writeUInt32LE(b.length-8,4);b.write('WAVEfmt ',8);b.writeUInt32LE(16,16);b.writeUInt16LE(1,20);b.writeUInt16LE(1,22);b.writeUInt32LE(48000,24);b.writeUInt32LE(144000,28);b.writeUInt16LE(3,32);b.writeUInt16LE(24,34);b.write('data',36);b.writeUInt32LE(frames*3,40);for(let i=44;i<b.length;i+=3)b.writeIntLE(1000, i,3);return b;}
 test('WAV intake refuses malformed, silent, clipped and wrong-format masters',()=>{const b=wav();assert.equal(wavFacts(b).frames,480);for(const mutate of [x=>x.writeUInt32LE(44100,24),x=>x.writeUInt16LE(16,34),x=>x.fill(0,44),x=>x.writeIntLE(0x7fffff,44,3),x=>x.writeUInt32LE(1,40)]){const x=Buffer.from(b);mutate(x);assert.throws(()=>wavFacts(x));}assert.throws(()=>wavFacts(b.subarray(0,b.length-1)));});
+test('24-bit extensible PCM is equivalent; float subtype, layout and reduced precision refuse',()=>{
+ const original=wav(),extended=Buffer.concat([original.subarray(0,36),Buffer.alloc(24),original.subarray(36)]);
+ extended.writeUInt32LE(extended.length-8,4);extended.writeUInt32LE(40,16);extended.writeUInt16LE(0xfffe,20);
+ extended.writeUInt16LE(22,36);extended.writeUInt16LE(24,38);extended.writeUInt32LE(4,40);
+ Buffer.from('0100000000001000800000aa00389b71','hex').copy(extended,44);
+ assert.deepEqual(wavFacts(extended),wavFacts(original));
+ for(const mutate of [x=>x[44]=3,x=>x.writeUInt16LE(16,38),x=>x.writeUInt32LE(3,40),x=>x.writeUInt16LE(2,36)]){
+  const bad=Buffer.from(extended);mutate(bad);assert.throws(()=>wavFacts(bad));
+ }
+});
 test('runtime minimum admits large masters without resampling and refuses undersize or corrupt PNG',()=>{
  const image=(width,height)=>PNG.sync.write(new PNG({width,height}));
  const b=image(1254,1254);assert.equal(inspectMaster(b,'cutout').width,1254);

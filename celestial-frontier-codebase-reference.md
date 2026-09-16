@@ -1,6 +1,6 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-Matches code as of 2026-09-14. C2 source **61512b3a** passes the independently enumerated
+Matches code as of 2026-09-15. C2 source **61512b3a** passes the independently enumerated
 87 pair contacts and 64 three/four-owner junctions at all five native poses. All three masters
 retain zero changed rest channels; CPU update p95 is 0.80/0.90/0.40 ms (Civet/fox/procedural).
 This is coverage and update-time evidence, not whole-motion acceptance. Full posed images still
@@ -8,15 +8,40 @@ show hard cut/overlap edges and stretched paint. No new ten-second articulated c
 See [current evidence](audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json) and
 [combined review](audits/CROSS_PACKAGE_PROGRESS_20260914/README.md).
 
-Current animation implementation and family gaps are in CREATURE_ANIMATION.md. The approved kit is
+Current audio production: AUDIO.md, audio-production/README.md and audits/AUDIO_FAUNA_BIOMES_20260915.
+The fauna/biome continuation acquired 487 additional source entries (206 Rocky Mountain NPS,
+254 individually CC0 iNaturalist recordings and 27 inspected NOAA recordings). There are now
+1,579 source entries / 1,575 unique originals; 1,572 fully decode and three damaged originals
+are retained in quarantine. 359 new REAPER renders comprise 321 identified recording-reference
+excerpts and 38 environment components. Totals: 1,534 validated WAV/Opus pairs, 1,313 unique PCM
+treatments, 42 successful editable production projects, 102 retained loop derivatives and 49
+instrument stems. $0 spent. The two failed fauna project versions are retained separately.
+
+Identified source-reference coverage is 154 / 631 fauna; 477 still lack an eligible reference.
+Broad game names may use explicitly disclosed narrower taxa. This establishes neither exact
+behavior calls nor listening approval. All 1,010 Earth identities retain the existing audio owner;
+379 non-fauna identities remain fictional sonification. No generic voice fills a recording gap.
+All 43 biome profiles now have explicit environment recipes, including gas, ice, cave, volcanic,
+underwater and airless profiles. 486 audited routes resolve 484 rendered recipes and two explicit
+silences, with zero missing components. Exotic environments are designed sound, not field claims.
+
+The DEV-only bounded review uses the existing owner and hash-bound body records. No listening
+approval, ordinary-game promotion, kit edit or accepted asset replacement.
+
+Current animation implementation and family gaps are in CREATURE_ANIMATION.md. September 15 adds
+explicit-time whole-action playback and source-bound in-view aim, tested independently and against
+the actual motion producer. Actual gaze/view declarations, continuous skin and live integration
+remain missing; no new native animation acceptance. The approved kit is
 v4.3; Motion/Sound v1 supplied bytes are retained unchanged. C1 mechanical intake is complete, with
 final Wild image acceptance owned by Nick. The accepted arena remains template v1. GSAP and Pixi 8
 use one renderer; the incompatible emitter package is removed. Source ownership is in CONTRACTS.md.
 
-C3 has voice intake/export and closed theme/battle/first-bed/weather source intake, including bound
-sample-loop declarations. C4 has complete ordered review-batch and seeded arena intake. These check
-technical evidence, not source rights, listening quality, keyed-copy lineage or new visual acceptance.
-No real C3 sources/derived voices exist. AUDIO.md and tools/asset-intake/README.md define the limits.
+C3 has voice and theme/battle/first-bed export plus closed weather intake. Bound sample-loop
+declarations render deterministic overlap/seeded-phase derivatives; original WAVs remain protected.
+Nick authorized the supplied free-audio handoff: actual permitted recordings and derived review
+voices now exist. Listening, source gaps and final gameplay promotion remain open. C4 has ordered
+review-batch and seeded arena intake; these checks do not establish new visual acceptance.
+AUDIO.md and tools/asset-intake/README.md define the current boundaries.
 Ordinary PNG hashing is asynchronous native SHA-256 with a yielding compatibility path; storage
 schema, IDs, retention, integrity and quotas are unchanged. One identity key is computed per operation.
 

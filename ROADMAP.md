@@ -17,57 +17,67 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-14 · cross-package coding and consolidated review
+## SESSION HANDOFF — 2026-09-15 · fauna and biome audio candidates
 
-Codex works locally on openai/mac. Nick authorizes continued C2 and other C-package coding
-without waiting for Claude. Current signed C2 source is 61512b3a: 114 ahead upstream and
-225 ahead cached origin/develop at its commit. Signing succeeded for C2 through the configured
-1Password agent. The later intake/evidence commit failed at 20:06 UTC: Secure Enclave/system biometric
-authentication failed before key retrieval. All verified changes remain staged. Nick was asked to
-unlock with the account password inside 1Password; no credentials or security changes are requested.
+OpenAI/Codex: /Users/nick/Projects/celestial-frontier-openai-mac, branch openai/mac.
+Batch start HEAD b95c4dc0; 115 ahead cached origin/openai/mac, 226 ahead cached origin/develop.
+Prior signing attempts failed in the 1Password agent; no unsigned fallback. No GitHub writes,
+Actions, branch or history rewrite. PR42 parked. Same uninterrupted toolchain receipt:
+REAPER 7.80 / Surge XT 1.3.4 / FFmpeg 9.0.1; no asset-job maintenance or purchases.
 
-Matches code as of 2026-09-14. C2 source **61512b3a** passes the independently enumerated
-87 pair contacts and 64 three/four-owner junctions at all five native poses. All three masters
-retain zero changed rest channels; CPU update p95 is 0.80/0.90/0.40 ms (Civet/fox/procedural).
-This is coverage and update-time evidence, not whole-motion acceptance. Full posed images still
-show hard cut/overlap edges and stretched paint. No new ten-second articulated capture is qualified.
-See [current evidence](audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json) and
-[combined review](audits/CROSS_PACKAGE_PROGRESS_20260914/README.md).
+The fauna/biome continuation acquired 487 additional source entries (206 Rocky Mountain NPS,
+254 individually CC0 iNaturalist recordings and 27 inspected NOAA recordings). There are now
+1,579 source entries / 1,575 unique originals; 1,572 fully decode and three damaged originals
+are retained in quarantine. 359 new REAPER renders comprise 321 identified recording-reference
+excerpts and 38 environment components. Totals: 1,534 validated WAV/Opus pairs, 1,313 unique PCM
+treatments, 42 successful editable production projects, 102 retained loop derivatives and 49
+instrument stems. $0 spent. The two failed fauna project versions are retained separately.
 
-C2 next: correct visible ownership/texture transitions with actual anatomy and shared curves,
-then qualify full poses and the ten-second Civet/fox/procedural captures. Do not use zero gap
-counts as a shape waiver. Candidate07 binds original descendant texels at multi-owner junctions;
-rest sockets have zero area. Retain failed candidates, 8% contact limit, atlas/40-drawable budgets,
-masters and named anatomy. The corrected read-only producer SHA is
-6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74.
-The PoseTarget frame adapter is implemented; Claude-owned battle2 adoption is pending.
-FAMILY_COVERAGE.md in the C2 audit records all fourteen template coverage gaps; three quadruped
-records do not qualify the universe.
+Identified source-reference coverage is 154 / 631 fauna; 477 still lack an eligible reference.
+Broad game names may use explicitly disclosed narrower taxa. This establishes neither exact
+behavior calls nor listening approval. All 1,010 Earth identities retain the existing audio owner;
+379 non-fauna identities remain fictional sonification. No generic voice fills a recording gap.
+All 43 biome profiles now have explicit environment recipes, including gas, ice, cave, volcanic,
+underwater and airless profiles. 486 audited routes resolve 484 rendered recipes and two explicit
+silences, with zero missing components. Exotic environments are designed sound, not field claims.
 
-C3: voice intake and deterministic offline Opus export are implemented. New closed ability/battle
-and first temperate/rain source-set intake checks rights declarations, dry PCM masters and hash-bound
-loop sample ranges. No actual source recordings, legal/listening acceptance, derived voices or
-battle audio integration are complete. Fur-source naming is not invented where the contract is silent.
-C4: one-to-twelve master batch intake and seeded three-plate arena intake are implemented. The
-existing accepted Earth arena passes (1672x941, ground 0.78). No new art or changed acceptance.
-The new tools do not prove that keyed copies came from a particular keyer; visual/lineage review remains.
+Evidence: audits/AUDIO_FAUNA_BIOMES_20260915/{README.md,status.json,FAUNA_GAPS.md,
+production-controls.json,preservation.json,native-01/report.json}; audio-production/reports/
+functional-coverage-ecology.json. Eight Python controls, 13 focused TS tests, types and root
+validate pass. Prior wider suite: 377 files/4372 passes/one skip, retained in AUDIO_GAME_COVERAGE.
+Native local playback/stop/negative-control, gas-world recipe and WAV/Opus checks pass. Not phone,
+listening or release admission. Three red source-decode results and two failed render versions
+are retained with diagnosis. No assertion/budget or accepted original was weakened/overwritten.
 
-Checks: 50 Node tool tests, 371 Vitest files / 4351 tests passed (one skipped), typecheck and
-root validation including the 50-probe fingerprint pass. See CROSS_PACKAGE_PROGRESS_20260914
-for checks, current package status and the single REVIEW_PROMPT.md for a later Claude review.
-Earlier batches fixed normal PNG hashing, source/export guards and C5 admission defects;
-those receipts remain in C_SYSTEMS_CONTINUATION and C_LANE_BATCH_REVIEW/REPAIRS audits.
+Runtime review remains DEV-only ?audioReview=1, existing audio owner, lazy bounded PCM mixing.
+Body adapter uses actual Civet/fox/procedural record materials (fur/fur/translucent); kingdom,
+acoustic size and propagation medium still require explicit context. Recording previews do not
+promote Earth behavior cues. Current biome mapping fixes the generic gas-world foliage fallback.
+Supplied manifest/kits/Claude-owned modules/player releases/packs unchanged. main.ts hunk from the
+previous audio batch is DEV-only review mount and pagehide cleanup; announce in commit message.
 
-Weather E remains active; the existing second weather ladder awaits Nick's pick. Klein phone
-probing is stopped. At most three redistributable smaller finishers must first qualify on Mac,
-then one phone attempt; no delivery work beforehand. C3 first new sounds and C4 twelve-image
-sheets still stop for Nick's review. C1 mechanical intake is complete; final image acceptance is Nick's.
+Review prompt: audio-production/REVIEW_PROMPT.md; current ZIP directory ecology-20260915 and
+review-packs/INDEX.md, each ZIP under 30 MB. Prior review packages preserved. Local originals,
+projects/media and audio masters remain ignored and are not independently backed up by Git.
+No listening acceptance or ordinary-game promotion. CC BY expansion was asked but has no answer;
+continue CC0/public domain only until Nick answers. Remaining work: source gaps, context/behavior
+editing, listening decisions, physical iPhone/Safari/PWA/offline proof, then explicit promotion.
 
-No kit edits, new paintings, inference, recordings or main.ts changes in this batch. No new branch,
-GitHub write, PR Ready, push, release or history rewrite. PR42 remains parked. C5 follows the
-C2/weather/phone prerequisites: prune openai/mac, three merge-commit tiers into develop (production
-UI; painted landfall engine; research tools as tools), then one develop-to-main release/full chain
-with exact authorization. LFS migration only on Nick's go. Claude-owned motion/, effects/, battle2/,
-soundkit/, worldlife/ and their tests remain read-only. Reuse the uninterrupted toolchain receipt;
-native browser work requires escalation and clean signed source. Codex continues local work;
-Claude needs no action or app switch until Nick chooses to request the consolidated review.
+C2 remains visually unaccepted: geometric seams/rest pass but motion shows hard cuts/stretch.
+C1 mechanical intake complete, Nick owns Wild image acceptance. C4 remains twelve painted assets
+per eye-review gate. Rain E active; second weather pick and smaller-finisher phone decision open.
+C5 pruning on openai/mac follows prerequisites, then three merge-commit tiers into develop
+(UI, painted engine, research tools as tools) and a later release PR. LFS only on explicit go.
+No PR Ready, push/label/dispatch/merge/release/deploy authorization.
+
+Codex continues the recorded open work without repeating acquisition or overwriting originals.
+Claude does not need to open/sync now; use the one review prompt/ZIP index when Nick requests it.
+
+Review delivery verified: 17 ZIPs, largest 27.94 MB, 2,014 archive entries hash-checked;
+142 focused WAVs and the full candidate/loop Opus set. See audio-production/REVIEW_PACKS.md.
+Final root validation matches the 50-probe baseline and renders all 1,010 Earth species.
+
+Final checkpoint attempt: signed Git commit failed with 1Password agent error (exit128);
+HEAD remains b95c4dc0, 115 ahead cached origin/openai/mac, 226 ahead cached origin/develop.
+All completed work is staged; pre-existing .DS_Store excluded. No unsigned fallback.
+Receipt: audits/AUDIO_FAUNA_BIOMES_20260915/checkpoint.json.

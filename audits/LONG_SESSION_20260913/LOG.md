@@ -371,3 +371,113 @@ No GitHub or history rewrite; PR42 parked. Promotion uses merge commits after pr
 The subsequent cross-package intake/evidence commit failed at20:06UTC in1Password Secure Enclave
 authentication. Changes remain staged; latest signed head61512b3a (114aheadupstream/225aheaddevelop).
 The review snapshot explicitly includes the uncommitted patch. No unsigned commit or signing bypass.
+
+## Codex action and source-export continuation — September 15
+
+The September 14 staged batch is signed b95c4dc0 (115 upstream / 226 cached develop ahead,
+zero behind); prior signing block resolved. New C2 action-frame transitions and bounded
+source-driven in-view aim preserve the real producer; all nine actual actions match the
+pinned producer. Actual gaze/view records and skin shape remain unqualified, no native captures.
+C3 ability/battle/bed Opus exports and seeded declared loops preserve originals; codec regressions
+and negative controls retained. No original recordings available; exact Sound Kit section 1
+CC0 proposal awaits Nick. No kit edit or real media adoption. C4/C5 remain bounded by the
+proof, media, weather and phone decisions, as recorded in C_PACKAGE_COMPLETION_20260915.
+Full tests: 52 Node, 373 Vitest files / 4357 pass plus one skipped; typecheck and root fingerprint
+pass. Startup under shared lock upgraded idle REAPER to 7.80 and Homebrew to 7.0.1, verification
+passed; runtime/test pins unchanged. No main.ts hunk, Claude-owned path, GitHub or history rewrite.
+Review README/UPDATED_PLAN/REVIEW_PROMPT consolidated in that audit. Codex continues locally;
+Claude needs no action/app switch now. PR42 parked, promotion uses merge commits, LFS only on go.
+
+September 15 final signing attempt: op-ssh-sign returned “1Password: agent returned an
+error.” No commit created; tested batch/packet staged. b95c4dc0 remains 115/226 ahead,
+zero behind. Recent scoped logs did not establish a cause. Asked Nick to approve the
+Git-signing request; no settings/key changes or unsigned fallback. Receipt in current audit.
+
+## Codex supplied audio handoff preparation — September 15
+
+Nick requested the $0 REAPER/Surge/stock-effect production handoff. Required Markdown/manifest
+not found; requested actual folder path. No approved downloads guessed. Actual game inventory
+records 631 fauna/43 biomes/29 weather/all11themes. New Lua/CLI tools created real editable
+projects and synth states; saved-state rendering with installed REAPER7.80/Surge1.3.4 passes
+48kHz/24bit/stereo/144000frames and exact replay PCM after explicit retrigger/zero-drift.
+Retained first save-copy lifecycle failure and random-phase differing controls. Four diagnostic
+WAVs exist, none accepted game audio. No downloads, production source coverage, game mappings,
+new audition screen or listening acceptance. Root validate/fingerprint passes. Evidence:
+AUDIO_PRODUCTION_20260915; exact local runner in port/v2/tools/audio-production/LOCAL_RUN.md.
+Previous batch still staged after signing failure; b95c4dc0 is115/226ahead, zero behind. No
+GitHub, history rewrite, kit wording, main.ts or Claude-owned-path changes; Claude needs no action.
+
+
+## C3 — September 15 free-audio handoff execution
+
+Scope: Nick's supplied handoff/manifest; existing REAPER 7.80, Surge XT 1.3.4 and stock effects,
+$0 additions. Four supplied files are verbatim. All 13 approved packs/music acquired, NPS158
+recordings (two human/vehicle subjects excluded from production), 1,089 unique inputs fully
+decoded. Originals and license/source evidence retained locally. Three unavailable NPS pages
+and two intentionally skipped housekeeping members remain explicit acquisition exceptions.
+
+Produced790 unapproved master WAV/Opus pairs (635 unique decoded PCM treatments),19 editable
+REAPER projects,102 validated loop copies,21 real instrument stems. Full saved synth states,
+relative media, recipe hashes and actual render receipts exist. Authenticity/common-name
+matches13 only; Civet remains fictional.1,031 requirements have no assigned candidate.
+No generic voice is counted as complete species coverage. No sound approval/promotion occurred.
+
+Normal game DEV-only ?audioReview=1 uses the existing audio owner. Hash/size admission,
+playback, cancellation, category routing and a 390px native diagnostic pass. Negative controls
+include false-green Stop, corrupt codecs/bytes, archive paths, unapproved routing, wrong PCM
+GUID/layout and missing odd-frame RIFF padding. Full suite374 files/4361 passing/one skip;
+final focused39, typecheck and root validate pass. All existing pilot audio matches HEAD.
+main.ts hunk: explicit DEV review mount and pagehide cleanup only. Claude modules untouched.
+
+Evidence: audits/AUDIO_PRODUCTION_20260915/EXECUTION.md, status-execution.json,
+native-review-04/report.json, preservation-final.json; audio-production/reports and manifests.
+Review: audio-production/REVIEW_PROMPT.md and reports/review-packs.json (<30 MB per ZIP).
+Open: listening, most authentic fauna sources, distinct phase/take sound design, procedural
+morphology/material/environment recipes, score development, actual event promotion and phone
+listening. C2 visual failure is unchanged. Kit wording and GitHub state unchanged; PR42 parked.
+
+Signing: configured SSH key matches the available 1Password key, but git commit -S fails with
+agent returned an error. No unsigned workaround; staged work remains at b95c4dc0,115 ahead
+cached origin/openai/mac,226 ahead cached origin/develop. Codex continues locally; no Claude
+app switch/sync is required until Nick asks for review. No hosted Actions or writes.
+
+
+## C3 — September15 game-coverage continuation
+
+Nick requested all unblocked game coverage after the first unreviewed sound batch.385 additional
+REAPER renders and28 score stems are complete; totals1175 candidates/961 unique PCM/49 stems.
+Pure resolved-anatomy, contact, environment, ability-role and music transport compilers plus
+bounded multi-layer in-game audition are implemented.486 audited scenarios:484 rendered plans,
+2 airless silences,0 missing component routes. All1010 canonical identities remain inventoried;
+618 fauna authentic-source gaps remain distinct from existing fictional fallback. Real three-record
+adapter controls preserve fur/fur/translucent and refuse corrupt hashes/missing acoustic context.
+377 unit files/4372 passes/one skip; types, root validate/smoke and native03 PASS. Initial release
+bullet/build-authority failure was corrected by removing the developer-only note from the player
+bulletin, not weakening its guard. Existing assets/kits/releases are byte-identical to HEAD.
+Evidence/review plan: audits/AUDIO_GAME_COVERAGE_20260915 and audio-production/REVIEW_PROMPT.md.
+C2 visual failure, C4 eye gates, weather/phone decisions and C5 remain open. No GitHub or history
+write. main.ts hunk remains the earlier DEV review mount/cleanup only; Claude-owned paths untouched.
+
+
+## C3 — September 15 fauna and biome continuation
+
+The fauna/biome continuation acquired 487 additional source entries (206 Rocky Mountain NPS,
+254 individually CC0 iNaturalist recordings and 27 inspected NOAA recordings). There are now
+1,579 source entries / 1,575 unique originals; 1,572 fully decode and three damaged originals
+are retained in quarantine. 359 new REAPER renders comprise 321 identified recording-reference
+excerpts and 38 environment components. Totals: 1,534 validated WAV/Opus pairs, 1,313 unique PCM
+treatments, 42 successful editable production projects, 102 retained loop derivatives and 49
+instrument stems. $0 spent. The two failed fauna project versions are retained separately.
+
+Identified source-reference coverage is 154 / 631 fauna; 477 still lack an eligible reference.
+Broad game names may use explicitly disclosed narrower taxa. This establishes neither exact
+behavior calls nor listening approval. All 1,010 Earth identities retain the existing audio owner;
+379 non-fauna identities remain fictional sonification. No generic voice fills a recording gap.
+All 43 biome profiles now have explicit environment recipes, including gas, ice, cave, volcanic,
+underwater and airless profiles. 486 audited routes resolve 484 rendered recipes and two explicit
+silences, with zero missing components. Exotic environments are designed sound, not field claims.
+
+Evidence: audits/AUDIO_FAUNA_BIOMES_20260915. Native playback/Stop, 43-biome mapping, rights/identity,
+quarantine/headroom controls pass; prior failures retained. Listening and CC BY authorization
+remain pending. No GitHub/kit/Claude-module/accepted-asset change. main.ts hunk remains prior DEV
+review mount/cleanup only. Current consolidated review prompt and ecology ZIP index are in audio-production.

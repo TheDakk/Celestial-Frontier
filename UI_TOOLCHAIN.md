@@ -1,5 +1,31 @@
 # Celestial Frontier — development toolchain
 
+**September 15 actual audio host qualification:** installed REAPER 7.80 / Surge XT 1.3.4
+plus stock ReaEQ/ReaComp saved and restored a MIDI/plugin-state project and produced two
+48 kHz/24-bit stereo WAVs with identical PCM. Explicit oscillator retrigger/zero drift removes
+the retained initial replay difference. Preparation/render/replay exit zero without UI input;
+REAPER may create a window, so this is scoped unattended CLI qualification, not a universal
+windowless guarantee. No license/key changes or purchases. See
+audits/AUDIO_PRODUCTION_20260915/reaper-qualification-03/qualification.json and
+port/v2/tools/audio-production/LOCAL_RUN.md. Other projects/plugins still require their own checks.
+
+**September15 source production — current:** the supplied manifest has been acquired and the
+installed REAPER/Surge/stock path produced 1,534 validated candidate pairs, 102 retained loop copies
+and 49 actual instrument stems. 42 successful production projects save source/MIDI/state; the later score
+uses four independently rendered tracks per state. Parameter writes are checked against the
+installed Surge names and read back. Current evidence: audits/AUDIO_FAUNA_BIOMES_20260915. Three damaged originals are quarantined;
+new reference excerpts use measured input attenuation and verified float WAV media before REAPER.
+Two failed render projects remain as diagnostic evidence. Projects use relative source media and save actual plugin state.
+`port/v2/tools/audio-production/LOCAL_RUN.md` owns the commands. Native Edge local audition and
+WAV/Opus decoding passed; physical phone/listening approval remain open. No software was added
+or updated during the asset jobs, and the shared toolchain lock covered each render/export run.
+
+**September 15 startup — current:** official metadata check and active-process inventory under
+the shared maintenance lock completed; REAPER 7.79 → 7.80 and Homebrew → 7.0.1. No runtime/test
+or sealed-input pin changed. Tool capabilities verified; GUI-free REAPER rendering remains open.
+Receipts: audits/C_PACKAGE_COMPLETION_20260915/toolchain-check.json and toolchain-verify.json.
+Offline codec tests exercise installed FFmpeg 9.0.1/libopus and ffprobe; original media unchanged.
+
 **September 14 continuation:** the uninterrupted September 12 startup receipt is reused.
 Offline C3 export exercises the installed FFmpeg 9.0.1/libopus and ffprobe with private test
 signals; no tool or dependency upgrade. Receipts record the encoder version/arguments;
@@ -239,13 +265,13 @@ Preserve the earlier enumeration-only and CPU-render provenance.
 | oxipng | 10.2.1, Homebrew; CLI version observed September 12 | Lossless optimization of PNG copies only; original bytes stay immutable. |
 | FFmpeg / ffprobe | 9.0.1, Homebrew ffmpeg 9.0.1_1 | Audio/video conversion, file inspection, PCM export, loudness/true-peak measurement and later motion proof clips. It is not a synthesizer host. |
 | Surge XT | 1.3.4 app, VST3 and AU | Original synth patches; /Library/Audio/Plug-Ins/VST3/Surge XT.vst3 and matching AU exist. The installed Surge CLI is not proven as an offline WAV renderer. |
-| REAPER | 7.79.0_06dd787u | Existing .rpp, embedded MIDI/plugin state and reference renders. Desktop process/dialogs remain possible; a license file exists, validity/recognition unverified. Never print/read its key for inventory. |
+| REAPER | 7.80 | Existing .rpp, embedded MIDI/plugin state and reference renders. Desktop process/dialogs remain possible; a license file exists, validity/recognition unverified. Never print/read its key for inventory. |
 | Python | Homebrew python@3.12 3.12.14 | Isolated scripting runtime at tools/audio-render/.venv; standard library only for now. Apple Python 3.9.6 remains separate. |
 | GSAP | Exact 3.15.0 in tools/ui-motion and port/v2 game app | Paused timelines selected for parts-rig tweening; runtime wiring pending. Preserve reduced motion and native focus/click owners. |
 | Seeded battle emitter | Repository implementation on Pixi 8.19.0 | Replaces removed @pixi/particle-emitter; recipe-seeded travel/impact particles, awaiting browser proof. |
 | free-tex-packer core / CLI | Exact 0.3.9 / 0.3.0 in port/v2 devDependencies | Deterministic one-atlas-per-creature command; synthetic repeat/pixel tests pass. |
 | Node / npm | 26.8.2 / 11.19.0 | Managed Node updated while idle at the 2026-09-12 startup; CLI capability verified. Bundled app Node processes remain separate. |
-| Homebrew | 6.0.22 | Official formula/cask installation and scoped stable updates. |
+| Homebrew | 7.0.1 | Official formula/cask installation and scoped stable updates. |
 | GitHub CLI | 2.100.0 (updated from 2.97.0) | Repository metadata and separately authorized GitHub operations; maintenance does not authorize hosted work. |
 | Apple Git | 2.50.1 | Signed source history and normal agent-branch workflow. Apple/Xcode owns its updates; do not replace it with another Git installation automatically. |
 

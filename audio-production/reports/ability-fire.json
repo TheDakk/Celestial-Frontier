@@ -1,0 +1,450 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "ability.fire.cast.1",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 1.1572,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/02fa3a2c6e79e868-spell_fire_01.ogg",
+          "sha256": "02fa3a2c6e79e868e546802f45127c5cdda69aba6d5a24ac997ea66f81a816cb",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.057188
+        }
+      ],
+      "synthNote": 52,
+      "requirements": [
+        "ability.fire.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/ability-fire/ability.fire.cast.1.wav",
+      "masterSha256": "448551039bb962c6477dd7378e193009dc9013ae16c73b252c68406db20b2ae0",
+      "opus": "masters/ability-fire/ability.fire.cast.1.opus",
+      "opusSha256": "dc3aae1eaebd81432171183f8c97a0afe7aa23b71abe507e7dad3b6e9d4bbcad",
+      "previewSha256": "3c7ffff54101a93bd4c9661a5997d78a3efdb7cc9f1c08746b04b97f78388cb7",
+      "previewBytes": 111206,
+      "previewUrl": "/__cf-audio-review/ability.fire.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -21.4,
+      "opusDbTP": -21.2
+    },
+    {
+      "id": "ability.fire.cast.2",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 1.3448,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/18025b21a4ecb3b4-spell_fire_05.ogg",
+          "sha256": "18025b21a4ecb3b41acc0dccb0697a8930262109ea198ff8c5ef0853d3ed1cfa",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.244813
+        }
+      ],
+      "synthNote": 53,
+      "requirements": [
+        "ability.fire.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 2.1572,
+      "master": "masters/ability-fire/ability.fire.cast.2.wav",
+      "masterSha256": "fecf268445bace4ac639cc270fdb7f34b8a6f777a628053ba515c29988d3d9de",
+      "opus": "masters/ability-fire/ability.fire.cast.2.opus",
+      "opusSha256": "8bddcad4dc8fa5e55fa7c453dc2af514947681d1ebdd41e1f6ad7baf4bd6f552",
+      "previewSha256": "d9dd41b283f8fbdfe142c1d93b814de31f665946c7e560136f1dc53da8f05976",
+      "previewBytes": 129214,
+      "previewUrl": "/__cf-audio-review/ability.fire.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.6,
+      "opusDbTP": -23.7
+    },
+    {
+      "id": "ability.fire.cast.3",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 2.0268,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/2e4edee4ff8d7898-spell_fire_03.ogg",
+          "sha256": "2e4edee4ff8d7898198f1ab5213e086965e14a665cb947d53759505e28ddd3e4",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.926771
+        }
+      ],
+      "synthNote": 54,
+      "requirements": [
+        "ability.fire.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 4.502000000000001,
+      "master": "masters/ability-fire/ability.fire.cast.3.wav",
+      "masterSha256": "74628d982572f537935c485d7d6d96f5d98ac5592aab3090b3628ba74e283863",
+      "opus": "masters/ability-fire/ability.fire.cast.3.opus",
+      "opusSha256": "83eeee97f1e260db996587d60b919336e68db5d413a01aa622fdec350f6ea2cc",
+      "previewSha256": "0a2d14d1814a20233c4a4ad446e5d95ae12bf4f003460cd9261252a191804c3b",
+      "previewBytes": 194686,
+      "previewUrl": "/__cf-audio-review/ability.fire.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -18.7,
+      "opusDbTP": -18.7
+    },
+    {
+      "id": "ability.fire.impact.1",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 1.1572,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/02fa3a2c6e79e868-spell_fire_01.ogg",
+          "sha256": "02fa3a2c6e79e868e546802f45127c5cdda69aba6d5a24ac997ea66f81a816cb",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.057188
+        }
+      ],
+      "synthNote": 40,
+      "requirements": [
+        "ability.fire.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 7.5288,
+      "master": "masters/ability-fire/ability.fire.impact.1.wav",
+      "masterSha256": "cb3e24565334bb2da738cfdc5eaf8403b86c0a56f11ceb1f45eebe5bf1ec8416",
+      "opus": "masters/ability-fire/ability.fire.impact.1.opus",
+      "opusSha256": "b5c936f99395a0692994979689f18770c91c81c188082a8c69c983c96e6b848b",
+      "previewSha256": "9ce929a89bace6b4c71f60061f36c909e23043ccbcf4d9922f6d7bff2efd92c6",
+      "previewBytes": 111206,
+      "previewUrl": "/__cf-audio-review/ability.fire.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.7,
+      "opusDbTP": -22.5
+    },
+    {
+      "id": "ability.fire.impact.2",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 1.3448,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/18025b21a4ecb3b4-spell_fire_05.ogg",
+          "sha256": "18025b21a4ecb3b41acc0dccb0697a8930262109ea198ff8c5ef0853d3ed1cfa",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.244813
+        }
+      ],
+      "synthNote": 41,
+      "requirements": [
+        "ability.fire.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 9.686,
+      "master": "masters/ability-fire/ability.fire.impact.2.wav",
+      "masterSha256": "39a43757633d3d3254dc547dada0f5a4d39685d7a60b48d9ff1890b09407bf45",
+      "opus": "masters/ability-fire/ability.fire.impact.2.opus",
+      "opusSha256": "07c97aeab5552bb3e906a4526199554f48d2b3cc008996eb75e122de215436ba",
+      "previewSha256": "59950b29312614b56a859b6cf45d0e2389fdabbbcc05b40bb4b5b8adbac183e1",
+      "previewBytes": 129214,
+      "previewUrl": "/__cf-audio-review/ability.fire.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.6,
+      "opusDbTP": -23.8
+    },
+    {
+      "id": "ability.fire.impact.3",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 2.0268,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/2e4edee4ff8d7898-spell_fire_03.ogg",
+          "sha256": "2e4edee4ff8d7898198f1ab5213e086965e14a665cb947d53759505e28ddd3e4",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.926771
+        }
+      ],
+      "synthNote": 42,
+      "requirements": [
+        "ability.fire.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 12.0308,
+      "master": "masters/ability-fire/ability.fire.impact.3.wav",
+      "masterSha256": "8471311e7c12a8bf9b451ca83be3db55c06251cec14e367fc3fc7db49f71970c",
+      "opus": "masters/ability-fire/ability.fire.impact.3.opus",
+      "opusSha256": "4859a06e009e19ae3582b9fa6b4e5199b493a28ceb9bbf99e42e6d390f371acf",
+      "previewSha256": "300dc96df14788da82086214c75ab5cc308fee6059376c02b66215c83dfaa90c",
+      "previewBytes": 194686,
+      "previewUrl": "/__cf-audio-review/ability.fire.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.3,
+      "opusDbTP": -19.1
+    },
+    {
+      "id": "ability.fire.sustain.1",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 1.0572,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/02fa3a2c6e79e868-spell_fire_01.ogg",
+          "sha256": "02fa3a2c6e79e868e546802f45127c5cdda69aba6d5a24ac997ea66f81a816cb",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.057188
+        }
+      ],
+      "synthNote": 40,
+      "requirements": [
+        "ability.fire.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 15.057599999999999,
+      "master": "masters/ability-fire/ability.fire.sustain.1.wav",
+      "masterSha256": "c7b22706c8b823fd10178e15b3e9559032221a8a8b8d3c0d862fc6ead0d806d8",
+      "opus": "masters/ability-fire/ability.fire.sustain.1.opus",
+      "opusSha256": "787f6052c67b55d475c32e9e29c4c329e05c7340aaac689ad6b4819bdba8fe5c",
+      "previewSha256": "aafca7a58a5b4c50a892c53dd04012789302c52b6f8ed74defcdaf6ebbb58479",
+      "previewBytes": 101606,
+      "previewUrl": "/__cf-audio-review/ability.fire.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.8,
+      "opusDbTP": -22.9
+    },
+    {
+      "id": "ability.fire.sustain.2",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 1.2448,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/18025b21a4ecb3b4-spell_fire_05.ogg",
+          "sha256": "18025b21a4ecb3b41acc0dccb0697a8930262109ea198ff8c5ef0853d3ed1cfa",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.244813
+        }
+      ],
+      "synthNote": 41,
+      "requirements": [
+        "ability.fire.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 17.1148,
+      "master": "masters/ability-fire/ability.fire.sustain.2.wav",
+      "masterSha256": "f99fa70921503b5f0cedb963fb7f1e43a29b336042d72bcb584f7403cbbb3fe4",
+      "opus": "masters/ability-fire/ability.fire.sustain.2.opus",
+      "opusSha256": "57389e0833b86cd64abf9be6143e112987816e56302f731ca3cd3024bfeebb57",
+      "previewSha256": "d618b74535103e217d3b165fb40d15d3d255d3e8db47e0749904d0cb189a3da2",
+      "previewBytes": 119614,
+      "previewUrl": "/__cf-audio-review/ability.fire.sustain.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.4,
+      "opusDbTP": -23.5
+    },
+    {
+      "id": "ability.fire.sustain.3",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 1.9268,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/2e4edee4ff8d7898-spell_fire_03.ogg",
+          "sha256": "2e4edee4ff8d7898198f1ab5213e086965e14a665cb947d53759505e28ddd3e4",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.926771
+        }
+      ],
+      "synthNote": 42,
+      "requirements": [
+        "ability.fire.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 19.3596,
+      "master": "masters/ability-fire/ability.fire.sustain.3.wav",
+      "masterSha256": "8ba56824ae25bf59a4d970bc31f562beeb3482e0e46655479fa3ae6274337969",
+      "opus": "masters/ability-fire/ability.fire.sustain.3.opus",
+      "opusSha256": "867174051ceb0b44b66b677e56085fb1e1d928037effcdf07d0cc7d4de648a2a",
+      "previewSha256": "e5217555ae51e0896151c4ce0c6d4542d098ae61c14089885b2407891342afd6",
+      "previewBytes": 185086,
+      "previewUrl": "/__cf-audio-review/ability.fire.sustain.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.3,
+      "opusDbTP": -19.4
+    },
+    {
+      "id": "ability.fire.release.1",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 1.1572,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/02fa3a2c6e79e868-spell_fire_01.ogg",
+          "sha256": "02fa3a2c6e79e868e546802f45127c5cdda69aba6d5a24ac997ea66f81a816cb",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.057188
+        }
+      ],
+      "synthNote": 40,
+      "requirements": [
+        "ability.fire.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 22.2864,
+      "master": "masters/ability-fire/ability.fire.release.1.wav",
+      "masterSha256": "1381df36af69e6762c52bd56275611168aaa9ab8ef4ac4ce74fa25ebd2e4639d",
+      "opus": "masters/ability-fire/ability.fire.release.1.opus",
+      "opusSha256": "39cb403f041e353c9cb30a15437656e3474e8ccdf1b7e9f4c69ef98627c7aa63",
+      "previewSha256": "d2f63a41b03d3b4ac696a898a5a3ad3bb1c446e3f334f3383d39b1398ed1a162",
+      "previewBytes": 111206,
+      "previewUrl": "/__cf-audio-review/ability.fire.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.8,
+      "opusDbTP": -22.6
+    },
+    {
+      "id": "ability.fire.release.2",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 1.3448,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/18025b21a4ecb3b4-spell_fire_05.ogg",
+          "sha256": "18025b21a4ecb3b41acc0dccb0697a8930262109ea198ff8c5ef0853d3ed1cfa",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.244813
+        }
+      ],
+      "synthNote": 41,
+      "requirements": [
+        "ability.fire.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 24.4436,
+      "master": "masters/ability-fire/ability.fire.release.2.wav",
+      "masterSha256": "ead46b33c8b55fe7f558490025e63bfcb49cf87cd85621136736a0ccd7559e3b",
+      "opus": "masters/ability-fire/ability.fire.release.2.opus",
+      "opusSha256": "df72b47cbe62a8de2c96050482bd115fb778592522ab4f89a7bb380c22051b62",
+      "previewSha256": "13fc254903a11ff3d65de7e9245998e88088b55b56caf6d36df19204eec27631",
+      "previewBytes": 129214,
+      "previewUrl": "/__cf-audio-review/ability.fire.release.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.4,
+      "opusDbTP": -23.5
+    },
+    {
+      "id": "ability.fire.release.3",
+      "group": "ability-fire",
+      "kind": "designed",
+      "duration": 2.0268,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_rpg/2e4edee4ff8d7898-spell_fire_03.ogg",
+          "sha256": "2e4edee4ff8d7898198f1ab5213e086965e14a665cb947d53759505e28ddd3e4",
+          "sourceId": "oga_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.926771
+        }
+      ],
+      "synthNote": 42,
+      "requirements": [
+        "ability.fire.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 26.7884,
+      "master": "masters/ability-fire/ability.fire.release.3.wav",
+      "masterSha256": "e6a4fac05384d143a14617b0b6ffd0d5009f48b05240ce794dfd35f92494236c",
+      "opus": "masters/ability-fire/ability.fire.release.3.opus",
+      "opusSha256": "b22e69d41c7c4e4beb56df2f176c995eb46baded0dbefb25128a8d1564250f59",
+      "previewSha256": "9d2c61dfe762a9eb3f4991de41c6553b4adf589f6b3b2bd4c930edbbc886cdce",
+      "previewBytes": 194686,
+      "previewUrl": "/__cf-audio-review/ability.fire.release.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.4,
+      "opusDbTP": -19.2
+    }
+  ],
+  "listeningAccepted": false
+}

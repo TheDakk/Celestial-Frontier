@@ -1,0 +1,450 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "ability.void.cast.1",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 1.0551,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/051b0eafc479695a-forceField_002.ogg",
+          "sha256": "051b0eafc479695af4ca3607d41fd4be41bae7c21f4f9508d004722b09f1bd63",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.955079
+        }
+      ],
+      "synthNote": 70,
+      "requirements": [
+        "ability.void.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/ability-void/ability.void.cast.1.wav",
+      "masterSha256": "b5664bc77e0020d59b02e20de5d75e9eefa0b565629aea3630e06524a7d0981e",
+      "opus": "masters/ability-void/ability.void.cast.1.opus",
+      "opusSha256": "b499a275936ce9adcfb28d18bb1c9af8b2e06b2156cf89fa9ac58d68daa5ab59",
+      "previewSha256": "3805f05ab5aba4eacafec4f805d02709c8da206aedefe02de44763944b152b83",
+      "previewBytes": 101404,
+      "previewUrl": "/__cf-audio-review/ability.void.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.9
+    },
+    {
+      "id": "ability.void.cast.2",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 1.0544,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/05609bb296cbc287-forceField_004.ogg",
+          "sha256": "05609bb296cbc287ae95ac8924c89809d69c89d7bb357cc6a117ec1b1ef65e09",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.954444
+        }
+      ],
+      "synthNote": 71,
+      "requirements": [
+        "ability.void.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 2.0551,
+      "master": "masters/ability-void/ability.void.cast.2.wav",
+      "masterSha256": "784b04ae1bc8b0b7739928806dbfacf718a7b5e0e435cabe2267722b632832ff",
+      "opus": "masters/ability-void/ability.void.cast.2.opus",
+      "opusSha256": "cec5bb3b83d3d8efc08633027de1add116bae95f21bd2c699b72a1a9c783caf2",
+      "previewSha256": "682f52d780ba9a3be099fafb1024d1cbba4965c54c784f686c7c2926f5c7e0b2",
+      "previewBytes": 101336,
+      "previewUrl": "/__cf-audio-review/ability.void.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.7
+    },
+    {
+      "id": "ability.void.cast.3",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 1.0559,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/15e3fe971ffd3415-forceField_003.ogg",
+          "sha256": "15e3fe971ffd3415e5ab641d3a4d043fb31f6712b0956315b524ba29c3889cda",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.955941
+        }
+      ],
+      "synthNote": 72,
+      "requirements": [
+        "ability.void.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 4.109500000000001,
+      "master": "masters/ability-void/ability.void.cast.3.wav",
+      "masterSha256": "c6402d5f69015d8e18654c9156bc9d3e282d1f5af8d51107aeb35b98fad73f87",
+      "opus": "masters/ability-void/ability.void.cast.3.opus",
+      "opusSha256": "b9757d301d26e0b7363a8699dcdd6940c6c7486239e678afd4c32ba1886de9cf",
+      "previewSha256": "887b60149d32bb594299cb76de65f110f14577cd0fe3796648df5b8bf27efa62",
+      "previewBytes": 101480,
+      "previewUrl": "/__cf-audio-review/ability.void.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.8
+    },
+    {
+      "id": "ability.void.impact.1",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 1.0551,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/051b0eafc479695a-forceField_002.ogg",
+          "sha256": "051b0eafc479695af4ca3607d41fd4be41bae7c21f4f9508d004722b09f1bd63",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.955079
+        }
+      ],
+      "synthNote": 58,
+      "requirements": [
+        "ability.void.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 6.165400000000001,
+      "master": "masters/ability-void/ability.void.impact.1.wav",
+      "masterSha256": "039ba135ea2f682f9c7403645f7c7946f6710c245847a31f78cb93560e6d4c3f",
+      "opus": "masters/ability-void/ability.void.impact.1.opus",
+      "opusSha256": "ed7a51d19aa97c62c1cf2f669659eb23f6fbfc50eb90df832f705b9764d6f609",
+      "previewSha256": "776bf5fcbab16f18bac48184cd7b4740d090c57d4fdf973f23e6f560457d8c9c",
+      "previewBytes": 101404,
+      "previewUrl": "/__cf-audio-review/ability.void.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.8
+    },
+    {
+      "id": "ability.void.impact.2",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 1.0544,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/05609bb296cbc287-forceField_004.ogg",
+          "sha256": "05609bb296cbc287ae95ac8924c89809d69c89d7bb357cc6a117ec1b1ef65e09",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.954444
+        }
+      ],
+      "synthNote": 59,
+      "requirements": [
+        "ability.void.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 8.220500000000001,
+      "master": "masters/ability-void/ability.void.impact.2.wav",
+      "masterSha256": "ac2ffffea654c010aa7d215c58021ca66586010e994dd381fd6a92c3fd42e7db",
+      "opus": "masters/ability-void/ability.void.impact.2.opus",
+      "opusSha256": "126756b0b3b4178b9d42e3e96f4a6d4038fff99d63ff8502e986e14a62b1c2be",
+      "previewSha256": "50c2401c146dfd65519187b00c465101cb2847746eb077a1b58cf320c6af9adb",
+      "previewBytes": 101336,
+      "previewUrl": "/__cf-audio-review/ability.void.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.8
+    },
+    {
+      "id": "ability.void.impact.3",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 1.0559,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/15e3fe971ffd3415-forceField_003.ogg",
+          "sha256": "15e3fe971ffd3415e5ab641d3a4d043fb31f6712b0956315b524ba29c3889cda",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.955941
+        }
+      ],
+      "synthNote": 60,
+      "requirements": [
+        "ability.void.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 10.274900000000002,
+      "master": "masters/ability-void/ability.void.impact.3.wav",
+      "masterSha256": "6a55d2208ed7e3fb93765125ce5a9d8f8f715622dd450cacdfe28d0e80ad9442",
+      "opus": "masters/ability-void/ability.void.impact.3.opus",
+      "opusSha256": "3779d4db93e4d8507e94a8a3e4167e7d913998e9dc967e929397c4fce43247db",
+      "previewSha256": "64d110007e4278eff74966dfa37de652e77b3563cc56547d2cd8a126bb473df4",
+      "previewBytes": 101480,
+      "previewUrl": "/__cf-audio-review/ability.void.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.7
+    },
+    {
+      "id": "ability.void.sustain.1",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 0.9551,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/051b0eafc479695a-forceField_002.ogg",
+          "sha256": "051b0eafc479695af4ca3607d41fd4be41bae7c21f4f9508d004722b09f1bd63",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.955079
+        }
+      ],
+      "synthNote": 58,
+      "requirements": [
+        "ability.void.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 12.330800000000004,
+      "master": "masters/ability-void/ability.void.sustain.1.wav",
+      "masterSha256": "26f32c7b09c632d98c377e3c438170d4d31a9811c7d4b20d2461625110e25b8e",
+      "opus": "masters/ability-void/ability.void.sustain.1.opus",
+      "opusSha256": "1ac38c6c8852e5500f35d89faa1ff2e8bb6d0fe64e0fc4e0164d820a3a34e208",
+      "previewSha256": "b43b53dfd92d12a985e668b433c4f2ec29147e28500d178eb8ba908a966c38e5",
+      "previewBytes": 91804,
+      "previewUrl": "/__cf-audio-review/ability.void.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.9
+    },
+    {
+      "id": "ability.void.sustain.2",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 0.9544,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/05609bb296cbc287-forceField_004.ogg",
+          "sha256": "05609bb296cbc287ae95ac8924c89809d69c89d7bb357cc6a117ec1b1ef65e09",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.954444
+        }
+      ],
+      "synthNote": 59,
+      "requirements": [
+        "ability.void.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 14.285900000000003,
+      "master": "masters/ability-void/ability.void.sustain.2.wav",
+      "masterSha256": "771dacdb89f4c820dcf66a7d14513c10c0c337b8d699535322b71859881c3797",
+      "opus": "masters/ability-void/ability.void.sustain.2.opus",
+      "opusSha256": "6c43e876dad769acdab668bc48b4d0c53344114636c3cbdc55cbdc9854be78a4",
+      "previewSha256": "abf6e70c7ad7e7f7081a58f8e70b35c94a035ec22e478cc20a05268c4703a3a0",
+      "previewBytes": 91736,
+      "previewUrl": "/__cf-audio-review/ability.void.sustain.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.8
+    },
+    {
+      "id": "ability.void.sustain.3",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 0.9559,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/15e3fe971ffd3415-forceField_003.ogg",
+          "sha256": "15e3fe971ffd3415e5ab641d3a4d043fb31f6712b0956315b524ba29c3889cda",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.955941
+        }
+      ],
+      "synthNote": 60,
+      "requirements": [
+        "ability.void.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 16.240300000000005,
+      "master": "masters/ability-void/ability.void.sustain.3.wav",
+      "masterSha256": "3527281c6248160463e2416e66b97ed6bbe5725b1304117c11f9b807bccb6e99",
+      "opus": "masters/ability-void/ability.void.sustain.3.opus",
+      "opusSha256": "a6fd15d06fed2e0a2cfc62775cb1bebe30ec2f038d7c9271818595c361510eb7",
+      "previewSha256": "0b93028657f929771c2b3c1c3202ab51e48f57b0174fe4dce4b2974a23325e2b",
+      "previewBytes": 91880,
+      "previewUrl": "/__cf-audio-review/ability.void.sustain.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.7
+    },
+    {
+      "id": "ability.void.release.1",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 1.0551,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/051b0eafc479695a-forceField_002.ogg",
+          "sha256": "051b0eafc479695af4ca3607d41fd4be41bae7c21f4f9508d004722b09f1bd63",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.955079
+        }
+      ],
+      "synthNote": 58,
+      "requirements": [
+        "ability.void.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 18.196200000000005,
+      "master": "masters/ability-void/ability.void.release.1.wav",
+      "masterSha256": "415a317c4b8bcd43b9c5c3cc83dbe425b541f768297dea4f7e4acb58225046ea",
+      "opus": "masters/ability-void/ability.void.release.1.opus",
+      "opusSha256": "6e861362ff30d9e65b5d7493bac426eab330835746f435debb27e1f126d0154f",
+      "previewSha256": "c39e5211faa4d640f4662bd068d5ed0cfd5e2f8722ae1f69f1267e0d8aefd4b9",
+      "previewBytes": 101404,
+      "previewUrl": "/__cf-audio-review/ability.void.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.9
+    },
+    {
+      "id": "ability.void.release.2",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 1.0544,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/05609bb296cbc287-forceField_004.ogg",
+          "sha256": "05609bb296cbc287ae95ac8924c89809d69c89d7bb357cc6a117ec1b1ef65e09",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.954444
+        }
+      ],
+      "synthNote": 59,
+      "requirements": [
+        "ability.void.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 20.251300000000004,
+      "master": "masters/ability-void/ability.void.release.2.wav",
+      "masterSha256": "5cc4137c00aad9fd7123e0a040a4139c2d96b96bd03be4db7be0f5eb80a38fa4",
+      "opus": "masters/ability-void/ability.void.release.2.opus",
+      "opusSha256": "e963539ad9d1c6f25973d04b177ee6052ee3d10f02ca28db9b3021ec49b8acf7",
+      "previewSha256": "1c46a682ca603c49a5d2dae25db4588c75b4e4fa7b57c64d0351d40cabe807e6",
+      "previewBytes": 101336,
+      "previewUrl": "/__cf-audio-review/ability.void.release.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.8
+    },
+    {
+      "id": "ability.void.release.3",
+      "group": "ability-void",
+      "kind": "designed",
+      "duration": 1.0559,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/15e3fe971ffd3415-forceField_003.ogg",
+          "sha256": "15e3fe971ffd3415e5ab641d3a4d043fb31f6712b0956315b524ba29c3889cda",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.955941
+        }
+      ],
+      "synthNote": 60,
+      "requirements": [
+        "ability.void.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 22.305700000000005,
+      "master": "masters/ability-void/ability.void.release.3.wav",
+      "masterSha256": "53fd9ef8d850fe2bca850d1e64f0c268a8f784827c9cdca8cee2b299773ef890",
+      "opus": "masters/ability-void/ability.void.release.3.opus",
+      "opusSha256": "0ae91b7df66f02a167128d8a93854062a743a0260555c4004142bc38e6484fe7",
+      "previewSha256": "83cd9f25725a4cee96ab2d6837bef2fb5f0aacab9b63439923dce30b3def43cf",
+      "previewBytes": 101480,
+      "previewUrl": "/__cf-audio-review/ability.void.release.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -5.8
+    }
+  ],
+  "listeningAccepted": false
+}

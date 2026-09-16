@@ -11,6 +11,23 @@ private, hashed and backed up. Human listening acceptance remains open.
 Adding an entry here does not make an asset player-visible. `AUDIO.md` owns runtime design,
 and `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` owns the staged product boundary.
 
+## September15 candidate acquisitions — not distributed
+
+Matches intake as of2026-09-15. Nick approved the supplied free-audio manifest and $0 workflow.
+All13 pack/music downloads and relevant recordings from its two NPS collections are retained
+locally, with1,092 audio entries and1,089 unique decoded hashes. Source-page snapshots, item
+recordists/descriptions, license IDs, original filenames and archive/media hashes are in
+[audio-production/manifests/acquisition.json](audio-production/manifests/acquisition.json).
+[Credits](audio-production/AUDIO-CREDITS.md) retain Kenney, rubberduck, OwlishMedia, yd,
+cynicmusic/The Cynic Project and NPS item-level provenance. NPS public domain is not relabelled
+CC0; designed voices are not authentic wildlife. Creator notification requests were retained
+without sending messages. No optional account/API or additional purchase was used.
+
+The790 rendered candidates, loop copies and original MIDI sketches/stems are not approved for
+player distribution. Rights traceability is separate from listening, dry-source and biological
+context review. None changes the eight-asset runtime rights manifest above. Original sources,
+project media and masters are local/ignored; this batch does not establish an independent backup.
+
 ## 1. Rights rule
 
 Only these sources are acceptable:

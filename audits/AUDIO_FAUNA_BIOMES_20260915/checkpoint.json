@@ -1,0 +1,12 @@
+{
+  "schema": "cf.local-checkpoint/v1",
+  "attempt": "git commit -S",
+  "exit": 128,
+  "error": "1Password: agent returned an error; fatal: failed to write commit object",
+  "head": "b95c4dc03259dc85f1e345a60e241c01154da069",
+  "cachedUpstreamBehindAhead": "0\t115",
+  "cachedDevelopBehindAhead": "0\t226",
+  "unsignedFallback": false,
+  "githubWrites": false,
+  "work": "staged; .DS_Store excluded"
+}

@@ -1,0 +1,103 @@
+{
+  "schema": "cf.audio-review-native/v1",
+  "scope": "DIRTY LOCAL DEVELOPMENT DIAGNOSTIC; not admission or listening approval",
+  "head": "b95c4dc03259dc85f1e345a60e241c01154da069",
+  "status": "PASS",
+  "errors": [],
+  "checks": [
+    {
+      "name": "actual game dialog and catalogue",
+      "value": 1175
+    },
+    {
+      "name": "explicit gesture playback or enforced game policy",
+      "value": "Playing selected candidate."
+    }
+  ],
+  "sourceBefore": {
+    "port/v2/apps/game/src/main.ts": "f088fcc81d3e2d203afffa051e11e8d90b8e10ea2665296cab106b81261c9bfc",
+    "port/v2/apps/game/src/audio-production-review.ts": "c2119c17ba6de2d08f8b9d919c2260a001058de42372cbe8f882af1f65216377",
+    "port/v2/apps/game/audio-production-assets.ts": "ed61f3b3881fcb0ff10e99c3ec5bb0ce1246aa6d439e3a7e34ebdaca8b0a19ca",
+    "audio-production/audition/catalog.json": "ee63a6ec85dc1c16044f20161df4fa3d1c402d01b45cbe341d7726ee01eec030",
+    "audio-production/audition/plans.json": "ef33a2966be8d39294494ce43163b2d9b915a535a14e2eb3ef1e11f2793234f7",
+    "port/v2/apps/game/src/audio-production-plan.ts": "1ecd3494a38afb7ff75c957db5f48ccaf4ff20f677b4a873ed32f7ea60242d2b",
+    "port/v2/apps/game/src/audio-production-mix.ts": "381352a519143e4e17c0207318d0042884738f8aa2020389cdf1898ad62a283f"
+  },
+  "origin": "http://127.0.0.1:5173/",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.32",
+    "revision": "@9aab8632678bdbd60c393455e1394ee523ba682d",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.4",
+    "protocol_version": "1.3"
+  },
+  "activeBeforeStop": 1,
+  "playStatus": "Playing selected candidate.",
+  "staleStatusControl": {
+    "status": "Stopped.",
+    "active": 1
+  },
+  "activeAfterStop": 0,
+  "layered": {
+    "status": "Playing layered recipe.",
+    "active": 1,
+    "afterStop": 0
+  },
+  "musicTransition": {
+    "status": "Playing layered recipe.",
+    "active": 1
+  },
+  "mobile": {
+    "left": 3,
+    "right": 387,
+    "width": 390,
+    "scrollWidth": 382,
+    "clientWidth": 382
+  },
+  "codecs": {
+    "rows": [
+      {
+        "id": "civet-fictional",
+        "wavFrames": 32198,
+        "opusFrames": 32198,
+        "channels": 1,
+        "rate": 48000
+      },
+      {
+        "id": "biome.temperate",
+        "wavFrames": 768000,
+        "opusFrames": 768000,
+        "channels": 2,
+        "rate": 48000
+      },
+      {
+        "id": "music.original.calm",
+        "wavFrames": 1152000,
+        "opusFrames": 1152000,
+        "channels": 2,
+        "rate": 48000
+      },
+      {
+        "id": "v3.music.calm",
+        "wavFrames": 1152000,
+        "opusFrames": 1152000,
+        "channels": 2,
+        "rate": 48000
+      }
+    ],
+    "corruptRejected": true
+  },
+  "sourceAfter": {
+    "port/v2/apps/game/src/main.ts": "f088fcc81d3e2d203afffa051e11e8d90b8e10ea2665296cab106b81261c9bfc",
+    "port/v2/apps/game/src/audio-production-review.ts": "c2119c17ba6de2d08f8b9d919c2260a001058de42372cbe8f882af1f65216377",
+    "port/v2/apps/game/audio-production-assets.ts": "ed61f3b3881fcb0ff10e99c3ec5bb0ce1246aa6d439e3a7e34ebdaca8b0a19ca",
+    "audio-production/audition/catalog.json": "ee63a6ec85dc1c16044f20161df4fa3d1c402d01b45cbe341d7726ee01eec030",
+    "audio-production/audition/plans.json": "ef33a2966be8d39294494ce43163b2d9b915a535a14e2eb3ef1e11f2793234f7",
+    "port/v2/apps/game/src/audio-production-plan.ts": "1ecd3494a38afb7ff75c957db5f48ccaf4ff20f677b4a873ed32f7ea60242d2b",
+    "port/v2/apps/game/src/audio-production-mix.ts": "381352a519143e4e17c0207318d0042884738f8aa2020389cdf1898ad62a283f"
+  },
+  "listeningAccepted": false,
+  "browserClosed": true,
+  "serverClosed": true
+}

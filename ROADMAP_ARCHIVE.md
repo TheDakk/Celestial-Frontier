@@ -1,3 +1,340 @@
+# Archived handoff — audio candidate batch before coverage continuation
+
+## SESSION HANDOFF — 2026-09-15 · full audio recipe coverage for review
+
+Verified OpenAI/Codex on macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac.
+Cached upstream origin/openai/mac; source head at batch start b95c4dc0,115 ahead upstream,
+226 ahead cached origin/develop. Work remains local pending signed commit. Last signer failure:
+1Password agent returned error despite matching available/configured keys; cause unconfirmed.
+No unsigned fallback, branch, GitHub write, Actions run or history rewrite. PR42 parked.
+Same uninterrupted toolchain receipt: REAPER7.80/SurgeXT1.3.4; $0 additions.
+
+The September15 coverage continuation produced385 additional candidates:378 phase/material/
+environment/event/life treatments and seven original music arrangements. The local library now
+has1,175 validated WAV/Opus pairs,961 distinct PCM treatments,35 editable production projects,
+102 retained loop derivatives and49 separately rendered instrument stems (28 new four-part score
+stems plus21 earlier). All49 stems also passed full decode/hash/true-peak checks. Original source
+bytes and accepted game assets remain unchanged; additional spending$0.
+
+Functional coverage is now tracked separately from authentic recordings. The new compiler and
+layered player resolve486 audited scenarios:484 to actual rendered components and2 to explicit
+airless silence, with zero missing component routes in that matrix. It includes43 biomes,
+registered weather plus rain/snow/dust/storm, all11 ability themes with cast/impact/sustain/release/
+shield/heal/tick,18 combat cue families,16 audio families,13 material classes,10 surfaces and27
+locomotion mappings. Seven music states and49 transition schedules are described. These are
+unapproved review recipes, not a claim of complete artistic quality or ordinary-game promotion.
+
+All1,010 canonical Earth identities retain the existing procedural audio owner. The631 fauna
+have13 exact common-name recording candidates and618 authentic-source gaps. The379 non-fauna
+identities use explicitly fictional botanical/colony sonification, not animal-recording claims.
+The old1205-row source-assignment ledger remains separate; its1030 unassigned rows are not an
+aggregate functional completeness metric. No generic treatment is relabelled as a species recording.
+
+Resolved sound plans use the painter record's family and material. The hash-bound adapter was
+exercised on the real Civet, candidate-01 fox and native-painter-parts-03 procedural records;
+materials are furred/furred/translucent, with corrupt-record refusal. Existing records lack
+kingdom, acoustic size and propagation medium. These remain explicit caller context; the proof's
+medium/size values are diagnostic declarations, not inferred biological measurements. Named Earth
+voice requests stay exact species/behavior requirements and refuse unrelated family substitutions.
+
+The in-game DEV-only Sound review now auditions layered contact, environment, ability and music
+plans. Independent component selection, bounded sequential loading, source-preserving loop blends,
+linear rate conversion and complementary musical fades create one bounded PCM preview through
+the existing audio owner. Missing components refuse playback. Maximum24s stereo output9.216MB;
+no full-library cache, new AudioContext, third-party playback URL or player-pack change.
+
+Evidence: audits/AUDIO_GAME_COVERAGE_20260915/README.md/status.json/checks/native-03;
+audio-production/reports/functional-coverage-final.json, stem-validation.json and status.json.
+Final unit suite377 files/4372 passes/one existing skip; typecheck, root validate/smoke PASS.
+Native03 is local dirty-source diagnosis, not release admission or phone/listening approval.
+First failed checks are preserved and diagnosed; no test/budget relaxed. Player release bulletin
+is byte-identical to HEAD because this development-only tool is not a shipped player feature.
+main.ts hunk retained from prior batch: DEV-only review startup and pagehide cleanup. Announce
+it in the commit message. Claude's motion/effects/battle2/soundkit/worldlife paths remain read-only.
+
+Review: audio-production/REVIEW_PROMPT.md; ZIPs in audio-production/review-packs/coverage-20260915,
+each below30 MB. Local Vite audition http://127.0.0.1:5178/?audioReview=1 (session94896).
+See audits/AUDIO_GAME_COVERAGE_20260915/FINISH_LINE_PLAN.md for the next bounded steps.
+No automatic sound acceptance or promotion. Authentic animal/source context and subjective
+quality remain human gates; no physical phone/Safari/offline audio proof this batch.
+
+C2 still visually unaccepted despite geometric seams/rest gates: full motion shows cuts/stretch.
+The new sound adapter does not change that. C1 mechanical intake is done; Nick owns final Wild
+acceptance. C4 painted sheets remain12 at a time, with an eye-review stop. Weather E remains
+active; second weather pick and smaller-finisher phone decision remain. C5 starts with pruning
+on openai/mac after prerequisites, then three merge-commit tiers into develop (UI, painted engine,
+research tools as tools), then the future release PR. LFS only on Nick's explicit go.
+
+Codex continues from the recorded gaps without repeating acquisition or overwriting originals.
+Claude need not open/sync its app now; when Nick requests review, use the one prompt and ZIP index.
+No PR Ready, push, label, dispatch, merge, release or deployment is authorized.
+
+
+Final local checkpoint: the new signed commit attempt failed again with 1Password agent error;
+no commit object was written. HEAD remains b95c4dc0,115 ahead cached upstream and226 ahead cached
+develop. Everything completed is staged; .DS_Store is pre-existing and excluded. USB inventory
+listed no iPhone and devicectl is not installed; no physical-device proof is claimed.
+Review delivery is eight ZIPs (largest27.94 MB), indexed at audio-production/review-packs/INDEX.md.
+The one prompt and FINISH_LINE_PLAN.md describe exactly what is completed and what remains.
+
+
+## SESSION HANDOFF — 2026-09-15 · audio candidates and review
+
+OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac,
+tracking origin/openai/mac. Latest signed head remains b95c4dc0: 115 ahead upstream,
+226 ahead cached origin/develop, zero behind. Work is staged/pending signing. The configured
+public key matches the key 1Password lists, but op-ssh-sign still returns agent error. No
+unsigned fallback, signer change, GitHub write or new branch. PR42 parked; LFS only on Nick's go.
+
+The supplied Celestial-Frontier-Free-Audio-Handoff.zip has been extracted verbatim into
+celestial-frontier-audio-handoff/. SHA receipt: audits/AUDIO_PRODUCTION_20260915/supplied-handoff.json.
+The former missing-input question is resolved. Nick authorized its free sources and installed
+REAPER/Surge/stock-effects workflow with $0 additional spend, beyond a first proof. Kit bytes
+are unchanged. Do not reinstate the old original/commissioned-only execution gate.
+
+Current audio evidence: audio-production/README.md, AUDIO-COVERAGE.md, AUDIO-CREDITS.md,
+manifests/audio-coverage.json and audio-lock.json, reports/status.json, plus
+ audits/AUDIO_PRODUCTION_20260915/EXECUTION.md and status-execution.json.
+All 13 approved pack/music downloads are present. The two NPS collections contributed158
+recordings; two human/vehicle subjects are excluded from production. 1,092 source audio entries,
+1,089 unique hashes, all fully decoded without error. Three NPS pages have no exposed audio;
+two archive housekeeping files were not extracted. Originals, credits and license pages retained.
+
+The installed REAPER7.80/SurgeXT1.3.4 produced790 candidate WAV/Opus pairs in19 source-based
+projects,635 distinct decoded PCM treatments,102 corrected deterministic loop copies, and21
+real instrument stems for seven original music sketches. Source media are relative in editable
+RPPs; actual synth states/MIDI/regions are saved. Masters48kHz/24-bit; review WAVs16-bit; no
+accepted asset replaced. Source archives, project media, masters and ZIPs are local/ignored,
+several GB, not independently backed up by this batch or included in a player pack.
+
+The normal game's explicit DEV-only ?audioReview=1 mount uses its existing finite audio owner.
+Source/recipe/credits, search, native Play, Stop and Close are present; hashes/sizes and aborts
+are enforced. Native local diagnosis04 passes real active-voice Stop with a false-green status
+control,390px containment, WAV/Opus frame parity for voice/ambience/music and corrupt-codec
+rejection. It is dirty-worktree development evidence, not admission, phone or listening proof.
+main.ts hunk: DEV-only review startup and pagehide cleanup. Claude-owned paths remain untouched.
+
+Tools: port/v2/tools/audio-production/LOCAL_RUN.md. acquire.py fetch/verify;
+produce.py prepare/render; produce.lua; report.py (use installed Python3.12); loops.mjs;
+music-stems.py; review-probe.mjs. No automatic rerender over an existing output directory.
+First loop failure is retained; fixes cover exact extensible-PCM admission, odd mono RIFF padding
+and Ogg demuxing. The Vite/PWA assertion now includes the audio plugin and proves it absent from
+the actual build graph, with a deliberately build-enabled plugin as the failing control.
+
+Listening/review: audio-production/REVIEW_PROMPT.md. Zero sound approvals/promotions.13 exact
+common-name source matches are separate from generic fictional voices; Civet authenticity is
+still missing. Most named fauna have no authentic recording here. Duplicate phase treatments,
+storm's two distinct takes, morphology/material routing, composed biome beds, contextual event
+promotion and final score/loop listening remain open. Do not call generic candidates complete
+coverage. The first review comparison includes fictional Civet/fox/procedural plus authentic
+Red Fox, bird, aquatic and invertebrate examples. iPhone/Safari/PWA and offline audio are untested.
+No additional delivery engineering or silent replacement of approved sounds is authorized.
+
+C2 remains visually unaccepted:61512b3a closes87 contacts/64 junctions and rest parity, but
+full poses still show cuts/stretch. Whole-action/aim modules and actual-producer controls are
+in C_PACKAGE_COMPLETION_20260915; gaze/view declarations, continuous skin and ten-second captures
+remain. C1 mechanical intake complete; final Wild acceptance is Nick's. C4 sheets twelve at a
+time. Weather E active; second ladder awaits pick. Klein phone probing stopped; up to three
+smaller licensed finishers on Mac before one phone attempt. C5 follows C2/weather/phone decisions,
+pruning first, three merge-commit tiers into develop, research tools as tools; no hosted write.
+
+Codex continues locally from this evidence and the concrete audio review gaps; Claude needs no
+app switch or synchronization now. Reuse this uninterrupted session's startup receipt. Do not
+copy files into Claude's tree or edit motion/, effects/, battle2/, soundkit/, worldlife/.
+
+
+Review delivery: five ZIPs under audio-production/review-packs/20260915, each below30 MB
+(1.45 MB code/evidence,5.51 MB focused listening,27.32/27.94/16.21 MB complete Opus parts).
+The prompt is audio-production/REVIEW_PROMPT.md; reports/review-packs.json binds ZIP hashes.
+Local Vite audition left running at http://127.0.0.1:5178/?audioReview=1 (terminal session94896).
+Enable Master Sound, then Sound review. No automatic playback or promotion. Full suite374
+files/4361 passes/one skip; final focused39 and native04 pass. Work staged, no new signed commit;
+HEAD b95c4dc0 remains115 ahead upstream and226 ahead cached develop. No app switch for Claude
+or GitHub action is needed now. Next user gate is listening/direction review; incomplete coverage
+and C2's visual failure remain explicitly open.
+
+
+## SESSION HANDOFF — 2026-09-15 · audio-production handoff location needed
+
+OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac.
+Latest signed head b95c4dc0: 115 ahead upstream, 226 ahead cached origin/develop, zero behind.
+The tested whole-action/aim and C3 export batch remains staged after op-ssh-sign failed.
+Do not bypass signing or retry without a ready agent. PR42 parked; GitHub step none.
+
+Nick now requests implementation of celestial-frontier-audio-handoff/CELESTIAL-FRONTIER-AUDIO-HANDOFF.md
+using audio-sources.json in that folder. $0 additional spend; use installed REAPER/Surge/stock
+REAPER effects, approved free packs and public-domain recordings, preserve originals/rights,
+cover the actual game, build editable projects/synth states/Lua scripts/renders/event mappings
+and an in-game audition screen. Continue beyond the first proof. Authentic animal recordings,
+fictional voices and approximations stay separate; placeholders are not species coverage.
+This direct request authorizes its approved sources without the earlier generic rights proposal
+as an execution gate. Kit bytes remain unchanged; don't infer approval of a wording edit.
+
+BLOCKER: the required folder/Markdown/manifest were not found in this worktree, checked Downloads
+or Claude audit/scratch locations. Nick has an outstanding question for its absolute path.
+Read and preserve those files first when located; do not invent their approved download list
+or schema. No pack/wildlife download has been attempted without that manifest.
+
+Unblocked work completed: actual game/audio source inventory (631 Earth fauna; 43 biomes;
+29 weather values; all eleven themes; traits, painter plans and event vocabularies), plus
+actual local REAPER/Surge host qualification. Current evidence:
+audits/AUDIO_PRODUCTION_20260915/README.md, game-inventory-v2.json, status.json and
+reaper-qualification-03/qualification.json. The inventory is not a recording assignment ledger.
+
+New tools in port/v2/tools/audio-production: inventory.mjs, qualify-reaper.lua, qualify-host.mjs
+and LOCAL_RUN.md. The actual installed REAPER 7.80/Surge XT 1.3.4 with stock ReaEQ/ReaComp
+saved editable RPP/MIDI/full synth state/parameters and rendered twice after reopen. Both
+three-second stereo 48 kHz/24-bit WAVs have identical decoded PCM, -33.45 dBTP, zero changed
+samples and a rejected changed-PCM control. All three stages exit zero. The first saved-copy
+exit failure and later random-phase replay difference are retained. Retrigger/zero-drift
+controls correct the latter for this state only. Container metadata can differ. These are
+technical diagnostics, not game voices/music or listening-approved assets. The Mac UI was
+locked, but command-line generation/rendering succeeded; no security/permission changes.
+
+Still pending for this audio request: manifest-approved downloads and license preservation,
+actual authentic/fictional source sets, production job compiler, species/family/theme/biome/
+weather/music coverage, game-event assignments, full audition screen and listening review.
+Existing pilot sample intake accepts 16-bit WAV with 24-second bounds; don't silently feed
+production 24-bit/Opus into it. Reuse the accessible finite-voice owner and preference/route/
+counterpart cleanup. No new gameplay or accepted asset was changed. Root validate/fingerprint
+passes; new CLI tools checked and executed natively. No full browser chain ran.
+
+C2 remains visually unaccepted: 87 contacts/64 junctions and rest parity pass at 61512b3a,
+but full shape still shows cuts/stretch. Whole-action/aim modules and actual-producer controls
+are tested in C_PACKAGE_COMPLETION_20260915; actual gaze/view declarations, continuous skin
+and ten-second captures remain. User's whole-body procedural/named animal goal is unchanged.
+C1 mechanical intake complete; Nick owns final Wild acceptance. C4 library remains twelve per
+sheet with real painter-family coverage. Weather E active; second ladder awaits pick. Klein
+phone probing stopped; up to three smaller licensed finishers on Mac before one phone attempt,
+no delivery engineering first. C5 pruning/three merge-commit tiers/release follow C2/weather/
+phone decisions with exact hosted authorization; LFS only on Nick's go. No new branches.
+
+Claude-owned motion/effects/battle2/soundkit/worldlife and tests remain read-only; no main.ts
+hunks. Reuse the current toolchain receipt; no new software installed for this request. Codex
+continues locally once the handoff is available; Claude needs no action or app switch now.
+
+---
+
+## Archived September 15 — before supplied audio handoff preparation
+
+## SESSION HANDOFF — 2026-09-15 · whole-body action and sound source preparation
+
+OpenAI/Codex on macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac.
+The previous staged cross-package changes are now signed b95c4dc0 (115 ahead upstream,
+226 ahead cached origin/develop at that commit). 1Password signing succeeded; earlier
+Secure Enclave failures are historical. No GitHub step; PR42 parked.
+
+Nick's target is a full fluid creature: look forward/back/up/down and act out attacks
+through its whole body, including every generated land/air/aquatic/rooted form. The
+painted pose is the rest reference. Do not declare seam coverage, moved portraits or
+fourteen template names as that result. C2 is still visually unaccepted.
+
+Current batch: complete-frame action playback samples transitions at explicit command
+time and preserves all record-named appendages/root-only displacement. Nine actual
+Civet/fox/procedural idle/melee/hit comparisons match the pinned read-only GSAP producer.
+The new in-view aim solver requires actual painter/authored gaze geometry and ancestry;
+requests another view or body turn when unavailable. No actual view declarations,
+alternate-view rigs, ordinary-game consumer or new native captures are complete.
+The 61512b3a native skin result still has 87 pair/64 junction gates at five poses and
+zero rest changes, but full images show cut edges/overlap/stretch. Preserve the 8% contact,
+2048 atlas and 40 drawable bounds; next qualify continuous skin and full real poses.
+
+C3: voice and ability/battle/bed set export plus declared loop rendering are implemented.
+Source and Opus peaks/frames/budgets are verified; original bytes retained. Weather
+export has no agreed technical profile. Nick has no original/commissioned recordings;
+SOUND_SOURCE_PROPOSAL.md in the current audit contains one exact section 1 rights change
+for verified CC0/public-domain recordings and three source candidates. Await Nick's
+approval before kit adoption/source use. No actual sound acquired or accepted yet.
+
+Checks: 52 Node tool tests, 373 Vitest files / 4357 pass plus one skipped, typecheck and
+root validation/50-probe fingerprint pass. Retained instrument/negative failures explain
+GSAP quantization, corrected eye pivot, bounds refusal, bed byte-budget and ffprobe EPIPE.
+No integrated browser chain, new image, inference or sound production in this batch.
+
+One consolidated review and the complete C1–C5 remaining plan are in
+[audits/C_PACKAGE_COMPLETION_20260915/README.md](audits/C_PACKAGE_COMPLETION_20260915/README.md),
+UPDATED_PLAN.md and REVIEW_PROMPT.md. C1 intake is mechanically complete; Nick owns final
+Wild acceptance. C4 remains after the proof, twelve images per review and actual painter
+adapters in approved order. No visual acceptance is inferred from intake tooling.
+
+Weather E is active; the second deterministic ladder awaits Nick's pick. Klein phone
+probing stopped. Up to three redistributable smaller finishers must qualify on Mac before
+one phone attempt; no delivery engineering before that result. C5 pruning/promotion follows
+C2/weather/phone decisions: three merge-commit tiers into develop (production UI, painted
+landfall engine, research tools as tools), then one authorized develop→main release/full
+chain. No new branches, Ready PR, Actions, push, merge, release or history rewrite now;
+audits LFS migration only on Nick's go.
+
+Claude-owned motion/, effects/, battle2/, soundkit/, worldlife/ and tests stay read-only.
+No main.ts hunks or kit edits in this batch. September 15 toolchain startup complete:
+REAPER 7.80 and Homebrew 7.0.1, capabilities verified; runtime/test pins unchanged.
+Native browser commands require escalation and clean signed source. Codex continues
+local work; Claude needs no action or app switch until Nick elects the consolidated review.
+
+Latest commit attempt for the September 15 code/packet failed in op-ssh-sign with
+“1Password: agent returned an error”; root cause not established. HEAD remains b95c4dc0,
+115 ahead upstream / 226 ahead cached develop, zero behind. Tested changes and docs are
+staged. Nick has pending wording and signing questions; no unsigned bypass. The receipt
+is C_PACKAGE_COMPLETION_20260915/signing-attempt.json. Retry the configured signed commit
+when Nick confirms signing approval; do not redo unchanged tests or native graphics.
+
+## Archived September 15 — before whole-action and audio-export continuation
+
+## SESSION HANDOFF — 2026-09-14 · cross-package coding and consolidated review
+
+Codex works locally on openai/mac. Nick authorizes continued C2 and other C-package coding
+without waiting for Claude. Current signed C2 source is 61512b3a: 114 ahead upstream and
+225 ahead cached origin/develop at its commit. Signing succeeded for C2 through the configured
+1Password agent. The later intake/evidence commit failed at 20:06 UTC: Secure Enclave/system biometric
+authentication failed before key retrieval. All verified changes remain staged. Nick was asked to
+unlock with the account password inside 1Password; no credentials or security changes are requested.
+
+Matches code as of 2026-09-14. C2 source **61512b3a** passes the independently enumerated
+87 pair contacts and 64 three/four-owner junctions at all five native poses. All three masters
+retain zero changed rest channels; CPU update p95 is 0.80/0.90/0.40 ms (Civet/fox/procedural).
+This is coverage and update-time evidence, not whole-motion acceptance. Full posed images still
+show hard cut/overlap edges and stretched paint. No new ten-second articulated capture is qualified.
+See [current evidence](audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json) and
+[combined review](audits/CROSS_PACKAGE_PROGRESS_20260914/README.md).
+
+C2 next: correct visible ownership/texture transitions with actual anatomy and shared curves,
+then qualify full poses and the ten-second Civet/fox/procedural captures. Do not use zero gap
+counts as a shape waiver. Candidate07 binds original descendant texels at multi-owner junctions;
+rest sockets have zero area. Retain failed candidates, 8% contact limit, atlas/40-drawable budgets,
+masters and named anatomy. The corrected read-only producer SHA is
+6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74.
+The PoseTarget frame adapter is implemented; Claude-owned battle2 adoption is pending.
+FAMILY_COVERAGE.md in the C2 audit records all fourteen template coverage gaps; three quadruped
+records do not qualify the universe.
+
+C3: voice intake and deterministic offline Opus export are implemented. New closed ability/battle
+and first temperate/rain source-set intake checks rights declarations, dry PCM masters and hash-bound
+loop sample ranges. No actual source recordings, legal/listening acceptance, derived voices or
+battle audio integration are complete. Fur-source naming is not invented where the contract is silent.
+C4: one-to-twelve master batch intake and seeded three-plate arena intake are implemented. The
+existing accepted Earth arena passes (1672x941, ground 0.78). No new art or changed acceptance.
+The new tools do not prove that keyed copies came from a particular keyer; visual/lineage review remains.
+
+Checks: 50 Node tool tests, 371 Vitest files / 4351 tests passed (one skipped), typecheck and
+root validation including the 50-probe fingerprint pass. See CROSS_PACKAGE_PROGRESS_20260914
+for checks, current package status and the single REVIEW_PROMPT.md for a later Claude review.
+Earlier batches fixed normal PNG hashing, source/export guards and C5 admission defects;
+those receipts remain in C_SYSTEMS_CONTINUATION and C_LANE_BATCH_REVIEW/REPAIRS audits.
+
+Weather E remains active; the existing second weather ladder awaits Nick's pick. Klein phone
+probing is stopped. At most three redistributable smaller finishers must first qualify on Mac,
+then one phone attempt; no delivery work beforehand. C3 first new sounds and C4 twelve-image
+sheets still stop for Nick's review. C1 mechanical intake is complete; final image acceptance is Nick's.
+
+No kit edits, new paintings, inference, recordings or main.ts changes in this batch. No new branch,
+GitHub write, PR Ready, push, release or history rewrite. PR42 remains parked. C5 follows the
+C2/weather/phone prerequisites: prune openai/mac, three merge-commit tiers into develop (production
+UI; painted landfall engine; research tools as tools), then one develop-to-main release/full chain
+with exact authorization. LFS migration only on Nick's go. Claude-owned motion/, effects/, battle2/,
+soundkit/, worldlife/ and their tests remain read-only. Reuse the uninterrupted toolchain receipt;
+native browser work requires escalation and clean signed source. Codex continues local work;
+Claude needs no action or app switch until Nick chooses to request the consolidated review.
+
 ## Archived September 14 — before cross-package intake completion
 
 ## SESSION HANDOFF — 2026-09-14 · C2 junction closure qualification
