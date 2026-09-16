@@ -3,7 +3,7 @@
  * and proximal limb-to-axial skin must remain continuous. Distinct limbs and
  * distal limb/body silhouette crossings are measured separately, not welded.
  * Root/pelvis ink belongs to the declared remainder surface. */
-import {GRAPH} from '../creature-animation/quadruped-template.mjs';
+import {familyContractForRecord} from '../creature-animation/family-contracts.mjs';
 const need=(ok,message)=>{if(!ok)throw Error('Source join continuity: '+message);};
 const CELL=32;
 const legJoint=joint=>/^(?:fore|hind)(?:Near|Far)(?:Root|Knee|Ankle|Paw)$/.test(joint);
@@ -41,9 +41,10 @@ export function createSourceJoinProbe({record,binding,atlas,remainderPartId}){
  const {width,height}=record.geometry,parts=binding.parts.filter(p=>p.kind==='part'),skin=binding.paintSkin;
  need([width,height].every(n=>Number.isInteger(n)&&n>0&&n<=2048),'source dimensions');
  need(atlas?.rgba?.length===atlas.width*atlas.height*4&&atlas.width===binding.atlasSize.width&&atlas.height===binding.atlasSize.height,'atlas dimensions');
- const byId=new Map(parts.map(p=>[p.id,p])),declared=new Map(parts.map(p=>[p.joint,p.id])),parent=new Map(GRAPH),joints=new Set(['root',...GRAPH.map(([j])=>j)]);
+ const family=familyContractForRecord({...record,template:record.template??{id:'quadruped'}});
+ const byId=new Map(parts.map(p=>[p.id,p])),declared=new Map(parts.map(p=>[p.joint,p.id])),parent=new Map(family.graph),joints=new Set(family.joints);
  need(byId.size===parts.length&&declared.size===parts.length&&parts.every(p=>joints.has(p.joint)),'unique known source owners');
- const remainder=remainderPartId??parts.find(p=>p.joint==='spine')?.id;need(byId.has(remainder),'explicit or sole spine remainder owner');
+ const remainder=remainderPartId??binding.sourceJoinTopology?.remainderPartId??(family.id==='quadruped'?parts.find(p=>p.joint==='spine')?.id:undefined);need(byId.has(remainder),'explicit family remainder owner required');
  const ownerAtJoint=j=>{if(!j)return null;if(declared.has(j))return declared.get(j);if(j==='root'||j==='pelvis')return remainder;return ownerAtJoint(parent.get(j));};
  const nearest=p=>ownerAtJoint(parent.get(p.joint));
  const ancestor=(a,d)=>{for(let j=parent.get(d.joint);j;j=parent.get(j))if(ownerAtJoint(j)===a.id)return true;return false;};
@@ -61,7 +62,7 @@ export function createSourceJoinProbe({record,binding,atlas,remainderPartId}){
   if(!owner[i]||!owner[j]||owner[i]===owner[j])return;
   let a=parts[owner[i]-1],d=parts[owner[j]-1];
   if(nearest(a)===d.id)[a,d]=[d,a];
-  const nearestAttachment=nearest(d)===a.id,proximal=proximalSkin(a,d);
+  const nearestAttachment=nearest(d)===a.id,proximal=family.id==='quadruped'&&proximalSkin(a,d);
   if(!nearestAttachment&&proximal&&upperJoint(a.joint))[a,d]=[d,a];
   if(!nearestAttachment&&!proximal){const ids=[a.id,d.id].sort(),kind=ancestor(a,d)||ancestor(d,a)?'non-nearest ancestral silhouette adjacency':'independent sibling adjacency',key=ids.join('|');a=byId.get(ids[0]);d=byId.get(ids[1]);if(!excluded.has(key))excluded.set(key,{name:key,parts:ids,reason:kind,ancestorPart:a.id,descendantPart:d.id,sourceEdges:0,samples:[],seen:new Set()});const row=excluded.get(key);row.sourceEdges++;sampleEdge(row,edge,a,d);return;}
   const key=a.id+'--'+d.id;if(!joins.has(key))joins.set(key,{name:key,rule:nearestAttachment?'nearest anatomical attachment':'proximal body-skin attachment',ancestorPart:a.id,descendantPart:d.id,ancestorJoint:a.joint,descendantJoint:d.joint,sourceEdges:[],samples:[],seen:new Set()});const join=joins.get(key);join.sourceEdges.push(edge);

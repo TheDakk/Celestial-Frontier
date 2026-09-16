@@ -4,7 +4,8 @@ import {validateSeamBridges,createSeamGeometry,writeSeamPose} from '../../../too
 import {createArapScratch,solveArapSkin} from '../../../tools/creature-animation/arap-skin.mjs';
 import {createCompiledSkinField,applyCompiledSkinField} from '../../../tools/creature-animation/compiled-skin-field.mjs';
 import {createOpaqueSeamSamplingGuard} from '../../../tools/creature-animation/seam-sampling-guard.mjs';
-import {GRAPH, admitRecord, hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
+import {hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
+import {admitFamilyRecord} from '../../../tools/creature-animation/family-record.mjs';
 import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
 
 export type CreaturePoseV1 = Readonly<Record<string, {rotation:number; dx?:number; dy?:number}>>;
@@ -43,11 +44,12 @@ export interface CreaturePartsBindingV1 {
   readonly atlasSha256:string;
   readonly atlasSize:{width:number;height:number};
   readonly paintSkin?:PaintSkin;
+  /** Hash-bound source owner for root/pelvis ink on non-quadruped skins. */
+  readonly sourceJoinTopology?:{readonly remainderPartId:string};
   readonly seamBridges?:{readonly schema:'cf.seam-bridges/v1';readonly groups:ReadonlyArray<CreatureSeamGroupV1>};
   readonly parts:ReadonlyArray<{id:string;joint:string;layer:'far'|'near';frame:Box;cutout:Box;kind:'part'|'joint-patch'}>;
 }
 const requireValue=(ok:unknown,reason:string):void=>{if(!ok)throw Error('Creature rig: '+reason);};
-const joints=['root',...GRAPH.map(([child])=>child)];
 
 const validBox=(box:Box,w:number,h:number)=>box&&[box.x,box.y,box.width,box.height].every(Number.isInteger)
   &&box.x>=0&&box.y>=0&&box.width>0&&box.height>0&&box.x+box.width<=w&&box.y+box.height<=h;
@@ -85,13 +87,14 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   cutoutBytes:Uint8Array,cutoutAlpha:Uint8Array,atlasBytes:Uint8Array,
   decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>=decodeAtlasPng):Promise<CreatureRigV1>{
   const record=structuredClone(recordInput),binding=structuredClone(bindingInput);
-  await admitRecord(record,cutoutBytes,cutoutAlpha);
+  const template=await admitFamilyRecord(record,cutoutBytes,cutoutAlpha);
+  const joints=[...template.joints];
   requireValue(binding?.schema==='cf.creature-parts/v1','unsupported parts schema');
   const {bindingHash,...body}=binding;
   requireValue(shaPattern.test(bindingHash)&&await hashJSON(body)===bindingHash,'corrupted part binding');
   requireValue(binding.recordRecipeHash===record.recipeHash,'parts belong to another record');
   requireValue(shaPattern.test(binding.atlasSha256)&&await hashBytes(atlasBytes)===binding.atlasSha256,'mismatched atlas hash');
-  const skeleton=createSkeletonPoseProgram({graph:GRAPH,bodyAxis:['pelvis','chest']},record.landmarks);
+  const skeleton=createSkeletonPoseProgram(template,record.landmarks);
   const {width:w,height:h}=record.geometry,{width:aw,height:ah}=binding.atlasSize;
   requireValue([aw,ah].every(n=>Number.isInteger(n)&&n>0&&n<=2048),'atlas budget');
   requireValue(binding.parts.length>0&&binding.parts.length<=40,'part budget');
@@ -106,6 +109,7 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   requireValue(!(binding.paintSkin&&binding.seamBridges),'one deformation owner');
   if(binding.paintSkin){requireValue(binding.parts.every(p=>p.frame.width===p.cutout.width&&p.frame.height===p.cutout.height),'paint skin requires native source frames');validatePaintSkin(binding.paintSkin,binding.parts,w,h,joints);}
   if(binding.seamBridges!==undefined){
+    requireValue(template.id==='quadruped','legacy seam bridge ownership is quadruped-only; use family paint skin');
     requireValue(binding.seamBridges?.schema==='cf.seam-bridges/v1','seam bridge schema');
     validateSeamBridges(binding.seamBridges.groups,binding.parts,w,h,binding.atlasSize,joints);
   }

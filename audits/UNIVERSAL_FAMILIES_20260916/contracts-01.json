@@ -1,0 +1,137 @@
+{
+  "schema": "cf.family-contract-comparison/v1",
+  "status": "PASS",
+  "scope": "Anatomy contract equivalence; synthetic landmarks only, not painted qualification",
+  "families": [
+    {
+      "id": "quadruped",
+      "joints": 31,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "hopper",
+      "joints": 31,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "biped-bird",
+      "joints": 19,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "fish",
+      "joints": 13,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "insect",
+      "joints": 21,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "serpent",
+      "joints": 13,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "arachnid",
+      "joints": 22,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "radial",
+      "joints": 21,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "plant-woody",
+      "joints": 11,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "plant-herb",
+      "joints": 17,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "myriapod",
+      "joints": 29,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "cephalopod",
+      "joints": 32,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "flyer-membrane",
+      "joints": 22,
+      "geometries": 65,
+      "maximumError": 0
+    },
+    {
+      "id": "primate",
+      "joints": 22,
+      "geometries": 65,
+      "maximumError": 0
+    }
+  ],
+  "sources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/index.ts",
+      "sha256": "5782f93542b0f138786486d0657e3b02796ecd7192336735c83eeb78b2fbbc68"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timing.ts",
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/budget.ts",
+      "sha256": "3fac6ef0eeefe1f979130a6a0ba3adf08d3a876495e5c44a047ba1df2e1bafb5"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "sha256": "6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "ea1a4a57a65aa10cc1872304c9e87f31f47fcea0081f7bb7f947afab46d8bbbc"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "5aff1698c63fdd66f1f83f28b61912d477593c8af4a8b96761c91d8460277566"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "dc1ef0becac76be8997789b08e1058fcddd04fcdd12edfff71d10a3ce02abcac"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "a3b07b1ab839db68669e5ae2fcd24e9314c7d6495a01d2b009e8b3f2d5a0b361"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "f8091e7cec3ec55fc5da48f8d996fdf0e1545fa1adf593e5bbe60f9c11c9ba3d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "6a10af5e4b07fc49ba7a6a27ce58e96ffad983b3182549aecc8309a9d0e18c97"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "08319431f79dd7d51ee247cb4065d49304c0cd332ccec6d7505cec0238af71d0"
+    }
+  ]
+}

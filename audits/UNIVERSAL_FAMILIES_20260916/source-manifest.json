@@ -1,0 +1,83 @@
+{
+  "schema": "cf.family-review-source/v1",
+  "baseCommit": "1a6dd61db829cba719de31826dede3e1e9680b0f",
+  "state": "uncommitted staged source; signature refused",
+  "files": [
+    {
+      "path": "port/v2/apps/game/src/creature-rig-families.test.ts",
+      "sha256": "bcfdb84e2f3cce52e252aa9e9857e4c6b47f5371186afea1a6032f08e338874d"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig.ts",
+      "sha256": "3cb57744b837e7a64a91c112d3d0d06388dd1cd8d8613b90169c4e9f2b615742"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides.ts",
+      "sha256": "cdf0e7b35cb01af016ba5ed668e43bdb8a813e4646932556746b9c9db76997eb"
+    },
+    {
+      "path": "port/v2/packages/art/src/invertoverrides.ts",
+      "sha256": "34983a0ba087cf3913bbefd673a3b46803ef422e266faa4905688066a74b3ec8"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-topology.ts",
+      "sha256": "b539d5e302f878135fcfde82a9e30c7bedfffc520f006ccddbf993cebd8a3bc7"
+    },
+    {
+      "path": "port/v2/packages/art/src/proceduralfamilies.ts",
+      "sha256": "a098219913075bdfbbc712ee6574810c26d757caf65c51d4e4bc78e6ae1bc1ee"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesoverrides.ts",
+      "sha256": "fa3c2e56ae71923f5de730846134e86f83f8a99c08570d92c92b872539f1be25"
+    },
+    {
+      "path": "port/v2/packages/art/test/earth-resident-layer.test.ts",
+      "sha256": "0160c97f55bf6a1a3c97a545153d8915503b2c727da1eaa1072e1ec4e73b3f43"
+    },
+    {
+      "path": "port/v2/packages/art/test/painter-topology.test.ts",
+      "sha256": "db1083b63d4e9239906fb0ab34ea4c7b7444ab9c692126fbfcdb32290b609729"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-paint-skin.mjs",
+      "sha256": "baf8cd0eed590e7f862baff77762c1efc2ce7d4a30c92e4ceed38c72dac345f5"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-atlas-probe.mjs",
+      "sha256": "e767d6b9b8bbe52b8382b5538ba155daae40138539d7b31072d8a7d06471de15"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contract-probe.mjs",
+      "sha256": "0bc30fb84493b641ce55e3563594fe604c2a759f0e521b88ab7ec3f5c296f73b"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "05c8a1fbcee74f4ace17b959b6961fefbf491f3ab6146cc75f57a5deb036c834"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "78b7c7a941aaf87b719eb9d0f6b41ae099afdda27ceb1bc1d0ac0a604363df7a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-record.d.mts",
+      "sha256": "e3baaa1756aebe183d46857dbbf573e2587740a7090c3b8557d63eae921921ba"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-record.mjs",
+      "sha256": "95595f5c24a5a8dbc36394339a29c133f35d71d6264c2ab642e1054815cc8515"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-record.test.mjs",
+      "sha256": "ef7fb179693a4dbcc98002f4eb25b70775e301f8cb7a3512f4021d64ffccb0d1"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/part-masks.mjs",
+      "sha256": "41c71043de2d5569940ab32345facb2262efe5e5ef3e90cff2cc7b8fa3017f73"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/test-fixtures/family-records.json",
+      "sha256": "80bc11fc5f2045d783ef2c82e39898cffac2b680e7895f6e679da4157b586b84"
+    }
+  ]
+}

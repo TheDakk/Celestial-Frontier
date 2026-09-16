@@ -12,13 +12,14 @@ const finitePose=pose=>{
  * pose is never forced through a grounded solve or a weakened contact limit.
  * Plan snapshots prevent later caller edits from invalidating cached boundaries.
  */
-export function createTurnContactSampler({plans:inputPlans,motionSampler,solver}){
+export function createTurnContactSampler({plans:inputPlans,motionSampler,solver,side='left'}){
+ if(!['left','right'].includes(side))throw Error('Invalid subject side');
  const plans=structuredClone(inputPlans);turnSequenceFrame(plans,0);
  if(typeof motionSampler?.sampleSequence!=='function'||typeof solver?.resolve!=='function')throw Error('Turn contact owners required');
- const beats=plans[0].beats;
+ const offset=side==='right'?5000:0,beats=plans[side==='right'?1:0].beats;
  if(![beats.commandEnd,beats.actionStart,beats.actionEnd,beats.returnEnd].every(Number.isFinite)
   ||beats.commandEnd<0||beats.commandEnd>=beats.actionStart||beats.actionStart>=beats.actionEnd||beats.actionEnd>=beats.returnEnd||beats.returnEnd>=5000)throw Error('Invalid support windows');
- const sample=ms=>finitePose(structuredClone(motionSampler.sampleSequence(plans,ms)));
+ const sample=ms=>finitePose(structuredClone(motionSampler.sampleSequence(plans,ms,side)));
  const boundary=ms=>{
   const raw=sample(ms),solved=solver.resolve(raw,true);finitePose(solved.pose);
   if(!Number.isFinite(solved.compression)||solved.compression<0)throw Error('Invalid contact compression');
@@ -27,14 +28,14 @@ export function createTurnContactSampler({plans:inputPlans,motionSampler,solver}
   }
   return {delta,compression:solved.compression};
  };
- const release=boundary(beats.commandEnd),landing=boundary(beats.returnEnd);
+ const release=boundary(offset+beats.commandEnd),landing=boundary(offset+beats.returnEnd);
  return {
   sample,
   resolve(ms,sampledPose){
-   const frame=turnSequenceFrame(plans,ms),raw=sampledPose===undefined?sample(ms):finitePose(structuredClone(sampledPose)),t=frame.localMs;
-   if(frame.target||t<=beats.commandEnd||t>=beats.returnEnd){
+   const frame=turnSequenceFrame(plans,ms),raw=sampledPose===undefined?sample(ms):finitePose(structuredClone(sampledPose)),t=frame.localMs,target=side==='right'?!frame.target:frame.target;
+   if(target||t<=beats.commandEnd||t>=beats.returnEnd){
     const solved=solver.resolve(raw,true);finitePose(solved.pose);
-    return {...solved,raw,planted:true,supportWeight:1,role:frame.target?'target':'attacker',localMs:t};
+    return {...solved,raw,planted:true,supportWeight:1,role:target?'target':'attacker',localMs:t};
    }
    let supportWeight=0,correction;
    if(t<beats.actionStart){supportWeight=1-smooth((t-beats.commandEnd)/(beats.actionStart-beats.commandEnd));correction=release;}

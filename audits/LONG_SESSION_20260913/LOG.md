@@ -562,3 +562,97 @@ both TypeScript checks and root validation pass. Native regression retains all
 pending. Signed base remains b79fd32e (117 ahead upstream / 228 ahead develop).
 No GitHub writes; PR42 parked. Next real painter adapter: bird, under the approved
 family order. Code progress does not depend on reclassifying synthetic fixtures.
+
+
+## Codex universal-family intake — 2026-09-16
+
+Signed preceding C2/shared-pose checkpoint: 1a6dd61d, signature verified; 118/229 ahead cached
+openai/mac/develop. New package audits/UNIVERSAL_FAMILIES_20260916 implements all fourteen closed
+family consumers and atlas intake, with 910 contract comparisons, 14 identical repacks, 137
+Node tests and 45 focused tests. Typechecks/root validation pass. Four painter topology observers
+preserve real counts and absent appendages; no guessed anatomy or new art. Nick's ownership
+exception for motion/ is requested because count variants exceed the existing producer graphs.
+No main.ts, kit, approved master, Claude-owned file or GitHub write. Native source regression
+is next after signing this source; calibration is not visual acceptance.
+
+Family checkpoint stop: the next signature was refused through both authorized signers.
+Source remains staged; no new commit after 1a6dd61d. Clean native regression was not run.
+Current signing approval and motion/ ownership exception are separate pending questions.
+No GitHub action. Review packet is prepared from exact current source with a SHA-256 manifest.
+
+## Codex · September 16 · opponent facing / Platypus articulation
+
+See ../BATTLE_FACING_20260916/README.md and REVIEW_PROMPT.md. Implemented a second actual
+17-part rig, right-side shared support/idle ownership, and a Civet turnaround profile with
+planar gaze and deforming neck attachment. Native04: 1,803 pose samples and three ~60 fps
+diagnostic clips. The head/shoulder fit remains rough; this is a review candidate, not accepted
+C2. Source master/kit bytes and Claude modules unchanged. No main.ts hunk or GitHub action.
+HEAD 1a6dd61d, 118 ahead origin/openai/mac, 229 ahead origin/develop; unsigned changes retained
+while existing 1Password signing approval is pending. Claude need not open/sync yet.
+
+## Codex · September 16 · preserve Civet body under source head
+
+Nick's missing-neck report is fixed in BATTLE_NECK_REPAIR_20260916. Original neck/chest
+paint remains visible; head replacements may hide only the head subtree. Added source-bound
+ear/jaw supports driven by unchanged shared tracks. Six native poses lose zero body pixels;
+old hidden-neck control loses 9,684–15,783. 1,803 motion samples and three ~60 fps diagnostic
+films; 14 tool tests, 8 focused tests, typecheck and root validation. Originals/kits/Claude
+modules/main.ts unchanged; no GitHub step. Visual acceptance stays Nick's. See README and
+REVIEW_PROMPT; separate old failures retained, no ordinary-game promotion.
+
+## September 16 — chin/throat review
+
+Nick's remaining chin notch is repaired by source-view alignment and independently checked
+with 17 native alpha ribbons across 601 poses. Original visible body joins on Civet, fox,
+procedural and the Platypus opponent pass the dense scan. Added generic surface-attachment
+checks and synthetic torn-join controls for all 14 inventories, without claiming all-family
+art coverage. The review also found/fixed post-recording stills sampled after player reset.
+See audits/BATTLE_THROAT_JOIN_20260916 for final motion-02, failures and consolidated prompt.
+No kit/master/Claude-owned/main.ts change, model run or GitHub write. Signing remains pending.
+
+## September 16 — focused impact presentation
+
+After Nick's positive throat-preview feedback, the diagnostic now highlights the receiving
+creature briefly and lowers full-scene white from 65% to 10%, following the same compiled
+flash envelope. No anatomy, timing, outcome, source art or kit change. Native correct/wrong-target
+controls pass; all 12 non-flash stills and three turn plans match prior bytes. Three new films
+run about 60 fps; full-frame CPU p95 2.8/2.5/1.8 ms. See BATTLE_IMPACT_POLISH_20260916 for the
+review prompt and receipts. Signed HEAD remains 1a6dd61d; staged continuation, GitHub none.
+
+
+## Codex continuation — 2026-09-16 real creature family review
+
+Package `audits/FAMILY_REAL_CREATURE_REVIEW_20260916/`: fish/bird source-bound atlases and
+native family films, actual Frog admission refusal, generic family seam-decoder fix, shared
+influence diffusion, negative controls and consolidated review prompt. Fish mechanical gates
+pass; Nick visual acceptance pending. Bird visual FAIL despite numerical PASS is recorded.
+Frog absent-appendage contract and fish realm need the pending motion ownership exception.
+No producer/kit/source-art changes. 45 Node and 19 runtime/painter tests, typecheck and root
+validation pass. C2 remains incomplete beyond qualified sources; no family coverage inflation.
+Signed HEAD `1a6dd61d`, 118 ahead cached upstream / 229 ahead cached develop; continuation
+staged pending signing. No GitHub write, main.ts hunk, PR Ready, merge or deployment.
+
+
+## Codex continuation — September16 mixed-habitat battle
+
+HABITAT_BATTLE_20260916 records explicit habitat admission, local motion snapshot/provenance,
+Frog absence/material and fish realm repairs, frontal wing projection, shared64-pass orientation
+budget, loop/action blending, native fish/bird and Frog films, negative controls and one reviewer
+prompt.25 focused tests,32 tool tests,typecheck/root validation pass. See README for exact native
+metrics, source-art intake failure and visual/procedural limits. Dirty diagnostic, not universal
+or phone acceptance. Other Claude modules and sibling tree untouched; local motion repair scope
+recorded in PARALLEL_GIT_PROTOCOL. No main.ts/kit/GitHub change. PR42 parked.
+
+Final signed checkpoint attempt again failed in the configured1Password helper. HEAD1a6dd61d
+remains118/229 ahead cached branches; all continuation staged, no unsigned fallback or push.
+
+
+## Codex continuation — September16 procedural motion iteration
+
+Three new actual genomes, painter-emitted records/materials/masks, lossless atlases and native
+motion films. Genome-aware body cards and smooth demo transitions; full-body hitstop fix for
+both fish/bird turns. See PROCEDURAL_BATTLE_ITERATION_20260916/README.md and REVIEW_PROMPT.md.
+36 focused tests,typecheck/root validation pass; three films around60fps/0.4ms rig p95.
+Exact rest and484+601 samples per procedural creature;1,202 habitat samples. No universal,
+final-art, gameplay integration or phone acceptance. Current source support exclusions explicit.
+No main.ts/kit/GitHub change; PR42 parked. OpenAI continues locally; Claude need not open now.

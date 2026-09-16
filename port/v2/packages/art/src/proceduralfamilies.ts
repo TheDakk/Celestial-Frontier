@@ -13,6 +13,7 @@
         were the same amoeba in different colours. The picker now avalanches
         the seed before it chooses (the same murmur3 finish the degenerate-salt
         bug taught us to use), so the spread is actually flat. */
+import {isObservingPainterTopology,emitPainterTopology,type DrawnFeature} from './painter-topology.js';
 import { mulberry32, TAU } from '@cf/domain-rand';
 import type { ArtContext2D } from './speciescanvas.js';
 
@@ -932,8 +933,11 @@ export function proceduralRadialFauna(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0x8AD1A), cx = S * 0.50, cy = S * 0.52, core = S * 0.105;
   ground(c, cx, S * 0.82, S * 0.22);
   const arms = 10;
+  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
   for (let i = 0; i < arms; i++) {
     const a = (i / arms) * TAU + r() * 0.035, len = S * (0.20 + r() * 0.045), w = S * (0.040 + r() * 0.010);
+    if(observed){const point=(x:number,y:number):readonly [number,number]=>[cx+Math.cos(a)*x-Math.sin(a)*y,cy+Math.sin(a)*x+Math.cos(a)*y];
+      observed.push({id:'arm'+i,kind:'arm',points:[point(core*.45,0),point(len*.55,0),point(len-w*.22,0)],widths:[w*2,w*2,w*.24],curve:'polyline',layer:'near'});}
     c.save(); c.translate(cx, cy); c.rotate(a);
     const limb = c.createLinearGradient(core * 0.4, -w, len, w); limb.addColorStop(0, p.base); limb.addColorStop(0.62, p.lit); limb.addColorStop(1, p.dark);
     c.fillStyle = limb; c.beginPath(); c.moveTo(core * 0.45, -w);
@@ -952,4 +956,5 @@ export function proceduralRadialFauna(c: Ctx, g: G, p: Pal): void {
   c.fillStyle = 'rgba(17,20,25,0.86)'; c.beginPath(); c.ellipse(cx, cy + core * 0.05, core * 0.24, core * 0.18, 0, 0, TAU); c.fill();
   c.strokeStyle = 'rgba(245,250,255,0.58)'; c.lineWidth = 2.2; c.stroke();
   c.fillStyle = 'rgba(245,250,255,0.62)'; c.beginPath(); c.arc(cx - core * 0.22, cy - core * 0.28, core * 0.13, 0, TAU); c.fill();
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'proceduralRadialFauna',family:'radial',coordinateSize:S,materials:{surface:'painted radial integument',paletteSource:'genome'},features:[{id:'body',kind:'body',points:[[cx,cy]],widths:[core*2],curve:'ellipse',layer:'near'},...observed],unresolved:['ten drawn arms require a count-preserving motion variant','joint/part masks not captured']});
 }

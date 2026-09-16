@@ -1,0 +1,1 @@
+apps/game/src/creature-rig.ts(108,225): error TS4104: The type 'readonly string[]' is 'readonly' and cannot be assigned to the mutable type 'string[]'.

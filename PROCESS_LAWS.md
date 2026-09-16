@@ -1,5 +1,17 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **PRESERVED BODY PIXELS DO NOT PROVE A REPLACEMENT VIEW IS ATTACHED** (Civet, 2026-09-16).
+> Surviving neck paint and a valid head mesh can leave an exposed notch between them. Bind
+> anatomical interior attachments to actual published triangles and inspect native rendered
+> coverage through the full motion, preserving the reported gap as a negative control. Pad
+> the measurement surface for lunges rather than skipping off-canvas samples. Original source
+> joins, replacement-view fits and intentional anatomical openings have distinct ownership.
+>
+> **CAPTURE CLEANUP MUST NOT EMPTY THE PLAYER BEFORE NAMED-POSE STILLS** (C2, 2026-09-16).
+> Recording cleanup resets performance players. Re-select/replay the explicit action sequence
+> before subsequent time-based stills; compare fresh still-only and post-recording outcomes.
+> A correctly recorded video does not establish correctness of the stills captured after it.
+
 > **BONE CONTACT AND POSITIVE TRIANGLES DO NOT PROVE CONTINUOUS PAINT** (C2, 2026-09-16).
 > A planted joint can coexist with sliding paw pixels; a skin can contain no reflected triangles
 > and still open an anatomical attachment or collapse into a thin strip. Measure the actual

@@ -1,5 +1,5 @@
 /** Alpha-adaptive, conforming shared tessellation. Every part samples its own atlas frame. */
-import {createRequire} from 'node:module';import {verifyPartsDirectory} from './verify-parts.mjs';import {hashJSON,GRAPH} from './quadruped-template.mjs';import {validatePaintSkin} from './paint-skin.mjs';
+import {createRequire} from 'node:module';import {verifyPartsDirectory} from './verify-parts.mjs';import {hashJSON} from './quadruped-template.mjs';import {familyContractForRecord} from './family-contracts.mjs';import {validatePaintSkin} from './paint-skin.mjs';
 const require=createRequire(import.meta.url),{PNG}=createRequire(require.resolve('free-tex-packer-core'))('pngjs');
 export async function buildPaintSkin(baseDirectory,seamBinding,record,options={}){
  const boundaryStep=options.boundaryStep??8,interiorStep=options.interiorStep??32;
@@ -48,6 +48,6 @@ export async function buildPaintSkin(baseDirectory,seamBinding,record,options={}
    }
   }
  }
- const skin={schema:'cf.paint-skin/v1',vertices,parts:[...result.values()],...(options.includeTopology?{triangles:fieldTriangles}:{})},stats=validatePaintSkin(skin,parts,w,h,['root',...GRAPH.map(([j])=>j)]),{bindingHash,...body}=base;body.parts=parts;body.paintSkin=skin;
+ const skin={schema:'cf.paint-skin/v1',vertices,parts:[...result.values()],...(options.includeTopology?{triangles:fieldTriangles}:{})},stats=validatePaintSkin(skin,parts,w,h,familyContractForRecord(record).joints),{bindingHash,...body}=base;body.parts=parts;body.paintSkin=skin;
  return {ownershipEdges,binding:{...body,bindingHash:await hashJSON(body)},receipt:{schema:'cf.paint-skin-intake/v1',sourceBindingHash:bindingHash,recordRecipeHash:record.recipeHash,packedPixels:verified.receipt,...stats,leaves:leaves.length,triangles,ownershipEdges:ownershipEdges.length,ownershipAlphaRule:'every nonzero original alpha',originalInkOnly:true,method:'alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches',nativeAcceptance:false}};
 }

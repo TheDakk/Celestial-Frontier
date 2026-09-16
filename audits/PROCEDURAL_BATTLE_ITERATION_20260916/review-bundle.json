@@ -1,0 +1,80 @@
+{
+  "path": "/private/tmp/celestial-frontier-procedural-review-20260916.zip",
+  "bytes": 19818882,
+  "sha256": "db2c21ec40fd62c38e6a1027e29668e89db145fa8ec795d67d34d8923a6eae2d",
+  "media": [
+    {
+      "file": "procedural-3.mp4",
+      "sha256": "e90cd1e5debbe5f5c09ba65dfcb4d2e4f87312632b945b413d9e12b828c2d266",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 1400,
+            "height": 800,
+            "nb_read_frames": "607"
+          }
+        ],
+        "format": {
+          "duration": "10.133333"
+        }
+      }
+    },
+    {
+      "file": "procedural-2.mp4",
+      "sha256": "816b353fc033f117dfa5fc57cfd1497310e04746f7eb5ee380aad4b5a2746ad8",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 1400,
+            "height": 800,
+            "nb_read_frames": "606"
+          }
+        ],
+        "format": {
+          "duration": "10.116667"
+        }
+      }
+    },
+    {
+      "file": "procedural-1.mp4",
+      "sha256": "0ac49f8cbaf7a3826938bcdd84e93135c086ffe8fb284fccdd03e1d815b620b7",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 1400,
+            "height": 800,
+            "nb_read_frames": "608"
+          }
+        ],
+        "format": {
+          "duration": "10.133333"
+        }
+      }
+    },
+    {
+      "file": "habitat.mp4",
+      "sha256": "572a93af02f781d385869e5bd72620dc8cb8b8088920f8109e67b1895eda40c7",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 1400,
+            "height": 800,
+            "nb_read_frames": "607"
+          }
+        ],
+        "format": {
+          "duration": "10.133333"
+        }
+      }
+    }
+  ],
+  "files": 179
+}

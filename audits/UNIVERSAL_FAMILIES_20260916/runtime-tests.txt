@@ -1,0 +1,31 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-families.test.ts (14 tests | 2 failed) 32ms
+   × hopper: actual Pixi admission and every joint move in its own hierarchy 1ms
+   × fish: actual Pixi admission and every joint move in its own hierarchy 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-families.test.ts > hopper: actual Pixi admission and every joint move in its own hierarchy
+ FAIL  apps/game/src/creature-rig-families.test.ts > fish: actual Pixi admission and every joint move in its own hierarchy
+Error: Family admission: shared clip set required
+ ❯ need tools/creature-animation/family-record.mjs:6:39
+      4| import {createSkeletonPoseProgram} from './skeleton-pose.mjs';
+      5| import {checkGeometry as checkQuadruped,admitRecord as admitQuadruped,…
+      6| const need=(ok,reason)=>{if(!ok)throw Error('Family admission: '+reaso…
+       |                                       ^
+      7| const distance=(j,axis)=>Math.hypot(j[axis[1]][0]-j[axis[0]][0],j[axis…
+      8| export function measureFamilyBounds(template,landmarks){
+ ❯ checkFamilyGeometry tools/creature-animation/family-record.mjs:19:2
+ ❯ sealFamilyRecord tools/creature-animation/family-record.mjs:40:36
+ ❯ apps/game/src/creature-rig-families.test.ts:12:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 12 passed (14)
+   Start at  08:49:29
+   Duration  326ms (transform 61ms, setup 0ms, import 222ms, tests 32ms, environment 0ms)
+

@@ -1,0 +1,6831 @@
+diff --git a/port/v2/apps/game/src/creature-rig-families.test.ts b/port/v2/apps/game/src/creature-rig-families.test.ts
+new file mode 100644
+index 00000000..0476556c
+--- /dev/null
++++ b/port/v2/apps/game/src/creature-rig-families.test.ts
+@@ -0,0 +1,30 @@
++import {readFileSync} from 'node:fs';
++import {it,expect,vi} from 'vitest';
++import {Texture,TextureSource} from 'pixi.js';
++import {FAMILY_CONTRACTS} from '../../../tools/creature-animation/family-contracts.mjs';
++import {sealFamilyRecord} from '../../../tools/creature-animation/family-record.mjs';
++import {hashBytes,hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
++import {loadCreatureRigV1,type CreaturePartsBindingV1} from './creature-rig.js';
++const {records}=JSON.parse(readFileSync(new URL('../../../tools/creature-animation/test-fixtures/family-records.json',import.meta.url),'utf8'));
++const bytes=new Uint8Array([1,2,3]);
++for(const template of FAMILY_CONTRACTS)it(template.id+': actual Pixi admission and every joint move in its own hierarchy',async()=>{
++ const input=structuredClone(records[template.id]);input.geometry.cutoutAssetHash=await hashBytes(bytes);input.clipSetId=template.clipSetId;
++ const record=await sealFamilyRecord(input),alpha=new Uint8Array(record.geometry.width*record.geometry.height).fill(255);
++ const body={schema:'cf.creature-parts/v1' as const,recordRecipeHash:record.recipeHash,atlasSha256:await hashBytes(bytes),atlasSize:{width:template.joints.length*4,height:4},
++  parts:template.joints.map((joint,i)=>({id:'part-'+i,joint,kind:'part' as const,layer:i%2?'near' as const:'far' as const,
++   frame:{x:i*4,y:0,width:4,height:4},cutout:{x:0,y:0,width:4,height:4}}))};
++ const binding:CreaturePartsBindingV1={...body,bindingHash:await hashJSON(body)},decode=vi.fn(()=>Promise.resolve(new Texture({source:new TextureSource(body.atlasSize)})));
++ const rig=await loadCreatureRigV1(record,binding,bytes,alpha,bytes,decode);
++ const snapshot=()=>rig.parts.map(p=>[p.display.x,p.display.y,p.display.rotation]);
++ try{
++  rig.applyPose({});const rest=snapshot();expect(rest.every(v=>v.every(n=>n===0))).toBe(true);
++  const [a,b]=template.bodyAxis,A=record.landmarks[a],B=record.landmarks[b],L=Math.hypot(A[0]-B[0],A[1]-B[1]);
++  rig.applyPose({root:{rotation:0,dx:.25,dy:-.1}});
++  for(const p of rig.parts){expect(p.display.x).toBeCloseTo(L*.25,12);expect(p.display.y).toBeCloseTo(-L*.1,12);}
++  for(const joint of template.joints){rig.applyPose({[joint]:{rotation:.1}});expect(rig.parts.find(p=>body.parts.find(q=>q.id===p.id)!.joint===joint)!.display.rotation).toBeCloseTo(.1,12);}
++  rig.applyPose({});expect(snapshot()).toEqual(rest);
++  const before=snapshot();expect(()=>rig.applyPose({foreign:{rotation:1}})).toThrow('unknown pose joint');expect(snapshot()).toEqual(before);
++ }finally{rig.dispose();}
++ const bad={...body,parts:body.parts.map((p,i)=>i===0?{...p,joint:'foreign'}:p)};decode.mockClear();
++ await expect(loadCreatureRigV1(record,{...bad,bindingHash:await hashJSON(bad)},bytes,alpha,bytes,decode)).rejects.toThrow('unknown part joint');expect(decode).not.toHaveBeenCalled();
++});
+diff --git a/port/v2/apps/game/src/creature-rig.ts b/port/v2/apps/game/src/creature-rig.ts
+index 14d71396..ae239557 100644
+--- a/port/v2/apps/game/src/creature-rig.ts
++++ b/port/v2/apps/game/src/creature-rig.ts
+@@ -4,7 +4,8 @@ import {validateSeamBridges,createSeamGeometry,writeSeamPose} from '../../../too
+ import {createArapScratch,solveArapSkin} from '../../../tools/creature-animation/arap-skin.mjs';
+ import {createCompiledSkinField,applyCompiledSkinField} from '../../../tools/creature-animation/compiled-skin-field.mjs';
+ import {createOpaqueSeamSamplingGuard} from '../../../tools/creature-animation/seam-sampling-guard.mjs';
+-import {GRAPH, admitRecord, hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
++import {hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
++import {admitFamilyRecord} from '../../../tools/creature-animation/family-record.mjs';
+ import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
+ 
+ export type CreaturePoseV1 = Readonly<Record<string, {rotation:number; dx?:number; dy?:number}>>;
+@@ -47,7 +48,6 @@ export interface CreaturePartsBindingV1 {
+   readonly parts:ReadonlyArray<{id:string;joint:string;layer:'far'|'near';frame:Box;cutout:Box;kind:'part'|'joint-patch'}>;
+ }
+ const requireValue=(ok:unknown,reason:string):void=>{if(!ok)throw Error('Creature rig: '+reason);};
+-const joints=['root',...GRAPH.map(([child])=>child)];
+ 
+ const validBox=(box:Box,w:number,h:number)=>box&&[box.x,box.y,box.width,box.height].every(Number.isInteger)
+   &&box.x>=0&&box.y>=0&&box.width>0&&box.height>0&&box.x+box.width<=w&&box.y+box.height<=h;
+@@ -85,13 +85,14 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
+   cutoutBytes:Uint8Array,cutoutAlpha:Uint8Array,atlasBytes:Uint8Array,
+   decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>=decodeAtlasPng):Promise<CreatureRigV1>{
+   const record=structuredClone(recordInput),binding=structuredClone(bindingInput);
+-  await admitRecord(record,cutoutBytes,cutoutAlpha);
++  const template=await admitFamilyRecord(record,cutoutBytes,cutoutAlpha);
++  const joints=[...template.joints];
+   requireValue(binding?.schema==='cf.creature-parts/v1','unsupported parts schema');
+   const {bindingHash,...body}=binding;
+   requireValue(shaPattern.test(bindingHash)&&await hashJSON(body)===bindingHash,'corrupted part binding');
+   requireValue(binding.recordRecipeHash===record.recipeHash,'parts belong to another record');
+   requireValue(shaPattern.test(binding.atlasSha256)&&await hashBytes(atlasBytes)===binding.atlasSha256,'mismatched atlas hash');
+-  const skeleton=createSkeletonPoseProgram({graph:GRAPH,bodyAxis:['pelvis','chest']},record.landmarks);
++  const skeleton=createSkeletonPoseProgram(template,record.landmarks);
+   const {width:w,height:h}=record.geometry,{width:aw,height:ah}=binding.atlasSize;
+   requireValue([aw,ah].every(n=>Number.isInteger(n)&&n>0&&n<=2048),'atlas budget');
+   requireValue(binding.parts.length>0&&binding.parts.length<=40,'part budget');
+@@ -106,6 +107,7 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
+   requireValue(!(binding.paintSkin&&binding.seamBridges),'one deformation owner');
+   if(binding.paintSkin){requireValue(binding.parts.every(p=>p.frame.width===p.cutout.width&&p.frame.height===p.cutout.height),'paint skin requires native source frames');validatePaintSkin(binding.paintSkin,binding.parts,w,h,joints);}
+   if(binding.seamBridges!==undefined){
++    requireValue(template.id==='quadruped','legacy seam bridge ownership is quadruped-only; use family paint skin');
+     requireValue(binding.seamBridges?.schema==='cf.seam-bridges/v1','seam bridge schema');
+     validateSeamBridges(binding.seamBridges.groups,binding.parts,w,h,binding.atlasSize,joints);
+   }
+diff --git a/port/v2/packages/art/src/faunaoverrides.ts b/port/v2/packages/art/src/faunaoverrides.ts
+index f60db129..210db7b3 100644
+--- a/port/v2/packages/art/src/faunaoverrides.ts
++++ b/port/v2/packages/art/src/faunaoverrides.ts
+@@ -12,6 +12,7 @@
+ 
+    Style law preserved: rim-lit painterly figurine, grounding shadow,
+    palette from the genome. Bodies, not recolors. */
++import {isObservingPainterTopology,emitPainterTopology,type DrawnFeature} from './painter-topology.js';
+ import { mulberry32, TAU } from '@cf/domain-rand';
+ import { speciesHue } from './surface.js';
+ import { ellipseTube } from './torso.js';
+@@ -1030,6 +1031,7 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean;
+      way, and CURLS at the tip; drawn as a walk of short segments with a
+      shrinking width, that reads as boneless muscle instead of furniture. */
+   const arms = 8;
++  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
+   for (let i = 0; i < arms; i++) {
+     const t2 = i / (arms - 1);
+     const ax = cx + (t2 - 0.5) * mw * 1.9;
+@@ -1039,6 +1041,8 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean;
+     const w0 = 10 - Math.abs(outward) * 3;
+     c.lineCap = 'round';
+     let px = ax, py = my + mh * 0.62;
++    const samples:Array<readonly [number,number]>|undefined=observed?[[px,py]]:undefined;
++    const widths:number[]|undefined=observed?[w0]:undefined;
+     const N = 16;
+     for (let k = 1; k <= N; k++) {
+       const u = k / N;
+@@ -1052,14 +1056,17 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean;
+         c.fillStyle = 'rgba(255,250,240,0.30)';
+         c.beginPath(); c.arc(nx, ny, Math.max(1, w0 * (1 - u) * 0.20), 0, TAU); c.fill();
+       }
++      samples?.push([nx,ny]);widths?.push(Math.max(1.4,w0*(1-u*.88)));
+       px = nx; py = ny;
+     }
++    if(observed&&samples&&widths)observed.push({id:'arm'+i,kind:'arm',points:samples,widths,curve:'polyline',layer:'far'});
+   }
+   if (opts.squid) {   /* the two long feeding tentacles */
+     for (const s of [-1, 1] as const) {
+       c.strokeStyle = p.lit; c.lineWidth = 5;
+       c.beginPath(); c.moveTo(cx + s * mw * 0.4, my + mh * 0.7);
+       c.bezierCurveTo(cx + s * mw * 2.2, my + mh + 90, cx + s * mw * 0.6, my + mh + 150, cx + s * mw * 1.8, my + mh + 190); c.stroke();
++      observed?.push({id:'tentacle'+(s<0?'Far':'Near'),kind:'tentacle',points:[[cx+s*mw*.4,my+mh*.7],[cx+s*mw*2.2,my+mh+90],[cx+s*mw*.6,my+mh+150],[cx+s*mw*1.8,my+mh+190]],widths:[5],curve:'cubic',layer:'far'});
+       c.fillStyle = p.base;
+       c.beginPath(); c.ellipse(cx + s * mw * 1.8, my + mh + 192, 11, 7, s * 0.4, 0, TAU); c.fill();
+     }
+@@ -1092,6 +1099,7 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean;
+     c.beginPath(); c.arc(cx + s * mw * 0.55, my + mh * 0.58, 11, 0, TAU); c.fill();
+   }
+   eye(c, cx - mw * 0.55, my + mh * 0.58, 8); eye(c, cx + mw * 0.55, my + mh * 0.58, 8);
++  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'faunaCephalopod',family:'cephalopod',coordinateSize:S,materials:{surface:'smooth mantle',paletteSource:opts.hue?'named':'genome'},features:observed,unresolved:['mantle/head/fin/eye/siphon landmarks and part masks not captured',...(opts.squid?['two feeding tentacles are additional to the eight arms']:[])]});
+ }
+ /** CETACEAN: long body, horizontal FLUKE, blowhole, species dorsal */
+ export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | 'small' | 'none'; blunt: boolean; hue?: [number, number, number];
+@@ -1389,6 +1397,7 @@ function mixSaltB(h: number, salt: number): number {
+   return x >>> 0;
+ }
+ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void {
++  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
+   /* NAME-SEEDED (D-ART-20): Hawk and Falcon carry identical options, and
+      wave 7 proved that two labels sharing a spec eventually collide. */
+   let h = 0xB12D;
+@@ -1470,6 +1479,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
+       const hipX = bx + s * 8 * sz;
+       const ankX = hipX + (7 + legLen * 0.10) * sz;    /* the ankle kicks BACK */
+       const toeX = hipX - 2 * sz;                       /* the foot lands under the bird */
++      observed?.push({id:'leg'+(s<0?'Far':'Near'),kind:'leg',points:[[hipX,thighY],[ankX,ankleY],[toeX,groundY]],curve:'polyline',layer:s<0?'far':'near'});
+       c.strokeStyle = opts.legHue ?? '#c9a24f'; c.lineCap = 'round';
+       /* ★ D-ART-121 — a raptor's leg is HEAVY. The audit's words on the Harpy:
+          "two thin yellow twigs ending in flat splayed toes with no claw tips
+@@ -1811,11 +1821,13 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
+        and wave 6 the neck: there is nothing to blend if the join is buried. */
+     feather(bx + bw * 0.16, by - bh * 0.40, Math.PI - 0.30, 0.72, 0.55);   /* far, going away */
+     feather(bx + bw * 0.22, by - bh * 0.16, 0.14, 1, 1);                   /* near, toward us */
++    if(observed)for(const [id,sx,sy,angle,k]of [['Far',bx+bw*.16,by-bh*.40,Math.PI-.30,.72],['Near',bx+bw*.22,by-bh*.16,.14,1]] as const){const x=spanW*k,y=-spanH*.10;observed.push({id:'wing'+id,kind:'wing',points:[[sx,sy],[sx+Math.cos(angle)*x-Math.sin(angle)*y,sy+Math.sin(angle)*x+Math.cos(angle)*y]],curve:'polyline',layer:id==='Far'?'far':'near'});}
+   } else if (opts.hover) {
+     /* A hovering hummingbird reads from the paired translucent wing blurs, not
+        from a grounded folded-wing silhouette. */
+     for (const side of [-1, 1] as const) {
+       const sx = bx + side * bw * 0.10, sy = by - bh * 0.20;
++      observed?.push({id:'wing'+(side<0?'Far':'Near'),kind:'wing',points:[[sx,sy],[sx+side*bw*.86,sy-bh*1.25],[sx+side*bw*1.28,sy-bh*.48]],curve:'quadratic',layer:side<0?'far':'near'});
+       c.strokeStyle = `rgba(${p.cr},${p.cg},${p.cb},0.34)`;
+       c.lineWidth = Math.max(2.4, bh * 0.24); c.lineCap = 'round';
+       c.beginPath(); c.moveTo(sx, sy);
+@@ -1849,6 +1861,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
+        legs, and the audit said so four separate times. A ratite's wing is a
+        vestigial stub buried in body plumage, and it has no flight tail at all. */
+     const WING = opts.flightless ? 0.34 : 1;
++    if(observed){const sx=bx+bw*.12*WING,sy=by+bh*.05,x=bw*.95*WING;observed.push({id:'wingNear',kind:'wing',points:[[sx,sy],[sx+Math.cos(.22)*x,sy+Math.sin(.22)*x]],curve:'polyline',layer:'near'});}
+     c.save(); c.translate(bx + bw * 0.12 * WING, by + bh * 0.05); c.rotate(0.22);
+     for (let layer = 0; layer < 3; layer++) {
+       const lw = bw * (0.95 - layer * 0.16) * WING, lh = bh * (0.62 - layer * 0.10) * WING;
+@@ -2215,6 +2228,11 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
+   c.restore();
+   /* ★ WAVE 40 — close the cling transform opened before the body */
+   if (opts.cling) c.restore();
++  if(observed){
++    const features:DrawnFeature[]=[{id:'body',kind:'body',points:[[bx,by]],widths:[bw*2,bh*2],curve:'ellipse',layer:'near'},{id:'head',kind:'head',points:[[hx,hy]],widths:[hr*2],curve:'ellipse',layer:'near'},...observed];
++    if(opts.cling)for(const f of features){(f as {points:ReadonlyArray<readonly [number,number]>}).points=f.points.map(([x,y])=>[bx+Math.cos(1.16)*(x-bx)-Math.sin(1.16)*(y-by),by+Math.sin(1.16)*(x-bx)+Math.cos(1.16)*(y-by)] as const);}
++    emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'faunaBird',family:'biped-bird',coordinateSize:S,materials:{surface:'feather',paletteSource:opts.hue?'named':'genome'},features,unresolved:['tail, beak, neck and source part masks not captured',...(opts.upright?['flipper observation not connected']:[]),...(opts.wings!=='soaring'&&!opts.hover?['far wing is not independently painted']:[]),...(opts.cling?['painted trunk is scenery, not an organism part']:[])]});
++  }
+ }
+ 
+ /* ---------------- Wave 2b B1: anatomy-first named bird portraits ----------------
+diff --git a/port/v2/packages/art/src/invertoverrides.ts b/port/v2/packages/art/src/invertoverrides.ts
+index cbf6c3eb..41c29c1a 100644
+--- a/port/v2/packages/art/src/invertoverrides.ts
++++ b/port/v2/packages/art/src/invertoverrides.ts
+@@ -18,6 +18,7 @@
+    Every key was read out of the catalog (the wave-7 lesson) and is checked
+    by tools/overridecheck.mjs; the shadow check keeps it from re-covering
+    what waves 3 and 7 already own. */
++import {isObservingPainterTopology,emitPainterTopology,type DrawnFeature} from './painter-topology.js';
+ import { mulberry32, TAU } from '@cf/domain-rand';
+ import { speciesHue } from './surface.js';
+ import { ellipseTube } from './torso.js';
+@@ -1667,6 +1668,7 @@ function resetMillipedeIII(c: Ctx, p: Pal): void {
+ export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: boolean;
+   hue?: string; segs?: number; scale?: number; legScale?: number; legContrast?: boolean }, name = ''): void {
+   const p = hued(pIn, opts.hue);
++  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
+   if (name === 'Millipede') { resetMillipedeIII(c, p); return; }
+   const r = nrng(g, name, 0x33DD);
+   const cx = S * 0.48, cy = S * 0.52;
+@@ -1688,10 +1690,12 @@ export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?:
+   for (let i = N - 1; i >= 0; i--) {
+     const [x, y] = path(i);
+     const legLen = segR * (opts.flat ? 2.6 : 1.5) * Math.min(1.35, opts.legScale ?? 1);
++    observed?.push({id:'segment'+i,kind:'body',points:[[x,y]],widths:[segR*2.1,segR*(opts.flat?.78:.95)*2],curve:'ellipse',layer:'near'});
+     c.strokeStyle = p.dark; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1); c.lineCap = 'round';
+     for (const s of [-1, 1] as const) {
+       c.beginPath(); c.moveTo(x, y);
+       c.quadraticCurveTo(x + s * legLen * 0.5, y + legLen * 0.7, x + s * legLen * (opts.flat ? 1.0 : 0.72), y + legLen * (opts.flat ? 0.7 : 1.0));
++      observed?.push({id:'leg'+i+(s<0?'Far':'Near'),kind:'leg',points:[[x,y],[x+s*legLen*.5,y+legLen*.7],[x+s*legLen*(opts.flat?1:.72),y+legLen*(opts.flat?.7:1)]],curve:'quadratic',layer:s<0?'far':'near'});
+       c.stroke();
+       if (opts.legContrast) { c.strokeStyle = p.lit; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1) * 0.54; c.stroke(); c.strokeStyle = p.dark; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1); }
+     }
+@@ -1723,6 +1727,7 @@ export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?:
+       c.quadraticCurveTo(hx - segR * 2.4, hy + s * segR * 1.1, hx - segR * 1.9, hy + s * segR * 1.5); c.stroke();
+     }
+   }
++  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'myriapod',family:'myriapod',coordinateSize:S,materials:{surface:'chitinous',paletteSource:opts.hue?'named':'genome'},features:observed,unresolved:['actual segment and paired-leg counts require a count-preserving motion variant','head/antenna landmarks and part masks not captured']});
+ }
+ 
+ /* ═══════════════ CRUSTACEANS ═══════════════ */
+diff --git a/port/v2/packages/art/src/painter-topology.ts b/port/v2/packages/art/src/painter-topology.ts
+new file mode 100644
+index 00000000..acf4e28c
+--- /dev/null
++++ b/port/v2/packages/art/src/painter-topology.ts
+@@ -0,0 +1,41 @@
++import type {ArtContext2D} from './speciescanvas.js';
++/** Drawn feature inventory in the painter's own coordinate space. This is not
++ * a fitted animation record: incomplete landmarks and hidden surfaces remain
++ * explicit. A compiler must qualify it before producing a rig/part binding. */
++export interface DrawnFeature {
++ readonly id:string;
++ readonly kind:'body'|'arm'|'tentacle'|'leg'|'wing'|'antenna'|'head'|'neck';
++ readonly points:ReadonlyArray<readonly [number,number]>;
++ readonly widths?:readonly number[];
++ readonly curve?:'polyline'|'quadratic'|'cubic'|'ellipse';
++ readonly layer:'far'|'near';
++}
++export interface PainterTopology {
++ readonly schema:'cf.painter-topology/v1';
++ readonly ownerId:string;
++ readonly family:string;
++ readonly coordinateSize:number;
++ readonly materials:Readonly<{surface:string;paletteSource:string}>;
++ readonly features:readonly DrawnFeature[];
++ readonly unresolved:readonly string[];
++}
++const sessions=new WeakMap<ArtContext2D,{value?:PainterTopology}>();
++export function isObservingPainterTopology(context:ArtContext2D):boolean{return sessions.has(context);}
++export function emitPainterTopology(context:ArtContext2D,value:PainterTopology):void{
++ const state=sessions.get(context);if(!state)return;
++ if(state.value)throw Error('Painter topology: more than one winning owner');
++ if(value.schema!=='cf.painter-topology/v1'||!value.ownerId||!value.family||!Number.isFinite(value.coordinateSize)||value.coordinateSize<=0||!value.materials.surface)throw Error('Painter topology: owner/space/material');
++ const ids=new Set<string>();
++ for(const f of value.features){
++  if(!f.id||ids.has(f.id)||!['far','near'].includes(f.layer)||!f.points.length||f.points.some(p=>p.length!==2||!p.every(Number.isFinite))||f.widths?.some(w=>!Number.isFinite(w)||w<=0))throw Error('Painter topology: feature geometry');
++  ids.add(f.id);
++ }
++ state.value=structuredClone(value);
++}
++/** Scope is synchronous to the winning draw. Always clears after failure;
++ * unsupported owners return null and can never become a guessed quadruped. */
++export function observePainterTopology(context:ArtContext2D,paint:()=>void):PainterTopology|null{
++ if(sessions.has(context))throw Error('Painter topology: nested owner capture');
++ const state:{value?:PainterTopology}={};sessions.set(context,state);
++ try{paint();return state.value??null;}finally{sessions.delete(context);}
++}
+diff --git a/port/v2/packages/art/src/proceduralfamilies.ts b/port/v2/packages/art/src/proceduralfamilies.ts
+index d3578a7d..c65ad8b5 100644
+--- a/port/v2/packages/art/src/proceduralfamilies.ts
++++ b/port/v2/packages/art/src/proceduralfamilies.ts
+@@ -13,6 +13,7 @@
+         were the same amoeba in different colours. The picker now avalanches
+         the seed before it chooses (the same murmur3 finish the degenerate-salt
+         bug taught us to use), so the spread is actually flat. */
++import {isObservingPainterTopology,emitPainterTopology,type DrawnFeature} from './painter-topology.js';
+ import { mulberry32, TAU } from '@cf/domain-rand';
+ import type { ArtContext2D } from './speciescanvas.js';
+ 
+@@ -932,8 +933,11 @@ export function proceduralRadialFauna(c: Ctx, g: G, p: Pal): void {
+   const r = seeded(g, 0x8AD1A), cx = S * 0.50, cy = S * 0.52, core = S * 0.105;
+   ground(c, cx, S * 0.82, S * 0.22);
+   const arms = 10;
++  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
+   for (let i = 0; i < arms; i++) {
+     const a = (i / arms) * TAU + r() * 0.035, len = S * (0.20 + r() * 0.045), w = S * (0.040 + r() * 0.010);
++    if(observed){const point=(x:number,y:number):readonly [number,number]=>[cx+Math.cos(a)*x-Math.sin(a)*y,cy+Math.sin(a)*x+Math.cos(a)*y];
++      observed.push({id:'arm'+i,kind:'arm',points:[point(core*.45,0),point(len*.55,0),point(len-w*.22,0)],widths:[w*2,w*2,w*.24],curve:'polyline',layer:'near'});}
+     c.save(); c.translate(cx, cy); c.rotate(a);
+     const limb = c.createLinearGradient(core * 0.4, -w, len, w); limb.addColorStop(0, p.base); limb.addColorStop(0.62, p.lit); limb.addColorStop(1, p.dark);
+     c.fillStyle = limb; c.beginPath(); c.moveTo(core * 0.45, -w);
+@@ -952,4 +956,5 @@ export function proceduralRadialFauna(c: Ctx, g: G, p: Pal): void {
+   c.fillStyle = 'rgba(17,20,25,0.86)'; c.beginPath(); c.ellipse(cx, cy + core * 0.05, core * 0.24, core * 0.18, 0, 0, TAU); c.fill();
+   c.strokeStyle = 'rgba(245,250,255,0.58)'; c.lineWidth = 2.2; c.stroke();
+   c.fillStyle = 'rgba(245,250,255,0.62)'; c.beginPath(); c.arc(cx - core * 0.22, cy - core * 0.28, core * 0.13, 0, TAU); c.fill();
++  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'proceduralRadialFauna',family:'radial',coordinateSize:S,materials:{surface:'painted radial integument',paletteSource:'genome'},features:[{id:'body',kind:'body',points:[[cx,cy]],widths:[core*2],curve:'ellipse',layer:'near'},...observed],unresolved:['ten drawn arms require a count-preserving motion variant','joint/part masks not captured']});
+ }
+diff --git a/port/v2/packages/art/src/speciesoverrides.ts b/port/v2/packages/art/src/speciesoverrides.ts
+index 61a49aba..c0979517 100644
+--- a/port/v2/packages/art/src/speciesoverrides.ts
++++ b/port/v2/packages/art/src/speciesoverrides.ts
+@@ -12,6 +12,7 @@
+    structural families) and take their PALETTE from the genome, so a corrected
+    species still belongs to its rarity/color roll — bodies, not recolors. */
+ import { mulberry32, TAU } from '@cf/domain-rand';
++import {observePainterTopology,type PainterTopology} from './painter-topology.js';
+ import { speciesHue } from './surface.js';
+ import { SP_COLOR, SP_HEX } from '@cf/domain-speciestraits';
+ import { FLORA_ICONIC, FLORA_DUPES, floraLadder, type Pal } from './floraoverrides.js';
+@@ -1674,7 +1675,7 @@ function applyReviewedFaunaLineageDrift(c: Ctx, g: G, name: string): void {
+   c.restore();
+ }
+ 
+-export function resolveOverrideCanvas(g: G): ArtCanvas | null {
++export function resolveOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {
+   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it
+      (Lion's Mane), which is exactly the mojibake Nick's audit caught */
+   const earthName = String((g as { _earthName?: string })._earthName || '').replace(/[’‘]/g, "'");
+@@ -1695,7 +1696,7 @@ export function resolveOverrideCanvas(g: G): ArtCanvas | null {
+      kingdom-qualified lookup prevents duplicate names crossing ownership. */
+   const name = earthName || (kingdom === 'flora' || kingdom === 'fungi' || kingdom === 'microbe' || reviewedFaunaBlend ? blend : '');
+   if (!name && blend) return null;
+-  if (!name) return resolveProceduralCanvas(g);
++  if (!name) return resolveProceduralCanvas(g,undefined,false,observeTopology);
+   /* ★ WAVE 18 — CANONICAL + CROSS-KINGDOM audit blockers. Four organisms live
+      in TWO kingdoms each (the 1,014-vs-1,010 count delta), and a few iconic
+      species need a bespoke painter regardless of which family the kingdom
+@@ -1707,7 +1708,7 @@ export function resolveOverrideCanvas(g: G): ArtCanvas | null {
+     vignette(c, kingdom === 'fungi');
+     floorFade(c);
+     const ink = newInk();
+-    canon(ink.c, g, palette(g) as Pal);
++    paintWithTopology(ink,()=>canon(ink.c, g, palette(g) as Pal),observeTopology);
+     applyReviewedFaunaLineageDrift(ink.c, g, name);
+     fitInk(ink.cv, c, kingdom + ':' + name);
+     return cv;
+@@ -1724,7 +1725,7 @@ export function resolveOverrideCanvas(g: G): ArtCanvas | null {
+     vignette(c, false);
+     floorFade(c);
+     const ink = newInk();
+-    (iconic || floraLadder)(ink.c, g, palette(g) as Pal, name);
++    paintWithTopology(ink,()=>(iconic || floraLadder)(ink.c, g, palette(g) as Pal, name),observeTopology);
+     fitInk(ink.cv, c, 'flora:' + name);
+     return cv;
+   }
+@@ -1737,8 +1738,8 @@ export function resolveOverrideCanvas(g: G): ArtCanvas | null {
+     vignette(c, false);
+     floorFade(c);
+     const ink = newInk();
+-    if (fp) fp(ink.c, g, palette(g) as Pal, name);
+-    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);
++    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);
++    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);},observeTopology);
+     applyReviewedFaunaLineageDrift(ink.c, g, name);
+     fitInk(ink.cv, c, 'fauna:' + name);
+     return cv;
+@@ -1749,7 +1750,7 @@ export function resolveOverrideCanvas(g: G): ArtCanvas | null {
+   vignette(c, kingdom === 'fungi');
+   floorFade(c);
+   const ink = newInk();
+-  painter(ink.c, g, palette(g));
++  paintWithTopology(ink,()=>painter(ink.c, g, palette(g)),observeTopology);
+   fitInk(ink.cv, c, kingdom + ':' + name);
+   return cv;
+ }
+@@ -1798,15 +1799,20 @@ const R2_MICROBE_COLONY_SEEDS: ReadonlySet<number> = new Set([
+   1077367562, 4135221025, 753721544, 3287574574, 1224906226, 2757882450, 1718796946,
+ ]);
+ 
++export type PainterTopologyObserver=(topology:PainterTopology|null,ink:ArtCanvas)=>void;
++function paintWithTopology(ink:{c:Ctx;cv:ArtCanvas},paint:()=>void,observe?:PainterTopologyObserver):void{
++  if(observe)observe(observePainterTopology(ink.c,paint),ink.cv);else paint();
++}
++
+ type DrawnObserver = (geometry: import('./quadruped-anatomy.js').QuadrupedDrawnGeometry, ink: ArtCanvas) => void;
+ /** Ordinary paint is completed without stage readbacks. Optional authoring masks
+  * are observed from a second deterministic invocation of the same winning owner.
+  * That readback render is never substituted for the ordinary cut-out or portrait. */
+-export function resolveProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, captureParts = false): ArtCanvas | null {
+-  if (!captureParts) return paintProceduralCanvas(g, observeAnatomy);
++export function resolveProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, captureParts = false, observeTopology?:PainterTopologyObserver): ArtCanvas | null {
++  if (!captureParts) return paintProceduralCanvas(g, observeAnatomy,false,observeTopology);
+   if (!observeAnatomy) throw Error('Painter mask capture requires an anatomy consumer');
+   let primary: {geometry: import('./quadruped-anatomy.js').QuadrupedDrawnGeometry; ink: ArtCanvas} | undefined;
+-  const normal = paintProceduralCanvas(g, (geometry, ink) => { primary = {geometry, ink}; });
++  const normal = paintProceduralCanvas(g, (geometry, ink) => { primary = {geometry, ink}; },false,observeTopology);
+   if (!normal || !primary) throw Error('No winning anatomy observer for part capture');
+   let captured: import('./painter-part-capture.js').PaintedPartMasks | undefined;
+   paintProceduralCanvas(g, geometry => {
+@@ -1823,7 +1829,7 @@ export function resolveProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, ca
+   observeAnatomy({...primary.geometry, partMasks: {...captured, labels}}, primary.ink);
+   return normal;
+ }
+-function paintProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, captureParts = false): ArtCanvas | null {
++function paintProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, captureParts = false, observeTopology?:PainterTopologyObserver): ArtCanvas | null {
+   /* ★ WAVE 17 — THE LAST MONO-TEMPLATE (Nick's audit §12/§13, for the
+      PROCEDURAL spread). Wave 1 gave the NAMED fungi and microbes structural
+      families, but every procedural genome in those two kingdoms still fell
+@@ -1886,7 +1892,7 @@ function paintProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, capturePart
+     vignette(c, kingdom === 'fungi');
+     floorFade(c);
+     const ink = newInk();
+-    painter(ink.c, g, pal);
++    paintWithTopology(ink,()=>painter(ink.c, g, pal),observeTopology);
+     fitInk(ink.cv, c, 'proc:' + kingdom + ':' + String(g.seed));
+     const haloAllowed = Boolean(g.lumin)
+       && !(kingdom === 'fungi' && (familyIndex === 1 || familyIndex === 4))
+@@ -1917,7 +1923,7 @@ function paintProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, capturePart
+      actionable without pretending a procedural creature has a name */
+   const who = 'proc:' + plan.kind + ':' + String(g.seed);
+   if (captureParts && plan.kind !== 'quad') throw Error('Part capture has no observer for this painter family');
+-  switch (plan.kind) {
++  paintWithTopology(ink,()=>{switch (plan.kind) {
+     case 'quad': faunaQuadruped(ink.c, g, pal, plan.spec, who, observeAnatomy ? geometry => observeAnatomy(geometry, ink.cv) : undefined, captureParts); break;
+     case 'fish': fishBody(ink.c, g, pal, plan.spec, who); break;
+     case 'insect': insectBody(ink.c, g, pal, plan.spec, who); break;
+@@ -1932,7 +1938,7 @@ function paintProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, capturePart
+     case 'plant': plantBody(ink.c, g, pal, plan.spec, who); break;
+     case 'alienPlant': proceduralAlienFlora(ink.c, g, pal, plan.architecture); break;
+     case 'radial': proceduralRadialFauna(ink.c, g, pal); break;
+-  }
++  }},observeTopology);
+   fitInk(ink.cv, c, who);
+   return cv;
+ }
+diff --git a/port/v2/packages/art/test/earth-resident-layer.test.ts b/port/v2/packages/art/test/earth-resident-layer.test.ts
+index 81354585..5f3fb908 100644
+--- a/port/v2/packages/art/test/earth-resident-layer.test.ts
++++ b/port/v2/packages/art/test/earth-resident-layer.test.ts
+@@ -1,5 +1,6 @@
+ import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
+-import { resolveOverrideCanvas } from '../src/speciesoverrides.js';
++import { resolveOverrideCanvas,resolveProceduralCanvas } from '../src/speciesoverrides.js';
++import type {PainterTopology} from '../src/painter-topology.js';
+ import { QUAD2_SPEC } from '../src/mammaloverrides.js';
+ import { installSpeciesCanvasFactory, type ArtCanvas } from '../src/speciescanvas.js';
+ import {
+@@ -175,3 +176,21 @@ describe('independent transparent Earth resident layer', () => {
+     expect(invoked).toBe(0);
+   });
+ });
++
++
++it('the actual procedural dispatcher publishes the winning topology once and preserves ordinary ink commands',()=>{
++  for(const [body,loco,owner]of [[15,0,'proceduralRadialFauna'],[5,0,'myriapod'],[14,3,'faunaBird']] as const){
++    const genome={kingdom:'fauna',seed:1597751321,body,loco,size:2,head:0,skin:0};
++    let count=0,observed:PainterTopology|null=null,observedInk:ArtCanvas|undefined;
++    const picture=resolveProceduralCanvas(genome,undefined,false,(value,ink)=>{count++;observed=value;observedInk=ink;});
++    const ordinary=resolveProceduralCanvas(genome);
++    expect(count).toBe(1);expect((observed as PainterTopology|null)?.ownerId).toBe(owner);
++    expect(record(picture!).trace).toEqual(record(ordinary!).trace);
++    expect(record(observedInk!).trace).toEqual(record(ordinary!).draws[0]!.trace);
++  }
++});
++it('a currently unobserved owner reports null rather than guessed anatomy',()=>{
++  let calls=0,value:PainterTopology|null|undefined;
++  const picture=resolveProceduralCanvas({kingdom:'fauna',seed:1597751321,body:0,loco:4},undefined,false,topology=>{calls++;value=topology;});
++  expect(picture).not.toBeNull();expect(calls).toBe(1);expect(value).toBeNull();
++});
+diff --git a/port/v2/packages/art/test/painter-topology.test.ts b/port/v2/packages/art/test/painter-topology.test.ts
+new file mode 100644
+index 00000000..b13fcc82
+--- /dev/null
++++ b/port/v2/packages/art/test/painter-topology.test.ts
+@@ -0,0 +1,49 @@
++import {createHash} from 'node:crypto';import {it,expect} from 'vitest';
++import {observePainterTopology,emitPainterTopology,isObservingPainterTopology} from '../src/painter-topology.js';
++import {proceduralRadialFauna} from '../src/proceduralfamilies.js';import {myriapod} from '../src/invertoverrides.js';import {faunaCephalopod,faunaBird} from '../src/faunaoverrides.js';
++import type {ArtContext2D} from '../src/speciescanvas.js';
++const g={seed:1597751321,kingdom:'fauna',skin:7},pal={base:'#aa8877',cr:170,cg:136,cb:119,lit:'#ddbb99',dark:'#554433'};
++function draw(paint:(c:ArtContext2D)=>void,observe:boolean){
++ const hash=createHash('sha256'),fields:Record<PropertyKey,unknown>={globalAlpha:1};const commands:unknown[]=[];const record=(v:unknown)=>{commands.push(v);hash.update(JSON.stringify(v)+'\n');};
++ const context=new Proxy(fields,{get(target,key){if(Reflect.has(target,key))return Reflect.get(target,key);return (...args:unknown[])=>{record([key,...args]);if(key==='createLinearGradient'||key==='createRadialGradient')return {addColorStop:(...args:unknown[])=>record(args)};if(key==='getLineDash')return [];if(key==='getTransform')return {a:1,b:0,c:0,d:1,e:0,f:0};};},set(target,key,value){record([key,value]);return Reflect.set(target,key,value);}}) as unknown as ArtContext2D;
++ const result=observe?observePainterTopology(context,()=>paint(context)):(paint(context),null);
++ return {result,digest:hash.digest('hex'),context,commands};
++}
++it('observes ten real radial arms without changing paint or substituting the six-arm motion fixture',()=>{
++ const paint=(c:ArtContext2D)=>proceduralRadialFauna(c,g,pal),a=draw(paint,true);
++ expect(a.digest).toBe(draw(paint,false).digest);expect(a.result?.features.filter(f=>f.kind==='arm')).toHaveLength(10);
++ expect(a.result?.features.filter(f=>f.kind==='arm').slice(0,6)).not.toHaveLength(10);
++ expect(draw(paint,true).result).toEqual(a.result);expect(a.result?.unresolved.length).toBeGreaterThan(0);
++});
++it('preserves actual myriapod segments and all paired legs instead of compressing to eight chains',()=>{
++ for(const flat of [false,true]){
++  const paint=(c:ArtContext2D)=>myriapod(c,g,pal,{flat},'proc:myriapod'),a=draw(paint,true),f=a.result!.features;
++  expect(a.digest).toBe(draw(paint,false).digest);const segments=f.filter(f=>f.kind==='body').length,legs=f.filter(f=>f.kind==='leg');
++  expect(segments).toBeGreaterThan(8);expect(legs).toHaveLength(segments*2);expect(new Set(legs.map(f=>f.id)).size).toBe(legs.length);
++  expect(legs.slice(0,8)).not.toHaveLength(segments*2);expect(a.result?.materials.surface).toBe('chitinous');
++  for(const leg of legs){expect(a.commands).toContainEqual(['moveTo',...leg.points[0]!]);expect(a.commands).toContainEqual(['quadraticCurveTo',...leg.points[1]!,...leg.points[2]!]);}
++  const bad={...legs[0]!,points:legs[0]!.points.map(p=>[...p])};bad.points[2]![0]!+=10;expect(a.commands).not.toContainEqual(['quadraticCurveTo',...bad.points[1]!,...bad.points[2]!]);
++ }
++});
++it('records eight actual curled arms and the squids two additional feeding tentacles, with exact paint parity',()=>{
++ for(const squid of [false,true]){const paint=(c:ArtContext2D)=>faunaCephalopod(c,g,pal,{squid}),a=draw(paint,true);
++  expect(a.digest).toBe(draw(paint,false).digest);expect(a.result!.features.filter(f=>f.kind==='arm')).toHaveLength(8);
++  expect(a.result!.features.filter(f=>f.kind==='tentacle')).toHaveLength(squid?2:0);for(const arm of a.result!.features.filter(f=>f.kind==='arm')){expect(arm.points).toHaveLength(17);for(const point of arm.points.slice(1))expect(a.commands).toContainEqual(['lineTo',...point]);}
++  for(const tentacle of a.result!.features.filter(f=>f.kind==='tentacle'))expect(a.commands).toContainEqual(['bezierCurveTo',...tentacle.points[1]!,...tentacle.points[2]!,...tentacle.points[3]!]);
++ }
++});
++it('observes actual bird visibility: perched, hovering, soaring, swimming and clinging; absent limbs stay absent',()=>{
++ for(const opts of [{},{hover:true},{wings:'soaring' as const},{swim:true},{cling:true}]){
++  const paint=(c:ArtContext2D)=>faunaBird(c,g,pal,{legs:.12,bill:'short',...opts},'observer-bird'),a=draw(paint,true),features=a.result!.features;
++  expect(a.digest).toBe(draw(paint,false).digest);expect(features.filter(f=>f.kind==='leg')).toHaveLength('hover' in opts||'swim' in opts||'wings' in opts?0:2);
++  expect(features.filter(f=>f.kind==='wing')).toHaveLength('hover' in opts||'wings' in opts?2:1);expect(a.result!.materials.surface).toBe('feather');
++ }
++});
++it('unsupported or failed owners cannot leak a previous observation; nested owners refuse',()=>{
++ const c=draw(()=>{},false).context;
++ expect(observePainterTopology(c,()=>{})).toBeNull();expect(()=>observePainterTopology(c,()=>{throw Error('paint failed');})).toThrow('paint failed');expect(isObservingPainterTopology(c)).toBe(false);
++ expect(()=>observePainterTopology(c,()=>observePainterTopology(c,()=>{}))).toThrow('nested');expect(isObservingPainterTopology(c)).toBe(false);
++ const value={schema:'cf.painter-topology/v1' as const,ownerId:'control',family:'test',coordinateSize:440,materials:{surface:'test',paletteSource:'test'},features:[],unresolved:[]};
++ expect(()=>observePainterTopology(c,()=>{emitPainterTopology(c,value);emitPainterTopology(c,value);})).toThrow('more than one winning owner');
++ expect(observePainterTopology(c,()=>{})).toBeNull();
++});
+diff --git a/port/v2/tools/creature-animation/build-paint-skin.mjs b/port/v2/tools/creature-animation/build-paint-skin.mjs
+index cab89802..bbaf2533 100644
+--- a/port/v2/tools/creature-animation/build-paint-skin.mjs
++++ b/port/v2/tools/creature-animation/build-paint-skin.mjs
+@@ -1,5 +1,5 @@
+ /** Alpha-adaptive, conforming shared tessellation. Every part samples its own atlas frame. */
+-import {createRequire} from 'node:module';import {verifyPartsDirectory} from './verify-parts.mjs';import {hashJSON,GRAPH} from './quadruped-template.mjs';import {validatePaintSkin} from './paint-skin.mjs';
++import {createRequire} from 'node:module';import {verifyPartsDirectory} from './verify-parts.mjs';import {hashJSON} from './quadruped-template.mjs';import {familyContract} from './family-contracts.mjs';import {validatePaintSkin} from './paint-skin.mjs';
+ const require=createRequire(import.meta.url),{PNG}=createRequire(require.resolve('free-tex-packer-core'))('pngjs');
+ export async function buildPaintSkin(baseDirectory,seamBinding,record,options={}){
+  const boundaryStep=options.boundaryStep??8,interiorStep=options.interiorStep??32;
+@@ -48,6 +48,6 @@ export async function buildPaintSkin(baseDirectory,seamBinding,record,options={}
+    }
+   }
+  }
+- const skin={schema:'cf.paint-skin/v1',vertices,parts:[...result.values()],...(options.includeTopology?{triangles:fieldTriangles}:{})},stats=validatePaintSkin(skin,parts,w,h,['root',...GRAPH.map(([j])=>j)]),{bindingHash,...body}=base;body.parts=parts;body.paintSkin=skin;
++ const skin={schema:'cf.paint-skin/v1',vertices,parts:[...result.values()],...(options.includeTopology?{triangles:fieldTriangles}:{})},stats=validatePaintSkin(skin,parts,w,h,familyContract(record.template.id).joints),{bindingHash,...body}=base;body.parts=parts;body.paintSkin=skin;
+  return {ownershipEdges,binding:{...body,bindingHash:await hashJSON(body)},receipt:{schema:'cf.paint-skin-intake/v1',sourceBindingHash:bindingHash,recordRecipeHash:record.recipeHash,packedPixels:verified.receipt,...stats,leaves:leaves.length,triangles,ownershipEdges:ownershipEdges.length,ownershipAlphaRule:'every nonzero original alpha',originalInkOnly:true,method:'alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches',nativeAcceptance:false}};
+ }
+diff --git a/port/v2/tools/creature-animation/family-atlas-probe.mjs b/port/v2/tools/creature-animation/family-atlas-probe.mjs
+new file mode 100644
+index 00000000..d85096cd
+--- /dev/null
++++ b/port/v2/tools/creature-animation/family-atlas-probe.mjs
+@@ -0,0 +1,35 @@
++/** Complete offline intake/atlas path for every contracted family. Calibration
++ * stripes are deliberately synthetic: no species or painted coverage claim. */
++import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';
++import assert from 'node:assert/strict';
++import {FAMILY_CONTRACTS} from './family-contracts.mjs';import {sealFamilyRecord} from './family-record.mjs';
++import {hashBytes,hashJSON} from './quadruped-template.mjs';import {buildAuthoredParts} from './build-authored-parts.mjs';
++import {verifyPartsDirectory} from './verify-parts.mjs';import {cutPainterParts} from './part-masks.mjs';
++const require=createRequire(import.meta.url),{PNG}=createRequire(require.resolve('free-tex-packer-core'))('pngjs');
++const output=process.argv[2];if(!output||fs.existsSync(output))throw Error('Usage: family-atlas-probe.mjs NEW_OUTPUT_DIRECTORY');
++const {records}=JSON.parse(fs.readFileSync(new URL('./test-fixtures/family-records.json',import.meta.url)));
++const report={schema:'cf.family-atlas-proof/v1',status:'RUNNING',scope:'Synthetic calibration stripes for the real painter-label intake and pinned packer; NOT art, painter observation or animation acceptance.',families:[]};
++fs.mkdirSync(output,{recursive:true});
++const json=(file,value)=>fs.writeFileSync(file,JSON.stringify(value,null,2)+'\n',{flag:'wx'});
++try{
++ for(const t of FAMILY_CONTRACTS){
++  const dir=path.join(output,t.id);fs.mkdirSync(dir);const w=128,h=128,rgba=new Uint8ClampedArray(w*h*4),labels=new Uint8Array(w*h),labelRGBA=new Uint8Array(w*h*4);
++  for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=y*w+x,k=Math.floor(x*t.joints.length/w);labels[i]=k+1;rgba.set([(k*47+11)%256,(k*31+49)%256,(k*71+29)%256,255],i*4);labelRGBA.set([k+1,k+1,k+1,255],i*4);}
++  const master=PNG.sync.write({width:w,height:h,data:Buffer.from(rgba)}),labelBytes=PNG.sync.write({width:w,height:h,data:Buffer.from(labelRGBA)});
++  fs.writeFileSync(path.join(dir,'calibration.png'),master);fs.writeFileSync(path.join(dir,'labels.png'),labelBytes);
++  const input=structuredClone(records[t.id]);input.geometry={...input.geometry,width:w,height:h,cutoutAssetHash:await hashBytes(master)};input.clipSetId=t.clipSetId;
++  const record=await sealFamilyRecord(input);json(path.join(dir,'record.json'),record);
++  const body={schema:'cf.painter-part-intake/v1',recordRecipeHash:record.recipeHash,cutoutSha256:record.geometry.cutoutAssetHash,labelsFile:'labels.png',labelsSha256:await hashBytes(labelBytes),parts:t.joints.map((joint,i)=>({id:'part-'+String(i).padStart(2,'0'),joint,layer:i%2?'near':'far'}))};
++  const declaration={...body,declarationHash:await hashJSON(body)};json(path.join(dir,'declaration.json'),declaration);
++  const args={id:t.id,recordFile:path.join(dir,'record.json'),masterFile:path.join(dir,'calibration.png'),declarationFile:path.join(dir,'declaration.json')};
++  const a=await buildAuthoredParts({...args,output:path.join(dir,'pack-01')}),b=await buildAuthoredParts({...args,output:path.join(dir,'pack-02')});assert.deepEqual(a,b);
++  const first=await verifyPartsDirectory(path.join(dir,'pack-01')),second=await verifyPartsDirectory(path.join(dir,'pack-02'));
++  assert.equal(first.binding.atlasSha256,second.binding.atlasSha256,'nondeterministic PNG');assert.deepEqual(first.binding,second.binding,'nondeterministic metadata');
++  const missing=labels.slice();missing[0]=0;await assert.rejects(cutPainterParts(record,master,rgba,missing,declaration),/missing\/unknown ownership/);
++  const foreign={...body,parts:body.parts.map((p,i)=>i? p:{...p,joint:'foreign'})};await assert.rejects(cutPainterParts(record,master,rgba,labels,{...foreign,declarationHash:await hashJSON(foreign)}),/painter part identity/);
++  report.families.push({id:t.id,...a,atlasSha256:first.binding.atlasSha256,deterministicRepack:true,negativeControls:['missing visible label','foreign family joint'],runtimeRecord:'calibration only'});
++ }
++ report.status='PASS';
++}catch(error){report.status='FAIL';report.error=String(error.stack??error);process.exitCode=1;}
++finally{json(path.join(output,'report.json'),report);}
++console.log(JSON.stringify({status:report.status,families:report.families.length,error:report.error}));
+diff --git a/port/v2/tools/creature-animation/family-contract-probe.mjs b/port/v2/tools/creature-animation/family-contract-probe.mjs
+new file mode 100644
+index 00000000..35aa7892
+--- /dev/null
++++ b/port/v2/tools/creature-animation/family-contract-probe.mjs
+@@ -0,0 +1,30 @@
++/** Read-only producer comparison. Measures copied bounds independently on a
++ * seeded perturbation corpus; compares every joint, parent, limit and clip ID. */
++import fs from 'node:fs';import path from 'node:path';import os from 'node:os';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';import {pathToFileURL} from 'node:url';import {rolldown} from 'rolldown';
++import {FAMILY_CONTRACTS} from './family-contracts.mjs';import {measureFamilyBounds} from './family-record.mjs';
++const [sourceArg,outArg]=process.argv.slice(2);if(!sourceArg||!outArg)throw Error('Usage: family-contract-probe.mjs MOTION_DIR NEW_REPORT_JSON');
++const source=path.resolve(sourceArg),out=path.resolve(outArg);if(fs.existsSync(out))throw Error('Report must be new');
++const scratch=fs.mkdtempSync(path.join(os.tmpdir(),'cf-family-contract-')),hash=b=>createHash('sha256').update(b).digest('hex');
++const provenance=new Map(),report={schema:'cf.family-contract-comparison/v1',status:'RUNNING',scope:'Anatomy contract equivalence; synthetic landmarks only, not painted qualification',families:[]};
++try{
++ const bundle=await rolldown({input:path.join(source,'index.ts'),platform:'node',plugins:[{name:'read-only-source-receipt',transform(_,id){if(id.startsWith(source)&&fs.statSync(id).isFile())provenance.set(id,hash(fs.readFileSync(id)));}}]});
++ try{await bundle.write({dir:scratch,entryFileNames:'producer.mjs',format:'es'});}finally{await bundle.close();}
++ const producer=await import(pathToFileURL(path.join(scratch,'producer.mjs')));
++ assert.deepEqual([...producer.KNOWN_TEMPLATE_IDS].sort(),FAMILY_CONTRACTS.map(t=>t.id).sort());
++ const fixtureFile=new URL('./test-fixtures/family-records.json',import.meta.url),{records}=JSON.parse(fs.readFileSync(fixtureFile));
++ for(const template of FAMILY_CONTRACTS){const p=producer.resolveTemplate(template.id),lm=records[template.id].landmarks;
++  for(const key of ['graph','joints','legs','clipSetId','limitsDeg'])assert.deepEqual(template[key],p[key],template.id+':'+key);
++  assert.deepEqual(template.bodyAxis,p.bodyAxis??['pelvis','chest']);assert.deepEqual(template.bounds.map(({id,min,max})=>({id,min,max})),p.proportions.map(({id,min,max})=>({id,min,max})));
++  let seed=731234,maximumError=0;const random=()=>{seed=(Math.imul(1664525,seed)+1013904223)>>>0;return seed/4294967296;};
++  for(let i=0;i<65;i++){
++   const joints=Object.fromEntries(Object.entries(lm).map(([n,v])=>[n,i?[v[0]+(random()-.5)*.04,v[1]+(random()-.5)*.04]:v]));
++   const bones=Object.fromEntries(p.graph.map(([c,a])=>[c,Math.hypot(joints[c][0]-joints[a][0],joints[c][1]-joints[a][1])]));
++   const measured=measureFamilyBounds(template,joints);
++   for(const bound of p.proportions){const expected=bound.measure(joints,bones),actual=measured.measures[bound.id],delta=Math.abs(actual-expected);assert.ok(delta<1e-12,template.id+':'+bound.id);maximumError=Math.max(maximumError,delta);}
++  }
++  report.families.push({id:template.id,joints:p.joints.length,geometries:65,maximumError});
++ }
++ for(const [file,digest]of provenance)assert.equal(hash(fs.readFileSync(file)),digest,'source changed');report.status='PASS';
++}catch(e){report.status='FAIL';report.error=String(e.stack??e);process.exitCode=1;}
++finally{report.sources=[...provenance].map(([path,sha256])=>({path,sha256}));fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n');fs.rmSync(scratch,{recursive:true,force:true});}
++console.log(JSON.stringify({status:report.status,families:report.families.length,error:report.error}));
+diff --git a/port/v2/tools/creature-animation/family-contracts.d.mts b/port/v2/tools/creature-animation/family-contracts.d.mts
+new file mode 100644
+index 00000000..b2e006cb
+--- /dev/null
++++ b/port/v2/tools/creature-animation/family-contracts.d.mts
+@@ -0,0 +1,9 @@
++import type {SkeletonDefinition} from './skeleton-pose.mjs';
++export interface FamilyContract extends SkeletonDefinition {
++ readonly id:string;readonly version:number;readonly clipSetId:string;readonly joints:readonly string[];
++ readonly legs:readonly string[];
++ readonly limitsDeg:Readonly<Record<string,{min:number;max:number}>>;
++ readonly bounds:ReadonlyArray<{id:string;min:number;max:number;kind:string;axis?:readonly [string,string];bones?:readonly string[]}>;
++}
++export const FAMILY_CONTRACTS:readonly FamilyContract[];
++export function familyContract(id:string):FamilyContract;
+diff --git a/port/v2/tools/creature-animation/family-contracts.mjs b/port/v2/tools/creature-animation/family-contracts.mjs
+new file mode 100644
+index 00000000..f97a0932
+--- /dev/null
++++ b/port/v2/tools/creature-animation/family-contracts.mjs
+@@ -0,0 +1,4253 @@
++/** Contracted anatomy inventories from the read-only motion producer.
++ * These describe supported topologies, not painter coverage or art acceptance. */
++const contracts = [
++  {
++    "id": "quadruped",
++    "version": 1,
++    "clipSetId": "quadruped-land-v1",
++    "graph": [
++      [
++        "pelvis",
++        "root"
++      ],
++      [
++        "spine",
++        "pelvis"
++      ],
++      [
++        "chest",
++        "spine"
++      ],
++      [
++        "neck",
++        "chest"
++      ],
++      [
++        "head",
++        "neck"
++      ],
++      [
++        "jaw",
++        "head"
++      ],
++      [
++        "hindFarRoot",
++        "pelvis"
++      ],
++      [
++        "hindFarKnee",
++        "hindFarRoot"
++      ],
++      [
++        "hindFarAnkle",
++        "hindFarKnee"
++      ],
++      [
++        "hindFarPaw",
++        "hindFarAnkle"
++      ],
++      [
++        "foreFarRoot",
++        "chest"
++      ],
++      [
++        "foreFarKnee",
++        "foreFarRoot"
++      ],
++      [
++        "foreFarAnkle",
++        "foreFarKnee"
++      ],
++      [
++        "foreFarPaw",
++        "foreFarAnkle"
++      ],
++      [
++        "hindNearRoot",
++        "pelvis"
++      ],
++      [
++        "hindNearKnee",
++        "hindNearRoot"
++      ],
++      [
++        "hindNearAnkle",
++        "hindNearKnee"
++      ],
++      [
++        "hindNearPaw",
++        "hindNearAnkle"
++      ],
++      [
++        "foreNearRoot",
++        "chest"
++      ],
++      [
++        "foreNearKnee",
++        "foreNearRoot"
++      ],
++      [
++        "foreNearAnkle",
++        "foreNearKnee"
++      ],
++      [
++        "foreNearPaw",
++        "foreNearAnkle"
++      ],
++      [
++        "tail0",
++        "pelvis"
++      ],
++      [
++        "tail1",
++        "tail0"
++      ],
++      [
++        "tail2",
++        "tail1"
++      ],
++      [
++        "tail3",
++        "tail2"
++      ],
++      [
++        "earFarRoot",
++        "head"
++      ],
++      [
++        "earFarTip",
++        "earFarRoot"
++      ],
++      [
++        "earNearRoot",
++        "head"
++      ],
++      [
++        "earNearTip",
++        "earNearRoot"
++      ]
++    ],
++    "bodyAxis": [
++      "pelvis",
++      "chest"
++    ],
++    "joints": [
++      "root",
++      "pelvis",
++      "spine",
++      "chest",
++      "neck",
++      "head",
++      "jaw",
++      "hindFarRoot",
++      "hindFarKnee",
++      "hindFarAnkle",
++      "hindFarPaw",
++      "foreFarRoot",
++      "foreFarKnee",
++      "foreFarAnkle",
++      "foreFarPaw",
++      "hindNearRoot",
++      "hindNearKnee",
++      "hindNearAnkle",
++      "hindNearPaw",
++      "foreNearRoot",
++      "foreNearKnee",
++      "foreNearAnkle",
++      "foreNearPaw",
++      "tail0",
++      "tail1",
++      "tail2",
++      "tail3",
++      "earFarRoot",
++      "earFarTip",
++      "earNearRoot",
++      "earNearTip"
++    ],
++    "legs": [
++      "hindFar",
++      "foreFar",
++      "hindNear",
++      "foreNear"
++    ],
++    "limitsDeg": {
++      "root": {
++        "min": -15,
++        "max": 15
++      },
++      "pelvis": {
++        "min": -20,
++        "max": 20
++      },
++      "spine": {
++        "min": -25,
++        "max": 25
++      },
++      "chest": {
++        "min": -20,
++        "max": 20
++      },
++      "neck": {
++        "min": -35,
++        "max": 35
++      },
++      "head": {
++        "min": -35,
++        "max": 35
++      },
++      "jaw": {
++        "min": -30,
++        "max": 5
++      },
++      "hindFarRoot": {
++        "min": -60,
++        "max": 60
++      },
++      "hindFarKnee": {
++        "min": -75,
++        "max": 75
++      },
++      "hindFarAnkle": {
++        "min": -60,
++        "max": 60
++      },
++      "hindFarPaw": {
++        "min": -40,
++        "max": 40
++      },
++      "foreFarRoot": {
++        "min": -60,
++        "max": 60
++      },
++      "foreFarKnee": {
++        "min": -75,
++        "max": 75
++      },
++      "foreFarAnkle": {
++        "min": -60,
++        "max": 60
++      },
++      "foreFarPaw": {
++        "min": -40,
++        "max": 40
++      },
++      "hindNearRoot": {
++        "min": -60,
++        "max": 60
++      },
++      "hindNearKnee": {
++        "min": -75,
++        "max": 75
++      },
++      "hindNearAnkle": {
++        "min": -60,
++        "max": 60
++      },
++      "hindNearPaw": {
++        "min": -40,
++        "max": 40
++      },
++      "foreNearRoot": {
++        "min": -60,
++        "max": 60
++      },
++      "foreNearKnee": {
++        "min": -75,
++        "max": 75
++      },
++      "foreNearAnkle": {
++        "min": -60,
++        "max": 60
++      },
++      "foreNearPaw": {
++        "min": -40,
++        "max": 40
++      },
++      "tail0": {
++        "min": -40,
++        "max": 40
++      },
++      "tail1": {
++        "min": -50,
++        "max": 50
++      },
++      "tail2": {
++        "min": -50,
++        "max": 50
++      },
++      "tail3": {
++        "min": -50,
++        "max": 50
++      },
++      "earFarRoot": {
++        "min": -60,
++        "max": 60
++      },
++      "earFarTip": {
++        "min": -40,
++        "max": 40
++      },
++      "earNearRoot": {
++        "min": -60,
++        "max": 60
++      },
++      "earNearTip": {
++        "min": -40,
++        "max": 40
++      }
++    },
++    "bounds": [
++      {
++        "id": "torso",
++        "min": 0.08,
++        "max": 0.65,
++        "kind": "distance",
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "head",
++        "min": 0.015,
++        "max": 0.75,
++        "kind": "distance",
++        "axis": [
++          "neck",
++          "head"
++        ]
++      },
++      {
++        "id": "head/torso",
++        "min": 0.02,
++        "max": 1.6,
++        "kind": "ratio",
++        "bones": [
++          "head"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "leg/torso:hindFar",
++        "min": 0.25,
++        "max": 2.7,
++        "kind": "ratio",
++        "bones": [
++          "hindFarKnee",
++          "hindFarAnkle",
++          "hindFarPaw"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "leg/torso:foreFar",
++        "min": 0.25,
++        "max": 2.7,
++        "kind": "ratio",
++        "bones": [
++          "foreFarKnee",
++          "foreFarAnkle",
++          "foreFarPaw"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "leg/torso:hindNear",
++        "min": 0.25,
++        "max": 2.7,
++        "kind": "ratio",
++        "bones": [
++          "hindNearKnee",
++          "hindNearAnkle",
++          "hindNearPaw"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "leg/torso:foreNear",
++        "min": 0.25,
++        "max": 2.7,
++        "kind": "ratio",
++        "bones": [
++          "foreNearKnee",
++          "foreNearAnkle",
++          "foreNearPaw"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "hopper",
++    "version": 1,
++    "clipSetId": "hopper-land-v1",
++    "graph": [
++      [
++        "pelvis",
++        "root"
++      ],
++      [
++        "spine",
++        "pelvis"
++      ],
++      [
++        "chest",
++        "spine"
++      ],
++      [
++        "neck",
++        "chest"
++      ],
++      [
++        "head",
++        "neck"
++      ],
++      [
++        "jaw",
++        "head"
++      ],
++      [
++        "hindFarRoot",
++        "pelvis"
++      ],
++      [
++        "hindFarKnee",
++        "hindFarRoot"
++      ],
++      [
++        "hindFarAnkle",
++        "hindFarKnee"
++      ],
++      [
++        "hindFarPaw",
++        "hindFarAnkle"
++      ],
++      [
++        "foreFarRoot",
++        "chest"
++      ],
++      [
++        "foreFarKnee",
++        "foreFarRoot"
++      ],
++      [
++        "foreFarAnkle",
++        "foreFarKnee"
++      ],
++      [
++        "foreFarPaw",
++        "foreFarAnkle"
++      ],
++      [
++        "hindNearRoot",
++        "pelvis"
++      ],
++      [
++        "hindNearKnee",
++        "hindNearRoot"
++      ],
++      [
++        "hindNearAnkle",
++        "hindNearKnee"
++      ],
++      [
++        "hindNearPaw",
++        "hindNearAnkle"
++      ],
++      [
++        "foreNearRoot",
++        "chest"
++      ],
++      [
++        "foreNearKnee",
++        "foreNearRoot"
++      ],
++      [
++        "foreNearAnkle",
++        "foreNearKnee"
++      ],
++      [
++        "foreNearPaw",
++        "foreNearAnkle"
++      ],
++      [
++        "tail0",
++        "pelvis"
++      ],
++      [
++        "tail1",
++        "tail0"
++      ],
++      [
++        "tail2",
++        "tail1"
++      ],
++      [
++        "tail3",
++        "tail2"
++      ],
++      [
++        "earFarRoot",
++        "head"
++      ],
++      [
++        "earFarTip",
++        "earFarRoot"
++      ],
++      [
++        "earNearRoot",
++        "head"
++      ],
++      [
++        "earNearTip",
++        "earNearRoot"
++      ]
++    ],
++    "bodyAxis": [
++      "pelvis",
++      "chest"
++    ],
++    "joints": [
++      "root",
++      "pelvis",
++      "spine",
++      "chest",
++      "neck",
++      "head",
++      "jaw",
++      "hindFarRoot",
++      "hindFarKnee",
++      "hindFarAnkle",
++      "hindFarPaw",
++      "foreFarRoot",
++      "foreFarKnee",
++      "foreFarAnkle",
++      "foreFarPaw",
++      "hindNearRoot",
++      "hindNearKnee",
++      "hindNearAnkle",
++      "hindNearPaw",
++      "foreNearRoot",
++      "foreNearKnee",
++      "foreNearAnkle",
++      "foreNearPaw",
++      "tail0",
++      "tail1",
++      "tail2",
++      "tail3",
++      "earFarRoot",
++      "earFarTip",
++      "earNearRoot",
++      "earNearTip"
++    ],
++    "legs": [
++      "hindFar",
++      "foreFar",
++      "hindNear",
++      "foreNear"
++    ],
++    "limitsDeg": {
++      "root": {
++        "min": -30,
++        "max": 30
++      },
++      "pelvis": {
++        "min": -25,
++        "max": 25
++      },
++      "spine": {
++        "min": -30,
++        "max": 30
++      },
++      "chest": {
++        "min": -20,
++        "max": 20
++      },
++      "neck": {
++        "min": -35,
++        "max": 35
++      },
++      "head": {
++        "min": -35,
++        "max": 35
++      },
++      "jaw": {
++        "min": -30,
++        "max": 5
++      },
++      "hindFarRoot": {
++        "min": -70,
++        "max": 70
++      },
++      "hindFarKnee": {
++        "min": -110,
++        "max": 110
++      },
++      "hindFarAnkle": {
++        "min": -110,
++        "max": 110
++      },
++      "hindFarPaw": {
++        "min": -45,
++        "max": 45
++      },
++      "foreFarRoot": {
++        "min": -60,
++        "max": 60
++      },
++      "foreFarKnee": {
++        "min": -75,
++        "max": 75
++      },
++      "foreFarAnkle": {
++        "min": -60,
++        "max": 60
++      },
++      "foreFarPaw": {
++        "min": -45,
++        "max": 45
++      },
++      "hindNearRoot": {
++        "min": -70,
++        "max": 70
++      },
++      "hindNearKnee": {
++        "min": -110,
++        "max": 110
++      },
++      "hindNearAnkle": {
++        "min": -110,
++        "max": 110
++      },
++      "hindNearPaw": {
++        "min": -45,
++        "max": 45
++      },
++      "foreNearRoot": {
++        "min": -60,
++        "max": 60
++      },
++      "foreNearKnee": {
++        "min": -75,
++        "max": 75
++      },
++      "foreNearAnkle": {
++        "min": -60,
++        "max": 60
++      },
++      "foreNearPaw": {
++        "min": -45,
++        "max": 45
++      },
++      "tail0": {
++        "min": -40,
++        "max": 40
++      },
++      "tail1": {
++        "min": -50,
++        "max": 50
++      },
++      "tail2": {
++        "min": -50,
++        "max": 50
++      },
++      "tail3": {
++        "min": -50,
++        "max": 50
++      },
++      "earFarRoot": {
++        "min": -30,
++        "max": 30
++      },
++      "earFarTip": {
++        "min": -40,
++        "max": 40
++      },
++      "earNearRoot": {
++        "min": -30,
++        "max": 30
++      },
++      "earNearTip": {
++        "min": -40,
++        "max": 40
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.08,
++        "max": 0.65,
++        "kind": "distance",
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "leg/torso:hindFar",
++        "min": 0.25,
++        "max": 3.2,
++        "kind": "ratio",
++        "bones": [
++          "hindFarKnee",
++          "hindFarAnkle",
++          "hindFarPaw"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "leg/torso:foreFar",
++        "min": 0.25,
++        "max": 3.2,
++        "kind": "ratio",
++        "bones": [
++          "foreFarKnee",
++          "foreFarAnkle",
++          "foreFarPaw"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "leg/torso:hindNear",
++        "min": 0.25,
++        "max": 3.2,
++        "kind": "ratio",
++        "bones": [
++          "hindNearKnee",
++          "hindNearAnkle",
++          "hindNearPaw"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "leg/torso:foreNear",
++        "min": 0.25,
++        "max": 3.2,
++        "kind": "ratio",
++        "bones": [
++          "foreNearKnee",
++          "foreNearAnkle",
++          "foreNearPaw"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "biped-bird",
++    "version": 1,
++    "clipSetId": "biped-bird-v1",
++    "graph": [
++      [
++        "pelvis",
++        "root"
++      ],
++      [
++        "spine",
++        "pelvis"
++      ],
++      [
++        "chest",
++        "spine"
++      ],
++      [
++        "neck0",
++        "chest"
++      ],
++      [
++        "neck1",
++        "neck0"
++      ],
++      [
++        "head",
++        "neck1"
++      ],
++      [
++        "beak",
++        "head"
++      ],
++      [
++        "legFarKnee",
++        "pelvis"
++      ],
++      [
++        "legFarAnkle",
++        "legFarKnee"
++      ],
++      [
++        "legFarFoot",
++        "legFarAnkle"
++      ],
++      [
++        "legNearKnee",
++        "pelvis"
++      ],
++      [
++        "legNearAnkle",
++        "legNearKnee"
++      ],
++      [
++        "legNearFoot",
++        "legNearAnkle"
++      ],
++      [
++        "wingFarRoot",
++        "chest"
++      ],
++      [
++        "wingFarTip",
++        "wingFarRoot"
++      ],
++      [
++        "wingNearRoot",
++        "chest"
++      ],
++      [
++        "wingNearTip",
++        "wingNearRoot"
++      ],
++      [
++        "tailFan",
++        "pelvis"
++      ]
++    ],
++    "bodyAxis": [
++      "pelvis",
++      "chest"
++    ],
++    "joints": [
++      "root",
++      "pelvis",
++      "spine",
++      "chest",
++      "neck0",
++      "neck1",
++      "head",
++      "beak",
++      "legFarKnee",
++      "legFarAnkle",
++      "legFarFoot",
++      "legNearKnee",
++      "legNearAnkle",
++      "legNearFoot",
++      "wingFarRoot",
++      "wingFarTip",
++      "wingNearRoot",
++      "wingNearTip",
++      "tailFan"
++    ],
++    "legs": [
++      "legFar",
++      "legNear"
++    ],
++    "limitsDeg": {
++      "root": {
++        "min": -25,
++        "max": 25
++      },
++      "pelvis": {
++        "min": -20,
++        "max": 20
++      },
++      "spine": {
++        "min": -25,
++        "max": 25
++      },
++      "chest": {
++        "min": -20,
++        "max": 20
++      },
++      "neck0": {
++        "min": -45,
++        "max": 45
++      },
++      "neck1": {
++        "min": -45,
++        "max": 45
++      },
++      "head": {
++        "min": -40,
++        "max": 40
++      },
++      "beak": {
++        "min": -30,
++        "max": 5
++      },
++      "legFarKnee": {
++        "min": -70,
++        "max": 70
++      },
++      "legFarAnkle": {
++        "min": -85,
++        "max": 85
++      },
++      "legFarFoot": {
++        "min": -45,
++        "max": 45
++      },
++      "legNearKnee": {
++        "min": -70,
++        "max": 70
++      },
++      "legNearAnkle": {
++        "min": -85,
++        "max": 85
++      },
++      "legNearFoot": {
++        "min": -45,
++        "max": 45
++      },
++      "wingFarRoot": {
++        "min": -60,
++        "max": 95
++      },
++      "wingFarTip": {
++        "min": -70,
++        "max": 70
++      },
++      "wingNearRoot": {
++        "min": -60,
++        "max": 95
++      },
++      "wingNearTip": {
++        "min": -70,
++        "max": 70
++      },
++      "tailFan": {
++        "min": -40,
++        "max": 40
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.06,
++        "max": 0.65,
++        "kind": "distance",
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "leg/torso:legFar",
++        "min": 0.3,
++        "max": 3.5,
++        "kind": "ratio",
++        "bones": [
++          "legFarKnee",
++          "legFarAnkle",
++          "legFarFoot"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "leg/torso:legNear",
++        "min": 0.3,
++        "max": 3.5,
++        "kind": "ratio",
++        "bones": [
++          "legNearKnee",
++          "legNearAnkle",
++          "legNearFoot"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "wing/torso",
++        "min": 0.4,
++        "max": 4.5,
++        "kind": "ratio",
++        "bones": [
++          "wingFarRoot",
++          "wingFarTip"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "fish",
++    "version": 1,
++    "clipSetId": "fish-aquatic-v1",
++    "graph": [
++      [
++        "head",
++        "root"
++      ],
++      [
++        "jaw",
++        "head"
++      ],
++      [
++        "spine0",
++        "root"
++      ],
++      [
++        "spine1",
++        "spine0"
++      ],
++      [
++        "spine2",
++        "spine1"
++      ],
++      [
++        "spine3",
++        "spine2"
++      ],
++      [
++        "spine4",
++        "spine3"
++      ],
++      [
++        "spine5",
++        "spine4"
++      ],
++      [
++        "caudal",
++        "spine5"
++      ],
++      [
++        "dorsal",
++        "spine1"
++      ],
++      [
++        "pectoralFar",
++        "root"
++      ],
++      [
++        "pectoralNear",
++        "root"
++      ]
++    ],
++    "bodyAxis": [
++      "spine0",
++      "spine5"
++    ],
++    "joints": [
++      "root",
++      "head",
++      "jaw",
++      "spine0",
++      "spine1",
++      "spine2",
++      "spine3",
++      "spine4",
++      "spine5",
++      "caudal",
++      "dorsal",
++      "pectoralFar",
++      "pectoralNear"
++    ],
++    "legs": [],
++    "limitsDeg": {
++      "root": {
++        "min": -30,
++        "max": 30
++      },
++      "head": {
++        "min": -30,
++        "max": 30
++      },
++      "jaw": {
++        "min": -35,
++        "max": 5
++      },
++      "spine0": {
++        "min": -35,
++        "max": 35
++      },
++      "spine1": {
++        "min": -35,
++        "max": 35
++      },
++      "spine2": {
++        "min": -35,
++        "max": 35
++      },
++      "spine3": {
++        "min": -35,
++        "max": 35
++      },
++      "spine4": {
++        "min": -35,
++        "max": 35
++      },
++      "spine5": {
++        "min": -35,
++        "max": 35
++      },
++      "caudal": {
++        "min": -50,
++        "max": 50
++      },
++      "dorsal": {
++        "min": -35,
++        "max": 35
++      },
++      "pectoralFar": {
++        "min": -60,
++        "max": 60
++      },
++      "pectoralNear": {
++        "min": -60,
++        "max": 60
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.1,
++        "max": 0.85,
++        "kind": "distance",
++        "axis": [
++          "spine0",
++          "spine5"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "caudal/body",
++        "min": 0.05,
++        "max": 0.9,
++        "kind": "ratio",
++        "bones": [
++          "caudal"
++        ],
++        "axis": [
++          "spine0",
++          "spine5"
++        ]
++      },
++      {
++        "id": "head/body",
++        "min": 0.04,
++        "max": 0.8,
++        "kind": "ratio",
++        "bones": [
++          "head"
++        ],
++        "axis": [
++          "spine0",
++          "spine5"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "insect",
++    "version": 1,
++    "clipSetId": "insect-v1",
++    "graph": [
++      [
++        "thorax",
++        "root"
++      ],
++      [
++        "head",
++        "thorax"
++      ],
++      [
++        "mandible",
++        "head"
++      ],
++      [
++        "abdomen",
++        "thorax"
++      ],
++      [
++        "legFrontFarKnee",
++        "thorax"
++      ],
++      [
++        "legFrontFarFoot",
++        "legFrontFarKnee"
++      ],
++      [
++        "legFrontNearKnee",
++        "thorax"
++      ],
++      [
++        "legFrontNearFoot",
++        "legFrontNearKnee"
++      ],
++      [
++        "legMidFarKnee",
++        "thorax"
++      ],
++      [
++        "legMidFarFoot",
++        "legMidFarKnee"
++      ],
++      [
++        "legMidNearKnee",
++        "thorax"
++      ],
++      [
++        "legMidNearFoot",
++        "legMidNearKnee"
++      ],
++      [
++        "legHindFarKnee",
++        "thorax"
++      ],
++      [
++        "legHindFarFoot",
++        "legHindFarKnee"
++      ],
++      [
++        "legHindNearKnee",
++        "thorax"
++      ],
++      [
++        "legHindNearFoot",
++        "legHindNearKnee"
++      ],
++      [
++        "antennaFar",
++        "head"
++      ],
++      [
++        "antennaNear",
++        "head"
++      ],
++      [
++        "wingFar",
++        "thorax"
++      ],
++      [
++        "wingNear",
++        "thorax"
++      ]
++    ],
++    "bodyAxis": [
++      "abdomen",
++      "head"
++    ],
++    "joints": [
++      "root",
++      "thorax",
++      "head",
++      "mandible",
++      "abdomen",
++      "legFrontFarKnee",
++      "legFrontFarFoot",
++      "legFrontNearKnee",
++      "legFrontNearFoot",
++      "legMidFarKnee",
++      "legMidFarFoot",
++      "legMidNearKnee",
++      "legMidNearFoot",
++      "legHindFarKnee",
++      "legHindFarFoot",
++      "legHindNearKnee",
++      "legHindNearFoot",
++      "antennaFar",
++      "antennaNear",
++      "wingFar",
++      "wingNear"
++    ],
++    "legs": [
++      "legFrontFar",
++      "legFrontNear",
++      "legMidFar",
++      "legMidNear",
++      "legHindFar",
++      "legHindNear"
++    ],
++    "limitsDeg": {
++      "root": {
++        "min": -25,
++        "max": 25
++      },
++      "thorax": {
++        "min": -15,
++        "max": 15
++      },
++      "head": {
++        "min": -35,
++        "max": 35
++      },
++      "mandible": {
++        "min": -40,
++        "max": 5
++      },
++      "abdomen": {
++        "min": -35,
++        "max": 50
++      },
++      "legFrontFarKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "legFrontFarFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "legFrontNearKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "legFrontNearFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "legMidFarKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "legMidFarFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "legMidNearKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "legMidNearFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "legHindFarKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "legHindFarFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "legHindNearKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "legHindNearFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "antennaFar": {
++        "min": -50,
++        "max": 50
++      },
++      "antennaNear": {
++        "min": -50,
++        "max": 50
++      },
++      "wingFar": {
++        "min": -85,
++        "max": 85
++      },
++      "wingNear": {
++        "min": -85,
++        "max": 85
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.08,
++        "max": 0.85,
++        "kind": "distance",
++        "axis": [
++          "abdomen",
++          "head"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "leg/body:legFrontFar",
++        "min": 0.1,
++        "max": 2.5,
++        "kind": "ratio",
++        "bones": [
++          "legFrontFarKnee",
++          "legFrontFarFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legFrontNear",
++        "min": 0.1,
++        "max": 2.5,
++        "kind": "ratio",
++        "bones": [
++          "legFrontNearKnee",
++          "legFrontNearFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legMidFar",
++        "min": 0.1,
++        "max": 2.5,
++        "kind": "ratio",
++        "bones": [
++          "legMidFarKnee",
++          "legMidFarFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legMidNear",
++        "min": 0.1,
++        "max": 2.5,
++        "kind": "ratio",
++        "bones": [
++          "legMidNearKnee",
++          "legMidNearFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legHindFar",
++        "min": 0.1,
++        "max": 2.5,
++        "kind": "ratio",
++        "bones": [
++          "legHindFarKnee",
++          "legHindFarFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legHindNear",
++        "min": 0.1,
++        "max": 2.5,
++        "kind": "ratio",
++        "bones": [
++          "legHindNearKnee",
++          "legHindNearFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "head"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "serpent",
++    "version": 1,
++    "clipSetId": "serpent-v1",
++    "graph": [
++      [
++        "head",
++        "root"
++      ],
++      [
++        "jaw",
++        "head"
++      ],
++      [
++        "seg0",
++        "root"
++      ],
++      [
++        "seg1",
++        "seg0"
++      ],
++      [
++        "seg2",
++        "seg1"
++      ],
++      [
++        "seg3",
++        "seg2"
++      ],
++      [
++        "seg4",
++        "seg3"
++      ],
++      [
++        "seg5",
++        "seg4"
++      ],
++      [
++        "seg6",
++        "seg5"
++      ],
++      [
++        "seg7",
++        "seg6"
++      ],
++      [
++        "seg8",
++        "seg7"
++      ],
++      [
++        "seg9",
++        "seg8"
++      ]
++    ],
++    "bodyAxis": [
++      "seg0",
++      "seg9"
++    ],
++    "joints": [
++      "root",
++      "head",
++      "jaw",
++      "seg0",
++      "seg1",
++      "seg2",
++      "seg3",
++      "seg4",
++      "seg5",
++      "seg6",
++      "seg7",
++      "seg8",
++      "seg9"
++    ],
++    "legs": [],
++    "limitsDeg": {
++      "root": {
++        "min": -25,
++        "max": 25
++      },
++      "head": {
++        "min": -50,
++        "max": 50
++      },
++      "jaw": {
++        "min": -45,
++        "max": 5
++      },
++      "seg0": {
++        "min": -45,
++        "max": 45
++      },
++      "seg1": {
++        "min": -45,
++        "max": 45
++      },
++      "seg2": {
++        "min": -45,
++        "max": 45
++      },
++      "seg3": {
++        "min": -45,
++        "max": 45
++      },
++      "seg4": {
++        "min": -45,
++        "max": 45
++      },
++      "seg5": {
++        "min": -45,
++        "max": 45
++      },
++      "seg6": {
++        "min": -45,
++        "max": 45
++      },
++      "seg7": {
++        "min": -45,
++        "max": 45
++      },
++      "seg8": {
++        "min": -45,
++        "max": 45
++      },
++      "seg9": {
++        "min": -45,
++        "max": 45
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.1,
++        "max": 0.9,
++        "kind": "distance",
++        "axis": [
++          "seg0",
++          "seg9"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "head/body",
++        "min": 0.02,
++        "max": 0.5,
++        "kind": "ratio",
++        "bones": [
++          "head"
++        ],
++        "axis": [
++          "seg0",
++          "seg9"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "arachnid",
++    "version": 1,
++    "clipSetId": "arachnid-v1",
++    "graph": [
++      [
++        "cephalothorax",
++        "root"
++      ],
++      [
++        "abdomen",
++        "cephalothorax"
++      ],
++      [
++        "sting",
++        "abdomen"
++      ],
++      [
++        "cheliceraFar",
++        "cephalothorax"
++      ],
++      [
++        "cheliceraNear",
++        "cephalothorax"
++      ],
++      [
++        "leg1FarKnee",
++        "cephalothorax"
++      ],
++      [
++        "leg1FarFoot",
++        "leg1FarKnee"
++      ],
++      [
++        "leg1NearKnee",
++        "cephalothorax"
++      ],
++      [
++        "leg1NearFoot",
++        "leg1NearKnee"
++      ],
++      [
++        "leg2FarKnee",
++        "cephalothorax"
++      ],
++      [
++        "leg2FarFoot",
++        "leg2FarKnee"
++      ],
++      [
++        "leg2NearKnee",
++        "cephalothorax"
++      ],
++      [
++        "leg2NearFoot",
++        "leg2NearKnee"
++      ],
++      [
++        "leg3FarKnee",
++        "cephalothorax"
++      ],
++      [
++        "leg3FarFoot",
++        "leg3FarKnee"
++      ],
++      [
++        "leg3NearKnee",
++        "cephalothorax"
++      ],
++      [
++        "leg3NearFoot",
++        "leg3NearKnee"
++      ],
++      [
++        "leg4FarKnee",
++        "cephalothorax"
++      ],
++      [
++        "leg4FarFoot",
++        "leg4FarKnee"
++      ],
++      [
++        "leg4NearKnee",
++        "cephalothorax"
++      ],
++      [
++        "leg4NearFoot",
++        "leg4NearKnee"
++      ]
++    ],
++    "bodyAxis": [
++      "abdomen",
++      "cephalothorax"
++    ],
++    "joints": [
++      "root",
++      "cephalothorax",
++      "abdomen",
++      "sting",
++      "cheliceraFar",
++      "cheliceraNear",
++      "leg1FarKnee",
++      "leg1FarFoot",
++      "leg1NearKnee",
++      "leg1NearFoot",
++      "leg2FarKnee",
++      "leg2FarFoot",
++      "leg2NearKnee",
++      "leg2NearFoot",
++      "leg3FarKnee",
++      "leg3FarFoot",
++      "leg3NearKnee",
++      "leg3NearFoot",
++      "leg4FarKnee",
++      "leg4FarFoot",
++      "leg4NearKnee",
++      "leg4NearFoot"
++    ],
++    "legs": [
++      "leg1Far",
++      "leg1Near",
++      "leg2Far",
++      "leg2Near",
++      "leg3Far",
++      "leg3Near",
++      "leg4Far",
++      "leg4Near"
++    ],
++    "limitsDeg": {
++      "root": {
++        "min": -25,
++        "max": 25
++      },
++      "cephalothorax": {
++        "min": -15,
++        "max": 15
++      },
++      "abdomen": {
++        "min": -35,
++        "max": 65
++      },
++      "sting": {
++        "min": -70,
++        "max": 70
++      },
++      "cheliceraFar": {
++        "min": -45,
++        "max": 45
++      },
++      "cheliceraNear": {
++        "min": -45,
++        "max": 45
++      },
++      "leg1FarKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "leg1FarFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "leg1NearKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "leg1NearFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "leg2FarKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "leg2FarFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "leg2NearKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "leg2NearFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "leg3FarKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "leg3FarFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "leg3NearKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "leg3NearFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "leg4FarKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "leg4FarFoot": {
++        "min": -75,
++        "max": 75
++      },
++      "leg4NearKnee": {
++        "min": -65,
++        "max": 65
++      },
++      "leg4NearFoot": {
++        "min": -75,
++        "max": 75
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.05,
++        "max": 0.7,
++        "kind": "distance",
++        "axis": [
++          "abdomen",
++          "cephalothorax"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "leg/body:leg1Far",
++        "min": 0.15,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "leg1FarKnee",
++          "leg1FarFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "cephalothorax"
++        ]
++      },
++      {
++        "id": "leg/body:leg1Near",
++        "min": 0.15,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "leg1NearKnee",
++          "leg1NearFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "cephalothorax"
++        ]
++      },
++      {
++        "id": "leg/body:leg2Far",
++        "min": 0.15,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "leg2FarKnee",
++          "leg2FarFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "cephalothorax"
++        ]
++      },
++      {
++        "id": "leg/body:leg2Near",
++        "min": 0.15,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "leg2NearKnee",
++          "leg2NearFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "cephalothorax"
++        ]
++      },
++      {
++        "id": "leg/body:leg3Far",
++        "min": 0.15,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "leg3FarKnee",
++          "leg3FarFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "cephalothorax"
++        ]
++      },
++      {
++        "id": "leg/body:leg3Near",
++        "min": 0.15,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "leg3NearKnee",
++          "leg3NearFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "cephalothorax"
++        ]
++      },
++      {
++        "id": "leg/body:leg4Far",
++        "min": 0.15,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "leg4FarKnee",
++          "leg4FarFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "cephalothorax"
++        ]
++      },
++      {
++        "id": "leg/body:leg4Near",
++        "min": 0.15,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "leg4NearKnee",
++          "leg4NearFoot"
++        ],
++        "axis": [
++          "abdomen",
++          "cephalothorax"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "radial",
++    "version": 1,
++    "clipSetId": "radial-v1",
++    "graph": [
++      [
++        "centre",
++        "root"
++      ],
++      [
++        "bell",
++        "centre"
++      ],
++      [
++        "arm0Seg0",
++        "centre"
++      ],
++      [
++        "arm0Seg1",
++        "arm0Seg0"
++      ],
++      [
++        "arm0Seg2",
++        "arm0Seg1"
++      ],
++      [
++        "arm1Seg0",
++        "centre"
++      ],
++      [
++        "arm1Seg1",
++        "arm1Seg0"
++      ],
++      [
++        "arm1Seg2",
++        "arm1Seg1"
++      ],
++      [
++        "arm2Seg0",
++        "centre"
++      ],
++      [
++        "arm2Seg1",
++        "arm2Seg0"
++      ],
++      [
++        "arm2Seg2",
++        "arm2Seg1"
++      ],
++      [
++        "arm3Seg0",
++        "centre"
++      ],
++      [
++        "arm3Seg1",
++        "arm3Seg0"
++      ],
++      [
++        "arm3Seg2",
++        "arm3Seg1"
++      ],
++      [
++        "arm4Seg0",
++        "centre"
++      ],
++      [
++        "arm4Seg1",
++        "arm4Seg0"
++      ],
++      [
++        "arm4Seg2",
++        "arm4Seg1"
++      ],
++      [
++        "arm5Seg0",
++        "centre"
++      ],
++      [
++        "arm5Seg1",
++        "arm5Seg0"
++      ],
++      [
++        "arm5Seg2",
++        "arm5Seg1"
++      ]
++    ],
++    "bodyAxis": [
++      "centre",
++      "bell"
++    ],
++    "joints": [
++      "root",
++      "centre",
++      "bell",
++      "arm0Seg0",
++      "arm0Seg1",
++      "arm0Seg2",
++      "arm1Seg0",
++      "arm1Seg1",
++      "arm1Seg2",
++      "arm2Seg0",
++      "arm2Seg1",
++      "arm2Seg2",
++      "arm3Seg0",
++      "arm3Seg1",
++      "arm3Seg2",
++      "arm4Seg0",
++      "arm4Seg1",
++      "arm4Seg2",
++      "arm5Seg0",
++      "arm5Seg1",
++      "arm5Seg2"
++    ],
++    "legs": [],
++    "limitsDeg": {
++      "root": {
++        "min": -35,
++        "max": 35
++      },
++      "centre": {
++        "min": -15,
++        "max": 15
++      },
++      "bell": {
++        "min": -25,
++        "max": 25
++      },
++      "arm0Seg0": {
++        "min": -45,
++        "max": 45
++      },
++      "arm0Seg1": {
++        "min": -55,
++        "max": 55
++      },
++      "arm0Seg2": {
++        "min": -55,
++        "max": 55
++      },
++      "arm1Seg0": {
++        "min": -45,
++        "max": 45
++      },
++      "arm1Seg1": {
++        "min": -55,
++        "max": 55
++      },
++      "arm1Seg2": {
++        "min": -55,
++        "max": 55
++      },
++      "arm2Seg0": {
++        "min": -45,
++        "max": 45
++      },
++      "arm2Seg1": {
++        "min": -55,
++        "max": 55
++      },
++      "arm2Seg2": {
++        "min": -55,
++        "max": 55
++      },
++      "arm3Seg0": {
++        "min": -45,
++        "max": 45
++      },
++      "arm3Seg1": {
++        "min": -55,
++        "max": 55
++      },
++      "arm3Seg2": {
++        "min": -55,
++        "max": 55
++      },
++      "arm4Seg0": {
++        "min": -45,
++        "max": 45
++      },
++      "arm4Seg1": {
++        "min": -55,
++        "max": 55
++      },
++      "arm4Seg2": {
++        "min": -55,
++        "max": 55
++      },
++      "arm5Seg0": {
++        "min": -45,
++        "max": 45
++      },
++      "arm5Seg1": {
++        "min": -55,
++        "max": 55
++      },
++      "arm5Seg2": {
++        "min": -55,
++        "max": 55
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.03,
++        "max": 0.6,
++        "kind": "distance",
++        "axis": [
++          "centre",
++          "bell"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "arm/bell:arm0",
++        "min": 0.3,
++        "max": 8,
++        "kind": "ratio",
++        "bones": [
++          "arm0Seg0",
++          "arm0Seg1",
++          "arm0Seg2"
++        ],
++        "axis": [
++          "centre",
++          "bell"
++        ]
++      },
++      {
++        "id": "arm/bell:arm1",
++        "min": 0.3,
++        "max": 8,
++        "kind": "ratio",
++        "bones": [
++          "arm1Seg0",
++          "arm1Seg1",
++          "arm1Seg2"
++        ],
++        "axis": [
++          "centre",
++          "bell"
++        ]
++      },
++      {
++        "id": "arm/bell:arm2",
++        "min": 0.3,
++        "max": 8,
++        "kind": "ratio",
++        "bones": [
++          "arm2Seg0",
++          "arm2Seg1",
++          "arm2Seg2"
++        ],
++        "axis": [
++          "centre",
++          "bell"
++        ]
++      },
++      {
++        "id": "arm/bell:arm3",
++        "min": 0.3,
++        "max": 8,
++        "kind": "ratio",
++        "bones": [
++          "arm3Seg0",
++          "arm3Seg1",
++          "arm3Seg2"
++        ],
++        "axis": [
++          "centre",
++          "bell"
++        ]
++      },
++      {
++        "id": "arm/bell:arm4",
++        "min": 0.3,
++        "max": 8,
++        "kind": "ratio",
++        "bones": [
++          "arm4Seg0",
++          "arm4Seg1",
++          "arm4Seg2"
++        ],
++        "axis": [
++          "centre",
++          "bell"
++        ]
++      },
++      {
++        "id": "arm/bell:arm5",
++        "min": 0.3,
++        "max": 8,
++        "kind": "ratio",
++        "bones": [
++          "arm5Seg0",
++          "arm5Seg1",
++          "arm5Seg2"
++        ],
++        "axis": [
++          "centre",
++          "bell"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "plant-woody",
++    "version": 1,
++    "clipSetId": "plant-woody-v1",
++    "graph": [
++      [
++        "trunk",
++        "root"
++      ],
++      [
++        "branch0Base",
++        "trunk"
++      ],
++      [
++        "branch0Tip",
++        "branch0Base"
++      ],
++      [
++        "leaf0",
++        "branch0Tip"
++      ],
++      [
++        "branch1Base",
++        "trunk"
++      ],
++      [
++        "branch1Tip",
++        "branch1Base"
++      ],
++      [
++        "leaf1",
++        "branch1Tip"
++      ],
++      [
++        "branch2Base",
++        "trunk"
++      ],
++      [
++        "branch2Tip",
++        "branch2Base"
++      ],
++      [
++        "leaf2",
++        "branch2Tip"
++      ]
++    ],
++    "bodyAxis": [
++      "root",
++      "trunk"
++    ],
++    "joints": [
++      "root",
++      "trunk",
++      "branch0Base",
++      "branch0Tip",
++      "leaf0",
++      "branch1Base",
++      "branch1Tip",
++      "leaf1",
++      "branch2Base",
++      "branch2Tip",
++      "leaf2"
++    ],
++    "legs": [],
++    "limitsDeg": {
++      "root": {
++        "min": -5,
++        "max": 5
++      },
++      "trunk": {
++        "min": -12,
++        "max": 12
++      },
++      "branch0Base": {
++        "min": -25,
++        "max": 25
++      },
++      "branch0Tip": {
++        "min": -35,
++        "max": 35
++      },
++      "leaf0": {
++        "min": -45,
++        "max": 45
++      },
++      "branch1Base": {
++        "min": -25,
++        "max": 25
++      },
++      "branch1Tip": {
++        "min": -35,
++        "max": 35
++      },
++      "leaf1": {
++        "min": -45,
++        "max": 45
++      },
++      "branch2Base": {
++        "min": -25,
++        "max": 25
++      },
++      "branch2Tip": {
++        "min": -35,
++        "max": 35
++      },
++      "leaf2": {
++        "min": -45,
++        "max": 45
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.08,
++        "max": 0.8,
++        "kind": "distance",
++        "axis": [
++          "root",
++          "trunk"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "branch/trunk:branch0",
++        "min": 0.1,
++        "max": 2.5,
++        "kind": "ratio",
++        "bones": [
++          "branch0Base",
++          "branch0Tip"
++        ],
++        "axis": [
++          "root",
++          "trunk"
++        ]
++      },
++      {
++        "id": "branch/trunk:branch1",
++        "min": 0.1,
++        "max": 2.5,
++        "kind": "ratio",
++        "bones": [
++          "branch1Base",
++          "branch1Tip"
++        ],
++        "axis": [
++          "root",
++          "trunk"
++        ]
++      },
++      {
++        "id": "branch/trunk:branch2",
++        "min": 0.1,
++        "max": 2.5,
++        "kind": "ratio",
++        "bones": [
++          "branch2Base",
++          "branch2Tip"
++        ],
++        "axis": [
++          "root",
++          "trunk"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "plant-herb",
++    "version": 1,
++    "clipSetId": "plant-herb-v1",
++    "graph": [
++      [
++        "stem0Seg0",
++        "root"
++      ],
++      [
++        "stem0Seg1",
++        "stem0Seg0"
++      ],
++      [
++        "stem0Seg2",
++        "stem0Seg1"
++      ],
++      [
++        "frond0",
++        "stem0Seg2"
++      ],
++      [
++        "stem1Seg0",
++        "root"
++      ],
++      [
++        "stem1Seg1",
++        "stem1Seg0"
++      ],
++      [
++        "stem1Seg2",
++        "stem1Seg1"
++      ],
++      [
++        "frond1",
++        "stem1Seg2"
++      ],
++      [
++        "stem2Seg0",
++        "root"
++      ],
++      [
++        "stem2Seg1",
++        "stem2Seg0"
++      ],
++      [
++        "stem2Seg2",
++        "stem2Seg1"
++      ],
++      [
++        "frond2",
++        "stem2Seg2"
++      ],
++      [
++        "stem3Seg0",
++        "root"
++      ],
++      [
++        "stem3Seg1",
++        "stem3Seg0"
++      ],
++      [
++        "stem3Seg2",
++        "stem3Seg1"
++      ],
++      [
++        "frond3",
++        "stem3Seg2"
++      ]
++    ],
++    "bodyAxis": [
++      "stem0Seg0",
++      "stem0Seg2"
++    ],
++    "joints": [
++      "root",
++      "stem0Seg0",
++      "stem0Seg1",
++      "stem0Seg2",
++      "frond0",
++      "stem1Seg0",
++      "stem1Seg1",
++      "stem1Seg2",
++      "frond1",
++      "stem2Seg0",
++      "stem2Seg1",
++      "stem2Seg2",
++      "frond2",
++      "stem3Seg0",
++      "stem3Seg1",
++      "stem3Seg2",
++      "frond3"
++    ],
++    "legs": [],
++    "limitsDeg": {
++      "root": {
++        "min": -5,
++        "max": 5
++      },
++      "stem0Seg0": {
++        "min": -25,
++        "max": 25
++      },
++      "stem0Seg1": {
++        "min": -40,
++        "max": 40
++      },
++      "stem0Seg2": {
++        "min": -40,
++        "max": 40
++      },
++      "frond0": {
++        "min": -50,
++        "max": 50
++      },
++      "stem1Seg0": {
++        "min": -25,
++        "max": 25
++      },
++      "stem1Seg1": {
++        "min": -40,
++        "max": 40
++      },
++      "stem1Seg2": {
++        "min": -40,
++        "max": 40
++      },
++      "frond1": {
++        "min": -50,
++        "max": 50
++      },
++      "stem2Seg0": {
++        "min": -25,
++        "max": 25
++      },
++      "stem2Seg1": {
++        "min": -40,
++        "max": 40
++      },
++      "stem2Seg2": {
++        "min": -40,
++        "max": 40
++      },
++      "frond2": {
++        "min": -50,
++        "max": 50
++      },
++      "stem3Seg0": {
++        "min": -25,
++        "max": 25
++      },
++      "stem3Seg1": {
++        "min": -40,
++        "max": 40
++      },
++      "stem3Seg2": {
++        "min": -40,
++        "max": 40
++      },
++      "frond3": {
++        "min": -50,
++        "max": 50
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.04,
++        "max": 0.8,
++        "kind": "distance",
++        "axis": [
++          "stem0Seg0",
++          "stem0Seg2"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "stem/stem0:stem0",
++        "min": 0.2,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "stem0Seg1",
++          "stem0Seg2"
++        ],
++        "axis": [
++          "stem0Seg0",
++          "stem0Seg2"
++        ]
++      },
++      {
++        "id": "stem/stem0:stem1",
++        "min": 0.2,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "stem1Seg1",
++          "stem1Seg2"
++        ],
++        "axis": [
++          "stem0Seg0",
++          "stem0Seg2"
++        ]
++      },
++      {
++        "id": "stem/stem0:stem2",
++        "min": 0.2,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "stem2Seg1",
++          "stem2Seg2"
++        ],
++        "axis": [
++          "stem0Seg0",
++          "stem0Seg2"
++        ]
++      },
++      {
++        "id": "stem/stem0:stem3",
++        "min": 0.2,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "stem3Seg1",
++          "stem3Seg2"
++        ],
++        "axis": [
++          "stem0Seg0",
++          "stem0Seg2"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "myriapod",
++    "version": 1,
++    "clipSetId": "myriapod-v1",
++    "graph": [
++      [
++        "head",
++        "root"
++      ],
++      [
++        "mandible",
++        "head"
++      ],
++      [
++        "seg0",
++        "root"
++      ],
++      [
++        "seg1",
++        "seg0"
++      ],
++      [
++        "seg2",
++        "seg1"
++      ],
++      [
++        "seg3",
++        "seg2"
++      ],
++      [
++        "seg4",
++        "seg3"
++      ],
++      [
++        "seg5",
++        "seg4"
++      ],
++      [
++        "seg6",
++        "seg5"
++      ],
++      [
++        "seg7",
++        "seg6"
++      ],
++      [
++        "legAFarKnee",
++        "seg0"
++      ],
++      [
++        "legAFarFoot",
++        "legAFarKnee"
++      ],
++      [
++        "legANearKnee",
++        "seg0"
++      ],
++      [
++        "legANearFoot",
++        "legANearKnee"
++      ],
++      [
++        "legBFarKnee",
++        "seg2"
++      ],
++      [
++        "legBFarFoot",
++        "legBFarKnee"
++      ],
++      [
++        "legBNearKnee",
++        "seg2"
++      ],
++      [
++        "legBNearFoot",
++        "legBNearKnee"
++      ],
++      [
++        "legCFarKnee",
++        "seg4"
++      ],
++      [
++        "legCFarFoot",
++        "legCFarKnee"
++      ],
++      [
++        "legCNearKnee",
++        "seg4"
++      ],
++      [
++        "legCNearFoot",
++        "legCNearKnee"
++      ],
++      [
++        "legDFarKnee",
++        "seg6"
++      ],
++      [
++        "legDFarFoot",
++        "legDFarKnee"
++      ],
++      [
++        "legDNearKnee",
++        "seg6"
++      ],
++      [
++        "legDNearFoot",
++        "legDNearKnee"
++      ],
++      [
++        "antennaFar",
++        "head"
++      ],
++      [
++        "antennaNear",
++        "head"
++      ]
++    ],
++    "bodyAxis": [
++      "seg7",
++      "head"
++    ],
++    "joints": [
++      "root",
++      "head",
++      "mandible",
++      "seg0",
++      "seg1",
++      "seg2",
++      "seg3",
++      "seg4",
++      "seg5",
++      "seg6",
++      "seg7",
++      "legAFarKnee",
++      "legAFarFoot",
++      "legANearKnee",
++      "legANearFoot",
++      "legBFarKnee",
++      "legBFarFoot",
++      "legBNearKnee",
++      "legBNearFoot",
++      "legCFarKnee",
++      "legCFarFoot",
++      "legCNearKnee",
++      "legCNearFoot",
++      "legDFarKnee",
++      "legDFarFoot",
++      "legDNearKnee",
++      "legDNearFoot",
++      "antennaFar",
++      "antennaNear"
++    ],
++    "legs": [
++      "legAFar",
++      "legANear",
++      "legBFar",
++      "legBNear",
++      "legCFar",
++      "legCNear",
++      "legDFar",
++      "legDNear"
++    ],
++    "limitsDeg": {
++      "root": {
++        "min": -20,
++        "max": 20
++      },
++      "head": {
++        "min": -35,
++        "max": 35
++      },
++      "mandible": {
++        "min": -40,
++        "max": 5
++      },
++      "seg0": {
++        "min": -35,
++        "max": 35
++      },
++      "seg1": {
++        "min": -35,
++        "max": 35
++      },
++      "seg2": {
++        "min": -35,
++        "max": 35
++      },
++      "seg3": {
++        "min": -35,
++        "max": 35
++      },
++      "seg4": {
++        "min": -60,
++        "max": 60
++      },
++      "seg5": {
++        "min": -60,
++        "max": 60
++      },
++      "seg6": {
++        "min": -60,
++        "max": 60
++      },
++      "seg7": {
++        "min": -60,
++        "max": 60
++      },
++      "legAFarKnee": {
++        "min": -60,
++        "max": 60
++      },
++      "legAFarFoot": {
++        "min": -70,
++        "max": 70
++      },
++      "legANearKnee": {
++        "min": -60,
++        "max": 60
++      },
++      "legANearFoot": {
++        "min": -70,
++        "max": 70
++      },
++      "legBFarKnee": {
++        "min": -60,
++        "max": 60
++      },
++      "legBFarFoot": {
++        "min": -70,
++        "max": 70
++      },
++      "legBNearKnee": {
++        "min": -60,
++        "max": 60
++      },
++      "legBNearFoot": {
++        "min": -70,
++        "max": 70
++      },
++      "legCFarKnee": {
++        "min": -60,
++        "max": 60
++      },
++      "legCFarFoot": {
++        "min": -70,
++        "max": 70
++      },
++      "legCNearKnee": {
++        "min": -60,
++        "max": 60
++      },
++      "legCNearFoot": {
++        "min": -70,
++        "max": 70
++      },
++      "legDFarKnee": {
++        "min": -60,
++        "max": 60
++      },
++      "legDFarFoot": {
++        "min": -70,
++        "max": 70
++      },
++      "legDNearKnee": {
++        "min": -60,
++        "max": 60
++      },
++      "legDNearFoot": {
++        "min": -70,
++        "max": 70
++      },
++      "antennaFar": {
++        "min": -50,
++        "max": 50
++      },
++      "antennaNear": {
++        "min": -50,
++        "max": 50
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.1,
++        "max": 0.95,
++        "kind": "distance",
++        "axis": [
++          "seg7",
++          "head"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "leg/body:legAFar",
++        "min": 0.05,
++        "max": 1.5,
++        "kind": "ratio",
++        "bones": [
++          "legAFarKnee",
++          "legAFarFoot"
++        ],
++        "axis": [
++          "seg7",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legANear",
++        "min": 0.05,
++        "max": 1.5,
++        "kind": "ratio",
++        "bones": [
++          "legANearKnee",
++          "legANearFoot"
++        ],
++        "axis": [
++          "seg7",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legBFar",
++        "min": 0.05,
++        "max": 1.5,
++        "kind": "ratio",
++        "bones": [
++          "legBFarKnee",
++          "legBFarFoot"
++        ],
++        "axis": [
++          "seg7",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legBNear",
++        "min": 0.05,
++        "max": 1.5,
++        "kind": "ratio",
++        "bones": [
++          "legBNearKnee",
++          "legBNearFoot"
++        ],
++        "axis": [
++          "seg7",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legCFar",
++        "min": 0.05,
++        "max": 1.5,
++        "kind": "ratio",
++        "bones": [
++          "legCFarKnee",
++          "legCFarFoot"
++        ],
++        "axis": [
++          "seg7",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legCNear",
++        "min": 0.05,
++        "max": 1.5,
++        "kind": "ratio",
++        "bones": [
++          "legCNearKnee",
++          "legCNearFoot"
++        ],
++        "axis": [
++          "seg7",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legDFar",
++        "min": 0.05,
++        "max": 1.5,
++        "kind": "ratio",
++        "bones": [
++          "legDFarKnee",
++          "legDFarFoot"
++        ],
++        "axis": [
++          "seg7",
++          "head"
++        ]
++      },
++      {
++        "id": "leg/body:legDNear",
++        "min": 0.05,
++        "max": 1.5,
++        "kind": "ratio",
++        "bones": [
++          "legDNearKnee",
++          "legDNearFoot"
++        ],
++        "axis": [
++          "seg7",
++          "head"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "cephalopod",
++    "version": 1,
++    "clipSetId": "cephalopod-v1",
++    "graph": [
++      [
++        "mantle",
++        "root"
++      ],
++      [
++        "head",
++        "root"
++      ],
++      [
++        "eyeFar",
++        "head"
++      ],
++      [
++        "eyeNear",
++        "head"
++      ],
++      [
++        "siphon",
++        "head"
++      ],
++      [
++        "finFar",
++        "mantle"
++      ],
++      [
++        "finNear",
++        "mantle"
++      ],
++      [
++        "arm0Seg0",
++        "head"
++      ],
++      [
++        "arm0Seg1",
++        "arm0Seg0"
++      ],
++      [
++        "arm0Seg2",
++        "arm0Seg1"
++      ],
++      [
++        "arm1Seg0",
++        "head"
++      ],
++      [
++        "arm1Seg1",
++        "arm1Seg0"
++      ],
++      [
++        "arm1Seg2",
++        "arm1Seg1"
++      ],
++      [
++        "arm2Seg0",
++        "head"
++      ],
++      [
++        "arm2Seg1",
++        "arm2Seg0"
++      ],
++      [
++        "arm2Seg2",
++        "arm2Seg1"
++      ],
++      [
++        "arm3Seg0",
++        "head"
++      ],
++      [
++        "arm3Seg1",
++        "arm3Seg0"
++      ],
++      [
++        "arm3Seg2",
++        "arm3Seg1"
++      ],
++      [
++        "arm4Seg0",
++        "head"
++      ],
++      [
++        "arm4Seg1",
++        "arm4Seg0"
++      ],
++      [
++        "arm4Seg2",
++        "arm4Seg1"
++      ],
++      [
++        "arm5Seg0",
++        "head"
++      ],
++      [
++        "arm5Seg1",
++        "arm5Seg0"
++      ],
++      [
++        "arm5Seg2",
++        "arm5Seg1"
++      ],
++      [
++        "arm6Seg0",
++        "head"
++      ],
++      [
++        "arm6Seg1",
++        "arm6Seg0"
++      ],
++      [
++        "arm6Seg2",
++        "arm6Seg1"
++      ],
++      [
++        "arm7Seg0",
++        "head"
++      ],
++      [
++        "arm7Seg1",
++        "arm7Seg0"
++      ],
++      [
++        "arm7Seg2",
++        "arm7Seg1"
++      ]
++    ],
++    "bodyAxis": [
++      "head",
++      "mantle"
++    ],
++    "joints": [
++      "root",
++      "mantle",
++      "head",
++      "eyeFar",
++      "eyeNear",
++      "siphon",
++      "finFar",
++      "finNear",
++      "arm0Seg0",
++      "arm0Seg1",
++      "arm0Seg2",
++      "arm1Seg0",
++      "arm1Seg1",
++      "arm1Seg2",
++      "arm2Seg0",
++      "arm2Seg1",
++      "arm2Seg2",
++      "arm3Seg0",
++      "arm3Seg1",
++      "arm3Seg2",
++      "arm4Seg0",
++      "arm4Seg1",
++      "arm4Seg2",
++      "arm5Seg0",
++      "arm5Seg1",
++      "arm5Seg2",
++      "arm6Seg0",
++      "arm6Seg1",
++      "arm6Seg2",
++      "arm7Seg0",
++      "arm7Seg1",
++      "arm7Seg2"
++    ],
++    "legs": [],
++    "limitsDeg": {
++      "root": {
++        "min": -30,
++        "max": 30
++      },
++      "mantle": {
++        "min": -25,
++        "max": 25
++      },
++      "head": {
++        "min": -30,
++        "max": 30
++      },
++      "eyeFar": {
++        "min": -20,
++        "max": 20
++      },
++      "eyeNear": {
++        "min": -20,
++        "max": 20
++      },
++      "siphon": {
++        "min": -45,
++        "max": 45
++      },
++      "finFar": {
++        "min": -40,
++        "max": 40
++      },
++      "finNear": {
++        "min": -40,
++        "max": 40
++      },
++      "arm0Seg0": {
++        "min": -55,
++        "max": 55
++      },
++      "arm0Seg1": {
++        "min": -70,
++        "max": 70
++      },
++      "arm0Seg2": {
++        "min": -80,
++        "max": 80
++      },
++      "arm1Seg0": {
++        "min": -55,
++        "max": 55
++      },
++      "arm1Seg1": {
++        "min": -70,
++        "max": 70
++      },
++      "arm1Seg2": {
++        "min": -80,
++        "max": 80
++      },
++      "arm2Seg0": {
++        "min": -55,
++        "max": 55
++      },
++      "arm2Seg1": {
++        "min": -70,
++        "max": 70
++      },
++      "arm2Seg2": {
++        "min": -80,
++        "max": 80
++      },
++      "arm3Seg0": {
++        "min": -55,
++        "max": 55
++      },
++      "arm3Seg1": {
++        "min": -70,
++        "max": 70
++      },
++      "arm3Seg2": {
++        "min": -80,
++        "max": 80
++      },
++      "arm4Seg0": {
++        "min": -55,
++        "max": 55
++      },
++      "arm4Seg1": {
++        "min": -70,
++        "max": 70
++      },
++      "arm4Seg2": {
++        "min": -80,
++        "max": 80
++      },
++      "arm5Seg0": {
++        "min": -55,
++        "max": 55
++      },
++      "arm5Seg1": {
++        "min": -70,
++        "max": 70
++      },
++      "arm5Seg2": {
++        "min": -80,
++        "max": 80
++      },
++      "arm6Seg0": {
++        "min": -55,
++        "max": 55
++      },
++      "arm6Seg1": {
++        "min": -70,
++        "max": 70
++      },
++      "arm6Seg2": {
++        "min": -80,
++        "max": 80
++      },
++      "arm7Seg0": {
++        "min": -55,
++        "max": 55
++      },
++      "arm7Seg1": {
++        "min": -70,
++        "max": 70
++      },
++      "arm7Seg2": {
++        "min": -80,
++        "max": 80
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.05,
++        "max": 0.7,
++        "kind": "distance",
++        "axis": [
++          "head",
++          "mantle"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "arm/body:arm0",
++        "min": 0.3,
++        "max": 6,
++        "kind": "ratio",
++        "bones": [
++          "arm0Seg0",
++          "arm0Seg1",
++          "arm0Seg2"
++        ],
++        "axis": [
++          "head",
++          "mantle"
++        ]
++      },
++      {
++        "id": "arm/body:arm1",
++        "min": 0.3,
++        "max": 6,
++        "kind": "ratio",
++        "bones": [
++          "arm1Seg0",
++          "arm1Seg1",
++          "arm1Seg2"
++        ],
++        "axis": [
++          "head",
++          "mantle"
++        ]
++      },
++      {
++        "id": "arm/body:arm2",
++        "min": 0.3,
++        "max": 6,
++        "kind": "ratio",
++        "bones": [
++          "arm2Seg0",
++          "arm2Seg1",
++          "arm2Seg2"
++        ],
++        "axis": [
++          "head",
++          "mantle"
++        ]
++      },
++      {
++        "id": "arm/body:arm3",
++        "min": 0.3,
++        "max": 6,
++        "kind": "ratio",
++        "bones": [
++          "arm3Seg0",
++          "arm3Seg1",
++          "arm3Seg2"
++        ],
++        "axis": [
++          "head",
++          "mantle"
++        ]
++      },
++      {
++        "id": "arm/body:arm4",
++        "min": 0.3,
++        "max": 6,
++        "kind": "ratio",
++        "bones": [
++          "arm4Seg0",
++          "arm4Seg1",
++          "arm4Seg2"
++        ],
++        "axis": [
++          "head",
++          "mantle"
++        ]
++      },
++      {
++        "id": "arm/body:arm5",
++        "min": 0.3,
++        "max": 6,
++        "kind": "ratio",
++        "bones": [
++          "arm5Seg0",
++          "arm5Seg1",
++          "arm5Seg2"
++        ],
++        "axis": [
++          "head",
++          "mantle"
++        ]
++      },
++      {
++        "id": "arm/body:arm6",
++        "min": 0.3,
++        "max": 6,
++        "kind": "ratio",
++        "bones": [
++          "arm6Seg0",
++          "arm6Seg1",
++          "arm6Seg2"
++        ],
++        "axis": [
++          "head",
++          "mantle"
++        ]
++      },
++      {
++        "id": "arm/body:arm7",
++        "min": 0.3,
++        "max": 6,
++        "kind": "ratio",
++        "bones": [
++          "arm7Seg0",
++          "arm7Seg1",
++          "arm7Seg2"
++        ],
++        "axis": [
++          "head",
++          "mantle"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "flyer-membrane",
++    "version": 1,
++    "clipSetId": "flyer-membrane-v1",
++    "graph": [
++      [
++        "pelvis",
++        "root"
++      ],
++      [
++        "spine",
++        "pelvis"
++      ],
++      [
++        "chest",
++        "spine"
++      ],
++      [
++        "neck",
++        "chest"
++      ],
++      [
++        "head",
++        "neck"
++      ],
++      [
++        "jaw",
++        "head"
++      ],
++      [
++        "wingFarRoot",
++        "chest"
++      ],
++      [
++        "wingFarElbow",
++        "wingFarRoot"
++      ],
++      [
++        "wingFarWrist",
++        "wingFarElbow"
++      ],
++      [
++        "wingFarTip",
++        "wingFarWrist"
++      ],
++      [
++        "wingNearRoot",
++        "chest"
++      ],
++      [
++        "wingNearElbow",
++        "wingNearRoot"
++      ],
++      [
++        "wingNearWrist",
++        "wingNearElbow"
++      ],
++      [
++        "wingNearTip",
++        "wingNearWrist"
++      ],
++      [
++        "legFarKnee",
++        "pelvis"
++      ],
++      [
++        "legFarFoot",
++        "legFarKnee"
++      ],
++      [
++        "legNearKnee",
++        "pelvis"
++      ],
++      [
++        "legNearFoot",
++        "legNearKnee"
++      ],
++      [
++        "earFarTip",
++        "head"
++      ],
++      [
++        "earNearTip",
++        "head"
++      ],
++      [
++        "tail0",
++        "pelvis"
++      ]
++    ],
++    "bodyAxis": [
++      "pelvis",
++      "chest"
++    ],
++    "joints": [
++      "root",
++      "pelvis",
++      "spine",
++      "chest",
++      "neck",
++      "head",
++      "jaw",
++      "wingFarRoot",
++      "wingFarElbow",
++      "wingFarWrist",
++      "wingFarTip",
++      "wingNearRoot",
++      "wingNearElbow",
++      "wingNearWrist",
++      "wingNearTip",
++      "legFarKnee",
++      "legFarFoot",
++      "legNearKnee",
++      "legNearFoot",
++      "earFarTip",
++      "earNearTip",
++      "tail0"
++    ],
++    "legs": [
++      "legFar",
++      "legNear"
++    ],
++    "limitsDeg": {
++      "root": {
++        "min": -35,
++        "max": 35
++      },
++      "pelvis": {
++        "min": -20,
++        "max": 20
++      },
++      "spine": {
++        "min": -25,
++        "max": 25
++      },
++      "chest": {
++        "min": -20,
++        "max": 20
++      },
++      "neck": {
++        "min": -35,
++        "max": 35
++      },
++      "head": {
++        "min": -40,
++        "max": 40
++      },
++      "jaw": {
++        "min": -40,
++        "max": 5
++      },
++      "wingFarRoot": {
++        "min": -80,
++        "max": 100
++      },
++      "wingFarElbow": {
++        "min": -90,
++        "max": 90
++      },
++      "wingFarWrist": {
++        "min": -80,
++        "max": 80
++      },
++      "wingFarTip": {
++        "min": -70,
++        "max": 70
++      },
++      "wingNearRoot": {
++        "min": -80,
++        "max": 100
++      },
++      "wingNearElbow": {
++        "min": -90,
++        "max": 90
++      },
++      "wingNearWrist": {
++        "min": -80,
++        "max": 80
++      },
++      "wingNearTip": {
++        "min": -70,
++        "max": 70
++      },
++      "legFarKnee": {
++        "min": -70,
++        "max": 70
++      },
++      "legFarFoot": {
++        "min": -60,
++        "max": 60
++      },
++      "legNearKnee": {
++        "min": -70,
++        "max": 70
++      },
++      "legNearFoot": {
++        "min": -60,
++        "max": 60
++      },
++      "earFarTip": {
++        "min": -40,
++        "max": 40
++      },
++      "earNearTip": {
++        "min": -40,
++        "max": 40
++      },
++      "tail0": {
++        "min": -45,
++        "max": 45
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.05,
++        "max": 0.6,
++        "kind": "distance",
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "wing/torso:wingFar",
++        "min": 0.8,
++        "max": 12,
++        "kind": "ratio",
++        "bones": [
++          "wingFarRoot",
++          "wingFarElbow",
++          "wingFarWrist",
++          "wingFarTip"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "wing/torso:wingNear",
++        "min": 0.8,
++        "max": 12,
++        "kind": "ratio",
++        "bones": [
++          "wingNearRoot",
++          "wingNearElbow",
++          "wingNearWrist",
++          "wingNearTip"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "leg/torso:legFar",
++        "min": 0.2,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "legFarKnee",
++          "legFarFoot"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "leg/torso:legNear",
++        "min": 0.2,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "legNearKnee",
++          "legNearFoot"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      }
++    ]
++  },
++  {
++    "id": "primate",
++    "version": 1,
++    "clipSetId": "primate-v1",
++    "graph": [
++      [
++        "pelvis",
++        "root"
++      ],
++      [
++        "spine",
++        "pelvis"
++      ],
++      [
++        "chest",
++        "spine"
++      ],
++      [
++        "neck",
++        "chest"
++      ],
++      [
++        "head",
++        "neck"
++      ],
++      [
++        "jaw",
++        "head"
++      ],
++      [
++        "armFarShoulder",
++        "chest"
++      ],
++      [
++        "armFarElbow",
++        "armFarShoulder"
++      ],
++      [
++        "armFarHand",
++        "armFarElbow"
++      ],
++      [
++        "armNearShoulder",
++        "chest"
++      ],
++      [
++        "armNearElbow",
++        "armNearShoulder"
++      ],
++      [
++        "armNearHand",
++        "armNearElbow"
++      ],
++      [
++        "legFarHip",
++        "pelvis"
++      ],
++      [
++        "legFarKnee",
++        "legFarHip"
++      ],
++      [
++        "legFarFoot",
++        "legFarKnee"
++      ],
++      [
++        "legNearHip",
++        "pelvis"
++      ],
++      [
++        "legNearKnee",
++        "legNearHip"
++      ],
++      [
++        "legNearFoot",
++        "legNearKnee"
++      ],
++      [
++        "tail0",
++        "pelvis"
++      ],
++      [
++        "tail1",
++        "tail0"
++      ],
++      [
++        "tail2",
++        "tail1"
++      ]
++    ],
++    "bodyAxis": [
++      "pelvis",
++      "chest"
++    ],
++    "joints": [
++      "root",
++      "pelvis",
++      "spine",
++      "chest",
++      "neck",
++      "head",
++      "jaw",
++      "armFarShoulder",
++      "armFarElbow",
++      "armFarHand",
++      "armNearShoulder",
++      "armNearElbow",
++      "armNearHand",
++      "legFarHip",
++      "legFarKnee",
++      "legFarFoot",
++      "legNearHip",
++      "legNearKnee",
++      "legNearFoot",
++      "tail0",
++      "tail1",
++      "tail2"
++    ],
++    "legs": [
++      "legFar",
++      "legNear"
++    ],
++    "limitsDeg": {
++      "root": {
++        "min": -30,
++        "max": 30
++      },
++      "pelvis": {
++        "min": -25,
++        "max": 25
++      },
++      "spine": {
++        "min": -30,
++        "max": 30
++      },
++      "chest": {
++        "min": -25,
++        "max": 25
++      },
++      "neck": {
++        "min": -35,
++        "max": 35
++      },
++      "head": {
++        "min": -40,
++        "max": 40
++      },
++      "jaw": {
++        "min": -35,
++        "max": 5
++      },
++      "armFarShoulder": {
++        "min": -100,
++        "max": 100
++      },
++      "armFarElbow": {
++        "min": -110,
++        "max": 110
++      },
++      "armFarHand": {
++        "min": -60,
++        "max": 60
++      },
++      "armNearShoulder": {
++        "min": -100,
++        "max": 100
++      },
++      "armNearElbow": {
++        "min": -110,
++        "max": 110
++      },
++      "armNearHand": {
++        "min": -60,
++        "max": 60
++      },
++      "legFarHip": {
++        "min": -80,
++        "max": 80
++      },
++      "legFarKnee": {
++        "min": -110,
++        "max": 110
++      },
++      "legFarFoot": {
++        "min": -50,
++        "max": 50
++      },
++      "legNearHip": {
++        "min": -80,
++        "max": 80
++      },
++      "legNearKnee": {
++        "min": -110,
++        "max": 110
++      },
++      "legNearFoot": {
++        "min": -50,
++        "max": 50
++      },
++      "tail0": {
++        "min": -40,
++        "max": 40
++      },
++      "tail1": {
++        "min": -50,
++        "max": 50
++      },
++      "tail2": {
++        "min": -50,
++        "max": 50
++      }
++    },
++    "bounds": [
++      {
++        "id": "body",
++        "min": 0.06,
++        "max": 0.6,
++        "kind": "distance",
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "bone-min",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-min"
++      },
++      {
++        "id": "bone-max",
++        "min": 0.001,
++        "max": 0.75,
++        "kind": "bone-max"
++      },
++      {
++        "id": "arm/torso:armFar",
++        "min": 0.5,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "armFarShoulder",
++          "armFarElbow",
++          "armFarHand"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "arm/torso:armNear",
++        "min": 0.5,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "armNearShoulder",
++          "armNearElbow",
++          "armNearHand"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "leg/torso:legFar",
++        "min": 0.5,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "legFarHip",
++          "legFarKnee",
++          "legFarFoot"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      },
++      {
++        "id": "leg/torso:legNear",
++        "min": 0.5,
++        "max": 4,
++        "kind": "ratio",
++        "bones": [
++          "legNearHip",
++          "legNearKnee",
++          "legNearFoot"
++        ],
++        "axis": [
++          "pelvis",
++          "chest"
++        ]
++      }
++    ]
++  }
++];
++const freeze=x=>{if(x&&typeof x==='object'){for(const v of Object.values(x))freeze(v);Object.freeze(x);}return x;};
++export const FAMILY_CONTRACTS = freeze(contracts);
++export function familyContract(id){const value=FAMILY_CONTRACTS.find(t=>t.id===id);if(!value)throw Error('Family admission: unknown template '+id);return value;}
+diff --git a/port/v2/tools/creature-animation/family-record.d.mts b/port/v2/tools/creature-animation/family-record.d.mts
+new file mode 100644
+index 00000000..1a8389f2
+--- /dev/null
++++ b/port/v2/tools/creature-animation/family-record.d.mts
+@@ -0,0 +1,5 @@
++import type {FamilyContract} from './family-contracts.mjs';
++export function checkFamilyGeometry(record:unknown,alpha?:Uint8Array):unknown;
++export function measureFamilyBounds(template:FamilyContract,landmarks:Readonly<Record<string,readonly [number,number]>>):{boneLengths:Record<string,number>;measures:Record<string,number>};
++export function sealFamilyRecord(input:unknown):Promise<any>;
++export function admitFamilyRecord(record:unknown,cutoutBytes:Uint8Array,alpha?:Uint8Array):Promise<FamilyContract>;
+diff --git a/port/v2/tools/creature-animation/family-record.mjs b/port/v2/tools/creature-animation/family-record.mjs
+new file mode 100644
+index 00000000..c928bd97
+--- /dev/null
++++ b/port/v2/tools/creature-animation/family-record.mjs
+@@ -0,0 +1,55 @@
++/** Family-specific admission shared by offline intake and the actual Pixi loader.
++ * No family guessing, skeleton fitting, missing-joint synthesis or clip overrides. */
++import {familyContract} from './family-contracts.mjs';
++import {createSkeletonPoseProgram} from './skeleton-pose.mjs';
++import {checkGeometry as checkQuadruped,admitRecord as admitQuadruped,hashBytes,hashJSON,stableJSON} from './quadruped-template.mjs';
++const need=(ok,reason)=>{if(!ok)throw Error('Family admission: '+reason);};
++const distance=(j,axis)=>Math.hypot(j[axis[1]][0]-j[axis[0]][0],j[axis[1]][1]-j[axis[0]][1]);
++export function measureFamilyBounds(template,landmarks){
++ const bones=Object.fromEntries(template.graph.map(([child,parent])=>[child,distance(landmarks,[parent,child])]));
++ const measures=Object.fromEntries(template.bounds.map(b=>[b.id,b.kind==='bone-min'?Math.min(...Object.values(bones)):
++  b.kind==='bone-max'?Math.max(...Object.values(bones)):b.kind==='distance'?distance(landmarks,b.axis):
++  b.bones.reduce((sum,name)=>sum+bones[name],0)/distance(landmarks,b.axis)]));
++ return {boneLengths:bones,measures};
++}
++export function checkFamilyGeometry(record,alpha){
++ if(record?.template?.id==='quadruped')return checkQuadruped(record,alpha);
++ const template=familyContract(record?.template?.id);
++ need(record.kind===template.id&&record.template.version===template.version,'unsupported body or template version');
++ need(record.clipSetId===template.clipSetId&&!Object.hasOwn(record,'clipOverrides'),'shared clip set required');
++ const {width:w,height:h,groundLineY,depthLayers}=record.geometry??{};
++ need([w,h].every(n=>Number.isInteger(n)&&n>=128&&n<=2048),'input dimensions');
++ createSkeletonPoseProgram(template,record.landmarks); // Exact own inventory, graph and normalized coordinates.
++ need(Number.isFinite(groundLineY)&&groundLineY>0&&groundLineY<=1,'ground line');
++ need(Array.isArray(depthLayers)&&depthLayers.length===2&&depthLayers.every((v,i)=>v.id===['far','near'][i]&&v.order===i),'two depth layers');
++ const result=measureFamilyBounds(template,record.landmarks);
++ for(const bound of template.bounds){const value=result.measures[bound.id];need(Number.isFinite(value)&&value>=bound.min&&value<=bound.max,'proportion bound: '+bound.id);}
++ if(alpha!==undefined){
++  need(alpha instanceof Uint8Array&&alpha.length===w*h,'alpha dimensions');
++  const radius=Math.ceil(Math.max(w,h)*.012);
++  for(const name of template.joints){const p=record.landmarks[name],x=Math.round(p[0]*w),y=Math.round(p[1]*h);let found=false;
++   for(let dy=-radius;dy<=radius&&!found;dy++)for(let dx=-radius;dx<=radius;dx++){
++    const xx=x+dx,yy=y+dy;if(xx>=0&&yy>=0&&xx<w&&yy<h&&alpha[yy*w+xx]>12){found=true;break;}}
++   need(found,'landmark outside painted alpha: '+name);
++  }
++ }
++ return {inside:true,clamped:[],...result};
++}
++export async function sealFamilyRecord(input){
++ const {recipeHash:_old,boundsCheck:_bounds,...body}=structuredClone(input);
++ const record={...body,boundsCheck:checkFamilyGeometry(body)};
++ return {...record,recipeHash:await hashJSON(record)};
++}
++export async function admitFamilyRecord(record,cutoutBytes,alpha){
++ const template=familyContract(record?.template?.id);
++ if(template.id==='quadruped'){await admitQuadruped(record,cutoutBytes,alpha);return template;}
++ const {recipeHash,...body}=record;
++ need(typeof recipeHash==='string'&&await hashJSON(body)===recipeHash,'corrupted landmark / recipe hash');
++ need(await hashBytes(cutoutBytes)===record.geometry?.cutoutAssetHash,'mismatched cut-out hash');
++ const identity=record.identity;
++ need(identity&&typeof identity.speciesVisualKey==='string'&&identity.speciesVisualKey.length>5&&Number.isInteger(identity.seed)
++  &&typeof identity.ownerId==='string'&&identity.ownerId.length>0,'identity');
++ need(record.materials&&typeof record.materials.surface==='string'&&record.materials.surface.length>0,'painter material required');
++ need(stableJSON(checkFamilyGeometry(record,alpha))===stableJSON(record.boundsCheck),'stale bounds / lengths');
++ return template;
++}
+diff --git a/port/v2/tools/creature-animation/family-record.test.mjs b/port/v2/tools/creature-animation/family-record.test.mjs
+new file mode 100644
+index 00000000..6e33946a
+--- /dev/null
++++ b/port/v2/tools/creature-animation/family-record.test.mjs
+@@ -0,0 +1,30 @@
++import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
++import {FAMILY_CONTRACTS,familyContract} from './family-contracts.mjs';
++import {checkFamilyGeometry,sealFamilyRecord,admitFamilyRecord} from './family-record.mjs';
++import {hashBytes,hashJSON} from './quadruped-template.mjs';
++const {records}=JSON.parse(fs.readFileSync(new URL('./test-fixtures/family-records.json',import.meta.url)));
++const bytes=new Uint8Array([1,2,3]);
++for(const template of FAMILY_CONTRACTS)test(template.id+': exact family anatomy, immutable contract and hostile-record controls',async()=>{
++ const input=structuredClone(records[template.id]);input.geometry.cutoutAssetHash=await hashBytes(bytes);input.clipSetId=template.clipSetId;
++ const record=await sealFamilyRecord(input),alpha=new Uint8Array(record.geometry.width*record.geometry.height).fill(255);
++ assert.equal((await admitFamilyRecord(record,bytes,alpha)).id,template.id);
++ assert.deepEqual(await sealFamilyRecord(record),record,'resealing must not hash the previous recipe hash');
++ assert.throws(()=>{template.graph[0][0]='other';},TypeError);
++ const corrupt=structuredClone(record);corrupt.landmarks.root[0]+=.01;
++ await assert.rejects(admitFamilyRecord(corrupt,bytes,alpha),/corrupted landmark/);
++ await assert.rejects(admitFamilyRecord(record,new Uint8Array([2]),alpha),/mismatched cut-out/);
++ await assert.rejects(admitFamilyRecord(record,bytes,new Uint8Array(alpha.length)),/outside painted alpha/);
++ for(const mutate of [r=>delete r.landmarks[template.joints.at(-1)],r=>r.landmarks.foreign=[.4,.4],r=>r.landmarks[template.bodyAxis[1]]=r.landmarks[template.bodyAxis[0]],r=>r.clipOverrides={},r=>r.template.version=2]){
++  const r=structuredClone(record);mutate(r);assert.throws(()=>checkFamilyGeometry(r),undefined,'invalid anatomy must not fit');
++ }
++ const stale=structuredClone(record);stale.boundsCheck.boneLengths[template.joints[1]]+=.001;
++ const {recipeHash,...body}=stale;stale.recipeHash=await hashJSON(body);
++ await assert.rejects(admitFamilyRecord(stale,bytes,alpha),/stale bounds/);
++});
++test('unknown template never defaults to quadruped and all contracted inventories are closed',()=>{
++ assert.equal(FAMILY_CONTRACTS.length,14);assert.throws(()=>familyContract('fungus'),/unknown template/);
++ for(const t of FAMILY_CONTRACTS)assert.deepEqual(t.joints,['root',...t.graph.map(([n])=>n)]);
++});
++test('old hopper and fish fixture clip-set names are rejected instead of silently using different motion',()=>{
++ for(const id of ['hopper','fish']){assert.notEqual(records[id].clipSetId,familyContract(id).clipSetId);assert.throws(()=>checkFamilyGeometry(records[id]),/shared clip set/);}
++});
+diff --git a/port/v2/tools/creature-animation/part-masks.mjs b/port/v2/tools/creature-animation/part-masks.mjs
+index 806ca101..acba10bb 100644
+--- a/port/v2/tools/creature-animation/part-masks.mjs
++++ b/port/v2/tools/creature-animation/part-masks.mjs
+@@ -1,6 +1,6 @@
+-import {GRAPH,admitRecord,hashJSON} from './quadruped-template.mjs';
++import {hashJSON} from './quadruped-template.mjs';
++import {admitFamilyRecord} from './family-record.mjs';
+ const requireValue=(ok,message)=>{if(!ok)throw Error('Part masks: '+message);};
+-const names=new Set(['root',...GRAPH.map(([joint])=>joint)]);
+ function inside(x,y,points){let yes=false;for(let i=0,j=points.length-1;i<points.length;j=i++){
+  const a=points[i],b=points[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])yes=!yes;
+ }return yes;}
+@@ -10,7 +10,8 @@ function inside(x,y,points){let yes=false;for(let i=0,j=points.length-1;i<points
+ export async function cutAuthoredParts(record,masterBytes,rgba,declaration){
+  const {width:w,height:h}=record.geometry;
+  requireValue(rgba.length===w*h*4,'RGBA dimensions');
+- const alpha=Uint8Array.from({length:w*h},(_,i)=>rgba[i*4+3]);await admitRecord(record,masterBytes,alpha);
++ const alpha=Uint8Array.from({length:w*h},(_,i)=>rgba[i*4+3]);const template=await admitFamilyRecord(record,masterBytes,alpha);
++ const names=new Set(template.joints);
+  const {declarationHash,...body}=declaration;
+  requireValue(declaration.schema==='cf.authored-part-masks/v1','schema');
+  requireValue(await hashJSON(body)===declarationHash,'corrupted declaration');
+@@ -62,7 +63,8 @@ export function assertRestCoverage(source,w,h,parts){
+ export async function cutPainterParts(record,masterBytes,rgba,labels,declaration){
+  const {width:w,height:h}=record.geometry;
+  requireValue(rgba.length===w*h*4&&labels.length===w*h,'painter dimensions');
+- const alpha=Uint8Array.from({length:w*h},(_,i)=>rgba[i*4+3]);await admitRecord(record,masterBytes,alpha);
++ const alpha=Uint8Array.from({length:w*h},(_,i)=>rgba[i*4+3]);const template=await admitFamilyRecord(record,masterBytes,alpha);
++ const names=new Set(template.joints);
+  const {declarationHash,...body}=declaration;
+  requireValue(declaration.schema==='cf.painter-part-intake/v1'&&await hashJSON(body)===declarationHash,'painter declaration');
+  requireValue(declaration.recordRecipeHash===record.recipeHash&&declaration.cutoutSha256===record.geometry.cutoutAssetHash,'painter binding');
+diff --git a/port/v2/tools/creature-animation/test-fixtures/family-records.json b/port/v2/tools/creature-animation/test-fixtures/family-records.json
+new file mode 100644
+index 00000000..7b886de5
+--- /dev/null
++++ b/port/v2/tools/creature-animation/test-fixtures/family-records.json
+@@ -0,0 +1,1791 @@
++{
++  "scope": "Synthetic geometry for admission and Pixi transform controls; no painted asset coverage. Quadruped landmarks come from the authored Civet proof.",
++  "records": {
++    "biped-bird": {
++      "kind": "biped-bird",
++      "identity": {
++        "speciesVisualKey": "synthetic:biped-bird",
++        "seed": 659713,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "biped-bird",
++        "version": 1
++      },
++      "family": "bird",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.85,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.46,
++          0.48
++        ],
++        "pelvis": [
++          0.42,
++          0.5
++        ],
++        "spine": [
++          0.5,
++          0.47
++        ],
++        "chest": [
++          0.58,
++          0.45
++        ],
++        "neck0": [
++          0.64,
++          0.38
++        ],
++        "neck1": [
++          0.68,
++          0.3
++        ],
++        "head": [
++          0.72,
++          0.24
++        ],
++        "beak": [
++          0.8,
++          0.25
++        ],
++        "legFarKnee": [
++          0.42,
++          0.62
++        ],
++        "legFarAnkle": [
++          0.38,
++          0.74
++        ],
++        "legFarFoot": [
++          0.46,
++          0.85
++        ],
++        "wingFarRoot": [
++          0.52,
++          0.42
++        ],
++        "wingFarTip": [
++          0.32,
++          0.4
++        ],
++        "legNearKnee": [
++          0.44,
++          0.64
++        ],
++        "legNearAnkle": [
++          0.4,
++          0.76
++        ],
++        "legNearFoot": [
++          0.48,
++          0.87
++        ],
++        "wingNearRoot": [
++          0.54,
++          0.44
++        ],
++        "wingNearTip": [
++          0.34,
++          0.42
++        ],
++        "tailFan": [
++          0.3,
++          0.52
++        ]
++      },
++      "materials": {
++        "surface": "feathered",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "biped-bird-v1"
++    },
++    "plant-woody": {
++      "kind": "plant-woody",
++      "identity": {
++        "speciesVisualKey": "synthetic:plant-woody",
++        "seed": 659719,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "plant-woody",
++        "version": 1
++      },
++      "family": "tree",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.9,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.5,
++          0.9
++        ],
++        "trunk": [
++          0.5,
++          0.55
++        ],
++        "branch0Base": [
++          0.62,
++          0.45
++        ],
++        "branch0Tip": [
++          0.72,
++          0.34
++        ],
++        "leaf0": [
++          0.78,
++          0.26
++        ],
++        "branch1Base": [
++          0.38,
++          0.42
++        ],
++        "branch1Tip": [
++          0.28,
++          0.32
++        ],
++        "leaf1": [
++          0.22,
++          0.24
++        ],
++        "branch2Base": [
++          0.56,
++          0.36
++        ],
++        "branch2Tip": [
++          0.6,
++          0.22
++        ],
++        "leaf2": [
++          0.64,
++          0.12
++        ]
++      },
++      "materials": {
++        "surface": "warty",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "plant-woody-v1"
++    },
++    "insect": {
++      "kind": "insect",
++      "identity": {
++        "speciesVisualKey": "synthetic:insect",
++        "seed": 659715,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "insect",
++        "version": 1
++      },
++      "family": "insect",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.8,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.5,
++          0.55
++        ],
++        "thorax": [
++          0.56,
++          0.53
++        ],
++        "head": [
++          0.66,
++          0.5
++        ],
++        "mandible": [
++          0.72,
++          0.53
++        ],
++        "abdomen": [
++          0.36,
++          0.56
++        ],
++        "legFrontFarKnee": [
++          0.66,
++          0.62
++        ],
++        "legFrontFarFoot": [
++          0.7,
++          0.75
++        ],
++        "legMidFarKnee": [
++          0.56,
++          0.66
++        ],
++        "legMidFarFoot": [
++          0.58,
++          0.8
++        ],
++        "legHindFarKnee": [
++          0.46,
++          0.64
++        ],
++        "legHindFarFoot": [
++          0.4,
++          0.78
++        ],
++        "antennaFar": [
++          0.74,
++          0.4
++        ],
++        "wingFar": [
++          0.36,
++          0.44
++        ],
++        "legFrontNearKnee": [
++          0.68,
++          0.64
++        ],
++        "legFrontNearFoot": [
++          0.72,
++          0.77
++        ],
++        "legMidNearKnee": [
++          0.58,
++          0.68
++        ],
++        "legMidNearFoot": [
++          0.6,
++          0.82
++        ],
++        "legHindNearKnee": [
++          0.48,
++          0.66
++        ],
++        "legHindNearFoot": [
++          0.42,
++          0.8
++        ],
++        "antennaNear": [
++          0.76,
++          0.42
++        ],
++        "wingNear": [
++          0.38,
++          0.46
++        ]
++      },
++      "materials": {
++        "surface": "chitinous",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "insect-v1"
++    },
++    "flyer-membrane": {
++      "kind": "flyer-membrane",
++      "identity": {
++        "speciesVisualKey": "synthetic:flyer-membrane",
++        "seed": 659723,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "flyer-membrane",
++        "version": 1
++      },
++      "family": "bat",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.8,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.5,
++          0.5
++        ],
++        "pelvis": [
++          0.46,
++          0.56
++        ],
++        "spine": [
++          0.5,
++          0.5
++        ],
++        "chest": [
++          0.55,
++          0.44
++        ],
++        "neck": [
++          0.6,
++          0.4
++        ],
++        "head": [
++          0.66,
++          0.36
++        ],
++        "jaw": [
++          0.7,
++          0.4
++        ],
++        "wingFarRoot": [
++          0.5,
++          0.4
++        ],
++        "wingFarElbow": [
++          0.36,
++          0.3
++        ],
++        "wingFarWrist": [
++          0.2,
++          0.34
++        ],
++        "wingFarTip": [
++          0.06,
++          0.46
++        ],
++        "legFarKnee": [
++          0.42,
++          0.66
++        ],
++        "legFarFoot": [
++          0.4,
++          0.76
++        ],
++        "earFarTip": [
++          0.64,
++          0.26
++        ],
++        "wingNearRoot": [
++          0.52,
++          0.42
++        ],
++        "wingNearElbow": [
++          0.38,
++          0.32
++        ],
++        "wingNearWrist": [
++          0.22,
++          0.36
++        ],
++        "wingNearTip": [
++          0.08,
++          0.48
++        ],
++        "legNearKnee": [
++          0.44,
++          0.68
++        ],
++        "legNearFoot": [
++          0.42,
++          0.78
++        ],
++        "earNearTip": [
++          0.66,
++          0.28
++        ],
++        "tail0": [
++          0.4,
++          0.62
++        ]
++      },
++      "materials": {
++        "surface": "furred",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "flyer-membrane-v1"
++    },
++    "myriapod": {
++      "kind": "myriapod",
++      "identity": {
++        "speciesVisualKey": "synthetic:myriapod",
++        "seed": 659721,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "myriapod",
++        "version": 1
++      },
++      "family": "myriapod",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.82,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.55,
++          0.62
++        ],
++        "head": [
++          0.7,
++          0.58
++        ],
++        "mandible": [
++          0.76,
++          0.61
++        ],
++        "seg0": [
++          0.48,
++          0.62
++        ],
++        "seg1": [
++          0.41,
++          0.63
++        ],
++        "seg2": [
++          0.34,
++          0.64
++        ],
++        "seg3": [
++          0.27,
++          0.64
++        ],
++        "seg4": [
++          0.2,
++          0.63
++        ],
++        "seg5": [
++          0.13,
++          0.62
++        ],
++        "seg6": [
++          0.07,
++          0.61
++        ],
++        "seg7": [
++          0.02,
++          0.6
++        ],
++        "legAFarKnee": [
++          0.5,
++          0.7
++        ],
++        "legAFarFoot": [
++          0.52,
++          0.8
++        ],
++        "legBFarKnee": [
++          0.36,
++          0.71
++        ],
++        "legBFarFoot": [
++          0.37,
++          0.81
++        ],
++        "legCFarKnee": [
++          0.22,
++          0.7
++        ],
++        "legCFarFoot": [
++          0.22,
++          0.8
++        ],
++        "legDFarKnee": [
++          0.09,
++          0.68
++        ],
++        "legDFarFoot": [
++          0.08,
++          0.78
++        ],
++        "antennaFar": [
++          0.78,
++          0.5
++        ],
++        "legANearKnee": [
++          0.52,
++          0.72
++        ],
++        "legANearFoot": [
++          0.54,
++          0.82
++        ],
++        "legBNearKnee": [
++          0.38,
++          0.73
++        ],
++        "legBNearFoot": [
++          0.39,
++          0.83
++        ],
++        "legCNearKnee": [
++          0.24,
++          0.72
++        ],
++        "legCNearFoot": [
++          0.24,
++          0.82
++        ],
++        "legDNearKnee": [
++          0.11,
++          0.7
++        ],
++        "legDNearFoot": [
++          0.1,
++          0.8
++        ],
++        "antennaNear": [
++          0.8,
++          0.52
++        ]
++      },
++      "materials": {
++        "surface": "chitinous",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "myriapod-v1"
++    },
++    "plant-herb": {
++      "kind": "plant-herb",
++      "identity": {
++        "speciesVisualKey": "synthetic:plant-herb",
++        "seed": 659720,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "plant-herb",
++        "version": 1
++      },
++      "family": "fern",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.9,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.5,
++          0.9
++        ],
++        "stem0Seg0": [
++          0.54,
++          0.74
++        ],
++        "stem0Seg1": [
++          0.6,
++          0.58
++        ],
++        "stem0Seg2": [
++          0.68,
++          0.44
++        ],
++        "frond0": [
++          0.78,
++          0.36
++        ],
++        "stem1Seg0": [
++          0.46,
++          0.74
++        ],
++        "stem1Seg1": [
++          0.4,
++          0.58
++        ],
++        "stem1Seg2": [
++          0.32,
++          0.44
++        ],
++        "frond1": [
++          0.22,
++          0.36
++        ],
++        "stem2Seg0": [
++          0.52,
++          0.72
++        ],
++        "stem2Seg1": [
++          0.55,
++          0.54
++        ],
++        "stem2Seg2": [
++          0.58,
++          0.36
++        ],
++        "frond2": [
++          0.62,
++          0.24
++        ],
++        "stem3Seg0": [
++          0.48,
++          0.72
++        ],
++        "stem3Seg1": [
++          0.45,
++          0.54
++        ],
++        "stem3Seg2": [
++          0.42,
++          0.36
++        ],
++        "frond3": [
++          0.38,
++          0.24
++        ]
++      },
++      "materials": {
++        "surface": "slick and wet",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "plant-herb-v1"
++    },
++    "primate": {
++      "kind": "primate",
++      "identity": {
++        "speciesVisualKey": "synthetic:primate",
++        "seed": 659724,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "primate",
++        "version": 1
++      },
++      "family": "primate",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.84,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.5,
++          0.5
++        ],
++        "pelvis": [
++          0.46,
++          0.54
++        ],
++        "spine": [
++          0.48,
++          0.44
++        ],
++        "chest": [
++          0.5,
++          0.34
++        ],
++        "neck": [
++          0.52,
++          0.28
++        ],
++        "head": [
++          0.54,
++          0.22
++        ],
++        "jaw": [
++          0.59,
++          0.26
++        ],
++        "armFarShoulder": [
++          0.55,
++          0.36
++        ],
++        "armFarElbow": [
++          0.6,
++          0.48
++        ],
++        "armFarHand": [
++          0.62,
++          0.6
++        ],
++        "legFarHip": [
++          0.47,
++          0.57
++        ],
++        "legFarKnee": [
++          0.51,
++          0.68
++        ],
++        "legFarFoot": [
++          0.49,
++          0.82
++        ],
++        "armNearShoulder": [
++          0.57,
++          0.38
++        ],
++        "armNearElbow": [
++          0.62,
++          0.5
++        ],
++        "armNearHand": [
++          0.64,
++          0.62
++        ],
++        "legNearHip": [
++          0.49,
++          0.59
++        ],
++        "legNearKnee": [
++          0.53,
++          0.7
++        ],
++        "legNearFoot": [
++          0.51,
++          0.84
++        ],
++        "tail0": [
++          0.4,
++          0.56
++        ],
++        "tail1": [
++          0.34,
++          0.6
++        ],
++        "tail2": [
++          0.3,
++          0.66
++        ]
++      },
++      "materials": {
++        "surface": "furred",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "primate-v1"
++    },
++    "cephalopod": {
++      "kind": "cephalopod",
++      "identity": {
++        "speciesVisualKey": "synthetic:cephalopod",
++        "seed": 659722,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "cephalopod",
++        "version": 1
++      },
++      "family": "ceph",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.95,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.5,
++          0.5
++        ],
++        "mantle": [
++          0.5,
++          0.32
++        ],
++        "head": [
++          0.5,
++          0.58
++        ],
++        "eyeFar": [
++          0.44,
++          0.56
++        ],
++        "eyeNear": [
++          0.56,
++          0.56
++        ],
++        "siphon": [
++          0.42,
++          0.5
++        ],
++        "finFar": [
++          0.42,
++          0.24
++        ],
++        "finNear": [
++          0.58,
++          0.24
++        ],
++        "arm0Seg0": [
++          0.36,
++          0.66
++        ],
++        "arm0Seg1": [
++          0.3,
++          0.76
++        ],
++        "arm0Seg2": [
++          0.26,
++          0.86
++        ],
++        "arm1Seg0": [
++          0.41,
++          0.68
++        ],
++        "arm1Seg1": [
++          0.37,
++          0.8
++        ],
++        "arm1Seg2": [
++          0.35,
++          0.92
++        ],
++        "arm2Seg0": [
++          0.45,
++          0.7
++        ],
++        "arm2Seg1": [
++          0.43,
++          0.82
++        ],
++        "arm2Seg2": [
++          0.42,
++          0.94
++        ],
++        "arm3Seg0": [
++          0.485,
++          0.7
++        ],
++        "arm3Seg1": [
++          0.485,
++          0.83
++        ],
++        "arm3Seg2": [
++          0.485,
++          0.95
++        ],
++        "arm4Seg0": [
++          0.515,
++          0.7
++        ],
++        "arm4Seg1": [
++          0.515,
++          0.83
++        ],
++        "arm4Seg2": [
++          0.515,
++          0.95
++        ],
++        "arm5Seg0": [
++          0.55,
++          0.7
++        ],
++        "arm5Seg1": [
++          0.57,
++          0.82
++        ],
++        "arm5Seg2": [
++          0.58,
++          0.94
++        ],
++        "arm6Seg0": [
++          0.59,
++          0.68
++        ],
++        "arm6Seg1": [
++          0.63,
++          0.8
++        ],
++        "arm6Seg2": [
++          0.65,
++          0.92
++        ],
++        "arm7Seg0": [
++          0.64,
++          0.66
++        ],
++        "arm7Seg1": [
++          0.7,
++          0.76
++        ],
++        "arm7Seg2": [
++          0.74,
++          0.86
++        ]
++      },
++      "materials": {
++        "surface": "slick and wet",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "cephalopod-v1"
++    },
++    "arachnid": {
++      "kind": "arachnid",
++      "identity": {
++        "speciesVisualKey": "synthetic:arachnid",
++        "seed": 659717,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "arachnid",
++        "version": 1
++      },
++      "family": "arachnid",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.74,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.5,
++          0.55
++        ],
++        "cephalothorax": [
++          0.56,
++          0.54
++        ],
++        "abdomen": [
++          0.4,
++          0.56
++        ],
++        "sting": [
++          0.3,
++          0.5
++        ],
++        "leg1FarKnee": [
++          0.68,
++          0.48
++        ],
++        "leg1FarFoot": [
++          0.76,
++          0.7
++        ],
++        "leg2FarKnee": [
++          0.62,
++          0.44
++        ],
++        "leg2FarFoot": [
++          0.68,
++          0.72
++        ],
++        "leg3FarKnee": [
++          0.5,
++          0.44
++        ],
++        "leg3FarFoot": [
++          0.44,
++          0.72
++        ],
++        "leg4FarKnee": [
++          0.44,
++          0.5
++        ],
++        "leg4FarFoot": [
++          0.34,
++          0.74
++        ],
++        "cheliceraFar": [
++          0.64,
++          0.58
++        ],
++        "leg1NearKnee": [
++          0.7,
++          0.5
++        ],
++        "leg1NearFoot": [
++          0.78,
++          0.72
++        ],
++        "leg2NearKnee": [
++          0.64,
++          0.46
++        ],
++        "leg2NearFoot": [
++          0.7,
++          0.74
++        ],
++        "leg3NearKnee": [
++          0.52,
++          0.46
++        ],
++        "leg3NearFoot": [
++          0.46,
++          0.74
++        ],
++        "leg4NearKnee": [
++          0.46,
++          0.52
++        ],
++        "leg4NearFoot": [
++          0.36,
++          0.76
++        ],
++        "cheliceraNear": [
++          0.66,
++          0.6
++        ]
++      },
++      "materials": {
++        "surface": "chitinous",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "arachnid-v1"
++    },
++    "radial": {
++      "kind": "radial",
++      "identity": {
++        "speciesVisualKey": "synthetic:radial",
++        "seed": 659718,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "radial",
++        "version": 1
++      },
++      "family": "jelly",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.95,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.5,
++          0.3
++        ],
++        "centre": [
++          0.5,
++          0.34
++        ],
++        "bell": [
++          0.5,
++          0.22
++        ],
++        "arm0Seg0": [
++          0.58,
++          0.44
++        ],
++        "arm0Seg1": [
++          0.62,
++          0.56
++        ],
++        "arm0Seg2": [
++          0.64,
++          0.7
++        ],
++        "arm2Seg0": [
++          0.54,
++          0.46
++        ],
++        "arm2Seg1": [
++          0.56,
++          0.6
++        ],
++        "arm2Seg2": [
++          0.57,
++          0.74
++        ],
++        "arm4Seg0": [
++          0.62,
++          0.4
++        ],
++        "arm4Seg1": [
++          0.68,
++          0.5
++        ],
++        "arm4Seg2": [
++          0.72,
++          0.62
++        ],
++        "arm1Seg0": [
++          0.42,
++          0.44
++        ],
++        "arm1Seg1": [
++          0.38,
++          0.56
++        ],
++        "arm1Seg2": [
++          0.36,
++          0.7
++        ],
++        "arm3Seg0": [
++          0.46,
++          0.46
++        ],
++        "arm3Seg1": [
++          0.44,
++          0.6
++        ],
++        "arm3Seg2": [
++          0.43,
++          0.74
++        ],
++        "arm5Seg0": [
++          0.38,
++          0.4
++        ],
++        "arm5Seg1": [
++          0.32,
++          0.5
++        ],
++        "arm5Seg2": [
++          0.28,
++          0.62
++        ]
++      },
++      "materials": {
++        "surface": "translucent",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "radial-v1"
++    },
++    "hopper": {
++      "kind": "hopper",
++      "identity": {
++        "speciesVisualKey": "synthetic:hopper",
++        "seed": 659712,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "hopper",
++        "version": 1
++      },
++      "family": "frog",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.85,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.45,
++          0.55
++        ],
++        "pelvis": [
++          0.32,
++          0.55
++        ],
++        "spine": [
++          0.45,
++          0.5
++        ],
++        "chest": [
++          0.58,
++          0.5
++        ],
++        "neck": [
++          0.66,
++          0.46
++        ],
++        "head": [
++          0.74,
++          0.42
++        ],
++        "jaw": [
++          0.8,
++          0.47
++        ],
++        "hindFarRoot": [
++          0.3,
++          0.6
++        ],
++        "hindFarKnee": [
++          0.22,
++          0.7
++        ],
++        "hindFarAnkle": [
++          0.3,
++          0.8
++        ],
++        "hindFarPaw": [
++          0.4,
++          0.85
++        ],
++        "foreFarRoot": [
++          0.6,
++          0.58
++        ],
++        "foreFarKnee": [
++          0.6,
++          0.68
++        ],
++        "foreFarAnkle": [
++          0.6,
++          0.78
++        ],
++        "foreFarPaw": [
++          0.66,
++          0.85
++        ],
++        "earFarRoot": [
++          0.72,
++          0.36
++        ],
++        "earFarTip": [
++          0.7,
++          0.28
++        ],
++        "hindNearRoot": [
++          0.32,
++          0.6
++        ],
++        "hindNearKnee": [
++          0.24,
++          0.7
++        ],
++        "hindNearAnkle": [
++          0.32,
++          0.8
++        ],
++        "hindNearPaw": [
++          0.42,
++          0.85
++        ],
++        "foreNearRoot": [
++          0.62,
++          0.58
++        ],
++        "foreNearKnee": [
++          0.62,
++          0.68
++        ],
++        "foreNearAnkle": [
++          0.62,
++          0.78
++        ],
++        "foreNearPaw": [
++          0.68,
++          0.85
++        ],
++        "earNearRoot": [
++          0.74,
++          0.36
++        ],
++        "earNearTip": [
++          0.72,
++          0.28
++        ],
++        "tail0": [
++          0.26,
++          0.58
++        ],
++        "tail1": [
++          0.2,
++          0.62
++        ],
++        "tail2": [
++          0.15,
++          0.66
++        ],
++        "tail3": [
++          0.11,
++          0.7
++        ]
++      },
++      "materials": {
++        "surface": "slick and wet",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "hopper-v1"
++    },
++    "fish": {
++      "kind": "fish",
++      "identity": {
++        "speciesVisualKey": "synthetic:fish",
++        "seed": 659714,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "fish",
++        "version": 1
++      },
++      "family": "fish",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.92,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.52,
++          0.5
++        ],
++        "head": [
++          0.66,
++          0.5
++        ],
++        "jaw": [
++          0.74,
++          0.54
++        ],
++        "spine0": [
++          0.46,
++          0.5
++        ],
++        "spine1": [
++          0.4,
++          0.5
++        ],
++        "spine2": [
++          0.34,
++          0.5
++        ],
++        "spine3": [
++          0.28,
++          0.5
++        ],
++        "spine4": [
++          0.22,
++          0.5
++        ],
++        "spine5": [
++          0.16,
++          0.5
++        ],
++        "caudal": [
++          0.06,
++          0.5
++        ],
++        "dorsal": [
++          0.4,
++          0.36
++        ],
++        "pectoralFar": [
++          0.56,
++          0.6
++        ],
++        "pectoralNear": [
++          0.58,
++          0.62
++        ]
++      },
++      "materials": {
++        "surface": "scaled",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "fish-v1"
++    },
++    "serpent": {
++      "kind": "serpent",
++      "identity": {
++        "speciesVisualKey": "synthetic:serpent",
++        "seed": 659716,
++        "ownerId": "synthetic:a11-fixture",
++        "earthName": null
++      },
++      "template": {
++        "id": "serpent",
++        "version": 1
++      },
++      "family": "snake",
++      "geometry": {
++        "cutoutAssetHash": "synthetic-no-cutout",
++        "width": 1024,
++        "height": 1024,
++        "groundLineY": 0.72,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ]
++      },
++      "landmarks": {
++        "root": [
++          0.6,
++          0.6
++        ],
++        "head": [
++          0.7,
++          0.55
++        ],
++        "jaw": [
++          0.76,
++          0.59
++        ],
++        "seg0": [
++          0.54,
++          0.62
++        ],
++        "seg1": [
++          0.48,
++          0.66
++        ],
++        "seg2": [
++          0.42,
++          0.7
++        ],
++        "seg3": [
++          0.36,
++          0.72
++        ],
++        "seg4": [
++          0.3,
++          0.7
++        ],
++        "seg5": [
++          0.24,
++          0.66
++        ],
++        "seg6": [
++          0.18,
++          0.62
++        ],
++        "seg7": [
++          0.12,
++          0.6
++        ],
++        "seg8": [
++          0.07,
++          0.63
++        ],
++        "seg9": [
++          0.03,
++          0.68
++        ]
++      },
++      "materials": {
++        "surface": "scaled",
++        "sheenTier": "painted",
++        "paletteSource": "synthetic"
++      },
++      "clipSetId": "serpent-v1"
++    },
++    "quadruped": {
++      "kind": "quadruped",
++      "identity": {
++        "speciesVisualKey": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"_earthName\",[\"string\",\"Civet\"]],[\"accent\",[\"number\",\"3\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"5\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"3212817920\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"14\"]]]]",
++        "seed": 3212817920,
++        "ownerId": "authored:Civet/faunaResetViverridD",
++        "earthName": "Civet"
++      },
++      "template": {
++        "id": "quadruped",
++        "version": 1
++      },
++      "geometry": {
++        "cutoutAssetHash": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
++        "width": 1254,
++        "height": 1254,
++        "groundLineY": 0.837,
++        "depthLayers": [
++          {
++            "id": "far",
++            "order": 0
++          },
++          {
++            "id": "near",
++            "order": 1
++          }
++        ],
++        "contactPolicy": "preserve authored perspective and raised-paw offsets"
++      },
++      "landmarks": {
++        "root": [
++          0.59,
++          0.47
++        ],
++        "pelvis": [
++          0.45,
++          0.46
++        ],
++        "spine": [
++          0.59,
++          0.43
++        ],
++        "chest": [
++          0.73,
++          0.47
++        ],
++        "neck": [
++          0.8,
++          0.4
++        ],
++        "head": [
++          0.846,
++          0.316
++        ],
++        "jaw": [
++          0.8,
++          0.387
++        ],
++        "tail0": [
++          0.35,
++          0.48
++        ],
++        "tail1": [
++          0.265,
++          0.595
++        ],
++        "tail2": [
++          0.151,
++          0.68
++        ],
++        "tail3": [
++          0.078,
++          0.785
++        ],
++        "earFarRoot": [
++          0.777,
++          0.236
++        ],
++        "earFarTip": [
++          0.773,
++          0.181
++        ],
++        "earNearRoot": [
++          0.906,
++          0.245
++        ],
++        "earNearTip": [
++          0.935,
++          0.193
++        ],
++        "hindFarRoot": [
++          0.59,
++          0.52
++        ],
++        "hindFarKnee": [
++          0.532,
++          0.661
++        ],
++        "hindFarAnkle": [
++          0.555,
++          0.715
++        ],
++        "hindFarPaw": [
++          0.614,
++          0.739
++        ],
++        "hindNearRoot": [
++          0.45,
++          0.52
++        ],
++        "hindNearKnee": [
++          0.372,
++          0.67
++        ],
++        "hindNearAnkle": [
++          0.386,
++          0.75
++        ],
++        "hindNearPaw": [
++          0.424,
++          0.78
++        ],
++        "foreFarRoot": [
++          0.83,
++          0.54
++        ],
++        "foreFarKnee": [
++          0.905,
++          0.662
++        ],
++        "foreFarAnkle": [
++          0.906,
++          0.72
++        ],
++        "foreFarPaw": [
++          0.889,
++          0.768
++        ],
++        "foreNearRoot": [
++          0.71,
++          0.54
++        ],
++        "foreNearKnee": [
++          0.739,
++          0.689
++        ],
++        "foreNearAnkle": [
++          0.774,
++          0.797
++        ],
++        "foreNearPaw": [
++          0.813,
++          0.823
++        ]
++      },
++      "materials": {
++        "surface": "fur",
++        "sheenTier": "painted",
++        "paletteSource": "authored named master"
++      },
++      "clipSetId": "quadruped-land-v1",
++      "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
++      "boundsCheck": {
++        "inside": true,
++        "clamped": [],
++        "boneLengths": {
++          "pelvis": 0.14035668847618196,
++          "spine": 0.1431782106327635,
++          "chest": 0.14560219778561037,
++          "neck": 0.09899494936611666,
++          "head": 0.09577055915050302,
++          "jaw": 0.08459905436823743,
++          "hindFarRoot": 0.15231546211727812,
++          "hindFarKnee": 0.1524631102922933,
++          "hindFarAnkle": 0.058694122363316704,
++          "hindFarPaw": 0.06369458375717668,
++          "foreFarRoot": 0.12206555615733705,
++          "foreFarKnee": 0.14320963654726593,
++          "foreFarAnkle": 0.05800862004909264,
++          "foreFarPaw": 0.0509215082258961,
++          "hindNearRoot": 0.06,
++          "hindNearKnee": 0.16906803364326448,
++          "hindNearAnkle": 0.08121576201698777,
++          "hindNearPaw": 0.04841487374764082,
++          "foreNearRoot": 0.07280109889280525,
++          "foreNearKnee": 0.15179591562357655,
++          "foreNearAnkle": 0.11352973178863773,
++          "foreNearPaw": 0.04687216658103175,
++          "tail0": 0.10198039027185571,
++          "tail1": 0.1430034964607509,
++          "tail2": 0.14220056258679153,
++          "tail3": 0.12788275880665068,
++          "earFarRoot": 0.10564563407921783,
++          "earFarTip": 0.05514526271584894,
++          "earNearRoot": 0.09295697929687693,
++          "earNearTip": 0.05953990258641678
++        }
++      },
++      "recipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f"
++    }
++  }
++}

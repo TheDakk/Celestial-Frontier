@@ -1,0 +1,65 @@
+{
+  "scope": "Local motion snapshot for the requested anatomy/habitat defect repair; sibling worktree read-only; no git merge or branch operation",
+  "files": [
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/actions.ts",
+      "destination": "port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "dc1ef0becac76be8997789b08e1058fcddd04fcdd12edfff71d10a3ce02abcac"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/body-card.ts",
+      "destination": "port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "08319431f79dd7d51ee247cb4065d49304c0cd332ccec6d7505cec0238af71d0"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/budget.ts",
+      "destination": "port/v2/apps/game/src/motion/budget.ts",
+      "sha256": "3fac6ef0eeefe1f979130a6a0ba3adf08d3a876495e5c44a047ba1df2e1bafb5"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "destination": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "ea1a4a57a65aa10cc1872304c9e87f31f47fcea0081f7bb7f947afab46d8bbbc"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "destination": "port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "f8091e7cec3ec55fc5da48f8d996fdf0e1545fa1adf593e5bbe60f9c11c9ba3d"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "destination": "port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "sha256": "6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/index.ts",
+      "destination": "port/v2/apps/game/src/motion/index.ts",
+      "sha256": "5782f93542b0f138786486d0657e3b02796ecd7192336735c83eeb78b2fbbc68"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/overlay.ts",
+      "destination": "port/v2/apps/game/src/motion/overlay.ts",
+      "sha256": "6ddd0ae6bf4a8cf13b268c17e4669c5756a14b123bd1a56f8d8f6086193397ac"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/secondary.ts",
+      "destination": "port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "a3b07b1ab839db68669e5ae2fcd24e9314c7d6495a01d2b009e8b3f2d5a0b361"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/templates.ts",
+      "destination": "port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "6a10af5e4b07fc49ba7a6a27ce58e96ffad983b3182549aecc8309a9d0e18c97"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timeline.ts",
+      "destination": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "5aff1698c63fdd66f1f83f28b61912d477593c8af4a8b96761c91d8460277566"
+    },
+    {
+      "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timing.ts",
+      "destination": "port/v2/apps/game/src/motion/timing.ts",
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa"
+    }
+  ]
+}

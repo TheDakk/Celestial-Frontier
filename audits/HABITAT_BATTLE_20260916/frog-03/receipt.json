@@ -1,0 +1,33 @@
+{
+  "schema": "cf.paint-skin-intake/v1",
+  "sourceBindingHash": "853687cbeb64938aa2b9c9ee9b562adae036139bcf30625b734040fb642c02ca",
+  "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+  "packedPixels": {
+    "schema": "cf.parts-byte-verification/v1",
+    "bindingHash": "853687cbeb64938aa2b9c9ee9b562adae036139bcf30625b734040fb642c02ca",
+    "atlasSha256": "1e8223be09bba448beaa0f0efa08d873300954d096e64349d86af7cf7da9ad0a",
+    "parts": 16,
+    "comparedChannels": 4527072,
+    "changedChannels": 0
+  },
+  "vertices": 2184,
+  "partVertices": 3421,
+  "parts": 16,
+  "leaves": 955,
+  "triangles": 4008,
+  "ownershipEdges": 4999,
+  "ownershipAlphaRule": "every nonzero original alpha",
+  "originalInkOnly": true,
+  "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+  "nativeAcceptance": false,
+  "intake": {
+    "id": "frog",
+    "parts": 16,
+    "atlasSize": {
+      "width": 780,
+      "height": 1968
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  }
+}

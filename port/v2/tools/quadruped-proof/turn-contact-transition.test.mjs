@@ -70,3 +70,18 @@ export function create(record,plans){const sampler=createTurnPoseSampler(createG
   }
  }finally{fs.rmSync(scratch,{recursive:true,force:true});}
 });
+
+test('right combatant keeps its own idle and releases support only during its own attack',()=>{
+ const sampler=createTurnPoseSampler((timeline,target)=>({seek(ms){target.setJoint('root',timeline.value+(timeline.value?ms/1000:0),0,0);},stop(){}}));
+ const plans=fixturePlans(),solver={resolve(pose){return {pose,compression:0};}},right=createTurnContactSampler({plans,motionSampler:sampler,solver,side:'right'});
+ assert.equal(right.resolve(300).role,'target');assert.equal(right.resolve(300).planted,true);
+ assert.equal(right.resolve(5300).role,'attacker');assert.equal(right.resolve(5300).supportWeight,0);
+ assert.equal(right.resolve(5600).planted,true);
+ assert.ok(right.sample(500).root.rotation>40); // refuses accidental use of the left actor's seeded idle
+ assert.ok(poseDelta(right.sample(4999.999),right.sample(5000.001))<.00001);
+ const old=createTurnContactSampler({plans,motionSampler:sampler,solver});assert.equal(old.resolve(5300).role,'target'); // old left-only owner is the failing-role control
+ assert.notDeepEqual(old.sample(500),right.sample(500));
+ assert.throws(()=>createTurnContactSampler({plans,motionSampler:sampler,solver,side:'invalid'}),/side/);
+ for(const at of [5100,5200,5400,5600])assert.ok(poseDelta(right.resolve(at-.00001).pose,right.resolve(at+.00001).pose)<.00001);
+ sampler.dispose();
+});

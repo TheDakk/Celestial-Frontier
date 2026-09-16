@@ -1,5 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
-import { resolveOverrideCanvas } from '../src/speciesoverrides.js';
+import { resolveOverrideCanvas,resolveProceduralCanvas } from '../src/speciesoverrides.js';
+import type {PainterTopology} from '../src/painter-topology.js';
 import { QUAD2_SPEC } from '../src/mammaloverrides.js';
 import { installSpeciesCanvasFactory, type ArtCanvas } from '../src/speciescanvas.js';
 import {
@@ -174,4 +175,22 @@ describe('independent transparent Earth resident layer', () => {
     }
     expect(invoked).toBe(0);
   });
+});
+
+
+it('the actual procedural dispatcher publishes the winning topology once and preserves ordinary ink commands',()=>{
+  for(const [body,loco,owner]of [[15,0,'proceduralRadialFauna'],[5,0,'myriapod'],[14,3,'faunaBird']] as const){
+    const genome={kingdom:'fauna',seed:1597751321,body,loco,size:2,head:0,skin:0};
+    let count=0,observed:PainterTopology|null=null,observedInk:ArtCanvas|undefined;
+    const picture=resolveProceduralCanvas(genome,undefined,false,(value,ink)=>{count++;observed=value;observedInk=ink;});
+    const ordinary=resolveProceduralCanvas(genome);
+    expect(count).toBe(1);expect((observed as PainterTopology|null)?.ownerId).toBe(owner);
+    expect(record(picture!).trace).toEqual(record(ordinary!).trace);
+    expect(record(observedInk!).trace).toEqual(record(ordinary!).draws[0]!.trace);
+  }
+});
+it('a currently unobserved owner reports null rather than guessed anatomy',()=>{
+  let calls=0,value:PainterTopology|null|undefined;
+  const picture=resolveProceduralCanvas({kingdom:'fauna',seed:1597751321,body:0,loco:4},undefined,false,topology=>{calls++;value=topology;});
+  expect(picture).not.toBeNull();expect(calls).toBe(1);expect(value).toBeNull();
 });

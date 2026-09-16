@@ -1,0 +1,11 @@
+✔ head follows actual pose but source neck remains attached to chest; rigid old transform fails (0.785ms)
+✔ actual triangle fold is refused, including the reflected profile view (0.078417ms)
+✔ head replacement cannot cut away the neck or chest; original bad declaration is refused (0.104209ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 71.333792

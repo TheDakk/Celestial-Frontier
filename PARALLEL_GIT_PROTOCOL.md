@@ -23,15 +23,23 @@ rig runtime interface and package evidence requirements; it was received verbati
 at audits/LONG_SESSION_20260913/WORK_ORDER.md. Nick's direct no-new-branches instruction remains
 controlling; the document's temporary-subagent allowance does not require delegation.
 
+## Local motion repair scope — September 16
+
+After the real-family review identified the motion ownership blocker, Nick instructed Codex
+to fix all possible defects and build the mixed-habitat battle. This authorizes the narrow
+local motion anatomy/habitat repair on openai/mac. A source-hashed motion snapshot is imported
+for local compilation; anthropic/mac remains read-only. Other reserved modules remain reserved.
+No kit change, branch operation, merge or GitHub write follows from this scope.
+
 ## Current clean promotion plan — Nick, 2026-09-12
 
 Prune superseded code and pack assets on `openai/mac` before splitting PR42. The split is
-three ordered tiers, each squash-merged into `develop`: production UI; painted landfall
-engine; research tools. Follow with one `develop` → `main` release PR running the full chain.
+three ordered tiers, each merged with a merge commit into `develop`: production UI; painted
+landfall engine; research tools merged as tools (September13 work order supersedes squash). Follow with one `develop` → `main` release PR running the full chain.
 Do not make any PR Ready until the Civet 2D proof, the second weather pick and the phone-tier
 decision have landed. This records the future order only: PR42 remains parked and no GitHub
 write, hosted attempt, merge, release or deployment is currently authorized. Exact hosted
-and release authorization requirements below still apply. Audits LFS migration awaits Nick's
+and release authorization requirements below still apply. Audits LFS migration is approved in principle and awaits Nick's explicit go, not a new
 separate decision; do not rewrite history without it.
 
 ## Ownership

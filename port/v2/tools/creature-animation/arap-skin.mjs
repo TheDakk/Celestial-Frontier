@@ -18,7 +18,7 @@ export function createArapScratch(vertices,triangles,width,height,options={}){
  const starts=new Uint32Array(n+1);for(let i=0;i<n;i++)starts[i+1]=starts[i]+adj[i].size;
  const neighbours=new Uint32Array(starts[n]),neighbourDofs=new Uint32Array(starts[n]),deltas=new Float64Array(starts[n]*2);
  for(let i=0;i<n;i++){let k=starts[i];for(const j of [...adj[i]].sort((a,b)=>a-b)){neighbours[k]=j;neighbourDofs[k]=j*2;deltas[k*2]=rest[i*2]-rest[j*2];deltas[k*2+1]=rest[i*2+1]-rest[j*2+1];k++;}}
- const iterations=options.iterations??4,globalIterations=options.globalIterations??4,targetWeight=options.targetWeight??.35,orientationIterations=options.orientationIterations??24,minimumAreaRatio=options.minimumAreaRatio??.12;
+ const iterations=options.iterations??4,globalIterations=options.globalIterations??4,targetWeight=options.targetWeight??.35,orientationIterations=options.orientationIterations??64,minimumAreaRatio=options.minimumAreaRatio??.12;
  need(Number.isInteger(iterations)&&iterations>=1&&iterations<=16&&Number.isInteger(globalIterations)&&globalIterations>=1&&globalIterations<=32,'iteration budget');
  need(Number.isFinite(targetWeight)&&targetWeight>0&&targetWeight<=100,'target weight');
  need(Number.isInteger(orientationIterations)&&orientationIterations>=1&&orientationIterations<=64&&Number.isFinite(minimumAreaRatio)&&minimumAreaRatio>0&&minimumAreaRatio<=.5,'orientation budget');

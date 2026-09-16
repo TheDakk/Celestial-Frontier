@@ -1,4 +1,245 @@
+## September 16 — handoff before procedural motion iteration
+
+## SESSION HANDOFF — 2026-09-16 · mixed-habitat battle
+
+Review: [habitat package](audits/HABITAT_BATTLE_20260916/README.md),
+[one consolidated prompt](audits/HABITAT_BATTLE_20260916/REVIEW_PROMPT.md),
+http://127.0.0.1:49816/habitats/ (fish/bird film, Frog film, new bird source candidate).
+Previous Civet/Platypus preview remains /impact/, preceding family work /families/.
+
+Physical habitat compiler now uses source ground/air/water capabilities, chemistry and seeded
+home/visitor rules. Unsupported realms/interfaces and unknown named/non-fauna habitats refuse.
+All43 biome identities have routing controls; this does not qualify43 painted arenas. The
+mixed scene keeps full moving bodies in their medium at1,200 sampled poses, with source joins
+passing. Final native-battle-04 is606 encoded frames/10.101600s, about60fps; fish/bird rig update
+p951.1/0.6ms, complete frame1.9ms. Water cross-section and ranged streaks are procedural study
+presentation, not accepted new arena/effect masters. No sound or production integration claim.
+
+The local motion snapshot records every imported source hash. Nick's broad September16 fix
+instruction following the ownership question authorizes this narrow local anatomy/habitat repair;
+PARALLEL_GIT_PROTOCOL records it. Claude's tree is untouched; other reserved modules stay reserved.
+Frog now uses its actual23-joint record, explicit absent tail/external ears, and smooth-skin
+material. Mandatory missing joints refuse. Authored fish uses aquatic/swim. Frontal bird wings
+convert shared rotations into the recorded source plane; curves and root-only dx/dy unchanged.
+Shared skin solver allows64 orientation corrections instead of24; .12 target, positive-triangle
+refusal and4x4/.35 shape profile unchanged. Asset overrides still refuse. Initial failures retained.
+
+Final Frog05/native-frog-02: exact rest/final rest0,484 sampled poses, separated-mesh control,
+607frames/10.117296s/about60fps, rig p951.6ms. Bird05/native-airbird-03 also exact rest0 and484
+poses,606frames/10.102140s/about60fps, rig p950.5ms. New turnaround is pending visual review;
+outer safe margin fails target, padded front derivative is experimental. Accepted masters intact.
+Bird still needs an opponent-facing flight view and natural wing/leg review. Frog ground contact
+and partly hidden hind leg observation remain unqualified. No universal motion acceptance.
+
+Checks:25 focused app/runtime/painter tests,32 tool tests, game typecheck and root validation
+(1,010 Earth draws,43 profiles, unchanged50-probe fingerprint). Dirty diagnostics, not clean-source
+certification. No main.ts or kit hunk. Signed parent at batch start is1a6dd61d,118 ahead cached
+origin/openai/mac and229 ahead origin/develop. The signed checkpoint failed again with
+`1Password: agent returned an error`; all work is staged, no unsigned fallback. See
+[checkpoint status](audits/HABITAT_BATTLE_20260916/CHECKPOINT_STATUS.md).
+
+Next: obtain Nick's visual review; connect actual encounter/world data to habitat admission and
+CreatureRigV1; qualify facing, flight and contact; complete painter masks/records and variable-count
+radial/myriapod/cephalopod contracts. Universal architecture is shared runtime plus actual anatomy,
+not one quadruped fitted to every body. Qualify each real family and procedural extreme; physical
+phone remains a separate30fps test. Preserve previous Civet/fox/procedural shared-skin evidence,
+8% contact bound, exact rest, source joins and strict<2ms per-creature update requirement.
+
+C3 remains signed b79fd32e:1,669 source entries/1,665 unique originals,1,662 decode,three quarantined;
+1,617 WAV/Opus pairs and203/631 fauna reference identities,428 missing.43 biome recipes/486 routes,
+484 rendered,two intentional silences. References are not species-behavior/listening acceptance.
+Audio review audio-production/REVIEW_PROMPT.md and REVIEW_PACKS.md;23 ZIPs below30MB.
+C1 mechanical intake complete; Nick owns final Wild acceptance. C4 remains twelve assets/sheet.
+Rain E active; second weather pick and smaller-finisher phone decision open. Klein probes stopped.
+C5: prune on openai/mac, then three merge-commit tiers into develop (UI,engine,tools), followed by
+one develop→main release PR/full chain only when separately authorized. No Ready before required
+proof/weather/phone decisions. Audits LFS approved in principle; perform only on Nick's explicit go.
+
+OpenAI/Codex continues locally on openai/mac. No new branches, kit edits, GitHub writes, Actions,
+merges, release, deployment or history rewrite. PR42 parked. Claude need not open/sync now; when
+Nick requests review, provide the consolidated prompt and named evidence, not an automatic merge.
+Reuse the uninterrupted September15–16 toolchain receipt; do not update tools during evidence jobs.
+
+
+## September 16 — handoff before mixed-habitat battle
+
+## SESSION HANDOFF — 2026-09-16 · whole-animal animation
+
+Latest review: [real creatures](audits/FAMILY_REAL_CREATURE_REVIEW_20260916/README.md),
+[combined reviewer prompt](audits/FAMILY_REAL_CREATURE_REVIEW_20260916/REVIEW_PROMPT.md),
+local page `http://127.0.0.1:49816/families/`. Fish has a ten-second native family film with
+exact rest and all four action seam/fold checks passing (606 encoded frames / 10.101435 s;
+~60 fps loop, 1.4 ms whole-frame CPU p95). Bird numerical checks pass but visual FAIL stands:
+folded-wing motion distorts the torso. Grounded bird contact and independent wing topology
+are next consumer work. Frog admission is actually reproduced on the accepted master: hopper
+requires eight nonexistent tail/ear landmarks. Await the narrow motion-owner exception; do
+not create dummy anatomy. Fish realm/accessory-fin coverage and count-aware procedural
+contracts remain open. Forty-five focused tool tests, nineteen runtime/painter tests, game
+typecheck and root validation pass. No newly qualified procedural family or phone result.
+All work is still staged/unsigned after `1a6dd61d`; cached ahead counts remain 118/229.
+No main.ts, Claude-owned or kit hunk; no GitHub action. Claude need not open or sync now.
+
+Verified OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`,
+`openai/mac`, tracking `origin/openai/mac`. Signed checkpoint `1a6dd61d` is 118 ahead
+cached upstream and 229 ahead cached `origin/develop`. This is the uninterrupted toolchain
+session; reuse its startup receipt and do not update tools during active evidence jobs.
+
+Nick's animation direction is recorded in
+[audits/C2_CONTINUOUS_SKIN_20260916/UNIVERSAL_ANIMATION_PLAN.md](audits/C2_CONTINUOUS_SKIN_20260916/UNIVERSAL_ANIMATION_PLAN.md).
+Accepted painted creatures must feel alive and attack with anticipation, weight and recovery.
+The delivery architecture is a shared runtime plus anatomy-specific templates driven by actual
+painter-emitted anatomy/material/part records, covering land, air, water and rooted organisms.
+Qualify each family and its procedural extremes; neither a family registry nor the Civet proof
+establishes universal coverage. Hidden surfaces/turning views require actual source coverage.
+Physical iPhone performance remains a separate qualification at the approved 30 fps budget.
+
+Latest visual follow-up: [focused-impact polish](audits/BATTLE_IMPACT_POLISH_20260916/README.md).
+Nick praised the connected-throat preview and requested refinement. The existing flash envelope
+now produces 10% scene white plus a brief 1.45× brightness on the receiving creature. Pooled
+filters are disabled at neutral exposure. Actual target-only and wrong-actor pixel controls pass;
+all body/throat gates remain green. Turn plans and 12 non-flash stills match the prior version
+byte-for-byte. Three new ~60 fps films are in motion-01, review at http://127.0.0.1:49816/impact/.
+Previous liked version remains at /throat/. The new look awaits visual review; no ordinary-game
+promotion or full C2/universal/phone acceptance. No kit/master/curve/Claude-owned/main.ts changes.
+The procedural coverage requirements remain BATTLE_THROAT_JOIN_20260916/UNIVERSAL_COVERAGE_REVIEW.md.
+Signing remains pending; GitHub step none. Codex can continue local work; Claude need not sync now.
+
+Previous batch: [all-family intake and topology](audits/UNIVERSAL_FAMILIES_20260916/README.md).
+All fourteen closed motion inventories now use the actual hashed-record/Pixi/parts intake.
+Contracts agree with the producer over 910 geometry comparisons; fourteen calibration atlases
+repack identically with zero changed source channels. 137 tool tests, 45 focused tests, both
+TypeScript checks and root validation pass. Calibration stripes are not creature artwork.
+Four real painter observers now preserve actual bird visibility, ten radial arms, all myriapod
+segments/leg pairs, and eight cephalopod arms plus the squid's two feeding tentacles. Dispatcher
+callbacks expose incomplete topology honestly; unknown owners return null. Actual masks and
+resolved animation records remain work. These real inventories exceed existing fixed-count
+motion templates. Nick has been asked for a narrow exception to Claude's motion/ ownership;
+do not edit those paths unless he grants it. Finish current native regression on signed source.
+Prior shared-pose evidence remains audits/UNIVERSAL_ANIMATION_20260916: 4,644 sampled poses and
+byte-identical C2 native images, not new-family painted qualification.
+
+Preceding C2 repair replaces stretched seam bands with continuous source-painted skin, split at
+independent limb surfaces and joined at real proximal body attachments. It preserves source
+masters, atlas bytes, part count, depth, bone curves and contact bounds. A fixed local shape
+solver and compiled sparse weights deform the skin; actual rendered paw contours and original
+source joins are measured independently. The current producer is read-only Claude GSAP adapter
+SHA-256 `6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74`.
+
+Current audit: [README](audits/C2_CONTINUOUS_SKIN_20260916/README.md) and
+[review prompt](audits/C2_CONTINUOUS_SKIN_20260916/REVIEW_PROMPT.md). Prior native diagnostics
+are retained, including a timing failure, painted-paw drift, missed face orientation, and source
+attachment gaps that earlier positive-triangle checks did not detect. Candidate10 closes the
+body joins and fixes the intervening Fox fold through consistent shared-socket influence spaces.
+Native12 passes all three on the actual Kernel05 Wasm normal-pass leaf: 1,201 samples each,
+rest/final-rest zero changed channels, inclusive gate-loop CPU p95 0.60/0.70/0.30 ms. Actual normal
+passes are 4,844/4,840/4,840 for Civet/fox/procedural, with zero robust fallbacks. The consumer
+smoothly releases/reacquires support and preserves one idle phase across both turn roles;
+disposable internal sampling guards remove texture-cut hairlines without changing source bytes
+or rest pixels. Kernel05's 117 Node tests, 15 runtime tests, game typecheck and root validation
+pass, including the unchanged 50-probe deterministic fingerprint. Unprofiled Motion06 delivers all three
+ten-second diagnostic films at 60 fps and update p95 1.6/1.7/0.9 ms, meeting the unchanged strict
+<2 ms gate. Earlier red receipts remain retained. Dirty diagnostic evidence is not clean-source
+qualification or visual acceptance. No further optimization loop is planned.
+
+Review: the latest `audits/UNIVERSAL_ANIMATION_20260916/motion-01/*-10s.webm` films and
+byte-identical native pose images for actual
+painted shape and fluid motion; after the signing refusal is resolved, obtain clean signed-source
+native rest/contact/continuity/CPU gates and exact-source ten-second Civet, fox and procedural
+arena films on unchanged source. Require rest/final-rest zero changed channels, no skin tears or
+spikes, planted paint within one native pixel, unchanged 8% contact compression bound, CPU p95
+under 2 ms, and actual 60 fps capture evidence. The same template/curves must serve all three.
+Do not weaken motion or substitute a labelled portrait fallback as completed articulated C2.
+Nick owns visual acceptance. Ordinary-game rig integration and other family qualification follow
+through the agreed CreatureRigV1 contract; Claude's owned modules remain read-only here.
+
+C3 audio remains at signed `b79fd32e`: 1,669 source entries / 1,665 unique originals, 1,662
+fully decode, three quarantined; 1,617 validated WAV/Opus pairs and 203/631 fauna reference
+identities, with 428 still missing. References are not species-behavior/listening acceptance.
+43 biome recipes have 486 routes (484 rendered, two intentional silences). Consolidated audio
+review: `audio-production/REVIEW_PROMPT.md` and `REVIEW_PACKS.md`; 23 ZIPs below30MB. No new
+ordinary-game audio promotion or phone proof. Preserve all authentic/fictional distinctions.
+
+C1 mechanical intake complete; Nick owns final Wild acceptance. C4 stays twelve assets per
+review sheet. Rain E active; second weather pick and smaller-finisher phone decision open.
+Klein phone probes stopped. C5 pruning precedes three merge-commit tiers into develop (UI,
+painted engine, research tools as tools). No PR Ready before recorded prerequisites; LFS only
+on Nick's explicit go. No new branches, kit edits, GitHub writes, Actions, merges or deployment.
+Budget file says UNFROZEN/public, private fallback3,000; Nick's GitHub-step-none still controls.
+
+Signed checkpoint `1a6dd61d` succeeded after Nick unlocked 1Password and its SSH signature
+verified locally. It is 118 ahead cached origin/openai/mac and 229 ahead cached origin/develop.
+The family, two-combatant facing and neck-repair continuations are staged. The September 16
+neck-repair checkpoint attempt was refused by the configured 1Password helper (agent error),
+after earlier helper/SSH-agent refusals. Signing approval is pending; no unsigned fallback. Clean-source native regression was not run. See the package CHECKPOINT_STATUS.md.
+No main.ts or Claude-owned hunk. Codex continues consumer work while the motion ownership
+exception is pending. Claude need not open or sync now; no GitHub write or PR Ready is requested.
+Use audits/UNIVERSAL_FAMILIES_20260916/REVIEW_PROMPT.md with the preceding C2 review when Nick
+requests review. PR42 parked; develop/main/live site unchanged.
+
+
+## September 16 — connected-throat handoff before impact polish
+
+Latest visual follow-up: [chin/throat attachment repair](audits/BATTLE_THROAT_JOIN_20260916/README.md).
+The old body-preservation check missed a notch between surviving neck paint and the replacement
+head. A lower source-view fit closes it. Seventeen actual-mesh attachment ribbons pass native
+alpha checks at 601 times, with the old visible-notch image as a failing control. All visible
+original joins also pass for Civet, fox, procedural and the Platypus opponent in each pairing.
+The post-capture still reset-order defect is repaired; final review clips/stills are motion-02.
+Review http://127.0.0.1:49816/throat/. The evaluator has synthetic controls for all fourteen
+family vocabularies; actual anatomy/count/view coverage is not yet universal. See the package's
+UNIVERSAL_COVERAGE_REVIEW.md and REVIEW_PROMPT.md. No ordinary-game promotion or visual acceptance;
+no kits, original masters, Claude-owned modules, main.ts or GitHub writes. Signing remains pending.
+
+
+## September 16 — neck-preservation handoff superseded by throat attachment review
+
+Latest visual follow-up: [neck/body repair](audits/BATTLE_NECK_REPAIR_20260916/README.md).
+The head-view replacement no longer hides the original neck/chest. Six native rendered poses
+lose zero protected body pixels; the old behavior loses 9,684–15,783 on the same poses. Source-
+backed ears and jaw now follow shared tracks without mesh folds. Three new ~60 fps films and
+1,803 pose samples are in motion-01; compare Before/After at http://127.0.0.1:49816/neck/.
+Head-view transitions, open-mouth interior, rendered Platypus contact/joins and universal family
+coverage remain distinct work. No ordinary-game promotion or final visual acceptance. No kit,
+master, Claude-owned module or main.ts change. GitHub step none; signing status recorded below.
+
+
+
+## 2026-09-16 — superseded facing preview handoff
+
+Latest visual follow-up: [facing/two-rig study](audits/BATTLE_FACING_20260916/README.md).
+Platypus has a hash-bound 17-part rig; both turn roles use shared motion/contact sampling.
+Civet profile comes from its unchanged turnaround and tracks the opponent. Native04 supplies
+three 60 fps diagnostics and 1,803 pose samples; neck/shoulder fitting remains visibly rough,
+replacement-head ear/jaw articulation and head-view transitions remain work. Do not promote
+this as C2 acceptance. Review clips at http://127.0.0.1:49816/facing/ while the local server runs.
+Next: source-backed neck fit, head subdivisions/transitions and rendered Platypus contact/join
+qualification. No Claude-owned edit, model run, kit edit or main.ts hunk. Signing remains pending.
+
 # Archived handoff — before attributed fauna continuation
+
+## Superseded shared-pose/signing handoff — 2026-09-16
+
+Latest bounded batch: [universal pose foundation](audits/UNIVERSAL_ANIMATION_20260916/README.md).
+The actual rig uses `skeleton-pose.mjs`, taking each owner's graph and body axis; asset admission
+remains quadruped-only. Read-only producer interoperability passes 14 templates / 161 actions /
+4,644 samples (13 synthetic family records). The observer refuses extra-leg records instead
+of overwriting fore/hind joints; ordinary drawing is unchanged. 121 tool tests, 20 focused tests,
+game/package types and root validation pass. New native gates preserve all 30 prior C2 PNG bytes;
+films measure 60.003/60.002/59.903 fps and CPU p95 1.4/1.7/0.9 ms. These remain dirty diagnostics.
+Next code package: actual bird painter geometry/part observation, then family asset admission,
+real reuse controls and ordinary two-combatant integration under the existing ownership contract.
+Do not relabel synthetic motion fixtures as real painter coverage. Physical iPhone remains separate.
+The earlier six review ZIPs are unchanged; this batch supplies a separate review addendum.
+
+
+Codex continues C2 locally; no new commit has been created. Three signed-checkpoint attempts
+were refused by the 1Password agent, including a PTY attempt. Nick has been asked to resolve the
+signing refusal; no visible Git-signing prompt is confirmed. A read-only agent check finds the
+configured public key matches one listed identity, but the refusal's cause remains unresolved
+despite Nick's unlocked report. There is no unsigned fallback. Claude need not open or sync now
+and does not have this uncommitted repair. Use the consolidated C2 review prompt when Nick
+requests review. PR42 parked; develop/main/live site unchanged.
+
 
 ## SESSION HANDOFF — 2026-09-15 · attributed fauna continuation
 

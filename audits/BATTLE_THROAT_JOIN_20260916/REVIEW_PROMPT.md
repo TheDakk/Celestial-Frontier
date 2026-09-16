@@ -1,0 +1,9 @@
+Review the September 16 chin/throat repair on openai/mac. Nick reported a notch under the Civet's chin after the previous body-preservation gate passed. Read README.md and UNIVERSAL_COVERAGE_REVIEW.md in audits/BATTLE_THROAT_JOIN_20260916, then inspect motion-02's Civet, fox and procedural ten-second clips, their named stills, and native-07's isolated join images.
+
+Judge actual continuity and painted shape through idle, anticipation, strike, recoil and return. Does the head connect naturally to the chest without a chin notch, visible holes, spikes or a detached pasted edge? Are ears/jaw and the Platypus still moving? Do not accept arithmetic alone as art review.
+
+Audit the 17 hash-bound throat ribbons, actual published-triangle sampling, native alpha test, padded render and the retained visible-notch negative control. Verify that original visible source joins and replacement-view attachments have distinct ownership; independent overlapping limbs and intentional openings must not be welded. Check the 1883 ms failed candidate and the capture-reset parity failure are retained, and the final stills replay their explicit-time action correctly.
+
+Universal scope: the evaluator supports arbitrary named surfaces, with synthetic controls for all 14 contracts. Actual universal painter sockets, count variants, view coverage and physical-phone qualification are not complete. Review whether the coverage plan prevents absent anatomy, hidden-source fabrication and fallback-as-completion claims. No kit, original master, Claude-owned module, main.ts or GitHub change is part of this batch.
+
+Return separate verdicts for the Civet fit, left/body joins, Platypus joins, instrument controls, procedural architecture and remaining family scope. Name exact failing frames and surfaces. No repaint or model experiment is requested.

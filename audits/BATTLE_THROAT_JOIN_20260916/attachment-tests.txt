@@ -1,0 +1,24 @@
+✔ one-pixel exposed join fails between opaque endpoints; restored pixels pass (0.821792ms)
+✔ published surface displacement is measured, including reflected meshes and non-square scales (0.514917ms)
+✔ socket evaluator accepts quadruped vocabulary without quadruped assumptions (synthetic) (0.386375ms)
+✔ socket evaluator accepts hopper vocabulary without quadruped assumptions (synthetic) (0.24025ms)
+✔ socket evaluator accepts biped-bird vocabulary without quadruped assumptions (synthetic) (0.285333ms)
+✔ socket evaluator accepts fish vocabulary without quadruped assumptions (synthetic) (0.159625ms)
+✔ socket evaluator accepts insect vocabulary without quadruped assumptions (synthetic) (0.13225ms)
+✔ socket evaluator accepts serpent vocabulary without quadruped assumptions (synthetic) (0.138584ms)
+✔ socket evaluator accepts arachnid vocabulary without quadruped assumptions (synthetic) (0.145541ms)
+✔ socket evaluator accepts radial vocabulary without quadruped assumptions (synthetic) (0.185625ms)
+✔ socket evaluator accepts plant-woody vocabulary without quadruped assumptions (synthetic) (0.058333ms)
+✔ socket evaluator accepts plant-herb vocabulary without quadruped assumptions (synthetic) (0.046333ms)
+✔ socket evaluator accepts myriapod vocabulary without quadruped assumptions (synthetic) (0.238875ms)
+✔ socket evaluator accepts cephalopod vocabulary without quadruped assumptions (synthetic) (0.05425ms)
+✔ socket evaluator accepts flyer-membrane vocabulary without quadruped assumptions (synthetic) (0.03775ms)
+✔ socket evaluator accepts primate vocabulary without quadruped assumptions (synthetic) (0.041083ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49.273042

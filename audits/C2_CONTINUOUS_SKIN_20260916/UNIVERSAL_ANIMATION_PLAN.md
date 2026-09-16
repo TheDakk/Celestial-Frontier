@@ -125,3 +125,42 @@ geometry/part observation in the approved order, followed by family admission,
 contact/skin qualification and independent painted reuse controls. The coverage
 audit must also account for specialist Earth owners, fungi and microbes instead
 of defaulting them to quadruped or plant templates.
+
+## All-family consumer implemented — September 16 continuation
+
+The runtime and parts intake now select the exact closed contract for all fourteen families;
+old references above to quadruped-only asset admission describe the preceding state. The
+quadruped contact solver and legacy seam bridge remain specialized. Real topology observation
+for birds/radial/myriapod/cephalopod now exposes appendage counts and visibility, without
+pretending these partial observations are finished rig records. Fourteen synthetic calibration
+atlases and 910 producer bound comparisons pass. Actual painting and physical phone readiness
+remain unqualified. See audits/UNIVERSAL_FAMILIES_20260916/README.md for evidence and the pending
+motion-module ownership exception needed to address real count variants without truncation.
+
+## September 16 facing follow-up
+
+Nick's visual review requires opponent-facing mobile heads and both combatants animated.
+BATTLE_FACING_20260916 exercises an actual Platypus rig and Civet turnaround profile. The
+right-side turn/contact contract is shared. Authored head-view data is source/hash-bound;
+procedural heads need equivalent actual painter view coverage. A profile mesh cannot invent
+back/front surfaces. Current head/shoulder fitting, independent replacement-head ear/jaw
+articulation, view transitions and rendered second-actor qualification remain explicit gates.
+
+## September 16 body-coverage correction
+
+A head view may replace only the head subtree: neck/chest/body paint must remain present.
+BATTLE_NECK_REPAIR_20260916 measures the actual native rendered body against a protected
+body-only render and reproduces the former neck-hidden defect as a failing control. Source
+view supports now carry local ear/jaw articulation, with pose-to-source orientation data and
+continuous field integration. Apply this coverage rule to other families; do not infer their
+source views or anatomy from the Civet binding.
+
+## September 16 — attachment coverage, including replacement views
+
+Protected body pixels alone missed a gap under the new Civet chin. BATTLE_THROAT_JOIN_20260916
+adds a generic published-surface attachment evaluator and actual native throat coverage through
+motion. Every family must supply its own source-painted attachment inventory, including view
+changes, variable appendages and intentional openings. The Civet fit must never be reused as a
+universal geometry offset. All 14 vocabulary controls are synthetic; winning painter records,
+count-aware motion and real family extremes remain required. See the package's
+UNIVERSAL_COVERAGE_REVIEW.md for the explicit admission/promotion rule and uncovered anatomy.

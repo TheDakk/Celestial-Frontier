@@ -1,0 +1,107 @@
+{
+  "kind": "plant-woody",
+  "identity": {
+    "speciesVisualKey": "synthetic:plant-woody",
+    "seed": 659719,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "plant-woody",
+    "version": 1
+  },
+  "family": "tree",
+  "geometry": {
+    "cutoutAssetHash": "e272fa9ef9198f530e4d007166a20d1f7c94e94116103ab10fd2960bc921111e",
+    "width": 128,
+    "height": 128,
+    "groundLineY": 0.9,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5,
+      0.9
+    ],
+    "trunk": [
+      0.5,
+      0.55
+    ],
+    "branch0Base": [
+      0.62,
+      0.45
+    ],
+    "branch0Tip": [
+      0.72,
+      0.34
+    ],
+    "leaf0": [
+      0.78,
+      0.26
+    ],
+    "branch1Base": [
+      0.38,
+      0.42
+    ],
+    "branch1Tip": [
+      0.28,
+      0.32
+    ],
+    "leaf1": [
+      0.22,
+      0.24
+    ],
+    "branch2Base": [
+      0.56,
+      0.36
+    ],
+    "branch2Tip": [
+      0.6,
+      0.22
+    ],
+    "leaf2": [
+      0.64,
+      0.12
+    ]
+  },
+  "materials": {
+    "surface": "warty",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "plant-woody-v1",
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "trunk": 0.35,
+      "branch0Base": 0.1562049935181331,
+      "branch0Tip": 0.14866068747318503,
+      "leaf0": 0.10000000000000006,
+      "branch1Base": 0.17691806012954137,
+      "branch1Tip": 0.14142135623730948,
+      "leaf1": 0.10000000000000003,
+      "branch2Base": 0.19924858845171284,
+      "branch2Tip": 0.14560219778561032,
+      "leaf2": 0.1077032961426901
+    },
+    "measures": {
+      "body": 0.35,
+      "bone-min": 0.10000000000000003,
+      "bone-max": 0.35,
+      "branch/trunk:branch0": 0.8710448028323377,
+      "branch/trunk:branch1": 0.9095411896195739,
+      "branch/trunk:branch2": 0.9852879606780661
+    }
+  },
+  "recipeHash": "0fbccc3242aec7d31753e58c8c856c7ae419b8035908aab3737863432a0ee8e4"
+}

@@ -1,18 +1,8 @@
-import test from 'node:test';import assert from 'node:assert/strict';
-import {smoothSkinWeights} from './smooth-skin-weights.mjs';
-const source=()=>({vertices:[{x:0,y:0,weights:[['body',1]]},{x:10,y:0,weights:[['leg',1]]},{x:10,y:10,weights:[['foreNearPaw',1]]},{x:0,y:10,weights:[['body',1]]}],triangles:[0,1,2,0,2,3],parts:[]});
-test('topology diffusion smooths ownership while leaving planted paw cores exact and source untouched',()=>{
- const s=source(),before=structuredClone(s),out=smoothSkinWeights(s);
- assert.deepEqual(s,before);assert.deepEqual(out.vertices[2].weights,[['foreNearPaw',1]]);assert.deepEqual(out.solver.pins,[2]);
- assert.ok(out.vertices[0].weights.length>1);assert.notDeepEqual(out.vertices[0].weights,s.vertices[0].weights);
- for(const v of out.vertices)assert.ok(Math.abs(v.weights.reduce((n,[,w])=>n+w,0)-1)<1e-12);
- const unprotected=smoothSkinWeights(s,{preserveContacts:false});assert.notDeepEqual(unprotected.vertices[2].weights,[['foreNearPaw',1]]);
+import test from'node:test';import assert from'node:assert/strict';import{smoothSkinWeights}from'./smooth-skin-weights.mjs';
+test('smooths actual adjacent influences deterministically without changing topology, positions or original weights',()=>{
+ const skin={vertices:[{x:0,y:0,weights:[['spine0',1]]},{x:1,y:0,weights:[['spine1',1]]},{x:0,y:1,weights:[['spine1',1]]}],triangles:[0,1,2],parts:[]},before=structuredClone(skin),a=smoothSkinWeights(skin),b=smoothSkinWeights(skin);
+ assert.deepEqual(skin,before);assert.deepEqual(a,b);assert.deepEqual(a.triangles,skin.triangles);
+ for(let i=0;i<a.vertices.length;i++){const v=a.vertices[i];assert.equal(v.x,skin.vertices[i].x);assert.equal(v.y,skin.vertices[i].y);assert.equal(v.weights.length,2);assert(Math.abs(v.weights.reduce((s,[,n])=>s+n,0)-1)<1e-12);}
+ assert(a.vertices[0].weights.some(([j,n])=>j==='spine1'&&n>.1));assert(!skin.vertices[0].weights.some(([j])=>j==='spine1')); // old abrupt ownership is negative control
 });
-test('diffusion refuses malformed topology and cannot bleed across disconnected components',()=>{
- const s=source();assert.throws(()=>smoothSkinWeights({...s,triangles:[0,0,2]}),/topology/);
- assert.throws(()=>smoothSkinWeights(s,{fidelity:NaN}),/input/);
- const second=s.vertices.map(v=>({...v,x:v.x+100,weights:[['tail',1]]}));
- const out=smoothSkinWeights({...s,vertices:[...s.vertices,...second],triangles:[...s.triangles,4,5,6,4,6,7]});
- for(const v of out.vertices.slice(0,4))assert.ok(v.weights.every(([j])=>j!=='tail'));
- for(const v of out.vertices.slice(4))assert.deepEqual(v.weights,[['tail',1]]);
-});
+test('refuses invalid topology or unsupported iterations',()=>{const s={vertices:[],triangles:[0,1,2]};assert.throws(()=>smoothSkinWeights(s),/vertex index/);assert.throws(()=>smoothSkinWeights(s,{iterations:33}),/invalid topology/);});

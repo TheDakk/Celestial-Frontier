@@ -4,7 +4,60 @@ Matches code as of 2026-09-16. The actual rig now uses a family-neutral joint ev
 (`skeleton-pose.mjs`) with a supplied joint graph, exact landmark inventory and body axis.
 It snapshots the owner data, inherits local rotations/offsets, applies root translation once,
 and rejects malformed poses before publication. Quadruped hash/asset/shape admission remains
-unchanged; this is not permission to load arbitrary families into the current skin loader.
+unchanged. The loader and parts intake now admit all fourteen closed family contracts through
+`family-record.mjs`; unknown/mismatched inventories still refuse. The legacy seam-bridge owner
+remains quadruped-only. See [family intake evidence](audits/UNIVERSAL_FAMILIES_20260916/README.md):
+910 bound comparisons, fourteen deterministic atlas controls, 137 tool tests and 45 focused
+tests. Calibration geometry is not painted-family qualification. Four actual painter owners
+now expose partial drawn topology, preserving real appendage counts and visible/absent parts.
+Count-aware motion and completed painter masks/landmarks remain required.
+
+[Procedural motion iteration](audits/PROCEDURAL_BATTLE_ITERATION_20260916/README.md) adds
+three real generated genomes (10032,10052,10271), with painter-emitted landmarks/masks/materials,
+zero observation drift and one lossless atlas each. Shared genome-aware body cards and smooth
+review transitions pass484 individual plus601 assembled native samples per creature, exact rest
+and final rest, and separated-mesh negative controls. All three recorded about60fps/0.4ms rig
+update p95. This covers only current four-leg/banded-tail observation support, not every family.
+The habitat diagnostic now subtracts compiled hitstop from locomotion, poses and body travel;
+both turn roles freeze identically and1,202 source-join/medium-containment samples pass. Its
+latest fish/bird updates are0.9/0.6ms p95.36 focused tests,typecheck/root validation pass. These
+remain diagnostic tools; normal gameplay is not yet wired. Fine silhouette aliasing, source
+shadow deformation, planted contact, other painter owners and phone qualification remain open.
+
+[Habitat battle and Frog repair](audits/HABITAT_BATTLE_20260916/README.md) now adds a local
+source-hashed motion snapshot under Nick's September16 repair instruction. Explicit absence
+admits the actual23-joint adult Frog without tail/ears; missing mandatory anatomy still refuses.
+Authored fish resolves aquatic/swim. Smooth skin has an explicit material mapping. Frontal
+bird wings use a source-derived rotation basis; actual source masks, shared curves and root-only
+offsets remain authoritative. A new open-wing bird candidate is not accepted art.
+The mixed water/air scene passes1,200 source-join/full-body containment samples and records a
+10.101600-second/606-frame film at about60fps, fish/bird update p951.1/0.6ms. Final bird and
+Frog native proofs preserve exact rest/final rest and pass484 sampled poses each. Frog update
+p951.6ms; final bird0.5ms. The physical-habitat compiler uses source capabilities, liquid chemistry
+and seeded home/visitor rules, refusing unsupported habitats rather than substituting a biome.
+All43 biome routing controls are not43 qualified art scenes. Opponent-facing flight, Frog ground
+contact, variable-count procedural records, independent fish accessory fins, ordinary-game wiring
+and phone qualification remain open. No accepted master, kit, sibling worktree or GitHub change.
+
+[Facing study](audits/BATTLE_FACING_20260916/README.md) adds an opt-in two-combatant diagnostic:
+the Platypus uses a hash-bound 17-part continuous-skin rig and right-side shared turn/contact
+sampling. The [throat repair](audits/BATTLE_THROAT_JOIN_20260916/README.md) corrects the remaining
+chin notch with a lower source-view fit into preserved neck/chest paint. Seventeen hash-bound
+attachment ribbons follow published head/body triangles and pass native alpha coverage at 601
+times; the previous image fails the same coverage evaluator. Original visible joins on Civet,
+fox and procedural quadruped, plus the Platypus in each pairing, pass the dense motion scan.
+Head replacement suppresses only head-subtree parts. Ear/jaw details remain on shared tracks;
+front/profile transitions and a painted open-mouth interior remain unsupported. Captured stills
+now replay the action after recording cleanup; the old reset-order discrepancy is retained.
+The generic attachment evaluator has synthetic controls for all fourteen family vocabularies,
+not full painted-family coverage. No ordinary-game promotion, phone or final visual acceptance.
+Selected-left-rig timing still excludes the added head/right rig; use whole-frame evidence and
+separate future inclusive per-creature qualification.
+[Impact polish](audits/BATTLE_IMPACT_POLISH_20260916/README.md) projects the existing flash envelope
+onto the receiving rig with a pooled brightness filter and a softer scene flash. Target selection
+is side-based, independent of anatomy. Twelve non-flash pose PNGs and all three turn plans retain
+exact bytes; native wrong-actor and arena-contrast controls pass. The neutral filter is disabled.
+This is diagnostic presentation only, with unchanged head fit, motion and original artwork.
 The quadruped observer also refuses extra leg pairs instead of overwriting fore/hind records;
 ordinary six/eight-legged painting remains available.
 
@@ -6599,7 +6652,7 @@ regressions. An offline PASS establishes neither native rest parity nor whole-mo
 Each frame rereads every required matrix/component once, evaluates at destination precision and
 publishes only after finite checks. Matrix identity caching cannot hide an in-place input change.
 `arap-skin.mjs` starts from the current target and uses four local passes, four symmetric global
-sweeps per pass and target weight 0.35. Orientation projection has a 24-pass budget and 0.12
+sweeps per pass and target weight 0.35. Orientation projection has a 64-pass budget and 0.12
 area-ratio target; unresolved flips refuse. These mechanism settings are not an art-quality score.
 The asset solver declaration is closed to extra tuning fields. Rest/rigid handling still checks
 orientation; thin nonzero triangles have no blanket exemption. Pins retain their exact targets.

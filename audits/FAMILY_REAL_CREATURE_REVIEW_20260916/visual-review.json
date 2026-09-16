@@ -1,0 +1,32 @@
+{
+  "fish": {
+    "status": "NICK_REVIEW_PENDING",
+    "inspected": [
+      "idle",
+      "bite",
+      "hit"
+    ],
+    "notes": [
+      "continuous body and fins in inspected frames",
+      "mouth interior and accessory fin autonomy not covered"
+    ]
+  },
+  "bird": {
+    "status": "FAIL",
+    "inspected": [
+      "idle",
+      "approach",
+      "melee",
+      "hit"
+    ],
+    "defects": [
+      "folded wing pulls torso into a hump at peck/hit",
+      "walking feet not contact-qualified"
+    ],
+    "mechanicalPassDoesNotOverrideVisualFailure": true
+  },
+  "frog": {
+    "status": "CONTRACT_REFUSED",
+    "animationProduced": false
+  }
+}

@@ -32,7 +32,7 @@ test('asset solver profile cannot override orientation defaults or add inherited
  const s=data();s.triangles=[0,1,2];s.solver={iterations:4,globalIterations:4,targetWeight:.35,pins:[0]};
  assert.doesNotThrow(()=>validatePaintSkin(s,parts,20,20,['head','jaw']));
  const baseline=createArapScratch(s.vertices,s.triangles,20,20,s.solver);
- assert.equal(baseline.orientationIterations,24);assert.equal(baseline.minimumAreaRatio,.12);
+ assert.equal(baseline.orientationIterations,64);assert.equal(baseline.minimumAreaRatio,.12);
  for(const [key,value]of [['orientationIterations',1],['orientationIterations',24],['minimumAreaRatio',.01],['minimumAreaRatio',.12]]){
   const changed=structuredClone(s);changed.solver[key]=value;
   // Negative control: the underlying general solver really consumes this field.

@@ -1,0 +1,16 @@
+{
+  "path": "/private/tmp/celestial-frontier-habitat-review-20260916.zip",
+  "bytes": 12693067,
+  "sha256": "438955b0c28c6d070a998896d0be8942790cb6f2a9a763b5a74815f679466466",
+  "entries": [
+    "README.md",
+    "REVIEW_PROMPT.md",
+    "CHECKPOINT_STATUS.md",
+    "bird-turnaround-candidate.png",
+    "fish-bird-battle.mp4",
+    "frog-motion.mp4",
+    "native-battle-04-report.json",
+    "native-frog-02-report.json",
+    "native-airbird-03-report.json"
+  ]
+}

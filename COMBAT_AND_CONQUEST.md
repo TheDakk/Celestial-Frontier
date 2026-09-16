@@ -1,5 +1,16 @@
 # Celestial Frontier — Combat & Conquest
 
+## Habitat-aware battle study — matches code as of 2026-09-16
+
+`battle-habitat.ts` compiles physical ground/air/water placement from authoritative creature
+habitat and explicit world capabilities. It distinguishes flightless and amphibious Earth
+species, avoids rarity/sapience realm labels, preserves liquid chemistry and refuses missing
+species/non-fauna declarations. Wild/guardian use the home world; duels alternate hosts with a
+seeded first round. Deep water requires a compatible interface. Whole painted bounds must fit
+without clipping or granting new creature capabilities. The fish/bird study uses actual rigs
+and two staged turn roles, but does not alter combat outcomes or wire the ordinary-game
+Chronicle yet. [Evidence and limitations](audits/HABITAT_BATTLE_20260916/README.md).
+
 ## Canonical Explorer Chronicle repair — 2026-09-08
 
 A native fresh-Earth challenge exposed a pre-existing presentation failure: its durable result
