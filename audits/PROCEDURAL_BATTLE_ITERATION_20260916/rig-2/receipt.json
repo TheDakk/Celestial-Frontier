@@ -1,0 +1,100 @@
+{
+  "intake": {
+    "id": "procedural",
+    "parts": 20,
+    "atlasSize": {
+      "width": 597,
+      "height": 171
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "coarse": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "ef00fd7b7b2db2ceab71ffaa2edf8c5555efe9e446b47b457390901d04a0b1d0",
+    "recordRecipeHash": "94846b67ccff9945d4ee605d6b01eba8082c728dfcbb680b0bada4ea5bb8ea03",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "ef00fd7b7b2db2ceab71ffaa2edf8c5555efe9e446b47b457390901d04a0b1d0",
+      "atlasSha256": "86ca95023847b1e39ed7ddc2568631edc64856360d807f8fe12a0a775a35d7c8",
+      "parts": 20,
+      "comparedChannels": 219400,
+      "changedChannels": 0
+    },
+    "vertices": 393,
+    "partVertices": 812,
+    "parts": 20,
+    "leaves": 163,
+    "triangles": 666,
+    "ownershipEdges": 719,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "split": {
+    "schema": "cf.anatomical-surface-intake/v1",
+    "sourceBindingHash": "d008c8ef277df37cccb6de02fbead65aa5c4a2fa7c75a70e3eec3d39f4ebffb7",
+    "recordRecipeHash": "94846b67ccff9945d4ee605d6b01eba8082c728dfcbb680b0bada4ea5bb8ea03",
+    "atlasSha256": "86ca95023847b1e39ed7ddc2568631edc64856360d807f8fe12a0a775a35d7c8",
+    "sourceVertices": 393,
+    "vertices": 456,
+    "triangles": 710,
+    "surfaces": {
+      "axial": 348,
+      "hindFar": 25,
+      "foreFar": 22,
+      "hindNear": 32,
+      "foreNear": 29
+    },
+    "pins": 18,
+    "contacts": {
+      "schema": "cf.source-paw-contact-pins/v1",
+      "samples": 0,
+      "fieldVertices": 0,
+      "parts": [],
+      "method": "lowest nonzero-alpha texel centre in every original paw column; all covering triangle field supports hard-pinned to that paw matrix"
+    },
+    "physicalSkinAdjacency": {
+      "axialInfluences": "all surfaces share axial plus proximal Root/Knee influence space; distal Ankle/Paw remain branch-exclusive",
+      "rule": "all axial/upper-leg source cuts share field support; independent limbs and distal crossings remain split",
+      "classes": {
+        "axial-continuous": 223,
+        "same-limb-continuous": 109,
+        "axial-upper-socket": 102,
+        "independent-limbs": 185,
+        "axial-distal-crossing": 100
+      },
+      "socketPairs": {
+        "torso|hind-far-upper": 28,
+        "torso|hind-near-upper": 35,
+        "torso|fore-near-upper": 30,
+        "torso|fore-far-upper": 9
+      }
+    },
+    "explicitPartFaces": 1030,
+    "attachmentSockets": {
+      "hindFar": {
+        "edges": 28,
+        "fieldSupports": 11
+      },
+      "foreFar": {
+        "edges": 9,
+        "fieldSupports": 5
+      },
+      "hindNear": {
+        "edges": 35,
+        "fieldSupports": 16
+      },
+      "foreNear": {
+        "edges": 30,
+        "fieldSupports": 10
+      }
+    },
+    "diffusionIterations": 32,
+    "maxDiscardedWeight": 0.0029440913079855635,
+    "sourceInterpolationDifferentCoordinates": 0,
+    "unchangedPartCount": 20,
+    "nativeAcceptance": false
+  }
+}

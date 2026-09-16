@@ -1,0 +1,10 @@
+✔ impact exposure follows the struck side and leaves the attacker neutral (0.538917ms)
+✔ explicit-time fading is history-free and cannot brighten a miss or reduced-motion turn (0.197ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 42.828875

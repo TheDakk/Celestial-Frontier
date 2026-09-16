@@ -1,6 +1,6 @@
-import {GRAPH,admitRecord,hashJSON} from './quadruped-template.mjs';
+import {hashJSON} from './quadruped-template.mjs';
+import {admitFamilyRecord} from './family-record.mjs';
 const requireValue=(ok,message)=>{if(!ok)throw Error('Part masks: '+message);};
-const names=new Set(['root',...GRAPH.map(([joint])=>joint)]);
 function inside(x,y,points){let yes=false;for(let i=0,j=points.length-1;i<points.length;j=i++){
  const a=points[i],b=points[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])yes=!yes;
 }return yes;}
@@ -10,7 +10,8 @@ function inside(x,y,points){let yes=false;for(let i=0,j=points.length-1;i<points
 export async function cutAuthoredParts(record,masterBytes,rgba,declaration){
  const {width:w,height:h}=record.geometry;
  requireValue(rgba.length===w*h*4,'RGBA dimensions');
- const alpha=Uint8Array.from({length:w*h},(_,i)=>rgba[i*4+3]);await admitRecord(record,masterBytes,alpha);
+ const alpha=Uint8Array.from({length:w*h},(_,i)=>rgba[i*4+3]);const template=await admitFamilyRecord(record,masterBytes,alpha);
+ const names=new Set(template.joints);
  const {declarationHash,...body}=declaration;
  requireValue(declaration.schema==='cf.authored-part-masks/v1','schema');
  requireValue(await hashJSON(body)===declarationHash,'corrupted declaration');
@@ -62,7 +63,8 @@ export function assertRestCoverage(source,w,h,parts){
 export async function cutPainterParts(record,masterBytes,rgba,labels,declaration){
  const {width:w,height:h}=record.geometry;
  requireValue(rgba.length===w*h*4&&labels.length===w*h,'painter dimensions');
- const alpha=Uint8Array.from({length:w*h},(_,i)=>rgba[i*4+3]);await admitRecord(record,masterBytes,alpha);
+ const alpha=Uint8Array.from({length:w*h},(_,i)=>rgba[i*4+3]);const template=await admitFamilyRecord(record,masterBytes,alpha);
+ const names=new Set(template.joints);
  const {declarationHash,...body}=declaration;
  requireValue(declaration.schema==='cf.painter-part-intake/v1'&&await hashJSON(body)===declarationHash,'painter declaration');
  requireValue(declaration.recordRecipeHash===record.recipeHash&&declaration.cutoutSha256===record.geometry.cutoutAssetHash,'painter binding');

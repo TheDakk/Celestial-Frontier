@@ -18,6 +18,7 @@
    Every key was read out of the catalog (the wave-7 lesson) and is checked
    by tools/overridecheck.mjs; the shadow check keeps it from re-covering
    what waves 3 and 7 already own. */
+import {isObservingPainterTopology,emitPainterTopology,type DrawnFeature} from './painter-topology.js';
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { speciesHue } from './surface.js';
 import { ellipseTube } from './torso.js';
@@ -1667,6 +1668,7 @@ function resetMillipedeIII(c: Ctx, p: Pal): void {
 export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: boolean;
   hue?: string; segs?: number; scale?: number; legScale?: number; legContrast?: boolean }, name = ''): void {
   const p = hued(pIn, opts.hue);
+  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
   if (name === 'Millipede') { resetMillipedeIII(c, p); return; }
   const r = nrng(g, name, 0x33DD);
   const cx = S * 0.48, cy = S * 0.52;
@@ -1688,10 +1690,12 @@ export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: 
   for (let i = N - 1; i >= 0; i--) {
     const [x, y] = path(i);
     const legLen = segR * (opts.flat ? 2.6 : 1.5) * Math.min(1.35, opts.legScale ?? 1);
+    observed?.push({id:'segment'+i,kind:'body',points:[[x,y]],widths:[segR*2.1,segR*(opts.flat?.78:.95)*2],curve:'ellipse',layer:'near'});
     c.strokeStyle = p.dark; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1); c.lineCap = 'round';
     for (const s of [-1, 1] as const) {
       c.beginPath(); c.moveTo(x, y);
       c.quadraticCurveTo(x + s * legLen * 0.5, y + legLen * 0.7, x + s * legLen * (opts.flat ? 1.0 : 0.72), y + legLen * (opts.flat ? 0.7 : 1.0));
+      observed?.push({id:'leg'+i+(s<0?'Far':'Near'),kind:'leg',points:[[x,y],[x+s*legLen*.5,y+legLen*.7],[x+s*legLen*(opts.flat?1:.72),y+legLen*(opts.flat?.7:1)]],curve:'quadratic',layer:s<0?'far':'near'});
       c.stroke();
       if (opts.legContrast) { c.strokeStyle = p.lit; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1) * 0.54; c.stroke(); c.strokeStyle = p.dark; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1); }
     }
@@ -1723,6 +1727,7 @@ export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: 
       c.quadraticCurveTo(hx - segR * 2.4, hy + s * segR * 1.1, hx - segR * 1.9, hy + s * segR * 1.5); c.stroke();
     }
   }
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'myriapod',family:'myriapod',coordinateSize:S,materials:{surface:'chitinous',paletteSource:opts.hue?'named':'genome'},features:observed,unresolved:['actual segment and paired-leg counts require a count-preserving motion variant','head/antenna landmarks and part masks not captured']});
 }
 
 /* ═══════════════ CRUSTACEANS ═══════════════ */

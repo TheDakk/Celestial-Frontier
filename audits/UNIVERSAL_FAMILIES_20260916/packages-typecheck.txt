@@ -1,0 +1,1 @@
+packages/art/test/painter-topology.test.ts(34,61): error TS2353: Object literal may only specify known properties, and 'beak' does not exist in type 'BirdSpec'.

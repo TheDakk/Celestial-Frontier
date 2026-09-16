@@ -1,0 +1,30 @@
+{
+  "status": "FAIL",
+  "samples": 36,
+  "failed": [
+    {
+      "jaw": 0,
+      "earFarTip": 0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 56"
+    },
+    {
+      "jaw": -0.14,
+      "earFarTip": 0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 56"
+    },
+    {
+      "jaw": -0.26,
+      "earFarTip": 0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 56"
+    },
+    {
+      "jaw": -0.4363323129985824,
+      "earFarTip": 0.3,
+      "earNearTip": -0.3,
+      "error": "Error: Head surface fold at triangle 56"
+    }
+  ]
+}

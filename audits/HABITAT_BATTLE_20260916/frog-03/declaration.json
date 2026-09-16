@@ -1,0 +1,373 @@
+{
+  "schema": "cf.authored-part-masks/v1",
+  "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+  "cutoutSha256": "fb229a4a7bd86507af68da9561a5e31282d594da27901d7f30ddc11cd3c84779",
+  "remainderPart": "torso",
+  "parts": [
+    {
+      "id": "near-fore-foot",
+      "joint": "foreNearPaw",
+      "polygon": [
+        [
+          0.47,
+          0.735
+        ],
+        [
+          0.72,
+          0.728
+        ],
+        [
+          0.73,
+          0.9
+        ],
+        [
+          0.47,
+          0.9
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "far-fore-foot",
+      "joint": "foreFarPaw",
+      "polygon": [
+        [
+          0.79,
+          0.68
+        ],
+        [
+          0.99,
+          0.665
+        ],
+        [
+          0.99,
+          0.87
+        ],
+        [
+          0.79,
+          0.86
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "near-hind-foot",
+      "joint": "hindNearPaw",
+      "polygon": [
+        [
+          0.05,
+          0.69
+        ],
+        [
+          0.37,
+          0.66
+        ],
+        [
+          0.37,
+          0.87
+        ],
+        [
+          0.05,
+          0.87
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "far-hind-foot",
+      "joint": "hindFarPaw",
+      "polygon": [
+        [
+          0.6,
+          0.625
+        ],
+        [
+          0.76,
+          0.62
+        ],
+        [
+          0.76,
+          0.7
+        ],
+        [
+          0.6,
+          0.7
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "near-fore-lower",
+      "joint": "foreNearAnkle",
+      "polygon": [
+        [
+          0.42,
+          0.605
+        ],
+        [
+          0.57,
+          0.6
+        ],
+        [
+          0.65,
+          0.74
+        ],
+        [
+          0.47,
+          0.756
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "near-fore-upper",
+      "joint": "foreNearKnee",
+      "polygon": [
+        [
+          0.5,
+          0.435
+        ],
+        [
+          0.65,
+          0.45
+        ],
+        [
+          0.52,
+          0.645
+        ],
+        [
+          0.39,
+          0.638
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "far-fore-lower",
+      "joint": "foreFarAnkle",
+      "polygon": [
+        [
+          0.745,
+          0.573
+        ],
+        [
+          0.9,
+          0.573
+        ],
+        [
+          0.92,
+          0.71
+        ],
+        [
+          0.79,
+          0.71
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "far-fore-upper",
+      "joint": "foreFarKnee",
+      "polygon": [
+        [
+          0.68,
+          0.44
+        ],
+        [
+          0.83,
+          0.44
+        ],
+        [
+          0.9,
+          0.585
+        ],
+        [
+          0.73,
+          0.61
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "near-hind-lower",
+      "joint": "hindNearAnkle",
+      "polygon": [
+        [
+          0.04,
+          0.51
+        ],
+        [
+          0.245,
+          0.53
+        ],
+        [
+          0.265,
+          0.714
+        ],
+        [
+          0.06,
+          0.73
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "near-hind-upper",
+      "joint": "hindNearKnee",
+      "polygon": [
+        [
+          0.04,
+          0.39
+        ],
+        [
+          0.38,
+          0.375
+        ],
+        [
+          0.4,
+          0.545
+        ],
+        [
+          0.1,
+          0.595
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "far-hind-upper",
+      "joint": "hindFarKnee",
+      "polygon": [
+        [
+          0.36,
+          0.42
+        ],
+        [
+          0.56,
+          0.44
+        ],
+        [
+          0.595,
+          0.585
+        ],
+        [
+          0.43,
+          0.595
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "far-hind-lower",
+      "joint": "hindFarAnkle",
+      "polygon": [
+        [
+          0.48,
+          0.535
+        ],
+        [
+          0.61,
+          0.535
+        ],
+        [
+          0.7,
+          0.65
+        ],
+        [
+          0.57,
+          0.67
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "polygon": [
+        [
+          0.73,
+          0.35
+        ],
+        [
+          0.95,
+          0.345
+        ],
+        [
+          0.93,
+          0.47
+        ],
+        [
+          0.7,
+          0.46
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "polygon": [
+        [
+          0.61,
+          0.145
+        ],
+        [
+          0.95,
+          0.145
+        ],
+        [
+          0.95,
+          0.39
+        ],
+        [
+          0.65,
+          0.405
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "polygon": [
+        [
+          0.62,
+          0.33
+        ],
+        [
+          0.77,
+          0.34
+        ],
+        [
+          0.77,
+          0.465
+        ],
+        [
+          0.62,
+          0.48
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "torso",
+      "joint": "spine",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0,
+          0.001
+        ]
+      ],
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "ac3fe13c0c83bf2ad31989707fbb5506686bcc116e5bd3c05330283333ba7708"
+}

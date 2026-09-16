@@ -1,0 +1,8 @@
+{
+  "path": "/private/tmp/cf-universal-families-20260916-review.zip",
+  "bytes": 778936,
+  "sha256": "5f977171d4ea0434e14563d787a757ecd779d5e34b57c2733e34427787b1d584",
+  "files": 939,
+  "validation": "CRC and each archived member match current bytes",
+  "nativeStatus": "not run on current source; awaiting signed checkpoint"
+}

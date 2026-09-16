@@ -62,3 +62,12 @@ test('retained actual Civet strike: continuous C03 passes; branch-split C06 and 
   if(candidate==='07'){assert(report.joins.filter(j=>j.rule==='nearest anatomical attachment').every(j=>!j.violations));assert(report.joins.find(j=>j.name==='neck--fore-far-upper').maxGapPx>25);}
  }
 });
+
+// A real family graph must drive the decoder guard too, not the quadruped graph.
+test('fish spine and fin attachments use the declared graph; foreign joints and absent remainder refuse',()=>{
+ const f=fixture(['spine2','dorsal']);f.record.template={id:'fish',version:1};f.binding.sourceJoinTopology={remainderPartId:'part0'};
+ const probe=createSourceJoinProbe(f);assert.equal(probe.joins.length,1);assert.equal(assessSourceJoinContinuity(probe,f.positions).status,'PASS');
+ f.positions.part1[0]+=.125;assert.equal(assessSourceJoinContinuity(probe,f.positions).status,'FAIL');
+ const missing=structuredClone(f);delete missing.binding.sourceJoinTopology;assert.throws(()=>createSourceJoinProbe(missing),/explicit family remainder/);
+ const wrong=structuredClone(f);wrong.binding.parts[1].joint='hindNearKnee';assert.throws(()=>createSourceJoinProbe(wrong),/unique known source owners/);
+});

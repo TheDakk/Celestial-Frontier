@@ -26,10 +26,11 @@ export function createTurnPoseSampler(createGsapPlayer){
   sample,
   /** One subject keeps its own seeded idle across the two proof roles. Both
    * hitstop intervals pause this explicit clock; a role change never resets it. */
-  sampleSequence(plans,ms){
+  sampleSequence(plans,ms,side='left'){
+   if(!['left','right'].includes(side))throw Error('Invalid subject side');
    const frame=turnSequenceFrame(plans,ms);let held=0;
    for(let i=0;i<=frame.index;i++){const b=plans[i].beats,local=ms-i*5000;held+=Math.max(0,Math.min(local-b.impactAt,b.hitstopEnd-b.impactAt));}
-   return sample(frame.plan,frame.localMs,frame.target,{clip:plans[0].clips.attacker.idle,ms:ms-held});
+   return sample(frame.plan,frame.localMs,side==='right'?!frame.target:frame.target,{clip:side==='right'?plans[0].clips.target.idle:plans[0].clips.attacker.idle,ms:ms-held});
   },
   dispose(){if(disposed)return;disposed=true;for(const entry of players.values())entry.player.stop();players.clear();},
  };

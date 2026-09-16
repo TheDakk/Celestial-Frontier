@@ -1,0 +1,291 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "winning painter draw-stage RGBA changes",
+  "recordRecipeHash": "f22db600c82a6a37cf5cf4896f318a1be6a8f761f9eafa25232439bb84bcd4f8",
+  "declarationHash": "e50552becaeeea9eda7d533bef5f9013691981d655f8502ed356933089770c4a",
+  "paintedPixels": 16384,
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 7,
+        "height": 128
+      },
+      "pixels": 896
+    },
+    {
+      "id": "part-01",
+      "joint": "centre",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 7,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-02",
+      "joint": "bell",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 13,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-03",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 19,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-04",
+      "joint": "arm0Seg1",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 25,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-05",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 31,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-06",
+      "joint": "arm1Seg0",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 37,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-07",
+      "joint": "arm1Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 43,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-08",
+      "joint": "arm1Seg2",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 49,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-09",
+      "joint": "arm2Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 55,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-10",
+      "joint": "arm2Seg1",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 61,
+        "y": 0,
+        "width": 7,
+        "height": 128
+      },
+      "pixels": 896
+    },
+    {
+      "id": "part-11",
+      "joint": "arm2Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 68,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-12",
+      "joint": "arm3Seg0",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 74,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-13",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 80,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-14",
+      "joint": "arm3Seg2",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 86,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-15",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 92,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-16",
+      "joint": "arm4Seg1",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 98,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-17",
+      "joint": "arm4Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 104,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-18",
+      "joint": "arm5Seg0",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 110,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-19",
+      "joint": "arm5Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 116,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    },
+    {
+      "id": "part-20",
+      "joint": "arm5Seg2",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 122,
+        "y": 0,
+        "width": 6,
+        "height": 128
+      },
+      "pixels": 768
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "mode": "native painter alpha; no keyer"
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "3a190c42c09d1a7aa8d541eb4e4f979a09667ca17a9b5c4e947aac2b057ece82",
+  "masterUnchanged": true,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

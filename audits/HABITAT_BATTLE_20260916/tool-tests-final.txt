@@ -1,0 +1,40 @@
+✔ ARAP retains exact rest and rigid rotation/translation, independently of prior seeks (2.392292ms)
+✔ ARAP reduces a discontinuous skin target while preserving hard authored contact handles (0.999125ms)
+✔ ARAP refuses invalid topology/targets atomically and never mutates rest or input (1.103625ms)
+✔ orientation projection repairs a reflected skin triangle with fixed joint targets; contradictory fixed triangle refuses without publication (0.377584ms)
+✔ distinct surfaces at the same source coordinates remain free to cross without welding their contact targets (0.182375ms)
+✔ a thin reflected triangle cannot pass the approximate rigid identity shortcut (0.133416ms)
+✔ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.188416ms)
+✔ quadruped: exact family anatomy, immutable contract and hostile-record controls (6.068125ms)
+✔ hopper: exact family anatomy, immutable contract and hostile-record controls (1.834791ms)
+✔ biped-bird: exact family anatomy, immutable contract and hostile-record controls (1.073125ms)
+✔ fish: exact family anatomy, immutable contract and hostile-record controls (1.112292ms)
+✔ insect: exact family anatomy, immutable contract and hostile-record controls (2.057ms)
+✔ serpent: exact family anatomy, immutable contract and hostile-record controls (0.939625ms)
+✔ arachnid: exact family anatomy, immutable contract and hostile-record controls (1.161ms)
+✔ radial: exact family anatomy, immutable contract and hostile-record controls (1.036208ms)
+✔ plant-woody: exact family anatomy, immutable contract and hostile-record controls (1.199042ms)
+✔ plant-herb: exact family anatomy, immutable contract and hostile-record controls (1.359208ms)
+✔ myriapod: exact family anatomy, immutable contract and hostile-record controls (1.456667ms)
+✔ cephalopod: exact family anatomy, immutable contract and hostile-record controls (1.072291ms)
+✔ flyer-membrane: exact family anatomy, immutable contract and hostile-record controls (0.969ms)
+✔ primate: exact family anatomy, immutable contract and hostile-record controls (0.840375ms)
+✔ unknown template never defaults to quadruped and all contracted inventories are closed (0.157791ms)
+✔ old hopper and fish fixture clip-set names are rejected instead of silently using different motion (0.084583ms)
+✔ both source parts share exact deformation; rest reconstructs authored positions without patches (1.718583ms)
+✔ foreign joints, missing source ownership, extrapolated UVs and corrupt indices refuse (0.200791ms)
+✔ a foldover fails on the actual posed triangle, while rest and rigid translation pass (0.157208ms)
+✔ thin nonzero painted triangles cannot bypass orientation checks (0.094208ms)
+✔ asset solver profile cannot override orientation defaults or add inherited tuning fields (1.705417ms)
+✔ frontal source wings both lift under canonical positive flap; old broadcast lifts one and drops one (1.06475ms)
+✔ source-view declarations fail closed and unmarked side views retain the canonical basis (0.177541ms)
+✔ smooths actual adjacent influences deterministically without changing topology, positions or original weights (1.897042ms)
+✔ refuses invalid topology or unsupported iterations (0.194042ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 103.188

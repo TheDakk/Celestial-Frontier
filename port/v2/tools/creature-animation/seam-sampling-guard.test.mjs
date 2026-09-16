@@ -40,3 +40,9 @@ test('refuses apparently aligned boundaries carried by different skin fields and
  f.binding.paintSkin.parts[1].vertices.forEach(v=>v.triangle=v.triangle.map(i=>i+start));assert.throws(()=>createOpaqueSeamSamplingGuard(f),/unshared skin field/);
  const overlapping=fixture();overlapping.binding.parts[1].frame.x=overlapping.binding.parts[0].frame.x;assert.throws(()=>createOpaqueSeamSamplingGuard(overlapping),/overlapping base ink|overlapping atlas frames/);
 });
+
+test('fish decoder guard retains source pixels and refuses the old quadruped inventory',()=>{
+ const f=fixture(['spine2','dorsal']);f.record.template={id:'fish',version:1};f.binding.sourceJoinTopology={remainderPartId:'part0'};
+ const original=f.atlas.rgba.slice(),plan=createOpaqueSeamSamplingGuard(f);assert(plan.pixels.length>0);assert.deepEqual(f.atlas.rgba,original);
+ assert(plan.pixels.every(p=>p.rgba[3]===255));const old=structuredClone(f);delete old.record.template;assert.throws(()=>createOpaqueSeamSamplingGuard(old),/unique known source owners/);
+});

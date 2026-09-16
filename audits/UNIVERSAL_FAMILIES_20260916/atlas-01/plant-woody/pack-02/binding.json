@@ -1,0 +1,210 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "0fbccc3242aec7d31753e58c8c856c7ae419b8035908aab3737863432a0ee8e4",
+  "atlasSha256": "77789a50d1137f7878c3d52c8d8274be481be980f966d4864bef4180d3846776",
+  "atlasSize": {
+    "width": 22,
+    "height": 1518
+  },
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 12,
+        "height": 128
+      },
+      "cutout": {
+        "x": 0,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-01",
+      "joint": "trunk",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 143,
+        "width": 12,
+        "height": 128
+      },
+      "cutout": {
+        "x": 12,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-02",
+      "joint": "branch0Base",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 971,
+        "width": 11,
+        "height": 128
+      },
+      "cutout": {
+        "x": 24,
+        "y": 0,
+        "width": 11,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-03",
+      "joint": "branch0Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 281,
+        "width": 12,
+        "height": 128
+      },
+      "cutout": {
+        "x": 35,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-04",
+      "joint": "leaf0",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 419,
+        "width": 12,
+        "height": 128
+      },
+      "cutout": {
+        "x": 47,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-05",
+      "joint": "branch1Base",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1109,
+        "width": 11,
+        "height": 128
+      },
+      "cutout": {
+        "x": 59,
+        "y": 0,
+        "width": 11,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-06",
+      "joint": "branch1Tip",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 557,
+        "width": 12,
+        "height": 128
+      },
+      "cutout": {
+        "x": 70,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-07",
+      "joint": "leaf1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 695,
+        "width": 12,
+        "height": 128
+      },
+      "cutout": {
+        "x": 82,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-08",
+      "joint": "branch2Base",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1247,
+        "width": 11,
+        "height": 128
+      },
+      "cutout": {
+        "x": 94,
+        "y": 0,
+        "width": 11,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-09",
+      "joint": "branch2Tip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 833,
+        "width": 12,
+        "height": 128
+      },
+      "cutout": {
+        "x": 105,
+        "y": 0,
+        "width": 12,
+        "height": 128
+      }
+    },
+    {
+      "id": "part-10",
+      "joint": "leaf2",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1385,
+        "width": 11,
+        "height": 128
+      },
+      "cutout": {
+        "x": 117,
+        "y": 0,
+        "width": 11,
+        "height": 128
+      }
+    }
+  ],
+  "bindingHash": "8a600449eef815a11c145c37f9d68efce2af33177f1560bbc610ddf2b898f59b"
+}
