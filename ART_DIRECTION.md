@@ -1,5 +1,14 @@
 # Celestial Frontier — Master Art Direction
 
+[Procedural painted direction](audits/PROCEDURAL_PAINTED_DIRECTION_20260916/README.md): Nick
+rejected the raw procedural canvas look. A bounded authoring adapter now compiles actual
+quadruped identity/proportions/material/palette through the kit interpreter under labelled Earth
+comparison lighting. Nick approved seed10271 candidate02’s painted visual direction for the whole game; framing
+and key uniformity still fail master intake, and it is not yet rigged. New paint needs new fitted parts/landmarks. Pink-purple
+pigment conflicting with the key refuses without recolouring. All fourteen family production
+steps are recorded; contract fixtures do not establish painted animation coverage.23 focused
+tests/typecheck/root validation pass. No local inference, runtime promotion or kit edit.
+
 **Art Kit v4.3 adopted — September13:** Nick approved e89cb621 with exact header/history
 changes. Closed eleven-theme Effects material table; game hex accent only, Wild warm ochre
 and earth. Frozen paragraph and4E unchanged. Three new Wild masters/registered copies await

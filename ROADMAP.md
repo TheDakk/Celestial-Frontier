@@ -17,7 +17,23 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-16 · procedural motion iteration
+## SESSION HANDOFF — 2026-09-16 · procedural paint quality
+
+[Procedural painted direction](audits/PROCEDURAL_PAINTED_DIRECTION_20260916/README.md): Nick
+rejected the raw procedural canvas look. A bounded authoring adapter now compiles actual
+quadruped identity/proportions/material/palette through the kit interpreter under labelled Earth
+comparison lighting. Nick approved seed10271 candidate02’s painted visual direction for the whole game; framing
+and key uniformity still fail master intake, and it is not yet rigged. New paint needs new fitted parts/landmarks. Pink-purple
+pigment conflicting with the key refuses without recolouring. All fourteen family production
+steps are recorded; contract fixtures do not establish painted animation coverage.23 focused
+tests/typecheck/root validation pass. No local inference, runtime promotion or kit edit.
+
+Latest comparison: http://127.0.0.1:49816/painted-procedural/ . Do not resume the raw
+canvas appearance as the visual target. Candidate02’s direction is now approved; complete intake
+repair before fitting/turnaround. See the package for all fourteen anatomy-family tasks.
+
+### Mechanical proof retained
+
 
 Review http://127.0.0.1:49816/procedural/ and
 [audit/prompt](audits/PROCEDURAL_BATTLE_ITERATION_20260916/README.md).

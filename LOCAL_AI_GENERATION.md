@@ -1,5 +1,14 @@
 # Local AI generation — painted landfalls
 
+[Procedural painted direction](audits/PROCEDURAL_PAINTED_DIRECTION_20260916/README.md): Nick
+rejected the raw procedural canvas look. A bounded authoring adapter now compiles actual
+quadruped identity/proportions/material/palette through the kit interpreter under labelled Earth
+comparison lighting. Nick approved seed10271 candidate02’s painted visual direction for the whole game; framing
+and key uniformity still fail master intake, and it is not yet rigged. New paint needs new fitted parts/landmarks. Pink-purple
+pigment conflicting with the key refuses without recolouring. All fourteen family production
+steps are recorded; contract fixtures do not establish painted animation coverage.23 focused
+tests/typecheck/root validation pass. No local inference, runtime promotion or kit edit.
+
 Matches code as of 2026-09-14. [ROADMAP.md](ROADMAP.md) owns the live work order;
 [ART_KIT.md](ART_KIT.md) version 4.3 owns art wording. The four approved MIDGAME images
 remain the direction lock. Version 3 and its two rejected images are retired, never inputs.

@@ -660,3 +660,22 @@ No main.ts/kit/GitHub change; PR42 parked. OpenAI continues locally; Claude need
 Signed code/evidence checkpoint73b93592 succeeded through1Password:119 ahead cached
 origin/openai/mac,230 ahead origin/develop. Prior staged continuation is now retained in Git.
 Review ZIP is below30MB and includes one prompt plus four ten-second films. No hosted action.
+
+
+## Codex continuation — September16 procedural paint correction
+
+[Procedural painted direction](audits/PROCEDURAL_PAINTED_DIRECTION_20260916/README.md): Nick
+rejected the raw procedural canvas look. A bounded authoring adapter now compiles actual
+quadruped identity/proportions/material/palette through the kit interpreter under labelled Earth
+comparison lighting. One seed has a painted candidate, not an accepted/rigged master; framing
+and key uniformity still fail intake. New paint needs new fitted parts/landmarks. Pink-purple
+pigment conflicting with the key refuses without recolouring. All fourteen family production
+steps are recorded; contract fixtures do not establish painted animation coverage.23 focused
+tests/typecheck/root validation pass. No local inference, runtime promotion or kit edit.
+
+No main.ts hunk or GitHub write. Both generated attempts and full prompts retained;
+kit and approved originals unchanged. Nick owns visual direction acceptance.
+
+Nick subsequently approved candidate02’s visual direction for the whole game. Exact acceptance
+is retained in PROCEDURAL_PAINTED_DIRECTION_20260916/NICK_DIRECTION_ACCEPTANCE.md; remaining
+master intake, painted-rig fitting and runtime/device qualification are not waived.

@@ -1,5 +1,14 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+[Procedural painted direction](audits/PROCEDURAL_PAINTED_DIRECTION_20260916/README.md): Nick
+rejected the raw procedural canvas look. A bounded authoring adapter now compiles actual
+quadruped identity/proportions/material/palette through the kit interpreter under labelled Earth
+comparison lighting. Nick approved seed10271 candidate02’s painted visual direction for the whole game; framing
+and key uniformity still fail master intake, and it is not yet rigged. New paint needs new fitted parts/landmarks. Pink-purple
+pigment conflicting with the key refuses without recolouring. All fourteen family production
+steps are recorded; contract fixtures do not establish painted animation coverage.23 focused
+tests/typecheck/root validation pass. No local inference, runtime promotion or kit edit.
+
 Matches code as of 2026-09-16. The actual rig now uses a family-neutral joint evaluator
 (`skeleton-pose.mjs`) with a supplied joint graph, exact landmark inventory and body axis.
 It snapshots the owner data, inherits local rotations/offsets, applies root translation once,
