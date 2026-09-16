@@ -15,8 +15,7 @@ export async function runSeamGates({app,subjects,select,plans,motionPose,image,j
   const atlasImage=await image(s.id+'.atlas.png'),atlasTexture=s.rig.parts.find(p=>p.id===s.binding.seamBridges.groups[0].id).display.children[0].texture;
   const decl=await json(s.id+'.cuts.json'),poses={};
   const inventory=requireCutInventory(s.binding.seamBridges.groups,decl.cuts);
-  if(s.id==='civet')Object.assign(poses,(await json('saved-poses.json')).pairGates.poses);
-  else{const p=plans(),stride=f=>p[0].beats.commandEnd+(p[0].beats.actionStart-p[0].beats.commandEnd)*f*p[0].clips.attacker.approach.timeline.bodyMs/p[0].clips.attacker.approach.timeline.durationMs;
+  {const p=plans(),stride=f=>p[0].beats.commandEnd+(p[0].beats.actionStart-p[0].beats.commandEnd)*f*p[0].clips.attacker.approach.timeline.bodyMs/p[0].clips.attacker.approach.timeline.durationMs;
    for(const[name,ms]of [['rest',null],['hit-recoil',7400],['strike',p[0].beats.impactAt],['approach-quarter',stride(.25)],['approach-three-quarter',stride(.75)]]){
     let pose={};if(ms!==null){const rev=ms>=5000,t=rev?ms-5000:ms,plan=p[rev?1:0];pose=s.solver.resolve(motionPose(plan,t,rev),rev||t<plan.beats.commandEnd||t>=plan.beats.returnEnd).pose;}poses[name]={atMs:ms,pose};
    }

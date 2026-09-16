@@ -17,6 +17,16 @@ export function applyPaintPart(part,field,output){
 export function validatePaintSkin(skin,parts,w,h,joints){
  const fail=why=>{throw Error('Paint skin: '+why);};
  if(skin?.schema!=='cf.paint-skin/v1'||!Array.isArray(skin.vertices)||skin.vertices.length<3||skin.vertices.length>40000||!Array.isArray(skin.parts))fail('schema/budget');
+ if(skin.solver!==undefined){
+  if(!Array.isArray(skin.triangles)||!skin.triangles.length||skin.triangles.length%3||skin.triangles.length>600000||skin.triangles.some(i=>!Number.isInteger(i)||i<0||i>=skin.vertices.length))fail('solver topology');
+  const s=skin.solver;
+  // Asset data may declare contact pins, not tune the shared projection profile.
+  // Orientation defaults remain owned by createArapScratch, including when an
+  // extra key would happen to repeat today's default value.
+  if(!s||typeof s!=='object'||Array.isArray(s)||(Object.getPrototypeOf(s)!==Object.prototype&&Object.getPrototypeOf(s)!==null)
+   ||Reflect.ownKeys(s).length!==4||Reflect.ownKeys(s).some(k=>!['iterations','globalIterations','targetWeight','pins'].includes(k)))fail('shared solver profile keys');
+  if(s.iterations!==4||s.globalIterations!==4||s.targetWeight!==.35||!Array.isArray(s.pins)||new Set(s.pins).size!==s.pins.length||s.pins.some(i=>!Number.isInteger(i)||i<0||i>=skin.vertices.length))fail('shared solver profile');
+ }
  const known=new Set(joints),ids=new Set();
  for(const v of skin.vertices){if(!Number.isFinite(v.x)||!Number.isFinite(v.y)||v.x<0||v.y<0||v.x>w||v.y>h||!Array.isArray(v.weights)||!v.weights.length||v.weights.length>8)fail('vertex');
   let sum=0;const used=new Set();for(const [j,n]of v.weights){if(!known.has(j)||used.has(j)||!Number.isFinite(n)||n<=0||n>1)fail('weights');used.add(j);sum+=n;}if(Math.abs(sum-1)>1e-8)fail('weight sum');}
@@ -25,7 +35,8 @@ export function validatePaintSkin(skin,parts,w,h,joints){
   for(const v of p.vertices){if(!Array.isArray(v.triangle)||v.triangle.length!==3||v.triangle.some(i=>!Number.isInteger(i)||i<0||i>=skin.vertices.length)||!Array.isArray(v.barycentric)||v.barycentric.length!==3||v.barycentric.some(n=>!Number.isFinite(n)||n< -1e-8||n>1+1e-8)||Math.abs(v.barycentric.reduce((a,b)=>a+b,0)-1)>1e-8)fail('interpolation');
    const x=v.triangle.reduce((n,k,i)=>n+skin.vertices[k].x*v.barycentric[i],0),y=v.triangle.reduce((n,k,i)=>n+skin.vertices[k].y*v.barycentric[i],0),b=owner.cutout;
    if(x<b.x-1e-6||x>b.x+b.width+1e-6||y<b.y-1e-6||y>b.y+b.height+1e-6)fail('UV outside owned frame');}
-  if(p.indices.length>1000000||p.indices.length%3||p.indices.some(i=>!Number.isInteger(i)||i<0||i>=p.vertices.length))fail('indices');}
+  if(p.indices.length>1000000||p.indices.length%3||p.indices.some(i=>!Number.isInteger(i)||i<0||i>=p.vertices.length))fail('indices');
+  if(paintPartAreas(p,skin).some(a=>!Number.isFinite(a)||a===0))fail('degenerate source triangle');}
  if(parts.filter(p=>p.kind==='part').some(p=>!ids.has(p.id)))fail('missing painted part');
  return{vertices:skin.vertices.length,partVertices:count,parts:ids.size};
 }
@@ -36,7 +47,7 @@ export function paintPartAreas(part,skin){
 }
 /** Reject actual foldovers before publication. Texture continuity alone is insufficient. */
 export function assertPaintPartShape(part,skin,p,width,height,areas=paintPartAreas(part,skin)){
- for(let i=0;i<part.indices.length;i+=3){const area=areas[i/3];if(Math.abs(area)<1e-6)continue;
+ for(let i=0;i<part.indices.length;i+=3){const area=areas[i/3];if(!Number.isFinite(area)||area===0)throw Error('Paint skin degenerate source triangle: '+part.id+' '+i/3);
   const a=part.indices[i]*2,b=part.indices[i+1]*2,c=part.indices[i+2]*2,posed=((p[b]-p[a])*(p[c+1]-p[a+1])-(p[b+1]-p[a+1])*(p[c]-p[a]))*width*height;
   if(!Number.isFinite(posed)||posed/area<=0)throw Error('Paint skin folded triangle: '+part.id+' '+i/3);}
 }

@@ -1,17 +1,35 @@
 # Creature animation — shared anatomy and motion contract
 
-Matches code as of 2026-09-15. C2 source **61512b3a** passes the independently enumerated
-87 pair contacts and 64 three/four-owner junctions at all five native poses. All three masters
-retain zero changed rest channels; CPU update p95 is 0.80/0.90/0.40 ms (Civet/fox/procedural).
-This is coverage and update-time evidence, not whole-motion acceptance. Full posed images still
-show hard cut/overlap edges and stretched paint. No new ten-second articulated capture is qualified.
-See [current evidence](audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json) and
-[combined review](audits/CROSS_PACKAGE_PROGRESS_20260914/README.md).
+Matches code as of 2026-09-16. The actual rig now uses a family-neutral joint evaluator
+(`skeleton-pose.mjs`) with a supplied joint graph, exact landmark inventory and body axis.
+It snapshots the owner data, inherits local rotations/offsets, applies root translation once,
+and rejects malformed poses before publication. Quadruped hash/asset/shape admission remains
+unchanged; this is not permission to load arbitrary families into the current skin loader.
+The quadruped observer also refuses extra leg pairs instead of overwriting fore/hind records;
+ordinary six/eight-legged painting remains available.
+
+[Universal animation evidence](audits/UNIVERSAL_ANIMATION_20260916/README.md) covers all 14 actual
+motion templates, 161 action entries and 4,644 sampled poses. Thirteen family records are
+synthetic fixtures, not painted-family coverage. 121 tool tests, 20 focused rig/observer tests,
+both TypeScript checks and root validation pass. The new native regression retains exact
+rest/final-rest equality and all 30 prior C2 pose PNG bytes. Ten-second diagnostics capture
+Civet/fox/procedural at 60.003/60.002/59.903 fps, with inclusive CPU p95 1.4/1.7/0.9 ms.
+Clean signed-source qualification and Nick's whole-motion acceptance remain pending.
+
+Continuous source-painted skin, separate limb surfaces, shared body attachments, painted-paw
+constraints and the bounded shape solver remain the C2 foundation. The
+[prior C2 audit](audits/C2_CONTINUOUS_SKIN_20260916/README.md) retains its exact source snapshots,
+failed controls and six review ZIPs. The universal batch is an addendum to that snapshot.
 
 The target is fluid whole-body motion for named and procedural land, air, aquatic and rooted life
 in seeded biome arenas. Preserve the actual painted anatomy, stable joint inventories and recipe
 identity. Blender projection is abandoned for the browser; retain the turnaround/canid master for
 a later engine port. No 3D or texture-finisher pass belongs to this track.
+
+The [universal animation plan](audits/C2_CONTINUOUS_SKIN_20260916/UNIVERSAL_ANIMATION_PLAN.md)
+uses a shared runtime and anatomy-specific templates, supplied by each winning painter's actual
+resolved record. Family bounds, extreme generated bodies and reuse proofs qualify coverage;
+the Civet proof does not turn one quadruped rig into a universal skeleton.
 
 Art Kit v4.3 and supplied Motion/Sound v1 are approved. Nick's supplied free-audio handoff
 and explicit CC BY attribution approval supersede the source-only execution stop; kit bytes
@@ -37,9 +55,12 @@ actual ancestor pivots, preserving body/limb action. It refuses malformed/out-of
 input and requests a body turn or another view when its chain/source coverage cannot
 reach a target. These are outcomes for a future controller to satisfy, not completed
 turn animations. All three actual proof records still lack gaze/view declarations;
-no alternate-view rigs or ordinary-game consumers are integrated. The existing skin
-still fails visual shape review. See audits/C_PACKAGE_COMPLETION_20260915 for tests,
-retained negative controls, actual-producer evidence and the complete remaining plan.
+no alternate-view rigs or ordinary-game consumers are integrated. Native12 passes the three
+records' geometry/contact/source-join gates with the actual Wasm backend. Unprofiled Motion06
+meets 60 fps and the strict <2 ms update budget for all three; numeric admission does not qualify
+whole-motion appearance. Clean signed-source qualification and human motion review remain pending.
+The September 15 controller evidence remains in `audits/C_PACKAGE_COMPLETION_20260915`;
+the live September 16 audit owns skin and capture status.
 
 ## Current presentation priority — Nick, September 8
 
@@ -58,24 +79,82 @@ Existing collection, healing/properties and classification data stay independent
 
 ## Current implementation and the missing boundary
 
-The hash-bound Civet and fox records plus one painter-observed procedural quadruped have real
-parts, deterministic atlases and native rest parity. The procedural material observer reports the
-skin actually painted (translucent in the proof), not a fur fallback. The rig loads original-pixel
-parts, composes inherited joint transforms, constrains planted contact and applies seam geometry.
-PoseTarget rotations use the record's names; root offsets are body-length units. The frame adapter
-collects a full pose before applying it. It has not been adopted by Claude's live battle scene here.
+The hash-bound Civet and fox records plus one painter-observed procedural quadruped supply real
+parts and deterministic atlases. The procedural observer reports the material actually painted
+(translucent in the retained proof), not a fur fallback. Source PNGs and on-disk atlas bytes,
+accepted anatomy, part order, depth layers and Motion Kit curves remain unchanged. The decoder's
+disposable sampling texture has the bounded internal guard described below.
 
-Candidate07 adds boundary strips and multi-owner point closures to existing drawables. A closure
-uses opaque original descendant ink and collapses at rest. The native gate independently enumerates
-contacts and point junctions; it does not assess natural texture flow or the whole moving silhouette.
-Hard cut edges, overlap artifacts and stretched paint remain visible. Numeric coverage is insufficient.
+`build-paint-skin.mjs` constructs a conforming alpha-adaptive field and clips each displayed part
+to its original atlas rectangle. Every rendered triangle retains its actual originating field face;
+a shared interpolation-vertex cache is not sufficient provenance for the solver's face inventory.
+`split-skin-branches.mjs` separates distal near/far limbs by the record's ownership. It shares
+proximal axial/upper-limb skin attachments derived from all nonzero source-alpha boundaries,
+including attachments whose bones are siblings. Skin topology and bone ancestry are different
+relationships. Distinct limbs and distal limb/body overlaps remain separate; coincident image
+coordinates do not authorize welding them. This replaces the root-plane and ancestry-only rules.
+`source-join-continuity.mjs` independently checks these boundaries in the actual published meshes.
+
+`paw-contact-pins.mjs` samples the lowest nonzero-alpha texel in each original paw column, including
+fringe, and pins every supporting field vertex to that paw's unchanged transform. Conflicting paw
+owners refuse; source perspective and authored raised-paw offsets remain. Weights diffuse along
+anatomical topology, with a bounded sparse influence inventory and preserved contact constraints.
+No controller clock, new RNG draw or creature-specific motion edit supplies these constraints.
+
+`compiled-skin-field.mjs` snapshots normalized positions and sparse weights once, then reads fresh
+joint matrices once per joint on every frame. It writes private scratch at destination precision;
+malformed matrices and overflow refuse before publication. `arap-skin.mjs` uses four local passes,
+four symmetric global sweeps per pass and target weight 0.35. Its orientation projection has a
+24-pass budget and a 0.12 area-ratio target; unresolved flips refuse. Those are fixed mechanism
+settings, not visual acceptance thresholds. Asset declarations cannot tune the orientation profile.
+Exact-rest/rigid handling still checks triangle orientation, and thin nonzero triangles receive the
+same fold admission as larger triangles. The solver starts from the current pose, not the last frame.
+
+`seam-sampling-guard.mjs` derives a one-texel guard only across sewn opaque internal cuts whose
+source samples have the same skin-field basis. The default atlas decoder copies the adjacent
+owner's exact opaque RGBA into transparent filter space or available packing padding, retaining
+all original PNG bytes, frames, owned texels and geometry. External silhouettes, nonopaque paint
+and separate-limb/depth boundaries are excluded. It draws the original bitmap once and writes only
+guard runs, avoiding a full translucent RGBA round-trip. The derived texture is disposable;
+source-owned masks still drive the oracles. Native12 retains zero changed rest channels before
+and after motion for all three records. The retained procedural strike control improves alpha
+192/191 to 255/255 at the same two internal-cut samples; this is sampling repair, not repainted art.
+
+`creature-rig.ts` composes record-named joint transforms, applies the field/shape solver, checks each
+part, then publishes the complete geometry. `creature-rig-frame.ts` collects PoseTarget updates and
+`creature-rig-performance.ts` owns explicit-time playback. Rotations use the record's joint names;
+offsets are body-length units and the pinned GSAP producer forwards displacement only to root.
+The isolated arena proof uses this complete-frame path for attack and hit roles. Its explicit-time
+contact owner blends the admitted ground correction through the existing approach/return windows,
+and the subject retains one seeded idle across both roles and hitstop holds. Grounded contact and
+the 8% compression bound remain exact. Adoption by the ordinary battle scene remains separate;
+the study is not a production route.
+
+Native qualification measures exact rendered rest before/after motion, current-producer poses,
+actual deformed paw contours as well as bones, fold admission and source joins. Creature update
+cost includes producer sampling, support/contact solving and geometry publication; rig-only
+publication is reported separately. The strict p95 budget remains <2 ms, including live captures.
+`deformation-quality.mjs` separately reports area, edge stretch and anisotropy on triangles touching
+source alpha; it cannot grant art acceptance. Ten-second captures must additionally prove live
+frame pacing, encoded duration/frame count, choreography phases and moving appendages. The capture
+runner binds the candidate manifest, complete source inventory and actual served program/asset
+bytes and routes to its prior native gate before opening the browser. Dirty diagnostic receipts
+cannot stand in for a clean committed qualification. The preceding C2 Native12 passes all three dense gates with
+the actual Wasm normal-pass leaf: 4,844 / 4,840 / 4,840 completed normal passes for Civet / fox /
+procedural, with no robust fallbacks. Unprofiled Motion06 delivers all three ten-second diagnostic
+films at 60 fps and update p95 1.6 / 1.7 / 0.9 ms. The next steps are human motion review and,
+once signing works, unchanged clean signed-source gates and captures. No further optimization
+loop is planned; final qualification and visual acceptance remain pending.
+The universal batch repeats these gates on the shared evaluator and preserves all 30 pose PNGs.
+See both audits for the exact source snapshots and retained failed attempts.
 
 The production gap remains a resolved anatomy/parts record emitted by every actual winning painter
 and a shape-qualified skin/controller consuming it. Only three quadruped proof records exist; the
 fourteen published motion templates are not fourteen functioning painter integrations. Unsupported
 anatomy refuses or uses the explicitly labelled portrait fallback. No per-seed image generation or
 per-creature motion-curve edits are part of this design. See the
-[coverage inventory](audits/C2_DEFORMING_SEAMS_20260914/FAMILY_COVERAGE.md).
+[current family readiness](audits/UNIVERSAL_ANIMATION_20260916/FAMILY_COVERAGE.json) and the
+[earlier coverage inventory](audits/C2_DEFORMING_SEAMS_20260914/FAMILY_COVERAGE.md).
 
 ## Authoritative documents and source order
 
@@ -220,14 +299,18 @@ D-9e biome/generation coverage remains open; this architecture does not repair i
 
 ## Remaining acceptance sequence
 
-1. Remove visible joint/overlap distortions while preserving exact rest, real clips and anatomical bounds.
-2. Recheck independent contact/junction coverage and full posed shapes, then ten-second Civet, fox and
-   procedural captures with the accepted arena, shared timing and zero per-creature curve edits.
-3. Complete battle2 frame-adapter integration in its owning lane; measure staged-turn behavior and
-   frame pacing, not just CPU update duration. Existing portrait-fallback captures remain labelled.
-4. Add actual painter-owned parts and records family by family, with material/identity parity and
-   explicit unsupported anatomy. The next approved families are bird, fish, insect and reptile.
-5. Review new media and family reuse at each required stop. Phone animation budget remains unqualified.
+1. Resolve continuous-skin face coverage and visible attachment/shape defects without changing the
+   accepted source paint, anatomical limits, contact constraints or motion curves.
+2. Qualify the exact candidate on all three records: rendered rest, actual field faces/source joins,
+   source-contour contact, current-producer dense motion and the unchanged creature update budget.
+3. Deliver source-bound ten-second Civet, fox and procedural films in the accepted arena, with live
+   pacing and independently decoded media evidence. Numeric admission does not replace image review;
+   historical whole-portrait fallback films remain explicitly labelled.
+4. Complete ordinary battle integration in its owning lane, then add actual painter-owned parts and
+   records family by family. Bird, fish, insect and reptile follow the quadruped proof; template
+   availability alone does not establish painter, view or motion coverage.
+5. Review new media and family reuse at each required stop. Phone animation performance still needs
+   a sustained device measurement; neither a Node microbenchmark nor a Mac CPU result supplies it.
 
 Historical failures, commands and receipts remain in audits/C2_* and the chronological roadmap archive.
-They explain the repairs; they do not override the current qualification above.
+They explain the repairs; they do not override the live candidate and qualification status above.

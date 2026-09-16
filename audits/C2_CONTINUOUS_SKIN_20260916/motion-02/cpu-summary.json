@@ -1,0 +1,259 @@
+{
+  "purpose": "Diagnostic sampled CPU attribution; not an independent budget gate. Profiling itself can affect timing.",
+  "profiles": [
+    {
+      "profile": "audits/C2_CONTINUOUS_SKIN_20260916/motion-02/civet-cpu.cpuprofile",
+      "sha256": "f175242ee6acb3fb55431e9a3936a998a129b0b3751e5c1af7f5f2795a9c3fd6",
+      "sampleIntervalRequestedUs": 250,
+      "topSelfTimes": [
+        {
+          "function": "(idle)",
+          "bundledLine": 0,
+          "sampledMs": 9379.767,
+          "samples": 24505
+        },
+        {
+          "function": "solveArapSkin",
+          "bundledLine": 5734,
+          "sampledMs": 678.8,
+          "samples": 1796
+        },
+        {
+          "function": "(program)",
+          "bundledLine": 0,
+          "sampledMs": 179.686,
+          "samples": 311
+        },
+        {
+          "function": "capture",
+          "bundledLine": 31238,
+          "sampledMs": 123.021,
+          "samples": 323
+        },
+        {
+          "function": "b64",
+          "bundledLine": 30472,
+          "sampledMs": 115.397,
+          "samples": 304
+        },
+        {
+          "function": "applyCompiledSkinField",
+          "bundledLine": 5974,
+          "sampledMs": 34.338,
+          "samples": 91
+        },
+        {
+          "function": "applyPaintPart",
+          "bundledLine": 5033,
+          "sampledMs": 27.293,
+          "samples": 72
+        },
+        {
+          "function": "",
+          "bundledLine": 0,
+          "sampledMs": 19.482,
+          "samples": 51
+        },
+        {
+          "function": "assertPaintPartShape",
+          "bundledLine": 5105,
+          "sampledMs": 12.552,
+          "samples": 33
+        },
+        {
+          "function": "poseMatrices",
+          "bundledLine": 7005,
+          "sampledMs": 9.924,
+          "samples": 26
+        },
+        {
+          "function": "texSubImage2D",
+          "bundledLine": 0,
+          "sampledMs": 8.327,
+          "samples": 22
+        },
+        {
+          "function": "sample",
+          "bundledLine": 30019,
+          "sampledMs": 7.958,
+          "samples": 21
+        },
+        {
+          "function": "(garbage collector)",
+          "bundledLine": 0,
+          "sampledMs": 7.781,
+          "samples": 20
+        },
+        {
+          "function": "applyPose",
+          "bundledLine": 6591,
+          "sampledMs": 7.729,
+          "samples": 21
+        },
+        {
+          "function": "structuredClone",
+          "bundledLine": 0,
+          "sampledMs": 6.808,
+          "samples": 18
+        },
+        {
+          "function": "bufferSubData",
+          "bundledLine": 0,
+          "sampledMs": 6.512,
+          "samples": 17
+        },
+        {
+          "function": "resolve",
+          "bundledLine": 30041,
+          "sampledMs": 6.446,
+          "samples": 17
+        },
+        {
+          "function": "resolve",
+          "bundledLine": 7035,
+          "sampledMs": 5.711,
+          "samples": 15
+        },
+        {
+          "function": "_tick",
+          "bundledLine": 8618,
+          "sampledMs": 5.697,
+          "samples": 15
+        },
+        {
+          "function": "_CanvasTextMetrics.experimentalLetterSpacing",
+          "bundledLine": 2631,
+          "sampledMs": 4.774,
+          "samples": 13
+        }
+      ]
+    },
+    {
+      "profile": "audits/C2_CONTINUOUS_SKIN_20260916/motion-02/fox-cpu.cpuprofile",
+      "sha256": "000540ec89459ab74fbf52baef62ae32f7b7d6944f87ce0cad72f128f57dd06e",
+      "sampleIntervalRequestedUs": 250,
+      "topSelfTimes": [
+        {
+          "function": "(idle)",
+          "bundledLine": 0,
+          "sampledMs": 9303.075,
+          "samples": 24286
+        },
+        {
+          "function": "solveArapSkin",
+          "bundledLine": 5734,
+          "sampledMs": 829.245,
+          "samples": 2189
+        },
+        {
+          "function": "(program)",
+          "bundledLine": 0,
+          "sampledMs": 151.0,
+          "samples": 266
+        },
+        {
+          "function": "capture",
+          "bundledLine": 31238,
+          "sampledMs": 125.991,
+          "samples": 332
+        },
+        {
+          "function": "applyCompiledSkinField",
+          "bundledLine": 5974,
+          "sampledMs": 40.208,
+          "samples": 106
+        },
+        {
+          "function": "applyPaintPart",
+          "bundledLine": 5033,
+          "sampledMs": 29.422,
+          "samples": 79
+        },
+        {
+          "function": "",
+          "bundledLine": 0,
+          "sampledMs": 21.018,
+          "samples": 55
+        },
+        {
+          "function": "assertPaintPartShape",
+          "bundledLine": 5105,
+          "sampledMs": 14.392,
+          "samples": 38
+        },
+        {
+          "function": "applyPose",
+          "bundledLine": 6591,
+          "sampledMs": 10.904,
+          "samples": 35
+        },
+        {
+          "function": "resolve",
+          "bundledLine": 30041,
+          "sampledMs": 9.879,
+          "samples": 26
+        },
+        {
+          "function": "bufferSubData",
+          "bundledLine": 0,
+          "sampledMs": 9.147,
+          "samples": 24
+        },
+        {
+          "function": "sample",
+          "bundledLine": 30019,
+          "sampledMs": 8.74,
+          "samples": 23
+        },
+        {
+          "function": "resolve",
+          "bundledLine": 7035,
+          "sampledMs": 8.337,
+          "samples": 22
+        },
+        {
+          "function": "poseMatrices",
+          "bundledLine": 7005,
+          "sampledMs": 7.577,
+          "samples": 20
+        },
+        {
+          "function": "texSubImage2D",
+          "bundledLine": 0,
+          "sampledMs": 6.703,
+          "samples": 18
+        },
+        {
+          "function": "contactError",
+          "bundledLine": 30789,
+          "sampledMs": 5.695,
+          "samples": 15
+        },
+        {
+          "function": "(garbage collector)",
+          "bundledLine": 0,
+          "sampledMs": 5.468,
+          "samples": 14
+        },
+        {
+          "function": "render",
+          "bundledLine": 14580,
+          "sampledMs": 4.905,
+          "samples": 13
+        },
+        {
+          "function": "frame",
+          "bundledLine": 30806,
+          "sampledMs": 4.569,
+          "samples": 12
+        },
+        {
+          "function": "_tick",
+          "bundledLine": 8618,
+          "sampledMs": 4.569,
+          "samples": 12
+        }
+      ]
+    }
+  ]
+}

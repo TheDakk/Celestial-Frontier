@@ -1,5 +1,15 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **BONE CONTACT AND POSITIVE TRIANGLES DO NOT PROVE CONTINUOUS PAINT** (C2, 2026-09-16).
+> A planted joint can coexist with sliding paw pixels; a skin can contain no reflected triangles
+> and still open an anatomical attachment or collapse into a thin strip. Measure the actual
+> published mesh against source-supported paw contours and source-alpha attachment boundaries.
+> Bone hierarchy does not define surface topology: proximal body/limb skin may join across
+> sibling bones, while overlapping independent limbs must stay separate. Retain actual face
+> provenance, scan the complete current motion between named poses, and inspect full moving
+> painted shape. A numeric PASS cannot replace visual acceptance; keep observed false-green
+> candidates as controls. Include motion sampling and contact solving in creature CPU timing.
+
 > **CANVAS PIXELS DO NOT PROVE VISIBILITY THROUGH DOM OVERLAYS** (Earth layers, 2026-09-08).
 > Full-stage Pixi extraction can prove resident paint while the native Biosphere strip hides it
 > from the player. Preserve that failed browser image. Measure the actual DOM boundaries and

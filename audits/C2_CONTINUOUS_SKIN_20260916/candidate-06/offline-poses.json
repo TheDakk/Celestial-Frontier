@@ -1,0 +1,202 @@
+{
+  "status": "OFFLINE_PASS_NATIVE_PENDING",
+  "sourcePoseReport": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json",
+  "scope": "five retained actual poses; this does not establish native rest parity, dense temporal shape, frame time or visual acceptance",
+  "diagnostics": [
+    {
+      "id": "civet",
+      "frames": [
+        {
+          "name": "rest",
+          "status": "PASS",
+          "error": null,
+          "rigid": true,
+          "maximumTargetErrorPx": 0,
+          "rmsTargetErrorPx": 0,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 1,
+          "orientationPasses": 0
+        },
+        {
+          "name": "hit-recoil",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 4.502117342459801,
+          "rmsTargetErrorPx": 0.4488954186838154,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.37084103888640507,
+          "orientationPasses": 1
+        },
+        {
+          "name": "strike",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 9.815675500827377,
+          "rmsTargetErrorPx": 0.7320189128816806,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.384129420823588,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-quarter",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 3.5685495179164968,
+          "rmsTargetErrorPx": 0.3071370771084556,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.6833179769507658,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-three-quarter",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 3.6769723749898087,
+          "rmsTargetErrorPx": 0.2962926463773677,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.684647520327172,
+          "orientationPasses": 1
+        }
+      ]
+    },
+    {
+      "id": "fox",
+      "frames": [
+        {
+          "name": "rest",
+          "status": "PASS",
+          "error": null,
+          "rigid": true,
+          "maximumTargetErrorPx": 0,
+          "rmsTargetErrorPx": 0,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 1,
+          "orientationPasses": 0
+        },
+        {
+          "name": "hit-recoil",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 2.7699090762177976,
+          "rmsTargetErrorPx": 0.38181289191113804,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.5975760301233435,
+          "orientationPasses": 1
+        },
+        {
+          "name": "strike",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 5.546444634438923,
+          "rmsTargetErrorPx": 0.7497079452853264,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.39757729231898997,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-quarter",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 4.830218875449816,
+          "rmsTargetErrorPx": 0.5147440221917777,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.6416288699749491,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-three-quarter",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 4.37144307835982,
+          "rmsTargetErrorPx": 0.540467863388468,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.5462556013916292,
+          "orientationPasses": 1
+        }
+      ]
+    },
+    {
+      "id": "procedural",
+      "frames": [
+        {
+          "name": "rest",
+          "status": "PASS",
+          "error": null,
+          "rigid": true,
+          "maximumTargetErrorPx": 0,
+          "rmsTargetErrorPx": 0,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 1,
+          "orientationPasses": 0
+        },
+        {
+          "name": "hit-recoil",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 2.677587739531297,
+          "rmsTargetErrorPx": 0.3024494295988926,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.8304992928136582,
+          "orientationPasses": 1
+        },
+        {
+          "name": "strike",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 2.72547766010321,
+          "rmsTargetErrorPx": 0.44779299420049695,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.6190973599765571,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-quarter",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 0.8067506087716125,
+          "rmsTargetErrorPx": 0.14704735508403335,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.8201330232775159,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-three-quarter",
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 0.8910061581382613,
+          "rmsTargetErrorPx": 0.16001831553272883,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.8646963729526798,
+          "orientationPasses": 1
+        }
+      ]
+    }
+  ]
+}

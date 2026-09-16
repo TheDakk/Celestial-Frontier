@@ -490,3 +490,75 @@ excerpts in installed REAPER, preserved all source credits/licenses and old fail
 play/stop/credit/codec and root validate pass. No listening approval, kit edit, ordinary-game
 promotion or GitHub write. Evidence in AUDIO_FAUNA_CONTINUATION_20260915; consolidated review
 and delivery plan record C2 visual work, family integration and actual phone proof still required.
+
+## Codex — September16 continuous painted skin and universal plan
+
+C2 now retains actual mesh-face provenance, independent limb surfaces, complete proximal
+source-skin attachments, original-alpha paw pins, fixed local shape solve and compiled sparse
+weights. Candidate10/Native06 passes dirty native diagnostics on all three creatures: rest0,
+1,201 poses each, inclusive creature CPU p95 1.10/1.30/0.40ms. Failed timing, paw drift, missing
+faces, source gaps and intervening Fox folds remain retained controls. 100 tool tests,15 runtime
+tests,typecheck and root validate pass. Clean-source films and motion review remain next.
+No source paint, kit, per-creature curve, main.ts or Claude-owned module changes.
+
+Nick's universal whole-animal direction is recorded in C2_CONTINUOUS_SKIN_20260916/
+UNIVERSAL_ANIMATION_PLAN.md and the live ROADMAP: shared runtime, real painter records,
+family-specific templates and procedural-extreme qualification. Real support is currently
+Civet,fox and one procedural quadruped; fourteen template names do not establish coverage.
+Ordinary-game integration, hidden views and measured iPhone performance remain explicit steps.
+No GitHub write or release; Claude need not open/sync now.
+
+## Codex — September16 temporal continuity, sampling and CPU controls
+
+Support release/replant and the second-role idle phase now remain continuous;
+the old native-pixel jumps remain failing controls. A disposable atlas sampling
+guard closes proven opaque internal filtering seams without rewriting masters,
+changing silhouette/depth or changing a single rest channel. Native08 passes
+all three creatures over1,201poses each. The first live film failed CPU2.50ms;
+a byte-preserving optimization produces Civet60fps/1.70ms, but Fox2.00ms correctly
+fails strict under2ms and stops before procedural. Both failed runs remain.
+
+The second bounded kernel optimization preserves all3,633poses and statistics
+in both precisions.107tooltests,15runtimetests and typecheck pass; unprofiled
+native gates/captures follow. Original shape, solver profile, timing limits and
+producer curves remain. No kit, main.ts, Claude-module or GitHub change. The
+universal animation plan is linked from both live references and ROADMAP.
+
+## 2026-09-16 — C2 Kernel05 and universal animation plan
+
+Recorded Nick's direction in `audits/C2_CONTINUOUS_SKIN_20260916/UNIVERSAL_ANIMATION_PLAN.md`
+and linked it from ROADMAP, CREATURE_ANIMATION and the codebase reference. Shared
+runtime, anatomy-specific templates, actual painter-owned records, whole-body
+motion and independent family/device qualification are required. Synthetic family
+fixtures are not actual painter coverage; the current Platypus study opponent
+remains a labelled portrait. Production must prove two animated combatants.
+
+The continuous-skin Kernel05 keeps all3,633 sampled poses identical in both
+precisions while compiling repeated arithmetic with the installed compiler;
+no new dependency, motion reduction, threshold relaxation or source-art edit.
+117 tool tests,15 runtime tests and game typecheck pass. Native12 passes allthree
+dense gates/rest0;30 named PNGs match Native11 bytes. Unprofiled Motion06 records
+three ten-second diagnostic films at60fps and inclusive creature p951.6/1.7/0.9ms
+(Civet/fox/procedural), with validated media/audio. The full audit retains every
+prior red run and the corruption/fallback controls. Nick's visual acceptance and
+clean signed-source qualification remain outstanding; actual head is still
+`b79fd32e`,117 ahead cached upstream and228 ahead cached develop, following three
+1Password signing refusals. No unsigned fallback, main.ts hunk, Claude-lane edit,
+GitHub write or promotion. Review prompt consolidates code, plan and evidence.
+
+## 2026-09-16 — universal skeleton evaluator
+
+Codex extracted owner-supplied joint graph/body-axis evaluation and wired it into
+the actual CreatureRigV1 loader without widening quadruped asset admission. The
+extra-legged quadruped observer now refuses false four-chain output before ink;
+ordinary painting is preserved. No Claude-owned module, kit, master or main.ts edit.
+
+Actual producer interop: 14 templates, 161 actions, 4,644 samples; thirteen records
+are synthetic, not painter coverage. 121 tool tests, 20 runtime/observer tests,
+both TypeScript checks and root validation pass. Native regression retains all
+30 prior pose PNG bytes and exact rest/final-rest; films pass at approximately
+60 fps with CPU p95 1.4/1.7/0.9 ms. Receipts and current family readiness are in
+`audits/UNIVERSAL_ANIMATION_20260916`. Clean signing and visual acceptance remain
+pending. Signed base remains b79fd32e (117 ahead upstream / 228 ahead develop).
+No GitHub writes; PR42 parked. Next real painter adapter: bird, under the approved
+family order. Code progress does not depend on reclassifying synthetic fixtures.

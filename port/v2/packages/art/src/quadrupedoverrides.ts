@@ -2804,6 +2804,11 @@ function faunaMammalC(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<Q
 }
 
 export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '', observeAnatomy?: QuadrupedAnatomyObserver, captureParts = false): void {
+  // Extra leg pairs draw successfully, but cannot be represented by this
+  // four-leg observer. Refuse before ink instead of overwriting fore/hind keys.
+  if (observeAnatomy && (spec.alien?.legPairs ?? 2) !== 2) {
+    throw Error('Quadruped anatomy observer cannot represent extra leg pairs');
+  }
   if (captureParts && (!observeAnatomy || spec.mammalEPlan || spec.mammalDPlan || spec.mammalCPlan || spec.mammalBPlan || spec.pinnipedPose || spec.gliderPlan || (spec.alien?.legPairs ?? 2) !== 2 || spec.tail !== 'banded')) {
     throw Error('Quadruped part capture requires the observed four-legged banded-tail painter');
   }

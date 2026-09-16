@@ -1,0 +1,1178 @@
+{
+  "schema": "cf.family-pose-interop/v1",
+  "status": "PASS",
+  "scope": "Shared pose evaluation and actual GSAP producer contract only. Thirteen family records are synthetic; no new painted assets, masks, contact solvers, runtime admission or visual qualification.",
+  "rows": [
+    {
+      "id": "quadruped",
+      "landmarkOwner": "authored:Civet/faunaResetViverridD",
+      "synthetic": false,
+      "jointCount": 31,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "78823dde",
+          "samples": 74
+        },
+        {
+          "id": "alert",
+          "timelineHash": "cf6ee566",
+          "samples": 22
+        },
+        {
+          "id": "approach:walk",
+          "timelineHash": "967727b6",
+          "samples": 28
+        },
+        {
+          "id": "approach:trot",
+          "timelineHash": "84caf022",
+          "samples": 28
+        },
+        {
+          "id": "approach:gallop",
+          "timelineHash": "f28be222",
+          "samples": 28
+        },
+        {
+          "id": "approach:hop",
+          "timelineHash": "e388464a",
+          "samples": 28
+        },
+        {
+          "id": "melee:bite",
+          "timelineHash": "6b02595e",
+          "samples": 30
+        },
+        {
+          "id": "melee:claw",
+          "timelineHash": "87a2aa44",
+          "samples": 30
+        },
+        {
+          "id": "melee:gore",
+          "timelineHash": "d1d932fc",
+          "samples": 30
+        },
+        {
+          "id": "melee:tail",
+          "timelineHash": "955811ef",
+          "samples": 30
+        },
+        {
+          "id": "melee:headbutt",
+          "timelineHash": "39928ac9",
+          "samples": 30
+        },
+        {
+          "id": "cast",
+          "timelineHash": "2296a8ef",
+          "samples": 32
+        },
+        {
+          "id": "hit",
+          "timelineHash": "e162f601",
+          "samples": 28
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "d94a670b",
+          "samples": 24
+        },
+        {
+          "id": "faint",
+          "timelineHash": "43010257",
+          "samples": 30
+        },
+        {
+          "id": "victory",
+          "timelineHash": "fd6b1b8e",
+          "samples": 32
+        },
+        {
+          "id": "tame",
+          "timelineHash": "8104612a",
+          "samples": 33
+        },
+        {
+          "id": "feed",
+          "timelineHash": "94fa9160",
+          "samples": 32
+        }
+      ],
+      "samples": 569,
+      "maximumPositionError": 6.753223014464258e-16
+    },
+    {
+      "id": "hopper",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 31,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "fe625a25",
+          "samples": 82
+        },
+        {
+          "id": "alert",
+          "timelineHash": "1b465123",
+          "samples": 20
+        },
+        {
+          "id": "approach:hop",
+          "timelineHash": "f5bceeb7",
+          "samples": 26
+        },
+        {
+          "id": "melee:kick",
+          "timelineHash": "46e5ef1b",
+          "samples": 28
+        },
+        {
+          "id": "melee:bite",
+          "timelineHash": "b9eabd26",
+          "samples": 28
+        },
+        {
+          "id": "cast",
+          "timelineHash": "60476f27",
+          "samples": 31
+        },
+        {
+          "id": "hit",
+          "timelineHash": "c87cefc7",
+          "samples": 27
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "cdd0e924",
+          "samples": 21
+        },
+        {
+          "id": "faint",
+          "timelineHash": "97125f84",
+          "samples": 29
+        },
+        {
+          "id": "victory",
+          "timelineHash": "481da2fa",
+          "samples": 31
+        },
+        {
+          "id": "tame",
+          "timelineHash": "d9b5194a",
+          "samples": 32
+        },
+        {
+          "id": "feed",
+          "timelineHash": "c3b7d6c7",
+          "samples": 30
+        }
+      ],
+      "samples": 385,
+      "maximumPositionError": 4.965068306494546e-16
+    },
+    {
+      "id": "biped-bird",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 19,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "01379fab",
+          "samples": 102
+        },
+        {
+          "id": "alert",
+          "timelineHash": "e6c0a00e",
+          "samples": 14
+        },
+        {
+          "id": "approach:walk",
+          "timelineHash": "e049d3e0",
+          "samples": 20
+        },
+        {
+          "id": "approach:flight",
+          "timelineHash": "bd1bac20",
+          "samples": 20
+        },
+        {
+          "id": "melee:peck",
+          "timelineHash": "4e1d556c",
+          "samples": 22
+        },
+        {
+          "id": "melee:claw",
+          "timelineHash": "399c0492",
+          "samples": 22
+        },
+        {
+          "id": "cast",
+          "timelineHash": "6ca85a84",
+          "samples": 26
+        },
+        {
+          "id": "hit",
+          "timelineHash": "3eb2477a",
+          "samples": 21
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "79a77131",
+          "samples": 16
+        },
+        {
+          "id": "faint",
+          "timelineHash": "cad4160a",
+          "samples": 23
+        },
+        {
+          "id": "victory",
+          "timelineHash": "1b06d676",
+          "samples": 25
+        },
+        {
+          "id": "tame",
+          "timelineHash": "ad366484",
+          "samples": 26
+        },
+        {
+          "id": "feed",
+          "timelineHash": "673e837a",
+          "samples": 25
+        }
+      ],
+      "samples": 362,
+      "maximumPositionError": 4.965068306494546e-16
+    },
+    {
+      "id": "fish",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 13,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "4d3d7d3a",
+          "samples": 80
+        },
+        {
+          "id": "alert",
+          "timelineHash": "0b045a0d",
+          "samples": 10
+        },
+        {
+          "id": "approach:swim",
+          "timelineHash": "1e06ce9a",
+          "samples": 16
+        },
+        {
+          "id": "melee:bite",
+          "timelineHash": "864ff036",
+          "samples": 19
+        },
+        {
+          "id": "cast",
+          "timelineHash": "a8fd7243",
+          "samples": 22
+        },
+        {
+          "id": "hit",
+          "timelineHash": "c6595ba9",
+          "samples": 17
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "108c941d",
+          "samples": 12
+        },
+        {
+          "id": "faint",
+          "timelineHash": "d4a8fc9c",
+          "samples": 19
+        },
+        {
+          "id": "victory",
+          "timelineHash": "83e5f7c3",
+          "samples": 22
+        },
+        {
+          "id": "tame",
+          "timelineHash": "5abd76cf",
+          "samples": 23
+        },
+        {
+          "id": "feed",
+          "timelineHash": "ab90b5c5",
+          "samples": 21
+        }
+      ],
+      "samples": 261,
+      "maximumPositionError": 4.443059973708341e-16
+    },
+    {
+      "id": "insect",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 21,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "746ec4ca",
+          "samples": 100
+        },
+        {
+          "id": "alert",
+          "timelineHash": "ea9aa337",
+          "samples": 8
+        },
+        {
+          "id": "approach:crawl",
+          "timelineHash": "d94f4c81",
+          "samples": 14
+        },
+        {
+          "id": "approach:flight",
+          "timelineHash": "d5c3692f",
+          "samples": 14
+        },
+        {
+          "id": "melee:mandible",
+          "timelineHash": "81ed144c",
+          "samples": 17
+        },
+        {
+          "id": "cast",
+          "timelineHash": "10d2a0b2",
+          "samples": 20
+        },
+        {
+          "id": "hit",
+          "timelineHash": "6f10a4d7",
+          "samples": 15
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "40f1d689",
+          "samples": 10
+        },
+        {
+          "id": "faint",
+          "timelineHash": "e41aab89",
+          "samples": 17
+        },
+        {
+          "id": "victory",
+          "timelineHash": "c1e37e88",
+          "samples": 19
+        },
+        {
+          "id": "tame",
+          "timelineHash": "954dd932",
+          "samples": 21
+        },
+        {
+          "id": "feed",
+          "timelineHash": "1dfc30b7",
+          "samples": 19
+        }
+      ],
+      "samples": 274,
+      "maximumPositionError": 4.577566798522237e-16
+    },
+    {
+      "id": "serpent",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 13,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "aa02fbb7",
+          "samples": 88
+        },
+        {
+          "id": "alert",
+          "timelineHash": "1b70e59b",
+          "samples": 15
+        },
+        {
+          "id": "approach:slither",
+          "timelineHash": "0833e37e",
+          "samples": 21
+        },
+        {
+          "id": "melee:strike",
+          "timelineHash": "f47963de",
+          "samples": 24
+        },
+        {
+          "id": "melee:constrict",
+          "timelineHash": "687d146a",
+          "samples": 24
+        },
+        {
+          "id": "cast",
+          "timelineHash": "41cdf25f",
+          "samples": 27
+        },
+        {
+          "id": "hit",
+          "timelineHash": "3ac699fd",
+          "samples": 22
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "a12040fd",
+          "samples": 17
+        },
+        {
+          "id": "faint",
+          "timelineHash": "5331d302",
+          "samples": 24
+        },
+        {
+          "id": "victory",
+          "timelineHash": "a9f81b7e",
+          "samples": 27
+        },
+        {
+          "id": "tame",
+          "timelineHash": "706fbf5b",
+          "samples": 28
+        },
+        {
+          "id": "feed",
+          "timelineHash": "c872d185",
+          "samples": 26
+        }
+      ],
+      "samples": 343,
+      "maximumPositionError": 8.953072389518057e-16
+    },
+    {
+      "id": "arachnid",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 22,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "ef9a3d22",
+          "samples": 100
+        },
+        {
+          "id": "alert",
+          "timelineHash": "a666b84d",
+          "samples": 8
+        },
+        {
+          "id": "approach:scuttle",
+          "timelineHash": "bed7fa27",
+          "samples": 14
+        },
+        {
+          "id": "melee:sting",
+          "timelineHash": "11e44a45",
+          "samples": 17
+        },
+        {
+          "id": "melee:bite",
+          "timelineHash": "3d6dcaae",
+          "samples": 17
+        },
+        {
+          "id": "cast",
+          "timelineHash": "a135f19a",
+          "samples": 20
+        },
+        {
+          "id": "hit",
+          "timelineHash": "39db0764",
+          "samples": 15
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "388f4fa2",
+          "samples": 10
+        },
+        {
+          "id": "faint",
+          "timelineHash": "d7348af7",
+          "samples": 17
+        },
+        {
+          "id": "victory",
+          "timelineHash": "75095984",
+          "samples": 19
+        },
+        {
+          "id": "tame",
+          "timelineHash": "7a83bb9c",
+          "samples": 21
+        },
+        {
+          "id": "feed",
+          "timelineHash": "213b266f",
+          "samples": 19
+        }
+      ],
+      "samples": 277,
+      "maximumPositionError": 4.965068306494546e-16
+    },
+    {
+      "id": "radial",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 21,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "080a47bc",
+          "samples": 80
+        },
+        {
+          "id": "alert",
+          "timelineHash": "18ffb1b5",
+          "samples": 17
+        },
+        {
+          "id": "approach:drift",
+          "timelineHash": "507b14d7",
+          "samples": 23
+        },
+        {
+          "id": "approach:pulse",
+          "timelineHash": "100d35f3",
+          "samples": 23
+        },
+        {
+          "id": "melee:sting-arms",
+          "timelineHash": "39777606",
+          "samples": 25
+        },
+        {
+          "id": "cast",
+          "timelineHash": "1c93ac36",
+          "samples": 28
+        },
+        {
+          "id": "hit",
+          "timelineHash": "984f2e40",
+          "samples": 24
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "3ad02eaf",
+          "samples": 19
+        },
+        {
+          "id": "faint",
+          "timelineHash": "798d33b3",
+          "samples": 26
+        },
+        {
+          "id": "victory",
+          "timelineHash": "77b5b506",
+          "samples": 28
+        },
+        {
+          "id": "tame",
+          "timelineHash": "ab80d104",
+          "samples": 29
+        },
+        {
+          "id": "feed",
+          "timelineHash": "b9438714",
+          "samples": 28
+        }
+      ],
+      "samples": 350,
+      "maximumPositionError": 5.117875266520903e-16
+    },
+    {
+      "id": "plant-woody",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 11,
+      "actions": [
+        {
+          "id": "sway",
+          "timelineHash": "49f6e561",
+          "samples": 103
+        },
+        {
+          "id": "disturb",
+          "timelineHash": "0cc5389e",
+          "samples": 20
+        },
+        {
+          "id": "harvest",
+          "timelineHash": "7963a4d4",
+          "samples": 23
+        },
+        {
+          "id": "grow",
+          "timelineHash": "2c50d5f5",
+          "samples": 27
+        }
+      ],
+      "samples": 173,
+      "maximumPositionError": 4.335559509131368e-16
+    },
+    {
+      "id": "plant-herb",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 17,
+      "actions": [
+        {
+          "id": "sway",
+          "timelineHash": "28db9aaa",
+          "samples": 96
+        },
+        {
+          "id": "disturb",
+          "timelineHash": "ca75639e",
+          "samples": 22
+        },
+        {
+          "id": "harvest",
+          "timelineHash": "96ed41a8",
+          "samples": 26
+        },
+        {
+          "id": "grow",
+          "timelineHash": "5500e4be",
+          "samples": 29
+        }
+      ],
+      "samples": 173,
+      "maximumPositionError": 4.440892098500626e-16
+    },
+    {
+      "id": "myriapod",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 29,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "5af835f2",
+          "samples": 94
+        },
+        {
+          "id": "alert",
+          "timelineHash": "0b321464",
+          "samples": 8
+        },
+        {
+          "id": "approach:crawl",
+          "timelineHash": "e91d4d7c",
+          "samples": 14
+        },
+        {
+          "id": "melee:mandible",
+          "timelineHash": "de70b763",
+          "samples": 17
+        },
+        {
+          "id": "melee:sting",
+          "timelineHash": "cbe0df12",
+          "samples": 17
+        },
+        {
+          "id": "cast",
+          "timelineHash": "c83d74c9",
+          "samples": 20
+        },
+        {
+          "id": "hit",
+          "timelineHash": "5f65a4d8",
+          "samples": 15
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "b429beda",
+          "samples": 10
+        },
+        {
+          "id": "faint",
+          "timelineHash": "2f625502",
+          "samples": 17
+        },
+        {
+          "id": "victory",
+          "timelineHash": "e60e3f07",
+          "samples": 19
+        },
+        {
+          "id": "tame",
+          "timelineHash": "6c0e837c",
+          "samples": 21
+        },
+        {
+          "id": "feed",
+          "timelineHash": "0939ac6d",
+          "samples": 19
+        }
+      ],
+      "samples": 271,
+      "maximumPositionError": 6.674335893081556e-16
+    },
+    {
+      "id": "cephalopod",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 32,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "10f6d749",
+          "samples": 80
+        },
+        {
+          "id": "alert",
+          "timelineHash": "12922026",
+          "samples": 18
+        },
+        {
+          "id": "approach:jet",
+          "timelineHash": "38a3e59d",
+          "samples": 24
+        },
+        {
+          "id": "approach:crawl",
+          "timelineHash": "bfd0ad1e",
+          "samples": 24
+        },
+        {
+          "id": "melee:lash",
+          "timelineHash": "ae29d1eb",
+          "samples": 27
+        },
+        {
+          "id": "melee:bite",
+          "timelineHash": "13b16c5d",
+          "samples": 27
+        },
+        {
+          "id": "cast",
+          "timelineHash": "09044a03",
+          "samples": 30
+        },
+        {
+          "id": "hit",
+          "timelineHash": "968c10a5",
+          "samples": 25
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "bb578bba",
+          "samples": 20
+        },
+        {
+          "id": "faint",
+          "timelineHash": "20d1bf61",
+          "samples": 27
+        },
+        {
+          "id": "victory",
+          "timelineHash": "56f2fcff",
+          "samples": 30
+        },
+        {
+          "id": "tame",
+          "timelineHash": "38484f6b",
+          "samples": 31
+        },
+        {
+          "id": "feed",
+          "timelineHash": "96695352",
+          "samples": 29
+        }
+      ],
+      "samples": 392,
+      "maximumPositionError": 6.280369834735101e-16
+    },
+    {
+      "id": "flyer-membrane",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 22,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "0381956b",
+          "samples": 103
+        },
+        {
+          "id": "alert",
+          "timelineHash": "e6bf784a",
+          "samples": 16
+        },
+        {
+          "id": "approach:flight",
+          "timelineHash": "7f03d051",
+          "samples": 22
+        },
+        {
+          "id": "approach:crawl",
+          "timelineHash": "fbde8e6b",
+          "samples": 22
+        },
+        {
+          "id": "melee:bite",
+          "timelineHash": "43fbf009",
+          "samples": 24
+        },
+        {
+          "id": "melee:claw",
+          "timelineHash": "912d51e3",
+          "samples": 24
+        },
+        {
+          "id": "cast",
+          "timelineHash": "a6c9e341",
+          "samples": 27
+        },
+        {
+          "id": "hit",
+          "timelineHash": "a057161e",
+          "samples": 23
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "b2bb0fa9",
+          "samples": 18
+        },
+        {
+          "id": "faint",
+          "timelineHash": "d550afe7",
+          "samples": 25
+        },
+        {
+          "id": "victory",
+          "timelineHash": "c4b60c66",
+          "samples": 27
+        },
+        {
+          "id": "tame",
+          "timelineHash": "e4ed5c97",
+          "samples": 28
+        },
+        {
+          "id": "feed",
+          "timelineHash": "c5fd4a1d",
+          "samples": 27
+        }
+      ],
+      "samples": 386,
+      "maximumPositionError": 4.742874840267547e-16
+    },
+    {
+      "id": "primate",
+      "landmarkOwner": "synthetic:a11-fixture",
+      "synthetic": true,
+      "jointCount": 22,
+      "actions": [
+        {
+          "id": "idle",
+          "timelineHash": "e1170546",
+          "samples": 99
+        },
+        {
+          "id": "alert",
+          "timelineHash": "0c402edb",
+          "samples": 20
+        },
+        {
+          "id": "approach:walk",
+          "timelineHash": "9b5d084c",
+          "samples": 26
+        },
+        {
+          "id": "approach:climb",
+          "timelineHash": "f17a78f0",
+          "samples": 26
+        },
+        {
+          "id": "melee:punch",
+          "timelineHash": "7ccccdf9",
+          "samples": 28
+        },
+        {
+          "id": "melee:bite",
+          "timelineHash": "656fc608",
+          "samples": 28
+        },
+        {
+          "id": "cast",
+          "timelineHash": "d1068d55",
+          "samples": 31
+        },
+        {
+          "id": "hit",
+          "timelineHash": "e00bd048",
+          "samples": 27
+        },
+        {
+          "id": "dodge",
+          "timelineHash": "fca1215f",
+          "samples": 21
+        },
+        {
+          "id": "faint",
+          "timelineHash": "f6c97a0e",
+          "samples": 29
+        },
+        {
+          "id": "victory",
+          "timelineHash": "afe4e133",
+          "samples": 31
+        },
+        {
+          "id": "tame",
+          "timelineHash": "96529103",
+          "samples": 32
+        },
+        {
+          "id": "feed",
+          "timelineHash": "e3589282",
+          "samples": 30
+        }
+      ],
+      "samples": 428,
+      "maximumPositionError": 5.551115123125783e-16
+    }
+  ],
+  "controls": [
+    "quadruped: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "hopper: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "biped-bird: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "fish: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "insect: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "serpent: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "arachnid: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "radial: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "plant-woody: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "plant-herb: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "myriapod: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "cephalopod: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "flyer-membrane: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame",
+    "primate: foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame"
+  ],
+  "sources": [
+    {
+      "path": "/private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-family-pose-8z99mS/entry.mjs",
+      "sha256": "3df6fe70a791b9b176f661ed2c77c840bfa80e60ec67f5a401e81c133a50805d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-frame.ts",
+      "sha256": "c2af3fcb1f87014bbc44991624976506be951cea0a68da3c014789b4a25a6b4e"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/index.ts",
+      "sha256": "5782f93542b0f138786486d0657e3b02796ecd7192336735c83eeb78b2fbbc68"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "6a10af5e4b07fc49ba7a6a27ce58e96ffad983b3182549aecc8309a9d0e18c97"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "5aff1698c63fdd66f1f83f28b61912d477593c8af4a8b96761c91d8460277566"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "sha256": "6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/budget.ts",
+      "sha256": "3fac6ef0eeefe1f979130a6a0ba3adf08d3a876495e5c44a047ba1df2e1bafb5"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "08319431f79dd7d51ee247cb4065d49304c0cd332ccec6d7505cec0238af71d0"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "ea1a4a57a65aa10cc1872304c9e87f31f47fcea0081f7bb7f947afab46d8bbbc"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "f8091e7cec3ec55fc5da48f8d996fdf0e1545fa1adf593e5bbe60f9c11c9ba3d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "a3b07b1ab839db68669e5ae2fcd24e9314c7d6495a01d2b009e8b3f2d5a0b361"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timing.ts",
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "dc1ef0becac76be8997789b08e1058fcddd04fcdd12edfff71d10a3ce02abcac"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/index.js",
+      "sha256": "070038235ba75ec2186d054ebd83ae94e6de6a971f5d3f3d6cd1037551f94faa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/CSSPlugin.js",
+      "sha256": "41d061e8b0a2ddfdb647f8f85da690ec6d19194403021acca7088926105fe6bd"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/gsap-core.js",
+      "sha256": "83c4b6c0b020beba737b90896181560b76747342b0f7baa5ba1b185a75f65b65"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genome/src/index.ts",
+      "sha256": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "3d7ba73ec369a07fc1678610b32e77fb5beadedbdee1885ca544424588e1f587"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-pose-probe.mjs",
+      "sha256": "cb22ac288e1c7c070e72cb1907ae6c7de42279ac0ab373b6b269e84f04f867d0"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/hopper.synthetic.landmarks.json",
+      "sha256": "38a6c627dad6e3464237c4793c7c6aed44f55845a2ed9ade23d4a6ba4b22a249"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/hopper.synthetic.genome.json",
+      "sha256": "4e9bf55f993ea0a07421b45b66df57c6b2ca1da9bf1b69b6e1ae4cab35d55a0b"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/biped-bird.synthetic.landmarks.json",
+      "sha256": "9bfb15b524a5cf2e16615508b6fe3396f1aa94a42cb6648d53fce4ebf3e9a50e"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/biped-bird.synthetic.genome.json",
+      "sha256": "11b8e89811d9645bf5a8edc1fdec3038aa4bd0d0856d03749439f8152d97226f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/fish.synthetic.landmarks.json",
+      "sha256": "05d4c3831dfe8a4ca48be729e75dfc152841463286fcb30c40b818ce87669568"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/fish.synthetic.genome.json",
+      "sha256": "ccb713d7e2b27790c77b5d11aca19e5c483d4ae196eb505eaafc267534dbeddc"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/insect.synthetic.landmarks.json",
+      "sha256": "ac177b8602489aaabb592879497964f6b0682df806ad0faf17e380eddc69454d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/insect.synthetic.genome.json",
+      "sha256": "8603ec64a36effa6d95a6d6e43f7b9a1502aaccb1162647e98dc5ea102154099"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/serpent.synthetic.landmarks.json",
+      "sha256": "6ee862fe0ecca188ad90218332484aa31f5f0b779a964f283d912917ee2298f9"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/serpent.synthetic.genome.json",
+      "sha256": "8322971b97f59c74d4efd1b5ae2a35ede7c9f19b24607537b5e42c75232db561"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/arachnid.synthetic.landmarks.json",
+      "sha256": "2f53fb1d239cd43843dc65ffb347a1ea060a187976fb0c96022dc1627659f0fa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/arachnid.synthetic.genome.json",
+      "sha256": "a86b7007c026f34a4d52ec5d462eea4d036cc550940dbf7bee3aee4b788b5a4a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/radial.synthetic.landmarks.json",
+      "sha256": "44599d12c7bca5a9f8878a74aacb801526a00d69cc2baeabf950c18a8c30ff86"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/radial.synthetic.genome.json",
+      "sha256": "e045c508dffaa7f2b76adba3feaf89574d475170381879955202237e0099dbd6"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/plant-woody.synthetic.landmarks.json",
+      "sha256": "f606dd0ae8e80732d3d16302379190054f0dc8921502e2caf6e7dd7c24f6ec56"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/plant-woody.synthetic.genome.json",
+      "sha256": "1b8e856cf24dde0a1e0f4c3a0df5e88d9a67b2ced7280274b7ca7511d046aebe"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/plant-herb.synthetic.landmarks.json",
+      "sha256": "ee8d8a42af7f390dddd8c8bd5930969a1861e562561d7268d101c51293566c8b"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/plant-herb.synthetic.genome.json",
+      "sha256": "1b8e856cf24dde0a1e0f4c3a0df5e88d9a67b2ced7280274b7ca7511d046aebe"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/myriapod.synthetic.landmarks.json",
+      "sha256": "08ec63643f4375d7745c56866b27f256ee3eee390339f2cd1ae8664b6fec1f2f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/myriapod.synthetic.genome.json",
+      "sha256": "8322971b97f59c74d4efd1b5ae2a35ede7c9f19b24607537b5e42c75232db561"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/cephalopod.synthetic.landmarks.json",
+      "sha256": "60f50f71ec42f3905edfda99c73bbb71ec98d902265a88042d1711a6dc4a0777"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/cephalopod.synthetic.genome.json",
+      "sha256": "69a53211b33d9342e2f6425e713e67a032cf84a613581d91a0b0dc7ed0b913a3"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/flyer-membrane.synthetic.landmarks.json",
+      "sha256": "05a503fe6e5f02f1d09df339074f98e8aa3a79e7de955ab664b01cd5e7b9748f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/flyer-membrane.synthetic.genome.json",
+      "sha256": "11b8e89811d9645bf5a8edc1fdec3038aa4bd0d0856d03749439f8152d97226f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/primate.synthetic.landmarks.json",
+      "sha256": "aff676761115c833c7912a3f4217f9160ff3c67a036bb337cf56b0556bef743f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/motion-proof/fixtures/primate.synthetic.genome.json",
+      "sha256": "573233b9deff583e74415e9e1768db154945e93bb744970e9254bb8ded73825e"
+    }
+  ]
+}

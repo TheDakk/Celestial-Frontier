@@ -53,3 +53,17 @@ it('retains the actual coat fallback and does not let a raw gene override named 
  const g={...genome,skin:1},plan=planFor(g);if(plan?.kind!=='quad')throw Error('fixture route');
  expect(draw(g,plan.spec,'proc:fur-control').observed?.materials.surface).toBe('fur');
 });
+
+it('refuses extra-legged observer requests before paint, preserving ordinary procedural drawing',()=>{
+ const plan=planFor(genome);if(plan?.kind!=='quad'||!plan.spec.alien)throw Error('procedural quadruped fixture');
+ const ordinary=draw(genome,plan.spec,'proc:anatomy-control',false);
+ expect(draw(genome,plan.spec,'proc:anatomy-control').drawDigest).toBe(ordinary.drawDigest);
+ for(const legPairs of [3,4] as const){
+  const spec={...plan.spec,alien:{...plan.spec.alien,legPairs}};
+  // This used to return four overwritten fore/hind chains for six/eight legs.
+  expect(()=>draw(genome,spec,'proc:anatomy-control')).toThrow('cannot represent extra leg pairs');
+  const extra=draw(genome,spec,'proc:anatomy-control',false);
+  expect(extra.drawDigest).not.toBe(ordinary.drawDigest);
+  expect(draw(genome,spec,'proc:anatomy-control',false).drawDigest).toBe(extra.drawDigest);
+ }
+});

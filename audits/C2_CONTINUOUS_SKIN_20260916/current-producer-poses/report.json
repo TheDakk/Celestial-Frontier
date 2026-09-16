@@ -1,0 +1,230 @@
+{
+  "schema": "cf.current-pose-export/v1",
+  "status": "EXPORTED",
+  "scope": "Current resolved motion only; no skin/shape, rendering, performance or visual acceptance. Node/browser transcendental operations may differ at floating-point roundoff.",
+  "runtime": {
+    "node": "v26.8.2",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "manifest": {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-08/manifest.json",
+    "sha256": "fca3743b02be7ba659fac32d9d6db45529681a539f987a68c8c2355cb8a60486"
+  },
+  "producerSha256": "6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74",
+  "planningSha256": "843791922140ea3852628f6867febb21239fe331aba25ff9d448a70cf8a7e3cc",
+  "subjects": [
+    {
+      "id": "fox",
+      "file": "fox-poses.json",
+      "sha256": "d40de96dd21855a0f393f858e9df36b8b0e0b4f2bf4669882264221134d6b64a",
+      "denseSamples": 1201,
+      "namedSamples": 10
+    },
+    {
+      "id": "civet",
+      "file": "civet-poses.json",
+      "sha256": "08ace6f1db2f7c75a409494a76db7ce6bfd483da1458b4c6ff31e9eb38c48339",
+      "denseSamples": 1201,
+      "namedSamples": 10
+    },
+    {
+      "id": "procedural",
+      "file": "procedural-poses.json",
+      "sha256": "5f3131217ef8b4fe71ff7ed1264f3f60ffc2ce7f2634e0331d0d36c58f91916b",
+      "denseSamples": 1201,
+      "namedSamples": 10
+    }
+  ],
+  "exactSourceSnapshot": true,
+  "sources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/arena.ts",
+      "sha256": "2445eaffd1d4d9d25858a487b06c70b70b674d6cf4e9eeaf1243b5291eb19979"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/choreography.ts",
+      "sha256": "5d416ef1969ba5e3bf5e947f588807c28d977243131a71ea87b66a5ea398a840"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/fallback.ts",
+      "sha256": "feda6d4b6d688b090019f016812d60ff686f662fb575e9ac3d969dd5b74b6869"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/effects/anchors.ts",
+      "sha256": "3f26b0c6c40f4b210080e18d347d0ede86df2b3f4f018eb70cb9d344ef870870"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/effects/sequencer.ts",
+      "sha256": "3fdd7822ab2b6bc9ab9e89aa547a14c44e785cb79e5690baa209805496a47e59"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "dc1ef0becac76be8997789b08e1058fcddd04fcdd12edfff71d10a3ce02abcac"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "08319431f79dd7d51ee247cb4065d49304c0cd332ccec6d7505cec0238af71d0"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/budget.ts",
+      "sha256": "3fac6ef0eeefe1f979130a6a0ba3adf08d3a876495e5c44a047ba1df2e1bafb5"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "ea1a4a57a65aa10cc1872304c9e87f31f47fcea0081f7bb7f947afab46d8bbbc"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "f8091e7cec3ec55fc5da48f8d996fdf0e1545fa1adf593e5bbe60f9c11c9ba3d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "sha256": "6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/index.ts",
+      "sha256": "5782f93542b0f138786486d0657e3b02796ecd7192336735c83eeb78b2fbbc68"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "a3b07b1ab839db68669e5ae2fcd24e9314c7d6495a01d2b009e8b3f2d5a0b361"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "6a10af5e4b07fc49ba7a6a27ce58e96ffad983b3182549aecc8309a9d0e18c97"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "5aff1698c63fdd66f1f83f28b61912d477593c8af4a8b96761c91d8460277566"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/timing.ts",
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/CSSPlugin.js",
+      "sha256": "41d061e8b0a2ddfdb647f8f85da690ec6d19194403021acca7088926105fe6bd"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/gsap-core.js",
+      "sha256": "83c4b6c0b020beba737b90896181560b76747342b0f7baa5ba1b185a75f65b65"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/gsap/index.js",
+      "sha256": "070038235ba75ec2186d054ebd83ae94e6de6a971f5d3f3d6cd1037551f94faa"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/genome/src/index.ts",
+      "sha256": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+      "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_KIT_ENGINE_FIRST_20260912/masters/platypus.png",
+      "sha256": "55ed1d0549f4b74d0300e1c3428ca36e07a576b4e39a9c1f357e0da188bd39f9"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_BOUNDED_REPAIR_20260913/candidate-01/fox.landmarks.json",
+      "sha256": "8155226f9a6653e56d4a3d54ffef748ea561cf982c8da3e340044d48b6d2b2fe"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-08/civet.binding.json",
+      "sha256": "475b162b6698292c1362ef11d45067b40abafbe38a5ba5790201fb3d6677db6d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-08/fox.binding.json",
+      "sha256": "c24ed03fb15ae287df4772ddb34bf644a3de2d2c6aa9b342152f9f73b400c431"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-08/manifest.json",
+      "sha256": "fca3743b02be7ba659fac32d9d6db45529681a539f987a68c8c2355cb8a60486"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_CONTINUOUS_SKIN_20260916/candidate-08/procedural.binding.json",
+      "sha256": "e993db97f5eed31e88921106a5bc79a51ec3804507ecba0950f73e58eb52cf4a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_PARTS_ATLAS_20260913/civet-v2/keyed.png",
+      "sha256": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_PARTS_ATLAS_20260913/fox/keyed.png",
+      "sha256": "7b8f8418ecc52396332f6b6e02ada5863e051936a8a0ba47416e81a94588b0e6"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_PARTS_ATLAS_20260913/native-painter-parts-03/record.json",
+      "sha256": "9d0ae1874739d971383b50301a9153785f1b4f4f119244466b4b26aac74634be"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/C2_PARTS_ATLAS_20260913/procedural/keyed.png",
+      "sha256": "6e2824556f9fc7a61b4544cdc522afec7a72b3e7808719f53573988816b83480"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/CIVET_2D_PROOF_20260912/procedural-genome.json",
+      "sha256": "910816b54655967bf4c5522f9630a8a5f658599501fd2d61d4fc781abe0c7681"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/WILD_V43_PROOF_20260913/wild-anchors.json",
+      "sha256": "f630f3a005ed79f94c7b0b68d0838d6ae5e80ffb131e4e863a65b60815f4f9c6"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "fdd96e54311d80eed18a8701f9feb2bd68ec9e0893f86c3dc57718753c70e153"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/current-poses-entry.mjs",
+      "sha256": "2a44461257cf6124dd36998d3731d18dfadd7119e7043e7003597a74c0ce9473"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/export-current-poses.mjs",
+      "sha256": "ee271062225d6615d5e599f71b65b18798993ffefa14caf0f43e2002a4581095"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/parts-motion-entry.mjs",
+      "sha256": "b9e533f2fd462bee36aad476e6ffd213b3fa2b097679e12548486e1a684c3eee"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/turn-performance.mjs",
+      "sha256": "71d56f64f2e8ceef6507745a923260a0dceb271b1cc13f199163cae403e3d249"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/tools/local-image-generation/kit-contact-math.mjs",
+      "sha256": "3f4038c064cd5993fa2b97e0621d0e7caa6ead6ca38feb70cd712540ebf64059"
+    }
+  ]
+}

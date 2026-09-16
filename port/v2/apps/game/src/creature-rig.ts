@@ -1,8 +1,11 @@
 import {Container, Matrix, Rectangle, Sprite, Texture, Mesh, MeshGeometry} from 'pixi.js';
-import {applyPaintSkin,applyPaintPart,paintPartAreas,assertPaintPartShape,validatePaintSkin,type PaintSkin} from '../../../tools/creature-animation/paint-skin.mjs';
+import {applyPaintPart,paintPartAreas,assertPaintPartShape,validatePaintSkin,type PaintSkin} from '../../../tools/creature-animation/paint-skin.mjs';
 import {validateSeamBridges,createSeamGeometry,writeSeamPose} from '../../../tools/creature-animation/seam-bridge.mjs';
+import {createArapScratch,solveArapSkin} from '../../../tools/creature-animation/arap-skin.mjs';
+import {createCompiledSkinField,applyCompiledSkinField} from '../../../tools/creature-animation/compiled-skin-field.mjs';
+import {createOpaqueSeamSamplingGuard} from '../../../tools/creature-animation/seam-sampling-guard.mjs';
 import {GRAPH, admitRecord, hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
-import {composeAffine, rotationAround, IDENTITY_AFFINE, type Affine2} from '../../../tools/creature-animation/kinematics.js';
+import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
 
 export type CreaturePoseV1 = Readonly<Record<string, {rotation:number; dx?:number; dy?:number}>>;
 export interface CreatureRigV1 {
@@ -14,6 +17,10 @@ export interface CreatureRigV1 {
   readonly bounds:{width:number;height:number;groundLineY:number};
   dispose():void;
 }
+interface CreatureRigRuntimeDiagnostics {readonly schema:'cf.creature-rig-runtime/v1';readonly sweepBackend:'wasm'|'js'|'none';readonly fieldVertices:number;readonly normalPasses:number;readonly robustFallbacks:number;}
+const rigRuntimeDiagnostics=new WeakMap<CreatureRigV1,Readonly<CreatureRigRuntimeDiagnostics>>();
+/** Read the admitted backend and live pass counters for this actual loaded rig. */
+export function readCreatureRigRuntimeDiagnostics(rig:CreatureRigV1){return rigRuntimeDiagnostics.get(rig)??null;}
 export interface CreatureRigRecordV1 {
   readonly recipeHash:string;
   readonly template:{id:string;version:number};
@@ -41,7 +48,7 @@ export interface CreaturePartsBindingV1 {
 }
 const requireValue=(ok:unknown,reason:string):void=>{if(!ok)throw Error('Creature rig: '+reason);};
 const joints=['root',...GRAPH.map(([child])=>child)];
-const parentOf=new Map(GRAPH);
+
 const validBox=(box:Box,w:number,h:number)=>box&&[box.x,box.y,box.width,box.height].every(Number.isInteger)
   &&box.x>=0&&box.y>=0&&box.width>0&&box.height>0&&box.x+box.width<=w&&box.y+box.height<=h;
 const shaPattern=/^[a-f0-9]{64}$/;
@@ -49,6 +56,27 @@ async function decodeAtlasPng(bytes:Uint8Array):Promise<Texture>{
   const copy=new Uint8Array(bytes.length);copy.set(bytes);
   const bitmap=await createImageBitmap(new Blob([copy.buffer],{type:'image/png'}));
   return Texture.from(bitmap);
+}
+/** Preserve the original decode and write only opaque internal guard texels.
+ * In particular, never get/put the whole translucent atlas through ImageData. */
+async function decodeGuardedAtlasPng(bytes:Uint8Array,record:CreatureRigRecordV1,binding:CreaturePartsBindingV1){
+  const copy=new Uint8Array(bytes.length);copy.set(bytes);
+  const bitmap=await createImageBitmap(new Blob([copy.buffer],{type:'image/png'}));
+  try{
+    requireValue(bitmap.width===binding.atlasSize.width&&bitmap.height===binding.atlasSize.height,'decoded atlas dimensions');
+    const canvas=new OffscreenCanvas(bitmap.width,bitmap.height),context=canvas.getContext('2d');
+    requireValue(context,'atlas sampling guard context');context!.drawImage(bitmap,0,0);
+    const original=context!.getImageData(0,0,bitmap.width,bitmap.height).data;
+    const plan=createOpaqueSeamSamplingGuard({record,binding,atlas:{rgba:original,width:bitmap.width,height:bitmap.height}});
+    for(let first=0;first<plan.pixels.length;){let end=first+1;const start=plan.pixels[first]!;
+      while(end<plan.pixels.length&&plan.pixels[end]!.y===start.y&&plan.pixels[end]!.x===plan.pixels[end-1]!.x+1)end++;
+      const data=new Uint8ClampedArray((end-first)*4);
+      for(let i=first;i<end;i++)data.set(plan.pixels[i]!.rgba,(i-first)*4);
+      context!.putImageData(new ImageData(data,end-first,1),start.x,start.y);first=end;
+    }
+    const derived=await createImageBitmap(canvas);
+    return {texture:Texture.from(derived),samplingGuard:plan.receipt};
+  }finally{bitmap.close();}
 }
 
 /** Hash admission precedes image decode and Pixi allocation. The decoder owns a
@@ -63,6 +91,7 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   requireValue(shaPattern.test(bindingHash)&&await hashJSON(body)===bindingHash,'corrupted part binding');
   requireValue(binding.recordRecipeHash===record.recipeHash,'parts belong to another record');
   requireValue(shaPattern.test(binding.atlasSha256)&&await hashBytes(atlasBytes)===binding.atlasSha256,'mismatched atlas hash');
+  const skeleton=createSkeletonPoseProgram({graph:GRAPH,bodyAxis:['pelvis','chest']},record.landmarks);
   const {width:w,height:h}=record.geometry,{width:aw,height:ah}=binding.atlasSize;
   requireValue([aw,ah].every(n=>Number.isInteger(n)&&n>0&&n<=2048),'atlas budget');
   requireValue(binding.parts.length>0&&binding.parts.length<=40,'part budget');
@@ -80,7 +109,12 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
     requireValue(binding.seamBridges?.schema==='cf.seam-bridges/v1','seam bridge schema');
     validateSeamBridges(binding.seamBridges.groups,binding.parts,w,h,binding.atlasSize,joints);
   }
-  const atlas=await decodeAtlas(atlasBytes.slice());
+  const skin=binding.paintSkin,field=skin?new Float32Array(skin.vertices.length*2):null;
+  const shape=skin?.solver?createArapScratch(skin.vertices,skin.triangles!,w,h,skin.solver):null;
+  const target=shape&&field?field.slice():null;
+  const compiledField=skin?createCompiledSkinField(skin,w,h):null;
+  const decoded=decodeAtlas===decodeAtlasPng&&skin?await decodeGuardedAtlasPng(atlasBytes.slice(),record,binding):{texture:await decodeAtlas(atlasBytes.slice()),samplingGuard:undefined};
+  const atlas=decoded.texture;
   if(atlas.width!==aw||atlas.height!==ah){atlas.destroy(true);throw Error('Creature rig: decoded atlas dimensions');}
   const root=new Container(),far=new Container(),near=new Container();root.addChild(far,near);
   const textures:Texture[]=[];
@@ -93,7 +127,6 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
     (group.layer==='far'?far:near).addChild(display);
     return {group,part,buffers,geometry,display};
   });
-  const skin=binding.paintSkin,field=skin?new Float32Array(skin.vertices.length*2):null;
   const skins=(skin?.parts??[]).map(part=>{
     const source=binding.parts.find(p=>p.id===part.id)!,uvs=new Float32Array(part.vertices.length*2),positions=uvs.slice(),pending=uvs.slice();
     part.vertices.forEach((v,i)=>{const x=v.triangle.reduce((n,k,j)=>n+skin!.vertices[k]!.x*v.barycentric[j]!,0),y=v.triangle.reduce((n,k,j)=>n+skin!.vertices[k]!.y*v.barycentric[j]!,0);
@@ -106,29 +139,17 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
     textures.push(texture);const sprite=new Sprite(texture),display=new Container();
     sprite.position.set(box.x/w,box.y/h);sprite.scale.set(box.width/w/frame.width,box.height/h/frame.height);
     display.addChild(sprite);(part.layer==='far'?far:near).addChild(display);
-    const pivot=record.landmarks[parentOf.get(part.joint)??'root']!;
-    return {part,display,pivot:Object.freeze({x:pivot[0],y:pivot[1]})};
+    return {part,display,pivot:skeleton.pivot(part.joint)};
   });
-  const length=Math.hypot(record.landmarks.chest![0]-record.landmarks.pelvis![0],record.landmarks.chest![1]-record.landmarks.pelvis![1]);
   let disposed=false;
-  const parts=Object.freeze([...skins.map(({source,display})=>Object.freeze({id:source.id,display,pivot:{x:record.landmarks[parentOf.get(source.joint)??'root']![0],y:record.landmarks[parentOf.get(source.joint)??'root']![1]},layer:source.layer})),...entries.map(({part,display,pivot})=>Object.freeze({id:part.id,display,pivot,layer:part.layer})),
-    ...bridges.map(({group,display})=>Object.freeze({id:group.id,display,pivot:{x:record.landmarks[parentOf.get(group.ancestorJoint)??'root']![0],y:record.landmarks[parentOf.get(group.ancestorJoint)??'root']![1]},layer:group.layer}))]);
-  return Object.freeze({recipeHash:record.recipeHash,templateId:record.template.id,root,parts,
+  const parts=Object.freeze([...skins.map(({source,display})=>Object.freeze({id:source.id,display,pivot:skeleton.pivot(source.joint),layer:source.layer})),...entries.map(({part,display,pivot})=>Object.freeze({id:part.id,display,pivot,layer:part.layer})),
+    ...bridges.map(({group,display})=>Object.freeze({id:group.id,display,pivot:skeleton.pivot(group.ancestorJoint),layer:group.layer}))]);
+  const rig=Object.freeze({recipeHash:record.recipeHash,templateId:record.template.id,root,parts,
     bounds:Object.freeze({width:1,height:1,groundLineY:record.geometry.groundLineY}),
     applyPose(pose:CreaturePoseV1){
-      requireValue(!disposed,'disposed');requireValue(pose&&typeof pose==='object'&&!Array.isArray(pose),'invalid pose');
-      // Validate the whole pose before mutating any display object. Missing keys reset to rest.
-      for(const [joint,key] of Object.entries(pose)){
-        requireValue(joints.includes(joint),'unknown pose joint: '+joint);
-        requireValue(key&&Number.isFinite(key.rotation)&&Number.isFinite(key.dx??0)&&Number.isFinite(key.dy??0),'nonfinite pose');
-      }
-      const matrices:Record<string,Affine2>={};
-      for(const joint of joints){
-        const parent=parentOf.get(joint),pivot=record.landmarks[parent??'root']!,key=pose[joint];
-        const local=key?rotationAround({x:pivot[0],y:pivot[1]},key.rotation,{x:(key.dx??0)*length,y:(key.dy??0)*length}):IDENTITY_AFFINE;
-        matrices[joint]=parent?composeAffine(matrices[parent]!,local):local;
-      }
-      if(skin&&field){applyPaintSkin(skin,matrices,w,h,field);for(const entry of skins){applyPaintPart(entry.part,field,entry.pending);assertPaintPartShape(entry.part,skin,entry.pending,w,h,entry.areas);}}
+      requireValue(!disposed,'disposed');
+      const matrices=skeleton.evaluate(pose);
+      if(skin&&field&&compiledField){applyCompiledSkinField(compiledField,matrices,target??field);if(shape&&target)solveArapSkin(shape,target,field);for(const entry of skins){applyPaintPart(entry.part,field,entry.pending);assertPaintPartShape(entry.part,skin,entry.pending,w,h,entry.areas);}}
       // All spans are admitted into private scratch before any visible state changes.
       for(const bridge of bridges)writeSeamPose(bridge.group,matrices,w,h,bridge.buffers.pending,bridge.part.cutout);
       for(const entry of skins){entry.positions.set(entry.pending);entry.geometry.getBuffer('aPosition').update();}
@@ -137,6 +158,8 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
     },
     dispose(){if(disposed)return;disposed=true;root.destroy({children:true});for(const entry of skins)entry.geometry.destroy();for(const bridge of bridges)bridge.geometry.destroy();for(const texture of textures)texture.destroy(false);atlas.destroy(true);},
   });
+  rigRuntimeDiagnostics.set(rig,Object.freeze({schema:'cf.creature-rig-runtime/v1',sweepBackend:shape?.sweepBackend??'none',fieldVertices:skin?.vertices.length??0,get normalPasses(){return shape?.normalPasses??0;},get robustFallbacks(){return shape?.robustFallbacks??0;}}));
+  return rig;
 }
 
 /** Adapter to Claude's PoseTarget. Keeps the contract's radians/body-length
