@@ -4,6 +4,7 @@
  * adapter retains the exact snapshot's Earth scope and D-9e refusal boundary. */
 import { snapshotEarthLayerDataV1, EARTH_RAIN_INTENSITY_V1, EARTH_PAINTED_COMPOSITION_V1, EARTH_PAINTED_EDGE_RUNNERS_V1, EARTH_PAINTED_WEATHER_MAT_V1 } from '@cf/art/earth-resident-plan';
 import { speciesVisualKey } from '@cf/art/species-identity';
+import { FA_SIZE } from '@cf/domain-speciestraits';
 import { starClass, KIND_DESC, SOL_PLANETS } from '@cf/domain-starcatalog';
 import { systemFor } from '@cf/domain-worldgen';
 import { buildEarthLayeredRecipeV1 } from './earth-layered-recipe.js';
@@ -420,4 +421,46 @@ export function compileEarthKitEngineV4(input: unknown, kit: string, assets: Kit
     plate: assets.plate, atlas: assets.atlas, triptych: assets.triptych, foreground: assets.foreground,
     composition: profile, passes, finisherPrompt, sourceSnapshot: compiled.sourceSnapshot,
     qualityAccepted: false, mastersAccepted: true, textTokenCeiling: 512, finisherSteps: 1, skipOrganismPasses: true });
+}
+
+/** Authoring-only procedural proof under the canonical Earth lighting fixture.
+ * This does not add residents to Earth or broaden the runtime model adapter.
+ * Inputs must come from planFor, the winning painter and speciesGenomePalette;
+ * the host verifies the hash-bound observation before compiling. */
+export function compileProceduralQuadrupedProofV43(input: unknown, kit: string, source: {
+  genome: Record<string, unknown>;
+  identity: {speciesVisualKey:string; earthName:string|null; seed:number};
+  material: string;
+  palette: {base:string;lit:string;dark:string};
+  plan: {kind:string;spec:{legs:number;depth:number;len:number;neck:number;back:string;muzzle:number;jaw:string;ears:string;tail:string;coat:string;horn?:string;alien?:{legPairs?:number;eyes?:string;skin?:string;tendrils?:boolean;lumin?:boolean;sail?:boolean;armor?:boolean}}};
+}) {
+  const {genome,identity,plan,palette,material}=source,spec=plan.spec;
+  if(identity.earthName!==null||genome._earthName||genome.kingdom!=='fauna'||identity.seed!==genome.seed||identity.speciesVisualKey!==speciesVisualKey(genome))throw Error('Procedural proof identity mismatch');
+  if(plan.kind!=='quad'||spec.alien?.legPairs!==2||spec.alien.eyes!=='normal'||spec.tail!=='banded'||spec.alien.tendrils||spec.alien.armor||(spec.horn&&spec.horn!=='straight'))throw Error('Procedural proof anatomy unsupported');
+  if(material!==(spec.alien.skin??'fur'))throw Error('Procedural proof painted material mismatch');
+  for(const n of[spec.legs,spec.depth,spec.len,spec.neck,spec.muzzle])if(!Number.isFinite(n)||n<=0)throw Error('Procedural proof proportion');
+  for(const v of Object.values(palette))if(!/^rgb\(\d+,\d+,\d+\)$/.test(v)||v.match(/\d+/g)!.some(n=>Number(n)>255))throw Error('Procedural proof palette');
+  const [red,green,blue]=palette.base.match(/\d+/g)!.map(Number);
+  if(red!>green!+40&&blue!>green!+40)throw Error('Procedural proof pigment conflicts with magenta key; preserve genome and refuse');
+  if(!Number.isInteger(genome.size)||Number(genome.size)<0||Number(genome.size)>=FA_SIZE.length)throw Error('Procedural proof size');
+  const compiled=compileEarthArtKitV4(input,kit),template=compiled.familyReferences[0]!;
+  const counts='one head, exactly one head; four legs, two fore and two hind, exactly four legs; two ears, exactly two ears; two eyes, exactly two eyes; one tail, exactly one tail'+(spec.horn?'; two straight horns, exactly two horns':'');
+  const size='source size class '+FA_SIZE[Number(genome.size)]+' (relative metre scale is not supplied by this adapter; no scale prop)';
+  const traits=`${material}; base pigment ${palette.base}, illuminated pigment ${palette.lit}, dark pigment ${palette.dark}; ${spec.coat} body markings and a banded tail`;
+  const proportion=`body length ${spec.len}, torso depth ${spec.depth}, leg length ${spec.legs}, neck length ${spec.neck}, in the same source coordinate units; preserve their ratios; ${spec.back} back; ${spec.jaw} jaw, muzzle ratio ${spec.muzzle}, ${spec.ears} ears`;
+  const accessories=[spec.horn?'two straight horns':'no horns',spec.alien.sail?'one dorsal sail':'no dorsal sail',spec.alien.lumin?'source-owned bioluminescence as bounded painted shapes':'no bioluminescence'].join('; ');
+  const card=compiled.systemCard.split('\n').map(line=>line.startsWith('  Fauna adaptation:')?`  Fauna adaptation: authoring comparison visitor, procedural seed ${identity.seed}; not an Earth resident or claimed home world; ${traits}; ${proportion}; ${accessories}.`:line).join('\n');
+  const subject=`One procedural quadruped, seed ${identity.seed}; ${size}; ${counts}; ${traits}; ${proportion}; land locomotion on four paws, weight supported by connected shoulder, pelvis and jointed limbs; natural mouth and paws, no invented ability weapons; ${accessories}; no armour, no harness, no gear; alert animal expression, readable brow, closed natural mouth. The source silhouette is anatomy evidence only: render organic volume, convincing muscle and surface detail in the frozen painted style, not the source canvas's flat ellipses, graphic shading or toy face.`;
+  const replaceSection=(text:string,start:string,end:string,value:string)=>{
+    if(text.split(start).length!==2||text.split(end).length!==2)throw Error('Procedural proof prompt boundary');
+    return text.slice(0,text.indexOf(start)+start.length)+value+text.slice(text.indexOf(end));
+  };
+  let prompt=template.prompt.replace(template.systemCard,card);
+  prompt=replaceSection(prompt,'SUBJECT\n','\n\nACCURACY\n',subject);
+  const accuracy=prompt.slice(prompt.indexOf('ACCURACY\n')+9,prompt.indexOf('\n\nLAYOUT\n'));
+  const fixed=accuracy.replace(/Anatomy\/count constraints: .*?\./,`Anatomy/count constraints: ${counts}.`).replace('a fraction of human height',size);
+  prompt=replaceSection(prompt,'ACCURACY\n','\n\nLAYOUT\n',fixed);
+  return freeze({schema:'cf.art.procedural-quadruped-proof.v1',qualityAccepted:false,animationReady:false,
+    source,systemCard:card,subject,prompt,scope:'authoring comparison under canonical Earth light; not runtime generation or a home-world claim',
+    needs:'new painting hash, fitted landmarks and masks; canvas masks must not be reused'});
 }
