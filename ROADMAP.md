@@ -17,18 +17,21 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September 17 · verified batch staged; signing blocked
+## SESSION HANDOFF — September 17 · anatomy batch signed and verified
 
-HEAD is still 0426ef4d on openai/mac: 126 ahead of cached origin/openai/mac and 237 ahead of
-cached origin/develop. The prepared flora and fauna work is staged. Both signing attempts
-failed with `error: 1Password: agent returned an error` (exit 128). Nick was asked to unlock
-1Password and approve signing. Restore the configured signer and commit this verified batch;
-do not discard it, restart from HEAD, change signers or use an unsigned fallback.
+Signed implementation and consolidated review: 0b8857511c133fef36299505c9e6927e4e2d47f4,
+on openai/mac, independently verified against the existing configured public signing key.
+Nick's requested retry succeeded after the two retained failures. At that implementation
+commit the cached ahead counts were 127 versus origin/openai/mac and 238 versus origin/develop.
+This documentation-only successor records the resolution; use git log for its own exact hash.
+No unsigned fallback or persistent signer configuration change. Only the pre-existing untracked
+.DS_Store remains outside the committed work.
 No GitHub writes, branches, merge, release, deployment, history rewrite or LFS migration.
 PR42 remains parked; Nick’s explicit no-hosted-writes instruction controls.
 
 Start audits/ANATOMY_COMPLETION_20260917/README.md, ANATOMY_STATUS.md, coverage-final.json and
-implementation-summary.json. Signing evidence is in signing-blocker.json. Consolidated review
+implementation-summary.json. SIGNED_CHECKPOINT.json records success; signing-blocker.json
+retains the historical failures. Consolidated review
 is audits/ANATOMY_COMPLETION_20260917/CLAUDE_REVIEW_REPORT.md, with the copy-ready
 CLAUDE_REVIEW_PROMPT.md and hashed CLAUDE_REVIEW_INPUTS.json beside it. Nick requested the full
 review on September 17; it includes the accumulated C1–C5 work since the incorporated band review
@@ -75,8 +78,9 @@ C1 final Wild approval remains Nick’s. C3 source coverage remains 203/631 with
 second-weather and phone-finisher decisions remain open. Prior C2/C3 review stays consolidated.
 C5 promotion and LFS still require their exact gates.
 
-OpenAI/Codex: restore signing, commit and independently verify this staged batch, then continue
+OpenAI/Codex: the batch is signed and verified. Reconcile Claude's review, then continue
 source-owned masks/graphs/actions across the remaining targets and repair flora shape/CPU.
 Claude: open now for Nick’s requested consolidated read-only review of this Codex worktree.
-Do not pull, merge, copy source into the other lane or assume HEAD includes the staged work.
+Do not pull, merge or copy source into the other lane. Review the signed 0b885751 implementation
+and this documentation successor; the review manifest preserves its pre-commit snapshot scope.
 No PR is needed at this checkpoint. Report actual local commit/ahead state; infer no remote state.

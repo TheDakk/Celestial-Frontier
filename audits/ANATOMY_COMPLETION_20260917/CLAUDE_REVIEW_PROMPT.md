@@ -1,14 +1,17 @@
 # Copy-ready Claude review request
 
+**Signing resolved:** Nick's retry produced signed commit `0b8857511c133fef36299505c9e6927e4e2d47f4`, independently verified against the configured public signing key. The implementation and complete review packet are now committed locally. `SIGNED_CHECKPOINT.json` records this result. Staged/blocked statements below describe the preserved pre-commit review snapshot, not the current signing state. No source code or diagnostic inputs changed in this documentation update; no GitHub write occurred.
+
 Review the full accumulated Celestial Frontier work read-only in:
 `/Users/nick/Projects/celestial-frontier-openai-mac`
-Branch: `openai/mac`; HEAD: `0426ef4db5dc55205925725b9579ca61d960cd42`.
+Branch: `openai/mac`; signed implementation: `0b8857511c133fef36299505c9e6927e4e2d47f4`.
+The documentation successor records signing recovery; no implementation changed afterward.
 
 Read ROADMAP.md, then:
 `audits/ANATOMY_COMPLETION_20260917/CLAUDE_REVIEW_REPORT.md`
 and its `CLAUDE_REVIEW_INPUTS.json`.
 
-This includes all tracked work after the last incorporated September 13 band review plus the September 17 staged implementation. Do not review HEAD alone: the latest implementation is uncommitted because two configured 1Password signing attempts failed. The report distinguishes historical evidence, current source diagnostics and human acceptance. The input manifest records the implementation before review-only documentation was added; verify source/evidence hashes against the working files and retain that scope.
+This includes all tracked work after the last incorporated September 13 band review plus the September 17 implementation, now committed and signature-verified. The two earlier 1Password failures remain historical evidence. The report distinguishes historical evidence, current source diagnostics and human acceptance. The input manifest records the implementation before review-only documentation was added; verify source/evidence hashes against the working files and retain that scope.
 
 Review all C1–C5 changes and the linked earlier C2/C3 evidence, including the full 58-species roster, new flora and crab fits, source anatomy observations, shared solvers/actions, combat/habitat gaps, audio production/rights/listening, defect fixes, negative controls and failed diagnostics. No new target species is visually qualified. Five have bindings; 53 do not. Three flora bindings retain shape/performance defects. The full application suite's stale Compendium producer certificate is still unresolved.
 

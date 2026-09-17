@@ -1,5 +1,7 @@
 # Consolidated review prompt — full pass, September 16–17
 
+**Signing update:** the full implementation/review packet is committed as signed, independently verified `0b885751`. See ../ANATOMY_COMPLETION_20260917/SIGNED_CHECKPOINT.json. Earlier staged/signing-blocked text below is historical.
+
 **September 17 full review entry point:** [complete consolidated report](../ANATOMY_COMPLETION_20260917/CLAUDE_REVIEW_REPORT.md) and [copy-ready request](../ANATOMY_COMPLETION_20260917/CLAUDE_REVIEW_PROMPT.md). These supersede the current-state/signing statements below; the earlier scope is retained as historical context. The implementation has two failed signing attempts and remains staged. Nick has now requested Claude review; open Claude for read-only review of the Codex working files, without lane synchronization.
 
 ## Prior review context

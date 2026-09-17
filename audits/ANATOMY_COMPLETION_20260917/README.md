@@ -1,5 +1,7 @@
 # Anatomy completion — September 17 continuation
 
+**Signing resolved:** Nick's retry produced signed commit `0b8857511c133fef36299505c9e6927e4e2d47f4`, independently verified against the configured public signing key. The implementation and complete review packet are now committed locally. `SIGNED_CHECKPOINT.json` records this result. Staged/blocked statements below describe the preserved pre-commit review snapshot, not the current signing state. No source code or diagnostic inputs changed in this documentation update; no GitHub write occurred.
+
 **Review requested September 17:** use [the full consolidated report](CLAUDE_REVIEW_REPORT.md) and [copy-ready Claude request](CLAUDE_REVIEW_PROMPT.md). Claude should now open the Codex working files read-only; no branch synchronization. Two signing attempts failed, and the implementation is still staged. Earlier “need not open” and first-attempt text below records the preceding handoff.
 
 This is prepared local work after0426ef4d, not completed C2 acceptance. The first signed commit

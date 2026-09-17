@@ -1,5 +1,7 @@
 # Celestial Frontier — full consolidated report for Claude
 
+**Signing resolved:** Nick's retry produced signed commit `0b8857511c133fef36299505c9e6927e4e2d47f4`, independently verified against the configured public signing key. The implementation and complete review packet are now committed locally. `SIGNED_CHECKPOINT.json` records this result. Staged/blocked statements below describe the preserved pre-commit review snapshot, not the current signing state. No source code or diagnostic inputs changed in this documentation update; no GitHub write occurred.
+
 Prepared September 17, 2026. Review the accumulated work since the last incorporated C2 review, including the uncommitted September 17 continuation. **This is an implementation and evidence report, not an acceptance or release certificate.**
 
 ## 1. Review scope and exact local state

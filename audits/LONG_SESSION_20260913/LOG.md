@@ -858,3 +858,16 @@ code change, battery rerun, signing attempt or GitHub write. The two-attempt sig
 remains. Open Claude now for read-only review of Codex's working files; no lane sync or PR.
 OpenAI preserves the staged implementation and will reconcile findings, restore configured
 signing, and continue the remaining fits. PR42 stays parked.
+
+
+## September 17 — requested signing retry succeeded
+
+Nick requested another signed commit attempt. The configured signer succeeded: 0b885751
+(1,279 files; 3,628,600 inserted lines; 101 deleted). Independent SSH verification against the
+existing configured public key passes using a temporary verifier allowlist; persistent Git/signing
+configuration was unchanged. Cached ahead counts at this commit: 127 upstream, 238 develop.
+This documentation successor refreshes current review/handoff status; prior failure receipts and
+pre-commit hash inventories remain intact. No code change, battery rerun, GitHub write or release.
+Only the pre-existing untracked .DS_Store remains. OpenAI retains local implementation ownership;
+Claude can open the consolidated report for read-only review of the signed Codex worktree, without
+branch synchronization. No PR needed; PR42 parked.
