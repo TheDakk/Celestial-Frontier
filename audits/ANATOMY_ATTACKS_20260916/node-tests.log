@@ -1,0 +1,16 @@
+✔ mirroring uses the same published mouth, not the opposite body end (0.413458ms)
+✔ three-turn capture admits full film and rejects truncated, 30 Hz and over-budget controls (0.151417ms)
+✔ weapon contact uses the declared painted paw, not an unrelated jaw (0.639291ms)
+✔ same encounter replays exactly; distinct seeds alter composition and every actor has a turn (1.337917ms)
+✔ dry fish, foreign biome templates, duplicate actors and missing cards refuse (0.122292ms)
+✔ run-up and return are bounded, return to home, and seek matches frame playback (0.1415ms)
+✔ impact follows the anatomy motion contact time, not settling duration (0.081459ms)
+✔ missing anatomical contact time cannot silently use the old percentage estimate (0.147125ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 40.441417

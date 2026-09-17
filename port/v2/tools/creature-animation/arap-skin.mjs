@@ -2,6 +2,7 @@
  * targets; this solver neither authors curves nor changes bone transforms.
  * Independent anatomical surfaces must supply independent vertex inventories. */
 import{createWasmArapPass}from'./wasm-arap-sweep.mjs';
+import{createOrientationProjector,projectOrientations}from'./orientation-projector.mjs';
 const need=(ok,why)=>{if(!ok)throw Error('ARAP skin: '+why);};
 export function createArapScratch(vertices,triangles,width,height,options={}){
  need(Array.isArray(vertices)&&vertices.length>=3&&vertices.length<=40000,'vertex budget');
@@ -36,7 +37,7 @@ export function createArapScratch(vertices,triangles,width,height,options={}){
  for(let k=0;k<areas.length;k++){triangleSigns[k]=Math.sign(areas[k]);triangleFloors[k]=Math.abs(areas[k])*minimumAreaRatio;triangleMovable[k]=(pins[triangles[k*3]]?0:1)|(pins[triangles[k*3+1]]?0:2)|(pins[triangles[k*3+2]]?0:4);}
  let axis=1,axisDistance=0;for(let i=1;i<n;i++){const distance=(rest[i*2]-rest[0])**2+(rest[i*2+1]-rest[1])**2;if(distance>axisDistance){axis=i;axisDistance=distance;}}need(axisDistance>1e-18,'rest axis');
  const sweepKernel=createWasmArapPass({rest,rows:solveRows,neighbours:neighbourDofs,reciprocals:solveReciprocals,starts,deltas,lambda});
- return {sweepBackend:sweepKernel?'wasm':'js',get normalPasses(){return sweepKernel?.normalPasses??0;},get robustFallbacks(){return sweepKernel?.robustFallbacks??0;},sweepKernel,n,width,height,rest,starts,neighbours,neighbourDofs,deltas,pins,freeDofs,lambda,divisor,solveRows,solveDivisors,solveReciprocals,triangleDofs,triangleSigns,triangleFloors,triangleMovable,iterations,globalIterations,targetWeight,axis,triangles:Uint32Array.from(triangles),areas,orientationIterations,minimumAreaRatio,
+ return {orientationQueue:createOrientationProjector(triangles,n),sweepBackend:sweepKernel?'wasm':'js',get normalPasses(){return sweepKernel?.normalPasses??0;},get robustFallbacks(){return sweepKernel?.robustFallbacks??0;},sweepKernel,n,width,height,rest,starts,neighbours,neighbourDofs,deltas,pins,freeDofs,lambda,divisor,solveRows,solveDivisors,solveReciprocals,triangleDofs,triangleSigns,triangleFloors,triangleMovable,iterations,globalIterations,targetWeight,axis,triangles:Uint32Array.from(triangles),areas,orientationIterations,minimumAreaRatio,
   position:sweepKernel?.position??new Float64Array(n*2),target:sweepKernel?.target??new Float64Array(n*2),rotation:sweepKernel?.rotation??new Float64Array(n*2),rhs:sweepKernel?.rhs??new Float64Array(n*2),
   stats:{rigid:false,maximumTargetErrorPx:0,rmsTargetErrorPx:0,maximumProjectionPx:0,flippedTriangles:0,minimumAreaRatio:1,orientationPasses:0}};
 }
@@ -89,24 +90,7 @@ export function solveArapSkin(s,targets,output){
  // constraints prevent the remedy from concealing a mirrored piece of paint.
  // This acts on skin vertices, never the pose/bone transforms, and cannot move
  // hard contact handles. A contradictory pinned pose refuses atomically.
- rhs.set(p);let orientationPasses=0;
- for(let pass=0;pass<s.orientationIterations;pass++){
-  let changed=0,progressed=false;for(let k=0;k<triangleDofs.length;k+=3){
-   const a=triangleDofs[k],b=triangleDofs[k+1],c=triangleDofs[k+2],triangle=k/3,sign=triangleSigns[triangle],movable=triangleMovable[triangle];
-   const area=(p[b]-p[a])*(p[c+1]-p[a+1])-(p[b+1]-p[a+1])*(p[c]-p[a]),constraint=area*sign-triangleFloors[triangle];
-   if(constraint>=0)continue;changed++;
-   const ax=p[b+1]-p[c+1],ay=p[c]-p[b],bx=p[c+1]-p[a+1],by=p[a]-p[c],cx=p[a+1]-p[b+1],cy=p[b]-p[a];
-   const norm=(movable&1?ax*ax+ay*ay:0)+(movable&2?bx*bx+by*by:0)+(movable&4?cx*cx+cy*cy:0);if(norm<1e-20)continue;
-   const scale=-constraint*sign/norm;
-   if(movable&1){const x=p[a],y=p[a+1];p[a]+=scale*ax;p[a+1]+=scale*ay;if(!Object.is(x,p[a])||!Object.is(y,p[a+1]))progressed=true;}
-   if(movable&2){const x=p[b],y=p[b+1];p[b]+=scale*bx;p[b+1]+=scale*by;if(!Object.is(x,p[b])||!Object.is(y,p[b+1]))progressed=true;}
-   if(movable&4){const x=p[c],y=p[c+1];p[c]+=scale*cx;p[c+1]+=scale*cy;if(!Object.is(x,p[c])||!Object.is(y,p[c+1]))progressed=true;}
-  }
-  // Repeating a sweep that changed no Float64 coordinate is an exact no-op,
-  // including signed zero. Keep the final orientation refusal: a stalled
-  // contradictory contact pose still fails and never publishes its pixels.
-  orientationPasses=pass+1;if(!changed||!progressed)break;
- }
+ rhs.set(p);const orientationPasses=projectOrientations(s);
  let flipped=0,minRatio=Infinity;for(let k=0;k<triangleDofs.length;k+=3){const a=triangleDofs[k],b=triangleDofs[k+1],c=triangleDofs[k+2],ratio=((p[b]-p[a])*(p[c+1]-p[a+1])-(p[b+1]-p[a+1])*(p[c]-p[a]))/s.areas[k/3];if(!Number.isFinite(ratio)||ratio<=0)flipped++;minRatio=Math.min(minRatio,ratio);}
  let projection=0;for(let i=0;i<n;i++)projection=Math.max(projection,(p[i*2]-rhs[i*2])**2+(p[i*2+1]-rhs[i*2+1])**2);
  s.stats.flippedTriangles=flipped;s.stats.minimumAreaRatio=minRatio;s.stats.orientationPasses=orientationPasses;s.stats.maximumProjectionPx=Math.sqrt(projection);

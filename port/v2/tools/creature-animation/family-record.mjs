@@ -13,7 +13,7 @@ export function measureFamilyBounds(template,landmarks){
  return {boneLengths:bones,measures};
 }
 export function checkFamilyGeometry(record,alpha){
- if(record?.template?.id==='quadruped')return checkQuadruped(record,alpha);
+ if(record?.template?.id==='quadruped'&&!record.anatomy)return checkQuadruped(record,alpha);
  const template=familyContractForRecord(record);
  need(record.kind===template.id&&record.template.version===template.version,'unsupported body or template version');
  need(record.clipSetId===template.clipSetId&&!Object.hasOwn(record,'clipOverrides'),'shared clip set required');
@@ -42,7 +42,7 @@ export async function sealFamilyRecord(input){
 }
 export async function admitFamilyRecord(record,cutoutBytes,alpha){
  const template=familyContractForRecord(record);
- if(template.id==='quadruped'){await admitQuadruped(record,cutoutBytes,alpha);return template;}
+ if(template.id==='quadruped'&&!record.anatomy){await admitQuadruped(record,cutoutBytes,alpha);return template;}
  const {recipeHash,...body}=record;
  need(typeof recipeHash==='string'&&await hashJSON(body)===recipeHash,'corrupted landmark / recipe hash');
  need(await hashBytes(cutoutBytes)===record.geometry?.cutoutAssetHash,'mismatched cut-out hash');

@@ -1,0 +1,15 @@
+{
+  "head": "fd26b9f8ed1f01e2e294858f3c4c872eade738bc",
+  "branch": "openai/mac",
+  "aheadOriginOpenaiMac": 121,
+  "aheadOriginDevelop": 232,
+  "state": "Saved and staged; signed checkpoint failed",
+  "githubWrites": "none",
+  "mainTsHunk": false,
+  "attempt": {
+    "command": "git commit -S",
+    "exitCode": 128,
+    "error": "1Password: agent returned an error; failed to write commit object"
+  },
+  "unsignedFallback": false
+}

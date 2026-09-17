@@ -21,7 +21,7 @@ import { alienEyes, alienSkin, alienGlow, alienSail, alienArmor, type AlienTrait
 import { Tube, pathThrough, spline } from './torso.js';
 import { coatMaterial, type Material, countershade, coatSpots, coatRosettes, coatBars, coatPatches, coatBlotches, coatBrindle, coatShaggy, shaggyRim, coatBlocks } from './skin.js';
 import { createSpeciesCanvas, type ArtContext2D } from './speciescanvas.js';
-import type { QuadrupedAnatomyObserver } from './quadruped-anatomy.js';
+import { observeQuadrupedWeapons, type QuadrupedAnatomyObserver } from './quadruped-anatomy.js';
 import { PainterPartCapture, type PaintedPart } from './painter-part-capture.js';
 
 type G = Record<string, unknown>;
@@ -5244,7 +5244,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '',
       drawnJoints[id] = [q[0]! / S, q[1]! / S];
     }
     observeAnatomy({ ownerId: 'faunaQuadruped', kind: 'quadruped', width: S,
-      groundLineY: groundY / S, landmarks: drawnJoints,
+      groundLineY: groundY / S, landmarks: drawnJoints, weapons: observeQuadrupedWeapons(foot, drawnJoints),
       ...(masks ? {partMasks: masks.finish()} : {}),
       materials: { surface: String(spec.alien?.skin ?? spec.mat ?? FAM0.mat), paletteSource: name.startsWith('proc:') ? 'genome' : 'named' } });
   }

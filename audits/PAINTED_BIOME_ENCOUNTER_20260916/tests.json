@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "commands": [
+    {
+      "command": "node --test port/v2/tools/biome-encounter/*.test.mjs",
+      "tests": 5
+    },
+    {
+      "command": "node port/v2/tools/run-unit-tests.mjs apps/game/src/battle-habitat.test.ts",
+      "tests": 9
+    },
+    {
+      "command": "npm run typecheck --prefix port/v2",
+      "exit": 0
+    },
+    {
+      "command": "node tools/validate.js",
+      "exit": 0,
+      "fingerprint": "50 probes identical"
+    }
+  ],
+  "nativeReport": "native-02/report.json",
+  "browserReview": "live scene and Clearing927 visually verified through CUA"
+}

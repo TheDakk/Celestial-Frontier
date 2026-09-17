@@ -149,6 +149,7 @@ export function buildActionTimeline(card: BodyCard, action: MotionAction, seed: 
   const rule = secondary[0];
   const body: Omit<MotionTimeline, 'hash'> = {
     kind: 'motion-timeline', actionId: action.id, family: action.family, loop: action.loop, seed, recipeHash: card.recipeHash, massClass: card.massClass.name,
+    limitsRad:Object.fromEntries(Object.entries(card.bounds.limitsDeg).map(([j,l])=>[j,card.projectionSigns?.[j]===-1?{min:-l.max*DEG,max:-l.min*DEG}:{min:l.min*DEG,max:l.max*DEG}])),
     bodyMs, durationMs: action.loop ? bodyMs : bodyMs + maxLag, phases, tracks, root: { dx: rootKeys('dx'), dy: rootKeys('dy') }, secondary,
     deform: { squash: rule?.squash ?? 0, stretch: rule?.stretch ?? 0 },
     hitstopMs: action.family === 'melee' ? hitstopMs(mass) : 0, luminousPulseMs: card.luminous ? 1800 : 0, clamped, notes,

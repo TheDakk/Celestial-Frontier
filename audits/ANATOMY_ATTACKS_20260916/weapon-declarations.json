@@ -1,0 +1,25 @@
+{
+  "rosette": {
+    "recordHash": "161d92c43b7153a4d52614b4f64fcd555b4efe300546a8c911ad5ae14c18773d",
+    "source": "Authored observation of retained painted master: visible jaw and clawed forepaws; no per-creature curves.",
+    "weapons": [
+      "bite",
+      "claw"
+    ]
+  },
+  "broad": {
+    "recordHash": "71709b73744d4105eae86f63d9aed803d0ad8e6778029a5e57e48241de5c13c0",
+    "source": "Authored observation of retained painted master: visible jaw and clawed forepaws; no per-creature curves.",
+    "weapons": [
+      "bite",
+      "claw"
+    ]
+  },
+  "crystal": {
+    "recordHash": "a4b33f492442305bb787bbd5dd6809e33b375447f0b36896b8b25f33af1b0669",
+    "source": "Authored observation of retained painted master and fitted parts; no per-creature curves. Crystal horns lack an authored horn contact landmark and are not admitted as a weapon.",
+    "weapons": [
+      "bite"
+    ]
+  }
+}

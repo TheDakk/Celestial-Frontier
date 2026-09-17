@@ -209,12 +209,14 @@ export const FAMILY_TEMPLATES: Readonly<Record<FamilyTemplateId, MotionTemplate>
   hopper: HOPPER, 'biped-bird': BIRD, fish: FISH, insect: INSECT, serpent: SERPENT, arachnid: ARACHNID, radial: RADIAL, 'plant-woody': WOODY, 'plant-herb': HERB,
   myriapod: MYRIAPOD, cephalopod: CEPHALOPOD, 'flyer-membrane': FLYER, primate: PRIMATE,
 });
-/** Painter family / rig family / flora architecture → template. Unlisted families have no motion library (whole-portrait fallback). */
+/** Painter family / rig family / flora architecture → template. Unlisted families have no motion library (whole-portrait fallback).
+ * Broad marine, crust and sessile labels are not anatomical inventories. They
+ * require a resolved body plan rather than silently borrowing fish/spider/bell bones. */
 export const TEMPLATE_BY_FAMILY: Readonly<Record<string, FamilyTemplateId | 'quadruped'>> = F({
   mammal: 'quadruped', reptile: 'quadruped', amphibian: 'quadruped', turtle: 'quadruped', quadruped: 'quadruped',
   frog: 'hopper', hopper: 'hopper', leaper: 'hopper',
-  bird: 'biped-bird', fish: 'fish', marine: 'fish', insect: 'insect', arachnid: 'arachnid', crust: 'arachnid', snake: 'serpent', serpent: 'serpent',
-  jelly: 'radial', sessile: 'radial', radial: 'radial',
+  bird: 'biped-bird', fish: 'fish', insect: 'insect', arachnid: 'arachnid', snake: 'serpent', serpent: 'serpent',
+  jelly: 'radial', radial: 'radial',
   myriapod: 'myriapod', centipede: 'myriapod', millipede: 'myriapod', ceph: 'cephalopod', cephalopod: 'cephalopod', bat: 'flyer-membrane', 'flyer-membrane': 'flyer-membrane', primate: 'primate',
   tree: 'plant-woody', shrub: 'plant-woody', vine: 'plant-woody', cane: 'plant-woody',
   fern: 'plant-herb', grass: 'plant-herb', rosette: 'plant-herb', seaweed: 'plant-herb', fungal: 'plant-herb',
