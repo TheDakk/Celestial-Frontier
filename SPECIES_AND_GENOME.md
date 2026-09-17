@@ -1,5 +1,16 @@
 # Celestial Frontier — Species & Genome System
 
+[Count-preserving anatomy](audits/COUNTED_ANATOMY_20260916/README.md), matches code as of
+September 16, 2026: radial and cephalopod records can declare actual arm/tentacle counts in
+`cf.anatomy-presence/v2`. One shared expander feeds motion and rig admission; no missing
+landmarks are synthesized. The painters publish ten radial arms or eight cephalopod arms
+plus the squid's two feeding tentacles, with unchanged drawing commands. Repeated motion
+uses shared family curves, and cephalopod impact follows the appendage that actually lashes.
+The 64-joint and 40-part/2048px atlas budgets remain. All94 supported count combinations
+pass1,222 clips/147,862 synthetic pose samples;20 oversized combinations refuse. This closes
+a count/curve contract gap, not painted fitting or phone qualification. Complete masks/body
+landmarks, other variable topologies and the58 unmatched named-species structures remain.
+
 [Animation library and shared deformation review](audits/ANIMATION_COMPLETION_20260916/README.md),
 matches code as of September 16, 2026: 169 family actions now have complete-clip limit,
 determinism and GSAP parity checks (40,729 synthetic samples). Eight additional physical

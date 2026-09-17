@@ -1,5 +1,6 @@
 /** Presentation-only attacks. CombatCore still owns damage, abilities and themes.
  * Input is an admitted body card; a family alone never supplies missing joints. */
+import {appendageCounts} from '../../../tools/creature-animation/repeated-anatomy.mjs';
 import type {BodyCard,Weapon} from './motion/body-card.js';
 import {actionsFor} from './motion/family-actions.js';
 import {buildTimeline,fnv1a} from './motion/timeline.js';
@@ -37,7 +38,7 @@ export const ANATOMY_ATTACKS:readonly AnatomyAttack[]=Object.freeze([
  row('radial','sting-arms','sting','Radial arm strike',['bell','arm0Seg0','arm0Seg1','arm0Seg2'],'arm0Seg2',['water']),
  row('myriapod','mandible','bite','Mandible snap',['head','mandible'],'mandible',['ground']),
  row('myriapod','sting','sting','Rear sting',['seg5','seg6','seg7'],'seg7',['ground']),
- row('cephalopod','lash','constrict','Arm lash',['mantle','arm0Seg0','arm0Seg1','arm0Seg2'],'arm0Seg2',['water']),
+ row('cephalopod','lash','constrict','Arm lash',['mantle','arm4Seg0','arm4Seg1','arm4Seg2'],'arm4Seg2',['water']),
  row('cephalopod','bite','bite','Beak lunge',['head','mantle'],'head',['water']),
  row('flyer-membrane','bite','bite','Flying bite',['head','jaw','wingNearRoot','wingFarRoot'],'jaw'),
  row('flyer-membrane','claw','claw','Foot rake',['legNearKnee','legNearFoot','wingNearRoot','wingFarRoot'],'legNearFoot'),
@@ -57,8 +58,13 @@ export function attackRepertoire(card:BodyCard,medium:BattleMedium,declaration?:
  if(profile&&!profile.candidateTemplates.includes(card.template.id))throw Error('Attack anatomy: species/template mismatch for '+earth);
  if(profile&&!profile.media.includes(medium))throw Error('Attack anatomy: incompatible species medium');
  const observed=(weapon:Weapon)=>declaration?.recordHash===card.recipeHash&&Boolean(card.recipeHash)&&Boolean(declaration?.source.trim())&&declaration?.weapons.includes(weapon);
- const joints=new Set(card.parts.map(p=>p.joint)),library=actionsFor(card.template.id);
- const candidates=ANATOMY_ATTACKS.filter(a=>a.family===card.template.id),rejected:{verb:string;reason:string}[]=[],attacks:AnatomyAttack[]=[];
+ const joints=new Set(card.parts.map(p=>p.joint)),library=actionsFor(card.template.id,card.anatomy);
+ const counts=appendageCounts(card.template.id,card.anatomy);
+ const candidates=ANATOMY_ATTACKS.filter(a=>a.family===card.template.id).map(a=>{
+  if(a.family!=='cephalopod'||a.verb!=='lash'||!counts)return a;
+  const prefix=counts.feedingTentacles?'tentacle0':'arm'+Math.ceil((counts.arms-1)/2);
+  return row(a.family,a.verb,a.weapon,counts.feedingTentacles?'Feeding tentacle lash':a.label,['mantle',prefix+'Seg0',prefix+'Seg1',prefix+'Seg2'],prefix+'Seg2',[...a.medium]);
+ }),rejected:{verb:string;reason:string}[]=[],attacks:AnatomyAttack[]=[];
  for(const a of candidates){const missing=a.joints.filter(j=>!joints.has(j));const reason=!a.medium.includes(medium)?'medium':(declared?!declared.includes(a.verb):!declaration!.weapons.includes(a.weapon))?'weapon not declared':earth&&CONDITIONAL_WEAPONS.has(a.weapon)&&!observed(a.weapon)?'conditional weapon observation required':missing.length?'missing '+missing.join(','):!library?.['melee:'+a.verb]?'no family motion':null;
   if(reason)rejected.push({verb:a.verb,reason});else attacks.push(a);
  }

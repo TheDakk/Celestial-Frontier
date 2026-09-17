@@ -956,5 +956,5 @@ export function proceduralRadialFauna(c: Ctx, g: G, p: Pal): void {
   c.fillStyle = 'rgba(17,20,25,0.86)'; c.beginPath(); c.ellipse(cx, cy + core * 0.05, core * 0.24, core * 0.18, 0, 0, TAU); c.fill();
   c.strokeStyle = 'rgba(245,250,255,0.58)'; c.lineWidth = 2.2; c.stroke();
   c.fillStyle = 'rgba(245,250,255,0.62)'; c.beginPath(); c.arc(cx - core * 0.22, cy - core * 0.28, core * 0.13, 0, TAU); c.fill();
-  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'proceduralRadialFauna',family:'radial',coordinateSize:S,materials:{surface:'painted radial integument',paletteSource:'genome'},features:[{id:'body',kind:'body',points:[[cx,cy]],widths:[core*2],curve:'ellipse',layer:'near'},...observed],unresolved:['ten drawn arms require a count-preserving motion variant','joint/part masks not captured']});
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'proceduralRadialFauna',family:'radial',anatomy:{schema:'cf.anatomy-presence/v2',absent:[],appendages:{arms:observed.length}},coordinateSize:S,materials:{surface:'smooth skin',paletteSource:'genome'},features:[{id:'body',kind:'body',points:[[cx,cy]],widths:[core*2],curve:'ellipse',layer:'near'},...observed],unresolved:['body landmarks and joint/part masks not captured; counted inventory alone is not a fitted rig']});
 }

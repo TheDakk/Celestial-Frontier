@@ -13,6 +13,8 @@ it('observes ten real radial arms without changing paint or substituting the six
  const paint=(c:ArtContext2D)=>proceduralRadialFauna(c,g,pal),a=draw(paint,true);
  expect(a.digest).toBe(draw(paint,false).digest);expect(a.result?.features.filter(f=>f.kind==='arm')).toHaveLength(10);
  expect(a.result?.features.filter(f=>f.kind==='arm').slice(0,6)).not.toHaveLength(10);
+ expect(a.result?.materials.surface).toBe('smooth skin');
+ expect(a.result?.anatomy).toEqual({schema:'cf.anatomy-presence/v2',absent:[],appendages:{arms:10}});
  expect(draw(paint,true).result).toEqual(a.result);expect(a.result?.unresolved.length).toBeGreaterThan(0);
 });
 it('preserves actual myriapod segments and all paired legs instead of compressing to eight chains',()=>{
@@ -28,6 +30,8 @@ it('preserves actual myriapod segments and all paired legs instead of compressin
 it('records eight actual curled arms and the squids two additional feeding tentacles, with exact paint parity',()=>{
  for(const squid of [false,true]){const paint=(c:ArtContext2D)=>faunaCephalopod(c,g,pal,{squid}),a=draw(paint,true);
   expect(a.digest).toBe(draw(paint,false).digest);expect(a.result!.features.filter(f=>f.kind==='arm')).toHaveLength(8);
+  expect(a.result!.materials.surface).toBe('smooth skin');
+  expect(a.result!.anatomy).toEqual({schema:'cf.anatomy-presence/v2',absent:[],appendages:{arms:8,feedingTentacles:squid?2:0}});
   expect(a.result!.features.filter(f=>f.kind==='tentacle')).toHaveLength(squid?2:0);for(const arm of a.result!.features.filter(f=>f.kind==='arm')){expect(arm.points).toHaveLength(17);for(const point of arm.points.slice(1))expect(a.commands).toContainEqual(['lineTo',...point]);}
   for(const tentacle of a.result!.features.filter(f=>f.kind==='tentacle'))expect(a.commands).toContainEqual(['bezierCurveTo',...tentacle.points[1]!,...tentacle.points[2]!,...tentacle.points[3]!]);
  }
@@ -38,6 +42,15 @@ it('observes actual bird visibility: perched, hovering, soaring, swimming and cl
   expect(a.digest).toBe(draw(paint,false).digest);expect(features.filter(f=>f.kind==='leg')).toHaveLength('hover' in opts||'swim' in opts||'wings' in opts?0:2);
   expect(features.filter(f=>f.kind==='wing')).toHaveLength('hover' in opts||'wings' in opts?2:1);expect(a.result!.materials.surface).toBe('feather');
  }
+});
+it('a counted publisher cannot drop an observed arm or tentacle and still claim compatibility',()=>{
+ const a=draw(c=>faunaCephalopod(c,g,pal,{squid:true}),true),value=a.result!;
+ for(const kind of ['arm','tentacle']){
+  const broken=structuredClone(value),index=broken.features.findIndex(f=>f.kind===kind);
+  const features=broken.features.filter((_,i)=>i!==index);
+  expect(()=>observePainterTopology(a.context,()=>emitPainterTopology(a.context,{...broken,features}))).toThrow('count/feature');
+ }
+ expect(()=>observePainterTopology(a.context,()=>emitPainterTopology(a.context,value))).not.toThrow();
 });
 it('unsupported or failed owners cannot leak a previous observation; nested owners refuse',()=>{
  const c=draw(()=>{},false).context;

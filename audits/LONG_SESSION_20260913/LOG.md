@@ -771,3 +771,18 @@ are in the new audit. OpenAI continues locally; Claude need not open now; PR42 s
 Final checkpoint attempt: git commit -S returned128 (1Password agent error). Saved/staged;
 HEAD remains fd26b9f8,121 ahead cached origin/openai/mac and232 ahead origin/develop.
 No unsigned fallback or GitHub write.
+
+
+## September16 — signed checkpoint and counted appendage continuation
+
+1Password signing succeeded:1e383e1c,122ahead cached origin/openai/mac,233ahead origin/develop.
+The previous failed receipt above is historical. No unsigned fallback or GitHub operation.
+
+C2 shared radial/cephalopod counts now agree between observer,compiler,curves and rig intake.
+Ten radial arms and a squid's eight arms/two feeding tentacles are preserved as declared;
+counts never fabricate missing landmarks. Cephalopod contact now follows the striking chain.
+94count combinations/1,222actions/147,862synthetic samples pass;20budget declarations refuse.
+30focused tests,21rig controls,TypeScript and root validation pass;raw failures remain.
+Package:audits/COUNTED_ANATOMY_20260916/README.md and REVIEW_PROMPT.md. Complete painted
+landmarks/masks,other58new-topology named identities and physical-phone evidence remain.
+No new painting,model run,kit/main.ts/reserved-module edit or GitHub operation. PR42parked.

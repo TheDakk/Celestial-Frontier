@@ -1,2 +1,5 @@
-export interface AnatomyPresence {readonly schema:'cf.anatomy-presence/v1';readonly absent:readonly string[];}
+export type AnatomyPresence = {readonly schema:'cf.anatomy-presence/v1';readonly absent:readonly string[]} | {
+ readonly schema:'cf.anatomy-presence/v2';readonly absent:readonly string[];
+ readonly appendages:{readonly arms:number;readonly feedingTentacles?:number};
+};
 export function resolveAnatomyInventory<T>(template:T,anatomy:AnatomyPresence|undefined):T;

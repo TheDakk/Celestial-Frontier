@@ -1,3 +1,4 @@
+import {appendageCounts} from '../../../tools/creature-animation/repeated-anatomy.mjs';
 import type {ArtContext2D} from './speciescanvas.js';
 /** Drawn feature inventory in the painter's own coordinate space. This is not
  * a fitted animation record: incomplete landmarks and hidden surfaces remain
@@ -12,6 +13,7 @@ export interface DrawnFeature {
 }
 export interface PainterTopology {
  readonly schema:'cf.painter-topology/v1';
+ readonly anatomy?:import('../../../tools/creature-animation/anatomy-inventory.mjs').AnatomyPresence;
  readonly ownerId:string;
  readonly family:string;
  readonly coordinateSize:number;
@@ -29,6 +31,13 @@ export function emitPainterTopology(context:ArtContext2D,value:PainterTopology):
  for(const f of value.features){
   if(!f.id||ids.has(f.id)||!['far','near'].includes(f.layer)||!f.points.length||f.points.some(p=>p.length!==2||!p.every(Number.isFinite))||f.widths?.some(w=>!Number.isFinite(w)||w<=0))throw Error('Painter topology: feature geometry');
   ids.add(f.id);
+ }
+ const counts=appendageCounts(value.family,value.anatomy);
+ if(counts){
+  for(const [kind,prefix,count]of [['arm','arm',counts.arms],['tentacle','tentacle',counts.feedingTentacles]]as const){
+   const actual=value.features.filter(f=>f.kind===kind);
+   if(actual.length!==count||!Array.from({length:count},(_,i)=>prefix+i).every(id=>actual.some(f=>f.id===id)))throw Error('Painter topology: count/feature mismatch '+kind);
+  }
  }
  state.value=structuredClone(value);
 }
