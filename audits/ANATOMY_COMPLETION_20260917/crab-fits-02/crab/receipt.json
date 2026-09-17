@@ -1,0 +1,26 @@
+{
+  "intake": {
+    "id": "crab",
+    "parts": 26,
+    "atlasSize": {
+      "width": 788,
+      "height": 214
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "sourceBindingHash": "1167cce4fd99e58473628ae2212949debb8785d18208d8dabb2cdb9b9cf96361",
+    "sourceVertices": 889,
+    "vertices": 1274,
+    "sharedSupports": 175,
+    "pins": 546,
+    "independentSurfaceParts": 26,
+    "sourceJoins": 24,
+    "excludedOverlaps": 36,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "nativeAcceptance": false
+}

@@ -1,5 +1,6 @@
 import {appendageCounts} from '../../../tools/creature-animation/repeated-anatomy.mjs';
 import type {ArtContext2D} from './speciescanvas.js';
+import {createTopologyPartCapture} from './topology-part-capture.js';
 /** Drawn feature inventory in the painter's own coordinate space. This is not
  * a fitted animation record: incomplete landmarks and hidden surfaces remain
  * explicit. A compiler must qualify it before producing a rig/part binding. */
@@ -13,6 +14,7 @@ export interface DrawnFeature {
 }
 export interface PainterTopology {
  readonly schema:'cf.painter-topology/v1';
+ readonly partMasks?:import('./painter-part-capture.js').PaintedPartMasks;
  readonly anatomy?:import('../../../tools/creature-animation/anatomy-inventory.mjs').AnatomyPresence;
  readonly ownerId:string;
  readonly family:string;
@@ -23,7 +25,8 @@ export interface PainterTopology {
  readonly features:readonly DrawnFeature[];
  readonly unresolved:readonly string[];
 }
-const sessions=new WeakMap<ArtContext2D,{value?:PainterTopology}>();
+const sessions=new WeakMap<ArtContext2D,{value?:PainterTopology;captureParts?:boolean}>();
+export function startTopologyPartCapture(context:ArtContext2D){return sessions.get(context)?.captureParts?createTopologyPartCapture(context):undefined;}
 export function isObservingPainterTopology(context:ArtContext2D):boolean{return sessions.has(context);}
 export function emitPainterTopology(context:ArtContext2D,value:PainterTopology):void{
  const state=sessions.get(context);if(!state)return;
@@ -45,8 +48,8 @@ export function emitPainterTopology(context:ArtContext2D,value:PainterTopology):
 }
 /** Scope is synchronous to the winning draw. Always clears after failure;
  * unsupported owners return null and can never become a guessed quadruped. */
-export function observePainterTopology(context:ArtContext2D,paint:()=>void):PainterTopology|null{
+export function observePainterTopology(context:ArtContext2D,paint:()=>void,options:{captureParts?:boolean}={}):PainterTopology|null{
  if(sessions.has(context))throw Error('Painter topology: nested owner capture');
- const state:{value?:PainterTopology}={};sessions.set(context,state);
+ const state:{value?:PainterTopology;captureParts?:boolean}={captureParts:options.captureParts??false};sessions.set(context,state);
  try{paint();return state.value??null;}finally{sessions.delete(context);}
 }

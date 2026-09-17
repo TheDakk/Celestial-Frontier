@@ -1,0 +1,150 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "98f953ec1cdba9a2b3b6c68943a320b79b30a2eca0d5b2223db690c6b5102c9a",
+  "cutoutSha256": "148bb4b6e0c937a43c5f822f561f1e76c44acdf55235ffe427867a3f831a363c",
+  "labelsFile": "labels.png",
+  "labelsSha256": "2d092466e913df37330036f340506a476bf4df5a0f7f2c5ddc265d724a7a3552",
+  "parts": [
+    {
+      "id": "shadow",
+      "joint": "root",
+      "layer": "near"
+    },
+    {
+      "id": "leg0far-upper",
+      "joint": "leg0FarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "leg0far-lower",
+      "joint": "leg0FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg1far-upper",
+      "joint": "leg1FarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "leg1far-lower",
+      "joint": "leg1FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg2far-upper",
+      "joint": "leg2FarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "leg2far-lower",
+      "joint": "leg2FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg3far-upper",
+      "joint": "leg3FarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "leg3far-lower",
+      "joint": "leg3FarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg0near-upper",
+      "joint": "leg0NearKnee",
+      "layer": "far"
+    },
+    {
+      "id": "leg0near-lower",
+      "joint": "leg0NearFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg1near-upper",
+      "joint": "leg1NearKnee",
+      "layer": "far"
+    },
+    {
+      "id": "leg1near-lower",
+      "joint": "leg1NearFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg2near-upper",
+      "joint": "leg2NearKnee",
+      "layer": "far"
+    },
+    {
+      "id": "leg2near-lower",
+      "joint": "leg2NearFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg3near-upper",
+      "joint": "leg3NearKnee",
+      "layer": "far"
+    },
+    {
+      "id": "leg3near-lower",
+      "joint": "leg3NearFoot",
+      "layer": "far"
+    },
+    {
+      "id": "claw-far-upper",
+      "joint": "clawFarElbow",
+      "layer": "near"
+    },
+    {
+      "id": "claw-far-lower",
+      "joint": "clawFarPalm",
+      "layer": "near"
+    },
+    {
+      "id": "claw-far-palm",
+      "joint": "clawFarFixedRoot",
+      "layer": "near"
+    },
+    {
+      "id": "claw-far-dactyl",
+      "joint": "clawFarDactylRoot",
+      "layer": "near"
+    },
+    {
+      "id": "claw-near-upper",
+      "joint": "clawNearElbow",
+      "layer": "near"
+    },
+    {
+      "id": "claw-near-lower",
+      "joint": "clawNearPalm",
+      "layer": "near"
+    },
+    {
+      "id": "claw-near-palm",
+      "joint": "clawNearFixedRoot",
+      "layer": "near"
+    },
+    {
+      "id": "claw-near-dactyl",
+      "joint": "clawNearDactylRoot",
+      "layer": "near"
+    },
+    {
+      "id": "carapace",
+      "joint": "carapace",
+      "layer": "near"
+    },
+    {
+      "id": "eye-far",
+      "joint": "eyeFarTip",
+      "layer": "near"
+    },
+    {
+      "id": "eye-near",
+      "joint": "eyeNearTip",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "33a9905d0235c48beaf97751fec50c6e47ae182af8583b12fd6ee19280fa59e4"
+}

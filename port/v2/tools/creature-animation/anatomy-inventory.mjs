@@ -1,6 +1,7 @@
 /** Explicit anatomical absence, shared by the motion producer and rig intake.
  * A hidden but present appendage is NOT absent. Never infer absence from a
  * missing landmark: only the hash-bound record can declare it. */
+import {expandPlantAnatomy} from './plant-anatomy.mjs';
 import {expandRepeatedAnatomy} from './repeated-anatomy.mjs';
 const ears=['earFarRoot','earFarTip','earNearRoot','earNearTip'],tail=['tail0','tail1','tail2','tail3'];
 const OPTIONAL=Object.freeze({
@@ -18,9 +19,9 @@ const OPTIONAL=Object.freeze({
 const OMITTED_BOUNDS=Object.freeze({'biped-bird':{wings:['wing/torso']},fish:{caudal:['caudal/body']}});
 export function resolveAnatomyInventory(template,anatomy){
  if(anatomy===undefined)return template;
- const allowed=anatomy?.schema==='cf.anatomy-presence/v2'?['schema','absent','appendages']:['schema','absent'];
+ const allowed=anatomy?.schema==='cf.anatomy-presence/v2'?['schema','absent','appendages','growth']:['schema','absent','growth'];
  if(!anatomy||!['cf.anatomy-presence/v1','cf.anatomy-presence/v2'].includes(anatomy.schema)||!Array.isArray(anatomy.absent)||Object.keys(anatomy).some(k=>!allowed.includes(k)))throw Error('Anatomy inventory: invalid presence declaration');
- template=expandRepeatedAnatomy(template,anatomy);
+ template=expandPlantAnatomy(expandRepeatedAnatomy(template,anatomy),anatomy);
  if(new Set(anatomy.absent).size!==anatomy.absent.length)throw Error('Anatomy inventory: duplicate absence');
  const removed=new Set(),omittedBounds=new Set();for(const group of anatomy.absent){const names=template.optional?.[group]??OPTIONAL[template.id]?.[group];if(!names)throw Error('Anatomy inventory: mandatory or unknown part '+group);for(const j of names)removed.add(j);for(const id of OMITTED_BOUNDS[template.id]?.[group]??[])omittedBounds.add(id);}
  if(!removed.size)return template;

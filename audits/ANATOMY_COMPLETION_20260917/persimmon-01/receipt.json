@@ -1,0 +1,35 @@
+{
+  "schema": "cf.paint-skin-intake/v1",
+  "sourceBindingHash": "c9b8253a24c33e4c947d319572c95cdb7f2cb95461100e5edf34efdd31872a45",
+  "recordRecipeHash": "9007678fdd43b818fa1faba45b0286fc5d74f1999230280cae7f189b19c03a20",
+  "packedPixels": {
+    "schema": "cf.parts-byte-verification/v1",
+    "bindingHash": "c9b8253a24c33e4c947d319572c95cdb7f2cb95461100e5edf34efdd31872a45",
+    "atlasSha256": "1b3af8e5411173240eca7156eef6ca0bf4b00200447572b69f3874d6ae87f46d",
+    "parts": 18,
+    "comparedChannels": 7039676,
+    "changedChannels": 0
+  },
+  "vertices": 3897,
+  "partVertices": 5440,
+  "parts": 18,
+  "leaves": 1790,
+  "triangles": 7352,
+  "ownershipEdges": 6401,
+  "ownershipAlphaRule": "every nonzero original alpha",
+  "originalInkOnly": true,
+  "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+  "nativeAcceptance": false,
+  "intake": {
+    "id": "persimmon",
+    "parts": 18,
+    "atlasSize": {
+      "width": 2039,
+      "height": 1154
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "rootPinnedVertices": 361,
+  "authoredConfigSha256": "641c61f7dbe1099d234e2c4ce0a9a0088b640570d19315abf674bac2f512939e"
+}
