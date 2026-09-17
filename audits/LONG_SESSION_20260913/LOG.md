@@ -814,3 +814,15 @@ Ledger observation status now reads source-verified census evidence, not hard-co
 Package audits/FAUNA_FULL_PASS_20260916/README.md and REVIEW_PROMPT.md consolidates earlier C2/C3.
 58painted fits still unqualified;candidate structures and nonblank raster checks never promote
 species. No kit/model/main.ts/reserved-module/GitHub change. Claude need not open or sync now.
+
+## September 17 — durable new-session handoff
+
+Full-pass repair commit 057d9bc2 is signed and independently verified; cached ahead counts at
+that commit: 125 versus origin/openai/mac, 236 versus origin/develop. Nick requested a new-session
+prompt and confirmation that the work is recorded. NEW_SESSION_PROMPT.md in
+FAUNA_FULL_PASS_20260916 supplies the reading order, exact completion boundary, next implementation
+steps, evidence locations, ownership and approval gates. ROADMAP links it. This is documentation
+only; no new animation/art acceptance or GitHub action. Claude need not open or sync now.
+Checked 23 restart/review references and corrected three prior audio-review links to
+audio-production/. Root validation passes: 1,010 renders and 50 matching probes. Evidence:
+FAUNA_FULL_PASS_20260916/handoff-reference-check.json and handoff-validate.log.

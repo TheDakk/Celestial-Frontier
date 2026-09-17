@@ -33,7 +33,7 @@ Then include ALL earlier work through:
 - audits/PAINTED_FITS_AND_58_20260916/REVIEW_PROMPT.md (Skink/Beetle films, twelve structures).
 - audits/COUNTED_ANATOMY_20260916/REVIEW_PROMPT.md.
 - audits/ANIMATION_COMPLETION_20260916/REVIEW_PROMPT.md (prior C2, habitats, attacks, procedural art).
-- audits/AUDIO_PRODUCTION_20260915/REVIEW_PROMPT.md and REVIEW_PACKS.md (C3 rights/download/render gaps).
+- audio-production/REVIEW_PROMPT.md and audio-production/REVIEW_PACKS.md (C3 rights/download/render gaps).
 - audits/LONG_SESSION_20260913/LOG.md and current ROADMAP for C1/C4/C5 and promotion gates.
 
 Return one consolidated defect/coverage register: severity, exact file/line or clip/frame,

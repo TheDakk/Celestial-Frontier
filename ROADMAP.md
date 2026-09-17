@@ -23,10 +23,12 @@ Nick requests all painted fits and the 58 missing fauna structures, with one con
 review. Start audits/FAUNA_FULL_PASS_20260916/REVIEW_PROMPT.md and README.md. The current
 coverage-final.json separates source observation, artifact existence and qualification.
 The prompt links all previous C2/C3 evidence. Fixture/template tests are not accepted art.
+Copy-ready restart instructions: audits/FAUNA_FULL_PASS_20260916/NEW_SESSION_PROMPT.md.
 
-Signed checkpoint 423afd62 saved the accumulated 224 files and is independently verified.
-It was 124 ahead of cached origin/openai/mac and 235 ahead of origin/develop before this
-continuation commit. Signing is resolved. Approximately 17.5 million added audit lines versus
+Signed, independently verified checkpoints: 423afd62 saved the accumulated 224 files;
+057d9bc2 committed the full catalogue pass and repairs. At 057d9bc2 the cached ahead counts
+were 125 versus origin/openai/mac and 236 versus origin/develop. A documentation-only session
+handoff commit follows it; use git log for the current head. Signing is resolved. Approximately 17.5 million added audit lines versus
 cached develop are committed history, not an uncommitted backlog. No GitHub writes, Actions,
 branches, merge, release, deployment or history rewrite. PR42 is parked; LFS awaits explicit go.
 

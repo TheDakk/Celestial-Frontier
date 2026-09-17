@@ -39,7 +39,7 @@ Then review the complete earlier work using:
 1. audits/COUNTED_ANATOMY_20260916/REVIEW_PROMPT.md — counted radial/cephalopod anatomy.
 2. audits/ANIMATION_COMPLETION_20260916/REVIEW_PROMPT.md — cumulative C2 code, masters, habitats,
    attacks, procedural direction, orientation solver and performance, with all earlier evidence.
-3. audits/AUDIO_PRODUCTION_20260915/REVIEW_PROMPT.md and REVIEW_PACKS.md — C3 sources, rights,
+3. audio-production/REVIEW_PROMPT.md and audio-production/REVIEW_PACKS.md — C3 sources, rights,
    renders and remaining authentic fauna coverage; listening acceptance is separate.
 4. audits/LONG_SESSION_20260913/LOG.md and ROADMAP.md — C1/C4/C5, weather/phone gates and
    approved promotion order. No promotion is authorized by this review.

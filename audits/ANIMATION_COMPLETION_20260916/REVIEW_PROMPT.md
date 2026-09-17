@@ -60,7 +60,7 @@ Return concrete defects with file/line or frame/action/time, severity, expected/
 a negative control and a bounded shared repair. Separate regressions from remaining topology,
 art, integration and device qualification. Nick owns final visual acceptance.
 
-C3 is separately reviewable via AUDIO_PRODUCTION_20260915/REVIEW_PROMPT.md and REVIEW_PACKS.md;
+C3 is separately reviewable via audio-production/REVIEW_PROMPT.md and audio-production/REVIEW_PACKS.md;
 its delivered sources/renders do not imply authentic coverage of all631 fauna. C1 mechanical
 intake is complete, final Wild acceptance remains Nick's. C4 sheets still stop12 at a time.
 C5 and the smaller phone finisher/weather decisions retain the ROADMAP gates. No promotion
