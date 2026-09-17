@@ -1,3 +1,4 @@
+import {SPECIALIZED_TEMPLATES} from './specialized-templates.mjs';
 /** Contracted anatomy inventories from the read-only motion producer.
  * These describe supported topologies, not painter coverage or art acceptance. */
 import {projectTemplateLimits} from './pose-projection.mjs';
@@ -4252,6 +4253,6 @@ const contracts = [
 ];
 const freeze=x=>{if(x&&typeof x==='object'){for(const v of Object.values(x))freeze(v);Object.freeze(x);}return x;};
 export const FAMILY_CONTRACTS = freeze(contracts);
-export function familyContract(id){const value=FAMILY_CONTRACTS.find(t=>t.id===id);if(!value)throw Error('Family admission: unknown template '+id);return value;}
+export function familyContract(id){const value=SPECIALIZED_TEMPLATES[id]??FAMILY_CONTRACTS.find(t=>t.id===id);if(!value)throw Error('Family admission: unknown template '+id);return value;}
 
 export function familyContractForRecord(record){return projectTemplateLimits(resolveAnatomyInventory(familyContract(record.template.id),record.anatomy),record);}

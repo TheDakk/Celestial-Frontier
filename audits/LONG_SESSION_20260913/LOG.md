@@ -786,3 +786,13 @@ counts never fabricate missing landmarks. Cephalopod contact now follows the str
 Package:audits/COUNTED_ANATOMY_20260916/README.md and REVIEW_PROMPT.md. Complete painted
 landmarks/masks,other58new-topology named identities and physical-phone evidence remain.
 No new painting,model run,kit/main.ts/reserved-module edit or GitHub operation. PR42parked.
+
+## Codex continuation — September 16: painted fits and 58-species register
+
+New source-bound Skink and Beetle fits; exact rest, full-action diagnostics and ten-second native
+films60fps,1.2/1.6ms rig-updatep95. Twelve candidate body/curve contracts; actual compact-crab
+observation and44-joint compiler; Foot-based leg slack repair. No candidate profile promoted:
+58species painted qualification remains open. Eight accepted fauna-master hashes have matching
+skin-binding artifacts; threeflora masters remain unfitted. See PAINTED_FITS_AND_58_20260916
+README,coverage-compact-crab.json,checks and REVIEW_PROMPT for current evidence/limitations.
+This logs implementation evidence, not Nick's visual acceptance. No kit/GitHub/main.ts changes.

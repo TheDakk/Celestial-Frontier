@@ -1,0 +1,33 @@
+{
+  "schema": "cf.paint-skin-intake/v1",
+  "sourceBindingHash": "95f108506745da74192dc0e4b34e78de03075762ce85c8e7c2bd50aed1fefaee",
+  "recordRecipeHash": "45a8311b5c4c54ac2e4d619ed6fb61460d8aed603cf3298259bd7277db79c4d0",
+  "packedPixels": {
+    "schema": "cf.parts-byte-verification/v1",
+    "bindingHash": "95f108506745da74192dc0e4b34e78de03075762ce85c8e7c2bd50aed1fefaee",
+    "atlasSha256": "6e291add05e979ce7015bd63dac204a36ab45a846ddcb0a741654afe8bb83928",
+    "parts": 17,
+    "comparedChannels": 2604168,
+    "changedChannels": 0
+  },
+  "vertices": 1411,
+  "partVertices": 2253,
+  "parts": 17,
+  "leaves": 605,
+  "triangles": 2496,
+  "ownershipEdges": 3314,
+  "ownershipAlphaRule": "every nonzero original alpha",
+  "originalInkOnly": true,
+  "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+  "nativeAcceptance": false,
+  "intake": {
+    "id": "skink",
+    "parts": 17,
+    "atlasSize": {
+      "width": 1984,
+      "height": 483
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  }
+}

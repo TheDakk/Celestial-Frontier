@@ -1,0 +1,1 @@
+export function compileCrabObservationRecord(topology:unknown,input:{identity:{speciesVisualKey:string;seed:number;ownerId:string;earthName:string|null};cutoutAssetHash:string;width:number;height:number}):Promise<{landmarks:Record<string,readonly [number,number]>;template:{id:string;version:number};recipeHash:string;materials:{surface:string};coverage:{unproven:string[]}}>;

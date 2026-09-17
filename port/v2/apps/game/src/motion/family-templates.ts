@@ -19,6 +19,7 @@
  *  cephalopod  root mantle head eyeFar eyeNear siphon finFar finNear · arm{0..7}Seg{0,1,2} (from head; 0..3 hang left, 4..7 right)
  *  flyer-membrane root pelvis spine chest neck head jaw · wing{Far,Near}{Root,Elbow,Wrist,Tip} · leg{Far,Near}{Knee,Foot} · ear{Far,Near}Tip · tail0
  *  primate     root pelvis spine chest neck head jaw · arm{Far,Near}{Shoulder,Elbow,Hand} · leg{Far,Near}{Hip,Knee,Foot} · tail0..2   */
+import {specializedTemplate,type SpecializedTemplateId} from '../../../../tools/creature-animation/specialized-templates.mjs';
 import type { JointLimitDeg, JointName, MotionTemplate, ProportionBound, SecondaryChain, Vec2 } from './templates.js';
 
 type Pair = readonly [JointName, JointName];
@@ -221,4 +222,4 @@ export const TEMPLATE_BY_FAMILY: Readonly<Record<string, FamilyTemplateId | 'qua
   tree: 'plant-woody', shrub: 'plant-woody', vine: 'plant-woody', cane: 'plant-woody',
   fern: 'plant-herb', grass: 'plant-herb', rosette: 'plant-herb', seaweed: 'plant-herb', fungal: 'plant-herb',
 });
-export const templateIdForFamily = (family: string): FamilyTemplateId | 'quadruped' | null => TEMPLATE_BY_FAMILY[family.toLowerCase()] ?? null;
+export const templateIdForFamily = (family: string): FamilyTemplateId | SpecializedTemplateId | 'quadruped' | null => TEMPLATE_BY_FAMILY[family.toLowerCase()] ?? specializedTemplate(family.toLowerCase())?.id ?? null;

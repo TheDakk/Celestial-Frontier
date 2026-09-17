@@ -1,0 +1,16 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/motion/specialized-anatomy.test.ts(16,48): error TS2353: Object literal may only specify known properties, and 'version' does not exist in type '{ readonly id: string; }'.
+apps/game/src/motion/specialized-anatomy.test.ts(21,126): error TS2345: Argument of type 'Readonly<Record<string, readonly number[]>>' is not assignable to parameter of type 'Readonly<Record<string, readonly [number, number]>>'.
+  'string' index signatures are incompatible.
+    Type 'readonly number[]' is not assignable to type 'readonly [number, number]'.
+      Target requires 2 element(s) but source may have fewer.
+apps/game/src/motion/specialized-anatomy.test.ts(22,10): error TS2571: Object is of type 'unknown'.
+apps/game/src/motion/specialized-anatomy.test.ts(39,56): error TS2352: Conversion of type 'ResolvedAnatomyRecord' to type '{ landmarks: Record<string, number[]>; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'landmarks' are incompatible.
+    Type 'Readonly<Record<string, readonly number[]>>' is not comparable to type 'Record<string, number[]>'.
+      'string' index signatures are incompatible.
+        The type 'readonly number[]' is 'readonly' and cannot be assigned to the mutable type 'number[]'.
+apps/game/src/motion/specialized-anatomy.test.ts(53,9): error TS2571: Object is of type 'unknown'.

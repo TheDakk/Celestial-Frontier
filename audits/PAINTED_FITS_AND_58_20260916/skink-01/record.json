@@ -1,0 +1,207 @@
+{
+  "kind": "quadruped",
+  "identity": {
+    "speciesVisualKey": "authored:accepted-skink-family-master",
+    "seed": 424242,
+    "ownerId": "authored:skink/accepted-master",
+    "earthName": "Skink"
+  },
+  "template": {
+    "id": "quadruped",
+    "version": 1
+  },
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v1",
+    "absent": [
+      "external-ears"
+    ]
+  },
+  "geometry": {
+    "cutoutAssetHash": "897a091b1eb8c5f74cb6f312a38e77de58a769bec876d62df4520c93f56ac7f6",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.675,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.49,
+      0.45
+    ],
+    "pelvis": [
+      0.43,
+      0.455
+    ],
+    "spine": [
+      0.51,
+      0.48
+    ],
+    "chest": [
+      0.65,
+      0.475
+    ],
+    "neck": [
+      0.73,
+      0.415
+    ],
+    "head": [
+      0.85,
+      0.355
+    ],
+    "jaw": [
+      0.94,
+      0.38
+    ],
+    "hindNearRoot": [
+      0.42,
+      0.47
+    ],
+    "hindNearKnee": [
+      0.345,
+      0.51
+    ],
+    "hindNearAnkle": [
+      0.3,
+      0.555
+    ],
+    "hindNearPaw": [
+      0.3,
+      0.58
+    ],
+    "hindFarRoot": [
+      0.47,
+      0.475
+    ],
+    "hindFarKnee": [
+      0.495,
+      0.51
+    ],
+    "hindFarAnkle": [
+      0.505,
+      0.54
+    ],
+    "hindFarPaw": [
+      0.52,
+      0.55
+    ],
+    "foreNearRoot": [
+      0.646,
+      0.48
+    ],
+    "foreNearKnee": [
+      0.574,
+      0.545
+    ],
+    "foreNearAnkle": [
+      0.592,
+      0.635
+    ],
+    "foreNearPaw": [
+      0.632,
+      0.662
+    ],
+    "foreFarRoot": [
+      0.735,
+      0.483
+    ],
+    "foreFarKnee": [
+      0.785,
+      0.535
+    ],
+    "foreFarAnkle": [
+      0.805,
+      0.602
+    ],
+    "foreFarPaw": [
+      0.857,
+      0.609
+    ],
+    "tail0": [
+      0.385,
+      0.452
+    ],
+    "tail1": [
+      0.21,
+      0.475
+    ],
+    "tail2": [
+      0.073,
+      0.56
+    ],
+    "tail3": [
+      0.235,
+      0.67
+    ]
+  },
+  "materials": {
+    "surface": "scales",
+    "sheenTier": "painted",
+    "paletteSource": "accepted authored master"
+  },
+  "clipSetId": "quadruped-land-v1",
+  "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-reptile.png",
+  "coverage": {
+    "occluded": [
+      "hindFar: body-covered; fitted kinematic chain has no separate visible surface"
+    ],
+    "unproven": [
+      "out-of-plane views",
+      "hidden limb emergence",
+      "planted-paw contact",
+      "full motion and visual fit"
+    ]
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.060207972893961466,
+      "spine": 0.08381527307120105,
+      "chest": 0.140089257261219,
+      "neck": 0.09999999999999996,
+      "head": 0.1341640786499874,
+      "jaw": 0.093407708461347,
+      "hindFarRoot": 0.04472135954999576,
+      "hindFarKnee": 0.043011626335213174,
+      "hindFarAnkle": 0.031622776601683826,
+      "hindFarPaw": 0.018027756377319962,
+      "foreFarRoot": 0.08537564055396595,
+      "foreFarKnee": 0.0721387551874858,
+      "foreFarAnkle": 0.06992138442565331,
+      "foreFarPaw": 0.05246903848937956,
+      "hindNearRoot": 0.018027756377319917,
+      "hindNearKnee": 0.08500000000000003,
+      "hindNearAnkle": 0.0636396103067893,
+      "hindNearPaw": 0.02499999999999991,
+      "foreNearRoot": 0.006403124237432854,
+      "foreNearKnee": 0.0970000000000001,
+      "foreNearAnkle": 0.0917823512446701,
+      "foreNearPaw": 0.04825971404805465,
+      "tail0": 0.04509988913511871,
+      "tail1": 0.17650495743746125,
+      "tail2": 0.16122654868228128,
+      "tail3": 0.19581624038878895
+    },
+    "measures": {
+      "torso": 0.22090722034374527,
+      "head": 0.1341640786499874,
+      "head/torso": 0.6073322476341869,
+      "bone-min": 0.006403124237432854,
+      "bone-max": 0.19581624038878895,
+      "leg/torso:hindFar": 0.41946188617116686,
+      "leg/torso:foreFar": 0.8805922133274742,
+      "leg/torso:hindNear": 0.7860295830828676,
+      "leg/torso:foreNear": 1.0730390112368113
+    }
+  },
+  "recipeHash": "45a8311b5c4c54ac2e4d619ed6fb61460d8aed603cf3298259bd7277db79c4d0"
+}

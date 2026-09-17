@@ -17,56 +17,56 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-16 · counted anatomy and signed checkpoint
+## SESSION HANDOFF — 2026-09-16 · painted fits and missing structures
 
-Nick's standing direction: fluid full-body animation for Earth/procedural organisms from
-observed anatomy; no creature-name/seed/hash exceptions in motion or numerical solvers.
-Authored masters keep hash-bound fits; procedural owners emit what they actually paint.
+Nick requests completion of all painted fits and all 58 missing fauna structures, with the
+whole session ready for review tomorrow. One entry point:
+audits/PAINTED_FITS_AND_58_20260916/REVIEW_PROMPT.md (links all prior C2 and C3 evidence).
+Latest package README and coverage-compact-crab.json distinguish contract, source observation,
+painted fit and human acceptance. Do not count synthetic fixtures as completed species.
 
-Signing is working: signed checkpoint1e383e1c contains the accumulated preceding C2 work,
-122ahead cached origin/openai/mac and233ahead origin/develop. The previous failure remains
-in its historical receipt. The following counted-anatomy package is the next local batch;
-its final commit/ahead counts are reported at completion. No unsigned fallback.
+Signed starting checkpoint33e0c7a0: cached123ahead origin/openai/mac and234ahead origin/develop.
+This continuation is staged but signing is blocked: two attempts returned1Password agent error,
+including a PTY retry; app/socket are present. Nick has been asked about the signing prompt.
+See checkpoint.json. No new commit yet and no unsigned fallback. No GitHub writes, Actions, new branch, merge, release, deployment or history
+rewrite. PR42 parked; LFS still awaits explicitgo.
 
-Current package: audits/COUNTED_ANATOMY_20260916/README.md and REVIEW_PROMPT.md. A shared
-v2anatomy expander preserves actual arm/tentacle counts through body-card compilation,
-family curves and rig admission. Radial/squid observations now publish10arms or8arms+2feeding
-tentacles; drawing commands unchanged. Cephalopod lash contact follows the striking appendage.
-No missing landmarks are synthesized and no species is reassigned to an incorrect body.
-The64-joint and40-part/2048px atlas budgets remain.94supported count combinations,
-1,222compiled actions/147,862synthetic samples PASS;20oversized combinations refuse.
-30focused tests,21existing rig controls,TypeScript and root validation pass. See checks.json.
+New accepted-source fits: Skink17parts, Beetle16parts. Both masters unchanged, exact rest0channels;
+all19/13unique family clips pass121samples each. Native ten-second films60fps, rig-updatep95
+1.2/1.6ms, worst individual sampled clip0.9/1.4ms. Native sources are dirty diagnostic snapshots
+with exact hashes, not final visual or phone qualification. Hidden Skink leg emergence, folded
+Beetle wings/open flight and out-of-plane views remain unproven. Review native action extremes.
+http://127.0.0.1:49816/painted-fits/ adds both to earlier fish/bird/frog/procedural films; earlier
+solver snapshots remain labelled. Scratch server /private/tmp/cf-animation-preview-20260916.
 
-The prior14default family templates/169actions,32attack rows and631named fauna profiles remain.
-573names have candidate moves;58need new topology. This is not573finished animated masters.
-Current counted observers still lack full body landmarks/part masks; high-count myriapods
-need a measured budget/representation decision, never silent truncation. Next: extend real
-observer geometry and masks, qualify the counted painted fits, then the other missing
-structures. Maintain bounds, exact rest, skin joins/extremes, habitats, attack contact,
-whole moving silhouettes and measured performance. No inherited universal/phone qualification.
+Twelve specialized contracts and component-relative candidate libraries are present, with shared
+rig/motion admission. No empty species profile was promoted. All58 still need qualified painted
+fits. Compact-crab source observation and a44-joint record compiler now preserve actual8legs,
+separate pincer fingers and eyestalks, with no invented lobster abdomen/tail fan/antennae. Other
+crab painter owners and most other structures still need actual observations and masks. Code
+candidates do not override real counted geometry. Broad marine/crust/sessile guesses still refuse.
+Leg slack now follows Root–Knee–Foot and parent–Knee–Foot chains as well as the quadruped chain.
 
-Prior review: http://127.0.0.1:49816/animation-library/ ; species-coverage/ serves catalogue-03.
-Scratch server: /private/tmp/cf-animation-preview-20260916 on49816. The new package changes
-compiler/admission, not the existing preview. Earlier fish/frog/procedural native full-clip
-films pass shape/rest gates; bird is an older labelled solver snapshot. Fish film1.4ms,
-frog2.0ms with victory2.2ms,broad film2.2ms rig-update p95; some exceed2ms. Source hashes and
-failed controls remain in ANIMATION_COMPLETION_20260916. GSAP adapter SHA remains
-600e413b90587a5d3b2f40ace148a95e6e692fb82f3b4d2eba2f17b12f0a8660; current producer graph
-hashes are in count-matrix-final.json. Do not repin historical proofs to imply fresh evidence.
+Checks:27focused tests before compact-crab extension;12focused tests of the final extended
+contracts/observer;20rig/admission controls; typecheck-03 and validate-final. Failed fixture and
+observer controls retained. Ledger's old co-located binding index is a failing control; current
+recipe-hash links find8of11accepted cut-out masters with skin-binding artifacts, not8final
+acceptances. Threeflora fits need real bark/foliage ownership, not synthetic warty substitution.
 
-References: CREATURE_ANIMATION.md,ATTACK_ANATOMY.md,SPECIES_AND_GENOME.md and codebase-reference.
-No main.ts hunk,kit edit,new art/model run,reserved effects/battle2/soundkit/worldlife edit.
-The September16 narrow motion repair exception applies;anthropic/mac stays read-only.
-Toolchain startup receipt reused within this uninterrupted session; no tool updates.
+Continue: source-owned observations/masks and body variants for58; qualify all real painted
+views/contacts and procedural variants; complete flora fits; full-action native/visual and phone
+budgets. Keep64joint/40part/2048atlas bounds. No source edits during a native hash-bound capture.
+C4new artwork remains12per sheet and stops for Nick's eye. Kits unchanged. No new image/model run
+in this package. No main.ts or reserved effects/battle2/soundkit/worldlife edits. Local motion
+exception September16 applies; anthropic/mac stays read-only. Startup receipt reused uninterrupted.
 
-C3 signed b79fd32e:1,669entries/1,665originals,1,617WAV/Opus pairs;203/631fauna source identities,
-428missing.43biomes/486routes,484rendered,two intentional silences. Not listening/species
-acceptance. Its REVIEW_PROMPT/REVIEW_PACKS identify23ZIPs below30MB. C1mechanical intake
-complete;Nick owns final Wild acceptance. C4 remains12assets per sheet, each stops for review.
-RainE active; second weather pick and smaller-finisher phone decision open;Klein probes stopped.
-C5pruning onopenai/mac,then UI/engine/tools tiers into develop via merge commits; future
-release PRdevelop→main/full chain needs separate authority. LFS awaits explicitgo.
+C3 b79fd32e remains1,669entries/1,665originals,1,617WAV/Opus pairs;203/631fauna source identities,
+428missing;43biomes/486routes,484rendered,2intentional silences. Not complete species/listening
+acceptance. Its review index has23ZIPs below30MB. C1mechanical intake complete;Nick owns final
+Wild acceptance. RainE active;second weather pick and smaller-phone-finisher decision open;
+Klein phone probes stopped. C5prune openai/mac,then UI/engine/tools tiers via merge commits into
+develop,then separately authorized develop→main release/full chain. No current PR step.
 
-OpenAI/Codex continues locally onopenai/mac. Claude need not open or sync now; it does not
-have these changes through develop. No GitHub write/Actions/branch/merge/release/deploy/history
-rewrite authorized;PR42parked. Supply the consolidated review prompt when Nick resumes review.
+OpenAI/Codex continues locally. Claude does not need to open/sync now; tomorrow it can read this
+worktree and the consolidated prompt without editing it. Report local commit IDs/ahead counts;
+do not push or prepare a PR. Prior handoffs are preserved verbatim in ROADMAP_ARCHIVE.md.

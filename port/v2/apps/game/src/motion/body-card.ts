@@ -1,3 +1,4 @@
+import {specializedTemplate} from '../../../../tools/creature-animation/specialized-templates.mjs';
 import {poseProjectionSigns} from '../../../../tools/creature-animation/pose-projection.mjs';
 /* Motion Kit §3 body card compiler. Reads the painter's resolved-anatomy record
  * (the *.landmarks.json shape) and, for procedural creatures, the genome's
@@ -130,10 +131,15 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   const foreign = Object.keys(lmIn).filter((j) => !resolved.joints.includes(j));
   if (foreign.length) throw new MotionCompileError('joint-inventory', `landmarks [${foreign.join(', ')}] are not in the ${resolved.id} joint inventory`);
   const bones: Record<JointName, number> = {};
+  const specialized=specializedTemplate(resolved.id);
+  const specialtyGroup=(joint:string):PartGroup=>{
+   const role=specialized&&Object.entries(specialized.roles).find(([,names])=>names.includes(joint))?.[0];
+   return role==='legs'?'legs':role==='sensors'?'antennae':role==='head'?'head':role==='claws'||role==='reach'?'arms':'body';
+  };
   const parts: BodyPart[] = resolved.graph.map(([child, parent]) => {
     const pivot = landmarks[parent] as Vec2, tip = landmarks[child] as Vec2, boneLength = Math.hypot(tip[0] - pivot[0], tip[1] - pivot[1]);
     bones[child] = boneLength;
-    return { joint: child, parent, group: groupOf(child), pivot, tip, boneLength };
+    return { joint: child, parent, group: specialized?specialtyGroup(child):groupOf(child), pivot, tip, boneLength };
   });
   const clamped: ClampedBound[] = [];
   for (const b of resolved.proportions) {
@@ -160,7 +166,7 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   if (isPlant) templateGait = 'none';
   const weapons: Weapon[] = [];
   const addWeapon = (w: Weapon | undefined): void => { if (w && !weapons.includes(w)) weapons.push(w); };
-  const natural = TEMPLATE_WEAPONS[resolved.id] ?? ['bite', 'claw'];
+  const natural = TEMPLATE_WEAPONS[resolved.id] ?? (specializedTemplate(resolved.id)?[]:['bite', 'claw']);
   if (isPlant) { /* plants carry no weapons */ }
   else if (earth) {
     // Intent only. Runtime attacks still require observed parts and conditional weapon evidence.
@@ -168,7 +174,7 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
     const vocabulary:Readonly<Record<string,Weapon>>={bite:'bite',claw:'claw',peck:'peck',headbutt:'headbutt',tail:'tail',strike:'bite',constrict:'constrict',mandible:'bite',lash:'constrict',punch:'claw',kick:'kick',body:'body','sting-arms':'sting'};
     for(const verb of verbs)addWeapon(vocabulary[verb]);
   }
-  else {
+  else if (!specialized) {
     const headName = earth ? undefined : at(FA_HEAD as readonly string[], genome?.head), tailName = earth ? undefined : at(FA_TAIL as readonly string[], genome?.tail);
     addWeapon(headName ? HEAD_WEAPON[headName] : undefined); addWeapon(natural[0]);
     if (tailName) addWeapon(TAIL_WEAPON[tailName]);
@@ -196,8 +202,9 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   // constraint (the fox foreNear refusal, C2 review 2026-09-13); it is an observer error in the record, so it is noted, not refused.
   const legSlack: Record<string, number> = {};
   for (const leg of resolved.legs) {
-    const r = landmarks[leg + 'Root'], k = landmarks[leg + 'Knee'], a = landmarks[leg + 'Ankle'];
-    if (!r || !k || !a) continue;
+    const kneeJoint=leg+'Knee', kneeParent=resolved.graph.find(([j])=>j===kneeJoint)?.[1];
+    const r = landmarks[leg + 'Root'] ?? (kneeParent?landmarks[kneeParent]:undefined), k = landmarks[kneeJoint], a = landmarks[leg + 'Ankle'] ?? landmarks[leg+'Foot'];
+    if (!r || !k || !a) { notes.push('leg slack unavailable: '+leg+' lacks an observed two-bone chain'); continue; }
     const upper = Math.hypot(k[0] - r[0], k[1] - r[1]), lower = Math.hypot(a[0] - k[0], a[1] - k[1]), dx = a[0] - r[0], vertical = a[1] - r[1];
     const reach = Math.sqrt(Math.max(0, (upper + lower) ** 2 - dx * dx));
     legSlack[leg] = reach - vertical;

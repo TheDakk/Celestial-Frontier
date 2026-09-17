@@ -1,5 +1,15 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+[Painted-fit and missing-structure continuation](audits/PAINTED_FITS_AND_58_20260916/README.md),
+matches code as of September 16, 2026: accepted Skink and Beetle masters now have hash-bound
+parts/skin and native full-action diagnostics (60 fps; 1.2/1.6 ms rig-update p95; exact rest).
+Twelve specialized structure/curve candidates share intake and motion contracts. A 44-joint
+compact-crab record compiles the actual painter's eight legs, pincers and eyestalks without
+inventing a lobster abdomen. Root/Knee/Foot leg slack is measured rather than silently skipped.
+The 58 missing names remain unqualified pending observations, painted masks/fit, full motion,
+contact and visual acceptance; candidate code is not completed species coverage. Current ledger:
+audits/PAINTED_FITS_AND_58_20260916/coverage-compact-crab.json. Original masters are unchanged.
+
 [Count-preserving anatomy](audits/COUNTED_ANATOMY_20260916/README.md), matches code as of
 September 16, 2026: radial and cephalopod records can declare actual arm/tentacle counts in
 `cf.anatomy-presence/v2`. One shared expander feeds motion and rig admission; no missing

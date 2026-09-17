@@ -5,6 +5,7 @@
  * sway / disturb / harvest / grow instead of the fauna set. */
 import { type Ease, type KeyPose, type MotionAction, QUADRUPED_ACTIONS } from './actions.js';
 import type { FamilyTemplateId } from './family-templates.js';
+import {specializedActions} from './specialized-actions.js';
 import {ADDITIONAL_ACTIONS} from './additional-actions.js';
 
 import {appendageCounts} from '../../../../tools/creature-animation/repeated-anatomy.mjs';
@@ -304,7 +305,7 @@ export const MELEE_ALIAS: Readonly<Record<string, Readonly<Record<string, string
 export function actionsFor(templateId:string,anatomy?:AnatomyPresence):Readonly<Record<string,MotionAction>>|undefined{
  const counts=appendageCounts(templateId,anatomy);
  if(counts)return Object.freeze({...templateId==='radial'?radialActions(counts.arms):cephalopodActions(counts.arms,counts.feedingTentacles),...ADDITIONAL_ACTIONS[templateId]});
- return ACTIONS_BY_TEMPLATE[templateId as 'quadruped'|FamilyTemplateId];
+ return ACTIONS_BY_TEMPLATE[templateId as 'quadruped'|FamilyTemplateId]??specializedActions(templateId);
 }
 /** Gaits (approach:*) and melee verbs (melee:*) a template's library offers, in table order. */
 export const templateGaits = (templateId: string): string[] => Object.keys(actionsFor(templateId) ?? {}).filter((k) => k.startsWith('approach:')).map((k) => k.slice(9));
