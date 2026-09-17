@@ -92,7 +92,8 @@ export function createCreatureBlenderBridge() {
   const {QUAD2_SPEC}=evaluate(table(read(`${ART}mammaloverrides.ts`),'QUAD2_SPEC'),{},['QUAD2_SPEC']);
   const empty = Object.freeze({});
   const routeEnv = { QUAD_SPEC, CANON: empty, FAUNA_NAME: empty, FAUNA2_NAME: empty, FAUNA3_NAME: empty, BIRD_NAME: empty, INVERT_NAME: empty, QUAD2_SPEC, FLORA_ICONIC: empty, FLORA2_SPEC: empty, FLORA_DUPES: [], FUNGI_NAME: empty, MICROBE_NAME: empty };
-  const routePrefix = exactSpan(owner, 'export function resolveOverrideCanvas(g: G): ArtCanvas | null {', '  const canon =');
+  // Bind the unique function owner, independently of optional observer parameters.
+  const routePrefix = exactSpan(fn(owner, 'resolveOverrideCanvas'), 'function resolveOverrideCanvas(', '  const canon =');
   const route = evaluate(`${routeHelpers}\n${routePrefix}return {kingdom,name,reviewedFaunaBlend};}`, { ...routeEnv, resolveProceduralCanvas: () => null }, ['resolveOverrideCanvas','isReviewedFaunaLineage']);
   const palette = evaluate(`${fn(owner,'palette')}\n${fn(quad,'pal')}`, traits, ['palette','pal']);
   const canid = fn(quad, 'faunaResetCanidC');

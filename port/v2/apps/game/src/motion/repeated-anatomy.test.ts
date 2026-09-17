@@ -21,8 +21,8 @@ function fixture(id:string,arms:number,feedingTentacles=0){
  record.landmarks=Object.fromEntries(template.joints.map(j=>[j,old[j]??old[j.replace(/^arm(\d+)/,(_,n)=>'arm'+Number(n)%(id==='radial'?6:8)).replace(/^tentacle(\d+)/,(_,n)=>'arm'+(3+Number(n)%2))]]));
  return record;
 }
-it('keeps every counted appendage in both owners and samples all clips with hierarchy and GSAP parity',()=>{
- for(const[id,arms,tentacles]of [['radial',2,0],['radial',10,0],['radial',20,0],['cephalopod',2,0],['cephalopod',8,2],['cephalopod',14,4]]as const){
+// Each inventory keeps the full 121-sample gate under its own test deadline.
+it.each([['radial',2,0],['radial',10,0],['radial',20,0],['cephalopod',2,0],['cephalopod',8,2],['cephalopod',14,4]]as const)('keeps %s (%i arms, %i tentacles) in both owners with complete hierarchy and GSAP parity',(id,arms,tentacles)=>{
   const r=fixture(id,arms,tentacles),c=compileBodyCard(r),contract=familyContractForRecord(r),program=createSkeletonPoseProgram(contract,r.landmarks);
   expect(c.parts.map(p=>[p.joint,p.parent])).toEqual(contract.graph);expect(c.parts).toHaveLength((id==='radial'?2:7)+3*(arms+tentacles));
   expect((checkFamilyGeometry(r)as {inside:boolean}).inside).toBe(true);
@@ -40,7 +40,6 @@ it('keeps every counted appendage in both owners and samples all clips with hier
    }expect(buildTimeline(c,action,31)).toEqual(tl);}finally{player.stop();}
   }
   for(const j of contract.joints.filter(j=>/^(arm|tentacle)/.test(j)))expect(active.has(j),id+'/'+j+' static').toBe(true);
- }
 });
 it('stale fixed-count motion is rejected by the activity control even when the card has all joints',()=>{
  const card=compileBodyCard(fixture('radial',10));

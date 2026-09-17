@@ -76,6 +76,30 @@ it('crab observation preserves eight drawn walking legs, separate chela fingers 
  }
 });
 
+it.each([['Freshwater Crab','freshwaterCrab'],['Mud Crab','mudCrab'],['Vent Crab','ventCrab']]as const)('observes the actual %s owner including terminal surfaces and unchanged draw commands',async(name,signature)=>{
+ const paint=(c:ArtContext2D)=>crabBody(c,g,pal,{hue:'#7d4c3d'},name),a=draw(paint,true),topology=a.result!;
+ expect(a.digest).toBe(draw(paint,false).digest);expect(topology.ownerId).toBe('resetCrabII:'+signature);expect(topology.materials).toEqual({surface:'chitinous',paletteSource:'named'});
+ expect(draw(paint,true).result).toEqual(topology);
+ const legs=topology.features.filter(f=>f.kind==='leg');expect(legs).toHaveLength(8);
+ for(const leg of legs)for(const [i,point]of leg.points.entries())expect(a.commands).toContainEqual([i?'lineTo':'moveTo',...point]);
+ const input={identity:{speciesVisualKey:'named-owner-'+signature,seed:51,ownerId:topology.ownerId,earthName:name},cutoutAssetHash:'a'.repeat(64),width:440,height:440};
+ const record=await compileCrabObservationRecord(topology,input),card=compileBodyCard(record as unknown as ResolvedAnatomyRecord);
+ expect(Object.keys(record.landmarks)).toHaveLength(44);expect(Object.keys(card.bounds.legSlack)).toHaveLength(8);
+ for(const action of Object.keys(actionsFor('brachyuran')!)){
+  const tl=buildTimeline(card,action,51);for(let i=0;i<=120;i++)expect(Object.values(sampleTimeline(tl,tl.durationMs*i/120).joints).every(Number.isFinite)).toBe(true);
+ }
+ expect(record.surfaceAttachments).toHaveLength(signature==='mudCrab'?2:0);
+ for(const surface of record.surfaceAttachments){
+  expect(surface.pivot).toEqual(record.landmarks[surface.joint]);expect(surface.diameters.every(v=>v>0)).toBe(true);
+  const bad=structuredClone(topology);const paddle=bad.features.find(f=>f.id===surface.id)!;
+  await expect(compileCrabObservationRecord({...bad,features:bad.features.filter(f=>f.id!==surface.id)},input)).rejects.toThrow('geometry');
+  await expect(compileCrabObservationRecord({...bad,features:bad.features.map(f=>f===paddle?{...f,points:[f.points[0]!,[0,0]]}:f)},input)).rejects.toThrow('terminal paddle');
+ }
+ const oldDefault=draw(c=>crabBody(c,g,pal,{wide:true},'Crab'),true).result!;
+ expect(topology.features).not.toEqual(oldDefault.features); // Substituting the former generic anatomy is detected.
+ await expect(compileCrabObservationRecord({...topology,ownerId:'resetCrabII:hermitCrab'},input)).rejects.toThrow('unsupported source');
+});
+
 it('the compact crab record uses every observed joint and refuses lobster, missing leg, extra feature and wrong owner controls',async()=>{
  const input={identity:{speciesVisualKey:'observed-crab-control',seed:51,ownerId:'crabBody',earthName:'Crab'},cutoutAssetHash:'a'.repeat(64),width:440,height:440};
  const topology=draw(c=>crabBody(c,g,pal,{wide:true},'Crab'),true).result!;
@@ -87,6 +111,12 @@ it('the compact crab record uses every observed joint and refuses lobster, missi
  for(const id of Object.keys(actionsFor('brachyuran')!)){const tl=buildTimeline(card,id,51);for(let i=0;i<=120;i++){const pose=sampleTimeline(tl,tl.durationMs*i/120);expect(Object.keys(pose.joints)).toHaveLength(44);expect(Object.values(pose.joints).every(Number.isFinite)).toBe(true);expect(pose.joints.carapace).toBe(0);}}
  const pinch=buildTimeline(card,'melee:pinch',51);expect(pinch.tracks.clawNearDactylRoot!.some(k=>k.value!==0)).toBe(true);expect(pinch.tracks.clawNearFixedRoot!.every(k=>k.value===0)).toBe(true);
  const leg=topology.features.find(f=>f.id==='leg0Near')!;expect(record.landmarks.leg0NearFoot).toEqual(leg.points[2]!.map(v=>v/topology.coordinateSize));
+ const padded={...topology,rasterFrame:{width:880,height:880,origin:[220,220]as const,scale:1}};
+ const inkRecord=await compileCrabObservationRecord(padded,{...input,width:880,height:880});
+ expect(inkRecord.landmarks.leg0NearFoot).toEqual(leg.points[2]!.map(v=>(v+220)/880));
+ expect(inkRecord.landmarks.leg0NearFoot).not.toEqual(record.landmarks.leg0NearFoot); // The prior raw-space normalization misregistered the actual padded painting.
+ await expect(compileCrabObservationRecord(topology,{...input,width:880,height:880})).rejects.toThrow('raster frame');
+ await expect(compileCrabObservationRecord(padded,input)).rejects.toThrow('raster frame');
  await expect(compileCrabObservationRecord({...topology,family:'crustacean-clawed'},input)).rejects.toThrow('unsupported source');
  await expect(compileCrabObservationRecord({...topology,features:topology.features.filter(f=>f.id!=='leg0Near')},input)).rejects.toThrow('geometry');
  await expect(compileCrabObservationRecord({...topology,features:[...topology.features,{...leg,id:'leg4Near'}]},input)).rejects.toThrow('unrepresented');

@@ -796,3 +796,21 @@ observation and44-joint compiler; Foot-based leg slack repair. No candidate prof
 skin-binding artifacts; threeflora masters remain unfitted. See PAINTED_FITS_AND_58_20260916
 README,coverage-compact-crab.json,checks and REVIEW_PROMPT for current evidence/limitations.
 This logs implementation evidence, not Nick's visual acceptance. No kit/GitHub/main.ts changes.
+
+## Codex continuation — September 16–17: signed checkpoint and full catalogue pass
+
+Signed and independently verified423afd62 saved224files/276,095added lines;cached124ahead
+origin/openai/mac,235ahead origin/develop. Approximately17.5million audit lines in the cached
+develop comparison were already committed history. No rewrite/LFS/GitHub operation.
+
+Fixed stale export signature and an overloaded counted-anatomy test;full unit result4,457pass,
+1fail,1skip. Remaining failure is stale Compendium producer authority;certificate not repinned.
+204Node tool tests,TypeScript and root validation pass. Native census accounts for1,010Earth
+and240procedural:1,237override raster/parity passes,13explicit legacy fallthroughs. Five actual
+crab rasters/44-joint records pass alpha admission. Named owners now emit their actual anatomy;
+Mud Crab paddles are attached surfaces; padded ink coordinates correctly map to rig landmarks.
+Ledger observation status now reads source-verified census evidence, not hard-coded names.
+
+Package audits/FAUNA_FULL_PASS_20260916/README.md and REVIEW_PROMPT.md consolidates earlier C2/C3.
+58painted fits still unqualified;candidate structures and nonblank raster checks never promote
+species. No kit/model/main.ts/reserved-module/GitHub change. Claude need not open or sync now.

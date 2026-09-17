@@ -96,8 +96,9 @@ The single review entry point is `REVIEW_PROMPT.md`. It links the prior complete
 rather than duplicating or deleting history. OpenAI continues locally; Claude need not open or
 sync now. For tomorrow, Claude reads this worktree without editing it; no branch/PR step is needed.
 
-Signing status: `checkpoint.json` records two refused 1Password attempts. Work is staged and saved,
-but not in a new signed commit. Base33e0c7a0 remains123/234ahead of the cached agent/develop remotes.
+Signing resolved in the next continuation: signed checkpoint423afd62 contains this package,
+124/235ahead of the cached agent/develop remotes. Historical failed attempts stay in checkpoint.json;
+verification and current full-pass evidence are in ../FAUNA_FULL_PASS_20260916/.
 
 The compact crab also passes the actual observed-record → body card → all published clip tracks
 interop check (`crab-motion-interop.log`,8tests):44joints,8leg-slack measurements, amphibious
