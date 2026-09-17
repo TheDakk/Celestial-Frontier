@@ -1801,7 +1801,10 @@ const R2_MICROBE_COLONY_SEEDS: ReadonlySet<number> = new Set([
 
 export type PainterTopologyObserver=(topology:PainterTopology|null,ink:ArtCanvas)=>void;
 function paintWithTopology(ink:{c:Ctx;cv:ArtCanvas},paint:()=>void,observe?:PainterTopologyObserver):void{
-  if(observe)observe(observePainterTopology(ink.c,paint),ink.cv);else paint();
+  if(observe){
+    const topology=observePainterTopology(ink.c,paint);
+    observe(topology?{...topology,rasterFrame:{width:ink.cv.width,height:ink.cv.height,origin:[INK_OFF,INK_OFF],scale:1}}:null,ink.cv);
+  }else paint();
 }
 
 type DrawnObserver = (geometry: import('./quadruped-anatomy.js').QuadrupedDrawnGeometry, ink: ArtCanvas) => void;

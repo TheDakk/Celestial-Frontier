@@ -1782,7 +1782,13 @@ function resetCrustLeg(c: Ctx, p: Pal, root: InvertPt, knee: InvertPt, tip: Inve
 }
 
 function resetCrabChela(c: Ctx, p: Pal, root: InvertPt, elbow: InvertPt, palm: InvertPt,
-  size: number, angle: number): void {
+  size: number, angle: number, observation?:{features:DrawnFeature[];side:'Far'|'Near'}): void {
+  if(observation){
+    const {features,side}=observation,project=(x:number,y:number):[number,number]=>[palm[0]+Math.cos(angle)*x-Math.sin(angle)*y,palm[1]+Math.sin(angle)*x+Math.cos(angle)*y];
+    features.push({id:'chela'+side,kind:'arm',points:[root,elbow,palm],curve:'polyline',layer:'near'});
+    features.push({id:'fixedFinger'+side,kind:'arm',points:[project(size*.34,-size*.34),project(size*1.15,-size*.62),project(size*1.48,-size*.24)],curve:'quadratic',layer:'near'});
+    features.push({id:'dactyl'+side,kind:'arm',points:[project(size*.34,size*.31),project(size*1.13,size*.50),project(size*1.42,size*.11)],curve:'quadratic',layer:'near'});
+  }
   resetCrustLeg(c, p, root, elbow, palm, Math.max(7, size * 0.24));
   c.save(); c.translate(palm[0], palm[1]); c.rotate(angle);
   c.fillStyle = crustGradient(c, p, -size * 0.08, 0, size);
@@ -1921,11 +1927,13 @@ function resetHermitCrab(c: Ctx, g: G, p: Pal, name: string): void {
   }
 }
 
-function resetCrabII(c: Ctx, g: G, p: Pal, name: string, sig: ResetCrabIISignature): void {
+function resetCrabII(c: Ctx, g: G, p: Pal, name: string, sig: ResetCrabIISignature, paletteSource:string): void {
   if (sig === 'hermitCrab') { resetHermitCrab(c, g, p, name); return; }
+  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
   const cx = S * 0.50, cy = S * 0.505;
   const w = sig === 'mudCrab' ? S * 0.205 : sig === 'ventCrab' ? S * 0.145 : S * 0.175;
   const h = sig === 'mudCrab' ? S * 0.120 : sig === 'ventCrab' ? S * 0.105 : S * 0.135;
+  observed?.push({id:'carapace',kind:'body',points:[[cx,cy+h*(sig==='mudCrab'?.84:sig==='freshwaterCrab'?.90:.88)],[cx,cy]],widths:[w*2,h*2],layer:'near'});
   shadow(c, cx, S * 0.79, sig === 'ventCrab' ? S * 0.25 : S * 0.31);
   for (const side of [-1, 1] as const) {
     for (let i = 0; i < 4; i++) {
@@ -1935,22 +1943,30 @@ function resetCrabII(c: Ctx, g: G, p: Pal, name: string, sig: ResetCrabIISignatu
         cy - h * 0.72 + i * S * 0.052];
       const tip: InvertPt = [cx + side * (w + S * (0.155 + i * 0.016)) * span,
         cy - h * 0.40 + i * S * 0.092];
-      resetCrustLeg(c, p, root, knee, tip, sig === 'ventCrab' ? 5.6 - i * 0.30 : 8.6 - i * 0.55,
-        sig === 'mudCrab' && i === 3 ? 0.88 : 0);
+      const width=sig==='ventCrab'?5.6-i*.30:8.6-i*.55,paddle=sig==='mudCrab'&&i===3?.88:0;
+      const id='leg'+i+(side<0?'Far':'Near');
+      observed?.push({id,kind:'leg',points:[root,knee,tip],curve:'polyline',widths:[width],layer:'far'});
+      if(observed&&paddle){
+        const a=Math.atan2(tip[1]-knee[1],tip[0]-knee[0]);
+        // A rigid terminal paddle is a surface of the foot, not another leg.
+        observed.push({id:id+'Paddle',kind:'body',points:[[tip[0]+Math.cos(a)*width*1.05,tip[1]+Math.sin(a)*width*1.05],tip],widths:[width*(1.45+paddle)*2,width*(.72+paddle*.35)*2],curve:'ellipse',layer:'far'});
+      }
+      resetCrustLeg(c, p, root, knee, tip, width, paddle);
     }
   }
   /* Arms are rooted behind the carapace; only their filled chelae remain in front. */
   const leftSize = sig === 'mudCrab' ? S * 0.082 : sig === 'ventCrab' ? S * 0.044 : S * 0.063;
   const rightSize = sig === 'mudCrab' ? S * 0.058 : sig === 'ventCrab' ? S * 0.042 : S * 0.063;
   resetCrabChela(c, p, [cx - w * 0.52, cy - h * 0.36], [cx - w * 0.92, cy - h * 0.93],
-    [cx - w * 1.20, cy - h * 1.10], leftSize, Math.PI - 0.25);
+    [cx - w * 1.20, cy - h * 1.10], leftSize, Math.PI - 0.25, observed?{features:observed,side:'Far'}:undefined);
   resetCrabChela(c, p, [cx + w * 0.52, cy - h * 0.36], [cx + w * 0.92, cy - h * 0.93],
-    [cx + w * 1.20, cy - h * 1.10], rightSize, 0.25);
+    [cx + w * 1.20, cy - h * 1.10], rightSize, 0.25, observed?{features:observed,side:'Near'}:undefined);
   resetCrabCarapace(c, g, p, name, sig, cx, cy, w, h);
 
   /* Eyes live on the front edge. Vent eyes are reduced pale knobs, not beads. */
   for (const side of [-1, 1] as const) {
     const bx = cx + side * w * 0.30, by = cy - h * 0.77;
+    observed?.push({id:'eye'+(side<0?'Far':'Near'),kind:'head',points:[[bx,by],[bx+side*w*.035,by-h*(sig==='ventCrab'?.22:.38)]],layer:'near'});
     c.strokeStyle = sig === 'ventCrab' ? 'rgba(176,182,188,0.72)' : crustTone(p, 0.38, 1);
     c.lineWidth = sig === 'ventCrab' ? 3 : 5; c.lineCap = 'round';
     c.beginPath(); c.moveTo(bx, by); c.lineTo(bx + side * w * 0.035, by - h * (sig === 'ventCrab' ? 0.20 : 0.35)); c.stroke();
@@ -1958,6 +1974,7 @@ function resetCrabII(c: Ctx, g: G, p: Pal, name: string, sig: ResetCrabIISignatu
       c.fillStyle = 'rgba(126,130,136,0.72)'; c.beginPath(); c.arc(bx + side * w * 0.035, by - h * 0.22, 3.2, 0, TAU); c.fill();
     } else eyeDot(c, bx + side * w * 0.035, by - h * 0.38, S * 0.014);
   }
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'resetCrabII:'+sig,family:'brachyuran',coordinateSize:S,materials:{surface:'chitinous',paletteSource},features:observed,unresolved:['part masks and full source-bound painted rig admission not captured']});
 }
 
 export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?: boolean; big?: boolean; hue?: string;
@@ -1968,7 +1985,7 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const resetSignature = RESET_CRAB_II[name];
-  if (resetSignature) { resetCrabII(c, g, p, name, resetSignature); return; }
+  if (resetSignature) { resetCrabII(c, g, p, name, resetSignature, opts.hue?'named':'genome'); return; }
   const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
   const r = nrng(g, name, 0xC2AB);
   const cx = S * 0.50, cy = S * 0.50;

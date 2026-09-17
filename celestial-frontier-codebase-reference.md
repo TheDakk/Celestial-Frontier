@@ -1,14 +1,16 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-[Painted-fit and missing-structure continuation](audits/PAINTED_FITS_AND_58_20260916/README.md),
-matches code as of September 16, 2026: accepted Skink and Beetle masters now have hash-bound
-parts/skin and native full-action diagnostics (60 fps; 1.2/1.6 ms rig-update p95; exact rest).
-Twelve specialized structure/curve candidates share intake and motion contracts. A 44-joint
-compact-crab record compiles the actual painter's eight legs, pincers and eyestalks without
-inventing a lobster abdomen. Root/Knee/Foot leg slack is measured rather than silently skipped.
-The 58 missing names remain unqualified pending observations, painted masks/fit, full motion,
-contact and visual acceptance; candidate code is not completed species coverage. Current ledger:
-audits/PAINTED_FITS_AND_58_20260916/coverage-compact-crab.json. Original masters are unchanged.
+[Full catalogue and anatomy pass](audits/FAUNA_FULL_PASS_20260916/README.md), matches code as of
+September 17, 2026: existing Skink/Beetle painted fits retain full-action native diagnostics
+(60 fps; 1.2/1.6 ms rig-update p95; exact rest). Twelve specialized structure/curve candidates
+share intake and motion. Five actual crab variants now pass 44-joint admission against their
+source-rendered alpha, including named Freshwater/Mud/Vent owners and Mud Crab foot paddles.
+Topology callbacks carry the padded raster frame; compilers must project source coordinates
+through it. Root/Knee/Foot leg slack is measured. The census accounts for 1,010 Earth organisms
+and 240 procedural samples: 1,237 nonblank/parity passes, 13 explicit legacy fallthroughs.
+This is raster/geometry evidence, not universal animation. All 58 missing-body names still need
+qualified painted fits, contacts and visual review. Current evidence-based ledger:
+audits/FAUNA_FULL_PASS_20260916/coverage-final.json. Original accepted masters are unchanged.
 
 [Count-preserving anatomy](audits/COUNTED_ANATOMY_20260916/README.md), matches code as of
 September 16, 2026: radial and cephalopod records can declare actual arm/tentacle counts in

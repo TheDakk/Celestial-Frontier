@@ -17,6 +17,8 @@ export interface PainterTopology {
  readonly ownerId:string;
  readonly family:string;
  readonly coordinateSize:number;
+ /** Painter coordinates to the padded ink canvas; absent only for direct-owner observations. */
+ readonly rasterFrame?:Readonly<{width:number;height:number;origin:readonly [number,number];scale:number}>;
  readonly materials:Readonly<{surface:string;paletteSource:string}>;
  readonly features:readonly DrawnFeature[];
  readonly unresolved:readonly string[];
