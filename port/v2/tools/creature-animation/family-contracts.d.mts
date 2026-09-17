@@ -9,3 +9,6 @@ export const FAMILY_CONTRACTS:readonly FamilyContract[];
 export function familyContract(id:string):FamilyContract;
 
 export function familyContractForRecord(record:{readonly template:{readonly id:string};readonly anatomy?:import('./anatomy-inventory.mjs').AnatomyPresence}):FamilyContract;
+
+export interface ContactChain {readonly id:string;readonly hip:string;readonly knee:string;readonly end:string;readonly terminal:string|null;readonly group:number;}
+export function familyContactChains(template:FamilyContract):readonly ContactChain[];

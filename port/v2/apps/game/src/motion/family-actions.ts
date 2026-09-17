@@ -282,13 +282,13 @@ const PRIMATE = fauna({
 });
 
 /* ---- plants: branch/stem n alternates side (even right, odd left); sway(k) bends every chain base→tip ---- */
-const wsway = (k: number, count=3): J => ({ trunk: 0.3 * k, ...Object.fromEntries(Array.from({length:count},(_,n)=>n).flatMap((n) => { const s = n % 2 ? -1 : 1; return [['branch' + n + 'Base', k * s], ['branch' + n + 'Tip', 1.5 * k * s], ['leaf' + n, 2 * k * s]]; })) });
-const hsway = (k: number): J => Object.fromEntries([0, 1, 2, 3].flatMap((n) => { const s = n % 2 === 0 ? 1 : -1; return [['stem' + n + 'Seg0', 0.6 * k * s], ['stem' + n + 'Seg1', k * s], ['stem' + n + 'Seg2', 1.4 * k * s], ['frond' + n, 2 * k * s]]; }));
-const plant = (sway: (k: number) => J, leaves: J): Readonly<Record<string, MotionAction>> => Object.freeze(Object.fromEntries([
+const wsway = (k: number, count=3): J => ({ trunk: 0.3 * k, ...Object.fromEntries(Array.from({length:count},(_,n)=>n).flatMap((n) => { const s = n % 2 ? -1 : 1; return [['branch' + n + 'Base', k * s], ['branch' + n + 'Tip', 1.5 * k * s]]; })) });
+const hsway = (k: number): J => Object.fromEntries([0, 1, 2, 3].flatMap((n) => { const s = n % 2 === 0 ? 1 : -1; return [['stem' + n + 'Seg0', 0.6 * k * s], ['stem' + n + 'Seg1', k * s], ['stem' + n + 'Seg2', 1.4 * k * s]]; }));
+const plant = (sway: (k: number) => J, _leaves: J): Readonly<Record<string, MotionAction>> => Object.freeze(Object.fromEntries([
   A('sway', 'sway', [P(0.25, 'sine-in-out', sway(6)), P(0.5, 'sine-in-out', sway(1)), P(0.75, 'sine-in-out', sway(-5)), P(1, 'sine-in-out', REST)], true),
-  A('disturb', 'disturb', [P(tAt('disturb', 'recoil'), 'ease-out', { ...sway(-14), ...mul(leaves, -1) }), P(tAt('disturb', 'settle', 0.5), 'sine-in-out', sway(6)), P(1, 'back-out', REST)]),
-  A('harvest', 'harvest', [P(tAt('harvest', 'shake'), 'ease-in', sway(12)), P(tAt('harvest', 'detach'), 'ease-out', { ...sway(-10), ...leaves }), P(tAt('harvest', 'settle', 0.5), 'sine-in-out', sway(4)), P(1, 'back-out', REST)]),
-  A('grow', 'grow', [P(0.02, 'ease-out', mul(leaves, -1.2)), P(tAt('grow', 'rise'), 'ease-out', mul(leaves, -0.4)), P(tAt('grow', 'overshoot'), 'back-out', { ...sway(3), ...mul(leaves, 0.3) }), P(1, 'sine-in-out', REST)]),
+  A('disturb', 'disturb', [P(tAt('disturb', 'recoil'), 'ease-out', sway(-14)), P(tAt('disturb', 'settle', 0.5), 'sine-in-out', sway(6)), P(1, 'back-out', REST)]),
+  A('harvest', 'harvest', [P(tAt('harvest', 'shake'), 'ease-in', sway(12)), P(tAt('harvest', 'detach'), 'ease-out', sway(-10)), P(tAt('harvest', 'settle', 0.5), 'sine-in-out', sway(4)), P(1, 'back-out', REST)]),
+  A('grow', 'grow', [P(0.02, 'ease-out', sway(-8)), P(tAt('grow', 'rise'), 'ease-out', sway(-2)), P(tAt('grow', 'overshoot'), 'back-out', sway(3)), P(1, 'sine-in-out', REST)]),
 ].map((a) => [a.id, a])));
 const WOODY = plant(wsway, { leaf0: 30, leaf1: -30, leaf2: 30 });
 const HERB = plant(hsway, { frond0: 35, frond1: -35, frond2: 35, frond3: -35 });

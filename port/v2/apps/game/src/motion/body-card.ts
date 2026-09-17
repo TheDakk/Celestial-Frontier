@@ -1,4 +1,5 @@
 import {specializedTemplate} from '../../../../tools/creature-animation/specialized-templates.mjs';
+import {compileAmplitudeProfile} from './amplitude-profile.js';
 import {poseProjectionSigns,poseProjectionScales} from '../../../../tools/creature-animation/pose-projection.mjs';
 /* Motion Kit §3 body card compiler. Reads the painter's resolved-anatomy record
  * (the *.landmarks.json shape) and, for procedural creatures, the genome's
@@ -46,6 +47,7 @@ export interface BodyPart { readonly joint: JointName; readonly parent: JointNam
 export interface SecondaryPart { readonly id: string; readonly driver: JointName; readonly joints: readonly JointName[]; readonly lagOrder: readonly number[]; readonly material: Material; readonly jointMaterials?: Readonly<Record<string,Material>>; readonly kind?: string; }
 export interface ClampedBound { readonly id: string; readonly measured: number; readonly clamped: number; }
 export interface BodyCard {
+  readonly amplitudeProfile?:import('./amplitude-profile.js').AmplitudeProfile;
   readonly kind: 'body-card';
   readonly anatomy?:AnatomyPresence;
   readonly projectionSigns?:Readonly<Record<string,number>>;
@@ -226,7 +228,7 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   const straight = Object.entries(slackBL).filter(([, v]) => v < LEG_SLACK_MIN_BL).map(([leg, v]) => `${leg} ${(v * 100).toFixed(1)}%`);
   if (straight.length) notes.push(`leg slack under ${LEG_SLACK_MIN_BL * 100}% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): ${straight.join(', ')}`);
   return {
-    kind: 'body-card', ...(record.anatomy?{anatomy:structuredClone(record.anatomy)}:{}), projectionSigns:poseProjectionSigns(record), projectionScales:poseProjectionScales(record), identity: record.identity, recipeHash: record.recipeHash ?? null,
+    kind: 'body-card', amplitudeProfile:compileAmplitudeProfile(parts,bodyLength,jointMaterials,poseProjectionScales(record)), ...(record.anatomy?{anatomy:structuredClone(record.anatomy)}:{}), projectionSigns:poseProjectionSigns(record), projectionScales:poseProjectionScales(record), identity: record.identity, recipeHash: record.recipeHash ?? null,
     template: { id: resolved.id, version: resolved.version, clipSetId: resolved.clipSetId },
     massClass: { name: massName, multiplier: MASS_CLASS[massName] },
     locomotion: { loco: locoName, gait, templateGait }, realm, materials, jointMaterials:Object.freeze(jointMaterials), parts, secondaryParts, weapons, luminous,

@@ -39,6 +39,132 @@
   "branches": [
     {
       "base": [
+        0.275,
+        0.609
+      ],
+      "tip": [
+        0.218,
+        0.651
+      ],
+      "leaf": [
+        0.192,
+        0.642
+      ],
+      "foliage": [
+        [
+          0.118,
+          0.586
+        ],
+        [
+          0.251,
+          0.574
+        ],
+        [
+          0.302,
+          0.624
+        ],
+        [
+          0.27,
+          0.685
+        ],
+        [
+          0.158,
+          0.692
+        ],
+        [
+          0.11,
+          0.64
+        ]
+      ],
+      "wood": null,
+      "observation": "Visible local petiole and foliage cluster; original master unchanged"
+    },
+    {
+      "base": [
+        0.836,
+        0.652
+      ],
+      "tip": [
+        0.874,
+        0.601
+      ],
+      "leaf": [
+        0.914,
+        0.573
+      ],
+      "foliage": [
+        [
+          0.846,
+          0.544
+        ],
+        [
+          0.952,
+          0.52
+        ],
+        [
+          0.993,
+          0.57
+        ],
+        [
+          0.955,
+          0.648
+        ],
+        [
+          0.876,
+          0.668
+        ],
+        [
+          0.831,
+          0.612
+        ]
+      ],
+      "wood": null,
+      "observation": "Visible local petiole and foliage cluster; original master unchanged"
+    },
+    {
+      "base": [
+        0.694,
+        0.24
+      ],
+      "tip": [
+        0.684,
+        0.196
+      ],
+      "leaf": [
+        0.666,
+        0.172
+      ],
+      "foliage": [
+        [
+          0.615,
+          0.112
+        ],
+        [
+          0.687,
+          0.112
+        ],
+        [
+          0.718,
+          0.18
+        ],
+        [
+          0.705,
+          0.222
+        ],
+        [
+          0.668,
+          0.225
+        ],
+        [
+          0.623,
+          0.18
+        ]
+      ],
+      "wood": null,
+      "observation": "Visible local petiole and foliage cluster; original master unchanged"
+    },
+    {
+      "base": [
         0.42,
         0.543
       ],
