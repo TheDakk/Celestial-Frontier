@@ -1,0 +1,23 @@
+{
+  "schema": "cf.signed-checkpoint/v1",
+  "at": "2026-09-17T15:32:15.497453+00:00",
+  "commit": "0b8857511c133fef36299505c9e6927e4e2d47f4",
+  "branch": "openai/mac",
+  "signatureVerified": true,
+  "verificationMethod": "git verify-commit with system ssh-keygen and a temporary allowlist using the existing user.signingkey public key; no persistent config change",
+  "implementationFilesCommitted": 1279,
+  "insertions": 3628600,
+  "deletions": 101,
+  "cachedAheadAtImplementationCommit": {
+    "origin/openai/mac": 127,
+    "origin/develop": 238
+  },
+  "historicalFailedAttempts": 2,
+  "unsignedFallback": false,
+  "githubWrites": 0,
+  "testsRerun": false,
+  "untrackedPreserved": [
+    ".DS_Store"
+  ],
+  "reviewSnapshot": "CLAUDE_REVIEW_INPUTS.json remains the pre-report implementation snapshot; this documentation-only successor adds current signing status without recertifying historical captures."
+}

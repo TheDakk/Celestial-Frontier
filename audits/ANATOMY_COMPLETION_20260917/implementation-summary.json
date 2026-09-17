@@ -1,8 +1,8 @@
 {
   "schema": "cf.anatomy-continuation-summary/v1",
   "sourceHead": "0426ef4db5dc55205925725b9579ca61d960cd42",
-  "committed": false,
-  "signing": "Two configured 1Password signing attempts failed with agent errors; no unsigned fallback",
+  "committed": true,
+  "signing": "Retry succeeded; SSH signature independently verified against existing configured public key. Earlier two failed attempts retained.",
   "counts": {
     "missingSpecies": 58,
     "newlyQualifiedMissingSpecies": 0,
@@ -96,5 +96,6 @@
     "determinismProbes": 50
   },
   "githubWrites": 0,
-  "qualification": "No new visual or physical phone acceptance"
+  "qualification": "No new visual or physical phone acceptance",
+  "implementationCommit": "0b8857511c133fef36299505c9e6927e4e2d47f4"
 }
