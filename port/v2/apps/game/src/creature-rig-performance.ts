@@ -43,8 +43,8 @@ export function createCreatureRigPerformance(record:CreatureRigRecordV1,rig:Crea
    current={player:player!,start:atMs,blend:transitionMs,from};
   },
   sample:evaluate,
-  update(ms:number,resolve?:(pose:CreaturePoseV1)=>CreaturePoseV1){
-   const pose=evaluate(ms),resolved=resolve?resolve(pose):pose;
+  update(ms:number,resolve?:(pose:CreaturePoseV1,context:{actionId:string;elapsedMs:number;durationMs:number;loop:boolean})=>CreaturePoseV1){
+   const pose=evaluate(ms),resolved=resolve?resolve(pose,{actionId:current?.player.id??'rest',elapsedMs:current?ms-current.start:0,durationMs:current?.player.durationMs??1,loop:current?.player.loop??false}):pose;
    // The existing rig validates the complete final pose before changing any display.
    rig.applyPose(resolved);return resolved;
   },

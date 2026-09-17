@@ -1,0 +1,55 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-family.test.ts (11 tests | 3 failed) 208ms
+   × keeps freshwater-crab grounded through dodge, scuttle and mirrored replay without freezing swings 24ms
+   × keeps mud-crab grounded through dodge, scuttle and mirrored replay without freezing swings 22ms
+   × keeps vent-crab grounded through dodge, scuttle and mirrored replay without freezing swings 20ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-family.test.ts > keeps freshwater-crab grounded through dodge, scuttle and mirrored replay without freezing swings
+Error: Contact: joint limit leg0FarFoot faint@229.66666666666666: 36.905235414589484
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:90:45
+     88|    for(const j of [c.knee,c.end,...c.terminal?[c.terminal]:[]]){
+     89|     const l=template.limitsDeg[j]!,deg=pose[j]!.rotation*180/Math.PI;
+     90|     if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: joint limi…
+       |                                             ^
+     91|    }
+     92|    contacts.push({joint:c.end,target,stance:!swing});
+ ❯ apps/game/src/creature-rig-contact-family.test.ts:29:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  apps/game/src/creature-rig-contact-family.test.ts > keeps mud-crab grounded through dodge, scuttle and mirrored replay without freezing swings
+Error: Contact: faint@225.33333333333334 leg0Far RangeError: target outside two-bone reach
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:82:73
+     80|    const target={x:c.endPoint.x+(swing?Math.sin(2*Math.PI*at)*program.…
+     81|    const parent=matrices[c.hip]!,root=transformPoint(parent,c.root);
+     82|    let solved;try{solved=c.chain.solve(root,target);}catch(error){thro…
+       |                                                                         ^
+     83|    const upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c.…
+     84|    const lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c.…
+ ❯ apps/game/src/creature-rig-contact-family.test.ts:29:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  apps/game/src/creature-rig-contact-family.test.ts > keeps vent-crab grounded through dodge, scuttle and mirrored replay without freezing swings
+Error: Contact: faint@199.33333333333334 leg0Far RangeError: target outside two-bone reach
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:82:73
+     80|    const target={x:c.endPoint.x+(swing?Math.sin(2*Math.PI*at)*program.…
+     81|    const parent=matrices[c.hip]!,root=transformPoint(parent,c.root);
+     82|    let solved;try{solved=c.chain.solve(root,target);}catch(error){thro…
+       |                                                                         ^
+     83|    const upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c.…
+     84|    const lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c.…
+ ❯ apps/game/src/creature-rig-contact-family.test.ts:29:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 8 passed (11)
+   Start at  13:22:28
+   Duration  392ms (transform 91ms, setup 0ms, import 119ms, tests 208ms, environment 0ms)
+

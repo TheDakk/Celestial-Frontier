@@ -1,26 +1,25 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-[Current anatomy continuation](audits/ANATOMY_COMPLETION_20260917/ANATOMY_STATUS.md), matches code
-as of September17,2026: the full1,250case native census has1,237nonblank/parity passes,13explicit
-fallthroughs and53topology emissions (quadruped observation is separate). Twelve of the58missing
-body names have source observations; five crab owners have actual26part/44joint bindings and
-12-action native diagnostics at60fps/1.0–1.5ms rig p95. Source-stage capture uses fresh command
-prefix replay and exact RGBA checks; repeated readback failures remain recorded. Shared pinch
-motion preserves walking contacts and derives closure from painted gape, including mirror views.
-New isopod/tardigrade/tunicate/Horseshoe observations preserve actual counts and hidden anatomy.
-All58still await visual/phone qualification;53lack binding artifacts. All11accepted master hashes
-have bindings, while the three flora retain deformation/CPU failures. Signing the prepared batch
-is blocked by the configured1Password agent; no unsigned commit or GitHub write occurred.
+[Approved R1/R2 repairs](audits/ANATOMY_COMPLETION_20260917/r1-r2-static-01/README.md), matches
+code as of September 17, 2026: one shared record-relative amplitude profile and timeline owner
+now cover ordinary/editor motion, including source-pincer signs/scales and seeded sway. Woody
+and herb roots remain anchored by Nick's explicit library amendment; grow/recoil act above the
+root and foliage is secondary-only. Finer observed plant ownership now has 11/10/11 branch groups
+in Persimmon/Cranberry/Devil's Club, preserving accepted paint and exact rest pixels.
 
-[September 17 flora continuation](audits/ANATOMY_COMPLETION_20260917/README.md), matches code as of
-September 17, 2026: all eleven accepted master hashes now have binding artifacts. The three new
-woody candidates declare actual bark/foliage ownership and 8/7/8 branch groups through one shared
-count expander. Unknown declared materials refuse; per-joint secondary materials preserve chain
-lag; plant actions retain fixed roots. Native full-action captures expose leaf deformation,
-polygon-cut tears and CPU overruns despite diagnostic numeric passes. Flat-master continuity
-can explicitly retain every source-alpha boundary; it does not manufacture hidden paint.
-No flora visual/phone acceptance or new missing-species qualification follows. All 58 missing-body
-species still need qualified painted fits; original masters remain unchanged.
+Shared graph-validated contact chains drive stance/swing through the performance update owner
+in native capture. Reach and joint limits are not relaxed; existing quadruped compatibility and
+its 8% compression bound remain. Source crab hit/faint now recoil/lower the body over planted
+contacts. Published contact paint and bone endpoints are measured independently. Static checks
+pass; the new native eight-subject checkpoint follows signed source. This does not claim visual,
+phone or production combat acceptance. R3–R8 remain behind Nick's review stop.
+
+Coverage remains 12 observed / 5 bound / 0 newly qualified of the 58 targets; 53 lack bindings.
+All eleven accepted masters have binding artifacts; the flora still need native/visual and CPU
+qualification. Preserve all prior failures, including the refused devils-club-05 intake. The
+1,250-case census remains 1,237 nonblank/parity passes, 13 explicit fallthroughs and 53 topology
+emissions (quadruped observation separate). Prior implementation and approved plan signatures
+are verified. No GitHub writes, source painting, kits or admission certificate changes.
 
 [Full catalogue and anatomy pass](audits/FAUNA_FULL_PASS_20260916/README.md), matches code as of
 September 17, 2026: existing Skink/Beetle painted fits retain full-action native diagnostics

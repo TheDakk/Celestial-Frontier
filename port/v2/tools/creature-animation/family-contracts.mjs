@@ -4256,3 +4256,17 @@ export const FAMILY_CONTRACTS = freeze(contracts);
 export function familyContract(id){const value=SPECIALIZED_TEMPLATES[id]??FAMILY_CONTRACTS.find(t=>t.id===id);if(!value)throw Error('Family admission: unknown template '+id);return value;}
 
 export function familyContractForRecord(record){return projectTemplateLimits(resolveAnatomyInventory(familyContract(record.template.id),record.anatomy),record);}
+
+/** Declared leg-chain convention, resolved only within a template's own graph.
+ * No landmark search and no fabricated joints. Terminal paint is independent
+ * from the two-bone endpoint (Ankle→Paw/Foot versus Knee→Foot). */
+export function familyContactChains(template){
+ const parents=new Map(template.graph),out=[];
+ for(const [i,id]of template.legs.entries()){
+  const knee=id+'Knee',ankle=id+'Ankle',foot=id+'Foot',end=parents.has(ankle)?ankle:foot;
+  const hip=parents.get(knee),terminal=parents.has(id+'Paw')?id+'Paw':end===ankle&&parents.has(foot)?foot:null;
+  if(!hip||parents.get(end)!==knee||(terminal&&parents.get(terminal)!==end))throw Error('Contact contract: unsupported leg '+id);
+  out.push(Object.freeze({id,hip,knee,end,terminal,group:(Math.floor(i/2)+i%2)%2}));
+ }
+ return Object.freeze(out);
+}
