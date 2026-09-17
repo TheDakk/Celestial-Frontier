@@ -4,7 +4,7 @@
  * Tube subdivision uses the painter's sampled axis, not a fitted skeleton. */
 export interface PaintedPart { readonly id: string; readonly joint: string; readonly layer: 'far' | 'near' }
 export interface PaintedPartMasks {
-  readonly schema: 'cf.painter-part-masks/v1'; readonly width: number; readonly height: number;
+  readonly schema: 'cf.painter-part-masks/v1'; readonly replay?:{readonly method:'fresh-prefix-canvas';readonly prefixReads:number;readonly differentChannels:number}; readonly width: number; readonly height: number;
   readonly parts: readonly PaintedPart[]; readonly labels: Uint8Array;
 }
 export class PainterPartCapture {
@@ -39,7 +39,7 @@ export class PainterPartCapture {
       const old = this.parts.find(q => q.id === p.id);
       if (old && (old.joint !== p.joint || old.layer !== p.layer)) throw Error('Painter masks: conflicting identity');
     }
-    if (this.parts.length + parts.filter(p => !this.parts.some(q => q.id === p.id)).length > 32) throw Error('Painter masks: part budget');
+    if (this.parts.length + parts.filter(p => !this.parts.some(q => q.id === p.id)).length > 40) throw Error('Painter masks: part budget');
     this.flush();
     this.active = parts.map(p => {
       let i = this.parts.findIndex(q => q.id === p.id);

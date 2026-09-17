@@ -1,0 +1,26 @@
+{
+  "intake": {
+    "id": "vent-crab",
+    "parts": 26,
+    "atlasSize": {
+      "width": 587,
+      "height": 266
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "sourceBindingHash": "f386bb8d97c2850c9862c406666b2a6c8a320c82301b7365de3322b85a697987",
+    "sourceVertices": 1427,
+    "vertices": 1532,
+    "sharedSupports": 171,
+    "pins": 731,
+    "independentSurfaceParts": 26,
+    "sourceJoins": 24,
+    "excludedOverlaps": 0,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "nativeAcceptance": false
+}

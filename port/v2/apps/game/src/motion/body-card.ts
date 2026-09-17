@@ -1,5 +1,5 @@
 import {specializedTemplate} from '../../../../tools/creature-animation/specialized-templates.mjs';
-import {poseProjectionSigns} from '../../../../tools/creature-animation/pose-projection.mjs';
+import {poseProjectionSigns,poseProjectionScales} from '../../../../tools/creature-animation/pose-projection.mjs';
 /* Motion Kit §3 body card compiler. Reads the painter's resolved-anatomy record
  * (the *.landmarks.json shape) and, for procedural creatures, the genome's
  * FA_* indices. Never invents anatomy: missing landmarks, unsupported
@@ -28,7 +28,7 @@ export interface ResolvedAnatomyRecord {
   readonly geometry: { readonly cutoutAssetHash: string; readonly width: number; readonly height: number; readonly groundLineY: number;
     readonly depthLayers: readonly { readonly id: string; readonly order: number }[]; readonly contactPolicy?: string };
   readonly landmarks: Readonly<Record<string, readonly number[]>>;
-  readonly materials?: { readonly surface: string; readonly sheenTier?: string; readonly paletteSource?: string };
+  readonly materials?: { readonly surface: string; readonly sheenTier?: string; readonly paletteSource?: string; readonly joints?: Readonly<Record<string,string>> };
   readonly clipSetId?: string;
   readonly boundsCheck?: { readonly inside: boolean; readonly clamped: readonly string[]; readonly boneLengths: Readonly<Record<string, number>> };
   readonly recipeHash?: string;
@@ -43,12 +43,13 @@ export type Weapon = 'bite' | 'claw' | 'gore' | 'tail' | 'sting' | 'peck' | 'hea
 export type PartGroup = 'body' | 'head' | 'legs' | 'tail' | 'ears' | 'wings' | 'fins' | 'antennae' | 'fronds' | 'arms';
 export const PART_GROUPS: readonly PartGroup[] = Object.freeze(['body', 'head', 'legs', 'tail', 'ears', 'wings', 'fins', 'antennae', 'fronds', 'arms']);
 export interface BodyPart { readonly joint: JointName; readonly parent: JointName; readonly group: PartGroup; readonly pivot: Vec2; readonly tip: Vec2; readonly boneLength: number; }
-export interface SecondaryPart { readonly id: string; readonly driver: JointName; readonly joints: readonly JointName[]; readonly lagOrder: readonly number[]; readonly material: Material; readonly kind?: string; }
+export interface SecondaryPart { readonly id: string; readonly driver: JointName; readonly joints: readonly JointName[]; readonly lagOrder: readonly number[]; readonly material: Material; readonly jointMaterials?: Readonly<Record<string,Material>>; readonly kind?: string; }
 export interface ClampedBound { readonly id: string; readonly measured: number; readonly clamped: number; }
 export interface BodyCard {
   readonly kind: 'body-card';
   readonly anatomy?:AnatomyPresence;
   readonly projectionSigns?:Readonly<Record<string,number>>;
+  readonly projectionScales?:Readonly<Record<string,number>>;
   readonly identity: ResolvedAnatomyRecord['identity'];
   readonly recipeHash: string | null;
   readonly template: { readonly id: MotionTemplate['id']; readonly version: number; readonly clipSetId: string };
@@ -57,6 +58,7 @@ export interface BodyCard {
   readonly locomotion: { readonly loco: string | null; readonly gait: Gait; readonly templateGait: string };
   readonly realm: Realm;
   readonly materials: Readonly<Record<PartGroup, Material>>;
+  readonly jointMaterials?: Readonly<Record<string,Material>>;
   readonly parts: readonly BodyPart[];
   readonly secondaryParts: readonly SecondaryPart[];
   readonly weapons: readonly Weapon[];
@@ -191,12 +193,19 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   let material: Material | null = recordMaterial;
   if (typeof genome?.skin === 'number') {
     const skinName = at(FA_SKIN as readonly string[], genome.skin), genomeMaterial = skinName ? materialFromSkinName(skinName) : null;
-    if (genomeMaterial && !recordMaterial) { material = genomeMaterial; notes.push(`materials: record omits surface; genome skin "${skinName}" used as fallback`); }
+    if (genomeMaterial && surface === null && !record.identity.earthName) { material = genomeMaterial; notes.push(`materials: record omits surface; genome skin "${skinName}" used as fallback`); }
     else if (genomeMaterial && recordMaterial && recordMaterial !== genomeMaterial) notes.push(`materials: record surface "${surface}" wins over genome skin "${skinName}" (observer disagreement)`);
   }
   if (!material) throw new MotionCompileError('unsupported-materials', `surface "${surface}" maps to no kit material`);
   const materials = Object.freeze(Object.fromEntries(PART_GROUPS.map((g) => [g, material]))) as Readonly<Record<PartGroup, Material>>;
-  const secondaryParts: SecondaryPart[] = resolved.secondaryChains.map((c) => ({ id: c.id, driver: c.driver, joints: c.joints, lagOrder: c.joints.map((_, i) => i), material, ...(c.kind ? { kind: c.kind } : {}) }));
+  const jointMaterials: Record<string,Material> = Object.fromEntries(resolved.joints.map(j=>[j,material]));
+  for(const [joint,surface] of Object.entries(record.materials?.joints ?? {})){
+    const selected=materialFromSkinName(surface);
+    if(!resolved.joints.includes(joint)||!selected)throw new MotionCompileError('unsupported-materials','unknown joint/material '+joint+': '+surface);
+    jointMaterials[joint]=selected;
+  }
+  // A mixed woody/foliage chain retains each source-owned material and lag order.
+  const secondaryParts: SecondaryPart[] = resolved.secondaryChains.map(c=>({id:c.id,driver:c.driver,joints:c.joints,lagOrder:c.joints.map((_,i)=>i),material,jointMaterials:Object.fromEntries(c.joints.map(j=>[j,jointMaterials[j]!])),...(c.kind?{kind:c.kind}:{})}));
   // B3/C2 diagnostic: rest slack per two-bone leg chain (reach of Root→Knee→Ankle minus the rest vertical drop at the
   // rest horizontal offset), in body lengths. A collinear chain (slack near 0) cannot absorb any lift under a planted-paw
   // constraint (the fox foreNear refusal, C2 review 2026-09-13); it is an observer error in the record, so it is noted, not refused.
@@ -217,10 +226,10 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   const straight = Object.entries(slackBL).filter(([, v]) => v < LEG_SLACK_MIN_BL).map(([leg, v]) => `${leg} ${(v * 100).toFixed(1)}%`);
   if (straight.length) notes.push(`leg slack under ${LEG_SLACK_MIN_BL * 100}% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): ${straight.join(', ')}`);
   return {
-    kind: 'body-card', ...(record.anatomy?{anatomy:structuredClone(record.anatomy)}:{}), projectionSigns:poseProjectionSigns(record), identity: record.identity, recipeHash: record.recipeHash ?? null,
+    kind: 'body-card', ...(record.anatomy?{anatomy:structuredClone(record.anatomy)}:{}), projectionSigns:poseProjectionSigns(record), projectionScales:poseProjectionScales(record), identity: record.identity, recipeHash: record.recipeHash ?? null,
     template: { id: resolved.id, version: resolved.version, clipSetId: resolved.clipSetId },
     massClass: { name: massName, multiplier: MASS_CLASS[massName] },
-    locomotion: { loco: locoName, gait, templateGait }, realm, materials, parts, secondaryParts, weapons, luminous,
+    locomotion: { loco: locoName, gait, templateGait }, realm, materials, jointMaterials:Object.freeze(jointMaterials), parts, secondaryParts, weapons, luminous,
     bodyLength, groundLineY: record.geometry.groundLineY, landmarks,
     bounds: { inside: clamped.length === 0, clamped, limitsDeg: resolved.limitsDeg, legSlack: slackBL }, notes,
   };

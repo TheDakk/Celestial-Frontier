@@ -1,0 +1,35 @@
+{
+  "schema": "cf.paint-skin-intake/v1",
+  "sourceBindingHash": "89c9a8ce386cad370b01ac10864c6274bc558410b2fe6e8b142f0b8e00e71c63",
+  "recordRecipeHash": "2166c1a8414f6eb867074f483bf1cf3b65fc78484e386d7536678051ef872ef4",
+  "packedPixels": {
+    "schema": "cf.parts-byte-verification/v1",
+    "bindingHash": "89c9a8ce386cad370b01ac10864c6274bc558410b2fe6e8b142f0b8e00e71c63",
+    "atlasSha256": "3f54e25961348d7bdfe5bb4c0d22f8962a9a262c88fdc73bd47206813da5644e",
+    "parts": 15,
+    "comparedChannels": 5383360,
+    "changedChannels": 0
+  },
+  "vertices": 3283,
+  "partVertices": 4364,
+  "parts": 15,
+  "leaves": 1487,
+  "triangles": 6036,
+  "ownershipEdges": 4208,
+  "ownershipAlphaRule": "every nonzero original alpha",
+  "originalInkOnly": true,
+  "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+  "nativeAcceptance": false,
+  "intake": {
+    "id": "cranberry",
+    "parts": 15,
+    "atlasSize": {
+      "width": 2019,
+      "height": 877
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "rootPinnedVertices": 219,
+  "authoredConfigSha256": "87b6872fb2d4461b22c38611eb7eb780c1155417bb02a77b150a9fdeb4569106"
+}

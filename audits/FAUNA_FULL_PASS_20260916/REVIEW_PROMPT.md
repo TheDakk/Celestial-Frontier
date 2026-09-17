@@ -1,5 +1,22 @@
 # Consolidated review prompt — full pass, September 16–17
 
+**September 17 full review entry point:** [complete consolidated report](../ANATOMY_COMPLETION_20260917/CLAUDE_REVIEW_REPORT.md) and [copy-ready request](../ANATOMY_COMPLETION_20260917/CLAUDE_REVIEW_PROMPT.md). These supersede the current-state/signing statements below; the earlier scope is retained as historical context. The implementation has two failed signing attempts and remains staged. Nick has now requested Claude review; open Claude for read-only review of the Codex working files, without lane synchronization.
+
+## Prior review context
+
+Current review: [complete target ledger and source repairs](../ANATOMY_COMPLETION_20260917/ANATOMY_STATUS.md),
+coverage-final.json and implementation-summary.json. Inspect prefix replay against real painter
+stages, exact byte equality, source-relative pinch and fixed walking contacts. Allfive crab
+native02 captures are current-input diagnostics; none is phone/visual acceptance. Review the
+explicit remaining53unbound targets and the flora failures. Current code is prepared locally;
+the first signing attempt failed in1Password. Do not mistake staged work for a new signed head.
+
+Latest continuation: [flora fitting and anatomy defects](../ANATOMY_COMPLETION_20260917/README.md)
+and its coverage-flora.json. Review shared branch-count/material/root fixes and source-surface
+splitting controls. All11 master bindings exist; three new flora remain visually unqualified.
+Inspect Cranberry native02/03 side by side: closing cuts is not shape preservation. Native reports
+retain performance failures and are diagnostic snapshots. No new missing species acceptance.
+
 Review the current local openai/mac checkpoint read-only. Start with ROADMAP.md and this
 folder's README.md, checkpoint-resolution.json and coverage-final.json. Do not edit either lane,
 change a kit, paint, run inference, rewrite history or write to GitHub. PR42 remains parked.

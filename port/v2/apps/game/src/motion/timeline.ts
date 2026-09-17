@@ -78,7 +78,7 @@ export function buildTimeline(card: BodyCard, actionId: string, seed: number): M
   for (const joint of joints) {
     const lim = card.bounds.limitsDeg[joint];
     tracks[joint] = [REST_KEY, ...action.poses.map((pose) => {
-      let deg = pose.joints[joint] ?? 0;
+      let deg = (pose.joints[joint] ?? 0) * (card.projectionScales?.[joint] ?? 1);
       if (lim && (deg < lim.min || deg > lim.max)) { clamped.push(`${action.id}/${joint}@${pose.t.toFixed(3)}:${deg}`); deg = Math.min(lim.max, Math.max(lim.min, deg)); }
       return { ms: pose.t * bodyMs, t: pose.t, value: deg * DEG * (card.projectionSigns?.[joint] ?? 1), ease: pose.ease };
     })];

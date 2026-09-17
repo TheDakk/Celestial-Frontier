@@ -1,5 +1,20 @@
 # Attack anatomy and physical motion
 
+Matches code as of September17,2026: observed brachyuran records declare `source-pincers`.
+One shared projection computes closure direction/amplitude from palm and opposing painted tips;
+unsupported/degenerate gapes refuse. Pinch anticipation opens, strike closes, recovery returns
+to rest while the root and allwalking contacts remain fixed. Other stationary specialized
+candidate actions no longer reuse locomotion leg waves. Five actual crab source graphs and
+mirrored controls prove contact positions and closure; the old fixed25degree swing fails.
+Native shape, walking stance, habitat/arena and physical phone qualification remain distinct.
+See audits/ANATOMY_COMPLETION_20260917/ANATOMY_STATUS.md. No combat math or reward change.
+
+Matches code as of September 17, 2026: source-declared bark/foliage flora cards have no physical
+weapons even when unrelated animal genes are present. All four plant actions retain fixed roots;
+branch-count motion covers every declared branch. Native flora captures remain unqualified for
+visual shape and phone budgets. See audits/ANATOMY_COMPLETION_20260917/README.md. No combat
+math, battle2 integration or attack capability is granted by a new binding artifact.
+
 [Painted-fit and missing-structure continuation](audits/PAINTED_FITS_AND_58_20260916/README.md),
 matches code as of September 16, 2026: accepted Skink and Beetle masters now have hash-bound
 parts/skin and native full-action diagnostics (60 fps; 1.2/1.6 ms rig-update p95; exact rest).

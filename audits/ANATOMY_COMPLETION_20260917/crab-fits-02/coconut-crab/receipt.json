@@ -1,0 +1,26 @@
+{
+  "intake": {
+    "id": "coconut-crab",
+    "parts": 26,
+    "atlasSize": {
+      "width": 1219,
+      "height": 493
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "sourceBindingHash": "cbcb295728b3fa5d9a7f6cd387a24ba3e4bb9d069cc9f1ef0deb00d875ee9d71",
+    "sourceVertices": 1819,
+    "vertices": 2610,
+    "sharedSupports": 214,
+    "pins": 1583,
+    "independentSurfaceParts": 26,
+    "sourceJoins": 23,
+    "excludedOverlaps": 42,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "nativeAcceptance": false
+}

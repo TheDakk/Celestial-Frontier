@@ -17,58 +17,66 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-17 · full catalogue pass and signing resolved
+## SESSION HANDOFF — September 17 · verified batch staged; signing blocked
 
-Nick requests all painted fits and the 58 missing fauna structures, with one consolidated
-review. Start audits/FAUNA_FULL_PASS_20260916/REVIEW_PROMPT.md and README.md. The current
-coverage-final.json separates source observation, artifact existence and qualification.
-The prompt links all previous C2/C3 evidence. Fixture/template tests are not accepted art.
-Copy-ready restart instructions: audits/FAUNA_FULL_PASS_20260916/NEW_SESSION_PROMPT.md.
+HEAD is still 0426ef4d on openai/mac: 126 ahead of cached origin/openai/mac and 237 ahead of
+cached origin/develop. The prepared flora and fauna work is staged. Both signing attempts
+failed with `error: 1Password: agent returned an error` (exit 128). Nick was asked to unlock
+1Password and approve signing. Restore the configured signer and commit this verified batch;
+do not discard it, restart from HEAD, change signers or use an unsigned fallback.
+No GitHub writes, branches, merge, release, deployment, history rewrite or LFS migration.
+PR42 remains parked; Nick’s explicit no-hosted-writes instruction controls.
 
-Signed, independently verified checkpoints: 423afd62 saved the accumulated 224 files;
-057d9bc2 committed the full catalogue pass and repairs. At 057d9bc2 the cached ahead counts
-were 125 versus origin/openai/mac and 236 versus origin/develop. A documentation-only session
-handoff commit follows it; use git log for the current head. Signing is resolved. Approximately 17.5 million added audit lines versus
-cached develop are committed history, not an uncommitted backlog. No GitHub writes, Actions,
-branches, merge, release, deployment or history rewrite. PR42 is parked; LFS awaits explicit go.
+Start audits/ANATOMY_COMPLETION_20260917/README.md, ANATOMY_STATUS.md, coverage-final.json and
+implementation-summary.json. Signing evidence is in signing-blocker.json. Consolidated review
+is audits/ANATOMY_COMPLETION_20260917/CLAUDE_REVIEW_REPORT.md, with the copy-ready
+CLAUDE_REVIEW_PROMPT.md and hashed CLAUDE_REVIEW_INPUTS.json beside it. Nick requested the full
+review on September 17; it includes the accumulated C1–C5 work since the incorporated band review
+and the staged continuation. The original FAUNA_FULL_PASS NEW_SESSION_PROMPT gives the
+implementation scope; this handoff supersedes its older counts.
 
-Native census 03 covers 1,010 Earth organisms plus 240 procedural samples. All 1,237 override
-renders are nonblank and pixel-identical with and without observation. The 13 procedural legacy
-fallthroughs are outside this raster check. The 38 topology emissions exclude the separate
-quadruped observer and do not mean 38 completed rigs. Five source-rendered crab PNGs are retained,
-with 44-joint records admitted against real alpha. Freshwater, Mud and Vent owners now emit their
-actual anatomy; Mud paddles are rigid foot surfaces. Source coordinates map through the padded
-ink frame; missing frame metadata refuses. The ledger uses verified native evidence.
+All eleven accepted master hashes have binding artifacts. Persimmon, Cranberry and Devil’s
+Club now have actual 8/7/8 branch groups, bark/foliage ownership and fixed-root motion. They
+remain visually unqualified: native captures exposed cut tears, leaf distortion and CPU
+failures. Cranberry’s boundary repair closes cuts but does not solve shape or performance.
+Original accepted master bytes are unchanged. Preserve all failed evidence.
 
-Full application tests: 4,457 pass, 1 fails, 1 skips; 388 of 389 files pass. Fixed the exporter's
-optional-signature boundary and split counted-anatomy tests without dropping actions or samples.
-The remaining current-producer-authorities failure is the stale Compendium producer certificate;
-measurement authority matches. Do not repin without fresh measured admission. All 204 Node tool
-tests, TypeScript and root validation pass (1,010 renders; 50 matching deterministic probes).
-Raw logs and negative controls are in the new audit directory.
+Five actual crab owners now have 26-part, 44-joint source-stage fits. crab-masks-05 proves
+ordinary pixel parity and exact fresh-prefix RGBA; 03/04 are earlier successful mask snapshots,
+01/02 retain readback failures. crab-fits-02 and the five *-native-02 folders are current-input
+motion diagnostics: 12 actions × 121 samples, 601 presentation samples, exact rest, 60 fps and
+1.0–1.5 ms rig-update p95. Shared pinch uses the painted gape and preserves all eight walking
+contacts. Original and mirrored source-graph outcome tests pass. These are desktop diagnostics,
+not visual, walking-stance, hidden-surface, habitat or phone acceptance. Some retained stills
+omit text annotations; filenames retain their action identity.
 
-Prior Skink (17 parts) and Beetle (16 parts) fits retain exact rest, 19/13 actions × 121 samples,
-ten-second native films at 60 fps, and rig-update p95 of 1.2/1.6 ms. These are hashed diagnostic
-snapshots, not final visual/phone acceptance. The hidden Skink leg, folded Beetle wings/open
-flight and out-of-plane views remain unproven. http://127.0.0.1:49816/painted-fits/ serves the
-prior films from /private/tmp/cf-animation-preview-20260916. Accepted masters are unchanged.
+Additional observations preserve seven-pair isopods, four-pair tardigrades with variable painted
+folds, four-barrel Salp, single-tube Pyrosome, two-body/four-siphon Sea Squirt and top-view
+Horseshoe Crab with hidden walking legs. Of the 58 target species, 12 are observed, five have
+bindings and none is newly visually qualified. The other 53 still lack bindings. Continue the
+entire remaining roster after saving this batch, not another representative sample.
 
-Continue C2: source-owned observations/masks and body variants for the 58; fit required painted
-views and contacts; give flora real bark/foliage ownership; complete all-action native visual and
-phone qualification. Twelve candidate structures are not 58 finished species. Eight of eleven
-accepted-master hashes have matching skin-binding artifacts; three flora masters lack fits.
-Keep the 64-joint/40-part/2048-atlas bounds. No source edits during a hash-bound native capture.
-C4 new artwork remains twelve per sheet and stops for Nick's eye. No kit, AI/model or new 3D
-work in this batch. No main.ts or reserved effects/battle2/soundkit/worldlife edits. The local
-motion exception applies; anthropic/mac stays read-only. Uninterrupted startup receipt reused.
+Native census 01 covers 1,010 Earth entries plus 240 procedural samples: 1,237 nonblank/parity
+passes, 13 explicit legacy fallthroughs and 53 topology emissions. The quadruped observer is
+separate. This finite census does not exhaust seed space or prove universal animation.
+Final checks: 179 regression tests in 29 files, 209 Node tool tests, all three TypeScript
+projects, root validation with 1,010 renders and 50 matching determinism probes. Raw logs keep
+their original whitespace; source/document diff checks exclude those unchanged log bytes.
+The prior full-suite stale Compendium producer certificate remains open; do not repin it.
 
-C3 b79fd32e remains at 1,669 entries/1,665 originals and 1,617 WAV/Opus pairs; 203 of 631 fauna
-source identities, 428 missing; 43 biomes/486 routes, 484 rendered and two intentional silences.
-This is not completed fauna/listening acceptance. Its 23 review ZIPs are below 30 MB. C1 mechanical
-intake is complete; Nick owns final Wild acceptance. Rain E is active. The second weather pick
-and smaller phone finisher decision remain open; Klein phone probing stopped. C5 prunes openai/mac,
-then UI/engine/tools tiers enter develop through merge commits, followed by a separately authorized
-develop→main release/full chain. No PR step now.
+No version, save, seed, main.ts or reserved effects/battle2/soundkit/worldlife change. Kits
+unchanged; retain first-new-class media review and twelve-new-artwork-per-sheet gates.
+The uninterrupted September 17 startup receipt is reusable: gh 2.101.0, Blender 5.2.2 and
+Homebrew 7.0.3; seven capability checks pass. Updated Blender remains render-unqualified and
+unused. Run its bounded synthetic render before any future Blender job.
 
-OpenAI/Codex continues locally. Claude need not open or sync now; it can review this worktree
-read-only using the consolidated prompt. Report local commit IDs and cached ahead counts.
+C1 final Wild approval remains Nick’s. C3 source coverage remains 203/631 with 428 missing;
+1,617 WAV/Opus pairs, 43 biomes, 484 rendered routes plus two silences. Rain E is active;
+second-weather and phone-finisher decisions remain open. Prior C2/C3 review stays consolidated.
+C5 promotion and LFS still require their exact gates.
+
+OpenAI/Codex: restore signing, commit and independently verify this staged batch, then continue
+source-owned masks/graphs/actions across the remaining targets and repair flora shape/CPU.
+Claude: open now for Nick’s requested consolidated read-only review of this Codex worktree.
+Do not pull, merge, copy source into the other lane or assume HEAD includes the staged work.
+No PR is needed at this checkpoint. Report actual local commit/ahead state; infer no remote state.

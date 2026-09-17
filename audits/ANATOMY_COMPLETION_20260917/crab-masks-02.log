@@ -1,0 +1,2 @@
+{"status":"BOOTING"}
+{"status":"FAIL","error":"Error: Error: Topology masks: replay missed visible ink\n    at resolveOverrideCanvas (http://127.0.0.1:50956/bundle.js:58616:29)\n    at http://127.0.0.1:50956/bundle.js:62743:20\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/fauna-coverage/native-runner.mjs:32:35"}

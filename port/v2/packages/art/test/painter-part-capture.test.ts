@@ -25,3 +25,5 @@ it('refuses malformed, conflicting, unowned and prepainted input',()=>{
  const untouched=new Uint8ClampedArray(4),missing=new PainterPartCapture(1,1,()=>untouched);untouched[3]=255;expect(()=>missing.finish()).toThrow('unowned');
  expect(()=>new PainterPartCapture(4,1,()=>new Uint8ClampedArray(4))).toThrow('dimensions');
 });
+
+it('admits the shared forty-part budget and refuses the forty-first owner',()=>{const cap=new PainterPartCapture(1,1,()=>new Uint8ClampedArray(4));for(let i=0;i<40;i++)cap.begin([part('part-'+i)]);expect(()=>cap.begin([part('part-40')])).toThrow('part budget');});

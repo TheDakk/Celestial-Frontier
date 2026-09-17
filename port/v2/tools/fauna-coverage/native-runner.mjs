@@ -8,7 +8,7 @@ import {rolldown} from 'rolldown';
 import {openChromiumCdp} from '../browsercdp.mjs';
 import {acquireWorkspaceLock} from '../workspacelock.mjs';
 const root=path.resolve(import.meta.dirname,'../../../..'),arg=process.argv[2];
-if(!arg||process.argv.length!==3)throw Error('Usage: native-runner.mjs NEW_OUTPUT_DIRECTORY');
+const mode=process.argv[3]??'census';if(!arg||process.argv.length>4||!['census','parts'].includes(mode))throw Error('Usage: native-runner.mjs NEW_OUTPUT_DIRECTORY [census|parts]');
 const out=path.resolve(arg);if(fs.existsSync(out))throw Error('New output required');
 fs.mkdirSync(out,{recursive:true});
 const scratch=fs.mkdtempSync(path.join(os.tmpdir(),'cf-painter-census-')),sources=new Map(),sha=b=>createHash('sha256').update(b).digest('hex');
@@ -17,7 +17,7 @@ const save=()=>fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(repo
 let release,server,browser;
 try{
  release=acquireWorkspaceLock('full painter observation census');
- const bundle=await rolldown({input:path.join(import.meta.dirname,'native-entry.mjs'),platform:'browser',plugins:[{name:'source-hashes',transform(_,id){if(path.isAbsolute(id)&&fs.existsSync(id)&&fs.statSync(id).isFile())sources.set(id,sha(fs.readFileSync(id)));}}]});
+ const bundle=await rolldown({input:path.join(import.meta.dirname,mode==='parts'?'parts-entry.mjs':'native-entry.mjs'),platform:'browser',plugins:[{name:'source-hashes',transform(_,id){if(path.isAbsolute(id)&&fs.existsSync(id)&&fs.statSync(id).isFile())sources.set(id,sha(fs.readFileSync(id)));}}]});
  try{await bundle.write({dir:scratch,format:'es',entryFileNames:'bundle.js'});}finally{await bundle.close();}
  fs.writeFileSync(path.join(scratch,'index.html'),'<body><script type="module" src="bundle.js"></script></body>');
  server=http.createServer((req,res)=>{const n=new URL(req.url,'http://localhost').pathname.slice(1)||'index.html';if(!['index.html','bundle.js'].includes(n)){res.writeHead(404).end();return;}res.setHeader('Content-Type',n.endsWith('.js')?'text/javascript':'text/html');res.end(fs.readFileSync(path.join(scratch,n)));});
@@ -39,7 +39,7 @@ try{
  Object.assign(report,await evaluate('window.cfFaunaCensus.report'));
  const artifacts=await evaluate('window.cfFaunaCensus.artifacts');report.artifacts=[];
  for(const[name,base64]of Object.entries(artifacts)){
-  if(!/^[a-z-]+\.png$/.test(name))throw Error('Invalid census artifact');
+  if(!/^[a-z-]+\.(png|json)$/.test(name))throw Error('Invalid census artifact');
   const bytes=Buffer.from(base64,'base64');fs.writeFileSync(path.join(out,name),bytes);report.artifacts.push({path:name,sha256:sha(bytes),bytes:bytes.length});
  }
  if(report.status!=='DIAGNOSTIC_PASS')process.exitCode=1;

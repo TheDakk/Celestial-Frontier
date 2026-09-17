@@ -1,5 +1,27 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+[Current anatomy continuation](audits/ANATOMY_COMPLETION_20260917/ANATOMY_STATUS.md), matches code
+as of September17,2026: the full1,250case native census has1,237nonblank/parity passes,13explicit
+fallthroughs and53topology emissions (quadruped observation is separate). Twelve of the58missing
+body names have source observations; five crab owners have actual26part/44joint bindings and
+12-action native diagnostics at60fps/1.0–1.5ms rig p95. Source-stage capture uses fresh command
+prefix replay and exact RGBA checks; repeated readback failures remain recorded. Shared pinch
+motion preserves walking contacts and derives closure from painted gape, including mirror views.
+New isopod/tardigrade/tunicate/Horseshoe observations preserve actual counts and hidden anatomy.
+All58still await visual/phone qualification;53lack binding artifacts. All11accepted master hashes
+have bindings, while the three flora retain deformation/CPU failures. Signing the prepared batch
+is blocked by the configured1Password agent; no unsigned commit or GitHub write occurred.
+
+[September 17 flora continuation](audits/ANATOMY_COMPLETION_20260917/README.md), matches code as of
+September 17, 2026: all eleven accepted master hashes now have binding artifacts. The three new
+woody candidates declare actual bark/foliage ownership and 8/7/8 branch groups through one shared
+count expander. Unknown declared materials refuse; per-joint secondary materials preserve chain
+lag; plant actions retain fixed roots. Native full-action captures expose leaf deformation,
+polygon-cut tears and CPU overruns despite diagnostic numeric passes. Flat-master continuity
+can explicitly retain every source-alpha boundary; it does not manufacture hidden paint.
+No flora visual/phone acceptance or new missing-species qualification follows. All 58 missing-body
+species still need qualified painted fits; original masters remain unchanged.
+
 [Full catalogue and anatomy pass](audits/FAUNA_FULL_PASS_20260916/README.md), matches code as of
 September 17, 2026: existing Skink/Beetle painted fits retain full-action native diagnostics
 (60 fps; 1.2/1.6 ms rig-update p95; exact rest). Twelve specialized structure/curve candidates

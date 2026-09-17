@@ -13,6 +13,7 @@
    species still belongs to its rarity/color roll — bodies, not recolors. */
 import { mulberry32, TAU } from '@cf/domain-rand';
 import {observePainterTopology,type PainterTopology} from './painter-topology.js';
+import {recordPainterPrefixes} from './painter-prefix-replay.js';
 import { speciesHue } from './surface.js';
 import { SP_COLOR, SP_HEX } from '@cf/domain-speciestraits';
 import { FLORA_ICONIC, FLORA_DUPES, floraLadder, type Pal } from './floraoverrides.js';
@@ -1675,7 +1676,25 @@ function applyReviewedFaunaLineageDrift(c: Ctx, g: G, name: string): void {
   c.restore();
 }
 
-export function resolveOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {
+/** Preserve ordinary pixels: stage readbacks can change Canvas2D backend selection.
+ * Capture ownership on a separate deterministic render, as the quadruped owner does. */
+export function resolveOverrideCanvas(g:G,observeTopology?:PainterTopologyObserver):ArtCanvas|null{
+  if(!observeTopology?.captureParts)return paintOverrideCanvas(g,observeTopology);
+  let primary:{topology:PainterTopology;ink:ArtCanvas}|undefined,captured:PainterTopology|undefined;
+  const normal=paintOverrideCanvas(g,(topology,ink)=>{if(topology)primary={topology,ink};});
+  if(!normal||!primary)throw Error('Topology masks: missing winning owner');
+  const capture:PainterTopologyObserver=topology=>{if(topology)captured=topology;};capture.captureParts=true;
+  paintOverrideCanvas(g,capture);
+  if(!captured?.partMasks)throw Error('Topology masks: owner has no source masks');
+  const {partMasks,...geometry}=captured;
+  if(JSON.stringify(geometry)!==JSON.stringify(primary.topology))throw Error('Topology masks: replay changed anatomy');
+  if(partMasks.width!==primary.ink.width||partMasks.height!==primary.ink.height)throw Error('Topology masks: replay dimensions');
+  const rgba=primary.ink.getContext('2d')!.getImageData(0,0,partMasks.width,partMasks.height).data,labels=partMasks.labels.slice();
+  for(let i=0;i<labels.length;i++){if(!rgba[i*4+3])labels[i]=0;else if(!labels[i])throw Error('Topology masks: replay missed visible ink');}
+  observeTopology({...primary.topology,partMasks:{...partMasks,labels}},primary.ink);
+  return normal;
+}
+function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it
      (Lion's Mane), which is exactly the mojibake Nick's audit caught */
   const earthName = String((g as { _earthName?: string })._earthName || '').replace(/[’‘]/g, "'");
@@ -1799,11 +1818,14 @@ const R2_MICROBE_COLONY_SEEDS: ReadonlySet<number> = new Set([
   1077367562, 4135221025, 753721544, 3287574574, 1224906226, 2757882450, 1718796946,
 ]);
 
-export type PainterTopologyObserver=(topology:PainterTopology|null,ink:ArtCanvas)=>void;
+export type PainterTopologyObserver=((topology:PainterTopology|null,ink:ArtCanvas)=>void)&{captureParts?:boolean};
 function paintWithTopology(ink:{c:Ctx;cv:ArtCanvas},paint:()=>void,observe?:PainterTopologyObserver):void{
   if(observe){
-    const topology=observePainterTopology(ink.c,paint);
-    observe(topology?{...topology,rasterFrame:{width:ink.cv.width,height:ink.cv.height,origin:[INK_OFF,INK_OFF],scale:1}}:null,ink.cv);
+    const original=ink.c,replay=observe.captureParts?recordPainterPrefixes(original):undefined;
+    if(replay)ink.c=replay.context;
+    try{const topology=observePainterTopology(ink.c,paint,{captureParts:observe.captureParts??false});
+      observe(topology?{...topology,rasterFrame:{width:ink.cv.width,height:ink.cv.height,origin:[INK_OFF,INK_OFF],scale:1}}:null,ink.cv);
+    }finally{ink.c=original;replay?.close();}
   }else paint();
 }
 

@@ -8,6 +8,7 @@ import type { FamilyTemplateId } from './family-templates.js';
 import {specializedActions} from './specialized-actions.js';
 import {ADDITIONAL_ACTIONS} from './additional-actions.js';
 
+import {plantBranchCount} from '../../../../tools/creature-animation/plant-anatomy.mjs';
 import {appendageCounts} from '../../../../tools/creature-animation/repeated-anatomy.mjs';
 import type {AnatomyPresence} from '../../../../tools/creature-animation/anatomy-inventory.mjs';
 import { tAt } from './timing.js';
@@ -281,13 +282,13 @@ const PRIMATE = fauna({
 });
 
 /* ---- plants: branch/stem n alternates side (even right, odd left); sway(k) bends every chain base→tip ---- */
-const wsway = (k: number): J => ({ trunk: 0.3 * k, ...Object.fromEntries([0, 1, 2].flatMap((n) => { const s = n === 1 ? -1 : 1; return [['branch' + n + 'Base', k * s], ['branch' + n + 'Tip', 1.5 * k * s], ['leaf' + n, 2 * k * s]]; })) });
+const wsway = (k: number, count=3): J => ({ trunk: 0.3 * k, ...Object.fromEntries(Array.from({length:count},(_,n)=>n).flatMap((n) => { const s = n % 2 ? -1 : 1; return [['branch' + n + 'Base', k * s], ['branch' + n + 'Tip', 1.5 * k * s], ['leaf' + n, 2 * k * s]]; })) });
 const hsway = (k: number): J => Object.fromEntries([0, 1, 2, 3].flatMap((n) => { const s = n % 2 === 0 ? 1 : -1; return [['stem' + n + 'Seg0', 0.6 * k * s], ['stem' + n + 'Seg1', k * s], ['stem' + n + 'Seg2', 1.4 * k * s], ['frond' + n, 2 * k * s]]; }));
 const plant = (sway: (k: number) => J, leaves: J): Readonly<Record<string, MotionAction>> => Object.freeze(Object.fromEntries([
   A('sway', 'sway', [P(0.25, 'sine-in-out', sway(6)), P(0.5, 'sine-in-out', sway(1)), P(0.75, 'sine-in-out', sway(-5)), P(1, 'sine-in-out', REST)], true),
-  A('disturb', 'disturb', [P(tAt('disturb', 'recoil'), 'ease-out', { ...sway(-14), ...mul(leaves, -1) }, -0.01), P(tAt('disturb', 'settle', 0.5), 'sine-in-out', sway(6)), P(1, 'back-out', REST)]),
-  A('harvest', 'harvest', [P(tAt('harvest', 'shake'), 'ease-in', sway(12)), P(tAt('harvest', 'detach'), 'ease-out', { ...sway(-10), ...leaves }, 0, 0.004), P(tAt('harvest', 'settle', 0.5), 'sine-in-out', sway(4)), P(1, 'back-out', REST)]),
-  A('grow', 'grow', [P(0.02, 'ease-out', mul(leaves, -1.2), 0, 0.30), P(tAt('grow', 'rise'), 'ease-out', mul(leaves, -0.4), 0, -0.030), P(tAt('grow', 'overshoot'), 'back-out', { ...sway(3), ...mul(leaves, 0.3) }, 0, -0.050), P(1, 'sine-in-out', REST)]),
+  A('disturb', 'disturb', [P(tAt('disturb', 'recoil'), 'ease-out', { ...sway(-14), ...mul(leaves, -1) }), P(tAt('disturb', 'settle', 0.5), 'sine-in-out', sway(6)), P(1, 'back-out', REST)]),
+  A('harvest', 'harvest', [P(tAt('harvest', 'shake'), 'ease-in', sway(12)), P(tAt('harvest', 'detach'), 'ease-out', { ...sway(-10), ...leaves }), P(tAt('harvest', 'settle', 0.5), 'sine-in-out', sway(4)), P(1, 'back-out', REST)]),
+  A('grow', 'grow', [P(0.02, 'ease-out', mul(leaves, -1.2)), P(tAt('grow', 'rise'), 'ease-out', mul(leaves, -0.4)), P(tAt('grow', 'overshoot'), 'back-out', { ...sway(3), ...mul(leaves, 0.3) }), P(1, 'sine-in-out', REST)]),
 ].map((a) => [a.id, a])));
 const WOODY = plant(wsway, { leaf0: 30, leaf1: -30, leaf2: 30 });
 const HERB = plant(hsway, { frond0: 35, frond1: -35, frond2: 35, frond3: -35 });
@@ -303,6 +304,8 @@ export const MELEE_ALIAS: Readonly<Record<string, Readonly<Record<string, string
   myriapod: { bite: 'mandible' }, cephalopod: { constrict: 'lash', tail: 'lash' }, 'flyer-membrane': {}, primate: { claw: 'punch' },
 });
 export function actionsFor(templateId:string,anatomy?:AnatomyPresence):Readonly<Record<string,MotionAction>>|undefined{
+ const branches=plantBranchCount(templateId,anatomy);
+ if(branches!==null)return plant(k=>wsway(k,branches),Object.fromEntries(Array.from({length:branches},(_,i)=>['leaf'+i,i%2?-30:30])));
  const counts=appendageCounts(templateId,anatomy);
  if(counts)return Object.freeze({...templateId==='radial'?radialActions(counts.arms):cephalopodActions(counts.arms,counts.feedingTentacles),...ADDITIONAL_ACTIONS[templateId]});
  return ACTIONS_BY_TEMPLATE[templateId as 'quadruped'|FamilyTemplateId]??specializedActions(templateId);

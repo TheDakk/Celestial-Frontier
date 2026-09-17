@@ -1,5 +1,11 @@
 # Celestial Frontier — development toolchain
 
+**September 17 startup — current:** official metadata/idle-process check and shared lock;
+Homebrew 7.0.3, gh 2.101.0, Blender 5.2.2. Only the two eligible idle authoring tools upgraded.
+Seven capability checks pass; game/runtime/test pins unchanged. No Blender use this batch;
+its bounded synthetic render is still required before future use. Receipts and retained initial
+outdated-command nonzero: audits/ANATOMY_COMPLETION_20260917/toolchain-*. No hosted authority.
+
 **September 15 actual audio host qualification:** installed REAPER 7.80 / Surge XT 1.3.4
 plus stock ReaEQ/ReaComp saved and restored a MIDI/plugin-state project and produced two
 48 kHz/24-bit stereo WAVs with identical PCM. Explicit oscillator retrigger/zero drift removes

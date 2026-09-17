@@ -826,3 +826,35 @@ only; no new animation/art acceptance or GitHub action. Claude need not open or 
 Checked 23 restart/review references and corrected three prior audio-review links to
 audio-production/. Root validation passes: 1,010 renders and 50 matching probes. Evidence:
 FAUNA_FULL_PASS_20260916/handoff-reference-check.json and handoff-validate.log.
+
+## September 17 — C2 flora fitting checkpoint (not package acceptance)
+
+Shared observed branch counts, bark/foliage, rooted motion, three accepted-master bindings and
+native all-action films implemented. Numerical passes exposed deformation/cut tears and CPU
+overruns; these remain unqualified.32motion tests,5surface controls,TypeScript/rootvalidate pass.
+Evidence: audits/ANATOMY_COMPLETION_20260917/README.md. Commit: prepared locally; initial1Password signing attempt failed, no unsigned fallback.
+All58missing fauna remain unqualified; no gameplay/kit/GitHub change. Continue source-owned fits.
+
+## September17 — C2 source masks and physical pinch repair (not package acceptance)
+
+Five actual crab owners now have source-stage masks,26parts/44joints and12-action native
+captures. Fresh-prefix replay fixes native readback drift without sacrificing ordinary pixels.
+Source-relative pincer closure fixes overshoot; stationary actions stop locomotion leg waves.
+Seven additional missing species publish their actual source features/counts. Fullcensus:
+1,250cases,1,237paritypasses,13fallthroughs,53topology emissions.179regression/209tool tests,
+TypeScript androotvalidation pass. All58remain visually unqualified;53lack bindings. Evidence:
+audits/ANATOMY_COMPLETION_20260917/ANATOMY_STATUS.md. Signed commit pending1Password recovery;
+no GitHub write, no unsigned fallback, Claude neednotopen/sync, PR42parked.
+
+
+## September 17 — full consolidated Claude review requested
+
+Nick requested the complete report covering everything since the last review.
+ANATOMY_COMPLETION_20260917/CLAUDE_REVIEW_REPORT.md consolidates C1–C5 from the last incorporated
+band response (3bc8db0c) through HEAD 0426ef4d and the staged continuation. Its companion prompt
+is copy-ready; CLAUDE_REVIEW_INPUTS.json inventories cumulative tracked changes and hashes the
+1,275-file implementation snapshot before these review-only document edits. No new acceptance,
+code change, battery rerun, signing attempt or GitHub write. The two-attempt signing blocker
+remains. Open Claude now for read-only review of Codex's working files; no lane sync or PR.
+OpenAI preserves the staged implementation and will reconcile findings, restore configured
+signing, and continue the remaining fits. PR42 stays parked.
