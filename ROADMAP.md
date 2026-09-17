@@ -17,6 +17,17 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
+## 2026-09-17 · Claude read-only review of openai/mac (docs-only commit on anthropic/mac)
+
+Nick requested a consolidated review of the Codex worktree at `0426ef4d` plus its staged, unsigned
+September 17 batch (5 crab fits, 3 flora fits, 7 observations, C1–C5 continuation). Two passes are
+committed verbatim in `audits/ANATOMY_REVIEW_20260917/CLAUDE_REVIEW_RESPONSE.md`; the copy-ready
+plan-only prompt for Codex is `CODEX_PLANNING_PROMPT.md` beside it. Headline: input manifest verified
+(1,271/1,275 + 4 declared pointer diffs); five systemic findings (S1 frame-refusal policy, S2 amplitude
+not bone-length-relative, S3 no planted contact outside quadruped, S4 pinch unreachable by resolvers,
+S5 phone budget) plus the Pass 1 register. No lane was edited or synced; no push; PR42 parked.
+Nothing on anthropic/mac changed except this note and the two audit files.
+
 ## SESSION HANDOFF — 2026-09-13 · LONG SESSION BATCHES 1–4 COMPLETE; C2 PARTS RIG IS THE ONLY BLOCKER
 
 Read this with `audits/LONG_SESSION_20260913/LOG.md` (per-package table), `LOG-B.md`
