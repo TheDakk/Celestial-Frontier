@@ -1,0 +1,735 @@
+{
+  "producer": "6b11407d9fd57a8f8d049b21b80e4188ea402d69",
+  "artifacts": [
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/alert-25.png",
+      "sha256": "0bec0682e1f9facafd06b024a447948b8e2dd10f29bb379a2d346ff2a0c0383b",
+      "bytes": 295219
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/alert-50.png",
+      "sha256": "a6247599cc66c3e34eb39ce34ef3fd6389cb47e89479612c0e05413062842f00",
+      "bytes": 296314
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/alert-75.png",
+      "sha256": "c044aadce7d4d687d9521745b782c45334548bacc15aa92ae2cd1f8ecb1cf964",
+      "bytes": 296748
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/approach-scuttle-25.png",
+      "sha256": "78e53a4b95c2ea9270d1caab3dc3f1ae81ddc5391ff90234e85c4d490ac41ac6",
+      "bytes": 300202
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/approach-scuttle-50.png",
+      "sha256": "76ed7f63d60ddd3c639536f94f31f68e1f6de43c977b10208ce1f5cdb2c0fded",
+      "bytes": 300948
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/approach-scuttle-75.png",
+      "sha256": "c0ac899d09f852ecd7a3e2f929e6f2df9fcf640c923949d6c5aa5b945f34479c",
+      "bytes": 301365
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/approach.png",
+      "sha256": "11506e3cb3c690d1d35c5a51f93c10e288b69cbb69493a4ab0a07e0c4218b7b8",
+      "bytes": 300530
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/cast-25.png",
+      "sha256": "08b8843e9a20f30dc28052cad8639f83123f044fe11dbf31e5089ede36dbd07e",
+      "bytes": 297775
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/cast-50.png",
+      "sha256": "b656a723d4f513b7544a71e18c405a3e1cb47970d6d4d8bbba24174bbb89887e",
+      "bytes": 300668
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/cast-75.png",
+      "sha256": "ab4536b112473eda5052ae79c7b0dae5ad5c7a377829921a18cc301f3af124df",
+      "bytes": 298781
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/dodge-25.png",
+      "sha256": "ae8e0f4b862debaa0a1c16964d64117ab656df6eb33f852b99129b30ea3b372f",
+      "bytes": 296875
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/dodge-50.png",
+      "sha256": "bcb16842a0ef9d95474c272454de787b92311cf5ffc99fbcc16eddc855fd4bdd",
+      "bytes": 301409
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/dodge-75.png",
+      "sha256": "485376ea3ff8f3529999e4be490b9b19c8bebe3714ac6c1427ea0d36c89196c8",
+      "bytes": 298939
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/faint-25.png",
+      "sha256": "c3cb05572f48f4e93ed628929aa50d462192cf61d287b106d15cf8ff7f567331",
+      "bytes": 294630
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/faint-50.png",
+      "sha256": "cdfa4dd11e1950463b133ba0430078291ed46d11ef4c111e1a4bba685c2c5215",
+      "bytes": 298034
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/faint-75.png",
+      "sha256": "2288eb9918398654a2d7c1dda2c24fe8dd7a14e590c98c82e6eb5c12f7c1a2d7",
+      "bytes": 296698
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/family-10s.webm",
+      "sha256": "f893a51b2ac2f30cb78f2f89b35ce6fa30772a26eb122e965e3edd0a3e0261b3",
+      "bytes": 1718074
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/family-rest.png",
+      "sha256": "2c2a02ede093e85759e983f05f623683a942cca4a58c4f547e6f1e056c9b9092",
+      "bytes": 49554
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/feed-25.png",
+      "sha256": "5f05e611cf173f4dc663e734e2119d22d49bc291cc7483ec54c8875e0ea5dd64",
+      "bytes": 294904
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/feed-50.png",
+      "sha256": "362b44ece389fe3e5a9bde819321328b63a15d9db6de08c9e8ae9da0423387a5",
+      "bytes": 297478
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/feed-75.png",
+      "sha256": "2236081a18522a8491c4f0dcafc76ae4778495b523aa79907bd6e759140488bc",
+      "bytes": 296774
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/hit-25.png",
+      "sha256": "9f669898a65d294387271868db2c10a5e3724d3aeff3cea99b1ff8f98f925e01",
+      "bytes": 295672
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/hit-50.png",
+      "sha256": "8b9a87ad769731ed7819f7a59fd7cdd6423ec2bf95c9b2f4c9d2230038441591",
+      "bytes": 307181
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/hit-75.png",
+      "sha256": "81849e4d86b95a56bfec29770fedc2eb652d209fe534a3a6405abc9b50f3798f",
+      "bytes": 300051
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/hit.png",
+      "sha256": "ce8e501f878b3e46c2ab229e1d542624adc4acff027a2b64d6ef96f5446159cf",
+      "bytes": 292012
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/idle-25.png",
+      "sha256": "7507ac5d6295fb54247f401eb002d696926c7ebf2c28d748697ceb44d6526084",
+      "bytes": 293130
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/idle-50.png",
+      "sha256": "67f7d6f7f6994ae1dbc74befdedcebe5e508aac6021adacb81436e5c36746365",
+      "bytes": 294548
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/idle-75.png",
+      "sha256": "9723984dcc726110d029ad1e03f15af74cbc563f715f9812f8bfe44fff02e86e",
+      "bytes": 295367
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/idle.png",
+      "sha256": "b09ef2524ddb1c85bc5603f4831799a981fd4c9232ff95978f4f910eb8922b12",
+      "bytes": 294790
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/melee-pinch-25.png",
+      "sha256": "f413e37d91e17339b1907378169efdb66c0d620027318c409e4bf38b7b77c55b",
+      "bytes": 291699
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/melee-pinch-50.png",
+      "sha256": "66981893a497b261755291f69c9d2b8e56fec826522eec674bc583ec1d2d434c",
+      "bytes": 292537
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/melee-pinch-75.png",
+      "sha256": "597c0ac3bb8553595943da164fba3eae2e9be8a27c4522ccc9289ab44813dfa5",
+      "bytes": 292118
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/melee.png",
+      "sha256": "d625f32fca2f0ad9db86ce855f1a401bb51c5ee26078aaa55dbbf3055748c6be",
+      "bytes": 291865
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/report.json",
+      "sha256": "a1997612dd2fda576456d54c4204f6b1d9e16eab0bb97cfe3071bbf5f0593f6b",
+      "bytes": 218691
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/tame-25.png",
+      "sha256": "ff39ec2c9d7b2608a411d63fe03f1e705d3ba1566ece8bf3d2f65c5b508d2c10",
+      "bytes": 294738
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/tame-50.png",
+      "sha256": "c2052737392a0199bd730bd8cd20e825dce04471c33070ff14907fee93937bc6",
+      "bytes": 296874
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/tame-75.png",
+      "sha256": "d1d0cb05bb97df258e0a7f6ddaffb5c6de8eb038da410fcf65c7d8ce8638eb27",
+      "bytes": 296616
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/victory-25.png",
+      "sha256": "3b66a8256cb3317a40231409c046d27a8c79a381fc8048f8bcfafe497ede3fc0",
+      "bytes": 297753
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/victory-50.png",
+      "sha256": "93086911b1e09028023727e24d6f3f5826f6d2da1a3d41ce261473362eac504c",
+      "bytes": 300485
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-native-03/victory-75.png",
+      "sha256": "84159364be4406511464983561464b81d625ef358510a5a1be3bd41f9d7fb5d2",
+      "bytes": 299551
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/alert-25.png",
+      "sha256": "749b39575af138a71285822ffa30929e24dbf871a6289938e9881c911ddda7d6",
+      "bytes": 196521
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/alert-50.png",
+      "sha256": "3a539058bafedeebc40bc3677497e59688d02ebbfe4dafc3531c67edf865e96c",
+      "bytes": 198119
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/alert-75.png",
+      "sha256": "a4d6ce735ea547573a01c84a6b2c4dd1cefa2b7eeaef8133f3440ef7a53a61eb",
+      "bytes": 198194
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/approach-scuttle-25.png",
+      "sha256": "315eeff8f88fb58b6034adbd48f8afcf96ddf53dc414b0fd2422da2dbbdb66b5",
+      "bytes": 200265
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/approach-scuttle-50.png",
+      "sha256": "3cf23091435387fb08419cf2be2e301ca94d8c792d65e079de69cf3c10452429",
+      "bytes": 201325
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/approach-scuttle-75.png",
+      "sha256": "5401c3616a0bc0f81cf9302e85698c5bfb0361c4f0c331a805fd27e2da0bb516",
+      "bytes": 201482
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/approach.png",
+      "sha256": "b74176f05272f0dcdd15eb4f67f17d6d7eb84d489c1de1d66ddb7c50751e0fb3",
+      "bytes": 200756
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/cast-25.png",
+      "sha256": "1878c970e8878d48b5811105f33d7384f23ba9c4df7a7aaf47956a4ffa0b68cf",
+      "bytes": 198453
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/cast-50.png",
+      "sha256": "56867e7fd6c673111227862126d8d134cfdb3d26a99f5f4e7d6f53f58e449f29",
+      "bytes": 200246
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/cast-75.png",
+      "sha256": "8c3a9cb04560d6ad138f8449677fe8ccf417f296879678017ac760ba81d350f3",
+      "bytes": 199196
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/dodge-25.png",
+      "sha256": "c53fc7442f640fd04a7432a77a9205ae6bacb95b7917432bd707129b3633530b",
+      "bytes": 198115
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/dodge-50.png",
+      "sha256": "4128f71c7dc5efbf108976da20a3559b2c87f9d1ca6cb35a1ed68828e469d844",
+      "bytes": 201737
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/dodge-75.png",
+      "sha256": "6325bf67a87d941270902bc459493c2d8bb424f2ee76d7f9bd85792c6e47b9ac",
+      "bytes": 198990
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/faint-25.png",
+      "sha256": "0387b2603531b610eb4679f84c2cca511c90a002c951c72755ef65e302ea3d06",
+      "bytes": 196368
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/faint-50.png",
+      "sha256": "5ed5ad379165ffa166d43f4170588543444982a57ef675a4de1e139b268a344a",
+      "bytes": 199319
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/faint-75.png",
+      "sha256": "a9c59d6e0f0e29f209079fcba4ce56a8b4b62318c49da8e21ca3a9889db52ecd",
+      "bytes": 197518
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/family-10s.webm",
+      "sha256": "600c730fc35deed88351342c096d0afc3525f40d48fe040432d7818f9afb9134",
+      "bytes": 1122661
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/family-rest.png",
+      "sha256": "813f7b5deaed3ea5343934081ab77c0a8b0a23ebdc9016c9bf3ae3b012274dee",
+      "bytes": 70985
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/feed-25.png",
+      "sha256": "67b65c63db944d3352a39c0e5f5eb0b6ae37af87d94f7d85f6c5fc4e6afcf37f",
+      "bytes": 196431
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/feed-50.png",
+      "sha256": "81edc85c7c6dcfbe3a0455dca2cfd288faf3cafeedc6f7d5bc50cc17fe78c248",
+      "bytes": 198197
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/feed-75.png",
+      "sha256": "8bb517714b8c160c72f9e1f9f1c759da6037f3ba64eb15962908b3eb41b02792",
+      "bytes": 197868
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/hit-25.png",
+      "sha256": "fb20e13b8eafb5e59d633faee058b1c17bfc6d7e52a8fc8d6c1dcde455e7aa4d",
+      "bytes": 196768
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/hit-50.png",
+      "sha256": "a635ab6c593415ecd825a3c5e9645057aee40617237632a5856ff20278a1c1cf",
+      "bytes": 203683
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/hit-75.png",
+      "sha256": "2e34c90bb5cfb686d378caa6ed3c701b808656b54cb7e241e193afebf6b12cd6",
+      "bytes": 201018
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/hit.png",
+      "sha256": "22b1d40b2a50b0d704426d4a87d7b13faeba3a97f432b2d112e6f865fc706d0d",
+      "bytes": 195471
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/idle-25.png",
+      "sha256": "16851a4e5766604a422de7f5c26749e5be4690c5adc4cdeb64b03fe9ee1e6eb7",
+      "bytes": 195224
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/idle-50.png",
+      "sha256": "f64bbcd2071a7de5351b297c113b93a6be441333b74d512a2303f299c057d92a",
+      "bytes": 196802
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/idle-75.png",
+      "sha256": "8c14af77ba4d78652beb9d812f33397822fe58f36a3f650e7c012f36487fe8af",
+      "bytes": 196764
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/idle.png",
+      "sha256": "734159a15d32de62d27d0de178e6347a46e548be28e989c9f6ec25f33e95b9c0",
+      "bytes": 196888
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/melee-pinch-25.png",
+      "sha256": "0f0a78dfa9bb97005b468f9b4a3d342f64528e2e4595f5237633c3a0e82c227a",
+      "bytes": 194142
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/melee-pinch-50.png",
+      "sha256": "d33638733f5fbbd5a5367db1e92c5821500b51c4fcc31a8d06b54f5f8442b6da",
+      "bytes": 194580
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/melee-pinch-75.png",
+      "sha256": "aa4bb27b0689482ee4678f269a049ace55525d3d3fa9c6a796cd238454adef64",
+      "bytes": 194592
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/melee.png",
+      "sha256": "aa9f2d1787beb69a2dbace95694f88148528a22e30a3459769f21c5f6ba8719a",
+      "bytes": 194472
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/report.json",
+      "sha256": "99ff1e38f641bcdadf7f4d4e1e21adde7eaecd4a80f589a866cac20c4d9dc786",
+      "bytes": 218547
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/tame-25.png",
+      "sha256": "b62ed72448edad501f47b8c30e40b50e8a24d2cdefd279d374a69251400d1515",
+      "bytes": 196445
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/tame-50.png",
+      "sha256": "fe7ed6ff0cbdaf9febeba413501b19e09f81f481d0e438f5f297a58cd2bc02d9",
+      "bytes": 197822
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/tame-75.png",
+      "sha256": "5b5851d67d1a7bdbf4496e1d43330d6c37610172f9f57a34f8321e5c6215c70d",
+      "bytes": 197431
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/victory-25.png",
+      "sha256": "aadcbb2148c3a717a8e531cac5af4c370cfbd895d2d4a11d9b83fd5c6a8a523d",
+      "bytes": 198900
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/victory-50.png",
+      "sha256": "365cdda3a9dd19dc87ff0afc769d5f5a636842a2d0ff202a868f37a8ad1e9ca2",
+      "bytes": 200892
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-03/victory-75.png",
+      "sha256": "7a73fcb278925503778fb4e9a48179c68260da8ff7d2234554b28019fc6e1517",
+      "bytes": 200240
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/alert-25.png",
+      "sha256": "58da4e5f0c9b0054c311578cc94d19888b9f1dac30b32fed7ff37e09a9a0266c",
+      "bytes": 324085
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/alert-50.png",
+      "sha256": "ffc0a3b96d1684d80d385fd2bc3b495211b1b520a2397647c5252700a4bc2a31",
+      "bytes": 324560
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/alert-75.png",
+      "sha256": "85dbedafbbd77fd4262233dc4d6223eef547380219a95abe175c78d8d2d45aa2",
+      "bytes": 324086
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/approach-scuttle-25.png",
+      "sha256": "db8c85031553ff176f791212c280079012d26da79127a378485e5151bae5fe4e",
+      "bytes": 329757
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/approach-scuttle-50.png",
+      "sha256": "d9edc1116118dd5c7ab8c80b285057516c917612db9075e8951a384c8d5a7580",
+      "bytes": 325398
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/approach-scuttle-75.png",
+      "sha256": "69704d9248e667a221458a4b57cae3fc8a528a53636ac46026a7910ac9805aca",
+      "bytes": 328914
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/approach.png",
+      "sha256": "b02bd918a072149353d6fea84c72ec0c509e1f8b32491a1aa82be0819ba9515f",
+      "bytes": 327330
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/cast-25.png",
+      "sha256": "e9c8592c68e8de2c3b114c3482afab4748f6a5f2baddc44df207ba95483b1245",
+      "bytes": 324531
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/cast-50.png",
+      "sha256": "6f241ca18092a18a3c8bb7bb425a9f94327ddff929eff8c5e51f52aa4884a57e",
+      "bytes": 324414
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/cast-75.png",
+      "sha256": "b7f2d5d79cd26c8806549f1042fe4fbbe7b649ba55a5847bc58a4d268eb4cbef",
+      "bytes": 323873
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/dodge-25.png",
+      "sha256": "f987e297abc2d3f05c5fe94b6d9813d478ff8ae03eb75b4571718a5c69aeafef",
+      "bytes": 325179
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/dodge-50.png",
+      "sha256": "211c298449c3342133c5d11a1a00e6ca57be1fb2b4b9a71f6f02bf294d4a8144",
+      "bytes": 333906
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/dodge-75.png",
+      "sha256": "263b054e887f2c34650120cd773c19a55152d644d28034353ce629a03f9d393e",
+      "bytes": 330331
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/faint-25.png",
+      "sha256": "add92100bc0b736b795003890d595eab21a80302316d255b6c9d46414204b3c0",
+      "bytes": 323798
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/faint-50.png",
+      "sha256": "86a096691089f07cee9d2d4a15364ef0a344fd99d1fe27fa637b259a97cf6c65",
+      "bytes": 329178
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/faint-75.png",
+      "sha256": "914a9da2808c9dbd7f3bda9e5b0f0cb87e94bc7309c71b7bed33c1baaf80f380",
+      "bytes": 324692
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/family-10s.webm",
+      "sha256": "32d85c1bf525a6a92f8e78ca1a7648a9632e6aef0abf2e48983fe4d0cc6311bf",
+      "bytes": 1619922
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/family-rest.png",
+      "sha256": "22418a2e3fc41a3ec4f67a55825b888947f06145425a90620192123349dbc88e",
+      "bytes": 66535
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/feed-25.png",
+      "sha256": "d7575d66f3143f214527ac8a96c5e675f0e373b8b03ae342ac48c83add5de54f",
+      "bytes": 323663
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/feed-50.png",
+      "sha256": "9651fedbcccfd89821d8599391e8c0838eb3d32e7880d7715385facedfdcd312",
+      "bytes": 325237
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/feed-75.png",
+      "sha256": "b9979c552a1aeb8525a079d8ac0f8a22bf56a0ae39b64db697117514ce4e08c3",
+      "bytes": 324582
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/hit-25.png",
+      "sha256": "d7a77c9ecc0acc08dd54e736d3a0d70a9344599b35df41bff6d1e29c7eddbc1e",
+      "bytes": 323932
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/hit-50.png",
+      "sha256": "59ef60e9dc8e428632a2e61fb3d503f1d7f36ca67dd995aa46d101e6745018e8",
+      "bytes": 338786
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/hit-75.png",
+      "sha256": "7d876937da982124a6e849ca62b22b988710de234782060390061d9762ccf279",
+      "bytes": 329872
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/hit.png",
+      "sha256": "e73c4bc99a3abb4aa2043c22423f480682c5b9356c80bfc7460ab958d3e4a66c",
+      "bytes": 322283
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/idle-25.png",
+      "sha256": "2d554552faf24af276f8418f946e117014a31bf8ac7dd8a5acbbf3906bad0085",
+      "bytes": 322873
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/idle-50.png",
+      "sha256": "72517f4eb39f6dd9d263b364d78f74d92361f5e1c6ec79c6e269562021d834fd",
+      "bytes": 324421
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/idle-75.png",
+      "sha256": "46ab72d6b8fc680dfe545338ff10bc5d60e2624dca52c4b87cc3cce2fd459f4e",
+      "bytes": 324305
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/idle.png",
+      "sha256": "4488b1fb4064d7bbde80b7961cc0eb390470d2d252f02551e82be293c4117132",
+      "bytes": 324706
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/melee-pinch-25.png",
+      "sha256": "a87d70bf93a8179381d5c61351bc341e2b2d59819b9cfa896d94dd4c5b304b94",
+      "bytes": 322255
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/melee-pinch-50.png",
+      "sha256": "ef7eade2eb749347fd96934c73e8fe75376bfa07960a943c57926038b78a5253",
+      "bytes": 322945
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/melee-pinch-75.png",
+      "sha256": "b2c71c9c72e07c80704df3a403688a0dbf439ae7aac0dd7ee8341166cd1a0922",
+      "bytes": 322897
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/melee.png",
+      "sha256": "8c90ef638b62c83e4df606084da46dcbc4478aef2fa9d74aab64303b95495bf8",
+      "bytes": 321971
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/report.json",
+      "sha256": "33a613b2d171effb8bee7042282fbe192e974845b7336e580a2ef647603f566c",
+      "bytes": 217184
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/tame-25.png",
+      "sha256": "35fc007c53f8e9411fecd0c0bc73a77c298a124e75179956e6cf41cd3db08acb",
+      "bytes": 323897
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/tame-50.png",
+      "sha256": "8e2ea4eb1af2da3346bd00a347627467dffaa24198e53d84a242b67fc51b777f",
+      "bytes": 325557
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/tame-75.png",
+      "sha256": "6c69985f978131c7b3223f7134c4af0ed5aeeffedece8974cb91d4b480b88fbc",
+      "bytes": 324608
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/victory-25.png",
+      "sha256": "a4de14aea4dc3dae464c240efbace715ba3a75a2b4d9df7a3ca2156482088323",
+      "bytes": 325401
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/victory-50.png",
+      "sha256": "dc998d64ec4859111621f0445a2a783d3471915f246b18da3ae623fbf1851fae",
+      "bytes": 324950
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-03/victory-75.png",
+      "sha256": "0f8bb2e9908b11423efa14ae47f818fbc8a9339f24ff675936b6f6317e96fa86",
+      "bytes": 324558
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/mud-crab-native-03/family-rest.png",
+      "sha256": "ce046fc5002d1b0968e18f69e04b3bc1d515db9084c477a34f6a6cc9ef9553ab",
+      "bytes": 69469
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/mud-crab-native-03/report.json",
+      "sha256": "ca36042185ff26dedfa9c5ce41aeabd6e83aefcf5a7c1d9148a5d5f025be3d79",
+      "bytes": 213616
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/vent-crab-native-03/family-rest.png",
+      "sha256": "513ddd77b36be29c1f45772aa3262e42563a57405445ce7441ebaa799d2e81e7",
+      "bytes": 56338
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/vent-crab-native-03/report.json",
+      "sha256": "cba876d0034154563c76eb9b163e2d82c96f6b316810886a1fc6939be3bc256e",
+      "bytes": 214396
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/persimmon-native-04/report.json",
+      "sha256": "0d72c3e8574dcbe0825b2f6772c721bd766138de640213afc730ed8a94e27fde",
+      "bytes": 182072
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/approach.png",
+      "sha256": "8a0aee5826c62eaff8787f9e88319207605fe9bcda3819d74d0fa51507e18cb0",
+      "bytes": 712009
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/disturb-25.png",
+      "sha256": "c5f3d8137cbcc05d707e0ddefed4d0ef22e1f4dc8df3c358074b715a8014f1b1",
+      "bytes": 701500
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/disturb-50.png",
+      "sha256": "9595824373ae2a809c3543d3339239bbffd2a55f6124f7ab1820ee94d92b8ab2",
+      "bytes": 713580
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/disturb-75.png",
+      "sha256": "824f4023050167a2145b5cf6f5435daac91926cad5b1a2af670f241a612166b6",
+      "bytes": 711751
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/family-10s.webm",
+      "sha256": "e78f8204ab31bb9661574aca2ed4cbab4648f8050068d3946b85e4a9963a235d",
+      "bytes": 4960492
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/family-rest.png",
+      "sha256": "cf73f206ba6164475144d593d186e8ba5c23345170e31879876fc3457eae18b4",
+      "bytes": 1260262
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/grow-25.png",
+      "sha256": "4a6a03692a3c0862fea69c54ecbd04b8e36831a402521bd27eab893330886115",
+      "bytes": 710215
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/grow-50.png",
+      "sha256": "a102d88339eca553237d2efcf374d06515949398bc4d95c4e7f7854ae6924786",
+      "bytes": 712015
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/grow-75.png",
+      "sha256": "464ba66bb3134e82facb44e3fe94c140678c5c8b05594d8289c4f8991c9cc098",
+      "bytes": 712523
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/harvest-25.png",
+      "sha256": "3a244f33f9a064b4fed50d6237e4df3a705a947bf843f1085b8ac5c62780a4af",
+      "bytes": 717708
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/harvest-50.png",
+      "sha256": "6540f46a53aacea621da96d12d6b66ab64470d32527a762b3dfac458107d1603",
+      "bytes": 707655
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/harvest-75.png",
+      "sha256": "b91f5014f72a093317f10d7e2bb2a16e71b325df75a1e6455382b1e2a14fa519",
+      "bytes": 712252
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/hit.png",
+      "sha256": "b0d41eca47a542a902ec622a76cda3153e3a9d2c6086defb8d919ef16cca78b4",
+      "bytes": 712019
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/idle.png",
+      "sha256": "7f9c7584e6ee660c4e8cdcbd50eb9ee0cdf81cb7c89902c29041de5bc73a9e39",
+      "bytes": 717409
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/melee.png",
+      "sha256": "ea6c4b4efab8286eae9ced5b2a7c9ad77f6f46b65e6a377f9725e82fbd8de877",
+      "bytes": 712110
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/report.json",
+      "sha256": "6af6909f90586f3f41cc78ddd36206953b86c5e9f741737439b11e4ee40603a4",
+      "bytes": 208079
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/sway-25.png",
+      "sha256": "1a1db597328d0a242bee5622dab37496ff09d768620982d4b26fe0fc5c079bd0",
+      "bytes": 716609
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/sway-50.png",
+      "sha256": "089771cbd0f39a82731bbc9865a3793d1088d857bdf7340df1e1a815877a5bf6",
+      "bytes": 713084
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/cranberry-native-04/sway-75.png",
+      "sha256": "f76e5ce25f699a97d3c25fe45393108430185f52d02023a68f9f85721823de8a",
+      "bytes": 710383
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/devils-club-native-02/family-rest.png",
+      "sha256": "dcc3322e978b505974e6c728e38036739abd3411c7e5c5dca113b82e0e498ea7",
+      "bytes": 2113955
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/devils-club-native-02/report.json",
+      "sha256": "3164950e6490a64743d8906bb0a3d4fd8925d85adbc30f788948ff8d9e9dae25",
+      "bytes": 208796
+    }
+  ]
+}
