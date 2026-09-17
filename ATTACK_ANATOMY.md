@@ -19,7 +19,7 @@ Sand Thorns does not turn a creature's physical strike into a thorn-shaped body 
 | Arachnid | Chelicera bite, stinger arc, body shove | Chelicerae, actual sting/abdomen or body |
 | Radial | Radial arm strike, bell pulse | Bell and/or arm chain; water only |
 | Myriapod | Mandible snap, rear sting, segment shove | Mandible, declared terminal stinging chain or body segments |
-| Cephalopod | Arm lash, beak lunge | Arm chain or head/mantle; water only |
+| Cephalopod | Arm/feeding-tentacle lash, beak lunge | Striking chain or head/mantle; water only |
 | Membrane flyer | Flying bite, foot rake | Jaw or feet, supported by wing joints |
 | Primate | Arm strike, bite | Arm/hand chain or jaw |
 | Woody plant | No melee clip in current library | Explicit unsupported result |
@@ -30,6 +30,12 @@ contact joint and compatible physical medium. Required parts must exist in the a
 body card. Missing claws, wings, jaws or tails cannot silently fall back to a different move.
 Current family skeleton templates are not evidence that every Earth/procedural species has
 all of their nominal appendages or weapons.
+
+For counted cephalopod records, lash contact binds to a declared feeding tentacle when
+present, otherwise the central striking arm. The previous arm0 contact was stationary
+while the default clip moved arm3/arm4; that mismatch is retained as a failing control.
+No contact is inferred from the creature name or from a missing landmark. See the
+[counted anatomy review](audits/COUNTED_ANATOMY_20260916/README.md).
 
 ## Capability authority and inheritance
 

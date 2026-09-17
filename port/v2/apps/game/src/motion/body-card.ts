@@ -46,6 +46,7 @@ export interface SecondaryPart { readonly id: string; readonly driver: JointName
 export interface ClampedBound { readonly id: string; readonly measured: number; readonly clamped: number; }
 export interface BodyCard {
   readonly kind: 'body-card';
+  readonly anatomy?:AnatomyPresence;
   readonly projectionSigns?:Readonly<Record<string,number>>;
   readonly identity: ResolvedAnatomyRecord['identity'];
   readonly recipeHash: string | null;
@@ -101,7 +102,7 @@ const GAIT_FALLBACK: Readonly<Record<string, Record<string, string>>> = Object.f
   myriapod: { walk: 'crawl', 'cling-crawl': 'crawl', trot: 'crawl' }, cephalopod: { swim: 'jet', drift: 'jet', walk: 'crawl', 'cling-crawl': 'crawl' }, 'flyer-membrane': { fly: 'flight', glide: 'flight', walk: 'crawl', 'cling-crawl': 'crawl' }, primate: { 'cling-crawl': 'climb', crawl: 'walk', trot: 'walk', gallop: 'walk' } });
 const groupOf = (joint: string): PartGroup =>
   /^tail|^abdomen$|^sting$/.test(joint) ? 'tail' : /^ear/.test(joint) ? 'ears' : /wing|tailFan/.test(joint) ? 'wings' : /caudal|dorsal|pectoral/.test(joint) ? 'fins' : /antenna/.test(joint) ? 'antennae'
-  : /branch|leaf|stem|frond/.test(joint) ? 'fronds' : /^arm(\d|Far|Near)/.test(joint) ? 'arms' : /^(neck\d?|head|jaw|beak|mandible|chelicera|eye)/.test(joint) ? 'head' : /^(pelvis|spine\d?|chest|thorax|cephalothorax|centre|bell|trunk|seg\d|mantle|siphon)$/.test(joint) ? 'body' : /^fin/.test(joint) ? 'fins' : 'legs';
+  : /branch|leaf|stem|frond/.test(joint) ? 'fronds' : /^(arm(\d|Far|Near)|tentacle\d)/.test(joint) ? 'arms' : /^(neck\d?|head|jaw|beak|mandible|chelicera|eye)/.test(joint) ? 'head' : /^(pelvis|spine\d?|chest|thorax|cephalothorax|centre|bell|trunk|seg\d|mantle|siphon)$/.test(joint) ? 'body' : /^fin/.test(joint) ? 'fins' : 'legs';
 const at = <T>(arr: readonly T[], i: number | undefined): T | undefined => typeof i === 'number' ? arr[((i | 0) % arr.length + arr.length) % arr.length] : undefined;
 const realmFromLabel = (label: string): Realm =>
   /Aerial/.test(label) ? 'aerial' : /Aquatic/.test(label) ? 'aquatic' : /Amphibious/.test(label) ? 'amphibious' : /Gas Giant/.test(label) ? 'gas-giant' : 'land';
@@ -209,7 +210,7 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   const straight = Object.entries(slackBL).filter(([, v]) => v < LEG_SLACK_MIN_BL).map(([leg, v]) => `${leg} ${(v * 100).toFixed(1)}%`);
   if (straight.length) notes.push(`leg slack under ${LEG_SLACK_MIN_BL * 100}% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): ${straight.join(', ')}`);
   return {
-    kind: 'body-card', projectionSigns:poseProjectionSigns(record), identity: record.identity, recipeHash: record.recipeHash ?? null,
+    kind: 'body-card', ...(record.anatomy?{anatomy:structuredClone(record.anatomy)}:{}), projectionSigns:poseProjectionSigns(record), identity: record.identity, recipeHash: record.recipeHash ?? null,
     template: { id: resolved.id, version: resolved.version, clipSetId: resolved.clipSetId },
     massClass: { name: massName, multiplier: MASS_CLASS[massName] },
     locomotion: { loco: locoName, gait, templateGait }, realm, materials, parts, secondaryParts, weapons, luminous,

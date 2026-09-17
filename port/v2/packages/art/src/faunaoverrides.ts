@@ -1066,7 +1066,7 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
       c.strokeStyle = p.lit; c.lineWidth = 5;
       c.beginPath(); c.moveTo(cx + s * mw * 0.4, my + mh * 0.7);
       c.bezierCurveTo(cx + s * mw * 2.2, my + mh + 90, cx + s * mw * 0.6, my + mh + 150, cx + s * mw * 1.8, my + mh + 190); c.stroke();
-      observed?.push({id:'tentacle'+(s<0?'Far':'Near'),kind:'tentacle',points:[[cx+s*mw*.4,my+mh*.7],[cx+s*mw*2.2,my+mh+90],[cx+s*mw*.6,my+mh+150],[cx+s*mw*1.8,my+mh+190]],widths:[5],curve:'cubic',layer:'far'});
+      observed?.push({id:'tentacle'+(s<0?0:1),kind:'tentacle',points:[[cx+s*mw*.4,my+mh*.7],[cx+s*mw*2.2,my+mh+90],[cx+s*mw*.6,my+mh+150],[cx+s*mw*1.8,my+mh+190]],widths:[5],curve:'cubic',layer:'far'});
       c.fillStyle = p.base;
       c.beginPath(); c.ellipse(cx + s * mw * 1.8, my + mh + 192, 11, 7, s * 0.4, 0, TAU); c.fill();
     }
@@ -1099,7 +1099,7 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
     c.beginPath(); c.arc(cx + s * mw * 0.55, my + mh * 0.58, 11, 0, TAU); c.fill();
   }
   eye(c, cx - mw * 0.55, my + mh * 0.58, 8); eye(c, cx + mw * 0.55, my + mh * 0.58, 8);
-  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'faunaCephalopod',family:'cephalopod',coordinateSize:S,materials:{surface:'smooth mantle',paletteSource:opts.hue?'named':'genome'},features:observed,unresolved:['mantle/head/fin/eye/siphon landmarks and part masks not captured',...(opts.squid?['two feeding tentacles are additional to the eight arms']:[])]});
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'faunaCephalopod',family:'cephalopod',anatomy:{schema:'cf.anatomy-presence/v2',absent:[],appendages:{arms:observed.filter(f=>f.kind==='arm').length,feedingTentacles:observed.filter(f=>f.kind==='tentacle').length}},coordinateSize:S,materials:{surface:'smooth skin',paletteSource:opts.hue?'named':'genome'},features:observed,unresolved:['mantle/head/fin/eye/siphon landmarks and part masks not captured']});
 }
 /** CETACEAN: long body, horizontal FLUKE, blowhole, species dorsal */
 export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | 'small' | 'none'; blunt: boolean; hue?: [number, number, number];

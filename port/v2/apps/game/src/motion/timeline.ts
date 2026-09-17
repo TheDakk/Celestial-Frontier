@@ -66,7 +66,7 @@ const CHAIN_ATTENUATION = 0.6;
 
 export function buildTimeline(card: BodyCard, actionId: string, seed: number): MotionTimeline {
   const resolved = resolveActionId(card, actionId);
-  const action: MotionAction | undefined = actionsFor(card.template.id)?.[resolved.id];
+  const action: MotionAction | undefined = actionsFor(card.template.id,card.anatomy)?.[resolved.id];
   if (!action) throw new Error(`motion: ${card.template.id} has no action "${resolved.id}"`);
   const mass = card.massClass.multiplier, notes: string[] = [...card.notes];
   if (resolved.note) notes.push(resolved.note);

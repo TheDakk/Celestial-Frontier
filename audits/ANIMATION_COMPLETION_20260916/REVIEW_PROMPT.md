@@ -1,5 +1,9 @@
 # Consolidated review prompt for Claude
 
+Latest continuation: [count-preserving anatomy](../COUNTED_ANATOMY_20260916/REVIEW_PROMPT.md).
+The previous signing failure was resolved by signed checkpoint1e383e1c; the historical
+checkpoint.json below retains the failed attempt, not the current signing state.
+
 Review the local Celestial Frontier C2 continuation on openai/mac. Do not edit another lane,
 change kits, generate art, rewrite history, run inference or write to GitHub. PR42 is parked.
 Start with ROADMAP.md, CREATURE_ANIMATION.md, ATTACK_ANATOMY.md and this folder's README/checks.

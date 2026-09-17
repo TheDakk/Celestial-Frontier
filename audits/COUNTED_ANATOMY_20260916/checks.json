@@ -1,0 +1,41 @@
+{
+  "schema": "cf.counted-anatomy-checks/v1",
+  "checkpointResolved": {
+    "commit": "1e383e1c",
+    "signed": true,
+    "aheadOriginOpenaiMac": 122,
+    "aheadOriginDevelop": 233
+  },
+  "tests": {
+    "vitest": 30,
+    "nodeRig": 21,
+    "typecheck": "PASS",
+    "rootValidate": "PASS",
+    "countMatrix": "PASS"
+  },
+  "scope": "Numerical and observer compatibility only; no new painted fit, skin/atlas/phone qualification.",
+  "githubWrites": "none",
+  "mainTsHunk": false,
+  "evidence": [
+    {
+      "path": "tests-final.log",
+      "sha256": "3b8de74610180b934326b251ba496330d6e3dda873a4c5d975780c3780559a5a"
+    },
+    {
+      "path": "rig-tests.log",
+      "sha256": "5c2c9ffa2c957edcab515e10a4d2e9433cc0516cd73480764ace9503d52fc2ed"
+    },
+    {
+      "path": "validate.log",
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "count-matrix-final.json",
+      "sha256": "b545aff33992a71cf8270763504076eaaf216dd7ade18350222c5077fed6e462"
+    },
+    {
+      "path": "typecheck-04.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    }
+  ]
+}

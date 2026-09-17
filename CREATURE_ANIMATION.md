@@ -1,5 +1,16 @@
 # Creature animation — shared anatomy and motion contract
 
+[Count-preserving anatomy](audits/COUNTED_ANATOMY_20260916/README.md), matches code as of
+September 16, 2026: radial and cephalopod records can declare actual arm/tentacle counts in
+`cf.anatomy-presence/v2`. One shared expander feeds motion and rig admission; no missing
+landmarks are synthesized. The painters publish ten radial arms or eight cephalopod arms
+plus the squid's two feeding tentacles, with unchanged drawing commands. Repeated motion
+uses shared family curves, and cephalopod impact follows the appendage that actually lashes.
+The 64-joint and 40-part/2048px atlas budgets remain. All94 supported count combinations
+pass1,222 clips/147,862 synthetic pose samples;20 oversized combinations refuse. This closes
+a count/curve contract gap, not painted fitting or phone qualification. Complete masks/body
+landmarks, other variable topologies and the58 unmatched named-species structures remain.
+
 [Animation library and shared deformation review](audits/ANIMATION_COMPLETION_20260916/README.md),
 matches code as of September 16, 2026: 169 family actions now have complete-clip limit,
 determinism and GSAP parity checks (40,729 synthetic samples). Eight additional physical
@@ -52,7 +63,8 @@ remains quadruped-only. See [family intake evidence](audits/UNIVERSAL_FAMILIES_2
 910 bound comparisons, fourteen deterministic atlas controls, 137 tool tests and 45 focused
 tests. Calibration geometry is not painted-family qualification. Four actual painter owners
 now expose partial drawn topology, preserving real appendage counts and visible/absent parts.
-Count-aware motion and completed painter masks/landmarks remain required.
+Count-aware radial/cephalopod motion now accepts v2 declarations. Other variable topologies
+and completed painter masks/landmarks remain required.
 
 [Procedural motion iteration](audits/PROCEDURAL_BATTLE_ITERATION_20260916/README.md) adds
 three real generated genomes (10032,10052,10271), with painter-emitted landmarks/masks/materials,
