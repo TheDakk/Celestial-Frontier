@@ -1,0 +1,16 @@
+✔ ARAP retains exact rest and rigid rotation/translation, independently of prior seeks (2.949791ms)
+✔ ARAP reduces a discontinuous skin target while preserving hard authored contact handles (0.942625ms)
+✔ ARAP refuses invalid topology/targets atomically and never mutates rest or input (0.619084ms)
+✔ orientation projection repairs a reflected skin triangle with fixed joint targets; contradictory fixed triangle refuses without publication (0.236958ms)
+✔ distinct surfaces at the same source coordinates remain free to cross without welding their contact targets (0.175666ms)
+✔ a thin reflected triangle cannot pass the approximate rigid identity shortcut (0.122834ms)
+✔ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.230875ms)
+✔ active-set projection closes the real cast fold that 64 forward sweeps leave inverted, without changing targets or pins (22.167667ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 65.139042

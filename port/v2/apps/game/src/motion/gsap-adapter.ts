@@ -4,7 +4,7 @@
  * uses, so gsap playback and sampleTimeline agree (contract-tested). */
 import { gsap } from 'gsap';
 import type { Ease } from './actions.js';
-import { sampleKeys, type Keyframe, type MotionTimeline } from './timeline.js';
+import { boundedJoint, sampleKeys, type Keyframe, type MotionTimeline } from './timeline.js';
 
 export interface PoseTarget { setJoint(name: string, rotation: number, dx: number, dy: number): void; }
 export interface MotionPlayerOptions { readonly now: () => number; readonly gsapLib?: typeof gsap; }
@@ -39,13 +39,18 @@ export function createGsapPlayer(timeline: MotionTimeline, target: PoseTarget, o
   // CreatureRigV1.applyPose reads every joint's dx/dy as that joint's LOCAL offset in body lengths; inherited transforms
   // compound them. The timeline authors translation on root only, so root alone carries it and every other joint gets
   // 0/0 until explicit per-joint translation tracks exist (C2 interop probe, 2026-09-13: the old broadcast moved the head twice).
-  const push = (): void => { for (const [joint, cell] of Object.entries(values)) target.setJoint(joint, cell.v, joint === 'root' ? root.dx : 0, joint === 'root' ? root.dy : 0); };
+  const push = (): void => { for (const [joint, cell] of Object.entries(values)) target.setJoint(joint, boundedJoint(timeline,joint,cell.v), joint === 'root' ? root.dx : 0, joint === 'root' ? root.dy : 0); };
   let startMs = 0, running = false;
   const seek = (ms: number): void => {
     if (timeline.loop) { const w = ((ms % timeline.bodyMs) + timeline.bodyMs) % timeline.bodyMs; tl.time(w / 1000, false);
       // gsap's repeat wraps the body; a looping secondary wraps its own lag, so read it from the pure track.
       for (const s of timeline.secondary) if (!s.rigid) (values[s.joint] as { v: number }).v = sampleKeys(s.keys, ((w - s.lagMs) % timeline.bodyMs + timeline.bodyMs) % timeline.bodyMs + s.lagMs);
-    } else tl.time(Math.min(Math.max(ms, 0), timeline.durationMs) / 1000, false);
+    } else {
+      const at=Math.min(Math.max(ms,0),timeline.durationMs);tl.time(at / 1000, false);
+      // Closely spaced lag/settle keys can collapse onto GSAP's rounded time grid.
+      // Evaluate secondary tracks at the exact requested ms, as for looping chains.
+      for(const s of timeline.secondary)if(!s.rigid)(values[s.joint] as {v:number}).v=sampleKeys(s.keys,at);
+    }
     push();
   };
   return {

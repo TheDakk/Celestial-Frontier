@@ -5,6 +5,7 @@
  * sway / disturb / harvest / grow instead of the fauna set. */
 import { type Ease, type KeyPose, type MotionAction, QUADRUPED_ACTIONS } from './actions.js';
 import type { FamilyTemplateId } from './family-templates.js';
+import {ADDITIONAL_ACTIONS} from './additional-actions.js';
 
 const cephArmsA = [0, 1, 2, 3, 4, 5, 6, 7].map((n) => 'arm' + n);
 import { tAt } from './timing.js';
@@ -279,10 +280,11 @@ const plant = (sway: (k: number) => J, leaves: J): Readonly<Record<string, Motio
 const WOODY = plant(wsway, { leaf0: 30, leaf1: -30, leaf2: 30 });
 const HERB = plant(hsway, { frond0: 35, frond1: -35, frond2: 35, frond3: -35 });
 
-export const ACTIONS_BY_TEMPLATE: Readonly<Record<'quadruped' | FamilyTemplateId, Readonly<Record<string, MotionAction>>>> = Object.freeze({
+const BASE_ACTIONS_BY_TEMPLATE: Readonly<Record<'quadruped' | FamilyTemplateId, Readonly<Record<string, MotionAction>>>> = Object.freeze({
   quadruped: QUADRUPED_ACTIONS, hopper: HOPPER, 'biped-bird': BIRD, fish: FISH, insect: INSECT, serpent: SERPENT, arachnid: ARACHNID, radial: RADIAL, 'plant-woody': WOODY, 'plant-herb': HERB,
   myriapod: MYRIAPOD, cephalopod: CEPHALOPOD, 'flyer-membrane': FLYER, primate: PRIMATE,
 });
+export const ACTIONS_BY_TEMPLATE = Object.freeze(Object.fromEntries(Object.entries(BASE_ACTIONS_BY_TEMPLATE).map(([id,actions])=>[id,Object.freeze({...actions,...ADDITIONAL_ACTIONS[id]})]))) as Readonly<Record<'quadruped'|FamilyTemplateId,Readonly<Record<string,MotionAction>>>>;
 /** Card weapon → the template's melee action name when the family's weapon has its own verb. */
 export const MELEE_ALIAS: Readonly<Record<string, Readonly<Record<string, string>>>> = Object.freeze({
   hopper: { claw: 'kick' }, insect: { bite: 'mandible' }, serpent: { bite: 'strike' }, radial: { sting: 'sting-arms', tail: 'sting-arms', bite: 'sting-arms' }, fish: {}, 'biped-bird': {}, arachnid: {}, quadruped: {},

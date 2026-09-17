@@ -1,0 +1,10 @@
+{
+  "status": "SIGNING_FAILED",
+  "head": "fd26b9f8ed1f01e2e294858f3c4c872eade738bc",
+  "aheadCachedOriginOpenaiMac": 121,
+  "aheadCachedOriginDevelop": 232,
+  "error": "1Password: agent returned an error; failed to write commit object",
+  "staged": true,
+  "unsignedFallback": false,
+  "githubWrite": false
+}

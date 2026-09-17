@@ -679,3 +679,95 @@ kit and approved originals unchanged. Nick owns visual direction acceptance.
 Nick subsequently approved candidate02’s visual direction for the whole game. Exact acceptance
 is retained in PROCEDURAL_PAINTED_DIRECTION_20260916/NICK_DIRECTION_ACCEPTANCE.md; remaining
 master intake, painted-rig fitting and runtime/device qualification are not waived.
+
+
+## Codex continuation — September16 painted variation motion
+
+[Painted variation motion review](audits/PAINTED_VARIATION_MOTION_20260916/README.md) now
+animates the approved seed10271 painting, a second10271 painting and crystalline10032.
+Independent hash-bound authored observations feed one shared quadruped template; no creature
+clip overrides. All three pass exact rest/final rest,484individual and601blended pose samples,
+full-motion framing and36connected leg parts. Native captures run about60fps at1.3/1.6/1.7ms
+rig-update p95 on this Mac. Alpha-preserving intake, frame clipping and wrong-limb paint islands
+are repaired with negative controls;12focused tests and root validation pass. New candidate
+art still needs kit intake/visual acceptance. This does not establish automatic fitting,
+planted contact, hidden views, other painted families, ordinary gameplay or phone qualification.
+Kit, accepted originals and the source genomes remain unchanged. Preview uses one player,
+visible still/error fallback and a loopback server with byte-range support.
+
+Three final ten-second captures and one consolidated review prompt delivered. Intermediate
+mask attempts retained as controls. No main.ts hunk, kit change, local inference or GitHub
+write. OpenAI continues on openai/mac; Claude need not open/sync now. PR42 stays parked.
+
+
+## Codex continuation — September 16 seeded biome encounter
+
+[Seeded painted biome encounter](audits/PAINTED_BIOME_ENCOUNTER_20260916/README.md),
+matches code September 16: three painted quadrupeds now share an 18-second, three-turn
+clearing study. The encounter seed selects scenery placement and turn order over the accepted
+Earth temperate FAR/MID/NEAR template and compiled Earth card. All three bodies animate;
+shared hitstop freezes them together. Native-02 passes 3,243 source-join/body-frame samples,
+replay and mouth-contact checks; 60 fps, 0.8/1.0/0.9 ms creature-update p95 on this Mac.
+The ground band now describes space above the registered floor, and mirrored contact uses
+the same source jaw before screen reflection. Negative controls retain the old failures.
+This is seeded painted-template composition, not newly inferred biome art. Damage is scripted
+presentation data, not the combat resolver. Automatic fitting, planted-paw contact, sound,
+ordinary-game squad wiring, other painted families/biomes and physical-phone qualification
+remain separate. No new painting, model run, kit change or original-asset edit.
+
+Nine habitat tests, five encounter tests, typecheck and root validation pass. No main.ts hunk.
+Interactive two-seed browser preview delivered; Nick owns visual review. Claude need not open
+now. GitHub none; signing state is in ROADMAP.
+
+
+## Codex continuation — September16 anatomy attack selection
+
+[Anatomy attack continuation](audits/ANATOMY_ATTACKS_20260916/README.md), matches code
+September 16: the new presentation selector binds all24 existing melee actions across12 fauna
+families to explicit weapons/joints/media; both plant families explicitly have no melee clip.
+Procedural weapons need a declaration bound to the admitted record hash; generic quadruped
+claws are not evidence of actual claws. Known Earth capabilities are a small explicit table.
+The three-creature proof now uses foreclaw/bite/foreclaw, authored contact phase and a fixed
+lunge endpoint. Old dynamic paw-follow-through is retained as a false-green visual defect.
+See ATTACK_ANATOMY.md for the API, table, evidence and remaining universal coverage work.
+Shared curves, originals, kits and gameplay outcomes remain unchanged. The demo adds quiet
+seeded rain ripples and scales the existing labelled Wild effect to the smaller combatant.
+
+No main.ts hunk or reserved-module edit. New current reference ATTACK_ANATOMY.md.
+No GitHub action; PR42 parked. OpenAI continues locally; Claude need not open now.
+
+## C2 · September16 full fauna presentation register
+
+[Full fauna attack coverage](audits/FULL_SPECIES_ATTACKS_20260916/README.md), matches code
+September 16: all 631 current Earth animal identities now resolve through83 exact-name
+presentation profiles. Named habitat and attack intent replace the small six-name table;
+hoofed animals no longer inherit claws, and uncalibrated Earth swimmers derive gait from
+habitat instead of walking. Conditional horns/stings need record-bound observations.
+This is catalogue/routing coverage:529 identities have candidate library moves,44 need
+additional motion and58 need new topology. None of those counts grants visual acceptance.
+The quadruped painter emits actual foot-branch claw/jaw observations into hashed records;
+three native seeded controls preserve all ordinary painted channels.28 focused tests,
+full TypeScript and root validation pass. See ATTACK_ANATOMY.md and the species audit for
+per-name gaps. Existing painted motion proof, approved masters and kits are unchanged.
+
+No main.ts hunk. Narrow motion body-card repair is within the local September16 ownership scope; other reserved modules untouched. No kit, inference, GitHub write or PR42 action.
+
+## C2 · September16 shared anatomy and full-library continuation
+
+Nick restated that repairs must cover anatomy combinations rather than creature-specific
+exceptions. ANIMATION_COMPLETION_20260916 records169 curve entries/40,729 samples, eight
+new physical motions, explicit absence, post-easing limits and secondary parity repairs.
+Shared fold repair retains the old fast solve and adds a bounded active-set fallback;
+failed fish folds, Float32-only frog fold, over-cost solver trials and fixed-input controls
+are retained. Current fish/frog/procedural native films preserve exact rest pixels and source
+joins.36 motion tests,33 solver controls, TypeScript and root invariants pass. Per-action and
+film costs remain separate; some exceed2ms. No universal/phone/visual acceptance is claimed.
+
+Full named roster:631 identities/83 profiles,573 names with candidate moves,58 new-topology identities.
+No main.ts hunk, new art/inference, kit wording, GitHub write or other Claude-reserved path edit.
+Current review page: /animation-library/ ; consolidated prompt and checks/checkpoint receipts
+are in the new audit. OpenAI continues locally; Claude need not open now; PR42 stays parked.
+
+Final checkpoint attempt: git commit -S returned128 (1Password agent error). Saved/staged;
+HEAD remains fd26b9f8,121 ahead cached origin/openai/mac and232 ahead origin/develop.
+No unsigned fallback or GitHub write.

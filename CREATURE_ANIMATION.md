@@ -1,13 +1,46 @@
 # Creature animation — shared anatomy and motion contract
 
-[Procedural painted direction](audits/PROCEDURAL_PAINTED_DIRECTION_20260916/README.md): Nick
-rejected the raw procedural canvas look. A bounded authoring adapter now compiles actual
-quadruped identity/proportions/material/palette through the kit interpreter under labelled Earth
-comparison lighting. Nick approved seed10271 candidate02’s painted visual direction for the whole game; framing
-and key uniformity still fail master intake, and it is not yet rigged. New paint needs new fitted parts/landmarks. Pink-purple
-pigment conflicting with the key refuses without recolouring. All fourteen family production
-steps are recorded; contract fixtures do not establish painted animation coverage.23 focused
-tests/typecheck/root validation pass. No local inference, runtime promotion or kit edit.
+[Animation library and shared deformation review](audits/ANIMATION_COMPLETION_20260916/README.md),
+matches code as of September 16, 2026: 169 family actions now have complete-clip limit,
+determinism and GSAP parity checks (40,729 synthetic samples). Eight additional physical
+motions bring the anatomy selector to32 rows, including actual hoof kicks, body strikes
+and fish tail sweeps. Explicit anatomical absence is shared by compiler and rig intake.
+All631 named fauna still have exact profiles:573 have candidate moves;58 require new body
+structures. A candidate is not a fitted or visually accepted species. Broad marine/crust/
+sessile labels no longer silently borrow fish/spider/radial bones.
+
+The shared skin solver retains its established fast projection and invokes a bounded
+active-set repair only for unresolved folds. No creature-specific motion attenuation or
+solver setting was added. Whole-library painted checks exposed fish cast/dodge/victory
+folds and the difference between pure and Float32-rendered geometry; failed controls are
+retained. Native films, per-action frames, source hashes and timing limitations are in the
+review folder. Some timings exceed the2ms goal; this is not universal or phone qualification.
+Originals, approved artwork, kits, combat results and seeded generation are unchanged.
+
+[Seeded painted biome encounter](audits/PAINTED_BIOME_ENCOUNTER_20260916/README.md),
+matches code September 16: three painted quadrupeds now share an 18-second, three-turn
+clearing study. The encounter seed selects scenery placement and turn order over the accepted
+Earth temperate FAR/MID/NEAR template and compiled Earth card. All three bodies animate;
+shared hitstop freezes them together. Native-02 passes 3,243 source-join/body-frame samples,
+replay and mouth-contact checks; 60 fps, 0.8/1.0/0.9 ms creature-update p95 on this Mac.
+The ground band now describes space above the registered floor, and mirrored contact uses
+the same source jaw before screen reflection. Negative controls retain the old failures.
+This is seeded painted-template composition, not newly inferred biome art. Damage is scripted
+presentation data, not the combat resolver. Automatic fitting, planted-paw contact, sound,
+ordinary-game squad wiring, other painted families/biomes and physical-phone qualification
+remain separate. No new painting, model run, kit change or original-asset edit.
+
+[Painted variation motion review](audits/PAINTED_VARIATION_MOTION_20260916/README.md) now
+animates the approved seed10271 painting, a second10271 painting and crystalline10032.
+Independent hash-bound authored observations feed one shared quadruped template; no creature
+clip overrides. All three pass exact rest/final rest,484individual and601blended pose samples,
+full-motion framing and36connected leg parts. Native captures run about60fps at1.3/1.6/1.7ms
+rig-update p95 on this Mac. Alpha-preserving intake, frame clipping and wrong-limb paint islands
+are repaired with negative controls;12focused tests and root validation pass. New candidate
+art still needs kit intake/visual acceptance. This does not establish automatic fitting,
+planted contact, hidden views, other painted families, ordinary gameplay or phone qualification.
+Kit, accepted originals and the source genomes remain unchanged. Preview uses one player,
+visible still/error fallback and a loopback server with byte-range support.
 
 Matches code as of 2026-09-16. The actual rig now uses a family-neutral joint evaluator
 (`skeleton-pose.mjs`) with a supplied joint graph, exact landmark inventory and body axis.
@@ -254,6 +287,40 @@ precedence. Named `CANON` entries precede fauna tables; specialized fauna painte
 quadruped specs. Quadrupeds themselves can select later whole-form mammal, pinniped or glider
 owners. Unreviewed fauna lineages retain their compatibility route; Sea Turtle and Great White
 Shark must not silently migrate. `speciesVisualKey` binds the complete genome, not just seed/name.
+
+
+## Universal architecture and variation gates — September 16
+
+Nick explicitly requires shared anatomy-driven animation, not a collection of species fixes.
+The current implementation and the remaining work must retain these boundaries:
+
+1. The winning painter emits what it actually drew: graph, named joint roles, proportions,
+   parts, materials, contacts, weapon observations and explicit absence. Authored paintings
+   have hash-bound fitted records. Those observations may differ per master; clip code and
+   numerical solvers must not branch on a creature's name, seed or asset hash.
+2. Templates supply reusable actions relative to anatomy, body length, mass and medium.
+   The capability selector admits only observed weapons and required joints. A broad habitat
+   label is not a skeleton. Missing/unknown body structures refuse or use an explicitly
+   labelled presentation fallback; they must not manufacture spider legs, teeth or wings.
+3. The shared skin pipeline handles joints, connected surfaces, independent overlapping
+   appendages and source-pixel conservation. A defect found on one creature gets a retained
+   failing control and checks on other families/proportions. Keep exact rest, deterministic
+   seek, signed triangle orientation, source joins and unchanged hard contact handles.
+4. Remaining expansion is record-described topology: variable limb/arm/segment counts,
+   absent appendages, asymmetric bodies, shells, worms, gastropod feet, crustacean claws,
+   sessile bodies, aquatic mammal flukes and independent accessory fins. The current14 fixed
+   graphs do not yet cover all of these. Do not alter a species profile solely to raise a
+   coverage number. Extend the producer and rig contract together, then emit actual painter
+   records and fit paintings before claiming a body type supported.
+5. Qualification crosses shape, proportions, material, appendage presence, locomotion,
+   medium and attack. Check every clip and transition, both facings, extreme legal poses,
+   multiple seeded procedural bodies, physical attack contacts and named Earth exceptions.
+   Illegal combinations must fail. Synthetic joints prove contracts, not painted movement.
+   Final visual approval and physical iPhone performance remain separate gates.
+
+Current evidence is in ANIMATION_COMPLETION_20260916. The old fold projection and unsafe
+weapon/absence controls remain executable. The full named roster has58 unresolved topology
+identities, and the other573 are candidate-library coverage, not573 finished animated masters.
 
 ## One rig format, several body-plan adapters
 

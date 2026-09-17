@@ -6,6 +6,7 @@ import {poseProjectionSigns} from '../../../../tools/creature-animation/pose-pro
  * Pure and clock-free; identical inputs give identical cards. */
 import {resolveAnatomyInventory,type AnatomyPresence} from '../../../../tools/creature-animation/anatomy-inventory.mjs';
 import {resolvePhysicalHabitat} from '../battle-habitat.js';
+import {earthFaunaProfile} from '../earth-fauna-profiles.js';
 import { FA_HEAD, FA_LOCO, FA_SKIN, FA_TAIL } from '@cf/domain-speciestraits';
 import { classifyRealm } from '@cf/domain-genome';
 import { isMotionFallback, resolveTemplate, type JointLimitDeg, type JointName, type MotionFallback, type MotionTemplate, type Vec2 } from './templates.js';
@@ -37,7 +38,7 @@ export interface MotionGenomeFields {
   readonly lumin?: boolean; readonly realm?: string; readonly kingdom?: string; readonly habitat?: number; readonly [k: string]: unknown;
 }
 export type Gait = 'walk' | 'trot' | 'gallop' | 'hop' | 'slither' | 'crawl' | 'swim' | 'jet' | 'fly' | 'glide' | 'roll' | 'cling-crawl' | 'drift';
-export type Weapon = 'bite' | 'claw' | 'gore' | 'tail' | 'sting' | 'peck' | 'headbutt' | 'constrict' | 'spit';
+export type Weapon = 'bite' | 'claw' | 'gore' | 'tail' | 'sting' | 'peck' | 'headbutt' | 'constrict' | 'spit' | 'kick' | 'body';
 export type PartGroup = 'body' | 'head' | 'legs' | 'tail' | 'ears' | 'wings' | 'fins' | 'antennae' | 'fronds' | 'arms';
 export const PART_GROUPS: readonly PartGroup[] = Object.freeze(['body', 'head', 'legs', 'tail', 'ears', 'wings', 'fins', 'antennae', 'fronds', 'arms']);
 export interface BodyPart { readonly joint: JointName; readonly parent: JointName; readonly group: PartGroup; readonly pivot: Vec2; readonly tip: Vec2; readonly boneLength: number; }
@@ -144,13 +145,13 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   }
   const notes: string[] = [];
   const earth = record.identity.earthName ? (EARTH_SPECIES[record.identity.earthName] ?? EARTH_DEFAULT) : null;
-  if (record.identity.earthName && !EARTH_SPECIES[record.identity.earthName]) notes.push(`earth species "${record.identity.earthName}" not in the named table; walk/medium defaults`);
+  if (record.identity.earthName && !EARTH_SPECIES[record.identity.earthName]) notes.push(`earth species "${record.identity.earthName}" mass uncalibrated (medium); gait from physical habitat/anatomy`);
   // Mass, locomotion, weapons, luminous, realm.
   const massName: MassClassName = earth ? earth.mass : (at(MASS_BY_SIZE_INDEX, genome?.size) ?? 'medium');
   const locoName = earth ? earth.loco : (at(FA_LOCO as readonly string[], genome?.loco) ?? null);
   const physical=resolvePhysicalHabitat(record,genome);
   const habitatGait:Gait=physical.realm==='aquatic'?'swim':physical.realm==='aerial'||physical.realm==='gas-giant'?'fly':resolved.id==='hopper'?'hop':'walk';
-  const gait: Gait = record.habitat?.gait ?? (earth ? earth.gait : (locoName ? LOCO_GAIT[locoName] ?? habitatGait : habitatGait));
+  const gait: Gait = record.habitat?.gait ?? (record.identity.earthName ? EARTH_SPECIES[record.identity.earthName]?.gait ?? habitatGait : (locoName ? LOCO_GAIT[locoName] ?? habitatGait : habitatGait));
   const gaits = templateGaits(resolved.id), gaitAlias = GAIT_FALLBACK[resolved.id]?.[gait];
   const isPlant = PLANT_TEMPLATE_IDS.includes(resolved.id as typeof PLANT_TEMPLATE_IDS[number]);
   let templateGait: string = gaits.includes(gait) ? gait : gaitAlias && gaits.includes(gaitAlias) ? gaitAlias : gaits[0] ?? 'none';
@@ -160,7 +161,12 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   const addWeapon = (w: Weapon | undefined): void => { if (w && !weapons.includes(w)) weapons.push(w); };
   const natural = TEMPLATE_WEAPONS[resolved.id] ?? ['bite', 'claw'];
   if (isPlant) { /* plants carry no weapons */ }
-  else if (earth && resolved.id === 'quadruped') earth.weapons.forEach(addWeapon);
+  else if (earth) {
+    // Intent only. Runtime attacks still require observed parts and conditional weapon evidence.
+    const verbs=earthFaunaProfile(record.identity.earthName!)?.intendedMoves??[];
+    const vocabulary:Readonly<Record<string,Weapon>>={bite:'bite',claw:'claw',peck:'peck',headbutt:'headbutt',tail:'tail',strike:'bite',constrict:'constrict',mandible:'bite',lash:'constrict',punch:'claw',kick:'kick',body:'body','sting-arms':'sting'};
+    for(const verb of verbs)addWeapon(vocabulary[verb]);
+  }
   else {
     const headName = earth ? undefined : at(FA_HEAD as readonly string[], genome?.head), tailName = earth ? undefined : at(FA_TAIL as readonly string[], genome?.tail);
     addWeapon(headName ? HEAD_WEAPON[headName] : undefined); addWeapon(natural[0]);

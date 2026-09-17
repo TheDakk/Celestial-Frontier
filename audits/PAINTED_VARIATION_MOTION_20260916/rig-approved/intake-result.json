@@ -1,0 +1,10 @@
+{
+  "id": "approved-rosette",
+  "parts": 22,
+  "atlasSize": {
+    "width": 2046,
+    "height": 800
+  },
+  "restDifferentChannels": 0,
+  "atlasDifferentChannels": 0
+}

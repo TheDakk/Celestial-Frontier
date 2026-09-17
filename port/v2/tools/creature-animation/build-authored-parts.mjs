@@ -1,13 +1,13 @@
 import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';import {pathToFileURL} from 'node:url';
 import {hashBytes,hashJSON} from './quadruped-template.mjs';import {cutAuthoredParts,cutPainterParts} from './part-masks.mjs';import {packRigAtlas} from './rig-atlas.mjs';
-import {keyAndDespill} from '../../../../tools/local-image-generation/kit-contact-math.mjs';
+import {intakeAuthoredPixels} from './authored-intake.mjs';
 const require=createRequire(import.meta.url),sharp=createRequire(require.resolve('free-tex-packer-core'))('sharp');
 export async function buildAuthoredParts({id,recordFile,masterFile,declarationFile,output}){
  if(fs.existsSync(output))throw Error('Authored parts output must be new');
  const record=JSON.parse(fs.readFileSync(recordFile)),master=fs.readFileSync(masterFile),declaration=JSON.parse(fs.readFileSync(declarationFile));
  const {data,info}=await sharp(master).ensureAlpha().raw().toBuffer({resolveWithObject:true});
  const painter=declaration.schema==='cf.painter-part-intake/v1';
- const keyed=painter?{rgba:new Uint8ClampedArray(data),alpha:Uint8Array.from({length:info.width*info.height},(_,i)=>data[i*4+3]),receipt:{mode:'native painter alpha; no keyer'}}:keyAndDespill(new Uint8ClampedArray(data),info.width,info.height);
+ const keyed=painter?{rgba:new Uint8ClampedArray(data),alpha:Uint8Array.from({length:info.width*info.height},(_,i)=>data[i*4+3]),receipt:{mode:'native painter alpha; no keyer'}}:intakeAuthoredPixels(new Uint8ClampedArray(data),info.width,info.height);
  let result;
  if(painter){
   if(declaration.labelsFile!=='labels.png')throw Error('Painter labels must be adjacent labels.png');

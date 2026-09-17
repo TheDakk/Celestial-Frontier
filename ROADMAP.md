@@ -17,70 +17,61 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-16 · procedural paint quality
+## SESSION HANDOFF — 2026-09-16 · shared anatomy and full-clip review
 
-[Procedural painted direction](audits/PROCEDURAL_PAINTED_DIRECTION_20260916/README.md): Nick
-rejected the raw procedural canvas look. A bounded authoring adapter now compiles actual
-quadruped identity/proportions/material/palette through the kit interpreter under labelled Earth
-comparison lighting. Nick approved seed10271 candidate02’s painted visual direction for the whole game; framing
-and key uniformity still fail master intake, and it is not yet rigged. New paint needs new fitted parts/landmarks. Pink-purple
-pigment conflicting with the key refuses without recolouring. All fourteen family production
-steps are recorded; contract fixtures do not establish painted animation coverage.23 focused
-tests/typecheck/root validation pass. No local inference, runtime promotion or kit edit.
+Nick's requirement is shared, anatomy-driven animation across all Earth and procedural
+creatures. No species/seed/hash exceptions in the numerical solver or clip code. Authored
+masters retain fitted observations; procedural painters must emit what they draw. See
+CREATURE_ANIMATION.md's universal architecture/variation gates, ATTACK_ANATOMY.md and
+[audits/ANIMATION_COMPLETION_20260916/README.md](audits/ANIMATION_COMPLETION_20260916/README.md).
 
-Latest comparison: http://127.0.0.1:49816/painted-procedural/ . Do not resume the raw
-canvas appearance as the visual target. Candidate02’s direction is now approved; complete intake
-repair before fitting/turnaround. See the package for all fourteen anatomy-family tasks.
+This batch adds eight physical motions (32 selector rows), expands explicit anatomical
+absence and rejects broad marine/crust/sessile aliases that invented the wrong body graph.
+Post-easing bounds close nine original limit violations; exact secondary sampling fixes
+GSAP/pure mismatch.169 actions/40,729 synthetic samples pass. All631 fauna are catalogued;
+573 have candidate moves,58 need new topology. This is not573 finished animated masters.
 
-### Mechanical proof retained
+Whole-library painted checks found cast/dodge/victory folds missed by four-action proofs.
+The shared solver preserves its previous fast solution and uses bounded active-set repair
+only for unresolved folds. Pins, masters, poses, source-join gates and atomic refusal remain.
+Native current-solver reports: fish-native-04, frog-native-04, broad-native-01; bird-native-02
+is an earlier solver snapshot explicitly labelled in the review. All clips have named frames;
+films are ten seconds. Some timing remains over2ms (frog victory2.2ms; broad film p952.2ms).
+No final visual, full-game combat or iPhone qualification is claimed.
 
+36 motion/anatomy tests,33 skin/solver controls, TypeScript and root validation pass.
+checks.json names the final evidence; failed experiments and raw logs remain for review.
+No main.ts hunk, painting, model run, kit edit or other reserved Claude-module edit.
+The updated GSAP producer SHA is600e413b90587a5d3b2f40ace148a95e6e692fb82f3b4d2eba2f17b12f0a8660;
+historical runners pinned to6a206acd remain historical. Use the new source-hashed diagnostic.
 
-Review http://127.0.0.1:49816/procedural/ and
-[audit/prompt](audits/PROCEDURAL_BATTLE_ITERATION_20260916/README.md).
-Previous /habitats/, /families/ and /impact/ remain. The review page uses one selected video
-at a time after the embedded browser crashed with four players; recovery verification is
-recorded with the package. Three real genomes use the existing canvas painter, not AI paint.
+Review: http://127.0.0.1:49816/animation-library/ ; species-coverage/ now serves catalogue-03.
+The combined REVIEW_PROMPT.md here indexes all prior C2 stages and the separate C3 package.
+Preview can be rebuilt with tools/animation-completion/review.mjs from repo root under the
+existing toolchain lock; serve the resulting directory with tools/family-review/review-server.mjs
+(paths under port/v2). The current scratch server serves /private/tmp/cf-animation-preview-20260916.
 
-[Procedural motion iteration](audits/PROCEDURAL_BATTLE_ITERATION_20260916/README.md) adds
-three real generated genomes (10032,10052,10271), with painter-emitted landmarks/masks/materials,
-zero observation drift and one lossless atlas each. Shared genome-aware body cards and smooth
-review transitions pass484 individual plus601 assembled native samples per creature, exact rest
-and final rest, and separated-mesh negative controls. All three recorded about60fps/0.4ms rig
-update p95. This covers only current four-leg/banded-tail observation support, not every family.
-The habitat diagnostic now subtracts compiled hitstop from locomotion, poses and body travel;
-both turn roles freeze identically and1,202 source-join/medium-containment samples pass. Its
-latest fish/bird updates are0.9/0.6ms p95.36 focused tests,typecheck/root validation pass. These
-remain diagnostic tools; normal gameplay is not yet wired. Fine silhouette aliasing, source
-shadow deformation, planted contact, other painter owners and phone qualification remain open.
+Next work: qualify remaining full-body poses and timing; extend record-described topology
+and painter observations for variable appendage counts and the58 unmatched bodies; test shared
+repairs on multiple legal shapes and materials. Then fit art, prove contact/media/scene integration
+and qualify the physical phone. Do not declare whole-library/whole-species completion from
+synthetic fixtures or a passing film. Do not reduce a creature's motion just to hide a fold.
 
-Native proofs: native-1-polished,native-2,native-3 (608/606/607frames,10.117/10.100/10.117s)
-and native-habitat-01 (607frames/10.117s). Source hashes in each report bind dirty diagnostics;
-these are not clean-source certificates. No source art, kit, main.ts, combat or sibling edit.
-The procedural trial scans272 seeds with declared exclusions, no hand fitting or clip edits.
-Do not generalize these results to extra legs, other tails, aquatic/airborne procedural owners.
+Last signed HEAD at batch preparation: fd26b9f8;121 ahead cached origin/openai/mac,232 ahead
+origin/develop. The final signed checkpoint again failed with "1Password: agent returned an error".
+All work is saved/staged; checkpoint.json records exit128. Never use unsigned fallback
+or push the staged candidate.
 
-Next: Nick reviews films. Fix shadow/edge presentation with image-based controls, complete
-other painter masks/records and qualify more anatomical extremes. Bird needs opponent-facing
-flight; Frog ground contact remains open. Then connect admitted encounter/world/record data
-through CreatureRigV1 to ordinary gameplay and separately qualify30fps on the physical phone.
-Preserve8% contact bound, exact rest/source joins and strict<2ms per-creature update requirement.
+C3 stays signed b79fd32e: 1,669 source entries/1,665 unique originals,1,662 decode,three
+quarantined;1,617 WAV/Opus pairs and203/631 fauna reference identities,428 missing.43 biome
+recipes/486 routes,484 rendered,two intentional silences. Not listening/species acceptance.
+Audio production REVIEW_PROMPT.md/REVIEW_PACKS.md identify23 ZIPs below30MB. C1 mechanical
+intake complete; Nick owns final Wild acceptance. C4 remains12 assets/sheet. Rain E active;
+second weather pick and smaller-finisher phone decision open. Klein probes stopped.
+C5 pruning on openai/mac, then UI/engine/tools tiers into develop by merge commits; one
+future develop→main release PR/full chain only with separate authorization. No Ready before
+proof/weather/phone decisions. LFS migration awaits Nick's explicit go; no history rewrite.
 
-Signed code/evidence checkpoint73b93592 contains the accumulated continuation and this batch;
-119 ahead cached origin/openai/mac and230 ahead origin/develop at that checkpoint. Signing
-succeeded through the configured1Password helper, without a fallback or configuration change.
-A documentation receipt follows it. Code checks are complete; hosted chain was not run.
-
-C3 remains signed b79fd32e:1,669 source entries/1,665 unique originals,1,662 decode,three quarantined;
-1,617 WAV/Opus pairs and203/631 fauna reference identities,428 missing.43 biome recipes/486 routes,
-484 rendered,two intentional silences. References are not species-behavior/listening acceptance.
-Audio review audio-production/REVIEW_PROMPT.md and REVIEW_PACKS.md;23 ZIPs below30MB.
-C1 mechanical intake complete; Nick owns final Wild acceptance. C4 remains twelve assets/sheet.
-Rain E active; second weather pick and smaller-finisher phone decision open. Klein probes stopped.
-C5: prune on openai/mac, then three merge-commit tiers into develop (UI,engine,tools), followed by
-one develop→main release PR/full chain only when separately authorized. No Ready before required
-proof/weather/phone decisions. Audits LFS approved in principle; perform only on Nick's explicit go.
-
-OpenAI/Codex continues locally on openai/mac. No new branches, kit edits, GitHub writes, Actions,
-merges, release, deployment or history rewrite. PR42 parked. Claude need not open/sync now; when
-Nick requests review, provide the consolidated prompt and named evidence, not an automatic merge.
-Reuse the uninterrupted September15–16 toolchain receipt; do not update tools during evidence jobs.
+OpenAI/Codex continues locally. Claude need not open or sync now; Nick can supply the
+consolidated REVIEW_PROMPT.md when ready. No GitHub write, Actions, branch, merge, release,
+deploy or history rewrite. PR42 parked.

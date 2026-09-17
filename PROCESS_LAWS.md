@@ -1,5 +1,12 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **EXACT REST AND CONTINUOUS JOINS CAN MISS WRONG-LIMB PAINT** (painted variations, 2026-09-16).
+> A detached painted island assigned to another limb reconstructs perfectly at rest and can
+> evade source-join tests because it has no joined edge. Inspect authored limb components,
+> actual depth ownership and full moving silhouettes. Retain the2792-pixel floating fragment
+> as the failing control; correct masks without deleting paint or weakening deformation gates.
+> Fit review framing to the full motion, not just rest, so lunges remain visible.
+
 > **PRESERVED BODY PIXELS DO NOT PROVE A REPLACEMENT VIEW IS ATTACHED** (Civet, 2026-09-16).
 > Surviving neck paint and a valid head mesh can leave an exposed notch between them. Bind
 > anatomical interior attachments to actual published triangles and inspect native rendered

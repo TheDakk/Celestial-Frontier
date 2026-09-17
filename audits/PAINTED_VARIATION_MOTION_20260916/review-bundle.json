@@ -1,0 +1,17 @@
+{
+  "parts": [
+    {
+      "path": "/private/tmp/celestial-frontier-painted-motion-review-20260916-part-1.zip",
+      "bytes": 27879386,
+      "sha256": "ec4c4f1359c5ee4ad0b5e8fbb44f8d416004d16f1e1d0ca335dafd7719f062f1",
+      "files": 43
+    },
+    {
+      "path": "/private/tmp/celestial-frontier-painted-motion-review-20260916-part-2.zip",
+      "bytes": 26677466,
+      "sha256": "56fb8cf533fc3ba09478f6ffe72569cb88654801fedbf844f9d44d36cf535892",
+      "files": 131
+    }
+  ],
+  "instructions": "Unzip both into one directory; start with audits/PAINTED_VARIATION_MOTION_20260916/REVIEW_PROMPT.md. Part 1 includes the standalone review page and all three films."
+}

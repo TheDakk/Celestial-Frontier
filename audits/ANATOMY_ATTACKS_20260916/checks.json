@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "vitestTests": 17,
+  "nodeTests": 8,
+  "typecheckExit": 0,
+  "rootValidateExit": 0,
+  "baseline": "50 probes identical",
+  "native": "native-04/report.json",
+  "visualReview": "Nick pending",
+  "limitations": [
+    "12 fauna families contract-tested; 2 plant families have no melee",
+    "three painted quadrupeds captured",
+    "bird/fish admission tested but no new aerial contact capture",
+    "not ordinary-game integration or phone acceptance"
+  ],
+  "browserReview": "Live anatomy-battle scene visibly loaded in Codex in-app browser"
+}

@@ -1,0 +1,29 @@
+{
+  "focusedTests": 28,
+  "focusedLog": "focused-04.log",
+  "typecheck": "PASS",
+  "rootValidate": "PASS; 50 fingerprints identical",
+  "catalogueSpecies": 631,
+  "visualAcceptance": "Not requested or claimed for new species",
+  "nativePainter": [
+    {
+      "id": "procedural-1",
+      "sha256": "3d3cf975862f6dd2155a4e6bd68c6a3390bef75d4dcf17052e28e80bf0b90cbc",
+      "matchesPriorMasterBytes": true,
+      "changedChannels": 0
+    },
+    {
+      "id": "procedural-2",
+      "sha256": "f4389be3fab67d91bcba54e20d1c94f7a6d1476a3c98766227e74d0d22d437d0",
+      "matchesPriorMasterBytes": true,
+      "changedChannels": 0
+    },
+    {
+      "id": "procedural-3",
+      "sha256": "fe0a2cc11e6782a0519db7bae0861f719163d0485dcb472aaa35865dd0324e6b",
+      "matchesPriorMasterBytes": true,
+      "changedChannels": 0
+    }
+  ],
+  "ui": "631 rows; Blue Whale filter 1 row; restored all rows"
+}

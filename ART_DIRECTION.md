@@ -1,5 +1,51 @@
 # Celestial Frontier — Master Art Direction
 
+[Animation library and shared deformation review](audits/ANIMATION_COMPLETION_20260916/README.md),
+matches code as of September 16, 2026: 169 family actions now have complete-clip limit,
+determinism and GSAP parity checks (40,729 synthetic samples). Eight additional physical
+motions bring the anatomy selector to32 rows, including actual hoof kicks, body strikes
+and fish tail sweeps. Explicit anatomical absence is shared by compiler and rig intake.
+All631 named fauna still have exact profiles:573 have candidate moves;58 require new body
+structures. A candidate is not a fitted or visually accepted species. Broad marine/crust/
+sessile labels no longer silently borrow fish/spider/radial bones.
+
+The shared skin solver retains its established fast projection and invokes a bounded
+active-set repair only for unresolved folds. No creature-specific motion attenuation or
+solver setting was added. Whole-library painted checks exposed fish cast/dodge/victory
+folds and the difference between pure and Float32-rendered geometry; failed controls are
+retained. Native films, per-action frames, source hashes and timing limitations are in the
+review folder. Some timings exceed the2ms goal; this is not universal or phone qualification.
+Originals, approved artwork, kits, combat results and seeded generation are unchanged.
+
+The September16 [anatomy attack proof](audits/ANATOMY_ATTACKS_20260916/README.md) reuses the
+existing masters and arena. Quiet seeded rain ripples and smaller impact effects improve the
+scene without new painting or kit edits. Nick still owns motion/visual acceptance.
+
+[Seeded painted biome encounter](audits/PAINTED_BIOME_ENCOUNTER_20260916/README.md),
+matches code September 16: three painted quadrupeds now share an 18-second, three-turn
+clearing study. The encounter seed selects scenery placement and turn order over the accepted
+Earth temperate FAR/MID/NEAR template and compiled Earth card. All three bodies animate;
+shared hitstop freezes them together. Native-02 passes 3,243 source-join/body-frame samples,
+replay and mouth-contact checks; 60 fps, 0.8/1.0/0.9 ms creature-update p95 on this Mac.
+The ground band now describes space above the registered floor, and mirrored contact uses
+the same source jaw before screen reflection. Negative controls retain the old failures.
+This is seeded painted-template composition, not newly inferred biome art. Damage is scripted
+presentation data, not the combat resolver. Automatic fitting, planted-paw contact, sound,
+ordinary-game squad wiring, other painted families/biomes and physical-phone qualification
+remain separate. No new painting, model run, kit change or original-asset edit.
+
+[Painted variation motion review](audits/PAINTED_VARIATION_MOTION_20260916/README.md) now
+animates the approved seed10271 painting, a second10271 painting and crystalline10032.
+Independent hash-bound authored observations feed one shared quadruped template; no creature
+clip overrides. All three pass exact rest/final rest,484individual and601blended pose samples,
+full-motion framing and36connected leg parts. Native captures run about60fps at1.3/1.6/1.7ms
+rig-update p95 on this Mac. Alpha-preserving intake, frame clipping and wrong-limb paint islands
+are repaired with negative controls;12focused tests and root validation pass. New candidate
+art still needs kit intake/visual acceptance. This does not establish automatic fitting,
+planted contact, hidden views, other painted families, ordinary gameplay or phone qualification.
+Kit, accepted originals and the source genomes remain unchanged. Preview uses one player,
+visible still/error fallback and a loopback server with byte-range support.
+
 [Procedural painted direction](audits/PROCEDURAL_PAINTED_DIRECTION_20260916/README.md): Nick
 rejected the raw procedural canvas look. A bounded authoring adapter now compiles actual
 quadruped identity/proportions/material/palette through the kit interpreter under labelled Earth

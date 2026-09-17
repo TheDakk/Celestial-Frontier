@@ -1816,7 +1816,7 @@ export function resolveProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, ca
   if (!normal || !primary) throw Error('No winning anatomy observer for part capture');
   let captured: import('./painter-part-capture.js').PaintedPartMasks | undefined;
   paintProceduralCanvas(g, geometry => {
-    if (JSON.stringify(geometry.landmarks) !== JSON.stringify(primary!.geometry.landmarks) || JSON.stringify(geometry.materials) !== JSON.stringify(primary!.geometry.materials)) throw Error('Painter mask replay changed resolved anatomy');
+    if (JSON.stringify(geometry.landmarks) !== JSON.stringify(primary!.geometry.landmarks) || JSON.stringify(geometry.materials) !== JSON.stringify(primary!.geometry.materials) || JSON.stringify(geometry.weapons) !== JSON.stringify(primary!.geometry.weapons)) throw Error('Painter mask replay changed resolved anatomy');
     captured = geometry.partMasks;
   }, true);
   if (!captured || captured.width !== primary.ink.width || captured.height !== primary.ink.height) throw Error('Painter mask replay dimensions');

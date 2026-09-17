@@ -1,0 +1,70 @@
+{
+  "schema": "cf.anatomical-surface-intake/v1",
+  "sourceBindingHash": "6dd058e916cf182d39e714dd51cbf24d82ce1032ca7de8f0474ec19b12c8191c",
+  "recordRecipeHash": "7bed26da9f56502062f2f2c96ac5c93ec6d04969d31d293d2037d42b90e30fb5",
+  "atlasSha256": "1292d2be28b392eafebef0acbffcb24f3b52b855012ca5f116d89caa5840c489",
+  "sourceVertices": 2589,
+  "vertices": 2678,
+  "triangles": 4874,
+  "surfaces": {
+    "axial": 1605,
+    "hindFar": 219,
+    "foreFar": 240,
+    "hindNear": 294,
+    "foreNear": 320
+  },
+  "pins": 258,
+  "contacts": {
+    "schema": "cf.source-paw-contact-pins/v1",
+    "samples": 0,
+    "fieldVertices": 0,
+    "parts": [],
+    "method": "lowest nonzero-alpha texel centre in every original paw column; all covering triangle field supports hard-pinned to that paw matrix"
+  },
+  "physicalSkinAdjacency": {
+    "axialInfluences": "all surfaces share axial plus proximal Root/Knee influence space; distal Ankle/Paw remain branch-exclusive",
+    "rule": "all axial/upper-leg source cuts share field support; independent limbs and distal crossings remain split",
+    "classes": {
+      "axial-continuous": 2532,
+      "same-limb-continuous": 1075,
+      "axial-upper-socket": 1723,
+      "independent-limbs": 188,
+      "axial-distal-crossing": 123
+    },
+    "socketPairs": {
+      "torso|hindnear-upper": 485,
+      "torso|forenear-upper": 235,
+      "chest|forenear-upper": 225,
+      "tail-1|hindnear-upper": 276,
+      "neck|forenear-upper": 114,
+      "torso|forefar-upper": 65,
+      "neck|forefar-upper": 51,
+      "chest|forefar-upper": 149,
+      "torso|hindfar-upper": 123
+    }
+  },
+  "explicitPartFaces": 6369,
+  "attachmentSockets": {
+    "hindFar": {
+      "edges": 123,
+      "fieldSupports": 21
+    },
+    "foreFar": {
+      "edges": 265,
+      "fieldSupports": 40
+    },
+    "hindNear": {
+      "edges": 761,
+      "fieldSupports": 100
+    },
+    "foreNear": {
+      "edges": 574,
+      "fieldSupports": 94
+    }
+  },
+  "diffusionIterations": 32,
+  "maxDiscardedWeight": 0.00005964002594105455,
+  "sourceInterpolationDifferentCoordinates": 0,
+  "unchangedPartCount": 22,
+  "nativeAcceptance": false
+}
