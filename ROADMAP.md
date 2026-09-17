@@ -28,6 +28,13 @@ not bone-length-relative, S3 no planted contact outside quadruped, S4 pinch unre
 S5 phone budget) plus the Pass 1 register. No lane was edited or synced; no push; PR42 parked.
 Nothing on anthropic/mac changed except this note and the two audit files.
 
+Later the same day: Codex’s approved plan (`9769d299`) and R1/R2 producer (`6b11407d`) were reviewed
+against the eight-subject native evidence (`r1-r2-native-01`, commit `57dfe112`). Review committed as
+`audits/ANATOMY_REVIEW_20260917/CLAUDE_R1R2_REVIEW.md`: tears and floating legs are gone, but motion
+is now unreadable because body-length-relative motion uses a 4 % root→carapace axis (N1); recommended
+a bounded R1b/R2b (N1–N4 + one quadruped sentinel) before R3–R8; Q4 kit paragraph recommended for
+approval. Still no push; PR42 parked.
+
 ## SESSION HANDOFF — 2026-09-13 · LONG SESSION BATCHES 1–4 COMPLETE; C2 PARTS RIG IS THE ONLY BLOCKER
 
 Read this with `audits/LONG_SESSION_20260913/LOG.md` (per-package table), `LOG-B.md`
