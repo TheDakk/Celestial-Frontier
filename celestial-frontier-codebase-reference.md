@@ -10,9 +10,13 @@ in Persimmon/Cranberry/Devil's Club, preserving accepted paint and exact rest pi
 Shared graph-validated contact chains drive stance/swing through the performance update owner
 in native capture. Reach and joint limits are not relaxed; existing quadruped compatibility and
 its 8% compression bound remain. Source crab hit/faint now recoil/lower the body over planted
-contacts. Published contact paint and bone endpoints are measured independently. Static checks
-pass; the new native eight-subject checkpoint follows signed source. This does not claim visual,
-phone or production combat acceptance. R3–R8 remain behind Nick's review stop.
+contacts. Published contact paint and bone endpoints are measured independently. The signed
+6b11407d producer completed the [eight-subject review](audits/ANATOMY_COMPLETION_20260917/r1-r2-native-01/README.md):
+Crab, Coconut, Freshwater and Cranberry pass numeric gates; Mud/Vent fail painted-foot drift,
+Persimmon refuses a132-triangle fold, and Devil's Club fails per-clip CPU. Four films exist;
+failed subjects stop before dependent films. Visual concerns remain on passing rows. R1/R2
+are not accepted as complete; no visual, phone or production combat qualification is claimed.
+R3–R8 and further implementation remain behind Nick's review stop.
 
 Coverage remains 12 observed / 5 bound / 0 newly qualified of the 58 targets; 53 lack bindings.
 All eleven accepted masters have binding artifacts; the flora still need native/visual and CPU
