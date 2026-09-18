@@ -235,10 +235,7 @@ LOOT and INVENTORY: pickup pop 90 back-out; reveal flourish scaled by rarity
 ## 8. Budget
 
 ```text
-  Per rigged creature on stage: at most 40 parts, 32 bones, one atlas
-  (2048 square desktop, 1024 phone), under 2 ms update at 60 fps desktop,
-  under 4 ms at 30 fps phone. Two rigged combatants plus one effect sequence
-  and three parallax plates must hold frame rate on the phone tier.
+  Anatomy admission permits at most 64 declared joints, 40 drawable parts and a 2048 × 2048 atlas per rig. Phone-tier bindings use the same joint/part/atlas admission ceilings and a provisional screening cap of 2,000 field vertices per rig; report part vertices, triangles, atlas bytes, backend and solve passes separately. Admission and vertex screening do not establish phone suitability: each phone binding must preserve shape and contacts, keep each rig update below 4 ms and sustain at least 30 fps on the physical target iPhone with two combatants, one real effect sequence and three arena plates. A binding that misses quality or measured performance is refused for that tier; desktop bindings remain distinct and accepted source artwork is not resized to force compliance.
   Effects: at most 3 phase textures plus an emitter of at most 200 particles.
   Any recipe over budget compiles to the reduced variant (fewer secondary
   parts, no emitter) and records it; never to a frame drop.

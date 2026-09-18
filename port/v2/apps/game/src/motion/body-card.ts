@@ -1,4 +1,5 @@
 import {specializedTemplate} from '../../../../tools/creature-animation/specialized-templates.mjs';
+import {measureMotionScale} from '../../../../tools/creature-animation/motion-scale.mjs';
 import {compileAmplitudeProfile} from './amplitude-profile.js';
 import {poseProjectionSigns,poseProjectionScales} from '../../../../tools/creature-animation/pose-projection.mjs';
 /* Motion Kit §3 body card compiler. Reads the painter's resolved-anatomy record
@@ -66,6 +67,8 @@ export interface BodyCard {
   readonly weapons: readonly Weapon[];
   readonly luminous: boolean;
   readonly bodyLength: number;
+  readonly scaleLength: number;
+  readonly scaleReference: import('../../../../tools/creature-animation/motion-scale.mjs').MotionScaleReference;
   readonly groundLineY: number;
   readonly landmarks: Readonly<Record<JointName, Vec2>>;
   readonly bounds: { readonly inside: boolean; readonly clamped: readonly ClampedBound[]; readonly limitsDeg: Readonly<Record<JointName, JointLimitDeg>>; /** Rest slack per leg chain in body lengths (B3 diagnostic; see LEG_SLACK_MIN_BL). */ readonly legSlack: Readonly<Record<string, number>> };
@@ -224,15 +227,16 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   const torso = landmarks[axisA] && landmarks[axisB] ? Math.hypot((landmarks[axisB] as Vec2)[0] - (landmarks[axisA] as Vec2)[0], (landmarks[axisB] as Vec2)[1] - (landmarks[axisA] as Vec2)[1]) : 0;
   const torsoClamp = clamped.find((c) => c.id === 'torso' || c.id === 'body');
   const bodyLength = torsoClamp ? torsoClamp.clamped : torso;
+  const scale=measureMotionScale(resolved,landmarks);
   const slackBL = Object.freeze(Object.fromEntries(Object.entries(legSlack).map(([leg, v]) => [leg, bodyLength > 0 ? v / bodyLength : 0])));
   const straight = Object.entries(slackBL).filter(([, v]) => v < LEG_SLACK_MIN_BL).map(([leg, v]) => `${leg} ${(v * 100).toFixed(1)}%`);
   if (straight.length) notes.push(`leg slack under ${LEG_SLACK_MIN_BL * 100}% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): ${straight.join(', ')}`);
   return {
-    kind: 'body-card', amplitudeProfile:compileAmplitudeProfile(parts,bodyLength,jointMaterials,poseProjectionScales(record)), ...(record.anatomy?{anatomy:structuredClone(record.anatomy)}:{}), projectionSigns:poseProjectionSigns(record), projectionScales:poseProjectionScales(record), identity: record.identity, recipeHash: record.recipeHash ?? null,
+    kind: 'body-card', amplitudeProfile:compileAmplitudeProfile(parts,scale.length,jointMaterials,poseProjectionScales(record)), ...(record.anatomy?{anatomy:structuredClone(record.anatomy)}:{}), projectionSigns:poseProjectionSigns(record), projectionScales:poseProjectionScales(record), identity: record.identity, recipeHash: record.recipeHash ?? null,
     template: { id: resolved.id, version: resolved.version, clipSetId: resolved.clipSetId },
     massClass: { name: massName, multiplier: MASS_CLASS[massName] },
     locomotion: { loco: locoName, gait, templateGait }, realm, materials, jointMaterials:Object.freeze(jointMaterials), parts, secondaryParts, weapons, luminous,
-    bodyLength, groundLineY: record.geometry.groundLineY, landmarks,
+    bodyLength, scaleLength:scale.length, scaleReference:scale.reference, groundLineY: record.geometry.groundLineY, landmarks,
     bounds: { inside: clamped.length === 0, clamped, limitsDeg: resolved.limitsDeg, legSlack: slackBL }, notes,
   };
 }

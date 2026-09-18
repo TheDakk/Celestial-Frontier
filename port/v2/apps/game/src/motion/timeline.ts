@@ -86,7 +86,7 @@ export function buildActionTimeline(card:BodyCard,action:MotionAction,seed:numbe
       return { ms: pose.t * bodyMs, t: pose.t, value: deg * DEG * (card.projectionSigns?.[joint] ?? 1), ease: pose.ease };
     })];
   }
-  const rootKeys = (pick: 'dx' | 'dy'): Keyframe[] => [REST_KEY, ...action.poses.map((p) => ({ ms: p.t * bodyMs, t: p.t, value: p.root[pick], ease: p.ease }))];
+  const rootKeys = (pick: 'dx' | 'dy'): Keyframe[] => [REST_KEY, ...action.poses.map((p) => ({ ms: p.t * bodyMs, t: p.t, value: p.root[pick] * (action.rootUnit==='motion-scale'?card.scaleLength/card.bodyLength:1), ease: p.ease }))];
   // Secondary: the authored joint track arrives lagMs late, overshoots by the material's fraction, then settles.
   const secondary: SecondaryTrack[] = [];
   let maxLag = 0;

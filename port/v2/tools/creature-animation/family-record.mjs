@@ -1,5 +1,6 @@
 /** Family-specific admission shared by offline intake and the actual Pixi loader.
  * No family guessing, skeleton fitting, missing-joint synthesis or clip overrides. */
+import {measureMotionScale} from './motion-scale.mjs';
 import {familyContractForRecord} from './family-contracts.mjs';
 import {createSkeletonPoseProgram} from './skeleton-pose.mjs';
 import {checkGeometry as checkQuadruped,admitRecord as admitQuadruped,hashBytes,hashJSON,stableJSON} from './quadruped-template.mjs';
@@ -22,6 +23,7 @@ export function checkFamilyGeometry(record,alpha){
  createSkeletonPoseProgram(template,record.landmarks); // Exact own inventory, graph and normalized coordinates.
  need(Number.isFinite(groundLineY)&&groundLineY>0&&groundLineY<=1,'ground line');
  need(Array.isArray(depthLayers)&&depthLayers.length===2&&depthLayers.every((v,i)=>v.id===['far','near'][i]&&v.order===i),'two depth layers');
+ measureMotionScale(template,record.landmarks); // Independent motion-scale admission; body-axis bounds stay unchanged.
  const result=measureFamilyBounds(template,record.landmarks);
  for(const bound of template.bounds){const value=result.measures[bound.id];need(Number.isFinite(value)&&value>=bound.min&&value<=bound.max,'proportion bound: '+bound.id);}
  if(alpha!==undefined){

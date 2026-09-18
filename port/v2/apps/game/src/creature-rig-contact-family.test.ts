@@ -49,3 +49,36 @@ it('contact phase is independent of render cadence and keeps a real swing while 
  expect(sample(30).contacts.some(c=>!c.stance&&c.target.y<r.landmarks[c.joint][1])).toBe(true);
  expect(sample(30).contacts.some(c=>c.stance&&c.target.y===r.landmarks[c.joint][1])).toBe(true);
 });
+
+it.each(['crab','coconut-crab','freshwater-crab','mud-crab','vent-crab'])('readability floors and world stride hold for %s',(id)=>{
+ const r=read('audits/ANATOMY_COMPLETION_20260917/crab-fits-02/'+id+'/record.json'),s=createFamilyContactSolver(r),program=createSkeletonPoseProgram(familyContractForRecord(r),r.landmarks);
+ const sample=(actionId:string,progress:number)=>s.resolve({}, {actionId,elapsedMs:progress*1000,durationMs:1000});
+ const gait=sample('approach:scuttle',.25),start=sample('approach:scuttle',0),end=sample('approach:scuttle',1);
+ const translated=(p:any)=>(p.root?.dx??0)*program.bodyLength;
+ expect(translated(end.pose)-translated(start.pose)).toBeCloseTo(s.stride,10);
+ expect(s.stride).toBeGreaterThanOrEqual(Math.min(...s.chains.map(c=>c.chain.lengths.upper+c.chain.lengths.lower))*.04-1e-10);
+ for(const c of gait.contacts){const chain=s.chains.find(x=>x.end===c.joint)!;
+  if(!c.stance)expect(r.landmarks[c.joint][1]-c.target.y).toBeGreaterThanOrEqual(chain.chain.lengths.lower*.15-1e-10);
+  else expect(c.target).toEqual(chain.endPoint);
+ }
+ for(const [action,ratio]of [['faint',.08],['hit',.03]]as const){
+  const card=compileBodyCard(r),tl=buildTimeline(card,action,133),peak=tl.root.dy.reduce((a,b)=>a.value>b.value?a:b),p=sampleTimeline(tl,peak.ms);
+  const authored={root:{rotation:p.root.rotation,dx:p.root.dx,dy:p.root.dy}},solved=s.resolve(authored,{actionId:action,elapsedMs:peak.ms,durationMs:tl.durationMs});
+  expect(p.root.dy*program.bodyLength).toBeCloseTo(s.scaleLength*ratio,10);expect(solved.pose.root).toEqual(authored.root);
+  expect(s.resolve({}, {actionId:action,elapsedMs:peak.ms,durationMs:tl.durationMs}).pose.root).toBeUndefined(); // Solver does not author loading.
+ }
+ // Previous body-axis-limited lift is too small; frozen foot/body mutants fail these independent floors.
+ const lower=Math.min(...s.chains.map(c=>c.chain.lengths.lower));expect(Math.min(program.bodyLength*.035,lower*.025)).toBeLessThan(lower*.15);
+ expect(0).toBeLessThan(s.stride);expect(0).toBeLessThan(s.scaleLength*.08);
+ // Repeated cycle placement is continuous and deterministic, without accumulated frame state.
+ const a=sample('approach:scuttle',1-1e-7),b=sample('approach:scuttle',1+1e-7);
+ for(let i=0;i<a.contacts.length;i++)expect(Math.hypot(a.contacts[i]!.target.x-b.contacts[i]!.target.x,a.contacts[i]!.target.y-b.contacts[i]!.target.y)).toBeLessThan(1e-6);
+});
+
+it('world travel and planted targets are independent of pose blend weight',()=>{
+ const r=read('audits/ANATOMY_COMPLETION_20260917/crab-fits-02/crab/record.json'),s=createFamilyContactSolver(r);
+ for(const time of[.125,.375,.625,.875,1.125]){
+  const samples=[0,.2,.7,1].map(weight=>s.resolve({}, {actionId:'approach:scuttle',elapsedMs:time*1000,durationMs:1000,weight}));
+  for(const p of samples){expect(p.pose.root!.dx).toBe(samples[0]!.pose.root!.dx);expect(p.contacts.filter(c=>c.stance).map(c=>c.target)).toEqual(samples[0]!.contacts.filter(c=>c.stance).map(c=>c.target));}
+ }
+});

@@ -1,5 +1,6 @@
 /** Five actual source-stage fits, one shared compiler. No guessed image masks. */
 import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';
+import {familyContractForRecord,familyContactChains} from '../creature-animation/family-contracts.mjs';
 import {sealFamilyRecord} from '../creature-animation/family-record.mjs';
 import {hashBytes,hashJSON} from '../creature-animation/quadruped-template.mjs';
 import {buildAuthoredParts} from '../creature-animation/build-authored-parts.mjs';
@@ -25,6 +26,6 @@ for(const row of report.rows){
  const{bindingHash,...body}=compiled.binding;body.sourceJoinTopology={remainderPartId:'carapace'};const binding={...body,bindingHash:await hashJSON(body)};
  const atlas=await sharp(fs.readFileSync(path.join(out,'parts/atlas/'+id+'.png'))).ensureAlpha().raw().toBuffer({resolveWithObject:true});
  const probe=createSourceJoinProbe({record,binding,atlas:{rgba:atlas.data,width:atlas.info.width,height:atlas.info.height}});
- const split=await splitObservedSurfaces(binding,record,probe,{fixedJoints:['root'],shapeJoints:declaration.parts.filter(p=>p.joint!=='root').map(p=>p.joint)});
+ const split=await splitObservedSurfaces(binding,record,probe,{fixedJoints:['root'],contactEndpoints:familyContactChains(familyContractForRecord(record)).map(c=>c.end),shapeJoints:declaration.parts.filter(p=>p.joint!=='root').map(p=>p.joint)});
  write('binding.json',split.binding);write('receipt.json',{intake,surfaces:split.receipt,nativeAcceptance:false});console.log(JSON.stringify({id,intake,surfaces:split.receipt}));
 }
