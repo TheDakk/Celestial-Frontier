@@ -83,7 +83,7 @@ producer certificate refreshed by measurement (never a pin edit); LFS decision; 
 | P6 | balance battery: win-rate spread across themes within budget; crafting round-trip determinism | icon sheets |
 | P9 | offspring determinism + count preservation across 1,000 seeded pairs | bred-offspring films |
 
-## 4. Decisions for Nick
+## 4. Decisions for Nick — **ALL APPROVED by Nick, 2026-09-17** (D1–D4 as recommended; D4 design started the same day: `E1_BATTLE2_INTEGRATION_DESIGN.md`)
 - **D1 Phone tier (recorded from today):** finisher may exceed the phone budget. Proposal: phones
   never run inference; finished originals are delivered as retained PNGs (like landfalls), with the
   painter-only cut-out as the fallback when no original exists yet. Desktop finishes on first

@@ -35,6 +35,16 @@ is now unreadable because body-length-relative motion uses a 4 % root→carapace
 a bounded R1b/R2b (N1–N4 + one quadruped sentinel) before R3–R8; Q4 kit paragraph recommended for
 approval. Still no push; PR42 parked.
 
+## 2026-09-17 (later) · vision program approved; E1 design started
+
+Nick restated the full vision and approved the master program's decisions D1–D4
+(`audits/ANATOMY_REVIEW_20260917/MASTER_PROGRAM_20260917.md`): D1 phone tier = delivered finished
+originals with painter-only fallback (no on-device inference); D2 first guardian = Earth-temperate apex
+at 1536 on the same pipeline; D3 arenas by biome family, Earth temperate first; D4 E1 design now, code
+after R3 reaches develop. Track B design is `E1_BATTLE2_INTEGRATION_DESIGN.md` (parts-rig adapter,
+attack-driven turn plan, habitat arena selection, five outcome tests; Codex owes `ContactPhase.travel`
+and the brachyuran attack row in R3). Codex is mid-R1b/R2b (N1 decision + N11/N12 given). No push.
+
 ## SESSION HANDOFF — 2026-09-13 · LONG SESSION BATCHES 1–4 COMPLETE; C2 PARTS RIG IS THE ONLY BLOCKER
 
 Read this with `audits/LONG_SESSION_20260913/LOG.md` (per-package table), `LOG-B.md`
