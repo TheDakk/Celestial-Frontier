@@ -19,3 +19,13 @@ test('corrupted binding/probe, missing source face and conflicting fixed owners 
 
 test('flat source ownership boundaries weld only when explicitly requested',async()=>{const f=await fixture(true);f.probe.excluded=f.probe.joins;f.probe.joins=[];const a=await splitObservedSurfaces(f.binding,f.record,f.probe),b=await splitObservedSurfaces(f.binding,f.record,f.probe,{preservePaintBoundaries:true});assert.equal(a.binding.paintSkin.vertices.length,6);assert.equal(b.binding.paintSkin.vertices.length,3);assert.equal(b.receipt.preservePaintBoundaries,true);});
 test('mutated source recipe and unknown anatomy refuse before compilation',async()=>{const f=await fixture();await assert.rejects(()=>splitObservedSurfaces(f.binding,{...f.record,landmarks:{}},f.probe),/record hash/);await assert.rejects(()=>splitObservedSurfaces(f.binding,f.record,f.probe,{shapeJoints:['invented']}),/unknown joint/);});
+
+test('contact endpoint locks survive diffusion; unpinned shared paint retains mixed influence',async()=>{
+ const f=await fixture(true);const recipe={landmarks:f.record.landmarks,geometry:{width:10,height:10}},record={...recipe,recipeHash:await hashJSON(recipe)};
+ const {bindingHash,...body}=f.binding;body.recordRecipeHash=record.recipeHash;const binding={...body,bindingHash:await hashJSON(body)},probe={...f.probe,recordRecipeHash:record.recipeHash,bindingHash:binding.bindingHash};
+ const plain=await splitObservedSurfaces(binding,record,probe,{fixedJoints:[]}),pinned=await splitObservedSurfaces(binding,record,probe,{fixedJoints:[],contactEndpoints:['b']});
+ const pin=pinned.receipt.contactPins[0];assert.equal(pin.joint,'b');assert.ok(pin.supports.length);
+ for(const i of pin.supports){assert.deepEqual(pinned.binding.paintSkin.vertices[i].weights,[['b',1]]);assert.ok(pinned.binding.paintSkin.solver.pins.includes(i));assert.ok(plain.binding.paintSkin.vertices[i].weights.some(([j,w])=>j!=='b'&&w>0));}
+ assert.deepEqual(pinned.binding.paintSkin.vertices.map(v=>[v.x,v.y]),plain.binding.paintSkin.vertices.map(v=>[v.x,v.y]));
+ await assert.rejects(()=>splitObservedSurfaces(binding,record,probe,{fixedJoints:['a'],contactEndpoints:['b']}),/contact conflicts/);
+});

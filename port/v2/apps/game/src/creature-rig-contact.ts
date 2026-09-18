@@ -2,6 +2,7 @@
  * Preserves each authored paw's perspective offset. No creature names/genes,
  * clocks, curve edits, or nearest-bone fitting. Flight passes through unchanged. */
 import type {CreaturePoseV1,CreatureRigRecordV1} from './creature-rig.js';
+import {measureMotionScale} from '../../../tools/creature-animation/motion-scale.mjs';
 import {familyContractForRecord,familyContactChains} from '../../../tools/creature-animation/family-contracts.mjs';
 import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
 import {GRAPH} from '../../../tools/creature-animation/quadruped-template.mjs';
@@ -59,7 +60,10 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1){
   if(Math.abs(cross)<1e-12)throw Error('Contact: source bend direction missing '+c.id);
   return {...c,root,joint,endPoint:end,chain:createTwoBoneChain({root,joint,end,bend:cross<0?-1:1})};
  });
- return {chains,resolve(input:CreaturePoseV1,phase:ContactPhase){
+ const scaleLength=measureMotionScale(template,record.landmarks).length;
+ const stride=chains.length?Math.min(...chains.map(c=>c.chain.lengths.upper+c.chain.lengths.lower))*.04:0;
+ const direction=template.id==='brachyuran'?Math.sign(record.landmarks.leg0NearRoot![0]-record.landmarks.leg0FarRoot![0]):1;
+ return {chains,scaleLength,stride,resolve(input:CreaturePoseV1,phase:ContactPhase){
   if(!Number.isFinite(phase.elapsedMs)||phase.elapsedMs<0||!Number.isFinite(phase.durationMs)||phase.durationMs<=0)throw Error('Contact: invalid phase');
   const free=/:(flight|fly|swim|jet|hop|leap|climb)$/.test(phase.actionId)||phase.actionId==='melee:kick'||phase.realm==='aquatic'||phase.realm==='aerial'||phase.realm==='gas-giant';
   if(!chains.length||free)return {pose:input,contacts:[],maxError:0};
@@ -69,15 +73,15 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1){
   // The contact owner drives leg pivots; incidental raw gait rotations must not
   // change the base of an otherwise identical support chain.
   for(const c of chains)if(template.legs.some(id=>c.hip===id+'Root'))pose[c.hip]={rotation:0};
+  const progress=phase.elapsedMs/phase.durationMs,cycle=progress%1,completed=Math.floor(progress);
+  const smooth=(v:number)=>v*v*(3-2*v);
+  if(gait)pose.root={rotation:0,...pose.root,dx:direction*stride*progress/program.bodyLength};
   const matrices=program.evaluate(pose),contacts=[];
   for(const c of chains){
-   const cycle=((phase.elapsedMs/phase.durationMs+c.group*.5)%1+1)%1;
-   const swing=gait&&cycle>=.5,at=swing?(cycle-.5)*2:0;
-   // Lift follows available leg slack, bounded by source leg length. Stance
-   // stays at the source's perspective ground point, never an arbitrary Y.
-   const reach=c.chain.lengths.upper+c.chain.lengths.lower;
-   const lift=Math.min(program.bodyLength*.035,reach*.025)*weight;
-   const target={x:c.endPoint.x+(swing?Math.sin(2*Math.PI*at)*program.bodyLength*.015*weight:0),y:c.endPoint.y-(swing?Math.sin(Math.PI*at)**2*lift:0)};
+   const swing=gait&&(c.group===1?cycle<.5:cycle>=.5),at=swing?(c.group===1?cycle*2:(cycle-.5)*2):0;
+   const step=c.group===1?(cycle<.5?smooth(cycle*2):1):(cycle<.5?0:smooth((cycle-.5)*2));
+   const lift=c.chain.lengths.lower*.15*weight;
+   const target={x:c.endPoint.x+(gait?direction*stride*(completed+step):0)-(swing?Math.sign(c.endPoint.x-c.root.x)*c.chain.lengths.lower*.10*Math.sin(Math.PI*at)**2*weight:0),y:c.endPoint.y-(swing?Math.sin(Math.PI*at)**2*lift:0)};
    const parent=matrices[c.hip]!,root=transformPoint(parent,c.root);
    let solved;try{solved=c.chain.solve(root,target);}catch(error){throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' '+c.id+' '+String(error));}
    const upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c.joint));

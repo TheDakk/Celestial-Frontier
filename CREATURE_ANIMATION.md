@@ -1,5 +1,14 @@
 # Creature animation — shared anatomy and motion contract
 
+[R1b/R2b correction](audits/ANATOMY_COMPLETION_20260917/r1b-r2b-static-01/README.md), matches
+working code September17: independent declared motion-scale admission0.08–0.9 for brachyurans,
+readable source-relative stride/lift, blend-independent travel, shared-action faint/hit loading,
+endpoint paint pins and action-first native diagnosis. Existing body-axis bounds and source pivots
+are unchanged.102 regression/210 tool tests, TypeScript and determinism checks pass. Native
+recapture and Civet sentinel follow signed source, then Nick's review stop. Q4 kit paragraph is
+approved/applied; D1 phone delivery means retained finished PNGs, painter-only cut-out fallback,
+and no phone inference. R3 interface additions and later R4→R9 are queued, not implemented.
+
 [Approved R1/R2 repairs](audits/ANATOMY_COMPLETION_20260917/r1-r2-static-01/README.md), matches
 code as of September 17, 2026: one shared record-relative amplitude profile and timeline owner
 now cover ordinary/editor motion, including source-pincer signs/scales and seeded sway. Woody

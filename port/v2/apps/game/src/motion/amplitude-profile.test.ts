@@ -40,3 +40,22 @@ it.each(['plant-woody','plant-herb'])('keeps %s rooted with live above-root grow
   expect(Object.values(sampleTimeline(zero,tl.durationMs*.25).joints).every(v=>v===0)).toBe(true); // fails required motion outcome
  }
 });
+
+it('declares anatomical motion scale separately from body-axis units for crabs and plants',async()=>{
+ const {measureMotionScale}=await import('../../../../tools/creature-animation/motion-scale.mjs');
+ const root=new URL('../../../../../../',import.meta.url),r=JSON.parse(fs.readFileSync(new URL('audits/ANATOMY_COMPLETION_20260917/crab-fits-02/crab/record.json',root),'utf8')),c=compileBodyCard(r);
+ expect(c.bodyLength).toBeCloseTo(.041573320050624196,12);expect(c.scaleLength).toBeCloseTo(.09374540429634415,12);
+ expect(c.scaleLength).toBeGreaterThan(c.bodyLength*2);expect(c.scaleReference).toEqual({kind:'span',axis:['leg0FarRoot','leg0NearRoot']});
+ for(const id of['plant-woody','plant-herb']){const p=compileBodyCard({...fixtures[id],identity:{...fixtures[id].identity,earthName:null},materials:{surface:'bark'}});expect(p.scaleLength).toBeGreaterThan(p.bodyLength);expect(p.scaleReference.kind).toBe('longest-chain');}
+ const def={id:'brachyuran',graph:[],bodyAxis:['root','carapace']as const};expect(measureMotionScale(def,Object.fromEntries(Object.entries(r.landmarks as Record<string,number[]>).map(([j,p])=>[j,[1-p[0]!,p[1]!]]))).length).toBeCloseTo(c.scaleLength,12);
+ expect(()=>measureMotionScale(def,{})).toThrow('missing observed');
+});
+
+it('independent motion-scale admission refuses undersized/oversized references without changing body pivots',async()=>{
+ const {measureMotionScale}=await import('../../../../tools/creature-animation/motion-scale.mjs');
+ const {checkFamilyGeometry}=await import('../../../../tools/creature-animation/family-record.mjs');
+ const root=new URL('../../../../../../',import.meta.url),r=JSON.parse(fs.readFileSync(new URL('audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/record.json',root),'utf8'));
+ expect(()=>checkFamilyGeometry(r)).not.toThrow();const axis=structuredClone([r.landmarks.root,r.landmarks.carapace]);
+ for(const span of [.041573,.079,.901]){const bad={...r,landmarks:{...r.landmarks,leg0FarRoot:[.5-span/2,.5],leg0NearRoot:[.5+span/2,.5]}};expect(()=>measureMotionScale({id:'brachyuran',graph:[]},bad.landmarks)).toThrow('outside');expect(()=>checkFamilyGeometry(bad)).toThrow('outside');expect([bad.landmarks.root,bad.landmarks.carapace]).toEqual(axis);}
+ for(const span of [.08,.9])expect(measureMotionScale({id:'brachyuran',graph:[]},{leg0FarRoot:[0,.5],leg0NearRoot:[span,.5]}).length).toBe(span);
+});
