@@ -1,0 +1,177 @@
+# Claude review — R1b/R2b native re-capture (`r1b-r2b-native-01`), 2026-09-19
+
+Reviewer: Claude (anthropic lane). Read-only review of the Codex worktree
+`/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, evidence commit `d0437436`
+on signed producer `6a58e40e`. Inspected: `r1b-r2b-native-01/` (README, `summary.json`, all nine
+`report.json`), `r1b-r2b-static-01/` (README, `contact-pins-01.log`, `readability-01.log`), the producer
+diff `6b11407d..6a58e40e` (14 files, +131/−23), the three films (`ffprobe` + 1 fps contact sheets) and
+every 25/50/75 still for crab, coconut-crab and freshwater-crab (1× montages, 3× crops), the
+`crab-fits-03` pin receipts, and the prior-producer reports (`*-native-03/-04`, `-02`) for comparison.
+No edits to either lane, no sync, no tests run, no capture re-run, no GitHub write. The contact sheets
+and crops I looked at are committed beside this file in `r1b-r2b-look/`.
+
+## 0. Integrity — verified
+- All nine reports name producer `6a58e40e`; `summary.json.status = STOP_FOR_REVIEW`, 3/5 primary, Civet FAIL.
+- README values spot-checked against JSON: every quoted drift (0.2504741 / 0.2564678 / 0.2517091 Mud;
+  0.3478886 / 0.2549673 / 0.2686878 Vent; 0.2581945 Civet idle), every failing ms, the persimmon fold
+  counts (84 @ 67.17 ms, 209 @ 1200 ms) and every p95 row match. `contactPinComparison` records
+  zero changed weights / zero pin deltas on all five crabs. Field-vertex counts are unchanged per
+  subject across producers (crab 1,274; mud 1,759; vent 1,532; cranberry 3,417; devils-club 4,130).
+- Producer diff is exactly the claimed scope: scale table (`motion-scale.mjs`), BodyCard
+  `scaleLength/scaleReference`, family solver stride/lift, N12 loading in `specialized-actions.ts`,
+  contact-endpoint pins in `split-observed-surfaces.mjs`, harness order in `native-entry.mjs`.
+  Nothing in kits, masters, reserved owners or gameplay. I did not re-hash the 800 inputs.
+- Films: 1400×800, ~60 fps, 10.10 s each; sequence idle → approach → pinch → hit → idle.
+
+## 1. What I saw (visual, not numeric — Nick's acceptance stays open)
+| ID | Subject / clip | Observation |
+|---|---|---|
+| V1 | scuttle 25/50/75, all three | **Readable for the first time.** Leg lift and the inward arc are visible at 1×; at 3× the swing legs bend and lift while the stance legs stay on the ground line. Small, but no longer the pixel-identical stills of R1/R2. |
+| V2 | faint 25/50/75, Crab + Coconut | Clear body lowering and leg splay at 50 % (260 ms) — **but the crab is back at rest height by 75 % (390 ms).** Faint recovers instead of ending down. Under E1 the faint beat must hold a defeated pose; this is a clip-authoring question for R3/R4 (Q3 hold-last-pose is about refusals, not about this). |
+| V3 | melee:pinch 25/50/75, all three | Near static at 1× and 3×: claws barely change across 127/253/380 ms. Expected — pinch reachability is R3 — but it means the three "passing" films contain no readable attack. |
+| V4 | hit / dodge | Small recoil and lean respectively; readable at 3×, marginal at 1×. |
+| V5 | Crab legs, every still | N8 fringes persist and are visible at 1× on the thin leg strokes (stair-stepped, doubled edges at 3×). Pre-existing; not R1b/R2b. |
+| V6 | films | No tears, no floating legs, feet on the ground line throughout; readable but subtle; a viewer would call the crab "alive", not "walking". |
+
+Conclusion on the three numeric passes: reviewable, better than R1/R2, not acceptable as the finished
+look — V2 and V3 are the two things Nick will notice first.
+
+## 2. N3 — my diagnosis was wrong, and here is what the gate actually measures
+
+**Correction, owned.** In `CLAUDE_R1R2_REVIEW.md` N3 I said the sampled skin vertex "carries diffused
+weights (`smoothSkinWeights`), so it moves a fraction of a pixel with the knee", and recommended pinning
+it. Codex's read-only comparison shows the vertex nearest each contact landmark was **already rigidly
+weighted and pinned** on all five crabs; the R1b pin declaration changed nothing. The premise
+(diffusion) was false, so the repair (pinning) was a no-op, and the Mud/Vent failures were never going
+to move. That cost one bounded correction cycle. The 0.25 px gate stays; it is not instrument noise;
+pinning is not re-proposed.
+
+**What the gate reduces to for a rigid vertex** (derived from `contactPaintDriftPx`, not measured):
+```
+drift = |(cur − src) − (tgt − rest)| · size          (native-entry.mjs checkContactPaint)
+cur = T(src), tgt = T(rest)  for a vertex rigidly bound to the endpoint part, T its world affine
+⇒ drift = |(R − I)·o| · size = 2·|o|·sin(θ/2)        o = src − rest (rest offset), θ = part's world rotation
+```
+Translation cancels; the contact landmark itself is exact (`maxContactError` ~4e-16). So the gate
+measures **the rest offset of the nearest painted vertex, rotated by the lower-leg's stance rotation**.
+That is exactly Codex's stated hypothesis, and it is derivable from the code — which is why it must be
+*measured*, not assumed (§3a).
+
+Consistency check against the receipts (`crab-fits-03/*/receipt.json` `contactPins[].distancePx` = |o|):
+
+| Subject | joint | |o| px | worst drift px | implied θ |
+|---|---|---:|---:|---:|
+| vent-crab | leg0NearFoot | 2.540 | 0.348 | 7.9° |
+| mud-crab | leg0NearFoot | 2.118 | 0.270 | 7.3° |
+| mud-crab | leg0FarFoot | 2.165 | 0.252 | 6.7° |
+| freshwater-crab | leg0NearFoot | 1.324 | 0.176 | 7.6° |
+| crab | leg0NearFoot | 2.013 | 0.133 | 3.8° |
+| coconut-crab | leg0FarFoot | 3.141 | 0.144 | 2.6° |
+
+Freshwater rotates as much as Vent and passes because its offset is half; Coconut has the largest
+offset and passes because it barely rotates. **Pass/fail is decided by the product of a fit property
+(how far the observed landmark sits from the nearest painted pixel) and a motion property (stance
+rotation)**, and 0.25 px is achievable only while |o|·sin(θ/2) ≤ 0.125 px. This is consistent on all
+five; consistency is not proof.
+
+If §3a proves it, the honest reading is: the *landmark* is planted, the *paint* is not, because the
+observed foot landmark is 1.3–3.1 source px from the painted contact pixel. Two repair candidates
+exist — move the foot landmark onto the painted contact pixel at fit time (record change, Mud/Vent
+refit and re-split), or make the solver plant the painted contact vertex rather than the landmark
+(solver contract change, iterated because R depends on the solve). **Neither is chosen here.** The
+choice follows the measurement, in its own bounded item, with the gate unchanged.
+
+## 3. One bounded next direction (R1c) — measure, don't repair
+
+Scope: diagnostics and reports only, on the unchanged signed producer `6a58e40e` except where a
+harness-only switch is named. No solver, clip, record, threshold, kit or binding change. New numbered
+evidence folders; nothing overwritten. Stop after (a)–(c) for review.
+
+### (a) Mud/Vent drift — test the rest-offset hypothesis
+- **Instrument:** in `native-entry.mjs` (diagnostic branch only), for every stance contact at every
+  sample, record `|o|` (from the pin receipt or recomputed), the endpoint part's world rotation θ
+  (from the rig's part affine, atan2 of the linear part), the predicted `2·|o|·sin(θ/2)·size` and the
+  measured `contactPaintDriftPx`, for all five crabs, all actions, 121 samples + 601 presentation.
+- **Proof criterion:** max |predicted − measured| ≤ 1e-9 px on every sample proves the hypothesis
+  exactly (rigid vertex ⇒ closed form). Any residual above Float32 ulp scale disproves it and must be
+  reported with the offending sample; do not average it away.
+- **Negative controls, both directions:** (1) a synthetic binding whose nearest vertex sits *on* the
+  landmark (o = 0) must report zero drift at any θ; (2) a synthetic binding with |o| doubled must report
+  exactly doubled drift at the same θ; (3) an unpinned diffused-weight mutant must report a residual
+  ≠ 0 (proving the instrument can see the failure mode I wrongly diagnosed).
+- **Report:** per crab, |o| and the max stance θ per action, and the θ at which each crab would cross
+  0.25 px. No threshold change, no repair.
+
+### (b) Civet sentinel — genuine shared-path regression vs harness/path artifact
+- **Artifact discriminator first:** (1) the sentinel adapter's `record.json` / `binding.json` hashes
+  must equal the candidate-10 hashes in `civet-sentinel-input-01/input-manifest.json`; (2) drive the
+  *same* adapter inputs and the *same* sampled pose stream through `createQuadrupedContactSolver`
+  (`planted:true`) and record contact error, drift and compression. If that reproduces the previously
+  accepted candidate-10 numbers, the adapter is not the cause. If it does not, the adapter is defective:
+  repair the adapter only, re-run the sentinel, and the family-path question stays open.
+- **Then the shared path:** A/B the same pose stream through `createFamilyContactSolver`. At the first
+  failing sample of `alert` (5.825 ms), `approach:walk` (28.97 ms), `dodge` (6.25 ms), log the hip world
+  position, the fixed end target, the reach bounds (`upper+lower`, `|upper−lower|`), which bound is
+  violated, and the compression the compat solver applied at the same sample. My hypothesis, to be
+  tested not assumed: the family solver has no root-accommodation step (the compat solver shifts the
+  root by `compression` up to 8 % body and keeps authored hip rotations; the family solver zeroes hip
+  rotations and solves to a fixed end with no accommodation), so authored quadruped root loading pulls
+  hips outside reach within a few ms. If confirmed, this is a genuine shared-path gap that also bounds
+  brachyuran loading (N12's 8 % faint passes only because 8 % of a 0.094 span is small) — a finding,
+  not a clearance.
+- **Idle ankle drift 0.258 px:** include Civet's four ankles in (a); the Civet binding predates
+  contact pins, so compute |o| directly.
+- **Rule:** the compat/family distinction is a diagnosis aid; the sentinel is not passed until the
+  family path passes it on the Civet binding.
+
+### (c) Flora fold + CPU — controlled attribution
+- **Facts already in evidence:** `normalPasses` is unchanged across producers (cranberry 4,032 → 4,028,
+  devils-club 4,032 → 4,028), so the scale change did **not** change ARAP iteration counts; the
+  persimmon fold pre-exists on `6b11407d` (132 folds in framing, `persimmon-native-04`), so it is
+  **not** caused by R1b. What changed in the harness: per-action rows now run cold (before the
+  601-sample presentation warm-up). What is unknown: run-to-run variance.
+- **Design (2×2 + variance floor):** (0) three repeats of the exact current configuration to bound
+  variance first — if the IQR alone covers 0.7 → 1.9 ms, say so and stop; (1) harness-only switch
+  `order = rows-first | presentation-first` (diagnostic flag, default unchanged); (2) diagnostic-only
+  scale override reproducing the legacy body-axis reference on the BodyCard for plants (a parameter the
+  shipped path cannot read; refused outside the diagnostic entry); five repeats per cell; report median
+  and IQR of per-row p95 and per-sample `normalPasses`. Attribution is accepted only for a cell delta
+  larger than the IQR; otherwise "unattributed" stands.
+- **Persimmon fold diagnosis (no fix):** at `disturb` 67.17 ms, dump the 84 folded triangles' part
+  ownership and the joint pair each fold spans; count folds at 1.0 / 0.75 / 0.5 / 0.25 × the current
+  disturb amplitude as a diagnostic sweep (not a clamp change) so the next decision knows whether it
+  is a leaf/branchTip differential-rotation fold or a mesh-density fold.
+- **Reporting gap to close in the same batch:** the native reports carry no readability measurement
+  (N2's floors exist only as static tests on fixtures). Each native crab report must record peak swing
+  foot displacement as a fraction of lower-leg length and peak carapace dy per action.
+
+### Boundaries
+Producer unchanged except the two named diagnostic switches, both refused outside the diagnostic
+entry and covered by a test that the shipped `compileBodyCard` ignores them. No R3/R4/R9, no threshold
+or clamp change, no re-run of unchanged input to seek a better number, no push. Stop for review.
+
+## 4. Copy-ready direction for Codex
+```
+Claude's R1b/R2b review is at
+/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md
+(read-only; do not sync). N3 is withdrawn as diagnosed; the 0.25 px gate is unchanged.
+
+Authorize one bounded diagnostic batch, R1c, on unchanged producer 6a58e40e — measurements only:
+  (a) per-sample predicted 2·|o|·sin(θ/2) vs measured painted-contact drift on all five crabs
+      (+ Civet ankles); proof ≤ 1e-9 px; three named negative controls (o=0, |o|×2, diffused mutant).
+  (b) Civet: adapter hash check + compat-solver reproduction of candidate-10 numbers, then A/B
+      family vs compat solver on the same pose stream with reach bounds and compression logged at
+      the first failing samples. Distinction ≠ clearance.
+  (c) flora: variance floor (3 repeats), then 2×2 {rows-first | presentation-first} ×
+      {declared scale | legacy body-axis scale} with 5 repeats, medians/IQR, normalPasses; persimmon
+      fold: part/joint ownership at 67.17 ms + amplitude sweep 1.0/0.75/0.5/0.25 (diagnostic only);
+      add peak foot displacement / carapace dy per action to native crab reports.
+No solver, clip, record, threshold, clamp, kit or binding change; no R3/R4/R9; no push. Stop for review.
+```
+
+## Coordination
+- **Nick:** V2 (faint recovers) and V3 (pinch static) are the visual findings on the three films; visual
+  acceptance is yours and remains open. R1c is a diagnostic batch; the Mud/Vent repair choice comes
+  after its result. R9 addendum is beside this file (`R9_ADDENDUM_FINISHED_TEXTURES.md`).
+- **OpenAI/Codex:** R1c as above; then stop. R3 still carries `ContactPhase.travel` and `contactJoint`.
+- **Anthropic/Claude:** idle until R1c evidence; E1 code waits for R3 on develop.
