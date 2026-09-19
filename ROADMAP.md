@@ -103,7 +103,7 @@ pins, and finds **T1: a 42–57 px one-frame snap at approach → pinch** (gait 
 transitions — the R3 `travel` contract). Amended order, in §5 of `CLAUDE_R1BR2B_REVIEW.md`:
 **R1c-b/c (Civet A/B, CPU 2×2) → R2c (painted-support contact, offset-aware, landmarks untouched) →
 R3 (+ T1 continuity gate) → one re-capture → Nick's look → R4 → R9.** Persimmon foliage rigidity is
-Nick's decision before any collar design.
+Nick's decision before any collar design. **Copy-ready block for Codex: review §6.**
 
 ### Who owes what
 

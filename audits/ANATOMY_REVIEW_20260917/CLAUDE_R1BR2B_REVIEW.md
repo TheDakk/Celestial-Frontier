@@ -212,3 +212,40 @@ Codex ran a diagnosis batch in parallel with this review. Checked read-only agai
 4. One native re-capture after R2c + R3 (eight subjects + Civet), then Nick's look; R4 → R9 after.
 5. Persimmon: Nick decides whether foliage rigidity is negotiable before anyone designs the collar
    treatment; its CPU failures stay open regardless.
+
+## 6. Copy-ready bounded direction for Codex (supersedes §4; issued after `4cb5f7a3`)
+```
+Claude's review + amendment: /Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md
+(§2, §5, §6; read-only; do not sync). review-diagnosis-01 is accepted as proof of the Mud/Vent cause
+(Float32 precision) and of the persimmon fold ownership. 0.25 px and <2 ms gates unchanged.
+
+Authorize, in order, each ending in a signed producer + static checks + STOP:
+
+R1c-b/c (measurement only, unchanged producer 6a58e40e, diagnostic switches refused outside the
+  diagnostic entry):
+  b. Civet: adapter record/binding hashes == candidate-10 manifest; same pose stream through
+     createQuadrupedContactSolver (planted) must reproduce candidate-10 numbers; then A/B against
+     createFamilyContactSolver logging hip world position, target, reach bounds, violated bound and
+     compat compression at the first failing samples of alert/approach:walk/dodge. Distinction ≠ clearance.
+  c. Flora CPU: 3 repeats of the current configuration (variance floor); then 2×2
+     {rows-first | presentation-first} × {declared | legacy body-axis scale}, 5 repeats, median/IQR,
+     normalPasses. Add peak swing-foot displacement (fraction of lower-leg) and carapace dy per action
+     to native crab reports.
+
+R2c (shared solver, all families): plant the observed painted support, not only the joint —
+  end target = paintedRest − R(θ)·o, iterated to convergence (≤3 fixed-point steps), source landmarks,
+  pixels and joins untouched. Gate both: bone endpoint ≤1e-8 image units AND painted drift ≤0.25 px.
+  Controls: o=0 → identical to today's solve; |o|×2 → still ≤0.25 px; diffused-weight mutant → fails;
+  five crabs + Civet binding statically. Incorporate R1c-b's finding if the family solver needs root
+  accommodation; otherwise record why not.
+
+R3 as planned (CODEX_REPAIR_PLAN §R3) plus: ContactPhase.travel?:'solver'|'stage' owning T1 —
+  persistent stage displacement has one owner across action transitions; new continuity gate:
+  max root world-position step between consecutive presentation samples ≤ one stride, with a
+  negative control reproducing today's 42–57 px snap; compileAnatomyAttack returns contactJoint.
+  Do not fix T1 by weighting travel by blend (N11).
+
+Then ONE native re-capture (eight subjects + Civet, new folders) → STOP for Nick's look. R4 → R9 after.
+Persimmon collar/foliage repair waits for Nick's decision on foliage rigidity; not in this scope.
+No threshold, clamp, kit, record, per-species or reserved-owner change; no unchanged retry; no push.
+```
