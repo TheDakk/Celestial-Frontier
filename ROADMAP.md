@@ -104,7 +104,7 @@ Self-contained. Either lane can resume from this block alone. Earlier handoffs o
 
 | Lane | HEAD | Note |
 |---|---|---|
-| `openai/mac` (Codex) | `7dd884f0` = `origin/openai/mac` (R2c′ packet; awaiting the R2c″ new-session prompt paste) | running the single-run program from review §8 |
+| `openai/mac` (Codex) | `8ecb9209` local (origin at `7dd884f0`): R2c″ ran and stopped S2 at solver construction — the new constructor's untoleranced `barycentric < 0` check rejected a −9e−16 edge coefficient in the regenerated Civet support (review §11: instrument defect, data valid); R2c‴ direction issued (constructor tolerance + both-way controls, then resume §10 acceptance) | awaiting the §11 paste |
 | `anthropic/mac` (Claude) | this commit = `origin/anthropic/mac` after `a0441a44` | E1.1–E1.5 coded and filmed; two TypeSafe batteries; tree clean apart from `.DS_Store` |
 
 Pushed as plain branch pushes only (no workflow runs on a branch push per `GITHUB_ACTIONS_BUDGET.md`; `origin/openai/mac` = 140 commits, `origin/anthropic/mac` = 72 first-parent commits, pushed in fast-forward chunks along the first-parent chain — pushing a `rev-list --reverse` order without `--first-parent` rejects at the merge's side commits, which is what the first attempt hit). PR42 parked, no PR opened, no merge to develop, no release. Lanes still read each other by absolute path.

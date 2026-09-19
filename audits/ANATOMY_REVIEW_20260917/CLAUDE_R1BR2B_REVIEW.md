@@ -429,3 +429,66 @@ model still fails; crab ARAP residual stays 0.0000; diffused mutant fails. Accep
 ≤ 0.25 px, family solver, regenerated binding. Then resume §8 from the R2c static sweep; S2 remains the only halt;
 no third variant if it fails; no push.
 ```
+
+## 11. R2c″ ran and S2 fired a third time (Codex `R2c-double-prime/`, producers `766e0917` → `224086c9` → `8ecb9209`, signed) — verdict: the instrument, not the data
+
+**What Codex did right.** Stopped at the first shared-path red before any measurement; changed no input, coefficient
+or tolerance; preserved candidate-10 byte-for-byte (`input-preservation.json` PASS, receipt shows exactly seven
+support weights changed and six pins added); ran the synthetic controls both ways (pinned 0.0000252 px, diffused
+mutant 2.648 px); recorded the two leaf reds honestly (the `melee:body` invocation typo, and the pose-exporter reds
+that come from `battle2/choreography.ts` / `effects/anchors.ts` being absent in the openai lane — expected until the
+next re-merge, not a defect).
+
+**What fired.** `createFamilyContactSolver` now validates every support vertex with `v.barycentric < 0 → throw`
+(`port/v2/apps/game/src/creature-rig-contact.ts:94`). At `foreNearAnkle` the support triangle is
+(444: 0.7368…, **442: −8.98e−16**, 445: 0.2632…). The three coefficients sum to exactly 1.0 and the two non-zero
+ones are the pinned `[foreNearAnkle, 1]` vertices; vertex 442 is the diffused paw/ankle/knee vertex that the split
+correctly did **not** pin because its coefficient is zero. The support point lies on the triangle **edge** 444–445;
+candidate-10's point-in-triangle solve returned the edge coefficient as a rounding zero with the sign of the
+floating-point noise. That is valid interpolation data: a point on an edge is a legitimate barycentric location,
+and every other check in the same constructor already carries a rounding tolerance (sum-to-1 at `1e-8`, twice).
+Only the sign check has none. So the constructor is internally inconsistent — it accepts a coefficient of
+`+8.98e−16` and rejects `−8.98e−16`, although both are the same edge point to any physical precision.
+
+Project law applies verbatim: *when a new instrument fires, suspect the instrument first.* This is not a kinematic
+or ARAP residual and says nothing about the contact locks; nothing was measured. It is not a gate threshold
+(0.25 px, < 2 ms, exact rest all stand). It is a validator Codex wrote in R2c″ itself, and its rejection of
+retained data is the defect.
+
+**Why not the other fix.** The alternative is to make the split snap |b| < ε to exactly 0 on regeneration. That
+would change the receipt, re-run the split and make the input-preservation claim depend on which tool ran last.
+The data is already correct; the reader should accept correct data. Keep the validator as the single place that
+decides what "valid" means.
+
+**R2c‴ — one bounded correction to the constructor, then resume exactly where R2c″ stopped:**
+- In `creature-rig-contact.ts` line 94, make the sign check tolerance-consistent with the sum check: reject
+  `v.barycentric < −1e-8` (the same `1e-8` already used twice in that constructor), accept anything within rounding
+  of zero and use the stored value as-is (its contribution is ≤ 1e-15 px; no snap, no renormalise, no input change).
+  Nothing else in the file moves.
+- Unit control, both directions, in `creature-rig-contact-weighted.test.ts`: (a) a support whose middle vertex
+  carries `−8.975276662232845e−16` (the real 442 value, the other two summing to 1 − that) constructs and predicts
+  the same point to 1e-12 as the identical support with that coefficient at `+0`; (b) `−1e-3` still throws
+  `invalid support weights`; (c) the existing real-binding test now **constructs the solver** on the regenerated
+  Civet binding (`R2c-double-prime/civet-input/`), which is the test that would have caught this before the film.
+- Then `native-rest-02` again with the retained `[melee:bite]` list, unchanged inputs, no other change. Every
+  R2c″ acceptance item in §10 still stands unrun: exact rest, unpinned-candidate-10 negative control, six-subject
+  covariance ≤ 1e-6 px, five-crab bit-identity, Civet all rows + presentation ≤ 0.25 px on the family solver.
+- S2 remains the only halt. If native rest or the sweep fails after this, that is the genuine shared-path red and
+  no further variant follows.
+
+### Copy-ready for Codex
+```
+R2c″ verdict + R2c‴: /Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md §11
+(read-only; do not sync). The stop was right, but the red is the instrument: your new constructor rejects
+v.barycentric < 0 with no tolerance while the same constructor tolerates 1e-8 on the sum; vertex 442 at
+foreNearAnkle is −8.98e−16 — an edge point with rounding-sign noise, valid data, zero contribution.
+R2c‴ (one bounded correction, constructor only): (1) creature-rig-contact.ts:94 — reject only v.barycentric < −1e-8,
+use the stored value as-is, no snap/renormalise, no input or tolerance change elsewhere; (2) unit controls both ways:
+the real −8.975276662232845e−16 support constructs and predicts identically (1e-12) to the same support at +0; −1e-3
+still throws; the real-binding test constructs the family solver on R2c-double-prime/civet-input (the test that
+would have caught this); (3) re-run native-rest-02 with [melee:bite] on unchanged inputs, then every §10 acceptance
+item exactly as written (exact rest, unpinned candidate-10 still fails, six-subject covariance ≤ 1e-6 px, five-crab
+bit-identity, Civet all rows + presentation ≤ 0.25 px). S2 stays the only halt; no further variant after that;
+pose-exporter reds from the absent battle2/choreography.ts + effects/anchors.ts are expected until the next
+re-merge. No fetch, push, PR, merge.
+```
