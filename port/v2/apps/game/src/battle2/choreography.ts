@@ -10,7 +10,7 @@ import { ACTION_PHASES, DAMAGE_NUMBER, FLASH, SHAKE, SMEAR_FRAME_MS, TIMING_BAR,
 import { placeEffectSequence, type EffectSequenceAnchors, type NormalizedPoint, type SequencePlacement } from '../effects/anchors.js';
 import { buildEffectSchedule, sampleSchedule, type EffectDelivery, type EffectSample, type EffectSchedule } from '../effects/sequencer.js';
 import { portraitClip, samplePortraitClip, type PortraitAction, type PortraitClip } from './fallback.js';
-import type { RigPose } from './fixture-rig.js';
+import type { RigPose, RigPoseContext } from './fixture-rig.js';
 import { RUN_UP_FRACTION } from './arena.js';
 
 export const APPROACH_CAP_MS = 500, RETURN_CAP_MS = 500, IDLE_TAIL_MS = 600, CURSOR_BLINK_MS = 250;
@@ -24,6 +24,9 @@ export interface TurnArena {
   /** Half the standing width of each combatant at stage scale, as a fraction of frame width; the run-up stops at contact. Absent → RUN_UP_FRACTION. */
   readonly halfWidths?: Readonly<{ left: number; right: number }>;
 }
+/** An anatomy attack selected for the turn (E1 §1.2): its motion replaces the delivery clip and its contact instant is the
+ * impact beat. Built by `compileAnatomyAttack` in the wiring; the plan never selects verbs. */
+export interface TurnAttack { readonly verb: string; readonly timeline: MotionTimeline; readonly contactMs: number; readonly contactJoint: string; }
 export interface TurnPlanInput {
   readonly seed: number;
   readonly attacker: CombatantPlanInput; readonly target: CombatantPlanInput;
@@ -34,6 +37,8 @@ export interface TurnPlanInput {
   /** Game-owned turn time the timing bar fills over, then the command window (cursor + confirm). */
   readonly readyMs: number; readonly commandMs: number; readonly idleTailMs?: number;
   readonly reducedMotion?: boolean;
+  /** Present only for a rigged attacker; ignored (with the family delivery clip used) for a portrait. */
+  readonly attack?: TurnAttack | null;
 }
 export type TurnClip = Readonly<{ source: 'timeline'; timeline: MotionTimeline }> | Readonly<{ source: 'portrait'; clip: PortraitClip }>;
 export interface TurnBeats {
@@ -52,8 +57,10 @@ export interface TurnPlan {
   readonly effect: Readonly<{ anchors: EffectSequenceAnchors; schedule: EffectSchedule; placement: SequencePlacement; startMs: number }> | null;
   readonly number: Readonly<{ text: string; x: number; y: number }>;
   readonly reducedMotion: boolean;
+  /** The anatomy attack the action clip came from, or null (delivery clip). */
+  readonly attack: TurnAttack | null;
 }
-export interface CombatantSample { readonly pose: RigPose; readonly displacementX: number; readonly facing: 1 | -1; }
+export interface CombatantSample { readonly pose: RigPose; readonly displacementX: number; readonly facing: 1 | -1; readonly context: RigPoseContext; }
 export interface NumberSample { readonly text: string; readonly x: number; readonly y: number; readonly scale: number; readonly alpha: number; readonly visible: boolean; }
 export interface StageSample {
   readonly ms: number; readonly phase: TurnPhase; readonly timingBar: number;
@@ -69,6 +76,10 @@ export interface StageSample {
 const clamp01 = (v: number): number => (v < 0 ? 0 : v > 1 ? 1 : v);
 const facingOf = (side: Side): 1 | -1 => (side === 'left' ? 1 : -1);
 const clipMs = (c: TurnClip): number => (c.source === 'timeline' ? c.timeline.durationMs : c.clip.durationMs);
+const clipId = (c: TurnClip): string => (c.source === 'timeline' ? c.timeline.actionId : c.clip.actionId);
+/** Stationary clips plant every foot (quadruped compatibility solver); gaits and lunges free them. */
+export const plantedFor = (actionId: string): boolean => /^(idle|alert|hit|faint|victory|tame|feed|cast|sway|disturb|harvest|grow)$/.test(actionId);
+const contextOf = (c: TurnClip, elapsedMs: number, weight = 1): RigPoseContext => { const actionId = clipId(c); return Object.freeze({ actionId, elapsedMs: Math.max(0, elapsedMs), durationMs: clipMs(c), weight, planted: plantedFor(actionId), travel: 'stage' as const }); };
 function makeClip(c: CombatantPlanInput, action: PortraitAction, seed: number): TurnClip {
   if (c.card) return { source: 'timeline', timeline: buildTimeline(c.card, action, seed) };
   return { source: 'portrait', clip: portraitClip(action, c.mass, seed) };
@@ -108,19 +119,25 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
   const runUp = runUpLength * facing;
   const hit = input.outcome === 'hit', targetFaints = hit && input.targetFaints === true;
   const seedA = (input.seed ^ A.seed) >>> 0, seedT = (input.seed ^ T.seed ^ 0x9e3779b9) >>> 0;
+  const attack = input.attack && A.card ? input.attack : null;
+  if (attack) {
+    if (!(attack.contactMs > 0) || !Number.isFinite(attack.contactMs) || attack.contactMs > attack.timeline.durationMs) throw new TypeError('turn plan: attack contact must lie inside its timeline');
+    if (attack.timeline.recipeHash !== A.card!.recipeHash) throw new TypeError('turn plan: attack timeline was built for another body');
+    if (!attack.contactJoint || !(attack.contactJoint in A.card!.bounds.limitsDeg)) throw new TypeError(`turn plan: attack contact joint ${attack.contactJoint} is not on the attacker`);
+  }
   const clips = {
-    attacker: { idle: makeClip(A, 'idle', seedA), approach: makeClip(A, 'approach', seedA), action: makeClip(A, input.delivery, seedA), after: makeClip(A, targetFaints ? 'victory' : 'idle', seedA) },
+    attacker: { idle: makeClip(A, 'idle', seedA), approach: makeClip(A, 'approach', seedA), action: attack ? { source: 'timeline' as const, timeline: attack.timeline } : makeClip(A, input.delivery, seedA), after: makeClip(A, targetFaints ? 'victory' : 'idle', seedA) },
     target: { idle: makeClip(T, 'idle', seedT), reaction: hit ? makeClip(T, targetFaints ? 'faint' : 'hit', seedT) : input.outcome === 'dodge' ? makeClip(T, 'dodge', seedT) : null },
   };
   const readyEnd = input.readyMs, commandEnd = readyEnd + input.commandMs;
   const actionStart = commandEnd + Math.min(APPROACH_CAP_MS, scaleMs(420, massA));
   const stop = hit ? hitstopMs(massA) : 0;
-  let effect: TurnPlan['effect'] = null, impactLocal = impactOffset(input.delivery, massA);
+  let effect: TurnPlan['effect'] = null, impactLocal = attack ? attack.contactMs : impactOffset(input.delivery, massA);
   if (input.effect) {
     const raw = placeEffectSequence(input.effect, { attacker: { x: standA.x + runUp, y: standA.y }, target: standT }, { groundLineY: input.arena.groundLineY });
     // Melee themes hold the sweep across both stands (revealed by alpha in sampleTurn); cast themes slide origin→contact.
     const placement: SequencePlacement = input.delivery === 'melee' ? { ...raw, travel: raw.travel.map((p) => ({ ...p, from: raw.launch.from, to: raw.launch.from })) } : raw;
-    const schedule = buildEffectSchedule(input.effect, { delivery: input.delivery, attackerMassClass: massA }, placement);
+    const schedule = buildEffectSchedule(input.effect, { delivery: input.delivery, attackerMassClass: massA, ...(attack ? { impactAtMs: attack.contactMs } : {}) }, placement);
     if (Math.abs(schedule.impactAt - impactLocal) > 1e-6) throw new Error(`turn plan: effect impact ${schedule.impactAt} disagrees with motion strike ${impactLocal}`);
     impactLocal = schedule.impactAt; effect = { anchors: input.effect, schedule, placement, startMs: actionStart };
   }
@@ -143,7 +160,7 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
     kind: 'turn-plan', seed: input.seed,
     attacker: { side: A.side, facing, mass: massA, label: A.label, rigged: A.card !== null }, target: { side: T.side, facing: facingOf(T.side), mass: massT, label: T.label, rigged: T.card !== null },
     delivery: input.delivery, theme: input.theme, outcome: input.outcome, targetFaints, beats, phases: Object.freeze(phases), hitstopMs: stop, runUp, arena: input.arena, clips, effect,
-    number: { text, x: standT.x, y: input.arena.groundLineY - NUMBER_LIFT }, reducedMotion: input.reducedMotion === true,
+    number: { text, x: standT.x, y: input.arena.groundLineY - NUMBER_LIFT }, reducedMotion: input.reducedMotion === true, attack,
   });
 }
 
@@ -162,22 +179,22 @@ export function sampleTurn(plan: TurnPlan, ms: number): StageSample {
   const cursor = Object.freeze({ visible: phase === 'command', on: Math.floor(Math.max(0, ms - b.readyEnd) / CURSOR_BLINK_MS) % 2 === 0, side: plan.target.side });
   const numberBase = { text: plan.number.text, x: plan.number.x, y: plan.number.y };
   if (plan.reducedMotion) {
-    const rest = (idle: TurnClip): CombatantSample => ({ pose: sampleClip(idle, 0), displacementX: 0, facing: 1 });
+    const rest = (idle: TurnClip): CombatantSample => ({ pose: sampleClip(idle, 0), displacementX: 0, facing: 1, context: contextOf(idle, 0) });
     const shown = ms >= b.impactAt && ms < b.numbersEnd;
     return Object.freeze({ ms, phase, timingBar, cursor, attacker: { ...rest(c.attacker.idle), facing: plan.attacker.facing }, target: { ...rest(c.target.idle), facing: plan.target.facing },
       effect: null, camera: { shake: { x: 0, y: 0 }, flash: 0 }, numbers: [Object.freeze({ ...numberBase, scale: 1, alpha: shown ? 1 : 0, visible: shown })], runUpX: 0 });
   }
   const ic = idleClock(b, ms);
   // Attacker: idle underneath; approach / action (hitstop-frozen) / return / after on top.
-  let aPose = sampleClip(c.attacker.idle, ic), disp = 0;
+  let aPose = sampleClip(c.attacker.idle, ic), disp = 0, aCtx = contextOf(c.attacker.idle, ic);
   // The gait clip is time-scaled to the capped approach/return windows so it completes exactly on the boundary.
-  if (ms >= b.commandEnd && ms < b.actionStart) { const k = input01(ms, b.commandEnd, b.actionStart); aPose = addPose(aPose, sampleClip(c.attacker.approach, k * clipMs(c.attacker.approach))); disp = plan.runUp * EASE_FN['ease-out'](k); }
-  else if (ms >= b.actionStart && ms < b.actionEnd) { aPose = addPose(aPose, sampleClip(c.attacker.action, ic - b.actionStart)); disp = plan.runUp; }
-  else if (ms >= b.actionEnd && ms < b.returnEnd) { const k = input01(ms, b.actionEnd, b.returnEnd); aPose = addPose(aPose, sampleClip(c.attacker.approach, k * clipMs(c.attacker.approach))); disp = plan.runUp * (1 - EASE_FN['sine-in-out'](k)); }
-  else if (ms >= b.returnEnd && plan.targetFaints) aPose = addPose(aPose, sampleClip(c.attacker.after, ms - b.returnEnd)); // victory; otherwise `after` is the idle already underneath
+  if (ms >= b.commandEnd && ms < b.actionStart) { const k = input01(ms, b.commandEnd, b.actionStart), at = k * clipMs(c.attacker.approach); aPose = addPose(aPose, sampleClip(c.attacker.approach, at)); disp = plan.runUp * EASE_FN['ease-out'](k); aCtx = contextOf(c.attacker.approach, at); }
+  else if (ms >= b.actionStart && ms < b.actionEnd) { aPose = addPose(aPose, sampleClip(c.attacker.action, ic - b.actionStart)); disp = plan.runUp; aCtx = contextOf(c.attacker.action, ic - b.actionStart); }
+  else if (ms >= b.actionEnd && ms < b.returnEnd) { const k = input01(ms, b.actionEnd, b.returnEnd), at = k * clipMs(c.attacker.approach); aPose = addPose(aPose, sampleClip(c.attacker.approach, at)); disp = plan.runUp * (1 - EASE_FN['sine-in-out'](k)); aCtx = contextOf(c.attacker.approach, at); }
+  else if (ms >= b.returnEnd && plan.targetFaints) { aPose = addPose(aPose, sampleClip(c.attacker.after, ms - b.returnEnd)); aCtx = contextOf(c.attacker.after, ms - b.returnEnd); } // victory; otherwise `after` is the idle already underneath
   // Target: idle underneath (frozen through hitstop); reaction on top; faint holds its final pose.
-  let tPose = sampleClip(c.target.idle, ic);
-  if (c.target.reaction && ms >= b.reactionStart) tPose = addPose(tPose, sampleClip(c.target.reaction, ms - b.reactionStart));
+  let tPose = sampleClip(c.target.idle, ic), tCtx = contextOf(c.target.idle, ic);
+  if (c.target.reaction && ms >= b.reactionStart) { tPose = addPose(tPose, sampleClip(c.target.reaction, ms - b.reactionStart)); tCtx = contextOf(c.target.reaction, ms - b.reactionStart); }
   // Impact presentation (hit only): flash two frames then 120 fade; shake 6 px × mass decaying over 180; number pop/rise/fade.
   const hit = plan.outcome === 'hit', since = ms - b.impactAt;
   const white = FLASH.whiteFrames * SMEAR_FRAME_MS;
@@ -199,7 +216,7 @@ export function sampleTurn(plan: TurnPlan, ms: number): StageSample {
       return Object.freeze({ ...t, transform: Object.freeze({ ...t.transform, alpha: t.transform.alpha * reveal }) });
     })) });
   }
-  return Object.freeze({ ms, phase, timingBar, cursor, attacker: { pose: aPose, displacementX: disp, facing: plan.attacker.facing }, target: { pose: tPose, displacementX: 0, facing: plan.target.facing },
+  return Object.freeze({ ms, phase, timingBar, cursor, attacker: { pose: aPose, displacementX: disp, facing: plan.attacker.facing, context: aCtx }, target: { pose: tPose, displacementX: 0, facing: plan.target.facing, context: tCtx },
     effect, camera: { shake, flash: clamp01(flash) }, numbers: Object.freeze(numbers), runUpX: disp });
 }
 const input01 = (ms: number, s: number, e: number): number => (e <= s ? 1 : clamp01((ms - s) / (e - s)));

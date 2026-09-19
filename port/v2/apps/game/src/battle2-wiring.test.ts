@@ -4,18 +4,20 @@
  * objects: flag off → no work; flag on → stage constructed, ticker attached, turns advance on the
  * injected clock, dispose releases everything; no wall clock, no Math.random. */
 import { readFileSync } from 'node:fs';
+// Lives beside the app (not under tests/): its closure reaches Codex's pixi-backed creature-rig, whose @webgpu/types
+// collide with lib.dom in the fully strict root program (apps/game/tsconfig.json _skipLibCheckReason).
 import { createRequire } from 'node:module';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { FIXTURE_RIG_LABEL, PORTRAIT_RIG_LABEL, type FixturePartCut } from '../apps/game/src/battle2/index.js';
+import { FIXTURE_RIG_LABEL, PORTRAIT_RIG_LABEL, type FixturePartCut } from './battle2/index.js';
 import { BATTLE2_ASSETS, PLAYER_PLACEHOLDER_LABEL, alphaBox, battle2Enabled, fnv1a32, genomeMass, genomeSeed, genomeTheme, matchRecord, mountBattle2Study, mountBattle2StudyIfEnabled,
-  type Battle2AssetSource, type Battle2Image, type Battle2Keyer, type Battle2PixiBindings, type Battle2Raster, type Battle2StudyInput } from '../apps/game/src/battle2-wiring.js';
-import type { ResolvedAnatomyRecord } from '../apps/game/src/motion/body-card.js';
-import { civetRecord } from '../tools/motion-proof/fixtures.js';
+  type Battle2AssetSource, type Battle2Image, type Battle2Keyer, type Battle2PixiBindings, type Battle2Raster, type Battle2StudyInput } from './battle2-wiring.js';
+import type { ResolvedAnatomyRecord } from './motion/body-card.js';
+import { civetRecord } from '../../../tools/motion-proof/fixtures.js';
 
 const { JSDOM } = createRequire(import.meta.url)('jsdom') as { JSDOM: new (html: string) => { window: Window & typeof globalThis } };
-const mainSource = readFileSync(new URL('../apps/game/src/main.ts', import.meta.url), 'utf8');
-const AUDIT = new URL('../../../audits/ARENA_EFFECTS_V42_PROOF_20260912/', import.meta.url);
+const mainSource = readFileSync(new URL('./main.ts', import.meta.url), 'utf8');
+const AUDIT = new URL('../../../../../audits/ARENA_EFFECTS_V42_PROOF_20260912/', import.meta.url);
 const auditJson = (name: string): unknown => JSON.parse(readFileSync(new URL(name, AUDIT), 'utf8'));
 
 /** The gate contract: the flag test and the dynamic import share one line; battle2 is never imported statically. */
@@ -41,7 +43,7 @@ describe('main.ts battle2 gate (source text)', () => {
   });
   it('neither wiring module reads a wall clock or Math.random outside comments (the clock is injected by main.ts)', () => {
     for (const file of ['battle2-wiring.ts', 'worldlife-wiring.ts']) {
-      const code = readFileSync(new URL(`../apps/game/src/${file}`, import.meta.url), 'utf8').split('\n').filter((l) => !/^\s*(\*|\/\/|\/\*)/.test(l)).join('\n');
+      const code = readFileSync(new URL(`./${file}`, import.meta.url), 'utf8').split('\n').filter((l) => !/^\s*(\*|\/\/|\/\*)/.test(l)).join('\n');
       expect(code, file).not.toMatch(/Math\.random|Date\.now|performance\.now/);
     }
   });
@@ -141,7 +143,7 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     expect(ready.reason).toBeNull(); expect(ready.phase).toBe('playing');
     expect(ready.rigs).toEqual({ left: FIXTURE_RIG_LABEL, right: PORTRAIT_RIG_LABEL });
     expect(ready.label).toContain(FIXTURE_RIG_LABEL); expect(section.dataset.battle2Label).toBe(ready.label);
-    expect(ready.turns).toBe(2); expect(ready.skipped).toEqual([expect.stringContaining('tick')]); expect(ready.turnIndex).toBe(0);
+    expect(ready.turns).toBe(2); expect(ready.skipped).toEqual([expect.stringContaining('parts rig needs raw asset bytes; fixture fallback'), expect.stringContaining('tick')]); // E1: a byte-less asset source cannot build a parts rig; the fixture path is labelled expect(ready.turnIndex).toBe(0);
     // B2: each combatant plays its own ability theme (combat domain abilityTheme); Wild is painted, every other theme is the labelled procedural emitter.
     const themeRe = /^(fire|frost|storm|tide|stone|venom|void|sand|chem|psionic|wild): (painted sequence|procedural emitter effect \(labelled;)/;
     expect(ready.effects.left).toMatch(themeRe); expect(ready.effects.right).toMatch(themeRe);
@@ -221,7 +223,7 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
   });
 
   it('assets are a dev-only fetch: a build that inlined arena-recipe.json fails closed with a named reason', async () => {
-    const { devAssetSource } = await import('../apps/game/src/battle2-wiring.js');
+    const { devAssetSource } = await import('./battle2-wiring.js');
     expect(() => devAssetSource('data:application/json;base64,e30=', 'http://localhost/')).toThrow(/dev-only fetch/);
     const src = devAssetSource('/@fs/repo/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json', 'http://localhost:5173/');
     const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue({ ok: false, status: 404 } as Response);

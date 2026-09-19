@@ -10,7 +10,7 @@ import { EffectSequencePlayer, type EffectPixiHost, type EffectTextureLike } fro
 import type { EffectDelivery } from '../effects/sequencer.js';
 import type { BodyCard } from '../motion/body-card.js';
 import { PLATE_ORDER, combatantScale, parallaxOffset, type ArenaLayout, type PlateId } from './arena.js';
-import { buildTurnPlan, sampleTurn, type Side, type StageSample, type TurnArena, type TurnPlan, type TurnPlanInput } from './choreography.js';
+import { buildTurnPlan, sampleTurn, type Side, type StageSample, type TurnArena, type TurnAttack, type TurnPlan, type TurnPlanInput } from './choreography.js';
 import { TurnCuePlayer, buildTurnCuePlan, type CueSink, type TurnCuePlan } from './cue-plan.js';
 import type { BattleRigV1, RigNodeLike } from './fixture-rig.js';
 
@@ -95,6 +95,8 @@ export class BattleStage {
       arena: { ...(turn as TurnPlanInput).arena, halfWidths: (turn as TurnPlanInput).arena.halfWidths ?? this.halfWidths() } });
     this.#clearEffect();
     this.#plan = plan; this.#startMs = this.#o.clock();
+    // Reduced motion (E1 §1.6): both rigs take the rest pose once per turn here and are never updated per tick.
+    if (plan.reducedMotion) { this.#o.rigs.left.applyPose({}); this.#o.rigs.right.applyPose({}); }
     const cues = this.#o.cues;
     if (cues) this.#cues = new TurnCuePlayer(buildTurnCuePlan(plan, cues.phone !== undefined ? { phone: cues.phone } : {}), cues.sink, () => this.#o.clock() - this.#startMs);
     const fx = this.#o.effects;
@@ -121,8 +123,10 @@ export class BattleStage {
     this.root.x = s.camera.shake.x; this.root.y = s.camera.shake.y;
     const off = parallaxOffset(s.runUpX * w);
     for (const id of PLATE_ORDER) this.#plates[id].x = L.plates.find((p) => p.id === id)!.x + off[id];
-    this.#place(plan.attacker.side, s.attacker.displacementX, s.attacker.facing); this.#o.rigs[plan.attacker.side].applyPose(s.attacker.pose);
-    this.#place(plan.target.side, s.target.displacementX, s.target.facing); this.#o.rigs[plan.target.side].applyPose(s.target.pose);
+    this.#place(plan.attacker.side, s.attacker.displacementX, s.attacker.facing);
+    this.#place(plan.target.side, s.target.displacementX, s.target.facing);
+    // Reduced motion: both rigs stay at the rest pose applied at construction / the previous turn's end (E1 §1.6); no per-tick update.
+    if (!plan.reducedMotion) { this.#o.rigs[plan.attacker.side].applyPose(s.attacker.pose, s.attacker.context); this.#o.rigs[plan.target.side].applyPose(s.target.pose, s.target.context); }
     if (this.#player && plan.effect && ms >= plan.effect.startMs) {
       this.#player.tick();
       s.effect?.tracks.forEach((t, i) => { const sp = this.#player!.spriteForTrack(i); if (sp) sp.alpha = t.transform.alpha; });
@@ -168,13 +172,15 @@ export interface TurnOutcomeContext {
   readonly A: CombatantVisualV1; readonly B: CombatantVisualV1; readonly arena: TurnArena; readonly seed: number;
   readonly anchorsForTheme: (theme: string) => EffectSequenceAnchors | null;
   readonly readyMs: number; readonly commandMs: number; readonly reducedMotion?: boolean;
+  /** E1 §1.2: the anatomy attack for this combatant's n-th staged attack, or null to play the family delivery clip. */
+  readonly attackFor?: (side: 'A' | 'B', ordinal: number) => TurnAttack | null;
 }
 export type TurnOutcomeAdapt = Readonly<{ kind: 'turn'; input: TurnPlanInput }> | Readonly<{ kind: 'skip'; reason: string }>;
 const SIDE_STAND: Readonly<Record<'A' | 'B', Side>> = Object.freeze({ A: 'left', B: 'right' });
 const num = (v: unknown): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : null);
 
 /** Maps one `SettledDuelTranscriptV1.log` entry (damage / dodge / stun / tick) to a turn plan input. Champion A stands left. */
-export function turnPlanInputFromTranscriptEvent(event: Readonly<Record<string, unknown>>, ctx: TurnOutcomeContext): TurnOutcomeAdapt {
+export function turnPlanInputFromTranscriptEvent(event: Readonly<Record<string, unknown>>, ctx: TurnOutcomeContext, ordinal = 0): TurnOutcomeAdapt {
   if (!event || typeof event !== 'object') return { kind: 'skip', reason: 'event is not an object' };
   if (event.tick === true) return { kind: 'skip', reason: 'tick rows (burn/regen) have no staging' };
   if (event.stun === true) return { kind: 'skip', reason: 'stun: the strike never comes' };
@@ -192,6 +198,7 @@ export function turnPlanInputFromTranscriptEvent(event: Readonly<Record<string, 
   const a = ctx[attacker], t = ctx[attacker === 'A' ? 'B' : 'A'];
   const combatant = (c: CombatantVisualV1) => ({ side: SIDE_STAND[c.side], mass: c.mass, card: c.card, seed: c.seed, label: c.name });
   const input: TurnPlanInput = { seed: ctx.seed, attacker: combatant(a), target: combatant(t), delivery: deliveryForTheme(a.theme), theme: a.theme, outcome, damage, critical, targetFaints,
-    effect: ctx.anchorsForTheme(a.theme), arena: ctx.arena, readyMs: ctx.readyMs, commandMs: ctx.commandMs, reducedMotion: ctx.reducedMotion === true };
+    effect: ctx.anchorsForTheme(a.theme), arena: ctx.arena, readyMs: ctx.readyMs, commandMs: ctx.commandMs, reducedMotion: ctx.reducedMotion === true,
+    attack: a.card ? ctx.attackFor?.(attacker, ordinal) ?? null : null };
   return { kind: 'turn', input };
 }

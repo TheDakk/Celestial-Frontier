@@ -8,7 +8,13 @@ import type { EffectPhaseName, EffectSequenceAnchors, NormalizedPoint, PhasePlac
 
 export const EFFECT_SCHEDULE_SCHEMA = 'cf.effect-schedule/v1' as const;
 export type EffectDelivery = 'melee' | 'cast';
-export interface EffectTiming { readonly delivery: EffectDelivery; readonly attackerMassClass: number; }
+export interface EffectTiming {
+  readonly delivery: EffectDelivery; readonly attackerMassClass: number;
+  /** The instant the attacker's anatomy makes contact (E1 §1.2, `compileAnatomyAttack().contactMs`), relative to the action
+   * start. Present: the travel ends and the impact lands exactly there (the kit travel length is kept when it fits, else
+   * compressed to start at launch). Absent: the kit's delivery phases decide, as before. */
+  readonly impactAtMs?: number;
+}
 
 /** Motion Kit §5, base milliseconds at mass class 1.00. */
 export const MOTION_KIT_TIMING = Object.freeze({
@@ -92,6 +98,12 @@ export function buildEffectSchedule(anchors: EffectSequenceAnchors, timing: Effe
     const k = MOTION_KIT_TIMING.cast;
     launchAt = 0; travelStart = (k.rise + k.hold) * m; travelEnd = travelStart + k.release * m;
     launchEnd = travelStart + (k.release * m) / 2; launchGrow = 0.6;
+  }
+  if (timing.impactAtMs !== undefined) {
+    if (!Number.isFinite(timing.impactAtMs) || timing.impactAtMs <= 0) throw new TypeError('effect schedule: impactAtMs must be a positive finite instant');
+    const travelLength = travelEnd - travelStart;
+    travelEnd = timing.impactAtMs; travelStart = Math.max(launchAt, travelEnd - travelLength);
+    launchEnd = travelStart + (travelEnd - travelStart) / 2;
   }
   const impactAt = travelEnd;
   const impactEnd = impactAt + hitstopMs + MOTION_KIT_TIMING.impactHold + MOTION_KIT_TIMING.flashFade;
