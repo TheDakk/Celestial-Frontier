@@ -63,14 +63,18 @@ describe('E1 outcome 1 — the attack pays: anatomy contact, effect impact, abil
     expect(impactCue?.atMs).toBeCloseTo(plan.beats.impactAt, 9); expect(placed.find((c) => c.cueId === 'battle:hitstop-thump')?.atMs).toBeCloseTo(plan.beats.impactAt, 9);
     expect(cues.cues.some((c) => c.beat === 'impact' && c.atMs === impactCue!.atMs)).toBe(true); // at least one impact-beat cue is admitted on that instant
     expect(plan.number.text).toBe('9'); expect(input.damage).toBe(9);
-    const holder = holderOf(nodes, rig), W = rig.cutout.width;
-    const jawWorldX = (): number => { const j = rig.jointPosition(attack.contactJoint); if (!j) throw new Error('no jaw'); return holder.x + holder.scaleSet[0] * (j.x - rig.foot.x * W); };
+    const holder = holderOf(nodes, rig);
+    // Display units are normalized cut-out units (cutout = 1×1): world x = holder x + holder scale × (joint − foot), exactly as the stage places the root.
+    const jawWorldX = (): number => { const j = rig.jointPosition(attack.contactJoint); if (!j) throw new Error('no jaw'); return holder.x + holder.scaleSet[0] * (j.x - rig.foot.x * rig.cutout.width); };
     now = 0; stage.tick(); const x0 = jawWorldX();
     now = plan.beats.impactAt; const frame = stage.tick(); const x1 = jawWorldX();
     expect(frame?.sample.phase).toBe('hitstop');
     const standA = layout.stands.left.x * FRAME.width, standT = layout.stands.right.x * FRAME.width;
     expect(x1 - x0).toBeGreaterThan(0.9 * Math.abs(plan.runUp) * FRAME.width); // the jaw travelled the run-up toward the target
     expect(x1).toBeGreaterThan(standA); expect(x1).toBeLessThan(standT); // and stopped short of the target's stand: contact, not overlap
+    // Contract, not a guess: the run-up ends at standDistance − halfWidths − gap, so the jaw sits past the run-up end and inside the attacker's own half-width of it.
+    const hw = stage.halfWidths(), runUpEnd = standA + Math.abs(plan.runUp) * FRAME.width;
+    expect(x1).toBeGreaterThan(runUpEnd - 1); expect(x1).toBeLessThan(runUpEnd + hw.left * FRAME.width + 1);
     expect(rig.refusals()).toBe(0);
     stage.dispose();
   }, 120_000);
@@ -92,7 +96,8 @@ describe('E1 outcome 2 — no refusal in play', () => {
     const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => { if (side !== 'A') return null; const r = compileAnatomyAttack(card, 'ground', ordinal); return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; };
     const { f } = stageFactory(); let now = 0;
     const stage = new BattleStage({ factory: f, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: rig, right: portraitRig() }, masses: { left: card.massClass.multiplier, right: 0.85 } });
-    const rows = [{ side: 'A', an: 'Civet', dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 }, { side: 'B', an: 'Platypus', dn: 'Civet', dmg: 4, crit: true, hpA: 26, hpB: 20 }, { an: 'Civet', dn: 'Platypus', dodge: true }, { side: 'B', an: 'Platypus', dn: 'Civet', dmg: 40, crit: false, hpA: 0, hpB: 20 }];
+    // Rows cover: Civet attacks; Civet is hit; Civet's target dodges; Civet WINS (victory rear-up — E1.5 found it refused when treated as a planted stance); Civet faints.
+    const rows = [{ side: 'A', an: 'Civet', dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 }, { side: 'B', an: 'Platypus', dn: 'Civet', dmg: 4, crit: true, hpA: 26, hpB: 20 }, { an: 'Civet', dn: 'Platypus', dodge: true }, { side: 'A', an: 'Civet', dn: 'Platypus', dmg: 20, crit: true, hpA: 26, hpB: 0 }, { side: 'B', an: 'Platypus', dn: 'Civet', dmg: 40, crit: false, hpA: 0, hpB: 20 }];
     const plans = rows.map((row, i) => turnOf(contextFor('Civet', card.massClass.multiplier, card, attackFor, { seed: (0xA11 + i * 7919) >>> 0 }), row, i));
     expect(plans[0]!.attack?.verb).toBeDefined(); expect(plans.filter((p) => p.attack).length).toBeGreaterThanOrEqual(1);
     const ticks = playTurns(stage, plans, (ms) => { now = ms; });
