@@ -1,3 +1,34 @@
+## SESSION HANDOFF — September19 · R2c″ signed; acceptance in progress
+
+Nick's new session direction and sibling read-only CLAUDE_R1BR2B_REVIEW.md §10 reopen S2
+for ONE bounded correction: exact triangle LBS; Civet binding regenerated from candidate10
+through shared contact locks, preserving all other weights/source pixels/masks/atlas/record.
+Five crabs must reproduce R2c′ rows bit-for-bit; unpinned candidate10 negative control must
+still fail; covariance<=1e-6px, support ARAP residual reported. All Civet rows/presentation
+must pass0.25px. Failure after both changes is S2: stop, no third variant. If green resume
+all §8 items R2d→R3(+travel/contactJoint/crustacean profile)→R4→one full-row native capture
+→R9/Q1→R5/R6/R7/R8→58roster→localPR42split. Leaf reds continue; gates remain unchanged.
+
+Last prior signed evidence7dd884f0; producerdd33865c; halted R2c evidenc ca851fb6, all retained.
+Current evidence folder: audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/.
+Startup current (Node26.9.0); no tool updates. Requested Blender bridge route fix passes20tests.
+Pose exporter/tests now repo-relative and local GSAP-pinned:5tests pass,2integration leaf reds
+because reserved battle2/effects modules are absent locally. No copy/sync/skip/retry.
+Tooling checkpoint dd7909b4 signed and independently verified. Exact-LBS/contact-lock producer
+prepared: 24 contact tests, 8 split/probe tests, synthetic controls pass; native rest and
+one ordered six-subject gate next. Prior fixture-only test failure is retained.
+
+Signing resolved on Nick's explicit retry: producer766e0917 independently verified. Earlier
+signing errors retained. Native-rest-01 failed before measurement because the invocation
+requested nonexistent quadruped melee:body. Corrected audit presentation uses retained Civet
+attackIds=[melee:bite]; the full static sweep still includes all20 available rows. No solver,
+binding or gate changed. Next corrected native rest-only → unpinned candidate10 control →
+full six-subject static sweep ONCE. Node26.9.0 startup/prechecks remain current.
+
+OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,openai/mac,
+upstreamorigin/openai/mac. Claude read-only; no app switch/sync. No fetch/push/PR/labels/merge/
+release/deploy. PR42parked. Pre-existing.DS_Store untouched. Sign and verify every commit.
+
 ## SESSION HANDOFF — September19 · R2c′ STOPPED AT S2
 
 Nick reopened S2 for one bounded weighted-support correction under sibling read-only

@@ -1,13 +1,13 @@
-# Anatomy single-run review packet — R2c′ S2 STOP
+# Anatomy single-run review packet — R2c″ S2 STOP
 
-Latest bounded correction: [R2c′ verdict and all evidence](R2c-prime/README.md).
-Five crabs reproduce R2c rows bit-for-bit. Civet idle and approach now pass; **melee:bite fails
-at 54.988889 ms with 0.266107412 px drift against 0.25 px**. No retry or later stage ran.
+Latest bounded correction: [R2c″ verdict and evidence](R2c-double-prime/README.md).
+Signing succeeded. The corrected native invocation rejects regenerated Civet in the family-contact
+constructor: a preserved barycentric coefficient −8.975276662232845e−16 fails the new nonnegative
+validation. **No native rest or motion was measured; no third variant or retry.** This is a
+shared runtime-path regression, not a contact-residual result. [Exact diagnosis](R2c-double-prime/constructor-diagnosis.json).
 
-At failure: exact-LBS kinematic residual 0.099957721 px; separate ARAP/publication residual
-0.181297781 px. Their vectors produce the failed drift. The weighted common-point model
-itself converged; spatially varying triangle weights explain its difference from exact LBS.
-[Sample vectors and diagnosis](R2c-prime/README.md#residual-attribution-at-the-failure).
+Prior R2c′ five-crab and Civet residual results remain unchanged historical evidence in
+[R2c-prime](R2c-prime/README.md); they are not acceptance of this producer.
 
 | Item | Current outcome | Evidence |
 | --- | --- | --- |
@@ -16,7 +16,9 @@ itself converged; spatially varying triangle weights explain its difference from
 | R1c-c | All 69 controlled trials retained; leaf reds remain | [CPU median/IQR table](R1c/CPU_TABLE.md), [raw trials](R1c/cpu-01/report.json) |
 | R2c | Five crabs passed, Civet failed; original stopped evidence now signed ca851fb6 | [Original stop packet](R2c/PACKET_AT_STOP.md) |
 | R2c′ | Five crabs bit-identical; Civet melee:bite shared red | [Static sweep](R2c-prime/static.json), [all sample files](R2c-prime/README.md#every-sample-retained) |
-| Remaining §8 | Unrun because S2 fired | [Exact summary](R2c-prime/summary.json) |
+| R2c″ | Shared constructor rejects retained Civet interpolation before measurement | [Native result](R2c-double-prime/native-rest-02/report.json), [diagnosis](R2c-double-prime/constructor-diagnosis.json) |
+| Portability/toolchain | Signed dd7909b4; Blender20PASS, pose5PASS/2leaf reds (reserved modules absent) | [Tooling evidence](R2c-double-prime/toolchain/README.md) |
+| Remaining §8 | Unrun because S2 fired | [Exact summary and every new leaf diagnosis](R2c-double-prime/summary.json) |
 
 The earlier instrument schema failure and signing refusals are retained in the original stop
 packet. Signing is now resolved; both halted evidence and correction producer are signed and
@@ -60,7 +62,7 @@ No finished-crab or open-gape candidate was painted and no review verdict is inf
 ## Local handoff
 
 OpenAI/Codex on macOS: `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`
-tracking `origin/openai/mac`. Halted packet `ca851fb6`; candidate producer `dd33865c0e60994b37df31364959e89749d277a8`.
+tracking `origin/openai/mac`. Halted packet `ca851fb6`; R2c′ producer `dd33865c`; R2c″ implementation `766e0917`, audit producer `224086c9`.
 This verdict receives a separate signed evidence successor; use local git log for its hash.
 No fetch/sync/push, PR mutation, hosted attempt, merge, release, deployment or history change.
 Pre-existing `.DS_Store` untouched. No signing configuration or private-key change.

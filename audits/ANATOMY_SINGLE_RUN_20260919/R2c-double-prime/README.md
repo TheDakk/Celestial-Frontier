@@ -1,37 +1,58 @@
-# R2c″ exact triangle LBS and current contact locks
+# R2c″ — S2 STOP before native rest
 
-Signed producer `766e0917f2f280c5fbc88b8c317a5a916e217be7`, independently verified.
-Nick's explicit signing retry succeeded; earlier attempts retained in signing-block.json.
-`native-rest-01` is an instrument setup failure before rest measurement: the CLI incorrectly
-requested `melee:body`, absent from the quadruped table. The corrected invocation and static
-presentation use the previously recorded Civet attackIds (`melee:bite`); all 20 action rows
-remain in the static sweep. No solver, binding or gate change. No shared-path S2 yet.
+**The new family-contact constructor rejects regenerated Civet support data.** No third
+variant, clamp, threshold change or retry follows. Signing is resolved; this is a shared
+runtime-path red, not a 1Password block. Implementation producer `766e0917`; corrected audit
+producer `224086c9`; both signatures independently verified. Node 26.9.0 throughout.
 
-Acceptance pending. Authority: Nick's September 19 request and sibling
-review §10 read-only. No sync or copying. Five crabs must match R2c′ action rows exactly;
-Civet all rows and presentation must pass 0.25 px on the regenerated binding. A genuine
-shared-path red ends this run; no third variant. Otherwise continue the authorized §8 queue.
+The exact error is `Contact: invalid support weights foreNearAnkle`. At part
+`fore-near-lower`, part vertex 112, field vertex 442, the original barycentric coefficient is
+**−8.975276662232845e−16**. It is byte-preserved from candidate-10. The new constructor rejects
+`v.barycentric < 0` under a generic “weights” error, although these skin weights sum to 1.
+This is a newly introduced validation rejection of retained floating-point interpolation
+data. It is not a measured kinematic or ARAP residual and does not establish whether the
+contact locks would have passed motion. No tolerance, coefficient or input was changed.
 
-- `toolchain/`: fresh Node 26.9.0 receipt and requested portability/Blender fixes, signed dd7909b4 (signature verified).
-- `civet-input/receipt.json`: seven changed support weights, six added pins,
-  no other weight/topology/coordinate changes, unchanged atlas; native rest pending.
-- `tools-tests.log`: retained initial test fixture failure (missing geometry).
-- `tools-tests-fixture-corrected.log`: complete fixture, all 8 split/probe checks pass.
-- `contact-tests.log`: all 24 contact tests pass, including exact-triangle covariance control.
-- `controls.log`: original zero-offset reduction and offset controls pass; diffused mutant
-  fails 2.6479415 px while pinned control passes 0.0000252 px.
-- `static.ts`, `offline.ts`, `unpinned-control.ts`: one-shot static source-bound harnesses.
-  Civet presentation includes approach, bite and hit; crab sequence is unchanged.
+[Native failure](native-rest-02/report.json) · [Exact input/validator diagnosis](constructor-diagnosis.json)
+· [Machine-readable verdict](summary.json) · [Verified signatures](signature-verification.json).
+All 761 recorded native sources remain hash-identical. Original candidate-10 inputs also
+remain unchanged: [input preservation](input-preservation.json).
 
-Tooling leaf red: two pose-export integration tests require absent local battle2/effects
-modules. Retained in toolchain/pose-tests.log, no sibling copy or skipped assertion.
-No GitHub writes. PR42 parked. Native CPU, full films, later stages not yet claimed.
+## Evidence and limitations
 
-Signing is resolved. Continue with the corrected native rest-only invocation, unpinned
-candidate-10 negative control, and static.ts once. Native rest is not the later full-film
-recapture. Retain outputs; genuine shared-path red stops, otherwise continue §8 without
-review stops. Do not repeat the toolchain or completed prechecks. No acceptance outputs
-exist for this producer yet. Root validate and TypeScript check pass.
+- [Shared-split receipt](civet-input/receipt.json): seven support weights changed, six pins
+  added; all other weights, topology, coordinates and atlas preserved. `restChanged` remains
+  null because native rest was never measured; do not interpret the prepared receipt as admission.
+- [Contact tests](contact-tests.log): 24 PASS. [Split/probe tests](tools-tests-fixture-corrected.log): 8 PASS.
+  The real-binding unit test reads support weights but does not construct the solver; therefore
+  it missed the new negative-barycentric rejection. Synthetic triangles have nonnegative coefficients.
+- [Synthetic controls](controls.log): pinned support passes 0.0000252 px, diffused mutant fails
+  2.6479415 px; exact-triangle versus old common-point covariance unit control passes.
+- [TypeScript](typecheck.log) and [root validation](validate.log) pass.
+- [Initial split-test failure](tools-tests.log): incomplete fixture omitted geometry; corrected
+  fixture only, retained failure. No runtime retry resulted.
+- [Native invocation failure](native-rest-01/report.json): my command requested nonexistent
+  quadruped `melee:body`, before measuring anything. The corrected invocation uses the retained
+  Civet attack list `[melee:bite]`. Its `native-rest-02` failure is the S2 verdict above.
+- [Toolchain and requested portability fixes](toolchain/README.md), signed `dd7909b4`: Node
+  unchanged at 26.9.0; Blender bridge 20 PASS. Pose exporter 5 PASS / 2 leaf reds because local
+  reserved battle2/choreography.ts and effects/anchors.ts are absent; no copy/sync/skip.
+- [Earlier signing failures](signing-block.json) and [explicit retry success](signing-resolved.json)
+  are retained. Configured 1Password helper preserved; no unsigned fallback.
 
-Paired handoff: Codex retains signed local work on openai/mac. Claude remains read-only and does
-not sync or consume this unadmitted candidate. No need to open Claude now. PR42 stays parked.
+Native rest, unpinned-candidate10 negative control, six-subject covariance <=1e-6 px,
+five-crab R2c′ bit-identity, and Civet all-row/presentation acceptance are **unrun** after S2.
+Prior crab results and 10,515 R2c′ samples remain historical evidence, not R2c″ acceptance.
+No new CPU result or phone qualification is claimed. Gates remain 0.25 px, <2 ms, exact rest.
+
+## Accumulated run and handoff
+
+[Single review index](../README.md) retains every prior film/sheet, [CPU table](../R1c/CPU_TABLE.md),
+leaf diagnosis, refusal count and unrun item. New films/sheets: 0. Roster attempted: 0;
+fit refusals: 0; remaining: 58. Phone-tier proof: absent. R2d → R3 → R4 → full native capture
+→ R9/Q1 → R5/R6/R7 → R8 → roster → local PR42 split did not run.
+
+Codex: stopped at S2; no further variant or retry without new direction. Claude: read-only
+review if requested, no app switch or sync required. R3 interfaces are not implemented here.
+No fetch, push, PR, label, merge, release or deploy. PR42 stays parked; no PR is ready.
+This verdict is committed as a signed evidence successor; local HEAD identifies that commit.
