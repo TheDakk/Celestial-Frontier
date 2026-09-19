@@ -1,5 +1,14 @@
 # Celestial Frontier — development toolchain
 
+**September 19 startup — current:** official check under shared lock; idle FFmpeg9.0.1_1 →9.0.2,
+libvmaf3.2.0 →3.2.1 and xz5.8.3 →5.8.4 installed; Homebrew7.0.3 unchanged. All seven CLI capability
+checks PASS. Standard FFmpeg9.0.2 lacks `drawtext`; retained-film decoding works and ImageMagick
+supplies annotations with an explicit font. No ffmpeg-full installation. Managed Node26.9.0 was
+available, but automatic approval review rejected its update as a locked-runtime change; Node26.8.2
+remains in use pending Nick’s clarification. Project dependency locks and sealed inputs unchanged.
+REAPER’s metadata suffix is current per scoped brew outdated. No app was launched; Blender unused.
+[Receipt and diagnostic review](audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md).
+
 **September 17 startup — current:** official metadata/idle-process check and shared lock;
 Homebrew 7.0.3, gh 2.101.0, Blender 5.2.2. Only the two eligible idle authoring tools upgraded.
 Seven capability checks pass; game/runtime/test pins unchanged. No Blender use this batch;

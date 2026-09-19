@@ -1,0 +1,233 @@
+[
+  {
+    "subject": "crab",
+    "source": "audits/ANATOMY_COMPLETION_20260917/crab-native-04/family-10s.webm",
+    "sourceSha256": "3d93a406179e96660ab28238d860cfe61c3ca9a3f781105fb5f04ddeab5ee670",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1400,
+          "height": 800,
+          "nb_read_frames": "606"
+        }
+      ],
+      "format": {
+        "duration": "10.100639"
+      }
+    },
+    "decodedFrames": 607,
+    "sheets": [
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/crab-review-01.png",
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/crab-review-02.png",
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/crab-review-03.png",
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/crab-review-04.png"
+    ],
+    "largestFrameChanges": [
+      {
+        "frame": 226,
+        "meanAbsoluteDifference": 6.20125
+      },
+      {
+        "frame": 412,
+        "meanAbsoluteDifference": 0.9310661764705882
+      },
+      {
+        "frame": 411,
+        "meanAbsoluteDifference": 0.8854779411764706
+      },
+      {
+        "frame": 138,
+        "meanAbsoluteDifference": 0.8009558823529411
+      },
+      {
+        "frame": 163,
+        "meanAbsoluteDifference": 0.7897426470588236
+      },
+      {
+        "frame": 188,
+        "meanAbsoluteDifference": 0.7864705882352941
+      },
+      {
+        "frame": 88,
+        "meanAbsoluteDifference": 0.78375
+      },
+      {
+        "frame": 113,
+        "meanAbsoluteDifference": 0.7796691176470588
+      },
+      {
+        "frame": 214,
+        "meanAbsoluteDifference": 0.7744485294117647
+      },
+      {
+        "frame": 213,
+        "meanAbsoluteDifference": 0.7722058823529412
+      },
+      {
+        "frame": 87,
+        "meanAbsoluteDifference": 0.7672058823529412
+      },
+      {
+        "frame": 189,
+        "meanAbsoluteDifference": 0.7636764705882353
+      }
+    ],
+    "scope": "6fps complete-timeline review sheets; all encoded frames decoded for pixel-delta census. Not a fresh capture or physical-device acceptance."
+  },
+  {
+    "subject": "coconut-crab",
+    "source": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-04/family-10s.webm",
+    "sourceSha256": "b2cc7b960dd131a727e5735bc4b231010113ba66bc440fcbfae4dbf3b2617000",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1400,
+          "height": 800,
+          "nb_read_frames": "607"
+        }
+      ],
+      "format": {
+        "duration": "10.103006"
+      }
+    },
+    "decodedFrames": 607,
+    "sheets": [
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/coconut-crab-review-01.png",
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/coconut-crab-review-02.png",
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/coconut-crab-review-03.png",
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/coconut-crab-review-04.png"
+    ],
+    "largestFrameChanges": [
+      {
+        "frame": 226,
+        "meanAbsoluteDifference": 2.652794117647059
+      },
+      {
+        "frame": 412,
+        "meanAbsoluteDifference": 0.36665441176470587
+      },
+      {
+        "frame": 411,
+        "meanAbsoluteDifference": 0.35003676470588235
+      },
+      {
+        "frame": 138,
+        "meanAbsoluteDifference": 0.2953676470588235
+      },
+      {
+        "frame": 113,
+        "meanAbsoluteDifference": 0.2924264705882353
+      },
+      {
+        "frame": 214,
+        "meanAbsoluteDifference": 0.29066176470588234
+      },
+      {
+        "frame": 189,
+        "meanAbsoluteDifference": 0.28849264705882355
+      },
+      {
+        "frame": 188,
+        "meanAbsoluteDifference": 0.28709558823529413
+      },
+      {
+        "frame": 87,
+        "meanAbsoluteDifference": 0.2868014705882353
+      },
+      {
+        "frame": 163,
+        "meanAbsoluteDifference": 0.285
+      },
+      {
+        "frame": 88,
+        "meanAbsoluteDifference": 0.2826470588235294
+      },
+      {
+        "frame": 213,
+        "meanAbsoluteDifference": 0.28036764705882355
+      }
+    ],
+    "scope": "6fps complete-timeline review sheets; all encoded frames decoded for pixel-delta census. Not a fresh capture or physical-device acceptance."
+  },
+  {
+    "subject": "freshwater-crab",
+    "source": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-04/family-10s.webm",
+    "sourceSha256": "1624b89a13f7b28ee5dc8304d039a8cd14a3fd2253e8699fba9b90e34692b186",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1400,
+          "height": 800,
+          "nb_read_frames": "606"
+        }
+      ],
+      "format": {
+        "duration": "10.101021"
+      }
+    },
+    "decodedFrames": 607,
+    "sheets": [
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/freshwater-crab-review-01.png",
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/freshwater-crab-review-02.png",
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/freshwater-crab-review-03.png",
+      "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/freshwater-crab-review-04.png"
+    ],
+    "largestFrameChanges": [
+      {
+        "frame": 226,
+        "meanAbsoluteDifference": 4.955441176470588
+      },
+      {
+        "frame": 113,
+        "meanAbsoluteDifference": 0.8547794117647058
+      },
+      {
+        "frame": 214,
+        "meanAbsoluteDifference": 0.8471691176470588
+      },
+      {
+        "frame": 189,
+        "meanAbsoluteDifference": 0.8376838235294117
+      },
+      {
+        "frame": 138,
+        "meanAbsoluteDifference": 0.830514705882353
+      },
+      {
+        "frame": 163,
+        "meanAbsoluteDifference": 0.82875
+      },
+      {
+        "frame": 88,
+        "meanAbsoluteDifference": 0.8247794117647059
+      },
+      {
+        "frame": 188,
+        "meanAbsoluteDifference": 0.8034926470588235
+      },
+      {
+        "frame": 164,
+        "meanAbsoluteDifference": 0.793235294117647
+      },
+      {
+        "frame": 87,
+        "meanAbsoluteDifference": 0.7924632352941177
+      },
+      {
+        "frame": 213,
+        "meanAbsoluteDifference": 0.7823161764705883
+      },
+      {
+        "frame": 139,
+        "meanAbsoluteDifference": 0.7762867647058823
+      }
+    ],
+    "scope": "6fps complete-timeline review sheets; all encoded frames decoded for pixel-delta census. Not a fresh capture or physical-device acceptance."
+  }
+]

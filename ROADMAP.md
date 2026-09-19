@@ -17,14 +17,30 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September19 · native batch reconciled; STOP FOR REVIEW
+## SESSION HANDOFF — September19 · all three requested reviews complete
 
-Evidence commit pending: September19 1Password signer failed to fill whole buffer. The completed
-evidence/handoff is staged; source6a58e40e remains the signed HEAD. See
-audits/ANATOMY_COMPLETION_20260917/R1B_R2B_EVIDENCE_SIGNING_BLOCKER_01.json and finish the
-prepared signed evidence commit before further work. No unsigned fallback or source changes.
+Evidence signing resolved: successor d04374362aaa0a357c5dc2791213fe277b0f4915 and producer
+6a58e40eeb552e925c94e0173d6298c4b05303e3 both independently verified. The original 1Password
+failure receipt is retained as history; no prepared commit remains pending. This review has
+its own signed documentation/evidence successor; git log supplies its exact hash.
 
-Fresh-session entry: audits/ANATOMY_COMPLETION_20260917/NEW_SESSION_PROMPT_20260919.md.
+Nick requested all three bounded reviews. Complete report:
+audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md. No game source changed.
+- Mud/Vent: all eight distinct failure samples replay exactly. A2.1–2.5px paint offset rotates
+  around the planted endpoint; rotation predicts the drift within0.000025px. More identical
+  endpoint pins cannot fix it. Shared offset-aware painted-support constraints need repair.
+- Persimmon:84/209 folds replay exactly. Rigid foliage groups3/4 and their shared collars
+  interact; diagnostic removal of either group’s pins clears the sampled fold. This is
+  causal isolation, not an adopted fix or permission to smear foliage/zero motion.
+- Three films:183 samples over complete timelines plus12 exact transition frames reviewed;
+ 1,821 frames decoded. All three snap42–57 display pixels at approach→pinch when accumulated
+  root travel disappears. Pinch readability remains weak for Crab/Coconut; Freshwater is
+  clearer. Edge streaks persist. No human visual approval or full-action film claim.
+The diagnostic’s stale rigid-rest scratch read was corrected; original failure retained
+losslessly. All42 shared imported source hashes match the original native report. No native
+rerun or CPU recertification; all original artifacts remain intact.
+
+Fresh-session entry: audits/ANATOMY_COMPLETION_20260917/NEW_SESSION_PROMPT_20260919_REVIEW.md.
 Complete review: r1b-r2b-native-01/README.md and summary.json under the same audit root.
 Producer6a58e40eeb552e925c94e0173d6298c4b05303e3 is signed/verified. All eight subjects plus
 Civet sentinel completed before the conversation interruption; September19 reconciliation
@@ -59,9 +75,12 @@ silhouette/alpha conservation, masks transfer unchanged, finished PNG rebind/see
 Q1 open-gape candidates still need3× adoption review; Q3 refusal policy remains future R4;
 Q5 root amendment hash retained. All58 targets unqualified;53 lack bindings. All history kept.
 
-Codex: STOP for Nick/Claude review, no further repair loop or R3 until new scoped direction.
-Claude: read-only review and R9 addendum when Nick requests; no app switch required merely to
-resume Codex. New coding session must run startup runbook; this recovery was docs/evidence only.
+Codex: requested diagnoses/review complete; next is a bounded repair direction, no blind
+repeat or R3 implementation. Claude: optional read-only review/R9 addendum when Nick requests;
+no app switch or sync required. Current session startup PASS: FFmpeg9.0.2, libvmaf3.2.1,
+xz5.8.4 installed; seven capability checks PASS. Managed Node26.9.0 update was blocked by
+automatic approval review;26.8.2 remains pending Nick’s answer. Project pins unchanged.
+Fresh future sessions run the startup runbook; this uninterrupted session has its new receipt.
 No accepted art, source, main.ts, reserved modules, seed/save/version/gameplay changes since
 producer. No push/PR/hosted attempt/merge/release/deploy/LFS/history operation. PR42 parked.
 Record actual local HEAD/ahead only; pre-existing.DS_Store untouched.

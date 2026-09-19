@@ -1,16 +1,18 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-[R1b/R2b current native review](audits/ANATOMY_COMPLETION_20260917/r1b-r2b-native-01/README.md),
-reconciled September19 against unchanged signed producer6a58e40e: all eight subjects plus Civet
-completed. Crab/Coconut/Freshwater pass numeric gates and have films; Mud/Vent painted-contact,
-Persimmon fold/CPU, Cranberry CPU, Devil's Club CPU and Civet contact/reach gates FAIL. N3's new
-endpoint declarations changed no field weights/pins in the actual crab bindings. N4 names the
-Persimmon folding action/time. No new visual or phone qualification; STOP for Nick's review.
-Static102 regression/210 tool tests, TypeScript and determinism pass. N1 independent scale bounds,
-N11 unweighted travel and N12 builder-owned loading are implemented; body-axis bounds/pivots
-unchanged. Q4 budget paragraph is approved/applied. D1 phone delivery uses retained finished PNGs
-with painter cut-out fallback, no inference. R3 interface additions → R4 → R9 remain queued.
-[Full new-session direction](audits/ANATOMY_COMPLETION_20260917/NEW_SESSION_PROMPT_20260919.md).
+[Current bounded diagnosis and film review](audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md),
+matches code as of September 19, 2026 (unchanged producer6a58e40e). Eight actual Mud/Vent failure
+samples prove rotation of the painted-support offset causes the contact drift; endpoint pins
+alone cannot fix it. Persimmon84/209 folds are reproduced and isolated to coupled rigid foliage
+and collars, chiefly groups3/4; diagnostic pin removal is not an accepted repair. All three
+numerically passing crab films have a42–57px approach→pinch travel reset; Crab/Coconut pinch
+readability and edge streaks remain concerns. Film sampling review is complete, not Nick’s
+visual acceptance. No code, native rerun, timing qualification, phone or battle integration.
+Original eight-subject/Civet findings and strict thresholds remain; Civet18/20 and plant CPU
+failures are open. Source/evidence signatures6a58e40e/d0437436 verified; no signing blocker.
+R3 →R4 →R9 and the remaining gates still require their scoped next direction. D1 retained
+finished-PNG/painter fallback phone delivery, D2 guardian, D3 biome arenas, D4 E1 owner and
+Q1–Q5 remain unchanged. [Full fresh handoff](audits/ANATOMY_COMPLETION_20260917/NEW_SESSION_PROMPT_20260919_REVIEW.md).
 
 [Approved R1/R2 repairs](audits/ANATOMY_COMPLETION_20260917/r1-r2-static-01/README.md), matches
 code as of September 17, 2026: one shared record-relative amplitude profile and timeline owner
