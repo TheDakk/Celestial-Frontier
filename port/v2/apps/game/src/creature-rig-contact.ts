@@ -49,15 +49,20 @@ export function createQuadrupedContactSolver(record:CreatureRigRecordV1){
  }};
 }
 
-export interface WeightedContactSupport {
+export interface ContactSupportVertex {
  readonly rest:readonly [number,number];
+ readonly barycentric:number;
  readonly weights:ReadonlyArray<readonly [string,number]>;
 }
+export interface WeightedContactSupport {
+ readonly rest:readonly [number,number];
+ readonly vertices:ReadonlyArray<ContactSupportVertex>;
+}
 export type ContactSupport=readonly [number,number]|WeightedContactSupport;
-/** Weighted point model requested by the contact owner. Exact triangle LBS and
- * the subsequent ARAP displacement are independently measured by the probe. */
+/** Exact per-vertex LBS, then interpolation at the observed painted support.
+ * Spatially varying weights must never be collapsed onto a common rest point. */
 export function predictContactSupport(support:WeightedContactSupport,matrices:Readonly<Record<string,Affine2>>){
- let x=0,y=0;for(const [joint,weight]of support.weights){const m=matrices[joint];if(!m)throw Error('Contact: missing support matrix '+joint);const p=transformPoint(m,point(support.rest));x+=weight*p.x;y+=weight*p.y;}return {x,y};
+ let x=0,y=0;for(const vertex of support.vertices)for(const [joint,weight]of vertex.weights){const m=matrices[joint];if(!m)throw Error('Contact: missing support matrix '+joint);const p=transformPoint(m,point(vertex.rest));x+=vertex.barycentric*weight*p.x;y+=vertex.barycentric*weight*p.y;}return {x,y};
 }
 /** Source-owned painted vertices sampled independently of the skeleton endpoint.
  * Reads the binding; does not change source landmarks, skin weights, pins or joins. */
@@ -69,7 +74,7 @@ export function observedContactSupports(record:CreatureRigRecordV1,binding:Creat
   if(!part)throw Error('Contact: missing painted surface '+chain.end);
   let best:WeightedContactSupport|undefined,distance=Infinity;
   for(const v of part.vertices){let x=0,y=0;for(let k=0;k<3;k++){const p=skin.vertices[v.triangle[k]!]!,weight=v.barycentric[k]!;x+=p.x*weight/record.geometry.width;y+=p.y*weight/record.geometry.height;}
-   const d=Math.hypot((x-end[0])*record.geometry.width,(y-end[1])*record.geometry.height);if(d<distance){distance=d;const weights=new Map<string,number>();for(let k=0;k<3;k++)for(const [joint,weight]of skin.vertices[v.triangle[k]!]!.weights){weights.set(joint,(weights.get(joint)??0)+v.barycentric[k]!*weight);}best={rest:[x,y],weights:[...weights].filter(([,weight])=>weight!==0)};}}
+   const d=Math.hypot((x-end[0])*record.geometry.width,(y-end[1])*record.geometry.height);if(d<distance){distance=d;best={rest:[x,y],vertices:v.triangle.map((index,k)=>{const vertex=skin.vertices[index]!;return{rest:[vertex.x/record.geometry.width,vertex.y/record.geometry.height] as const,barycentric:v.barycentric[k]!,weights:vertex.weights.map(([j,w])=>[j,w] as const)};})};}}
   if(!best)throw Error('Contact: empty painted surface '+chain.end);supports[chain.end]=best;
  }return Object.freeze(supports);
 }
@@ -83,10 +88,11 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   const cross=(end.x-root.x)*(joint.y-root.y)-(end.y-root.y)*(joint.x-root.x);
   if(Math.abs(cross)<1e-12)throw Error('Contact: source bend direction missing '+c.id);
   const declaration=paintedSupports[c.end]??record.landmarks[c.end]!;
-  const model:WeightedContactSupport='rest' in declaration?declaration:{rest:declaration,weights:[[c.end,1]]},support=model.rest;
+  const model:WeightedContactSupport='rest' in declaration?declaration:{rest:declaration,vertices:[{rest:declaration,barycentric:1,weights:[[c.end,1]]}]},support=model.rest;
   if(support.length!==2||support.some(v=>!Number.isFinite(v)||v<0||v>1))throw Error('Contact: invalid painted support '+c.end);
-  if(!model.weights.length||new Set(model.weights.map(([j])=>j)).size!==model.weights.length||model.weights.some(([j,w])=>!Object.hasOwn(record.landmarks,j)||!Number.isFinite(w)||w<=0)||Math.abs(model.weights.reduce((s,[,w])=>s+w,0)-1)>1e-8)throw Error('Contact: invalid support weights '+c.end);
-  const endpointOnly=model.weights.length===1&&model.weights[0]![0]===c.end&&model.weights[0]![1]===1;
+  if(!model.vertices.length||model.vertices.length>3||Math.abs(model.vertices.reduce((s,v)=>s+v.barycentric,0)-1)>1e-8)throw Error('Contact: invalid support interpolation '+c.end);
+  for(const v of model.vertices)if(v.rest.length!==2||v.rest.some(n=>!Number.isFinite(n)||n<0||n>1)||!Number.isFinite(v.barycentric)||v.barycentric<0||!v.weights.length||new Set(v.weights.map(([j])=>j)).size!==v.weights.length||v.weights.some(([j,w])=>!Object.hasOwn(record.landmarks,j)||!Number.isFinite(w)||w<=0)||Math.abs(v.weights.reduce((s,[,w])=>s+w,0)-1)>1e-8)throw Error('Contact: invalid support weights '+c.end);
+  const endpointOnly=model.vertices.every(v=>v.barycentric===0||(v.weights.length===1&&v.weights[0]![0]===c.end&&v.weights[0]![1]===1));
   return {...c,root,joint,endPoint:end,support:point(support),model,endpointOnly,offset:{x:support[0]-end.x,y:support[1]-end.y},chain:createTwoBoneChain({root,joint,end,bend:cross<0?-1:1})};
  });
  if(Object.keys(paintedSupports).length&&(Object.keys(paintedSupports).length!==chains.length||chains.some(c=>!Object.hasOwn(paintedSupports,c.end))))throw Error('Contact: exact painted support inventory required');

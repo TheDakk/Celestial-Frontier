@@ -29,3 +29,11 @@ test('contact endpoint locks survive diffusion; unpinned shared paint retains mi
  assert.deepEqual(pinned.binding.paintSkin.vertices.map(v=>[v.x,v.y]),plain.binding.paintSkin.vertices.map(v=>[v.x,v.y]));
  await assert.rejects(()=>splitObservedSurfaces(binding,record,probe,{fixedJoints:['a'],contactEndpoints:['b']}),/contact conflicts/);
 });
+
+test('existing-field contact refresh preserves every non-contact weight, pin and triangle',async()=>{
+ const f=await fixture();const recipe={landmarks:f.record.landmarks,geometry:{width:10,height:10}};f.record={...recipe,recipeHash:await hashJSON(recipe)};f.binding.recordRecipeHash=f.record.recipeHash;f.binding.paintSkin.solver={pins:[0],iterations:4};const {bindingHash,...body}=f.binding;f.binding.bindingHash=await hashJSON(body);f.probe.recordRecipeHash=f.record.recipeHash;f.probe.bindingHash=f.binding.bindingHash;const before=structuredClone(f.binding),result=await splitObservedSurfaces(f.binding,f.record,f.probe,{fixedJoints:[],preserveExistingWeights:true,contactEndpoints:['b']}),allowed=new Set(result.receipt.contactPins.flatMap(p=>p.supports));
+ assert.deepEqual(f.binding,before);assert.deepEqual(result.binding.paintSkin.parts,before.paintSkin.parts);assert.deepEqual(result.binding.paintSkin.triangles,before.paintSkin.triangles);
+ result.binding.paintSkin.vertices.forEach((v,i)=>{assert.equal(v.x,before.paintSkin.vertices[i].x);assert.equal(v.y,before.paintSkin.vertices[i].y);assert.deepEqual(v.weights,allowed.has(i)?[['b',1]]:before.paintSkin.vertices[i].weights);});
+ assert.equal(result.receipt.nonContactWeightChanges,0);for(const i of before.paintSkin.solver.pins)assert(result.binding.paintSkin.solver.pins.includes(i));
+ await assert.rejects(()=>splitObservedSurfaces(f.binding,f.record,f.probe,{preserveExistingWeights:true,contactEndpoints:['b']}),/cannot change other owners/);
+});

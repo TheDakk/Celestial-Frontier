@@ -1,0 +1,28 @@
+✔ separates exact triangle LBS, model covariance and published ARAP residual (0.43925ms)
+✔ projected independent surfaces retain exact source coordinates and cannot inherit opposing paint (5.495916ms)
+✔ observed attachments weld all source-supported faces, not independent overlaps (0.701917ms)
+✔ corrupted binding/probe, missing source face and conflicting fixed owners refuse (0.89125ms)
+✔ flat source ownership boundaries weld only when explicitly requested (0.884875ms)
+✔ mutated source recipe and unknown anatomy refuse before compilation (0.411333ms)
+✔ contact endpoint locks survive diffusion; unpinned shared paint retains mixed influence (0.967375ms)
+✖ existing-field contact refresh preserves every non-contact weight, pin and triangle (0.579458ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 134.592334
+
+✖ failing tests:
+
+test at port/v2/tools/creature-animation/split-observed-surfaces.test.mjs:33:1
+✖ existing-field contact refresh preserves every non-contact weight, pin and triangle (0.579458ms)
+  Error: Observed surfaces: missing contact surface
+      at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:5:36)
+      at observedContactPins (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:9:117)
+      at splitObservedSurfaces (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:28:50)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.test.mjs:34:67)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

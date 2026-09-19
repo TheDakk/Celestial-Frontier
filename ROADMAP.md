@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September19 · R2c″ correction authorized
+## SESSION HANDOFF — September19 · R2c″ prepared; 1Password signing blocked
 
 Nick's new session direction and sibling read-only CLAUDE_R1BR2B_REVIEW.md §10 reopen S2
 for ONE bounded correction: exact triangle LBS; Civet binding regenerated from candidate10
@@ -33,7 +33,18 @@ Current evidence folder: audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/.
 Startup current (Node26.9.0); no tool updates. Requested Blender bridge route fix passes20tests.
 Pose exporter/tests now repo-relative and local GSAP-pinned:5tests pass,2integration leaf reds
 because reserved battle2/effects modules are absent locally. No copy/sync/skip/retry.
-Next: signed tooling checkpoint, exact-LBS/contact-lock correction and one shared gate.
+Tooling checkpoint dd7909b4 signed and independently verified. Exact-LBS/contact-lock producer
+prepared: 24 contact tests, 8 split/probe tests, synthetic controls pass; native rest and
+one ordered six-subject gate next. Prior fixture-only test failure is retained.
+
+Producer commit failed twice: configured1Password agent error via pipe and documented PTY.
+No commit created; producer changes remain staged. App/helper/socket and matching public key
+are present. No signer change or unsigned fallback. Last signed verified HEAD dd7909b4;
+acceptance has NOT run, so no new S2 verdict. Restore signing authorization, sign this staged
+producer, independently verify, then native rest-only → unpinned candidate10 negative control
+→ full six-subject static sweep ONCE. Do not repeat completed prechecks or toolchain. Receipt:
+audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/signing-block.json.
+Cached origin/openai/mac: 1 ahead, 0 behind; no fetch or remote verification.
 
 OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,openai/mac,
 upstreamorigin/openai/mac. Claude read-only; no app switch/sync. No fetch/push/PR/labels/merge/

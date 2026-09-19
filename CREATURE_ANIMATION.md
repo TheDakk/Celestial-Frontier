@@ -1,34 +1,15 @@
 # Creature animation — shared anatomy and motion contract
 
-R2c′ static result: all five crab rows bit-identical to R2c. Civet idle/approach pass, then
-melee:bite54.988889ms fails0.266107412px against0.25px. Exact triangle LBS kinematic error
-0.099957721px and ARAP/publication0.181297781px are logged separately; model covariance
-explains the difference from the converged weighted common-point prediction. No retry or
-later stage. Signed producer dd33865c; halted R2c evidence signing resolved ca851fb6.
-[Current stop packet](audits/ANATOMY_SINGLE_RUN_20260919/R2c-prime/README.md).
-
-**R2c′ candidate — matches code September19,2026; S2 STOP, NOT ADMITTED.** Nick reopened S2
-for one weighted-support correction. Binding weights are read, never edited; the solver's
-existing3passes use paintedTarget minus weighted prediction. Endpoint-only arithmetic is
-preserved. Independent per-sample reporting separates exact-triangle LBS kinematic error,
-ARAP publication residual, and weighted-point/triangle covariance. Original limits, terminal
-rule, pins, source inputs and thresholds remain unchanged. Prior S2 evidence signedca851fb6;
-[current candidate ledger](audits/ANATOMY_SINGLE_RUN_20260919/R2c-prime/README.md).
-
-**R2c candidate — matches code September19,2026; S2 STOP, NOT ADMITTED.** Family contact now
-Five crabs pass the static full-row/presentation sweep; Civet regresses at idle261.948177ms,
-0.260840176px painted drift against0.25px. Actual support is unpinned and mostly paw-driven;
-rigid ankle prediction0.000834862px cannot describe it. No retry or R2d/R3/R4/native/R9/phone/
-roster/split work followed. R2c signing refused by1Password; source/evidence remain staged.
-[Complete stop packet](audits/ANATOMY_SINGLE_RUN_20260919/README.md).
-accepts source-observed painted supports, solves exact corrected endpoints and iterates the
-rotation/offset target at most3times. Requested painted position and corrected endpoint are
-separate; native published-geometry checks still measure the requested painted position.
-Bounded root accommodation uses the compatibility vertical rule, max8% declared motion scale.
-The existing shared hip-pivot ownership stays intact: R1c proved the missing accommodation;
-it did not isolate hip zeroing as a separate cause. Source pixels/landmarks/bindings/joins and
-all thresholds remain unchanged. Controls and current admission state are under
-[the single-run ledger](audits/ANATOMY_SINGLE_RUN_20260919/README.md); candidate is not accepted.
+**R2c″ staged candidate — matches working code September 19, 2026; signing blocked, acceptance not run.** The family
+solver predicts exact per-vertex LBS interpolated at each painted support. The endpoint-only
+reduction retains the earlier arithmetic so crab rows can be compared bit-for-bit. The shared
+split can refresh contact locks on an already split field without changing its other weights
+or topology. Civet's regenerated binding changes seven support weights and adds six pins;
+candidate-10, source masks, record and atlas remain unchanged. Native exact-rest proof and the
+single six-subject sweep are pending. Gates remain 0.25 px, <2 ms and exact rest. Residual
+reporting separates exact-LBS kinematics, model covariance and ARAP/Float32 publication.
+Prior S2 packets (R2c and R2c′) remain retained, signed and not admitted.
+[Current packet](audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/README.md).
 
 **Single-run measurement update — matches code September19,2026.** R1c Civet adapter
 hashes match candidate10. Five retained planted poses reproduce its painted-paw contour

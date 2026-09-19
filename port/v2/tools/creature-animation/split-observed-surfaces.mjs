@@ -3,7 +3,16 @@
 import {hashJSON} from './quadruped-template.mjs';
 import {smoothSkinWeights} from './smooth-skin-weights.mjs';
 const need=(ok,msg)=>{if(!ok)throw Error('Observed surfaces: '+msg);};
-export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['root'],shapeJoints=[],preservePaintBoundaries=false,contactEndpoints=[]}={}){
+function observedContactPins(input,record,skin,contactEndpoints){
+ const {parts,vertices}=skin,contactPins=[];
+ for(const joint of contactEndpoints){
+  const owner=input.parts.find(p=>p.joint===joint),part=parts.find(p=>p.id===owner?.id),end=record.landmarks[joint];need(part&&record.geometry,'missing contact surface');
+  let best=null;part.vertices.forEach((v,index)=>{const xy=[0,0];for(let k=0;k<3;k++){const p=vertices[v.triangle[k]];xy[0]+=p.x*v.barycentric[k];xy[1]+=p.y*v.barycentric[k];}const distance=Math.hypot(xy[0]-end[0]*record.geometry.width,xy[1]-end[1]*record.geometry.height);if(!best||distance<best.distance)best={index,distance,v};});
+  need(best,'empty contact surface');const supports=best.v.triangle.filter((_,k)=>best.v.barycentric[k]>1e-10);
+  contactPins.push({joint,part:part.id,vertex:best.index,distancePx:best.distance,supports});
+ }return contactPins;
+}
+export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['root'],shapeJoints=[],preservePaintBoundaries=false,contactEndpoints=[],preserveExistingWeights=false}={}){
  const {recipeHash,...recipe}=record;need(await hashJSON(recipe)===recipeHash,'record hash');
  const {bindingHash,...body}=input;need(await hashJSON(body)===bindingHash,'binding hash');
  need(input.recordRecipeHash===recipeHash,'record binding');
@@ -11,6 +20,16 @@ export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['ro
  const skin=input.paintSkin,source=skin.vertices,owners=new Map(input.parts.map(p=>[p.id,p])),fields=new Map(skin.parts.map(p=>[p.id,p]));
  need(source.length<=40000&&owners.size===input.parts.length&&fields.size===skin.parts.length&&owners.size===fields.size,'source inventory');
  need(input.parts.every(p=>Object.hasOwn(record.landmarks,p.joint))&&[...fixedJoints,...shapeJoints,...contactEndpoints].every(j=>Object.hasOwn(record.landmarks,j)),'unknown joint');
+ // A previously split certified field can receive the current shared contact
+ // locks without remeshing or re-diffusing its unrelated authored weights.
+ if(preserveExistingWeights){
+  need(fixedJoints.length===0&&shapeJoints.length===0&&!preservePaintBoundaries,'contact-only preservation cannot change other owners');
+  need(skin.parts.every(p=>p.fieldTriangles?.length===p.indices.length),'part/face provenance');
+  const result=structuredClone(skin),contactPins=observedContactPins(input,record,result,contactEndpoints),locks=new Map(),pins=new Set(result.solver.pins);
+  for(const {joint,supports}of contactPins)for(const i of supports){need(!locks.has(i)||locks.get(i)===joint,'conflicting contact owners');locks.set(i,joint);result.vertices[i].weights=[[joint,1]];pins.add(i);}
+  result.solver={...result.solver,pins:[...pins].sort((a,b)=>a-b)};
+  const output={...body,paintSkin:result};return {binding:{...output,bindingHash:await hashJSON(output)},receipt:{schema:'cf.observed-surface-split/v1',mode:'preserve-existing-field-contact-locks',contactPins,sourceBindingHash:bindingHash,sourceVertices:source.length,vertices:result.vertices.length,pins:pins.size,sourceCoordinateChanges:0,topologyChanges:0,nonContactWeightChanges:0}};
+ }
  const ids=new Map(),keys=[],parent=[],rawOwners=[];
  function index(part,old){need(Number.isInteger(old)&&source[old],'field reference');const key=part+':'+old;if(!ids.has(key)){ids.set(key,keys.length);keys.push({part,old});parent.push(parent.length);rawOwners.push(owners.get(part).joint);}return ids.get(key);}
  for(const p of skin.parts){need(owners.has(p.id)&&p.fieldTriangles?.length===p.indices.length,'part/face provenance');for(const v of p.vertices)for(const i of v.triangle)index(p.id,i);for(const i of p.fieldTriangles)index(p.id,i);}
@@ -41,14 +60,8 @@ export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['ro
  // Three mesh rings form a flexible collar; interior source foliage keeps its shape.
  let collar=new Set(boundary);for(let i=0;i<3;i++)collar=new Set([...collar,...[...collar].flatMap(j=>[...near[j]])]);
  for(const [i,j]of shape)if(!collar.has(i))locked.set(i,j);
- const contactPins=[];
- for(const joint of contactEndpoints){
-  const owner=input.parts.find(p=>p.joint===joint),part=parts.find(p=>p.id===owner?.id),end=record.landmarks[joint];need(part&&record.geometry,'missing contact surface');
-  let best=null;part.vertices.forEach((v,index)=>{const xy=[0,0];for(let k=0;k<3;k++){const p=vertices[v.triangle[k]];xy[0]+=p.x*v.barycentric[k];xy[1]+=p.y*v.barycentric[k];}const distance=Math.hypot(xy[0]-end[0]*record.geometry.width,xy[1]-end[1]*record.geometry.height);if(!best||distance<best.distance)best={index,distance,v};});
-  need(best,'empty contact surface');const supports=best.v.triangle.filter((_,k)=>best.v.barycentric[k]>1e-10);
-  for(const i of supports){need(!locked.has(i)||locked.get(i)===joint,'contact conflicts with fixed owner');locked.set(i,joint);}
-  contactPins.push({joint,part:part.id,vertex:best.index,distancePx:best.distance,supports});
- }
+ const contactPins=observedContactPins(input,record,{parts,vertices},contactEndpoints);
+ for(const {joint,supports}of contactPins)for(const i of supports){need(!locked.has(i)||locked.get(i)===joint,'contact conflicts with fixed owner');locked.set(i,joint);}
  const result=smoothSkinWeights({...skin,vertices,parts,triangles});for(const[i,j]of locked)result.vertices[i].weights=[[j,1]];
  result.solver={iterations:4,globalIterations:4,targetWeight:.35,pins:[...locked.keys()].sort((a,b)=>a-b)};
  need(result.vertices.length<=40000,'vertex budget');

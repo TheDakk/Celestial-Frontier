@@ -1,0 +1,362 @@
+{
+  "status": "PREPARED_NATIVE_REST_PENDING",
+  "schema": "cf.observed-surface-split/v1",
+  "mode": "preserve-existing-field-contact-locks",
+  "contactPins": [
+    {
+      "joint": "hindFarAnkle",
+      "part": "hind-far-lower",
+      "vertex": 71,
+      "distancePx": 6.680793366060668,
+      "supports": [
+        1318
+      ]
+    },
+    {
+      "joint": "foreFarAnkle",
+      "part": "fore-far-lower",
+      "vertex": 63,
+      "distancePx": 4.881575155623435,
+      "supports": [
+        764,
+        765
+      ]
+    },
+    {
+      "joint": "hindNearAnkle",
+      "part": "hind-near-lower",
+      "vertex": 101,
+      "distancePx": 6.542441134622462,
+      "supports": [
+        972,
+        973
+      ]
+    },
+    {
+      "joint": "foreNearAnkle",
+      "part": "fore-near-lower",
+      "vertex": 112,
+      "distancePx": 13.477843587022202,
+      "supports": [
+        444,
+        445
+      ]
+    }
+  ],
+  "sourceBindingHash": "2d4cb0f8e47937094dae969c4bac92731d054e94519b794b82268bc523464d43",
+  "sourceVertices": 2532,
+  "vertices": 2532,
+  "pins": 255,
+  "sourceCoordinateChanges": 0,
+  "topologyChanges": 0,
+  "nonContactWeightChanges": 0,
+  "changedWeights": [
+    {
+      "index": 444,
+      "before": [
+        [
+          "foreNearPaw",
+          0.9205004809575801
+        ],
+        [
+          "foreNearAnkle",
+          0.0776385125535877
+        ],
+        [
+          "spine",
+          0.0008843303738959988
+        ],
+        [
+          "foreNearKnee",
+          0.0007168941354978193
+        ],
+        [
+          "chest",
+          0.00025978014328729754
+        ],
+        [
+          "foreFarKnee",
+          1.7977136156331911e-9
+        ],
+        [
+          "hindFarKnee",
+          2.544575920984239e-11
+        ],
+        [
+          "neck",
+          1.2991746635799796e-11
+        ]
+      ],
+      "after": [
+        [
+          "foreNearAnkle",
+          1
+        ]
+      ]
+    },
+    {
+      "index": 445,
+      "before": [
+        [
+          "foreNearPaw",
+          0.7966806457925101
+        ],
+        [
+          "foreNearAnkle",
+          0.19776792707464153
+        ],
+        [
+          "spine",
+          0.0026817136892224986
+        ],
+        [
+          "foreNearKnee",
+          0.002076184221427423
+        ],
+        [
+          "chest",
+          0.000793521320407017
+        ],
+        [
+          "foreFarKnee",
+          7.717722647347245e-9
+        ],
+        [
+          "hindFarKnee",
+          1.2103383298911268e-10
+        ],
+        [
+          "neck",
+          6.303492779501039e-11
+        ]
+      ],
+      "after": [
+        [
+          "foreNearAnkle",
+          1
+        ]
+      ]
+    },
+    {
+      "index": 764,
+      "before": [
+        [
+          "foreFarPaw",
+          0.608080822772642
+        ],
+        [
+          "foreFarAnkle",
+          0.3066041051515545
+        ],
+        [
+          "foreFarKnee",
+          0.07713788152828521
+        ],
+        [
+          "chest",
+          0.006968854932340208
+        ],
+        [
+          "spine",
+          0.0009952463256397439
+        ],
+        [
+          "foreNearKnee",
+          0.00020835191658902222
+        ],
+        [
+          "neck",
+          0.000004697139176323447
+        ],
+        [
+          "head",
+          4.023377293783355e-8
+        ]
+      ],
+      "after": [
+        [
+          "foreFarAnkle",
+          1
+        ]
+      ]
+    },
+    {
+      "index": 765,
+      "before": [
+        [
+          "foreFarPaw",
+          0.8166117328404293
+        ],
+        [
+          "foreFarAnkle",
+          0.15179760062140898
+        ],
+        [
+          "foreFarKnee",
+          0.028807066200911263
+        ],
+        [
+          "chest",
+          0.002407167434540951
+        ],
+        [
+          "spine",
+          0.00031743206919473656
+        ],
+        [
+          "foreNearKnee",
+          0.00005830553663041743
+        ],
+        [
+          "neck",
+          6.901907846048921e-7
+        ],
+        [
+          "head",
+          5.1060999267109465e-9
+        ]
+      ],
+      "after": [
+        [
+          "foreFarAnkle",
+          1
+        ]
+      ]
+    },
+    {
+      "index": 972,
+      "before": [
+        [
+          "hindNearPaw",
+          0.877944193907253
+        ],
+        [
+          "hindNearAnkle",
+          0.1054382925524635
+        ],
+        [
+          "hindNearKnee",
+          0.012948794256804083
+        ],
+        [
+          "spine",
+          0.0036387786487897
+        ],
+        [
+          "hindFarKnee",
+          0.00002985104641687686
+        ],
+        [
+          "tail1",
+          8.958827299460047e-8
+        ]
+      ],
+      "after": [
+        [
+          "hindNearAnkle",
+          1
+        ]
+      ]
+    },
+    {
+      "index": 973,
+      "before": [
+        [
+          "hindNearPaw",
+          1
+        ]
+      ],
+      "after": [
+        [
+          "hindNearAnkle",
+          1
+        ]
+      ]
+    },
+    {
+      "index": 1318,
+      "before": [
+        [
+          "hindFarPaw",
+          0.9660315671237344
+        ],
+        [
+          "hindFarKnee",
+          0.016147305056765694
+        ],
+        [
+          "hindFarAnkle",
+          0.011343293362894783
+        ],
+        [
+          "spine",
+          0.006042847923697273
+        ],
+        [
+          "chest",
+          0.00035122546433763295
+        ],
+        [
+          "hindNearKnee",
+          0.00008098079517953867
+        ],
+        [
+          "foreNearKnee",
+          0.0000027802733906370947
+        ]
+      ],
+      "after": [
+        [
+          "hindFarAnkle",
+          1
+        ]
+      ]
+    }
+  ],
+  "newPins": [
+    444,
+    445,
+    764,
+    765,
+    972,
+    1318
+  ],
+  "atlasSha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79",
+  "atlasHashUnchanged": true,
+  "restChanged": null,
+  "restProof": "Pending signed native rest-only gate; source geometry/interpolation unchanged is not a pixel claim",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/record.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json",
+      "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/manifest.json",
+      "sha256": "df34c15b5f86540a00d3aef900a44338f2b1ed94ac1d61cc0624dfd72833053a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/atlas/civet.png",
+      "sha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/record.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/manifest.json",
+      "sha256": "df34c15b5f86540a00d3aef900a44338f2b1ed94ac1d61cc0624dfd72833053a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/keyed.png",
+      "sha256": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/atlas/civet.png",
+      "sha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79"
+    }
+  ]
+}
