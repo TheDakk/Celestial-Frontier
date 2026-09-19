@@ -28,7 +28,10 @@ ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md; no need to repeat the
 Item0 completed: Node26.9.0 explicitly authorized, installed with inspected dependencies;
 Homebrew7.0.4; seven capability checks PASS, fresh receipt in ledger. Earlier Node approval
 rejection is resolved by Nick's explicit direction. Whole run stays on26.9.0.
-Next: R1c-b/c measurements BEFORE shared solver changes; R2c → R2d → R3 → R4 → ONE native
+R1c-b comparison complete: byte-identical adapter; five candidate10 contour samples reproduce;
+current family alert/walk/dodge exceed upper reach while compatibility compression resolves them.
+R1c-c controlled CPU experiment is next, with diagnostic-only switches and native readability rows.
+Remaining: R2c → R2d → R3 → R4 → ONE native
 recapture (eight subjects+Civet, full rows including faint) → R9/Q1 sheet → R5/R6/R7/R8 phone
 proof → all58 roster by source family nearest crabs → local PR42 split UI/engine/tools.
 Each item gets signed producer, static checks and evidence, then continue. Leaf reds record

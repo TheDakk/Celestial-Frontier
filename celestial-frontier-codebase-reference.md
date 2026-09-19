@@ -1,5 +1,14 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**Single-run measurement update — matches code September19,2026.** R1c Civet adapter
+hashes match candidate10. Five retained planted poses reproduce its painted-paw contour
+numbers; current alert/walk/dodge all exceed upper reach without the compatibility solver's
+root accommodation. Evidence: audits/ANATOMY_SINGLE_RUN_20260919/R1c/civet.json.
+Native rows now record swing-foot displacement / lower-leg length, painted carapace dy and
+per-sample normal passes. R1c CPU switches exist only in an isolated diagnostic build;
+shipped BodyCard ignores them. No solver/clip/threshold change in R1c. Current run order and
+stop conditions supersede the older bounded-review handoff below; see the single-run ledger.
+
 [Current bounded diagnosis and film review](audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md),
 matches code as of September 19, 2026 (unchanged producer6a58e40e). Eight actual Mud/Vent failure
 samples prove rotation of the painted-support offset causes the contact drift; endpoint pins
