@@ -1,6 +1,13 @@
 # Creature animation — shared anatomy and motion contract
 
-**R2c′ candidate — matches code September19,2026; actual gate pending.** Nick reopened S2
+R2c′ static result: all five crab rows bit-identical to R2c. Civet idle/approach pass, then
+melee:bite54.988889ms fails0.266107412px against0.25px. Exact triangle LBS kinematic error
+0.099957721px and ARAP/publication0.181297781px are logged separately; model covariance
+explains the difference from the converged weighted common-point prediction. No retry or
+later stage. Signed producer dd33865c; halted R2c evidence signing resolved ca851fb6.
+[Current stop packet](audits/ANATOMY_SINGLE_RUN_20260919/R2c-prime/README.md).
+
+**R2c′ candidate — matches code September19,2026; S2 STOP, NOT ADMITTED.** Nick reopened S2
 for one weighted-support correction. Binding weights are read, never edited; the solver's
 existing3passes use paintedTarget minus weighted prediction. Endpoint-only arithmetic is
 preserved. Independent per-sample reporting separates exact-triangle LBS kinematic error,

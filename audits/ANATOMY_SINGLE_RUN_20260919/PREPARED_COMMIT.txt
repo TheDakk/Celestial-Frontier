@@ -1,3 +1,5 @@
+Historical prepared commit: fulfilled by signed ca851fb6; text below retained unchanged.
+
 Retain rejected painted-support candidate and S2 stop evidence
 
 R2c corrects endpoint-pinned crab supports with bounded root accommodation and
