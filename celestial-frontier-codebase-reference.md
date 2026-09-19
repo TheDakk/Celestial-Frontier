@@ -1,6 +1,6 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-**R2c″ staged candidate — matches working code September 19, 2026; signing blocked, acceptance not run.** The family
+**R2c″ candidate — matches code September 19, 2026; signed producer 766e0917, acceptance pending.** The family
 solver predicts exact per-vertex LBS interpolated at each painted support. The endpoint-only
 reduction retains the earlier arithmetic so crab rows can be compared bit-for-bit. The shared
 split can refresh contact locks on an already split field without changing its other weights
