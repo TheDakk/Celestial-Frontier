@@ -100,14 +100,14 @@ everything?" — yes for text/JSON (flora rows, biomes, procedural records, univ
 Self-contained. Either lane can resume from this block alone. Earlier handoffs of the day are archived verbatim at the top of
 `ROADMAP_ARCHIVE.md`.
 
-### Lane state (local only; nothing pushed, no remote state inferred)
+### Lane state (both lanes pushed to origin 2026-09-19 evening under Nick's explicit "push anthropic/mac and openai/mac")
 
 | Lane | HEAD | Note |
 |---|---|---|
-| `openai/mac` (Codex) | `18496278` (three commits past the merge point: Node 26.9.0 receipt, Civet solver-gap measurement, 69 R1c CPU trials) | running the single-run program from review §8 |
-| `anthropic/mac` (Claude) | this commit, on merge `e86a66ab` of `openai/mac@4cb5f7a3` | E1.1–E1.4 coded; tree clean apart from `.DS_Store` |
+| `openai/mac` (Codex) | `7dd884f0` = `origin/openai/mac` (R2c′ packet; awaiting the R2c″ new-session prompt paste) | running the single-run program from review §8 |
+| `anthropic/mac` (Claude) | this commit = `origin/anthropic/mac` after `a0441a44` | E1.1–E1.5 coded and filmed; two TypeSafe batteries; tree clean apart from `.DS_Store` |
 
-PR42 parked, no GitHub write, no push, no merge to develop, no release. Lanes read each other by absolute path.
+Pushed as plain branch pushes only (no workflow runs on a branch push per `GITHUB_ACTIONS_BUDGET.md`; `origin/openai/mac` = 140 commits, `origin/anthropic/mac` = 72 first-parent commits, pushed in fast-forward chunks along the first-parent chain — pushing a `rev-list --reverse` order without `--first-parent` rejects at the merge's side commits, which is what the first attempt hit). PR42 parked, no PR opened, no merge to develop, no release. Lanes still read each other by absolute path.
 
 ### The program in flight (Nick, 2026-09-19: "most work possible before a stop")
 
@@ -147,8 +147,8 @@ fingerprint (re-baseline decision); (2) 12/60 sampled procedural fauna are swimm
 `loco` and `habitat` roll independently; (3) `climateBand` is orbit-only, so molten/Venusian worlds land in cold/
 temperate bands that seed species; (4) biome atlas family lists are subsets (design or gap?); (5) `tuber`/`rosette`
 conventions in `flora.json`. **Safety:** all three checkouts are worktrees of ONE `.git`; 455 commits (315 + 140) exist
-only on this Mac — bundle backup written to `~/Projects/celestial-frontier-lanes-backup-20260919.bundle`; a plain
-branch push of both lanes (triggers no workflow per the budget file) is the durable fix and needs Nick's word.
+only on this Mac — bundle backup written to `~/Projects/celestial-frontier-lanes-backup-20260919.bundle`; the plain
+branch push of both lanes Nick then authorized is done (see Lane state), so origin now holds every commit on this Mac.
 
 
 ### What Claude owes next
