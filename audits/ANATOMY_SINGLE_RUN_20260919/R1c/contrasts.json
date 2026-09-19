@@ -1,0 +1,386 @@
+[
+  {
+    "subject": "persimmon-04",
+    "id": "sway",
+    "contrast": "order-declared",
+    "deltaMs": 0.09999996423721313,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "sway",
+    "contrast": "order-legacy",
+    "deltaMs": 0.09999996423721313,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": true
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "sway",
+    "contrast": "scale-rows-first",
+    "deltaMs": 0.09999996423721313,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "sway",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 0.09999996423721313,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": true
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "disturb",
+    "contrast": "order-declared",
+    "deltaMs": 0.6000000238418579,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": true
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "disturb",
+    "contrast": "order-legacy",
+    "deltaMs": 0.5999999642372131,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": true
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "disturb",
+    "contrast": "scale-rows-first",
+    "deltaMs": 0.10000002384185791,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "disturb",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 0.09999996423721313,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "harvest",
+    "contrast": "order-declared",
+    "deltaMs": 0.2999999523162842,
+    "largestCellIqrMs": 0.10000002384185791,
+    "aboveIqr": true
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "harvest",
+    "contrast": "order-legacy",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 5.960464477539063e-08,
+    "aboveIqr": false
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "harvest",
+    "contrast": "scale-rows-first",
+    "deltaMs": 2.699999988079071,
+    "largestCellIqrMs": 0.10000002384185791,
+    "aboveIqr": true
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "harvest",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 2.400000035762787,
+    "largestCellIqrMs": 5.960464477539063e-08,
+    "aboveIqr": true
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "grow",
+    "contrast": "order-declared",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": false
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "grow",
+    "contrast": "order-legacy",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": false
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "grow",
+    "contrast": "scale-rows-first",
+    "deltaMs": 0.10000002384185791,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": true
+  },
+  {
+    "subject": "persimmon-04",
+    "id": "grow",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 0.10000002384185791,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": true
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "sway",
+    "contrast": "order-declared",
+    "deltaMs": 0.19999998807907104,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": true
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "sway",
+    "contrast": "order-legacy",
+    "deltaMs": 0.19999992847442627,
+    "largestCellIqrMs": 0.10000002384185791,
+    "aboveIqr": true
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "sway",
+    "contrast": "scale-rows-first",
+    "deltaMs": 1.100000023841858,
+    "largestCellIqrMs": 0.10000002384185791,
+    "aboveIqr": true
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "sway",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 1.0999999642372131,
+    "largestCellIqrMs": 5.960464477539063e-08,
+    "aboveIqr": true
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "disturb",
+    "contrast": "order-declared",
+    "deltaMs": 0.09999996423721313,
+    "largestCellIqrMs": 5.960464477539063e-08,
+    "aboveIqr": true
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "disturb",
+    "contrast": "order-legacy",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": false
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "disturb",
+    "contrast": "scale-rows-first",
+    "deltaMs": 1.300000011920929,
+    "largestCellIqrMs": 5.960464477539063e-08,
+    "aboveIqr": true
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "disturb",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 1.2000000476837158,
+    "largestCellIqrMs": 5.960464477539063e-08,
+    "aboveIqr": true
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "harvest",
+    "contrast": "order-declared",
+    "deltaMs": 0.09999996423721313,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "harvest",
+    "contrast": "order-legacy",
+    "deltaMs": -5.960464477539063e-08,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "harvest",
+    "contrast": "scale-rows-first",
+    "deltaMs": 0.10000002384185791,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "harvest",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "grow",
+    "contrast": "order-declared",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": false
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "grow",
+    "contrast": "order-legacy",
+    "deltaMs": 5.960464477539063e-08,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "grow",
+    "contrast": "scale-rows-first",
+    "deltaMs": 1.0,
+    "largestCellIqrMs": 5.960464477539063e-08,
+    "aboveIqr": true
+  },
+  {
+    "subject": "cranberry-07",
+    "id": "grow",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 1.0000000596046448,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": true
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "sway",
+    "contrast": "order-declared",
+    "deltaMs": 0.3999999761581421,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": true
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "sway",
+    "contrast": "order-legacy",
+    "deltaMs": 0.2999999523162842,
+    "largestCellIqrMs": 0.19999998807907104,
+    "aboveIqr": true
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "sway",
+    "contrast": "scale-rows-first",
+    "deltaMs": 0.10000002384185791,
+    "largestCellIqrMs": 0.19999998807907104,
+    "aboveIqr": false
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "sway",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": false
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "disturb",
+    "contrast": "order-declared",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "disturb",
+    "contrast": "order-legacy",
+    "deltaMs": 0.09999996423721313,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "disturb",
+    "contrast": "scale-rows-first",
+    "deltaMs": 0.699999988079071,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": true
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "disturb",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 0.7999999523162842,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": true
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "harvest",
+    "contrast": "order-declared",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": false
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "harvest",
+    "contrast": "order-legacy",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "harvest",
+    "contrast": "scale-rows-first",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": false
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "harvest",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.09999996423721313,
+    "aboveIqr": false
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "grow",
+    "contrast": "order-declared",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": false
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "grow",
+    "contrast": "order-legacy",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": false
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "grow",
+    "contrast": "scale-rows-first",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": false
+  },
+  {
+    "subject": "devils-club-06",
+    "id": "grow",
+    "contrast": "scale-presentation-first",
+    "deltaMs": 0.0,
+    "largestCellIqrMs": 0.0,
+    "aboveIqr": false
+  }
+]
