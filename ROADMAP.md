@@ -30,7 +30,8 @@ Homebrew7.0.4; seven capability checks PASS, fresh receipt in ledger. Earlier No
 rejection is resolved by Nick's explicit direction. Whole run stays on26.9.0.
 R1c-b comparison complete: byte-identical adapter; five candidate10 contour samples reproduce;
 current family alert/walk/dodge exceed upper reach while compatibility compression resolves them.
-R1c-c controlled CPU experiment is next, with diagnostic-only switches and native readability rows.
+R1c-c complete:69 retained trials; scale and warm-up both affect CPU, all cells keep4normal
+passes/sample. CPU_TABLE.md owns medians/IQR; leaf folds/CPU remain. Next R2c.
 Remaining: R2c → R2d → R3 → R4 → ONE native
 recapture (eight subjects+Civet, full rows including faint) → R9/Q1 sheet → R5/R6/R7/R8 phone
 proof → all58 roster by source family nearest crabs → local PR42 split UI/engine/tools.

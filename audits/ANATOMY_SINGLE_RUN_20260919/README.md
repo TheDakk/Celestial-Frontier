@@ -8,7 +8,7 @@ Leaf reds are recorded and the remaining authorized items continue. No GitHub wr
 | Item | State | Evidence |
 | --- | --- | --- |
 | 0 Toolchain | PASS | [Fresh verification](00-toolchain/verify.json), [installation](00-toolchain/install.log) |
-| R1c-b/c | Next | Civet path comparison before solver edit; controlled CPU experiment |
+| R1c-b/c | Complete; leaf reds retained | [Civet](R1c/civet.json), [69-trial CPU table](R1c/CPU_TABLE.md) |
 | R2c | Pending | Shared painted-support constraint, five crabs + Civet |
 | R2d | Pending | Parent-frame rigid foliage |
 | R3 | Pending | Stage travel, continuity, contactJoint, pinch |
