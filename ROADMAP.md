@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September19 · R2c″ prepared; 1Password signing blocked
+## SESSION HANDOFF — September19 · R2c″ signed; acceptance in progress
 
 Nick's new session direction and sibling read-only CLAUDE_R1BR2B_REVIEW.md §10 reopen S2
 for ONE bounded correction: exact triangle LBS; Civet binding regenerated from candidate10
@@ -37,14 +37,12 @@ Tooling checkpoint dd7909b4 signed and independently verified. Exact-LBS/contact
 prepared: 24 contact tests, 8 split/probe tests, synthetic controls pass; native rest and
 one ordered six-subject gate next. Prior fixture-only test failure is retained.
 
-Producer commit failed twice: configured1Password agent error via pipe and documented PTY.
-No commit created; producer changes remain staged. App/helper/socket and matching public key
-are present. No signer change or unsigned fallback. Last signed verified HEAD dd7909b4;
-acceptance has NOT run, so no new S2 verdict. Restore signing authorization, sign this staged
-producer, independently verify, then native rest-only → unpinned candidate10 negative control
-→ full six-subject static sweep ONCE. Do not repeat completed prechecks or toolchain. Receipt:
-audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/signing-block.json.
-Cached origin/openai/mac: 1 ahead, 0 behind; no fetch or remote verification.
+Signing resolved on Nick's explicit retry: producer766e0917 independently verified. Earlier
+signing errors retained. Native-rest-01 failed before measurement because the invocation
+requested nonexistent quadruped melee:body. Corrected audit presentation uses retained Civet
+attackIds=[melee:bite]; the full static sweep still includes all20 available rows. No solver,
+binding or gate changed. Next corrected native rest-only → unpinned candidate10 control →
+full six-subject static sweep ONCE. Node26.9.0 startup/prechecks remain current.
 
 OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,openai/mac,
 upstreamorigin/openai/mac. Claude read-only; no app switch/sync. No fetch/push/PR/labels/merge/

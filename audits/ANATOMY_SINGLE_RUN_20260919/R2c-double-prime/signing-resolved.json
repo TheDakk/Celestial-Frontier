@@ -1,0 +1,6 @@
+{
+  "producer": "766e0917f2f280c5fbc88b8c317a5a916e217be7",
+  "signatureVerified": true,
+  "verification": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n",
+  "authority": "Nick explicitly requested signing retry; configured 1Password helper succeeded; earlier failures retained."
+}
