@@ -1,5 +1,20 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**R2c candidate — matches code September19,2026; S2 STOP, NOT ADMITTED.** Family contact now
+Five crabs pass the static full-row/presentation sweep; Civet regresses at idle261.948177ms,
+0.260840176px painted drift against0.25px. Actual support is unpinned and mostly paw-driven;
+rigid ankle prediction0.000834862px cannot describe it. No retry or R2d/R3/R4/native/R9/phone/
+roster/split work followed. R2c signing refused by1Password; source/evidence remain staged.
+[Complete stop packet](audits/ANATOMY_SINGLE_RUN_20260919/README.md).
+accepts source-observed painted supports, solves exact corrected endpoints and iterates the
+rotation/offset target at most3times. Requested painted position and corrected endpoint are
+separate; native published-geometry checks still measure the requested painted position.
+Bounded root accommodation uses the compatibility vertical rule, max8% declared motion scale.
+The existing shared hip-pivot ownership stays intact: R1c proved the missing accommodation;
+it did not isolate hip zeroing as a separate cause. Source pixels/landmarks/bindings/joins and
+all thresholds remain unchanged. Controls and current admission state are under
+[the single-run ledger](audits/ANATOMY_SINGLE_RUN_20260919/README.md); candidate is not accepted.
+
 **Single-run measurement update — matches code September19,2026.** R1c Civet adapter
 hashes match candidate10. Five retained planted poses reproduce its painted-paw contour
 numbers; current alert/walk/dodge all exceed upper reach without the compatibility solver's

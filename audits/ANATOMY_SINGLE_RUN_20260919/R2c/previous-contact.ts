@@ -1,12 +1,12 @@
 /** Record-driven planted contact constraint, separate from clip authoring.
  * Preserves each authored paw's perspective offset. No creature names/genes,
  * clocks, curve edits, or nearest-bone fitting. Flight passes through unchanged. */
-import type {CreaturePoseV1,CreatureRigRecordV1,CreaturePartsBindingV1} from './creature-rig.js';
-import {measureMotionScale} from '../../../tools/creature-animation/motion-scale.mjs';
-import {familyContractForRecord,familyContactChains} from '../../../tools/creature-animation/family-contracts.mjs';
-import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
-import {GRAPH} from '../../../tools/creature-animation/quadruped-template.mjs';
-import {composeAffine,rotationAround,transformPoint,IDENTITY_AFFINE,createTwoBoneChain,type Affine2} from '../../../tools/creature-animation/kinematics.js';
+import type {CreaturePoseV1,CreatureRigRecordV1} from '../../../port/v2/apps/game/src/creature-rig.js';
+import {measureMotionScale} from '../../../port/v2/tools/creature-animation/motion-scale.mjs';
+import {familyContractForRecord,familyContactChains} from '../../../port/v2/tools/creature-animation/family-contracts.mjs';
+import {createSkeletonPoseProgram} from '../../../port/v2/tools/creature-animation/skeleton-pose.mjs';
+import {GRAPH} from '../../../port/v2/tools/creature-animation/quadruped-template.mjs';
+import {composeAffine,rotationAround,transformPoint,IDENTITY_AFFINE,createTwoBoneChain,type Affine2} from '../../../port/v2/tools/creature-animation/kinematics.js';
 const point=(p:readonly [number,number])=>({x:p[0],y:p[1]});
 const legs=['hindFar','foreFar','hindNear','foreNear'];
 const angle=(a:{x:number;y:number},b:{x:number;y:number})=>Math.atan2(b.y-a.y,b.x-a.x);
@@ -49,38 +49,20 @@ export function createQuadrupedContactSolver(record:CreatureRigRecordV1){
  }};
 }
 
-/** Source-owned painted vertices sampled independently of the skeleton endpoint.
- * Reads the binding; does not change source landmarks, skin weights, pins or joins. */
-export function observedContactSupports(record:CreatureRigRecordV1,binding:CreaturePartsBindingV1):Readonly<Record<string,readonly [number,number]>>{
- const skin=binding.paintSkin;if(!skin||binding.recordRecipeHash!==record.recipeHash)throw Error('Contact: source-bound painted skin required');
- const supports:Record<string,readonly [number,number]>={};
- for(const chain of familyContactChains(familyContractForRecord(record))){
-  const owner=binding.parts.find(p=>p.joint===chain.end),part=skin.parts.find(p=>p.id===owner?.id),end=record.landmarks[chain.end]!;
-  if(!part)throw Error('Contact: missing painted surface '+chain.end);
-  let best:readonly [number,number]|undefined,distance=Infinity;
-  for(const v of part.vertices){let x=0,y=0;for(let k=0;k<3;k++){const p=skin.vertices[v.triangle[k]!]!,weight=v.barycentric[k]!;x+=p.x*weight/record.geometry.width;y+=p.y*weight/record.geometry.height;}
-   const d=Math.hypot((x-end[0])*record.geometry.width,(y-end[1])*record.geometry.height);if(d<distance){distance=d;best=[x,y];}}
-  if(!best)throw Error('Contact: empty painted surface '+chain.end);supports[chain.end]=best;
- }return Object.freeze(supports);
-}
 export interface ContactPhase {readonly actionId:string;readonly elapsedMs:number;readonly durationMs:number;readonly realm?:string;readonly weight?:number;}
 /** Source graph contacts for stance and alternating support. Elapsed phase is
  * explicit and replayable; rendering cadence is not solver state. */
-export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupports:Readonly<Record<string,readonly [number,number]>>={}){
+export function createFamilyContactSolver(record:CreatureRigRecordV1){
  const template=familyContractForRecord(record),program=createSkeletonPoseProgram(template,record.landmarks);
  const chains=familyContactChains(template).map(c=>{
   const root=point(record.landmarks[c.hip]!),joint=point(record.landmarks[c.knee]!),end=point(record.landmarks[c.end]!);
   const cross=(end.x-root.x)*(joint.y-root.y)-(end.y-root.y)*(joint.x-root.x);
   if(Math.abs(cross)<1e-12)throw Error('Contact: source bend direction missing '+c.id);
-  const support=paintedSupports[c.end]??record.landmarks[c.end]!;
-  if(support.length!==2||support.some(v=>!Number.isFinite(v)||v<0||v>1))throw Error('Contact: invalid painted support '+c.end);
-  return {...c,root,joint,endPoint:end,support:point(support),offset:{x:support[0]-end.x,y:support[1]-end.y},chain:createTwoBoneChain({root,joint,end,bend:cross<0?-1:1})};
+  return {...c,root,joint,endPoint:end,chain:createTwoBoneChain({root,joint,end,bend:cross<0?-1:1})};
  });
- if(Object.keys(paintedSupports).length&&(Object.keys(paintedSupports).length!==chains.length||chains.some(c=>!Object.hasOwn(paintedSupports,c.end))))throw Error('Contact: exact painted support inventory required');
  const scaleLength=measureMotionScale(template,record.landmarks).length;
  const stride=chains.length?Math.min(...chains.map(c=>c.chain.lengths.upper+c.chain.lengths.lower))*.04:0;
  const direction=template.id==='brachyuran'?Math.sign(record.landmarks.leg0NearRoot![0]-record.landmarks.leg0FarRoot![0]):1;
- const hasOffset=chains.some(c=>c.offset.x!==0||c.offset.y!==0);
  return {chains,scaleLength,stride,resolve(input:CreaturePoseV1,phase:ContactPhase){
   if(!Number.isFinite(phase.elapsedMs)||phase.elapsedMs<0||!Number.isFinite(phase.durationMs)||phase.durationMs<=0)throw Error('Contact: invalid phase');
   const free=/:(flight|fly|swim|jet|hop|leap|climb)$/.test(phase.actionId)||phase.actionId==='melee:kick'||phase.realm==='aquatic'||phase.realm==='aerial'||phase.realm==='gas-giant';
@@ -88,52 +70,35 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   const gait=/^approach:(walk|trot|gallop|crawl|scuttle)$/.test(phase.actionId),weight=phase.weight??1;
   if(!Number.isFinite(weight)||weight<0||weight>1)throw Error('Contact: invalid blend weight');
   const pose:Record<string,{rotation:number;dx?:number;dy?:number}>=Object.fromEntries(Object.entries(input).map(([j,k])=>[j,{...k}]));
-  // Preserve the existing shared leg-pivot owner; accommodation resolves reach
-  // without transferring clip gait rotations into a second hip owner.
+  // The contact owner drives leg pivots; incidental raw gait rotations must not
+  // change the base of an otherwise identical support chain.
   for(const c of chains)if(template.legs.some(id=>c.hip===id+'Root'))pose[c.hip]={rotation:0};
   const progress=phase.elapsedMs/phase.durationMs,cycle=progress%1,completed=Math.floor(progress);
   const smooth=(v:number)=>v*v*(3-2*v);
   if(gait)pose.root={rotation:0,...pose.root,dx:direction*stride*progress/program.bodyLength};
-  const contacts=chains.map(c=>{
+  const matrices=program.evaluate(pose),contacts=[];
+  for(const c of chains){
    const swing=gait&&(c.group===1?cycle<.5:cycle>=.5),at=swing?(c.group===1?cycle*2:(cycle-.5)*2):0;
    const step=c.group===1?(cycle<.5?smooth(cycle*2):1):(cycle<.5?0:smooth((cycle-.5)*2));
    const lift=c.chain.lengths.lower*.15*weight;
    const target={x:c.endPoint.x+(gait?direction*stride*(completed+step):0)-(swing?Math.sign(c.endPoint.x-c.root.x)*c.chain.lengths.lower*.10*Math.sin(Math.PI*at)**2*weight:0),y:c.endPoint.y-(swing?Math.sin(Math.PI*at)**2*lift:0)};
-   return {joint:c.end,target,endpointTarget:{...target},paintedTarget:{x:target.x+c.offset.x,y:target.y+c.offset.y},stance:!swing};
-  });
-  let compression=0,final=program.evaluate(pose);
-  // Initial endpoint solve, then at most three fixed-point support corrections.
-  // Every pass solves exactly to its declared endpoint target; no reach clamp.
-  for(let pass=0;pass<=(hasOffset?3:0);pass++){
-   if(pass)for(let i=0;i<chains.length;i++){const c=chains[i]!,contact=contacts[i]!,m=final[c.end]!;
-    contact.endpointTarget={x:contact.paintedTarget.x-m[0]*c.offset.x-m[2]*c.offset.y,y:contact.paintedTarget.y-m[1]*c.offset.x-m[3]*c.offset.y};}
-   let matrices=program.evaluate(pose),shift=0;
-   for(let i=0;i<chains.length;i++){const c=chains[i]!,target=contacts[i]!.endpointTarget,root=transformPoint(matrices[c.hip]!,c.root),dx=target.x-root.x,max=c.chain.lengths.upper+c.chain.lengths.lower;
-    if(Math.hypot(dx,target.y-root.y)<=max)continue;
-    if(Math.abs(dx)>=max||target.y<root.y)throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' '+c.id+' outside accommodatable reach');
-    shift=Math.max(shift,target.y-Math.sqrt(max*max-dx*dx)+1e-10-root.y);
+   const parent=matrices[c.hip]!,root=transformPoint(parent,c.root);
+   let solved;try{solved=c.chain.solve(root,target);}catch(error){throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' '+c.id+' '+String(error));}
+   const upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c.joint));
+   const lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c.endPoint));
+   pose[c.knee]={rotation:wrapped(upper-Math.atan2(parent[1],parent[0]))};
+   pose[c.end]={rotation:wrapped(lower-upper)};
+   if(c.terminal)pose[c.terminal]={rotation:wrapped(-lower)};
+   for(const j of [c.knee,c.end,...c.terminal?[c.terminal]:[]]){
+    const l=template.limitsDeg[j]!,deg=pose[j]!.rotation*180/Math.PI;
+    if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);
    }
-   if(compression+shift>scaleLength*.08)throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' exceeds scale compression bound');
-   if(shift>0){compression+=shift;pose.root={rotation:0,...pose.root,dy:(pose.root?.dy??0)+shift/program.bodyLength};matrices=program.evaluate(pose);}
-   for(let i=0;i<chains.length;i++){const c=chains[i]!,target=contacts[i]!.endpointTarget,parent=matrices[c.hip]!,root=transformPoint(parent,c.root);
-    let solved;try{solved=c.chain.solve(root,target);}catch(error){throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' '+c.id+' '+String(error));}
-    const upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c.joint));
-    const lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c.endPoint));
-    pose[c.knee]={rotation:wrapped(upper-Math.atan2(parent[1],parent[0]))};pose[c.end]={rotation:wrapped(lower-upper)};
-    if(c.terminal)pose[c.terminal]={rotation:wrapped(-lower)};
-   }
-   final=program.evaluate(pose);
+   contacts.push({joint:c.end,target,stance:!swing});
   }
-  let maxError=0,maxPaintTargetErrorPx=0;
-  for(let i=0;i<chains.length;i++){const c=chains[i]!,contact=contacts[i]!;
-   for(const j of [c.knee,c.end,...c.terminal?[c.terminal]:[]]){const l=template.limitsDeg[j]!,deg=pose[j]!.rotation*180/Math.PI;if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);}
-   const p=transformPoint(final[c.end]!,c.endPoint),paint=transformPoint(final[c.end]!,c.support);
-   maxError=Math.max(maxError,Math.hypot(p.x-contact.endpointTarget.x,p.y-contact.endpointTarget.y));
-   maxPaintTargetErrorPx=Math.max(maxPaintTargetErrorPx,Math.hypot((paint.x-contact.paintedTarget.x)*record.geometry.width,(paint.y-contact.paintedTarget.y)*record.geometry.height));
-  }
+  const final=program.evaluate(pose);let maxError=0;
+  for(const c of contacts){const p=transformPoint(final[c.joint]!,point(record.landmarks[c.joint]!));maxError=Math.max(maxError,Math.hypot(p.x-c.target.x,p.y-c.target.y));}
   if(maxError>1e-8)throw Error('Contact: unresolved endpoint');
-  if(maxPaintTargetErrorPx>.25)throw Error('Contact: painted support iteration residual '+maxPaintTargetErrorPx);
-  return {pose,contacts,maxError,compression,maxPaintTargetErrorPx};
+  return {pose,contacts,maxError};
  }};
 }
 
