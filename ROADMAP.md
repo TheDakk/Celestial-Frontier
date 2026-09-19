@@ -103,7 +103,7 @@ pins, and finds **T1: a 42–57 px one-frame snap at approach → pinch** (gait 
 transitions — the R3 `travel` contract). Amended order, in §5 of `CLAUDE_R1BR2B_REVIEW.md`:
 **R1c-b/c (Civet A/B, CPU 2×2) → R2c (painted-support contact, offset-aware, landmarks untouched) →
 R3 (+ T1 continuity gate) → one re-capture → Nick's look → R4 → R9.** Persimmon foliage rigidity is
-Nick's decision before any collar design. **Copy-ready block for Codex: review §6; chunked minimal-stop program (Nick's request) in §7 — Chunk 1 runs R1c-b/c → R2c → R2d → R3 → R4 → re-capture → R9 → sheet with only S1/S2/S3 stops.**
+Nick's decision before any collar design. **Copy-ready block for Codex: review §6; §7 chunking superseded by §8: ONE Codex run — toolchain → R1c-b/c → R2c → R2d → R3 → R4 → re-capture → R9 → R5–R8 → roster by family until exhausted → PR42 split prepared → ONE stop with an accumulated review packet; S2 (shared-path red) is the only halt. Claude codes E1 in parallel on a local merge once Nick says go (D4 relaxation).**
 
 ### Who owes what
 

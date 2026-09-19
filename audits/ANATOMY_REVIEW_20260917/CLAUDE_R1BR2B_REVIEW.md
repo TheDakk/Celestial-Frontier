@@ -284,3 +284,41 @@ R3 "on develop", which is behind S3. Recommend relaxing to **"after R3 is signed
 integrated by a local merge of openai/mac into anthropic/mac"** (the lanes have merged history this
 way before). Then Claude codes E1 (parts-rig adapter, attack-driven turn plan, arena selection, the
 five outcome tests) while Codex runs Chunk 2, and the develop merge lands both at S3.
+
+## 8. Single run, single stop (Nick, 2026-09-19: "most work possible before a stop") — supersedes §7's chunking
+
+**One Codex run, one review packet, one stop at the end.** The only interruptions are S2 (a shared-path
+red halts the run; no retry) and S3 (a GitHub write — the run never reaches one). Nick's eye (S1)
+moves to the end and reviews an accumulated packet, not each item. Nothing in the run depends on a
+visual verdict: R8 phone delivery works with the painter fallback if a finish is later rejected, and
+roster sheets are re-rendered from retained inputs if a look is rejected — a late no costs renders,
+not code.
+
+**Run order (each item: signed producer, static checks, evidence folder, then continue):**
+0. Toolchain first, once: Node 26.9.0 authorized here, fresh receipt; the whole run stays on it.
+1. R1c-b/c (measure) → R2c (painted-support contact) → R2d (persimmon parent-frame leaf groups)
+   → R3 (+T1 continuity gate, `travel`, `contactJoint`, pinch reachable) → R4 (Q3 refusals).
+2. Native re-capture #1: eight subjects + Civet, faint-inclusive full-row films.
+3. R9: five crabs finished (accepted finisher, masked 0.35), conservation/rebind/retention gates,
+   sheet incl. one arena-scale composite.
+4. R5/R6/R7 integrity and coverage → R8 phone delivery tier (D1) with the two phone Glass canaries
+   run locally if the toolchain allows, else the retained-PNG/painter-fallback proof on desktop.
+5. Roster, by source family nearest the crabs first (clawed crustacean → small crustacean → …):
+   fit → bind → native capture → 12-per-sheet review sheet, family after family, **until S2 or the
+   roster is exhausted**. Sheets accumulate; none is "accepted" by numbers.
+6. PR42 split prepared locally (UI / engine / tools), branches and copy-ready PR text written, not pushed.
+7. **STOP.** Review packet = one README indexing: every film, every sheet (crabs painter vs finished,
+   each roster family), the refusal counts, the CPU table, the phone-tier proof, and every leaf red
+   with its diagnosis. Nick reviews once.
+
+**Pre-answered decisions** — all of §7's, plus: a leaf red anywhere is recorded and the run continues;
+a roster family whose fits refuse is recorded and skipped; no threshold, clamp or kit change to make
+any number green; no unchanged retry; Q1 open-gape candidates may be painted as candidates (originals
+retained) and placed on the crab sheet for the same one stop.
+
+**Claude in parallel (D4 relaxation, Nick's one word):** merge `openai/mac` into `anthropic/mac`
+locally at Codex's signed R3 producer (or now, at `4cb5f7a3`, for everything that does not need
+`travel`/`contactJoint`), code E1 per `E1_BATTLE2_INTEGRATION_DESIGN.md` — parts-rig adapter,
+attack-driven turn plan, habitat arena selection, reduced-motion path, cleanup, the five outcome tests
+incl. the duel that pays — and the first guardian design (D2) as a document. Claude's own packet
+(battle film per the E1 tests) joins the same one stop.
