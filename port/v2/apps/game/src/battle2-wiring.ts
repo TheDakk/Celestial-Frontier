@@ -23,15 +23,24 @@
  * Batch 2: each combatant stages its own ability theme (Wild painted, the other ten as the labelled
  * procedural emitter in the theme's material colour) and the turn cues ride the beats when an `audio`
  * runtime port is supplied (main.ts passes the accessible audio owner's `decorativeVoicePort()`, which
- * admits decorative requests only while the owner is live, visible and answerable). Not yet done here: synchronising turns to the Chronicle
- * cue cadence (the study plays the transcript through at its own pace), arena selection beyond the one
- * accepted temperate arena, and the C2 parts rig (fixture rig until it lands). */
+ * admits decorative requests only while the owner is live, visible and answerable). E1 (2026-09-19): registered source
+ * paint-skin fits (Civet + five crabs) stage as parts rigs through Codex's owner and contact solver; the habitat picks each
+ * side's medium/band on the battle's worlds (labelled dry Earth-temperate default without world context; UNSUPPORTED keeps
+ * the Chronicle path with the reason); each staged attack is Codex's `compileAnatomyAttack` when admitted, else the family
+ * delivery clip, labelled. Not yet done here: synchronising turns to the Chronicle cue cadence (the study plays the
+ * transcript through at its own pace); a crab cannot attack until R3 admits pinch (labelled per side in `status().attacks`). */
 import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-contact-math.mjs';
 import arenaRecipeUrl from '../../../../../audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json?url';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { BattleStage, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, turnPlanInputFromTranscriptEvent,
+import { BattleStage, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, selectHabitatArena, turnPlanInputFromTranscriptEvent,
   type BattleRigV1, type BattleStageFactory, type FixturePartCut, type RigContainerLike, type RigSpriteLike,
-  type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext, type TurnPlanInput } from './battle2/index.js';
+  type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnAttack, type TurnOutcomeContext, type TurnPlanInput } from './battle2/index.js';
+// parts-rig (and Codex's pixi-backed creature-rig behind it) is imported by path, not through battle2/index: the root
+// test program must stay free of pixi.js types (see apps/game/tsconfig.json _skipLibCheckReason).
+import { createPartsRig } from './battle2/parts-rig.js';
+import { compileAnatomyAttack } from './anatomy-attacks.js';
+import type { ArenaWorld } from './battle-habitat.js';
+import { loadCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1 } from './creature-rig.js';
 import { abilityTheme } from '@cf/domain-combatcore';
 import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from './effects/anchors.js';
 import { EffectThemeLibrary, isEffectTheme, isProceduralImage } from './effects/theme-library.js';
@@ -48,12 +57,25 @@ import { compileWorldLife, WorldLifePixiAdapter, type WorldLifeGraphicsLike } fr
 
 export const BATTLE2_FLAG = 'battle2' as const;
 export const BATTLE2_FRAME = Object.freeze({ width: 1024, height: 576 });
-/** Audit paths (relative to the arena proof directory) of the accepted plates, anchors and the one landmark record. */
+/** Audit paths (relative to the arena proof directory) of the accepted plates, anchors, the landmark records and the
+ * source paint-skin fits (E1 §1.1): Codex's five crab fits (`crab-fits-03`) and the candidate-10 Civet binding. Each fit
+ * directory holds `record.json`, `binding.json`, `parts/keyed.png`, `parts/manifest.json` and `parts/atlas/<id>.png`;
+ * the painter master is `record.source` (repo-relative). */
 export const BATTLE2_ASSETS = Object.freeze({
   recipe: 'arena-recipe.json', anchors: 'wild-anchors.json',
   far: 'arena-far.png', mid: 'keyed/arena-mid.png', near: 'keyed/arena-near.png',
   civetRecord: '../CIVET_2D_PROOF_20260912/civet.landmarks.json', civetMaster: '../ART_KIT_ENGINE_FIRST_20260912/masters/civet.png',
+  partsFits: Object.freeze([
+    Object.freeze({ earthName: 'Civet', dir: '../ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/' }),
+    Object.freeze({ earthName: 'Crab', dir: '../ANATOMY_COMPLETION_20260917/crab-fits-03/crab/' }),
+    Object.freeze({ earthName: 'Coconut Crab', dir: '../ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/' }),
+    Object.freeze({ earthName: 'Freshwater Crab', dir: '../ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/' }),
+    Object.freeze({ earthName: 'Mud Crab', dir: '../ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/' }),
+    Object.freeze({ earthName: 'Vent Crab', dir: '../ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/' }),
+  ]),
 });
+/** A repo-relative `record.source` (e.g. `audits/X/master.png`) as an asset path relative to the arena proof directory. */
+export const auditAssetPath = (repoRelative: string): string => { if (!repoRelative.startsWith('audits/')) throw new Error(`battle2: record source ${repoRelative} is not under audits/`); return '../' + repoRelative.slice('audits/'.length); };
 export const PLAYER_PLACEHOLDER_LABEL = 'player champion placeholder (nameplate; no creature art)' as const;
 
 /** The gate main.ts tests in source text; kept here so the wiring and its test agree on the spelling. */
@@ -61,7 +83,7 @@ export function battle2Enabled(search: string): boolean { return new URLSearchPa
 
 /* ---------- structural inputs (pixi.js is never imported here; main.ts passes its classes) ---------- */
 export interface Battle2Image { readonly width: number; readonly height: number; readonly source: unknown; pixels(): Uint8ClampedArray; }
-export interface Battle2AssetSource { json(path: string): Promise<unknown>; image(path: string): Promise<Battle2Image>; }
+export interface Battle2AssetSource { json(path: string): Promise<unknown>; image(path: string): Promise<Battle2Image>; /** Raw bytes (PNG masters/atlases for the paint-skin rig); absent = no parts rigs, fixture/portrait only. */ bytes?(path: string): Promise<Uint8Array>; }
 export interface Battle2Keyed { readonly alpha: Uint8Array; readonly rgba: Uint8ClampedArray; readonly bounds: { readonly x: number; readonly y: number; readonly width: number; readonly height: number }; }
 export type Battle2Keyer = (rgba: Uint8ClampedArray, width: number, height: number) => Battle2Keyed;
 /** Builds a texture source (a canvas in the browser) from RGBA bytes; the per-part sprites and the dot particle use it. */
@@ -112,6 +134,8 @@ export interface Battle2StudyInput {
   readonly win?: Pick<Window, 'addEventListener' | 'removeEventListener'> & { readonly MutationObserver?: typeof MutationObserver };
   /** Audio runtime port for the turn cues (B1). Absent = the study stages silently and reports `audio: none`; main.ts passes the audio owner's decorative port. */
   readonly audio?: TurnAudioRuntime | null;
+  /** The battle's home and visitor worlds for habitat arena selection (E1 §1.4). Absent = the accepted Earth-temperate plates, labelled as the default. */
+  readonly worlds?: Readonly<{ home: ArenaWorld; visitor: ArenaWorld }> | null;
 }
 export type Battle2Phase = 'loading' | 'playing' | 'finished' | 'failed' | 'disposed';
 export interface Battle2Status {
@@ -124,6 +148,12 @@ export interface Battle2Status {
   readonly audio: string;
   /** Per-side creature voice (B5): archetype, material and pitch, or why the side is silent. */
   readonly voices: Readonly<{ left: string | null; right: string | null }>;
+  /** E1: the habitat arena selection (world, medium per side, source), or null before it ran / when it refused. */
+  readonly arena: string | null;
+  /** E1: per side, the anatomy attack in play (`verb (contactJoint)`) or why the family delivery clip is used. */
+  readonly attacks: Readonly<{ left: string | null; right: string | null }>;
+  /** E1: per side, poses the parts rig refused so far (null for fixture/portrait rigs, which never refuse). */
+  readonly refusals: Readonly<{ left: number | null; right: number | null }>;
 }
 export interface Battle2StudyHandle { readonly ready: Promise<Battle2Status>; status(): Battle2Status; dispose(reason?: string): void; }
 
@@ -169,6 +199,7 @@ export function devAssetSource(recipeUrl: string = arenaRecipeUrl, base: string 
   const get = async (path: string): Promise<Response> => { const r = await fetch(new URL(path, dir).href); if (!r.ok) throw new Error(`battle2 asset ${path}: HTTP ${r.status}`); return r; };
   return {
     json: async (path) => (await get(path)).json(),
+    bytes: async (path) => new Uint8Array(await (await get(path)).arrayBuffer()),
     image: async (path) => {
       const bitmap = await createImageBitmap(await (await get(path)).blob());
       const canvas = document.createElement('canvas'); canvas.width = bitmap.width; canvas.height = bitmap.height;
@@ -198,10 +229,11 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   input.mount.prepend(section);
   let phase: Battle2Phase = 'loading', reason: string | null = null, label: string | null = null, ticks = 0, turnIndex = -1;
   const skipped: string[] = []; let turns: TurnPlanInput[] = []; const rigLabels = { left: null as string | null, right: null as string | null }, effectLabels = { left: null as string | null, right: null as string | null };
+  const attackLabels = { left: null as string | null, right: null as string | null }; let arenaLabel: string | null = null; let refusalsOf: () => Readonly<{ left: number | null; right: number | null }> = () => Object.freeze({ left: null, right: null });
   let app: Battle2AppLike | null = null, stage: BattleStage | null = null, ticking = false, disposed = false, cueSink: TurnCueSink | null = null;
   const audioSummary = (): string => (cueSink ? `${cueSink.log.length} cues: ${cueSink.log.map((e) => `${e.cueId}=${e.result}`).join(', ')}` : 'none');
   let voices: CreatureVoiceHook | null = null;
-  const status = (): Battle2Status => Object.freeze({ phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }) });
+  const status = (): Battle2Status => Object.freeze({ phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }) });
   const setPhase = (next: Battle2Phase, why: string | null = null): void => { phase = next; reason = why; section.dataset.battle2Status = next; if (why) section.dataset.battle2Reason = why; };
   const tick = (): void => {
     if (disposed || !stage || !app) return;
@@ -240,15 +272,42 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const anchors: EffectSequenceAnchors = parsed.anchors;
     // One painted sequence (Wild) today; every other theme plays the labelled procedural emitter with its §4K material colour.
     const themes = new EffectThemeLibrary([anchors]);
-    const records = input.records ?? [await assets.json(BATTLE2_ASSETS.civetRecord) as ResolvedAnatomyRecord];
+    // Default records: the Civet landmark record (as before) plus every registered source paint-skin fit's record; a missing
+    // fit is skipped with its reason, and one body is never listed twice (the Civet fit carries the same record bytes).
+    const loadRecords = async (): Promise<ResolvedAnatomyRecord[]> => {
+      const out: ResolvedAnatomyRecord[] = [], seen = new Set<string>();
+      const admit = (r: ResolvedAnatomyRecord): void => { const key = r.recipeHash ?? r.identity.speciesVisualKey; if (!seen.has(key)) { seen.add(key); out.push(r); } };
+      try { admit(await assets.json(BATTLE2_ASSETS.civetRecord) as ResolvedAnatomyRecord); } catch (error) { skipped.push(`Civet: landmark record unavailable (${error instanceof Error ? error.message : String(error)})`); }
+      for (const fit of BATTLE2_ASSETS.partsFits) { try { admit(await assets.json(fit.dir + 'record.json') as ResolvedAnatomyRecord); } catch (error) { skipped.push(`${fit.earthName}: fit record unavailable (${error instanceof Error ? error.message : String(error)})`); } }
+      return out;
+    };
+    const records = input.records ?? await loadRecords();
     if (disposed) throw new Error('disposed while loading');
     const texture = (img: Battle2Image): EffectTextureLike => pixi.Texture.from(img.source);
     const layout = composeArena({ id: recipe.battleContext?.worldKey ?? 'arena', groundLineNormalized: recipe.groundLineNormalized, plates: { far, mid, near } }, BATTLE2_FRAME);
+    const champion = input.settlement.champion, championGenome = champion.kind === 'owned-fauna' && champion.genome ? champion.genome : null;
     const rigContainer = (): RigContainerLike => new pixi.Container();
     const buildRig = async (side: 'left' | 'right', name: string, genome: Readonly<Record<string, unknown>> | null): Promise<{ rig: BattleRigV1; card: BodyCard | null; mass: number; seed: number }> => {
       const seed = genomeSeed(genome, `${input.settlement.battleId}:${side}:${name}`);
       const record = matchRecord(records, genome);
       if (record) {
+        // E1 §1.1: the source paint-skin rig when this record has a registered fit; fixture, then portrait, otherwise.
+        const fit = BATTLE2_ASSETS.partsFits.find((f) => f.earthName === record.identity.earthName);
+        if (fit && assets.bytes) {
+          try {
+            const card = compileBodyCard(record, (genome ?? undefined) as MotionGenomeFields | undefined);
+            const [binding, keyed, manifest] = await Promise.all([assets.json(fit.dir + 'binding.json') as Promise<CreaturePartsBindingV1>, assets.image(fit.dir + 'parts/keyed.png'), assets.json(fit.dir + 'parts/manifest.json') as Promise<{ creatureId?: string }>]);
+            if (typeof manifest.creatureId !== 'string') throw new Error('parts manifest lacks creatureId');
+            const source = (record as { source?: unknown }).source;
+            if (typeof source !== 'string') throw new Error('record has no painter master source');
+            const [master, atlas] = await Promise.all([assets.bytes(auditAssetPath(source)), assets.bytes(fit.dir + 'parts/atlas/' + manifest.creatureId + '.png')]);
+            const pixels = keyed.pixels(), alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = pixels[i * 4 + 3] ?? 0;
+            if (keyed.width !== record.geometry.width || keyed.height !== record.geometry.height) throw new Error('keyed cut-out size disagrees with the record geometry');
+            const paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas);
+            const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height) });
+            return { rig, card, mass: card.massClass.multiplier, seed };
+          } catch (error) { skipped.push(`${name}: parts rig unavailable (${error instanceof Error ? error.message : String(error)}); fixture fallback`); }
+        } else if (fit) skipped.push(`${name}: parts rig needs raw asset bytes; fixture fallback`);
         try {
           const card = compileBodyCard(record, (genome ?? undefined) as MotionGenomeFields | undefined);
           const masterPath = record.identity.earthName === 'Civet' ? BATTLE2_ASSETS.civetMaster : null;
@@ -271,11 +330,27 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       const labelled: BattleRigV1 = genome ? rig : { ...rig, label: PLAYER_PLACEHOLDER_LABEL };
       return { rig: labelled, card: null, mass: genomeMass(genome), seed };
     };
-    const champion = input.settlement.champion, championGenome = champion.kind === 'owned-fauna' && champion.genome ? champion.genome : null;
     const left = await buildRig('left', input.chronicle.championName, championGenome);
     const right = await buildRig('right', input.chronicle.defenderName, input.settlement.encounter.defender.battleGenome);
     if (disposed) { left.rig.dispose(); right.rig.dispose(); throw new Error('disposed while rigging'); }
     rigLabels.left = left.rig.label; rigLabels.right = right.rig.label;
+    refusalsOf = () => Object.freeze({ left: left.rig.refusals?.() ?? null, right: right.rig.refusals?.() ?? null });
+    // E1 §1.4: the habitat decides each side's medium and band on the selected world; UNSUPPORTED keeps the Chronicle path with its reason.
+    const painted = (r: { rig: BattleRigV1; mass: number }) => { const k = combatantScale(r.rig.bounds, r.rig.cutout.height, r.mass, BATTLE2_FRAME.height); return { height: k.heightFraction, footBelowCentre: (r.rig.foot.y - 0.5) * r.rig.cutout.height * k.scale / BATTLE2_FRAME.height }; };
+    const habitat = selectHabitatArena({ contextId: input.settlement.battleId, seed: recipe.seed, round: 0, kind: 'wild', worlds: input.worlds ?? null, groundLineY: layout.groundLineY,
+      left: { record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName, painted: painted(left) },
+      right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName, painted: painted(right) } });
+    arenaLabel = habitat.label;
+    if (habitat.status === 'UNSUPPORTED') { left.rig.dispose(); right.rig.dispose(); throw new Error(`battle2 habitat: ${habitat.reason}`); }
+    // The kit's stand x (§7, the accepted three-plate composition) is kept; the habitat supplies the medium and the vertical band.
+    const stagedLayout = { ...layout, stands: Object.freeze({ left: Object.freeze({ x: layout.stands.left.x, y: habitat.stands.left.y }), right: Object.freeze({ x: layout.stands.right.x, y: habitat.stands.right.y }) }) };
+    const mediums = { A: habitat.stands.left.medium, B: habitat.stands.right.medium } as const;
+    // E1 §1.2: one anatomy attack per staged attack, chosen deterministically by Codex's compiler; a refusal leaves the family delivery clip and is labelled once.
+    const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => {
+      const card = side === 'A' ? left.card : right.card, key = side === 'A' ? 'left' : 'right'; if (!card) return null;
+      try { const r = compileAnatomyAttack(card, mediums[side], ordinal); attackLabels[key] = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; }
+      catch (error) { attackLabels[key] ??= `family delivery clip (no admitted anatomy move: ${error instanceof Error ? error.message : String(error)})`; return null; }
+    };
     const phaseTextures = new Map<string, Promise<EffectTextureLike>>();
     for (const p of anchors.phases) phaseTextures.set(p.keyedImage, assets.image(p.keyedImage).then(texture));
     const resolvedPhaseTextures = new Map<string, EffectTextureLike>();
@@ -290,7 +365,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName },
         right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName } } });
     cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low', creatureVoice: voices }) : null;
-    const built = new BattleStage({ factory, clock: input.clock, layout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass },
+    const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass },
       worldLife, reducedMotion: input.reducedMotion, cues: cueSink ? { sink: cueSink, phone: input.deviceTier === 'low' } : null, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
         particleTexture: texture(raster(dot, PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE)), seed: recipe.seed,
         phaseTextures: (a) => a.phases.map((p) => { if (isProceduralImage(p.keyedImage)) return null; const t = resolvedPhaseTextures.get(p.keyedImage); if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }),
@@ -300,9 +375,10 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const ctx: TurnOutcomeContext = {
       A: { side: 'A', name: input.chronicle.championName, mass: left.mass, card: left.card, theme: themeA, seed: left.seed },
       B: { side: 'B', name: input.chronicle.defenderName, mass: right.mass, card: right.card, theme: themeB, seed: right.seed },
-      arena: { groundLineY: layout.groundLineY, stands: layout.stands }, seed: fnv1a32(input.settlement.battleId) ^ recipe.seed, anchorsForTheme: (t) => themes.anchorsFor(t), readyMs: 900, commandMs: 400, reducedMotion: input.reducedMotion,
+      arena: { groundLineY: layout.groundLineY, stands: stagedLayout.stands }, seed: fnv1a32(input.settlement.battleId) ^ recipe.seed, anchorsForTheme: (t) => themes.anchorsFor(t), readyMs: 900, commandMs: 400, reducedMotion: input.reducedMotion, attackFor,
     };
-    for (const row of input.settlement.transcript.log) { const t = turnPlanInputFromTranscriptEvent(row, ctx); if (t.kind === 'turn') turns.push(t.input); else skipped.push(t.reason); }
+    const ordinals = { A: 0, B: 0 };
+    for (const row of input.settlement.transcript.log) { const side = row.side === 'B' || (row.dodge === true && row.an === input.chronicle.defenderName) ? 'B' : 'A'; const t = turnPlanInputFromTranscriptEvent(row, ctx, ordinals[side]); if (t.kind === 'turn') { turns.push(t.input); ordinals[side] += 1; } else skipped.push(t.reason); }
     if (turns.length === 0) { built.dispose(); throw new Error('battle2: the transcript has no stageable turn'); }
     const application = new pixi.Application();
     await application.init({ width: BATTLE2_FRAME.width, height: BATTLE2_FRAME.height, resolution: input.deviceTier === 'high' ? 2 : 1, autoDensity: false, background: '#141d22', antialias: true, autoStart: false, sharedTicker: false });

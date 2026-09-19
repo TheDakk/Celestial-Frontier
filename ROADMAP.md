@@ -60,70 +60,67 @@ persimmon fold ownership dump (the fold pre-exists on `6b11407d`; `normalPasses`
 0.25 px; no repair chosen. `R9_ADDENDUM_FINISHED_TEXTURES.md` written in the plan's format (desktop only,
 D1). No sync, no push, PR42 parked.
 
-## SESSION HANDOFF — September 19, 2026 (evening) · R1c DIAGNOSTIC DIRECTION ISSUED; R9 ADDENDUM WRITTEN; CODEX'S TURN
+## 2026-09-19 (night) · openai/mac merged locally; E1 battle2 integration coded on the real fits
 
-Self-contained. Either lane can resume from this block alone. The morning handoff is archived verbatim
-at the top of `ROADMAP_ARCHIVE.md`.
+Nick relaxed D4 ("go"): E1 codes against Codex's signed producer by local merge. `openai/mac` `4cb5f7a3` merged into
+`anthropic/mac` as `e86a66ab` (Codex's nine motion files win; lane docs kept; four merge repairs recorded in the commit —
+Codex's absolute-path pose probe re-pinned, its stale blender span repointed, the battle2 keyer made a static import per the
+Arc 4 law, my motion tests retargeted to Codex's contracts, synthetic fixtures given source habitats). Then E1.1–E1.4:
+`battle2/parts-rig.ts` (Codex's paint-skin rig through its owner + contact solver, refusal policy, joint read-out),
+`TurnAttack` on the turn plan with `impactAtMs` on the effect schedule, `battle2/habitat-arena.ts`, reduced-motion rule,
+`RigPoseContext` hand-over, wiring of the six fits + per-turn `compileAnatomyAttack` + `status().arena/attacks/refusals`.
+Outcome tests run on the REAL fits in vitest: Civet bite pays; no refusal in play (Civet both roles, five crabs as targets);
+habitat refusal visible; reduced motion holds. Three `it.fails` pins flip when R3 lands (travel:'stage', crab attack, pinch).
+Battery: typecheck ×3, 210 tool tests, evidence build, vitest 4,736 pass / 3 expected-fail / 1 red = I5 stale certificate.
+
+## SESSION HANDOFF — September 19, 2026 (night) · E1 CODED ON THE MERGED LANE; CODEX RUNNING THE SINGLE-RUN PROGRAM
+
+Self-contained. Either lane can resume from this block alone. Earlier handoffs of the day are archived verbatim at the top of
+`ROADMAP_ARCHIVE.md`.
 
 ### Lane state (local only; nothing pushed, no remote state inferred)
 
-| Lane | HEAD | Tree |
+| Lane | HEAD | Note |
 |---|---|---|
-| `openai/mac` (Codex) | `d0437436` evidence on signed producer `6a58e40e` | two untracked leftovers (stale signing-blocker JSON, `review-diagnosis-01/`) |
-| `anthropic/mac` (Claude) | this commit (review + R9 addendum + ROADMAP) | clean apart from `.DS_Store` files |
+| `openai/mac` (Codex) | `18496278` (three commits past the merge point: Node 26.9.0 receipt, Civet solver-gap measurement, 69 R1c CPU trials) | running the single-run program from review §8 |
+| `anthropic/mac` (Claude) | this commit, on merge `e86a66ab` of `openai/mac@4cb5f7a3` | E1.1–E1.4 coded; tree clean apart from `.DS_Store` |
 
-PR42 parked, no GitHub write, no push, no merge, no release. Lanes read each other by absolute path,
-read-only; never sync to fetch a document.
+PR42 parked, no GitHub write, no push, no merge to develop, no release. Lanes read each other by absolute path.
 
-### What Claude decided today (all in `audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md`)
+### The program in flight (Nick, 2026-09-19: "most work possible before a stop")
 
-1. **N3 is withdrawn.** The Mud/Vent drift is not diffusion; for a rigid vertex the gate equals the
-   nearest painted vertex's rest offset rotated by the lower-leg's stance rotation. Two repair
-   candidates exist (foot landmark onto the painted contact pixel; solver plants the painted vertex);
-   **neither is chosen** until R1c (a) proves or disproves the closed form to ≤ 1e-9 px. The 0.25 px
-   gate is unchanged; it is not noise; pinning is not re-proposed.
-2. **R1c** is the one bounded next direction: measurements only on unchanged `6a58e40e`, two
-   diagnostic-only harness switches, new evidence folders, stop for review. (a) drift closed-form proof
-   + o=0 / |o|×2 / diffused-mutant controls; (b) Civet adapter hash + compat-solver reproduction, then
-   family-vs-compat A/B with reach bounds and compression at the first failing samples — the
-   distinction is a diagnosis aid, never a clearance; (c) variance floor, 2×2 {rows-first |
-   presentation-first} × {declared | legacy scale}, persimmon fold ownership + amplitude sweep, and
-   readability numbers (foot displacement / carapace dy) added to native crab reports.
-3. **Visual findings for Nick:** V2 faint recovers instead of ending down; V3 pinch static (R3 scope);
-   V5 fringes at 1× on Crab. Visual acceptance of the three films remains Nick's.
-4. **R9 addendum** (`R9_ADDENDUM_FINISHED_TEXTURES.md`): finished PNG is a new retained original;
-   alpha copied byte-for-byte; parts/paintSkin must rebuild byte-identical (masks transfer); count
-   preservation by label components + boundary-gradient ratio; rebind must reproduce every geometry
-   number; retention keyed by recipe/cutout/settings/model hashes; phone tier refuses (D1); Nick's
-   sheet is the gate. Two open questions for Nick at its end.
+`audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md` §8: ONE Codex run — toolchain → R1c-b/c → R2c → R2d → R3 → R4 →
+re-capture → R9 → R5–R8 → roster by family → PR42 split prepared → ONE stop with an accumulated review packet. S2 (a
+shared-path red: Civet sentinel or any of the five crabs regressing after a solver change) is the only halt. Claude runs E1 in
+parallel on local merges of Codex's signed producers.
 
-### Amendment (same evening) — Codex's `review-diagnosis-01` (`4cb5f7a3`) landed in parallel
-It proves R1c (a) to Float32 precision (2.5e-5 px), locates the persimmon fold in branch-3/4 foliage
-pins, and finds **T1: a 42–57 px one-frame snap at approach → pinch** (gait travel has no owner across
-transitions — the R3 `travel` contract). Amended order, in §5 of `CLAUDE_R1BR2B_REVIEW.md`:
-**R1c-b/c (Civet A/B, CPU 2×2) → R2c (painted-support contact, offset-aware, landmarks untouched) →
-R3 (+ T1 continuity gate) → one re-capture → Nick's look → R4 → R9.** Persimmon foliage rigidity is
-Nick's decision before any collar design. **Copy-ready block for Codex: review §6; §7 chunking superseded by §8: ONE Codex run — toolchain → R1c-b/c → R2c → R2d → R3 → R4 → re-capture → R9 → R5–R8 → roster by family until exhausted → PR42 split prepared → ONE stop with an accumulated review packet; S2 (shared-path red) is the only halt. Claude codes E1 in parallel on a local merge once Nick says go (D4 relaxation).**
+### What Claude owes next
+1. **Re-merge at Codex's signed R3 producer**, then flip the three pins: `ContactPhase.travel:'stage'` in the parts-rig
+   context (drop the interim stride double-count note), crab attacks through the stage, pinch selection; re-run
+   `parts-rig.test.ts` + `e1-outcomes.test.ts`; move crabs from target-only to attacker in outcome 2.
+2. **E1.5**: the `?battle2=1` study with the six fits in a real browser (films at 25/50/75 + one full turn per fit) for the
+   single stop's packet; needs the dev asset server (`assets.bytes` is now a dev-source method).
+3. Guardian design (D2) as a document; Chronicle cadence sync stays open.
+4. Merge findings to hand Codex at the stop (recorded in `e86a66ab`): its pose probe hard-codes an absolute path into this
+   worktree and pinned my old adapter bytes (make it repo-relative, re-pin); `creature-blender-export.mjs` must span
+   `paintOverrideCanvas` (one-token edit, identical text applied here); `resolvePhysicalHabitat` never reads `genome.realm`
+   (a habitat-gene-less "drifters" jelly resolves aerial); the I5 stale certificate is the one red on both lanes.
 
-### Who owes what
+### Codex (openai lane)
+Continues §8 unattended. Interfaces E1 consumes from R3, unchanged: `ContactPhase.travel?: 'solver' | 'stage'` (zero solver root
+dx in stage mode, stance targets unchanged) and `contactJoint` on `compileAnatomyAttack` (already on the attack rows). Nothing
+in Claude's E1 changed a Codex-owned file except the two merge repairs above, both recorded for re-application in its lane.
 
-**Codex (openai lane):** R1c per the copy-ready block in §4 of the review. No solver, clip, record,
-threshold, clamp, kit or binding change; no R3/R4/R9; no unchanged retry; no push. Stop for review.
-R3 still carries `ContactPhase.travel?: 'solver' | 'stage'` and `contactJoint` on `compileAnatomyAttack`.
-
-**Nick:** (1) authorize R1c or amend it; (2) visual verdict on the three films with V2/V3 in view;
-(3) read the R9 addendum and answer its two questions; Q1 crab gape still a candidate only.
-
-**Claude (anthropic lane):** idle until R1c evidence lands; then review it and choose the Mud/Vent
-repair item. Track B E1 code does not start until R3 is on develop; its design is written.
+### Nick
+Nothing to decide until the stop. R9 addendum's two answers (finisher model = the accepted one; arena-scale crab on the sheet)
+are already in the pre-answered set (§7).
 
 ### Still open, unchanged
-N5/S5 phone tier (D1); N7–N10 not closed; I5 stale Compendium producer certificate (fresh measured
-certificate only, never a pin edit); 53 of 58 bodies unbound; 12 observed; nothing visually qualified.
+N5/S5 phone tier (D1); N7–N10; I5 stale Compendium producer certificate (fresh measured certificate only); 53 of 58 bodies
+unbound; nothing visually qualified; Q1 crab gape candidate only.
 
 ### Where to read
-`audits/ANATOMY_REVIEW_20260917/` (anthropic lane): `CLAUDE_REVIEW_RESPONSE.md` (S1–S5),
-`CLAUDE_R1R2_REVIEW.md` (N1–N12), `CLAUDE_R1BR2B_REVIEW.md` (V1–V6, N3 correction, R1c),
-`R9_ADDENDUM_FINISHED_TEXTURES.md`, `MASTER_PROGRAM_20260917.md` (D1–D4 approved),
-`E1_BATTLE2_INTEGRATION_DESIGN.md`, `r1b-r2b-look/` (contact sheets). `audits/ANATOMY_COMPLETION_20260917/`
-(openai lane): plan, static checkpoints, all native evidence, `NEW_SESSION_PROMPT_20260919.md`.
+`audits/ANATOMY_REVIEW_20260917/` (this lane): `CLAUDE_R1BR2B_REVIEW.md` (§1–§8), `R9_ADDENDUM_FINISHED_TEXTURES.md`,
+`E1_BATTLE2_INTEGRATION_DESIGN.md` (§5 status), `MASTER_PROGRAM_20260917.md`, `r1b-r2b-look/`. Code: `port/v2/apps/game/src/battle2/`
+(`README.md` E1 section, `parts-rig.ts`, `habitat-arena.ts`, `e1-outcomes.test.ts`, `parts-rig.test.ts`). Codex lane:
+`audits/ANATOMY_COMPLETION_20260917/` (its evidence folders as the run produces them).

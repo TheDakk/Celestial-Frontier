@@ -21,9 +21,23 @@ export interface CreatureRigV1 {
   readonly bounds: { readonly width: number; readonly height: number; readonly groundLineY: number };
   dispose(): void;
 }
+/** What the stage knows about the pose it hands over (E1 §1.3): which clip it sampled and where in it, so a
+ * contact-solving rig can plant or swing feet. Fixture and portrait rigs ignore it. `travel` names the owner of the
+ * run-up displacement (always the stage; the solver never adds its own on the arena). */
+export interface RigPoseContext {
+  readonly actionId: string; readonly elapsedMs: number; readonly durationMs: number;
+  /** Blend weight of the sampled clip over idle (1 = fully the clip). Never multiplies travel (R1b N11). */
+  readonly weight: number;
+  /** Stance for the quadruped compatibility solver: feet planted (stationary clips) or free (gait / lunge). */
+  readonly planted: boolean;
+  readonly travel: 'stage';
+}
 /** What the battle stage needs beyond the contract (a C2 rig gets a thin wrapper adding these). */
 export interface BattleRigV1 extends CreatureRigV1 {
   readonly kind: 'fixture' | 'portrait' | 'parts';
+  applyPose(pose: RigPose, context?: RigPoseContext): void;
+  /** Refused poses since creation (parts rigs); absent = the rig never refuses. */
+  readonly refusals?: () => number;
   readonly label: string;
   /** Cut-out pixel size; rig display coordinates are cut-out pixels. */
   readonly cutout: { readonly width: number; readonly height: number };

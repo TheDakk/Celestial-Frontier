@@ -118,3 +118,18 @@ and the two never add.
 E1.1 parts-rig adapter + refusal policy → E1.2 attack-driven turn plan + impact agreement → E1.3 habitat
 arena selection → E1.4 outcome tests 1–5 → E1.5 `?battle2=1` study with the five crabs + Civet, films
 for Nick → then guardians (D2) and the Chronicle cadence sync (pre-existing open item).
+
+## 5. Status — 2026-09-19, coded on `anthropic/mac` (D4 relaxed by Nick: code against Codex's signed producer by local merge)
+
+Merged `openai/mac` `4cb5f7a3` (producer `6a58e40e` + review-diagnosis) into `anthropic/mac`, then coded E1.1 (`battle2/parts-rig.ts`),
+E1.2 (`TurnAttack` on the plan; anatomy contact = impact beat; effect schedule `impactAtMs`), E1.3 (`battle2/habitat-arena.ts` wired
+before staging), E1.6 (reduced motion), the `RigPoseContext` hand-over (§1.3) and the outcome tests of §2 on the REAL fits (crab-fits-03
+× 5, candidate-10 Civet) loaded in vitest with a synthetic texture decoder. Wiring: registered fits stage as parts rigs; attacks come from
+`compileAnatomyAttack` per side/ordinal; `status()` gains `arena`, `attacks`, `refusals`.
+
+Pending Codex R3, pinned as `it.fails` (flip when R3 lands): `ContactPhase.travel:'stage'` (§1.3 — until then the solver's stride dx
+double-counts next to the run-up and feet plant to the body); the brachyuran attack row + crustacean profile split (crabs cannot attack:
+`no admitted brachyuran melee for weapons []`, so they stage as targets); `contactJoint` is already on Codex's attack rows and is read
+from there. Quadruped bindings run on the preserved compatibility solver until the Civet sentinel passes on the family path (R1c-b).
+E1.5 (`?battle2=1` films for Nick) needs a browser run — deferred to the single stop's packet. Guardians (D2) and the Chronicle cadence
+sync remain open.

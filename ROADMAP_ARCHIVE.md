@@ -1,3 +1,71 @@
+## SESSION HANDOFF — September 19, 2026 (evening) · R1c DIAGNOSTIC DIRECTION ISSUED; R9 ADDENDUM WRITTEN; CODEX'S TURN
+
+Self-contained. Either lane can resume from this block alone. The morning handoff is archived verbatim
+at the top of `ROADMAP_ARCHIVE.md`.
+
+### Lane state (local only; nothing pushed, no remote state inferred)
+
+| Lane | HEAD | Tree |
+|---|---|---|
+| `openai/mac` (Codex) | `d0437436` evidence on signed producer `6a58e40e` | two untracked leftovers (stale signing-blocker JSON, `review-diagnosis-01/`) |
+| `anthropic/mac` (Claude) | this commit (review + R9 addendum + ROADMAP) | clean apart from `.DS_Store` files |
+
+PR42 parked, no GitHub write, no push, no merge, no release. Lanes read each other by absolute path,
+read-only; never sync to fetch a document.
+
+### What Claude decided today (all in `audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md`)
+
+1. **N3 is withdrawn.** The Mud/Vent drift is not diffusion; for a rigid vertex the gate equals the
+   nearest painted vertex's rest offset rotated by the lower-leg's stance rotation. Two repair
+   candidates exist (foot landmark onto the painted contact pixel; solver plants the painted vertex);
+   **neither is chosen** until R1c (a) proves or disproves the closed form to ≤ 1e-9 px. The 0.25 px
+   gate is unchanged; it is not noise; pinning is not re-proposed.
+2. **R1c** is the one bounded next direction: measurements only on unchanged `6a58e40e`, two
+   diagnostic-only harness switches, new evidence folders, stop for review. (a) drift closed-form proof
+   + o=0 / |o|×2 / diffused-mutant controls; (b) Civet adapter hash + compat-solver reproduction, then
+   family-vs-compat A/B with reach bounds and compression at the first failing samples — the
+   distinction is a diagnosis aid, never a clearance; (c) variance floor, 2×2 {rows-first |
+   presentation-first} × {declared | legacy scale}, persimmon fold ownership + amplitude sweep, and
+   readability numbers (foot displacement / carapace dy) added to native crab reports.
+3. **Visual findings for Nick:** V2 faint recovers instead of ending down; V3 pinch static (R3 scope);
+   V5 fringes at 1× on Crab. Visual acceptance of the three films remains Nick's.
+4. **R9 addendum** (`R9_ADDENDUM_FINISHED_TEXTURES.md`): finished PNG is a new retained original;
+   alpha copied byte-for-byte; parts/paintSkin must rebuild byte-identical (masks transfer); count
+   preservation by label components + boundary-gradient ratio; rebind must reproduce every geometry
+   number; retention keyed by recipe/cutout/settings/model hashes; phone tier refuses (D1); Nick's
+   sheet is the gate. Two open questions for Nick at its end.
+
+### Amendment (same evening) — Codex's `review-diagnosis-01` (`4cb5f7a3`) landed in parallel
+It proves R1c (a) to Float32 precision (2.5e-5 px), locates the persimmon fold in branch-3/4 foliage
+pins, and finds **T1: a 42–57 px one-frame snap at approach → pinch** (gait travel has no owner across
+transitions — the R3 `travel` contract). Amended order, in §5 of `CLAUDE_R1BR2B_REVIEW.md`:
+**R1c-b/c (Civet A/B, CPU 2×2) → R2c (painted-support contact, offset-aware, landmarks untouched) →
+R3 (+ T1 continuity gate) → one re-capture → Nick's look → R4 → R9.** Persimmon foliage rigidity is
+Nick's decision before any collar design. **Copy-ready block for Codex: review §6; §7 chunking superseded by §8: ONE Codex run — toolchain → R1c-b/c → R2c → R2d → R3 → R4 → re-capture → R9 → R5–R8 → roster by family until exhausted → PR42 split prepared → ONE stop with an accumulated review packet; S2 (shared-path red) is the only halt. Claude codes E1 in parallel on a local merge once Nick says go (D4 relaxation).**
+
+### Who owes what
+
+**Codex (openai lane):** R1c per the copy-ready block in §4 of the review. No solver, clip, record,
+threshold, clamp, kit or binding change; no R3/R4/R9; no unchanged retry; no push. Stop for review.
+R3 still carries `ContactPhase.travel?: 'solver' | 'stage'` and `contactJoint` on `compileAnatomyAttack`.
+
+**Nick:** (1) authorize R1c or amend it; (2) visual verdict on the three films with V2/V3 in view;
+(3) read the R9 addendum and answer its two questions; Q1 crab gape still a candidate only.
+
+**Claude (anthropic lane):** idle until R1c evidence lands; then review it and choose the Mud/Vent
+repair item. Track B E1 code does not start until R3 is on develop; its design is written.
+
+### Still open, unchanged
+N5/S5 phone tier (D1); N7–N10 not closed; I5 stale Compendium producer certificate (fresh measured
+certificate only, never a pin edit); 53 of 58 bodies unbound; 12 observed; nothing visually qualified.
+
+### Where to read
+`audits/ANATOMY_REVIEW_20260917/` (anthropic lane): `CLAUDE_REVIEW_RESPONSE.md` (S1–S5),
+`CLAUDE_R1R2_REVIEW.md` (N1–N12), `CLAUDE_R1BR2B_REVIEW.md` (V1–V6, N3 correction, R1c),
+`R9_ADDENDUM_FINISHED_TEXTURES.md`, `MASTER_PROGRAM_20260917.md` (D1–D4 approved),
+`E1_BATTLE2_INTEGRATION_DESIGN.md`, `r1b-r2b-look/` (contact sheets). `audits/ANATOMY_COMPLETION_20260917/`
+(openai lane): plan, static checkpoints, all native evidence, `NEW_SESSION_PROMPT_20260919.md`.
+
 ## SESSION HANDOFF — September 19, 2026 · R1b/R2b RE-CAPTURE IN; 3 PASS / 6 FAIL; CLAUDE OWES THE REVIEW
 
 Self-contained. Either lane can resume from this block alone.
