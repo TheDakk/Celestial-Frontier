@@ -375,3 +375,57 @@ Controls: five crabs bit-identical to R2c static rows; synthetic 100 %-terminal 
 half; diffused mutant fails. Acceptance: Civet rows pass 0.25 px on the unchanged candidate-10 binding, family solver.
 Then resume §8 from the R2c static sweep → native re-capture → … as ordered; S2 remains the only halt; no push.
 ```
+
+## 10. R2c′ ran and S2 fired again (Codex `R2c-prime/`, producers `ca851fb6` halted packet → `dd33865c` R2c′, both signed)
+
+**Codex did exactly what §9 asked, and the stop is right again.** Five crabs bit-for-bit; the weighted-point model
+converges to 8e-8 px; Civet idle (0.193 px) and approach (0.060 px) pass; `melee:bite` fails at 54.99 ms with
+0.266 px. The packet attributes the vector exactly: kinematic covariance 0.100 px (weights vary across the support's
+triangle, so the LBS of the interpolated point ≠ the interpolated LBS) + ARAP/publication 0.181 px = 0.266 px.
+
+**What the 10,515 retained samples say (read here, not in the packet's prose):**
+
+| Support residual | five crabs (pinned supports, R1b) | Civet candidate-10 (unpinned) |
+|---|---:|---:|
+| ARAP/publication, all rows, max | **0.0001 px** | idle 0.14 · approach 0.20 · bite 0.18 px |
+| kinematic covariance, max | ≤ 0.009 px | 0.02–0.11 px |
+
+So two mechanisms remain, and neither is the solver's fault any more:
+1. **Covariance** — fixable in the model: predict with the exact per-vertex LBS interpolated at the support (the packet's
+   own "exact triangle LBS"), not the LBS of the weighted point. Crabs unchanged (100 % endpoint weights).
+2. **Skin-solver freedom at an unpinned support** — the dominant term, and structural: the crabs sit at 0.0000 because
+   R1b locked their contact supports at split time; the Civet's candidate-10 binding predates that shared split step.
+
+**Owning the word "pin".** Nick's rule "do not re-propose pinning" was earned by my N3, which asserted diffusion where
+none existed (the crabs were already pinned; zero weights changed). This is the opposite case: the crabs are pinned and
+measure 0.0000; the Civet is not and measures 0.18 px of solver residual at the very vertex the gate reads. The
+correction is not a new device — it is running the Civet through the **same current shared split** every crab
+already went through (`splitObservedSurfaces … contactEndpoints`), producing a current-pipeline binding. Candidate-10
+stays byte-for-byte as history; no source landmark, limit, terminal rule or threshold moves.
+
+**R2c″ — one bounded correction, then resume §8 at the R2c static sweep:**
+- Model: exact per-vertex LBS interpolated at the support; drop the weighted-point prediction. Crabs bit-for-bit.
+- Binding: regenerate the Civet binding through the current shared split with contact-endpoint locks, from the
+  unchanged candidate-10 inputs (same masks, atlas, record). Receipt must show: weights identical everywhere except
+  the support locks (crab-style `contactPins` receipt), `restChanged 0`, atlas hash unchanged.
+- Controls, both directions: (a) covariance term → ≤ 1e-6 px on all six under the new model; (b) the Civet on the
+  **unpinned** candidate-10 under the new model still fails (proves the lock closes it, not the model); (c) the crabs'
+  ARAP residual stays 0.0000; (d) diffused mutant still fails.
+- Acceptance: Civet, all rows and presentation, ≤ 0.25 px on the regenerated binding with the family solver. If it
+  still fails after both, that is a genuine shared-path red — stop, no third variant.
+- E1 (this lane): the parts rig loads the regenerated Civet binding as its fit and passes
+  `observedContactSupports(record, binding)` to the family solver; the compat-solver path is then retired for the Civet.
+
+### Copy-ready for Codex
+```
+R2c′ verdict + R2c″: /Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md §10
+(read-only; do not sync). Both S2 stops were right; nothing is loosened.
+R2c″ (one bounded correction): (1) predict the painted support with the exact per-vertex LBS interpolated at the
+support (your "exact triangle LBS"), dropping the weighted-point model — crabs bit-for-bit; (2) regenerate the Civet
+binding through the CURRENT shared split with contact-endpoint locks from the unchanged candidate-10 inputs (same
+masks/atlas/record; candidate-10 retained byte-for-byte). Receipt: weights identical except the support locks,
+restChanged 0, atlas hash unchanged. Controls: covariance ≤ 1e-6 px on all six; unpinned candidate-10 under the new
+model still fails; crab ARAP residual stays 0.0000; diffused mutant fails. Acceptance: Civet all rows + presentation
+≤ 0.25 px, family solver, regenerated binding. Then resume §8 from the R2c static sweep; S2 remains the only halt;
+no third variant if it fails; no push.
+```
