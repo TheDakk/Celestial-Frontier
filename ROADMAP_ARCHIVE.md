@@ -1,3 +1,32 @@
+## SESSION HANDOFF — September19 · authorized single anatomy run active
+
+Nick superseded all intermediate review stops with one run, one final packet. Contracts:
+read-only sibling audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md §§6–8.
+Current durable ledger: audits/ANATOMY_SINGLE_RUN_20260919/README.md.
+Previous evidence HEAD4cb5f7a3; unchanged game producer6a58e40e. Diagnoses are retained at
+ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md; no need to repeat them.
+
+Item0 completed: Node26.9.0 explicitly authorized, installed with inspected dependencies;
+Homebrew7.0.4; seven capability checks PASS, fresh receipt in ledger. Earlier Node approval
+rejection is resolved by Nick's explicit direction. Whole run stays on26.9.0.
+R1c-b comparison complete: byte-identical adapter; five candidate10 contour samples reproduce;
+current family alert/walk/dodge exceed upper reach while compatibility compression resolves them.
+R1c-c complete:69 retained trials; scale and warm-up both affect CPU, all cells keep4normal
+passes/sample. CPU_TABLE.md owns medians/IQR; leaf folds/CPU remain. R2c candidate implemented;
+synthetic offset controls and app typecheck pass. Signed producer then one actual six-subject
+static sweep is next; first shared red means S2 STOP, no retry or next stage.
+Remaining: R2c → R2d → R3 → R4 → ONE native
+recapture (eight subjects+Civet, full rows including faint) → R9/Q1 sheet → R5/R6/R7/R8 phone
+proof → all58 roster by source family nearest crabs → local PR42 split UI/engine/tools.
+Each item gets signed producer, static checks and evidence, then continue. Leaf reds record
+and continue. ONLY shared-path red (Civet or five crabs after R2c/R2d/R3) halts; no retry.
+Do not change .25px, <2ms, exact rest, limits, kit, landmarks or species to force a pass.
+
+Codex/macOS owns this checkout/openai/mac and continues; Claude read-only, no app switch or
+sync needed. No fetch/push/PR/hosted attempt/merge/release/deploy/LFS operation. PR42 parked.
+Pre-existing.DS_Store stays untouched. Final handoff must index every artifact and leaf red.
+
+
 ## SESSION HANDOFF — September19 · all three requested reviews complete
 
 Evidence signing resolved: successor d04374362aaa0a357c5dc2791213fe277b0f4915 and producer

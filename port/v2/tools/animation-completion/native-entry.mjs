@@ -1,7 +1,7 @@
 import {Application,Container,Sprite,Texture,Text,RenderTexture}from'pixi.js';
 import{loadCreatureRigV1,readCreatureRigRuntimeDiagnostics}from'../../apps/game/src/creature-rig.ts';
 import{createCreatureRigPerformance}from'../../apps/game/src/creature-rig-performance.ts';
-import{createFamilyContactSolver,contactPaintDriftPx}from'../../apps/game/src/creature-rig-contact.ts';
+import{createFamilyContactSolver,contactPaintDriftPx,observedContactSupports}from'../../apps/game/src/creature-rig-contact.ts';
 import{blendCreaturePoses,closedLoopPose}from'../../apps/game/src/motion-pose-blend.ts';
 import{compileBodyCard,buildTimeline,createGsapPlayer,actionsFor}from'cf-proof/motion/index.ts';
 import{createSourceJoinProbe,assessSourceJoinContinuity}from'../quadruped-proof/source-join-continuity.mjs';
@@ -16,7 +16,7 @@ const record=await json('record.json'),binding=await json('binding.json'),paint=
 const attackIds=await json('actions.json'),isPlant=card.template.id.startsWith('plant-'),idleId=isPlant?'sway':'idle',library=actionsFor(card.template.id,card.anatomy);
 const selected=isPlant?Object.keys(library):['idle','approach',...attackIds,'hit',...Object.keys(library??{})];
 for(const id of new Set(selected)){const tl=buildTimeline(card,id,record.identity.seed);timelines[id]=tl;let current={};const player=createGsapPlayer(tl,{setJoint(j,rotation,dx,dy){current[j]={rotation,dx,dy};}},{now:()=>0});players[id]={sample(ms){current={};player.seek(ms);return current;}};}
-const contact=createFamilyContactSolver(record),owners={};let lastContact={contacts:[],maxError:0},maxContactError=0,maxPaintContactDriftPx=0;
+const contact=createFamilyContactSolver(record,observedContactSupports(record,binding)),owners={};let lastContact={contacts:[],maxError:0},maxContactError=0,maxPaintContactDriftPx=0;
 const resolveContact=(p,context)=>{lastContact=contact.resolve(p,{...context,realm:card.realm});maxContactError=Math.max(maxContactError,lastContact.maxError);return lastContact.pose;};
 for(const [id,p]of Object.entries(players)){const tl=timelines[id],owner=createCreatureRigPerformance(record,rig,[{id,durationMs:tl.durationMs,loop:tl.loop,dispose(){},seek(ms,target){for(const[j,k]of Object.entries(p.sample(ms)))target.setJoint(j,k.rotation,k.dx,k.dy);}}]);owner.play(id,0,0);owners[id]=owner;}
 const applyAction=(id,ms)=>owners[id].update(ms,(p,context)=>resolveContact(p,{...context,actionId:timelines[id].actionId}));

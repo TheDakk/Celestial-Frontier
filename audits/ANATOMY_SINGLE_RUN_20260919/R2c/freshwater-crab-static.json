@@ -1,0 +1,97 @@
+{
+  "subject": "freshwater-crab",
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000023282157132130812,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.000043982412372525375
+    },
+    {
+      "id": "approach",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003140645853198839,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "maxGapPx": 0.00004457570289526527
+    },
+    {
+      "id": "melee:pinch",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000023282157132130812,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.00002932160824835025
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000023282157132130812,
+      "maxEndpointError": 4.577566798522237e-16,
+      "maxGapPx": 0.000045565395122793643
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000023282157132130812,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.000043982412372525375
+    },
+    {
+      "id": "approach:scuttle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003140645853198839,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "maxGapPx": 0.00004457570289526527
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000023282157132130812,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.000043982412372525375
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000023282157132130812,
+      "maxEndpointError": 3.1401849173675503e-16,
+      "maxGapPx": 0.000043982412372525375
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000023282157132130812,
+      "maxEndpointError": 3.3306690738754696e-16,
+      "maxGapPx": 0.000043982412372525375
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000023282157132130812,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.000043982412372525375
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000023282157132130812,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.000043982412372525375
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000023282157132130812,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.000043982412372525375
+    }
+  ],
+  "maxPaintDriftPx": 0.00003140645853198839,
+  "maxEndpointError": 4.577566798522237e-16,
+  "maxGapPx": 0.000045565395122793643,
+  "exactRestGeometry": true,
+  "presentation": {
+    "samples": 601
+  }
+}

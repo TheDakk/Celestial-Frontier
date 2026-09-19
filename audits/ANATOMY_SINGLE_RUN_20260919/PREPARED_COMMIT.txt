@@ -1,0 +1,11 @@
+Retain rejected painted-support candidate and S2 stop evidence
+
+R2c corrects endpoint-pinned crab supports with bounded root accommodation and
+three fixed-point corrections. Five crabs pass the static full-row sweep.
+Civet fails0.260840176px at idle261.948177ms: its unpinned support is mostly
+paw-driven and the rigid ankle prediction does not describe published paint.
+Retain candidate and all failures without retry; R2d onward remains unrun.
+
+R1c and toolchain are already signed in18496278 and predecessors. This candidate
+and final packet await successful1Password signing; two refusals retained.
+No main.ts, source-art/binding/threshold changes, sync, push or PR42 operation.
