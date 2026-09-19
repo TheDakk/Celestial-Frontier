@@ -27,7 +27,12 @@
     "trainingcheckpoint:capture": "node tools/training-restart-fixture.js --capture",
     "typesafe:rig": "node tools/rig-secondopinion.js",
     "typesafe:reference": "node tools/reference-secondopinion.js",
-    "typesafe:judgetag": "node tools/judgetag.js"
+    "typesafe:judgetag": "node tools/judgetag.js",
+    "typesafe:reference2": "node tools/reference2-secondopinion.js",
+    "typesafe:biome": "node tools/biome-secondopinion.js",
+    "typesafe:text": "node tools/text-secondopinion.js",
+    "typesafe:procedural": "node tools/procedural-secondopinion.js",
+    "typesafe:universe": "node tools/universe-secondopinion.js"
   },
   "keywords": [],
   "author": "",

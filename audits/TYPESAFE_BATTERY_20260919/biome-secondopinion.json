@@ -1,0 +1,9459 @@
+{
+ "generated": "2026-09-19T22:38:02.646Z",
+ "min": 0.8,
+ "usage": {
+  "input_tokens": 91114,
+  "output_tokens": 23639,
+  "requests": 8,
+  "cached": 0
+ },
+ "gloss": {
+  "temperate": "temperate forest and meadow on an Earth-like world",
+  "savanna": "grassland with scattered trees, dry season",
+  "jungle": "tropical rainforest",
+  "marsh": "freshwater marsh and reed beds",
+  "swamp": "flooded forest swamp",
+  "mangrove": "tidal mangrove forest at a tropical coast",
+  "tundra": "cold treeless tundra",
+  "karst": "limestone cave and sinkhole country",
+  "saltflat": "dry salt flat",
+  "fungal": "a forest floor dominated by giant fungi and spores",
+  "crystalsteppe": "a steppe of crystal shards and grass on an alien world",
+  "opensea": "open ocean surface waters",
+  "archipelago": "tropical island chain with reefs and beaches",
+  "coral": "coral reef shallows",
+  "stormsea": "a storm-lashed sea",
+  "volcisle": "a volcanic island with ashfall",
+  "abyssal": "the lightless deep-sea floor under crushing pressure",
+  "milksea": "a calm glowing bioluminescent sea",
+  "glacier": "glacier and ice sheet with coast",
+  "packice": "sea pack ice",
+  "cryogeyser": "an icy surface with erupting cold geysers",
+  "blueice": "ancient blue ice with crevasses",
+  "dunesea": "sand dune desert",
+  "canyon": "dry canyon country with flash floods",
+  "saltpan": "a mirage-hot salt pan",
+  "oxide": "a rust-red oxide desert with dust devils",
+  "glass": "a plain of natural glass shards",
+  "cratered": "an airless cratered surface",
+  "boulder": "a dry boulder field",
+  "graben": "a fault-rift valley floor",
+  "geode": "a cavern of crystal geodes",
+  "carbon": "a soot-black carbon world surface",
+  "sulfurdeck": "a sulfurous acid-storm surface",
+  "acidhaze": "an acid-haze atmosphere world",
+  "abyssgreen": "a runaway greenhouse surface",
+  "ashwaste": "an ash-covered wasteland",
+  "emberfield": "a field of embers and ember wind",
+  "obsidian": "a still hot obsidian plain",
+  "magmasea": "a sea of magma",
+  "banded": "the banded cloud decks of a gas giant",
+  "ammonia": "cold ammonia clouds of an ice giant",
+  "stormeye": "the eye of a gas-giant megastorm",
+  "hotglow": "the glowing cloud deck of a hot gas giant"
+ },
+ "rows": [
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.22,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.99,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.68,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": true,
+   "p_plausible": 0.95,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.82,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.99,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.97,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.44,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.97,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "tree",
+   "listed": true,
+   "p_plausible": 0.99,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "flower",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "grass",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "fern",
+   "listed": true,
+   "p_plausible": 0.97,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.36,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.98,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.39,
+   "suspect": null
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": true,
+   "p_plausible": 0.95,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.67,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.99,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.63,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.57,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.97,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.29,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.71,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "tree",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": true,
+   "p_plausible": 0.95,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "grass",
+   "listed": true,
+   "p_plausible": 0.97,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.67,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.61,
+   "suspect": null
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.91,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.88,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": true,
+   "p_plausible": 0.96,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.99,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": true,
+   "p_plausible": 0.96,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": true,
+   "p_plausible": 0.97,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.99,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.98,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.66,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.97,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.29,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.15,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "tree",
+   "listed": true,
+   "p_plausible": 0.99,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "flower",
+   "listed": true,
+   "p_plausible": 0.97,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.91,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "fern",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "vine",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "palm",
+   "listed": true,
+   "p_plausible": 0.95,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.29,
+   "suspect": null
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.82,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.21,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.72,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": true,
+   "p_plausible": 0.96,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.96,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.74,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.27,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.21,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.91,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "flower",
+   "listed": true,
+   "p_plausible": 0.94,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "grass",
+   "listed": true,
+   "p_plausible": 0.99,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.9,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.33,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "herb",
+   "listed": true,
+   "p_plausible": 0.95,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.82,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.62,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.98,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": true,
+   "p_plausible": 0.91,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": true,
+   "p_plausible": 0.96,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.96,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.22,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.84,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.4,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.35,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.23,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "tree",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "vine",
+   "listed": true,
+   "p_plausible": 0.93,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.64,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "moss",
+   "listed": true,
+   "p_plausible": 0.93,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.3,
+   "suspect": null
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.75,
+   "suspect": null
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.99,
+   "suspect": null
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": true,
+   "p_plausible": 0.94,
+   "suspect": null
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.9,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.97,
+   "suspect": null
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.72,
+   "suspect": null
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.98,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": true,
+   "p_plausible": 0.96,
+   "suspect": null
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.86,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "tree",
+   "listed": true,
+   "p_plausible": 0.99,
+   "suspect": null
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "grass",
+   "listed": true,
+   "p_plausible": 0.89,
+   "suspect": null
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "palm",
+   "listed": true,
+   "p_plausible": 0.93,
+   "suspect": null
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.87,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.89,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.21,
+   "suspect": null
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": true,
+   "p_plausible": 0.74,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.9,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.33,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.28,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.18,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.85,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.26,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.59,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": true,
+   "p_plausible": 0.61,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "grass",
+   "listed": true,
+   "p_plausible": 0.71,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.6,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.27,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "moss",
+   "listed": true,
+   "p_plausible": 0.94,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.71,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": true,
+   "p_plausible": 0.76,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.44,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.91,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.69,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.78,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.58,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.92,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.93,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.49,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.24,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.83,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.23,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.32,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.74,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": true,
+   "p_plausible": 0.77,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.78,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.7,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "flora",
+   "family": "fern",
+   "listed": true,
+   "p_plausible": 0.77,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.69,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.59,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "flora",
+   "family": "moss",
+   "listed": true,
+   "p_plausible": 0.73,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.7,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.59,
+   "suspect": null
+  },
+  {
+   "biome": "karst",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.33,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.76,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.39,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.62,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.68,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.21,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.17,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.23,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "herb",
+   "listed": true,
+   "p_plausible": 0.19,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": true,
+   "p_plausible": 0.61,
+   "suspect": null
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.62,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.46,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.78,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.58,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": true,
+   "p_plausible": 0.69,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.89,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.87,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": true,
+   "p_plausible": 0.82,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.64,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.69,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.72,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.6,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "flora",
+   "family": "fern",
+   "listed": true,
+   "p_plausible": 0.8,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.76,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.35,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "flora",
+   "family": "moss",
+   "listed": true,
+   "p_plausible": 0.81,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.73,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.25,
+   "suspect": null
+  },
+  {
+   "biome": "fungal",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": true,
+   "p_plausible": 0.53,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.79,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.52,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.34,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.77,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.72,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.4,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.55,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.67,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.71,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "flora",
+   "family": "grass",
+   "listed": true,
+   "p_plausible": 0.85,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.56,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.56,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.25,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.64,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.68,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": true,
+   "p_plausible": 0.56,
+   "suspect": null
+  },
+  {
+   "biome": "crystalsteppe",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.86,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.23,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.15,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.96,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": true,
+   "p_plausible": 0.94,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.37,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.9,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": true,
+   "p_plausible": 0.94,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": true,
+   "p_plausible": 0.96,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.87,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "opensea",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "opensea",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": true,
+   "p_plausible": 0.7,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.75,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.68,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.97,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": true,
+   "p_plausible": 0.88,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.77,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.85,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": true,
+   "p_plausible": 0.97,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.85,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "tree",
+   "listed": true,
+   "p_plausible": 0.92,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.9,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "grass",
+   "listed": true,
+   "p_plausible": 0.88,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.89,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.89,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "palm",
+   "listed": true,
+   "p_plausible": 0.96,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.89,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.62,
+   "suspect": null
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.44,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.19,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.87,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.37,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.15,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": true,
+   "p_plausible": 0.97,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": true,
+   "p_plausible": 0.96,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": true,
+   "p_plausible": 0.76,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": true,
+   "p_plausible": 0.98,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.22,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.47,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.39,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.26,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.28,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.32,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.45,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.45,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "coral",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": true,
+   "p_plausible": 0.94,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.75,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.92,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": true,
+   "p_plausible": 0.79,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.22,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.78,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.45,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "stormsea",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": true,
+   "p_plausible": 0.48,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.62,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.43,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.88,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.75,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.65,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.85,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.78,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.75,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": true,
+   "p_plausible": 0.83,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.83,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.74,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.74,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.53,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.75,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.7,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.69,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.7,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "flora",
+   "family": "fern",
+   "listed": true,
+   "p_plausible": 0.75,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.71,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "flora",
+   "family": "palm",
+   "listed": true,
+   "p_plausible": 0.67,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.64,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.66,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.46,
+   "suspect": null
+  },
+  {
+   "biome": "volcisle",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.69,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.85,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.76,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": true,
+   "p_plausible": 0.73,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.35,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": true,
+   "p_plausible": 0.62,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": true,
+   "p_plausible": 0.74,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "abyssal",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.52,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.88,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.69,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.78,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": true,
+   "p_plausible": 0.84,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.37,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": true,
+   "p_plausible": 0.91,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.71,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.18,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "milksea",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": true,
+   "p_plausible": 0.4,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": true,
+   "p_plausible": 0.22,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.8,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.7,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": true,
+   "p_plausible": 0.86,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.27,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.22,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.58,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.57,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.48,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.53,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "flora",
+   "family": "moss",
+   "listed": true,
+   "p_plausible": 0.44,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "glacier",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.69,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.76,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.61,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": true,
+   "p_plausible": 0.87,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.56,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.55,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.5,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.44,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "packice",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.48,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.52,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.28,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.32,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.21,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": true,
+   "p_plausible": 0.25,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.18,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.17,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.17,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.15,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "flora",
+   "family": "moss",
+   "listed": true,
+   "p_plausible": 0.33,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "cryogeyser",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.31,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.57,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": true,
+   "p_plausible": 0.21,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": true,
+   "p_plausible": 0.32,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.23,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.18,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.29,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "blueice",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.18,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": true,
+   "p_plausible": 0.65,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": true,
+   "p_plausible": 0.78,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.9,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.94,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.19,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.27,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": true,
+   "p_plausible": 0.66,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.55,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.18,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.57,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.44,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": true,
+   "p_plausible": 0.92,
+   "suspect": null
+  },
+  {
+   "biome": "dunesea",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": true,
+   "p_plausible": 0.79,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.24,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.95,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": true,
+   "p_plausible": 0.8,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.53,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.46,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.21,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.36,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.67,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": true,
+   "p_plausible": 0.84,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.77,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.6,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.41,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.49,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.49,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.52,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.69,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": true,
+   "p_plausible": 0.84,
+   "suspect": null
+  },
+  {
+   "biome": "canyon",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": true,
+   "p_plausible": 0.35,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.29,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.34,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.15,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "herb",
+   "listed": true,
+   "p_plausible": 0.08,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.18,
+   "suspect": null
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.55,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.75,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": true,
+   "p_plausible": 0.69,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.73,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.83,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.15,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.5,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.44,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.32,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.22,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": true,
+   "p_plausible": 0.77,
+   "suspect": null
+  },
+  {
+   "biome": "oxide",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.19,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.37,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.36,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.39,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.55,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.19,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.39,
+   "suspect": null
+  },
+  {
+   "biome": "glass",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.04,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.04,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "moss",
+   "listed": true,
+   "p_plausible": 0.03,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": true,
+   "p_plausible": 0.6,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.19,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.74,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": true,
+   "p_plausible": 0.63,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.71,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.79,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.17,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.28,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": true,
+   "p_plausible": 0.54,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.35,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.17,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "flora",
+   "family": "moss",
+   "listed": true,
+   "p_plausible": 0.23,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.22,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.73,
+   "suspect": null
+  },
+  {
+   "biome": "boulder",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.49,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.27,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.66,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": true,
+   "p_plausible": 0.51,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.35,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.27,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.53,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.6,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.39,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.36,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.4,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.44,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.36,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.35,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.32,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.33,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "flora",
+   "family": "moss",
+   "listed": true,
+   "p_plausible": 0.37,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.41,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.43,
+   "suspect": null
+  },
+  {
+   "biome": "graben",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.33,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.42,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.53,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.39,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.15,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.61,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.72,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.47,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.15,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.15,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.25,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.36,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.33,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.45,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.21,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.19,
+   "suspect": null
+  },
+  {
+   "biome": "geode",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.21,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.35,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.34,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.44,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.44,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.24,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.17,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.18,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.19,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.19,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.22,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.17,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.32,
+   "suspect": null
+  },
+  {
+   "biome": "carbon",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.16,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.18,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.23,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "acidhaze",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.23,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.21,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.21,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.13,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "abyssgreen",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.09,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.22,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.46,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.4,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.51,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.6,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.19,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.15,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.18,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.19,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.2,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.22,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.18,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.47,
+   "suspect": null
+  },
+  {
+   "biome": "ashwaste",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.12,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.16,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "emberfield",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.12,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.17,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.11,
+   "suspect": null
+  },
+  {
+   "biome": "obsidian",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "magmasea",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.32,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": true,
+   "p_plausible": 0.04,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": true,
+   "p_plausible": 0.15,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "banded",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.14,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.08,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": true,
+   "p_plausible": 0.16,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "ammonia",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.1,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.07,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": true,
+   "p_plausible": 0.06,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": true,
+   "p_plausible": 0.14,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.05,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "stormeye",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.02,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.06,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.17,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.04,
+   "suspect": null
+  },
+  {
+   "biome": "hotglow",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.03,
+   "suspect": null
+  }
+ ],
+ "suspects": [
+  {
+   "biome": "cratered",
+   "kind": "flora",
+   "family": "moss",
+   "listed": true,
+   "p_plausible": 0.03,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.04,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "cratered",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.04,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": true,
+   "p_plausible": 0.04,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": true,
+   "p_plausible": 0.06,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "saltpan",
+   "kind": "flora",
+   "family": "herb",
+   "listed": true,
+   "p_plausible": 0.08,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "emberfield",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.12,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "stormeye",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": true,
+   "p_plausible": 0.14,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "banded",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": true,
+   "p_plausible": 0.15,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "sulfurdeck",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": true,
+   "p_plausible": 0.16,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "ammonia",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": true,
+   "p_plausible": 0.16,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "obsidian",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": true,
+   "p_plausible": 0.17,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "saltflat",
+   "kind": "flora",
+   "family": "herb",
+   "listed": true,
+   "p_plausible": 0.19,
+   "suspect": "listed-but-implausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.98,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.98,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.98,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.98,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.97,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.97,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.97,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.97,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.96,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "fauna",
+   "family": "reptile",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.95,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "dunesea",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.94,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "seaweed",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.93,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "canyon",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.92,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.91,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "jungle",
+   "kind": "flora",
+   "family": "grass",
+   "listed": false,
+   "p_plausible": 0.91,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.91,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.91,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.9,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "amphibian",
+   "listed": false,
+   "p_plausible": 0.9,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.9,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "shrub",
+   "listed": false,
+   "p_plausible": 0.9,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.89,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "fern",
+   "listed": false,
+   "p_plausible": 0.89,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.89,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "herb",
+   "listed": false,
+   "p_plausible": 0.89,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "cactus",
+   "listed": false,
+   "p_plausible": 0.88,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.87,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "fungal",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.87,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.87,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.87,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.86,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "opensea",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.86,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "insect",
+   "listed": false,
+   "p_plausible": 0.85,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.85,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.85,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "crust",
+   "listed": false,
+   "p_plausible": 0.84,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "karst",
+   "kind": "fauna",
+   "family": "gastropod",
+   "listed": false,
+   "p_plausible": 0.83,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.83,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "temperate",
+   "kind": "fauna",
+   "family": "fish",
+   "listed": false,
+   "p_plausible": 0.82,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.82,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "swamp",
+   "kind": "fauna",
+   "family": "mammal",
+   "listed": false,
+   "p_plausible": 0.82,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "palm",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "primate",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "sessile",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "archipelago",
+   "kind": "flora",
+   "family": "moss",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "coral",
+   "kind": "fauna",
+   "family": "bird",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "ceph",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "stormsea",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.81,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "savanna",
+   "kind": "flora",
+   "family": "vine",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "marsh",
+   "kind": "flora",
+   "family": "tree",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "mangrove",
+   "kind": "fauna",
+   "family": "jelly",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "tundra",
+   "kind": "fauna",
+   "family": "arachnid",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "tundra",
+   "kind": "flora",
+   "family": "flower",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  },
+  {
+   "biome": "volcisle",
+   "kind": "fauna",
+   "family": "marine",
+   "listed": false,
+   "p_plausible": 0.8,
+   "suspect": "unlisted-but-plausible"
+  }
+ ]
+}
