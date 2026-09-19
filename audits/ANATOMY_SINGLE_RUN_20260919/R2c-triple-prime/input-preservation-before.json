@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/record.json",
+    "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+    "unchanged": true
+  },
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json",
+    "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+    "unchanged": true
+  },
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/manifest.json",
+    "sha256": "df34c15b5f86540a00d3aef900a44338f2b1ed94ac1d61cc0624dfd72833053a",
+    "unchanged": true
+  },
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/atlas/civet.png",
+    "sha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79",
+    "unchanged": true
+  },
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/record.json",
+    "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+    "unchanged": true
+  },
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/manifest.json",
+    "sha256": "df34c15b5f86540a00d3aef900a44338f2b1ed94ac1d61cc0624dfd72833053a",
+    "unchanged": true
+  },
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/keyed.png",
+    "sha256": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a",
+    "unchanged": true
+  },
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/atlas/civet.png",
+    "sha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79",
+    "unchanged": true
+  }
+]

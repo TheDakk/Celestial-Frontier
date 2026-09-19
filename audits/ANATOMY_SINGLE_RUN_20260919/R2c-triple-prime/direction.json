@@ -1,0 +1,9 @@
+{
+  "authority": "Nick requests R2c triple-prime constructor-only correction; sibling review section11 read-only, not copied or synced",
+  "reviewPath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md",
+  "reviewSha256": "7725df2aefb05d920d75d113770f3caf7295d2353155e1be228a62b4fb6fd156",
+  "runtime": "v26.9.0",
+  "startup": "Uninterrupted single run retains R2c-double-prime/toolchain/check.json; no update/repeated capability checks",
+  "scope": "Change only constructor sign rejection to < -1e-8, preserve stored values; add both-direction and real-binding constructor unit controls. Then exact rest, unpinned negative, six-subject sweep; stop at any further shared red.",
+  "inputs": "Unchanged R2c-double-prime/civet-input and original candidate10"
+}

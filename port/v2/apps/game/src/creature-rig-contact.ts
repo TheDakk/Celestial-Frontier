@@ -91,7 +91,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   const model:WeightedContactSupport='rest' in declaration?declaration:{rest:declaration,vertices:[{rest:declaration,barycentric:1,weights:[[c.end,1]]}]},support=model.rest;
   if(support.length!==2||support.some(v=>!Number.isFinite(v)||v<0||v>1))throw Error('Contact: invalid painted support '+c.end);
   if(!model.vertices.length||model.vertices.length>3||Math.abs(model.vertices.reduce((s,v)=>s+v.barycentric,0)-1)>1e-8)throw Error('Contact: invalid support interpolation '+c.end);
-  for(const v of model.vertices)if(v.rest.length!==2||v.rest.some(n=>!Number.isFinite(n)||n<0||n>1)||!Number.isFinite(v.barycentric)||v.barycentric<0||!v.weights.length||new Set(v.weights.map(([j])=>j)).size!==v.weights.length||v.weights.some(([j,w])=>!Object.hasOwn(record.landmarks,j)||!Number.isFinite(w)||w<=0)||Math.abs(v.weights.reduce((s,[,w])=>s+w,0)-1)>1e-8)throw Error('Contact: invalid support weights '+c.end);
+  for(const v of model.vertices)if(v.rest.length!==2||v.rest.some(n=>!Number.isFinite(n)||n<0||n>1)||!Number.isFinite(v.barycentric)||v.barycentric< -1e-8||!v.weights.length||new Set(v.weights.map(([j])=>j)).size!==v.weights.length||v.weights.some(([j,w])=>!Object.hasOwn(record.landmarks,j)||!Number.isFinite(w)||w<=0)||Math.abs(v.weights.reduce((s,[,w])=>s+w,0)-1)>1e-8)throw Error('Contact: invalid support weights '+c.end);
   const endpointOnly=model.vertices.every(v=>v.barycentric===0||(v.weights.length===1&&v.weights[0]![0]===c.end&&v.weights[0]![1]===1));
   return {...c,root,joint,endPoint:end,support:point(support),model,endpointOnly,offset:{x:support[0]-end.x,y:support[1]-end.y},chain:createTwoBoneChain({root,joint,end,bend:cross<0?-1:1})};
  });

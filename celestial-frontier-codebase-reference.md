@@ -1,15 +1,13 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-**R2c″ — matches code September 19, 2026; S2 STOP, NOT ADMITTED.** Signed implementation
-766e0917 predicts support from per-vertex LBS followed by barycentric interpolation. Shared
-contact-lock refresh preserves previously split topology and non-contact weights; regenerated
-Civet changes seven support weights and adds six pins, leaving candidate-10 and atlas unchanged.
-The native run on audit producer224086c9 fails in the family-contact constructor before rest:
-a preserved foreNearAnkle barycentric coefficient −8.975276662232845e−16 is rejected by the new
-nonnegative-vertex validation. Skin weights sum1; this is not a measured kinematic/ARAP error.
-No third variant, coefficient clamp or threshold change followed. Native rest and all real-subject
-R2c″ acceptance controls remain unrun. Synthetic/contact/split checks pass but missed this real
-constructor failure. Gates remain0.25px,<2ms,exactrest. [Current stop packet](audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/README.md).
+**R2c‴ — matches code September19,2026; acceptance pending.** Nick's §11 direction corrects
+only the support constructor's sign predicate: reject barycentric<−1e−8, matching its existing
+sum tolerance. Stored coefficients are used as-is, without snap or renormalization. The prior
+R2c″ S2 was a validator rejection of legitimate edge rounding, not a physical contact failure.
+Exact triangle LBS, endpoint-only arithmetic, shared contact locks and all binding inputs stay
+unchanged. The regenerated Civet now constructs in the unit test; −1e−3 rejects. Native rest,
+unpinned negative and six-subject acceptance are pending; gates remain0.25px,<2ms,exactrest.
+[Current candidate packet](audits/ANATOMY_SINGLE_RUN_20260919/R2c-triple-prime/README.md).
 
 **Single-run measurement update — matches code September19,2026.** R1c Civet adapter
 hashes match candidate10. Five retained planted poses reproduce its painted-paw contour
