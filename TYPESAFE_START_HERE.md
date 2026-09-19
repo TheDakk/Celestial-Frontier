@@ -13,6 +13,11 @@ state, $0.042 per million input tokens, output free.
 | 1 | `npm run typesafe:rig` | `_earthArt(name)` regex name→rig classifier | the 631-name Earth fauna roster |
 | 2 | `npm run typesafe:reference` | `posture` and `eyes` in `port/v2/reference/fauna.json` | each row's name + mustRead + note |
 | 3 | `npm run typesafe:judgetag -- --dir <smoke run>` | vision-judge verdict prose | `judge/*.json` defect/fix text |
+| 4 | `npm run typesafe:reference2` | flora `form`, fungi/microbe `family`/`scale` | `port/v2/reference/flora.json`, `other.json` |
+| 5 | `npm run typesafe:biome` | the atlas's fauna/flora family lists per biome | `BIOME_PROFILE_AUTHORITY_V1` (43 biomes) |
+| 6 | `npm run typesafe:text` | Guide topics and release-note bullets | `GUIDE` / `RELEASES` in `main.js` |
+| 7 | `npm run typesafe:procedural` | seeded species descriptor text (coherence, medium, sapience, grammar) | `makeGenome → describeSpecies` via the probe realm |
+| 8 | `npm run typesafe:universe` | star/planet/moon survey rows (consistency, parameters, climate band) | `systemFor → *Descriptor` via the probe realm |
 
 Every tool prints **suspects for a human to confirm**. None writes back to the
 source, the reference table, or the sentinel list.

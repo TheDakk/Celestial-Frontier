@@ -75,3 +75,48 @@ Not for Jev: PNG verdicts, aspect/headFrac numbers, rarity ladders, balance, the
 
 ## Files
 `rig-secondopinion.report.json`, `reference-secondopinion.report.json` (copies of `tools/reports/*.json`).
+
+---
+
+## 5. Second battery — "everything else" (Nick, same day): five new tools, five live passes
+
+| Tool | Items | Requests | Input tokens | Cost |
+|---|---:|---:|---:|---:|
+| `typesafe:reference2` (flora `form`; fungi/microbe `family`, `scale`) | 383 rows / 405 fields | 20 | 507,372 | ~$0.021 |
+| `typesafe:biome` (43 biomes × 25 families, Noul each) | 1,075 pairs | 8 | 91,114 | ~$0.004 |
+| `typesafe:text` (43 Guide topics + 398 release bullets) | 441 passages | 37 | 122,354 | ~$0.005 |
+| `typesafe:procedural` (120 seeded species, seed 7331) | 120 | 8 | 74,494 | ~$0.003 |
+| `typesafe:universe` (12 systems: 12 stars, 31 planets) | 43 bodies | 5 | 26,017 | ~$0.001 |
+| **Both batteries, whole day** | | **132** | **≈ 2.55 M** | **≈ $0.107** |
+
+### 5a. Flora / fungi / microbe rows — 61 disagreements (23 strong) → 4 corrections, the rest conventions
+Corrected in `flora.json` (diff = exactly 4 `form` lines; `referencecheck.mjs` PASS; re-run 61 → 59):
+
+| Row | stored → corrected | Reason (the table's own rows, not the model) |
+|---|---|---|
+| Grape | vine → climber | Red/White/Black Grape are `climber`; identical tendril + woody-stem text — one plant on both sides of the split |
+| Passionfruit | vine → climber | Passionflower (same species) is `climber` |
+| Brooklime | herb → aquatic | its `mustRead`: "sprawling in shallow water with rooting stems"; peer Watercress is `aquatic` |
+| Vanilla Orchid | vine → epiphyte | Orchid Pods is the same vanilla plant stored `epiphyte`; its own text: "aerial roots gripping bark" |
+
+Left unchanged — three **convention questions for Nick** the model cannot settle:
+- **`tuber`: habit or harvest?** The table's four `tuber` rows (Potato, Sweet Potato, Carrot, Beet) are root crops drawn with the root; Cassava (`shrub`), Taro/Wild Taro, Ginger, Turmeric, Arrowroot (`herb`) harvest corms/rhizomes but are stored by habit. Either rule is fine; the table currently uses both.
+- **`rosette`**: only five rows (Pineapple, Dandelion, Plantain Herb, Daisy, Cabbage); Alpine Sorrel, Edelweiss, Sea Beet, Sea Kale, Miner's Lettuce, Bitterroot all say "rosette" in their own leaf text but are stored `herb`/`succulent`.
+- Ice Algae `moss` (the table files crusts and films under moss), Sea Fennel/Samphire `herb` vs `succulent`, Oyster Mushroom `shelf` (tiered on wood, off-centre stem): defensible drawing conventions; no change.
+
+### 5b. Biome atlas — 100 suspects, **no change** (the atlas is generation data; editing it changes every seeded world)
+13 *listed-but-implausible* are all the alien/extreme biomes hosting insects, arachnids, moss and gas-giant jellies/cephalopods (cratered, banded, stormeye, emberfield, sulfurdeck, obsidian, saltpan/saltflat herb) — by-design extremophile life, worth one look. 87 *unlisted-but-plausible* say the Earth-like biomes list subsets: temperate lacks herb/moss/vine/arachnid/gastropod/fish, jungle lacks mammal/shrub/herb/moss/grass, swamp lacks bird, mangrove lacks insect… If the lists are spawn weights that is intended; if they are "what can live here", they are thin. Full list in `biome-secondopinion.json`.
+
+### 5c. Player text — 0 contradictions, 6 misread flags, **no change**
+All six are v1.0–v1.8.4 release bullets about breeding ("both parents are consumed") — true for v1, superseded by v2's nonlethal breeding (`port/DECISIONS.md`), and historical notes stay as written. The Guide (43 topics) raised nothing.
+
+### 5d. Procedural species — three generator-level findings, **no change without Nick**
+1. **Grammar (confirmed bug):** 9/120 cards begin "A omnivore …" — `main.js:2165` builds `'A '+diet+' of '+habitat` with no vowel rule. One-line fix (`(/^[aeiou]/i.test(diet)?'An ':'A ')+diet`), but `describeSpecies` output is inside the 50-probe determinism fingerprint, so applying it requires **Nick's decision to re-baseline** (`tools/baseline.json`); not applied.
+2. **Medium vs habitat (design gap):** 12/60 fauna are "swimmers / drifters / filter-feeders / floaters" placed in desert dunes, rocky ridges, tundra, ash fields or a forest canopy — `loco` and `habitat` are rolled independently. One in five procedural animals cannot live where its card says it lives; the art, rig and battle medium all read the same fields.
+3. **Sapience label vs text:** "Intelligent Natural Life" on a card whose text shows no intelligence (Sibemnora) — `classifyRealm` reads the genome's sapience tier, `describeSpecies` never mentions it.
+
+### 5e. Universe — 43 bodies, 0 row conflicts, 0 text-vs-parameter conflicts, **4 climate-band mismatches**
+Kari and Kaion ("Venusian hothouse"), Satar ("Molten world"), Ionae ("Desert world") read `hot` from their own rows while `climateBand(orbit)` computed `temperate`/`cold`. The band is orbit-only and the planet type is independent, and the band feeds `planetSpecies` — a molten world in the cold band seeds cold-band life. Design decision for Nick; the survey cards themselves are internally consistent.
+
+### Files
+`reference2-secondopinion.json`, `biome-secondopinion.json`, `text-secondopinion.json`, `procedural-secondopinion.json`, `universe-secondopinion.json`.

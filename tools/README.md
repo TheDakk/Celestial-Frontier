@@ -775,3 +775,12 @@ never a verdict: a confirmed regex miss becomes a `SENTINELS` row in `rig-audit.
 gate keeps the truth, the model does not); a confirmed reference error is corrected by hand.
 `rig-audit.js` and `rig-secondopinion.js` share `_earthart-load.js`, so both judge the
 exact function the painter runs.
+
+Added 2026-09-19 (second battery), same laws, same client: `npm run typesafe:reference2` (flora `form`,
+fungi/microbe `family`+`scale` in `port/v2/reference/flora.json` / `other.json`), `typesafe:biome` (one Noul
+per biome × fauna/flora family over `BIOME_PROFILE_AUTHORITY_V1`; the biome gloss inside the tool is the
+reviewer's reading, not game data), `typesafe:text` (Guide topics + release-note bullets: self-contradiction and
+misread Nouls), `typesafe:procedural` and `typesafe:universe` (sample seeded species and systems through the
+game's own generators via `tools/procedural-probe.js` in the jsdom probe realm, then judge the descriptor text:
+coherence, medium vs habitat, sapience label, grammar; survey-row consistency, text vs parameters, climate band).
+The probe-backed tools exit explicitly (jsdom keeps timers alive). Batch log: `audits/TYPESAFE_BATTERY_20260919/`.

@@ -139,10 +139,17 @@ could not:** the parts rig was invisible (normalized display units drawn 0.3 px 
 For Nick's eye: the contact gap stops at a crab's leg tips (silhouette box vs body box — kit question); the fainted
 crab stands back up (V2 on the stage); crabs are raw painter texture until R9.
 
-### TypeSafe tooling live on this lane
-Battery done (above). Next TypeSafe step needs Nick's word: extend the reference tool to the 383 flora/fungi/microbe
-rows, then the biome atlas and a procedural-generation sample (log §4). Key stays in the shell that launches
-Claude Code; every run starts with `--dry-run`.
+### TypeSafe tooling live on this lane — both batteries done (log §1–§5)
+Eight tools (`npm run typesafe:rig|reference|judgetag|reference2|biome|text|procedural|universe`), ≈ $0.11 for the
+whole day. Table fixes: 3 regex + 14 fauna postures + 4 flora forms, all gates green. **Findings that need Nick's
+decision, not edits:** (1) "A omnivore" article bug at `main.js:2165` — fix is one line but changes the determinism
+fingerprint (re-baseline decision); (2) 12/60 sampled procedural fauna are swimmers/drifters in dunes/ridges/canopy —
+`loco` and `habitat` roll independently; (3) `climateBand` is orbit-only, so molten/Venusian worlds land in cold/
+temperate bands that seed species; (4) biome atlas family lists are subsets (design or gap?); (5) `tuber`/`rosette`
+conventions in `flora.json`. **Safety:** all three checkouts are worktrees of ONE `.git`; 455 commits (315 + 140) exist
+only on this Mac — bundle backup written to `~/Projects/celestial-frontier-lanes-backup-20260919.bundle`; a plain
+branch push of both lanes (triggers no workflow per the budget file) is the durable fix and needs Nick's word.
+
 
 ### What Claude owes next
 1. **Re-merge at Codex's signed R2c′/R3 producers**; pass `observedContactSupports(record, binding)` to the parts rig's family solver; then flip the three pins: `ContactPhase.travel:'stage'` in the parts-rig
