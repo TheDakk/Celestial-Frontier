@@ -102,6 +102,13 @@ actual skin weights, crabs must reproduce bit-for-bit, Civet must pass unchanged
 packet is staged UNSIGNED (1Password refused both lanes tonight; now unlocked) — sign it first. R1c-c attributed
 most cold flora CPU to the declared scale (per-pass cost, `normalPasses` 4 everywhere): leaf red for R8/Q4.
 
+### R2c′ ran, S2 fired again (Codex `R2c-prime/`, signed `dd33865c`) — direction R2c″ issued (review §10)
+Crabs bit-for-bit; Civet idle/approach pass; `melee:bite` 0.266 px = covariance 0.100 + ARAP 0.181. The retained
+samples show the crabs' ARAP residual at their (R1b-pinned) supports is 0.0000 px in every row while the unpinned
+candidate-10 Civet carries 0.02–0.20 px even in passing rows. R2c″: exact per-vertex LBS at the support, and
+regenerate the Civet binding through the current shared split with contact locks (candidate-10 kept as history);
+control: unpinned candidate-10 under the new model must still fail. E1 then loads the regenerated Civet binding.
+
 ### E1.5 done — the films exist (`audits/BATTLE2_E1_PROOF_20260919/`)
 `tools/battle2-proof/native-runner.mjs` films two real fits on the real stage in Edge. Five Civet-vs-crab runs pass
 (zero refusals, CPU p95 ≈ 2.2 ms at 60 fps); `review-sheet.png` is the packet row. **The film found what the gates
