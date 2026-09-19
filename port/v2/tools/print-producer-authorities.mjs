@@ -173,11 +173,50 @@ function compendiumAuthorities(fixture) {
   return Object.freeze({ measurement, producer });
 }
 
+/** Hash all non-ignored source inputs, including imported legacy fixtures and kit assets.
+ * Unit readers do not build or acquire a checkout lock. The runner prepares this receipt
+ * before starting Vitest; any source or dist drift makes that receipt unusable. */
+export function authoritySourceDigest() {
+  const names = execFileSync('git', ['ls-files', '-z', '--cached', '--others',
+    '--exclude-standard', '--', 'port', 'tools', 'main.js', 'celestial-frontier.html',
+    'ART_KIT.md', 'package.json', 'package-lock.json'],
+    { cwd: repoRoot, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+  // The Vite plugin also emits ignored installed runtime bytes from the root tool
+  // workspace. Bind the actual allowlist, not just its package-lock declaration.
+  const plugin = fs.readFileSync(path.join(appDir, 'kit-runtime-assets.ts'), 'utf8');
+  const lists = [...plugin.matchAll(/const names = (\[[\s\S]*?\]);/g)];
+  if (lists.length !== 1) throw new Error('Cannot identify kit runtime input inventory');
+  const runtimeNames = JSON.parse(lists[0][1].replace(/'/g, '"'));
+  if (!Array.isArray(runtimeNames) || !runtimeNames.length || !runtimeNames.every(name =>
+    typeof name === 'string' && /^[a-zA-Z0-9@._/-]+$/.test(name)
+    && !name.startsWith('/') && !name.split('/').includes('..'))) {
+    throw new Error('Invalid kit runtime input inventory');
+  }
+  const files = [...names.split('\0').filter(Boolean),
+    ...runtimeNames.map(name => 'tools/local-image-generation/' + name)];
+  const entries = [...new Set(files)].sort().map(name => {
+    const absolute = path.join(repoRoot, name);
+    if (!fs.existsSync(absolute)) return [name, 'deleted'];
+    if (!fs.lstatSync(absolute).isFile()) throw new Error('Nonregular authority input: ' + name);
+    return [name, hashFile(absolute)];
+  });
+  return sha256(stableJson(entries));
+}
+
 export function collectCurrentProducerAuthorities() {
   const releaseWorkspaceLock = acquireWorkspaceLock('current producer authority build');
   try {
+    const sourceSha256 = authoritySourceDigest();
     const buildInvocation = checkCommandInvocation('npm', ['run', 'build', '--', '--mode', 'evidence']);
     execFileSync(buildInvocation.executable, buildInvocation.args, { cwd: appDir, stdio: 'inherit' });
+    if (authoritySourceDigest() !== sourceSha256) throw new Error('Source changed during authority build');
+    return observeCurrentProducerAuthorities(sourceSha256);
+  } finally {
+    releaseWorkspaceLock();
+  }
+}
+
+function observeCurrentProducerAuthorities(sourceSha256) {
     const fixture = buildCompendiumFixture();
     const build = distIdentity();
     const sceneMemory = sceneMemoryProducerAuthority(fixture, build);
@@ -201,6 +240,7 @@ export function collectCurrentProducerAuthorities() {
         schema: build.schema,
         sha256: build.sha256,
         fileCount: build.files.length,
+        sourceSha256,
       }),
       sceneMemory: Object.freeze({
         producer: sceneMemory,
@@ -218,9 +258,23 @@ export function collectCurrentProducerAuthorities() {
         numericCeilingsSha256: sha256(stableJson(compendiumBudget.ceilings)),
       }),
     });
-  } finally {
-    releaseWorkspaceLock();
+}
+
+export function assertPreparedAuthorityBuild(prepared, observed) {
+  if (!prepared || prepared.schema !== observed.schema
+    || typeof prepared.sourceSha256 !== 'string'
+    || prepared.sourceSha256 !== observed.sourceSha256
+    || prepared.sha256 !== observed.sha256 || prepared.fileCount !== observed.fileCount) {
+    throw new Error('Missing/stale authority build receipt; use npm test (the pre-test build owner)');
   }
+}
+
+export function readPreparedProducerAuthorities(prepared) {
+  const sourceSha256 = authoritySourceDigest();
+  const observed = observeCurrentProducerAuthorities(sourceSha256);
+  assertPreparedAuthorityBuild(prepared, observed.build);
+  if (authoritySourceDigest() !== sourceSha256) throw new Error('Source changed during authority read');
+  return observed;
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

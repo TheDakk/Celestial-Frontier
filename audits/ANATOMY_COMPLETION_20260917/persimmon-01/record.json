@@ -1,0 +1,214 @@
+{
+  "kind": "plant-woody",
+  "identity": {
+    "speciesVisualKey": "authored:accepted-persimmon-master",
+    "seed": 133,
+    "ownerId": "authored:flora/persimmon",
+    "earthName": "Persimmon"
+  },
+  "template": {
+    "id": "plant-woody",
+    "version": 1
+  },
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v1",
+    "absent": [],
+    "growth": {
+      "branches": 8
+    }
+  },
+  "geometry": {
+    "cutoutAssetHash": "bccad6827ad3a84974e958c2833c5fc8b9116802a7e4af4eac3fa73eb2f502d3",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.98,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.55,
+      0.955
+    ],
+    "trunk": [
+      0.53,
+      0.65
+    ],
+    "branch0Base": [
+      0.51,
+      0.6
+    ],
+    "branch0Tip": [
+      0.3,
+      0.51
+    ],
+    "leaf0": [
+      0.15,
+      0.51
+    ],
+    "branch1Base": [
+      0.505,
+      0.435
+    ],
+    "branch1Tip": [
+      0.355,
+      0.35
+    ],
+    "leaf1": [
+      0.205,
+      0.39
+    ],
+    "branch2Base": [
+      0.502,
+      0.35
+    ],
+    "branch2Tip": [
+      0.432,
+      0.247
+    ],
+    "leaf2": [
+      0.337,
+      0.207
+    ],
+    "branch3Base": [
+      0.505,
+      0.263
+    ],
+    "branch3Tip": [
+      0.513,
+      0.128
+    ],
+    "leaf3": [
+      0.491,
+      0.057
+    ],
+    "branch4Base": [
+      0.535,
+      0.287
+    ],
+    "branch4Tip": [
+      0.606,
+      0.206
+    ],
+    "leaf4": [
+      0.637,
+      0.123
+    ],
+    "branch5Base": [
+      0.555,
+      0.485
+    ],
+    "branch5Tip": [
+      0.653,
+      0.305
+    ],
+    "leaf5": [
+      0.621,
+      0.255
+    ],
+    "branch6Base": [
+      0.59,
+      0.595
+    ],
+    "branch6Tip": [
+      0.724,
+      0.338
+    ],
+    "leaf6": [
+      0.834,
+      0.316
+    ],
+    "branch7Base": [
+      0.61,
+      0.65
+    ],
+    "branch7Tip": [
+      0.751,
+      0.535
+    ],
+    "leaf7": [
+      0.827,
+      0.583
+    ]
+  },
+  "materials": {
+    "surface": "bark",
+    "paletteSource": "accepted authored master",
+    "joints": {
+      "leaf0": "foliage",
+      "leaf1": "foliage",
+      "leaf2": "foliage",
+      "leaf3": "foliage",
+      "leaf4": "foliage",
+      "leaf5": "foliage",
+      "leaf6": "foliage",
+      "leaf7": "foliage"
+    }
+  },
+  "clipSetId": "plant-woody-v1",
+  "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/persimmon.png",
+  "coverage": {
+    "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+    "unproven": [
+      "hidden/reverse surfaces",
+      "individual leaf and fruit articulation",
+      "harvest item detachment",
+      "Compendium grow scale reveal",
+      "native full action visual acceptance",
+      "physical phone budget"
+    ]
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "trunk": 0.30565503431155844,
+      "branch0Base": 0.0538516480713451,
+      "branch0Tip": 0.22847319317591727,
+      "leaf0": 0.15,
+      "branch1Base": 0.21644860821913364,
+      "branch1Tip": 0.17240939649566672,
+      "leaf1": 0.15524174696260026,
+      "branch2Base": 0.3013038333642638,
+      "branch2Tip": 0.1245351356043747,
+      "leaf2": 0.10307764064044148,
+      "branch3Base": 0.387806652856807,
+      "branch3Tip": 0.1352368293032634,
+      "leaf3": 0.07433034373659253,
+      "branch4Base": 0.36303443362854715,
+      "branch4Tip": 0.10771258050942792,
+      "leaf4": 0.08860022573334675,
+      "branch5Base": 0.16688319268278642,
+      "branch5Tip": 0.2049487740875753,
+      "leaf5": 0.05936328831862333,
+      "branch6Base": 0.08139410298049853,
+      "branch6Tip": 0.28983616061492395,
+      "leaf6": 0.11217842929904126,
+      "branch7Base": 0.07999999999999996,
+      "branch7Tip": 0.1819505427307102,
+      "leaf7": 0.08988882021697686
+    },
+    "measures": {
+      "body": 0.30565503431155844,
+      "bone-min": 0.0538516480713451,
+      "bone-max": 0.387806652856807,
+      "branch/trunk:branch0": 0.9236714909118255,
+      "branch/trunk:branch1": 1.2722120072082044,
+      "branch/trunk:branch2": 1.3932012274156587,
+      "branch/trunk:branch3": 1.7112215518980292,
+      "branch/trunk:branch4": 1.5401251780402088,
+      "branch/trunk:branch5": 1.216508563674918,
+      "branch/trunk:branch6": 1.2145399941851516,
+      "branch/trunk:branch7": 0.8570136700699663
+    }
+  },
+  "recipeHash": "9007678fdd43b818fa1faba45b0286fc5d74f1999230280cae7f189b19c03a20"
+}

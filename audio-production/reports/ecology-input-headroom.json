@@ -1,0 +1,2829 @@
+{
+  "schema": "cf.audio-input-headroom/v1",
+  "targetDbTP": -9,
+  "sources": [
+    {
+      "id": "v4.reference.wood-frog.00f56556d8a6",
+      "sourceSha256": "00f56556d8a6d9f5e1ff0a1ee3ba71ed0287315d92876b8197ccebb5961f69c6",
+      "sourceDbTP": -14.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-crane.0229636a9cf7",
+      "sourceSha256": "0229636a9cf7a4bf0a2a1f9e3d0f43f77d9c6a9c655627ddb907471d75161002",
+      "sourceDbTP": -1.0,
+      "priorGain": 0.65,
+      "gain": 0.3981071705534972,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.australian-king-parrot.024ba3023be7",
+      "sourceSha256": "024ba3023be75992789240272b9ef40374db851f5edb0ad4e2ebf1e642b681eb",
+      "sourceDbTP": -9.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 11.935
+    },
+    {
+      "id": "v4.reference.coyotes.03431aad9e97",
+      "sourceSha256": "03431aad9e97da5520176bdfb09e48d0c179a260826c56a52f7af14ec82b0f1f",
+      "sourceDbTP": -13.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.pacific-golden-plover.03d5dadc1e4f",
+      "sourceSha256": "03d5dadc1e4ff1f15e188410b30b8d609c66ce47f676520dd88e380b8f9e10a5",
+      "sourceDbTP": -13.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 1.643
+    },
+    {
+      "id": "v4.reference.australian-ibis.044a6d14429f",
+      "sourceSha256": "044a6d14429f5361feb7dec2172777c19d281ad09d78d6d8fbe44ac94fe57145",
+      "sourceDbTP": -3.5,
+      "priorGain": 0.65,
+      "gain": 0.5308844442309884,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.bird-bald-eagle.048bac8d4534",
+      "sourceSha256": "048bac8d4534bed4dc7111e2a9a266bce5f6e7cce7cfaf1afba9ae83c32aad2e",
+      "sourceDbTP": -15.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.gray-wolf.04d4ed79dd5f",
+      "sourceSha256": "04d4ed79dd5fb147ea899a611112d55758fd0055f192a4b8356689fdd400a937",
+      "sourceDbTP": -42.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.humpback-whale.054cae822fbd",
+      "sourceSha256": "054cae822fbd96792aecf9cf1f198748c4bad3b7292290ac96b53bfdba5c6693",
+      "sourceDbTP": -7.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.elk.05fa93caaeb9",
+      "sourceSha256": "05fa93caaeb980e94ddcf8a93bf88a6845ad7aa7ef15ceca9ebe4563e90cec92",
+      "sourceDbTP": -10.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.australian-ibis.060f841416e3",
+      "sourceSha256": "060f841416e357eef290dcc1656de6e00013c3db63f33d7246c95a44cc29d782",
+      "sourceDbTP": -25.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.koala.074a40d353ec",
+      "sourceSha256": "074a40d353ece838bf8a2c457bf39eb6e860bba327ad5f25d4f536b0e97b02ce",
+      "sourceDbTP": -16.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.544
+    },
+    {
+      "id": "v4.reference.common-brushtail-possum.0833ed054719",
+      "sourceSha256": "0833ed054719e5a94cde474886d568e82eb42843ba92207a37cac44acbf32047",
+      "sourceDbTP": -16.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.long-tailed-macaque.08f100ee0fa6",
+      "sourceSha256": "08f100ee0fa62f62683b1b02197e8bb8ea33f61bc95a3e4a8b244921efd0b5b3",
+      "sourceDbTP": -3.0,
+      "priorGain": 0.65,
+      "gain": 0.5011872336272722,
+      "duration": 11.652
+    },
+    {
+      "id": "v4.reference.canada-geese.09938e23be8a",
+      "sourceSha256": "09938e23be8ae52bd155f30cf869980373df5d1f5b8173cc9e8c1d560e32fb5f",
+      "sourceDbTP": 1.0,
+      "priorGain": 0.65,
+      "gain": 0.31622776601683794,
+      "duration": 3.282
+    },
+    {
+      "id": "v4.reference.common-raccoon.09fc064f9806",
+      "sourceSha256": "09fc064f980687395633472ae993a6c509019c6e0eb2e4f0a9aa2daf92323287",
+      "sourceDbTP": -0.7,
+      "priorGain": 0.65,
+      "gain": 0.38459178204535355,
+      "duration": 6.656
+    },
+    {
+      "id": "v4.reference.laysan-albatross.0aec0c74f100",
+      "sourceSha256": "0aec0c74f10091aaea529b802487c7fca1c9b67a0b662713bd132edd5eab3f03",
+      "sourceDbTP": -0.7,
+      "priorGain": 0.65,
+      "gain": 0.38459178204535355,
+      "duration": 3.4481
+    },
+    {
+      "id": "v4.reference.elk.0c6b38fe14ea",
+      "sourceSha256": "0c6b38fe14ea75dd7411acff841a2a9798237f2cbdf6c11b5c308a0ed16f54b1",
+      "sourceDbTP": -0.3,
+      "priorGain": 0.65,
+      "gain": 0.3672823004980847,
+      "duration": 10.9333
+    },
+    {
+      "id": "v4.reference.snowy-egret.0eda9e600db8",
+      "sourceSha256": "0eda9e600db87719e221836bc7122b4462da2e533ec22666e993fbfeef015e0d",
+      "sourceDbTP": -19.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.3437
+    },
+    {
+      "id": "v4.reference.hairy-woodpecker.0f6672f4ed0b",
+      "sourceSha256": "0f6672f4ed0bec25c60a51de4262c114947c6ebb7795c6e93be35c550d030dbb",
+      "sourceDbTP": -8.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 9.528
+    },
+    {
+      "id": "v4.reference.ash-cicada.0fd2024353d2",
+      "sourceSha256": "0fd2024353d2e71857f4a9792826c4406463737760cd15639b72c69d19553d15",
+      "sourceDbTP": -8.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.3529
+    },
+    {
+      "id": "v4.reference.bow-winged-grasshopper.103eea9f1c40",
+      "sourceSha256": "103eea9f1c4050b3cf2f7d5c0ced9e4453a4ff1893f9258c96772ae0054e4008",
+      "sourceDbTP": -8.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.pacific-white-sided-dolphin.10aacd8b0edb",
+      "sourceSha256": "10aacd8b0edb4257fb0b99b436bcda54bedac9c6346ad10d2216f22c20c8a22c",
+      "sourceDbTP": -39.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.little-grebe.10b1f1b31f86",
+      "sourceSha256": "10b1f1b31f86ba0a3c27c223600e78e093794abb14cd64948acb3d094bd5c089",
+      "sourceDbTP": -6.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.1806
+    },
+    {
+      "id": "v4.reference.ring-necked-pheasant.111e6626c372",
+      "sourceSha256": "111e6626c372e5759b2cabcde8b899e23076605b6fc47ac21162f1915de17f7c",
+      "sourceDbTP": -17.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.house-finch.1382b2479918",
+      "sourceSha256": "1382b2479918d8b8d900535f11f2e0c315b3d66997eae0c98dfaef808524e714",
+      "sourceDbTP": -3.0,
+      "priorGain": 0.65,
+      "gain": 0.5011872336272722,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.northern-elephant-seal.13e1df6616d7",
+      "sourceSha256": "13e1df6616d728e6678650becc48a87ff39eac0eaf4e66c50e5c630fe4d6d81b",
+      "sourceDbTP": -0.4,
+      "priorGain": 0.65,
+      "gain": 0.37153522909717257,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.asian-house-gecko.14331e1486b9",
+      "sourceSha256": "14331e1486b947d28974169915112efae4f5e440f6eb151611533a0a1db708e6",
+      "sourceDbTP": -22.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 10.5898
+    },
+    {
+      "id": "v4.reference.red-billed-chough.143fde2e74eb",
+      "sourceSha256": "143fde2e74eb673b1854a4cedd122be6e9f7368046e291d0c863a3fb685d524f",
+      "sourceDbTP": -0.0,
+      "priorGain": 0.65,
+      "gain": 0.35481338923357547,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.wolves.1520267dbb85",
+      "sourceSha256": "1520267dbb85294fbca670c02404d7e64248cec02b29167def519f2e35194a0d",
+      "sourceDbTP": -18.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.eurasian-bittern.175766b71e75",
+      "sourceSha256": "175766b71e75b91fd32205e304c09abac110d7f6f4b60973cc35683b9aeb5be8",
+      "sourceDbTP": -8.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.1528
+    },
+    {
+      "id": "v4.reference.red-legged-seriema.1a2826c9e9e8",
+      "sourceSha256": "1a2826c9e9e83e9e9e32af9318f9243a48d7c6728f07f8c2fce090410234c47e",
+      "sourceDbTP": -8.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.eurasian-oystercatcher.1a66aae29bda",
+      "sourceSha256": "1a66aae29bda640e3cfe281d0a1f0d56ff141d53653f1d0ebb17de80d65492f2",
+      "sourceDbTP": -8.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.5486
+    },
+    {
+      "id": "v4.reference.barn-swallow.1b4038c05709",
+      "sourceSha256": "1b4038c05709c0760f857eb4dbf70f2e015b85eef844ba31a8609f7366e1aa0f",
+      "sourceDbTP": -23.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.wild-turkey.1c3e236a0506",
+      "sourceSha256": "1c3e236a050633cefb87ab21cb2d052ea51c754c23249c9441420e877a210a48",
+      "sourceDbTP": -29.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.gray-partridge.1d0ec0eff897",
+      "sourceSha256": "1d0ec0eff8970fc60b0516008f3a3cd4ba751fb15c467913f7021771a7c5bde7",
+      "sourceDbTP": -0.9,
+      "priorGain": 0.65,
+      "gain": 0.39355007545577747,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.red-legged-seriema.1d4ecd434598",
+      "sourceSha256": "1d4ecd43459849c332c9d14e21078abe110a751aff662a14272267db5f33356a",
+      "sourceDbTP": -12.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.chimney-swift.1dd5fcc9dff5",
+      "sourceSha256": "1dd5fcc9dff5dd27f82991c3bfbefcb2cac9e365b6419a861bb1d075a6f3c5e2",
+      "sourceDbTP": -7.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-loon.1fb0b8d51ddc",
+      "sourceSha256": "1fb0b8d51ddc89049f113527395ebec81dbd9226370ff0e3feb840e82df5a7aa",
+      "sourceDbTP": -30.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.433
+    },
+    {
+      "id": "v4.reference.pacific-white-sided-dolphin.20c37db8bd38",
+      "sourceSha256": "20c37db8bd386840f62270cb787b9718228fd055bc2986cdb5e708d388da1a69",
+      "sourceDbTP": -36.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.canada-goose.21a4ccabe65c",
+      "sourceSha256": "21a4ccabe65c95a2ef17fa5fa9fc764be9a04ff6936fa50d941fa6b72ac34265",
+      "sourceDbTP": -12.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.409
+    },
+    {
+      "id": "v4.reference.barn-swallow.21c3b02d28e0",
+      "sourceSha256": "21c3b02d28e02e8b54e7e914f49c8a8c4840100216042ee8b88664e62b285fb5",
+      "sourceDbTP": -9.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 11.1898
+    },
+    {
+      "id": "v4.reference.hairy-woodpecker.22204684e9c5",
+      "sourceSha256": "22204684e9c52189c9adfffb009442a3dd709ae09629a27c149e25489bafa689",
+      "sourceDbTP": -9.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.western-roe-deer.22481454ca94",
+      "sourceSha256": "22481454ca944fd2f2b69a5e7d4ca088e89b536232814cb667872ba4b4b56217",
+      "sourceDbTP": -0.9,
+      "priorGain": 0.65,
+      "gain": 0.39355007545577747,
+      "duration": 6.024
+    },
+    {
+      "id": "v4.reference.bow-winged-grasshopper.229c0b3454b0",
+      "sourceSha256": "229c0b3454b0e59387af4a3ce15dddb0eee32793f071eb231b6d1756390f57c5",
+      "sourceDbTP": -26.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-wood-pigeon.22ed4e192a49",
+      "sourceSha256": "22ed4e192a49e78b744c2021b4eae17fe11f669eb4225ffddeae1a7f81166daa",
+      "sourceDbTP": -32.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.wild-turkey.2463923a9c8b",
+      "sourceSha256": "2463923a9c8b9139e173b064f7195ddacd37b8c755078ea3201e5646c821c432",
+      "sourceDbTP": -1.0,
+      "priorGain": 0.65,
+      "gain": 0.3981071705534972,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.north-american-porcupine.24f03c98948f",
+      "sourceSha256": "24f03c98948f813f6c35260b5028ce4966186698b20cb62e878a672735580785",
+      "sourceDbTP": -20.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.874
+    },
+    {
+      "id": "v4.reference.northern-gannet.2563d0e7f286",
+      "sourceSha256": "2563d0e7f286b90247562536369fea55af219cc2635becf289c9cda676ce1e9c",
+      "sourceDbTP": -2.9,
+      "priorGain": 0.65,
+      "gain": 0.49545019080479025,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.ash-cicada.25b46c4881e0",
+      "sourceSha256": "25b46c4881e05146c581eeb226f0d69732a0aadec6cfee6b861f1777aee71979",
+      "sourceDbTP": 8.8,
+      "priorGain": 0.65,
+      "gain": 0.1288249551693134,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.wild-boar.25cc679a1c8f",
+      "sourceSha256": "25cc679a1c8f091f2ff4369b38ec336cc8e07b2466113fcfd47f01fe73e944ed",
+      "sourceDbTP": -4.3,
+      "priorGain": 0.65,
+      "gain": 0.5821032177708714,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.trumpeter-swan.260b8bce7b72",
+      "sourceSha256": "260b8bce7b7248518fb1ace15297121fbb2f8cceea36967d5eb4f21e6c4780c8",
+      "sourceDbTP": -9.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.scarlet-tanager.26cf91092d4b",
+      "sourceSha256": "26cf91092d4b28462abba7cd0bcb4d484f16e4437f9008def450fc6bfe0997f1",
+      "sourceDbTP": -6.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.0874
+    },
+    {
+      "id": "v4.reference.lily-leaf-beetle.273b5f7af19b",
+      "sourceSha256": "273b5f7af19b1f02d32373be116c24bd94bf455f238e8bbc7334b494ec3c9497",
+      "sourceDbTP": -21.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 11.3664
+    },
+    {
+      "id": "v4.reference.ring-necked-pheasant.289e9e3deb83",
+      "sourceSha256": "289e9e3deb83ec9d2e845a83d3b06e541972ef265742c7353caedd9c36ab056f",
+      "sourceDbTP": -8.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.0695
+    },
+    {
+      "id": "v4.reference.greater-roadrunner.2a98cbe0691d",
+      "sourceSha256": "2a98cbe0691dac4b2609b08d5db538e4870f69f5fdc7678519d16df8cbdb6ce5",
+      "sourceDbTP": -26.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.114
+    },
+    {
+      "id": "v4.reference.magnificent-frigatebird.2b80b8aff6bc",
+      "sourceSha256": "2b80b8aff6bc1c52e8c8c8fa9d35c26a02da48ac905ef2ebf6e170887edfa23f",
+      "sourceDbTP": -4.6,
+      "priorGain": 0.65,
+      "gain": 0.6025595860743577,
+      "duration": 6.3421
+    },
+    {
+      "id": "v4.reference.eastern-gray-squirrel.2bcae7bad2b8",
+      "sourceSha256": "2bcae7bad2b81b7f957866caa4c872097e163383e6dbb1ef79dc39b2c39941ab",
+      "sourceDbTP": -8.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.little-spotted-kiwi.2d2bf1a956b4",
+      "sourceSha256": "2d2bf1a956b4a27fa7a1977e7daf3d822c99ece013aaf0c0c706c060f9648ac9",
+      "sourceDbTP": -23.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.pigeon-guillemot.2f297d8502da",
+      "sourceSha256": "2f297d8502da4841ad1d6a6e5d3e333cec73eb1190d889d6cc1b000c7678fcb4",
+      "sourceDbTP": -3.0,
+      "priorGain": 0.65,
+      "gain": 0.5011872336272722,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.green-tree-frog.3004b02bd179",
+      "sourceSha256": "3004b02bd1793db81f5e6ddfe2f805dbd587af3c0d03edbedec2ad23e92660dd",
+      "sourceDbTP": -16.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 9.9868
+    },
+    {
+      "id": "v4.reference.southern-flying-squirrel.32a698de51e6",
+      "sourceSha256": "32a698de51e6488c43b64a7637a1e35ca1840cd2e1ea01a4f81d672773e1d435",
+      "sourceDbTP": -39.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.north-atlantic-right-whale-1.32c65032a124",
+      "sourceSha256": "32c65032a12486521ad78a2158cb4ab0b02013bb0d085fd91085edeeae737710",
+      "sourceDbTP": -9.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.pacific-golden-plover.347e22a3a655",
+      "sourceSha256": "347e22a3a655c3a80a644e26e90ace0066478ad0e327bdce1beab446918ffe0b",
+      "sourceDbTP": -0.6,
+      "priorGain": 0.65,
+      "gain": 0.38018939632056115,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.boreal-chorus-frog.34e10261bc1c",
+      "sourceSha256": "34e10261bc1cdc04ea9d114affcf8f4ff6c3e019a4d122a4b1979704d07a2fc7",
+      "sourceDbTP": 0.0,
+      "priorGain": 0.65,
+      "gain": 0.35481338923357547,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-wood-pigeon.3675ff6c282d",
+      "sourceSha256": "3675ff6c282d2174076022077fa058ed15818ab70ba08c123e4c1e6dc9d71c8f",
+      "sourceDbTP": -23.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.wood-frog.36e1407cfac2",
+      "sourceSha256": "36e1407cfac273800b3ed8c2a7ddf4b56085b6875dc52119af2f0633deec0b13",
+      "sourceDbTP": -21.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-beaver.3792699ed21e",
+      "sourceSha256": "3792699ed21e7b98d22b74220d262e92ca5aacecf5ff68ef82170f89193afea5",
+      "sourceDbTP": -16.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 6.85
+    },
+    {
+      "id": "v4.reference.gray-wolf.3810112c22eb",
+      "sourceSha256": "3810112c22eb52fad3ed5b324fe319cf1b5785aa742c006e0ff51ba964dc7089",
+      "sourceDbTP": -43.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.mourning-dove.39db53272aa7",
+      "sourceSha256": "39db53272aa7810898d7e3d04db540dcf7584515f22ae2c6c3af234e5dc0bd36",
+      "sourceDbTP": -11.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.0361
+    },
+    {
+      "id": "v4.reference.black-tailed-prairie-dog.3aca84f39405",
+      "sourceSha256": "3aca84f39405414403b8be642ecd3a0ee197f3ac4ded3ae8add5cb05b61becf2",
+      "sourceDbTP": -29.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 9.984
+    },
+    {
+      "id": "v4.reference.bulwer-s-petrel.3acfc33479f9",
+      "sourceSha256": "3acfc33479f9e18ab6b50d580309f7e51737c571dce57b9bf6a84fc9ee7d677e",
+      "sourceDbTP": -24.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 1.7503
+    },
+    {
+      "id": "v4.reference.cope-s-gray-tree-frog.3b8d8e49fc6a",
+      "sourceSha256": "3b8d8e49fc6a3c41270bcc22dc22008e4daa1febe306026612392627d19401b5",
+      "sourceDbTP": -20.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 8.809
+    },
+    {
+      "id": "v4.reference.eastern-chipmunk.3be779ad1e8f",
+      "sourceSha256": "3be779ad1e8f4f8ae07254c87fc311f2efcd2c3b1a0842ab1876ad86a08a56e0",
+      "sourceDbTP": -1.0,
+      "priorGain": 0.65,
+      "gain": 0.3981071705534972,
+      "duration": 5.0
+    },
+    {
+      "id": "v4.reference.atlantic-cod.3c1b59d8c8a4",
+      "sourceSha256": "3c1b59d8c8a4ee0ddd321c21eb6494ba9f520cd7a45274d7eacdde9cec68b1f0",
+      "sourceDbTP": -13.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.9592
+    },
+    {
+      "id": "v4.reference.american-robin.3c806c84f529",
+      "sourceSha256": "3c806c84f529634a11cbb66cf11d1e98ea20541de284c3f69247c1e15a018dc0",
+      "sourceDbTP": -2.2,
+      "priorGain": 0.65,
+      "gain": 0.4570881896148751,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.barn-swallow.3c9b193e6b72",
+      "sourceSha256": "3c9b193e6b72a151c38ccb8e9cc0f9efea81655a75bd7c33671a7ef275eb640c",
+      "sourceDbTP": -5.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.crested-lark.3d04392e3214",
+      "sourceSha256": "3d04392e32149f29fafd7a797591d8dcaadd648f1cb11bcc9b6336fa4f213460",
+      "sourceDbTP": -34.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.1178
+    },
+    {
+      "id": "v4.reference.common-raccoon.3da9350e76b7",
+      "sourceSha256": "3da9350e76b78429223cd021e16ac6147f69dfa6af3f46aacaa71fb1ca570540",
+      "sourceDbTP": -34.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-pika.3e25a7e7b33f",
+      "sourceSha256": "3e25a7e7b33fdf7b134e0a6924744f8ed47b8a0062c0b0eb297c91d38971b7ff",
+      "sourceDbTP": -9.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.1658
+    },
+    {
+      "id": "v4.reference.northern-cardinal.4144fac9e0b0",
+      "sourceSha256": "4144fac9e0b0d0901e18581c79b86b671e8f91264cca5cae35923fb2d692b0a9",
+      "sourceDbTP": -8.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.california-sea-lion.41cb799eda64",
+      "sourceSha256": "41cb799eda64e583a61015fceb7d0ec39db7f6e944a359a54d6f093bb796b35f",
+      "sourceDbTP": -12.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.alligator.42e3166bdc9f",
+      "sourceSha256": "42e3166bdc9f102299bcba5f3f35cff128dc0ec16a9b2d14780a9b8d2c7775bc",
+      "sourceDbTP": -7.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.eastern-gray-squirrel.44fb837298e5",
+      "sourceSha256": "44fb837298e5f6af0965c2f5962cdf5d39ae434041f18367856aa60b106c88c8",
+      "sourceDbTP": -26.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.bulwer-s-petrel.459a6cbbf9f0",
+      "sourceSha256": "459a6cbbf9f0ce73f8fd60e43fd8fd3d72b4d65bc3175eeddaadbe0234f3639d",
+      "sourceDbTP": -26.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.3102
+    },
+    {
+      "id": "v4.reference.barred-owl.45f6d39a093f",
+      "sourceSha256": "45f6d39a093f4abe20997c64c39c79e1029142bd58e6af34cede7909573d5a90",
+      "sourceDbTP": -19.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.bald-eagle.46aba1892486",
+      "sourceSha256": "46aba1892486ef423325d047ba501b318ebd52f080c628de8b8c609607466ae6",
+      "sourceDbTP": -8.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.yellow-throated-toucan.4728cf76d58c",
+      "sourceSha256": "4728cf76d58c91355403c76287b260c67339e2a248abe0fb5106d2a24de3f962",
+      "sourceDbTP": -16.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.laughing-kookaburra.4773908733a2",
+      "sourceSha256": "4773908733a283c4c954192b019e3050a7ebbfba2fb1de725ed60eb3a3982a09",
+      "sourceDbTP": -38.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.11
+    },
+    {
+      "id": "v4.reference.wild-turkey.47e8bd20b52b",
+      "sourceSha256": "47e8bd20b52b37a647b9feb58882445413e1af5d84d1ddef1ad3022b57ee6ea4",
+      "sourceDbTP": -3.0,
+      "priorGain": 0.65,
+      "gain": 0.5011872336272722,
+      "duration": 11.8188
+    },
+    {
+      "id": "v4.reference.brown-howler-monkey.481e4a0eaf22",
+      "sourceSha256": "481e4a0eaf228e615f0aafc6d4f9b0e0e8125ae4594a4fe11bd1c8e83c10afdf",
+      "sourceDbTP": -20.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.big-brown-bat.4850df73e569",
+      "sourceSha256": "4850df73e5696acc412dc2fde7b6aec716f107d38db696f907735974b8714954",
+      "sourceDbTP": -15.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.9995
+    },
+    {
+      "id": "v4.reference.yellow-throated-toucan.4890f6da0613",
+      "sourceSha256": "4890f6da06135c9c8872c1499904a5d81cb2e85be471b8fc5c0484ee471c2f86",
+      "sourceDbTP": -9.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.pigeon-guillemot.48e752668f96",
+      "sourceSha256": "48e752668f96fee247819ebec2c6a70d91e80911bf0a54775ebf67d55e6dfdf4",
+      "sourceDbTP": 3.5,
+      "priorGain": 0.65,
+      "gain": 0.23713737056616552,
+      "duration": 8.513
+    },
+    {
+      "id": "v4.reference.black-tailed-godwit.4906266fc978",
+      "sourceSha256": "4906266fc97875842bf2cb8d7ee10d66be12ae5ee6e594b1198656938d59f7cc",
+      "sourceDbTP": -6.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.golden-jackal.49558e8e80b1",
+      "sourceSha256": "49558e8e80b10946b50ef45622f48fc976a6809ed9a08f502f2888f2beac2bdb",
+      "sourceDbTP": 0.0,
+      "priorGain": 0.65,
+      "gain": 0.35481338923357547,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.wood-duck.4978776ff45a",
+      "sourceSha256": "4978776ff45aee58f4b7f54c035f6a215ee4a135b05259d6a4f35c4396f1fde5",
+      "sourceDbTP": -0.0,
+      "priorGain": 0.65,
+      "gain": 0.35481338923357547,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.yellow-tailed-black-cockatoo.4aa9ea28fe07",
+      "sourceSha256": "4aa9ea28fe0789278f417d1c14af6315788cafc16e28dfbf4c57cce36e9a4352",
+      "sourceDbTP": -11.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.coyotes.4b309096c3f9",
+      "sourceSha256": "4b309096c3f9ef89cf92a27232e106ad4d4bb5200eea663f2d82ba303b2147c9",
+      "sourceDbTP": -13.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.coyotes.4b8d6abf695e",
+      "sourceSha256": "4b8d6abf695e829abfc47645c2c51d5f360a6c8850a7a3ee1f22967d6e8c7c91",
+      "sourceDbTP": -6.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.wahlberg-s-epauletted-fruit-bat.4b9558585257",
+      "sourceSha256": "4b9558585257eef6e538bb00c21b09cdb099f87b0fec3717a78974823fc10058",
+      "sourceDbTP": -19.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 8.938
+    },
+    {
+      "id": "v4.reference.north-american-river-otter.4bd3561d4404",
+      "sourceSha256": "4bd3561d44046175e1d50628ba5b7f959f4bf648bb2ad79ad66c1cad8a8365d7",
+      "sourceDbTP": -6.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.koala.4d5d4996e56e",
+      "sourceSha256": "4d5d4996e56e66aade0ddffac39bf2d4f6d8f596853fc40604df4ab01f8bd6b8",
+      "sourceDbTP": -20.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.snapping-shrimp.4e5bc2243062",
+      "sourceSha256": "4e5bc224306207a6f656665e0c80070dd940fca6903466b3f7bdc4b84768a963",
+      "sourceDbTP": 4.0,
+      "priorGain": 0.65,
+      "gain": 0.22387211385683395,
+      "duration": 5.0
+    },
+    {
+      "id": "v4.reference.snowy-egret.4ee52aa3de94",
+      "sourceSha256": "4ee52aa3de94c1e839eec58657c50224e9ebe27743e6707045a42a52c2b06f3a",
+      "sourceDbTP": 22.0,
+      "priorGain": 0.65,
+      "gain": 0.028183829312644536,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.coyote.5092f9d9f3f5",
+      "sourceSha256": "5092f9d9f3f56955fc51668a5e3bceb7f3b09d5d2acb8ceb98bff7d07bfcf0c0",
+      "sourceDbTP": -2.7,
+      "priorGain": 0.65,
+      "gain": 0.4841723675840993,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-raven.50ac94bd9cb8",
+      "sourceSha256": "50ac94bd9cb8ad26e8857cf75545416e2a43ebc5888e451657a2c8aaf18d4a32",
+      "sourceDbTP": -0.1,
+      "priorGain": 0.65,
+      "gain": 0.3589219346450052,
+      "duration": 5.7549
+    },
+    {
+      "id": "v4.reference.chickens.50fbdb64e26c",
+      "sourceSha256": "50fbdb64e26cedd137e114fa660d8825fd2b85fc5cb29a8c11c7825b358156cf",
+      "sourceDbTP": 0.0,
+      "priorGain": 0.65,
+      "gain": 0.35481338923357547,
+      "duration": 5.337
+    },
+    {
+      "id": "v4.reference.sooty-grouse.521e4897c005",
+      "sourceSha256": "521e4897c005838605106747a202a5ec4d357c036ea019688a92caca74b26e48",
+      "sourceDbTP": -30.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.65
+    },
+    {
+      "id": "v4.reference.double-banded-sandgrouse.53153e75ccd4",
+      "sourceSha256": "53153e75ccd447f1a8eb15d6af3032210b9d5e14f1e380e5e3549dffceaccecf",
+      "sourceDbTP": -43.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 6.316
+    },
+    {
+      "id": "v4.reference.red-shouldered-hawk.53741901ee31",
+      "sourceSha256": "53741901ee314fd5a9fd5be5a2d9e89d0e2a97f8033b0027ce65f0e9e4d48ece",
+      "sourceDbTP": -1.4,
+      "priorGain": 0.65,
+      "gain": 0.4168693834703354,
+      "duration": 3.4064
+    },
+    {
+      "id": "v4.reference.common-raven.538acbc56806",
+      "sourceSha256": "538acbc56806cf8f716c8c1cb91497a6ebf01904a64a497654f62eff797fbf13",
+      "sourceDbTP": -15.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.belted-kingfisher.5397c45eb866",
+      "sourceSha256": "5397c45eb8660125ead455d5caec2535a1ab841b63b341490d77ebdb2746ebd5",
+      "sourceDbTP": -9.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.osprey.53f424611b12",
+      "sourceSha256": "53f424611b12fa79e8c8e4338bb2b1b3c6b62aa49ee39b7a54887b09dc4d256f",
+      "sourceDbTP": -35.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.golden-headed-quetzal.543a9b652ff2",
+      "sourceSha256": "543a9b652ff2839423486edbcec019bfccaaaed75efcdb1828f425eb79726537",
+      "sourceDbTP": -32.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-crow.54d14eac4d79",
+      "sourceSha256": "54d14eac4d7940ea25acba8a9c63dc17caffcb885c444e65c45c4b548d55d471",
+      "sourceDbTP": -11.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.0598
+    },
+    {
+      "id": "v4.reference.wolves.5569f12a49ba",
+      "sourceSha256": "5569f12a49ba34d7ba28475cd4ad37fea808c0d883883d6540c5c04695d8b717",
+      "sourceDbTP": -12.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.wood-duck.5582df058c01",
+      "sourceSha256": "5582df058c0136e79d7bab2bb6d5b6803fd07f61806b5f238ef8e1986e346ace",
+      "sourceDbTP": -20.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.ptarmigan.563018147110",
+      "sourceSha256": "56301814711021f73bdd60a2818dd5592e9ca3d3dbe8e37236d7504ddedcdc43",
+      "sourceDbTP": -0.1,
+      "priorGain": 0.65,
+      "gain": 0.3589219346450052,
+      "duration": 7.0611
+    },
+    {
+      "id": "v4.reference.song-sparrow.5776d64ebf3f",
+      "sourceSha256": "5776d64ebf3f89d3f51b39d11ff9b5b224da56738610d2672262a456d09dab20",
+      "sourceDbTP": -22.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.white-tailed-ptarmigan.57951a070143",
+      "sourceSha256": "57951a0701434ddcb51ac25d326489cf6a7906e20891856f4182db31ee906b56",
+      "sourceDbTP": -10.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.helmeted-guineafowl.5a62cee53205",
+      "sourceSha256": "5a62cee53205ff696f36f262ec9bdb15fd91bd5de8121a7bc7d09b6528595bf0",
+      "sourceDbTP": -8.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.red-billed-chough.5a676d282a3e",
+      "sourceSha256": "5a676d282a3e86c11c9283f2fa8c404679613df8e5bea27b54d55631fc7c6f16",
+      "sourceDbTP": -17.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.eurasian-coot.5cf16d692248",
+      "sourceSha256": "5cf16d6922481f497013da10c4a6ddeb7380dddf3048224cee34e0b9fe255861",
+      "sourceDbTP": -23.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 6.339
+    },
+    {
+      "id": "v4.reference.common-sandpiper.5d746787bdf8",
+      "sourceSha256": "5d746787bdf81c3710453c7565325edb13f279872cb0214b4a88f03b88002a6a",
+      "sourceDbTP": -1.1,
+      "priorGain": 0.65,
+      "gain": 0.4027170343254591,
+      "duration": 9.0
+    },
+    {
+      "id": "v4.reference.common-sandpiper.5fcabd15002b",
+      "sourceSha256": "5fcabd15002be5375b7f4c28380385150bbdf053d2812f0fb8d6a707e1126639",
+      "sourceDbTP": -28.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 11.5952
+    },
+    {
+      "id": "v4.reference.california-sea-lion.614b97f8242c",
+      "sourceSha256": "614b97f8242c7b92ee30e926d5e3823dccd54b1ca9aad3482d356653503ef1ed",
+      "sourceDbTP": 0.0,
+      "priorGain": 0.65,
+      "gain": 0.35481338923357547,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-robin.616616e93450",
+      "sourceSha256": "616616e93450097164da6dfe027ffefa48fbe2e87fb3a453f49a4371f86a6f39",
+      "sourceDbTP": -12.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-tern.62b0a318d7ed",
+      "sourceSha256": "62b0a318d7edd129b6823009f0bcd4a669677bfb8d69fd9d651eb8820198975e",
+      "sourceDbTP": -38.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 8.9444
+    },
+    {
+      "id": "v4.reference.asian-house-gecko.63494fe1b85b",
+      "sourceSha256": "63494fe1b85bccc55a4d5108ece80ec1905b1b5ac39663a57337eab1b56eb601",
+      "sourceDbTP": -12.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.2994
+    },
+    {
+      "id": "v4.reference.brown-howler-monkey.6406c855c1e8",
+      "sourceSha256": "6406c855c1e8a28a95c9dd9d6077ed51ce0c54afbf7d15cf66f87366bc607f96",
+      "sourceDbTP": -23.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.red-shouldered-macaw.661345cb6516",
+      "sourceSha256": "661345cb651608eb26b193404e1a7e6efb0779ba27b47187d4b74e4d79f391d4",
+      "sourceDbTP": -11.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 10.8372
+    },
+    {
+      "id": "v4.reference.european-field-cricket.6815d6deeea5",
+      "sourceSha256": "6815d6deeea513059a6f85e46052dd0bbdb6332020ae21a1584cb0008f04d02d",
+      "sourceDbTP": -21.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 10.896
+    },
+    {
+      "id": "v4.reference.saxon-wasp.68756875f625",
+      "sourceSha256": "68756875f625c98fdebffa13c3e85e6dbcd7014672b6d0f485870ad52e861fa8",
+      "sourceDbTP": -18.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 7.9644
+    },
+    {
+      "id": "v4.reference.red-shouldered-hawk.68a4ee1b70c6",
+      "sourceSha256": "68a4ee1b70c6e11017f123ee787ee802725b61b9b25d50dbd93dac35bcbdf514",
+      "sourceDbTP": -2.6,
+      "priorGain": 0.65,
+      "gain": 0.4786300923226383,
+      "duration": 4.3222
+    },
+    {
+      "id": "v4.reference.black-tailed-godwit.68f2df101c0c",
+      "sourceSha256": "68f2df101c0cae56d3333b9b13fce361882765dd2e884c65eda3a743d30bb41a",
+      "sourceDbTP": -13.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 9.4476
+    },
+    {
+      "id": "v4.reference.red-grouper.69246e010518",
+      "sourceSha256": "69246e01051824d2103a34c3f7b591c753ae6f6257ea4a1136668866c4e06dc0",
+      "sourceDbTP": -1.2,
+      "priorGain": 0.65,
+      "gain": 0.40738027780411273,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.coyotes.69bfee365fa2",
+      "sourceSha256": "69bfee365fa27be7e945ad667dbb91dfa85e3730e304d6412e07c9fd87b9038b",
+      "sourceDbTP": -30.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 9.9345
+    },
+    {
+      "id": "v4.reference.yellow-tailed-black-cockatoo.6a500213d9d9",
+      "sourceSha256": "6a500213d9d9f43a217fd97791561b9b56deba94ae8b60a3e14d2bd280c5631b",
+      "sourceDbTP": -12.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.wolves.6b31a44a0781",
+      "sourceSha256": "6b31a44a0781cc8a4f8a86a7878754d44093383aa880279ac075c4a45a2b9aa3",
+      "sourceDbTP": -19.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.pied-avocet.6d15e56f2fe9",
+      "sourceSha256": "6d15e56f2fe9febbfb55ccc9c0f19ab909812dde7b1f42db3cc622ba3f715984",
+      "sourceDbTP": -20.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.south-polar-skua.6e66cfea24f9",
+      "sourceSha256": "6e66cfea24f93fce60691df8271cf7e40e0a2664d740a8d3db50fb69a19753a3",
+      "sourceDbTP": -3.0,
+      "priorGain": 0.65,
+      "gain": 0.5011872336272722,
+      "duration": 9.3537
+    },
+    {
+      "id": "v4.reference.eurasian-magpie.6f0c815dd043",
+      "sourceSha256": "6f0c815dd043e23e795f1636b7f81ecdca76cd636869b85c329cc6d4f74849a9",
+      "sourceDbTP": -30.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.north-bornean-gray-gibbon.6f9c48ead4f5",
+      "sourceSha256": "6f9c48ead4f5b21b5650e2037a97ca1daffc4e8e6aaa61b9c504b4c58c87e9f8",
+      "sourceDbTP": -0.7,
+      "priorGain": 0.65,
+      "gain": 0.38459178204535355,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-raven.6fb324711816",
+      "sourceSha256": "6fb32471181653693764b2fc6d00036f1d953a0d7ba243aeff5848a8d31258c0",
+      "sourceDbTP": 0.0,
+      "priorGain": 0.65,
+      "gain": 0.35481338923357547,
+      "duration": 4.8794
+    },
+    {
+      "id": "v4.reference.wild-boar.6fcfcc5b0850",
+      "sourceSha256": "6fcfcc5b0850b4f963e1a3d29d1c8a83a89c0d9ce0864dbfc99e165c0f055d80",
+      "sourceDbTP": -4.9,
+      "priorGain": 0.65,
+      "gain": 0.6237348354824193,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.anna-s-hummingbird.70dfc486e347",
+      "sourceSha256": "70dfc486e34739a4a91bb8dbf6b01afb38e75d533563f6586d3c54ed5820b659",
+      "sourceDbTP": -31.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.barred-owl.71539d097134",
+      "sourceSha256": "71539d097134b1bc3b4226a7e463cc75b247c8f34341efec58f5900c40e22774",
+      "sourceDbTP": -3.0,
+      "priorGain": 0.65,
+      "gain": 0.5011872336272722,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.grasshopper.72272b83ccac",
+      "sourceSha256": "72272b83ccac579a402516aa8d4a82ceb58faef78571abfb2bad9e371b76fcf7",
+      "sourceDbTP": -0.0,
+      "priorGain": 0.65,
+      "gain": 0.35481338923357547,
+      "duration": 2.9337
+    },
+    {
+      "id": "v4.reference.eurasian-curlew.72a0ca467590",
+      "sourceSha256": "72a0ca46759097c80e319736a15000c8b7f91203e43b3996039053f7858e3f89",
+      "sourceDbTP": -41.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.072
+    },
+    {
+      "id": "v4.reference.coyote.7332a9c8778b",
+      "sourceSha256": "7332a9c8778b8bb37fb2a248073aba54eb982cbc5e2d9a66a4d5e8d8b1ce849c",
+      "sourceDbTP": -16.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.canada-goose.734972f72ca8",
+      "sourceSha256": "734972f72ca89f3a551e82dbbb06f728811492f3b11a5231ded9064bc1f04712",
+      "sourceDbTP": -15.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 11.729
+    },
+    {
+      "id": "v4.reference.house-finch.73c51d4d5822",
+      "sourceSha256": "73c51d4d5822858301c9681624c77554f227c3c72e7319b099f4aa7ac3c0e017",
+      "sourceDbTP": -20.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.bird-bald-eagle.73fa4589a3a2",
+      "sourceSha256": "73fa4589a3a200863b88ad1bf37049199b6f9f3cc92552f767e822d80237eeb3",
+      "sourceDbTP": -22.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 10.0474
+    },
+    {
+      "id": "v4.reference.american-robin.74a4cec070fc",
+      "sourceSha256": "74a4cec070fce5bbba559ef7c24a7bb2e62b15549d9bb3d1643946923491f920",
+      "sourceDbTP": -20.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.5345
+    },
+    {
+      "id": "v4.reference.roseate-spoonbill.750028e35ca1",
+      "sourceSha256": "750028e35ca10c0fa6f4504c7af7c89d0c805ffc43b661abda97257d8a390ce0",
+      "sourceDbTP": 0.5,
+      "priorGain": 0.65,
+      "gain": 0.33496543915782767,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.chimpanzee.75112ea4975c",
+      "sourceSha256": "75112ea4975c6f015c0ee0d8f58b4f5a806a8f868f5d6207002fb80b7c5726ad",
+      "sourceDbTP": -12.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.killer-whale.7518c0f9cce7",
+      "sourceSha256": "7518c0f9cce7f05a20bf841074133e76f2b06eb71b30dbcb31e8db680a045152",
+      "sourceDbTP": -10.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 8.0537
+    },
+    {
+      "id": "v4.reference.orca.758a2ffcd194",
+      "sourceSha256": "758a2ffcd194a96ac3afec8de6dbf219754dead16f7fc60db73824e014345cf8",
+      "sourceDbTP": -3.0,
+      "priorGain": 0.65,
+      "gain": 0.5011872336272722,
+      "duration": 8.9543
+    },
+    {
+      "id": "v4.reference.laughing-kookaburra.75b563450582",
+      "sourceSha256": "75b563450582ae84b1e5d7c75a88c1c869e037d6fb77f8d4b7b4bcff737ce4a3",
+      "sourceDbTP": -1.0,
+      "priorGain": 0.65,
+      "gain": 0.3981071705534972,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.eurasian-oystercatcher.75e40fb831c8",
+      "sourceSha256": "75e40fb831c8322ccdddedf3f5a12da47cfc3b867efefd18d63b363ccc2289db",
+      "sourceDbTP": -51.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.986
+    },
+    {
+      "id": "v4.reference.double-crested-cormorant.769dde317afb",
+      "sourceSha256": "769dde317afbef70750334666e07a0831c27d05a265293ca4e2b35f364186781",
+      "sourceDbTP": -29.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 8.341
+    },
+    {
+      "id": "v4.reference.red-tailed-tropicbird.76ddb98ec37f",
+      "sourceSha256": "76ddb98ec37f4227c8856918e56ac48dd54c1cf4b9e63982daded9192558a61f",
+      "sourceDbTP": -0.5,
+      "priorGain": 0.65,
+      "gain": 0.3758374042884442,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.elk.77ffbd351da2",
+      "sourceSha256": "77ffbd351da23262fdf95108b75853ab84cdf24b871d6ddeed1c1b8e457c566a",
+      "sourceDbTP": -26.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.greater-flamingo.787efbed8052",
+      "sourceSha256": "787efbed805270980e9e2d487e502ee231b13e1e4488690987c91e593fb0f76f",
+      "sourceDbTP": -21.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-loon.78915065af65",
+      "sourceSha256": "78915065af65c4f296582e9c6d21735f63cdc0df090343d881af724aff91de26",
+      "sourceDbTP": -41.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 10.24
+    },
+    {
+      "id": "v4.reference.red-shouldered-macaw.78f13b8f3fd8",
+      "sourceSha256": "78f13b8f3fd859d212725cde7de2a3563406f7d3db0c15ece0314779773fc8f3",
+      "sourceDbTP": -23.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 7.7
+    },
+    {
+      "id": "v4.reference.southern-tree-hyrax.7937c42bfc85",
+      "sourceSha256": "7937c42bfc8524cdd373632b6e84bc504ab49666d6bb455a5eafb67d68db30c1",
+      "sourceDbTP": -16.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.bird-american-robin.7a2700bbe223",
+      "sourceSha256": "7a2700bbe2233505ccf592e9e06a4b196a0feb4d2d7a4773ed5f2f110696a001",
+      "sourceDbTP": -27.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-raven.7cc8d984d7d8",
+      "sourceSha256": "7cc8d984d7d89b552af2692b40ba7225f9aa72f09a35341ea953f356359ab5c5",
+      "sourceDbTP": -3.3,
+      "priorGain": 0.65,
+      "gain": 0.5188000389289611,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.european-starling.7ce23fe53f77",
+      "sourceSha256": "7ce23fe53f77e27a75df7836a0cab3a28b955d291a28c6ccd67c7d9ddd4e93f9",
+      "sourceDbTP": -25.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 11.2152
+    },
+    {
+      "id": "v4.reference.bee.7d3df8c56364",
+      "sourceSha256": "7d3df8c563645cb602002d17bf01246b6ff1152a058617bc6f90e38a88dcbc98",
+      "sourceDbTP": -0.2,
+      "priorGain": 0.65,
+      "gain": 0.3630780547701013,
+      "duration": 2.8554
+    },
+    {
+      "id": "v4.reference.ground-squirrel.7d52d0262899",
+      "sourceSha256": "7d52d0262899d10d95eb8a874b06cd3c4094637b7c54505a3eb8b21d343bdbdb",
+      "sourceDbTP": -8.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 7.7141
+    },
+    {
+      "id": "v4.reference.bird-bald-eagle.7dd4a1f34016",
+      "sourceSha256": "7dd4a1f340163b7317ec61691ff490afe36ecd1a17c3ab56ae9f96982ac7bd3d",
+      "sourceDbTP": -9.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.alpine-marmot.7e05a446c859",
+      "sourceSha256": "7e05a446c859933425efc196b405b1b68116688d67ec518089faef798c4e31b6",
+      "sourceDbTP": -34.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 7.384
+    },
+    {
+      "id": "v4.reference.eastern-chipmunk.7e34aad4502e",
+      "sourceSha256": "7e34aad4502ec5e2b9ca271c1ed9a0cd79afd499871419d75ccb9fd911e9140f",
+      "sourceDbTP": -17.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.timber-rattlesnake.7e905d47c11d",
+      "sourceSha256": "7e905d47c11d6d530d6efee5b38b4db929861d6192ea6d27171342c5835d5b1c",
+      "sourceDbTP": -2.6,
+      "priorGain": 0.65,
+      "gain": 0.4786300923226383,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.lion.8039e7fc3eda",
+      "sourceSha256": "8039e7fc3eda3c92a4dd3076792c1f59c6157930c918e9a42f1b3ac046adb4b7",
+      "sourceDbTP": -0.6,
+      "priorGain": 0.65,
+      "gain": 0.38018939632056115,
+      "duration": 8.5158
+    },
+    {
+      "id": "v4.reference.elk.81319b4a5f04",
+      "sourceSha256": "81319b4a5f04fde20d11f4ad54a13b512443e1ea6e6fd0d34af127b649b2b7d1",
+      "sourceDbTP": -14.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.domestic-dog.81a7cbd298b8",
+      "sourceSha256": "81a7cbd298b881994d7ff946caf45deb798cc1589fc10f739045f96b0fff705f",
+      "sourceDbTP": -18.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.belted-kingfisher.82ca2cd5f512",
+      "sourceSha256": "82ca2cd5f51228a375e449b01fa612d6fa9772b035a91874c87ad2737594fde9",
+      "sourceDbTP": -7.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 7.964
+    },
+    {
+      "id": "v4.reference.chacma-baboon.8361ce774d68",
+      "sourceSha256": "8361ce774d68df2c56f728065337c76dc222e7af5ebb2dfbd45c0f5e1fb970c1",
+      "sourceDbTP": -19.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 10.1
+    },
+    {
+      "id": "v4.reference.red-footed-booby.83d9603588ac",
+      "sourceSha256": "83d9603588acf633944241701e553162e309a4ad8659a650b1356903d881ed1d",
+      "sourceDbTP": -16.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.humpback-whale.84dee1c39112",
+      "sourceSha256": "84dee1c39112775e3baad8f76d4273cf9a9c8305730ca11a3184b07aef1fa4af",
+      "sourceDbTP": -4.9,
+      "priorGain": 0.65,
+      "gain": 0.6237348354824193,
+      "duration": 3.4714
+    },
+    {
+      "id": "v4.reference.american-toad.8549134a15fd",
+      "sourceSha256": "8549134a15fd26b741070fd1f97252a805ceb47fd870c5221fd21a41125d71e4",
+      "sourceDbTP": -3.0,
+      "priorGain": 0.65,
+      "gain": 0.5011872336272722,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.great-blue-heron.85e7a4c4581f",
+      "sourceSha256": "85e7a4c4581fcbdee35f793d85def147cb55467d45ad320813f56cf23261984e",
+      "sourceDbTP": -28.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.virginia-rail.862924b4e8f0",
+      "sourceSha256": "862924b4e8f098e52c30eb3548d8a9afb5acf069495d6420e7cc78a6ee215894",
+      "sourceDbTP": -19.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.7297
+    },
+    {
+      "id": "v4.reference.black-tailed-prairie-dog.8629d805a9d1",
+      "sourceSha256": "8629d805a9d10ab29ad2956616a6b5a31089ca7807e34292a5afcd426366ebb8",
+      "sourceDbTP": -10.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-brushtail-possum.8666171ae041",
+      "sourceSha256": "8666171ae041fadef661ee392944813e9408f1cc3c3657d0d7058562ccf3ab93",
+      "sourceDbTP": -11.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-robin.86cc298cf358",
+      "sourceSha256": "86cc298cf358db3a52c4191ae09f111948bdfea8f3a5d679aab90fc02c3da8c3",
+      "sourceDbTP": -12.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.2763
+    },
+    {
+      "id": "v4.reference.river-otter.87996a26e8dd",
+      "sourceSha256": "87996a26e8dd8a46799b1df8604a82b03933b5baceea179f3883f92aa68da13d",
+      "sourceDbTP": -20.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.eurasian-coot.87b5065568a1",
+      "sourceSha256": "87b5065568a13fb75c6a3bee41f032ea1e27b3b621348e658dc0be401e014a63",
+      "sourceDbTP": -5.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.945
+    },
+    {
+      "id": "v4.reference.sooty-grouse.87e9e6be829d",
+      "sourceSha256": "87e9e6be829dad1bc15dd4825111ed17073d10a4a12051e58637facbae7eaac7",
+      "sourceDbTP": -14.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.ring-tailed-lemur.88eaa910fba4",
+      "sourceSha256": "88eaa910fba4165624b9b56d4c5f2d38493e50e128c93cd3f1ae114fe2e61ad5",
+      "sourceDbTP": -21.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 7.317
+    },
+    {
+      "id": "v4.reference.mallard.8957da607fd7",
+      "sourceSha256": "8957da607fd7ca3124906e1dad58984436860a3307cd8a296e6542e5bb4f4a8d",
+      "sourceDbTP": -46.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.plains-zebra.8a21c52a22e8",
+      "sourceSha256": "8a21c52a22e822e6289b1bb354b0f669cd8b55945bccb7d7be5b7c53971ba9cb",
+      "sourceDbTP": -52.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.785
+    },
+    {
+      "id": "v4.reference.common-raven.8e1cd578ed6d",
+      "sourceSha256": "8e1cd578ed6dcd1c74b7dc5ff167dabc035f5bfcb2148bbf6231f980a66984bd",
+      "sourceDbTP": -0.9,
+      "priorGain": 0.65,
+      "gain": 0.39355007545577747,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.lily-leaf-beetle.8e24b1bc0fd3",
+      "sourceSha256": "8e24b1bc0fd309a7eeeb1d675c28466b6954c422c093a2f7e06b037959db0f5f",
+      "sourceDbTP": -1.6,
+      "priorGain": 0.65,
+      "gain": 0.42657951880159267,
+      "duration": 7.6493
+    },
+    {
+      "id": "v4.reference.sperm-whale.8e491ae3c299",
+      "sourceSha256": "8e491ae3c2995bdaa5da223fdfaf1ad26c23e612a5c8fcf5f5fe4cd63f4ecfcf",
+      "sourceDbTP": -6.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 6.3728
+    },
+    {
+      "id": "v4.reference.geoffroy-s-tufted-ear-marmoset.8ee1ea978c77",
+      "sourceSha256": "8ee1ea978c775b4d878477606f5ef1ee4d7e444d91865cfc0d602fb6146555b9",
+      "sourceDbTP": -8.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.64
+    },
+    {
+      "id": "v4.reference.little-spotted-kiwi.8f84464d2f03",
+      "sourceSha256": "8f84464d2f035570928276cd9e3dbc53aa70b568410415286d613078cf17d65c",
+      "sourceDbTP": -16.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.pied-avocet.900794c95745",
+      "sourceSha256": "900794c95745d30fdb837a36cdfffc45d0eeece83a03a6affb36650b3266753b",
+      "sourceDbTP": -5.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 6.524
+    },
+    {
+      "id": "v4.reference.california-quail.90445c5a8696",
+      "sourceSha256": "90445c5a8696fa7bc27397687fa24d83731fb56c1d9a04d681de3e15c2ac1a77",
+      "sourceDbTP": -6.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-beaver.908604f3f980",
+      "sourceSha256": "908604f3f980a20a4b238e800c489e48e1df278b70b138e483f747cf571d6858",
+      "sourceDbTP": -15.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.song-sparrow.91114495bea1",
+      "sourceSha256": "91114495bea1c61b70fcf0b8977bb842dd7a6acffa3eb5da3aeaa2616ff5f80f",
+      "sourceDbTP": -6.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.0958
+    },
+    {
+      "id": "v4.reference.gray-partridge.9229feccad93",
+      "sourceSha256": "9229feccad9344756f07734f69572b58e15ab88b41bfadd8a5287686c58efe77",
+      "sourceDbTP": -36.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.black-capuchin.938c353fdb87",
+      "sourceSha256": "938c353fdb8774aa9ecd90adf017e19369273f9e2d0963b286d57dcfa1877d55",
+      "sourceDbTP": -8.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.elk.93bcc6842885",
+      "sourceSha256": "93bcc684288556978fc1eaa3425df584ba5177175f9bf0d7ef0ef260ab36663f",
+      "sourceDbTP": -14.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 9.1559
+    },
+    {
+      "id": "v4.reference.chimney-swift.942870cd6743",
+      "sourceSha256": "942870cd6743833f24afa16dce2f8837af9c1ab3ecea80d518fdf381205ba64d",
+      "sourceDbTP": -7.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.belted-kingfisher.94e2bf349cff",
+      "sourceSha256": "94e2bf349cffdaa9d2fd0bee6dbd731ad2d62cf10cad83e84df742ac02dc864d",
+      "sourceDbTP": -8.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.pilot-whale.95fa8c136bd2",
+      "sourceSha256": "95fa8c136bd25968e2f72a8f962838133b7d34ec873ac3102c3280ed1cb63d4d",
+      "sourceDbTP": -2.3,
+      "priorGain": 0.65,
+      "gain": 0.4623810213992603,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.bobcat.9771b3fed264",
+      "sourceSha256": "9771b3fed2645005b8081d0ab6308429cd7b25a47a9a80247c58a2d461ae4b39",
+      "sourceDbTP": -26.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 9.344
+    },
+    {
+      "id": "v4.reference.peregrine-falcon.98044c4ea60b",
+      "sourceSha256": "98044c4ea60b76729be48e238ec059e28045de90f4bdecdad097c76d4e3cb7f8",
+      "sourceDbTP": -0.1,
+      "priorGain": 0.65,
+      "gain": 0.3589219346450052,
+      "duration": 11.484
+    },
+    {
+      "id": "v4.reference.australian-king-parrot.9838bae8126c",
+      "sourceSha256": "9838bae8126cec7b303292f8ac01ab1baa2450505c00de51fcf50bb153b60f0b",
+      "sourceDbTP": -12.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.osprey.98803d206052",
+      "sourceSha256": "98803d206052738b3cd8b0505d331ef26cd29ed0f8b137eb43a6b2e72511501d",
+      "sourceDbTP": -38.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 8.3708
+    },
+    {
+      "id": "v4.reference.common-crane.99175b88658e",
+      "sourceSha256": "99175b88658ec544ca078871586587c72b92eec8652afad3d84e404401320556",
+      "sourceDbTP": -21.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.black-headed-gull.9a470d900d46",
+      "sourceSha256": "9a470d900d462c39423c8b9bc1825a78b00e548a5a51ccedb023b792489d1240",
+      "sourceDbTP": -16.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 8.7401
+    },
+    {
+      "id": "v4.reference.american-crow.9a99bb4daa71",
+      "sourceSha256": "9a99bb4daa7145c5c6d64ef46bd4c727146502f61102bc5e608562e31f494783",
+      "sourceDbTP": -12.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.horned-screamer.9afb52e95bbf",
+      "sourceSha256": "9afb52e95bbfecb4c79586a46a01493493cc32548a8e30a3bb55afac3d05198c",
+      "sourceDbTP": -1.8,
+      "priorGain": 0.65,
+      "gain": 0.436515832240166,
+      "duration": 10.048
+    },
+    {
+      "id": "v4.reference.domestic-dog.9b53846bb315",
+      "sourceSha256": "9b53846bb315771e6bfb784a6ddce96b06c82ace2f737f33fe9267f548d4e29f",
+      "sourceDbTP": -12.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.double-crested-cormorant.9b6d1308cab5",
+      "sourceSha256": "9b6d1308cab5dfd90677c8defc1690cc644b8eed96f023d520b8bbceecb6f15d",
+      "sourceDbTP": -3.1,
+      "priorGain": 0.65,
+      "gain": 0.5069907082747043,
+      "duration": 3.6052
+    },
+    {
+      "id": "v4.reference.common-snipe.9c672552d9ea",
+      "sourceSha256": "9c672552d9eabfaa6952a230f2c7e1340763d995493bf5e69f8cc506c1c7ec0b",
+      "sourceDbTP": -7.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.haddock.9cc43ee5d1d0",
+      "sourceSha256": "9cc43ee5d1d07cc788429f691d434f2aa75f8cb069bb2678b0cbd2dc2a6faf54",
+      "sourceDbTP": 0.0,
+      "priorGain": 0.65,
+      "gain": 0.35481338923357547,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.virginia-rail.9cef64c4cd61",
+      "sourceSha256": "9cef64c4cd618eb7a1c437e05dc0c657bcab1c1e1b5ffa634538d311c355cb90",
+      "sourceDbTP": -8.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 10.4104
+    },
+    {
+      "id": "v4.reference.eurasian-moorhen.9d086e4863ce",
+      "sourceSha256": "9d086e4863ce0ed0520f78f0000bed77884109d83d13aa9cb98f12e828d22147",
+      "sourceDbTP": -13.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.bald-eagle.9dab080256b9",
+      "sourceSha256": "9dab080256b914493e9da0d9a421a3ee13ce8cabd0a4d7e17eac7f8370ec2e68",
+      "sourceDbTP": 0.1,
+      "priorGain": 0.65,
+      "gain": 0.350751873952568,
+      "duration": 2.5158
+    },
+    {
+      "id": "v4.reference.red-fox.9efdacdcf94b",
+      "sourceSha256": "9efdacdcf94b1c8c15065f94b66036850801371c3d2d85826298f242395f3aac",
+      "sourceDbTP": -30.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.great-blue-heron.a071b54d37da",
+      "sourceSha256": "a071b54d37da11261b46fd64f2abda86cdfee904ff1b732726e85d0e73ac245e",
+      "sourceDbTP": -26.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 8.545
+    },
+    {
+      "id": "v4.reference.western-roe-deer.a16ebc2a347d",
+      "sourceSha256": "a16ebc2a347d63e79f51ee2ed851dc022576b4953dd9d20e938447d69538a419",
+      "sourceDbTP": -2.1,
+      "priorGain": 0.65,
+      "gain": 0.4518559443749223,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.wild-turkey.a29783e37709",
+      "sourceSha256": "a29783e37709c2328538c8c1c016fcf3ca00c213ad2326519aa6b702e69a6aa1",
+      "sourceDbTP": -1.0,
+      "priorGain": 0.65,
+      "gain": 0.3981071705534972,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.white-stork.a2a892586be2",
+      "sourceSha256": "a2a892586be20128ec57c73fd46dc59cef79bba53de1baf101b9f132400c3991",
+      "sourceDbTP": -31.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.2178
+    },
+    {
+      "id": "v4.reference.strawberry-poison-dart-frog.a34241079953",
+      "sourceSha256": "a342410799537a14205beaba06d09d29f8f81aa0a9c96bdd0c0644411999ff04",
+      "sourceDbTP": -26.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 7.294
+    },
+    {
+      "id": "v4.reference.white-stork.a3b8764e4518",
+      "sourceSha256": "a3b8764e4518016666bfb1e6881e462a84d2890d0650aedd544a1d6c712d4d15",
+      "sourceDbTP": -19.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 6.337
+    },
+    {
+      "id": "v4.reference.black-headed-gull.a41177af7ac7",
+      "sourceSha256": "a41177af7ac7ad57b7fff1e94236470effeebb6b237bcf43aaeba9e1ae0e8019",
+      "sourceDbTP": -0.0,
+      "priorGain": 0.65,
+      "gain": 0.35481338923357547,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.domestic-cat.a4684e2a7f1c",
+      "sourceSha256": "a4684e2a7f1c2560d69f8cb79fdd6f21e2b0107c6f9ade7eec69ab197fc61902",
+      "sourceDbTP": -16.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.red-bellied-woodpecker.a49ce645b32d",
+      "sourceSha256": "a49ce645b32d68b634f64da6e3529cb229fadead49f1ffd8bd0b04fdb8f10c49",
+      "sourceDbTP": -22.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.south-polar-skua.a4a20267c053",
+      "sourceSha256": "a4a20267c053296e655b30a8053824c36bc600c84350ead0c26d152e4ee75dcb",
+      "sourceDbTP": -3.0,
+      "priorGain": 0.65,
+      "gain": 0.5011872336272722,
+      "duration": 5.7406
+    },
+    {
+      "id": "v4.reference.bottlenose-dolphin.a4f63644be65",
+      "sourceSha256": "a4f63644be65701d75ac7d7b7e3729a4806b552699c59830ce9c5ec21a12a20f",
+      "sourceDbTP": -6.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.5852
+    },
+    {
+      "id": "v4.reference.barn-swallow.a5ac613cc016",
+      "sourceSha256": "a5ac613cc01681b762e51a418b23f6bfbe551e34dbf4cf240b793cc9856eb703",
+      "sourceDbTP": -14.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.alpine-marmot.a706ffa6dc65",
+      "sourceSha256": "a706ffa6dc6503c623d7bad177cf228e72baa0162aa2475dc14dd2f7e0e3f1c2",
+      "sourceDbTP": 0.1,
+      "priorGain": 0.65,
+      "gain": 0.350751873952568,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.scarlet-tanager.a8dd601848e7",
+      "sourceSha256": "a8dd601848e795962577a6c5098682a67fa1a824fd22bc88354d6ebfc56b0855",
+      "sourceDbTP": -21.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.western-honey-bee.a9a9d71b249f",
+      "sourceSha256": "a9a9d71b249fe25842a67222dd1c507e6481cffdf895aa557cbd331d440c58d7",
+      "sourceDbTP": -19.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 10.681
+    },
+    {
+      "id": "v4.reference.anna-s-hummingbird.a9c2a7c58bb2",
+      "sourceSha256": "a9c2a7c58bb25fb68c94db5c264e66d482063916fbd49d6e8507c844a7c60369",
+      "sourceDbTP": -25.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 11.2572
+    },
+    {
+      "id": "v4.reference.soundscapes.aa2a8a095a0d",
+      "sourceSha256": "aa2a8a095a0d3a7a12b99eed9196b2139a0bd95bb3c2416470170448c67f2033",
+      "sourceDbTP": -23.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.boreal-chorus-frog.aa4f26032331",
+      "sourceSha256": "aa4f26032331124c7702ea90ee48d8c5625e92c9089cc8366ad537ce326cf316",
+      "sourceDbTP": 2.9,
+      "priorGain": 0.65,
+      "gain": 0.25409727055493053,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.northern-white-breasted-hedgehog.ac4f62b1a285",
+      "sourceSha256": "ac4f62b1a285485016b343779604909db6e7c3d1fb2126cda0883178d95dbff0",
+      "sourceDbTP": -32.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.eurasian-curlew.acf63458e5e4",
+      "sourceSha256": "acf63458e5e4514e35156e9e53fc8fe522ad1989f109989bd834422f5b3ad42e",
+      "sourceDbTP": -12.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 7.829
+    },
+    {
+      "id": "v4.reference.hairy-woodpecker.ae4f03397ae0",
+      "sourceSha256": "ae4f03397ae0d49ab29dd1f73f706c5953ddfe11817cbedee4ea97ca4358ac0e",
+      "sourceDbTP": -12.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-snipe.b1ec36b702f6",
+      "sourceSha256": "b1ec36b702f63efe257756deb707526a5922bc9a1010ed83da7c6ab12a878198",
+      "sourceDbTP": -6.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.eurasian-bittern.b28b6b08327d",
+      "sourceSha256": "b28b6b08327d3bd0527b834b6c75c2581c8b343bafd76990f758dd9d120ea9e4",
+      "sourceDbTP": -8.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 1.6389
+    },
+    {
+      "id": "v4.reference.blue-jay.b30c7e38e269",
+      "sourceSha256": "b30c7e38e26932d40b6a5303a9384b864df5806f20e21519961817c6c8b47b2e",
+      "sourceDbTP": -14.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.orca.b381cc19e38c",
+      "sourceSha256": "b381cc19e38c89ca09703c4cff3e349ae1a243fe04b60689254cc242462488f0",
+      "sourceDbTP": -5.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.south-american-coati.b3bf2380a09d",
+      "sourceSha256": "b3bf2380a09d4b724df24c33309353ab53bae5394efa8a6156c17cac779cf5c3",
+      "sourceDbTP": -5.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 10.392
+    },
+    {
+      "id": "v4.reference.peregrine-falcon.b50c091862ec",
+      "sourceSha256": "b50c091862ec22de0e1d7a239668ce25d8d8059b5cfec5605bee290c604f0eb1",
+      "sourceDbTP": -25.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.02
+    },
+    {
+      "id": "v4.reference.red-fox.b53f9ec913fd",
+      "sourceSha256": "b53f9ec913fdc7102b843801d5fe9df089425ce91bfd5dc255bd1bcb0973d1ac",
+      "sourceDbTP": -12.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 8.6911
+    },
+    {
+      "id": "v4.reference.humpback-whale.b64b4bb2621c",
+      "sourceSha256": "b64b4bb2621cf9ce58268c18af1c0e36452588580c01964d66f2d66fbb24c076",
+      "sourceDbTP": -11.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.elk.b70a93855199",
+      "sourceSha256": "b70a938551994e0a8017c0fdfa4750f43ec78d4d250b37cbf695e4c855f13ccc",
+      "sourceDbTP": -10.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.eurasian-kestrel.b8726e6408f8",
+      "sourceSha256": "b8726e6408f855e7d16689d45ab245eb8da6fbd5a9fe752c5104e264be4706c4",
+      "sourceDbTP": -48.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.northern-elephant-seal.b8d1b5032726",
+      "sourceSha256": "b8d1b503272694403eef1fcb535cde2803cfaddc5e9b834a697772dabcecfafc",
+      "sourceDbTP": -1.3,
+      "priorGain": 0.65,
+      "gain": 0.4120975190973302,
+      "duration": 5.391
+    },
+    {
+      "id": "v4.reference.bald-eagle.bc39f3faa336",
+      "sourceSha256": "bc39f3faa3362e447526181ffb34a7004a5bf2567174d42a809d33a3a64791e0",
+      "sourceDbTP": -28.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 8.2895
+    },
+    {
+      "id": "v4.reference.eurasian-kestrel.bcb7576aae50",
+      "sourceSha256": "bcb7576aae50ed9ff37ebbb7aad179b81811741d2f6c36acf02a27bb78f9f00b",
+      "sourceDbTP": -39.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.malabar-grey-hornbill.bd30fcfbcdbe",
+      "sourceSha256": "bd30fcfbcdbe15f2ea5d31192e66e6c8f801ca92382c1e48057b5df19bcce0dc",
+      "sourceDbTP": -21.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.european-field-cricket.bd85bc11d8dc",
+      "sourceSha256": "bd85bc11d8dc41598530785a30f035d71b57c84fd947fd894efeb029f471922e",
+      "sourceDbTP": 0.6,
+      "priorGain": 0.65,
+      "gain": 0.3311311214825911,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-toad.bdf0a96222f7",
+      "sourceSha256": "bdf0a96222f726901f36a00a334a8e211f2ff2b7f2caddf16aff094f9166a582",
+      "sourceDbTP": -9.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 6.2901
+    },
+    {
+      "id": "v4.reference.helmeted-guineafowl.be69d76d412c",
+      "sourceSha256": "be69d76d412c148d567148416d631db9b12800ef62f919464a6941a9a70664dc",
+      "sourceDbTP": -20.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.southern-tree-hyrax.be836f294e9e",
+      "sourceSha256": "be836f294e9e31bc3b06c5180e4caa003c545d2d59a2d776ad65dc2e8eb7481d",
+      "sourceDbTP": -29.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.virginia-giant-hover-fly.bf12204ba079",
+      "sourceSha256": "bf12204ba079276ccea1783082cb58eb7f60495ebdade8dc371ff38f1016a19b",
+      "sourceDbTP": -18.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.osprey.bf76643ef8f7",
+      "sourceSha256": "bf76643ef8f750a23357fce07a652f0f8d64748dcfbdd5f96677f70014a53306",
+      "sourceDbTP": -5.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.5606
+    },
+    {
+      "id": "v4.reference.wolf.bfc073e6226f",
+      "sourceSha256": "bfc073e6226f2a21a87567b898c5e5674a53284353128da0d1e0f69b97e8b62f",
+      "sourceDbTP": -0.7,
+      "priorGain": 0.65,
+      "gain": 0.38459178204535355,
+      "duration": 8.3933
+    },
+    {
+      "id": "v4.reference.greater-roadrunner.c00c158c48ea",
+      "sourceSha256": "c00c158c48ea2523fe6575e4f2a0f48187465047f3fef78900008fd197eae058",
+      "sourceDbTP": -5.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.european-starling.c08cf2c1c54c",
+      "sourceSha256": "c08cf2c1c54cacf2b49cfa2f705aa31a4a84ecc5b57d8fe214309543398910f7",
+      "sourceDbTP": -9.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.little-grebe.c0f49d7d9dee",
+      "sourceSha256": "c0f49d7d9dee12806205eed97bcd2404d4bedde687b19f99434c5651b3c1621d",
+      "sourceDbTP": -8.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 2.2361
+    },
+    {
+      "id": "v4.reference.belted-kingfisher.c1932f16cf3e",
+      "sourceSha256": "c1932f16cf3e611c9de0bfddf56b17dbec299f4ef71ea13e57b4cfe59d580121",
+      "sourceDbTP": -0.7,
+      "priorGain": 0.65,
+      "gain": 0.38459178204535355,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.eurasian-moorhen.c27de2dbea96",
+      "sourceSha256": "c27de2dbea967ee9d6ef552c47eade6d74ca0db14ad35d5bcdb0f6baacca937d",
+      "sourceDbTP": -18.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 9.6797
+    },
+    {
+      "id": "v4.reference.humpback-whale.c37f52a54583",
+      "sourceSha256": "c37f52a54583a8c7012cdc6f38059811524484b670070f8693cc72bc2b03670a",
+      "sourceDbTP": -0.1,
+      "priorGain": 0.65,
+      "gain": 0.3589219346450052,
+      "duration": 7.5574
+    },
+    {
+      "id": "v4.reference.bison.c7c5c71e5037",
+      "sourceSha256": "c7c5c71e5037c445690e11085748790ce8909bffbf1cf792e9cca4e536486dc1",
+      "sourceDbTP": 0.0,
+      "priorGain": 0.65,
+      "gain": 0.35481338923357547,
+      "duration": 6.3557
+    },
+    {
+      "id": "v4.reference.northern-cardinal.c8d333fe1e67",
+      "sourceSha256": "c8d333fe1e67222c0a2a8a33f163d2ec69c776b28e1f97f40f877ff5e9059d1e",
+      "sourceDbTP": -17.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.common-raven.cb202f97c2e9",
+      "sourceSha256": "cb202f97c2e975faa5944b605a36f10979633207a85142869655e0d1b9917d04",
+      "sourceDbTP": -1.0,
+      "priorGain": 0.65,
+      "gain": 0.3981071705534972,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-crow.cbbf3580e644",
+      "sourceSha256": "cbbf3580e64496f144d511ddfc9af158f1d0067577955125a25d878c985427fc",
+      "sourceDbTP": -1.5,
+      "priorGain": 0.65,
+      "gain": 0.4216965034285822,
+      "duration": 10.6021
+    },
+    {
+      "id": "v4.reference.big-brown-bat.cf243c579fc5",
+      "sourceSha256": "cf243c579fc568de693c214112aca95f899aea9ef0186747843fd2646002212c",
+      "sourceDbTP": -15.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.9995
+    },
+    {
+      "id": "v4.reference.red-fox.d029a5ac040e",
+      "sourceSha256": "d029a5ac040e255a29a3418332e6b724e0ea3dcaddcfd336c833bd509a972475",
+      "sourceDbTP": -8.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.gentoo-penguin.d20861398a12",
+      "sourceSha256": "d20861398a128bd479e70d7fedff1796f373b02d35d2d95ce7d4ab9b6c43a1aa",
+      "sourceDbTP": -5.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.north-american-river-otter.d3e64e6010ef",
+      "sourceSha256": "d3e64e6010ef6c7ad0608d62d19dfeb7defb81484b52767788c9f4651cc99dc6",
+      "sourceDbTP": -23.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 3.984
+    },
+    {
+      "id": "v4.reference.pampas-fox.d4f6de8baece",
+      "sourceSha256": "d4f6de8baece1cf7cc7c8b6adbb7b58843e3130ee1ac88a22e5b14140175082a",
+      "sourceDbTP": -40.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.black-capuchin.d51ca1c2712e",
+      "sourceSha256": "d51ca1c2712ec1e473d8b8c4ccd6e3d546794be05e01a420f7ed9ebe7b6f83de",
+      "sourceDbTP": -10.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.squirrel.d5fb8f2734f9",
+      "sourceSha256": "d5fb8f2734f9d6b926c3c55583bd5573634f5c470ba5ccb0d7e07f50bd77f76f",
+      "sourceDbTP": -0.4,
+      "priorGain": 0.65,
+      "gain": 0.37153522909717257,
+      "duration": 4.0047
+    },
+    {
+      "id": "v4.reference.gentoo-penguin.d64921b653ef",
+      "sourceSha256": "d64921b653ef09c58738badc73dc5d12654db19c8e71b3ead363e215ed7a579c",
+      "sourceDbTP": -22.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.2738
+    },
+    {
+      "id": "v4.reference.common-tern.d7a0f5d09aad",
+      "sourceSha256": "d7a0f5d09aadede2fd1ee49178173607a3c5caaa1ae3cddc6b94ca96e7c3ea63",
+      "sourceDbTP": -39.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.antarctic-fur-seal.d84e57901f86",
+      "sourceSha256": "d84e57901f86d176e727ef4419ab7beb4e3fabc3fba7f287b30d426a97cbaec1",
+      "sourceDbTP": -16.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.6283
+    },
+    {
+      "id": "v4.reference.california-ground-squirrel.d889a81af74b",
+      "sourceSha256": "d889a81af74bf302d4b33255632c5eb0b9e452036c99e91b71ac86ae9a636519",
+      "sourceDbTP": -26.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 11.52
+    },
+    {
+      "id": "v4.reference.elk.dc5c36796516",
+      "sourceSha256": "dc5c367965161eb9c9e25eb08a762ef2ec27a5f6fd3ca8d6e0f2e0ea32959675",
+      "sourceDbTP": 0.1,
+      "priorGain": 0.65,
+      "gain": 0.350751873952568,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.southern-flying-squirrel.dd68b8fc3f9d",
+      "sourceSha256": "dd68b8fc3f9d0012606cf9d6ee4a9cf3b13b7380cd2cb0d5998d5887ce2ffcb8",
+      "sourceDbTP": -33.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 7.018
+    },
+    {
+      "id": "v4.reference.antarctic-fur-seal.ddb3082a7d93",
+      "sourceSha256": "ddb3082a7d9324ff073bb4e6b9bd9ac47ea8f897d9462e7e92b396134d84090d",
+      "sourceDbTP": -2.9,
+      "priorGain": 0.65,
+      "gain": 0.49545019080479025,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.red-bellied-woodpecker.de0daae0b56e",
+      "sourceSha256": "de0daae0b56ef20744eb6924fe89ac4a130760310156311ace4f709828177921",
+      "sourceDbTP": -11.4,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 10.5011
+    },
+    {
+      "id": "v4.reference.malabar-grey-hornbill.de6322e78903",
+      "sourceSha256": "de6322e789030b088e847ef6ad8abf763b19bf248561495f8c1ded098ce3bbc3",
+      "sourceDbTP": -15.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.north-atlantic-right-whale-1.df810729632f",
+      "sourceSha256": "df810729632f7e99ed69dab10370586e0af424f4424283de7a4a7d0d93d4f42c",
+      "sourceDbTP": -19.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.timber-rattlesnake.df842971c2e5",
+      "sourceSha256": "df842971c2e54cbcadd9202b3ec0e35fc409868dc8b2158aa6b2c809283b4223",
+      "sourceDbTP": -26.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 9.36
+    },
+    {
+      "id": "v4.reference.blue-jay.e1234ac16327",
+      "sourceSha256": "e1234ac163271e3b7acd250d4e4ea7ea19818aada96d8e213abf9b068968aa71",
+      "sourceDbTP": -12.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.crickets.e15a0818d847",
+      "sourceSha256": "e15a0818d8476a0d8dfb7293cf8d3072a897adc21901d0985108b181fa856081",
+      "sourceDbTP": -32.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-bullfrog.e16a3fb48ae0",
+      "sourceSha256": "e16a3fb48ae0e21968b4f68d7fb003800aa4071b71f94dea72f2af2dc9c827b4",
+      "sourceDbTP": -16.1,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.4587
+    },
+    {
+      "id": "v4.reference.hairy-woodpecker.e4b24a36fd4d",
+      "sourceSha256": "e4b24a36fd4d14166c7457376db84f041a7347144b108daf9a83ba5ad09de6e1",
+      "sourceDbTP": -0.9,
+      "priorGain": 0.65,
+      "gain": 0.39355007545577747,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.belted-kingfisher.e4ef1d873161",
+      "sourceSha256": "e4ef1d8731611f4f935f3e1bf885f6779444a76bf5d8dc1a00f8e40866909f98",
+      "sourceDbTP": -12.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-robin.e571320f2fc7",
+      "sourceSha256": "e571320f2fc78f9fa97dff8ab415a7bbebcb0bb1a37cb431844384047e42c2b9",
+      "sourceDbTP": -25.5,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.domestic-cat.e582839a77e3",
+      "sourceSha256": "e582839a77e326eaaa6e9bcd844858dcbb6d7149ea0517eaf4cde745de77bb5d",
+      "sourceDbTP": -12.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.western-honey-bee.e8b9e336d5a7",
+      "sourceSha256": "e8b9e336d5a7f2de39389ebee41f72bfa285221a7387705c6c3a4cd95fa1c0d5",
+      "sourceDbTP": -35.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.virginia-giant-hover-fly.eb0ebb8648d6",
+      "sourceSha256": "eb0ebb8648d6ae467bd2c1301b80546f4fefd4557944adc35df9361381cb1390",
+      "sourceDbTP": -27.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.crested-lark.ebcd90cd6f75",
+      "sourceSha256": "ebcd90cd6f75619c72dbb92d9ae9e05181a4ed76fcdd7aa10b24cbe3ddd8cf5a",
+      "sourceDbTP": -9.2,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 1.392
+    },
+    {
+      "id": "v4.reference.golden-jackal.ec20e6021367",
+      "sourceSha256": "ec20e60213673be366be54c7c1b979db9b1318076432f500c28a32aac98f40e7",
+      "sourceDbTP": -30.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.mourning-dove.ee1bee6a716d",
+      "sourceSha256": "ee1bee6a716dbc7d475aa3386c53807405386e89c245bd78fa0d16a9701c4eda",
+      "sourceDbTP": -16.6,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-bullfrog.efd72acdb3a9",
+      "sourceSha256": "efd72acdb3a943aec9693ec0a6833245ddeebb5af0ff11dd44eaff83df5d68a3",
+      "sourceDbTP": -15.9,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 9.9413
+    },
+    {
+      "id": "v4.reference.sugar-glider.f0ba4c1737c8",
+      "sourceSha256": "f0ba4c1737c84110e6c13e65302ca81a31db229014b2d6379e97b4d2d87a79d4",
+      "sourceDbTP": -31.8,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 5.735
+    },
+    {
+      "id": "v4.reference.european-starling.f1486b182675",
+      "sourceSha256": "f1486b1826752003756085b6b8a188fe8fc21b44257a7e64ee9d7d8b5d8a2da2",
+      "sourceDbTP": -17.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 4.4931
+    },
+    {
+      "id": "v4.reference.common-raven.f24453d6bf6c",
+      "sourceSha256": "f24453d6bf6c130492e10ab3269e238ea10ffeef94c45f7ad6e3c9e9247c6cd5",
+      "sourceDbTP": -2.9,
+      "priorGain": 0.65,
+      "gain": 0.49545019080479025,
+      "duration": 10.0245
+    },
+    {
+      "id": "v4.reference.bird-american-coots.f2664945b3fa",
+      "sourceSha256": "f2664945b3fad1aa64aa0ece335685ce4ada5a8195416464ce761998ad65797b",
+      "sourceDbTP": -19.0,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.california-quail.f2d01b201769",
+      "sourceSha256": "f2d01b201769a2821d112fb3ae24f084001912564aeca7f0db910d59625fc705",
+      "sourceDbTP": -1.8,
+      "priorGain": 0.65,
+      "gain": 0.436515832240166,
+      "duration": 8.1273
+    },
+    {
+      "id": "v4.reference.american-pika.f423385d31a7",
+      "sourceSha256": "f423385d31a75df73b550de50cb42c588c722c86ad643ba7e608810ae27aa439",
+      "sourceDbTP": -3.7,
+      "priorGain": 0.65,
+      "gain": 0.5432503314924332,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.trumpeter-swan.f8f44533c970",
+      "sourceSha256": "f8f44533c9704c481e4c19b0604232a04b40828ca70a4f8a373a776984968d3c",
+      "sourceDbTP": -8.7,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 10.9861
+    },
+    {
+      "id": "v4.reference.california-ground-squirrel.fabc7b9daa8f",
+      "sourceSha256": "fabc7b9daa8f5773a43066c5871f8974a30a8568d2d06281a3f4d7d5d03be7af",
+      "sourceDbTP": -2.8,
+      "priorGain": 0.65,
+      "gain": 0.4897788193684462,
+      "duration": 9.1959
+    },
+    {
+      "id": "v4.reference.eurasian-magpie.fec31efda967",
+      "sourceSha256": "fec31efda967aff3b8f892524725f78ff1db441dec85e9fa19585ba67532ec45",
+      "sourceDbTP": -28.3,
+      "priorGain": 0.65,
+      "gain": 0.65,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.american-robin.ff39bf5255cb",
+      "sourceSha256": "ff39bf5255cb4bcfacde55dacf9ccc54e4c963cc9aebad6de4b289342b09c4b7",
+      "sourceDbTP": -1.7,
+      "priorGain": 0.65,
+      "gain": 0.43151907682776525,
+      "duration": 12
+    },
+    {
+      "id": "v4.reference.laysan-albatross.fff6eab17f74",
+      "sourceSha256": "fff6eab17f746a0845b4e59d6a7ce77940dd8093bade62a10282d2598b1df37a",
+      "sourceDbTP": -2.8,
+      "priorGain": 0.65,
+      "gain": 0.4897788193684462,
+      "duration": 12
+    }
+  ],
+  "retainedPartialPreviews": [
+    {
+      "priorPath": "audition/v4.reference.wood-frog.00f56556d8a6.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.wood-frog.00f56556d8a6.wav",
+      "sha256": "367cb89df2f5e6b273719e344db7fee31bcc1a30c48a14833a05498e302f4009"
+    },
+    {
+      "priorPath": "audition/v4.reference.common-crane.0229636a9cf7.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.common-crane.0229636a9cf7.wav",
+      "sha256": "4d12811ad261c5ecde30ff0357c2d7357ab94e0aa1441781d908a38bb0844db4"
+    },
+    {
+      "priorPath": "audition/v4.reference.australian-king-parrot.024ba3023be7.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.australian-king-parrot.024ba3023be7.wav",
+      "sha256": "537791654dc6cd1e52ed8e37ce316d0dc73d8aa48133495b856c40bb5db0b1da"
+    },
+    {
+      "priorPath": "audition/v4.reference.coyotes.03431aad9e97.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.coyotes.03431aad9e97.wav",
+      "sha256": "1c3abd11cc46d6fad1680772648ad807aa7c1e512cdb82646e776957809d3a71"
+    },
+    {
+      "priorPath": "audition/v4.reference.pacific-golden-plover.03d5dadc1e4f.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.pacific-golden-plover.03d5dadc1e4f.wav",
+      "sha256": "e737418a925a8e92895283beb5b12542935782621b6a78945a4b1e53250099c1"
+    },
+    {
+      "priorPath": "audition/v4.reference.australian-ibis.044a6d14429f.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.australian-ibis.044a6d14429f.wav",
+      "sha256": "e059a92131118fcf228e0791b55149fba915260c9ab41e6d3609f43f5d8fb5ea"
+    },
+    {
+      "priorPath": "audition/v4.reference.bird-bald-eagle.048bac8d4534.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.bird-bald-eagle.048bac8d4534.wav",
+      "sha256": "a38d4254bbafdd22db86617a2aab935aec17377b78e596bc3bd358191c9da8cc"
+    },
+    {
+      "priorPath": "audition/v4.reference.gray-wolf.04d4ed79dd5f.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.gray-wolf.04d4ed79dd5f.wav",
+      "sha256": "9b5dc7336d1db3c43aeae1cc42197c386f5fa023d1aa1c655250c2bbe2967aff"
+    },
+    {
+      "priorPath": "audition/v4.reference.humpback-whale.054cae822fbd.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.humpback-whale.054cae822fbd.wav",
+      "sha256": "76ac99c5138d8ebb7d3a73931adde53f4806112fbfd5c54155f04c2baf431e0c"
+    },
+    {
+      "priorPath": "audition/v4.reference.elk.05fa93caaeb9.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.elk.05fa93caaeb9.wav",
+      "sha256": "bb5db79fa7e3e7e26e1800a0b0743075ee96438e371b70317ceb19dea6d849a8"
+    },
+    {
+      "priorPath": "audition/v4.reference.australian-ibis.060f841416e3.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.australian-ibis.060f841416e3.wav",
+      "sha256": "1f1f622e724d642d964093de99d6c0f29fc537c76d80caaabd4ad24cf49d5404"
+    },
+    {
+      "priorPath": "audition/v4.reference.koala.074a40d353ec.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.koala.074a40d353ec.wav",
+      "sha256": "067d2a57ee389069a3db4d3105f976bf7d5b123a5a3fb0339cf77e5b43dc2d0f"
+    },
+    {
+      "priorPath": "audition/v4.reference.common-brushtail-possum.0833ed054719.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.common-brushtail-possum.0833ed054719.wav",
+      "sha256": "cd3d6741c9154ec2289b270c9801ca488ab8343d995399e6e1267e6bb1b7bb5a"
+    },
+    {
+      "priorPath": "audition/v4.reference.long-tailed-macaque.08f100ee0fa6.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.long-tailed-macaque.08f100ee0fa6.wav",
+      "sha256": "cbb25ae2a52c53b8549052c1eafec81960b420eb80a0471b72d21840b8030c13"
+    },
+    {
+      "priorPath": "audition/v4.reference.canada-geese.09938e23be8a.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.canada-geese.09938e23be8a.wav",
+      "sha256": "7b323b1029b054dcced6e7520a79ad0283b4b83b5b717d8218ee8d129808cd3b"
+    },
+    {
+      "priorPath": "audition/v4.reference.common-raccoon.09fc064f9806.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.common-raccoon.09fc064f9806.wav",
+      "sha256": "cb4c53a1120b3ee2f76b5042de3732c1386b9c4110a131f8aeb46b83e1cb2a67"
+    },
+    {
+      "priorPath": "audition/v4.reference.laysan-albatross.0aec0c74f100.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.laysan-albatross.0aec0c74f100.wav",
+      "sha256": "208e7c5e753d686c037ad14dd94b06cf476be704b4dd165b40ea0f7e0a1a00ec"
+    },
+    {
+      "priorPath": "audition/v4.reference.elk.0c6b38fe14ea.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.elk.0c6b38fe14ea.wav",
+      "sha256": "e2a668a67409515ba99dbd80f16d96a0d7c6d6b9611ac4218b1a37877fadcb4d"
+    },
+    {
+      "priorPath": "audition/v4.reference.snowy-egret.0eda9e600db8.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.snowy-egret.0eda9e600db8.wav",
+      "sha256": "15dffa1785a282ecdc40f2dceddf8710678b99d197db00319593ed542c7fc35d"
+    },
+    {
+      "priorPath": "audition/v4.reference.hairy-woodpecker.0f6672f4ed0b.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.hairy-woodpecker.0f6672f4ed0b.wav",
+      "sha256": "3c6e34b0876b4633cc72d41c710a8e51ba873c4180a0b7265f44c727e8725a50"
+    },
+    {
+      "priorPath": "audition/v4.reference.ash-cicada.0fd2024353d2.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.ash-cicada.0fd2024353d2.wav",
+      "sha256": "59bdc3fad9340e398d57325bd9a8c770b36ad42bed30239e478f12b1cfa8d29a"
+    },
+    {
+      "priorPath": "audition/v4.reference.bow-winged-grasshopper.103eea9f1c40.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.bow-winged-grasshopper.103eea9f1c40.wav",
+      "sha256": "41a2cf41af0f4f1e8fdc3914b1cc2130beffad164f95b855e1970273159b2074"
+    },
+    {
+      "priorPath": "audition/v4.reference.pacific-white-sided-dolphin.10aacd8b0edb.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.pacific-white-sided-dolphin.10aacd8b0edb.wav",
+      "sha256": "d4974a272243cf62a6ddc2fb033e26abfed79bab1fb3653ff93b18b1f81ed3c1"
+    },
+    {
+      "priorPath": "audition/v4.reference.little-grebe.10b1f1b31f86.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.little-grebe.10b1f1b31f86.wav",
+      "sha256": "a93b5ee77d35f9c47158b2784a320d4baf00e0ed9f2e86d40fec87c6ceea03ac"
+    },
+    {
+      "priorPath": "audition/v4.reference.ring-necked-pheasant.111e6626c372.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.ring-necked-pheasant.111e6626c372.wav",
+      "sha256": "be854fdfe5f8d245073f958d1993e1c0fe471a5856bb7d7f1dbe0b5ce6e352b6"
+    },
+    {
+      "priorPath": "audition/v4.reference.house-finch.1382b2479918.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.house-finch.1382b2479918.wav",
+      "sha256": "d216acde18e52080bbebe05e340313f5cd18e99e1f42ff67521ddf1d277f0a12"
+    },
+    {
+      "priorPath": "audition/v4.reference.northern-elephant-seal.13e1df6616d7.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.northern-elephant-seal.13e1df6616d7.wav",
+      "sha256": "2f91ba72d8cd4d65c8b72fc672a1391f645a84f799824b8bf3261348eac3589b"
+    },
+    {
+      "priorPath": "audition/v4.reference.asian-house-gecko.14331e1486b9.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.asian-house-gecko.14331e1486b9.wav",
+      "sha256": "73cd513b9ab16fc3496b4e6087e083a66e15824fa961e33cd3c440050ac37b8c"
+    },
+    {
+      "priorPath": "audition/v4.reference.red-billed-chough.143fde2e74eb.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.red-billed-chough.143fde2e74eb.wav",
+      "sha256": "c5722243f8e9135559c7e3f8970a66ab6dccadad6f58d2d3d46ad6375e0151a1"
+    },
+    {
+      "priorPath": "audition/v4.reference.wolves.1520267dbb85.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.wolves.1520267dbb85.wav",
+      "sha256": "dc26c9a9b991707dedfffd3b73c8e0bb9ac4228f66756c118425369e7c14f9b9"
+    },
+    {
+      "priorPath": "audition/v4.reference.eurasian-bittern.175766b71e75.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.eurasian-bittern.175766b71e75.wav",
+      "sha256": "3a5fa9702adb89d9aa413a407e9aeecf14f67a070194b7f97ee5eb5c8c2bf9a0"
+    },
+    {
+      "priorPath": "audition/v4.reference.red-legged-seriema.1a2826c9e9e8.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.red-legged-seriema.1a2826c9e9e8.wav",
+      "sha256": "4dcb17367489082b1af144f1eb19d2d644da372b7ac9a810300d8a9ba43819bc"
+    },
+    {
+      "priorPath": "audition/v4.reference.eurasian-oystercatcher.1a66aae29bda.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.eurasian-oystercatcher.1a66aae29bda.wav",
+      "sha256": "0d3fb545c1fdea4fd32b3cd2d6a5ec6f45d6feec300606ccc89bdb7072890f7f"
+    },
+    {
+      "priorPath": "audition/v4.reference.barn-swallow.1b4038c05709.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.barn-swallow.1b4038c05709.wav",
+      "sha256": "61ba4497efd207bcced0239921acb422e8aea24573ae4b27bb4b7554c2d9708a"
+    },
+    {
+      "priorPath": "audition/v4.reference.wild-turkey.1c3e236a0506.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.wild-turkey.1c3e236a0506.wav",
+      "sha256": "c944967212ece5d03b25dd64d955cb43496871bd10f309fdb81eb9024319bcc1"
+    },
+    {
+      "priorPath": "audition/v4.reference.gray-partridge.1d0ec0eff897.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.gray-partridge.1d0ec0eff897.wav",
+      "sha256": "a7f185d443c7af9f554bb0aab5710f5c4e4862af83d1bb239a8a10d727d253b7"
+    },
+    {
+      "priorPath": "audition/v4.reference.red-legged-seriema.1d4ecd434598.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.red-legged-seriema.1d4ecd434598.wav",
+      "sha256": "cb7de9e684453a91a49cc87840016319361571859813258ad798d51781d4a3bc"
+    },
+    {
+      "priorPath": "audition/v4.reference.chimney-swift.1dd5fcc9dff5.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.chimney-swift.1dd5fcc9dff5.wav",
+      "sha256": "39b72b2f222dc1ac23a6e9c9542077038c10b8d0c85b784dc288361c9982239b"
+    },
+    {
+      "priorPath": "audition/v4.reference.common-loon.1fb0b8d51ddc.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.common-loon.1fb0b8d51ddc.wav",
+      "sha256": "99c3cea8e445a0210fc4c88502c2e90f1179e81e7c67a5c0c865518b70def377"
+    },
+    {
+      "priorPath": "audition/v4.reference.pacific-white-sided-dolphin.20c37db8bd38.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.pacific-white-sided-dolphin.20c37db8bd38.wav",
+      "sha256": "e838600cb31295ce497fa3a7fa58b13940ef9cc40d5572648158e4e7ff9f558a"
+    },
+    {
+      "priorPath": "audition/v4.reference.canada-goose.21a4ccabe65c.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.canada-goose.21a4ccabe65c.wav",
+      "sha256": "2e96a5d3067260c4d5284233140148457149842261fb6c9d67f8035c350791a0"
+    },
+    {
+      "priorPath": "audition/v4.reference.barn-swallow.21c3b02d28e0.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.barn-swallow.21c3b02d28e0.wav",
+      "sha256": "90c857e7e10f8a897c76793d21a7a94fb1df979c84fb054d828436d4d95ac999"
+    },
+    {
+      "priorPath": "audition/v4.reference.hairy-woodpecker.22204684e9c5.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.hairy-woodpecker.22204684e9c5.wav",
+      "sha256": "06d4d39a1c79fbe94a33e5ce6a06807126b6a3a57a245675b01c391ef483bc9c"
+    },
+    {
+      "priorPath": "audition/v4.reference.western-roe-deer.22481454ca94.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.western-roe-deer.22481454ca94.wav",
+      "sha256": "301144429316beea915da7e9ac0bdd2383ee41b5bafdb3d7812fb73ce4a226e2"
+    },
+    {
+      "priorPath": "audition/v4.reference.bow-winged-grasshopper.229c0b3454b0.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.bow-winged-grasshopper.229c0b3454b0.wav",
+      "sha256": "c3fb9ad7c5016951434ff0a8c528f6f094dff4e3f941ff2134ed9990cade6179"
+    },
+    {
+      "priorPath": "audition/v4.reference.common-wood-pigeon.22ed4e192a49.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.common-wood-pigeon.22ed4e192a49.wav",
+      "sha256": "065e72dc4eed2993b16fcb91a536e94a8927bc3074f176dc6c180ff6ac196ce3"
+    },
+    {
+      "priorPath": "audition/v4.reference.wild-turkey.2463923a9c8b.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.wild-turkey.2463923a9c8b.wav",
+      "sha256": "9a8616fbb28c7b038de0a684a13889e93bd404c0ca028c270574e9e430747c21"
+    },
+    {
+      "priorPath": "audition/v4.reference.north-american-porcupine.24f03c98948f.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.north-american-porcupine.24f03c98948f.wav",
+      "sha256": "8bebbb7232821b9aff860c328fade09ab4b73b091992b7a021f3e57bee52d8d2"
+    },
+    {
+      "priorPath": "audition/v4.reference.northern-gannet.2563d0e7f286.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.northern-gannet.2563d0e7f286.wav",
+      "sha256": "ccca514bb541515204b57f80db8b9bd9cb8d6f0435978320d8ac95f00f41a364"
+    },
+    {
+      "priorPath": "audition/v4.reference.ash-cicada.25b46c4881e0.wav",
+      "retainedPath": "quarantine/ecology-first-render/v4.reference.ash-cicada.25b46c4881e0.wav",
+      "sha256": "73ca9efd3ec6e9cae254faa9df780dade9243a730f04c6fa4efa62c813bcac78"
+    }
+  ],
+  "failedRenderRetained": "reaper/ecology-fauna-01",
+  "failedMastersRetained": "masters/ecology-fauna-01",
+  "priorRecipeSha256": "de480defa7a740bfee4880ffef18c7c5f7360f5996329791876314cf89c94f40"
+}

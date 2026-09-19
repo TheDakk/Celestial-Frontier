@@ -1,0 +1,15 @@
+{
+  "commit": "3bc8db0c",
+  "reviewZipMember": "CLAUDE_REVIEW_RESPONSE.md mapped to requested audit path",
+  "amendmentSource": "read-only Claude worktree authorization",
+  "files": [
+    {
+      "path": "audits/C2_BAND_UNDERLAPS_20260913/CLAUDE_REVIEW_RESPONSE.md",
+      "sha256": "3a449134b642410d619f789ce289448481fb960088d1ed019fb04d14221e5eb0"
+    },
+    {
+      "path": "audits/C2_BOUNDED_REPAIR_20260913/AUTHORIZATION_20260913.md",
+      "sha256": "77bd8d757512660fd30336d4da27cb98d4836d95b54b6f24e45dd5acf80ac695"
+    }
+  ]
+}

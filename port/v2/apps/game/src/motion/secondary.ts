@@ -1,7 +1,7 @@
 /* Motion Kit §6 secondary motion by material. Rules are applied from the body
  * card's materials; nothing here is authored per creature. Times in seconds
  * as the kit writes them; the timeline converts to ms. */
-export type Material = 'scaled' | 'furred' | 'chitinous' | 'slick' | 'plated' | 'warty' | 'feathered' | 'translucent' | 'crystalline';
+export type Material = 'scaled' | 'furred' | 'chitinous' | 'slick' | 'plated' | 'warty' | 'feathered' | 'translucent' | 'crystalline' | 'bark' | 'foliage';
 export type Realm = 'land' | 'aerial' | 'aquatic' | 'amphibious' | 'gas-giant';
 export interface MaterialRule {
   readonly lagS: number;        // per secondary segment, base to tip
@@ -19,6 +19,8 @@ export interface MaterialRule {
   readonly heavySettle?: boolean;   // plated
 }
 export const MATERIAL_RULES: Readonly<Record<Material, MaterialRule>> = Object.freeze({
+  bark:        { lagS: 0.05, overshoot: 0.05, damping: 0.80, squash: 0, stretch: 0, rigid: false },
+  foliage:     { lagS: 0.05, overshoot: 0.15, damping: 0.60, squash: 0, stretch: 0, rigid: false },
   furred:      { lagS: 0.08, overshoot: 0.20, damping: 0.55, squash: 0, stretch: 0, rigid: false },
   feathered:   { lagS: 0.06, overshoot: 0.25, damping: 0.50, squash: 0, stretch: 0, rigid: false, flutter: true, crestLift: true },
   scaled:      { lagS: 0.05, overshoot: 0.05, damping: 0.80, squash: 0, stretch: 0, rigid: false },
@@ -41,11 +43,13 @@ export const MEDIUM_RULES: Readonly<Record<Realm, MediumRule>> = Object.freeze({
 /** FA_SKIN name → kit material (the kit shortens "slick and wet" to slick). */
 export function materialFromSkinName(name: string): Material | null {
   const n = name.toLowerCase();
+  if (n === 'bark' || n === 'woody bark') return 'bark';
+  if (n === 'foliage' || n === 'leaves' || n === 'fronds') return 'foliage';
   if (/fur/.test(n)) return 'furred';
   if (/scale/.test(n)) return 'scaled';
   if (/feather/.test(n)) return 'feathered';
   if (/chitin/.test(n)) return 'chitinous';
-  if (/slick|wet|slime/.test(n)) return 'slick';
+  if (/slick|wet|slime|^smooth skin$/.test(n)) return 'slick';
   if (/plate/.test(n)) return 'plated';
   if (/wart/.test(n)) return 'warty';
   if (/translucent/.test(n)) return 'translucent';
@@ -73,12 +77,13 @@ export interface SecondaryParams {
   readonly quiverMs: number; readonly wobbleMs: number; readonly pulseMs: number;
   readonly kind?: string; readonly flutterMs?: number;
 }
-export interface SecondaryPartInput { readonly id: string; readonly driver: string; readonly joints: readonly string[]; readonly material: Material; readonly kind?: string; }
+export interface SecondaryPartInput { readonly id: string; readonly driver: string; readonly joints: readonly string[]; readonly material: Material; readonly jointMaterials?: Readonly<Record<string,Material>>; readonly kind?: string; }
 /** Per-joint lag/overshoot/squash parameters for one secondary chain. */
 export function secondaryParams(part: SecondaryPartInput, realm: Realm, luminous: boolean): SecondaryParams[] {
-  const rule = MATERIAL_RULES[part.material], medium = MEDIUM_RULES[realm], chain = part.kind ? CHAIN_RULES[part.kind] ?? {} : null;
+  return part.joints.map((joint, order) => {
+  const rule = MATERIAL_RULES[part.jointMaterials?.[joint] ?? part.material], medium = MEDIUM_RULES[realm], chain = part.kind ? CHAIN_RULES[part.kind] ?? {} : null;
   const lagS = chain && !rule.rigid ? chain.lagS ?? rule.lagS : rule.lagS, overshoot = chain && !rule.rigid ? chain.overshoot ?? rule.overshoot : rule.overshoot;
-  return part.joints.map((joint, order) => ({
+  return ({
     partId: part.id, joint, driver: part.driver, order,
     lagMs: lagS * 1000 * (order + 1),
     overshoot: overshoot * (1 - order * 0.15),
@@ -87,5 +92,6 @@ export function secondaryParams(part: SecondaryPartInput, realm: Realm, luminous
     quiverMs: Math.max(rule.quiverS ?? 0, chain?.quiverS ?? 0) * 1000, wobbleMs: Math.max(rule.wobbleS ?? 0, chain?.wobbleS ?? 0) * 1000,
     pulseMs: luminous ? LUMINOUS_PULSE.idleMs : 0,
     ...(chain ? { kind: part.kind, flutterMs: rule.flutter && chain.flutterS ? chain.flutterS * 1000 : 0 } : {}),
-  }));
+  });
+  });
 }

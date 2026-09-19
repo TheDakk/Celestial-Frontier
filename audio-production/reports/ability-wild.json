@@ -1,0 +1,450 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "ability.wild.cast.1",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.6995,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/4cd96dc630bed984-knifeSlice.ogg",
+          "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.599542
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/ability-wild/ability.wild.cast.1.wav",
+      "masterSha256": "183574aa3c13a630e373b0651f4066736e9a84682b149603b5f1324fc6bb828e",
+      "opus": "masters/ability-wild/ability.wild.cast.1.opus",
+      "opusSha256": "d4439c898b7c6181a5114049b8faabfcc50fe78b0f2c663d9103fee02e89ac84",
+      "previewSha256": "2ec202c3d9503d3f839a9277d3ab6c8510713de5d8e6aa105feda1b906eb4b2c",
+      "previewBytes": 67266,
+      "previewUrl": "/__cf-audio-review/ability.wild.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.7,
+      "opusDbTP": -7.8
+    },
+    {
+      "id": "ability.wild.cast.2",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.6688,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/6c2064d0ef988d1e-knifeSlice2.ogg",
+          "sha256": "6c2064d0ef988d1ec3d56868e823ea8823a5cac00f2742560052633529407def",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.568792
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1.6995,
+      "master": "masters/ability-wild/ability.wild.cast.2.wav",
+      "masterSha256": "f713da495b1d6b047f4eac7a602188a752c26d99fe2265a80b1df581763203c6",
+      "opus": "masters/ability-wild/ability.wild.cast.2.opus",
+      "opusSha256": "797e71167bd794388b0c3728ec7695f09c1ad917b986550ba19eecad239fe3e5",
+      "previewSha256": "34d32ef7f7cd99d66bcd26b30e464b4d11760835303c90fe76f36ebe0f8129c7",
+      "previewBytes": 64318,
+      "previewUrl": "/__cf-audio-review/ability.wild.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.5,
+      "opusDbTP": -4.7
+    },
+    {
+      "id": "ability.wild.cast.3",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.5151,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.415063
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.cast"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 3.3683,
+      "master": "masters/ability-wild/ability.wild.cast.3.wav",
+      "masterSha256": "beb7eb28591eabaaaf360274f0ee3cab931d88a50ed5f30d177614eb772a5110",
+      "opus": "masters/ability-wild/ability.wild.cast.3.opus",
+      "opusSha256": "c62a9f359fe35e17a7074a911fd7468bfe1f882d297fdb4d434e65a86bfb1bf5",
+      "previewSha256": "f4436daa13792058e4af77596f869d3cf3a5275a409920a044f03d3f3e6b7a79",
+      "previewBytes": 49564,
+      "previewUrl": "/__cf-audio-review/ability.wild.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.4,
+      "opusDbTP": -15.3
+    },
+    {
+      "id": "ability.wild.impact.1",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.6995,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/4cd96dc630bed984-knifeSlice.ogg",
+          "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.599542
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 4.8834,
+      "master": "masters/ability-wild/ability.wild.impact.1.wav",
+      "masterSha256": "19a4002a3e5e30640f2b108ccc98fd761305c219d1fc788c30a83ba21fc85480",
+      "opus": "masters/ability-wild/ability.wild.impact.1.opus",
+      "opusSha256": "d0160952d970447be8bcb5f75c654dcc639a1366fbe6e1b88569cd68f46b81a2",
+      "previewSha256": "2ec202c3d9503d3f839a9277d3ab6c8510713de5d8e6aa105feda1b906eb4b2c",
+      "previewBytes": 67266,
+      "previewUrl": "/__cf-audio-review/ability.wild.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.7,
+      "opusDbTP": -7.8
+    },
+    {
+      "id": "ability.wild.impact.2",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.6688,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/6c2064d0ef988d1e-knifeSlice2.ogg",
+          "sha256": "6c2064d0ef988d1ec3d56868e823ea8823a5cac00f2742560052633529407def",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.568792
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 6.5829,
+      "master": "masters/ability-wild/ability.wild.impact.2.wav",
+      "masterSha256": "5ea0ea4fe8c7df8b1a340650dac9ecca7077eae68dc3cb52c03caa05745560c4",
+      "opus": "masters/ability-wild/ability.wild.impact.2.opus",
+      "opusSha256": "96dcf003cd09745c7e847cd04aa6c45d890ba467f279f2a342bdd84f7b442ade",
+      "previewSha256": "34d32ef7f7cd99d66bcd26b30e464b4d11760835303c90fe76f36ebe0f8129c7",
+      "previewBytes": 64318,
+      "previewUrl": "/__cf-audio-review/ability.wild.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.5,
+      "opusDbTP": -4.7
+    },
+    {
+      "id": "ability.wild.impact.3",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.5151,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.415063
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.impact"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 8.2517,
+      "master": "masters/ability-wild/ability.wild.impact.3.wav",
+      "masterSha256": "0e55ad4bbc20bf4b5fa030634f4ff36cfff40bf3a62919058b4a27e0a17bf461",
+      "opus": "masters/ability-wild/ability.wild.impact.3.opus",
+      "opusSha256": "51499a7941e616eebb03d45ff6acb80f724c24e70baeca59624852ee6ca5b39a",
+      "previewSha256": "1ee09a11f59814d810de9bf4e299869bef883d101fad44ca7ca57143870a320d",
+      "previewBytes": 49564,
+      "previewUrl": "/__cf-audio-review/ability.wild.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.4,
+      "opusDbTP": -15.3
+    },
+    {
+      "id": "ability.wild.sustain.1",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.5995,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/4cd96dc630bed984-knifeSlice.ogg",
+          "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.599542
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 9.7668,
+      "master": "masters/ability-wild/ability.wild.sustain.1.wav",
+      "masterSha256": "d0cefa925ad1c98f5193e7fd32f7bb86477457a9e885d6fda5e199594bfa5fee",
+      "opus": "masters/ability-wild/ability.wild.sustain.1.opus",
+      "opusSha256": "1070ea681e7dd57139f1b90b35520bb29348512d432df4b9254a6d38dd3763cd",
+      "previewSha256": "0b3a3a3d40708a01efa831cad60898f1166864b0593aa61837ab0fc520e095a9",
+      "previewBytes": 57666,
+      "previewUrl": "/__cf-audio-review/ability.wild.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.7,
+      "opusDbTP": -7.8
+    },
+    {
+      "id": "ability.wild.sustain.2",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.5688,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/6c2064d0ef988d1e-knifeSlice2.ogg",
+          "sha256": "6c2064d0ef988d1ec3d56868e823ea8823a5cac00f2742560052633529407def",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.568792
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 11.366299999999999,
+      "master": "masters/ability-wild/ability.wild.sustain.2.wav",
+      "masterSha256": "af22588a8059d075e73cb1a89c53766d7bfbe6d5c5c332f9c899df8a678dce26",
+      "opus": "masters/ability-wild/ability.wild.sustain.2.opus",
+      "opusSha256": "86e666fa982a74260bbbdedb1127065c4d3cbc2901aaa6e16733540571269c5c",
+      "previewSha256": "386ccabc5f12757293e6787f4c2b56a56ac4402fab575fa65d2fd12b0f349689",
+      "previewBytes": 54718,
+      "previewUrl": "/__cf-audio-review/ability.wild.sustain.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.5,
+      "opusDbTP": -4.7
+    },
+    {
+      "id": "ability.wild.sustain.3",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.4151,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.415063
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.sustain"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 12.935099999999998,
+      "master": "masters/ability-wild/ability.wild.sustain.3.wav",
+      "masterSha256": "9ad7c151f356ab991baa2a6029093f2629c0f637ea71bd0cad44c15c38c05328",
+      "opus": "masters/ability-wild/ability.wild.sustain.3.opus",
+      "opusSha256": "10e4297c3073647b9beb7e1005c27282310cb3c3109e0cee9fca5bed8fcd7bcf",
+      "previewSha256": "ac462adb7bf006b88ff8f234617b9734c559b41071316cb7cc2a4b0923d66bd0",
+      "previewBytes": 39964,
+      "previewUrl": "/__cf-audio-review/ability.wild.sustain.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.4,
+      "opusDbTP": -15.3
+    },
+    {
+      "id": "ability.wild.release.1",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.6995,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/4cd96dc630bed984-knifeSlice.ogg",
+          "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.599542
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 14.3502,
+      "master": "masters/ability-wild/ability.wild.release.1.wav",
+      "masterSha256": "f971544df3014d29c65f8154dd293865d81419f70896c7818af6a946feac5fba",
+      "opus": "masters/ability-wild/ability.wild.release.1.opus",
+      "opusSha256": "98b38c89eaa7aadcd39b207b8ed82fe8d780ced702100ac9c1ee72a44df0a13b",
+      "previewSha256": "2ec202c3d9503d3f839a9277d3ab6c8510713de5d8e6aa105feda1b906eb4b2c",
+      "previewBytes": 67266,
+      "previewUrl": "/__cf-audio-review/ability.wild.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.7,
+      "opusDbTP": -7.8
+    },
+    {
+      "id": "ability.wild.release.2",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.6688,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/6c2064d0ef988d1e-knifeSlice2.ogg",
+          "sha256": "6c2064d0ef988d1ec3d56868e823ea8823a5cac00f2742560052633529407def",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.568792
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 16.049699999999998,
+      "master": "masters/ability-wild/ability.wild.release.2.wav",
+      "masterSha256": "07832ef2aedb401d2e84185ac7feb2a3a83b48f3d4dee49d895005af827f4cf0",
+      "opus": "masters/ability-wild/ability.wild.release.2.opus",
+      "opusSha256": "ec03f28c44dbde16dbda2e8b58ab6e819906647115baa10327f5a71dae3bdc71",
+      "previewSha256": "4799e4faea18e7ef0225443be9df86b4c679215d782e01f81c2c277823eb9360",
+      "previewBytes": 64318,
+      "previewUrl": "/__cf-audio-review/ability.wild.release.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -4.5,
+      "opusDbTP": -4.7
+    },
+    {
+      "id": "ability.wild.release.3",
+      "group": "ability-wild",
+      "kind": "designed",
+      "duration": 0.5151,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.415063
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "ability.wild.release"
+      ],
+      "notes": "Theme candidate; sustain is a finite treatment, loop acceptance still pending.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 17.7185,
+      "master": "masters/ability-wild/ability.wild.release.3.wav",
+      "masterSha256": "95324f063d1f12d2204690d76b2b1bafcac69a08b0251d54f7f13a26e5939207",
+      "opus": "masters/ability-wild/ability.wild.release.3.opus",
+      "opusSha256": "a5be1b0fa0d89ec57823a7af7746d8c6301a15423a04af32e719cae4b21faafd",
+      "previewSha256": "f4436daa13792058e4af77596f869d3cf3a5275a409920a044f03d3f3e6b7a79",
+      "previewBytes": 49564,
+      "previewUrl": "/__cf-audio-review/ability.wild.release.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.4,
+      "opusDbTP": -15.3
+    }
+  ],
+  "listeningAccepted": false
+}

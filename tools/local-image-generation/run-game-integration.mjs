@@ -29,6 +29,7 @@ const receipt={schema:'cf.real-game-local-ai-integration.v1',status:'FAIL',start
   sources:[],observations:[],clicks:[],screenshots:[],browserEvents:[],targetEvents:[],cleanup:{}};
 await writeJson('start.json',receipt);
 let preview,cdp,targetId,sessionId,originalJob,releaseWorkspace;
+let eventFault=null;
 const bindingPath=path.join(root,'audits/AI_GAME_INTEGRATION_20260909/platypus-reference-binding.json');
 const sourceNames=[
   'port/v2/apps/game/src/main.ts','port/v2/apps/game/index.html','port/v2/apps/game/vite.config.ts',
@@ -82,13 +83,14 @@ try{
   receipt.preview={url:preview.url,config:preview.config,modelFiles:preview.modelFiles,runtimeFiles:preview.runtimeFiles};
   await writeJson('verified-preview.json',receipt.preview);
   const inferenceTargets=new Set();
+
   cdp=await openChromiumCdp({label:'CF real game native local AI integration',userDataPrefix:'cf-game-local-ai-',commandTimeoutMs:45000,
     onEvent:event=>{
       if(['Runtime.exceptionThrown','Log.entryAdded','Inspector.targetCrashed'].includes(event.method)){
-        if(receipt.browserEvents.length>=300)throw Error('Browser event evidence overflow');receipt.browserEvents.push(event);
+        if(receipt.browserEvents.length>=300){eventFault??=Error('Browser event evidence overflow');return;}receipt.browserEvents.push(event);
       }
       if(['Target.targetCreated','Target.targetInfoChanged','Target.targetDestroyed','Target.targetCrashed'].includes(event.method)){
-        if(receipt.targetEvents.length>=300)throw Error('Target event evidence overflow');receipt.targetEvents.push(event);
+        if(receipt.targetEvents.length>=300){eventFault??=Error('Target event evidence overflow');return;}receipt.targetEvents.push(event);
         const info=event.params?.targetInfo;if(info?.type==='worker'&&info.url?.includes('/__local_ai/stage-worker.mjs'))inferenceTargets.add(info.targetId);
       }
     }});
@@ -99,7 +101,9 @@ try{
   await cdp.send('Runtime.enable',{},sessionId);await cdp.send('Log.enable',{},sessionId);await cdp.send('Page.enable',{},sessionId);
   await cdp.send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false},sessionId);
   const evaluate=async expression=>{
+    if(eventFault)throw eventFault;
     const value=await cdp.send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},sessionId);
+    if(eventFault)throw eventFault;
     if(value.exceptionDetails)throw Error(value.exceptionDetails.exception?.description??value.exceptionDetails.text);return value.result.value;
   };
   async function until(label,expression,timeout=15000){
@@ -321,12 +325,19 @@ try{
     explicitView:true,originalRetainedAndHashed:true,originalExactAfterReload:true,noReloadInference:true};
   need(receipt.browserEvents.every(event=>event.method!=='Runtime.exceptionThrown'&&event.method!=='Inspector.targetCrashed'),
     'Unexpected browser exception/crash');
+  if(eventFault)throw eventFault;
   receipt.status='PASS';
 }catch(error){receipt.error=String(error.stack??error);process.exitCode=1;}
 finally{
+  if(eventFault){receipt.status='FAIL';receipt.error??=String(eventFault);process.exitCode=1;}
   // Always retain final requests and source-integrity failures, including an
   // early browser/worker failure. A red attempt never starts another inference.
   if(preview)receipt.requests=preview.requests.map(row=>({...row}));
+  if(receipt.status==='FAIL'&&cdp&&sessionId)try{
+    const image=await cdp.send('Page.captureScreenshot',{format:'png',fromSurface:true},sessionId);
+    const bytes=Buffer.from(image.data,'base64');await fs.writeFile(path.join(output,'failure.png'),bytes,{flag:'wx'});
+    receipt.failureScreenshot={sha256:sha(bytes),bytes:bytes.length};
+  }catch(error){receipt.failureCaptureError=String(error);}
   try{if(cdp&&sessionId){const last=await cdp.send('Runtime.evaluate',{expression:'window.__CF_SLICE__?.api.state().localAi??null',returnByValue:true},sessionId);
     receipt.finalLocalAi=last.result?.value??null;}}catch(error){receipt.finalObservationError=String(error);}
   try{if(targetId){await cdp.send('Target.closeTarget',{targetId});receipt.cleanup.targetClosed=true;}}catch(error){receipt.cleanup.targetError=String(error);receipt.status='FAIL';process.exitCode=1;}
@@ -336,6 +347,7 @@ finally{
   if(!receipt.sourceIntegrity.unchanged){receipt.status='FAIL';process.exitCode=1;}
   try{releaseWorkspace?.();receipt.cleanup.workspaceReleased=Boolean(releaseWorkspace);}
   catch(error){receipt.cleanup.workspaceError=String(error);receipt.status='FAIL';process.exitCode=1;}
+  if(eventFault){receipt.status='FAIL';receipt.error??=String(eventFault);process.exitCode=1;}
   receipt.finishedAt=new Date().toISOString();await writeJson('result.json',receipt);
   console.log(JSON.stringify({status:receipt.status,error:receipt.error??null,observations:receipt.observations.length,
     clicks:receipt.clicks.length,generationToReadyMs:receipt.generationToReadyMs??null,original:receipt.original?.sha256??null,

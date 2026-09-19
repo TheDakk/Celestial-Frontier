@@ -1,0 +1,120 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "9d0c3337252774cc094812391640ceed235f16a7bf36561859761f8f126d7523",
+  "cutoutSha256": "29e66081d0886722efe4cd553a231121f47466b82a9aa988da01f162d3074ed7",
+  "labelsFile": "labels.png",
+  "labelsSha256": "51f1018f09e1719b81cfc29e017f7fdf679470c3c78c6ff822242a057e4a5ebf",
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far"
+    },
+    {
+      "id": "part-01",
+      "joint": "pelvis",
+      "layer": "near"
+    },
+    {
+      "id": "part-02",
+      "joint": "spine",
+      "layer": "far"
+    },
+    {
+      "id": "part-03",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "part-04",
+      "joint": "neck",
+      "layer": "far"
+    },
+    {
+      "id": "part-05",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "part-06",
+      "joint": "jaw",
+      "layer": "far"
+    },
+    {
+      "id": "part-07",
+      "joint": "wingFarRoot",
+      "layer": "near"
+    },
+    {
+      "id": "part-08",
+      "joint": "wingFarElbow",
+      "layer": "far"
+    },
+    {
+      "id": "part-09",
+      "joint": "wingFarWrist",
+      "layer": "near"
+    },
+    {
+      "id": "part-10",
+      "joint": "wingFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "part-11",
+      "joint": "wingNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "part-12",
+      "joint": "wingNearElbow",
+      "layer": "far"
+    },
+    {
+      "id": "part-13",
+      "joint": "wingNearWrist",
+      "layer": "near"
+    },
+    {
+      "id": "part-14",
+      "joint": "wingNearTip",
+      "layer": "far"
+    },
+    {
+      "id": "part-15",
+      "joint": "legFarKnee",
+      "layer": "near"
+    },
+    {
+      "id": "part-16",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "part-17",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "part-18",
+      "joint": "legNearFoot",
+      "layer": "far"
+    },
+    {
+      "id": "part-19",
+      "joint": "earFarTip",
+      "layer": "near"
+    },
+    {
+      "id": "part-20",
+      "joint": "earNearTip",
+      "layer": "far"
+    },
+    {
+      "id": "part-21",
+      "joint": "tail0",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "53468d52cd13337f687e9945f789e79c7c2e174e31d65f2a99e8c8835af60a82"
+}

@@ -12,6 +12,7 @@
 
    Style law preserved: rim-lit painterly figurine, grounding shadow,
    palette from the genome. Bodies, not recolors. */
+import {isObservingPainterTopology,emitPainterTopology,type DrawnFeature} from './painter-topology.js';
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { speciesHue } from './surface.js';
 import { ellipseTube } from './torso.js';
@@ -1030,6 +1031,7 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
      way, and CURLS at the tip; drawn as a walk of short segments with a
      shrinking width, that reads as boneless muscle instead of furniture. */
   const arms = 8;
+  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
   for (let i = 0; i < arms; i++) {
     const t2 = i / (arms - 1);
     const ax = cx + (t2 - 0.5) * mw * 1.9;
@@ -1039,6 +1041,8 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
     const w0 = 10 - Math.abs(outward) * 3;
     c.lineCap = 'round';
     let px = ax, py = my + mh * 0.62;
+    const samples:Array<readonly [number,number]>|undefined=observed?[[px,py]]:undefined;
+    const widths:number[]|undefined=observed?[w0]:undefined;
     const N = 16;
     for (let k = 1; k <= N; k++) {
       const u = k / N;
@@ -1052,14 +1056,17 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
         c.fillStyle = 'rgba(255,250,240,0.30)';
         c.beginPath(); c.arc(nx, ny, Math.max(1, w0 * (1 - u) * 0.20), 0, TAU); c.fill();
       }
+      samples?.push([nx,ny]);widths?.push(Math.max(1.4,w0*(1-u*.88)));
       px = nx; py = ny;
     }
+    if(observed&&samples&&widths)observed.push({id:'arm'+i,kind:'arm',points:samples,widths,curve:'polyline',layer:'far'});
   }
   if (opts.squid) {   /* the two long feeding tentacles */
     for (const s of [-1, 1] as const) {
       c.strokeStyle = p.lit; c.lineWidth = 5;
       c.beginPath(); c.moveTo(cx + s * mw * 0.4, my + mh * 0.7);
       c.bezierCurveTo(cx + s * mw * 2.2, my + mh + 90, cx + s * mw * 0.6, my + mh + 150, cx + s * mw * 1.8, my + mh + 190); c.stroke();
+      observed?.push({id:'tentacle'+(s<0?0:1),kind:'tentacle',points:[[cx+s*mw*.4,my+mh*.7],[cx+s*mw*2.2,my+mh+90],[cx+s*mw*.6,my+mh+150],[cx+s*mw*1.8,my+mh+190]],widths:[5],curve:'cubic',layer:'far'});
       c.fillStyle = p.base;
       c.beginPath(); c.ellipse(cx + s * mw * 1.8, my + mh + 192, 11, 7, s * 0.4, 0, TAU); c.fill();
     }
@@ -1092,6 +1099,7 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
     c.beginPath(); c.arc(cx + s * mw * 0.55, my + mh * 0.58, 11, 0, TAU); c.fill();
   }
   eye(c, cx - mw * 0.55, my + mh * 0.58, 8); eye(c, cx + mw * 0.55, my + mh * 0.58, 8);
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'faunaCephalopod',family:'cephalopod',anatomy:{schema:'cf.anatomy-presence/v2',absent:[],appendages:{arms:observed.filter(f=>f.kind==='arm').length,feedingTentacles:observed.filter(f=>f.kind==='tentacle').length}},coordinateSize:S,materials:{surface:'smooth skin',paletteSource:opts.hue?'named':'genome'},features:observed,unresolved:['mantle/head/fin/eye/siphon landmarks and part masks not captured']});
 }
 /** CETACEAN: long body, horizontal FLUKE, blowhole, species dorsal */
 export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | 'small' | 'none'; blunt: boolean; hue?: [number, number, number];
@@ -1389,6 +1397,7 @@ function mixSaltB(h: number, salt: number): number {
   return x >>> 0;
 }
 export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void {
+  const observed:DrawnFeature[]|undefined=isObservingPainterTopology(c)?[]:undefined;
   /* NAME-SEEDED (D-ART-20): Hawk and Falcon carry identical options, and
      wave 7 proved that two labels sharing a spec eventually collide. */
   let h = 0xB12D;
@@ -1470,6 +1479,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       const hipX = bx + s * 8 * sz;
       const ankX = hipX + (7 + legLen * 0.10) * sz;    /* the ankle kicks BACK */
       const toeX = hipX - 2 * sz;                       /* the foot lands under the bird */
+      observed?.push({id:'leg'+(s<0?'Far':'Near'),kind:'leg',points:[[hipX,thighY],[ankX,ankleY],[toeX,groundY]],curve:'polyline',layer:s<0?'far':'near'});
       c.strokeStyle = opts.legHue ?? '#c9a24f'; c.lineCap = 'round';
       /* ★ D-ART-121 — a raptor's leg is HEAVY. The audit's words on the Harpy:
          "two thin yellow twigs ending in flat splayed toes with no claw tips
@@ -1811,11 +1821,13 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
        and wave 6 the neck: there is nothing to blend if the join is buried. */
     feather(bx + bw * 0.16, by - bh * 0.40, Math.PI - 0.30, 0.72, 0.55);   /* far, going away */
     feather(bx + bw * 0.22, by - bh * 0.16, 0.14, 1, 1);                   /* near, toward us */
+    if(observed)for(const [id,sx,sy,angle,k]of [['Far',bx+bw*.16,by-bh*.40,Math.PI-.30,.72],['Near',bx+bw*.22,by-bh*.16,.14,1]] as const){const x=spanW*k,y=-spanH*.10;observed.push({id:'wing'+id,kind:'wing',points:[[sx,sy],[sx+Math.cos(angle)*x-Math.sin(angle)*y,sy+Math.sin(angle)*x+Math.cos(angle)*y]],curve:'polyline',layer:id==='Far'?'far':'near'});}
   } else if (opts.hover) {
     /* A hovering hummingbird reads from the paired translucent wing blurs, not
        from a grounded folded-wing silhouette. */
     for (const side of [-1, 1] as const) {
       const sx = bx + side * bw * 0.10, sy = by - bh * 0.20;
+      observed?.push({id:'wing'+(side<0?'Far':'Near'),kind:'wing',points:[[sx,sy],[sx+side*bw*.86,sy-bh*1.25],[sx+side*bw*1.28,sy-bh*.48]],curve:'quadratic',layer:side<0?'far':'near'});
       c.strokeStyle = `rgba(${p.cr},${p.cg},${p.cb},0.34)`;
       c.lineWidth = Math.max(2.4, bh * 0.24); c.lineCap = 'round';
       c.beginPath(); c.moveTo(sx, sy);
@@ -1849,6 +1861,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
        legs, and the audit said so four separate times. A ratite's wing is a
        vestigial stub buried in body plumage, and it has no flight tail at all. */
     const WING = opts.flightless ? 0.34 : 1;
+    if(observed){const sx=bx+bw*.12*WING,sy=by+bh*.05,x=bw*.95*WING;observed.push({id:'wingNear',kind:'wing',points:[[sx,sy],[sx+Math.cos(.22)*x,sy+Math.sin(.22)*x]],curve:'polyline',layer:'near'});}
     c.save(); c.translate(bx + bw * 0.12 * WING, by + bh * 0.05); c.rotate(0.22);
     for (let layer = 0; layer < 3; layer++) {
       const lw = bw * (0.95 - layer * 0.16) * WING, lh = bh * (0.62 - layer * 0.10) * WING;
@@ -2215,6 +2228,11 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   c.restore();
   /* ★ WAVE 40 — close the cling transform opened before the body */
   if (opts.cling) c.restore();
+  if(observed){
+    const features:DrawnFeature[]=[{id:'body',kind:'body',points:[[bx,by]],widths:[bw*2,bh*2],curve:'ellipse',layer:'near'},{id:'head',kind:'head',points:[[hx,hy]],widths:[hr*2],curve:'ellipse',layer:'near'},...observed];
+    if(opts.cling)for(const f of features){(f as {points:ReadonlyArray<readonly [number,number]>}).points=f.points.map(([x,y])=>[bx+Math.cos(1.16)*(x-bx)-Math.sin(1.16)*(y-by),by+Math.sin(1.16)*(x-bx)+Math.cos(1.16)*(y-by)] as const);}
+    emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'faunaBird',family:'biped-bird',coordinateSize:S,materials:{surface:'feather',paletteSource:opts.hue?'named':'genome'},features,unresolved:['tail, beak, neck and source part masks not captured',...(opts.upright?['flipper observation not connected']:[]),...(opts.wings!=='soaring'&&!opts.hover?['far wing is not independently painted']:[]),...(opts.cling?['painted trunk is scenery, not an organism part']:[])]});
+  }
 }
 
 /* ---------------- Wave 2b B1: anatomy-first named bird portraits ----------------

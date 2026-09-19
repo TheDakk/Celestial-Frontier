@@ -3,10 +3,13 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import {acquireWorkspaceLock} from './workspacelock.mjs';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { createReviewTrailDebugger } from './ui-review-trail-debugger.mjs';
 import { installNativeReviewTrace } from './ui-shell-review.mjs';
 
+// Lock is retained through process exit, including receipt/cleanup failures.
+acquireWorkspaceLock('navigation debugger review', {inheritFromParent:true});
 const output = path.resolve(process.argv[2] ?? '');
 assert(process.argv[2] && !fs.existsSync(output), 'supply a new calibration JSON path');
 const report = { schema: 'cf-u1-navigation-debugger-calibration/v1', certification: false,

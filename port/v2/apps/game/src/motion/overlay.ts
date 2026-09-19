@@ -7,12 +7,10 @@
  *
  * NOT imported by the game (index.ts does not re-export it) — the production
  * bundle is unchanged; tests and tools/pose-editor import it directly. */
-import { DEG, EASES, QUADRUPED_ACTIONS, type Ease, type KeyPose, type MotionAction } from './actions.js';
+import { EASES, QUADRUPED_ACTIONS, type Ease, type KeyPose, type MotionAction } from './actions.js';
 import type { BodyCard } from './body-card.js';
-import { secondaryParams } from './secondary.js';
 import { isMotionFallback, resolveTemplate, type MotionTemplate } from './templates.js';
-import { fnv1a, type Keyframe, type MotionTimeline, type SecondaryTrack } from './timeline.js';
-import { hitstopMs, idlePeriodMs, phaseDurations } from './timing.js';
+import { fnv1a } from './timeline.js';
 
 export const ACTION_OVERLAY_SCHEMA = 'cf.motion.action-overlay/v1' as const;
 /** A table longer than this is a clip, not a key-pose table. */
@@ -104,54 +102,5 @@ export function overlayFromAction(template: MotionTemplate, action: MotionAction
   return { schema: ACTION_OVERLAY_SCHEMA, templateId: template.id, actionId: action.id, poses: action.poses.map((p) => ({ t: p.t, ease: p.ease, joints: sortedJoints(p.joints), root: { dx: p.root.dx, dy: p.root.dy } })) };
 }
 
-/* ---------- preview timeline ----------
- * timeline.ts#buildTimeline reads the frozen QUADRUPED_ACTIONS by id, so an edited table cannot reach it
- * without a signature change (timeline.ts is outside A7's write set). This is the same construction over
- * an explicit action; tests/motion-overlay.test.ts holds it to buildTimeline hash-for-hash on every
- * shipped action, so a preview in the editor is the runtime recipe. Fold into buildTimeline when it is
- * next touched. */
-const REST_KEY: Keyframe = { ms: 0, t: 0, value: 0, ease: 'ease-out' };
-const CHAIN_ATTENUATION = 0.6;
-export function buildActionTimeline(card: BodyCard, action: MotionAction, seed: number, notesIn: readonly string[] = card.notes): MotionTimeline {
-  const mass = card.massClass.multiplier, notes = [...notesIn];
-  const phases = action.family === 'idle' ? [['period', idlePeriodMs(seed, mass)] as const] : phaseDurations(action.family, mass);
-  const bodyMs = phases.reduce((s, [, ms]) => s + ms, 0);
-  const clamped: string[] = [];
-  const tracks: Record<string, Keyframe[]> = {};
-  for (const joint of ['root', ...card.parts.map((p) => p.joint)]) {
-    const lim = card.bounds.limitsDeg[joint];
-    tracks[joint] = [REST_KEY, ...action.poses.map((pose) => {
-      let deg = pose.joints[joint] ?? 0;
-      if (lim && (deg < lim.min || deg > lim.max)) { clamped.push(`${action.id}/${joint}@${pose.t.toFixed(3)}:${deg}`); deg = Math.min(lim.max, Math.max(lim.min, deg)); }
-      return { ms: pose.t * bodyMs, t: pose.t, value: deg * DEG, ease: pose.ease };
-    })];
-  }
-  const rootKeys = (pick: 'dx' | 'dy'): Keyframe[] => [REST_KEY, ...action.poses.map((p) => ({ ms: p.t * bodyMs, t: p.t, value: p.root[pick], ease: p.ease }))];
-  const secondary: SecondaryTrack[] = [];
-  let maxLag = 0;
-  for (const part of card.secondaryParts) {
-    let prev: readonly Keyframe[] = [REST_KEY];
-    for (const prm of secondaryParams(part, card.realm, card.luminous)) {
-      const own = tracks[prm.joint] ?? [REST_KEY];
-      const src: readonly Keyframe[] = own.some((k) => k.value !== 0) ? own : prev.map((k) => ({ ...k, value: k.value * CHAIN_ATTENUATION }));
-      prev = src;
-      const keys: Keyframe[] = [];
-      for (const k of src) {
-        keys.push({ ...k, ms: k.ms + prm.lagMs, t: bodyMs ? (k.ms + prm.lagMs) / bodyMs : 0, value: k.value * (1 + prm.overshoot) });
-        if (prm.overshoot > 0 && k.value !== 0) keys.push({ ms: k.ms + prm.lagMs * 1.6, t: bodyMs ? (k.ms + prm.lagMs * 1.6) / bodyMs : 0, value: k.value, ease: 'sine-in-out' });
-      }
-      if (!action.loop) { keys[0] = { ...(keys[0] as Keyframe), ms: 0, t: 0 }; keys.push({ ms: bodyMs + prm.lagMs * 1.6, t: 1, value: 0, ease: 'ease-out' }); }
-      keys.sort((a, b) => a.ms - b.ms);
-      maxLag = Math.max(maxLag, prm.lagMs * 1.6);
-      secondary.push({ ...prm, keys });
-    }
-  }
-  const rule = secondary[0];
-  const body: Omit<MotionTimeline, 'hash'> = {
-    kind: 'motion-timeline', actionId: action.id, family: action.family, loop: action.loop, seed, recipeHash: card.recipeHash, massClass: card.massClass.name,
-    bodyMs, durationMs: action.loop ? bodyMs : bodyMs + maxLag, phases, tracks, root: { dx: rootKeys('dx'), dy: rootKeys('dy') }, secondary,
-    deform: { squash: rule?.squash ?? 0, stretch: rule?.stretch ?? 0 },
-    hitstopMs: action.family === 'melee' ? hitstopMs(mass) : 0, luminousPulseMs: card.luminous ? 1800 : 0, clamped, notes,
-  };
-  return { ...body, hash: fnv1a(JSON.stringify(body)) };
-}
+/** The editor and ordinary playback now use exactly one compiler. */
+export {buildActionTimeline} from './timeline.js';

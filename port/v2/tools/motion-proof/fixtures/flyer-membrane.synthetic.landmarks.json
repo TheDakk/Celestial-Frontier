@@ -122,5 +122,9 @@
     "sheenTier": "painted",
     "paletteSource": "synthetic"
   },
-  "clipSetId": "flyer-membrane-v1"
+  "clipSetId": "flyer-membrane-v1",
+  "habitat": {
+    "realm": "aerial",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
 }

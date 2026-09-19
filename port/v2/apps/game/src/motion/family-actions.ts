@@ -5,8 +5,12 @@
  * sway / disturb / harvest / grow instead of the fauna set. */
 import { type Ease, type KeyPose, type MotionAction, QUADRUPED_ACTIONS } from './actions.js';
 import type { FamilyTemplateId } from './family-templates.js';
+import {specializedActions} from './specialized-actions.js';
+import {ADDITIONAL_ACTIONS} from './additional-actions.js';
 
-const cephArmsA = [0, 1, 2, 3, 4, 5, 6, 7].map((n) => 'arm' + n);
+import {plantBranchCount} from '../../../../tools/creature-animation/plant-anatomy.mjs';
+import {appendageCounts} from '../../../../tools/creature-animation/repeated-anatomy.mjs';
+import type {AnatomyPresence} from '../../../../tools/creature-animation/anatomy-inventory.mjs';
 import { tAt } from './timing.js';
 
 type J = Record<string, number>;
@@ -164,8 +168,9 @@ const ARACHNID = fauna({
 });
 
 /* ---- radial: arms 0/2/4 hang to the right of centre and 1/3/5 to the left, so splay(+) opens all six ---- */
-const splay = (s0: number, s1: number, s2: number): J => Object.fromEntries([0, 1, 2, 3, 4, 5].flatMap((n) => { const k = n % 2 === 0 ? 1 : -1; return [['arm' + n + 'Seg0', s0 * k], ['arm' + n + 'Seg1', s1 * k], ['arm' + n + 'Seg2', s2 * k]]; }));
-const RADIAL = fauna({
+function radialActions(arms=6):Readonly<Record<string,MotionAction>>{
+const splay = (s0: number, s1: number, s2: number): J => Object.fromEntries(Array.from({length:arms},(_,i)=>i).flatMap((n) => { const k = n % 2 === 0 ? 1 : -1; return [['arm' + n + 'Seg0', s0 * k], ['arm' + n + 'Seg1', s1 * k], ['arm' + n + 'Seg2', s2 * k]]; }));
+return fauna({
   idle: [{ bell: 3, ...splay(3, 4, 5) }, { bell: -4, centre: 1, ...splay(-2, -3, -4) }, { bell: 3, ...splay(2, 3, 4) }, 0, -0.006, -0.012],
   alert: [{ bell: -12, centre: -3, ...splay(-15, -20, -25) }, -0.020],
   approach: { drift: loop4({ ...splay(6, 9, 12), bell: 2 }, { ...splay(-3, -5, -8), bell: -3 }, { ...splay(5, 8, 11), bell: 2 }, 0.02, -0.020, -0.030),
@@ -179,6 +184,9 @@ const RADIAL = fauna({
   tame: tame({ ...splay(6, 9, 12), bell: 2 }, { bell: 8, ...splay(15, 20, 25) }, { bell: 3 }),
   feed: feed({ bell: 5, ...splay(30, 40, 45) }, splay(40, 52, 55), splay(25, 35, 40)),
 });
+
+}
+const RADIAL=radialActions();
 
 /* ---- myriapod (B3): alternating tetrapod on four pairs, a segment wave through the body; forcipule bite, rear sting ---- */
 const myA = ['legAFar', 'legBNear', 'legCFar', 'legDNear'], myB = ['legANear', 'legBFar', 'legCNear', 'legDFar'];
@@ -202,12 +210,15 @@ const MYRIAPOD = fauna({
 });
 
 /* ---- cephalopod (B3): arms 0..3 hang left (sign −) and 4..7 right (sign +), so csplay(+) opens the crown; the front pair (3, 4) lashes ---- */
-const csplay = (s0: number, s1: number, s2: number): J => Object.fromEntries(cephArmsA.flatMap((a, n) => { const k = n < 4 ? -1 : 1; return [[a + 'Seg0', s0 * k], [a + 'Seg1', s1 * k], [a + 'Seg2', s2 * k]]; }));
-const calt = (s0: number, s1: number, s2: number): J => Object.fromEntries(cephArmsA.flatMap((a, n) => { const k = n % 2 === 0 ? 1 : -1; return [[a + 'Seg0', s0 * k], [a + 'Seg1', s1 * k], [a + 'Seg2', s2 * k]]; }));
-const front = (a: number, b: number, c: number): J => ({ arm3Seg0: a, arm3Seg1: b, arm3Seg2: c, arm4Seg0: a, arm4Seg1: b, arm4Seg2: c });
+function cephalopodActions(arms=8,feedingTentacles=0):Readonly<Record<string,MotionAction>>{
+const cephArmsA=Array.from({length:arms},(_,i)=>'arm'+i),tentacles=Array.from({length:feedingTentacles},(_,i)=>'tentacle'+i);
+const csplay = (s0: number, s1: number, s2: number): J => Object.fromEntries([...cephArmsA,...tentacles].flatMap((a, n) => { const k = n<arms?(n<arms/2?-1:1):(n-arms<feedingTentacles/2?-1:1); return [[a + 'Seg0', s0 * k], [a + 'Seg1', s1 * k], [a + 'Seg2', s2 * k]]; }));
+const calt = (s0: number, s1: number, s2: number): J => Object.fromEntries([...cephArmsA,...tentacles].flatMap((a, n) => { const k = n % 2 === 0 ? 1 : -1; return [[a + 'Seg0', s0 * k], [a + 'Seg1', s1 * k], [a + 'Seg2', s2 * k]]; }));
+// Feeding tentacles own a squid's reach; otherwise use the two central arms.
+const front = (a:number,b:number,c:number):J=>Object.fromEntries((tentacles.length?tentacles:[cephArmsA[Math.floor((arms-1)/2)]!,cephArmsA[Math.ceil((arms-1)/2)]!]).flatMap(n=>[[n+'Seg0',a],[n+'Seg1',b],[n+'Seg2',c]]));
 const fins = (v: number): J => ({ finFar: -v, finNear: v });
 const eyes = (v: number): J => ({ eyeFar: v, eyeNear: v });
-const CEPHALOPOD = fauna({
+return fauna({
   idle: [{ mantle: 2, ...csplay(3, 4, 5) }, { head: -2, ...fins(6), siphon: -4 }, { mantle: -2, ...csplay(-2, -3, -4) }, 0.002, -0.005, -0.010],
   alert: [{ mantle: -10, head: -5, ...csplay(-15, -20, -25), ...eyes(-8), ...fins(20) }, -0.020],
   approach: { jet: [P(0.3, 'ease-in', { mantle: -12, siphon: 25, ...csplay(-28, -34, -40) }, 0, -0.060), P(0.6, 'ease-out', { mantle: 10, siphon: -10, ...csplay(18, 24, 30), ...fins(15) }, 0.30, -0.120), P(0.85, 'sine-in-out', { mantle: 3, ...csplay(6, 8, 10) }, 0.45, -0.050), P(1, 'sine-in-out', REST, 0, -0.020)],
@@ -222,6 +233,9 @@ const CEPHALOPOD = fauna({
   tame: tame({ ...csplay(5, 8, 10), mantle: 2 }, { head: 8, ...csplay(14, 20, 24) }, { head: 3 }),
   feed: feed({ head: 5, ...csplay(28, 38, 42) }, csplay(40, 50, 55), csplay(24, 32, 38)),
 });
+
+}
+const CEPHALOPOD=cephalopodActions();
 
 /* ---- flyer-membrane (B3): + LIFTS a wing (bones point backward from the chest, like the bird); crawl is the folded-wing scramble ---- */
 const bw = (root: number, elbow: number, wrist: number, tip: number): J => ({ ...pair('wing', root, 'Root'), ...pair('wing', elbow, 'Elbow'), ...pair('wing', wrist, 'Wrist'), ...pair('wing', tip, 'Tip') });
@@ -268,27 +282,34 @@ const PRIMATE = fauna({
 });
 
 /* ---- plants: branch/stem n alternates side (even right, odd left); sway(k) bends every chain base→tip ---- */
-const wsway = (k: number): J => ({ trunk: 0.3 * k, ...Object.fromEntries([0, 1, 2].flatMap((n) => { const s = n === 1 ? -1 : 1; return [['branch' + n + 'Base', k * s], ['branch' + n + 'Tip', 1.5 * k * s], ['leaf' + n, 2 * k * s]]; })) });
-const hsway = (k: number): J => Object.fromEntries([0, 1, 2, 3].flatMap((n) => { const s = n % 2 === 0 ? 1 : -1; return [['stem' + n + 'Seg0', 0.6 * k * s], ['stem' + n + 'Seg1', k * s], ['stem' + n + 'Seg2', 1.4 * k * s], ['frond' + n, 2 * k * s]]; }));
-const plant = (sway: (k: number) => J, leaves: J): Readonly<Record<string, MotionAction>> => Object.freeze(Object.fromEntries([
+const wsway = (k: number, count=3): J => ({ trunk: 0.3 * k, ...Object.fromEntries(Array.from({length:count},(_,n)=>n).flatMap((n) => { const s = n % 2 ? -1 : 1; return [['branch' + n + 'Base', k * s], ['branch' + n + 'Tip', 1.5 * k * s]]; })) });
+const hsway = (k: number): J => Object.fromEntries([0, 1, 2, 3].flatMap((n) => { const s = n % 2 === 0 ? 1 : -1; return [['stem' + n + 'Seg0', 0.6 * k * s], ['stem' + n + 'Seg1', k * s], ['stem' + n + 'Seg2', 1.4 * k * s]]; }));
+const plant = (sway: (k: number) => J, _leaves: J): Readonly<Record<string, MotionAction>> => Object.freeze(Object.fromEntries([
   A('sway', 'sway', [P(0.25, 'sine-in-out', sway(6)), P(0.5, 'sine-in-out', sway(1)), P(0.75, 'sine-in-out', sway(-5)), P(1, 'sine-in-out', REST)], true),
-  A('disturb', 'disturb', [P(tAt('disturb', 'recoil'), 'ease-out', { ...sway(-14), ...mul(leaves, -1) }, -0.01), P(tAt('disturb', 'settle', 0.5), 'sine-in-out', sway(6)), P(1, 'back-out', REST)]),
-  A('harvest', 'harvest', [P(tAt('harvest', 'shake'), 'ease-in', sway(12)), P(tAt('harvest', 'detach'), 'ease-out', { ...sway(-10), ...leaves }, 0, 0.004), P(tAt('harvest', 'settle', 0.5), 'sine-in-out', sway(4)), P(1, 'back-out', REST)]),
-  A('grow', 'grow', [P(0.02, 'ease-out', mul(leaves, -1.2), 0, 0.30), P(tAt('grow', 'rise'), 'ease-out', mul(leaves, -0.4), 0, -0.030), P(tAt('grow', 'overshoot'), 'back-out', { ...sway(3), ...mul(leaves, 0.3) }, 0, -0.050), P(1, 'sine-in-out', REST)]),
+  A('disturb', 'disturb', [P(tAt('disturb', 'recoil'), 'ease-out', sway(-14)), P(tAt('disturb', 'settle', 0.5), 'sine-in-out', sway(6)), P(1, 'back-out', REST)]),
+  A('harvest', 'harvest', [P(tAt('harvest', 'shake'), 'ease-in', sway(12)), P(tAt('harvest', 'detach'), 'ease-out', sway(-10)), P(tAt('harvest', 'settle', 0.5), 'sine-in-out', sway(4)), P(1, 'back-out', REST)]),
+  A('grow', 'grow', [P(0.02, 'ease-out', sway(-8)), P(tAt('grow', 'rise'), 'ease-out', sway(-2)), P(tAt('grow', 'overshoot'), 'back-out', sway(3)), P(1, 'sine-in-out', REST)]),
 ].map((a) => [a.id, a])));
 const WOODY = plant(wsway, { leaf0: 30, leaf1: -30, leaf2: 30 });
 const HERB = plant(hsway, { frond0: 35, frond1: -35, frond2: 35, frond3: -35 });
 
-export const ACTIONS_BY_TEMPLATE: Readonly<Record<'quadruped' | FamilyTemplateId, Readonly<Record<string, MotionAction>>>> = Object.freeze({
+const BASE_ACTIONS_BY_TEMPLATE: Readonly<Record<'quadruped' | FamilyTemplateId, Readonly<Record<string, MotionAction>>>> = Object.freeze({
   quadruped: QUADRUPED_ACTIONS, hopper: HOPPER, 'biped-bird': BIRD, fish: FISH, insect: INSECT, serpent: SERPENT, arachnid: ARACHNID, radial: RADIAL, 'plant-woody': WOODY, 'plant-herb': HERB,
   myriapod: MYRIAPOD, cephalopod: CEPHALOPOD, 'flyer-membrane': FLYER, primate: PRIMATE,
 });
+export const ACTIONS_BY_TEMPLATE = Object.freeze(Object.fromEntries(Object.entries(BASE_ACTIONS_BY_TEMPLATE).map(([id,actions])=>[id,Object.freeze({...actions,...ADDITIONAL_ACTIONS[id]})]))) as Readonly<Record<'quadruped'|FamilyTemplateId,Readonly<Record<string,MotionAction>>>>;
 /** Card weapon → the template's melee action name when the family's weapon has its own verb. */
 export const MELEE_ALIAS: Readonly<Record<string, Readonly<Record<string, string>>>> = Object.freeze({
   hopper: { claw: 'kick' }, insect: { bite: 'mandible' }, serpent: { bite: 'strike' }, radial: { sting: 'sting-arms', tail: 'sting-arms', bite: 'sting-arms' }, fish: {}, 'biped-bird': {}, arachnid: {}, quadruped: {},
   myriapod: { bite: 'mandible' }, cephalopod: { constrict: 'lash', tail: 'lash' }, 'flyer-membrane': {}, primate: { claw: 'punch' },
 });
-export const actionsFor = (templateId: string): Readonly<Record<string, MotionAction>> | undefined => ACTIONS_BY_TEMPLATE[templateId as 'quadruped' | FamilyTemplateId];
+export function actionsFor(templateId:string,anatomy?:AnatomyPresence):Readonly<Record<string,MotionAction>>|undefined{
+ const branches=plantBranchCount(templateId,anatomy);
+ if(branches!==null)return plant(k=>wsway(k,branches),Object.fromEntries(Array.from({length:branches},(_,i)=>['leaf'+i,i%2?-30:30])));
+ const counts=appendageCounts(templateId,anatomy);
+ if(counts)return Object.freeze({...templateId==='radial'?radialActions(counts.arms):cephalopodActions(counts.arms,counts.feedingTentacles),...ADDITIONAL_ACTIONS[templateId]});
+ return ACTIONS_BY_TEMPLATE[templateId as 'quadruped'|FamilyTemplateId]??specializedActions(templateId);
+}
 /** Gaits (approach:*) and melee verbs (melee:*) a template's library offers, in table order. */
 export const templateGaits = (templateId: string): string[] => Object.keys(actionsFor(templateId) ?? {}).filter((k) => k.startsWith('approach:')).map((k) => k.slice(9));
 export const templateMelees = (templateId: string): string[] => Object.keys(actionsFor(templateId) ?? {}).filter((k) => k.startsWith('melee:')).map((k) => k.slice(6));

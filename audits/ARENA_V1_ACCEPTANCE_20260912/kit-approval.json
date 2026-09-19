@@ -1,0 +1,10 @@
+{
+  "motionFrozenParagraphsApproved": true,
+  "soundFrozenParagraphsApproved": true,
+  "soundApprovedV1Sha256": "8df27576ae9c93bda1cb25d5d18a51b360f0e8b63cc4433d005154650e193b96",
+  "soundOnlyEdits": "two status metadata labels; frozen paragraphs unchanged",
+  "motionCurrentSha256": "87424f782c324977ac9af67f848d483800d5f540d58381b6dd29d9f7ed45583e",
+  "revisedMotionWithWorldLife": "missing; not substituted with the earlier proposed v1",
+  "reviewMissing": "audits/CLAUDE_FULL_REVIEW_20260910/ARENA_EFFECTS_REVIEW_20260912.md",
+  "artKitV43Applied": false
+}

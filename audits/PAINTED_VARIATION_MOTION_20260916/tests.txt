@@ -1,0 +1,20 @@
+✔ native alpha preserves every RGBA channel and old keying resurrects invisible background (2.307917ms)
+✔ opaque keyed sources retain the established intake result exactly (1.352334ms)
+✔ blank and mixed opaque-border exports refuse (0.347416ms)
+✔ actual floating paint is refused although its rest and geometric seams passed (4.593625ms)
+✔ all observed final limb parts are connected; no pixel deletion is used (29.473042ms)
+✔ authored mask ownership reconstructs visible pixels; drops, duplicates and changed colours fail (290.49025ms)
+✔ corruption, wrong master, wrong record and unknown joint refuse before output (127.479416ms)
+✔ painter labels reconstruct actual alpha and refuse dropped, unknown or rehashed foreign owners (381.88225ms)
+✔ full motion stays inside the frame; the rest-only fit clips a lunge (0.412125ms)
+✔ empty and nonfinite motion cannot receive an apparently valid fit (0.12325ms)
+✔ media byte probes, seeking and suffix reads retain exact boundaries (0.631583ms)
+✔ malformed and out-of-bounds ranges refuse instead of returning an empty movie (0.157958ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 902.167792

@@ -1,0 +1,229 @@
+{
+  "schema": "cf.authored-head-views/v1",
+  "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+  "source": "audits/CIVET_ANIMATION_PROOF_20260912/civet-turnaround-01.png",
+  "sourceSha256": "5a7d18cbf0c0214ffd9b76f13597a9ce78997fec2c6cfbcb82f7177382abc924",
+  "replaces": [
+    "head",
+    "jaw",
+    "ear-far",
+    "ear-near"
+  ],
+  "joint": "head",
+  "views": [
+    {
+      "id": "profile",
+      "polygon": [
+        [
+          362,
+          192
+        ],
+        [
+          552,
+          190
+        ],
+        [
+          594,
+          290
+        ],
+        [
+          617,
+          391
+        ],
+        [
+          622,
+          477
+        ],
+        [
+          585,
+          548
+        ],
+        [
+          533,
+          550
+        ],
+        [
+          470,
+          494
+        ],
+        [
+          428,
+          435
+        ],
+        [
+          362,
+          414
+        ]
+      ],
+      "sourcePivot": [
+        528,
+        410
+      ],
+      "targetPivot": [
+        0.81,
+        0.48
+      ],
+      "scale": 1.5,
+      "reflectX": true,
+      "eye": [
+        453,
+        328
+      ],
+      "nose": [
+        381,
+        379
+      ],
+      "file": "profile.png",
+      "sha256": "21784791ad7f9fea7ec1fdccbffc902484bb633730853242688b92a82ed0a931",
+      "width": 1774,
+      "height": 887,
+      "paintedPixels": 43870,
+      "neckBlend": {
+        "top": 400,
+        "bottom": 540
+      },
+      "details": [
+        {
+          "joint": "earFarTip",
+          "pivot": [
+            450,
+            281
+          ],
+          "bounds": [
+            380,
+            150,
+            490,
+            310
+          ],
+          "feather": 40,
+          "rotationSign": 1,
+          "direction": -1,
+          "extent": 65
+        },
+        {
+          "joint": "earNearTip",
+          "pivot": [
+            514,
+            307
+          ],
+          "bounds": [
+            442,
+            150,
+            590,
+            340
+          ],
+          "feather": 40,
+          "rotationSign": 1,
+          "direction": -1,
+          "extent": 72
+        },
+        {
+          "joint": "jaw",
+          "pivot": [
+            480,
+            384
+          ],
+          "bounds": [
+            300,
+            365,
+            560,
+            570
+          ],
+          "feather": 40,
+          "rotationSign": 1,
+          "direction": 1,
+          "extent": 60
+        }
+      ],
+      "gaze": {
+        "origin": [
+          0.8997129186602871,
+          0.3819138755980861
+        ],
+        "forward": [
+          0.9858373205741627,
+          0.4429186602870813
+        ]
+      },
+      "yawRadians": 0
+    },
+    {
+      "id": "front",
+      "polygon": [
+        [
+          82,
+          195
+        ],
+        [
+          300,
+          193
+        ],
+        [
+          313,
+          321
+        ],
+        [
+          290,
+          403
+        ],
+        [
+          249,
+          451
+        ],
+        [
+          149,
+          451
+        ],
+        [
+          96,
+          412
+        ],
+        [
+          73,
+          300
+        ]
+      ],
+      "sourcePivot": [
+        198,
+        421
+      ],
+      "targetPivot": [
+        0.828,
+        0.398
+      ],
+      "scale": 1.08,
+      "reflectX": false,
+      "eye": [
+        195,
+        336
+      ],
+      "nose": [
+        198,
+        381
+      ],
+      "file": "front.png",
+      "sha256": "36e57ac4e93a478d5755a238314046804a7647e60de6bea95c8f7f1e803616ca",
+      "width": 1774,
+      "height": 887,
+      "paintedPixels": 42329,
+      "neckBlend": {
+        "top": 400,
+        "bottom": 540
+      },
+      "details": [],
+      "gaze": {
+        "origin": [
+          0.8254162679425837,
+          0.32479425837320575
+        ],
+        "forward": [
+          0.828,
+          0.3635502392344498
+        ]
+      },
+      "yawRadians": 1.5707963267948966
+    }
+  ],
+  "scope": "Existing turnaround intake only. Profile reflection is side-view facing, not fabricated hidden anatomy. Source-to-record alignment awaits visual review.",
+  "bindingHash": "90b419b6942b54e47374ff30c20102cc911836a7d4b3470770d454002286128d"
+}

@@ -8,10 +8,13 @@ import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import { gzipSync } from 'node:zlib';
 import { init, parse } from 'es-module-lexer';
+import {acquireWorkspaceLock} from './workspacelock.mjs';
 import { openChromiumCdp } from './browsercdp.mjs';
 
 const [buildArgument, outputArgument, baselineArgument] = process.argv.slice(2);
 assert(buildArgument && outputArgument, 'usage: audiovisual-pilot-review.mjs BUILD_DIRECTORY OUTPUT_DIRECTORY');
+// Lock is retained through process exit, including receipt/cleanup failures.
+acquireWorkspaceLock('audiovisual pilot review', {inheritFromParent:true});
 const build = fs.realpathSync(buildArgument), output = path.resolve(outputArgument);
 assert(fs.existsSync(path.join(build, 'audiovisual-pilot.html')), 'build must contain the pilot entry');
 fs.mkdirSync(output, { recursive: true });

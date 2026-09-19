@@ -1,0 +1,31 @@
+{
+  "source": "/private/tmp/cf-motion-continuity-candidate10-02",
+  "verbatim": true,
+  "files": [
+    {
+      "path": "bundle.mjs",
+      "bytes": 248717,
+      "sha256": "e6001ea8acc6f1530d4954b98514b380fe6250aa591c25081849ba68b527d983"
+    },
+    {
+      "path": "civet.json",
+      "bytes": 1277275,
+      "sha256": "84247887c0dfe8c8cad4536c9fca77d2597717446670ad19ad50ae64053276f2"
+    },
+    {
+      "path": "fox.json",
+      "bytes": 1159666,
+      "sha256": "249f9a76fc022021c19090d37178e645bbcf22624c2da0643a58148feb571651"
+    },
+    {
+      "path": "procedural.json",
+      "bytes": 1020595,
+      "sha256": "bd3ecb099f1632e334dd39b64e45647210f8182afbd7f05df2254c841f69b13c"
+    },
+    {
+      "path": "report.json",
+      "bytes": 71233,
+      "sha256": "74ee9beff5c7bc3f4bf93d009456fc33fffee2610b3151bb292dedd7f2c96467"
+    }
+  ]
+}

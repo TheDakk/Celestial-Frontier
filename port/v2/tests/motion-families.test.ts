@@ -21,7 +21,8 @@ describe('A11 registry', () => {
     for (const id of A11_SCOPE) expect(isMotionFallback(resolveTemplate(id)), id).toBe(false);
     expect(KIT_SECTION_4.filter((id) => !A11_SCOPE.includes(id))).toEqual([]);
     expect([...KIT_SECTION_4].sort()).toEqual([...A11_SCOPE].sort());
-    for (const id of ['gastropod', 'monotreme', 'plasma']) { const f = resolveTemplate(id); expect(isMotionFallback(f) && f.reason, id).toMatch(new RegExp(id)); }
+    for (const id of ['monotreme', 'plasma']) { const f = resolveTemplate(id); expect(isMotionFallback(f) && f.reason, id).toMatch(new RegExp(id)); }
+    expect(isMotionFallback(resolveTemplate('gastropod'))).toBe(false); // Codex specialized roster template (6a58e40e)
   });
   it('keeps every joint inventory closed: limits for every joint, parents declared first, chains and body axis inside the inventory, ≤ 32 bones', () => {
     for (const t of Object.values(FAMILY_TEMPLATES)) {
@@ -41,15 +42,20 @@ describe('A11 registry', () => {
     expect([fnv1a(t), t.length]).toEqual(['1b2c6e05', 2928]);
     expect([fnv1a(a), a.length]).toEqual(['477b9ea0', 15155]);
     expect(QUADRUPED_ACTION_IDS).toEqual(['idle', 'alert', 'approach:walk', 'approach:trot', 'approach:gallop', 'approach:hop', 'melee:bite', 'melee:claw', 'melee:gore', 'melee:tail', 'melee:headbutt', 'cast', 'hit', 'dodge', 'faint', 'victory', 'tame', 'feed']);
-    expect(ACTIONS_BY_TEMPLATE.quadruped).toBe(QUADRUPED_ACTIONS);
+    // The family registry carries the base library plus Codex's melee:kick row (N6 Civet sentinel exercises it).
+    expect(ACTIONS_BY_TEMPLATE.quadruped).toMatchObject(QUADRUPED_ACTIONS);
+    expect(Object.keys(ACTIONS_BY_TEMPLATE.quadruped!).sort()).toEqual([...QUADRUPED_ACTION_IDS, 'melee:kick'].sort());
   });
   it('routes the painter families named in the A11 brief', () => {
-    const want: Record<string, string> = { bird: 'biped-bird', fish: 'fish', marine: 'fish', insect: 'insect', arachnid: 'arachnid', crust: 'arachnid', snake: 'serpent', serpent: 'serpent', jelly: 'radial', sessile: 'radial', radial: 'radial',
+    const want: Record<string, string> = { bird: 'biped-bird', fish: 'fish', insect: 'insect', arachnid: 'arachnid', snake: 'serpent', serpent: 'serpent', jelly: 'radial', radial: 'radial',
       frog: 'hopper', hopper: 'hopper', tree: 'plant-woody', shrub: 'plant-woody', vine: 'plant-woody', cane: 'plant-woody', fern: 'plant-herb', grass: 'plant-herb', rosette: 'plant-herb', seaweed: 'plant-herb', fungal: 'plant-herb', mammal: 'quadruped', reptile: 'quadruped' };
+    // Broad marine/crust/sessile labels are not anatomical inventories (Codex 6a58e40e): they need a resolved body plan, never borrowed bones.
+    for (const broad of ['marine', 'crust', 'sessile']) expect(templateIdForFamily(broad), broad).toBeNull();
     for (const [f, t] of Object.entries(want)) expect(templateIdForFamily(f), f).toBe(t);
     expect(templateIdForFamily('Bird')).toBe('biped-bird');
     for (const [f, t] of Object.entries({ ceph: 'cephalopod', cephalopod: 'cephalopod', myriapod: 'myriapod', centipede: 'myriapod', millipede: 'myriapod', bat: 'flyer-membrane', primate: 'primate' })) expect(templateIdForFamily(f), f).toBe(t);
-    for (const f of ['gastropod', 'plasma', 'monotreme']) expect(templateIdForFamily(f), f).toBeNull();
+    for (const f of ['plasma', 'monotreme']) expect(templateIdForFamily(f), f).toBeNull();
+    expect(templateIdForFamily('gastropod')).toBe('gastropod'); // Codex specialized roster template (6a58e40e)
     for (const t of Object.values(TEMPLATE_BY_FAMILY)) expect(isMotionFallback(resolveTemplate(t))).toBe(false);
   });
 });
@@ -86,9 +92,10 @@ describe('A11 synthetic fixtures and body cards', () => {
     expect(compileBodyCard(noTemplate as unknown as ResolvedAnatomyRecord, syntheticGenome('fish')).template.id).toBe('fish');
     const e = refusal(() => compileBodyCard({ ...syntheticRecord('fish'), family: 'bird' }));
     expect(e.reason).toBe('family-mismatch'); expect(e.message).toMatch(/"bird" routes to biped-bird/);
-    const u = refusal(() => compileBodyCard({ ...syntheticRecord('fish'), family: 'gastropod' }));
-    expect(u.reason).toBe('unsupported-template'); expect(u.fallback).toMatchObject({ kind: 'whole-portrait', templateId: 'gastropod' });
-    expect(compileBodyCardOrFallback({ ...syntheticRecord('fish'), family: 'gastropod' })).toMatchObject({ kind: 'whole-portrait' });
+    const u = refusal(() => compileBodyCard({ ...syntheticRecord('fish'), family: 'plasma' }));
+    expect(u.reason).toBe('unsupported-template'); expect(u.fallback).toMatchObject({ kind: 'whole-portrait', templateId: 'plasma' });
+    expect(compileBodyCardOrFallback({ ...syntheticRecord('fish'), family: 'plasma' })).toMatchObject({ kind: 'whole-portrait' });
+    expect(refusal(() => compileBodyCard({ ...syntheticRecord('fish'), family: 'gastropod' })).reason).toBe('family-mismatch'); // gastropod is a known specialized template
   });
   it('refuses a landmark set that does not match the joint inventory, by name, in both directions', () => {
     const missing = refusal(() => { const r = syntheticRecord('insect'); const { legMidNearFoot: _x, ...landmarks } = r.landmarks; return compileBodyCard({ ...r, landmarks }); });
@@ -113,16 +120,18 @@ describe('A11 synthetic fixtures and body cards', () => {
 describe('A11 action libraries', () => {
   afterEach(() => vi.restoreAllMocks());
   it('offers the §4 verb set with the family gaits and weapons named in the brief; plants get sway/disturb/harvest/grow', () => {
-    const want: Record<string, [gaits: string[], melees: string[]]> = { hopper: [['hop'], ['kick', 'bite']], 'biped-bird': [['walk', 'flight'], ['peck', 'claw']], fish: [['swim'], ['bite']], insect: [['crawl', 'flight'], ['mandible']],
-      serpent: [['slither'], ['strike', 'constrict']], arachnid: [['scuttle'], ['sting', 'bite']], radial: [['drift', 'pulse'], ['sting-arms']],
-      myriapod: [['crawl'], ['mandible', 'sting']], cephalopod: [['jet', 'crawl'], ['lash', 'bite']], 'flyer-membrane': [['flight', 'crawl'], ['bite', 'claw']], primate: [['walk', 'climb'], ['punch', 'bite']] };
+    // body/tail rows are Codex's anatomy-attack rows (anatomy-attacks.ts) merged into the family libraries; kick on the bird is its N6 row.
+    const want: Record<string, [gaits: string[], melees: string[]]> = { hopper: [['hop'], ['kick', 'bite']], 'biped-bird': [['walk', 'flight'], ['peck', 'claw', 'kick']], fish: [['swim'], ['bite', 'body', 'tail']], insect: [['crawl', 'flight'], ['mandible', 'body']],
+      serpent: [['slither'], ['strike', 'constrict']], arachnid: [['scuttle'], ['sting', 'bite', 'body']], radial: [['drift', 'pulse'], ['sting-arms', 'body']],
+      myriapod: [['crawl'], ['mandible', 'sting', 'body']], cephalopod: [['jet', 'crawl'], ['lash', 'bite']], 'flyer-membrane': [['flight', 'crawl'], ['bite', 'claw']], primate: [['walk', 'climb'], ['punch', 'bite']] };
     for (const id of FAUNA) {
       expect(templateGaits(id), id).toEqual(want[id]![0]); expect(templateMelees(id), id).toEqual(want[id]![1]);
       for (const v of ['idle', 'alert', 'cast', 'hit', 'dodge', 'faint', 'victory', 'tame', 'feed']) expect(actionsFor(id)![v], `${id}/${v}`).toBeDefined();
       expect(actionsFor(id)!.idle!.loop).toBe(true);
     }
     for (const id of PLANT_TEMPLATE_IDS) { expect(Object.keys(actionsFor(id)!)).toEqual(['sway', 'disturb', 'harvest', 'grow']); expect(actionsFor(id)!.sway!.loop).toBe(true); }
-    expect(actionsFor('gastropod')).toBeUndefined();
+    expect(actionsFor('plasma')).toBeUndefined();
+    expect(Object.keys(actionsFor('gastropod') ?? {})).toContain('idle'); // Codex specialized roster template ships its own library (6a58e40e)
   });
   it('every key pose of every action names only inventory joints, uses frozen eases, sits inside the joint limits at its extremes, and is deterministic', () => {
     for (const id of FAMILY_TEMPLATE_IDS) {
@@ -156,9 +165,9 @@ describe('A11 action libraries', () => {
       myriapod: ['approach:crawl', 'melee:mandible'], cephalopod: ['approach:jet', 'melee:lash'], 'flyer-membrane': ['approach:flight', 'melee:bite'], primate: ['approach:walk', 'melee:punch'] };
     for (const id of FAUNA) { expect(resolveActionId(card(id), 'approach').id, id).toBe(want[id]![0]); expect(resolveActionId(card(id), 'melee').id, id).toBe(want[id]![1]); }
     const kicker: BodyCard = { ...card('hopper'), weapons: ['claw'] }; expect(resolveActionId(kicker, 'melee')).toEqual({ id: 'melee:kick', note: null });
-    const unarmed: BodyCard = { ...card('fish'), weapons: ['gore'] }; expect(resolveActionId(unarmed, 'melee')).toMatchObject({ id: 'melee:bite', note: expect.stringMatching(/no fish melee for weapons \[gore\]; bite used/) });
+    const unarmed: BodyCard = { ...card('fish'), weapons: ['gore'] }; expect(() => resolveActionId(unarmed, 'melee')).toThrow(/no admitted fish melee for weapons \[gore\]/); // no silent bite substitution (Codex 6a58e40e)
     expect(buildTimeline(card('serpent'), 'melee', SEED).hitstopMs).toBe(70);
-    expect(() => buildTimeline(card('plant-herb'), 'melee', SEED)).toThrow(/plant-herb has no action/);
+    expect(() => buildTimeline(card('plant-herb'), 'melee', SEED)).toThrow(/no admitted plant-herb melee/);
   });
   it('strong readable poses: hopper kick fires the hind chain −105/+95, bird peck drives the neck +35/+30 at 0.30 BL, serpent strike opens the jaw 42 at 0.48 BL, arachnid sting curls the abdomen 62/68', () => {
     const deg = (tl: ReturnType<typeof buildTimeline>, j: string, i: number): number => tl.tracks[j]![i]!.value * 180 / Math.PI;

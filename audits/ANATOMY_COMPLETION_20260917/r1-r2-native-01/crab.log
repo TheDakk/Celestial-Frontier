@@ -1,0 +1,1 @@
+{"status":"DIAGNOSTIC_PASS","rest":0,"capture":{"rigUpdateP95Ms":1.0999999940395355,"frames":602,"fps":60.00219641983567,"wholeFrameCpuP95Ms":1.5,"encodedMedia":{"programs":[],"stream_groups":[],"streams":[{"codec_type":"video","width":1400,"height":800,"nb_read_frames":"607"}],"format":{"duration":"10.116636"}},"encodedFrames":{"frames":607,"width":1400,"height":800}}}

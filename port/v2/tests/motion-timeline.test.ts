@@ -68,7 +68,7 @@ describe('buildTimeline', () => {
     const tl = buildTimeline(civet(), 'melee:bite', SEED), rad = (d: number): number => d * Math.PI / 180;
     const at = (keys: readonly Keyframe[], i: number): number => keys[i]!.value;
     expect(at(tl.tracks.spine!, 1)).toBeCloseTo(rad(12)); expect(at(tl.tracks.head!, 1)).toBeCloseTo(rad(10));
-    expect(at(tl.root.dx, 2)).toBe(0.36); expect(at(tl.tracks.jaw!, 3)).toBeCloseTo(rad(-25)); expect(at(tl.tracks.foreNearKnee!, 3)).toBeCloseTo(rad(-40));
+    expect(at(tl.root.dx, 2)).toBe(0.36); expect(at(tl.tracks.jaw!, 3)).toBeCloseTo(rad(-25)); const legScale = civet().amplitudeProfile?.scales.foreNearKnee ?? 1; expect(legScale).toBeGreaterThan(0.5); expect(legScale).toBeLessThan(1); expect(at(tl.tracks.foreNearKnee!, 3)).toBeCloseTo(rad(-40) * legScale); // authored -40 × the shared legs amplitude scale (Codex R1b)
     const hit = buildTimeline(civet(), 'hit', SEED);
     expect(at(hit.tracks.head!, 1)).toBeCloseTo(rad(-20)); expect(at(hit.root.dx, 2)).toBe(-0.14);
   });
@@ -141,7 +141,7 @@ describe('gsap adapter', () => {
   });
   it('translation only: root moves by the requested vector exactly once, a hierarchical child inherits it exactly once and gets no local offset; the old broadcast fails this (negative control)', () => {
     const keys = (end: number) => [{ ms: 0, value: 0, ease: 'ease-out' as const }, { ms: 100, value: end, ease: 'ease-out' as const }];
-    const tl = { tracks: { root: keys(0), spine: keys(0), head: keys(0) }, root: { dx: keys(0.2), dy: keys(-0.1) }, secondary: [], durationMs: 100, bodyMs: 100, loop: false } as unknown as MotionTimeline;
+    const tl = { tracks: { root: keys(0), spine: keys(0), head: keys(0) }, root: { dx: keys(0.2), dy: keys(-0.1) }, secondary: [], durationMs: 100, bodyMs: 100, loop: false, limitsRad: { root: { min: -1, max: 1 }, spine: { min: -1, max: 1 }, head: { min: -1, max: 1 } } } as unknown as MotionTimeline;
     /** A CreatureRigV1-shaped target: each joint's dx/dy is its LOCAL offset; world position = parent world + local (rotations zero here). */
     const hierarchy = (): PoseTarget & { world(joint: string): [number, number] } => {
       const parent: Record<string, string | null> = { root: null, spine: 'root', head: 'spine' }, local: Record<string, [number, number]> = {};

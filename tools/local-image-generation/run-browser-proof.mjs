@@ -4,6 +4,7 @@ import {createHash} from 'node:crypto';
 import {execFile} from 'node:child_process';
 import {promisify} from 'node:util';
 import {fileURLToPath} from 'node:url';
+import {acquireWorkspaceLock} from '../../port/v2/tools/workspacelock.mjs';
 import {openChromiumCdp} from '../../port/v2/tools/browsercdp.mjs';
 import {createProofServer} from './proof-server.mjs';
 import {fetchModel,assertIgnoredCache,DEFAULT_CACHE_ROOT} from './fetch-model.mjs';
@@ -30,6 +31,9 @@ let server,cdp;
 try{
   const canonical=await exportCanonicalEarthSnapshot(path.join(destination,'canonical-input'));
   receipt.canonicalExport=canonical.receipt;
+  // The exporter has its own exclusive lease; acquire the browser lease only
+  // after it returns, and retain it through process exit/cleanup.
+  acquireWorkspaceLock('legacy image proof', {inheritFromParent:true});
   if(!receipt.preflight){
     const verified=await fetchModel({manifest,cacheDir,verifyOnly:true});
     receipt.modelVerification=verified.receipt;

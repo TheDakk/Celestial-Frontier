@@ -351,7 +351,7 @@ describe('Pureforged browser-evidence truth', () => {
     expect(final.ok).toBe(true);
     expect(launcherClaims).toHaveLength(5);
     for (const row of launcherClaims) {
-      expect(row.result, row.copy).toMatchObject({ ok: false, honest: true, overclaim: false, bulletCount: 83 });
+      expect(row.result, row.copy).toMatchObject({ ok: false, honest: true, overclaim: false, bulletCount: 85 });
     }
     expect(result.truthfulFeatureClaims).toHaveLength(11);
     expect(result.truthfulFeatureClaims.every((row) => row.result.ok && row.result.honest

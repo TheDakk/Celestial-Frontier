@@ -1,0 +1,689 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.ability.storm.cast.1",
+      "group": "coverage-storm",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/3c7b3c9d856ee31f-laserLarge_003.ogg",
+          "sha256": "3c7b3c9d856ee31fa1b92d29322f6ee472446627381595baeaba2af35c07135f",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.715782
+        },
+        {
+          "path": "source-audio/kenney_impacts/25a96f90a9a1f88a-impactMetal_light_002.ogg",
+          "sha256": "25a96f90a9a1f88a531e824e126f0519504625e5635e65a72e4f31611428db29",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.235782
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-storm",
+          "start": 0,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.storm.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "storm",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-storm/v2.ability.storm.cast.1.wav",
+      "masterSha256": "810e19dc3c3942efd0c6ed42bda2dccbe1f474fd7b7461bd161f8da2e8618ea9",
+      "opus": "masters/coverage-storm/v2.ability.storm.cast.1.opus",
+      "opusSha256": "b6bc5fd77e7807721da62081ae5fcce8ab6aedae20e725bcd1e33fbe32c83e3a",
+      "previewSha256": "b2bd61fb6f3c58327d9211232e10c17cfd18e35fe40bd7491b51e678d005ee25",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.storm.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.2,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.ability.storm.cast.2",
+      "group": "coverage-storm",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/86c749483b40e1bb-laserLarge_004.ogg",
+          "sha256": "86c749483b40e1bba9bfea6a04e884d479e5481e52efb6f113341141de516b3b",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.693197
+        },
+        {
+          "path": "source-audio/kenney_impacts/33b5e6e37c6e9d54-impactMetal_light_000.ogg",
+          "sha256": "33b5e6e37c6e9d54e07bf5a89b12c76e879f40c1ea83cdd82714df1d6f9fec6d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.351474
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-storm",
+          "start": 0,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.storm.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "storm",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 1.65,
+      "master": "masters/coverage-storm/v2.ability.storm.cast.2.wav",
+      "masterSha256": "f070371d76f186025e4de79bc53e196976d5186be5a181ec1c12029e23cf829a",
+      "opus": "masters/coverage-storm/v2.ability.storm.cast.2.opus",
+      "opusSha256": "809192005b8fe943ecb5b4c583b0d115e66e4dcc15a79c4f8629e32ece2ea403",
+      "previewSha256": "0cba2563dbd4f7c0781be4cacb19cac2adce8856c90d189cfc59669d7ccfa291",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.storm.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.4,
+      "opusDbTP": -11.4
+    },
+    {
+      "id": "v2.ability.storm.cast.3",
+      "group": "coverage-storm",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/a56d95794cd732d6-laserLarge_000.ogg",
+          "sha256": "a56d95794cd732d6c2d66ce488c14cf557fe526c282897c9a77675c2bd9b77e6",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.676644
+        },
+        {
+          "path": "source-audio/kenney_impacts/92d5db6bfc672d9d-impactMetal_light_003.ogg",
+          "sha256": "92d5db6bfc672d9dc1b4f390b2900504f013187fa36335472554fafefa9050b1",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.482041
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-storm",
+          "start": 0,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.storm.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "storm",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 3.3,
+      "master": "masters/coverage-storm/v2.ability.storm.cast.3.wav",
+      "masterSha256": "059e51301ed90adb0f97257272e85d1f365802288b9d8952ddffc70caf313cc4",
+      "opus": "masters/coverage-storm/v2.ability.storm.cast.3.opus",
+      "opusSha256": "1b507a1cb56b03a32b1e892f0d3f83ffc28bdb490aee11b192433db556ac3ded",
+      "previewSha256": "9b3cc82c3f466254a90701b9ecd02199db72e926a36efe4c34c19194f71aa664",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.storm.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -11.7
+    },
+    {
+      "id": "v2.ability.storm.impact.1",
+      "group": "coverage-storm",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/e5e0b6ccc4d5720c-laserLarge_002.ogg",
+          "sha256": "e5e0b6ccc4d5720c8174a3e5b7cc6f9be3057352a89cbb2e99a00efc6fe5cc11",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.743583
+        },
+        {
+          "path": "source-audio/kenney_impacts/33b5e6e37c6e9d54-impactMetal_light_000.ogg",
+          "sha256": "33b5e6e37c6e9d54e07bf5a89b12c76e879f40c1ea83cdd82714df1d6f9fec6d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.351474
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-storm",
+          "start": 0,
+          "duration": 0.55,
+          "note": 37,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.storm.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "storm",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 4.949999999999999,
+      "master": "masters/coverage-storm/v2.ability.storm.impact.1.wav",
+      "masterSha256": "24437afe5b94d0b6c5ab2ae92c69e1bc1cc8cd3d30ca19d14d413e7801717eea",
+      "opus": "masters/coverage-storm/v2.ability.storm.impact.1.opus",
+      "opusSha256": "d44c33afc3d90f5462512aa2e0cae6cda7c067bc69f5509a75a3d8ec39e4a725",
+      "previewSha256": "2adbe37db9c6e5bf59587b2eb68ce92b45fd1c3c3069d7ab3405a3d0762113b5",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.storm.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.7,
+      "opusDbTP": -10.5
+    },
+    {
+      "id": "v2.ability.storm.impact.2",
+      "group": "coverage-storm",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/e678aca631495b7d-laserLarge_001.ogg",
+          "sha256": "e678aca631495b7dfef4ac625f0349875ccac81a60f538d530e072241af3e4bd",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.720998
+        },
+        {
+          "path": "source-audio/kenney_impacts/92d5db6bfc672d9d-impactMetal_light_003.ogg",
+          "sha256": "92d5db6bfc672d9dc1b4f390b2900504f013187fa36335472554fafefa9050b1",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.482041
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-storm",
+          "start": 0,
+          "duration": 0.55,
+          "note": 37,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.storm.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "storm",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 7.1499999999999995,
+      "master": "masters/coverage-storm/v2.ability.storm.impact.2.wav",
+      "masterSha256": "09102c4d5af662e461f0957f1105d0fcb3ef9b46fd147b316f1443f3b0cf3920",
+      "opus": "masters/coverage-storm/v2.ability.storm.impact.2.opus",
+      "opusSha256": "f8ecbaec3809b72f585bec1351427bdc0c3cda1bf91bac580dd035fdada4c221",
+      "previewSha256": "b92faad56aa81e308b932c4ee72f5281d4d037ba43b66937f4c6c1a0736391e4",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.storm.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.8,
+      "opusDbTP": -12.1
+    },
+    {
+      "id": "v2.ability.storm.impact.3",
+      "group": "coverage-storm",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/54d6a7fc85b5c7b0-nri-Thunder.mp3",
+          "sha256": "54d6a7fc85b5c7b0c65dd36ff3c5f398d698c37e733bfc98a234a6724c2d0a49",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 46.03575
+        },
+        {
+          "path": "source-audio/kenney_impacts/9b1c35820fba5070-impactMetal_light_004.ogg",
+          "sha256": "9b1c35820fba507081261f19ab5f461f69a5e2627a7d91acdb73ca3cfc997979",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.213401
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-storm",
+          "start": 0,
+          "duration": 0.55,
+          "note": 37,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.storm.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "storm",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 9.35,
+      "master": "masters/coverage-storm/v2.ability.storm.impact.3.wav",
+      "masterSha256": "ca7ee2e405b3bb87ed83278fd3f2db54dfe220847eee70b868a6ae6a310f69d3",
+      "opus": "masters/coverage-storm/v2.ability.storm.impact.3.opus",
+      "opusSha256": "083e7dcaa68b057d3e3a0a51443a8d08823ae0f0154f92e08391e6d5bdbb637b",
+      "previewSha256": "cf506c91bbea3f09ed0632e5a883a48a0a3e137e77734daa450bbaa704852ac3",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.storm.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -24.6,
+      "opusDbTP": -24.6
+    },
+    {
+      "id": "v2.ability.storm.sustain.1",
+      "group": "coverage-storm",
+      "kind": "synthetic_fictional",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/3c7b3c9d856ee31f-laserLarge_003.ogg",
+          "sha256": "3c7b3c9d856ee31fa1b92d29322f6ee472446627381595baeaba2af35c07135f",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.715782
+        },
+        {
+          "path": "source-audio/kenney_impacts/92d5db6bfc672d9d-impactMetal_light_003.ogg",
+          "sha256": "92d5db6bfc672d9dc1b4f390b2900504f013187fa36335472554fafefa9050b1",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.482041
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-storm",
+          "start": 0.0,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-storm",
+          "start": 0.6,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-storm",
+          "start": 1.2,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-storm",
+          "start": 1.7999999999999998,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-storm",
+          "start": 2.4,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-storm",
+          "start": 3.0,
+          "duration": 0.55,
+          "note": 51,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.storm.sustain"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "storm",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 11.55,
+      "master": "masters/coverage-storm/v2.ability.storm.sustain.1.wav",
+      "masterSha256": "64471c92fe998c6eadf76ba2b28a5e40b994b4bd567514642af6c094d4694678",
+      "opus": "masters/coverage-storm/v2.ability.storm.sustain.1.opus",
+      "opusSha256": "72c5ee642b0e34ecf0054ce89af6c43f1656f6d2381b435ebb61890bf9cb9a34",
+      "previewSha256": "ba5ddf2b1c39850e441bf8a64ea922882768dd3524f6bf5f83287fa45854ee55",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/v2.ability.storm.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.2,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.ability.storm.release.1",
+      "group": "coverage-storm",
+      "kind": "synthetic_fictional",
+      "duration": 0.9,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/3c7b3c9d856ee31f-laserLarge_003.ogg",
+          "sha256": "3c7b3c9d856ee31fa1b92d29322f6ee472446627381595baeaba2af35c07135f",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.715782
+        },
+        {
+          "path": "source-audio/kenney_impacts/9b1c35820fba5070-impactMetal_light_004.ogg",
+          "sha256": "9b1c35820fba507081261f19ab5f461f69a5e2627a7d91acdb73ca3cfc997979",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.213401
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-storm",
+          "start": 0,
+          "duration": 0.55,
+          "note": 44,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.storm.release"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "storm",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 16.55,
+      "master": "masters/coverage-storm/v2.ability.storm.release.1.wav",
+      "masterSha256": "9fee0e4fa9903f7ba63d03e3d2db2842ccb8dc26ad2b2feda662c4adac49c88b",
+      "opus": "masters/coverage-storm/v2.ability.storm.release.1.opus",
+      "opusSha256": "23b13d3df49f07c4e3b8aa0323b19739789b18f986fc864141a96f69a4cefbdf",
+      "previewSha256": "e03cd9127b47f684f32e7a697d56d88fb5aa4e65d54632f21ef22d30e5e1f064",
+      "previewBytes": 86514,
+      "previewUrl": "/__cf-audio-review/v2.ability.storm.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.2,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.ability.storm.shield.1",
+      "group": "coverage-storm",
+      "kind": "synthetic_fictional",
+      "duration": 1.4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/3c7b3c9d856ee31f-laserLarge_003.ogg",
+          "sha256": "3c7b3c9d856ee31fa1b92d29322f6ee472446627381595baeaba2af35c07135f",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.715782
+        },
+        {
+          "path": "source-audio/kenney_impacts/fba69c467ddd85da-impactMetal_light_001.ogg",
+          "sha256": "fba69c467ddd85da7b1d82e259f936b876d9ba6a3d6f1b24bdd10468e46bfe08",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.251837
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-storm",
+          "start": 0,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-storm",
+          "start": 0.3,
+          "duration": 0.55,
+          "note": 56,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.storm.shield"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "storm",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 18.45,
+      "master": "masters/coverage-storm/v2.ability.storm.shield.1.wav",
+      "masterSha256": "1a5924270a902be6a9599f91892dbcb2cb529551a1de4189a728ab547c34976f",
+      "opus": "masters/coverage-storm/v2.ability.storm.shield.1.opus",
+      "opusSha256": "4d5c414df284fdccb8e99906dea59fee209c26a6277af029b75d45915798b619",
+      "previewSha256": "d7246bd696e93c8206cf7fbd00133443d352cbd28ef5b4fa59a802fd293b86dc",
+      "previewBytes": 134514,
+      "previewUrl": "/__cf-audio-review/v2.ability.storm.shield.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.2,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.ability.storm.heal.1",
+      "group": "coverage-storm",
+      "kind": "synthetic_fictional",
+      "duration": 1.8,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/3c7b3c9d856ee31f-laserLarge_003.ogg",
+          "sha256": "3c7b3c9d856ee31fa1b92d29322f6ee472446627381595baeaba2af35c07135f",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.715782
+        },
+        {
+          "path": "source-audio/kenney_impacts/25a96f90a9a1f88a-impactMetal_light_002.ogg",
+          "sha256": "25a96f90a9a1f88a531e824e126f0519504625e5635e65a72e4f31611428db29",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.235782
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-storm",
+          "start": 0,
+          "duration": 0.55,
+          "note": 49,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-storm",
+          "start": 0.35,
+          "duration": 0.55,
+          "note": 53,
+          "gain": 0.5
+        },
+        {
+          "track": "accent-storm",
+          "start": 0.7,
+          "duration": 0.55,
+          "note": 56,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.storm.heal"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "storm",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 20.849999999999998,
+      "master": "masters/coverage-storm/v2.ability.storm.heal.1.wav",
+      "masterSha256": "8f15bc94551db7dc06ca1cc95f33d156051bc5397a697fd39c15c8b0176e2cef",
+      "opus": "masters/coverage-storm/v2.ability.storm.heal.1.opus",
+      "opusSha256": "17362492b6a13e73a2062f59ab4fea8f3a54725d7618cead425e5c1c422f760a",
+      "previewSha256": "b7f7325c74464f7502013aaf286b2a6c38c32659d31502afb39c86710540f826",
+      "previewBytes": 172914,
+      "previewUrl": "/__cf-audio-review/v2.ability.storm.heal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.2,
+      "opusDbTP": -11.8
+    },
+    {
+      "id": "v2.ability.storm.tick.1",
+      "group": "coverage-storm",
+      "kind": "synthetic_fictional",
+      "duration": 0.45,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/3c7b3c9d856ee31f-laserLarge_003.ogg",
+          "sha256": "3c7b3c9d856ee31fa1b92d29322f6ee472446627381595baeaba2af35c07135f",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.715782
+        },
+        {
+          "path": "source-audio/kenney_impacts/33b5e6e37c6e9d54-impactMetal_light_000.ogg",
+          "sha256": "33b5e6e37c6e9d54e07bf5a89b12c76e879f40c1ea83cdd82714df1d6f9fec6d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.351474
+        }
+      ],
+      "synthNote": null,
+      "midi": [
+        {
+          "track": "accent-storm",
+          "start": 0,
+          "duration": 0.45,
+          "note": 61,
+          "gain": 0.5
+        }
+      ],
+      "requirements": [
+        "ability.storm.tick"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "storm",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 23.65,
+      "master": "masters/coverage-storm/v2.ability.storm.tick.1.wav",
+      "masterSha256": "2444edc820ed74888e923ad27954aa125c4717c683eaccc752a0a549cd4792f8",
+      "opus": "masters/coverage-storm/v2.ability.storm.tick.1.opus",
+      "opusSha256": "e9a0d54ef533f22eb296423c918c44bd5a546a8ba278850b566f777f1c9946d1",
+      "previewSha256": "0c7bc41c6372b181c4a6de43b697c341cd57a5a8d1016bfb9d5433f6ce169736",
+      "previewBytes": 43314,
+      "previewUrl": "/__cf-audio-review/v2.ability.storm.tick.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.2,
+      "opusDbTP": -11.8
+    }
+  ],
+  "listeningAccepted": false
+}

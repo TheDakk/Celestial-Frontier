@@ -1,0 +1,201 @@
+{
+  "kind": "plant-woody",
+  "identity": {
+    "speciesVisualKey": "authored:accepted-cranberry-master",
+    "seed": 133,
+    "ownerId": "authored:flora/cranberry",
+    "earthName": "Cranberry"
+  },
+  "template": {
+    "id": "plant-woody",
+    "version": 1
+  },
+  "habitat": {
+    "realm": "land",
+    "source": "Authored terrestrial woody master; roots attached to substrate"
+  },
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v1",
+    "absent": [],
+    "growth": {
+      "branches": 7
+    }
+  },
+  "geometry": {
+    "cutoutAssetHash": "88f6f2a92524207a494e21564e54fa3916e15ca3aa1ff7885327a008bbf34732",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.825,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.433,
+      0.728
+    ],
+    "trunk": [
+      0.487,
+      0.546
+    ],
+    "branch0Base": [
+      0.42,
+      0.543
+    ],
+    "branch0Tip": [
+      0.285,
+      0.45
+    ],
+    "leaf0": [
+      0.202,
+      0.391
+    ],
+    "branch1Base": [
+      0.465,
+      0.549
+    ],
+    "branch1Tip": [
+      0.407,
+      0.47
+    ],
+    "leaf1": [
+      0.375,
+      0.372
+    ],
+    "branch2Base": [
+      0.535,
+      0.544
+    ],
+    "branch2Tip": [
+      0.665,
+      0.392
+    ],
+    "leaf2": [
+      0.7,
+      0.26
+    ],
+    "branch3Base": [
+      0.735,
+      0.343
+    ],
+    "branch3Tip": [
+      0.852,
+      0.37
+    ],
+    "leaf3": [
+      0.868,
+      0.415
+    ],
+    "branch4Base": [
+      0.419,
+      0.565
+    ],
+    "branch4Tip": [
+      0.278,
+      0.615
+    ],
+    "leaf4": [
+      0.157,
+      0.671
+    ],
+    "branch5Base": [
+      0.524,
+      0.592
+    ],
+    "branch5Tip": [
+      0.682,
+      0.686
+    ],
+    "leaf5": [
+      0.829,
+      0.68
+    ],
+    "branch6Base": [
+      0.643,
+      0.708
+    ],
+    "branch6Tip": [
+      0.811,
+      0.748
+    ],
+    "leaf6": [
+      0.906,
+      0.816
+    ]
+  },
+  "materials": {
+    "surface": "bark",
+    "paletteSource": "accepted authored master",
+    "joints": {
+      "leaf0": "foliage",
+      "leaf1": "foliage",
+      "leaf2": "foliage",
+      "leaf3": "foliage",
+      "leaf4": "foliage",
+      "leaf5": "foliage",
+      "leaf6": "foliage"
+    }
+  },
+  "clipSetId": "plant-woody-v1",
+  "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/cranberry.png",
+  "coverage": {
+    "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+    "unproven": [
+      "hidden/reverse surfaces",
+      "individual leaf and fruit articulation",
+      "harvest item detachment",
+      "Compendium grow scale reveal",
+      "native full action visual acceptance",
+      "physical phone budget"
+    ]
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "trunk": 0.18984203960134852,
+      "branch0Base": 0.06706713054842887,
+      "branch0Tip": 0.16393291310777103,
+      "leaf0": 0.1018331969448077,
+      "branch1Base": 0.022203603311174484,
+      "branch1Tip": 0.09800510190801302,
+      "leaf1": 0.10309219175087894,
+      "branch2Base": 0.0480416485978573,
+      "branch2Tip": 0.20000999975001255,
+      "leaf2": 0.13656134152826707,
+      "branch3Base": 0.3204886893480018,
+      "branch3Tip": 0.12007497657713698,
+      "leaf3": 0.0477598157450382,
+      "branch4Base": 0.07060453243241539,
+      "branch4Tip": 0.14960280746028798,
+      "leaf4": 0.13333041663476497,
+      "branch5Base": 0.059033888572581725,
+      "branch5Tip": 0.18384776310850243,
+      "leaf5": 0.14712239802287064,
+      "branch6Base": 0.2248999777678957,
+      "branch6Tip": 0.17269626515938327,
+      "leaf6": 0.11682893477217014
+    },
+    "measures": {
+      "body": 0.18984203960134852,
+      "bone-min": 0.022203603311174484,
+      "bone-max": 0.3204886893480018,
+      "branch/trunk:branch0": 1.216801316195715,
+      "branch/trunk:branch1": 0.6332038228814605,
+      "branch/trunk:branch2": 1.3066212777146535,
+      "branch/trunk:branch3": 2.3206854859454915,
+      "branch/trunk:branch4": 1.1599503479583304,
+      "branch/trunk:branch5": 1.2793881281043658,
+      "branch/trunk:branch6": 2.0943529882116514
+    }
+  },
+  "recipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3"
+}

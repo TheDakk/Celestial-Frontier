@@ -1,0 +1,648 @@
+{
+  "scope": "actual source, pure producer sampling; not native visual acceptance",
+  "status": "FAIL",
+  "card": {
+    "kind": "body-card",
+    "projectionSigns": {
+      "wingNearRoot": -1,
+      "wingNearTip": -1,
+      "wingFarRoot": 1,
+      "wingFarTip": 1
+    },
+    "identity": {
+      "speciesVisualKey": "authored:pheasant-frontal-flight-candidate",
+      "seed": 424242,
+      "ownerId": "authored:turnaround-candidate-02",
+      "earthName": "Pheasant"
+    },
+    "recipeHash": "2d50a9f3646700efa020aab8e5db81c9d254b065831d484e4eaf4c1a1b93712a",
+    "template": {
+      "id": "biped-bird",
+      "version": 1,
+      "clipSetId": "biped-bird-v1"
+    },
+    "massClass": {
+      "name": "medium",
+      "multiplier": 1
+    },
+    "locomotion": {
+      "loco": null,
+      "gait": "fly",
+      "templateGait": "flight"
+    },
+    "realm": "aerial",
+    "materials": {
+      "body": "feathered",
+      "head": "feathered",
+      "legs": "feathered",
+      "tail": "feathered",
+      "ears": "feathered",
+      "wings": "feathered",
+      "fins": "feathered",
+      "antennae": "feathered",
+      "fronds": "feathered",
+      "arms": "feathered"
+    },
+    "parts": [
+      {
+        "joint": "pelvis",
+        "parent": "root",
+        "group": "body",
+        "pivot": [
+          0.5104166666666666,
+          0.51953125
+        ],
+        "tip": [
+          0.5104166666666666,
+          0.5390625
+        ],
+        "boneLength": 0.01953125
+      },
+      {
+        "joint": "spine",
+        "parent": "pelvis",
+        "group": "body",
+        "pivot": [
+          0.5104166666666666,
+          0.5390625
+        ],
+        "tip": [
+          0.5104166666666666,
+          0.4583333333333333
+        ],
+        "boneLength": 0.08072916666666669
+      },
+      {
+        "joint": "chest",
+        "parent": "spine",
+        "group": "body",
+        "pivot": [
+          0.5104166666666666,
+          0.4583333333333333
+        ],
+        "tip": [
+          0.5104166666666666,
+          0.36328125
+        ],
+        "boneLength": 0.09505208333333331
+      },
+      {
+        "joint": "neck0",
+        "parent": "chest",
+        "group": "head",
+        "pivot": [
+          0.5104166666666666,
+          0.36328125
+        ],
+        "tip": [
+          0.5104166666666666,
+          0.3033854166666667
+        ],
+        "boneLength": 0.059895833333333315
+      },
+      {
+        "joint": "neck1",
+        "parent": "neck0",
+        "group": "head",
+        "pivot": [
+          0.5104166666666666,
+          0.3033854166666667
+        ],
+        "tip": [
+          0.5104166666666666,
+          0.2578125
+        ],
+        "boneLength": 0.045572916666666685
+      },
+      {
+        "joint": "head",
+        "parent": "neck1",
+        "group": "head",
+        "pivot": [
+          0.5104166666666666,
+          0.2578125
+        ],
+        "tip": [
+          0.5104166666666666,
+          0.20182291666666666
+        ],
+        "boneLength": 0.05598958333333334
+      },
+      {
+        "joint": "beak",
+        "parent": "head",
+        "group": "head",
+        "pivot": [
+          0.5104166666666666,
+          0.20182291666666666
+        ],
+        "tip": [
+          0.5104166666666666,
+          0.22916666666666666
+        ],
+        "boneLength": 0.02734375
+      },
+      {
+        "joint": "legFarKnee",
+        "parent": "pelvis",
+        "group": "legs",
+        "pivot": [
+          0.5104166666666666,
+          0.5390625
+        ],
+        "tip": [
+          0.4596354166666667,
+          0.6171875
+        ],
+        "boneLength": 0.09317859720216062
+      },
+      {
+        "joint": "legFarAnkle",
+        "parent": "legFarKnee",
+        "group": "legs",
+        "pivot": [
+          0.4596354166666667,
+          0.6171875
+        ],
+        "tip": [
+          0.4479166666666667,
+          0.7174479166666666
+        ],
+        "boneLength": 0.10094295543392863
+      },
+      {
+        "joint": "legFarFoot",
+        "parent": "legFarAnkle",
+        "group": "legs",
+        "pivot": [
+          0.4479166666666667,
+          0.7174479166666666
+        ],
+        "tip": [
+          0.40625,
+          0.76171875
+        ],
+        "boneLength": 0.060794882968378955
+      },
+      {
+        "joint": "legNearKnee",
+        "parent": "pelvis",
+        "group": "legs",
+        "pivot": [
+          0.5104166666666666,
+          0.5390625
+        ],
+        "tip": [
+          0.5559895833333334,
+          0.61328125
+        ],
+        "boneLength": 0.0870937057718263
+      },
+      {
+        "joint": "legNearAnkle",
+        "parent": "legNearKnee",
+        "group": "legs",
+        "pivot": [
+          0.5559895833333334,
+          0.61328125
+        ],
+        "tip": [
+          0.55859375,
+          0.7161458333333334
+        ],
+        "boneLength": 0.10289754218817894
+      },
+      {
+        "joint": "legNearFoot",
+        "parent": "legNearAnkle",
+        "group": "legs",
+        "pivot": [
+          0.55859375,
+          0.7161458333333334
+        ],
+        "tip": [
+          0.5911458333333334,
+          0.7604166666666666
+        ],
+        "boneLength": 0.0549503850156489
+      },
+      {
+        "joint": "wingFarRoot",
+        "parent": "chest",
+        "group": "wings",
+        "pivot": [
+          0.5104166666666666,
+          0.36328125
+        ],
+        "tip": [
+          0.40234375,
+          0.3528645833333333
+        ],
+        "boneLength": 0.10857376414808835
+      },
+      {
+        "joint": "wingFarTip",
+        "parent": "wingFarRoot",
+        "group": "wings",
+        "pivot": [
+          0.40234375,
+          0.3528645833333333
+        ],
+        "tip": [
+          0.19401041666666666,
+          0.4348958333333333
+        ],
+        "boneLength": 0.22390154924506506
+      },
+      {
+        "joint": "wingNearRoot",
+        "parent": "chest",
+        "group": "wings",
+        "pivot": [
+          0.5104166666666666,
+          0.36328125
+        ],
+        "tip": [
+          0.6080729166666666,
+          0.3528645833333333
+        ],
+        "boneLength": 0.09821023423506811
+      },
+      {
+        "joint": "wingNearTip",
+        "parent": "wingNearRoot",
+        "group": "wings",
+        "pivot": [
+          0.6080729166666666,
+          0.3528645833333333
+        ],
+        "tip": [
+          0.81640625,
+          0.4348958333333333
+        ],
+        "boneLength": 0.22390154924506508
+      },
+      {
+        "joint": "tailFan",
+        "parent": "pelvis",
+        "group": "tail",
+        "pivot": [
+          0.5104166666666666,
+          0.5390625
+        ],
+        "tip": [
+          0.5234375,
+          0.5807291666666666
+        ],
+        "boneLength": 0.043653788057917184
+      }
+    ],
+    "secondaryParts": [
+      {
+        "id": "wingFar",
+        "driver": "chest",
+        "joints": [
+          "wingFarRoot",
+          "wingFarTip"
+        ],
+        "lagOrder": [
+          0,
+          1
+        ],
+        "material": "feathered",
+        "kind": "wing"
+      },
+      {
+        "id": "wingNear",
+        "driver": "chest",
+        "joints": [
+          "wingNearRoot",
+          "wingNearTip"
+        ],
+        "lagOrder": [
+          0,
+          1
+        ],
+        "material": "feathered",
+        "kind": "wing"
+      },
+      {
+        "id": "tailFan",
+        "driver": "pelvis",
+        "joints": [
+          "tailFan"
+        ],
+        "lagOrder": [
+          0
+        ],
+        "material": "feathered",
+        "kind": "tailfan"
+      }
+    ],
+    "weapons": [
+      "peck",
+      "claw"
+    ],
+    "luminous": false,
+    "bodyLength": 0.17578125,
+    "groundLineY": 0.8,
+    "landmarks": {
+      "root": [
+        0.5104166666666666,
+        0.51953125
+      ],
+      "pelvis": [
+        0.5104166666666666,
+        0.5390625
+      ],
+      "spine": [
+        0.5104166666666666,
+        0.4583333333333333
+      ],
+      "chest": [
+        0.5104166666666666,
+        0.36328125
+      ],
+      "neck0": [
+        0.5104166666666666,
+        0.3033854166666667
+      ],
+      "neck1": [
+        0.5104166666666666,
+        0.2578125
+      ],
+      "head": [
+        0.5104166666666666,
+        0.20182291666666666
+      ],
+      "beak": [
+        0.5104166666666666,
+        0.22916666666666666
+      ],
+      "legFarKnee": [
+        0.4596354166666667,
+        0.6171875
+      ],
+      "legFarAnkle": [
+        0.4479166666666667,
+        0.7174479166666666
+      ],
+      "legFarFoot": [
+        0.40625,
+        0.76171875
+      ],
+      "legNearKnee": [
+        0.5559895833333334,
+        0.61328125
+      ],
+      "legNearAnkle": [
+        0.55859375,
+        0.7161458333333334
+      ],
+      "legNearFoot": [
+        0.5911458333333334,
+        0.7604166666666666
+      ],
+      "wingFarRoot": [
+        0.40234375,
+        0.3528645833333333
+      ],
+      "wingFarTip": [
+        0.19401041666666666,
+        0.4348958333333333
+      ],
+      "wingNearRoot": [
+        0.6080729166666666,
+        0.3528645833333333
+      ],
+      "wingNearTip": [
+        0.81640625,
+        0.4348958333333333
+      ],
+      "tailFan": [
+        0.5234375,
+        0.5807291666666666
+      ]
+    },
+    "bounds": {
+      "inside": true,
+      "clamped": [],
+      "limitsDeg": {
+        "root": {
+          "min": -25,
+          "max": 25
+        },
+        "pelvis": {
+          "min": -20,
+          "max": 20
+        },
+        "spine": {
+          "min": -25,
+          "max": 25
+        },
+        "chest": {
+          "min": -20,
+          "max": 20
+        },
+        "neck0": {
+          "min": -45,
+          "max": 45
+        },
+        "neck1": {
+          "min": -45,
+          "max": 45
+        },
+        "head": {
+          "min": -40,
+          "max": 40
+        },
+        "beak": {
+          "min": -30,
+          "max": 5
+        },
+        "legFarKnee": {
+          "min": -70,
+          "max": 70
+        },
+        "legFarAnkle": {
+          "min": -85,
+          "max": 85
+        },
+        "legFarFoot": {
+          "min": -45,
+          "max": 45
+        },
+        "legNearKnee": {
+          "min": -70,
+          "max": 70
+        },
+        "legNearAnkle": {
+          "min": -85,
+          "max": 85
+        },
+        "legNearFoot": {
+          "min": -45,
+          "max": 45
+        },
+        "wingFarRoot": {
+          "min": -60,
+          "max": 95
+        },
+        "wingFarTip": {
+          "min": -70,
+          "max": 70
+        },
+        "wingNearRoot": {
+          "min": -60,
+          "max": 95
+        },
+        "wingNearTip": {
+          "min": -70,
+          "max": 70
+        },
+        "tailFan": {
+          "min": -40,
+          "max": 40
+        }
+      },
+      "legSlack": {}
+    },
+    "notes": [
+      "earth species \"Pheasant\" not in the named table; walk/medium defaults",
+      "gait \"fly\" has no biped-bird approach; using flight",
+      "physical realm: Pheasant flight anatomy; source-bound open-wing turnaround"
+    ]
+  },
+  "guard": {
+    "schema": "cf.opaque-seam-sampling-guard/v1",
+    "sourceAtlasSha256": "51b1f8abe34602e8ff6910712a97f0d6f6162fe949828a11b948f66de4c02672",
+    "bindingHash": "c77b6c9413df219fadd249cd52d867c448fbb049fd15e6058d5882ff41f946fe",
+    "guardTexels": 2848,
+    "opaqueEdges": 1419,
+    "joins": [
+      {
+        "name": "far-shin--far-foot",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 25,
+        "maxBasisDifference": 1.1102230246251565e-16
+      },
+      {
+        "name": "far-thigh--far-shin",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 11,
+        "maxBasisDifference": 1.6653345369377348e-16
+      },
+      {
+        "name": "head--beak",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 138,
+        "maxBasisDifference": 4.6629367034256575e-15
+      },
+      {
+        "name": "near-shin--near-foot",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 29,
+        "maxBasisDifference": 2.220446049250313e-16
+      },
+      {
+        "name": "near-thigh--near-shin",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 11,
+        "maxBasisDifference": 1.6653345369377348e-16
+      },
+      {
+        "name": "neck-lower--neck-upper",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 77,
+        "maxBasisDifference": 8.326672684688674e-16
+      },
+      {
+        "name": "neck-upper--head",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 59,
+        "maxBasisDifference": 1.6653345369377348e-16
+      },
+      {
+        "name": "torso--far-thigh",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 77,
+        "maxBasisDifference": 4.829470157119431e-15
+      },
+      {
+        "name": "torso--near-thigh",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 73,
+        "maxBasisDifference": 6.161737786669619e-15
+      },
+      {
+        "name": "torso--neck-lower",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 149,
+        "maxBasisDifference": 2.886579864025407e-15
+      },
+      {
+        "name": "torso--wing-far-inner",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 187,
+        "maxBasisDifference": 1.1102230246251565e-16
+      },
+      {
+        "name": "torso--wing-near-inner",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 191,
+        "maxBasisDifference": 2.220446049250313e-16
+      },
+      {
+        "name": "wing-far-inner--wing-far-outer",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 193,
+        "maxBasisDifference": 1.1102230246251565e-16
+      },
+      {
+        "name": "wing-near-inner--wing-near-outer",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 199,
+        "maxBasisDifference": 1.1102230246251565e-16
+      }
+    ],
+    "policy": "Decode-time copies of exact opaque adjacent-owner RGBA in a one-texel ring at independently enumerated shared-field skin joins; original bytes, geometry, silhouettes, nonopaque pixels and distinct-limb/depth boundaries remain unchanged."
+  },
+  "rows": [
+    {
+      "action": "idle",
+      "resolved": "idle",
+      "durationMs": 2702.9663994908333,
+      "samples": 121,
+      "status": "PASS",
+      "maximumGap": 0.000054217034925658786
+    },
+    {
+      "action": "approach",
+      "resolved": "approach:flight",
+      "durationMs": 612,
+      "samples": 73,
+      "status": "FAIL",
+      "maximumGap": 0.00005670955180098917,
+      "firstFailure": {
+        "ms": 372.3,
+        "error": "Error: ARAP skin: unresolved folded triangles: 3"
+      }
+    },
+    {
+      "action": "melee",
+      "resolved": "melee:peck",
+      "durationMs": 698.6666666666666,
+      "samples": 121,
+      "status": "PASS",
+      "maximumGap": 0.000051321502865118834
+    },
+    {
+      "action": "hit",
+      "resolved": "hit",
+      "durationMs": 642,
+      "samples": 121,
+      "status": "PASS",
+      "maximumGap": 0.00005401535895731466
+    }
+  ]
+}

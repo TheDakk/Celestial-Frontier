@@ -1,0 +1,171 @@
+{
+  "status": "AUTOMATED_CHECKS_PASS_WITH_OPEN_QUALIFICATION",
+  "motionTests": 36,
+  "solverTests": 33,
+  "typecheck": "PASS; typecheck-final.log",
+  "rootValidation": "PASS;50 unchanged determinism fingerprints; validate.log",
+  "curveActions": 169,
+  "curveSamples": 40729,
+  "curveReport": "library-final.json",
+  "namedFauna": 631,
+  "candidateNames": 573,
+  "newTopologyNames": 58,
+  "native": {
+    "fish-native-04": {
+      "status": "DIAGNOSTIC_PASS",
+      "uniqueFamilyActions": 13,
+      "restChanged": 0,
+      "finalRestChanged": 0,
+      "maxGapPx": 8.356658350779821e-05,
+      "capture": {
+        "rigUpdateP95Ms": 1.4000000059604645,
+        "frames": 602,
+        "fps": 60.00219641983567,
+        "wholeFrameCpuP95Ms": 1.699999988079071,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1400,
+              "height": 800,
+              "nb_read_frames": "605"
+            }
+          ],
+          "format": {
+            "duration": "10.084926"
+          }
+        },
+        "encodedFrames": {
+          "frames": 605,
+          "width": 1400,
+          "height": 800
+        }
+      },
+      "perClipPerformance": {
+        "scope": "121 accelerated samples per clip after presentation warm-up; separate from real-time capture",
+        "maxP95Ms": 1.5999999940395355,
+        "targetMs": 2
+      },
+      "currentSolver": true
+    },
+    "bird-native-02": {
+      "status": "DIAGNOSTIC_PASS",
+      "uniqueFamilyActions": 14,
+      "restChanged": 0,
+      "finalRestChanged": 0,
+      "maxGapPx": 5.296709399410747e-05,
+      "capture": {
+        "rigUpdateP95Ms": 0.5,
+        "frames": 602,
+        "fps": 60.00219641983567,
+        "wholeFrameCpuP95Ms": 0.7000000178813934,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1400,
+              "height": 800,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.100552"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1400,
+          "height": 800
+        }
+      },
+      "perClipPerformance": null,
+      "currentSolver": false
+    },
+    "frog-native-04": {
+      "status": "DIAGNOSTIC_PASS",
+      "uniqueFamilyActions": 12,
+      "restChanged": 0,
+      "finalRestChanged": 0,
+      "maxGapPx": 0.00012965244631029337,
+      "capture": {
+        "rigUpdateP95Ms": 2,
+        "frames": 602,
+        "fps": 60.00219641983567,
+        "wholeFrameCpuP95Ms": 2.2000000178813934,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1400,
+              "height": 800,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.101653"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1400,
+          "height": 800
+        }
+      },
+      "perClipPerformance": {
+        "scope": "121 accelerated samples per clip after presentation warm-up; separate from real-time capture",
+        "maxP95Ms": 2.2000000178813934,
+        "targetMs": 2
+      },
+      "currentSolver": true
+    },
+    "broad-native-01": {
+      "status": "DIAGNOSTIC_PASS",
+      "uniqueFamilyActions": 19,
+      "restChanged": 0,
+      "finalRestChanged": 0,
+      "maxGapPx": 0.00014249215581824053,
+      "capture": {
+        "rigUpdateP95Ms": 2.2000000178813934,
+        "frames": 602,
+        "fps": 60.00219641983566,
+        "wholeFrameCpuP95Ms": 2.5,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1400,
+              "height": 800,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.102281"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1400,
+          "height": 800
+        }
+      },
+      "perClipPerformance": {
+        "scope": "121 accelerated samples per clip after presentation warm-up; separate from real-time capture",
+        "maxP95Ms": 1.5,
+        "targetMs": 2
+      },
+      "currentSolver": true
+    }
+  },
+  "ui": "In-app browser: fish film plays; frog selection and cast frame load. Four subjects and174 action frames.",
+  "rawLogs": "Verbatim command logs contain trailing whitespace; code/document diff check is separate.",
+  "qualification": "No blanket species/visual/phone acceptance. Frog victory and broad full-film update timing exceed the2ms goal.",
+  "codeAndDocWhitespace": "PASS excluding verbatim *.log files"
+}

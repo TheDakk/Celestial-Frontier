@@ -1,0 +1,78 @@
+{
+  "schema": "cf.continuous-skin-proof/v1",
+  "status": "PREPARED_NOT_ACCEPTED",
+  "results": [
+    {
+      "id": "civet",
+      "base": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet-ink",
+      "record": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "schema": "cf.paint-skin-intake/v1",
+      "sourceBindingHash": "b9766e3de3af38585f72a79a5c46bb3cadcce49d77aefda158153a96f8d138b6",
+      "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+      "packedPixels": {
+        "schema": "cf.parts-byte-verification/v1",
+        "bindingHash": "b9766e3de3af38585f72a79a5c46bb3cadcce49d77aefda158153a96f8d138b6",
+        "atlasSha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79",
+        "parts": 38,
+        "comparedChannels": 9875852,
+        "changedChannels": 0
+      },
+      "vertices": 2304,
+      "partVertices": 3722,
+      "parts": 22,
+      "leaves": 1003,
+      "triangles": 4244,
+      "originalInkOnly": true,
+      "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+      "nativeAcceptance": false
+    },
+    {
+      "id": "fox",
+      "base": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/fox-ink",
+      "record": "audits/C2_BOUNDED_REPAIR_20260913/candidate-01/fox.landmarks.json",
+      "schema": "cf.paint-skin-intake/v1",
+      "sourceBindingHash": "12416bf72d4de1d105ac2d3c01ba790ac1fa6ca1cc71fb5306477cf522a91cda",
+      "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+      "packedPixels": {
+        "schema": "cf.parts-byte-verification/v1",
+        "bindingHash": "12416bf72d4de1d105ac2d3c01ba790ac1fa6ca1cc71fb5306477cf522a91cda",
+        "atlasSha256": "0dff6383d7825fa73ec0aa8f231e4e0e32dcb2f9f26d3872515192955416ac5c",
+        "parts": 38,
+        "comparedChannels": 13632700,
+        "changedChannels": 0
+      },
+      "vertices": 2559,
+      "partVertices": 4124,
+      "parts": 22,
+      "leaves": 1124,
+      "triangles": 4736,
+      "originalInkOnly": true,
+      "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+      "nativeAcceptance": false
+    },
+    {
+      "id": "procedural",
+      "base": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/procedural-ink",
+      "record": "audits/C2_PARTS_ATLAS_20260913/native-painter-parts-03/record.json",
+      "schema": "cf.paint-skin-intake/v1",
+      "sourceBindingHash": "5cc9a2ff26302be16ec7fb043d88426042b201c59dd930053d7a8037b9b699b4",
+      "recordRecipeHash": "2b824f9cad9383d8fcbb3fd5d41ebdec2d5ecbc9128e33a5388bc21d7cb0a859",
+      "packedPixels": {
+        "schema": "cf.parts-byte-verification/v1",
+        "bindingHash": "5cc9a2ff26302be16ec7fb043d88426042b201c59dd930053d7a8037b9b699b4",
+        "atlasSha256": "805f61adf50cb922d14e8cec081725da480de528d7558fe5dbb736353aa300ac",
+        "parts": 35,
+        "comparedChannels": 709716,
+        "changedChannels": 0
+      },
+      "vertices": 550,
+      "partVertices": 1217,
+      "parts": 21,
+      "leaves": 239,
+      "triangles": 970,
+      "originalInkOnly": true,
+      "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+      "nativeAcceptance": false
+    }
+  ]
+}

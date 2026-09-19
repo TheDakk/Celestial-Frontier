@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "civet",
+      "bindingHash": "f516d64ff452a0280cbe53c6f05662777036ee586a736e2bfbee0e63f644a082",
+      "atlasSha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79",
+      "junctions": 18,
+      "minSourceAlpha": 255,
+      "drawables": 38
+    },
+    {
+      "id": "fox",
+      "bindingHash": "e5a034111fb89e0d8efa7258454788d0ebc990b2a42110d05beeeb23bb9d1c75",
+      "atlasSha256": "0dff6383d7825fa73ec0aa8f231e4e0e32dcb2f9f26d3872515192955416ac5c",
+      "junctions": 25,
+      "minSourceAlpha": 255,
+      "drawables": 38
+    },
+    {
+      "id": "procedural",
+      "bindingHash": "03fac0147c7c0cd2afe0cb1a4d21a3a6747afd5e4c5705b74c7cba4b5d937656",
+      "atlasSha256": "805f61adf50cb922d14e8cec081725da480de528d7558fe5dbb736353aa300ac",
+      "junctions": 21,
+      "minSourceAlpha": 255,
+      "drawables": 35
+    }
+  ]
+}

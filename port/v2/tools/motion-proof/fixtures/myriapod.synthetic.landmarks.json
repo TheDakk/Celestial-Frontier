@@ -150,5 +150,9 @@
     "sheenTier": "painted",
     "paletteSource": "synthetic"
   },
-  "clipSetId": "myriapod-v1"
+  "clipSetId": "myriapod-v1",
+  "habitat": {
+    "realm": "land",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
 }

@@ -1,0 +1,341 @@
+{
+  "contacts": [
+    {
+      "subject": "mud-crab",
+      "action": "hit",
+      "ms": 236.25,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.118112367179767,
+      "worldRotationDeg": -6.779712045053325,
+      "driftPx": 0.2504741445163317,
+      "rotationOnlyPredictionPx": 0.2504864370301771,
+      "predictionErrorPx": 0.000013976594023834392,
+      "supports": [
+        {
+          "i": 783,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "mud-crab",
+      "action": "dodge",
+      "ms": 128.33333333333334,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.118112367179767,
+      "worldRotationDeg": -6.941128027524677,
+      "driftPx": 0.2564678211093445,
+      "rotationOnlyPredictionPx": 0.2564429774057906,
+      "predictionErrorPx": 0.00002488527479655213,
+      "supports": [
+        {
+          "i": 783,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "mud-crab",
+      "action": "faint",
+      "ms": 242.66666666666666,
+      "joint": "leg0FarFoot",
+      "part": "leg0far-lower",
+      "index": 37,
+      "sourceOffsetPx": 2.1648094604375516,
+      "worldRotationDeg": 6.666068715409154,
+      "driftPx": 0.2517090898957988,
+      "rotationOnlyPredictionPx": 0.2517223971972914,
+      "predictionErrorPx": 0.000014537864559470715,
+      "supports": [
+        {
+          "i": 325,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0FarFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "mud-crab",
+      "action": "presentation",
+      "ms": 6700,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.118112367179767,
+      "worldRotationDeg": -7.304356989829907,
+      "driftPx": 0.2698444492159867,
+      "rotationOnlyPredictionPx": 0.2698449012738572,
+      "predictionErrorPx": 4.6559062724931994e-7,
+      "supports": [
+        {
+          "i": 783,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "vent-crab",
+      "action": "approach",
+      "ms": 210,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.540236209489158,
+      "worldRotationDeg": -7.852906956294815,
+      "driftPx": 0.3478885580395846,
+      "rotationOnlyPredictionPx": 0.34788999509690616,
+      "predictionErrorPx": 0.000010676244740869156,
+      "supports": [
+        {
+          "i": 796,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "vent-crab",
+      "action": "hit",
+      "ms": 210,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.540236209489158,
+      "worldRotationDeg": -5.753694357340809,
+      "driftPx": 0.2549672692312021,
+      "rotationOnlyPredictionPx": 0.2549856617079418,
+      "predictionErrorPx": 0.000024021903260278628,
+      "supports": [
+        {
+          "i": 796,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "vent-crab",
+      "action": "dodge",
+      "ms": 114.33333333333333,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.540236209489158,
+      "worldRotationDeg": -6.063556197615815,
+      "driftPx": 0.26868782781686756,
+      "rotationOnlyPredictionPx": 0.2687052743689286,
+      "predictionErrorPx": 0.000020689767687035904,
+      "supports": [
+        {
+          "i": 796,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "vent-crab",
+      "action": "presentation",
+      "ms": 1216.6666666666667,
+      "joint": "leg0NearFoot",
+      "part": "leg0near-lower",
+      "index": 51,
+      "sourceOffsetPx": 2.540236209489158,
+      "worldRotationDeg": -7.4450756264273465,
+      "driftPx": 0.3298619189129027,
+      "rotationOnlyPredictionPx": 0.32984887105174,
+      "predictionErrorPx": 0.000015666072057342666,
+      "supports": [
+        {
+          "i": 796,
+          "barycentric": 1,
+          "pinned": true,
+          "weights": [
+            [
+              "leg0NearFoot",
+              1
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "flora": [
+    {
+      "id": "rest",
+      "ms": 0,
+      "error": null,
+      "stats": {
+        "rigid": true,
+        "maximumTargetErrorPx": 0,
+        "rmsTargetErrorPx": 0,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 1,
+        "orientationPasses": 0
+      },
+      "orientation": {
+        "visits": 0,
+        "projections": 0
+      },
+      "targetFolds": 0,
+      "allPinnedTargetFolds": 0,
+      "finalFolds": 7614,
+      "allPinnedFinalFolds": 1684,
+      "parts": {
+        "branch-0-foliage": 266,
+        "branch-3-foliage": 810,
+        "branch-1-foliage": 213,
+        "branch-5-wood": 92,
+        "trunk": 1541,
+        "branch-4-wood": 85,
+        "branch-8-wood": 121,
+        "branch-2-foliage": 192,
+        "branch-10-foliage": 732,
+        "branch-4-foliage": 808,
+        "branch-3-wood": 224,
+        "branch-5-foliage": 609,
+        "branch-6-foliage": 559,
+        "branch-6-wood": 108,
+        "branch-7-foliage": 359,
+        "branch-8-foliage": 335,
+        "branch-7-wood": 170,
+        "branch-9-foliage": 792,
+        "branch-9-wood": 255,
+        "branch-10-wood": 95,
+        "root": 624
+      }
+    },
+    {
+      "id": "disturb",
+      "ms": 62,
+      "error": null,
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 32.076588742981926,
+        "rmsTargetErrorPx": 4.008702055380315,
+        "maximumProjectionPx": 26.65569256913182,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.06055663146568454,
+        "orientationPasses": 65
+      },
+      "orientation": {
+        "visits": 89,
+        "projections": 89,
+        "stalled": false
+      },
+      "targetFolds": 397,
+      "allPinnedTargetFolds": 0,
+      "finalFolds": 0,
+      "allPinnedFinalFolds": 0,
+      "parts": {}
+    },
+    {
+      "id": "disturb",
+      "ms": 67.16666666666667,
+      "error": "Error: ARAP skin: unresolved folded triangles: 84",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 84.7601002776574,
+        "rmsTargetErrorPx": 8.581573786646247,
+        "maximumProjectionPx": 84.45656409103671,
+        "flippedTriangles": 84,
+        "minimumAreaRatio": -0.16556671456346048,
+        "orientationPasses": 128
+      },
+      "orientation": {
+        "visits": 487296,
+        "projections": 487296,
+        "stalled": false
+      },
+      "targetFolds": 449,
+      "allPinnedTargetFolds": 0,
+      "finalFolds": 84,
+      "allPinnedFinalFolds": 0,
+      "parts": {
+        "branch-3-foliage": 47,
+        "branch-4-foliage": 52,
+        "trunk": 2
+      }
+    },
+    {
+      "id": "presentation",
+      "ms": 1200,
+      "error": "Error: ARAP skin: unresolved folded triangles: 209",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 94.89304289679554,
+        "rmsTargetErrorPx": 10.409274110121,
+        "maximumProjectionPx": 94.3971533631554,
+        "flippedTriangles": 209,
+        "minimumAreaRatio": -0.06550886685546957,
+        "orientationPasses": 128
+      },
+      "orientation": {
+        "visits": 487296,
+        "projections": 487296,
+        "stalled": false
+      },
+      "targetFolds": 533,
+      "allPinnedTargetFolds": 0,
+      "finalFolds": 209,
+      "allPinnedFinalFolds": 0,
+      "parts": {
+        "branch-3-foliage": 93,
+        "branch-4-foliage": 99,
+        "trunk": 12,
+        "branch-5-foliage": 31,
+        "branch-6-foliage": 17
+      }
+    }
+  ]
+}

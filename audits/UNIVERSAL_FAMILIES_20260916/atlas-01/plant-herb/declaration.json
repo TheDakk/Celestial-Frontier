@@ -1,0 +1,95 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "292ee13b6fc0bf8ac804b29a2207b73a7f3a1ccdc41f3ac0814cbf8a9e8d50c2",
+  "cutoutSha256": "7cd8f93b2b88f1df27fd87789dd9274329cd54747a049670ce9e690f0e525b24",
+  "labelsFile": "labels.png",
+  "labelsSha256": "9d7ddd8e91022a8ceef5db7a8e3455a63cc9746258c342da4ed718b492b0e362",
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far"
+    },
+    {
+      "id": "part-01",
+      "joint": "stem0Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "part-02",
+      "joint": "stem0Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "part-03",
+      "joint": "stem0Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "part-04",
+      "joint": "frond0",
+      "layer": "far"
+    },
+    {
+      "id": "part-05",
+      "joint": "stem1Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "part-06",
+      "joint": "stem1Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "part-07",
+      "joint": "stem1Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "part-08",
+      "joint": "frond1",
+      "layer": "far"
+    },
+    {
+      "id": "part-09",
+      "joint": "stem2Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "part-10",
+      "joint": "stem2Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "part-11",
+      "joint": "stem2Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "part-12",
+      "joint": "frond2",
+      "layer": "far"
+    },
+    {
+      "id": "part-13",
+      "joint": "stem3Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "part-14",
+      "joint": "stem3Seg1",
+      "layer": "far"
+    },
+    {
+      "id": "part-15",
+      "joint": "stem3Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "part-16",
+      "joint": "frond3",
+      "layer": "far"
+    }
+  ],
+  "declarationHash": "44f415ef4f29755dde2b853e4a1cf94bdc6a82915e30e61cb050c12fa9ada189"
+}

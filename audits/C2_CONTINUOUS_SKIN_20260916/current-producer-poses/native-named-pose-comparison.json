@@ -1,0 +1,21 @@
+{
+  "scope": "Node/current-producer versus retained current native named poses. Numeric roundoff report only, not visual qualification.",
+  "nativeFile": "audits/C2_CONTINUOUS_SKIN_20260916/native-05/report.json",
+  "nativeSha256": "405234203a1969d9352d113403b7c1b739f1092aff9cae2bd57b445e03e4eaea",
+  "rows": [
+    {
+      "id": "civet",
+      "namedPoses": 10,
+      "comparedComponents": 837,
+      "maxAbsoluteDifference": 3.0531133177191805e-16,
+      "missingJoints": []
+    },
+    {
+      "id": "fox",
+      "namedPoses": 10,
+      "comparedComponents": 837,
+      "maxAbsoluteDifference": 4.440892098500626e-16,
+      "missingJoints": []
+    }
+  ]
+}

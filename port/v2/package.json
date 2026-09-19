@@ -16,7 +16,8 @@
     "apps/*"
   ],
   "scripts": {
-    "test": "vitest run",
+    "test": "npm run test:tools && node tools/run-unit-tests.mjs",
+    "test:tools": "node tools/test-node-tools.mjs",
     "typecheck": "tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json",
     "artunused": "tsc --noEmit --noUnusedLocals",
     "smoke": "node tools/slicesmoke.mjs",

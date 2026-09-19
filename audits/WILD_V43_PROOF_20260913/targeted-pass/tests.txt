@@ -1,0 +1,12 @@
+✔ one pass changes only contaminated edge RGB, preserves original/alpha and refuses no-clean-neighbour success (3.498583ms)
+✔ explicit target set leaves other pink pixels unchanged and refuses unknown targets (1.117833ms)
+✔ second pass samples inward before eroding, preserves input, and counts surviving contamination honestly (1.712459ms)
+✔ pink selection protects the cited sheen, pale paint and umber and confines the explicit pass (3.604417ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46.089875

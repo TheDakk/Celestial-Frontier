@@ -1,0 +1,7 @@
+{
+  "original": "diagnosis.json",
+  "uncompressedBytes": 23266616,
+  "uncompressedSha256": "8461555d236ae0d2d725e10328b05fd8678464777f1a23cd8dc1dd18a3387301",
+  "retainedAs": "diagnosis-instrument-01.json.gz",
+  "reason": "Lossless retention of initial diagnostic with stale rigid-rest scratch error; superseded by diagnosis-02.json."
+}

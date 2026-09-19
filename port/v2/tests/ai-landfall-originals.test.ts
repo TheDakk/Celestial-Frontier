@@ -1,4 +1,5 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+import {LocalModelSha256V1} from '../apps/game/src/local-model-sha256.js';
 import {
   aiLandfallInputKeyV1, createAiLandfallOriginalStoreV1, AI_LANDFALL_ORIGINAL_MAX_BYTES_V1,
   type AiLandfallInputV1,
@@ -151,6 +152,19 @@ describe('separate exact landfall originals', () => {
     await expect(store.retain(input, generated())).rejects.toThrow(/abort/);
     expect(fixture.stores.get('originals')!.size).toBe(0);
     expect(fixture.stores.get('latest')!.size).toBe(0);
+  });
+
+  it('computes one identity key per operation while re-verifying actual original content', async () => {
+    const fixture = idbFixture(), store = createAiLandfallOriginalStoreV1({ indexedDB: fixture.factory });
+    const update = vi.spyOn(LocalModelSha256V1.prototype, 'update');
+    try {
+      const original = await store.retain(input, generated());
+      expect(update).toHaveBeenCalledTimes(1);
+      update.mockClear(); expect((await store.find(input))?.originalId).toBe(original.originalId);
+      expect(update).toHaveBeenCalledTimes(1);
+      update.mockClear(); expect((await store.read(input, original.originalId))?.sha256).toBe(original.sha256);
+      expect(update).toHaveBeenCalledTimes(1);
+    } finally { update.mockRestore(); store.close(); }
   });
 
   it('rejects corrupted bytes and identities, then accepts the restored exact record', async () => {

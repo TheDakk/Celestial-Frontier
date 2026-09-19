@@ -122,5 +122,9 @@
     "sheenTier": "painted",
     "paletteSource": "synthetic"
   },
-  "clipSetId": "arachnid-v1"
+  "clipSetId": "arachnid-v1",
+  "habitat": {
+    "realm": "land",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
 }

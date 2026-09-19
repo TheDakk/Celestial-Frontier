@@ -1,0 +1,208 @@
+{
+  "kind": "hopper",
+  "identity": {
+    "speciesVisualKey": "synthetic:hopper",
+    "seed": 659712,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "hopper",
+    "version": 1
+  },
+  "family": "frog",
+  "geometry": {
+    "cutoutAssetHash": "e9a2cd14f8498f0f780dc33538a3459201c69b712c714dadbeaf25f695101d46",
+    "width": 128,
+    "height": 128,
+    "groundLineY": 0.85,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.45,
+      0.55
+    ],
+    "pelvis": [
+      0.32,
+      0.55
+    ],
+    "spine": [
+      0.45,
+      0.5
+    ],
+    "chest": [
+      0.58,
+      0.5
+    ],
+    "neck": [
+      0.66,
+      0.46
+    ],
+    "head": [
+      0.74,
+      0.42
+    ],
+    "jaw": [
+      0.8,
+      0.47
+    ],
+    "hindFarRoot": [
+      0.3,
+      0.6
+    ],
+    "hindFarKnee": [
+      0.22,
+      0.7
+    ],
+    "hindFarAnkle": [
+      0.3,
+      0.8
+    ],
+    "hindFarPaw": [
+      0.4,
+      0.85
+    ],
+    "foreFarRoot": [
+      0.6,
+      0.58
+    ],
+    "foreFarKnee": [
+      0.6,
+      0.68
+    ],
+    "foreFarAnkle": [
+      0.6,
+      0.78
+    ],
+    "foreFarPaw": [
+      0.66,
+      0.85
+    ],
+    "earFarRoot": [
+      0.72,
+      0.36
+    ],
+    "earFarTip": [
+      0.7,
+      0.28
+    ],
+    "hindNearRoot": [
+      0.32,
+      0.6
+    ],
+    "hindNearKnee": [
+      0.24,
+      0.7
+    ],
+    "hindNearAnkle": [
+      0.32,
+      0.8
+    ],
+    "hindNearPaw": [
+      0.42,
+      0.85
+    ],
+    "foreNearRoot": [
+      0.62,
+      0.58
+    ],
+    "foreNearKnee": [
+      0.62,
+      0.68
+    ],
+    "foreNearAnkle": [
+      0.62,
+      0.78
+    ],
+    "foreNearPaw": [
+      0.68,
+      0.85
+    ],
+    "earNearRoot": [
+      0.74,
+      0.36
+    ],
+    "earNearTip": [
+      0.72,
+      0.28
+    ],
+    "tail0": [
+      0.26,
+      0.58
+    ],
+    "tail1": [
+      0.2,
+      0.62
+    ],
+    "tail2": [
+      0.15,
+      0.66
+    ],
+    "tail3": [
+      0.11,
+      0.7
+    ]
+  },
+  "materials": {
+    "surface": "slick and wet",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "hopper-land-v1",
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.13,
+      "spine": 0.1392838827718412,
+      "chest": 0.12999999999999995,
+      "neck": 0.08944271909999163,
+      "head": 0.08944271909999156,
+      "jaw": 0.07810249675906658,
+      "hindFarRoot": 0.05385164807134499,
+      "hindFarKnee": 0.12806248474865695,
+      "hindFarAnkle": 0.12806248474865706,
+      "hindFarPaw": 0.11180339887498948,
+      "foreFarRoot": 0.08246211251235316,
+      "foreFarKnee": 0.10000000000000009,
+      "foreFarAnkle": 0.09999999999999998,
+      "foreFarPaw": 0.09219544457292887,
+      "hindNearRoot": 0.04999999999999993,
+      "hindNearKnee": 0.12806248474865697,
+      "hindNearAnkle": 0.12806248474865706,
+      "hindNearPaw": 0.11180339887498944,
+      "foreNearRoot": 0.08944271909999156,
+      "foreNearKnee": 0.10000000000000009,
+      "foreNearAnkle": 0.09999999999999998,
+      "foreNearPaw": 0.09219544457292887,
+      "tail0": 0.06708203932499365,
+      "tail1": 0.07211102550927981,
+      "tail2": 0.06403124237432853,
+      "tail3": 0.05656854249492375,
+      "earFarRoot": 0.06324555320336758,
+      "earFarTip": 0.08246211251235316,
+      "earNearRoot": 0.06,
+      "earNearTip": 0.08246211251235316
+    },
+    "measures": {
+      "body": 0.2647640458974745,
+      "bone-min": 0.04999999999999993,
+      "bone-max": 0.1392838827718412,
+      "leg/torso:hindFar": 1.3896462683410484,
+      "leg/torso:foreFar": 1.103606962880741,
+      "leg/torso:hindNear": 1.3896462683410484,
+      "leg/torso:foreNear": 1.103606962880741
+    }
+  },
+  "recipeHash": "6aea5607aea16605e2aa95e702dbc824c04e193cefca7889ec7f997456f10a1b"
+}

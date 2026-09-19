@@ -1,0 +1,72 @@
+[
+  {
+    "id": "fish",
+    "source": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/native-01/fish-10s.webm",
+    "sourceSha256": "2fb39ceb24fb7470ae0a773ca615bd3ffd48dc9286bee9ee3893a4dd5ddefc4c",
+    "reviewCopy": "/private/tmp/cf-animation-preview-20260916/families/fish.mp4",
+    "reviewSha256": "80294c29f9cd5c28957f724381927f59d1c8e5bc374fe8a4ab4585c2c7aec764",
+    "decode": "PASS",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1400,
+          "height": 800,
+          "avg_frame_rate": "17700/301"
+        }
+      ],
+      "format": {
+        "duration": "10.016992"
+      }
+    }
+  },
+  {
+    "id": "bird",
+    "source": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/native-bird-01/family-10s.webm",
+    "sourceSha256": "18e0fd0892ccf7e0a9be73cff06103c4770a47559bd2f6b2f0a3d5b8bc851e1b",
+    "reviewCopy": "/private/tmp/cf-animation-preview-20260916/families/bird.mp4",
+    "reviewSha256": "02e3a844815183e39ccd16b3f8e21d6e294e10fae6756af80294c820c12cc218",
+    "decode": "PASS",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1400,
+          "height": 800,
+          "avg_frame_rate": "60/1"
+        }
+      ],
+      "format": {
+        "duration": "10.016667"
+      }
+    }
+  },
+  {
+    "id": "fish-final",
+    "source": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/native-fish-02/family-10s.webm",
+    "sourceSha256": "2315f5f6856f9c2ca6a880c6789c8906f51246361828283358dd121dc5dd0533",
+    "reviewCopy": "/private/tmp/cf-animation-preview-20260916/families/fish-final.mp4",
+    "reviewSha256": "e2f4671f77532a393c692bd718990988774774a9352cf77fe119c08ef6e07795",
+    "decode": "PASS",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1400,
+          "height": 800,
+          "avg_frame_rate": "36360/607",
+          "nb_read_frames": "606"
+        }
+      ],
+      "format": {
+        "duration": "10.116667"
+      }
+    }
+  }
+]

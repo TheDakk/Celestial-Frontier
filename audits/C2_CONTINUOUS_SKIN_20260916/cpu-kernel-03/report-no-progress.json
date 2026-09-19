@@ -1,0 +1,237 @@
+{
+  "schema": "cf.arap-kernel-numerical-comparison/v1",
+  "status": "PASS",
+  "scope": "Changed floating-point arithmetic, not byte identity. CPU numerical/shape checks and microbenchmark only; no claim of native rest pixels or live frame time.",
+  "maximumAllowedNativeDifferencePx": 0.001,
+  "node": "v26.8.2",
+  "source": {
+    "before": "30363e3c1d1afb754a7f83654feb1d56112411a0dd3de47098540a978dcfccb7",
+    "after": "d4bca2a508d7fbbe3c64c19f7870522847740acdcacbb117dd5034a804f54127",
+    "poses": "e21d5f2b5795a71ffb7dea8028d018a7adb8ee9f3ec107cd54dc46e47b558151",
+    "manifest": "522892333dd8efe83cd8e5a023e96fb9bb2cacfba80f73e9b540e989b35910e2"
+  },
+  "controls": {
+    "pointZeroOnePixelMutationRejected": true
+  },
+  "rows": [
+    {
+      "id": "civet",
+      "fieldVertices": 2532,
+      "pins": 249,
+      "samples": 1211,
+      "numerical": {
+        "Float32Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1211,
+          "maxFieldDifferencePx": 0,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.11999994404550543,
+          "maxSourceGapPx": 0.00012999246326824763,
+          "maxPlantedRestDisplacementPx": 0.00005523501681474031,
+          "maxPawTransformErrorPx": 0.00011582489337425505,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 5.004885395010206e-13,
+            "rmsTargetErrorPx": 1.4765966227514582e-14,
+            "maximumProjectionPx": 3.6770586575585185e-13,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 5.240252676230739e-14,
+            "orientationPasses": 0
+          },
+          "worst": null
+        },
+        "Float64Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1,
+          "maxFieldDifferencePx": 9.745537710159624e-13,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.1199999440451841,
+          "maxSourceGapPx": 0.0001346318494346203,
+          "maxPlantedRestDisplacementPx": 0.00004393844447388377,
+          "maxPawTransformErrorPx": 0.00007562147798728324,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 4.5430326167661406e-13,
+            "rmsTargetErrorPx": 1.6042722705833512e-14,
+            "maximumProjectionPx": 2.389199948993337e-13,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 4.7628567756419216e-14,
+            "orientationPasses": 0
+          },
+          "worst": {
+            "index": 305,
+            "atMs": 2458.3333333333335,
+            "name": null
+          }
+        }
+      },
+      "micro": {
+        "before": {
+          "samples": 2422,
+          "medianMs": 0.8241250000010041,
+          "p95Ms": 0.8532080000004498,
+          "meanMs": 0.8248062815854693
+        },
+        "after": {
+          "samples": 2422,
+          "medianMs": 0.7556249999997817,
+          "p95Ms": 0.8916670000007798,
+          "meanMs": 0.7783268166804327
+        },
+        "medianSpeedup": 1.0906534325905604
+      }
+    },
+    {
+      "id": "fox",
+      "fieldVertices": 2734,
+      "pins": 206,
+      "samples": 1211,
+      "numerical": {
+        "Float32Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1211,
+          "maxFieldDifferencePx": 0,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.1178334220396939,
+          "maxSourceGapPx": 0.00013112825126781913,
+          "maxPlantedRestDisplacementPx": 0.00006334028829734323,
+          "maxPawTransformErrorPx": 0.00011200866144424814,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 3.801403636316536e-13,
+            "rmsTargetErrorPx": 1.3933298959045715e-14,
+            "maximumProjectionPx": 5.568878691519785e-13,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 3.8191672047105385e-14,
+            "orientationPasses": 14
+          },
+          "worst": null
+        },
+        "Float64Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1,
+          "maxFieldDifferencePx": 9.84447971594727e-13,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.11783342094776546,
+          "maxSourceGapPx": 0.0001263659179190233,
+          "maxPlantedRestDisplacementPx": 0.000040976968660262355,
+          "maxPawTransformErrorPx": 0.00007793239904070838,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 4.547473508864641e-13,
+            "rmsTargetErrorPx": 1.2073675392798577e-14,
+            "maximumProjectionPx": 4.3520742565306136e-13,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 3.808064974464287e-14,
+            "orientationPasses": 14
+          },
+          "worst": {
+            "index": 280,
+            "atMs": 2250,
+            "name": null
+          }
+        }
+      },
+      "micro": {
+        "before": {
+          "samples": 2422,
+          "medianMs": 0.9129580000007991,
+          "p95Ms": 0.9847079999999551,
+          "meanMs": 0.9259948843930377
+        },
+        "after": {
+          "samples": 2422,
+          "medianMs": 0.8237910000025295,
+          "p95Ms": 0.8536249999997381,
+          "meanMs": 0.8311279508670535
+        },
+        "medianSpeedup": 1.1082398326735736
+      }
+    },
+    {
+      "id": "procedural",
+      "fieldVertices": 649,
+      "pins": 58,
+      "samples": 1211,
+      "numerical": {
+        "Float32Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1211,
+          "maxFieldDifferencePx": 0,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.47646436154914695,
+          "maxSourceGapPx": 0.00006358153149657326,
+          "maxPlantedRestDisplacementPx": 0.00003574052745684941,
+          "maxPawTransformErrorPx": 0.00004699504551573227,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 2.532418719169982e-13,
+            "rmsTargetErrorPx": 1.5584755708175635e-14,
+            "maximumProjectionPx": 0,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 6.328271240363392e-14,
+            "orientationPasses": 0
+          },
+          "worst": null
+        },
+        "Float64Array": {
+          "samples": 1211,
+          "exactFieldSamples": 1,
+          "maxFieldDifferencePx": 4.981723002963235e-13,
+          "maxActualPartDifferencePx": 0,
+          "restExact": true,
+          "hardPinsExact": true,
+          "targetsUnchanged": true,
+          "folds": 0,
+          "minAreaRatio": 0.4764647761131137,
+          "maxSourceGapPx": 0.00006628372538752144,
+          "maxPlantedRestDisplacementPx": 0.00003574052745684941,
+          "maxPawTransformErrorPx": 0.00003574052777840434,
+          "maxStatsDifference": {
+            "maximumTargetErrorPx": 2.4868995751603507e-13,
+            "rmsTargetErrorPx": 1.6681100944992977e-14,
+            "maximumProjectionPx": 0,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 4.363176486776865e-14,
+            "orientationPasses": 0
+          },
+          "worst": {
+            "index": 819,
+            "atMs": 6741.666666666667,
+            "name": null
+          }
+        }
+      },
+      "micro": {
+        "before": {
+          "samples": 2422,
+          "medianMs": 0.2049169999991136,
+          "p95Ms": 0.20833399999901303,
+          "meanMs": 0.20266861147812087
+        },
+        "after": {
+          "samples": 2422,
+          "medianMs": 0.20362499999828287,
+          "p95Ms": 0.22287499999947613,
+          "meanMs": 0.20031193352604684
+        },
+        "medianSpeedup": 1.0063449969347655
+      }
+    }
+  ]
+}

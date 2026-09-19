@@ -7,7 +7,7 @@ export type SceneMemoryProducerAuthority = Readonly<Record<string, string>>;
 
 export type CurrentProducerAuthorities = Readonly<{
   schema: 'cf-v2-current-producer-authorities/v1';
-  build: Readonly<{ schema: string; sha256: string; fileCount: number }>;
+  build: Readonly<{ schema: string; sha256: string; fileCount: number; sourceSha256: string }>;
   sceneMemory: Readonly<{
     producer: SceneMemoryProducerAuthority;
     budgetMatches: boolean;
@@ -39,3 +39,7 @@ export function producerAuthorityCheckProfileExitCode(
 ): 0 | 2;
 
 export function collectCurrentProducerAuthorities(): CurrentProducerAuthorities;
+
+export function authoritySourceDigest(): string;
+export function readPreparedProducerAuthorities(prepared: unknown): CurrentProducerAuthorities;
+export function assertPreparedAuthorityBuild(prepared: unknown, observed: CurrentProducerAuthorities['build']): void;

@@ -1,5 +1,34 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **EXACT REST AND CONTINUOUS JOINS CAN MISS WRONG-LIMB PAINT** (painted variations, 2026-09-16).
+> A detached painted island assigned to another limb reconstructs perfectly at rest and can
+> evade source-join tests because it has no joined edge. Inspect authored limb components,
+> actual depth ownership and full moving silhouettes. Retain the2792-pixel floating fragment
+> as the failing control; correct masks without deleting paint or weakening deformation gates.
+> Fit review framing to the full motion, not just rest, so lunges remain visible.
+
+> **PRESERVED BODY PIXELS DO NOT PROVE A REPLACEMENT VIEW IS ATTACHED** (Civet, 2026-09-16).
+> Surviving neck paint and a valid head mesh can leave an exposed notch between them. Bind
+> anatomical interior attachments to actual published triangles and inspect native rendered
+> coverage through the full motion, preserving the reported gap as a negative control. Pad
+> the measurement surface for lunges rather than skipping off-canvas samples. Original source
+> joins, replacement-view fits and intentional anatomical openings have distinct ownership.
+>
+> **CAPTURE CLEANUP MUST NOT EMPTY THE PLAYER BEFORE NAMED-POSE STILLS** (C2, 2026-09-16).
+> Recording cleanup resets performance players. Re-select/replay the explicit action sequence
+> before subsequent time-based stills; compare fresh still-only and post-recording outcomes.
+> A correctly recorded video does not establish correctness of the stills captured after it.
+
+> **BONE CONTACT AND POSITIVE TRIANGLES DO NOT PROVE CONTINUOUS PAINT** (C2, 2026-09-16).
+> A planted joint can coexist with sliding paw pixels; a skin can contain no reflected triangles
+> and still open an anatomical attachment or collapse into a thin strip. Measure the actual
+> published mesh against source-supported paw contours and source-alpha attachment boundaries.
+> Bone hierarchy does not define surface topology: proximal body/limb skin may join across
+> sibling bones, while overlapping independent limbs must stay separate. Retain actual face
+> provenance, scan the complete current motion between named poses, and inspect full moving
+> painted shape. A numeric PASS cannot replace visual acceptance; keep observed false-green
+> candidates as controls. Include motion sampling and contact solving in creature CPU timing.
+
 > **CANVAS PIXELS DO NOT PROVE VISIBILITY THROUGH DOM OVERLAYS** (Earth layers, 2026-09-08).
 > Full-stage Pixi extraction can prove resident paint while the native Biosphere strip hides it
 > from the player. Preserve that failed browser image. Measure the actual DOM boundaries and

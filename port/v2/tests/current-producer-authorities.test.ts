@@ -12,7 +12,8 @@ import { stableJson } from '../tools/compendiummem-fixture.mjs';
 import { resolveCheckProfile } from '../tools/check-profile.mjs';
 import {
   authorityMismatchPaths,
-  collectCurrentProducerAuthorities,
+  readPreparedProducerAuthorities,
+  assertPreparedAuthorityBuild,
   producerAuthorityCheckProfileExitCode,
   producerAuthorityExitCode,
   type CurrentProducerAuthorities,
@@ -47,10 +48,23 @@ let current: CurrentProducerAuthorities;
 const activeCheckProfile = resolveCheckProfile();
 
 beforeAll(() => {
-  current = collectCurrentProducerAuthorities();
+  current = readPreparedProducerAuthorities(JSON.parse(process.env.CF_UNIT_AUTHORITY_BUILD ?? 'null'));
 }, 60_000);
 
 describe('current producer authorities', () => {
+  it('refuses missing, stale-source and stale-dist pre-test receipts without taking the checkout lock', () => {
+    const build = current.build;
+    expect(() => assertPreparedAuthorityBuild(build, build)).not.toThrow();
+    for (const prepared of [null, {...build, sourceSha256: '0'.repeat(64)},
+      {...build, sha256: '0'.repeat(64)}, {...build, fileCount: build.fileCount + 1}]) {
+      expect(() => assertPreparedAuthorityBuild(prepared, build)).toThrow(/receipt/);
+    }
+    const source = fs.readFileSync(path.join(v2Root, 'tools/print-producer-authorities.mjs'), 'utf8');
+    const reader = source.slice(source.indexOf('export function readPreparedProducerAuthorities('),
+      source.indexOf('\nif (process.argv[1]'));
+    expect(reader).not.toMatch(/acquireWorkspaceLock|execFileSync/);
+    expect(reader).toContain('assertPreparedAuthorityBuild(prepared, observed.build)');
+  });
   it('binds every live memory budget required by the active check profile', () => {
     expect(authorityMismatchPaths(
       compendiumBudget.measurementAuthority, current.compendium.measurement,

@@ -1,0 +1,19 @@
+{
+  "status": "REPRODUCED_CONTRACT_DEFECT",
+  "scope": "actual accepted Earth Frog; no dummy tail/ear landmarks and no generated pixels",
+  "sourceSha256": "fb229a4a7bd86507af68da9561a5e31282d594da27901d7f30ddc11cd3c84779",
+  "missingRequiredJoints": [
+    "tail0",
+    "tail1",
+    "tail2",
+    "tail3",
+    "earFarRoot",
+    "earFarTip",
+    "earNearRoot",
+    "earNearTip"
+  ],
+  "consumerError": "Error: Skeleton pose: exact landmark inventory",
+  "producerError": "MotionCompileError: motion refused (missing-landmarks): landmark \"tail0\" missing or not a normalized [x,y] (hopper inventory: 31 joints)",
+  "recordStatus": "draft observation; not a runtime asset",
+  "needed": "Anatomically absent appendages must be represented by an explicit optional inventory shared by producer and consumer. Missing mandatory legs must still refuse."
+}

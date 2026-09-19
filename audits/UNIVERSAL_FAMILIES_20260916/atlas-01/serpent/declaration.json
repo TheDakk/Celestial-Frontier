@@ -1,0 +1,75 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "ca9a51b51313ea2991970a972d17bed0b6fcc3e10ce643862463d53208c977d5",
+  "cutoutSha256": "eef7fd5fbbcd8763e4b09ffc3afce7dfa969e801d1094625326c3858f08afdde",
+  "labelsFile": "labels.png",
+  "labelsSha256": "6867597515c049164b564840b9dc286bd42539341d44740a2bc4f2e77f186d9a",
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far"
+    },
+    {
+      "id": "part-01",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "part-02",
+      "joint": "jaw",
+      "layer": "far"
+    },
+    {
+      "id": "part-03",
+      "joint": "seg0",
+      "layer": "near"
+    },
+    {
+      "id": "part-04",
+      "joint": "seg1",
+      "layer": "far"
+    },
+    {
+      "id": "part-05",
+      "joint": "seg2",
+      "layer": "near"
+    },
+    {
+      "id": "part-06",
+      "joint": "seg3",
+      "layer": "far"
+    },
+    {
+      "id": "part-07",
+      "joint": "seg4",
+      "layer": "near"
+    },
+    {
+      "id": "part-08",
+      "joint": "seg5",
+      "layer": "far"
+    },
+    {
+      "id": "part-09",
+      "joint": "seg6",
+      "layer": "near"
+    },
+    {
+      "id": "part-10",
+      "joint": "seg7",
+      "layer": "far"
+    },
+    {
+      "id": "part-11",
+      "joint": "seg8",
+      "layer": "near"
+    },
+    {
+      "id": "part-12",
+      "joint": "seg9",
+      "layer": "far"
+    }
+  ],
+  "declarationHash": "a1b1dc2a36ca5241c4cc3189e92ce3ba42150ec3a5b504dfe19076a0f700ee4a"
+}

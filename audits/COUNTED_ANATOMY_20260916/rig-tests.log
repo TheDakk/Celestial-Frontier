@@ -1,0 +1,29 @@
+✔ quadruped: exact family anatomy, immutable contract and hostile-record controls (5.579167ms)
+✔ hopper: exact family anatomy, immutable contract and hostile-record controls (2.148875ms)
+✔ biped-bird: exact family anatomy, immutable contract and hostile-record controls (1.107208ms)
+✔ fish: exact family anatomy, immutable contract and hostile-record controls (1.356417ms)
+✔ insect: exact family anatomy, immutable contract and hostile-record controls (1.71475ms)
+✔ serpent: exact family anatomy, immutable contract and hostile-record controls (0.838542ms)
+✔ arachnid: exact family anatomy, immutable contract and hostile-record controls (1.145958ms)
+✔ radial: exact family anatomy, immutable contract and hostile-record controls (0.95325ms)
+✔ plant-woody: exact family anatomy, immutable contract and hostile-record controls (0.99925ms)
+✔ plant-herb: exact family anatomy, immutable contract and hostile-record controls (0.89625ms)
+✔ myriapod: exact family anatomy, immutable contract and hostile-record controls (1.175208ms)
+✔ cephalopod: exact family anatomy, immutable contract and hostile-record controls (1.081917ms)
+✔ flyer-membrane: exact family anatomy, immutable contract and hostile-record controls (0.913708ms)
+✔ primate: exact family anatomy, immutable contract and hostile-record controls (0.933833ms)
+✔ unknown template never defaults to quadruped and all contracted inventories are closed (0.162917ms)
+✔ old hopper and fish fixture clip-set names are rejected instead of silently using different motion (0.087125ms)
+✔ uses the owner body axis and parent pivot; root displacement applies exactly once (0.994958ms)
+✔ snapshots template and landmarks; failed frames cannot poison subsequent poses (0.799167ms)
+✔ refuses malformed topology, ambiguous inventories, hidden prototype joints and bad body axes (0.237916ms)
+✔ matches the previous quadruped evaluator exactly for all three real records (7.052958ms)
+✔ verifies the hidden band against packed bytes and refuses a resealed pixel or dimension mismatch (7.587334ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 134.370791

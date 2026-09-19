@@ -118,5 +118,9 @@
     "sheenTier": "painted",
     "paletteSource": "synthetic"
   },
-  "clipSetId": "insect-v1"
+  "clipSetId": "insect-v1",
+  "habitat": {
+    "realm": "land",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
 }

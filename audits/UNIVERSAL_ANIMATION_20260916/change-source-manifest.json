@@ -1,0 +1,40 @@
+{
+  "base": "Previously staged C2 batch on signed b79fd32e; not a separate Git commit",
+  "files": [
+    {
+      "path": "port/v2/apps/game/src/creature-rig.ts",
+      "beforeSha256": "85335922830cb44aa3a83eb9fda32b5602c8915c3d838d0240f500be36203919",
+      "afterSha256": "ec61cdfa5ed72492576f7b4736574085833cacba1e458895631c232f42091e1b"
+    },
+    {
+      "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
+      "beforeSha256": "a01109c0944e4f49b73d7d4784db5b4a30ba406d817978ca71054cb44a2ad52b",
+      "afterSha256": "deb072871df3f33d1afbddbde27f4b7c6d7980d1f0903491d296873fc48f0d93"
+    },
+    {
+      "path": "port/v2/packages/art/test/quadruped-material-observer.test.ts",
+      "beforeSha256": "d79ea5f315a88d82aae5b2b06cb30284cf81d3e8c5de401a18fc68fd4392df33",
+      "afterSha256": "29e9509075bd98a80c49df48e1f67d02304d35df918038c234f9e0727d5e09b0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "beforeSha256": null,
+      "afterSha256": "3d7ba73ec369a07fc1678610b32e77fb5beadedbdee1885ca544424588e1f587"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.d.mts",
+      "beforeSha256": null,
+      "afterSha256": "83a6ab10eac1549600a208ea3e2e773b2c7b450c004ca8197b66e65ac207d208"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.test.mjs",
+      "beforeSha256": null,
+      "afterSha256": "ce5c9ed6a4a56db45db65532c78572c4aa3543d0417a45fbcda1b88007a7da2d"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-pose-probe.mjs",
+      "beforeSha256": null,
+      "afterSha256": "cb22ac288e1c7c070e72cb1907ae6c7de42279ac0ab373b6b269e84f04f867d0"
+    }
+  ]
+}

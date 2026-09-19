@@ -118,5 +118,9 @@
     "sheenTier": "painted",
     "paletteSource": "synthetic"
   },
-  "clipSetId": "radial-v1"
+  "clipSetId": "radial-v1",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
 }

@@ -6,6 +6,7 @@
    and a tripod fish stands on three fin rays. */
 import { mulberry32, TAU } from '@cf/domain-rand';
 import type { ArtContext2D } from './speciescanvas.js';
+import {isObservingPainterTopology,emitPainterTopology,type DrawnFeature} from './painter-topology.js';
 
 type Ctx = ArtContext2D;
 type G = Record<string, unknown>;
@@ -173,7 +174,9 @@ export function faunaMudskipper(c: Ctx, g: G, p: Pal): void {
 /* ── PYROSOME: a hollow colonial TUBE of fused zooids, open at one end ── */
 export function faunaPyrosome(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0x9750);
+  const observed:DrawnFeature[]|null=isObservingPainterTopology(c)?[]:null;
   const cx = S * 0.5, top = S * 0.16, bot = S * 0.84, w = S * 0.115;
+  observed?.push({id:'tube-left',kind:'body',points:[[cx-w*.72,top],[cx-w*1.16,(top+bot)/2],[cx-w,bot]],curve:'quadratic',layer:'near'},{id:'tube-right',kind:'body',points:[[cx+w,bot],[cx+w*1.16,(top+bot)/2],[cx+w*.72,top]],curve:'quadratic',layer:'near'},{id:'aperture',kind:'body',points:[[cx,top+S*.005]],widths:[w*1.4,S*.056],curve:'ellipse',layer:'near'});
   /* the translucent tube wall */
   const wall = c.createLinearGradient(cx - w, 0, cx + w, 0);
   wall.addColorStop(0, `rgba(${p.cr},${p.cg},${p.cb},0.62)`);
@@ -199,6 +202,7 @@ export function faunaPyrosome(c: Ctx, g: G, p: Pal): void {
     const halfW = w * (0.72 + 0.28 * Math.sin(u * Math.PI));
     const x = cx - halfW + v * halfW * 2;
     const edge = Math.abs(v - 0.5) * 2;
+    observed?.push({id:'zooid'+i,kind:'body',points:[[x,y]],widths:[6.8,4.4],curve:'ellipse',layer:'near'});
     c.fillStyle = `rgba(${Math.min(255, p.cr + 60)},${Math.min(255, p.cg + 70)},${Math.min(255, p.cb + 80)},${0.22 + edge * 0.42})`;
     c.beginPath(); c.ellipse(x, y, 3.4, 2.2, 0.4, 0, TAU); c.fill();
   }
@@ -206,18 +210,23 @@ export function faunaPyrosome(c: Ctx, g: G, p: Pal): void {
   const gl = c.createRadialGradient(cx, (top + bot) / 2, 4, cx, (top + bot) / 2, w * 2.4);
   gl.addColorStop(0, 'rgba(150,220,255,0.16)'); gl.addColorStop(1, 'rgba(150,220,255,0)');
   c.fillStyle = gl; c.fillRect(cx - w * 2.6, top - 30, w * 5.2, bot - top + 60);
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'faunaPyrosome',family:'colonial-filter',coordinateSize:S,materials:{surface:'translucent',paletteSource:'genome'},features:observed,unresolved:['One colonial tube; 190 zooid marks are surface detail, not 190 rig joints','Shared tube deformation, wall/aperture masks and complete motion unqualified','Bioluminescent halo is an effect, not body skin']});
 }
 
 /* ── SALP: a translucent glass BARREL, or a chain of them ── */
 export function faunaSalp(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0x5A19);
   const n = 4;
+  const observed:DrawnFeature[]|null=isObservingPainterTopology(c)?[]:null;
   /* a chain of barrels running diagonally, each a hooped transparent drum */
   for (let i = 0; i < n; i++) {
     const t = i / (n - 1);
     const cx = S * (0.26 + t * 0.48) + Math.sin(t * 3) * S * 0.03;
     const cy = S * (0.72 - t * 0.44);
     const bw = S * 0.095 * (1 - t * 0.12), bh = S * 0.070 * (1 - t * 0.12);
+    const angle=-.5+t*.4,project=(x:number,y:number):[number,number]=>[cx+Math.cos(angle)*x-Math.sin(angle)*y,cy+Math.sin(angle)*x+Math.cos(angle)*y];
+    observed?.push({id:'barrel'+i,kind:'body',points:[project(-bw,0),[cx,cy],project(bw,0)],widths:[2*bw,2*bh],curve:'ellipse',layer:'near'});
+    for(const e of [-1,1])observed?.push({id:'barrel'+i+'Aperture'+(e<0?'In':'Out'),kind:'body',points:[project(e*bw*.84,0)],widths:[bw*.30,bh*1.20],curve:'ellipse',layer:'near'});
     c.save(); c.translate(cx, cy); c.rotate(-0.5 + t * 0.4);
     /* THE BODY FIRST — a salp is a solid drum of clear jelly. Drawn as line
        work alone it read as a coiled spring, so the volume is filled and the
@@ -254,6 +263,7 @@ export function faunaSalp(c: Ctx, g: G, p: Pal): void {
     c.restore();
   }
   void r;
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'faunaSalp',family:'colonial-filter',coordinateSize:S,materials:{surface:'translucent',paletteSource:'genome'},features:observed,unresolved:['Four actual barrels and eight apertures; bands are surface marks','Painted inter-barrel contact, individual tube masks and jet motion unqualified']});
 }
 
 /* ── TRIPOD FISH: standing on three enormously elongated fin rays ── */

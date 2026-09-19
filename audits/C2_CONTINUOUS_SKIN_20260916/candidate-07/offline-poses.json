@@ -1,0 +1,272 @@
+{
+  "status": "OFFLINE_PASS_NATIVE_PENDING",
+  "sourcePoseReports": [
+    "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json",
+    "audits/C2_CONTINUOUS_SKIN_20260916/native-03/report.json"
+  ],
+  "scope": "retained actual poses plus native03 hit-peak regression; this does not establish native rest parity, dense temporal shape, frame time or visual acceptance",
+  "diagnostics": [
+    {
+      "id": "civet",
+      "frames": [
+        {
+          "name": "rest",
+          "atMs": null,
+          "status": "PASS",
+          "error": null,
+          "rigid": true,
+          "maximumTargetErrorPx": 0,
+          "rmsTargetErrorPx": 0,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 1,
+          "orientationPasses": 0
+        },
+        {
+          "name": "hit-recoil",
+          "atMs": 7400,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 4.871084112356942,
+          "rmsTargetErrorPx": 0.5881520881601311,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.3691347157160527,
+          "orientationPasses": 1
+        },
+        {
+          "name": "strike",
+          "atMs": 2012.5,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 24.355319750316927,
+          "rmsTargetErrorPx": 1.7153580022998542,
+          "maximumProjectionPx": 18.101846336074704,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11938192198348817,
+          "orientationPasses": 24
+        },
+        {
+          "name": "approach-quarter",
+          "atMs": 1496.665420023015,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 12.266867324780335,
+          "rmsTargetErrorPx": 0.8364100529463262,
+          "maximumProjectionPx": 6.278358880751666,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999773444366,
+          "orientationPasses": 24
+        },
+        {
+          "name": "approach-three-quarter",
+          "atMs": 1569.9962600690449,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 8.059844413235565,
+          "rmsTargetErrorPx": 0.7527299709354074,
+          "maximumProjectionPx": 0.112052012728713,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.12000826085451032,
+          "orientationPasses": 2
+        },
+        {
+          "name": "idle",
+          "atMs": 500,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 1.2942395011360082,
+          "rmsTargetErrorPx": 0.1610077646422627,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.8762056964208476,
+          "orientationPasses": 1
+        },
+        {
+          "name": "anticipation",
+          "atMs": 1877,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 2.833382575472783,
+          "rmsTargetErrorPx": 0.31661428146147536,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.6703409453698307,
+          "orientationPasses": 1
+        },
+        {
+          "name": "impact-hold",
+          "atMs": 2242,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 3.039102528470549,
+          "rmsTargetErrorPx": 0.2616709651066792,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.7720841111733534,
+          "orientationPasses": 1
+        },
+        {
+          "name": "hit-peak",
+          "atMs": 7313.875,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 4.825567276253787,
+          "rmsTargetErrorPx": 0.5141389186921206,
+          "maximumProjectionPx": 1.5296364251888144,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.12000021863309346,
+          "orientationPasses": 3
+        }
+      ]
+    },
+    {
+      "id": "fox",
+      "frames": [
+        {
+          "name": "rest",
+          "atMs": null,
+          "status": "PASS",
+          "error": null,
+          "rigid": true,
+          "maximumTargetErrorPx": 0,
+          "rmsTargetErrorPx": 0,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 1,
+          "orientationPasses": 0
+        },
+        {
+          "name": "hit-recoil",
+          "atMs": 7400,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 5.467732705814236,
+          "rmsTargetErrorPx": 0.5255632766107201,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.4185623128749814,
+          "orientationPasses": 1
+        },
+        {
+          "name": "strike",
+          "atMs": 2110,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 20.124218878886605,
+          "rmsTargetErrorPx": 1.8482841147903484,
+          "maximumProjectionPx": 14.65025588193339,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.09887564469469293,
+          "orientationPasses": 24
+        },
+        {
+          "name": "approach-quarter",
+          "atMs": 1507.3175965665237,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 14.62960824628547,
+          "rmsTargetErrorPx": 1.1809059671795543,
+          "maximumProjectionPx": 5.546498838082482,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999881531546,
+          "orientationPasses": 24
+        },
+        {
+          "name": "approach-three-quarter",
+          "atMs": 1601.9527896995708,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 12.77047565510248,
+          "rmsTargetErrorPx": 1.1204527375570972,
+          "maximumProjectionPx": 1.7743667701291257,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.1199999999999756,
+          "orientationPasses": 24
+        }
+      ]
+    },
+    {
+      "id": "procedural",
+      "frames": [
+        {
+          "name": "rest",
+          "atMs": null,
+          "status": "PASS",
+          "error": null,
+          "rigid": true,
+          "maximumTargetErrorPx": 0,
+          "rmsTargetErrorPx": 0,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 1,
+          "orientationPasses": 0
+        },
+        {
+          "name": "hit-recoil",
+          "atMs": 7400,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 3.102419623766085,
+          "rmsTargetErrorPx": 0.40477291889340133,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.8136542571397217,
+          "orientationPasses": 1
+        },
+        {
+          "name": "strike",
+          "atMs": 2282,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 4.463289721954485,
+          "rmsTargetErrorPx": 0.8419247130488637,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.5378731425334308,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-quarter",
+          "atMs": 1514.203539823009,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 2.8409927017933745,
+          "rmsTargetErrorPx": 0.4117986096764157,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.6995827333415434,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-three-quarter",
+          "atMs": 1622.6106194690265,
+          "status": "PASS",
+          "error": null,
+          "rigid": false,
+          "maximumTargetErrorPx": 2.4952184530907657,
+          "rmsTargetErrorPx": 0.4204794437943527,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.7314917952988084,
+          "orientationPasses": 1
+        }
+      ]
+    }
+  ]
+}

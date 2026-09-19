@@ -1,0 +1,349 @@
+{
+  "frames": {
+    "beak.png": {
+      "frame": {
+        "h": 84,
+        "w": 92,
+        "x": 5,
+        "y": 799
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 84,
+        "w": 92
+      },
+      "spriteSourceSize": {
+        "h": 84,
+        "w": 92,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "chest.png": {
+      "frame": {
+        "h": 277,
+        "w": 248,
+        "x": 469,
+        "y": 373
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 277,
+        "w": 248
+      },
+      "spriteSourceSize": {
+        "h": 277,
+        "w": 248,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-foot.png": {
+      "frame": {
+        "h": 116,
+        "w": 217,
+        "x": 5,
+        "y": 524
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 116,
+        "w": 217
+      },
+      "spriteSourceSize": {
+        "h": 116,
+        "w": 217,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-shin.png": {
+      "frame": {
+        "h": 121,
+        "w": 80,
+        "x": 107,
+        "y": 799
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 121,
+        "w": 80
+      },
+      "spriteSourceSize": {
+        "h": 121,
+        "w": 80,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "far-thigh.png": {
+      "frame": {
+        "h": 176,
+        "w": 226,
+        "x": 730,
+        "y": 212
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 176,
+        "w": 226
+      },
+      "spriteSourceSize": {
+        "h": 176,
+        "w": 226,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "head.png": {
+      "frame": {
+        "h": 139,
+        "w": 186,
+        "x": 5,
+        "y": 650
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 139,
+        "w": 186
+      },
+      "spriteSourceSize": {
+        "h": 139,
+        "w": 186,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-foot.png": {
+      "frame": {
+        "h": 104,
+        "w": 221,
+        "x": 727,
+        "y": 398
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 104,
+        "w": 221
+      },
+      "spriteSourceSize": {
+        "h": 104,
+        "w": 221,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-shin.png": {
+      "frame": {
+        "h": 137,
+        "w": 62,
+        "x": 5,
+        "y": 893
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 137,
+        "w": 62
+      },
+      "spriteSourceSize": {
+        "h": 137,
+        "w": 62,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-thigh.png": {
+      "frame": {
+        "h": 152,
+        "w": 188,
+        "x": 232,
+        "y": 647
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 152,
+        "w": 188
+      },
+      "spriteSourceSize": {
+        "h": 152,
+        "w": 188,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "near-wing.png": {
+      "frame": {
+        "h": 424,
+        "w": 416,
+        "x": 981,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 424,
+        "w": 416
+      },
+      "spriteSourceSize": {
+        "h": 424,
+        "w": 416,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "neck-lower.png": {
+      "frame": {
+        "h": 151,
+        "w": 251,
+        "x": 469,
+        "y": 212
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 151,
+        "w": 251
+      },
+      "spriteSourceSize": {
+        "h": 151,
+        "w": 251,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "neck-upper.png": {
+      "frame": {
+        "h": 113,
+        "w": 201,
+        "x": 232,
+        "y": 524
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 113,
+        "w": 201
+      },
+      "spriteSourceSize": {
+        "h": 113,
+        "w": 201,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "tail.png": {
+      "frame": {
+        "h": 197,
+        "w": 502,
+        "x": 469,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 197,
+        "w": 502
+      },
+      "spriteSourceSize": {
+        "h": 197,
+        "w": 502,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    "torso.png": {
+      "frame": {
+        "h": 509,
+        "w": 454,
+        "x": 5,
+        "y": 5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 509,
+        "w": 454
+      },
+      "spriteSourceSize": {
+        "h": 509,
+        "w": 454,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  },
+  "meta": {
+    "format": "RGBA8888",
+    "image": "bird.png",
+    "scale": "1",
+    "size": {
+      "h": 1035,
+      "w": 1402
+    }
+  }
+}

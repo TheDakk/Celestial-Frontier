@@ -158,5 +158,9 @@
     "sheenTier": "painted",
     "paletteSource": "synthetic"
   },
-  "clipSetId": "hopper-v1"
+  "clipSetId": "hopper-v1",
+  "habitat": {
+    "realm": "amphibious",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
 }

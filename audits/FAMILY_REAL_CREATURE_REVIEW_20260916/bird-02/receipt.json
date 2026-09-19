@@ -1,0 +1,33 @@
+{
+  "schema": "cf.paint-skin-intake/v1",
+  "sourceBindingHash": "73f0a3e17ed30b2ecf991a6641324d16f4e17636fa1b5da958db5dde43a16941",
+  "recordRecipeHash": "14e9b9c4a4f7a708e2fc63f1665641d6e1c3730c6f0cdc9c334c11da7fb73c1e",
+  "packedPixels": {
+    "schema": "cf.parts-byte-verification/v1",
+    "bindingHash": "73f0a3e17ed30b2ecf991a6641324d16f4e17636fa1b5da958db5dde43a16941",
+    "atlasSha256": "c86ef97d75c24b851c42b8782c83dca7e132374aa9d590d90c7caff67b45ea14",
+    "parts": 14,
+    "comparedChannels": 3215752,
+    "changedChannels": 0
+  },
+  "vertices": 1679,
+  "partVertices": 2561,
+  "parts": 14,
+  "leaves": 722,
+  "triangles": 3026,
+  "ownershipEdges": 2827,
+  "ownershipAlphaRule": "every nonzero original alpha",
+  "originalInkOnly": true,
+  "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+  "nativeAcceptance": false,
+  "intake": {
+    "id": "bird",
+    "parts": 14,
+    "atlasSize": {
+      "width": 1402,
+      "height": 1035
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  }
+}

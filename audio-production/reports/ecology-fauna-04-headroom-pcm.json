@@ -1,0 +1,2768 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v4.reference.belted-kingfisher.82ca2cd5f512",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 7.964,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/82ca2cd5f51228a3-217849.m4a",
+          "sha256": "82ca2cd5f51228a375e449b01fa612d6fa9772b035a91874c87ad2737594fde9",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 7.963991
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.kingfisher.recording"
+      ],
+      "notes": "Identified recording reference: Kingfisher. Actual source: Belted Kingfisher. Opening excerpt at supplied speed; creator rsety. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.belted-kingfisher.82ca2cd5f512",
+        "sourceSha256": "82ca2cd5f51228a375e449b01fa612d6fa9772b035a91874c87ad2737594fde9",
+        "sourceDbTP": -7.7,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 7.964
+      },
+      "start": 0,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.belted-kingfisher.82ca2cd5f512.wav",
+      "masterSha256": "794a6a8f78b002bde510f22445d7e7af35acb95512d6187e9e7073f1864bc7dc",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.belted-kingfisher.82ca2cd5f512.opus",
+      "opusSha256": "d02307c7bb41df02047036b0c643ec1d82987622af60f06698aec58027cd0ee1",
+      "previewSha256": "8eece26e1f02fc69a65ecf653d299d065b1bc7506362a5959582272b845f9e3d",
+      "previewBytes": 764658,
+      "previewUrl": "/__cf-audio-review/v4.reference.belted-kingfisher.82ca2cd5f512.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.4,
+      "opusDbTP": -13.6
+    },
+    {
+      "id": "v4.reference.chacma-baboon.8361ce774d68",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 10.1,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/8361ce774d68df2c-657727.m4a",
+          "sha256": "8361ce774d68df2c56f728065337c76dc222e7af5ebb2dfbd45c0f5e1fb970c1",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 10.1
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.baboon.recording"
+      ],
+      "notes": "Identified recording reference: Baboon. Actual source: Chacma Baboon. Opening excerpt at supplied speed; creator burgert. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.chacma-baboon.8361ce774d68",
+        "sourceSha256": "8361ce774d68df2c56f728065337c76dc222e7af5ebb2dfbd45c0f5e1fb970c1",
+        "sourceDbTP": -19.2,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 10.1
+      },
+      "start": 8.964,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.chacma-baboon.8361ce774d68.wav",
+      "masterSha256": "bc9cc4f8b54d765391db14d92e9ff6a8b69e8d2f122e88504cbf3d6334a570d6",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.chacma-baboon.8361ce774d68.opus",
+      "opusSha256": "337feea3fa2c4e52b57768c97e8130ebe422e4601eb9685fae13dbb6b6950c8a",
+      "previewSha256": "df78068bd4c002f906d5f80f691d5424280ba1d7a3197ba751f98d45c1cde411",
+      "previewBytes": 969714,
+      "previewUrl": "/__cf-audio-review/v4.reference.chacma-baboon.8361ce774d68.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -24.8,
+      "opusDbTP": -25.0
+    },
+    {
+      "id": "v4.reference.red-footed-booby.83d9603588ac",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/83d9603588acf633-710938.mp3",
+          "sha256": "83d9603588acf633944241701e553162e309a4ad8659a650b1356903d881ed1d",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 29.5785
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.booby.recording"
+      ],
+      "notes": "Identified recording reference: Booby. Actual source: Red-footed Booby. Opening excerpt at supplied speed; creator qgroom. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.red-footed-booby.83d9603588ac",
+        "sourceSha256": "83d9603588acf633944241701e553162e309a4ad8659a650b1356903d881ed1d",
+        "sourceDbTP": -16.9,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 20.064,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.red-footed-booby.83d9603588ac.wav",
+      "masterSha256": "b4e7edc8804e23e5ed295dbac851c97b3bb3eb93254e63869a12981b7c7b88e2",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.red-footed-booby.83d9603588ac.opus",
+      "opusSha256": "32f48300c83bbc5fe2f850af3f3bc1875f63d3bfd82ce5c2589ca39f1bef6fcd",
+      "previewSha256": "d954bea7d9b11617365ee4ed2a5e68dcfd9fc4d19bf6947f0e4ebc1b9bfb701a",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.red-footed-booby.83d9603588ac.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.6,
+      "opusDbTP": -22.6
+    },
+    {
+      "id": "v4.reference.humpback-whale.84dee1c39112",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 3.4714,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/84dee1c39112775e-900064.wav",
+          "sha256": "84dee1c39112775e3baad8f76d4273cf9a9c8305730ca11a3184b07aef1fa4af",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.6237348354824193,
+          "delay": 0,
+          "duration": 3.471429
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.humpback-whale.recording",
+        "earth.fauna.whale.recording"
+      ],
+      "notes": "Identified recording reference: Humpback Whale, Whale. Actual source: Humpback Whale. Opening excerpt at supplied speed; creator stevestevens. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.humpback-whale.84dee1c39112",
+        "sourceSha256": "84dee1c39112775e3baad8f76d4273cf9a9c8305730ca11a3184b07aef1fa4af",
+        "sourceDbTP": -4.9,
+        "priorGain": 0.65,
+        "gain": 0.6237348354824193,
+        "duration": 3.4714
+      },
+      "start": 33.064,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.humpback-whale.84dee1c39112.wav",
+      "masterSha256": "b339652d25b157149cae92a03f792d1472c2b537410c378d419af2eb5fae1043",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.humpback-whale.84dee1c39112.opus",
+      "opusSha256": "9eec46b0f9babace76d151329b396f7cc9d9343ac197784f30a99339967e3cbc",
+      "previewSha256": "a59b8a7cbd5bf1a3efd9f21cea501534a9ccc438a3d5188d0d2b005184e5cdb5",
+      "previewBytes": 666622,
+      "previewUrl": "/__cf-audio-review/v4.reference.humpback-whale.84dee1c39112.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.9
+    },
+    {
+      "id": "v4.reference.american-toad.8549134a15fd",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/8549134a15fd26b7-21765.wav",
+          "sha256": "8549134a15fd26b741070fd1f97252a805ceb47fd870c5221fd21a41125d71e4",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.5011872336272722,
+          "delay": 0,
+          "duration": 21.199438
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.toad.recording"
+      ],
+      "notes": "Identified recording reference: Toad. Actual source: American Toad. Opening excerpt at supplied speed; creator kpmcfarland. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.american-toad.8549134a15fd",
+        "sourceSha256": "8549134a15fd26b741070fd1f97252a805ceb47fd870c5221fd21a41125d71e4",
+        "sourceDbTP": -3.0,
+        "priorGain": 0.65,
+        "gain": 0.5011872336272722,
+        "duration": 12
+      },
+      "start": 37.5354,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.american-toad.8549134a15fd.wav",
+      "masterSha256": "fd0c88167885ab1016b1921ddfe3270418f4d79ee429f0162f1f19c1f3e31fa7",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.american-toad.8549134a15fd.opus",
+      "opusSha256": "4d7b4a2292341beb302234545eb9b83c689dea0c8924866236e02c59f1c0ddaf",
+      "previewSha256": "7a0c5d4cc43d02f6bec405115254879dc0eaf12b72c4e6baf6515a6a5af692b2",
+      "previewBytes": 2304114,
+      "previewUrl": "/__cf-audio-review/v4.reference.american-toad.8549134a15fd.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -11.0
+    },
+    {
+      "id": "v4.reference.great-blue-heron.85e7a4c4581f",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/85e7a4c4581fcbde-396727.wav",
+          "sha256": "85e7a4c4581fcbdee35f793d85def147cb55467d45ad320813f56cf23261984e",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 69.729524
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.heron.recording"
+      ],
+      "notes": "Identified recording reference: Heron. Actual source: Great Blue Heron. Opening excerpt at supplied speed; creator kzoebel. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.great-blue-heron.85e7a4c4581f",
+        "sourceSha256": "85e7a4c4581fcbdee35f793d85def147cb55467d45ad320813f56cf23261984e",
+        "sourceDbTP": -28.5,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 50.5354,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.great-blue-heron.85e7a4c4581f.wav",
+      "masterSha256": "865073de1051d5dd46d6bc11791eb2fa1f4a56634a25df4076eae130f278edfe",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.great-blue-heron.85e7a4c4581f.opus",
+      "opusSha256": "a4cc9dff59588e425b92a15f5b569171b927ba24c12b549cc3bf36330aa7eabe",
+      "previewSha256": "213d2bdacde2088a7449661e145d7a99a49f25fe852019d4e1fcd20a43572365",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.great-blue-heron.85e7a4c4581f.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -34.2,
+      "opusDbTP": -34.1
+    },
+    {
+      "id": "v4.reference.virginia-rail.862924b4e8f0",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 3.7297,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/862924b4e8f098e5-97549.mp3",
+          "sha256": "862924b4e8f098e52c30eb3548d8a9afb5acf069495d6420e7cc78a6ee215894",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 3.72966
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.rail.recording"
+      ],
+      "notes": "Identified recording reference: Rail. Actual source: Virginia Rail. Opening excerpt at supplied speed; creator thyg. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.virginia-rail.862924b4e8f0",
+        "sourceSha256": "862924b4e8f098e52c30eb3548d8a9afb5acf069495d6420e7cc78a6ee215894",
+        "sourceDbTP": -19.6,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 3.7297
+      },
+      "start": 63.5354,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.virginia-rail.862924b4e8f0.wav",
+      "masterSha256": "7d26625c6c036a90a38ca61ca36b023803f4f751144bcfc2b24e00ee6368b416",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.virginia-rail.862924b4e8f0.opus",
+      "opusSha256": "b17a621cc9264a2cee7c97a491d7a1f8491347cdfe69d977ddff62941e161758",
+      "previewSha256": "60aa25b1745d50acc869fc97980baa00d4f024b79a9b8f28ef2067c9eb757db6",
+      "previewBytes": 358166,
+      "previewUrl": "/__cf-audio-review/v4.reference.virginia-rail.862924b4e8f0.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -25.3,
+      "opusDbTP": -25.2
+    },
+    {
+      "id": "v4.reference.black-tailed-prairie-dog.8629d805a9d1",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/8629d805a9d10ab2-646243.m4a",
+          "sha256": "8629d805a9d10ab29ad2956616a6b5a31089ca7807e34292a5afcd426366ebb8",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 19.136
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.prairie-dog.recording"
+      ],
+      "notes": "Identified recording reference: Prairie Dog. Actual source: Black-tailed Prairie Dog. Opening excerpt at supplied speed; creator glorgana. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.black-tailed-prairie-dog.8629d805a9d1",
+        "sourceSha256": "8629d805a9d10ab29ad2956616a6b5a31089ca7807e34292a5afcd426366ebb8",
+        "sourceDbTP": -10.2,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 68.2651,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.black-tailed-prairie-dog.8629d805a9d1.wav",
+      "masterSha256": "cb1500598488712a06bb91c9c9b73917365830f004c22bf47234e8b86436bcd7",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.black-tailed-prairie-dog.8629d805a9d1.opus",
+      "opusSha256": "ff44881dfed4ea57a2c8701c2f05590930cba6fb59e8d1e9b22fa00173bb7c9c",
+      "previewSha256": "862c99fb193dfe3b850d70715c43616601db10292dec25f6687174585306ffee",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.black-tailed-prairie-dog.8629d805a9d1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.9,
+      "opusDbTP": -15.6
+    },
+    {
+      "id": "v4.reference.common-brushtail-possum.8666171ae041",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/8666171ae041fade-515115.mp3",
+          "sha256": "8666171ae041fadef661ee392944813e9408f1cc3c3657d0d7058562ccf3ab93",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 129.884512
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.possum.recording"
+      ],
+      "notes": "Identified recording reference: Possum. Actual source: Common Brushtail Possum. Opening excerpt at supplied speed; creator rich_fuller. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.common-brushtail-possum.8666171ae041",
+        "sourceSha256": "8666171ae041fadef661ee392944813e9408f1cc3c3657d0d7058562ccf3ab93",
+        "sourceDbTP": -11.3,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 81.2651,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.common-brushtail-possum.8666171ae041.wav",
+      "masterSha256": "5066d114d99169b3b68dedc090220271f7c2b1ca25a57ee8ca3c029ad35ce4e4",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.common-brushtail-possum.8666171ae041.opus",
+      "opusSha256": "70b927d637a9155e3bf4a548b37c8b6f4e03506b2602ee2eafd6b1a8430aaaab",
+      "previewSha256": "da2185999c984c53995980c7a64227d68456c2006ca0c12699a65582ca3ba490",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.common-brushtail-possum.8666171ae041.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.0,
+      "opusDbTP": -17.1
+    },
+    {
+      "id": "v4.reference.american-robin.86cc298cf358",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 3.2763,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/86cc298cf358db3a-1625.mp3",
+          "sha256": "86cc298cf358db3a52c4191ae09f111948bdfea8f3a5d679aab90fc02c3da8c3",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 3.276292
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.robin.recording"
+      ],
+      "notes": "Identified recording reference: Robin. Actual source: American Robin. Opening excerpt at supplied speed; creator kpmcfarland. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.american-robin.86cc298cf358",
+        "sourceSha256": "86cc298cf358db3a52c4191ae09f111948bdfea8f3a5d679aab90fc02c3da8c3",
+        "sourceDbTP": -12.2,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 3.2763
+      },
+      "start": 94.2651,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.american-robin.86cc298cf358.wav",
+      "masterSha256": "e12b59f475646fe60deae63aff1f3fcbfd884b7a0dbb2401af345697744454ab",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.american-robin.86cc298cf358.opus",
+      "opusSha256": "4ebb55ec212f128d4a2c2317d2d86d799458e960595f439cc67c309956d78311",
+      "previewSha256": "b29baa1e6b8e87090c117e3970b4f22f82ae50d103f0e192112cd029ae987fb3",
+      "previewBytes": 629162,
+      "previewUrl": "/__cf-audio-review/v4.reference.american-robin.86cc298cf358.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.8,
+      "opusDbTP": -17.9
+    },
+    {
+      "id": "v4.reference.river-otter.87996a26e8dd",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/87996a26e8dd8a46-99323aab-cdd5-432a-bd33-08e8826b41de.mp3",
+          "sha256": "87996a26e8dd8a46799b1df8604a82b03933b5baceea179f3883f92aa68da13d",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 13.582042
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.river-otter.recording"
+      ],
+      "notes": "Identified recording reference: River Otter. Actual source: River Otter. Opening excerpt at supplied speed; creator See item Credit / Author in preserved metadata. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.river-otter.87996a26e8dd",
+        "sourceSha256": "87996a26e8dd8a46799b1df8604a82b03933b5baceea179f3883f92aa68da13d",
+        "sourceDbTP": -20.4,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 98.54140000000001,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.river-otter.87996a26e8dd.wav",
+      "masterSha256": "2ae344afc9db14b90aae493e5b739926a152e86ceed7d144cbf1d946be557860",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.river-otter.87996a26e8dd.opus",
+      "opusSha256": "645f5cc36fbeac00c198623dd74dfbfd4e4ed08e2100738eb05502dbc8893e08",
+      "previewSha256": "ddbe3e4641f02c00b5955413257e019a8e6abadfee694fef4829d14845661908",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.river-otter.87996a26e8dd.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -26.1,
+      "opusDbTP": -26.3
+    },
+    {
+      "id": "v4.reference.eurasian-coot.87b5065568a1",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 4.945,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/87b5065568a13fb7-45320.mpga",
+          "sha256": "87b5065568a13fb75c6a3bee41f032ea1e27b3b621348e658dc0be401e014a63",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 4.944979
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.coot.recording"
+      ],
+      "notes": "Identified recording reference: Coot. Actual source: Eurasian Coot. Opening excerpt at supplied speed; creator aromatisse. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.eurasian-coot.87b5065568a1",
+        "sourceSha256": "87b5065568a13fb75c6a3bee41f032ea1e27b3b621348e658dc0be401e014a63",
+        "sourceDbTP": -5.9,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 4.945
+      },
+      "start": 111.54140000000001,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.eurasian-coot.87b5065568a1.wav",
+      "masterSha256": "8cdcd3aab7850bcd6017f5087dcff85a41d9661a374c2448b879c0e7d4627676",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.eurasian-coot.87b5065568a1.opus",
+      "opusSha256": "cb59ea75f7a5380d0d6f95a32269b6766f22dc71b39b81ee77c1a32c667a01b0",
+      "previewSha256": "7bb95ace23f710be5bd3ff75f136808c4b582cb21327e43dcbda0e61d2a39904",
+      "previewBytes": 474834,
+      "previewUrl": "/__cf-audio-review/v4.reference.eurasian-coot.87b5065568a1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.5,
+      "opusDbTP": -11.5
+    },
+    {
+      "id": "v4.reference.sooty-grouse.87e9e6be829d",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/87e9e6be829dad1b-220989.m4a",
+          "sha256": "87e9e6be829dad1bc15dd4825111ed17073d10a4a12051e58637facbae7eaac7",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 25.578
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.grouse.recording"
+      ],
+      "notes": "Identified recording reference: Grouse. Actual source: Sooty Grouse. Opening excerpt at supplied speed; creator katemckeown. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.sooty-grouse.87e9e6be829d",
+        "sourceSha256": "87e9e6be829dad1bc15dd4825111ed17073d10a4a12051e58637facbae7eaac7",
+        "sourceDbTP": -14.9,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 117.4864,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.sooty-grouse.87e9e6be829d.wav",
+      "masterSha256": "b8217531f792a3c627401a59d68e4c558741c65dbe140809d1354400080d9895",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.sooty-grouse.87e9e6be829d.opus",
+      "opusSha256": "8c69ee44171149e8ac35a8b74bb3462be12cdd8982ebe80d2c017884a2677d6c",
+      "previewSha256": "ab1b183378eeb436fd5deef3acd9e1151b88ad2814219eedf390538ad6b587cf",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.sooty-grouse.87e9e6be829d.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.6,
+      "opusDbTP": -20.7
+    },
+    {
+      "id": "v4.reference.ring-tailed-lemur.88eaa910fba4",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 7.317,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/88eaa910fba41656-1095331.m4a",
+          "sha256": "88eaa910fba4165624b9b56d4c5f2d38493e50e128c93cd3f1ae114fe2e61ad5",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 7.317
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.lemur.recording"
+      ],
+      "notes": "Identified recording reference: Lemur. Actual source: Ring-tailed Lemur. Opening excerpt at supplied speed; creator svetlanarussia. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.ring-tailed-lemur.88eaa910fba4",
+        "sourceSha256": "88eaa910fba4165624b9b56d4c5f2d38493e50e128c93cd3f1ae114fe2e61ad5",
+        "sourceDbTP": -21.4,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 7.317
+      },
+      "start": 130.4864,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.ring-tailed-lemur.88eaa910fba4.wav",
+      "masterSha256": "d2b590db84496fe09a216c321bc2bcff667314641f0faf1d9a77a0d457fb4f11",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.ring-tailed-lemur.88eaa910fba4.opus",
+      "opusSha256": "61b76ec02481b173213097af1f79eaef1d840c5de3da2c49a655f6e6d9fbd89d",
+      "previewSha256": "1a2a1497b84952e43df714f97a731dd2e380554daa86c1ae203b5ac4e4d71d80",
+      "previewBytes": 1404978,
+      "previewUrl": "/__cf-audio-review/v4.reference.ring-tailed-lemur.88eaa910fba4.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.1,
+      "opusDbTP": -27.0
+    },
+    {
+      "id": "v4.reference.mallard.8957da607fd7",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/8957da607fd7ca31-romo-MALLROMO672017BierstadtLake.mp3",
+          "sha256": "8957da607fd7ca3124906e1dad58984436860a3307cd8a296e6542e5bb4f4a8d",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 55.68
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.duck.recording"
+      ],
+      "notes": "Identified recording reference: Duck. Actual source: Mallard (call). Opening excerpt at supplied speed; creator See item Credit / Author in preserved metadata. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.mallard.8957da607fd7",
+        "sourceSha256": "8957da607fd7ca3124906e1dad58984436860a3307cd8a296e6542e5bb4f4a8d",
+        "sourceDbTP": -46.4,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 138.8034,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.mallard.8957da607fd7.wav",
+      "masterSha256": "5be64368b43601510ba62fa3e2026b7091e7b66963dfa2a17123a47bc0dd133d",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.mallard.8957da607fd7.opus",
+      "opusSha256": "0351ef581c215d083311e608a7654a921142a05f23f14ba0d20d3d7e163eada7",
+      "previewSha256": "9516bc121da66a72f6875fc8cbbebe6f765182f26386aeff91b2c29d78353752",
+      "previewBytes": 2304114,
+      "previewUrl": "/__cf-audio-review/v4.reference.mallard.8957da607fd7.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -52.1,
+      "opusDbTP": -52.1
+    },
+    {
+      "id": "v4.reference.plains-zebra.8a21c52a22e8",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 3.785,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/8a21c52a22e822e6-1547380.m4a",
+          "sha256": "8a21c52a22e822e6289b1bb354b0f669cd8b55945bccb7d7be5b7c53971ba9cb",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 3.785
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.zebra.recording"
+      ],
+      "notes": "Identified recording reference: Zebra. Actual source: Plains Zebra. Opening excerpt at supplied speed; creator ceeec. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.plains-zebra.8a21c52a22e8",
+        "sourceSha256": "8a21c52a22e822e6289b1bb354b0f669cd8b55945bccb7d7be5b7c53971ba9cb",
+        "sourceDbTP": -52.3,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 3.785
+      },
+      "start": 151.8034,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.plains-zebra.8a21c52a22e8.wav",
+      "masterSha256": "108c53b335831d5d17b2b11c6f43d18b034a98bfeb9ded8f82e367a8ba9d5404",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.plains-zebra.8a21c52a22e8.opus",
+      "opusSha256": "4c329baa8825c57c24b068ad5487e9a3d66637d28ec44868a70f32283a540605",
+      "previewSha256": "d864aecde156b0ade30e22b539229297cdafa0f3fcb96673042aa07c1b302018",
+      "previewBytes": 726834,
+      "previewUrl": "/__cf-audio-review/v4.reference.plains-zebra.8a21c52a22e8.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -58.0,
+      "opusDbTP": -57.9
+    },
+    {
+      "id": "v4.reference.common-raven.8e1cd578ed6d",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/8e1cd578ed6dcd1c-romo-CORAROMO6242015MoraineParkCampground.mp3",
+          "sha256": "8e1cd578ed6dcd1c74b7dc5ff167dabc035f5bfcb2148bbf6231f980a66984bd",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.39355007545577747,
+          "delay": 0,
+          "duration": 70.147982
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.raven.recording"
+      ],
+      "notes": "Identified recording reference: Raven. Actual source: Common Raven (call). Opening excerpt at supplied speed; creator See item Credit / Author in preserved metadata. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.common-raven.8e1cd578ed6d",
+        "sourceSha256": "8e1cd578ed6dcd1c74b7dc5ff167dabc035f5bfcb2148bbf6231f980a66984bd",
+        "sourceDbTP": -0.9,
+        "priorGain": 0.65,
+        "gain": 0.39355007545577747,
+        "duration": 12
+      },
+      "start": 156.5884,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.common-raven.8e1cd578ed6d.wav",
+      "masterSha256": "62052c5861ef8f20e60994a9350ae856d3f2605b697d9de8977471ec84d508c4",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.common-raven.8e1cd578ed6d.opus",
+      "opusSha256": "4757521211b9f00dba1c65a8dfefb5cb6c43a3576b11e66a0f85602c2aa556e5",
+      "previewSha256": "35e59a48e057a9f5129c17f49c721db4d6ca3743b295e2b95524bbc50089f1f4",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.common-raven.8e1cd578ed6d.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.9
+    },
+    {
+      "id": "v4.reference.lily-leaf-beetle.8e24b1bc0fd3",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 7.6493,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/8e24b1bc0fd309a7-230788.mp3",
+          "sha256": "8e24b1bc0fd309a7eeeb1d675c28466b6954c422c093a2f7e06b037959db0f5f",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.42657951880159267,
+          "delay": 0,
+          "duration": 7.649313
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.beetle.recording"
+      ],
+      "notes": "Identified recording reference: Beetle. Actual source: Lily Leaf Beetle. Opening excerpt at supplied speed; creator l3erdnik. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.lily-leaf-beetle.8e24b1bc0fd3",
+        "sourceSha256": "8e24b1bc0fd309a7eeeb1d675c28466b6954c422c093a2f7e06b037959db0f5f",
+        "sourceDbTP": -1.6,
+        "priorGain": 0.65,
+        "gain": 0.42657951880159267,
+        "duration": 7.6493
+      },
+      "start": 169.5884,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.lily-leaf-beetle.8e24b1bc0fd3.wav",
+      "masterSha256": "953fb7aa7ae21076a70c286bcf951e4e26c789f73f4f68b44c70e30f10ef667e",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.lily-leaf-beetle.8e24b1bc0fd3.opus",
+      "opusSha256": "0a53c1722851ecd1a324b5232c4a191964905943738a0a00d6b7259c2df61472",
+      "previewSha256": "d4b73e83a11156c37404645dcaa85c6b0db33fa51b82570ca475bdd4a74d8312",
+      "previewBytes": 734446,
+      "previewUrl": "/__cf-audio-review/v4.reference.lily-leaf-beetle.8e24b1bc0fd3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -11.0
+    },
+    {
+      "id": "v4.reference.sperm-whale.8e491ae3c299",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 6.3728,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/noaa_passive_acoustics/8e491ae3c2995bda-Phma-clicks-NOAA-PAGroup-01-sperm-clip.mp3",
+          "sha256": "8e491ae3c2995bdaa5da223fdfaf1ad26c23e612a5c8fcf5f5fe4cd63f4ecfcf",
+          "sourceId": "noaa_passive_acoustics",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 6.372833
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.sperm-whale.recording"
+      ],
+      "notes": "Identified recording reference: Sperm Whale. Actual source: Play sperm whale audio. Opening excerpt at supplied speed; creator NOAA Fisheries, NEFSC, Passive Acoustics Branch (2023); see recording citation. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.sperm-whale.8e491ae3c299",
+        "sourceSha256": "8e491ae3c2995bdaa5da223fdfaf1ad26c23e612a5c8fcf5f5fe4cd63f4ecfcf",
+        "sourceDbTP": -6.7,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 6.3728
+      },
+      "start": 178.23770000000002,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.sperm-whale.8e491ae3c299.wav",
+      "masterSha256": "501c25ea07b2a2d358e1cabbdf8465ae465312abf5faa0f1099842e8b21ae543",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.sperm-whale.8e491ae3c299.opus",
+      "opusSha256": "18c0fcfff4152f618d5ca6f19d56206b273bed0f1cc2eab263d66d582c0e53c9",
+      "previewSha256": "455fe8760c26ef754ea0c50bc1f1b026f8cba9f321408fa062ffde0f0d939806",
+      "previewBytes": 611902,
+      "previewUrl": "/__cf-audio-review/v4.reference.sperm-whale.8e491ae3c299.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.4,
+      "opusDbTP": -12.7
+    },
+    {
+      "id": "v4.reference.geoffroy-s-tufted-ear-marmoset.8ee1ea978c77",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 4.64,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/8ee1ea978c775b4d-451704.wav",
+          "sha256": "8ee1ea978c775b4d878477606f5ef1ee4d7e444d91865cfc0d602fb6146555b9",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 4.64
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.marmoset.recording"
+      ],
+      "notes": "Identified recording reference: Marmoset. Actual source: Geoffroy’s Tufted-ear Marmoset. Opening excerpt at supplied speed; creator siguisira. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.geoffroy-s-tufted-ear-marmoset.8ee1ea978c77",
+        "sourceSha256": "8ee1ea978c775b4d878477606f5ef1ee4d7e444d91865cfc0d602fb6146555b9",
+        "sourceDbTP": -8.5,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 4.64
+      },
+      "start": 185.61050000000003,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.geoffroy-s-tufted-ear-marmoset.8ee1ea978c77.wav",
+      "masterSha256": "1d7cfc65eae37e0bd70de9f160ccf529120b73cc163f64fb860f09005d6029ff",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.geoffroy-s-tufted-ear-marmoset.8ee1ea978c77.opus",
+      "opusSha256": "d0b6a8d1d9237e080ef40b3102ec2a51c884406253ce735abfc53149d526460a",
+      "previewSha256": "d584ee37895478b2fb989743a046454d8205be511917deadbb8629450302627b",
+      "previewBytes": 445554,
+      "previewUrl": "/__cf-audio-review/v4.reference.geoffroy-s-tufted-ear-marmoset.8ee1ea978c77.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.2,
+      "opusDbTP": -14.4
+    },
+    {
+      "id": "v4.reference.little-spotted-kiwi.8f84464d2f03",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/8f84464d2f035570-1599209.m4a",
+          "sha256": "8f84464d2f035570928276cd9e3dbc53aa70b568410415286d613078cf17d65c",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 12.159813
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.kiwi.recording"
+      ],
+      "notes": "Identified recording reference: Kiwi. Actual source: Little Spotted Kiwi. Opening excerpt at supplied speed; creator henryahh. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.little-spotted-kiwi.8f84464d2f03",
+        "sourceSha256": "8f84464d2f035570928276cd9e3dbc53aa70b568410415286d613078cf17d65c",
+        "sourceDbTP": -16.5,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 191.25050000000002,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.little-spotted-kiwi.8f84464d2f03.wav",
+      "masterSha256": "5aa3393c9b5e6d7dd26d50a71008c748046add82ebc2f7e56075d14c6cb95a5c",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.little-spotted-kiwi.8f84464d2f03.opus",
+      "opusSha256": "ab5ee434b2f7c24cffdc590a0babc5a2815a36a6c089744380cb0653bd44ff49",
+      "previewSha256": "ace2980e9a64f6fbefe20a6515f12fdd8587bbadc34d076431d0e1259e5966e6",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.little-spotted-kiwi.8f84464d2f03.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.1,
+      "opusDbTP": -21.9
+    },
+    {
+      "id": "v4.reference.pied-avocet.900794c95745",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 6.524,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/900794c95745d30f-1081541.m4a",
+          "sha256": "900794c95745d30fdb837a36cdfffc45d0eeece83a03a6affb36650b3266753b",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 6.523991
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.avocet.recording"
+      ],
+      "notes": "Identified recording reference: Avocet. Actual source: Pied Avocet. Opening excerpt at supplied speed; creator thomas_ellmauer. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.pied-avocet.900794c95745",
+        "sourceSha256": "900794c95745d30fdb837a36cdfffc45d0eeece83a03a6affb36650b3266753b",
+        "sourceDbTP": -5.5,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 6.524
+      },
+      "start": 204.25050000000002,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.pied-avocet.900794c95745.wav",
+      "masterSha256": "8e0145b756393d2fe94f040d26b3eb238d5b2bc1a8eaa6a665c11e7ef0210f99",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.pied-avocet.900794c95745.opus",
+      "opusSha256": "4e86802f4784b09937c202cdf7a26763b15979895567b8293c41c20184beb05c",
+      "previewSha256": "975d41888f0bf4fd9e2c2a581c8f894f30a8b6a1a38323d4b1ba573bbb62973f",
+      "previewBytes": 626418,
+      "previewUrl": "/__cf-audio-review/v4.reference.pied-avocet.900794c95745.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.2,
+      "opusDbTP": -11.5
+    },
+    {
+      "id": "v4.reference.california-quail.90445c5a8696",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/90445c5a8696fa7b-7155.wav",
+          "sha256": "90445c5a8696fa7bc27397687fa24d83731fb56c1d9a04d681de3e15c2ac1a77",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 34.418503
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.quail.recording"
+      ],
+      "notes": "Identified recording reference: Quail. Actual source: California Quail. Opening excerpt at supplied speed; creator truthseqr. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.california-quail.90445c5a8696",
+        "sourceSha256": "90445c5a8696fa7bc27397687fa24d83731fb56c1d9a04d681de3e15c2ac1a77",
+        "sourceDbTP": -6.7,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 211.77450000000002,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.california-quail.90445c5a8696.wav",
+      "masterSha256": "d0546a47135a37b0070c2a6d52f6598796ee8a30aa81ff96c76bb6c4148d05b1",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.california-quail.90445c5a8696.opus",
+      "opusSha256": "e1d147a594f982b9550c8de5ddecfba0656273116009db34886bea95bc2ad545",
+      "previewSha256": "dbdaa61f47beac2751ff258d227f7c2a5a336c7ec227c30e4beefb8ee6b123e4",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.california-quail.90445c5a8696.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.4,
+      "opusDbTP": -12.3
+    },
+    {
+      "id": "v4.reference.american-beaver.908604f3f980",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/908604f3f980a20a-179064.mp3",
+          "sha256": "908604f3f980a20a4b238e800c489e48e1df278b70b138e483f747cf571d6858",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 111.618322
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.beaver.recording"
+      ],
+      "notes": "Identified recording reference: Beaver. Actual source: American Beaver. Opening excerpt at supplied speed; creator leahmfulton. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.american-beaver.908604f3f980",
+        "sourceSha256": "908604f3f980a20a4b238e800c489e48e1df278b70b138e483f747cf571d6858",
+        "sourceDbTP": -15.5,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 224.77450000000002,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.american-beaver.908604f3f980.wav",
+      "masterSha256": "ba9a53ad0cd0fdbaa98b473a52ea2638123f999636e1063aa23ebccdbb549767",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.american-beaver.908604f3f980.opus",
+      "opusSha256": "679a1a43b224bf84290551df351db68c3737f12d8c54c84604082444d08fea47",
+      "previewSha256": "82b4a20d005c5899f45b91259a6cf77e40c5611b89b3471c9b42ff5bd384b42f",
+      "previewBytes": 2304114,
+      "previewUrl": "/__cf-audio-review/v4.reference.american-beaver.908604f3f980.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -21.2,
+      "opusDbTP": -21.2
+    },
+    {
+      "id": "v4.reference.song-sparrow.91114495bea1",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 3.0958,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/91114495bea1c61b-22792.wav",
+          "sha256": "91114495bea1c61b70fcf0b8977bb842dd7a6acffa3eb5da3aeaa2616ff5f80f",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 3.095792
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.sparrow.recording"
+      ],
+      "notes": "Identified recording reference: Sparrow. Actual source: Song Sparrow. Opening excerpt at supplied speed; creator schoenitz. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.song-sparrow.91114495bea1",
+        "sourceSha256": "91114495bea1c61b70fcf0b8977bb842dd7a6acffa3eb5da3aeaa2616ff5f80f",
+        "sourceDbTP": -6.8,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 3.0958
+      },
+      "start": 237.77450000000002,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.song-sparrow.91114495bea1.wav",
+      "masterSha256": "6287fa3a30403aa10ce31610c14cc3b54ee7ac3a471f6647012bf186dd13b572",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.song-sparrow.91114495bea1.opus",
+      "opusSha256": "891e94e9c1d00bb2036286f3a77d54395c5442e976bf2c005946771ade5060ce",
+      "previewSha256": "8164e0fe1f27774859b4c4c63841b150652712daedd0bae36f247142d854e4ab",
+      "previewBytes": 297310,
+      "previewUrl": "/__cf-audio-review/v4.reference.song-sparrow.91114495bea1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -13.0
+    },
+    {
+      "id": "v4.reference.gray-partridge.9229feccad93",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/9229feccad934475-387586.mp3",
+          "sha256": "9229feccad9344756f07734f69572b58e15ab88b41bfadd8a5287686c58efe77",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 21.4592
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.partridge.recording"
+      ],
+      "notes": "Identified recording reference: Partridge. Actual source: Gray Partridge. Opening excerpt at supplied speed; creator plucian. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.gray-partridge.9229feccad93",
+        "sourceSha256": "9229feccad9344756f07734f69572b58e15ab88b41bfadd8a5287686c58efe77",
+        "sourceDbTP": -36.6,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 241.87030000000001,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.gray-partridge.9229feccad93.wav",
+      "masterSha256": "0936034812e879c71897fc573d5693b5b5aa5b1d8eb8a2fd02bc5e7f8ed9dde4",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.gray-partridge.9229feccad93.opus",
+      "opusSha256": "1d84cada626aa878d2b216e7c83f232c53e003d070c097ffd546f9e82348e3c4",
+      "previewSha256": "3459d280ba771aa636793923b568046619efc5e9d377b06d05180654ca45c36a",
+      "previewBytes": 2304114,
+      "previewUrl": "/__cf-audio-review/v4.reference.gray-partridge.9229feccad93.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -42.3,
+      "opusDbTP": -42.5
+    },
+    {
+      "id": "v4.reference.black-capuchin.938c353fdb87",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/938c353fdb8774aa-568777.mp3",
+          "sha256": "938c353fdb8774aa9ecd90adf017e19369273f9e2d0963b286d57dcfa1877d55",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 28.857778
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.capuchin.recording"
+      ],
+      "notes": "Identified recording reference: Capuchin. Actual source: Black capuchin. Opening excerpt at supplied speed; creator paularomano. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.black-capuchin.938c353fdb87",
+        "sourceSha256": "938c353fdb8774aa9ecd90adf017e19369273f9e2d0963b286d57dcfa1877d55",
+        "sourceDbTP": -8.7,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 254.87030000000001,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.black-capuchin.938c353fdb87.wav",
+      "masterSha256": "18556db4ece981a4adf491b94a106a95246feabba2ce782b0b73c489d1f66118",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.black-capuchin.938c353fdb87.opus",
+      "opusSha256": "c9a5f1250e66d06c26da145755f6714467a10db6378c26f28fd091eb04e087ad",
+      "previewSha256": "c24466809f189c0c411e42b9c01f79653cc02a30132edb6cae54f0d2effd8f5f",
+      "previewBytes": 2304114,
+      "previewUrl": "/__cf-audio-review/v4.reference.black-capuchin.938c353fdb87.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.4,
+      "opusDbTP": -14.1
+    },
+    {
+      "id": "v4.reference.elk.93bcc6842885",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 9.1559,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_yellowstone/93bcc68428855697-yell-YELLMJ23ElkCalf20051116.mp3",
+          "sha256": "93bcc684288556978fc1eaa3425df584ba5177175f9bf0d7ef0ef260ab36663f",
+          "sourceId": "nps_yellowstone",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 9.155938
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.elk.recording"
+      ],
+      "notes": "Identified recording reference: Elk. Actual source: Elk. Opening excerpt at supplied speed; creator See item Credit / Author in preserved metadata. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.elk.93bcc6842885",
+        "sourceSha256": "93bcc684288556978fc1eaa3425df584ba5177175f9bf0d7ef0ef260ab36663f",
+        "sourceDbTP": -14.9,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 9.1559
+      },
+      "start": 267.87030000000004,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.elk.93bcc6842885.wav",
+      "masterSha256": "b0179350519ac7217271e084f1850b0c4ca4cb583ff3768ad79ec03641ce0bff",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.elk.93bcc6842885.opus",
+      "opusSha256": "38c52b017f165e98fea0c1503a9dd1c07b786afbf9cd558d04f1447d38a4827b",
+      "previewSha256": "25c162ac5a32a114cfb2e4bc984849eb0c7d26c8fd6b937bc432c26c3d034db1",
+      "previewBytes": 879080,
+      "previewUrl": "/__cf-audio-review/v4.reference.elk.93bcc6842885.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.5,
+      "opusDbTP": -20.4
+    },
+    {
+      "id": "v4.reference.chimney-swift.942870cd6743",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/942870cd6743833f-85395.m4a",
+          "sha256": "942870cd6743833f24afa16dce2f8837af9c1ab3ecea80d518fdf381205ba64d",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 13.328005
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.swift.recording"
+      ],
+      "notes": "Identified recording reference: Swift. Actual source: Chimney Swift. Opening excerpt at supplied speed; creator buggybuddy. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.chimney-swift.942870cd6743",
+        "sourceSha256": "942870cd6743833f24afa16dce2f8837af9c1ab3ecea80d518fdf381205ba64d",
+        "sourceDbTP": -7.3,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 278.0262,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.chimney-swift.942870cd6743.wav",
+      "masterSha256": "9955c411889278da27d843d60382e8562f3bcd546e2f224232fda5213868f628",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.chimney-swift.942870cd6743.opus",
+      "opusSha256": "99fca4813528157f346bace8aed44426810db7ae2817b33a0fbc5ed0dc642169",
+      "previewSha256": "ef772f80d2ac86f33ddb79dc2786c5db5fb4ffb66dced4ac4d9da53884df9abb",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.chimney-swift.942870cd6743.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.9,
+      "opusDbTP": -13.0
+    },
+    {
+      "id": "v4.reference.belted-kingfisher.94e2bf349cff",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/94e2bf349cffdaa9-romo-BEKI4ROMO5302017BeaverPonds.mp3",
+          "sha256": "94e2bf349cffdaa9d2fd0bee6dbd731ad2d62cf10cad83e84df742ac02dc864d",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 15.284833
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.kingfisher.recording"
+      ],
+      "notes": "Identified recording reference: Kingfisher. Actual source: Belted Kingfisher (call). Opening excerpt at supplied speed; creator See item Credit / Author in preserved metadata. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.belted-kingfisher.94e2bf349cff",
+        "sourceSha256": "94e2bf349cffdaa9d2fd0bee6dbd731ad2d62cf10cad83e84df742ac02dc864d",
+        "sourceDbTP": -8.9,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 291.0262,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.belted-kingfisher.94e2bf349cff.wav",
+      "masterSha256": "5456f945320e54cee36773aaa857fd47c63c5f7fc52cfe0bb2d2a763de3bff71",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.belted-kingfisher.94e2bf349cff.opus",
+      "opusSha256": "cd2f827269ec32732d187ec642c5d8ec357a33293cde6a95e57d10f25e32faa8",
+      "previewSha256": "302e03be5190fb4f7afaf789ef6deb037e1e022acf790d6e8510547fefc581fd",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.belted-kingfisher.94e2bf349cff.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.6,
+      "opusDbTP": -14.6
+    },
+    {
+      "id": "v4.reference.pilot-whale.95fa8c136bd2",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/noaa_passive_acoustics/95fa8c136bd25968-Glsp-Multisound-NOAA-PAGroup-01-pilot-whale-clip.mp3",
+          "sha256": "95fa8c136bd25968e2f72a8f962838133b7d34ec873ac3102c3280ed1cb63d4d",
+          "sourceId": "noaa_passive_acoustics",
+          "rate": 1,
+          "gain": 0.4623810213992603,
+          "delay": 0,
+          "duration": 29.775737
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.pilot-whale.recording"
+      ],
+      "notes": "Identified recording reference: Pilot Whale. Actual source: Play pilot whale audio. Opening excerpt at supplied speed; creator NOAA Fisheries, NEFSC, Passive Acoustics Branch (2023); see recording citation. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.pilot-whale.95fa8c136bd2",
+        "sourceSha256": "95fa8c136bd25968e2f72a8f962838133b7d34ec873ac3102c3280ed1cb63d4d",
+        "sourceDbTP": -2.3,
+        "priorGain": 0.65,
+        "gain": 0.4623810213992603,
+        "duration": 12
+      },
+      "start": 304.0262,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.pilot-whale.95fa8c136bd2.wav",
+      "masterSha256": "6e91d6ab78dd01e8250a699aeb5f13a714c3796ea5964f5407f2277a9877d688",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.pilot-whale.95fa8c136bd2.opus",
+      "opusSha256": "ff522f9d5d3bb78affbad351ebb2a0d010d92bb7265392cc0e9a66912e67b94e",
+      "previewSha256": "6e9ef8a8e8331876eece30550af7ac480be883dcca1d5016007c49a15995b72c",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.pilot-whale.95fa8c136bd2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.9
+    },
+    {
+      "id": "v4.reference.bobcat.9771b3fed264",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 9.344,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/9771b3fed2645005-1957458.m4a",
+          "sha256": "9771b3fed2645005b8081d0ab6308429cd7b25a47a9a80247c58a2d461ae4b39",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 9.344
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.bobcat.recording"
+      ],
+      "notes": "Identified recording reference: Bobcat. Actual source: Bobcat. Opening excerpt at supplied speed; creator natashahaggard. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.bobcat.9771b3fed264",
+        "sourceSha256": "9771b3fed2645005b8081d0ab6308429cd7b25a47a9a80247c58a2d461ae4b39",
+        "sourceDbTP": -26.3,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 9.344
+      },
+      "start": 317.0262,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.bobcat.9771b3fed264.wav",
+      "masterSha256": "8c124300735db6bb9e4d8f0021751f29c3a832e480a2146fabbadb95bdf61cd7",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.bobcat.9771b3fed264.opus",
+      "opusSha256": "04e8203914e3a87bc6a480e79dcd34d14f1ca1d14c15de393183aa7cc3ba8fda",
+      "previewSha256": "b77f34ddc135f7ce59fa8a4c405ba7e7db1410c123d9e5fc1493c2602bccab91",
+      "previewBytes": 1794162,
+      "previewUrl": "/__cf-audio-review/v4.reference.bobcat.9771b3fed264.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.0,
+      "opusDbTP": -31.8
+    },
+    {
+      "id": "v4.reference.peregrine-falcon.98044c4ea60b",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 11.484,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/98044c4ea60b7672-325638.mp3",
+          "sha256": "98044c4ea60b76729be48e238ec059e28045de90f4bdecdad097c76d4e3cb7f8",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.3589219346450052,
+          "delay": 0,
+          "duration": 11.483991
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.falcon.recording"
+      ],
+      "notes": "Identified recording reference: Falcon. Actual source: Peregrine Falcon. Opening excerpt at supplied speed; creator rudyard. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.peregrine-falcon.98044c4ea60b",
+        "sourceSha256": "98044c4ea60b76729be48e238ec059e28045de90f4bdecdad097c76d4e3cb7f8",
+        "sourceDbTP": -0.1,
+        "priorGain": 0.65,
+        "gain": 0.3589219346450052,
+        "duration": 11.484
+      },
+      "start": 327.3702,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.peregrine-falcon.98044c4ea60b.wav",
+      "masterSha256": "f223346aaf6c06c6ecd45a6275e569ad2408073c8109f68d07ecff13892e7c01",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.peregrine-falcon.98044c4ea60b.opus",
+      "opusSha256": "d0cabd83c314abe3c7302568e6a1dc59cf5086cc6ef629191daa63e5f7c6efc7",
+      "previewSha256": "eca2bd41d49b87e6db2a25b7b3161ca9fd5b0b89cfc918614168c28abeec889b",
+      "previewBytes": 1102578,
+      "previewUrl": "/__cf-audio-review/v4.reference.peregrine-falcon.98044c4ea60b.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.8
+    },
+    {
+      "id": "v4.reference.australian-king-parrot.9838bae8126c",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/9838bae8126cec7b-95659.m4a",
+          "sha256": "9838bae8126cec7b303292f8ac01ab1baa2450505c00de51fcf50bb153b60f0b",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 25.96
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.parrot.recording"
+      ],
+      "notes": "Identified recording reference: Parrot. Actual source: Australian King Parrot. Opening excerpt at supplied speed; creator claudiarose. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.australian-king-parrot.9838bae8126c",
+        "sourceSha256": "9838bae8126cec7b303292f8ac01ab1baa2450505c00de51fcf50bb153b60f0b",
+        "sourceDbTP": -12.2,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 339.8542,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.australian-king-parrot.9838bae8126c.wav",
+      "masterSha256": "be89947dcf415b0ab663f873eb904c2ea1ff2486b80cb4ddec3fcb9b7424e8f0",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.australian-king-parrot.9838bae8126c.opus",
+      "opusSha256": "509348d7ce8711e5d2a718c4cb133fa2e7b31b2d58e0bfd385b030c9af6f98cb",
+      "previewSha256": "57dcefa68173c35c83aaca357622d0ab15f309e9fcd5519908a430d4a2d1f0ea",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.australian-king-parrot.9838bae8126c.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.8,
+      "opusDbTP": -18.1
+    },
+    {
+      "id": "v4.reference.osprey.98803d206052",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 8.3708,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/98803d206052738b-132477.wav",
+          "sha256": "98803d206052738b3cd8b0505d331ef26cd29ed0f8b137eb43a6b2e72511501d",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 8.370794
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.osprey.recording"
+      ],
+      "notes": "Identified recording reference: Osprey. Actual source: Osprey. Opening excerpt at supplied speed; creator rbelshee. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.osprey.98803d206052",
+        "sourceSha256": "98803d206052738b3cd8b0505d331ef26cd29ed0f8b137eb43a6b2e72511501d",
+        "sourceDbTP": -38.3,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 8.3708
+      },
+      "start": 352.8542,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.osprey.98803d206052.wav",
+      "masterSha256": "decf0eea3e1e4214e92f87e7e309c4b4cf84592192eb6c40d802abfc74cb89a6",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.osprey.98803d206052.opus",
+      "opusSha256": "052576ec813b9d6dd0817ce6a7e2155c4f3316fa3eebca4b974df8480bd23baa",
+      "previewSha256": "d5b3de87a9ddff6c45761a163715bf1dd01457761fdba2d0094fdd7ad46607a8",
+      "previewBytes": 803710,
+      "previewUrl": "/__cf-audio-review/v4.reference.osprey.98803d206052.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -44.0,
+      "opusDbTP": -44.1
+    },
+    {
+      "id": "v4.reference.common-crane.99175b88658e",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/99175b88658ec544-9889.mp3",
+          "sha256": "99175b88658ec544ca078871586587c72b92eec8652afad3d84e404401320556",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 14.0
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.crane.recording"
+      ],
+      "notes": "Identified recording reference: Crane. Actual source: Common Crane. Opening excerpt at supplied speed; creator francescocecere. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.common-crane.99175b88658e",
+        "sourceSha256": "99175b88658ec544ca078871586587c72b92eec8652afad3d84e404401320556",
+        "sourceDbTP": -21.6,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 362.22499999999997,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.common-crane.99175b88658e.wav",
+      "masterSha256": "98554093e926e6833561dfe5af7b8d64bd3af3c13c337ae30a9af59ae6140340",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.common-crane.99175b88658e.opus",
+      "opusSha256": "313b9999439c2e44dee97015d79dd7aabfcf44b9db343e9e80834db5bbdda0b8",
+      "previewSha256": "0a1016dedaf9651686bbbaed0658fc6f84211e64aa82fa7ad4c4cc1ea7d979a0",
+      "previewBytes": 2304114,
+      "previewUrl": "/__cf-audio-review/v4.reference.common-crane.99175b88658e.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.3,
+      "opusDbTP": -27.9
+    },
+    {
+      "id": "v4.reference.black-headed-gull.9a470d900d46",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 8.7401,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/9a470d900d462c39-1070331.wav",
+          "sha256": "9a470d900d462c39423c8b9bc1825a78b00e548a5a51ccedb023b792489d1240",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 8.740136
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.gull.recording"
+      ],
+      "notes": "Identified recording reference: Gull. Actual source: Black-headed Gull. Opening excerpt at supplied speed; creator lrose23. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.black-headed-gull.9a470d900d46",
+        "sourceSha256": "9a470d900d462c39423c8b9bc1825a78b00e548a5a51ccedb023b792489d1240",
+        "sourceDbTP": -16.7,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 8.7401
+      },
+      "start": 375.22499999999997,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.black-headed-gull.9a470d900d46.wav",
+      "masterSha256": "7140e00563b8a970b836020a9e9a3ea11f7aae08f89164581ab8b07dc519547d",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.black-headed-gull.9a470d900d46.opus",
+      "opusSha256": "6262247a4932cb442b64635495540f81ca9a61a936a01d87c0c598a4a449a3c4",
+      "previewSha256": "e9a6ffcf4d8268a7e033619d0438e6c25499b6004d7ddf1578ec03b9025221b8",
+      "previewBytes": 839164,
+      "previewUrl": "/__cf-audio-review/v4.reference.black-headed-gull.9a470d900d46.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.4,
+      "opusDbTP": -22.2
+    },
+    {
+      "id": "v4.reference.american-crow.9a99bb4daa71",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/9a99bb4daa7145c5-romo-AMCRROMO6242015CubLakeTrail.mp3",
+          "sha256": "9a99bb4daa7145c5c6d64ef46bd4c727146502f61102bc5e608562e31f494783",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 118.175873
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.crow.recording"
+      ],
+      "notes": "Identified recording reference: Crow. Actual source: American Crow (call). Opening excerpt at supplied speed; creator See item Credit / Author in preserved metadata. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.american-crow.9a99bb4daa71",
+        "sourceSha256": "9a99bb4daa7145c5c6d64ef46bd4c727146502f61102bc5e608562e31f494783",
+        "sourceDbTP": -12.2,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 384.96509999999995,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.american-crow.9a99bb4daa71.wav",
+      "masterSha256": "4fdadd0945efd11125deecfde8d7af5ff9531f3eb69dff900e285139357fde7b",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.american-crow.9a99bb4daa71.opus",
+      "opusSha256": "8bf7b68f049457005928bd03f5041b66310b0d5570db876ca2fab38f5b1b2f0f",
+      "previewSha256": "22a24f70af15f84fd0387c14684128a01d35ebe86613f6c93f469d81d5cc5955",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.american-crow.9a99bb4daa71.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -17.9,
+      "opusDbTP": -17.8
+    },
+    {
+      "id": "v4.reference.horned-screamer.9afb52e95bbf",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 10.048,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/9afb52e95bbfecb4-1618454.m4a",
+          "sha256": "9afb52e95bbfecb4c79586a46a01493493cc32548a8e30a3bb55afac3d05198c",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.436515832240166,
+          "delay": 0,
+          "duration": 10.048
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.screamer.recording"
+      ],
+      "notes": "Identified recording reference: Screamer. Actual source: Horned Screamer. Opening excerpt at supplied speed; creator kodiakgarden. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.horned-screamer.9afb52e95bbf",
+        "sourceSha256": "9afb52e95bbfecb4c79586a46a01493493cc32548a8e30a3bb55afac3d05198c",
+        "sourceDbTP": -1.8,
+        "priorGain": 0.65,
+        "gain": 0.436515832240166,
+        "duration": 10.048
+      },
+      "start": 397.96509999999995,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.horned-screamer.9afb52e95bbf.wav",
+      "masterSha256": "4853fc12289b18a63d2d6bac7a97e25824246caf948c1011fb19c364bec74659",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.horned-screamer.9afb52e95bbf.opus",
+      "opusSha256": "d7f1db103567b9eda3f82c4eb4c3fb597a3cdc5b0fd6ca6e809ba105801e5b89",
+      "previewSha256": "a1c4b9d350fa7d2a162307fc923e3d7162b51f788422e736a03a6333780509f5",
+      "previewBytes": 964722,
+      "previewUrl": "/__cf-audio-review/v4.reference.horned-screamer.9afb52e95bbf.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -10.9
+    },
+    {
+      "id": "v4.reference.domestic-dog.9b53846bb315",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/9b53846bb315771e-1346356.m4a",
+          "sha256": "9b53846bb315771e6bfb784a6ddce96b06c82ace2f737f33fe9267f548d4e29f",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 38.568005
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.dog.recording"
+      ],
+      "notes": "Identified recording reference: Dog. Actual source: Domestic Dog. Opening excerpt at supplied speed; creator islander_iskander. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.domestic-dog.9b53846bb315",
+        "sourceSha256": "9b53846bb315771e6bfb784a6ddce96b06c82ace2f737f33fe9267f548d4e29f",
+        "sourceDbTP": -12.5,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 409.01309999999995,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.domestic-dog.9b53846bb315.wav",
+      "masterSha256": "116ec89ddae09dcb6d72ef71084af62e7f28386140db85e69504cf028164a40d",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.domestic-dog.9b53846bb315.opus",
+      "opusSha256": "f9022678a10863dcbcb34ee2b64e5f1f71e83d14a56d24ea240abda498806170",
+      "previewSha256": "030e354dc4c355edb0f5d5afc6f6e967e05467260f1e8127947fa58df4b088d7",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.domestic-dog.9b53846bb315.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -18.2,
+      "opusDbTP": -18.0
+    },
+    {
+      "id": "v4.reference.double-crested-cormorant.9b6d1308cab5",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 3.6052,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/9b6d1308cab5dfd9-6918.wav",
+          "sha256": "9b6d1308cab5dfd90677c8defc1690cc644b8eed96f023d520b8bbceecb6f15d",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.5069907082747043,
+          "delay": 0,
+          "duration": 3.60517
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.cormorant.recording"
+      ],
+      "notes": "Identified recording reference: Cormorant. Actual source: Double-crested Cormorant. Opening excerpt at supplied speed; creator truthseqr. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.double-crested-cormorant.9b6d1308cab5",
+        "sourceSha256": "9b6d1308cab5dfd90677c8defc1690cc644b8eed96f023d520b8bbceecb6f15d",
+        "sourceDbTP": -3.1,
+        "priorGain": 0.65,
+        "gain": 0.5069907082747043,
+        "duration": 3.6052
+      },
+      "start": 422.01309999999995,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.double-crested-cormorant.9b6d1308cab5.wav",
+      "masterSha256": "94b0721e04a2e10f67be8ba36b6636b94b40897daa417c65d029a4eb22a94ed1",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.double-crested-cormorant.9b6d1308cab5.opus",
+      "opusSha256": "302568a914905adf9ef6fb5b4e53f66072d1d861b5af1a0e29c1ac0c92e855ef",
+      "previewSha256": "cc0102d9cd5c15ddf2523d5e576d3abc317b6a83f52ff98320f617582fb145a2",
+      "previewBytes": 346214,
+      "previewUrl": "/__cf-audio-review/v4.reference.double-crested-cormorant.9b6d1308cab5.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -11.0
+    },
+    {
+      "id": "v4.reference.common-snipe.9c672552d9ea",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/9c672552d9eabfaa-72595.wav",
+          "sha256": "9c672552d9eabfaa6952a230f2c7e1340763d995493bf5e69f8cc506c1c7ec0b",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 19.017143
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.snipe.recording"
+      ],
+      "notes": "Identified recording reference: Snipe. Actual source: Common Snipe. Opening excerpt at supplied speed; creator gunnerpoulsen. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.common-snipe.9c672552d9ea",
+        "sourceSha256": "9c672552d9eabfaa6952a230f2c7e1340763d995493bf5e69f8cc506c1c7ec0b",
+        "sourceDbTP": -7.0,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 426.6183,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.common-snipe.9c672552d9ea.wav",
+      "masterSha256": "4b26fad3ae9588089cac031a6a2b852b6b0c5e7c37088fed914ecacb2b154289",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.common-snipe.9c672552d9ea.opus",
+      "opusSha256": "23bde65cfb4bd86a27336a59e9d4e9ae248ed6149a6e7c35165f3224e36780d7",
+      "previewSha256": "575e6e453428b1a13fa3d1f6932bbf8fc3801eeb5fdac273022465793fa73c9d",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.common-snipe.9c672552d9ea.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.7,
+      "opusDbTP": -12.7
+    },
+    {
+      "id": "v4.reference.haddock.9cc43ee5d1d0",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/noaa_passive_acoustics/9cc43ee5d1d07cc7-Meae-knock-NOAA-PAGroup-01-haddock-clip.mp3",
+          "sha256": "9cc43ee5d1d07cc788429f691d434f2aa75f8cb069bb2678b0cbd2dc2a6faf54",
+          "sourceId": "noaa_passive_acoustics",
+          "rate": 1,
+          "gain": 0.35481338923357547,
+          "delay": 0,
+          "duration": 17.0225
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.haddock.recording"
+      ],
+      "notes": "Identified recording reference: Haddock. Actual source: Play haddock audio. Opening excerpt at supplied speed; creator NOAA Fisheries, NEFSC, Passive Acoustics Branch (2023); see recording citation. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.haddock.9cc43ee5d1d0",
+        "sourceSha256": "9cc43ee5d1d07cc788429f691d434f2aa75f8cb069bb2678b0cbd2dc2a6faf54",
+        "sourceDbTP": 0.0,
+        "priorGain": 0.65,
+        "gain": 0.35481338923357547,
+        "duration": 12
+      },
+      "start": 439.6183,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.haddock.9cc43ee5d1d0.wav",
+      "masterSha256": "881c9ffc6bea835e3a98186cfc1a6a601789bf12890a5d6b4fe9ebcca185f651",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.haddock.9cc43ee5d1d0.opus",
+      "opusSha256": "c26178a5b4ed2277c8cd66b136fee0a63847ac0ca0107f55faeab65b0a280171",
+      "previewSha256": "299586a830608a5510bbb13b6b8e1737a472ea263732201c722bf5a29d6aae97",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.haddock.9cc43ee5d1d0.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -11.9
+    },
+    {
+      "id": "v4.reference.virginia-rail.9cef64c4cd61",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 10.4104,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/9cef64c4cd618eb7-109149.mp3",
+          "sha256": "9cef64c4cd618eb7a1c437e05dc0c657bcab1c1e1b5ffa634538d311c355cb90",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 10.410396
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.rail.recording"
+      ],
+      "notes": "Identified recording reference: Rail. Actual source: Virginia Rail. Opening excerpt at supplied speed; creator bradenjudson. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.virginia-rail.9cef64c4cd61",
+        "sourceSha256": "9cef64c4cd618eb7a1c437e05dc0c657bcab1c1e1b5ffa634538d311c355cb90",
+        "sourceDbTP": -8.3,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 10.4104
+      },
+      "start": 452.6183,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.virginia-rail.9cef64c4cd61.wav",
+      "masterSha256": "05801c64ca9c1b452ca9c678f6ebde3f3521344e8e9baa00ea7b28c785d08251",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.virginia-rail.9cef64c4cd61.opus",
+      "opusSha256": "4cd8df17fc4182f112ff194b611501f3bd8541e1cd2e2305759edd6328a67e77",
+      "previewSha256": "0cefc8af03ab6a477138ae3c3df43b2847ee441a56971570c85ab5fe6d219a48",
+      "previewBytes": 1998910,
+      "previewUrl": "/__cf-audio-review/v4.reference.virginia-rail.9cef64c4cd61.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.1,
+      "opusDbTP": -15.0
+    },
+    {
+      "id": "v4.reference.eurasian-moorhen.9d086e4863ce",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/9d086e4863ce0ed0-282811.m4a",
+          "sha256": "9d086e4863ce0ed0520f78f0000bed77884109d83d13aa9cb98f12e828d22147",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 14.419002
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.moorhen.recording"
+      ],
+      "notes": "Identified recording reference: Moorhen. Actual source: Eurasian Moorhen. Opening excerpt at supplied speed; creator bulatik. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.eurasian-moorhen.9d086e4863ce",
+        "sourceSha256": "9d086e4863ce0ed0520f78f0000bed77884109d83d13aa9cb98f12e828d22147",
+        "sourceDbTP": -13.6,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 464.02869999999996,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.eurasian-moorhen.9d086e4863ce.wav",
+      "masterSha256": "cdb9bdb96ff4732e8a440169a553d7e85f6daa28e8989d953a23345593eb3087",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.eurasian-moorhen.9d086e4863ce.opus",
+      "opusSha256": "af3ffefb7dc638adf25bfc355a2bf4c629e13e7c26735f70629462d7f5b4013b",
+      "previewSha256": "045dcf437096f68a34a2607c9dd8d782dc3b9aaa4880dab896238a70f2687eb3",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.eurasian-moorhen.9d086e4863ce.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.3,
+      "opusDbTP": -19.3
+    },
+    {
+      "id": "v4.reference.bald-eagle.9dab080256b9",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 2.5158,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_natural_sounds/9dab080256b91449-nri-BaldEagleYELL.mp3",
+          "sha256": "9dab080256b914493e9da0d9a421a3ee13ce8cabd0a4d7e17eac7f8370ec2e68",
+          "sourceId": "nps_natural_sounds",
+          "rate": 1,
+          "gain": 0.350751873952568,
+          "delay": 0,
+          "duration": 2.51575
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.eagle.recording"
+      ],
+      "notes": "Identified recording reference: Eagle. Actual source: Bald Eagle. Opening excerpt at supplied speed; creator See item Credit / Author in preserved metadata. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.bald-eagle.9dab080256b9",
+        "sourceSha256": "9dab080256b914493e9da0d9a421a3ee13ce8cabd0a4d7e17eac7f8370ec2e68",
+        "sourceDbTP": 0.1,
+        "priorGain": 0.65,
+        "gain": 0.350751873952568,
+        "duration": 2.5158
+      },
+      "start": 477.02869999999996,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.bald-eagle.9dab080256b9.wav",
+      "masterSha256": "8fea7e4c0eec01fda8e523cdb4439f9ecf67e921b4bc0afc30de2f2c6d58e2e5",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.bald-eagle.9dab080256b9.opus",
+      "opusSha256": "e13d5deb04010f6a803558a2380b950cd996e46df5ba46b3a587f35e02793c2c",
+      "previewSha256": "574369a6feec4a8fd8f7e68289ea9140cc022e684c82884471cc983b605aa6f0",
+      "previewBytes": 241630,
+      "previewUrl": "/__cf-audio-review/v4.reference.bald-eagle.9dab080256b9.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "v4.reference.red-fox.9efdacdcf94b",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/9efdacdcf94b1c8c-4347.m4a",
+          "sha256": "9efdacdcf94b1c8c15065f94b66036850801371c3d2d85826298f242395f3aac",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 129.195828
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.fox.recording",
+        "earth.fauna.red-fox.recording"
+      ],
+      "notes": "Identified recording reference: Fox, Red Fox. Actual source: Red Fox. Opening excerpt at supplied speed; creator kpmcfarland. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.red-fox.9efdacdcf94b",
+        "sourceSha256": "9efdacdcf94b1c8c15065f94b66036850801371c3d2d85826298f242395f3aac",
+        "sourceDbTP": -30.5,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 480.54449999999997,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.red-fox.9efdacdcf94b.wav",
+      "masterSha256": "d6ba3d1696b78fafab537ef429150cadd18e77775eda4c8e79dab074e92b8a88",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.red-fox.9efdacdcf94b.opus",
+      "opusSha256": "72d0500dead5ff18b4a73ccd079636fc053c43d77f4c33a4e62990eb62ce4171",
+      "previewSha256": "cc6cbaefa809f29eef5643402aba1d2e4e70fda9cb87fa5edacc5d7f43cea2b3",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.red-fox.9efdacdcf94b.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -36.2,
+      "opusDbTP": -36.4
+    },
+    {
+      "id": "v4.reference.great-blue-heron.a071b54d37da",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 8.545,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/a071b54d37da1126-185425.m4a",
+          "sha256": "a071b54d37da11261b46fd64f2abda86cdfee904ff1b732726e85d0e73ac245e",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 8.545011
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.heron.recording"
+      ],
+      "notes": "Identified recording reference: Heron. Actual source: Great Blue Heron. Opening excerpt at supplied speed; creator rsety. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.great-blue-heron.a071b54d37da",
+        "sourceSha256": "a071b54d37da11261b46fd64f2abda86cdfee904ff1b732726e85d0e73ac245e",
+        "sourceDbTP": -26.3,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 8.545
+      },
+      "start": 493.54449999999997,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.great-blue-heron.a071b54d37da.wav",
+      "masterSha256": "d6082a596c74e692b18e8e4d66d190f2150f59e78fb0f2f10afe637e103f5f0a",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.great-blue-heron.a071b54d37da.opus",
+      "opusSha256": "53f7e2c2b62d00d7bd656afbab0f62c7071aff90c923fe3673a2bcb7033747ec",
+      "previewSha256": "67f17e8dc4be5d79d8c662618b7af0adbc2cc3c36a43c4f3412c466936549555",
+      "previewBytes": 820434,
+      "previewUrl": "/__cf-audio-review/v4.reference.great-blue-heron.a071b54d37da.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.0,
+      "opusDbTP": -31.8
+    },
+    {
+      "id": "v4.reference.western-roe-deer.a16ebc2a347d",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/a16ebc2a347d63e7-8301.mp3",
+          "sha256": "a16ebc2a347d63e79f51ee2ed851dc022576b4953dd9d20e938447d69538a419",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.4518559443749223,
+          "delay": 0,
+          "duration": 35.268
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.deer.recording"
+      ],
+      "notes": "Identified recording reference: Deer. Actual source: Western Roe Deer. Opening excerpt at supplied speed; creator francescocecere. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.western-roe-deer.a16ebc2a347d",
+        "sourceSha256": "a16ebc2a347d63e79f51ee2ed851dc022576b4953dd9d20e938447d69538a419",
+        "sourceDbTP": -2.1,
+        "priorGain": 0.65,
+        "gain": 0.4518559443749223,
+        "duration": 12
+      },
+      "start": 503.0895,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.western-roe-deer.a16ebc2a347d.wav",
+      "masterSha256": "666438c5f5f8fe03ab99d759b53129ec2daafdf469862c1ff19961700bd2c11a",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.western-roe-deer.a16ebc2a347d.opus",
+      "opusSha256": "65b58938bf3310f7f037d47eefc8ffaa3792a4838497a68e384656e2e9a8aaff",
+      "previewSha256": "881983cfdb05f9f868640e2651b0d6841f5371d098bf9310121ea81b35fb364b",
+      "previewBytes": 2304114,
+      "previewUrl": "/__cf-audio-review/v4.reference.western-roe-deer.a16ebc2a347d.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -11.4
+    },
+    {
+      "id": "v4.reference.wild-turkey.a29783e37709",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/nps_rocky_mountain/a29783e37709c232-romo-WITU2ROMO5192016AlluvialFan.mp3",
+          "sha256": "a29783e37709c2328538c8c1c016fcf3ca00c213ad2326519aa6b702e69a6aa1",
+          "sourceId": "nps_rocky_mountain",
+          "rate": 1,
+          "gain": 0.3981071705534972,
+          "delay": 0,
+          "duration": 12.298639
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.turkey.recording"
+      ],
+      "notes": "Identified recording reference: Turkey. Actual source: Wild Turkey (gobble). Opening excerpt at supplied speed; creator See item Credit / Author in preserved metadata. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.wild-turkey.a29783e37709",
+        "sourceSha256": "a29783e37709c2328538c8c1c016fcf3ca00c213ad2326519aa6b702e69a6aa1",
+        "sourceDbTP": -1.0,
+        "priorGain": 0.65,
+        "gain": 0.3981071705534972,
+        "duration": 12
+      },
+      "start": 516.0895,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.wild-turkey.a29783e37709.wav",
+      "masterSha256": "c237fc9717993e244de8790a25c6a9a9db5eca63238af8ceeb1d29cf54ad38a3",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.wild-turkey.a29783e37709.opus",
+      "opusSha256": "6d73f16ec52ad07e4b0c32144b68a1fdbae45a841819bfbd3ea7a975761c6483",
+      "previewSha256": "3bcc35eaed3489a6db10955fd2545f3922ae0460d705ebd25e82625361ff5d0e",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.wild-turkey.a29783e37709.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.9
+    },
+    {
+      "id": "v4.reference.white-stork.a2a892586be2",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 4.2178,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/a2a892586be20128-448862.mp3",
+          "sha256": "a2a892586be20128ec57c73fd46dc59cef79bba53de1baf101b9f132400c3991",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 4.217846
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.stork.recording"
+      ],
+      "notes": "Identified recording reference: Stork. Actual source: White Stork. Opening excerpt at supplied speed; creator euqirneto. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.white-stork.a2a892586be2",
+        "sourceSha256": "a2a892586be20128ec57c73fd46dc59cef79bba53de1baf101b9f132400c3991",
+        "sourceDbTP": -31.5,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 4.2178
+      },
+      "start": 529.0895,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.white-stork.a2a892586be2.wav",
+      "masterSha256": "9dcf2b33a09b82d6a426115b651941adb7adf5ace9f942c7ec58d7c5125320e3",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.white-stork.a2a892586be2.opus",
+      "opusSha256": "a630e34569e444599cf935ee2dc93593a3ec524d180b93c8349a964a13a71a11",
+      "previewSha256": "fb93a33629741680dec1eb9a04a61b1386dd55710455b0f55285a9ecfaf770d8",
+      "previewBytes": 809930,
+      "previewUrl": "/__cf-audio-review/v4.reference.white-stork.a2a892586be2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -37.2,
+      "opusDbTP": -37.3
+    },
+    {
+      "id": "v4.reference.strawberry-poison-dart-frog.a34241079953",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 7.294,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/a342410799537a14-621406.wav",
+          "sha256": "a342410799537a14205beaba06d09d29f8f81aa0a9c96bdd0c0644411999ff04",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 7.293968
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.poison-dart-frog.recording"
+      ],
+      "notes": "Identified recording reference: Poison Dart Frog. Actual source: Strawberry Poison Dart Frog. Opening excerpt at supplied speed; creator kueda. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.strawberry-poison-dart-frog.a34241079953",
+        "sourceSha256": "a342410799537a14205beaba06d09d29f8f81aa0a9c96bdd0c0644411999ff04",
+        "sourceDbTP": -26.6,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 7.294
+      },
+      "start": 534.3073,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.strawberry-poison-dart-frog.a34241079953.wav",
+      "masterSha256": "6a337c99088ede723c2657267a987f545825e01613592644eaa93f209eee32e5",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.strawberry-poison-dart-frog.a34241079953.opus",
+      "opusSha256": "2857a6b3744efa590d269114cd0c7116b2a674180f5097f7d3f343e2ec3bfb32",
+      "previewSha256": "fbde40ddcc9d6e3419e2d11a43520385ab6064de89160c09d2b6a040289d670b",
+      "previewBytes": 700338,
+      "previewUrl": "/__cf-audio-review/v4.reference.strawberry-poison-dart-frog.a34241079953.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -32.3,
+      "opusDbTP": -32.4
+    },
+    {
+      "id": "v4.reference.white-stork.a3b8764e4518",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 6.337,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/a3b8764e45180166-1565873.m4a",
+          "sha256": "a3b8764e4518016666bfb1e6881e462a84d2890d0650aedd544a1d6c712d4d15",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 6.337
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.stork.recording"
+      ],
+      "notes": "Identified recording reference: Stork. Actual source: European White Stork. Opening excerpt at supplied speed; creator mamohin. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.white-stork.a3b8764e4518",
+        "sourceSha256": "a3b8764e4518016666bfb1e6881e462a84d2890d0650aedd544a1d6c712d4d15",
+        "sourceDbTP": -19.9,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 6.337
+      },
+      "start": 542.6013,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.white-stork.a3b8764e4518.wav",
+      "masterSha256": "34671e2b1bc5154e6f13a1085baff8e1c0c823f7c69722598b22755ee9242e22",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.white-stork.a3b8764e4518.opus",
+      "opusSha256": "c2a583807ca4fd1484b8f16d93a26264ffd1e8004b5220d6a2de11e9abad9a53",
+      "previewSha256": "3fb98c6e8f81d03ba2998abe97eaa299ab71a45ca985805bd69019395620470a",
+      "previewBytes": 608466,
+      "previewUrl": "/__cf-audio-review/v4.reference.white-stork.a3b8764e4518.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -25.6,
+      "opusDbTP": -25.6
+    },
+    {
+      "id": "v4.reference.black-headed-gull.a41177af7ac7",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/a41177af7ac7ad57-234030.m4a",
+          "sha256": "a41177af7ac7ad57b7fff1e94236470effeebb6b237bcf43aaeba9e1ae0e8019",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.35481338923357547,
+          "delay": 0,
+          "duration": 14.28
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.gull.recording"
+      ],
+      "notes": "Identified recording reference: Gull. Actual source: Black-headed Gull. Opening excerpt at supplied speed; creator zviruha. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.black-headed-gull.a41177af7ac7",
+        "sourceSha256": "a41177af7ac7ad57b7fff1e94236470effeebb6b237bcf43aaeba9e1ae0e8019",
+        "sourceDbTP": -0.0,
+        "priorGain": 0.65,
+        "gain": 0.35481338923357547,
+        "duration": 12
+      },
+      "start": 549.9383,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.black-headed-gull.a41177af7ac7.wav",
+      "masterSha256": "5ba422ec76de14c50c3f871f8e50d9849651aed7f8d495dd3b4c68663ff667b0",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.black-headed-gull.a41177af7ac7.opus",
+      "opusSha256": "0b1a7a74fadf3f41251e23e8586e1d64eb11214af1af58ea4c8282f0433a198a",
+      "previewSha256": "34b9942fc307b69d129f045bf3ba00425080e5bb50fd0fa4197d58cf8c5f04d5",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.black-headed-gull.a41177af7ac7.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -10.9
+    },
+    {
+      "id": "v4.reference.domestic-cat.a4684e2a7f1c",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/a4684e2a7f1c2560-350125.wav",
+          "sha256": "a4684e2a7f1c2560d69f8cb79fdd6f21e2b0107c6f9ade7eec69ab197fc61902",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 16.091429
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.cat.recording"
+      ],
+      "notes": "Identified recording reference: Cat. Actual source: Domestic Cat. Opening excerpt at supplied speed; creator nonbinary-naturalist. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.domestic-cat.a4684e2a7f1c",
+        "sourceSha256": "a4684e2a7f1c2560d69f8cb79fdd6f21e2b0107c6f9ade7eec69ab197fc61902",
+        "sourceDbTP": -16.0,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 562.9383,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.domestic-cat.a4684e2a7f1c.wav",
+      "masterSha256": "a776f243623797e8bdb12726a8c96c1a7a87ce0a83ce5a29b294375987aefb27",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.domestic-cat.a4684e2a7f1c.opus",
+      "opusSha256": "ed34320bdd0859e9b121dfca78b9c706a9d3bdc2bb6bf7c8eb5cd26fdcd05168",
+      "previewSha256": "2a7d4756250bc8d9328f6a11359330851a94795ae860ecfc21c6c135e2999010",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.domestic-cat.a4684e2a7f1c.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -21.7,
+      "opusDbTP": -21.8
+    },
+    {
+      "id": "v4.reference.red-bellied-woodpecker.a49ce645b32d",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/a49ce645b32d68b6-8068.wav",
+          "sha256": "a49ce645b32d68b634f64da6e3529cb229fadead49f1ffd8bd0b04fdb8f10c49",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 22.165329
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.woodpecker.recording"
+      ],
+      "notes": "Identified recording reference: Woodpecker. Actual source: Red-bellied Woodpecker. Opening excerpt at supplied speed; creator mcm. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.red-bellied-woodpecker.a49ce645b32d",
+        "sourceSha256": "a49ce645b32d68b634f64da6e3529cb229fadead49f1ffd8bd0b04fdb8f10c49",
+        "sourceDbTP": -22.6,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 575.9383,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.red-bellied-woodpecker.a49ce645b32d.wav",
+      "masterSha256": "773316297e2935fd3598a885704e56c57d032c80fa184cec3907e16a3f1f155c",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.red-bellied-woodpecker.a49ce645b32d.opus",
+      "opusSha256": "c8f9ff7f141146c1acdc3f826255f7ed0bbad1495296a0ddd2ba02574044c1a7",
+      "previewSha256": "1b4ff98f4b218ab378b2f228e63b9f158a608fb88f9dc3c9deb179f1c0d457bc",
+      "previewBytes": 1152114,
+      "previewUrl": "/__cf-audio-review/v4.reference.red-bellied-woodpecker.a49ce645b32d.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -28.3,
+      "opusDbTP": -28.5
+    },
+    {
+      "id": "v4.reference.south-polar-skua.a4a20267c053",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 5.7406,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/a4a20267c053296e-1260489.wav",
+          "sha256": "a4a20267c053296e655b30a8053824c36bc600c84350ead0c26d152e4ee75dcb",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.5011872336272722,
+          "delay": 0,
+          "duration": 5.740563
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.skua.recording"
+      ],
+      "notes": "Identified recording reference: Skua. Actual source: South Polar Skua. Opening excerpt at supplied speed; creator stevestevens. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.south-polar-skua.a4a20267c053",
+        "sourceSha256": "a4a20267c053296e655b30a8053824c36bc600c84350ead0c26d152e4ee75dcb",
+        "sourceDbTP": -3.0,
+        "priorGain": 0.65,
+        "gain": 0.5011872336272722,
+        "duration": 5.7406
+      },
+      "start": 588.9383,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.south-polar-skua.a4a20267c053.wav",
+      "masterSha256": "f9a585b16b2090785e6ce76d79f75616992c8202d382b04ae6cd0b93ecb67eb5",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.south-polar-skua.a4a20267c053.opus",
+      "opusSha256": "fbd52c75aae6a36759d3ed854de09d7f5bf790f3163db5861fede1b9c07d3702",
+      "previewSha256": "399a04de6a94d150d9e67528b4a0a7e6e5cb74664585a4f9559fa43f9babd6f2",
+      "previewBytes": 551212,
+      "previewUrl": "/__cf-audio-review/v4.reference.south-polar-skua.a4a20267c053.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.9
+    },
+    {
+      "id": "v4.reference.bottlenose-dolphin.a4f63644be65",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 5.5852,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/noaa_passive_acoustics/a4f63644be65701d-Tutr-multisound-NOAA-PAGroup-03-bottlenose-dolphin-clip.mp3",
+          "sha256": "a4f63644be65701d75ac7d7b7e3729a4806b552699c59830ce9c5ec21a12a20f",
+          "sourceId": "noaa_passive_acoustics",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 5.585167
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.dolphin.recording"
+      ],
+      "notes": "Identified recording reference: Dolphin. Actual source: Play bottlenose dolphin audio. Opening excerpt at supplied speed; creator NOAA Fisheries, NEFSC, Passive Acoustics Branch (2023); see recording citation. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.bottlenose-dolphin.a4f63644be65",
+        "sourceSha256": "a4f63644be65701d75ac7d7b7e3729a4806b552699c59830ce9c5ec21a12a20f",
+        "sourceDbTP": -6.8,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 5.5852
+      },
+      "start": 595.6789,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.bottlenose-dolphin.a4f63644be65.wav",
+      "masterSha256": "9350c43c28eb54699f1c18cb839f32dcd4894a091cb22fc43f9e2ae831ac123e",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.bottlenose-dolphin.a4f63644be65.opus",
+      "opusSha256": "7d1483019b74461a935a61272ec74f01ae9453797aa0eb207e1119757005455d",
+      "previewSha256": "44f8ab2b8537a2e014c0cf662060222ae50c45f3d29cb57e3e39d627796457b3",
+      "previewBytes": 536294,
+      "previewUrl": "/__cf-audio-review/v4.reference.bottlenose-dolphin.a4f63644be65.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.4,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "v4.reference.barn-swallow.a5ac613cc016",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/a5ac613cc01681b7-23000.wav",
+          "sha256": "a5ac613cc01681b762e51a418b23f6bfbe551e34dbf4cf240b793cc9856eb703",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.65,
+          "delay": 0,
+          "duration": 102.756213
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.swallow.recording"
+      ],
+      "notes": "Identified recording reference: Swallow. Actual source: Barn Swallow. Opening excerpt at supplied speed; creator lotteryd. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.barn-swallow.a5ac613cc016",
+        "sourceSha256": "a5ac613cc01681b762e51a418b23f6bfbe551e34dbf4cf240b793cc9856eb703",
+        "sourceDbTP": -14.1,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 12
+      },
+      "start": 602.2641,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.barn-swallow.a5ac613cc016.wav",
+      "masterSha256": "ede4507caee25d022e98c069b104a66e27a1952561a16ca8f02dbd58c675e1e2",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.barn-swallow.a5ac613cc016.opus",
+      "opusSha256": "ef0ea8289901521186a228122109beb3f2c7d8795eb4a2617d43069c31e3f306",
+      "previewSha256": "de682d9764580dabcb1483973a319296c9e56b2d161080b355c4966b4b2a25dc",
+      "previewBytes": 2304114,
+      "previewUrl": "/__cf-audio-review/v4.reference.barn-swallow.a5ac613cc016.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.8,
+      "opusDbTP": -19.8
+    },
+    {
+      "id": "v4.reference.alpine-marmot.a706ffa6dc65",
+      "group": "ecology-fauna-04-headroom-pcm",
+      "kind": "recording",
+      "duration": 12,
+      "channels": 2,
+      "layers": [
+        {
+          "path": "source-audio/inat_cc0/a706ffa6dc6503c6-187566.mpga",
+          "sha256": "a706ffa6dc6503c623d7bad177cf228e72baa0162aa2475dc14dd2f7e0e3f1c2",
+          "sourceId": "inat_cc0",
+          "rate": 1,
+          "gain": 0.350751873952568,
+          "delay": 0,
+          "duration": 21.39425
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "earth.fauna.marmot.recording"
+      ],
+      "notes": "Identified recording reference: Marmot. Actual source: Alpine Marmot. Opening excerpt at supplied speed; creator francescocecere. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed. Input attenuation measured before fixed-point REAPER render; no boosting, limiter, pitch or time change. REAPER receives a verified float WAV excerpt, avoiding mislabeled compressed-container import; full original is retained separately.",
+      "recipeVersion": 4,
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "inputHeadroom": {
+        "id": "v4.reference.alpine-marmot.a706ffa6dc65",
+        "sourceSha256": "a706ffa6dc6503c623d7bad177cf228e72baa0162aa2475dc14dd2f7e0e3f1c2",
+        "sourceDbTP": 0.1,
+        "priorGain": 0.65,
+        "gain": 0.350751873952568,
+        "duration": 12
+      },
+      "start": 615.2641,
+      "master": "masters/ecology-fauna-04-headroom-pcm/v4.reference.alpine-marmot.a706ffa6dc65.wav",
+      "masterSha256": "487d0b372708067e7f06eb8bad0f5674f3c8b2f40b6f9f30ac38c4a984010e58",
+      "opus": "masters/ecology-fauna-04-headroom-pcm/v4.reference.alpine-marmot.a706ffa6dc65.opus",
+      "opusSha256": "b353d7f853156695ab473ebf06dd47d5a05169b0bb85eed5349a864f7186adb1",
+      "previewSha256": "c8afd43456b132ef336e06d0e0bb4efa1dc92b259cfd09bd207cfc23f53e3eaf",
+      "previewBytes": 2304114,
+      "previewUrl": "/__cf-audio-review/v4.reference.alpine-marmot.a706ffa6dc65.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -10.4
+    }
+  ],
+  "listeningAccepted": false
+}

@@ -1,0 +1,11 @@
+--- a/port/v2/apps/game/src/motion/gsap-adapter.ts
++++ b/port/v2/apps/game/src/motion/gsap-adapter.ts
+@@ -36,7 +36,7 @@
+   }
+   addTrack(root, 'dx', timeline.root.dx); addTrack(root, 'dy', timeline.root.dy);
+   tl.to({}, { duration: timeline.durationMs / 1000 }, 0); // pin the total length so progress is honest
+-  const push = (): void => { for (const [joint, cell] of Object.entries(values)) target.setJoint(joint, cell.v, root.dx, root.dy); };
++  const push = (): void => { for (const [joint, cell] of Object.entries(values)) target.setJoint(joint, cell.v, joint === 'root' ? root.dx : 0, joint === 'root' ? root.dy : 0); };
+   let startMs = 0, running = false;
+   const seek = (ms: number): void => {
+     if (timeline.loop) { const w = ((ms % timeline.bodyMs) + timeline.bodyMs) % timeline.bodyMs; tl.time(w / 1000, false);

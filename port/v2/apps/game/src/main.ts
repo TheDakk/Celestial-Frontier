@@ -4331,7 +4331,7 @@ const notificationHistory = createNotificationHistory({
     && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
     && !importWriteInFlight && !persistHold,
   mayRecord: () => !!save && !playerMutationsBlocked() && !trainingActive()
-    && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
+    && activePersist === null && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
     && !importWriteInFlight && !persistHold,
   deferRecord: () => !!save && productActionInFlight && f4RuntimeMayMutate() && !smokeForceReadOnly
     && !trainingActive() && !trainingCheckpointWriteHeld && !replacementTransaction
@@ -5412,6 +5412,17 @@ tameGreetingAudioOwner = createTameGreetingAudioOwner({
   }),
   verifyCounterpart: creatureExpressionCounterpartIsCurrent,
 });
+// Explicit local developer review; reuses the existing audio owner, never gameplay RNG.
+if (import.meta.env.DEV && new URLSearchParams(location.search).get('audioReview') === '1') {
+  void import('./audio-production-review.js').then(({ mountAudioProductionReview }) => {
+    if (!tameGreetingAudioOwner) return;
+    const release = mountAudioProductionReview(tameGreetingAudioOwner);
+    const closeReview = (event: PageTransitionEvent): void => {
+      if (!event.persisted) { release(); removeEventListener('pagehide', closeReview); }
+    };
+    addEventListener('pagehide', closeReview);
+  });
+}
 const primeCount = (): number => Object.keys(save.primeFill || {}).length;
 const SHIP_LIVERY_SEED = 0x5111;   /* legacy ship painter's stable livery authority */
 type ShipVisualViewState = ShipVisualState & { readonly stateKey: string };
@@ -7094,7 +7105,7 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
     world.addChild(corona);
     sysStar = { seed: starSeed, col, kind: sys.kind, starR: srad };   /* _starSurf close-up gate */
     if (raw.binary) {
-      const b2 = new Sprite(sceneTexture(coronaSpr(raw.binary.col2 || col)));
+      const b2 = new Sprite(sceneTexture(coronaSpr(raw.binary.col2 || col, true)));
       b2.anchor.set(0.5);
       b2.width = raw.binary.r2 * 4.8; b2.height = raw.binary.r2 * 4.8;
       b2.eventMode = 'none';

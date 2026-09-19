@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 /** @module worldlife-wiring [app] — the flag-gated adapter that mounts the A5 world-life layer over
  * the live landfall vista (WORK_ORDER: one adapter file per module, one guarded call in main.ts).
- * Nothing here runs unless `?worldlife=1` is in the URL: main.ts only `import()`s this file inside
+ * Nothing here runs unless `?worldlife=1` is in the URL: main.ts only imports this file dynamically inside
  * that gate, so the ordinary vista path is untouched.
  *
  * The world-life card is read from the SAME compiled system card the kit runtime produces for the

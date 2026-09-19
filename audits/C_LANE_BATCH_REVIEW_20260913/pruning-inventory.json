@@ -1,0 +1,98 @@
+{
+  "schema": "cf.pruning-review-inventory/v1",
+  "candidateFiles": 15,
+  "candidateBytes": 11363130,
+  "candidates": [
+    {
+      "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-exploration-music.wav",
+      "bytes": 4608044,
+      "sha256": "fa144fe615faef75fc426f86a44f299dcf48a1637893ccef9cf95fa2ab40a111"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-temperate-bed.wav",
+      "bytes": 4608044,
+      "sha256": "36caaa89651e44e92f9faddc53d74104cb9e1f5e11eb5a5757efbbdb978be69c"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/biome/earth-rainy-landscape.webp",
+      "bytes": 765318,
+      "sha256": "478fd649a1aed198e64a9a053c464f9f98630943ac8e11bf1b184b253f47060b"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/fonts/InterVariable.woff2",
+      "bytes": 352240,
+      "sha256": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/biome/earth-rainy-phone.webp",
+      "bytes": 343072,
+      "sha256": "3689d1273b7bc75806f87eea9718304109a06d31f98682c6161e05b1a06b83ef"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-approach.wav",
+      "bytes": 230444,
+      "sha256": "ad4020be2cda99df2ba91290965b1d125bf909c4b7279833da51b5b55ad5f373"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-landing.wav",
+      "bytes": 134444,
+      "sha256": "6e8e3edf1dca6f232ebb13233e6921a64c33bd33830a5c1358165a764779852a"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/ship/scout-chemical-512.webp",
+      "bytes": 92896,
+      "sha256": "7d58149bed26e0e6aad629d8a7ff50911c9d8540e2cc8c1f8ad60f081299f343"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-settlement.wav",
+      "bytes": 67244,
+      "sha256": "40b012b8a0fe9b91de06ec83b70d575f7f90fd1534710e8b4052979f813617d3"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-refusal.wav",
+      "bytes": 43244,
+      "sha256": "3e4fcbd34d6b65583883e31347ef99c4dd538aa07a311fe7612083e3f37b9b20"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/ship/scout-chemical-300.webp",
+      "bytes": 40660,
+      "sha256": "ec2ac6134e4dfc3e74e932c8277e558cdac22f18274f4c806278adc19c510752"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-combat-contact.wav",
+      "bytes": 33644,
+      "sha256": "fc3bcb5da5ee2a81a45d32de933cea234eb42850b151ba46565d1ad300eb6a20"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-nav.wav",
+      "bytes": 26924,
+      "sha256": "14cecfcf6525c0c3637455ae7c711972021814ae5b5caf711baf7c6bb796a4c8"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/ship/scout-chemical-132.webp",
+      "bytes": 12532,
+      "sha256": "e961336688e8a0687eb6f09dd3f1a22306077694390002ffcda6763b7ba37fc4"
+    },
+    {
+      "path": "port/v2/apps/game/assets/pilot/fonts/Inter-LICENSE.txt",
+      "bytes": 4380,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+    }
+  ],
+  "retiredGameOwners": [
+    {
+      "path": "port/v2/apps/game/src/local-ai-runtime.ts",
+      "present": false
+    },
+    {
+      "path": "port/v2/apps/game/src/local-model-variant.ts",
+      "present": false
+    },
+    {
+      "path": "port/v2/apps/game/src/local-model-variant-storage.ts",
+      "present": false
+    }
+  ],
+  "deletions": 0,
+  "note": "Tracked study assets are candidates, not proven unused. Preserve accepted masters and audit evidence. Source imports and runtime precache closure must be split together after the visual/phone prerequisites; no delivery changes or history rewrite here."
+}

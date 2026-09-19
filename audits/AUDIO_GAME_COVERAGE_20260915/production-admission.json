@@ -1,0 +1,213 @@
+{
+  "allRecipesAdmitted": true,
+  "castImpactBanks": [
+    {
+      "requirement": "ability.fire.cast",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.fire.cast.1",
+        "v2.ability.fire.cast.2",
+        "v2.ability.fire.cast.3"
+      ]
+    },
+    {
+      "requirement": "ability.fire.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.fire.impact.1",
+        "v2.ability.fire.impact.2",
+        "v2.ability.fire.impact.3"
+      ]
+    },
+    {
+      "requirement": "ability.frost.cast",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.frost.cast.1",
+        "v2.ability.frost.cast.2",
+        "v2.ability.frost.cast.3"
+      ]
+    },
+    {
+      "requirement": "ability.frost.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.frost.impact.1",
+        "v2.ability.frost.impact.2",
+        "v2.ability.frost.impact.3"
+      ]
+    },
+    {
+      "requirement": "ability.storm.cast",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.storm.cast.1",
+        "v2.ability.storm.cast.2",
+        "v2.ability.storm.cast.3"
+      ]
+    },
+    {
+      "requirement": "ability.storm.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.storm.impact.1",
+        "v2.ability.storm.impact.2",
+        "v2.ability.storm.impact.3"
+      ]
+    },
+    {
+      "requirement": "ability.tide.cast",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.tide.cast.1",
+        "v2.ability.tide.cast.2",
+        "v2.ability.tide.cast.3"
+      ]
+    },
+    {
+      "requirement": "ability.tide.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.tide.impact.1",
+        "v2.ability.tide.impact.2",
+        "v2.ability.tide.impact.3"
+      ]
+    },
+    {
+      "requirement": "ability.stone.cast",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.stone.cast.1",
+        "v2.ability.stone.cast.2",
+        "v2.ability.stone.cast.3"
+      ]
+    },
+    {
+      "requirement": "ability.stone.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.stone.impact.1",
+        "v2.ability.stone.impact.2",
+        "v2.ability.stone.impact.3"
+      ]
+    },
+    {
+      "requirement": "ability.venom.cast",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.venom.cast.1",
+        "v2.ability.venom.cast.2",
+        "v2.ability.venom.cast.3"
+      ]
+    },
+    {
+      "requirement": "ability.venom.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.venom.impact.1",
+        "v2.ability.venom.impact.2",
+        "v2.ability.venom.impact.3"
+      ]
+    },
+    {
+      "requirement": "ability.void.cast",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.void.cast.1",
+        "v2.ability.void.cast.2",
+        "v2.ability.void.cast.3"
+      ]
+    },
+    {
+      "requirement": "ability.void.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.void.impact.1",
+        "v2.ability.void.impact.2",
+        "v2.ability.void.impact.3"
+      ]
+    },
+    {
+      "requirement": "ability.sand.cast",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.sand.cast.1",
+        "v2.ability.sand.cast.2",
+        "v2.ability.sand.cast.3"
+      ]
+    },
+    {
+      "requirement": "ability.sand.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.sand.impact.1",
+        "v2.ability.sand.impact.2",
+        "v2.ability.sand.impact.3"
+      ]
+    },
+    {
+      "requirement": "ability.chem.cast",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.chem.cast.1",
+        "v2.ability.chem.cast.2",
+        "v2.ability.chem.cast.3"
+      ]
+    },
+    {
+      "requirement": "ability.chem.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.chem.impact.1",
+        "v2.ability.chem.impact.2",
+        "v2.ability.chem.impact.3"
+      ]
+    },
+    {
+      "requirement": "ability.psionic.cast",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.psionic.cast.1",
+        "v2.ability.psionic.cast.2",
+        "v2.ability.psionic.cast.3"
+      ]
+    },
+    {
+      "requirement": "ability.psionic.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.psionic.impact.1",
+        "v2.ability.psionic.impact.2",
+        "v2.ability.psionic.impact.3"
+      ]
+    },
+    {
+      "requirement": "ability.wild.cast",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.wild.cast.1",
+        "v2.ability.wild.cast.2",
+        "v2.ability.wild.cast.3"
+      ]
+    },
+    {
+      "requirement": "ability.wild.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.ability.wild.impact.1",
+        "v2.ability.wild.impact.2",
+        "v2.ability.wild.impact.3"
+      ]
+    },
+    {
+      "requirement": "battle-role.impact",
+      "distinctPrimaryInputs": 3,
+      "ids": [
+        "v2.battle.impact.1",
+        "v2.battle.impact.2",
+        "v2.battle.impact.3"
+      ]
+    }
+  ],
+  "noListeningClaim": true
+}

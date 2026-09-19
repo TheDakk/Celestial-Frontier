@@ -49,7 +49,8 @@ async function harness(accepted = false) {
 describe('ordinary kit landfall adapter; explicit fake model and storage',()=>{
  it('ordinary accepted Earth loads and retains E without a GPU; changed recipe cannot inherit acceptance',async()=>{
   mocks.probe.mockResolvedValue({supported:false});
-  const h=await harness(true);expect(h.api.enqueue(h.input)).not.toBe('');await tick();await tick();
+  const h=await harness(true);expect(h.api.enqueue(h.input)).not.toBe('');
+  await vi.waitFor(()=>expect(h.api.snapshot()[0]?.status).toBe('ready'));
   expect(mocks.generate).not.toHaveBeenCalled();expect(mocks.runtime).not.toHaveBeenCalled();expect(h.retain).toHaveBeenCalledOnce();
   const png=readFileSync(new URL('../apps/game/public/__local_ai/inputs/earth-rain-e.png',import.meta.url));
   expect(new Uint8Array(await h.retain.mock.calls[0]![1].blob.arrayBuffer())).toEqual(new Uint8Array(png));
@@ -61,7 +62,7 @@ describe('ordinary kit landfall adapter; explicit fake model and storage',()=>{
  });
  it('an altered accepted PNG is refused without inference, retention or replacing an original',async()=>{
   const h=await harness(true);vi.stubGlobal('fetch',vi.fn(async()=>new Response('altered accepted PNG')));
-  h.api.enqueue(h.input);await tick();await tick();expect(h.api.snapshot()[0]?.status).toBe('failed');
+  h.api.enqueue(h.input);await vi.waitFor(()=>expect(h.api.snapshot()[0]?.status).toBe('failed'));
   expect(h.api.snapshot()[0]?.error).toContain('Accepted Earth painting changed');expect(h.retain).not.toHaveBeenCalled();expect(mocks.generate).not.toHaveBeenCalled();
  });
  it('preloads composite without inference; only kit recipe reaches the retained-original queue',async()=>{

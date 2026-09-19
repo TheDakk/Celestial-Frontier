@@ -1,5 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { expect, it, vi } from 'vitest';
+// @ts-expect-error Executable shared instrument owner has no declaration shim.
+import {usesPhoneDock} from '../tools/phone-shell-viewport.mjs';
 
 const source = readFileSync(new URL('../tools/glassmatrix.mjs', import.meta.url), 'utf8');
 const start = source.indexOf('        const compactCharts = ');
@@ -17,7 +19,7 @@ class ProductFault extends Error {}
 type Fault = 'native' | 'instrument' | 'toggle' | 'pressed-restore' | 'scroll-restore' | 'pressed-and-scroll';
 function fixture(width = 320, height = 568, fault?: Fault) {
   const vp = { width, height, dpr: 1, label: 'fixture' };
-  const compact = Function('vp', `${compactDeclaration}return compactCharts;`)(vp) as boolean;
+  const compact = Function('usesPhoneDock', 'vp', `${compactDeclaration}return compactCharts;`)(usesPhoneDock, vp) as boolean;
   let on = true, revealed = false, docLeft = 7, docTop = 9, activations = 0;
   const panel = { scrollLeft: 3, scrollTop: 11 };
   const original = { ...panel, docLeft, docTop };
@@ -51,10 +53,10 @@ function fixture(width = 320, height = 568, fault?: Fault) {
   });
   const recordControls = vi.fn(), log = vi.fn();
   const addOutcome = (...args: unknown[]) => { if (!(args[4] as { ok: boolean }).ok) throw productFailure; };
-  const control = Function('vp', 'evalIn', 'waitFor', 'audit', 'add', 'addOutcome', 'targetFloor', 'recordControls', 'ProductAnswerabilityFinding', 'console',
-    `${routine}return auditChartsControl;`)(vp, evalIn, waitFor, audit, () => {}, addOutcome, 44, recordControls, ProductFault, { log }) as (selector: string, activate: unknown) => Promise<void>;
-  const run = (phase: 'hud' | 'settings') => Function('vp', 'auditChartsControl', 'activateRealSettingsControl', 'evalIn',
-    `return (async()=>{${compactDeclaration}${phase === 'hud' ? hudRoute[0] : settingsRoute[0]}})();`)(vp, control, activate, evalIn) as Promise<void>;
+  const control = Function('usesPhoneDock', 'vp', 'evalIn', 'waitFor', 'audit', 'add', 'addOutcome', 'targetFloor', 'recordControls', 'ProductAnswerabilityFinding', 'console',
+    `${routine}return auditChartsControl;`)(usesPhoneDock, vp, evalIn, waitFor, audit, () => {}, addOutcome, 44, recordControls, ProductFault, { log }) as (selector: string, activate: unknown) => Promise<void>;
+  const run = (phase: 'hud' | 'settings') => Function('usesPhoneDock', 'vp', 'auditChartsControl', 'activateRealSettingsControl', 'evalIn',
+    `return (async()=>{${compactDeclaration}${phase === 'hud' ? hudRoute[0] : settingsRoute[0]}})();`)(usesPhoneDock, vp, control, activate, evalIn) as Promise<void>;
   return { run, wrongRoute: () => control('#dockcharts', activate), audit, activate, recordControls, log, productFailure,
     setCurrent: (value: boolean) => { on = value; }, current: () => on, original,
     scroll: () => ({ ...panel, docLeft, docTop }) };

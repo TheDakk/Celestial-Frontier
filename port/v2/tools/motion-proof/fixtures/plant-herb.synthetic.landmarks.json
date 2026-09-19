@@ -102,5 +102,9 @@
     "sheenTier": "painted",
     "paletteSource": "synthetic"
   },
-  "clipSetId": "plant-herb-v1"
+  "clipSetId": "plant-herb-v1",
+  "habitat": {
+    "realm": "land",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
 }

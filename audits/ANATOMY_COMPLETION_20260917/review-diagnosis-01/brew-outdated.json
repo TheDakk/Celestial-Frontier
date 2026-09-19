@@ -1,0 +1,23 @@
+{
+  "formulae": [
+    {
+      "name": "ffmpeg",
+      "installed_versions": [
+        "9.0.1_1"
+      ],
+      "current_version": "9.0.2",
+      "pinned": false,
+      "pinned_version": null
+    },
+    {
+      "name": "node",
+      "installed_versions": [
+        "26.8.2"
+      ],
+      "current_version": "26.9.0",
+      "pinned": false,
+      "pinned_version": null
+    }
+  ],
+  "casks": []
+}

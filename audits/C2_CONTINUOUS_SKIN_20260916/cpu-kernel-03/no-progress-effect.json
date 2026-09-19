@@ -1,0 +1,465 @@
+{
+  "schema": "cf.arap-orientation-roundoff/v1",
+  "explanation": "Floating-point roundoff changes early termination at the unchanged area floor. Caps, constraints and published vertices are unchanged.",
+  "rows": [
+    {
+      "id": "civet",
+      "changes": [],
+      "totalBefore": 1386,
+      "totalAfter": 1386
+    },
+    {
+      "id": "fox",
+      "changes": [
+        {
+          "atMs": 1507.3175965665237,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.279195475246632,
+            "rmsTargetErrorPx": 0.73089875955886,
+            "maximumProjectionPx": 3.5886198113144623,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999471,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.279195475246632,
+            "rmsTargetErrorPx": 0.73089875955886,
+            "maximumProjectionPx": 3.5886198113144623,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999471,
+            "orientationPasses": 16
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 1601.9527896995708,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.773200336351317,
+            "rmsTargetErrorPx": 0.7491129464771551,
+            "maximumProjectionPx": 1.823018607121766,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999765,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.773200336351317,
+            "rmsTargetErrorPx": 0.7491129464771551,
+            "maximumProjectionPx": 1.823018607121766,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999765,
+            "orientationPasses": 20
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 1500,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 4.9573175090153025,
+            "rmsTargetErrorPx": 0.6928724244565939,
+            "maximumProjectionPx": 2.964118139079353,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999651,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 4.9573175090153025,
+            "rmsTargetErrorPx": 0.6928724244565939,
+            "maximumProjectionPx": 2.964118139079353,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999651,
+            "orientationPasses": 15
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 1508.3333333333333,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.272975133331724,
+            "rmsTargetErrorPx": 0.7299798937894885,
+            "maximumProjectionPx": 3.576350389211024,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999392,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.272975133331724,
+            "rmsTargetErrorPx": 0.7299798937894885,
+            "maximumProjectionPx": 3.576350389211024,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999392,
+            "orientationPasses": 16
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 1516.6666666666667,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 4.772146670500661,
+            "rmsTargetErrorPx": 0.6650545119529672,
+            "maximumProjectionPx": 2.5498912058714405,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999326,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 4.772146670500661,
+            "rmsTargetErrorPx": 0.6650545119529672,
+            "maximumProjectionPx": 2.5498912058714405,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999326,
+            "orientationPasses": 14
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 1600,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.757864463510709,
+            "rmsTargetErrorPx": 0.7464277427453554,
+            "maximumProjectionPx": 1.7853906027763535,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999231,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.757864463510709,
+            "rmsTargetErrorPx": 0.7464277427453554,
+            "maximumProjectionPx": 1.7853906027763535,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999231,
+            "orientationPasses": 19
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 1608.3333333333333,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.531581365569113,
+            "rmsTargetErrorPx": 0.7164583551679344,
+            "maximumProjectionPx": 1.2801317343688943,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999408,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.531581365569113,
+            "rmsTargetErrorPx": 0.7164583551679344,
+            "maximumProjectionPx": 1.2801317343688943,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999408,
+            "orientationPasses": 19
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 2016.6666666666667,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 7.193915520553624,
+            "rmsTargetErrorPx": 0.8454904746636281,
+            "maximumProjectionPx": 2.036985129437627,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999307,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 7.193915520553624,
+            "rmsTargetErrorPx": 0.8454904746636281,
+            "maximumProjectionPx": 2.036985129437627,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999307,
+            "orientationPasses": 17
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 2025,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 6.478355769921303,
+            "rmsTargetErrorPx": 0.8283073269932393,
+            "maximumProjectionPx": 1.659631451304131,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999517,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 6.478355769921303,
+            "rmsTargetErrorPx": 0.8283073269932393,
+            "maximumProjectionPx": 1.659631451304131,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999517,
+            "orientationPasses": 17
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 2266.6666666666665,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 6.287826329265347,
+            "rmsTargetErrorPx": 0.6401951908635152,
+            "maximumProjectionPx": 1.4808123076893807,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.1199999999999973,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 6.287826329265347,
+            "rmsTargetErrorPx": 0.6401951908635152,
+            "maximumProjectionPx": 1.4808123076893807,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.1199999999999973,
+            "orientationPasses": 16
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 2291.6666666666665,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 6.5529026270704325,
+            "rmsTargetErrorPx": 0.6661993141044165,
+            "maximumProjectionPx": 2.1377454419779975,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999644,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 6.5529026270704325,
+            "rmsTargetErrorPx": 0.6661993141044165,
+            "maximumProjectionPx": 2.1377454419779975,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999644,
+            "orientationPasses": 16
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 2333.3333333333335,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 6.667568658682356,
+            "rmsTargetErrorPx": 0.6834549936894734,
+            "maximumProjectionPx": 2.3408997512003378,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999802,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 6.667568658682356,
+            "rmsTargetErrorPx": 0.6834549936894734,
+            "maximumProjectionPx": 2.3408997512003378,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999802,
+            "orientationPasses": 17
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 2341.6666666666665,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 6.211951766952699,
+            "rmsTargetErrorPx": 0.6324490756378989,
+            "maximumProjectionPx": 1.1651122775622917,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999755,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 6.211951766952699,
+            "rmsTargetErrorPx": 0.6324490756378989,
+            "maximumProjectionPx": 1.1651122775622917,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999755,
+            "orientationPasses": 16
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 3008.3333333333335,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.072560198981754,
+            "rmsTargetErrorPx": 0.693611232310865,
+            "maximumProjectionPx": 3.2987960934041385,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.1199999999999936,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.072560198981754,
+            "rmsTargetErrorPx": 0.693611232310865,
+            "maximumProjectionPx": 3.2987960934041385,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.1199999999999936,
+            "orientationPasses": 11
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 7233.333333333333,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 4.777356634052235,
+            "rmsTargetErrorPx": 0.5128120072122323,
+            "maximumProjectionPx": 1.8197095959026546,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999453,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 4.777356634052235,
+            "rmsTargetErrorPx": 0.5128120072122323,
+            "maximumProjectionPx": 1.8197095959026546,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999453,
+            "orientationPasses": 16
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 7241.666666666667,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.218117635326388,
+            "rmsTargetErrorPx": 0.5499837679240922,
+            "maximumProjectionPx": 2.8915554821366705,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999442,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.218117635326388,
+            "rmsTargetErrorPx": 0.5499837679240922,
+            "maximumProjectionPx": 2.8915554821366705,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999442,
+            "orientationPasses": 18
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 7250,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.890802240023491,
+            "rmsTargetErrorPx": 0.5834268178971753,
+            "maximumProjectionPx": 3.7709201445104776,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999628,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.890802240023491,
+            "rmsTargetErrorPx": 0.5834268178971753,
+            "maximumProjectionPx": 3.7709201445104776,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999628,
+            "orientationPasses": 20
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 7308.333333333333,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.960037087697899,
+            "rmsTargetErrorPx": 0.6157233722609895,
+            "maximumProjectionPx": 3.603074083642515,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999346,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.960037087697899,
+            "rmsTargetErrorPx": 0.6157233722609895,
+            "maximumProjectionPx": 3.603074083642515,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999346,
+            "orientationPasses": 20
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 7316.666666666667,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.379794403519413,
+            "rmsTargetErrorPx": 0.5991642507923491,
+            "maximumProjectionPx": 2.7870278583031,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999757,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 5.379794403519413,
+            "rmsTargetErrorPx": 0.5991642507923491,
+            "maximumProjectionPx": 2.7870278583031,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999757,
+            "orientationPasses": 19
+          },
+          "publishedBytesIdentical": true
+        },
+        {
+          "atMs": 7325,
+          "before": {
+            "rigid": false,
+            "maximumTargetErrorPx": 4.938457561972383,
+            "rmsTargetErrorPx": 0.5875026912342571,
+            "maximumProjectionPx": 1.9976128821420172,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999433,
+            "orientationPasses": 24
+          },
+          "after": {
+            "rigid": false,
+            "maximumTargetErrorPx": 4.938457561972383,
+            "rmsTargetErrorPx": 0.5875026912342571,
+            "maximumProjectionPx": 1.9976128821420172,
+            "flippedTriangles": 0,
+            "minimumAreaRatio": 0.11999999999999433,
+            "orientationPasses": 17
+          },
+          "publishedBytesIdentical": true
+        }
+      ],
+      "totalBefore": 2548,
+      "totalAfter": 2407
+    },
+    {
+      "id": "procedural",
+      "changes": [],
+      "totalBefore": 1210,
+      "totalAfter": 1210
+    }
+  ]
+}

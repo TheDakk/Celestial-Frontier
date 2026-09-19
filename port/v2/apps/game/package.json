@@ -33,8 +33,7 @@
     "@cf/domain-ecology": "*",
     "@cf/domain-biome-profile": "*",
     "@cf/domain-surveyphrases": "*",
-    "gsap": "3.15.0",
-    "@pixi/particle-emitter": "5.0.10"
+    "gsap": "3.15.0"
   },
   "devDependencies": {
     "vite": "8.2.0"

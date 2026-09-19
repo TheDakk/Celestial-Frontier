@@ -1,0 +1,28 @@
+{
+  "schema": "cf.seam-oracle/v1",
+  "render": "disc-only-strike.png",
+  "record": "civet.landmarks.json",
+  "size": {
+    "width": 1254,
+    "height": 1254
+  },
+  "opaquePixels": 63275,
+  "closeRadiusPx": 25.08,
+  "discRadiusPx": 75.24,
+  "gapPixelsInsideEnvelope": 9247,
+  "perJoint": {
+    "earFarTip": {
+      "pivot": [
+        974,
+        296
+      ],
+      "seamPixels": 1568,
+      "bounds": {
+        "x": 934,
+        "y": 227,
+        "width": 66,
+        "height": 143
+      }
+    }
+  }
+}

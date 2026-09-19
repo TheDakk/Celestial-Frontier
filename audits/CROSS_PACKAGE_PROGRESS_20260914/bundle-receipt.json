@@ -1,0 +1,1237 @@
+{
+  "schema": "cf.review-bundle/v1",
+  "source": {
+    "schema": "cf.review-source-snapshot/v1",
+    "base": "b50668b0",
+    "head": "61512b3a92c25582167e6f7b5dbcf11f5f80eec9",
+    "headIsSigned": true,
+    "sourcePatchSha256": "e10f4dc48f2e33af64565ace503a28d08b59ffbdbfce1ca8b4cf6c6bf11968ed",
+    "includesUncommittedChanges": true,
+    "nativeEvidenceHead": "61512b3a92c25582167e6f7b5dbcf11f5f80eec9",
+    "scope": "Review snapshot only; no kit, media, Git or runtime mutation. Not every historical asset is bundled."
+  },
+  "limitBytes": 30000000,
+  "targetBytes": 28000000,
+  "verifiedCrcAndEveryEntrySha256": true,
+  "archives": [
+    {
+      "file": "celestial-cross-package-review-20260914-part-01.zip",
+      "bytes": 26585653,
+      "sha256": "de61b0b87dcfc58c3c501e67c5251665e2c038077c5d7d9aed9a2d27da8e752e",
+      "entries": [
+        {
+          "path": "START_HERE.md",
+          "bytes": 329,
+          "sha256": "af1571b0e7eebddb190a0f5ec4811124eb5e40033745459a82a18dbcb2cead86"
+        },
+        {
+          "path": "ART_DIRECTION.md",
+          "bytes": 178517,
+          "sha256": "f6e1d5ec5b7344d69dfc81747f05fa4abe8c139d82ed24a82348505523764186"
+        },
+        {
+          "path": "ART_KIT.md",
+          "bytes": 50155,
+          "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c"
+        },
+        {
+          "path": "AUDIO.md",
+          "bytes": 75234,
+          "sha256": "1781be8cc4320857dd160051a5178a72b57f5b567907bdd5d0db670066c924e2"
+        },
+        {
+          "path": "CREATURE_ANIMATION.md",
+          "bytes": 16975,
+          "sha256": "bae9b9b83354a257bff8925b04291d702da774999846e5e9840d459322d436c3"
+        },
+        {
+          "path": "LOCAL_AI_GENERATION.md",
+          "bytes": 7842,
+          "sha256": "5759560188597b11a7b9163ff3e6880a791efbb41ace12a1222c40c5d2c292fa"
+        },
+        {
+          "path": "MOTION_KIT.md",
+          "bytes": 16199,
+          "sha256": "a2f1b55fcbcb82d15d8b6667137892aa42bb44338da2d04519ebcf34a6e0829e"
+        },
+        {
+          "path": "PARALLEL_GIT_PROTOCOL.md",
+          "bytes": 25402,
+          "sha256": "4cbcec038d1605ac84142373ae82d57beae35517ad2b0d1cc5ba769954780aac"
+        },
+        {
+          "path": "ROADMAP.md",
+          "bytes": 5618,
+          "sha256": "239aa112a688d62f3d70841c37be096cfbf0b812505b2dadba57af12492771cd"
+        },
+        {
+          "path": "SOUND_KIT.md",
+          "bytes": 11435,
+          "sha256": "f74514cb967ea474b994a0c69ca0437cd7b35b6bc595523b54dc625fdeb0f5b0"
+        },
+        {
+          "path": "UI_TOOLCHAIN.md",
+          "bytes": 35112,
+          "sha256": "efbdd7caa1ee58945c28ba632d316a0bf463004620e4d87344d589bb69ed38c9"
+        },
+        {
+          "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+          "bytes": 3449,
+          "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4"
+        },
+        {
+          "path": "audits/ART_KIT_CONTACT_REVISION_20260912/prepared/compiler-final/earth-temperate-prompt.txt",
+          "bytes": 6217,
+          "sha256": "330d2b8dd758982dec9f39f99e2fe4e99f3be74adf2e45e309c03d757c1b46a4"
+        },
+        {
+          "path": "audits/C2_BOUNDED_REPAIR_20260913/candidate-01/fox.landmarks.json",
+          "bytes": 3916,
+          "sha256": "8155226f9a6653e56d4a3d54ffef748ea561cf982c8da3e340044d48b6d2b2fe"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/FAMILY_COVERAGE.md",
+          "bytes": 3844,
+          "sha256": "bfa9baa34663773ce3ac3022b4653e2ff46109b0970201389e435a60aff02b74"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/README.md",
+          "bytes": 14785,
+          "sha256": "53481fed4413c84c6ef392184a006bf13d92b21cbd9d0707bf6eab172bdbdee2"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet-ink/atlas/civet.json",
+          "bytes": 15662,
+          "sha256": "e64af764133df9b68363a8f49e20d3c571f54c6e7cb1ce72c6a5dbf0eeed8768"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet-ink/atlas/receipt.json",
+          "bytes": 5754,
+          "sha256": "cb8e82cbc01acc2cc67322093e89e11c4869e3c08ae20d064126fe601c772bb8"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/fox-ink/atlas/fox.json",
+          "bytes": 15692,
+          "sha256": "6aa6ae1b66b1603fd0f91aa6095e0c999e8f0f36d6ed16942ba27bda8c7e9524"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/fox-ink/atlas/receipt.json",
+          "bytes": 5752,
+          "sha256": "84cae68095ed8b4942d4f0a0f54d11f555d64d99016f3eaadad8cd4bbabda506"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/procedural-ink/atlas/procedural.json",
+          "bytes": 14296,
+          "sha256": "49f4e7157256f14d50d65026305ddcaba637a61d1e962c94d26705fefde1a75c"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/procedural-ink/atlas/receipt.json",
+          "bytes": 5371,
+          "sha256": "50f1b6ed5cc71ac34666d2d1f80a3d592d82686c6fe3b2e9bba7b85fd195fe9c"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/checks.json",
+          "bytes": 516,
+          "sha256": "00f7660403149592e31fbb9c016f0c6f36e8ba81c05275e54843cdf22dc568d5"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/civet.binding.json",
+          "bytes": 2769064,
+          "sha256": "f6d8676b04f4407a477468ab6ab8022017b910d4a7db33032d92f5193a5eba7d"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/civet.receipt.json",
+          "bytes": 2763,
+          "sha256": "599f67b515d9f69446907f9c348fed3c99be19d7ae1d4befddb5273207391f9e"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/fox.binding.json",
+          "bytes": 3232055,
+          "sha256": "e9088716506f3eab28f119920bc6bebdbf2e61717a900cf9603af3e9dddf12b1"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/fox.receipt.json",
+          "bytes": 2843,
+          "sha256": "30bd2d391795dfd8bc314a39619e50bc070ec85d74a8a364eb97d49137a66fdb"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/junction-source-verification.json",
+          "bytes": 900,
+          "sha256": "a3740419780d3eee074b77457f151cfc32809ab075dcf50b00253f74755e0eda"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/manifest.json",
+          "bytes": 9954,
+          "sha256": "f41c2ccab2b161b3ea1702cd68531ba8c8ff9655681f4060e1f336675b055cf2"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/opaque-source-revision.json",
+          "bytes": 302,
+          "sha256": "c9d09dc3129d0f2f08b9eeba1b1fb786bce82a0b60075c7e6710e24fa4b6cf09"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/procedural.binding.json",
+          "bytes": 1054222,
+          "sha256": "6807ab3976e70f45e10928e62c789e148ae260811ee1c206f5c36651fb7cced3"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/procedural.receipt.json",
+          "bytes": 2779,
+          "sha256": "f7adcfda649b4a33f0f94b58e1ba9ecb7c462296a35bda0eb0de723aa8452894"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json",
+          "bytes": 2844520,
+          "sha256": "62ed18941dcb7f7b1221dfbcf855979c557c7d273b487c38aba2278fb1bd918d"
+        },
+        {
+          "path": "audits/C2_PARTS_ATLAS_20260913/native-painter-parts-03/record.json",
+          "bytes": 5327,
+          "sha256": "9d0ae1874739d971383b50301a9153785f1b4f4f119244466b4b26aac74634be"
+        },
+        {
+          "path": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+          "bytes": 4720,
+          "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+        },
+        {
+          "path": "audits/CROSS_PACKAGE_PROGRESS_20260914/README.md",
+          "bytes": 7923,
+          "sha256": "17daf9dea398ae66fb191fd8afce2bfdd47c8867aee0808d62de6e938697bdac"
+        },
+        {
+          "path": "audits/CROSS_PACKAGE_PROGRESS_20260914/REVIEW_PROMPT.md",
+          "bytes": 4919,
+          "sha256": "19d2ffbd4bc0d30d426342bb3d8179e3e9a1fa2dc070b2a70cc552086561f7a7"
+        },
+        {
+          "path": "audits/CROSS_PACKAGE_PROGRESS_20260914/arena-intake.json",
+          "bytes": 2875,
+          "sha256": "f3ea37a05e8126b46caf0cb2cf4be9dbd47fe91dbe1e29798fa4d284dd5198b5"
+        },
+        {
+          "path": "audits/CROSS_PACKAGE_PROGRESS_20260914/arena-manifest.json",
+          "bytes": 1455,
+          "sha256": "71ac43cc325c3b1b8929ddd19857072d749c48ae6ec290df2766152f0628fb95"
+        },
+        {
+          "path": "audits/CROSS_PACKAGE_PROGRESS_20260914/checks.json",
+          "bytes": 2840,
+          "sha256": "81f51460f7f52f67174f1f0044f1a0d3866534c8d2f2eb63bfe698544d89ff7a"
+        },
+        {
+          "path": "audits/CROSS_PACKAGE_PROGRESS_20260914/checks/tests.log.gz",
+          "bytes": 5298,
+          "sha256": "45d8592ca0b60aacf600554d9ea6b2da3165ab0ce9d694023552d24b19df1acb"
+        },
+        {
+          "path": "audits/CROSS_PACKAGE_PROGRESS_20260914/checks/typecheck.log.gz",
+          "bytes": 99,
+          "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8"
+        },
+        {
+          "path": "audits/CROSS_PACKAGE_PROGRESS_20260914/checks/validate.log.gz",
+          "bytes": 708,
+          "sha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736"
+        },
+        {
+          "path": "audits/CROSS_PACKAGE_PROGRESS_20260914/package-review.py",
+          "bytes": 6686,
+          "sha256": "9e2216344b38a703b9e0c4c17b5a07352198e595d91ab25925cddb7d7430ebac"
+        },
+        {
+          "path": "audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md",
+          "bytes": 11289,
+          "sha256": "4f62c386488d1725e70500012ae8b6ebf8113686ebc737273ea6568443944cf6"
+        },
+        {
+          "path": "audits/C_LANE_BATCH_REVIEW_20260913/REVIEW_PROMPT.md",
+          "bytes": 4872,
+          "sha256": "3bde748aa4b64483ff298a985788e5b2be9a1bdd03db24cb79c61ad652587adb"
+        },
+        {
+          "path": "audits/C_LANE_BATCH_REVIEW_20260913/art-intake.json",
+          "bytes": 6505,
+          "sha256": "1c17b3694cdef9939760b315633250fe7a42e107f842357d9a0b37a1f2d84a09"
+        },
+        {
+          "path": "audits/C_LANE_BATCH_REVIEW_20260913/baseline.json",
+          "bytes": 15099,
+          "sha256": "8d2e3eb16f5ffa452686db589be6c6a6c46e9fd973c183958907898a16ad3a75"
+        },
+        {
+          "path": "audits/C_LANE_BATCH_REVIEW_20260913/final-checks.json",
+          "bytes": 1068,
+          "sha256": "7c92ccbaed47dc6724e87dc29b4a71489ec74ca34da68aff7131d50a1d8a4c6d"
+        },
+        {
+          "path": "audits/C_LANE_BATCH_REVIEW_20260913/input-manifest.json",
+          "bytes": 14912,
+          "sha256": "cc708bebbfcbb58a5609e03f487615230f5a26e46514b0c765f4636245711021"
+        },
+        {
+          "path": "audits/C_LANE_BATCH_REVIEW_20260913/parts-byte-verification.json",
+          "bytes": 726,
+          "sha256": "554c4230f26a635a687cd48c9797fddfb00e35dea3e548302aebc46523b2d8b4"
+        },
+        {
+          "path": "audits/C_LANE_BATCH_REVIEW_20260913/pruning-inventory.json",
+          "bytes": 3693,
+          "sha256": "99794bde19732d159372bcf217983a796c5bf737cee0f09b8e833d3203e082e4"
+        },
+        {
+          "path": "audits/C_LANE_BATCH_REVIEW_20260913/seam-oracle-counterexample.json",
+          "bytes": 768,
+          "sha256": "593c6fbc2effb268dadc0e891f00e0e0437b6a85114bcd1aa2dd871e9db8832e"
+        },
+        {
+          "path": "audits/C_LANE_REPAIRS_20260914/README.md",
+          "bytes": 5810,
+          "sha256": "e8b0318c91d77bfbbf5d4eb2d1b3022c41f91daf8f215f8ed3a74e120cde21f6"
+        },
+        {
+          "path": "audits/C_LANE_REPAIRS_20260914/authorities-after.json",
+          "bytes": 6117,
+          "sha256": "0bd811d56ed24f9e2e1f89d68db6797c4d8d6d54854e76e06a590d70bcad209d"
+        },
+        {
+          "path": "audits/C_LANE_REPAIRS_20260914/authorities-before.json",
+          "bytes": 6444,
+          "sha256": "1f09606cd751855464e9741ada193414592a32cd2d6702bf9d1610a438e9abf7"
+        },
+        {
+          "path": "audits/C_LANE_REPAIRS_20260914/authorities-observed.json",
+          "bytes": 6532,
+          "sha256": "31b9ebdbb2831a1d0dc5d279798b4e0dc400fa10d7f304a4c3f78e31763f52ac"
+        },
+        {
+          "path": "audits/C_LANE_REPAIRS_20260914/authority-refresh.json",
+          "bytes": 5709,
+          "sha256": "44ccf68973cfa0673683cb8447ccf79f42b63af5586f5a7014cfdc7bf68310bd"
+        },
+        {
+          "path": "audits/C_LANE_REPAIRS_20260914/checks.json",
+          "bytes": 1119,
+          "sha256": "6e4df75760a900365d38e1305fcabc81aa506f63035e995de4e1153cd72c452d"
+        },
+        {
+          "path": "audits/C_LANE_REPAIRS_20260914/cut-seams.json",
+          "bytes": 12120,
+          "sha256": "eefe756100372e5c8da03ac6f9263148736478fe59b423c06d9ad0f67af47749"
+        },
+        {
+          "path": "audits/C_LANE_REPAIRS_20260914/dependency-delta.json",
+          "bytes": 64577,
+          "sha256": "acada008f898b071d7f391b76cf3b6904ddb4b0f4108ee49bb493f54d423925e"
+        },
+        {
+          "path": "audits/C_LANE_REPAIRS_20260914/signing-attempts.json",
+          "bytes": 781,
+          "sha256": "b367d0d8ef15287c36518bd9c1bdb9837e79a315bae15e96077fbca4d41e819a"
+        },
+        {
+          "path": "audits/C_SYSTEMS_CONTINUATION_20260914/README.md",
+          "bytes": 4513,
+          "sha256": "b64bcbe364bb1bc8542c50f35e7efc2a74b7675a6cd301fb71932b9762e1543a"
+        },
+        {
+          "path": "audits/C_SYSTEMS_CONTINUATION_20260914/REVIEW_PROMPT.md",
+          "bytes": 4919,
+          "sha256": "19d2ffbd4bc0d30d426342bb3d8179e3e9a1fa2dc070b2a70cc552086561f7a7"
+        },
+        {
+          "path": "audits/C_SYSTEMS_CONTINUATION_20260914/art-batch-report.json",
+          "bytes": 5618,
+          "sha256": "96e857282eb5f988d145ed8ef2ca16d0fb199c3ee7f68444fbfc09961e58d982"
+        },
+        {
+          "path": "audits/C_SYSTEMS_CONTINUATION_20260914/art-batch.json",
+          "bytes": 3057,
+          "sha256": "18326ce643b32d3022b0db152e02532ed70a48462d99668c6d9bb751ccdca71c"
+        },
+        {
+          "path": "audits/C_SYSTEMS_CONTINUATION_20260914/art-plan.json",
+          "bytes": 1028,
+          "sha256": "2f4fca748e8f7565aef29a07c3bd501f3589078b9fef82b5c6391bb00ea5470d"
+        },
+        {
+          "path": "audits/C_SYSTEMS_CONTINUATION_20260914/authorities-observed.json",
+          "bytes": 6204,
+          "sha256": "914385339eab1a9b8152ca6d13cc836228f3f2dd065e98203ca55d01b37b4176"
+        },
+        {
+          "path": "audits/C_SYSTEMS_CONTINUATION_20260914/authority-refresh.json",
+          "bytes": 2676,
+          "sha256": "1d1a437c9e68771744407e255dfce215e0621d7fc1af171ecb24595e3cc832c4"
+        },
+        {
+          "path": "audits/C_SYSTEMS_CONTINUATION_20260914/checks.json",
+          "bytes": 4118,
+          "sha256": "238fc46ce5a6c6d0df68fb89c1c62f31b76dcc1babcde2ed953e46b06e50324a"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/CONTRACTS.md",
+          "bytes": 4905,
+          "sha256": "b705bc5d452196150ad7ff2172497732ad0f342dd7d5805c3a1a991739286044"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-A1.md",
+          "bytes": 7533,
+          "sha256": "fb5c3a316b82c6d2a95a84ca2ead482c1fd50c2025d04e10d94cfdbb3c480c88"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-A11.md",
+          "bytes": 11797,
+          "sha256": "7a517d00381eae73dcc82a93d9ac471e8618cb940cf5e9a74f676aeff79ad533"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-A2.md",
+          "bytes": 7407,
+          "sha256": "0c9024f60d66539d9e7e5c0640123d28cc4f5301ce09ca671eff686cd6ea5c4e"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-A3.md",
+          "bytes": 9920,
+          "sha256": "707d00fa9415cc18ba12dfb7fb5e8d0d0ceb0b10125d763d9067ddca7f415f42"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-A4.md",
+          "bytes": 7243,
+          "sha256": "a2d3ee1e8bbf0f4abcba1d352945fa63483f233d9128a74332cc57d6fceef66c"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-A5.md",
+          "bytes": 6059,
+          "sha256": "13b6cc7e26cb0cf529518160bcddea08edf37596f21502da0e5f13a49c3b40bc"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-A6-defects.md",
+          "bytes": 12330,
+          "sha256": "9b06011a0527ce4dd20b390117d1eda59395afe66e69cdf929b809363e043e3a"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-A6-wiring.md",
+          "bytes": 11301,
+          "sha256": "31dd8e5ec16c4ad1306c31e625f6a371e789657b73cf9cea9e0701d55eca15c7"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-A7.md",
+          "bytes": 7090,
+          "sha256": "65449b3d52230bf1067291e7141168e1e712d2101e7c8f2235dd0a4e1de3eadf"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-B.md",
+          "bytes": 19901,
+          "sha256": "50b7a520192795f26b4c8a885c3aa1f4f71c2f9fd5361443e767ce5cad4185ef"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-CLAUDE-PACK2.md",
+          "bytes": 1289,
+          "sha256": "3cd0acf28d5e5c84c1e18d6241160ac5773f3d765e1ee22e5fc83d4888a62163"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-CLAUDE-PACKET.md",
+          "bytes": 924,
+          "sha256": "c67ae8c28ec7abc018ef1451279e929d48c7a0174b2aa71be22c152bfa190c07"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-CODEX-PRE-BANDS.md",
+          "bytes": 7798,
+          "sha256": "86de524fc84f61745c2204b7de03e1d3ac89b8fb353d2997e885b7c20ce07fc9"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-CODEX-PRE-PACK3.md",
+          "bytes": 11579,
+          "sha256": "1a1d883333e7fbcaa967a4c3059f5dd53247659993d6d5ec355d46a2d3800f3f"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-CODEX-PRE-PACK4.md",
+          "bytes": 5637,
+          "sha256": "90be905c05f25a729d4beb7132118a3448baf5a4df704ca6762ac1c14ab5cdbc"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-CODEX-PRE-PACK5.md",
+          "bytes": 6888,
+          "sha256": "2999418c3384dc68c4c3b82f4db66a43af2595fceee65f833cae93632a4e8346"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-CODEX-PRE-PACK6.md",
+          "bytes": 5701,
+          "sha256": "6f976505ab3baebaaa10e8838c418e4e220b93e4874d65c69097663bc188fefc"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG-CODEX-PRE-PACK7.md",
+          "bytes": 13088,
+          "sha256": "5d23883c6e9328258d193c59143391716dc1db76e137829b66dd9f16522c99f6"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/LOG.md",
+          "bytes": 30080,
+          "sha256": "b782537780d405b13e3458da746ac7cd4694d20375ae26c5c5076f6f628ae797"
+        },
+        {
+          "path": "audits/LONG_SESSION_20260913/WORK_ORDER.md",
+          "bytes": 6361,
+          "sha256": "48adedb57539b242e7f76b003b14a9021b0bcd422699afb2d601224b46825151"
+        },
+        {
+          "path": "celestial-frontier-codebase-reference.md",
+          "bytes": 525854,
+          "sha256": "f779c104476ad50577dd94fa70221b7f81d66bd51f41f0677344945140a128be"
+        },
+        {
+          "path": "port/v2/README.md",
+          "bytes": 444655,
+          "sha256": "c9aae3ceab2be98cbef149842ca1365e9c0190145ff7e347a4474969b786cd7d"
+        },
+        {
+          "path": "port/v2/apps/game/src/ai-landfall-originals.ts",
+          "bytes": 9881,
+          "sha256": "e5815f228d54ac6cfa976cefdd89ffa055d971fab84c07bf41e2dc1e97cbc3ec"
+        },
+        {
+          "path": "port/v2/apps/game/src/creature-rig-frame.test.ts",
+          "bytes": 1735,
+          "sha256": "f2af9039fe1201157758636dc35047fa04ba1cacd1c336d6d984115dcb303f86"
+        },
+        {
+          "path": "port/v2/apps/game/src/creature-rig-frame.ts",
+          "bytes": 983,
+          "sha256": "c2af3fcb1f87014bbc44991624976506be951cea0a68da3c014789b4a25a6b4e"
+        },
+        {
+          "path": "port/v2/apps/game/src/creature-rig.test.ts",
+          "bytes": 11433,
+          "sha256": "68726691c0d7c4ab0b89f1c2b4aabd7ccbdcccc6ad443c4f8618a5e3434a921b"
+        },
+        {
+          "path": "port/v2/apps/game/src/creature-rig.ts",
+          "bytes": 11795,
+          "sha256": "9d65efd4adc9e2a93699f17ba172566c6d61645475ddf8f8b3666a773f71354c"
+        },
+        {
+          "path": "port/v2/apps/game/src/landfall-content-hash.ts",
+          "bytes": 2292,
+          "sha256": "29b9e762561d03953d1619e0287e31d211684594592720f1469202c18bb55fb7"
+        },
+        {
+          "path": "port/v2/apps/game/src/local-ai-game.ts",
+          "bytes": 14457,
+          "sha256": "414a1da2d1422fcb5bd18a1ad2a194e8c94aa20dc824e714f418c1e8f9f24555"
+        },
+        {
+          "path": "port/v2/apps/game/src/main.ts",
+          "bytes": 868218,
+          "sha256": "5fa81666fc5a9e9b13bb9e834b0439864e66212853ba6d0b6b7a1e5709998c31"
+        },
+        {
+          "path": "port/v2/apps/game/src/release-content.ts",
+          "bytes": 158920,
+          "sha256": "dc9807b9e44f18a3c4b1490df7238c6b3def4d2c1c59c1fca232389eb515096d"
+        },
+        {
+          "path": "port/v2/budgets/compendium-memory-v1.json",
+          "bytes": 175661,
+          "sha256": "b808629ace23c36f2fc4e31e57280b715dd20b03a39c677998e41e0ea86a189a"
+        },
+        {
+          "path": "port/v2/package.json",
+          "bytes": 3254,
+          "sha256": "c55abed7f6669694d53e2e756e6f743ecf9a88228eb8a1702d19e9ebc732efc0"
+        },
+        {
+          "path": "port/v2/tests/ai-landfall-originals.test.ts",
+          "bytes": 11255,
+          "sha256": "1725fe4b3afd3ba5beefa4677bea06b50d4ff860a55005a271be6f9ac5bd16f4"
+        },
+        {
+          "path": "port/v2/tests/app-chrome-main-wiring.test.ts",
+          "bytes": 23994,
+          "sha256": "18c41397a3582cc67ae8cd63ab196d80743fcdac24898e4fe1a78aba270a88ea"
+        },
+        {
+          "path": "port/v2/tests/compendium-budget.test.ts",
+          "bytes": 146461,
+          "sha256": "c15156a151b3f33bf3b8c051b38820d6ffa0ff2f8ff8c1484fed2f604f282dcc"
+        },
+        {
+          "path": "port/v2/tests/current-producer-authorities.test.ts",
+          "bytes": 8393,
+          "sha256": "4e23680530cdd8a153a0db16662434bf720f55e5b8882bbe4b668377bce50b43"
+        },
+        {
+          "path": "port/v2/tests/evidence-build-runtime.test.ts",
+          "bytes": 12565,
+          "sha256": "ba9222af2c71c6aefde26710d96a62760b2aa71cf016ac5f5e380267a0d7fe8a"
+        },
+        {
+          "path": "port/v2/tests/evidence-chain-tools.test.ts",
+          "bytes": 41269,
+          "sha256": "f587db32420e82e3729636250058cbf8f165d94b587295a119968129a5c47844"
+        },
+        {
+          "path": "port/v2/tests/exceptional-crafting-evidence-contract.test.ts",
+          "bytes": 23544,
+          "sha256": "f1e91d58d2a8fa313f209f87617d5bc8d36c59e4b996ca8c29656d388f08ce63"
+        },
+        {
+          "path": "port/v2/tests/glass-charts-control-route.test.ts",
+          "bytes": 7264,
+          "sha256": "177307820750be8d1533d540c96394ba351406a8df67e6edf78b102e1fa8eb26"
+        },
+        {
+          "path": "port/v2/tests/guide-release.test.ts",
+          "bytes": 220874,
+          "sha256": "e7f1ac9bab12e825b2282146713c96fa02f872901a8bcbcf9b42d1265846c606"
+        },
+        {
+          "path": "port/v2/tests/landfall-content-hash.test.ts",
+          "bytes": 2643,
+          "sha256": "767bee35534cca8a997fe3f20ff60af4f8c32397241e1da8905f1feb5eb15d1d"
+        },
+        {
+          "path": "port/v2/tests/local-ai-game.test.ts",
+          "bytes": 10961,
+          "sha256": "aa7058ac1fe4b5199dd9cfec0ec3a61421abe0b89a48361b7117bc4b01651eed"
+        },
+        {
+          "path": "port/v2/tests/notification-history.test.ts",
+          "bytes": 16772,
+          "sha256": "ca2cdbcd054953fa61c52ce032e5bc2ad9aa99391704c01c61cb40058075163c"
+        },
+        {
+          "path": "port/v2/tests/npm-build-portability.test.ts",
+          "bytes": 6364,
+          "sha256": "2ccf7f374168d6bab432bf1434ed8d20618ffdc03aafc5a6759adb9f5e0017a6"
+        },
+        {
+          "path": "port/v2/tests/painted-earth-mount-ownership.test.ts",
+          "bytes": 17789,
+          "sha256": "a371227926608737f41a5b66473f753daba2797968efd6c0fb6dfd8d34c9947f"
+        },
+        {
+          "path": "port/v2/tests/pwa-offline.test.ts",
+          "bytes": 53908,
+          "sha256": "1197fea0f02d98e7911d5a5acefc0d06c0cb8f2134bbe84123f765a67615bb3d"
+        },
+        {
+          "path": "port/v2/tests/review-runner-safety.test.ts",
+          "bytes": 4523,
+          "sha256": "9bc6462a3884b59694e669c6f9faa8213f68ffe10e0592cc1a0688aa140e043e"
+        },
+        {
+          "path": "port/v2/tests/review-visual-contracts.test.ts",
+          "bytes": 3489,
+          "sha256": "ada70842774651d29c39bba977830aeacd05f28992addd1beb33ffda59f2b960"
+        },
+        {
+          "path": "port/v2/tests/slicesmoke-sixth-red-contract.test.ts",
+          "bytes": 212030,
+          "sha256": "1e67edb5b45bfab19d7ac9a46fd77c1df50ea4bf9a078790f2de840d361022c4"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/README.md",
+          "bytes": 7347,
+          "sha256": "4bcef831bc275bb4d3eacd2ade509b65db36cb451948c1d8656183988fdc30bb"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/arena-set.mjs",
+          "bytes": 4568,
+          "sha256": "ea714c18b456ad40a0f4d64aa4552e8b3518a3dbb95f215c0678b479f5ec3e21"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/arena-set.test.mjs",
+          "bytes": 3345,
+          "sha256": "d2434518d289af85e9fd88600dec983ae3335c90242787f421b1fcb55cbb4465"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/art-batch.mjs",
+          "bytes": 2144,
+          "sha256": "80d7228d88aa896dab26d7b168d931eb7ecae3c0cc8eadf276a7613fd4c95a80"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/art-batch.test.mjs",
+          "bytes": 2427,
+          "sha256": "2105de117e47a9349d7868ff8f86b8286f79216883a7af3425b48182c0dcc879"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/audio-export.mjs",
+          "bytes": 6724,
+          "sha256": "7f78b1b07d30301e672022925629a0f5dcbe182ee2d18d826bd71a50716c04b5"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/audio-export.test.mjs",
+          "bytes": 4713,
+          "sha256": "cc6c8c48937de9b2924ad71412bd1aea884da201ae91d5de427ad2c2c041ad6a"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/contracts.mjs",
+          "bytes": 5385,
+          "sha256": "1dfb26faa4ebb27c7457bf6756595bd71d3a7e045e0793a832393093e601ec6f"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/contracts.test.mjs",
+          "bytes": 3019,
+          "sha256": "fa587d5b8675fad2652d42914d1fcf9f790f96d21ff0a96e25dfa6688088f4b8"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/export-audio.mjs",
+          "bytes": 589,
+          "sha256": "8a022a4965bc69b450e0c8f5ad2b4c0b76803912c15843f8c971f185612ccfbb"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/inspect-arena.mjs",
+          "bytes": 413,
+          "sha256": "8b15bc772af58ce8edcf86e90c2d4e181cf9dbb3a8473c1286ebac2950d48d01"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/inspect-batch.mjs",
+          "bytes": 420,
+          "sha256": "3bd727cd6aac663c7f7e2ce4f4d64dff7579a9aeb5b66669452905950e4d2be4"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/inspect.mjs",
+          "bytes": 1046,
+          "sha256": "e015dc311eafdceaed21c2e9898ee90d10320499588ff0b2f1cbc59b6eb288c7"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/sound-set.mjs",
+          "bytes": 4840,
+          "sha256": "6c0d3946b905922f141a87ac04de3a4663a809a4700e8e4285a2c27489544545"
+        },
+        {
+          "path": "port/v2/tools/asset-intake/sound-set.test.mjs",
+          "bytes": 3961,
+          "sha256": "fd6a0acb712153853865acad567252af0cb405224dcf701cd06954ef4e48c8e5"
+        },
+        {
+          "path": "port/v2/tools/audiovisual-pilot-review.mjs",
+          "bytes": 26955,
+          "sha256": "f498975b7402aab727acc5e4ca6c37b4be71be03e41021c9c42c5cec3348923d"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/audit-cut-seams.mjs",
+          "bytes": 3883,
+          "sha256": "affba75fb433f188b61462e827d6e0041565f3bd3e9b0f95e3d6ea9899bd0764"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/audit-ear-support.mjs",
+          "bytes": 4198,
+          "sha256": "276d4559cacf893364b032951d76ca5095076b6994c4590ca8e90cacd9febc62"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/band-patches.mjs",
+          "bytes": 9416,
+          "sha256": "22e8754f586bd7be3626c8d6e130e53ac7fc2234c1b187838a3fb94eb28afd16"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/build-paint-skin.mjs",
+          "bytes": 6414,
+          "sha256": "4c7c049c023d119917ba10dff9b6c358bde831699c15cf45ed20aada85826576"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/build-seam-bridges.mjs",
+          "bytes": 4281,
+          "sha256": "78d9605415cfc76d692259d0eefa27bca9428eb63d1c399cb58676d162cd2c79"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/cut-inventory.test.mjs",
+          "bytes": 1072,
+          "sha256": "9d28d0a05b27f25e0fd324c7b2b7ea6ee2b4a2330694e7e73ff02c97af1006f4"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/cut-seam.mjs",
+          "bytes": 4755,
+          "sha256": "0f65a0bb48939e815f57a2a89dd7dd0a3f1a1b2b17cf0ce2a1bfc359879ff565"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/cut-seam.test.mjs",
+          "bytes": 3234,
+          "sha256": "4a4b13a5f950f700dff8f190ca78d8bd8d8fa33a503b10061ffc19c1ebaf1e3d"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/ownership-junctions.mjs",
+          "bytes": 3323,
+          "sha256": "0e3a7764e7d36e03c3cdd3834ed970554312e1bb77cad3e1ef6f03ea84897c4a"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/ownership-junctions.test.mjs",
+          "bytes": 3136,
+          "sha256": "458ce463d34777a5a24b12c54b0706a5deb839c4ef50adb59c0aec3d58eff496"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/paint-skin.mjs",
+          "bytes": 3898,
+          "sha256": "613cdca8482879856f8633512487479fb5a8b07b965e18349bc90e2445a4aa85"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/paint-skin.test.mjs",
+          "bytes": 2466,
+          "sha256": "f0f0bd08191f1ef30d0943ad85bb5027d5081066b46748e4c57ce2ee8ff370b2"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/prepare-seam-proof.mjs",
+          "bytes": 2775,
+          "sha256": "63a77430083c8cab2457019bb1d9cf44fb98225fcd1977273fddc44359ace460"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/seam-bridge.mjs",
+          "bytes": 9031,
+          "sha256": "a9e6dea282af27f223dd58900bae9242812a9320c59cff600a3eb7d443dccb28"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/seam-bridge.test.mjs",
+          "bytes": 4708,
+          "sha256": "300ab6902a80ef572906400c25728bb4ec18deaad03f72dd221f7db8a303c58f"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/seam-oracle-audit.mjs",
+          "bytes": 2303,
+          "sha256": "b407448c786e54c97666d84a85c773913b7b358fe764f64cdbf5d7b97217dfd5"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/texture-hinges.mjs",
+          "bytes": 2151,
+          "sha256": "7a7694e815fd50f8337a465afb4cfa6eebbeece836e31c9ca5fa30536f3c24a8"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/texture-hinges.test.mjs",
+          "bytes": 1994,
+          "sha256": "c9c9c2bcf51404bb548e993f5bab90d3e9b73013aa432f86d5a1c4194ed2f912"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/underlap-support.mjs",
+          "bytes": 2414,
+          "sha256": "e57fc2f3956a62342e69f3ad53f38be42c1e5994603e3f4f04150fa78380d99d"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/underlap-support.test.mjs",
+          "bytes": 2211,
+          "sha256": "e9a7d32faa261c5fb15a2f79953206f39be9ad10e2f7072cee63ea2fb927cde0"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/verify-parts.mjs",
+          "bytes": 3082,
+          "sha256": "f5278c15111466e447bb9c3dbffabc56fcf3ff6f7fcdee9a01c6e82cb936fd71"
+        },
+        {
+          "path": "port/v2/tools/creature-animation/verify-parts.test.mjs",
+          "bytes": 2156,
+          "sha256": "6e033b2155bcc1f8c1cf73f964a2d24b8a8cde380de4d2ac9723bf8302139306"
+        },
+        {
+          "path": "port/v2/tools/glassmatrix.mjs",
+          "bytes": 1151127,
+          "sha256": "8ee2c86ebb06392af5ef3e59ff067acb3527c473e86c3ae5bf8250e7d90491b2"
+        },
+        {
+          "path": "port/v2/tools/phone-shell-viewport.mjs",
+          "bytes": 328,
+          "sha256": "8f603612fbafbaeb5a8805bc03476b62409cc57b49039a0762e891271db5477d"
+        },
+        {
+          "path": "port/v2/tools/print-producer-authorities.mjs",
+          "bytes": 13272,
+          "sha256": "c862043ccc81e962012832c9a148cc69a9b048bb95cfdf4fd27a33b8ed666502"
+        },
+        {
+          "path": "port/v2/tools/quadruped-proof/parts-motion-entry.mjs",
+          "bytes": 25773,
+          "sha256": "92ea0734a867b54280e86abcacb51641f7129dd2aaac1f7d187c69f58aef7675"
+        },
+        {
+          "path": "port/v2/tools/quadruped-proof/parts-motion-runner.mjs",
+          "bytes": 17309,
+          "sha256": "a8b8c1e70c1fd6f03bea051bad64c4f014fece2c5f506b30e6d944d0dbdc5828"
+        },
+        {
+          "path": "port/v2/tools/quadruped-proof/seam-gates.mjs",
+          "bytes": 8710,
+          "sha256": "ef8cf68c3d43f4b9f54a98bfac3ac57ed3e05c1231db3a4878896e4c333ba2d6"
+        },
+        {
+          "path": "port/v2/tools/quadruped-proof/skin-gates.mjs",
+          "bytes": 2553,
+          "sha256": "90431909433e173ae087062da3c200a2995c28828124958b652fd207e27d2038"
+        },
+        {
+          "path": "port/v2/tools/run-unit-tests.mjs",
+          "bytes": 849,
+          "sha256": "8a746e7d538dfa3bb38001ecc5cfd4a32ae8a23ba8dac33a9b06b91f44b01f34"
+        },
+        {
+          "path": "port/v2/tools/slicesmoke.mjs",
+          "bytes": 1890119,
+          "sha256": "50789ee0cc33fbf2d396a32036013822252270bb43be969f6307db434872dafb"
+        },
+        {
+          "path": "port/v2/tools/test-node-tools.mjs",
+          "bytes": 680,
+          "sha256": "5b44c2af2d703a76d9961cd080f1edd61e785dc8578915d5a4d8cf4d72b1e1eb"
+        },
+        {
+          "path": "port/v2/tools/ui-review-navigation-selftest.mjs",
+          "bytes": 5499,
+          "sha256": "5f8354e8cfb4538c414cc2f1ef6014081a3af08af6ddfb411e6f38cc86c99085"
+        },
+        {
+          "path": "port/v2/tools/ui-shell-review.mjs",
+          "bytes": 80260,
+          "sha256": "3408205405a2926b57ca544c8d274dc8eee3a6b5a3fe045387a16e52b0e3e384"
+        },
+        {
+          "path": "port/v2/vitest.config.ts",
+          "bytes": 315,
+          "sha256": "94a2c2b25d8e745eece843fd04591b8bb756362c38ce53ac0ee3758cd5cd36fa"
+        },
+        {
+          "path": "review/evidence-index.json",
+          "bytes": 135134,
+          "sha256": "ffa5ee42d55b58b906f282d30dff5851df291a80e60ed897444db738a94caa16"
+        },
+        {
+          "path": "review/source-snapshot.json",
+          "bytes": 459,
+          "sha256": "a36679ec11bedea7835e94d53533b7d936c1696782e8163699ec4f1ff211febe"
+        },
+        {
+          "path": "review/source.patch",
+          "bytes": 481937,
+          "sha256": "e10f4dc48f2e33af64565ace503a28d08b59ffbdbfce1ca8b4cf6c6bf11968ed"
+        },
+        {
+          "path": "tools/local-image-generation/kit-weather-details.mjs",
+          "bytes": 2870,
+          "sha256": "17a769a953a7be7601e93f31f75aacd11f2580a224477afe8dfcaecea1a382b3"
+        },
+        {
+          "path": "tools/local-image-generation/kit-weather-details.test.mjs",
+          "bytes": 1602,
+          "sha256": "8ad2b51f5803f6733ada983b226c0445d6da70abf12c403f2f449d6f26e8c799"
+        },
+        {
+          "path": "tools/local-image-generation/probe-webgpu.mjs",
+          "bytes": 4641,
+          "sha256": "fecadd686ba770f2a14a09cb01ef636b8593b8309946c3544f60f0e0f4f0884b"
+        },
+        {
+          "path": "tools/local-image-generation/render-weather-details.mjs",
+          "bytes": 4137,
+          "sha256": "cd855b3e30ad0c2fcc32b547d3361db3adcc12181e3d0ba00c4af91505d88101"
+        },
+        {
+          "path": "tools/local-image-generation/run-browser-proof.mjs",
+          "bytes": 22223,
+          "sha256": "27241eaf0582a73097a468fa661a9645177bf7ce426312636b17a8b77b2b5d1b"
+        },
+        {
+          "path": "tools/local-image-generation/run-game-integration.mjs",
+          "bytes": 31751,
+          "sha256": "238171250662c9db71b3968fc215153ad0343e358bf20d90db914284d2f6daf6"
+        },
+        {
+          "path": "tools/local-image-generation/run-landfall-viewer.mjs",
+          "bytes": 27906,
+          "sha256": "1130161bd3faf4bdfcb41b9d8122d200b15a695dfc8134e739e6234ed08d014e"
+        },
+        {
+          "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.png",
+          "bytes": 2560302,
+          "sha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2"
+        },
+        {
+          "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-mid.png",
+          "bytes": 2181733,
+          "sha256": "189d0fc31a81330249fbce3cf03c8c3a0319cce47b9480f8623d8779dec96391"
+        },
+        {
+          "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-near.png",
+          "bytes": 1374464,
+          "sha256": "8fc1191f88eaae7561316c1c43d84b1d907ce459852b13935228e3b23e7559c4"
+        },
+        {
+          "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.png",
+          "bytes": 1686808,
+          "sha256": "83eca67c68d9a7d72a009d26ee3734c83b4ee547446b0e2241ba8fc4ec51f5d2"
+        },
+        {
+          "path": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-mid-despilled.png",
+          "bytes": 2865228,
+          "sha256": "d9a3690dceb71420cb1fc64898b1d74a677af4e26216a0437348959f57b55d0e"
+        },
+        {
+          "path": "audits/ARENA_V1_ACCEPTANCE_20260912/arena-template-v1.png",
+          "bytes": 4200484,
+          "sha256": "84e023f37216cbe2c6df54313dfb1a59a6c7db3bf94d441f53cbbda36c0abd5c"
+        },
+        {
+          "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+          "bytes": 1931944,
+          "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b"
+        },
+        {
+          "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-mammal-quadruped.png",
+          "bytes": 1967990,
+          "sha256": "15a3c9d7ee511360ed846a3fe1406c4fde124d99191c7f098538937ff164fdf3"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet-ink/atlas/civet.png",
+          "bytes": 2349625,
+          "sha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/fox-ink/atlas/fox.png",
+          "bytes": 2661892,
+          "sha256": "0dff6383d7825fa73ec0aa8f231e4e0e32dcb2f9f26d3872515192955416ac5c"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/procedural-ink/atlas/procedural.png",
+          "bytes": 63620,
+          "sha256": "805f61adf50cb922d14e8cec081725da480de528d7558fe5dbb736353aa300ac"
+        }
+      ]
+    },
+    {
+      "file": "celestial-cross-package-review-20260914-part-02.zip",
+      "bytes": 24994051,
+      "sha256": "96c96ae5476fd696b3f69b27970d16b95be7ba1a6ca9c6f5aea8e541ac2f2c59",
+      "entries": [
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-full-approach-quarter.png",
+          "bytes": 1611799,
+          "sha256": "8cf40f908625237a1c66e18f7af1c676b05e71e6f94f3aa780ad09de1737b7c4"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-full-approach-three-quarter.png",
+          "bytes": 1591081,
+          "sha256": "46b6202477ce3c183de5519dde6761a9da959428c9b99e3296860d0455078ecf"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-full-hit-recoil.png",
+          "bytes": 1640876,
+          "sha256": "534ad02168d61a17108093bc0edddb5a56f5613a65fbb51c2c4893ceef17be8e"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-full-rest.png",
+          "bytes": 1617836,
+          "sha256": "1b46280553d4e705187168a7a6b1a2893466c989f5cfa573f5757c2c3a176350"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-full-strike.png",
+          "bytes": 1586516,
+          "sha256": "0ae282b8039b1cd37f9a57e27af500360942b9a7338157c92fd58f09ca233558"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-head--ear-far-approach-quarter-rigid.png",
+          "bytes": 345839,
+          "sha256": "d5b80ae42521e1c39185d2501d67e8ab488972a8c064ce5ea940d504a0ff44e8"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-head--ear-far-approach-quarter-strips.png",
+          "bytes": 345924,
+          "sha256": "39233c056741bd4404c6ddb2c23ee20069f1d6698779faaf61f9348c3fc3a439"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-head--ear-far-approach-three-quarter-rigid.png",
+          "bytes": 346095,
+          "sha256": "7b75558548e3410512216895b0286b9fe382975daf8b70ebf0549b29ea1ffee9"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-head--ear-far-approach-three-quarter-strips.png",
+          "bytes": 346102,
+          "sha256": "b117f605554da584c71a74f33ab18c54e3d43327e62ecc752d231bdb3813decc"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-head--ear-far-hit-recoil-rigid.png",
+          "bytes": 347220,
+          "sha256": "9498e667d8e2730db55b331d6b749677b659fc86f2dcf19dce672a0500e850a6"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-head--ear-far-hit-recoil-strips.png",
+          "bytes": 344840,
+          "sha256": "78ca82ede4e38c4712f1f0c33d93e47c3608786f45f259724045a2c0926a0be5"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-head--ear-far-rest-rigid.png",
+          "bytes": 343888,
+          "sha256": "24bcc0aeda9b890bf6b8bab0a356e005bf8f5741fea8abc5fcb89ad9fcf27fcf"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-head--ear-far-rest-strips.png",
+          "bytes": 343888,
+          "sha256": "24bcc0aeda9b890bf6b8bab0a356e005bf8f5741fea8abc5fcb89ad9fcf27fcf"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-head--ear-far-strike-rigid.png",
+          "bytes": 349618,
+          "sha256": "12c2f6ec49a20c1a5fbc47d5e8583a31da1d119403892aa75b1623d70029f50d"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/civet-head--ear-far-strike-strips.png",
+          "bytes": 349749,
+          "sha256": "d8415b9ea68f289cc1d5c8fd7498d18c73f2fb144b5816edb11e2ef5a77ade30"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-full-approach-quarter.png",
+          "bytes": 1713905,
+          "sha256": "712a21a99fb372ed5b1cc8bd8ed7109101521e01eaca0c16f6efff840761fea7"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-full-approach-three-quarter.png",
+          "bytes": 1612640,
+          "sha256": "0899e418c7fc88d80ba1e7ce6c9f083f87939bdc03234975efc7ccddfd889d4b"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-full-hit-recoil.png",
+          "bytes": 1674820,
+          "sha256": "2bb318f8884dcc673ffdfdb912fa4f5235e323824f3f273163b9c89b18cfab22"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-full-rest.png",
+          "bytes": 1644306,
+          "sha256": "71d2183e3d92f2775cb3db92b85576c719312f071ece68bc37ecce6778b9647e"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-full-strike.png",
+          "bytes": 1611737,
+          "sha256": "83dd15b9c05e10d927bda048fa8360a460ff49b865364ed4f36aba58d9c2609d"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-head--ear-far-approach-quarter-rigid.png",
+          "bytes": 400727,
+          "sha256": "3a70e4419dfd22ba969ee34ce8b44d59f1611d20f82c831517b805f2bb69475f"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-head--ear-far-approach-quarter-strips.png",
+          "bytes": 400512,
+          "sha256": "d652bc57bda7400e3aa597c5fba3abe8bc5a335116c4f197723dce6ec4008c21"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-head--ear-far-approach-three-quarter-rigid.png",
+          "bytes": 400392,
+          "sha256": "e0955e2097bd84d4ed59253cf4ff7a56b9d3a68b333281380b3df56b59b2e25f"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-head--ear-far-approach-three-quarter-strips.png",
+          "bytes": 400159,
+          "sha256": "42a9818e9fab9ae8763ba6198d1688e3c48822896076e9c96d322c0e3a453bc1"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-head--ear-far-hit-recoil-rigid.png",
+          "bytes": 397688,
+          "sha256": "32089ef8a4c266196a34ce3b6a1b16098e1486149a07b5d833977c03376fa052"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-head--ear-far-hit-recoil-strips.png",
+          "bytes": 397674,
+          "sha256": "92e7a135d462fb30d9b4e29537a5decbd41a77f84012691083d2447f9e3b2701"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-head--ear-far-rest-rigid.png",
+          "bytes": 390648,
+          "sha256": "9523fdd7113f04cacecc42d56f7304ac3922353d3a3f56fae8e324091972653a"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-head--ear-far-rest-strips.png",
+          "bytes": 390648,
+          "sha256": "9523fdd7113f04cacecc42d56f7304ac3922353d3a3f56fae8e324091972653a"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-head--ear-far-strike-rigid.png",
+          "bytes": 401722,
+          "sha256": "4c068ecea6e4d07a446dedf4abcc2fd1f83ba43fa8f4b1739106c3a118dddbf0"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/fox-head--ear-far-strike-strips.png",
+          "bytes": 401831,
+          "sha256": "9e622c8296773ed952a89d8413e26a33507f92fd3863ed319d5dbda177cff7f7"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-full-approach-quarter.png",
+          "bytes": 142582,
+          "sha256": "9d7bf22eb5d6fc0460f069803f46640bea4c1f67787f75c0ee20ce0a8f04b6d7"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-full-approach-three-quarter.png",
+          "bytes": 141837,
+          "sha256": "91bb1331421080ba07a11bd9af7bf7657e2a842a57377a06d479fa0e919dc306"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-full-hit-recoil.png",
+          "bytes": 139250,
+          "sha256": "d9251bdcc872b91c192bcbc6c96202c2b29ce6295c8cf796ddf16bf5c8b62231"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-full-rest.png",
+          "bytes": 111353,
+          "sha256": "9e86766c9470301a298b16ae96e32eca501ae6eeea02c13f733a99a7cc687ac8"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-full-strike.png",
+          "bytes": 142741,
+          "sha256": "52804cfad19268496a13463f8cf4ca3efafde2a12f998b605e9133486bb81eb3"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-head--ear-far-approach-quarter-rigid.png",
+          "bytes": 73624,
+          "sha256": "72474b68f52ed7bd989a08b98b32bb12166a73846ae69fe9169e145c534c7bb7"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-head--ear-far-approach-quarter-strips.png",
+          "bytes": 73640,
+          "sha256": "42aa85640efdd14310568710c5c3c4640adf340b880c56696f3ed63637f9d89e"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-head--ear-far-approach-three-quarter-rigid.png",
+          "bytes": 73655,
+          "sha256": "0ae321aaeee03b7d97034925f37abb75a6d0c13cc4fdbffadea9e655522014d1"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-head--ear-far-approach-three-quarter-strips.png",
+          "bytes": 73661,
+          "sha256": "2c4b626c353d41369bd27d81a2ef61641e2c7034b740bbed0d4aabcb3e2ca49e"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-head--ear-far-hit-recoil-rigid.png",
+          "bytes": 74088,
+          "sha256": "343cfa01932cbed71204fed848e39c34e80794a67eef849e8d42f16474e559df"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-head--ear-far-hit-recoil-strips.png",
+          "bytes": 74085,
+          "sha256": "69d4cb1bbbf33b0157d9064eb8e24e6000d0660fa4506439a949bfecbc425158"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-head--ear-far-rest-rigid.png",
+          "bytes": 70210,
+          "sha256": "c507a421e377ce08c46392d18f3fe15ecda83537133540fb74566e1eb543be91"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-head--ear-far-rest-strips.png",
+          "bytes": 70210,
+          "sha256": "c507a421e377ce08c46392d18f3fe15ecda83537133540fb74566e1eb543be91"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-head--ear-far-strike-rigid.png",
+          "bytes": 74066,
+          "sha256": "4a29188dd0258f1c42ff8f1dbf5b7e390a9d4cdfa37661bb52990f5517fe46b3"
+        },
+        {
+          "path": "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/procedural-head--ear-far-strike-strips.png",
+          "bytes": 74078,
+          "sha256": "9e5a983ffaee843667ff8248f5f20e77f2260bbe10bce43de8e58ea5c8b6b900"
+        },
+        {
+          "path": "audits/C2_PARTS_ATLAS_20260913/native-painter-parts-03/master.png",
+          "bytes": 62758,
+          "sha256": "4d75af529dfc9aedd6cc078fe35373c435dcfde3abfe305e03ead60e46ba1e27"
+        },
+        {
+          "path": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+          "bytes": 3014976,
+          "sha256": "68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38"
+        }
+      ]
+    }
+  ]
+}

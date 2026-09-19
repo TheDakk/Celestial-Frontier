@@ -92,8 +92,9 @@ export function createCreatureBlenderBridge() {
   const {QUAD2_SPEC}=evaluate(table(read(`${ART}mammaloverrides.ts`),'QUAD2_SPEC'),{},['QUAD2_SPEC']);
   const empty = Object.freeze({});
   const routeEnv = { QUAD_SPEC, CANON: empty, FAUNA_NAME: empty, FAUNA2_NAME: empty, FAUNA3_NAME: empty, BIRD_NAME: empty, INVERT_NAME: empty, QUAD2_SPEC, FLORA_ICONIC: empty, FLORA2_SPEC: empty, FLORA_DUPES: [], FUNGI_NAME: empty, MICROBE_NAME: empty };
-  const routePrefix = exactSpan(owner, 'export function resolveOverrideCanvas(g: G): ArtCanvas | null {', '  const canon =');
-  const route = evaluate(`${routeHelpers}\n${routePrefix}return {kingdom,name,reviewedFaunaBlend};}`, { ...routeEnv, resolveProceduralCanvas: () => null }, ['resolveOverrideCanvas','isReviewedFaunaLineage']);
+  // Bind the unique function owner, independently of optional observer parameters.
+  const routePrefix = exactSpan(fn(owner, 'paintOverrideCanvas'), 'function paintOverrideCanvas(', '  const canon =');
+  const route = evaluate(`${routeHelpers}\n${routePrefix}return {kingdom,name,reviewedFaunaBlend};}`, { ...routeEnv, resolveProceduralCanvas: () => null }, ['paintOverrideCanvas','isReviewedFaunaLineage']);
   const palette = evaluate(`${fn(owner,'palette')}\n${fn(quad,'pal')}`, traits, ['palette','pal']);
   const canid = fn(quad, 'faunaResetCanidC');
   const head = exactSpan(canid, 'function faunaResetCanidC', '  mammalBGround(');
@@ -137,7 +138,7 @@ export function createCreatureBlenderBridge() {
     const blend = String(g._earthBlend || '').replace(/[’‘]/g,"'");
     let finalRoute, morphology, reason;
     if(named==='Civet'&&g.kingdom==='fauna'&&!blend){
-      const selected=route.resolveOverrideCanvas(g);
+      const selected=route.paintOverrideCanvas(g);
       if(!selected||selected.name!=='Civet'||selected.kingdom!=='fauna')throw new Error('Civet named route refused');
       finalRoute={kind:'named',kingdom:'fauna',name:'Civet',painter:'faunaQuadruped → faunaMammalD → faunaResetViverridD'};
       morphology={kind:'viverrid-d',spec:identity.snapshotSpeciesGenome(QUAD2_SPEC.Civet),coordinates:{space:'painter-normalized',canvasSize:440,x:'right',y:'down',fittedRaster:false},proportions:civetProportions(null,g,{},QUAD2_SPEC.Civet,'Civet'),palette:palette.pal(palette.palette(g),QUAD2_SPEC.Civet),lineage:null};
@@ -145,7 +146,7 @@ export function createCreatureBlenderBridge() {
     } else if ((named && named !== 'Wolf') || (!named && blend && blend !== 'Wolf')) {
       finalRoute={kind:'unsupported-owner',kingdom:g.kingdom,name:named||blend,painter:null}; morphology=null; reason='named/lineage owner outside this bounded bridge';
     } else if (named || blend) {
-      const selected = route.resolveOverrideCanvas(g);
+      const selected = route.paintOverrideCanvas(g);
       if (!selected || selected.kingdom !== 'fauna' || selected.name !== 'Wolf') {
         finalRoute={kind:'compatibility-fallback',kingdom:g.kingdom,name:named||blend,painter:null}; morphology=null; reason='unreviewed/markerless or incompatible named owner';
       } else {

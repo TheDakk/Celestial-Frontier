@@ -1,0 +1,40 @@
+{
+  "schema": "cf.ecology-render-controls/v1",
+  "positive": [
+    {
+      "id": "v4.reference.ash-cicada.25b46c4881e0",
+      "master": "masters/ecology-fauna-01-headroom-pcm/v4.reference.ash-cicada.25b46c4881e0.wav",
+      "masterSha256": "2ddbacaff1b9b2cf870ddc9af9c97344bfab359fcec925f76c8d0a25f7093eea",
+      "masterDbTP": -10.9,
+      "opusDbTP": -10.6,
+      "inputHeadroom": {
+        "id": "v4.reference.ash-cicada.25b46c4881e0",
+        "sourceSha256": "25b46c4881e05146c581eeb226f0d69732a0aadec6cfee6b861f1777aee71979",
+        "sourceDbTP": 8.8,
+        "priorGain": 0.65,
+        "gain": 0.1288249551693134,
+        "duration": 12
+      }
+    },
+    {
+      "id": "v4.reference.lily-leaf-beetle.273b5f7af19b",
+      "master": "masters/ecology-fauna-01-headroom-pcm/v4.reference.lily-leaf-beetle.273b5f7af19b.wav",
+      "masterSha256": "d9d53e95823b459eac7f3bb83dc76e495fef9d34ac72ecd87216fdb28a698509",
+      "masterDbTP": -26.9,
+      "opusDbTP": -26.3,
+      "inputHeadroom": {
+        "id": "v4.reference.lily-leaf-beetle.273b5f7af19b",
+        "sourceSha256": "273b5f7af19b1f02d32373be116c24bd94bf455f238e8bbc7334b494ec3c9497",
+        "sourceDbTP": -21.2,
+        "priorGain": 0.65,
+        "gain": 0.65,
+        "duration": 11.3664
+      }
+    }
+  ],
+  "negativeEvidence": [
+    "audio-production/reports/ecology-input-headroom.json",
+    "audio-production/reports/ecology-compressed-import-failure.json"
+  ],
+  "meaning": "Prior clipped/silent REAPER masters retained; measured input attenuation and portable float WAV import produce validated non-silent outputs. Not listening approval."
+}

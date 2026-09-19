@@ -1,0 +1,162 @@
+[
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-00-0.50.png",
+    "mediaSeconds": 0.5,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-01-1.43.png",
+    "mediaSeconds": 1.43,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-02-1.53.png",
+    "mediaSeconds": 1.53,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-03-1.80.png",
+    "mediaSeconds": 1.8,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-04-1.95.png",
+    "mediaSeconds": 1.95,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-05-2.08.png",
+    "mediaSeconds": 2.08,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-06-2.16.png",
+    "mediaSeconds": 2.16,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-07-2.25.png",
+    "mediaSeconds": 2.25,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-08-2.84.png",
+    "mediaSeconds": 2.84,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-09-3.18.png",
+    "mediaSeconds": 3.18,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-10-4.97.png",
+    "mediaSeconds": 4.97,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-11-5.07.png",
+    "mediaSeconds": 5.07,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-12-7.18.png",
+    "mediaSeconds": 7.18,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-13-7.35.png",
+    "mediaSeconds": 7.35,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-14-7.48.png",
+    "mediaSeconds": 7.48,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  },
+  {
+    "file": "/private/tmp/cf-motion02-visual/civet-15-7.72.png",
+    "mediaSeconds": 7.72,
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    }
+  }
+]
