@@ -753,3 +753,25 @@ under `min-height:0` and never reach the dock, and stale `--tut-bot` left over f
 In its first two forms it passed against the shipped build the external round had already proven
 broken. Run `--diag` to dump the geometry (viewport, `--tut-bot`/`--tut-cap`, board rect, every dock
 button rect) when a result looks too clean.
+
+## TypeSafe second-opinion tools — `rig-secondopinion.js`, `reference-secondopinion.js`, `judgetag.js`
+
+Added 2026-09-19. Read `TYPESAFE_START_HERE.md` first. These call TypeSafe's Jev model
+(`@typesafe-ai/sdk`, dev dependency) — a text-only System One model that answers typed
+Choice/Noul questions with probabilities. They are **offline audit tools only**: nothing
+here is reachable from `main.js` or the v2 runtime, and the key lives only in the
+`TYPESAFE_API_KEY` variable of the shell that runs them.
+
+| Command | Asks Jev | Prints |
+| --- | --- | --- |
+| `npm run typesafe:rig` | the biological class of each of the 631 roster names | names where `_earthArt`'s regex rig and the model disagree |
+| `npm run typesafe:reference` | the `posture` and `eyes` a fauna reference row should carry | rows where `port/v2/reference/fauna.json` and the model disagree |
+| `npm run typesafe:judgetag -- --dir <smoke run>` | one Noul per audit column ("does the verdict fault the head?") over each POLISH/FAIL judge row | per-family faulted-part counts, joinable to Nick's one-by-one CSV columns |
+
+Every tool takes `--dry-run` (prints the first request, sends nothing), caches answers
+under `tools/reports/*.cache.json` (gitignored; `--fresh` ignores it), writes a JSON report
+next to the cache, and prints its token spend. A disagreement is a **suspect for a human**,
+never a verdict: a confirmed regex miss becomes a `SENTINELS` row in `rig-audit.js` (the
+gate keeps the truth, the model does not); a confirmed reference error is corrected by hand.
+`rig-audit.js` and `rig-secondopinion.js` share `_earthart-load.js`, so both judge the
+exact function the painter runs.

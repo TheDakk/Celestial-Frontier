@@ -73,6 +73,28 @@ Outcome tests run on the REAL fits in vitest: Civet bite pays; no refusal in pla
 habitat refusal visible; reduced motion holds. Three `it.fails` pins flip when R3 lands (travel:'stage', crab attack, pinch).
 Battery: typecheck ×3, 210 tool tests, evidence build, vitest 4,736 pass / 3 expected-fail / 1 red = I5 stale certificate.
 
+## 2026-09-19 · TypeSafe second-opinion tooling landed (from the Windows build, via zip) and its first live battery
+
+The Windows-side batch's own handoff, verbatim (it was written against the Sept-5 roadmap base; the tooling
+arrived here as a zip and was installed after a full read; nothing else from that ROADMAP was taken):
+
+> **What landed:** TypeSafe's Jev model (text-only typed Choice/Noul answers with probabilities) is wired in as
+> **offline audit tooling only** — see `TYPESAFE_START_HERE.md` for the fit decision, the laws, and the
+> copy-ready prompt. It is NOT the art judge (Jev cannot see PNGs) and never enters `main.js` or the v2
+> runtime. `tools/_earthart-load.js` (loaders shared by `rig-audit.js` and `rig-secondopinion.js`),
+> `tools/typesafe-client.js` (key from `TYPESAFE_API_KEY` only, `--dry-run`, gitignored cache),
+> `npm run typesafe:rig` / `typesafe:reference` / `typesafe:judgetag`, `@typesafe-ai/sdk` 0.6.0 dev dependency,
+> `tools/README.md` section. Verified there: `node --check`, `validate.js` PASS, all three tools under `--dry-run`.
+
+**Battery (this lane, Nick's go):** `audits/TYPESAFE_BATTERY_20260919/README.md`. Spend 54 requests /
+1.73 M input tokens (~$0.073). Rig: 8 disagreements → 3 confirmed regex misses fixed in `main.js` (Whale Shark,
+Viperfish → fish; Nudibranch → gastropod) with sentinels (196), 5 model misses left alone. Reference: 272
+disagreements → 14 posture corrections in `fauna.json`, each justified by the row's own text or its family
+convention; eyes untouched (fish-`prominent` is a convention). `rig-audit`, `validate.js`, `referencecheck.mjs`
+PASS. `artlock.mjs` is stale (1250/1250 since 2026-08-06, identical on the pre-change html) — Nick's re-bless
+decision, not this batch. Judgetag skipped (no judge run on this Mac). §4 of the log answers "can it check
+everything?" — yes for text/JSON (flora rows, biomes, procedural records, universe cards), no for art/numbers.
+
 ## SESSION HANDOFF — September 19, 2026 (night) · E1 CODED ON THE MERGED LANE; CODEX RUNNING THE SINGLE-RUN PROGRAM
 
 Self-contained. Either lane can resume from this block alone. Earlier handoffs of the day are archived verbatim at the top of
@@ -116,6 +138,11 @@ could not:** the parts rig was invisible (normalized display units drawn 0.3 px 
 `sourceSize`), and the quadruped victory rear-up was refused as a planted stance (fixed, `plantedFor` frees it).
 For Nick's eye: the contact gap stops at a crab's leg tips (silhouette box vs body box — kit question); the fainted
 crab stands back up (V2 on the stage); crabs are raw painter texture until R9.
+
+### TypeSafe tooling live on this lane
+Battery done (above). Next TypeSafe step needs Nick's word: extend the reference tool to the 383 flora/fungi/microbe
+rows, then the biome atlas and a procedural-generation sample (log §4). Key stays in the shell that launches
+Claude Code; every run starts with `--dry-run`.
 
 ### What Claude owes next
 1. **Re-merge at Codex's signed R2c′/R3 producers**; pass `observedContactSupports(record, binding)` to the parts rig's family solver; then flip the three pins: `ContactPhase.travel:'stage'` in the parts-rig

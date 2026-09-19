@@ -1278,7 +1278,7 @@
   "aspect": 0.6,
   "headFrac": 0.32,
   "eyes": "normal",
-  "posture": "biped",
+  "posture": "upright",
   "mustRead": [
    "straight chisel-shaped bill",
    "body clinging vertically to a trunk",
@@ -2863,7 +2863,7 @@
   "aspect": 1.4,
   "headFrac": 0.35,
   "eyes": "small",
-  "posture": "crawling",
+  "posture": "sprawling",
   "mustRead": [
    "two-part body: small front section and large round abdomen",
    "eight jointed legs arching up then down",
@@ -3866,7 +3866,7 @@
   "aspect": 1.5,
   "headFrac": 0.24,
   "eyes": "small",
-  "posture": "biped",
+  "posture": "upright",
   "mustRead": [
    "upright penguin-like stance with black back and white front",
    "small stubby wings held tight to the body",
@@ -3891,7 +3891,7 @@
   "aspect": 1.5,
   "headFrac": 0.26,
   "eyes": "small",
-  "posture": "biped",
+  "posture": "upright",
   "mustRead": [
    "long slender pointed dagger bill",
    "upright chocolate-brown-and-white body",
@@ -6518,7 +6518,7 @@
   "aspect": 4.5,
   "headFrac": 0.25,
   "eyes": "normal",
-  "posture": "quadruped",
+  "posture": "sprawling",
   "mustRead": [
    "row of spiny crest scales from the nape down the back",
    "loose dewlap flap under the chin",
@@ -6531,7 +6531,7 @@
   "aspect": 4,
   "headFrac": 0.25,
   "eyes": "normal",
-  "posture": "quadruped",
+  "posture": "sprawling",
   "mustRead": [
    "blunt square salt-crusted snout",
    "laterally flattened paddle-like swimming tail",
@@ -6544,7 +6544,7 @@
   "aspect": 3.8,
   "headFrac": 0.25,
   "eyes": "normal",
-  "posture": "quadruped",
+  "posture": "sprawling",
   "mustRead": [
    "heavy jowly yellow-orange head",
    "spiny crest along the nape and back",
@@ -6845,7 +6845,7 @@
   "aspect": 1.6,
   "headFrac": 0.26,
   "eyes": "normal",
-  "posture": "flying",
+  "posture": "biped",
   "mustRead": [
    "glossy iridescent black plumage flecked with pale spots",
    "sharp straight pointed bill",
@@ -6970,7 +6970,7 @@
   "aspect": 0.8,
   "headFrac": 0.34,
   "eyes": "prominent",
-  "posture": "upright",
+  "posture": "biped",
   "mustRead": [
    "flat facial disc with huge forward-facing eyes",
    "pale sandy-buff plumage",
@@ -7356,7 +7356,7 @@
   "aspect": 0.9,
   "headFrac": 0.22,
   "eyes": "normal",
-  "posture": "upright",
+  "posture": "biped",
   "mustRead": [
    "raised fan crest of feathers on the crown",
    "heavy dark hooked bill",
@@ -7568,7 +7568,7 @@
   "aspect": 1.4,
   "headFrac": 0.34,
   "eyes": "normal",
-  "posture": "flying",
+  "posture": "biped",
   "mustRead": [
    "huge dagger bill on an oversized head",
    "dark brown eye stripe on a whitish head",
@@ -7580,7 +7580,7 @@
   "aspect": 1.5,
   "headFrac": 0.2,
   "eyes": "prominent",
-  "posture": "flying",
+  "posture": "biped",
   "mustRead": [
    "spiky rufous punk crest",
    "bare blue face with a staring red eye",
@@ -7592,7 +7592,7 @@
   "aspect": 0.35,
   "headFrac": 0.2,
   "eyes": "normal",
-  "posture": "flying",
+  "posture": "biped",
   "mustRead": [
    "two streaming tail plumes far longer than the body",
    "metallic emerald green plumage over a crimson belly",
@@ -7605,7 +7605,7 @@
   "aspect": 1.4,
   "headFrac": 0.28,
   "eyes": "normal",
-  "posture": "flying",
+  "posture": "biped",
   "mustRead": [
    "bright yellow plumage with a black face mask",
    "thick conical seed-cracking bill",
