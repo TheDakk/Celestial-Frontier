@@ -10,7 +10,7 @@ import {createRequire} from 'node:module';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {rolldown} from 'rolldown';
 
-export const PRODUCER_SHA256='6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74';
+export const PRODUCER_SHA256='600e413b90587a5d3b2f40ace148a95e6e692fb82f3b4d2eba2f17b12f0a8660';
 const root=path.resolve(import.meta.dirname,'../../../..'),sha=b=>createHash('sha256').update(b).digest('hex');
 const require=createRequire(import.meta.url),{PNG}=createRequire(require.resolve('free-tex-packer-core'))('pngjs');
 
@@ -27,7 +27,7 @@ export function extractNativePlanning(source){
 }
 
 export async function exportCurrentPoses({manifestFile,producerDirectory,outputDirectory}){
- const manifestPath=path.resolve(manifestFile),producer=path.resolve(producerDirectory),output=path.resolve(outputDirectory);
+ const manifestPath=path.resolve(manifestFile),producer=path.resolve(root,producerDirectory??'port/v2/apps/game/src'),output=path.resolve(outputDirectory);
  if(fs.existsSync(output))throw Error('New output directory required');
  const sources=new Map(),remember=p=>{const absolute=path.resolve(p),bytes=fs.readFileSync(absolute),hash=sha(bytes),old=sources.get(absolute);if(old&&old.sha256!==hash)throw Error('Source changed while reading: '+absolute);sources.set(absolute,{path:absolute,sha256:hash});return bytes;};
  const readJson=p=>JSON.parse(remember(p)),image=p=>{const decoded=PNG.sync.read(remember(p));return {width:decoded.width,height:decoded.height,rgba:decoded.data};};

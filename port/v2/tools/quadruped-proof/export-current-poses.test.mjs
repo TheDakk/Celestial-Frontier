@@ -8,7 +8,7 @@ import {extractNativePlanning,exportCurrentPoses,PRODUCER_SHA256} from './export
 
 const root=path.resolve(import.meta.dirname,'../../../..');
 const manifestFile=path.join(root,'audits/C2_CONTINUOUS_SKIN_20260916/candidate-08/manifest.json');
-const producerDirectory='/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src';
+const producerDirectory=path.join(root,'port/v2/apps/game/src');
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 
 test('planning is taken from the native owner; duplicate or missing declarations refuse',()=>{

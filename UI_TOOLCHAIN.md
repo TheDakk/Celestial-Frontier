@@ -1,5 +1,11 @@
 # Celestial Frontier — development toolchain
 
+**R2c″ continuation startup, September19:** official metadata current; Node26.9.0 retained;
+REAPER suffix resolved with scoped brew outdated. No executable/dependency update.
+Repository-relative pose exporter tests reveal missing reserved battle2/effects modules:
+5PASS/2leafFAIL retained, no sibling copy. Blender bridge route owner corrected to
+paintOverrideCanvas;20tests PASS. [Receipt](audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/toolchain/README.md).
+
 **September 19 single-run startup — current:** Nick explicitly authorized Node26.9.0;
 installed from26.8.2 under the shared idle-tool lock, with abseil20260817.0/highway1.4.0,
 simdutf9.2.0, merve1.2.2_3 and readline8.3.6. Homebrew refreshed7.0.3→7.0.4.

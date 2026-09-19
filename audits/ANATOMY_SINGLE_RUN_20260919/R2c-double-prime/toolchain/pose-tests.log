@@ -1,0 +1,111 @@
+✔ planning is taken from the native owner; duplicate or missing declarations refuse (0.992125ms)
+✔ changed producer is refused before exporting any evidence; existing output is protected (1.285083ms)
+✖ actual current producer exports 1201 resolved poses each, deterministically and source-bound (135.605917ms)
+✔ one idle clip continues across roles and pauses in both existing hitstops (1.465625ms)
+✔ support releases and reacquires continuously without changing grounded solves or admitting a refused endpoint (0.573791ms)
+✖ actual current producer has continuous support/role boundaries, exact grounded contacts and frame-rate-independent seeks (135.729084ms)
+✔ right combatant keeps its own idle and releases support only during its own attack (0.684291ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 5
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 274.661166
+
+✖ failing tests:
+
+test at port/v2/tools/quadruped-proof/export-current-poses.test.mjs:37:1
+✖ actual current producer exports 1201 resolved poses each, deterministically and source-bound (135.605917ms)
+  Error: Build failed with 2 errors:
+  
+  [31m[UNLOADABLE_DEPENDENCY] [0mCould not load port/v2/apps/game/src/effects/anchors.ts
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m port/v2/tools/quadruped-proof/current-poses-entry.mjs:6:42 [38;5;246m][0m
+     [38;5;246m│[0m
+   [38;5;246m6 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mE[0m[38;5;249mf[0m[38;5;249mf[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mS[0m[38;5;249me[0m[38;5;249mq[0m[38;5;249mu[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mA[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249mh[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/effects/anchors.ts'[38;5;249m;[0m
+   [38;5;240m  │[0m                                          ──────────────┬──────────────  
+   [38;5;240m  │[0m                                                        ╰──────────────── No such file or directory (os error 2)
+  [38;5;246m───╯[0m
+  
+  [31m[UNLOADABLE_DEPENDENCY] [0mCould not load port/v2/apps/game/src/battle2/choreography.ts
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m port/v2/tools/quadruped-proof/current-poses-entry.mjs:5:26 [38;5;246m][0m
+     [38;5;246m│[0m
+   [38;5;246m5 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mT[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249mn[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/battle2/choreography.ts'[38;5;249m;[0m
+   [38;5;240m  │[0m                          ─────────────────┬────────────────  
+   [38;5;240m  │[0m                                           ╰────────────────── No such file or directory (os error 2)
+  [38;5;246m───╯[0m
+  
+      at aggregateBindingErrorsIntoJsError (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:48:18)
+      at unwrapBindingResult (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:18:128)
+      at #build (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/rolldown-DP_p9pd3.mjs:132:34)
+      at async exportCurrentPoses (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/export-current-poses.mjs:49:7)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/export-current-poses.test.mjs:40:15)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    errors: [
+      [Error: [31m[UNLOADABLE_DEPENDENCY] [0mCould not load port/v2/apps/game/src/effects/anchors.ts
+         [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m port/v2/tools/quadruped-proof/current-poses-entry.mjs:6:42 [38;5;246m][0m
+         [38;5;246m│[0m
+       [38;5;246m6 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mE[0m[38;5;249mf[0m[38;5;249mf[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mS[0m[38;5;249me[0m[38;5;249mq[0m[38;5;249mu[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mA[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249mh[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/effects/anchors.ts'[38;5;249m;[0m
+       [38;5;240m  │[0m                                          ──────────────┬──────────────  
+       [38;5;240m  │[0m                                                        ╰──────────────── No such file or directory (os error 2)
+      [38;5;246m───╯[0m
+      ],
+      [Error: [31m[UNLOADABLE_DEPENDENCY] [0mCould not load port/v2/apps/game/src/battle2/choreography.ts
+         [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m port/v2/tools/quadruped-proof/current-poses-entry.mjs:5:26 [38;5;246m][0m
+         [38;5;246m│[0m
+       [38;5;246m5 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mT[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249mn[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/battle2/choreography.ts'[38;5;249m;[0m
+       [38;5;240m  │[0m                          ─────────────────┬────────────────  
+       [38;5;240m  │[0m                                           ╰────────────────── No such file or directory (os error 2)
+      [38;5;246m───╯[0m
+      ]
+    ]
+  }
+
+test at port/v2/tools/quadruped-proof/turn-contact-transition.test.mjs:40:1
+✖ actual current producer has continuous support/role boundaries, exact grounded contacts and frame-rate-independent seeks (135.729084ms)
+  Error: Build failed with 2 errors:
+  
+  [31m[UNLOADABLE_DEPENDENCY] [0mCould not load port/v2/apps/game/src/effects/anchors.ts
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m port/v2/tools/quadruped-proof/current-poses-entry.mjs:6:42 [38;5;246m][0m
+     [38;5;246m│[0m
+   [38;5;246m6 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mE[0m[38;5;249mf[0m[38;5;249mf[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mS[0m[38;5;249me[0m[38;5;249mq[0m[38;5;249mu[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mA[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249mh[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/effects/anchors.ts'[38;5;249m;[0m
+   [38;5;240m  │[0m                                          ──────────────┬──────────────  
+   [38;5;240m  │[0m                                                        ╰──────────────── No such file or directory (os error 2)
+  [38;5;246m───╯[0m
+  
+  [31m[UNLOADABLE_DEPENDENCY] [0mCould not load port/v2/apps/game/src/battle2/choreography.ts
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m port/v2/tools/quadruped-proof/current-poses-entry.mjs:5:26 [38;5;246m][0m
+     [38;5;246m│[0m
+   [38;5;246m5 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mT[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249mn[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/battle2/choreography.ts'[38;5;249m;[0m
+   [38;5;240m  │[0m                          ─────────────────┬────────────────  
+   [38;5;240m  │[0m                                           ╰────────────────── No such file or directory (os error 2)
+  [38;5;246m───╯[0m
+  
+      at aggregateBindingErrorsIntoJsError (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:48:18)
+      at unwrapBindingResult (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:18:128)
+      at #build (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/rolldown-DP_p9pd3.mjs:132:34)
+      at async exportCurrentPoses (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/export-current-poses.mjs:49:7)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/turn-contact-transition.test.mjs:44:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    errors: [
+      [Error: [31m[UNLOADABLE_DEPENDENCY] [0mCould not load port/v2/apps/game/src/effects/anchors.ts
+         [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m port/v2/tools/quadruped-proof/current-poses-entry.mjs:6:42 [38;5;246m][0m
+         [38;5;246m│[0m
+       [38;5;246m6 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mE[0m[38;5;249mf[0m[38;5;249mf[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mS[0m[38;5;249me[0m[38;5;249mq[0m[38;5;249mu[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mA[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249mh[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/effects/anchors.ts'[38;5;249m;[0m
+       [38;5;240m  │[0m                                          ──────────────┬──────────────  
+       [38;5;240m  │[0m                                                        ╰──────────────── No such file or directory (os error 2)
+      [38;5;246m───╯[0m
+      ],
+      [Error: [31m[UNLOADABLE_DEPENDENCY] [0mCould not load port/v2/apps/game/src/battle2/choreography.ts
+         [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m port/v2/tools/quadruped-proof/current-poses-entry.mjs:5:26 [38;5;246m][0m
+         [38;5;246m│[0m
+       [38;5;246m5 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mT[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249mn[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/battle2/choreography.ts'[38;5;249m;[0m
+       [38;5;240m  │[0m                          ─────────────────┬────────────────  
+       [38;5;240m  │[0m                                           ╰────────────────── No such file or directory (os error 2)
+      [38;5;246m───╯[0m
+      ]
+    ]
+  }
