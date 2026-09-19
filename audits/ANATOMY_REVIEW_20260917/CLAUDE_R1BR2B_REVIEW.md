@@ -249,3 +249,38 @@ Then ONE native re-capture (eight subjects + Civet, new folders) → STOP for Ni
 Persimmon collar/foliage repair waits for Nick's decision on foliage rigidity; not in this scope.
 No threshold, clamp, kit, record, per-species or reserved-owner change; no unchanged retry; no push.
 ```
+
+## 7. Chunked program with minimal stops (Nick, 2026-09-19: "go as far as we can in chunks")
+
+Only three stops survive: **S1** Nick's eye (films + first finished-crab sheet; kit first-new-class rule);
+**S2** a shared-path red — Civet sentinel or any of the five crabs regressing after a solver/skin change
+(fail-closed; no retry, no next stage); **S3** any GitHub write (budget gate). Every other former stop
+becomes a pre-answered decision below or a leaf gate: a leaf-item red is recorded and the chunk
+continues past it, unless it is S2.
+
+**Pre-answered decisions (so Codex never waits):**
+- R1c-b: if the family solver lacks root accommodation, add it in R2c with the compat solver's rule
+  (root shift = compression, bound 8 % of scaleLength); if not, record why and move on.
+- R1c-c: measurement only; whatever the attribution, no scale or harness change in this chunk.
+- Persimmon (R2d): foliage *shape* is not negotiable; world-frame foliage pins are. Implement
+  parent-frame rigid leaf groups (rigid relative to their branch tip). Gate: 0 folds at 67.17 ms and
+  across all four actions, full-action shape proof; CPU stays a recorded open item (R8/Q4 cap).
+  A red here is a leaf red — record and continue with the crabs.
+- Node 26.9.0: not inside Chunk 1. Own toolchain batch with a fresh receipt at the Chunk 1/2 boundary.
+- R9: the accepted engine finisher, no new model; the sheet includes one crab composited on the
+  accepted Earth-temperate arena plate at battle scale (no plate inference).
+- Re-capture spec: films must include faint (V2) and the full 12-row cycle, not idle/approach/pinch/hit.
+
+**Chunk 1 (Codex, no stop until the end):** R1c-b/c → R2c → R2d → R3 (+T1 continuity gate,
+`travel`, `contactJoint`) → R4 → one native re-capture (eight subjects + Civet, faint-inclusive films)
+→ R9 on the five crabs → review sheet → **S1**. Each item: signed producer, static checks, evidence
+folder; leaf reds recorded; S2 halts the chunk.
+
+**Chunk 2 (Codex, after S1):** R5/R6/R7 integrity/coverage → R8 phone delivery tier (D1: retained
+PNGs, painter fallback, no inference) → PR42 split prepared locally (UI / engine / tools) → **S3**.
+
+**Chunk 3 (Claude, parallel with Chunk 2, needs one decision from Nick):** D4 said E1 code waits for
+R3 "on develop", which is behind S3. Recommend relaxing to **"after R3 is signed on openai/mac,
+integrated by a local merge of openai/mac into anthropic/mac"** (the lanes have merged history this
+way before). Then Claude codes E1 (parts-rig adapter, attack-driven turn plan, arena selection, the
+five outcome tests) while Codex runs Chunk 2, and the develop merge lands both at S3.
