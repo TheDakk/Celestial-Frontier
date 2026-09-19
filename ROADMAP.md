@@ -94,8 +94,16 @@ re-capture → R9 → R5–R8 → roster by family → PR42 split prepared → O
 shared-path red: Civet sentinel or any of the five crabs regressing after a solver change) is the only halt. Claude runs E1 in
 parallel on local merges of Codex's signed producers.
 
+### Codex's run stopped at S2 in R2c (its packet `audits/ANATOMY_SINGLE_RUN_20260919/`)
+R2c closes Mud/Vent (five crabs ≤ 0.0094 px) and adds the root accommodation R1c-b proved missing, but the Civet
+sentinel fails idle at 0.2608 px: its support is unpinned and ~85 % paw-weighted, so R2c's rigid-to-endpoint
+correction over-corrects (Claude's derivation in review §9). Direction issued: **R2c′** — model the support by its
+actual skin weights, crabs must reproduce bit-for-bit, Civet must pass unchanged, then resume §8. Codex's R2c
+packet is staged UNSIGNED (1Password refused both lanes tonight; now unlocked) — sign it first. R1c-c attributed
+most cold flora CPU to the declared scale (per-pass cost, `normalPasses` 4 everywhere): leaf red for R8/Q4.
+
 ### What Claude owes next
-1. **Re-merge at Codex's signed R3 producer**, then flip the three pins: `ContactPhase.travel:'stage'` in the parts-rig
+1. **Re-merge at Codex's signed R2c′/R3 producers**; pass `observedContactSupports(record, binding)` to the parts rig's family solver; then flip the three pins: `ContactPhase.travel:'stage'` in the parts-rig
    context (drop the interim stride double-count note), crab attacks through the stage, pinch selection; re-run
    `parts-rig.test.ts` + `e1-outcomes.test.ts`; move crabs from target-only to attacker in outcome 2.
 2. **E1.5**: the `?battle2=1` study with the six fits in a real browser (films at 25/50/75 + one full turn per fit) for the

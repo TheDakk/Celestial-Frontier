@@ -322,3 +322,56 @@ locally at Codex's signed R3 producer (or now, at `4cb5f7a3`, for everything tha
 attack-driven turn plan, habitat arena selection, reduced-motion path, cleanup, the five outcome tests
 incl. the duel that pays — and the first guardian design (D2) as a document. Claude's own packet
 (battle film per the E1 tests) joins the same one stop.
+
+## 9. S2 fired in R2c (Codex packet `audits/ANATOMY_SINGLE_RUN_20260919/`, 2026-09-19 night) — verdict and the bounded correction
+
+**The stop was right.** R2c's painted-support constraint closes Mud/Vent (all five crabs ≤ 0.0094 px, endpoint error
+≤ 4.6e-16) and R1c-b's finding (the family solver lacked root accommodation) is folded in as an 8 %-of-scale
+accommodation. The Civet then fails idle at 261.95 ms with 0.2608 px on `foreNearAnkle` — a shared-path red on the
+sentinel, halted with no retry. Codex's diagnosis is correct as far as it goes: the support is interpolated from
+vertices 444/445, unpinned, 79.7–92.1 % `foreNearPaw` and 7.8–19.8 % `foreNearAnkle`, 13.48 px from the landmark.
+
+**What the numbers say the mechanism is** (derived from the packet, to be measured, not assumed): R2c models the
+support as rigid to the END bone and therefore moved the ankle target by `(R−I)·o` ≈ 2·13.48·sin(1.377°/2) ≈ 0.32 px.
+The vertex is ~85 % paw-weighted, and the solver holds the paw level (`terminal = −lower`, world rotation ≈ 0), so
+~85 % of that shift is an over-correction: 0.85 × 0.32 ≈ 0.27 px — the measured 0.26 px. The rigid-endpoint model was
+exact for the crabs only because R1b pinned their supports 100 % to the endpoint. `arapStats.maximumTargetErrorPx` is
+0.326 px at the failing sample, so a second mechanism (ARAP residual at the support) must be attributed separately.
+
+**R2c′ — one bounded correction, then resume §8 at the R2c static sweep:**
+- Model the painted support by its **actual skin weights**: predicted support = Σ_j w_j · T_j(support_rest) over every
+  bone the support's triangle vertices are bound to (barycentric-blended weights, read from the binding, never
+  edited), evaluated on the program's matrices. The ≤ 3-pass fixed point corrects the endpoint target by
+  `paintedTarget − predicted(pose)`; no pins, no landmark move, no threshold or limit change, terminal rule unchanged.
+- **Controls, both directions:** (1) the five crabs reproduce R2c's static rows bit-for-bit (their weights are 100 %
+  endpoint, so the model reduces exactly); (2) a synthetic 100 %-terminal-weighted support needs zero correction; a
+  50/50 support needs half of the rigid correction; (3) the diffused mutant still fails; (4) log, at every sample, the
+  ARAP residual at the support (`published − LBS prediction`) separately from the kinematic residual, so if the Civet
+  still exceeds 0.25 px the packet says which mechanism it is.
+- **Acceptance:** Civet idle/alert/walk/dodge/hit/faint rows pass the 0.25 px gate on the unchanged candidate-10 binding
+  with the family solver; five crabs unchanged. Then the run continues from the native re-capture as §8 orders.
+- Sign R2c's halted packet first (1Password is unlocked); it is S2 evidence, not a producer admission.
+
+**R1c-c recorded, not actioned:** with 69 trials and IQRs of 0.7–1.9 ms, the declared plant scale carries most of the
+cold Cranberry sway/disturb cost (+1.1/+1.3 ms, above IQR) and Persimmon harvest (+2.4–2.7 ms); warm-up order is a
+0.2–0.6 ms effect; `normalPasses` stays 4 in every cell, so the cost is per-pass, not iteration count. The declared
+scale is a look decision (N1); its CPU belongs to R8/Q4 (the 2,000-vertex screening cap) — leaf red, carried.
+
+**E1 note (this lane):** `createFamilyContactSolver(record, paintedSupports)` gains an optional second argument in R2c;
+at the next re-merge the parts rig passes `observedContactSupports(record, binding)` so the stage runs the same
+contact model as the harness.
+
+### Copy-ready for Codex
+```
+S2 verdict + R2c′ direction: /Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md §9
+(read-only; do not sync). 1Password is unlocked: sign the halted S2 packet first (evidence, not admission).
+
+R2c′ (one bounded correction): model each painted support by its ACTUAL skin weights — predicted support =
+Σ_j w_j·T_j(support_rest) over every bone its triangle vertices are bound to (weights read from the binding, never
+edited) — and correct the endpoint target by paintedTarget − predicted(pose) in the existing ≤3-pass fixed point.
+No pins, no landmark move, no threshold/limit change, terminal rule unchanged. Log the ARAP residual at the support
+(published − LBS prediction) separately from the kinematic residual at every sample.
+Controls: five crabs bit-identical to R2c static rows; synthetic 100 %-terminal support → zero correction, 50/50 →
+half; diffused mutant fails. Acceptance: Civet rows pass 0.25 px on the unchanged candidate-10 binding, family solver.
+Then resume §8 from the R2c static sweep → native re-capture → … as ordered; S2 remains the only halt; no push.
+```
