@@ -1,13 +1,13 @@
 # Celestial Frontier — development toolchain
 
-**September 19 startup — current:** official check under shared lock; idle FFmpeg9.0.1_1 →9.0.2,
-libvmaf3.2.0 →3.2.1 and xz5.8.3 →5.8.4 installed; Homebrew7.0.3 unchanged. All seven CLI capability
-checks PASS. Standard FFmpeg9.0.2 lacks `drawtext`; retained-film decoding works and ImageMagick
-supplies annotations with an explicit font. No ffmpeg-full installation. Managed Node26.9.0 was
-available, but automatic approval review rejected its update as a locked-runtime change; Node26.8.2
-remains in use pending Nick’s clarification. Project dependency locks and sealed inputs unchanged.
-REAPER’s metadata suffix is current per scoped brew outdated. No app was launched; Blender unused.
-[Receipt and diagnostic review](audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md).
+**September 19 single-run startup — current:** Nick explicitly authorized Node26.9.0;
+installed from26.8.2 under the shared idle-tool lock, with abseil20260817.0/highway1.4.0,
+simdutf9.2.0, merve1.2.2_3 and readline8.3.6. Homebrew refreshed7.0.3→7.0.4.
+Seven CLI capability checks PASS. Whole anatomy run uses26.9.0; project dependency locks
+and sealed inputs unchanged. No cleanup, GUI use or GitHub operation. Earlier approval
+rejection is resolved by Nick's explicit direction. FFmpeg9.0.2 remains without drawtext;
+ImageMagick supplies annotations. [Fresh receipt](audits/ANATOMY_SINGLE_RUN_20260919/00-toolchain/receipt.json)
+and [verification](audits/ANATOMY_SINGLE_RUN_20260919/00-toolchain/verify.json).
 
 **September 17 startup — current:** official metadata/idle-process check and shared lock;
 Homebrew 7.0.3, gh 2.101.0, Blender 5.2.2. Only the two eligible idle authoring tools upgraded.

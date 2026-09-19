@@ -1,0 +1,48 @@
+==> Fetching downloads for: node
+==> Would install 2 dependencies:
+abseil   20260817.0
+highway  1.4.0
+==> Would upgrade 3 dependencies:
+simdutf   9.1.1   -> 9.2.0
+merve     1.2.2_2 -> 1.2.2_3
+readline  8.3.3   -> 8.3.6
+==> Would upgrade 1 requested outdated package
+node 26.8.2 -> 26.9.0 (19.9MB)
+✔︎ Bottle Manifest simdutf (9.2.0)
+✔︎ Bottle Manifest merve (1.2.2_3)
+✔︎ Bottle Manifest abseil (20260817.0)
+✔︎ Bottle Manifest highway (1.4.0)
+✔︎ Bottle Manifest readline (8.3.6)
+✔︎ Bottle merve (1.2.2_3)
+✔︎ Bottle simdutf (9.2.0)
+✔︎ Bottle readline (8.3.6)
+✔︎ Bottle highway (1.4.0)
+✔︎ Bottle abseil (20260817.0)
+✔︎ Bottle node (26.9.0)
+==> Upgrading node
+  26.8.2 -> 26.9.0 
+==> Installing dependencies for node: abseil, simdutf, merve, readline and highway
+==> Installing node dependency: abseil
+==> Pouring abseil--20260817.0.arm64_golden_gate.bottle.1.tar.gz
+🍺  /opt/homebrew/Cellar/abseil/20260817.0: 832 files, 11.8MB
+==> Upgrading node dependency: simdutf
+==> Pouring simdutf--9.2.0.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/simdutf/9.2.0: 65 files, 2MB
+==> Upgrading node dependency: merve
+==> Pouring merve--1.2.2_3.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/merve/1.2.2_3: 19 files, 135.3KB
+==> Upgrading node dependency: readline
+==> Pouring readline--8.3.6.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/readline/8.3.6: 56 files, 2.6MB
+==> Installing node dependency: highway
+==> Pouring highway--1.4.0.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/highway/1.4.0: 87 files, 5.7MB
+==> Installing node
+==> Pouring node--26.9.0.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/node/26.9.0: 2,077 files, 71.3MB
+==> Caveats
+==> node
+Single Executable Application is disabled as it doesn't work with shared libnode.
+Temporal support is disabled as it doesn't work with shared ICU library.
+==> Upgraded 1 requested outdated package
+node 26.8.2 -> 26.9.0
