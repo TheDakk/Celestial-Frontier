@@ -50,34 +50,46 @@ export TYPESAFE_API_KEY="<paste in this shell only>"
 node tools/rig-secondopinion.js --dry-run
 ```
 
-## The prompt (paste into a coding session)
+## The prompt (paste into a Claude Code session on the Mac)
 
 ```text
-Before editing, verify that the repository root is
-/Users/dakk/Projects/celestial-frontier-anthropic-mac and the branch is
-anthropic/mac; if not, stop and report. Read CLAUDE.md, ROADMAP.md,
-PROCESS_LAWS.md and TYPESAFE_START_HERE.md.
+Verify before anything else: `git rev-parse --show-toplevel` must print
+/Users/dakk/Projects/celestial-frontier-anthropic-mac and `git branch --show-current`
+must print anthropic/mac. If either differs, stop and report; edit nothing.
+Then read CLAUDE.md, ROADMAP.md, PROCESS_LAWS.md and TYPESAFE_START_HERE.md.
 
-Use the typesafe-ai skill for this task. Jev is text-only and offline-tooling-only
-in this repo: never route it into main.js or the v2 runtime, never write the key
-to a file, never let it grade PNGs.
+Setup for this batch:
+- `git fetch origin` and `git pull --ff-only`. Stop and report if it is not a fast-forward.
+- `npm install` (this batch added @typesafe-ai/sdk as a dev dependency).
+- I will set TYPESAFE_API_KEY in the terminal myself. Never ask me to paste it into
+  chat, never echo it, never write it to any file, .env, or handoff.
+- Run `node tools/rig-secondopinion.js --dry-run` and show me the first request
+  payload before any live call. Wait for my go.
 
-Task: run the TypeSafe second-opinion battery and turn confirmed suspects into
-permanent gates.
-1. Run `node tools/rig-secondopinion.js` (full roster). For every disagreement,
-   decide by eye whether the regex in _earthArt or the model is wrong. For each
-   confirmed regex miss, add a [name, expectedRig] row to SENTINELS in
-   tools/rig-audit.js and fix the regex so `node tools/rig-audit.js` passes.
-   List model misses in the batch log; change nothing for them.
-2. Run `node tools/reference-secondopinion.js`. For each STRONG disagreement,
-   check the real animal; correct port/v2/reference/fauna.json only when the
-   stored value is wrong, and record each change with the reason.
-3. If a judge run exists under port/v2/apps/game/smoke/<run>/judge, run
-   `node tools/judgetag.js --dir <run>` and add the faulted-part counts per family
-   to the run's GOLD_PASS notes so the fix queue is grouped by part.
-Run `node tools/validate.js` after any main.js or reference change. Report token
-spend from each tool's usage line. Commit locally with a descriptive message; do
-not push, merge, or deploy unless Dakk authorizes it. Update ROADMAP.md's handoff.
+Rules for this task: use the typesafe-ai skill. Jev is text-only and lives in
+offline tooling only. Never import tools/typesafe-client.js from main.js or the
+v2 runtime. Never let it grade PNGs; the GOLD-pass vision judge and Dakk's engine
+own art verdicts. Every disagreement it reports is a suspect for a human, never a
+verdict.
+
+Task, after my go:
+1. `npm run typesafe:rig` (631 names, ~22 requests). For every disagreement,
+   decide by eye whether _earthArt's regex or the model is wrong. For each confirmed
+   regex miss, add a [name, expectedRig] row to SENTINELS in tools/rig-audit.js and
+   fix the regex so `node tools/rig-audit.js` passes. List model misses in the batch
+   log and change nothing for them.
+2. `npm run typesafe:reference`. For each STRONG disagreement, check the real
+   animal; correct port/v2/reference/fauna.json only when the stored value is
+   wrong, and record each change with its reason.
+3. Skip judgetag unless a judge run exists under port/v2/apps/game/smoke/<run>/judge
+   on this machine. If one does, run `npm run typesafe:judgetag -- --dir <run>` and
+   add the faulted-part counts per family to that run's GOLD_PASS notes.
+
+Finish: run `node tools/validate.js` after any main.js or reference change.
+Report token spend from each tool's usage line. Commit locally with a descriptive
+message. Do not push, merge, open a PR, or deploy unless I authorize that exact
+action. Update the ROADMAP.md handoff and end with the paired next steps from
+PARALLEL_GIT_PROTOCOL.md.
 ```
 
 ## Design notes (for extending)
