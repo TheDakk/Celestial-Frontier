@@ -17,6 +17,38 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
+## SESSION HANDOFF — 2026-09-19 · TYPESAFE SECOND-OPINION TOOLING (Claude, anthropic/mac)
+
+**What landed (local commit on `anthropic/mac`, cherry-picked from the Windows build cdb9cdb4; the branch already carries develop c1791e2):**
+TypeSafe's Jev model (text-only typed Choice/Noul answers with probabilities) is wired in as
+**offline audit tooling only** — see `TYPESAFE_START_HERE.md` for the fit decision, the laws, and the
+copy-ready prompt. It is NOT the art judge (Jev cannot see PNGs) and never enters `main.js` or the v2
+runtime (deterministic, offline, no server for a key).
+
+- `tools/_earthart-load.js` — the `_earthArt`/roster loaders extracted from `rig-audit.js` so the gate
+  and the new second-opinion tool judge the same function. `rig-audit.js` still passes (631 / 193 sentinels).
+- `tools/typesafe-client.js` — key from `TYPESAFE_API_KEY` only, `--dry-run`, per-item answer cache under
+  `tools/reports/` (gitignored), token/cost line.
+- `npm run typesafe:rig` — Jev's class for every roster name vs the regex rig; disagreements are suspects
+  for new `SENTINELS` rows. `npm run typesafe:reference` — posture/eyes second opinion on
+  `port/v2/reference/fauna.json`. `npm run typesafe:judgetag -- --dir <smoke run>` — tags judge verdict
+  prose with Dakk's one-by-one audit columns so the fix queue groups by faulted part.
+- `@typesafe-ai/sdk` 0.6.0 added as a dev dependency; `tools/README.md` section added.
+
+**Verified:** `node --check` on all new tools; `node tools/validate.js` PASS end to end (rig-audit 631 /
+193 sentinels after the loader refactor, render audit 1010 clean, 50-probe fingerprint matches baseline);
+all three tools reviewed under `--dry-run` (rig: 631 names / 22 batches; judgetag against the develop
+folder's goldpass3-prechassis judge dir: 1,190 POLISH/FAIL rows / 149 batches); no-key path exits 2 with
+a message. **No live Jev call has been made** — no key was set in any shell, so no spend.
+
+**Next (needs Dakk's key in the shell):** run `npm run typesafe:rig` (~22 requests, cents), review the
+disagreement table by eye, add confirmed regex misses to `SENTINELS`, then `typesafe:reference`. The
+prompt for that session is in `TYPESAFE_START_HERE.md`.
+
+**Paired next steps:** Claude — local commit on `anthropic/mac` made from the Windows PC in a scratch worktree;
+no push (no hosted attempt authorized). On the Mac, after the push lands: `git pull --ff-only`, then `npm install`
+(new dev dependency), then set `TYPESAFE_API_KEY` in that shell and run `npm run typesafe:rig`. Codex — nothing
+to sync until this reaches develop by reviewed PR. No release or deployment performed.
 ## ▶▶▶ SESSION HANDOFF — 2026-09-05 UTC (latest) · PR #41 BATCH 4 GAMEPLAY MERGED INTO develop `c1791e2` · anthropic/mac RECORD BRANCH · NO HOSTED AUTHORITY ◀◀◀
 
 ### Exact boundary
