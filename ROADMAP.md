@@ -45,89 +45,90 @@ after R3 reaches develop. Track B design is `E1_BATTLE2_INTEGRATION_DESIGN.md` (
 attack-driven turn plan, habitat arena selection, five outcome tests; Codex owes `ContactPhase.travel`
 and the brachyuran attack row in R3). Codex is mid-R1b/R2b (N1 decision + N11/N12 given). No push.
 
-## SESSION HANDOFF — 2026-09-13 · LONG SESSION BATCHES 1–4 COMPLETE; C2 PARTS RIG IS THE ONLY BLOCKER
+## SESSION HANDOFF — September 19, 2026 · R1b/R2b RE-CAPTURE IN; 3 PASS / 6 FAIL; CLAUDE OWES THE REVIEW
 
-Read this with `audits/LONG_SESSION_20260913/LOG.md` (per-package table), `LOG-B.md`
-(batches 2–4 in detail) and `CONTRACTS.md` (the cross-lane interfaces). Everything below is
-committed on `anthropic/mac` and **never pushed**: 61 commits ahead of `openai/mac`, tree clean.
-GITHUB_ACTIONS_BUDGET gate unchanged; PR42 parked; no hosted write authorized.
+Self-contained. Either lane can resume from this block alone.
 
-### What the game can do now (all under the two study flags, default path untouched)
+### Lane state (local only; nothing pushed, no remote state inferred)
 
-`?battle2=1` stages a real turn over the Chronicle mount: arena plates with parallax, a rigged
-attacker and a portrait defender, the choreography beats (timing bar, cursor, run-up, hitstop,
-flash, shake, damage number), **per-ability theme effects** (Wild painted; the other ten kit
-themes as labelled procedural emitters in their §4K material colour), **sound cues on the beats**
-(placeholder synth for all 49 ability/battle ids, per-creature derived voices through the A4
-engine, played through the accessible audio owner's `decorativeVoicePort()`), and world life.
-`?worldlife=1` puts rain, drift and **resident idle life** (1–3 fauna from the roster, breathing
-whole-portrait rigs between the vista and the weather) on the landfall.
+| Lane | HEAD | Ahead of cached origin | Tree |
+|---|---|---|---|
+| `openai/mac` (Codex) | `d0437436` evidence, on signed producer `6a58e40e` | 133 | two untracked leftovers: `R1B_R2B_EVIDENCE_SIGNING_BLOCKER_01.json` (stale — the retry succeeded as `d0437436`), `review-diagnosis-01/` (toolchain receipts) |
+| `anthropic/mac` (Claude) | `2766db85` | 234 | clean |
 
-Every kit §4 motion family has a template library (13 + quadruped). Phones run half particle
-budgets. `MOTION_KIT.md` and `SOUND_KIT.md` are marked matches-code as of 2026-09-13.
+Both signing blockers of Sept 17/19 are resolved; every producer and evidence commit named here is
+signed. PR42 parked, no GitHub write, no push, no merge, no release. Lanes read each other by
+absolute path, read-only; never sync to fetch a document.
 
-### Evidence to look at
+### What Codex shipped, and what it costs
 
-- `audits/LONG_SESSION_20260913/b-batch-capture/proof-run-02/` — the current 10 s capture
-  (602 frames, p95 0.30 ms, 0 browser errors), beat frames and mp4-cut frames. Civet joints no
-  longer open black wedges; Wild painted sweep and Tide procedural splash both read.
-- `audits/LONG_SESSION_20260913/b3-family-sheets/`, `a11-family-sheets/` — pose sheets.
-- `audits/C2_BOUNDED_REPAIR_20260913/underlap-demo-01/` — underlap proof on the real Civet master.
+`6a58e40e` is the bounded R1b/R2b correction Claude directed: **N1** template-declared motion scale
+on the BodyCard (brachyuran independent 0.08–0.9 admission; body-axis bounds and observed pivots
+untouched; plants use the longest observed chain), **N2** source-relative stride/lift with
+readability floors, **N11** blend weight no longer multiplies world travel or stance targets,
+**N12** faint/hit loading moved to the shared specialized action builder, **N3** explicit
+endpoint pin/weight declaration at split time, **N4** action rows before framing, **N6** Civet
+sentinel, **Q4** the approved Motion Kit §8 paragraph (only that). Static: 102 regression tests /
+16 files, 210 tool tests, three TS projects, 1,010 legacy renders, 50 determinism probes.
 
-### Open decisions for Nick (nothing blocked on them)
+`d0437436` is the nine-subject native re-capture on that producer — **3 numeric passes, 6 failures**:
 
-1. **K22 part 2** — the import `t:0 → now` asymmetry; fixing it broke v1.8.9 fixture tests
-   (`LOG-A6-defects.md`). Still unfixed by choice.
-2. **Nick's eye** on the B3 family sheets, the proof-run-02 capture and the Wild v4.3 images.
-3. Two batch-2 decisions were **delegated to Claude and already taken**: the audio port
-   (`decorativeVoicePort()`) and the Motion Kit §5 impact hold (240 ms after the hitstop).
+| Subject | Outcome | Max clip p95 | Max painted-contact drift |
+|---|---|---:|---:|
+| crab / coconut-crab / freshwater-crab | PASS (numeric), films exist | 0.600 ms | 0.133 / 0.144 / 0.176 px |
+| mud-crab | FAIL hit, dodge, faint, presentation | 0.700 ms | 0.270 px |
+| vent-crab | FAIL scuttle, hit, dodge, presentation | 0.500 ms | 0.348 px |
+| persimmon | FAIL fold: `disturb` @ 67.17 ms, 84 folds; presentation @ 1200 ms, 209 folds | 5.300 ms | n/a (no ground feet) |
+| cranberry | FAIL CPU: disturb 3.3 ms | 3.300 ms | n/a |
+| devils-club | FAIL CPU: all four actions | 4.200 ms | n/a |
+| **civet sentinel** | **FAIL** — 18 of 20 rows stop early; unreachable targets at 5.8 / 6.25 / 29 ms; idle drift 0.258 px | 4.400 ms | 0.392 px |
 
-### The one blocker: C2 articulated parts rig (Codex's lane)
+### Three things the next reviewer must not miss
 
-Codex's parts rig still FAILS the shape gate; the labelled whole-portrait fallback is the
-accepted presentation meanwhile. Four review rounds are recorded, newest last:
+1. **Claude's N3 diagnosis was wrong, and Codex proved it read-only.** Old-versus-new binding
+   comparison found **zero changed field weights and zero added/removed pins on all five crabs** —
+   those endpoint supports were already rigidly weighted and pinned by the earlier shape owner. The
+   Mud/Vent painted-contact drift therefore has **no established root cause**. Codex's remaining
+   hypothesis (the nearest painted vertex's nonzero rest offset rotating under the endpoint bone) is
+   labelled a hypothesis. Do not loosen 0.25 px, do not call it instrument noise, do not re-propose
+   pinning. Evidence: `summary.json.contactPinComparison`.
+2. **The Civet sentinel failing is the point of having it.** It runs the new family contact resolver
+   against an existing accepted quadruped binding; the preserved quadruped compatibility solver is a
+   separate path. That distinction is a diagnosis aid, not a clearance for the shared path.
+3. **Flora CPU moved the wrong way** (persimmon 2.2 → 5.3, cranberry disturb 1.9 → 3.3, devils-club
+   3.4 → 4.2 ms) — but Codex records honestly that clip sampling now precedes presentation warm-up,
+   so this is **not a controlled attribution** to the scale change. Any next direction must separate
+   the two before blaming either.
 
-| round | audit dir | outcome |
-|---|---|---|
-| interop | `C2_MOTION_INTEROP_20260913/` | Claude's GSAP producer broadcast root dx/dy to every joint; fixed root-only (64bef82e), probe PASS |
-| parts motion | `C2_PARTS_MOTION_20260913/` | civet neck wedge diagnosed; fox refusal = collinear rest chain; fallback clips ACCEPT |
-| bounded repair | `C2_BOUNDED_REPAIR_20260913/` | disc patches can't reach the cut ends; **fox corrected record ACCEPT**; seam oracle replaces the vacated-silhouette ruler; band underlap proposed and proven in Claude's own rig |
-| band underlaps | `C2_BAND_UNDERLAPS_20260913/` | Codex's bands FAILED: ancestry walk misses pelvis-rooted parts (hips/tail unbanded), depth exceeds the descendant's size (ear ghosts), composite oracle over-counts between parallel legs |
+### Who owes what
 
-**Codex's next step is authorized** (Nick delegated approvals 2026-09-13):
-`audits/C2_BAND_UNDERLAPS_20260913/CLAUDE_REVIEW_RESPONSE.md` §4 plus the amendment in
-`audits/C2_BOUNDED_REPAIR_20260913/AUTHORIZATION_20260913.md` — ancestry from pixel ownership,
-depth capped at half the descendant's box, pair-isolated seam gate (`--disc=0.06`), then the
-civet, fox and procedural captures with no further review stop unless a pair still leaks.
-Still NOT authorized: the 8 % compression bound, clip curves, kit wording, GitHub, history.
+**Claude (anthropic lane) — the open job:** review `audits/ANATOMY_COMPLETION_20260917/r1b-r2b-native-01/`
+(README, summary.json, the nine reports, the three films and their stills), own the N3 correction in
+writing, and issue one bounded next direction covering (a) the unexplained Mud/Vent drift,
+(b) the Civet sentinel failure, (c) flora fold + CPU with a controlled measurement. Then write the
+**R9 addendum** (finished textures for procedural creatures — the five crabs through the accepted
+masked-0.35 finisher on the painter master, silhouette/alpha conservation so painter-stage masks
+transfer unchanged, rebind, seed-bound retention; desktop only per D1), in the approved plan's
+format. Track B **E1 code does not start until R3 is on develop**; its design is already written.
 
-### Claude-lane tools a new session should know
+**Codex (openai lane):** stopped for this review by its own handoff. No R3/R4/R9 implementation, no
+unchanged retry, no threshold relaxation. R3 carries two additions Claude specified for E1:
+`ContactPhase.travel?: 'solver' | 'stage'` and `contactJoint` on `compileAnatomyAttack`.
 
-- `port/v2/tools/motion-proof/seam-oracle.mjs` — joint-seam ruler (transparent pixels inside the
-  closed body envelope near a joint pivot). Tests in `port/v2/tests/seam-oracle.test.ts`.
-- `port/v2/tools/motion-proof/rig-pose-render.mjs` — browser-free keyed-master cut, pose, render
-  and measure. `port/v2/apps/game/src/battle2/rig-render.ts` is the pure renderer.
-- `port/v2/tools/battle2-proof/runner.mjs <newDir>` — the 10 s capture (**browser-owning: run
-  outside the macOS sandbox**). `tools/motion-proof/pose-sheet.mjs` renders any template.
+**Nick:** visual acceptance of the three crab films is his and is still open; so are Q1 (crab gape —
+authorized as a *candidate*, not adopted) and the R1b/R2b failures' next direction.
 
-### Waiting on Codex
+### Still open, unchanged by this batch
 
-C1 Wild v4.3 intake is mechanically complete (three Claude reviews, all accept; Nick owns final
-image acceptance). C2 as above. **C3 recorded sound sources have not begun** — every voice today
-is derived from the labelled placeholder archetype and is not shippable. C5 pruning/PR split/LFS
-is unstarted; the 24 pre-existing full-suite failures belong there (`LOG.md` baseline note).
+N5/S5 phone tier (D1: delivered finished originals, no on-device inference); N7–N10 (dead leg keys,
+edge fringes, plant clamp constants, other-family contact exclusions) explicitly **not** closed;
+I5 stale Compendium producer certificate (fresh measured certificate only, never a pin edit);
+53 of 58 bodies unbound; 12 observed; nothing newly visually qualified.
 
-### Verification commands (all green at handoff)
+### Where to read
 
-```
-cd port/v2 && npm run -s typecheck && npx vitest run tests/battle2-*.test.ts tests/effects-*.test.ts tests/motion-*.test.ts tests/soundkit-*.test.ts tests/worldlife-*.test.ts tests/seam-oracle.test.ts
-node tools/validate.js      # from the repo root: FINGERPRINT MATCH
-```
-
-### Protocol reminders
-
-Claude works only on `anthropic/*`, Codex only on `openai/*`; never edit the other worktree, never
-copy source across lanes (Nick carries zips). Commit locally, do not push. Read
-`PARALLEL_GIT_PROTOCOL.md` before every batch. Nick's standing instruction: **work in large
-uninterrupted batches**; stop only for a kit wording change, the first image or sound of a new
-class, a GitHub write, a history rewrite, or a genuine scope question.
+`audits/ANATOMY_REVIEW_20260917/` (anthropic lane) holds `CLAUDE_REVIEW_RESPONSE.md` (S1–S5 + Pass 1
+register), `CLAUDE_R1R2_REVIEW.md` (N1–N12), `MASTER_PROGRAM_20260917.md` (vision, pillars P1–P10,
+tracks A–E, gates, decisions D1–D4 all approved) and `E1_BATTLE2_INTEGRATION_DESIGN.md`.
+`audits/ANATOMY_COMPLETION_20260917/` (openai lane) holds the plan, static checkpoints and all
+native evidence, plus Codex's own `NEW_SESSION_PROMPT_20260919.md`.
