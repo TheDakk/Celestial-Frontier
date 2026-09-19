@@ -1,0 +1,16 @@
+✔ separates exact triangle LBS, model covariance and published ARAP residual (0.439959ms)
+✔ projected independent surfaces retain exact source coordinates and cannot inherit opposing paint (4.928458ms)
+✔ observed attachments weld all source-supported faces, not independent overlaps (0.725291ms)
+✔ corrupted binding/probe, missing source face and conflicting fixed owners refuse (0.929834ms)
+✔ flat source ownership boundaries weld only when explicitly requested (0.83775ms)
+✔ mutated source recipe and unknown anatomy refuse before compilation (0.325458ms)
+✔ contact endpoint locks survive diffusion; unpinned shared paint retains mixed influence (0.816875ms)
+✔ existing-field contact refresh preserves every non-contact weight, pin and triangle (0.545709ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 129.702167
