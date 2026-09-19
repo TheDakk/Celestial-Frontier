@@ -49,38 +49,51 @@ export function createQuadrupedContactSolver(record:CreatureRigRecordV1){
  }};
 }
 
+export interface WeightedContactSupport {
+ readonly rest:readonly [number,number];
+ readonly weights:ReadonlyArray<readonly [string,number]>;
+}
+export type ContactSupport=readonly [number,number]|WeightedContactSupport;
+/** Weighted point model requested by the contact owner. Exact triangle LBS and
+ * the subsequent ARAP displacement are independently measured by the probe. */
+export function predictContactSupport(support:WeightedContactSupport,matrices:Readonly<Record<string,Affine2>>){
+ let x=0,y=0;for(const [joint,weight]of support.weights){const m=matrices[joint];if(!m)throw Error('Contact: missing support matrix '+joint);const p=transformPoint(m,point(support.rest));x+=weight*p.x;y+=weight*p.y;}return {x,y};
+}
 /** Source-owned painted vertices sampled independently of the skeleton endpoint.
  * Reads the binding; does not change source landmarks, skin weights, pins or joins. */
-export function observedContactSupports(record:CreatureRigRecordV1,binding:CreaturePartsBindingV1):Readonly<Record<string,readonly [number,number]>>{
+export function observedContactSupports(record:CreatureRigRecordV1,binding:CreaturePartsBindingV1):Readonly<Record<string,WeightedContactSupport>>{
  const skin=binding.paintSkin;if(!skin||binding.recordRecipeHash!==record.recipeHash)throw Error('Contact: source-bound painted skin required');
- const supports:Record<string,readonly [number,number]>={};
+ const supports:Record<string,WeightedContactSupport>={};
  for(const chain of familyContactChains(familyContractForRecord(record))){
   const owner=binding.parts.find(p=>p.joint===chain.end),part=skin.parts.find(p=>p.id===owner?.id),end=record.landmarks[chain.end]!;
   if(!part)throw Error('Contact: missing painted surface '+chain.end);
-  let best:readonly [number,number]|undefined,distance=Infinity;
+  let best:WeightedContactSupport|undefined,distance=Infinity;
   for(const v of part.vertices){let x=0,y=0;for(let k=0;k<3;k++){const p=skin.vertices[v.triangle[k]!]!,weight=v.barycentric[k]!;x+=p.x*weight/record.geometry.width;y+=p.y*weight/record.geometry.height;}
-   const d=Math.hypot((x-end[0])*record.geometry.width,(y-end[1])*record.geometry.height);if(d<distance){distance=d;best=[x,y];}}
+   const d=Math.hypot((x-end[0])*record.geometry.width,(y-end[1])*record.geometry.height);if(d<distance){distance=d;const weights=new Map<string,number>();for(let k=0;k<3;k++)for(const [joint,weight]of skin.vertices[v.triangle[k]!]!.weights){weights.set(joint,(weights.get(joint)??0)+v.barycentric[k]!*weight);}best={rest:[x,y],weights:[...weights].filter(([,weight])=>weight!==0)};}}
   if(!best)throw Error('Contact: empty painted surface '+chain.end);supports[chain.end]=best;
  }return Object.freeze(supports);
 }
 export interface ContactPhase {readonly actionId:string;readonly elapsedMs:number;readonly durationMs:number;readonly realm?:string;readonly weight?:number;}
 /** Source graph contacts for stance and alternating support. Elapsed phase is
  * explicit and replayable; rendering cadence is not solver state. */
-export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupports:Readonly<Record<string,readonly [number,number]>>={}){
+export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupports:Readonly<Record<string,ContactSupport>>={}){
  const template=familyContractForRecord(record),program=createSkeletonPoseProgram(template,record.landmarks);
  const chains=familyContactChains(template).map(c=>{
   const root=point(record.landmarks[c.hip]!),joint=point(record.landmarks[c.knee]!),end=point(record.landmarks[c.end]!);
   const cross=(end.x-root.x)*(joint.y-root.y)-(end.y-root.y)*(joint.x-root.x);
   if(Math.abs(cross)<1e-12)throw Error('Contact: source bend direction missing '+c.id);
-  const support=paintedSupports[c.end]??record.landmarks[c.end]!;
+  const declaration=paintedSupports[c.end]??record.landmarks[c.end]!;
+  const model:WeightedContactSupport='rest' in declaration?declaration:{rest:declaration,weights:[[c.end,1]]},support=model.rest;
   if(support.length!==2||support.some(v=>!Number.isFinite(v)||v<0||v>1))throw Error('Contact: invalid painted support '+c.end);
-  return {...c,root,joint,endPoint:end,support:point(support),offset:{x:support[0]-end.x,y:support[1]-end.y},chain:createTwoBoneChain({root,joint,end,bend:cross<0?-1:1})};
+  if(!model.weights.length||new Set(model.weights.map(([j])=>j)).size!==model.weights.length||model.weights.some(([j,w])=>!Object.hasOwn(record.landmarks,j)||!Number.isFinite(w)||w<=0)||Math.abs(model.weights.reduce((s,[,w])=>s+w,0)-1)>1e-8)throw Error('Contact: invalid support weights '+c.end);
+  const endpointOnly=model.weights.length===1&&model.weights[0]![0]===c.end&&model.weights[0]![1]===1;
+  return {...c,root,joint,endPoint:end,support:point(support),model,endpointOnly,offset:{x:support[0]-end.x,y:support[1]-end.y},chain:createTwoBoneChain({root,joint,end,bend:cross<0?-1:1})};
  });
  if(Object.keys(paintedSupports).length&&(Object.keys(paintedSupports).length!==chains.length||chains.some(c=>!Object.hasOwn(paintedSupports,c.end))))throw Error('Contact: exact painted support inventory required');
  const scaleLength=measureMotionScale(template,record.landmarks).length;
  const stride=chains.length?Math.min(...chains.map(c=>c.chain.lengths.upper+c.chain.lengths.lower))*.04:0;
  const direction=template.id==='brachyuran'?Math.sign(record.landmarks.leg0NearRoot![0]-record.landmarks.leg0FarRoot![0]):1;
- const hasOffset=chains.some(c=>c.offset.x!==0||c.offset.y!==0);
+ const hasOffset=chains.some(c=>c.offset.x!==0||c.offset.y!==0||!c.endpointOnly);
  return {chains,scaleLength,stride,resolve(input:CreaturePoseV1,phase:ContactPhase){
   if(!Number.isFinite(phase.elapsedMs)||phase.elapsedMs<0||!Number.isFinite(phase.durationMs)||phase.durationMs<=0)throw Error('Contact: invalid phase');
   const free=/:(flight|fly|swim|jet|hop|leap|climb)$/.test(phase.actionId)||phase.actionId==='melee:kick'||phase.realm==='aquatic'||phase.realm==='aerial'||phase.realm==='gas-giant';
@@ -106,7 +119,9 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   // Every pass solves exactly to its declared endpoint target; no reach clamp.
   for(let pass=0;pass<=(hasOffset?3:0);pass++){
    if(pass)for(let i=0;i<chains.length;i++){const c=chains[i]!,contact=contacts[i]!,m=final[c.end]!;
-    contact.endpointTarget={x:contact.paintedTarget.x-m[0]*c.offset.x-m[2]*c.offset.y,y:contact.paintedTarget.y-m[1]*c.offset.x-m[3]*c.offset.y};}
+    // Preserve R2c's exact arithmetic for its endpoint-only reduction.
+    if(c.endpointOnly)contact.endpointTarget={x:contact.paintedTarget.x-m[0]*c.offset.x-m[2]*c.offset.y,y:contact.paintedTarget.y-m[1]*c.offset.x-m[3]*c.offset.y};
+    else{const predicted=predictContactSupport(c.model,final);contact.endpointTarget={x:contact.endpointTarget.x+(contact.paintedTarget.x-predicted.x),y:contact.endpointTarget.y+(contact.paintedTarget.y-predicted.y)};}}
    let matrices=program.evaluate(pose),shift=0;
    for(let i=0;i<chains.length;i++){const c=chains[i]!,target=contacts[i]!.endpointTarget,root=transformPoint(matrices[c.hip]!,c.root),dx=target.x-root.x,max=c.chain.lengths.upper+c.chain.lengths.lower;
     if(Math.hypot(dx,target.y-root.y)<=max)continue;
@@ -127,7 +142,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   let maxError=0,maxPaintTargetErrorPx=0;
   for(let i=0;i<chains.length;i++){const c=chains[i]!,contact=contacts[i]!;
    for(const j of [c.knee,c.end,...c.terminal?[c.terminal]:[]]){const l=template.limitsDeg[j]!,deg=pose[j]!.rotation*180/Math.PI;if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);}
-   const p=transformPoint(final[c.end]!,c.endPoint),paint=transformPoint(final[c.end]!,c.support);
+   const p=transformPoint(final[c.end]!,c.endPoint),paint=c.endpointOnly?transformPoint(final[c.end]!,c.support):predictContactSupport(c.model,final);
    maxError=Math.max(maxError,Math.hypot(p.x-contact.endpointTarget.x,p.y-contact.endpointTarget.y));
    maxPaintTargetErrorPx=Math.max(maxPaintTargetErrorPx,Math.hypot((paint.x-contact.paintedTarget.x)*record.geometry.width,(paint.y-contact.paintedTarget.y)*record.geometry.height));
   }

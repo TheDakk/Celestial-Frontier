@@ -1,3 +1,7 @@
+**Current continuation:** Nick authorized §9 R2c′; the halted packet below is now signed
+ca851fb6 as evidence. [Weighted correction and current status](R2c-prime/README.md).
+The original unsigned observations below describe their collection time.
+
 # Anatomy single-run review packet — S2 STOP
 
 The required shared-path stop fired in R2c. No retry or later item was run.

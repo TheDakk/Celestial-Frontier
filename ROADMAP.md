@@ -17,41 +17,24 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September19 · SINGLE RUN STOPPED AT S2
+## SESSION HANDOFF — September19 · R2c′ authorized correction active
 
-Nick's single-run contract is read-only sibling audits/ANATOMY_REVIEW_20260917/
-CLAUDE_R1BR2B_REVIEW.md §§6–8 plus September19 chat. No intermediate eye stop; leaf reds
-continue; ONLY shared-path red halts with no retry. That required S2 stop HAS FIRED.
-Self-contained packet: audits/ANATOMY_SINGLE_RUN_20260919/README.md; run-summary.json.
+Nick reopened S2 under read-only sibling CLAUDE_R1BR2B_REVIEW.md §9. First completed:
+halted packet signed/verifiedca851fb6 as evidence, NOT admission. Its prior signing refusals
+remain history. Node26.9.0 retained for this uninterrupted run;00-toolchain receipt reused.
+Current ledger: audits/ANATOMY_SINGLE_RUN_20260919/R2c-prime/README.md.
 
-Completed: Node26.9.0 authorized/installed, fresh7capability PASS; whole run stayed on it.
-R1c-b byte-identical Civet adapter reproduces5candidate10planted paw-contour samples.
-Current family alert/walk/dodge upper-reach gap isolated; bounded accommodation required.
-R1c-c69planned CPU trials complete:59diagnostic FAIL/10PASS, all raw evidence retained.
-Median/IQR and leaf folds/CPU are in R1c/CPU_TABLE.md; no production tuning adopted.
+R2c′ reads actual binding weights, weighted support prediction, and corrects endpoint targets
+inside the existing3passes. Endpoint-only supports keep exact R2c arithmetic. No pins, source
+pixels/landmarks/binding, limit/threshold, terminal rule or kit edits. Per-sample vectors separate
+kinematic error at exact triangle LBS, ARAP publication residual and model/triangle covariance.
+Controls pass: terminal100%zero,50/50half, diffused mutant fails.23contact tests, independent
+probe controls, apptypecheck, syntax and rootvalidate pass. Candidate needs signed producer,
+then ONE static sweep: five crabs must reproduce R2c rows bit-identically; Civet unchanged
+candidate10 binding must pass0.25px. S2 on any shared red means stop with diagnosis, no retry.
+If admitted, resume §8 R2d→R3→R4→one native recapture→R9/Q1→R5/R6/R7/R8→all58roster→local
+PR42UI/engine/tools split. Leaf reds continue; no earlier unrun item is silently skipped.
 
-R2c candidate implements observed-support target correction, <=3fixed-point steps, exact
-endpoint gate,8% declared-scale root accommodation; existing hip ownership retained.
-Synthetic zero/double offset and actual compiled-field/ARAP diffused mutant controls pass.
-App TypeScript/rootvalidate pass; initial missing-schema control error retained/corrected.
-One actual static sweep: all5crabs pass121samples×12rows +601presentation samples.
-Civet fails idle261.948177ms: foreNearAnkle paint0.260840176px >0.25px. Bone error2.48e-16;
-model paint0.000834862px but published support differs0.260005314px. Vertices444/445 are
-unpinned,79.7–92.1%Paw and7.8–19.8%Ankle weighted. Rigid ankle-offset model is not sufficient
-for this binding. Zero folds at failure. NO replay, repair, next stage or threshold change.
-R2d/R3/R4/native recapture/R9/Q1/R5/R6/R7/R8/roster/PR42split all unrun because S2.
-New films/sheets0; roster0attempted/0refusals/58remaining; no phone proof or visual acceptance.
-
-Git: OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,
-openai/mac tracking origin/openai/mac. Signed/verified6365167e(toolchain),416b020e(R1c),
-184962789eb2ed82343668a1601cc71e26ed83b6(CPU evidence, currentHEAD).137ahead cached upstream,
-248ahead cached develop; no fetch/freshness claim. R2c and final evidence are staged UNSIGNED:
-1Password helper errored; standard ssh-keygen through same configured1Password socket was
-refused too. Both receipts retained. No further signing attempt without external-state change.
-No persistent signer config/key export. Static candidate hashes retained; no signed producer
-or certification claim for R2c. Pre-existing.DS_Store untouched.
-
-Codex: halted at S2; no retry or resumption without new direction. Claude: read-only packet
-review if Nick requests; no sync/merge/app switch required, no signedR3producer exists.
-PR42parked. No branch/sync/push/PR/hosted attempt/merge/release/deploy/LFS/history operation.
-Gates remain0.25px,<2ms,exact rest; source pixels, records, bindings, joins and limits untouched.
+Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,openai/mac upstream
+origin/openai/mac. Claude read-only; no sync/app switch required. No fetch/push/PR/hosted run/
+merge/release/deploy/LFS operation. PR42parked. Pre-existing.DS_Store stays untouched.

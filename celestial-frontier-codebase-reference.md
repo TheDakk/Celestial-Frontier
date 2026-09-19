@@ -1,5 +1,13 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**R2c′ candidate — matches code September19,2026; actual gate pending.** Nick reopened S2
+for one weighted-support correction. Binding weights are read, never edited; the solver's
+existing3passes use paintedTarget minus weighted prediction. Endpoint-only arithmetic is
+preserved. Independent per-sample reporting separates exact-triangle LBS kinematic error,
+ARAP publication residual, and weighted-point/triangle covariance. Original limits, terminal
+rule, pins, source inputs and thresholds remain unchanged. Prior S2 evidence signedca851fb6;
+[current candidate ledger](audits/ANATOMY_SINGLE_RUN_20260919/R2c-prime/README.md).
+
 **R2c candidate — matches code September19,2026; S2 STOP, NOT ADMITTED.** Family contact now
 Five crabs pass the static full-row/presentation sweep; Civet regresses at idle261.948177ms,
 0.260840176px painted drift against0.25px. Actual support is unpinned and mostly paw-driven;
