@@ -175,3 +175,40 @@ No solver, clip, record, threshold, clamp, kit or binding change; no R3/R4/R9; n
   after its result. R9 addendum is beside this file (`R9_ADDENDUM_FINISHED_TEXTURES.md`).
 - **OpenAI/Codex:** R1c as above; then stop. R3 still carries `ContactPhase.travel` and `contactJoint`.
 - **Anthropic/Claude:** idle until R1c evidence; E1 code waits for R3 on develop.
+
+## 5. Amendment after Codex's `review-diagnosis-01` (`4cb5f7a3`, same day)
+
+Codex ran a diagnosis batch in parallel with this review. Checked read-only against its artifacts:
+- **§3(a) is answered.** Offline replay of all eight failing samples reproduces the recorded drift and the
+  rotation-only prediction `(R − I)·o` matches within 2.5e-5 px (`diagnosis-02.json`, e.g. Mud hit
+  θ = −6.78°, |o| = 2.118 px). Skin positions are Float32 (`aPosition`), whose ulp at 880 px is ~6e-5,
+  so my 1e-9 criterion was written for Float64 and is withdrawn; the closed form is proven to the
+  precision the field can express. The three named negative controls (o = 0, |o|×2, diffused mutant)
+  are still owed — as tests inside the repair item, not a separate batch.
+- **Persimmon ownership is answered.** 84 folds at 67.17 ms sit in `branch-3-foliage` (46) and
+  `branch-4-foliage` (52) plus 2 trunk triangles; ablating either group's rigid pins or local rotation
+  removes the fold at that one sample. Repair is a design question (coupled rigid-foliage/collar
+  targets), not a parameter — nothing adopted, correctly.
+- **New defect T1 — transition snap.** Every film jumps 42–57 display px in one frame at approach →
+  pinch (encoded frames 225/226; source boundary 3666.67 ms): the solver's accumulated gait root travel
+  has no owner across action transitions, so the next non-gait pose drops it. Confirmed on
+  `crab-transition.png`. No existing gate asserts inter-action world-position continuity. This is the
+  `ContactPhase.travel: 'solver' | 'stage'` contract already queued for R3 (E1 design §3): persistent
+  stage displacement gets one explicit owner; fixing it by blending travel is excluded (N11).
+- Codex's repair boundary for Mud/Vent (offset-aware painted-support constraint; **do not move source
+  landmarks**) selects candidate 2 from §2 and excludes candidate 1. Agreed: landmarks are the observed
+  record and set bone lengths.
+
+**Amended next direction (replaces §3/§4 where they overlap):**
+1. **R1c-b/c only** (measurement): Civet adapter check + family-vs-compat A/B; flora variance floor +
+   2×2 CPU attribution. Do (b) before any solver edit — R2c touches the same shared solver.
+2. **R2c** — painted-support contact for all families: end target = paintedRest − R(θ)·o, iterated to
+   convergence (|o| is small; ≤ 3 fixed-point steps), both the bone endpoint and the painted vertex
+   gated (contact error ≤ 1e-8 image units, painted drift ≤ 0.25 px unchanged); controls o = 0 → identical
+   to today's solve, |o|×2 → still ≤ 0.25 px, diffused mutant → fails; static on five crabs + Civet.
+3. **R3** as scoped, now explicitly owning T1 via `travel`, plus `contactJoint` and pinch reachability;
+   add a continuity gate (max root world-position step between consecutive presentation samples ≤ one
+   stride) with a negative control that reproduces today's 57 px snap.
+4. One native re-capture after R2c + R3 (eight subjects + Civet), then Nick's look; R4 → R9 after.
+5. Persimmon: Nick decides whether foliage rigidity is negotiable before anyone designs the collar
+   treatment; its CPU failures stay open regardless.

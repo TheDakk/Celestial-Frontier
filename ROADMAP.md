@@ -97,6 +97,14 @@ read-only; never sync to fetch a document.
    number; retention keyed by recipe/cutout/settings/model hashes; phone tier refuses (D1); Nick's
    sheet is the gate. Two open questions for Nick at its end.
 
+### Amendment (same evening) — Codex's `review-diagnosis-01` (`4cb5f7a3`) landed in parallel
+It proves R1c (a) to Float32 precision (2.5e-5 px), locates the persimmon fold in branch-3/4 foliage
+pins, and finds **T1: a 42–57 px one-frame snap at approach → pinch** (gait travel has no owner across
+transitions — the R3 `travel` contract). Amended order, in §5 of `CLAUDE_R1BR2B_REVIEW.md`:
+**R1c-b/c (Civet A/B, CPU 2×2) → R2c (painted-support contact, offset-aware, landmarks untouched) →
+R3 (+ T1 continuity gate) → one re-capture → Nick's look → R4 → R9.** Persimmon foliage rigidity is
+Nick's decision before any collar design.
+
 ### Who owes what
 
 **Codex (openai lane):** R1c per the copy-ready block in §4 of the review. No solver, clip, record,
