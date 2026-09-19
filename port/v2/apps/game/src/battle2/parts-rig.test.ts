@@ -12,7 +12,8 @@ import { FITS, loadFit, type FitName } from './parts-rig.fixtures.js';
 
 const ctx = (actionId: string, elapsedMs: number, durationMs: number, planted: boolean): RigPoseContext => Object.freeze({ actionId, elapsedMs, durationMs, weight: 1, planted, travel: 'stage' });
 const snapshot = (rig: PartsRig) => rig.parts.map((p) => { const d = p.display as Container; return [d.x, d.y, d.rotation, d.scale.x, d.scale.y]; });
-const px = (p: { x: number; y: number } | null): [number, number] => { if (!p) throw new Error('no joint'); return [p.x, p.y]; };
+/** Joint position in source pixels (the rig reports display units = normalized cut-out). */
+const px = (rig: PartsRig, joint: string): [number, number] => { const p = rig.jointPosition(joint); if (!p) throw new Error('no joint ' + joint); return [p.x * rig.sourceSize.width, p.y * rig.sourceSize.height]; };
 const CRAB_FEET = ['leg0FarFoot', 'leg0NearFoot', 'leg1FarFoot', 'leg1NearFoot', 'leg2FarFoot', 'leg2NearFoot', 'leg3FarFoot', 'leg3NearFoot'];
 
 describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage contract', () => {
@@ -23,7 +24,7 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
       expect(rig.contactMode).toBe(name === 'civet' ? 'quadruped-compat' : 'family');
       expect(rig.recipeHash).toBe(record.recipeHash); expect(rig.templateId).toBe(record.template.id);
       expect(rig.foot).toEqual({ x: record.landmarks.root![0], y: record.geometry.groundLineY });
-      expect(rig.cutout).toEqual({ width: record.geometry.width, height: record.geometry.height });
+      expect(rig.cutout).toEqual({ width: 1, height: 1 }); expect(rig.sourceSize).toEqual({ width: record.geometry.width, height: record.geometry.height }); // display units are normalized (E1.5 film finding)
       expect(rig.bounds.height).toBeGreaterThan(0.05); expect(rig.bounds.height).toBeLessThanOrEqual(1); expect(rig.bounds.groundLineY).toBe(record.geometry.groundLineY);
       expect(rig.bodyLength).toBe(compileBodyCard(record, record.genome).scaleLength); // N1: the declared motion scale, never the root→carapace axis
       expect(rig.parts.map((p) => p.id).sort()).toEqual(binding.parts.map((p) => p.id).sort());
@@ -37,15 +38,15 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     const card = compileBodyCard(record, record.genome), W = record.geometry.width, H = record.geometry.height;
     const rest: Record<string, [number, number]> = Object.fromEntries(CRAB_FEET.map((f) => [f, [record.landmarks[f]![0] * W, record.landmarks[f]![1] * H] as [number, number]]));
     rig.applyPose({}, restContext()); expect(rig.applied()).toBe(1);
-    for (const f of CRAB_FEET) { const p = px(rig.jointPosition(f)); expect(Math.hypot(p[0] - rest[f]![0], p[1] - rest[f]![1]), f).toBeLessThan(1e-6); }
-    const carapaceRest = px(rig.jointPosition('carapace'));
+    for (const f of CRAB_FEET) { const p = px(rig, f); expect(Math.hypot(p[0] - rest[f]![0], p[1] - rest[f]![1]), f).toBeLessThan(1e-6); }
+    const carapaceRest = px(rig, 'carapace');
     const hit = buildTimeline(card, 'hit', 7), clip = { source: 'timeline' as const, timeline: hit };
     let maxLoad = 0;
     for (let i = 0; i <= 20; i++) {
       const ms = hit.durationMs * i / 20;
       rig.applyPose(sampleClip(clip, ms), ctx(hit.actionId, ms, hit.durationMs, true));
-      maxLoad = Math.max(maxLoad, Math.abs(px(rig.jointPosition('carapace'))[1] - carapaceRest[1]));
-      for (const f of CRAB_FEET) { const p = px(rig.jointPosition(f)); expect(Math.hypot(p[0] - rest[f]![0], p[1] - rest[f]![1]), `${f}@${ms}`).toBeLessThan(1e-6); }
+      maxLoad = Math.max(maxLoad, Math.abs(px(rig, 'carapace')[1] - carapaceRest[1]));
+      for (const f of CRAB_FEET) { const p = px(rig, f); expect(Math.hypot(p[0] - rest[f]![0], p[1] - rest[f]![1]), `${f}@${ms}`).toBeLessThan(1e-6); }
     }
     expect(maxLoad).toBeGreaterThan(0.5); // N12: 3 % of the motion scale is visible body loading, not a static crab
     expect(rig.refusals()).toBe(0); expect(rig.applied()).toBe(22);
@@ -72,7 +73,7 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     for (let i = 0; i <= 40; i++) {
       const ms = approach.durationMs * i / 40;
       rig.applyPose(sampleClip(clip, ms), ctx(approach.actionId, ms, approach.durationMs, false));
-      for (const f of CRAB_FEET) { const y = px(rig.jointPosition(f))[1]; expect(y, `${f}@${ms}`).toBeLessThanOrEqual(groundY[f]! + 1e-6); maxLift = Math.max(maxLift, groundY[f]! - y); }
+      for (const f of CRAB_FEET) { const y = px(rig, f)[1]; expect(y, `${f}@${ms}`).toBeLessThanOrEqual(groundY[f]! + 1e-6); maxLift = Math.max(maxLift, groundY[f]! - y); }
     }
     expect(rig.refusals()).toBe(0); expect(rig.lastRefusal()).toBeNull();
     expect(maxLift).toBeGreaterThan(1); // N2 readability: swing lift is 15 % of lower-leg length, well over a source pixel
@@ -88,8 +89,8 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     for (let i = 0; i <= 12; i++) {
       const k = i / 12, ms = approach.durationMs * k;
       rig.applyPose(sampleClip(clip, ms), ctx(approach.actionId, ms, approach.durationMs, false));
-      const holderX = runUpPx * EASE_FN['ease-out'](k), foot = px(rig.jointPosition('leg0NearFoot'));
-      world.push(holderX + scale * (foot[0] - rig.foot.x * W));
+      const holderX = runUpPx * EASE_FN['ease-out'](k), foot = px(rig, 'leg0NearFoot');
+      world.push(holderX + scale * (foot[0] / W - rig.foot.x) * W);
     }
     // A planted stance foot must not move in the arena while the body advances; today the foot rides with the body.
     expect(Math.max(...world) - Math.min(...world)).toBeLessThan(0.5);
@@ -104,7 +105,7 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     for (let i = 0; i <= 30; i++) {
       const ms = idle.durationMs * i / 30;
       rig.applyPose(sampleClip(clip, ms), ctx('idle', ms, idle.durationMs, true));
-      for (const j of paws) { const p = px(rig.jointPosition(j)); expect(Math.hypot(p[0] - record.landmarks[j]![0] * W, p[1] - record.landmarks[j]![1] * H), `${j}@${ms}`).toBeLessThan(1e-6); }
+      for (const j of paws) { const p = px(rig, j); expect(Math.hypot(p[0] - record.landmarks[j]![0] * W, p[1] - record.landmarks[j]![1] * H), `${j}@${ms}`).toBeLessThan(1e-6); }
     }
     expect(rig.refusals()).toBe(0); expect(rig.applied()).toBe(31);
     rig.dispose();

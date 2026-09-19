@@ -37,3 +37,10 @@ still adds its own stride dx during the run-up and stance feet plant to the body
 producer admits no brachyuran melee for `weapons []` (S4), so crabs stage as targets and `status().attacks` names the reason; (3) `pinch`
 is not an admitted anatomy attack for the Crab. Quadruped bindings use Codex's preserved compatibility solver until the Civet sentinel
 passes on the family path (R1c-b).
+
+### E1.5 — native proof (2026-09-19)
+`tools/battle2-proof/native-runner.mjs` films two real fits on the real stage in Edge (`audits/BATTLE2_E1_PROOF_20260919/`:
+five Civet-vs-crab runs, zero refusals, CPU p95 ≈ 2.2 ms at 60 fps, review sheet). The film caught two defects the
+numeric gates could not: the parts rig's display units are normalized (it was drawn 0.3 px tall — `cutout` is now 1×1
+with `sourceSize` for pixels), and the quadruped victory rear-up cannot be a planted stance (`plantedFor` frees it).
+Observations for Nick: the contact gap stops at a crab's leg tips (silhouette box), and the fainted crab stands back up.

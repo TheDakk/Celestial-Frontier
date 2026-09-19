@@ -133,3 +133,8 @@ double-counts next to the run-up and feet plant to the body); the brachyuran att
 from there. Quadruped bindings run on the preserved compatibility solver until the Civet sentinel passes on the family path (R1c-b).
 E1.5 (`?battle2=1` films for Nick) needs a browser run — deferred to the single stop's packet. Guardians (D2) and the Chronicle cadence
 sync remain open.
+
+**E1.5 done (same night):** `audits/BATTLE2_E1_PROOF_20260919/` — five Civet-vs-crab films on the real stage, zero
+refusals, review sheet. Two defects found and fixed by the film (invisible rigs from normalized display units; victory
+rear-up refused as a planted stance) and three observations for Nick (contact gap at leg tips; faint recovers; raw crab
+texture until R9). See its README.

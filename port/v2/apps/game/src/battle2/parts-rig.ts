@@ -54,7 +54,10 @@ export interface PartsRig extends BattleRigV1 {
   lastRefusal(): string | null;
   /** How many poses reached the rig's display (the reduced-motion test asserts exactly one). */
   applied(): number;
-  /** A joint's position under the last resolved pose, in cut-out pixels (the outcome tests read the contact joint here). */
+  /** Source cut-out pixel size. The rig's DISPLAY units are normalized cut-out units (Codex's paint-skin meshes are 0..1), so
+   * `cutout` is 1×1 for the stage's placement math and this is the pixel size for anyone converting. */
+  readonly sourceSize: { readonly width: number; readonly height: number };
+  /** A joint's position under the last resolved pose, in DISPLAY units (normalized cut-out; multiply by `sourceSize` for pixels). */
   jointPosition(joint: string): { readonly x: number; readonly y: number } | null;
   /** The last pose the solver published (contacts already resolved), or null before the first. */
   lastPose(): CreaturePoseV1 | null;
@@ -92,7 +95,8 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
     kind: 'parts', label: `${PARTS_RIG_LABEL} · contact: ${contactMode} · travel: stage (interim)`, contactMode,
     travelOwner: 'stage (interim: the solver still adds its stride dx and feet plant to the body during the run-up, pending R3 travel:stage)',
     recipeHash: rig.recipeHash, templateId: rig.templateId, parts, root: rig.root, bounds,
-    cutout: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: root[0], y: record.geometry.groundLineY }), bodyLength: card.scaleLength,
+    // E1.5 finding: the stage treats `cutout` as the rig's display-unit size; the paint-skin mesh is normalized, so it is 1×1 here.
+    cutout: Object.freeze({ width: 1, height: 1 }), sourceSize: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: root[0], y: record.geometry.groundLineY }), bodyLength: card.scaleLength,
     applyPose(pose: RigPose, context: RigPoseContext = restContext()): void {
       if (disposed) throw new Error('parts rig is disposed');
       pending = pose; frame += 1;
@@ -104,7 +108,7 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
       const lm = record.landmarks[joint]; if (!lm) return null;
       const m = program.evaluate(last ?? {})[joint]; if (!m) return null;
       const p = transformPoint(m, { x: lm[0], y: lm[1] });
-      return Object.freeze({ x: p.x * W, y: p.y * H });
+      return Object.freeze({ x: p.x, y: p.y });
     },
     dispose(): void { if (disposed) return; disposed = true; owner.dispose(); rig.dispose(); },
   };

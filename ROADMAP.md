@@ -102,12 +102,19 @@ actual skin weights, crabs must reproduce bit-for-bit, Civet must pass unchanged
 packet is staged UNSIGNED (1Password refused both lanes tonight; now unlocked) — sign it first. R1c-c attributed
 most cold flora CPU to the declared scale (per-pass cost, `normalPasses` 4 everywhere): leaf red for R8/Q4.
 
+### E1.5 done — the films exist (`audits/BATTLE2_E1_PROOF_20260919/`)
+`tools/battle2-proof/native-runner.mjs` films two real fits on the real stage in Edge. Five Civet-vs-crab runs pass
+(zero refusals, CPU p95 ≈ 2.2 ms at 60 fps); `review-sheet.png` is the packet row. **The film found what the gates
+could not:** the parts rig was invisible (normalized display units drawn 0.3 px tall — fixed, `cutout` 1×1 +
+`sourceSize`), and the quadruped victory rear-up was refused as a planted stance (fixed, `plantedFor` frees it).
+For Nick's eye: the contact gap stops at a crab's leg tips (silhouette box vs body box — kit question); the fainted
+crab stands back up (V2 on the stage); crabs are raw painter texture until R9.
+
 ### What Claude owes next
 1. **Re-merge at Codex's signed R2c′/R3 producers**; pass `observedContactSupports(record, binding)` to the parts rig's family solver; then flip the three pins: `ContactPhase.travel:'stage'` in the parts-rig
    context (drop the interim stride double-count note), crab attacks through the stage, pinch selection; re-run
    `parts-rig.test.ts` + `e1-outcomes.test.ts`; move crabs from target-only to attacker in outcome 2.
-2. **E1.5**: the `?battle2=1` study with the six fits in a real browser (films at 25/50/75 + one full turn per fit) for the
-   single stop's packet; needs the dev asset server (`assets.bytes` is now a dev-source method).
+2. E1.5 is done (above); re-film after the R2c′/R3 re-merge so the packet shows planted feet and crab attacks.
 3. Guardian design (D2) as a document; Chronicle cadence sync stays open.
 4. Merge findings to hand Codex at the stop (recorded in `e86a66ab`): its pose probe hard-codes an absolute path into this
    worktree and pinned my old adapter bytes (make it repo-relative, re-pin); `creature-blender-export.mjs` must span

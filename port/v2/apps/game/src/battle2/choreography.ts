@@ -77,8 +77,9 @@ const clamp01 = (v: number): number => (v < 0 ? 0 : v > 1 ? 1 : v);
 const facingOf = (side: Side): 1 | -1 => (side === 'left' ? 1 : -1);
 const clipMs = (c: TurnClip): number => (c.source === 'timeline' ? c.timeline.durationMs : c.clip.durationMs);
 const clipId = (c: TurnClip): string => (c.source === 'timeline' ? c.timeline.actionId : c.clip.actionId);
-/** Stationary clips plant every foot (quadruped compatibility solver); gaits and lunges free them. */
-export const plantedFor = (actionId: string): boolean => /^(idle|alert|hit|faint|victory|tame|feed|cast|sway|disturb|harvest|grow)$/.test(actionId);
+/** Stationary clips plant every foot (quadruped compatibility solver); gaits, lunges and the victory rear-up free them
+ * (E1.5 finding: the quadruped victory clip's root loading exceeds the 8 % planted compression bound — it is a lift, not a stance). */
+export const plantedFor = (actionId: string): boolean => /^(idle|alert|hit|faint|tame|feed|cast|sway|disturb|harvest|grow)$/.test(actionId);
 const contextOf = (c: TurnClip, elapsedMs: number, weight = 1): RigPoseContext => { const actionId = clipId(c); return Object.freeze({ actionId, elapsedMs: Math.max(0, elapsedMs), durationMs: clipMs(c), weight, planted: plantedFor(actionId), travel: 'stage' as const }); };
 function makeClip(c: CombatantPlanInput, action: PortraitAction, seed: number): TurnClip {
   if (c.card) return { source: 'timeline', timeline: buildTimeline(c.card, action, seed) };
