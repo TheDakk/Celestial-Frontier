@@ -1,5 +1,7 @@
 # Anatomy completion — September 17 continuation
 
+**Latest checkpoint, September19:** signed producer `6a58e40e` completed R1b/R2b and all eight native subjects plus Civet. [Full native review](r1b-r2b-native-01/README.md): three numeric passes, five subject failures and a failed Civet sentinel; STOP for review. [New-session prompt](NEW_SESSION_PROMPT_20260919.md) preserves D1–D4, N1/N11/N12, Q4, R3 interface additions and R4→R9 order. Earlier paragraphs below are retained September17 history and do not authorize another capture/repair loop. No GitHub writes; PR42 parked.
+
 **Signing resolved:** Nick's retry produced signed commit `0b8857511c133fef36299505c9e6927e4e2d47f4`, independently verified against the configured public signing key. The implementation and complete review packet are now committed locally. `SIGNED_CHECKPOINT.json` records this result. Staged/blocked statements below describe the preserved pre-commit review snapshot, not the current signing state. No source code or diagnostic inputs changed in this documentation update; no GitHub write occurred.
 
 **Review requested September 17:** use [the full consolidated report](CLAUDE_REVIEW_REPORT.md) and [copy-ready Claude request](CLAUDE_REVIEW_PROMPT.md). Claude should now open the Codex working files read-only; no branch synchronization. Two signing attempts failed, and the implementation is still staged. Earlier “need not open” and first-attempt text below records the preceding handoff.

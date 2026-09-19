@@ -1,0 +1,1553 @@
+{
+  "producer": "6a58e40eeb552e925c94e0173d6298c4b05303e3",
+  "reconciledAtUtc": "2026-09-19T15:28:07.042285+00:00",
+  "status": "STOP_FOR_REVIEW",
+  "primarySubjects": {
+    "attempted": 8,
+    "numericPass": 3,
+    "failed": 5
+  },
+  "civetSentinel": "FAIL",
+  "uniqueInputsVerified": 800,
+  "artifacts": 132,
+  "interruptionRecovery": "All nine reports were terminal when resumed; all inputs and shared hashes verified; no rerun performed.",
+  "contactPinComparison": [
+    {
+      "subject": "crab",
+      "fieldVertexCounts": [
+        1274,
+        1274
+      ],
+      "changedWeights": 0,
+      "addedPins": 0,
+      "removedPins": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "fieldVertexCounts": [
+        2610,
+        2610
+      ],
+      "changedWeights": 0,
+      "addedPins": 0,
+      "removedPins": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "fieldVertexCounts": [
+        1600,
+        1600
+      ],
+      "changedWeights": 0,
+      "addedPins": 0,
+      "removedPins": 0
+    },
+    {
+      "subject": "mud-crab",
+      "fieldVertexCounts": [
+        1759,
+        1759
+      ],
+      "changedWeights": 0,
+      "addedPins": 0,
+      "removedPins": 0
+    },
+    {
+      "subject": "vent-crab",
+      "fieldVertexCounts": [
+        1532,
+        1532
+      ],
+      "changedWeights": 0,
+      "addedPins": 0,
+      "removedPins": 0
+    }
+  ],
+  "subjects": [
+    {
+      "subject": "crab",
+      "folder": "crab-native-04",
+      "binding": "crab-fits-03/crab",
+      "status": "DIAGNOSTIC_PASS",
+      "gates": {
+        "contacts": {
+          "maxContactError": 4.577566798522237e-16,
+          "maxPaintContactDriftPx": 0.1332742905892642,
+          "paintTolerancePx": 0.25,
+          "chains": [
+            "leg0Far",
+            "leg0Near",
+            "leg1Far",
+            "leg1Near",
+            "leg2Far",
+            "leg2Near",
+            "leg3Far",
+            "leg3Near"
+          ]
+        },
+        "restChanged": 0,
+        "finalRestChanged": 0,
+        "maximumRootDrift": 0,
+        "rows": [
+          {
+            "id": "idle",
+            "samples": 121,
+            "maxGapPx": 5.245208740234375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.6000000238418579,
+            "updateMaxMs": 1.800000011920929
+          },
+          {
+            "id": "approach",
+            "samples": 121,
+            "maxGapPx": 4.9452302199189846e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "melee:pinch",
+            "samples": 121,
+            "maxGapPx": 3.534514317724271e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.3999999761581421
+          },
+          {
+            "id": "hit",
+            "samples": 121,
+            "maxGapPx": 5.245208740234375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "alert",
+            "samples": 121,
+            "maxGapPx": 5.245208736823769e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "approach:scuttle",
+            "samples": 121,
+            "maxGapPx": 4.9452302199189846e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "cast",
+            "samples": 121,
+            "maxGapPx": 4.707718921812226e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "dodge",
+            "samples": 121,
+            "maxGapPx": 4.945230231977294e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "faint",
+            "samples": 121,
+            "maxGapPx": 5.245208740234375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.3999999761581421
+          },
+          {
+            "id": "victory",
+            "samples": 121,
+            "maxGapPx": 5.245208740234375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "tame",
+            "samples": 121,
+            "maxGapPx": 4.69145731973604e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.3999999761581421
+          },
+          {
+            "id": "feed",
+            "samples": 121,
+            "maxGapPx": 4.69145731973604e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.30000001192092896
+          }
+        ],
+        "presentation": {
+          "samples": 601,
+          "maxGapPx": 5.93427627033388e-05,
+          "status": "PASS"
+        },
+        "allClipPerformance": {
+          "scope": "121 accelerated samples per clip before presentation/framing; separate from real-time capture",
+          "maxP95Ms": 0.6000000238418579,
+          "targetMs": 2
+        },
+        "framing": {
+          "samples": 602,
+          "fullMotionBox": {
+            "minX": 0.3553450405597687,
+            "minY": 0.42135944962501526,
+            "maxX": 0.672559916973114,
+            "maxY": 0.6060867309570312
+          },
+          "view": {
+            "x": 745,
+            "y": 90,
+            "width": 610,
+            "height": 540
+          },
+          "fit": {
+            "scale": 1922.9867366155374,
+            "x": 61.67620008145468,
+            "y": -720.268632976527
+          },
+          "inside": true,
+          "oldRestOnlyInside": true
+        }
+      },
+      "capture": {
+        "rigUpdateP95Ms": 1.300000011920929,
+        "frames": 602,
+        "fps": 60.002795471336434,
+        "wholeFrameCpuP95Ms": 1.7000000476837158,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1400,
+              "height": 800,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.100639"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1400,
+          "height": 800
+        }
+      },
+      "error": null,
+      "reportSha256": "2cc333683158cb7b06201f4e51b01e499d98b9cd4cddfd1c5a9a43c8eb2d80b6"
+    },
+    {
+      "subject": "coconut-crab",
+      "folder": "coconut-crab-native-04",
+      "binding": "crab-fits-03/coconut-crab",
+      "status": "DIAGNOSTIC_PASS",
+      "gates": {
+        "contacts": {
+          "maxContactError": 4.0029660424867215e-16,
+          "maxPaintContactDriftPx": 0.14363620743662753,
+          "paintTolerancePx": 0.25,
+          "chains": [
+            "leg0Far",
+            "leg0Near",
+            "leg1Far",
+            "leg1Near",
+            "leg2Far",
+            "leg2Near",
+            "leg3Far",
+            "leg3Near"
+          ]
+        },
+        "restChanged": 0,
+        "finalRestChanged": 0,
+        "maximumRootDrift": 0,
+        "rows": [
+          {
+            "id": "idle",
+            "samples": 121,
+            "maxGapPx": 4.228822480034731e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.6000000238418579,
+            "updateMaxMs": 2.600000023841858
+          },
+          {
+            "id": "approach",
+            "samples": 121,
+            "maxGapPx": 4.945230227957858e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.5,
+            "updateMaxMs": 0.6000000238418579
+          },
+          {
+            "id": "melee:pinch",
+            "samples": 121,
+            "maxGapPx": 4.378868020758932e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.5,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "hit",
+            "samples": 121,
+            "maxGapPx": 4.945230227957858e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.5,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "alert",
+            "samples": 121,
+            "maxGapPx": 4.210711808893367e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "approach:scuttle",
+            "samples": 121,
+            "maxGapPx": 4.945230227957858e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.5,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "cast",
+            "samples": 121,
+            "maxGapPx": 4.304942919455368e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.5,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "dodge",
+            "samples": 121,
+            "maxGapPx": 4.945230227957858e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "faint",
+            "samples": 121,
+            "maxGapPx": 4.3788680321072076e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "victory",
+            "samples": 121,
+            "maxGapPx": 4.1467015929579454e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "tame",
+            "samples": 121,
+            "maxGapPx": 4.146701598350586e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "feed",
+            "samples": 121,
+            "maxGapPx": 4.347339767441965e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.5
+          }
+        ],
+        "presentation": {
+          "samples": 601,
+          "maxGapPx": 5.298460949338992e-05,
+          "status": "PASS"
+        },
+        "allClipPerformance": {
+          "scope": "121 accelerated samples per clip before presentation/framing; separate from real-time capture",
+          "maxP95Ms": 0.6000000238418579,
+          "targetMs": 2
+        },
+        "framing": {
+          "samples": 602,
+          "fullMotionBox": {
+            "minX": 0.23042044043540955,
+            "minY": 0.3762836158275604,
+            "maxX": 0.8202401399612427,
+            "maxY": 0.6893274188041687
+          },
+          "view": {
+            "x": 745,
+            "y": 90,
+            "width": 610,
+            "height": 540
+          },
+          "fit": {
+            "scale": 1034.214354811123,
+            "x": 506.6958728597981,
+            "y": -299.1579169690969
+          },
+          "inside": true,
+          "oldRestOnlyInside": true
+        }
+      },
+      "capture": {
+        "rigUpdateP95Ms": 1.600000023841858,
+        "frames": 602,
+        "fps": 60.00219641983567,
+        "wholeFrameCpuP95Ms": 2,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1400,
+              "height": 800,
+              "nb_read_frames": "607"
+            }
+          ],
+          "format": {
+            "duration": "10.103006"
+          }
+        },
+        "encodedFrames": {
+          "frames": 607,
+          "width": 1400,
+          "height": 800
+        }
+      },
+      "error": null,
+      "reportSha256": "c8ab6f20ecd2c29e10e6671283f26dd4d4200a3e5c4c2f3a0a4d93241706c169"
+    },
+    {
+      "subject": "freshwater-crab",
+      "folder": "freshwater-crab-native-04",
+      "binding": "crab-fits-03/freshwater-crab",
+      "status": "DIAGNOSTIC_PASS",
+      "gates": {
+        "contacts": {
+          "maxContactError": 4.0029660424867215e-16,
+          "maxPaintContactDriftPx": 0.1761181800351964,
+          "paintTolerancePx": 0.25,
+          "chains": [
+            "leg0Far",
+            "leg0Near",
+            "leg1Far",
+            "leg1Near",
+            "leg2Far",
+            "leg2Near",
+            "leg3Far",
+            "leg3Near"
+          ]
+        },
+        "restChanged": 0,
+        "finalRestChanged": 0,
+        "maximumRootDrift": 0,
+        "rows": [
+          {
+            "id": "idle",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.5999999642372131,
+            "updateMaxMs": 2
+          },
+          {
+            "id": "approach",
+            "samples": 121,
+            "maxGapPx": 4.5873780009259025e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "melee:pinch",
+            "samples": 121,
+            "maxGapPx": 2.932160824835025e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "hit",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "alert",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "approach:scuttle",
+            "samples": 121,
+            "maxGapPx": 4.5873780009259025e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "cast",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "dodge",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "faint",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "victory",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "tame",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "feed",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          }
+        ],
+        "presentation": {
+          "samples": 601,
+          "maxGapPx": 5.086522523745297e-05,
+          "status": "PASS"
+        },
+        "allClipPerformance": {
+          "scope": "121 accelerated samples per clip before presentation/framing; separate from real-time capture",
+          "maxP95Ms": 0.5999999642372131,
+          "targetMs": 2
+        },
+        "framing": {
+          "samples": 602,
+          "fullMotionBox": {
+            "minX": 0.3066745102405548,
+            "minY": 0.39223358035087585,
+            "maxX": 0.7203598618507385,
+            "maxY": 0.667328417301178
+          },
+          "view": {
+            "x": 745,
+            "y": 90,
+            "width": 610,
+            "height": 540
+          },
+          "fit": {
+            "scale": 1474.5506400594136,
+            "x": 292.79290463488275,
+            "y": -488.3682769591794
+          },
+          "inside": true,
+          "oldRestOnlyInside": true
+        }
+      },
+      "capture": {
+        "rigUpdateP95Ms": 1.300000011920929,
+        "frames": 602,
+        "fps": 60.00219641983567,
+        "wholeFrameCpuP95Ms": 1.600000023841858,
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1400,
+              "height": 800,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.101021"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1400,
+          "height": 800
+        }
+      },
+      "error": null,
+      "reportSha256": "30f1c87042212ef13bfabb1a170903d37a2646f64f06d49bf38821915c0f568f"
+    },
+    {
+      "subject": "mud-crab",
+      "folder": "mud-crab-native-04",
+      "binding": "crab-fits-03/mud-crab",
+      "status": "FAIL",
+      "gates": {
+        "contacts": {
+          "maxContactError": 3.510833468576701e-16,
+          "maxPaintContactDriftPx": 0.2698444492159867,
+          "paintTolerancePx": 0.25,
+          "chains": [
+            "leg0Far",
+            "leg0Near",
+            "leg1Far",
+            "leg1Near",
+            "leg2Far",
+            "leg2Near",
+            "leg3Far",
+            "leg3Near"
+          ]
+        },
+        "restChanged": 0,
+        "finalRestChanged": 0,
+        "maximumRootDrift": 0,
+        "rows": [
+          {
+            "id": "idle",
+            "samples": 121,
+            "maxGapPx": 3.99830037212616e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.699999988079071,
+            "updateMaxMs": 1.899999976158142
+          },
+          {
+            "id": "approach",
+            "samples": 121,
+            "maxGapPx": 5.135693366178994e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.800000011920929
+          },
+          {
+            "id": "melee:pinch",
+            "samples": 121,
+            "maxGapPx": 4.0062160087028476e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "hit",
+            "samples": 63,
+            "maxGapPx": 5.560829062314319e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 236.25,
+              "error": "Error: Contact paint drift leg0NearFoot: 0.2504741445163317"
+            },
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "alert",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "approach:scuttle",
+            "samples": 121,
+            "maxGapPx": 5.135693366178994e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "cast",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "dodge",
+            "samples": 55,
+            "maxGapPx": 6.106495129998063e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 128.33333333333334,
+              "error": "Error: Contact paint drift leg0NearFoot: 0.2564678211093445"
+            },
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "faint",
+            "samples": 56,
+            "maxGapPx": 5.135693366178994e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 242.66666666666666,
+              "error": "Error: Contact paint drift leg0FarFoot: 0.2517090898957988"
+            },
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "victory",
+            "samples": 121,
+            "maxGapPx": 4.3982412372525375e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "tame",
+            "samples": 121,
+            "maxGapPx": 4.0007376285557426e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "feed",
+            "samples": 121,
+            "maxGapPx": 3.820774541046395e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          }
+        ],
+        "presentation": {
+          "samples": 402,
+          "maxGapPx": 5.157782471843704e-05,
+          "status": "FAIL",
+          "failure": {
+            "action": "hit",
+            "ms": 6700,
+            "error": "Error: Contact paint drift leg0NearFoot: 0.2698444492159867"
+          }
+        },
+        "allClipPerformance": {
+          "scope": "121 accelerated samples per clip before presentation/framing; separate from real-time capture",
+          "maxP95Ms": 0.699999988079071,
+          "targetMs": 2
+        },
+        "framing": {
+          "samples": 1,
+          "fullMotionBox": {
+            "minX": 0.27840909361839294,
+            "minY": 0.41363635659217834,
+            "maxX": 0.7215908765792847,
+            "maxY": 0.6579545140266418
+          },
+          "view": {
+            "x": 745,
+            "y": 90,
+            "width": 610,
+            "height": 540
+          },
+          "fit": {
+            "scale": 1376.4103657975243,
+            "x": 361.7948376113506,
+            "y": -479.33336888419535
+          },
+          "inside": false,
+          "oldRestOnlyInside": true,
+          "skipped": "Prior action/presentation failed"
+        }
+      },
+      "capture": {},
+      "error": "Error: Actual family gates failed\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
+      "reportSha256": "cd18c85368655b20fac3618eeff4eae2656b22dfc1b8d9e86fa371c10c8ef506"
+    },
+    {
+      "subject": "vent-crab",
+      "folder": "vent-crab-native-04",
+      "binding": "crab-fits-03/vent-crab",
+      "status": "FAIL",
+      "gates": {
+        "contacts": {
+          "maxContactError": 3.376611507232129e-16,
+          "maxPaintContactDriftPx": 0.3478885580395846,
+          "paintTolerancePx": 0.25,
+          "chains": [
+            "leg0Far",
+            "leg0Near",
+            "leg1Far",
+            "leg1Near",
+            "leg2Far",
+            "leg2Near",
+            "leg3Far",
+            "leg3Near"
+          ]
+        },
+        "restChanged": 0,
+        "finalRestChanged": 0,
+        "maximumRootDrift": 0,
+        "rows": [
+          {
+            "id": "idle",
+            "samples": 121,
+            "maxGapPx": 3.708922668958675e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.5,
+            "updateMaxMs": 1.899999976158142
+          },
+          {
+            "id": "approach",
+            "samples": 60,
+            "maxGapPx": 5.245208740234375e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 210,
+              "error": "Error: Contact paint drift leg0NearFoot: 0.3478885580395846"
+            },
+            "updateP95Ms": 0.40000003576278687,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "melee:pinch",
+            "samples": 121,
+            "maxGapPx": 3.1790765728189446e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "hit",
+            "samples": 56,
+            "maxGapPx": 4.325309932879855e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 210,
+              "error": "Error: Contact paint drift leg0NearFoot: 0.2549672692312021"
+            },
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "alert",
+            "samples": 121,
+            "maxGapPx": 4.3005025447861136e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.3999999761581421
+          },
+          {
+            "id": "approach:scuttle",
+            "samples": 60,
+            "maxGapPx": 5.245208740234375e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 210,
+              "error": "Error: Contact paint drift leg0NearFoot: 0.3478885580395846"
+            },
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "cast",
+            "samples": 121,
+            "maxGapPx": 4.300502547328228e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "dodge",
+            "samples": 49,
+            "maxGapPx": 5.245208743644981e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 114.33333333333333,
+              "error": "Error: Contact paint drift leg0NearFoot: 0.26868782781686756"
+            },
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.30000001192092896
+          },
+          {
+            "id": "faint",
+            "samples": 121,
+            "maxGapPx": 5.245208736823769e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "victory",
+            "samples": 121,
+            "maxGapPx": 4.300502547328228e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.40000003576278687
+          },
+          {
+            "id": "tame",
+            "samples": 121,
+            "maxGapPx": 3.708922668958675e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.30000001192092896,
+            "updateMaxMs": 0.3999999761581421
+          },
+          {
+            "id": "feed",
+            "samples": 121,
+            "maxGapPx": 4.3005025447861136e-05,
+            "status": "PASS",
+            "updateP95Ms": 0.3999999761581421,
+            "updateMaxMs": 0.40000003576278687
+          }
+        ],
+        "presentation": {
+          "samples": 73,
+          "maxGapPx": 4.945230227957858e-05,
+          "status": "FAIL",
+          "failure": {
+            "action": "approach",
+            "ms": 1216.6666666666667,
+            "error": "Error: Contact paint drift leg0NearFoot: 0.3298619189129027"
+          }
+        },
+        "allClipPerformance": {
+          "scope": "121 accelerated samples per clip before presentation/framing; separate from real-time capture",
+          "maxP95Ms": 0.5,
+          "targetMs": 2
+        },
+        "framing": {
+          "samples": 1,
+          "fullMotionBox": {
+            "minX": 0.26363635063171387,
+            "minY": 0.4318181872367859,
+            "maxX": 0.7363636493682861,
+            "maxY": 0.6579545140266418
+          },
+          "view": {
+            "x": 745,
+            "y": 90,
+            "width": 610,
+            "height": 540
+          },
+          "fit": {
+            "scale": 1290.384544388081,
+            "x": 404.80772780595953,
+            "y": -467.211514796027
+          },
+          "inside": false,
+          "oldRestOnlyInside": true,
+          "skipped": "Prior action/presentation failed"
+        }
+      },
+      "capture": {},
+      "error": "Error: Actual family gates failed\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
+      "reportSha256": "c8a8e9ad538702e6e5996e8e5dfdbcd4470927f8a6a0be63a28c6f2b25bc96d8"
+    },
+    {
+      "subject": "persimmon",
+      "folder": "persimmon-native-05",
+      "binding": "persimmon-04",
+      "status": "FAIL",
+      "gates": {
+        "contacts": {
+          "maxContactError": 0,
+          "maxPaintContactDriftPx": 0,
+          "paintTolerancePx": 0.25,
+          "chains": []
+        },
+        "restChanged": 0,
+        "finalRestChanged": 0,
+        "maximumRootDrift": 0,
+        "rows": [
+          {
+            "id": "sway",
+            "samples": 121,
+            "maxGapPx": 5.9864930159180556e-05,
+            "status": "FAIL",
+            "updateP95Ms": 2.300000011920929,
+            "updateMaxMs": 5.300000011920929,
+            "performanceFailure": "Per-clip update must be below 2 ms"
+          },
+          {
+            "id": "disturb",
+            "samples": 13,
+            "maxGapPx": 5.469773184337406e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 67.16666666666667,
+              "error": "Error: ARAP skin: unresolved folded triangles: 84"
+            },
+            "updateP95Ms": 3.199999988079071,
+            "updateMaxMs": 3.199999988079071,
+            "performanceFailure": "Per-clip update must be below 2 ms"
+          },
+          {
+            "id": "harvest",
+            "samples": 121,
+            "maxGapPx": 5.856990343538905e-05,
+            "status": "FAIL",
+            "updateP95Ms": 5.300000011920929,
+            "updateMaxMs": 6.099999964237213,
+            "performanceFailure": "Per-clip update must be below 2 ms"
+          },
+          {
+            "id": "grow",
+            "samples": 121,
+            "maxGapPx": 6.035730363878516e-05,
+            "status": "FAIL",
+            "updateP95Ms": 2.300000011920929,
+            "updateMaxMs": 2.400000035762787,
+            "performanceFailure": "Per-clip update must be below 2 ms"
+          }
+        ],
+        "presentation": {
+          "samples": 72,
+          "maxGapPx": 5.974679730844249e-05,
+          "status": "FAIL",
+          "failure": {
+            "action": "disturb",
+            "ms": 1200,
+            "error": "Error: ARAP skin: unresolved folded triangles: 209"
+          }
+        },
+        "allClipPerformance": {
+          "scope": "121 accelerated samples per clip before presentation/framing; separate from real-time capture",
+          "maxP95Ms": 5.300000011920929,
+          "targetMs": 2
+        },
+        "framing": {
+          "samples": 1,
+          "fullMotionBox": {
+            "minX": 0.0366826169192791,
+            "minY": 0.009569378569722176,
+            "maxX": 0.9641148447990417,
+            "maxY": 0.9776714444160461
+          },
+          "view": {
+            "x": 745,
+            "y": 90,
+            "width": 610,
+            "height": 540
+          },
+          "fit": {
+            "scale": 557.7924260784703,
+            "x": 724.5387141136882,
+            "y": 84.66227311153135
+          },
+          "inside": false,
+          "oldRestOnlyInside": true,
+          "skipped": "Prior action/presentation failed"
+        }
+      },
+      "capture": {},
+      "error": "Error: Actual family gates failed\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
+      "reportSha256": "b90982da78155b2c56c4165221e0c0dcce2f95f48a310db34f83ab755d984691"
+    },
+    {
+      "subject": "cranberry",
+      "folder": "cranberry-native-05",
+      "binding": "cranberry-07",
+      "status": "FAIL",
+      "gates": {
+        "contacts": {
+          "maxContactError": 0,
+          "maxPaintContactDriftPx": 0,
+          "paintTolerancePx": 0.25,
+          "chains": []
+        },
+        "restChanged": 0,
+        "finalRestChanged": 0,
+        "maximumRootDrift": 0,
+        "rows": [
+          {
+            "id": "sway",
+            "samples": 121,
+            "maxGapPx": 6.768990987308148e-05,
+            "status": "PASS",
+            "updateP95Ms": 1.9000000357627869,
+            "updateMaxMs": 5.800000011920929
+          },
+          {
+            "id": "disturb",
+            "samples": 121,
+            "maxGapPx": 5.290547713891236e-05,
+            "status": "FAIL",
+            "updateP95Ms": 3.299999952316284,
+            "updateMaxMs": 3.5,
+            "performanceFailure": "Per-clip update must be below 2 ms"
+          },
+          {
+            "id": "harvest",
+            "samples": 121,
+            "maxGapPx": 5.645800814863738e-05,
+            "status": "PASS",
+            "updateP95Ms": 1.899999976158142,
+            "updateMaxMs": 2
+          },
+          {
+            "id": "grow",
+            "samples": 121,
+            "maxGapPx": 5.333079388231341e-05,
+            "status": "PASS",
+            "updateP95Ms": 1.800000011920929,
+            "updateMaxMs": 1.800000011920929
+          }
+        ],
+        "presentation": {
+          "samples": 601,
+          "maxGapPx": 5.8477692757922895e-05,
+          "status": "PASS"
+        },
+        "allClipPerformance": {
+          "scope": "121 accelerated samples per clip before presentation/framing; separate from real-time capture",
+          "maxP95Ms": 3.299999952316284,
+          "targetMs": 2
+        },
+        "framing": {
+          "samples": 602,
+          "fullMotionBox": {
+            "minX": -0.004269301425665617,
+            "minY": 0.09356970340013504,
+            "maxX": 1.0177667140960693,
+            "maxY": 0.9864296913146973
+          },
+          "view": {
+            "x": 745,
+            "y": 90,
+            "width": 610,
+            "height": 540
+          },
+          "fit": {
+            "scale": 596.847851480658,
+            "x": 747.5481233832319,
+            "y": 34.15312356194698
+          },
+          "inside": true,
+          "oldRestOnlyInside": true
+        }
+      },
+      "capture": {},
+      "error": "Error: Actual family gates failed\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
+      "reportSha256": "f936d93de7d210c7feb09fd4e181c977076d8bdb349a893bf8f5b3d9c60e4f9b"
+    },
+    {
+      "subject": "devils-club",
+      "folder": "devils-club-native-03",
+      "binding": "devils-club-06",
+      "status": "FAIL",
+      "gates": {
+        "contacts": {
+          "maxContactError": 0,
+          "maxPaintContactDriftPx": 0,
+          "paintTolerancePx": 0.25,
+          "chains": []
+        },
+        "restChanged": 0,
+        "finalRestChanged": 0,
+        "maximumRootDrift": 0,
+        "rows": [
+          {
+            "id": "sway",
+            "samples": 121,
+            "maxGapPx": 6.685326685708087e-05,
+            "status": "FAIL",
+            "updateP95Ms": 2.5,
+            "updateMaxMs": 4.699999988079071,
+            "performanceFailure": "Per-clip update must be below 2 ms"
+          },
+          {
+            "id": "disturb",
+            "samples": 121,
+            "maxGapPx": 6.685326685708087e-05,
+            "status": "FAIL",
+            "updateP95Ms": 4.199999988079071,
+            "updateMaxMs": 5.300000011920929,
+            "performanceFailure": "Per-clip update must be below 2 ms"
+          },
+          {
+            "id": "harvest",
+            "samples": 121,
+            "maxGapPx": 6.685326685708087e-05,
+            "status": "FAIL",
+            "updateP95Ms": 2.199999988079071,
+            "updateMaxMs": 2.5,
+            "performanceFailure": "Per-clip update must be below 2 ms"
+          },
+          {
+            "id": "grow",
+            "samples": 121,
+            "maxGapPx": 6.685326685708087e-05,
+            "status": "FAIL",
+            "updateP95Ms": 2.199999988079071,
+            "updateMaxMs": 2.200000047683716,
+            "performanceFailure": "Per-clip update must be below 2 ms"
+          }
+        ],
+        "presentation": {
+          "samples": 601,
+          "maxGapPx": 6.685326685708087e-05,
+          "status": "PASS"
+        },
+        "allClipPerformance": {
+          "scope": "121 accelerated samples per clip before presentation/framing; separate from real-time capture",
+          "maxP95Ms": 4.199999988079071,
+          "targetMs": 2
+        },
+        "framing": {
+          "samples": 602,
+          "fullMotionBox": {
+            "minX": -0.007380624767392874,
+            "minY": -0.020912544801831245,
+            "maxX": 1.0249106884002686,
+            "maxY": 1.0012353658676147
+          },
+          "view": {
+            "x": 745,
+            "y": 90,
+            "width": 610,
+            "height": 540
+          },
+          "fit": {
+            "scale": 528.2992748538048,
+            "x": 748.8991787125817,
+            "y": 101.04808225415515
+          },
+          "inside": true,
+          "oldRestOnlyInside": true
+        }
+      },
+      "capture": {},
+      "error": "Error: Actual family gates failed\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
+      "reportSha256": "137406fa6e30ff35116a944a0bb47f91a91a0d44034b6947f2affcb5d86a77b2"
+    },
+    {
+      "subject": "civet",
+      "folder": "civet-sentinel-native-01",
+      "binding": "civet-sentinel-input-01",
+      "status": "FAIL",
+      "gates": {
+        "contacts": {
+          "maxContactError": 3.510833468576701e-16,
+          "maxPaintContactDriftPx": 0.39162264293274535,
+          "paintTolerancePx": 0.25,
+          "chains": [
+            "hindFar",
+            "foreFar",
+            "hindNear",
+            "foreNear"
+          ]
+        },
+        "restChanged": 0,
+        "finalRestChanged": 0,
+        "maximumRootDrift": 0,
+        "rows": [
+          {
+            "id": "idle",
+            "samples": 16,
+            "maxGapPx": 8.221445262923185e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 322.397756382823,
+              "error": "Error: Contact paint drift foreFarAnkle: 0.2581944507565461"
+            },
+            "updateP95Ms": 4.400000035762787,
+            "updateMaxMs": 4.400000035762787,
+            "performanceFailure": "Per-clip update must be below 2 ms"
+          },
+          {
+            "id": "approach",
+            "samples": 4,
+            "maxGapPx": 7.927822204899168e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 28.966666666666665,
+              "error": "Error: Contact: approach:walk@28.966666666666665 foreNear RangeError: target outside two-bone reach"
+            },
+            "updateP95Ms": 0.699999988079071,
+            "updateMaxMs": 0.699999988079071
+          },
+          {
+            "id": "melee:bite",
+            "samples": 3,
+            "maxGapPx": 7.927822220976915e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 23.566666666666666,
+              "error": "Error: Contact paint drift foreFarAnkle: 0.359085167136737"
+            },
+            "updateP95Ms": 0.699999988079071,
+            "updateMaxMs": 0.699999988079071
+          },
+          {
+            "id": "hit",
+            "samples": 2,
+            "maxGapPx": 7.739064537947591e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 14.908333333333333,
+              "error": "Error: Contact paint drift hindNearAnkle: 0.2696714208581685"
+            },
+            "updateP95Ms": 0.800000011920929,
+            "updateMaxMs": 0.800000011920929
+          },
+          {
+            "id": "alert",
+            "samples": 1,
+            "maxGapPx": 5.36969038814283e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 5.825,
+              "error": "Error: Contact: alert@5.825 foreNear RangeError: target outside two-bone reach"
+            },
+            "updateP95Ms": 0.19999998807907104,
+            "updateMaxMs": 0.19999998807907104
+          },
+          {
+            "id": "approach:walk",
+            "samples": 4,
+            "maxGapPx": 7.927822204899168e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 28.966666666666665,
+              "error": "Error: Contact: approach:walk@28.966666666666665 foreNear RangeError: target outside two-bone reach"
+            },
+            "updateP95Ms": 0.699999988079071,
+            "updateMaxMs": 0.699999988079071
+          },
+          {
+            "id": "approach:trot",
+            "samples": 2,
+            "maxGapPx": 5.945413507013991e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 14.483333333333333,
+              "error": "Error: Contact: approach:trot@14.483333333333333 foreNear RangeError: target outside two-bone reach"
+            },
+            "updateP95Ms": 0.699999988079071,
+            "updateMaxMs": 0.699999988079071
+          },
+          {
+            "id": "approach:gallop",
+            "samples": 2,
+            "maxGapPx": 7.933257797134325e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 14.483333333333333,
+              "error": "Error: Contact paint drift foreNearAnkle: 0.26694823830147174"
+            },
+            "updateP95Ms": 0.6000000238418579,
+            "updateMaxMs": 0.6000000238418579
+          },
+          {
+            "id": "approach:hop",
+            "samples": 121,
+            "maxGapPx": 0.00012534987526169732,
+            "status": "PASS",
+            "updateP95Ms": 0.6000000238418579,
+            "updateMaxMs": 0.7000000476837158
+          },
+          {
+            "id": "melee:claw",
+            "samples": 3,
+            "maxGapPx": 7.927822220976915e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 23.566666666666666,
+              "error": "Error: Contact paint drift foreFarAnkle: 0.359085167136737"
+            },
+            "updateP95Ms": 0.6000000238418579,
+            "updateMaxMs": 0.6000000238418579
+          },
+          {
+            "id": "melee:gore",
+            "samples": 3,
+            "maxGapPx": 7.927822220976915e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 23.566666666666666,
+              "error": "Error: Contact paint drift foreFarAnkle: 0.359085167136737"
+            },
+            "updateP95Ms": 0.6000000238418579,
+            "updateMaxMs": 0.6000000238418579
+          },
+          {
+            "id": "melee:tail",
+            "samples": 4,
+            "maxGapPx": 6.267493763084866e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 31.42222222222222,
+              "error": "Error: Contact paint drift foreFarAnkle: 0.39162264293274535"
+            },
+            "updateP95Ms": 0.7000000476837158,
+            "updateMaxMs": 0.7000000476837158
+          },
+          {
+            "id": "melee:headbutt",
+            "samples": 3,
+            "maxGapPx": 7.927822220976915e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 23.566666666666666,
+              "error": "Error: Contact paint drift foreFarAnkle: 0.35900535897884644"
+            },
+            "updateP95Ms": 0.6000000238418579,
+            "updateMaxMs": 0.6000000238418579
+          },
+          {
+            "id": "cast",
+            "samples": 2,
+            "maxGapPx": 5.909049809466162e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 17.175,
+              "error": "Error: Contact: cast@17.175 foreNear RangeError: target outside two-bone reach"
+            },
+            "updateP95Ms": 0.5,
+            "updateMaxMs": 0.5
+          },
+          {
+            "id": "dodge",
+            "samples": 1,
+            "maxGapPx": 5.36969038814283e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 6.25,
+              "error": "Error: Contact: dodge@6.25 foreFar RangeError: target outside two-bone reach"
+            },
+            "updateP95Ms": 0.09999996423721313,
+            "updateMaxMs": 0.09999996423721313
+          },
+          {
+            "id": "faint",
+            "samples": 4,
+            "maxGapPx": 7.046953071021482e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 31.8,
+              "error": "Error: Contact paint drift foreFarAnkle: 0.3234348668407896"
+            },
+            "updateP95Ms": 0.6000000238418579,
+            "updateMaxMs": 0.6000000238418579
+          },
+          {
+            "id": "victory",
+            "samples": 1,
+            "maxGapPx": 5.36969038814283e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 8.516666666666667,
+              "error": "Error: Contact: victory@8.516666666666667 foreFar RangeError: target outside two-bone reach"
+            },
+            "updateP95Ms": 0.20000004768371582,
+            "updateMaxMs": 0.20000004768371582
+          },
+          {
+            "id": "tame",
+            "samples": 2,
+            "maxGapPx": 5.8724609032364e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 17.6,
+              "error": "Error: Contact paint drift foreFarAnkle: 0.3170229842363204"
+            },
+            "updateP95Ms": 0.5999999642372131,
+            "updateMaxMs": 0.5999999642372131
+          },
+          {
+            "id": "feed",
+            "samples": 3,
+            "maxGapPx": 6.911065674022605e-05,
+            "status": "FAIL",
+            "failure": {
+              "ms": 25.125,
+              "error": "Error: Contact paint drift foreFarAnkle: 0.2845719029954201"
+            },
+            "updateP95Ms": 0.5999999642372131,
+            "updateMaxMs": 0.5999999642372131
+          },
+          {
+            "id": "melee:kick",
+            "samples": 121,
+            "maxGapPx": 0.00012534987526169732,
+            "status": "PASS",
+            "updateP95Ms": 0.800000011920929,
+            "updateMaxMs": 4.799999952316284
+          }
+        ],
+        "presentation": {
+          "samples": 21,
+          "maxGapPx": 8.221445238806566e-05,
+          "status": "FAIL",
+          "failure": {
+            "action": "idle",
+            "ms": 350,
+            "error": "Error: Contact paint drift foreFarAnkle: 0.26186714530332184"
+          }
+        },
+        "allClipPerformance": {
+          "scope": "121 accelerated samples per clip before presentation/framing; separate from real-time capture",
+          "maxP95Ms": 4.400000035762787,
+          "targetMs": 2
+        },
+        "framing": {
+          "samples": 1,
+          "fullMotionBox": {
+            "minX": 0.020733652636408806,
+            "minY": 0.15550239384174347,
+            "maxX": 0.980063796043396,
+            "maxY": 0.840510368347168
+          },
+          "view": {
+            "x": 745,
+            "y": 90,
+            "width": 610,
+            "height": 540
+          },
+          "fit": {
+            "scale": 635.8603492157891,
+            "x": 731.8162923940943,
+            "y": -8.877806452102178
+          },
+          "inside": false,
+          "oldRestOnlyInside": true,
+          "skipped": "Prior action/presentation failed"
+        }
+      },
+      "capture": {},
+      "error": "Error: Actual family gates failed\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/native-runner.mjs:11:253",
+      "reportSha256": "490a3326c86464930100f66715511c8b07658b334b95f8524bc6a37a5d971c30"
+    }
+  ]
+}
